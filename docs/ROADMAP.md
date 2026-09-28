@@ -33,15 +33,15 @@
 ## Semana 1 · Fase 1: Diver no ar — Publicação e mascote
 **Objetivo:** O protótipo na versão principal, publicado, com o kit e a nova identidade instalados.
 
-- [ ] **D1 · Seg** — Revisar o Pull Request #1 no GitHub e fazer o merge na main. Conferir que o repositório não tem chaves nem dados pessoais.
+- [x] **D1 · Seg** — Revisar o Pull Request #1 no GitHub e fazer o merge na main. Conferir que o repositório não tem chaves nem dados pessoais.
   - _Pronto quando:_ A main contém o protótipo completo; nada sensível no histórico.
 - [ ] **D2 · Ter** — Publicar no GitHub Pages (Settings → Pages → main / root); corrigir caminhos relativos e maiúsculas/minúsculas.
   - _Pronto quando:_ O Diver abre e carrega as trilhas na URL pública, no celular e no computador.
-- [ ] **D3 · Qua** — Copiar o kit (CLAUDE.md, docs/, .claude/, assets/) para a raiz do projeto e fazer o commit do kit.
+- [x] **D3 · Qua** — Copiar o kit (CLAUDE.md, docs/, .claude/, assets/) para a raiz do projeto e fazer o commit do kit.
   - _Pronto quando:_ /hoje funciona e lê o ROADMAP.
 - [ ] **D4 · Qui** — Tokens de design: centralizar a paleta oficial em variáveis CSS e criar a página design.html (paleta, botões 3D, cards, tipografia).
   - _Pronto quando:_ design.html mostra tudo; nenhuma cor solta no CSS.
-- [ ] **D5 · Sex** — Integrar o mascote Diver na tela inicial (WebP animado; PNG com "reduzir movimento") e aposentar o peixinho da abertura. Retro.
+- [x] **D5 · Sex** — Integrar o mascote Diver na tela inicial (WebP animado; PNG com "reduzir movimento") e aposentar o peixinho da abertura. Retro. _(Feito em 2026-09-28, antes da D2 a pedido; mascote em SVG vetorial em vez da pixel art, ver docs/DESIGN.md.)_
   - _Pronto quando:_ O Diver nada na tela inicial; retro registrada em docs/DIARIO.md.
 
 ## Semana 2 · Fase 1: Diver no ar — Motor de jogos
