@@ -9,6 +9,6 @@
  * Com os dois vazios, o Diver funciona no "modo local": sem login, tudo no navegador.
  */
 window.DIVER_CONFIG = {
-  supabaseUrl: '',
-  supabaseChave: '',
+  supabaseUrl: 'https://bdrwqmxjhvxqwfywpikg.supabase.co',
+  supabaseChave: 'sb_publishable_UyTo6L5wYVtPpnmJBndD7g_zBhf4NO-',
 };
