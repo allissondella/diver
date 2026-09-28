@@ -51,7 +51,7 @@ const App = (() => {
     pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
     perfil: { tela: 'tela-perfil', render: () => Perfil.render($('tela-perfil')) },
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
-    admin: { tela: 'tela-admin', soAdmin: true, render: () => Admin.render($('tela-admin')) },
+    admin: { tela: 'tela-admin', soEquipe: true, render: () => Admin.render($('tela-admin')) },
   };
   const TELAS_FOCO = ['tela-quiz', 'tela-jogo']; // sem barra lateral: uma ação principal por tela
 
@@ -70,7 +70,7 @@ const App = (() => {
       return;
     }
     abandonarAndamento();
-    if (rota.soAdmin && !Nuvem.ehAdmin()) {
+    if (rota.soEquipe && !Nuvem.ehAdmin() && !Nuvem.ehProfessor()) {
       secao = 'inicio';
       history.replaceState(null, '', '#inicio');
     }
@@ -165,11 +165,17 @@ const App = (() => {
     $('badge-foco').hidden = !Organizar.focoAtivo();
   }
 
-  /** Cartão da pessoa logada (nome, admin, status da nuvem, Sair). No modo local, some. */
+  /** Cartão da pessoa logada (nome, tipo de conta, status da nuvem, Sair). No modo local, some. */
   function atualizarConta() {
     const area = limpar($('lateral-conta'));
     const perfil = Nuvem.perfil();
-    document.querySelectorAll('[data-so-admin]').forEach((el) => (el.hidden = !Nuvem.ehAdmin()));
+    // Admin: "Pessoas e cursos" (cadastra e gerencia). Professor: "Meus alunos" (só acompanha).
+    const equipe = Nuvem.ehAdmin() || Nuvem.ehProfessor();
+    document.querySelectorAll('[data-so-equipe]').forEach((el) => (el.hidden = !equipe));
+    if (equipe) {
+      $('lateral-grupo-equipe').textContent = Nuvem.ehAdmin() ? 'Admin' : 'Professor';
+      $('lateral-link-equipe-texto').textContent = Nuvem.ehAdmin() ? 'Pessoas e cursos' : 'Meus alunos';
+    }
     document.querySelectorAll('[data-so-gestao]').forEach((el) => (el.hidden = !podeGerenciar()));
     area.hidden = !perfil;
     if (!perfil) return;
@@ -177,7 +183,7 @@ const App = (() => {
     area.append(
       h('span', { class: 'pessoa__avatar pessoa__avatar--mini', 'aria-hidden': 'true', text: perfil.nome.trim().split(/\s+/).map((x) => x[0]).slice(0, 2).join('').toUpperCase() }),
       h('div', { class: 'lateral__conta-info' },
-        h('strong', { text: perfil.nome.split(' ')[0] }, perfil.admin ? h('span', { class: 'chip chip--aviso chip--mini', text: 'Admin' }) : null),
+        h('strong', { text: perfil.nome.split(' ')[0] }, Nuvem.ehAdmin() ? h('span', { class: 'chip chip--aviso chip--mini', text: 'Admin' }) : Nuvem.ehProfessor() ? h('span', { class: 'chip chip--mini', text: 'Professor' }) : null),
         h('span', { class: `lateral__nuvem lateral__nuvem--${Nuvem.Sincronia.status()}`, text: status })),
       h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: () => Conta.sair() }, 'Sair'));
   }
@@ -207,7 +213,7 @@ const App = (() => {
   async function carregarTrilhas() {
     const resultado = await Trilhas.carregarTodas();
     const { problemas, semServidor } = resultado;
-    // Com login: o admin vê tudo; cada aluno vê só os cursos atribuídos a ele
+    // Com login: o admin vê tudo; aluno e professor veem só os cursos atribuídos a eles
     const trilhas = Nuvem.ativa && !Nuvem.ehAdmin()
       ? resultado.trilhas.filter((t) => Nuvem.matriculas().includes(t.id))
       : resultado.trilhas;
@@ -591,7 +597,7 @@ const App = (() => {
     const cfg = configProva(trilha);
     const concluidas = trilha.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
     const fasesOk = concluidas.length === trilha.fases.length;
-    const liberada = !cfg.exigeFases || fasesOk || Nuvem.ehAdmin();
+    const liberada = !cfg.exigeFases || fasesOk || Nuvem.ehAdmin() || Nuvem.ehProfessor();
     const provas = prog.provas || [];
     const aprovacao = provas.find((p) => p.aprovado);
     const area = limpar($('tela-prova'));
@@ -612,7 +618,7 @@ const App = (() => {
             const ok = prog.fases[f.id] && prog.fases[f.id].concluida;
             return h('li', { class: ok ? 'texto-sucesso' : 'texto-suave' }, icone(ok ? 'i-check' : 'i-cadeado'), f.nome);
           }))) : null,
-        !fasesOk && cfg.exigeFases && Nuvem.ehAdmin() ? h('p', { class: 'jogo-card__dica', text: 'Como admin, você pode fazer a prova sem completar as fases (para testar).' }) : null,
+        !fasesOk && cfg.exigeFases && (Nuvem.ehAdmin() || Nuvem.ehProfessor()) ? h('p', { class: 'jogo-card__dica', text: `Como ${Nuvem.ehAdmin() ? 'admin' : 'professor'}, você pode fazer a prova sem completar as fases (para conferir).` }) : null,
         liberada
           ? h('button', { type: 'button', class: 'botao botao--primario botao--grande', onclick: iniciarProva }, icone('i-trofeu'), provas.length ? 'Fazer a prova de novo' : 'Começar a prova')
           : h('a', { class: 'botao botao--secundario', href: '#mergulho' }, 'Voltar ao mapa e completar as fases')),

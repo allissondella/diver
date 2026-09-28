@@ -11,7 +11,7 @@ create extension if not exists pgcrypto with schema extensions;
 
 -- ---------- Tabelas ----------
 
--- Um perfil para cada conta de login (auth.users)
+-- Um perfil para cada conta de login (auth.users). O tipo de conta (papel) é acrescentado mais abaixo.
 create table if not exists public.perfis (
   id uuid primary key references auth.users (id) on delete cascade,
   email text not null unique,
@@ -39,13 +39,59 @@ create table if not exists public.estado (
   primary key (usuario_id, chave)
 );
 
--- ---------- Quem é admin? ----------
+-- ---------- Tipo de conta: aluno, professor ou admin ----------
+-- "papel" é quem manda; a coluna antiga "admin" fica igual a (papel = 'admin') por compatibilidade.
+alter table public.perfis add column if not exists papel text not null default 'aluno';
+do $$
+begin
+  if not exists (select 1 from pg_constraint where conname = 'perfis_papel_valido') then
+    alter table public.perfis add constraint perfis_papel_valido check (papel in ('aluno', 'professor', 'admin'));
+  end if;
+end;
+$$;
+-- quem já era admin (antes de existir "papel") continua admin
+update public.perfis set papel = 'admin' where admin and papel = 'aluno';
+
+-- ---------- Quem é quem? ----------
 create or replace function public.eh_admin()
 returns boolean
 language sql stable security definer
 set search_path = public
 as $$
-  select coalesce((select p.admin and p.ativo from public.perfis p where p.id = auth.uid()), false);
+  select coalesce((select p.papel = 'admin' and p.ativo from public.perfis p where p.id = auth.uid()), false);
+$$;
+
+create or replace function public.eh_professor()
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select coalesce((select p.papel = 'professor' and p.ativo from public.perfis p where p.id = auth.uid()), false);
+$$;
+
+-- O professor logado dá aula neste curso? (professor enxerga só os alunos dos cursos dele)
+create or replace function public.professor_do_curso(p_trilha text)
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select public.eh_professor()
+     and exists (select 1 from public.matriculas m where m.aluno_id = auth.uid() and m.trilha_id = p_trilha);
+$$;
+
+-- A pessoa é aluna de algum curso do professor logado?
+create or replace function public.aluno_do_professor(p_aluno uuid)
+returns boolean
+language sql stable security definer
+set search_path = public
+as $$
+  select public.eh_professor()
+     and exists (select 1 from public.perfis p where p.id = p_aluno and p.papel = 'aluno')
+     and exists (
+       select 1 from public.matriculas a
+       join public.matriculas eu on eu.trilha_id = a.trilha_id and eu.aluno_id = auth.uid()
+       where a.aluno_id = p_aluno
+     );
 $$;
 
 -- ---------- Segurança por linha (RLS) ----------
@@ -53,17 +99,31 @@ alter table public.perfis enable row level security;
 alter table public.matriculas enable row level security;
 alter table public.estado enable row level security;
 
+-- Ver: a própria pessoa; o admin vê tudo; o professor vê os alunos dos cursos dele
 drop policy if exists "perfil: ver o próprio ou admin" on public.perfis;
-create policy "perfil: ver o próprio ou admin" on public.perfis
-  for select to authenticated using (id = auth.uid() or public.eh_admin());
+drop policy if exists "perfil: ver o próprio, admin ou professor" on public.perfis;
+create policy "perfil: ver o próprio, admin ou professor" on public.perfis
+  for select to authenticated using (id = auth.uid() or public.eh_admin() or public.aluno_do_professor(id));
 
 drop policy if exists "matrícula: ver as próprias ou admin" on public.matriculas;
-create policy "matrícula: ver as próprias ou admin" on public.matriculas
-  for select to authenticated using (aluno_id = auth.uid() or public.eh_admin());
+drop policy if exists "matrícula: ver as próprias, admin ou professor" on public.matriculas;
+create policy "matrícula: ver as próprias, admin ou professor" on public.matriculas
+  for select to authenticated using (aluno_id = auth.uid() or public.eh_admin() or public.professor_do_curso(trilha_id));
 
+-- O professor só vê o PROGRESSO dos cursos dele (chave diver:v1:trilha:<curso>), nada de tarefas ou agenda
 drop policy if exists "estado: ver o próprio ou admin" on public.estado;
-create policy "estado: ver o próprio ou admin" on public.estado
-  for select to authenticated using (usuario_id = auth.uid() or public.eh_admin());
+drop policy if exists "estado: ver o próprio, admin ou professor" on public.estado;
+create policy "estado: ver o próprio, admin ou professor" on public.estado
+  for select to authenticated using (
+    usuario_id = auth.uid()
+    or public.eh_admin()
+    or (
+      chave like 'diver:v1:trilha:%'
+      and public.professor_do_curso(substr(chave, 17))
+      and public.aluno_do_professor(usuario_id)
+      and exists (select 1 from public.matriculas m where m.aluno_id = usuario_id and m.trilha_id = substr(chave, 17))
+    )
+  );
 
 drop policy if exists "estado: gravar o próprio" on public.estado;
 create policy "estado: gravar o próprio" on public.estado
@@ -142,8 +202,8 @@ begin
           jsonb_build_object('sub', v_id::text, 'email', v_email, 'email_verified', true),
           'email', now(), now(), now());
 
-  insert into public.perfis (id, email, nome, admin, trocar_senha)
-  values (v_id, v_email, trim(p_nome), p_admin, true);
+  insert into public.perfis (id, email, nome, admin, papel, trocar_senha)
+  values (v_id, v_email, trim(p_nome), p_admin, case when p_admin then 'admin' else 'aluno' end, true);
 
   return v_id;
 end;
@@ -154,8 +214,10 @@ revoke execute on function public.diver_senha_temporaria() from public, anon, au
 
 -- ---------- Funções do app (RPC) ----------
 
--- Admin cadastra um aluno com cursos. Retorna a senha temporária (mostrada só ao admin).
-create or replace function public.admin_criar_usuario(p_email text, p_nome text, p_trilhas text[] default '{}')
+-- Admin cadastra uma pessoa (aluno, professor ou admin) com cursos.
+-- Retorna a senha temporária (mostrada só ao admin).
+drop function if exists public.admin_criar_usuario(text, text, text[]);
+create or replace function public.admin_criar_usuario(p_email text, p_nome text, p_trilhas text[] default '{}', p_papel text default 'aluno')
 returns text
 language plpgsql security definer
 set search_path = public, extensions
@@ -167,7 +229,11 @@ begin
   if not public.eh_admin() then
     raise exception 'Só o admin pode cadastrar pessoas.';
   end if;
-  v_id := public.diver_criar_conta(p_email, p_nome, v_senha, false);
+  if coalesce(p_papel, '') not in ('aluno', 'professor', 'admin') then
+    raise exception 'Tipo de conta inválido: %', p_papel;
+  end if;
+  v_id := public.diver_criar_conta(p_email, p_nome, v_senha, p_papel = 'admin');
+  update public.perfis set papel = p_papel where id = v_id;
   insert into public.matriculas (aluno_id, trilha_id)
   select v_id, t from unnest(coalesce(p_trilhas, '{}')) as t
   on conflict do nothing;
@@ -240,6 +306,29 @@ begin
 end;
 $$;
 
+-- Admin muda o tipo de conta (aluno, professor, admin)
+create or replace function public.admin_definir_papel(p_usuario uuid, p_papel text)
+returns void
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  if not public.eh_admin() then
+    raise exception 'Só o admin pode mudar o tipo de conta.';
+  end if;
+  if coalesce(p_papel, '') not in ('aluno', 'professor', 'admin') then
+    raise exception 'Tipo de conta inválido: %', p_papel;
+  end if;
+  if p_usuario = auth.uid() and p_papel <> 'admin' then
+    raise exception 'Você não pode tirar o seu próprio acesso de admin.';
+  end if;
+  update public.perfis set papel = p_papel, admin = (p_papel = 'admin') where id = p_usuario;
+  if not found then
+    raise exception 'Pessoa não encontrada.';
+  end if;
+end;
+$$;
+
 -- A própria pessoa avisa que já trocou a senha temporária
 create or replace function public.senha_trocada()
 returns void
@@ -249,14 +338,19 @@ as $$
   update public.perfis set trocar_senha = false where id = auth.uid();
 $$;
 
-revoke execute on function public.admin_criar_usuario(text, text, text[]) from public, anon;
+revoke execute on function public.admin_criar_usuario(text, text, text[], text) from public, anon;
+revoke execute on function public.admin_definir_papel(uuid, text) from public, anon;
 revoke execute on function public.admin_definir_matriculas(uuid, text[]) from public, anon;
 revoke execute on function public.admin_redefinir_senha(uuid) from public, anon;
 revoke execute on function public.admin_atualizar_usuario(uuid, text, boolean) from public, anon;
 revoke execute on function public.senha_trocada() from public, anon;
-grant execute on function public.admin_criar_usuario(text, text, text[]) to authenticated;
+grant execute on function public.admin_criar_usuario(text, text, text[], text) to authenticated;
+grant execute on function public.admin_definir_papel(uuid, text) to authenticated;
 grant execute on function public.admin_definir_matriculas(uuid, text[]) to authenticated;
 grant execute on function public.admin_redefinir_senha(uuid) to authenticated;
 grant execute on function public.admin_atualizar_usuario(uuid, text, boolean) to authenticated;
 grant execute on function public.senha_trocada() to authenticated;
 grant execute on function public.eh_admin() to authenticated;
+grant execute on function public.eh_professor() to authenticated;
+grant execute on function public.professor_do_curso(text) to authenticated;
+grant execute on function public.aluno_do_professor(uuid) to authenticated;

@@ -2,7 +2,7 @@
  * nuvem.js — conversa com o Supabase usando só fetch (sem biblioteca externa).
  *
  *  - Login: e-mail e senha (Auth do Supabase), renovação automática da sessão, troca de senha
- *  - Perfil e matrículas (quais cursos a pessoa pode ver)
+ *  - Perfil (tipo de conta: aluno, professor ou admin) e matrículas (quais cursos a pessoa vê)
  *  - Sincronia: espelha no banco (tabela "estado") tudo que o app guarda no navegador
  *    com chave "diver:v1:*" (progresso, tarefas, eventos...). PDFs ficam só no aparelho.
  *
@@ -129,7 +129,7 @@ const Nuvem = (() => {
     if (!sessao) return null;
     const id = encodeURIComponent(sessao.user.id);
     const [perfis, mats] = await Promise.all([
-      rest('GET', `perfis?id=eq.${id}&select=id,email,nome,admin,trocar_senha,ativo`),
+      rest('GET', `perfis?id=eq.${id}&select=id,email,nome,admin,papel,trocar_senha,ativo`),
       rest('GET', `matriculas?aluno_id=eq.${id}&select=trilha_id`),
     ]);
     perfil = perfis && perfis[0] ? perfis[0] : null;
@@ -289,12 +289,20 @@ const Nuvem = (() => {
     return { baixar, enviar, iniciar, parar, limparLocal, status: () => status, aoMudar: (fn) => ouvintes.push(fn) };
   })();
 
+  /** Tipo de conta: 'aluno', 'professor' ou 'admin' (null sem login). */
+  function papel() {
+    if (!perfil) return null;
+    return perfil.papel || (perfil.admin ? 'admin' : 'aluno');
+  }
+
   return {
     ativa,
     temSessao: () => !!sessao,
     usuario: () => (sessao ? sessao.user : null),
     perfil: () => perfil,
-    ehAdmin: () => !!(perfil && perfil.admin),
+    papel,
+    ehAdmin: () => papel() === 'admin',
+    ehProfessor: () => papel() === 'professor',
     matriculas: () => [...matriculas],
     entrar,
     sair,

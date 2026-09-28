@@ -18,6 +18,17 @@ const Conta = (() => {
 
   function esconder() {
     document.body.classList.remove('modo-foco', 'modo-conta');
+    document.documentElement.classList.add('logado'); // libera o app (ver .exige-login no CSS)
+  }
+
+  /** Enquanto confere a sessão salva, mostra só o logo (nada do app aparece antes do login). */
+  function telaConectando() {
+    const secao = limpar($('tela-login'));
+    secao.append(h('div', { class: 'conta' },
+      UI.mascote('conta__mascote'),
+      h('h1', { class: 'hero__logo conta__logo', tabindex: '-1', text: 'Diver' }),
+      h('p', { class: 'conta__texto', role: 'status', text: 'Conectando…' })));
+    mostrar('tela-login');
   }
 
   function campoSenha(rotulo, autocomplete, id) {
@@ -122,6 +133,7 @@ const Conta = (() => {
     let logado = false;
     let mensagem = '';
     if (Nuvem.temSessao()) {
+      telaConectando();
       try {
         await Nuvem.carregarPerfil();
         logado = true;

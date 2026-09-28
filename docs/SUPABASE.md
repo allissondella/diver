@@ -1,5 +1,7 @@
 # Diver — ligando o login (Supabase), passo a passo
 
+> **Com o `js/config.js` preenchido, a primeira página do site é o login.** Ninguém vê nada do app antes de entrar.
+
 O login precisa de um lugar na internet para guardar contas, cursos e progresso. Usamos o **Supabase** (plano gratuito), que já estava previsto no roadmap.
 Você faz isso **uma vez só**, em uns 15 minutos. Nada aqui exige programar: é clicar, copiar e colar.
 
@@ -58,12 +60,24 @@ Mande os dois valores no chat que eu faço o commit. Se preferir fazer você mes
 ## 7. Primeiro acesso
 1. Abra o site: aparece a tela **Entrar**.
 2. Use o seu e-mail e a senha temporária. O Diver pede para você **criar a sua senha** (mínimo 8 caracteres, com letras e números).
-3. Na barra lateral aparece o grupo **Admin → Alunos e cursos**. Lá você:
-   - cadastra uma pessoa (nome completo, e-mail e cursos) e recebe a **senha temporária** com uma mensagem pronta para mandar;
+3. Na barra lateral aparece o grupo **Admin → Pessoas e cursos**. Lá você:
+   - cadastra uma pessoa escolhendo o **tipo de conta** (Aluno, Professor ou Admin), com nome completo, e-mail e cursos, e recebe a **senha temporária** com uma mensagem pronta para mandar;
+   - muda o tipo de conta de alguém quando precisar (você não consegue tirar o seu próprio acesso de admin, para não ficar trancado do lado de fora);
    - marca e desmarca cursos de cada pessoa (salva na hora);
    - gera uma nova senha temporária, se alguém esquecer;
    - desativa ou reativa o acesso;
    - vê o progresso de cada um (nível, fases, simulados e prova final).
+
+### Os três tipos de conta
+| Tipo | O que vê e faz |
+| --- | --- |
+| **Aluno** | Estuda só os cursos marcados para ele. |
+| **Professor** | Estuda os cursos marcados para ele e, em **Professor → Meus alunos**, acompanha os alunos desses cursos e o progresso de cada um nesses cursos. Não cadastra ninguém, não muda cursos e não vê tarefas nem agenda dos alunos. |
+| **Admin** | Vê todos os cursos e faz tudo da área **Pessoas e cursos**. |
+
+Quem decide o que cada um enxerga é o banco (as regras do passo 2), não o navegador.
+
+> **Já tinha rodado o `setup.sql` antes?** Rode de novo a versão nova (passo 2). Ele acrescenta os tipos de conta sem apagar nada, e quem já era admin continua admin.
 
 ## Bom saber
 - **Progresso na nuvem:** XP, fases, simulados, provas, tarefas e calendário são salvos automaticamente a cada poucos segundos. Trocou de aparelho? É só entrar. Os **PDFs** continuam só no aparelho em que foram enviados.

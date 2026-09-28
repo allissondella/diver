@@ -13,8 +13,15 @@
   <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="css/areas.css">
   <link rel="stylesheet" href="css/jogos.css">
-  <!-- Configuração do Supabase (login). Vazio = modo local, sem login -->
-  <script src="js/config.js" defer></script>
+  <!-- Configuração do Supabase (login). Vazio = modo local, sem login.
+       Carrega antes de tudo: com login ligado, a primeira coisa na tela é a página de entrar. -->
+  <script src="js/config.js"></script>
+  <script>
+    try {
+      var cfgDiver = window.DIVER_CONFIG || {};
+      if (cfgDiver.supabaseUrl && cfgDiver.supabaseChave) document.documentElement.classList.add('exige-login');
+    } catch (e) { /* sem config: modo local */ }
+  </script>
   <!-- Regras e dados -->
   <script src="js/trilhas.js" defer></script>
   <script src="js/progresso.js" defer></script>
@@ -159,8 +166,8 @@
         <p class="lateral__grupo">Você</p>
         <a href="#perfil" data-secao="perfil"><svg class="icone" aria-hidden="true"><use href="#i-usuario"/></svg>Perfil</a>
 
-        <p class="lateral__grupo" data-so-admin hidden>Admin</p>
-        <a href="#admin" data-secao="admin" data-so-admin hidden><svg class="icone" aria-hidden="true"><use href="#i-colunas"/></svg>Alunos e cursos</a>
+        <p class="lateral__grupo" id="lateral-grupo-equipe" data-so-equipe hidden>Admin</p>
+        <a href="#admin" data-secao="admin" data-so-equipe hidden><svg class="icone" aria-hidden="true"><use href="#i-usuario"/></svg><span id="lateral-link-equipe-texto">Pessoas e cursos</span></a>
       </nav>
 
       <div class="lateral__rodape" id="lateral-status"></div>
@@ -424,7 +431,7 @@
 
       <!-- ============ PROVA FINAL (app.js) E ADMIN (admin.js) ============ -->
       <section id="tela-prova" class="tela" hidden aria-label="Prova final"></section>
-      <section id="tela-admin" class="tela tela--larga" hidden aria-label="Admin: alunos e cursos"></section>
+      <section id="tela-admin" class="tela tela--larga" hidden aria-label="Pessoas e cursos"></section>
 
       <!-- ============ ÁREAS (montadas pelos módulos organizar.js, biblioteca.js e perfil.js) ============ -->
       <section id="tela-tarefas" class="tela tela--larga tela--quadro" hidden aria-label="Tarefas"></section>

@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-09-28 · Tipos de conta (aluno, professor, admin) e login como primeira página
+- **Feito:** `perfis.papel` (aluno/professor/admin) no `setup.sql` (reexecutável; quem era admin continua admin); cadastro com tipo de conta e mudança de tipo na área **Admin → Pessoas e cursos**, com filtro por tipo; **Professor → Meus alunos** só de leitura (alunos dos cursos dele e o progresso nesses cursos); com o Supabase configurado, o login é a primeira coisa na tela (nada do app aparece antes); conserto do selo "Ativo" que tinha perdido o estilo.
+- **Testes:** regras de segurança por papel direto no Postgres (admin cria os três tipos e não se rebaixa; professor vê só os alunos e o progresso dos cursos dele, e o banco recusa qualquer ação de admin; aluno só vê a si); fluxo completo no navegador com o servidor que imita o Supabase (login primeiro, admin cria professor/aluno/admin, primeiro acesso de cada um, Meus alunos no celular); regressão do modo local sem erros.
+- **Decisões:** o professor recebe cursos como o aluno e enxerga só o progresso desses cursos (nada de tarefas ou agenda); admin não tem cursos marcados porque vê todos; ninguém tira o próprio acesso de admin.
+- **Pendências:** criar o projeto no Supabase e preencher `js/config.js` (docs/SUPABASE.md) para o login aparecer no site publicado.
+- **Próximo passo:** ligar o Supabase com a URL e a chave anon.
+
 ## 2026-09-28 · Tarefas em quadros
 - **Feito:** a área **Tarefas** foi refeita como quadros (`js/quadros.js`): vários quadros (☰ troca e cria; clique no nome renomeia), listas com cor, ordenação (minha ordem, prazo, título), mover, limpar concluídas e excluir; "Adicionar uma tarefa" no topo de cada lista (digita e Enter); bolinha conclui e manda para "Concluídas"; painel de detalhes com título, lista, prazo (atalhos Hoje/Amanhã/1 semana), subtarefas com progresso (2/5 no cartão), etiquetas coloridas (também filtram o quadro), notas com links clicáveis, **negrito** e listas, curso que recebe o XP e excluir; busca; arrastar cartões e listas (mouse direto, toque segurando); atalhos Enter, Shift+Enter, Alt+Enter, Esc, setas e Alt+setas; exportar e importar JSON. Prazos aparecem no Calendário (com botão para abrir a tarefa) e no Seu dia.
 - **Testes:** migração do Kanban antigo, criação, detalhes, atalhos, XP uma vez só, arrastar com mouse e com toque de verdade no celular, deslizar sem arrastar, menus, filtros, exportar/importar, Calendário e Início; regressão de todas as áreas no celular e no computador, sem erros no console.
