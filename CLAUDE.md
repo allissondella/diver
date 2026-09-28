@@ -10,6 +10,7 @@ A **Fase 0 está feita**: protótipo em HTML/CSS/JS puros com os modos Mergulho,
 **A parte de perguntas e respostas está aprovada e testada: não refaça e não mude o comportamento dela sem eu pedir.**
 **2026-09-29:** app com **barra lateral** (Estudar · Organizar · Biblioteca · Você), Sala de Jogos com 9 jogos novos, economia central, Kanban, calendário com cronograma, Modo Foco, PDFs, Perfil e Desafio do Dia. Como o código está organizado: `docs/ARQUITETURA.md`.
 **2026-09-28:** **Tarefas viraram quadros** (`js/quadros.js`): vários quadros, listas com cor e ordenação, cartões com subtarefas, etiquetas (filtro), prazo (vai para o Calendário), notas com links, "Concluídas" no pé de cada lista, arrastar cartões e listas, atalhos (Enter, Shift+Enter, Alt+Enter, Esc) e exportar/importar JSON. Visual e nomes são nossos: não cite produtos de terceiros.
+**Tipos de conta:** aluno, professor e admin (coluna `papel` em `perfis`). O admin cadastra os três; o professor só acompanha os alunos dos cursos dele ("Meus alunos"). Com Supabase ligado, a primeira página é o login.
 **2026-09-29 (2):** login com **Supabase** (e-mail e senha, troca obrigatória no primeiro acesso), **área de Admin** (cadastrar pessoas e atribuir cursos), progresso sincronizado na nuvem, **Prova final** e o curso **ISO/IEC 27001:2022 Foundation** (65 questões originais). Ligar o Supabase: `docs/SUPABASE.md`. Sem `js/config.js` preenchido, o app roda no modo local.
 O plano completo está em `docs/ROADMAP.md` (24 semanas, 120 tarefas). Use `/hoje` para começar.
 

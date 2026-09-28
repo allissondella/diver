@@ -74,6 +74,8 @@ input[type="time"].campo {
 .chip .icone { width: 14px; height: 14px; }
 .chip--aviso { background: rgba(250, 204, 21, 0.15); color: var(--amarelo); }
 .chip--atrasada { background: rgba(251, 113, 133, 0.18); color: var(--coral); }
+.chip--ativo { background: rgba(94, 234, 212, 0.12); color: var(--turquesa-claro); }
+.chip--papel { background: rgba(20, 184, 166, 0.16); color: var(--turquesa-claro); }
 .chip--hoje { background: rgba(250, 204, 21, 0.15); color: var(--amarelo); }
 
 .contador {
@@ -1372,6 +1374,11 @@ body.qd-travado { overflow: hidden; }
 .pessoa__email { font-size: 0.88rem; overflow-wrap: anywhere; }
 .pessoa__chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .pessoa__acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+.form-admin__papel { display: grid; gap: 6px; justify-items: start; }
+.form-admin__dica { font-size: 0.85rem; }
+.pessoa__linha-papel { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.pessoa__linha-papel .rotulo-campo { margin: 0; }
+.pessoa__papel:disabled { opacity: 0.6; cursor: not-allowed; }
 .pessoa__progresso { padding-top: 4px; }
 .tabela--compacta th,
 .tabela--compacta td { padding: 8px 6px; font-size: 0.85rem; }

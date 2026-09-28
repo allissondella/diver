@@ -79,6 +79,14 @@ textarea {
   display: none !important;
 }
 
+/* Com login ligado, nada do app aparece antes de a pessoa entrar (conta.js tira a trava) */
+.exige-login:not(.logado) .topo,
+.exige-login:not(.logado) .lateral,
+.exige-login:not(.logado) .lateral-fundo,
+.exige-login:not(.logado) .tela:not(.tela--conta) {
+  display: none !important;
+}
+
 /* Foco sempre visível para quem navega pelo teclado */
 :focus-visible {
   outline: 3px solid var(--amarelo);

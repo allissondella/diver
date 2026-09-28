@@ -29,7 +29,7 @@
 | 11 | `js/organizar.js` | `Organizar` | Calendário + gerador de cronograma, Modo Foco e o resumo "Seu dia" (lê as tarefas de `Quadros.comPrazo()`). |
 | 12 | `js/biblioteca.js` | `Biblioteca` | Cursos e trilhas (estudar, exportar, criar colando texto) e PDFs (IndexedDB). |
 | 13 | `js/perfil.js` | `Perfil` | Nível geral somando as trilhas, tabela por trilha, backup. |
-| 13b | `js/admin.js` | `Admin` | Área de admin: cadastrar pessoa (senha temporária), atribuir cursos, nova senha, ativar/desativar, ver progresso. |
+| 13b | `js/admin.js` | `Admin` | Área da equipe. Admin ("Pessoas e cursos"): cadastrar aluno, professor ou admin (senha temporária), mudar o tipo de conta, atribuir cursos, nova senha, ativar/desativar, ver progresso. Professor ("Meus alunos"): só acompanha os alunos dos cursos dele. |
 | 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
 CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos). Só variáveis de cor (tokens), nada de cor solta.
@@ -50,7 +50,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#pdfs` | PDFs | `biblioteca.js` |
 | `#perfil` | Perfil e backup | `perfil.js` |
 | `#prova` | `tela-prova`: regras, pré-requisito (todas as fases), tentativas | `app.js` |
-| `#admin` | `tela-admin` (só admin) | `admin.js` |
+| `#admin` | `tela-admin` (admin e professor; conteúdo muda conforme o tipo de conta) | `admin.js` |
 | (sem endereço) | `tela-login`, `tela-senha` (antes do app, com login ativo) | `conta.js` |
 
 - A **trilha atual** é escolhida no Início ("Bora mergulhar!") ou no seletor da barra lateral. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
@@ -59,11 +59,11 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 - `append`/`replaceChildren` nativos escrevem "null" se receberem `null`: use `UI.h()` ou `.filter(Boolean)`.
 
 ## Login, admin e nuvem (Supabase)
-- **Liga/desliga:** `js/config.js`. Com URL e chave preenchidas, o app exige login; vazio, roda no modo local. Passo a passo para criar o projeto: `docs/SUPABASE.md`.
-- **Banco:** `supabase/setup.sql` (pode rodar de novo). Tabelas: `perfis` (email, nome, admin, trocar_senha, ativo), `matriculas` (aluno_id, trilha_id), `estado` (usuario_id, chave, valor jsonb). RLS: cada pessoa só lê/grava o que é dela; o admin lê tudo; perfis e matrículas só mudam por funções.
-- **Funções (RPC):** `admin_criar_usuario(p_email, p_nome, p_trilhas)` → senha temporária; `admin_definir_matriculas(p_usuario, p_trilhas)`; `admin_redefinir_senha(p_usuario)` → senha temporária; `admin_atualizar_usuario(p_usuario, p_nome, p_ativo)` (desativar = bloqueio no Auth); `senha_trocada()`. Internas, sem acesso pelo app: `diver_criar_conta(...)` (cria login + perfil; usada para o primeiro admin no SQL Editor) e `diver_senha_temporaria()`.
+- **Liga/desliga:** `js/config.js` (carregado antes de tudo, sem `defer`). Com URL e chave preenchidas, o `<html>` ganha a classe `exige-login` e **a primeira tela é o login**: nada do app aparece até o `conta.js` colocar a classe `logado`. Vazio, roda no modo local. Passo a passo para criar o projeto: `docs/SUPABASE.md`.
+- **Banco:** `supabase/setup.sql` (pode rodar de novo). Tabelas: `perfis` (email, nome, **papel** `aluno`/`professor`/`admin`, admin (= papel admin, compatibilidade), trocar_senha, ativo), `matriculas` (aluno_id, trilha_id), `estado` (usuario_id, chave, valor jsonb). RLS: cada pessoa só lê/grava o que é dela; o admin lê tudo; o professor lê o perfil e as matrículas dos alunos que estão nos cursos dele e, do `estado`, só as chaves `diver:v1:trilha:<curso>` desses cursos (nada de tarefas ou agenda); perfis e matrículas só mudam por funções. Funções de apoio: `eh_admin()`, `eh_professor()`, `professor_do_curso(trilha)`, `aluno_do_professor(pessoa)`.
+- **Funções (RPC):** `admin_criar_usuario(p_email, p_nome, p_trilhas, p_papel)` → senha temporária; `admin_definir_papel(p_usuario, p_papel)` (ninguém tira o próprio acesso de admin); `admin_definir_matriculas(p_usuario, p_trilhas)`; `admin_redefinir_senha(p_usuario)` → senha temporária; `admin_atualizar_usuario(p_usuario, p_nome, p_ativo)` (desativar = bloqueio no Auth); `senha_trocada()`. Internas, sem acesso pelo app: `diver_criar_conta(...)` (cria login + perfil; usada para o primeiro admin no SQL Editor) e `diver_senha_temporaria()`.
 - **Senha temporária:** toda conta nasce com `trocar_senha = true`; no primeiro login o app obriga a criar uma senha própria (mín. 8, letras e números).
-- **Quem vê o quê:** o aluno só vê as trilhas das suas matrículas; o admin vê todas. Importar/criar trilhas só aparece para o admin (ou no modo local).
+- **Quem vê o quê:** aluno e professor veem só as trilhas das suas matrículas; o admin vê todas. Importar/criar trilhas só aparece para o admin (ou no modo local). Admin e professor podem abrir a prova final sem completar as fases (para conferir).
 - **Sincronia:** a cada 4 s e ao sair da página, o que mudou em `diver:v1:*` sobe para `estado`; no login, tudo desce e substitui o local. Sair limpa os dados do navegador. PDFs (IndexedDB) não sincronizam. A sessão fica em `diver:sessao` (fora do backup e da sincronia).
 - **Segurança:** nenhuma chave secreta no repositório; o app se recusa a usar uma chave `service_role`/`secret`. Dados de pessoas (e o e-mail do admin) nunca vão para o repositório.
 
@@ -128,7 +128,7 @@ O progresso da trilha também guarda `provas` (prova final: data, total, acertos
 **IndexedDB** `diver` → store `pdfs`: `{ id, nome, tamanho, trilhaId, criadoEm, arquivo (Blob), notas }`. PDFs não entram no backup do Perfil.
 
 ## Regras de jogo implementadas
-- **Prova final** (`modo: 'prova'` no `quiz.js`): sorteio simples da trilha, sem feedback no meio, cronômetro, em branco = erro, aprovação pela % mínima; liberada ao completar todas as fases (o admin pode fazer antes, para testar). Conquista "Aprovado!".
+- **Prova final** (`modo: 'prova'` no `quiz.js`): sorteio simples da trilha, sem feedback no meio, cronômetro, em branco = erro, aprovação pela % mínima; liberada ao completar todas as fases (admin e professor podem fazer antes, para conferir). Conquista "Aprovado!".
 - **Mergulho/Simulado/Revisão**: como na Fase 0 (ver `docs/JOGOS.md`). Continuam dando XP pelo `quiz.js`; a migração para o contrato/economia é a tarefa D7/D8.
 - **Níveis:** `NIVEIS` em `js/progresso.js` (10 níveis, Mestre Diver = 2.100 XP). O Perfil soma o XP de todas as trilhas no "nível geral".
 - **Tarefas:** concluir (bolinha ou Alt+Enter) dá +10 XP e +1 pérola uma única vez por tarefa (no curso escolhido no cartão ou no atual). Reabrir e concluir de novo não dá XP outra vez; subtarefas não dão XP.
