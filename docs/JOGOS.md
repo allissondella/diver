@@ -15,6 +15,7 @@ _A base de perguntas e respostas: testada e aprovada. Não refazer._
 | **Mergulho** (`mergulho`) | Quiz por fases com oxigênio. Cada fase é uma profundidade; errou, perde oxigênio; mostra na hora se acertou e a explicação. | Múltipla escolha | Fases = profundidades do mar | Pronto |
 | **Simulado** (`simulado`) | Sem oxigênio e com cronômetro (1 minuto por questão). 5, 10 ou 20 questões da trilha (ou todas), correção só no final, nota de 0 a 10 e histórico de notas. | Múltipla escolha | A prova do mergulho | Pronto |
 | **Revisão** (`revisao`) | Só as questões que o aluno errou ou marcou com "Marcar para revisar". Acertou na revisão, a questão sai da lista. | Questões erradas ou marcadas | Resgate do que ficou no fundo | Pronto |
+| **Prova final** (`prova`) | Cronometrada, sem feedback no meio, questões sorteadas da trilha inteira e nota mínima para aprovação (bloco opcional `prova` na trilha). Liberada ao completar todas as fases. | Múltipla escolha | O último mergulho | Pronto |
 
 ### Jogos rápidos (2 a 5 minutos)
 _Partidas curtas para revisar um pouquinho a cada dia._

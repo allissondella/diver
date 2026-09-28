@@ -216,15 +216,15 @@
 ## Semana 14 · Fase 6: Biblioteca, conta e IA — Conta e sincronização
 **Objetivo:** Login e progresso que acompanham o aluno em qualquer aparelho.
 
-- [ ] **D66 · Seg** — Criar o projeto no Supabase, configurar o cliente e as chaves públicas (nada secreto no repositório).
+- [ ] **D66 · Seg** — Criar o projeto no Supabase, configurar o cliente e as chaves públicas (nada secreto no repositório). _(parcial: supabase/setup.sql e o cliente js/nuvem.js prontos e testados num Postgres local; falta criar o projeto no Supabase (docs/SUPABASE.md).)_
   - _Pronto quando:_ Uma página de teste lê um dado do banco.
-- [ ] **D67 · Ter** — Login (link mágico por e-mail e Google) e rotas privadas.
+- [ ] **D67 · Ter** — Login (link mágico por e-mail e Google) e rotas privadas. _(parcial: login por e-mail e senha, com senha temporária e troca obrigatória; link mágico e Google ficam para depois.)_
   - _Pronto quando:_ Entrar e sair funcionam.
-- [ ] **D68 · Qua** — Tabelas profiles, trilhas, cartas e partidas com RLS ativada desde a primeira migração.
+- [ ] **D68 · Qua** — Tabelas profiles, trilhas, cartas e partidas com RLS ativada desde a primeira migração. _(parcial: tabelas perfis, matriculas e estado com RLS desde a primeira versão; tabelas trilhas/cartas/partidas ficam para depois.)_
   - _Pronto quando:_ Cada usuário só enxerga o que é dele.
-- [ ] **D69 · Qui** — Sincronizar progresso e trilhas: levar o que está no navegador para a conta, sem perder nada.
+- [ ] **D69 · Qui** — Sincronizar progresso e trilhas: levar o que está no navegador para a conta, sem perder nada. _(parcial: sincronia de progresso, tarefas e eventos pronta e testada; falta ligar o projeto de verdade.)_
   - _Pronto quando:_ Trocar de aparelho mantém XP, streak e conquistas.
-- [ ] **D70 · Sex** — Modo sem conta continua funcionando (visitante/offline). Retro.
+- [ ] **D70 · Sex** — Modo sem conta continua funcionando (visitante/offline). Retro. _(parcial: sem js/config.js preenchido o app roda sem conta; com o Supabase ligado, o login passa a ser obrigatório.)_
   - _Pronto quando:_ Sem login, tudo funciona como hoje.
 
 ## Semana 15 · Fase 6: Biblioteca, conta e IA — Traga sua IA

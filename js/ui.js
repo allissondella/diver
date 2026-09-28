@@ -202,7 +202,7 @@ const Dados = (() => {
   /** Todas as chaves do Diver (para backup). */
   function chavesDiver() {
     try {
-      return Object.keys(localStorage).filter((k) => k.startsWith('diver:'));
+      return Object.keys(localStorage).filter((k) => k.startsWith('diver:') && k !== 'diver:sessao'); // a sessão de login nunca vai para o backup
     } catch (e) {
       return [];
     }

@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="css/areas.css">
   <link rel="stylesheet" href="css/jogos.css">
+  <!-- Configuração do Supabase (login). Vazio = modo local, sem login -->
+  <script src="js/config.js" defer></script>
   <!-- Regras e dados -->
   <script src="js/trilhas.js" defer></script>
   <script src="js/progresso.js" defer></script>
@@ -21,6 +23,9 @@
   <script src="js/quiz.js" defer></script>
   <!-- Interface comum e cartas -->
   <script src="js/ui.js" defer></script>
+  <!-- Login, sincronização e admin -->
+  <script src="js/nuvem.js" defer></script>
+  <script src="js/conta.js" defer></script>
   <script src="js/cartas.js" defer></script>
   <!-- Sala de Jogos: registro + um arquivo por jogo -->
   <script src="js/jogos/registro.js" defer></script>
@@ -38,6 +43,7 @@
   <script src="js/organizar.js" defer></script>
   <script src="js/biblioteca.js" defer></script>
   <script src="js/perfil.js" defer></script>
+  <script src="js/admin.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
 <body>
@@ -118,6 +124,9 @@
         </button>
       </div>
 
+      <!-- Pessoa logada (só aparece com login) -->
+      <div class="lateral__conta" id="lateral-conta" hidden></div>
+
       <label class="lateral__trilha">
         <span class="rotulo">Trilha atual</span>
         <select id="select-trilha-lateral" aria-label="Trilha atual"></select>
@@ -128,6 +137,7 @@
         <a href="#inicio" data-secao="inicio"><svg class="icone" aria-hidden="true"><use href="#i-casa"/></svg>Início</a>
         <a href="#mergulho" data-secao="mergulho"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Mergulho</a>
         <a href="#simulado" data-secao="simulado"><svg class="icone" aria-hidden="true"><use href="#i-relogio"/></svg>Simulado</a>
+        <a href="#prova" data-secao="prova"><svg class="icone" aria-hidden="true"><use href="#i-trofeu"/></svg>Prova final</a>
         <a href="#revisao" data-secao="revisao"><svg class="icone" aria-hidden="true"><use href="#i-revisao"/></svg>Revisão<span class="lateral__badge" id="badge-revisao" hidden></span></a>
         <a href="#jogos" data-secao="jogos"><svg class="icone" aria-hidden="true"><use href="#i-controle"/></svg>Sala de Jogos</a>
 
@@ -142,6 +152,9 @@
 
         <p class="lateral__grupo">Você</p>
         <a href="#perfil" data-secao="perfil"><svg class="icone" aria-hidden="true"><use href="#i-usuario"/></svg>Perfil</a>
+
+        <p class="lateral__grupo" data-so-admin hidden>Admin</p>
+        <a href="#admin" data-secao="admin" data-so-admin hidden><svg class="icone" aria-hidden="true"><use href="#i-colunas"/></svg>Alunos e cursos</a>
       </nav>
 
       <div class="lateral__rodape" id="lateral-status"></div>
@@ -171,7 +184,7 @@
             Bora mergulhar!
             <svg class="icone" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
           </button>
-          <label class="botao botao--fantasma botao--pequeno">
+          <label class="botao botao--fantasma botao--pequeno" data-so-gestao>
             <svg class="icone" aria-hidden="true"><use href="#i-upload"/></svg>
             Carregar trilha (.json)
             <input id="input-importar" type="file" accept=".json,application/json" multiple class="visualmente-oculto">
@@ -231,6 +244,7 @@
         <h2 class="secao-titulo">Outros jeitos de mergulhar</h2>
         <div class="atalhos">
           <a class="atalho" href="#simulado"><svg class="icone" aria-hidden="true"><use href="#i-relogio"/></svg><span><strong>Simulado</strong><span>Prova com nota</span></span></a>
+          <a class="atalho" href="#prova"><svg class="icone" aria-hidden="true"><use href="#i-trofeu"/></svg><span><strong>Prova final</strong><span>O último mergulho</span></span></a>
           <a class="atalho" href="#revisao"><svg class="icone" aria-hidden="true"><use href="#i-revisao"/></svg><span><strong>Revisão</strong><span id="atalho-revisao">O que ficou pra trás</span></span></a>
           <a class="atalho" href="#jogos"><svg class="icone" aria-hidden="true"><use href="#i-controle"/></svg><span><strong>Sala de Jogos</strong><span>Mesmo conteúdo, outros jogos</span></span></a>
         </div>
@@ -397,6 +411,14 @@
           <button id="btn-resumo-mapa" class="botao botao--fantasma botao--largo" type="button">Voltar ao mapa</button>
         </div>
       </section>
+
+      <!-- ============ LOGIN E PRIMEIRO ACESSO (conta.js) ============ -->
+      <section id="tela-login" class="tela tela--conta" hidden aria-label="Entrar no Diver"></section>
+      <section id="tela-senha" class="tela tela--conta" hidden aria-label="Criar sua senha"></section>
+
+      <!-- ============ PROVA FINAL (app.js) E ADMIN (admin.js) ============ -->
+      <section id="tela-prova" class="tela" hidden aria-label="Prova final"></section>
+      <section id="tela-admin" class="tela tela--larga" hidden aria-label="Admin: alunos e cursos"></section>
 
       <!-- ============ ÁREAS (montadas pelos módulos organizar.js, biblioteca.js e perfil.js) ============ -->
       <section id="tela-tarefas" class="tela tela--larga" hidden aria-label="Tarefas"></section>

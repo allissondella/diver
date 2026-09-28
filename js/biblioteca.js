@@ -23,18 +23,18 @@ const Biblioteca = (() => {
       renderCursos(secao);
     } });
 
-    secao.append(
+    secao.append(...[
       UI.cabecalho('Biblioteca', 'Cursos e trilhas', 'Todo o seu conteúdo de estudo. Cada trilha vira jogo na Sala de Jogos.'),
-      h('div', { class: 'acoes-linha' },
+      App.podeGerenciar() ? h('div', { class: 'acoes-linha' },
         h('label', { class: 'botao botao--secundario' }, icone('i-upload'), 'Importar trilha (.json)', inputImportar),
         h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => {
           const painel = document.getElementById('criar-trilha');
           painel.open = true;
           painel.scrollIntoView({ block: 'start', behavior: UI.movimentoReduzido ? 'auto' : 'smooth' });
           painel.querySelector('input').focus({ preventScroll: true });
-        } }, icone('i-mais'), 'Criar trilha colando texto')),
+        } }, icone('i-mais'), 'Criar trilha colando texto')) : null,
       lista,
-      formCriar(secao));
+      App.podeGerenciar() ? formCriar(secao) : null].filter(Boolean));
 
     App.trilhas().forEach((t) => {
       const prog = Progresso.carregar(t.id);

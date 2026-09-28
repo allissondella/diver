@@ -58,6 +58,9 @@ const Quiz = (() => {
       fila = selecionar(trilha.questoes, prog, n);
     } else if (modo === 'revisao') {
       fila = selecionar(Progresso.paraRevisar(prog, trilha), prog, TAMANHO_RODADA.revisao);
+    } else if (modo === 'prova') {
+      // Prova final: sorteio simples da trilha toda (sem priorizar os erros, como numa prova de verdade)
+      fila = embaralhar(trilha.questoes).slice(0, Math.min(opcoes.quantidade, trilha.questoes.length));
     }
 
     return {
@@ -75,7 +78,8 @@ const Quiz = (() => {
       xp: 0,
       perolas: 0,
       inicio: Date.now(),
-      limiteSeg: modo === 'simulado' ? fila.length * SEGUNDOS_POR_QUESTAO_SIMULADO : null,
+      limiteSeg: modo === 'simulado' ? fila.length * SEGUNDOS_POR_QUESTAO_SIMULADO : modo === 'prova' ? opcoes.minutos * 60 : null,
+      aprovacao: modo === 'prova' ? opcoes.aprovacao : null, // % mínima para passar na prova final
       encerrada: false,
     };
   }
@@ -149,10 +153,10 @@ const Quiz = (() => {
     s.encerrada = true;
     const tempoSeg = Math.round((Date.now() - s.inicio) / 1000);
 
-    // No Simulado, o que não foi respondido conta como em branco (errado).
+    // No Simulado e na Prova final, o que não foi respondido conta como em branco (errado).
     // Se o Diver saiu no meio, vale só o que foi respondido.
     const emBranco = [];
-    if (s.modo === 'simulado' && motivo !== 'saiu') {
+    if ((s.modo === 'simulado' || s.modo === 'prova') && motivo !== 'saiu') {
       s.fila.slice(s.respostas.length).forEach((q) => {
         emBranco.push(q);
         s.respostas.push({ questao: q, escolhida: null, acertou: false });
@@ -212,6 +216,15 @@ const Quiz = (() => {
       resumo.nota = total ? Math.round((acertos / total) * 100) / 10 : 0;
       prog.simulados.unshift({ data: Date.now(), total, acertos, nota: resumo.nota, tempoSeg });
       prog.simulados = prog.simulados.slice(0, 20);
+    }
+
+    if (s.modo === 'prova' && motivo !== 'saiu') {
+      resumo.nota = total ? Math.round((acertos / total) * 100) / 10 : 0;
+      resumo.aprovacao = s.aprovacao;
+      resumo.aprovado = resumo.pct >= s.aprovacao;
+      prog.provas = prog.provas || [];
+      prog.provas.unshift({ data: Date.now(), total, acertos, nota: resumo.nota, pct: resumo.pct, aprovado: resumo.aprovado, tempoSeg });
+      prog.provas = prog.provas.slice(0, 20);
     }
 
     prog.stats.sessoes++;

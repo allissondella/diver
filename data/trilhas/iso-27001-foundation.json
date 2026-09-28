@@ -1,0 +1,550 @@
+{
+  "id": "iso-27001-foundation",
+  "nome": "ISO/IEC 27001:2022 Foundation",
+  "descricao": "Fundamentos do sistema de gestão da segurança da informação (SGSI): requisitos das cláusulas 4 a 10, gestão de riscos, controles do Anexo A, auditorias e certificação.",
+  "categoria": "Certificação",
+  "prova": { "questoes": 40, "minutos": 60, "aprovacao": 65 },
+  "fases": [
+    { "id": "raso", "nome": "Raso", "profundidade": "0–10 m", "descricao": "Fundamentos: CID, família ISO 27000, SGSI e PDCA." },
+    { "id": "recife", "nome": "Recife", "profundidade": "10–40 m", "descricao": "Contexto da organização e liderança (cláusulas 4 e 5)." },
+    { "id": "naufragio", "nome": "Naufrágio", "profundidade": "40–100 m", "descricao": "Riscos, tratamento, Declaração de Aplicabilidade e objetivos (cláusula 6)." },
+    { "id": "caverna", "nome": "Caverna", "profundidade": "100–200 m", "descricao": "Apoio e operação: competência, comunicação, documentos (cláusulas 7 e 8)." },
+    { "id": "abismo", "nome": "Abismo", "profundidade": "200–1000 m", "descricao": "Avaliação de desempenho, auditorias e melhoria (cláusulas 9 e 10)." },
+    { "id": "fossa", "nome": "Fossa", "profundidade": "1000 m+", "descricao": "Controles do Anexo A e o caminho da certificação." }
+  ],
+  "questoes": [
+    {
+      "id": "iso-raso-01", "tema": "Fundamentos", "dificuldade": "facil", "fase": "raso",
+      "enunciado": "Quais são as três propriedades básicas que a segurança da informação busca preservar?",
+      "alternativas": ["Confidencialidade, integridade e disponibilidade", "Autenticação, autorização e auditoria", "Inventário, classificação e descarte", "Privacidade, legalidade e rastreabilidade"],
+      "correta": 0,
+      "explicacao": "É a tríade CID: confidencialidade (só quem pode vê), integridade (a informação é exata e completa) e disponibilidade (está acessível quando precisa). As outras listas trazem conceitos úteis, mas não são as três propriedades centrais."
+    },
+    {
+      "id": "iso-raso-02", "tema": "Fundamentos", "dificuldade": "facil", "fase": "raso",
+      "enunciado": "Uma planilha com os salários de todos os funcionários foi enviada por engano para a empresa inteira. Qual propriedade da informação foi comprometida?",
+      "alternativas": ["Disponibilidade", "Integridade", "Confidencialidade", "Autenticidade"],
+      "correta": 2,
+      "explicacao": "Confidencialidade é a propriedade de a informação não ser disponibilizada nem divulgada a pessoas, entidades ou processos não autorizados. Os dados continuam corretos e acessíveis; o problema é quem passou a vê-los."
+    },
+    {
+      "id": "iso-raso-03", "tema": "Fundamentos", "dificuldade": "facil", "fase": "raso",
+      "enunciado": "Um invasor alterou os valores de boletos antes de eles serem enviados aos clientes. Qual propriedade foi afetada principalmente?",
+      "alternativas": ["Integridade", "Confidencialidade", "Disponibilidade", "Irretratabilidade"],
+      "correta": 0,
+      "explicacao": "Integridade é a exatidão e a completude da informação. Quando dados são modificados sem autorização, a integridade foi comprometida, mesmo que ninguém de fora tenha lido nada."
+    },
+    {
+      "id": "iso-raso-04", "tema": "Fundamentos", "dificuldade": "facil", "fase": "raso",
+      "enunciado": "O sistema de vendas on-line ficou seis horas fora do ar por causa de um ataque de negação de serviço. Qual propriedade foi comprometida?",
+      "alternativas": ["Confidencialidade", "Disponibilidade", "Integridade", "Conformidade"],
+      "correta": 1,
+      "explicacao": "Disponibilidade é a informação (ou o sistema) estar acessível e utilizável quando uma pessoa autorizada precisa. Um ataque de negação de serviço mira exatamente essa propriedade."
+    },
+    {
+      "id": "iso-raso-05", "tema": "SGSI", "dificuldade": "facil", "fase": "raso",
+      "enunciado": "O que é um SGSI (sistema de gestão da segurança da informação)?",
+      "alternativas": ["Um software antivírus corporativo", "O departamento de TI da empresa", "Um certificado emitido pelo governo para empresas seguras", "Parte do sistema de gestão da organização que estabelece, implementa, mantém e melhora a segurança da informação com base em riscos"],
+      "correta": 3,
+      "explicacao": "O SGSI é um conjunto de políticas, processos, papéis e controles, parte da gestão da organização, que trata a segurança da informação de forma sistemática e baseada em riscos. Não é um produto nem um setor específico."
+    },
+    {
+      "id": "iso-raso-06", "tema": "Família ISO 27000", "dificuldade": "medio", "fase": "raso",
+      "enunciado": "Qual é a principal diferença entre a ISO/IEC 27001 e a ISO/IEC 27002?",
+      "alternativas": ["A 27001 é para empresas grandes e a 27002 para empresas pequenas", "A 27001 traz os requisitos do SGSI, que podem ser certificados; a 27002 é um guia de orientação sobre os controles", "A 27002 substituiu a 27001 na versão 2022", "A 27001 trata só de tecnologia e a 27002 só de pessoas"],
+      "correta": 1,
+      "explicacao": "A ISO/IEC 27001 define requisitos (o que a organização deve cumprir) e é a norma usada na certificação. A ISO/IEC 27002 orienta como implementar os controles, com mais detalhes e boas práticas, mas não é certificável."
+    },
+    {
+      "id": "iso-raso-07", "tema": "Família ISO 27000", "dificuldade": "medio", "fase": "raso",
+      "enunciado": "Qual norma da família apresenta a visão geral do SGSI e o vocabulário (termos e definições) usado nas demais?",
+      "alternativas": ["ISO/IEC 27005", "ISO 19011", "ISO/IEC 27000", "ISO/IEC 27701"],
+      "correta": 2,
+      "explicacao": "A ISO/IEC 27000 traz a visão geral e o vocabulário da família. A 27005 orienta a gestão de riscos de segurança da informação, a 27701 trata de privacidade e a ISO 19011 dá diretrizes para auditorias de sistemas de gestão."
+    },
+    {
+      "id": "iso-raso-08", "tema": "SGSI", "dificuldade": "facil", "fase": "raso",
+      "enunciado": "O ciclo PDCA, muito usado para explicar a melhoria contínua de um sistema de gestão, significa:",
+      "alternativas": ["Planejar, Fazer, Checar e Agir", "Prevenir, Detectar, Corrigir e Auditar", "Política, Documento, Controle e Auditoria", "Proteger, Defender, Conter e Analisar"],
+      "correta": 0,
+      "explicacao": "Plan, Do, Check, Act: planejar o que fazer, fazer, verificar se deu certo e agir para melhorar. O ciclo recomeça sempre, o que traduz a ideia de melhoria contínua do SGSI."
+    },
+    {
+      "id": "iso-raso-09", "tema": "SGSI", "dificuldade": "medio", "fase": "raso",
+      "enunciado": "Por que se diz que a ISO/IEC 27001 tem uma abordagem baseada em riscos?",
+      "alternativas": ["Porque obriga a implementar todos os controles do Anexo A", "Porque garante que a organização nunca terá incidentes", "Porque os controles são escolhidos a partir da avaliação e do tratamento dos riscos da própria organização", "Porque o auditor define quais riscos a empresa deve tratar"],
+      "correta": 2,
+      "explicacao": "Cada organização avalia os seus riscos e decide como tratá-los. Os controles vêm dessa decisão, e não de uma lista fixa. Risco zero não existe: o objetivo é gerenciar os riscos a um nível aceitável."
+    },
+    {
+      "id": "iso-raso-10", "tema": "Certificação", "dificuldade": "medio", "fase": "raso",
+      "enunciado": "Sobre a certificação ISO/IEC 27001, é correto afirmar que ela é:",
+      "alternativas": ["Obrigatória por lei para todas as empresas brasileiras", "Voluntária e concedida por um organismo de certificação independente, depois de uma auditoria externa", "Emitida diretamente pela ISO, em Genebra", "Autodeclarada: basta a empresa publicar que segue a norma"],
+      "correta": 1,
+      "explicacao": "A certificação é voluntária (embora muitas vezes exigida por clientes). Quem certifica é um organismo de certificação independente, normalmente acreditado. A ISO escreve as normas, mas não emite certificados."
+    },
+
+    {
+      "id": "iso-recife-01", "tema": "Estrutura da norma", "dificuldade": "medio", "fase": "recife",
+      "enunciado": "A ISO/IEC 27001:2022 segue a estrutura harmonizada dos sistemas de gestão ISO. Em quais cláusulas ficam os requisitos que a organização precisa cumprir?",
+      "alternativas": ["Nas cláusulas 0 a 3", "Nas cláusulas 4 a 10", "Somente no Anexo A", "Nas cláusulas 1 a 5"],
+      "correta": 1,
+      "explicacao": "As cláusulas 0 a 3 são introdução, escopo da norma, referências e termos. Os requisitos estão nas cláusulas 4 (contexto) a 10 (melhoria). O Anexo A traz a lista de controles de referência, usada junto com a cláusula 6."
+    },
+    {
+      "id": "iso-recife-02", "tema": "Contexto (4)", "dificuldade": "medio", "fase": "recife",
+      "enunciado": "Pela cláusula 4.1, o que a organização deve determinar?",
+      "alternativas": ["As questões externas e internas relevantes para o seu propósito e que afetam a capacidade de alcançar os resultados pretendidos do SGSI", "A lista de fornecedores homologados de TI", "O orçamento anual de segurança", "Os controles tecnológicos que serão comprados"],
+      "correta": 0,
+      "explicacao": "Entender o contexto (cenário econômico, regulatório, tecnológico, cultura interna, estrutura) é o ponto de partida do SGSI: sem isso, não dá para definir escopo nem avaliar riscos de forma realista."
+    },
+    {
+      "id": "iso-recife-03", "tema": "Contexto (4)", "dificuldade": "medio", "fase": "recife",
+      "enunciado": "Sobre as partes interessadas (cláusula 4.2), o que a organização deve determinar?",
+      "alternativas": ["Apenas os requisitos dos acionistas", "O nome e o contato de todos os clientes", "Quais partes interessadas são relevantes, os requisitos relevantes delas e quais desses requisitos serão tratados pelo SGSI", "Nada: essa etapa é opcional"],
+      "correta": 2,
+      "explicacao": "A cláusula 4.2 pede três coisas: quem são as partes interessadas relevantes, quais requisitos delas importam para a segurança da informação e, desde a versão 2022, quais desses requisitos serão atendidos por meio do SGSI."
+    },
+    {
+      "id": "iso-recife-04", "tema": "Contexto (4)", "dificuldade": "facil", "fase": "recife",
+      "enunciado": "Segundo o vocabulário da ISO/IEC 27000, parte interessada é:",
+      "alternativas": ["Somente quem é cliente da organização", "Pessoa ou organização que pode afetar, ser afetada ou se perceber afetada por uma decisão ou atividade", "Qualquer pessoa que tenha ações da empresa", "O auditor do organismo de certificação"],
+      "correta": 1,
+      "explicacao": "O conceito é amplo: clientes, colaboradores, fornecedores, reguladores, acionistas e até a comunidade podem ser partes interessadas, desde que possam afetar ou ser afetados pelas decisões da organização."
+    },
+    {
+      "id": "iso-recife-05", "tema": "Contexto (4)", "dificuldade": "medio", "fase": "recife",
+      "enunciado": "Ao definir o escopo do SGSI (cláusula 4.3), a organização deve considerar:",
+      "alternativas": ["Somente os sistemas de TI críticos", "Apenas o que o auditor recomendar", "O organograma completo da empresa", "As questões da 4.1, os requisitos da 4.2 e as interfaces e dependências com atividades feitas por outras organizações"],
+      "correta": 3,
+      "explicacao": "O escopo define limites e aplicabilidade do SGSI. Ele considera o contexto, as partes interessadas e as dependências externas (um provedor de nuvem, por exemplo) e precisa estar disponível como informação documentada."
+    },
+    {
+      "id": "iso-recife-06", "tema": "Liderança (5)", "dificuldade": "facil", "fase": "recife",
+      "enunciado": "Qual destas é uma responsabilidade da alta direção, segundo a cláusula 5.1?",
+      "alternativas": ["Garantir que os recursos necessários para o SGSI estejam disponíveis", "Fazer pessoalmente todas as auditorias internas", "Configurar os firewalls da empresa", "Aprovar a senha de cada colaborador"],
+      "correta": 0,
+      "explicacao": "A liderança demonstra comprometimento garantindo recursos, estabelecendo política e objetivos compatíveis com a estratégia, comunicando a importância do SGSI, apoiando as pessoas e promovendo a melhoria contínua. Tarefas operacionais podem ser delegadas."
+    },
+    {
+      "id": "iso-recife-07", "tema": "Liderança (5)", "dificuldade": "medio", "fase": "recife",
+      "enunciado": "O que a política de segurança da informação deve incluir, segundo a cláusula 5.2?",
+      "alternativas": ["A lista de senhas administrativas", "Os procedimentos técnicos de backup", "O compromisso de satisfazer os requisitos aplicáveis e o compromisso com a melhoria contínua do SGSI", "O nome dos fornecedores de tecnologia"],
+      "correta": 2,
+      "explicacao": "A política deve ser adequada ao propósito da organização, incluir objetivos de segurança (ou uma estrutura para defini-los) e trazer dois compromissos: atender aos requisitos aplicáveis e melhorar continuamente o SGSI. Detalhes técnicos ficam em procedimentos."
+    },
+    {
+      "id": "iso-recife-08", "tema": "Liderança (5)", "dificuldade": "medio", "fase": "recife",
+      "enunciado": "Segundo a cláusula 5.2, a política de segurança da informação deve:",
+      "alternativas": ["Ficar restrita à diretoria, por ser confidencial", "Estar disponível como informação documentada, ser comunicada dentro da organização e estar disponível às partes interessadas, conforme apropriado", "Ser mostrada apenas ao auditor externo", "Ficar só na intranet da equipe de TI"],
+      "correta": 1,
+      "explicacao": "Uma política que ninguém conhece não protege nada. Ela precisa ser documentada, comunicada internamente e disponibilizada às partes interessadas quando fizer sentido (clientes ou fornecedores, por exemplo)."
+    },
+    {
+      "id": "iso-recife-09", "tema": "Liderança (5)", "dificuldade": "medio", "fase": "recife",
+      "enunciado": "Pela cláusula 5.3, quem deve atribuir responsabilidades e autoridades pelos papéis relevantes do SGSI, inclusive a de relatar o desempenho do sistema?",
+      "alternativas": ["O auditor externo", "O organismo de certificação", "Cada colaborador, escolhendo o próprio papel", "A alta direção"],
+      "correta": 3,
+      "explicacao": "A alta direção garante que papéis, responsabilidades e autoridades sejam atribuídos e comunicados, incluindo quem assegura a conformidade do SGSI com a norma e quem relata o desempenho à própria direção."
+    },
+    {
+      "id": "iso-recife-10", "tema": "Liderança (5)", "dificuldade": "medio", "fase": "recife",
+      "enunciado": "Um dos compromissos da alta direção é assegurar a integração dos requisitos do SGSI aos processos da organização. O que isso significa na prática?",
+      "alternativas": ["Que a segurança da informação faz parte da rotina dos processos de negócio (compras, RH, projetos), e não é um projeto isolado do TI", "Que o SGSI deve ser comprado como um sistema integrado", "Que todos os processos devem ser terceirizados", "Que a segurança só é tratada uma vez por ano, na auditoria"],
+      "correta": 0,
+      "explicacao": "Integração significa que contratar, comprar, desenvolver ou encerrar um projeto já inclui os cuidados de segurança. É assim que o SGSI deixa de ser papel e vira prática."
+    },
+
+    {
+      "id": "iso-nauf-01", "tema": "Riscos (6)", "dificuldade": "medio", "fase": "naufragio",
+      "enunciado": "Segundo o vocabulário da ISO/IEC 27000, risco é:",
+      "alternativas": ["A probabilidade de um ataque hacker", "Efeito da incerteza sobre os objetivos", "Uma vulnerabilidade técnica sem correção", "O custo de um incidente"],
+      "correta": 1,
+      "explicacao": "A definição é ampla: risco é o efeito da incerteza sobre os objetivos. Na prática da segurança, costuma ser expresso pela combinação das consequências de um evento e da probabilidade de ele acontecer."
+    },
+    {
+      "id": "iso-nauf-02", "tema": "Riscos (6)", "dificuldade": "facil", "fase": "naufragio",
+      "enunciado": "Um servidor está há dois anos sem receber atualizações de segurança. Isso é um exemplo de:",
+      "alternativas": ["Ameaça", "Incidente", "Vulnerabilidade", "Controle"],
+      "correta": 2,
+      "explicacao": "Vulnerabilidade é uma fraqueza de um ativo ou de um controle que pode ser explorada por uma ou mais ameaças. O servidor desatualizado é a fraqueza; o atacante que a explora seria a ameaça."
+    },
+    {
+      "id": "iso-nauf-03", "tema": "Riscos (6)", "dificuldade": "facil", "fase": "naufragio",
+      "enunciado": "Um grupo criminoso que envia e-mails de phishing para os colaboradores da empresa representa:",
+      "alternativas": ["Uma ameaça", "Uma vulnerabilidade", "Um risco residual", "Um controle compensatório"],
+      "correta": 0,
+      "explicacao": "Ameaça é a causa potencial de um incidente indesejado, que pode resultar em dano. A falta de treinamento das pessoas seria a vulnerabilidade que a ameaça tenta explorar."
+    },
+    {
+      "id": "iso-nauf-04", "tema": "Riscos (6)", "dificuldade": "medio", "fase": "naufragio",
+      "enunciado": "Na ISO/IEC 27001, o processo de avaliação de riscos (risk assessment) é formado por quais etapas?",
+      "alternativas": ["Identificação, tratamento e aceitação", "Análise, auditoria e certificação", "Inventário, classificação e descarte", "Identificação, análise e avaliação dos riscos"],
+      "correta": 3,
+      "explicacao": "Avaliar riscos é identificar (quais riscos e quem são os proprietários), analisar (consequências, probabilidade e nível) e avaliar (comparar com os critérios e priorizar). Tratamento é a etapa seguinte, na 6.1.3."
+    },
+    {
+      "id": "iso-nauf-05", "tema": "Riscos (6)", "dificuldade": "dificil", "fase": "naufragio",
+      "enunciado": "Ao definir o processo de avaliação de riscos (6.1.2), o que a organização deve estabelecer e manter?",
+      "alternativas": ["Critérios de risco, incluindo os critérios de aceitação de riscos e os critérios para realizar as avaliações", "A lista de softwares instalados em cada computador", "Os nomes de quem vai fazer a auditoria externa", "Uma política de mesa limpa e tela limpa"],
+      "correta": 0,
+      "explicacao": "Sem critérios definidos (o que é risco aceitável e como medir), cada avaliação daria um resultado diferente. Os critérios de aceitação e de avaliação são a régua do processo."
+    },
+    {
+      "id": "iso-nauf-06", "tema": "Riscos (6)", "dificuldade": "dificil", "fase": "naufragio",
+      "enunciado": "Por que a norma exige que avaliações de riscos repetidas produzam resultados consistentes, válidos e comparáveis?",
+      "alternativas": ["Para que o auditor possa copiar os resultados de outras empresas", "Porque os riscos nunca mudam", "Para que a organização compare riscos ao longo do tempo e tome decisões confiáveis, com um método repetível", "Para reduzir o número de avaliações a uma por década"],
+      "correta": 2,
+      "explicacao": "Se cada avaliação usasse um critério diferente, não daria para saber se o risco aumentou ou diminuiu. Um método repetível permite acompanhar a evolução e priorizar com justiça."
+    },
+    {
+      "id": "iso-nauf-07", "tema": "Riscos (6)", "dificuldade": "medio", "fase": "naufragio",
+      "enunciado": "Ao identificar os riscos de segurança da informação, além dos próprios riscos, o que a organização deve identificar?",
+      "alternativas": ["Os fornecedores de antivírus", "Os proprietários dos riscos", "Os clientes que podem ser afetados, com nome e contato", "O auditor que vai verificar cada risco"],
+      "correta": 1,
+      "explicacao": "Proprietário do risco é a pessoa ou entidade com responsabilidade e autoridade para gerenciar aquele risco. É ele quem aprova o tratamento e aceita o risco residual."
+    },
+    {
+      "id": "iso-nauf-08", "tema": "Tratamento de riscos", "dificuldade": "medio", "fase": "naufragio",
+      "enunciado": "Qual destas NÃO é uma opção adequada de tratamento de riscos?",
+      "alternativas": ["Modificar o risco com controles", "Evitar o risco, deixando de fazer a atividade que o gera", "Compartilhar o risco, por exemplo com um seguro", "Ignorar o risco sem nenhuma decisão registrada"],
+      "correta": 3,
+      "explicacao": "As opções usuais são modificar (mitigar), reter (aceitar conscientemente), evitar e compartilhar. Aceitar é uma decisão consciente e registrada; ignorar é simplesmente não gerenciar."
+    },
+    {
+      "id": "iso-nauf-09", "tema": "Declaração de Aplicabilidade", "dificuldade": "dificil", "fase": "naufragio",
+      "enunciado": "O que deve constar na Declaração de Aplicabilidade (DA, ou SoA em inglês)?",
+      "alternativas": ["O escopo e as fronteiras do SGSI", "Os controles necessários, a justificativa para incluí-los, se estão implementados ou não e a justificativa para excluir controles do Anexo A", "Os critérios de aceitação de riscos", "A metodologia completa de avaliação de riscos"],
+      "correta": 1,
+      "explicacao": "A DA é exigida pela 6.1.3 e liga o tratamento de riscos ao Anexo A: mostra quais controles valem, por quê, se já estão implementados e por que alguns foram excluídos. Escopo e critérios de risco ficam em outros documentos."
+    },
+    {
+      "id": "iso-nauf-10", "tema": "Tratamento de riscos", "dificuldade": "dificil", "fase": "naufragio",
+      "enunciado": "Quem deve aprovar o plano de tratamento de riscos e aceitar os riscos residuais?",
+      "alternativas": ["Os proprietários dos riscos", "O auditor do organismo de certificação", "A equipe de TI, sozinha", "O fornecedor da solução de segurança"],
+      "correta": 0,
+      "explicacao": "A cláusula 6.1.3 pede a aprovação do plano e a aceitação do risco residual pelos proprietários dos riscos, porque são eles que respondem pelas consequências."
+    },
+    {
+      "id": "iso-nauf-11", "tema": "Objetivos (6.2)", "dificuldade": "medio", "fase": "naufragio",
+      "enunciado": "Qual conjunto de características os objetivos de segurança da informação devem ter (cláusula 6.2)?",
+      "alternativas": ["Ser secretos e conhecidos apenas pela diretoria", "Ser iguais aos de outras empresas do mesmo setor", "Ser consistentes com a política, mensuráveis (se praticável), monitorados, comunicados e atualizados", "Ser definidos pelo auditor externo"],
+      "correta": 2,
+      "explicacao": "Os objetivos também levam em conta os requisitos aplicáveis e os resultados da avaliação de riscos, e ficam disponíveis como informação documentada. Para cada um se planeja o que será feito, com quais recursos, quem responde, o prazo e como os resultados serão avaliados."
+    },
+    {
+      "id": "iso-nauf-12", "tema": "Objetivos (6.2)", "dificuldade": "dificil", "fase": "naufragio",
+      "enunciado": "A cláusula 6.3, incluída na versão 2022, trata de qual assunto?",
+      "alternativas": ["Planejamento de mudanças: quando houver necessidade de mudar o SGSI, as mudanças devem ser feitas de forma planejada", "Criptografia obrigatória em todos os dados", "Contratação de seguros contra ataques", "Descarte de mídias de armazenamento"],
+      "correta": 0,
+      "explicacao": "A 6.3 pede que mudanças no próprio SGSI sejam planejadas, e não improvisadas. Ela complementa a 8.1, que trata do controle de mudanças nas operações."
+    },
+
+    {
+      "id": "iso-cav-01", "tema": "Apoio (7)", "dificuldade": "medio", "fase": "caverna",
+      "enunciado": "Sobre competência (cláusula 7.2), o que a organização deve fazer?",
+      "alternativas": ["Contratar apenas pessoas com certificação ISO", "Determinar a competência necessária, garantir que as pessoas sejam competentes, agir para suprir lacunas e reter evidências", "Terceirizar toda a segurança da informação", "Aplicar uma prova anual eliminatória"],
+      "correta": 1,
+      "explicacao": "Competência vem de educação, treinamento ou experiência. Quando falta, a organização age (treina, orienta, contrata) e avalia se funcionou, guardando evidências como informação documentada."
+    },
+    {
+      "id": "iso-cav-02", "tema": "Apoio (7)", "dificuldade": "medio", "fase": "caverna",
+      "enunciado": "Qual destes itens faz parte da conscientização exigida pela cláusula 7.3?",
+      "alternativas": ["Que todos saibam configurar o firewall", "Que todos decorem o texto da norma", "Que as pessoas conheçam a política, sua contribuição para a eficácia do SGSI e as implicações de não estar em conformidade", "Que as pessoas assinem um termo a cada login"],
+      "correta": 2,
+      "explicacao": "Conscientização não é só treinamento técnico: é cada pessoa entender a política, o próprio papel na segurança e o que acontece se não seguir as regras."
+    },
+    {
+      "id": "iso-cav-03", "tema": "Apoio (7)", "dificuldade": "facil", "fase": "caverna",
+      "enunciado": "Ao planejar a comunicação do SGSI (cláusula 7.4), a organização deve determinar:",
+      "alternativas": ["Apenas quem é o porta-voz da empresa na imprensa", "O que comunicar, quando, com quem e como", "Somente os canais de redes sociais", "Nada: a comunicação é livre"],
+      "correta": 1,
+      "explicacao": "A cláusula pede que a comunicação interna e externa relevante ao SGSI seja planejada: o conteúdo, o momento, o público e o meio."
+    },
+    {
+      "id": "iso-cav-04", "tema": "Informação documentada", "dificuldade": "medio", "fase": "caverna",
+      "enunciado": "Na ISO/IEC 27001, informação documentada é:",
+      "alternativas": ["Somente documentos impressos e assinados", "Apenas as políticas aprovadas pela diretoria", "Informação que precisa ser controlada e mantida pela organização, em qualquer formato e meio", "Qualquer e-mail enviado pelos colaboradores"],
+      "correta": 2,
+      "explicacao": "O termo cobre documentos (políticas, procedimentos) e registros (evidências), em papel ou digitais. Inclui o que a norma exige e o que a organização decide que é necessário para a eficácia do SGSI."
+    },
+    {
+      "id": "iso-cav-05", "tema": "Informação documentada", "dificuldade": "medio", "fase": "caverna",
+      "enunciado": "Qual destas ações faz parte do controle da informação documentada (7.5.3)?",
+      "alternativas": ["Controlar distribuição, acesso, armazenamento, alterações, retenção e descarte", "Imprimir todos os documentos em duas vias", "Guardar os documentos apenas no computador do gestor", "Publicar todos os documentos no site da empresa"],
+      "correta": 0,
+      "explicacao": "A informação documentada precisa estar disponível onde e quando necessária e protegida contra perda de confidencialidade, uso indevido ou perda de integridade, com controle de versão e de ciclo de vida."
+    },
+    {
+      "id": "iso-cav-06", "tema": "Informação documentada", "dificuldade": "dificil", "fase": "caverna",
+      "enunciado": "Um contrato com um cliente define requisitos de segurança para o serviço prestado. Como informação documentada de origem externa, o que a norma exige?",
+      "alternativas": ["Que seja descartado depois da assinatura", "Que seja reescrito como documento interno", "Que seja identificado, conforme apropriado, e controlado", "Nada: documentos externos não fazem parte do SGSI"],
+      "correta": 2,
+      "explicacao": "Documentos de origem externa necessários ao SGSI (contratos, leis, normas de clientes) devem ser identificados e controlados, assim como os internos."
+    },
+    {
+      "id": "iso-cav-07", "tema": "Operação (8)", "dificuldade": "dificil", "fase": "caverna",
+      "enunciado": "Uma atualização de sistema acabou desativando, sem querer, o registro de logs de acesso. O que a cláusula 8.1 espera da organização nesse caso?",
+      "alternativas": ["Nada, pois a mudança não foi planejada", "Esperar a próxima auditoria externa para decidir", "Analisar as consequências da mudança não intencional e agir para reduzir os efeitos adversos, conforme necessário", "Desfazer todas as atualizações dos últimos 12 meses"],
+      "correta": 2,
+      "explicacao": "O controle operacional inclui controlar as mudanças planejadas e analisar criticamente as consequências das mudanças não intencionais, tomando ações para mitigar efeitos adversos quando necessário."
+    },
+    {
+      "id": "iso-cav-08", "tema": "Operação (8)", "dificuldade": "medio", "fase": "caverna",
+      "enunciado": "Um provedor de nuvem hospeda sistemas que fazem parte do escopo do SGSI. Pela cláusula 8.1, a organização deve:",
+      "alternativas": ["Garantir que processos, produtos ou serviços fornecidos externamente e relevantes para o SGSI sejam controlados", "Excluir o provedor do escopo, pois ele não é funcionário", "Transferir toda a responsabilidade pela segurança para o provedor", "Proibir o uso de nuvem"],
+      "correta": 0,
+      "explicacao": "Terceirizar um serviço não terceiriza a responsabilidade. O que é fornecido externamente e afeta o SGSI precisa estar sob controle (contratos, requisitos, monitoramento)."
+    },
+    {
+      "id": "iso-cav-09", "tema": "Operação (8)", "dificuldade": "medio", "fase": "caverna",
+      "enunciado": "Quando a organização deve realizar avaliações de riscos de segurança da informação (cláusula 8.2)?",
+      "alternativas": ["Somente antes da primeira certificação", "A intervalos planejados e quando mudanças significativas forem propostas ou ocorrerem", "Apenas quando acontecer um incidente grave", "Uma única vez, e o resultado vale para sempre"],
+      "correta": 1,
+      "explicacao": "Riscos mudam com o negócio e com as ameaças. Por isso a avaliação é periódica e também disparada por mudanças significativas, com os resultados guardados como informação documentada."
+    },
+    {
+      "id": "iso-cav-10", "tema": "Operação (8)", "dificuldade": "medio", "fase": "caverna",
+      "enunciado": "O que a cláusula 8.3 (tratamento de riscos) exige?",
+      "alternativas": ["Contratar um seguro para todos os riscos", "Implementar o plano de tratamento de riscos e reter informação documentada dos resultados", "Eliminar todos os riscos identificados", "Refazer o escopo do SGSI a cada mês"],
+      "correta": 1,
+      "explicacao": "A 6.1.3 planeja o tratamento; a 8.3 coloca o plano em prática e guarda evidências dos resultados."
+    },
+
+    {
+      "id": "iso-abis-01", "tema": "Desempenho (9)", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "Qual é o propósito do monitoramento, da medição, da análise e da avaliação exigidos pela cláusula 9.1?",
+      "alternativas": ["Vigiar o que cada colaborador faz no computador", "Avaliar o desempenho da segurança da informação e a eficácia do SGSI", "Medir a velocidade da internet", "Controlar o uso de serviços terceirizados"],
+      "correta": 1,
+      "explicacao": "A 9.1 existe para a organização saber se a segurança está funcionando e se o SGSI entrega os resultados pretendidos, com base em dados e não em impressões."
+    },
+    {
+      "id": "iso-abis-02", "tema": "Desempenho (9)", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "O que a organização deve determinar na cláusula 9.1?",
+      "alternativas": ["O que monitorar e medir, os métodos, quando e quem monitora, e quando e por quem os resultados serão analisados e avaliados", "Somente o número de incidentes do ano", "Apenas o valor gasto com segurança", "Quais colaboradores devem ser demitidos"],
+      "correta": 0,
+      "explicacao": "Para medir com qualidade, é preciso definir o quê, como, quando e quem, tanto para coletar os dados quanto para analisá-los. Os métodos devem gerar resultados comparáveis e reproduzíveis."
+    },
+    {
+      "id": "iso-abis-03", "tema": "Auditoria", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "Segundo a cláusula 9.2, a auditoria interna do SGSI deve ser realizada:",
+      "alternativas": ["Somente quando o auditor externo pedir", "A intervalos planejados, para verificar se o SGSI atende aos requisitos da organização e da norma e se está implementado e mantido de forma eficaz", "Apenas depois de um incidente grave", "Uma vez, antes da certificação"],
+      "correta": 1,
+      "explicacao": "A auditoria interna é contínua e planejada: há um programa de auditoria, com frequência, métodos, critérios e escopo definidos, e os resultados são relatados à direção pertinente."
+    },
+    {
+      "id": "iso-abis-04", "tema": "Auditoria", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "Qual requisito vale para quem realiza as auditorias internas?",
+      "alternativas": ["Precisam ser sempre de uma empresa externa", "Precisam ser os gestores da área auditada", "Devem ser selecionados e conduzir as auditorias garantindo a objetividade e a imparcialidade do processo", "Não há nenhum requisito"],
+      "correta": 2,
+      "explicacao": "O auditor interno pode ser da própria organização, mas não deve auditar o próprio trabalho. O que importa é a objetividade e a imparcialidade."
+    },
+    {
+      "id": "iso-abis-05", "tema": "Análise crítica (9.3)", "dificuldade": "dificil", "fase": "abismo",
+      "enunciado": "Qual destes é um item de entrada exigido para a análise crítica pela direção (cláusula 9.3)?",
+      "alternativas": ["Mudanças nas necessidades e expectativas das partes interessadas relevantes para o SGSI", "A avaliação individual de desempenho de cada colaborador", "O orçamento de marketing do próximo ano", "A lista de senhas dos sistemas críticos"],
+      "correta": 0,
+      "explicacao": "Entre as entradas estão: situação das ações anteriores, mudanças em questões externas e internas, mudanças nas necessidades das partes interessadas (novidade da versão 2022), desempenho da segurança (não conformidades, medições, auditorias, objetivos), feedback das partes interessadas, resultados de riscos e oportunidades de melhoria."
+    },
+    {
+      "id": "iso-abis-06", "tema": "Análise crítica (9.3)", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "Os resultados da análise crítica pela direção devem incluir:",
+      "alternativas": ["Apenas a assinatura da ata", "A lista de presentes na reunião", "Decisões sobre oportunidades de melhoria contínua e sobre necessidades de mudanças no SGSI", "A escolha do próximo organismo de certificação"],
+      "correta": 2,
+      "explicacao": "A análise crítica não é só uma reunião de status: ela termina com decisões sobre melhorias e mudanças, registradas como informação documentada."
+    },
+    {
+      "id": "iso-abis-07", "tema": "Melhoria (10)", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "Quando ocorre uma não conformidade, qual é a primeira ação exigida pela cláusula 10.2?",
+      "alternativas": ["Demitir o responsável", "Esperar a próxima análise crítica", "Reagir: tomar ações para controlar e corrigir a não conformidade e lidar com as consequências", "Comunicar o organismo de certificação imediatamente"],
+      "correta": 2,
+      "explicacao": "Primeiro se reage (controla, corrige, lida com as consequências). Depois se avalia a necessidade de eliminar as causas, implementa-se a ação, analisa-se a eficácia e, se preciso, muda-se o SGSI."
+    },
+    {
+      "id": "iso-abis-08", "tema": "Melhoria (10)", "dificuldade": "dificil", "fase": "abismo",
+      "enunciado": "Qual é a diferença entre correção e ação corretiva?",
+      "alternativas": ["Não há diferença: são sinônimos", "A correção elimina a não conformidade detectada; a ação corretiva elimina a causa, para evitar que ela se repita", "A ação corretiva é feita pelo auditor e a correção pela empresa", "A correção só vale para documentos"],
+      "correta": 1,
+      "explicacao": "Exemplo: um backup falhou. Rodar o backup de novo é correção. Descobrir que o disco de destino estava cheio e criar um monitoramento de espaço é ação corretiva."
+    },
+    {
+      "id": "iso-abis-09", "tema": "Melhoria (10)", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "A cláusula 10.1 exige que a organização:",
+      "alternativas": ["Melhore continuamente a adequação, a suficiência e a eficácia do SGSI", "Troque de norma a cada três anos", "Compre novas ferramentas de segurança todo ano", "Refaça todos os documentos anualmente"],
+      "correta": 0,
+      "explicacao": "Melhoria contínua é atividade recorrente: o SGSI precisa continuar adequado (faz sentido), suficiente (cobre o necessário) e eficaz (entrega resultados). Na versão 2022, ela vem antes da cláusula de não conformidade."
+    },
+    {
+      "id": "iso-abis-10", "tema": "Auditoria", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "Uma empresa audita um fornecedor para verificar os requisitos de segurança previstos no contrato. Esse tipo de auditoria é chamado de:",
+      "alternativas": ["Auditoria de primeira parte", "Auditoria de segunda parte", "Auditoria de terceira parte", "Auditoria de certificação"],
+      "correta": 1,
+      "explicacao": "Primeira parte é a auditoria interna; segunda parte é feita por quem tem interesse na organização (como um cliente no fornecedor); terceira parte é feita por um organismo independente, como na certificação."
+    },
+    {
+      "id": "iso-abis-11", "tema": "Auditoria", "dificuldade": "medio", "fase": "abismo",
+      "enunciado": "Durante uma auditoria, o auditor registra uma oportunidade de melhoria. Isso significa que:",
+      "alternativas": ["A organização foi reprovada", "Foi encontrada uma não conformidade maior", "O requisito é atendido, mas algo pode ser aprimorado", "O item está fora do escopo da norma"],
+      "correta": 2,
+      "explicacao": "Uma oportunidade de melhoria (ou observação, em muitos organismos) não é uma não conformidade: o requisito está atendido, mas há espaço para fazer melhor ou risco de virar problema no futuro."
+    },
+
+    {
+      "id": "iso-fossa-01", "tema": "Anexo A", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "Como os controles do Anexo A estão organizados na ISO/IEC 27001:2022?",
+      "alternativas": ["114 controles em 14 domínios", "93 controles em 4 temas: organizacionais, pessoas, físicos e tecnológicos", "50 controles obrigatórios e 43 opcionais", "10 grupos, um para cada cláusula"],
+      "correta": 1,
+      "explicacao": "A versão 2022 reorganizou o Anexo A em 93 controles: 37 organizacionais, 8 de pessoas, 14 físicos e 34 tecnológicos. Os 114 controles em 14 domínios eram da versão 2013."
+    },
+    {
+      "id": "iso-fossa-02", "tema": "Anexo A", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "Qual afirmação descreve corretamente o papel do Anexo A?",
+      "alternativas": ["Todos os controles são obrigatórios, sem exceção", "É uma lista de referência que deve ser comparada com os controles determinados no tratamento de riscos, para não omitir nada necessário", "Só se aplica a empresas de tecnologia", "Substitui a avaliação de riscos"],
+      "correta": 1,
+      "explicacao": "Os controles vêm do tratamento de riscos. O Anexo A serve de checagem: a organização compara sua lista com ele e registra na Declaração de Aplicabilidade o que inclui, o que exclui e por quê."
+    },
+    {
+      "id": "iso-fossa-03", "tema": "Anexo A", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "Qual destes controles pertence ao tema Pessoas do Anexo A?",
+      "alternativas": ["Backup de informações", "Perímetros de segurança física", "Conscientização, educação e treinamento em segurança da informação", "Inteligência de ameaças"],
+      "correta": 2,
+      "explicacao": "O tema Pessoas tem 8 controles, como seleção, termos e condições de contratação, conscientização e treinamento, processo disciplinar, acordos de confidencialidade, trabalho remoto e relato de eventos. Backup é tecnológico, perímetro é físico e inteligência de ameaças é organizacional."
+    },
+    {
+      "id": "iso-fossa-04", "tema": "Anexo A", "dificuldade": "dificil", "fase": "fossa",
+      "enunciado": "Qual destes controles foi incluído como novidade no Anexo A da versão 2022?",
+      "alternativas": ["Inteligência de ameaças", "Acordos de confidencialidade", "Backup de informações", "Processo disciplinar"],
+      "correta": 0,
+      "explicacao": "A versão 2022 trouxe 11 controles novos, entre eles inteligência de ameaças, segurança no uso de serviços em nuvem, prontidão de TIC para a continuidade do negócio, monitoramento da segurança física, gestão de configuração, exclusão de informações, mascaramento de dados, prevenção de vazamento de dados, atividades de monitoramento, filtragem web e codificação segura."
+    },
+    {
+      "id": "iso-fossa-05", "tema": "Incidentes", "dificuldade": "facil", "fase": "fossa",
+      "enunciado": "Um colaborador percebe um comportamento estranho no computador, como janelas abrindo sozinhas. O que o controle de relato de eventos de segurança da informação espera dele?",
+      "alternativas": ["Que desligue o computador e não comente com ninguém", "Que tente resolver sozinho pesquisando na internet", "Que relate o evento observado ou suspeito pelos canais adequados e em tempo hábil", "Que espere para ver se o problema se repete"],
+      "correta": 2,
+      "explicacao": "O controle de relato de eventos (tema Pessoas) pede que o pessoal relate eventos observados ou suspeitos, rapidamente e pelos canais definidos. Relatar cedo pode evitar que um evento vire um incidente grave."
+    },
+    {
+      "id": "iso-fossa-06", "tema": "Anexo A", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "O controle de termos e condições de contratação exige que os acordos contratuais deixem claras as responsabilidades de segurança de quem?",
+      "alternativas": ["Somente dos empregados CLT", "Somente dos prestadores de serviço", "Do pessoal (empregados e contratados) e também da própria organização", "Apenas da diretoria"],
+      "correta": 2,
+      "explicacao": "Os acordos de trabalho devem declarar as responsabilidades de segurança da informação do pessoal e da organização. Assim, todos que trabalham sob controle da organização sabem o que se espera deles antes, durante e depois do vínculo."
+    },
+    {
+      "id": "iso-fossa-07", "tema": "Anexo A", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "Pelo controle de políticas de segurança da informação do Anexo A, quando as políticas devem ser analisadas criticamente?",
+      "alternativas": ["Somente quando o auditor pedir", "A intervalos planejados e quando ocorrerem mudanças significativas", "Uma única vez, na criação", "A cada cinco anos, obrigatoriamente"],
+      "correta": 1,
+      "explicacao": "Além de definidas, aprovadas pela direção, publicadas, comunicadas e reconhecidas pelas pessoas pertinentes, as políticas precisam ser revistas periodicamente e sempre que houver mudança significativa."
+    },
+    {
+      "id": "iso-fossa-08", "tema": "Anexo A", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "Em qual tema do Anexo A fica o controle de mesa limpa e tela limpa?",
+      "alternativas": ["Organizacional", "Pessoas", "Físico", "Tecnológico"],
+      "correta": 2,
+      "explicacao": "Mesa limpa e tela limpa faz parte dos 14 controles físicos, ao lado de perímetros de segurança, controle de entrada, proteção de equipamentos, mídias de armazenamento e descarte seguro."
+    },
+    {
+      "id": "iso-fossa-09", "tema": "Controle de acesso", "dificuldade": "facil", "fase": "fossa",
+      "enunciado": "Um estagiário recebeu acesso de administrador aos sistemas \"para não dar problema\". Qual princípio, apoiado pelos controles de acesso do Anexo A, foi desrespeitado?",
+      "alternativas": ["Menor privilégio: cada pessoa acessa só o necessário para o seu trabalho", "Disponibilidade total", "Melhoria contínua", "Segregação do escopo"],
+      "correta": 0,
+      "explicacao": "Os controles de acesso (como a política de controle de acesso e a gestão de direitos de acesso privilegiado) seguem a lógica do menor privilégio e da necessidade de conhecer. Acesso demais aumenta o estrago de um erro ou de uma invasão."
+    },
+    {
+      "id": "iso-fossa-10", "tema": "Certificação", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "Na auditoria de certificação, qual é a diferença entre o estágio 1 e o estágio 2?",
+      "alternativas": ["O estágio 1 avalia a documentação e a prontidão; o estágio 2 avalia a implementação e a eficácia do SGSI", "O estágio 1 é feito pela própria empresa e o estágio 2 pelo governo", "Não há diferença: são duas visitas iguais", "O estágio 1 é a auditoria de manutenção anual"],
+      "correta": 0,
+      "explicacao": "No estágio 1, o auditor confere se o SGSI está desenhado e documentado (escopo, DA, riscos, políticas) e se a organização está pronta. No estágio 2, verifica na prática se tudo funciona e é eficaz."
+    },
+    {
+      "id": "iso-fossa-11", "tema": "Certificação", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "Depois de certificada, como a organização mantém o certificado ISO/IEC 27001?",
+      "alternativas": ["Não precisa fazer mais nada: o certificado é vitalício", "Com auditorias de manutenção periódicas (normalmente anuais) e uma recertificação ao fim do ciclo de três anos", "Refazendo o estágio 1 todo mês", "Pagando uma taxa anual à ISO"],
+      "correta": 1,
+      "explicacao": "O ciclo usual dura três anos, com auditorias de manutenção (vigilância) no meio e uma auditoria de recertificação ao final. Assim o organismo confirma que o SGSI continua funcionando."
+    },
+    {
+      "id": "iso-fossa-12", "tema": "Certificação", "dificuldade": "medio", "fase": "fossa",
+      "enunciado": "Para planejar a auditoria de certificação (duração, equipe e o que será visitado), qual informação o organismo de certificação precisa conhecer e acordar primeiro com a organização?",
+      "alternativas": ["O escopo do SGSI", "O salário da equipe de TI", "A lista de todos os incidentes já ocorridos", "O preço das ferramentas de segurança"],
+      "correta": 0,
+      "explicacao": "O escopo (cláusula 4.3) define o que está dentro do SGSI: unidades, processos, sistemas e locais. Sem ele, não dá para dimensionar a auditoria, e é ele que aparece no certificado."
+    }
+  ],
+  "pares": [
+    { "id": "iso-par-01", "termo": "Confidencialidade", "definicao": "Só quem é autorizado tem acesso à informação", "tema": "Fundamentos" },
+    { "id": "iso-par-02", "termo": "Integridade", "definicao": "Informação exata e completa", "tema": "Fundamentos" },
+    { "id": "iso-par-03", "termo": "Disponibilidade", "definicao": "Acessível e utilizável quando necessário", "tema": "Fundamentos" },
+    { "id": "iso-par-04", "termo": "SGSI", "definicao": "Sistema de gestão da segurança da informação", "tema": "SGSI" },
+    { "id": "iso-par-05", "termo": "Declaração de Aplicabilidade", "definicao": "Controles, justificativas e status de implementação", "tema": "Declaração de Aplicabilidade" },
+    { "id": "iso-par-06", "termo": "Risco", "definicao": "Efeito da incerteza sobre os objetivos", "tema": "Riscos (6)" },
+    { "id": "iso-par-07", "termo": "Vulnerabilidade", "definicao": "Fraqueza que pode ser explorada por uma ameaça", "tema": "Riscos (6)" },
+    { "id": "iso-par-08", "termo": "Ameaça", "definicao": "Causa potencial de um incidente indesejado", "tema": "Riscos (6)" },
+    { "id": "iso-par-09", "termo": "Proprietário do risco", "definicao": "Tem responsabilidade e autoridade para gerenciar o risco", "tema": "Riscos (6)" },
+    { "id": "iso-par-10", "termo": "Ação corretiva", "definicao": "Elimina a causa de uma não conformidade", "tema": "Melhoria (10)" },
+    { "id": "iso-par-11", "termo": "Auditoria de terceira parte", "definicao": "Feita por um organismo independente", "tema": "Auditoria" },
+    { "id": "iso-par-12", "termo": "ISO/IEC 27002", "definicao": "Guia de orientação sobre os controles", "tema": "Família ISO 27000" }
+  ],
+  "verdadeiroFalso": [
+    { "id": "iso-vf-01", "afirmacao": "Todos os 93 controles do Anexo A são obrigatórios, sem exceção.", "verdadeira": false, "explicacao": "O Anexo A é uma referência. Controles podem ser excluídos com justificativa na Declaração de Aplicabilidade.", "tema": "Anexo A" },
+    { "id": "iso-vf-02", "afirmacao": "A alta direção pode delegar tarefas, mas continua responsável por demonstrar liderança e comprometimento com o SGSI.", "verdadeira": true, "explicacao": "A cláusula 5.1 atribui à alta direção a demonstração de liderança; as atividades podem ser delegadas, a responsabilidade não.", "tema": "Liderança (5)" },
+    { "id": "iso-vf-03", "afirmacao": "A ISO emite diretamente os certificados ISO/IEC 27001 para as empresas.", "verdadeira": false, "explicacao": "Quem certifica são organismos de certificação independentes, normalmente acreditados. A ISO publica as normas.", "tema": "Certificação" },
+    { "id": "iso-vf-04", "afirmacao": "Na versão 2022, o Anexo A organiza os controles em quatro temas.", "verdadeira": true, "explicacao": "Organizacionais, pessoas, físicos e tecnológicos, somando 93 controles.", "tema": "Anexo A" },
+    { "id": "iso-vf-05", "afirmacao": "Correção e ação corretiva significam a mesma coisa na ISO/IEC 27001.", "verdadeira": false, "explicacao": "Correção elimina a não conformidade detectada; ação corretiva elimina a causa para evitar a repetição.", "tema": "Melhoria (10)" },
+    { "id": "iso-vf-06", "afirmacao": "A auditoria interna deve ser feita a intervalos planejados.", "verdadeira": true, "explicacao": "A cláusula 9.2 pede um programa de auditoria, com frequência, métodos, critérios e escopo definidos.", "tema": "Auditoria" },
+    { "id": "iso-vf-07", "afirmacao": "O escopo do SGSI deve estar disponível como informação documentada.", "verdadeira": true, "explicacao": "É uma exigência explícita da cláusula 4.3.", "tema": "Contexto (4)" },
+    { "id": "iso-vf-08", "afirmacao": "Aceitar um risco residual é uma decisão só da equipe de TI, sem envolver os proprietários dos riscos.", "verdadeira": false, "explicacao": "A aceitação do risco residual cabe aos proprietários dos riscos (cláusula 6.1.3).", "tema": "Tratamento de riscos" },
+    { "id": "iso-vf-09", "afirmacao": "As avaliações de riscos devem ser refeitas quando ocorrem mudanças significativas.", "verdadeira": true, "explicacao": "A cláusula 8.2 pede avaliações a intervalos planejados e também diante de mudanças significativas.", "tema": "Operação (8)" },
+    { "id": "iso-vf-10", "afirmacao": "Uma vulnerabilidade só passa a existir depois que alguém a explora em um ataque.", "verdadeira": false, "explicacao": "A vulnerabilidade é a fraqueza em si, explorada ou não. O ataque é a ameaça se concretizando.", "tema": "Riscos (6)" }
+  ],
+  "adivinhas": [
+    { "id": "iso-adv-01", "resposta": "Declaração de Aplicabilidade", "aceitas": ["declaracao de aplicabilidade", "da", "soa", "statement of applicability"], "tema": "Declaração de Aplicabilidade", "dificuldade": "medio",
+      "dicas": ["É um documento obrigatório do SGSI.", "Está ligado à cláusula 6.1.3.", "Faz a ponte com o Anexo A.", "Traz justificativas de inclusão e de exclusão.", "Mostra se cada controle está implementado.", "Em inglês, a sigla é SoA."],
+      "explicacao": "A Declaração de Aplicabilidade lista os controles necessários, as justificativas, o status de implementação e as exclusões do Anexo A." },
+    { "id": "iso-adv-02", "resposta": "Confidencialidade", "aceitas": [], "tema": "Fundamentos", "dificuldade": "facil",
+      "dicas": ["É uma das letras da tríade CID.", "Tem a ver com quem pode ver a informação.", "Um vazamento de dados a compromete.", "A criptografia ajuda a protegê-la.", "Começa com a letra C."],
+      "explicacao": "Confidencialidade: a informação não é disponibilizada nem divulgada a quem não tem autorização." },
+    { "id": "iso-adv-03", "resposta": "PDCA", "aceitas": ["ciclo pdca", "plan do check act", "planejar fazer checar agir"], "tema": "SGSI", "dificuldade": "facil",
+      "dicas": ["É um ciclo.", "Tem quatro etapas.", "Ajuda a explicar a melhoria contínua.", "A primeira etapa é planejar.", "A última é agir."],
+      "explicacao": "Plan, Do, Check, Act: planejar, fazer, checar e agir, em ciclos contínuos." },
+    { "id": "iso-adv-04", "resposta": "Auditoria interna", "aceitas": ["auditoria", "auditoria de primeira parte"], "tema": "Auditoria", "dificuldade": "medio",
+      "dicas": ["Está na cláusula 9.2.", "É feita a intervalos planejados.", "Precisa de um programa.", "Quem a faz deve ser imparcial.", "É uma auditoria de primeira parte."],
+      "explicacao": "A auditoria interna verifica se o SGSI atende aos requisitos e está implementado e mantido de forma eficaz." },
+    { "id": "iso-adv-05", "resposta": "Não conformidade", "aceitas": ["nao conformidade", "nc"], "tema": "Melhoria (10)", "dificuldade": "medio",
+      "dicas": ["Ninguém quer ouvir isso numa auditoria.", "É o não atendimento a um requisito.", "Exige reação e correção.", "Pode levar a uma ação corretiva.", "Está tratada na cláusula 10.2."],
+      "explicacao": "Não conformidade é o não atendimento a um requisito; a 10.2 define como reagir e tratar as causas." },
+    { "id": "iso-adv-06", "resposta": "Alta direção", "aceitas": ["alta direcao", "top management", "diretoria"], "tema": "Liderança (5)", "dificuldade": "facil",
+      "dicas": ["Aparece muito na cláusula 5.", "Estabelece a política de segurança da informação.", "Garante recursos para o SGSI.", "Faz a análise crítica do sistema.", "Dirige e controla a organização no nível mais alto."],
+      "explicacao": "A alta direção é a pessoa ou o grupo que dirige e controla a organização no nível mais alto." }
+  ],
+  "sequencias": [
+    { "id": "iso-seq-01", "titulo": "Gestão de riscos na ISO/IEC 27001", "tema": "Riscos (6)",
+      "itens": ["Definir os critérios de risco", "Identificar os riscos e seus proprietários", "Analisar consequências e probabilidade", "Avaliar e priorizar os riscos", "Escolher opções de tratamento e controles", "Aprovar o plano e aceitar o risco residual"],
+      "explicacao": "Critérios primeiro; depois identificar, analisar e avaliar (6.1.2); então tratar e aprovar (6.1.3)." },
+    { "id": "iso-seq-02", "titulo": "Cláusulas de requisitos da norma", "tema": "Estrutura da norma",
+      "itens": ["4 Contexto da organização", "5 Liderança", "6 Planejamento", "7 Apoio", "8 Operação", "9 Avaliação de desempenho", "10 Melhoria"],
+      "explicacao": "É a estrutura harmonizada dos sistemas de gestão ISO, a mesma da ISO 9001 e da ISO 14001." },
+    { "id": "iso-seq-03", "titulo": "O caminho até a certificação", "tema": "Certificação",
+      "itens": ["Definir o escopo do SGSI", "Implementar o SGSI e os controles", "Fazer a auditoria interna e a análise crítica", "Auditoria de certificação: estágio 1", "Auditoria de certificação: estágio 2", "Auditorias de manutenção anuais"],
+      "explicacao": "Sem auditoria interna e análise crítica feitas, o SGSI ainda não está pronto para o organismo de certificação." },
+    { "id": "iso-seq-04", "titulo": "Tratar uma não conformidade (10.2)", "tema": "Melhoria (10)",
+      "itens": ["Controlar e corrigir a não conformidade", "Lidar com as consequências", "Analisar e determinar as causas", "Implementar a ação corretiva", "Analisar a eficácia da ação"],
+      "explicacao": "Reagir primeiro, depois atacar a causa e, por fim, confirmar que a ação funcionou." },
+    { "id": "iso-seq-05", "titulo": "Ciclo PDCA", "tema": "SGSI",
+      "itens": ["Planejar", "Fazer", "Checar", "Agir"],
+      "explicacao": "Plan, Do, Check, Act: o ciclo da melhoria contínua." }
+  ],
+  "palavras": [
+    { "id": "iso-pal-01", "palavra": "Integridade", "dica": "Informação exata e completa", "tema": "Fundamentos" },
+    { "id": "iso-pal-02", "palavra": "Disponibilidade", "dica": "Acessível quando a pessoa autorizada precisa", "tema": "Fundamentos" },
+    { "id": "iso-pal-03", "palavra": "Vulnerabilidade", "dica": "Fraqueza que uma ameaça pode explorar", "tema": "Riscos (6)" },
+    { "id": "iso-pal-04", "palavra": "Ameaça", "dica": "Causa potencial de um incidente indesejado", "tema": "Riscos (6)" },
+    { "id": "iso-pal-05", "palavra": "Escopo", "dica": "Limites e aplicabilidade do SGSI", "tema": "Contexto (4)" },
+    { "id": "iso-pal-06", "palavra": "Auditoria", "dica": "Processo para obter evidências e verificar critérios", "tema": "Auditoria" },
+    { "id": "iso-pal-07", "palavra": "Controle", "dica": "Medida que mantém ou modifica o risco", "tema": "Riscos (6)" },
+    { "id": "iso-pal-08", "palavra": "Incidente", "dica": "Evento que pode comprometer a operação e a segurança", "tema": "Incidentes" }
+  ]
+}

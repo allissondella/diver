@@ -12,12 +12,15 @@
 
 | Ordem | Arquivo | Global | Responsabilidade |
 | --- | --- | --- | --- |
+| 0 | `js/config.js` | `DIVER_CONFIG` | URL e chave pública do Supabase. Vazio = **modo local** (sem login). |
 | 1 | `js/trilhas.js` | `Trilhas` | Encontrar, carregar, validar, importar e criar trilhas JSON. |
 | 2 | `js/progresso.js` | `Progresso` | localStorage por trilha: XP, níveis, pérolas, streak, meta, repetição espaçada, fases, jogos, caixas de Leitner. |
 | 3 | `js/conquistas.js` | `Conquistas` | As 13 conquistas e a verificação. |
 | 4 | `js/economia.js` | `Economia` | **Único** lugar que concede XP/pérolas fora do Mergulho/Simulado/Revisão: Resultado padrão dos jogos, tarefas, foco, gasto de pérolas. Valores em `Economia.CONFIG`. |
 | 5 | `js/quiz.js` | `Quiz` | Motor do Mergulho, Simulado e Revisão (aprovado; não mexer no comportamento). |
 | 6 | `js/ui.js` | `UI`, `Dados` | Ferramentas de interface (`h()`, ícones, toasts, mascote, datas) e `Dados` (localStorage com try/catch). |
+| 6b | `js/nuvem.js` | `Nuvem` | Cliente do Supabase só com `fetch`: login, renovação de sessão, troca de senha, REST/RPC e **Sincronia** (espelha `diver:v1:*` na tabela `estado`). |
+| 6c | `js/conta.js` | `Conta` | Telas de login e de troca de senha obrigatória; `Conta.garantir()` segura o app até a pessoa estar pronta. |
 | 7 | `js/cartas.js` | `Cartas` | Transforma a trilha em cartas para os jogos (blocos opcionais + derivação das questões). |
 | 8 | `js/jogos/registro.js` | `Jogos` | Catálogo da Sala de Jogos, contrato e `Jogos.resultado()`. |
 | 9 | `js/jogos/comum.js` | `JogoComum` | Pergunta de múltipla escolha com feedback, atalhos e "detalhe" padrão. |
@@ -25,6 +28,7 @@
 | 11 | `js/organizar.js` | `Organizar` | Tarefas (Kanban), Calendário + gerador de cronograma, Modo Foco. |
 | 12 | `js/biblioteca.js` | `Biblioteca` | Cursos e trilhas (estudar, exportar, criar colando texto) e PDFs (IndexedDB). |
 | 13 | `js/perfil.js` | `Perfil` | Nível geral somando as trilhas, tabela por trilha, backup. |
+| 13b | `js/admin.js` | `Admin` | Área de admin: cadastrar pessoa (senha temporária), atribuir cursos, nova senha, ativar/desativar, ver progresso. |
 | 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
 CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos). Só variáveis de cor (tokens), nada de cor solta.
@@ -44,11 +48,23 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#cursos` | Cursos e trilhas | `biblioteca.js` |
 | `#pdfs` | PDFs | `biblioteca.js` |
 | `#perfil` | Perfil e backup | `perfil.js` |
+| `#prova` | `tela-prova`: regras, pré-requisito (todas as fases), tentativas | `app.js` |
+| `#admin` | `tela-admin` (só admin) | `admin.js` |
+| (sem endereço) | `tela-login`, `tela-senha` (antes do app, com login ativo) | `conta.js` |
 
 - A **trilha atual** é escolhida no Início ("Bora mergulhar!") ou no seletor da barra lateral. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
 - Mascote: `<template id="molde-mascote">` (pixel art: WebP animado; PNG parado com "reduzir movimento"). `UI.montarMascotes()` copia para cada `[data-mascote]`; `UI.humorMascote(container, 'feliz' | 'triste' | null)`.
 - Todo conteúdo vindo de JSON entra com `textContent` (função `UI.h()`), nunca com `innerHTML`. Os únicos `innerHTML` são SVGs fixos do código (chefões, jangada, mapa do tesouro).
 - `append`/`replaceChildren` nativos escrevem "null" se receberem `null`: use `UI.h()` ou `.filter(Boolean)`.
+
+## Login, admin e nuvem (Supabase)
+- **Liga/desliga:** `js/config.js`. Com URL e chave preenchidas, o app exige login; vazio, roda no modo local. Passo a passo para criar o projeto: `docs/SUPABASE.md`.
+- **Banco:** `supabase/setup.sql` (pode rodar de novo). Tabelas: `perfis` (email, nome, admin, trocar_senha, ativo), `matriculas` (aluno_id, trilha_id), `estado` (usuario_id, chave, valor jsonb). RLS: cada pessoa só lê/grava o que é dela; o admin lê tudo; perfis e matrículas só mudam por funções.
+- **Funções (RPC):** `admin_criar_usuario(p_email, p_nome, p_trilhas)` → senha temporária; `admin_definir_matriculas(p_usuario, p_trilhas)`; `admin_redefinir_senha(p_usuario)` → senha temporária; `admin_atualizar_usuario(p_usuario, p_nome, p_ativo)` (desativar = bloqueio no Auth); `senha_trocada()`. Internas, sem acesso pelo app: `diver_criar_conta(...)` (cria login + perfil; usada para o primeiro admin no SQL Editor) e `diver_senha_temporaria()`.
+- **Senha temporária:** toda conta nasce com `trocar_senha = true`; no primeiro login o app obriga a criar uma senha própria (mín. 8, letras e números).
+- **Quem vê o quê:** o aluno só vê as trilhas das suas matrículas; o admin vê todas. Importar/criar trilhas só aparece para o admin (ou no modo local).
+- **Sincronia:** a cada 4 s e ao sair da página, o que mudou em `diver:v1:*` sobe para `estado`; no login, tudo desce e substitui o local. Sair limpa os dados do navegador. PDFs (IndexedDB) não sincronizam. A sessão fica em `diver:sessao` (fora do backup e da sincronia).
+- **Segurança:** nenhuma chave secreta no repositório; o app se recusa a usar uma chave `service_role`/`secret`. Dados de pessoas (e o e-mail do admin) nunca vão para o repositório.
 
 ## Formato do JSON de trilha (nomes reais dos campos)
 ```json
@@ -69,7 +85,8 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
   "palavras":        [ { "id": "cg-pal-01", "palavra": "Mitocôndria", "dica": "Usina de energia da célula", "tema": "Biologia" } ]
 }
 ```
-- Obrigatórios: `id`, `nome`, `descricao`, `fases`, `questoes`. `categoria` e **todos os blocos depois de `questoes` são opcionais**.
+- Obrigatórios: `id`, `nome`, `descricao`, `fases`, `questoes`. `categoria`, `prova` e **todos os blocos depois de `questoes` são opcionais**.
+- `prova` (opcional): `{ "questoes": 40, "minutos": 60, "aprovacao": 65, "exigeFases": true }`. Sem o bloco: até 40 questões, 1,5 min por questão, 70% e exige as fases.
 - Questão: `dificuldade` = `facil` | `medio` | `dificil`; `correta` = índice a partir de 0; alternativas embaralhadas na exibição.
 - `Trilhas.validar()` só confere as questões; blocos opcionais malformados são ignorados pelo `cartas.js`.
 
@@ -103,10 +120,14 @@ Jogos.registrar({
 | `diver:v1:tarefas` | Tarefas do Kanban: `id, titulo, trilhaId, status (afazer/fazendo/revisar/feito), prazo, prioridade, ordem, xpConcedido`. |
 | `diver:v1:eventos` | Eventos do calendário: `id, titulo, tipo (prova/aula/estudo/descanso), data, hora, trilhaId, gerado`. |
 | `diver:v1:desafios` | Dias em que o Desafio do Dia foi cumprido (`{ "AAAA-MM-DD": true }`). |
+| `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
+
+O progresso da trilha também guarda `provas` (prova final: data, total, acertos, nota, pct, aprovado, tempoSeg).
 
 **IndexedDB** `diver` → store `pdfs`: `{ id, nome, tamanho, trilhaId, criadoEm, arquivo (Blob), notas }`. PDFs não entram no backup do Perfil.
 
 ## Regras de jogo implementadas
+- **Prova final** (`modo: 'prova'` no `quiz.js`): sorteio simples da trilha, sem feedback no meio, cronômetro, em branco = erro, aprovação pela % mínima; liberada ao completar todas as fases (o admin pode fazer antes, para testar). Conquista "Aprovado!".
 - **Mergulho/Simulado/Revisão**: como na Fase 0 (ver `docs/JOGOS.md`). Continuam dando XP pelo `quiz.js`; a migração para o contrato/economia é a tarefa D7/D8.
 - **Níveis:** `NIVEIS` em `js/progresso.js` (10 níveis, Mestre Diver = 2.100 XP). O Perfil soma o XP de todas as trilhas no "nível geral".
 - **Tarefas:** mover para "Feito" dá +10 XP e +1 pérola uma única vez (na trilha da tarefa ou na atual).

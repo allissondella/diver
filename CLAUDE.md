@@ -9,6 +9,7 @@ Público: ensino médio, cursinho, faculdade, especializações e treinamentos c
 A **Fase 0 está feita**: protótipo em HTML/CSS/JS puros com os modos Mergulho, Simulado e Revisão, trilhas em JSON, XP, níveis, pérolas, oxigênio, streak, meta diária e conquistas (tudo em localStorage).
 **A parte de perguntas e respostas está aprovada e testada: não refaça e não mude o comportamento dela sem eu pedir.**
 **2026-09-29:** app com **barra lateral** (Estudar · Organizar · Biblioteca · Você), Sala de Jogos com 9 jogos novos, economia central, Kanban, calendário com cronograma, Modo Foco, PDFs, Perfil e Desafio do Dia. Como o código está organizado: `docs/ARQUITETURA.md`.
+**2026-09-29 (2):** login com **Supabase** (e-mail e senha, troca obrigatória no primeiro acesso), **área de Admin** (cadastrar pessoas e atribuir cursos), progresso sincronizado na nuvem, **Prova final** e o curso **ISO/IEC 27001:2022 Foundation** (65 questões originais). Ligar o Supabase: `docs/SUPABASE.md`. Sem `js/config.js` preenchido, o app roda no modo local.
 O plano completo está em `docs/ROADMAP.md` (24 semanas, 120 tarefas). Use `/hoje` para começar.
 
 ## Ideia central: um motor, muitos jogos
@@ -20,7 +21,8 @@ Todo jogo é uma "roupa" diferente sobre o mesmo conteúdo (as cartas de uma tri
 - Caminhos **relativos** (sem barra no início) e nomes de arquivos em **minúsculas**: o site roda no GitHub Pages em `/diver/`.
 - Nada de dependências de rede, exceto a fonte do Google Fonts (sempre com fallback). Bibliotecas, se necessárias, ficam dentro do repositório.
 - `localStorage` e `IndexedDB` sempre dentro de try/catch; o app precisa funcionar mesmo se o armazenamento falhar.
-- **Nunca** coloque chaves secretas, senhas ou dados de alunos no repositório (ele é público).
+- **Nunca** coloque chaves secretas, senhas ou dados de alunos no repositório (ele é público). No `js/config.js` só vão a URL do projeto e a chave **anon/publishable** do Supabase; nunca a `service_role`/`secret`. E-mails e senhas (inclusive do admin) só no chat ou no SQL Editor.
+- Mudou o banco? Atualize `supabase/setup.sql` (sempre reexecutável, sem apagar dados) e teste as regras de segurança (RLS) antes de publicar.
 - **Não renomeie** os campos dos JSON que já existem em `data/trilhas/`. Os blocos novos (pares, lacunas, sequências etc.) são opcionais.
 - Jogo novo = arquivo em `js/jogos/`, registrado em `js/jogos/registro.js`, seguindo o contrato de `docs/JOGOS.md`. Use `/novo-jogo`.
 - A partir da Semana 2, **toda** concessão de XP/pérolas passa por `js/economia.js`. Jogos nunca dão XP direto.

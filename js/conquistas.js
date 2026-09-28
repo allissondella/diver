@@ -83,6 +83,13 @@ const Conquistas = (() => {
       testar: (prog) => prog.simulados.some((s) => s.nota >= 9 && s.total >= 10),
     },
     {
+      id: 'aprovado-prova',
+      nome: 'Aprovado!',
+      descricao: 'Passou na prova final da trilha. Pode colocar no currículo (o mergulho, pelo menos).',
+      icone: 'i-trofeu',
+      testar: (prog) => (prog.provas || []).some((p) => p.aprovado),
+    },
+    {
       id: 'voltou-pra-buscar',
       nome: 'Voltou pra buscar',
       descricao: 'Acertou 5 questões no modo Revisão.',
