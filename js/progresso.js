@@ -45,6 +45,7 @@ const Progresso = (() => {
       hoje: { data: null, respondidas: 0 },
       conquistas: {}, // { [conquistaId]: timestamp }
       simulados: [], // [{ data, total, acertos, nota, tempoSeg }]
+      provas: [], // prova final: [{ data, total, acertos, nota, pct, aprovado, tempoSeg }]
       jogos: {}, // { [jogoId]: { partidas, melhor } } — Sala de Jogos
       leitner: {}, // { [cartaId]: caixa de 1 a 5 } — Cartas do Fundo
       stats: { respondidas: 0, acertos: 0, maiorCombo: 0, sessoes: 0, acertosRevisao: 0 },

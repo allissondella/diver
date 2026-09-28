@@ -24,7 +24,7 @@ const App = (() => {
     cartasCache: {}, // cartas derivadas por trilha
   };
 
-  const NOMES_MODO = { mergulho: 'Mergulho', simulado: 'Simulado', revisao: 'Revisão' };
+  const NOMES_MODO = { mergulho: 'Mergulho', simulado: 'Simulado', revisao: 'Revisão', prova: 'Prova final' };
   const NOMES_DIFICULDADE = { facil: 'Fácil', medio: 'Médio', dificil: 'Difícil' };
   const LETRAS = 'ABCDEF';
   const MSGS_ERRO = [
@@ -50,6 +50,8 @@ const App = (() => {
     cursos: { tela: 'tela-cursos', render: () => Biblioteca.renderCursos($('tela-cursos')) },
     pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
     perfil: { tela: 'tela-perfil', render: () => Perfil.render($('tela-perfil')) },
+    prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
+    admin: { tela: 'tela-admin', soAdmin: true, render: () => Admin.render($('tela-admin')) },
   };
   const TELAS_FOCO = ['tela-quiz', 'tela-jogo']; // sem barra lateral: uma ação principal por tela
 
@@ -68,7 +70,11 @@ const App = (() => {
       return;
     }
     abandonarAndamento();
-    if (rota.precisaTrilha && !estado.trilha) {
+    if (rota.soAdmin && !Nuvem.ehAdmin()) {
+      secao = 'inicio';
+      history.replaceState(null, '', '#inicio');
+    }
+    if (ROTAS[secao].precisaTrilha && !estado.trilha) {
       toast('Escolha uma trilha', 'Primeiro escolha o que estudar.', 'i-livro');
       secao = 'inicio';
       history.replaceState(null, '', '#inicio');
@@ -136,6 +142,7 @@ const App = (() => {
     if (!estado.trilhas.length) select.append(h('option', { value: '', text: 'Nenhuma trilha' }));
     estado.trilhas.forEach((t) => select.append(h('option', { value: t.id, selected: estado.trilha && t.id === estado.trilha.id, text: t.nome })));
 
+    atualizarConta();
     const status = limpar($('lateral-status'));
     $('topo-perolas').replaceChildren();
     if (!estado.trilha) return;
@@ -158,6 +165,28 @@ const App = (() => {
     $('badge-foco').hidden = !Organizar.focoAtivo();
   }
 
+  /** Cartão da pessoa logada (nome, admin, status da nuvem, Sair). No modo local, some. */
+  function atualizarConta() {
+    const area = limpar($('lateral-conta'));
+    const perfil = Nuvem.perfil();
+    document.querySelectorAll('[data-so-admin]').forEach((el) => (el.hidden = !Nuvem.ehAdmin()));
+    document.querySelectorAll('[data-so-gestao]').forEach((el) => (el.hidden = !podeGerenciar()));
+    area.hidden = !perfil;
+    if (!perfil) return;
+    const status = { ok: 'Progresso salvo na nuvem', salvando: 'Salvando…', erro: 'Sem conexão: tentando de novo' }[Nuvem.Sincronia.status()];
+    area.append(
+      h('span', { class: 'pessoa__avatar pessoa__avatar--mini', 'aria-hidden': 'true', text: perfil.nome.trim().split(/\s+/).map((x) => x[0]).slice(0, 2).join('').toUpperCase() }),
+      h('div', { class: 'lateral__conta-info' },
+        h('strong', { text: perfil.nome.split(' ')[0] }, perfil.admin ? h('span', { class: 'chip chip--aviso chip--mini', text: 'Admin' }) : null),
+        h('span', { class: `lateral__nuvem lateral__nuvem--${Nuvem.Sincronia.status()}`, text: status })),
+      h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: () => Conta.sair() }, 'Sair'));
+  }
+
+  /** Pode importar/criar trilhas? No modo local, sempre; com login, só o admin. */
+  function podeGerenciar() {
+    return !Nuvem.ativa || Nuvem.ehAdmin();
+  }
+
   /* ---------- Bolhas do fundo ---------- */
   function criarBolhas() {
     if (movimentoReduzido) return;
@@ -176,7 +205,12 @@ const App = (() => {
      TRILHAS
      ========================================================= */
   async function carregarTrilhas() {
-    const { trilhas, problemas, semServidor } = await Trilhas.carregarTodas();
+    const resultado = await Trilhas.carregarTodas();
+    const { problemas, semServidor } = resultado;
+    // Com login: o admin vê tudo; cada aluno vê só os cursos atribuídos a ele
+    const trilhas = Nuvem.ativa && !Nuvem.ehAdmin()
+      ? resultado.trilhas.filter((t) => Nuvem.matriculas().includes(t.id))
+      : resultado.trilhas;
     estado.trilhas = trilhas;
     estado.cartasCache = {};
     const ultima = Progresso.ultimaTrilha();
@@ -223,7 +257,9 @@ const App = (() => {
   function renderizarTrilhas() {
     const lista = limpar($('lista-trilhas'));
     if (!estado.trilhas.length) {
-      lista.append(h('p', { class: 'carregando', text: 'Nenhuma trilha por aqui ainda.' }));
+      lista.append(Nuvem.ativa && !Nuvem.ehAdmin()
+        ? UI.vazio('Seu acesso está pronto, mas nenhum curso foi atribuído a você ainda. Fale com quem te convidou para o Diver.')
+        : h('p', { class: 'carregando', text: 'Nenhuma trilha por aqui ainda.' }));
     }
     estado.trilhas.forEach((t) => {
       const prog = Progresso.carregar(t.id);
@@ -536,6 +572,66 @@ const App = (() => {
   }
 
   /* =========================================================
+     PROVA FINAL
+     Regras no bloco opcional "prova" da trilha: { questoes, minutos, aprovacao, exigeFases }
+     ========================================================= */
+  function configProva(trilha) {
+    const c = trilha.prova || {};
+    const quantidade = Math.min(c.questoes || 40, trilha.questoes.length);
+    return {
+      quantidade,
+      minutos: c.minutos || Math.ceil(quantidade * 1.5),
+      aprovacao: c.aprovacao || 70,
+      exigeFases: c.exigeFases !== false,
+    };
+  }
+
+  function renderizarProva() {
+    const { trilha, prog } = estado;
+    const cfg = configProva(trilha);
+    const concluidas = trilha.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
+    const fasesOk = concluidas.length === trilha.fases.length;
+    const liberada = !cfg.exigeFases || fasesOk || Nuvem.ehAdmin();
+    const provas = prog.provas || [];
+    const aprovacao = provas.find((p) => p.aprovado);
+    const area = limpar($('tela-prova'));
+
+    area.append(...[
+      UI.cabecalho(trilha.nome, 'Prova final', 'O último mergulho da trilha: sem dicas no meio do caminho, com cronômetro e nota mínima para aprovação.'),
+      aprovacao ? h('div', { class: 'selo selo--grande' }, icone('i-trofeu'), h('span', {}, h('strong', { text: 'Aprovado! ' }), `Nota ${aprovacao.nota.toLocaleString('pt-BR')} em ${new Date(aprovacao.data).toLocaleDateString('pt-BR')}.`)) : null,
+      h('div', { class: 'cartao prova' },
+        h('h2', { class: 'cartao__titulo', text: 'Como funciona' }),
+        h('ul', { class: 'prova__regras' },
+          h('li', {}, icone('i-livro'), h('span', {}, h('strong', { text: `${cfg.quantidade} questões` }), ' sorteadas da trilha inteira')),
+          h('li', {}, icone('i-relogio'), h('span', {}, h('strong', { text: `${cfg.minutos} minutos` }), ' no total; o que ficar em branco conta como erro')),
+          h('li', {}, icone('i-alvo'), h('span', {}, h('strong', { text: `${cfg.aprovacao}% de acertos` }), ` para ser aprovado (${Math.ceil((cfg.aprovacao / 100) * cfg.quantidade)} de ${cfg.quantidade})`)),
+          h('li', {}, icone('i-check'), h('span', { text: 'Correção só no final, com a explicação de cada erro' }))),
+        cfg.exigeFases ? h('div', { class: 'prova__fases' },
+          h('p', { class: 'rotulo-campo', text: `Pré-requisito: completar as ${trilha.fases.length} fases do Mergulho (${concluidas.length}/${trilha.fases.length})` }),
+          h('ul', { class: 'prova__lista-fases' }, trilha.fases.map((f) => {
+            const ok = prog.fases[f.id] && prog.fases[f.id].concluida;
+            return h('li', { class: ok ? 'texto-sucesso' : 'texto-suave' }, icone(ok ? 'i-check' : 'i-cadeado'), f.nome);
+          }))) : null,
+        !fasesOk && cfg.exigeFases && Nuvem.ehAdmin() ? h('p', { class: 'jogo-card__dica', text: 'Como admin, você pode fazer a prova sem completar as fases (para testar).' }) : null,
+        liberada
+          ? h('button', { type: 'button', class: 'botao botao--primario botao--grande', onclick: iniciarProva }, icone('i-trofeu'), provas.length ? 'Fazer a prova de novo' : 'Começar a prova')
+          : h('a', { class: 'botao botao--secundario', href: '#mergulho' }, 'Voltar ao mapa e completar as fases')),
+      h('div', { class: 'cartao' },
+        h('h2', { class: 'cartao__titulo', text: 'Suas tentativas' }),
+        provas.length
+          ? h('div', { class: 'historico' }, h('ul', {}, provas.slice(0, 10).map((p) => h('li', {},
+            h('span', { text: `${new Date(p.data).toLocaleDateString('pt-BR')} · ${p.acertos}/${p.total} (${p.pct}%) · ${formatarTempo(p.tempoSeg)}` }),
+            h('strong', { class: p.aprovado ? 'texto-sucesso' : 'texto-erro', text: p.aprovado ? `Aprovado · ${p.nota.toLocaleString('pt-BR')}` : `Nota ${p.nota.toLocaleString('pt-BR')}` })))))
+          : h('p', { class: 'texto-suave', text: 'Nenhuma tentativa ainda. Quando estiver pronto, é só começar.' }))].filter(Boolean));
+  }
+
+  function iniciarProva() {
+    const cfg = configProva(estado.trilha);
+    if (!window.confirm(`A prova tem ${cfg.quantidade} questões e ${cfg.minutos} minutos. O cronômetro começa assim que você confirmar. Bora?`)) return;
+    iniciarSessao('prova', { quantidade: cfg.quantidade, minutos: cfg.minutos, aprovacao: cfg.aprovacao });
+  }
+
+  /* =========================================================
      SALA DE JOGOS
      ========================================================= */
   function renderizarSala() {
@@ -806,7 +902,7 @@ const App = (() => {
     checarNivel();
 
     // Simulado: sem feedback, segue direto para a próxima
-    if (s.modo === 'simulado') {
+    if (s.modo === 'simulado' || s.modo === 'prova') {
       botoes.find((b) => Number(b.dataset.indice) === indice).classList.add('alternativa--escolhida');
       setTimeout(continuar, movimentoReduzido ? 0 : 280);
       return;
@@ -920,6 +1016,14 @@ const App = (() => {
       if (r.motivo === 'tempo') sub = 'O tempo acabou. ' + sub;
       return { titulo: `Nota ${nota}`, sub };
     }
+    if (r.modo === 'prova') {
+      if (r.nota === null || r.nota === undefined) return { titulo: 'Prova interrompida', sub: 'Sem nota desta vez. Quando quiser, é só começar de novo.' };
+      const nota = r.nota.toLocaleString('pt-BR', { minimumFractionDigits: 1 });
+      const base = `Você acertou ${r.pct}% (mínimo para aprovação: ${r.aprovacao}%).`;
+      return r.aprovado
+        ? { titulo: `Aprovado! Nota ${nota}`, sub: `${base} Mandou bem, Diver: esse mergulho foi até o fundo.` }
+        : { titulo: `Ainda não foi desta vez · Nota ${nota}`, sub: `${r.motivo === 'tempo' ? 'O tempo acabou. ' : ''}${base} Revise os temas mais fracos abaixo e tente de novo quando quiser.` };
+    }
     const restam = Progresso.paraRevisar(estado.prog, trilha).length;
     return {
       titulo: 'Revisão concluída',
@@ -1014,6 +1118,11 @@ const App = (() => {
         principal.textContent = r.faseConcluida ? 'Refazer fase' : 'Tentar de novo';
         principal.onclick = () => iniciarSessao('mergulho', { faseId: r.fase.id });
       }
+      voltar.textContent = 'Voltar ao mapa';
+      voltar.onclick = () => irPara('mergulho');
+    } else if (r.modo === 'prova') {
+      principal.textContent = r.aprovado ? 'Ver a prova final' : 'Tentar a prova de novo';
+      principal.onclick = () => (r.aprovado ? irPara('prova') : iniciarProva());
       voltar.textContent = 'Voltar ao mapa';
       voltar.onclick = () => irPara('mergulho');
     } else if (r.modo === 'simulado') {
@@ -1146,6 +1255,8 @@ const App = (() => {
     UI.montarMascotes();
     criarBolhas();
     ligarEventos();
+    await Conta.garantir(); // com Supabase configurado: login + senha própria + progresso da nuvem
+    Nuvem.Sincronia.aoMudar(() => atualizarConta());
     await carregarTrilhas();
     const secao = location.hash.slice(1);
     navegar(ROTAS[secao] ? secao : 'inicio');
@@ -1162,5 +1273,6 @@ const App = (() => {
     irPara,
     concederXP,
     recarregarTrilhas,
+    podeGerenciar,
   };
 })();

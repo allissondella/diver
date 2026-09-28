@@ -753,3 +753,121 @@ details[open] > summary::after { content: "−"; }
   .cal-layout { grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr); align-items: start; }
   .leitor__corpo { grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); }
 }
+
+/* ---------- Login e primeiro acesso (conta.js) ---------- */
+.modo-conta .app { padding-top: 24px; }
+.conta {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+.conta__mascote { width: 220px; max-width: 70%; }
+.conta__logo { font-size: clamp(2.4rem, 10vw, 3.2rem); }
+.conta__titulo-grande { font-size: 1.6rem; font-weight: 800; }
+.conta__texto { color: var(--texto-suave); }
+.conta__form {
+  width: 100%;
+  display: grid;
+  gap: 14px;
+  margin-top: 8px;
+  text-align: left;
+}
+.conta__titulo { font-size: 1.15rem; font-weight: 800; }
+.conta__aviso { min-height: 1.4em; color: var(--coral); font-weight: 700; font-size: 0.92rem; }
+.conta__aviso:empty { min-height: 0; }
+.conta__regras {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 2px;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+.conta__rodape { margin-top: 8px; font-size: 0.88rem; color: var(--texto-suave); }
+.campo-grupo { display: grid; }
+.campo-senha { position: relative; display: flex; align-items: center; }
+.campo-senha .campo { padding-right: 96px; }
+.campo-senha__ver { position: absolute; right: 4px; }
+
+/* ---------- Barra lateral: pessoa logada ---------- */
+.lateral__conta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+}
+.lateral__conta-info { flex: 1; min-width: 0; display: grid; font-size: 0.85rem; }
+.lateral__conta-info strong { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
+.lateral__nuvem { color: var(--texto-suave); font-size: 0.75rem; }
+.lateral__nuvem--salvando { color: var(--amarelo); }
+.lateral__nuvem--erro { color: var(--coral); }
+.lateral__conta .botao--link { min-height: 40px; padding: 6px 8px; }
+.chip--mini { padding: 1px 8px; font-size: 0.68rem; }
+
+/* ---------- Admin ---------- */
+.form-admin { display: grid; gap: 12px; margin-bottom: 20px; }
+.form-admin > .botao { justify-self: start; }
+.secao-titulo--linha { margin: 0; flex: 1; }
+.pessoas { display: grid; gap: 12px; }
+.pessoa { display: grid; gap: 10px; margin: 0 !important; }
+.pessoa--inativa { opacity: 0.7; }
+.pessoa__cabeca { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.pessoa__avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--superficie-turquesa);
+  color: var(--turquesa-claro);
+  font-weight: 800;
+}
+.pessoa__avatar--mini { width: 36px; height: 36px; font-size: 0.85rem; }
+.pessoa__info { flex: 1; min-width: 180px; display: grid; }
+.pessoa__nome { font-size: 1.05rem; font-weight: 800; }
+.pessoa__email { font-size: 0.88rem; overflow-wrap: anywhere; }
+.pessoa__chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.pessoa__acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+.pessoa__progresso { padding-top: 4px; }
+.tabela--compacta th,
+.tabela--compacta td { padding: 8px 6px; font-size: 0.85rem; }
+.senha-temp {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: var(--raio-pequeno);
+  background: rgba(250, 204, 21, 0.08);
+  border: 1px solid rgba(250, 204, 21, 0.45);
+}
+.senha-temp__titulo { display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--turquesa-claro); }
+.senha-temp__codigo {
+  justify-self: start;
+  padding: 8px 14px;
+  border-radius: var(--raio-pequeno);
+  background: var(--fundo-fundo);
+  color: var(--amarelo);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  user-select: all;
+}
+.senha-temp__mensagem { font-size: 0.85rem; }
+.senha-temp .botao { justify-self: start; }
+
+/* ---------- Prova final ---------- */
+.prova { display: grid; gap: 14px; }
+.prova > .botao { justify-self: start; }
+.prova__regras { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.prova__regras li { display: flex; align-items: flex-start; gap: 10px; }
+.prova__regras .icone { color: var(--amarelo); margin-top: 2px; }
+.prova__lista-fases { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 16px; font-weight: 700; }
+.prova__lista-fases li { display: inline-flex; align-items: center; gap: 6px; }
+.selo--grande { margin-bottom: 16px; font-size: 1rem; }
