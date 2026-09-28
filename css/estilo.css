@@ -23,6 +23,12 @@
   --texto-suave: #A9BCD6;
   --texto-escuro: #0B2545;
 
+  /* Cores extras para etiquetas e listas das Tarefas (claras o bastante para o fundo marinho) */
+  --azul: #60A5FA;
+  --lilas: #C4B5FD;
+  --laranja: #FDBA74;
+  --verde: #86EFAC;
+
   --raio: 16px;
   --raio-pequeno: 10px;
   --sombra: 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -63,7 +69,8 @@ p {
 
 button,
 select,
-input {
+input,
+textarea {
   font: inherit;
   color: inherit;
 }

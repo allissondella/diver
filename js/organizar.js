@@ -1,20 +1,13 @@
 /*
- * organizar.js — área "Organizar": Tarefas (Kanban), Calendário (com gerador de
- * cronograma) e Modo Foco. Tudo salvo no navegador (localStorage, via Dados).
- * XP de tarefas e do foco passa pelo App -> Economia (nunca direto daqui).
+ * organizar.js — área "Organizar": Calendário (com gerador de cronograma) e Modo Foco.
+ * As Tarefas (quadros, listas e cartões) ficam em quadros.js; o Calendário lê delas
+ * as tarefas abertas com prazo. Tudo salvo no navegador (localStorage, via Dados).
+ * XP do foco passa pelo App -> Economia (nunca direto daqui).
  */
 const Organizar = (() => {
   const { h, icone, limpar } = UI;
-  const CHAVE_TAREFAS = 'diver:v1:tarefas';
   const CHAVE_EVENTOS = 'diver:v1:eventos';
 
-  const COLUNAS = [
-    { id: 'afazer', nome: 'A fazer' },
-    { id: 'fazendo', nome: 'Fazendo' },
-    { id: 'revisar', nome: 'Revisar' },
-    { id: 'feito', nome: 'Feito' },
-  ];
-  const PRIORIDADES = { alta: 'Alta', media: 'Média', baixa: 'Baixa' };
   const TIPOS = {
     prova: { nome: 'Prova', icone: 'i-alvo' },
     aula: { nome: 'Aula', icone: 'i-livro' },
@@ -22,8 +15,7 @@ const Organizar = (() => {
     descanso: { nome: 'Descanso', icone: 'i-onda' },
   };
 
-  const tarefas = () => Dados.ler(CHAVE_TAREFAS, []);
-  const salvarTarefas = (l) => Dados.gravar(CHAVE_TAREFAS, l);
+  const tarefasComPrazo = () => Quadros.comPrazo(); // abertas, de todos os quadros
   const eventos = () => Dados.ler(CHAVE_EVENTOS, []);
   const salvarEventos = (l) => Dados.gravar(CHAVE_EVENTOS, l);
 
@@ -37,187 +29,6 @@ const Organizar = (() => {
       comVazio ? h('option', { value: '', text: 'Sem trilha' }) : null,
       ...App.trilhas().map((t) => h('option', { value: t.id, selected: t.id === selecionada, text: t.nome })),
     ];
-  }
-
-  /* =========================================================
-     TAREFAS (KANBAN)
-     ========================================================= */
-  const estadoKanban = { filtroTrilha: '', filtroPrazo: 'todos', aba: 'afazer' };
-
-  function situacaoPrazo(prazo) {
-    if (!prazo) return null;
-    const hoje = UI.dataLocal();
-    if (prazo < hoje) return 'atrasada';
-    if (prazo === hoje) return 'hoje';
-    return 'futura';
-  }
-
-  function renderTarefas(secao) {
-    limpar(secao);
-    const atual = App.trilhaAtual();
-    const titulo = h('input', { class: 'campo', name: 'titulo', required: true, maxlength: '120', placeholder: 'Ex.: Resumo de Revolução Industrial', 'aria-label': 'Título da tarefa' });
-    const trilha = h('select', { name: 'trilha', 'aria-label': 'Trilha' }, opcoesTrilha(atual && atual.id));
-    const prazo = h('input', { class: 'campo', type: 'date', name: 'prazo', 'aria-label': 'Prazo' });
-    const prioridade = h('select', { name: 'prioridade', 'aria-label': 'Prioridade' },
-      Object.entries(PRIORIDADES).map(([v, n]) => h('option', { value: v, selected: v === 'media', text: n })));
-
-    const form = h('form', { class: 'cartao form-linha', onsubmit: (e) => {
-      e.preventDefault();
-      if (!titulo.value.trim()) return;
-      const lista = tarefas();
-      lista.push({
-        id: UI.id('tarefa'), titulo: titulo.value.trim(), trilhaId: trilha.value || null, status: 'afazer',
-        prazo: prazo.value || '', prioridade: prioridade.value, ordem: Date.now(), xpConcedido: false, criadaEm: Date.now(),
-      });
-      salvarTarefas(lista);
-      titulo.value = '';
-      prazo.value = '';
-      estadoKanban.aba = 'afazer';
-      desenharQuadro();
-      titulo.focus();
-      UI.toast('Tarefa criada', 'Ela está em "A fazer".', 'i-colunas');
-    } },
-    h('label', { class: 'form-linha__grande' }, h('span', { class: 'rotulo-campo', text: 'Nova tarefa' }), titulo),
-    h('label', {}, h('span', { class: 'rotulo-campo', text: 'Trilha' }), trilha),
-    h('label', {}, h('span', { class: 'rotulo-campo', text: 'Prazo' }), prazo),
-    h('label', {}, h('span', { class: 'rotulo-campo', text: 'Prioridade' }), prioridade),
-    h('button', { type: 'submit', class: 'botao botao--primario' }, icone('i-mais'), 'Adicionar'));
-
-    const filtroTrilha = h('select', { 'aria-label': 'Filtrar por trilha', onchange: (e) => { estadoKanban.filtroTrilha = e.target.value; desenharQuadro(); } },
-      h('option', { value: '', text: 'Todas as trilhas' }), ...App.trilhas().map((t) => h('option', { value: t.id, selected: t.id === estadoKanban.filtroTrilha, text: t.nome })));
-    const filtroPrazo = h('select', { 'aria-label': 'Filtrar por prazo', onchange: (e) => { estadoKanban.filtroPrazo = e.target.value; desenharQuadro(); } },
-      [['todos', 'Qualquer prazo'], ['atrasada', 'Atrasadas'], ['hoje', 'Para hoje'], ['semana', 'Próximos 7 dias']].map(([v, n]) => h('option', { value: v, selected: v === estadoKanban.filtroPrazo, text: n })));
-
-    const abas = h('div', { class: 'kanban-abas', role: 'tablist', 'aria-label': 'Colunas' });
-    const quadro = h('div', { class: 'kanban' });
-
-    secao.append(
-      UI.cabecalho('Organizar', 'Tarefas', 'Arraste os cartões entre as colunas (ou use as setinhas). Concluir uma tarefa vale XP uma vez.'),
-      form,
-      h('div', { class: 'filtros' }, icone('i-filtro'), filtroTrilha, filtroPrazo),
-      abas, quadro);
-
-    function filtrar(l) {
-      const hoje = UI.dataLocal();
-      const semana = UI.dataLocal(new Date(Date.now() + 7 * 864e5));
-      return l.filter((t) => {
-        if (estadoKanban.filtroTrilha && t.trilhaId !== estadoKanban.filtroTrilha) return false;
-        const f = estadoKanban.filtroPrazo;
-        if (f === 'atrasada') return t.prazo && t.prazo < hoje && t.status !== 'feito';
-        if (f === 'hoje') return t.prazo === hoje;
-        if (f === 'semana') return t.prazo && t.prazo >= hoje && t.prazo <= semana;
-        return true;
-      });
-    }
-
-    function mover(id, status, posicao) {
-      const lista = tarefas();
-      const t = lista.find((x) => x.id === id);
-      if (!t) return;
-      const anterior = t.status;
-      t.status = status;
-      // reordena a coluna de destino
-      const coluna = lista.filter((x) => x.status === status && x.id !== id).sort((a, b) => a.ordem - b.ordem);
-      coluna.splice(posicao === undefined ? coluna.length : posicao, 0, t);
-      coluna.forEach((x, k) => (x.ordem = k));
-      if (status === 'feito' && anterior !== 'feito' && !t.xpConcedido) {
-        t.xpConcedido = true;
-        App.concederXP(t.trilhaId, Economia.CONFIG.tarefa, 'Tarefa concluída');
-      }
-      salvarTarefas(lista);
-      desenharQuadro(id);
-    }
-
-    function desenharQuadro(focarId) {
-      const lista = filtrar(tarefas());
-      limpar(abas);
-      limpar(quadro);
-      COLUNAS.forEach((col, ci) => {
-        const daColuna = lista.filter((t) => t.status === col.id).sort((a, b) => a.ordem - b.ordem);
-        abas.append(h('button', {
-          type: 'button', role: 'tab', class: 'kanban-aba', 'aria-selected': String(estadoKanban.aba === col.id),
-          onclick: () => { estadoKanban.aba = col.id; desenharQuadro(); },
-        }, col.nome, h('span', { class: 'contador', text: String(daColuna.length) })));
-
-        const ul = h('ul', { class: 'kanban__lista', 'data-status': col.id, 'aria-label': col.nome });
-        daColuna.forEach((t) => {
-          const sit = t.status === 'feito' ? null : situacaoPrazo(t.prazo);
-          const li = h('li', { class: `tarefa tarefa--${t.prioridade} ${t.status === 'feito' ? 'tarefa--feita' : ''}`, 'data-id': t.id, tabindex: '0' },
-            h('div', { class: 'tarefa__topo' },
-              h('span', { class: 'tarefa__alca', 'aria-hidden': 'true', title: 'Arraste', text: '⋮⋮' }),
-              h('strong', { class: 'tarefa__titulo', text: t.titulo })),
-            h('div', { class: 'tarefa__meta' },
-              t.trilhaId ? h('span', { class: 'chip', text: nomeTrilha(t.trilhaId) || 'Trilha removida' }) : null,
-              t.prazo ? h('span', { class: `chip chip--${sit || 'ok'}` }, icone('i-calendario'),
-                `${sit === 'atrasada' ? 'Atrasada · ' : sit === 'hoje' ? 'Hoje · ' : ''}${UI.formatarData(t.prazo)}`) : null,
-              h('span', { class: `chip chip--prioridade-${t.prioridade}`, text: PRIORIDADES[t.prioridade] })),
-            h('div', { class: 'tarefa__acoes' },
-              h('button', { type: 'button', class: 'botao-icone botao-icone--mini', disabled: ci === 0, 'aria-label': `Mover "${t.titulo}" para ${ci > 0 ? COLUNAS[ci - 1].nome : ''}`, onclick: () => mover(t.id, COLUNAS[ci - 1].id) }, icone('i-voltar')),
-              h('button', { type: 'button', class: 'botao-icone botao-icone--mini', disabled: ci === COLUNAS.length - 1, 'aria-label': `Mover "${t.titulo}" para ${ci < COLUNAS.length - 1 ? COLUNAS[ci + 1].nome : ''}`, onclick: () => mover(t.id, COLUNAS[ci + 1].id) }, icone('i-seta-dir')),
-              h('button', { type: 'button', class: 'botao-icone botao-icone--mini', 'aria-label': `Excluir "${t.titulo}"`, onclick: () => {
-                if (!window.confirm(`Excluir a tarefa "${t.titulo}"?`)) return;
-                salvarTarefas(tarefas().filter((x) => x.id !== t.id));
-                desenharQuadro();
-              } }, icone('i-lixo'))));
-          li.addEventListener('pointerdown', (e) => arrastar(e, t.id));
-          ul.append(li);
-        });
-        if (!daColuna.length) ul.append(h('li', { class: 'kanban__vazio', text: col.id === 'feito' ? 'Nada concluído ainda.' : 'Nenhuma tarefa aqui.' }));
-
-        quadro.append(h('section', { class: `kanban__coluna ${estadoKanban.aba === col.id ? 'kanban__coluna--ativa' : ''}`, 'aria-label': col.nome },
-          h('h2', { class: 'kanban__titulo' }, col.nome, h('span', { class: 'contador', text: String(daColuna.length) })), ul));
-      });
-      if (focarId) {
-        const el = quadro.querySelector(`[data-id="${focarId}"]`);
-        if (el) el.focus({ preventScroll: true });
-      }
-    }
-
-    // Arrastar e soltar com eventos de ponteiro (sem biblioteca). Começa pela alça ⋮⋮ no toque.
-    function arrastar(e, id) {
-      if (e.target.closest('button') || (e.pointerType === 'mouse' && e.button !== 0)) return;
-      if (e.pointerType !== 'mouse' && !e.target.closest('.tarefa__alca')) return;
-      const origem = e.currentTarget;
-      const inicioX = e.clientX;
-      const inicioY = e.clientY;
-      let fantasma = null;
-      const mexer = (ev) => {
-        if (!fantasma) {
-          if (Math.hypot(ev.clientX - inicioX, ev.clientY - inicioY) < 6) return;
-          fantasma = origem.cloneNode(true);
-          fantasma.classList.add('tarefa--fantasma');
-          fantasma.style.width = `${origem.offsetWidth}px`;
-          document.body.append(fantasma);
-          origem.classList.add('tarefa--origem');
-        }
-        ev.preventDefault();
-        fantasma.style.transform = `translate(${ev.clientX - 20}px, ${ev.clientY - 20}px)`;
-        quadro.querySelectorAll('.kanban__lista').forEach((l) => l.classList.remove('kanban__lista--alvo'));
-        const alvo = document.elementFromPoint(ev.clientX, ev.clientY);
-        const lista = alvo && alvo.closest('.kanban__lista');
-        if (lista) lista.classList.add('kanban__lista--alvo');
-      };
-      const soltar = (ev) => {
-        window.removeEventListener('pointermove', mexer);
-        window.removeEventListener('pointerup', soltar);
-        window.removeEventListener('pointercancel', soltar);
-        if (!fantasma) return;
-        fantasma.remove();
-        origem.classList.remove('tarefa--origem');
-        const alvo = document.elementFromPoint(ev.clientX, ev.clientY);
-        const lista = alvo && alvo.closest('.kanban__lista');
-        if (!lista) return desenharQuadro();
-        // posição = quantos cartões ficam acima do ponteiro
-        const cartoes = [...lista.querySelectorAll('.tarefa')].filter((c) => c.dataset.id !== id);
-        const pos = cartoes.filter((c) => c.getBoundingClientRect().top + c.offsetHeight / 2 < ev.clientY).length;
-        mover(id, lista.dataset.status, pos);
-      };
-      window.addEventListener('pointermove', mexer);
-      window.addEventListener('pointerup', soltar);
-      window.addEventListener('pointercancel', soltar);
-    }
-
-    desenharQuadro();
   }
 
   /* =========================================================
@@ -243,7 +54,7 @@ const Organizar = (() => {
     function doDia(data) {
       return {
         evs: eventos().filter((e) => e.data === data).sort((a, b) => (a.hora || '').localeCompare(b.hora || '')),
-        tars: tarefas().filter((t) => t.prazo === data && t.status !== 'feito'),
+        tars: tarefasComPrazo().filter((t) => t.prazo === data),
       };
     }
 
@@ -356,7 +167,8 @@ const Organizar = (() => {
             } }, icone('i-lixo')))),
           tars.map((t) => h('li', { class: 'evento evento--tarefa' },
             h('span', { class: 'evento__icone' }, icone('i-colunas')),
-            h('span', { class: 'evento__texto' }, h('strong', { text: t.titulo }), h('span', { text: 'Prazo de tarefa' }))))),
+            h('span', { class: 'evento__texto' }, h('strong', { text: t.titulo }), h('span', { text: `Prazo de tarefa · ${t.quadro} › ${t.lista}` })),
+            h('button', { type: 'button', class: 'botao-icone botao-icone--mini', 'aria-label': `Abrir a tarefa ${t.titulo}`, title: 'Abrir a tarefa', onclick: () => Quadros.abrirTarefa(t.id) }, icone('i-seta-dir'))))),
         h('form', { class: 'form-evento', onsubmit: (e) => {
           e.preventDefault();
           if (!tituloEv.value.trim() || !data.value) return;
@@ -532,10 +344,10 @@ const Organizar = (() => {
     const hoje = UI.dataLocal();
     const limite = UI.dataLocal(new Date(Date.now() + 3 * 864e5));
     return {
-      tarefas: tarefas().filter((t) => t.status !== 'feito' && t.prazo && t.prazo <= hoje).sort((a, b) => a.prazo.localeCompare(b.prazo)),
+      tarefas: tarefasComPrazo().filter((t) => t.prazo <= hoje).sort((a, b) => a.prazo.localeCompare(b.prazo)),
       eventos: eventos().filter((e) => e.data >= hoje && e.data <= limite).sort((a, b) => (a.data + (a.hora || '')).localeCompare(b.data + (b.hora || ''))),
     };
   }
 
-  return { renderTarefas, renderCalendario, renderFoco, resumoDoDia, TIPOS, focoAtivo: () => foco.fase === 'rodando' };
+  return { renderCalendario, renderFoco, resumoDoDia, TIPOS, focoAtivo: () => foco.fase === 'rodando' };
 })();

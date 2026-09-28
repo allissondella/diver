@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-09-28 · Tarefas em quadros
+- **Feito:** a área **Tarefas** foi refeita como quadros (`js/quadros.js`): vários quadros (☰ troca e cria; clique no nome renomeia), listas com cor, ordenação (minha ordem, prazo, título), mover, limpar concluídas e excluir; "Adicionar uma tarefa" no topo de cada lista (digita e Enter); bolinha conclui e manda para "Concluídas"; painel de detalhes com título, lista, prazo (atalhos Hoje/Amanhã/1 semana), subtarefas com progresso (2/5 no cartão), etiquetas coloridas (também filtram o quadro), notas com links clicáveis, **negrito** e listas, curso que recebe o XP e excluir; busca; arrastar cartões e listas (mouse direto, toque segurando); atalhos Enter, Shift+Enter, Alt+Enter, Esc, setas e Alt+setas; exportar e importar JSON. Prazos aparecem no Calendário (com botão para abrir a tarefa) e no Seu dia.
+- **Testes:** migração do Kanban antigo, criação, detalhes, atalhos, XP uma vez só, arrastar com mouse e com toque de verdade no celular, deslizar sem arrastar, menus, filtros, exportar/importar, Calendário e Início; regressão de todas as áreas no celular e no computador, sem erros no console.
+- **Decisões:** uma chave só (`diver:v1:quadros`), sincronizada na nuvem como as outras; etiquetas valem para todos os quadros; importar soma quadros (nunca apaga); a lista ordenada por prazo/título vira "minha ordem" quando a pessoa reordena na mão; caixas de texto passam a usar a fonte do app.
+- **Pendências:** as mesmas de antes (Supabase no ar, recuperação de senha por e-mail, D4).
+- **Próximo passo:** testar os quadros no celular de verdade e seguir com `/hoje`.
+
 ## 2026-09-29 · Login, admin, prova final e curso ISO/IEC 27001
 - **Feito:** login com Supabase (e-mail e senha) com troca de senha obrigatória no primeiro acesso; área **Admin → Alunos e cursos** (cadastrar pessoa com senha temporária e mensagem pronta, atribuir cursos, nova senha, ativar/desativar, ver progresso); progresso, tarefas e calendário sincronizados na nuvem; aluno vê só os cursos atribuídos; **Prova final** (cronometrada, nota mínima, liberada ao completar as fases); curso **ISO/IEC 27001:2022 Foundation** com 6 fases, 65 questões originais em português, blocos para todos os jogos e prova de 40 questões/60 min/65%.
 - **Testes:** `supabase/setup.sql` rodado num Postgres local com o esquema de autenticação simulado (regras de segurança testadas por papel: admin, aluno, visitante); servidor de teste imitando o Supabase para o fluxo completo no navegador (primeiro acesso do admin, cadastro, aluna no celular, progresso em outro aparelho, desativação); regressão do modo local sem erros.

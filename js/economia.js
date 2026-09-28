@@ -11,7 +11,7 @@ const Economia = (() => {
     comboAPartirDe: 3, // a partir do 3º acerto seguido...
     bonusCombo: 5, // ...+5 XP por acerto
     bonusMaximo: { xp: 60, perolas: 15 }, // teto do bônus próprio de cada jogo
-    tarefa: { xp: 10, perolas: 1 }, // mover uma tarefa para "Feito" (uma vez só)
+    tarefa: { xp: 10, perolas: 1 }, // concluir uma tarefa nas Tarefas (uma vez só por tarefa)
     foco: { xp: 15, perolas: 2 }, // completar um ciclo de foco
     desafioMultiplicador: 2, // Desafio do Dia: XP em dobro
     precoDica: 1, // pérolas por dica extra (Forca do Náufrago)

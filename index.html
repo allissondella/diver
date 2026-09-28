@@ -40,6 +40,7 @@
   <script src="js/jogos/forca.js" defer></script>
   <script src="js/jogos/corrente-do-tempo.js" defer></script>
   <!-- Áreas -->
+  <script src="js/quadros.js" defer></script>
   <script src="js/organizar.js" defer></script>
   <script src="js/biblioteca.js" defer></script>
   <script src="js/perfil.js" defer></script>
@@ -84,6 +85,11 @@
       <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
       <symbol id="i-lixo" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-filtro" viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-pontos" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="5.5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="18.5" r="1.9"/></g></symbol>
+      <symbol id="i-engrenagem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2L5.5 5.5"/><circle cx="12" cy="12" r="6.6"/></g></symbol>
+      <symbol id="i-nota" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></g></symbol>
+      <symbol id="i-etiqueta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3.5 12.5V4h8.5l8.5 8.5-8 8z"/><circle cx="8" cy="8.5" r="1.6" fill="currentColor"/></g></symbol>
+      <symbol id="i-lista-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6.5l2 2 3.5-4M3.5 15.5l2 2 3.5-4M12.5 7h8M12.5 16h8"/></g></symbol>
       <symbol id="i-lupa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></g></symbol>
       <symbol id="i-concha" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 20c-5 0-9-4-9-9 0-3 3-6 9-6s9 3 9 6c0 5-4 9-9 9z"/><path d="M12 20V6M12 20L7 7M12 20l5-13M12 20L4 10M12 20l8-10"/></g></symbol>
       <symbol id="i-garrafa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M10 2h4v4l2 3v11a2 2 0 01-2 2h-4a2 2 0 01-2-2V9l2-3z"/><path d="M8.5 13h7"/></g></symbol>
@@ -421,7 +427,7 @@
       <section id="tela-admin" class="tela tela--larga" hidden aria-label="Admin: alunos e cursos"></section>
 
       <!-- ============ ÁREAS (montadas pelos módulos organizar.js, biblioteca.js e perfil.js) ============ -->
-      <section id="tela-tarefas" class="tela tela--larga" hidden aria-label="Tarefas"></section>
+      <section id="tela-tarefas" class="tela tela--larga tela--quadro" hidden aria-label="Tarefas"></section>
       <section id="tela-calendario" class="tela tela--larga" hidden aria-label="Calendário"></section>
       <section id="tela-foco" class="tela" hidden aria-label="Modo Foco"></section>
       <section id="tela-cursos" class="tela tela--larga" hidden aria-label="Cursos e trilhas"></section>
