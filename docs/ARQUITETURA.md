@@ -25,7 +25,8 @@
 | 8 | `js/jogos/registro.js` | `Jogos` | Catálogo da Sala de Jogos, contrato e `Jogos.resultado()`. |
 | 9 | `js/jogos/comum.js` | `JogoComum` | Pergunta de múltipla escolha com feedback, atalhos e "detalhe" padrão. |
 | 10 | `js/jogos/<id>.js` | — | Um arquivo por jogo, que se registra com `Jogos.registrar({...})`. |
-| 11 | `js/organizar.js` | `Organizar` | Tarefas (Kanban), Calendário + gerador de cronograma, Modo Foco. |
+| 10b | `js/quadros.js` | `Quadros` | Tarefas em quadros: quadros → listas (colunas) → cartões, com subtarefas, etiquetas, prazo, notas com links, seção "Concluídas", arrastar e soltar (mouse e toque longo), atalhos, exportar/importar JSON. Expõe `render`, `comPrazo()` (para o Calendário e o Início) e `abrirTarefa(id)`. |
+| 11 | `js/organizar.js` | `Organizar` | Calendário + gerador de cronograma, Modo Foco e o resumo "Seu dia" (lê as tarefas de `Quadros.comPrazo()`). |
 | 12 | `js/biblioteca.js` | `Biblioteca` | Cursos e trilhas (estudar, exportar, criar colando texto) e PDFs (IndexedDB). |
 | 13 | `js/perfil.js` | `Perfil` | Nível geral somando as trilhas, tabela por trilha, backup. |
 | 13b | `js/admin.js` | `Admin` | Área de admin: cadastrar pessoa (senha temporária), atribuir cursos, nova senha, ativar/desativar, ver progresso. |
@@ -42,7 +43,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#revisao` | `tela-revisao`: fila de revisão, "Revisar agora", "Tirar da fila" | `app.js` |
 | `#jogos` | `tela-jogos`: Sala de Jogos por grupo, com estado de cada jogo | `app.js` |
 | (sem endereço) | `tela-jogo` (partida), `tela-quiz`, `tela-resumo` | `app.js` + jogos |
-| `#tarefas` | Kanban | `organizar.js` |
+| `#tarefas` | Quadros de tarefas (listas e cartões) | `quadros.js` |
 | `#calendario` | Calendário (mês/semana) + gerador de cronograma | `organizar.js` |
 | `#foco` | Modo Foco 25/5 ou 50/10 | `organizar.js` |
 | `#cursos` | Cursos e trilhas | `biblioteca.js` |
@@ -117,7 +118,7 @@ Jogos.registrar({
 | `diver:v1:trilha:<id>` | Progresso da trilha: `xp`, `perolas`, `fases`, `questoes` (peso, acertos, erros, marcada), `streak`, `metaDiaria`, `hoje`, `conquistas`, `simulados`, `stats`, `jogos` (partidas, melhor), `leitner` (caixa 1–5 por carta). |
 | `diver:v1:ultimaTrilha` | Trilha atual. |
 | `diver:v1:trilhasImportadas` | Trilhas importadas ou criadas no app. |
-| `diver:v1:tarefas` | Tarefas do Kanban: `id, titulo, trilhaId, status (afazer/fazendo/revisar/feito), prazo, prioridade, ordem, xpConcedido`. |
+| `diver:v1:quadros` | Tarefas: `{ versao, quadroAtual, quadros: [{ id, nome, listas: [ids], ocultarConcluidas }], listas: { id: { nome, cor, ordenacao (manual/prazo/titulo), tarefas: [ids] } }, tarefas: { id: { titulo, notas, prazo, etiquetas: [ids], subtarefas: [{ id, titulo, feita }], concluida, concluidaEm, criadaEm, trilhaId, xpConcedido } }, etiquetas: [{ id, nome, cor }] }`. A ordem dos cartões é a ordem do array da lista. A chave antiga `diver:v1:tarefas` (Kanban de 4 colunas) é migrada sozinha para o "Quadro principal" e apagada. |
 | `diver:v1:eventos` | Eventos do calendário: `id, titulo, tipo (prova/aula/estudo/descanso), data, hora, trilhaId, gerado`. |
 | `diver:v1:desafios` | Dias em que o Desafio do Dia foi cumprido (`{ "AAAA-MM-DD": true }`). |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
@@ -130,7 +131,7 @@ O progresso da trilha também guarda `provas` (prova final: data, total, acertos
 - **Prova final** (`modo: 'prova'` no `quiz.js`): sorteio simples da trilha, sem feedback no meio, cronômetro, em branco = erro, aprovação pela % mínima; liberada ao completar todas as fases (o admin pode fazer antes, para testar). Conquista "Aprovado!".
 - **Mergulho/Simulado/Revisão**: como na Fase 0 (ver `docs/JOGOS.md`). Continuam dando XP pelo `quiz.js`; a migração para o contrato/economia é a tarefa D7/D8.
 - **Níveis:** `NIVEIS` em `js/progresso.js` (10 níveis, Mestre Diver = 2.100 XP). O Perfil soma o XP de todas as trilhas no "nível geral".
-- **Tarefas:** mover para "Feito" dá +10 XP e +1 pérola uma única vez (na trilha da tarefa ou na atual).
+- **Tarefas:** concluir (bolinha ou Alt+Enter) dá +10 XP e +1 pérola uma única vez por tarefa (no curso escolhido no cartão ou no atual). Reabrir e concluir de novo não dá XP outra vez; subtarefas não dão XP.
 - **Modo Foco:** bloco de foco completo dá +15 XP e +2 pérolas na trilha atual.
 - **Desafio do Dia:** jogo + trilha sorteados pela data (funciona offline), XP em dobro.
 - **Streak/meta:** contam questões respondidas (quiz e jogos); tarefas e foco não contam.

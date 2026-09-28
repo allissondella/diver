@@ -44,7 +44,7 @@ const App = (() => {
     simulado: { tela: 'tela-simulado', precisaTrilha: true, render: renderizarSimulado },
     revisao: { tela: 'tela-revisao', precisaTrilha: true, render: renderizarRevisao },
     jogos: { tela: 'tela-jogos', precisaTrilha: true, render: renderizarSala },
-    tarefas: { tela: 'tela-tarefas', render: () => Organizar.renderTarefas($('tela-tarefas')) },
+    tarefas: { tela: 'tela-tarefas', render: () => Quadros.render($('tela-tarefas')) },
     calendario: { tela: 'tela-calendario', render: () => Organizar.renderCalendario($('tela-calendario')) },
     foco: { tela: 'tela-foco', render: () => Organizar.renderFoco($('tela-foco')) },
     cursos: { tela: 'tela-cursos', render: () => Biblioteca.renderCursos($('tela-cursos')) },
