@@ -71,6 +71,8 @@ Regras:
   (`facil` | `medio` | `dificil`), `fase` (id de uma fase da trilha), `enunciado`,
   `alternativas` (2 a 6 textos), `correta` (**índice a partir de 0**), `explicacao`.
 - As fases são desbloqueadas na ordem do array.
+- As alternativas são **embaralhadas na exibição** (a certa não fica sempre na mesma letra).
+  Por isso, evite alternativas do tipo "todas as anteriores" ou "letras A e B".
 - `js/trilhas.js` valida cada arquivo e mostra os problemas na tela inicial.
 
 ### Como as trilhas são encontradas
