@@ -72,15 +72,29 @@ const Progresso = (() => {
     }
   }
 
+  // As funções abaixo também usam try/catch: se o navegador bloquear o armazenamento
+  // (modo privado, cota cheia), o app segue funcionando, só sem lembrar das coisas.
   function zerar(trilhaId) {
-    localStorage.removeItem(PREFIXO + trilhaId);
+    try {
+      localStorage.removeItem(PREFIXO + trilhaId);
+    } catch (e) {
+      console.warn('Não foi possível zerar o progresso:', e);
+    }
   }
 
   function ultimaTrilha() {
-    return localStorage.getItem(CHAVE_ULTIMA);
+    try {
+      return localStorage.getItem(CHAVE_ULTIMA);
+    } catch (e) {
+      return null;
+    }
   }
   function definirUltimaTrilha(id) {
-    localStorage.setItem(CHAVE_ULTIMA, id);
+    try {
+      localStorage.setItem(CHAVE_ULTIMA, id);
+    } catch (e) {
+      /* sem armazenamento: só não lembra a última trilha */
+    }
   }
 
   /* ---------- Datas (sempre no fuso local) ---------- */
