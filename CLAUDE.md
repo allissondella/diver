@@ -27,7 +27,7 @@ Todo jogo é uma "roupa" diferente sobre o mesmo conteúdo (as cartas de uma tri
 ## Visual (resumo; detalhes em docs/DESIGN.md)
 - Fundo marinho em degradê (`#0B2545` → `#06172D`), turquesa `#14B8A6` como cor principal, amarelo `#FACC15` (XP e destaques), coral `#FB7185` (erro gentil e alertas), textos `#E6F1FF` e `#A9BCD6`.
 - Fonte **Plus Jakarta Sans**. Botão 3D com borda inferior turquesa mais escura. Bolhas suaves no fundo.
-- Mascote: **Diver** (mergulhador em pixel art), arquivos em `assets/mascote/`. O peixinho antigo sai da tela inicial.
+- Mascote: **Diver**, mergulhador de máscara e snorkel desenhado em **SVG** no estilo do app (molde no `index.html`; detalhes em `docs/DESIGN.md`). A pixel art de `assets/mascote/` é só referência. O peixinho foi aposentado.
 - Use **variáveis CSS** (tokens). Não escreva cores soltas.
 
 ## Tom de voz
@@ -49,4 +49,4 @@ Bom contraste, foco visível, alvos de toque grandes, atalhos de teclado e `pref
 Não copie questões de provas, apostilas ou livros. Os nomes dos jogos são próprios (Adivinha Aí, Caso Resolvido, Torre do Saber...); não use nomes, logos ou artes de jogos comerciais.
 
 ## Mapa dos documentos
-`docs/PRODUTO.md` (visão) · `docs/JOGOS.md` (catálogo e contrato) · `docs/DESIGN.md` (identidade) · `docs/ROADMAP.md` (120 tarefas) · `docs/DIARIO.md` (histórico) · `docs/PROMPT_INICIAL.md` (primeira sessão)
+`docs/PRODUTO.md` (visão) · `docs/JOGOS.md` (catálogo e contrato) · `docs/DESIGN.md` (identidade) · `docs/ARQUITETURA.md` (como o código funciona hoje) · `docs/ROADMAP.md` (120 tarefas) · `docs/DIARIO.md` (histórico) · `docs/PROMPT_INICIAL.md` (primeira sessão)
