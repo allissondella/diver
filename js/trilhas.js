@@ -145,10 +145,35 @@ const Trilhas = (() => {
     return resultado;
   }
 
+  /** A trilha veio do botão "importar" ou do "criar trilha" (e não de data/trilhas/)? */
+  function ehImportada(id) {
+    return lerImportadas().some((t) => t.id === id);
+  }
+
+  /** Guarda (ou atualiza) uma trilha criada/importada no navegador. */
+  function salvarImportada(trilha) {
+    const importadas = lerImportadas().filter((t) => t.id !== trilha.id);
+    importadas.push(trilha);
+    try {
+      localStorage.setItem(CHAVE_IMPORTADAS, JSON.stringify(importadas));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function removerImportada(id) {
+    try {
+      localStorage.setItem(CHAVE_IMPORTADAS, JSON.stringify(lerImportadas().filter((t) => t.id !== id)));
+    } catch (e) {
+      /* sem armazenamento */
+    }
+  }
+
   /** Questões de uma fase específica. */
   function questoesDaFase(trilha, faseId) {
     return trilha.questoes.filter((q) => q.fase === faseId);
   }
 
-  return { carregarTodas, importarArquivos, validar, questoesDaFase };
+  return { carregarTodas, importarArquivos, validar, questoesDaFase, ehImportada, salvarImportada, removerImportada };
 })();

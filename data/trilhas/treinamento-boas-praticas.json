@@ -310,5 +310,57 @@
       "correta": 1,
       "explicacao": "Engenharia social explora a boa vontade das pessoas. No tailgating, alguém entra \"na carona\" de um acesso autorizado. Ser gentil aqui é indicar a recepção: quem tem direito de entrar vai conseguir pelo caminho certo."
     }
+  ],
+  "pares": [
+    { "id": "bp-par-01", "termo": "Phishing", "definicao": "Golpe que imita um remetente confiável", "tema": "Segurança da informação" },
+    { "id": "bp-par-02", "termo": "2FA", "definicao": "Um segundo fator além da senha", "tema": "Segurança da informação" },
+    { "id": "bp-par-03", "termo": "Tailgating", "definicao": "Entrar de carona num acesso autorizado", "tema": "Segurança da informação" },
+    { "id": "bp-par-04", "termo": "LGPD", "definicao": "Lei Geral de Proteção de Dados", "tema": "LGPD" },
+    { "id": "bp-par-05", "termo": "Pomodoro", "definicao": "Blocos curtos de foco com pausas", "tema": "Produtividade" },
+    { "id": "bp-par-06", "termo": "Princípio de Pareto", "definicao": "Poucas causas geram a maior parte dos efeitos", "tema": "Produtividade" },
+    { "id": "bp-par-07", "termo": "Matriz de Eisenhower", "definicao": "Prioriza por urgência e importância", "tema": "Produtividade" },
+    { "id": "bp-par-08", "termo": "Compliance", "definicao": "Estar em conformidade com leis e regras", "tema": "Ética e compliance" },
+    { "id": "bp-par-09", "termo": "Modelo SCI", "definicao": "Situação, Comportamento e Impacto", "tema": "Feedback" },
+    { "id": "bp-par-10", "termo": "Segurança psicológica", "definicao": "Poder perguntar e errar sem medo", "tema": "Trabalho em equipe" }
+  ],
+  "verdadeiroFalso": [
+    { "id": "bp-vf-01", "afirmacao": "Pela LGPD, dados de saúde são dados pessoais sensíveis.", "verdadeira": true, "explicacao": "Saúde, origem racial, religião, opinião política, biometria e outros estão na lista de dados sensíveis.", "tema": "LGPD" },
+    { "id": "bp-vf-02", "afirmacao": "É normal a equipe de TI pedir sua senha por e-mail para fazer manutenção.", "verdadeira": false, "explicacao": "Nenhuma equipe séria pede senha por e-mail. Esse é o sinal clássico de phishing.", "tema": "Segurança da informação" },
+    { "id": "bp-vf-03", "afirmacao": "Na Matriz de Eisenhower, o que é urgente e importante deve ser feito agora.", "verdadeira": true, "explicacao": "Urgente e importante: fazer. Importante e não urgente: agendar. Urgente e não importante: delegar.", "tema": "Produtividade" },
+    { "id": "bp-vf-04", "afirmacao": "Segurança psicológica significa evitar qualquer discordância no time.", "verdadeira": false, "explicacao": "É poder se expor sem medo, o que inclui discordar com respeito.", "tema": "Trabalho em equipe" },
+    { "id": "bp-vf-05", "afirmacao": "Registrar decisões com responsável e prazo ajuda a reunião a virar ação.", "verdadeira": true, "explicacao": "Sem dono e sem prazo, a decisão tende a se perder no caminho.", "tema": "Reuniões" }
+  ],
+  "adivinhas": [
+    { "id": "bp-adv-01", "resposta": "Phishing", "aceitas": [], "tema": "Segurança da informação", "dificuldade": "facil",
+      "dicas": ["É um tipo de golpe.", "Chega muito por e-mail e mensagem.", "Costuma criar senso de urgência.", "Imita remetentes confiáveis.", "O nome vem de 'pescar' em inglês."],
+      "explicacao": "Phishing tenta 'pescar' senhas e dados fingindo ser alguém confiável." },
+    { "id": "bp-adv-02", "resposta": "Feedback", "aceitas": [], "tema": "Feedback", "dificuldade": "facil",
+      "dicas": ["Todo mundo precisa, pouca gente sabe dar.", "Pode ser positivo ou construtivo.", "Funciona melhor quando é específico.", "O modelo SCI ajuda a estruturar.", "É um retorno sobre o desempenho de alguém."],
+      "explicacao": "Feedback bom é específico, fala de comportamento (não da pessoa) e aponta um caminho." },
+    { "id": "bp-adv-03", "resposta": "Pomodoro", "aceitas": ["tecnica pomodoro"], "tema": "Produtividade", "dificuldade": "facil",
+      "dicas": ["É uma técnica de produtividade.", "Usa um cronômetro.", "Alterna foco e pausa.", "O bloco clássico tem 25 minutos.", "O nome vem de um timer em forma de tomate."],
+      "explicacao": "A técnica Pomodoro alterna blocos de foco (25 min) com pausas curtas." },
+    { "id": "bp-adv-04", "resposta": "Compliance", "aceitas": [], "tema": "Ética e compliance", "dificuldade": "medio",
+      "dicas": ["Palavra que veio do inglês.", "Tem a ver com regras.", "Muitas empresas têm uma área com esse nome.", "Cuida de política de brindes e conflito de interesses.", "Significa estar em conformidade."],
+      "explicacao": "Compliance é estar em conformidade com leis, normas e regras internas." }
+  ],
+  "sequencias": [
+    { "id": "bp-seq-01", "titulo": "Dar um feedback construtivo", "tema": "Feedback",
+      "itens": ["Escolher um momento reservado", "Descrever a situação", "Apontar o comportamento observado", "Explicar o impacto", "Combinar os próximos passos"],
+      "explicacao": "É o modelo SCI com começo (o momento certo) e fim (o combinado)." },
+    { "id": "bp-seq-02", "titulo": "Recebi um e-mail suspeito", "tema": "Segurança da informação",
+      "itens": ["Não clicar em links nem abrir anexos", "Conferir o remetente com calma", "Reportar pelo canal oficial de segurança", "Apagar a mensagem depois de reportar"],
+      "explicacao": "Primeiro não interagir, depois checar e reportar. Apagar vem por último, para a equipe de segurança poder analisar." },
+    { "id": "bp-seq-03", "titulo": "Uma reunião produtiva", "tema": "Reuniões",
+      "itens": ["Definir o objetivo", "Enviar a pauta antes", "Conduzir no horário", "Registrar decisões e responsáveis", "Enviar o resumo depois"],
+      "explicacao": "Objetivo e pauta antes; decisões e resumo depois. O meio fica mais curto." }
+  ],
+  "palavras": [
+    { "id": "bp-pal-01", "palavra": "Phishing", "dica": "Golpe que 'pesca' dados pelo e-mail", "tema": "Segurança da informação" },
+    { "id": "bp-pal-02", "palavra": "Pomodoro", "dica": "Técnica de foco de 25 minutos", "tema": "Produtividade" },
+    { "id": "bp-pal-03", "palavra": "Compliance", "dica": "Estar em conformidade com as regras", "tema": "Ética e compliance" },
+    { "id": "bp-pal-04", "palavra": "Feedback", "dica": "Retorno sobre o desempenho de alguém", "tema": "Feedback" },
+    { "id": "bp-pal-05", "palavra": "Pauta", "dica": "Lista de assuntos de uma reunião", "tema": "Reuniões" },
+    { "id": "bp-pal-06", "palavra": "Pareto", "dica": "Princípio do 80/20", "tema": "Produtividade" }
   ]
 }

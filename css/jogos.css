@@ -1,0 +1,347 @@
+/* =========================================================
+   Diver — jogos da Sala de Jogos (js/jogos/*.js)
+   Só usa as variáveis (tokens) de css/estilo.css.
+   ========================================================= */
+
+.tela--jogo { padding-bottom: 40px; }
+.jogo-topo__titulo { flex: 1; min-width: 0; }
+.jogo-topo__titulo h1 { font-size: 1.2rem; font-weight: 800; }
+.jogo-palco { position: relative; margin-top: 16px; display: grid; gap: 14px; }
+.jogo-intro { color: var(--texto-suave); }
+
+.jogo-hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--texto-suave);
+}
+.jogo-hud .oxigenio .icone { width: 22px; height: 22px; }
+.combo { display: inline-flex; align-items: center; gap: 4px; }
+.combo .icone { width: 16px; height: 16px; }
+.combo--ativo { color: var(--amarelo); }
+
+.jogo-questao { margin: 0; }
+.jogo-feedback {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: var(--raio-pequeno);
+  background: rgba(20, 184, 166, 0.1);
+  border-left: 4px solid var(--turquesa);
+  display: grid;
+  gap: 8px;
+}
+.jogo-feedback--erro { background: rgba(251, 113, 133, 0.1); border-left-color: var(--coral); }
+.jogo-feedback__titulo { font-weight: 800; font-size: 1.1rem; color: var(--turquesa-claro); }
+.jogo-feedback--erro .jogo-feedback__titulo { color: var(--coral); }
+.jogo-feedback__certa { font-weight: 700; color: var(--amarelo); }
+.jogo-feedback__texto { font-size: 0.92rem; }
+
+/* ---------- Quiz Relâmpago ---------- */
+.onda {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(230, 241, 255, 0.08);
+  overflow: hidden;
+}
+.onda__agua {
+  width: 0;
+  height: 100%;
+  background: repeating-linear-gradient(-45deg, var(--turquesa) 0 10px, var(--turquesa-brilho) 10px 20px);
+  background-size: 28px 100%;
+  animation: correnteza 1.2s linear infinite;
+  transition: width 200ms linear;
+}
+.onda--alta .onda__agua { background: repeating-linear-gradient(-45deg, var(--coral) 0 10px, var(--amarelo) 10px 20px); }
+@keyframes correnteza { to { background-position: 28px 0; } }
+.vf__pergunta { color: var(--texto-suave); margin-bottom: 6px; }
+.vf__botoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ---------- Cartas do Fundo (flashcard com virada 3D) ---------- */
+.flash-palco { display: grid; gap: 16px; perspective: 1200px; }
+.flash {
+  position: relative;
+  display: grid;
+  min-height: 260px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--raio);
+  background: transparent;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 500ms ease;
+  text-align: left;
+}
+.flash--virada { transform: rotateY(180deg); }
+.flash__lado {
+  grid-area: 1 / 1;
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 24px;
+  border-radius: var(--raio);
+  border: 2px solid var(--borda);
+  background: linear-gradient(160deg, var(--superficie-2), var(--superficie));
+  backface-visibility: hidden;
+}
+.flash__verso {
+  transform: rotateY(180deg);
+  border-color: var(--turquesa);
+  background: linear-gradient(160deg, var(--superficie-turquesa), var(--superficie));
+}
+.flash__texto { font-size: 1.2rem; font-weight: 700; line-height: 1.4; }
+.flash__dica { font-size: 0.8rem; color: var(--texto-suave); }
+.flash__resposta { font-size: 1.35rem; color: var(--turquesa-claro); }
+.flash__explicacao { font-size: 0.92rem; color: var(--texto-suave); }
+.flash-avaliacao { display: grid; gap: 10px; text-align: center; }
+.flash-avaliacao__pergunta { font-weight: 800; }
+.flash-avaliacao__botoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.flash-avaliacao__botoes .botao { padding: 10px 8px; gap: 6px; }
+
+/* ---------- Memória (conchas) ---------- */
+.memoria {
+  display: grid;
+  grid-template-columns: repeat(var(--colunas), minmax(0, 1fr));
+  gap: 8px;
+}
+.concha {
+  position: relative;
+  display: grid;
+  min-height: 108px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 800px;
+}
+.concha__costas,
+.concha__frente {
+  grid-area: 1 / 1;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  padding: 8px;
+  border-radius: var(--raio-pequeno);
+  backface-visibility: hidden;
+  transition: transform 400ms ease;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.concha__costas {
+  background: radial-gradient(circle at 30% 25%, var(--turquesa-brilho), var(--turquesa-sombra));
+  border: 2px solid var(--turquesa);
+  color: var(--texto-escuro);
+}
+.concha__costas .icone { width: 34px; height: 34px; }
+.concha__frente {
+  transform: rotateY(180deg);
+  background: var(--superficie-2);
+  border: 2px solid var(--amarelo);
+}
+.concha--definicao .concha__frente { border-color: var(--turquesa-claro); }
+.concha__tipo { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--amarelo); }
+.concha--definicao .concha__tipo { color: var(--turquesa-claro); }
+.concha--aberta .concha__costas,
+.concha--achada .concha__costas { transform: rotateY(180deg); }
+.concha--aberta .concha__frente,
+.concha--achada .concha__frente { transform: rotateY(360deg); }
+.concha--achada .concha__frente { background: var(--superficie-turquesa); border-color: var(--turquesa); opacity: 0.85; }
+.memoria-aviso { min-height: 1.5em; font-weight: 700; color: var(--turquesa-claro); text-align: center; }
+
+/* ---------- Adivinha Aí (garrafas) ---------- */
+.garrafas {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.garrafa {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--raio-pequeno);
+  background: rgba(250, 204, 21, 0.08);
+  border: 1px dashed rgba(250, 204, 21, 0.4);
+  animation: boiar 420ms ease both;
+}
+.garrafa__num { color: var(--amarelo); }
+@keyframes boiar { from { opacity: 0; transform: translateY(10px) rotate(-2deg); } to { opacity: 1; transform: none; } }
+.adivinha-form { display: flex; gap: 8px; }
+.adivinha-form .campo { flex: 1; }
+.adivinha-rodape { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-top: 10px; }
+.adivinha-chutes { font-size: 0.85rem; font-weight: 700; color: var(--texto-suave); }
+.adivinha-msg { margin-top: 12px; display: grid; gap: 8px; }
+.adivinha-explicacao { color: var(--texto-suave); font-size: 0.92rem; }
+
+/* ---------- Maré Alta ---------- */
+.mare {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(20, 184, 166, 0.35), rgba(20, 184, 166, 0.55));
+  transition: height 700ms ease;
+}
+.mare__onda {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: radial-gradient(circle at 10px -2px, transparent 12px, rgba(20, 184, 166, 0.35) 13px) repeat-x;
+  background-size: 20px 14px;
+  animation: correnteza 2s linear infinite;
+}
+.mare-palco,
+.mare-medidor,
+.tela--jogo .jogo-hud { position: relative; z-index: 1; }
+.mare-medidor {
+  padding: 6px 12px;
+  border-radius: 999px;
+  justify-self: start;
+  background: var(--superficie-turquesa);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.mare-medidor--perigo { background: rgba(251, 113, 133, 0.2); color: var(--coral); }
+
+/* ---------- Chefão do Abismo ---------- */
+.chefoes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.chefe-opcao {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border-radius: var(--raio);
+  border: 2px solid var(--borda);
+  background: rgba(18, 50, 90, 0.72);
+  cursor: pointer;
+  text-align: center;
+}
+.chefe-opcao:hover:not(:disabled) { border-color: var(--coral); }
+.chefe-opcao span { font-size: 0.8rem; color: var(--texto-suave); }
+.chefe-opcao--bloqueada { opacity: 0.45; cursor: not-allowed; }
+.chefe { width: 96px; }
+.chefe svg { display: block; width: 100%; height: auto; }
+.arena {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border-radius: var(--raio);
+  background: radial-gradient(circle at 20% 50%, var(--superficie-turquesa), var(--fundo-fundo));
+  border: 1px solid var(--borda);
+}
+.chefe--batalha { width: 120px; flex-shrink: 0; animation: flutuar 3s ease-in-out infinite; }
+.arena__info { flex: 1; display: grid; gap: 8px; }
+.vida { height: 14px; border-radius: 999px; background: rgba(230, 241, 255, 0.1); overflow: hidden; }
+.vida__barra { height: 100%; width: 100%; background: linear-gradient(90deg, var(--coral), var(--amarelo)); transition: width 500ms ease; }
+.chefe--dano { animation: tremer 420ms ease; }
+.chefe--ataca { animation: investida 520ms ease; }
+@keyframes tremer { 20%, 60% { transform: translateX(-8px) rotate(-4deg); filter: brightness(1.6); } 40%, 80% { transform: translateX(8px) rotate(4deg); } }
+@keyframes investida { 40% { transform: scale(1.25) translateX(18px); } }
+.chefe-narracao { font-weight: 700; color: var(--amarelo); min-height: 1.5em; }
+
+/* ---------- Forca do Náufrago ---------- */
+.forca { display: grid; gap: 12px; align-items: center; }
+.jangada { width: 100%; max-width: 280px; justify-self: center; }
+.jangada svg { display: block; width: 100%; height: auto; }
+.peca { transition: opacity 400ms ease, transform 600ms ease; transform-box: fill-box; transform-origin: center; }
+.peca--caiu { opacity: 0; transform: translateY(26px) rotate(25deg); }
+.forca__lado { display: grid; gap: 10px; }
+.forca-dica { color: var(--texto-suave); font-size: 0.92rem; }
+.forca-palavra {
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.forca-info { font-weight: 700; color: var(--texto-suave); }
+.forca-msg { display: grid; gap: 10px; }
+.teclado { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.tecla {
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--borda);
+  background: var(--superficie-2);
+  font-weight: 800;
+  cursor: pointer;
+}
+.tecla:hover:not(:disabled) { border-color: var(--turquesa); }
+.tecla:disabled { cursor: default; }
+.tecla--certa { background: var(--turquesa); color: var(--texto-escuro); }
+.tecla--errada { background: rgba(251, 113, 133, 0.2); color: var(--coral); text-decoration: line-through; }
+
+/* ---------- Corrente do Tempo ---------- */
+.corrente-titulo { font-size: 1.2rem; font-weight: 800; margin: 4px 0; }
+.corrente-dica { color: var(--texto-suave); font-size: 0.88rem; margin-bottom: 10px; }
+.corrente { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
+.corrente__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie-2);
+  border: 2px solid var(--borda);
+  animation: boiar 400ms ease both;
+}
+.corrente__item--pego { border-color: var(--amarelo); box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.25); }
+.corrente__item--arrastando { opacity: 0.8; border-color: var(--turquesa); }
+.corrente__item--certo { border-color: var(--turquesa); background: var(--superficie-turquesa); }
+.corrente__alca {
+  display: grid;
+  place-items: center;
+  min-width: 36px;
+  min-height: 44px;
+  color: var(--texto-suave);
+  cursor: grab;
+  touch-action: none;
+  letter-spacing: -2px;
+  font-weight: 800;
+}
+.corrente__num {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(230, 241, 255, 0.1);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.corrente__texto { flex: 1; font-size: 0.95rem; }
+.corrente__botoes { display: flex; gap: 4px; }
+.corrente-aviso { min-height: 1.4em; font-size: 0.88rem; color: var(--turquesa-claro); font-weight: 700; margin-bottom: 8px; }
+
+/* ---------- Caça ao Tesouro ---------- */
+.mapa-tesouro {
+  padding: 8px;
+  border-radius: var(--raio);
+  background: linear-gradient(180deg, var(--superficie-turquesa), var(--fundo-fundo));
+  border: 1px solid var(--borda);
+}
+.mapa-tesouro svg { display: block; width: 100%; height: auto; }
+.parada-atual { animation: pulsar 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes pulsar { 50% { transform: scale(1.18); } }
+
+@media (min-width: 640px) {
+  .forca { grid-template-columns: 1fr 1.2fr; }
+  .teclado { grid-template-columns: repeat(13, 1fr); }
+  .chefoes { grid-template-columns: repeat(4, 1fr); }
+  .concha { min-height: 124px; }
+  .concha__costas, .concha__frente { font-size: 0.85rem; }
+}

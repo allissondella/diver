@@ -1,34 +1,54 @@
 # Diver — como o código funciona hoje
 
-> Retrato técnico do app **como ele está** (Fase 0 + mascote novo). Serve para qualquer sessão do Claude Code entender o código antes de mexer.
-> Quando algo mudar de lugar (ex.: `js/economia.js` na Semana 2, `js/jogos/` na Semana 2), atualize este arquivo no mesmo commit.
+> Retrato técnico do app **como ele está**. Serve para qualquer sessão do Claude Code entender o código antes de mexer.
+> Quando algo mudar de lugar, atualize este arquivo no mesmo commit.
 
 ## Visão geral
 - HTML, CSS e JavaScript puros, sem build. Abre em qualquer servidor estático (Live Server, `python3 -m http.server`, GitHub Pages).
-- Uma página só (`index.html`) com 4 telas (`<section class="tela">`); só uma fica visível por vez.
-- Scripts **clássicos** com `defer` (sem módulos ES), carregados nesta ordem, cada um expondo um objeto global:
+- Uma página só (`index.html`) com várias telas (`<section class="tela">`); só uma fica visível por vez.
+- **Barra lateral** com as áreas (fixa no computador a partir de 960 px; gaveta aberta pelo botão ☰ no celular). O endereço muda para `#secao` (ex.: `#jogos`), então o botão Voltar do navegador funciona.
+- Durante um quiz ou um jogo a barra lateral some (classe `modo-foco` no `<body>`): uma ação principal por tela.
+- Scripts **clássicos** com `defer` (sem módulos ES), cada um expondo um objeto global. Ordem de carregamento:
 
-| Ordem | Arquivo | Objeto global | Responsabilidade |
+| Ordem | Arquivo | Global | Responsabilidade |
 | --- | --- | --- | --- |
-| 1 | `js/trilhas.js` | `Trilhas` | Encontrar, carregar, validar e importar trilhas JSON. |
-| 2 | `js/progresso.js` | `Progresso` | localStorage por trilha, XP e níveis, streak, meta diária, repetição espaçada, fases. Hoje também guarda os valores de recompensa (vão para `js/economia.js` na Semana 2). |
-| 3 | `js/conquistas.js` | `Conquistas` | Lista das 13 conquistas e a verificação de quais foram desbloqueadas. |
-| 4 | `js/quiz.js` | `Quiz` | Motor das sessões (Mergulho, Simulado, Revisão): seleção de questões, oxigênio, combo, resumo. Não mexe na tela. |
-| 5 | `js/app.js` | (nenhum, é uma função que se executa) | Telas, eventos, renderização, mascote, bolhas e avisos (toasts). |
+| 1 | `js/trilhas.js` | `Trilhas` | Encontrar, carregar, validar, importar e criar trilhas JSON. |
+| 2 | `js/progresso.js` | `Progresso` | localStorage por trilha: XP, níveis, pérolas, streak, meta, repetição espaçada, fases, jogos, caixas de Leitner. |
+| 3 | `js/conquistas.js` | `Conquistas` | As 13 conquistas e a verificação. |
+| 4 | `js/economia.js` | `Economia` | **Único** lugar que concede XP/pérolas fora do Mergulho/Simulado/Revisão: Resultado padrão dos jogos, tarefas, foco, gasto de pérolas. Valores em `Economia.CONFIG`. |
+| 5 | `js/quiz.js` | `Quiz` | Motor do Mergulho, Simulado e Revisão (aprovado; não mexer no comportamento). |
+| 6 | `js/ui.js` | `UI`, `Dados` | Ferramentas de interface (`h()`, ícones, toasts, mascote, datas) e `Dados` (localStorage com try/catch). |
+| 7 | `js/cartas.js` | `Cartas` | Transforma a trilha em cartas para os jogos (blocos opcionais + derivação das questões). |
+| 8 | `js/jogos/registro.js` | `Jogos` | Catálogo da Sala de Jogos, contrato e `Jogos.resultado()`. |
+| 9 | `js/jogos/comum.js` | `JogoComum` | Pergunta de múltipla escolha com feedback, atalhos e "detalhe" padrão. |
+| 10 | `js/jogos/<id>.js` | — | Um arquivo por jogo, que se registra com `Jogos.registrar({...})`. |
+| 11 | `js/organizar.js` | `Organizar` | Tarefas (Kanban), Calendário + gerador de cronograma, Modo Foco. |
+| 12 | `js/biblioteca.js` | `Biblioteca` | Cursos e trilhas (estudar, exportar, criar colando texto) e PDFs (IndexedDB). |
+| 13 | `js/perfil.js` | `Perfil` | Nível geral somando as trilhas, tabela por trilha, backup. |
+| 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
-Outros arquivos: `css/estilo.css` (todo o visual), `data/trilhas/*.json` (conteúdo), `assets/mascote/` (pixel art de referência), `.nojekyll` (faz o GitHub Pages servir os arquivos como estão).
+CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos). Só variáveis de cor (tokens), nada de cor solta.
 
-## Telas (`index.html`)
-| id | Tela | Principais funções em `app.js` |
+## Áreas (barra lateral) e telas
+| Endereço | Tela | Quem desenha |
 | --- | --- | --- |
-| `tela-inicio` | Início: mascote, slogan, lista de trilhas, "Bora mergulhar!", "Carregar trilha (.json)" | `carregarTrilhas`, `renderizarTrilhas`, `renderizarAvisos`, `importarTrilhas` |
-| `tela-painel` | Painel da trilha: status, mapa de profundidades, Simulado, Revisão, conquistas | `abrirTrilha`, `renderizarPainel` (status, mapa, modos, conquistas) |
-| `tela-quiz` | Questão: progresso, oxigênio ou cronômetro, alternativas, painel de explicação | `iniciarSessao`, `renderizarQuestao`, `responder`, `continuar`, `encerrarSessao` |
-| `tela-resumo` | Resumo da sessão | `renderizarResumo`, `textosResumo` |
+| `#inicio` | `tela-inicio`: mascote, escolha de trilha, "Bora mergulhar!", **Seu dia** (Desafio do Dia, meta, tarefas de hoje, próximos eventos) | `app.js` |
+| `#mergulho` | `tela-painel`: status, mapa de profundidades, atalhos, conquistas | `app.js` |
+| `#simulado` | `tela-simulado`: montar simulado + histórico de notas | `app.js` |
+| `#revisao` | `tela-revisao`: fila de revisão, "Revisar agora", "Tirar da fila" | `app.js` |
+| `#jogos` | `tela-jogos`: Sala de Jogos por grupo, com estado de cada jogo | `app.js` |
+| (sem endereço) | `tela-jogo` (partida), `tela-quiz`, `tela-resumo` | `app.js` + jogos |
+| `#tarefas` | Kanban | `organizar.js` |
+| `#calendario` | Calendário (mês/semana) + gerador de cronograma | `organizar.js` |
+| `#foco` | Modo Foco 25/5 ou 50/10 | `organizar.js` |
+| `#cursos` | Cursos e trilhas | `biblioteca.js` |
+| `#pdfs` | PDFs | `biblioteca.js` |
+| `#perfil` | Perfil e backup | `perfil.js` |
 
-- Ícones: sprite SVG no topo do `index.html` (`<symbol id="i-...">`), usados com `icone('i-nome')`.
-- Mascote: `<template id="molde-mascote">` no fim do `index.html`; `montarMascotes()` copia para cada `[data-mascote]`; `humorMascote(container, 'feliz' | 'triste' | null)` troca a reação.
-- Todo conteúdo vindo de JSON entra com `textContent` (função `h()`), nunca com `innerHTML`.
+- A **trilha atual** é escolhida no Início ("Bora mergulhar!") ou no seletor da barra lateral. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
+- Mascote: `<template id="molde-mascote">` (pixel art: WebP animado; PNG parado com "reduzir movimento"). `UI.montarMascotes()` copia para cada `[data-mascote]`; `UI.humorMascote(container, 'feliz' | 'triste' | null)`.
+- Todo conteúdo vindo de JSON entra com `textContent` (função `UI.h()`), nunca com `innerHTML`. Os únicos `innerHTML` são SVGs fixos do código (chefões, jangada, mapa do tesouro).
+- `append`/`replaceChildren` nativos escrevem "null" se receberem `null`: use `UI.h()` ou `.filter(Boolean)`.
 
 ## Formato do JSON de trilha (nomes reais dos campos)
 ```json
@@ -37,55 +57,66 @@ Outros arquivos: `css/estilo.css` (todo o visual), `data/trilhas/*.json` (conte�
   "nome": "Cursinho: conhecimentos gerais",
   "descricao": "Texto curto do card da trilha.",
   "categoria": "Cursinho",
-  "fases": [
-    { "id": "raso", "nome": "Raso", "profundidade": "0–10 m", "descricao": "Aquecimento" }
-  ],
+  "fases": [ { "id": "raso", "nome": "Raso", "profundidade": "0–10 m", "descricao": "Aquecimento" } ],
   "questoes": [
-    {
-      "id": "cg-raso-01",
-      "tema": "Matemática",
-      "dificuldade": "facil",
-      "fase": "raso",
-      "enunciado": "Pergunta?",
-      "alternativas": ["A", "B", "C", "D"],
-      "correta": 0,
-      "explicacao": "Por que a certa é a certa."
-    }
-  ]
+    { "id": "cg-raso-01", "tema": "Matemática", "dificuldade": "facil", "fase": "raso",
+      "enunciado": "Pergunta?", "alternativas": ["A", "B", "C", "D"], "correta": 0, "explicacao": "..." }
+  ],
+  "pares":           [ { "id": "cg-par-01", "termo": "Mitocôndria", "definicao": "Produz ATP", "tema": "Biologia" } ],
+  "verdadeiroFalso": [ { "id": "cg-vf-01", "afirmacao": "...", "verdadeira": false, "explicacao": "...", "tema": "Biologia" } ],
+  "adivinhas":       [ { "id": "cg-adv-01", "resposta": "Fotossíntese", "aceitas": ["fotossintese"], "dicas": ["...", "..."], "explicacao": "...", "tema": "Biologia", "dificuldade": "facil" } ],
+  "sequencias":      [ { "id": "cg-seq-01", "titulo": "Fases da mitose", "itens": ["Prófase", "Metáfase", "Anáfase", "Telófase"], "explicacao": "...", "tema": "Biologia" } ],
+  "palavras":        [ { "id": "cg-pal-01", "palavra": "Mitocôndria", "dica": "Usina de energia da célula", "tema": "Biologia" } ]
 }
 ```
-- Obrigatórios na trilha: `id`, `nome`, `descricao`, `fases` (lista com `id` em cada fase), `questoes`. `categoria` é opcional.
-- Questão: `id` único na trilha; `dificuldade` = `facil` | `medio` | `dificil`; `fase` = id de uma fase da trilha; `alternativas` com 2 a 6 textos; `correta` = **índice a partir de 0**.
-- As fases são desbloqueadas na ordem do array. As alternativas são **embaralhadas na exibição**: evite "todas as anteriores".
-- `Trilhas.validar()` confere tudo isso; problemas aparecem num aviso na tela inicial e a trilha fica de fora.
-- Blocos novos (`pares`, `lacunas` etc., ver `docs/JOGOS.md`) serão opcionais e **não** mudam os campos acima.
+- Obrigatórios: `id`, `nome`, `descricao`, `fases`, `questoes`. `categoria` e **todos os blocos depois de `questoes` são opcionais**.
+- Questão: `dificuldade` = `facil` | `medio` | `dificil`; `correta` = índice a partir de 0; alternativas embaralhadas na exibição.
+- `Trilhas.validar()` só confere as questões; blocos opcionais malformados são ignorados pelo `cartas.js`.
 
 ## Como as trilhas são encontradas (`Trilhas.carregarTodas`)
-1. `data/trilhas/indice.json`: lista de nomes de arquivo. **No GitHub Pages este é o único caminho**, então toda trilha nova precisa entrar aqui.
-2. Listagem do diretório `data/trilhas/`, quando o servidor oferece (Live Server, `python3 -m http.server`).
-3. Trilhas importadas pelo botão "Carregar trilha (.json)", guardadas no localStorage. É o caminho quando o app é aberto via `file://` (o navegador bloqueia `fetch`); nesse caso a tela inicial explica o que fazer.
+1. `data/trilhas/indice.json` (lista de arquivos). **No GitHub Pages este é o único caminho.**
+2. Listagem do diretório (Live Server, `python3 -m http.server`).
+3. Trilhas importadas pelo botão "Carregar trilha (.json)" ou criadas em Cursos ("Criar trilha colando texto"), guardadas em `diver:v1:trilhasImportadas`.
 
-## localStorage (sempre com try/catch)
+## Sala de Jogos: contrato (implementado)
+```js
+Jogos.registrar({
+  id: 'memoria', nome: 'Memória', grupo: 'rapidos', icone: 'i-concha', descricao: '...', duracao: '2-5 min',
+  requer: { pares: 6 },                        // tipo de carta: mínimo (padrão { multipla: 4 })
+  opcoes: [{ id: 'pares', rotulo: 'Tamanho', valores: [[6, '6 pares'], [8, '8 pares']], padrao: 6 }], // opcional
+  iniciar(ctx) { /* monta a tela em ctx.container */ return { destruir() {} }; },
+});
+// ctx = { container, trilha, cartas, prog, opcoes, aoTerminar(resultado), gastarPerolas(n) }
+// resultado = Jogos.resultado({ jogoId, trilha, detalhes, inicio, comboMaximo, bonus, pontuacao, titulo, subtitulo, ... })
+// detalhe  = JogoComum.detalhe(carta, acertou, { inicio, pergunta, resposta, sua, neutro })
+```
+- `cartas` vem de `Cartas.derivar(trilha)`: `{ multipla, vf, flash, pares, adivinhas, sequencias, palavras }`.
+- Estado do card: `disponivel` | `precisa` (falta conteúdo) | `embreve`. Núcleo (Mergulho, Simulado, Revisão) aparece na Sala e abre a própria área.
+- `Economia.aplicarResultado()`: detalhe cujo `cartaId` é uma questão da trilha passa pela repetição espaçada (`Progresso.registrarResposta`); o resto por `Progresso.registrarAvulsa`. `neutro: true` ("Quase" nas Cartas do Fundo) conta como estudo, sem acerto nem erro. XP por acerto = tabela do Mergulho + combo (3+ seguidos, +5); bônus do jogo com teto (`CONFIG.bonusMaximo`); Desafio do Dia dobra o XP.
+
+## localStorage (sempre com try/catch, via `Dados` ou funções do Progresso)
 | Chave | Conteúdo |
 | --- | --- |
-| `diver:v1:trilha:<id>` | Progresso da trilha: `xp`, `perolas`, `fases` (concluída, estrelas, tentativas), `questoes` (peso, acertos, erros, marcada), `streak` (atual, melhor, último dia), `metaDiaria`, `hoje` (data, respondidas), `conquistas` (id → data), `simulados` (até 20), `stats`. |
-| `diver:v1:ultimaTrilha` | id da última trilha aberta. |
-| `diver:v1:trilhasImportadas` | Trilhas carregadas pelo botão de importar. |
+| `diver:v1:trilha:<id>` | Progresso da trilha: `xp`, `perolas`, `fases`, `questoes` (peso, acertos, erros, marcada), `streak`, `metaDiaria`, `hoje`, `conquistas`, `simulados`, `stats`, `jogos` (partidas, melhor), `leitner` (caixa 1–5 por carta). |
+| `diver:v1:ultimaTrilha` | Trilha atual. |
+| `diver:v1:trilhasImportadas` | Trilhas importadas ou criadas no app. |
+| `diver:v1:tarefas` | Tarefas do Kanban: `id, titulo, trilhaId, status (afazer/fazendo/revisar/feito), prazo, prioridade, ordem, xpConcedido`. |
+| `diver:v1:eventos` | Eventos do calendário: `id, titulo, tipo (prova/aula/estudo/descanso), data, hora, trilhaId, gerado`. |
+| `diver:v1:desafios` | Dias em que o Desafio do Dia foi cumprido (`{ "AAAA-MM-DD": true }`). |
 
-Progressos antigos são mesclados com o modelo em `Progresso.carregar()`, então campos novos podem ser acrescentados sem quebrar quem já joga.
+**IndexedDB** `diver` → store `pdfs`: `{ id, nome, tamanho, trilhaId, criadoEm, arquivo (Blob), notas }`. PDFs não entram no backup do Perfil.
 
 ## Regras de jogo implementadas
-- **Níveis:** tabela `NIVEIS` em `js/progresso.js` (10 níveis, Mestre Diver = 2.100 XP).
-- **Recompensas:** `RECOMPENSA` e `BONUS_COMBO` em `js/progresso.js`; bônus de fase em `Progresso.concluirFase()`. Valores iguais à tabela de `docs/PRODUTO.md`.
-- **Repetição espaçada:** errou → `peso` +2 (máx. 6); acertou → −1 (−2 na Revisão, que também desmarca). `Quiz.selecionar()` prioriza peso alto e questões nunca vistas. No Mergulho, a errada volta uma vez ao fim da rodada.
-- **Mergulho:** até 8 questões da fase, 3 de oxigênio; estrelas = 3 − erros (mínimo 1).
-- **Simulado:** 60 s por questão; sem resposta ao fim do tempo conta como em branco; nota = acertos ÷ total × 10.
-- **Revisão:** até 10 questões com peso > 0 ou marcadas.
-- **Streak:** conta dias com pelo menos 1 questão respondida; `Progresso.streakVigente()` zera a exibição se o último estudo foi antes de ontem.
+- **Mergulho/Simulado/Revisão**: como na Fase 0 (ver `docs/JOGOS.md`). Continuam dando XP pelo `quiz.js`; a migração para o contrato/economia é a tarefa D7/D8.
+- **Níveis:** `NIVEIS` em `js/progresso.js` (10 níveis, Mestre Diver = 2.100 XP). O Perfil soma o XP de todas as trilhas no "nível geral".
+- **Tarefas:** mover para "Feito" dá +10 XP e +1 pérola uma única vez (na trilha da tarefa ou na atual).
+- **Modo Foco:** bloco de foco completo dá +15 XP e +2 pérolas na trilha atual.
+- **Desafio do Dia:** jogo + trilha sorteados pela data (funciona offline), XP em dobro.
+- **Streak/meta:** contam questões respondidas (quiz e jogos); tarefas e foco não contam.
 
 ## Acessibilidade implementada
-Foco visível (amarelo), alvos ≥ 44 px, `aria-live` no feedback e nos avisos, atalhos 1–6 / A–F nas alternativas, setas na escolha de trilha, `prefers-reduced-motion` (bolhas somem; mascote e animações ficam estáticos).
+Foco visível (amarelo); alvos ≥ 44 px; `aria-live` em feedbacks e avisos; atalhos 1–6 / A–F nas alternativas (quiz e jogos), V/F no Quiz Relâmpago, Espaço + 1/2/3 nas Cartas do Fundo, setas na Memória, Enter + setas na Corrente do Tempo, teclado físico na Forca; Esc fecha a barra lateral; `prefers-reduced-motion` (bolhas somem, mascote vira PNG parado, animações desligam).
 
 ## Como testar
-- Abrir com Live Server (ou `python3 -m http.server`) e jogar uma fase de ponta a ponta no celular (360–390 px) e no computador.
-- Casos que sempre vale repetir: fase completa, fase sem oxigênio, Revisão, Simulado com nota e com tempo esgotado, "Carregar trilha" via `file://`.
+- Abrir com Live Server (ou `python3 -m http.server`) e passar por cada área da barra lateral, no celular (360–390 px) e no computador.
+- Casos que sempre vale repetir: fase completa, fase sem oxigênio, Revisão, Simulado com nota e com tempo esgotado, uma partida de cada jogo, tarefa arrastada até "Feito", cronograma gerado, PDF enviado e aberto, "Carregar trilha" via `file://`.
