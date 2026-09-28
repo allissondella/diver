@@ -16,8 +16,6 @@ Cores medidas diretamente da tela do protótipo. **Não invente cores novas**: s
 | Coral | `#FB7185` | Erro gentil e alertas |
 | Gelo | `#E6F1FF` | Texto principal |
 | Névoa | `#A9BCD6` | Texto secundário |
-| Pele (mascote) | `#F2B28C` | Só no desenho do Diver |
-| Cabelo e barba (mascote) | `#7A4630` | Só no desenho do Diver |
 
 > Turquesa sobre branco tem contraste baixo. Use turquesa como **texto** apenas sobre fundos escuros; sobre fundos claros, use o azul-marinho.
 
@@ -55,15 +53,22 @@ Raso (0–10 m) claro e luminoso → Recife (10–40 m) turquesa → Caverna (40
 - Fundo: degradê marinho + **bolhas suaves** animadas (desligam com `prefers-reduced-motion`).
 
 ## Mascote: Diver
-Mergulhador barbudo e sorridente, nadando de bruços com as pernas esticadas e lendo um livro.
-**Decisão de 2026-09-28:** o Diver do app é desenhado em **SVG vetorial**, no mesmo estilo liso e com contorno escuro do resto da interface, usando só as cores da paleta. Ele substitui o peixinho em todas as telas (início, painel de explicação e resumo). A arte em pixel art de `assets/mascote/` fica como **referência de personagem** (e pode servir para redes sociais), mas não é usada no app.
+Mergulhador barbudo e sorridente, em **pixel art (16-bit)** com contorno escuro, nadando de bruços com as pernas esticadas e lendo um livro.
+**Decisão de 2026-09-29:** o app usa a pixel art original (a versão em SVG vetorial foi testada e descartada). O ícone da aba (favicon) é a **máscara de mergulho** em SVG com as cores da paleta, e fica.
 
-- **Onde está:** `<template id="molde-mascote">` no `index.html`. O `app.js` copia o molde para todo elemento com `data-mascote`.
-- **Cores:** roupa turquesa `#14B8A6` com sombra `#0EA597`; máscara amarela `#FACC15` com vidro `#0C354C`; snorkel coral `#FB7185`; livro coral com páginas `#E6F1FF`; nadadeiras e lápis amarelos; cilindro `#A9BCD6`; contorno `#06172D`. Cores próprias do personagem (derivadas, só para ele): **Pele** `#F2B28C` e **Cabelo e barba** `#7A4630`.
-- **Partes animáveis (classes):** `.diver__corpo` (flutua), `.diver__nadadeiras` (pernada), `.diver__bolhas` (bolhinhas do snorkel), `.diver__boca--feliz` / `.diver__boca--triste`, `.diver__pupila`.
-- **Reações:** o container recebe `.mascote--feliz` (pulinho e sorriso aberto, no acerto) ou `.mascote--triste` (balançada e cara de "ops", no erro; nunca culpa). Com `prefers-reduced-motion`, tudo fica estático.
-- **Uso:** nunca distorcer (a proporção é 206 × 116); sobre fundo escuro funciona melhor; deixe respiro ao redor.
-- **Próximas poses (Semana 23):** pensando e comemorando, no mesmo SVG.
+- Arquivos em `assets/mascote/`: `diver-personagem.png` (fundo transparente, estático), `diver-nadando.webp` (animado, recomendado) e `diver-nadando.gif` (reserva).
+- No app, o molde fica em `<template id="molde-mascote">` no `index.html`; o `app.js` copia para todo elemento com `data-mascote`:
+
+```html
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/mascote/diver-personagem.png">
+  <source srcset="assets/mascote/diver-nadando.webp" type="image/webp">
+  <img class="mascote__img" src="assets/mascote/diver-nadando.gif" alt="" width="600" height="398">
+</picture>
+```
+- Reações via CSS no container: `.mascote--feliz` (pulinho, no acerto) e `.mascote--triste` (balançada, no erro, sem culpar). Na tela inicial ele também flutua de leve. Com `prefers-reduced-motion`, vira o PNG parado e sem animação.
+- Nunca distorcer (manter a proporção). Deixar respiro ao redor. Sobre fundo escuro funciona melhor.
+- Reações ilustradas (Semana 23): feliz, pensando, comemorando e balançando.
 - O peixinho do protótipo foi aposentado. Pode voltar como ajudante nas animações de acerto (decisão em aberto).
 
 ## Tom de voz

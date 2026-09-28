@@ -4,6 +4,7 @@
 > Nunca renumere as tarefas (D1…D120) e não pule a ordem sem combinar comigo.
 > A numeração é relativa (Semana 1, Dia 1…): atrasos e feriados não quebram o plano, é só continuar de onde parou.
 > Sexta é mais leve de propósito: termina com uma retro de 10 minutos.
+> **2026-09-29:** a pedido, várias tarefas das Semanas 2 a 13 foram adiantadas de uma vez (barra lateral + implementação do que estava documentado). As marcadas `[x]` cumprem o "Pronto quando"; as parciais têm uma nota em itálico. Tarefas que dependem de pessoas (playtests, testadores) ou de serviços externos (Supabase, IA, domínio) continuam abertas.
 
 ## Visão geral das fases
 | # | Fase | Semanas | Foco |
@@ -35,7 +36,7 @@
 
 - [x] **D1 · Seg** — Revisar o Pull Request #1 no GitHub e fazer o merge na main. Conferir que o repositório não tem chaves nem dados pessoais.
   - _Pronto quando:_ A main contém o protótipo completo; nada sensível no histórico.
-- [ ] **D2 · Ter** — Publicar no GitHub Pages (Settings → Pages → main / root); corrigir caminhos relativos e maiúsculas/minúsculas.
+- [x] **D2 · Ter** — Publicar no GitHub Pages (Settings → Pages → main / root); corrigir caminhos relativos e maiúsculas/minúsculas.
   - _Pronto quando:_ O Diver abre e carrega as trilhas na URL pública, no celular e no computador.
 - [x] **D3 · Qua** — Copiar o kit (CLAUDE.md, docs/, .claude/, assets/) para a raiz do projeto e fazer o commit do kit.
   - _Pronto quando:_ /hoje funciona e lê o ROADMAP.
@@ -47,43 +48,43 @@
 ## Semana 2 · Fase 1: Diver no ar — Motor de jogos
 **Objetivo:** Um contrato único para todos os jogos e uma Sala de Jogos para escolher entre eles.
 
-- [ ] **D6 · Seg** — Definir o contrato de jogo (definição, sessão e Resultado padrão) e o registro de jogos em js/jogos/registro.js.
+- [x] **D6 · Seg** — Definir o contrato de jogo (definição, sessão e Resultado padrão) e o registro de jogos em js/jogos/registro.js.
   - _Pronto quando:_ docs/JOGOS.md revisado e o registro criado; nenhum comportamento mudou.
-- [ ] **D7 · Ter** — Migrar Mergulho, Simulado e Revisão para o contrato, sem mudar o que o aluno vê.
+- [ ] **D7 · Ter** — Migrar Mergulho, Simulado e Revisão para o contrato, sem mudar o que o aluno vê. _(parcial: os três modos estão registrados na Sala de Jogos, mas ainda não devolvem o Resultado padrão.)_
   - _Pronto quando:_ Os três modos funcionam igual, agora registrados como jogos.
-- [ ] **D8 · Qua** — Centralizar a economia em js/economia.js: todo Resultado passa por ali (XP, pérolas, oxigênio, streak, conquistas).
+- [ ] **D8 · Qua** — Centralizar a economia em js/economia.js: todo Resultado passa por ali (XP, pérolas, oxigênio, streak, conquistas). _(parcial: js/economia.js já concede XP de jogos, tarefas e foco; Mergulho, Simulado e Revisão ainda usam o quiz.js.)_
   - _Pronto quando:_ Um único lugar concede XP; valores em um arquivo de configuração.
-- [ ] **D9 · Qui** — Criar a Sala de Jogos: cards por grupo, com estado (disponível, precisa de conteúdo, em breve).
+- [x] **D9 · Qui** — Criar a Sala de Jogos: cards por grupo, com estado (disponível, precisa de conteúdo, em breve).
   - _Pronto quando:_ Escolher jogo e trilha e começar em até 2 toques.
-- [ ] **D10 · Sex** — Modelo de cartas: tipos (múltipla, V/F, par, lacuna, sequência, adivinha) e derivadores a partir das questões atuais. Retro.
+- [ ] **D10 · Sex** — Modelo de cartas: tipos (múltipla, V/F, par, lacuna, sequência, adivinha) e derivadores a partir das questões atuais. Retro. _(parcial: múltipla, V/F, par, sequência, adivinha e palavra prontos; falta lacuna.)_
   - _Pronto quando:_ Toda trilha existente já tem cartas derivadas para os jogos rápidos.
 
 ## Semana 3 · Fase 2: Jogos rápidos — Cartas do Fundo e Quiz Relâmpago
 **Objetivo:** Dois jogos rápidos e a revisão espaçada de verdade.
 
-- [ ] **D11 · Seg** — Cartas do Fundo: virar a carta e autoavaliar (Sabia · Quase · Não sabia).
+- [x] **D11 · Seg** — Cartas do Fundo: virar a carta e autoavaliar (Sabia · Quase · Não sabia).
   - _Pronto quando:_ Uma rodada de 10 cartas com resultado padrão.
-- [ ] **D12 · Ter** — Caixas de Leitner (1 a 5) por carta e por trilha, alimentando Revisão e Desafio do Dia.
+- [ ] **D12 · Ter** — Caixas de Leitner (1 a 5) por carta e por trilha, alimentando Revisão e Desafio do Dia. _(parcial: caixas de Leitner existem nas Cartas do Fundo; falta alimentar a Revisão e o Desafio do Dia.)_
   - _Pronto quando:_ Carta errada volta cedo; carta acertada espaça.
-- [ ] **D13 · Qua** — Quiz Relâmpago: múltipla escolha e verdadeiro ou falso, com cronômetro opcional.
+- [x] **D13 · Qua** — Quiz Relâmpago: múltipla escolha e verdadeiro ou falso, com cronômetro opcional.
   - _Pronto quando:_ Partida de 10 perguntas com resultado.
-- [ ] **D14 · Qui** — Combo de acertos (+5 XP a partir do 3º seguido), efeito de onda e tela de resultado.
+- [x] **D14 · Qui** — Combo de acertos (+5 XP a partir do 3º seguido), efeito de onda e tela de resultado.
   - _Pronto quando:_ Combo visível; XP confere com a tabela da economia.
-- [ ] **D15 · Sex** — Teclado, foco visível e "reduzir movimento" nos dois jogos. Retro.
+- [x] **D15 · Sex** — Teclado, foco visível e "reduzir movimento" nos dois jogos. Retro.
   - _Pronto quando:_ Dá para jogar os dois só com o teclado.
 
 ## Semana 4 · Fase 2: Jogos rápidos — Memória e Adivinha Aí
 **Objetivo:** Um jogo de pares e um jogo de dicas.
 
-- [ ] **D16 · Seg** — Memória: grade de conchas com animação de virar (CSS 3D) e versão sem movimento.
+- [x] **D16 · Seg** — Memória: grade de conchas com animação de virar (CSS 3D) e versão sem movimento.
   - _Pronto quando:_ As conchas viram e desviram com suavidade.
-- [ ] **D17 · Ter** — Memória: pares termo ↔ definição, tentativas e tempo; derivar pares das questões.
+- [x] **D17 · Ter** — Memória: pares termo ↔ definição, tentativas e tempo; derivar pares das questões.
   - _Pronto quando:_ Partida completa do início ao fim em qualquer trilha.
-- [ ] **D18 · Qua** — Adivinha Aí: cartas com até 10 dicas, chegando em "garrafas com mensagem".
+- [x] **D18 · Qua** — Adivinha Aí: cartas com até 10 dicas, chegando em "garrafas com mensagem".
   - _Pronto quando:_ As cartas aceitam dicas; as garrafas aparecem uma a uma.
-- [ ] **D19 · Qui** — Adivinha Aí: chutar a resposta, comparação sem acento e maiúsculas, menos dicas = mais pontos.
+- [x] **D19 · Qui** — Adivinha Aí: chutar a resposta, comparação sem acento e maiúsculas, menos dicas = mais pontos.
   - _Pronto quando:_ "fotossintese" é aceito como "Fotossíntese".
-- [ ] **D20 · Sex** — Resultado padrão, XP e pérolas dos dois jogos + revisão das cartas erradas. Retro.
+- [x] **D20 · Sex** — Resultado padrão, XP e pérolas dos dois jogos + revisão das cartas erradas. Retro.
   - _Pronto quando:_ Os dois jogos alimentam nível, streak e conquistas.
 
 ## Semana 5 · Fase 2: Jogos rápidos — Crie suas cartas
@@ -91,9 +92,9 @@
 
 - [ ] **D21 · Seg** — Editor de cartas no navegador: criar, editar e excluir cartas dos vários tipos.
   - _Pronto quando:_ Criar 10 cartas de tipos diferentes sem erro.
-- [ ] **D22 · Ter** — Exportar e importar trilha em JSON (ligado ao botão "Carregar trilha").
+- [x] **D22 · Ter** — Exportar e importar trilha em JSON (ligado ao botão "Carregar trilha").
   - _Pronto quando:_ Uma trilha criada no editor abre em outro aparelho.
-- [ ] **D23 · Qua** — Importar colando texto (termo ; definição) ou CSV, com pré-visualização.
+- [ ] **D23 · Qua** — Importar colando texto (termo ; definição) ou CSV, com pré-visualização. _(parcial: cria trilha colando "pergunta | certa | erradas"; falta "termo ; definição" e CSV.)_
   - _Pronto quando:_ Colar 20 linhas gera 20 cartas.
 - [ ] **D24 · Qui** — Trilha de exemplo nova (ex.: Inglês) com todos os tipos de carta.
   - _Pronto quando:_ A trilha nova joga em todos os jogos disponíveis.
@@ -103,13 +104,13 @@
 ## Semana 6 · Fase 3: Aventuras — Caça ao Tesouro
 **Objetivo:** Uma aventura com mapa e recompensa.
 
-- [ ] **D26 · Seg** — Mapa em SVG do fundo do mar (5 a 8 paradas) e estrutura de fases.
+- [x] **D26 · Seg** — Mapa em SVG do fundo do mar (5 a 8 paradas) e estrutura de fases.
   - _Pronto quando:_ O mapa exibe as paradas em ordem.
-- [ ] **D27 · Ter** — Cada parada é uma pergunta; acertar revela o próximo trecho da trilha.
+- [x] **D27 · Ter** — Cada parada é uma pergunta; acertar revela o próximo trecho da trilha.
   - _Pronto quando:_ Avançar pelo mapa respondendo.
-- [ ] **D28 · Qua** — Baú final com pérolas e animação, com o Diver comemorando.
+- [ ] **D28 · Qua** — Baú final com pérolas e animação, com o Diver comemorando. _(parcial: baú com bônus e salvo; falta a animação do Diver comemorando.)_
   - _Pronto quando:_ Recompensa entregue e salva.
-- [ ] **D29 · Qui** — Gerar a caça automaticamente de qualquer trilha (sorteio + ordem por dificuldade).
+- [x] **D29 · Qui** — Gerar a caça automaticamente de qualquer trilha (sorteio + ordem por dificuldade).
   - _Pronto quando:_ Toda caça é diferente da anterior.
 - [ ] **D30 · Sex** — Playtest com 2 ou 3 pessoas e registro do feedback. Retro.
   - _Pronto quando:_ Lista de melhorias no DIARIO.md.
@@ -117,13 +118,13 @@
 ## Semana 7 · Fase 3: Aventuras — Chefão do Abismo e Maré Alta
 **Objetivo:** Um jogo de chefe e um de sobrevivência.
 
-- [ ] **D31 · Seg** — Chefão do Abismo: monstro marinho em SVG com barra de vida; cada acerto causa dano.
+- [x] **D31 · Seg** — Chefão do Abismo: monstro marinho em SVG com barra de vida; cada acerto causa dano.
   - _Pronto quando:_ A barra de vida reage aos acertos.
-- [ ] **D32 · Ter** — Ataques do chefão: cada erro custa oxigênio; vitória e derrota com resultado padrão.
+- [x] **D32 · Ter** — Ataques do chefão: cada erro custa oxigênio; vitória e derrota com resultado padrão.
   - _Pronto quando:_ Partida completa nos dois desfechos.
-- [ ] **D33 · Qua** — Um chefão por profundidade (Raso, Recife, Caverna, Abismo), liberado ao completar a fase.
+- [x] **D33 · Qua** — Um chefão por profundidade (Raso, Recife, Caverna, Abismo), liberado ao completar a fase.
   - _Pronto quando:_ Quatro chefões com dificuldade crescente.
-- [ ] **D34 · Qui** — Maré Alta: sobrevivência sem fim; a maré sobe a cada erro; recorde por trilha.
+- [x] **D34 · Qui** — Maré Alta: sobrevivência sem fim; a maré sobe a cada erro; recorde por trilha.
   - _Pronto quando:_ Recorde salvo e exibido.
 - [ ] **D35 · Sex** — Balancear XP e pérolas dos dois jogos. Retro.
   - _Pronto quando:_ Ganhos coerentes com a tabela da economia.
@@ -131,21 +132,21 @@
 ## Semana 8 · Fase 3: Aventuras — Forca do Náufrago e Corrente do Tempo
 **Objetivo:** Um jogo de palavras e um de ordenar.
 
-- [ ] **D36 · Seg** — Forca do Náufrago: palavras-chave (campo palavras ou derivadas dos temas) e teclado na tela.
+- [x] **D36 · Seg** — Forca do Náufrago: palavras-chave (campo palavras ou derivadas dos temas) e teclado na tela.
   - _Pronto quando:_ Partida jogável com teclado físico e virtual.
-- [ ] **D37 · Ter** — Cada erro tira uma peça da jangada; a dica opcional custa 1 pérola.
+- [x] **D37 · Ter** — Cada erro tira uma peça da jangada; a dica opcional custa 1 pérola.
   - _Pronto quando:_ A jangada reage; a dica debita a pérola.
-- [ ] **D38 · Qua** — Corrente do Tempo: ordenar itens (cronologia, passo a passo) arrastando.
+- [x] **D38 · Qua** — Corrente do Tempo: ordenar itens (cronologia, passo a passo) arrastando.
   - _Pronto quando:_ Ordenar 6 itens no celular e no computador.
 - [ ] **D39 · Qui** — Sequências: campo sequencias e derivação de questões que tenham ordem.
   - _Pronto quando:_ A trilha de História gera 3 sequências.
-- [ ] **D40 · Sex** — Alternativa por teclado para o arrastar e revisão de acessibilidade. Retro.
+- [x] **D40 · Sex** — Alternativa por teclado para o arrastar e revisão de acessibilidade. Retro.
   - _Pronto quando:_ Ordenar funciona só com o teclado.
 
 ## Semana 9 · Fase 4: Economia e bem-estar — Perfil e loja de pérolas
 **Objetivo:** As pérolas passam a ter onde ser gastas.
 
-- [ ] **D41 · Seg** — Perfil geral: XP total, nível global e pérolas somando todas as trilhas.
+- [x] **D41 · Seg** — Perfil geral: XP total, nível global e pérolas somando todas as trilhas.
   - _Pronto quando:_ O perfil mostra o total e o detalhe por trilha.
 - [ ] **D42 · Ter** — Loja de pérolas: oxigênio extra, congelar a sequência, molduras e cenários.
   - _Pronto quando:_ Comprar e usar um item.
@@ -163,9 +164,9 @@
   - _Pronto quando:_ Um dia de descanso agendado não quebra a sequência.
 - [ ] **D47 · Ter** — Check-in de humor opcional e mensagens gentis da Nina.
   - _Pronto quando:_ Check-in em 1 toque, sempre pulável.
-- [ ] **D48 · Qua** — Modo Foco (25/5) com pausas sugeridas e XP por tempo focado.
+- [x] **D48 · Qua** — Modo Foco (25/5) com pausas sugeridas e XP por tempo focado.
   - _Pronto quando:_ Um ciclo completo concede XP.
-- [ ] **D49 · Qui** — Desafio do Dia: jogo e conteúdo sorteados por semente da data (funciona offline), com XP em dobro.
+- [x] **D49 · Qui** — Desafio do Dia: jogo e conteúdo sorteados por semente da data (funciona offline), com XP em dobro.
   - _Pronto quando:_ Mesmo desafio o dia todo, outro amanhã.
 - [ ] **D50 · Sex** — Lembrete gentil do desafio (notificação do navegador, só se o aluno ativar). Retro.
   - _Pronto quando:_ Lembrete no horário escolhido e desligável em um toque. Marco: Diver completo para estudar sozinho.
@@ -173,41 +174,41 @@
 ## Semana 11 · Fase 5: Organização — Kanban de estudos
 **Objetivo:** O aluno organiza as tarefas sem sair do app.
 
-- [ ] **D51 · Seg** — Estrutura de tarefas (título, trilha, status, prazo, prioridade, ordem) salvas no navegador.
+- [x] **D51 · Seg** — Estrutura de tarefas (título, trilha, status, prazo, prioridade, ordem) salvas no navegador.
   - _Pronto quando:_ Criar uma tarefa pela interface.
-- [ ] **D52 · Ter** — Quadro com colunas A fazer, Fazendo, Revisar e Feito.
+- [x] **D52 · Ter** — Quadro com colunas A fazer, Fazendo, Revisar e Feito.
   - _Pronto quando:_ Tarefas nas colunas certas.
-- [ ] **D53 · Qua** — Arrastar e soltar com ordem salva (eventos de ponteiro, sem biblioteca).
+- [x] **D53 · Qua** — Arrastar e soltar com ordem salva (eventos de ponteiro, sem biblioteca).
   - _Pronto quando:_ Recarregar a página mantém a ordem.
-- [ ] **D54 · Qui** — Concluir tarefa dá XP uma única vez; filtros por trilha e prazo.
+- [x] **D54 · Qui** — Concluir tarefa dá XP uma única vez; filtros por trilha e prazo.
   - _Pronto quando:_ Mover para Feito gera XP uma vez só.
-- [ ] **D55 · Sex** — Kanban no celular (colunas em abas). Retro.
+- [x] **D55 · Sex** — Kanban no celular (colunas em abas). Retro.
   - _Pronto quando:_ Usável com uma mão.
 
 ## Semana 12 · Fase 5: Organização — Calendário e tela Hoje
 **Objetivo:** Tudo o que importa no dia, em um só lugar.
 
-- [ ] **D56 · Seg** — Eventos (prova, aula, sessão de estudo, dia de descanso) com cores por tipo.
+- [x] **D56 · Seg** — Eventos (prova, aula, sessão de estudo, dia de descanso) com cores por tipo.
   - _Pronto quando:_ Eventos coloridos por tipo.
-- [ ] **D57 · Ter** — Visões mensal e semanal do calendário.
+- [x] **D57 · Ter** — Visões mensal e semanal do calendário.
   - _Pronto quando:_ Navegar entre meses e semanas.
-- [ ] **D58 · Qua** — Tarefas com prazo aparecem no calendário; criação rápida de evento.
+- [x] **D58 · Qua** — Tarefas com prazo aparecem no calendário; criação rápida de evento.
   - _Pronto quando:_ Criar um evento em menos de 10 segundos.
-- [ ] **D59 · Qui** — Gerador de cronograma: data da prova + trilhas → sessões distribuídas.
+- [x] **D59 · Qui** — Gerador de cronograma: data da prova + trilhas → sessões distribuídas.
   - _Pronto quando:_ O plano gerado cabe na agenda sem conflitos.
-- [ ] **D60 · Sex** — Tela Hoje (início): Desafio do Dia, tarefas, eventos e meta. Retro.
+- [x] **D60 · Sex** — Tela Hoje (início): Desafio do Dia, tarefas, eventos e meta. Retro.
   - _Pronto quando:_ Abrir o app responde "o que eu faço hoje?". Marco: MVP pessoal.
 
 ## Semana 13 · Fase 6: Biblioteca, conta e IA — Biblioteca de PDFs
 **Objetivo:** Material de estudo guardado e fácil de achar.
 
-- [ ] **D61 · Seg** — Enviar PDFs e guardar no navegador (IndexedDB) com limite de tamanho.
+- [x] **D61 · Seg** — Enviar PDFs e guardar no navegador (IndexedDB) com limite de tamanho.
   - _Pronto quando:_ Um PDF de 10 MB salvo e listado.
-- [ ] **D62 · Ter** — Organizar por trilha ou pasta e buscar pelo nome.
+- [x] **D62 · Ter** — Organizar por trilha ou pasta e buscar pelo nome.
   - _Pronto quando:_ Achar um arquivo digitando parte do nome.
-- [ ] **D63 · Qua** — Leitor de PDF (pdf.js, servido junto com o projeto) com zoom e navegação.
+- [ ] **D63 · Qua** — Leitor de PDF (pdf.js, servido junto com o projeto) com zoom e navegação. _(parcial: o leitor usa o visualizador de PDF do próprio navegador; falta o pdf.js.)_
   - _Pronto quando:_ Ler um PDF inteiro dentro do app.
-- [ ] **D64 · Qui** — Anotações por página e marcadores.
+- [ ] **D64 · Qui** — Anotações por página e marcadores. _(parcial: anotações por PDF; falta por página e marcadores.)_
   - _Pronto quando:_ A anotação reaparece ao reabrir o PDF.
 - [ ] **D65 · Sex** — Extrair o texto do PDF para busca. Retro.
   - _Pronto quando:_ A busca encontra uma palavra dentro do PDF.
