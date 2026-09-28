@@ -1,19 +1,27 @@
 /*
- * app.js — telas, eventos e renderização do Diver.
- * As regras ficam em quiz.js, progresso.js e conquistas.js; aqui é só a "cara" do app.
+ * app.js — telas, navegação (barra lateral) e renderização do Diver.
+ * As regras ficam em quiz.js, progresso.js, economia.js e conquistas.js;
+ * os jogos em js/jogos/; as áreas em organizar.js, biblioteca.js e perfil.js.
+ * Aqui é a "cara" do app e a cola entre as partes.
  */
-(() => {
+const App = (() => {
+  const { $, h, icone, limpar, embaralhar, sortear, formatarTempo, plural, toast, avisarConquistas, humorMascote, movimentoReduzido } = UI;
+
   /* ---------- Estado da aplicação ---------- */
   const estado = {
     trilhas: [],
     selecionada: null, // id da trilha marcada na tela inicial
-    trilha: null, // trilha aberta
-    prog: null, // progresso da trilha aberta
-    sessao: null, // sessão de estudo em andamento
+    trilha: null, // trilha atual (escolhida na tela inicial ou na barra lateral)
+    prog: null, // progresso da trilha atual
+    secao: 'inicio', // área aberta na barra lateral
+    sessao: null, // sessão de quiz em andamento (Mergulho, Simulado, Revisão)
+    origem: 'mergulho', // área para onde voltar depois do quiz
+    jogo: null, // partida da Sala de Jogos em andamento
     respondida: false, // a questão atual já foi respondida?
     ordem: [], // ordem embaralhada das alternativas da questão atual
     timer: null,
     avisouUltimoMinuto: false,
+    cartasCache: {}, // cartas derivadas por trilha
   };
 
   const NOMES_MODO = { mergulho: 'Mergulho', simulado: 'Simulado', revisao: 'Revisão' };
@@ -25,93 +33,129 @@
     'Essa correnteza te pegou.',
     'Errar faz parte do mergulho.',
   ];
+  const CHAVE_DESAFIOS = 'diver:v1:desafios';
 
-  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* =========================================================
+     NAVEGAÇÃO (barra lateral + endereço #secao)
+     ========================================================= */
+  const ROTAS = {
+    inicio: { tela: 'tela-inicio', render: renderizarInicio },
+    mergulho: { tela: 'tela-painel', precisaTrilha: true, render: renderizarPainel },
+    simulado: { tela: 'tela-simulado', precisaTrilha: true, render: renderizarSimulado },
+    revisao: { tela: 'tela-revisao', precisaTrilha: true, render: renderizarRevisao },
+    jogos: { tela: 'tela-jogos', precisaTrilha: true, render: renderizarSala },
+    tarefas: { tela: 'tela-tarefas', render: () => Organizar.renderTarefas($('tela-tarefas')) },
+    calendario: { tela: 'tela-calendario', render: () => Organizar.renderCalendario($('tela-calendario')) },
+    foco: { tela: 'tela-foco', render: () => Organizar.renderFoco($('tela-foco')) },
+    cursos: { tela: 'tela-cursos', render: () => Biblioteca.renderCursos($('tela-cursos')) },
+    pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
+    perfil: { tela: 'tela-perfil', render: () => Perfil.render($('tela-perfil')) },
+  };
+  const TELAS_FOCO = ['tela-quiz', 'tela-jogo']; // sem barra lateral: uma ação principal por tela
 
-  /* ---------- Utilitários de DOM ---------- */
-  const $ = (id) => document.getElementById(id);
-
-  /** Cria um elemento. Textos entram sempre como texto (nunca como HTML). */
-  function h(tag, props = {}, ...filhos) {
-    const el = document.createElement(tag);
-    Object.entries(props).forEach(([k, v]) => {
-      if (v === null || v === undefined || v === false) return;
-      if (k === 'class') el.className = v;
-      else if (k === 'text') el.textContent = v;
-      else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
-      else el.setAttribute(k, v === true ? '' : v);
-    });
-    filhos.flat().forEach((f) => {
-      if (f === null || f === undefined || f === false) return;
-      el.append(typeof f === 'string' || typeof f === 'number' ? document.createTextNode(String(f)) : f);
-    });
-    return el;
+  /** Vai para uma área (atualiza o endereço, o que permite usar o botão Voltar do navegador). */
+  function irPara(secao) {
+    if (location.hash === '#' + secao) navegar(secao);
+    else location.hash = secao;
   }
 
-  /** Ícone do sprite SVG do index.html. */
-  function icone(nome, classe = '') {
-    const ns = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(ns, 'svg');
-    svg.setAttribute('class', `icone ${classe}`.trim());
-    svg.setAttribute('aria-hidden', 'true');
-    const use = document.createElementNS(ns, 'use');
-    use.setAttribute('href', '#' + nome);
-    svg.append(use);
-    return svg;
-  }
-
-  function limpar(el) {
-    el.replaceChildren();
-    return el;
-  }
-
-  function embaralhar(lista) {
-    const a = [...lista];
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+  function navegar(secao) {
+    const rota = ROTAS[secao];
+    if (!rota) return;
+    // Saindo no meio de um quiz ou jogo pelo botão Voltar do navegador
+    if (emAndamento() && !window.confirm('Sair agora? O que você já respondeu fica salvo, mas a partida termina.')) {
+      history.replaceState(null, '', '#' + estado.secao);
+      return;
     }
-    return a;
+    abandonarAndamento();
+    if (rota.precisaTrilha && !estado.trilha) {
+      toast('Escolha uma trilha', 'Primeiro escolha o que estudar.', 'i-livro');
+      secao = 'inicio';
+      history.replaceState(null, '', '#inicio');
+    }
+    estado.secao = secao;
+    ROTAS[secao].render();
+    mostrarTela(ROTAS[secao].tela);
   }
 
-  function sortear(lista) {
-    return lista[Math.floor(Math.random() * lista.length)];
+  function emAndamento() {
+    const quiz = estado.sessao && !estado.sessao.encerrada && !$('tela-quiz').hidden;
+    const jogo = estado.jogo && !estado.jogo.fim && !$('tela-jogo').hidden;
+    return quiz || jogo;
   }
 
-  function formatarTempo(seg) {
-    const m = Math.floor(seg / 60);
-    const s = seg % 60;
-    return `${m}:${String(s).padStart(2, '0')}`;
+  function abandonarAndamento() {
+    if (estado.sessao && !estado.sessao.encerrada && !$('tela-quiz').hidden) {
+      if (estado.sessao.respostas.length) {
+        Quiz.finalizar(estado.sessao, estado.prog, 'saiu');
+        salvar();
+      }
+      pararTimer();
+    }
+    estado.sessao = null;
+    if (estado.jogo && !estado.jogo.fim) {
+      const c = estado.jogo.controlador;
+      if (c && c.destruir) c.destruir();
+    }
+    estado.jogo = null;
   }
 
-  function plural(n, singular, pluralTxt) {
-    return `${n} ${n === 1 ? singular : pluralTxt}`;
-  }
-
-  /* ---------- Troca de telas ---------- */
   function mostrarTela(id) {
     document.querySelectorAll('.tela').forEach((t) => (t.hidden = t.id !== id));
+    document.body.classList.toggle('modo-foco', TELAS_FOCO.includes(id));
+    document.querySelectorAll('.lateral__nav a').forEach((a) => {
+      if (a.dataset.secao === estado.secao) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    fecharMenu();
+    atualizarLateral();
     window.scrollTo(0, 0);
     // Move o foco para o título da tela (bom para leitores de tela)
     const titulo = $(id).querySelector('h1[tabindex], h2[tabindex]');
     if (titulo) titulo.focus({ preventScroll: true });
   }
 
-  /* ---------- Mascote ---------- */
-  function montarMascotes() {
-    const molde = $('molde-mascote');
-    document.querySelectorAll('[data-mascote]').forEach((el) => {
-      el.append(molde.content.cloneNode(true));
-    });
+  /* ---------- Barra lateral (fixa no computador, gaveta no celular) ---------- */
+  function abrirMenu() {
+    $('barra-lateral').classList.add('lateral--aberta');
+    $('lateral-fundo').hidden = false;
+    $('btn-menu').setAttribute('aria-expanded', 'true');
+    $('barra-lateral').querySelector('.lateral__nav a[aria-current]') ? $('barra-lateral').querySelector('.lateral__nav a[aria-current]').focus() : $('btn-fechar-menu').focus();
   }
 
-  /** humor: 'feliz' | 'triste' | null (neutro) */
-  function humorMascote(container, humor) {
-    container.querySelectorAll('[data-mascote]').forEach((m) => {
-      m.classList.remove('mascote--feliz', 'mascote--triste');
-      void m.offsetWidth; // reinicia a animação
-      if (humor) m.classList.add('mascote--' + humor);
-    });
+  function fecharMenu() {
+    const aberta = $('barra-lateral').classList.contains('lateral--aberta');
+    $('barra-lateral').classList.remove('lateral--aberta');
+    $('lateral-fundo').hidden = true;
+    $('btn-menu').setAttribute('aria-expanded', 'false');
+    if (aberta && document.activeElement && $('barra-lateral').contains(document.activeElement)) $('btn-menu').focus();
+  }
+
+  function atualizarLateral() {
+    const select = limpar($('select-trilha-lateral'));
+    if (!estado.trilhas.length) select.append(h('option', { value: '', text: 'Nenhuma trilha' }));
+    estado.trilhas.forEach((t) => select.append(h('option', { value: t.id, selected: estado.trilha && t.id === estado.trilha.id, text: t.nome })));
+
+    const status = limpar($('lateral-status'));
+    $('topo-perolas').replaceChildren();
+    if (!estado.trilha) return;
+    const prog = estado.prog;
+    const nivel = Progresso.nivel(prog.xp);
+    const streak = Progresso.streakVigente(prog);
+    status.append(
+      h('div', { class: 'lateral__nivel' }, h('span', { class: 'status__nivel-num', text: `Nv. ${nivel.numero}` }), h('span', { text: nivel.nome })),
+      h('div', { class: 'barra-xp barra-xp--fina', 'aria-hidden': 'true' }, h('div', { class: 'barra-xp__preenchimento', style: `width:${nivel.pct}%` })),
+      h('div', { class: 'lateral__numeros' },
+        h('span', { title: 'Pérolas' }, icone('i-perola', 'icone--perola'), String(prog.perolas)),
+        h('span', { title: 'Dias seguidos' }, icone('i-onda', 'icone--streak'), String(streak)),
+        h('span', { title: 'Meta de hoje' }, icone('i-alvo', 'icone--meta'), `${Math.min(Progresso.respondidasHoje(prog), prog.metaDiaria)}/${prog.metaDiaria}`)));
+    $('topo-perolas').append(icone('i-perola', 'icone--perola'), String(prog.perolas));
+    $('topo-perolas').setAttribute('aria-label', `${prog.perolas} pérolas`);
+
+    const qtd = Progresso.paraRevisar(prog, estado.trilha).length;
+    $('badge-revisao').hidden = qtd === 0;
+    $('badge-revisao').textContent = String(qtd);
+    $('badge-foco').hidden = !Organizar.focoAtivo();
   }
 
   /* ---------- Bolhas do fundo ---------- */
@@ -128,36 +172,52 @@
     }
   }
 
-  /* ---------- Avisos rápidos (toasts) ---------- */
-  function toast(titulo, texto, nomeIcone = 'i-trofeu') {
-    const el = h('div', { class: 'toast', role: 'status' },
-      h('span', { class: 'toast__icone' }, icone(nomeIcone)),
-      h('div', {}, h('p', { class: 'toast__titulo', text: titulo }), h('p', { class: 'toast__texto', text: texto })),
-    );
-    const area = $('toasts');
-    area.append(el);
-    // No máximo 2 avisos por vez, para não cobrir a questão
-    while (area.children.length > 2) area.firstElementChild.remove();
-    setTimeout(() => {
-      el.classList.add('saindo');
-      setTimeout(() => el.remove(), 320);
-    }, 3000);
-  }
-
-  function avisarConquistas(lista) {
-    lista.forEach((c, i) => setTimeout(() => toast('Conquista desbloqueada', c.nome, c.icone), i * 600));
-  }
-
   /* =========================================================
-     TELA INICIAL
+     TRILHAS
      ========================================================= */
   async function carregarTrilhas() {
     const { trilhas, problemas, semServidor } = await Trilhas.carregarTodas();
     estado.trilhas = trilhas;
+    estado.cartasCache = {};
     const ultima = Progresso.ultimaTrilha();
-    estado.selecionada = trilhas.some((t) => t.id === ultima) ? ultima : trilhas[0] && trilhas[0].id;
+    const atualId = estado.trilha && trilhas.some((t) => t.id === estado.trilha.id) ? estado.trilha.id : null;
+    const escolhida = atualId || (trilhas.some((t) => t.id === ultima) ? ultima : trilhas[0] && trilhas[0].id);
+    if (escolhida) definirTrilha(escolhida, false);
+    else {
+      estado.trilha = null;
+      estado.prog = null;
+    }
+    estado.selecionada = escolhida || null;
     renderizarTrilhas();
     renderizarAvisos(problemas, semServidor && trilhas.length === 0);
+  }
+
+  /** Define a trilha atual (sem trocar de tela). */
+  function definirTrilha(id, lembrar = true) {
+    const trilha = estado.trilhas.find((t) => t.id === id);
+    if (!trilha) return;
+    estado.trilha = trilha;
+    estado.prog = Progresso.carregar(id);
+    estado.selecionada = id;
+    if (lembrar) Progresso.definirUltimaTrilha(id);
+    atualizarLateral();
+  }
+
+  function cartasDa(trilha) {
+    if (!estado.cartasCache[trilha.id]) estado.cartasCache[trilha.id] = Cartas.derivar(trilha);
+    return estado.cartasCache[trilha.id];
+  }
+
+  function salvar() {
+    Progresso.salvar(estado.trilha.id, estado.prog);
+  }
+
+  /* =========================================================
+     INÍCIO (escolha de trilha + Seu dia)
+     ========================================================= */
+  function renderizarInicio() {
+    renderizarTrilhas();
+    renderizarHoje();
   }
 
   function renderizarTrilhas() {
@@ -244,35 +304,85 @@
     const { ok, erros } = await Trilhas.importarArquivos(arquivos);
     if (ok.length) toast('Trilha carregada', ok.join(', '), 'i-upload');
     await carregarTrilhas();
+    renderizarHoje();
     if (erros.length) renderizarAvisos(erros, false);
     e.target.value = '';
   }
 
-  /* =========================================================
-     PAINEL DA TRILHA
-     ========================================================= */
-  function abrirTrilha(id) {
-    const trilha = estado.trilhas.find((t) => t.id === id);
-    if (!trilha) return;
-    estado.trilha = trilha;
-    estado.prog = Progresso.carregar(id);
-    Progresso.definirUltimaTrilha(id);
-    renderizarPainel();
-    mostrarTela('tela-painel');
+  /* ---------- Desafio do Dia: jogo + trilha sorteados pela data (funciona offline) ---------- */
+  function desafioDoDia() {
+    const hoje = UI.dataLocal();
+    const opcoes = [];
+    [...estado.trilhas].sort((a, b) => a.id.localeCompare(b.id)).forEach((t) => {
+      Jogos.lista()
+        .filter((j) => !j.nucleo && !j.emBreve && Jogos.estado(j, cartasDa(t)) === 'disponivel')
+        .forEach((j) => opcoes.push({ trilha: t, jogo: j }));
+    });
+    if (!opcoes.length) return null;
+    // "semente" da data: o mesmo desafio o dia todo, outro amanhã
+    let semente = 0;
+    for (const c of hoje) semente = (semente * 31 + c.charCodeAt(0)) >>> 0;
+    const feito = !!Dados.ler(CHAVE_DESAFIOS, {})[hoje];
+    return { ...opcoes[semente % opcoes.length], feito, data: hoje };
   }
 
-  function salvar() {
-    Progresso.salvar(estado.trilha.id, estado.prog);
+  function renderizarHoje() {
+    const area = limpar($('hoje'));
+    if (!estado.trilhas.length) return;
+    const desafio = desafioDoDia();
+    const { tarefas, eventos } = Organizar.resumoDoDia();
+    const prog = estado.prog;
+    const feitas = prog ? Math.min(Progresso.respondidasHoje(prog), prog.metaDiaria) : 0;
+
+    area.append(h('h2', { class: 'secao-titulo', text: 'Seu dia' }), h('div', { class: 'hoje__grade' },
+      desafio ? h('article', { class: `cartao hoje__card hoje__card--desafio ${desafio.feito ? 'hoje__card--feito' : ''}` },
+        h('span', { class: 'rotulo', text: 'Desafio do Dia' }),
+        h('h3', { class: 'hoje__titulo' }, icone(desafio.jogo.icone), desafio.jogo.nome),
+        h('p', { class: 'texto-suave', text: `${desafio.trilha.nome} · XP em dobro` }),
+        desafio.feito
+          ? h('p', { class: 'texto-sucesso' }, icone('i-check'), 'Desafio cumprido! Amanhã tem outro.')
+          : h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => {
+            definirTrilha(desafio.trilha.id);
+            estado.secao = 'jogos';
+            history.replaceState(null, '', '#jogos');
+            iniciarJogo(desafio.jogo.id, {}, { desafio: true });
+          } }, 'Aceitar desafio')) : null,
+      prog ? h('article', { class: 'cartao hoje__card' },
+        h('span', { class: 'rotulo', text: 'Meta de hoje' }),
+        h('h3', { class: 'hoje__titulo' }, icone('i-alvo', 'icone--meta'), `${feitas}/${prog.metaDiaria} questões`),
+        h('div', { class: 'barra-meta', 'aria-hidden': 'true' }, h('div', { class: 'barra-meta__preenchimento', style: `width:${Math.round((feitas / prog.metaDiaria) * 100)}%` })),
+        h('p', { class: 'texto-suave', text: feitas >= prog.metaDiaria ? 'Meta batida. O resto é lucro!' : `${Progresso.streakVigente(prog)} ${Progresso.streakVigente(prog) === 1 ? 'dia seguido' : 'dias seguidos'} em ${estado.trilha.nome}.` })) : null,
+      h('article', { class: 'cartao hoje__card' },
+        h('span', { class: 'rotulo', text: 'Tarefas para hoje' }),
+        tarefas.length
+          ? h('ul', { class: 'hoje__lista' }, tarefas.slice(0, 3).map((t) => h('li', {}, h('span', { class: t.prazo < UI.dataLocal() ? 'texto-erro' : '', text: t.prazo < UI.dataLocal() ? 'Atrasada · ' : '' }), t.titulo)))
+          : h('p', { class: 'texto-suave', text: 'Nada com prazo pra hoje. Maré calma.' }),
+        h('a', { class: 'botao botao--link botao--pequeno', href: '#tarefas' }, 'Ver tarefas', icone('i-seta-dir'))),
+      h('article', { class: 'cartao hoje__card' },
+        h('span', { class: 'rotulo', text: 'Próximos 3 dias' }),
+        eventos.length
+          ? h('ul', { class: 'hoje__lista' }, eventos.slice(0, 3).map((e) => h('li', {}, h('span', { class: `ponto ponto--${e.tipo}`, 'aria-hidden': 'true' }), `${UI.formatarData(e.data, { weekday: 'short', day: '2-digit' })}${e.hora ? ' ' + e.hora : ''} · ${e.titulo}`)))
+          : h('p', { class: 'texto-suave', text: 'Agenda livre. Que tal gerar um cronograma?' }),
+        h('a', { class: 'botao botao--link botao--pequeno', href: '#calendario' }, 'Abrir calendário', icone('i-seta-dir')))));
+  }
+
+  /* =========================================================
+     MERGULHO: PAINEL DA TRILHA
+     ========================================================= */
+  function abrirTrilha(id) {
+    definirTrilha(id);
+    irPara('mergulho');
   }
 
   function renderizarPainel() {
-    const { trilha, prog } = estado;
+    const { trilha } = estado;
     $('painel-titulo').textContent = trilha.nome;
     $('painel-categoria').textContent = trilha.categoria || 'Trilha';
     renderizarStatus();
     renderizarMapa();
-    renderizarModos();
     renderizarConquistas();
+    const qtd = Progresso.paraRevisar(estado.prog, trilha).length;
+    $('atalho-revisao').textContent = qtd ? plural(qtd, 'questão esperando', 'questões esperando') : 'Nada pendente';
   }
 
   function renderizarStatus() {
@@ -345,34 +455,6 @@
     });
   }
 
-  function renderizarModos() {
-    const { trilha, prog } = estado;
-
-    // Simulado: opções de quantidade de questões
-    const total = trilha.questoes.length;
-    const select = limpar($('select-simulado'));
-    const opcoes = [5, 10, 20].filter((n) => n < total);
-    opcoes.forEach((n) => select.append(h('option', { value: n, text: String(n) })));
-    select.append(h('option', { value: total, text: `Todas (${total})` }));
-    select.value = opcoes.includes(10) ? '10' : String(total);
-
-    // Histórico dos últimos simulados
-    const hist = limpar($('historico-simulados'));
-    if (prog.simulados.length) {
-      hist.append(h('span', { text: 'Últimos simulados' }), h('ul', {}, prog.simulados.slice(0, 4).map((s) =>
-        h('li', {},
-          h('span', { text: new Date(s.data).toLocaleDateString('pt-BR') + ` · ${s.acertos}/${s.total} · ${formatarTempo(s.tempoSeg)}` }),
-          h('strong', { text: `Nota ${s.nota.toLocaleString('pt-BR')}` })))));
-    }
-
-    // Revisão
-    const qtd = Progresso.paraRevisar(prog, trilha).length;
-    $('revisao-texto').textContent = qtd
-      ? `${plural(qtd, 'questão esperando', 'questões esperando')} por você: as que você errou ou marcou. Mergulho de volta, sem pressão.`
-      : 'Nada pra revisar por enquanto. As questões que você errar ou marcar aparecem aqui.';
-    $('btn-revisao').disabled = qtd === 0;
-  }
-
   function renderizarConquistas() {
     const prog = estado.prog;
     const lista = limpar($('lista-conquistas'));
@@ -391,7 +473,214 @@
   }
 
   /* =========================================================
-     SESSÃO DE ESTUDO (QUIZ)
+     SIMULADO E REVISÃO (telas próprias)
+     ========================================================= */
+  function renderizarSimulado() {
+    const { trilha, prog } = estado;
+    $('simulado-trilha').textContent = trilha.nome;
+
+    // Opções de quantidade de questões
+    const total = trilha.questoes.length;
+    const select = limpar($('select-simulado'));
+    const opcoes = [5, 10, 20].filter((n) => n < total);
+    opcoes.forEach((n) => select.append(h('option', { value: n, text: String(n) })));
+    select.append(h('option', { value: total, text: `Todas (${total})` }));
+    select.value = opcoes.includes(10) ? '10' : String(total);
+
+    // Histórico de notas
+    const hist = limpar($('historico-simulados'));
+    if (!prog.simulados.length) {
+      hist.append(h('p', { class: 'texto-suave', text: 'Nenhum simulado ainda. O primeiro é sempre o mais importante: ele mostra de onde você parte.' }));
+      return;
+    }
+    const media = prog.simulados.reduce((n, s) => n + s.nota, 0) / prog.simulados.length;
+    hist.append(
+      h('p', {}, 'Média: ', h('strong', { text: media.toLocaleString('pt-BR', { maximumFractionDigits: 1 }) }), ` em ${plural(prog.simulados.length, 'simulado', 'simulados')}.`),
+      h('ul', {}, prog.simulados.slice(0, 10).map((s) =>
+        h('li', {},
+          h('span', { text: new Date(s.data).toLocaleDateString('pt-BR') + ` · ${s.acertos}/${s.total} · ${formatarTempo(s.tempoSeg)}` }),
+          h('strong', { text: `Nota ${s.nota.toLocaleString('pt-BR')}` })))));
+  }
+
+  function renderizarRevisao() {
+    const { trilha, prog } = estado;
+    $('revisao-trilha').textContent = trilha.nome;
+    const pendentes = Progresso.paraRevisar(prog, trilha);
+    $('revisao-texto').textContent = pendentes.length
+      ? `${plural(pendentes.length, 'questão esperando', 'questões esperando')} por você: as que você errou ou marcou. Mergulho de volta, sem pressão.`
+      : 'Nada pra revisar por enquanto. As questões que você errar ou marcar aparecem aqui.';
+    $('btn-revisao').disabled = pendentes.length === 0;
+
+    const lista = limpar($('revisao-lista'));
+    if (!pendentes.length) {
+      lista.append(h('li', {}, UI.vazio('Lista limpa. Nada ficou pra trás.')));
+      return;
+    }
+    pendentes
+      .map((q) => ({ q, e: prog.questoes[q.id] }))
+      .sort((a, b) => b.e.peso - a.e.peso)
+      .forEach(({ q, e }) => {
+        lista.append(h('li', { class: 'item-revisao' },
+          h('div', { class: 'item-revisao__texto' },
+            h('span', { class: 'rotulo', text: q.tema }),
+            h('strong', { text: q.enunciado }),
+            h('span', { class: 'texto-suave', text: [e.erros ? plural(e.erros, 'erro', 'erros') : null, e.marcada ? 'marcada por você' : null].filter(Boolean).join(' · ') })),
+          h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: () => {
+            e.peso = 0;
+            e.marcada = false;
+            salvar();
+            renderizarRevisao();
+            atualizarLateral();
+          } }, 'Tirar da fila')));
+      });
+  }
+
+  /* =========================================================
+     SALA DE JOGOS
+     ========================================================= */
+  function renderizarSala() {
+    const { trilha, prog } = estado;
+    $('jogos-trilha').textContent = trilha.nome;
+    const cartas = cartasDa(trilha);
+    const area = limpar($('jogos-lista'));
+
+    Jogos.GRUPOS.forEach((g) => {
+      const jogos = Jogos.lista().filter((j) => j.grupo === g.id);
+      if (!jogos.length) return;
+      const grade = h('div', { class: 'sala' });
+      jogos.forEach((j) => grade.append(cardJogo(j, Jogos.estado(j, cartas), prog)));
+      area.append(h('section', { class: 'sala-grupo', 'aria-label': g.nome },
+        h('h2', { class: 'secao-titulo', text: g.nome }), h('p', { class: 'secao-sub', text: g.descricao }), grade));
+    });
+  }
+
+  function cardJogo(j, situacao, prog) {
+    const hist = prog.jogos && prog.jogos[j.id];
+    const selects = (j.opcoes || []).map((o) => h('label', { class: 'jogo-card__opcao' },
+      h('span', { class: 'visualmente-oculto', text: `${o.rotulo} de ${j.nome}` }),
+      h('select', { 'data-opcao': o.id }, o.valores.map(([v, n]) => h('option', { value: v, selected: v === o.padrao, text: n })))));
+    const jogar = () => {
+      if (j.nucleo) return irPara(j.nucleo);
+      const opcoes = {};
+      selects.forEach((l) => {
+        const s = l.querySelector('select');
+        opcoes[s.dataset.opcao] = Number(s.value);
+      });
+      iniciarJogo(j.id, opcoes);
+    };
+    const selo = {
+      disponivel: null,
+      precisa: h('span', { class: 'chip chip--aviso', text: 'Precisa de conteúdo' }),
+      embreve: h('span', { class: 'chip', text: `Em breve · ${j.emBreve}` }),
+    }[situacao];
+    const dicaConteudo = situacao === 'precisa'
+      ? h('p', { class: 'jogo-card__dica', text: `Esta trilha ainda não tem ${Object.keys(j.requer).map((t) => ({ pares: 'pares termo ↔ definição', adivinhas: 'adivinhas', sequencias: 'sequências', palavras: 'palavras-chave', flash: 'cartas', multipla: 'questões suficientes' }[t] || t)).join(' e ')}.` })
+      : null;
+    return h('article', { class: `jogo-card jogo-card--${situacao}` },
+      h('div', { class: 'jogo-card__topo' },
+        h('span', { class: 'jogo-card__icone', 'aria-hidden': 'true' }, icone(j.icone || 'i-controle')),
+        h('div', {}, h('h3', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave', text: j.duracao }))),
+      h('p', { class: 'jogo-card__descricao', text: j.descricao }),
+      dicaConteudo,
+      h('div', { class: 'jogo-card__rodape' },
+        selo,
+        hist ? h('span', { class: 'jogo-card__hist', text: hist.melhor ? `Recorde: ${hist.melhor}` : plural(hist.partidas, 'partida', 'partidas') }) : null,
+        situacao === 'disponivel' ? selects : null,
+        situacao === 'disponivel'
+          ? h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: jogar, 'aria-label': `Jogar ${j.nome}` }, j.nucleo ? 'Abrir' : 'Jogar')
+          : null));
+  }
+
+  function iniciarJogo(id, opcoes = {}, { desafio = false } = {}) {
+    const def = Jogos.obter(id);
+    if (!def || !estado.trilha) return;
+    const cartas = cartasDa(estado.trilha);
+    if (Jogos.estado(def, cartas) !== 'disponivel') {
+      toast('Ainda não dá', 'Esta trilha não tem conteúdo para esse jogo.', 'i-bolha');
+      return;
+    }
+    abandonarAndamento();
+    estado.nivelInicial = Progresso.nivel(estado.prog.xp).numero;
+    estado.subiuNivel = null;
+    estado.jogo = { def, opcoes, desafio, controlador: null, fim: false };
+    $('jogo-titulo').textContent = def.nome;
+    $('jogo-rotulo').textContent = desafio ? 'Desafio do Dia · XP em dobro' : estado.trilha.nome;
+    const container = limpar($('jogo-palco'));
+    mostrarTela('tela-jogo');
+
+    const partida = estado.jogo;
+    const ctx = {
+      container,
+      trilha: estado.trilha,
+      cartas,
+      prog: estado.prog,
+      opcoes,
+      aoTerminar: (resultado) => {
+        if (estado.jogo === partida) terminarJogo(resultado);
+      },
+      gastarPerolas: (n) => {
+        const ok = Economia.gastar(estado.prog, n);
+        if (ok) {
+          salvar();
+          atualizarLateral();
+          toast('Pérola usada', `−${n} · saldo: ${estado.prog.perolas}`, 'i-perola');
+        }
+        return ok;
+      },
+    };
+    try {
+      partida.controlador = def.iniciar(ctx) || {};
+    } catch (erro) {
+      console.error(erro);
+      toast('Ops', 'Esse jogo tropeçou. Tente outro enquanto a gente conserta.', 'i-x');
+      estado.jogo = null;
+      irPara('jogos');
+    }
+  }
+
+  function terminarJogo(res) {
+    const partida = estado.jogo;
+    if (!partida || partida.fim) return;
+    partida.fim = true;
+    if (partida.controlador && partida.controlador.destruir) partida.controlador.destruir();
+
+    const r = Economia.aplicarResultado(res, estado.trilha, estado.prog, { dobro: partida.desafio });
+    if (partida.desafio) {
+      const feitos = Dados.ler(CHAVE_DESAFIOS, {});
+      feitos[UI.dataLocal()] = true;
+      Dados.gravar(CHAVE_DESAFIOS, feitos);
+    }
+    salvar();
+    avisarConquistas(r.novas);
+    checarNivel();
+
+    const validos = res.detalhes.filter((d) => !d.neutro);
+    const temas = {};
+    validos.forEach((d) => {
+      temas[d.tema] = temas[d.tema] || { tema: d.tema, acertos: 0, total: 0 };
+      temas[d.tema].total++;
+      if (d.acertou) temas[d.tema].acertos++;
+    });
+    renderizarResumo({
+      modo: 'jogo', jogo: partida.def, titulo: res.titulo, sub: res.subtitulo, desafio: partida.desafio,
+      total: validos.length, acertos: res.acertos, pct: validos.length ? Math.round((res.acertos / validos.length) * 100) : 0,
+      tempoSeg: res.tempoSegundos, porTema: Object.values(temas).sort((a, b) => a.acertos / a.total - b.acertos / b.total),
+      paraRevisar: validos.filter((d) => !d.acertou),
+      maiorCombo: r.comboMaximo, xp: r.xp, perolas: r.perolas, bonusJogo: res.bonus,
+      emBranco: 0, faseConcluida: false, estrelas: 0, fase: null, nota: null,
+    }, r.novas);
+    mostrarTela('tela-resumo');
+  }
+
+  function sairDoJogo() {
+    if (!estado.jogo) return;
+    if (!window.confirm('Sair do jogo? Esta partida não vale XP.')) return;
+    abandonarAndamento();
+    irPara('jogos');
+  }
+
+  /* =========================================================
+     SESSÃO DE ESTUDO (QUIZ) — Mergulho, Simulado e Revisão
      ========================================================= */
   function iniciarSessao(modo, opcoes = {}) {
     const s = Quiz.criar(modo, estado.trilha, estado.prog, opcoes);
@@ -400,6 +689,7 @@
       return;
     }
     estado.sessao = s;
+    estado.origem = modo; // volta para a área de onde saiu (mergulho, simulado ou revisao)
     estado.nivelInicial = Progresso.nivel(estado.prog.xp).numero;
     estado.subiuNivel = null;
     salvar();
@@ -426,6 +716,7 @@
 
   function atualizarTimer() {
     const s = estado.sessao;
+    if (!s) return pararTimer();
     const resta = Quiz.segundosRestantes(s);
     const el = $('quiz-timer');
     el.querySelector('span').textContent = formatarTempo(resta);
@@ -505,7 +796,7 @@
     const s = estado.sessao;
     const q = Quiz.atual(s);
     const r = Quiz.responder(s, indice, estado.prog);
-    const botoes = [...document.querySelectorAll('.alternativa')];
+    const botoes = [...document.querySelectorAll('#quiz-alternativas .alternativa')];
     botoes.forEach((b) => (b.disabled = true));
 
     // Conquistas e nível podem mudar a cada resposta
@@ -577,8 +868,7 @@
     else {
       pararTimer();
       estado.sessao = null;
-      renderizarPainel();
-      mostrarTela('tela-painel');
+      irPara(estado.origem);
     }
   }
 
@@ -597,10 +887,13 @@
   }
 
   /* =========================================================
-     RESUMO DA SESSÃO
+     RESUMO DA SESSÃO (quiz e jogos)
      ========================================================= */
   function textosResumo(r) {
     const { trilha } = estado;
+    if (r.modo === 'jogo') {
+      return { titulo: r.titulo || `${r.acertos} de ${r.total} acertos`, sub: (r.desafio ? 'Desafio do Dia cumprido: XP em dobro! ' : '') + (r.sub || '') };
+    }
     if (r.modo === 'mergulho') {
       if (r.motivo === 'fim') {
         const i = trilha.fases.findIndex((f) => f.id === r.fase.id);
@@ -638,7 +931,9 @@
     const { trilha, prog } = estado;
     const { titulo, sub } = textosResumo(r);
 
-    $('resumo-rotulo').textContent = r.fase ? `${NOMES_MODO[r.modo]} · ${r.fase.nome}` : NOMES_MODO[r.modo];
+    $('resumo-rotulo').textContent = r.modo === 'jogo'
+      ? `${r.jogo.nome} · ${trilha.nome}`
+      : r.fase ? `${NOMES_MODO[r.modo]} · ${r.fase.nome}` : NOMES_MODO[r.modo];
     $('resumo-titulo').textContent = titulo;
     $('resumo-subtitulo').textContent = sub;
     humorMascote($('tela-resumo'), r.pct >= 60 || r.faseConcluida ? 'feliz' : null);
@@ -662,11 +957,16 @@
     if (r.bonus && (r.bonus.xp || r.bonus.perolas)) {
       selo('i-perola', `Bônus da fase: +${r.bonus.xp} XP e +${r.bonus.perolas} pérolas`, r.estrelas === 3 ? ' (fôlego de sobra!)' : '');
     }
+    if (r.bonusJogo && (r.bonusJogo.xp || r.bonusJogo.perolas)) {
+      selo('i-perola', `Bônus do jogo: +${Math.min(r.bonusJogo.xp || 0, Economia.CONFIG.bonusMaximo.xp)} XP e +${Math.min(r.bonusJogo.perolas || 0, Economia.CONFIG.bonusMaximo.perolas)} pérolas`);
+    }
+    if (r.desafio) selo('i-raio', 'Desafio do Dia: XP em dobro');
     if (r.maiorCombo >= 3) selo('i-raio', `Maior sequência: ${r.maiorCombo} acertos seguidos`);
     if (r.emBranco) selo('i-relogio', `${plural(r.emBranco, 'questão ficou', 'questões ficaram')} em branco`);
 
     // Desempenho por tema
     const temas = limpar($('resumo-temas'));
+    if (!r.porTema.length) temas.append(h('li', { class: 'vazio-texto', text: 'Sem respostas para medir desta vez.' }));
     r.porTema.forEach((t) => {
       const pct = Math.round((t.acertos / t.total) * 100);
       temas.append(h('li', {},
@@ -674,26 +974,37 @@
         h('div', { class: 'tema__barra', 'aria-hidden': 'true' }, h('div', { style: `width:${pct}%` }))));
     });
 
-    // O que revisar
+    // O que revisar (questões do quiz ou detalhes dos jogos)
     const revisar = limpar($('resumo-revisar'));
     if (!r.paraRevisar.length) {
       revisar.append(h('p', { class: 'vazio-texto', text: r.total ? 'Nada pra revisar. Mergulho limpo!' : 'Nenhuma questão respondida.' }));
     }
-    r.paraRevisar.forEach(({ questao: q, escolhida }) => {
+    r.paraRevisar.forEach((item) => {
+      const q = item.questao;
+      const dados = q
+        ? { pergunta: q.enunciado, tema: q.tema, sua: item.escolhida === null ? 'Você deixou em branco.' : `Sua resposta: ${q.alternativas[item.escolhida]}`, certa: q.alternativas[q.correta], explicacao: q.explicacao }
+        : { pergunta: item.pergunta, tema: item.tema, sua: item.sua ? (item.sua.startsWith('Você') || item.sua.startsWith('O tempo') || item.sua.startsWith('A jangada') || item.sua.startsWith('Seu') || /\d de \d/.test(item.sua) ? item.sua : `Sua resposta: ${item.sua}`) : '', certa: item.resposta, explicacao: item.explicacao };
       revisar.append(h('details', { class: 'revisar-item' },
-        h('summary', { text: q.enunciado }),
+        h('summary', { text: dados.pergunta }),
         h('div', { class: 'revisar-item__corpo' },
-          h('span', { class: 'rotulo', text: q.tema }),
-          h('p', { class: 'revisar-item__sua', text: escolhida === null ? 'Você deixou em branco.' : `Sua resposta: ${q.alternativas[escolhida]}` }),
-          h('p', { class: 'revisar-item__certa', text: `Resposta certa: ${q.alternativas[q.correta]}` }),
-          h('p', { class: 'revisar-item__explicacao', text: q.explicacao }))));
+          h('span', { class: 'rotulo', text: dados.tema }),
+          dados.sua ? h('p', { class: 'revisar-item__sua', text: dados.sua }) : null,
+          dados.certa ? h('p', { class: 'revisar-item__certa', text: `Resposta certa: ${dados.certa}` }) : null,
+          dados.explicacao ? h('p', { class: 'revisar-item__explicacao', text: dados.explicacao }) : null)));
     });
 
     // Botões de ação
     const principal = $('btn-resumo-principal');
+    const voltar = $('btn-resumo-mapa');
     principal.hidden = false;
     principal.onclick = null;
-    if (r.modo === 'mergulho') {
+    if (r.modo === 'jogo') {
+      principal.textContent = 'Jogar de novo';
+      principal.onclick = () => iniciarJogo(r.jogo.id, estado.ultimoJogoOpcoes || {});
+      voltar.textContent = 'Voltar à Sala de Jogos';
+      voltar.onclick = () => irPara('jogos');
+      estado.ultimoJogoOpcoes = estado.jogo ? estado.jogo.opcoes : {};
+    } else if (r.modo === 'mergulho') {
       const i = trilha.fases.findIndex((f) => f.id === r.fase.id);
       const proxima = trilha.fases[i + 1];
       if (r.faseConcluida && proxima) {
@@ -703,12 +1014,18 @@
         principal.textContent = r.faseConcluida ? 'Refazer fase' : 'Tentar de novo';
         principal.onclick = () => iniciarSessao('mergulho', { faseId: r.fase.id });
       }
+      voltar.textContent = 'Voltar ao mapa';
+      voltar.onclick = () => irPara('mergulho');
     } else if (r.modo === 'simulado') {
       principal.textContent = 'Novo simulado';
       principal.onclick = () => iniciarSessao('simulado', { quantidade: r.total });
+      voltar.textContent = 'Voltar ao simulado';
+      voltar.onclick = () => irPara('simulado');
     } else {
       principal.textContent = 'Revisar de novo';
       principal.onclick = () => iniciarSessao('revisao');
+      voltar.textContent = 'Voltar à revisão';
+      voltar.onclick = () => irPara('revisao');
     }
     const qtdRevisao = Progresso.paraRevisar(prog, trilha).length;
     $('btn-resumo-revisar').hidden = qtdRevisao === 0;
@@ -716,23 +1033,73 @@
   }
 
   /* =========================================================
+     API para as áreas (organizar.js, biblioteca.js, perfil.js)
+     ========================================================= */
+  /** Concede XP/pérolas via Economia (tarefas, foco). trilhaId nulo = trilha atual. */
+  function concederXP(trilhaId, valores, motivo) {
+    const trilha = estado.trilhas.find((t) => t.id === trilhaId) || estado.trilha;
+    if (!trilha) return;
+    const atual = estado.trilha && trilha.id === estado.trilha.id;
+    const prog = atual ? estado.prog : Progresso.carregar(trilha.id);
+    const antes = Progresso.nivel(prog.xp).numero;
+    const novas = Economia.conceder(prog, trilha, valores);
+    Progresso.salvar(trilha.id, prog);
+    toast(motivo, `+${valores.xp} XP · +${valores.perolas} ${valores.perolas === 1 ? 'pérola' : 'pérolas'} em ${trilha.nome}`, 'i-estrela');
+    avisarConquistas(novas);
+    const depois = Progresso.nivel(prog.xp);
+    if (depois.numero > antes) setTimeout(() => toast('Subiu de nível!', `Nível ${depois.numero}: ${depois.nome}`, 'i-estrela'), 700);
+    atualizarLateral();
+  }
+
+  async function recarregarTrilhas() {
+    await carregarTrilhas();
+    atualizarLateral();
+  }
+
+  /* =========================================================
      EVENTOS
      ========================================================= */
   function ligarEventos() {
+    window.addEventListener('hashchange', () => navegar(location.hash.slice(1)));
+    // Links internos (#secao): também funcionam quando o endereço já é o mesmo
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const secao = a.getAttribute('href').slice(1);
+      if (!ROTAS[secao]) return;
+      e.preventDefault();
+      irPara(secao);
+    });
+
+    $('btn-menu').addEventListener('click', abrirMenu);
+    $('btn-fechar-menu').addEventListener('click', fecharMenu);
+    $('lateral-fundo').addEventListener('click', fecharMenu);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && $('barra-lateral').classList.contains('lateral--aberta')) fecharMenu();
+    });
+    $('select-trilha-lateral').addEventListener('change', (e) => {
+      if (!e.target.value) return;
+      definirTrilha(e.target.value);
+      const rota = ROTAS[estado.secao];
+      if (rota && $(rota.tela) && !$(rota.tela).hidden) {
+        rota.render();
+        atualizarLateral();
+      }
+      toast('Trilha atual', estado.trilha.nome, 'i-livro');
+    });
+
     $('lista-trilhas').addEventListener('keydown', teclasTrilhas);
     $('btn-bora').addEventListener('click', () => estado.selecionada && abrirTrilha(estado.selecionada));
     $('input-importar').addEventListener('change', importarTrilhas);
 
-    $('btn-trocar-trilha').addEventListener('click', () => {
-      renderizarTrilhas();
-      mostrarTela('tela-inicio');
-    });
+    $('btn-trocar-trilha').addEventListener('click', () => irPara('inicio'));
     $('select-meta').addEventListener('change', (e) => {
       estado.prog.metaDiaria = Number(e.target.value);
       avisarConquistas(Conquistas.verificar(estado.prog, estado.trilha));
       salvar();
       renderizarStatus();
       renderizarConquistas();
+      atualizarLateral();
     });
     $('btn-simulado').addEventListener('click', () => {
       iniciarSessao('simulado', { quantidade: Number($('select-simulado').value) });
@@ -743,10 +1110,12 @@
       Progresso.zerar(estado.trilha.id);
       estado.prog = Progresso.carregar(estado.trilha.id);
       renderizarPainel();
+      atualizarLateral();
       toast('Pronto', 'Progresso zerado. Mergulho novo!', 'i-bolha');
     });
 
     $('btn-sair-quiz').addEventListener('click', sairDoQuiz);
+    $('btn-sair-jogo').addEventListener('click', sairDoJogo);
     $('btn-continuar').addEventListener('click', continuar);
     $('btn-marcar').addEventListener('click', () => {
       const q = Quiz.atual(estado.sessao);
@@ -757,11 +1126,6 @@
     });
 
     $('btn-resumo-revisar').addEventListener('click', () => iniciarSessao('revisao'));
-    $('btn-resumo-mapa').addEventListener('click', () => {
-      estado.sessao = null;
-      renderizarPainel();
-      mostrarTela('tela-painel');
-    });
 
     // Atalhos no quiz: 1–6 ou A–F escolhem a alternativa
     document.addEventListener('keydown', (e) => {
@@ -778,8 +1142,25 @@
   }
 
   /* ---------- Início ---------- */
-  montarMascotes();
-  criarBolhas();
-  ligarEventos();
-  carregarTrilhas();
+  async function iniciar() {
+    UI.montarMascotes();
+    criarBolhas();
+    ligarEventos();
+    await carregarTrilhas();
+    const secao = location.hash.slice(1);
+    navegar(ROTAS[secao] ? secao : 'inicio');
+  }
+
+  // Deixa o resto do código carregar antes de começar (outros scripts usam App.*)
+  document.addEventListener('DOMContentLoaded', iniciar);
+
+  return {
+    trilhas: () => estado.trilhas,
+    trilhaAtual: () => estado.trilha,
+    definirTrilha,
+    abrirTrilha,
+    irPara,
+    concederXP,
+    recarregarTrilhas,
+  };
 })();

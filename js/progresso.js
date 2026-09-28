@@ -45,6 +45,8 @@ const Progresso = (() => {
       hoje: { data: null, respondidas: 0 },
       conquistas: {}, // { [conquistaId]: timestamp }
       simulados: [], // [{ data, total, acertos, nota, tempoSeg }]
+      jogos: {}, // { [jogoId]: { partidas, melhor } } — Sala de Jogos
+      leitner: {}, // { [cartaId]: caixa de 1 a 5 } — Cartas do Fundo
       stats: { respondidas: 0, acertos: 0, maiorCombo: 0, sessoes: 0, acertosRevisao: 0 },
     };
   }
@@ -181,6 +183,17 @@ const Progresso = (() => {
     registrarEstudo(prog);
   }
 
+  /**
+   * Resposta que não é uma questão da trilha (par da Memória, palavra da Forca...).
+   * Conta para streak, meta e estatísticas, mas não mexe na repetição espaçada.
+   * neutro = true: estudou, mas não conta como acerto nem como erro ("Quase", nas Cartas do Fundo).
+   */
+  function registrarAvulsa(prog, acertou, neutro = false) {
+    if (acertou && !neutro) prog.stats.acertos++;
+    prog.stats.respondidas++;
+    registrarEstudo(prog);
+  }
+
   function alternarMarcada(prog, questaoId) {
     const q = estadoQuestao(prog, questaoId);
     q.marcada = !q.marcada;
@@ -228,7 +241,7 @@ const Progresso = (() => {
     NIVEIS, METAS_DIARIAS, RECOMPENSA, BONUS_COMBO,
     carregar, salvar, zerar, ultimaTrilha, definirUltimaTrilha,
     nivel, streakVigente, respondidasHoje,
-    registrarResposta, alternarMarcada, paraRevisar,
+    registrarResposta, registrarAvulsa, registrarEstudo, alternarMarcada, paraRevisar,
     faseDesbloqueada, concluirFase, registrarTentativaFase,
   };
 })();

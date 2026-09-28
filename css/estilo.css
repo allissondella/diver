@@ -11,10 +11,13 @@
   --coral: #FB7185;
   --marinho: #0B2545;
 
-  /* Tons de apoio */
-  --fundo-fundo: #06162B;
+  /* Tons de apoio (nomes e valores do docs/DESIGN.md; a D4 unifica o restante) */
+  --turquesa-sombra: #0EA597;
+  --turquesa-brilho: #29C6B3;
+  --fundo-fundo: #06172D;
   --superficie: #12325A;
   --superficie-2: #1A416F;
+  --superficie-turquesa: #0C354C;
   --borda: rgba(230, 241, 255, 0.12);
   --texto: #E6F1FF;
   --texto-suave: #A9BCD6;
@@ -136,17 +139,230 @@ input {
   100% { transform: translate(-8px, -115vh); opacity: 0; }
 }
 
-/* ---------- Estrutura ---------- */
+/* ---------- Estrutura: barra lateral + conteúdo ---------- */
+.casca {
+  position: relative;
+  z-index: 1;
+}
+
 .app {
   position: relative;
   z-index: 1;
-  max-width: 720px;
-  margin: 0 auto;
+  min-width: 0;
   padding: 16px 16px 48px;
+}
+.app:focus {
+  outline: none;
 }
 
 .tela {
+  max-width: 720px;
+  margin: 0 auto;
   animation: surgir 320ms ease both;
+}
+.tela--larga {
+  max-width: 1120px;
+}
+
+/* Topo com o botão de menu (só no celular) */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--marinho) 88%, transparent);
+  border-bottom: 1px solid var(--borda);
+  backdrop-filter: blur(8px);
+}
+.topo__perolas {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--texto);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  min-height: 44px;
+}
+.marca__icone {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+/* Barra lateral: gaveta no celular, fixa no computador */
+.lateral {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 60;
+  width: min(300px, 86vw);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 14px;
+  overflow-y: auto;
+  background: var(--fundo-fundo);
+  border-right: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+  transform: translateX(-105%);
+  visibility: hidden;
+  transition: transform 220ms ease, visibility 220ms;
+}
+.lateral--aberta {
+  transform: none;
+  visibility: visible;
+}
+.lateral-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(3, 10, 22, 0.6);
+}
+.lateral__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lateral__trilha {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+}
+.lateral__trilha select {
+  width: 100%;
+}
+.lateral__nav {
+  display: grid;
+  gap: 2px;
+}
+.lateral__grupo {
+  margin: 12px 10px 4px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.lateral__nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: var(--raio-pequeno);
+  color: var(--texto);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background var(--transicao), color var(--transicao);
+}
+.lateral__nav a:hover {
+  background: rgba(230, 241, 255, 0.07);
+}
+.lateral__nav a[aria-current="page"] {
+  background: var(--superficie-turquesa);
+  color: var(--turquesa-claro);
+  box-shadow: inset 3px 0 0 var(--turquesa);
+}
+.lateral__nav .icone {
+  width: 20px;
+  height: 20px;
+}
+.lateral__badge {
+  margin-left: auto;
+  min-width: 24px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--coral);
+  color: var(--texto-escuro);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-align: center;
+}
+.lateral__badge--foco {
+  background: var(--amarelo);
+}
+.lateral__rodape {
+  margin-top: auto;
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  font-size: 0.85rem;
+}
+.lateral__rodape:empty {
+  display: none;
+}
+.lateral__nivel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.lateral__numeros {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 800;
+}
+.lateral__numeros span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.barra-xp--fina {
+  height: 6px;
+}
+
+/* Quiz e jogos: tela cheia, sem barra lateral (uma ação principal por tela) */
+.modo-foco .topo,
+.modo-foco .lateral,
+.modo-foco .lateral-fundo {
+  display: none !important;
+}
+
+@media (min-width: 960px) {
+  .topo {
+    display: none;
+  }
+  .casca {
+    display: grid;
+    grid-template-columns: 272px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+  .modo-foco .casca {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lateral {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: auto;
+    transform: none;
+    visibility: visible;
+    box-shadow: none;
+    background: color-mix(in srgb, var(--fundo-fundo) 80%, transparent);
+  }
+  .lateral__fechar,
+  .lateral-fundo {
+    display: none !important;
+  }
 }
 @keyframes surgir {
   from { opacity: 0; transform: translateY(8px); }
@@ -302,59 +518,24 @@ select {
 .mascote {
   display: inline-block;
 }
-.diver-svg {
+.mascote__img {
   display: block;
   width: 100%;
   height: auto;
-  overflow: visible;
 }
-.diver__corpo {
-  transform-origin: 50% 50%;
-  transform-box: fill-box;
+/* Parado, o Diver flutua de leve (o WebP já traz a animação de nado) */
+.hero__mascote .mascote__img {
   animation: flutuar 3.2s ease-in-out infinite;
 }
-.diver__nadadeiras {
-  /* gira a partir do quadril, como uma pernada */
-  transform-box: view-box;
-  transform-origin: 170px 72px;
-  animation: pernada 1.6s ease-in-out infinite;
-}
-.diver__bolhas circle {
-  animation: bolhinha 2.4s ease-in infinite;
-}
-.diver__bolhas circle + circle {
-  animation-delay: 1.2s;
-}
-.diver__boca--triste {
-  display: none;
-}
-.mascote--triste .diver__boca--feliz {
-  display: none;
-}
-.mascote--triste .diver__boca--triste {
-  display: inline;
-}
-.mascote--triste .diver__pupila {
-  transform: translateY(2px);
-}
-.mascote--feliz .diver__corpo {
+.mascote--feliz .mascote__img {
   animation: pulinho 600ms ease;
 }
-.mascote--triste .diver__corpo {
+.mascote--triste .mascote__img {
   animation: balanca 500ms ease;
 }
 @keyframes flutuar {
   0%, 100% { transform: translateY(0) rotate(0); }
   50% { transform: translateY(-4px) rotate(-2deg); }
-}
-@keyframes pernada {
-  0%, 100% { transform: rotate(0); }
-  50% { transform: rotate(-7deg); }
-}
-@keyframes bolhinha {
-  0% { transform: translateY(6px); opacity: 0; }
-  30% { opacity: 1; }
-  100% { transform: translateY(-10px); opacity: 0; }
 }
 @keyframes pulinho {
   0% { transform: translateY(0); }
@@ -376,7 +557,8 @@ select {
   padding: 28px 0 8px;
 }
 .hero__mascote {
-  width: 210px;
+  width: 260px;
+  max-width: 80%;
   margin-bottom: 4px;
 }
 .hero__logo {
@@ -1082,7 +1264,7 @@ select {
   gap: 12px;
 }
 .feedback__mascote {
-  width: 88px;
+  width: 96px;
   flex-shrink: 0;
 }
 .feedback__titulo {
@@ -1113,7 +1295,7 @@ select {
 }
 .resumo-cabeca__mascote {
   display: block;
-  width: 160px;
+  width: 190px;
   margin: 0 auto 6px;
 }
 .resumo-cabeca h1 {
