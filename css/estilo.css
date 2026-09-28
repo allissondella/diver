@@ -302,46 +302,59 @@ select {
 .mascote {
   display: inline-block;
 }
-.peixe {
+.diver-svg {
   display: block;
   width: 100%;
   height: auto;
   overflow: visible;
 }
-.peixe__corpo-todo {
+.diver__corpo {
   transform-origin: 50% 50%;
   transform-box: fill-box;
   animation: flutuar 3.2s ease-in-out infinite;
 }
-.peixe__cauda {
-  transform-origin: 88px 45px;
-  animation: abanar 1.4s ease-in-out infinite;
+.diver__nadadeiras {
+  /* gira a partir do quadril, como uma pernada */
+  transform-box: view-box;
+  transform-origin: 170px 72px;
+  animation: pernada 1.6s ease-in-out infinite;
 }
-.peixe__boca--triste {
+.diver__bolhas circle {
+  animation: bolhinha 2.4s ease-in infinite;
+}
+.diver__bolhas circle + circle {
+  animation-delay: 1.2s;
+}
+.diver__boca--triste {
   display: none;
 }
-.mascote--triste .peixe__boca--feliz {
+.mascote--triste .diver__boca--feliz {
   display: none;
 }
-.mascote--triste .peixe__boca--triste {
+.mascote--triste .diver__boca--triste {
   display: inline;
 }
-.mascote--triste .peixe__pupila {
+.mascote--triste .diver__pupila {
   transform: translateY(2px);
 }
-.mascote--feliz .peixe__corpo-todo {
+.mascote--feliz .diver__corpo {
   animation: pulinho 600ms ease;
 }
-.mascote--triste .peixe__corpo-todo {
+.mascote--triste .diver__corpo {
   animation: balanca 500ms ease;
 }
 @keyframes flutuar {
   0%, 100% { transform: translateY(0) rotate(0); }
   50% { transform: translateY(-4px) rotate(-2deg); }
 }
-@keyframes abanar {
+@keyframes pernada {
   0%, 100% { transform: rotate(0); }
-  50% { transform: rotate(-9deg); }
+  50% { transform: rotate(-7deg); }
+}
+@keyframes bolhinha {
+  0% { transform: translateY(6px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-10px); opacity: 0; }
 }
 @keyframes pulinho {
   0% { transform: translateY(0); }
@@ -363,7 +376,7 @@ select {
   padding: 28px 0 8px;
 }
 .hero__mascote {
-  width: 132px;
+  width: 210px;
   margin-bottom: 4px;
 }
 .hero__logo {
@@ -1069,7 +1082,7 @@ select {
   gap: 12px;
 }
 .feedback__mascote {
-  width: 64px;
+  width: 88px;
   flex-shrink: 0;
 }
 .feedback__titulo {
@@ -1099,7 +1112,9 @@ select {
   padding: 12px 0 8px;
 }
 .resumo-cabeca__mascote {
-  width: 104px;
+  display: block;
+  width: 160px;
+  margin: 0 auto 6px;
 }
 .resumo-cabeca h1 {
   font-size: 1.7rem;
