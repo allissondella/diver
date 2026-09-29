@@ -460,6 +460,9 @@ const App = (() => {
     const { trilha, prog } = estado;
     const mapa = limpar($('mapa-fases'));
     const n = trilha.fases.length;
+    $('mapa-sub').textContent = trilha.fasesLivres
+      ? 'Todas as fases estão abertas: escolha o tema que quer estudar. A ordem do mapa é só uma sugestão.'
+      : 'Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.';
 
     trilha.fases.forEach((fase, i) => {
       const liberada = Progresso.faseDesbloqueada(prog, trilha, i);
@@ -1056,6 +1059,7 @@ const App = (() => {
         const proxima = trilha.fases[i + 1];
         let sub;
         if (!proxima) sub = 'Você tocou o fundo desta trilha. Lá embaixo é silencioso, e o silêncio é de respeito.';
+        else if (r.bonus && r.bonus.primeiraVez && trilha.fasesLivres) sub = `Fase no bolso! Próxima parada sugerida: ${proxima.nome}. Ou escolha outra no mapa.`;
         else if (r.bonus && r.bonus.primeiraVez) sub = `${proxima.nome} liberado. A água fica mais escura, mas você também chega mais preparado.`;
         else sub = 'Mais uma volta pela fase para fixar o conteúdo. É assim que se ganha fôlego.';
         return { titulo: 'Fase completa!', sub };

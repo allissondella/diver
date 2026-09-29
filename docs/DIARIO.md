@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-09-29 · Radiologia com todas as fases abertas
+- **Feito:** campo opcional `fasesLivres: true` na trilha. Com ele, todas as fases começam liberadas e o aluno escolhe o tema que quer estudar (mapa, leitura "Antes de mergulhar" e Chefão). Ligado no curso Radiologia: Aparelho Digestivo; os outros cursos continuam em sequência.
+- **Decisões:** a prova final continua pedindo todas as fases concluídas (`exigeFases`), porque ela cobre o curso inteiro. O texto do mapa e o resumo da fase explicam que a ordem é só uma sugestão.
+- **Testes:** 9 fases abertas no computador e no celular, mergulho direto na fase 7, prova ainda travada, curso ISO/IEC 27001 segue em sequência.
+
 ## 2026-09-29 · Memória premia por tempo
 - **Feito:** terminar a Memória sempre rende prêmio (+10 XP e +2 pérolas). O tempo vale medalha: ouro até 15 s por par (+30 XP, +6 pérolas), prata até 25 s (+20, +4), bronze até 40 s (+12, +2); com 6 pares, ouro até 1:30, prata até 2:30 e bronze até 4:00. "Memória afiada" (até 1,5 × o número de pares em tentativas) dá +3 pérolas. O topo do jogo mostra o relógio e a próxima medalha; o resumo diz qual medalha saiu e quanto falta para a próxima.
 - **Correção:** antes, errar "no escuro" (virar conchas que você nunca viu) contava como erro do par, e uma partida normal terminava com 0/6 acertos e 0 XP. Agora só conta como erro quando as duas conchas do par já tinham aparecido; o par vai para "O que revisar" só com 2 ou mais desses erros.

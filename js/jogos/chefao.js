@@ -29,11 +29,7 @@ Jogos.registrar({
     const inicio = Date.now();
     let atual = null;
 
-    function liberado(i) {
-      if (i === 0) return true;
-      const f = ctx.prog.fases[fases[i].id];
-      return !!(f && f.concluida);
-    }
+    const liberado = (i) => Progresso.faseDesbloqueada(ctx.prog, ctx.trilha, i);
 
     function arte(i, classe = '') {
       const c = CHEFOES[Math.min(i, CHEFOES.length - 1)];
