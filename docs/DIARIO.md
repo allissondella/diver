@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-09-29 · Diver com bigode
+- **Feito:** o Diver ganhou um **bigode pequeno**, sem contorno e da cor da barba (`#7A4630`), logo acima do bocal do snorkel. Vale para todas as reações (normal, feliz, triste e pensando), em `assets/mascote/diver.svg` e no molde do `index.html`.
+- **Decisões:** o leão-marinho foi testado e descartado; entre as opções de bigode (guidão, detetive, morsa, fininho, sem barba, rosto limpo, ponta para cima), ficou o discreto "um pouquinho maior".
+
 ## 2026-09-29 · Visual novo, Etapa 4 (Cibersegurança Essencial + Caso Resolvido)
 - **Feito:** curso novo **Cibersegurança Essencial** (iniciante, corporativo e para alunos): 6 fases (Primeiros passos; Senhas e contas; Golpes e phishing; Dispositivos e redes; Dados e privacidade; No trabalho e incidentes), 120 questões originais em situações do dia a dia, "Antes de mergulhar" em cada fase, 36 pares, 24 V/F, 12 adivinhas, 9 sequências, 18 palavras e prova de 40 questões (60 min, 70%). Jogo de detetive **Caso Resolvido** pronto: "O apagão da Estação Abissal" (o grupo Kraken invadiu uma estação de pesquisa no fundo do mar), com 6 tripulantes desenhados no estilo figurinha, 6 golpes, 6 áreas da estação, evidências por item, solução sorteada a cada partida, acusação com 3 tubos de oxigênio e relatório com a lição "Como evitar".
 - **Decisões:** "quem" é a conta usada pelo invasor, não um culpado: o relatório reforça que ninguém é vilão (tom sem culpa). Erro de pergunta não custa oxigênio, só a acusação errada. Alternativas revisadas: a certa só é a mais longa em 30 de 120 questões (antes, 77) e a posição dela é sorteada. Inspiração em jogos de dedução de tabuleiro, sem copiar nomes, regras ou arte.

@@ -60,7 +60,7 @@ Mergulhador barbudo e sorridente, **vetorial (SVG)**, no estilo "figurinha": for
 - **roupa de mergulho com capuz** (`#15406B`, contorno `#5EEAD4`) e faixa turquesa no peito;
 - **máscara amarela** (`#FACC15`) com vidro `#0C354C` e os **olhinhos iguais aos do ícone da aba** (brancos `#E6F1FF`, pupilas `#0B2545`);
 - **snorkel na boca**: bocal amarelo e tubo coral (`#FB7185`) subindo pelo lado, soltando bolhas;
-- barba `#7A4630`, pele `#F2B28C`, nadadeiras amarelas.
+- barba e **bigode pequeno** `#7A4630` (bigode sem contorno, logo acima do bocal; aprovado em 2026-09-29), pele `#F2B28C`, nadadeiras amarelas.
 
 **Decisão de 2026-09-29 (2):** a pixel art 16-bit foi aposentada (os arquivos antigos saíram do repositório; estão no histórico do git). O ícone da aba continua sendo a máscara em SVG.
 
