@@ -5,6 +5,16 @@
 
 ---
 
+## 2026-09-29 · Radiologia com todas as fases abertas
+- **Feito:** campo opcional `fasesLivres: true` na trilha. Com ele, todas as fases começam liberadas e o aluno escolhe o tema que quer estudar (mapa, leitura "Antes de mergulhar" e Chefão). Ligado no curso Radiologia: Aparelho Digestivo; os outros cursos continuam em sequência.
+- **Decisões:** a prova final continua pedindo todas as fases concluídas (`exigeFases`), porque ela cobre o curso inteiro. O texto do mapa e o resumo da fase explicam que a ordem é só uma sugestão.
+- **Testes:** 9 fases abertas no computador e no celular, mergulho direto na fase 7, prova ainda travada, curso ISO/IEC 27001 segue em sequência.
+
+## 2026-09-29 · Memória premia por tempo
+- **Feito:** terminar a Memória sempre rende prêmio (+10 XP e +2 pérolas). O tempo vale medalha: ouro até 15 s por par (+30 XP, +6 pérolas), prata até 25 s (+20, +4), bronze até 40 s (+12, +2); com 6 pares, ouro até 1:30, prata até 2:30 e bronze até 4:00. "Memória afiada" (até 1,5 × o número de pares em tentativas) dá +3 pérolas. O topo do jogo mostra o relógio e a próxima medalha; o resumo diz qual medalha saiu e quanto falta para a próxima.
+- **Correção:** antes, errar "no escuro" (virar conchas que você nunca viu) contava como erro do par, e uma partida normal terminava com 0/6 acertos e 0 XP. Agora só conta como erro quando as duas conchas do par já tinham aparecido; o par vai para "O que revisar" só com 2 ou mais desses erros.
+- **Testes:** partida rápida (ouro + memória afiada), lenta de 5 min (prêmio de conclusão e 6/6) e prata com erros de memória (4/6), no computador e no celular.
+
 ## 2026-09-29 · Curso Radiologia: Aparelho Digestivo (V1)
 - **Feito:** curso novo a partir das anotações da pessoa (aulas COR-SPR GI 04–19 e Deu Laudo GI 02–05): 9 fases (fundamentos; fígado benigno; fígado difuso e maligno; vesícula e vias biliares; pâncreas; baço; abdome agudo; intestino — DII e tumores; pediatria), 230 questões originais (a maioria em caso clínico, com explicação de por que as outras erram), 68 pares, 42 V/F, 16 adivinhas, 16 sequências, 26 palavras e prova de 60 questões/90 min/70%. Novo bloco **"Antes de mergulhar"** em cada fase: introdução, pontos-chave, tabela de diagnóstico diferencial e pérolas.
 - **Boas práticas:** prática de recuperação (pergunta antes da leitura longa), feedback explicativo, casos clínicos com dificuldade crescente, intercalação no Simulado e revisão espaçada do app; alternativas revisadas para a certa não se destacar pelo tamanho (de 117 para 0 casos) e posição da certa embaralhada.

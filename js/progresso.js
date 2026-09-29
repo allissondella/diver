@@ -212,7 +212,7 @@ const Progresso = (() => {
   /* ---------- Fases ---------- */
 
   function faseDesbloqueada(prog, trilha, indice) {
-    if (indice === 0) return true;
+    if (indice === 0 || trilha.fasesLivres) return true; // fasesLivres: o aluno escolhe a ordem
     const anterior = trilha.fases[indice - 1];
     return !!(prog.fases[anterior.id] && prog.fases[anterior.id].concluida);
   }

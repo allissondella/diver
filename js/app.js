@@ -460,6 +460,9 @@ const App = (() => {
     const { trilha, prog } = estado;
     const mapa = limpar($('mapa-fases'));
     const n = trilha.fases.length;
+    $('mapa-sub').textContent = trilha.fasesLivres
+      ? 'Todas as fases estão abertas: escolha o tema que quer estudar. A ordem do mapa é só uma sugestão.'
+      : 'Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.';
 
     trilha.fases.forEach((fase, i) => {
       const liberada = Progresso.faseDesbloqueada(prog, trilha, i);
@@ -1056,6 +1059,7 @@ const App = (() => {
         const proxima = trilha.fases[i + 1];
         let sub;
         if (!proxima) sub = 'Você tocou o fundo desta trilha. Lá embaixo é silencioso, e o silêncio é de respeito.';
+        else if (r.bonus && r.bonus.primeiraVez && trilha.fasesLivres) sub = `Fase no bolso! Próxima parada sugerida: ${proxima.nome}. Ou escolha outra no mapa.`;
         else if (r.bonus && r.bonus.primeiraVez) sub = `${proxima.nome} liberado. A água fica mais escura, mas você também chega mais preparado.`;
         else sub = 'Mais uma volta pela fase para fixar o conteúdo. É assim que se ganha fôlego.';
         return { titulo: 'Fase completa!', sub };
@@ -1122,7 +1126,8 @@ const App = (() => {
       selo('i-perola', `Bônus da fase: +${r.bonus.xp} XP e +${r.bonus.perolas} pérolas`, r.estrelas === 3 ? ' (fôlego de sobra!)' : '');
     }
     if (r.bonusJogo && (r.bonusJogo.xp || r.bonusJogo.perolas)) {
-      selo('i-perola', `Bônus do jogo: +${Math.min(r.bonusJogo.xp || 0, Economia.CONFIG.bonusMaximo.xp)} XP e +${Math.min(r.bonusJogo.perolas || 0, Economia.CONFIG.bonusMaximo.perolas)} pérolas`);
+      selo('i-perola', `Bônus do jogo: +${Math.min(r.bonusJogo.xp || 0, Economia.CONFIG.bonusMaximo.xp)} XP e +${Math.min(r.bonusJogo.perolas || 0, Economia.CONFIG.bonusMaximo.perolas)} pérolas`,
+        r.bonusJogo.motivo ? ` (${r.bonusJogo.motivo})` : '');
     }
     if (r.desafio) selo('i-raio', 'Desafio do Dia: XP em dobro');
     if (r.maiorCombo >= 3) selo('i-raio', `Maior sequência: ${r.maiorCombo} acertos seguidos`);
