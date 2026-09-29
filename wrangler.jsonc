@@ -1,0 +1,11 @@
+// Configuração do site no Cloudflare (ambiente de testes; guia em docs/AMBIENTES.md).
+// Site só de arquivos (sem servidor): o Cloudflare serve a raiz do repositório.
+// "previews": {} liga as prévias de cada branch/PR (comando `wrangler preview`).
+// O que NÃO vai para o site fica listado em .assetsignore.
+{
+  "name": "diver",
+  "compatibility_date": "2026-09-26",
+  "observability": { "enabled": true },
+  "assets": { "directory": "." },
+  "previews": {}
+}

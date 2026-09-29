@@ -52,6 +52,7 @@ Enquanto o bloco `testes` do `config.js` estiver vazio, o ambiente de testes rod
 4b. **Onde ver a prévia de um PR:** no topo da página do Worker, ao lado de **diver**, clique no seletor **"Production ⌃⌄"** e escolha a branch do PR (ex.: `claude/cool-allen-npxecw`); depois, **Visit**. O endereço segue o nome da branch, trocando `/` por `-`: `https://claude-cool-allen-npxecw-diver.allisson-rzr.workers.dev`.
     - "There is nothing here yet" = a branch ainda não foi publicada. A publicação acontece a cada envio (push) para a branch; espere 1 ou 2 minutos e veja em **Deployments** daquele ambiente.
     - **Branch control** (Settings → Builds) fica em `main`: ele decide o endereço fixo, não as prévias.
+    - As prévias precisam do arquivo **`wrangler.jsonc`** na raiz do repositório com o bloco `"previews": {}` (sem ele, a publicação da branch falha com "missing a `previews` block"). O mesmo arquivo diz ao Cloudflare que o site é a raiz do repositório; o **`.assetsignore`** lista o que fica de fora (pasta `.git`, `.claude`, o próprio `wrangler.jsonc`...).
 5. Primeiro acesso: abrir o endereço fixo, conferir a faixa amarela, entrar com o admin de testes e trocar a senha temporária (use uma diferente da produção).
 
 ## Contas de teste
