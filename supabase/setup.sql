@@ -354,3 +354,58 @@ grant execute on function public.eh_admin() to authenticated;
 grant execute on function public.eh_professor() to authenticated;
 grant execute on function public.professor_do_curso(text) to authenticated;
 grant execute on function public.aluno_do_professor(uuid) to authenticated;
+
+-- ---------- Provas que o professor (ou o admin) sobe para os alunos de um curso ----------
+-- As provas que o ALUNO sobe para si ficam no estado dele (chave diver:v1:provas-enviadas), não aqui.
+create table if not exists public.provas_curso (
+  id uuid primary key default gen_random_uuid(),
+  trilha_id text not null,
+  titulo text not null check (char_length(titulo) between 1 and 120),
+  autor_id uuid not null references public.perfis (id) on delete cascade,
+  autor_nome text not null default '',
+  minutos integer check (minutos is null or minutos between 1 and 600),
+  questoes jsonb not null check (jsonb_typeof(questoes) = 'array' and jsonb_array_length(questoes) between 1 and 300 and octet_length(questoes::text) < 1500000),
+  criado_em timestamptz not null default now()
+);
+create index if not exists provas_curso_trilha on public.provas_curso (trilha_id);
+
+-- Autor e nome sempre vêm do login (ninguém publica em nome de outra pessoa)
+create or replace function public.provas_curso_autor()
+returns trigger
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  new.autor_id := auth.uid();
+  new.autor_nome := coalesce((select nome from public.perfis where id = auth.uid()), '');
+  new.criado_em := now();
+  return new;
+end;
+$$;
+drop trigger if exists provas_curso_autor on public.provas_curso;
+create trigger provas_curso_autor before insert on public.provas_curso
+  for each row execute function public.provas_curso_autor();
+
+alter table public.provas_curso enable row level security;
+
+-- Ver: quem está matriculado no curso (alunos e professores) e o admin
+drop policy if exists "prova do curso: ver" on public.provas_curso;
+create policy "prova do curso: ver" on public.provas_curso
+  for select to authenticated using (
+    public.eh_admin()
+    or exists (select 1 from public.matriculas m where m.aluno_id = auth.uid() and m.trilha_id = provas_curso.trilha_id)
+  );
+
+-- Publicar: só o professor do curso ou o admin
+drop policy if exists "prova do curso: publicar" on public.provas_curso;
+create policy "prova do curso: publicar" on public.provas_curso
+  for insert to authenticated with check (public.eh_admin() or public.professor_do_curso(trilha_id));
+
+-- Apagar: quem publicou (se ainda der aula no curso) ou o admin
+drop policy if exists "prova do curso: apagar" on public.provas_curso;
+create policy "prova do curso: apagar" on public.provas_curso
+  for delete to authenticated using (public.eh_admin() or (autor_id = auth.uid() and public.professor_do_curso(trilha_id)));
+
+revoke all on public.provas_curso from anon;
+revoke update on public.provas_curso from authenticated;
+grant select, insert, delete on public.provas_curso to authenticated;
