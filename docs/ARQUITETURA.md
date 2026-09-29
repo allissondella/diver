@@ -88,6 +88,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 ```
 - Obrigatórios: `id`, `nome`, `descricao`, `fases`, `questoes`. `categoria`, `prova` e **todos os blocos depois de `questoes` são opcionais**.
 - `prova` (opcional): `{ "questoes": 40, "minutos": 60, "aprovacao": 65, "exigeFases": true }`. Sem o bloco: até 40 questões, 1,5 min por questão, 70% e exige as fases.
+- `fases[].resumo` (opcional) — leitura **"Antes de mergulhar"**, aberta por um botão embaixo da fase no mapa (janela `<dialog>` em `app.js`, função `abrirResumo`; funciona até com a fase bloqueada): `{ "introducao": "texto", "pontos": ["**Termo**: explicação"], "tabela": { "titulo": "...", "colunas": ["..."], "linhas": [["..."]] }, "perolas": ["..."] }`. Todos os campos são opcionais; `**negrito**` vira `<strong>` (nunca HTML). A primeira coluna da tabela é o cabeçalho da linha.
 - Questão: `dificuldade` = `facil` | `medio` | `dificil`; `correta` = índice a partir de 0; alternativas embaralhadas na exibição.
 - `Trilhas.validar()` só confere as questões; blocos opcionais malformados são ignorados pelo `cartas.js`.
 

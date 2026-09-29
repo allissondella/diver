@@ -493,8 +493,62 @@ const App = (() => {
       ),
       liberada ? h('span', { class: 'fase__cta', 'aria-hidden': 'true', text: concluida ? 'Refazer' : 'Mergulhar' }) : null);
 
-      mapa.append(h('li', {}, botao));
+      // "Antes de mergulhar": leitura curta da fase (opcional no JSON). Fica aberta mesmo com a fase bloqueada.
+      const estudo = fase.resumo
+        ? h('button', { type: 'button', class: 'fase__estudo', onclick: () => abrirResumo(fase, liberada) },
+          icone('i-livro'), `Antes de mergulhar: ${fase.nome}`)
+        : null;
+      mapa.append(h('li', {}, botao, estudo));
     });
+  }
+
+  /* ---------- "Antes de mergulhar": pontos-chave, tabela e pérolas da fase ---------- */
+  /** Texto com **negrito** vira nós (nunca HTML). */
+  function comNegrito(texto) {
+    return String(texto).split(/(\*\*[^*]+\*\*)/).filter(Boolean)
+      .map((parte) => (parte.startsWith('**') && parte.endsWith('**') ? h('strong', { text: parte.slice(2, -2) }) : parte));
+  }
+
+  function abrirResumo(fase, liberada) {
+    const r = fase.resumo || {};
+    let dialogo = $('dialogo-resumo');
+    if (!dialogo) {
+      dialogo = h('dialog', { id: 'dialogo-resumo', class: 'dialogo', 'aria-labelledby': 'dialogo-resumo-titulo' });
+      dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close(); }); // clique fora fecha
+      window.addEventListener('hashchange', () => dialogo.open && dialogo.close()); // Voltar do navegador fecha
+      document.body.append(dialogo);
+    }
+    const tabela = r.tabela && Array.isArray(r.tabela.colunas) && Array.isArray(r.tabela.linhas) ? r.tabela : null;
+    limpar(dialogo).append(h('div', { class: 'dialogo__caixa' },
+      h('header', { class: 'dialogo__topo' },
+        h('div', {},
+          h('span', { class: 'rotulo', text: 'Antes de mergulhar' }),
+          h('h2', { id: 'dialogo-resumo-titulo', class: 'dialogo__titulo', text: fase.nome })),
+        h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'))),
+      h('div', { class: 'dialogo__corpo' },
+        r.introducao ? h('p', { class: 'resumo__intro' }, comNegrito(r.introducao)) : null,
+        Array.isArray(r.pontos) && r.pontos.length
+          ? h('section', {}, h('h3', { class: 'resumo__titulo' }, icone('i-alvo'), 'Pontos-chave'),
+            h('ul', { class: 'resumo__lista' }, r.pontos.map((p) => h('li', {}, comNegrito(p)))))
+          : null,
+        tabela
+          ? h('section', {}, h('h3', { class: 'resumo__titulo' }, icone('i-colunas'), tabela.titulo || 'Diagnóstico diferencial'),
+            h('div', { class: 'tabela-rolagem', tabindex: '0', role: 'region', 'aria-label': tabela.titulo || 'Tabela' },
+              h('table', { class: 'tabela tabela--resumo' },
+                h('thead', {}, h('tr', {}, tabela.colunas.map((c) => h('th', { scope: 'col', text: c })))),
+                h('tbody', {}, tabela.linhas.map((linha) => h('tr', {}, linha.map((c, k) => (k === 0 ? h('th', { scope: 'row' }, comNegrito(c)) : h('td', {}, comNegrito(c))))))))))
+          : null,
+        Array.isArray(r.perolas) && r.perolas.length
+          ? h('section', { class: 'resumo__perolas' }, h('h3', { class: 'resumo__titulo' }, icone('i-perola'), 'Pérolas e pegadinhas'),
+            h('ul', { class: 'resumo__lista' }, r.perolas.map((p) => h('li', {}, comNegrito(p)))))
+          : null),
+      h('footer', { class: 'dialogo__rodape' },
+        h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => dialogo.close() }, 'Fechar'),
+        liberada
+          ? h('button', { type: 'button', class: 'botao botao--primario', onclick: () => { dialogo.close(); iniciarSessao('mergulho', { faseId: fase.id }); } }, 'Bora mergulhar!')
+          : h('span', { class: 'texto-suave resumo__bloqueio', text: 'Complete a fase anterior para mergulhar aqui.' }))));
+    dialogo.showModal();
+    dialogo.querySelector('.dialogo__corpo').scrollTop = 0;
   }
 
   function renderizarConquistas() {
