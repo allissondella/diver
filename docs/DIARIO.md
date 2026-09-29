@@ -5,6 +5,14 @@
 
 ---
 
+## 2026-09-29 · Curso Radiologia: Aparelho Digestivo (V1)
+- **Feito:** curso novo a partir das anotações da pessoa (aulas COR-SPR GI 04–19 e Deu Laudo GI 02–05): 9 fases (fundamentos; fígado benigno; fígado difuso e maligno; vesícula e vias biliares; pâncreas; baço; abdome agudo; intestino — DII e tumores; pediatria), 230 questões originais (a maioria em caso clínico, com explicação de por que as outras erram), 68 pares, 42 V/F, 16 adivinhas, 16 sequências, 26 palavras e prova de 60 questões/90 min/70%. Novo bloco **"Antes de mergulhar"** em cada fase: introdução, pontos-chave, tabela de diagnóstico diferencial e pérolas.
+- **Boas práticas:** prática de recuperação (pergunta antes da leitura longa), feedback explicativo, casos clínicos com dificuldade crescente, intercalação no Simulado e revisão espaçada do app; alternativas revisadas para a certa não se destacar pelo tamanho (de 117 para 0 casos) e posição da certa embaralhada.
+- **Testes:** curso carrega sem avisos; mapa com 9 fases e leitura em cada uma (computador e celular, tabela rola dentro da janela); rodada completa do Mergulho; os 9 jogos com conteúdo suficiente; prova configurada; regressão de todas as áreas e dos quadros de tarefas sem erros.
+- **Decisões:** nome "Radiologia: Aparelho Digestivo" (o material é de imagem); o intestino virou duas fases pelo volume; sem imagens radiológicas nesta V1 (achados descritos em texto); o material-fonte não vai para o repositório.
+- **Pendências:** revisão por radiologista antes de abrir para todo mundo; atribuir o curso às pessoas na área Admin; imagens nas questões (versão futura).
+- **Próximo passo:** testar com os primeiros usuários e recolher as dúvidas das explicações.
+
 ## 2026-09-28 · Tipos de conta (aluno, professor, admin) e login como primeira página
 - **Feito:** `perfis.papel` (aluno/professor/admin) no `setup.sql` (reexecutável; quem era admin continua admin); cadastro com tipo de conta e mudança de tipo na área **Admin → Pessoas e cursos**, com filtro por tipo; **Professor → Meus alunos** só de leitura (alunos dos cursos dele e o progresso nesses cursos); com o Supabase configurado, o login é a primeira coisa na tela (nada do app aparece antes); conserto do selo "Ativo" que tinha perdido o estilo.
 - **Testes:** regras de segurança por papel direto no Postgres (admin cria os três tipos e não se rebaixa; professor vê só os alunos e o progresso dos cursos dele, e o banco recusa qualquer ação de admin; aluno só vê a si); fluxo completo no navegador com o servidor que imita o Supabase (login primeiro, admin cria professor/aluno/admin, primeiro acesso de cada um, Meus alunos no celular); regressão do modo local sem erros.
