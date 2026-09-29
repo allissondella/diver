@@ -49,6 +49,9 @@ Enquanto o bloco `testes` do `config.js` estiver vazio, o ambiente de testes rod
    - **Production** → `diver.allisson-rzr.workers.dev` (endereço fixo, segue a `main`);
    - **Preview** → `*-diver.allisson-rzr.workers.dev` (um link por branch/PR).
 4. **Não precisa** da aba **Access** / "Zero Trust": o login é o do próprio Diver.
+4b. **Onde ver a prévia de um PR:** no topo da página do Worker, ao lado de **diver**, clique no seletor **"Production ⌃⌄"** e escolha a branch do PR (ex.: `claude/cool-allen-npxecw`); depois, **Visit**. O endereço segue o nome da branch, trocando `/` por `-`: `https://claude-cool-allen-npxecw-diver.allisson-rzr.workers.dev`.
+    - "There is nothing here yet" = a branch ainda não foi publicada. A publicação acontece a cada envio (push) para a branch; espere 1 ou 2 minutos e veja em **Deployments** daquele ambiente.
+    - **Branch control** (Settings → Builds) fica em `main`: ele decide o endereço fixo, não as prévias.
 5. Primeiro acesso: abrir o endereço fixo, conferir a faixa amarela, entrar com o admin de testes e trocar a senha temporária (use uma diferente da produção).
 
 ## Contas de teste
