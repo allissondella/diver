@@ -44,7 +44,7 @@ _Jogos maiores, para jogar sozinho ou contra alguém no mesmo aparelho._
 | Jogo | Como funciona | Conteúdo usado | Roupa de mar | Semana |
 | --- | --- | --- | --- | --- |
 | **Torre do Saber** (`torre`) | Para tirar um bloco da torre, responda. Errou? A torre balança. Blocos de cores diferentes valem pontos diferentes. Modo 2 jogadores. | Qualquer trilha (derivado) | Caixotes de um naufrágio | 16 |
-| **Caso Resolvido** (`caso`) | Colete pistas respondendo perguntas e deduza quem, onde e como. Cada suspeito, local e objeto está ligado a um conceito. | Casos (ou gerados a partir dos temas) | Mistério num navio naufragado | 17 |
+| **Caso Resolvido** (`caso`) | Responda perguntas para liberar evidências e deduza quem, como e onde. A solução é sorteada a cada partida. | Bloco `casos` | Ataque hacker na Estação Abissal (fundo do mar) | Pronto |
 | **Duelo de Mergulhadores** (`duelo`) | Dois jogadores no mesmo aparelho, em turnos, disputam as pérolas. Empate, placar e revanche. | Qualquer trilha (derivado) | Dois mergulhadores, um tesouro | 17 |
 
 ### Depois do lançamento (v2)
@@ -68,7 +68,10 @@ O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos a
   "sequencias": [ { "titulo": "Etapas da fotossíntese", "itens": ["Absorção de luz", "Separação da água", "Produção de glicose"], "tema": "Biologia" } ],
   "adivinhas":  [ { "resposta": "Fotossíntese", "aceitas": ["fotossintese"], "dicas": ["Acontece nas plantas", "Precisa de luz", "Produz oxigênio"], "tema": "Biologia" } ],
   "palavras":   [ { "palavra": "MITOCONDRIA", "dica": "Usina de energia da célula", "tema": "Biologia" } ],
-  "casos":      [ { "titulo": "O sumiço da pérola", "suspeitos": [], "locais": [], "objetos": [], "pistas": [], "solucao": {} } ]
+  "casos":      [ { "id": "estacao-abissal", "titulo": "O apagão da Estação Abissal", "historia": "...", "perguntas": { "quem": "...", "como": "...", "onde": "..." },
+                    "suspeitos": [ { "id": "beto", "nome": "Beto Boia", "papel": "Estagiário", "descricao": "...", "visual": { "pele": "#F5C9A6", "cabelo": "#E07A3F", "penteado": "curto|coque|rabo|cacheado|bigode", "roupa": "#60A5FA", "acessorio": "oculos|fone|quepe|bone|capacete|brincos" }, "evidencias": [ { "tipo": "LOG", "texto": "Álibi que descarta este suspeito" } ] } ],
+                    "objetos": [ { "id": "phishing", "nome": "E-mail falso", "descricao": "...", "licao": "Como evitar (aparece no relatório)", "evidencias": [] } ],
+                    "locais":  [ { "id": "laboratorio", "nome": "Laboratório", "sistema": "Banco de dados das pesquisas", "evidencias": [] } ] } ]
 }
 ```
 
@@ -183,10 +186,15 @@ O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos a
 - Para tirar um bloco, responda uma pergunta daquela cor; errar aumenta a instabilidade; a torre cai em 100%.
 - Modo 2 jogadores alternando no mesmo aparelho.
 
-#### Caso Resolvido (`caso`) — semana 17
-- Um caso tem suspeitos, locais e objetos ligados a conceitos; cada pergunta respondida revela uma pista.
-- No fim, o aluno deduz quem, onde e como. Ambientação: navio naufragado.
-- Gerador de casos a partir dos temas de uma trilha (Semana 17).
+#### Caso Resolvido (`caso`) — pronto (2026-09-29)
+- Arquivo `js/jogos/caso-resolvido.js`; precisa do bloco `casos` (pelo menos 3 itens em cada grupo, cada um com evidências) e de 6 questões.
+- A cada partida, sorteia a solução ("o envelope"): um suspeito (por qual conta o invasor entrou), um objeto (qual golpe) e um local (qual área).
+- **Investigar** = responder uma questão da trilha: acerto revela uma evidência (LOG, CÂMERA, DEPOIMENTO, RELATÓRIO, E-MAIL) que descarta um item que não é a solução; 3 acertos seguidos dão uma evidência extra; erro não revela nada.
+- **Acusar** a qualquer momento: certo encerra o caso; errado gasta 1 dos 3 tubos de oxigênio, diz quantas partes estavam certas e descarta as partes erradas. Sem oxigênio, o caso esfria (a solução aparece).
+- **Relatório do caso**: solução com o retrato do suspeito, a lição "Como evitar" do golpe e o lembrete de que ninguém é vilão (foi alvo de um golpe).
+- Pontos: acertos pela economia central + bônus ao resolver (XP = max(15, 60 − 3 × perguntas); pérolas = max(3, 12 − perguntas/2) − acusações erradas). Recorde = 1000 − 40 × perguntas − 100 × acusações erradas.
+- Retratos e ícones são SVGs do próprio jogo (estilo figurinha, como o Diver); cores dos retratos vêm do JSON e só são aceitas em hexadecimal.
+- Caso atual: "O apagão da Estação Abissal" (curso Cibersegurança Essencial). Gerador automático de casos continua para depois.
 
 #### Duelo de Mergulhadores (`duelo`) — semana 17
 - Dois jogadores no mesmo aparelho, em turnos; cada um responde uma pergunta por rodada (10 rodadas) disputando pérolas.
