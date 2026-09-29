@@ -33,6 +33,10 @@
   --raio-pequeno: 10px;
   --sombra: 0 10px 30px rgba(0, 0, 0, 0.25);
   --fonte: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Números, cronômetros e rótulos pequenos (toque de "painel de instrumentos") */
+  --fonte-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --vidro: color-mix(in srgb, var(--fundo-fundo) 94%, transparent);
+  --brilho-turquesa: 0 0 0 1px rgba(20, 184, 166, 0.35), 0 12px 32px rgba(20, 184, 166, 0.18);
   --transicao: 180ms ease;
 }
 
@@ -250,17 +254,6 @@ textarea {
   align-items: center;
   justify-content: space-between;
 }
-.lateral__trilha {
-  display: grid;
-  gap: 6px;
-  padding: 12px;
-  border-radius: var(--raio-pequeno);
-  background: var(--superficie);
-  border: 1px solid var(--borda);
-}
-.lateral__trilha select {
-  width: 100%;
-}
 .lateral__nav {
   display: grid;
   gap: 2px;
@@ -380,8 +373,8 @@ textarea {
   }
 }
 @keyframes surgir {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
+  from { opacity: 0; transform: translateY(12px) scale(0.995); filter: blur(3px); }
+  to { opacity: 1; transform: none; filter: none; }
 }
 
 .secao-titulo {
@@ -400,9 +393,10 @@ textarea {
 
 .rotulo {
   display: inline-block;
-  font-size: 0.75rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--turquesa-claro);
 }
@@ -1692,4 +1686,286 @@ select {
 .ambiente-testes .toasts { top: calc(12px + var(--faixa)); }
 @media (min-width: 960px) {
   .ambiente-testes .lateral { height: calc(100vh - var(--faixa)); }
+}
+
+/* =========================================================
+   Visual 2026 (Etapa 1): barras de rolagem, Início, "Trilha atual",
+   cortina de transição e números em fonte mono
+   ========================================================= */
+
+/* ---------- Barras de rolagem no tom do mar (nada de barra branca) ---------- */
+html,
+.lateral,
+.dialogo__corpo,
+.seletor-trilha__lista {
+  scrollbar-width: thin;
+  scrollbar-color: var(--superficie-2) transparent;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--superficie-2);
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--turquesa-sombra); }
+::-webkit-scrollbar-corner { background: transparent; }
+/* Na barra lateral, a alça só aparece quando o mouse passa por ela */
+@media (hover: hover) {
+  .lateral { scrollbar-color: transparent transparent; }
+  .lateral:hover, .lateral:focus-within { scrollbar-color: var(--superficie-2) transparent; }
+}
+
+/* ---------- Números e dados em fonte mono ---------- */
+.timer,
+.quiz-contador,
+.lateral__numeros,
+.lateral__grupo,
+.trilha__meta,
+.resumo-numeros strong,
+.status__nivel-num {
+  font-family: var(--fonte-mono);
+}
+.lateral__grupo { font-size: 0.68rem; letter-spacing: 0.12em; }
+
+/* ---------- Início: topo mais enxuto ---------- */
+.hero { padding: 12px 0 0; }
+.hero__mascote { width: 200px; }
+.hero__texto { font-size: 0.95rem; }
+.secao-titulo#titulo-trilhas { margin-top: 24px; }
+
+/* ---------- Início: cards dos cursos ---------- */
+.lista-trilhas { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) {
+  .lista-trilhas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.trilha {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 16px 18px;
+  min-height: 100%;
+  background: linear-gradient(160deg, rgba(26, 65, 111, 0.75), rgba(18, 50, 90, 0.6));
+  transition: border-color var(--transicao), background var(--transicao), transform 220ms ease, box-shadow 220ms ease;
+}
+.trilha::before { display: none; } /* a antiga "bolinha" deu lugar ao selo de check */
+.trilha:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
+.trilha[aria-checked="true"] {
+  border-color: var(--turquesa);
+  background: linear-gradient(160deg, rgba(20, 184, 166, 0.2), rgba(12, 53, 76, 0.75));
+  box-shadow: var(--brilho-turquesa);
+}
+.trilha__check {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--borda);
+  color: transparent;
+  transition: var(--transicao);
+}
+.trilha__check .icone { width: 16px; height: 16px; }
+.trilha[aria-checked="true"] .trilha__check {
+  border-color: var(--turquesa);
+  background: var(--turquesa);
+  color: var(--texto-escuro);
+}
+.trilha .rotulo { padding-right: 34px; }
+.trilha__nome { margin: 0; padding-right: 30px; line-height: 1.3; }
+.trilha__descricao {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+.trilha__progresso {
+  display: block;
+  width: 100%;
+  height: 6px;
+  margin-top: auto;
+  padding-top: 0;
+  border-radius: 999px;
+  background: rgba(230, 241, 255, 0.1);
+  overflow: hidden;
+}
+.trilha .trilha__progresso { margin-top: 10px; }
+.trilha__progresso > span {
+  display: block;
+  height: 100%;
+  min-width: 4px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--turquesa), var(--turquesa-claro));
+  transition: width 400ms ease;
+}
+.trilha__meta { margin-top: 8px; font-size: 0.75rem; }
+
+/* O botão "Carregar trilha" (só admin/modo local) fica discreto, abaixo dos cursos */
+.inicio-acoes { margin-top: 14px; }
+
+/* ---------- Início: barra fixa com o "Bora mergulhar!" ---------- */
+.inicio-cta {
+  position: sticky;
+  bottom: 12px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 10px 10px 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  background: var(--vidro);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--sombra);
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+.inicio-cta--pronto { border-color: rgba(20, 184, 166, 0.55); box-shadow: var(--sombra), var(--brilho-turquesa); }
+.inicio-cta__info { display: grid; min-width: 0; flex: 1; line-height: 1.25; }
+.inicio-cta__info .rotulo { font-size: 0.62rem; }
+.inicio-cta__nome {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.95rem;
+}
+.inicio-cta .botao { flex-shrink: 0; border-radius: 999px; }
+@media (max-width: 480px) {
+  .inicio-cta { border-radius: var(--raio); padding: 8px 8px 8px 14px; gap: 8px; }
+  .inicio-cta__nome { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 0.82rem; line-height: 1.25; }
+  .inicio-cta .botao { padding-inline: 14px; font-size: 0.95rem; }
+  .inicio-cta .botao .icone { display: none; }
+}
+.rodape { margin-bottom: 8px; }
+
+/* ---------- Barra lateral: seletor "Trilha atual" ---------- */
+.seletor-trilha { position: relative; }
+.seletor-trilha__botao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 64px;
+  padding: 10px 12px 10px 14px;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: linear-gradient(160deg, var(--superficie), var(--superficie-turquesa));
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+.seletor-trilha__botao:hover { border-color: rgba(20, 184, 166, 0.55); }
+.seletor-trilha--aberto .seletor-trilha__botao { border-color: var(--turquesa); box-shadow: var(--brilho-turquesa); }
+.seletor-trilha__textos { display: grid; min-width: 0; flex: 1; gap: 1px; }
+.seletor-trilha__textos .rotulo { font-size: 0.62rem; }
+.seletor-trilha__nome {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: 800;
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+.seletor-trilha__cat { font-size: 0.75rem; color: var(--texto-suave); }
+.seletor-trilha__seta { width: 18px; height: 18px; flex-shrink: 0; color: var(--texto-suave); transform: rotate(90deg); transition: transform var(--transicao); }
+.seletor-trilha--aberto .seletor-trilha__seta { transform: rotate(-90deg); color: var(--turquesa-claro); }
+.seletor-trilha__lista {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 70;
+  max-height: min(60vh, 360px);
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: var(--fundo-fundo);
+  box-shadow: var(--sombra);
+  animation: surgir-lista 160ms ease both;
+}
+.seletor-trilha__lista:focus { outline: none; }
+.seletor-trilha__lista:focus-visible { outline: 2px solid var(--amarelo); outline-offset: 2px; }
+@keyframes surgir-lista {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+.seletor-trilha__opcao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.seletor-trilha__opcao:hover,
+.seletor-trilha__opcao--ativa { background: rgba(230, 241, 255, 0.07); }
+.seletor-trilha__opcao--ativa { box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.45); }
+.seletor-trilha__opcao[aria-selected="true"] .seletor-trilha__opcao-nome { color: var(--turquesa-claro); }
+.seletor-trilha__opcao-textos { display: grid; gap: 3px; min-width: 0; flex: 1; }
+.seletor-trilha__opcao-nome { font-weight: 700; font-size: 0.88rem; line-height: 1.3; }
+.seletor-trilha__opcao-meta { font-family: var(--fonte-mono); font-size: 0.68rem; color: var(--texto-suave); }
+.seletor-trilha__opcao .trilha__progresso { height: 4px; }
+.seletor-trilha__marca { width: 18px; height: 18px; color: var(--turquesa-claro); }
+
+/* ---------- Cortina de transição (bolhas + Diver) ---------- */
+.transicao {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: none;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, var(--superficie-turquesa), var(--fundo-fundo) 70%);
+  pointer-events: none;
+}
+.transicao--on { display: grid; animation: cortina-entra 220ms ease both; }
+.transicao--saindo { animation: cortina-sai 450ms ease both; }
+@keyframes cortina-entra { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cortina-sai { to { opacity: 0; transform: translateY(-24px); } }
+.transicao__conteudo { display: grid; justify-items: center; gap: 10px; }
+.transicao__mascote { width: 180px; animation: flutuar 1.4s ease-in-out infinite; }
+.transicao__conteudo { position: relative; }
+.transicao__texto {
+  margin: 0;
+  font-family: var(--fonte-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--turquesa-claro);
+}
+.transicao__bolhas { position: absolute; inset: 0; }
+.transicao__bolhas i {
+  position: absolute;
+  bottom: -30px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(94, 234, 212, 0.45);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(20, 184, 166, 0.05) 60%);
+  animation: bolha-cortina 1.1s ease-in infinite;
+}
+.transicao__bolhas i:nth-child(1) { left: 12%; animation-delay: 0s; }
+.transicao__bolhas i:nth-child(2) { left: 24%; width: 22px; height: 22px; animation-delay: 0.15s; }
+.transicao__bolhas i:nth-child(3) { left: 37%; width: 10px; height: 10px; animation-delay: 0.35s; }
+.transicao__bolhas i:nth-child(4) { left: 49%; animation-delay: 0.05s; }
+.transicao__bolhas i:nth-child(5) { left: 61%; width: 26px; height: 26px; animation-delay: 0.25s; }
+.transicao__bolhas i:nth-child(6) { left: 72%; width: 12px; height: 12px; animation-delay: 0.45s; }
+.transicao__bolhas i:nth-child(7) { left: 83%; animation-delay: 0.1s; }
+.transicao__bolhas i:nth-child(8) { left: 92%; width: 18px; height: 18px; animation-delay: 0.3s; }
+@keyframes bolha-cortina {
+  to { transform: translateY(-110vh); opacity: 0.2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .transicao { display: none !important; }
 }

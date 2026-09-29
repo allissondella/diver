@@ -56,7 +56,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#admin` | `tela-admin` (admin e professor; conteúdo muda conforme o tipo de conta) | `admin.js` |
 | (sem endereço) | `tela-login`, `tela-senha` (antes do app, com login ativo) | `conta.js` |
 
-- A **trilha atual** é escolhida no Início ("Bora mergulhar!") ou no seletor da barra lateral. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
+- A **trilha atual** é escolhida no Início (cards + barra fixa `#inicio-cta` com o curso escolhido e o "Bora mergulhar!") ou no seletor da barra lateral (`#seletor-trilha`: botão + lista no padrão listbox, setas/Home/End/Enter/Esc, fecha ao clicar fora; `desenharSeletorTrilha` no `app.js`). A cortina de transição é `cortina(texto)` no `app.js`. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
 - Mascote: `<template id="molde-mascote">` (pixel art: WebP animado; PNG parado com "reduzir movimento"). `UI.montarMascotes()` copia para cada `[data-mascote]`; `UI.humorMascote(container, 'feliz' | 'triste' | null)`.
 - Todo conteúdo vindo de JSON entra com `textContent` (função `UI.h()`), nunca com `innerHTML`. Os únicos `innerHTML` são SVGs fixos do código (chefões, jangada, mapa do tesouro).
 - `append`/`replaceChildren` nativos escrevem "null" se receberem `null`: use `UI.h()` ou `.filter(Boolean)`.

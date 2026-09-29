@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-09-29 · Visual novo, Etapa 1 (barras, Início, Trilha atual, transições)
+- **Feito:** barras de rolagem finas no tom do mar (sem as barras brancas do Windows); Início com topo mais enxuto, cards de curso com selo de check, descrição em 2 linhas e barra de progresso, e o **"Bora mergulhar!" numa barra fixa** no pé da tela mostrando o curso escolhido; **"Trilha atual"** virou um seletor próprio (lista com nome, categoria, fases e progresso, no teclado também); telas entram com fade + deslize + leve desfoque; **cortina** com bolhas e o Diver ao abrir um curso, começar um mergulho/simulado/revisão/prova ou um jogo ("Descendo para Raso…"); rótulos, cronômetros e números em **JetBrains Mono**.
+- **Decisões:** ideias do site de referência (transições, rótulos em fonte mono, cortina de carregamento), sem copiar código nem arte e sem reescrever a arquitetura; cores e Plus Jakarta Sans continuam. Tudo estático com "reduzir movimento".
+- **Testes:** computador e celular: barra do "Bora mergulhar!" visível no topo e depois de rolar, com o curso escolhido; seletor abre, troca pelo teclado, Esc e clique fora fecham, foco volta; cortina aparece e some, quiz abre normal; sem cortina com "reduzir movimento"; sem rolagem lateral; regressão (Upload de prova, Memória, fases livres, Radiologia) sem erros.
+
 ## 2026-09-29 · Ambiente de testes
 - **Feito:** o `js/config.js` agora tem dois blocos, `producao` e `testes`, e escolhe pelo endereço: `allissondella.github.io` usa o Supabase de produção; qualquer outro endereço (site de testes, prévias dos PRs, localhost) usa o Supabase de testes, ou o modo local enquanto ele estiver vazio. Fora da produção aparece a faixa amarela **AMBIENTE DE TESTES** no topo e "[Testes]" no nome da aba. Guia `docs/AMBIENTES.md` com o fluxo PR → prévia → merge e o passo a passo do Supabase de testes e do Cloudflare Pages.
 - **Decisões:** um repositório só (sem cópia do código); site de testes no Cloudflare Pages, em outro domínio, para o login e o progresso do navegador não se misturarem com a produção (dois sites em `*.github.io` dividiriam os mesmos dados); no lugar de uma branch `teste`, o endereço fixo de testes segue a `main` e **cada PR ganha uma prévia** (menos merges para lembrar); banco de testes em outro projeto Supabase, só com dados fictícios; mudança de banco roda primeiro nos testes.

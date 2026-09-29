@@ -9,7 +9,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%230B2545'/%3E%3Crect x='14' y='30' width='72' height='40' rx='18' fill='%230C354C' stroke='%23FACC15' stroke-width='8'/%3E%3Ccircle cx='37' cy='50' r='9' fill='%23E6F1FF'/%3E%3Ccircle cx='63' cy='50' r='9' fill='%23E6F1FF'/%3E%3Ccircle cx='35' cy='52' r='4.5' fill='%230B2545'/%3E%3Ccircle cx='61' cy='52' r='4.5' fill='%230B2545'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="css/areas.css">
   <link rel="stylesheet" href="css/jogos.css">
@@ -127,6 +127,15 @@
   <!-- Bolhas decorativas do fundo (geradas pelo app.js) -->
   <div class="bolhas" aria-hidden="true"></div>
 
+  <!-- Cortina de transição: aparece rapidinho ao começar uma sessão ou um jogo (some com "reduzir movimento") -->
+  <div class="transicao" id="transicao" aria-hidden="true">
+    <div class="transicao__bolhas"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="transicao__conteudo">
+      <div class="transicao__mascote mascote" data-mascote></div>
+      <p class="transicao__texto" id="transicao-texto">Bora mergulhar!</p>
+    </div>
+  </div>
+
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- Barra do topo (só no celular): abre a barra lateral -->
@@ -157,10 +166,8 @@
       <!-- Pessoa logada (só aparece com login) -->
       <div class="lateral__conta" id="lateral-conta" hidden></div>
 
-      <label class="lateral__trilha">
-        <span class="rotulo">Trilha atual</span>
-        <select id="select-trilha-lateral" aria-label="Trilha atual"></select>
-      </label>
+      <!-- Trilha atual: seletor próprio (botão + lista), montado pelo app.js -->
+      <div class="seletor-trilha" id="seletor-trilha"></div>
 
       <nav class="lateral__nav" aria-label="Áreas do Diver">
         <p class="lateral__grupo">Estudar</p>
@@ -209,12 +216,8 @@
 
         <div id="aviso-trilhas" class="aviso" hidden></div>
 
-        <div class="inicio-acoes">
-          <button id="btn-bora" class="botao botao--primario botao--grande" type="button" disabled>
-            Bora mergulhar!
-            <svg class="icone" aria-hidden="true"><use href="#i-seta-baixo"/></svg>
-          </button>
-          <label class="botao botao--fantasma botao--pequeno" data-so-gestao>
+        <div class="inicio-acoes" data-so-gestao>
+          <label class="botao botao--fantasma botao--pequeno">
             <svg class="icone" aria-hidden="true"><use href="#i-upload"/></svg>
             Carregar trilha (.json)
             <input id="input-importar" type="file" accept=".json,application/json" multiple class="visualmente-oculto">
@@ -225,6 +228,18 @@
         <div id="hoje" class="hoje"></div>
 
         <footer class="rodape">Diver: aprender é a parte divertida.</footer>
+
+        <!-- Barra fixa no pé do Início: o curso escolhido e o "Bora mergulhar!" sempre à vista -->
+        <div class="inicio-cta" id="inicio-cta">
+          <div class="inicio-cta__info">
+            <span class="rotulo">Curso escolhido</span>
+            <strong id="inicio-cta-nome" class="inicio-cta__nome">Escolha um curso acima</strong>
+          </div>
+          <button id="btn-bora" class="botao botao--primario" type="button" disabled>
+            Bora mergulhar!
+            <svg class="icone" aria-hidden="true"><use href="#i-seta-dir"/></svg>
+          </button>
+        </div>
       </section>
 
       <!-- ============ MERGULHO: PAINEL DA TRILHA (mapa de profundidades) ============ -->

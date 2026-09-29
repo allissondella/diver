@@ -139,9 +139,7 @@ const App = (() => {
   }
 
   function atualizarLateral() {
-    const select = limpar($('select-trilha-lateral'));
-    if (!estado.trilhas.length) select.append(h('option', { value: '', text: 'Nenhuma trilha' }));
-    estado.trilhas.forEach((t) => select.append(h('option', { value: t.id, selected: estado.trilha && t.id === estado.trilha.id, text: t.nome })));
+    desenharSeletorTrilha();
 
     atualizarConta();
     const status = limpar($('lateral-status'));
@@ -164,6 +162,105 @@ const App = (() => {
     $('badge-revisao').hidden = qtd === 0;
     $('badge-revisao').textContent = String(qtd);
     $('badge-foco').hidden = !Organizar.focoAtivo();
+  }
+
+  /* ---------- "Trilha atual": botão que abre uma lista (padrão listbox, funciona no teclado) ---------- */
+  function desenharSeletorTrilha() {
+    const box = $('seletor-trilha');
+    const estavaAberto = box.classList.contains('seletor-trilha--aberto');
+    const atual = estado.trilha;
+    const botao = h('button', {
+      type: 'button', class: 'seletor-trilha__botao', id: 'seletor-trilha-botao',
+      'aria-haspopup': 'listbox', 'aria-expanded': 'false', 'aria-controls': 'seletor-trilha-lista',
+      disabled: !estado.trilhas.length,
+      onclick: () => abrirSeletorTrilha(!box.classList.contains('seletor-trilha--aberto')),
+    },
+    h('span', { class: 'seletor-trilha__textos' },
+      h('span', { class: 'rotulo', text: 'Trilha atual' }),
+      h('span', { class: 'seletor-trilha__nome', text: atual ? atual.nome : 'Nenhuma trilha' }),
+      atual && atual.categoria ? h('span', { class: 'seletor-trilha__cat', text: atual.categoria }) : null),
+    icone('i-seta-dir', 'seletor-trilha__seta'));
+
+    const lista = h('ul', {
+      class: 'seletor-trilha__lista', id: 'seletor-trilha-lista', role: 'listbox', tabindex: '-1',
+      'aria-label': 'Escolha a trilha atual', hidden: true,
+      onkeydown: teclasSeletorTrilha,
+    }, estado.trilhas.map((t) => {
+      const prog = Progresso.carregar(t.id);
+      const feitas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
+      const pct = t.fases.length ? Math.round((feitas / t.fases.length) * 100) : 0;
+      const sel = !!atual && t.id === atual.id;
+      return h('li', {
+        role: 'option', id: `opcao-trilha-${t.id}`, class: 'seletor-trilha__opcao', 'data-id': t.id,
+        'aria-selected': String(sel),
+        onclick: () => escolherTrilhaAtual(t.id),
+      },
+      h('span', { class: 'seletor-trilha__opcao-textos' },
+        h('span', { class: 'seletor-trilha__opcao-nome', text: t.nome }),
+        h('span', { class: 'seletor-trilha__opcao-meta', text: `${t.categoria || 'Curso'} · ${feitas}/${t.fases.length} fases` }),
+        h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` }))),
+      sel ? icone('i-check', 'seletor-trilha__marca') : null);
+    }));
+    box.replaceChildren(botao, lista);
+    if (estavaAberto) abrirSeletorTrilha(true);
+  }
+
+  function abrirSeletorTrilha(abrir) {
+    const box = $('seletor-trilha');
+    const lista = $('seletor-trilha-lista');
+    const botao = $('seletor-trilha-botao');
+    if (!lista || !botao) return;
+    box.classList.toggle('seletor-trilha--aberto', abrir);
+    lista.hidden = !abrir;
+    botao.setAttribute('aria-expanded', String(abrir));
+    if (abrir) {
+      const opcoes = [...lista.children];
+      const ativa = opcoes.find((o) => o.getAttribute('aria-selected') === 'true') || opcoes[0];
+      marcarOpcaoAtiva(ativa);
+      lista.focus({ preventScroll: true });
+    }
+  }
+
+  function marcarOpcaoAtiva(opcao) {
+    const lista = $('seletor-trilha-lista');
+    [...lista.children].forEach((o) => o.classList.toggle('seletor-trilha__opcao--ativa', o === opcao));
+    if (opcao) {
+      lista.setAttribute('aria-activedescendant', opcao.id);
+      opcao.scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  function teclasSeletorTrilha(e) {
+    const lista = $('seletor-trilha-lista');
+    const opcoes = [...lista.children];
+    const i = opcoes.findIndex((o) => o.classList.contains('seletor-trilha__opcao--ativa'));
+    const ir = (k) => marcarOpcaoAtiva(opcoes[Math.max(0, Math.min(opcoes.length - 1, k))]);
+    if (e.key === 'ArrowDown') ir(i + 1);
+    else if (e.key === 'ArrowUp') ir(i - 1);
+    else if (e.key === 'Home') ir(0);
+    else if (e.key === 'End') ir(opcoes.length - 1);
+    else if (e.key === 'Enter' || e.key === ' ') { if (opcoes[i]) escolherTrilhaAtual(opcoes[i].dataset.id); }
+    else if (e.key === 'Escape') {
+      e.stopPropagation(); // não fecha a gaveta do celular junto
+      abrirSeletorTrilha(false);
+      $('seletor-trilha-botao').focus();
+    } else if (e.key === 'Tab') abrirSeletorTrilha(false);
+    else return;
+    if (e.key !== 'Tab') e.preventDefault();
+  }
+
+  function escolherTrilhaAtual(id) {
+    abrirSeletorTrilha(false);
+    $('seletor-trilha-botao').focus();
+    if (!id || (estado.trilha && estado.trilha.id === id)) return;
+    definirTrilha(id);
+    const rota = ROTAS[estado.secao];
+    if (rota && $(rota.tela) && !$(rota.tela).hidden) {
+      rota.render();
+      atualizarLateral();
+    }
+    $('seletor-trilha-botao').focus();
+    toast('Trilha atual', estado.trilha.nome, 'i-livro');
   }
 
   /** Cartão da pessoa logada (nome, tipo de conta, status da nuvem, Sair). No modo local, some. */
@@ -192,6 +289,20 @@ const App = (() => {
   /** Pode importar/criar trilhas? No modo local, sempre; com login, só o admin. */
   function podeGerenciar() {
     return !Nuvem.ativa || Nuvem.ehAdmin();
+  }
+
+  /* ---------- Cortina de transição (bolhas + Diver, ~1 s) ---------- */
+  function cortina(texto) {
+    if (movimentoReduzido) return;
+    const el = $('transicao');
+    $('transicao-texto').textContent = texto;
+    clearTimeout(estado.cortinaTimer);
+    el.classList.remove('transicao--saindo');
+    el.classList.add('transicao--on');
+    estado.cortinaTimer = setTimeout(() => {
+      el.classList.add('transicao--saindo');
+      estado.cortinaTimer = setTimeout(() => el.classList.remove('transicao--on', 'transicao--saindo'), 450);
+    }, 650);
   }
 
   /* ---------- Bolhas do fundo ---------- */
@@ -272,6 +383,7 @@ const App = (() => {
       const prog = Progresso.carregar(t.id);
       const nivel = Progresso.nivel(prog.xp);
       const concluidas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
+      const pct = t.fases.length ? Math.round((concluidas / t.fases.length) * 100) : 0;
       const marcada = t.id === estado.selecionada;
       const card = h('button', {
         class: 'trilha',
@@ -283,9 +395,11 @@ const App = (() => {
         onclick: () => selecionarTrilha(t.id, true),
         ondblclick: () => abrirTrilha(t.id),
       },
+      h('span', { class: 'trilha__check', 'aria-hidden': 'true' }, icone('i-check')),
       t.categoria ? h('span', { class: 'rotulo', text: t.categoria }) : null,
       h('span', { class: 'trilha__nome', text: t.nome }),
       h('span', { class: 'trilha__descricao', text: t.descricao }),
+      h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
       h('span', { class: 'trilha__meta' },
         h('span', {}, icone('i-seta-baixo'), `${concluidas}/${t.fases.length} fases`),
         h('span', {}, plural(t.questoes.length, 'questão', 'questões')),
@@ -294,7 +408,15 @@ const App = (() => {
       ));
       lista.append(card);
     });
-    $('btn-bora').disabled = !estado.selecionada;
+    atualizarCtaInicio();
+  }
+
+  /** Barra fixa do Início: mostra o curso escolhido e liga o "Bora mergulhar!". */
+  function atualizarCtaInicio() {
+    const t = estado.trilhas.find((x) => x.id === estado.selecionada);
+    $('btn-bora').disabled = !t;
+    $('inicio-cta-nome').textContent = t ? t.nome : 'Escolha um curso acima';
+    $('inicio-cta').classList.toggle('inicio-cta--pronto', !!t);
   }
 
   function selecionarTrilha(id, focar) {
@@ -305,7 +427,7 @@ const App = (() => {
       c.tabIndex = sel ? 0 : -1;
       if (sel && focar) c.focus();
     });
-    $('btn-bora').disabled = false;
+    atualizarCtaInicio();
   }
 
   /** Setas do teclado navegam entre as trilhas (padrão de radiogroup). */
@@ -414,6 +536,7 @@ const App = (() => {
      ========================================================= */
   function abrirTrilha(id) {
     definirTrilha(id);
+    cortina('Bora mergulhar!');
     irPara('mergulho');
   }
 
@@ -766,6 +889,7 @@ const App = (() => {
       return;
     }
     abandonarAndamento();
+    cortina(`Abrindo ${def.nome}…`);
     estado.nivelInicial = Progresso.nivel(estado.prog.xp).numero;
     estado.subiuNivel = null;
     estado.jogo = { def, opcoes, desafio, controlador: null, fim: false };
@@ -855,6 +979,13 @@ const App = (() => {
       toast('Ops', modo === 'revisao' ? 'Não há questões para revisar.' : 'Essa fase ainda não tem questões.', 'i-bolha');
       return;
     }
+    cortina({
+      mergulho: s.fase ? `Descendo para ${s.fase.nome}…` : 'Bora mergulhar!',
+      simulado: 'Preparando o simulado…',
+      revisao: 'Voltando ao que ficou pra trás…',
+      prova: 'Prova final: respira fundo…',
+      enviada: `Abrindo ${s.titulo || 'a prova'}…`,
+    }[modo] || 'Bora mergulhar!');
     estado.sessao = s;
     estado.origem = modo === 'enviada' ? 'simulado' : modo; // volta para a área de onde saiu (mergulho, simulado ou revisao)
     estado.nivelInicial = Progresso.nivel(estado.prog.xp).numero;
@@ -1277,15 +1408,10 @@ const App = (() => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && $('barra-lateral').classList.contains('lateral--aberta')) fecharMenu();
     });
-    $('select-trilha-lateral').addEventListener('change', (e) => {
-      if (!e.target.value) return;
-      definirTrilha(e.target.value);
-      const rota = ROTAS[estado.secao];
-      if (rota && $(rota.tela) && !$(rota.tela).hidden) {
-        rota.render();
-        atualizarLateral();
-      }
-      toast('Trilha atual', estado.trilha.nome, 'i-livro');
+    // Fecha o seletor "Trilha atual" ao clicar fora dele
+    document.addEventListener('click', (e) => {
+      const box = $('seletor-trilha');
+      if (box.classList.contains('seletor-trilha--aberto') && !box.contains(e.target)) abrirSeletorTrilha(false);
     });
 
     $('lista-trilhas').addEventListener('keydown', teclasTrilhas);

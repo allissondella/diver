@@ -46,6 +46,9 @@ Raso (0–10 m) claro e luminoso → Recife (10–40 m) turquesa → Caverna (40
 
 ## Tipografia e formas
 - **Plus Jakarta Sans** (Google Fonts), pesos 400 a 800, sempre com fallback de sistema.
+- **JetBrains Mono** (token `--fonte-mono`) só para "dados": rótulos pequenos em caixa alta (`.rotulo`), cronômetros, contadores, números do resumo e da barra lateral. Texto corrido continua em Plus Jakarta Sans.
+- **Movimento:** as telas entram com fade, deslize curto e um leve desfoque (`surgir`); ao começar uma sessão ou um jogo, a **cortina** (`#transicao`: fundo do mar, bolhas subindo e o Diver) cobre a tela por ~1 s. Com "reduzir movimento", nada disso aparece.
+- **Barras de rolagem** finas, no tom `--superficie-2` (turquesa ao passar o mouse); na barra lateral, a alça só aparece com o mouse em cima.
 - Cards com canto de 16 px; botões em formato de pílula.
 - **Botão 3D**: borda inferior de 4 px em `--diver-turquesa-sombra`; ao pressionar, o botão "afunda" (translateY de 3–4 px e sombra menor).
 - Card selecionado: fundo `--diver-superficie-turquesa` + borda turquesa + marcador de rádio turquesa.
