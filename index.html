@@ -13,13 +13,17 @@
   <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="css/areas.css">
   <link rel="stylesheet" href="css/jogos.css">
-  <!-- Configuração do Supabase (login). Vazio = modo local, sem login.
-       Carrega antes de tudo: com login ligado, a primeira coisa na tela é a página de entrar. -->
+  <!-- Configuração do Supabase (login), escolhida pelo endereço: produção ou testes (docs/AMBIENTES.md).
+       Vazio = modo local, sem login. Carrega antes de tudo: com login ligado, a primeira coisa na tela é a página de entrar. -->
   <script src="js/config.js"></script>
   <script>
     try {
       var cfgDiver = window.DIVER_CONFIG || {};
       if (cfgDiver.supabaseUrl && cfgDiver.supabaseChave) document.documentElement.classList.add('exige-login');
+      if (cfgDiver.ambiente === 'testes') {
+        document.documentElement.classList.add('ambiente-testes');
+        document.title = '[Testes] ' + document.title;
+      }
     } catch (e) { /* sem config: modo local */ }
   </script>
   <!-- Regras e dados -->
@@ -57,6 +61,17 @@
   <script src="js/app.js" defer></script>
 </head>
 <body>
+  <!-- Só aparece fora da produção (classe "ambiente-testes", posta pelo config.js) -->
+  <div class="faixa-testes" role="note">
+    <strong>Ambiente de testes</strong>
+    <span id="faixa-testes-detalhe">dados fictícios, nada aqui vale para os alunos</span>
+  </div>
+  <script>
+    try {
+      var cfgFaixa = window.DIVER_CONFIG || {};
+      if (!(cfgFaixa.supabaseUrl && cfgFaixa.supabaseChave)) document.getElementById('faixa-testes-detalhe').textContent = 'modo local, sem login: tudo fica só neste navegador';
+    } catch (e) { /* segue sem detalhe */ }
+  </script>
   <!-- Sprite de ícones (usados com <svg><use href="#i-nome"/></svg>) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>

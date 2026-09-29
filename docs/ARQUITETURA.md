@@ -12,7 +12,7 @@
 
 | Ordem | Arquivo | Global | Responsabilidade |
 | --- | --- | --- | --- |
-| 0 | `js/config.js` | `DIVER_CONFIG` | URL e chave pública do Supabase. Vazio = **modo local** (sem login). |
+| 0 | `js/config.js` | `DIVER_CONFIG` | URL e chave pública do Supabase de **produção** e de **testes**; escolhe pelo endereço (`allissondella.github.io` = produção, o resto = testes) e expõe `ambiente`. Vazio = **modo local** (sem login). Fora da produção, o `index.html` põe a classe `ambiente-testes` e mostra a `.faixa-testes`. Guia: `docs/AMBIENTES.md`. |
 | 1 | `js/trilhas.js` | `Trilhas` | Encontrar, carregar, validar, importar e criar trilhas JSON. |
 | 2 | `js/progresso.js` | `Progresso` | localStorage por trilha: XP, níveis, pérolas, streak, meta, repetição espaçada, fases, jogos, caixas de Leitner. |
 | 3 | `js/conquistas.js` | `Conquistas` | As 13 conquistas e a verificação. |
