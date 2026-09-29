@@ -7,6 +7,8 @@ Você faz isso **uma vez só**, em uns 15 minutos. Nada aqui exige programar: é
 
 > Enquanto o `js/config.js` estiver vazio, o Diver funciona no **modo local** (sem login, tudo no navegador), como sempre funcionou.
 
+> **Dois projetos:** este guia monta o Supabase de **produção**. O de **testes** segue os mesmos passos (1 a 5) com o nome `diver-testes`; o passo a passo completo e o site de testes estão em `docs/AMBIENTES.md`.
+
 ## 1. Criar o projeto
 1. Acesse **supabase.com** e clique em **Start your project**. Entre com a sua conta do GitHub (é o mais simples).
 2. Clique em **New project**:
@@ -46,12 +48,12 @@ Só você cria contas (pela área de Admin). Para ninguém se cadastrar sozinho:
 ## 6. Colocar os valores no site
 Mande os dois valores no chat que eu faço o commit. Se preferir fazer você mesmo:
 1. No GitHub, abra `js/config.js` e clique no lápis (**Edit this file**).
-2. Preencha:
+2. Preencha o bloco do ambiente certo (`producao` ou `testes`):
    ```js
-   window.DIVER_CONFIG = {
+   producao: {
      supabaseUrl: 'https://abcdefgh.supabase.co',
      supabaseChave: 'sb_publishable_...',
-   };
+   },
    ```
 3. Clique em **Commit changes**. Em 1 ou 2 minutos o site do GitHub Pages atualiza.
 

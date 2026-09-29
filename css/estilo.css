@@ -1664,3 +1664,32 @@ select {
     display: none;
   }
 }
+
+/* ---------- Faixa "Ambiente de testes" (fora da produção; docs/AMBIENTES.md) ---------- */
+.faixa-testes { display: none; }
+.ambiente-testes { --faixa: 30px; }
+.ambiente-testes .faixa-testes {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: var(--faixa);
+  padding: 0 12px;
+  overflow: hidden;
+  background: repeating-linear-gradient(135deg, var(--amarelo) 0 14px, color-mix(in srgb, var(--amarelo) 82%, var(--texto-escuro)) 14px 28px);
+  color: var(--texto-escuro);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.faixa-testes strong { text-transform: uppercase; letter-spacing: 0.06em; }
+.faixa-testes span { overflow: hidden; text-overflow: ellipsis; }
+/* O que fica grudado no topo desce a altura da faixa */
+.ambiente-testes .topo { top: var(--faixa); }
+.ambiente-testes .lateral { top: var(--faixa); }
+.ambiente-testes .toasts { top: calc(12px + var(--faixa)); }
+@media (min-width: 960px) {
+  .ambiente-testes .lateral { height: calc(100vh - var(--faixa)); }
+}
