@@ -91,6 +91,8 @@ const Cartas = (() => {
       adivinhas: derivarAdivinhas(trilha),
       sequencias: derivarSequencias(trilha),
       palavras: derivarPalavras(trilha),
+      // Caso Resolvido: só o bloco próprio "casos" (conferido, porque vem de JSON)
+      casos: (Array.isArray(trilha.casos) ? trilha.casos : []).filter((c) => typeof CasoResolvido === 'undefined' || CasoResolvido.valido(c)),
     };
   }
 

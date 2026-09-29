@@ -52,8 +52,6 @@ const Jogos = (() => {
   /* ---------- Em breve (planejados no ROADMAP) ---------- */
   registrar({ id: 'torre', nome: 'Torre do Saber', grupo: 'estrategia', icone: 'i-colunas', emBreve: 'Semana 16',
     descricao: 'Tire blocos respondendo. Errou? A torre balança.' });
-  registrar({ id: 'caso', nome: 'Caso Resolvido', grupo: 'estrategia', icone: 'i-lupa', emBreve: 'Semana 17',
-    descricao: 'Colete pistas e deduza quem, onde e como, num navio naufragado.' });
   registrar({ id: 'duelo', nome: 'Duelo de Mergulhadores', grupo: 'estrategia', icone: 'i-usuario', emBreve: 'Semana 17',
     descricao: 'Dois jogadores no mesmo aparelho disputando as pérolas.' });
   registrar({ id: 'cruzadinha', nome: 'Cruzadinha Submarina', grupo: 'v2', icone: 'i-bolha', emBreve: 'v2',

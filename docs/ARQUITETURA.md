@@ -32,6 +32,7 @@
 | 13b | `js/admin.js` | `Admin` | Área da equipe. Admin ("Pessoas e cursos"): cadastrar aluno, professor ou admin (senha temporária), mudar o tipo de conta, atribuir cursos, nova senha, ativar/desativar, ver progresso. Professor ("Meus alunos"): só acompanha os alunos dos cursos dele. |
 | 13c | `js/leitor-prova.js` | `LeitorProva` | Lê uma prova antiga (texto ou PDF) e separa questões, alternativas, gabarito e comentários, sem IA. O PDF passa pelo **pdf.js** (`lib/pdfjs/`, Apache-2.0, v3.11 legacy), carregado só quando alguém envia um PDF, com `isEvalSupported: false`. |
 | 13d | `js/provas-enviadas.js` | `ProvasEnviadas` | "Upload de prova" no Simulado: formulário, palavra de honra, conferência, lista "Provas antigas" (as do aluno e as do professor) e as regras de pontos. |
+| 13e | `js/tutorial.js` | `Tutorial` | "Primeiro mergulho" de cada área: recorte de luz sobre o alvo + balão com desenho, "2 de 4", Pular/Voltar/Próximo, teclado (Enter/→, ←, Esc) e foco preso no balão. Roteiros em `ROTEIROS` (chave = endereço); passo cujo alvo não está visível é pulado. `App.navegar` chama `Tutorial.aoEntrar(secao)`; "Como funciona esta página?" (barra lateral) e "Rever todos os tutoriais" (Perfil). |
 | 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
 CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos). Só variáveis de cor (tokens), nada de cor solta.
@@ -56,7 +57,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#admin` | `tela-admin` (admin e professor; conteúdo muda conforme o tipo de conta) | `admin.js` |
 | (sem endereço) | `tela-login`, `tela-senha` (antes do app, com login ativo) | `conta.js` |
 
-- A **trilha atual** é escolhida no Início ("Bora mergulhar!") ou no seletor da barra lateral. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
+- A **trilha atual** é escolhida no Início (cards + barra fixa `#inicio-cta` com o curso escolhido e o "Bora mergulhar!") ou no seletor da barra lateral (`#seletor-trilha`: botão + lista no padrão listbox, setas/Home/End/Enter/Esc, fecha ao clicar fora; `desenharSeletorTrilha` no `app.js`). A cortina de transição é `cortina(texto)` no `app.js`. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
 - Mascote: `<template id="molde-mascote">` (pixel art: WebP animado; PNG parado com "reduzir movimento"). `UI.montarMascotes()` copia para cada `[data-mascote]`; `UI.humorMascote(container, 'feliz' | 'triste' | null)`.
 - Todo conteúdo vindo de JSON entra com `textContent` (função `UI.h()`), nunca com `innerHTML`. Os únicos `innerHTML` são SVGs fixos do código (chefões, jangada, mapa do tesouro).
 - `append`/`replaceChildren` nativos escrevem "null" se receberem `null`: use `UI.h()` ou `.filter(Boolean)`.
@@ -127,6 +128,7 @@ Jogos.registrar({
 | `diver:v1:eventos` | Eventos do calendário: `id, titulo, tipo (prova/aula/estudo/descanso), data, hora, trilhaId, gerado`. |
 | `diver:v1:desafios` | Dias em que o Desafio do Dia foi cumprido (`{ "AAAA-MM-DD": true }`). |
 | `diver:v1:provas-enviadas` | Provas antigas: `{ versao, provas: [{ id, trilhaId, titulo, criadaEm, honesto, minutos, questoes: [{ id, tema, dificuldade, enunciado, alternativas, correta, explicacao }], tentativas: [{ data, acertos, total, nota, tempoSeg, xp, perolas }] }], feitas: { idDaProvaDoProfessor: [tentativas] } }`. Sincroniza com a nuvem como o resto. |
+| `diver:v1:tutorial` | Tutoriais já vistos: `{ vistos: { inicio: true, mergulho: true, ... } }`. Sincroniza com a nuvem. |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
 
 O progresso da trilha também guarda `provas` (prova final: data, total, acertos, nota, pct, aprovado, tempoSeg).
