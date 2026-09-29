@@ -5,7 +5,7 @@ O Diver tem **dois ambientes**. O código é um só (este repositório); o que m
 | | Produção | Testes |
 | --- | --- | --- |
 | Para quem | Alunos de verdade | Você, a equipe e quem estiver testando |
-| Endereço | `allissondella.github.io/diver` (GitHub Pages) | endereço fixo `*.pages.dev` + um link de prévia para cada PR (Cloudflare Pages) |
+| Endereço | `allissondella.github.io/diver` (GitHub Pages) | endereço fixo `diver.allisson-rzr.workers.dev` + um link de prévia para cada PR (`<branch>-diver.allisson-rzr.workers.dev`), no Cloudflare |
 | Código | branch `main` | endereço fixo: branch `main` · prévia: a branch do PR |
 | Banco | Supabase de produção | **outro** projeto Supabase, só com dados fictícios |
 | Faixa no topo | não tem | amarela e listrada: **AMBIENTE DE TESTES** (e "[Testes]" no nome da aba) |
@@ -21,7 +21,7 @@ Enquanto o bloco `testes` do `config.js` estiver vazio, o ambiente de testes rod
 
 ## O dia a dia (fluxo de uma mudança)
 1. Eu faço a mudança numa branch e abro um **PR**.
-2. O Cloudflare publica sozinho uma **prévia** daquele PR e comenta o link no próprio PR (leva 1 ou 2 minutos).
+2. O Cloudflare publica sozinho uma **prévia** daquele PR (leva 1 ou 2 minutos). O link segue o nome da branch: `<nome-da-branch>-diver.allisson-rzr.workers.dev`; ele também aparece em Cloudflare → Workers & Pages → diver → **Deployments**.
 3. Você abre o link, entra com uma conta de teste e confere no computador e no celular.
 4. Gostou? **Merge** no PR. A produção (GitHub Pages) e o endereço fixo de testes atualizam sozinhos.
 5. Não gostou? Comenta no PR ou me fala aqui. Nada chega aos alunos até o merge.
@@ -42,18 +42,14 @@ Enquanto o bloco `testes` do `config.js` estiver vazio, o ambiente de testes rod
    **Nunca** mande a `secret` / `service_role`.
 6. Eu coloco os dois valores no bloco `testes` do `js/config.js` e abro um PR. A partir daí o site de testes tem login, com o banco de testes.
 
-### 2. Site de testes (Cloudflare Pages, gratuito)
-1. Crie uma conta em https://dash.cloudflare.com (pode entrar com o mesmo e-mail).
-2. **Workers & Pages → Create → Pages → Connect to Git** (a Cloudflare às vezes muda os nomes dos botões; se algo estiver diferente, me mande um print).
-3. Autorize o GitHub e escolha o repositório **`allissondella/diver`**.
-4. Configuração:
-   - **Project name:** `diver` (se já existir, `diver-testes`). Ele vira o endereço: `diver.pages.dev`.
-   - **Production branch:** `main`.
-   - **Framework preset:** None.
-   - **Build command:** deixe **vazio** (o Diver não tem etapa de build).
-   - **Build output directory:** `/`.
-5. **Save and Deploy.** Em 1 ou 2 minutos o endereço fixo está no ar, com a faixa amarela no topo.
-6. As **prévias dos PRs** já vêm ligadas: toda branch nova ganha um link próprio, e o Cloudflare comenta esse link no PR.
+### 2. Site de testes (Cloudflare, gratuito) — feito em 2026-09-29
+1. Conta em https://dash.cloudflare.com.
+2. **Workers & Pages → Create** → importar o repositório **`allissondella/diver`** do GitHub. O Cloudflare cria um **Worker** chamado `diver` (o formato novo; serve os arquivos do repositório como site, sem etapa de build) e publica de novo a cada push na `main`.
+3. Ligar os endereços: **diver → aba Domains → Worker URL** e ligar as duas chaves:
+   - **Production** → `diver.allisson-rzr.workers.dev` (endereço fixo, segue a `main`);
+   - **Preview** → `*-diver.allisson-rzr.workers.dev` (um link por branch/PR).
+4. **Não precisa** da aba **Access** / "Zero Trust": o login é o do próprio Diver.
+5. Primeiro acesso: abrir o endereço fixo, conferir a faixa amarela, entrar com o admin de testes e trocar a senha temporária (use uma diferente da produção).
 
 ## Contas de teste
 - Crie alunos e professores de teste pela área **Admin → Pessoas e cursos** do site de testes, com e-mails fictícios (ex.: `aluno1@teste.com`). Ninguém recebe e-mail: a senha temporária aparece na tela.
