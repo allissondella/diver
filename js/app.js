@@ -80,9 +80,11 @@ const App = (() => {
       secao = 'inicio';
       history.replaceState(null, '', '#inicio');
     }
+    Tutorial.fechar(false);
     estado.secao = secao;
     ROTAS[secao].render();
     mostrarTela(ROTAS[secao].tela);
+    Tutorial.aoEntrar(secao); // primeira visita? o Diver mostra a página
   }
 
   function emAndamento() {
@@ -1408,6 +1410,12 @@ const App = (() => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && $('barra-lateral').classList.contains('lateral--aberta')) fecharMenu();
     });
+    $('btn-tutorial').addEventListener('click', () => {
+      fecharMenu();
+      if (Tutorial.tem(estado.secao)) Tutorial.iniciar(estado.secao);
+      else toast('Sem tutorial por aqui', 'Esta página é tranquila: é só explorar.', 'i-bolha');
+    });
+
     // Fecha o seletor "Trilha atual" ao clicar fora dele
     document.addEventListener('click', (e) => {
       const box = $('seletor-trilha');

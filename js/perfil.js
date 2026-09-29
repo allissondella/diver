@@ -73,7 +73,16 @@ const Perfil = (() => {
             h('div', {}, h('h3', { text: 'Backup dos seus dados' }), h('p', { text: 'Enquanto não tem login, seu progresso mora neste navegador. Baixe um backup para guardar ou levar para outro aparelho. (PDFs não entram no backup.)' }))),
           h('div', { class: 'modo__acoes' },
             h('button', { type: 'button', class: 'botao botao--secundario', onclick: baixar }, icone('i-download'), 'Baixar backup'),
-            h('label', { class: 'botao botao--fantasma' }, icone('i-upload'), 'Restaurar', inputBackup)))));
+            h('label', { class: 'botao botao--fantasma' }, icone('i-upload'), 'Restaurar', inputBackup))),
+        h('div', { class: 'cartao modo' },
+          h('div', { class: 'modo__cabeca' },
+            h('span', { class: 'modo__icone modo__icone--upload' }, icone('i-bolha')),
+            h('div', {}, h('h3', { text: 'Tutoriais' }), h('p', { text: 'Na primeira visita a cada página, o Diver mostra onde fica cada coisa. Quer ver tudo de novo?' }))),
+          h('div', { class: 'modo__acoes' },
+            h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => {
+              Tutorial.zerar();
+              UI.toast('Tutoriais zerados', 'Eles aparecem de novo quando você entrar em cada página.', 'i-bolha');
+            } }, icone('i-revisao'), 'Rever todos os tutoriais')))));
   }
 
   function baixar() {

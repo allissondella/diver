@@ -2002,3 +2002,104 @@ html,
 @media (prefers-reduced-motion: reduce) {
   .transicao { display: none !important; }
 }
+
+/* =========================================================
+   Tutorial de primeiro acesso (js/tutorial.js)
+   ========================================================= */
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  animation: cortina-entra 200ms ease both;
+}
+.tour--saindo { animation: cortina-sai-leve 200ms ease both; }
+@keyframes cortina-sai-leve { to { opacity: 0; } }
+/* Recorte de luz: tudo escurece, menos o alvo */
+.tour__destaque {
+  position: fixed;
+  border-radius: 14px;
+  box-shadow: 0 0 0 200vmax rgba(3, 10, 22, 0.74), 0 0 0 2px var(--turquesa-claro), 0 0 24px 4px rgba(94, 234, 212, 0.35);
+  transition: top 300ms ease, left 300ms ease, width 300ms ease, height 300ms ease;
+  pointer-events: none;
+}
+.tour__destaque--sem-alvo {
+  top: 50% !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 0 !important;
+  box-shadow: 0 0 0 200vmax rgba(3, 10, 22, 0.74);
+}
+.tour__balao {
+  position: fixed;
+  display: flex;
+  gap: 14px;
+  width: min(430px, calc(100vw - 24px));
+  padding: 16px;
+  border-radius: var(--raio);
+  border: 1px solid rgba(94, 234, 212, 0.45);
+  background: linear-gradient(160deg, var(--superficie), var(--fundo-fundo));
+  box-shadow: var(--sombra), 0 0 0 4px rgba(20, 184, 166, 0.12);
+  transition: top 300ms ease, left 300ms ease;
+}
+.tour__balao--centro {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tour__balao--entra { animation: balao-entra 240ms ease both; }
+.tour__balao--centro.tour__balao--entra { animation-name: balao-entra-centro; }
+@keyframes balao-entra { from { opacity: 0; transform: translateY(8px) scale(0.97); } }
+@keyframes balao-entra-centro { from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)) scale(0.97); } }
+.tour__desenho { width: 68px; flex-shrink: 0; align-self: flex-start; }
+.tour__desenho svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tour__desenho.mascote { width: 60px; }
+.tour__corpo { display: grid; gap: 6px; min-width: 0; flex: 1; }
+.tour__passo {
+  margin: 0;
+  font-family: var(--fonte-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--turquesa-claro);
+}
+.tour__titulo { margin: 0; font-size: 1.1rem; font-weight: 800; }
+.tour__texto { margin: 0; font-size: 0.9rem; color: var(--texto-suave); }
+.tour__botoes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.tour__botoes .botao { padding-inline: 14px; }
+.tour__botoes .botao--primario { margin-left: auto; }
+@media (max-width: 599px) {
+  .tour__balao,
+  .tour__balao--centro {
+    top: auto;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    width: auto;
+    transform: none;
+  }
+  .tour__balao--centro.tour__balao--entra { animation-name: balao-entra; }
+  .tour__desenho { width: 56px; }
+}
+
+/* Botão "Como funciona esta página?" na barra lateral */
+.lateral__ajuda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px dashed var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: transparent;
+  color: var(--texto-suave);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--transicao), border-color var(--transicao);
+}
+.lateral__ajuda:hover { color: var(--turquesa-claro); border-color: rgba(94, 234, 212, 0.5); }
+.lateral__ajuda .icone { width: 20px; height: 20px; }

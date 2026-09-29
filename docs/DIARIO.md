@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-09-29 · Visual novo, Etapa 3 (tutorial de primeiro acesso)
+- **Feito:** `js/tutorial.js`. Na primeira visita a Início, Mergulho, Simulado, Revisão, Prova final, Sala de Jogos, Tarefas, Calendário, Modo Foco e Upload de prova, a tela escurece, um recorte de luz destaca cada parte e um balão explica ("2 de 5 · Pular · Voltar · Próximo") com um desenho de associação (tubo de oxigênio, concha com pérola, mapa de profundidades, âncora, alvo, relógio, controle, quadro, calendário, ampulheta, troféu, o Diver pensando...). Visto uma vez, não volta (fica na conta, `diver:v1:tutorial`). Botão "Como funciona esta página?" na barra lateral e "Rever todos os tutoriais" no Perfil.
+- **Decisões:** passos com alvo invisível são pulados (ex.: seletor de trilha no celular); no celular o balão fica preso no pé da tela; teclado completo e foco preso no balão; desenhos em SVG no mesmo estilo do novo Diver.
+- **Testes:** computador e celular: abre sozinho na 1ª visita, destaca o alvo certo (inclusive listas maiores que a tela), ←/→/Enter/Esc, Tab preso no balão, não reaparece ao recarregar, Mergulho com roteiro próprio, "Como funciona esta página?" e "Rever todos" funcionam, sem rolagem lateral; com "reduzir movimento" aparece sem animação.
+
 ## 2026-09-29 · Visual novo, Etapa 2 (novo Diver)
 - **Feito:** Diver redesenhado em SVG vetorial, no estilo figurinha do site de referência (contorno grosso, cores chapadas): roupa com capuz, máscara amarela com os olhinhos do ícone da aba, snorkel na boca soltando bolhas, barba e nadadeiras. Expressões normal (pisca), feliz (acerto), triste (erro) e pensando. Trocado em todas as telas (Início, login, quiz, resumo, estados vazios, cortina). A pixel art saiu do repositório (−2,9 MB).
 - **Decisões:** desenho inline no `<template id="molde-mascote">` (sem arquivo para baixar); tamanhos ajustados porque o novo Diver é mais alto que largo; tudo parado com "reduzir movimento".
