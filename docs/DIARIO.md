@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-09-29 · Upload de prova (provas antigas viram simulado)
+- **Feito:** no Simulado, o cartão **Provas antigas** com o botão **Upload de prova**. A pessoa envia o PDF (ou .txt, ou cola o texto) com o gabarito; o leitor (`js/leitor-prova.js`, sem IA) separa questões, alternativas e respostas; uma tela de **conferência** mostra tudo para corrigir, tirar questões e marcar a certa quando faltar. Aluno: frase "Inclua o gabarito junto, mas não vale trapacear, estamos confiando em você" e a palavra de honra ("Eu juro que fui honesto e vou pontuar" = XP sem pérolas; "Eu dei uma espiadinha e não vou pontuar" = 0). Professor e admin podem publicar **para os alunos do curso** (tabela `provas_curso` no Supabase), e aí vale XP e pérolas para o aluno. Refazer vale metade.
+- **Decisões:** sem IA nesta versão (grátis, funciona offline e não manda a prova para fora); pdf.js 3.11 dentro do repositório, carregado só no upload, com `isEvalSupported: false`; questões enviadas não entram na revisão espaçada; PDF escaneado é recusado com orientação para colar o texto; imagens da prova não vêm junto.
+- **Testes:** leitor com 7 formatos (gabarito no fim, "Resposta:" por questão, alternativas na mesma linha, tabela, anulada, asterisco, instruções numeradas, cabeçalho repetido); PDF de duas colunas gerado no navegador; fluxo completo do aluno (honesto, refazer, espiadinha, escaneado, apagar) no computador e no celular; professor publica e aluna do curso faz com XP e pérolas, contra o servidor de teste com as regras do banco; RLS testado no Postgres; Mergulho, Simulado normal, Memória e fases livres sem regressão.
+- **Pendências:** rodar de novo o `supabase/setup.sql` no Supabase para ligar as provas do professor. Próximo passo possível: botão "Ler com IA" (PDF escaneado e imagens), via função no Supabase.
+
 ## 2026-09-29 · Radiologia com todas as fases abertas
 - **Feito:** campo opcional `fasesLivres: true` na trilha. Com ele, todas as fases começam liberadas e o aluno escolhe o tema que quer estudar (mapa, leitura "Antes de mergulhar" e Chefão). Ligado no curso Radiologia: Aparelho Digestivo; os outros cursos continuam em sequência.
 - **Decisões:** a prova final continua pedindo todas as fases concluídas (`exigeFases`), porque ela cobre o curso inteiro. O texto do mapa e o resumo da fase explicam que a ordem é só uma sugestão.

@@ -5,6 +5,9 @@
  *  - mergulho: questões de uma fase, com oxigênio e feedback imediato
  *  - simulado: N questões da trilha toda, cronometrado, correção no final
  *  - revisao:  questões erradas (peso > 0) ou marcadas, com feedback imediato
+ *  - prova:    prova final do curso
+ *  - enviada:  prova antiga que alguém subiu (Simulado → Upload de prova). Correção no final;
+ *              os pontos só entram na entrega, pelo Economia.pontuarProvaEnviada
  *
  * Este arquivo não mexe na tela: só cuida das regras. Quem desenha é o app.js.
  */
@@ -61,6 +64,8 @@ const Quiz = (() => {
     } else if (modo === 'prova') {
       // Prova final: sorteio simples da trilha toda (sem priorizar os erros, como numa prova de verdade)
       fila = embaralhar(trilha.questoes).slice(0, Math.min(opcoes.quantidade, trilha.questoes.length));
+    } else if (modo === 'enviada') {
+      fila = [...opcoes.questoes]; // na ordem da prova original
     }
 
     return {
@@ -78,7 +83,10 @@ const Quiz = (() => {
       xp: 0,
       perolas: 0,
       inicio: Date.now(),
-      limiteSeg: modo === 'simulado' ? fila.length * SEGUNDOS_POR_QUESTAO_SIMULADO : modo === 'prova' ? opcoes.minutos * 60 : null,
+      limiteSeg: modo === 'simulado' ? fila.length * SEGUNDOS_POR_QUESTAO_SIMULADO
+        : modo === 'prova' || (modo === 'enviada' && opcoes.minutos) ? opcoes.minutos * 60 : null,
+      titulo: opcoes.titulo || null, // prova enviada
+      pontos: modo === 'enviada' ? { fator: opcoes.fator || 0, comPerolas: !!opcoes.comPerolas, motivo: opcoes.motivo || '' } : null,
       aprovacao: modo === 'prova' ? opcoes.aprovacao : null, // % mínima para passar na prova final
       encerrada: false,
     };
@@ -103,6 +111,7 @@ const Quiz = (() => {
     const r = { acertou, correta: q.correta, xp: 0, perolas: 0, combo: 0, semOxigenio: false };
 
     s.respostas.push({ questao: q, escolhida, acertou });
+    if (s.modo === 'enviada') return r; // questões de fora da trilha: sem revisão espaçada, pontos só na entrega
     Progresso.registrarResposta(prog, q, acertou, s.modo);
 
     if (acertou) {
@@ -156,7 +165,7 @@ const Quiz = (() => {
     // No Simulado e na Prova final, o que não foi respondido conta como em branco (errado).
     // Se o Diver saiu no meio, vale só o que foi respondido.
     const emBranco = [];
-    if ((s.modo === 'simulado' || s.modo === 'prova') && motivo !== 'saiu') {
+    if ((s.modo === 'simulado' || s.modo === 'prova' || s.modo === 'enviada') && motivo !== 'saiu') {
       s.fila.slice(s.respostas.length).forEach((q) => {
         emBranco.push(q);
         s.respostas.push({ questao: q, escolhida: null, acertou: false });
@@ -225,6 +234,18 @@ const Quiz = (() => {
       prog.provas = prog.provas || [];
       prog.provas.unshift({ data: Date.now(), total, acertos, nota: resumo.nota, pct: resumo.pct, aprovado: resumo.aprovado, tempoSeg });
       prog.provas = prog.provas.slice(0, 20);
+    }
+
+    if (s.modo === 'enviada') {
+      resumo.titulo = s.titulo;
+      resumo.pontos = s.pontos;
+      if (motivo !== 'saiu') {
+        resumo.nota = total ? Math.round((acertos / total) * 100) / 10 : 0;
+        const ganho = Economia.pontuarProvaEnviada(s.respostas, prog, s.pontos);
+        resumo.xp = ganho.xp;
+        resumo.perolas = ganho.perolas;
+        resumo.maiorCombo = ganho.comboMaximo;
+      }
     }
 
     prog.stats.sessoes++;

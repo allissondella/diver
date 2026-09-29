@@ -77,10 +77,14 @@ Mande os dois valores no chat que eu faço o commit. Se preferir fazer você mes
 
 Quem decide o que cada um enxerga é o banco (as regras do passo 2), não o navegador.
 
-> **Já tinha rodado o `setup.sql` antes?** Rode de novo a versão nova (passo 2). Ele acrescenta os tipos de conta sem apagar nada, e quem já era admin continua admin.
+> **Já tinha rodado o `setup.sql` antes?** Rode de novo a versão nova (passo 2). Ele acrescenta os tipos de conta e a tabela de **provas do professor** sem apagar nada, e quem já era admin continua admin.
+
+### Provas antigas (Simulado → Upload de prova)
+- **Aluno:** a prova fica só na conta dele (sincroniza como o resto do progresso). Vale XP, sem pérolas, se ele jurar que foi honesto; na "espiadinha", não pontua.
+- **Professor e admin:** podem escolher **"Para os alunos do curso"**. A prova vai para a tabela `provas_curso` e aparece no Simulado de todos os alunos daquele curso, valendo XP e pérolas. Só o professor do curso (ou o admin) publica; só quem publicou (ou o admin) apaga.
 
 ## Bom saber
-- **Progresso na nuvem:** XP, fases, simulados, provas, tarefas e calendário são salvos automaticamente a cada poucos segundos. Trocou de aparelho? É só entrar. Os **PDFs** continuam só no aparelho em que foram enviados.
+- **Progresso na nuvem:** XP, fases, simulados, provas (inclusive as provas antigas que o aluno sobe), tarefas e calendário são salvos automaticamente a cada poucos segundos. Trocou de aparelho? É só entrar. Os **PDFs** continuam só no aparelho em que foram enviados.
 - **Projeto pausado:** no plano gratuito, se o Supabase ficar **7 dias sem nenhum uso**, ele pausa o projeto. É só entrar no painel e clicar em **Restore**; nada se perde.
 - **Esqueci a minha senha de admin:** no **SQL Editor**, rode (trocando o e-mail e inventando uma senha temporária de pelo menos 8 caracteres):
   ```sql

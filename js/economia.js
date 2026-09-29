@@ -72,6 +72,37 @@ const Economia = (() => {
     return { xp, perolas, novas, comboMaximo: Math.max(comboMaximo, resultado.comboMaximo || 0) };
   }
 
+  /**
+   * Pontos de uma prova enviada (Simulado → Upload de prova), na entrega.
+   * As questões não são da trilha: contam para streak, meta e estatísticas, mas não entram na revisão.
+   * Cada acerto vale como uma questão média (+ combo). fator: 1 na primeira entrega, 0,5 ao refazer,
+   * 0 na "espiadinha" e para quem publicou. Pérolas só na prova que o professor subiu (comPerolas).
+   */
+  function pontuarProvaEnviada(respostas, prog, { fator = 0, comPerolas = false } = {}) {
+    let xp = 0;
+    let perolas = 0;
+    let combo = 0;
+    let comboMaximo = 0;
+    respostas.forEach(({ acertou, escolhida }) => {
+      if (escolhida !== null) Progresso.registrarAvulsa(prog, acertou); // em branco não conta como estudo
+      if (!acertou) {
+        combo = 0;
+        return;
+      }
+      combo++;
+      comboMaximo = Math.max(comboMaximo, combo);
+      const base = recompensa('medio');
+      xp += base.xp + (combo >= CONFIG.comboAPartirDe ? CONFIG.bonusCombo : 0);
+      perolas += base.perolas;
+    });
+    xp = Math.round(xp * fator);
+    perolas = comPerolas ? Math.round(perolas * fator) : 0;
+    prog.xp += xp;
+    prog.perolas += perolas;
+    prog.stats.maiorCombo = Math.max(prog.stats.maiorCombo, comboMaximo);
+    return { xp, perolas, comboMaximo };
+  }
+
   /** Concede XP/pérolas avulsos (tarefa concluída, ciclo de foco). */
   function conceder(prog, trilha, { xp = 0, perolas = 0 }) {
     prog.xp += xp;
@@ -87,5 +118,5 @@ const Economia = (() => {
     return true;
   }
 
-  return { CONFIG, aplicarResultado, conceder, gastar };
+  return { CONFIG, aplicarResultado, pontuarProvaEnviada, conceder, gastar };
 })();

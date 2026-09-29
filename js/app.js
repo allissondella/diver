@@ -24,7 +24,7 @@ const App = (() => {
     cartasCache: {}, // cartas derivadas por trilha
   };
 
-  const NOMES_MODO = { mergulho: 'Mergulho', simulado: 'Simulado', revisao: 'Revisão', prova: 'Prova final' };
+  const NOMES_MODO = { mergulho: 'Mergulho', simulado: 'Simulado', revisao: 'Revisão', prova: 'Prova final', enviada: 'Prova enviada' };
   const NOMES_DIFICULDADE = { facil: 'Fácil', medio: 'Médio', dificil: 'Difícil' };
   const LETRAS = 'ABCDEF';
   const MSGS_ERRO = [
@@ -51,6 +51,7 @@ const App = (() => {
     pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
     perfil: { tela: 'tela-perfil', render: () => Perfil.render($('tela-perfil')) },
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
+    'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
     admin: { tela: 'tela-admin', soEquipe: true, render: () => Admin.render($('tela-admin')) },
   };
   const TELAS_FOCO = ['tela-quiz', 'tela-jogo']; // sem barra lateral: uma ação principal por tela
@@ -577,6 +578,7 @@ const App = (() => {
   function renderizarSimulado() {
     const { trilha, prog } = estado;
     $('simulado-trilha').textContent = trilha.nome;
+    renderizarProvasEnviadas();
 
     // Opções de quantidade de questões
     const total = trilha.questoes.length;
@@ -599,6 +601,11 @@ const App = (() => {
         h('li', {},
           h('span', { text: new Date(s.data).toLocaleDateString('pt-BR') + ` · ${s.acertos}/${s.total} · ${formatarTempo(s.tempoSeg)}` }),
           h('strong', { text: `Nota ${s.nota.toLocaleString('pt-BR')}` })))));
+  }
+
+  /** Provas enviadas (Upload de prova) aparecem no Simulado, logo abaixo de "Montar simulado". */
+  function renderizarProvasEnviadas() {
+    ProvasEnviadas.renderLista($('provas-enviadas'));
   }
 
   function renderizarRevisao() {
@@ -843,19 +850,20 @@ const App = (() => {
      ========================================================= */
   function iniciarSessao(modo, opcoes = {}) {
     const s = Quiz.criar(modo, estado.trilha, estado.prog, opcoes);
+    if (modo === 'enviada') s.provaRef = estado.ultimaProvaEnviada = opcoes.ref;
     if (!s.fila.length) {
       toast('Ops', modo === 'revisao' ? 'Não há questões para revisar.' : 'Essa fase ainda não tem questões.', 'i-bolha');
       return;
     }
     estado.sessao = s;
-    estado.origem = modo; // volta para a área de onde saiu (mergulho, simulado ou revisao)
+    estado.origem = modo === 'enviada' ? 'simulado' : modo; // volta para a área de onde saiu (mergulho, simulado ou revisao)
     estado.nivelInicial = Progresso.nivel(estado.prog.xp).numero;
     estado.subiuNivel = null;
     salvar();
 
     $('quiz-oxigenio').hidden = s.oxigenio === null;
     $('quiz-timer').hidden = s.limiteSeg === null;
-    $('quiz-modo').textContent = s.fase ? `${NOMES_MODO[modo]} · ${s.fase.nome}` : NOMES_MODO[modo];
+    $('quiz-modo').textContent = s.fase ? `${NOMES_MODO[modo]} · ${s.fase.nome}` : s.titulo ? `${NOMES_MODO[modo]} · ${s.titulo}` : NOMES_MODO[modo];
 
     pararTimer();
     if (s.limiteSeg !== null) {
@@ -918,6 +926,8 @@ const App = (() => {
     const dif = $('quiz-dificuldade');
     dif.textContent = NOMES_DIFICULDADE[q.dificuldade];
     dif.className = `tag tag--${q.dificuldade}`;
+    dif.hidden = s.modo === 'enviada'; // prova enviada não tem nível de dificuldade
+    $('btn-marcar').hidden = s.modo === 'enviada'; // nem entra na Revisão (as questões não são da trilha)
     $('quiz-volta').hidden = s.indice < Quiz.totalPlanejado(s);
 
     $('quiz-enunciado').textContent = q.enunciado;
@@ -965,7 +975,7 @@ const App = (() => {
     checarNivel();
 
     // Simulado: sem feedback, segue direto para a próxima
-    if (s.modo === 'simulado' || s.modo === 'prova') {
+    if (s.modo === 'simulado' || s.modo === 'prova' || s.modo === 'enviada') {
       botoes.find((b) => Number(b.dataset.indice) === indice).classList.add('alternativa--escolhida');
       setTimeout(continuar, movimentoReduzido ? 0 : 280);
       return;
@@ -1019,7 +1029,9 @@ const App = (() => {
     const s = estado.sessao;
     if (!s) return;
     const temRespostas = s.respostas.length > 0;
-    const msg = temRespostas
+    const msg = s.modo === 'enviada'
+      ? 'Sair da prova? Ela só vale nota e pontos quando é entregue até o fim.'
+      : temRespostas
       ? 'Subir agora? O que você já respondeu fica salvo.'
       : 'Subir agora? Nada foi respondido ainda.';
     if (!window.confirm(msg)) return;
@@ -1037,6 +1049,7 @@ const App = (() => {
     pararTimer();
     $('quiz-feedback').hidden = true;
     const resumo = Quiz.finalizar(s, estado.prog, motivo);
+    if (s.modo === 'enviada' && motivo !== 'saiu') ProvasEnviadas.registrarTentativa(s.provaRef, resumo);
     checarNivel();
     const novas = Conquistas.verificar(estado.prog, estado.trilha);
     salvar();
@@ -1080,6 +1093,13 @@ const App = (() => {
       if (r.motivo === 'tempo') sub = 'O tempo acabou. ' + sub;
       return { titulo: `Nota ${nota}`, sub };
     }
+    if (r.modo === 'enviada') {
+      if (r.nota === null) return { titulo: 'Prova interrompida', sub: 'Sem nota e sem pontos desta vez: a prova só vale quando é entregue.' };
+      const nota = r.nota.toLocaleString('pt-BR', { minimumFractionDigits: 1 });
+      let sub = r.nota >= 7 ? 'Mandou bem, Diver! Essa prova não te assusta mais.' : r.nota >= 5 ? 'Na média. Veja abaixo o que revisar e tente de novo.' : 'Prova antiga serve pra isso: mostrar onde mergulhar. Confira as correções abaixo.';
+      if (r.motivo === 'tempo') sub = 'O tempo acabou. ' + sub;
+      return { titulo: `Nota ${nota}`, sub: `${r.acertos} de ${r.total} acertos. ${sub}` };
+    }
     if (r.modo === 'prova') {
       if (r.nota === null || r.nota === undefined) return { titulo: 'Prova interrompida', sub: 'Sem nota desta vez. Quando quiser, é só começar de novo.' };
       const nota = r.nota.toLocaleString('pt-BR', { minimumFractionDigits: 1 });
@@ -1101,7 +1121,7 @@ const App = (() => {
 
     $('resumo-rotulo').textContent = r.modo === 'jogo'
       ? `${r.jogo.nome} · ${trilha.nome}`
-      : r.fase ? `${NOMES_MODO[r.modo]} · ${r.fase.nome}` : NOMES_MODO[r.modo];
+      : r.fase ? `${NOMES_MODO[r.modo]} · ${r.fase.nome}` : r.titulo ? `${NOMES_MODO[r.modo]} · ${r.titulo}` : NOMES_MODO[r.modo];
     $('resumo-titulo').textContent = titulo;
     $('resumo-subtitulo').textContent = sub;
     humorMascote($('tela-resumo'), r.pct >= 60 || r.faseConcluida ? 'feliz' : null);
@@ -1130,6 +1150,7 @@ const App = (() => {
         r.bonusJogo.motivo ? ` (${r.bonusJogo.motivo})` : '');
     }
     if (r.desafio) selo('i-raio', 'Desafio do Dia: XP em dobro');
+    if (r.modo === 'enviada' && r.nota !== null && r.pontos && r.pontos.motivo) selo('i-alvo', r.pontos.motivo);
     if (r.maiorCombo >= 3) selo('i-raio', `Maior sequência: ${r.maiorCombo} acertos seguidos`);
     if (r.emBranco) selo('i-relogio', `${plural(r.emBranco, 'questão ficou', 'questões ficaram')} em branco`);
 
@@ -1190,6 +1211,11 @@ const App = (() => {
       principal.onclick = () => (r.aprovado ? irPara('prova') : iniciarProva());
       voltar.textContent = 'Voltar ao mapa';
       voltar.onclick = () => irPara('mergulho');
+    } else if (r.modo === 'enviada') {
+      principal.textContent = 'Refazer a prova';
+      principal.onclick = () => ProvasEnviadas.comecar(estado.ultimaProvaEnviada);
+      voltar.textContent = 'Voltar ao simulado';
+      voltar.onclick = () => irPara('simulado');
     } else if (r.modo === 'simulado') {
       principal.textContent = 'Novo simulado';
       principal.onclick = () => iniciarSessao('simulado', { quantidade: r.total });
@@ -1336,6 +1362,7 @@ const App = (() => {
     definirTrilha,
     abrirTrilha,
     irPara,
+    iniciarProvaEnviada: (opcoes) => iniciarSessao('enviada', opcoes),
     concederXP,
     recarregarTrilhas,
     podeGerenciar,

@@ -52,6 +52,8 @@
   <script src="js/biblioteca.js" defer></script>
   <script src="js/perfil.js" defer></script>
   <script src="js/admin.js" defer></script>
+  <script src="js/leitor-prova.js" defer></script>
+  <script src="js/provas-enviadas.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
 <body>
@@ -292,11 +294,15 @@
             <button id="btn-simulado" class="botao botao--primario" type="button">Começar simulado</button>
           </div>
         </div>
+        <div id="provas-enviadas" class="provas-enviadas"></div>
         <div class="cartao">
           <h2 class="cartao__titulo">Histórico de notas</h2>
           <div id="historico-simulados" class="historico"></div>
         </div>
       </section>
+
+      <!-- ============ UPLOAD DE PROVA (montado pelo provas-enviadas.js) ============ -->
+      <section id="tela-upload-prova" class="tela" hidden aria-labelledby="upload-prova-titulo"></section>
 
       <!-- ============ REVISÃO ============ -->
       <section id="tela-revisao" class="tela" hidden aria-labelledby="revisao-titulo">

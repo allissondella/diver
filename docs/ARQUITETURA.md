@@ -30,6 +30,8 @@
 | 12 | `js/biblioteca.js` | `Biblioteca` | Cursos e trilhas (estudar, exportar, criar colando texto) e PDFs (IndexedDB). |
 | 13 | `js/perfil.js` | `Perfil` | Nível geral somando as trilhas, tabela por trilha, backup. |
 | 13b | `js/admin.js` | `Admin` | Área da equipe. Admin ("Pessoas e cursos"): cadastrar aluno, professor ou admin (senha temporária), mudar o tipo de conta, atribuir cursos, nova senha, ativar/desativar, ver progresso. Professor ("Meus alunos"): só acompanha os alunos dos cursos dele. |
+| 13c | `js/leitor-prova.js` | `LeitorProva` | Lê uma prova antiga (texto ou PDF) e separa questões, alternativas, gabarito e comentários, sem IA. O PDF passa pelo **pdf.js** (`lib/pdfjs/`, Apache-2.0, v3.11 legacy), carregado só quando alguém envia um PDF, com `isEvalSupported: false`. |
+| 13d | `js/provas-enviadas.js` | `ProvasEnviadas` | "Upload de prova" no Simulado: formulário, palavra de honra, conferência, lista "Provas antigas" (as do aluno e as do professor) e as regras de pontos. |
 | 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
 CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos). Só variáveis de cor (tokens), nada de cor solta.
@@ -39,7 +41,8 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | --- | --- | --- |
 | `#inicio` | `tela-inicio`: mascote, escolha de trilha, "Bora mergulhar!", **Seu dia** (Desafio do Dia, meta, tarefas de hoje, próximos eventos) | `app.js` |
 | `#mergulho` | `tela-painel`: status, mapa de profundidades, atalhos, conquistas | `app.js` |
-| `#simulado` | `tela-simulado`: montar simulado + histórico de notas | `app.js` |
+| `#simulado` | `tela-simulado`: montar simulado, **Provas antigas** (`#provas-enviadas`) e histórico de notas | `app.js` + `provas-enviadas.js` |
+| `#upload-prova` | `tela-upload-prova`: enviar a prova (arquivo ou texto, tempo, palavra de honra) e conferir as questões | `provas-enviadas.js` |
 | `#revisao` | `tela-revisao`: fila de revisão, "Revisar agora", "Tirar da fila" | `app.js` |
 | `#jogos` | `tela-jogos`: Sala de Jogos por grupo, com estado de cada jogo | `app.js` |
 | (sem endereço) | `tela-jogo` (partida), `tela-quiz`, `tela-resumo` | `app.js` + jogos |
@@ -123,14 +126,22 @@ Jogos.registrar({
 | `diver:v1:quadros` | Tarefas: `{ versao, quadroAtual, quadros: [{ id, nome, listas: [ids], ocultarConcluidas }], listas: { id: { nome, cor, ordenacao (manual/prazo/titulo), tarefas: [ids] } }, tarefas: { id: { titulo, notas, prazo, etiquetas: [ids], subtarefas: [{ id, titulo, feita }], concluida, concluidaEm, criadaEm, trilhaId, xpConcedido } }, etiquetas: [{ id, nome, cor }] }`. A ordem dos cartões é a ordem do array da lista. A chave antiga `diver:v1:tarefas` (Kanban de 4 colunas) é migrada sozinha para o "Quadro principal" e apagada. |
 | `diver:v1:eventos` | Eventos do calendário: `id, titulo, tipo (prova/aula/estudo/descanso), data, hora, trilhaId, gerado`. |
 | `diver:v1:desafios` | Dias em que o Desafio do Dia foi cumprido (`{ "AAAA-MM-DD": true }`). |
+| `diver:v1:provas-enviadas` | Provas antigas: `{ versao, provas: [{ id, trilhaId, titulo, criadaEm, honesto, minutos, questoes: [{ id, tema, dificuldade, enunciado, alternativas, correta, explicacao }], tentativas: [{ data, acertos, total, nota, tempoSeg, xp, perolas }] }], feitas: { idDaProvaDoProfessor: [tentativas] } }`. Sincroniza com a nuvem como o resto. |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
 
 O progresso da trilha também guarda `provas` (prova final: data, total, acertos, nota, pct, aprovado, tempoSeg).
+
+**Supabase** → tabela `provas_curso` (`id, trilha_id, titulo, autor_id, autor_nome, minutos, questoes jsonb, criado_em`): provas que o professor ou o admin publicam para os alunos de um curso. Veem: matriculados no curso e admin. Publicam: professor do curso e admin (autor e nome vêm do login, por gatilho). Apagam: o autor (se ainda der aula no curso) e o admin. Ninguém edita.
 
 **IndexedDB** `diver` → store `pdfs`: `{ id, nome, tamanho, trilhaId, criadoEm, arquivo (Blob), notas }`. PDFs não entram no backup do Perfil.
 
 ## Regras de jogo implementadas
 - **Prova final** (`modo: 'prova'` no `quiz.js`): sorteio simples da trilha, sem feedback no meio, cronômetro, em branco = erro, aprovação pela % mínima; liberada ao completar todas as fases (admin e professor podem fazer antes, para conferir). Conquista "Aprovado!".
+- **Prova enviada** (`modo: 'enviada'` no `quiz.js`): as questões vêm da prova, na ordem original; sem feedback no meio, cronômetro opcional (1, 2 ou 3 min por questão), em branco = erro. Não entram na revisão espaçada nem no "Marcar para revisar". Pontos só na entrega, por `Economia.pontuarProvaEnviada` (cada acerto vale uma questão média + combo):
+  - prova do **aluno**: XP **sem pérolas** se ele escolheu "Eu juro que fui honesto e vou pontuar"; **0** em "Eu dei uma espiadinha e não vou pontuar";
+  - prova do **professor** (tabela `provas_curso`): XP **e** pérolas para o aluno; quem é da equipe faz em modo conferência (0);
+  - refazer vale **metade**; sair no meio não vale nota nem pontos.
+- **Leitor de prova** (`LeitorProva.interpretar`): questão = "1." / "1)" / "01 -" / "Questão 1" (número solto só abre questão se for o próximo da sequência); alternativa = "a)" / "(A)" / "A." / "A -", uma por linha ou todas na mesma linha; gabarito = bloco final "Gabarito"/"Respostas" ("1-C 2-A", "01. B", tabela de números e letras, "Anulada") ou "Resposta: C" logo depois da questão, "*A)" e "(correta)". Remove cabeçalho repetido e número de página, desfaz hifenização. PDF escaneado (sem texto) é recusado com aviso. Nada é salvo sem passar pela conferência.
 - **Mergulho/Simulado/Revisão**: como na Fase 0 (ver `docs/JOGOS.md`). Continuam dando XP pelo `quiz.js`; a migração para o contrato/economia é a tarefa D7/D8.
 - **Níveis:** `NIVEIS` em `js/progresso.js` (10 níveis, Mestre Diver = 2.100 XP). O Perfil soma o XP de todas as trilhas no "nível geral".
 - **Tarefas:** concluir (bolinha ou Alt+Enter) dá +10 XP e +1 pérola uma única vez por tarefa (no curso escolhido no cartão ou no atual). Reabrir e concluir de novo não dá XP outra vez; subtarefas não dão XP.
