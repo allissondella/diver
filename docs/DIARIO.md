@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-09-29 · Visual novo, Etapa 2 (novo Diver)
+- **Feito:** Diver redesenhado em SVG vetorial, no estilo figurinha do site de referência (contorno grosso, cores chapadas): roupa com capuz, máscara amarela com os olhinhos do ícone da aba, snorkel na boca soltando bolhas, barba e nadadeiras. Expressões normal (pisca), feliz (acerto), triste (erro) e pensando. Trocado em todas as telas (Início, login, quiz, resumo, estados vazios, cortina). A pixel art saiu do repositório (−2,9 MB).
+- **Decisões:** desenho inline no `<template id="molde-mascote">` (sem arquivo para baixar); tamanhos ajustados porque o novo Diver é mais alto que largo; tudo parado com "reduzir movimento".
+- **Testes:** Início, acerto (feliz), erro (triste), resumo e login no computador e no celular, sem erros nem arquivos faltando.
+
 ## 2026-09-29 · Visual novo, Etapa 1 (barras, Início, Trilha atual, transições)
 - **Feito:** barras de rolagem finas no tom do mar (sem as barras brancas do Windows); Início com topo mais enxuto, cards de curso com selo de check, descrição em 2 linhas e barra de progresso, e o **"Bora mergulhar!" numa barra fixa** no pé da tela mostrando o curso escolhido; **"Trilha atual"** virou um seletor próprio (lista com nome, categoria, fases e progresso, no teclado também); telas entram com fade + deslize + leve desfoque; **cortina** com bolhas e o Diver ao abrir um curso, começar um mergulho/simulado/revisão/prova ou um jogo ("Descendo para Raso…"); rótulos, cronômetros e números em **JetBrains Mono**.
 - **Decisões:** ideias do site de referência (transições, rótulos em fonte mono, cortina de carregamento), sem copiar código nem arte e sem reescrever a arquitetura; cores e Plus Jakarta Sans continuam. Tudo estático com "reduzir movimento".

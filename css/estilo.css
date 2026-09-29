@@ -527,20 +527,53 @@ select {
 .mascote {
   display: inline-block;
 }
-.mascote__img {
+.mascote__svg {
   display: block;
   width: 100%;
   height: auto;
+  overflow: visible;
 }
-/* Parado, o Diver flutua de leve (o WebP já traz a animação de nado) */
-.hero__mascote .mascote__img {
+/* Parado, o Diver flutua de leve, pisca e solta bolhas pelo snorkel */
+.hero__mascote .mascote__svg {
   animation: flutuar 3.2s ease-in-out infinite;
 }
-.mascote--feliz .mascote__img {
+.mascote--feliz .mascote__svg {
   animation: pulinho 600ms ease;
 }
-.mascote--triste .mascote__img {
+.mascote--triste .mascote__svg {
   animation: balanca 500ms ease;
+}
+/* Expressões: só um conjunto de olhos aparece por vez */
+.mascote .d-olhos,
+.mascote .d-bochechas { display: none; }
+.mascote .d-olhos--normal { display: inline; }
+.mascote--feliz .d-olhos--normal,
+.mascote--triste .d-olhos--normal,
+.mascote--pensando .d-olhos--normal { display: none; }
+.mascote--feliz .d-olhos--feliz,
+.mascote--feliz .d-bochechas,
+.mascote--triste .d-olhos--triste,
+.mascote--pensando .d-olhos--pensando { display: inline; }
+.mascote .d-olho {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: piscar 5s ease-in-out infinite;
+}
+.mascote .d-bolhas circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bolha-snorkel 2.4s ease-in infinite;
+}
+.mascote .d-bolhas circle:nth-child(2) { animation-delay: 0.8s; }
+.mascote .d-bolhas circle:nth-child(3) { animation-delay: 1.6s; }
+@keyframes piscar {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.12); }
+}
+@keyframes bolha-snorkel {
+  0% { transform: translate(0, 26px) scale(0.4); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translate(8px, -22px) scale(1); opacity: 0; }
 }
 @keyframes flutuar {
   0%, 100% { transform: translateY(0) rotate(0); }
@@ -1379,7 +1412,7 @@ select {
   gap: 12px;
 }
 .feedback__mascote {
-  width: 96px;
+  width: 64px;
   flex-shrink: 0;
 }
 .feedback__titulo {
@@ -1410,7 +1443,7 @@ select {
 }
 .resumo-cabeca__mascote {
   display: block;
-  width: 190px;
+  width: 128px;
   margin: 0 auto 6px;
 }
 .resumo-cabeca h1 {
@@ -1731,7 +1764,7 @@ html,
 
 /* ---------- Início: topo mais enxuto ---------- */
 .hero { padding: 12px 0 0; }
-.hero__mascote { width: 200px; }
+.hero__mascote { width: 140px; margin-top: 18px; }
 .hero__texto { font-size: 0.95rem; }
 .secao-titulo#titulo-trilhas { margin-top: 24px; }
 
@@ -1935,7 +1968,7 @@ html,
 @keyframes cortina-entra { from { opacity: 0; } to { opacity: 1; } }
 @keyframes cortina-sai { to { opacity: 0; transform: translateY(-24px); } }
 .transicao__conteudo { display: grid; justify-items: center; gap: 10px; }
-.transicao__mascote { width: 180px; animation: flutuar 1.4s ease-in-out infinite; }
+.transicao__mascote { width: 120px; animation: flutuar 1.4s ease-in-out infinite; }
 .transicao__conteudo { position: relative; }
 .transicao__texto {
   margin: 0;

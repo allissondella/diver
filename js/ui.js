@@ -134,10 +134,10 @@ const UI = (() => {
     });
   }
 
-  /** humor: 'feliz' | 'triste' | null (neutro) */
+  /** humor: 'feliz' | 'triste' | 'pensando' | null (neutro) */
   function humorMascote(container, humor) {
     container.querySelectorAll('[data-mascote]').forEach((m) => {
-      m.classList.remove('mascote--feliz', 'mascote--triste');
+      m.classList.remove('mascote--feliz', 'mascote--triste', 'mascote--pensando');
       void m.offsetWidth; // reinicia a animação
       if (humor) m.classList.add('mascote--' + humor);
     });
