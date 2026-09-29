@@ -19,8 +19,8 @@
       supabaseChave: 'sb_publishable_UyTo6L5wYVtPpnmJBndD7g_zBhf4NO-',
     },
     testes: {
-      supabaseUrl: '', // Project URL do Supabase de TESTES
-      supabaseChave: '', // chave publishable do Supabase de TESTES
+      supabaseUrl: 'https://xtuzdecteeeldnaegkxl.supabase.co', // projeto diver-testes (só dados fictícios)
+      supabaseChave: 'sb_publishable_aFg4QuMIfNB1o-O03KxdCw_9YVTuP-U',
     },
   };
 
