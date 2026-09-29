@@ -140,7 +140,8 @@ O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos a
 
 #### Memória (`memoria`) — semana 4
 - Grade de conchas: 3×4 (6 pares), 4×4 (8) ou 4×5 (10). Vira duas por vez; par certo fica aberto, par errado desvira após ~1 s.
-- Pontuação: pares encontrados + bônus por poucas tentativas e por tempo.
+- Pontuação: pares encontrados + prêmio garantido por terminar + medalha de tempo (ouro ≤ 15 s/par, prata ≤ 25 s, bronze ≤ 40 s) + pérolas por poucas tentativas (≤ 1,5 × pares). Relógio e próxima medalha no topo.
+- Erro de par só conta quando as duas conchas dele já tinham sido vistas (errar no escuro não pune).
 - Ao achar um par, mostrar a definição por um instante (é aprendizado, não só memória).
 - Acessível: setas + Enter; opção sem animação de virar. Deriva pares apenas de questões com enunciado e resposta curtos.
 

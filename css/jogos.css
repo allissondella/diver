@@ -152,6 +152,11 @@
 .concha--aberta .concha__frente,
 .concha--achada .concha__frente { transform: rotateY(360deg); }
 .concha--achada .concha__frente { background: var(--superficie-turquesa); border-color: var(--turquesa); opacity: 0.85; }
+.memoria-tempo { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+.medalha { padding: 2px 10px; border-radius: 999px; border: 1px solid currentColor; font-size: 0.8rem; font-weight: 700; color: var(--texto-suave); }
+.medalha--ouro { color: var(--amarelo); }
+.medalha--prata { color: var(--texto); }
+.medalha--bronze { color: var(--laranja); }
 .memoria-aviso { min-height: 1.5em; font-weight: 700; color: var(--turquesa-claro); text-align: center; }
 
 /* ---------- Adivinha Aí (garrafas) ---------- */
