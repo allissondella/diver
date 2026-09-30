@@ -34,6 +34,7 @@
   <script src="js/quiz.js" defer></script>
   <!-- Interface comum e cartas -->
   <script src="js/ui.js" defer></script>
+  <script src="js/mascotes.js" defer></script>
   <!-- Login, sincronização e admin -->
   <script src="js/nuvem.js" defer></script>
   <script src="js/conta.js" defer></script>
@@ -209,7 +210,7 @@
       <!-- ============ INÍCIO ============ -->
       <section id="tela-inicio" class="tela" aria-labelledby="titulo-inicio">
         <header class="hero">
-          <div class="hero__mascote mascote" data-mascote role="img" aria-label="Diver, o mascote: um mergulhador de roupa de mergulho, máscara amarela e snorkel na boca"></div>
+          <div class="hero__mascote mascote" data-mascote role="img" aria-label="Diver, o mascote: um pinguim de rosto branco, bico laranja e penacho amarelo saindo pelos lados da máscara, com roupa de mergulho, máscara amarela e snorkel"></div>
           <h1 id="titulo-inicio" class="hero__logo" tabindex="-1">Diver</h1>
           <p class="hero__slogan">Mergulhe. Acerte. Suba de nível.</p>
           <p class="hero__texto">Estudar dá um frio na barriga, mas a água está ótima. Escolha uma trilha e vá fundo: aqui, aprender é a parte divertida.</p>
@@ -512,10 +513,10 @@
       <path d="M120,30 C68,30 44,70 42,118 L40,176 C40,202 60,222 88,222 L152,222 C180,222 200,202 200,176 L198,118 C196,70 172,30 120,30 Z" fill="#15406B" stroke="#5EEAD4" stroke-width="8" stroke-linejoin="round"/>
       <!-- faixa turquesa no peito -->
       <path d="M60,196 Q120,214 180,196" fill="none" stroke="#14B8A6" stroke-width="7" stroke-linecap="round" opacity=".9"/>
-      <!-- rosto (abertura do capuz) -->
-      <path d="M70,104 Q70,74 120,74 Q170,74 170,104 L170,150 Q170,194 120,196 Q70,194 70,150 Z" fill="#F2B28C"/>
-      <!-- barba -->
-      <path d="M70,138 Q72,196 120,198 Q168,196 170,138 Q164,168 142,170 L98,170 Q76,168 70,138 Z" fill="#7A4630"/>
+      <!-- rosto (abertura do capuz). Pele, "atrás", cílios e "frente" mudam com o mascote escolhido (js/mascotes.js);
+           o que está aqui é o padrão: pinguim de penacho -->
+      <path class="d-pele" d="M70,104 Q70,74 120,74 Q170,74 170,104 L170,150 Q170,194 120,196 Q70,194 70,150 Z" fill="#F4F8FF"/>
+      <g class="d-rosto-atras"><g fill="#FCD34D" stroke="#06172D" stroke-width="3" stroke-linejoin="round"><path d="M62,98 Q44,90 34,74 Q52,82 58,80 Q46,70 44,58 Q60,72 72,90 Z"/><path d="M178,98 Q196,90 206,74 Q188,82 182,80 Q194,70 196,58 Q180,72 168,90 Z"/></g></g>
       <!-- bochechas (só no "feliz") -->
       <g class="d-bochechas" fill="#FB7185" opacity=".55"><circle cx="80" cy="152" r="7"/><circle cx="160" cy="152" r="7"/></g>
       <!-- tira da máscara atravessando o capuz -->
@@ -543,15 +544,14 @@
         <circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle cx="144" cy="114" r="15" fill="#E6F1FF"/>
         <circle cx="101" cy="108" r="7.5" fill="#0B2545"/><circle cx="149" cy="108" r="7.5" fill="#0B2545"/>
       </g>
+      <!-- cílios (mergulhadoras; somem no feliz e no triste) -->
+      <g class="d-cilios"></g>
       <!-- snorkel: tubo coral saindo da boca e subindo pelo lado -->
       <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#06172D" stroke-width="18" stroke-linecap="round"/>
       <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#FB7185" stroke-width="11" stroke-linecap="round"/>
       <rect x="186" y="24" width="20" height="16" rx="5" fill="#FACC15" stroke="#06172D" stroke-width="4"/>
-      <!-- bigode pequeno, sem contorno, da cor da barba (fica atrás do bocal) -->
-      <path d="M95.8,161.5 Q98.6,147.5 111.2,148.9 Q118.2,150.3 121,153.1 Q123.8,150.3 130.8,148.9 Q143.4,147.5 146.2,161.5 Q135,155.9 121,158.7 Q107,155.9 95.8,161.5 Z" fill="#7A4630"/>
-      <!-- bocal na boca -->
-      <rect x="100" y="156" width="42" height="20" rx="10" fill="#FACC15" stroke="#06172D" stroke-width="4"/>
-      <path d="M108,166 L134,166" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/>
+      <!-- frente do rosto: bigode ou bico, e o bocal do snorkel na boca -->
+      <g class="d-rosto-frente"><path d="M103,170 Q121,168 139,170 Q134,184 121,185 Q108,184 103,170 Z" fill="#EA7A1F" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M97,157 Q98,141 121,139 Q144,141 145,157 Q121,163 97,157 Z" fill="#FB923C" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M108,147 Q114,143 121,143" fill="none" stroke="#FED7AA" stroke-width="3" stroke-linecap="round"/><rect x="106" y="156" width="30" height="16" rx="8" fill="#FACC15" stroke="#06172D" stroke-width="4"/><path d="M112,164 L130,164" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/></g>
     </svg>
   </template>
 </body>

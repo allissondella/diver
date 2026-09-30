@@ -88,6 +88,9 @@ const Tutorial = (() => {
     'upload-prova': [
       { desenho: 'upload', titulo: 'Upload de prova', texto: 'Mande o PDF (ou cole o texto) com o gabarito. Eu separo as questões e você confere tudo antes de salvar.' },
     ],
+    perfil: [
+      { alvo: '#perfil-mascote', desenho: 'diver', titulo: 'Seu mascote', texto: 'Pinguim, mergulhador ou mergulhadora, com o tom de pele que você quiser. Escolheu, trocou em todas as telas.' },
+    ],
   };
 
   /* ---------- Guardar o que já foi visto ---------- */

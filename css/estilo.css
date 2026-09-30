@@ -554,6 +554,9 @@ select {
 .mascote--feliz .d-bochechas,
 .mascote--triste .d-olhos--triste,
 .mascote--pensando .d-olhos--pensando { display: inline; }
+/* Cílios das mergulhadoras: só com os olhos abertos (normal e pensando) */
+.mascote--feliz .d-cilios,
+.mascote--triste .d-cilios { display: none; }
 .mascote .d-olho {
   transform-box: fill-box;
   transform-origin: center;

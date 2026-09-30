@@ -56,15 +56,20 @@ Raso (0–10 m) claro e luminoso → Recife (10–40 m) turquesa → Caverna (40
 - Fundo: degradê marinho + **bolhas suaves** animadas (desligam com `prefers-reduced-motion`).
 
 ## Mascote: Diver
-Mergulhador barbudo e sorridente, **vetorial (SVG)**, no estilo "figurinha": formas simples, **contorno turquesa grosso** e cores chapadas, de frente, com:
+O Diver é **vetorial (SVG)**, no estilo "figurinha": formas simples, **contorno turquesa grosso** e cores chapadas, de frente. O **corpo é o mesmo para todos**:
 - **roupa de mergulho com capuz** (`#15406B`, contorno `#5EEAD4`) e faixa turquesa no peito;
 - **máscara amarela** (`#FACC15`) com vidro `#0C354C` e os **olhinhos iguais aos do ícone da aba** (brancos `#E6F1FF`, pupilas `#0B2545`);
-- **snorkel na boca**: bocal amarelo e tubo coral (`#FB7185`) subindo pelo lado, soltando bolhas;
-- barba e **bigode pequeno** `#7A4630` (bigode sem contorno, logo acima do bocal; aprovado em 2026-09-29), pele `#F2B28C`, nadadeiras amarelas.
+- **snorkel na boca**: bocal amarelo e tubo coral (`#FB7185`) subindo pelo lado, soltando bolhas; nadadeiras amarelas.
+
+**O rosto é escolhido pela pessoa (Perfil → "Seu mascote", desde 2026-09-30).** O padrão é o **pinguim de penacho**.
+- **Pinguins** (rosto `#F4F8FF`, bico laranja `#FB923C`/`#EA7A1F` segurando um bocal menor): de penacho (penas `#FCD34D` saindo pelos lados da máscara), clássico, imperador (manchas douradas) e de Magalhães (faixa `#1E293B` em U).
+- **Mergulhadores**: barba e bigode discreto, bigode guidão, bigodão de detetive, bigode de morsa, bigode fininho, só bigode e rosto limpo.
+- **Mergulhadoras**: cabelo liso ou cacheado emoldurando o rosto, cílios (só com os olhos abertos) e lábios logo abaixo do bocal.
+- **Tom de pele** para mergulhadores e mergulhadoras: clara, média, morena e negra; cabelo, barba e boca acompanham (valores em `js/mascotes.js`, `TONS`).
 
 **Decisão de 2026-09-29 (2):** a pixel art 16-bit foi aposentada (os arquivos antigos saíram do repositório; estão no histórico do git). O ícone da aba continua sendo a máscara em SVG.
 
-- Arquivo de referência: `assets/mascote/diver.svg`. No app, o desenho fica inline em `<template id="molde-mascote">` no `index.html`; o `ui.js` copia para todo elemento com `data-mascote` (sem pedir arquivo nenhum à rede).
+- Arquivo de referência: `assets/mascote/diver.svg` (o padrão). No app, o desenho fica inline em `<template id="molde-mascote">` no `index.html`, com quatro encaixes para o rosto (`.d-pele`, `.d-rosto-atras`, `.d-cilios`, `.d-rosto-frente`) que o `js/mascotes.js` preenche com a escolha; o `ui.js` copia o molde para todo elemento com `data-mascote` (sem pedir arquivo nenhum à rede). Rosto novo = uma entrada em `Mascotes.ROSTOS`.
 - **Expressões** pela classe do container (`UI.humorMascote(container, humor)`): sem classe = **normal** (pisca de vez em quando); `.mascote--feliz` (olhos ^ ^, bochechas e pulinho: acerto); `.mascote--triste` (pálpebras caídas e balançada: erro, sem culpar); `.mascote--pensando` (olhando para cima: dicas e tutorial).
 - Bolhas sobem do snorkel; no Início ele flutua. Com `prefers-reduced-motion`, fica tudo parado.
 - Proporção 240 × 270 (mais alto que largo): nas telas, defina só a largura. Deixar respiro ao redor; funciona melhor sobre fundo escuro.

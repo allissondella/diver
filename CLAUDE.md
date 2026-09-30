@@ -38,7 +38,7 @@ Todo jogo é uma "roupa" diferente sobre o mesmo conteúdo (as cartas de uma tri
 ## Visual (resumo; detalhes em docs/DESIGN.md)
 - Fundo marinho em degradê (`#0B2545` → `#06172D`), turquesa `#14B8A6` como cor principal, amarelo `#FACC15` (XP e destaques), coral `#FB7185` (erro gentil e alertas), textos `#E6F1FF` e `#A9BCD6`.
 - Fonte **Plus Jakarta Sans**. Botão 3D com borda inferior turquesa mais escura. Bolhas suaves no fundo.
-- Mascote: **Diver**, mergulhador **vetorial (SVG)** no estilo figurinha: contorno turquesa, máscara amarela com os olhinhos do ícone da aba e **snorkel na boca** (`assets/mascote/diver.svg`, molde inline no `index.html`; expressões normal/feliz/triste/pensando; detalhes em `docs/DESIGN.md`). A pixel art e o peixinho foram aposentados.
+- Mascote: **Diver**, **vetorial (SVG)** no estilo figurinha: contorno turquesa, máscara amarela com os olhinhos do ícone da aba e **snorkel na boca** (`assets/mascote/diver.svg`, molde inline no `index.html`; expressões normal/feliz/triste/pensando; detalhes em `docs/DESIGN.md`). **O rosto é escolhido no Perfil** (`js/mascotes.js`): pinguins, mergulhadores e mergulhadoras, com tom de pele; o padrão é o **pinguim de penacho**. A pixel art e o peixinho foram aposentados.
 - Use **variáveis CSS** (tokens). Não escreva cores soltas.
 
 ## Tom de voz
