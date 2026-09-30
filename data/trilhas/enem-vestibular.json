@@ -1,0 +1,596 @@
+{
+  "id": "enem-vestibular",
+  "nome": "Travessia: Enem e Vestibular",
+  "descricao": "Preparação para o Enem e os vestibulares, uma área de cada vez. A travessia começa pela Matemática: razão, proporção e porcentagem, temas que aparecem em todas as provas.",
+  "categoria": "Enem e vestibular",
+  "fasesLivres": true,
+  "fases": [
+    {
+      "id": "matematica-1",
+      "nome": "Matemática 1: proporções",
+      "profundidade": "0–10 m",
+      "descricao": "Razão, proporção, regra de três, porcentagem, escala e juros simples",
+      "resumo": {
+        "introducao": "Boa parte da Matemática do Enem é pensar em proporções: comparar quantidades, aumentar ou reduzir na mesma medida e traduzir porcentagens. As contas são simples; o desafio é ler a situação com calma e montar a relação certa.",
+        "pontos": [
+          "**Razão** compara duas quantidades pela divisão (a : b). A ordem importa: homens : mulheres não é o mesmo que mulheres : homens.",
+          "**Grandezas diretamente proporcionais**: uma dobra, a outra dobra (quantidade e preço, receita e ingredientes).",
+          "**Grandezas inversamente proporcionais**: uma dobra, a outra cai pela metade (número de torneiras e tempo para encher, velocidade e tempo de viagem).",
+          "**Regra de três**: monte a tabela, decida se as grandezas são diretas ou inversas e só depois multiplique em cruz.",
+          "**Porcentagem é fator**: +25% é × 1,25; −20% é × 0,80. Aumentos e descontos seguidos se multiplicam, nunca se somam.",
+          "**Escala** 1 : n quer dizer que 1 unidade no desenho vale n no real. Para áreas, a escala entra ao quadrado.",
+          "**Juros simples** são calculados sempre sobre o valor inicial: J = C × i × t.",
+          "Converta as unidades **antes** de calcular (minutos em horas, cm em km, mL em L)."
+        ],
+        "tabela": {
+          "titulo": "Situação e como resolver",
+          "colunas": [
+            "Situação",
+            "Caminho mais rápido"
+          ],
+          "linhas": [
+            [
+              "Desconto de x%",
+              "Multiplique por (1 − x/100)"
+            ],
+            [
+              "Aumento de x%",
+              "Multiplique por (1 + x/100)"
+            ],
+            [
+              "Preço antes do desconto",
+              "Divida o preço pago pelo fator (ex.: ÷ 0,80)"
+            ],
+            [
+              "Mais \"trabalhadores\", menos tempo",
+              "Grandezas inversas: produto constante"
+            ],
+            [
+              "Mapa ou planta",
+              "Medida real = medida no desenho × n"
+            ],
+            [
+              "Divisão proporcional",
+              "Some as partes e calcule a fração de cada um"
+            ]
+          ]
+        },
+        "perolas": [
+          "Subiu 25% e depois caiu 20%? Voltou ao mesmo preço: 1,25 × 0,80 = 1.",
+          "Antes de marcar, pergunte: \"o resultado faz sentido?\" Menos torneiras nunca enchem o tanque mais rápido.",
+          "10% é dividir por 10; 5% é a metade disso; 15% é a soma dos dois."
+        ]
+      }
+    }
+  ],
+  "questoes": [
+    {
+      "id": "enem-mat1-01",
+      "tema": "Escala",
+      "dificuldade": "facil",
+      "fase": "matematica-1",
+      "enunciado": "Num mapa rodoviário na escala 1 : 500 000, a distância em linha reta entre duas cidades é de 8 cm. Qual é a distância real entre elas?",
+      "alternativas": [
+        "4 km",
+        "4 000 km",
+        "400 km",
+        "40 km",
+        "0,4 km"
+      ],
+      "correta": 3,
+      "explicacao": "Escala 1 : 500 000 quer dizer que 1 cm no mapa vale 500 000 cm no real. Então 8 cm valem 4 000 000 cm. Como 1 km = 100 000 cm, são 40 km. Quem erra a conversão de unidades cai em 4 km ou 400 km."
+    },
+    {
+      "id": "enem-mat1-02",
+      "tema": "Porcentagem",
+      "dificuldade": "facil",
+      "fase": "matematica-1",
+      "enunciado": "Uma camiseta custa R$ 80,00 e está com 15% de desconto. Quanto ela passa a custar?",
+      "alternativas": [
+        "R$ 12,00",
+        "R$ 92,00",
+        "R$ 68,00",
+        "R$ 72,00",
+        "R$ 65,00"
+      ],
+      "correta": 2,
+      "explicacao": "Desconto de 15% = pagar 85% do preço: 0,85 × 80 = 68. R$ 12,00 é só o valor do desconto, e R$ 92,00 seria um aumento de 15%."
+    },
+    {
+      "id": "enem-mat1-03",
+      "tema": "Proporção",
+      "dificuldade": "facil",
+      "fase": "matematica-1",
+      "enunciado": "Uma receita rende 12 cookies e usa 250 g de manteiga. Mantendo a proporção, quantos gramas de manteiga são necessários para fazer 30 cookies?",
+      "alternativas": [
+        "575 g",
+        "600 g",
+        "500 g",
+        "625 g",
+        "750 g"
+      ],
+      "correta": 3,
+      "explicacao": "Mais cookies pedem mais manteiga na mesma razão (grandezas diretamente proporcionais): 250 × 30 ÷ 12 = 625 g. Dá para pensar também assim: 30 cookies são 2,5 receitas, e 2,5 × 250 = 625."
+    },
+    {
+      "id": "enem-mat1-04",
+      "tema": "Razão",
+      "dificuldade": "facil",
+      "fase": "matematica-1",
+      "enunciado": "Uma turma tem 40 estudantes, dos quais 24 são mulheres. Qual é a razão entre o número de homens e o número de mulheres da turma?",
+      "alternativas": [
+        "2 : 5",
+        "3 : 2",
+        "3 : 5",
+        "2 : 3",
+        "5 : 3"
+      ],
+      "correta": 3,
+      "explicacao": "Homens: 40 − 24 = 16. Razão homens : mulheres = 16 : 24; dividindo os dois por 8, fica 2 : 3. A ordem importa: 3 : 2 seria mulheres : homens, e 2 : 5 compara homens com o total."
+    },
+    {
+      "id": "enem-mat1-05",
+      "tema": "Porcentagem",
+      "dificuldade": "facil",
+      "fase": "matematica-1",
+      "enunciado": "Numa pesquisa sobre transporte, 300 pessoas foram entrevistadas e 45 disseram usar ônibus todos os dias. Que porcentagem dos entrevistados usa ônibus diariamente?",
+      "alternativas": [
+        "15%",
+        "6,7%",
+        "45%",
+        "30%",
+        "4,5%"
+      ],
+      "correta": 0,
+      "explicacao": "Porcentagem = parte ÷ total × 100 = 45 ÷ 300 × 100 = 15%. O 45% confunde a quantidade de pessoas com a porcentagem."
+    },
+    {
+      "id": "enem-mat1-06",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "Uma torneira com defeito desperdiça 45 mL de água por hora, sem parar. Em 30 dias, quantos litros de água são desperdiçados?",
+      "alternativas": [
+        "1,35 L",
+        "1 350 L",
+        "324 L",
+        "3,24 L",
+        "32,4 L"
+      ],
+      "correta": 4,
+      "explicacao": "Em um dia: 45 × 24 = 1 080 mL. Em 30 dias: 1 080 × 30 = 32 400 mL. Como 1 L = 1 000 mL, são 32,4 L. Esquecer as 24 horas do dia leva a 1,35 L."
+    },
+    {
+      "id": "enem-mat1-07",
+      "tema": "Regra de três",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "Seis torneiras iguais, abertas juntas, enchem um reservatório em 8 horas. Se apenas 4 dessas torneiras forem abertas, em quanto tempo o reservatório ficará cheio?",
+      "alternativas": [
+        "14 h",
+        "5 h 20 min",
+        "10 h",
+        "16 h",
+        "12 h"
+      ],
+      "correta": 4,
+      "explicacao": "Menos torneiras, mais tempo: as grandezas são inversamente proporcionais. 6 × 8 = 4 × t, então t = 48 ÷ 4 = 12 h. O 5 h 20 min aparece quando a regra de três é montada como se fosse direta."
+    },
+    {
+      "id": "enem-mat1-08",
+      "tema": "Porcentagem",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "O preço de um produto subiu 10% em janeiro e mais 20% em fevereiro, sempre sobre o preço do mês anterior. Qual foi o aumento total nesses dois meses?",
+      "alternativas": [
+        "31%",
+        "22%",
+        "32%",
+        "2%",
+        "30%"
+      ],
+      "correta": 2,
+      "explicacao": "Aumentos sucessivos se multiplicam: 1,10 × 1,20 = 1,32, ou seja, 32% de aumento. Somar (10% + 20% = 30%) esquece que o segundo aumento incide sobre um preço que já tinha subido."
+    },
+    {
+      "id": "enem-mat1-09",
+      "tema": "Porcentagem",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "Uma loja aumentou em 25% o preço de todos os produtos e, na semana seguinte, anunciou \"20% de desconto em tudo\". Em relação ao preço antes do aumento, o preço final ficou:",
+      "alternativas": [
+        "45% mais barato",
+        "5% mais barato",
+        "5% mais caro",
+        "20% mais barato",
+        "igual ao original"
+      ],
+      "correta": 4,
+      "explicacao": "Fatores: aumento de 25% = × 1,25; desconto de 20% = × 0,80. 1,25 × 0,80 = 1,00: o preço volta exatamente ao original. Subtrair as porcentagens (25% − 20% = 5%) é a pegadinha clássica."
+    },
+    {
+      "id": "enem-mat1-10",
+      "tema": "Porcentagem",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "Depois de um desconto de 20%, Ana pagou R$ 240,00 por um fone de ouvido. Qual era o preço do fone antes do desconto?",
+      "alternativas": [
+        "R$ 480,00",
+        "R$ 320,00",
+        "R$ 288,00",
+        "R$ 300,00",
+        "R$ 260,00"
+      ],
+      "correta": 3,
+      "explicacao": "R$ 240,00 correspondem a 80% do preço original: 240 ÷ 0,80 = 300. Somar 20% a 240 (dando R$ 288,00) erra porque os 20% eram do preço original, não do preço com desconto."
+    },
+    {
+      "id": "enem-mat1-11",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "Uma ciclista percorreu 18 km em 45 minutos. Qual foi a sua velocidade média, em quilômetros por hora?",
+      "alternativas": [
+        "36 km/h",
+        "24 km/h",
+        "20 km/h",
+        "13,5 km/h",
+        "30 km/h"
+      ],
+      "correta": 1,
+      "explicacao": "45 minutos = 0,75 hora. Velocidade média = distância ÷ tempo = 18 ÷ 0,75 = 24 km/h. Outro caminho: em 15 min ela faz 6 km; em 60 min, 4 × 6 = 24 km."
+    },
+    {
+      "id": "enem-mat1-12",
+      "tema": "Razão",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "Um município tem 250 000 habitantes e área de 1 250 km². Qual é a densidade demográfica desse município?",
+      "alternativas": [
+        "2 000 hab/km²",
+        "20 hab/km²",
+        "50 hab/km²",
+        "200 hab/km²",
+        "5 hab/km²"
+      ],
+      "correta": 3,
+      "explicacao": "Densidade demográfica é a razão habitantes ÷ área: 250 000 ÷ 1 250 = 200 habitantes por km². Atenção aos zeros na divisão: é onde a maioria escorrega."
+    },
+    {
+      "id": "enem-mat1-13",
+      "tema": "Juros",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "Uma pessoa aplicou R$ 2 000,00 a juros simples de 1,5% ao mês, durante 8 meses. Qual é o montante ao final da aplicação?",
+      "alternativas": [
+        "R$ 2 030,00",
+        "R$ 2 400,00",
+        "R$ 2 120,00",
+        "R$ 2 240,00",
+        "R$ 2 252,99"
+      ],
+      "correta": 3,
+      "explicacao": "Nos juros simples, os juros de cada mês são sempre sobre o valor inicial: 2 000 × 0,015 = R$ 30,00 por mês. Em 8 meses, R$ 240,00 de juros; montante = R$ 2 240,00. O valor R$ 2 252,99 seria com juros compostos."
+    },
+    {
+      "id": "enem-mat1-14",
+      "tema": "Proporção",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "O rótulo de um suco concentrado recomenda misturar 1 parte de concentrado para 4 partes de água. Com 300 mL de concentrado, quanto suco pronto é possível preparar, seguindo a recomendação?",
+      "alternativas": [
+        "1,2 L",
+        "1,6 L",
+        "1,5 L",
+        "0,75 L",
+        "2 L"
+      ],
+      "correta": 2,
+      "explicacao": "Para 300 mL de concentrado vão 4 × 300 = 1 200 mL de água. O suco pronto soma as duas partes: 300 + 1 200 = 1 500 mL = 1,5 L. Quem marca 1,2 L contou só a água."
+    },
+    {
+      "id": "enem-mat1-15",
+      "tema": "Proporção",
+      "dificuldade": "medio",
+      "fase": "matematica-1",
+      "enunciado": "Três amigos abriram um negócio investindo R$ 2 000,00, R$ 3 000,00 e R$ 5 000,00. O lucro de R$ 4 000,00 será dividido em partes diretamente proporcionais ao valor investido. Quanto receberá quem investiu R$ 3 000,00?",
+      "alternativas": [
+        "R$ 2 000,00",
+        "R$ 1 500,00",
+        "R$ 1 333,33",
+        "R$ 800,00",
+        "R$ 1 200,00"
+      ],
+      "correta": 4,
+      "explicacao": "Total investido: R$ 10 000,00. Quem pôs R$ 3 000,00 tem 30% do negócio: 0,30 × 4 000 = R$ 1 200,00. Dividir o lucro igualmente entre os três (R$ 1 333,33) ignora a proporção combinada."
+    },
+    {
+      "id": "enem-mat1-16",
+      "tema": "Regra de três",
+      "dificuldade": "dificil",
+      "fase": "matematica-1",
+      "enunciado": "Cinco impressoras iguais imprimem 1 200 folhas em 4 horas. Mantido o mesmo ritmo, quantas folhas 8 dessas impressoras imprimem em 3 horas?",
+      "alternativas": [
+        "1 500",
+        "1 080",
+        "1 440",
+        "1 920",
+        "2 560"
+      ],
+      "correta": 2,
+      "explicacao": "Regra de três composta: cada impressora imprime 1 200 ÷ (5 × 4) = 60 folhas por hora. Então 8 impressoras em 3 horas: 8 × 3 × 60 = 1 440 folhas. Mais impressoras e mais horas aumentam a produção (as duas grandezas são diretas)."
+    },
+    {
+      "id": "enem-mat1-17",
+      "tema": "Escala",
+      "dificuldade": "dificil",
+      "fase": "matematica-1",
+      "enunciado": "Na planta de um apartamento, feita na escala 1 : 50, a sala é um retângulo de 12 cm por 8 cm. Qual é a área real da sala?",
+      "alternativas": [
+        "24 m²",
+        "240 m²",
+        "0,48 m²",
+        "2,4 m²",
+        "48 m²"
+      ],
+      "correta": 0,
+      "explicacao": "Converta cada medida antes de multiplicar: 12 cm × 50 = 600 cm = 6 m e 8 cm × 50 = 400 cm = 4 m. Área real = 6 × 4 = 24 m². Aplicar a escala direto na área (96 cm² × 50) dá 0,48 m²: errado, porque a área cresce com o quadrado da escala (50² = 2 500)."
+    },
+    {
+      "id": "enem-mat1-18",
+      "tema": "Porcentagem",
+      "dificuldade": "dificil",
+      "fase": "matematica-1",
+      "enunciado": "O litro de um combustível subiu de R$ 5,00 para R$ 6,00 e, meses depois, voltou para R$ 5,00. De quanto foi, aproximadamente, a queda percentual nessa volta?",
+      "alternativas": [
+        "10%",
+        "16,7%",
+        "83,3%",
+        "20%",
+        "25%"
+      ],
+      "correta": 1,
+      "explicacao": "A variação percentual é sempre calculada sobre o valor de partida. Na queda, o ponto de partida é R$ 6,00: 1 ÷ 6 ≈ 0,167 = 16,7%. Já a subida, de R$ 5,00 para R$ 6,00, foi de 20%. Por isso subir e descer o mesmo valor em reais não dá a mesma porcentagem."
+    },
+    {
+      "id": "enem-mat1-19",
+      "tema": "Regra de três",
+      "dificuldade": "dificil",
+      "fase": "matematica-1",
+      "enunciado": "Uma equipe de 12 operários, trabalhando no mesmo ritmo, terminaria uma obra em 30 dias. Depois de 10 dias de trabalho, 4 operários foram transferidos e o restante da equipe continuou no mesmo ritmo. A obra terminou quantos dias depois do previsto?",
+      "alternativas": [
+        "5 dias",
+        "30 dias",
+        "10 dias",
+        "20 dias",
+        "15 dias"
+      ],
+      "correta": 2,
+      "explicacao": "Faltavam 20 dias de trabalho para 12 operários, isto é, 12 × 20 = 240 \"dias-operário\". Com 8 operários: 240 ÷ 8 = 30 dias. A obra levou 10 + 30 = 40 dias, 10 a mais que os 30 previstos. Menos gente, mais tempo: grandezas inversas."
+    }
+  ],
+  "pares": [
+    {
+      "id": "enem-par-01",
+      "termo": "10%",
+      "definicao": "Dividir por 10",
+      "tema": "Porcentagem"
+    },
+    {
+      "id": "enem-par-02",
+      "termo": "25%",
+      "definicao": "Um quarto (1/4)",
+      "tema": "Porcentagem"
+    },
+    {
+      "id": "enem-par-03",
+      "termo": "Aumento de 30%",
+      "definicao": "Multiplicar por 1,3",
+      "tema": "Porcentagem"
+    },
+    {
+      "id": "enem-par-04",
+      "termo": "Desconto de 15%",
+      "definicao": "Multiplicar por 0,85",
+      "tema": "Porcentagem"
+    },
+    {
+      "id": "enem-par-05",
+      "termo": "Escala 1 : 100",
+      "definicao": "1 cm no desenho = 1 m no real",
+      "tema": "Escala"
+    },
+    {
+      "id": "enem-par-06",
+      "termo": "Grandezas diretamente proporcionais",
+      "definicao": "Uma dobra, a outra também dobra",
+      "tema": "Proporção"
+    },
+    {
+      "id": "enem-par-07",
+      "termo": "Grandezas inversamente proporcionais",
+      "definicao": "Uma dobra, a outra cai pela metade",
+      "tema": "Proporção"
+    },
+    {
+      "id": "enem-par-08",
+      "termo": "Densidade demográfica",
+      "definicao": "Habitantes por km²",
+      "tema": "Razão"
+    },
+    {
+      "id": "enem-par-09",
+      "termo": "Juros simples",
+      "definicao": "Sempre calculados sobre o valor inicial",
+      "tema": "Juros"
+    },
+    {
+      "id": "enem-par-10",
+      "termo": "1 m³",
+      "definicao": "1 000 litros",
+      "tema": "Grandezas e unidades"
+    }
+  ],
+  "verdadeiroFalso": [
+    {
+      "id": "enem-vf-01",
+      "afirmacao": "Um aumento de 20% seguido de um desconto de 20% devolve o preço original.",
+      "verdadeira": false,
+      "explicacao": "Falso: 1,20 × 0,80 = 0,96. O preço final fica 4% abaixo do original.",
+      "tema": "Porcentagem"
+    },
+    {
+      "id": "enem-vf-02",
+      "afirmacao": "Dois descontos seguidos de 10% equivalem a um desconto único de 20%.",
+      "verdadeira": false,
+      "explicacao": "Falso: 0,90 × 0,90 = 0,81, ou seja, um desconto de 19%.",
+      "tema": "Porcentagem"
+    },
+    {
+      "id": "enem-vf-03",
+      "afirmacao": "50% de 30 é igual a 30% de 50.",
+      "verdadeira": true,
+      "explicacao": "Verdadeiro: os dois dão 15. Em geral, a% de b = b% de a.",
+      "tema": "Porcentagem"
+    },
+    {
+      "id": "enem-vf-04",
+      "afirmacao": "Num mesmo percurso, velocidade e tempo gasto são grandezas inversamente proporcionais.",
+      "verdadeira": true,
+      "explicacao": "Verdadeiro: dobrar a velocidade reduz o tempo pela metade.",
+      "tema": "Proporção"
+    },
+    {
+      "id": "enem-vf-05",
+      "afirmacao": "Numa planta na escala 1 : 200, as áreas reais são 200 vezes maiores que as do desenho.",
+      "verdadeira": false,
+      "explicacao": "Falso: as áreas ficam 200² = 40 000 vezes maiores, porque as duas medidas são ampliadas.",
+      "tema": "Escala"
+    },
+    {
+      "id": "enem-vf-06",
+      "afirmacao": "A razão 3 : 4 indica que a primeira quantidade é 75% da segunda.",
+      "verdadeira": true,
+      "explicacao": "Verdadeiro: 3 ÷ 4 = 0,75 = 75%.",
+      "tema": "Razão"
+    }
+  ],
+  "adivinhas": [
+    {
+      "id": "enem-adv-01",
+      "resposta": "Escala",
+      "aceitas": [
+        "escala"
+      ],
+      "dificuldade": "facil",
+      "tema": "Escala",
+      "dicas": [
+        "Aparece em todo mapa e em toda planta de casa.",
+        "Tem um formato do tipo 1 : 100.",
+        "Diz quantas vezes o real é maior que o desenho.",
+        "Para áreas, entra ao quadrado."
+      ],
+      "explicacao": "Escala é a razão entre a medida no desenho e a medida real."
+    },
+    {
+      "id": "enem-adv-02",
+      "resposta": "Regra de três",
+      "aceitas": [
+        "regra de tres",
+        "regra de 3"
+      ],
+      "dificuldade": "facil",
+      "tema": "Regra de três",
+      "dicas": [
+        "Tem um número no nome.",
+        "Você conhece três valores e procura o quarto.",
+        "Começa com uma tabelinha de duas grandezas.",
+        "Termina com uma multiplicação em cruz."
+      ],
+      "explicacao": "A regra de três resolve problemas com grandezas proporcionais: com três valores conhecidos, acha-se o quarto."
+    },
+    {
+      "id": "enem-adv-03",
+      "resposta": "Porcentagem",
+      "aceitas": [
+        "porcentagem",
+        "percentagem",
+        "percentual"
+      ],
+      "dificuldade": "facil",
+      "tema": "Porcentagem",
+      "dicas": [
+        "Está em todo anúncio de liquidação.",
+        "Tem um símbolo com um risco e duas bolinhas.",
+        "Quer dizer \"a cada cem\".",
+        "Vira um fator: 1,25 ou 0,80, por exemplo."
+      ],
+      "explicacao": "Porcentagem é uma razão com denominador 100: 25% = 25/100 = 0,25."
+    }
+  ],
+  "sequencias": [
+    {
+      "id": "enem-seq-01",
+      "titulo": "Regra de três simples, passo a passo",
+      "tema": "Regra de três",
+      "itens": [
+        "Identificar as duas grandezas e montar a tabela",
+        "Decidir se são diretamente ou inversamente proporcionais",
+        "Montar a proporção (invertendo uma coluna se forem inversas)",
+        "Multiplicar em cruz e isolar o valor procurado",
+        "Conferir se o resultado faz sentido"
+      ],
+      "explicacao": "Decidir se as grandezas são diretas ou inversas antes de multiplicar evita o erro mais comum."
+    },
+    {
+      "id": "enem-seq-02",
+      "titulo": "Preço final depois de aumento e desconto",
+      "tema": "Porcentagem",
+      "itens": [
+        "Transformar cada porcentagem em fator (ex.: +25% vira 1,25)",
+        "Multiplicar os fatores, na ordem em que acontecem",
+        "Multiplicar o resultado pelo preço inicial",
+        "Comparar com o preço inicial para achar a variação"
+      ],
+      "explicacao": "Porcentagens seguidas se multiplicam; somar ou subtrair porcentagens leva ao erro."
+    }
+  ],
+  "palavras": [
+    {
+      "id": "enem-pal-01",
+      "palavra": "Porcentagem",
+      "dica": "A cada cem",
+      "tema": "Porcentagem"
+    },
+    {
+      "id": "enem-pal-02",
+      "palavra": "Proporção",
+      "dica": "Igualdade entre duas razões",
+      "tema": "Proporção"
+    },
+    {
+      "id": "enem-pal-03",
+      "palavra": "Escala",
+      "dica": "Relação entre o desenho e o real",
+      "tema": "Escala"
+    },
+    {
+      "id": "enem-pal-04",
+      "palavra": "Razão",
+      "dica": "Comparação de duas quantidades por divisão",
+      "tema": "Razão"
+    },
+    {
+      "id": "enem-pal-05",
+      "palavra": "Juros",
+      "dica": "O \"aluguel\" do dinheiro",
+      "tema": "Juros"
+    },
+    {
+      "id": "enem-pal-06",
+      "palavra": "Densidade",
+      "dica": "Quanto de algo cabe em cada unidade de área ou volume",
+      "tema": "Razão"
+    }
+  ]
+}
