@@ -28,6 +28,53 @@ const Perfil = (() => {
     };
   }
 
+  /* ---------- Seu mascote ---------- */
+  const REACOES = [[null, 'normal'], ['feliz', 'feliz'], ['triste', 'triste'], ['pensando', 'pensando']];
+
+  /** Escolha do mascote: rosto (pinguins, mergulhadores, mergulhadoras) e tom de pele. */
+  function secaoMascote() {
+    const cartao = h('section', { class: 'cartao mascote-escolha', id: 'perfil-mascote', 'aria-labelledby': 'titulo-mascote' });
+
+    function opcaoRosto(r, escolha) {
+      return h('label', { class: 'mascote-opcao' },
+        h('input', { type: 'radio', name: 'mascote-rosto', value: r.id, checked: r.id === escolha.rosto,
+          onchange: () => trocar({ rosto: r.id }, 'mascote-rosto', r.id) }),
+        h('span', { class: 'mascote-opcao__corpo' }, Mascotes.miniatura(r.id, escolha.tom), h('span', { text: r.nome })),
+        h('span', { class: 'mascote-opcao__check', 'aria-hidden': 'true' }, icone('i-check')));
+    }
+
+    function desenhar() {
+      const escolha = Mascotes.escolhido();
+      const atual = Mascotes.porId(escolha.rosto);
+      limpar(cartao).append(
+        h('h2', { class: 'cartao__titulo', id: 'titulo-mascote', text: 'Seu mascote' }),
+        h('p', { class: 'texto-suave mascote-escolha__nota', text: 'Escolha quem mergulha com você. A troca vale na hora, em todas as telas.' }),
+        h('ul', { class: 'mascote-reacoes', 'aria-label': `Reações do mascote escolhido: ${atual.nome}` },
+          REACOES.map(([humor, rotulo]) => h('li', {}, Mascotes.miniatura(escolha.rosto, escolha.tom, humor ? `mascote--${humor}` : ''), h('span', { text: rotulo })))),
+        ...Mascotes.GRUPOS.map((g) => h('fieldset', { class: 'mascote-grupo' },
+          h('legend', { text: g.nome }),
+          h('div', { class: 'mascote-opcoes' }, Mascotes.ROSTOS.filter((r) => r.grupo === g.id).map((r) => opcaoRosto(r, escolha))))),
+        atual.humano
+          ? h('fieldset', { class: 'mascote-grupo' },
+            h('legend', { text: 'Tom de pele' }),
+            h('div', { class: 'tons-pele' }, Mascotes.TONS.map((tom) => h('label', { class: 'tom-pele' },
+              h('input', { type: 'radio', name: 'mascote-tom', value: tom.id, checked: tom.id === escolha.tom,
+                onchange: () => trocar({ tom: tom.id }, 'mascote-tom', tom.id) }),
+              h('span', { class: 'tom-pele__corpo' }, h('span', { class: 'tom-pele__amostra', style: `background:${tom.pele}`, 'aria-hidden': 'true' }), tom.nome)))))
+          : h('p', { class: 'texto-suave mascote-escolha__nota', text: 'Os mergulhadores e as mergulhadoras também têm tom de pele à escolha.' }));
+    }
+
+    function trocar(mudanca, nome, valor) {
+      Mascotes.escolher(mudanca.rosto, mudanca.tom);
+      desenhar();
+      const campo = cartao.querySelector(`input[name="${nome}"][value="${valor}"]`);
+      if (campo) campo.focus();
+    }
+
+    desenhar();
+    return cartao;
+  }
+
   function render(secao) {
     limpar(secao);
     const t = totais();
@@ -44,6 +91,7 @@ const Perfil = (() => {
           h('div', { class: 'barra-xp', role: 'progressbar', 'aria-label': 'XP no nível geral', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(t.nivel.pct) },
             h('div', { class: 'barra-xp__preenchimento', style: `width:${t.nivel.pct}%` })),
           h('p', { class: 'texto-suave', text: t.nivel.max ? `${t.xp} XP. Mestre Diver de verdade.` : `${t.xp} XP no total · faltam ${t.nivel.xpParaProximo - t.nivel.xpNoNivel} para ${t.nivel.proximoNome}` }))),
+      secaoMascote(),
       h('ul', { class: 'resumo-numeros' },
         h('li', { class: 'destaque-perola' }, h('strong', { text: String(t.perolas) }), h('span', { text: 'pérolas' })),
         h('li', {}, h('strong', { text: String(t.streakAtual) }), h('span', { text: `dias seguidos (recorde ${t.melhorStreak})` })),

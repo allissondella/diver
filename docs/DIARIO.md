@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-09-30 · Escolha do mascote no Perfil
+- **Feito:** Perfil ganhou **"Seu mascote"**: 4 pinguins (de penacho, clássico, imperador, de Magalhães), 7 mergulhadores (barba e bigode, guidão, detetive, morsa, fininho, só bigode, rosto limpo) e 2 mergulhadoras (cabelo liso e cacheado, com cílios e lábios), e **tom de pele** (clara, média, morena, negra) para mergulhadores e mergulhadoras. A prévia mostra as 4 reações; a troca vale na hora em todas as telas e fica salva na conta (`diver:v1:mascote`). O padrão passou a ser o **pinguim de penacho**. Tutorial do Perfil com um passo sobre o mascote.
+- **Decisões:** um corpo só com encaixes para o rosto (expressões e animações iguais para todos); tom de pele separado do rosto (mais inclusivo e sem multiplicar a lista); variações quase iguais de bigode ficaram de fora; cílios somem no feliz e no triste (os olhos mudam de forma).
+- **Testes:** padrão, escolha por clique e por teclado (setas), foco preservado, troca imediata no topo do Perfil, persistência ao recarregar, reação feliz/triste no quiz com o mascote escolhido, tutorial, leitor de tela (descrição do Início), "reduzir movimento" e sem rolagem lateral, no computador e no celular; regressão do mascote, etapa 1, tutorial e do curso Enem.
+
 ## 2026-09-30 · Travessia: Enem e Vestibular (fase 1 de Matemática)
 - **Feito:** removidos os cursos de exemplo "Cursinho: conhecimentos gerais" e "Treinamento: boas práticas no trabalho" (arquivos, `indice.json` e o exemplo do `docs/ARQUITETURA.md`). Curso novo **Travessia: Enem e Vestibular** com a fase **Matemática 1: proporções**: 19 questões originais no estilo Enem (5 alternativas, situação-problema), com contas conferidas por script (razão, proporção direta e inversa, regra de três simples e composta, porcentagem e variações sucessivas, escala, unidades, densidade, juros simples, divisão proporcional); "Antes de mergulhar" com pontos, tabela e pérolas; 10 pares, 6 V/F, 3 adivinhas, 2 sequências e 6 palavras.
 - **Não feito (bloqueio):** o kit (`docs/CONTEUDO_CURSINHO.md` e a skill `criar-trilha`) e as provas do Enem estão no computador do Allisson e não chegaram a esta sessão na nuvem. Por isso não entrou nenhuma questão literal do Enem e a triagem de conteúdo de terceiro não teve o que triar.

@@ -19,6 +19,7 @@
 | 4 | `js/economia.js` | `Economia` | **Único** lugar que concede XP/pérolas fora do Mergulho/Simulado/Revisão: Resultado padrão dos jogos, tarefas, foco, gasto de pérolas. Valores em `Economia.CONFIG`. |
 | 5 | `js/quiz.js` | `Quiz` | Motor do Mergulho, Simulado e Revisão (aprovado; não mexer no comportamento). |
 | 6 | `js/ui.js` | `UI`, `Dados` | Ferramentas de interface (`h()`, ícones, toasts, mascote, datas) e `Dados` (localStorage com try/catch). |
+| 6a | `js/mascotes.js` | `Mascotes` | Rostos do Diver para escolher no Perfil ("Seu mascote"): 4 pinguins, 7 mergulhadores, 2 mergulhadoras e 4 tons de pele. Preenche os encaixes do `<template id="molde-mascote">` (`.d-pele`, `.d-rosto-atras`, `.d-cilios`, `.d-rosto-frente`), então as expressões e animações valem para todos. `aplicar()` roda no início e depois do login (a escolha pode vir da nuvem); `miniatura(rosto, tom)` desenha as opções do Perfil. Padrão: pinguim de penacho. |
 | 6b | `js/nuvem.js` | `Nuvem` | Cliente do Supabase só com `fetch`: login, renovação de sessão, troca de senha, REST/RPC e **Sincronia** (espelha `diver:v1:*` na tabela `estado`). |
 | 6c | `js/conta.js` | `Conta` | Telas de login e de troca de senha obrigatória; `Conta.garantir()` segura o app até a pessoa estar pronta. |
 | 7 | `js/cartas.js` | `Cartas` | Transforma a trilha em cartas para os jogos (blocos opcionais + derivação das questões). |
@@ -128,6 +129,7 @@ Jogos.registrar({
 | `diver:v1:eventos` | Eventos do calendário: `id, titulo, tipo (prova/aula/estudo/descanso), data, hora, trilhaId, gerado`. |
 | `diver:v1:desafios` | Dias em que o Desafio do Dia foi cumprido (`{ "AAAA-MM-DD": true }`). |
 | `diver:v1:provas-enviadas` | Provas antigas: `{ versao, provas: [{ id, trilhaId, titulo, criadaEm, honesto, minutos, questoes: [{ id, tema, dificuldade, enunciado, alternativas, correta, explicacao }], tentativas: [{ data, acertos, total, nota, tempoSeg, xp, perolas }] }], feitas: { idDaProvaDoProfessor: [tentativas] } }`. Sincroniza com a nuvem como o resto. |
+| `diver:v1:mascote` | Mascote escolhido: `{ rosto, tom }` (ids de `Mascotes.ROSTOS` e `Mascotes.TONS`). Sincroniza com a nuvem. |
 | `diver:v1:tutorial` | Tutoriais já vistos: `{ vistos: { inicio: true, mergulho: true, ... } }`. Sincroniza com a nuvem. |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
 

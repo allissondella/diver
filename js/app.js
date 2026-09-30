@@ -1477,10 +1477,12 @@ const App = (() => {
 
   /* ---------- Início ---------- */
   async function iniciar() {
+    Mascotes.aplicar(); // rosto escolhido no Perfil (o padrão é o pinguim de penacho)
     UI.montarMascotes();
     criarBolhas();
     ligarEventos();
     await Conta.garantir(); // com Supabase configurado: login + senha própria + progresso da nuvem
+    Mascotes.aplicar(); // a escolha pode ter vindo da nuvem junto com o progresso
     Nuvem.Sincronia.aoMudar(() => atualizarConta());
     await carregarTrilhas();
     const secao = location.hash.slice(1);
