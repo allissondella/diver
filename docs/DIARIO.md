@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-09-30 · Infraestrutura do Motor Diver e do Mergulho Triplo
+- **Feito:** kit do cursinho instalado (`docs/CONTEUDO_CURSINHO.md`, `docs/ASSINATURA_E_VALIDACAO.md`, `docs/MOTOR_DIVER.md`, skills `criar-trilha` e `validar-questoes`). `scripts/validar-questoes.mjs` (prompts exatos da skill, funil barato → robusto, bloco `validacao`, reprovação dupla → `revisar_humano` + bloco `emRevisao`, aprovadas → acervo com vetor, relatório com custo), `scripts/buscar-similares.mjs` (embeddings OpenAI `text-embedding-3-small` + cosseno; plano B por palavras sem chave), `data/acervo/`, `.env.example` e `.env` no `.gitignore` e no `.assetsignore`. Skill `criar-trilha` passa a chamar o `buscar-similares` antes de gerar.
+- **Decisões:** modelos padrão `gemini-3.8-flash` / `gemini-3.1-pro-preview` (fato) e `gpt-5-mini` / `gpt-5.5` (lógica), trocáveis pelo `.env` e conferidos na conta antes de cada rodada (a documentação oficial não abriu nesta sessão; os nomes vieram dos trechos oficiais da busca). Sem biblioteca externa (fetch do Node).
+- **Testes:** nenhuma API real chamada. `--simular` com a trilha do Enem (gabarito fora da camada de lógica); fluxo completo contra um servidor falso local: aprovação, falso positivo desfeito pelo modelo robusto, reprovação, questão não corrigida pulada, só a camada de fato refeita, 2ª reprovação → `emRevisao`, acervo gravado com vetores, busca por significado, saída JSON e plano B sem chave; o app abre normalmente uma trilha já validada.
+- **Pendências:** criar as chaves (Google AI Studio e OpenAI) com limite de gasto, preencher o `.env`, rodar `--checar-modelos` e depois a validação retroativa da Matemática.
+
 ## 2026-09-30 · Escolha do mascote no Perfil
 - **Feito:** Perfil ganhou **"Seu mascote"**: 4 pinguins (de penacho, clássico, imperador, de Magalhães), 7 mergulhadores (barba e bigode, guidão, detetive, morsa, fininho, só bigode, rosto limpo) e 2 mergulhadoras (cabelo liso e cacheado, com cílios e lábios), e **tom de pele** (clara, média, morena, negra) para mergulhadores e mergulhadoras. A prévia mostra as 4 reações; a troca vale na hora em todas as telas e fica salva na conta (`diver:v1:mascote`). O padrão passou a ser o **pinguim de penacho**. Tutorial do Perfil com um passo sobre o mascote.
 - **Decisões:** um corpo só com encaixes para o rosto (expressões e animações iguais para todos); tom de pele separado do rosto (mais inclusivo e sem multiplicar a lista); variações quase iguais de bigode ficaram de fora; cílios somem no feliz e no triste (os olhos mudam de forma).

@@ -72,6 +72,9 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 - **Sincronia:** a cada 4 s e ao sair da página, o que mudou em `diver:v1:*` sobe para `estado`; no login, tudo desce e substitui o local. Sair limpa os dados do navegador. PDFs (IndexedDB) não sincronizam. A sessão fica em `diver:sessao` (fora do backup e da sincronia).
 - **Segurança:** nenhuma chave secreta no repositório; o app se recusa a usar uma chave `service_role`/`secret`. Dados de pessoas (e o e-mail do admin) nunca vão para o repositório.
 
+## Motor Diver e Mergulho Triplo (fora do site)
+Scripts de Node em `scripts/` que rodam no computador de quem produz conteúdo (o site não carrega nada daqui; ficam fora do Cloudflare pelo `.assetsignore`). `validar-questoes.mjs` valida as questões de uma trilha com Gemini (fato, com busca do Google) e OpenAI (lógica adversarial) e manda as aprovadas para `data/acervo/<materia>.json`; `buscar-similares.mjs` acha no acervo os exemplos mais parecidos (embeddings da OpenAI + cosseno) para a skill `criar-trilha`. Chaves só em variáveis de ambiente, via `.env` na raiz (no `.gitignore`; modelo em `.env.example`). Detalhes e comandos: `docs/MOTOR_DIVER.md`, seção 9. Na trilha, o validador acrescenta o bloco `validacao` nas questões e, para as reprovadas duas vezes, move a questão para o bloco `emRevisao` (ignorado pelo app).
+
 ## Formato do JSON de trilha (nomes reais dos campos)
 ```json
 {
