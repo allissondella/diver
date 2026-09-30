@@ -74,20 +74,20 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 ## Formato do JSON de trilha (nomes reais dos campos)
 ```json
 {
-  "id": "cursinho-conhecimentos-gerais",
-  "nome": "Cursinho: conhecimentos gerais",
+  "id": "enem-vestibular",
+  "nome": "Travessia: Enem e Vestibular",
   "descricao": "Texto curto do card da trilha.",
-  "categoria": "Cursinho",
+  "categoria": "Enem e vestibular",
   "fases": [ { "id": "raso", "nome": "Raso", "profundidade": "0–10 m", "descricao": "Aquecimento" } ],
   "questoes": [
-    { "id": "cg-raso-01", "tema": "Matemática", "dificuldade": "facil", "fase": "raso",
+    { "id": "enem-raso-01", "tema": "Matemática", "dificuldade": "facil", "fase": "raso",
       "enunciado": "Pergunta?", "alternativas": ["A", "B", "C", "D"], "correta": 0, "explicacao": "..." }
   ],
-  "pares":           [ { "id": "cg-par-01", "termo": "Mitocôndria", "definicao": "Produz ATP", "tema": "Biologia" } ],
-  "verdadeiroFalso": [ { "id": "cg-vf-01", "afirmacao": "...", "verdadeira": false, "explicacao": "...", "tema": "Biologia" } ],
-  "adivinhas":       [ { "id": "cg-adv-01", "resposta": "Fotossíntese", "aceitas": ["fotossintese"], "dicas": ["...", "..."], "explicacao": "...", "tema": "Biologia", "dificuldade": "facil" } ],
-  "sequencias":      [ { "id": "cg-seq-01", "titulo": "Fases da mitose", "itens": ["Prófase", "Metáfase", "Anáfase", "Telófase"], "explicacao": "...", "tema": "Biologia" } ],
-  "palavras":        [ { "id": "cg-pal-01", "palavra": "Mitocôndria", "dica": "Usina de energia da célula", "tema": "Biologia" } ]
+  "pares":           [ { "id": "enem-par-01", "termo": "Mitocôndria", "definicao": "Produz ATP", "tema": "Biologia" } ],
+  "verdadeiroFalso": [ { "id": "enem-vf-01", "afirmacao": "...", "verdadeira": false, "explicacao": "...", "tema": "Biologia" } ],
+  "adivinhas":       [ { "id": "enem-adv-01", "resposta": "Fotossíntese", "aceitas": ["fotossintese"], "dicas": ["...", "..."], "explicacao": "...", "tema": "Biologia", "dificuldade": "facil" } ],
+  "sequencias":      [ { "id": "enem-seq-01", "titulo": "Fases da mitose", "itens": ["Prófase", "Metáfase", "Anáfase", "Telófase"], "explicacao": "...", "tema": "Biologia" } ],
+  "palavras":        [ { "id": "enem-pal-01", "palavra": "Mitocôndria", "dica": "Usina de energia da célula", "tema": "Biologia" } ]
 }
 ```
 - Obrigatórios: `id`, `nome`, `descricao`, `fases`, `questoes`. `categoria`, `prova` e **todos os blocos depois de `questoes` são opcionais**.
