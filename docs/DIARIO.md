@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-09-30 · Travessia: Enem e Vestibular (fase 1 de Matemática)
+- **Feito:** removidos os cursos de exemplo "Cursinho: conhecimentos gerais" e "Treinamento: boas práticas no trabalho" (arquivos, `indice.json` e o exemplo do `docs/ARQUITETURA.md`). Curso novo **Travessia: Enem e Vestibular** com a fase **Matemática 1: proporções**: 19 questões originais no estilo Enem (5 alternativas, situação-problema), com contas conferidas por script (razão, proporção direta e inversa, regra de três simples e composta, porcentagem e variações sucessivas, escala, unidades, densidade, juros simples, divisão proporcional); "Antes de mergulhar" com pontos, tabela e pérolas; 10 pares, 6 V/F, 3 adivinhas, 2 sequências e 6 palavras.
+- **Não feito (bloqueio):** o kit (`docs/CONTEUDO_CURSINHO.md` e a skill `criar-trilha`) e as provas do Enem estão no computador do Allisson e não chegaram a esta sessão na nuvem. Por isso não entrou nenhuma questão literal do Enem e a triagem de conteúdo de terceiro não teve o que triar.
+- **Banco:** nada foi apagado. Matrículas e progresso ligados aos cursos removidos continuam no Supabase; na área Admin aparecem como "(não encontrado)". Atenção: salvar os cursos de uma pessoa na área Admin tira da lista as matrículas desses cursos.
+- **Testes:** curso valida sem erros; 9 jogos disponíveis (Caso Resolvido pede conteúdo); Mergulho completo (8/8, XP) e 6 jogos abertos; "Antes de mergulhar" no computador e no celular; quem tinha um curso removido como atual cai no primeiro curso, sem erro e sem perder o progresso guardado.
+
 ## 2026-09-29 · Diver com bigode
 - **Feito:** o Diver ganhou um **bigode pequeno**, sem contorno e da cor da barba (`#7A4630`), logo acima do bocal do snorkel. Vale para todas as reações (normal, feliz, triste e pensando), em `assets/mascote/diver.svg` e no molde do `index.html`.
 - **Decisões:** o leão-marinho foi testado e descartado; entre as opções de bigode (guidão, detetive, morsa, fininho, sem barba, rosto limpo, ponta para cima), ficou o discreto "um pouquinho maior".
