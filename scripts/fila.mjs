@@ -11,6 +11,8 @@
  *           (variante de questão origem "enem" é recusada aqui, no banco e na Edge Function)
  *   listar                                                      últimos lotes da fila
  *   baixar  <id-do-lote> [--arquivo <trilha.json>]              aplica o resultado na trilha e no data/acervo/<materia>.json
+ *   aplicar <resultado.json> [--arquivo <trilha.json>]          o mesmo, a partir do arquivo do botão "Baixar resultado"
+ *                                                               da tela (sem internet e sem login)
  *
  * Opções comuns: --ambiente testes|producao (padrão: testes)  --refazer (envia até as já aprovadas)
  * Login: e-mail e senha de ADMIN digitados aqui no terminal (a senha não aparece e nunca é guardada).
@@ -21,9 +23,7 @@ import { resolve, relative } from 'node:path';
 import readline from 'node:readline';
 import { RAIZ, ambienteSupabase } from './lib/config.mjs';
 import { slugMateria, lerAcervo, gravarAcervo, gravarJSON, guardarNoAcervo, caminhoAcervo } from './lib/acervo.mjs';
-import { questaoLimpa, assinatura, estimarCusto, promptFato, promptLogica, variantesProibidas } from '../supabase/functions/_shared/mergulho-nucleo.mjs';
-
-const MAX_POR_LOTE = 20; // cabe com folga no tempo de uma execução da Edge Function
+import { assinatura, promptFato, promptLogica, montarLotes as montarLotesDaTrilha } from '../supabase/functions/_shared/mergulho-nucleo.mjs';
 
 function argumentos(argv) {
   const a = { comando: argv[0], alvo: null, materia: null, fase: null, ids: null, ambiente: 'testes', arquivo: null, refazer: false, variantes: false };
@@ -87,47 +87,9 @@ async function montarLotes(args) {
   const arquivo = resolve(args.alvo);
   if (!existsSync(arquivo)) throw new Error(`arquivo não encontrado: ${args.alvo}`);
   const trilha = JSON.parse(readFileSync(arquivo, 'utf8'));
-  const materia = slugMateria(args.materia);
-  const questoes = new Map((trilha.questoes || []).map((q) => [q.id, q]));
-  const fonte = args.variantes ? trilha.variantes || [] : trilha.questoes || [];
-  if (args.variantes && !fonte.length) throw new Error('a trilha não tem bloco "variantes"');
-  const escolhidas = [];
-  const puladas = [];
-  const originais = {};
-  for (const q of fonte) {
-    if (args.fase && q.fase !== args.fase) continue;
-    if (args.ids && !args.ids.has(q.id) && !(args.variantes && args.ids.has(q.varianteDe))) continue;
-    if (args.variantes) {
-      // Trava 1 de 3 (aqui, antes de sair do computador): só variante de questão NOSSA, e diferente da original.
-      const original = questoes.get(q.varianteDe);
-      if (!original) throw new Error(`variante ${q.id}: "varianteDe" (${q.varianteDe}) não existe nas questões da trilha`);
-      if (original.origem === 'enem' || q.origem === 'enem') throw new Error(`variante ${q.id}: ${q.varianteDe} é questão do Enem e NUNCA pode ter variante (licença Sem Derivações, docs/CONTEUDO_CURSINHO.md 1.1). Apague essa variante.`);
-      if (q.enunciado === original.enunciado) throw new Error(`variante ${q.id}: o enunciado é igual ao da original`);
-      originais[q.varianteDe] = { origem: original.origem || 'diver', tema: original.tema, dificuldade: original.dificuldade };
-    }
-    const v = q.validacao;
-    if (v && v.pronta && !args.refazer) { puladas.push(`${q.id} (já aprovada)`); continue; }
-    if (v && !v.pronta && v.assinatura === await assinatura(q) && !args.refazer) { puladas.push(`${q.id} (reprovada e ainda não corrigida)`); continue; }
-    escolhidas.push(questaoLimpa(q)); // só os campos da questão: nada de anotação ou texto de referência
-  }
-  const lotes = [];
-  for (let i = 0; i < escolhidas.length; i += MAX_POR_LOTE) {
-    const questoes = escolhidas.slice(i, i + MAX_POR_LOTE);
-    const conteudo = { versao: 1, arquivo: relative(RAIZ, arquivo), trilha_nome: trilha.nome, fase: args.fase || null, questoes };
-    if (args.variantes) {
-      conteudo.tipo = 'variantes';
-      conteudo.originais = Object.fromEntries(questoes.map((x) => [x.varianteDe, originais[x.varianteDe]]));
-      const proibidas = variantesProibidas(conteudo); // a mesma regra do servidor, conferida antes de enviar
-      if (proibidas.length) throw new Error(`lote recusado: ${proibidas.map((p) => `${p.id}: ${p.motivo}`).join('; ')}`);
-    }
-    lotes.push({
-      trilha_id: trilha.id,
-      materia,
-      quantidade_questoes: questoes.length,
-      custo_estimado_usd: estimarCusto(questoes),
-      conteudo_pendente: conteudo,
-    });
-  }
+  const { lotes, puladas } = await montarLotesDaTrilha(trilha, {
+    materia: args.materia, arquivo: relative(RAIZ, arquivo), fase: args.fase, ids: args.ids, variantes: args.variantes, refazer: args.refazer,
+  });
   return { lotes, puladas, trilha };
 }
 
@@ -178,10 +140,22 @@ async function baixar(args) {
   const token = await entrar(amb);
   const [lote] = await rest(amb, token, 'GET', `fila_validacao?id=eq.${encodeURIComponent(args.alvo)}&select=*`);
   if (!lote) throw new Error('lote não encontrado');
+  await aplicarLote(lote, args);
+}
+
+/** Sem internet e sem login: aplica o arquivo do botão "Baixar resultado" (Admin → Fila de Validação). */
+async function aplicar(args) {
+  if (!args.alvo) throw new Error('informe o arquivo baixado (ex.: mergulho-triplo-matematica-1a2b3c4d.json)');
+  const dados = JSON.parse(readFileSync(resolve(args.alvo), 'utf8'));
+  if (!dados || !dados.id || !dados.resultado || !dados.materia) throw new Error('este arquivo não parece um resultado da Fila de Validação (faltam id, materia ou resultado)');
+  await aplicarLote(dados, args);
+}
+
+async function aplicarLote(lote, args) {
   if (!lote.resultado) throw new Error(`o lote ainda não tem resultado (status: ${lote.status})`);
   if (lote.status !== 'concluido') console.log(`Atenção: lote "${lote.status}" (${lote.erro || 'parcial'}). Aplico só o que já foi validado.`);
 
-  const caminho = resolve(RAIZ, args.arquivo || lote.conteudo_pendente.arquivo || '');
+  const caminho = resolve(RAIZ, args.arquivo || (lote.conteudo_pendente && lote.conteudo_pendente.arquivo) || lote.resultado.arquivo || '');
   if (!existsSync(caminho)) throw new Error(`trilha não encontrada: ${caminho} (use --arquivo)`);
   const trilha = JSON.parse(readFileSync(caminho, 'utf8'));
   const acervo = lerAcervo(lote.materia);
@@ -219,11 +193,12 @@ async function baixar(args) {
   if (rel.mudaram.length) console.log(`Não aplicadas (a questão mudou depois do envio; envie de novo): ${rel.mudaram.join(', ')}`);
   console.log(`\nAplicadas na trilha: ${rel.aplicadas} → ${relative(RAIZ, caminho)}`);
   console.log(`Novas/atualizadas no acervo: ${rel.acervo} → ${relative(RAIZ, caminhoAcervo(lote.materia))}`);
-  console.log(`Custo estimado US$ ${Number(lote.custo_estimado_usd).toFixed(4)} · real US$ ${Number(lote.custo_real_usd || 0).toFixed(4)}`);
+  const real = lote.custo_real_usd ?? lote.resultado.custo_real_usd;
+  console.log(`${lote.custo_estimado_usd !== undefined ? `Custo estimado US$ ${Number(lote.custo_estimado_usd).toFixed(4)} · ` : ''}real US$ ${Number(real || 0).toFixed(4)}`);
   console.log('Revise com "git diff" e faça o commit.');
 }
 
-const COMANDOS = { simular, enviar, listar, baixar };
+const COMANDOS = { simular, enviar, listar, baixar, aplicar };
 const args = argumentos(process.argv.slice(2));
 if (!COMANDOS[args.comando]) {
   console.log(readFileSync(new URL(import.meta.url), 'utf8').split('*/')[0].replace(/^#!.*\n\/\*\n?/, '').replace(/^ \* ?/gm, ''));

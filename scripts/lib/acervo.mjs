@@ -8,17 +8,11 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync, renameSync } from 'node:fs';
 import { join } from 'node:path';
 import { RAIZ } from './config.mjs';
-import { textoParaEmbedding } from '../../supabase/functions/_shared/mergulho-nucleo.mjs';
+import { textoParaEmbedding, slugMateria } from '../../supabase/functions/_shared/mergulho-nucleo.mjs';
+
+export { slugMateria };
 
 export const PASTA_ACERVO = join(RAIZ, 'data', 'acervo');
-
-/** "Matemática" → "matematica" (nome do arquivo: minúsculas, sem acento, com hífen). */
-export function slugMateria(nome) {
-  const s = String(nome || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-  if (!s) throw new Error('matéria vazia: informe --materia (ex.: --materia matematica)');
-  return s;
-}
 
 export const caminhoAcervo = (materia) => join(PASTA_ACERVO, `${slugMateria(materia)}.json`);
 

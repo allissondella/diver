@@ -254,3 +254,57 @@ export function custoReal(uso) {
   }
   return Math.round(total * 10000) / 10000;
 }
+
+/* ---------- Montar os lotes da fila (o mesmo para o fila.mjs e para a tela Admin → Fila) ---------- */
+export const MAX_POR_LOTE = 20; // cabe com folga no tempo de uma execução da Edge Function
+
+/** "Matemática" → "matematica" (nome do arquivo do acervo: minúsculas, sem acento, com hífen). */
+export function slugMateria(nome) {
+  const s = String(nome || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  if (!s) throw new Error('matéria vazia: informe a matéria (ex.: matematica)');
+  return s;
+}
+
+/**
+ * Monta os lotes 'pendente' de uma trilha. opcoes: { materia, arquivo, fase, ids (Set), variantes, refazer }.
+ * Com variantes: manda o bloco "variantes" e aplica a trava 1 de 3 (nunca variante de questão do Enem,
+ * nunca variante igual à original). Só os campos da questão viajam (questaoLimpa).
+ */
+export async function montarLotes(trilha, { materia, arquivo, fase = null, ids = null, variantes = false, refazer = false }) {
+  const slug = slugMateria(materia);
+  const questoes = new Map((trilha.questoes || []).map((q) => [q.id, q]));
+  const fonte = variantes ? trilha.variantes || [] : trilha.questoes || [];
+  if (variantes && !fonte.length) throw new Error('a trilha não tem bloco "variantes"');
+  const escolhidas = [];
+  const puladas = [];
+  const originais = {};
+  for (const q of fonte) {
+    if (fase && q.fase !== fase) continue;
+    if (ids && !ids.has(q.id) && !(variantes && ids.has(q.varianteDe))) continue;
+    if (variantes) {
+      const original = questoes.get(q.varianteDe);
+      if (!original) throw new Error(`variante ${q.id}: "varianteDe" (${q.varianteDe}) não existe nas questões da trilha`);
+      if (original.origem === 'enem' || q.origem === 'enem') throw new Error(`variante ${q.id}: ${q.varianteDe} é questão do Enem e NUNCA pode ter variante (licença Sem Derivações, docs/CONTEUDO_CURSINHO.md 1.1). Apague essa variante.`);
+      if (q.enunciado === original.enunciado) throw new Error(`variante ${q.id}: o enunciado é igual ao da original`);
+      originais[q.varianteDe] = { origem: original.origem || 'diver', tema: original.tema, dificuldade: original.dificuldade };
+    }
+    const v = q.validacao;
+    if (v && v.pronta && !refazer) { puladas.push(`${q.id} (já aprovada)`); continue; }
+    if (v && !v.pronta && v.assinatura === await assinatura(q) && !refazer) { puladas.push(`${q.id} (reprovada e ainda não corrigida)`); continue; }
+    escolhidas.push(questaoLimpa(q)); // só os campos da questão: nada de anotação ou texto de referência
+  }
+  const lotes = [];
+  for (let i = 0; i < escolhidas.length; i += MAX_POR_LOTE) {
+    const parte = escolhidas.slice(i, i + MAX_POR_LOTE);
+    const conteudo = { versao: 1, arquivo, trilha_nome: trilha.nome, fase: fase || null, questoes: parte };
+    if (variantes) {
+      conteudo.tipo = 'variantes';
+      conteudo.originais = Object.fromEntries(parte.map((x) => [x.varianteDe, originais[x.varianteDe]]));
+      const proibidas = variantesProibidas(conteudo); // a mesma regra do servidor, conferida antes de enviar
+      if (proibidas.length) throw new Error(`lote recusado: ${proibidas.map((p) => `${p.id}: ${p.motivo}`).join('; ')}`);
+    }
+    lotes.push({ trilha_id: trilha.id, materia: slug, quantidade_questoes: parte.length, custo_estimado_usd: estimarCusto(parte), conteudo_pendente: conteudo });
+  }
+  return { lotes, puladas };
+}

@@ -1545,8 +1545,16 @@ body.qd-travado { overflow: hidden; }
 .conferir__rodape .texto-erro:empty { display: none; }
 
 /* Admin → Fila de Validação (Mergulho Triplo) */
-.fila-info .cartao__titulo { display: flex; align-items: center; gap: 8px; }
-.fila-info .cartao__titulo .icone { width: 20px; height: 20px; color: var(--amarelo); }
+.fila-info .cartao__titulo, .fila-envio .cartao__titulo { display: flex; align-items: center; gap: 8px; }
+.fila-info .cartao__titulo .icone, .fila-envio .cartao__titulo .icone { width: 20px; height: 20px; color: var(--amarelo); }
+.fila-envio { display: grid; gap: 12px; }
+.fila-envio__form { display: grid; gap: 16px; }
+.fila-envio__campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px 16px; }
+.fila-envio__campos .campo-grupo { gap: 6px; }
+.fila-envio__form .acoes-linha { margin: 0; }
+.fila-envio__resumo:empty { display: none; }
+.fila-envio__ok { display: flex; align-items: flex-start; gap: 8px; font-weight: 700; color: var(--turquesa-claro); }
+.fila-envio__ok .icone { flex: none; width: 20px; height: 20px; }
 .fila-info__nota { margin-top: 10px; }
 .fila-chaves__lista { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 4px 0 8px; padding: 0; list-style: none; }
 .fila-chave { display: inline-flex; align-items: center; gap: 6px; font-family: var(--fonte-mono); font-weight: 700; }
