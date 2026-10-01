@@ -734,7 +734,53 @@ as $$
    limit 200;
 $$;
 
+-- Ranking Diver GLOBAL da Palavrinha: todos os cursos juntos. Cada linha é uma pessoa num curso
+-- ("Ana S." · Radiologia): quem faz dois cursos aparece uma vez em cada. Mesma pontuação e mesmos
+-- períodos do ranking do curso. Só alunos ativos, só partidas de cursos em que estão matriculados.
+-- Qualquer pessoa logada e ativa consulta (o placar mostra só nome curto, curso e pontos).
+create or replace function public.ranking_palavrinha_global(p_variante text default 'x1', p_periodo text default 'mes')
+returns table (posicao integer, nome text, curso_id text, pontos integer, vitorias integer, partidas integer, sou_eu boolean)
+language sql stable security definer
+set search_path = public
+as $$
+  with pode as (
+    select exists (select 1 from public.perfis p where p.id = auth.uid() and p.ativo) as ok
+  ),
+  maximo as (
+    select case p_variante when 'x1' then 6 when 'x2' then 7 when 'x4' then 9 end as tentativas
+  ),
+  partidas as (
+    select e.aluno_id, e.curso_id, e.detalhes
+      from public.eventos_atividade e
+      join public.matriculas m on m.aluno_id = e.aluno_id and m.trilha_id = e.curso_id
+      join public.perfis p on p.id = e.aluno_id and p.papel = 'aluno' and p.ativo
+     where (select ok from pode) and (select tentativas from maximo) is not null
+       and e.tipo = 'jogo_concluido' and e.curso_id is not null
+       and e.detalhes ->> 'jogo' = 'palavrinha' and e.detalhes ->> 'variante' = p_variante
+       and (e.detalhes ->> 'data') ~ '^\d{4}-\d{2}-\d{2}$'
+       and (p_periodo = 'geral' or left(e.detalhes ->> 'data', 7) = to_char(now() at time zone 'America/Sao_Paulo', 'YYYY-MM'))
+  ),
+  placar as (
+    select d.aluno_id, d.curso_id,
+           sum(case when public.atv_sim(d.detalhes, 'venceu')
+                    then greatest(0, (select tentativas from maximo) + 1 - coalesce(public.atv_num(d.detalhes, 'tentativas'), 99))
+                    else 0 end)::integer as pontos,
+           (count(*) filter (where public.atv_sim(d.detalhes, 'venceu')))::integer as vitorias,
+           count(*)::integer as partidas
+      from partidas d group by d.aluno_id, d.curso_id
+  )
+  select (rank() over (order by pl.pontos desc, pl.vitorias desc))::integer,
+         (select partes[1] || case when array_length(partes, 1) > 1 then ' ' || upper(left(partes[array_length(partes, 1)], 1)) || '.' else '' end
+            from (select regexp_split_to_array(trim(p.nome), '\s+') as partes) x),
+         pl.curso_id, pl.pontos, pl.vitorias, pl.partidas, pl.aluno_id = auth.uid()
+    from placar pl join public.perfis p on p.id = pl.aluno_id
+   order by 1, 2
+   limit 200;
+$$;
+
 revoke all on function public.estatisticas_atividade(uuid, text) from public, anon;
 revoke all on function public.ranking_palavrinha(text, text, text) from public, anon;
 grant execute on function public.estatisticas_atividade(uuid, text) to authenticated;
 grant execute on function public.ranking_palavrinha(text, text, text) to authenticated;
+revoke all on function public.ranking_palavrinha_global(text, text) from public, anon;
+grant execute on function public.ranking_palavrinha_global(text, text) to authenticated;
