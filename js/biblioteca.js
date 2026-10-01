@@ -58,7 +58,7 @@ const Biblioteca = (() => {
           h('a', { class: 'botao botao--fantasma botao--pequeno', href: '#jogos', onclick: () => App.definirTrilha(t.id) }, icone('i-controle'), 'Jogar'),
           h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => UI.baixarArquivo(`${t.id}.json`, JSON.stringify(t, null, 2)) }, icone('i-download'), 'Exportar'),
           importada ? h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: async () => {
-            if (!window.confirm(`Remover a trilha "${t.nome}" deste navegador? O progresso dela continua guardado.`)) return;
+            if (!(await UI.confirmar({ titulo: 'Remover esta trilha?', texto: `"${t.nome}" sai deste navegador. O progresso dela continua guardado.`, sim: 'Remover trilha', perigo: true, humor: 'triste' }))) return;
             Trilhas.removerImportada(t.id);
             await App.recarregarTrilhas();
             renderCursos(secao);
@@ -129,7 +129,7 @@ const Biblioteca = (() => {
         e.preventDefault();
         const { questoes, erros } = ler();
         if (!nome.value.trim() || !questoes.length) return verPrevia();
-        if (erros.length && !window.confirm(`${UI.plural(erros.length, 'linha tem', 'linhas têm')} problema e vão ficar de fora. Criar mesmo assim?`)) return;
+        if (erros.length && !(await UI.confirmar({ titulo: 'Criar mesmo assim?', texto: `${UI.plural(erros.length, 'linha tem', 'linhas têm')} problema e vão ficar de fora.`, sim: 'Criar mesmo assim', nao: 'Voltar e corrigir' }))) return;
         const trilha = montar(questoes);
         const problemas = Trilhas.validar(trilha);
         if (problemas.length) {
@@ -255,7 +255,7 @@ const Biblioteca = (() => {
           h('div', { class: 'pdf__acoes' },
             h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => abrir(p.id) }, 'Abrir'),
             h('button', { type: 'button', class: 'botao-icone', 'aria-label': `Excluir ${p.nome}`, onclick: async () => {
-              if (!window.confirm(`Excluir "${p.nome}"? Esta ação não pode ser desfeita.`)) return;
+              if (!(await UI.confirmar({ titulo: 'Excluir este PDF?', texto: `"${p.nome}" sai de vez. Não dá para desfazer.`, sim: 'Excluir', perigo: true, humor: 'triste' }))) return;
               if (estadoPdf.aberto === p.id) fechar();
               await apagarPdf(p.id);
               desenhar();

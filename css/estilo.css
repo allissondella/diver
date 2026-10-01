@@ -1027,6 +1027,24 @@ select {
 .dialogo__topo { border-bottom: 1px solid var(--borda); }
 .dialogo__rodape { border-top: 1px solid var(--borda); flex-wrap: wrap; }
 .dialogo__titulo { font-size: 1.3rem; }
+/* Caixa de confirmação do Diver (UI.confirmar): mascote, pergunta e dois botões */
+.dialogo--confirmar { width: min(440px, calc(100vw - 32px)); border-color: var(--borda-forte, var(--borda)); }
+.confirmar { display: grid; justify-items: center; gap: var(--esp-3, 12px); width: 100%; padding: var(--esp-6, 24px) var(--esp-5, 20px) var(--esp-5, 20px); text-align: center; }
+.confirmar__mascote { width: 96px; margin-bottom: var(--esp-1, 4px); }
+.confirmar__titulo { font-size: 1.3rem; font-weight: 800; line-height: 1.25; }
+.confirmar__texto { display: grid; gap: var(--esp-2, 8px); color: var(--texto-suave); }
+.confirmar__campo { display: grid; gap: var(--esp-2, 8px); width: 100%; text-align: left; }
+.confirmar__botoes { display: flex; flex-wrap: wrap-reverse; justify-content: center; gap: var(--esp-3, 12px); width: 100%; margin-top: var(--esp-3, 12px); }
+.confirmar__botoes .botao { flex: 1 1 140px; min-height: 48px; height: auto; }
+.dialogo--confirmar[open] { animation: confirmar-entrar 0.22s ease-out; }
+@keyframes confirmar-entrar { from { opacity: 0; transform: translateY(12px) scale(0.97); } }
+@media (prefers-reduced-motion: reduce) { .dialogo--confirmar[open] { animation: none; } }
+.botao--perigo {
+  background: var(--coral);
+  color: var(--texto-escuro);
+  box-shadow: 0 4px 0 #C2415A, 0 10px 24px rgba(251, 113, 133, 0.22);
+}
+.botao--perigo:hover:not(:disabled) { background: #FC8A9B; }
 .dialogo__corpo > * { min-width: 0; } /* a tabela rola dentro da própria caixa */
 .dialogo__corpo {
   display: grid;
@@ -1078,6 +1096,8 @@ select {
   .fase__estudo { margin-left: 0; width: 100%; }
   .dialogo { width: 100vw; max-width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0; }
   .dialogo__caixa { max-height: 100vh; }
+  /* a caixa de confirmação continua uma caixa no meio da tela, não a tela inteira */
+  .dialogo--confirmar { width: calc(100vw - 32px); max-width: 440px; height: fit-content; max-height: calc(100vh - 32px); border-radius: var(--raio); }
 }
 
 .estrelas {

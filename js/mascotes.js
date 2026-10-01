@@ -1,5 +1,5 @@
 /*
- * mascotes.js — os rostos que a pessoa pode escolher para o Diver (Perfil → "Seu mascote").
+ * mascotes.js — os rostos que a pessoa pode escolher para o Diver (Perfil: setinhas dos lados do mascote).
  *
  * O corpo é sempre o mesmo (capuz, máscara, olhos, snorkel, nadadeiras) e fica no
  * <template id="molde-mascote"> do index.html. Só o rosto muda, por quatro "encaixes":
@@ -107,18 +107,13 @@ const Mascotes = (() => {
     raiz.querySelector('.d-cilios').innerHTML = r.cilios ? CILIOS : '';
   }
 
+  /** Todas as variações, em ordem: cada pinguim e cada humano em cada tom (setinhas do Perfil). */
+  const variacoes = () => ROSTOS.flatMap((r) => (r.humano ? TONS.map((t) => ({ rosto: r.id, tom: t.id })) : [{ rosto: r.id, tom: null }]));
+
   /** Nome acessível do mascote escolhido. */
   function descricao(rostoId, tomId) {
     const r = porId(rostoId);
     return `Diver, o mascote: ${r.descricao}${r.humano ? `, pele ${tomPorId(tomId).nome.toLowerCase()}` : ''}, com roupa de mergulho, máscara amarela e snorkel`;
-  }
-
-  /** Um mascote avulso com um rosto específico (miniaturas do Perfil). */
-  function miniatura(rostoId, tomId, classe = '') {
-    const el = UI.h('div', { class: `mascote ${classe}`.trim(), 'data-mascote-fixo': true });
-    el.append(document.getElementById('molde-mascote').content.cloneNode(true));
-    pintar(el, rostoId, tomId);
-    return el;
   }
 
   /**
@@ -144,5 +139,5 @@ const Mascotes = (() => {
     aplicar();
   }
 
-  return { ROSTOS, GRUPOS, TONS, PADRAO, escolhido, escolher, aplicar, miniatura, descricao, porId };
+  return { ROSTOS, GRUPOS, TONS, PADRAO, escolhido, escolher, aplicar, descricao, porId, variacoes };
 })();

@@ -72,7 +72,7 @@ O Diver é **vetorial (SVG)**, no estilo "figurinha": formas simples, **contorno
 - **máscara amarela** (`#FACC15`) com vidro `#0C354C` e os **olhinhos iguais aos do ícone da aba** (brancos `#E6F1FF`, pupilas `#0B2545`);
 - **snorkel na boca**: bocal amarelo e tubo coral (`#FB7185`) subindo pelo lado, soltando bolhas; nadadeiras amarelas.
 
-**O rosto é escolhido pela pessoa (Perfil → "Seu mascote", desde 2026-09-30).** O padrão é o **pinguim de penacho**.
+**O rosto é escolhido pela pessoa** (desde 2026-09-30; desde 2026-10-01 é um **easter egg**: setinhas discretas dos lados do mascote no topo do Perfil passeiam por todas as variações, rosto e tom de pele, sem nenhum texto explicando). O padrão é o **pinguim de penacho**.
 - **Pinguins** (rosto `#F4F8FF`, bico laranja `#FB923C`/`#EA7A1F` segurando um bocal menor): de penacho (penas `#FCD34D` saindo pelos lados da máscara), clássico, imperador (manchas douradas) e de Magalhães (faixa `#1E293B` em U).
 - **Mergulhadores**: barba e bigode discreto, bigode guidão, bigodão de detetive, bigode de morsa, bigode fininho, só bigode e rosto limpo.
 - **Mergulhadoras**: cabelo liso ou cacheado emoldurando o rosto, cílios (só com os olhos abertos) e lábios logo abaixo do bocal.
@@ -84,6 +84,13 @@ O Diver é **vetorial (SVG)**, no estilo "figurinha": formas simples, **contorno
 - **Expressões** pela classe do container (`UI.humorMascote(container, humor)`): sem classe = **normal** (pisca de vez em quando); `.mascote--feliz` (olhos ^ ^, bochechas e pulinho: acerto); `.mascote--triste` (pálpebras caídas e balançada: erro, sem culpar); `.mascote--pensando` (olhando para cima: dicas e tutorial).
 - Bolhas sobem do snorkel; no Início ele flutua. Com `prefers-reduced-motion`, fica tudo parado.
 - Proporção 240 × 270 (mais alto que largo): nas telas, defina só a largura. Deixar respiro ao redor; funciona melhor sobre fundo escuro.
+
+## Caixa de confirmação (`UI.confirmar`)
+Nada de aviso do navegador ("site tal diz…"): toda pergunta de sim/não é a caixa do Diver. Mascote no topo, título curto em forma de pergunta ("Subir agora?"), uma frase de apoio e dois botões com o verbo da ação ("Subir agora" / "Continuar mergulhando"), nunca "OK/Cancelar" soltos.
+- **Sair de algo** (quiz, jogo, prova, conta): mascote **triste** (`humor: 'triste'`). Tom gentil, sem culpa.
+- **Apagar, zerar, tirar acesso:** botão coral (`perigo: true`).
+- O foco começa na opção segura (ficar/cancelar); Esc, clicar fora ou "não" cancelam; o foco volta para onde estava. No celular é uma caixa no meio da tela, com os botões um embaixo do outro.
+- Pedir um texto (ex.: editar nome no Admin): `UI.perguntar` (mesma caixa com um campo; Enter salva).
 
 ## Tom de voz
 | Faça | Evite |

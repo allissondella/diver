@@ -99,7 +99,7 @@ const Tutorial = (() => {
       { alvo: '#est-curso', desenho: 'mapa', titulo: 'Um curso ou todos', texto: 'Escolha um curso para ver só ele, ou "Todos os cursos" para o mergulho completo.' },
     ],
     perfil: [
-      { alvo: '#perfil-mascote', desenho: 'diver', titulo: 'Seu mascote', texto: 'Pinguim, mergulhador ou mergulhadora, com o tom de pele que você quiser. Escolheu, trocou em todas as telas.' },
+      { alvo: '.perfil-topo__info', desenho: 'trofeu', titulo: 'Seu nível geral', texto: 'O XP de todos os cursos somado. Cada mergulho, jogo e revisão empurra a barra.' },
     ],
   };
 

@@ -123,8 +123,8 @@ const ProvasEnviadas = (() => {
           selo: p.honesto ? { classe: 'chip--aviso', texto: 'Vale XP (sem pérolas)' } : { texto: 'Espiadinha: não pontua' },
           tentativas: p.tentativas || [],
           aoFazer: () => comecar({ origem: 'minha', id: p.id }),
-          aoApagar: () => {
-            if (!window.confirm(`Apagar a prova "${p.titulo}"? As notas dela também somem.`)) return;
+          aoApagar: async () => {
+            if (!(await UI.confirmar({ titulo: 'Apagar esta prova?', texto: `"${p.titulo}" e as notas dela somem de vez.`, sim: 'Apagar prova', perigo: true, humor: 'triste' }))) return;
             const atual = ler();
             atual.provas = atual.provas.filter((x) => x.id !== p.id);
             gravar(atual);
@@ -182,7 +182,7 @@ const ProvasEnviadas = (() => {
       tentativas: d.feitas[p.id] || [],
       aoFazer: () => comecar({ origem: 'curso', id: p.id }),
       aoApagar: Nuvem.ehAdmin() || p.autor_id === eu ? async () => {
-        if (!window.confirm(`Apagar "${p.titulo}" para todos os alunos do curso?`)) return;
+        if (!(await UI.confirmar({ titulo: 'Apagar para todos?', texto: `"${p.titulo}" some para todos os alunos do curso.`, sim: 'Apagar para todos', perigo: true, humor: 'triste' }))) return;
         try {
           await Nuvem.rest('DELETE', `provas_curso?id=eq.${encodeURIComponent(p.id)}`);
           toast('Prova apagada', 'Os alunos não veem mais essa prova.', 'i-lixo');

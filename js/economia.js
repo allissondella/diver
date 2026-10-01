@@ -55,6 +55,7 @@ const Economia = (() => {
     xp += Math.min(Math.max(0, bonus.xp || 0), CONFIG.bonusMaximo.xp);
     perolas += Math.min(Math.max(0, bonus.perolas || 0), CONFIG.bonusMaximo.perolas);
     if (dobro) xp *= CONFIG.desafioMultiplicador;
+    if (resultado.semPerolas) perolas = 0; // ex.: treino livre da Palavrinha (pérolas só na palavra do dia)
 
     prog.xp += xp;
     prog.perolas += perolas;

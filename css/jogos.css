@@ -613,7 +613,10 @@
 .pal-ranking__item { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr) auto auto; align-items: center; gap: var(--esp-3, 12px); padding: 8px 12px; border-radius: var(--raio-pequeno); background: rgba(230, 241, 255, 0.04); }
 .pal-ranking__item--eu { background: var(--superficie-turquesa); box-shadow: inset 3px 0 0 var(--turquesa); }
 .pal-ranking__pos { font: 800 0.95rem var(--fonte-mono); color: var(--amarelo); }
+.pal-ranking__filtros { display: flex; flex-wrap: wrap; gap: var(--esp-2, 8px) var(--esp-3, 12px); }
+.pal-ranking__quem { display: grid; min-width: 0; }
 .pal-ranking__nome { font-weight: 700; overflow-wrap: anywhere; }
+.pal-ranking__curso { font-size: 0.8rem; color: var(--texto-suave); overflow-wrap: anywhere; }
 .pal-ranking__pontos { font: 800 0.9rem var(--fonte-mono); }
 .pal-ranking__extra { font: 600 0.78rem var(--fonte-mono); color: var(--texto-suave); }
 .pal-ranking__nota { font-size: 0.8rem; margin-top: var(--esp-2, 8px); }
@@ -627,4 +630,23 @@
   .pal-letra { transition: none; }
   .pal--tremer .pal-tabuleiros { animation: none; }
 }
-.pal-ranking .segmentado { justify-self: start; }
+.pal-ranking .segmentado { justify-self: start; flex-wrap: nowrap; }
+@media (max-width: 479px) {
+  /* celular: as pílulas cabem numa linha e os pontos ficam em cima de vitórias/partidas */
+  .pal-ranking .segmentado button { padding: 6px 10px; font-size: 0.85rem; }
+  .pal-ranking__item { grid-template-columns: 2rem minmax(0, 1fr) auto; row-gap: 0; padding: 8px 10px; }
+  .pal-ranking__pos, .pal-ranking__quem { grid-row: span 2; }
+  .pal-ranking__pontos, .pal-ranking__extra { grid-column: 3; justify-self: end; }
+}
+/* Aviso de primeira vez: o Ranking Diver */
+.pal-aviso { display: flex; gap: var(--esp-4, 16px); align-items: flex-start; border-color: rgba(250, 204, 21, 0.45); background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(18, 50, 90, 0.72) 60%); }
+.pal-aviso__mascote { width: 72px; flex-shrink: 0; }
+.pal-aviso__texto { display: grid; gap: var(--esp-2, 8px); min-width: 0; }
+.pal-aviso__titulo { display: flex; align-items: center; gap: var(--esp-2, 8px); font-size: 1.15rem; font-weight: 800; }
+.pal-aviso__titulo .icone { width: 22px; height: 22px; color: var(--amarelo); }
+.pal-aviso p { color: var(--texto-suave); }
+.pal-aviso .pal-acoes { margin-top: var(--esp-2, 8px); }
+@media (max-width: 479px) {
+  .pal-aviso { flex-direction: column; }
+  .pal-aviso__mascote { width: 60px; }
+}

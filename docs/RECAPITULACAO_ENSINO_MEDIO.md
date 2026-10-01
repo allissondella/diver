@@ -69,6 +69,6 @@ Em vez de pedir para o aluno se avaliar de 1 a 5 (impreciso — a maioria erra a
 
 ## 7. Decisões ainda em aberto
 
-- [ ] Quais matérias entram primeiro (sugestão: começar pelas fortes no Khan — Matemática e Ciências da Natureza — já que ali a referência é mais sólida).
-- [ ] Formato exato do diagnóstico gamificado (quantidade de perguntas, se é adaptativo ou fixo).
+- [x] Quais matérias entram primeiro: **decidido em 2026-10-01: Português, depois Matemática, depois Lógica.** (Em Português a referência estrutural vem mais do Telecurso e do Centro de Mídias SP, só como referência de sequência e abordagem, sem copiar; a matriz de temas é a BNCC.)
+- [x] Formato do diagnóstico: **decidido em 2026-10-01: fixo, 2 perguntas por tema da matéria** (ex.: 5 temas = 10 perguntas, uns 5 minutos), sem cronômetro e sem gastar oxigênio. Errou as 2 de um tema → o tema entra na trilha da pessoa; acertou as 2 → pula. O adaptativo fica para quando houver respostas de muitos alunos.
 - [ ] Se o resultado do diagnóstico também alimenta o Acervo Diver (Motor Diver) como dado de calibração de dificuldade real, não só para personalizar a trilha do aluno individual.

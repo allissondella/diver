@@ -1261,47 +1261,20 @@ body.qd-travado { overflow: hidden; }
 .perfil-topo__info .status__nivel-num { justify-self: start; }
 .perfil-topo__nome { font-size: 1.5rem; font-weight: 800; }
 
-/* Perfil → "Seu mascote" */
-.mascote-escolha { display: grid; gap: 20px; }
-.mascote-reacoes {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 96px)); justify-content: center; gap: 12px;
-  margin: 0; padding: 14px 8px; list-style: none;
-  background: var(--superficie-turquesa); border: 1px solid var(--borda); border-radius: var(--raio);
+/* Perfil: setinhas dos lados do mascote (easter egg: trocam o rosto, sem texto nenhum) */
+.perfil-troca { display: flex; align-items: center; gap: var(--esp-1); flex-shrink: 0; }
+.perfil-troca__seta {
+  display: grid; place-items: center; width: 32px; height: 44px; padding: 0; border: 0; border-radius: var(--raio-pequeno);
+  background: transparent; color: var(--texto-suave); opacity: 0.45; cursor: pointer; transition: opacity 0.2s ease, color 0.2s ease;
 }
-.mascote-reacoes li { display: grid; justify-items: center; gap: 6px; }
-.mascote-reacoes .mascote { width: min(84px, 100%); }
-.mascote-reacoes span { font: 600 0.75rem var(--fonte-mono); color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.06em; }
-.mascote-grupo { border: 0; margin: 0; padding: 0; min-width: 0; }
-.mascote-grupo legend { font-weight: 800; margin-bottom: 10px; padding: 0; }
-.mascote-opcoes { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 10px; }
-.mascote-opcao { position: relative; display: block; cursor: pointer; }
-.mascote-opcao input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-.mascote-opcao__corpo {
-  display: grid; justify-items: center; gap: 6px; height: 100%;
-  padding: 12px 8px 10px; text-align: center; font-size: 0.85rem; font-weight: 700; line-height: 1.25;
-  background: var(--superficie); border: 2px solid var(--borda); border-radius: var(--raio-pequeno);
-  transition: border-color var(--transicao), background var(--transicao), transform var(--transicao);
-}
-.mascote-opcao__corpo .mascote { width: 64px; }
-.mascote-opcao:hover .mascote-opcao__corpo { border-color: var(--turquesa-claro); }
-.mascote-opcao input:checked + .mascote-opcao__corpo { border-color: var(--turquesa); background: var(--superficie-2); box-shadow: var(--brilho-turquesa); }
-.mascote-opcao input:focus-visible + .mascote-opcao__corpo { outline: 3px solid var(--amarelo); outline-offset: 2px; }
-.mascote-opcao__check { position: absolute; top: 6px; right: 6px; width: 22px; height: 22px; border-radius: 50%; display: none; place-items: center; background: var(--turquesa); color: var(--texto-escuro); }
-.mascote-opcao__check .icone { width: 14px; height: 14px; }
-.mascote-opcao input:checked ~ .mascote-opcao__check { display: grid; }
-.tons-pele { display: flex; flex-wrap: wrap; gap: 10px; }
-.tom-pele { position: relative; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
-.tom-pele input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-.tom-pele__corpo {
-  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 14px 6px 6px;
-  background: var(--superficie); border: 2px solid var(--borda); border-radius: 999px; font-weight: 700;
-}
-.tom-pele__amostra { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--fundo-fundo); }
-.tom-pele input:checked + .tom-pele__corpo { border-color: var(--turquesa); background: var(--superficie-2); }
-.tom-pele input:focus-visible + .tom-pele__corpo { outline: 3px solid var(--amarelo); outline-offset: 2px; }
-.mascote-escolha__nota { margin: 0; }
+.perfil-troca__seta .icone { width: 20px; height: 20px; }
+.perfil-troca__seta:hover, .perfil-troca__seta:focus-visible { opacity: 1; color: var(--turquesa-claro); }
+.perfil-troca__seta:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+.perfil-troca--pulo { animation: perfil-pulo 0.35s ease; }
+@keyframes perfil-pulo { 40% { transform: translateY(-6px) scale(1.04); } }
 @media (prefers-reduced-motion: reduce) {
-  .mascote-opcao__corpo { transition: none; }
+  .perfil-troca__seta { transition: none; }
+  .perfil-troca--pulo { animation: none; }
 }
 .tabela-rolagem { overflow-x: auto; }
 .tabela { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
