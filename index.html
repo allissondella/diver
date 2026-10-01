@@ -218,19 +218,25 @@
           <p class="hero__texto">Estudar dá um frio na barriga, mas a água está ótima. Escolha uma trilha e vá fundo: aqui, aprender é a parte divertida.</p>
         </header>
 
-        <h2 class="secao-titulo" id="titulo-trilhas">Escolha sua trilha</h2>
-        <div id="lista-trilhas" class="lista-trilhas" role="radiogroup" aria-labelledby="titulo-trilhas">
-          <p class="carregando">Procurando trilhas no fundo do mar…</p>
-        </div>
+        <!-- "Continuar de onde parou": o curso e a fase da última vez (ou o "parabéns" de quem terminou). Sem histórico, fica escondido. -->
+        <div id="continuar" class="continuar-area" hidden></div>
 
-        <div id="aviso-trilhas" class="aviso" hidden></div>
+        <!-- Lista completa de cursos: principal na primeira visita; depois, recolhida atrás do "Ver todos os cursos" -->
+        <div id="inicio-cursos">
+          <h2 class="secao-titulo" id="titulo-trilhas">Escolha sua trilha</h2>
+          <div id="lista-trilhas" class="lista-trilhas" role="radiogroup" aria-labelledby="titulo-trilhas">
+            <p class="carregando">Procurando trilhas no fundo do mar…</p>
+          </div>
 
-        <div class="inicio-acoes" data-so-gestao>
-          <label class="botao botao--fantasma botao--pequeno">
-            <svg class="icone" aria-hidden="true"><use href="#i-upload"/></svg>
-            Carregar trilha (.json)
-            <input id="input-importar" type="file" accept=".json,application/json" multiple class="visualmente-oculto">
-          </label>
+          <div id="aviso-trilhas" class="aviso" hidden></div>
+
+          <div class="inicio-acoes" data-so-gestao>
+            <label class="botao botao--fantasma botao--pequeno">
+              <svg class="icone" aria-hidden="true"><use href="#i-upload"/></svg>
+              Carregar trilha (.json)
+              <input id="input-importar" type="file" accept=".json,application/json" multiple class="visualmente-oculto">
+            </label>
+          </div>
         </div>
 
         <!-- Seu dia: Desafio do Dia, meta, tarefas e eventos (preenchido pelo app.js) -->

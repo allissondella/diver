@@ -1846,6 +1846,62 @@ html,
 .inicio-acoes { margin-top: 14px; }
 
 /* ---------- Início: barra fixa com o "Bora mergulhar!" ---------- */
+/* Início: "Continuar de onde parou" (primeira coisa da tela para quem já estudou) */
+.continuar-area { margin-bottom: 26px; }
+.continuar {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(20, 184, 166, 0.55);
+  border-radius: var(--raio);
+  background: linear-gradient(135deg, var(--superficie-2), var(--superficie-turquesa));
+  box-shadow: var(--sombra), var(--brilho-turquesa);
+}
+.continuar__principal {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 6px;
+  border: 0;
+  border-radius: var(--raio-pequeno);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.continuar__principal:hover .continuar__play { transform: scale(1.06); }
+.continuar__texto { display: grid; gap: 6px; flex: 1; min-width: 0; }
+.continuar__titulo { font-size: clamp(1.25rem, 1rem + 1.2vw, 1.7rem); font-weight: 800; line-height: 1.2; overflow-wrap: anywhere; }
+.continuar__fase { font-weight: 700; color: var(--turquesa-claro); }
+.continuar__barra { margin-top: 4px; }
+.continuar__meta, .continuar__sub { font: 600 0.78rem var(--fonte-mono); color: var(--texto-suave); }
+.continuar__sub { font: inherit; }
+.continuar__play {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--turquesa);
+  color: var(--texto-escuro);
+  box-shadow: 0 4px 0 var(--turquesa-sombra);
+  transition: transform var(--transicao);
+}
+.continuar__play .icone { width: 30px; height: 30px; }
+.continuar__acoes { display: flex; flex-wrap: wrap; gap: 10px; }
+.continuar--concluido { grid-template-columns: auto minmax(0, 1fr); align-items: center; }
+.continuar--concluido .continuar__acoes { grid-column: 1 / -1; }
+.continuar__mascote { width: 76px; }
+@media (max-width: 520px) {
+  .continuar__play { width: 52px; height: 52px; }
+  .continuar__mascote { width: 58px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .continuar__play { transition: none; }
+}
 .inicio-cta {
   position: sticky;
   bottom: 12px;

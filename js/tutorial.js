@@ -50,6 +50,7 @@ const Tutorial = (() => {
   const ROTEIROS = {
     inicio: [
       { desenho: 'diver', titulo: 'Bem-vindo ao Diver!', texto: 'Aqui você estuda em mergulhos curtos, ganha XP e pérolas e sobe de nível. Em poucos passos eu te mostro onde fica cada coisa.' },
+      { alvo: '#continuar', desenho: 'ancora', titulo: 'Continuar de onde parou', texto: 'Seu último curso e a fase onde você estava. Um toque e você volta a mergulhar. Quer outro curso? "Ver todos os cursos".' },
       { alvo: '#lista-trilhas', desenho: 'livro', titulo: 'Escolha seu curso', texto: 'Cada card é um curso. A barrinha embaixo mostra quanto você já desceu nele.' },
       { alvo: '#inicio-cta', desenho: 'ancora', titulo: 'Bora mergulhar!', texto: 'Escolheu? É só tocar aqui. Essa barra fica sempre à vista, mesmo quando você rola a página.' },
       { alvo: '#hoje', desenho: 'alvo', titulo: 'Seu dia', texto: 'O Desafio do Dia vale XP em dobro. Aqui também aparecem a meta de questões e o que tem na sua agenda.' },

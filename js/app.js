@@ -372,8 +372,121 @@ const App = (() => {
      INÍCIO (escolha de trilha + Seu dia)
      ========================================================= */
   function renderizarInicio() {
+    renderizarContinuar();
     renderizarTrilhas();
     renderizarHoje();
+  }
+
+  /* ---------- "Continuar de onde parou" ---------- */
+  /** Já estudou neste curso? (mergulhou numa fase, respondeu algo ou concluiu alguma fase) */
+  function temHistorico(prog) {
+    return !!(prog.ultimaFase || prog.stats.respondidas > 0 || Object.values(prog.fases).some((f) => f && f.concluida));
+  }
+
+  /**
+   * O curso para continuar: o último escolhido (se já tiver estudo nele) ou o que teve atividade mais recente.
+   * A fase é a da última vez; se ela já foi concluída (ou está trancada), a próxima liberada que falta.
+   * Devolve null na primeira visita (sem histórico) e { concluido: true } quando todas as fases acabaram.
+   */
+  function cursoParaContinuar() {
+    const comHistorico = estado.trilhas.map((t) => ({ trilha: t, prog: Progresso.carregar(t.id) })).filter((c) => temHistorico(c.prog));
+    if (!comHistorico.length) return null;
+    const quando = (c) => Math.max(Date.parse(c.prog.ultimaFase && c.prog.ultimaFase.quando) || 0, Date.parse(c.prog.streak.ultimoDia) || 0);
+    const c = comHistorico.find((x) => x.trilha.id === Progresso.ultimaTrilha()) || comHistorico.sort((a, b) => quando(b) - quando(a))[0];
+    const { trilha, prog } = c;
+    const feita = (k) => !!(prog.fases[trilha.fases[k].id] && prog.fases[trilha.fases[k].id].concluida);
+    const concluidas = trilha.fases.filter((f, k) => feita(k)).length;
+    if (concluidas === trilha.fases.length) return { trilha, prog, concluidas, concluido: true };
+    const livre = (k) => Progresso.faseDesbloqueada(prog, trilha, k);
+    let i = prog.ultimaFase ? trilha.fases.findIndex((f) => f.id === prog.ultimaFase.id) : -1;
+    if (i < 0 || feita(i) || !livre(i)) {
+      const comeco = Math.max(0, i);
+      const ordem = [...trilha.fases.keys()];
+      const proxima = [...ordem.slice(comeco), ...ordem.slice(0, comeco)].find((k) => !feita(k) && livre(k));
+      i = proxima !== undefined ? proxima : trilha.fases.findIndex((f, k) => !feita(k));
+    }
+    return { trilha, prog, concluidas, fase: trilha.fases[i], indice: i, concluido: false };
+  }
+
+  /** Marca a fase como "a última em que mergulhou" (vale para o card "Continuar" do Início). */
+  function lembrarFase(faseId) {
+    if (!estado.trilha || !estado.prog) return;
+    estado.prog.ultimaFase = { id: faseId, quando: new Date().toISOString() };
+    Progresso.definirUltimaTrilha(estado.trilha.id);
+  }
+
+  function renderizarContinuar() {
+    const area = limpar($('continuar'));
+    const c = cursoParaContinuar();
+    area.hidden = !c;
+    if (estado.listaCursosAberta === undefined || !c) estado.listaCursosAberta = !c;
+    aplicarListaCursos();
+    if (!c) return;
+    const { trilha, prog, concluidas } = c;
+    const total = trilha.fases.length;
+    const pct = total ? Math.round((concluidas / total) * 100) : 0;
+    const verTodos = h('button', { type: 'button', class: 'botao botao--fantasma', id: 'btn-ver-cursos', 'aria-controls': 'inicio-cursos', onclick: alternarListaCursos },
+      icone('i-livro'), h('span', { class: 'btn-ver-cursos__texto' }));
+    const verMapa = h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => abrirTrilha(trilha.id) }, icone('i-ancora'), 'Ver mapa do curso');
+
+    if (c.concluido) {
+      const aprovado = (prog.provas || []).some((p) => p.aprovado);
+      area.append(h('section', { class: 'continuar continuar--concluido', 'aria-labelledby': 'continuar-titulo' },
+        UI.mascote('continuar__mascote mascote--feliz'),
+        h('div', { class: 'continuar__texto' },
+          h('span', { class: 'rotulo', text: 'Curso concluído' }),
+          h('h2', { class: 'continuar__titulo', id: 'continuar-titulo', text: `Parabéns! Você concluiu ${trilha.nome}` }),
+          h('p', { class: 'continuar__sub', text: `${total === 1 ? 'A fase foi explorada' : `As ${total} fases foram exploradas`} até o fundo${aprovado ? ' e a prova final está aprovada' : ''}. Bora para a próxima travessia?` })),
+        h('div', { class: 'continuar__acoes' },
+          aprovado ? null : h('button', { type: 'button', class: 'botao botao--primario', onclick: () => { definirTrilha(trilha.id); irPara('prova'); } }, icone('i-trofeu'), 'Fazer a Prova final'),
+          h('button', { type: 'button', class: aprovado ? 'botao botao--primario' : 'botao botao--secundario', onclick: () => abrirListaCursos(true) }, icone('i-livro'), 'Escolher o próximo curso'),
+          verMapa)));
+    } else {
+      area.append(h('section', { class: 'continuar', 'aria-labelledby': 'continuar-titulo' },
+        h('button', { type: 'button', class: 'continuar__principal', id: 'btn-continuar-curso', onclick: () => continuarCurso(c), 'aria-describedby': 'continuar-fase' },
+          h('span', { class: 'continuar__texto' },
+            h('span', { class: 'rotulo', text: 'Continuar de onde parou' }),
+            h('span', { class: 'continuar__titulo', id: 'continuar-titulo', text: `Continuar ${trilha.nome}` }),
+            h('span', { class: 'continuar__fase', id: 'continuar-fase', text: `Fase ${c.indice + 1} · ${c.fase.nome}` }),
+            h('span', { class: 'trilha__progresso continuar__barra', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
+            h('span', { class: 'continuar__meta', text: `${concluidas}/${total} fases concluídas · Nível ${Progresso.nivel(prog.xp).numero}` })),
+          h('span', { class: 'continuar__play', 'aria-hidden': 'true' }, icone('i-seta-dir'))),
+        h('div', { class: 'continuar__acoes' }, verMapa, verTodos)));
+    }
+    aplicarListaCursos();
+  }
+
+  /** Toque no card: entra no curso e começa a rodada naquela fase (como o "play"). */
+  function continuarCurso(c) {
+    definirTrilha(c.trilha.id);
+    iniciarSessao('mergulho', { faseId: c.fase.id });
+  }
+
+  /** Com "Continuar" na tela, a lista de cursos (e a barra "Bora mergulhar!") fica recolhida até a pessoa pedir. */
+  function aplicarListaCursos() {
+    const aberta = !!estado.listaCursosAberta;
+    $('inicio-cursos').hidden = !aberta;
+    $('inicio-cta').hidden = !aberta;
+    const botao = $('btn-ver-cursos');
+    if (botao) {
+      botao.setAttribute('aria-expanded', String(aberta));
+      botao.querySelector('.btn-ver-cursos__texto').textContent = aberta ? 'Esconder a lista de cursos' : 'Ver todos os cursos';
+    }
+  }
+  function abrirListaCursos(focar) {
+    estado.listaCursosAberta = true;
+    aplicarListaCursos();
+    if (focar) {
+      $('inicio-cursos').scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
+      const marcada = document.querySelector('.trilha[tabindex="0"]') || document.querySelector('.trilha');
+      if (marcada) marcada.focus({ preventScroll: true });
+    }
+  }
+  function alternarListaCursos() {
+    if (estado.listaCursosAberta) {
+      estado.listaCursosAberta = false;
+      aplicarListaCursos();
+    } else abrirListaCursos(true);
   }
 
   function renderizarTrilhas() {
@@ -642,6 +755,8 @@ const App = (() => {
 
   function abrirResumo(fase, liberada) {
     const r = fase.resumo || {};
+    lembrarFase(fase.id);
+    salvar();
     let dialogo = $('dialogo-resumo');
     if (!dialogo) {
       dialogo = h('dialog', { id: 'dialogo-resumo', class: 'dialogo', 'aria-labelledby': 'dialogo-resumo-titulo' });
@@ -837,17 +952,19 @@ const App = (() => {
     const cartas = cartasDa(trilha);
     const area = limpar($('jogos-lista'));
 
+    // Só aparece o que este curso realmente suporta: jogo sem conteúdo suficiente ou "em breve"
+    // simplesmente não aparece (nada de card desabilitado). Grupo que fica vazio some junto.
     Jogos.GRUPOS.forEach((g) => {
-      const jogos = Jogos.lista().filter((j) => j.grupo === g.id);
+      const jogos = Jogos.lista().filter((j) => j.grupo === g.id && (j.nucleo || Jogos.estado(j, cartas) === 'disponivel'));
       if (!jogos.length) return;
       const grade = h('div', { class: 'sala' });
-      jogos.forEach((j) => grade.append(cardJogo(j, Jogos.estado(j, cartas), prog)));
+      jogos.forEach((j) => grade.append(cardJogo(j, prog)));
       area.append(h('section', { class: 'sala-grupo', 'aria-label': g.nome },
         h('h2', { class: 'secao-titulo', text: g.nome }), h('p', { class: 'secao-sub', text: g.descricao }), grade));
     });
   }
 
-  function cardJogo(j, situacao, prog) {
+  function cardJogo(j, prog) {
     const hist = prog.jogos && prog.jogos[j.id];
     const selects = (j.opcoes || []).map((o) => h('label', { class: 'jogo-card__opcao' },
       h('span', { class: 'visualmente-oculto', text: `${o.rotulo} de ${j.nome}` }),
@@ -861,27 +978,15 @@ const App = (() => {
       });
       iniciarJogo(j.id, opcoes);
     };
-    const selo = {
-      disponivel: null,
-      precisa: h('span', { class: 'chip chip--aviso', text: 'Precisa de conteúdo' }),
-      embreve: h('span', { class: 'chip', text: `Em breve · ${j.emBreve}` }),
-    }[situacao];
-    const dicaConteudo = situacao === 'precisa'
-      ? h('p', { class: 'jogo-card__dica', text: `Esta trilha ainda não tem ${Object.keys(j.requer).map((t) => ({ pares: 'pares termo ↔ definição', adivinhas: 'adivinhas', sequencias: 'sequências', palavras: 'palavras-chave', flash: 'cartas', multipla: 'questões suficientes' }[t] || t)).join(' e ')}.` })
-      : null;
-    return h('article', { class: `jogo-card jogo-card--${situacao}` },
+    return h('article', { class: 'jogo-card jogo-card--disponivel' },
       h('div', { class: 'jogo-card__topo' },
         h('span', { class: 'jogo-card__icone', 'aria-hidden': 'true' }, icone(j.icone || 'i-controle')),
         h('div', {}, h('h3', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave', text: j.duracao }))),
       h('p', { class: 'jogo-card__descricao', text: j.descricao }),
-      dicaConteudo,
       h('div', { class: 'jogo-card__rodape' },
-        selo,
         hist ? h('span', { class: 'jogo-card__hist', text: hist.melhor ? `Recorde: ${hist.melhor}` : plural(hist.partidas, 'partida', 'partidas') }) : null,
-        situacao === 'disponivel' ? selects : null,
-        situacao === 'disponivel'
-          ? h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: jogar, 'aria-label': `Jogar ${j.nome}` }, j.nucleo ? 'Abrir' : 'Jogar')
-          : null));
+        selects,
+        h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: jogar, 'aria-label': `Jogar ${j.nome}` }, j.nucleo ? 'Abrir' : 'Jogar')));
   }
 
   function iniciarJogo(id, opcoes = {}, { desafio = false } = {}) {
@@ -991,6 +1096,7 @@ const App = (() => {
       enviada: `Abrindo ${s.titulo || 'a prova'}…`,
     }[modo] || 'Bora mergulhar!');
     estado.sessao = s;
+    if (modo === 'mergulho' && s.fase) lembrarFase(s.fase.id);
     estado.origem = modo === 'enviada' ? 'simulado' : modo; // volta para a área de onde saiu (mergulho, simulado ou revisao)
     estado.nivelInicial = Progresso.nivel(estado.prog.xp).numero;
     estado.subiuNivel = null;
