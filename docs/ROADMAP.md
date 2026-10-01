@@ -96,7 +96,7 @@
   - _Pronto quando:_ Uma trilha criada no editor abre em outro aparelho.
 - [ ] **D23 · Qua** — Importar colando texto (termo ; definição) ou CSV, com pré-visualização. _(parcial: cria trilha colando "pergunta | certa | erradas"; falta "termo ; definição" e CSV.)_
   - _Pronto quando:_ Colar 20 linhas gera 20 cartas.
-- [ ] **D24 · Qui** — Trilha de exemplo nova (ex.: Inglês) com todos os tipos de carta.
+- [x] **D24 · Qui** — Trilha de exemplo nova (ex.: Inglês) com todos os tipos de carta. _(feito com a Travessia: Enem e Vestibular, trilha nova com questões, pares, verdadeiro ou falso, adivinhas, sequências e palavras)_
   - _Pronto quando:_ A trilha nova joga em todos os jogos disponíveis.
 - [ ] **D25 · Sex** — Testes das regras de pontuação e do derivador de cartas (página testes.html). Retro.
   - _Pronto quando:_ testes.html toda verde. Marco: os 7 primeiros modos de jogo estão online, mostre para alguém!
@@ -258,9 +258,9 @@
 ## Semana 17 · Fase 7: Estratégia e duelos — Caso Resolvido e Duelo
 **Objetivo:** Um jogo de investigação e um de disputa.
 
-- [ ] **D81 · Seg** — Caso Resolvido: estrutura do caso (suspeitos, locais, objetos ligados a conceitos), num navio naufragado.
+- [x] **D81 · Seg** — Caso Resolvido: estrutura do caso (suspeitos, locais, objetos ligados a conceitos), num navio naufragado. _(feito: "O apagão da Estação Abissal", bloco casos da Cibersegurança)_
   - _Pronto quando:_ Um caso de exemplo modelado.
-- [ ] **D82 · Ter** — Jogabilidade: coletar pistas respondendo e deduzir a solução final.
+- [x] **D82 · Ter** — Jogabilidade: coletar pistas respondendo e deduzir a solução final. _(feito: js/jogos/caso-resolvido.js)_
   - _Pronto quando:_ Caso resolvido do início ao fim.
 - [ ] **D83 · Qua** — Gerador de casos a partir de uma trilha (temas viram pistas).
   - _Pronto quando:_ Uma trilha nova gera um caso jogável.
@@ -278,7 +278,7 @@
   - _Pronto quando:_ Código de 6 caracteres gerado.
 - [ ] **D88 · Qua** — O aluno entra pelo código e vê a turma no perfil.
   - _Pronto quando:_ O aluno aparece na lista do professor.
-- [ ] **D89 · Qui** — Ranking da turma (desligável pelo professor) e meta coletiva.
+- [ ] **D89 · Qui** — Ranking da turma (desligável pelo professor) e meta coletiva. _(parcial: ranking por curso na Palavrinha (eventos_atividade); falta o professor desligar e a meta coletiva)_
   - _Pronto quando:_ Meta da turma com barra de progresso.
 - [ ] **D90 · Sex** — Revisão de segurança: o aluno nunca vê dados privados de outro aluno. Retro.
   - _Pronto quando:_ Checklist de segurança preenchido.
@@ -292,7 +292,7 @@
   - _Pronto quando:_ O aluno recebe o material na biblioteca.
 - [ ] **D93 · Qua** — Atribuir atividade (jogo + trilha + prazo) que cai no Kanban e no calendário do aluno.
   - _Pronto quando:_ A atividade aparece para toda a turma.
-- [ ] **D94 · Qui** — Relatório: acertos por tema, tempo de estudo e alunos que precisam de ajuda.
+- [ ] **D94 · Qui** — Relatório: acertos por tema, tempo de estudo e alunos que precisam de ajuda. _(parcial: estatísticas por aluno no Progresso (Admin/Professor); faltam acertos por tema e o aviso de quem precisa de ajuda)_
   - _Pronto quando:_ O professor identifica o tema mais difícil.
 - [ ] **D95 · Sex** — Prêmios de turma: prêmio e meta de pontos definidos pelo professor. Retro.
   - _Pronto quando:_ A turma vê o prêmio e quanto falta.
@@ -306,7 +306,7 @@
   - _Pronto quando:_ Lighthouse Acessibilidade ≥ 90.
 - [ ] **D98 · Qua** — Desempenho: carregar jogos sob demanda e otimizar imagens e animações do mascote.
   - _Pronto quando:_ Lighthouse Desempenho ≥ 85 no celular.
-- [ ] **D99 · Qui** — Erros e estados vazios ilustrados com o Diver e a turma.
+- [ ] **D99 · Qui** — Erros e estados vazios ilustrados com o Diver e a turma. _(parcial: estados vazios com o Diver em todas as telas; falta ilustrar as telas de erro)_
   - _Pronto quando:_ Nenhuma tela em branco ou erro técnico cru.
 - [ ] **D100 · Sex** — Testes de ponta a ponta dos fluxos principais. Retro.
   - _Pronto quando:_ Login → jogar → ganhar XP testado.
@@ -348,7 +348,7 @@
   - _Pronto quando:_ Nenhum quebra-galho (placeholder) visível.
 - [ ] **D113 · Qua** — Conteúdo inicial: pelo menos 5 trilhas por área (cursinho, faculdade, treinamento).
   - _Pronto quando:_ Trilhas revisadas jogando em todos os jogos.
-- [ ] **D114 · Qui** — Onboarding guiado pelo Diver (tour de 1 minuto).
+- [x] **D114 · Qui** — Onboarding guiado pelo Diver (tour de 1 minuto). _(feito: tutorial de primeiro acesso em cada página, js/tutorial.js)_
   - _Pronto quando:_ Um usuário novo entende o app em 1 minuto.
 - [ ] **D115 · Sex** — Retro do beta: o que manter, mudar e cortar.
   - _Pronto quando:_ Lista de prioridades da v1.0.
