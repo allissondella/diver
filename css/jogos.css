@@ -628,3 +628,15 @@
   .pal--tremer .pal-tabuleiros { animation: none; }
 }
 .pal-ranking .segmentado { justify-self: start; }
+/* Aviso de primeira vez: o Ranking Diver */
+.pal-aviso { display: flex; gap: var(--esp-4, 16px); align-items: flex-start; border-color: rgba(250, 204, 21, 0.45); background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(18, 50, 90, 0.72) 60%); }
+.pal-aviso__mascote { width: 72px; flex-shrink: 0; }
+.pal-aviso__texto { display: grid; gap: var(--esp-2, 8px); min-width: 0; }
+.pal-aviso__titulo { display: flex; align-items: center; gap: var(--esp-2, 8px); font-size: 1.15rem; font-weight: 800; }
+.pal-aviso__titulo .icone { width: 22px; height: 22px; color: var(--amarelo); }
+.pal-aviso p { color: var(--texto-suave); }
+.pal-aviso .pal-acoes { margin-top: var(--esp-2, 8px); }
+@media (max-width: 479px) {
+  .pal-aviso { flex-direction: column; }
+  .pal-aviso__mascote { width: 60px; }
+}

@@ -7,7 +7,8 @@
  *   (Cartas.derivar → cartas.palavrinha). O tabuleiro se ajusta ao tamanho da palavra.
  * - Palavra do dia: uma por curso, por dia e por variante, sorteada pela data (como o Desafio do Dia):
  *   todo mundo do curso recebe a mesma. No x1, um ciclo embaralhado não repete palavra até usar todas.
- *   Só a palavra do dia conta para as estatísticas e o ranking; depois dela, o Treino livre é à vontade.
+ *   Depois dela, o Treino livre é à vontade. Os dois contam nas estatísticas, no XP e no Ranking Diver
+ *   do curso (que zera todo mês); pérolas, só a palavra do dia.
  * - Palpite: qualquer sequência de letras do tamanho certo (sem dicionário). Acento não importa.
  * - Dica: o tema aparece desde o início; a dica completa, depois da 3ª tentativa sem acertar.
  * - Estatísticas e ranking vêm do log de atividade (js/atividade.js), sem tabela nova.
@@ -25,6 +26,7 @@ const Palavrinha = (() => {
   const MIN_MESMO_TAMANHO = 10; // x2 e x4: as palavras do dia têm o mesmo tamanho
   const DICA_DEPOIS = 3; // tentativas sem acertar até a dica completa aparecer
   const CHAVE = 'diver:v1:palavrinha'; // partida do dia em andamento (vai junto com o progresso na nuvem)
+  const CHAVE_AVISO = 'diver:v1:palavrinha-aviso-ranking'; // já viu o aviso do Ranking Diver (vale para todos os cursos)
   const TECLADO = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'];
   const NOME_STATUS = { certa: 'no lugar certo', lugar: 'em outro lugar', fora: 'não está na palavra' };
 
@@ -119,33 +121,27 @@ const Palavrinha = (() => {
     return r;
   }
 
-  /* ---------- Estatísticas pessoais (só a palavra do dia; a 1ª partida de cada dia) ---------- */
-  function estatisticas(eventos, chaveVariante, hoje = UI.dataLocal()) {
+  /* ---------- Estatísticas pessoais: todas as partidas da variante (palavra do dia e treino) ---------- */
+  function estatisticas(eventos, chaveVariante) {
     const v = Object.values(VARIANTES).find((x) => x.chave === chaveVariante);
-    const dias = new Map();
-    eventos
-      .filter((e) => e.detalhes && e.detalhes.jogo === 'palavrinha' && e.detalhes.variante === chaveVariante && e.detalhes.diaria === true
-        && /^\d{4}-\d{2}-\d{2}$/.test(e.detalhes.data || ''))
-      .sort((a, b) => String(a.criado_em).localeCompare(String(b.criado_em)))
-      .forEach((e) => { if (!dias.has(e.detalhes.data)) dias.set(e.detalhes.data, e.detalhes); });
-    const lista = [...dias.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+    const partidas = eventos
+      .filter((e) => e.detalhes && e.detalhes.jogo === 'palavrinha' && e.detalhes.variante === chaveVariante)
+      .sort((a, b) => String(a.criado_em).localeCompare(String(b.criado_em)));
     const distribuicao = Array(v.tentativas).fill(0);
     let vitorias = 0;
     let atual = 0;
     let melhor = 0;
-    let anterior = null;
-    lista.forEach(([data, d]) => {
+    partidas.forEach((e) => {
+      const d = e.detalhes;
       if (d.venceu === true) {
         vitorias++;
         const t = Number(d.tentativas);
         if (t >= 1 && t <= v.tentativas) distribuicao[t - 1]++;
-        atual = anterior && anterior.venceu && diaNumero(data) - diaNumero(anterior.data) === 1 ? atual + 1 : 1;
+        atual++; // sequência = vitórias seguidas; uma derrota zera
       } else atual = 0;
       melhor = Math.max(melhor, atual);
-      anterior = { data, venceu: d.venceu === true };
     });
-    if (!anterior || diaNumero(hoje) - diaNumero(anterior.data) > 1) atual = 0; // pulou um dia: a sequência zera
-    return { partidas: lista.length, vitorias, pct: lista.length ? Math.round((vitorias / lista.length) * 100) : 0, atual, melhor, distribuicao };
+    return { partidas: partidas.length, vitorias, pct: partidas.length ? Math.round((vitorias / partidas.length) * 100) : 0, atual, melhor, distribuicao };
   }
 
   /* ---------- Partida do dia guardada (retoma de onde parou, em qualquer aparelho) ---------- */
@@ -213,7 +209,7 @@ const Palavrinha = (() => {
           h('span', { class: 'pal-ranking__nome', text: l.sou_eu ? `${l.nome} (você)` : l.nome }),
           h('span', { class: 'pal-ranking__pontos', text: `${l.pontos} pts` }),
           h('span', { class: 'pal-ranking__extra', text: `${l.vitorias}/${l.partidas}` })))),
-          h('p', { class: 'texto-suave pal-ranking__nota', text: 'Pontos por vitória: quanto menos tentativas, mais pontos. Só a palavra do dia conta.' }));
+          h('p', { class: 'texto-suave pal-ranking__nota', text: 'Pontos por vitória: quanto menos tentativas, mais pontos. Vale a palavra do dia e o Treino livre; o placar do mês zera no dia 1º.' }));
       } catch (e) {
         lista.replaceChildren(h('p', { class: 'texto-suave', text: 'Não deu para carregar o ranking agora.' }));
       }
@@ -257,7 +253,10 @@ const Palavrinha = (() => {
       }
       const estat = h('div', { class: 'pal-estatisticas' });
       const ranking = h('div', { class: 'pal-ranking' });
+      const cartaoRanking = h('section', { class: 'cartao pal-cartao', id: 'pal-ranking', 'aria-labelledby': 'pal-ranking-titulo' },
+        h('h3', { class: 'cartao__titulo', id: 'pal-ranking-titulo', tabindex: '-1', text: `Ranking Diver · ${ctx.trilha.nome}` }), ranking);
       ctx.container.replaceChildren(h('div', { class: 'pal pal-abertura' },
+        avisoRanking(cartaoRanking),
         h('section', { class: 'cartao pal-cartao' },
           h('span', { class: 'rotulo', text: `Palavra do dia · ${dataBonita(hoje)}` }),
           h('h2', { class: 'pal-titulo', text: v.nome }),
@@ -267,13 +266,43 @@ const Palavrinha = (() => {
             h('p', {}, `Digite uma palavra de mesmo tamanho e confirme. As letras mudam de cor: `),
             h('ul', { class: 'pal-legenda' },
               ['certa', 'lugar', 'fora'].map((s, i) => h('li', {}, h('span', { class: `pal-letra pal-letra--${s}`, 'aria-hidden': 'true', text: 'ABC'[i] }), h('span', { text: { certa: 'Lugar certo', lugar: 'Está na palavra, em outro lugar', fora: 'Não está na palavra' }[s] })))),
-            h('p', {}, `Você tem ${v.tentativas} tentativas${v.tabuleiros > 1 ? `, e cada palpite vale para os ${v.tabuleiros} tabuleiros` : ''}. O tema aparece desde o começo; a dica completa, depois da ${DICA_DEPOIS}ª tentativa. Acento não importa.`))),
+            h('p', {}, `Você tem ${v.tentativas} tentativas${v.tabuleiros > 1 ? `, e cada palpite vale para os ${v.tabuleiros} tabuleiros` : ''}. O tema aparece desde o começo; a dica completa, depois da ${DICA_DEPOIS}ª tentativa. Acento não importa.`),
+            h('p', {}, 'A palavra do dia e o Treino livre valem XP, estatísticas e pontos no Ranking Diver (que zera todo mês). Pérolas, só na palavra do dia.'))),
         h('section', { class: 'cartao pal-cartao' }, h('h3', { class: 'cartao__titulo', text: 'Suas estatísticas' }), estat),
-        h('section', { class: 'cartao pal-cartao' }, h('h3', { class: 'cartao__titulo', text: `Ranking · ${ctx.trilha.nome}` }), ranking)));
+        cartaoRanking));
       painelEstatisticas(estat, ctx, v);
       painelRanking(ranking, ctx, v);
       const primeiro = acoes.querySelector('button');
       if (primeiro) primeiro.focus({ preventScroll: true });
+    }
+
+    /**
+     * Na primeira vez que a pessoa abre a Palavrinha: o que é o Ranking Diver e onde ele fica.
+     * Some depois de "Entendi" ou "Ver o ranking" (fica guardado na conta, em qualquer aparelho).
+     */
+    function avisoRanking(cartaoRanking) {
+      if (Dados.ler(CHAVE_AVISO, false)) return null;
+      const fechar = () => {
+        Dados.gravar(CHAVE_AVISO, true);
+        aviso.remove();
+      };
+      const aviso = h('section', { class: 'cartao pal-aviso', role: 'note', 'aria-labelledby': 'pal-aviso-titulo' },
+        UI.mascote('pal-aviso__mascote'),
+        h('div', { class: 'pal-aviso__texto' },
+          h('span', { class: 'rotulo', text: 'Novidade' }),
+          h('h3', { class: 'pal-aviso__titulo', id: 'pal-aviso-titulo' }, icone('i-trofeu'), 'Ranking Diver da Palavrinha'),
+          h('p', {}, `Cada palavra que você acerta, na palavra do dia ou no Treino livre, vale pontos: quanto menos tentativas, mais pontos (de primeira, ${v.tentativas} pontos). Você disputa com quem faz o mesmo curso, e o placar zera todo dia 1º.`),
+          h('p', {}, Atividade.naNuvem()
+            ? 'Para ver o placar: Sala de Jogos → Palavrinha → role até o "Ranking Diver", aqui embaixo, e escolha "Este mês" ou "Geral".'
+            : 'O placar aparece aqui embaixo, no "Ranking Diver", quando você entra com a sua conta (Sala de Jogos → Palavrinha).'),
+          h('div', { class: 'acoes-linha pal-acoes' },
+            h('button', { type: 'button', class: 'botao botao--primario', onclick: () => {
+              fechar();
+              cartaoRanking.scrollIntoView({ behavior: UI.movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
+              cartaoRanking.querySelector('#pal-ranking-titulo').focus({ preventScroll: true });
+            } }, icone('i-trofeu'), 'Ver o ranking'),
+            h('button', { type: 'button', class: 'botao botao--fantasma', onclick: fechar }, 'Entendi'))));
+      return aviso;
     }
 
     /* A partida */
@@ -458,15 +487,16 @@ const Palavrinha = (() => {
           const res = Jogos.resultado({
             jogoId: v.id, trilha: ctx.trilha, detalhes, inicio, pontuacao: pontos,
             titulo: ganhou ? `${v.nome}: resolvida em ${plural(tentativas, 'tentativa', 'tentativas')}` : `${v.nome}: não foi dessa vez`,
-            subtitulo: diaria ? 'Palavra do dia: amanhã tem outra. Enquanto isso, o Treino livre está aberto.' : 'Treino livre: não conta no ranking, mas fixa a palavra.',
+            subtitulo: diaria ? 'Palavra do dia: amanhã tem outra. Enquanto isso, o Treino livre está aberto.' : 'Treino livre: vale XP e pontos no Ranking Diver. Pérolas, só na palavra do dia.',
           });
           res.registro = registro; // vai para o log de atividade junto com o resultado (app.js, terminarJogo)
+          res.semPerolas = !diaria; // treino dá XP, conta nas estatísticas e no ranking; pérolas só na palavra do dia
           ctx.aoTerminar(res);
         } }, 'Ver meus pontos');
         teclado.replaceChildren(h('div', { class: 'pal-fim' },
-          diaria ? h('section', { class: 'cartao pal-cartao' }, h('h3', { class: 'cartao__titulo', text: 'Suas estatísticas' }), estat) : null,
+          h('section', { class: 'cartao pal-cartao' }, h('h3', { class: 'cartao__titulo', text: 'Suas estatísticas' }), estat),
           continuar));
-        if (diaria) painelEstatisticas(estat, ctx, v, [evento]);
+        painelEstatisticas(estat, ctx, v, [evento]);
         continuar.focus({ preventScroll: true });
       }
 

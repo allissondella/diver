@@ -687,9 +687,10 @@ as $$
   );
 $$;
 
--- Ranking da Palavrinha num curso: só a PALAVRA DO DIA conta (a 1ª partida de cada dia), só alunos
--- matriculados e ativos. Pontos por vitória = tentativas máximas + 1 − tentativas usadas
--- (Palavrinha 6, x2 7, x4 9: acertar de primeira na Palavrinha vale 6). Nome curto ("Maria S.").
+-- Ranking Diver da Palavrinha num curso: TODAS as partidas da variante (palavra do dia e Treino livre),
+-- só de alunos matriculados e ativos. Pontos por vitória = tentativas máximas + 1 − tentativas usadas
+-- (Palavrinha 6, x2 7, x4 9: acertar de primeira na Palavrinha vale 6). Placar do mês (zera no dia 1º,
+-- pela data da partida) ou geral. Nome curto ("Maria S.").
 -- "security definer" porque o aluno não lê os eventos dos colegas: a função devolve só o placar,
 -- e só para quem é do curso (ou professor dele, ou admin).
 create or replace function public.ranking_palavrinha(p_curso text, p_variante text default 'x1', p_periodo text default 'mes')
@@ -704,18 +705,16 @@ as $$
   maximo as (
     select case p_variante when 'x1' then 6 when 'x2' then 7 when 'x4' then 9 end as tentativas
   ),
-  diarias as (
-    select distinct on (e.aluno_id, e.detalhes ->> 'data') e.aluno_id, e.detalhes
+  partidas as (
+    select e.aluno_id, e.detalhes
       from public.eventos_atividade e
       join public.matriculas m on m.aluno_id = e.aluno_id and m.trilha_id = p_curso
       join public.perfis p on p.id = e.aluno_id and p.papel = 'aluno' and p.ativo
      where (select ok from pode) and (select tentativas from maximo) is not null
        and e.tipo = 'jogo_concluido' and e.curso_id = p_curso
        and e.detalhes ->> 'jogo' = 'palavrinha' and e.detalhes ->> 'variante' = p_variante
-       and public.atv_sim(e.detalhes, 'diaria')
        and (e.detalhes ->> 'data') ~ '^\d{4}-\d{2}-\d{2}$'
        and (p_periodo = 'geral' or left(e.detalhes ->> 'data', 7) = to_char(now() at time zone 'America/Sao_Paulo', 'YYYY-MM'))
-     order by e.aluno_id, e.detalhes ->> 'data', e.criado_em
   ),
   placar as (
     select d.aluno_id,
@@ -724,7 +723,7 @@ as $$
                     else 0 end)::integer as pontos,
            (count(*) filter (where public.atv_sim(d.detalhes, 'venceu')))::integer as vitorias,
            count(*)::integer as partidas
-      from diarias d group by d.aluno_id
+      from partidas d group by d.aluno_id
   )
   select (rank() over (order by pl.pontos desc, pl.vitorias desc))::integer,
          (select partes[1] || case when array_length(partes, 1) > 1 then ' ' || upper(left(partes[array_length(partes, 1)], 1)) || '.' else '' end

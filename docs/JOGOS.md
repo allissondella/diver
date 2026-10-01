@@ -26,7 +26,7 @@ _Partidas curtas para revisar um pouquinho a cada dia._
 | **Quiz Relâmpago** (`quiz-relampago`) | Múltipla escolha e verdadeiro ou falso, com cronômetro opcional e combo de acertos (a partir do 3º seguido, +5 XP). | Qualquer trilha (derivado) | O tempo é uma onda que vai chegando | Pronto (v0) |
 | **Memória** (`memoria`) | Jogo das cartas viradas: encontre os pares termo ↔ definição. Menos tentativas e menos tempo, mais pontos. | Pares (ou derivado das questões) | Conchas que abrem e fecham | Pronto (v0) |
 | **Adivinha Aí** (`adivinha-ai`) | As dicas aparecem uma a uma. Quanto antes você acertar, mais pontos. Aceita a resposta sem acento e sem maiúsculas. | Adivinhas (até 10 dicas por carta) | Dicas que chegam em garrafas com mensagem | Pronto (v0) |
-| **Palavrinha**, **Palavrinha x2** e **Palavrinha x4** (`palavrinha`, `palavrinha-x2`, `palavrinha-x4`) | Descubra a palavra-chave do curso: cada palpite pinta as letras (lugar certo, em outro lugar, não está). 6 tentativas; no x2 e no x4, 2 ou 4 palavras de uma vez (7 e 9 tentativas). **Palavra do dia** igual para todo o curso (sorteio pela data, sem repetir até usar todas) e **Treino livre**. Tema desde o início; dica completa depois da 3ª tentativa. Estatísticas pessoais e **ranking por curso** vindos do log de atividade (`docs/ATIVIDADE.md`). | Palavras simples de 4 a 8 letras (bloco `palavras` + respostas curtas). Aparece com 30 (x1) ou 40 palavras (x2/x4, com 10 de um mesmo tamanho) | Peças de letra no fundo do mar, que acendem quando acertam | Pronto (v1) |
+| **Palavrinha**, **Palavrinha x2** e **Palavrinha x4** (`palavrinha`, `palavrinha-x2`, `palavrinha-x4`) | Descubra a palavra-chave do curso: cada palpite pinta as letras (lugar certo, em outro lugar, não está). 6 tentativas; no x2 e no x4, 2 ou 4 palavras de uma vez (7 e 9 tentativas). **Palavra do dia** igual para todo o curso (sorteio pela data, sem repetir até usar todas) e **Treino livre**. Os dois valem XP, estatísticas e pontos no **Ranking Diver** do curso (zera todo mês); pérolas, só a palavra do dia. Tema desde o início (nunca um que entregue a palavra); dica completa depois da 3ª tentativa. Aviso do ranking na primeira vez. Tudo vindo do log de atividade (`docs/ATIVIDADE.md`). | Palavras simples de 4 a 8 letras (bloco `palavras` + respostas curtas). Aparece com 30 (x1) ou 40 palavras (x2/x4, com 10 de um mesmo tamanho) | Peças de letra no fundo do mar, que acendem quando acertam | Pronto (v1) |
 
 ### Aventuras
 _Jogos com mapa, chefe, sobrevivência e desafios de raciocínio._
@@ -123,7 +123,9 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
   comboMaximo, perfeito,                       // perfeito: nenhum erro
   oxigenioRestante,                            // se o jogo usa oxigênio
   detalhes: [ { cartaId, tema, dificuldade, acertou, tempoMs } ],
-  bonus: { xp: 0, perolas: 0 }                 // bônus próprio do jogo, dentro dos limites da economia
+  bonus: { xp: 0, perolas: 0 },                // bônus próprio do jogo, dentro dos limites da economia
+  semPerolas: false,                           // opcional: true = a partida dá XP mas não dá pérolas (treino da Palavrinha)
+  registro: {}                                 // opcional: dados extras do jogo para o log de atividade (docs/ATIVIDADE.md)
 }
 ```
 

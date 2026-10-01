@@ -41,8 +41,10 @@ A Palavrinha manda em `registro`: `jogo: 'palavrinha'`, `variante` (`x1`, `x2`, 
 - Telas: **Você → Minhas Estatísticas** (`js/estatisticas.js`) e o bloco **Estatísticas** dentro do "Progresso" de cada pessoa em Admin/Professor.
 
 ## 5. Palavrinha: estatísticas e ranking
-- **Estatísticas pessoais** (`Palavrinha.estatisticas`): só a palavra do dia, a 1ª partida de cada dia; partidas, % de vitórias, sequência atual (zera se pular um dia), melhor sequência e distribuição de tentativas.
-- **Ranking por curso** (`ranking_palavrinha(p_curso, p_variante, p_periodo)`, security definer): só quem é do curso (ou professor dele, ou admin) consulta; entram só alunos matriculados e ativos; nome curto ("Maria S."); pontos por vitória = tentativas máximas + 1 − tentativas usadas (6/7/9 no x1/x2/x4); placar do mês ou geral.
+- **Estatísticas pessoais** (`Palavrinha.estatisticas`): todas as partidas da variante, palavra do dia **e** Treino livre; partidas, % de vitórias, sequência atual (vitórias seguidas; uma derrota zera), melhor sequência e distribuição de tentativas.
+- **XP e pérolas:** as duas valem XP; **pérolas só na palavra do dia** (o treino manda `semPerolas: true` no Resultado padrão e a economia zera as pérolas).
+- **Ranking Diver por curso** (`ranking_palavrinha(p_curso, p_variante, p_periodo)`, security definer): conta a palavra do dia e o treino; só quem é do curso (ou professor dele, ou admin) consulta; entram só alunos matriculados e ativos; nome curto ("Maria S."); pontos por vitória = tentativas máximas + 1 − tentativas usadas (6/7/9 no x1/x2/x4); placar do mês (zera no dia 1º, pela data da partida) ou geral.
+- **Aviso de primeira vez:** ao abrir a Palavrinha pela primeira vez, um cartão explica o Ranking Diver e onde ele fica (botão "Ver o ranking"); some depois de lido e fica guardado na conta (`diver:v1:palavrinha-aviso-ranking`).
 - Limite conhecido: como o evento sai do aparelho do aluno, quem souber mexer no navegador poderia forjar uma vitória. Para um ranking de turma isso basta; se um dia valer prêmio, a conferência passa para o servidor.
 
 ## 6. Retrospectiva do ano (futuro)
