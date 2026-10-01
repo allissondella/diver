@@ -517,3 +517,114 @@
   background: rgba(250, 204, 21, 0.08);
 }
 .caso-numeros { margin: 0; font-family: var(--fonte-mono); font-size: 0.78rem; color: var(--texto-suave); }
+
+/* ---------- Palavrinha (x1, x2, x4) ----------
+   Lugar certo: turquesa com barrinha embaixo; em outro lugar: amarelo com bolinha no canto;
+   não está: apagada. Forma + cor, para quem não distingue cores. --tam vem do JS (cabe na tela). */
+.pal { --tam: 52px; --vao: 6px; display: grid; gap: var(--esp-4, 16px); }
+.pal-abertura { gap: var(--ritmo-cartoes, 16px); }
+.pal-cartao { display: grid; gap: var(--esp-3, 12px); }
+.pal-cartao .cartao__titulo { margin: 0; }
+.pal-titulo { font-size: clamp(1.4rem, 4vw, 1.8rem); font-weight: 800; }
+.pal-status { color: var(--texto-suave); }
+.pal-acoes { margin: 0; }
+.pal-como summary { cursor: pointer; font-weight: 700; color: var(--turquesa-claro); min-height: 44px; display: flex; align-items: center; }
+.pal-como p { margin-top: var(--esp-2, 8px); color: var(--texto-suave); }
+.pal-legenda { list-style: none; margin: var(--esp-3, 12px) 0 0; padding: 0; display: grid; gap: var(--esp-2, 8px); --tam: 34px; }
+.pal-legenda li { display: flex; align-items: center; gap: var(--esp-3, 12px); }
+
+.pal-tabuleiros { display: grid; gap: 16px; justify-content: center; }
+.pal--x2 .pal-tabuleiros,
+.pal--x4 .pal-tabuleiros { grid-template-columns: repeat(var(--colunas, 2), max-content); gap: 12px 16px; }
+.pal-tabuleiro { display: grid; gap: var(--esp-2, 8px); justify-items: center; align-content: start; }
+.pal-tabuleiro--ok .pal-grade { opacity: 0.8; }
+.pal-tema { font-size: 0.85rem; font-weight: 700; text-align: center; max-width: calc(var(--letras) * (var(--tam) + var(--vao))); overflow-wrap: anywhere; }
+/* x2/x4: tema em até 2 linhas, mesma altura em todos os tabuleiros (ficam alinhados) */
+.pal--x2 .pal-tema, .pal--x4 .pal-tema {
+  font-size: 0.78rem; line-height: 1.3; min-height: 2.6em;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.pal-dica { font-size: 0.82rem; color: var(--amarelo); text-align: center; max-width: calc(var(--letras) * (var(--tam) + var(--vao)) + 40px); }
+.pal-revela { font: 800 0.85rem var(--fonte-mono); text-align: center; letter-spacing: 0.04em; }
+.pal-grade { display: grid; gap: var(--vao); }
+.pal-linha { display: grid; grid-template-columns: repeat(var(--letras), var(--tam)); gap: var(--vao); }
+.pal-letra {
+  position: relative;
+  display: grid; place-items: center;
+  width: var(--tam); height: var(--tam);
+  border-radius: calc(var(--tam) / 6);
+  border: 2px solid var(--borda);
+  background: rgba(230, 241, 255, 0.04);
+  font: 800 calc(var(--tam) * 0.5) / 1 var(--fonte);
+  text-transform: uppercase;
+  color: var(--texto);
+  transition: background 240ms ease, border-color 240ms ease, transform 240ms ease;
+}
+.pal-letra--digitando:not(:empty) { border-color: var(--texto-suave); }
+.pal-letra--cursor { border-color: var(--turquesa); box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.25); }
+.pal-letra--certa { background: var(--turquesa); border-color: var(--turquesa); color: var(--texto-escuro); }
+.pal-letra--certa::after { content: ""; position: absolute; left: 22%; right: 22%; bottom: 10%; height: 3px; border-radius: 2px; background: currentColor; opacity: 0.55; }
+.pal-letra--lugar { background: var(--amarelo); border-color: var(--amarelo); color: var(--texto-escuro); }
+.pal-letra--lugar::after { content: ""; position: absolute; top: 9%; right: 9%; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.6; }
+.pal-letra--fora { background: rgba(6, 23, 45, 0.85); border-color: transparent; color: var(--texto-suave); }
+.pal-legenda .pal-letra { font-size: 1rem; }
+
+.pal-msg { min-height: 1.5em; text-align: center; font-weight: 700; color: var(--texto-suave); }
+.pal--tremer .pal-tabuleiros { animation: pal-tremer 320ms ease; }
+@keyframes pal-tremer { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+
+.pal-teclado { display: grid; gap: 8px; max-width: 560px; width: 100%; margin: 0 auto; }
+.pal-teclado__linha { display: flex; justify-content: center; gap: 6px; }
+.pal-tecla {
+  position: relative; flex: 1 1 0; max-width: 46px; min-width: 0; min-height: 52px; padding: 0;
+  display: grid; place-items: center;
+  border: 1px solid var(--borda); border-radius: var(--raio-pequeno);
+  background: var(--superficie-2); color: var(--texto);
+  font: 800 1rem var(--fonte); cursor: pointer;
+}
+.pal-tecla--larga { flex: 1.6 1 0; max-width: 72px; font-size: 0.8rem; }
+.pal-tecla:hover { border-color: var(--turquesa); }
+.pal-tecla--certa { background: var(--turquesa); color: var(--texto-escuro); }
+.pal-tecla--lugar { background: var(--amarelo); color: var(--texto-escuro); }
+.pal-tecla--fora { background: rgba(6, 23, 45, 0.85); color: var(--texto-suave); }
+.pal-tecla__marcas { position: absolute; left: 4px; right: 4px; bottom: 4px; display: flex; gap: 2px; }
+.pal-tecla__marca { flex: 1; height: 4px; border-radius: 2px; background: rgba(230, 241, 255, 0.12); }
+.pal-tecla__marca--certa { background: var(--turquesa); }
+.pal-tecla__marca--lugar { background: var(--amarelo); }
+.pal-tecla__marca--fora { background: transparent; }
+.pal-tecla__marca--feito { background: rgba(230, 241, 255, 0.04); }
+.pal-fim { display: grid; gap: var(--esp-4, 16px); }
+
+/* Estatísticas da Palavrinha: números + distribuição de tentativas (barras de uma cor, valor escrito) */
+.pal-numeros { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--esp-3, 12px); text-align: center; }
+.pal-numeros strong { display: block; font: 800 1.6rem / 1.1 var(--fonte-mono); }
+.pal-numeros span { font-size: 0.78rem; color: var(--texto-suave); }
+.pal-dist { margin: var(--esp-4, 16px) 0 0; }
+.pal-dist__titulo { font-size: 0.85rem; font-weight: 700; color: var(--texto-suave); margin-bottom: var(--esp-2, 8px); }
+.pal-dist__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pal-dist__linha { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr) 2rem; align-items: center; gap: var(--esp-2, 8px); font: 700 0.85rem var(--fonte-mono); }
+.pal-dist__trilho { height: 14px; background: rgba(230, 241, 255, 0.06); border-radius: 0 4px 4px 0; }
+.pal-dist__barra { display: block; height: 100%; background: var(--turquesa); border-radius: 0 4px 4px 0; }
+.pal-dist__valor { text-align: right; color: var(--texto-suave); }
+
+/* Ranking por curso */
+.pal-ranking { display: grid; gap: var(--esp-3, 12px); }
+.pal-ranking__itens { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.pal-ranking__item { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr) auto auto; align-items: center; gap: var(--esp-3, 12px); padding: 8px 12px; border-radius: var(--raio-pequeno); background: rgba(230, 241, 255, 0.04); }
+.pal-ranking__item--eu { background: var(--superficie-turquesa); box-shadow: inset 3px 0 0 var(--turquesa); }
+.pal-ranking__pos { font: 800 0.95rem var(--fonte-mono); color: var(--amarelo); }
+.pal-ranking__nome { font-weight: 700; overflow-wrap: anywhere; }
+.pal-ranking__pontos { font: 800 0.9rem var(--fonte-mono); }
+.pal-ranking__extra { font: 600 0.78rem var(--fonte-mono); color: var(--texto-suave); }
+.pal-ranking__nota { font-size: 0.8rem; margin-top: var(--esp-2, 8px); }
+
+@media (max-width: 479px) {
+  .pal-numeros { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pal-tecla { min-height: 48px; font-size: 0.9rem; }
+  .pal-teclado__linha { gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pal-letra { transition: none; }
+  .pal--tremer .pal-tabuleiros { animation: none; }
+}
+.pal-ranking .segmentado { justify-self: start; }
