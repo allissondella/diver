@@ -48,6 +48,7 @@ const Progresso = (() => {
       provas: [], // prova final: [{ data, total, acertos, nota, pct, aprovado, tempoSeg }]
       jogos: {}, // { [jogoId]: { partidas, melhor } } — Sala de Jogos
       leitner: {}, // { [cartaId]: caixa de 1 a 5 } — Cartas do Fundo
+      ultimaFase: null, // { id, quando } — última fase em que mergulhou (Início: "Continuar de onde parou")
       stats: { respondidas: 0, acertos: 0, maiorCombo: 0, sessoes: 0, acertosRevisao: 0 },
     };
   }

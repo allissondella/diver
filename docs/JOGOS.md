@@ -83,7 +83,16 @@ O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos a
 | Memória | pares "enunciado curto ↔ resposta correta curta" (enunciado até ~80 caracteres, resposta até ~40). |
 | Caça ao Tesouro, Chefão, Maré Alta, Torre, Duelo | usam as questões como estão (ordenadas ou sorteadas por dificuldade). |
 | Forca | palavras curtas vindas de "tema" e das respostas curtas das questões. |
-| Adivinha Aí, Corrente do Tempo, Caso Resolvido | **precisam** do bloco próprio; sem ele, o card na Sala de Jogos aparece como "Precisa de conteúdo". |
+| Adivinha Aí, Corrente do Tempo, Caso Resolvido | **precisam** do bloco próprio; sem ele, o jogo **não aparece** na Sala de Jogos daquele curso (ver "Sala de Jogos por curso"). |
+
+### Sala de Jogos por curso (desde 2026-10-01)
+A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os jogos que esse curso suporta**:
+- **Núcleo** (Mergulho, Simulado, Revisão): sempre aparece.
+- **Demais jogos:** aparecem só se `Jogos.estado(jogo, Cartas.derivar(trilha))` for `disponivel`, ou seja, se o curso tem o mínimo de cartas de cada tipo pedido em `requer` (ex.: Memória `{ pares: 6 }`, Adivinha Aí `{ adivinhas: 1 }`, Caso Resolvido `{ casos: 1, multipla: 6 }`).
+- **Sem conteúdo suficiente** (`precisa`) ou **ainda não lançado** (`embreve`: Torre do Saber, Duelo, Cruzadinha, Batalha de Turmas): o jogo **não aparece**, nem desabilitado. Nada de card fantasma.
+- **Grupo vazio** (ex.: "Estratégia e duelos" num curso sem `casos`): o título do grupo também some.
+- O **Desafio do Dia** já sorteava só jogos disponíveis; continua igual.
+- Para um jogo aparecer num curso, basta acrescentar o bloco de cartas que ele pede no JSON da trilha (os blocos são opcionais; ver seção 2).
 
 ## 3. Contrato do jogo (js/jogos/registro.js)
 
@@ -118,8 +127,8 @@ O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos a
 ```
 
 ## 4. Checklist de aceitação (todo jogo novo)
-- [ ] Registrado em `js/jogos/registro.js`; card na Sala de Jogos com o estado certo (disponível / precisa de conteúdo / em breve).
-- [ ] Funciona com uma trilha de 20 questões (derivada) ou mostra "Precisa de conteúdo".
+- [ ] Registrado em `js/jogos/registro.js` com o `requer` certo: o card aparece na Sala de Jogos **só** nos cursos que têm o conteúdo pedido (sem conteúdo ou "em breve" = não aparece).
+- [ ] Funciona com uma trilha de 20 questões (derivada) ou declara no `requer` o bloco de que precisa.
 - [ ] Devolve o Resultado padrão; a economia concede XP e pérolas; conquistas e revisão espaçada atualizadas.
 - [ ] Jogável **só com o teclado**; foco visível; alvos de toque de pelo menos 44 px; contraste bom.
 - [ ] Respeita `prefers-reduced-motion`.

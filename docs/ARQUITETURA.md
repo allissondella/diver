@@ -42,7 +42,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 ## Áreas (barra lateral) e telas
 | Endereço | Tela | Quem desenha |
 | --- | --- | --- |
-| `#inicio` | `tela-inicio`: mascote, escolha de trilha, "Bora mergulhar!", **Seu dia** (Desafio do Dia, meta, tarefas de hoje, próximos eventos) | `app.js` |
+| `#inicio` | `tela-inicio`: mascote, **"Continuar de onde parou"** (`#continuar`), escolha de trilha (`#inicio-cursos`), "Bora mergulhar!", **Seu dia** (Desafio do Dia, meta, tarefas de hoje, próximos eventos) | `app.js` |
 | `#mergulho` | `tela-painel`: status, mapa de profundidades, atalhos, conquistas | `app.js` |
 | `#simulado` | `tela-simulado`: montar simulado, **Provas antigas** (`#provas-enviadas`) e histórico de notas | `app.js` + `provas-enviadas.js` |
 | `#upload-prova` | `tela-upload-prova`: enviar a prova (arquivo ou texto, tempo, palavra de honra) e conferir as questões | `provas-enviadas.js` |
@@ -125,13 +125,13 @@ Jogos.registrar({
 // detalhe  = JogoComum.detalhe(carta, acertou, { inicio, pergunta, resposta, sua, neutro })
 ```
 - `cartas` vem de `Cartas.derivar(trilha)`: `{ multipla, vf, flash, pares, adivinhas, sequencias, palavras }`.
-- Estado do card: `disponivel` | `precisa` (falta conteúdo) | `embreve`. Núcleo (Mergulho, Simulado, Revisão) aparece na Sala e abre a própria área.
+- Estado do jogo: `disponivel` | `precisa` (falta conteúdo) | `embreve`. **A Sala mostra só o núcleo (Mergulho, Simulado, Revisão: abrem a própria área) e os jogos `disponivel` do curso atual**; `precisa` e `embreve` não aparecem, e grupo vazio some (`renderizarSala` no `app.js`; regra em `docs/JOGOS.md`, "Sala de Jogos por curso").
 - `Economia.aplicarResultado()`: detalhe cujo `cartaId` é uma questão da trilha passa pela repetição espaçada (`Progresso.registrarResposta`); o resto por `Progresso.registrarAvulsa`. `neutro: true` ("Quase" nas Cartas do Fundo) conta como estudo, sem acerto nem erro. XP por acerto = tabela do Mergulho + combo (3+ seguidos, +5); bônus do jogo com teto (`CONFIG.bonusMaximo`); Desafio do Dia dobra o XP.
 
 ## localStorage (sempre com try/catch, via `Dados` ou funções do Progresso)
 | Chave | Conteúdo |
 | --- | --- |
-| `diver:v1:trilha:<id>` | Progresso da trilha: `xp`, `perolas`, `fases`, `questoes` (peso, acertos, erros, marcada), `streak`, `metaDiaria`, `hoje`, `conquistas`, `simulados`, `stats`, `jogos` (partidas, melhor), `leitner` (caixa 1–5 por carta). |
+| `diver:v1:trilha:<id>` | Progresso da trilha: `xp`, `perolas`, `fases`, `questoes` (peso, acertos, erros, marcada), `streak`, `metaDiaria`, `hoje`, `conquistas`, `simulados`, `stats`, `jogos` (partidas, melhor), `leitner` (caixa 1–5 por carta), `ultimaFase` (`{ id, quando }`: card "Continuar" do Início). |
 | `diver:v1:ultimaTrilha` | Trilha atual. |
 | `diver:v1:trilhasImportadas` | Trilhas importadas ou criadas no app. |
 | `diver:v1:quadros` | Tarefas: `{ versao, quadroAtual, quadros: [{ id, nome, listas: [ids], ocultarConcluidas }], listas: { id: { nome, cor, ordenacao (manual/prazo/titulo), tarefas: [ids] } }, tarefas: { id: { titulo, notas, prazo, etiquetas: [ids], subtarefas: [{ id, titulo, feita }], concluida, concluidaEm, criadaEm, trilhaId, xpConcedido } }, etiquetas: [{ id, nome, cor }] }`. A ordem dos cartões é a ordem do array da lista. A chave antiga `diver:v1:tarefas` (Kanban de 4 colunas) é migrada sozinha para o "Quadro principal" e apagada. |
@@ -141,6 +141,8 @@ Jogos.registrar({
 | `diver:v1:mascote` | Mascote escolhido: `{ rosto, tom }` (ids de `Mascotes.ROSTOS` e `Mascotes.TONS`). Sincroniza com a nuvem. |
 | `diver:v1:tutorial` | Tutoriais já vistos: `{ vistos: { inicio: true, mergulho: true, ... } }`. Sincroniza com a nuvem. |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
+
+**"Continuar de onde parou" (Início):** `cursoParaContinuar()` no `app.js` escolhe o curso da última vez (`diver:v1:ultimaTrilha`, se já tiver estudo nele; senão, o de atividade mais recente) e a fase guardada em `ultimaFase` (`{ id, quando }` no progresso da trilha, gravada ao começar um Mergulho ou abrir o "Antes de mergulhar"). Se essa fase já foi concluída ou está trancada, usa a próxima liberada que falta. Sem histórico: o card some e a lista de cursos fica aberta. Curso todo concluído: card "Parabéns" (Prova final, se ainda não aprovada, e "Escolher o próximo curso"). Com o card na tela, a lista de cursos e a barra "Bora mergulhar!" ficam recolhidas atrás de "Ver todos os cursos". Tudo isso viaja na sincronia que já existe (tabela `estado`): nenhuma mudança no banco.
 
 O progresso da trilha também guarda `provas` (prova final: data, total, acertos, nota, pct, aprovado, tempoSeg).
 
