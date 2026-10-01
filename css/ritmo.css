@@ -85,8 +85,8 @@ h1, h2, h3 { text-wrap: balance; }
   .lateral { gap: var(--esp-2); overflow: hidden; padding-block: var(--esp-3); }
   .lateral__nav { gap: 1px; }
   .lateral__nav { flex: 1 1 auto; min-height: 0; overflow-y: auto; align-content: start; margin-inline: -4px; padding-inline: 4px; }
-  .lateral__nav a { min-height: 36px; padding: 5px 12px; }
-  .lateral__grupo { margin: 10px 12px 2px; }
+  .lateral__nav a { min-height: 34px; padding: 4px 12px; }
+  .lateral__grupo { margin: 8px 12px 2px; }
   .lateral__ajuda { min-height: 38px; padding: 6px 12px; }
   .lateral__rodape { padding: 10px 12px; gap: 6px; }
   .seletor-trilha__botao { padding-block: 8px; }
@@ -203,6 +203,8 @@ h1, h2, h3 { text-wrap: balance; }
 .form-upload__dica { display: block; margin-top: var(--esp-2); }
 
 /* ---------- Admin ---------- */
+/* Cartões de pessoa: a tabela de progresso rola dentro do cartão, sem alargar a página */
+.pessoas, .pessoa { grid-template-columns: minmax(0, 1fr); }
 /* Filtros e escolhas em "pílula": nunca passam da largura da tela; no celular quebram em duas linhas */
 .segmentado { max-width: 100%; flex-wrap: wrap; }
 @media (max-width: 599px) {

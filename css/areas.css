@@ -1579,3 +1579,50 @@ body.qd-travado { overflow: hidden; }
 .fila-lote__acoes { flex-wrap: wrap; }
 .dialogo--estreito { width: min(480px, calc(100vw - 24px)); }
 .fila-senha__custo strong { color: var(--amarelo); font-size: 1.15rem; }
+
+/* ---------- Minhas Estatísticas (js/estatisticas.js) ----------
+   Números grandes nos totais; barras de uma cor só com o valor escrito ao lado (nada só por cor). */
+.est-barra-filtro { align-items: center; }
+.est-barra-filtro .rotulo-campo { margin: 0; }
+.est-filtro { width: auto; min-width: min(280px, 100%); }
+.est-corpo { display: grid; }
+.est-numeros {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); gap: var(--ritmo-cartoes, 16px);
+}
+.est-numero {
+  display: grid; gap: var(--esp-1, 4px); align-content: start;
+  padding: var(--esp-4, 16px) var(--esp-4, 16px) var(--esp-4, 16px);
+  background: rgba(18, 50, 90, 0.72); border: 1px solid var(--borda); border-radius: var(--raio);
+}
+.est-numero__rotulo { display: flex; align-items: center; gap: var(--esp-2, 8px); font-size: 0.85rem; font-weight: 700; color: var(--texto-suave); }
+.est-numero__rotulo .icone { width: 18px; height: 18px; color: var(--turquesa-claro); flex-shrink: 0; }
+.est-numero__valor { font: 800 clamp(1.7rem, 5vw, 2.2rem) / 1.1 var(--fonte-mono); color: var(--texto); letter-spacing: -0.02em; }
+.est-numero__apoio { font-size: 0.82rem; color: var(--texto-suave); }
+
+.est-barras { margin: 0; }
+.est-barras__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3, 12px); }
+.est-barra {
+  display: grid; grid-template-columns: minmax(96px, 9rem) minmax(0, 1fr) auto; align-items: center; gap: var(--esp-3, 12px);
+  font-size: 0.9rem;
+}
+.est-barra__nome { font-weight: 700; overflow-wrap: anywhere; }
+.est-barra__trilho { height: 12px; border-radius: 0 6px 6px 0; background: rgba(230, 241, 255, 0.06); overflow: hidden; }
+.est-barra__valor { display: block; height: 100%; border-radius: 0 4px 4px 0; background: var(--turquesa); }
+.est-barra__texto { color: var(--texto-suave); font-size: 0.85rem; text-align: right; }
+@media (max-width: 599px) {
+  /* celular: nome e número em cima, barra embaixo, na largura toda */
+  .est-barra { grid-template-columns: minmax(0, 1fr) auto; row-gap: 6px; }
+  .est-barra__trilho { grid-column: 1 / -1; grid-row: 2; }
+}
+.est-rodape { margin-top: var(--esp-6, 32px); font-size: 0.85rem; }
+
+/* Bloco dentro do "Progresso" de uma pessoa (Admin/Professor) */
+.est-bloco { display: grid; gap: var(--esp-4, 16px); margin-top: var(--esp-5, 24px); padding-top: var(--esp-5, 24px); border-top: 1px solid var(--borda); }
+.est-bloco__topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-3, 12px); }
+.est-bloco__titulo { display: flex; align-items: center; gap: var(--esp-2, 8px); font-size: 1rem; font-weight: 800; }
+.est-bloco__titulo .icone { width: 18px; height: 18px; color: var(--amarelo); }
+.est-corpo--compacto .est-numeros { grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: var(--esp-3, 12px); }
+.est-corpo--compacto .est-numero__valor { font-size: 1.5rem; }
+.est-subtitulo { font-size: 0.95rem; font-weight: 800; margin: var(--esp-5, 24px) 0 var(--esp-3, 12px); }
+.est-corpo .estado-vazio { margin: 0; }

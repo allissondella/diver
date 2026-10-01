@@ -94,6 +94,10 @@ const Tutorial = (() => {
       { alvo: '#fila-lista', desenho: 'alvo', titulo: 'Lotes e custo', texto: 'Cada lote mostra o custo estimado antes de qualquer gasto. Nada roda sozinho: você aprova ou rejeita.' },
       { desenho: 'relogio', titulo: 'Aprovar com senha', texto: 'Aprovar pede a sua senha de novo, toda vez. Só então o Mergulho Triplo chama as IAs pagas. Rejeitar não custa nada.' },
     ],
+    estatisticas: [
+      { alvo: '.est-numeros', desenho: 'trofeu', titulo: 'Seus números', texto: 'Perguntas, jogos, revisões, simulados e provas, somando tudo. Cada coisa que você faz no Diver entra aqui sozinha.' },
+      { alvo: '#est-curso', desenho: 'mapa', titulo: 'Um curso ou todos', texto: 'Escolha um curso para ver só ele, ou "Todos os cursos" para o mergulho completo.' },
+    ],
     perfil: [
       { alvo: '#perfil-mascote', desenho: 'diver', titulo: 'Seu mascote', texto: 'Pinguim, mergulhador ou mergulhadora, com o tom de pele que você quiser. Escolheu, trocou em todas as telas.' },
     ],

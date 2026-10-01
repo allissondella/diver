@@ -59,6 +59,7 @@
   <script src="js/organizar.js" defer></script>
   <script src="js/biblioteca.js" defer></script>
   <script src="js/perfil.js" defer></script>
+  <script src="js/estatisticas.js" defer></script>
   <script src="js/admin.js" defer></script>
   <script src="js/fila-validacao.js" defer></script>
   <script src="js/leitor-prova.js" defer></script>
@@ -102,6 +103,8 @@
       <symbol id="i-revisao" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 01-14.3 5M4 12a8 8 0 0114.3-5"/><path d="M18.5 3v4h-4M5.5 21v-4h4"/></g></symbol>
       <symbol id="i-seta-baixo" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-grafico" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-letras" viewBox="0 0 24 24"><rect x="3" y="8" width="5" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="9.5" y="8" width="5" height="8" rx="1.5" fill="currentColor" opacity=".35" stroke="currentColor" stroke-width="2"/><rect x="16" y="8" width="5" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
       <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 9.5V20h5v-6h4v6h5V9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-controle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10a5 5 0 015 5v1.5a3.5 3.5 0 01-6.3 2.1L14.5 14h-5l-1.2 1.6A3.5 3.5 0 012 13.5V12a5 5 0 015-5z"/><path d="M7 10v3M5.5 11.5h3"/></g><circle cx="16" cy="10.5" r="1.2" fill="currentColor"/><circle cx="18" cy="12.5" r="1.2" fill="currentColor"/></symbol>
@@ -195,6 +198,7 @@
 
         <p class="lateral__grupo">Você</p>
         <a href="#perfil" data-secao="perfil"><svg class="icone" aria-hidden="true"><use href="#i-usuario"/></svg>Perfil</a>
+        <a href="#estatisticas" data-secao="estatisticas"><svg class="icone" aria-hidden="true"><use href="#i-grafico"/></svg>Minhas Estatísticas</a>
 
         <p class="lateral__grupo" id="lateral-grupo-equipe" data-so-equipe hidden>Admin</p>
         <a href="#admin" data-secao="admin" data-so-equipe hidden><svg class="icone" aria-hidden="true"><use href="#i-usuario"/></svg><span id="lateral-link-equipe-texto">Pessoas e cursos</span></a>
@@ -495,6 +499,7 @@
       <section id="tela-cursos" class="tela tela--larga" hidden aria-label="Cursos e trilhas"></section>
       <section id="tela-pdfs" class="tela tela--larga" hidden aria-label="PDFs"></section>
       <section id="tela-perfil" class="tela" hidden aria-label="Perfil"></section>
+      <section id="tela-estatisticas" class="tela" hidden aria-label="Minhas Estatísticas"></section>
     </main>
   </div>
 
