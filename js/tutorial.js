@@ -88,6 +88,11 @@ const Tutorial = (() => {
     'upload-prova': [
       { desenho: 'upload', titulo: 'Upload de prova', texto: 'Mande o PDF (ou cole o texto) com o gabarito. Eu separo as questões e você confere tudo antes de salvar.' },
     ],
+    fila: [
+      { alvo: '#fila-chaves-cartao', desenho: 'diver', titulo: 'Chaves das IAs', texto: 'Aqui você confere se as chaves do Gemini e da OpenAI estão nos Secrets do Supabase. O valor delas nunca aparece: só "cadastrada" ou "não encontrada".' },
+      { alvo: '#fila-lista', desenho: 'alvo', titulo: 'Lotes e custo', texto: 'Cada lote mostra o custo estimado antes de qualquer gasto. Nada roda sozinho: você aprova ou rejeita.' },
+      { desenho: 'relogio', titulo: 'Aprovar com senha', texto: 'Aprovar pede a sua senha de novo, toda vez. Só então o Mergulho Triplo chama as IAs pagas. Rejeitar não custa nada.' },
+    ],
     perfil: [
       { alvo: '#perfil-mascote', desenho: 'diver', titulo: 'Seu mascote', texto: 'Pinguim, mergulhador ou mergulhadora, com o tom de pele que você quiser. Escolheu, trocou em todas as telas.' },
     ],

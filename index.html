@@ -58,6 +58,7 @@
   <script src="js/biblioteca.js" defer></script>
   <script src="js/perfil.js" defer></script>
   <script src="js/admin.js" defer></script>
+  <script src="js/fila-validacao.js" defer></script>
   <script src="js/leitor-prova.js" defer></script>
   <script src="js/provas-enviadas.js" defer></script>
   <script src="js/tutorial.js" defer></script>
@@ -195,6 +196,7 @@
 
         <p class="lateral__grupo" id="lateral-grupo-equipe" data-so-equipe hidden>Admin</p>
         <a href="#admin" data-secao="admin" data-so-equipe hidden><svg class="icone" aria-hidden="true"><use href="#i-usuario"/></svg><span id="lateral-link-equipe-texto">Pessoas e cursos</span></a>
+        <a href="#fila" data-secao="fila" data-so-admin hidden><svg class="icone" aria-hidden="true"><use href="#i-cadeado"/></svg><span>Fila de Validação</span></a>
       </nav>
 
       <button type="button" class="lateral__ajuda" id="btn-tutorial">
@@ -475,6 +477,7 @@
       <!-- ============ PROVA FINAL (app.js) E ADMIN (admin.js) ============ -->
       <section id="tela-prova" class="tela" hidden aria-label="Prova final"></section>
       <section id="tela-admin" class="tela tela--larga" hidden aria-label="Pessoas e cursos"></section>
+      <section id="tela-fila" class="tela tela--larga" hidden aria-label="Fila de Validação"></section>
 
       <!-- ============ ÁREAS (montadas pelos módulos organizar.js, biblioteca.js e perfil.js) ============ -->
       <section id="tela-tarefas" class="tela tela--larga tela--quadro" hidden aria-label="Tarefas"></section>

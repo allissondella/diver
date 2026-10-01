@@ -47,17 +47,32 @@ Provas de vestibulares institucionais (Fuvest, Unicamp etc.) **não** entram nes
 Leia `docs/MOTOR_DIVER.md` antes desta etapa, se ainda não tiver lido.
 
 Antes de escrever qualquer questão nova:
-1. Verifique se existe `data/acervo/<materia>.json` (nome da matéria em minúsculas, sem acento: `matematica`, `linguagens`, `ciencias-humanas`...). Se não existir, tudo bem — é normal no início, quando o acervo ainda está vazio (o `scripts/validar-questoes.mjs` cria o arquivo quando a primeira questão for aprovada).
-2. Busque os itens mais parecidos (mesmo tema, dificuldade próxima) com o que está sendo gerado agora, **rodando o script do Motor Diver** (uma vez por tema/lote, descrevendo o que vai gerar):
+1. Verifique se existe `data/acervo/<materia>.json` (nome da matéria em minúsculas, sem acento: `matematica`, `linguagens`, `ciencias-humanas`...). Se não existir, tudo bem — é normal no início, quando o acervo ainda está vazio (o arquivo nasce quando o primeiro lote aprovado é baixado da fila).
+2. Busque nesse arquivo os itens mais parecidos (mesmo tema, dificuldade próxima) com o que está sendo gerado agora, rodando o script do Motor Diver (sem IA e sem custo; compara por palavras):
    ```
    node scripts/buscar-similares.mjs --materia <materia> --tema "<tema>" --quantos 5 --json "<descrição do que vai ser gerado: tema, subtema, dificuldade, tipo de situação>"
    ```
-   - A saída traz os itens do acervo em ordem de semelhança (campo `semelhanca`, de -1 a 1), com enunciado, alternativas e explicação.
-   - Sem `OPENAI_API_KEY` no `.env`, o script avisa e usa um plano B por palavras em comum (mais fraco); siga assim mesmo, mas diga isso no relatório final.
-   - Se aparecer "acervo ... ainda vazio", vá para o passo 4.
-3. Inclua os 3 a 5 exemplos mais parecidos encontrados como referência de estilo ao gerar o conteúdo novo — não para copiar o conteúdo deles, só o estilo/formato/nível. Ignore exemplos de outro tema com `semelhanca` muito baixa (abaixo de ~0,3 no embedding), que só confundem.
+   A saída traz os itens em ordem de semelhança (campo `semelhanca`, de 0 a 1). Ignore os de semelhança perto de zero. Se aparecer "acervo ... ainda vazio", vá para o passo 4.
+3. Inclua os 3 a 5 exemplos mais parecidos encontrados como referência de estilo ao gerar o conteúdo novo — não para copiar o conteúdo deles, só o estilo/formato/nível.
 4. Se o acervo ainda não tiver exemplos suficientes para essa matéria/tema, gere normalmente a partir da assinatura Diver (`docs/ASSINATURA_E_VALIDACAO.md`) — o acervo cresce com o tempo, não precisa estar cheio desde o início.
-5. Depois de gerar, rode o Mergulho Triplo (skill `validar-questoes`): `node scripts/validar-questoes.mjs data/trilhas/<trilha>.json --materia <materia> --fase <fase>`. As aprovadas entram sozinhas no acervo e passam a servir de exemplo nas próximas gerações.
+
+**Regra obrigatória:** qualquer trecho de apostila ou prova ainda não confirmada (seção 1 de `docs/CONTEUDO_CURSINHO.md`) usado só para entender estilo/abordagem é descartado da memória de trabalho assim que a questão nova é gerada. Nunca escreva esse texto de referência em `data/acervo/`, em nenhum outro arquivo do repositório, nem em log. Questões literais do Enem são a única exceção — essas entram no Acervo normalmente.
+
+## 2.3 Validação: o lote vai para a Fila de Validação (nunca validar direto)
+
+Depois de gerar e salvar as questões no JSON da trilha (e passar no autocheck da seção 4), **não chame IA nenhuma para validar**. O lote entra na **Fila de Validação** (`fila_validacao` no Supabase) com status `pendente`, e o Mergulho Triplo só roda quando o admin aprova na tela **Admin → Fila de Validação**, digitando a senha (custo estimado visível antes).
+
+1. Mostre a estimativa (sem internet, sem custo):
+   ```
+   node scripts/fila.mjs simular data/trilhas/<trilha>.json --materia <materia> --fase <fase>
+   ```
+2. **Peça ao usuário para rodar ele mesmo, no terminal dele**, o envio (o script pede e-mail e senha de admin e se recusa a ler senha de arquivo ou de outro programa; nunca peça a senha no chat):
+   ```
+   node scripts/fila.mjs enviar data/trilhas/<trilha>.json --materia <materia> --fase <fase>
+   ```
+   (`--ambiente producao` só quando for para a produção; o padrão é o ambiente de testes. Lotes de até 20 questões; mais que isso vira vários lotes.)
+3. Depois que o admin aprovar e o lote ficar **Concluído**, o usuário roda `node scripts/fila.mjs baixar <id-do-lote>`: isso grava o bloco `validacao` nas questões da trilha, move as `revisar_humano` para `emRevisao` e adiciona as aprovadas em `data/acervo/<materia>.json`. Revise o `git diff` e faça o commit.
+4. Questões reprovadas pela 1ª vez: corrija (fato: só o trecho apontado; lógica: reescreva do zero) e envie de novo só elas (`--ids`).
 
 ## 3. Produção do conteúdo
 

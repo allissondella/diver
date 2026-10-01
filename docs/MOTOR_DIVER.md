@@ -41,11 +41,21 @@ Pedido: "gerar uma questão nova de Matemática, tema Funções, fase 2"
 
 Isso é o "aprender com o material" de um jeito real e mensurável: quanto mais conteúdo aprovado, melhores e mais consistentes ficam as próximas gerações — sem treinar nada, sem reinventar o modelo de linguagem.
 
-## 4. Como "buscar os mais parecidos" funciona, sem jargão
+## 4. O que o Acervo Diver nunca guarda
+
+O Acervo só armazena **conteúdo nosso, autoral e já aprovado**. Material de referência (apostilas de cursinhos concorrentes, provas de vestibulares ainda não confirmados) usado só para entender abordagem/estilo durante a geração é **descartado da memória de trabalho assim que a questão nova é criada** — nunca é salvo em `data/acervo/`, em nenhum outro arquivo do repositório, nem em log, nem em tabela do banco. Se for necessário guardar um trecho de referência temporariamente para consulta durante a sessão de geração, ele fica fora do repositório (na pasta `~/diver-fontes/` já usada) e é apagado ao final daquela sessão — nunca commitado.
+
+**Exceção:** questões literais do Enem entram no Acervo normalmente, porque não são "inspiração" — são conteúdo que já temos direito de usar na íntegra (`docs/CONTEUDO_CURSINHO.md`, seção 1.1).
+
+## 5. Como as chaves de API chegam até o sistema (nunca por chat)
+
+As chaves (`GEMINI_API_KEY`, `OPENAI_API_KEY`) são cadastradas **diretamente no painel do Supabase** (Edge Functions → Manage secrets), digitadas ali pelo próprio administrador. Elas nunca são coladas em nenhuma conversa — nem aqui, nem no Claude Code — e nenhum código do projeto lê ou grava o valor delas em lugar nenhum além dessa referência de ambiente no momento da execução da função de servidor. Se uma chave for exposta acidentalmente em qualquer lugar (chat, commit, log), ela deve ser revogada e substituída imediatamente, sem exceção.
+
+## 6. Como "buscar os mais parecidos" funciona, sem jargão
 
 A técnica se chama **embeddings**: um serviço (da OpenAI, Google ou outro) transforma qualquer texto em uma lista de números que representa o "significado" dele. Dois textos parecidos em significado geram listas de números parecidas. Para achar os exemplos mais relevantes do Acervo, o sistema só precisa comparar essas listas de números — isso é chamado de busca por similaridade, e é uma operação simples e barata.
 
-## 5. Arquitetura v1 — simples, sem infraestrutura nova
+## 7. Arquitetura v1 — simples, sem infraestrutura nova
 
 No volume de conteúdo que temos hoje (dezenas a poucos milhares de itens), **não precisamos de um banco de dados especializado**. A versão certa para agora:
 
@@ -55,13 +65,13 @@ No volume de conteúdo que temos hoje (dezenas a poucos milhares de itens), **n�
 
 **Quando migrar para algo mais robusto:** só quando o Acervo passar de dezenas de milhares de itens e a busca simples começar a ficar lenta. Não antes disso — começar com a versão pesada seria resolver um problema que ainda não temos.
 
-## 6. Como isso se conecta ao que já existe
+## 8. Como isso se conecta ao que já existe
 
 - A skill `criar-trilha` passa a ter um passo novo, antes de gerar: consultar o Acervo Diver pelos exemplos mais parecidos.
 - A skill `validar-questoes` (Mergulho Triplo) passa a ter um passo novo, no final: se a questão for aprovada, adicioná-la ao Acervo Diver.
 - `docs/ASSINATURA_E_VALIDACAO.md` continua sendo a fonte da verdade sobre o estilo — o Acervo é o histórico vivo *de exemplos reais* desse estilo.
 
-## 7. Roadmap honesto do Motor Diver
+## 9. Roadmap honesto do Motor Diver
 
 | Versão | O que é | Quando faz sentido |
 |---|---|---|
@@ -69,69 +79,85 @@ No volume de conteúdo que temos hoje (dezenas a poucos milhares de itens), **n�
 | **v2 (futuro, com escala real)** | Ajuste fino (fine-tuning) de um modelo existente no nosso estilo, para gerar rascunhos mais rápido e mais barato | Só depois de dezenas de milhares de itens aprovados no Acervo — não é prioridade agora |
 | **v-nunca** | Treinar um modelo de linguagem do zero | Fora de cogitação — nem empresas de porte médio fazem isso |
 
-## 8. O que fica com você
+## 10. O que fica com você
 
-Nada de ação externa aqui (sem conta nova, sem chave nova) — isso usa as mesmas chaves de API do Gemini/GPT que já estão nos planos do Mergulho Triplo. Só peço uma leitura e um aceite deste documento antes de eu pedir ao Claude Code para implementar a busca no Acervo dentro da skill `criar-trilha`.
+Cadastrar as chaves diretamente nos Secrets do Supabase (seção 5) — nunca em chat, nunca em arquivo do repositório. A partir daí, nada roda automaticamente: toda chamada às IAs pagas passa pela Fila de Validação, com custo estimado visível e aprovação por senha, antes de qualquer execução.
 
-## 9. Implementação v1 (2026-09-30)
+## 11. Implementação: Fila de Validação e Mergulho Triplo (2026-10-01)
 
-O que existe no repositório (roda no seu computador com Node 18 ou mais novo; o site não usa nada disto):
+### 11.1 O fluxo, de ponta a ponta
+```
+criar-trilha gera as questões no JSON da trilha (seções 2.2 e 2.3 da skill)
+        ↓
+node scripts/fila.mjs simular …   → custo estimado, sem internet e sem IA
+node scripts/fila.mjs enviar …    → você digita e-mail e senha de admin no terminal;
+                                     lote(s) de até 20 questões entram em fila_validacao como 'pendente'
+        ↓
+Admin → Fila de Validação (no site): custo estimado à vista → "Aprovar e executar"
+        ↓  pede a SENHA de novo (reautenticação: token novo com o horário da senha)
+banco: fila_aprovar(id)           → só admin, só com senha digitada há ≤ 5 min, só se 'pendente' → 'aprovado'
+        ↓
+Edge Function mergulho-triplo     → confere de novo: admin + senha ≤ 5 min + lote 'aprovado';
+                                     'aprovado' → 'executando' numa operação só (dois cliques não pagam duas vezes);
+                                     confere se os modelos existem (grátis); roda Fato (Gemini + busca) e
+                                     Lógica (OpenAI, sem gabarito) com o funil barato → robusto;
+                                     grava o progresso a cada questão; vetor (embedding) das aprovadas
+        ↓
+fila_validacao: 'concluido' + resultado (validações, itens aprovados, relatório, custo real)
+        ↓
+node scripts/fila.mjs baixar <id> → aplica o bloco "validacao" na trilha, move revisar_humano para
+                                     "emRevisao" e grava as aprovadas em data/acervo/<materia>.json
+        ↓
+você revisa o git diff e faz o commit
+```
+Nada roda sozinho: sem aprovação com senha na tela, nenhuma IA paga é chamada. Rejeitar um lote não custa nada.
 
-| Arquivo | Para que serve |
+### 11.2 Onde está cada peça
+| Arquivo | O que faz |
 |---|---|
-| `scripts/validar-questoes.mjs` | Mergulho Triplo: valida as questões de uma trilha (fato no Gemini com busca do Google, lógica adversarial na OpenAI), grava o bloco `validacao` e manda as aprovadas para o acervo. |
-| `scripts/buscar-similares.mjs` | Motor Diver: devolve os 3 a 5 itens do acervo mais parecidos com um pedido (usado pela skill `criar-trilha`). |
-| `scripts/lib/config.mjs` | Chaves (só de variáveis de ambiente), modelos padrão e preços para a estimativa de custo. |
-| `scripts/lib/ia.mjs` | Chamadas às APIs (sem biblioteca externa), novas tentativas em caso de limite/instabilidade e contagem de tokens. |
-| `scripts/lib/acervo.mjs` | Leitura e gravação de `data/acervo/<materia>.json`, similaridade de cosseno e plano B por palavras. |
-| `data/acervo/` | Um JSON por matéria (`matematica.json`, ...), criado quando a primeira questão daquela matéria é aprovada. |
-| `.env.example` | Modelo do arquivo de chaves (sem valores). |
+| `supabase/setup.sql` (fim do arquivo) | Tabela `fila_validacao` (as colunas pedidas + `criado_por`, `executado_por`, `iniciado_em`, `concluido_em`, `resultado`, `custo_real_usd`, `erro`), RLS **só admin** (ler e criar; ninguém altera direto), gatilho que força todo lote novo a nascer `pendente`, e as funções `senha_recente`, `fila_aprovar`, `fila_rejeitar`, `fila_destravar`. |
+| `supabase/functions/mergulho-triplo/index.ts` | A Edge Function. Ações: `status` (diz só **se** as chaves existem, sem custo) e `executar`. |
+| `supabase/functions/_shared/mergulho-nucleo.mjs` | Prompts exatos, funil, regra das tentativas, fórmula do custo e formato do item do acervo. É o mesmo arquivo para a função (Deno) e para os scripts (Node): não tem como os dois divergirem. |
+| `supabase/functions/_shared/ias.mjs` | Chamadas ao Gemini (com `google_search`) e à OpenAI. Recebe as chaves por parâmetro; nunca as escreve em log ou erro. |
+| `supabase/functions/_shared/processar-lote.mjs` | Roda o lote: confere modelos, 3 questões em paralelo, para antes do tempo da função acabar e continua numa próxima execução. |
+| `js/fila-validacao.js` | A tela "Fila de Validação" (só admin; link na barra lateral, grupo Admin). |
+| `js/nuvem.js` | `confirmarSenha` (reautenticação) e `funcao` (chama a Edge Function). |
+| `scripts/fila.mjs` | `simular`, `enviar`, `listar`, `baixar`. Não chama IA; login de admin digitado no terminal. |
+| `scripts/buscar-similares.mjs` | Busca no acervo por palavras (TF-IDF), sem IA. Ver 11.5. |
 
-### 9.1 Configurar as chaves (uma vez)
-1. Crie as chaves no Google AI Studio (Gemini) e na OpenAI, com limite de gasto mensal em cada painel.
-2. Na raiz do projeto, copie `.env.example` para `.env` e cole as chaves depois do `=`. O `.env` está no `.gitignore`: ele nunca vai para o GitHub (confira com `git status`, ele não pode aparecer). Também não vai para o site do Cloudflare (`.assetsignore`).
-3. Confira se os modelos existem na sua conta: `node scripts/validar-questoes.mjs --checar-modelos`. Se algum não existir, o script lista os parecidos disponíveis; troque no `.env` (`DIVER_MODELO_FATO`, `DIVER_MODELO_FATO_FORTE`, `DIVER_MODELO_LOGICA`, `DIVER_MODELO_LOGICA_FORTE`, `DIVER_MODELO_EMBEDDING`).
+### 11.3 Chaves (confere com a seção 5)
+- `GEMINI_API_KEY` e `OPENAI_API_KEY` só existem nos **Secrets das Edge Functions** de cada projeto Supabase (testes e produção). O único código que lê o valor é `index.ts`, com `Deno.env.get`, no momento da execução; o valor só viaja no cabeçalho da chamada à IA.
+- A ação `status` devolve só `true/false` para cada chave; a tela mostra "cadastrada" ou "não encontrada".
+- Nenhum script local, arquivo `.env` ou tabela guarda chave de IA (o `.env.example` antigo foi removido; o `.gitignore` continua bloqueando `.env` por segurança).
+- Opcional nos mesmos Secrets: `DIVER_MODELO_FATO`, `DIVER_MODELO_FATO_FORTE`, `DIVER_MODELO_LOGICA`, `DIVER_MODELO_LOGICA_FORTE`, `DIVER_MODELO_EMBEDDING` (trocar modelo sem mexer no código) e `DIVER_LIMITE_SEGUNDOS` (padrão 110).
 
-Nunca cole as chaves no chat nem em arquivo que vá para o repositório. Se uma chave vazar, revogue e gere outra.
+### 11.4 Custo estimado (fórmula, com os preços da seção 3 de `docs/ASSINATURA_E_VALIDACAO.md`)
+Por questão: tokens de entrada ≈ tamanho do prompt ÷ 4; saída prevista = 800 tokens por camada.
+- **Fato:** entrada × US$ 0,75/1M + saída × US$ 3,75/1M + 1 busca do Google (US$ 14 por 1.000; os 5.000 grátis/mês não são descontados).
+- **Lógica:** entrada × US$ 1,75/1M + saída × US$ 14/1M (o documento não traz preço do "mini", então a estimativa usa o do GPT-5.2 cheio como teto).
+- **Total do lote** = soma das questões × 1,3 (folga para as que escalam para o modelo robusto).
 
-### 9.2 Modelos escolhidos
-| Papel | Padrão | Por quê |
-|---|---|---|
-| Fato, primeira passada | `gemini-3.8-flash` | Flash mais novo e estável (GA), com busca do Google; US$ 0,75 / 3,75 por 1M tokens até 31/12/2026. |
-| Fato, desempate | `gemini-3.1-pro-preview` | Pro mais novo listado na documentação do Gemini. |
-| Lógica, primeira passada | `gpt-5-mini` | O "mini" mais barato da OpenAI (US$ 0,25 / 2,00 por 1M); o `gpt-5.4-mini` é mais novo, mas custa 3× mais. |
-| Lógica, desempate | `gpt-5.5` | Modelo completo, só nos casos escalados. |
-| Embeddings | `text-embedding-3-small` | Ver 9.3. |
+É um teto: 1.000 questões dão ≈ US$ 37 (o documento fala em US$ 20 a 60). O custo **real** (tokens medidos) aparece no lote depois da execução.
 
-Os nomes foram conferidos em 2026-09-30 pelos trechos das páginas oficiais (ai.google.dev, developers.openai.com) devolvidos pela busca: a leitura direta dessas páginas estava bloqueada na sessão em que o código foi escrito. Por isso o script **sempre confere a lista de modelos da sua conta antes de gastar qualquer centavo** e para com uma mensagem clara se algum nome não existir. Os documentos do kit citam "Gemini 3 Flash" e "GPT-5.2 mini"; o código segue os nomes acima, e o `.env` troca qualquer um deles.
+### 11.5 Diferenças em relação ao texto original (e por quê)
+- **Acervo no repositório:** a Edge Function não consegue escrever arquivos do GitHub. Ela grava o resultado na própria linha da fila, e o `fila.mjs baixar` leva para `data/acervo/<materia>.json`. Antes de aplicar, ele confere se a questão não mudou desde o envio.
+- **Busca por similares sem IA:** como toda chamada paga passa pela Fila (seção 10), a busca local compara por palavras (TF-IDF + cosseno), sem chave e sem custo. Os vetores de significado continuam sendo calculados pela função na aprovação e guardados em cada item, prontos para uma busca semântica no futuro.
+- **Nada de texto de terceiro (seção 4):** só os campos da própria questão (`id`, `tema`, `dificuldade`, `fase`, `enunciado`, `alternativas`, `correta`, `explicacao`, `origem`, `fonte`, `validacao`) saem do computador para a fila e voltam para o acervo. Qualquer outro campo (anotação, trecho de apostila) é descartado antes do envio. O detalhe que a IA devolve numa reprovação é guardado curto (até 800 caracteres), só para orientar a correção, e nunca vai para o acervo.
 
-### 9.3 Embeddings: por que OpenAI `text-embedding-3-small`
-- A mesma chave da camada de lógica (nenhuma conta nova).
-- Barato: US$ 0,02 por 1M tokens. Vetorizar mil questões custa menos de 1 centavo de dólar.
-- Modelo estável e amplamente usado, com vetores de 1.536 números: o acervo de Matemática com mil itens fica com poucos MB.
-- **Importante:** vetores de modelos diferentes não se comparam. Se um dia trocar `DIVER_MODELO_EMBEDDING`, o `buscar-similares` recalcula sozinho os vetores do acervo que foram feitos com o modelo antigo (e regrava o arquivo).
+### 11.6 Para ligar (uma vez em cada projeto: primeiro testes, depois produção)
+1. **Banco:** Supabase → SQL Editor → cole o `supabase/setup.sql` inteiro → Run (reexecutável, não apaga dados).
+2. **Secrets:** Edge Functions → Secrets: confira que `GEMINI_API_KEY` e `OPENAI_API_KEY` aparecem na lista (o painel mostra só o nome; o valor nunca precisa sair de lá).
+3. **Publicar a função** (no computador, na pasta do projeto):
+   ```
+   npx supabase login
+   npx supabase functions deploy mergulho-triplo --project-ref xtuzdecteeeldnaegkxl   # testes
+   npx supabase functions deploy mergulho-triplo --project-ref bdrwqmxjhvxqwfywpikg   # produção, depois
+   ```
+   Se o comando pedir, rode `npx supabase init` uma vez antes (ele cria o `supabase/config.toml`). Deixe a verificação de JWT ligada (é o padrão).
+4. **Conferir:** no site, Admin → Fila de Validação: o cartão "Chaves das IAs" deve mostrar as duas como "cadastrada". Isso chama só a ação `status` (sem custo).
+5. **Primeiro uso:** `node scripts/fila.mjs enviar data/trilhas/enem-vestibular.json --materia matematica --fase matematica-1`, aprovar na tela com a senha, esperar "Concluído" e rodar `node scripts/fila.mjs baixar <id>`.
 
-### 9.4 Comandos
-```
-# Ver os prompts que seriam enviados, sem chamar nada nem gravar nada
-node scripts/validar-questoes.mjs data/trilhas/enem-vestibular.json --materia matematica --simular
-
-# Validar de verdade (uma fase, ou algumas questões)
-node scripts/validar-questoes.mjs data/trilhas/enem-vestibular.json --materia matematica --fase matematica-1
-node scripts/validar-questoes.mjs data/trilhas/enem-vestibular.json --materia matematica --ids enem-mat1-01,enem-mat1-02
-
-# Buscar exemplos parecidos no acervo
-node scripts/buscar-similares.mjs --materia matematica --tema Porcentagem "desconto sucessivo, nível médio"
-```
-Outras opções do validador: `--limite N`, `--refazer` (valida de novo até as já aprovadas).
-
-### 9.5 Como o validador decide
-- **Funil de custo:** cada camada roda primeiro no modelo barato. Resposta exatamente "CONFIRMADO" (fato) ou "RESISTIU" (lógica) aprova a camada. Qualquer outra coisa (inclusive "CONFIRMADO, mas...") vai para o modelo robusto, que dá a palavra final.
-- **A camada de lógica nunca recebe o gabarito** (só enunciado, alternativas, tema e dificuldade).
-- **Registro na questão:** bloco `validacao` com `fato`, `logica`, `modelo_fato`, `modelo_logica`, `data`, `pronta`, `tentativas` e a `assinatura` do conteúdo; quando reprova, também `detalhe_fato`/`fontes_fato` ou `detalhe_logica`.
-- **Reprovou pela 1ª vez:** fica na trilha, marcada; o relatório diz o que fazer (fato: corrigir o trecho; lógica: reescrever do zero). Rodar de novo sem mudar nada **não** gasta: o script percebe pela assinatura e pula.
-- **Depois de corrigir:** se só o fato tinha reprovado, só a camada de fato roda de novo.
-- **Reprovou pela 2ª vez:** `"revisar_humano": true` e a questão sai de `questoes` para um bloco `emRevisao` na mesma trilha (o app não mostra esse bloco) até alguém revisar.
-- **Aprovada:** entra em `data/acervo/<materia>.json` com o vetor (se a chave da OpenAI estiver configurada; se não, o `buscar-similares` calcula depois).
-- **Relatório final:** aprovadas de primeira, escaladas e resultado, corrigidas, `revisar_humano` com motivo, puladas e custo estimado (tokens contados de cada chamada; modelos sem preço cadastrado aparecem sem valor).
-- **Observação:** o item 1 do prompt de lógica fala da "alternativa marcada como correta", mas, pela regra da skill, o gabarito não vai no prompt. O modelo então resolve a questão sozinho e aponta ambiguidades e alternativas defensáveis. Se quiser, dá para acrescentar depois um passo que compara a resposta dele com o gabarito.
+### 11.7 Limites
+- **Tempo da função:** no plano grátis, cada execução tem cerca de 150 s. Por isso os lotes têm no máximo 20 questões, 3 rodam ao mesmo tempo e a função para de começar questões novas aos 110 s. O que faltar fica com status `aprovado`, com aviso, e o botão "Continuar execução" (pede a senha de novo) segue de onde parou, sem pagar de novo o que já foi validado.
+- **Travou:** se um lote ficar em "Executando…" por mais de 15 minutos, aparece o botão "Destravar" (`fila_destravar`).
+- **Modelo com nome errado:** a função para antes de qualquer chamada paga e mostra o nome que faltou.

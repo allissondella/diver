@@ -53,6 +53,7 @@ const App = (() => {
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
     'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
     admin: { tela: 'tela-admin', soEquipe: true, render: () => Admin.render($('tela-admin')) },
+    fila: { tela: 'tela-fila', soAdmin: true, render: () => FilaValidacao.render($('tela-fila')) },
   };
   const TELAS_FOCO = ['tela-quiz', 'tela-jogo']; // sem barra lateral: uma ação principal por tela
 
@@ -71,7 +72,7 @@ const App = (() => {
       return;
     }
     abandonarAndamento();
-    if (rota.soEquipe && !Nuvem.ehAdmin() && !Nuvem.ehProfessor()) {
+    if ((rota.soEquipe && !Nuvem.ehAdmin() && !Nuvem.ehProfessor()) || (rota.soAdmin && !Nuvem.ehAdmin())) {
       secao = 'inicio';
       history.replaceState(null, '', '#inicio');
     }
@@ -272,6 +273,7 @@ const App = (() => {
     // Admin: "Pessoas e cursos" (cadastra e gerencia). Professor: "Meus alunos" (só acompanha).
     const equipe = Nuvem.ehAdmin() || Nuvem.ehProfessor();
     document.querySelectorAll('[data-so-equipe]').forEach((el) => (el.hidden = !equipe));
+    document.querySelectorAll('[data-so-admin]').forEach((el) => (el.hidden = !Nuvem.ehAdmin())); // Fila de Validação (IAs pagas)
     if (equipe) {
       $('lateral-grupo-equipe').textContent = Nuvem.ehAdmin() ? 'Admin' : 'Professor';
       $('lateral-link-equipe-texto').textContent = Nuvem.ehAdmin() ? 'Pessoas e cursos' : 'Meus alunos';

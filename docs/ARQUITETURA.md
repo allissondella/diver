@@ -20,7 +20,7 @@
 | 5 | `js/quiz.js` | `Quiz` | Motor do Mergulho, Simulado e Revisão (aprovado; não mexer no comportamento). |
 | 6 | `js/ui.js` | `UI`, `Dados` | Ferramentas de interface (`h()`, ícones, toasts, mascote, datas) e `Dados` (localStorage com try/catch). |
 | 6a | `js/mascotes.js` | `Mascotes` | Rostos do Diver para escolher no Perfil ("Seu mascote"): 4 pinguins, 7 mergulhadores, 2 mergulhadoras e 4 tons de pele. Preenche os encaixes do `<template id="molde-mascote">` (`.d-pele`, `.d-rosto-atras`, `.d-cilios`, `.d-rosto-frente`), então as expressões e animações valem para todos. `aplicar()` roda no início e depois do login (a escolha pode vir da nuvem); `miniatura(rosto, tom)` desenha as opções do Perfil. Padrão: pinguim de penacho. |
-| 6b | `js/nuvem.js` | `Nuvem` | Cliente do Supabase só com `fetch`: login, renovação de sessão, troca de senha, REST/RPC e **Sincronia** (espelha `diver:v1:*` na tabela `estado`). |
+| 6b | `js/nuvem.js` | `Nuvem` | Cliente do Supabase só com `fetch`: login, renovação de sessão, troca de senha, reautenticação por senha (`confirmarSenha`), Edge Functions (`funcao`), REST/RPC e **Sincronia** (espelha `diver:v1:*` na tabela `estado`). |
 | 6c | `js/conta.js` | `Conta` | Telas de login e de troca de senha obrigatória; `Conta.garantir()` segura o app até a pessoa estar pronta. |
 | 7 | `js/cartas.js` | `Cartas` | Transforma a trilha em cartas para os jogos (blocos opcionais + derivação das questões). |
 | 8 | `js/jogos/registro.js` | `Jogos` | Catálogo da Sala de Jogos, contrato e `Jogos.resultado()`. |
@@ -33,6 +33,7 @@
 | 13b | `js/admin.js` | `Admin` | Área da equipe. Admin ("Pessoas e cursos"): cadastrar aluno, professor ou admin (senha temporária), mudar o tipo de conta, atribuir cursos, nova senha, ativar/desativar, ver progresso. Professor ("Meus alunos"): só acompanha os alunos dos cursos dele. |
 | 13c | `js/leitor-prova.js` | `LeitorProva` | Lê uma prova antiga (texto ou PDF) e separa questões, alternativas, gabarito e comentários, sem IA. O PDF passa pelo **pdf.js** (`lib/pdfjs/`, Apache-2.0, v3.11 legacy), carregado só quando alguém envia um PDF, com `isEvalSupported: false`. |
 | 13d | `js/provas-enviadas.js` | `ProvasEnviadas` | "Upload de prova" no Simulado: formulário, palavra de honra, conferência, lista "Provas antigas" (as do aluno e as do professor) e as regras de pontos. |
+| 13d2 | `js/fila-validacao.js` | `FilaValidacao` | Admin → "Fila de Validação" do Mergulho Triplo: lotes com custo estimado, aprovar/executar com reautenticação por senha, rejeitar, destravar, baixar resultado; mostra se as chaves das IAs existem (nunca o valor). |
 | 13e | `js/tutorial.js` | `Tutorial` | "Primeiro mergulho" de cada área: recorte de luz sobre o alvo + balão com desenho, "2 de 4", Pular/Voltar/Próximo, teclado (Enter/→, ←, Esc) e foco preso no balão. Roteiros em `ROTEIROS` (chave = endereço); passo cujo alvo não está visível é pulado. `App.navegar` chama `Tutorial.aoEntrar(secao)`; "Como funciona esta página?" (barra lateral) e "Rever todos os tutoriais" (Perfil). |
 | 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
@@ -56,6 +57,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#perfil` | Perfil e backup | `perfil.js` |
 | `#prova` | `tela-prova`: regras, pré-requisito (todas as fases), tentativas | `app.js` |
 | `#admin` | `tela-admin` (admin e professor; conteúdo muda conforme o tipo de conta) | `admin.js` |
+| `#fila` | `tela-fila`: Fila de Validação do Mergulho Triplo (só admin) | `fila-validacao.js` |
 | (sem endereço) | `tela-login`, `tela-senha` (antes do app, com login ativo) | `conta.js` |
 
 - A **trilha atual** é escolhida no Início (cards + barra fixa `#inicio-cta` com o curso escolhido e o "Bora mergulhar!") ou no seletor da barra lateral (`#seletor-trilha`: botão + lista no padrão listbox, setas/Home/End/Enter/Esc, fecha ao clicar fora; `desenharSeletorTrilha` no `app.js`). A cortina de transição é `cortina(texto)` no `app.js`. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
@@ -72,8 +74,12 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 - **Sincronia:** a cada 4 s e ao sair da página, o que mudou em `diver:v1:*` sobe para `estado`; no login, tudo desce e substitui o local. Sair limpa os dados do navegador. PDFs (IndexedDB) não sincronizam. A sessão fica em `diver:sessao` (fora do backup e da sincronia).
 - **Segurança:** nenhuma chave secreta no repositório; o app se recusa a usar uma chave `service_role`/`secret`. Dados de pessoas (e o e-mail do admin) nunca vão para o repositório.
 
-## Motor Diver e Mergulho Triplo (fora do site)
-Scripts de Node em `scripts/` que rodam no computador de quem produz conteúdo (o site não carrega nada daqui; ficam fora do Cloudflare pelo `.assetsignore`). `validar-questoes.mjs` valida as questões de uma trilha com Gemini (fato, com busca do Google) e OpenAI (lógica adversarial) e manda as aprovadas para `data/acervo/<materia>.json`; `buscar-similares.mjs` acha no acervo os exemplos mais parecidos (embeddings da OpenAI + cosseno) para a skill `criar-trilha`. Chaves só em variáveis de ambiente, via `.env` na raiz (no `.gitignore`; modelo em `.env.example`). Detalhes e comandos: `docs/MOTOR_DIVER.md`, seção 9. Na trilha, o validador acrescenta o bloco `validacao` nas questões e, para as reprovadas duas vezes, move a questão para o bloco `emRevisao` (ignorado pelo app).
+## Motor Diver e Mergulho Triplo (Fila de Validação)
+Validação de questões por duas IAs pagas, **sempre** com aprovação do admin por senha (detalhes e passo a passo: `docs/MOTOR_DIVER.md`, seção 11).
+- **Fila:** tabela `fila_validacao` (fim do `supabase/setup.sql`): RLS só admin, lote nasce `pendente` (gatilho), status muda só pelas funções `fila_aprovar` (exige senha digitada há ≤ 5 min: claim `amr` do token, via `senha_recente`), `fila_rejeitar` e `fila_destravar`, ou pela Edge Function.
+- **Edge Function** `supabase/functions/mergulho-triplo/index.ts` (Deno): ações `status` (só diz se as chaves existem) e `executar` (admin + senha ≤ 5 min + lote `aprovado` → `executando` → `concluido`). Chaves só via `Deno.env.get` (Secrets do Supabase). O miolo fica em `supabase/functions/_shared/` (`mergulho-nucleo.mjs` com prompts/funil/custo, `ias.mjs`, `processar-lote.mjs`), compartilhado com os scripts.
+- **Tela** `#fila` (`js/fila-validacao.js`, só admin): custo estimado, "Aprovar e executar" com `Nuvem.confirmarSenha` (reautenticação) → `rpc fila_aprovar` → `Nuvem.funcao('mergulho-triplo')`.
+- **Scripts locais (sem IA):** `scripts/fila.mjs` (`simular`, `enviar`, `listar`, `baixar`, com login de admin digitado no terminal) e `scripts/buscar-similares.mjs` (busca no `data/acervo/<materia>.json` por palavras, TF-IDF). O `baixar` aplica o bloco `validacao` nas questões, move as reprovadas duas vezes para o bloco `emRevisao` (ignorado pelo app) e grava as aprovadas no acervo.
 
 ## Formato do JSON de trilha (nomes reais dos campos)
 ```json

@@ -7,22 +7,15 @@ description: Roda o "Mergulho Triplo" — validação de questões geradas (do E
 
 Leia primeiro `docs/ASSINATURA_E_VALIDACAO.md` inteiro antes de rodar qualquer checagem.
 
-## 0. Configuração (uma vez só, por máquina)
+## 0. Configuração das chaves (nunca por chat)
 
-> **Implementado (2026-09-30):** `scripts/validar-questoes.mjs` (e `scripts/buscar-similares.mjs`). As chaves vêm de variáveis de ambiente, lidas do `.env` na raiz do projeto (está no `.gitignore`; modelo em `.env.example`) ou, se ele não existir, de `~/.diver-chaves.env`. Os nomes dos modelos ficam em `scripts/lib/config.mjs` (trocáveis pelo `.env`) e são conferidos na conta antes de cada rodada: `node scripts/validar-questoes.mjs --checar-modelos`. Passo a passo em `docs/MOTOR_DIVER.md`, seção "Implementação v1". O texto abaixo é a especificação original.
+As chaves `GEMINI_API_KEY` e `OPENAI_API_KEY` já estão cadastradas diretamente nos **Secrets das Edge Functions do Supabase**, feito pelo administrador direto no painel — nunca em arquivo do repositório, nunca em `.env` local, nunca coladas em qualquer chat (nem aqui, nem no Claude Code). O código lê essas variáveis só em tempo de execução dentro da Edge Function (`Deno.env.get('GEMINI_API_KEY')`), sem nunca expor o valor em nenhuma tela, log ou resposta.
 
-Se ainda não existir, crie um arquivo local **fora do controle de versão** (confirme que está no `.gitignore`) para guardar as chaves, por exemplo `~/.diver-chaves.env`:
-```
-GEMINI_API_KEY=...
-OPENAI_API_KEY=...
-```
-Nunca peça essas chaves no chat, nunca as escreva em nenhum arquivo dentro do repositório. Se o usuário colar uma chave na conversa, avise para revogá-la e gerar uma nova, já que ficou exposta.
+**Se o usuário colar uma chave de API nesta conversa em algum momento, pare imediatamente e instrua: revogar aquela chave agora no painel do provedor (OpenAI ou Google) e gerar uma nova diretamente no Supabase. Nunca prossiga usando uma chave que apareceu em texto de chat.**
 
-Se ainda não existir um script de validação, crie `scripts/validar-questoes.mjs` (Node) com duas funções:
-- `checarFato(questaoTexto)` → chama a API do Gemini (`gemini-3-flash-latest` ou equivalente atual) com a ferramenta de busca do Google (`googleSearch`/`grounding`) ativada.
-- `checarLogica(questaoTexto)` → chama a API da OpenAI (`gpt-5.2-mini` para a primeira passada).
+Toda execução real do Mergulho Triplo passa pela Fila de Validação (`fila_validacao` no Supabase) com aprovação manual por senha — nunca roda automaticamente, mesmo com as chaves configuradas.
 
-Ambas retornam `{ status: "confirmado" | "reprovado" | "duvida", detalhe: string }`.
+**Onde está implementado (2026-10-01):** Edge Function `supabase/functions/mergulho-triplo/` (lê as chaves só com `Deno.env.get`), núcleo com os prompts e o funil em `supabase/functions/_shared/mergulho-nucleo.mjs`, tabela e funções do banco no fim de `supabase/setup.sql`, tela `js/fila-validacao.js` e o script `scripts/fila.mjs` (`simular`, `enviar`, `listar`, `baixar`), que não chama IA. Fluxo completo em `docs/MOTOR_DIVER.md`, seção 11. Para "rodar" esta skill: envie o lote para a fila (seção 2.3 da skill `criar-trilha`) e peça ao admin para aprovar na tela; o relatório da seção 5 aparece na tela e no `fila.mjs baixar`.
 
 ## 1. Prompts exatos
 
