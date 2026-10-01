@@ -68,6 +68,26 @@ const Cartas = (() => {
       .map((s, i) => ({ id: s.id || `seq-${i}`, titulo: s.titulo, itens: s.itens, explicacao: s.explicacao || '', tema: s.tema || 'Geral', dificuldade: s.dificuldade || 'medio' }));
   }
 
+  /**
+   * O texto entrega a palavra? (Tema "Juros" para JUROS, "Riscos" para RISCO, "Auditoria" para AUDITOR.)
+   * Compara sem acento: o texto contém a palavra, ou alguma palavra do texto contém a resposta, está
+   * contida nela ou começa igual por 5 letras ou mais.
+   */
+  function revela(texto, palavra) {
+    const P = UI.normalizar(palavra).replace(/ /g, '');
+    if (!P || !texto) return false;
+    const T = UI.normalizar(texto);
+    if (T.replace(/ /g, '').includes(P)) return true;
+    const prefixo = (a, b) => { let i = 0; while (i < a.length && i < b.length && a[i] === b[i]) i++; return i; };
+    return T.split(' ').filter((t) => t.length >= 3).some((t) => t.includes(P) || P.includes(t) || prefixo(t, P) >= 5);
+  }
+
+  /** Tema e dica que podem aparecer no jogo sem entregar a resposta (senão, um tema genérico e nenhuma dica). */
+  function pistas(p, trilha) {
+    const generico = trilha.categoria && !revela(trilha.categoria, p.palavra) ? trilha.categoria : 'Palavra do curso';
+    return { ...p, temaVisivel: revela(p.tema, p.palavra) ? generico : p.tema, dicaVisivel: p.dica && !revela(p.dica, p.palavra) ? p.dica : '' };
+  }
+
   /** Palavras para a Forca: bloco próprio ou respostas de uma palavra só (4 a 14 letras). */
   function derivarPalavras(trilha) {
     const soLetras = (p) => UI.normalizar(p).replace(/ /g, '');
@@ -78,7 +98,7 @@ const Cartas = (() => {
       .filter((q) => /^[A-Za-zÀ-ÿ]{4,14}$/.test(correta(q).trim()))
       .map((q) => ({ id: q.id, palavra: soLetras(correta(q)).toUpperCase(), original: correta(q), dica: q.enunciado, tema: q.tema, dificuldade: q.dificuldade }));
     const vistas = new Set();
-    return [...doBloco, ...derivadas].filter((p) => !vistas.has(p.palavra) && vistas.add(p.palavra));
+    return [...doBloco, ...derivadas].filter((p) => !vistas.has(p.palavra) && vistas.add(p.palavra)).map((p) => pistas(p, trilha));
   }
 
   /**
@@ -114,5 +134,5 @@ const Cartas = (() => {
     return Object.entries(def.requer || { multipla: 4 }).every(([tipo, min]) => (cartas[tipo] || []).length >= min);
   }
 
-  return { derivar, temConteudo };
+  return { derivar, temConteudo, revela };
 })();
