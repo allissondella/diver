@@ -167,12 +167,12 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* ---------- Perfil ---------- */
 .perfil-topo { gap: var(--esp-5); }
-.mascote-escolha { gap: var(--esp-5); }
-.mascote-escolha > .cartao__titulo { margin-bottom: calc(var(--esp-2) - var(--esp-5)); } /* o título fica junto do texto dele */
 .modos { align-items: start; }
 @media (max-width: 479px) {
   .perfil-topo { flex-wrap: nowrap; gap: var(--esp-4); }
   .perfil-topo__mascote { width: 76px; flex-shrink: 0; }
+  .perfil-troca { gap: 0; }
+  .perfil-troca__seta { width: 24px; }
   .perfil-topo__info { min-width: 0; }
   .perfil-topo__nome { font-size: 1.25rem; }
 }

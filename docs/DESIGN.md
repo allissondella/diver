@@ -72,7 +72,7 @@ O Diver é **vetorial (SVG)**, no estilo "figurinha": formas simples, **contorno
 - **máscara amarela** (`#FACC15`) com vidro `#0C354C` e os **olhinhos iguais aos do ícone da aba** (brancos `#E6F1FF`, pupilas `#0B2545`);
 - **snorkel na boca**: bocal amarelo e tubo coral (`#FB7185`) subindo pelo lado, soltando bolhas; nadadeiras amarelas.
 
-**O rosto é escolhido pela pessoa (Perfil → "Seu mascote", desde 2026-09-30).** O padrão é o **pinguim de penacho**.
+**O rosto é escolhido pela pessoa** (desde 2026-09-30; desde 2026-10-01 é um **easter egg**: setinhas discretas dos lados do mascote no topo do Perfil passeiam por todas as variações, rosto e tom de pele, sem nenhum texto explicando). O padrão é o **pinguim de penacho**.
 - **Pinguins** (rosto `#F4F8FF`, bico laranja `#FB923C`/`#EA7A1F` segurando um bocal menor): de penacho (penas `#FCD34D` saindo pelos lados da máscara), clássico, imperador (manchas douradas) e de Magalhães (faixa `#1E293B` em U).
 - **Mergulhadores**: barba e bigode discreto, bigode guidão, bigodão de detetive, bigode de morsa, bigode fininho, só bigode e rosto limpo.
 - **Mergulhadoras**: cabelo liso ou cacheado emoldurando o rosto, cílios (só com os olhos abertos) e lábios logo abaixo do bocal.
