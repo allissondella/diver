@@ -6,7 +6,7 @@
 ---
 
 ## 2026-10-01 · Palavrinha: treino vale, Ranking Diver e tema que não entrega
-- **Feito:** o tema "Juros" aparecia para a palavra JUROS: 33 temas trocados por temas mais amplos e trava `Cartas.revela` (Palavrinha e Forca nunca mostram tema ou dica que entregue a palavra). **Treino livre** passa a valer XP, estatísticas e pontos no **Ranking Diver** (mensal); pérolas só na palavra do dia (`semPerolas` no Resultado padrão). Sequência = vitórias seguidas. Aviso do Ranking Diver na primeira vez que a pessoa abre a Palavrinha. Roadmap atualizado (D24, D81, D82, D114 feitos; D89, D94, D99 parciais).
+- **Feito:** o tema "Juros" aparecia para a palavra JUROS: 33 temas trocados por temas mais amplos e trava `Cartas.revela` (Palavrinha e Forca nunca mostram tema ou dica que entregue a palavra). **Treino livre** passa a valer XP, estatísticas e pontos no **Ranking Diver** (mensal); pérolas só na palavra do dia (`semPerolas` no Resultado padrão). Sequência = vitórias seguidas. Aviso do Ranking Diver na primeira vez que a pessoa abre a Palavrinha. **Ranking global:** além do ranking do curso, "Todos os cursos" (`ranking_palavrinha_global`) mostra o nome e o curso de cada pessoa. Roadmap atualizado (D24, D81, D82, D114 feitos; D89, D94, D99 parciais).
 - **Pendência:** rodar o `setup.sql` de novo (testes e produção): o ranking passou a contar o treino.
 
 ## 2026-10-01 · Log de atividade, Minhas Estatísticas e Palavrinha

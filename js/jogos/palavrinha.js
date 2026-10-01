@@ -176,45 +176,63 @@ const Palavrinha = (() => {
       .catch(() => alvo.replaceChildren(h('p', { class: 'texto-suave', text: 'Não deu para carregar suas estatísticas agora.' })));
   }
 
+  /**
+   * Ranking Diver: "Este curso" (quem faz o mesmo curso) ou "Todos os cursos" (cada pessoa aparece
+   * com o curso em que jogou), no mês ou no geral.
+   */
   function painelRanking(alvo, ctx, v) {
     if (!Atividade.naNuvem()) {
-      alvo.replaceChildren(h('p', { class: 'texto-suave', text: 'O ranking junta todos os alunos do curso: ele aparece quando você entra com a sua conta.' }));
+      alvo.replaceChildren(h('p', { class: 'texto-suave', text: 'O ranking junta os alunos do curso e de todos os cursos: ele aparece quando você entra com a sua conta.' }));
       return;
     }
-    let periodo = 'mes';
+    const escolha = { escopo: 'curso', periodo: 'mes' };
     const lista = h('div', { class: 'pal-ranking__lista', 'aria-live': 'polite' });
-    const botoes = h('div', { class: 'segmentado', role: 'group', 'aria-label': 'Período do ranking' },
-      [['mes', 'Este mês'], ['geral', 'Geral']].map(([k, nome]) => h('button', {
-        type: 'button', 'aria-pressed': String(k === periodo), text: nome,
-        onclick: (e) => {
-          periodo = k;
-          botoes.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === e.currentTarget)));
-          carregar();
-        },
-      })));
+    const segmentado = (rotulo, campo, opcoes) => {
+      const grupo = h('div', { class: 'segmentado', role: 'group', 'aria-label': rotulo },
+        opcoes.map(([k, nome]) => h('button', {
+          type: 'button', 'aria-pressed': String(k === escolha[campo]), 'data-valor': k, text: nome,
+          onclick: (e) => {
+            escolha[campo] = k;
+            grupo.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === e.currentTarget)));
+            carregar();
+          },
+        })));
+      return grupo;
+    };
+    const filtros = h('div', { class: 'pal-ranking__filtros' },
+      segmentado('Quem entra no ranking', 'escopo', [['curso', 'Este curso'], ['global', 'Todos os cursos']]),
+      segmentado('Período do ranking', 'periodo', [['mes', 'Este mês'], ['geral', 'Geral']]));
+
     async function carregar() {
+      const { escopo, periodo } = escolha;
       lista.replaceChildren(h('p', { class: 'texto-suave', text: 'Buscando o placar…' }));
       try {
         await Atividade.enviar();
-        const linhas = (await Nuvem.rpc('ranking_palavrinha', { p_curso: ctx.trilha.id, p_variante: v.chave, p_periodo: periodo })) || [];
+        const linhas = (escopo === 'global'
+          ? await Nuvem.rpc('ranking_palavrinha_global', { p_variante: v.chave, p_periodo: periodo })
+          : await Nuvem.rpc('ranking_palavrinha', { p_curso: ctx.trilha.id, p_variante: v.chave, p_periodo: periodo })) || [];
+        if (escolha.escopo !== escopo || escolha.periodo !== periodo) return; // trocou de filtro no meio da busca
         if (!linhas.length) {
           lista.replaceChildren(h('p', { class: 'texto-suave', text: 'Ninguém pontuou ainda neste período. Que tal abrir o placar?' }));
           return;
         }
         const top = linhas.slice(0, 10);
-        const eu = linhas.find((l) => l.sou_eu);
-        if (eu && !top.includes(eu)) top.push(eu);
-        lista.replaceChildren(h('ol', { class: 'pal-ranking__itens' }, top.map((l) => h('li', { class: `pal-ranking__item ${l.sou_eu ? 'pal-ranking__item--eu' : ''}`.trim() },
+        linhas.filter((l) => l.sou_eu && !top.includes(l)).forEach((l) => top.push(l)); // no global, você pode aparecer por mais de um curso
+        lista.replaceChildren(h('ol', { class: `pal-ranking__itens ${escopo === 'global' ? 'pal-ranking__itens--global' : ''}`.trim() }, top.map((l) => h('li', { class: `pal-ranking__item ${l.sou_eu ? 'pal-ranking__item--eu' : ''}`.trim() },
           h('span', { class: 'pal-ranking__pos', text: `${l.posicao}º` }),
-          h('span', { class: 'pal-ranking__nome', text: l.sou_eu ? `${l.nome} (você)` : l.nome }),
+          h('span', { class: 'pal-ranking__quem' },
+            h('span', { class: 'pal-ranking__nome', text: l.sou_eu ? `${l.nome} (você)` : l.nome }),
+            escopo === 'global' ? h('span', { class: 'pal-ranking__curso', text: App.nomeCurso(l.curso_id) }) : null),
           h('span', { class: 'pal-ranking__pontos', text: `${l.pontos} pts` }),
-          h('span', { class: 'pal-ranking__extra', text: `${l.vitorias}/${l.partidas}` })))),
-          h('p', { class: 'texto-suave pal-ranking__nota', text: 'Pontos por vitória: quanto menos tentativas, mais pontos. Vale a palavra do dia e o Treino livre; o placar do mês zera no dia 1º.' }));
+          h('span', { class: 'pal-ranking__extra', title: 'vitórias / partidas', text: `${l.vitorias}/${l.partidas}` })))),
+          h('p', { class: 'texto-suave pal-ranking__nota', text: escopo === 'global'
+            ? 'Todos os cursos juntos: cada pessoa aparece com o curso em que jogou (quem faz dois cursos aparece duas vezes). Pontos por vitória: quanto menos tentativas, mais pontos; o placar do mês zera no dia 1º.'
+            : 'Pontos por vitória: quanto menos tentativas, mais pontos. Vale a palavra do dia e o Treino livre; o placar do mês zera no dia 1º.' }));
       } catch (e) {
         lista.replaceChildren(h('p', { class: 'texto-suave', text: 'Não deu para carregar o ranking agora.' }));
       }
     }
-    alvo.replaceChildren(botoes, lista);
+    alvo.replaceChildren(filtros, lista);
     carregar();
   }
 
@@ -254,7 +272,7 @@ const Palavrinha = (() => {
       const estat = h('div', { class: 'pal-estatisticas' });
       const ranking = h('div', { class: 'pal-ranking' });
       const cartaoRanking = h('section', { class: 'cartao pal-cartao', id: 'pal-ranking', 'aria-labelledby': 'pal-ranking-titulo' },
-        h('h3', { class: 'cartao__titulo', id: 'pal-ranking-titulo', tabindex: '-1', text: `Ranking Diver · ${ctx.trilha.nome}` }), ranking);
+        h('h3', { class: 'cartao__titulo', id: 'pal-ranking-titulo', tabindex: '-1', text: 'Ranking Diver' }), ranking);
       ctx.container.replaceChildren(h('div', { class: 'pal pal-abertura' },
         avisoRanking(cartaoRanking),
         h('section', { class: 'cartao pal-cartao' },
@@ -291,9 +309,9 @@ const Palavrinha = (() => {
         h('div', { class: 'pal-aviso__texto' },
           h('span', { class: 'rotulo', text: 'Novidade' }),
           h('h3', { class: 'pal-aviso__titulo', id: 'pal-aviso-titulo' }, icone('i-trofeu'), 'Ranking Diver da Palavrinha'),
-          h('p', {}, `Cada palavra que você acerta, na palavra do dia ou no Treino livre, vale pontos: quanto menos tentativas, mais pontos (de primeira, ${v.tentativas} pontos). Você disputa com quem faz o mesmo curso, e o placar zera todo dia 1º.`),
+          h('p', {}, `Cada palavra que você acerta, na palavra do dia ou no Treino livre, vale pontos: quanto menos tentativas, mais pontos (de primeira, ${v.tentativas} pontos). Tem o ranking do seu curso e o de todos os cursos juntos, e o placar do mês zera todo dia 1º.`),
           h('p', {}, Atividade.naNuvem()
-            ? 'Para ver o placar: Sala de Jogos → Palavrinha → role até o "Ranking Diver", aqui embaixo, e escolha "Este mês" ou "Geral".'
+            ? 'Para ver o placar: Sala de Jogos → Palavrinha → role até o "Ranking Diver", aqui embaixo, e escolha "Este curso" ou "Todos os cursos" (e "Este mês" ou "Geral").'
             : 'O placar aparece aqui embaixo, no "Ranking Diver", quando você entra com a sua conta (Sala de Jogos → Palavrinha).'),
           h('div', { class: 'acoes-linha pal-acoes' },
             h('button', { type: 'button', class: 'botao botao--primario', onclick: () => {

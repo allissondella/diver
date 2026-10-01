@@ -335,6 +335,8 @@ const App = (() => {
       ? resultado.trilhas.filter((t) => Nuvem.matriculas().includes(t.id))
       : resultado.trilhas;
     estado.trilhas = trilhas;
+    // Nome de todos os cursos (até os que a pessoa não faz): o ranking global mostra o curso de cada um
+    estado.nomesCursos = new Map(resultado.trilhas.map((t) => [t.id, t.nome]));
     estado.cartasCache = {};
     const ultima = Progresso.ultimaTrilha();
     const atualId = estado.trilha && trilhas.some((t) => t.id === estado.trilha.id) ? estado.trilha.id : null;
@@ -1634,6 +1636,7 @@ const App = (() => {
 
   return {
     trilhas: () => estado.trilhas,
+    nomeCurso: (id) => (estado.nomesCursos && estado.nomesCursos.get(id)) || id,
     trilhaAtual: () => estado.trilha,
     definirTrilha,
     abrirTrilha,
