@@ -458,6 +458,18 @@ begin
   new.custo_real_usd := null;
   new.erro := null;
   new.quantidade_questoes := jsonb_array_length(new.conteudo_pendente->'questoes');
+  -- Trava: questão do Enem NUNCA ganha variante (licença CC BY-ND, "Sem Derivações";
+  -- docs/CONTEUDO_CURSINHO.md 1.1). Variante precisa trazer a origem da original em "originais";
+  -- origem desconhecida conta como Enem.
+  if exists (
+    select 1 from jsonb_array_elements(new.conteudo_pendente->'questoes') q
+     where jsonb_typeof(q) = 'object' and q ? 'varianteDe'
+       and (coalesce(q->>'origem', '') = 'enem'
+            or coalesce(new.conteudo_pendente->'originais'->(q->>'varianteDe')->>'origem', 'enem') = 'enem')
+  ) then
+    raise exception 'Variante de questão do Enem não pode entrar na fila (licença Sem Derivações).'
+      using errcode = 'check_violation';
+  end if;
   return new;
 end;
 $$;

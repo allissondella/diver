@@ -78,11 +78,32 @@ export function classificar(resposta, palavra) {
  * conteúdo nosso ou questão literal do Enem com a fonte. Qualquer outro campo (anotação,
  * trecho de apostila, "referencia"...) é descartado aqui, antes de sair do computador.
  */
-export const CAMPOS_DA_QUESTAO = ['id', 'tema', 'dificuldade', 'fase', 'enunciado', 'alternativas', 'correta', 'explicacao', 'origem', 'fonte', 'validacao'];
+export const CAMPOS_DA_QUESTAO = ['id', 'tema', 'dificuldade', 'fase', 'enunciado', 'alternativas', 'correta', 'explicacao', 'origem', 'fonte', 'varianteDe', 'validacao'];
 export function questaoLimpa(q) {
   const limpa = {};
   CAMPOS_DA_QUESTAO.forEach((c) => { if (q[c] !== undefined) limpa[c] = q[c]; });
   return limpa;
+}
+
+/* ---------- Variantes (docs/MOTOR_DIVER.md, seção 12) ---------- */
+/**
+ * Questão origem "enem" NUNCA ganha variante: a licença CC BY-ND (Sem Derivações) proíbe
+ * (docs/CONTEUDO_CURSINHO.md, seção 1.1). Confere um lote: toda variante precisa dizer de qual
+ * questão é (varianteDe) e o lote precisa trazer a origem dessa original em "originais".
+ * Origem desconhecida conta como Enem: na dúvida, recusa. Devolve [{ id, motivo }] (vazio = ok).
+ */
+export function variantesProibidas(conteudo) {
+  const originais = (conteudo && conteudo.originais) || {};
+  return ((conteudo && conteudo.questoes) || [])
+    .filter((q) => q && q.varianteDe !== undefined)
+    .map((q) => {
+      const original = originais[q.varianteDe];
+      if (q.origem === 'enem') return { id: q.id, motivo: 'a própria variante está marcada como Enem' };
+      if (!original || !original.origem) return { id: q.id, motivo: `origem da questão original "${q.varianteDe}" desconhecida` };
+      if (original.origem === 'enem') return { id: q.id, motivo: `"${q.varianteDe}" é questão do Enem (licença Sem Derivações)` };
+      return null;
+    })
+    .filter(Boolean);
 }
 
 /** Impressão digital do conteúdo (se não mudou desde a reprovação, não adianta validar de novo). */
@@ -170,6 +191,7 @@ export function itemDoAcervo(q, { trilhaId, materia, validacao }) {
     dificuldade: q.dificuldade,
     origem: q.origem || 'diver',
     ...(q.fonte ? { fonte: q.fonte } : {}),
+    ...(q.varianteDe ? { varianteDe: q.varianteDe } : {}),
     enunciado: q.enunciado,
     alternativas: q.alternativas,
     correta: q.correta,

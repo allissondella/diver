@@ -99,6 +99,7 @@ const FilaValidacao = (() => {
   function cartaoLote(l) {
     const st = STATUS[l.status] || { nome: l.status, classe: '' };
     const qs = (l.conteudo_pendente && l.conteudo_pendente.questoes) || [];
+    const variantes = !!(l.conteudo_pendente && l.conteudo_pendente.tipo === 'variantes'); // versões novas de questões nossas
     const aberto = estado.abertos.has(l.id);
     const rel = l.resultado && l.resultado.relatorio;
     const travado = l.status === 'executando' && l.iniciado_em && Date.now() - new Date(l.iniciado_em).getTime() > 15 * 60 * 1000;
@@ -121,7 +122,7 @@ const FilaValidacao = (() => {
       h('div', { class: 'fila-lote__topo' },
         h('div', {},
           h('h3', { class: 'fila-lote__titulo', text: `${nomeTrilha(l.trilha_id)} · ${l.materia}` }),
-          h('p', { class: 'texto-suave', text: `${UI.plural(l.quantidade_questoes, 'questão', 'questões')}${l.conteudo_pendente && l.conteudo_pendente.fase ? ` · fase ${l.conteudo_pendente.fase}` : ''} · enviado em ${quando(l.criado_em)}` })),
+          h('p', { class: 'texto-suave', text: `${variantes ? UI.plural(l.quantidade_questoes, 'variante', 'variantes') + ' para a Revisão' : UI.plural(l.quantidade_questoes, 'questão', 'questões')}${l.conteudo_pendente && l.conteudo_pendente.fase ? ` · fase ${l.conteudo_pendente.fase}` : ''} · enviado em ${quando(l.criado_em)}` })),
         h('span', { class: `chip ${st.classe}`.trim(), text: st.nome })),
       h('dl', { class: 'fila-lote__custos' },
         h('div', { class: 'fila-lote__custo' }, h('dt', { text: 'Custo estimado' }), h('dd', { text: dolar(l.custo_estimado_usd) })),
@@ -133,7 +134,7 @@ const FilaValidacao = (() => {
       aberto ? h('ol', { class: 'fila-lote__questoes' }, qs.map((q) => {
         const r = l.resultado && l.resultado.por_questao && l.resultado.por_questao[q.id];
         const sit = !r ? '' : r.erro ? ' · erro' : r.pulada ? ` · pulada (${r.pulada})` : r.aprovada ? ' · aprovada' : r.revisar_humano ? ' · revisar_humano' : ' · reprovada';
-        return h('li', {}, h('strong', { text: `${q.id} · ${q.tema} · ${q.dificuldade}${sit}` }), h('span', { text: q.enunciado.length > 180 ? q.enunciado.slice(0, 180) + '…' : q.enunciado }));
+        return h('li', {}, h('strong', { text: `${q.id}${q.varianteDe ? ` (variante de ${q.varianteDe})` : ''} · ${q.tema} · ${q.dificuldade}${sit}` }), h('span', { text: q.enunciado.length > 180 ? q.enunciado.slice(0, 180) + '…' : q.enunciado }));
       })) : null,
       h('div', { class: 'acoes-linha fila-lote__acoes' }, acoes));
   }

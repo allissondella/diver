@@ -2,12 +2,13 @@
  * processar-lote.mjs — roda o Mergulho Triplo num lote da fila_validacao.
  * Separado da Edge Function (index.ts) para poder ser testado no Node com IAs falsas.
  *
+ * - Recusa o lote (sem custo) se ele tiver variante de questão do Enem (licença Sem Derivações).
  * - Confere antes se os modelos existem na conta (lista grátis): nome errado não gasta nada.
  * - Valida até `paralelas` questões ao mesmo tempo e para de começar novas quando o tempo
  *   da função está acabando (o que ficou para trás continua numa próxima execução).
  * - Grava o progresso a cada questão (salvar), então uma queda no meio não perde o que foi pago.
  */
-import { validarQuestao, itemDoAcervo, textoParaEmbedding, custoReal, questaoLimpa } from './mergulho-nucleo.mjs';
+import { validarQuestao, itemDoAcervo, textoParaEmbedding, custoReal, questaoLimpa, variantesProibidas } from './mergulho-nucleo.mjs';
 
 export async function processarLote(linha, { clientes, modelos, salvar, hoje, limiteMs = 110_000, paralelas = 3, agora = () => Date.now() }) {
   const inicio = agora();
@@ -25,7 +26,13 @@ export async function processarLote(linha, { clientes, modelos, salvar, hoje, li
     custo_real_usd: anterior.custo_real_usd || 0,
   };
 
-  // 0. Os modelos existem? (se não, para aqui sem nenhuma chamada paga)
+  // 0. Trava: variante de questão do Enem não roda (licença Sem Derivações). Recusa o lote inteiro, sem custo.
+  const proibidas = variantesProibidas(conteudo);
+  if (proibidas.length) {
+    return { status: 'rejeitado', erro: `Lote recusado: variante de questão do Enem não pode existir (${proibidas.map((p) => `${p.id}: ${p.motivo}`).join('; ')}).`, resultado };
+  }
+
+  // 1. Os modelos existem? (se não, para aqui sem nenhuma chamada paga)
   const [g, o] = await Promise.all([clientes.listarGemini(), clientes.listarOpenAI()]);
   const faltando = [['gemini', modelos.fato], ['gemini', modelos.fatoForte], ['openai', modelos.logica], ['openai', modelos.logicaForte], ['openai', modelos.embedding]]
     .filter(([api, m]) => !(api === 'gemini' ? g : o).includes(m)).map(([, m]) => m);

@@ -7,6 +7,8 @@
  * Comandos:
  *   simular <trilha.json> --materia M [--fase F] [--ids a,b]   custo estimado e prompts (sem internet)
  *   enviar  <trilha.json> --materia M [--fase F] [--ids a,b]   cria lote(s) 'pendente' na fila (máx. 20 questões cada)
+ *           acrescente --variantes para mandar o bloco "variantes" da trilha em vez das questões
+ *           (variante de questão origem "enem" é recusada aqui, no banco e na Edge Function)
  *   listar                                                      últimos lotes da fila
  *   baixar  <id-do-lote> [--arquivo <trilha.json>]              aplica o resultado na trilha e no data/acervo/<materia>.json
  *
@@ -19,12 +21,12 @@ import { resolve, relative } from 'node:path';
 import readline from 'node:readline';
 import { RAIZ, ambienteSupabase } from './lib/config.mjs';
 import { slugMateria, lerAcervo, gravarAcervo, gravarJSON, guardarNoAcervo, caminhoAcervo } from './lib/acervo.mjs';
-import { questaoLimpa, assinatura, estimarCusto, promptFato, promptLogica } from '../supabase/functions/_shared/mergulho-nucleo.mjs';
+import { questaoLimpa, assinatura, estimarCusto, promptFato, promptLogica, variantesProibidas } from '../supabase/functions/_shared/mergulho-nucleo.mjs';
 
 const MAX_POR_LOTE = 20; // cabe com folga no tempo de uma execução da Edge Function
 
 function argumentos(argv) {
-  const a = { comando: argv[0], alvo: null, materia: null, fase: null, ids: null, ambiente: 'testes', arquivo: null, refazer: false };
+  const a = { comando: argv[0], alvo: null, materia: null, fase: null, ids: null, ambiente: 'testes', arquivo: null, refazer: false, variantes: false };
   for (let i = 1; i < argv.length; i++) {
     const x = argv[i];
     if (x === '--materia') a.materia = argv[++i];
@@ -33,6 +35,7 @@ function argumentos(argv) {
     else if (x === '--ambiente') a.ambiente = argv[++i];
     else if (x === '--arquivo') a.arquivo = argv[++i];
     else if (x === '--refazer') a.refazer = true;
+    else if (x === '--variantes') a.variantes = true;
     else if (x.startsWith('--')) throw new Error(`opção desconhecida: ${x}`);
     else a.alvo = x;
   }
@@ -85,11 +88,23 @@ async function montarLotes(args) {
   if (!existsSync(arquivo)) throw new Error(`arquivo não encontrado: ${args.alvo}`);
   const trilha = JSON.parse(readFileSync(arquivo, 'utf8'));
   const materia = slugMateria(args.materia);
+  const questoes = new Map((trilha.questoes || []).map((q) => [q.id, q]));
+  const fonte = args.variantes ? trilha.variantes || [] : trilha.questoes || [];
+  if (args.variantes && !fonte.length) throw new Error('a trilha não tem bloco "variantes"');
   const escolhidas = [];
   const puladas = [];
-  for (const q of trilha.questoes || []) {
+  const originais = {};
+  for (const q of fonte) {
     if (args.fase && q.fase !== args.fase) continue;
-    if (args.ids && !args.ids.has(q.id)) continue;
+    if (args.ids && !args.ids.has(q.id) && !(args.variantes && args.ids.has(q.varianteDe))) continue;
+    if (args.variantes) {
+      // Trava 1 de 3 (aqui, antes de sair do computador): só variante de questão NOSSA, e diferente da original.
+      const original = questoes.get(q.varianteDe);
+      if (!original) throw new Error(`variante ${q.id}: "varianteDe" (${q.varianteDe}) não existe nas questões da trilha`);
+      if (original.origem === 'enem' || q.origem === 'enem') throw new Error(`variante ${q.id}: ${q.varianteDe} é questão do Enem e NUNCA pode ter variante (licença Sem Derivações, docs/CONTEUDO_CURSINHO.md 1.1). Apague essa variante.`);
+      if (q.enunciado === original.enunciado) throw new Error(`variante ${q.id}: o enunciado é igual ao da original`);
+      originais[q.varianteDe] = { origem: original.origem || 'diver', tema: original.tema, dificuldade: original.dificuldade };
+    }
     const v = q.validacao;
     if (v && v.pronta && !args.refazer) { puladas.push(`${q.id} (já aprovada)`); continue; }
     if (v && !v.pronta && v.assinatura === await assinatura(q) && !args.refazer) { puladas.push(`${q.id} (reprovada e ainda não corrigida)`); continue; }
@@ -98,12 +113,19 @@ async function montarLotes(args) {
   const lotes = [];
   for (let i = 0; i < escolhidas.length; i += MAX_POR_LOTE) {
     const questoes = escolhidas.slice(i, i + MAX_POR_LOTE);
+    const conteudo = { versao: 1, arquivo: relative(RAIZ, arquivo), trilha_nome: trilha.nome, fase: args.fase || null, questoes };
+    if (args.variantes) {
+      conteudo.tipo = 'variantes';
+      conteudo.originais = Object.fromEntries(questoes.map((x) => [x.varianteDe, originais[x.varianteDe]]));
+      const proibidas = variantesProibidas(conteudo); // a mesma regra do servidor, conferida antes de enviar
+      if (proibidas.length) throw new Error(`lote recusado: ${proibidas.map((p) => `${p.id}: ${p.motivo}`).join('; ')}`);
+    }
     lotes.push({
       trilha_id: trilha.id,
       materia,
       quantidade_questoes: questoes.length,
       custo_estimado_usd: estimarCusto(questoes),
-      conteudo_pendente: { versao: 1, arquivo: relative(RAIZ, arquivo), trilha_nome: trilha.nome, fase: args.fase || null, questoes },
+      conteudo_pendente: conteudo,
     });
   }
   return { lotes, puladas, trilha };
@@ -111,7 +133,7 @@ async function montarLotes(args) {
 
 function resumoDosLotes({ lotes, puladas }) {
   const total = lotes.reduce((s, l) => s + l.custo_estimado_usd, 0);
-  lotes.forEach((l, i) => console.log(`  Lote ${i + 1}: ${l.quantidade_questoes} questão(ões) · custo estimado US$ ${l.custo_estimado_usd.toFixed(4)}`));
+  lotes.forEach((l, i) => console.log(`  Lote ${i + 1}: ${l.quantidade_questoes} ${l.conteudo_pendente.tipo === 'variantes' ? 'variante(s)' : 'questão(ões)'} · custo estimado US$ ${l.custo_estimado_usd.toFixed(4)}`));
   if (puladas.length) console.log(`  Puladas (${puladas.length}): ${puladas.join(', ')}`);
   console.log(`  Total estimado: US$ ${total.toFixed(4)} (teto: preços de docs/ASSINATURA_E_VALIDACAO.md, seção 3, com 30% de folga para o desempate)`);
 }
@@ -137,7 +159,8 @@ async function enviar(args) {
   const token = await entrar(amb);
   const criados = await rest(amb, token, 'POST', 'fila_validacao?select=id,status,quantidade_questoes,custo_estimado_usd', r.lotes, 'return=representation');
   console.log('\nNa fila:');
-  criados.forEach((c) => console.log(`  ${c.id} · ${c.status} · ${c.quantidade_questoes} questão(ões) · US$ ${Number(c.custo_estimado_usd).toFixed(4)}`));
+  const unidade = args.variantes ? 'variante(s)' : 'questão(ões)';
+  criados.forEach((c) => console.log(`  ${c.id} · ${c.status} · ${c.quantidade_questoes} ${unidade} · US$ ${Number(c.custo_estimado_usd).toFixed(4)}`));
   console.log('\nPróximo passo: Admin → Fila de Validação → Aprovar (pede sua senha).');
 }
 
@@ -167,7 +190,8 @@ async function baixar(args) {
 
   for (const [id, x] of Object.entries(lote.resultado.por_questao || {})) {
     if (!x.validacao) continue;
-    const q = (trilha.questoes || []).find((y) => y.id === id);
+    const lista = (trilha.questoes || []).some((y) => y.id === id) ? trilha.questoes : trilha.variantes || [];
+    const q = lista.find((y) => y.id === id);
     if (!q) continue;
     // A questão mudou depois do envio? Então a validação é de outro texto: não aplica.
     if (await assinatura(q) !== x.validacao.assinatura) { rel.mudaram.push(id); continue; }
@@ -178,7 +202,7 @@ async function baixar(args) {
       if (aprovadas.has(id)) { guardarNoAcervo(acervo, aprovadas.get(id)); rel.acervo++; }
     } else if (x.revisar_humano) {
       q.revisar_humano = true;
-      trilha.questoes.splice(trilha.questoes.indexOf(q), 1);
+      lista.splice(lista.indexOf(q), 1); // questão ou variante: sai até a revisão manual
       (trilha.emRevisao ||= []).push({ ...q, motivo_revisao: x.motivo });
       rel.revisar.push(`${id}: ${x.motivo}`);
     }

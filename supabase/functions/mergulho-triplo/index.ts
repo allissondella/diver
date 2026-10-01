@@ -8,7 +8,9 @@
  *      (claim "amr" do Supabase Auth: método "password" com horário recente);
  *   3. o lote está com status 'aprovado' (aprovado antes pela função do banco fila_aprovar,
  *      que também exige a senha recente) — e passa para 'executando' numa operação só,
- *      então dois cliques não geram duas execuções pagas.
+ *      então dois cliques não geram duas execuções pagas;
+ *   4. o lote não tem variante de questão do Enem (processarLote recusa sem custo; o banco já
+ *      recusa na entrada da fila — licença Sem Derivações, docs/MOTOR_DIVER.md seção 12).
  *
  * Chaves: GEMINI_API_KEY e OPENAI_API_KEY vêm SÓ de Deno.env.get (Secrets das Edge Functions,
  * cadastrados pelo admin no painel do Supabase). Nunca de tabela, arquivo ou resposta; o valor

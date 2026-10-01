@@ -39,6 +39,8 @@ Se a fonte for uma prova do Enem, ela pode entrar **na íntegra** — mas só se
 3. Marque a fonte no JSON: `"fonte": "Enem <ano>, questão <número> — Inep/MEC"`.
 4. Essas questões literais **só podem alimentar** os jogos Mergulho, Simulado, Revisão e Prova final. Nunca as derive para Memória, Forca, Adivinha Aí, Caça ao Tesouro, Chefão, Maré Alta, Corrente do Tempo, Torre ou Duelo — isso as transformaria em obra derivada. Para esses jogos, escreva uma questão original inspirada no mesmo tema/dificuldade.
 5. No relatório final (seção 5), reporte separadamente: quantas questões são literais do Enem (com fonte) e quantas são originais.
+6. **Onde elas entram (regra permanente, `docs/CONTEUDO_CURSINHO.md` 1.3):** a **Fase 1 de cada matéria é 100% origem `"diver"`**. Literais do Enem só a partir da **Fase 2**, sempre com `"dificuldade": "dificil"` e no máximo **30% das questões da fase**. Confira isso antes de salvar o JSON e reporte no relatório final.
+7. Marque cada literal com `"origem": "enem"` (sem esse campo, a questão conta como nossa). **Nunca gere variante** de questão `"origem": "enem"` (seção 2.4).
 
 Provas de vestibulares institucionais (Fuvest, Unicamp etc.) **não** entram nesta regra especial até que os termos de cada uma sejam confirmados — trate-as como as apostilas, só para inspiração.
 
@@ -74,11 +76,31 @@ Depois de gerar e salvar as questões no JSON da trilha (e passar no autocheck d
 3. Depois que o admin aprovar e o lote ficar **Concluído**, o usuário roda `node scripts/fila.mjs baixar <id-do-lote>`: isso grava o bloco `validacao` nas questões da trilha, move as `revisar_humano` para `emRevisao` e adiciona as aprovadas em `data/acervo/<materia>.json`. Revise o `git diff` e faça o commit.
 4. Questões reprovadas pela 1ª vez: corrija (fato: só o trecho apontado; lógica: reescreva do zero) e envie de novo só elas (`--ids`).
 
+## 2.4 Variantes para a Revisão (pré-geradas em lote, nunca na hora)
+
+Variante = a mesma habilidade de uma questão **nossa**, com outra situação e outros números (de preferência com outra resposta), para o aluno que errou não decorar a alternativa. A Revisão só mostra variantes **já aprovadas** pelo Mergulho Triplo; nenhuma IA roda enquanto o aluno estuda. Formato e regras: `docs/MOTOR_DIVER.md`, seção 12.
+
+1. **Trava (1 de 3): antes de escrever qualquer variante, confira a origem da questão original.** Se for `"origem": "enem"`, **pare: não gere** (licença Sem Derivações, `docs/CONTEUDO_CURSINHO.md` 1.1 e 1.4). Para a Revisão dessas, o app já usa outra questão nossa do mesmo tema; se o tema não tiver nenhuma, escreva uma questão **nova** (bloco `questoes`, não `variantes`) inspirada só no conceito.
+2. Escreva as variantes no bloco opcional `"variantes"` da trilha, separado de `"questoes"` (não mexa nas questões existentes):
+   ```json
+   { "id": "<id da original>-v1", "varianteDe": "<id da original>", "tema": "<igual>", "dificuldade": "<igual>", "fase": "<igual>",
+     "enunciado": "...", "alternativas": ["..."], "correta": 0, "explicacao": "..." }
+   ```
+   Mesmo tema, mesma dificuldade e mesma fase da original; enunciado diferente; distratores com os erros típicos daquela habilidade. Comece com 1 variante por questão (`-v1`); as próximas são `-v2`, `-v3`...
+3. Confira cada conta e rode o autocheck da seção 4 também contra a questão original (a variante não pode ser a original com sinônimos).
+4. Mande para a Fila de Validação com `--variantes` (o script recusa variante de questão do Enem e variante igual à original):
+   ```
+   node scripts/fila.mjs simular data/trilhas/<trilha>.json --materia <materia> --fase <fase> --variantes
+   node scripts/fila.mjs enviar  data/trilhas/<trilha>.json --materia <materia> --fase <fase> --variantes   # o usuário roda
+   ```
+   Depois da aprovação, `fila.mjs baixar <id>` grava o bloco `validacao` em cada variante: só a partir daí ela aparece na Revisão.
+
 ## 3. Produção do conteúdo
 
 - Siga exatamente o schema de `data/trilhas/*.json` já existente no projeto — confira os nomes reais dos campos antes de escrever (não invente campos novos sem necessidade).
 - Toda questão precisa de explicação da resposta correta.
 - Distribua as questões pelas fases seguindo a dificuldade real mapeada na etapa 1, não uma progressão arbitrária.
+- Dentro de cada fase, garanta questões fáceis e médias suficientes para a primeira rodada (pelo menos 8 entre as duas): o Mergulho monta a rodada em rampa (fácil → médio → difícil) e só libera as difíceis a partir da segunda rodada da fase.
 - Gere, quando fizer sentido para o tema, blocos para os outros tipos de carta já suportados pelo motor (pares, verdadeiro/falso, sequências, adivinhas, palavras, casos) — consulte `docs/JOGOS.md` para o formato de cada um.
 - Marque explicitamente qualquer questão que dependa de um fato muito específico (data exata, fórmula, valor numérico, nome próprio) com um comentário `"revisar": "fato específico — conferir com especialista"` no JSON, para facilitar a etapa de revisão humana. Remova essa marca só depois da revisão confirmada.
 

@@ -13,11 +13,11 @@
 | Ordem | Arquivo | Global | Responsabilidade |
 | --- | --- | --- | --- |
 | 0 | `js/config.js` | `DIVER_CONFIG` | URL e chave pública do Supabase de **produção** e de **testes**; escolhe pelo endereço (`allissondella.github.io` = produção, o resto = testes) e expõe `ambiente`. Vazio = **modo local** (sem login). Fora da produção, o `index.html` põe a classe `ambiente-testes` e mostra a `.faixa-testes`. Guia: `docs/AMBIENTES.md`. |
-| 1 | `js/trilhas.js` | `Trilhas` | Encontrar, carregar, validar, importar e criar trilhas JSON. |
-| 2 | `js/progresso.js` | `Progresso` | localStorage por trilha: XP, níveis, pérolas, streak, meta, repetição espaçada, fases, jogos, caixas de Leitner. |
+| 1 | `js/trilhas.js` | `Trilhas` | Encontrar, carregar, validar, importar e criar trilhas JSON. `limparVariantes` tira variantes inválidas (nunca de questão do Enem) e `variantesDe` devolve só as já validadas. |
+| 2 | `js/progresso.js` | `Progresso` | localStorage por trilha: XP, níveis, pérolas, streak, meta, repetição espaçada (com `vistas`, o rodízio de variantes da Revisão), fases, jogos, caixas de Leitner. |
 | 3 | `js/conquistas.js` | `Conquistas` | As 13 conquistas e a verificação. |
 | 4 | `js/economia.js` | `Economia` | **Único** lugar que concede XP/pérolas fora do Mergulho/Simulado/Revisão: Resultado padrão dos jogos, tarefas, foco, gasto de pérolas. Valores em `Economia.CONFIG`. |
-| 5 | `js/quiz.js` | `Quiz` | Motor do Mergulho, Simulado e Revisão (aprovado; não mexer no comportamento). |
+| 5 | `js/quiz.js` | `Quiz` | Motor do Mergulho, Simulado e Revisão (aprovado; não mexer no comportamento sem combinar). Desde 2026-10-01: rodada do Mergulho e da Revisão em rampa (fácil → médio → difícil), 1ª rodada de cada fase sem difíceis, e Revisão com variantes/substitutas (`docs/MOTOR_DIVER.md`, seção 12). Simulado e Prova final continuam embaralhados. |
 | 6 | `js/ui.js` | `UI`, `Dados` | Ferramentas de interface (`h()`, ícones, toasts, mascote, datas) e `Dados` (localStorage com try/catch). |
 | 6a | `js/mascotes.js` | `Mascotes` | Rostos do Diver para escolher no Perfil ("Seu mascote"): 4 pinguins, 7 mergulhadores, 2 mergulhadoras e 4 tons de pele. Preenche os encaixes do `<template id="molde-mascote">` (`.d-pele`, `.d-rosto-atras`, `.d-cilios`, `.d-rosto-frente`), então as expressões e animações valem para todos. `aplicar()` roda no início e depois do login (a escolha pode vir da nuvem); `miniatura(rosto, tom)` desenha as opções do Perfil. Padrão: pinguim de penacho. |
 | 6b | `js/nuvem.js` | `Nuvem` | Cliente do Supabase só com `fetch`: login, renovação de sessão, troca de senha, reautenticação por senha (`confirmarSenha`), Edge Functions (`funcao`), REST/RPC e **Sincronia** (espelha `diver:v1:*` na tabela `estado`). |
@@ -157,7 +157,7 @@ O progresso da trilha também guarda `provas` (prova final: data, total, acertos
   - prova do **professor** (tabela `provas_curso`): XP **e** pérolas para o aluno; quem é da equipe faz em modo conferência (0);
   - refazer vale **metade**; sair no meio não vale nota nem pontos.
 - **Leitor de prova** (`LeitorProva.interpretar`): questão = "1." / "1)" / "01 -" / "Questão 1" (número solto só abre questão se for o próximo da sequência); alternativa = "a)" / "(A)" / "A." / "A -", uma por linha ou todas na mesma linha; gabarito = bloco final "Gabarito"/"Respostas" ("1-C 2-A", "01. B", tabela de números e letras, "Anulada") ou "Resposta: C" logo depois da questão, "*A)" e "(correta)". Remove cabeçalho repetido e número de página, desfaz hifenização. PDF escaneado (sem texto) é recusado com aviso. Nada é salvo sem passar pela conferência.
-- **Mergulho/Simulado/Revisão**: como na Fase 0 (ver `docs/JOGOS.md`). Continuam dando XP pelo `quiz.js`; a migração para o contrato/economia é a tarefa D7/D8.
+- **Mergulho/Simulado/Revisão**: como na Fase 0 (ver `docs/JOGOS.md`), com a rampa de dificuldade e as variantes da Revisão de 2026-10-01. Continuam dando XP pelo `quiz.js`; a migração para o contrato/economia é a tarefa D7/D8.
 - **Níveis:** `NIVEIS` em `js/progresso.js` (10 níveis, Mestre Diver = 2.100 XP). O Perfil soma o XP de todas as trilhas no "nível geral".
 - **Tarefas:** concluir (bolinha ou Alt+Enter) dá +10 XP e +1 pérola uma única vez por tarefa (no curso escolhido no cartão ou no atual). Reabrir e concluir de novo não dá XP outra vez; subtarefas não dão XP.
 - **Modo Foco:** bloco de foco completo dá +15 XP e +2 pérolas na trilha atual.
