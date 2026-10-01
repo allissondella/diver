@@ -409,3 +409,156 @@ create policy "prova do curso: apagar" on public.provas_curso
 revoke all on public.provas_curso from anon;
 revoke update on public.provas_curso from authenticated;
 grant select, insert, delete on public.provas_curso to authenticated;
+
+-- ---------- Fila de Validação do Mergulho Triplo (docs/MOTOR_DIVER.md, seções 5 e 11) ----------
+-- Lotes de questões esperando a validação pelas IAs PAGAS. Nada roda sozinho: o admin vê o custo
+-- estimado, aprova digitando a senha de novo (fila_aprovar) e só então a Edge Function
+-- "mergulho-triplo" executa. As chaves das IAs ficam nos Secrets das Edge Functions, nunca aqui.
+create table if not exists public.fila_validacao (
+  id uuid primary key default gen_random_uuid(),
+  trilha_id text not null check (char_length(trilha_id) between 1 and 120),
+  materia text not null check (char_length(materia) <= 60 and materia ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
+  quantidade_questoes integer not null check (quantidade_questoes between 1 and 60),
+  conteudo_pendente jsonb not null check (
+    jsonb_typeof(conteudo_pendente) = 'object'
+    and jsonb_typeof(conteudo_pendente->'questoes') = 'array'
+    and octet_length(conteudo_pendente::text) < 1500000),
+  custo_estimado_usd numeric(10,4) not null check (custo_estimado_usd >= 0 and custo_estimado_usd < 1000),
+  status text not null default 'pendente' check (status in ('pendente', 'aprovado', 'executando', 'concluido', 'rejeitado')),
+  criado_em timestamptz not null default now(),
+  aprovado_por uuid references public.perfis (id) on delete set null,
+  aprovado_em timestamptz
+);
+-- Colunas de apoio (acrescentadas assim para o arquivo continuar reexecutável)
+alter table public.fila_validacao add column if not exists criado_por uuid references public.perfis (id) on delete set null;
+alter table public.fila_validacao add column if not exists executado_por uuid references public.perfis (id) on delete set null;
+alter table public.fila_validacao add column if not exists iniciado_em timestamptz;
+alter table public.fila_validacao add column if not exists concluido_em timestamptz;
+alter table public.fila_validacao add column if not exists resultado jsonb;       -- validações, itens aprovados para o acervo, relatório
+alter table public.fila_validacao add column if not exists custo_real_usd numeric(10,4);
+alter table public.fila_validacao add column if not exists erro text;
+create index if not exists fila_validacao_status on public.fila_validacao (status, criado_em desc);
+
+-- Todo lote nasce 'pendente', sem aprovação nem resultado; a quantidade vem do próprio conteúdo.
+create or replace function public.fila_validacao_nova()
+returns trigger
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  new.status := 'pendente';
+  new.criado_por := auth.uid();
+  new.criado_em := now();
+  new.aprovado_por := null;
+  new.aprovado_em := null;
+  new.executado_por := null;
+  new.iniciado_em := null;
+  new.concluido_em := null;
+  new.resultado := null;
+  new.custo_real_usd := null;
+  new.erro := null;
+  new.quantidade_questoes := jsonb_array_length(new.conteudo_pendente->'questoes');
+  return new;
+end;
+$$;
+drop trigger if exists fila_validacao_nova on public.fila_validacao;
+create trigger fila_validacao_nova before insert on public.fila_validacao
+  for each row execute function public.fila_validacao_nova();
+
+alter table public.fila_validacao enable row level security;
+
+-- Só o admin lê e cria lotes. Mudança de status só pelas funções abaixo (ou pela Edge Function).
+drop policy if exists "fila: admin le" on public.fila_validacao;
+create policy "fila: admin le" on public.fila_validacao
+  for select to authenticated using (public.eh_admin());
+drop policy if exists "fila: admin cria" on public.fila_validacao;
+create policy "fila: admin cria" on public.fila_validacao
+  for insert to authenticated with check (public.eh_admin());
+
+-- (o Supabase dá todas as permissões às tabelas novas por padrão: tira tudo e devolve só ler e criar)
+revoke all on public.fila_validacao from anon, authenticated;
+grant select, insert on public.fila_validacao to authenticated;
+
+-- A senha foi digitada há pouco? O token do Supabase Auth traz o claim "amr" com o método de
+-- login e o horário; reautenticar com a senha gera um token novo com o horário de agora.
+create or replace function public.senha_recente(p_segundos integer default 300)
+returns boolean
+language sql stable
+set search_path = public
+as $$
+  select exists (
+    select 1
+    from jsonb_array_elements(case when jsonb_typeof(auth.jwt()->'amr') = 'array' then auth.jwt()->'amr' else '[]'::jsonb end) a
+    where a->>'method' = 'password'
+      and (a->>'timestamp') ~ '^[0-9]+$'
+      and (a->>'timestamp')::bigint >= extract(epoch from now())::bigint - p_segundos
+  );
+$$;
+
+-- Aprovar: admin + senha confirmada nos últimos 5 minutos + lote ainda pendente.
+create or replace function public.fila_aprovar(p_id uuid)
+returns void
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  if not public.eh_admin() then
+    raise exception 'Só o admin aprova lotes da fila.' using errcode = '42501';
+  end if;
+  if not public.senha_recente(300) then
+    raise exception 'Confirme sua senha para aprovar (vale por 5 minutos).' using errcode = '42501';
+  end if;
+  update public.fila_validacao
+     set status = 'aprovado', aprovado_por = auth.uid(), aprovado_em = now(), erro = null
+   where id = p_id and status = 'pendente';
+  if not found then
+    raise exception 'Este lote não está mais pendente.';
+  end if;
+end;
+$$;
+
+-- Rejeitar: não custa nada, então não pede senha (vale para pendente ou aprovado ainda não executado).
+create or replace function public.fila_rejeitar(p_id uuid)
+returns void
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  if not public.eh_admin() then
+    raise exception 'Só o admin mexe na fila.' using errcode = '42501';
+  end if;
+  update public.fila_validacao set status = 'rejeitado'
+   where id = p_id and status in ('pendente', 'aprovado');
+  if not found then
+    raise exception 'Só dá para rejeitar lote pendente ou aprovado (não em execução nem concluído).';
+  end if;
+end;
+$$;
+
+-- Destravar: se a função caiu no meio (lote "executando" há mais de 15 minutos), volta para aprovado.
+create or replace function public.fila_destravar(p_id uuid)
+returns void
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  if not public.eh_admin() then
+    raise exception 'Só o admin mexe na fila.' using errcode = '42501';
+  end if;
+  update public.fila_validacao
+     set status = 'aprovado', erro = 'Execução interrompida. O que já foi validado ficou salvo; execute de novo para continuar.'
+   where id = p_id and status = 'executando' and iniciado_em < now() - interval '15 minutes';
+  if not found then
+    raise exception 'Só dá para destravar um lote em execução há mais de 15 minutos.';
+  end if;
+end;
+$$;
+
+revoke all on function public.senha_recente(integer) from public, anon;
+revoke all on function public.fila_aprovar(uuid) from public, anon;
+revoke all on function public.fila_rejeitar(uuid) from public, anon;
+revoke all on function public.fila_destravar(uuid) from public, anon;
+grant execute on function public.senha_recente(integer) to authenticated;
+grant execute on function public.fila_aprovar(uuid) to authenticated;
+grant execute on function public.fila_rejeitar(uuid) to authenticated;
+grant execute on function public.fila_destravar(uuid) to authenticated;

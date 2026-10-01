@@ -95,3 +95,4 @@ Quem decide o que cada um enxerga é o banco (as regras do passo 2), não o nave
   ```
   Depois entre com essa senha temporária: o Diver vai pedir para você criar uma nova. Para alunos, use o botão **Nova senha temporária** na área de Admin.
 - **Os conteúdos dos cursos** (arquivos em `data/trilhas/`) ficam no repositório público. O login controla **quem vê o quê no app**, mas o conteúdo em si não é secreto.
+- **Fila de Validação do Mergulho Triplo:** o `setup.sql` também cria a tabela `fila_validacao` (só admin) e as funções de aprovação por senha. A Edge Function `mergulho-triplo` e as chaves das IAs (Secrets) têm passo a passo próprio em `docs/MOTOR_DIVER.md`, seção 11.6. Como toda mudança de banco: primeiro no projeto de testes.

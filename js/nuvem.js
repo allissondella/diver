@@ -61,7 +61,7 @@ const Nuvem = (() => {
   /* ---------- Requisições ---------- */
   /** Traduz os erros mais comuns para mensagens gentis em português. */
   function mensagemDeErro(dados, status) {
-    const bruto = (dados && (dados.message || dados.msg || dados.error_description || dados.error)) || '';
+    const bruto = (dados && (dados.erro || dados.message || dados.msg || dados.error_description || dados.error)) || '';
     if (/invalid login credentials/i.test(bruto)) return 'E-mail ou senha incorretos.';
     if (/banned/i.test(bruto)) return 'Seu acesso está desativado. Fale com o admin.';
     if (/should be different|same.*password/i.test(bruto)) return 'A nova senha precisa ser diferente da atual.';
@@ -140,6 +140,26 @@ const Nuvem = (() => {
       throw new Error('Seu acesso está desativado. Fale com o admin.');
     }
     return perfil;
+  }
+
+  /**
+   * Reautenticação: pede a senha de novo e troca a sessão por uma novinha. O token novo leva
+   * no claim "amr" o horário desta senha, e é isso que o banco (fila_aprovar) e a Edge Function
+   * mergulho-triplo conferem antes de qualquer ação paga. A senha não fica guardada em lugar nenhum.
+   */
+  async function confirmarSenha(senha) {
+    if (!sessao) throw new Error('Sua sessão expirou. Entre de novo.');
+    const dados = await requisicao('POST', '/auth/v1/token?grant_type=password', { corpo: { email: sessao.user.email, password: senha }, comSessao: false });
+    if (!dados.user || dados.user.id !== sessao.user.id) throw new Error('Essa senha é de outra conta.');
+    gravarSessao(dados);
+  }
+
+  /** Chama uma Edge Function do Supabase com a sessão atual. */
+  function funcao(nome, corpo = {}) {
+    return requisicao('POST', '/functions/v1/' + encodeURIComponent(nome), { corpo }).catch((e) => {
+      if (e.status === 404) e.message = `A função "${nome}" ainda não foi publicada no Supabase.`;
+      throw e;
+    });
   }
 
   async function trocarSenha(nova) {
@@ -308,6 +328,8 @@ const Nuvem = (() => {
     sair,
     carregarPerfil,
     trocarSenha,
+    confirmarSenha,
+    funcao,
     rest,
     rpc,
     Sincronia,
