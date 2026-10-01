@@ -4,6 +4,7 @@
  * Contrato (docs/JOGOS.md): cada jogo é um objeto registrado com Jogos.registrar({...}):
  *   id, nome, grupo, icone, descricao, duracao,
  *   requer: { tipoDeCarta: quantidadeMinima }   (padrão: { multipla: 4 })
+ *   temConteudo(cartas) -> boolean              (opcional: regra própria, ex.: a Palavrinha x2/x4)
  *   iniciar(contexto) -> { destruir() }          (monta a tela em contexto.container)
  *
  * Contexto entregue ao jogo:
@@ -38,7 +39,8 @@ const Jogos = (() => {
   function estado(def, cartas) {
     if (def.emBreve) return 'embreve';
     if (def.nucleo) return 'disponivel';
-    return Cartas.temConteudo(def, cartas) ? 'disponivel' : 'precisa';
+    const tem = def.temConteudo ? def.temConteudo(cartas) : Cartas.temConteudo(def, cartas);
+    return tem ? 'disponivel' : 'precisa';
   }
 
   /* ---------- Núcleo: os três modos que já existiam (abertos pelo app.js) ---------- */

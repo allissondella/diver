@@ -81,8 +81,17 @@ const Cartas = (() => {
     return [...doBloco, ...derivadas].filter((p) => !vistas.has(p.palavra) && vistas.add(p.palavra));
   }
 
+  /**
+   * Palavras da Palavrinha: as mesmas da Forca, mas só palavras simples (sem espaço nem hífen)
+   * de 4 a 8 letras, que cabem no tabuleiro do celular. Já vêm sem acento e em maiúsculas.
+   */
+  function derivarPalavrinha(palavras) {
+    return palavras.filter((p) => !/[\s-]/.test(String(p.original || '').trim()) && /^[A-Z]{4,8}$/.test(p.palavra));
+  }
+
   /** Todas as cartas de uma trilha, já prontas para os jogos. */
   function derivar(trilha) {
+    const palavras = derivarPalavras(trilha);
     return {
       multipla: trilha.questoes,
       vf: derivarVF(trilha),
@@ -90,7 +99,8 @@ const Cartas = (() => {
       pares: derivarPares(trilha),
       adivinhas: derivarAdivinhas(trilha),
       sequencias: derivarSequencias(trilha),
-      palavras: derivarPalavras(trilha),
+      palavras,
+      palavrinha: derivarPalavrinha(palavras),
       // Caso Resolvido: só o bloco próprio "casos" (conferido, porque vem de JSON)
       casos: (Array.isArray(trilha.casos) ? trilha.casos : []).filter((c) => typeof CasoResolvido === 'undefined' || CasoResolvido.valido(c)),
     };

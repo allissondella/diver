@@ -88,7 +88,8 @@ const Admin = (() => {
             h('td', { text: melhorSim >= 0 ? melhorSim.toLocaleString('pt-BR') : '—' }),
             h('td', { class: aprovado ? 'texto-sucesso' : '', text: aprovado ? `Aprovado (${aprovado.nota.toLocaleString('pt-BR')})` : melhorProva >= 0 ? `Não aprovado (${melhorProva.toLocaleString('pt-BR')})` : '—' }),
             h('td', { text: (p.streak && p.streak.ultimoDia) ? UI.formatarData(p.streak.ultimoDia, { day: '2-digit', month: 'short', year: 'numeric' }) : new Date(linha.atualizado_em).toLocaleDateString('pt-BR') }));
-        })))));
+        })))),
+      Estatisticas.bloco({ aluno: pessoa.id, cursos })); // do log de atividade (o professor vê só os cursos dele)
     } catch (erro) {
       alvo.replaceChildren(h('p', { class: 'texto-erro', text: erro.message }));
     }
