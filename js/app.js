@@ -50,6 +50,7 @@ const App = (() => {
     cursos: { tela: 'tela-cursos', render: () => Biblioteca.renderCursos($('tela-cursos')) },
     pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
     perfil: { tela: 'tela-perfil', render: () => Perfil.render($('tela-perfil')) },
+    estatisticas: { tela: 'tela-estatisticas', render: () => Estatisticas.render($('tela-estatisticas')) },
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
     'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
     admin: { tela: 'tela-admin', soEquipe: true, render: () => Admin.render($('tela-admin')) },
@@ -97,7 +98,7 @@ const App = (() => {
   function abandonarAndamento() {
     if (estado.sessao && !estado.sessao.encerrada && !$('tela-quiz').hidden) {
       if (estado.sessao.respostas.length) {
-        Quiz.finalizar(estado.sessao, estado.prog, 'saiu');
+        registrarSessao(estado.sessao, Quiz.finalizar(estado.sessao, estado.prog, 'saiu'), 'saiu');
         salvar();
       }
       pararTimer();
@@ -1044,6 +1045,11 @@ const App = (() => {
     if (partida.controlador && partida.controlador.destruir) partida.controlador.destruir();
 
     const r = Economia.aplicarResultado(res, estado.trilha, estado.prog, { dobro: partida.desafio });
+    Atividade.registrar('jogo_concluido', estado.trilha && estado.trilha.id, {
+      jogo: partida.def.id, acertos: res.acertos, erros: res.erros, total: res.total, pontuacao: res.pontuacao,
+      tempo_seg: res.tempoSegundos, perfeito: res.perfeito, desafio: !!partida.desafio, xp: r.xp, perolas: r.perolas,
+      ...(res.registro || {}), // dados próprios do jogo (ex.: Palavrinha: variante, palavra do dia, tentativas)
+    });
     if (partida.desafio) {
       const feitos = Dados.ler(CHAVE_DESAFIOS, {});
       feitos[UI.dataLocal()] = true;
@@ -1213,6 +1219,10 @@ const App = (() => {
     const s = estado.sessao;
     const q = Quiz.atual(s);
     const r = Quiz.responder(s, indice, estado.prog);
+    Atividade.registrar('questao_respondida', estado.trilha && estado.trilha.id, {
+      modo: s.modo, questao: q.id, revisa_de: q.revisaDe, acertou: r.acertou,
+      dificuldade: q.dificuldade, tema: q.tema, fase: q.fase || (s.fase && s.fase.id),
+    });
     const botoes = [...document.querySelectorAll('#quiz-alternativas .alternativa')];
     botoes.forEach((b) => (b.disabled = true));
 
@@ -1291,12 +1301,26 @@ const App = (() => {
     }
   }
 
+  /** Log de atividade: uma linha por sessão de estudo (docs/ATIVIDADE.md). */
+  const TIPO_SESSAO = { mergulho: 'mergulho_sessao', revisao: 'revisao_sessao', simulado: 'simulado_concluido', enviada: 'simulado_concluido', prova: 'prova_concluida' };
+  function registrarSessao(s, resumo, motivo) {
+    if (!TIPO_SESSAO[s.modo] || !resumo) return;
+    Atividade.registrar(TIPO_SESSAO[s.modo], s.trilha && s.trilha.id, {
+      modo: s.modo, motivo, total: resumo.total, acertos: resumo.acertos, pct: resumo.pct, tempo_seg: resumo.tempoSeg,
+      fase: s.fase && s.fase.id, estrelas: resumo.estrelas || undefined, fase_concluida: s.modo === 'mergulho' ? !!resumo.faseConcluida : undefined,
+      nota: resumo.nota === null ? undefined : resumo.nota, aprovado: s.modo === 'prova' && motivo !== 'saiu' ? !!resumo.aprovado : undefined,
+      em_branco: resumo.emBranco || undefined, origem: s.modo === 'enviada' ? 'prova_enviada' : undefined,
+      xp: resumo.xp, perolas: resumo.perolas,
+    });
+  }
+
   function encerrarSessao(motivo) {
     const s = estado.sessao;
     if (!s || s.encerrada) return;
     pararTimer();
     $('quiz-feedback').hidden = true;
     const resumo = Quiz.finalizar(s, estado.prog, motivo);
+    registrarSessao(s, resumo, motivo);
     if (s.modo === 'enviada' && motivo !== 'saiu') ProvasEnviadas.registrarTentativa(s.provaRef, resumo);
     checarNivel();
     const novas = Conquistas.verificar(estado.prog, estado.trilha);
@@ -1599,6 +1623,7 @@ const App = (() => {
     await Conta.garantir(); // com Supabase configurado: login + senha própria + progresso da nuvem
     Mascotes.aplicar(); // a escolha pode ter vindo da nuvem junto com o progresso
     Nuvem.Sincronia.aoMudar(() => atualizarConta());
+    Atividade.iniciar(); // log de atividade: envia em lotes (com login) ou guarda no navegador
     await carregarTrilhas();
     const secao = location.hash.slice(1);
     navegar(ROTAS[secao] ? secao : 'inicio');

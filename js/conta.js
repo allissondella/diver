@@ -158,6 +158,7 @@ const Conta = (() => {
   async function sair() {
     if (!window.confirm('Sair da sua conta neste aparelho?')) return;
     UI.toast('Saindo', 'Salvando seu progresso…', 'i-bolha');
+    await Atividade.enviar(); // o que ainda estava na fila do log de atividade
     await Nuvem.sair();
     location.hash = '';
     location.reload();

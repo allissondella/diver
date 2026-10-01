@@ -574,3 +574,168 @@ grant execute on function public.senha_recente(integer) to authenticated;
 grant execute on function public.fila_aprovar(uuid) to authenticated;
 grant execute on function public.fila_rejeitar(uuid) to authenticated;
 grant execute on function public.fila_destravar(uuid) to authenticated;
+
+-- ---------- Log de atividade (docs/ATIVIDADE.md) ----------
+-- Cada coisa que o aluno faz vira uma linha: responder questão, terminar jogo, sessão de Mergulho,
+-- Revisão, Simulado, Prova e (no futuro) certificado. Nada é editado depois: só se acrescenta.
+-- É a base das estatísticas, do ranking da Palavrinha e, mais pra frente, da retrospectiva do ano.
+create table if not exists public.eventos_atividade (
+  id uuid primary key default gen_random_uuid(),   -- o app manda o próprio id: reenviar não duplica
+  aluno_id uuid not null references public.perfis (id) on delete cascade,
+  curso_id text check (curso_id is null or char_length(curso_id) between 1 and 120),
+  tipo text not null check (tipo in ('questao_respondida', 'jogo_concluido', 'mergulho_sessao', 'revisao_sessao',
+                                     'simulado_concluido', 'prova_concluida', 'certificado_emitido')),
+  detalhes jsonb not null default '{}'::jsonb check (jsonb_typeof(detalhes) = 'object' and octet_length(detalhes::text) <= 4096),
+  criado_em timestamptz not null default now()
+);
+create index if not exists eventos_atividade_aluno on public.eventos_atividade (aluno_id, criado_em desc);
+create index if not exists eventos_atividade_curso on public.eventos_atividade (curso_id, tipo, criado_em desc);
+
+-- O dono é sempre quem está logado; a hora é a do servidor, salvo eventos guardados sem internet
+-- (aceita a hora do aparelho se estiver entre 7 dias atrás e agora).
+create or replace function public.eventos_atividade_novo()
+returns trigger
+language plpgsql
+set search_path = public
+as $$
+begin
+  if new.criado_em is null or new.criado_em > now() + interval '5 minutes' or new.criado_em < now() - interval '7 days' then
+    new.criado_em := now();
+  end if;
+  return new;
+end;
+$$;
+drop trigger if exists eventos_atividade_novo on public.eventos_atividade;
+create trigger eventos_atividade_novo before insert on public.eventos_atividade
+  for each row execute function public.eventos_atividade_novo();
+
+alter table public.eventos_atividade enable row level security;
+
+-- Ver: o próprio aluno; o admin; o professor, só dos alunos dele e só nos cursos em comum
+-- (a mesma regra do progresso na tabela "estado").
+drop policy if exists "atividade: ver" on public.eventos_atividade;
+create policy "atividade: ver" on public.eventos_atividade
+  for select to authenticated using (
+    aluno_id = auth.uid()
+    or public.eh_admin()
+    or (
+      curso_id is not null
+      and public.professor_do_curso(curso_id)
+      and public.aluno_do_professor(aluno_id)
+      and exists (select 1 from public.matriculas m where m.aluno_id = eventos_atividade.aluno_id and m.trilha_id = eventos_atividade.curso_id)
+    )
+  );
+-- Gravar: só eventos da própria pessoa. Ninguém altera nem apaga pelo app.
+drop policy if exists "atividade: gravar o próprio" on public.eventos_atividade;
+create policy "atividade: gravar o próprio" on public.eventos_atividade
+  for insert to authenticated with check (aluno_id = auth.uid());
+
+revoke all on public.eventos_atividade from anon, authenticated;
+grant select, insert on public.eventos_atividade to authenticated;
+
+-- Leitura segura de números e sim/não do "detalhes" (valor de tipo errado vira nulo, não erro)
+create or replace function public.atv_num(d jsonb, k text)
+returns numeric language sql immutable as $$
+  select case when jsonb_typeof(d -> k) = 'number' then (d ->> k)::numeric end;
+$$;
+create or replace function public.atv_sim(d jsonb, k text)
+returns boolean language sql immutable as $$
+  select case when jsonb_typeof(d -> k) = 'boolean' then (d ->> k)::boolean end;
+$$;
+
+-- Estatísticas de uma pessoa (padrão: quem está logado), de um curso ou de todos.
+-- "security invoker": roda com as permissões de quem pede, então a regra "atividade: ver" vale aqui também.
+-- O app tem a mesma conta em js/atividade.js (resumir), para o modo sem login.
+create or replace function public.estatisticas_atividade(p_aluno uuid default null, p_curso text default null)
+returns jsonb
+language sql stable security invoker
+set search_path = public
+as $$
+  with ev as (
+    select tipo, detalhes, criado_em from public.eventos_atividade
+     where aluno_id = coalesce(p_aluno, auth.uid()) and (p_curso is null or curso_id = p_curso)
+  ),
+  q as (
+    select coalesce(detalhes ->> 'modo', 'outro') as modo, count(*) as total,
+           count(*) filter (where public.atv_sim(detalhes, 'acertou')) as acertos
+      from ev where tipo = 'questao_respondida' group by 1
+  ),
+  j as (
+    select detalhes ->> 'jogo' as jogo, count(*) as partidas,
+           coalesce(sum(public.atv_num(detalhes, 'acertos')), 0) as acertos,
+           coalesce(sum(public.atv_num(detalhes, 'total')), 0) as total,
+           max(public.atv_num(detalhes, 'pontuacao')) as melhor,
+           count(*) filter (where public.atv_sim(detalhes, 'venceu')) as vitorias
+      from ev where tipo = 'jogo_concluido' and detalhes ? 'jogo' group by 1
+  ),
+  s as (
+    select tipo, count(*) as total,
+           count(*) filter (where coalesce(detalhes ->> 'motivo', 'fim') <> 'saiu') as concluidas,
+           round(avg(public.atv_num(detalhes, 'nota')), 1) as media_nota,
+           max(public.atv_num(detalhes, 'nota')) as melhor_nota,
+           count(*) filter (where public.atv_sim(detalhes, 'aprovado')) as aprovadas
+      from ev where tipo not in ('questao_respondida', 'jogo_concluido') group by 1
+  )
+  select jsonb_build_object(
+    'questoes', jsonb_build_object('total', coalesce((select sum(total) from q), 0), 'acertos', coalesce((select sum(acertos) from q), 0)),
+    'questoes_por_modo', coalesce((select jsonb_object_agg(modo, jsonb_build_object('total', total, 'acertos', acertos)) from q), '{}'::jsonb),
+    'jogos', coalesce((select jsonb_agg(jsonb_build_object('jogo', jogo, 'partidas', partidas, 'acertos', acertos, 'total', total, 'melhor', melhor, 'vitorias', vitorias) order by partidas desc, jogo) from j), '[]'::jsonb),
+    'sessoes', coalesce((select jsonb_object_agg(tipo, jsonb_build_object('total', total, 'concluidas', concluidas, 'media_nota', media_nota, 'melhor_nota', melhor_nota, 'aprovadas', aprovadas)) from s), '{}'::jsonb),
+    'dias_ativos', (select count(distinct (criado_em at time zone 'America/Sao_Paulo')::date) from ev),
+    'primeiro', (select min(criado_em) from ev),
+    'ultimo', (select max(criado_em) from ev)
+  );
+$$;
+
+-- Ranking da Palavrinha num curso: só a PALAVRA DO DIA conta (a 1ª partida de cada dia), só alunos
+-- matriculados e ativos. Pontos por vitória = tentativas máximas + 1 − tentativas usadas
+-- (Palavrinha 6, x2 7, x4 9: acertar de primeira na Palavrinha vale 6). Nome curto ("Maria S.").
+-- "security definer" porque o aluno não lê os eventos dos colegas: a função devolve só o placar,
+-- e só para quem é do curso (ou professor dele, ou admin).
+create or replace function public.ranking_palavrinha(p_curso text, p_variante text default 'x1', p_periodo text default 'mes')
+returns table (posicao integer, nome text, pontos integer, vitorias integer, partidas integer, sou_eu boolean)
+language sql stable security definer
+set search_path = public
+as $$
+  with pode as (
+    select public.eh_admin() or public.professor_do_curso(p_curso)
+        or exists (select 1 from public.matriculas m where m.aluno_id = auth.uid() and m.trilha_id = p_curso) as ok
+  ),
+  maximo as (
+    select case p_variante when 'x1' then 6 when 'x2' then 7 when 'x4' then 9 end as tentativas
+  ),
+  diarias as (
+    select distinct on (e.aluno_id, e.detalhes ->> 'data') e.aluno_id, e.detalhes
+      from public.eventos_atividade e
+      join public.matriculas m on m.aluno_id = e.aluno_id and m.trilha_id = p_curso
+      join public.perfis p on p.id = e.aluno_id and p.papel = 'aluno' and p.ativo
+     where (select ok from pode) and (select tentativas from maximo) is not null
+       and e.tipo = 'jogo_concluido' and e.curso_id = p_curso
+       and e.detalhes ->> 'jogo' = 'palavrinha' and e.detalhes ->> 'variante' = p_variante
+       and public.atv_sim(e.detalhes, 'diaria')
+       and (e.detalhes ->> 'data') ~ '^\d{4}-\d{2}-\d{2}$'
+       and (p_periodo = 'geral' or left(e.detalhes ->> 'data', 7) = to_char(now() at time zone 'America/Sao_Paulo', 'YYYY-MM'))
+     order by e.aluno_id, e.detalhes ->> 'data', e.criado_em
+  ),
+  placar as (
+    select d.aluno_id,
+           sum(case when public.atv_sim(d.detalhes, 'venceu')
+                    then greatest(0, (select tentativas from maximo) + 1 - coalesce(public.atv_num(d.detalhes, 'tentativas'), 99))
+                    else 0 end)::integer as pontos,
+           (count(*) filter (where public.atv_sim(d.detalhes, 'venceu')))::integer as vitorias,
+           count(*)::integer as partidas
+      from diarias d group by d.aluno_id
+  )
+  select (rank() over (order by pl.pontos desc, pl.vitorias desc))::integer,
+         (select partes[1] || case when array_length(partes, 1) > 1 then ' ' || upper(left(partes[array_length(partes, 1)], 1)) || '.' else '' end
+            from (select regexp_split_to_array(trim(p.nome), '\s+') as partes) x),
+         pl.pontos, pl.vitorias, pl.partidas, pl.aluno_id = auth.uid()
+    from placar pl join public.perfis p on p.id = pl.aluno_id
+   order by 1, 2
+   limit 200;
+$$;
+
+revoke all on function public.estatisticas_atividade(uuid, text) from public, anon;
+revoke all on function public.ranking_palavrinha(text, text, text) from public, anon;
+grant execute on function public.estatisticas_atividade(uuid, text) to authenticated;
+grant execute on function public.ranking_palavrinha(text, text, text) to authenticated;
