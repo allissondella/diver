@@ -55,8 +55,8 @@ Jogos.registrar({
       });
 
       ctx.container.replaceChildren(
-        h('div', { class: 'jogo-hud' }, h('span', { text: `Palavra ${i + 1} de ${fila.length}` }), h('span', { text: `Tema: ${c.tema}` })),
-        h('div', { class: 'forca' }, jangada, h('div', { class: 'forca__lado' }, h('p', { class: 'forca-dica' }, h('strong', { text: 'Dica: ' }), c.dica || c.tema), letras, info, btnDica)),
+        h('div', { class: 'jogo-hud' }, h('span', { text: `Palavra ${i + 1} de ${fila.length}` }), h('span', { text: `Tema: ${c.temaVisivel || c.tema}` })),
+        h('div', { class: 'forca' }, jangada, h('div', { class: 'forca__lado' }, h('p', { class: 'forca-dica' }, h('strong', { text: 'Dica: ' }), c.dicaVisivel || c.temaVisivel || c.tema), letras, info, btnDica)),
         teclado, msg);
 
       function mostrar() {
@@ -99,7 +99,7 @@ Jogos.registrar({
         mostrar();
         teclado.querySelectorAll('.tecla').forEach((t) => (t.disabled = true));
         detalhes.push(JogoComum.detalhe(c, acertou, {
-          inicio: inicioCarta, pergunta: `Palavra-chave: ${c.dica || c.tema}`, resposta: c.original || palavra,
+          inicio: inicioCarta, pergunta: `Palavra-chave: ${c.dicaVisivel || c.temaVisivel || c.tema}`, resposta: c.original || palavra,
           sua: acertou ? '' : 'A jangada se desmontou antes.',
         }));
         const botao = h('button', { type: 'button', class: 'botao botao--primario botao--largo', text: i === fila.length - 1 ? 'Ver resultado' : 'Próxima palavra', onclick: seguir });

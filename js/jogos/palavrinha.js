@@ -343,9 +343,9 @@ const Palavrinha = (() => {
           const erros = palpites.length;
           const mostrarDica = ok[b] === null && erros >= DICA_DEPOIS && !fim;
           return h('section', { class: `pal-tabuleiro ${ok[b] !== null ? 'pal-tabuleiro--ok' : ''}`.trim(), 'aria-label': `Tabuleiro ${b + 1}${ok[b] !== null ? ', resolvido' : ''}` },
-            h('p', { class: 'pal-tema' }, h('span', { class: 'texto-suave', text: 'Tema: ' }), p.tema || ctx.trilha.nome),
+            h('p', { class: 'pal-tema' }, h('span', { class: 'texto-suave', text: 'Tema: ' }), p.temaVisivel || ctx.trilha.nome), // nunca o tema que entrega a palavra
             h('div', { class: 'pal-grade' }, linhas),
-            mostrarDica && p.dica ? h('p', { class: 'pal-dica' }, h('strong', { text: 'Dica: ' }), p.dica) : null,
+            mostrarDica && p.dicaVisivel ? h('p', { class: 'pal-dica' }, h('strong', { text: 'Dica: ' }), p.dicaVisivel) : null,
             fim ? h('p', { class: `pal-revela ${ok[b] !== null ? 'texto-sucesso' : ''}`.trim(), text: `${ok[b] !== null ? `Acertou na ${ok[b]}ª: ` : 'Era: '}${String(p.original || p.palavra).toUpperCase()}` }) : null);
         }));
         hud.lastChild.textContent = `Tentativa ${Math.min(palpites.length + (fim ? 0 : 1), v.tentativas)} de ${v.tentativas}`;
@@ -442,7 +442,7 @@ const Palavrinha = (() => {
         const tentativas = ganhou ? Math.max(...ok) : v.tentativas;
         const pontos = ganhou ? v.tentativas + 1 - tentativas : 0;
         const detalhes = palavras.map((p, b) => JogoComum.detalhe(p, ok[b] !== null, {
-          inicio, pergunta: `Palavra de ${tamanho} letras · ${p.tema || 'tema do curso'}`, resposta: String(p.original || p.palavra),
+          inicio, pergunta: `Palavra de ${tamanho} letras · ${p.temaVisivel || 'tema do curso'}`, resposta: String(p.original || p.palavra),
           sua: ok[b] !== null ? '' : 'Não saiu nas tentativas.',
         }));
         const registro = {
