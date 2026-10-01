@@ -46,6 +46,20 @@ Nem o art. 8º nem a licença do Inep cobrem poemas, letras de música, tirinhas
 
 Essa triagem é obrigatória mesmo que pareça repetitiva — não presumir "essa deve estar ok" sem checar.
 
+### 1.3 Onde as questões literais do Enem entram (regra permanente, 2026-10-01)
+
+1. **A Fase 1 de cada matéria é 100% origem `"diver"`** (questões nossas). É a porta de entrada: o aluno ganha confiança com problemas escritos para ensinar, em rampa de dificuldade.
+2. **Questões literais do Enem só a partir da Fase 2**, sempre marcadas como **`"dificuldade": "dificil"`** e no máximo **30% das questões da fase** (arredondando para baixo: fase com 20 questões aceita até 6 literais).
+3. Como o Mergulho monta cada rodada em rampa (fácil → médio → difícil) e a primeira rodada de uma fase não tem difíceis, a literal do Enem aparece sempre no fim da rodada, a partir da segunda vez que o aluno mergulha na fase.
+
+### 1.4 Variantes na Revisão: nunca de questão do Enem
+
+A Revisão pode mostrar uma **variante** (mesma habilidade, outros números e outra situação) no lugar de uma questão que o aluno errou. Variante é obra derivada, então:
+
+- **Questão origem `"enem"` NUNCA ganha variante.** Na Revisão, o aluno que errou uma literal vê outra questão nossa do mesmo tema (de nível igual ou menor); se não houver nenhuma, vê a própria literal de novo, sem nenhuma alteração.
+- A regra é conferida em três lugares, um atrás do outro: na skill `criar-trilha` e no `scripts/fila.mjs` (antes de sair do computador), no banco e na Edge Function (servidor da fila) e no próprio app (`Trilhas.limparVariantes` descarta a variante e avisa no console).
+- Detalhes técnicos: `docs/MOTOR_DIVER.md`, seção 12.
+
 ## 2. O pipeline, etapa por etapa
 
 | # | Etapa | Responsável | Entrada | Saída |

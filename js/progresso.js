@@ -39,7 +39,7 @@ const Progresso = (() => {
       xp: 0,
       perolas: 0,
       fases: {}, // { [faseId]: { concluida, estrelas, tentativas } }
-      questoes: {}, // { [questaoId]: { peso, acertos, erros, marcada } }
+      questoes: {}, // { [questaoId]: { peso, acertos, erros, marcada, vistas? } } — vistas: rodízio da Revisão
       streak: { atual: 0, melhor: 0, ultimoDia: null },
       metaDiaria: 10,
       hoje: { data: null, respondidas: 0 },
@@ -196,6 +196,15 @@ const Progresso = (() => {
     registrarEstudo(prog);
   }
 
+  /**
+   * A Revisão mostrou uma variante (ou uma substituta) no lugar da questão original:
+   * guarda a ordem em que apareceram (a mais antiga primeiro) para o rodízio.
+   */
+  function registrarVista(prog, originalId, mostradaId) {
+    const q = estadoQuestao(prog, originalId);
+    q.vistas = (q.vistas || []).filter((id) => id !== mostradaId).concat(mostradaId).slice(-20);
+  }
+
   function alternarMarcada(prog, questaoId) {
     const q = estadoQuestao(prog, questaoId);
     q.marcada = !q.marcada;
@@ -243,7 +252,7 @@ const Progresso = (() => {
     NIVEIS, METAS_DIARIAS, RECOMPENSA, BONUS_COMBO,
     carregar, salvar, zerar, ultimaTrilha, definirUltimaTrilha,
     nivel, streakVigente, respondidasHoje,
-    registrarResposta, registrarAvulsa, registrarEstudo, alternarMarcada, paraRevisar,
+    registrarResposta, registrarAvulsa, registrarEstudo, registrarVista, alternarMarcada, paraRevisar,
     faseDesbloqueada, concluirFase, registrarTentativaFase,
   };
 })();

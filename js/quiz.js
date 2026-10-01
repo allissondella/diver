@@ -2,9 +2,11 @@
  * quiz.js — motor das sessões de estudo.
  *
  * Modos:
- *  - mergulho: questões de uma fase, com oxigênio e feedback imediato
+ *  - mergulho: questões de uma fase, com oxigênio e feedback imediato. Rodada em rampa
+ *              (fácil → médio → difícil); na primeira rodada da fase, sem as difíceis
  *  - simulado: N questões da trilha toda, cronometrado, correção no final
- *  - revisao:  questões erradas (peso > 0) ou marcadas, com feedback imediato
+ *  - revisao:  questões erradas (peso > 0) ou marcadas, com feedback imediato e em rampa;
+ *              pode mostrar uma variante aprovada ou uma substituta (veja versaoParaRevisar)
  *  - prova:    prova final do curso
  *  - enviada:  prova antiga que alguém subiu (Simulado → Upload de prova). Correção no final;
  *              os pontos só entram na entrega, pelo Economia.pontuarProvaEnviada
@@ -28,6 +30,7 @@ const Quiz = (() => {
   /**
    * Repetição espaçada simples: escolhe n questões priorizando as de peso maior
    * (erradas recentemente) e as nunca vistas. Um pouco de sorte evita rodadas repetidas.
+   * Devolve na ordem de prioridade: quem chama decide se embaralha ou monta a rampa.
    */
   function selecionar(pool, prog, n) {
     const prioridade = (q) => {
@@ -36,12 +39,81 @@ const Quiz = (() => {
       const nuncaVista = !e || e.acertos + e.erros === 0;
       return peso * 10 + (nuncaVista ? 5 : 0) + Math.random() * 4;
     };
-    const escolhidas = pool
+    return pool
       .map((q) => ({ q, p: prioridade(q) }))
       .sort((a, b) => b.p - a.p)
       .slice(0, n)
       .map((x) => x.q);
-    return embaralhar(escolhidas);
+  }
+
+  /* ---------- Dificuldade progressiva ---------- */
+  const NIVEL = { facil: 0, medio: 1, dificil: 2 };
+  const nivel = (q) => (q.dificuldade in NIVEL ? NIVEL[q.dificuldade] : 1);
+
+  /** Rampa: fácil → médio → difícil (sorteio só dentro de cada nível). */
+  function emRampa(lista) {
+    return embaralhar(lista).sort((a, b) => nivel(a) - nivel(b));
+  }
+
+  /**
+   * Questões que podem entrar numa rodada do Mergulho. Na primeira rodada da fase,
+   * só fácil e médio: as difíceis entram a partir da segunda. (Fase só com difíceis: usa todas.)
+   */
+  function poolDoMergulho(trilha, fase, prog) {
+    const daFase = Trilhas.questoesDaFase(trilha, fase.id);
+    const jaTentou = !!(prog.fases[fase.id] && prog.fases[fase.id].tentativas);
+    const semDificeis = daFase.filter((q) => q.dificuldade !== 'dificil');
+    return jaTentou || !semDificeis.length ? daFase : semDificeis;
+  }
+
+  /* ---------- Revisão com variantes ---------- */
+  /** Id que guarda o progresso: a variante ou a substituta contam para a questão original. */
+  function idNoProgresso(q) {
+    return q.revisaDe || q.id;
+  }
+
+  /** Rodízio: primeiro o que nunca apareceu; depois o que apareceu há mais tempo. */
+  function porRodizio(candidatos, vistas) {
+    const pos = (c) => vistas.indexOf(c.id); // -1 = nunca vista
+    return embaralhar(candidatos).sort((a, b) => pos(a) - pos(b))[0];
+  }
+
+  /**
+   * O que mostrar na Revisão no lugar de uma questão pendente (docs/MOTOR_DIVER.md, seção 12):
+   *  - origem "enem": NUNCA variante (licença Sem Derivações). Outra questão nossa do mesmo
+   *    tema, de nível igual ou menor (da mesma fase, se houver); sem nenhuma, a literal de novo;
+   *  - nossa, com variante aprovada: uma variante, em rodízio;
+   *  - nossa, ainda sem variante: a própria questão.
+   */
+  function versaoParaRevisar(q, trilha, prog, usadas) {
+    const vistas = (prog.questoes[q.id] && prog.questoes[q.id].vistas) || [];
+    let escolhida = null;
+    let tipo = null;
+    if (q.origem === 'enem') {
+      const mesmoTema = trilha.questoes.filter((x) => x.id !== q.id && x.origem !== 'enem' && x.tema === q.tema
+        && nivel(x) <= nivel(q) && !usadas.has(x.id));
+      const mesmaFase = mesmoTema.filter((x) => x.fase === q.fase);
+      const candidatos = mesmaFase.length ? mesmaFase : mesmoTema;
+      if (candidatos.length) {
+        escolhida = porRodizio(candidatos, vistas);
+        tipo = 'substituta';
+      }
+    } else {
+      const variantes = Trilhas.variantesDe(trilha, q.id);
+      if (variantes.length) {
+        escolhida = porRodizio(variantes, vistas);
+        tipo = 'variante';
+      }
+    }
+    if (!escolhida) return q;
+    usadas.add(escolhida.id);
+    return { ...escolhida, revisaDe: q.id, tipoRevisao: tipo };
+  }
+
+  function montarRevisao(trilha, prog) {
+    const pendentes = selecionar(Progresso.paraRevisar(prog, trilha), prog, TAMANHO_RODADA.revisao);
+    const usadas = new Set(pendentes.map((q) => q.id)); // a substituta não repete uma pendente da mesma rodada
+    return emRampa(pendentes.map((q) => versaoParaRevisar(q, trilha, prog, usadas)));
   }
 
   /**
@@ -54,13 +126,13 @@ const Quiz = (() => {
 
     if (modo === 'mergulho') {
       fase = trilha.fases.find((f) => f.id === opcoes.faseId);
-      fila = selecionar(Trilhas.questoesDaFase(trilha, fase.id), prog, TAMANHO_RODADA.mergulho);
+      fila = emRampa(selecionar(poolDoMergulho(trilha, fase, prog), prog, TAMANHO_RODADA.mergulho));
       Progresso.registrarTentativaFase(prog, fase.id);
     } else if (modo === 'simulado') {
       const n = Math.min(opcoes.quantidade || 10, trilha.questoes.length);
-      fila = selecionar(trilha.questoes, prog, n);
+      fila = embaralhar(selecionar(trilha.questoes, prog, n)); // como numa prova: sem rampa
     } else if (modo === 'revisao') {
-      fila = selecionar(Progresso.paraRevisar(prog, trilha), prog, TAMANHO_RODADA.revisao);
+      fila = montarRevisao(trilha, prog);
     } else if (modo === 'prova') {
       // Prova final: sorteio simples da trilha toda (sem priorizar os erros, como numa prova de verdade)
       fila = embaralhar(trilha.questoes).slice(0, Math.min(opcoes.quantidade, trilha.questoes.length));
@@ -112,7 +184,8 @@ const Quiz = (() => {
 
     s.respostas.push({ questao: q, escolhida, acertou });
     if (s.modo === 'enviada') return r; // questões de fora da trilha: sem revisão espaçada, pontos só na entrega
-    Progresso.registrarResposta(prog, q, acertou, s.modo);
+    Progresso.registrarResposta(prog, { id: idNoProgresso(q) }, acertou, s.modo);
+    if (q.revisaDe) Progresso.registrarVista(prog, q.revisaDe, q.id);
 
     if (acertou) {
       s.combo++;
@@ -252,5 +325,5 @@ const Quiz = (() => {
     return resumo;
   }
 
-  return { criar, atual, responder, avancar, finalizar, segundosRestantes, totalPlanejado, OXIGENIO_MAX };
+  return { criar, atual, responder, idNoProgresso, avancar, finalizar, segundosRestantes, totalPlanejado, OXIGENIO_MAX };
 })();

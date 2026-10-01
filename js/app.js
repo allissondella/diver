@@ -1168,6 +1168,13 @@ const App = (() => {
     dif.textContent = NOMES_DIFICULDADE[q.dificuldade];
     dif.className = `tag tag--${q.dificuldade}`;
     dif.hidden = s.modo === 'enviada'; // prova enviada não tem nível de dificuldade
+    // Revisão: avisa quando a questão é uma versão nova (variante) ou outra do mesmo tema (substituta)
+    const versao = $('quiz-versao');
+    versao.hidden = !q.tipoRevisao;
+    versao.textContent = q.tipoRevisao === 'variante' ? 'Versão nova' : 'Mesmo tema';
+    versao.title = q.tipoRevisao === 'variante'
+      ? 'Mesma habilidade da questão que você errou, com outros números e outra situação.'
+      : 'Outra questão do mesmo assunto, para treinar o que ficou pra trás.';
     $('btn-marcar').hidden = s.modo === 'enviada'; // nem entra na Revisão (as questões não são da trilha)
     $('quiz-volta').hidden = s.indice < Quiz.totalPlanejado(s);
 
@@ -1192,7 +1199,7 @@ const App = (() => {
 
   function atualizarBotaoMarcar() {
     const q = Quiz.atual(estado.sessao);
-    const e = estado.prog.questoes[q.id];
+    const e = estado.prog.questoes[Quiz.idNoProgresso(q)];
     const marcada = !!(e && e.marcada);
     const btn = $('btn-marcar');
     btn.setAttribute('aria-pressed', String(marcada));
@@ -1561,7 +1568,7 @@ const App = (() => {
     $('btn-continuar').addEventListener('click', continuar);
     $('btn-marcar').addEventListener('click', () => {
       const q = Quiz.atual(estado.sessao);
-      const marcada = Progresso.alternarMarcada(estado.prog, q.id);
+      const marcada = Progresso.alternarMarcada(estado.prog, Quiz.idNoProgresso(q)); // variante marca a original
       salvar();
       atualizarBotaoMarcar();
       toast(marcada ? 'Marcada' : 'Desmarcada', marcada ? 'Essa volta no modo Revisão.' : 'Saiu da lista de revisão.', 'i-marcador');

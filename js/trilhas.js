@@ -50,6 +50,49 @@ const Trilhas = (() => {
     return erros;
   }
 
+  /**
+   * Bloco opcional "variantes" (docs/MOTOR_DIVER.md, seção 12): versões novas de questões NOSSAS,
+   * usadas só pela Revisão. Tira da trilha toda variante com problema, sem derrubar o curso:
+   * principalmente as que apontam para questão origem "enem" (licença Sem Derivações, trava 3 de 3).
+   * Devolve a lista de variantes descartadas, com o motivo.
+   */
+  function limparVariantes(t) {
+    if (t.variantes === undefined) return [];
+    if (!Array.isArray(t.variantes)) {
+      t.variantes = [];
+      return ['"variantes" precisa ser uma lista'];
+    }
+    const questoes = new Map(t.questoes.map((q) => [q.id, q]));
+    const ids = new Set();
+    const descartadas = [];
+    t.variantes = t.variantes.filter((v, i) => {
+      const ref = `variante ${v && v.id ? `"${v.id}"` : '#' + (i + 1)}`;
+      const original = v && questoes.get(v.varianteDe);
+      let motivo = null;
+      if (!v || typeof v !== 'object' || !v.id) motivo = 'sem "id"';
+      else if (questoes.has(v.id) || ids.has(v.id)) motivo = 'id repetido';
+      else if (!original) motivo = `"varianteDe" não aponta para uma questão da trilha`;
+      else if (original.origem === 'enem' || v.origem === 'enem') motivo = 'questão do Enem não pode ter variante (licença Sem Derivações)';
+      else if (v.fase !== original.fase) motivo = 'fase diferente da questão original';
+      else if (!v.enunciado || v.enunciado === original.enunciado) motivo = 'enunciado ausente ou igual ao da original';
+      else if (!v.tema || !DIFICULDADES.includes(v.dificuldade) || !v.explicacao) motivo = 'falta tema, dificuldade ou explicação';
+      else if (!Array.isArray(v.alternativas) || v.alternativas.length < 2 || v.alternativas.length > 6
+        || !Number.isInteger(v.correta) || v.correta < 0 || v.correta >= v.alternativas.length) motivo = 'alternativas ou "correta" inválidas';
+      if (motivo) {
+        descartadas.push(`${ref}: ${motivo}`);
+        return false;
+      }
+      ids.add(v.id);
+      return true;
+    });
+    return descartadas;
+  }
+
+  /** Variantes de uma questão que já passaram pelo Mergulho Triplo (só essas aparecem para o aluno). */
+  function variantesDe(trilha, questaoId) {
+    return (trilha.variantes || []).filter((v) => v.varianteDe === questaoId && v.validacao && v.validacao.pronta === true);
+  }
+
   /** Busca um JSON; devolve null se falhar (arquivo ausente, file://, etc.). */
   async function buscarJSON(url) {
     try {
@@ -102,6 +145,8 @@ const Trilhas = (() => {
       if (erros.length) return problemas.push({ origem, erros });
       if (ids.has(t.id)) return; // mesma trilha vinda de duas fontes: fica a primeira
       ids.add(t.id);
+      const descartadas = limparVariantes(t);
+      if (descartadas.length) console.warn(`[Diver] ${origem}: variantes ignoradas`, descartadas);
       trilhas.push(t);
     }
 
@@ -129,6 +174,7 @@ const Trilhas = (() => {
           resultado.erros.push({ origem: arq.name, erros });
           continue;
         }
+        limparVariantes(t);
         const pos = importadas.findIndex((x) => x.id === t.id);
         if (pos >= 0) importadas[pos] = t;
         else importadas.push(t);
@@ -175,5 +221,5 @@ const Trilhas = (() => {
     return trilha.questoes.filter((q) => q.fase === faseId);
   }
 
-  return { carregarTodas, importarArquivos, validar, questoesDaFase, ehImportada, salvarImportada, removerImportada };
+  return { carregarTodas, importarArquivos, validar, limparVariantes, variantesDe, questoesDaFase, ehImportada, salvarImportada, removerImportada };
 })();

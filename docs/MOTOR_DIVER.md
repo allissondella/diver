@@ -120,9 +120,10 @@ Nada roda sozinho: sem aprovação com senha na tela, nenhuma IA paga é chamada
 | `supabase/functions/_shared/mergulho-nucleo.mjs` | Prompts exatos, funil, regra das tentativas, fórmula do custo e formato do item do acervo. É o mesmo arquivo para a função (Deno) e para os scripts (Node): não tem como os dois divergirem. |
 | `supabase/functions/_shared/ias.mjs` | Chamadas ao Gemini (com `google_search`) e à OpenAI. Recebe as chaves por parâmetro; nunca as escreve em log ou erro. |
 | `supabase/functions/_shared/processar-lote.mjs` | Roda o lote: confere modelos, 3 questões em paralelo, para antes do tempo da função acabar e continua numa próxima execução. |
-| `js/fila-validacao.js` | A tela "Fila de Validação" (só admin; link na barra lateral, grupo Admin). |
+| `js/fila-validacao.js` | A tela "Fila de Validação" (só admin; link na barra lateral, grupo Admin), com o cartão "Mandar para a fila" (importa o núcleo com `import()` dinâmico; o app continua em scripts comuns). |
 | `js/nuvem.js` | `confirmarSenha` (reautenticação) e `funcao` (chama a Edge Function). |
-| `scripts/fila.mjs` | `simular`, `enviar`, `listar`, `baixar`. Não chama IA; login de admin digitado no terminal. |
+| `scripts/fila.mjs` | `simular`, `enviar`, `listar`, `baixar` e `aplicar` (arquivo baixado da tela, sem login). Não chama IA; login de admin digitado no terminal. A montagem dos lotes (`montarLotes`) mora no núcleo e é a mesma da tela. |
+| `scripts/juntar-funcao.mjs` → `supabase/painel/mergulho-triplo.ts` | A função num arquivo só, para colar no painel do Supabase (sem terminal). |
 | `scripts/buscar-similares.mjs` | Busca no acervo por palavras (TF-IDF), sem IA. Ver 11.5. |
 
 ### 11.3 Chaves (confere com a seção 5)
@@ -142,22 +143,67 @@ Por questão: tokens de entrada ≈ tamanho do prompt ÷ 4; saída prevista = 80
 ### 11.5 Diferenças em relação ao texto original (e por quê)
 - **Acervo no repositório:** a Edge Function não consegue escrever arquivos do GitHub. Ela grava o resultado na própria linha da fila, e o `fila.mjs baixar` leva para `data/acervo/<materia>.json`. Antes de aplicar, ele confere se a questão não mudou desde o envio.
 - **Busca por similares sem IA:** como toda chamada paga passa pela Fila (seção 10), a busca local compara por palavras (TF-IDF + cosseno), sem chave e sem custo. Os vetores de significado continuam sendo calculados pela função na aprovação e guardados em cada item, prontos para uma busca semântica no futuro.
-- **Nada de texto de terceiro (seção 4):** só os campos da própria questão (`id`, `tema`, `dificuldade`, `fase`, `enunciado`, `alternativas`, `correta`, `explicacao`, `origem`, `fonte`, `validacao`) saem do computador para a fila e voltam para o acervo. Qualquer outro campo (anotação, trecho de apostila) é descartado antes do envio. O detalhe que a IA devolve numa reprovação é guardado curto (até 800 caracteres), só para orientar a correção, e nunca vai para o acervo.
+- **Nada de texto de terceiro (seção 4):** só os campos da própria questão (`id`, `tema`, `dificuldade`, `fase`, `enunciado`, `alternativas`, `correta`, `explicacao`, `origem`, `fonte`, `varianteDe`, `validacao`) saem do computador para a fila e voltam para o acervo. Qualquer outro campo (anotação, trecho de apostila) é descartado antes do envio. O detalhe que a IA devolve numa reprovação é guardado curto (até 800 caracteres), só para orientar a correção, e nunca vai para o acervo.
 
-### 11.6 Para ligar (uma vez em cada projeto: primeiro testes, depois produção)
+### 11.6 Para ligar (uma vez em cada projeto: primeiro testes, depois produção) — sem terminal
 1. **Banco:** Supabase → SQL Editor → cole o `supabase/setup.sql` inteiro → Run (reexecutável, não apaga dados).
 2. **Secrets:** Edge Functions → Secrets: confira que `GEMINI_API_KEY` e `OPENAI_API_KEY` aparecem na lista (o painel mostra só o nome; o valor nunca precisa sair de lá).
-3. **Publicar a função** (no computador, na pasta do projeto):
-   ```
-   npx supabase login
-   npx supabase functions deploy mergulho-triplo --project-ref xtuzdecteeeldnaegkxl   # testes
-   npx supabase functions deploy mergulho-triplo --project-ref bdrwqmxjhvxqwfywpikg   # produção, depois
-   ```
-   Se o comando pedir, rode `npx supabase init` uma vez antes (ele cria o `supabase/config.toml`). Deixe a verificação de JWT ligada (é o padrão).
-4. **Conferir:** no site, Admin → Fila de Validação: o cartão "Chaves das IAs" deve mostrar as duas como "cadastrada". Isso chama só a ação `status` (sem custo).
-5. **Primeiro uso:** `node scripts/fila.mjs enviar data/trilhas/enem-vestibular.json --materia matematica --fase matematica-1`, aprovar na tela com a senha, esperar "Concluído" e rodar `node scripts/fila.mjs baixar <id>`.
+3. **Publicar a função pelo painel:** Edge Functions → **Deploy a new function** → **Via Editor** → nome `mergulho-triplo` → apague o código de exemplo e cole **todo** o arquivo `supabase/painel/mergulho-triplo.ts` (no GitHub: abra o arquivo → botão de copiar) → **Deploy**. Deixe "Verify JWT" ligado. Para atualizar depois, abra a função no painel, cole a versão nova e faça Deploy de novo.
+   - Esse arquivo é a mesma função de `supabase/functions/`, juntada num arquivo só por `node scripts/juntar-funcao.mjs` (quem mexe na função roda de novo; `--conferir` avisa se ficou desatualizado).
+   - Quem preferir o terminal: `npx supabase functions deploy mergulho-triplo --project-ref xtuzdecteeeldnaegkxl` (testes) ou `bdrwqmxjhvxqwfywpikg` (produção).
+4. **Conferir:** no site, Admin → Fila de Validação: o cartão "Chaves das IAs" deve mostrar as duas como "cadastrada" (só a ação `status`, sem custo).
+5. **Mandar um lote:** na mesma tela, cartão **"Mandar para a fila"**: escolha o curso, a fase e "Questões" ou "Variantes" → o site mostra quantos itens e o custo estimado → confirme. O lote nasce **Pendente** (nada cobrado). (Pelo terminal, o equivalente é `node scripts/fila.mjs enviar …`.)
+6. **Aprovar:** "Aprovar e executar" no lote → senha → as IAs rodam.
+7. **Levar o resultado para o site:** quando ficar **Concluído**, "Baixar resultado" e mande o arquivo no chat do Claude, que roda `node scripts/fila.mjs aplicar <arquivo>` (sem internet e sem login), confere o `git diff` e faz o commit. (Com terminal e login: `node scripts/fila.mjs baixar <id>`.)
 
 ### 11.7 Limites
 - **Tempo da função:** no plano grátis, cada execução tem cerca de 150 s. Por isso os lotes têm no máximo 20 questões, 3 rodam ao mesmo tempo e a função para de começar questões novas aos 110 s. O que faltar fica com status `aprovado`, com aviso, e o botão "Continuar execução" (pede a senha de novo) segue de onde parou, sem pagar de novo o que já foi validado.
 - **Travou:** se um lote ficar em "Executando…" por mais de 15 minutos, aparece o botão "Destravar" (`fila_destravar`).
 - **Modelo com nome errado:** a função para antes de qualquer chamada paga e mostra o nome que faltou.
+
+## 12. Variantes na Revisão (2026-10-01)
+
+**A ideia:** quem errou uma questão não deve rever exatamente a mesma, senão decora a letra. A Revisão mostra uma **variante**: mesma habilidade, outra situação e outros números. Tudo é **pré-gerado em lote** pelo mesmo caminho validado (skill `criar-trilha` → Fila de Validação com senha → Mergulho Triplo). **Nenhuma IA roda enquanto o aluno usa o app**: a Revisão só escolhe entre variantes que já têm `validacao.pronta = true`.
+
+### 12.1 Onde ficam
+Bloco opcional `"variantes"` no JSON da trilha, **separado de `"questoes"`** (nada do que existe muda; Simulado, Prova final e jogos continuam usando só `questoes`):
+```json
+"variantes": [
+  {
+    "id": "enem-mat1-07-v1",
+    "varianteDe": "enem-mat1-07",
+    "tema": "Regra de três", "dificuldade": "medio", "fase": "matematica-1",
+    "enunciado": "...", "alternativas": ["..."], "correta": 3, "explicacao": "...",
+    "validacao": { "pronta": true, "...": "gravado pelo fila.mjs baixar" }
+  }
+]
+```
+Regras de formato (conferidas por `Trilhas.limparVariantes` ao carregar): `varianteDe` aponta para uma questão da trilha que **não** é `origem: "enem"`; mesma `fase` da original; enunciado diferente; `id` único (nem de questão, nem de outra variante). Variante com problema é descartada sozinha, com aviso no console, sem derrubar o curso.
+
+### 12.2 Como a Revisão escolhe (`js/quiz.js`, `versaoParaRevisar`)
+| A questão pendente é… | A Revisão mostra |
+|---|---|
+| nossa, **com variante aprovada** | uma variante, em **rodízio**: primeiro a que o aluno nunca viu; depois a vista há mais tempo |
+| nossa, **ainda sem variante** | a própria questão (como sempre foi) |
+| **`origem: "enem"`** | **nunca variante**: outra questão nossa do **mesmo tema**, de nível igual ou menor (da mesma fase, se houver), também em rodízio; se não houver nenhuma, a literal de novo, sem alteração |
+
+- O resultado conta para a **questão original**: acertar a variante (ou a substituta) tira a original da lista de revisão; errar a mantém. "Marcar para revisar" também marca a original.
+- O rodízio fica no progresso do aluno: `prog.questoes[<original>].vistas` (lista de ids, a mais antiga primeiro).
+- Na tela aparece uma etiqueta lilás: **"Versão nova"** (variante) ou **"Mesmo tema"** (substituta).
+- A rodada da Revisão também vem em rampa (fácil → médio → difícil).
+
+### 12.3 As três travas contra variante de questão do Enem
+1. **Skill e computador:** a `criar-trilha` (seção 2.4) não gera; o `fila.mjs --variantes` se recusa a montar o lote (e recusa variante igual à original).
+2. **Servidor da fila:** o gatilho `fila_validacao_nova` (banco) recusa o lote na entrada, e a Edge Function (`processarLote`, via `variantesProibidas`) recusa de novo antes de qualquer chamada paga. O lote leva a origem de cada original em `conteudo_pendente.originais`; origem desconhecida conta como Enem.
+3. **App:** `Trilhas.limparVariantes` descarta a variante ao carregar a trilha.
+
+### 12.4 Fluxo
+```
+criar-trilha escreve as variantes no bloco "variantes" (seção 2.4 da skill)
+node scripts/fila.mjs simular data/trilhas/<trilha>.json --materia <m> --fase <f> --variantes
+node scripts/fila.mjs enviar  data/trilhas/<trilha>.json --materia <m> --fase <f> --variantes   (você, no terminal)
+Admin → Fila de Validação → "Aprovar e executar" (senha)
+node scripts/fila.mjs baixar <id>   → grava "validacao" nas variantes; só então elas aparecem na Revisão
+```
+Custo: o mesmo de uma questão (≈ US$ 0,04 cada; 19 variantes ≈ US$ 0,70).
+
