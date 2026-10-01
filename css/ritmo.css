@@ -1,0 +1,213 @@
+/* =========================================================
+   Diver — ritmo e respiro (2026-10-01)
+   Régua de espaços em múltiplos de 4/8 px aplicada a todas as telas, para nada ficar colado:
+   o mesmo espaço entre cartões, um espaço maior entre seções e um respiro claro entre
+   o título de uma seção e o que vem depois. Carregado por ÚLTIMO (depois de jogos.css).
+   Só usa variáveis (tokens). Guia: docs/DESIGN.md, "Espaçamento".
+   ========================================================= */
+
+:root {
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --esp-6: 32px;
+  --esp-7: 40px;
+  --esp-8: 48px;
+  --esp-9: 64px;
+
+  /* Papéis (é o que as regras abaixo usam; muda com a largura da tela) */
+  --ritmo-secao: var(--esp-7);       /* entre uma seção e a próxima */
+  --ritmo-cartoes: var(--esp-4);     /* entre cartões de uma lista ou grade */
+  --ritmo-cartao-pad: 20px;          /* respiro dentro do cartão */
+  --ritmo-pagina-x: var(--esp-4);    /* margem lateral da página */
+  --ritmo-pagina-topo: var(--esp-5);
+}
+@media (min-width: 960px) {
+  :root {
+    --ritmo-secao: var(--esp-8);
+    --ritmo-cartoes: 20px;
+    --ritmo-cartao-pad: var(--esp-5);
+    --ritmo-pagina-x: var(--esp-7);
+    --ritmo-pagina-topo: var(--esp-7);
+  }
+}
+
+/* ---------- Página ---------- */
+.app { padding: var(--ritmo-pagina-topo) var(--ritmo-pagina-x) var(--esp-9); }
+body { line-height: 1.55; }
+p { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+
+/* Fluxo padrão: dois blocos seguidos dentro de uma tela nunca encostam.
+   :where() deixa esta regra com peso zero: qualquer margem definida por uma peça específica vale mais. */
+:where(.tela:not(.tela--quiz, .tela--jogo, .tela--quadro)) > :where(* + *) { margin-top: var(--ritmo-cartoes); }
+
+/* Cabeçalho da área: rótulo, título e uma linha de apoio com medida confortável de leitura */
+.area-cabeca { padding: 0 0 var(--esp-6); }
+.area-cabeca h1 { margin-top: var(--esp-1); letter-spacing: -0.02em; }
+.area-cabeca__sub { margin-top: var(--esp-2); max-width: 62ch; line-height: 1.6; }
+
+/* Seções: espaço grande ANTES (separa da anterior) e pequeno depois (o título "pertence" ao conteúdo) */
+.secao-titulo { margin: var(--ritmo-secao) 0 var(--esp-2); font-size: 1.2rem; letter-spacing: -0.01em; }
+.secao-sub { margin: 0 0 var(--esp-4); max-width: 62ch; }
+.secao-titulo + :not(.secao-sub) { margin-top: var(--esp-3); }
+.secao-titulo.secao-titulo--linha { margin: 0; }   /* título dentro de uma linha com botões */
+.tela > .acoes-linha:has(> .secao-titulo--linha) { margin-top: var(--ritmo-secao); }
+.area-cabeca + *,
+.area-cabeca + * > .secao-titulo:first-child,
+.area-cabeca + * > :first-child > .secao-titulo:first-child { margin-top: 0; }
+
+/* Cartões */
+.cartao { padding: var(--ritmo-cartao-pad); }
+.cartao + .cartao { margin-top: var(--ritmo-cartoes); }
+.cartao__titulo { margin-bottom: var(--esp-3); }
+.cartao > p + p { margin-top: var(--esp-2); }
+
+/* Linhas de botões: sempre o mesmo vão, e o vão vertical igual quando quebram de linha */
+.acoes-linha { gap: var(--esp-3); margin-bottom: 0; }
+.tela > .acoes-linha { margin-bottom: var(--esp-4); }
+.modo__acoes { gap: var(--esp-3); margin-top: var(--esp-4); }
+
+/* Formulários: rótulo colado no campo dele, campos bem separados entre si */
+.campo-grupo { gap: 6px; }
+.rotulo-campo { margin-bottom: 6px; }
+
+/* ---------- Barra lateral ----------
+   Celular (gaveta): itens de 44 px, bons para o dedo. Computador: como nos melhores apps de trabalho,
+   topo e rodapé fixos e só a lista do meio rola se faltar altura; itens de 38 px para o mouse. */
+.lateral { gap: var(--esp-3); }
+.lateral__nav { gap: 2px; }
+.lateral__grupo { margin: var(--esp-4) 12px var(--esp-1); }
+.lateral__grupo:first-child { margin-top: var(--esp-1); }
+@media (min-width: 960px) {
+  .lateral { gap: var(--esp-2); overflow: hidden; padding-block: var(--esp-3); }
+  .lateral__nav { gap: 1px; }
+  .lateral__nav { flex: 1 1 auto; min-height: 0; overflow-y: auto; align-content: start; margin-inline: -4px; padding-inline: 4px; }
+  .lateral__nav a { min-height: 36px; padding: 5px 12px; }
+  .lateral__grupo { margin: 10px 12px 2px; }
+  .lateral__ajuda { min-height: 38px; padding: 6px 12px; }
+  .lateral__rodape { padding: 10px 12px; gap: 6px; }
+  .seletor-trilha__botao { padding-block: 8px; }
+  .lateral__ajuda, .lateral__rodape, .seletor-trilha, .lateral__topo, .lateral__conta { flex-shrink: 0; }
+}
+
+/* ---------- Início ---------- */
+.hero { padding-bottom: var(--esp-6); }
+.hero__slogan { margin-top: var(--esp-2); }
+.hero__texto { margin-top: var(--esp-2); max-width: 52ch; margin-inline: auto; line-height: 1.6; }
+.continuar-area { margin: 0; }
+#hoje .secao-titulo { margin-top: var(--ritmo-secao); }
+.hoje__grade { gap: var(--ritmo-cartoes); }
+.hoje__card { gap: var(--esp-2); }
+.hoje__card .botao,
+.hoje__card .botao--link { margin-top: var(--esp-2); }
+.rodape { margin-top: var(--esp-8); }
+
+/* ---------- Mergulho: painel e mapa de fases ---------- */
+.mapa li + li { margin-top: var(--esp-5); }
+.fase__estudo { margin-top: var(--esp-2); }
+.modos { gap: var(--ritmo-cartoes); }
+.conquistas { margin-top: var(--esp-3); gap: var(--esp-3); }
+.zona-perigo { margin-top: var(--esp-8); }
+
+/* No celular, o texto da fase usa a largura toda: o "Mergulhar" vira uma seta discreta
+   (o cartão inteiro já é o botão, e o nome completo continua no aria-label). */
+@media (max-width: 599px) {
+  .mapa::before { left: 27px; }
+  .fase { gap: var(--esp-3); padding: var(--esp-4) var(--esp-3) var(--esp-4) var(--esp-2); }
+  .fase__no { width: 40px; height: 40px; }
+  .fase__cta {
+    display: grid; place-items: center;
+    width: 32px; height: 32px; padding: 0;
+    border-radius: 50%;
+    font-size: 0;
+  }
+  .fase__cta::before { content: "›"; font-size: 1.45rem; line-height: 1; font-weight: 800; transform: translateY(-1px); }
+  .fase__descricao { margin-top: 2px; }
+}
+
+/* ---------- Sala de Jogos ---------- */
+.sala { gap: var(--ritmo-cartoes); }
+.sala-grupo + .sala-grupo .secao-titulo { margin-top: var(--ritmo-secao); }
+.jogo-card { padding: 20px; gap: var(--esp-3); }
+.jogo-card__rodape { gap: var(--esp-3); }
+
+/* Celular: cartão compacto. Nome à esquerda e o botão na mesma linha; a descrição embaixo.
+   Jogo com opção (tempo, pares) leva a opção e o botão para uma linha própria. */
+@media (max-width: 639px) {
+  .jogo-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--esp-3);
+    row-gap: var(--esp-2);
+    padding: var(--esp-4);
+  }
+  .jogo-card__topo { grid-column: 1; grid-row: 1; }
+  .jogo-card__rodape { grid-column: 2; grid-row: 1; }
+  .jogo-card__descricao,
+  .jogo-card__dica { grid-column: 1 / -1; }
+  .jogo-card__icone { width: 42px; height: 42px; }
+  .jogo-card:has(.jogo-card__opcao, .jogo-card__hist) .jogo-card__rodape { grid-column: 1 / -1; grid-row: auto; }
+}
+
+/* ---------- Simulado, Revisão, Prova ---------- */
+.historico { margin-top: var(--esp-3); }
+.item-revisao + .item-revisao { margin-top: var(--esp-3); }
+.item-revisao { padding: var(--esp-4); gap: var(--esp-4); }
+.item-revisao__texto { gap: var(--esp-1); }
+.item-revisao__texto strong { font-weight: 700; line-height: 1.45; }
+/* Celular: a pergunta usa a largura toda e o "Tirar da fila" fica embaixo, à esquerda */
+@media (max-width: 599px) {
+  .item-revisao { flex-direction: column; align-items: stretch; gap: var(--esp-2); }
+  .item-revisao .botao { align-self: flex-start; margin-left: calc(-1 * var(--esp-2)); }
+}
+
+/* ---------- Perfil ---------- */
+.perfil-topo { gap: var(--esp-5); }
+.mascote-escolha { gap: var(--esp-5); }
+.mascote-escolha > .cartao__titulo { margin-bottom: calc(var(--esp-2) - var(--esp-5)); } /* o título fica junto do texto dele */
+.modos { align-items: start; }
+@media (max-width: 479px) {
+  .perfil-topo { flex-wrap: nowrap; gap: var(--esp-4); }
+  .perfil-topo__mascote { width: 76px; flex-shrink: 0; }
+  .perfil-topo__info { min-width: 0; }
+  .perfil-topo__nome { font-size: 1.25rem; }
+}
+.resumo-numeros { margin: 0; gap: var(--esp-3); }
+.tela .resumo-numeros li { padding: var(--esp-4) var(--esp-3); }
+.tabela--perfil td,
+.tabela--perfil th { white-space: normal; vertical-align: middle; }
+.tabela--perfil td:nth-child(n+3) { text-align: center; }
+.tabela--perfil thead th:nth-child(n+3) { text-align: center; }
+/* Celular: cada curso vira um cartãozinho com rótulos (a tabela não precisa rolar de lado) */
+@media (max-width: 639px) {
+  .tabela--perfil thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tabela--perfil tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--esp-2); padding: var(--esp-3) 0; border-bottom: 1px solid var(--borda); }
+  .tabela--perfil tr:last-child { border-bottom: 0; }
+  .tabela--perfil th[scope="row"] { grid-column: 1 / -1; padding: 0; border: 0; }
+  .tabela--perfil td { display: grid; gap: 2px; padding: 0; border: 0; text-align: left !important; font-weight: 800; }
+  .tabela--perfil td::before { content: attr(data-rotulo); font: 600 0.68rem var(--fonte-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--texto-suave); }
+  .tabela--perfil td:first-of-type { grid-column: 1 / -1; }
+  .tabela--perfil .link-tabela { min-height: 40px; padding: 4px 0; }
+}
+
+/* ---------- Organizar e Biblioteca ---------- */
+.form-evento,
+.form-evento__linha { gap: var(--esp-3); }
+.cal-layout { gap: var(--ritmo-cartoes); }
+.cursos { gap: var(--ritmo-cartoes); }
+.check + .check { margin-top: var(--esp-2); }
+.form-upload__dica { display: block; margin-top: var(--esp-2); }
+
+/* ---------- Admin ---------- */
+/* Filtros e escolhas em "pílula": nunca passam da largura da tela; no celular quebram em duas linhas */
+.segmentado { max-width: 100%; flex-wrap: wrap; }
+@media (max-width: 599px) {
+  .segmentado { border-radius: var(--raio); }
+  .acoes-linha > .campo[type="search"] { min-width: 0; flex-basis: 100%; }
+}
+.fila-lista { gap: var(--ritmo-cartoes); margin-top: var(--esp-4); }
+.fila-filtros { margin-top: var(--esp-3); }

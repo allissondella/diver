@@ -41,6 +41,17 @@ O protótipo já tem variáveis; **reaproveite os nomes existentes** e apenas co
 body { background: linear-gradient(180deg, var(--diver-marinho), var(--diver-marinho-fundo)); color: var(--diver-texto); }
 ```
 
+## Espaçamento (régua de 4/8 px, `css/ritmo.css`)
+Inspirada nos sistemas de design dos apps mais caprichados: poucos tamanhos de espaço, sempre os mesmos, para a página "respirar" com ritmo.
+- **Tokens:** `--esp-1` 4 · `--esp-2` 8 · `--esp-3` 12 · `--esp-4` 16 · `--esp-5` 24 · `--esp-6` 32 · `--esp-7` 40 · `--esp-8` 48 · `--esp-9` 64 px. Nada de espaço "solto" (13 px, 22 px…).
+- **Papéis** (mudam no computador, ≥ 960 px): `--ritmo-secao` 40 → 48 (antes de cada título de seção), `--ritmo-cartoes` 16 → 20 (entre cartões), `--ritmo-cartao-pad` 20 → 24 (dentro do cartão), `--ritmo-pagina-x` 16 → 40 (margem da página).
+- **Regra de proximidade:** o título fica perto do que ele apresenta (8 px até a descrição, 12–16 px até o conteúdo) e longe do bloco anterior (40–48 px). Rótulo de campo a 6 px do campo; campos a 12–16 px entre si; botões lado a lado a 12 px.
+- **Fluxo padrão:** dois blocos seguidos numa tela nunca encostam (16/20 px), por uma regra de peso zero (`:where`) que qualquer peça específica pode sobrepor.
+- **Leitura:** parágrafos com no máximo ~62 caracteres por linha e entrelinha 1,55–1,6; títulos com quebra equilibrada (`text-wrap: balance`).
+- **Celular primeiro:** no mapa de fases, o "Mergulhar" vira uma seta e o texto usa a largura toda; na Sala de Jogos, o botão fica na linha do nome; tabelas viram cartõezinhos com rótulos.
+- **Barra lateral no computador:** topo e rodapé fixos, só a lista do meio rola se faltar altura; itens de 36 px (no celular, 44 px).
+- **Conferir:** depois de mexer no visual, rode o auditor de espaçamento (caixas a menos de 10 px uma da outra ou saindo da tela) e compare fotos de antes e depois no computador e no celular.
+
 ## Profundidades (cor por fase)
 Raso (0–10 m) claro e luminoso → Recife (10–40 m) turquesa → Caverna (40–200 m) azul profundo → Abismo (200 m+) quase preto. Quanto mais fundo, mais escuro o cenário do jogo.
 

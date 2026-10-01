@@ -37,7 +37,7 @@
 | 13e | `js/tutorial.js` | `Tutorial` | "Primeiro mergulho" de cada área: recorte de luz sobre o alvo + balão com desenho, "2 de 4", Pular/Voltar/Próximo, teclado (Enter/→, ←, Esc) e foco preso no balão. Roteiros em `ROTEIROS` (chave = endereço); passo cujo alvo não está visível é pulado. `App.navegar` chama `Tutorial.aoEntrar(secao)`; "Como funciona esta página?" (barra lateral) e "Rever todos os tutoriais" (Perfil). |
 | 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
-CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos). Só variáveis de cor (tokens), nada de cor solta.
+CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos) e `css/ritmo.css` (régua de espaços e organização das telas; carregado por último, ver `docs/DESIGN.md`, "Espaçamento"). Só variáveis de cor (tokens), nada de cor solta.
 
 ## Áreas (barra lateral) e telas
 | Endereço | Tela | Quem desenha |
