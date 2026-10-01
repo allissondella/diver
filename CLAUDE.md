@@ -45,6 +45,7 @@ Todo jogo é uma "roupa" diferente sobre o mesmo conteúdo (as cartas de uma tri
 - Fonte **Plus Jakarta Sans**. Botão 3D com borda inferior turquesa mais escura. Bolhas suaves no fundo.
 - Mascote: **Diver**, **vetorial (SVG)** no estilo figurinha: contorno turquesa, máscara amarela com os olhinhos do ícone da aba e **snorkel na boca** (`assets/mascote/diver.svg`, molde inline no `index.html`; expressões normal/feliz/triste/pensando; detalhes em `docs/DESIGN.md`). **O rosto é escolhido no Perfil por setinhas dos lados do mascote, como easter egg, sem texto** (`js/mascotes.js`): pinguins, mergulhadores e mergulhadoras, com tom de pele; o padrão é o **pinguim de penacho**. A pixel art e o peixinho foram aposentados.
 - Use **variáveis CSS** (tokens). Não escreva cores soltas.
+- **Nunca** use `confirm`, `alert` ou `prompt` do navegador: use `UI.confirmar` / `UI.perguntar` (caixa do Diver; sair de algo = mascote triste; regras em `docs/DESIGN.md`).
 
 ## Tom de voz
 Leve, bem-humorado, brasileiro, maduro e motivador sem forçar; um trocadilho de mar de vez em quando. **Nunca** culpa nem ameaça (perder a sequência mostra o recorde guardado e um convite gentil).

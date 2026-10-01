@@ -156,7 +156,7 @@ const Conta = (() => {
   }
 
   async function sair() {
-    if (!window.confirm('Sair da sua conta neste aparelho?')) return;
+    if (!(await UI.confirmar({ titulo: 'Sair da sua conta?', texto: 'Seu progresso fica guardado na conta. É só entrar de novo para continuar o mergulho.', sim: 'Sair da conta', nao: 'Ficar', humor: 'triste' }))) return;
     UI.toast('Saindo', 'Salvando seu progresso…', 'i-bolha');
     await Atividade.enviar(); // o que ainda estava na fila do log de atividade
     await Nuvem.sair();

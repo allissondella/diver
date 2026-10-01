@@ -605,10 +605,11 @@ const Quadros = (() => {
     anunciar(concluiu ? `"${t0.titulo}" concluída.` : `"${t0.titulo}" reaberta.`);
   }
 
-  function excluirTarefa(id) {
+  async function excluirTarefa(id) {
+    const t = ler().tarefas[id];
+    if (!t || !(await UI.confirmar({ titulo: 'Excluir esta tarefa?', texto: `"${t.titulo}" sai de vez. Não dá para desfazer.`, sim: 'Excluir tarefa', perigo: true, humor: 'triste' }))) return false;
     const d = ler();
-    const t = d.tarefas[id];
-    if (!t || !window.confirm(`Excluir a tarefa "${t.titulo}" de vez? Não dá para desfazer.`)) return false;
+    if (!d.tarefas[id]) return false;
     fecharDetalhe(false);
     mudar((dd) => {
       const l = listaDe(dd, id);
@@ -770,12 +771,12 @@ const Quadros = (() => {
     ], 'Ajustes do quadro');
   }
 
-  function excluirQuadro() {
+  async function excluirQuadro() {
     const d = ler();
     const q = quadroAtual(d);
     if (d.quadros.length < 2) return;
     const n = q.listas.reduce((s, lid) => s + d.listas[lid].tarefas.length, 0);
-    if (!window.confirm(`Excluir o quadro "${q.nome}" com ${UI.plural(q.listas.length, 'lista', 'listas')} e ${UI.plural(n, 'tarefa', 'tarefas')}? Não dá para desfazer.`)) return;
+    if (!(await UI.confirmar({ titulo: 'Excluir este quadro?', texto: `"${q.nome}" sai com ${UI.plural(q.listas.length, 'lista', 'listas')} e ${UI.plural(n, 'tarefa', 'tarefas')}. Não dá para desfazer.`, sim: 'Excluir quadro', perigo: true, humor: 'triste' }))) return;
     mudar((dd) => {
       const alvo = quadroAtual(dd);
       alvo.listas.forEach((lid) => {
@@ -815,8 +816,8 @@ const Quadros = (() => {
       '-',
       { texto: 'Mover para a esquerda', icone: 'i-voltar', desativado: indice === 0, acao: () => moverLista(lid, -1) },
       { texto: 'Mover para a direita', icone: 'i-seta-dir', desativado: indice === q.listas.length - 1, acao: () => moverLista(lid, 1) },
-      { texto: `Limpar concluídas${feitas ? ` (${feitas})` : ''}`, icone: 'i-check', desativado: !feitas, acao: () => {
-        if (!window.confirm(`Apagar de vez as ${UI.plural(feitas, 'tarefa concluída', 'tarefas concluídas')} de "${lista.nome}"?`)) return;
+      { texto: `Limpar concluídas${feitas ? ` (${feitas})` : ''}`, icone: 'i-check', desativado: !feitas, acao: async () => {
+        if (!(await UI.confirmar({ titulo: 'Limpar as concluídas?', texto: `${UI.plural(feitas, 'tarefa concluída sai', 'tarefas concluídas saem')} de "${lista.nome}" de vez.`, sim: 'Limpar concluídas', perigo: true }))) return;
         mudar((dd) => {
           const l = dd.listas[lid];
           l.tarefas.filter((id) => dd.tarefas[id].concluida).forEach((id) => delete dd.tarefas[id]);
@@ -840,11 +841,11 @@ const Quadros = (() => {
     anunciar('Lista movida.');
   }
 
-  function excluirLista(lid) {
+  async function excluirLista(lid) {
     const d = ler();
     const l = d.listas[lid];
     const n = l.tarefas.length;
-    if (!window.confirm(n ? `Excluir a lista "${l.nome}" e as ${UI.plural(n, 'tarefa', 'tarefas')} dela? Não dá para desfazer.` : `Excluir a lista "${l.nome}"?`)) return;
+    if (!(await UI.confirmar({ titulo: 'Excluir esta lista?', texto: n ? `"${l.nome}" sai junto com ${UI.plural(n, 'tarefa', 'tarefas')}. Não dá para desfazer.` : `"${l.nome}" está vazia.`, sim: 'Excluir lista', perigo: true, humor: 'triste' }))) return;
     if (estado.detalhe && l.tarefas.includes(estado.detalhe)) fecharDetalhe(false);
     mudar((dd) => {
       dd.listas[lid].tarefas.forEach((id) => delete dd.tarefas[id]);
@@ -904,10 +905,10 @@ const Quadros = (() => {
           salvar(dd);
           aoMudar(null, true);
         }, `Cor da etiqueta ${et.nome}`),
-        h('button', { type: 'button', class: 'botao-icone botao-icone--mini', 'aria-label': `Excluir a etiqueta ${et.nome}`, onclick: () => {
+        h('button', { type: 'button', class: 'botao-icone botao-icone--mini', 'aria-label': `Excluir a etiqueta ${et.nome}`, onclick: async () => {
+          const usos = Object.values(ler().tarefas).filter((t) => t.etiquetas.includes(et.id)).length;
+          if (!(await UI.confirmar({ titulo: 'Excluir esta etiqueta?', texto: `"${et.nome}"${usos ? ` sai de ${UI.plural(usos, 'tarefa', 'tarefas')}.` : ' não está em nenhuma tarefa.'}`, sim: 'Excluir etiqueta', perigo: true }))) return;
           const dd = ler();
-          const usos = Object.values(dd.tarefas).filter((t) => t.etiquetas.includes(et.id)).length;
-          if (!window.confirm(`Excluir a etiqueta "${et.nome}"?${usos ? ` Ela sai de ${UI.plural(usos, 'tarefa', 'tarefas')}.` : ''}`)) return;
           dd.etiquetas = dd.etiquetas.filter((x) => x.id !== et.id);
           Object.values(dd.tarefas).forEach((t) => (t.etiquetas = t.etiquetas.filter((x) => x !== et.id)));
           salvar(dd);
@@ -959,7 +960,7 @@ const Quadros = (() => {
         return;
       }
       const n = Object.keys(dados.tarefas).length;
-      if (!window.confirm(`Importar ${UI.plural(dados.quadros.length, 'quadro', 'quadros')} com ${UI.plural(n, 'tarefa', 'tarefas')}? Eles entram junto com os seus (nada é apagado).`)) return;
+      if (!(await UI.confirmar({ titulo: `Importar ${UI.plural(dados.quadros.length, 'quadro', 'quadros')}?`, texto: `${UI.plural(n, 'tarefa', 'tarefas')} entram junto com as suas (nada é apagado).`, sim: 'Importar', foco: 'sim' }))) return;
       mudar((d) => {
         // ids novos para não misturar com o que já existe; etiquetas com o mesmo nome são reaproveitadas
         const mapaEt = {};
@@ -1225,8 +1226,8 @@ const Quadros = (() => {
       h('label', { class: 'qd-detalhe__linha' }, h('span', { class: 'qd-detalhe__rotulo' }, icone('i-estrela'), 'XP vai para'), seletorTrilha),
       h('div', { class: 'qd-detalhe__rodape' },
         h('span', { class: 'qd-dica', text: `Criada em ${new Date(t.criadaEm).toLocaleDateString('pt-BR')}${t.xpConcedido ? ' · XP já recebido' : ` · vale +${Economia.CONFIG.tarefa.xp} XP`}` }),
-        h('button', { type: 'button', class: 'botao botao--erro botao--pequeno', 'data-foco': 'excluir', onclick: () => {
-          if (!excluirTarefa(t.id)) return;
+        h('button', { type: 'button', class: 'botao botao--erro botao--pequeno', 'data-foco': 'excluir', onclick: async () => {
+          if (!(await excluirTarefa(t.id))) return;
           const add = area && area.querySelector(`[data-foco="adicionar-${listaAtual.id}"]`);
           if (add) add.focus();
         } }, icone('i-lixo'), 'Excluir tarefa')),

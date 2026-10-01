@@ -85,6 +85,13 @@ O Diver é **vetorial (SVG)**, no estilo "figurinha": formas simples, **contorno
 - Bolhas sobem do snorkel; no Início ele flutua. Com `prefers-reduced-motion`, fica tudo parado.
 - Proporção 240 × 270 (mais alto que largo): nas telas, defina só a largura. Deixar respiro ao redor; funciona melhor sobre fundo escuro.
 
+## Caixa de confirmação (`UI.confirmar`)
+Nada de aviso do navegador ("site tal diz…"): toda pergunta de sim/não é a caixa do Diver. Mascote no topo, título curto em forma de pergunta ("Subir agora?"), uma frase de apoio e dois botões com o verbo da ação ("Subir agora" / "Continuar mergulhando"), nunca "OK/Cancelar" soltos.
+- **Sair de algo** (quiz, jogo, prova, conta): mascote **triste** (`humor: 'triste'`). Tom gentil, sem culpa.
+- **Apagar, zerar, tirar acesso:** botão coral (`perigo: true`).
+- O foco começa na opção segura (ficar/cancelar); Esc, clicar fora ou "não" cancelam; o foco volta para onde estava. No celular é uma caixa no meio da tela, com os botões um embaixo do outro.
+- Pedir um texto (ex.: editar nome no Admin): `UI.perguntar` (mesma caixa com um campo; Enter salva).
+
 ## Tom de voz
 | Faça | Evite |
 | --- | --- |

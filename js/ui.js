@@ -163,7 +163,60 @@ const UI = (() => {
     return h('div', { class: 'estado-vazio' }, mascote('estado-vazio__mascote'), h('p', { text: texto }), acao || null);
   }
 
+  /* ---------- Caixa de confirmação do Diver (no lugar do confirm/prompt do navegador) ---------- */
+  let caixaAberta = null;
+
+  /**
+   * Pergunta algo numa caixa no padrão do Diver e devolve uma Promise:
+   * true/false (confirmar) ou o texto digitado/null (quando há "campo").
+   *   titulo, texto ("\n\n" separa parágrafos), sim, nao: textos
+   *   humor: 'triste' (sair de algo), 'pensando' (padrão), 'feliz' ou null
+   *   perigo: o botão "sim" fica coral (apagar, zerar, tirar acesso)
+   *   foco: 'nao' (padrão, a opção segura) ou 'sim'
+   *   campo: { rotulo, valor } para pedir um texto
+   * Esc, clicar fora ou "nao" = cancelar. O foco volta para onde estava.
+   */
+  function confirmar({ titulo, texto = '', sim = 'Confirmar', nao = 'Cancelar', humor = 'pensando', perigo = false, foco = 'nao', campo = null } = {}) {
+    if (caixaAberta) caixaAberta.close();
+    const antes = document.activeElement;
+    const entrada = campo ? h('input', { class: 'campo', id: 'confirmar-campo', type: 'text', value: campo.valor || '', autocomplete: 'off' }) : null;
+    // Enter no campo = "sim" (sem isso o formulário usaria o primeiro botão, que é o "não")
+    if (entrada) entrada.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); entrada.closest('dialog').close('sim'); } });
+    const botaoSim = h('button', { type: 'submit', value: 'sim', class: `botao ${perigo ? 'botao--perigo' : 'botao--primario'}`, text: sim });
+    const botaoNao = h('button', { type: 'submit', value: 'nao', class: 'botao botao--fantasma', text: nao });
+    const dialogo = h('dialog', { class: 'dialogo dialogo--confirmar', 'aria-labelledby': 'confirmar-titulo', 'aria-describedby': texto ? 'confirmar-texto' : null },
+      h('form', { method: 'dialog', class: 'confirmar' },
+        mascote(`confirmar__mascote ${humor ? `mascote--${humor}` : ''}`.trim()),
+        h('h2', { class: 'confirmar__titulo', id: 'confirmar-titulo', text: titulo }),
+        texto ? h('div', { class: 'confirmar__texto', id: 'confirmar-texto' }, String(texto).split(/\n\s*\n/).map((p) => h('p', { text: p.trim() }))) : null,
+        entrada ? h('label', { class: 'confirmar__campo' }, h('span', { class: 'rotulo-campo', text: campo.rotulo || '' }), entrada) : null,
+        h('div', { class: 'confirmar__botoes' }, botaoNao, botaoSim)));
+    dialogo.querySelector('.confirmar__mascote').setAttribute('aria-hidden', 'true');
+    // as teclas ficam na caixa: os atalhos da tela de trás (quiz, jogos, quadros) não disparam
+    dialogo.addEventListener('keydown', (e) => e.stopPropagation());
+    // clicar no fundo escuro (fora da caixa) cancela
+    dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close('nao'); });
+    document.body.append(dialogo);
+    caixaAberta = dialogo;
+    return new Promise((resolver) => {
+      dialogo.addEventListener('close', () => {
+        const ok = dialogo.returnValue === 'sim';
+        if (caixaAberta === dialogo) caixaAberta = null;
+        dialogo.remove();
+        if (antes && antes.isConnected && typeof antes.focus === 'function') antes.focus({ preventScroll: true });
+        resolver(campo ? (ok ? entrada.value : null) : ok);
+      }, { once: true });
+      dialogo.showModal();
+      (entrada || (foco === 'sim' ? botaoSim : botaoNao)).focus({ preventScroll: true });
+      if (entrada) entrada.select();
+    });
+  }
+
+  /** Atalho para pedir um texto (no lugar do prompt do navegador): devolve o texto ou null. */
+  const perguntar = (opcoes) => confirmar({ sim: 'Salvar', ...opcoes, campo: opcoes.campo || {} });
+
   return {
+    confirmar, perguntar,
     $, h, icone, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
     dataLocal, paraData, formatarData, id, baixarArquivo, toast, avisarConquistas,
     montarMascotes, humorMascote, mascote, cabecalho, vazio, movimentoReduzido,

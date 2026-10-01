@@ -134,7 +134,7 @@ const Perfil = (() => {
     try {
       const conteudo = JSON.parse(await arq.text());
       if (conteudo.app !== 'diver' || typeof conteudo.dados !== 'object') throw new Error('não é um backup do Diver');
-      if (!window.confirm('Restaurar este backup? Os dados atuais deste navegador serão substituídos pelos do arquivo.')) return;
+      if (!(await UI.confirmar({ titulo: 'Restaurar este backup?', texto: 'Os dados atuais deste navegador serão substituídos pelos do arquivo.', sim: 'Restaurar backup', perigo: true }))) return;
       Object.entries(conteudo.dados).forEach(([k, v]) => {
         if (k.startsWith('diver:')) Dados.gravar(k, v);
       });

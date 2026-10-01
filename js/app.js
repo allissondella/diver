@@ -64,14 +64,25 @@ const App = (() => {
     else location.hash = secao;
   }
 
+  let saidaConfirmada = false; // a pessoa já disse "Sair agora" na caixa: a próxima navegação passa direto
+
   function navegar(secao) {
     const rota = ROTAS[secao];
     if (!rota) return;
-    // Saindo no meio de um quiz ou jogo pelo botão Voltar do navegador
-    if (emAndamento() && !window.confirm('Sair agora? O que você já respondeu fica salvo, mas a partida termina.')) {
+    // Saindo no meio de um quiz ou jogo pelo botão Voltar do navegador: volta o endereço e pergunta
+    if (emAndamento() && !saidaConfirmada) {
       history.replaceState(null, '', '#' + estado.secao);
+      UI.confirmar({
+        titulo: 'Sair agora?', texto: 'O que você já respondeu fica salvo, mas a partida termina.',
+        sim: 'Sair agora', nao: 'Continuar aqui', humor: 'triste',
+      }).then((ok) => {
+        if (!ok) return;
+        saidaConfirmada = true;
+        irPara(secao);
+      });
       return;
     }
+    saidaConfirmada = false;
     abandonarAndamento();
     if ((rota.soEquipe && !Nuvem.ehAdmin() && !Nuvem.ehProfessor()) || (rota.soAdmin && !Nuvem.ehAdmin())) {
       secao = 'inicio';
@@ -940,9 +951,12 @@ const App = (() => {
           : h('p', { class: 'texto-suave', text: 'Nenhuma tentativa ainda. Quando estiver pronto, é só começar.' }))].filter(Boolean));
   }
 
-  function iniciarProva() {
+  async function iniciarProva() {
     const cfg = configProva(estado.trilha);
-    if (!window.confirm(`A prova tem ${cfg.quantidade} questões e ${cfg.minutos} minutos. O cronômetro começa assim que você confirmar. Bora?`)) return;
+    if (!(await UI.confirmar({
+      titulo: 'Começar a prova final?', texto: `A prova tem ${cfg.quantidade} questões e ${cfg.minutos} minutos. O cronômetro começa assim que você confirmar.`,
+      sim: 'Bora!', nao: 'Agora não', foco: 'sim',
+    }))) return;
     iniciarSessao('prova', { quantidade: cfg.quantidade, minutos: cfg.minutos, aprovacao: cfg.aprovacao });
   }
 
@@ -1079,9 +1093,10 @@ const App = (() => {
     mostrarTela('tela-resumo');
   }
 
-  function sairDoJogo() {
+  async function sairDoJogo() {
     if (!estado.jogo) return;
-    if (!window.confirm('Sair do jogo? Esta partida não vale XP.')) return;
+    if (!(await UI.confirmar({ titulo: 'Sair do jogo?', texto: 'Esta partida não vale XP.', sim: 'Sair do jogo', nao: 'Continuar jogando', humor: 'triste' }))) return;
+    if (!estado.jogo) return;
     abandonarAndamento();
     irPara('jogos');
   }
@@ -1285,16 +1300,15 @@ const App = (() => {
     }
   }
 
-  function sairDoQuiz() {
+  async function sairDoQuiz() {
     const s = estado.sessao;
     if (!s) return;
     const temRespostas = s.respostas.length > 0;
-    const msg = s.modo === 'enviada'
-      ? 'Sair da prova? Ela só vale nota e pontos quando é entregue até o fim.'
-      : temRespostas
-      ? 'Subir agora? O que você já respondeu fica salvo.'
-      : 'Subir agora? Nada foi respondido ainda.';
-    if (!window.confirm(msg)) return;
+    const caixa = s.modo === 'enviada'
+      ? { titulo: 'Sair da prova?', texto: 'Ela só vale nota e pontos quando é entregue até o fim.', sim: 'Sair da prova', nao: 'Continuar a prova' }
+      : { titulo: 'Subir agora?', texto: temRespostas ? 'O que você já respondeu fica salvo.' : 'Nada foi respondido ainda.', sim: 'Subir agora', nao: 'Continuar mergulhando' };
+    if (!(await UI.confirmar({ ...caixa, humor: 'triste' }))) return;
+    if (estado.sessao !== s) return; // a sessão acabou enquanto a caixa estava aberta (ex.: o tempo da prova)
     if (temRespostas) encerrarSessao('saiu');
     else {
       pararTimer();
@@ -1580,8 +1594,11 @@ const App = (() => {
       iniciarSessao('simulado', { quantidade: Number($('select-simulado').value) });
     });
     $('btn-revisao').addEventListener('click', () => iniciarSessao('revisao'));
-    $('btn-zerar').addEventListener('click', () => {
-      if (!window.confirm(`Zerar todo o progresso de "${estado.trilha.nome}"? XP, pérolas, fases e conquistas desta trilha voltam ao zero.`)) return;
+    $('btn-zerar').addEventListener('click', async () => {
+      if (!(await UI.confirmar({
+        titulo: 'Zerar o progresso?', texto: `XP, pérolas, fases e conquistas de "${estado.trilha.nome}" voltam ao zero.`,
+        sim: 'Zerar progresso', humor: 'triste', perigo: true,
+      }))) return;
       Progresso.zerar(estado.trilha.id);
       estado.prog = Progresso.carregar(estado.trilha.id);
       renderizarPainel();

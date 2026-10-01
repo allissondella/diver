@@ -161,7 +161,7 @@ const Admin = (() => {
           resultado.replaceChildren(h('p', { class: 'texto-erro', text: 'Preencha nome completo e e-mail.' }));
           return;
         }
-        if (papel === 'admin' && !window.confirm(`Criar uma conta de ADMIN para ${nome.value.trim()}? Admin pode cadastrar pessoas, mudar cursos e gerar senhas.`)) return;
+        if (papel === 'admin' && !(await UI.confirmar({ titulo: 'Criar uma conta de admin?', texto: `${nome.value.trim()} vai poder cadastrar pessoas, mudar cursos e gerar senhas.`, sim: 'Criar conta de admin' }))) return;
         botao.disabled = true;
         resultado.replaceChildren(h('p', { class: 'texto-suave', text: 'Cadastrando…' }));
         try {
@@ -233,7 +233,7 @@ const Admin = (() => {
       const seletorPapel = h('select', { class: 'pessoa__papel', 'aria-label': `Tipo de conta de ${p.nome}`, disabled: eu, title: eu ? 'Você não pode mudar o seu próprio tipo de conta' : null,
         onchange: async (e) => {
           const novo = e.target.value;
-          if (novo === 'admin' && !window.confirm(`Dar acesso de ADMIN para ${p.nome}? Admin pode cadastrar pessoas, mudar cursos e gerar senhas.`)) {
+          if (novo === 'admin' && !(await UI.confirmar({ titulo: 'Dar acesso de admin?', texto: `${p.nome} vai poder cadastrar pessoas, mudar cursos e gerar senhas.`, sim: 'Dar acesso de admin' }))) {
             e.target.value = p.papel;
             return;
           }
@@ -288,7 +288,7 @@ const Admin = (() => {
             } else estado.abertos.delete(p.id);
           } }, icone('i-estrela'), 'Progresso'),
           h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: async () => {
-            if (!window.confirm(`Gerar uma nova senha temporária para ${p.nome}? A senha atual deixa de funcionar.`)) return;
+            if (!(await UI.confirmar({ titulo: 'Gerar uma nova senha?', texto: `A senha atual de ${p.nome} deixa de funcionar e ela recebe uma senha temporária.`, sim: 'Gerar nova senha', perigo: true }))) return;
             try {
               const senha = await Nuvem.rpc('admin_redefinir_senha', { p_usuario: p.id });
               p.trocar_senha = true;
@@ -298,7 +298,7 @@ const Admin = (() => {
             }
           } }, icone('i-revisao'), 'Nova senha temporária'),
           h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: async () => {
-            const novo = window.prompt('Nome completo:', p.nome);
+            const novo = await UI.perguntar({ titulo: 'Editar nome', campo: { rotulo: 'Nome completo', valor: p.nome }, humor: null });
             if (novo === null || !novo.trim() || novo.trim() === p.nome) return;
             try {
               await Nuvem.rpc('admin_atualizar_usuario', { p_usuario: p.id, p_nome: novo.trim(), p_ativo: p.ativo });
@@ -309,7 +309,7 @@ const Admin = (() => {
           } }, 'Editar nome'),
           eu ? null : h('button', { type: 'button', class: `botao botao--pequeno ${p.ativo ? 'botao--erro' : 'botao--secundario'}`, onclick: async () => {
             const acao = p.ativo ? 'desativar' : 'reativar';
-            if (!window.confirm(`Quer ${acao} o acesso de ${p.nome}? ${p.ativo ? 'O progresso fica guardado.' : ''}`)) return;
+            if (!(await UI.confirmar({ titulo: `${p.ativo ? 'Desativar' : 'Reativar'} o acesso de ${p.nome}?`, texto: p.ativo ? 'A pessoa não entra mais, mas o progresso fica guardado.' : 'A pessoa volta a entrar com a senha dela.', sim: p.ativo ? 'Desativar acesso' : 'Reativar acesso', perigo: p.ativo, humor: p.ativo ? 'triste' : 'feliz' }))) return;
             try {
               await Nuvem.rpc('admin_atualizar_usuario', { p_usuario: p.id, p_nome: p.nome, p_ativo: !p.ativo });
               UI.toast(p.ativo ? 'Acesso desativado' : 'Acesso reativado', p.nome, 'i-usuario');

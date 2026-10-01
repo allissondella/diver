@@ -119,7 +119,11 @@ const FilaValidacao = (() => {
         const itens = lotes.reduce((s2, l) => s2 + l.quantidade_questoes, 0);
         const custo = lotes.reduce((s2, l) => s2 + l.custo_estimado_usd, 0);
         const unidade = selTipo.value === 'variantes' ? ['variante', 'variantes'] : ['questão', 'questões'];
-        const ok = window.confirm(`Mandar ${UI.plural(itens, ...unidade)} (${UI.plural(lotes.length, 'lote', 'lotes')}) para a fila?\n\nCusto estimado: ${dolar(custo)}.\nNada roda nem é cobrado agora: o lote fica "Pendente" até você aprovar com a senha.`);
+        const ok = await UI.confirmar({
+          titulo: `Mandar ${UI.plural(itens, ...unidade)} para a fila?`,
+          texto: `${UI.plural(lotes.length, 'lote', 'lotes')} · custo estimado: ${dolar(custo)}.\n\nNada roda nem é cobrado agora: o lote fica "Pendente" até você aprovar com a senha.`,
+          sim: 'Mandar para a fila', foco: 'sim',
+        });
         if (!ok) { resumo.replaceChildren(); return; }
         await Nuvem.rest('POST', 'fila_validacao', { corpo: lotes });
         resumo.replaceChildren(h('p', { class: 'fila-envio__ok' }, icone('i-check'),
@@ -290,7 +294,7 @@ const FilaValidacao = (() => {
   }
 
   async function rejeitar(l) {
-    if (!window.confirm(`Rejeitar o lote de ${nomeTrilha(l.trilha_id)} (${UI.plural(l.quantidade_questoes, 'questão', 'questões')})? Nada será validado nem cobrado.`)) return;
+    if (!(await UI.confirmar({ titulo: 'Rejeitar este lote?', texto: `${nomeTrilha(l.trilha_id)} · ${UI.plural(l.quantidade_questoes, 'questão', 'questões')}. Nada será validado nem cobrado.`, sim: 'Rejeitar lote', perigo: true }))) return;
     try {
       await Nuvem.rpc('fila_rejeitar', { p_id: l.id });
       UI.toast('Lote rejeitado', 'Nenhuma IA foi chamada.', 'i-x');
