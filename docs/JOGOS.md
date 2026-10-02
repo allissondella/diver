@@ -45,7 +45,7 @@ _Jogos maiores, para jogar sozinho ou contra alguém no mesmo aparelho._
 | Jogo | Como funciona | Conteúdo usado | Roupa de mar | Semana |
 | --- | --- | --- | --- | --- |
 | **Torre do Saber** (`torre`) | Para tirar um bloco da torre, responda. Errou? A torre balança. Blocos de cores diferentes valem pontos diferentes. Modo 2 jogadores. | Qualquer trilha (derivado) | Caixotes de um naufrágio | 16 |
-| **Caso Resolvido** (`caso`) | Responda perguntas para liberar evidências e deduza quem, como e onde. A solução é sorteada a cada partida. | Bloco `casos` | Ataque hacker na Estação Abissal (fundo do mar) | Pronto |
+| **Caso Resolvido** (`caso`) | "Operação Recife Sombrio": investigação em 4 missões (triagem de phishing, cofre e OSINT, logs, bilhete cifrado), log de eventos e tabuleiro de acusação. | Bloco `casos` (`tipo: "operacao"`) | A Sombra roubou o código do Diver 2.0 (antes: do mar) | Pronto |
 | **Duelo de Mergulhadores** (`duelo`) | Dois jogadores no mesmo aparelho, em turnos, disputam as pérolas. Empate, placar e revanche. | Qualquer trilha (derivado) | Dois mergulhadores, um tesouro | 17 |
 
 ### Depois do lançamento (v2)
@@ -69,10 +69,14 @@ O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos a
   "sequencias": [ { "titulo": "Etapas da fotossíntese", "itens": ["Absorção de luz", "Separação da água", "Produção de glicose"], "tema": "Biologia" } ],
   "adivinhas":  [ { "resposta": "Fotossíntese", "aceitas": ["fotossintese"], "dicas": ["Acontece nas plantas", "Precisa de luz", "Produz oxigênio"], "tema": "Biologia" } ],
   "palavras":   [ { "palavra": "MITOCONDRIA", "dica": "Usina de energia da célula", "tema": "Biologia" } ],
-  "casos":      [ { "id": "estacao-abissal", "titulo": "O apagão da Estação Abissal", "historia": "...", "perguntas": { "quem": "...", "como": "...", "onde": "..." },
-                    "suspeitos": [ { "id": "beto", "nome": "Beto Boia", "papel": "Estagiário", "descricao": "...", "visual": { "pele": "#F5C9A6", "cabelo": "#E07A3F", "penteado": "curto|coque|rabo|cacheado|bigode", "roupa": "#60A5FA", "acessorio": "oculos|fone|quepe|bone|capacete|brincos" }, "evidencias": [ { "tipo": "LOG", "texto": "Álibi que descarta este suspeito" } ] } ],
-                    "objetos": [ { "id": "phishing", "nome": "E-mail falso", "descricao": "...", "licao": "Como evitar (aparece no relatório)", "evidencias": [] } ],
-                    "locais":  [ { "id": "laboratorio", "nome": "Laboratório", "sistema": "Banco de dados das pesquisas", "evidencias": [] } ] } ]
+  "casos":      [ { "id": "recife-sombrio", "tipo": "operacao", "titulo": "Operação Recife Sombrio", "caixa": "agente@soc.diver.app.br", "data": "seg, 28 set", "lancamento": "Diver 2.0", "historia": "...",
+                    "missoes": [ { "id": "isca", "dia": 1, "nivel": "Fácil", "titulo": "A Isca", "resumo": "...", "pista": "A" } ],
+                    "pistas":  [ { "letra": "A", "grupo": "QUEM", "codigo": "A-RS7K2Q", "titulo": "...", "texto": "..." } ],
+                    "isca": { "emails": [ { "id": "senha", "de": "Segurança da Informação", "email": "seguranca@d1ver.app.br", "cor": "coral|azul|lilas|cinza|amarelo|laranja|verde|turquesa", "hora": "09:47",
+                                            "assunto": "...", "previa": "...", "phishing": true, "forense": true, "explicacao": "por que é (ou não é) golpe",
+                                            "corpo": [ { "p": "texto com **negrito** e \\n" }, { "link": "Texto do link", "url": "https://...", "botao": true, "falso": true }, { "anexo": "Fatura.xlsm", "tamanho": "48 KB", "perigoso": true }, { "codigo": "..." }, { "nota": "..." } ],
+                                            "cabecalho": { "returnPath": "<...>", "spf": "pass|fail (...)", "dkim": "...", "dmarc": "...", "recebido": "host (IP)", "extra": { "X-Mailer": "...", "X-Trace": "<Base64>" } } } ],
+                              "forense": { "decodificado": "texto do X-Trace" } } } ]
 }
 ```
 
@@ -89,7 +93,7 @@ O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos a
 ### Sala de Jogos por curso (desde 2026-10-01)
 A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os jogos que esse curso suporta**:
 - **Núcleo** (Mergulho, Simulado, Revisão): sempre aparece.
-- **Demais jogos:** aparecem só se `Jogos.estado(jogo, Cartas.derivar(trilha))` for `disponivel`, ou seja, se o curso tem o mínimo de cartas de cada tipo pedido em `requer` (ex.: Memória `{ pares: 6 }`, Adivinha Aí `{ adivinhas: 1 }`, Caso Resolvido `{ casos: 1, multipla: 6 }`).
+- **Demais jogos:** aparecem só se `Jogos.estado(jogo, Cartas.derivar(trilha))` for `disponivel`, ou seja, se o curso tem o mínimo de cartas de cada tipo pedido em `requer` (ex.: Memória `{ pares: 6 }`, Adivinha Aí `{ adivinhas: 1 }`, Caso Resolvido `{ casos: 1 }`).
 - **Sem conteúdo suficiente** (`precisa`) ou **ainda não lançado** (`embreve`: Torre do Saber, Duelo, Cruzadinha, Batalha de Turmas): o jogo **não aparece**, nem desabilitado. Nada de card fantasma.
 - **Grupo vazio** (ex.: "Estratégia e duelos" num curso sem `casos`): o título do grupo também some.
 - O **Desafio do Dia** já sorteava só jogos disponíveis; continua igual.
@@ -198,15 +202,22 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
 - Para tirar um bloco, responda uma pergunta daquela cor; errar aumenta a instabilidade; a torre cai em 100%.
 - Modo 2 jogadores alternando no mesmo aparelho.
 
-#### Caso Resolvido (`caso`) — pronto (2026-09-29)
-- Arquivo `js/jogos/caso-resolvido.js`; precisa do bloco `casos` (pelo menos 3 itens em cada grupo, cada um com evidências) e de 6 questões.
-- A cada partida, sorteia a solução ("o envelope"): um suspeito (por qual conta o invasor entrou), um objeto (qual golpe) e um local (qual área).
-- **Investigar** = responder uma questão da trilha: acerto revela uma evidência (LOG, CÂMERA, DEPOIMENTO, RELATÓRIO, E-MAIL) que descarta um item que não é a solução; 3 acertos seguidos dão uma evidência extra; erro não revela nada.
-- **Acusar** a qualquer momento: certo encerra o caso; errado gasta 1 dos 3 tubos de oxigênio, diz quantas partes estavam certas e descarta as partes erradas. Sem oxigênio, o caso esfria (a solução aparece).
-- **Relatório do caso**: solução com o retrato do suspeito, a lição "Como evitar" do golpe e o lembrete de que ninguém é vilão (foi alvo de um golpe).
-- Pontos: acertos pela economia central + bônus ao resolver (XP = max(15, 60 − 3 × perguntas); pérolas = max(3, 12 − perguntas/2) − acusações erradas). Recorde = 1000 − 40 × perguntas − 100 × acusações erradas.
-- Retratos e ícones são SVGs do próprio jogo (estilo figurinha, como o Diver); cores dos retratos vêm do JSON e só são aceitas em hexadecimal.
-- Caso atual: "O apagão da Estação Abissal" (curso Cibersegurança Essencial). Gerador automático de casos continua para depois.
+#### Caso Resolvido (`caso`) — "Operação Recife Sombrio" (2026-10-02, completo)
+- Arquivo `js/jogos/caso-resolvido.js`; precisa do bloco `casos` com um caso `tipo: "operacao"` completo (`CasoResolvido.valido`: e-mails com X-Trace, pistas A–D, `cofre`, `trilha`, `resgate` + `chaveMestra`, `tabuleiro` + `solucao`). **Só o curso Cibersegurança Essencial tem esse bloco**, então o jogo só aparece lá. Não usa as questões da trilha.
+- **História:** faltam 4 dias para o lançamento do Diver 2.0; a Sombra (polvo sombrio, SVG do próprio jogo) entrou nos sistemas e roubou o código. O jogador é do SOC. Nenhuma marca real: empresa, fornecedores (Correnteza Code, Maré Cloud), time de futebol e domínios são fictícios; os e-mails da empresa usam **@diver.app.br** e os golpes imitam o domínio (`d1ver.app.br`, `diver-pagamentos.net`, `diver.app.br.protege-conta.com`).
+- **Painel do caso:** banner, cartão do agente (mascote escolhido, pontos, posição no ranking, pistas x/4, chave-mestra), os 4 dias, "Próxima missão" (ou "Tabuleiro de acusação", ou "Caso encerrado"), os 4 cards e o botão "Tabuleiro de acusação". Missões **liberadas em sequência**; concluída pode ser refeita como **treino** (sem pontos de missão; chave do dia não se repete no treino).
+- **Lateral:** LOG DE EVENTOS (salvo, até 80; `mission.open`, `mail.*`, `key.*`, `login.*`, `repo.open`, `vault.*`, `sniff.*`, `trap.hit`, `puzzle.*`, `clue.get`, `letter.*`, `accuse`, `bonus.alldays`…) e **RANKING AO VIVO** da turma do curso (`ranking_caso`, ver `docs/ATIVIDADE.md` 5b). No celular, ficam embaixo (o log recolhido).
+- **Missão 1 · A Isca (fácil):** 8 e-mails (3 golpes), endereço real dos links (mouse; no celular, 1º toque mostra e 2º "abre"), "Ver cabeçalho" (Return-Path, Received, SPF, DKIM, DMARC, extras), atalhos L/P/C/↑↓, o próximo abre sozinho, SOC devolve os errados marcados "revisar", perícia: decodificar o `X-Trace` (Base64) → **Pista A (QUEM)** e letra **M**. Créditos: +60, velocidade até +5 (≤3/5/8 min), −10 por e-mail errado (por envio), −25 link falso/anexo perigoso (uma vez por item), −2 valor errado no decodificador.
+- **Chave do dia 2 · Cofre de 5 dígitos:** senha sorteada (pode repetir dígito), palpite colorido (verde no lugar, amarelo em outra posição, vermelho não existe), teclado que guarda o que já se sabe, colar os 5 de uma vez, 90 s (acabou: −5 e senha nova). +30 e bônus por poucas tentativas (≤3: +10 … 8+: +1).
+- **Missão 2 · O Cofre (médio):** posts do Dr. Dobrão → login com barra **quente/frio** (senha = nome do pet + ano) → repositório com 6 commits (o `.env.staging` com `DOB_TMP=8264` foi "apagado", mas o histórico guarda; o commit de "script auxiliar" tem o botão **Executar script** = armadilha) → código de 4 dígitos do cofre → **Pista B (COM O QUÊ)** e letra **A**. Créditos: +60, velocidade até +5 (≤4/6/9 min), −5 senha ou código errado, −25 executar script.
+- **Chave do dia 3 · Rastro na rede:** tráfego ao vivo (uma linha a cada 0,8 s; 1,3 s com "reduzir movimento"), 5 linhas escondem `x-part-1..5:<caractere>` no `hdr{…}` entre distratores (x-pad, x-port, x-parts, x-prt, x-pact, x-pass); Pausar (botão ou Espaço) congela o tráfego mas não o tempo; 90 s (acabou: −5 e chave nova); validar errado −5. +30 e bônus por velocidade (≤30 s +10 … +1).
+- **Missão 3 · A Trilha (difícil):** 6 painéis (crachá, câmeras, login BRT/AMT, deploy, MFA, rede); marcar **exatamente 3** anomalias (entrada sem crachá 03:14, login de quem estava de férias 02:16 AMT = 03:16 BRT, PR mesclado sem revisão 03:17); envio errado −5 com dicas progressivas; "Baixar logs_completos.zip (enviado por Beto)" = armadilha −25 → **Pista C (COMO)** e letra **R**.
+- **Missão 4 · O Resgate (final):** bilhete da Sombra em **Vigenère** com a chave-mestra (`MARE`): letras 1–3 vêm das missões (ou se compram por −40), a 4ª se descobre testando (−2 por letra errada) ou se compra (−80); o texto decifra ao vivo → **Pista D (FECHAMENTO)**.
+- **Tabuleiro de acusação:** as 4 pistas, colunas QUEM (retratos) / COM O QUÊ / COMO (10 itens cada, com ficha), X para riscar (salvo), **uma acusação só** (confirmação com o mascote), liberada depois do Resgate. +100 por item certo, +300 pelo trio, +25 por jogar as 4 missões. Depois, a Sombra é revelada com a explicação do caso. Solução: Caio Commit · Script de deploy adulterado · Código sem revisão.
+- **Pontos no app:** cada missão (com a chave do dia) e a acusação viram um resultado na economia: bônus = pontos/2 de XP e pontos/10 de pérolas nas missões; pontos/4 e pontos/30 na acusação (com o teto da economia). Cada missão vira 1 a 3 "detalhes de estudo" com explicação (aparecem no "O que revisar"). O evento leva `registro: { operacao, missao, treino, pontos_missao }`. Se a pessoa fechar o jogo no card da pista, o resultado fica em `pendente` e o painel oferece "Receber agora".
+- **Estado:** `localStorage` `diver:v1:operacao` → `{ <casoId>: { missoes, pistas, chave, log, chaves: { cofre, rastro }, riscados, acusacao, pendente } }` (sincroniza com a nuvem).
+- **Tela larga:** o jogo declara `largo: true`.
+- O caso antigo ("O apagão da Estação Abissal", com perguntas da trilha e evidências) saiu.
 
 #### Duelo de Mergulhadores (`duelo`) — semana 17
 - Dois jogadores no mesmo aparelho, em turnos; cada um responde uma pergunta por rodada (10 rodadas) disputando pérolas.

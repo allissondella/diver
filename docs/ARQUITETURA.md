@@ -141,6 +141,7 @@ Jogos.registrar({
 | `diver:v1:desafios` | Dias em que o Desafio do Dia foi cumprido (`{ "AAAA-MM-DD": true }`). |
 | `diver:v1:provas-enviadas` | Provas antigas: `{ versao, provas: [{ id, trilhaId, titulo, criadaEm, honesto, minutos, questoes: [{ id, tema, dificuldade, enunciado, alternativas, correta, explicacao }], tentativas: [{ data, acertos, total, nota, tempoSeg, xp, perolas }] }], feitas: { idDaProvaDoProfessor: [tentativas] } }`. Sincroniza com a nuvem como o resto. |
 | `diver:v1:mascote` | Mascote escolhido: `{ rosto, tom }` (ids de `Mascotes.ROSTOS` e `Mascotes.TONS`). Sincroniza com a nuvem. |
+| `diver:v1:operacao` | Caso Resolvido ("Operação Recife Sombrio"): por caso, missões concluídas (pontos), pistas, letras da chave-mestra, chaves dos dias, itens riscados no tabuleiro, a acusação, um resultado ainda não recebido (`pendente`) e o log de eventos (até 80). Sincroniza com a nuvem. |
 | `diver:v1:tutorial` | Tutoriais já vistos: `{ vistos: { inicio: true, mergulho: true, ... } }`. Sincroniza com a nuvem. |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
 
