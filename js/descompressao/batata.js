@@ -6,10 +6,13 @@
  * - Cada pessoa começa com 3 vidas. A bomba explodiu na sua vez? Perde uma vida e a vez passa.
  *   O pavio encurta a cada rodada (menos 0,4 s por rodada, nunca abaixo de 5 s).
  * - Bônus do alfabeto: usou todas as letras de A a Z (sem K, W e Y) nas suas palavras? Ganha uma vida (até 5).
- * - Modos: contra o robô (Fácil, Médio ou Difícil), lado a lado no mesmo computador e online, com outra
- *   pessoa (sala com código de 4 letras; o banco confere vez, tempo, sílaba e repetidas: funções batata_*).
- * - Pontos (só no placar da sala): vitória online 30; contra o robô 10 (Fácil), 15 (Médio) ou 25 (Difícil);
- *   lado a lado não vale ponto. O placar soma até 150 por dia.
+ * - Modos: Sozinho (a bomba volta sempre para você; o pavio encurta a cada palavra e o nível sobe a cada
+ *   30 s: pavio menor e sílabas mais difíceis), Treino (igual, mas a bomba não tira vida e não vale ponto),
+ *   contra o robô (Fácil, Médio ou Difícil), lado a lado no mesmo computador e online, com outra pessoa
+ *   (sala com código de 4 letras; o banco confere vez, tempo, sílaba e repetidas: funções batata_*).
+ * - Pontos (só no placar da sala): Sozinho = 1 por palavra + 5 por nível alcançado, vale o recorde;
+ *   vitória online 30; contra o robô 10 (Fácil), 15 (Médio) ou 25 (Difícil); lado a lado e treino não valem.
+ *   As vitórias somam até 150 por dia.
  */
 (() => {
   const { h, icone, plural } = UI;
@@ -23,6 +26,7 @@
     dificil: { nome: 'Difícil', pontos: 25, espera: [900, 2400], falha: 0.03, maxLetras: 14 },
   };
   const PONTOS_ONLINE = 30;
+  const SOBE_NIVEL = 30; // segundos por nível no Sozinho e no Treino
   const duracao = (tempo, rodada) => Math.max(5000, tempo * 1000 - rodada * 400);
   let silabas = null;
 
@@ -57,7 +61,7 @@
     diario: false,
     descricao: 'Uma sílaba, uma bomba e o relógio correndo: digite uma palavra com a sílaba antes de explodir. Contra o robô, lado a lado ou online.',
     abrir(ctx) {
-      const cfg = { modo: 'robo', robo: 'medio', tempo: 15, nomes: [primeiroNome() || 'Jogador 1', 'Jogador 2'], ...(ctx.estado() || {}).cfg };
+      const cfg = { modo: 'sozinho', robo: 'medio', tempo: 15, nomes: [primeiroNome() || 'Jogador 1', 'Jogador 2'], ...(ctx.estado() || {}).cfg };
       let partida = null; // motor local (robô e lado a lado)
       let online = null; // { codigo, dados, poll, offset, explodindo, registrado }
       let relogio = 0;
@@ -88,6 +92,8 @@
           return h('div', { class: 'sd-bat__opcao' }, h('span', { class: 'sd-bat__rotulo', text: rotulo }), g);
         };
         const extras = h('div', { class: 'sd-bat__extras' });
+        if (cfg.modo === 'sozinho') extras.append(h('p', { class: 'texto-suave sd-bat__explica', text: `A bomba volta sempre para você. O pavio começa com ${cfg.tempo} s e encurta a cada palavra; a cada ${SOBE_NIVEL} s o nível sobe (pavio menor e sílabas mais difíceis). 3 vidas. Vale 1 ponto por palavra + 5 por nível: conta o seu recorde.` }));
+        if (cfg.modo === 'treino') extras.append(h('p', { class: 'texto-suave sd-bat__explica', text: `Igual ao Sozinho (o nível também sobe a cada ${SOBE_NIVEL} s), mas a bomba não tira vida e não vale ponto. Encerre quando quiser.` }));
         if (cfg.modo === 'robo') extras.append(seg('Robô', 'robo', Object.entries(ROBOS).map(([k, r]) => [k, r.nome])));
         if (cfg.modo === 'local') {
           extras.append(h('div', { class: 'sd-bat__nomes' }, [0, 1].map((i) => h('label', { class: 'sd-campo' }, h('span', { text: i ? 'Quem fica à direita' : 'Quem fica à esquerda' }),
@@ -109,16 +115,17 @@
             } }, cod, h('button', { type: 'submit', class: 'botao botao--secundario' }, 'Entrar')))
             : h('p', { class: 'texto-suave', text: 'Para jogar online, entre com sua conta do Diver.' });
         } else {
-          acoes = h('div', { class: 'acoes-linha' }, h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-bat-comecar', onclick: comecarLocal }, icone('i-raio'), 'Começar'));
+          const comecar = cfg.modo === 'sozinho' ? () => comecarSozinho(false) : cfg.modo === 'treino' ? () => comecarSozinho(true) : comecarLocal;
+          acoes = h('div', { class: 'acoes-linha' }, h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-bat-comecar', onclick: comecar }, icone('i-raio'), cfg.modo === 'treino' ? 'Começar o treino' : 'Começar'));
         }
         ctx.container.replaceChildren(h('div', { class: 'sd-bat' },
           h('section', { class: 'cartao sd-bat__menu', id: 'sd-bat-menu' },
             h('div', { class: 'sd-bat__topo' },
               h('h2', { class: 'cartao__titulo', text: 'Como vai ser?' }),
               h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => guia(true) }, icone('i-livro'), 'Como jogar')),
-            seg('Modo', 'modo', [['robo', 'Contra o robô'], ['local', 'Lado a lado'], ['online', 'Online']], () => menu()),
+            seg('Modo', 'modo', [['sozinho', 'Sozinho'], ['treino', 'Treino'], ['robo', 'Contra o robô'], ['local', 'Lado a lado'], ['online', 'Online']], () => menu()),
             extras,
-            seg(cfg.modo === 'online' ? 'Pavio (de quem cria a sala)' : 'Pavio', 'tempo', PAVIOS.map((t) => [t, `${t} s`])),
+            seg(cfg.modo === 'online' ? 'Pavio (de quem cria a sala)' : cfg.modo === 'sozinho' || cfg.modo === 'treino' ? 'Pavio no começo' : 'Pavio', 'tempo', PAVIOS.map((t) => [t, `${t} s`])),
             aviso ? h('p', { class: 'texto-erro', role: 'alert', text: aviso }) : null,
             acoes,
             dic)));
@@ -188,6 +195,128 @@
         if (ok === null) throw new Error('O dicionário ainda está abrindo. Tente de novo em um instante.');
         if (!ok) throw new Error('Essa palavra não faz parte do nosso dicionário brasileiro.');
         return p;
+      }
+
+      /* ---------- Sozinho e Treino: a bomba sempre volta para você ---------- */
+      function silabaSolo(s, nivel) {
+        const dificil = nivel >= 5 ? 0.75 : nivel >= 3 ? 0.5 : 0;
+        const lista = Math.random() < dificil ? s.dificeis : s.faceis;
+        return lista[Math.floor(Math.random() * lista.length)];
+      }
+      const duracaoSolo = (p) => Math.max(3500, p.tempo * 1000 - (p.nivel - 1) * 1200 - p.palavras * 120);
+
+      async function comecarSozinho(treino) {
+        clearInterval(relogio);
+        clearTimeout(roboTimer);
+        let s;
+        try {
+          [s] = await Promise.all([carregarSilabas(), Dicionario.carregar()]);
+        } catch (e) {
+          return menu('Não consegui abrir o dicionário. Confira a internet e tente de novo.');
+        }
+        if (encerrado) return;
+        const t = montarTabuleiro([treino ? 'Treino' : cfg.nomes[0] || 'Você']);
+        t.raiz.querySelector('.sd-bat__mesa').classList.add('sd-bat__mesa--solo');
+        const painel = h('p', { class: 'sd-bat__nivel', id: 'sd-bat-nivel' });
+        t.bomba.before(painel);
+        if (treino) t.form.after(h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-bat__encerrar', onclick: () => terminarSozinho() }, 'Encerrar treino'));
+        partida = {
+          solo: true, treino, t, s, painel, tempo: cfg.tempo, inicio: performance.now(), nivel: 1, palavras: 0, explosoes: 0,
+          vidas: VIDAS, letras: '', ultima: '', usadas: [], silaba: silabaSolo(s, 1), prazo: 0, total: 0, fim: false,
+        };
+        novaBombaSolo(true);
+        t.form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          jogarSozinho(t.campo.value);
+        });
+        relogio = setInterval(tiqueSozinho, 100);
+      }
+
+      function novaBombaSolo(primeira = false) {
+        const p = partida;
+        p.total = duracaoSolo(p);
+        p.prazo = performance.now() + p.total;
+        p.t.silaba.textContent = p.silaba.toUpperCase();
+        p.t.vez.textContent = p.treino ? 'Treino: sem pressa de vida, só de tempo!' : 'A bomba é sua!';
+        p.t.campo.value = '';
+        p.t.campo.placeholder = `Uma palavra com ${p.silaba.toUpperCase()}`;
+        pintarLado(p.t, 0, { nome: p.treino ? 'Treino' : cfg.nomes[0], vidas: p.treino ? 0 : p.vidas, letras: p.letras, ultima: p.ultima, daVez: true });
+        if (p.treino) p.t.lados[0].querySelector('.sd-bat__vidas').replaceChildren(h('span', { class: 'chip chip--ativo', text: 'sem vidas: é treino' }));
+        p.t.campo.focus({ preventScroll: !primeira });
+      }
+
+      function tiqueSozinho() {
+        const p = partida;
+        if (!p || !p.solo || p.fim) return;
+        const agora = performance.now();
+        const decorrido = (agora - p.inicio) / 1000;
+        const nivel = 1 + Math.floor(decorrido / SOBE_NIVEL);
+        if (nivel > p.nivel) {
+          p.nivel = nivel;
+          sacudir(p.t, `Nível ${nivel}! O pavio encurtou${nivel >= 3 ? ' e as sílabas ficaram mais difíceis' : ''}.`, 'bonus');
+        }
+        const falta = Math.ceil(SOBE_NIVEL - (decorrido % SOBE_NIVEL));
+        p.painel.textContent = `Nível ${p.nivel} · sobe em ${falta} s · ${plural(p.palavras, 'palavra', 'palavras')}`;
+        const resta = p.prazo - agora;
+        pintarPavio(p.t, resta, p.total);
+        if (resta <= 0) explodirSozinho();
+      }
+
+      function explodirSozinho() {
+        const p = partida;
+        explosao(p.t);
+        p.ultima = `Bum! "${p.silaba.toUpperCase()}" explodiu.`;
+        if (p.treino) {
+          p.explosoes++;
+          sacudir(p.t, 'Bum! No treino a bomba não tira vida. Lá vem outra sílaba.', 'boom');
+        } else {
+          p.vidas--;
+          sacudir(p.t, p.vidas > 0 ? `Bum! Sobrou ${plural(p.vidas, 'vida', 'vidas')}.` : 'Bum! Acabaram as vidas.', 'boom');
+          if (p.vidas <= 0) return terminarSozinho();
+        }
+        p.silaba = silabaSolo(p.s, p.nivel);
+        novaBombaSolo();
+      }
+
+      function jogarSozinho(texto) {
+        const p = partida;
+        if (!p || !p.solo || p.fim) return;
+        let palavra;
+        try {
+          palavra = conferir(texto, p.silaba, p.usadas);
+        } catch (e) {
+          sacudir(p.t, e.message);
+          p.t.campo.select();
+          return;
+        }
+        p.usadas.push(palavra);
+        p.palavras++;
+        p.ultima = palavra.toUpperCase();
+        p.letras = novasLetras(p.letras, palavra);
+        if (p.letras.length >= ALFABETO.length) {
+          p.letras = '';
+          if (!p.treino) p.vidas = Math.min(MAX_VIDAS, p.vidas + 1);
+          sacudir(p.t, p.treino ? 'Alfabeto completo! (No jogo valendo, isso dá uma vida.)' : 'Alfabeto completo! Ganhou uma vida.', 'bonus');
+        } else sacudir(p.t, `${palavra.toUpperCase()}: boa!`, 'ok');
+        p.silaba = silabaSolo(p.s, p.nivel);
+        novaBombaSolo();
+      }
+
+      function terminarSozinho() {
+        const p = partida;
+        if (!p || p.fim) return;
+        p.fim = true;
+        clearInterval(relogio);
+        p.t.campo.disabled = true;
+        const enc = p.t.raiz.querySelector('.sd-bat__encerrar');
+        if (enc) enc.remove();
+        const pontos = p.palavras + 5 * (p.nivel - 1);
+        if (!p.treino) ctx.pontuar(pontos, { modo: 'sozinho', palavras: p.palavras, nivel: p.nivel, segundos: Math.round((performance.now() - p.inicio) / 1000) });
+        const recorde = ctx.recorde();
+        fimDePartida(p.t, p.treino
+          ? `Treino encerrado: ${plural(p.palavras, 'palavra', 'palavras')} até o nível ${p.nivel}${p.explosoes ? `, com ${plural(p.explosoes, 'explosão', 'explosões')} no caminho` : ''}.`
+          : `${plural(p.palavras, 'palavra', 'palavras')} até o nível ${p.nivel}: ${plural(pontos, 'ponto', 'pontos')} no placar da sala${pontos >= recorde && pontos > 0 ? ' (seu melhor!)' : ''}.`,
+        true, () => comecarSozinho(p.treino));
       }
 
       /* ---------- Partida local: robô ou lado a lado ---------- */
@@ -524,7 +653,7 @@
           { desenho: 'relogio', titulo: 'Batata Quente', texto: 'Aparece uma sílaba. Digite uma palavra que tenha essa sílaba antes de a bomba explodir na sua mão. Depois, a bomba passa para o outro lado.' },
           { desenho: 'livro', titulo: 'Só palavras de verdade', texto: 'Vale qualquer palavra do dicionário brasileiro com 3 letras ou mais, sem repetir na mesma partida. Acento não conta.' },
           { desenho: 'estrela', titulo: 'Vidas e bônus', texto: 'Cada um começa com 3 vidas. Usou todas as letras do alfabeto (sem K, W e Y) nas suas palavras? Ganha uma vida extra.' },
-          { alvo: '#sd-bat-menu', desenho: 'controle', titulo: 'Três jeitos de jogar', texto: 'Contra o robô (Fácil, Médio ou Difícil), lado a lado no mesmo computador ou online com um colega, por código. O pavio encurta a cada rodada.' },
+          { alvo: '#sd-bat-menu', desenho: 'controle', titulo: 'Cinco jeitos de jogar', texto: `Sozinho (o pavio encurta e o nível sobe a cada ${SOBE_NIVEL} s; vale o recorde), Treino (sem vidas e sem pontos), contra o robô (Fácil, Médio ou Difícil), lado a lado no mesmo computador ou online com um colega, por código.` },
         ], forcar);
       }
 

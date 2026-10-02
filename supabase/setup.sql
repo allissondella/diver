@@ -895,8 +895,9 @@ revoke all on function public.sala_status() from public, anon;
 grant execute on function public.sala_status() to authenticated;
 
 -- Placar da sala (todo mundo junto, sem separar por curso). Pontos vêm do log (jogo_concluido sem curso,
--- detalhes.jogo = sala-…). Investigação e Palavrinha: o melhor de cada dia, somado. Tiro ao Alvo: o recorde.
--- Batata Quente: soma das vitórias do dia (até 150 por dia). "geral" = soma dos quatro.
+-- detalhes.jogo = sala-…). Investigação e palavra do dia da Palavrinha: o melhor de cada dia, somado; treino da
+-- Palavrinha (detalhes.modo = treino): soma do dia até 60. Tiro ao Alvo: o recorde.
+-- Batata Quente: soma das vitórias do dia (até 150 por dia) + o recorde do modo Sozinho. "geral" = soma dos quatro.
 create or replace function public.ranking_sala(p_jogo text default 'geral', p_periodo text default 'mes')
 returns table (posicao integer, nome text, pontos integer, sou_eu boolean)
 language sql stable security definer
@@ -906,7 +907,10 @@ as $$
     select exists (select 1 from public.perfis p where p.id = auth.uid() and p.ativo) as ok
   ),
   ev as (
-    select e.aluno_id, e.detalhes ->> 'jogo' as jogo,
+    select e.aluno_id,
+           case when e.detalhes ->> 'jogo' = 'sala-batata' and e.detalhes ->> 'modo' = 'sozinho' then 'sala-batata-solo'
+                when e.detalhes ->> 'jogo' = 'sala-palavrinha' and e.detalhes ->> 'modo' = 'treino' then 'sala-palavrinha-treino'
+                else e.detalhes ->> 'jogo' end as jogo,
            coalesce(nullif(e.detalhes ->> 'data', ''), to_char(e.criado_em at time zone 'America/Sao_Paulo', 'YYYY-MM-DD')) as dia,
            greatest(0, least(5000, coalesce(public.atv_num(e.detalhes, 'pontos'), 0))) as pts
       from public.eventos_atividade e
@@ -917,16 +921,18 @@ as $$
        and (p_periodo = 'geral' or to_char(e.criado_em at time zone 'America/Sao_Paulo', 'YYYY-MM') = to_char(now() at time zone 'America/Sao_Paulo', 'YYYY-MM'))
   ),
   por_dia as (
-    select aluno_id, jogo, dia, case when jogo = 'sala-batata' then least(150, sum(pts)) else max(pts) end as s
+    select aluno_id, jogo, dia, case when jogo = 'sala-batata' then least(150, sum(pts))
+                                     when jogo = 'sala-palavrinha-treino' then least(60, sum(pts)) else max(pts) end as s
       from ev group by aluno_id, jogo, dia
   ),
   por_jogo as (
-    select aluno_id, jogo, case when jogo = 'sala-tiro' then max(s) else sum(s) end as s
+    select aluno_id, jogo, case when jogo in ('sala-tiro', 'sala-batata-solo') then max(s) else sum(s) end as s
       from por_dia group by aluno_id, jogo
   ),
   placar as (
     select aluno_id, sum(s)::integer as pontos
-      from por_jogo where p_jogo = 'geral' or jogo = 'sala-' || p_jogo
+      from por_jogo where p_jogo = 'geral' or jogo = 'sala-' || p_jogo or (p_jogo = 'batata' and jogo = 'sala-batata-solo')
+                       or (p_jogo = 'palavrinha' and jogo = 'sala-palavrinha-treino')
      group by aluno_id
   )
   select (rank() over (order by pl.pontos desc))::integer,

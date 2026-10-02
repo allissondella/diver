@@ -1,50 +1,148 @@
 /*
- * Tiro ao Alvo (Sala de Descompressão) — pistola d'água em primeira pessoa.
- * - Aparece uma REGRA ("Só os peixes", "Só números pares"...) e as placas vão surgindo. Acerte só as certas.
- * - Acertou uma placa errada: eliminação na hora. Deixou uma placa certa escapar: perde uma gota (são 3).
- * - Cada acerto vale 10 pontos, mais o bônus da sequência (+5 a cada 5 acertos seguidos). A regra muda a cada
- *   15 segundos e tudo fica mais rápido com o tempo. O tanque da pistola tem 10 jatos e recarrega sozinho.
- * - Pontos só no placar da sala: vale o seu recorde.
- * Desenho todo no <canvas> (nada de imagem de fora). Com "reduzir movimento", as placas não deslizam e
- * não há respingos.
+ * Tiro ao Alvo (Sala de Descompressão) — pistola d'água em primeira pessoa, por níveis.
+ * - Cada nível tem uma REGRA ("Só os peixes", "Números primos", "Peixes OU frutas", "Tudo MENOS aves"...) e uma
+ *   leva de placas. Acertou todas as placas certas da leva? Sobe de nível (e a regra muda).
+ * - Acertou uma placa errada: eliminação na hora. Deixou uma placa certa escapar: eliminação na hora também.
+ * - 1 ponto por acerto. Vale o recorde no placar da sala.
+ * - Dificuldade: o nível 1 é de aquecimento; do 2 em diante as placas somem mais rápido, ficam menores, deslizam
+ *   (e balançam a partir do 3), aparecem várias ao mesmo tempo e a leva cresce 5 placas certas por nível.
+ *   Do nível 4 em diante podem vir regras em dupla ("A OU B"); do 5 em diante, "Tudo MENOS ...".
+ * Desenho todo no <canvas> (nada de imagem de fora). Com "reduzir movimento", as placas não deslizam nem balançam
+ * e não há respingos (o jogo continua acelerando pelo tempo de cada placa).
  */
 (() => {
   const { h, icone, plural } = UI;
   const COR = { turquesa: '#14B8A6', claro: '#5EEAD4', amarelo: '#FACC15', coral: '#FB7185', texto: '#E6F1FF', suave: '#A9BCD6', fundo: '#06172D', marinho: '#0B2545', sup: '#12325A', sup2: '#1A416F', escuro: '#0B2545' };
-  const TANQUE = 10;
-  const RECARGA = 0.35; // segundos por jato
-  const VIDAS = 3;
-  const TROCA_REGRA = 15;
+  const TANQUE = 12;
+  const RECARGA = 0.22; // segundos por jato
 
-  const PEIXES = ['TILÁPIA', 'SARDINHA', 'ATUM', 'ROBALO', 'TAINHA', 'PESCADA', 'DOURADO', 'LINGUADO', 'BAGRE', 'PIRARUCU', 'TUCUNARÉ', 'BADEJO', 'GAROUPA', 'PACU', 'LAMBARI', 'TUBARÃO', 'RAIA', 'MOREIA', 'CAVALO-MARINHO', 'PEIXE-PALHAÇO'];
-  const NAO_PEIXES = ['GOLFINHO', 'BALEIA', 'POLVO', 'LULA', 'CARANGUEJO', 'TARTARUGA', 'FOCA', 'PINGUIM', 'CAMARÃO', 'ÁGUA-VIVA', 'ESTRELA-DO-MAR', 'LONTRA', 'SIRI', 'LAGOSTA', 'MEXILHÃO', 'PEIXE-BOI'];
-  const FRUTAS = ['BANANA', 'MAÇÃ', 'UVA', 'CAJU', 'MANGA', 'ACEROLA', 'GOIABA', 'CAQUI', 'PERA', 'KIWI', 'MELANCIA', 'ABACAXI', 'JABUTICABA', 'PITANGA', 'AÇAÍ'];
-  const NAO_FRUTAS = ['ALFACE', 'CENOURA', 'BATATA', 'CEBOLA', 'BRÓCOLIS', 'COUVE', 'ARROZ', 'FEIJÃO', 'MANDIOCA', 'BETERRABA', 'ESPINAFRE', 'RABANETE', 'PÃO', 'QUEIJO'];
-  const sortear = (lista, r) => lista[Math.floor(r() * lista.length)];
-  const inteiro = (a, b, r) => a + Math.floor(r() * (b - a + 1));
-
-  const REGRAS = [
-    { id: 'peixes', texto: 'Só os PEIXES', gerar: (certa, r) => ({ rotulo: sortear(certa ? PEIXES : NAO_PEIXES, r) }), porque: (p) => `${p.rotulo} não é peixe.` },
-    { id: 'pares', texto: 'Só números PARES', gerar: (certa, r) => ({ rotulo: String(inteiro(1, 49, r) * 2 - (certa ? 0 : 1)) }), porque: (p) => `${p.rotulo} é ímpar.` },
-    { id: 'vogais', texto: 'Só as VOGAIS', gerar: (certa, r) => ({ rotulo: sortear(certa ? ['A', 'E', 'I', 'O', 'U'] : 'BCDFGHJLMNPRSTVXZ'.split(''), r) }), porque: (p) => `${p.rotulo} é consoante.` },
-    { id: 'maior50', texto: 'Só números MAIORES que 50', gerar: (certa, r) => ({ rotulo: String(certa ? inteiro(51, 99, r) : inteiro(1, 50, r)) }), porque: (p) => `${p.rotulo} não é maior que 50.` },
-    { id: 'circulos', texto: 'Só os CÍRCULOS', gerar: (certa, r) => ({ forma: certa ? 'circulo' : sortear(['quadrado', 'triangulo', 'estrela'], r) }), porque: (p) => `Era um ${({ quadrado: 'quadrado', triangulo: 'triângulo', estrela: 'estrela' })[p.forma]}, não um círculo.` },
-    { id: 'frutas', texto: 'Só as FRUTAS', gerar: (certa, r) => ({ rotulo: sortear(certa ? FRUTAS : NAO_FRUTAS, r) }), porque: (p) => `${p.rotulo} não é fruta.` },
-    { id: 'mult3', texto: 'Só MÚLTIPLOS de 3', gerar: (certa, r) => {
-      let n = inteiro(1, 33, r) * 3;
-      if (!certa) n += r() < 0.5 ? 1 : 2;
-      return { rotulo: String(n) };
-    }, porque: (p) => `${p.rotulo} não é múltiplo de 3.` },
+  /* ---------- Itens (rótulo + etiquetas) ---------- */
+  const lista = (texto, tags, dica = '') => texto.split(' ').map((r) => ({ rotulo: r.replace(/_/g, ' '), tags: tags.split(' '), dica }));
+  const ANIMAIS = [
+    ...lista('TILÁPIA SARDINHA ATUM ROBALO TAINHA PESCADA DOURADO LINGUADO BAGRE PIRARUCU TUCUNARÉ GAROUPA PACU LAMBARI TUBARÃO RAIA MOREIA CAVALO-MARINHO PEIXE-PALHAÇO', 'animal peixe aquatico'),
+    ...lista('GOLFINHO BALEIA PEIXE-BOI', 'animal mamifero aquatico', 'é mamífero'),
+    ...lista('FOCA LONTRA', 'animal mamifero aquatico', 'é mamífero'),
+    ...lista('POLVO LULA', 'animal aquatico', 'é molusco'),
+    ...lista('CARANGUEJO CAMARÃO SIRI LAGOSTA', 'animal aquatico', 'é crustáceo'),
+    ...lista('ÁGUA-VIVA ESTRELA-DO-MAR', 'animal aquatico', 'não é peixe'),
+    ...lista('TARTARUGA', 'animal reptil aquatico', 'é réptil'),
+    ...lista('GATO CACHORRO CAVALO LEÃO TIGRE URSO COELHO ONÇA CAPIVARA GIRAFA ELEFANTE ZEBRA CAMELO TAMANDUÁ PREGUIÇA', 'animal mamifero'),
+    ...lista('MORCEGO', 'animal mamifero voa', 'é mamífero que voa'),
+    ...lista('PATO CORUJA TUCANO GAIVOTA BEIJA-FLOR ARARA PAPAGAIO GAVIÃO SABIÁ', 'animal ave voa'),
+    ...lista('PINGUIM AVESTRUZ EMA', 'animal ave', 'é ave, mas não voa'),
+    ...lista('ABELHA BORBOLETA JOANINHA MOSQUITO LIBÉLULA', 'animal inseto voa'),
+    ...lista('FORMIGA GRILO CUPIM', 'animal inseto'),
+    ...lista('JACARÉ COBRA LAGARTO JABUTI', 'animal reptil', 'é réptil'),
   ];
+  const COMIDAS = [
+    ...lista('BANANA MAÇÃ UVA CAJU MANGA ACEROLA GOIABA CAQUI PERA KIWI MELANCIA ABACAXI JABUTICABA PITANGA AÇAÍ MORANGO LIMÃO', 'comida fruta'),
+    ...lista('ALFACE CENOURA BATATA CEBOLA BRÓCOLIS COUVE ARROZ FEIJÃO MANDIOCA BETERRABA PÃO QUEIJO OVO PIPOCA', 'comida'),
+  ];
+  const OBJETOS = [
+    ...lista('VIOLÃO PIANO FLAUTA BATERIA SANFONA CAVAQUINHO PANDEIRO TROMPETE VIOLINO BERIMBAU ZABUMBA SAXOFONE TAMBOR', 'objeto instrumento'),
+    ...lista('CADEIRA MARTELO PANELA TESOURA LÁPIS ESCOVA GARFO SAPATO MOCHILA RELÓGIO VASSOURA TOALHA', 'objeto'),
+  ];
+  const CORES = [
+    ...lista('AZUL VERDE ROXO AMARELO VERMELHO CINZA MARROM BRANCO PRETO BEGE', 'cor'),
+    ...lista('MESA NUVEM CHUVA PEDRA PONTE JANELA PRAIA TRILHA CORDA GARRAFA', 'coisa'),
+  ];
+  const LUGARES = [
+    ...lista('RECIFE SALVADOR MANAUS BELÉM NATAL CURITIBA PALMAS MACEIÓ VITÓRIA CUIABÁ ARACAJU GOIÂNIA TERESINA FORTALEZA MACAPÁ SÃO_LUÍS RIO_BRANCO BOA_VISTA PORTO_ALEGRE JOÃO_PESSOA', 'cidade capital'),
+    ...lista('CAMPINAS SANTOS OLINDA PETRÓPOLIS JOINVILLE LONDRINA SOROCABA CARUARU MOSSORÓ NITERÓI PARATY BLUMENAU JUAZEIRO OURO_PRETO', 'cidade'),
+    ...lista('BRASIL ARGENTINA CHILE PERU URUGUAI PARAGUAI BOLÍVIA EQUADOR COLÔMBIA VENEZUELA GUIANA SURINAME', 'pais sul'),
+    ...lista('MÉXICO PORTUGAL ESPANHA JAPÃO CANADÁ CUBA ITÁLIA ANGOLA PANAMÁ EGITO FRANÇA ÍNDIA', 'pais'),
+  ];
+  const PALAVRAS = [...lista('CAFÉ SOFÁ AVÓ MÁGICO LÂMPADA PÁSSARO ÔNIBUS MÚSICA LIMÃO ÁRVORE FÓSFORO ÍMÃ BAÚ JACARÉ PÊSSEGO', 'palavra'),
+    ...lista('CASA BOLO LIVRO JANELA PORTA CHAVE MESA SAPATO GELO NAVIO PRAIA VENTO BARCO FOLHA PEDRA', 'palavra')];
+  const temAcento = (it) => /[ÁÀÂÃÉÊÍÓÔÕÚÜ]/.test(it.rotulo);
+  const PRIMOS = new Set([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]);
+  const sortear = (l, r) => l[Math.floor(r() * l.length)];
+  const inteiro = (a, b, r) => a + Math.floor(r() * (b - a + 1));
+  const numero = (r) => { const n = inteiro(1, 99, r); return { rotulo: String(n), valor: n, tags: ['numero'] }; };
+  const conta = (r) => {
+    const v = inteiro(6, 14, r);
+    const tipo = inteiro(0, 2, r);
+    if (tipo === 0) { const a = inteiro(1, v - 1, r); return { rotulo: `${a}+${v - a}`, valor: v, tags: ['conta'] }; }
+    if (tipo === 1) { const b = inteiro(1, 9, r); return { rotulo: `${v + b}−${b}`, valor: v, tags: ['conta'] }; }
+    const divs = [1, 2, 3, 4, 5, 6, 7].filter((d) => v % d === 0 && v / d <= 9 && d > 1);
+    if (!divs.length) { const a = inteiro(1, v - 1, r); return { rotulo: `${a}+${v - a}`, valor: v, tags: ['conta'] }; }
+    const d = sortear(divs, r);
+    return { rotulo: `${d}×${v / d}`, valor: v, tags: ['conta'] };
+  };
+  const letra = (r) => { const l = sortear('ABCDEFGHIJLMNOPRSTUVXZAEIOU'.split(''), r); return { rotulo: l, tags: ['letra', 'AEIOU'.includes(l) ? 'vogal' : 'consoante'] }; };
+  const forma = (r) => { const f = sortear(['circulo', 'quadrado', 'triangulo', 'estrela'], r); return { forma: f, rotulo: { circulo: 'círculo', quadrado: 'quadrado', triangulo: 'triângulo', estrela: 'estrela' }[f], tags: ['forma', f] }; };
+  const de = (itens) => (r) => ({ ...sortear(itens, r) });
+  const tag = (t) => (it) => it.tags.includes(t);
+
+  /* ---------- Regras (domínio = de onde saem as placas; teste = é certa?) ---------- */
+  const REGRAS = [
+    { id: 'peixes', texto: 'os PEIXES', dominio: de(ANIMAIS), teste: tag('peixe') },
+    { id: 'mamiferos', texto: 'os MAMÍFEROS', dominio: de(ANIMAIS), teste: tag('mamifero') },
+    { id: 'aves', texto: 'as AVES', dominio: de(ANIMAIS), teste: tag('ave') },
+    { id: 'voam', texto: 'os bichos que VOAM', dominio: de(ANIMAIS), teste: tag('voa') },
+    { id: 'insetos', texto: 'os INSETOS', dominio: de(ANIMAIS), teste: tag('inseto') },
+    { id: 'repteis', texto: 'os RÉPTEIS', dominio: de(ANIMAIS), teste: tag('reptil') },
+    { id: 'frutas', texto: 'as FRUTAS', dominio: de(COMIDAS), teste: tag('fruta') },
+    { id: 'instrumentos', texto: 'os INSTRUMENTOS musicais', dominio: de(OBJETOS), teste: tag('instrumento') },
+    { id: 'cores', texto: 'as CORES', dominio: de(CORES), teste: tag('cor') },
+    { id: 'capitais', texto: 'as CAPITAIS do Brasil', dominio: de(LUGARES.filter(tag('cidade'))), teste: tag('capital') },
+    { id: 'sul', texto: 'os países da AMÉRICA DO SUL', dominio: de(LUGARES.filter(tag('pais'))), teste: tag('sul') },
+    { id: 'acento', texto: 'as palavras com ACENTO', dominio: de(PALAVRAS), teste: temAcento },
+    { id: 'pares', texto: 'os números PARES', dominio: numero, teste: (it) => it.valor % 2 === 0 },
+    { id: 'impares', texto: 'os números ÍMPARES', dominio: numero, teste: (it) => it.valor % 2 === 1 },
+    { id: 'maior50', texto: 'os números MAIORES que 50', dominio: numero, teste: (it) => it.valor > 50 },
+    { id: 'menor20', texto: 'os números MENORES que 20', dominio: numero, teste: (it) => it.valor < 20 },
+    { id: 'mult3', texto: 'os MÚLTIPLOS de 3', dominio: numero, teste: (it) => it.valor % 3 === 0 },
+    { id: 'mult5', texto: 'os MÚLTIPLOS de 5', dominio: numero, teste: (it) => it.valor % 5 === 0 },
+    { id: 'primos', texto: 'os números PRIMOS', dominio: numero, teste: (it) => PRIMOS.has(it.valor), nivelMin: 3 },
+    { id: 'conta10', texto: 'as contas que dão 10', dominio: conta, teste: (it) => it.valor === 10 },
+    { id: 'conta12', texto: 'as contas que dão 12', dominio: conta, teste: (it) => it.valor === 12, nivelMin: 3 },
+    { id: 'vogais', texto: 'as VOGAIS', dominio: letra, teste: tag('vogal') },
+    { id: 'consoantes', texto: 'as CONSOANTES', dominio: letra, teste: tag('consoante') },
+    { id: 'circulos', texto: 'os CÍRCULOS', dominio: forma, teste: tag('circulo') },
+    { id: 'triangulos', texto: 'os TRIÂNGULOS', dominio: forma, teste: tag('triangulo') },
+    { id: 'estrelas', texto: 'as ESTRELAS', dominio: forma, teste: tag('estrela') },
+  ];
+  const so = (regra) => ({ ...regra, texto: `Só ${regra.texto}` });
+
+  /** Regra do nível: simples no começo; em dupla (A OU B) a partir do 4; "Tudo MENOS" a partir do 5. */
+  function regraDoNivel(n, r, anterior) {
+    const simples = REGRAS.filter((x) => (x.nivelMin || 1) <= n && x.id !== anterior);
+    const sorteio = r();
+    if (n >= 5 && sorteio < 0.25) {
+      const a = sortear(simples, r);
+      return { id: `menos-${a.id}`, texto: `Tudo MENOS ${a.texto}`, dominio: a.dominio, teste: (it) => !a.teste(it), explica: a };
+    }
+    if (n >= 4 && sorteio < 0.6) {
+      const a = sortear(simples, r);
+      const b = sortear(simples.filter((x) => x.id !== a.id && x.dominio !== a.dominio && !(x.id.startsWith('conta') && a.id.startsWith('conta'))), r);
+      return { id: `${a.id}+${b.id}`, texto: `${a.texto.replace(/^(os|as) /, '').toUpperCase()} ou ${b.texto.replace(/^(os|as) /, '').toUpperCase()}`.replace(/^/, 'Só '), dominio: (rr) => (rr() < 0.5 ? a.dominio : b.dominio)(rr), teste: (it) => a.teste(it) || b.teste(it) };
+    }
+    return so(sortear(simples, r));
+  }
+
+  /** Números do nível n (1 = aquecimento; a partir do 2, bem mais difícil). */
+  function parametros(n) {
+    return {
+      meta: 8 + (n - 1) * 5,
+      vida: n === 1 ? 2.8 : Math.max(0.9, 2.05 - (n - 2) * 0.15),
+      intervalo: n === 1 ? 0.95 : Math.max(0.26, 0.6 - (n - 2) * 0.05),
+      raio: Math.max(0.62, 1 - (n - 1) * 0.06),
+      desliza: n === 1 ? 0 : 45 + (n - 2) * 22,
+      balanca: n >= 3 ? Math.min(40, 12 + (n - 3) * 6) : 0,
+      certas: n === 1 ? 0.5 : 0.42,
+      maximo: n === 1 ? 4 : 4 + n,
+    };
+  }
 
   Descompressao.registrar({
     id: 'tiro',
     nome: 'Tiro ao Alvo',
     curto: 'Tiro',
     icone: 'i-alvo',
-    duracao: '1 a 3 min por partida',
+    duracao: 'quanto você aguentar',
     diario: false,
-    descricao: 'Pistola d\'água na mão: acerte só as placas da regra. Placa errada é eliminação na hora. Agilidade e atenção!',
+    descricao: 'Pistola d\'água na mão: acerte só as placas da regra. Placa errada ou placa certa que escapa: eliminação. Cada nível fica mais rápido.',
     abrir(ctx) {
       let jogo = null; // partida em andamento
       let quadro = 0;
@@ -80,15 +178,15 @@
         const recorde = ctx.recorde();
         abertura.hidden = false;
         abertura.replaceChildren(h('div', { class: 'cartao sd-tiro__cartao' },
-          fim ? h('h2', { class: fim.motivo === 'errada' ? 'texto-erro' : '', text: fim.motivo === 'errada' ? 'Eliminado!' : 'Acabou a água!' }) : h('h2', { text: 'Pistola carregada' }),
-          fim ? h('p', { text: fim.motivo === 'errada' ? `Placa errada: ${fim.porque}` : 'Três placas certas escaparam. Faz parte: a próxima é sua.' }) : null,
-          fim ? h('p', { class: 'sd-tiro__total' }, h('strong', { text: `${fim.pontos} pontos` }), ` · ${plural(fim.acertos, 'acerto', 'acertos')}${fim.pontos >= recorde && fim.pontos > 0 ? ' · novo recorde!' : ''}`)
+          fim ? h('h2', { class: 'texto-erro', text: fim.motivo === 'errada' ? 'Placa errada!' : 'Deixou escapar!' }) : h('h2', { text: 'Pistola carregada' }),
+          fim ? h('p', { text: fim.porque }) : null,
+          fim ? h('p', { class: 'sd-tiro__total' }, h('strong', { text: plural(fim.pontos, 'ponto', 'pontos') }), ` · chegou ao nível ${fim.nivel}${fim.pontos >= recorde && fim.pontos > 0 ? ' · novo recorde!' : ''}`)
             : h('ul', { class: 'sd-tiro__regras' },
-              h('li', {}, 'Leia a regra no alto e acerte só as placas que combinam com ela.'),
-              h('li', {}, h('strong', { text: 'Placa errada = eliminação na hora.' })),
-              h('li', {}, `Placa certa que escapa custa uma gota (são ${VIDAS}). A regra muda a cada ${TROCA_REGRA} segundos.`),
-              h('li', {}, 'Cada acerto vale 10 pontos; sequências dão bônus.')),
-          recorde ? h('p', { class: 'texto-suave', text: `Seu recorde: ${recorde} pontos` }) : null,
+              h('li', {}, 'Cada nível tem uma regra. Acerte só as placas que combinam com ela.'),
+              h('li', {}, h('strong', { text: 'Placa errada = eliminação. Placa certa que escapa = eliminação.' })),
+              h('li', {}, 'Acertou todas as placas certas do nível? Sobe de nível, com regra nova e mais placas.'),
+              h('li', {}, '1 ponto por acerto. O nível 1 é aquecimento: do 2 em diante, segura firme!')),
+          recorde ? h('p', { class: 'texto-suave', text: `Seu recorde: ${plural(recorde, 'ponto', 'pontos')}` }) : null,
           h('div', { class: 'acoes-linha' },
             h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-tiro-comecar', onclick: comecar }, icone('i-alvo'), fim ? 'Jogar de novo' : 'Começar'),
             fim ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala') : null)));
@@ -104,13 +202,11 @@
       /* ---------- Partida ---------- */
       function comecar() {
         abertura.hidden = true;
-        const r = Math.random;
         jogo = {
-          r, t: 0, pontos: 0, acertos: 0, seq: 0, vidas: VIDAS, agua: TANQUE, recarga: 0, placas: [], respingos: [], jatos: [],
-          regra: null, regraDesde: 0, pausa: 0, proxima: 0.6, coice: 0, fim: false, ultimaRegra: null,
+          r: Math.random, t: 0, pontos: 0, nivel: 0, agua: TANQUE, recarga: 0, placas: [], respingos: [], jatos: [],
+          regra: null, pausa: 0, proxima: 0.6, coice: 0, fim: false, acertosNivel: 0, certasCriadas: 0, p: null,
         };
-        trocarRegra();
-        hudDesenhar();
+        proximoNivel();
         cancelAnimationFrame(quadro);
         let antes = performance.now();
         const passo = (agora) => {
@@ -125,36 +221,54 @@
         tela.focus({ preventScroll: true });
       }
 
-      function trocarRegra() {
-        const opcoes = REGRAS.filter((x) => x.id !== jogo.ultimaRegra);
-        jogo.regra = sortear(opcoes, jogo.r);
-        jogo.ultimaRegra = jogo.regra.id;
-        jogo.regraDesde = jogo.t;
-        jogo.pausa = 1.4; // respiro para ler a regra nova
+      function proximoNivel() {
+        jogo.nivel++;
+        jogo.p = parametros(jogo.nivel);
+        jogo.regra = regraDoNivel(jogo.nivel, jogo.r, jogo.regra && jogo.regra.id);
+        jogo.acertosNivel = 0;
+        jogo.certasCriadas = 0;
         jogo.placas = [];
+        jogo.pausa = jogo.nivel === 1 ? 1.4 : 1.8; // respiro para ler a regra nova
+        jogo.proxima = 0.3;
         regraEl.textContent = jogo.regra.texto;
         regraEl.classList.remove('sd-tiro__regra--nova');
         void regraEl.offsetWidth;
         regraEl.classList.add('sd-tiro__regra--nova');
+        hudDesenhar();
       }
 
-      const nivel = () => Math.min(1, jogo.t / 120); // 0 → 1 em dois minutos
       function criarPlaca() {
-        const certa = jogo.r() < 0.5;
-        const conteudo = jogo.regra.gerar(certa, jogo.r);
-        const raio = Math.max(34, Math.min(54, L / 11)) * (1 - nivel() * 0.18);
+        const p = jogo.p;
+        const faltamCertas = p.meta - jogo.certasCriadas;
+        if (jogo.placas.length >= p.maximo) return;
+        // Quando já saíram todas as certas da leva, só aparecem erradas (até você acertar as que estão na tela)
+        const certa = faltamCertas > 0 && jogo.r() < p.certas;
+        let item = null;
+        for (let i = 0; i < 80 && !item; i++) {
+          const it = jogo.regra.dominio(jogo.r);
+          if (!!jogo.regra.teste(it) === certa && !jogo.placas.some((x) => x.rotulo === it.rotulo)) item = it;
+        }
+        if (!item) return;
+        if (certa) jogo.certasCriadas++;
+        const raio = Math.max(26, Math.min(54, L / 11)) * p.raio;
         const margem = raio + 8;
-        const x = margem + jogo.r() * (L - margem * 2);
-        const y = margem + 30 + jogo.r() * Math.max(10, A * 0.64 - margem - 30);
-        const vida = 2.8 - nivel() * 1.4;
-        const desliza = !UI.movimentoReduzido && jogo.t > 25 ? (jogo.r() < 0.5 ? -1 : 1) * (20 + nivel() * 70) : 0;
-        jogo.placas.push({ ...conteudo, certa, x, y, raio, nasceu: jogo.t, vida, vx: desliza, regra: jogo.regra });
+        // Procura um lugar livre (placa nascendo em cima de outra seria injusto)
+        let x = 0;
+        let y = 0;
+        for (let t = 0; t < 12; t++) {
+          x = margem + jogo.r() * (L - margem * 2);
+          y = margem + 30 + jogo.r() * Math.max(10, A * 0.64 - margem - 30);
+          if (!jogo.placas.some((o) => Math.hypot(o.x - x, o.y - y) < o.raio + raio + 8)) break;
+        }
+        const mexe = !UI.movimentoReduzido;
+        jogo.placas.push({ ...item, certa, x, y, y0: y, raio, nasceu: jogo.t, vida: p.vida * (0.9 + jogo.r() * 0.2),
+          vx: mexe && p.desliza ? (jogo.r() < 0.5 ? -1 : 1) * p.desliza * (0.7 + jogo.r() * 0.6) : 0,
+          amp: mexe ? p.balanca : 0, fase: jogo.r() * Math.PI * 2, regra: jogo.regra });
       }
 
       function atualizar(dt) {
         jogo.t += dt;
         jogo.coice = Math.max(0, jogo.coice - dt * 6);
-        // tanque
         if (jogo.agua < TANQUE) {
           jogo.recarga += dt;
           while (jogo.recarga >= RECARGA && jogo.agua < TANQUE) {
@@ -162,28 +276,22 @@
             jogo.agua++;
           }
         } else jogo.recarga = 0;
-        if (jogo.t - jogo.regraDesde >= TROCA_REGRA) trocarRegra();
         if (jogo.pausa > 0) jogo.pausa -= dt;
         else {
           jogo.proxima -= dt;
           if (jogo.proxima <= 0) {
             criarPlaca();
-            jogo.proxima = 1.05 - nivel() * 0.55 + jogo.r() * 0.25;
+            jogo.proxima = jogo.p.intervalo * (0.8 + jogo.r() * 0.4);
           }
         }
-        // placas: andam e somem
-        jogo.placas = jogo.placas.filter((p) => {
+        // placas: andam, balançam e somem
+        for (const p of jogo.placas) {
           p.x += p.vx * dt;
           if (p.x < p.raio || p.x > L - p.raio) p.vx = -p.vx;
-          if (jogo.t - p.nasceu < p.vida) return true;
-          if (p.certa) {
-            jogo.vidas--;
-            jogo.seq = 0;
-            hudDesenhar();
-            if (jogo.vidas <= 0) terminar('escapou');
-          }
-          return false;
-        });
+          if (p.amp) p.y = p.y0 + Math.sin(jogo.t * 3 + p.fase) * p.amp;
+          if (jogo.t - p.nasceu >= p.vida && p.certa) return terminar('escapou', p);
+        }
+        jogo.placas = jogo.placas.filter((p) => jogo.t - p.nasceu < p.vida);
         jogo.respingos = jogo.respingos.filter((s) => {
           s.x += s.vx * dt;
           s.y += s.vy * dt;
@@ -196,7 +304,7 @@
       }
 
       function atirar(x, y) {
-        if (!jogo || jogo.fim) return;
+        if (!jogo || jogo.fim || jogo.pausa > 0) return;
         if (jogo.agua <= 0) return; // tanque vazio: a barra de água mostra a recarga
         jogo.agua--;
         jogo.coice = 1;
@@ -204,7 +312,6 @@
         // placa mais "na frente" (a mais nova) que contém o ponto
         const alvo = [...jogo.placas].reverse().find((p) => Math.hypot(p.x - x, p.y - y) <= p.raio + 6);
         if (!alvo) {
-          jogo.seq = 0;
           respingar(x, y, COR.claro, 6);
           return;
         }
@@ -214,12 +321,14 @@
           return;
         }
         jogo.placas = jogo.placas.filter((p) => p !== alvo);
-        jogo.seq++;
-        jogo.acertos++;
-        const bonus = Math.floor(jogo.seq / 5) * 5;
-        jogo.pontos += 10 + bonus;
+        jogo.pontos++;
+        jogo.acertosNivel++;
         respingar(alvo.x, alvo.y, COR.turquesa, 14);
         hudDesenhar();
+        if (jogo.acertosNivel >= jogo.p.meta) {
+          UI.toast(`Nível ${jogo.nivel} completo!`, 'Mandou bem, Diver! Agora fica mais rápido.', 'i-estrela');
+          proximoNivel();
+        }
       }
 
       function respingar(x, y, cor, n) {
@@ -231,30 +340,37 @@
         }
       }
 
-      function terminar(motivo, placa = null) {
+      function explicar(p, motivo) {
+        const menos = /^Tudo MENOS/.test(p.regra.texto);
+        const nome = p.rotulo.toUpperCase();
+        if (motivo === 'errada') return menos ? `${nome} é justamente o que a regra “${p.regra.texto}” deixa de fora.` : `${nome} não vale em “${p.regra.texto}”${p.dica ? ` (${p.dica})` : ''}.`;
+        return `${nome} valia em “${p.regra.texto}” e escapou antes do seu jato.`;
+      }
+
+      function terminar(motivo, placa) {
         if (!jogo || jogo.fim) return;
         jogo.fim = true;
         cancelAnimationFrame(quadro);
         desenhar(placa);
-        const fim = { motivo, pontos: jogo.pontos, acertos: jogo.acertos, porque: placa ? placa.regra.porque(placa) : '' };
-        ctx.pontuar(jogo.pontos, { acertos: jogo.acertos, segundos: Math.round(jogo.t), motivo });
-        regraEl.textContent = motivo === 'errada' ? 'Eliminado!' : 'Fim de partida';
+        const fim = { motivo, pontos: jogo.pontos, nivel: jogo.nivel, porque: explicar(placa, motivo) };
+        ctx.pontuar(jogo.pontos, { acertos: jogo.pontos, nivel: jogo.nivel, segundos: Math.round(jogo.t), motivo });
+        regraEl.textContent = motivo === 'errada' ? 'Placa errada!' : 'Deixou escapar!';
         setTimeout(() => {
           jogo = null;
           mostrarAbertura(fim);
-        }, UI.movimentoReduzido ? 200 : 900);
+        }, UI.movimentoReduzido ? 200 : 1100);
       }
 
       let hudAntes = '';
       function hudDesenhar(soSeMudou = false) {
         if (!jogo) return;
-        const chave = `${jogo.pontos}|${jogo.seq}|${jogo.vidas}|${jogo.agua}|${Math.floor(jogo.t)}`;
+        const chave = `${jogo.pontos}|${jogo.nivel}|${jogo.acertosNivel}|${jogo.agua}`;
         if (soSeMudou && chave === hudAntes) return;
         hudAntes = chave;
         hud.replaceChildren(
           h('span', { class: 'sd-tiro__pontos' }, icone('i-estrela'), `${jogo.pontos}`),
-          h('span', { class: 'sd-tiro__vidas', 'aria-label': `${jogo.vidas} gotas` }, Array.from({ length: VIDAS }, (_, i) => h('span', { class: `sd-tiro__gota ${i < jogo.vidas ? '' : 'sd-tiro__gota--vazia'}`.trim() }))),
-          h('span', { class: 'sd-tiro__seq', text: jogo.seq >= 5 ? `Sequência ${jogo.seq} · +${Math.floor(jogo.seq / 5) * 5}` : `Sequência ${jogo.seq}` }),
+          h('span', { class: 'sd-tiro__nivel', text: `Nível ${jogo.nivel}` }),
+          h('span', { class: 'sd-tiro__seq', text: `${jogo.acertosNivel}/${jogo.p.meta} do nível` }),
           h('span', { class: 'sd-tiro__agua' }, h('span', { class: 'sd-tiro__agua-barra', style: `width:${(jogo.agua / TANQUE) * 100}%` }), h('span', { class: 'visualmente-oculto', text: `${jogo.agua} jatos` })));
       }
 
@@ -438,14 +554,22 @@
           g.fill();
         });
         g.globalAlpha = 1;
-        if (jogo.pausa > 0) {
-          g.fillStyle = 'rgba(6, 23, 45, 0.55)';
+        if (jogo.pausa > 0 && !jogo.fim) {
+          g.fillStyle = 'rgba(6, 23, 45, 0.6)';
           g.fillRect(0, 0, L, A);
-          g.fillStyle = COR.amarelo;
-          g.font = `800 ${Math.max(20, Math.min(34, L / 18))}px "Plus Jakarta Sans", system-ui, sans-serif`;
           g.textAlign = 'center';
           g.textBaseline = 'middle';
-          g.fillText(jogo.regra.texto, L / 2, A * 0.4);
+          g.fillStyle = COR.claro;
+          g.font = `800 ${Math.max(16, Math.min(22, L / 26))}px "Plus Jakarta Sans", system-ui, sans-serif`;
+          g.fillText(`NÍVEL ${jogo.nivel} · ${jogo.p.meta} placas certas`, L / 2, A * 0.3);
+          g.fillStyle = COR.amarelo;
+          let tam = Math.max(18, Math.min(34, L / 18));
+          g.font = `800 ${tam}px "Plus Jakarta Sans", system-ui, sans-serif`;
+          while (g.measureText(jogo.regra.texto).width > L - 32 && tam > 12) {
+            tam -= 1;
+            g.font = `800 ${tam}px "Plus Jakarta Sans", system-ui, sans-serif`;
+          }
+          g.fillText(jogo.regra.texto, L / 2, A * 0.42);
         }
         const m = mira || { x: L / 2, y: A * 0.35 };
         desenharPistola(m.x, m.y, jogo.coice);
@@ -475,11 +599,13 @@
       limpar = [() => window.removeEventListener('resize', aoRedim)];
 
       ctx.guia([
-        { alvo: '#sd-tiro-canvas', desenho: 'alvo', titulo: 'Pistola d\'água', texto: 'Mire e clique (ou toque) nas placas. A pistola tem 10 jatos e recarrega sozinha.' },
-        { alvo: '#sd-tiro-regra', desenho: 'estrela', titulo: 'Leia a regra', texto: `A regra aparece aqui e muda a cada ${TROCA_REGRA} segundos. Acertar uma placa que NÃO combina com a regra elimina na hora.` },
-        { desenho: 'relogio', titulo: 'Não deixe escapar', texto: 'O anel amarelo mostra quanto tempo a placa fica. Placa certa que some custa uma gota; sem gotas, fim de jogo. Vale o seu recorde no placar da sala.' },
+        { alvo: '#sd-tiro-canvas', desenho: 'alvo', titulo: 'Pistola d\'água', texto: `Mire e clique (ou toque) nas placas. A pistola tem ${TANQUE} jatos e recarrega sozinha.` },
+        { alvo: '#sd-tiro-regra', desenho: 'estrela', titulo: 'Leia a regra', texto: 'Cada nível tem uma regra. Acertar uma placa que NÃO combina com ela elimina na hora.' },
+        { desenho: 'relogio', titulo: 'Não deixe escapar', texto: 'O anel amarelo mostra quanto tempo a placa fica. Placa certa que some também elimina. Acertou todas as certas do nível? Sobe de nível. 1 ponto por acerto; vale o seu recorde.' },
       ]);
       medir();
+      // Só para os testes automáticos (window.__diverTeste existe apenas quando o teste cria): ver a partida e atirar numa placa
+      if (window.__diverTeste) window.__diverTeste.tiro = { jogo: () => jogo, atirar: (x, y) => atirar(x, y) };
       regraEl.textContent = 'Tiro ao Alvo';
       mostrarAbertura();
 

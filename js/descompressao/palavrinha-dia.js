@@ -1,5 +1,7 @@
 /*
- * Palavrinha do Dia (Sala de Descompressão) — uma palavra nova por dia, de 5 a 10 letras, a mesma para todo mundo.
+ * Palavrinha (Sala de Descompressão) — dois jeitos de jogar:
+ *   · Palavra do dia: uma palavra nova por dia, de 5 a 10 letras, a mesma para todo mundo.
+ *   · Treino livre: palavras sorteadas do mesmo banco, quantas quiser; vale bem menos pontos.
  * - 6 tentativas; o tabuleiro tem o tamanho da palavra do dia (5 a 10 casas). Cada palpite pinta as letras: lugar certo (turquesa), na palavra em outro lugar (amarelo)
  *   ou fora (apagada). Acento e cedilha não contam: "ÁGUIA" se digita AGUIA.
  * - Só vale palpite que existe no dicionário brasileiro (VERO, data/dicionario/palavrinha/<n>.txt: só a lista do
@@ -7,7 +9,8 @@
  *   "Essa palavra não faz parte do nosso dicionário brasileiro." e a tentativa não é gasta.
  * - Palavra do dia: nosso banco (data/sala/palavras-do-dia.json, palavras do dia a dia sem palavrões nem ofensas),
  *   embaralhado com semente fixa; o dia escolhe a posição, então nenhuma palavra se repete até o banco acabar.
- * - Pontos (só no placar da sala): (7 − tentativas) × 10. Acertou na 1ª = 60; não acertou = 0.
+ * - Pontos (só no placar da sala): palavra do dia (7 − tentativas) × 10 (1ª = 60); treino (7 − tentativas) × 2
+ *   (1ª = 12), com até 60 por dia de treino no placar (ranking_sala). Não acertou = 0.
  */
 (() => {
   const { h, icone, plural } = UI;
@@ -17,6 +20,7 @@
   const TECLADO = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'];
   const NOME_STATUS = { certa: 'no lugar certo', lugar: 'em outro lugar', fora: 'não está na palavra' };
   const INICIO = new Date(2026, 0, 1);
+  const PONTOS = { dia: 10, treino: 2 }; // por tentativa que sobrou
   let lista = null;
 
   function avaliar(palpite, alvo) {
@@ -35,7 +39,7 @@
     return r;
   }
 
-  async function palavraDoDia(hoje) {
+  async function carregarBanco() {
     if (!lista) {
       const r = await fetch('data/sala/palavras-do-dia.json');
       if (!r.ok) throw new Error('Não consegui abrir a lista de palavras.');
@@ -48,6 +52,11 @@
       }
       lista = a;
     }
+    return lista;
+  }
+
+  async function palavraDoDia(hoje) {
+    await carregarBanco();
     const [y, m, d] = hoje.split('-').map(Number);
     const dias = Math.round((new Date(y, m - 1, d) - INICIO) / 86400000);
     const original = lista[((dias % lista.length) + lista.length) % lista.length];
@@ -78,40 +87,74 @@
 
   Descompressao.registrar({
     id: 'palavrinha',
-    nome: 'Palavrinha do Dia',
+    nome: 'Palavrinha',
     curto: 'Palavrinha',
     icone: 'i-letras',
-    duracao: '2 a 5 min · 1 por dia',
+    duracao: '2 a 5 min · palavra do dia + treino',
     diario: true,
-    descricao: 'Uma palavra nova por dia, de 5 a 10 letras, a mesma para todo mundo. Seis tentativas e só vale palavra do nosso dicionário.',
+    treino: true,
+    descricao: 'Uma palavra nova por dia, de 5 a 10 letras, a mesma para todo mundo, e o Treino livre para jogar quanto quiser (vale menos pontos). Só vale palavra do nosso dicionário.',
     abrir(ctx) {
       let ativo = true;
       let aoTeclar = null;
       let aoRedim = null;
-      ctx.container.replaceChildren(h('p', { class: 'texto-suave', text: 'Abrindo o dicionário…' }));
-      palavraDoDia(ctx.hoje).then((doDia) => {
-        // Partida de hoje já começada? Continua com a palavra guardada nela (mesmo que o banco mude no meio do dia)
-        const salvo = ctx.estado() || {};
-        const p = salvo.partida && salvo.partida.data === ctx.hoje && salvo.partida.alvo ? salvo.partida : null;
-        const alvo = p ? p.alvo : doDia;
-        return Dicionario.tamanho(alvo.palavra.length).then((lista) => ativo && montar(alvo, lista));
-      }).catch((e) => {
-        if (ativo) ctx.container.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui abrir o jogo. Confira a internet e tente de novo.' }));
-      });
+      const doDiaFeito = () => { const s = ctx.estado() || {}; return !!(s.partida && s.partida.data === ctx.hoje && s.partida.alvo && s.partida.fim); };
+      abrirModo(doDiaFeito() ? 'treino' : 'dia');
 
-      function montar(alvo, lista) {
+      function soltarEventos() {
+        if (aoTeclar) document.removeEventListener('keydown', aoTeclar);
+        if (aoRedim) window.removeEventListener('resize', aoRedim);
+        aoTeclar = null;
+        aoRedim = null;
+      }
+
+      /** Abre a palavra do dia ou o treino (continua a partida guardada, se houver). */
+      function abrirModo(modo, { nova = false } = {}) {
+        soltarEventos();
+        ctx.container.replaceChildren(h('p', { class: 'texto-suave', text: 'Abrindo o dicionário…' }));
+        palavraDoDia(ctx.hoje).then(async (doDia) => {
+          const salvo = ctx.estado() || {};
+          let alvo;
+          if (modo === 'dia') {
+            // Partida de hoje já começada? Continua com a palavra guardada nela (mesmo que o banco mude no meio do dia)
+            const p = salvo.partida && salvo.partida.data === ctx.hoje && salvo.partida.alvo ? salvo.partida : null;
+            alvo = p ? p.alvo : doDia;
+          } else {
+            const t = salvo.treino;
+            if (t && t.alvo && !t.fim && !nova) alvo = t.alvo;
+            else {
+              const banco = (await carregarBanco()).filter((w) => Dicionario.normalizar(w) !== doDia.palavra && !(salvo.treinoVistas || []).includes(Dicionario.normalizar(w)));
+              const original = banco[Math.floor(Math.random() * banco.length)];
+              alvo = { original, palavra: Dicionario.normalizar(original) };
+              ctx.gravar({ treino: { alvo, palpites: [], fim: false, registrado: false }, treinoVistas: [...(salvo.treinoVistas || []), alvo.palavra].slice(-200) });
+            }
+          }
+          const listaDoTamanho = await Dicionario.tamanho(alvo.palavra.length);
+          if (ativo) montar(modo, alvo, listaDoTamanho);
+        }).catch((e) => {
+          if (ativo) ctx.container.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui abrir o jogo. Confira a internet e tente de novo.' }));
+        });
+      }
+
+      function montar(modo, alvo, lista) {
+        const treino = modo === 'treino';
         const LETRAS = alvo.palavra.length;
         const salvo = ctx.estado() || {};
         const hist = salvo.historico || {};
-        // Partida antiga (de antes de a palavra ficar guardada nela) recomeça: o placar conta só o melhor do dia
-        let partida = salvo.partida && salvo.partida.data === ctx.hoje && salvo.partida.alvo ? salvo.partida : { data: ctx.hoje, palpites: [], fim: false, registrado: false };
+        const stats = salvo.treinoStats || { jogos: 0, vitorias: 0 };
+        // Palavra do dia: partida antiga (de antes de a palavra ficar guardada nela) recomeça: o placar conta só o melhor do dia
+        let partida = treino ? salvo.treino
+          : salvo.partida && salvo.partida.data === ctx.hoje && salvo.partida.alvo ? salvo.partida : { data: ctx.hoje, palpites: [], fim: false, registrado: false };
         partida.alvo = { original: alvo.original, palavra: alvo.palavra };
         let atual = '';
-        const gravar = () => ctx.gravar({ partida, historico: hist });
+        const gravar = () => ctx.gravar(treino ? { treino: partida, treinoStats: stats } : { partida, historico: hist });
 
         const raiz = h('div', { class: 'pal sd-pal', style: `--letras:${LETRAS}` });
+        const modos = h('div', { class: 'segmentado sd-pal__modos', role: 'group', 'aria-label': 'Modo' },
+          [['dia', 'Palavra do dia'], ['treino', 'Treino livre']].map(([m, t]) => h('button', { type: 'button', 'aria-pressed': String(m === modo), onclick: () => m !== modo && abrirModo(m) }, t)));
         const info = h('div', { class: 'sd-pal__info' },
-          h('span', { class: 'chip chip--hoje' }, icone('i-calendario'), new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' })),
+          treino ? h('span', { class: 'chip chip--ativo', text: 'Treino livre · vale menos' })
+            : h('span', { class: 'chip chip--hoje' }, icone('i-calendario'), new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' })),
           h('span', { class: 'sd-pal__tentativa texto-suave' }),
           h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', id: 'sd-pal-como', onclick: () => guia(true) }, icone('i-livro'), 'Como jogar'));
         const grade = h('div', { class: 'pal-grade', id: 'sd-pal-grade' });
@@ -119,7 +162,7 @@
         const anuncio = h('p', { class: 'visualmente-oculto', 'aria-live': 'polite' });
         const teclado = h('div', { class: 'pal-teclado', id: 'sd-pal-teclado', role: 'group', 'aria-label': 'Teclado' });
         const fimBox = h('div', { class: 'sd-pal__fim' });
-        raiz.append(info, h('div', { class: 'pal-tabuleiros' }, h('section', { class: 'pal-tabuleiro', 'aria-label': 'Tabuleiro' }, grade)), msg, anuncio, teclado, fimBox);
+        raiz.append(modos, info, h('div', { class: 'pal-tabuleiros' }, h('section', { class: 'pal-tabuleiro', 'aria-label': 'Tabuleiro' }, grade)), msg, anuncio, teclado, fimBox);
         ctx.container.replaceChildren(raiz);
 
         TECLADO.forEach((linha, n) => {
@@ -148,7 +191,7 @@
             linhas.push(h('div', { class: 'pal-linha', role: rotulo ? 'img' : null, 'aria-label': rotulo, 'aria-hidden': rotulo ? null : 'true' }, letras));
           }
           grade.replaceChildren(...linhas);
-          info.querySelector('.sd-pal__tentativa').textContent = partida.fim ? 'Partida de hoje encerrada' : `Tentativa ${partida.palpites.length + 1} de ${TENTATIVAS}`;
+          info.querySelector('.sd-pal__tentativa').textContent = partida.fim ? (treino ? 'Palavra encerrada' : 'Partida de hoje encerrada') : `Tentativa ${partida.palpites.length + 1} de ${TENTATIVAS}`;
           // Teclado: a melhor informação de cada letra
           const ordem = { fora: 1, lugar: 2, certa: 3 };
           teclado.querySelectorAll('.pal-tecla[data-l]').forEach((tecla) => {
@@ -205,7 +248,10 @@
           if (venceu || partida.palpites.length >= TENTATIVAS) {
             partida.fim = true;
             partida.venceu = venceu;
-            hist[ctx.hoje] = venceu ? partida.palpites.length : 0;
+            if (treino) {
+              stats.jogos++;
+              if (venceu) stats.vitorias++;
+            } else hist[ctx.hoje] = venceu ? partida.palpites.length : 0;
           }
           gravar();
           desenhar();
@@ -214,11 +260,25 @@
         function mostrarFim() {
           if (fimBox.childElementCount) return;
           const t = partida.palpites.length;
-          const pontos = partida.venceu ? (TENTATIVAS + 1 - t) * 10 : 0;
+          const pontos = partida.venceu ? (TENTATIVAS + 1 - t) * PONTOS[modo] : 0;
           if (!partida.registrado) {
             partida.registrado = true;
             gravar();
-            ctx.pontuar(pontos, { venceu: !!partida.venceu, tentativas: t });
+            ctx.pontuar(pontos, { venceu: !!partida.venceu, tentativas: t, modo, letras: LETRAS });
+          }
+          if (treino) {
+            msg.replaceChildren(h('span', { class: partida.venceu ? 'texto-sucesso' : 'texto-erro', text: partida.venceu
+              ? `Mandou bem, Diver! Acertou na ${t}ª tentativa: +${plural(pontos, 'ponto', 'pontos')} de treino.`
+              : 'Essa escapou. Bora a próxima?' }));
+            teclado.hidden = true;
+            fimBox.replaceChildren(
+              h('p', { class: 'pal-revela', text: `A palavra era: ${alvo.original.toUpperCase()}` }),
+              h('p', { class: 'texto-suave sd-pal__nota', text: `Treino: ${stats.vitorias} de ${plural(stats.jogos, 'palavra', 'palavras')} certas. Vale ${PONTOS.treino} pontos por tentativa que sobrou (até 60 por dia no placar); a palavra do dia vale ${PONTOS.dia}.` }),
+              h('div', { class: 'acoes-linha' },
+                h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-pal-nova', onclick: () => abrirModo('treino', { nova: true }) }, icone('i-revisao'), 'Nova palavra'),
+                h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala')));
+            fimBox.querySelector('#sd-pal-nova').focus({ preventScroll: true });
+            return;
           }
           const r = resumo(hist);
           const max = Math.max(1, ...r.dist);
@@ -241,7 +301,9 @@
                   h('span', { class: 'pal-dist__num', text: String(i + 1) }),
                   h('span', { class: 'pal-dist__trilho', 'aria-hidden': 'true' }, h('span', { class: 'pal-dist__barra', style: `width:${n ? Math.max(6, (n / max) * 100) : 0}%` })),
                   h('span', { class: 'pal-dist__valor', text: String(n) })))))),
-            h('div', { class: 'acoes-linha' }, h('button', { type: 'button', class: 'botao botao--primario', onclick: ctx.voltar }, 'Voltar para a sala')));
+            h('div', { class: 'acoes-linha' },
+              h('button', { type: 'button', class: 'botao botao--primario', onclick: () => abrirModo('treino') }, icone('i-revisao'), 'Treino livre'),
+              h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala')));
         }
 
         aoTeclar = (e) => {
@@ -267,10 +329,11 @@
 
       function guia(forcar) {
         ctx.guia([
-          { alvo: '#sd-pal-grade', desenho: 'livro', titulo: 'A palavra do dia', texto: 'Uma palavra nova por dia, de 5 a 10 letras (os quadradinhos mostram quantas), a mesma para todo mundo. Você tem 6 tentativas. Acento não conta: ÁGUIA se digita AGUIA.' },
+          { alvo: '#sd-pal-grade', desenho: 'livro', titulo: 'Palavrinha', texto: 'Uma palavra nova por dia, de 5 a 10 letras (os quadradinhos mostram quantas), a mesma para todo mundo. Você tem 6 tentativas. Acento não conta: ÁGUIA se digita AGUIA.' },
+          { alvo: '.sd-pal__modos', desenho: 'revisao', titulo: 'Treino livre', texto: 'Quer mais? No Treino livre você joga quantas palavras quiser. Vale menos pontos que a palavra do dia.' },
           { alvo: '#sd-pal-grade', desenho: 'estrela', titulo: 'As cores', texto: 'Turquesa: letra no lugar certo. Amarelo: está na palavra, em outro lugar. Apagada: não está. A marquinha em cada letra ajuda quem não distingue cores.' },
           { alvo: '#sd-pal-teclado', desenho: 'carta', titulo: 'Só palavras de verdade', texto: 'Cada palpite precisa existir no nosso dicionário brasileiro. Se não existir, eu aviso e você não perde a tentativa.' },
-          { desenho: 'trofeu', titulo: 'Pontos da sala', texto: 'Acertou na 1ª: 60 pontos; na 6ª: 10. Os pontos valem só o placar da Sala de Descompressão.' },
+          { desenho: 'trofeu', titulo: 'Pontos da sala', texto: `Palavra do dia: 60 pontos na 1ª tentativa, 10 na 6ª. Treino: ${PONTOS.treino * 6} na 1ª, até 60 por dia. Tudo vale só o placar da Sala de Descompressão.` },
         ], forcar);
       }
 
@@ -278,8 +341,7 @@
         emAndamento: () => false, // a partida fica salva: pode sair e voltar
         parar() {
           ativo = false;
-          if (aoTeclar) document.removeEventListener('keydown', aoTeclar);
-          if (aoRedim) window.removeEventListener('resize', aoRedim);
+          soltarEventos();
         },
       };
     },
