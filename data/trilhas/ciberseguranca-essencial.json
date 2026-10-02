@@ -3206,350 +3206,338 @@
   ],
   "casos": [
     {
-      "id": "estacao-abissal",
-      "titulo": "O apagão da Estação Abissal",
-      "historia": "A 80 metros de profundidade, a Estação Abissal estuda corais que brilham no escuro. Às 3h17, as luzes piscaram, as pesquisas sumiram e uma mensagem tomou todas as telas: \"Seus arquivos agora são nossos. Assinado: Kraken\". O invasor entrou por alguma porta. Ninguém da tripulação é vilão: alguém foi enganado. Descubra por qual conta o Kraken entrou, qual golpe ele usou e qual área da estação ele atacou.",
-      "perguntas": {
-        "quem": "Por qual conta o Kraken entrou?",
-        "como": "Qual golpe ele usou?",
-        "onde": "Qual área ele atacou?"
-      },
-      "suspeitos": [
+      "id": "recife-sombrio",
+      "tipo": "operacao",
+      "titulo": "Operação Recife Sombrio",
+      "dominio": "diver.app.br",
+      "caixa": "agente@soc.diver.app.br",
+      "data": "seg, 28 set",
+      "lancamento": "Diver 2.0",
+      "historia": "Faltam quatro dias para o lançamento do Diver 2.0. Na madrugada de segunda, alguém que assina como Sombra entrou nos sistemas da empresa, copiou o código do app e deixou um recado em todas as telas: \"Na sexta, o lançamento é meu.\" Você é do time de resposta a incidentes (SOC). Em quatro missões, junte as pistas, monte a chave-mestra e descubra quem foi, com o quê e como.",
+      "missoes": [
         {
-          "id": "marina",
-          "nome": "Dra. Marina Coral",
-          "papel": "Pesquisadora-chefe",
-          "descricao": "Vive no laboratório e recebe dezenas de e-mails de congressos por dia.",
-          "visual": {
-            "pele": "#C98E6B",
-            "cabelo": "#FB7185",
-            "penteado": "coque",
-            "roupa": "#E6F1FF",
-            "acessorio": "oculos"
-          },
-          "evidencias": [
-            {
-              "tipo": "LOG",
-              "texto": "O crachá da Dra. Marina registrou entrada na câmara de mergulho às 2h50 e saída só às 4h10. Não havia terminal lá dentro."
-            },
-            {
-              "tipo": "CÂMERA",
-              "texto": "A câmera do laboratório mostra a Dra. Marina dormindo no sofá da sala de descanso durante toda a madrugada."
-            }
-          ]
+          "id": "isca",
+          "dia": 1,
+          "nivel": "Fácil",
+          "titulo": "A Isca",
+          "resumo": "Triagem de phishing na caixa de entrada.",
+          "pista": "A"
         },
         {
-          "id": "teo",
-          "nome": "Téo Sonar",
-          "papel": "Técnico de TI",
-          "descricao": "Conhece cada cabo da estação e odeia quando alguém esquece a senha.",
-          "visual": {
-            "pele": "#F2B28C",
-            "cabelo": "#7A4630",
-            "penteado": "curto",
-            "roupa": "#14B8A6",
-            "acessorio": "fone"
-          },
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "A conta do Téo usa chave física de segurança. Nenhum acesso dele aconteceu sem a chave, que estava no cofre da TI."
-            },
-            {
-              "tipo": "LOG",
-              "texto": "O último login do Téo foi às 23h02, na própria estação dele, e ele saiu do sistema às 23h40."
-            }
-          ]
+          "id": "cofre",
+          "dia": 2,
+          "nivel": "Médio",
+          "titulo": "O Cofre",
+          "resumo": "Chave: cofre de 5 dígitos em 90 s. Depois, rede social e repositório.",
+          "pista": "B"
         },
         {
-          "id": "iara",
-          "nome": "Capitã Iara Âncora",
-          "papel": "Comandante da estação",
-          "descricao": "Comanda tudo com calma e costuma aprovar pedidos pelo celular.",
-          "visual": {
-            "pele": "#8D5A3B",
-            "cabelo": "#0B2545",
-            "penteado": "rabo",
-            "roupa": "#1A416F",
-            "acessorio": "quepe"
-          },
-          "evidencias": [
-            {
-              "tipo": "DEPOIMENTO",
-              "texto": "A Capitã Iara estava em reunião por vídeo com a superfície das 3h às 4h. A gravação confirma que ela não usou o computador."
-            },
-            {
-              "tipo": "LOG",
-              "texto": "Os alertas de login da conta da Capitã Iara não mostram nenhum acesso novo nas últimas 48 horas."
-            }
-          ]
+          "id": "trilha",
+          "dia": 3,
+          "nivel": "Difícil",
+          "titulo": "A Trilha",
+          "resumo": "Chave: rastro na rede, capture 5 pedaços. Depois, sala de crise.",
+          "pista": "C"
         },
         {
-          "id": "beto",
-          "nome": "Beto Boia",
-          "papel": "Estagiário",
-          "descricao": "Curioso, prestativo e sempre com pressa para mostrar serviço.",
-          "visual": {
-            "pele": "#F5C9A6",
-            "cabelo": "#E07A3F",
-            "penteado": "curto",
-            "roupa": "#60A5FA",
-            "acessorio": "bone"
-          },
-          "evidencias": [
-            {
-              "tipo": "LOG",
-              "texto": "A conta do Beto só tem acesso ao sistema de treinamentos, que não foi tocado no ataque (menor privilégio funcionando)."
-            },
-            {
-              "tipo": "CÂMERA",
-              "texto": "O Beto aparece na cozinha às 3h10 tentando consertar a máquina de café, longe de qualquer computador."
-            }
-          ]
-        },
-        {
-          "id": "netuno",
-          "nome": "Seu Netuno Siqueira",
-          "papel": "Fornecedor de manutenção",
-          "descricao": "Terceirizado que cuida das bombas de ar e acessa a estação de fora.",
-          "visual": {
-            "pele": "#D9A07A",
-            "cabelo": "#A9BCD6",
-            "penteado": "bigode",
-            "roupa": "#FDBA74",
-            "acessorio": "capacete"
-          },
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "O acesso remoto do Seu Netuno fica desligado fora do horário de manutenção, e ele só é liberado das 8h às 18h."
-            },
-            {
-              "tipo": "E-MAIL",
-              "texto": "O Seu Netuno avisou ontem que estava de folga, sem notebook, e o registro de acesso dele está vazio há três dias."
-            }
-          ]
-        },
-        {
-          "id": "lia",
-          "nome": "Lia Maré",
-          "papel": "Compras e financeiro",
-          "descricao": "Aprova pagamentos e conversa com dezenas de fornecedores.",
-          "visual": {
-            "pele": "#6B4430",
-            "cabelo": "#C4B5FD",
-            "penteado": "cacheado",
-            "roupa": "#FACC15",
-            "acessorio": "brincos"
-          },
-          "evidencias": [
-            {
-              "tipo": "LOG",
-              "texto": "A conta da Lia pediu o segundo fator às 3h14 e ninguém aprovou: o acesso foi bloqueado ali mesmo."
-            },
-            {
-              "tipo": "DEPOIMENTO",
-              "texto": "A Lia estava de férias na superfície, sem acesso à rede da estação, como confirma a escala da semana."
-            }
-          ]
+          "id": "resgate",
+          "dia": 4,
+          "nivel": "Final",
+          "titulo": "O Resgate",
+          "resumo": "Decifrar o bilhete da Sombra e fazer a acusação.",
+          "pista": "D"
         }
       ],
-      "objetos": [
+      "pistas": [
         {
-          "id": "phishing",
-          "nome": "E-mail falso",
-          "descricao": "Mensagem de \"atualização urgente de senha\" com link para um site imitando o da estação.",
-          "licao": "Desconfie de e-mails com pressa e confira o endereço do site antes de digitar a senha. Com a verificação em duas etapas ligada, a senha roubada não basta.",
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "O filtro de e-mails não registrou nenhuma mensagem suspeita entregue na madrugada, e ninguém clicou em links externos."
-            },
-            {
-              "tipo": "LOG",
-              "texto": "Nenhuma senha foi digitada em sites fora do domínio da estação nas últimas 24 horas."
-            }
-          ]
-        },
-        {
-          "id": "senha-reutilizada",
-          "nome": "Senha repetida",
-          "descricao": "Senha usada também num site de receitas que vazou no mês passado.",
-          "licao": "Uma senha diferente para cada serviço, guardadas num gerenciador de senhas, e verificação em duas etapas ligada.",
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "A verificação de vazamentos mostra que nenhuma senha da tripulação aparece nas listas vazadas conhecidas."
-            },
-            {
-              "tipo": "LOG",
-              "texto": "Não houve tentativas de login em série com senhas erradas, o padrão típico de quem testa senhas vazadas."
-            }
-          ]
-        },
-        {
-          "id": "pendrive",
-          "nome": "Pendrive \"achado\"",
-          "descricao": "Pendrive com a etiqueta \"Bônus da tripulação\" deixado no corredor.",
-          "licao": "Pendrive achado vai para a TI, nunca para a porta USB. A curiosidade é exatamente a isca.",
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "As portas USB da estação estão bloqueadas por política desde março. Nenhum dispositivo foi conectado."
-            },
-            {
-              "tipo": "CÂMERA",
-              "texto": "O corredor foi filmado a noite toda e ninguém deixou nem pegou objetos no chão."
-            }
-          ]
-        },
-        {
-          "id": "falso-suporte",
-          "nome": "Ligação do falso suporte",
-          "descricao": "Alguém ligou dizendo ser da TI e pediu para instalar um programa de acesso remoto.",
-          "licao": "Suporte de verdade não pede senha nem instalação por telefone. Desligue e ligue você mesmo para o canal oficial da TI.",
-          "evidencias": [
-            {
-              "tipo": "LOG",
-              "texto": "A central telefônica da estação não recebeu nenhuma ligação externa entre meia-noite e 5h."
-            },
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "Nenhum programa de acesso remoto foi instalado nos computadores da tripulação."
-            }
-          ]
-        },
-        {
-          "id": "qr-code",
-          "nome": "QR code adulterado",
-          "descricao": "Adesivo com QR code colado sobre o cardápio do refeitório, levando a um \"login do Wi-Fi\".",
-          "licao": "QR code é um link disfarçado: confira o endereço que ele abre antes de digitar qualquer senha ou dado.",
-          "evidencias": [
-            {
-              "tipo": "CÂMERA",
-              "texto": "Os cartazes do refeitório foram fotografados na inspeção das 22h: nenhum adesivo sobreposto."
-            },
-            {
-              "tipo": "LOG",
-              "texto": "Ninguém acessou páginas de login de fora da estação a partir dos celulares da tripulação."
-            }
-          ]
-        },
-        {
-          "id": "wifi-falso",
-          "nome": "Wi-Fi gêmeo",
-          "descricao": "Rede \"Abissal_Tripulacao_5G\" criada para imitar a rede oficial e capturar senhas.",
-          "licao": "Conecte-se só às redes oficiais, confirme o nome com a TI e, fora da estação, use VPN.",
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "A varredura de rádio da madrugada encontrou apenas as duas redes oficiais da estação."
-            },
-            {
-              "tipo": "LOG",
-              "texto": "Todos os aparelhos da tripulação estavam conectados às redes oficiais, com certificado válido."
-            }
-          ]
+          "letra": "A",
+          "grupo": "QUEM",
+          "codigo": "A-RS7K2Q",
+          "titulo": "Quem vive de recado não chegou perto de servidor",
+          "texto": "Naquela madrugada, quem trabalha falando com o público nem encostou numa máquina da empresa: a Marina fechava uma campanha na agência, a Lia fazia live para milhares de pessoas e a Camila jantava com clientes até o restaurante fechar."
         }
       ],
-      "locais": [
-        {
-          "id": "laboratorio",
-          "nome": "Laboratório",
-          "sistema": "Banco de dados das pesquisas",
-          "descricao": "Onde ficam anos de estudos sobre os corais.",
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "O banco de dados das pesquisas tem cópia íntegra de 3h30: nenhum arquivo foi alterado ou cifrado."
+      "isca": {
+        "emails": [
+          {
+            "id": "cracha",
+            "de": "TI Diver",
+            "email": "ti-suporte@diver.app.br",
+            "cor": "azul",
+            "hora": "09:12",
+            "assunto": "Renovação do crachá: agende sua foto",
+            "previa": "A renovação anual dos crachás começa nesta semana…",
+            "corpo": [
+              {
+                "p": "Olá!"
+              },
+              {
+                "p": "A renovação anual dos crachás começa nesta semana. Agende sua foto na intranet, em **Pessoas > Crachás**, até sexta-feira (02/10)."
+              },
+              {
+                "link": "Agendar na intranet",
+                "url": "https://intranet.diver.app.br/crachas",
+                "botao": true
+              },
+              {
+                "p": "Dúvidas no canal #ti-suporte.\nEquipe de TI"
+              }
+            ],
+            "phishing": false,
+            "cabecalho": {
+              "returnPath": "<ti-suporte@diver.app.br>",
+              "spf": "pass",
+              "dkim": "pass (d=diver.app.br)",
+              "dmarc": "pass",
+              "recebido": "mail.diver.app.br (10.0.4.12)"
             },
-            {
-              "tipo": "LOG",
-              "texto": "Nenhuma consulta fora do normal foi feita ao banco de dados do laboratório durante a noite."
-            }
-          ]
-        },
-        {
-          "id": "ponte",
-          "nome": "Ponte de comando",
-          "sistema": "Controle de energia e sensores",
-          "descricao": "O cérebro da estação: luzes, ar e pressão.",
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "O sistema de energia está em rede separada e os registros mostram que não recebeu comandos externos."
+            "explicacao": "Remetente, link e cabeçalho batem com diver.app.br, e o pedido (agendar a foto na intranet) não pede senha nem tem pressa."
+          },
+          {
+            "id": "senha",
+            "de": "Segurança da Informação",
+            "email": "seguranca@d1ver.app.br",
+            "cor": "coral",
+            "hora": "09:47",
+            "assunto": "URGENTE: sua senha expira em 1 hora",
+            "previa": "Identificamos que sua senha corporativa expira hoje…",
+            "corpo": [
+              {
+                "p": "Prezado colaborador,"
+              },
+              {
+                "p": "Identificamos que sua senha corporativa **expira hoje às 10:47**. Para evitar o bloqueio da sua conta e a perda de acesso ao e-mail e à VPN, renove agora."
+              },
+              {
+                "link": "Renovar senha agora",
+                "url": "https://d1ver-app.com/renovar-senha",
+                "botao": "perigo",
+                "falso": true
+              },
+              {
+                "p": "Este processo leva menos de 1 minuto.\nSegurança da Informação · Diver"
+              }
+            ],
+            "phishing": true,
+            "forense": true,
+            "cabecalho": {
+              "returnPath": "<null@recifesombrio.io>",
+              "spf": "fail (203.0.113.66 não pode enviar por d1ver.app.br)",
+              "dkim": "none",
+              "dmarc": "fail",
+              "recebido": "smtp.recifesombrio.io (203.0.113.66)",
+              "extra": {
+                "X-Mailer": "SombraMail 2.3",
+                "X-Trace": "UElTVEEgQSB8IFFVRU06IHF1ZW0gdml2ZSBkZSByZWNhZG8gbmFvIGNoZWdvdSBwZXJ0byBkZSBzZXJ2aWRvcg=="
+              }
             },
-            {
-              "tipo": "CÂMERA",
-              "texto": "A ponte ficou trancada e com o painel intacto; as luzes piscaram por uma queda de energia programada."
-            }
-          ]
-        },
-        {
-          "id": "sala-servidores",
-          "nome": "Sala dos servidores",
-          "sistema": "E-mail e arquivos da tripulação",
-          "descricao": "Guarda os e-mails e as pastas compartilhadas.",
-          "evidencias": [
-            {
-              "tipo": "LOG",
-              "texto": "O servidor de e-mail e arquivos funcionou normalmente, sem nenhum arquivo cifrado."
+            "explicacao": "O domínio é d1ver (com o número 1 no lugar do i), tem urgência e ameaça de bloqueio, e o link vai para d1ver-app.com. O SPF falhou e o Return-Path é de outro domínio."
+          },
+          {
+            "id": "ponto",
+            "de": "Pessoas Diver",
+            "email": "pessoas@diver.app.br",
+            "cor": "lilas",
+            "hora": "08:31",
+            "assunto": "Folha de ponto de setembro disponível",
+            "previa": "Sua folha de ponto de setembro já está disponível…",
+            "corpo": [
+              {
+                "p": "Oi!"
+              },
+              {
+                "p": "Sua folha de ponto de setembro já está disponível para conferência no portal de Pessoas. Ajustes até 05/10."
+              },
+              {
+                "link": "Conferir folha de ponto",
+                "url": "https://pessoas.diver.app.br/ponto"
+              },
+              {
+                "p": "Abraços,\nTime de Pessoas"
+              }
+            ],
+            "phishing": false,
+            "cabecalho": {
+              "returnPath": "<pessoas@diver.app.br>",
+              "spf": "pass",
+              "dkim": "pass (d=diver.app.br)",
+              "dmarc": "pass",
+              "recebido": "mail.diver.app.br (10.0.4.12)"
             },
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "O antivírus dos servidores não detectou nenhum programa estranho na madrugada."
-            }
-          ]
-        },
-        {
-          "id": "almoxarifado",
-          "nome": "Almoxarifado",
-          "sistema": "Compras e pagamentos",
-          "descricao": "Onde saem os pedidos e os pagamentos aos fornecedores.",
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "Nenhum pagamento ou pedido novo foi registrado no sistema de compras durante a noite."
+            "explicacao": "Domínio certo, link para o portal da própria empresa e nenhum pedido de senha, anexo ou pressa."
+          },
+          {
+            "id": "pr",
+            "de": "Correnteza Code",
+            "email": "notificacoes@correnteza.dev",
+            "cor": "cinza",
+            "hora": "03:21",
+            "assunto": "[diver/app-core] PR #212 mesclado na main",
+            "previa": "caio-commit mesclou o pull request #212…",
+            "corpo": [
+              {
+                "p": "**caio-commit** mesclou o pull request **#212** na main."
+              },
+              {
+                "codigo": "chore: atualiza dependências\n+ 1 arquivo alterado · 0 revisões"
+              },
+              {
+                "link": "Ver pull request",
+                "url": "https://correnteza.dev/diver/app-core/pull/212"
+              },
+              {
+                "nota": "Você recebe este aviso porque acompanha este repositório."
+              }
+            ],
+            "phishing": false,
+            "cabecalho": {
+              "returnPath": "<bounces@correnteza.dev>",
+              "spf": "pass",
+              "dkim": "pass (d=correnteza.dev)",
+              "dmarc": "pass",
+              "recebido": "out-7.correnteza.dev (198.51.100.21)"
             },
-            {
-              "tipo": "LOG",
-              "texto": "O sistema de compras exige aprovação dupla e não houve nenhuma tentativa de aprovação."
-            }
-          ]
-        },
-        {
-          "id": "doca",
-          "nome": "Doca dos submarinos",
-          "sistema": "Acesso remoto dos fornecedores",
-          "descricao": "Porta digital para quem trabalha de fora da estação.",
-          "evidencias": [
-            {
-              "tipo": "LOG",
-              "texto": "O acesso remoto dos fornecedores ficou desligado a noite toda, como manda a política."
+            "explicacao": "É um aviso automático do serviço de código: domínio, link e cabeçalho batem. Estranho é um PR sem revisão às 3h21. Guarde isso para depois, mas o e-mail em si é legítimo."
+          },
+          {
+            "id": "fatura",
+            "de": "Financeiro Diver",
+            "email": "financeiro@diver-pagamentos.net",
+            "cor": "amarelo",
+            "hora": "07:58",
+            "assunto": "Fatura 2026-0917 em anexo, vencimento hoje",
+            "previa": "Segue em anexo a fatura referente ao contrato…",
+            "corpo": [
+              {
+                "p": "Bom dia,"
+              },
+              {
+                "p": "Segue em anexo a fatura referente ao contrato **DVR-INFRA** com vencimento hoje. Favor abrir a planilha e **habilitar o conteúdo** para visualizar os valores atualizados."
+              },
+              {
+                "p": "Atenciosamente,\nFinanceiro"
+              },
+              {
+                "anexo": "Fatura_2026-0917.xlsm",
+                "tamanho": "48 KB",
+                "perigoso": true
+              }
+            ],
+            "phishing": true,
+            "cabecalho": {
+              "returnPath": "<cobranca@diver-pagamentos.net>",
+              "spf": "pass (para diver-pagamentos.net)",
+              "dkim": "pass (d=diver-pagamentos.net)",
+              "dmarc": "none (domínio sem política)",
+              "recebido": "mx1.diver-pagamentos.net (192.0.2.140)"
             },
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "A VPN dos fornecedores não registrou nenhuma conexão nas últimas 12 horas."
-            }
-          ]
-        },
-        {
-          "id": "refeitorio",
-          "nome": "Refeitório",
-          "sistema": "Wi-Fi dos visitantes",
-          "descricao": "Rede separada para visitantes e aparelhos pessoais.",
-          "evidencias": [
-            {
-              "tipo": "RELATÓRIO",
-              "texto": "A rede dos visitantes é isolada e não enxerga os sistemas da estação: dali não se chega a lugar nenhum."
+            "explicacao": "O domínio não é diver.app.br (é diver-pagamentos.net), tem pressa e pede para habilitar o conteúdo de uma planilha .xlsm: o jeito clássico de instalar programa malicioso por macro. O SPF \"passar\" só prova que o golpista é dono do domínio falso."
+          },
+          {
+            "id": "nuvem",
+            "de": "Maré Cloud",
+            "email": "nao-responda@marecloud.com",
+            "cor": "laranja",
+            "hora": "06:02",
+            "assunto": "Sua fatura de setembro está disponível",
+            "previa": "A fatura do período de 1 a 30 de setembro já está…",
+            "corpo": [
+              {
+                "p": "Olá, equipe Diver,"
+              },
+              {
+                "p": "A fatura do período de 1 a 30 de setembro já está disponível no painel de cobrança."
+              },
+              {
+                "link": "Ver fatura no painel",
+                "url": "https://painel.marecloud.com/cobranca"
+              },
+              {
+                "p": "Atenciosamente,\nMaré Cloud"
+              }
+            ],
+            "phishing": false,
+            "cabecalho": {
+              "returnPath": "<bounce@marecloud.com>",
+              "spf": "pass",
+              "dkim": "pass (d=marecloud.com)",
+              "dmarc": "pass",
+              "recebido": "mail-out.marecloud.com (198.51.100.77)"
             },
-            {
-              "tipo": "LOG",
-              "texto": "Nenhum aparelho se conectou ao Wi-Fi de visitantes depois das 22h."
-            }
-          ]
+            "explicacao": "Fornecedor de nuvem que a empresa usa: domínio e link batem, o cabeçalho passa e não há anexo nem pressa. A fatura fica no painel, não no e-mail."
+          },
+          {
+            "id": "acesso",
+            "de": "Central de Contas Diver",
+            "email": "contas@diver.app.br",
+            "cor": "verde",
+            "hora": "03:19",
+            "assunto": "Alerta de segurança: novo acesso à sua conta",
+            "previa": "Detectamos um novo acesso à sua conta Diver…",
+            "corpo": [
+              {
+                "p": "**Novo acesso em Linux**"
+              },
+              {
+                "p": "Detectamos um novo acesso à sua conta Diver num dispositivo Linux, às 03:19, em Recife (PE)."
+              },
+              {
+                "p": "Se não foi você, proteja sua conta agora para evitar o bloqueio."
+              },
+              {
+                "link": "Não fui eu: proteger conta",
+                "url": "https://diver.app.br.protege-conta.com/login",
+                "falso": true
+              }
+            ],
+            "phishing": true,
+            "cabecalho": {
+              "returnPath": "<bounce@diver-app.support>",
+              "spf": "fail (203.0.113.66 não pode enviar por diver.app.br)",
+              "dkim": "pass (d=diver-app.support)",
+              "dmarc": "fail",
+              "recebido": "relay.diver-app.support (203.0.113.66)"
+            },
+            "explicacao": "O remetente parece certo, mas o cabeçalho entrega: SPF e DMARC falharam e o Return-Path é diver-app.support. O link termina em protege-conta.com: o \"diver.app.br\" no começo é só disfarce."
+          },
+          {
+            "id": "escala",
+            "de": "Operações Diver",
+            "email": "operacoes@diver.app.br",
+            "cor": "turquesa",
+            "hora": "07:15",
+            "assunto": "Escala do plantão, semana 40",
+            "previa": "Segue a escala do plantão de infraestrutura…",
+            "corpo": [
+              {
+                "p": "Pessoal,"
+              },
+              {
+                "p": "Segue a escala do plantão de infraestrutura da semana 40. Turno da madrugada com o Téo (manutenção terceirizada), de segunda a quinta."
+              },
+              {
+                "link": "Ver escala completa",
+                "url": "https://intranet.diver.app.br/escalas/40"
+              },
+              {
+                "p": "Operações Diver"
+              }
+            ],
+            "phishing": false,
+            "cabecalho": {
+              "returnPath": "<operacoes@diver.app.br>",
+              "spf": "pass",
+              "dkim": "pass (d=diver.app.br)",
+              "dmarc": "pass",
+              "recebido": "mail.diver.app.br (10.0.4.12)"
+            },
+            "explicacao": "Domínio certo, link para a intranet e nenhum pedido estranho. Só um aviso de rotina."
+          }
+        ],
+        "forense": {
+          "decodificado": "PISTA A | QUEM: quem vive de recado nao chegou perto de servidor"
         }
-      ]
+      }
     }
   ]
 }

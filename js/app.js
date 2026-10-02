@@ -1021,6 +1021,7 @@ const App = (() => {
     estado.jogo = { def, opcoes, desafio, controlador: null, fim: false };
     $('jogo-titulo').textContent = def.nome;
     $('jogo-rotulo').textContent = desafio ? 'Desafio do Dia · XP em dobro' : estado.trilha.nome;
+    $('tela-jogo').classList.toggle('tela--larga', !!def.largo); // ex.: Caso Resolvido (painel + log ao lado)
     const container = limpar($('jogo-palco'));
     mostrarTela('tela-jogo');
 
@@ -1083,7 +1084,7 @@ const App = (() => {
       if (d.acertou) temas[d.tema].acertos++;
     });
     renderizarResumo({
-      modo: 'jogo', jogo: partida.def, titulo: res.titulo, sub: res.subtitulo, desafio: partida.desafio,
+      modo: 'jogo', jogo: partida.def, titulo: res.titulo, sub: res.subtitulo, desafio: partida.desafio, textoDeNovo: res.textoDeNovo,
       total: validos.length, acertos: res.acertos, pct: validos.length ? Math.round((res.acertos / validos.length) * 100) : 0,
       tempoSeg: res.tempoSegundos, porTema: Object.values(temas).sort((a, b) => a.acertos / a.total - b.acertos / b.total),
       paraRevisar: validos.filter((d) => !d.acertou),
@@ -1477,7 +1478,7 @@ const App = (() => {
     principal.hidden = false;
     principal.onclick = null;
     if (r.modo === 'jogo') {
-      principal.textContent = 'Jogar de novo';
+      principal.textContent = r.textoDeNovo || 'Jogar de novo'; // ex.: Caso Resolvido: "Voltar às missões"
       principal.onclick = () => iniciarJogo(r.jogo.id, estado.ultimoJogoOpcoes || {});
       voltar.textContent = 'Voltar à Sala de Jogos';
       voltar.onclick = () => irPara('jogos');
