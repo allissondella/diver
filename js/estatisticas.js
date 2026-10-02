@@ -65,7 +65,8 @@ const Estatisticas = (() => {
       return { nome: nomeJogo(j.jogo), valor: Number(j.partidas), texto: `${plural(Number(j.partidas), 'partida', 'partidas')}${extra ? ` · ${extra}` : ''}${recorde}` };
     });
 
-    alvo.replaceChildren(
+    // replaceChildren escreveria "null" na tela: as partes que não existem saem antes
+    alvo.replaceChildren(...[
       h('ul', { class: 'est-numeros' },
         numero('Perguntas respondidas', fmt(q.total), q.total ? `${pct(q.acertos, q.total)}% de acerto` : 'nenhuma ainda', 'i-alvo'),
         numero('Jogos jogados', fmt(partidas), partidas ? `${plural(jogos.length, 'jogo diferente', 'jogos diferentes')}` : 'nenhum ainda', 'i-controle'),
@@ -77,7 +78,8 @@ const Estatisticas = (() => {
       modos.length ? barras(modos, { titulo: 'Perguntas por modo', descricao: 'Perguntas respondidas em cada modo, com a porcentagem de acerto.' }) : null,
       listaJogos.length ? titulo('Jogos') : null,
       listaJogos.length ? barras(listaJogos, { titulo: 'Jogos', descricao: 'Partidas por jogo, com acertos ou vitórias.' }) : null,
-      r.primeiro ? h('p', { class: 'texto-suave est-rodape', text: `Contando desde ${new Date(r.primeiro).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}. O registro de atividade começou em outubro de 2026.` }) : null);
+      r.primeiro ? h('p', { class: 'texto-suave est-rodape', text: `Contando desde ${new Date(r.primeiro).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}. O registro de atividade começou em outubro de 2026.` }) : null,
+    ].filter(Boolean));
   }
 
   async function carregar(alvo, opcoes, estilo) {
