@@ -39,7 +39,7 @@
 | 13e | `js/tutorial.js` | `Tutorial` | "Primeiro mergulho" de cada área: recorte de luz sobre o alvo + balão com desenho, "2 de 4", Pular/Voltar/Próximo, teclado (Enter/→, ←, Esc) e foco preso no balão. Roteiros em `ROTEIROS` (chave = endereço); passo cujo alvo não está visível é pulado. `App.navegar` chama `Tutorial.aoEntrar(secao)`; "Como funciona esta página?" (barra lateral) e "Rever todos os tutoriais" (Perfil). |
 | 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
-CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos) e `css/ritmo.css` (régua de espaços e organização das telas; carregado por último, ver `docs/DESIGN.md`, "Espaçamento"). Só variáveis de cor (tokens), nada de cor solta.
+CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos), `css/descompressao.css` (Sala de Descompressão, prefixo `sd-`) e `css/ritmo.css` (régua de espaços e organização das telas; carregado por último, ver `docs/DESIGN.md`, "Espaçamento"). Só variáveis de cor (tokens), nada de cor solta.
 
 ## Áreas (barra lateral) e telas
 | Endereço | Tela | Quem desenha |
@@ -60,6 +60,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#prova` | `tela-prova`: regras, pré-requisito (todas as fases), tentativas | `app.js` |
 | `#admin` | `tela-admin` (admin e professor; conteúdo muda conforme o tipo de conta) | `admin.js` |
 | `#fila` | `tela-fila`: Fila de Validação do Mergulho Triplo (só admin) | `fila-validacao.js` |
+| `#descompressao` | `tela-descompressao`: Sala de Descompressão (4 jogos, placar da sala, horários de foco para admin/professor; o jogo abre na mesma tela, em modo foco) | `descompressao.js` + `descompressao/*.js` |
 | (sem endereço) | `tela-login`, `tela-senha` (antes do app, com login ativo) | `conta.js` |
 
 - A **trilha atual** é escolhida no Início (cards + barra fixa `#inicio-cta` com o curso escolhido e o "Bora mergulhar!") ou no seletor da barra lateral (`#seletor-trilha`: botão + lista no padrão listbox, setas/Home/End/Enter/Esc, fecha ao clicar fora; `desenharSeletorTrilha` no `app.js`). A cortina de transição é `cortina(texto)` no `app.js`. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
@@ -142,6 +143,7 @@ Jogos.registrar({
 | `diver:v1:provas-enviadas` | Provas antigas: `{ versao, provas: [{ id, trilhaId, titulo, criadaEm, honesto, minutos, questoes: [{ id, tema, dificuldade, enunciado, alternativas, correta, explicacao }], tentativas: [{ data, acertos, total, nota, tempoSeg, xp, perolas }] }], feitas: { idDaProvaDoProfessor: [tentativas] } }`. Sincroniza com a nuvem como o resto. |
 | `diver:v1:mascote` | Mascote escolhido: `{ rosto, tom }` (ids de `Mascotes.ROSTOS` e `Mascotes.TONS`). Sincroniza com a nuvem. |
 | `diver:v1:operacao` | Caso Resolvido ("Operação Recife Sombrio" v2): número do caso atual (`rodada`), o caso sorteado (solução, pérolas, interrogados, mergulhos feitos, chaves, riscados, acusação), o histórico dos casos fechados, um resultado ainda não recebido (`pendente`) e o diário de bordo (até 80). Sincroniza com a nuvem. |
+| `diver:v1:descompressao` | Sala de Descompressão: `recordes` por jogo, `hoje` (pontos do dia por jogo, para o card) e `jogos` (estado de cada jogo: caso do dia da Investigação, partida e histórico da Palavrinha do Dia, preferências da Batata Quente). Sincroniza com a nuvem. |
 | `diver:v1:tutorial` | Tutoriais já vistos: `{ vistos: { inicio: true, mergulho: true, ... } }`. Sincroniza com a nuvem. |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
 
@@ -150,6 +152,8 @@ Jogos.registrar({
 O progresso da trilha também guarda `provas` (prova final: data, total, acertos, nota, pct, aprovado, tempoSeg).
 
 **Supabase** → tabela `provas_curso` (`id, trilha_id, titulo, autor_id, autor_nome, minutos, questoes jsonb, criado_em`): provas que o professor ou o admin publicam para os alunos de um curso. Veem: matriculados no curso e admin. Publicam: professor do curso e admin (autor e nome vêm do login, por gatilho). Apagam: o autor (se ainda der aula no curso) e o admin. Ninguém edita.
+
+**Supabase** → Sala de Descompressão: tabela `sala_bloqueios` (`id, criado_por, trilha_id (nulo = todos os alunos), dias smallint[] 0–6, inicio, fim`): horários em que a sala fica fechada para alunos (horário de Brasília). Veem: todos logados. Criam: admin (qualquer alvo) e professor (só cursos dele). Apagam: admin e quem criou. `sala_status()` diz se a sala está aberta para quem chama (`{ aberta }` ou `{ aberta: false, ate: 'HH:MI' }`; só alunos são barrados). Batata Quente online: tabela `batata_salas` (`codigo` de 4 letras, `jogadores`, `nomes`, `estado` jsonb, `versao`), lida só pelos dois jogadores e alterada só pelas funções `batata_criar/entrar/jogar/explodir/sair/ver` (security definer); o app consulta a cada 0,7 s e acerta o relógio pelo `agora` do servidor. Sala parada há mais de um dia tem o código reaproveitado.
 
 **IndexedDB** `diver` → store `pdfs`: `{ id, nome, tamanho, trilhaId, criadoEm, arquivo (Blob), notas }`. PDFs não entram no backup do Perfil.
 

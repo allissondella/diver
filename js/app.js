@@ -51,6 +51,7 @@ const App = (() => {
     pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
     perfil: { tela: 'tela-perfil', render: () => Perfil.render($('tela-perfil')) },
     estatisticas: { tela: 'tela-estatisticas', render: () => Estatisticas.render($('tela-estatisticas')) },
+    descompressao: { tela: 'tela-descompressao', render: () => Descompressao.render($('tela-descompressao')) },
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
     'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
     admin: { tela: 'tela-admin', soEquipe: true, render: () => Admin.render($('tela-admin')) },
@@ -103,7 +104,7 @@ const App = (() => {
   function emAndamento() {
     const quiz = estado.sessao && !estado.sessao.encerrada && !$('tela-quiz').hidden;
     const jogo = estado.jogo && !estado.jogo.fim && !$('tela-jogo').hidden;
-    return quiz || jogo;
+    return quiz || jogo || Descompressao.emAndamento();
   }
 
   function abandonarAndamento() {
@@ -120,6 +121,7 @@ const App = (() => {
       if (c && c.destruir) c.destruir();
     }
     estado.jogo = null;
+    Descompressao.parar(); // jogo da Sala de Descompressão aberto? fecha (a partida online avisa o outro lado)
   }
 
   function mostrarTela(id) {

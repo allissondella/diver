@@ -842,3 +842,317 @@ as $$
 $$;
 revoke all on function public.ranking_caso(text, text) from public, anon;
 grant execute on function public.ranking_caso(text, text) to authenticated;
+
+-- =====================================================================================
+-- SALA DE DESCOMPRESSÃO (para todos; só o horário pode ser fechado por admin ou professor)
+-- =====================================================================================
+
+-- Horários em que a sala fica FECHADA para alunos. trilha_id nulo = todos os alunos (só o admin cria);
+-- com trilha_id = os alunos daquele curso (o professor do curso ou o admin cria). dias: 0 = domingo … 6 = sábado.
+create table if not exists public.sala_bloqueios (
+  id uuid primary key default gen_random_uuid(),
+  criado_por uuid not null default auth.uid() references public.perfis (id) on delete cascade,
+  trilha_id text check (trilha_id is null or char_length(trilha_id) between 1 and 120),
+  dias smallint[] not null check (cardinality(dias) between 1 and 7 and dias <@ array[0, 1, 2, 3, 4, 5, 6]::smallint[]),
+  inicio time not null,
+  fim time not null,
+  criado_em timestamptz not null default now(),
+  check (fim > inicio)
+);
+alter table public.sala_bloqueios enable row level security;
+drop policy if exists "sala: ver horários" on public.sala_bloqueios;
+create policy "sala: ver horários" on public.sala_bloqueios for select to authenticated using (true);
+drop policy if exists "sala: criar horário" on public.sala_bloqueios;
+create policy "sala: criar horário" on public.sala_bloqueios for insert to authenticated with check (
+  criado_por = auth.uid() and (public.eh_admin() or (trilha_id is not null and public.professor_do_curso(trilha_id)))
+);
+drop policy if exists "sala: apagar horário" on public.sala_bloqueios;
+create policy "sala: apagar horário" on public.sala_bloqueios for delete to authenticated using (public.eh_admin() or criado_por = auth.uid());
+revoke all on public.sala_bloqueios from anon, authenticated;
+grant select, insert, delete on public.sala_bloqueios to authenticated;
+
+-- A sala está aberta para mim agora? (horário de Brasília). Admin e professor nunca ficam bloqueados.
+create or replace function public.sala_status()
+returns jsonb
+language sql stable security definer
+set search_path = public
+as $$
+  with agora as (select (now() at time zone 'America/Sao_Paulo') as t),
+  eu as (select p.papel from public.perfis p where p.id = auth.uid() and p.ativo),
+  regras as (
+    select b.fim
+      from public.sala_bloqueios b, agora a
+     where (select papel from eu) = 'aluno'
+       and extract(dow from a.t)::smallint = any (b.dias)
+       and a.t::time >= b.inicio and a.t::time < b.fim
+       and (b.trilha_id is null or exists (select 1 from public.matriculas m where m.aluno_id = auth.uid() and m.trilha_id = b.trilha_id))
+  )
+  select case when exists (select 1 from regras)
+              then jsonb_build_object('aberta', false, 'ate', to_char((select max(fim) from regras), 'HH24:MI'))
+              else jsonb_build_object('aberta', true) end;
+$$;
+revoke all on function public.sala_status() from public, anon;
+grant execute on function public.sala_status() to authenticated;
+
+-- Placar da sala (todo mundo junto, sem separar por curso). Pontos vêm do log (jogo_concluido sem curso,
+-- detalhes.jogo = sala-…). Investigação e Palavrinha: o melhor de cada dia, somado. Tiro ao Alvo: o recorde.
+-- Batata Quente: soma das vitórias do dia (até 150 por dia). "geral" = soma dos quatro.
+create or replace function public.ranking_sala(p_jogo text default 'geral', p_periodo text default 'mes')
+returns table (posicao integer, nome text, pontos integer, sou_eu boolean)
+language sql stable security definer
+set search_path = public
+as $$
+  with pode as (
+    select exists (select 1 from public.perfis p where p.id = auth.uid() and p.ativo) as ok
+  ),
+  ev as (
+    select e.aluno_id, e.detalhes ->> 'jogo' as jogo,
+           coalesce(nullif(e.detalhes ->> 'data', ''), to_char(e.criado_em at time zone 'America/Sao_Paulo', 'YYYY-MM-DD')) as dia,
+           greatest(0, least(5000, coalesce(public.atv_num(e.detalhes, 'pontos'), 0))) as pts
+      from public.eventos_atividade e
+      join public.perfis p on p.id = e.aluno_id and p.ativo
+     where (select ok from pode)
+       and e.tipo = 'jogo_concluido' and e.curso_id is null
+       and e.detalhes ->> 'jogo' in ('sala-investigacao', 'sala-palavrinha', 'sala-tiro', 'sala-batata')
+       and (p_periodo = 'geral' or to_char(e.criado_em at time zone 'America/Sao_Paulo', 'YYYY-MM') = to_char(now() at time zone 'America/Sao_Paulo', 'YYYY-MM'))
+  ),
+  por_dia as (
+    select aluno_id, jogo, dia, case when jogo = 'sala-batata' then least(150, sum(pts)) else max(pts) end as s
+      from ev group by aluno_id, jogo, dia
+  ),
+  por_jogo as (
+    select aluno_id, jogo, case when jogo = 'sala-tiro' then max(s) else sum(s) end as s
+      from por_dia group by aluno_id, jogo
+  ),
+  placar as (
+    select aluno_id, sum(s)::integer as pontos
+      from por_jogo where p_jogo = 'geral' or jogo = 'sala-' || p_jogo
+     group by aluno_id
+  )
+  select (rank() over (order by pl.pontos desc))::integer,
+         (select partes[1] || case when array_length(partes, 1) > 1 then ' ' || upper(left(partes[array_length(partes, 1)], 1)) || '.' else '' end
+            from (select regexp_split_to_array(trim(p.nome), '\s+') as partes) x),
+         pl.pontos, pl.aluno_id = auth.uid()
+    from placar pl join public.perfis p on p.id = pl.aluno_id
+   where pl.pontos > 0
+   order by 1, 2
+   limit 200;
+$$;
+revoke all on function public.ranking_sala(text, text) from public, anon;
+grant execute on function public.ranking_sala(text, text) to authenticated;
+
+-- ---------- Batata Quente online (2 pessoas, cada uma no seu aparelho) ----------
+-- A sala só muda pelas funções abaixo (security definer); quem joga só lê a própria sala.
+-- O dicionário fica no app (a palavra chega já conferida); aqui o banco confere a vez, o tempo,
+-- a sílaba e as palavras repetidas.
+create table if not exists public.batata_salas (
+  codigo text primary key check (codigo ~ '^[A-Z]{4}$'),
+  jogadores uuid[] not null,
+  nomes text[] not null,
+  estado jsonb not null,
+  versao integer not null default 0,
+  criado_em timestamptz not null default now(),
+  atualizado_em timestamptz not null default now()
+);
+alter table public.batata_salas enable row level security;
+drop policy if exists "batata: ver a própria sala" on public.batata_salas;
+create policy "batata: ver a própria sala" on public.batata_salas for select to authenticated using (auth.uid() = any (jogadores));
+revoke all on public.batata_salas from anon, authenticated;
+grant select on public.batata_salas to authenticated;
+
+create or replace function public.batata_agora()
+returns bigint language sql volatile as $$ select (extract(epoch from clock_timestamp()) * 1000)::bigint; $$;
+
+-- Sílaba da rodada: no começo só as de 2 letras; depois, metade de 3 letras (mesma lista do app: data/sala/silabas.json)
+create or replace function public.batata_silaba(p_rodada integer)
+returns text language sql volatile as $$
+  select case when p_rodada < 6 or random() < 0.5
+              then (array['ar','ra','ca','an','co','ri','in','ia','ro','en','ic','al','ta','to','na','te','er','ti','la','ac','li','it','on','ma','or','ni','no','el','re','io','ir','ol','lo','de','at','is','es','se','di','os','id','mo','mi','il','tr','ad','am','st','do','le'])[1 + floor(random() * 50)::int]
+              else (array['ico','ina','aca','eir','car','ens','ari','ita','iro','nse','ano','ara','qui','ide','oni','ent','cao','tic','ira','ria','eri','ito','ite','ana','ino','ant','ado','tar','oli','tri','que','rio','ato','ati','ani','ela','vel','ica','rin','ter','ali','tro','ida','ona','est','ero','ist','nte','ric','ran'])[1 + floor(random() * 50)::int] end;
+$$;
+
+create or replace function public.batata_ver(p_codigo text)
+returns jsonb
+language sql stable security definer
+set search_path = public
+as $$
+  select jsonb_build_object('codigo', s.codigo, 'nomes', to_jsonb(s.nomes), 'estado', s.estado, 'versao', s.versao,
+                            'agora', public.batata_agora(), 'eu', array_position(s.jogadores, auth.uid()) - 1)
+    from public.batata_salas s
+   where s.codigo = upper(trim(p_codigo)) and auth.uid() = any (s.jogadores);
+$$;
+
+create or replace function public.batata_criar(p_tempo integer default 15)
+returns jsonb
+language plpgsql security definer
+set search_path = public
+as $$
+declare
+  v_cod text;
+  v_nome text;
+begin
+  select split_part(trim(p.nome), ' ', 1) into v_nome from public.perfis p where p.id = auth.uid() and p.ativo;
+  if v_nome is null then raise exception 'Entre com sua conta para jogar online.'; end if;
+  -- Código livre ou de uma sala parada há mais de um dia (ela é reaproveitada: a tabela não cresce sem fim).
+  loop
+    v_cod := (select string_agg(substr('ABCDEFGHJKLMNPQRSTUVWXYZ', 1 + floor(random() * 24)::int, 1), '') from generate_series(1, 4));
+    exit when not exists (select 1 from public.batata_salas where codigo = v_cod and atualizado_em >= now() - interval '1 day');
+  end loop;
+  insert into public.batata_salas (codigo, jogadores, nomes, estado)
+  values (v_cod, array[auth.uid()], array[v_nome], jsonb_build_object(
+    'status', 'aguardando', 'tempo', greatest(8, least(30, coalesce(p_tempo, 15))), 'vidas', jsonb_build_array(3, 3),
+    'letras', jsonb_build_array('', ''), 'vez', 0, 'silaba', null, 'usadas', '[]'::jsonb, 'rodada', 0,
+    'prazo', null, 'vencedor', null, 'ultima', null))
+  on conflict (codigo) do update
+     set jogadores = excluded.jogadores, nomes = excluded.nomes, estado = excluded.estado,
+         versao = public.batata_salas.versao + 1, criado_em = now(), atualizado_em = now();
+  return public.batata_ver(v_cod);
+end;
+$$;
+
+create or replace function public.batata_entrar(p_codigo text)
+returns jsonb
+language plpgsql security definer
+set search_path = public
+as $$
+declare
+  s public.batata_salas;
+  v_nome text;
+begin
+  select * into s from public.batata_salas where codigo = upper(trim(p_codigo)) for update;
+  if not found then raise exception 'Não achei essa sala. Confira o código.'; end if;
+  if auth.uid() = any (s.jogadores) then return public.batata_ver(s.codigo); end if;
+  if s.estado ->> 'status' <> 'aguardando' or cardinality(s.jogadores) >= 2 then raise exception 'Essa sala já está cheia.'; end if;
+  select split_part(trim(p.nome), ' ', 1) into v_nome from public.perfis p where p.id = auth.uid() and p.ativo;
+  if v_nome is null then raise exception 'Entre com sua conta para jogar online.'; end if;
+  update public.batata_salas
+     set jogadores = jogadores || auth.uid(), nomes = nomes || v_nome,
+         estado = estado || jsonb_build_object('status', 'jogando', 'vez', floor(random() * 2)::int, 'silaba', public.batata_silaba(0),
+                                               'prazo', public.batata_agora() + (estado ->> 'tempo')::int * 1000),
+         versao = versao + 1, atualizado_em = now()
+   where codigo = s.codigo;
+  return public.batata_ver(s.codigo);
+end;
+$$;
+
+create or replace function public.batata_jogar(p_codigo text, p_palavra text)
+returns jsonb
+language plpgsql security definer
+set search_path = public
+as $$
+declare
+  s public.batata_salas;
+  e jsonb;
+  v_eu integer;
+  v_p text := lower(coalesce(p_palavra, ''));
+  v_letras text;
+  v_vidas jsonb;
+  v_rod integer;
+  v_bonus boolean := false;
+  c text;
+  alfabeto constant text := 'abcdefghijlmnopqrstuvxz';
+begin
+  select * into s from public.batata_salas where codigo = upper(trim(p_codigo)) for update;
+  if not found or not (auth.uid() = any (s.jogadores)) then raise exception 'Sala não encontrada.'; end if;
+  e := s.estado;
+  v_eu := array_position(s.jogadores, auth.uid()) - 1;
+  if e ->> 'status' <> 'jogando' then raise exception 'A partida não está em andamento.'; end if;
+  if (e ->> 'vez')::int <> v_eu then raise exception 'Calma: não é a sua vez.'; end if;
+  if public.batata_agora() > (e ->> 'prazo')::bigint + 800 then raise exception 'A bomba já explodiu.'; end if;
+  if v_p !~ '^[a-z]{3,25}$' then raise exception 'Palavra inválida.'; end if;
+  if position(e ->> 'silaba' in v_p) = 0 then raise exception 'A palavra precisa ter "%".', upper(e ->> 'silaba'); end if;
+  if (e -> 'usadas') ? v_p then raise exception 'Essa palavra já foi usada.'; end if;
+  v_letras := e -> 'letras' ->> v_eu;
+  foreach c in array regexp_split_to_array(v_p, '') loop
+    if position(c in alfabeto) > 0 and position(c in v_letras) = 0 then v_letras := v_letras || c; end if;
+  end loop;
+  v_vidas := e -> 'vidas';
+  if length(v_letras) >= length(alfabeto) then
+    v_letras := '';
+    v_bonus := true;
+    v_vidas := jsonb_set(v_vidas, array[v_eu::text], to_jsonb(least(5, (v_vidas ->> v_eu)::int + 1)));
+  end if;
+  v_rod := (e ->> 'rodada')::int + 1;
+  e := e || jsonb_build_object(
+    'usadas', (e -> 'usadas') || to_jsonb(v_p), 'letras', jsonb_set(e -> 'letras', array[v_eu::text], to_jsonb(v_letras)),
+    'vidas', v_vidas, 'vez', 1 - v_eu, 'rodada', v_rod, 'silaba', public.batata_silaba(v_rod),
+    'prazo', public.batata_agora() + greatest(5000, (e ->> 'tempo')::int * 1000 - v_rod * 400),
+    'ultima', jsonb_build_object('quem', v_eu, 'palavra', v_p, 'tipo', case when v_bonus then 'bonus' else 'ok' end));
+  update public.batata_salas set estado = e, versao = versao + 1, atualizado_em = now() where codigo = s.codigo;
+  return public.batata_ver(s.codigo);
+end;
+$$;
+
+-- Passou do prazo? Qualquer um dos dois pode chamar: quem estava com a bomba perde uma vida.
+create or replace function public.batata_explodir(p_codigo text)
+returns jsonb
+language plpgsql security definer
+set search_path = public
+as $$
+declare
+  s public.batata_salas;
+  e jsonb;
+  v_vez integer;
+  v_vida integer;
+  v_rod integer;
+begin
+  select * into s from public.batata_salas where codigo = upper(trim(p_codigo)) for update;
+  if not found or not (auth.uid() = any (s.jogadores)) then raise exception 'Sala não encontrada.'; end if;
+  e := s.estado;
+  if e ->> 'status' <> 'jogando' or public.batata_agora() <= (e ->> 'prazo')::bigint then return public.batata_ver(s.codigo); end if;
+  v_vez := (e ->> 'vez')::int;
+  v_vida := (e -> 'vidas' ->> v_vez)::int - 1;
+  v_rod := (e ->> 'rodada')::int + 1;
+  e := e || jsonb_build_object('vidas', jsonb_set(e -> 'vidas', array[v_vez::text], to_jsonb(v_vida)),
+                               'ultima', jsonb_build_object('quem', v_vez, 'tipo', 'boom', 'silaba', e ->> 'silaba'));
+  if v_vida <= 0 then
+    e := e || jsonb_build_object('status', 'fim', 'vencedor', 1 - v_vez);
+  else
+    e := e || jsonb_build_object('vez', 1 - v_vez, 'rodada', v_rod, 'silaba', public.batata_silaba(v_rod),
+                                 'prazo', public.batata_agora() + greatest(5000, (e ->> 'tempo')::int * 1000 - v_rod * 400));
+  end if;
+  update public.batata_salas set estado = e, versao = versao + 1, atualizado_em = now() where codigo = s.codigo;
+  return public.batata_ver(s.codigo);
+end;
+$$;
+
+create or replace function public.batata_sair(p_codigo text)
+returns void
+language plpgsql security definer
+set search_path = public
+as $$
+declare
+  s public.batata_salas;
+  v_eu integer;
+begin
+  select * into s from public.batata_salas where codigo = upper(trim(p_codigo)) for update;
+  if not found or not (auth.uid() = any (s.jogadores)) then return; end if;
+  v_eu := array_position(s.jogadores, auth.uid()) - 1;
+  if s.estado ->> 'status' = 'aguardando' then
+    update public.batata_salas
+       set estado = estado || jsonb_build_object('status', 'fim', 'vencedor', null, 'ultima', jsonb_build_object('quem', v_eu, 'tipo', 'saiu')),
+           versao = versao + 1, atualizado_em = now()
+     where codigo = s.codigo;
+  elsif s.estado ->> 'status' = 'jogando' then
+    update public.batata_salas
+       set estado = estado || jsonb_build_object('status', 'fim', 'vencedor', 1 - v_eu, 'ultima', jsonb_build_object('quem', v_eu, 'tipo', 'saiu')),
+           versao = versao + 1, atualizado_em = now()
+     where codigo = s.codigo;
+  end if;
+end;
+$$;
+
+revoke all on function public.batata_agora() from public, anon;
+revoke all on function public.batata_silaba(integer) from public, anon;
+revoke all on function public.batata_ver(text) from public, anon;
+revoke all on function public.batata_criar(integer) from public, anon;
+revoke all on function public.batata_entrar(text) from public, anon;
+revoke all on function public.batata_jogar(text, text) from public, anon;
+revoke all on function public.batata_explodir(text) from public, anon;
+revoke all on function public.batata_sair(text) from public, anon;
+grant execute on function public.batata_ver(text) to authenticated;
+grant execute on function public.batata_criar(integer) to authenticated;
+grant execute on function public.batata_entrar(text) to authenticated;
+grant execute on function public.batata_jogar(text, text) to authenticated;
+grant execute on function public.batata_explodir(text) to authenticated;
+grant execute on function public.batata_sair(text) to authenticated;

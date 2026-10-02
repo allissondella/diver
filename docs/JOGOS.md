@@ -225,3 +225,33 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
 - Sem coleta de dados pessoais: apelidos apenas locais.
 
 _Cruzadinha Submarina e Batalha de Turmas ao vivo ficam para depois do lançamento e ainda não têm especificação._
+
+## 6. Sala de Descompressão (2026-10-02)
+Área separada da Sala de Jogos dos cursos (barra lateral → **Respirar → Descompressão**, endereço `#descompressao`). **É para todo mundo:** não depende de curso, trilha ou matrícula, e os jogos **não usam as cartas** das trilhas. Os pontos valem **só o placar da sala** (nada de XP ou pérolas dos cursos; nada passa pela economia).
+
+- **Arquivos:** `js/descompressao.js` (área, placar, horários de foco, abrir/fechar jogo) e um arquivo por jogo em `js/descompressao/`. Estilos em `css/descompressao.css` (prefixo `sd-`, porque `.sala` já é da Sala de Jogos).
+- **Contrato do jogo:** `Descompressao.registrar({ id, nome, curto, icone, descricao, duracao, diario, abrir(ctx) })`; `abrir` devolve `{ emAndamento(), parar() }`. O `ctx` traz `container`, `voltar()`, `pontuar(pontos, extras)`, `hoje`, `estado()`/`gravar(parcial)` (guardados em `diver:v1:descompressao`), `recorde()`, `guia(passos, forcar)` (tutorial da tela) e o sorteio com semente (`aleatorio`, `hash`). O jogo abre em tela cheia (sem barra lateral), com o botão "← Sala"; sair no meio de uma partida pergunta antes (`UI.confirmar`).
+- **Pontos:** `ctx.pontuar` grava um evento `jogo_concluido` **sem curso** com `detalhes.jogo = "sala-<id>"`, `pontos`, `data` e os extras do jogo. O placar vem da função `ranking_sala` (ver `docs/ATIVIDADE.md` 5c).
+- **Horários de foco:** admin e professores podem fechar a sala para os alunos (tabela `sala_bloqueios`); admin e professor nunca ficam presos. Ver `docs/ARQUITETURA.md`.
+- **Dicionário brasileiro** (`js/dicionario.js`): VERO, o corretor do LibreOffice (LGPLv3/MPL; `data/dicionario/leia-me-vero.txt`), expandido em todas as formas, 4,4 milhões de palavras sem acento. `Dicionario.existe(p)` / `existeJa(p)` (depois de `carregar()`), `cincoLetras()` e `palavrasComuns()` (palavras do dia a dia tiradas dos nossos textos, conferidas no dicionário: as jogadas do robô). Acento e cedilha não contam.
+
+#### Investigação (`sala-investigacao`) — 1 por dia, igual para todo mundo
+- Navio Aurora: 8 suspeitos, 8 armas, 8 cômodos; a data sorteia a solução, a história do dia e as 21 pistas (álibis e descartes), espalhadas pelos 8 cômodos.
+- Revistar um cômodo revela as pistas dele (−70 pontos cada); caderno com ✕ (descartado) e ? (suspeito); duas acusações: a errada custa 300 e diz quantas das três escolhas estavam certas.
+- Pontos: 1000 − 70 × cômodos − 300 × erros (mínimo 100 se resolver; 0 se não). O caso do dia fica salvo (pode sair e voltar).
+
+#### Palavrinha do Dia (`sala-palavrinha`) — 1 por dia, igual para todo mundo
+- 5 letras, 6 tentativas; palavras de `data/sala/palavras-do-dia.json` (469 palavras comuns), embaralhadas com semente fixa; a data escolhe a posição.
+- Só vale palpite que existe no dicionário (`data/dicionario/pt-br-5.txt`); senão: **"Essa palavra não faz parte do nosso dicionário brasileiro."** e a tentativa não é gasta. Teclado na tela e no teclado físico.
+- Pontos: (7 − tentativas) × 10. Estatísticas no aparelho: jogos, % de acertos, dias seguidos, distribuição.
+
+#### Tiro ao Alvo (`sala-tiro`) — à vontade, vale o recorde
+- Pistola d'água em primeira pessoa no `<canvas>` (mira, coice, jatos, respingos). Uma **regra** no alto ("Só os peixes", "Só números pares", "Só as vogais", "Só números maiores que 50", "Só os círculos", "Só as frutas", "Só múltiplos de 3") muda a cada 15 s.
+- **Placa errada = eliminação na hora** (a tela diz por quê: "GOLFINHO não é peixe."). Placa certa que escapa custa uma gota (3). Tanque de 10 jatos que recarrega sozinho. Mais rápido com o tempo; depois de 25 s as placas deslizam (não com "reduzir movimento").
+- Pontos: 10 por acerto + 5 a cada 5 acertos seguidos.
+
+#### Batata Quente (`sala-batata`) — à vontade
+- Uma sílaba (lista `data/sala/silabas.json`: 2 letras no começo, depois metade de 3 letras); digite uma palavra do dicionário com ela (3+ letras, sem repetir na partida) antes de a bomba explodir. Pavio de 10, 15 ou 20 s, menos 0,4 s por rodada (mínimo 5 s). 3 vidas; usou todas as letras de A a Z (sem K, W e Y)? +1 vida (até 5).
+- **Modos:** contra o robô (Fácil, Médio, Difícil: tempo de resposta, chance de travar e tamanho das palavras; o Difícil caça as letras que faltam no alfabeto dele), **lado a lado** no mesmo computador (dois nomes, uma caixa de texto que passa de um para o outro) e **online** (sala com código de 4 letras; o banco confere vez, prazo, sílaba e repetidas nas funções `batata_*`; o app confere o dicionário; quem sai perde).
+- Pontos: vitória online 30; robô 10/15/25; lado a lado 0. O placar soma até 150 por dia.
+
