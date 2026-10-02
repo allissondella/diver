@@ -736,13 +736,15 @@ as $$
    limit 200;
 $$;
 
--- Ranking Diver GLOBAL da Palavrinha: todos os cursos juntos. Cada linha é uma pessoa num curso
--- ("Ana S." · Radiologia): quem faz dois cursos aparece uma vez em cada. Mesma pontuação e mesmos
--- períodos do ranking do curso. Entram pessoas ativas nas partidas de cursos em que estão matriculadas
--- (alunos e professores) e o admin, que joga em qualquer curso.
+-- Ranking Diver GLOBAL da Palavrinha: todos os cursos juntos, UMA linha por pessoa, com a soma dos
+-- pontos de todos os cursos. curso_id = o curso em que ela mais pontuou; cursos = em quantos jogou.
+-- Mesma pontuação e mesmos períodos do ranking do curso. Entram pessoas ativas nas partidas de cursos
+-- em que estão matriculadas (alunos e professores) e o admin, que joga em qualquer curso.
 -- Qualquer pessoa logada e ativa consulta (o placar mostra só nome curto, curso e pontos).
-create or replace function public.ranking_palavrinha_global(p_variante text default 'x1', p_periodo text default 'mes')
-returns table (posicao integer, nome text, curso_id text, pontos integer, vitorias integer, partidas integer, sou_eu boolean)
+-- Substitui a ranking_palavrinha_global (que dava uma linha por pessoa E curso); a antiga sai daqui.
+drop function if exists public.ranking_palavrinha_global(text, text);
+create or replace function public.ranking_palavrinha_todos(p_variante text default 'x1', p_periodo text default 'mes')
+returns table (posicao integer, nome text, curso_id text, cursos integer, pontos integer, vitorias integer, partidas integer, sou_eu boolean)
 language sql stable security definer
 set search_path = public
 as $$
@@ -764,7 +766,7 @@ as $$
        and (e.detalhes ->> 'data') ~ '^\d{4}-\d{2}-\d{2}$'
        and (p_periodo = 'geral' or left(e.detalhes ->> 'data', 7) = to_char(now() at time zone 'America/Sao_Paulo', 'YYYY-MM'))
   ),
-  placar as (
+  por_curso as (
     select d.aluno_id, d.curso_id,
            sum(case when public.atv_sim(d.detalhes, 'venceu')
                     then greatest(0, (select tentativas from maximo) + 1 - coalesce(public.atv_num(d.detalhes, 'tentativas'), 99))
@@ -772,11 +774,18 @@ as $$
            (count(*) filter (where public.atv_sim(d.detalhes, 'venceu')))::integer as vitorias,
            count(*)::integer as partidas
       from partidas d group by d.aluno_id, d.curso_id
+  ),
+  placar as (
+    select c.aluno_id,
+           (array_agg(c.curso_id order by c.pontos desc, c.partidas desc, c.curso_id))[1] as curso_id,
+           count(*)::integer as cursos,
+           sum(c.pontos)::integer as pontos, sum(c.vitorias)::integer as vitorias, sum(c.partidas)::integer as partidas
+      from por_curso c group by c.aluno_id
   )
   select (rank() over (order by pl.pontos desc, pl.vitorias desc))::integer,
          (select partes[1] || case when array_length(partes, 1) > 1 then ' ' || upper(left(partes[array_length(partes, 1)], 1)) || '.' else '' end
             from (select regexp_split_to_array(trim(p.nome), '\s+') as partes) x),
-         pl.curso_id, pl.pontos, pl.vitorias, pl.partidas, pl.aluno_id = auth.uid()
+         pl.curso_id, pl.cursos, pl.pontos, pl.vitorias, pl.partidas, pl.aluno_id = auth.uid()
     from placar pl join public.perfis p on p.id = pl.aluno_id
    order by 1, 2
    limit 200;
@@ -786,5 +795,5 @@ revoke all on function public.estatisticas_atividade(uuid, text) from public, an
 revoke all on function public.ranking_palavrinha(text, text, text) from public, anon;
 grant execute on function public.estatisticas_atividade(uuid, text) to authenticated;
 grant execute on function public.ranking_palavrinha(text, text, text) to authenticated;
-revoke all on function public.ranking_palavrinha_global(text, text) from public, anon;
-grant execute on function public.ranking_palavrinha_global(text, text) to authenticated;
+revoke all on function public.ranking_palavrinha_todos(text, text) from public, anon;
+grant execute on function public.ranking_palavrinha_todos(text, text) to authenticated;

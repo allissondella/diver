@@ -176,9 +176,12 @@ const Palavrinha = (() => {
       .catch(() => alvo.replaceChildren(h('p', { class: 'texto-suave', text: 'Não deu para carregar suas estatísticas agora.' })));
   }
 
+  /** No ranking global: o curso em que a pessoa mais pontuou e, se jogou em outros, quantos. */
+  const cursoDaLinha = (l) => `${App.nomeCurso(l.curso_id)}${Number(l.cursos) > 1 ? ` + ${plural(Number(l.cursos) - 1, 'curso', 'cursos')}` : ''}`;
+
   /**
-   * Ranking Diver: "Este curso" (quem faz o mesmo curso) ou "Todos os cursos" (cada pessoa aparece
-   * com o curso em que jogou), no mês ou no geral.
+   * Ranking Diver: "Este curso" (quem faz o mesmo curso) ou "Todos os cursos" (uma linha por pessoa,
+   * com a soma dos pontos de todos os cursos), no mês ou no geral.
    */
   function painelRanking(alvo, ctx, v) {
     if (!Atividade.naNuvem()) {
@@ -209,7 +212,7 @@ const Palavrinha = (() => {
       try {
         await Atividade.enviar();
         const linhas = (escopo === 'global'
-          ? await Nuvem.rpc('ranking_palavrinha_global', { p_variante: v.chave, p_periodo: periodo })
+          ? await Nuvem.rpc('ranking_palavrinha_todos', { p_variante: v.chave, p_periodo: periodo })
           : await Nuvem.rpc('ranking_palavrinha', { p_curso: ctx.trilha.id, p_variante: v.chave, p_periodo: periodo })) || [];
         if (escolha.escopo !== escopo || escolha.periodo !== periodo) return; // trocou de filtro no meio da busca
         if (!linhas.length) {
@@ -217,16 +220,17 @@ const Palavrinha = (() => {
           return;
         }
         const top = linhas.slice(0, 10);
-        linhas.filter((l) => l.sou_eu && !top.includes(l)).forEach((l) => top.push(l)); // no global, você pode aparecer por mais de um curso
+        const eu = linhas.find((l) => l.sou_eu);
+        if (eu && !top.includes(eu)) top.push(eu);
         lista.replaceChildren(h('ol', { class: `pal-ranking__itens ${escopo === 'global' ? 'pal-ranking__itens--global' : ''}`.trim() }, top.map((l) => h('li', { class: `pal-ranking__item ${l.sou_eu ? 'pal-ranking__item--eu' : ''}`.trim() },
           h('span', { class: 'pal-ranking__pos', text: `${l.posicao}º` }),
           h('span', { class: 'pal-ranking__quem' },
             h('span', { class: 'pal-ranking__nome', text: l.sou_eu ? `${l.nome} (você)` : l.nome }),
-            escopo === 'global' ? h('span', { class: 'pal-ranking__curso', text: App.nomeCurso(l.curso_id) }) : null),
+            escopo === 'global' ? h('span', { class: 'pal-ranking__curso', text: cursoDaLinha(l) }) : null),
           h('span', { class: 'pal-ranking__pontos', text: `${l.pontos} pts` }),
           h('span', { class: 'pal-ranking__extra', title: 'vitórias / partidas', text: `${l.vitorias}/${l.partidas}` })))),
           h('p', { class: 'texto-suave pal-ranking__nota', text: escopo === 'global'
-            ? 'Todos os cursos juntos: cada pessoa aparece com o curso em que jogou (quem faz dois cursos aparece duas vezes). Pontos por vitória: quanto menos tentativas, mais pontos; o placar do mês zera no dia 1º.'
+            ? 'Todos os cursos juntos: cada pessoa aparece uma vez, com a soma dos pontos de todos os cursos (embaixo do nome, o curso em que mais pontuou). Quanto menos tentativas, mais pontos; o placar do mês zera no dia 1º.'
             : 'Pontos por vitória: quanto menos tentativas, mais pontos. Vale a palavra do dia e o Treino livre; o placar do mês zera no dia 1º.' }));
       } catch (e) {
         lista.replaceChildren(h('p', { class: 'texto-suave', text: 'Não deu para carregar o ranking agora.' }));
