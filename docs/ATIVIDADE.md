@@ -48,9 +48,9 @@ A Palavrinha manda em `registro`: `jogo: 'palavrinha'`, `variante` (`x1`, `x2`, 
 - **Aviso de primeira vez:** ao abrir a Palavrinha pela primeira vez, um cartão explica o Ranking Diver e onde ele fica (botão "Ver o ranking"); some depois de lido e fica guardado na conta (`diver:v1:palavrinha-aviso-ranking`).
 - Limite conhecido: como o evento sai do aparelho do aluno, quem souber mexer no navegador poderia forjar uma vitória. Para um ranking de turma isso basta; se um dia valer prêmio, a conferência passa para o servidor.
 
-## 5b. Caso Resolvido: ranking ao vivo do caso
-- Cada missão concluída (e a acusação) gera um `jogo_concluido` com `jogo: "caso"` e o `registro` do jogo: `operacao` (id do caso), `missao` (`isca`, `cofre`, `trilha`, `resgate` ou `acusacao`), `treino` e `pontos_missao` (créditos da missão + chave do dia; na acusação, +100 por item, +300 pelo trio e +25 por jogar as 4 missões).
-- **`ranking_caso(p_curso, p_caso)`** (security definer): soma `pontos_missao` por pessoa, contando **cada missão uma vez** (a maior, se o evento vier repetido) e **sem o treino**. Entram alunos e professores matriculados no curso e o admin; só consulta quem é do curso (ou admin). Devolve `posicao, nome (curto), pontos, missoes, sou_eu`.
+## 5b. Caso Resolvido: placar da turma
+- Cada mergulho concluído (e a acusação) gera um `jogo_concluido` com `jogo: "caso"` e o `registro` do jogo: `operacao` (id do caso), `rodada` (número do caso da pessoa), `missao` (`isca`, `cardume`, `sonar`, `interrogatorio` ou `acusacao`), `treino` e `pontos_missao` (ar que sobrou + rapidez; na acusação, 50 por item e +100 pelas três).
+- **`ranking_caso(p_curso, p_caso)`** (security definer): soma `pontos_missao` de **todos os casos** da pessoa, contando cada mergulho **uma vez por caso** (o maior, se o evento vier repetido) e **sem o treino**. Eventos antigos sem `rodada` contam como caso "0". Entram alunos e professores matriculados no curso e o admin; só consulta quem é do curso (ou admin). Devolve `posicao, nome (curto), pontos, missoes, sou_eu`.
 - O painel lateral do jogo mostra o top 10 + você; sem login, mostra só os seus pontos.
 
 ## 6. Retrospectiva do ano (futuro)

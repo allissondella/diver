@@ -799,8 +799,9 @@ revoke all on function public.ranking_palavrinha_todos(text, text) from public, 
 grant execute on function public.ranking_palavrinha_todos(text, text) to authenticated;
 
 -- Ranking ao vivo do Caso Resolvido ("Operação Recife Sombrio"): turma de UM curso.
--- Soma os pontos de cada missão e da acusação (detalhes.pontos_missao dos eventos jogo_concluido do jogo
--- "caso"); treino não conta. Cada missão vale uma vez por pessoa (a maior, se o evento vier repetido).
+-- Soma os pontos de cada mergulho e da acusação (detalhes.pontos_missao dos eventos jogo_concluido do jogo
+-- "caso") de TODOS os casos da pessoa (detalhes.rodada = número do caso); treino não conta.
+-- Cada mergulho vale uma vez por caso (o maior, se o evento vier repetido). missoes = mergulhos somados.
 -- Entram alunos e professores matriculados no curso e o admin; consulta quem é do curso (ou admin).
 create or replace function public.ranking_caso(p_curso text, p_caso text default 'recife-sombrio')
 returns table (posicao integer, nome text, pontos integer, missoes integer, sou_eu boolean)
@@ -823,9 +824,9 @@ as $$
        and coalesce(e.detalhes ->> 'missao', '') <> ''
   ),
   por_missao as (
-    select d.aluno_id, d.detalhes ->> 'missao' as missao,
+    select d.aluno_id, coalesce(d.detalhes ->> 'rodada', '0') as rodada, d.detalhes ->> 'missao' as missao,
            max(greatest(0, least(2000, coalesce(public.atv_num(d.detalhes, 'pontos_missao'), 0)))) as pts
-      from partidas d group by d.aluno_id, d.detalhes ->> 'missao'
+      from partidas d group by d.aluno_id, coalesce(d.detalhes ->> 'rodada', '0'), d.detalhes ->> 'missao'
   ),
   placar as (
     select m.aluno_id, sum(m.pts)::integer as pontos, count(*)::integer as missoes

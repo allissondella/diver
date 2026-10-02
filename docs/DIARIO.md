@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-02 · Operação Recife Sombrio v2: casos em rodízio, oxigênio e tutorial
+- **Pedido:** pistas que mudam sempre, e-mails que rodam com endereços reais e a dica de pesquisar na internet, menos parecido com a referência (mesmos personagens), sem datas ("a Diver foi invadida") e explicação de cada tela como no tutorial dos cursos.
+- **Feito:** gerador de caso (outra Sombra a cada caso; pérolas montadas com álibis e descartes; "Abrir caso novo"); banco de 23 e-mails (legítimos de endereços oficiais reais e golpes que os imitam), sorteio de 8 por rodada, resumo com "Pesquise na internet" e "Rastrear a isca"; mergulhos Raso, Recife, Caverna e Abismo com tanque de oxigênio; cardume de senhas, sonar, linha do tempo e interrogatório no lugar do cofre de dígitos, do tráfego e do Vigenère; mural com estrelas; diário de bordo em frases; tutorial em cada tela (`Tutorial.guiar`); placar soma todos os casos.
+- **Testes:** caso inteiro e abertura do caso 2 no computador e no celular; tutoriais (abrem sozinhos e pelo botão); conferido que as pérolas descartam 9 por coluna e nunca a solução. Corrigidas duas contradições entre pérolas e telas (senha do Dr. Dobrão e contas nos registros).
+
 ## 2026-10-02 · Operação Recife Sombrio: partes 2 e 3 (missões 2 a 4, acusação e ranking)
 - **Feito:** chave do dia 2 (cofre de 5 dígitos com cores, 90 s) e Missão 2 · O Cofre (posts → senha fraca com barra quente/frio → commits → código esquecido no histórico, armadilha do script); chave do dia 3 (pedaços escondidos no tráfego ao vivo, com pausa) e Missão 3 · A Trilha (6 painéis, fuso BRT/AMT, 3 anomalias, dicas, armadilha do zip); Missão 4 · O Resgate (Vigenère com a chave-mestra MARE) e o tabuleiro de acusação (10 suspeitos, 10 ferramentas, 10 formas de ataque, riscar com X, uma tentativa). Ranking ao vivo da turma (`ranking_caso`). Pontos que ficaram sem receber (fechou o jogo no card da pista) aparecem de novo no painel.
 - **Testes:** partida inteira no computador e no celular (do e-mail à acusação: 625 pts na acusação certa), tempo esgotado na chave, pontos pendentes, ranking com dados de mentira na tela e a função no Supabase de testes (soma por missão, treino e outro curso fora, sem login nada).
