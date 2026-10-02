@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-10-02 · Palavrinha e Batata aceitam insultos leves
+- **Relato:** "Idiota" era recusado como se não existisse no dicionário. Era o filtro de ofensas, que também tirava insultos leves.
+- **Decisão:** liberar insultos leves (idiota, besta, babaca, otário, imbecil, cretino, trouxa, burra...) nos palpites; continuam fora palavrões, termos sexuais, preconceituosos e temas pesados. O banco de palavras do dia não muda. Listas regeneradas a partir do dicionário original.
+
 ## 2026-10-02 · Sala: Tiro por níveis, Investigação com desafios, Batata Sozinho/Treino e Palavrinha com treino
 - **Pedido:** Tiro mais rápido e com mais opções, 1 ponto por acerto, nível sobe ao acertar todos os alvos certos, bem mais difícil do nível 2 e muito mais alvos; deixar passar um alvo certo elimina. Investigação mais divertida, com atividades (tipo Palavrinha; e-mails iguais ao desafio de cibersegurança). Batata Quente com modo Sozinho (tempo diminuindo, nível a cada X segundos) e Treino. Palavrinha da sala só "Palavrinha", com Treino livre valendo bem menos.
 - **Feito:** Tiro com níveis por leva (8, 13, 18... placas certas), 26 regras + duplas + "Tudo MENOS", placas sem nascer sobrepostas. Investigação com 8 desafios (cofre, e-mails do banco do curso de ciber, cifra, câmera, fios, anagramas, caça-palavras, quem mente) que liberam as pistas. Batata: Sozinho (nível a cada 30 s, vale o recorde) e Treino (sem vidas, sem pontos). Palavrinha: modos Palavra do dia e Treino livre (×2 em vez de ×10, até 60/dia). `ranking_sala` separa o recorde do Sozinho e o treino da Palavrinha.
