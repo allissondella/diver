@@ -797,3 +797,47 @@ grant execute on function public.estatisticas_atividade(uuid, text) to authentic
 grant execute on function public.ranking_palavrinha(text, text, text) to authenticated;
 revoke all on function public.ranking_palavrinha_todos(text, text) from public, anon;
 grant execute on function public.ranking_palavrinha_todos(text, text) to authenticated;
+
+-- Ranking ao vivo do Caso Resolvido ("Operação Recife Sombrio"): turma de UM curso.
+-- Soma os pontos de cada missão e da acusação (detalhes.pontos_missao dos eventos jogo_concluido do jogo
+-- "caso"); treino não conta. Cada missão vale uma vez por pessoa (a maior, se o evento vier repetido).
+-- Entram alunos e professores matriculados no curso e o admin; consulta quem é do curso (ou admin).
+create or replace function public.ranking_caso(p_curso text, p_caso text default 'recife-sombrio')
+returns table (posicao integer, nome text, pontos integer, missoes integer, sou_eu boolean)
+language sql stable security definer
+set search_path = public
+as $$
+  with pode as (
+    select public.eh_admin() or public.professor_do_curso(p_curso)
+        or exists (select 1 from public.matriculas m where m.aluno_id = auth.uid() and m.trilha_id = p_curso) as ok
+  ),
+  partidas as (
+    select e.aluno_id, e.detalhes
+      from public.eventos_atividade e
+      join public.perfis p on p.id = e.aluno_id and p.ativo
+     where (select ok from pode)
+       and (p.papel = 'admin' or exists (select 1 from public.matriculas m where m.aluno_id = e.aluno_id and m.trilha_id = p_curso))
+       and e.tipo = 'jogo_concluido' and e.curso_id = p_curso
+       and e.detalhes ->> 'jogo' = 'caso' and e.detalhes ->> 'operacao' = p_caso
+       and coalesce(public.atv_sim(e.detalhes, 'treino'), false) = false
+       and coalesce(e.detalhes ->> 'missao', '') <> ''
+  ),
+  por_missao as (
+    select d.aluno_id, d.detalhes ->> 'missao' as missao,
+           max(greatest(0, least(2000, coalesce(public.atv_num(d.detalhes, 'pontos_missao'), 0)))) as pts
+      from partidas d group by d.aluno_id, d.detalhes ->> 'missao'
+  ),
+  placar as (
+    select m.aluno_id, sum(m.pts)::integer as pontos, count(*)::integer as missoes
+      from por_missao m group by m.aluno_id
+  )
+  select (rank() over (order by pl.pontos desc))::integer,
+         (select partes[1] || case when array_length(partes, 1) > 1 then ' ' || upper(left(partes[array_length(partes, 1)], 1)) || '.' else '' end
+            from (select regexp_split_to_array(trim(p.nome), '\s+') as partes) x),
+         pl.pontos, pl.missoes, pl.aluno_id = auth.uid()
+    from placar pl join public.perfis p on p.id = pl.aluno_id
+   order by 1, 2
+   limit 200;
+$$;
+revoke all on function public.ranking_caso(text, text) from public, anon;
+grant execute on function public.ranking_caso(text, text) to authenticated;

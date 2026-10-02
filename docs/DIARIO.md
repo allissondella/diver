@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-02 · Operação Recife Sombrio: partes 2 e 3 (missões 2 a 4, acusação e ranking)
+- **Feito:** chave do dia 2 (cofre de 5 dígitos com cores, 90 s) e Missão 2 · O Cofre (posts → senha fraca com barra quente/frio → commits → código esquecido no histórico, armadilha do script); chave do dia 3 (pedaços escondidos no tráfego ao vivo, com pausa) e Missão 3 · A Trilha (6 painéis, fuso BRT/AMT, 3 anomalias, dicas, armadilha do zip); Missão 4 · O Resgate (Vigenère com a chave-mestra MARE) e o tabuleiro de acusação (10 suspeitos, 10 ferramentas, 10 formas de ataque, riscar com X, uma tentativa). Ranking ao vivo da turma (`ranking_caso`). Pontos que ficaram sem receber (fechou o jogo no card da pista) aparecem de novo no painel.
+- **Testes:** partida inteira no computador e no celular (do e-mail à acusação: 625 pts na acusação certa), tempo esgotado na chave, pontos pendentes, ranking com dados de mentira na tela e a função no Supabase de testes (soma por missão, treino e outro curso fora, sem login nada).
+- **Banco:** `ranking_caso` no `setup.sql`; aplicada nos testes. Produção: aplicar junto com a publicação.
+
 ## 2026-10-02 · Caso Resolvido vira a "Operação Recife Sombrio" (parte 1 de 3)
 - **Feito:** o jogo de detetive foi refeito no formato de investigação em missões (inspirado num jogo corporativo de segurança que o Allisson mandou, com história, nomes e visual nossos): painel do caso (Sombra, cartão do agente com o mascote, pistas, chave-mestra, 4 dias), log de eventos ao lado e a **Missão 1 · A Isca** completa (8 e-mails @diver.app.br com 3 golpes de domínio imitado, endereço real dos links, cabeçalho com SPF/DKIM/DMARC, armadilhas, devolução do SOC, perícia do X-Trace em Base64 e a Pista A). Pontos da missão viram XP e pérolas pela economia.
 - **Decisões:** missões liberadas em sequência (não por dia de verdade); ranking do caso só com os alunos do curso; nome "Operação Recife Sombrio"; o jogo só existe no curso de Cibersegurança; o caso antigo (Estação Abissal) saiu.
