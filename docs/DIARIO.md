@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-02 · Pit Stop Mental na Sala de Descompressão
+- **Pedido:** minigame de reflexo e cálculo no box de uma equipe de corrida: 4 contas com x por pit stop (uma por roda), tempo base com desconto por rapidez e penalidade por erro, recorde/rápido/lento contra o rival, combo com box sincronizado, fases cada vez mais difíceis e resumo educativo.
+- **Feito:** `js/descompressao/pitstop.js` com o box em SVG nosso (sem marcas de categorias de corrida), mecânicos animados, semáforo, cronômetro e rival; gerador de contas em 5 faixas com passo a passo; modos Alternativas e Digitar (×1,5); resumo com tempo de cada roda e contas erradas resolvidas. Placar vale o recorde (`ranking_sala` com `sala-pitstop`). No celular, a conta fica em cima e o box embaixo.
+- **Testes:** 36 mil contas conferidas no Node; corrida com erro, combo e resumo no computador e no celular; modo Digitar; placar conferido no Supabase de testes (recorde 195; geral 235).
+
 ## 2026-10-02 · Palavrinha e Batata aceitam insultos leves
 - **Relato:** "Idiota" era recusado como se não existisse no dicionário. Era o filtro de ofensas, que também tirava insultos leves.
 - **Decisão:** liberar insultos leves (idiota, besta, babaca, otário, imbecil, cretino, trouxa, burra...) nos palpites; continuam fora palavrões, termos sexuais, preconceituosos e temas pesados. O banco de palavras do dia não muda. Listas regeneradas a partir do dicionário original.

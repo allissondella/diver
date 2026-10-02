@@ -269,3 +269,12 @@ _Cruzadinha Submarina e Batalha de Turmas ao vivo ficam para depois do lançamen
 - **Outros modos:** contra o robô (Fácil, Médio, Difícil: tempo de resposta, chance de travar e tamanho das palavras; o Difícil caça as letras que faltam no alfabeto dele), **lado a lado** no mesmo computador (dois nomes, uma caixa de texto que passa de um para o outro) e **online** (sala com código de 4 letras; o banco confere vez, prazo, sílaba e repetidas nas funções `batata_*`; o app confere o dicionário; quem sai perde).
 - Pontos: vitória online 30; robô 10/15/25; lado a lado e treino 0. As vitórias somam até 150 por dia; o recorde do Sozinho soma à parte.
 
+#### Pit Stop Mental (`sala-pitstop`) — à vontade, vale o recorde
+- Arquivo `js/descompressao/pitstop.js`. Box de uma equipe de corrida **visto de cima** (SVG nosso, sem marcas de categorias de corrida): carro nas marcas, 8 mecânicos (pistola + pneu em cada roda), semáforo, cronômetro grande e o tempo do rival.
+- **4 contas por pit stop, uma por roda**, com o valor de x ("x + 4x·1 = ?", x = 3 → 15). Acertou: a dupla troca o pneu e levanta o braço; as 4 prontas: luz verde e o carro arranca.
+- **Tempo:** começa no tempo base (6 s na fase 1, −0,1 s por fase, mínimo 5 s). Acerto perfeito (dentro da barra, 2 s + folga nas contas longas) −1 s; bom (até 2,5 s depois) −0,6 s; lento −0,25 s. Erro +0,8 s: a porca cai ou a pistola trava e a próxima conta demora um instante. Abaixo de 2,5 s "Pit stop recorde!", até 4 s "Pit stop rápido", acima "Pit stop lento". Bater o rival (4 s na fase 1, −0,18 s por fase, mínimo 2,2 s) libera a próxima fase.
+- **Combo:** 3 acertos seguidos ligam o **box sincronizado**: a próxima resposta certa troca duas rodas.
+- **Fases (contas):** 1–2 simples (2x + x); 3–4 ordem das operações (3x − 2·x + 6 ÷ 2); 5–6 produtos de dois termos (4x·3 + 2x, x·3x); 7–8 parênteses (2(x + 3) − x); 9+ tudo misturado com x negativo. O gerador foi conferido em 36 mil contas (resultado e passo a passo).
+- **Modos:** Alternativas (4 opções, teclas 1 a 4, com pegadinhas de sinal e de ordem) ou Digitar (aceita "-" e "−"; vale ×1,5).
+- **Resumo:** tempo de cada roda, as contas erradas resolvidas passo a passo e o melhor pit stop.
+- **Pontos:** recorde 100, rápido 60, lento 20; +30 se vencer o rival; ×1,5 no Digitar. O placar guarda o recorde. Estado (modo, fase, melhor tempo) em `diver:v1:descompressao` → `jogos.pitstop`.
