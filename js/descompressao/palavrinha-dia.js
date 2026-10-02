@@ -1,15 +1,18 @@
 /*
- * Palavrinha do Dia (Sala de Descompressão) — uma palavra de 5 letras por dia, a mesma para todo mundo.
- * - 6 tentativas. Cada palpite pinta as letras: lugar certo (turquesa), na palavra em outro lugar (amarelo)
+ * Palavrinha do Dia (Sala de Descompressão) — uma palavra nova por dia, de 5 a 10 letras, a mesma para todo mundo.
+ * - 6 tentativas; o tabuleiro tem o tamanho da palavra do dia (5 a 10 casas). Cada palpite pinta as letras: lugar certo (turquesa), na palavra em outro lugar (amarelo)
  *   ou fora (apagada). Acento e cedilha não contam: "ÁGUIA" se digita AGUIA.
- * - Só vale palpite que existe no dicionário brasileiro (VERO, data/dicionario/pt-br-5.txt); senão aparece
+ * - Só vale palpite que existe no dicionário brasileiro (VERO, data/dicionario/palavrinha/<n>.txt: só a lista do
+ *   tamanho do dia é baixada); senão aparece
  *   "Essa palavra não faz parte do nosso dicionário brasileiro." e a tentativa não é gasta.
- * - Palavra do dia: data/sala/palavras-do-dia.json, embaralhada com semente fixa; o dia escolhe a posição.
+ * - Palavra do dia: nosso banco (data/sala/palavras-do-dia.json, palavras do dia a dia sem palavrões nem ofensas),
+ *   embaralhado com semente fixa; o dia escolhe a posição, então nenhuma palavra se repete até o banco acabar.
  * - Pontos (só no placar da sala): (7 − tentativas) × 10. Acertou na 1ª = 60; não acertou = 0.
  */
 (() => {
   const { h, icone, plural } = UI;
-  const LETRAS = 5;
+  const MIN = 5;
+  const MAX = 10;
   const TENTATIVAS = 6;
   const TECLADO = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'];
   const NOME_STATUS = { certa: 'no lugar certo', lugar: 'em outro lugar', fora: 'não está na palavra' };
@@ -38,7 +41,7 @@
       if (!r.ok) throw new Error('Não consegui abrir a lista de palavras.');
       const dados = await r.json();
       const sorteio = Descompressao.aleatorio('diver-sala-palavrinha');
-      const a = dados.palavras.filter((p) => Dicionario.normalizar(p).length === LETRAS);
+      const a = dados.palavras.filter((p) => Dicionario.normalizar(p).length >= MIN && Dicionario.normalizar(p).length <= MAX);
       for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(sorteio() * (i + 1));
         [a[i], a[j]] = [a[j], a[i]];
@@ -80,22 +83,29 @@
     icone: 'i-letras',
     duracao: '2 a 5 min · 1 por dia',
     diario: true,
-    descricao: 'Uma palavra de 5 letras por dia, a mesma para todo mundo. Seis tentativas e só vale palavra do nosso dicionário.',
+    descricao: 'Uma palavra nova por dia, de 5 a 10 letras, a mesma para todo mundo. Seis tentativas e só vale palavra do nosso dicionário.',
     abrir(ctx) {
       let ativo = true;
       let aoTeclar = null;
       let aoRedim = null;
       ctx.container.replaceChildren(h('p', { class: 'texto-suave', text: 'Abrindo o dicionário…' }));
-      Promise.all([palavraDoDia(ctx.hoje), Dicionario.cincoLetras()]).then(([alvo, validas]) => {
-        if (ativo) montar(alvo, validas);
+      palavraDoDia(ctx.hoje).then((doDia) => {
+        // Partida de hoje já começada? Continua com a palavra guardada nela (mesmo que o banco mude no meio do dia)
+        const salvo = ctx.estado() || {};
+        const p = salvo.partida && salvo.partida.data === ctx.hoje && salvo.partida.alvo ? salvo.partida : null;
+        const alvo = p ? p.alvo : doDia;
+        return Dicionario.tamanho(alvo.palavra.length).then((lista) => ativo && montar(alvo, lista));
       }).catch((e) => {
         if (ativo) ctx.container.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui abrir o jogo. Confira a internet e tente de novo.' }));
       });
 
-      function montar(alvo, validas) {
+      function montar(alvo, lista) {
+        const LETRAS = alvo.palavra.length;
         const salvo = ctx.estado() || {};
         const hist = salvo.historico || {};
-        let partida = salvo.partida && salvo.partida.data === ctx.hoje ? salvo.partida : { data: ctx.hoje, palpites: [], fim: false, registrado: false };
+        // Partida antiga (de antes de a palavra ficar guardada nela) recomeça: o placar conta só o melhor do dia
+        let partida = salvo.partida && salvo.partida.data === ctx.hoje && salvo.partida.alvo ? salvo.partida : { data: ctx.hoje, palpites: [], fim: false, registrado: false };
+        partida.alvo = { original: alvo.original, palavra: alvo.palavra };
         let atual = '';
         const gravar = () => ctx.gravar({ partida, historico: hist });
 
@@ -159,8 +169,10 @@
         function ajustar() {
           const largura = Math.min(ctx.container.clientWidth || 340, document.documentElement.clientWidth - 32);
           const altura = Math.max(260, window.innerHeight - 380);
-          const tam = Math.max(34, Math.min(60, Math.floor(largura / LETRAS - 8), Math.floor(altura / TENTATIVAS - 8)));
+          const vao = LETRAS > 7 ? 4 : 6;
+          const tam = Math.max(24, Math.min(60, Math.floor(largura / LETRAS - vao - 1), Math.floor(altura / TENTATIVAS - vao)));
           raiz.style.setProperty('--tam', `${tam}px`);
+          raiz.style.setProperty('--vao', `${vao}px`);
         }
 
         function tremer(texto) {
@@ -183,7 +195,7 @@
         function confirmar() {
           if (partida.fim) return;
           if (atual.length < LETRAS) return tremer(`A palavra tem ${LETRAS} letras.`);
-          if (!validas.has(atual)) return tremer('Essa palavra não faz parte do nosso dicionário brasileiro.');
+          if (!lista.existe(atual)) return tremer('Essa palavra não faz parte do nosso dicionário brasileiro.');
           if (partida.palpites.includes(atual)) return tremer('Você já tentou essa.');
           partida.palpites.push(atual);
           const cores = avaliar(atual, alvo.palavra);
@@ -255,7 +267,7 @@
 
       function guia(forcar) {
         ctx.guia([
-          { alvo: '#sd-pal-grade', desenho: 'livro', titulo: 'A palavra do dia', texto: 'Uma palavra de 5 letras, a mesma para todo mundo hoje. Você tem 6 tentativas. Acento não conta: ÁGUIA se digita AGUIA.' },
+          { alvo: '#sd-pal-grade', desenho: 'livro', titulo: 'A palavra do dia', texto: 'Uma palavra nova por dia, de 5 a 10 letras (os quadradinhos mostram quantas), a mesma para todo mundo. Você tem 6 tentativas. Acento não conta: ÁGUIA se digita AGUIA.' },
           { alvo: '#sd-pal-grade', desenho: 'estrela', titulo: 'As cores', texto: 'Turquesa: letra no lugar certo. Amarelo: está na palavra, em outro lugar. Apagada: não está. A marquinha em cada letra ajuda quem não distingue cores.' },
           { alvo: '#sd-pal-teclado', desenho: 'carta', titulo: 'Só palavras de verdade', texto: 'Cada palpite precisa existir no nosso dicionário brasileiro. Se não existir, eu aviso e você não perde a tentativa.' },
           { desenho: 'trofeu', titulo: 'Pontos da sala', texto: 'Acertou na 1ª: 60 pontos; na 6ª: 10. Os pontos valem só o placar da Sala de Descompressão.' },
