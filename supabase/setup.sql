@@ -896,8 +896,8 @@ grant execute on function public.sala_status() to authenticated;
 
 -- Placar da sala (todo mundo junto, sem separar por curso). Pontos vêm do log (jogo_concluido sem curso,
 -- detalhes.jogo = sala-…). Investigação e palavra do dia da Palavrinha: o melhor de cada dia, somado; treino da
--- Palavrinha (detalhes.modo = treino): soma do dia até 60. Tiro ao Alvo: o recorde.
--- Batata Quente: soma das vitórias do dia (até 150 por dia) + o recorde do modo Sozinho. "geral" = soma dos quatro.
+-- Palavrinha (detalhes.modo = treino): soma do dia até 60. Tiro ao Alvo e Pit Stop Mental: o recorde.
+-- Batata Quente: soma das vitórias do dia (até 150 por dia) + o recorde do modo Sozinho. "geral" = soma de todos.
 create or replace function public.ranking_sala(p_jogo text default 'geral', p_periodo text default 'mes')
 returns table (posicao integer, nome text, pontos integer, sou_eu boolean)
 language sql stable security definer
@@ -917,7 +917,7 @@ as $$
       join public.perfis p on p.id = e.aluno_id and p.ativo
      where (select ok from pode)
        and e.tipo = 'jogo_concluido' and e.curso_id is null
-       and e.detalhes ->> 'jogo' in ('sala-investigacao', 'sala-palavrinha', 'sala-tiro', 'sala-batata')
+       and e.detalhes ->> 'jogo' in ('sala-investigacao', 'sala-palavrinha', 'sala-tiro', 'sala-batata', 'sala-pitstop')
        and (p_periodo = 'geral' or to_char(e.criado_em at time zone 'America/Sao_Paulo', 'YYYY-MM') = to_char(now() at time zone 'America/Sao_Paulo', 'YYYY-MM'))
   ),
   por_dia as (
@@ -926,7 +926,7 @@ as $$
       from ev group by aluno_id, jogo, dia
   ),
   por_jogo as (
-    select aluno_id, jogo, case when jogo in ('sala-tiro', 'sala-batata-solo') then max(s) else sum(s) end as s
+    select aluno_id, jogo, case when jogo in ('sala-tiro', 'sala-batata-solo', 'sala-pitstop') then max(s) else sum(s) end as s
       from por_dia group by aluno_id, jogo
   ),
   placar as (

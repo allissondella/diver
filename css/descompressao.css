@@ -5,8 +5,7 @@
 
 /* ---------- Área ---------- */
 .sd-jogos { display: grid; gap: var(--ritmo-cartoes, 16px); }
-@media (min-width: 720px) { .sd-jogos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1100px) { .sd-jogos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.sd-jogos { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
 .sd-card .jogo-card__nome { margin: 0; }
 .sd-jogos + .sd-placar,
 .sd-placar + .sd-horarios { margin-top: var(--ritmo-secao, 40px); }
@@ -147,6 +146,114 @@
 .sd-atv__depoimento:hover { border-color: var(--coral); }
 .sd-atv__acusar-mentira { justify-self: start; padding: 2px var(--esp-2); border-radius: var(--raio-pequeno); background: rgba(251, 113, 133, 0.16); color: var(--coral); font-size: 0.8rem; font-weight: 800; }
 
+/* ---------- Pit Stop Mental ---------- */
+.ps { display: grid; gap: var(--esp-4); }
+.ps-menu, .ps-resumo { display: grid; gap: var(--esp-3); max-width: 720px; }
+.ps-menu__topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2); }
+.ps-menu__topo .cartao__titulo { margin: 0; }
+.ps-menu__opcao { display: grid; gap: var(--esp-2); }
+.ps-menu__rotulo { font-size: 0.85rem; font-weight: 700; color: var(--texto-suave); }
+.ps-menu__dados { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--esp-3) var(--esp-6); }
+.ps-menu__dados strong { display: block; font: 800 1.4rem var(--fonte-mono); color: var(--amarelo); }
+.ps-menu__dados span { font-size: 0.8rem; color: var(--texto-suave); }
+.ps-painel { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--esp-2) var(--esp-4); }
+.ps-cronometro, .ps-rival { display: grid; justify-items: center; padding: var(--esp-1) var(--esp-4); border-radius: var(--raio-pequeno); background: var(--fundo-fundo); border: 2px solid var(--borda); }
+.ps-cronometro span, .ps-rival span { font: 700 0.7rem var(--fonte-mono); letter-spacing: 0.12em; color: var(--texto-suave); }
+.ps-cronometro__valor { font: 800 clamp(2rem, 7vw, 2.8rem) / 1 var(--fonte-mono); color: var(--amarelo); }
+.ps-cronometro--batendo { border-color: var(--turquesa); }
+.ps-cronometro--batendo .ps-cronometro__valor { color: var(--turquesa-claro); }
+.ps-rival strong { font: 800 1.3rem var(--fonte-mono); color: var(--coral); }
+.ps-combo { --combo: 0; display: grid; gap: 2px; min-width: 120px; }
+.ps-combo__rotulo { font: 700 0.7rem var(--fonte-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--texto-suave); }
+.ps-combo__trilho { position: relative; height: 10px; border-radius: 5px; background: rgba(230, 241, 255, 0.1); overflow: hidden; }
+.ps-combo__barra { position: absolute; inset: 0 auto 0 0; width: calc(var(--combo) * 100%); background: var(--turquesa); transition: width var(--transicao); }
+.ps-combo--cheio .ps-combo__barra { background: var(--amarelo); }
+.ps-combo--cheio .ps-combo__rotulo { color: var(--amarelo); }
+.ps-pista { display: grid; gap: var(--esp-4); align-items: start; }
+@media (min-width: 860px) { .ps-pista { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+@media (max-width: 859px) {
+  /* celular: conta e respostas em cima (sem rolar no meio da corrida) e o box menor embaixo */
+  .ps-comando { order: -1; }
+  .ps-pista .ps-palco { max-width: min(300px, 34vh); }
+  .ps-pista .ps-conta { min-height: 0; padding: var(--esp-3); }
+  .ps-conta { min-height: 0; padding: var(--esp-3); }
+  .ps-painel { gap: var(--esp-2); }
+}
+.ps-palco { max-width: 420px; width: 100%; justify-self: center; }
+.ps-cena { display: block; width: 100%; height: auto; border-radius: var(--raio); border: 1px solid var(--borda); }
+.ps-asfalto { fill: var(--superficie); }
+.ps-faixa { stroke: var(--amarelo); stroke-width: 4; stroke-dasharray: 14 10; opacity: 0.5; fill: none; }
+.ps-marca { fill: none; stroke: var(--texto); stroke-width: 2; stroke-dasharray: 6 4; opacity: 0.35; }
+.ps-carro, .ps-pneu, .ps-ok { transition: transform 700ms cubic-bezier(.2, .8, .2, 1), opacity 200ms; }
+.ps-cena--chegando .ps-carro, .ps-cena--chegando .ps-pneu { transform: translateY(-460px); transition: none; }
+.ps-cena--saindo .ps-carro, .ps-cena--saindo .ps-pneu, .ps-cena--saindo .ps-ok { transform: translateY(520px); transition: transform 900ms cubic-bezier(.6, 0, .9, .4); }
+.ps-corpo { fill: var(--coral); stroke: var(--fundo-fundo); stroke-width: 3; }
+.ps-lateral { fill: var(--coral); stroke: var(--fundo-fundo); stroke-width: 3; }
+.ps-asa { fill: var(--superficie-2); stroke: var(--turquesa); stroke-width: 3; }
+.ps-cockpit { fill: var(--fundo-fundo); }
+.ps-piloto { fill: var(--amarelo); stroke: var(--fundo-fundo); stroke-width: 2; }
+.ps-numero { fill: var(--texto); font: 800 22px var(--fonte-mono); }
+.ps-pneu rect:first-child { fill: var(--fundo-fundo); stroke: var(--texto-suave); stroke-width: 2; }
+.ps-pneu__aro { fill: var(--texto-suave); }
+.ps-capacete { fill: var(--turquesa); stroke: var(--fundo-fundo); stroke-width: 3; }
+.ps-capacete--2 { fill: var(--amarelo); }
+.ps-pistola { fill: var(--texto-suave); stroke: var(--fundo-fundo); stroke-width: 1.5; }
+.ps-pneu-novo { fill: var(--fundo-fundo); stroke: var(--texto-suave); stroke-width: 3; }
+.ps-braco { stroke: var(--texto); stroke-width: 4; stroke-linecap: round; opacity: 0; transition: opacity var(--transicao); }
+.ps-porca { fill: var(--amarelo); }
+.ps-ok { opacity: 0; transition: opacity var(--transicao); }
+.ps-ok circle { fill: var(--turquesa); stroke: var(--fundo-fundo); stroke-width: 3; }
+.ps-ok path { fill: none; stroke: var(--texto-escuro); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.ps-roda--vez .ps-marca { stroke: var(--amarelo); opacity: 1; stroke-dasharray: none; stroke-width: 3; }
+.ps-roda--trocando .ps-pistola { transform-box: fill-box; transform-origin: center; animation: ps-girar 220ms linear infinite; }
+.ps-roda--trocando .ps-pneu { opacity: 0.25; transition: opacity 200ms; }
+.ps-roda--pronta .ps-braco, .ps-roda--pronta .ps-ok { opacity: 1; }
+.ps-roda--pronta .ps-pneu-novo { opacity: 0; }
+.ps-roda--erro .ps-porca { animation: ps-cair 700ms ease-in forwards; }
+.ps-roda--erro .ps-mec--pistola { animation: ps-tremer 300ms ease 2; }
+@keyframes ps-girar { to { transform: rotate(360deg); } }
+@keyframes ps-cair { to { transform: translate(18px, 40px); opacity: 0; } }
+@keyframes ps-tremer { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+.ps-semaforo rect { fill: var(--fundo-fundo); stroke: var(--borda); stroke-width: 2; }
+.ps-luz--vermelha { fill: var(--coral); }
+.ps-luz--verde { fill: rgba(230, 241, 255, 0.15); }
+.ps-semaforo--verde .ps-luz--vermelha { fill: rgba(230, 241, 255, 0.15); }
+.ps-semaforo--verde .ps-luz--verde { fill: var(--turquesa-claro); }
+.ps-comando { display: grid; gap: var(--esp-3); align-content: start; }
+.ps-conta { display: grid; gap: var(--esp-1); min-height: 120px; padding: var(--esp-4); border-radius: var(--raio); background: var(--fundo-fundo); border: 2px solid var(--borda); text-align: center; }
+.ps-conta__roda { font: 700 0.78rem var(--fonte-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--turquesa-claro); }
+.ps-conta__x { font: 800 1.1rem var(--fonte-mono); color: var(--amarelo); }
+.ps-conta__expressao { font: 800 clamp(1.4rem, 5vw, 2.1rem) var(--fonte-mono); color: var(--texto); overflow-wrap: anywhere; }
+.ps-conta__aviso { color: var(--texto-suave); align-self: center; }
+.ps-janela { height: 8px; border-radius: 4px; background: rgba(230, 241, 255, 0.08); overflow: hidden; }
+.ps-janela__barra { display: block; height: 100%; width: 100%; background: var(--turquesa); }
+.ps-respostas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-2); }
+.ps-alternativa { display: flex; align-items: center; justify-content: center; gap: var(--esp-2); min-height: 60px; border-radius: var(--raio-pequeno); border: 2px solid var(--borda); background: var(--superficie-2); color: var(--texto); font: 800 1.4rem var(--fonte-mono); cursor: pointer; }
+.ps-alternativa:hover:not(:disabled) { border-color: var(--turquesa); }
+.ps-alternativa kbd { font: 700 0.7rem var(--fonte-mono); color: var(--texto-suave); border: 1px solid var(--borda); border-radius: 4px; padding: 0 4px; }
+.ps-form { grid-column: 1 / -1; display: flex; gap: var(--esp-2); }
+.ps-campo { flex: 1; min-width: 0; font: 800 1.4rem var(--fonte-mono); text-align: center; }
+.ps-aviso { min-height: 1.5em; font-weight: 700; text-align: center; color: var(--texto-suave); }
+.ps-aviso--perfeito { color: var(--turquesa-claro); }
+.ps-aviso--bom { color: var(--texto); }
+.ps-aviso--lento { color: var(--amarelo); }
+.ps-aviso--erro { color: var(--coral); }
+.ps-resumo__titulo { font-size: clamp(1.5rem, 5vw, 2rem); margin: 0; }
+.ps-resumo__titulo--recorde { color: var(--amarelo); }
+.ps-resumo__titulo--rapido { color: var(--turquesa-claro); }
+.ps-resumo__titulo--lento { color: var(--coral); }
+.ps-resumo__tempo strong { font: 800 1.6rem var(--fonte-mono); }
+.ps-resumo__pontos { display: inline-flex; align-items: center; gap: var(--esp-2); font-weight: 800; color: var(--amarelo); }
+.ps-resumo__sub { font-size: 0.95rem; margin: var(--esp-2) 0 0; }
+.ps-resumo__rodas { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-1); }
+@media (min-width: 600px) { .ps-resumo__rodas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ps-resumo__roda { display: grid; gap: 2px; padding: var(--esp-2) var(--esp-3); border-radius: var(--raio-pequeno); background: rgba(230, 241, 255, 0.04); border-left: 3px solid var(--turquesa); }
+.ps-resumo__roda--bom { border-left-color: var(--texto-suave); }
+.ps-resumo__roda--lento { border-left-color: var(--amarelo); }
+.ps-resumo__roda strong { font-family: var(--fonte-mono); }
+.ps-resumo__erros ol { margin: 0; padding-left: 1.2em; display: grid; gap: var(--esp-3); }
+.ps-resumo__passos { margin-top: var(--esp-1); color: var(--texto-suave); font-family: var(--fonte-mono); font-size: 0.88rem; }
+
 /* ---------- Tiro ao Alvo ---------- */
 .sd-tiro { position: relative; display: grid; gap: var(--esp-3); }
 .sd-tiro__regra { margin: 0; text-align: center; font-size: clamp(1.15rem, 3.6vw, 1.6rem); font-weight: 800; color: var(--amarelo); min-height: 1.5em; }
@@ -239,4 +346,6 @@
 @media (prefers-reduced-motion: reduce) {
   .sd-tiro__regra--nova, .sd-bat__bomba-luz, .sd-bat--boom .sd-bat__mesa, .sd-bat__form--tremer { animation: none; }
   .sd-tiro__agua-barra, .sd-bat__lado { transition: none; }
+  .ps-carro, .ps-pneu, .ps-braco, .ps-ok, .ps-combo__barra, .ps-cena--saindo .ps-carro, .ps-cena--saindo .ps-pneu, .ps-cena--saindo .ps-ok { transition: none; }
+  .ps-roda--trocando .ps-pistola, .ps-roda--erro .ps-porca, .ps-roda--erro .ps-mec--pistola { animation: none; }
 }
