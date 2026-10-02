@@ -521,7 +521,7 @@
 /* ---------- Palavrinha (x1, x2, x4) ----------
    Lugar certo: turquesa com barrinha embaixo; em outro lugar: amarelo com bolinha no canto;
    não está: apagada. Forma + cor, para quem não distingue cores. --tam vem do JS (cabe na tela). */
-.pal { --tam: 52px; --vao: 6px; display: grid; gap: var(--esp-4, 16px); }
+.pal { --tam: 52px; --vao: 6px; display: grid; gap: var(--esp-4, 16px); min-width: 0; max-width: 100%; }
 .pal-abertura { gap: var(--ritmo-cartoes, 16px); }
 .pal-cartao { display: grid; gap: var(--esp-3, 12px); }
 .pal-cartao .cartao__titulo { margin: 0; }

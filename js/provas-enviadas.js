@@ -459,7 +459,7 @@ const ProvasEnviadas = (() => {
         h('span', { class: 'rotulo', text: `Upload de prova · ${nomeCurso(r.trilhaId)}` }),
         h('h1', { id: 'upload-prova-titulo', tabindex: '-1', text: 'Confira a prova' }),
         h('p', { class: 'area-cabeca__sub', text: `Encontrei ${plural(r.questoes.length, 'questão', 'questões')} em "${r.titulo}". Corrija o que o leitor entendeu errado e marque a resposta certa quando faltar.` })),
-      r.avisos.length ? h('div', { class: 'aviso', role: 'note' }, h('strong', { text: 'Atenção' }), h('ul', {}, r.avisos.map((a) => h('li', { text: a })))) : null,
+      r.avisos.length ? h('div', { class: 'aviso', role: 'note' }, h('strong', { text: 'Atenção' }), h('ul', {}, r.avisos.map((a) => h('li', { text: a })))) : '',
       status,
       lista,
       h('div', { class: 'conferir__rodape' },

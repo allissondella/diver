@@ -708,9 +708,11 @@ as $$
   partidas as (
     select e.aluno_id, e.detalhes
       from public.eventos_atividade e
-      join public.matriculas m on m.aluno_id = e.aluno_id and m.trilha_id = p_curso
-      join public.perfis p on p.id = e.aluno_id and p.papel = 'aluno' and p.ativo
-     where (select ok from pode) and (select tentativas from maximo) is not null
+      join public.perfis p on p.id = e.aluno_id and p.ativo
+     where (select ok from pode)
+       -- entra quem é do curso (aluno ou professor matriculado) e o admin, que joga em qualquer curso
+       and (p.papel = 'admin' or exists (select 1 from public.matriculas m where m.aluno_id = e.aluno_id and m.trilha_id = p_curso))
+       and (select tentativas from maximo) is not null
        and e.tipo = 'jogo_concluido' and e.curso_id = p_curso
        and e.detalhes ->> 'jogo' = 'palavrinha' and e.detalhes ->> 'variante' = p_variante
        and (e.detalhes ->> 'data') ~ '^\d{4}-\d{2}-\d{2}$'
@@ -736,7 +738,8 @@ $$;
 
 -- Ranking Diver GLOBAL da Palavrinha: todos os cursos juntos. Cada linha é uma pessoa num curso
 -- ("Ana S." · Radiologia): quem faz dois cursos aparece uma vez em cada. Mesma pontuação e mesmos
--- períodos do ranking do curso. Só alunos ativos, só partidas de cursos em que estão matriculados.
+-- períodos do ranking do curso. Entram pessoas ativas nas partidas de cursos em que estão matriculadas
+-- (alunos e professores) e o admin, que joga em qualquer curso.
 -- Qualquer pessoa logada e ativa consulta (o placar mostra só nome curto, curso e pontos).
 create or replace function public.ranking_palavrinha_global(p_variante text default 'x1', p_periodo text default 'mes')
 returns table (posicao integer, nome text, curso_id text, pontos integer, vitorias integer, partidas integer, sou_eu boolean)
@@ -752,9 +755,10 @@ as $$
   partidas as (
     select e.aluno_id, e.curso_id, e.detalhes
       from public.eventos_atividade e
-      join public.matriculas m on m.aluno_id = e.aluno_id and m.trilha_id = e.curso_id
-      join public.perfis p on p.id = e.aluno_id and p.papel = 'aluno' and p.ativo
-     where (select ok from pode) and (select tentativas from maximo) is not null
+      join public.perfis p on p.id = e.aluno_id and p.ativo
+     where (select ok from pode)
+       and (p.papel = 'admin' or exists (select 1 from public.matriculas m where m.aluno_id = e.aluno_id and m.trilha_id = e.curso_id))
+       and (select tentativas from maximo) is not null
        and e.tipo = 'jogo_concluido' and e.curso_id is not null
        and e.detalhes ->> 'jogo' = 'palavrinha' and e.detalhes ->> 'variante' = p_variante
        and (e.detalhes ->> 'data') ~ '^\d{4}-\d{2}-\d{2}$'

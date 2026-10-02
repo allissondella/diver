@@ -5,6 +5,9 @@
 
 ---
 
+## 2026-10-02 · Correções: "nullnull", Palavrinha x2 no celular e Ranking Diver vazio
+- **Feito:** Minhas Estatísticas mostrava "nullnull" quando não havia perguntas por modo (o `replaceChildren` escrevia o `null`); corrigido ali e numa tela de prova enviada. Palavrinha x2 com palavras longas saía da tela no celular (o tabuleiro media a própria largura depois de crescer): agora mede a área do jogo e fica lado a lado como o x4. Ranking Diver vazio para quem testava como admin: o ranking contava só alunos; agora entram as pessoas matriculadas no curso (alunos e professores) e o admin. Funções aplicadas e testadas no Supabase de testes pelo conector.
+
 ## 2026-10-02 · Perfil: "Mais opções" alinhado e decisões da Recapitulação
 - **Feito:** "Mais opções" do Perfil virou uma lista só, alinhada (ícone · texto · botões), no lugar de cartões soltos de alturas diferentes; no celular o botão desce para baixo do texto. Texto do backup certo para quem tem login ("já fica salvo na sua conta"). Recapitulação do Ensino Médio: as 3 decisões em aberto foram tomadas (Português → Matemática → Lógica; diagnóstico fixo com 2 perguntas por tema; o diagnóstico calibra a dificuldade no Acervo, só com números somados).
 

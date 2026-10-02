@@ -428,9 +428,13 @@ const Palavrinha = (() => {
         });
       }
 
-      /** Letras do tamanho que cabe na largura e na altura. No x4, 4 tabuleiros lado a lado se couber melhor (computador). */
+      /**
+       * Letras do tamanho que cabe na largura e na altura. Mede a área do jogo (não o próprio tabuleiro,
+       * que cresce com as letras e nunca deixaria encolher). No x2, sempre lado a lado (como o x4 no
+       * celular); no x4, 4 lado a lado se couber melhor (computador).
+       */
       function ajustarTamanho() {
-        const larguraUtil = raiz.clientWidth || 340;
+        const larguraUtil = Math.min(ctx.container.clientWidth || 340, document.documentElement.clientWidth - 16) || 340;
         const alturaUtil = Math.max(240, window.innerHeight - 400);
         const vao = v.tabuleiros === 1 ? 6 : 4;
         const maximo = v.tabuleiros === 1 ? 58 : 44;
