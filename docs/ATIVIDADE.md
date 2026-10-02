@@ -55,7 +55,7 @@ A Palavrinha manda em `registro`: `jogo: 'palavrinha'`, `variante` (`x1`, `x2`, 
 
 ## 5c. Sala de Descompressão: placar da sala
 - Cada partida gera um `jogo_concluido` **sem curso** (`curso_id` nulo) com `detalhes.jogo` = `sala-investigacao`, `sala-palavrinha`, `sala-tiro` ou `sala-batata`, `pontos`, `data` (AAAA-MM-DD do aparelho) e extras (`venceu`, `tentativas`, `visitas`, `erros`, `acertos`, `modo`...).
-- **`ranking_sala(p_jogo, p_periodo)`** (security definer; `p_jogo` = `geral` ou o id sem "sala-"; `p_periodo` = `mes` ou `geral`): Investigação e Palavrinha somam **o melhor de cada dia**; Tiro ao Alvo vale **o recorde**; Batata Quente soma as vitórias **até 150 por dia**; "geral" = soma dos quatro. Todo mundo junto (sem curso), qualquer pessoa ativa e logada consulta; nome curto. Devolve `posicao, nome, pontos, sou_eu`.
+- **`ranking_sala(p_jogo, p_periodo)`** (security definer; `p_jogo` = `geral` ou o id sem "sala-"; `p_periodo` = `mes` ou `geral`): Investigação e palavra do dia da Palavrinha somam **o melhor de cada dia**; o treino da Palavrinha (`modo: "treino"`) soma **até 60 por dia**; Tiro ao Alvo vale **o recorde**; Batata Quente soma as vitórias **até 150 por dia** + **o recorde do Sozinho** (`modo: "sozinho"`); "geral" = soma dos quatro. Todo mundo junto (sem curso), qualquer pessoa ativa e logada consulta; nome curto. Devolve `posicao, nome, pontos, sou_eu`.
 - Minhas Estatísticas mostra os jogos da sala com o nome "… (Sala de Descompressão)".
 
 ## 6. Retrospectiva do ano (futuro)

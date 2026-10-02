@@ -98,7 +98,7 @@ const Descompressao = (() => {
           feito ? h('span', { class: 'chip chip--ativo' }, icone('i-check'), `Hoje: ${plural(d.hoje[j.id].pontos, 'ponto', 'pontos')}`)
             : recorde ? h('span', { class: 'jogo-card__hist', text: `Recorde: ${recorde}` })
               : j.diario ? h('span', { class: 'chip chip--hoje', text: 'Novo hoje' }) : null,
-          h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => abrir(j.id), 'aria-label': `${feito ? 'Ver' : 'Jogar'} ${j.nome}` }, feito ? 'Ver' : 'Jogar')));
+          h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => abrir(j.id), 'aria-label': `${feito && !j.treino ? 'Ver' : 'Jogar'} ${j.nome}` }, feito && !j.treino ? 'Ver' : 'Jogar')));
     }));
     container.append(...[grade, placar(), ehEquipe() ? horarios() : null].filter(Boolean));
   }
@@ -147,7 +147,7 @@ const Descompressao = (() => {
           h('span', { class: 'pal-ranking__quem' }, h('span', { class: 'pal-ranking__nome', text: l.sou_eu ? `${l.nome} (você)` : l.nome })),
           h('span', { class: 'pal-ranking__pontos', text: `${l.pontos} pts` }))))
           : h('p', { class: 'texto-suave', text: 'Ninguém pontuou ainda. A primeira posição está esperando você.' }),
-        h('p', { class: 'texto-suave pal-ranking__nota', text: 'Investigação e Palavrinha: o melhor de cada dia, somado. Tiro ao Alvo: o recorde. Batata Quente: vitórias do dia (até 150 por dia).' }));
+        h('p', { class: 'texto-suave pal-ranking__nota', text: 'Investigação e palavra do dia: o melhor de cada dia, somado; treino da Palavrinha: até 60 por dia. Tiro ao Alvo: o recorde. Batata Quente: vitórias do dia (até 150 por dia) + o recorde do Sozinho.' }));
       } catch (e) {
         lista.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui carregar o placar agora.' }));
       }

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-02 · Sala: Tiro por níveis, Investigação com desafios, Batata Sozinho/Treino e Palavrinha com treino
+- **Pedido:** Tiro mais rápido e com mais opções, 1 ponto por acerto, nível sobe ao acertar todos os alvos certos, bem mais difícil do nível 2 e muito mais alvos; deixar passar um alvo certo elimina. Investigação mais divertida, com atividades (tipo Palavrinha; e-mails iguais ao desafio de cibersegurança). Batata Quente com modo Sozinho (tempo diminuindo, nível a cada X segundos) e Treino. Palavrinha da sala só "Palavrinha", com Treino livre valendo bem menos.
+- **Feito:** Tiro com níveis por leva (8, 13, 18... placas certas), 26 regras + duplas + "Tudo MENOS", placas sem nascer sobrepostas. Investigação com 8 desafios (cofre, e-mails do banco do curso de ciber, cifra, câmera, fios, anagramas, caça-palavras, quem mente) que liberam as pistas. Batata: Sozinho (nível a cada 30 s, vale o recorde) e Treino (sem vidas, sem pontos). Palavrinha: modos Palavra do dia e Treino livre (×2 em vez de ×10, até 60/dia). `ranking_sala` separa o recorde do Sozinho e o treino da Palavrinha.
+- **Testes:** computador e celular: robô perfeito sobe os níveis do Tiro e os dois jeitos de eliminação; os 8 desafios; Sozinho até o fim e Treino com explosão sem perder; Palavrinha dia + treino + nova palavra. Placar conferido no Supabase de testes (95 e 108 pontos esperados).
+
 ## 2026-10-02 · Palavrinha do Dia de 5 a 10 letras e dicionário sem palavrões
 - **Pedido:** cada dia uma palavra nova, de 5 a 10 letras; para economizar, só listas de 5 a 10 letras, sem palavras de baixo calão ou ofensivas, num banco nosso. E falar português comigo (nada de termos em inglês).
 - **Feito:** banco com 1.181 palavras do dia a dia (5 a 10 letras), escolhidas à mão e conferidas: não repete por mais de 3 anos. Uma lista de palpites por tamanho (`data/dicionario/palavrinha/5.txt` a `10.txt`); o jogo baixa só a do dia. Tabuleiro se ajusta ao tamanho (cabe 10 letras no celular). Palavrões e ofensas tirados de todas as listas, inclusive da Batata Quente. Corrigido um buraco no dicionário: palavras com prefixo ("aeroporto", "intervalo", "protocolo", "internet", "autonomia") eram recusadas; a Palavrinha agora tem todos os prefixos e a Batata confere prefixo + palavra na hora. O robô da Batata ganhou palavras do dia a dia.

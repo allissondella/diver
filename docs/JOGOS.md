@@ -237,22 +237,35 @@ _Cruzadinha Submarina e Batalha de Turmas ao vivo ficam para depois do lançamen
 
 #### Investigação (`sala-investigacao`) — 1 por dia, igual para todo mundo
 - Navio Aurora: 8 suspeitos, 8 armas, 8 cômodos; a data sorteia a solução, a história do dia e as 21 pistas (álibis e descartes), espalhadas pelos 8 cômodos.
-- Revistar um cômodo revela as pistas dele (−70 pontos cada); caderno com ✕ (descartado) e ? (suspeito); duas acusações: a errada custa 300 e diz quantas das três escolhas estavam certas.
-- Pontos: 1000 − 70 × cômodos − 300 × erros (mínimo 100 se resolver; 0 se não). O caso do dia fica salvo (pode sair e voltar).
+- **Cada cômodo tem um desafio** (sorteado pela data: igual para todo mundo). Venceu: todas as pistas do cômodo (2 ou 3) e +60. Não deu (ou desistiu): uma pista só e +10. Não dá para refazer no mesmo dia.
+  - **Ponte · Cofre do capitão:** senha de 5 letras (palavra do mar), 6 tentativas, cores da Palavrinha, palpite conferido no dicionário.
+  - **Enfermaria · E-mails:** triagem igual à Isca do curso de cibersegurança, **com o mesmo banco de e-mails** (`data/trilhas/ciberseguranca-essencial.json`, `casos[0].emails`): 2 golpes + 3 legítimos, endereço, links com o endereço real, cabeçalho (SPF/DKIM/DMARC); pode errar 1. O resumo explica cada um e diz "Pesquise na internet: …".
+  - **Biblioteca · Mensagem cifrada:** cifra de César; gire a roda até ler e escreva a última palavra (3 tentativas).
+  - **Salão · Câmera de segurança:** 5 pessoas passam no corredor; toque nos nomes na mesma ordem (a gravação passa 2 vezes).
+  - **Casa de máquinas · Painel de fios:** ligue 5 termos do navio ao significado (bombordo, proa, leme...); até 2 erros.
+  - **Cozinha · Receita embaralhada:** 3 ingredientes com as letras misturadas; até 4 erros (dica da 1ª letra).
+  - **Porão · Caça-palavras:** 8×8, 4 palavras na horizontal ou vertical; toque na primeira e na última letra.
+  - **Convés · Quem está mentindo?:** fatos confirmados + 3 depoimentos; uma chance.
+- Caderno com ✕ (descartado) e ? (suspeito); duas acusações: errou, eu conto quantas das três escolhas estavam certas. Depois da acusação, os desafios que faltam fecham.
+- Pontos: 60 por desafio vencido (10 se não deu) + 520 pela acusação certa na 1ª (260 na 2ª). Máximo 1000. Estado do dia salvo (`versao: 2`; estado antigo do dia recomeça).
 
-#### Palavrinha do Dia (`sala-palavrinha`) — 1 por dia, igual para todo mundo
+#### Palavrinha (`sala-palavrinha`) — palavra do dia (igual para todo mundo) + Treino livre
 - **Palavra nova todo dia, de 5 a 10 letras**, 6 tentativas; o tabuleiro tem o tamanho da palavra do dia.
 - **Nosso banco** (`data/sala/palavras-do-dia.json`, 1.181 palavras do dia a dia, sem palavrões nem ofensas, escolhidas à mão e conferidas no dicionário) é embaralhado com semente fixa e a data escolhe a posição: **nenhuma palavra se repete por mais de 3 anos**. A partida guarda a palavra dela (`partida.alvo`): se o banco mudar no meio do dia, quem já começou continua com a mesma.
 - Só vale palpite que existe no dicionário: `data/dicionario/palavrinha/<n>.txt`, uma lista por tamanho (5 a 10 letras, com todos os prefixos do VERO, sem palavrões); **o jogo baixa só a lista do tamanho do dia** (19 KB com 5 letras, 750 KB com 10). Senão: **"Essa palavra não faz parte do nosso dicionário brasileiro."** e a tentativa não é gasta. Teclado na tela e no teclado físico.
-- Pontos: (7 − tentativas) × 10. Estatísticas no aparelho: jogos, % de acertos, dias seguidos, distribuição.
+- **Treino livre** (botão no topo e no fim da palavra do dia): palavras sorteadas do mesmo banco (nunca a do dia; evita as 200 últimas do treino), quantas quiser, "Nova palavra" ao terminar.
+- Pontos: palavra do dia (7 − tentativas) × 10; treino (7 − tentativas) × 2, até 60 por dia no placar (`detalhes.modo = "treino"`). Estatísticas da palavra do dia no aparelho: jogos, % de acertos, dias seguidos, distribuição.
 
 #### Tiro ao Alvo (`sala-tiro`) — à vontade, vale o recorde
-- Pistola d'água em primeira pessoa no `<canvas>` (mira, coice, jatos, respingos). Uma **regra** no alto ("Só os peixes", "Só números pares", "Só as vogais", "Só números maiores que 50", "Só os círculos", "Só as frutas", "Só múltiplos de 3") muda a cada 15 s.
-- **Placa errada = eliminação na hora** (a tela diz por quê: "GOLFINHO não é peixe."). Placa certa que escapa custa uma gota (3). Tanque de 10 jatos que recarrega sozinho. Mais rápido com o tempo; depois de 25 s as placas deslizam (não com "reduzir movimento").
-- Pontos: 10 por acerto + 5 a cada 5 acertos seguidos.
+- Pistola d'água em primeira pessoa no `<canvas>` (mira, coice, jatos, respingos), **por níveis**. Cada nível tem uma **regra** (26 simples: peixes, mamíferos, aves, bichos que voam, insetos, répteis, frutas, instrumentos, cores, capitais do Brasil, países da América do Sul, palavras com acento, pares, ímpares, maiores que 50, menores que 20, múltiplos de 3 e de 5, primos, contas que dão 10 ou 12, vogais, consoantes, círculos, triângulos, estrelas). Do nível 4 em diante pode vir **em dupla** ("Só PEIXES ou FRUTAS"); do 5, **"Tudo MENOS ..."**.
+- **Sobe de nível quando acerta todas as placas certas da leva:** 8 no nível 1, +5 a cada nível. O 1 é aquecimento; do 2 em diante a placa dura bem menos (2,05 s → mínimo 0,9 s), nasce mais rápido, fica menor, desliza (e balança a partir do 3) e aparecem até 4 + nível ao mesmo tempo. Placas não nascem uma em cima da outra.
+- **Placa errada = eliminação. Placa certa que escapa = eliminação.** A tela diz por quê ("GOLFINHO não vale em “Só os PEIXES” (é mamífero)"). Tanque de 12 jatos que recarrega sozinho.
+- Pontos: **1 por acerto**; vale o recorde. Para os testes automáticos há um gancho só quando `window.__diverTeste` existe.
 
 #### Batata Quente (`sala-batata`) — à vontade
 - Uma sílaba (lista `data/sala/silabas.json`: 2 letras no começo, depois metade de 3 letras); digite uma palavra do dicionário com ela (3+ letras, sem repetir na partida) antes de a bomba explodir. Pavio de 10, 15 ou 20 s, menos 0,4 s por rodada (mínimo 5 s). 3 vidas; usou todas as letras de A a Z (sem K, W e Y)? +1 vida (até 5).
-- **Modos:** contra o robô (Fácil, Médio, Difícil: tempo de resposta, chance de travar e tamanho das palavras; o Difícil caça as letras que faltam no alfabeto dele), **lado a lado** no mesmo computador (dois nomes, uma caixa de texto que passa de um para o outro) e **online** (sala com código de 4 letras; o banco confere vez, prazo, sílaba e repetidas nas funções `batata_*`; o app confere o dicionário; quem sai perde).
-- Pontos: vitória online 30; robô 10/15/25; lado a lado 0. O placar soma até 150 por dia.
+- **Sozinho:** a bomba volta sempre para você; o pavio começa no tempo escolhido e encurta 0,12 s por palavra e 1,2 s por nível (mínimo 3,5 s); **o nível sobe a cada 30 s** (do 3 em diante metade das sílabas tem 3 letras; do 5, três em cada quatro). 3 vidas. Pontos: 1 por palavra + 5 por nível alcançado; vale o recorde (`detalhes.modo = "sozinho"`).
+- **Treino:** igual ao Sozinho (o nível também sobe), mas a bomba não tira vida e não vale ponto; "Encerrar treino" quando quiser.
+- **Outros modos:** contra o robô (Fácil, Médio, Difícil: tempo de resposta, chance de travar e tamanho das palavras; o Difícil caça as letras que faltam no alfabeto dele), **lado a lado** no mesmo computador (dois nomes, uma caixa de texto que passa de um para o outro) e **online** (sala com código de 4 letras; o banco confere vez, prazo, sílaba e repetidas nas funções `batata_*`; o app confere o dicionário; quem sai perde).
+- Pontos: vitória online 30; robô 10/15/25; lado a lado e treino 0. As vitórias somam até 150 por dia; o recorde do Sozinho soma à parte.
 
