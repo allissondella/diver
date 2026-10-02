@@ -168,6 +168,17 @@ h1, h2, h3 { text-wrap: balance; }
 /* ---------- Perfil ---------- */
 .perfil-topo { gap: var(--esp-5); }
 .modos { align-items: start; }
+/* "Mais opções": uma lista alinhada (ícone · texto · ações), separada por linhas finas */
+.perfil-opcoes { list-style: none; margin: 0; padding: 0 var(--ritmo-cartao-pad); }
+.perfil-opcao { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--esp-4); padding-block: var(--esp-5); }
+.perfil-opcao + .perfil-opcao { border-top: 1px solid var(--borda); }
+.perfil-opcao__texto h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: var(--esp-1); }
+.perfil-opcao__texto p { font-size: 0.9rem; color: var(--texto-suave); max-width: 60ch; }
+.perfil-opcao__acoes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--esp-2); }
+@media (max-width: 699px) { /* tela estreita: o botão desce para baixo do texto, alinhado com ele */
+  .perfil-opcao { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .perfil-opcao__acoes { grid-column: 2; justify-content: flex-start; }
+}
 @media (max-width: 479px) {
   .perfil-topo { flex-wrap: nowrap; gap: var(--esp-4); }
   .perfil-topo__mascote { width: 76px; flex-shrink: 0; }
