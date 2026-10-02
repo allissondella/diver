@@ -97,28 +97,29 @@ const Perfil = (() => {
               h('td', { 'data-rotulo': 'Fases', text: `${x.fases}/${x.trilha.fases.length}` }),
               h('td', { 'data-rotulo': 'Conquistas', text: `${x.conquistas}/${Conquistas.LISTA.length}` }))))))),
       h('h2', { class: 'secao-titulo', text: 'Mais opções' }),
-      h('div', { class: 'modos' },
-        h('div', { class: 'cartao modo' },
-          h('div', { class: 'modo__cabeca' },
-            h('span', { class: 'modo__icone modo__icone--simulado' }, icone('i-perola')),
-            h('div', {}, h('h3', { text: 'Loja de pérolas' }), h('p', { text: 'Oxigênio extra, congelar a sequência, Dias de Descanso e itens para o Diver. Chega na Semana 9 do roadmap.' }))),
-          h('span', { class: 'chip', text: 'Em breve' })),
-        h('div', { class: 'cartao modo' },
-          h('div', { class: 'modo__cabeca' },
-            h('span', { class: 'modo__icone modo__icone--revisao' }, icone('i-download')),
-            h('div', {}, h('h3', { text: 'Backup dos seus dados' }), h('p', { text: 'Enquanto não tem login, seu progresso mora neste navegador. Baixe um backup para guardar ou levar para outro aparelho. (PDFs não entram no backup.)' }))),
-          h('div', { class: 'modo__acoes' },
-            h('button', { type: 'button', class: 'botao botao--secundario', onclick: baixar }, icone('i-download'), 'Baixar backup'),
-            h('label', { class: 'botao botao--fantasma' }, icone('i-upload'), 'Restaurar', inputBackup))),
-        h('div', { class: 'cartao modo' },
-          h('div', { class: 'modo__cabeca' },
-            h('span', { class: 'modo__icone modo__icone--upload' }, icone('i-bolha')),
-            h('div', {}, h('h3', { text: 'Tutoriais' }), h('p', { text: 'Na primeira visita a cada página, o Diver mostra onde fica cada coisa. Quer ver tudo de novo?' }))),
-          h('div', { class: 'modo__acoes' },
-            h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => {
-              Tutorial.zerar();
-              UI.toast('Tutoriais zerados', 'Eles aparecem de novo quando você entrar em cada página.', 'i-bolha');
-            } }, icone('i-revisao'), 'Rever todos os tutoriais')))));
+      // Uma lista só, cada opção numa linha: ícone · o que é · botão (no celular, o botão desce)
+      h('ul', { class: 'cartao perfil-opcoes' },
+        opcao('i-download', 'modo__icone--upload', 'Backup dos seus dados',
+          Nuvem.ativa
+            ? 'Seu progresso já fica salvo na sua conta. Se quiser, baixe uma cópia para guardar. (PDFs não entram no backup.)'
+            : 'Sem login, seu progresso mora neste navegador. Baixe um backup para guardar ou levar para outro aparelho. (PDFs não entram no backup.)',
+          h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', onclick: baixar }, icone('i-download'), 'Baixar backup'),
+          h('label', { class: 'botao botao--fantasma botao--pequeno' }, icone('i-upload'), 'Restaurar', inputBackup)),
+        opcao('i-bolha', 'modo__icone--upload', 'Tutoriais', 'Na primeira visita a cada página, o Diver mostra onde fica cada coisa. Quer ver tudo de novo?',
+          h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', onclick: () => {
+            Tutorial.zerar();
+            UI.toast('Tutoriais zerados', 'Eles aparecem de novo quando você entrar em cada página.', 'i-bolha');
+          } }, icone('i-revisao'), 'Rever tutoriais')),
+        opcao('i-perola', 'modo__icone--simulado', 'Loja de pérolas', 'Oxigênio extra, congelar a sequência, Dias de Descanso e itens para o Diver.',
+          h('span', { class: 'chip', text: 'Em breve' }))));
+  }
+
+  /** Uma linha de "Mais opções": ícone, título, explicação e as ações à direita. */
+  function opcao(iconeId, corIcone, titulo, texto, ...acoes) {
+    return h('li', { class: 'perfil-opcao' },
+      h('span', { class: `modo__icone ${corIcone}`, 'aria-hidden': 'true' }, icone(iconeId)),
+      h('div', { class: 'perfil-opcao__texto' }, h('h3', { text: titulo }), h('p', { text: texto })),
+      h('div', { class: 'perfil-opcao__acoes' }, acoes));
   }
 
   function baixar() {

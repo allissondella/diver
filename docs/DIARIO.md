@@ -5,6 +5,9 @@
 
 ---
 
+## 2026-10-02 · Perfil: "Mais opções" alinhado e decisões da Recapitulação
+- **Feito:** "Mais opções" do Perfil virou uma lista só, alinhada (ícone · texto · botões), no lugar de cartões soltos de alturas diferentes; no celular o botão desce para baixo do texto. Texto do backup certo para quem tem login ("já fica salvo na sua conta"). Recapitulação do Ensino Médio: as 3 decisões em aberto foram tomadas (Português → Matemática → Lógica; diagnóstico fixo com 2 perguntas por tema; o diagnóstico calibra a dificuldade no Acervo, só com números somados).
+
 ## 2026-10-01 · Palavrinha: treino vale, Ranking Diver e tema que não entrega
 - **Feito:** o tema "Juros" aparecia para a palavra JUROS: 33 temas trocados por temas mais amplos e trava `Cartas.revela` (Palavrinha e Forca nunca mostram tema ou dica que entregue a palavra). **Treino livre** passa a valer XP, estatísticas e pontos no **Ranking Diver** (mensal); pérolas só na palavra do dia (`semPerolas` no Resultado padrão). Sequência = vitórias seguidas. Aviso do Ranking Diver na primeira vez que a pessoa abre a Palavrinha. **Mascote vira easter egg:** saiu o bloco "Seu mascote" do Perfil; setinhas discretas dos lados do mascote do topo passeiam pelas 40 variações (4 pinguins + 9 rostos humanos × 4 tons), sem texto. **Caixa do Diver no lugar dos avisos do navegador:** os 27 `confirm`/`prompt` viraram `UI.confirmar`/`UI.perguntar` (mascote triste ao sair do quiz, do jogo, da prova e da conta; botão coral para apagar e zerar; Esc e clicar fora cancelam; os atalhos do quiz não disparam com a caixa aberta). **Ranking global:** além do ranking do curso, "Todos os cursos" (`ranking_palavrinha_global`) mostra o nome e o curso de cada pessoa. Roadmap atualizado (D24, D81, D82, D114 feitos; D89, D94, D99 parciais).
 - **Pendência:** rodar o `setup.sql` de novo (testes e produção): o ranking passou a contar o treino.
