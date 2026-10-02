@@ -53,5 +53,10 @@ A Palavrinha manda em `registro`: `jogo: 'palavrinha'`, `variante` (`x1`, `x2`, 
 - **`ranking_caso(p_curso, p_caso)`** (security definer): soma `pontos_missao` de **todos os casos** da pessoa, contando cada mergulho **uma vez por caso** (o maior, se o evento vier repetido) e **sem o treino**. Eventos antigos sem `rodada` contam como caso "0". Entram alunos e professores matriculados no curso e o admin; só consulta quem é do curso (ou admin). Devolve `posicao, nome (curto), pontos, missoes, sou_eu`.
 - O painel lateral do jogo mostra o top 10 + você; sem login, mostra só os seus pontos.
 
+## 5c. Sala de Descompressão: placar da sala
+- Cada partida gera um `jogo_concluido` **sem curso** (`curso_id` nulo) com `detalhes.jogo` = `sala-investigacao`, `sala-palavrinha`, `sala-tiro` ou `sala-batata`, `pontos`, `data` (AAAA-MM-DD do aparelho) e extras (`venceu`, `tentativas`, `visitas`, `erros`, `acertos`, `modo`...).
+- **`ranking_sala(p_jogo, p_periodo)`** (security definer; `p_jogo` = `geral` ou o id sem "sala-"; `p_periodo` = `mes` ou `geral`): Investigação e Palavrinha somam **o melhor de cada dia**; Tiro ao Alvo vale **o recorde**; Batata Quente soma as vitórias **até 150 por dia**; "geral" = soma dos quatro. Todo mundo junto (sem curso), qualquer pessoa ativa e logada consulta; nome curto. Devolve `posicao, nome, pontos, sou_eu`.
+- Minhas Estatísticas mostra os jogos da sala com o nome "… (Sala de Descompressão)".
+
 ## 6. Retrospectiva do ano (futuro)
 O log já guarda tudo o que ela precisa: dias de estudo, questões por tema e dificuldade, jogos favoritos, notas e sequências. Quando for a hora, é uma função de leitura sobre `eventos_atividade`, sem mudar o que já é gravado.

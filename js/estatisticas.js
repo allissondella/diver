@@ -10,7 +10,9 @@
 const Estatisticas = (() => {
   const { h, icone, limpar, plural } = UI;
   const MODOS = { mergulho: 'Mergulho', simulado: 'Simulado', revisao: 'Revisão', prova: 'Prova final', enviada: 'Prova enviada' };
-  const nomeJogo = (id) => (id === 'palavrinha' ? 'Palavrinha' : ((typeof Jogos !== 'undefined' && Jogos.obter(id)) || {}).nome || id);
+  const nomeJogo = (id) => (id === 'palavrinha' ? 'Palavrinha'
+    : /^sala-/.test(id) && typeof Descompressao !== 'undefined' ? Descompressao.nome(id) || id
+      : ((typeof Jogos !== 'undefined' && Jogos.obter(id)) || {}).nome || id);
   const nomeCurso = (id) => (App.trilhas().find((t) => t.id === id) || {}).nome || id;
   const pct = (a, t) => (t ? Math.round((a / t) * 100) : 0);
   const fmt = (n) => Number(n || 0).toLocaleString('pt-BR');

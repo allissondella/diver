@@ -100,6 +100,12 @@ const Tutorial = (() => {
       { alvo: '.est-numeros', desenho: 'trofeu', titulo: 'Seus números', texto: 'Perguntas, jogos, revisões, simulados e provas, somando tudo. Cada coisa que você faz no Diver entra aqui sozinha.' },
       { alvo: '#est-curso', desenho: 'mapa', titulo: 'Um curso ou todos', texto: 'Escolha um curso para ver só ele, ou "Todos os cursos" para o mergulho completo.' },
     ],
+    descompressao: [
+      { desenho: 'diver', titulo: 'Sala de Descompressão', texto: 'Respira, Diver! Aqui é só para brincar e distrair, sem matéria. Vale para todo mundo, de qualquer curso.' },
+      { alvo: '#sd-jogos', desenho: 'controle', titulo: 'Quatro jogos', texto: 'Investigação e Palavrinha do Dia mudam todo dia (e são iguais para todo mundo). Tiro ao Alvo e Batata Quente são à vontade.' },
+      { alvo: '#sd-placar', desenho: 'trofeu', titulo: 'Placar da sala', texto: 'Os pontos daqui valem só este placar: nada de XP ou pérolas dos cursos. Ele zera todo mês.' },
+      { alvo: '#sd-horarios', desenho: 'relogio', titulo: 'Horários de foco', texto: 'Você pode fechar a sala para os alunos em horários de estudo. Admin e professores continuam entrando.' },
+    ],
     perfil: [
       { alvo: '.perfil-topo__info', desenho: 'trofeu', titulo: 'Seu nível geral', texto: 'O XP de todos os cursos somado. Cada mergulho, jogo e revisão empurra a barra.' },
     ],
