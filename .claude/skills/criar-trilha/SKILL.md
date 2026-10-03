@@ -122,6 +122,33 @@ Variante = a mesma habilidade de uma questão **nossa**, com outra situação e 
 - Gere, quando fizer sentido para o tema, blocos para os outros tipos de carta já suportados pelo motor (pares, verdadeiro/falso, sequências, adivinhas, palavras, casos) — consulte `docs/JOGOS.md` para o formato de cada um.
 - Marque explicitamente qualquer questão que dependa de um fato muito específico (data exata, fórmula, valor numérico, nome próprio) com um comentário `"revisar": "fato específico — conferir com especialista"` no JSON, para facilitar a etapa de revisão humana. Remova essa marca só depois da revisão confirmada.
 
+## 3.1 O caminho da fase e o artigo "Antes de mergulhar" (obrigatório em toda fase)
+
+Toda fase segue o caminho **📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar**, que aparece no topo do "Antes de mergulhar" (`js/artigo.js`). Cada passo precisa ter conteúdo:
+
+| Passo | O que a skill escreve | Onde fica |
+|---|---|---|
+| 📚 Aprender | `introducao` + **artigo** em `secoes` (2 a 4 seções curtas, linguagem simples, um conceito por seção, exemplo antes da regra) + `linhaDoTempo` e `mapa` quando fizerem sentido | `fases[].resumo` |
+| 🧠 Associar | `mapaMental` (3 a 5 ramos, 2 a 4 itens cada) + `associacoes` (4 a 6 "imagens de associação": emoji + conceito → ligação + o porquê) + `tabela` | `fases[].resumo` e blocos `pares`/`sequencias` |
+| 🃏 Praticar | questões da fase (pelo menos 8 fáceis e médias) | `questoes` |
+| ⚔️ Desafio | questões difíceis, adivinhas e prova do curso | `questoes`, `adivinhas`, `prova` |
+| 🔄 Revisar | `pontos` e `perolas` (resumo para revisar) e variantes das questões nossas | `fases[].resumo`, `variantes` |
+
+Formato dos campos novos (todos opcionais para o app, mas obrigatórios para esta skill quando se aplicam):
+
+```json
+"secoes": [{ "titulo": "Por que começar por aqui", "texto": ["parágrafo com **negrito**", "outro parágrafo"] }],
+"linhaDoTempo": [{ "quando": "1850", "fato": "Fim do tráfico e Lei de Terras." }],
+"mapaMental": { "centro": "Tema da fase", "ramos": [{ "titulo": "Ramo", "itens": ["item", "item"] }] },
+"associacoes": [{ "icone": "🧅", "conceito": "Casca de cebola", "liga": "sarcoma de Ewing", "porque": "Camadas de periósteo." }],
+"mapa": { "tipo": "brasil", "titulo": "Onde aconteceu", "pontos": [{ "titulo": "Salvador", "lat": -12.97, "lon": -38.5, "texto": "..." }] }
+```
+
+- **Linha do tempo**: quando há ordem no tempo (história, evolução de uma doença, faixas de idade, fases de um processo).
+- **Mapa**: `tipo: "brasil"` (pontos com `lat`/`lon`) quando a geografia explica o conteúdo; `tipo: "corpo"` (pontos com `onde`: cranio, cervical, ombro, cotovelo, punho, mao, toracica, lombar, pelve, quadril, femur, joelho, tibia, tornozelo, pe, halux) quando o lugar no corpo importa. Não force mapa onde ele não ajuda.
+- **Associações**: o emoji é a "imagem" que gruda (`docs/cadernos/professor-diver.md`, "Frase que gruda"); o `porque` é curto e explica a ligação.
+- Tudo autoral: nada de frase, esquema ou imagem copiados das fontes.
+
 ## 4. Autocheck de originalidade
 
 Antes de entregar, compare o texto gerado com os textos-fonte (provas e apostilas) procurando:

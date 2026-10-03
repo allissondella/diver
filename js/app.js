@@ -781,6 +781,33 @@ const App = (() => {
       document.body.append(dialogo);
     }
     const tabela = r.tabela && Array.isArray(r.tabela.colunas) && Array.isArray(r.tabela.linhas) ? r.tabela : null;
+    // Artigo da fase (js/artigo.js): 📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar
+    const blocoAprender = Artigo.aprender(r);
+    const blocoAssociar = Artigo.associar(r);
+    const ancoraAssociar = blocoAssociar.length ? h('div', { class: 'artigo__etapa', id: 'artigo-associar' },
+      h('p', { class: 'artigo__etapa-rotulo', text: '🧠 Associar' }), blocoAssociar) : null;
+    const rolarPara = (alvo) => {
+      const corpo = dialogo.querySelector('.dialogo__corpo');
+      if (!alvo) { corpo.scrollTop = 0; return; }
+      corpo.scrollTo({ top: alvo.offsetTop - corpo.offsetTop - 8, behavior: movimentoReduzido ? 'auto' : 'smooth' });
+    };
+    const temJogo = (id) => { const def = Jogos.obter(id); return def && estado.trilha && Jogos.estado(def, cartasDa(estado.trilha)) === 'disponivel'; };
+    const passos = Artigo.caminho({
+      aprender: () => rolarPara(null),
+      associar: () => {
+        if (ancoraAssociar) return rolarPara(ancoraAssociar);
+        if (temJogo('memoria')) { dialogo.close(); iniciarJogo('memoria'); } else rolarPara(null);
+      },
+      praticar: () => {
+        if (!liberada) return toast('Ainda não', 'Complete a fase anterior para mergulhar aqui.', 'i-cadeado');
+        dialogo.close(); iniciarSessao('mergulho', { faseId: fase.id });
+      },
+      desafio: () => {
+        dialogo.close();
+        if (temJogo('chefao')) iniciarJogo('chefao'); else irPara('prova');
+      },
+      revisar: () => { dialogo.close(); iniciarSessao('revisao'); },
+    });
     limpar(dialogo).append(h('div', { class: 'dialogo__caixa' },
       h('header', { class: 'dialogo__topo' },
         h('div', {},
@@ -788,7 +815,12 @@ const App = (() => {
           h('h2', { id: 'dialogo-resumo-titulo', class: 'dialogo__titulo', text: fase.nome })),
         h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'))),
       h('div', { class: 'dialogo__corpo' },
+        passos,
+        h('p', { class: 'artigo__etapa-rotulo', text: '📚 Aprender' }),
         r.introducao ? h('p', { class: 'resumo__intro' }, comNegrito(r.introducao)) : null,
+        blocoAprender,
+        ancoraAssociar,
+        h('p', { class: 'artigo__etapa-rotulo', text: '🔄 Para revisar' }),
         Array.isArray(r.pontos) && r.pontos.length
           ? h('section', {}, h('h3', { class: 'resumo__titulo' }, icone('i-alvo'), 'Pontos-chave'),
             h('ul', { class: 'resumo__lista' }, r.pontos.map((p) => h('li', {}, comNegrito(p)))))

@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-03 · Travessia reescrito, Radiologia MSK e o artigo da fase (v1 da skill)
+- **Pedido:** reescrever o Travessia com as fontes do Drive, criar o curso Radiologia Musculoesquelético "nos moldes do professor", com os jogos, e (no meio do caminho) um artigo antes de cada fase com mapa mental, imagens de associação, linha do tempo e mapas, no caminho Aprender → Associar → Praticar → Desafio → Revisar, também na skill.
+- **Feito:** garimpo das duas pastas (`docs/FONTES_CATALOGADAS.md`); mapa tema × peso com 1 260 questões das provas regulares de 2019 a 2025, separadas e classificadas por script; Travessia com a Fase 1 de cada área (104 questões, 24 variantes, blocos para os jogos, prova de 40); Radiologia MSK com 9 fases e 108 questões em caso clínico (blocos para os jogos e prova de 50); `js/artigo.js` + `css/artigo.css` (caminho de 5 passos, artigo, linha do tempo, mapa mental, associações, mapa do Brasil e do corpo) com conteúdo nas 14 fases; regra na skill `criar-trilha` (3.1) e no caderno `professor-diver.md`; cadernos dos dois cursos.
+- **Conferências:** contas por script (Matemática e Natureza); script de trilha (ids, gabarito, alternativas, rampa, Palavrinha, dica que entrega a palavra, resposta certa muito mais longa que as outras: 27 questões corrigidas); originalidade (8+ palavras iguais às fontes): 12 coincidências restantes, todas nomes oficiais ou termos técnicos; navegador no computador e no celular sem rolagem lateral nem erros.
+- **Decisões:** nenhuma IA paga foi usada; as fontes ficaram só no rascunho da sessão; uma frase errada das anotações ("AR é proliferação neoplásica") foi descartada; Lodwick na versão clássica.
+- **Pendências:** enviar os lotes à Fila de Validação; revisão de radiologista no MSK; variantes das outras áreas e do MSK; temas de redação de 2021/2023/2024 a conferir.
+
 ## 2026-10-03 · Cadernos do Professor (memória das skills)
 - **Pedido:** a skill tem que aprender, como um professor: consome a referência, deixa com a nossa cara (divertido, fácil de aprender e de memorizar), cria o conteúdo autoral e no fim a gente valida na fila com as outras IAs. E aprender com vídeos do YouTube.
 - **Feito:** `docs/cadernos/` com `LEIA-ME.md` (ciclo, o que pode e não pode entrar, modelo, vídeos pela transcrição), `professor-diver.md` (jeito Diver de ensinar, checklist "cara de Diver", gosto e lições gerais) e o primeiro caderno de curso, `enem-vestibular.md`. Skills: `criar-trilha` abre o caderno, estuda como professor (2.0) e fecha o caderno (6); `garimpo` lê vídeo pela transcrição e avisa o caderno do curso; `validar-questoes` transforma reprovações em lições (3.1). `docs/MOTOR_DIVER.md` seção 13.

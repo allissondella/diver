@@ -26,6 +26,10 @@
 | **Ver e ler junto** | Tabela, esquema ou linha do tempo ao lado do texto. | `resumo.tabela`, sequências, pares |
 | **Conferir se faz sentido** | Terminar perguntando "o resultado é razoável?". | Fecho das explicações |
 
+## 2.1 O caminho de toda fase
+
+**📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar.** Antes de entrar numa fase, o aluno encontra um **artigo** curto e claro, com mapa mental, imagens de associação (emoji + gancho), linha do tempo e mapa (do Brasil ou do corpo) quando fizerem sentido. Depois pratica (Mergulho e jogos), enfrenta o desafio (Chefão e prova) e revisa (pontos, pérolas e variantes). Formato: skill `criar-trilha`, seção 3.1.
+
 ## 3. Receita de uma boa questão Diver
 
 1. **Situação real e curta:** compra, receita, mapa, celular, trabalho, saúde. Nome de pessoa variado e brasileiro.
@@ -49,6 +53,7 @@
 - 2026-09-28 · Público jovem e adulto; nada infantil. Mensagens fixas: acerto → "Mandou bem, Diver!"; início → "Bora mergulhar!".
 - 2026-10-02 · Tudo o que o aluno lê em **português**; nada de jargão em inglês.
 - 2026-10-03 · O Professor Diver **estuda a referência, entende e conta do nosso jeito**: divertido, fácil de aprender e de memorizar. Depois o conteúdo vai para a Fila de Validação com as outras IAs.
+- 2026-10-03 · Antes de cada fase, um **artigo** com textos claros e simples, mapa mental, imagens de associação, linha do tempo e mapas (geográficos ou do corpo) quando se aplicam. Caminho: Aprender → Associar → Praticar → Desafio → Revisar.
 
 ## 6. Lições gerais (de qualquer curso)
 
@@ -57,3 +62,5 @@
 | 2026-10-01 | Travessia, Fase 1 | Classificar dificuldade pelo raciocínio, não pelo tamanho da conta: densidade (uma divisão) é fácil; aumento seguido de desconto é difícil. |
 | 2026-10-01 | Mergulho | Cada fase precisa de pelo menos 8 questões fáceis e médias: a 1ª rodada não mostra difíceis. |
 | 2026-10-02 | Palavrinha | Palavra do jogo só se estiver no dicionário brasileiro do projeto; nada de palavrão nem ofensa pesada. |
+| 2026-10-03 | Travessia e Radiologia MSK | A resposta certa não pode ser de longe a alternativa mais longa: alongue as erradas (o script de conferência avisa). |
+| 2026-10-03 | Radiologia MSK | Anotações de aula podem trazer erro (ex.: "AR é proliferação neoplásica da sinóvia"); o professor confere o fato antes de usar. |
