@@ -1,0 +1,16 @@
+# Diver — Fontes Catalogadas
+
+Registro de todo material de referência avaliado pela skill garimpo, para nunca reanalisar a mesma fonte duas vezes.
+
+> Os arquivos não ficam no repositório: moram no Google Drive do admin (pastas "Travessia: Enem Vestibular → diver-fontes" e "Radiologia Músculo Esquelético"). Aqui vão só título, origem, regra e uso.
+
+| Data | Fonte | Classificação | Regra de uso | Para que serve | Status |
+|---|---|---|---|---|---|
+| 2026-10-03 | Provas do Enem 2019–2025 (Inep), 1º e 2º dia, caderno azul; versões ampliada, superampliada, braile, ledor e reaplicação (PPL) e gabaritos na mesma pasta | Oficial/governo | CC BY-ND (`docs/CONTEUDO_CURSINHO.md` 1.1): literal só da Fase 2 em diante, com fonte, sem variante e sem derivar para jogos | Mapa tema × peso das 4 áreas (630 questões lidas por script); futuras questões literais nas Fases 2+ | Em uso |
+| 2026-10-03 | Matriz de Referência do Enem (Inep), `matriz_referencia.pdf` | Matriz curricular | Uso direto como mapa (eixos cognitivos, competências e habilidades) | Ordem e cobertura das fases de cada área | Em uso |
+| 2026-10-03 | `matriz_referencia Enem.pdf` | Matriz curricular | Igual à anterior | Arquivo em imagem (sem texto extraível); a versão de texto acima cobre o mesmo conteúdo | Descartado (duplicado) |
+| 2026-10-03 | *Filosofia no Enem 2012–2018: uma análise da cobertura de Filosofia no exame* (Ester P. N. de Macedo, Inep/MEC) | Oficial/governo (estudo) | Só conclusões nossas; nada de trecho | Peso e abordagem de Filosofia em Humanas | Em uso |
+| 2026-10-03 | *Pode vir, ENEM: o guia definitivo para arrasar no ENEM* (Umberto Mannarino, canal Exatas Exatas), e-book pago | Terceiro comercial | Só inspiração de abordagem (técnica de prova, ordem de estudo); nunca copiar | Dicas de prova no "Antes de mergulhar" e ordem das fases de Matemática | Em uso |
+| 2026-10-03 | *Caderno Marista Enem: Ciências Humanas e suas Tecnologias 1* (Rede Marista) | Terceiro (material didático) | Só inspiração de abordagem; nunca copiar | Organização de Humanas pelas 6 competências da matriz | Em uso |
+| 2026-10-03 | Anotações pessoais de aula, Radiologia Musculoesquelética: COR-SPR MSK 01–04 e Deu Laudo MSK 01–11 (15 aulas, `.docx`) | Referência de abordagem (anotações do admin sobre aulas de terceiros) | Fatos médicos viram questões originais em caso clínico; nada de frase, tabela ou imagem copiada | Mapa de temas e conteúdo-base do curso Radiologia: Musculoesquelético | Em uso |
+| 2026-10-03 | "Esqueleto para cópia" COR-SPR (2 arquivos `.docx`) | Não identificado | — | Modelo vazio de anotação, sem conteúdo | Descartado |

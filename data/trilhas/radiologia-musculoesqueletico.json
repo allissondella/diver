@@ -1,0 +1,4364 @@
+{
+  "id": "radiologia-musculoesqueletico",
+  "nome": "Radiologia: Musculoesquelético",
+  "descricao": "Diagnóstico por imagem do sistema musculoesquelético: fundamentos, infecção, artropatias degenerativas, inflamatórias e por cristais, ombro, cotovelo, punho e mão, joelho, patela, tornozelo e pé e tumores ósseos, com casos clínicos e as pegadinhas das provas de título.",
+  "categoria": "Medicina",
+  "fasesLivres": true,
+  "prova": {
+    "questoes": 50,
+    "minutos": 75,
+    "aprovacao": 70,
+    "exigeFases": true
+  },
+  "fases": [
+    {
+      "id": "fundamentos",
+      "nome": "Fundamentos da imagem MSK",
+      "profundidade": "0–10 m",
+      "descricao": "Osso, métodos de imagem, sequências de RM e as primeiras perguntas diante de uma lesão",
+      "resumo": {
+        "introducao": "Antes de nomear qualquer doença, o radiologista MSK responde três perguntas: **o osso está formando ou destruindo?**, **qual método enxerga melhor essa estrutura?** e **as partes moles foram deslocadas ou infiltradas?**. Quase todo o resto do curso nasce daqui.",
+        "pontos": [
+          "**Cortical × trabecular**: a cortical é a maior parte do peso ósseo; o trabecular, com muito mais superfície, concentra a atividade metabólica. Por isso as doenças da medula aparecem primeiro no trabecular.",
+          "**Radiografia** é ótima para cortical, reação periosteal e matriz, mas pouco sensível para o trabecular: a lesão lítica precisa destruir boa parte dele (da ordem de 30–50%) para aparecer.",
+          "**TC** é a melhor para detalhe cortical, mineralização e fraturas sutis. **RM** é a melhor para medula, cartilagem, ligamentos, tendões e partes moles.",
+          "**T1** é a sequência anatômica: medula gordurosa brilha; infiltração da medula escurece (sinal menor que o do disco e próximo ao do músculo). **T2 com saturação de gordura / STIR** fazem o líquido e o edema saltarem aos olhos. **DP** é a favorita para menisco e cartilagem.",
+          "**Periósteo**: espesso e frouxo na criança (abscessos subperiosteais), fino e aderido no adulto. A reação periosteal só aparece no RX depois de mineralizar, em torno de 2 semanas.",
+          "**Degenerativo forma osso** (esclerose, osteófito); **infeccioso destrói** (osteólise, erosão, reação periosteal, coleções).",
+          "**Tumor costuma deslocar** os planos de gordura; **infecção costuma obliterá-los** e atravessa fáscias."
+        ],
+        "tabela": {
+          "titulo": "Qual sequência para quê",
+          "colunas": [
+            "Sequência",
+            "O que ela mostra melhor"
+          ],
+          "linhas": [
+            [
+              "T1",
+              "Anatomia, medula óssea, trofismo muscular (lipossubstituição)"
+            ],
+            [
+              "T2 com saturação de gordura / STIR",
+              "Edema, líquido, tendinopatia, bursite, contusão"
+            ],
+            [
+              "DP (com ou sem saturação)",
+              "Meniscos e cartilagem"
+            ],
+            [
+              "Difusão",
+              "Alta celularidade (restrição)"
+            ],
+            [
+              "Pós-contraste",
+              "Sinovite × derrame, abscesso, tumor viável"
+            ]
+          ]
+        },
+        "perolas": [
+          "Se a medula está mais escura que o disco no T1, alguma coisa ocupou o lugar da gordura.",
+          "RX normal na primeira semana não descarta osteomielite.",
+          "Forma osso? Pense em mecânica. Destrói osso? Pense em infecção ou tumor.",
+          "Tumor empurra a gordura; infecção apaga a gordura."
+        ],
+        "secoes": [
+          {
+            "titulo": "Três perguntas antes de qualquer nome",
+            "texto": [
+              "O osso só sabe fazer duas coisas diante de uma agressão: **formar** (esclerose, osteófito, periósteo) ou **destruir** (lise, erosão). Descobrir qual das duas está acontecendo, e com que velocidade, já elimina metade dos diagnósticos.",
+              "Depois, escolha o método certo para a pergunta e olhe as partes moles: elas contam se a lesão empurra ou infiltra."
+            ]
+          },
+          {
+            "titulo": "Cada método, um superpoder",
+            "texto": [
+              "**RX**: cortical, periósteo e matriz, mas cego para o começo das lesões medulares. **TC**: o detalhe fino do osso e do cálcio. **RM**: medula, cartilagem, ligamentos, tendões e músculos. **US**: tendões e nervos em tempo real, com Doppler."
+            ]
+          },
+          {
+            "titulo": "O alfabeto da RM",
+            "texto": [
+              "No **T1**, a gordura brilha: é a sequência da anatomia e da medula. Com **saturação de gordura** (T2 FS, STIR), a água brilha: edema, derrame, tendinopatia. A **DP** é a favorita do menisco e da cartilagem."
+            ]
+          }
+        ],
+        "mapaMental": {
+          "centro": "Ler uma imagem MSK",
+          "ramos": [
+            {
+              "titulo": "Forma ou destrói?",
+              "itens": [
+                "Esclerose e osteófito: mecânico",
+                "Lise e erosão: infecção ou tumor"
+              ]
+            },
+            {
+              "titulo": "Métodos",
+              "itens": [
+                "RX: cortical e periósteo",
+                "TC: detalhe ósseo",
+                "RM: medula e partes moles",
+                "US: dinâmico, Doppler"
+              ]
+            },
+            {
+              "titulo": "Sequências",
+              "itens": [
+                "T1: anatomia e medula",
+                "T2 FS / STIR: água",
+                "DP: menisco e cartilagem",
+                "Difusão: celularidade"
+              ]
+            },
+            {
+              "titulo": "Partes moles",
+              "itens": [
+                "Tumor desloca",
+                "Infecção oblitera"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧈",
+            "conceito": "Manteiga brilhando",
+            "liga": "gordura no T1",
+            "porque": "No T1, o que é gordura acende."
+          },
+          {
+            "icone": "💧",
+            "conceito": "Gota d'água brilhando",
+            "liga": "T2 com saturação / STIR",
+            "porque": "Apagou a gordura, a água aparece."
+          },
+          {
+            "icone": "🧱",
+            "conceito": "Pedreiro",
+            "liga": "processo degenerativo",
+            "porque": "Constrói osso: esclerose e osteófitos."
+          },
+          {
+            "icone": "🐛",
+            "conceito": "Cupim",
+            "liga": "infecção e tumor agressivo",
+            "porque": "Come o osso por dentro: lise e erosão."
+          }
+        ]
+      }
+    },
+    {
+      "id": "infeccao",
+      "nome": "Osteomielite e infecção",
+      "profundidade": "10–20 m",
+      "descricao": "Osteomielite aguda e crônica, abscesso de Brodie, sinal da penumbra e pé diabético",
+      "resumo": {
+        "introducao": "Na infecção óssea, a pressão dentro da medula sobe, os vasos sofrem estase e trombose e o osso necrosa; osteoclastos e enzimas fazem o resto. Na imagem, isso vira **osteólise**, **reação periosteal**, **coleções** e, na fase crônica, **sequestro** e **invólucro**.",
+        "pontos": [
+          "**Aguda**: RX pode ser normal na 1ª semana; osteólise mal definida (geográfica sem halo, ruído de traça), reação periosteal fina, uni ou multilamelar após ~2 semanas.",
+          "**RM** é o método de escolha: baixo sinal em T1 na medula, alto sinal em T2 com saturação, realce e coleções.",
+          "**Crônica**: esclerose e espessamento cortical, **sequestro** (osso morto envolto por granulação, onde o antibiótico entra mal), **invólucro** (reação periosteal incorporada) e **fístula** (cloaca) para as partes moles.",
+          "**Atividade na crônica**: reação periosteal fina não incorporada, abscesso de Brodie e sequestro persistente.",
+          "**Abscesso de Brodie**: abscesso intraósseo, geralmente metafisário, com halo esclerótico. Na RM, o **sinal da penumbra**: halo de sinal relativamente alto em T1 (tecido de granulação) ao redor da coleção.",
+          "**Pé diabético**: Charcot mostra fragmentação, luxação e esclerose com T1 relativamente preservado; osteomielite mostra baixo sinal marcado em T1, úlcera, fístula e coleção contíguas.",
+          "**Simuladores**: osteoma osteoide, osteoblastoma, condroblastoma, histiocitose de células de Langerhans e sarcoma de Ewing podem imitar infecção."
+        ],
+        "tabela": {
+          "titulo": "Osteomielite aguda × crônica",
+          "colunas": [
+            "Achado",
+            "Aguda",
+            "Crônica"
+          ],
+          "linhas": [
+            [
+              "Padrão ósseo",
+              "Osteólise mal definida",
+              "Esclerose e espessamento"
+            ],
+            [
+              "Reação periosteal",
+              "Fina, lamelar",
+              "Sólida, incorporada (invólucro)"
+            ],
+            [
+              "Sequestro",
+              "Raro",
+              "Clássico"
+            ],
+            [
+              "Fístula",
+              "Rara",
+              "Frequente"
+            ],
+            [
+              "Sinal de atividade",
+              "Edema e coleção",
+              "Periósteo fino novo, Brodie, sequestro"
+            ]
+          ]
+        },
+        "perolas": [
+          "Sequestro é osso morto escondido do antibiótico.",
+          "Penumbra em T1 ao redor da coleção: pense em abscesso de Brodie.",
+          "No pé diabético, T1 escuro na medula junto à úlcera é infecção até prova em contrário.",
+          "Ewing com febre e dor inflamatória imita osteomielite: não feche o caso sem olhar a agressividade."
+        ],
+        "secoes": [
+          {
+            "titulo": "Como a infecção destrói o osso",
+            "texto": [
+              "A bactéria chega, a medula incha e a pressão dentro do osso sobe. Os vasos sofrem estase e trombose e um pedaço do osso morre. A partir daí, cada achado de imagem tem explicação: **lise**, **reação periosteal**, **sequestro** e **invólucro**."
+            ]
+          },
+          {
+            "titulo": "O tempo muda a imagem",
+            "texto": [
+              "Nos primeiros dias, o RX é normal e só a RM conta a história. Em torno da primeira semana aparece a lise; com duas semanas, o periósteo mineralizado. Meses depois, o osso morto vira **sequestro** e o periósteo vira **invólucro**."
+            ]
+          },
+          {
+            "titulo": "No pé diabético, siga a úlcera",
+            "texto": [
+              "Osteomielite no diabético quase sempre nasce de uma úlcera. Osso com **baixo sinal confluente em T1** embaixo dela é infecção até prova em contrário. Charcot, ao contrário, fragmenta e desorganiza o mediopé com T1 relativamente preservado."
+            ]
+          }
+        ],
+        "linhaDoTempo": [
+          {
+            "quando": "Dias 1–3",
+            "fato": "RX normal; RM já mostra edema medular e baixo sinal em T1."
+          },
+          {
+            "quando": "~1 semana",
+            "fato": "Começa a lise visível no RX."
+          },
+          {
+            "quando": "~2 semanas",
+            "fato": "Reação periosteal mineralizada aparece no RX."
+          },
+          {
+            "quando": "Semanas a meses",
+            "fato": "Abscesso de Brodie, sequestro, invólucro, cloaca e fístula (fase crônica)."
+          }
+        ],
+        "mapaMental": {
+          "centro": "Osteomielite",
+          "ramos": [
+            {
+              "titulo": "Aguda",
+              "itens": [
+                "RX normal no início",
+                "Lise mal definida",
+                "Periósteo fino"
+              ]
+            },
+            {
+              "titulo": "Crônica",
+              "itens": [
+                "Sequestro",
+                "Invólucro",
+                "Cloaca e fístula",
+                "Esclerose"
+              ]
+            },
+            {
+              "titulo": "Atividade",
+              "itens": [
+                "Periósteo novo",
+                "Brodie",
+                "Sinal da penumbra"
+              ]
+            },
+            {
+              "titulo": "Pé diabético",
+              "itens": [
+                "Úlcera contígua",
+                "T1 baixo confluente",
+                "Charcot: T1 preservado"
+              ]
+            },
+            {
+              "titulo": "Simuladores",
+              "itens": [
+                "Osteoma osteoide",
+                "Histiocitose",
+                "Ewing"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "💀",
+            "conceito": "Osso morto escondido",
+            "liga": "sequestro",
+            "porque": "O antibiótico não chega até ele."
+          },
+          {
+            "icone": "🐚",
+            "conceito": "Concha em volta",
+            "liga": "invólucro",
+            "porque": "Osso novo do periósteo abraçando o osso doente."
+          },
+          {
+            "icone": "🚪",
+            "conceito": "Porta de saída",
+            "liga": "cloaca",
+            "porque": "Por onde o pus deixa o osso."
+          },
+          {
+            "icone": "🌘",
+            "conceito": "Eclipse com halo",
+            "liga": "sinal da penumbra",
+            "porque": "Halo de granulação brilhando em T1 ao redor do abscesso."
+          }
+        ]
+      }
+    },
+    {
+      "id": "degenerativas",
+      "nome": "Osteoartrite e artropatias degenerativas",
+      "profundidade": "20–30 m",
+      "descricao": "Achados clássicos, incidências por articulação, osteoartrite atípica, hemocromatose, hemofilia e Charcot",
+      "resumo": {
+        "introducao": "Osteoartrite não é só \"desgaste\": é remodelamento de toda a articulação (cartilagem, osso subcondral, sinóvia, cápsula e ligamentos). A imagem é muito característica, e o trabalho fino do radiologista é perceber quando ela **não combina** com a idade ou com a articulação, a chamada **osteoartrite atípica**.",
+        "pontos": [
+          "**Achados clássicos**: redução **assimétrica** do espaço (áreas de carga), **esclerose subcondral**, **osteófitos**, **cistos/geodos** subcondrais e corpos livres. Sem erosões, sem osteopenia e sem reação periosteal.",
+          "**Dissociação clínico-radiológica**: imagem feia com pouca dor (e o contrário) é comum.",
+          "**Joelho**: incidências com carga e flexão (**Schuss/Rosenberg**) mostram perda de cartilagem que o AP simples esconde. **Quadril**: o **falso perfil de Lequesne** avalia o espaço posterior e a cobertura anterior do teto.",
+          "**Mãos**: Heberden (interfalângicas distais), Bouchard (proximais), **rizartrose** (trapézio-metacarpal). A **osteoartrite erosiva** destrói o centro da articulação: imagem em **asa de gaivota**.",
+          "**Osteoartrite atípica** (articulação sem carga, paciente jovem, gravidade desproporcional): pense em trauma ou infecção prévia, **CPPD**, gota, **hemocromatose**, **hemofilia**, neuroartropatia e displasias.",
+          "**Hemocromatose**: osteófitos em **gancho** nas cabeças do 2º e 3º metacarpos. **Hemofilia**: **alargamento do túnel intercondilar**, hemossiderina (baixo sinal em todas as sequências) e pseudotumor.",
+          "**Charcot**: os \"D\" — derrame, debris, destruição, desorganização e densidade (esclerose). Diabetes no pé; siringomielia no ombro.",
+          "**Cartilagem na RM (Outerbridge modificada)**: 1 amolecimento/sinal; 2 fissura superficial (até a metade); 3 fissura profunda sem expor osso; 4 osso subcondral exposto."
+        ],
+        "tabela": {
+          "titulo": "Padrão do espaço articular e o que pensar",
+          "colunas": [
+            "Padrão",
+            "Hipótese"
+          ],
+          "linhas": [
+            [
+              "Redução assimétrica + osteófitos + esclerose",
+              "Osteoartrite"
+            ],
+            [
+              "Redução simétrica + erosões, poliarticular proximal, sem proliferação",
+              "Artrite reumatoide"
+            ],
+            [
+              "Redução simétrica + erosões + proliferação óssea, distal",
+              "Espondiloartrite ou OA erosiva"
+            ],
+            [
+              "Monoarticular com erosões e edema",
+              "Infecção ou cristais agudos"
+            ],
+            [
+              "Destruição com espaço relativamente preservado",
+              "Gota ou CPPD"
+            ]
+          ]
+        },
+        "perolas": [
+          "Osteoartrite feia num lugar estranho é pergunta, não resposta.",
+          "Gancho nos metacarpos 2 e 3: lembre do ferro (hemocromatose).",
+          "Túnel intercondilar largo num jovem com joelho destruído: hemofilia.",
+          "Asa de gaivota é erosão central; orelha de rato (erosão marginal) é outra história."
+        ],
+        "secoes": [
+          {
+            "titulo": "Osteoartrite é remodelamento, não só desgaste",
+            "texto": [
+              "A cartilagem afina, o osso embaixo dela engrossa (esclerose), as bordas criam osteófitos e aparecem geodos. Tudo isso acontece onde a carga é maior, por isso a redução do espaço é **assimétrica**."
+            ]
+          },
+          {
+            "titulo": "Quando a artrose está no lugar errado",
+            "texto": [
+              "Articulação que não carrega peso, paciente jovem ou estrago desproporcional são sinais de **osteoartrite atípica**. Aí a pergunta muda: o que provocou isso? Cristais (CPPD, gota), ferro (hemocromatose), sangue (hemofilia), nervos (Charcot) ou um trauma antigo."
+            ]
+          }
+        ],
+        "mapa": {
+          "tipo": "corpo",
+          "titulo": "Onde a artrose costuma aparecer",
+          "pontos": [
+            {
+              "onde": "mao",
+              "titulo": "Mãos",
+              "texto": "Interfalângicas distais (**Heberden**) e proximais (**Bouchard**); base do polegar (**rizartrose**). Asa de gaivota = OA erosiva."
+            },
+            {
+              "onde": "quadril",
+              "titulo": "Quadril",
+              "texto": "Redução superolateral do espaço; o **falso perfil de Lequesne** mostra o espaço posterior."
+            },
+            {
+              "onde": "joelho",
+              "titulo": "Joelho",
+              "texto": "Compartimento medial e patelofemoral; incidência em flexão com carga revela perda precoce."
+            },
+            {
+              "onde": "halux",
+              "titulo": "Hálux",
+              "texto": "**Hálux rígido**: osteófito dorsal no 1º metatarso."
+            },
+            {
+              "onde": "ombro",
+              "titulo": "Ombro",
+              "texto": "OA glenoumeral com espaço subacromial reduzido sugere rotura crônica do manguito."
+            },
+            {
+              "onde": "punho",
+              "titulo": "Punho e metacarpofalângicas",
+              "texto": "Lugar incomum para OA primária: pense em **CPPD** e **hemocromatose** (gancho no 2º e 3º metacarpos)."
+            }
+          ]
+        },
+        "mapaMental": {
+          "centro": "Artrose",
+          "ramos": [
+            {
+              "titulo": "Achados",
+              "itens": [
+                "Espaço assimétrico",
+                "Esclerose",
+                "Osteófitos",
+                "Geodos"
+              ]
+            },
+            {
+              "titulo": "Incidências",
+              "itens": [
+                "Schuss / Rosenberg",
+                "Falso perfil de Lequesne",
+                "Axial de patela"
+              ]
+            },
+            {
+              "titulo": "Mãos",
+              "itens": [
+                "Heberden e Bouchard",
+                "Rizartrose",
+                "Asa de gaivota"
+              ]
+            },
+            {
+              "titulo": "Atípica",
+              "itens": [
+                "CPPD e gota",
+                "Hemocromatose",
+                "Hemofilia",
+                "Charcot"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🕊️",
+            "conceito": "Asa de gaivota",
+            "liga": "osteoartrite erosiva",
+            "porque": "Erosão central com bicos nas bordas."
+          },
+          {
+            "icone": "🪝",
+            "conceito": "Gancho",
+            "liga": "hemocromatose",
+            "porque": "Osteófito em gancho nas cabeças do 2º e 3º metacarpos."
+          },
+          {
+            "icone": "🩸",
+            "conceito": "Gota de sangue",
+            "liga": "hemofilia",
+            "porque": "Hemossiderina e túnel intercondilar alargado no jovem."
+          },
+          {
+            "icone": "🧩",
+            "conceito": "Peças espalhadas",
+            "liga": "Charcot",
+            "porque": "Derrame, debris, destruição, desorganização e densidade."
+          }
+        ]
+      }
+    },
+    {
+      "id": "inflamatorias",
+      "nome": "Artrite reumatoide e cristais",
+      "profundidade": "30–40 m",
+      "descricao": "Artrite reumatoide do diagnóstico precoce às deformidades, gota, CPPD e hidroxiapatita",
+      "resumo": {
+        "introducao": "Artrites inflamatórias destroem; artropatias por cristais depositam. A **artrite reumatoide** é uma sinovite autoimune simétrica que corrói as margens das articulações proximais das mãos e dos pés. Na **gota**, os cristais de urato formam tofos e erosões em saca-bocado com o espaço articular poupado por muito tempo; no **CPPD**, o cálcio desenha a cartilagem; na **hidroxiapatita**, o tendão vira o palco.",
+        "pontos": [
+          "**AR**: mais comum em mulheres; poliarticular e simétrica (pode começar assimétrica), nas metacarpofalângicas, interfalângicas proximais, punho e pés. As interfalângicas distais são poupadas.",
+          "**RX na AR**: osteopenia periarticular, aumento de partes moles, erosões marginais nas **áreas nuas** (estiloide da ulna, piramidal, cabeças dos metacarpos, 5º metatarso), redução simétrica do espaço e, tarde, desvio ulnar, pescoço de cisne e botoeira. Sem proliferação óssea.",
+          "**US na AR**: sinovite = espessamento hipoecoico, não compressível, com Doppler; derrame = anecoico, compressível e deslocável.",
+          "**RM na AR**: **osteíte** (edema ósseo) é pré-erosiva, reversível e prediz erosões; contraste deve ser adquirido cedo (antes de ~5 min) para não confundir derrame com sinovite.",
+          "**Coluna cervical na AR**: instabilidade atlantoaxial quando a distância atlantodental anterior passa de 3 mm em flexão.",
+          "**Gota**: homens, 1ª metatarsofalângica (podagra), erosões em **saca-bocado** com margens escleróticas e **bordas pendentes**, tofos, espaço preservado até tarde. US: **duplo contorno** na cartilagem. TC de dupla energia: urato codificado em cor.",
+          "**CPPD**: idosos; **condrocalcinose** em meniscos e fibrocartilagem triangular; artropatia em sítios incomuns (patelofemoral, radiocárpica, escafotrapeziotrapezoide).",
+          "**Hidroxiapatita**: tendinopatia calcária, principalmente no supraespinal; dor intensa na fase de reabsorção e quando o cálcio migra para a bursa ou para dentro do osso."
+        ],
+        "tabela": {
+          "titulo": "Erosões que contam histórias",
+          "colunas": [
+            "Padrão",
+            "Doença"
+          ],
+          "linhas": [
+            [
+              "Marginal, área nua, osteopenia, sem proliferação",
+              "Artrite reumatoide"
+            ],
+            [
+              "Saca-bocado, margem esclerótica, borda pendente, tofo",
+              "Gota"
+            ],
+            [
+              "Marginal com proliferação óssea, distal",
+              "Artrite psoriásica"
+            ],
+            [
+              "Central em asa de gaivota",
+              "Osteoartrite erosiva"
+            ],
+            [
+              "Condrocalcinose com artropatia em sítio incomum",
+              "CPPD"
+            ]
+          ]
+        },
+        "perolas": [
+          "AR poupa as interfalângicas distais; artrose ama as distais.",
+          "Gota guarda o espaço articular até o fim.",
+          "Osteíte na RM é a erosão que ainda não aconteceu.",
+          "Contraste tardio demais vira artrografia e inventa sinovite."
+        ],
+        "secoes": [
+          {
+            "titulo": "Artrite reumatoide: a sinóvia que corrói",
+            "texto": [
+              "A AR é uma sinovite autoimune. O **pannus** corrói primeiro as **áreas nuas**, onde o osso fica dentro da cápsula sem cartilagem. Por isso as erosões são **marginais**, com osteopenia ao redor e sem formação de osso novo."
+            ]
+          },
+          {
+            "titulo": "Gota, CPPD e hidroxiapatita: os cristais",
+            "texto": [
+              "O urato da **gota** forma tofos e erosões em saca-bocado com margem esclerótica, poupando o espaço por muito tempo. O pirofosfato do **CPPD** desenha a cartilagem e os meniscos. A **hidroxiapatita** prefere tendões, sobretudo o supraespinal, e dói muito quando migra."
+            ]
+          }
+        ],
+        "linhaDoTempo": [
+          {
+            "quando": "Início",
+            "fato": "Tenossinovite e sinovite; RX normal ou só partes moles aumentadas."
+          },
+          {
+            "quando": "Semanas",
+            "fato": "Osteíte na RM: edema ósseo pré-erosivo, ainda reversível."
+          },
+          {
+            "quando": "6–12 meses",
+            "fato": "Erosões marginais começam a aparecer no RX."
+          },
+          {
+            "quando": "Anos",
+            "fato": "Redução simétrica do espaço, desvio ulnar, pescoço de cisne, botoeira e instabilidade C1–C2."
+          }
+        ],
+        "mapa": {
+          "tipo": "corpo",
+          "titulo": "Onde cada artrite gosta de morar",
+          "pontos": [
+            {
+              "onde": "mao",
+              "titulo": "Metacarpofalângicas e interfalângicas proximais",
+              "texto": "**Artrite reumatoide**, simétrica, poupando as interfalângicas distais."
+            },
+            {
+              "onde": "punho",
+              "titulo": "Punho",
+              "texto": "AR (estiloide da ulna, piramidal) e **CPPD** (fibrocartilagem triangular, escafotrapeziotrapezoide)."
+            },
+            {
+              "onde": "cervical",
+              "titulo": "Coluna cervical",
+              "texto": "AR: **instabilidade atlantoaxial** (> 3 mm em flexão)."
+            },
+            {
+              "onde": "ombro",
+              "titulo": "Ombro",
+              "texto": "**Hidroxiapatita** no supraespinal: tendinopatia calcária."
+            },
+            {
+              "onde": "joelho",
+              "titulo": "Joelho",
+              "texto": "**CPPD**: condrocalcinose nos meniscos e artropatia patelofemoral."
+            },
+            {
+              "onde": "halux",
+              "titulo": "1ª metatarsofalângica",
+              "texto": "**Gota** (podagra): erosão em saca-bocado, tofos e espaço preservado."
+            }
+          ]
+        },
+        "mapaMental": {
+          "centro": "Artrites inflamatórias e cristais",
+          "ramos": [
+            {
+              "titulo": "Artrite reumatoide",
+              "itens": [
+                "Simétrica e proximal",
+                "Erosões marginais",
+                "Osteopenia",
+                "Osteíte na RM"
+              ]
+            },
+            {
+              "titulo": "Gota",
+              "itens": [
+                "Podagra",
+                "Saca-bocado e borda pendente",
+                "Tofos",
+                "Duplo contorno no US"
+              ]
+            },
+            {
+              "titulo": "CPPD",
+              "itens": [
+                "Condrocalcinose",
+                "Idosos",
+                "Sítios incomuns"
+              ]
+            },
+            {
+              "titulo": "Hidroxiapatita",
+              "itens": [
+                "Tendinopatia calcária",
+                "Migração dolorosa"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🦷",
+            "conceito": "Mordida no osso",
+            "liga": "erosão em saca-bocado da gota",
+            "porque": "Buraco redondo, borda esclerótica e pendente."
+          },
+          {
+            "icone": "✏️",
+            "conceito": "Lápis desenhando a cartilagem",
+            "liga": "condrocalcinose (CPPD)",
+            "porque": "Linha de cálcio dentro da cartilagem e do menisco."
+          },
+          {
+            "icone": "🖍️",
+            "conceito": "Lápis por cima da cartilagem",
+            "liga": "duplo contorno (gota)",
+            "porque": "O urato fica sobre a superfície."
+          },
+          {
+            "icone": "🔥",
+            "conceito": "Fogo antes da queimadura",
+            "liga": "osteíte na AR",
+            "porque": "Inflamação que ainda não virou erosão."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ombro",
+      "nome": "Ombro: manguito, lábio e instabilidade",
+      "profundidade": "40–50 m",
+      "descricao": "Manguito rotador, roturas parciais e transfixantes, instabilidade, glenoid track, capsulite e denervação",
+      "resumo": {
+        "introducao": "O ombro troca estabilidade por mobilidade. Quem segura a cabeça umeral são estruturas **estáticas** (glenoide, lábio, cápsula e ligamentos glenoumerais) e **dinâmicas** (manguito rotador). O laudo bom diz onde está a rotura, quanto o tendão retraiu, como está o músculo e se a luxação vai voltar.",
+        "pontos": [
+          "**Manguito**: subescapular no tubérculo menor; supraespinal, infraespinal e redondo menor no tubérculo maior. O tendão da cabeça longa do bíceps é o marco: o que está à frente dele é subescapular.",
+          "**Roturas parciais**: articular (PASTA), bursal ou intersticial (oculta à artroscopia). A **PAINT** se estende entre as fibras e pode formar um **cisto sentinela** na junção miotendínea.",
+          "**Transfixante**: comunica articulação e bursa subacromial-subdeltoidea. No US, a cartilagem exposta gera o **sinal da interface da cartilagem**.",
+          "**Trofismo (Goutallier)**: lipossubstituição graduada no T1 sagital; atrofia avançada piora o resultado da cirurgia.",
+          "**Luxação anterior**: **Hill-Sachs** (impactação posterossuperior da cabeça) + **Bankart** (lábio anteroinferior). **Posterior**: convulsão e choque elétrico; Hill-Sachs e Bankart reversos.",
+          "**Glenoid track**: 0,83 × diâmetro da glenoide inferior − perda óssea. Se o intervalo de Hill-Sachs for maior que o track, a lesão é **off-track** e tende a reluxar.",
+          "**Variações** que imitam lesão: recesso sublabral, forame sublabral (1–3 h) e complexo de Buford.",
+          "**Capsulite adesiva**: espessamento do ligamento coracoumeral, obliteração da gordura do intervalo rotador e espessamento/edema do recesso axilar.",
+          "**Denervação**: incisura supraescapular → supra e infraespinal; incisura espinoglenoidal (cisto paralabral) → só infraespinal; espaço quadrilateral → redondo menor (nervo axilar)."
+        ],
+        "tabela": {
+          "titulo": "Onde está a compressão do nervo",
+          "colunas": [
+            "Local",
+            "Músculos com denervação"
+          ],
+          "linhas": [
+            [
+              "Incisura supraescapular",
+              "Supraespinal e infraespinal"
+            ],
+            [
+              "Incisura espinoglenoidal",
+              "Infraespinal apenas"
+            ],
+            [
+              "Espaço quadrilateral",
+              "Redondo menor (às vezes deltoide)"
+            ]
+          ]
+        },
+        "perolas": [
+          "Hill-Sachs atrás em cima; Bankart na frente embaixo.",
+          "Convulsão ou choque elétrico: procure a luxação posterior.",
+          "Intervalo rotador sem gordura: pense em ombro congelado.",
+          "Cisto paralabral posterior com infraespinal atrófico: o nervo ficou preso na espinoglenoidal."
+        ],
+        "secoes": [
+          {
+            "titulo": "Quem segura o ombro",
+            "texto": [
+              "O ombro é uma bola grande numa cavidade rasa. Ficam no lugar graças ao **lábio**, à cápsula, aos ligamentos glenoumerais e ao **manguito rotador**. Quando a bola sai para a frente, ela deixa marcas nos dois lados do encontro: **Hill-Sachs** na cabeça e **Bankart** na glenoide."
+            ]
+          },
+          {
+            "titulo": "O laudo que o cirurgião quer",
+            "texto": [
+              "Para o manguito: qual tendão, qual superfície (articular, bursal, intersticial, transfixante), quanto retraiu e como está o músculo (gordura no T1). Para a instabilidade: perda óssea da glenoide e se a lesão é **on-track** ou **off-track**."
+            ]
+          }
+        ],
+        "mapaMental": {
+          "centro": "Ombro",
+          "ramos": [
+            {
+              "titulo": "Manguito",
+              "itens": [
+                "Subescapular: tubérculo menor",
+                "Supra, infra, redondo menor: maior",
+                "PASTA, PAINT, transfixante"
+              ]
+            },
+            {
+              "titulo": "Instabilidade",
+              "itens": [
+                "Hill-Sachs + Bankart",
+                "Posterior: convulsão",
+                "Glenoid track"
+              ]
+            },
+            {
+              "titulo": "Lábio",
+              "itens": [
+                "SLAP",
+                "Forame sublabral",
+                "Complexo de Buford"
+              ]
+            },
+            {
+              "titulo": "Capsulite",
+              "itens": [
+                "Intervalo rotador sem gordura",
+                "Ligamento coracoumeral espesso",
+                "Recesso axilar"
+              ]
+            },
+            {
+              "titulo": "Nervos",
+              "itens": [
+                "Supraescapular",
+                "Espinoglenoidal: só infra",
+                "Quadrilateral: redondo menor"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🚂",
+            "conceito": "Trem fora do trilho",
+            "liga": "lesão off-track",
+            "porque": "Hill-Sachs maior que o trilho da glenoide: reluxa."
+          },
+          {
+            "icone": "🧊",
+            "conceito": "Ombro congelado",
+            "liga": "capsulite adesiva",
+            "porque": "Cápsula espessa e intervalo rotador apagado."
+          },
+          {
+            "icone": "🥫",
+            "conceito": "Lata amassada atrás e em cima",
+            "liga": "Hill-Sachs",
+            "porque": "Impactação posterossuperior da cabeça umeral."
+          },
+          {
+            "icone": "🎈",
+            "conceito": "Bolha no músculo",
+            "liga": "cisto sentinela",
+            "porque": "Líquido que entrou pela fenda do tendão (PAINT)."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cotovelo-punho-mao",
+      "nome": "Cotovelo, punho e mão",
+      "profundidade": "50–60 m",
+      "descricao": "Epicondilites, bíceps distal, túnel do carpo, Guyon, De Quervain, instabilidade do carpo e aparelho extensor",
+      "resumo": {
+        "introducao": "Cotovelo, punho e mão são regiões de anatomia fina: muitos tendões, nervos em túneis estreitos e ligamentos pequenos que, quando falham, mudam o alinhamento de todo o carpo. O segredo é saber **quem passa por onde**.",
+        "pontos": [
+          "**Epicondilite lateral** (tenista): origem comum dos extensores. **Medial** (golfista): origem comum dos flexores.",
+          "**Bíceps distal** insere-se na tuberosidade do rádio; o **lacerto fibroso** íntegro limita a retração. Rotura proximal da cabeça longa: sinal de Popeye (ventre desce).",
+          "**Túnel do carpo**: 9 tendões flexores (4 superficiais, 4 profundos e o flexor longo do polegar) e o **nervo mediano**. No US: nervo espessado na entrada (área aumentada), hipoecoico, com abaulamento do retináculo.",
+          "**Canal de Guyon**: nervo e artéria ulnares; compressão por cisto, músculo anômalo ou fratura do hâmulo do hamato.",
+          "**1º compartimento extensor** (abdutor longo e extensor curto do polegar): **tenossinovite de De Quervain**.",
+          "**Instabilidade do carpo**: rotura escafossemilunar → **DISI** (semilunar inclina para dorsal), alargamento escafossemilunar (sinal de Terry Thomas) e, sem tratamento, colapso **SLAC**. Rotura lunopiramidal → **VISI**.",
+          "**Variância ulnar**: negativa se associa a **Kienböck** (necrose do semilunar); positiva, a **impactação ulnar** e lesão da fibrocartilagem triangular.",
+          "**Dedos**: lesão da **banda central** do extensor → botoeira; do **tendão extensor terminal** → dedo em martelo. **Dedo em gatilho**: polia A1 espessada."
+        ],
+        "tabela": {
+          "titulo": "Compartimentos extensores do punho",
+          "colunas": [
+            "Compartimento",
+            "Tendões"
+          ],
+          "linhas": [
+            [
+              "1º",
+              "Abdutor longo e extensor curto do polegar (De Quervain)"
+            ],
+            [
+              "2º",
+              "Extensores radiais longo e curto do carpo"
+            ],
+            [
+              "3º",
+              "Extensor longo do polegar (contorna o tubérculo de Lister)"
+            ],
+            [
+              "4º",
+              "Extensor dos dedos e extensor do indicador"
+            ],
+            [
+              "5º",
+              "Extensor do dedo mínimo"
+            ],
+            [
+              "6º",
+              "Extensor ulnar do carpo"
+            ]
+          ]
+        },
+        "perolas": [
+          "Escafossemilunar rompido: o semilunar olha para o dorso (DISI).",
+          "Ulna curta, semilunar sofrido: Kienböck. Ulna longa, fibrocartilagem esmagada: impactação.",
+          "Botoeira é a banda central; martelo é a ponta.",
+          "Guyon é a casa do ulnar; o túnel do carpo é a casa do mediano."
+        ],
+        "secoes": [
+          {
+            "titulo": "Quem passa por onde",
+            "texto": [
+              "O **mediano** passa no túnel do carpo com nove tendões flexores; o **ulnar**, no canal de Guyon. No dorso, seis compartimentos extensores; o primeiro é o da tenossinovite de **De Quervain**."
+            ]
+          },
+          {
+            "titulo": "O carpo é uma corrente",
+            "texto": [
+              "O semilunar segue quem estiver segurando ele. Se o ligamento **escafossemilunar** rompe, ele vai com o piramidal para dorsal: **DISI**. Se o **lunopiramidal** rompe, vai com o escafoide para volar: **VISI**. Sem tratamento, vem o colapso **SLAC**."
+            ]
+          }
+        ],
+        "mapaMental": {
+          "centro": "Cotovelo, punho e mão",
+          "ramos": [
+            {
+              "titulo": "Cotovelo",
+              "itens": [
+                "Epicondilite lateral: extensores",
+                "Medial: flexores",
+                "Bíceps distal e lacerto"
+              ]
+            },
+            {
+              "titulo": "Túneis",
+              "itens": [
+                "Carpo: mediano",
+                "Guyon: ulnar",
+                "Frohse: interósseo posterior"
+              ]
+            },
+            {
+              "titulo": "Carpo",
+              "itens": [
+                "DISI e VISI",
+                "Terry Thomas",
+                "SLAC",
+                "Arcos de Gilula"
+              ]
+            },
+            {
+              "titulo": "Variância ulnar",
+              "itens": [
+                "Negativa: Kienböck",
+                "Positiva: impactação ulnar"
+              ]
+            },
+            {
+              "titulo": "Dedos",
+              "itens": [
+                "Botoeira: banda central",
+                "Martelo: extensor terminal",
+                "Gatilho: polia A1"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🎾",
+            "conceito": "Raquete",
+            "liga": "epicondilite lateral",
+            "porque": "Cotovelo de tenista: extensores."
+          },
+          {
+            "icone": "⛳",
+            "conceito": "Taco de golfe",
+            "liga": "epicondilite medial",
+            "porque": "Cotovelo de golfista: flexores."
+          },
+          {
+            "icone": "🔨",
+            "conceito": "Martelo",
+            "liga": "dedo em martelo",
+            "porque": "A ponta do dedo não estende: extensor terminal."
+          },
+          {
+            "icone": "🔫",
+            "conceito": "Gatilho travando",
+            "liga": "polia A1",
+            "porque": "Polia espessada prende o tendão flexor."
+          },
+          {
+            "icone": "🌙",
+            "conceito": "Lua apagando",
+            "liga": "Kienböck",
+            "porque": "Necrose do semilunar com ulna curta."
+          }
+        ]
+      }
+    },
+    {
+      "id": "joelho",
+      "nome": "Joelho: meniscos e ligamentos",
+      "profundidade": "60–70 m",
+      "descricao": "Critérios de rotura meniscal, alça de balde, ramp lesion, armadilhas, LCA e padrões de contusão óssea",
+      "resumo": {
+        "introducao": "O joelho é a articulação mais laudada da RM. Para o menisco, há **regras objetivas** de rotura; para o LCA, há **sinais diretos e indiretos** e um **mapa de contusões** que conta como foi o trauma.",
+        "pontos": [
+          "**Rotura meniscal**: forma alterada (sem cirurgia prévia) ou sinal alto que **toca a superfície articular** em **dois ou mais cortes**. Sinal globular ou linear que não toca a superfície é degeneração.",
+          "**Tamanhos no sagital**: no medial, o corno posterior é maior que o anterior; no lateral, são parecidos. Corno anterior do medial maior que o posterior sugere fragmento deslocado.",
+          "**Tipos**: longitudinal vertical, horizontal (degenerativa), radial (parte as fibras circunferenciais), complexa. **Alça de balde**: fragmento no intercôndilo (duplo LCP, menos \"gravatas borboleta\", corno anterior duplo).",
+          "**Ramp lesion**: junção meniscocapsular posterior do menisco medial, muito associada à rotura do LCA. **Zona vermelha** (periferia) é a que cicatriza.",
+          "**Armadilhas**: ligamento intermeniscal transverso, ligamentos meniscofemorais (Wrisberg, Humphry), hiato poplíteo.",
+          "**LCA**: sinais diretos (descontinuidade, orientação horizontalizada, sinal alterado) e indiretos (contusões, translação anterior da tíbia, LCP em gancho, **fratura de Segond**, sulco lateral profundo).",
+          "**Pivot shift**: contusão no côndilo femoral lateral (porção média) e no platô tibial lateral posterior. **Hiperextensão**: contusões anteriores em beijo, risco de LCP. **Clipping**: tríade de O'Donoghue (LCA, LCM e menisco medial)."
+        ],
+        "tabela": {
+          "titulo": "Contusão óssea e mecanismo",
+          "colunas": [
+            "Padrão de edema",
+            "Mecanismo"
+          ],
+          "linhas": [
+            [
+              "Côndilo femoral lateral + platô tibial lateral posterior",
+              "Pivot shift (rotura do LCA)"
+            ],
+            [
+              "Anterior no fêmur e na tíbia (beijo)",
+              "Hiperextensão"
+            ],
+            [
+              "Lateral por impacto + lesão medial por tração",
+              "Clipping"
+            ],
+            [
+              "Borda medial da patela + côndilo femoral lateral anterior",
+              "Luxação lateral transitória da patela"
+            ]
+          ]
+        },
+        "perolas": [
+          "Sinal que toca a superfície em dois cortes: rotura. Em um só: desconfie.",
+          "Dois LCPs no sagital? O segundo é a alça de balde.",
+          "Segond na tíbia lateral: procure o LCA rompido.",
+          "Reconstruiu o LCA e esqueceu a ramp lesion: o menisco medial continua frouxo."
+        ],
+        "secoes": [
+          {
+            "titulo": "Menisco: regras objetivas",
+            "texto": [
+              "Rotura é **forma alterada** ou **sinal alto que toca a superfície** em dois ou mais cortes. Sinal que fica no meio do menisco é degeneração. Essa disciplina evita os dois erros mais comuns: inventar rotura e deixar passar uma."
+            ]
+          },
+          {
+            "titulo": "O joelho conta como se machucou",
+            "texto": [
+              "Cada mecanismo deixa um mapa de contusão. No **pivot shift**, o platô tibial lateral posterior bate no côndilo femoral lateral: procure o LCA. Na **hiperextensão**, as faces anteriores se beijam. No **clipping**, o lado medial abre: tríade de O'Donoghue."
+            ]
+          }
+        ],
+        "mapaMental": {
+          "centro": "Joelho",
+          "ramos": [
+            {
+              "titulo": "Critérios de rotura",
+              "itens": [
+                "Sinal toca a superfície",
+                "Dois cortes",
+                "Forma alterada"
+              ]
+            },
+            {
+              "titulo": "Tipos",
+              "itens": [
+                "Horizontal: degenerativa",
+                "Radial: corta o aro",
+                "Alça de balde: duplo LCP",
+                "Ramp lesion"
+              ]
+            },
+            {
+              "titulo": "LCA",
+              "itens": [
+                "Descontinuidade e orientação",
+                "Segond",
+                "Translação anterior",
+                "LCP em gancho"
+              ]
+            },
+            {
+              "titulo": "Contusões",
+              "itens": [
+                "Pivot shift: lateral",
+                "Hiperextensão: anterior",
+                "Clipping: tríade"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🪣",
+            "conceito": "Alça de balde",
+            "liga": "sinal do duplo LCP",
+            "porque": "O fragmento vira um \"segundo LCP\" no intercôndilo."
+          },
+          {
+            "icone": "🛢️",
+            "conceito": "Aro do barril",
+            "liga": "fibras circunferenciais",
+            "porque": "A rotura radial corta o aro e o menisco perde a função."
+          },
+          {
+            "icone": "💋",
+            "conceito": "Beijo na frente",
+            "liga": "hiperextensão",
+            "porque": "Contusões anteriores no fêmur e na tíbia."
+          },
+          {
+            "icone": "🌀",
+            "conceito": "Giro com o pé preso",
+            "liga": "pivot shift",
+            "porque": "Contusões laterais e LCA rompido."
+          }
+        ]
+      }
+    },
+    {
+      "id": "patela-tornozelo-pe",
+      "nome": "Patela, tornozelo e pé",
+      "profundidade": "70–80 m",
+      "descricao": "Instabilidade femoropatelar (escola de Lyon), fraturas de Weber, ligamentos do tornozelo, Lisfranc, Haglund e fáscia plantar",
+      "resumo": {
+        "introducao": "Na instabilidade da patela, o cirurgião corrige o que o radiologista mede: é o \"menu à la carte\" da escola de Lyon. No tornozelo e no pé, o trauma em inversão domina, e algumas lesões (Lisfranc, Maisonneuve) são famosas por passar despercebidas.",
+        "pontos": [
+          "**Luxação lateral transitória da patela**: edema na **borda medial da patela** e na face **anterolateral do côndilo femoral lateral**, com lesão do **ligamento patelofemoral medial (LPFM)**.",
+          "**Fatores de instabilidade**: **displasia troclear** (o principal, presente na grande maioria dos pacientes instáveis), **patela alta**, **TT-TG aumentado** e báscula (tilt) da patela.",
+          "**Sinal do cruzamento** no perfil: a linha do fundo da tróclea cruza a borda anterior do côndilo, mostrando tróclea rasa.",
+          "**TT-TG**: no plano axial, o quanto a tuberosidade tibial está deslocada para fora em relação ao fundo da tróclea; **acima de 20 mm** é patológico. A RM tende a subestimar o valor em relação à TC.",
+          "**Patela alta**: Caton-Deschamps acima de 1,2; báscula acima de 20°.",
+          "**Tornozelo (Weber)**: A abaixo da sindesmose; B no nível; C acima, sempre instável. **Maisonneuve**: lesão medial ou sindesmótica com fratura da fíbula proximal; radiografe a perna inteira.",
+          "**Entorse em inversão**: o fibulotalar anterior rompe primeiro, depois o fibulocalcâneo. **Lesão osteocondral** do tálus, frequentemente no domo medial.",
+          "**Lisfranc**: ligamento do cuneiforme medial à base do 2º metatarso; alargamento entre essas estruturas, sobretudo em carga, sugere lesão.",
+          "**Haglund**: proeminência posterossuperior do calcâneo + bursite retrocalcânea + tendinopatia insercional do calcâneo. **Fascite plantar**: espessamento da origem da fáscia no calcâneo."
+        ],
+        "tabela": {
+          "titulo": "Medidas da instabilidade patelar",
+          "colunas": [
+            "Medida",
+            "Patológico"
+          ],
+          "linhas": [
+            [
+              "TT-TG",
+              "> 20 mm"
+            ],
+            [
+              "Índice de Caton-Deschamps",
+              "> 1,2 (patela alta)"
+            ],
+            [
+              "Báscula (tilt) patelar",
+              "> 20°"
+            ],
+            [
+              "Sinal do cruzamento",
+              "Presente = displasia troclear"
+            ]
+          ]
+        },
+        "perolas": [
+          "Edema na borda medial da patela + côndilo lateral: a patela saiu e voltou.",
+          "Weber C sem fratura do maléolo medial? Olhe a fíbula lá em cima (Maisonneuve).",
+          "Lisfranc alargado só aparece direito com carga.",
+          "Haglund é tríade: osso, bursa e tendão."
+        ],
+        "secoes": [
+          {
+            "titulo": "A patela é um vagão no trilho",
+            "texto": [
+              "A tróclea é o trilho; a patela, o vagão. Trilho raso (**displasia troclear**), vagão alto (**patela alta**) e tração puxando para fora (**TT-TG** aumentado) fazem o vagão descarrilar. A escola de Lyon mede cada um para o cirurgião corrigir só o que está alterado."
+            ]
+          },
+          {
+            "titulo": "Tornozelo e pé: o que se esconde",
+            "texto": [
+              "Na inversão, o fibulotalar anterior rompe primeiro. Algumas lesões são famosas por passar despercebidas: a **Maisonneuve** (fratura da fíbula lá em cima) e a **Lisfranc** (alargamento sutil que só aparece com carga)."
+            ]
+          }
+        ],
+        "mapa": {
+          "tipo": "corpo",
+          "titulo": "Onde olhar",
+          "pontos": [
+            {
+              "onde": "joelho",
+              "titulo": "Patela e tróclea",
+              "texto": "Displasia troclear, patela alta (Caton-Deschamps > 1,2), TT-TG > 20 mm, lesão do LPFM."
+            },
+            {
+              "onde": "tibia",
+              "titulo": "Fíbula proximal",
+              "texto": "**Maisonneuve**: fratura alta da fíbula com lesão medial ou da sindesmose no tornozelo."
+            },
+            {
+              "onde": "tornozelo",
+              "titulo": "Tornozelo",
+              "texto": "Fibulotalar anterior, Weber A/B/C, lesão osteocondral do tálus."
+            },
+            {
+              "onde": "pe",
+              "titulo": "Mediopé e calcanhar",
+              "texto": "**Lisfranc** (cuneiforme medial ao 2º metatarso), Haglund e fascite plantar."
+            }
+          ]
+        },
+        "mapaMental": {
+          "centro": "Patela, tornozelo e pé",
+          "ramos": [
+            {
+              "titulo": "Instabilidade patelar",
+              "itens": [
+                "Displasia troclear",
+                "Patela alta",
+                "TT-TG > 20 mm",
+                "Báscula > 20°"
+              ]
+            },
+            {
+              "titulo": "Luxação aguda",
+              "itens": [
+                "Borda medial da patela",
+                "Côndilo lateral",
+                "LPFM"
+              ]
+            },
+            {
+              "titulo": "Tornozelo",
+              "itens": [
+                "Weber A, B, C",
+                "Maisonneuve",
+                "Fibulotalar anterior"
+              ]
+            },
+            {
+              "titulo": "Pé",
+              "itens": [
+                "Lisfranc",
+                "Haglund",
+                "Fascite plantar"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🚃",
+            "conceito": "Vagão no trilho",
+            "liga": "patela na tróclea",
+            "porque": "Trilho raso e vagão alto descarrilam."
+          },
+          {
+            "icone": "❌",
+            "conceito": "Linhas que se cruzam",
+            "liga": "sinal do cruzamento",
+            "porque": "O fundo da tróclea cruza a borda do côndilo: tróclea rasa."
+          },
+          {
+            "icone": "🪜",
+            "conceito": "Escada A, B, C",
+            "liga": "Weber",
+            "porque": "Quanto mais alto na fíbula, mais instável."
+          },
+          {
+            "icone": "🏋️",
+            "conceito": "Peso no pé",
+            "liga": "Lisfranc",
+            "porque": "O alargamento aparece com carga."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tumores",
+      "nome": "Tumores ósseos e lesões que imitam",
+      "profundidade": "80–100 m",
+      "descricao": "Checklist do tumor ósseo, Lodwick, reação periosteal, matriz, lesões benignas e malignas, mieloma × metástase e hiperparatireoidismo",
+      "resumo": {
+        "introducao": "Diante de uma lesão óssea, a primeira pergunta é se é mesmo tumor (há lesões \"não toque\" que nunca devem ser biopsiadas). Depois vem um **checklist** que transforma a imagem em diagnóstico: **idade, localização, margem, reação periosteal, matriz e partes moles**. Agressividade na imagem é velocidade de crescimento, não sinônimo de malignidade.",
+        "pontos": [
+          "**Idade** filtra tudo: epífise com fise aberta → **condroblastoma**; epífise no adulto, excêntrico e até o osso subcondral → **tumor de células gigantes**. Acima de 40 anos, lesão múltipla → **metástase ou mieloma**.",
+          "**Lodwick**: IA geográfica com halo esclerótico (mais benigna), IB geográfica sem halo, IC geográfica com margem mal definida, II ruído de traça, III permeativa (a mais agressiva).",
+          "**Reação periosteal**: sólida e unilamelar = lenta; **casca de cebola** (Ewing), **raios de sol** e **triângulo de Codman** (osteossarcoma) = rápida.",
+          "**Matriz**: osteoide em nuvem (osteossarcoma), condroide em anéis e arcos (encondroma, condrossarcoma), fibrosa em vidro fosco (displasia fibrosa), gordurosa (lipoma intraósseo).",
+          "**Cisto ósseo simples**: central, úmero ou fêmur proximal, fragmento caído após fratura. **Cisto ósseo aneurismático**: excêntrico, insuflativo, com níveis líquido-líquido; cuidado com o **osteossarcoma telangiectásico** (realce nodular, Codman, partes moles).",
+          "**Encondroma × condrossarcoma**: dor, tamanho maior que 5 cm, scalloping endosteal profundo (mais de 2/3 da cortical), rotura cortical e localização axial favorecem condrossarcoma. **Osteocondroma**: capa cartilaginosa maior que 2 cm no adulto preocupa.",
+          "**Mieloma × metástase**: mieloma tem lesões em saca-bocado no crânio, poupa os pedículos e pode ter cintilografia normal; metástase pega o pedículo e capta na cintilografia.",
+          "**Hiperparatireoidismo**: reabsorção subperiosteal na face radial das falanges médias do 2º e 3º dedos, coluna em camisa de rúgbi, crânio em sal e pimenta, tumores marrons.",
+          "**Não toque**: desmoide cortical (fêmur distal posterior), ilhota óssea, lipoma intraósseo do calcâneo."
+        ],
+        "tabela": {
+          "titulo": "Reação periosteal e velocidade",
+          "colunas": [
+            "Padrão",
+            "Significado",
+            "Exemplos"
+          ],
+          "linhas": [
+            [
+              "Sólida, espessa",
+              "Lenta",
+              "Osteoma osteoide, fratura consolidada"
+            ],
+            [
+              "Unilamelar",
+              "Lenta a moderada",
+              "Osteomielite inicial, histiocitose"
+            ],
+            [
+              "Multilamelar (casca de cebola)",
+              "Rápida",
+              "Sarcoma de Ewing, osteomielite aguda"
+            ],
+            [
+              "Espiculada (raios de sol)",
+              "Muito rápida",
+              "Osteossarcoma"
+            ],
+            [
+              "Triângulo de Codman",
+              "Rotura do periósteo",
+              "Osteossarcoma, outros agressivos"
+            ]
+          ]
+        },
+        "perolas": [
+          "Fragmento caído dentro do cisto: cisto ósseo simples.",
+          "Níveis líquidos não garantem benignidade: procure realce nodular e Codman.",
+          "Pedículo poupado: mieloma; pedículo comido: metástase.",
+          "Desmoide cortical não se biopsia: o patologista pode chamar de sarcoma."
+        ],
+        "secoes": [
+          {
+            "titulo": "Primeiro: é mesmo tumor?",
+            "texto": [
+              "Infecção e histiocitose imitam tumores agressivos, e algumas lesões são **\"não toque\"**: o desmoide cortical, a ilhota óssea e o lipoma intraósseo do calcâneo. Reconhecer essas lesões evita biópsias perigosas."
+            ]
+          },
+          {
+            "titulo": "O checklist que vira diagnóstico",
+            "texto": [
+              "**Idade** e **localização** reduzem a lista; a **margem** (Lodwick) e a **reação periosteal** contam a velocidade; a **matriz** conta o que o tumor fabrica (osso, cartilagem, tecido fibroso, gordura); a **cortical e as partes moles** confirmam a agressividade."
+            ]
+          }
+        ],
+        "linhaDoTempo": [
+          {
+            "quando": "0–20 anos",
+            "fato": "Cisto ósseo simples, condroblastoma (fise aberta), osteossarcoma, sarcoma de Ewing, osteoma osteoide."
+          },
+          {
+            "quando": "20–40 anos",
+            "fato": "Tumor de células gigantes (epífise com fise fechada), encondroma."
+          },
+          {
+            "quando": "Acima de 40",
+            "fato": "Metástases, mieloma múltiplo e condrossarcoma."
+          }
+        ],
+        "mapa": {
+          "tipo": "corpo",
+          "titulo": "Onde cada lesão costuma aparecer",
+          "pontos": [
+            {
+              "onde": "cranio",
+              "titulo": "Crânio",
+              "texto": "**Mieloma**: lesões em saca-bocado; hiperparatireoidismo: sal e pimenta."
+            },
+            {
+              "onde": "lombar",
+              "titulo": "Coluna",
+              "texto": "Metástase come o **pedículo**; mieloma poupa o pedículo no início."
+            },
+            {
+              "onde": "ombro",
+              "titulo": "Úmero proximal",
+              "texto": "**Cisto ósseo simples** na criança, com fragmento caído após fratura."
+            },
+            {
+              "onde": "pelve",
+              "titulo": "Pelve",
+              "texto": "Cartilagem na pelve é suspeita de **condrossarcoma**; plasmocitoma em mini-cérebro."
+            },
+            {
+              "onde": "femur",
+              "titulo": "Diáfise do fêmur",
+              "texto": "**Ewing**: permeativo com casca de cebola."
+            },
+            {
+              "onde": "joelho",
+              "titulo": "Ao redor do joelho",
+              "texto": "**Osteossarcoma** na metáfise; **desmoide cortical** atrás do fêmur distal (\"não toque\")."
+            },
+            {
+              "onde": "mao",
+              "titulo": "Mãos",
+              "texto": "**Encondroma** típico nos ossos tubulares curtos; hiperparatireoidismo na face radial das falanges."
+            }
+          ]
+        },
+        "mapaMental": {
+          "centro": "Tumor ósseo",
+          "ramos": [
+            {
+              "titulo": "Idade e local",
+              "itens": [
+                "Epífise jovem: condroblastoma",
+                "Epífise adulta: TCG",
+                "> 40 anos: metástase, mieloma"
+              ]
+            },
+            {
+              "titulo": "Margem (Lodwick)",
+              "itens": [
+                "IA: halo esclerótico",
+                "II: ruído de traça",
+                "III: permeativo"
+              ]
+            },
+            {
+              "titulo": "Periósteo",
+              "itens": [
+                "Sólido: lento",
+                "Casca de cebola: Ewing",
+                "Raios de sol e Codman: osteossarcoma"
+              ]
+            },
+            {
+              "titulo": "Matriz",
+              "itens": [
+                "Osteoide: nuvem",
+                "Condroide: anéis e arcos",
+                "Fibrosa: vidro fosco"
+              ]
+            },
+            {
+              "titulo": "Armadilhas",
+              "itens": [
+                "Cisto aneurismático × telangiectásico",
+                "Encondroma × condrossarcoma",
+                "Lesões \"não toque\""
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧅",
+            "conceito": "Casca de cebola",
+            "liga": "sarcoma de Ewing",
+            "porque": "Camadas de periósteo umas sobre as outras."
+          },
+          {
+            "icone": "🌅",
+            "conceito": "Raios de sol",
+            "liga": "osteossarcoma",
+            "porque": "Espículas perpendiculares ao osso."
+          },
+          {
+            "icone": "🍂",
+            "conceito": "Folha caída no fundo do pote",
+            "liga": "cisto ósseo simples",
+            "porque": "O fragmento da fratura cai no líquido."
+          },
+          {
+            "icone": "🥛",
+            "conceito": "Vidro fosco",
+            "liga": "displasia fibrosa",
+            "porque": "Matriz fibrosa homogênea, sem trabéculas."
+          },
+          {
+            "icone": "🏉",
+            "conceito": "Camisa de rúgbi",
+            "liga": "hiperparatireoidismo",
+            "porque": "Faixas densas nas placas vertebrais."
+          }
+        ]
+      }
+    }
+  ],
+  "questoes": [
+    {
+      "id": "msk-fu-01",
+      "tema": "Métodos de imagem",
+      "dificuldade": "facil",
+      "fase": "fundamentos",
+      "enunciado": "Paciente de 55 anos com dor óssea. A radiografia é normal, mas a suspeita de lesão lítica medular continua. Por que a radiografia pode ser falsamente normal nesse caso?",
+      "alternativas": [
+        "Porque a radiografia não mostra a cortical óssea",
+        "Porque a radiografia só mostra partes moles",
+        "Porque lesões líticas só aparecem na cintilografia",
+        "Porque é preciso perder boa parte do osso trabecular para a lesão aparecer no RX",
+        "Porque o osso trabecular é invisível em qualquer método"
+      ],
+      "correta": 3,
+      "explicacao": "O RX é pouco sensível para o osso trabecular: a lesão lítica só aparece depois de destruir boa parte dele. TC e RM detectam a lesão muito antes. Pegadinha: confundir \"boa para cortical\" com \"boa para tudo\". Dica de mergulhador: RX normal não encerra a investigação de dor óssea persistente.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-fu-02",
+      "tema": "Sequências de RM",
+      "dificuldade": "facil",
+      "fase": "fundamentos",
+      "enunciado": "Na RM, qual sequência é considerada a mais anatômica e a melhor para avaliar a gordura da medula óssea?",
+      "alternativas": [
+        "T1",
+        "T2 com saturação de gordura",
+        "STIR",
+        "Difusão",
+        "Gradiente T2*"
+      ],
+      "correta": 0,
+      "explicacao": "O T1 tem excelente contraste entre cortical, medula gordurosa (brilhante), músculo e tendões. É a sequência para infiltração medular e lipossubstituição muscular. As sequências com saturação de gordura escondem justamente a gordura. Dica de mergulhador: anatomia e medula, T1; edema e líquido, T2 com saturação."
+    },
+    {
+      "id": "msk-fu-03",
+      "tema": "Sequências de RM",
+      "dificuldade": "facil",
+      "fase": "fundamentos",
+      "enunciado": "Para destacar edema ósseo, derrame e bursite, a sequência mais útil é:",
+      "alternativas": [
+        "T1 sem saturação de gordura",
+        "T1 após contraste tardio de 30 minutos",
+        "T2 com saturação de gordura ou STIR",
+        "Densidade de prótons sem saturação, apenas",
+        "Radiografia em perfil"
+      ],
+      "correta": 2,
+      "explicacao": "Com a gordura apagada, o líquido fica muito brilhante contra um fundo escuro: edema, derrame, tendinopatia e bursite \"saltam aos olhos\". O STIR é mais homogêneo nas extremidades e com metal. Dica de mergulhador: procurou água, sature a gordura."
+    },
+    {
+      "id": "msk-fu-04",
+      "tema": "Periósteo",
+      "dificuldade": "facil",
+      "fase": "fundamentos",
+      "enunciado": "Por que abscessos subperiosteais são mais comuns em crianças do que em adultos com osteomielite?",
+      "alternativas": [
+        "Porque a infecção na criança nunca atinge o osso",
+        "Porque a criança não tem periósteo",
+        "Porque o osso da criança não tem medula",
+        "Porque crianças não formam reação periosteal",
+        "Porque o periósteo da criança é mais espesso e frouxamente aderido"
+      ],
+      "correta": 4,
+      "explicacao": "Na criança o periósteo é espesso e frouxo, e a coleção consegue descolá-lo formando o abscesso subperiosteal. No adulto, fino e firmemente fixado (fibras de Sharpey), ele contém a infecção dentro do osso. Dica de mergulhador: periósteo frouxo, coleção por baixo dele."
+    },
+    {
+      "id": "msk-fu-05",
+      "tema": "Medula óssea",
+      "dificuldade": "medio",
+      "fase": "fundamentos",
+      "enunciado": "Homem de 68 anos com anemia. Na RM da coluna, a medula dos corpos vertebrais tem sinal em T1 mais baixo que o dos discos e semelhante ao dos músculos. Esse achado sugere:",
+      "alternativas": [
+        "medula normal para a idade, com predomínio de gordura",
+        "infiltração difusa da medula, como em mieloma ou metástases",
+        "artefato de saturação de gordura",
+        "osteoporose senil sem significado",
+        "hemangiomas vertebrais típicos"
+      ],
+      "correta": 1,
+      "explicacao": "A medula adulta tem gordura e deve ser mais brilhante que o disco no T1. Quando fica mais escura que o disco e parecida com o músculo, a gordura foi substituída por células, como em infiltração neoplásica difusa. Hemangioma típico é brilhante em T1. Dica de mergulhador: compare a medula com o disco no T1.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-fu-06",
+      "tema": "Degenerativo × infeccioso",
+      "dificuldade": "medio",
+      "fase": "fundamentos",
+      "enunciado": "Em uma articulação dolorosa, qual conjunto de achados favorece processo degenerativo em vez de infeccioso?",
+      "alternativas": [
+        "Osteólise, erosões e coleção de partes moles",
+        "Reação periosteal lamelar e fístula",
+        "Esclerose subcondral, osteófitos e redução assimétrica do espaço articular",
+        "Baixo sinal marcado em T1 com abscesso intraósseo",
+        "Obliteração dos planos de gordura e sequestro"
+      ],
+      "correta": 2,
+      "explicacao": "A doença degenerativa forma osso: esclerose subcondral (achado precoce e principal), osteófitos, cistos e espaço reduzido de forma assimétrica, sem erosões nem reação periosteal. Os outros conjuntos falam de destruição e inflamação, típicas da infecção. Dica de mergulhador: degenerativo constrói; infecção derruba."
+    },
+    {
+      "id": "msk-fu-07",
+      "tema": "Infecção × tumor",
+      "dificuldade": "medio",
+      "fase": "fundamentos",
+      "enunciado": "Lesão óssea com componente de partes moles. Qual comportamento em relação aos planos de gordura e às fáscias favorece infecção?",
+      "alternativas": [
+        "Obliterar os planos de gordura e atravessar fáscias",
+        "Deslocar os planos de gordura e respeitar as fáscias",
+        "Formar matriz condroide em anéis e arcos",
+        "Ter limites nítidos e sem edema ao redor",
+        "Apresentar calcificações organizadas no interior"
+      ],
+      "correta": 0,
+      "explicacao": "A infecção é um processo inflamatório difuso: apaga a gordura e atravessa compartimentos. O tumor tende a ter limites mais precisos, empurra a gordura e respeita fáscias por mais tempo. Matriz e calcificações sugerem tumor. Dica de mergulhador: tumor empurra; infecção apaga."
+    },
+    {
+      "id": "msk-fu-08",
+      "tema": "Métodos de imagem",
+      "dificuldade": "medio",
+      "fase": "fundamentos",
+      "enunciado": "Qual método é o mais indicado para detalhar a cortical óssea e pequenas áreas de mineralização dentro de uma lesão?",
+      "alternativas": [
+        "Ultrassonografia",
+        "Densitometria óssea",
+        "Ressonância magnética em T2",
+        "Cintilografia óssea",
+        "Tomografia computadorizada"
+      ],
+      "correta": 4,
+      "explicacao": "A TC oferece a melhor definição da cortical e mostra pequenas calcificações e mineralização de matriz que podem passar despercebidas no RX e na RM. A RM ganha em medula e partes moles. Dica de mergulhador: osso fino e cálcio, TC; água e partes moles, RM."
+    },
+    {
+      "id": "msk-fu-09",
+      "tema": "Reação periosteal",
+      "dificuldade": "medio",
+      "fase": "fundamentos",
+      "enunciado": "Criança com febre e dor na perna há 4 dias. A radiografia não mostra reação periosteal. Isso afasta osteomielite?",
+      "alternativas": [
+        "Sim, porque a reação periosteal aparece no primeiro dia",
+        "Não, porque a reação periosteal só fica visível no RX depois de mineralizar, em torno de 2 semanas",
+        "Sim, porque osteomielite não causa reação periosteal",
+        "Não, porque a reação periosteal só aparece na TC",
+        "Sim, porque a criança não tem periósteo ativo"
+      ],
+      "correta": 1,
+      "explicacao": "O periósteo precisa formar e mineralizar osso novo para aparecer no RX, o que leva cerca de duas semanas; a osteólise também demora cerca de uma semana. Na suspeita precoce, a RM é o método de escolha. Dica de mergulhador: RX normal cedo é a regra, não a exceção."
+    },
+    {
+      "id": "msk-fu-10",
+      "tema": "Difusão",
+      "dificuldade": "dificil",
+      "fase": "fundamentos",
+      "enunciado": "Na RM, uma lesão óssea apresenta restrição à difusão. Esse achado reflete principalmente:",
+      "alternativas": [
+        "ausência total de células na lesão",
+        "calcificação densa sem tecido",
+        "presença de gordura madura",
+        "alta celularidade, que limita o movimento das moléculas de água",
+        "artefato de movimento do paciente"
+      ],
+      "correta": 3,
+      "explicacao": "A difusão mede a mobilidade da água. Tecidos muito celulares, como tumores, deixam menos espaço livre e restringem a difusão. Abscessos também podem restringir pelo conteúdo viscoso, por isso o achado sempre se interpreta com o resto do exame. Dica de mergulhador: muita célula, pouca água livre."
+    },
+    {
+      "id": "msk-fu-11",
+      "tema": "Trofismo muscular",
+      "dificuldade": "dificil",
+      "fase": "fundamentos",
+      "enunciado": "Para graduar atrofia crônica com lipossubstituição de um ventre muscular na RM, a melhor sequência é:",
+      "alternativas": [
+        "T2 com saturação de gordura, porque o músculo fica brilhante",
+        "Difusão, porque mede a celularidade",
+        "STIR, porque apaga a gordura e realça o músculo",
+        "T1, porque mostra a gordura entre as fibras com alto sinal",
+        "Pós-contraste, porque o músculo atrófico realça"
+      ],
+      "correta": 3,
+      "explicacao": "No T1 a gordura infiltrando o músculo aparece brilhante e permite graduar a lipossubstituição. Com saturação, gordura e músculo atrófico ficam escuros e o contraste se perde. Edema de denervação aguda, ao contrário, aparece no T2 com saturação. Dica de mergulhador: atrofia crônica, T1; denervação aguda, T2 com saturação."
+    },
+    {
+      "id": "msk-fu-12",
+      "tema": "Esclerose × infecção",
+      "dificuldade": "dificil",
+      "fase": "fundamentos",
+      "enunciado": "No exame de um adulto, há esclerose óssea marcada e organizada junto à articulação, sem coleções. Qual raciocínio é mais adequado?",
+      "alternativas": [
+        "Esclerose marcada costuma afastar infecção aguda e sugere causa mecânica ou depósito de cristais",
+        "Infecção aguda é a hipótese principal, porque esclerose e infecção aguda andam sempre juntas",
+        "Esclerose indica tumor maligno de crescimento rápido",
+        "Esclerose é sempre artefato de técnica radiográfica",
+        "Esclerose só aparece em crianças com osteomielite"
+      ],
+      "correta": 0,
+      "explicacao": "Esclerose é formação óssea, resposta lenta, e não costuma coexistir com infecção aguda, que destrói. Esclerose marcada aponta para sobrecarga mecânica, neuroartropatia ou depósitos (como hidroxiapatita). A exceção é a osteomielite crônica, que tem sequestro, fístulas e outros sinais. Dica de mergulhador: esclerose é tempo; infecção aguda é pressa."
+    },
+    {
+      "id": "msk-inf-01",
+      "tema": "Osteomielite aguda",
+      "dificuldade": "facil",
+      "fase": "infeccao",
+      "enunciado": "Menino de 8 anos com febre, dor e recusa em apoiar a perna há 3 dias. O RX é normal. Qual é o melhor próximo exame para confirmar osteomielite?",
+      "alternativas": [
+        "Repetir o RX em 6 meses",
+        "Densitometria óssea",
+        "Ressonância magnética",
+        "Radiografia contralateral apenas",
+        "Nenhum exame, porque o RX normal afasta infecção"
+      ],
+      "correta": 2,
+      "explicacao": "A RM mostra o edema medular, o baixo sinal em T1 e as coleções desde os primeiros dias, quando o RX ainda é normal. Esperar o RX alterar atrasa o tratamento. Dica de mergulhador: suspeita forte com RX normal, vá de RM."
+    },
+    {
+      "id": "msk-inf-02",
+      "tema": "Osteomielite crônica",
+      "dificuldade": "facil",
+      "fase": "infeccao",
+      "enunciado": "Na osteomielite crônica, o sequestro ósseo corresponde a:",
+      "alternativas": [
+        "uma fratura por estresse sem infecção",
+        "osso novo formado pelo periósteo ao redor da lesão",
+        "um trajeto da infecção até a pele",
+        "uma calcificação de partes moles benigna",
+        "um fragmento de osso necrótico envolto por tecido de granulação"
+      ],
+      "correta": 4,
+      "explicacao": "Sequestro é osso morto isolado, cercado por granulação, onde o antibiótico penetra mal: é um dos motivos da cronificação. O osso novo ao redor é o invólucro; o trajeto até a pele é a fístula. Dica de mergulhador: sequestro morto, invólucro vivo, fístula caminho."
+    },
+    {
+      "id": "msk-inf-03",
+      "tema": "Abscesso de Brodie",
+      "dificuldade": "facil",
+      "fase": "infeccao",
+      "enunciado": "O abscesso de Brodie é:",
+      "alternativas": [
+        "um abscesso no músculo psoas",
+        "um abscesso intraósseo da osteomielite subaguda ou crônica",
+        "uma bursite infectada do joelho",
+        "um tumor maligno com centro necrótico",
+        "um cisto ósseo simples com sangue"
+      ],
+      "correta": 1,
+      "explicacao": "É uma coleção dentro do osso, geralmente metafisária, com halo esclerótico, típica da osteomielite subaguda ou crônica, e sinal de atividade. Dica de mergulhador: Brodie mora dentro do osso."
+    },
+    {
+      "id": "msk-inf-04",
+      "tema": "Sinais na RM",
+      "dificuldade": "medio",
+      "fase": "infeccao",
+      "enunciado": "Na RM de uma lesão metafisária da tíbia, há uma coleção central com halo de sinal relativamente alto em T1 ao redor dela, entre a coleção e a medula edemaciada. Esse achado é o:",
+      "alternativas": [
+        "triângulo de Codman, típico de osteossarcoma",
+        "sinal do duplo contorno, típico da gota",
+        "sinal da penumbra, típico do abscesso de Brodie",
+        "sinal do fragmento caído, típico do cisto ósseo simples",
+        "sinal da gravata borboleta, típico do menisco normal"
+      ],
+      "correta": 2,
+      "explicacao": "O halo de tecido de granulação, um pouco mais brilhante que o abscesso em T1, forma a penumbra. É muito útil para diferenciar abscesso de tumor. Dica de mergulhador: penumbra é a aura do Brodie em T1."
+    },
+    {
+      "id": "msk-inf-05",
+      "tema": "Pé diabético",
+      "dificuldade": "medio",
+      "fase": "infeccao",
+      "enunciado": "Diabético com úlcera plantar sob a cabeça do 1º metatarso. A RM mostra baixo sinal marcado em T1 na medula desse osso, contíguo à úlcera, com trajeto fistuloso. A hipótese principal é:",
+      "alternativas": [
+        "osteomielite",
+        "neuroartropatia de Charcot sem infecção",
+        "edema reacional sem importância",
+        "gota tofácea",
+        "osteoartrite degenerativa"
+      ],
+      "correta": 0,
+      "explicacao": "Baixo sinal confluente em T1 na medula, em contiguidade com úlcera ou fístula, é o critério mais confiável de osteomielite no pé diabético. Edema reacional costuma manter o T1. Dica de mergulhador: no pé diabético, siga a úlcera; o osso embaixo dela conta a história."
+    },
+    {
+      "id": "msk-inf-06",
+      "tema": "Pé diabético",
+      "dificuldade": "medio",
+      "fase": "infeccao",
+      "enunciado": "Qual conjunto favorece neuroartropatia de Charcot em vez de osteomielite no pé diabético?",
+      "alternativas": [
+        "Úlcera plantar, trajeto fistuloso e baixo sinal confluente em T1 na medula contígua",
+        "Erosões marginais em saca-bocado com tofos densos nas partes moles",
+        "Abscesso de partes moles junto à úlcera e sequestro ósseo no metatarso",
+        "Reação periosteal fina com coleção intraóssea e realce periférico",
+        "Fragmentação, luxação, esclerose e sinal em T1 relativamente preservado, no mediopé, sem úlcera contígua"
+      ],
+      "correta": 4,
+      "explicacao": "Charcot é desorganização mecânica: fragmentos, debris, luxações (classicamente no mediopé), esclerose e T1 em geral preservado. Infecção é contígua à úlcera e destrói. Dica de mergulhador: Charcot quebra e bagunça; infecção corrói."
+    },
+    {
+      "id": "msk-inf-07",
+      "tema": "Osteomielite crônica",
+      "dificuldade": "medio",
+      "fase": "infeccao",
+      "enunciado": "Paciente com osteomielite crônica da tíbia pós-fratura. Qual achado sugere que a infecção está ativa?",
+      "alternativas": [
+        "Esclerose antiga e homogênea",
+        "Reação periosteal fina, ainda não incorporada à cortical",
+        "Cortical espessada e lisa, sem alteração há anos",
+        "Ausência de edema na RM",
+        "Consolidação completa da fratura"
+      ],
+      "correta": 1,
+      "explicacao": "Periósteo novo, fino e separado da cortical indica estímulo atual. Brodie e sequestro persistente também falam a favor de atividade. Esclerose antiga e homogênea é cicatriz. Dica de mergulhador: periósteo jovem, infecção acordada."
+    },
+    {
+      "id": "msk-inf-08",
+      "tema": "Osteomielite crônica",
+      "dificuldade": "medio",
+      "fase": "infeccao",
+      "enunciado": "Na osteomielite crônica, a cloaca corresponde a:",
+      "alternativas": [
+        "uma calcificação condroide em anéis e arcos dentro da lesão",
+        "um fragmento de osso morto envolto por tecido de granulação",
+        "uma fratura patológica já consolidada pela reação periosteal",
+        "uma abertura no invólucro por onde pus e restos drenam para as partes moles",
+        "o canal medular normal, visto em corte longitudinal"
+      ],
+      "correta": 3,
+      "explicacao": "A cloaca é o orifício no invólucro que permite a saída do material infeccioso, muitas vezes continuando como fístula até a pele. Dica de mergulhador: cloaca é a porta de saída."
+    },
+    {
+      "id": "msk-inf-09",
+      "tema": "Simuladores",
+      "dificuldade": "medio",
+      "fase": "infeccao",
+      "enunciado": "Qual destas lesões pode simular osteomielite pelo intenso edema e inflamação ao redor?",
+      "alternativas": [
+        "Lipoma intraósseo do calcâneo",
+        "Ilhota óssea (enostose)",
+        "Defeito fibroso cortical regredindo",
+        "Osteoma osteoide",
+        "Osteófito marginal"
+      ],
+      "correta": 3,
+      "explicacao": "Osteoma osteoide, osteoblastoma, condroblastoma e histiocitose de células de Langerhans provocam reação inflamatória exuberante e podem imitar infecção. As outras são lesões quietas. Dica de mergulhador: muito edema para uma lesão pequena? Lembre do osteoma osteoide."
+    },
+    {
+      "id": "msk-inf-10",
+      "tema": "Espondilodiscite",
+      "dificuldade": "dificil",
+      "fase": "infeccao",
+      "enunciado": "Na suspeita de espondilodiscite muito precoce, o que pode ser encontrado na RM?",
+      "alternativas": [
+        "Apenas edema discreto, ainda sem baixo sinal típico em T1",
+        "Sempre destruição extensa das placas terminais",
+        "Esclerose densa e osteófitos",
+        "Gás no disco, que confirma infecção",
+        "Ausência de qualquer alteração em todas as sequências, sempre"
+      ],
+      "correta": 0,
+      "explicacao": "Bem no início, o baixo sinal em T1 pode não estar presente e a alteração ser só edema discreto. Por isso a correlação clínica e o controle são importantes. Gás discal sugere degeneração (fenômeno de vácuo), não infecção. Dica de mergulhador: cedo demais, a imagem cochicha.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-inf-11",
+      "tema": "Simuladores",
+      "dificuldade": "dificil",
+      "fase": "infeccao",
+      "enunciado": "Criança com espessamento cortical, edema medular difuso e reação periosteal diafisária, sem abscesso nem sequestro. Qual diagnóstico pode simular perfeitamente osteomielite?",
+      "alternativas": [
+        "Gota tofácea",
+        "Osteoartrite primária",
+        "Histiocitose de células de Langerhans",
+        "Hemangioma vertebral",
+        "Osteocondroma séssil"
+      ],
+      "correta": 2,
+      "explicacao": "A histiocitose (granuloma eosinofílico) é benigna, mas cresce rápido e inflama, podendo imitar infecção e até Ewing. Ausência de sequestro e de coleção ajuda a pensar nela. Dica de mergulhador: lesão agressiva em criança: infecção, histiocitose e Ewing entram juntas no diferencial."
+    },
+    {
+      "id": "msk-inf-12",
+      "tema": "Infecção × tumor",
+      "dificuldade": "dificil",
+      "fase": "infeccao",
+      "enunciado": "Qual achado favorece osteomielite em vez de tumor ósseo maligno?",
+      "alternativas": [
+        "Matriz osteoide em nuvem dentro da lesão",
+        "Calcificações em anéis e arcos",
+        "Reação periosteal em raios de sol",
+        "Massa de partes moles que desloca a gordura sem infiltrar",
+        "Presença de sequestro e de trajeto fistuloso"
+      ],
+      "correta": 4,
+      "explicacao": "Sequestro, fístula e coleções são marcas de infecção. Matriz osteoide e raios de sol sugerem osteossarcoma; anéis e arcos, tumor cartilaginoso; massa que desloca a gordura, tumor. Dica de mergulhador: osso morto e caminho para fora, pense em infecção."
+    },
+    {
+      "id": "msk-oa-01",
+      "tema": "Osteoartrite",
+      "dificuldade": "facil",
+      "fase": "degenerativas",
+      "enunciado": "Mulher de 66 anos com dor no joelho ao caminhar. Qual conjunto radiográfico é típico de osteoartrite?",
+      "alternativas": [
+        "Erosões marginais, osteopenia periarticular e redução simétrica do espaço",
+        "Redução assimétrica do espaço, esclerose subcondral, osteófitos e geodos",
+        "Reação periosteal lamelar e sequestro",
+        "Calcificação em casca de ovo dos linfonodos",
+        "Lesões líticas em saca-bocado com tofos"
+      ],
+      "correta": 1,
+      "explicacao": "Osteoartrite forma osso e reduz o espaço principalmente onde a carga é maior, de modo assimétrico. Erosões, osteopenia e redução simétrica sugerem artrite inflamatória. Dica de mergulhador: OA é assimétrica e produtiva."
+    },
+    {
+      "id": "msk-oa-02",
+      "tema": "Osteoartrite",
+      "dificuldade": "facil",
+      "fase": "degenerativas",
+      "enunciado": "Os nódulos de Heberden correspondem a aumento de partes moles e osteófitos nas:",
+      "alternativas": [
+        "metacarpofalângicas",
+        "interfalângicas proximais",
+        "interfalângicas distais",
+        "articulações do punho",
+        "articulações dos cotovelos"
+      ],
+      "correta": 2,
+      "explicacao": "Heberden nas distais, Bouchard nas proximais. As metacarpofalângicas são mais típicas de artrite reumatoide e hemocromatose. Dica de mergulhador: H de Heberden, \"H\" de \"horizonte\", o fim do dedo."
+    },
+    {
+      "id": "msk-oa-03",
+      "tema": "Osteoartrite",
+      "dificuldade": "facil",
+      "fase": "degenerativas",
+      "enunciado": "A osteoartrite da articulação trapézio-metacarpal (base do polegar) é chamada de:",
+      "alternativas": [
+        "rizartrose",
+        "podagra",
+        "coxartrose",
+        "epicondilite",
+        "condrocalcinose"
+      ],
+      "correta": 0,
+      "explicacao": "Rizartrose é a OA da base do polegar, muito comum em mulheres. Podagra é a crise de gota na 1ª metatarsofalângica. Dica de mergulhador: rizo = raiz, a raiz do polegar."
+    },
+    {
+      "id": "msk-oa-04",
+      "tema": "Incidências",
+      "dificuldade": "medio",
+      "fase": "degenerativas",
+      "enunciado": "Paciente com dor no joelho e AP em carga aparentemente normal. Qual incidência ajuda a mostrar perda precoce de cartilagem femorotibial?",
+      "alternativas": [
+        "Panorâmica de mandíbula",
+        "Axial de patela sem carga",
+        "Perfil do tornozelo",
+        "Incidência de Waters",
+        "Incidência em flexão com carga (Schuss ou Rosenberg)"
+      ],
+      "correta": 4,
+      "explicacao": "Com o joelho fletido e em carga, a porção posterior do côndilo, onde a cartilagem costuma se perder primeiro, apoia no platô e o pinçamento aparece. No AP em extensão ele pode passar despercebido. Dica de mergulhador: dobrou o joelho, a artrose aparece."
+    },
+    {
+      "id": "msk-oa-05",
+      "tema": "Osteoartrite erosiva",
+      "dificuldade": "medio",
+      "fase": "degenerativas",
+      "enunciado": "Mulher de 58 anos com dor e inflamação nas interfalângicas distais. O RX mostra erosões centrais com osteófitos nas bordas, aspecto em asa de gaivota. O diagnóstico mais provável é:",
+      "alternativas": [
+        "artrite reumatoide",
+        "osteoartrite erosiva",
+        "gota tofácea",
+        "artrite psoriásica com lápis na xícara",
+        "hemocromatose"
+      ],
+      "correta": 1,
+      "explicacao": "A OA erosiva acomete as interfalângicas com erosão central e proliferação marginal, formando a asa de gaivota. A artrite psoriásica também é distal, mas faz erosão marginal e proliferação periosteal, com o clássico \"lápis na xícara\" nas formas graves. Dica de mergulhador: gaivota no centro, OA erosiva."
+    },
+    {
+      "id": "msk-oa-06",
+      "tema": "Osteoartrite atípica",
+      "dificuldade": "medio",
+      "fase": "degenerativas",
+      "enunciado": "Homem de 45 anos com osteoartrite importante nas 2ª e 3ª metacarpofalângicas, com osteófitos em gancho nas cabeças dos metacarpos. Que doença deve ser investigada?",
+      "alternativas": [
+        "Osteomielite",
+        "Osteoartrite primária comum",
+        "Hemofilia",
+        "Hemocromatose",
+        "Displasia do quadril"
+      ],
+      "correta": 3,
+      "explicacao": "Metacarpofalângicas não são sítio típico de OA primária. Osteófitos em gancho nas cabeças do 2º e 3º metacarpos, com condrocalcinose, sugerem hemocromatose. Dica de mergulhador: gancho no 2 e 3, peça o ferro.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-oa-07",
+      "tema": "Hemofilia",
+      "dificuldade": "medio",
+      "fase": "degenerativas",
+      "enunciado": "Jovem de 19 anos com joelho deformado, redução simétrica do espaço e alargamento do túnel intercondilar. Na RM, há focos de baixo sinal em todas as sequências na sinóvia. O diagnóstico mais provável é:",
+      "alternativas": [
+        "condromatose sinovial",
+        "osteoartrite primária",
+        "artrite séptica aguda",
+        "artropatia hemofílica",
+        "gota"
+      ],
+      "correta": 3,
+      "explicacao": "Hemartroses repetidas causam sinovite com hemossiderina (escura em todas as sequências), alargamento do túnel e destruição precoce, típicos da hemofilia. Dica de mergulhador: jovem + túnel largo + ferro na sinóvia = hemofilia."
+    },
+    {
+      "id": "msk-oa-08",
+      "tema": "Neuroartropatia",
+      "dificuldade": "medio",
+      "fase": "degenerativas",
+      "enunciado": "Qual das condições abaixo está classicamente associada à neuroartropatia de Charcot do ombro?",
+      "alternativas": [
+        "Siringomielia",
+        "Gota",
+        "Artrite reumatoide",
+        "Hemocromatose",
+        "Osteoporose"
+      ],
+      "correta": 0,
+      "explicacao": "Charcot do membro superior, sobretudo ombro, lembra siringomielia; no pé, o diabetes é a causa mais comum. Dica de mergulhador: ombro destruído sem dor proporcional, investigue a medula cervical."
+    },
+    {
+      "id": "msk-oa-09",
+      "tema": "Cartilagem",
+      "dificuldade": "medio",
+      "fase": "degenerativas",
+      "enunciado": "Na RM do joelho, há fissura da cartilagem que atinge a camada profunda, sem expor o osso subcondral. Na classificação de Outerbridge modificada, esse achado corresponde ao grau:",
+      "alternativas": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "0"
+      ],
+      "correta": 2,
+      "explicacao": "Grau 1 é alteração de sinal ou amolecimento; 2, fissura superficial; 3, fissura profunda sem exposição óssea; 4, osso subcondral exposto. Dica de mergulhador: 4 é quando o osso aparece.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-oa-10",
+      "tema": "Osteoartrite atípica",
+      "dificuldade": "dificil",
+      "fase": "degenerativas",
+      "enunciado": "Qual situação deve levantar suspeita de osteoartrite atípica?",
+      "alternativas": [
+        "Gonartrose medial em mulher de 70 anos com obesidade",
+        "Coxartrose superolateral em homem de 75 anos",
+        "Rizartrose em mulher de 60 anos",
+        "Nódulos de Heberden em mulher de 65 anos",
+        "Osteoartrite avançada da articulação radiocárpica num paciente de 40 anos sem trauma"
+      ],
+      "correta": 4,
+      "explicacao": "Articulação que não é de carga, paciente jovem e ausência de trauma: combinação que pede investigação de CPPD, hemocromatose, sequela inflamatória ou outras causas secundárias. As demais são apresentações típicas. Dica de mergulhador: lugar estranho + idade estranha = causa secundária."
+    },
+    {
+      "id": "msk-oa-11",
+      "tema": "Quadril",
+      "dificuldade": "dificil",
+      "fase": "degenerativas",
+      "enunciado": "O falso perfil de Lequesne do quadril é especialmente útil para avaliar:",
+      "alternativas": [
+        "a densidade mineral do colo femoral e o risco de fratura",
+        "o espaço articular posterior e a cobertura anterior da cabeça femoral",
+        "o alinhamento da coluna lombar e das sacroilíacas",
+        "o ligamento redondo e a fóvea da cabeça femoral",
+        "a bursa trocantérica e os tendões glúteos"
+      ],
+      "correta": 1,
+      "explicacao": "Feito em pé, com rotação da pelve, ele mostra a porção posterior do espaço (onde a OA pode começar) e a cobertura anterior do acetábulo, importante na displasia. Dica de mergulhador: falso perfil mostra o que o AP esconde atrás.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-oa-12",
+      "tema": "Neuroartropatia",
+      "dificuldade": "dificil",
+      "fase": "degenerativas",
+      "enunciado": "Na neuroartropatia de Charcot, qual achado é esperado?",
+      "alternativas": [
+        "Articulação preservada com osteopenia difusa apenas",
+        "Erosões em saca-bocado com tofos",
+        "Destruição, fragmentos ósseos intra-articulares, desorganização e esclerose",
+        "Calcificação linear da cartilagem sem destruição",
+        "Reação periosteal em raios de sol"
+      ],
+      "correta": 2,
+      "explicacao": "Os \"D\" de Charcot: derrame, debris (fragmentos), destruição, desorganização e densidade aumentada (esclerose), em geral desproporcionais à dor. Dica de mergulhador: Charcot faz uma bagunça densa."
+    },
+    {
+      "id": "msk-ar-01",
+      "tema": "Artrite reumatoide",
+      "dificuldade": "facil",
+      "fase": "inflamatorias",
+      "enunciado": "Mulher de 42 anos com dor e rigidez matinal prolongada nas mãos. Qual distribuição é mais típica da artrite reumatoide?",
+      "alternativas": [
+        "Metacarpofalângicas, interfalângicas proximais e punhos, de forma simétrica",
+        "Interfalângicas distais, com osteófitos e nódulos de Heberden",
+        "Apenas a 1ª metatarsofalângica, em crises que vão e voltam",
+        "Apenas a base do polegar, com esclerose subcondral",
+        "Sacroilíacas e coluna lombar, com sindesmófitos"
+      ],
+      "correta": 0,
+      "explicacao": "A AR é poliarticular e simétrica, nas articulações proximais das mãos e nos punhos, poupando as interfalângicas distais. Distais com osteófitos é osteoartrite; 1ª MTF é a gota. Dica de mergulhador: AR fica perto do punho; artrose fica na ponta."
+    },
+    {
+      "id": "msk-ar-02",
+      "tema": "Artrite reumatoide",
+      "dificuldade": "facil",
+      "fase": "inflamatorias",
+      "enunciado": "Qual achado radiográfico é esperado na artrite reumatoide estabelecida?",
+      "alternativas": [
+        "Erosões centrais em asa de gaivota",
+        "Osteófitos exuberantes e esclerose subcondral",
+        "Proliferação óssea periosteal em \"felpudo\"",
+        "Calcificação em pipoca",
+        "Erosões marginais e osteopenia periarticular"
+      ],
+      "correta": 4,
+      "explicacao": "Pannus inflamatório corrói as áreas nuas (sem cartilagem), gerando erosões marginais; a hiperemia causa osteopenia periarticular. Proliferação óssea fala contra AR. Dica de mergulhador: AR corrói e desmineraliza; não constrói."
+    },
+    {
+      "id": "msk-ar-03",
+      "tema": "Gota",
+      "dificuldade": "facil",
+      "fase": "inflamatorias",
+      "enunciado": "Homem de 52 anos com crises de dor intensa no hálux. O RX mostra erosão em saca-bocado na 1ª metatarsofalângica, com margem esclerótica e borda pendente, e espaço articular preservado. A hipótese principal é:",
+      "alternativas": [
+        "artrite reumatoide",
+        "gota",
+        "osteoartrite",
+        "artrite séptica crônica",
+        "hiperparatireoidismo"
+      ],
+      "correta": 1,
+      "explicacao": "Erosão bem definida, com margem esclerótica e borda pendente (overhanging edge), perto de tofo e com espaço preservado, é a assinatura da gota. Dica de mergulhador: saca-bocado + hálux = gota."
+    },
+    {
+      "id": "msk-ar-04",
+      "tema": "Ultrassonografia",
+      "dificuldade": "medio",
+      "fase": "inflamatorias",
+      "enunciado": "No US de uma metacarpofalângica, há tecido hipoecoico espesso, que não se comprime nem se desloca com o transdutor e tem fluxo ao Doppler. Isso corresponde a:",
+      "alternativas": [
+        "derrame articular simples",
+        "tofo calcificado",
+        "cartilagem normal",
+        "sinovite",
+        "cisto sinovial"
+      ],
+      "correta": 3,
+      "explicacao": "Derrame é anecoico, compressível e deslocável. A sinóvia inflamada é espessa, hipoecoica, não compressível e vascularizada. Dica de mergulhador: apertou e não mexeu, com Doppler? Sinovite."
+    },
+    {
+      "id": "msk-ar-05",
+      "tema": "Ressonância magnética",
+      "dificuldade": "medio",
+      "fase": "inflamatorias",
+      "enunciado": "Na RM de punho de paciente com AR inicial, há edema ósseo mal definido no capitato, sem erosão. Qual a importância desse achado?",
+      "alternativas": [
+        "É irrelevante, porque sem erosão não há dano articular",
+        "Indica necrose avascular estabelecida e irreversível",
+        "Indica fratura por estresse do capitato por sobrecarga",
+        "É osteíte: lesão pré-erosiva, potencialmente reversível e preditora de erosões futuras",
+        "Indica infecção bacteriana do carpo, que pede punção"
+      ],
+      "correta": 3,
+      "explicacao": "A osteíte é infiltrado inflamatório no osso trabecular, visível só na RM, e é o maior preditor de erosões. Tratar nessa fase pode evitar dano permanente. Dica de mergulhador: osteíte hoje, erosão amanhã."
+    },
+    {
+      "id": "msk-ar-06",
+      "tema": "Ressonância magnética",
+      "dificuldade": "medio",
+      "fase": "inflamatorias",
+      "enunciado": "Por que as imagens pós-contraste na RM de artrite devem ser adquiridas nos primeiros minutos após a injeção?",
+      "alternativas": [
+        "Porque depois o contraste se difunde para o líquido articular e simula sinovite",
+        "Porque o contraste perde o efeito em 30 segundos",
+        "Porque o osso deixa de realçar depois de 1 minuto",
+        "Porque a injeção causa dor tardia",
+        "Porque o tendão passa a brilhar no T1 sem contraste"
+      ],
+      "correta": 0,
+      "explicacao": "Com o tempo (em torno de 5 minutos), o gadolínio passa para o líquido sinovial e o derrame começa a realçar, o que pode ser lido erradamente como sinovite ou tenossinovite. Dica de mergulhador: contraste tardio vira artrografia.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-ar-07",
+      "tema": "CPPD",
+      "dificuldade": "medio",
+      "fase": "inflamatorias",
+      "enunciado": "Idosa de 81 anos com crise inflamatória aguda no joelho. O RX mostra calcificação linear na cartilagem e nos meniscos. O diagnóstico mais provável é:",
+      "alternativas": [
+        "artrite reumatoide",
+        "gota tofácea",
+        "doença por depósito de pirofosfato de cálcio (pseudogota)",
+        "tendinopatia calcária",
+        "osteocondromatose sinovial"
+      ],
+      "correta": 2,
+      "explicacao": "Condrocalcinose em meniscos e cartilagem, numa idosa com crise aguda, é a apresentação típica da CPPD, a pseudogota. A prevalência sobe muito depois dos 80 anos. Dica de mergulhador: menisco desenhado de branco, pense em pirofosfato."
+    },
+    {
+      "id": "msk-ar-08",
+      "tema": "Hidroxiapatita",
+      "dificuldade": "medio",
+      "fase": "inflamatorias",
+      "enunciado": "Mulher de 50 anos com dor súbita e intensa no ombro. O RX mostra calcificação amorfa e mal definida no tendão do supraespinal, e a RM mostra intenso edema no tubérculo maior. Qual evento explica a piora?",
+      "alternativas": [
+        "Capsulite adesiva crônica",
+        "Rotura do lábio glenoidal",
+        "Osteoartrite glenoumeral",
+        "Fratura de Hill-Sachs",
+        "Migração intraóssea do cristal de hidroxiapatita"
+      ],
+      "correta": 4,
+      "explicacao": "A calcificação de hidroxiapatita pode migrar para a bursa, para o músculo ou para dentro do osso, causando dor muito forte, edema intenso e até erosões. Calcificação mal definida sugere fase de reabsorção, a mais dolorosa. Dica de mergulhador: cálcio fofo e dor forte, ele está se mexendo."
+    },
+    {
+      "id": "msk-ar-09",
+      "tema": "Gota",
+      "dificuldade": "medio",
+      "fase": "inflamatorias",
+      "enunciado": "No US do joelho de paciente com hiperuricemia, há uma linha hiperecogênica sobre a superfície da cartilagem hialina, paralela ao osso. Esse é o:",
+      "alternativas": [
+        "sinal da penumbra",
+        "sinal do duplo contorno, sugestivo de depósito de urato",
+        "sinal de Terry Thomas",
+        "sinal do fragmento caído",
+        "sinal do cruzamento"
+      ],
+      "correta": 1,
+      "explicacao": "O duplo contorno é o urato depositado sobre a cartilagem, muito específico de gota (pouco sensível). Na CPPD, o cálcio fica dentro da cartilagem, não sobre ela. Dica de mergulhador: gota pinta a superfície; CPPD pinta o recheio."
+    },
+    {
+      "id": "msk-ar-10",
+      "tema": "Coluna cervical na AR",
+      "dificuldade": "dificil",
+      "fase": "inflamatorias",
+      "enunciado": "Paciente com AR de longa data e cervicalgia. Nas radiografias dinâmicas, a distância atlantodental anterior mede 5 mm em flexão. O laudo deve apontar:",
+      "alternativas": [
+        "achado normal",
+        "espondilodiscite C1–C2",
+        "instabilidade atlantoaxial",
+        "fratura do odontoide tipo III",
+        "osteoartrite facetária isolada"
+      ],
+      "correta": 2,
+      "explicacao": "Acima de 3 mm em adultos caracteriza instabilidade atlantoaxial, por frouxidão ou erosão do ligamento transverso e do odontoide pelo pannus. A RM avalia compressão medular. Dica de mergulhador: na AR, o pescoço também é articulação.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-ar-11",
+      "tema": "Gota × AR",
+      "dificuldade": "dificil",
+      "fase": "inflamatorias",
+      "enunciado": "Qual combinação favorece gota em vez de artrite reumatoide?",
+      "alternativas": [
+        "Acometimento assimétrico, tofos, erosões com margem esclerótica e espaço preservado",
+        "Osteopenia periarticular e erosões marginais simétricas",
+        "Desvio ulnar dos dedos e pescoço de cisne",
+        "Erosão no estiloide da ulna com sinovite no punho, bilateral",
+        "Instabilidade atlantoaxial"
+      ],
+      "correta": 0,
+      "explicacao": "Gota é assimétrica, salta articulações, forma tofos e erosões bem corticalizadas com espaço preservado e pouca osteopenia. AR é simétrica, osteopênica e corrói sem margens escleróticas. Dica de mergulhador: margem esclerótica é erosão antiga e lenta, cara de gota."
+    },
+    {
+      "id": "msk-ar-12",
+      "tema": "CPPD",
+      "dificuldade": "dificil",
+      "fase": "inflamatorias",
+      "enunciado": "Qual localização de artropatia, associada a condrocalcinose, é muito sugestiva de CPPD em vez de osteoartrite primária?",
+      "alternativas": [
+        "Interfalângicas distais",
+        "Compartimento femorotibial medial",
+        "Coxofemoral superolateral",
+        "Base do polegar com Heberden",
+        "Patelofemoral isolada ou radiocárpica"
+      ],
+      "correta": 4,
+      "explicacao": "A CPPD gosta de articulações pouco típicas para OA, como a patelofemoral isolada, a radiocárpica e a escafotrapeziotrapezoide, com cistos subcondrais grandes. Dica de mergulhador: artrose no lugar errado + cálcio na cartilagem = CPPD."
+    },
+    {
+      "id": "msk-omb-01",
+      "tema": "Manguito rotador",
+      "dificuldade": "facil",
+      "fase": "ombro",
+      "enunciado": "Qual tendão do manguito rotador se insere no tubérculo menor do úmero?",
+      "alternativas": [
+        "Supraespinal",
+        "Subescapular",
+        "Infraespinal",
+        "Redondo menor",
+        "Cabeça longa do bíceps"
+      ],
+      "correta": 1,
+      "explicacao": "O subescapular é o único do manguito no tubérculo menor; supraespinal, infraespinal e redondo menor vão para o tubérculo maior. Dica de mergulhador: sub-escapular, sub-menor: o \"S\" que fica na frente."
+    },
+    {
+      "id": "msk-omb-02",
+      "tema": "Instabilidade",
+      "dificuldade": "facil",
+      "fase": "ombro",
+      "enunciado": "Após luxação anterior do ombro, a lesão de Hill-Sachs corresponde a:",
+      "alternativas": [
+        "fratura da clavícula distal",
+        "lesão do lábio glenoidal anteroinferior",
+        "rotura do tendão do supraespinal",
+        "afundamento ósseo na parte de trás e de cima da cabeça do úmero",
+        "lesão do lábio superior de anterior para posterior"
+      ],
+      "correta": 3,
+      "explicacao": "Ao luxar para a frente, a parte posterossuperior da cabeça bate na borda anteroinferior da glenoide e afunda: Hill-Sachs. A lesão do lábio anteroinferior é a Bankart. Dica de mergulhador: Hill-Sachs na cabeça; Bankart na glenoide."
+    },
+    {
+      "id": "msk-omb-03",
+      "tema": "Instabilidade",
+      "dificuldade": "facil",
+      "fase": "ombro",
+      "enunciado": "Paciente com luxação do ombro após uma crise convulsiva. Qual tipo de luxação deve ser lembrado primeiro?",
+      "alternativas": [
+        "Anterior",
+        "Superior",
+        "Inferior (luxatio erecta)",
+        "Posterior",
+        "Acromioclavicular tipo I"
+      ],
+      "correta": 3,
+      "explicacao": "Convulsões e choques elétricos contraem toda a musculatura e favorecem a luxação posterior, fácil de passar despercebida no AP. Perfil axilar ou Y da escápula, ou TC, são indispensáveis. Dica de mergulhador: convulsão + ombro = olhe para trás."
+    },
+    {
+      "id": "msk-omb-04",
+      "tema": "Manguito rotador",
+      "dificuldade": "medio",
+      "fase": "ombro",
+      "enunciado": "Na RM, há rotura parcial na superfície articular da inserção do supraespinal, com as fibras bursais íntegras. Essa lesão é chamada de:",
+      "alternativas": [
+        "PASTA",
+        "PASTA reversa",
+        "rotura transfixante",
+        "SLAP",
+        "Bankart ósseo"
+      ],
+      "correta": 0,
+      "explicacao": "PASTA é a avulsão parcial da face articular do supraespinal; a reversa acomete a face bursal. Na transfixante, a lesão atravessa toda a espessura. Dica de mergulhador: PASTA fica embaixo, do lado da articulação."
+    },
+    {
+      "id": "msk-omb-05",
+      "tema": "Manguito rotador",
+      "dificuldade": "medio",
+      "fase": "ombro",
+      "enunciado": "Rotura parcial articular com extensão longitudinal entre as fibras do tendão, associada a um cisto na junção miotendínea. Esse padrão corresponde a:",
+      "alternativas": [
+        "tendinopatia calcária em reabsorção",
+        "rotura transfixante maciça",
+        "lesão PAINT com cisto sentinela",
+        "capsulite adesiva",
+        "lesão SLAP tipo II"
+      ],
+      "correta": 2,
+      "explicacao": "Na PAINT, o líquido articular entra pela fissura e corre entre as fibras (delaminação), formando um cisto na junção miotendínea, o cisto sentinela. Dica de mergulhador: cisto no músculo do manguito, procure a fenda no tendão."
+    },
+    {
+      "id": "msk-omb-06",
+      "tema": "Capsulite adesiva",
+      "dificuldade": "medio",
+      "fase": "ombro",
+      "enunciado": "Mulher de 55 anos, diabética, com dor e perda progressiva de movimento do ombro em todas as direções. Qual achado na RM apoia capsulite adesiva?",
+      "alternativas": [
+        "Rotura transfixante do supraespinal com retração do coto",
+        "Cisto paralabral posterior na incisura espinoglenoidal",
+        "Lesão de Hill-Sachs na porção posterossuperior da cabeça",
+        "Calcificação densa e bem delimitada no subescapular",
+        "Obliteração da gordura do intervalo rotador e espessamento do ligamento coracoumeral"
+      ],
+      "correta": 4,
+      "explicacao": "O ombro congelado mostra espessamento do ligamento coracoumeral, apagamento da gordura do intervalo rotador e espessamento ou edema do recesso axilar. É mais comum em mulheres de meia-idade e diabéticos. Dica de mergulhador: intervalo rotador sem gordura, ombro congelando."
+    },
+    {
+      "id": "msk-omb-07",
+      "tema": "Denervação",
+      "dificuldade": "medio",
+      "fase": "ombro",
+      "enunciado": "RM do ombro mostra cisto paralabral posterior na incisura espinoglenoidal e edema de denervação só no infraespinal. O nervo comprimido é:",
+      "alternativas": [
+        "o axilar no espaço quadrilateral",
+        "o supraescapular, distal à saída do ramo do supraespinal",
+        "o musculocutâneo",
+        "o radial no sulco espiral",
+        "o torácico longo"
+      ],
+      "correta": 1,
+      "explicacao": "Na incisura espinoglenoidal, o nervo supraescapular já deu o ramo do supraespinal; por isso só o infraespinal sofre. Na incisura supraescapular, os dois músculos são afetados. Dica de mergulhador: só infra = espinoglenoidal."
+    },
+    {
+      "id": "msk-omb-08",
+      "tema": "Variações anatômicas",
+      "dificuldade": "medio",
+      "fase": "ombro",
+      "enunciado": "Na RM, há separação do lábio anterossuperior (entre 1 e 3 horas), com margens lisas, sem outras alterações. A interpretação mais provável é:",
+      "alternativas": [
+        "lesão SLAP",
+        "lesão de Bankart",
+        "forame sublabral, uma variação anatômica",
+        "rotura do subescapular",
+        "lesão de Hill-Sachs"
+      ],
+      "correta": 2,
+      "explicacao": "O forame sublabral é uma variação normal na posição de 1 a 3 horas; o recesso sublabral fica junto à âncora do bíceps; o complexo de Buford é a ausência do lábio anterossuperior com ligamento glenoumeral médio espesso. Confundir com lesão gera cirurgia desnecessária. Dica de mergulhador: margem lisa no lugar certo é variação.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-omb-09",
+      "tema": "Instabilidade",
+      "dificuldade": "dificil",
+      "fase": "ombro",
+      "enunciado": "No cálculo do glenoid track, o diâmetro da glenoide inferior é 26 mm e a perda óssea anterior é 4 mm. O intervalo de Hill-Sachs mede 20 mm. A lesão é:",
+      "alternativas": [
+        "off-track, porque o intervalo de Hill-Sachs (20 mm) é maior que o track (cerca de 17,6 mm)",
+        "on-track, porque 20 é menor que o track de cerca de 17,6 mm",
+        "on-track, porque a perda óssea é menor que 25%",
+        "impossível de classificar sem artrografia",
+        "off-track, porque o diâmetro passa de 25 mm"
+      ],
+      "correta": 0,
+      "explicacao": "Track = 0,83 × 26 − 4 ≈ 21,6 − 4 = 17,6 mm. O intervalo de Hill-Sachs (20 mm) é maior: a cabeça \"sai do trilho\", lesão off-track, com maior risco de reluxação. Dica de mergulhador: Hill-Sachs maior que o trilho = sai dos trilhos.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-omb-10",
+      "tema": "Manguito rotador",
+      "dificuldade": "dificil",
+      "fase": "ombro",
+      "enunciado": "No US do ombro, uma rotura transfixante do supraespinal pode mostrar uma linha hiperecogênica sobre a cartilagem da cabeça umeral. Esse achado é explicado por:",
+      "alternativas": [
+        "osteófito marginal",
+        "depósito de urato sobre a cartilagem",
+        "calcificação de hidroxiapatita intratendínea",
+        "artefato de anisotropia do bíceps",
+        "interface entre o líquido da rotura e a cartilagem exposta"
+      ],
+      "correta": 4,
+      "explicacao": "Com o tendão ausente, o líquido fica diretamente sobre a cartilagem e a interface brilha (sinal da interface da cartilagem). Não confundir com o duplo contorno da gota, que é o urato depositado. Dica de mergulhador: mesma linha, causas diferentes; olhe o contexto."
+    },
+    {
+      "id": "msk-omb-11",
+      "tema": "Trofismo muscular",
+      "dificuldade": "dificil",
+      "fase": "ombro",
+      "enunciado": "Antes do reparo de uma rotura do manguito, por que é essencial descrever a lipossubstituição dos ventres musculares (Goutallier)?",
+      "alternativas": [
+        "Porque a gordura desaparece logo após a cirurgia",
+        "Porque a gordura muscular avançada é irreversível e piora o resultado funcional do reparo",
+        "Porque indica infecção do músculo",
+        "Porque define o lado da luxação",
+        "Porque substitui a medida da retração"
+      ],
+      "correta": 1,
+      "explicacao": "A infiltração gordurosa não regride com o reparo e se associa a pior resultado e mais re-rotura. A avaliação é feita no T1 sagital, na altura do Y da escápula. Dica de mergulhador: músculo que virou gordura não volta a ser músculo."
+    },
+    {
+      "id": "msk-omb-12",
+      "tema": "Denervação",
+      "dificuldade": "dificil",
+      "fase": "ombro",
+      "enunciado": "Atrofia isolada do redondo menor, sem massa evidente, deve levantar suspeita de compressão do nervo:",
+      "alternativas": [
+        "ulnar, no túnel cubital",
+        "supraescapular, na incisura supraescapular",
+        "mediano, no túnel do carpo",
+        "axilar, no espaço quadrilateral",
+        "radial, na arcada de Frohse"
+      ],
+      "correta": 3,
+      "explicacao": "O espaço quadrilateral (úmero, cabeça longa do tríceps, redondo menor e redondo maior) é atravessado pelo nervo axilar; bandas fibrosas ou cistos podem comprimi-lo, atrofiando o redondo menor. Dica de mergulhador: redondo menor sozinho, pense em axilar."
+    },
+    {
+      "id": "msk-mao-01",
+      "tema": "Cotovelo",
+      "dificuldade": "facil",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "A epicondilite lateral, conhecida como cotovelo de tenista, acomete principalmente:",
+      "alternativas": [
+        "o nervo ulnar no túnel cubital",
+        "a origem comum dos tendões flexores",
+        "o tendão distal do bíceps",
+        "a origem comum dos tendões extensores",
+        "o ligamento colateral medial"
+      ],
+      "correta": 3,
+      "explicacao": "No epicôndilo lateral nascem os extensores do punho e dos dedos; no medial, os flexores (cotovelo de golfista). Dica de mergulhador: lateral = extensor; medial = flexor."
+    },
+    {
+      "id": "msk-mao-02",
+      "tema": "Túnel do carpo",
+      "dificuldade": "facil",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Qual nervo atravessa o túnel do carpo?",
+      "alternativas": [
+        "Mediano",
+        "Ulnar",
+        "Radial superficial",
+        "Interósseo posterior",
+        "Musculocutâneo"
+      ],
+      "correta": 0,
+      "explicacao": "O túnel do carpo contém o nervo mediano e nove tendões flexores. O ulnar passa pelo canal de Guyon, fora do túnel. Dica de mergulhador: mediano no meio da palma."
+    },
+    {
+      "id": "msk-mao-03",
+      "tema": "Punho",
+      "dificuldade": "facil",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "A tenossinovite de De Quervain acomete o:",
+      "alternativas": [
+        "6º compartimento extensor",
+        "3º compartimento extensor",
+        "1º compartimento extensor",
+        "túnel do carpo",
+        "canal de Guyon"
+      ],
+      "correta": 2,
+      "explicacao": "O 1º compartimento tem o abdutor longo e o extensor curto do polegar; o atrito ali causa dor no processo estiloide do rádio, a De Quervain. Dica de mergulhador: De Quervain é o primeiro da fila."
+    },
+    {
+      "id": "msk-mao-04",
+      "tema": "Instabilidade do carpo",
+      "dificuldade": "medio",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Após queda com a mão espalmada, o RX mostra alargamento do espaço entre escafoide e semilunar, e o semilunar inclinado para dorsal no perfil. O diagnóstico é:",
+      "alternativas": [
+        "fratura do hâmulo do hamato com lesão do Guyon",
+        "rotura do ligamento lunopiramidal com instabilidade tipo VISI",
+        "doença de Kienböck com colapso do semilunar",
+        "síndrome de impactação ulnar com variância positiva",
+        "rotura do ligamento escafossemilunar com instabilidade tipo DISI"
+      ],
+      "correta": 4,
+      "explicacao": "Sem o ligamento escafossemilunar, o escafoide flete e o semilunar segue o piramidal em extensão: DISI. O alargamento escafossemilunar é o sinal de Terry Thomas. Sem tratamento, evolui para SLAC. Dica de mergulhador: escafossemilunar rompido, semilunar para o dorso."
+    },
+    {
+      "id": "msk-mao-05",
+      "tema": "Punho",
+      "dificuldade": "medio",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Paciente com variância ulnar negativa e esclerose com colapso do semilunar. O diagnóstico mais provável é:",
+      "alternativas": [
+        "impactação ulnar",
+        "doença de Kienböck",
+        "rotura da fibrocartilagem triangular por impactação",
+        "gota no punho",
+        "cisto sinovial dorsal"
+      ],
+      "correta": 1,
+      "explicacao": "Kienböck é a osteonecrose do semilunar, associada à ulna mais curta que o rádio (variância negativa), que concentra carga no semilunar. A variância positiva se associa à impactação ulnar. Dica de mergulhador: ulna curta, semilunar morre."
+    },
+    {
+      "id": "msk-mao-06",
+      "tema": "Cotovelo",
+      "dificuldade": "medio",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Homem com dor súbita na fossa cubital ao levantar peso. A RM mostra rotura do bíceps distal com pouca retração do tendão. Qual estrutura íntegra ajuda a explicar a pouca retração?",
+      "alternativas": [
+        "Ligamento colateral medial",
+        "Ligamento anular",
+        "Lacerto fibroso",
+        "Retináculo dos flexores",
+        "Membrana interóssea"
+      ],
+      "correta": 2,
+      "explicacao": "O lacerto fibroso (aponeurose bicipital) segura o tendão rompido. Quando ele também rompe, o tendão retrai muito. Dica de mergulhador: lacerto íntegro, tendão perto; lacerto roto, tendão longe."
+    },
+    {
+      "id": "msk-mao-07",
+      "tema": "Dedos",
+      "dificuldade": "medio",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Após trauma, o paciente não consegue estender a interfalângica distal do dedo, que fica fletida. A estrutura lesada é:",
+      "alternativas": [
+        "o tendão extensor terminal na falange distal (dedo em martelo)",
+        "a banda central na falange média (botoeira)",
+        "a polia A2",
+        "o flexor profundo dos dedos",
+        "o ligamento colateral ulnar do polegar"
+      ],
+      "correta": 0,
+      "explicacao": "O dedo em martelo é a lesão do extensor terminal (ou avulsão óssea) na base da falange distal. A lesão da banda central na base da falange média causa a botoeira. Dica de mergulhador: martelo bate na ponta."
+    },
+    {
+      "id": "msk-mao-08",
+      "tema": "Dedos",
+      "dificuldade": "medio",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "No US de paciente com dedo em gatilho, o achado típico é:",
+      "alternativas": [
+        "calcificação no ligamento colateral",
+        "rotura completa do flexor profundo",
+        "cisto na polia A4",
+        "fratura da falange distal",
+        "espessamento hipoecoico da polia A1"
+      ],
+      "correta": 4,
+      "explicacao": "O dedo em gatilho é uma tenossinovite estenosante: a polia A1, na altura da metacarpofalângica, espessa e prende o tendão flexor. É mais comum em diabéticos e mulheres. Dica de mergulhador: gatilho é A1."
+    },
+    {
+      "id": "msk-mao-09",
+      "tema": "Canal de Guyon",
+      "dificuldade": "dificil",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Paciente com parestesia no 4º e 5º dedos e fraqueza dos interósseos após queda com fratura do hâmulo do hamato. O nervo acometido e o local são:",
+      "alternativas": [
+        "nervo mediano no túnel do carpo",
+        "nervo ulnar no canal de Guyon",
+        "nervo radial na arcada de Frohse",
+        "nervo ulnar no túnel cubital, no cotovelo",
+        "nervo interósseo anterior no antebraço"
+      ],
+      "correta": 1,
+      "explicacao": "O hâmulo do hamato faz parte da parede do canal de Guyon, por onde passam o nervo e a artéria ulnares. Fratura do hâmulo pode comprimir o nervo ali. Dica de mergulhador: hamato quebrado, olhe o Guyon."
+    },
+    {
+      "id": "msk-mao-10",
+      "tema": "Cotovelo",
+      "dificuldade": "dificil",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Na compressão do nervo interósseo posterior, o local clássico é:",
+      "alternativas": [
+        "o espaço quadrilateral",
+        "o túnel cubital",
+        "o canal de Guyon",
+        "a arcada de Frohse, na entrada do músculo supinador",
+        "o túnel do tarso"
+      ],
+      "correta": 3,
+      "explicacao": "O ramo profundo do nervo radial (interósseo posterior) entra no supinador pela arcada de Frohse, onde pode ser comprimido. Na RM aparecem denervação dos extensores e, às vezes, a causa (cisto, bursa, banda). Dica de mergulhador: radial profundo, supinador apertado."
+    },
+    {
+      "id": "msk-mao-11",
+      "tema": "Instabilidade do carpo",
+      "dificuldade": "dificil",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Nas radiografias PA do punho, os arcos de Gilula servem para:",
+      "alternativas": [
+        "graduar a artrose radiocárpica pelo espaço articular",
+        "medir a densidade mineral óssea dos ossos do carpo",
+        "avaliar o conteúdo e o calibre do túnel do carpo",
+        "avaliar o alinhamento das superfícies articulares das fileiras do carpo",
+        "medir a variância ulnar em relação ao rádio"
+      ],
+      "correta": 3,
+      "explicacao": "São três linhas curvas e suaves, ao longo das superfícies proximais e distais das fileiras do carpo. Um degrau ou quebra num arco sugere luxação ou instabilidade. Dica de mergulhador: arco quebrado, carpo desalinhado."
+    },
+    {
+      "id": "msk-mao-12",
+      "tema": "Punho",
+      "dificuldade": "dificil",
+      "fase": "cotovelo-punho-mao",
+      "enunciado": "Paciente com dor ulnar no punho, variância ulnar positiva, edema subcondral no semilunar e na cabeça da ulna e lesão central da fibrocartilagem triangular. O diagnóstico é:",
+      "alternativas": [
+        "síndrome de impactação ulnar",
+        "doença de Kienböck",
+        "tenossinovite de De Quervain",
+        "rotura escafossemilunar",
+        "síndrome do túnel do carpo"
+      ],
+      "correta": 0,
+      "explicacao": "Com a ulna mais longa, ela \"soca\" o semilunar, desgasta a fibrocartilagem triangular e causa edema nos dois ossos. Kienböck acompanha variância negativa. Dica de mergulhador: ulna longa bate; ulna curta sobrecarrega o semilunar."
+    },
+    {
+      "id": "msk-joe-01",
+      "tema": "Menisco",
+      "dificuldade": "facil",
+      "fase": "joelho",
+      "enunciado": "Na RM, quando se pode afirmar que há rotura meniscal pelo critério de sinal?",
+      "alternativas": [
+        "Quando há sinal alto globular no centro do menisco",
+        "Quando o menisco é escuro e triangular",
+        "Quando o sinal alto toca a superfície articular em dois ou mais cortes",
+        "Quando há derrame articular",
+        "Quando o paciente tem mais de 40 anos"
+      ],
+      "correta": 2,
+      "explicacao": "Sinal alto interno que não toca a superfície é degeneração. Rotura é sinal que alcança a superfície articular, visto em pelo menos dois cortes, ou forma alterada sem cirurgia prévia. Dica de mergulhador: rotura precisa tocar a superfície e se repetir."
+    },
+    {
+      "id": "msk-joe-02",
+      "tema": "LCA",
+      "dificuldade": "facil",
+      "fase": "joelho",
+      "enunciado": "A fratura de Segond, uma avulsão no aspecto lateral do platô tibial, é sinal indireto clássico de rotura do:",
+      "alternativas": [
+        "ligamento colateral medial isolado",
+        "ligamento cruzado posterior",
+        "tendão patelar",
+        "menisco lateral apenas",
+        "ligamento cruzado anterior"
+      ],
+      "correta": 4,
+      "explicacao": "A avulsão lateral da tíbia (na inserção das estruturas anterolaterais) quase sempre acompanha rotura do LCA. Dica de mergulhador: viu Segond, procure o LCA."
+    },
+    {
+      "id": "msk-joe-03",
+      "tema": "Menisco",
+      "dificuldade": "facil",
+      "fase": "joelho",
+      "enunciado": "No plano sagital da RM, qual é a relação normal entre os cornos do menisco medial?",
+      "alternativas": [
+        "O corno anterior é maior que o posterior",
+        "O corno posterior é maior que o anterior",
+        "Os dois são sempre ausentes",
+        "O corno anterior é duplo",
+        "Os dois têm sinal alto"
+      ],
+      "correta": 1,
+      "explicacao": "No medial, o corno posterior é maior; no lateral, os dois têm tamanhos parecidos. Corno anterior do medial maior que o posterior sugere fragmento deslocado para frente. Dica de mergulhador: no medial, o fundo é o maior."
+    },
+    {
+      "id": "msk-joe-04",
+      "tema": "Menisco",
+      "dificuldade": "medio",
+      "fase": "joelho",
+      "enunciado": "Jogador de 24 anos com bloqueio do joelho. A RM sagital mostra uma estrutura escura paralela e abaixo do LCP no intercôndilo, e o corno posterior do menisco medial está pequeno. O diagnóstico é:",
+      "alternativas": [
+        "rotura do LCP com fragmento deslocado",
+        "ligamento meniscofemoral de Humphry normal",
+        "rotura em alça de balde do menisco medial com sinal do duplo LCP",
+        "cisto parameniscal medial com septos",
+        "menisco discoide lateral sem rotura"
+      ],
+      "correta": 2,
+      "explicacao": "O fragmento da alça de balde migra para o intercôndilo e forma um \"segundo LCP\" logo abaixo do verdadeiro; o corno de origem fica pequeno. O bloqueio mecânico é a clínica típica. Dica de mergulhador: dois LCPs, um é menisco."
+    },
+    {
+      "id": "msk-joe-05",
+      "tema": "Menisco",
+      "dificuldade": "medio",
+      "fase": "joelho",
+      "enunciado": "Na RM de joelho com rotura recente do LCA, deve-se procurar ativamente uma lesão na junção meniscocapsular posterior do menisco medial, chamada:",
+      "alternativas": [
+        "ramp lesion",
+        "lesão de Wrisberg",
+        "alça de balde lateral",
+        "lesão em bico de papagaio",
+        "rotura radial da raiz lateral"
+      ],
+      "correta": 0,
+      "explicacao": "A ramp lesion é muito associada à rotura do LCA e fácil de passar despercebida; se não for tratada na reconstrução, o menisco medial segue instável. Dica de mergulhador: LCA rompido, olhe a rampa."
+    },
+    {
+      "id": "msk-joe-06",
+      "tema": "Menisco",
+      "dificuldade": "medio",
+      "fase": "joelho",
+      "enunciado": "Qual tipo de rotura meniscal costuma estar ligado a degeneração em pacientes mais velhos?",
+      "alternativas": [
+        "Avulsão da raiz por esqui",
+        "Alça de balde",
+        "Ramp lesion",
+        "Radial traumática do jovem",
+        "Horizontal (clivagem)"
+      ],
+      "correta": 4,
+      "explicacao": "A rotura horizontal divide o menisco em folhas superior e inferior e é tipicamente degenerativa; pode formar cisto parameniscal. Dica de mergulhador: horizontal é coisa de menisco cansado."
+    },
+    {
+      "id": "msk-joe-07",
+      "tema": "LCA",
+      "dificuldade": "medio",
+      "fase": "joelho",
+      "enunciado": "Após entorse com o pé fixo no chão, a RM mostra edema na porção média do côndilo femoral lateral e na porção posterior do platô tibial lateral. Qual o mecanismo e qual ligamento deve ser avaliado?",
+      "alternativas": [
+        "Hiperextensão; ligamento cruzado posterior apenas",
+        "Pivot shift; ligamento cruzado anterior",
+        "Trauma direto anterior; tendão patelar",
+        "Luxação da patela; ligamento patelofemoral medial",
+        "Varo puro; ligamento colateral lateral isolado"
+      ],
+      "correta": 1,
+      "explicacao": "Na rotura do LCA, a tíbia translada para frente e o platô lateral posterior bate no côndilo femoral lateral: é o padrão do pivot shift. Dica de mergulhador: contusões laterais \"em beijo deslocado\" = LCA."
+    },
+    {
+      "id": "msk-joe-08",
+      "tema": "Armadilhas",
+      "dificuldade": "medio",
+      "fase": "joelho",
+      "enunciado": "No sagital, uma faixa escura junto ao corno anterior do menisco lateral parece um fragmento. No axial, ela continua até o corno anterior do medial. Trata-se de:",
+      "alternativas": [
+        "rotura radial",
+        "alça de balde deslocada",
+        "corpo livre osteocondral",
+        "ligamento intermeniscal transverso, uma armadilha anatômica",
+        "cisto parameniscal"
+      ],
+      "correta": 3,
+      "explicacao": "O ligamento transverso une os cornos anteriores e pode imitar rotura no sagital; o axial mostra a continuidade e desfaz a dúvida. Dica de mergulhador: na dúvida no sagital, siga a estrutura no axial."
+    },
+    {
+      "id": "msk-joe-09",
+      "tema": "LCA",
+      "dificuldade": "dificil",
+      "fase": "joelho",
+      "enunciado": "Qual mecanismo produz contusões simétricas anteriores no fêmur e na tíbia e pode lesar também o LCP?",
+      "alternativas": [
+        "Luxação lateral da patela",
+        "Pivot shift",
+        "Clipping",
+        "Hiperextensão",
+        "Varo com rotação externa leve"
+      ],
+      "correta": 3,
+      "explicacao": "Na hiperextensão, as faces anteriores do fêmur e da tíbia se chocam (contusões em beijo anteriores). É trauma de alta energia e pode romper o LCA e o LCP. Dica de mergulhador: beijo na frente, energia alta."
+    },
+    {
+      "id": "msk-joe-10",
+      "tema": "LCA",
+      "dificuldade": "dificil",
+      "fase": "joelho",
+      "enunciado": "A tríade de O'Donoghue, por trauma em valgo (clipping), compreende lesão de:",
+      "alternativas": [
+        "LCA, ligamento colateral medial e menisco medial",
+        "LCP, ligamento colateral lateral e menisco lateral",
+        "LCA, tendão patelar e menisco lateral",
+        "LCM, patela e quadríceps",
+        "LCP, LCA e fíbula"
+      ],
+      "correta": 0,
+      "explicacao": "O golpe na face lateral abre o lado medial: rompe o LCM, sobrecarrega o menisco medial e o LCA. Dica de mergulhador: pancada de fora, estrago de dentro."
+    },
+    {
+      "id": "msk-joe-11",
+      "tema": "Menisco",
+      "dificuldade": "dificil",
+      "fase": "joelho",
+      "enunciado": "Por que roturas na periferia do menisco (zona vermelha) têm melhor prognóstico de reparo?",
+      "alternativas": [
+        "Porque é feita de osso",
+        "Porque não sofre carga",
+        "Porque é a única zona bem vascularizada",
+        "Porque não tem fibras de colágeno",
+        "Porque fica fora da articulação"
+      ],
+      "correta": 2,
+      "explicacao": "Só os 10% a 30% periféricos do menisco recebem bom suprimento sanguíneo; roturas ali podem cicatrizar ou ser suturadas. Na zona branca (margem livre), a conduta costuma ser a meniscectomia parcial. Dica de mergulhador: periferia vermelha cicatriza; centro branco não.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-joe-12",
+      "tema": "Menisco",
+      "dificuldade": "dificil",
+      "fase": "joelho",
+      "enunciado": "Qual rotura secciona as fibras circunferenciais e compromete a função de \"cinta\" do menisco, especialmente quando chega à periferia ou à raiz?",
+      "alternativas": [
+        "Sinal globular intrassubstancial",
+        "Horizontal pequena",
+        "Longitudinal vertical periférica estável",
+        "Degeneração grau 1",
+        "Radial"
+      ],
+      "correta": 4,
+      "explicacao": "As fibras longitudinais circunferenciais seguram a carga como um aro; a rotura radial as corta. Rotura radial completa ou de raiz equivale funcionalmente a uma meniscectomia. Dica de mergulhador: radial corta o aro do barril."
+    },
+    {
+      "id": "msk-pat-01",
+      "tema": "Patela",
+      "dificuldade": "facil",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Adolescente com entorse do joelho e derrame. A RM mostra edema na borda medial da patela e no côndilo femoral lateral, com lesão do ligamento patelofemoral medial. O diagnóstico é:",
+      "alternativas": [
+        "rotura do LCA",
+        "luxação lateral transitória da patela",
+        "fratura de Segond",
+        "osteocondrite dissecante",
+        "síndrome de Hoffa isolada"
+      ],
+      "correta": 1,
+      "explicacao": "Ao sair lateralmente e voltar, a borda medial da patela bate no côndilo femoral lateral; o LPFM, principal contenção medial, se rompe. Dica de mergulhador: contusões que \"se beijam\" na frente e de lado, patela."
+    },
+    {
+      "id": "msk-pat-02",
+      "tema": "Tornozelo",
+      "dificuldade": "facil",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Na entorse em inversão do tornozelo, qual ligamento costuma romper primeiro?",
+      "alternativas": [
+        "Fibulotalar posterior",
+        "Deltoide profundo",
+        "Fibulotalar anterior",
+        "Ligamento mola",
+        "Lisfranc"
+      ],
+      "correta": 2,
+      "explicacao": "Na inversão, a lesão começa no fibulotalar anterior e pode progredir para o fibulocalcâneo; o fibulotalar posterior raramente rompe. Dica de mergulhador: torceu para dentro, o anterior paga primeiro."
+    },
+    {
+      "id": "msk-pat-03",
+      "tema": "Tornozelo",
+      "dificuldade": "facil",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Na classificação de Weber, uma fratura da fíbula acima da sindesmose é:",
+      "alternativas": [
+        "Weber C, sempre considerada instável",
+        "Weber A, estável",
+        "Weber B, sempre estável",
+        "Lisfranc",
+        "Fratura de Jones"
+      ],
+      "correta": 0,
+      "explicacao": "Weber A fica abaixo da sindesmose, B no nível e C acima, com lesão da sindesmose e instabilidade. Dica de mergulhador: quanto mais alto, mais instável."
+    },
+    {
+      "id": "msk-pat-04",
+      "tema": "Patela",
+      "dificuldade": "medio",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Qual é o principal fator anatômico associado à instabilidade patelar objetiva?",
+      "alternativas": [
+        "Ligamento colateral lateral curto",
+        "Menisco discoide",
+        "Cisto de Baker",
+        "Osteófito patelar",
+        "Displasia da tróclea femoral"
+      ],
+      "correta": 4,
+      "explicacao": "A displasia troclear está presente na grande maioria dos pacientes com luxação patelar e é rara nos controles. Patela alta, TT-TG aumentado e báscula completam os fatores. Dica de mergulhador: trilho raso, vagão sai.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-pat-05",
+      "tema": "Patela",
+      "dificuldade": "medio",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Na radiografia em perfil rigoroso do joelho, o \"sinal do cruzamento\" indica:",
+      "alternativas": [
+        "patela baixa, porque o tendão patelar está encurtado",
+        "tróclea rasa, porque o fundo da tróclea cruza a borda anterior do côndilo",
+        "fratura da patela, porque a cortical anterior se interrompe",
+        "rotura do tendão patelar, porque ele perde a tensão",
+        "artrose femorotibial, porque o espaço articular se reduz"
+      ],
+      "correta": 1,
+      "explicacao": "Normalmente o fundo da tróclea fica atrás da borda dos côndilos. Quando a linha do fundo cruza essa borda, a tróclea ficou plana naquele ponto: displasia. É o sinal mais lembrado da escola de Lyon (Dejour). Dica de mergulhador: linha que cruza, tróclea que falta.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-pat-06",
+      "tema": "Patela",
+      "dificuldade": "medio",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "O TT-TG mede a distância entre:",
+      "alternativas": [
+        "o tendão patelar e o quadríceps",
+        "a patela e o platô tibial no perfil",
+        "os dois côndilos femorais",
+        "o fundo da tróclea femoral e a tuberosidade tibial, medidas no plano axial",
+        "a fíbula e a tíbia"
+      ],
+      "correta": 3,
+      "explicacao": "É o equivalente axial do ângulo Q: mostra o quanto a tuberosidade está lateralizada em relação ao trilho troclear. Acima de 20 mm é patológico e pode indicar medialização da tuberosidade. Dica de mergulhador: TT-TG grande, o vetor puxa a patela para fora.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-pat-07",
+      "tema": "Pé",
+      "dificuldade": "medio",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Após trauma no mediopé, a radiografia em carga mostra alargamento entre o cuneiforme medial e a base do 2º metatarso. A lesão suspeita é:",
+      "alternativas": [
+        "do ligamento fibulotalar anterior",
+        "da fáscia plantar",
+        "do tendão calcâneo",
+        "do complexo ligamentar de Lisfranc",
+        "do sesamoide medial"
+      ],
+      "correta": 3,
+      "explicacao": "O ligamento de Lisfranc une o cuneiforme medial à base do 2º metatarso e estabiliza a tarsometatársica. A carga revela o alargamento sutil; lesões não tratadas evoluem com dor crônica e artrose. Dica de mergulhador: Lisfranc se esconde sem carga."
+    },
+    {
+      "id": "msk-pat-08",
+      "tema": "Pé",
+      "dificuldade": "medio",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Corredora com dor posterior no calcanhar. A imagem mostra proeminência posterossuperior do calcâneo, bursite retrocalcânea e tendinopatia insercional do calcâneo. O quadro é:",
+      "alternativas": [
+        "síndrome de Haglund",
+        "fascite plantar",
+        "fibromatose plantar",
+        "neuroma de Morton",
+        "coalizão tarsal"
+      ],
+      "correta": 0,
+      "explicacao": "Haglund é a tríade: osso proeminente, bursa inflamada e tendão calcâneo insercional doente. Fascite plantar dói embaixo do calcâneo. Dica de mergulhador: dor atrás, pense em Haglund; dor embaixo, fáscia."
+    },
+    {
+      "id": "msk-pat-09",
+      "tema": "Tornozelo",
+      "dificuldade": "dificil",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Paciente com dor no tornozelo, lesão do ligamento deltoide e alargamento do espaço medial, sem fratura dos maléolos. Qual exame complementar evita perder uma fratura de Maisonneuve?",
+      "alternativas": [
+        "RM do pé",
+        "US do tendão calcâneo",
+        "Radiografia da perna inteira, incluindo a fíbula proximal",
+        "Cintilografia óssea",
+        "Densitometria"
+      ],
+      "correta": 2,
+      "explicacao": "Na Maisonneuve, a lesão medial e sindesmótica vem acompanhada de fratura da fíbula proximal, longe da dor principal. Dica de mergulhador: tornozelo instável sem fratura visível, olhe o joelho do mesmo lado."
+    },
+    {
+      "id": "msk-pat-10",
+      "tema": "Patela",
+      "dificuldade": "dificil",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Num paciente com luxações recorrentes da patela, a RM mede TT-TG de 16 mm, valor limítrofe. Qual a orientação mais adequada?",
+      "alternativas": [
+        "Medir o ângulo de Böhler",
+        "Considerar o valor normal e encerrar a investigação",
+        "Repetir a RM sem contraste",
+        "Pedir radiografia do tornozelo",
+        "Considerar TC, porque a RM tende a subestimar o TT-TG"
+      ],
+      "correta": 4,
+      "explicacao": "Como a RM pode subestimar o TT-TG em relação à TC, valores limítrofes merecem confirmação, porque mudam a decisão de medializar a tuberosidade. Valores muito altos na RM dispensam a TC. Dica de mergulhador: limítrofe na RM, confirme na TC.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-pat-11",
+      "tema": "Tornozelo",
+      "dificuldade": "dificil",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Lesão osteocondral do tálus após inversão. Qual achado na RM sugere fragmento instável?",
+      "alternativas": [
+        "Cartilagem íntegra sem edema",
+        "Linha de líquido entre o fragmento e o osso subjacente",
+        "Apenas edema ósseo discreto",
+        "Sinal normal do tendão fibular",
+        "Ausência de derrame"
+      ],
+      "correta": 1,
+      "explicacao": "Líquido na interface, cistos sob o fragmento ou fragmento destacado indicam instabilidade e mudam a conduta cirúrgica. Dica de mergulhador: água por baixo, fragmento solto."
+    },
+    {
+      "id": "msk-pat-12",
+      "tema": "Patela",
+      "dificuldade": "dificil",
+      "fase": "patela-tornozelo-pe",
+      "enunciado": "Qual índice está alterado na patela alta, segundo os critérios usados na avaliação da instabilidade?",
+      "alternativas": [
+        "Báscula abaixo de 5°",
+        "TT-TG abaixo de 10 mm",
+        "Caton-Deschamps acima de 1,2",
+        "Ângulo de Böhler acima de 40°",
+        "Variância ulnar positiva"
+      ],
+      "correta": 2,
+      "explicacao": "Patela alta atrasa o encaixe na tróclea durante a flexão inicial, quando ocorrem as luxações. Caton-Deschamps acima de 1,2 (e Insall-Salvati elevado) a caracterizam. Dica de mergulhador: patela alta flutua sobre a parte rasa do trilho.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-tum-01",
+      "tema": "Checklist",
+      "dificuldade": "facil",
+      "fase": "tumores",
+      "enunciado": "Na classificação de Lodwick para lesões líticas, qual padrão indica a lesão de crescimento mais rápido?",
+      "alternativas": [
+        "Permeativo (tipo III)",
+        "Geográfico com halo esclerótico (IA)",
+        "Geográfico sem halo (IB)",
+        "Geográfico com margem parcialmente indistinta (IC)",
+        "Qualquer lesão com margem nítida"
+      ],
+      "correta": 0,
+      "explicacao": "Do IA ao III, a margem vai ficando menos definida e a lesão mais agressiva. O permeativo, com incontáveis furinhos, apaga a arquitetura do osso. Dica de mergulhador: quanto menos dá para desenhar a borda, mais rápida a lesão."
+    },
+    {
+      "id": "msk-tum-02",
+      "tema": "Reação periosteal",
+      "dificuldade": "facil",
+      "fase": "tumores",
+      "enunciado": "Criança de 12 anos com dor e febre baixa. O RX mostra lesão diafisária permeativa no fêmur com reação periosteal em casca de cebola. Qual tumor deve ser considerado?",
+      "alternativas": [
+        "Lipoma intraósseo",
+        "Encondroma",
+        "Cisto ósseo simples",
+        "Osteocondroma",
+        "Sarcoma de Ewing"
+      ],
+      "correta": 4,
+      "explicacao": "Na infância, entre os tumores ósseos malignos, só o osteossarcoma é mais frequente que o Ewing, que costuma ser diafisário, permeativo, com casca de cebola e quadro inflamatório que imita osteomielite. Dica de mergulhador: casca de cebola em criança, Ewing entra no diferencial."
+    },
+    {
+      "id": "msk-tum-03",
+      "tema": "Lesões benignas",
+      "dificuldade": "facil",
+      "fase": "tumores",
+      "enunciado": "Menino de 10 anos com fratura no úmero proximal. O RX mostra lesão lítica central, bem definida, com um fragmento ósseo no fundo da cavidade. O diagnóstico é:",
+      "alternativas": [
+        "osteossarcoma",
+        "cisto ósseo simples",
+        "tumor de células gigantes",
+        "condroblastoma",
+        "mieloma"
+      ],
+      "correta": 1,
+      "explicacao": "O sinal do fragmento caído (pedaço de cortical que cai no líquido) é muito característico do cisto ósseo simples, comum no úmero e no fêmur proximais de crianças. Dica de mergulhador: fragmento caído, cisto cheio de líquido."
+    },
+    {
+      "id": "msk-tum-04",
+      "tema": "Idade e localização",
+      "dificuldade": "medio",
+      "fase": "tumores",
+      "enunciado": "Adolescente com fise aberta e lesão lítica epifisária no úmero proximal, com muito edema ao redor na RM. A hipótese principal é:",
+      "alternativas": [
+        "osteocondroma",
+        "tumor de células gigantes",
+        "cisto ósseo simples",
+        "condroblastoma",
+        "metástase"
+      ],
+      "correta": 3,
+      "explicacao": "Lesão epifisária com fise aberta é, até prova em contrário, condroblastoma, um tumor que gera muito edema reacional. Com a fise fechada, o principal é o tumor de células gigantes. Dica de mergulhador: epífise jovem, condroblastoma; epífise adulta, TCG."
+    },
+    {
+      "id": "msk-tum-05",
+      "tema": "Osteossarcoma",
+      "dificuldade": "medio",
+      "fase": "tumores",
+      "enunciado": "Jovem de 16 anos com massa no joelho. O RX mostra lesão agressiva na metáfise femoral distal, com matriz osteoide em nuvem, raios de sol e triângulo de Codman. O diagnóstico mais provável é:",
+      "alternativas": [
+        "cisto ósseo aneurismático",
+        "condrossarcoma",
+        "displasia fibrosa",
+        "osteossarcoma",
+        "fibroma não ossificante"
+      ],
+      "correta": 3,
+      "explicacao": "Matriz osteoide, reação periosteal espiculada e Codman ao redor do joelho de um adolescente compõem o osteossarcoma clássico. A RM avalia extensão medular, fise, partes moles e lesões salteadas (skip). Dica de mergulhador: nuvem + raio de sol + joelho jovem."
+    },
+    {
+      "id": "msk-tum-06",
+      "tema": "Matriz",
+      "dificuldade": "medio",
+      "fase": "tumores",
+      "enunciado": "Lesão intramedular com matriz em \"vidro fosco\" na TC e deformidade em cajado de pastor no fêmur proximal sugere:",
+      "alternativas": [
+        "displasia fibrosa",
+        "encondroma",
+        "osteossarcoma",
+        "lipoma intraósseo",
+        "metástase blástica"
+      ],
+      "correta": 0,
+      "explicacao": "Vidro fosco é a matriz fibrosa; a displasia fibrosa pode deformar o fêmur proximal em cajado de pastor. Com puberdade precoce e manchas café com leite, pense em McCune-Albright. Dica de mergulhador: vidro fosco no osso = fibroso."
+    },
+    {
+      "id": "msk-tum-07",
+      "tema": "Tumores cartilaginosos",
+      "dificuldade": "medio",
+      "fase": "tumores",
+      "enunciado": "Qual achado favorece condrossarcoma de baixo grau em vez de encondroma?",
+      "alternativas": [
+        "Calcificação em anéis e arcos sem outras alterações",
+        "Lesão pequena na falange da mão, indolor",
+        "Scalloping endosteal profundo, maior que 2/3 da espessura da cortical, e dor",
+        "Margens bem definidas com zona de transição estreita",
+        "Paciente jovem e assintomático"
+      ],
+      "correta": 2,
+      "explicacao": "Dor, tamanho grande, scalloping profundo, rotura cortical, partes moles e localização axial (pelve, costelas) favorecem condrossarcoma. Lesões pequenas nas mãos, indolores, são tipicamente encondromas. Dica de mergulhador: cartilagem que dói e come a cortical é suspeita.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-tum-08",
+      "tema": "Mieloma × metástase",
+      "dificuldade": "medio",
+      "fase": "tumores",
+      "enunciado": "Na coluna, qual achado favorece metástase em vez de mieloma múltiplo?",
+      "alternativas": [
+        "Lesão insuflativa em mini-cérebro na pelve",
+        "Preservação do pedículo com lesões no corpo",
+        "Lesões em saca-bocado no crânio",
+        "Cintilografia óssea normal",
+        "Acometimento do pedículo vertebral"
+      ],
+      "correta": 4,
+      "explicacao": "Metástases tendem a invadir o pedículo; o mieloma, nascido da medula vermelha do corpo vertebral, costuma poupá-lo no início. Lesões em saca-bocado no crânio e cintilografia normal favorecem mieloma. Dica de mergulhador: pedículo comido, metástase."
+    },
+    {
+      "id": "msk-tum-09",
+      "tema": "Lesões \"não toque\"",
+      "dificuldade": "dificil",
+      "fase": "tumores",
+      "enunciado": "Adolescente com irregularidade cortical na face posterior do fêmur distal, na inserção do gastrocnêmio medial, sem massa e sem dor relevante. A conduta mais adequada é:",
+      "alternativas": [
+        "biopsiar imediatamente por suspeita de osteossarcoma",
+        "reconhecer como desmoide cortical e não biopsiar",
+        "iniciar quimioterapia",
+        "indicar amputação",
+        "tratar como osteomielite crônica"
+      ],
+      "correta": 1,
+      "explicacao": "O desmoide cortical é uma pseudolesão de tração, muito comum em jovens. Biopsiá-lo é perigoso porque o tecido reparativo pode parecer sarcoma ao microscópio. Dica de mergulhador: lesão \"não toque\" se reconhece, não se fura."
+    },
+    {
+      "id": "msk-tum-10",
+      "tema": "Cisto aneurismático",
+      "dificuldade": "dificil",
+      "fase": "tumores",
+      "enunciado": "Lesão com múltiplos níveis líquido-líquido na RM. Qual achado deve levantar suspeita de osteossarcoma telangiectásico em vez de cisto ósseo aneurismático?",
+      "alternativas": [
+        "Lesão excêntrica com margem nítida e esclerótica",
+        "Apenas realce fino dos septos",
+        "Realce nodular sólido, zona de transição larga e componente de partes moles",
+        "Paciente assintomático com lesão estável há anos",
+        "Ausência de reação periosteal"
+      ],
+      "correta": 2,
+      "explicacao": "Níveis líquido-líquido aparecem nos dois. O cisto aneurismático realça só nos septos finos; o osteossarcoma telangiectásico tem nódulos sólidos que realçam, septos espessos, margem agressiva e partes moles. Confundir os dois é uma armadilha grave. Dica de mergulhador: nível líquido não é atestado de benignidade."
+    },
+    {
+      "id": "msk-tum-11",
+      "tema": "Osteocondroma",
+      "dificuldade": "dificil",
+      "fase": "tumores",
+      "enunciado": "Adulto com osteocondroma conhecido e dor nova. Na RM, a capa cartilaginosa mede 3 cm. Qual a interpretação?",
+      "alternativas": [
+        "Capa espessa, acima de 2 cm no adulto, levanta suspeita de transformação em condrossarcoma",
+        "Achado esperado em qualquer osteocondroma adulto",
+        "Indica apenas bursite sobre a exostose",
+        "Indica fratura do pedículo",
+        "Indica que a lesão está regredindo"
+      ],
+      "correta": 0,
+      "explicacao": "No esqueleto maduro, a capa deveria ser fina; espessura acima de cerca de 2 cm, crescimento ou dor nova sugerem degeneração para condrossarcoma secundário. Dica de mergulhador: capa grossa em adulto, alerta.",
+      "revisar": "fato específico — conferir com especialista"
+    },
+    {
+      "id": "msk-tum-12",
+      "tema": "Lesões metabólicas",
+      "dificuldade": "dificil",
+      "fase": "tumores",
+      "enunciado": "Paciente renal crônico em diálise. Qual achado radiográfico é o mais específico de hiperparatireoidismo?",
+      "alternativas": [
+        "Reação periosteal em raios de sol",
+        "Osteófitos marginais nas interfalângicas distais",
+        "Erosões em saca-bocado no hálux",
+        "Condrocalcinose isolada no joelho",
+        "Reabsorção subperiosteal na face radial das falanges médias do 2º e 3º dedos"
+      ],
+      "correta": 4,
+      "explicacao": "A reabsorção subperiosteal radial das falanges médias é o sinal mais específico; outros achados são coluna em camisa de rúgbi, crânio em sal e pimenta e tumores marrons. Dica de mergulhador: no hiperparatireoidismo, olhe o lado radial dos dedos do meio."
+    }
+  ],
+  "pares": [
+    {
+      "id": "msk-par-fu-01",
+      "tema": "Fundamentos da imagem MSK",
+      "termo": "T1",
+      "definicao": "Sequência anatômica e da medula"
+    },
+    {
+      "id": "msk-par-fu-02",
+      "tema": "Fundamentos da imagem MSK",
+      "termo": "STIR",
+      "definicao": "Líquido com supressão de gordura homogênea"
+    },
+    {
+      "id": "msk-par-fu-03",
+      "tema": "Fundamentos da imagem MSK",
+      "termo": "Densidade de prótons",
+      "definicao": "Menisco e cartilagem"
+    },
+    {
+      "id": "msk-par-fu-04",
+      "tema": "Fundamentos da imagem MSK",
+      "termo": "Osteon",
+      "definicao": "Unidade com canais de Havers"
+    },
+    {
+      "id": "msk-par-fu-05",
+      "tema": "Fundamentos da imagem MSK",
+      "termo": "Fibras de Sharpey",
+      "definicao": "Fixam o periósteo ao osso"
+    },
+    {
+      "id": "msk-par-fu-06",
+      "tema": "Fundamentos da imagem MSK",
+      "termo": "Restrição à difusão",
+      "definicao": "Alta celularidade"
+    },
+    {
+      "id": "msk-par-inf-01",
+      "tema": "Osteomielite e infecção",
+      "termo": "Sequestro",
+      "definicao": "Osso necrótico envolto por granulação"
+    },
+    {
+      "id": "msk-par-inf-02",
+      "tema": "Osteomielite e infecção",
+      "termo": "Invólucro",
+      "definicao": "Reação periosteal incorporada ao osso"
+    },
+    {
+      "id": "msk-par-inf-03",
+      "tema": "Osteomielite e infecção",
+      "termo": "Cloaca",
+      "definicao": "Abertura de drenagem no invólucro"
+    },
+    {
+      "id": "msk-par-inf-04",
+      "tema": "Osteomielite e infecção",
+      "termo": "Abscesso de Brodie",
+      "definicao": "Coleção intraóssea com halo esclerótico"
+    },
+    {
+      "id": "msk-par-inf-05",
+      "tema": "Osteomielite e infecção",
+      "termo": "Sinal da penumbra",
+      "definicao": "Halo de granulação com sinal maior em T1"
+    },
+    {
+      "id": "msk-par-inf-06",
+      "tema": "Osteomielite e infecção",
+      "termo": "Neuroartropatia de Charcot",
+      "definicao": "Fragmentação e desorganização com T1 preservado"
+    },
+    {
+      "id": "msk-par-oa-01",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "termo": "Nódulos de Heberden",
+      "definicao": "Interfalângicas distais"
+    },
+    {
+      "id": "msk-par-oa-02",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "termo": "Nódulos de Bouchard",
+      "definicao": "Interfalângicas proximais"
+    },
+    {
+      "id": "msk-par-oa-03",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "termo": "Asa de gaivota",
+      "definicao": "Osteoartrite erosiva"
+    },
+    {
+      "id": "msk-par-oa-04",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "termo": "Osteófito em gancho",
+      "definicao": "Hemocromatose"
+    },
+    {
+      "id": "msk-par-oa-05",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "termo": "Túnel intercondilar alargado",
+      "definicao": "Hemofilia"
+    },
+    {
+      "id": "msk-par-oa-06",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "termo": "Incidência de Schuss",
+      "definicao": "Joelho em flexão com carga"
+    },
+    {
+      "id": "msk-par-ar-01",
+      "tema": "Artrite reumatoide e cristais",
+      "termo": "Podagra",
+      "definicao": "Gota na 1ª metatarsofalângica"
+    },
+    {
+      "id": "msk-par-ar-02",
+      "tema": "Artrite reumatoide e cristais",
+      "termo": "Condrocalcinose",
+      "definicao": "Cálcio na cartilagem"
+    },
+    {
+      "id": "msk-par-ar-03",
+      "tema": "Artrite reumatoide e cristais",
+      "termo": "Osteíte",
+      "definicao": "Edema ósseo pré-erosivo da AR"
+    },
+    {
+      "id": "msk-par-ar-04",
+      "tema": "Artrite reumatoide e cristais",
+      "termo": "Duplo contorno",
+      "definicao": "Urato sobre a cartilagem"
+    },
+    {
+      "id": "msk-par-ar-05",
+      "tema": "Artrite reumatoide e cristais",
+      "termo": "Borda pendente",
+      "definicao": "Margem da erosão gotosa"
+    },
+    {
+      "id": "msk-par-ar-06",
+      "tema": "Artrite reumatoide e cristais",
+      "termo": "Pannus",
+      "definicao": "Sinóvia inflamada que corrói o osso"
+    },
+    {
+      "id": "msk-par-omb-01",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "termo": "Hill-Sachs",
+      "definicao": "Impactação posterossuperior da cabeça umeral"
+    },
+    {
+      "id": "msk-par-omb-02",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "termo": "Bankart",
+      "definicao": "Lesão do lábio anteroinferior"
+    },
+    {
+      "id": "msk-par-omb-03",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "termo": "SLAP",
+      "definicao": "Lesão do lábio superior"
+    },
+    {
+      "id": "msk-par-omb-04",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "termo": "PASTA",
+      "definicao": "Rotura parcial articular do supraespinal"
+    },
+    {
+      "id": "msk-par-omb-05",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "termo": "Complexo de Buford",
+      "definicao": "Lábio anterossuperior ausente com ligamento médio espesso"
+    },
+    {
+      "id": "msk-par-omb-06",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "termo": "Espaço quadrilateral",
+      "definicao": "Nervo axilar e redondo menor"
+    },
+    {
+      "id": "msk-par-omb-07",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "termo": "Capsulite adesiva",
+      "definicao": "Intervalo rotador obliterado"
+    },
+    {
+      "id": "msk-par-mao-01",
+      "tema": "Cotovelo, punho e mão",
+      "termo": "Epicondilite lateral",
+      "definicao": "Origem dos extensores"
+    },
+    {
+      "id": "msk-par-mao-02",
+      "tema": "Cotovelo, punho e mão",
+      "termo": "Canal de Guyon",
+      "definicao": "Nervo e artéria ulnares"
+    },
+    {
+      "id": "msk-par-mao-03",
+      "tema": "Cotovelo, punho e mão",
+      "termo": "De Quervain",
+      "definicao": "1º compartimento extensor"
+    },
+    {
+      "id": "msk-par-mao-04",
+      "tema": "Cotovelo, punho e mão",
+      "termo": "DISI",
+      "definicao": "Rotura escafossemilunar"
+    },
+    {
+      "id": "msk-par-mao-05",
+      "tema": "Cotovelo, punho e mão",
+      "termo": "Kienböck",
+      "definicao": "Necrose do semilunar"
+    },
+    {
+      "id": "msk-par-mao-06",
+      "tema": "Cotovelo, punho e mão",
+      "termo": "Dedo em gatilho",
+      "definicao": "Polia A1 espessada"
+    },
+    {
+      "id": "msk-par-mao-07",
+      "tema": "Cotovelo, punho e mão",
+      "termo": "Botoeira",
+      "definicao": "Lesão da banda central do extensor"
+    },
+    {
+      "id": "msk-par-joe-01",
+      "tema": "Joelho: meniscos e ligamentos",
+      "termo": "Alça de balde",
+      "definicao": "Sinal do duplo LCP"
+    },
+    {
+      "id": "msk-par-joe-02",
+      "tema": "Joelho: meniscos e ligamentos",
+      "termo": "Fratura de Segond",
+      "definicao": "Sinal indireto de rotura do LCA"
+    },
+    {
+      "id": "msk-par-joe-03",
+      "tema": "Joelho: meniscos e ligamentos",
+      "termo": "Ramp lesion",
+      "definicao": "Junção meniscocapsular posterior medial"
+    },
+    {
+      "id": "msk-par-joe-04",
+      "tema": "Joelho: meniscos e ligamentos",
+      "termo": "Zona vermelha",
+      "definicao": "Periferia vascularizada do menisco"
+    },
+    {
+      "id": "msk-par-joe-05",
+      "tema": "Joelho: meniscos e ligamentos",
+      "termo": "Rotura horizontal",
+      "definicao": "Padrão degenerativo"
+    },
+    {
+      "id": "msk-par-joe-06",
+      "tema": "Joelho: meniscos e ligamentos",
+      "termo": "Tríade de O'Donoghue",
+      "definicao": "LCA, LCM e menisco medial"
+    },
+    {
+      "id": "msk-par-pat-01",
+      "tema": "Patela, tornozelo e pé",
+      "termo": "LPFM",
+      "definicao": "Principal contenção medial da patela"
+    },
+    {
+      "id": "msk-par-pat-02",
+      "tema": "Patela, tornozelo e pé",
+      "termo": "Sinal do cruzamento",
+      "definicao": "Displasia troclear"
+    },
+    {
+      "id": "msk-par-pat-03",
+      "tema": "Patela, tornozelo e pé",
+      "termo": "TT-TG > 20 mm",
+      "definicao": "Tuberosidade tibial lateralizada"
+    },
+    {
+      "id": "msk-par-pat-04",
+      "tema": "Patela, tornozelo e pé",
+      "termo": "Weber C",
+      "definicao": "Fratura acima da sindesmose"
+    },
+    {
+      "id": "msk-par-pat-05",
+      "tema": "Patela, tornozelo e pé",
+      "termo": "Maisonneuve",
+      "definicao": "Fratura da fíbula proximal"
+    },
+    {
+      "id": "msk-par-pat-06",
+      "tema": "Patela, tornozelo e pé",
+      "termo": "Lisfranc",
+      "definicao": "Cuneiforme medial à base do 2º metatarso"
+    },
+    {
+      "id": "msk-par-pat-07",
+      "tema": "Patela, tornozelo e pé",
+      "termo": "Haglund",
+      "definicao": "Calcâneo, bursa e tendão calcâneo"
+    },
+    {
+      "id": "msk-par-tum-01",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "termo": "Casca de cebola",
+      "definicao": "Sarcoma de Ewing"
+    },
+    {
+      "id": "msk-par-tum-02",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "termo": "Triângulo de Codman",
+      "definicao": "Rotura do periósteo por crescimento rápido"
+    },
+    {
+      "id": "msk-par-tum-03",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "termo": "Fragmento caído",
+      "definicao": "Cisto ósseo simples"
+    },
+    {
+      "id": "msk-par-tum-04",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "termo": "Vidro fosco",
+      "definicao": "Displasia fibrosa"
+    },
+    {
+      "id": "msk-par-tum-05",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "termo": "Anéis e arcos",
+      "definicao": "Matriz condroide"
+    },
+    {
+      "id": "msk-par-tum-06",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "termo": "Pedículo poupado",
+      "definicao": "Mieloma múltiplo"
+    },
+    {
+      "id": "msk-par-tum-07",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "termo": "Camisa de rúgbi",
+      "definicao": "Hiperparatireoidismo"
+    }
+  ],
+  "verdadeiroFalso": [
+    {
+      "id": "msk-vf-fu-01",
+      "tema": "Fundamentos da imagem MSK",
+      "afirmacao": "A reação periosteal aparece na radiografia já no primeiro dia de infecção.",
+      "verdadeira": false,
+      "explicacao": "Ela precisa mineralizar, o que leva cerca de 2 semanas."
+    },
+    {
+      "id": "msk-vf-fu-02",
+      "tema": "Fundamentos da imagem MSK",
+      "afirmacao": "No T1, a medula óssea normal do adulto é mais brilhante que o disco intervertebral.",
+      "verdadeira": true,
+      "explicacao": "Por causa da gordura da medula amarela."
+    },
+    {
+      "id": "msk-vf-fu-03",
+      "tema": "Fundamentos da imagem MSK",
+      "afirmacao": "Tumores costumam obliterar planos de gordura e atravessar fáscias, enquanto infecções os deslocam.",
+      "verdadeira": false,
+      "explicacao": "É o contrário: a infecção apaga e atravessa; o tumor empurra."
+    },
+    {
+      "id": "msk-vf-inf-01",
+      "tema": "Osteomielite e infecção",
+      "afirmacao": "Gás no disco intervertebral é sinal típico de espondilodiscite.",
+      "verdadeira": false,
+      "explicacao": "Gás discal (vácuo) sugere degeneração."
+    },
+    {
+      "id": "msk-vf-inf-02",
+      "tema": "Osteomielite e infecção",
+      "afirmacao": "Na osteomielite crônica, reação periosteal fina não incorporada sugere atividade.",
+      "verdadeira": true,
+      "explicacao": "É periósteo novo, estimulado agora."
+    },
+    {
+      "id": "msk-vf-inf-03",
+      "tema": "Osteomielite e infecção",
+      "afirmacao": "No pé diabético, a osteomielite costuma ser contígua a uma úlcera.",
+      "verdadeira": true,
+      "explicacao": "A infecção chega ao osso a partir da pele."
+    },
+    {
+      "id": "msk-vf-oa-01",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "afirmacao": "A osteoartrite costuma reduzir o espaço articular de forma simétrica.",
+      "verdadeira": false,
+      "explicacao": "A redução é assimétrica, nas áreas de carga."
+    },
+    {
+      "id": "msk-vf-oa-02",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "afirmacao": "Hemossiderina tem baixo sinal em todas as sequências de RM.",
+      "verdadeira": true,
+      "explicacao": "É um achado da artropatia hemofílica e da sinovite vilonodular."
+    },
+    {
+      "id": "msk-vf-oa-03",
+      "tema": "Osteoartrite e artropatias degenerativas",
+      "afirmacao": "Charcot do ombro deve levantar suspeita de siringomielia.",
+      "verdadeira": true,
+      "explicacao": "No pé, a causa mais comum é o diabetes."
+    },
+    {
+      "id": "msk-vf-ar-01",
+      "tema": "Artrite reumatoide e cristais",
+      "afirmacao": "A artrite reumatoide costuma acometer as interfalângicas distais.",
+      "verdadeira": false,
+      "explicacao": "Ela as poupa; distais são da osteoartrite e da psoríase."
+    },
+    {
+      "id": "msk-vf-ar-02",
+      "tema": "Artrite reumatoide e cristais",
+      "afirmacao": "Na gota, o espaço articular costuma ficar preservado até fases tardias.",
+      "verdadeira": true,
+      "explicacao": "Mesmo com erosões grandes."
+    },
+    {
+      "id": "msk-vf-ar-03",
+      "tema": "Artrite reumatoide e cristais",
+      "afirmacao": "A hidroxiapatita é a principal causa de tendinopatia calcária do ombro.",
+      "verdadeira": true,
+      "explicacao": "O supraespinal é o tendão mais acometido."
+    },
+    {
+      "id": "msk-vf-omb-01",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "afirmacao": "A luxação posterior do ombro é mais comum que a anterior.",
+      "verdadeira": false,
+      "explicacao": "A anterior é a mais comum; a posterior lembra convulsão e choque elétrico."
+    },
+    {
+      "id": "msk-vf-omb-02",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "afirmacao": "Compressão na incisura espinoglenoidal atrofia apenas o infraespinal.",
+      "verdadeira": true,
+      "explicacao": "O ramo do supraespinal já saiu antes."
+    },
+    {
+      "id": "msk-vf-omb-03",
+      "tema": "Ombro: manguito, lábio e instabilidade",
+      "afirmacao": "Lesão off-track tem maior risco de nova luxação.",
+      "verdadeira": true,
+      "explicacao": "O Hill-Sachs \"engata\" na borda da glenoide."
+    },
+    {
+      "id": "msk-vf-mao-01",
+      "tema": "Cotovelo, punho e mão",
+      "afirmacao": "O nervo ulnar passa dentro do túnel do carpo.",
+      "verdadeira": false,
+      "explicacao": "Ele passa pelo canal de Guyon."
+    },
+    {
+      "id": "msk-vf-mao-02",
+      "tema": "Cotovelo, punho e mão",
+      "afirmacao": "Variância ulnar negativa se associa à doença de Kienböck.",
+      "verdadeira": true,
+      "explicacao": "A carga se concentra no semilunar."
+    },
+    {
+      "id": "msk-vf-mao-03",
+      "tema": "Cotovelo, punho e mão",
+      "afirmacao": "O dedo em martelo resulta de lesão da banda central do extensor.",
+      "verdadeira": false,
+      "explicacao": "Banda central causa botoeira; martelo é o extensor terminal."
+    },
+    {
+      "id": "msk-vf-joe-01",
+      "tema": "Joelho: meniscos e ligamentos",
+      "afirmacao": "Sinal alto que toca a superfície em um único corte basta para afirmar rotura.",
+      "verdadeira": false,
+      "explicacao": "O ideal é ver em dois ou mais cortes."
+    },
+    {
+      "id": "msk-vf-joe-02",
+      "tema": "Joelho: meniscos e ligamentos",
+      "afirmacao": "O LCA impede principalmente a translação anterior da tíbia.",
+      "verdadeira": true,
+      "explicacao": "É a sua função primária."
+    },
+    {
+      "id": "msk-vf-joe-03",
+      "tema": "Joelho: meniscos e ligamentos",
+      "afirmacao": "No pivot shift, as contusões ficam no compartimento lateral.",
+      "verdadeira": true,
+      "explicacao": "Côndilo femoral lateral e platô tibial lateral posterior."
+    },
+    {
+      "id": "msk-vf-pat-01",
+      "tema": "Patela, tornozelo e pé",
+      "afirmacao": "Weber A é a fratura acima da sindesmose.",
+      "verdadeira": false,
+      "explicacao": "Weber A fica abaixo; C é acima."
+    },
+    {
+      "id": "msk-vf-pat-02",
+      "tema": "Patela, tornozelo e pé",
+      "afirmacao": "A lesão do ligamento patelofemoral medial acompanha a luxação lateral da patela.",
+      "verdadeira": true,
+      "explicacao": "É a principal contenção medial."
+    },
+    {
+      "id": "msk-vf-pat-03",
+      "tema": "Patela, tornozelo e pé",
+      "afirmacao": "A RM tende a superestimar o TT-TG em relação à TC.",
+      "verdadeira": false,
+      "explicacao": "Ela tende a subestimar."
+    },
+    {
+      "id": "msk-vf-tum-01",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "afirmacao": "Agressividade na imagem é sinônimo de malignidade.",
+      "verdadeira": false,
+      "explicacao": "Reflete velocidade de crescimento; infecção e histiocitose podem parecer agressivas."
+    },
+    {
+      "id": "msk-vf-tum-02",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "afirmacao": "Com fise aberta, o principal tumor epifisário é o condroblastoma.",
+      "verdadeira": true,
+      "explicacao": "Com a fise fechada, o tumor de células gigantes."
+    },
+    {
+      "id": "msk-vf-tum-03",
+      "tema": "Tumores ósseos e lesões que imitam",
+      "afirmacao": "O desmoide cortical deve ser biopsiado para excluir sarcoma.",
+      "verdadeira": false,
+      "explicacao": "É lesão \"não toque\"."
+    }
+  ],
+  "adivinhas": [
+    {
+      "id": "msk-adv-fu-01",
+      "tema": "Sequências de RM",
+      "dificuldade": "facil",
+      "resposta": "STIR",
+      "aceitas": [
+        "stir"
+      ],
+      "dicas": [
+        "É uma sequência de RM.",
+        "Suprime a gordura.",
+        "Funciona bem perto de metal e nas extremidades.",
+        "Faz o edema brilhar."
+      ],
+      "explicacao": "STIR é a sequência de supressão de gordura por inversão, sensível a líquido."
+    },
+    {
+      "id": "msk-adv-inf-01",
+      "tema": "Osteomielite crônica",
+      "dificuldade": "medio",
+      "resposta": "Sequestro",
+      "aceitas": [
+        "sequestro",
+        "sequestro osseo",
+        "sequestro ósseo"
+      ],
+      "dicas": [
+        "Aparece na osteomielite crônica.",
+        "É osso.",
+        "Está morto.",
+        "O antibiótico chega mal até ele."
+      ],
+      "explicacao": "O sequestro é um fragmento de osso necrótico envolto por tecido de granulação."
+    },
+    {
+      "id": "msk-adv-oa-01",
+      "tema": "Osteoartrite",
+      "dificuldade": "facil",
+      "resposta": "Osteófito",
+      "aceitas": [
+        "osteofito",
+        "osteófito",
+        "osteofitos",
+        "osteófitos"
+      ],
+      "dicas": [
+        "É formação óssea.",
+        "Aparece nas bordas das articulações.",
+        "É um dos achados clássicos da artrose.",
+        "Popularmente chamado de \"bico de papagaio\" na coluna."
+      ],
+      "explicacao": "Osteófito é a proliferação óssea marginal da osteoartrite."
+    },
+    {
+      "id": "msk-adv-ar-01",
+      "tema": "Gota",
+      "dificuldade": "facil",
+      "resposta": "Tofo",
+      "aceitas": [
+        "tofo",
+        "tofos"
+      ],
+      "dicas": [
+        "Aparece na gota crônica.",
+        "É uma massa de partes moles.",
+        "É feito de urato.",
+        "Pode calcificar."
+      ],
+      "explicacao": "O tofo é o depósito de urato monossódico nas partes moles."
+    },
+    {
+      "id": "msk-adv-omb-01",
+      "tema": "Instabilidade",
+      "dificuldade": "medio",
+      "resposta": "Bankart",
+      "aceitas": [
+        "bankart",
+        "lesao de bankart",
+        "lesão de bankart"
+      ],
+      "dicas": [
+        "Lesão do ombro.",
+        "Aparece após luxação anterior.",
+        "Fica na glenoide, embaixo e na frente.",
+        "Pode ter fragmento ósseo."
+      ],
+      "explicacao": "Bankart é a lesão do lábio glenoidal anteroinferior."
+    },
+    {
+      "id": "msk-adv-mao-01",
+      "tema": "Punho",
+      "dificuldade": "medio",
+      "resposta": "Semilunar",
+      "aceitas": [
+        "semilunar",
+        "osso semilunar"
+      ],
+      "dicas": [
+        "É um osso do carpo.",
+        "Fica na fileira proximal.",
+        "Na DISI, inclina para dorsal.",
+        "Sofre necrose na doença de Kienböck."
+      ],
+      "explicacao": "O semilunar é o osso central da fileira proximal do carpo."
+    },
+    {
+      "id": "msk-adv-joe-01",
+      "tema": "LCA",
+      "dificuldade": "medio",
+      "resposta": "Segond",
+      "aceitas": [
+        "segond",
+        "fratura de segond"
+      ],
+      "dicas": [
+        "É uma fratura por avulsão.",
+        "Fica na tíbia.",
+        "No aspecto lateral do platô.",
+        "Sinal indireto de LCA rompido."
+      ],
+      "explicacao": "A fratura de Segond acompanha a rotura do LCA."
+    },
+    {
+      "id": "msk-adv-pat-01",
+      "tema": "Patela",
+      "dificuldade": "medio",
+      "resposta": "Tróclea",
+      "aceitas": [
+        "troclea",
+        "tróclea"
+      ],
+      "dicas": [
+        "Fica no fêmur distal.",
+        "É o trilho da patela.",
+        "Quando rasa, a patela escapa.",
+        "Sua displasia é o principal fator de instabilidade."
+      ],
+      "explicacao": "A tróclea femoral é o sulco onde a patela desliza."
+    },
+    {
+      "id": "msk-adv-tum-01",
+      "tema": "Tumores",
+      "dificuldade": "medio",
+      "resposta": "Codman",
+      "aceitas": [
+        "codman",
+        "triangulo de codman",
+        "triângulo de codman"
+      ],
+      "dicas": [
+        "É um tipo de reação periosteal.",
+        "Tem forma de triângulo.",
+        "Aparece na borda da lesão.",
+        "Clássico do osteossarcoma."
+      ],
+      "explicacao": "O triângulo de Codman indica que o periósteo foi rompido por crescimento rápido."
+    }
+  ],
+  "sequencias": [
+    {
+      "id": "msk-seq-fu-01",
+      "tema": "Abordagem",
+      "titulo": "Primeiras perguntas diante de uma lesão óssea",
+      "itens": [
+        "Forma ou destrói osso?",
+        "Onde está e quantas são?",
+        "Qual o método que melhor enxerga a estrutura?",
+        "As partes moles foram deslocadas ou infiltradas?",
+        "O quadro clínico combina?"
+      ],
+      "explicacao": "Raciocinar nessa ordem evita fechar o diagnóstico cedo demais."
+    },
+    {
+      "id": "msk-seq-inf-01",
+      "tema": "Osteomielite",
+      "titulo": "Da infecção à cronificação",
+      "itens": [
+        "Aumento da pressão intramedular",
+        "Estase venosa e trombose",
+        "Necrose óssea",
+        "Formação de sequestro",
+        "Reação periosteal que vira invólucro",
+        "Cloaca e fístula para as partes moles"
+      ],
+      "explicacao": "A fisiopatologia explica cada achado de imagem."
+    },
+    {
+      "id": "msk-seq-oa-01",
+      "tema": "Cartilagem",
+      "titulo": "Graus de Outerbridge modificada, do menor ao maior",
+      "itens": [
+        "Alteração de sinal ou amolecimento",
+        "Fissura superficial",
+        "Fissura profunda sem expor o osso",
+        "Osso subcondral exposto"
+      ],
+      "explicacao": "A profundidade da lesão define o grau."
+    },
+    {
+      "id": "msk-seq-ar-01",
+      "tema": "Artrite reumatoide",
+      "titulo": "Evolução da AR na imagem",
+      "itens": [
+        "Tenossinovite e sinovite",
+        "Osteíte (edema ósseo) na RM",
+        "Erosões marginais nas áreas nuas",
+        "Redução simétrica do espaço",
+        "Deformidades e colapso do carpo"
+      ],
+      "explicacao": "Da inflamação silenciosa à deformidade."
+    },
+    {
+      "id": "msk-seq-omb-01",
+      "tema": "Manguito rotador",
+      "titulo": "Tendões no sagital, de anterior para posterior",
+      "itens": [
+        "Subescapular",
+        "Cabeça longa do bíceps",
+        "Supraespinal",
+        "Infraespinal",
+        "Redondo menor"
+      ],
+      "explicacao": "O bíceps no intervalo rotador separa o subescapular dos demais."
+    },
+    {
+      "id": "msk-seq-mao-01",
+      "tema": "Punho",
+      "titulo": "Fileira proximal do carpo, de radial para ulnar",
+      "itens": [
+        "Escafoide",
+        "Semilunar",
+        "Piramidal",
+        "Pisiforme"
+      ],
+      "explicacao": "O pisiforme fica sobre o piramidal, na face palmar."
+    },
+    {
+      "id": "msk-seq-joe-01",
+      "tema": "LCA",
+      "titulo": "O que acontece no pivot shift",
+      "itens": [
+        "Pé fixo e rotação com valgo",
+        "Rotura do LCA",
+        "Translação anterior da tíbia",
+        "Impacto do platô lateral posterior no côndilo lateral",
+        "Contusões ósseas laterais"
+      ],
+      "explicacao": "O mapa de contusão é a assinatura do mecanismo."
+    },
+    {
+      "id": "msk-seq-pat-01",
+      "tema": "Tornozelo",
+      "titulo": "Classificação de Weber, da mais estável à mais instável",
+      "itens": [
+        "Weber A: abaixo da sindesmose",
+        "Weber B: no nível da sindesmose",
+        "Weber C: acima da sindesmose"
+      ],
+      "explicacao": "Quanto mais alta a fratura da fíbula, maior a chance de lesão da sindesmose."
+    },
+    {
+      "id": "msk-seq-tum-01",
+      "tema": "Checklist",
+      "titulo": "Checklist do tumor ósseo",
+      "itens": [
+        "É mesmo tumor ou lesão \"não toque\"?",
+        "Idade do paciente",
+        "Localização (epífise, metáfise, diáfise; central, excêntrica, cortical)",
+        "Margem e zona de transição (Lodwick)",
+        "Reação periosteal",
+        "Matriz",
+        "Cortical e partes moles"
+      ],
+      "explicacao": "Seguir a ordem evita pular etapas e diagnósticos."
+    },
+    {
+      "id": "msk-seq-tum-02",
+      "tema": "Checklist",
+      "titulo": "Padrões de Lodwick, do menos ao mais agressivo",
+      "itens": [
+        "IA: geográfico com halo esclerótico",
+        "IB: geográfico sem halo",
+        "IC: geográfico com margem indistinta",
+        "II: ruído de traça",
+        "III: permeativo"
+      ],
+      "explicacao": "A margem conta a velocidade."
+    }
+  ],
+  "palavras": [
+    {
+      "id": "msk-pal-fu-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Medula",
+      "dica": "Ocupa o interior dos ossos"
+    },
+    {
+      "id": "msk-pal-fu-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Cortical",
+      "dica": "Camada compacta externa do osso"
+    },
+    {
+      "id": "msk-pal-fu-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Periósteo",
+      "dica": "Membrana que reveste o osso"
+    },
+    {
+      "id": "msk-pal-fu-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Edema",
+      "dica": "Água a mais no tecido"
+    },
+    {
+      "id": "msk-pal-fu-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Difusão",
+      "dica": "Mede a mobilidade da água"
+    },
+    {
+      "id": "msk-pal-fu-06",
+      "tema": "Radiologia MSK",
+      "palavra": "Esclerose",
+      "dica": "Aumento da densidade óssea"
+    },
+    {
+      "id": "msk-pal-inf-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Cloaca",
+      "dica": "Saída no invólucro"
+    },
+    {
+      "id": "msk-pal-inf-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Fístula",
+      "dica": "Trajeto até a pele"
+    },
+    {
+      "id": "msk-pal-inf-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Abscesso",
+      "dica": "Coleção de pus"
+    },
+    {
+      "id": "msk-pal-inf-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Charcot",
+      "dica": "Neuroartropatia do pé diabético"
+    },
+    {
+      "id": "msk-pal-inf-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Úlcera",
+      "dica": "Porta de entrada no pé diabético"
+    },
+    {
+      "id": "msk-pal-oa-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Artrose",
+      "dica": "Nome antigo da osteoartrite"
+    },
+    {
+      "id": "msk-pal-oa-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Geodo",
+      "dica": "Cisto subcondral"
+    },
+    {
+      "id": "msk-pal-oa-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Hálux",
+      "dica": "Primeiro dedo do pé"
+    },
+    {
+      "id": "msk-pal-oa-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Rigidez",
+      "dica": "Piora após repouso"
+    },
+    {
+      "id": "msk-pal-oa-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Gaivota",
+      "dica": "Asa da osteoartrite erosiva"
+    },
+    {
+      "id": "msk-pal-oa-06",
+      "tema": "Radiologia MSK",
+      "palavra": "Gancho",
+      "dica": "Osteófito da hemocromatose"
+    },
+    {
+      "id": "msk-pal-ar-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Gota",
+      "dica": "Doença do urato"
+    },
+    {
+      "id": "msk-pal-ar-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Urato",
+      "dica": "Cristal da gota"
+    },
+    {
+      "id": "msk-pal-ar-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Sinovite",
+      "dica": "Inflamação da sinóvia"
+    },
+    {
+      "id": "msk-pal-ar-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Erosão",
+      "dica": "Defeito na cortical"
+    },
+    {
+      "id": "msk-pal-ar-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Pannus",
+      "dica": "Tecido inflamatório da AR"
+    },
+    {
+      "id": "msk-pal-ar-07",
+      "tema": "Radiologia MSK",
+      "palavra": "Cristal",
+      "dica": "Deposita na gota e no CPPD"
+    },
+    {
+      "id": "msk-pal-omb-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Manguito",
+      "dica": "Conjunto de quatro tendões do ombro"
+    },
+    {
+      "id": "msk-pal-omb-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Lábio",
+      "dica": "Anel fibrocartilaginoso da glenoide"
+    },
+    {
+      "id": "msk-pal-omb-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Glenoide",
+      "dica": "Cavidade da escápula"
+    },
+    {
+      "id": "msk-pal-omb-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Acrômio",
+      "dica": "Teto do ombro"
+    },
+    {
+      "id": "msk-pal-omb-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Bíceps",
+      "dica": "Marco do intervalo rotador"
+    },
+    {
+      "id": "msk-pal-omb-06",
+      "tema": "Radiologia MSK",
+      "palavra": "Luxação",
+      "dica": "Perda do encaixe articular"
+    },
+    {
+      "id": "msk-pal-mao-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Carpo",
+      "dica": "Conjunto de oito ossos do punho"
+    },
+    {
+      "id": "msk-pal-mao-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Escafoide",
+      "dica": "Osso que mais fratura no carpo"
+    },
+    {
+      "id": "msk-pal-mao-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Hamato",
+      "dica": "Osso com o hâmulo"
+    },
+    {
+      "id": "msk-pal-mao-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Polia",
+      "dica": "Mantém o flexor junto ao osso"
+    },
+    {
+      "id": "msk-pal-mao-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Mediano",
+      "dica": "Nervo do túnel do carpo"
+    },
+    {
+      "id": "msk-pal-mao-06",
+      "tema": "Radiologia MSK",
+      "palavra": "Ulnar",
+      "dica": "Nervo do canal de Guyon"
+    },
+    {
+      "id": "msk-pal-mao-07",
+      "tema": "Radiologia MSK",
+      "palavra": "Martelo",
+      "dica": "Dedo que não estende a ponta"
+    },
+    {
+      "id": "msk-pal-joe-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Menisco",
+      "dica": "Fibrocartilagem do joelho"
+    },
+    {
+      "id": "msk-pal-joe-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Cruzado",
+      "dica": "Tipo do LCA e do LCP"
+    },
+    {
+      "id": "msk-pal-joe-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Platô",
+      "dica": "Superfície da tíbia"
+    },
+    {
+      "id": "msk-pal-joe-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Côndilo",
+      "dica": "Extremidade arredondada do fêmur"
+    },
+    {
+      "id": "msk-pal-joe-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Contusão",
+      "dica": "Edema ósseo pós-trauma"
+    },
+    {
+      "id": "msk-pal-joe-06",
+      "tema": "Radiologia MSK",
+      "palavra": "Raiz",
+      "dica": "Âncora do menisco"
+    },
+    {
+      "id": "msk-pal-pat-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Patela",
+      "dica": "Maior sesamoide do corpo"
+    },
+    {
+      "id": "msk-pal-pat-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Tróclea",
+      "dica": "Trilho da patela"
+    },
+    {
+      "id": "msk-pal-pat-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Tálus",
+      "dica": "Osso do tornozelo sem tendões inseridos"
+    },
+    {
+      "id": "msk-pal-pat-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Fíbula",
+      "dica": "Osso lateral da perna"
+    },
+    {
+      "id": "msk-pal-pat-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Calcâneo",
+      "dica": "Osso do calcanhar"
+    },
+    {
+      "id": "msk-pal-pat-06",
+      "tema": "Radiologia MSK",
+      "palavra": "Fáscia",
+      "dica": "Membrana plantar"
+    },
+    {
+      "id": "msk-pal-tum-01",
+      "tema": "Radiologia MSK",
+      "palavra": "Matriz",
+      "dica": "O que o tumor produz por dentro"
+    },
+    {
+      "id": "msk-pal-tum-02",
+      "tema": "Radiologia MSK",
+      "palavra": "Mieloma",
+      "dica": "Tumor primário maligno mais comum no adulto"
+    },
+    {
+      "id": "msk-pal-tum-03",
+      "tema": "Radiologia MSK",
+      "palavra": "Ewing",
+      "dica": "Sarcoma da casca de cebola"
+    },
+    {
+      "id": "msk-pal-tum-04",
+      "tema": "Radiologia MSK",
+      "palavra": "Cisto",
+      "dica": "Lesão com líquido"
+    },
+    {
+      "id": "msk-pal-tum-05",
+      "tema": "Radiologia MSK",
+      "palavra": "Nidus",
+      "dica": "Centro do osteoma osteoide"
+    },
+    {
+      "id": "msk-pal-tum-06",
+      "tema": "Radiologia MSK",
+      "palavra": "Codman",
+      "dica": "Triângulo da reação periosteal"
+    },
+    {
+      "id": "msk-pal-tum-07",
+      "tema": "Radiologia MSK",
+      "palavra": "Fise",
+      "dica": "Placa de crescimento"
+    },
+    {
+      "id": "msk-pal-tum-08",
+      "tema": "Radiologia MSK",
+      "palavra": "Epífise",
+      "dica": "Extremidade do osso longo"
+    }
+  ]
+}
