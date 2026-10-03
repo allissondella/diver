@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-03 · Ordem do Travessia e Digestivo revitalizado
+- **Pedido:** Matemática como 4º módulo do Travessia (Redação por último) e aplicar a nova metodologia na Radiologia: Aparelho Digestivo sem os alunos perderem o que já fizeram.
+- **Feito:** Travessia na ordem Linguagens → Humanas → Natureza → Matemática → Redação (só a ordem do array `fases`; questões idênticas). Digestivo: artigo nas 9 fases (seções, mapa mental, associações; linha do tempo em fundamentos, fígado difuso, pâncreas, abdome agudo e pediatria; mapa do abdome em abdome agudo e intestino). Novo `tipo: "abdome"` no `js/artigo.js`. Caderno novo `docs/cadernos/radiologia-aparelho-digestivo.md`.
+- **Testes:** o JSON do Digestivo só ganhou linhas (940 inserções, nenhuma remoção); progresso salvo com o arquivo antigo continua com o novo; conferência de trilha sem erros; navegador sem erros.
+
 ## 2026-10-03 · Travessia reescrito, Radiologia MSK e o artigo da fase (v1 da skill)
 - **Pedido:** reescrever o Travessia com as fontes do Drive, criar o curso Radiologia Musculoesquelético "nos moldes do professor", com os jogos, e (no meio do caminho) um artigo antes de cada fase com mapa mental, imagens de associação, linha do tempo e mapas, no caminho Aprender → Associar → Praticar → Desafio → Revisar, também na skill.
 - **Feito:** garimpo das duas pastas (`docs/FONTES_CATALOGADAS.md`); mapa tema × peso com 1 260 questões das provas regulares de 2019 a 2025, separadas e classificadas por script; Travessia com a Fase 1 de cada área (104 questões, 24 variantes, blocos para os jogos, prova de 40); Radiologia MSK com 9 fases e 108 questões em caso clínico (blocos para os jogos e prova de 50); `js/artigo.js` + `css/artigo.css` (caminho de 5 passos, artigo, linha do tempo, mapa mental, associações, mapa do Brasil e do corpo) com conteúdo nas 14 fases; regra na skill `criar-trilha` (3.1) e no caderno `professor-diver.md`; cadernos dos dois cursos.

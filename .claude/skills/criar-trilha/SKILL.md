@@ -145,7 +145,8 @@ Formato dos campos novos (todos opcionais para o app, mas obrigatórios para est
 ```
 
 - **Linha do tempo**: quando há ordem no tempo (história, evolução de uma doença, faixas de idade, fases de um processo).
-- **Mapa**: `tipo: "brasil"` (pontos com `lat`/`lon`) quando a geografia explica o conteúdo; `tipo: "corpo"` (pontos com `onde`: cranio, cervical, ombro, cotovelo, punho, mao, toracica, lombar, pelve, quadril, femur, joelho, tibia, tornozelo, pe, halux) quando o lugar no corpo importa. Não force mapa onde ele não ajuda.
+- **Mapa**: `tipo: "brasil"` (pontos com `lat`/`lon`) quando a geografia explica o conteúdo; `tipo: "corpo"` (pontos com `onde`: cranio, cervical, ombro, cotovelo, punho, mao, toracica, lombar, pelve, quadril, femur, joelho, tibia, tornozelo, pe, halux) quando o lugar no corpo importa; `tipo: "abdome"` (pontos com `onde`: figado, vesicula, estomago, baco, pancreas, duodeno, flexura-hepatica, transverso, flexura-esplenica, ascendente, descendente, jejuno, ileo, ileo-terminal, ceco, apendice, sigmoide, reto, mesenterio) para órgãos do abdome. Não force mapa onde ele não ajuda.
+- **Curso que já existe**: o artigo entra só como campos novos em `fases[].resumo`; nunca troque ids de fases, questões ou blocos (o progresso dos alunos está ligado a eles). Para mudar a ordem das fases, mude só a ordem do array `fases`.
 - **Associações**: o emoji é a "imagem" que gruda (`docs/cadernos/professor-diver.md`, "Frase que gruda"); o `porque` é curto e explica a ligação.
 - Tudo autoral: nada de frase, esquema ou imagem copiados das fontes.
 
