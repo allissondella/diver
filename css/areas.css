@@ -311,6 +311,33 @@ details[open] > summary::after { content: "−"; }
   font-size: 0.92rem;
 }
 
+/* Revisar a fundo: um botão por assunto com questões na fila */
+#revisao-fundo { margin-bottom: var(--esp-5, 20px); }
+.revisao-fundo__sub { margin: calc(-1 * var(--esp-1, 4px)) 0 var(--esp-3, 12px); font-size: 0.92rem; }
+.temas-fundo { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-2, 8px); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.tema-fundo {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3, 12px);
+  width: 100%;
+  min-height: 56px;
+  padding: var(--esp-3, 12px) var(--esp-4, 16px);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: rgba(230, 241, 255, 0.04);
+  color: var(--texto);
+  text-align: left;
+  cursor: pointer;
+}
+.tema-fundo:hover { border-color: var(--turquesa); background: rgba(20, 184, 166, 0.1); }
+.tema-fundo__info { flex: 1; display: grid; gap: 2px; font-size: 0.88rem; min-width: 0; }
+.tema-fundo__nome { font-size: 0.98rem; }
+.tema-fundo__cta { flex-shrink: 0; padding: 4px 10px; border-radius: 999px; background: var(--turquesa); color: var(--texto-escuro); font-size: 0.75rem; font-weight: 800; }
+.ficha__texto { display: grid; gap: var(--esp-3, 12px); line-height: 1.6; }
+.ficha__erros { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3, 12px); }
+.ficha__erros li { display: grid; gap: var(--esp-1, 4px); padding: var(--esp-3, 12px); border: 1px solid var(--borda); border-radius: var(--raio-pequeno); font-size: 0.92rem; }
+.ficha__enunciado { font-weight: 700; }
+
 /* ---------- Sala de Jogos ---------- */
 .sala {
   display: grid;

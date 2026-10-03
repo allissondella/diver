@@ -3,10 +3,12 @@
  *
  * Modos:
  *  - mergulho: questões de uma fase, com oxigênio e feedback imediato. Rodada em rampa
- *              (fácil → médio → difícil); na primeira rodada da fase, sem as difíceis
+ *              (fácil → médio → difícil); na primeira rodada da fase, sem as difíceis; e a
+ *              fase inteira também sobe: as nunca vistas saem das fáceis para as difíceis
  *  - simulado: N questões da trilha toda, cronometrado, correção no final
  *  - revisao:  questões erradas (peso > 0) ou marcadas, com feedback imediato e em rampa;
- *              pode mostrar uma variante aprovada ou uma substituta (veja versaoParaRevisar)
+ *              pode mostrar uma variante aprovada ou uma substituta (veja versaoParaRevisar).
+ *              Com { tema }: "Revisar a fundo" um assunto (as pendentes + outras do tema)
  *  - prova:    prova final do curso
  *  - enviada:  prova antiga que alguém subiu (Simulado → Upload de prova). Correção no final;
  *              os pontos só entram na entrega, pelo Economia.pontuarProvaEnviada
@@ -66,6 +68,26 @@ const Quiz = (() => {
     return jaTentou || !semDificeis.length ? daFase : semDificeis;
   }
 
+  /**
+   * Escolha do Mergulho com a fase inteira em rampa (pedido da revisão de 2026-10-03):
+   * entre as questões que o aluno nunca viu, primeiro as fáceis, depois as médias e por
+   * último as difíceis. Assim a 1ª rodada fixa a base e as avançadas ficam para o fim da fase.
+   * As que ele errou continuam com prioridade (peso), como antes.
+   */
+  function selecionarMergulho(pool, prog, n) {
+    const prioridade = (q) => {
+      const e = prog.questoes[q.id];
+      const peso = e ? e.peso : 0;
+      const nuncaVista = !e || e.acertos + e.erros === 0;
+      return peso * 10 + (nuncaVista ? 30 - nivel(q) * 10 : 0) + Math.random() * 4;
+    };
+    return pool
+      .map((q) => ({ q, p: prioridade(q) }))
+      .sort((a, b) => b.p - a.p)
+      .slice(0, n)
+      .map((x) => x.q);
+  }
+
   /* ---------- Revisão com variantes ---------- */
   /** Id que guarda o progresso: a variante ou a substituta contam para a questão original. */
   function idNoProgresso(q) {
@@ -110,6 +132,20 @@ const Quiz = (() => {
     return { ...escolhida, revisaDe: q.id, tipoRevisao: tipo };
   }
 
+  /**
+   * Revisão a fundo de um assunto (Revisão → "Revisar a fundo"): primeiro as questões do tema
+   * que estão na fila (com variante, se houver); depois completa com outras do mesmo tema,
+   * as nunca vistas antes. Tudo em rampa, fácil → difícil.
+   */
+  function montarRevisaoTema(trilha, prog, tema) {
+    const doTema = trilha.questoes.filter((q) => q.tema === tema);
+    const pendentes = selecionar(Progresso.paraRevisar(prog, trilha).filter((q) => q.tema === tema), prog, TAMANHO_RODADA.revisao);
+    const usadas = new Set(pendentes.map((q) => q.id));
+    const fila = pendentes.map((q) => versaoParaRevisar(q, trilha, prog, usadas));
+    const resto = selecionar(doTema.filter((q) => !usadas.has(q.id)), prog, TAMANHO_RODADA.revisao - fila.length);
+    return emRampa([...fila, ...resto]);
+  }
+
   function montarRevisao(trilha, prog) {
     const pendentes = selecionar(Progresso.paraRevisar(prog, trilha), prog, TAMANHO_RODADA.revisao);
     const usadas = new Set(pendentes.map((q) => q.id)); // a substituta não repete uma pendente da mesma rodada
@@ -126,13 +162,13 @@ const Quiz = (() => {
 
     if (modo === 'mergulho') {
       fase = trilha.fases.find((f) => f.id === opcoes.faseId);
-      fila = emRampa(selecionar(poolDoMergulho(trilha, fase, prog), prog, TAMANHO_RODADA.mergulho));
+      fila = emRampa(selecionarMergulho(poolDoMergulho(trilha, fase, prog), prog, TAMANHO_RODADA.mergulho));
       Progresso.registrarTentativaFase(prog, fase.id);
     } else if (modo === 'simulado') {
       const n = Math.min(opcoes.quantidade || 10, trilha.questoes.length);
       fila = embaralhar(selecionar(trilha.questoes, prog, n)); // como numa prova: sem rampa
     } else if (modo === 'revisao') {
-      fila = montarRevisao(trilha, prog);
+      fila = opcoes.tema ? montarRevisaoTema(trilha, prog, opcoes.tema) : montarRevisao(trilha, prog);
     } else if (modo === 'prova') {
       // Prova final: sorteio simples da trilha toda (sem priorizar os erros, como numa prova de verdade)
       fila = embaralhar(trilha.questoes).slice(0, Math.min(opcoes.quantidade, trilha.questoes.length));
@@ -157,7 +193,8 @@ const Quiz = (() => {
       inicio: Date.now(),
       limiteSeg: modo === 'simulado' ? fila.length * SEGUNDOS_POR_QUESTAO_SIMULADO
         : modo === 'prova' || (modo === 'enviada' && opcoes.minutos) ? opcoes.minutos * 60 : null,
-      titulo: opcoes.titulo || null, // prova enviada
+      titulo: opcoes.titulo || null, // prova enviada ou assunto da Revisão a fundo
+      tema: opcoes.tema || null, // Revisão a fundo
       pontos: modo === 'enviada' ? { fator: opcoes.fator || 0, comPerolas: !!opcoes.comPerolas, motivo: opcoes.motivo || '' } : null,
       aprovacao: modo === 'prova' ? opcoes.aprovacao : null, // % mínima para passar na prova final
       encerrada: false,

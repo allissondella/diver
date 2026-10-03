@@ -925,6 +925,85 @@ const App = (() => {
           h('strong', { text: `Nota ${s.nota.toLocaleString('pt-BR')}` })))));
   }
 
+  /* ---------- Revisar a fundo: um assunto de cada vez (Revisão) ---------- */
+  /** Os assuntos com questões na fila, do que tem mais erros para o que tem menos. */
+  function temasParaFundo(pendentes) {
+    const { trilha, prog } = estado;
+    const porTema = new Map();
+    pendentes.forEach((q) => {
+      if (!q.tema) return;
+      const t = porTema.get(q.tema) || { tema: q.tema, fase: q.fase, questoes: [], erros: 0 };
+      t.questoes.push(q);
+      t.erros += (prog.questoes[q.id] && prog.questoes[q.id].erros) || 0;
+      porTema.set(q.tema, t);
+    });
+    return [...porTema.values()]
+      .map((t) => ({ ...t, faseObj: trilha.fases.find((f) => f.id === t.fase) }))
+      .sort((a, b) => b.erros - a.erros || b.questoes.length - a.questoes.length);
+  }
+
+  function renderizarTemasFundo(pendentes) {
+    const temas = temasParaFundo(pendentes);
+    $('revisao-fundo').hidden = !temas.length;
+    const lista = limpar($('revisao-temas'));
+    temas.forEach((t) => {
+      lista.append(h('li', {},
+        h('button', { type: 'button', class: 'tema-fundo', onclick: () => abrirFichaTema(t.tema) },
+          h('span', { class: 'tema-fundo__info' },
+            h('strong', { class: 'tema-fundo__nome', text: t.tema }),
+            h('span', { class: 'texto-suave', text: [t.faseObj && t.faseObj.nome, plural(t.questoes.length, 'questão na fila', 'questões na fila')].filter(Boolean).join(' · ') })),
+          h('span', { class: 'tema-fundo__cta', 'aria-hidden': 'true', text: 'Revisar a fundo' }))));
+    });
+  }
+
+  /** Ficha do assunto: resumo do tema (bloco "fichas" da trilha), o que a pessoa errou e a rodada. */
+  function abrirFichaTema(tema) {
+    const { trilha, prog } = estado;
+    const t = temasParaFundo(Progresso.paraRevisar(prog, trilha)).find((x) => x.tema === tema)
+      || { tema, questoes: [], faseObj: null };
+    const ficha = trilha.fichas && trilha.fichas[tema];
+    const paragrafos = ficha ? [].concat(ficha.texto || []) : [];
+    let dialogo = $('dialogo-tema');
+    if (!dialogo) {
+      dialogo = h('dialog', { id: 'dialogo-tema', class: 'dialogo', 'aria-labelledby': 'dialogo-tema-titulo' });
+      dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close(); });
+      window.addEventListener('hashchange', () => dialogo.open && dialogo.close());
+      document.body.append(dialogo);
+    }
+    const lista = (titulo, icone_, itens, classe) => (itens && itens.length
+      ? h('section', { class: classe || '' }, h('h3', { class: 'resumo__titulo' }, icone(icone_), titulo),
+        h('ul', { class: 'resumo__lista' }, itens.map((p) => h('li', {}, comNegrito(p)))))
+      : null);
+    const corte = (txt) => String(txt).split(/Dica de mergulhador:/i)[0].trim();
+    limpar(dialogo).append(h('div', { class: 'dialogo__caixa' },
+      h('header', { class: 'dialogo__topo' },
+        h('div', {},
+          h('span', { class: 'rotulo', text: t.faseObj ? `Revisar a fundo · ${t.faseObj.nome}` : 'Revisar a fundo' }),
+          h('h2', { id: 'dialogo-tema-titulo', class: 'dialogo__titulo', text: tema })),
+        h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'))),
+      h('div', { class: 'dialogo__corpo' },
+        paragrafos.length ? h('section', { class: 'ficha__texto' }, paragrafos.map((p) => h('p', {}, comNegrito(p)))) : null,
+        ficha ? lista('Para não esquecer', 'i-alvo', ficha.pontos) : null,
+        ficha ? lista('Pegadinhas', 'i-perola', ficha.pegadinhas, 'resumo__perolas') : null,
+        t.questoes.length
+          ? h('section', {}, h('h3', { class: 'resumo__titulo' }, icone('i-revisao'), 'O que você errou'),
+            h('ul', { class: 'ficha__erros' }, t.questoes.slice(0, 6).map((q) => h('li', {},
+              h('p', { class: 'ficha__enunciado', text: q.enunciado }),
+              h('p', {}, h('strong', { text: 'Certa: ' }), q.alternativas[q.correta]),
+              h('p', { class: 'texto-suave' }, comNegrito(corte(q.explicacao)))))))
+          : null,
+        !ficha && t.faseObj && t.faseObj.resumo
+          ? h('p', { class: 'texto-suave', text: 'Quer o contexto todo? O artigo da fase explica o assunto do começo.' })
+          : null),
+      h('footer', { class: 'dialogo__rodape' },
+        t.faseObj && t.faseObj.resumo
+          ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => { dialogo.close(); abrirResumo(t.faseObj, true); } }, 'Ler o artigo da fase')
+          : h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => dialogo.close() }, 'Fechar'),
+        h('button', { type: 'button', class: 'botao botao--primario', onclick: () => { dialogo.close(); iniciarSessao('revisao', { tema, titulo: `A fundo: ${tema}` }); } }, 'Mergulhar no tema'))));
+    dialogo.showModal();
+    dialogo.querySelector('.dialogo__corpo').scrollTop = 0;
+  }
+
   /** Provas enviadas (Upload de prova) aparecem no Simulado, logo abaixo de "Montar simulado". */
   function renderizarProvasEnviadas() {
     ProvasEnviadas.renderLista($('provas-enviadas'));
@@ -938,6 +1017,7 @@ const App = (() => {
       ? `${plural(pendentes.length, 'questão esperando', 'questões esperando')} por você: as que você errou ou marcou. Mergulho de volta, sem pressão.`
       : 'Nada pra revisar por enquanto. As questões que você errar ou marcar aparecem aqui.';
     $('btn-revisao').disabled = pendentes.length === 0;
+    renderizarTemasFundo(pendentes);
 
     const lista = limpar($('revisao-lista'));
     if (!pendentes.length) {
@@ -1185,7 +1265,7 @@ const App = (() => {
     cortina({
       mergulho: s.fase ? `Descendo para ${s.fase.nome}…` : 'Bora mergulhar!',
       simulado: 'Preparando o simulado…',
-      revisao: 'Voltando ao que ficou pra trás…',
+      revisao: opcoes.tema ? `Mergulhando fundo em ${opcoes.tema}…` : 'Voltando ao que ficou pra trás…',
       prova: 'Prova final: respira fundo…',
       enviada: `Abrindo ${s.titulo || 'a prova'}…`,
     }[modo] || 'Bora mergulhar!');
@@ -1348,11 +1428,36 @@ const App = (() => {
       $('feedback-titulo').textContent = r.semOxigenio ? 'Acabou o oxigênio!' : sortear(MSGS_ERRO);
       $('feedback-ganho').textContent = `Resposta certa: ${LETRAS[estado.ordem.indexOf(q.correta)]}) ${q.alternativas[q.correta]}`;
     }
-    $('feedback-explicacao').textContent = q.explicacao;
+    mostrarExplicacao(q);
     const ultima = r.semOxigenio || s.indice === s.fila.length - 1;
     $('btn-continuar').textContent = ultima ? 'Ver resumo' : 'Continuar';
     painel.hidden = false;
     $('btn-continuar').focus({ preventScroll: true });
+  }
+
+  /**
+   * Explicação da questão: o texto principal, "Por que não as outras" (comentarios[i], um por
+   * alternativa, na ordem do JSON; aparece na ordem em que as letras estão na tela) e a
+   * "Dica de mergulhador" em destaque (quando a explicação traz esse trecho).
+   */
+  function mostrarExplicacao(q) {
+    const caixa = limpar($('feedback-explicacao'));
+    const texto = String(q.explicacao || '');
+    const corte = texto.search(/Dica de mergulhador:/i);
+    const principal = (corte >= 0 ? texto.slice(0, corte) : texto).trim();
+    const dica = corte >= 0 ? texto.slice(corte).replace(/^Dica de mergulhador:\s*/i, '').trim() : '';
+    if (principal) caixa.append(h('p', {}, comNegrito(principal)));
+    const comentarios = Array.isArray(q.comentarios) ? q.comentarios : [];
+    const erradas = estado.ordem
+      .map((original, pos) => ({ original, pos }))
+      .filter(({ original }) => original !== q.correta && comentarios[original]);
+    if (erradas.length) {
+      caixa.append(h('div', { class: 'feedback__outras' },
+        h('p', { class: 'feedback__outras-titulo', text: 'Por que não as outras' }),
+        h('ul', {}, erradas.map(({ original, pos }) => h('li', {},
+          h('strong', { text: `${LETRAS[pos]}) ` }), comNegrito(comentarios[original]))))));
+    }
+    if (dica) caixa.append(h('p', { class: 'feedback__dica' }, h('strong', { text: 'Dica de mergulhador: ' }), comNegrito(dica)));
   }
 
   function continuar() {

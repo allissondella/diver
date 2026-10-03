@@ -72,6 +72,7 @@ const Tutorial = (() => {
     ],
     revisao: [
       { desenho: 'revisao', titulo: 'Revisão', texto: 'As questões que você errou ou marcou voltam para cá. Acertou de novo? Ela sai da fila. Nada fica pra trás.' },
+      { alvo: '#revisao-fundo', desenho: 'lupa', titulo: 'Revisar a fundo', texto: 'Errou um assunto? Escolha ele aqui: primeiro um resumo aprofundado do tema e o que você errou, depois uma rodada só com questões dele.' },
     ],
     prova: [
       { desenho: 'trofeu', titulo: 'Prova final', texto: 'Ela libera quando você conclui as fases do curso. Tem cronômetro, nota mínima e pode ser refeita: respira fundo e vai.' },
@@ -114,8 +115,9 @@ const Tutorial = (() => {
 
   /* ---------- Guardar o que já foi visto ---------- */
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
-   *  (2: leitura obrigatória do "Antes de mergulhar"). Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 2, mergulho: 2 };
+   *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
+   *  Sem número aqui = versão 1. */
+  const VERSOES = { inicio: 2, mergulho: 2, revisao: 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

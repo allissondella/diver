@@ -387,6 +387,11 @@
             Revisar agora
           </button>
         </div>
+        <div class="cartao" id="revisao-fundo" hidden>
+          <h2 class="cartao__titulo">Revisar a fundo</h2>
+          <p class="texto-suave revisao-fundo__sub">Os assuntos em que você mais tropeçou. Escolha um: primeiro um resumo do tema, depois uma rodada só com ele.</p>
+          <ul id="revisao-temas" class="temas-fundo"></ul>
+        </div>
         <div class="cartao">
           <h2 class="cartao__titulo">Na fila de revisão</h2>
           <ul id="revisao-lista" class="lista-revisao"></ul>
@@ -460,7 +465,7 @@
                 <p id="feedback-ganho" class="feedback__ganho"></p>
               </div>
             </div>
-            <p id="feedback-explicacao" class="feedback__explicacao"></p>
+            <div id="feedback-explicacao" class="feedback__explicacao"></div>
             <button id="btn-continuar" class="botao botao--primario botao--largo" type="button">Continuar</button>
           </div>
         </div>
