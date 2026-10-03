@@ -124,7 +124,7 @@ Variante = a mesma habilidade de uma questão **nossa**, com outra situação e 
 
 ## 3.1 O caminho da fase e o artigo "Antes de mergulhar" (obrigatório em toda fase)
 
-Toda fase segue o caminho **📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar**, que aparece no topo do "Antes de mergulhar" (`js/artigo.js`). Cada passo precisa ter conteúdo:
+Toda fase segue o caminho **📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar**, que aparece no topo do "Antes de mergulhar" (`js/artigo.js`). **Leitura obrigatória (2026-10-03):** o Mergulho de uma fase com `resumo` só libera depois que o aluno abre o "Antes de mergulhar" dela uma vez; por isso o artigo é a porta de entrada e precisa ser bom de ler. Cada passo precisa ter conteúdo:
 
 | Passo | O que a skill escreve | Onde fica |
 |---|---|---|

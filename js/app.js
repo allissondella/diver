@@ -431,6 +431,32 @@ const App = (() => {
     Progresso.definirUltimaTrilha(estado.trilha.id);
   }
 
+  /* ---------- Leitura obrigatória: o Mergulho da fase só abre depois do "Antes de mergulhar" ---------- */
+  /** A fase pede leitura? Só quando tem artigo (fases[].resumo) e o aluno ainda não abriu. */
+  function precisaLer(fase) {
+    if (!fase || !fase.resumo || !estado.prog) return false;
+    return !(estado.prog.artigosLidos || {})[fase.id];
+  }
+
+  function marcarLido(fase) {
+    if (!estado.prog) return;
+    if (!estado.prog.artigosLidos) estado.prog.artigosLidos = {};
+    if (!estado.prog.artigosLidos[fase.id]) estado.prog.artigosLidos[fase.id] = new Date().toISOString();
+  }
+
+  /** Clicou em Mergulhar sem ler: a caixa do Diver explica e oferece o artigo. */
+  async function avisarLeitura(fase) {
+    const abrir = await UI.confirmar({
+      titulo: 'Antes de mergulhar, uma leitura rápida',
+      texto: `O Mergulho de "${fase.nome}" abre depois que você der uma olhada no artigo da fase (o "Antes de mergulhar"). ` +
+        'São poucos minutos e as questões ficam bem mais fáceis. Depois de abrir uma vez, o Mergulho fica liberado de vez.',
+      sim: 'Abrir o artigo',
+      nao: 'Agora não',
+      humor: 'pensando',
+    });
+    if (abrir) abrirResumo(fase, true);
+  }
+
   function renderizarContinuar() {
     const area = limpar($('continuar'));
     const c = cursoParaContinuar();
@@ -726,6 +752,7 @@ const App = (() => {
       const info = prog.fases[fase.id];
       const concluida = !!(info && info.concluida);
       const qtd = Trilhas.questoesDaFase(trilha, fase.id).length;
+      const ler = liberada && precisaLer(fase);
 
       let estadoTxt;
       if (!liberada) estadoTxt = `Bloqueada: complete ${trilha.fases[i - 1].nome} para descer`;
@@ -741,7 +768,7 @@ const App = (() => {
         style: `--prof:${n > 1 ? i / (n - 1) : 0}`,
         disabled: !liberada,
         'aria-label': `${fase.nome}${fase.profundidade ? ', ' + fase.profundidade : ''}. ${estadoTxt}` +
-          (concluida ? `, ${info.estrelas} de 3 estrelas` : ''),
+          (concluida ? `, ${info.estrelas} de 3 estrelas` : '') + (ler ? '. Abra o "Antes de mergulhar" para liberar o Mergulho' : ''),
         onclick: () => iniciarSessao('mergulho', { faseId: fase.id }),
       },
       h('span', { class: 'fase__no', 'aria-hidden': 'true' },
@@ -751,12 +778,13 @@ const App = (() => {
         fase.descricao ? h('span', { class: 'fase__descricao', text: fase.descricao }) : null,
         h('span', { class: 'fase__estado' }, concluida ? estrelas : null, estadoTxt),
       ),
-      liberada ? h('span', { class: 'fase__cta', 'aria-hidden': 'true', text: concluida ? 'Refazer' : 'Mergulhar' }) : null);
+      liberada ? h('span', { class: `fase__cta ${ler ? 'fase__cta--ler' : ''}`, 'aria-hidden': 'true', text: ler ? 'Ler primeiro' : concluida ? 'Refazer' : 'Mergulhar' }) : null);
 
       // "Antes de mergulhar": leitura curta da fase (opcional no JSON). Fica aberta mesmo com a fase bloqueada.
       const estudo = fase.resumo
-        ? h('button', { type: 'button', class: 'fase__estudo', onclick: () => abrirResumo(fase, liberada) },
-          icone('i-livro'), `Antes de mergulhar: ${fase.nome}`)
+        ? h('button', { type: 'button', class: `fase__estudo ${ler ? 'fase__estudo--pendente' : ''}`, onclick: () => abrirResumo(fase, liberada) },
+          icone('i-livro'), `Antes de mergulhar: ${fase.nome}`,
+          ler ? h('span', { class: 'fase__selo', text: 'Leia para liberar' }) : null)
         : null;
       mapa.append(h('li', {}, botao, estudo));
     });
@@ -771,8 +799,12 @@ const App = (() => {
 
   function abrirResumo(fase, liberada) {
     const r = fase.resumo || {};
+    const eraNovo = precisaLer(fase);
     lembrarFase(fase.id);
+    marcarLido(fase);
     salvar();
+    if (eraNovo && $('mapa-fases') && estado.trilha) renderizarMapa(); // o botão vira "Mergulhar"
+    if (eraNovo && liberada) toast('Mergulho liberado', `Pode mergulhar em ${fase.nome} quando quiser.`, 'i-check');
     let dialogo = $('dialogo-resumo');
     if (!dialogo) {
       dialogo = h('dialog', { id: 'dialogo-resumo', class: 'dialogo', 'aria-labelledby': 'dialogo-resumo-titulo' });
@@ -1140,6 +1172,10 @@ const App = (() => {
      SESSÃO DE ESTUDO (QUIZ) — Mergulho, Simulado e Revisão
      ========================================================= */
   function iniciarSessao(modo, opcoes = {}) {
+    if (modo === 'mergulho' && opcoes.faseId) {
+      const fase = estado.trilha.fases.find((f) => f.id === opcoes.faseId);
+      if (precisaLer(fase)) { avisarLeitura(fase); return; }
+    }
     const s = Quiz.criar(modo, estado.trilha, estado.prog, opcoes);
     if (modo === 'enviada') s.provaRef = estado.ultimaProvaEnviada = opcoes.ref;
     if (!s.fila.length) {

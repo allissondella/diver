@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-10-03 · Leitura obrigatória antes do Mergulho
+- **Pedido:** o aluno precisa abrir o "Antes de mergulhar" para liberar o Mergulho da fase, com aviso se clicar direto em Mergulhar, e os tutoriais de primeiro acesso falando disso, já para todo mundo.
+- **Feito:** `artigosLidos` no progresso de cada trilha (gravado ao abrir o artigo; vai para a nuvem junto). `iniciarSessao` segura o Mergulho de fase não lida e mostra a caixa do Diver ("Abrir o artigo" / "Agora não"); vale para o mapa, o card "Continuar" e o "Próxima fase" do resultado. No mapa: "Ler primeiro" no lugar de "Mergulhar" e o botão do artigo em amarelo com o selo "Leia para liberar" (pulso desligado com movimento reduzido). Abriu o artigo: aviso "Mergulho liberado" e o mapa atualiza. Tutoriais com versão (`VERSOES` em `js/tutorial.js`): Início ganhou o passo "Primeiro ler, depois mergulhar" e o Mergulho explica a regra; os dois reaparecem para quem já tinha visto.
+- **Testes:** PC e celular: tutorial antigo (v1) reaparece no Início e no Mergulho; clique direto mostra o aviso e não abre o quiz; "Abrir o artigo" abre o artigo e libera só aquela fase; depois o quiz abre e responde normal; aluno com histórico antigo no Digestivo mantém XP e respostas. Nenhum erro no console.
+- **Decisão:** basta abrir o artigo uma vez (não precisa rolar até o fim); fase sem `resumo` não trava; vale também para quem já tinha concluído a fase antes da regra.
+
 ## 2026-10-03 · Ordem do Travessia e Digestivo revitalizado
 - **Pedido:** Matemática como 4º módulo do Travessia (Redação por último) e aplicar a nova metodologia na Radiologia: Aparelho Digestivo sem os alunos perderem o que já fizeram.
 - **Feito:** Travessia na ordem Linguagens → Humanas → Natureza → Matemática → Redação (só a ordem do array `fases`; questões idênticas). Digestivo: artigo nas 9 fases (seções, mapa mental, associações; linha do tempo em fundamentos, fígado difuso, pâncreas, abdome agudo e pediatria; mapa do abdome em abdome agudo e intestino). Novo `tipo: "abdome"` no `js/artigo.js`. Caderno novo `docs/cadernos/radiologia-aparelho-digestivo.md`.
