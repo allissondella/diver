@@ -28,7 +28,7 @@
 
 ## 2.1 O caminho de toda fase
 
-**📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar.** Antes de entrar numa fase, o aluno encontra um **artigo** curto e claro, com mapa mental, imagens de associação (emoji + gancho), linha do tempo e mapa (do Brasil ou do corpo) quando fizerem sentido. Depois pratica (Mergulho e jogos), enfrenta o desafio (Chefão e prova) e revisa (pontos, pérolas e variantes). Formato: skill `criar-trilha`, seção 3.1.
+**📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar.** Antes de entrar numa fase, o aluno encontra um **artigo** curto e claro, com mapa mental, imagens de associação (emoji + gancho), linha do tempo e mapa (do Brasil ou do corpo) quando fizerem sentido. Depois pratica (Mergulho e jogos), enfrenta o desafio (Chefão e prova) e revisa (pontos, pérolas e variantes). Formato: skill `criar-trilha`, seção 3.1. **Desde 2026-10-03 o artigo é obrigatório para o aluno:** o Mergulho da fase só abre depois que ele abre o "Antes de mergulhar" uma vez.
 
 ## 3. Receita de uma boa questão Diver
 

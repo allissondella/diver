@@ -52,6 +52,7 @@ const Tutorial = (() => {
   const ROTEIROS = {
     inicio: [
       { desenho: 'diver', titulo: 'Bem-vindo ao Diver!', texto: 'Aqui você estuda em mergulhos curtos, ganha XP e pérolas e sobe de nível. Em poucos passos eu te mostro onde fica cada coisa.' },
+      { desenho: 'livro', titulo: 'Primeiro ler, depois mergulhar', texto: 'Cada fase tem um artigo curto, o "Antes de mergulhar". O Mergulho da fase só abre depois que você der uma olhada nele: basta abrir uma vez.' },
       { alvo: '#continuar', desenho: 'ancora', titulo: 'Continuar de onde parou', texto: 'Seu último curso e a fase onde você estava. Um toque e você volta a mergulhar. Quer outro curso? "Ver todos os cursos".' },
       { alvo: '#lista-trilhas', desenho: 'livro', titulo: 'Escolha seu curso', texto: 'Cada card é um curso. A barrinha embaixo mostra quanto você já desceu nele.' },
       { alvo: '#inicio-cta', desenho: 'ancora', titulo: 'Bora mergulhar!', texto: 'Escolheu? É só tocar aqui. Essa barra fica sempre à vista, mesmo quando você rola a página.' },
@@ -60,7 +61,7 @@ const Tutorial = (() => {
     ],
     mergulho: [
       { alvo: '#mapa-fases', desenho: 'mapa', titulo: 'Mapa do mergulho', texto: 'Cada fase é uma profundidade. Uma rodada tem 8 questões, com a explicação logo depois de cada resposta.' },
-      { alvo: '#mapa-fases .fase__estudo', desenho: 'livro', titulo: 'Antes de mergulhar', texto: 'Uma leitura curta com os pontos-chave da fase. Vale ler antes de responder: a água fica mais clara.' },
+      { alvo: '#mapa-fases .fase__estudo', desenho: 'livro', titulo: 'Antes de mergulhar: leitura obrigatória', texto: 'O artigo da fase, com mapa mental e os pontos-chave. O Mergulho só libera depois que você abrir este botão uma vez. Enquanto isso, a fase mostra "Ler primeiro".' },
       { desenho: 'oxigenio', titulo: 'Oxigênio', texto: 'Você desce com 3 tubos. Cada erro gasta um, e a questão errada volta no fim da rodada para você tentar de novo.' },
       { alvo: '#tela-painel .status', desenho: 'perola', titulo: 'XP, pérolas e sequência', texto: 'Acertos dão XP (para subir de nível) e pérolas (para dicas nos jogos). Estudar todo dia mantém sua sequência.' },
     ],
@@ -112,12 +113,20 @@ const Tutorial = (() => {
   };
 
   /* ---------- Guardar o que já foi visto ---------- */
+  /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
+   *  (2: leitura obrigatória do "Antes de mergulhar"). Sem número aqui = versão 1. */
+  const VERSOES = { inicio: 2, mergulho: 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};
   }
+  /** Já viu a versão atual do roteiro? (true = versão 1, dos registros antigos) */
+  function jaViu(secao) {
+    const v = vistos()[secao];
+    return (v === true ? 1 : Number(v) || 0) >= (VERSOES[secao] || 1);
+  }
   function marcarVisto(secao) {
-    Dados.gravar(CHAVE, { vistos: { ...vistos(), [secao]: true } });
+    Dados.gravar(CHAVE, { vistos: { ...vistos(), [secao]: VERSOES[secao] || true } });
   }
   function zerar() {
     Dados.gravar(CHAVE, { vistos: {} });
@@ -138,11 +147,11 @@ const Tutorial = (() => {
 
   /** Chamado a cada troca de área: abre o tutorial se for a primeira vez. */
   function aoEntrar(secao) {
-    if (atual || !ROTEIROS[secao] || vistos()[secao]) return;
+    if (atual || !ROTEIROS[secao] || jaViu(secao)) return;
     // Espera a tela assentar (e a cortina de transição sumir)
     setTimeout(() => {
       const tela = document.querySelector('.tela:not([hidden])');
-      if (atual || !tela || document.body.classList.contains('modo-foco') || vistos()[secao]) return;
+      if (atual || !tela || document.body.classList.contains('modo-foco') || jaViu(secao)) return;
       if ((location.hash.replace('#', '') || 'inicio') !== secao) return; // a pessoa já saiu da página
       iniciar(secao);
     }, UI.movimentoReduzido ? 150 : 900);
@@ -279,9 +288,9 @@ const Tutorial = (() => {
    */
   function guiar(secao, passos, { forcar = false } = {}) {
     ROTEIROS[secao] = passos;
-    if (!forcar && vistos()[secao]) return;
+    if (!forcar && jaViu(secao)) return;
     setTimeout(() => {
-      if (atual || (!forcar && vistos()[secao])) return;
+      if (atual || (!forcar && jaViu(secao))) return;
       if (!passos.some((p) => !p.alvo || visivel(document.querySelector(p.alvo)))) return; // a tela já mudou
       iniciar(secao);
     }, forcar || UI.movimentoReduzido ? 120 : 650);

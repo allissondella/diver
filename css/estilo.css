@@ -996,6 +996,33 @@ select {
 .fase__estudo:hover { border-color: var(--turquesa); background: rgba(20, 184, 166, 0.14); }
 .fase__estudo .icone { width: 18px; height: 18px; flex-shrink: 0; }
 
+/* Leitura obrigatória: enquanto o "Antes de mergulhar" não for aberto, ele ganha destaque
+   e o botão da fase pede "Ler primeiro" (o Mergulho só libera depois da leitura). */
+.fase__cta--ler { background: var(--amarelo); color: var(--texto-escuro); }
+.fase__estudo--pendente {
+  border-color: var(--amarelo);
+  color: var(--texto);
+  animation: leitura-pulso 2.4s ease-in-out infinite;
+}
+.fase__estudo--pendente .icone { color: var(--amarelo); }
+.fase__selo {
+  margin-left: 4px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--amarelo);
+  color: var(--texto-escuro);
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+@keyframes leitura-pulso {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+  50% { box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.18); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fase__estudo--pendente { animation: none; }
+}
+
 /* Janela de leitura (dialog nativo: Esc fecha e o foco fica dentro) */
 .dialogo {
   width: min(760px, calc(100vw - 24px));
