@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-10-03 · Revisão da Georgia, parte 4: Cibersegurança v2 com as fontes novas
+- **Fontes:** Cartilha de Segurança para Internet 4.0 (CERT.br, CC BY-NC-ND: só referência) e o Manual de Orientação sobre Exercícios de Cibersegurança (FGV Projetos e ComDCiber); catalogadas em `docs/FONTES_CATALOGADAS.md`, nada copiado para o repositório.
+- **Feito:** as 6 fases com "Aprender" completo (460–580 palavras), mapa mental, associações, tabela, pontos e pérolas enxutos; 120 questões com os mesmos ids (comentário em cada alternativa, Dica de mergulhador, temas agrupados) e 21 novas com o que as fontes cobrem e o curso não tinha (pharming, botnet, DDoS, passkeys, cookies, encarregado, exercício de mesa...); 22 fichas; caderno novo do curso. A Operação Recife Sombrio ficou intacta.
+- **Conferências:** `conferir-trilha.mjs` sem erro e sem aviso; posição da resposta certa equilibrada nas novas; originalidade contra as duas fontes: nenhum trecho igual.
+- **Próximo:** ISO 27001 e Travessia.
+
 ## 2026-10-03 · Revisão da Georgia, parte 3: Aparelho Digestivo v2
 - **Feito:** as 9 fases pelo padrão novo: "Aprender" com o resumo completo de cada aula (550–890 palavras), mapa mental, associações para o que é difícil de memorizar, tabela, 6 pontos e 3 pérolas por fase, sem conceito em mais de 3 blocos; as 230 questões com os mesmos ids (termos técnicos, comentário em cada alternativa, Dica de mergulhador, temas agrupados) e 2 novas no Baço; 42 fichas da "Revisar a fundo"; cartas dos jogos sem "brilhante", "escuro" e afins.
 - **Ajuste no app:** a tabela do artigo quebra linha no celular (uma regra de outra tela deixava o texto numa linha só e a tabela rolava para o lado).
