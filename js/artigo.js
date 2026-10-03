@@ -4,7 +4,7 @@
  *   linhaDoTempo  [{ quando, fato }]                          linha do tempo (quando fizer sentido)
  *   mapaMental    { centro, ramos: [{ titulo, itens: [] }] }  mapa mental
  *   associacoes   [{ icone, conceito, liga, porque }]         imagens de associação (emoji + gancho)
- *   mapa          { tipo: 'brasil' | 'corpo', titulo, pontos: [{ titulo, texto, lat, lon | onde }] }
+ *   mapa          { tipo: 'brasil' | 'corpo' | 'abdome', titulo, pontos: [{ titulo, texto, lat, lon | onde }] }
  * e o caminho da fase: Aprender → Associar → Praticar → Desafio → Revisar.
  * Tudo entra como texto (nunca como HTML). Campos ausentes simplesmente não aparecem.
  */
@@ -100,6 +100,22 @@ const Artigo = (() => {
     tibia: [42, 80], tornozelo: [42, 89], pe: [40, 94], halux: [37, 96]
   };
 
+  // Abdome visto de frente (o lado esquerdo do desenho é o lado direito do paciente).
+  const ABDOME = {
+    figado: [30, 24], vesicula: [37, 36], estomago: [62, 26], baco: [79, 27], pancreas: [53, 38], duodeno: [41, 43],
+    'flexura-hepatica': [24, 37], transverso: [50, 33], 'flexura-esplenica': [77, 40], ascendente: [21, 54],
+    descendente: [80, 58], jejuno: [62, 50], ileo: [48, 60], 'ileo-terminal': [36, 66], ceco: [24, 70],
+    apendice: [27, 79], sigmoide: [66, 78], reto: [50, 88], mesenterio: [52, 52]
+  };
+
+  function desenhoAbdome() {
+    return svg('svg', { class: 'geo__desenho', viewBox: '0 0 100 100', 'aria-hidden': 'true', focusable: 'false' },
+      svg('path', { d: 'M14 10 Q50 2 86 10 L90 70 Q88 96 50 97 Q12 96 10 70 Z', class: 'geo__terra' }),
+      svg('path', { d: 'M16 14 Q34 6 46 16 Q44 30 30 32 Q18 30 16 14 Z', class: 'geo__orgao' }),
+      svg('ellipse', { cx: 63, cy: 25, rx: 10, ry: 7, class: 'geo__orgao' }),
+      svg('path', { d: 'M27 74 L21 56 L23 37 Q50 30 78 38 L81 60 L68 78 Q58 86 50 90', class: 'geo__alca' }));
+  }
+
   function desenhoBrasil() {
     return svg('svg', { class: 'geo__desenho', viewBox: '0 0 100 100', 'aria-hidden': 'true', focusable: 'false' },
       svg('path', { d: BRASIL, class: 'geo__terra' }));
@@ -137,8 +153,9 @@ const Artigo = (() => {
   function mapa(m) {
     if (!m || !lista(m.pontos).length) return null;
     const corpo = m.tipo === 'corpo';
+    const abdome = m.tipo === 'abdome';
     const pontos = m.pontos.map((p) => {
-      const pos = corpo ? CORPO[p.onde] : (typeof p.lat === 'number' ? projetar(p.lat, p.lon) : null);
+      const pos = corpo ? CORPO[p.onde] : abdome ? ABDOME[p.onde] : (typeof p.lat === 'number' ? projetar(p.lat, p.lon) : null);
       return pos ? { ...p, x: pos[0], y: pos[1] } : null;
     }).filter(Boolean);
     if (!pontos.length) return null;
@@ -154,11 +171,11 @@ const Artigo = (() => {
         detalhe.replaceChildren(h('p', { class: 'geo__detalhe-titulo' }, h('strong', { text: `${i + 1}. ${p.titulo}` })), h('p', {}, negrito(p.texto || '')));
       }
     }, String(i + 1)));
-    const palco = h('div', { class: `geo__palco ${corpo ? 'geo__palco--corpo' : ''}` }, corpo ? desenhoCorpo() : desenhoBrasil(), botoes);
+    const palco = h('div', { class: `geo__palco ${corpo || abdome ? 'geo__palco--corpo' : ''}` }, corpo ? desenhoCorpo() : abdome ? desenhoAbdome() : desenhoBrasil(), botoes);
     return h('section', { class: 'artigo__bloco' },
-      h('h3', { class: 'artigo__titulo', text: m.titulo || (corpo ? 'Mapa do corpo' : 'Mapa') }),
+      h('h3', { class: 'artigo__titulo', text: m.titulo || (corpo ? 'Mapa do corpo' : abdome ? 'Mapa do abdome' : 'Mapa') }),
       h('figure', { class: 'geo' }, palco,
-        h('figcaption', { class: 'texto-suave geo__legenda', text: corpo ? 'Esquema do corpo, fora de escala.' : 'Esquema do Brasil, fora de escala.' })),
+        h('figcaption', { class: 'texto-suave geo__legenda', text: corpo ? 'Esquema do corpo, fora de escala.' : abdome ? 'Esquema do abdome visto de frente: o lado direito do paciente fica à esquerda.' : 'Esquema do Brasil, fora de escala.' })),
       detalhe,
       h('ol', { class: 'visualmente-oculto' }, pontos.map((p) => h('li', {}, `${p.titulo}: ${p.texto || ''}`))));
   }
@@ -167,5 +184,5 @@ const Artigo = (() => {
   function aprender(r) { return [secoes(r.secoes), linhaDoTempo(r.linhaDoTempo), mapa(r.mapa)].filter(Boolean); }
   function associar(r) { return [mapaMental(r.mapaMental), associacoes(r.associacoes)].filter(Boolean); }
 
-  return { caminho, aprender, associar, negrito, PASSOS, projetar, CORPO };
+  return { caminho, aprender, associar, negrito, PASSOS, projetar, CORPO, ABDOME };
 })();

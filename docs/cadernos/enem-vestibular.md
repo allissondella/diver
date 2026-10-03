@@ -10,6 +10,7 @@ Quem vai fazer o Enem e os vestibulares: terceirão, cursinho e quem volta a est
 - 2026-10-03 · O professor estuda as referências da pasta do Drive "Travessia: Enem Vestibular", aprende e cria tudo autoral, com a nossa cara.
 - 2026-10-03 · v1 de validação da skill: **Fase 1 de cada área** (Matemática reescrita, Linguagens, Humanas, Natureza e Redação). A Matemática 1 antiga (19 questões e 19 variantes que não tinham ido para a fila) foi reescrita do zero.
 - 2026-10-03 · Antes de cada fase, um artigo com mapa mental, associações, linha do tempo e mapa quando se aplicam (caminho Aprender → Associar → Praticar → Desafio → Revisar).
+- 2026-10-03 · **Ordem das fases:** Linguagens, Humanas, Natureza, **Matemática em 4º** e Redação sempre por último. Fases novas de cada área seguem essa mesma ordem.
 
 ## Decisões
 - 2026-09-30 · Questões no estilo Enem: 5 alternativas, situação-problema, contas conferidas por script.
