@@ -10,7 +10,7 @@
  * AVISO (o professor decide): certa muito mais longa, dica da Palavrinha que entrega a palavra,
  *   e o "padrão Georgia" (docs/cadernos/professor-diver.md, seção 7): comentário por alternativa,
  *   Dica de mergulhador, ~20 questões por fase, Aprender completo, revisão enxuta, conceito
- *   repetido demais e ficha para os assuntos da "Revisar a fundo".
+ *   repetido em blocos demais e ficha para os assuntos da "Revisar a fundo".
  */
 import { readFileSync } from 'node:fs';
 
@@ -70,16 +70,18 @@ for (const f of t.fases) {
   if (f.resumo && aprender < 350) avisos.push(`${f.id}: Aprender com ${aprender} palavras (o padrão pede um resumo completo da aula, 350+)`);
   if ((r.pontos || []).length > 8) avisos.push(`${f.id}: ${r.pontos.length} pontos-chave (máximo 8: revisão enxuta)`);
   if ((r.perolas || []).length > 6) avisos.push(`${f.id}: ${r.perolas.length} pérolas (máximo 6)`);
-  // Conceito repetido demais: termos em **negrito** contados no resumo inteiro (máx. 3 vezes;
-  // o que precisa de reforço vai em resumo.reforcar e pode aparecer até 4).
+  // Conceito repetido demais: cada termo em **negrito** é procurado nos blocos do "Antes de mergulhar"
+  // (o Aprender — introdução + seções — conta como um bloco; depois mapa mental, associações, tabela,
+  // linha do tempo, mapa, pontos e pérolas). Máximo 3 blocos; os de resumo.reforcar podem ir a 4.
   if (f.resumo) {
-    const tudo = semAcento(textoDe(r));
+    const blocos = [[r.introducao, r.secoes], r.mapaMental, r.associacoes, r.tabela, r.linhaDoTempo, r.mapa, r.pontos, r.perolas]
+      .map((b) => semAcento(textoDe(b))).filter(Boolean);
     const reforcar = new Set((r.reforcar || []).map(semAcento));
     const termos = new Set((textoDe(r).match(/\*\*([^*]+)\*\*/g) || []).map((m) => semAcento(m.slice(2, -2)).trim()).filter((x) => x.length >= 5));
     for (const termo of termos) {
-      const vezes = tudo.split(termo).length - 1;
+      const vezes = blocos.filter((b) => b.includes(termo)).length;
       const limite = reforcar.has(termo) ? 4 : 3;
-      if (vezes > limite) avisos.push(`${f.id}: "${termo}" aparece ${vezes} vezes no resumo (máximo ${limite})`);
+      if (vezes > limite) avisos.push(`${f.id}: "${termo}" aparece em ${vezes} blocos do resumo (máximo ${limite})`);
     }
   }
 }

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-03 · Revisão da Georgia, parte 2: Musculoesquelético v2
+- **Feito:** as 9 fases reescritas pelo padrão novo (skill `criar-trilha`, Professor Diver): "Aprender" com o resumo completo de cada aula (490–860 palavras), mapa mental, associações, pontos e pérolas enxutos, sem conceito em mais de 3 blocos; 108 questões antigas reescritas com os mesmos ids (termos técnicos, comentário em cada alternativa, Dica de mergulhador) e 72 novas (20 por fase: 6 fáceis, 8 médias, 6 difíceis); 37 fichas da "Revisar a fundo"; cartas dos jogos corrigidas ("brilhante", "apaga", "Geodo") e 4 novas.
+- **Conferências:** `conferir-trilha.mjs` sem erro e sem aviso; originalidade com 12 coincidências técnicas; ids antigos todos preservados; navegador (PC e celular) com artigo, comentários e ficha reais.
+- **Ajuste no script:** a repetição passou a ser contada por blocos do resumo (o Aprender conta como um), que é o que a Georgia pediu.
+
 ## 2026-10-03 · Revisão da Georgia, parte 1: app e regras
 - **Pedido:** corrigir os cursos pelas anotações da professora Georgia (radiologista, revisou o MSK) e levar as regras para o Professor Diver, para todos os cursos. Depois: MSK, Digestivo, Cibersegurança (fontes novas no Drive), ISO e Travessia.
 - **Feito (app):** barra de rolagem única nas janelas (só o corpo rola; `dvh` no celular); "Por que não as outras" com um comentário por alternativa (`comentarios`) e Dica de mergulhador em destaque; Mergulho com a fase inteira em rampa (nunca vistas: fáceis → médias → difíceis); Revisão → **Revisar a fundo** (cartões por tema, ficha do tema do bloco `fichas`, o que errou e rodada só do tema); tutorial da Revisão v2.
