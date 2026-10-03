@@ -1,0 +1,108 @@
+/* Artigo da fase ("Antes de mergulhar"): caminho, seções, linha do tempo, mapa mental, associações e mapas. */
+
+/* ---------- Caminho: Aprender → Associar → Praticar → Desafio → Revisar ---------- */
+.caminho { margin: 0 0 var(--esp-5); }
+.caminho__lista {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; align-items: stretch; gap: var(--esp-1);
+}
+.caminho__item { display: flex; align-items: stretch; gap: var(--esp-1); flex: 1 1 0; min-width: 0; }
+.caminho__passo {
+  flex: 1; min-width: 0; min-height: 64px;
+  display: grid; justify-items: center; align-content: center; gap: 2px;
+  padding: var(--esp-2) var(--esp-1);
+  border: 1px solid var(--borda); border-radius: var(--raio-pequeno);
+  background: var(--superficie); color: var(--texto); font: inherit; cursor: pointer;
+  transition: border-color var(--transicao), background var(--transicao);
+}
+.caminho__passo:hover { border-color: var(--turquesa); background: var(--superficie-2); }
+.caminho__passo:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+.caminho__emoji { font-size: 1.35rem; line-height: 1; }
+.caminho__nome { font-weight: 800; font-size: 0.85rem; }
+.caminho__dica { font-size: 0.7rem; color: var(--texto-suave); text-align: center; line-height: 1.2; }
+.caminho__seta { align-self: center; color: var(--turquesa-claro); font-weight: 800; }
+@media (max-width: 599px) {
+  .caminho__lista { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .caminho__seta, .caminho__dica { display: none; }
+  .caminho__passo { min-height: 56px; }
+  .caminho__nome { font-size: 0.72rem; }
+}
+
+/* ---------- Etapas e seções ---------- */
+.artigo__etapa-rotulo {
+  margin: var(--esp-5) 0 var(--esp-3); font-weight: 800; letter-spacing: 0.02em;
+  color: var(--amarelo); text-transform: uppercase; font-size: 0.8rem;
+}
+.artigo__etapa-rotulo:first-of-type { margin-top: 0; }
+.artigo { display: grid; gap: var(--esp-4); margin: var(--esp-4) 0; }
+.artigo__secao p, .artigo__bloco p { margin: 0 0 var(--esp-2); line-height: 1.6; }
+.artigo__titulo { margin: 0 0 var(--esp-2); font-size: 1.05rem; color: var(--turquesa-claro); }
+.artigo__bloco { margin: var(--esp-5) 0; }
+
+/* ---------- Linha do tempo ---------- */
+.tempo { list-style: none; margin: 0; padding: 0 0 0 var(--esp-4); border-left: 2px solid var(--turquesa); display: grid; gap: var(--esp-3); }
+.tempo__item { position: relative; display: grid; gap: 2px; }
+.tempo__item::before {
+  content: ''; position: absolute; left: calc(-1 * var(--esp-4) - 7px); top: 0.35em;
+  width: 12px; height: 12px; border-radius: 50%; background: var(--amarelo); border: 2px solid var(--marinho);
+}
+.tempo__quando { font: 800 0.9rem var(--fonte-mono); color: var(--amarelo); }
+.tempo__fato { line-height: 1.5; }
+
+/* ---------- Mapa mental ---------- */
+.mm { display: grid; justify-items: center; gap: var(--esp-4); }
+.mm__centro {
+  padding: var(--esp-3) var(--esp-5); border-radius: 999px; text-align: center;
+  background: var(--turquesa); color: var(--texto-escuro); font-weight: 800; box-shadow: var(--brilho-turquesa);
+}
+.mm__ramos {
+  list-style: none; margin: 0; padding: 0; width: 100%;
+  display: grid; gap: var(--esp-3); grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  position: relative;
+}
+.mm__ramo {
+  --cor: var(--turquesa-claro);
+  position: relative; padding: var(--esp-3); border-radius: var(--raio-pequeno);
+  background: var(--superficie); border-top: 4px solid var(--cor);
+}
+.mm__ramo::before { content: ''; position: absolute; top: calc(-1 * var(--esp-4) - 4px); left: 50%; width: 2px; height: var(--esp-4); background: var(--cor); opacity: 0.6; }
+.mm__ramo--1 { --cor: var(--amarelo); }
+.mm__ramo--2 { --cor: var(--coral); }
+.mm__ramo--3 { --cor: var(--lilas); }
+.mm__ramo--4 { --cor: var(--laranja); }
+.mm__ramo-titulo { display: block; font-weight: 800; color: var(--cor); margin-bottom: var(--esp-2); }
+.mm__itens { margin: 0; padding-left: var(--esp-4); display: grid; gap: var(--esp-1); font-size: 0.92rem; line-height: 1.45; }
+
+/* ---------- Associações (imagem + gancho) ---------- */
+.assoc { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.assoc__item {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--esp-3); align-items: start;
+  padding: var(--esp-3); border-radius: var(--raio-pequeno); background: var(--superficie-turquesa); border: 1px solid var(--borda);
+}
+.assoc__icone { font-size: 2rem; line-height: 1; }
+.assoc__par { margin: 0 0 var(--esp-1); }
+.assoc__seta { color: var(--amarelo); font-weight: 800; }
+.assoc__porque { margin: 0; font-size: 0.9rem; color: var(--texto-suave); }
+
+/* ---------- Mapas (Brasil e corpo) ---------- */
+.geo { margin: 0; display: grid; gap: var(--esp-2); }
+.geo__palco { position: relative; width: min(100%, 420px); aspect-ratio: 1; margin: 0 auto; }
+.geo__palco--corpo { width: min(100%, 300px); }
+.geo__desenho { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.geo__terra { fill: var(--superficie-2); stroke: var(--turquesa); stroke-width: 0.6; stroke-linejoin: round; }
+.geo__osso { fill: none; stroke: var(--texto-suave); stroke-width: 1.4; stroke-linecap: round; }
+.geo__ponto {
+  position: absolute; transform: translate(-50%, -50%);
+  width: 28px; height: 28px; border-radius: 50%; padding: 0;
+  border: 2px solid var(--marinho); background: var(--amarelo); color: var(--texto-escuro);
+  font: 800 0.85rem var(--fonte); cursor: pointer; box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.25);
+}
+.geo__ponto:hover, .geo__ponto[aria-pressed='true'] { background: var(--coral); }
+.geo__ponto:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.geo__legenda { text-align: center; font-size: 0.8rem; }
+.geo__detalhe { padding: var(--esp-3); border-radius: var(--raio-pequeno); background: var(--superficie); border-left: 4px solid var(--amarelo); }
+.geo__detalhe p { margin: 0 0 var(--esp-1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .caminho__passo { transition: none; }
+}
