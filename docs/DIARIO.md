@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-03 · Revisão da Georgia, parte 5: ISO/IEC 27001 v2
+- **Feito:** artigo nas 6 fases (antes nenhuma tinha), de 10–12 para 20 questões por fase (55 novas), comentários e Dica de mergulhador nas 120, temas agrupados, 17 fichas; 26 questões em que a certa entregava a resposta pelo tamanho foram reescritas; adivinha "Confidencialidade" ganhou as respostas aceitas que faltavam; caderno novo do curso.
+- **Conferências:** `conferir-trilha.mjs` sem erro e sem aviso; posição da certa equilibrada (A 34 · B 26 · C 30 · D 30); duas questões novas que repetiam outra fase foram trocadas; navegador (PC e celular) com artigo, tabela cabendo na tela, comentários e "Revisar a fundo".
+- **Próximo:** Travessia.
+
 ## 2026-10-03 · Revisão da Georgia, parte 4: Cibersegurança v2 com as fontes novas
 - **Fontes:** Cartilha de Segurança para Internet 4.0 (CERT.br, CC BY-NC-ND: só referência) e o Manual de Orientação sobre Exercícios de Cibersegurança (FGV Projetos e ComDCiber); catalogadas em `docs/FONTES_CATALOGADAS.md`, nada copiado para o repositório.
 - **Feito:** as 6 fases com "Aprender" completo (460–580 palavras), mapa mental, associações, tabela, pontos e pérolas enxutos; 120 questões com os mesmos ids (comentário em cada alternativa, Dica de mergulhador, temas agrupados) e 21 novas com o que as fontes cobrem e o curso não tinha (pharming, botnet, DDoS, passkeys, cookies, encarregado, exercício de mesa...); 22 fichas; caderno novo do curso. A Operação Recife Sombrio ficou intacta.
