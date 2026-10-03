@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-10-03 · Revisão da Georgia, parte 3: Aparelho Digestivo v2
+- **Feito:** as 9 fases pelo padrão novo: "Aprender" com o resumo completo de cada aula (550–890 palavras), mapa mental, associações para o que é difícil de memorizar, tabela, 6 pontos e 3 pérolas por fase, sem conceito em mais de 3 blocos; as 230 questões com os mesmos ids (termos técnicos, comentário em cada alternativa, Dica de mergulhador, temas agrupados) e 2 novas no Baço; 42 fichas da "Revisar a fundo"; cartas dos jogos sem "brilhante", "escuro" e afins.
+- **Ajuste no app:** a tabela do artigo quebra linha no celular (uma regra de outra tela deixava o texto numa linha só e a tabela rolava para o lado).
+- **Conferências:** `conferir-trilha.mjs` sem erro e sem aviso; originalidade com 14 coincidências técnicas (listas de linfonodos, VACTERL, regra dos 2); ids antigos todos preservados; navegador (PC e celular) com artigo, comentário, ficha e rodada do tema.
+- **Próximo:** Cibersegurança com as fontes novas do Drive.
+
 ## 2026-10-03 · Revisão da Georgia, parte 2: Musculoesquelético v2
 - **Feito:** as 9 fases reescritas pelo padrão novo (skill `criar-trilha`, Professor Diver): "Aprender" com o resumo completo de cada aula (490–860 palavras), mapa mental, associações, pontos e pérolas enxutos, sem conceito em mais de 3 blocos; 108 questões antigas reescritas com os mesmos ids (termos técnicos, comentário em cada alternativa, Dica de mergulhador) e 72 novas (20 por fase: 6 fáceis, 8 médias, 6 difíceis); 37 fichas da "Revisar a fundo"; cartas dos jogos corrigidas ("brilhante", "apaga", "Geodo") e 4 novas.
 - **Conferências:** `conferir-trilha.mjs` sem erro e sem aviso; originalidade com 12 coincidências técnicas; ids antigos todos preservados; navegador (PC e celular) com artigo, comentários e ficha reais.

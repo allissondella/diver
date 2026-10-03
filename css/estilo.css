@@ -1119,9 +1119,10 @@ select {
 .resumo__perolas .resumo__titulo { color: var(--amarelo); }
 .resumo__perolas .resumo__lista strong { color: var(--texto); }
 .resumo__bloqueio { font-size: 0.85rem; }
-.tabela--resumo th,
-.tabela--resumo td {
-  min-width: 150px;
+/* .tabela.tabela--resumo vence o nowrap de .tabela td (areas.css): no artigo o texto quebra linha */
+.tabela.tabela--resumo th,
+.tabela.tabela--resumo td {
+  min-width: 88px;
   white-space: normal;
   vertical-align: top;
   line-height: 1.45;
