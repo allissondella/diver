@@ -52,6 +52,10 @@ Se, mesmo tentando, a questão resistir, responda apenas "RESISTIU". Caso contr�
 - **Camada 2 (lógica) reprovou:** reescreva a questão do zero — um problema de lógica geralmente indica que a base da questão está mal construída, um remendo tende a não resolver.
 - **Reprovou de novo na segunda tentativa:** pare de tentar corrigir com IA. Marque `"revisar_humano": true` no JSON e remova a questão do conjunto que vai para a trilha até haver revisão manual. Relate isso no resumo final — não é falha do processo, é o processo funcionando.
 
+## 3.0 Padrão de qualidade (antes de mandar para a fila)
+
+Rode `node scripts/conferir-trilha.mjs data/trilhas/<trilha>.json` e não mande lote com ERRO. Os pontos da revisão da professora Georgia (`docs/cadernos/professor-diver.md`, seção 7) também são motivo de reprovação humana: termo leigo no lugar do técnico ("brilha", "geodo"), alternativa errada sem comentário, explicação sem "Dica de mergulhador", conceito repetido demais.
+
 ## 3.1 O caderno aprende com a validação
 
 Depois que o resultado é baixado (`fila.mjs baixar` ou `fila.mjs aplicar`), leia o bloco `validacao` das questões que **não** passaram de primeira e transforme cada falha num **tipo de erro** e num **como evitar**, por exemplo: "distrator também defensável quando a questão não diz se o juro é simples ou composto → sempre dizer o regime no enunciado".

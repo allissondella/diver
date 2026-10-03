@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-03 · Revisão da Georgia, parte 1: app e regras
+- **Pedido:** corrigir os cursos pelas anotações da professora Georgia (radiologista, revisou o MSK) e levar as regras para o Professor Diver, para todos os cursos. Depois: MSK, Digestivo, Cibersegurança (fontes novas no Drive), ISO e Travessia.
+- **Feito (app):** barra de rolagem única nas janelas (só o corpo rola; `dvh` no celular); "Por que não as outras" com um comentário por alternativa (`comentarios`) e Dica de mergulhador em destaque; Mergulho com a fase inteira em rampa (nunca vistas: fáceis → médias → difíceis); Revisão → **Revisar a fundo** (cartões por tema, ficha do tema do bloco `fichas`, o que errou e rodada só do tema); tutorial da Revisão v2.
+- **Feito (regras):** seção 7 do `professor-diver.md`, skill `criar-trilha` (comentários, fichas, Aprender completo, revisão enxuta, nada repetido, ~20 por fase), `validar-questoes` 3.0 e `scripts/conferir-trilha.mjs` (antes só no rascunho) com as checagens novas: termo leigo em Medicina vira ERRO.
+- **Testes:** PC e celular: uma barra só no artigo; comentário e dica aparecem ao errar; Revisar a fundo abre a ficha e a rodada do tema; 4 rodadas de um aluno novo no Digestivo: `ffffffmm | mmmmmmmm | mmmmdddd | fmmmmmdd`.
+- **Próximo:** MSK pelo padrão novo (~180 questões), depois Digestivo e Cibersegurança.
+
 ## 2026-10-03 · Leitura obrigatória antes do Mergulho
 - **Pedido:** o aluno precisa abrir o "Antes de mergulhar" para liberar o Mergulho da fase, com aviso se clicar direto em Mergulhar, e os tutoriais de primeiro acesso falando disso, já para todo mundo.
 - **Feito:** `artigosLidos` no progresso de cada trilha (gravado ao abrir o artigo; vai para a nuvem junto). `iniciarSessao` segura o Mergulho de fase não lida e mostra a caixa do Diver ("Abrir o artigo" / "Agora não"); vale para o mapa, o card "Continuar" e o "Próxima fase" do resultado. No mapa: "Ler primeiro" no lugar de "Mergulhar" e o botão do artigo em amarelo com o selo "Leia para liberar" (pulso desligado com movimento reduzido). Abriu o artigo: aviso "Mergulho liberado" e o mapa atualiza. Tutoriais com versão (`VERSOES` em `js/tutorial.js`): Início ganhou o passo "Primeiro ler, depois mergulhar" e o Mergulho explica a regra; os dois reaparecem para quem já tinha visto.

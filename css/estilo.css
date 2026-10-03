@@ -1036,6 +1036,14 @@ select {
 }
 .dialogo::backdrop { background: rgba(6, 23, 45, 0.75); }
 .dialogo[open] { display: flex; }
+/* Só o corpo rola: a janela não ganha a sua própria barra (antes havia duas, uma dentro da outra) */
+.dialogo:not(.dialogo--confirmar) { overflow: hidden; }
+.dialogo__caixa { min-height: 0; }
+.dialogo__corpo { flex: 1 1 auto; min-height: 0; align-content: start; }
+@supports (height: 100dvh) {
+  .dialogo { max-height: calc(100dvh - 24px); }
+  .dialogo__caixa { max-height: calc(100dvh - 26px); }
+}
 .dialogo__caixa {
   display: flex;
   flex-direction: column;
@@ -1123,6 +1131,10 @@ select {
   .fase__estudo { margin-left: 0; width: 100%; }
   .dialogo { width: 100vw; max-width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0; }
   .dialogo__caixa { max-height: 100vh; }
+  @supports (height: 100dvh) {
+    .dialogo { max-height: 100dvh; height: 100dvh; }
+    .dialogo__caixa { max-height: 100dvh; }
+  }
   /* a caixa de confirmação continua uma caixa no meio da tela, não a tela inteira */
   .dialogo--confirmar { width: calc(100vw - 32px); max-width: 440px; height: fit-content; max-height: calc(100vh - 32px); border-radius: var(--raio); }
 }
@@ -1483,9 +1495,30 @@ select {
   margin: 12px 0 16px;
   font-size: 0.95rem;
   color: var(--texto);
-  max-height: 32vh;
+  max-height: 46vh;
   overflow-y: auto;
+  display: grid;
+  gap: var(--esp-3, 12px);
 }
+/* "Por que não as outras": um comentário curto por alternativa errada */
+.feedback__outras-titulo {
+  margin-bottom: var(--esp-1, 4px);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.feedback__outras ul { display: grid; gap: var(--esp-2, 8px); padding: 0; list-style: none; }
+.feedback__outras li { color: var(--texto-suave); line-height: 1.45; }
+.feedback__outras li > strong:first-child { color: var(--texto); }
+.feedback__dica {
+  padding: var(--esp-2, 8px) var(--esp-3, 12px);
+  border-left: 3px solid var(--amarelo);
+  border-radius: 0 8px 8px 0;
+  background: rgba(250, 204, 21, 0.08);
+}
+.feedback__dica > strong:first-child { color: var(--amarelo); }
 
 /* ---------- Resumo ---------- */
 .resumo-cabeca {

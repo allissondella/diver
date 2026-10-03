@@ -116,7 +116,9 @@ Variante = a mesma habilidade de uma questão **nossa**, com outra situação e 
 ## 3. Produção do conteúdo
 
 - Siga exatamente o schema de `data/trilhas/*.json` já existente no projeto — confira os nomes reais dos campos antes de escrever (não invente campos novos sem necessidade).
-- Toda questão precisa de explicação da resposta correta.
+- Toda questão precisa de explicação da resposta correta, terminando com **"Dica de mergulhador: ..."**, e de **`comentarios`**: um item por alternativa, na mesma ordem de `alternativas`, dizendo de forma objetiva e curta por que cada errada está errada (o item da certa pode ser `""`). O app mostra "Por que não as outras" com a letra que o aluno viu na tela.
+- **Padrão de qualidade (revisão da Georgia, `docs/cadernos/professor-diver.md` seção 7, vale para todos os cursos):** linguagem técnica da área (em Radiologia: hiperintenso/hipersinal, hiperdenso, hiperecogênico, realce, supressão de gordura, cisto subcondral; nunca "brilha", "acende", "apagado", "geodo"); **~20 questões por fase** cobrindo a aula toda e temas correlatos, sem várias questões sobre o mesmo ponto; proporção que permita começar fácil e terminar nas avançadas (as que fixam o difícil e mais caem em prova).
+- **Fichas da "Revisar a fundo":** para cada `tema` com 3 ou mais questões, um item no bloco `fichas` (chave = o texto exato do `tema`): `{ "texto": ["parágrafo aprofundado", "..."], "pontos": ["..."], "pegadinhas": ["..."] }`. Aparece na Revisão para quem errou aquele tema, antes de uma rodada só com ele.
 - Distribua as questões pelas fases seguindo a dificuldade real mapeada na etapa 1, não uma progressão arbitrária.
 - Dentro de cada fase, garanta questões fáceis e médias suficientes para a primeira rodada (pelo menos 8 entre as duas): o Mergulho monta a rodada em rampa (fácil → médio → difícil) e só libera as difíceis a partir da segunda rodada da fase.
 - Gere, quando fizer sentido para o tema, blocos para os outros tipos de carta já suportados pelo motor (pares, verdadeiro/falso, sequências, adivinhas, palavras, casos) — consulte `docs/JOGOS.md` para o formato de cada um.
@@ -128,11 +130,13 @@ Toda fase segue o caminho **📚 Aprender → 🧠 Associar → 🃏 Praticar �
 
 | Passo | O que a skill escreve | Onde fica |
 |---|---|---|
-| 📚 Aprender | `introducao` + **artigo** em `secoes` (2 a 4 seções curtas, linguagem simples, um conceito por seção, exemplo antes da regra) + `linhaDoTempo` e `mapa` quando fizerem sentido | `fases[].resumo` |
-| 🧠 Associar | `mapaMental` (3 a 5 ramos, 2 a 4 itens cada) + `associacoes` (4 a 6 "imagens de associação": emoji + conceito → ligação + o porquê) + `tabela` | `fases[].resumo` e blocos `pares`/`sequencias` |
+| 📚 Aprender | `introducao` + **artigo** em `secoes`: **resumo detalhado e completo da aula** (3 a 6 seções, 350+ palavras na fase, com os achados, critérios e números que caem; claro, mas com o termo técnico da área), exemplo antes da regra + `linhaDoTempo` e `mapa` quando fizerem sentido | `fases[].resumo` |
+| 🧠 Associar | `mapaMental` (3 a 5 ramos, 2 a 4 itens cada, só o essencial) + `associacoes` (4 a 6 "imagens de associação" **para os pontos de difícil memorização**: emoji + conceito → ligação + o porquê) + `tabela` | `fases[].resumo` e blocos `pares`/`sequencias` |
 | 🃏 Praticar | questões da fase (pelo menos 8 fáceis e médias) | `questoes` |
 | ⚔️ Desafio | questões difíceis, adivinhas e prova do curso | `questoes`, `adivinhas`, `prova` |
-| 🔄 Revisar | `pontos` e `perolas` (resumo para revisar) e variantes das questões nossas | `fases[].resumo`, `variantes` |
+| 🔄 Revisar | `pontos` (até 8) e `perolas` (até 6), enxutos, e variantes das questões nossas; `fichas` por tema para a "Revisar a fundo" | `fases[].resumo`, `variantes`, `fichas` |
+
+**Nada repetido:** cada conceito aparece no máximo 2 a 3 vezes no material da fase (artigo + mapa mental + associações + pontos + pérolas). Só o que é muito importante e difícil de memorizar pode reaparecer (até 4 vezes); liste esses termos em `resumo.reforcar`.
 
 Formato dos campos novos (todos opcionais para o app, mas obrigatórios para esta skill quando se aplicam):
 
@@ -160,7 +164,7 @@ Se encontrar, reescreva a questão do zero a partir do conceito, não a partir d
 
 ## 5. Relatório final (mostre antes de salvar)
 
-Ao terminar uma matéria, apresente:
+Rode antes `node scripts/conferir-trilha.mjs data/trilhas/<trilha>.json`: zero ERRO, e cada AVISO lido (corrija ou explique no relatório). Ao terminar uma matéria, apresente:
 - Tabela de cobertura: quantos temas da matriz foram cobertos, e com que peso.
 - Quantas questões/cartas foram criadas, por tipo e por fase.
 - Lista de itens marcados `"revisar"` (fatos específicos pendentes de checagem humana).

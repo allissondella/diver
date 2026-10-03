@@ -47,6 +47,8 @@
 - [ ] Tem exemplo do dia a dia brasileiro (real, centavo, ônibus, feira, Pix)?
 - [ ] Nada infantil, nada de culpa, nada de inglês desnecessário?
 - [ ] Nenhuma frase veio de referência de terceiro (`criar-trilha`, seção 4)?
+- [ ] Padrão de qualidade da seção 7: termos técnicos da área, Aprender completo, revisão enxuta, nada repetido mais de 3 vezes, ~20 questões por fase do fácil ao difícil, todas as alternativas comentadas, Dica de mergulhador e fichas por tema?
+- [ ] `node scripts/conferir-trilha.mjs` sem erros (e os avisos lidos um a um)?
 
 ## 5. Gosto do usuário (vale para todos os cursos)
 
@@ -54,6 +56,7 @@
 - 2026-10-02 · Tudo o que o aluno lê em **português**; nada de jargão em inglês.
 - 2026-10-03 · O Professor Diver **estuda a referência, entende e conta do nosso jeito**: divertido, fácil de aprender e de memorizar. Depois o conteúdo vai para a Fila de Validação com as outras IAs.
 - 2026-10-03 · Antes de cada fase, um **artigo** com textos claros e simples, mapa mental, imagens de associação, linha do tempo e mapas (geográficos ou do corpo) quando se aplicam. Caminho: Aprender → Associar → Praticar → Desafio → Revisar.
+- 2026-10-03 · As anotações da professora Georgia (seção 7) valem **para todos os cursos, sempre**.
 
 ## 6. Lições gerais (de qualquer curso)
 
@@ -64,3 +67,19 @@
 | 2026-10-02 | Palavrinha | Palavra do jogo só se estiver no dicionário brasileiro do projeto; nada de palavrão nem ofensa pesada. |
 | 2026-10-03 | Travessia e Radiologia MSK | A resposta certa não pode ser de longe a alternativa mais longa: alongue as erradas (o script de conferência avisa). |
 | 2026-10-03 | Radiologia MSK | Anotações de aula podem trazer erro (ex.: "AR é proliferação neoplásica da sinóvia"); o professor confere o fato antes de usar. |
+| 2026-10-03 | Revisão da Georgia (MSK) | Simplificar demais atrapalha: "brilha em T1" vira "hipersinal em T1"; "geodo" vira "cisto subcondral". Aprender completo, resto enxuto, sem repetir conceito, ~20 questões por fase e comentário em todas as alternativas (seção 7). |
+
+## 7. Padrão de qualidade (revisão da professora Georgia, radiologista, 2026-10-03)
+
+Vale para **todos os cursos**. O script `node scripts/conferir-trilha.mjs data/trilhas/<trilha>.json` confere o que dá para medir; o resto é checklist do professor.
+
+1. **Linguagem técnica da área, sem simplificar demais.** Simplificar ajuda até o ponto em que atrapalha a prova. Em Radiologia: **hiperintenso/hipersinal** (RM), **hiperdenso** (TC), **hiperecogênico** (US) e os opostos, nunca "brilha", "acende", "escuro" ou "apagado"; **realce/captação**; **supressão/saturação de gordura**; **cisto subcondral**, nunca "geodo". Em outras áreas, o termo que cai na prova (o leigo pode vir entre parênteses, uma vez).
+2. **📚 Aprender completo:** um resumo detalhado da aula (o que a aula ensina, com os achados, critérios e números que caem), não um teaser. Referência: 350 palavras ou mais por fase.
+3. **🧠 Associar e 🔄 Revisar enxutos:** mapa mental, associações, pontos-chave (até 8) e pérolas (até 6) trazem **só o mais importante, de forma resumida**.
+4. **Associe para lembrar = o difícil de decorar:** as associações servem para os pontos de difícil memorização (ex.: osteófito em gancho nas cabeças do 2º e 3º metacarpos → hemocromatose), não para o óbvio.
+5. **Nada de repetição:** cada conceito aparece no máximo 2 a 3 vezes no material da fase. Só repete (e no máximo 4) o que é muito importante e difícil de assimilar; esses vão em `resumo.reforcar`.
+6. **Fixação que cobre a aula toda:** cerca de **20 questões por fase**, cobrindo a maior parte do conteúdo da aula e temas correlatos; nada de várias questões sobre o mesmo ponto.
+7. **Ordem fácil → médio → difícil:** a fase começa pelas fáceis e termina nas avançadas, que fixam o que é difícil de memorizar e o que mais cai em prova (o app já monta assim; a skill garante a proporção, com difíceis suficientes no fim).
+8. **Comentário de todas as alternativas:** além da explicação da certa, `comentarios` com um comentário por alternativa (por que cada errada está errada), objetivo e curto. **A "Dica de mergulhador" continua** no fim da explicação.
+9. **Revisar a fundo:** cada tema com 3 ou mais questões ganha uma `ficha` (resumo aprofundado do assunto + pontos + pegadinhas), que aparece na Revisão para quem errou aquele tema.
+
