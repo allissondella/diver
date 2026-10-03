@@ -52,6 +52,16 @@ Se, mesmo tentando, a questão resistir, responda apenas "RESISTIU". Caso contr�
 - **Camada 2 (lógica) reprovou:** reescreva a questão do zero — um problema de lógica geralmente indica que a base da questão está mal construída, um remendo tende a não resolver.
 - **Reprovou de novo na segunda tentativa:** pare de tentar corrigir com IA. Marque `"revisar_humano": true` no JSON e remova a questão do conjunto que vai para a trilha até haver revisão manual. Relate isso no resumo final — não é falha do processo, é o processo funcionando.
 
+## 3.1 O caderno aprende com a validação
+
+Depois que o resultado é baixado (`fila.mjs baixar` ou `fila.mjs aplicar`), leia o bloco `validacao` das questões que **não** passaram de primeira e transforme cada falha num **tipo de erro** e num **como evitar**, por exemplo: "distrator também defensável quando a questão não diz se o juro é simples ou composto → sempre dizer o regime no enunciado".
+
+1. Mostre a lista ao usuário como **"O que vou anotar no caderno"**.
+2. Com o OK, grave na tabela "Lições da validação" de `docs/cadernos/<id-da-trilha>.md` (data, id do lote, tipo de erro, como evitar). Lição que vale para qualquer curso vai também para a seção 6 de `docs/cadernos/professor-diver.md`.
+3. Anote o tipo do erro, nunca a questão reprovada inteira nem resposta de IA copiada (`docs/cadernos/LEIA-ME.md`, seção 3).
+
+Assim a `criar-trilha` lê essas lições antes do próximo lote e o mesmo erro não volta.
+
 ## 4. Rodando sobre uma trilha já existente (validação retroativa)
 
 Quando pedido para validar retroativamente (por exemplo, o lote gerado antes desta skill existir), rode as duas camadas em todas as questões do arquivo indicado, sem precisar gerar nada novo. Produza o mesmo relatório final da seção 5.
@@ -63,3 +73,4 @@ Quando pedido para validar retroativamente (por exemplo, o lote gerado antes des
 - Quantas foram corrigidas e revalidadas com sucesso.
 - Quantas ficaram marcadas `revisar_humano` (com o motivo de cada uma).
 - Custo estimado desta rodada (baseado em tokens usados, se o script conseguir medir).
+- As lições propostas para o caderno (seção 3.1).

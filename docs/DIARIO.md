@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-10-03 · Cadernos do Professor (memória das skills)
+- **Pedido:** a skill tem que aprender, como um professor: consome a referência, deixa com a nossa cara (divertido, fácil de aprender e de memorizar), cria o conteúdo autoral e no fim a gente valida na fila com as outras IAs. E aprender com vídeos do YouTube.
+- **Feito:** `docs/cadernos/` com `LEIA-ME.md` (ciclo, o que pode e não pode entrar, modelo, vídeos pela transcrição), `professor-diver.md` (jeito Diver de ensinar, checklist "cara de Diver", gosto e lições gerais) e o primeiro caderno de curso, `enem-vestibular.md`. Skills: `criar-trilha` abre o caderno, estuda como professor (2.0) e fecha o caderno (6); `garimpo` lê vídeo pela transcrição e avisa o caderno do curso; `validar-questoes` transforma reprovações em lições (3.1). `docs/MOTOR_DIVER.md` seção 13.
+- **Decisões:** a memória mora em arquivos (o ambiente é apagado a cada sessão); a skill sempre mostra "O que vou anotar no caderno" e só grava com OK; no caderno só entram conclusões nossas. O link do YouTube é bloqueado pela rede deste ambiente: o caminho garantido é colar a transcrição.
+- **Pendências:** passar o `garimpo` na pasta Garimpo quando ela estiver no Google Drive.
+
 ## 2026-10-02 · Pit Stop Mental na Sala de Descompressão
 - **Pedido:** minigame de reflexo e cálculo no box de uma equipe de corrida: 4 contas com x por pit stop (uma por roda), tempo base com desconto por rapidez e penalidade por erro, recorde/rápido/lento contra o rival, combo com box sincronizado, fases cada vez mais difíceis e resumo educativo.
 - **Feito:** `js/descompressao/pitstop.js` com o box em SVG nosso (sem marcas de categorias de corrida), mecânicos animados, semáforo, cronômetro e rival; gerador de contas em 5 faixas com passo a passo; modos Alternativas e Digitar (×1,5); resumo com tempo de cada roda e contas erradas resolvidas. Placar vale o recorde (`ranking_sala` com `sala-pitstop`). No celular, a conta fica em cima e o box embaixo.

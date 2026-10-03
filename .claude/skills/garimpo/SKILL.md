@@ -9,7 +9,9 @@ Leia `docs/CONTEUDO_CURSINHO.md` (seção de direitos autorais) antes de classif
 
 ## 1. Receber o material
 
-O usuário aponta um arquivo, uma pasta ou um link. Se for arquivo, leia o conteúdo. Se for link, abra e leia a página.
+O usuário aponta um arquivo, uma pasta, um link do Google Drive ou outro link. Se for arquivo, leia o conteúdo. Se for link, abra e leia a página. Antes, confira em `docs/FONTES_CATALOGADAS.md` se a fonte já foi analisada (não analise duas vezes).
+
+**Vídeo (YouTube e outros):** a leitura é pela **transcrição**. Se o link não abrir (a rede do ambiente pode bloquear `www.youtube.com`) ou a página só trouxer título e descrição, peça ao usuário a transcrição: no YouTube, "...mais" na descrição → "Mostrar transcrição" → copiar e colar no chat (ou num `.txt` no Google Drive), junto com o link e o nome do canal. Passo a passo e regras: seção 5 de `docs/cadernos/LEIA-ME.md`. A transcrição nunca vai para o repositório.
 
 ## 2. Classificar
 
@@ -17,7 +19,7 @@ Escolha uma categoria:
 - **Oficial/governo** (ex.: BNCC, Inep, secretaria de educação, lei, norma).
 - **Apostila ou material de terceiro comercial** (cursinho, editora, canal pago).
 - **Matriz curricular** (lista de temas/habilidades, não conteúdo pronto para uso direto).
-- **Referência de abordagem** (vídeo, artigo, plataforma como Khan Academy) — útil para entender estrutura e didática, não para copiar.
+- **Referência de abordagem** (vídeo, artigo, plataforma como Khan Academy) — útil para entender estrutura e didática, não para copiar. Vídeo de canal oficial também cai aqui, a não ser que a licença do próprio vídeo libere o uso (confira a licença, não o nome do canal).
 - **Não identificado** — não dá para classificar com segurança.
 
 ## 3. Aplicar a regra de uso certa (decida, não pergunte, salvo exceção abaixo)
@@ -42,6 +44,10 @@ Registro de todo material de referência avaliado pela skill garimpo, para nunca
 ```
 
 Status possíveis: `Novo — aguardando decisão`, `Em uso`, `Descartado`.
+
+Na coluna "Fonte" vão título, autor/canal e link (ou caminho). Nunca cole trecho do material no catálogo.
+
+Se o usuário já disse para qual curso é a fonte, acrescente em "Próximos passos e pendências" do caderno do curso (`docs/cadernos/<id-da-trilha>.md`) uma linha "Fonte nova catalogada: <título> (<classificação>)". As conclusões de conteúdo **não** são anotadas aqui: elas nascem quando a `criar-trilha` estuda a fonte (seção 2.0 dela).
 
 ## 5. Resumir e recomendar (sempre mostrar ao usuário)
 

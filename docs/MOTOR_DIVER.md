@@ -207,3 +207,25 @@ node scripts/fila.mjs baixar <id>   → grava "validacao" nas variantes; só ent
 ```
 Custo: o mesmo de uma questão (≈ US$ 0,04 cada; 19 variantes ≈ US$ 0,70).
 
+
+## 13. Cadernos do Professor: a memória das skills (2026-10-03)
+
+O acervo guarda **o que** já criamos; os cadernos guardam **como** a gente ensina e **o que aprendemos** no caminho. A IA não lembra de uma sessão para a outra, então essa memória mora em arquivos, em `docs/cadernos/`:
+
+- `LEIA-ME.md`: o ciclo, o que pode e o que não pode entrar, o modelo de caderno e como estudar vídeos (pela transcrição).
+- `professor-diver.md`: o jeito Diver de ensinar, igual para todos os cursos (técnicas, receita de questão, checklist "cara de Diver", gosto do usuário, lições gerais).
+- `<id-da-trilha>.md`: um caderno por curso (gosto, decisões, o que as referências ensinaram, lições da validação, feito e pendente).
+
+```
+garimpo cataloga a fonte (docs/FONTES_CATALOGADAS.md)
+        ↓
+criar-trilha ABRE o caderno → estuda a fonte → cria o conteúdo autoral
+        ↓  propõe "O que vou anotar no caderno" → grava com o OK do usuário
+Fila de Validação → Mergulho Triplo (aprovação por senha)
+        ↓
+validar-questoes transforma as reprovações em "Lições da validação" (com o OK)
+        ↓
+o próximo lote já nasce sem aqueles erros
+```
+
+A regra da seção 4 continua valendo: o caderno guarda **conclusões escritas por nós**, nunca trecho, transcrição ou exercício de terceiro.

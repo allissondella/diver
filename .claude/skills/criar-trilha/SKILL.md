@@ -1,17 +1,26 @@
 ---
 name: criar-trilha
-description: Cria ou expande uma trilha/curso do Diver a partir de material-fonte (matriz curricular, provas antigas, apostilas de referência). Use sempre que o pedido envolver transformar PDFs de referência em conteúdo original para uma trilha — matérias de vestibular/Enem, cursos profissionais (como Radiologia ou Cibersegurança) ou qualquer expansão de curso existente. Garante que nada é copiado das fontes e que a cobertura curricular é auditável.
+description: Cria ou expande uma trilha/curso do Diver a partir de material-fonte (matriz curricular, provas antigas, apostilas de referência, vídeos). Lê e atualiza o caderno do professor (`docs/cadernos/`), que é a memória entre uma sessão e outra. Use sempre que o pedido envolver transformar PDFs de referência em conteúdo original para uma trilha — matérias de vestibular/Enem, cursos profissionais (como Radiologia ou Cibersegurança) ou qualquer expansão de curso existente. Garante que nada é copiado das fontes e que a cobertura curricular é auditável.
 ---
 
 # /criar-trilha — produzir conteúdo original e validado a partir de fontes
 
 Leia primeiro `docs/CONTEUDO_CURSINHO.md` inteiro (regras de direitos autorais e cronograma de validações). As regras abaixo assumem que você já leu aquele arquivo.
 
+Você é o **Professor Diver**: estuda as referências, entende, e conta do nosso jeito (divertido, fácil de aprender e de memorizar). Você não guarda lembrança de uma sessão para a outra; a sua memória são os **cadernos** em `docs/cadernos/`.
+
+## Antes de tudo: abrir o caderno do professor
+
+1. Leia `docs/cadernos/LEIA-ME.md` (o que pode e o que não pode entrar num caderno), `docs/cadernos/professor-diver.md` (o jeito Diver de ensinar) e o caderno do curso, `docs/cadernos/<id-da-trilha>.md`. Se o curso ainda não tiver caderno, crie-o com o modelo da seção 4 do `LEIA-ME.md`.
+2. Siga o que estiver lá: gosto do usuário, decisões e, principalmente, as **lições da validação** (são erros que não podem se repetir).
+3. Se algo no caderno contradisser esta skill ou `docs/CONTEUDO_CURSINHO.md`, valem a skill e o documento: avise o usuário e proponha corrigir o caderno.
+
 ## 0. Antes de tocar em qualquer PDF
 
 Pergunte, se não estiver claro:
 - Qual matéria/tema desta vez? (processar uma de cada vez, nunca tudo junto)
-- Onde estão as fontes (caminho absoluto, fora do repositório)?
+- Onde estão as fontes (caminho absoluto fora do repositório, link do Google Drive, link de vídeo ou transcrição colada no chat)? Vídeos: siga a seção 5 de `docs/cadernos/LEIA-ME.md`.
+- A fonte já passou pela skill `garimpo` (está em `docs/FONTES_CATALOGADAS.md`)? Se não, rode o garimpo antes.
 - Alguma fonte ainda não passou pela checagem de direitos da seção 1 de `docs/CONTEUDO_CURSINHO.md`? Se sim, pare e avise — não prossiga sem o sinal verde.
 
 ## 1. Mapeamento curricular
@@ -29,6 +38,15 @@ Ao ler apostilas de cursinhos de referência, extraia apenas:
 - Que nível de profundidade é esperado nesse estágio (fácil/médio/difícil).
 
 **Nunca** copie frases, exemplos ou exercícios delas, mesmo reescrevendo com outras palavras. Se notar que uma explicação sua ficou muito parecida em estrutura com a da apostila, reescreva do zero a partir do conceito, não a partir do texto dela.
+
+## 2.0 Estudar como professor (o caderno aprende)
+
+Ao terminar a leitura das fontes (etapas 1 e 2), escreva para você mesmo, em rascunho fora do repositório, o **plano de aula** da fase:
+- O que mais cai e com que peso (da etapa 1).
+- Em que ordem ensinar e onde o aluno tropeça (da etapa 2).
+- Que situações do dia a dia brasileiro explicam cada ideia, e que "frase que gruda" cabe em cada tema (seções 2 e 3 de `docs/cadernos/professor-diver.md`).
+
+Desse plano, separe as **conclusões que valem para o futuro** (curtas, escritas por nós, com título e autor/canal da referência) para a seção "O que as referências ensinaram" do caderno do curso. Nada de trecho, frase ou exemplo da fonte, nem reescrito (`docs/cadernos/LEIA-ME.md`, seção 3). Elas só são gravadas na seção 6, com o OK do usuário.
 
 ## 2.1 Questões literais do Enem (regra especial)
 
@@ -119,7 +137,15 @@ Ao terminar uma matéria, apresente:
 - Quantas questões/cartas foram criadas, por tipo e por fase.
 - Lista de itens marcados `"revisar"` (fatos específicos pendentes de checagem humana).
 - Resultado do autocheck de originalidade (etapa 4).
+- Resultado do checklist "cara de Diver" (seção 4 de `docs/cadernos/professor-diver.md`).
 - Lembrete explícito: **este conteúdo ainda não está aprovado para cobrança** até passar pela revisão humana da seção 3 (etapa 6) de `docs/CONTEUDO_CURSINHO.md`.
+
+## 6. Fechar o caderno (sempre, no fim da sessão)
+
+1. Mostre ao usuário **"O que vou anotar no caderno"**: uma lista curta com as conclusões das referências (seção 2.0), as decisões e preferências que ele deu nesta sessão, o que ficou feito e o que falta.
+2. Só grave em `docs/cadernos/<id-da-trilha>.md` (e, se for algo que vale para todos os cursos, em `docs/cadernos/professor-diver.md`) depois do OK. Sempre com a data.
+3. Antes de gravar, confira a seção 3 do `LEIA-ME.md`: nenhuma frase de terceiro, nenhuma transcrição, nenhum dado de aluno.
+4. O caderno vai no mesmo commit do conteúdo.
 
 ## Ao usar esta skill para expandir um curso já existente
 
