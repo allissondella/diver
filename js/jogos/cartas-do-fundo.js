@@ -4,6 +4,7 @@
  * Alimenta as caixas de Leitner (1 a 5): Sabia sobe, Quase mantém, Não sabia volta à 1.
  * Só "Sabia" conta como acerto; "Não sabia" vai para a Revisão.
  * Teclado: Espaço vira; 1, 2 e 3 avaliam.
+ * opcoes.fase: só as cartas daquela fase (vindo do fim do Mergulho). Com menos de 4, usa a trilha toda.
  */
 Jogos.registrar({
   id: 'cartas-do-fundo',
@@ -19,7 +20,8 @@ Jogos.registrar({
     const quantidade = ctx.opcoes.quantidade || 10;
     const leitner = ctx.prog.leitner || (ctx.prog.leitner = {});
     // Caixas menores primeiro: o que você sabe menos aparece antes
-    const fila = UI.embaralhar(ctx.cartas.flash)
+    const daFase = ctx.opcoes.fase ? ctx.cartas.flash.filter((c) => c.fase === ctx.opcoes.fase) : [];
+    const fila = UI.embaralhar(daFase.length >= 4 ? daFase : ctx.cartas.flash)
       .sort((a, b) => (leitner[a.id] || 1) - (leitner[b.id] || 1))
       .slice(0, quantidade);
     const detalhes = [];

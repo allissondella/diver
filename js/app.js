@@ -1166,7 +1166,8 @@ const App = (() => {
     estado.subiuNivel = null;
     estado.jogo = { def, opcoes, desafio, controlador: null, fim: false };
     $('jogo-titulo').textContent = def.nome;
-    $('jogo-rotulo').textContent = desafio ? 'Desafio do Dia · XP em dobro' : estado.trilha.nome;
+    const faseFlash = opcoes.fase && estado.trilha.fases.find((f) => f.id === opcoes.fase);
+    $('jogo-rotulo').textContent = desafio ? 'Desafio do Dia · XP em dobro' : faseFlash ? `${estado.trilha.nome} · ${faseFlash.nome}` : estado.trilha.nome;
     $('tela-jogo').classList.toggle('tela--larga', !!def.largo); // ex.: Caso Resolvido (painel + log ao lado)
     const container = limpar($('jogo-palco'));
     mostrarTela('tela-jogo');
@@ -1230,7 +1231,7 @@ const App = (() => {
       if (d.acertou) temas[d.tema].acertos++;
     });
     renderizarResumo({
-      modo: 'jogo', jogo: partida.def, titulo: res.titulo, sub: res.subtitulo, desafio: partida.desafio, textoDeNovo: res.textoDeNovo,
+      modo: 'jogo', jogo: partida.def, opcoes: partida.opcoes, titulo: res.titulo, sub: res.subtitulo, desafio: partida.desafio, textoDeNovo: res.textoDeNovo,
       total: validos.length, acertos: res.acertos, pct: validos.length ? Math.round((res.acertos / validos.length) * 100) : 0,
       tempoSeg: res.tempoSegundos, porTema: Object.values(temas).sort((a, b) => a.acertos / a.total - b.acertos / b.total),
       paraRevisar: validos.filter((d) => !d.acertou),
@@ -1244,8 +1245,32 @@ const App = (() => {
     if (!estado.jogo) return;
     if (!(await UI.confirmar({ titulo: 'Sair do jogo?', texto: 'Esta partida não vale XP.', sim: 'Sair do jogo', nao: 'Continuar jogando', humor: 'triste' }))) return;
     if (!estado.jogo) return;
+    const daFase = !!(estado.jogo.opcoes && estado.jogo.opcoes.fase);
     abandonarAndamento();
-    irPara('jogos');
+    irPara(daFase ? 'mergulho' : 'jogos');
+  }
+
+  /* Flashcards da fase (fim do Mergulho → Cartas do Fundo → volta para a trilha) */
+  function flashcardsDaFase(fase) {
+    if (!fase || !estado.trilha || !Jogos.obter('cartas-do-fundo')) return 0;
+    return cartasDa(estado.trilha).flash.filter((c) => c.fase === fase.id).length;
+  }
+
+  function abrirFlashcards(fase) {
+    iniciarJogo('cartas-do-fundo', { fase: fase.id });
+  }
+
+  /** Caixa do Diver logo depois do resultado: sugere fixar a matéria com flashcards. */
+  function sugerirFlashcards(fase) {
+    setTimeout(async () => {
+      if ($('tela-resumo').hidden || document.querySelector('dialog[open]')) return;
+      const ok = await UI.confirmar({
+        titulo: 'Bora fixar com flashcards?',
+        texto: `Você acabou de mergulhar em ${fase.nome}. Agora, umas cartas rápidas dessa matéria ajudam a guardar o que caiu.\n\nQuando terminar, um botão traz você de volta para a trilha.`,
+        sim: 'Fazer flashcards', nao: 'Agora não', humor: 'feliz', foco: 'sim',
+      });
+      if (ok && !$('tela-resumo').hidden) abrirFlashcards(fase);
+    }, movimentoReduzido ? 300 : 900);
   }
 
   /* =========================================================
@@ -1520,6 +1545,7 @@ const App = (() => {
     avisarConquistas(novas);
     renderizarResumo(resumo, novas);
     mostrarTela('tela-resumo');
+    if (s.modo === 'mergulho' && motivo !== 'saiu' && flashcardsDaFase(s.fase) >= 4) sugerirFlashcards(s.fase);
   }
 
   /* =========================================================
@@ -1583,8 +1609,9 @@ const App = (() => {
     const { trilha, prog } = estado;
     const { titulo, sub } = textosResumo(r);
 
+    const faseFlash = r.modo === 'jogo' && r.opcoes && r.opcoes.fase && trilha.fases.find((f) => f.id === r.opcoes.fase);
     $('resumo-rotulo').textContent = r.modo === 'jogo'
-      ? `${r.jogo.nome} · ${trilha.nome}`
+      ? `${r.jogo.nome} · ${faseFlash ? faseFlash.nome : trilha.nome}`
       : r.fase ? `${NOMES_MODO[r.modo]} · ${r.fase.nome}` : r.titulo ? `${NOMES_MODO[r.modo]} · ${r.titulo}` : NOMES_MODO[r.modo];
     $('resumo-titulo').textContent = titulo;
     $('resumo-subtitulo').textContent = sub;
@@ -1652,7 +1679,15 @@ const App = (() => {
     const voltar = $('btn-resumo-mapa');
     principal.hidden = false;
     principal.onclick = null;
-    if (r.modo === 'jogo') {
+    const flash = $('btn-resumo-flash');
+    flash.hidden = true;
+    if (r.modo === 'jogo' && faseFlash) {
+      // Flashcards que vieram do fim do Mergulho: o caminho principal é voltar para a trilha
+      principal.textContent = 'Voltar para a trilha';
+      principal.onclick = () => irPara('mergulho');
+      voltar.textContent = 'Mais cartas desta fase';
+      voltar.onclick = () => abrirFlashcards(faseFlash);
+    } else if (r.modo === 'jogo') {
       principal.textContent = r.textoDeNovo || 'Jogar de novo'; // ex.: Caso Resolvido: "Voltar às missões"
       principal.onclick = () => iniciarJogo(r.jogo.id, estado.ultimoJogoOpcoes || {});
       voltar.textContent = 'Voltar à Sala de Jogos';
@@ -1670,6 +1705,10 @@ const App = (() => {
       }
       voltar.textContent = 'Voltar ao mapa';
       voltar.onclick = () => irPara('mergulho');
+      if (r.motivo !== 'saiu' && flashcardsDaFase(r.fase) >= 4) {
+        flash.hidden = false;
+        flash.onclick = () => abrirFlashcards(r.fase);
+      }
     } else if (r.modo === 'prova') {
       principal.textContent = r.aprovado ? 'Ver a prova final' : 'Tentar a prova de novo';
       principal.onclick = () => (r.aprovado ? irPara('prova') : iniciarProva());

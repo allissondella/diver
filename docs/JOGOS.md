@@ -151,6 +151,7 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
 - Autoavaliação: **Sabia** (sobe uma caixa de Leitner), **Quase** (mantém), **Não sabia** (volta à caixa 1).
 - Só "Sabia" conta como acerto para XP; "Não sabia" vai para a lista de revisão.
 - Teclado: Espaço vira; 1, 2 e 3 avaliam.
+- **Depois do Mergulho (2026-10-04):** quando a rodada do Mergulho termina (fase completa ou sem oxigênio), a caixa do Diver sugere "Bora fixar com flashcards?" e o resultado ganha o botão **🃏 Fixar com flashcards**. Eles abrem o jogo com `opcoes.fase` = a fase do Mergulho: só cartas daquela fase (cada carta derivada guarda `fase`; com menos de 4, usa a trilha toda). No fim, o botão principal é **"Voltar para a trilha"** (mapa do Mergulho) e o secundário "Mais cartas desta fase"; sair no meio também volta para a trilha.
 
 #### Quiz Relâmpago (`quiz-relampago`) — semana 3
 - Múltipla escolha e V/F; cronômetro opcional por pergunta (15, 30 ou 60 s), mostrado como uma onda que vai subindo.
