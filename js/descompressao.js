@@ -100,7 +100,10 @@ const Descompressao = (() => {
               : j.diario ? h('span', { class: 'chip chip--hoje', text: 'Novo hoje' }) : null,
           h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => abrir(j.id), 'aria-label': `${feito && !j.treino ? 'Ver' : 'Jogar'} ${j.nome}` }, feito && !j.treino ? 'Ver' : 'Jogar')));
     }));
-    container.append(...[grade, placar(), ehEquipe() ? horarios() : null].filter(Boolean));
+    const verRanking = h('div', { class: 'sd-ver-ranking' },
+      h('button', { type: 'button', class: 'botao botao--secundario', id: 'sd-ver-ranking', onclick: () => abrirRanking('geral') }, icone('i-trofeu'), 'Ver ranking'),
+      h('span', { class: 'texto-suave', text: 'De cada jogo e geral, deste mês e o total.' }));
+    container.append(...[verRanking, grade, ehEquipe() ? horarios() : null].filter(Boolean));
   }
 
   function fechada() {
@@ -112,53 +115,98 @@ const Descompressao = (() => {
       h('div', { class: 'acoes-linha' }, h('a', { class: 'botao botao--primario', href: '#inicio' }, 'Bora mergulhar!')));
   }
 
-  /* ---------- Placar da sala (todo mundo junto) ---------- */
-  function placar() {
-    const filtro = { jogo: 'geral', periodo: 'mes' };
-    const lista = h('div', { class: 'pal-ranking__lista sd-placar__lista', 'aria-live': 'polite' });
-    const segmentado = (rotulo, campo, opcoes) => {
-      const grupo = h('div', { class: 'segmentado', role: 'group', 'aria-label': rotulo });
-      opcoes.forEach(([v, texto]) => grupo.append(h('button', { type: 'button', 'aria-pressed': String(filtro[campo] === v), onclick: (e) => {
-        filtro[campo] = v;
-        grupo.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === e.currentTarget)));
-        carregar();
-      } }, texto)));
-      return grupo;
-    };
-    async function carregar() {
-      if (!naNuvem()) {
-        const d = ler();
-        const linhas = jogos.filter((j) => d.recordes[j.id]).map((j) => h('li', { class: 'pal-ranking__item' },
-          h('span', { class: 'pal-ranking__pos' }, icone('i-trofeu')),
-          h('span', { class: 'pal-ranking__quem' }, h('span', { class: 'pal-ranking__nome', text: j.nome })),
-          h('span', { class: 'pal-ranking__pontos', text: `${d.recordes[j.id]} pts` })));
-        lista.replaceChildren(linhas.length ? h('ol', { class: 'pal-ranking__itens' }, linhas) : h('p', { class: 'texto-suave', text: 'Seus recordes aparecem aqui.' }),
-          h('p', { class: 'texto-suave pal-ranking__nota', text: 'Entre com sua conta para disputar o placar da turma.' }));
-        return;
-      }
-      lista.replaceChildren(h('p', { class: 'texto-suave', text: 'Contando os pontos…' }));
-      try {
-        const linhas = (await Nuvem.rpc('ranking_sala', { p_jogo: filtro.jogo, p_periodo: filtro.periodo })) || [];
-        const eu = linhas.find((l) => l.sou_eu);
-        const top = linhas.slice(0, 10);
-        if (eu && !top.includes(eu)) top.push(eu);
-        lista.replaceChildren(top.length ? h('ol', { class: 'pal-ranking__itens' }, top.map((l) => h('li', { class: `pal-ranking__item ${l.sou_eu ? 'pal-ranking__item--eu' : ''}`.trim() },
-          h('span', { class: 'pal-ranking__pos', text: `${l.posicao}º` }),
+  /* ---------- Ranking (todo mundo junto): geral ou de cada jogo, deste mês e total ---------- */
+  const REGRA = {
+    investigacao: 'Soma o melhor resultado de cada dia.',
+    palavrinha: 'Palavra do dia: o melhor de cada dia, somado. Treino livre: até 60 por dia.',
+    tiro: 'Vale o seu recorde.',
+    batata: 'Vitórias do dia (até 150 por dia) + o recorde do modo Sozinho.',
+    pitstop: 'Vale o seu recorde.',
+    cardume: 'Vale o seu recorde.',
+  };
+  const PERIODOS = [['mes', 'Este mês'], ['geral', 'Total']];
+  const MEDALHA = ['🥇', '🥈', '🥉'];
+
+  function segmentado(rotulo, opcoes, atual, aoMudar) {
+    const grupo = h('div', { class: 'segmentado', role: 'group', 'aria-label': rotulo });
+    opcoes.forEach(([v, texto]) => grupo.append(h('button', { type: 'button', 'aria-pressed': String(atual === v), onclick: (e) => {
+      grupo.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === e.currentTarget)));
+      aoMudar(v);
+    } }, texto)));
+    return grupo;
+  }
+
+  /** Enche `lista` com o ranking de um jogo (ou 'geral') no período ('mes' ou 'geral' = total). */
+  async function carregarRanking(lista, jogo, periodo) {
+    if (!naNuvem()) {
+      const d = ler();
+      const doJogo = jogos.filter((j) => (jogo === 'geral' || j.id === jogo) && d.recordes[j.id]);
+      lista.replaceChildren(doJogo.length ? h('ol', { class: 'pal-ranking__itens' }, doJogo.map((j) => h('li', { class: 'pal-ranking__item' },
+        h('span', { class: 'pal-ranking__pos' }, icone('i-trofeu')),
+        h('span', { class: 'pal-ranking__quem' }, h('span', { class: 'pal-ranking__nome', text: jogo === 'geral' ? j.nome : 'Seu recorde' })),
+        h('span', { class: 'pal-ranking__pontos', text: `${d.recordes[j.id]} pts` }))))
+        : h('p', { class: 'texto-suave', text: 'Seus recordes aparecem aqui.' }),
+      h('p', { class: 'texto-suave pal-ranking__nota', text: 'Entre com sua conta para disputar o ranking com todo mundo.' }));
+      return;
+    }
+    const vez = (lista.dataset.vez = String(Number(lista.dataset.vez || 0) + 1));
+    lista.replaceChildren(h('p', { class: 'texto-suave', text: 'Contando os pontos…' }));
+    try {
+      const linhas = (await Nuvem.rpc('ranking_sala', { p_jogo: jogo, p_periodo: periodo })) || [];
+      if (lista.dataset.vez !== vez) return; // a pessoa trocou o filtro enquanto carregava
+      const eu = linhas.find((l) => l.sou_eu);
+      const top = linhas.slice(0, 10);
+      if (eu && !top.includes(eu)) top.push(eu);
+      const quando = periodo === 'mes' ? 'neste mês' : 'no total';
+      lista.replaceChildren(
+        top.length ? h('p', { class: 'sd-ranking__eu', text: eu
+          ? `Você está em ${eu.posicao}º de ${linhas.length} ${quando}, com ${plural(eu.pontos, 'ponto', 'pontos')}.`
+          : `${plural(linhas.length, 'pessoa', 'pessoas')} no ranking ${quando}. Jogue para entrar!` }) : null,
+        top.length ? h('ol', { class: 'pal-ranking__itens' }, top.map((l) => h('li', { class: `pal-ranking__item ${l.sou_eu ? 'pal-ranking__item--eu' : ''}`.trim() },
+          h('span', { class: 'pal-ranking__pos', text: l.posicao <= 3 ? MEDALHA[l.posicao - 1] : `${l.posicao}º`, 'aria-label': `${l.posicao}º lugar` }),
           h('span', { class: 'pal-ranking__quem' }, h('span', { class: 'pal-ranking__nome', text: l.sou_eu ? `${l.nome} (você)` : l.nome })),
           h('span', { class: 'pal-ranking__pontos', text: `${l.pontos} pts` }))))
           : h('p', { class: 'texto-suave', text: 'Ninguém pontuou ainda. A primeira posição está esperando você.' }),
-        h('p', { class: 'texto-suave pal-ranking__nota', text: 'Investigação e palavra do dia: o melhor de cada dia, somado; treino da Palavrinha: até 60 por dia. Tiro ao Alvo, Pit Stop e Cardume: o recorde. Batata Quente: vitórias do dia (até 150 por dia) + o recorde do Sozinho.' }));
-      } catch (e) {
-        lista.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui carregar o placar agora.' }));
-      }
+        h('p', { class: 'texto-suave pal-ranking__nota', text: jogo === 'geral'
+          ? 'Geral: a soma de todos os jogos. Investigação e palavra do dia: o melhor de cada dia, somado; treino da Palavrinha: até 60 por dia. Tiro ao Alvo, Pit Stop e Cardume: o recorde. Batata Quente: vitórias do dia (até 150 por dia) + o recorde do Sozinho.'
+          : REGRA[jogo] || '' }));
+    } catch (e) {
+      if (lista.dataset.vez === vez) lista.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui carregar o ranking agora.' }));
     }
+  }
+
+  /** Ranking numa janela: na sala abre no geral (dá para escolher o jogo); dentro de um jogo, abre naquele jogo. */
+  function abrirRanking(id = 'geral') {
+    const def = id === 'geral' ? null : obter(id);
+    let dialogo = document.getElementById('sd-ranking');
+    if (!dialogo) {
+      dialogo = h('dialog', { id: 'sd-ranking', class: 'dialogo dialogo--estreito sd-ranking', 'aria-labelledby': 'sd-ranking-titulo' });
+      dialogo.addEventListener('keydown', (e) => e.stopPropagation()); // as teclas não chegam no jogo de trás
+      dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close(); });
+      window.addEventListener('hashchange', () => dialogo.open && dialogo.close());
+      document.body.append(dialogo);
+    }
+    const antes = document.activeElement;
+    const filtro = { jogo: id, periodo: 'mes' };
+    const lista = h('div', { class: 'pal-ranking__lista', 'aria-live': 'polite' });
+    const titulo = h('h2', { class: 'dialogo__titulo', id: 'sd-ranking-titulo', text: def ? def.nome : 'Sala de Descompressão' });
+    const carregar = () => {
+      titulo.textContent = filtro.jogo === 'geral' ? 'Sala de Descompressão' : obter(filtro.jogo).nome;
+      carregarRanking(lista, filtro.jogo, filtro.periodo);
+    };
+    const fechar = h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'));
+    dialogo.replaceChildren(h('div', { class: 'dialogo__caixa' },
+      h('header', { class: 'dialogo__topo' },
+        h('div', {}, h('span', { class: 'rotulo', text: 'Ranking de todo mundo' }), titulo),
+        fechar),
+      h('div', { class: 'dialogo__corpo pal-ranking' },
+        def ? null : segmentado('Jogo', [['geral', 'Geral'], ...jogos.map((j) => [j.id, j.curto || j.nome])], filtro.jogo, (v) => { filtro.jogo = v; carregar(); }),
+        naNuvem() ? segmentado('Período', PERIODOS, filtro.periodo, (v) => { filtro.periodo = v; carregar(); }) : null,
+        lista)));
+    dialogo.addEventListener('close', () => { if (antes && antes.isConnected && antes.focus) antes.focus({ preventScroll: true }); }, { once: true });
+    dialogo.showModal();
+    fechar.focus({ preventScroll: true });
     carregar();
-    return h('section', { class: 'cartao pal-ranking sd-placar', id: 'sd-placar', 'aria-labelledby': 'sd-placar-titulo' },
-      h('h2', { class: 'cartao__titulo', id: 'sd-placar-titulo', text: 'Placar da sala' }),
-      naNuvem() ? h('div', { class: 'pal-ranking__filtros' },
-        segmentado('Jogo', 'jogo', [['geral', 'Geral'], ...jogos.map((j) => [j.id, j.curto || j.nome])]),
-        segmentado('Período', 'periodo', [['mes', 'Este mês'], ['geral', 'Sempre']])) : null,
-      lista);
   }
 
   /* ---------- Horários de foco (admin e professor) ---------- */
@@ -240,7 +288,8 @@ const Descompressao = (() => {
     const container = h('div', { class: `sd-jogo sd-jogo--${id}` });
     const voltar = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-voltar', onclick: () => sairDoJogo() }, icone('i-voltar'), 'Sala');
     tela.classList.add('sd--jogando');
-    tela.replaceChildren(h('div', { class: 'sd-barra' }, voltar, h('h1', { class: 'sd-barra__titulo', tabindex: '-1', text: def.nome })), container);
+    const ranking = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-barra__ranking', id: 'sd-ranking-botao', onclick: () => abrirRanking(id), 'aria-label': `Ranking de ${def.nome}` }, icone('i-trofeu'), h('span', { class: 'sd-barra__ranking-texto', text: 'Ranking' }));
+    tela.replaceChildren(h('div', { class: 'sd-barra' }, voltar, h('h1', { class: 'sd-barra__titulo', tabindex: '-1', text: def.nome }), ranking), container);
     document.body.classList.add('modo-foco');
     window.scrollTo(0, 0);
     tela.querySelector('h1').focus({ preventScroll: true });
@@ -293,5 +342,5 @@ const Descompressao = (() => {
     Tutorial.fechar(false);
   }
 
-  return { registrar, render, abrir, parar, emAndamento, nome, hash, aleatorio, lista: () => [...jogos] };
+  return { registrar, render, abrir, abrirRanking, parar, emAndamento, nome, hash, aleatorio, lista: () => [...jogos] };
 })();
