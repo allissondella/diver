@@ -280,3 +280,16 @@ _Cruzadinha Submarina e Batalha de Turmas ao vivo ficam para depois do lançamen
 - **Modos:** Alternativas (4 opções, teclas 1 a 4, com pegadinhas de sinal e de ordem) ou Digitar (aceita "-" e "−"; vale ×1,5).
 - **Resumo:** tempo de cada roda, as contas erradas resolvidas passo a passo e o melhor pit stop.
 - **Pontos:** recorde 100, rápido 60, lento 20; +30 se vencer o rival; ×1,5 no Digitar. O placar guarda o recorde. Estado (modo, fase, melhor tempo) em `diver:v1:descompressao` → `jogos.pitstop`.
+
+#### Cardume (`sala-cardume`) — à vontade, vale o recorde (2026-10-04)
+- Arquivo `js/descompressao/cardume.js`. Corrida com cardume em **3D falso no `<canvas>`** (sem biblioteca): câmera atrás e acima, pista de areia flutuando no mar, névoa ao longe. Inspirado no gênero "crowd runner", com arte e nomes 100% nossos.
+- **Controle:** o Diver nada sozinho; arraste para os lados (dedo ou mouse) ou use as setas/A–D.
+- **Cardume:** Divers perdidos esperam no caminho (de frente, acenando); encostou, entram no cardume e voam para o lugar na formação (espiral). Desenhamos até 140; o número em cima do líder pode passar disso.
+- **Portais de bolha** em pares: turquesa soma (+N), amarelo multiplica (x2, x3); coral tira (−N, ÷2). Às vezes os dois são bons (dilema: +10 ou x2?). **Portal nunca baixa de 1.**
+- **Perigos:** água-viva (parada), ouriço (rola de um lado para o outro), coral giratório (varre a pista) e **pedra −N** (absorve até N Divers e quebra). Cada Diver que encosta vira bolhas. **O líder sozinho só leva um esbarrão**: a partida nunca acaba no meio do caminho.
+- **Fases de ~30 s:** 25 s de corrida (velocidade 9 → 13,5) + o chefão. Águas em rodízio: Raso, Recife, Caverna, Abismo. Chefões: Baiacu Bravo, Polvo Rei, Caranguejo de Ferro e Tubarão Martelão.
+- **Chefão:** o cardume ataca em ondas; cada Diver que chega tira vida (vale pelo grupo que representa); o chefão revida de tempos em tempos e derruba alguns. A vida dele é calibrada pelo **melhor caminho possível** da fase (34% no começo, até 62%): sempre dá para vencer. Venceu: câmera lenta, confete, baú da sorte (9 baús, 10 a 100) e próxima fase. Perdeu: fim de jogo.
+- **Pontos (só o placar da sala):** por fase vencida, 50 × fase + Divers que sobraram + pérolas pegas + baú. Fim de jogo grava o total (`ctx.pontuar`, `detalhes.fase`); sair no meio grava o que já tinha (`saiu: true`). O placar guarda o recorde.
+- **Personagens "gelatina":** desenhados uma vez em sprites (costas, frente e líder, 8 quadros de nado), com contorno turquesa, brilho de plástico, máscara amarela e snorkel coral; na hora de desenhar entram squash & stretch, pulinho, inclinação na curva e "pop" elástico ao entrar no cardume.
+- **Satisfação:** som sintetizado na hora (Web Audio, botão 🔊/🔇 guardado em `jogos.cardume.som`), pitch subindo no combo, vibração curta no celular, bolhas, estrelinhas, textos que pulam, tremida de tela. Com "reduzir movimento": sem tremida, sem câmera lenta, sem confete e menos partículas.
+- Gancho de teste só quando `window.__diverTeste` existe (`cardume.partida()`, `mover(x)`, `avancar(seg)`).

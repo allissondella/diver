@@ -343,8 +343,43 @@
 .sd-bat--boom .sd-bat__mesa { animation: sd-boom 420ms ease; }
 @keyframes sd-boom { 0% { transform: translate(0, 0); } 20% { transform: translate(-8px, 3px); } 40% { transform: translate(7px, -4px); } 60% { transform: translate(-5px, 2px); } 80% { transform: translate(3px, -1px); } 100% { transform: translate(0, 0); } }
 
+/* ---------- Cardume (corrida com cardume no <canvas>) ---------- */
+.sd-car { position: relative; width: 100%; max-width: 560px; margin: 0 auto; }
+.sd-car__palco { position: relative; width: 100%; border-radius: var(--raio); overflow: hidden; border: 1px solid var(--borda); }
+.sd-car__canvas { display: block; width: 100%; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
+.sd-car__canvas:active { cursor: grabbing; }
+.sd-car__canvas:focus { outline: none; }
+.sd-car__canvas:focus-visible { outline: 3px solid var(--amarelo); outline-offset: -3px; }
+.sd-car__hud { position: absolute; inset: var(--esp-2) var(--esp-2) auto; display: flex; align-items: center; gap: var(--esp-2); pointer-events: none; }
+.sd-car__fase, .sd-car__pontos { padding: var(--esp-1) var(--esp-3); border-radius: 999px; background: rgba(6, 23, 45, 0.6); font-weight: 800; font-size: 0.85rem; white-space: nowrap; }
+.sd-car__fase { color: var(--texto); }
+.sd-car__pontos { display: inline-flex; align-items: center; gap: var(--esp-1); color: var(--amarelo); font-family: var(--fonte-mono); font-size: 0.95rem; }
+.sd-car__barra { flex: 1; min-width: 40px; height: 10px; border-radius: 999px; background: rgba(6, 23, 45, 0.45); box-shadow: inset 0 0 0 1px rgba(230, 241, 255, 0.3); overflow: hidden; }
+.sd-car__barra > span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--turquesa), var(--turquesa-claro)); }
+.sd-car__som { pointer-events: auto; display: grid; place-items: center; min-width: 44px; min-height: 44px; border: 0; border-radius: 999px; background: rgba(6, 23, 45, 0.6); color: var(--texto); font-size: 1.1rem; cursor: pointer; }
+.sd-car__som:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+.sd-car__abertura { position: absolute; inset: 0; display: grid; place-items: center; padding: var(--esp-4); background: rgba(6, 23, 45, 0.5); overflow-y: auto; }
+.sd-car__abertura[hidden] { display: none; }
+.sd-car__cartao { display: grid; gap: var(--esp-3); width: 100%; max-width: 420px; }
+.sd-car__regras { margin: 0; padding-left: 1.2em; display: grid; gap: var(--esp-1); color: var(--texto-suave); }
+.sd-car__soma { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-1); }
+.sd-car__soma li { display: flex; justify-content: space-between; gap: var(--esp-3); color: var(--texto-suave); }
+.sd-car__soma strong { color: var(--amarelo); font-family: var(--fonte-mono); }
+.sd-car__escolha { margin: 0; font-weight: 700; }
+.sd-car__baus { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--esp-2); }
+.sd-car__bau { display: grid; place-items: center; aspect-ratio: 1; min-height: 56px; border: 2px solid rgba(250, 204, 21, 0.5); border-radius: var(--raio); background: linear-gradient(180deg, var(--superficie-2), var(--superficie)); color: var(--amarelo); cursor: pointer; transition: transform 120ms ease; }
+.sd-car__bau .icone { width: 34px; height: 34px; }
+.sd-car__bau:hover:not(:disabled) { transform: translateY(-3px) scale(1.04); }
+.sd-car__bau:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
+.sd-car__bau:disabled { cursor: default; }
+.sd-car__bau--aberto { opacity: 0.55; }
+.sd-car__bau--escolhido { opacity: 1; border-color: var(--amarelo); background: rgba(250, 204, 21, 0.18); animation: sd-pulsar 600ms ease; }
+.sd-car__bau-valor { font: 800 1.2rem var(--fonte-mono); }
+.sd-car__total { font-size: 1.1rem; }
+.sd-car__total strong { color: var(--amarelo); font-family: var(--fonte-mono); }
+
 @media (prefers-reduced-motion: reduce) {
-  .sd-tiro__regra--nova, .sd-bat__bomba-luz, .sd-bat--boom .sd-bat__mesa, .sd-bat__form--tremer { animation: none; }
+  .sd-car__bau--escolhido, .sd-tiro__regra--nova, .sd-bat__bomba-luz, .sd-bat--boom .sd-bat__mesa, .sd-bat__form--tremer { animation: none; }
   .sd-tiro__agua-barra, .sd-bat__lado { transition: none; }
   .ps-carro, .ps-pneu, .ps-braco, .ps-ok, .ps-combo__barra, .ps-cena--saindo .ps-carro, .ps-cena--saindo .ps-pneu, .ps-cena--saindo .ps-ok { transition: none; }
   .ps-roda--trocando .ps-pistola, .ps-roda--erro .ps-porca, .ps-roda--erro .ps-mec--pistola { animation: none; }

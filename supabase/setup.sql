@@ -917,7 +917,7 @@ as $$
       join public.perfis p on p.id = e.aluno_id and p.ativo
      where (select ok from pode)
        and e.tipo = 'jogo_concluido' and e.curso_id is null
-       and e.detalhes ->> 'jogo' in ('sala-investigacao', 'sala-palavrinha', 'sala-tiro', 'sala-batata', 'sala-pitstop')
+       and e.detalhes ->> 'jogo' in ('sala-investigacao', 'sala-palavrinha', 'sala-tiro', 'sala-batata', 'sala-pitstop', 'sala-cardume')
        and (p_periodo = 'geral' or to_char(e.criado_em at time zone 'America/Sao_Paulo', 'YYYY-MM') = to_char(now() at time zone 'America/Sao_Paulo', 'YYYY-MM'))
   ),
   por_dia as (
@@ -926,7 +926,7 @@ as $$
       from ev group by aluno_id, jogo, dia
   ),
   por_jogo as (
-    select aluno_id, jogo, case when jogo in ('sala-tiro', 'sala-batata-solo', 'sala-pitstop') then max(s) else sum(s) end as s
+    select aluno_id, jogo, case when jogo in ('sala-tiro', 'sala-batata-solo', 'sala-pitstop', 'sala-cardume') then max(s) else sum(s) end as s
       from por_dia group by aluno_id, jogo
   ),
   placar as (
