@@ -106,7 +106,7 @@ const Tutorial = (() => {
     descompressao: [
       { desenho: 'diver', titulo: 'Sala de Descompressão', texto: 'Respira, Diver! Aqui é só para brincar e distrair, sem matéria. Vale para todo mundo, de qualquer curso.' },
       { alvo: '#sd-jogos', desenho: 'controle', titulo: 'Os jogos', texto: 'Investigação e Palavrinha do Dia mudam todo dia (e são iguais para todo mundo). Tiro ao Alvo, Batata Quente, Pit Stop e Cardume são à vontade.' },
-      { alvo: '#sd-placar', desenho: 'trofeu', titulo: 'Placar da sala', texto: 'Os pontos daqui valem só este placar: nada de XP ou pérolas dos cursos. Ele zera todo mês.' },
+      { alvo: '#sd-ver-ranking', desenho: 'trofeu', titulo: 'Ranking', texto: 'Cada jogo tem o seu ranking com todo mundo, deste mês e o total (e tem o geral). Os pontos daqui valem só o ranking da sala: nada de XP ou pérolas dos cursos.' },
       { alvo: '#sd-horarios', desenho: 'relogio', titulo: 'Horários de foco', texto: 'Você pode fechar a sala para os alunos em horários de estudo. Admin e professores continuam entrando.' },
     ],
     perfil: [
@@ -118,7 +118,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};
