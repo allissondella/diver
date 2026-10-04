@@ -2,13 +2,20 @@
  * Cardume (Sala de Descompressão) — corrida com cardume, em 3D falso no <canvas>.
  * - O Diver nada sozinho por um corredor de areia no fundo do mar; você só arrasta para os lados
  *   (dedo, mouse ou setas). Divers perdidos pelo caminho entram no cardume ao serem tocados.
- * - Portais de bolha em pares: turquesa soma ou multiplica (+7, x2, x3); coral tira (−4, ÷2). Escolha um lado.
- * - Perigos tiram gente do cardume: água-viva, ouriço que rola, coral giratório e pedra −N (absorve N e quebra).
- *   O líder sozinho só leva um esbarrão, e portal nunca baixa de 1: a partida só termina no chefão.
- * - No fim de cada fase, um chefão gigante. O cardume ataca sozinho: cada Diver que chega tira 1 de vida.
+ * - Armas d'água no chão: quem passa por cima ganha um tanque nas costas e o cardume atira sozinho
+ *   (1, 2 ou 3 jatos por tiro). A arma vale até o fim da fase.
+ * - Portais de bolha em pares: turquesa soma ou multiplica (+7, x2, x3); coral tira (−4, ÷2).
+ *   A partir da fase 2, às vezes a cor engana (verde com −20, vermelho com x2): vale o número.
+ * - Inimigos chegam o tempo todo: bando de Divers do mal, moreia, baiacu, caranguejo capanga e tubarão.
+ *   Cada um derruba tantos Divers quanto a vida dele; jato d'água tira 1 de vida.
+ * - Perigos: água-viva, ouriço que rola, coral giratório e pedra −N (absorve N e quebra).
+ * - No fim de cada fase, um chefão gigante. O cardume ataca sozinho e os jatos também acertam.
  *   Venceu? Baú da sorte e próxima fase (outro chefão, outra água). Acabou o cardume: fim de jogo.
- * - Cada fase dura uns 30 segundos (25 s de corrida + a briga com o chefão) e fica um pouco mais difícil.
- * - Pontos só do placar da sala: 50 × fase + sobreviventes + pérolas + baú. Vale o recorde.
+ * - Fases 1 e 2 ensinam (o líder sozinho só leva um esbarrão, portal nunca zera). Da fase 3 em diante
+ *   fica MUITO difícil: inimigos em dobro que perseguem o cardume, portal pode zerar, líder sozinho cai,
+ *   chefão mais forte que atira bolas e chama reforços.
+ * - Cada fase dura uns 30 segundos (25 s de corrida + a briga com o chefão).
+ * - Pontos só do placar da sala: 50 × fase + sobreviventes + pérolas + inimigos + baú. Vale o recorde.
  * Personagens "gelatina": desenhados uma vez em sprites (8 quadros), com squash & stretch na hora de desenhar.
  * Com "reduzir movimento": sem tremida de tela, sem câmera lenta e menos partículas.
  */
@@ -42,12 +49,16 @@
   ];
 
   /* =========================================================
-     SPRITES: Diver gelatina (costas, frente e líder), 8 quadros
+     SPRITES: Diver gelatina (costas, frente, líder, com tanque d'água) e o Diver do mal, 8 quadros
      ========================================================= */
   const SW = 96;
   const SH = 124;
   const Q = 2;
-  const CONTORNO = '#075E57';
+  /** Cores da gelatina: a turquesa dos nossos e a vermelha do bando do mal. */
+  const GEL = { luz: '#E6FFFA', meio: '#7CF0DC', cor: '#14B8A6', escuro: '#0A7A70', perna: '#1FC7B3', contorno: '#075E57' };
+  const GEL_MAU = { luz: '#FFE4E6', meio: '#FB7185', cor: '#DC2626', escuro: '#7F1D1D', perna: '#B91C1C', contorno: '#2A0606' };
+  let pal = GEL;
+  const TANQUES = [null, ['#E0F2FE', '#38BDF8', '#0369A1'], ['#FEF9C3', '#FACC15', '#A16207'], ['#FFE4E6', '#FB7185', '#9F1239']];
 
   function novaTela(w, hh) {
     const c = document.createElement('canvas');
@@ -59,10 +70,10 @@
   }
   function gradCorpo(g, cx, cy, r) {
     const gr = g.createRadialGradient(cx - r * 0.42, cy - r * 0.5, r * 0.08, cx, cy, r * 1.25);
-    gr.addColorStop(0, '#E6FFFA');
-    gr.addColorStop(0.22, '#7CF0DC');
-    gr.addColorStop(0.6, '#14B8A6');
-    gr.addColorStop(1, '#0A7A70');
+    gr.addColorStop(0, pal.luz);
+    gr.addColorStop(0.22, pal.meio);
+    gr.addColorStop(0.6, pal.cor);
+    gr.addColorStop(1, pal.escuro);
     return gr;
   }
   function brilho(g, x, y, rx, ry, rot, a) {
@@ -118,13 +129,13 @@
   }
   function perna(g, x, y0, y1) {
     g.lineCap = 'round';
-    g.strokeStyle = CONTORNO;
+    g.strokeStyle = pal.contorno;
     g.lineWidth = 11.5;
     g.beginPath();
     g.moveTo(x, y0);
     g.lineTo(x, y1);
     g.stroke();
-    g.strokeStyle = '#1FC7B3';
+    g.strokeStyle = pal.perna;
     g.lineWidth = 8;
     g.stroke();
   }
@@ -133,7 +144,7 @@
     g.translate(x, y);
     g.rotate(ang);
     g.fillStyle = gradCorpo(g, -2, 6, 12);
-    g.strokeStyle = CONTORNO;
+    g.strokeStyle = pal.contorno;
     g.lineWidth = 2.2;
     g.beginPath();
     g.ellipse(0, 9, 6.5, 11.5, 0, 0, TAU);
@@ -172,7 +183,7 @@
   }
   function corpo(g, cx, by) {
     g.fillStyle = gradCorpo(g, cx, by - 34, 27);
-    g.strokeStyle = CONTORNO;
+    g.strokeStyle = pal.contorno;
     g.lineWidth = 2.6;
     g.beginPath();
     g.ellipse(cx, by - 33, 22, 23.5, 0, 0, TAU);
@@ -181,7 +192,7 @@
   }
   function cabeca(g, cx, hy) {
     g.fillStyle = gradCorpo(g, cx, hy, 25);
-    g.strokeStyle = CONTORNO;
+    g.strokeStyle = pal.contorno;
     g.lineWidth = 2.6;
     g.beginPath();
     g.arc(cx, hy, 23.5, 0, TAU);
@@ -190,7 +201,7 @@
   }
 
   /** Diver de costas (o cardume e o líder). f: 0..1 do ciclo de nado. */
-  function diverCostas(g, f, lider) {
+  function diverCostas(g, f, lider, nivel) {
     const cx = SW / 2;
     const by = SH - 10;
     const k = Math.sin(f * TAU);
@@ -201,6 +212,7 @@
     braco(g, cx - 22, by - 43, 0.55 + k * 0.45);
     braco(g, cx + 22, by - 43, -0.55 + k * 0.45);
     corpo(g, cx, by);
+    if (nivel) tanque(g, cx, by, nivel);
     const hy = by - 65;
     cabeca(g, cx, hy);
     // tira da máscara, por trás da cabeça
@@ -224,22 +236,24 @@
     retRed(g, cx - 5, hy + 5, 10, 7, 2.5);
     g.fill();
     g.restore();
-    g.strokeStyle = CONTORNO;
+    g.strokeStyle = pal.contorno;
     g.lineWidth = 2.6;
     g.beginPath();
     g.arc(cx, hy, 23.5, 0, TAU);
     g.stroke();
     snorkel(g, cx + 18, hy + 4, cx + 30, hy - 12, cx + 22, hy - 34, lider ? '#FDE047' : '#FACC15');
+    if (nivel) bicoArma(g, cx, by, nivel);
     brilho(g, cx - 9, hy - 12, 7.5, 4.2, -0.5, 0.8);
     brilho(g, cx - 15, hy - 3, 2.2, 2.2, 0, 0.6);
     brilho(g, cx - 10, by - 43, 5, 8, -0.3, 0.32);
     if (lider) {
+      const ey = nivel ? by - 15 : by - 33;
       g.save();
       g.shadowColor = 'rgba(250, 204, 21, 0.9)';
       g.shadowBlur = 6;
-      estrela(g, cx, by - 33, 8.5, '#FACC15');
+      estrela(g, cx, ey, nivel ? 6.5 : 8.5, '#FACC15');
       g.restore();
-      estrela(g, cx - 1, by - 34, 3, '#FEF9C3');
+      estrela(g, cx - 1, ey - 1, nivel ? 2.4 : 3, '#FEF9C3');
     }
   }
 
@@ -306,6 +320,137 @@
     brilho(g, cx - 10, hy - 17, 6, 3, -0.4, 0.75);
   }
 
+  /** Dois cilindros d'água nas costas; a cor mostra a arma (azul: 1 jato, amarelo: 2, coral: 3). */
+  function tanque(g, cx, by, nivel) {
+    const c = TANQUES[nivel];
+    for (const lado of [-1, 1]) {
+      const x = cx + (lado < 0 ? -15 : 3);
+      const y = by - 54;
+      const gr = g.createLinearGradient(x, 0, x + 12, 0);
+      gr.addColorStop(0, c[0]);
+      gr.addColorStop(0.45, c[1]);
+      gr.addColorStop(1, c[2]);
+      g.fillStyle = gr;
+      g.strokeStyle = '#06172D';
+      g.lineWidth = 2;
+      retRed(g, x, y, 12, 36, 6);
+      g.fill();
+      g.stroke();
+      g.fillStyle = 'rgba(6, 23, 45, 0.55)';
+      g.fillRect(x + 1, y + 24, 10, 3);
+      brilho(g, x + 3.5, y + 18, 1.6, 6, 0, 0.65);
+    }
+  }
+  /** Mangueira e bico da arma d'água, por cima do ombro esquerdo, apontando para a frente. */
+  function bicoArma(g, cx, by, nivel) {
+    const c = TANQUES[nivel];
+    g.lineCap = 'round';
+    g.strokeStyle = '#06172D';
+    g.lineWidth = 6.5;
+    g.beginPath();
+    g.moveTo(cx - 13, by - 42);
+    g.quadraticCurveTo(cx - 31, by - 44, cx - 29, by - 66);
+    g.stroke();
+    g.strokeStyle = c[1];
+    g.lineWidth = 3.6;
+    g.stroke();
+    g.fillStyle = c[1];
+    g.strokeStyle = '#06172D';
+    g.lineWidth = 1.8;
+    retRed(g, cx - 33.5, by - 82, 9, 17, 3.5);
+    g.fill();
+    g.stroke();
+    g.fillStyle = '#E0F2FE';
+    g.beginPath();
+    g.arc(cx - 29, by - 82, 2.5, 0, TAU);
+    g.fill();
+    brilho(g, cx - 31, by - 76, 1.2, 4, 0, 0.6);
+  }
+
+  /** Diver do mal (o bando vermelho que vem de frente): máscara de bandido, olhos acesos, sobrancelha em V e dentes. */
+  function diverMau(g, f) {
+    pal = GEL_MAU;
+    const cx = SW / 2;
+    const by = SH - 10;
+    const k = Math.sin(f * TAU);
+    perna(g, cx - 10, by - 22, by - 6 - k * 2);
+    perna(g, cx + 10, by - 22, by - 6 + k * 2);
+    braco(g, cx - 22, by - 50, 2.6 + k * 0.3); // punhos erguidos
+    braco(g, cx + 22, by - 50, -2.6 + k * 0.3);
+    corpo(g, cx, by);
+    const hy = by - 65;
+    // moicano espetado
+    g.fillStyle = '#111827';
+    g.strokeStyle = pal.contorno;
+    g.lineWidth = 1.5;
+    g.beginPath();
+    g.moveTo(cx - 13, hy - 18);
+    for (let i = 0; i < 5; i++) {
+      const x = cx - 11 + i * 5.5;
+      g.lineTo(x, hy - 35 - (i === 2 ? 5 : 0) + Math.sin(f * TAU + i) * 1.5);
+      g.lineTo(x + 2.75, hy - 20);
+    }
+    g.lineTo(cx + 13, hy - 18);
+    g.closePath();
+    g.fill();
+    g.stroke();
+    cabeca(g, cx, hy);
+    // máscara de bandido
+    g.fillStyle = '#1C0505';
+    g.beginPath();
+    g.moveTo(cx - 24, hy - 11);
+    g.quadraticCurveTo(cx, hy - 4, cx + 24, hy - 11);
+    g.lineTo(cx + 23, hy + 4);
+    g.quadraticCurveTo(cx, hy + 9, cx - 23, hy + 4);
+    g.closePath();
+    g.fill();
+    for (const lado of [-1, 1]) {
+      const ox = cx + lado * 15;
+      const ix = cx + lado * 3.5;
+      g.save();
+      g.shadowColor = 'rgba(250, 204, 21, 0.95)';
+      g.shadowBlur = 6;
+      g.fillStyle = '#FDE047';
+      g.beginPath();
+      g.moveTo(ix, hy - 2);
+      g.lineTo(ox, hy - 7);
+      g.quadraticCurveTo(cx + lado * 11, hy + 5, ix, hy - 2);
+      g.fill();
+      g.restore();
+      g.fillStyle = '#7F1D1D';
+      g.beginPath();
+      g.ellipse(cx + lado * 8.5, hy - 2.5, 1.4, 2.6, 0, 0, TAU);
+      g.fill();
+      g.strokeStyle = '#000000';
+      g.lineWidth = 3.8;
+      g.lineCap = 'round';
+      g.beginPath();
+      g.moveTo(cx + lado * 19, hy - 15);
+      g.lineTo(cx + lado * 2.5, hy - 7);
+      g.stroke();
+    }
+    // sorriso malvado com dentes
+    g.fillStyle = '#450A0A';
+    g.beginPath();
+    g.moveTo(cx - 11, hy + 9);
+    g.quadraticCurveTo(cx, hy + 13 + k, cx + 11, hy + 9);
+    g.quadraticCurveTo(cx, hy + 21, cx - 11, hy + 9);
+    g.fill();
+    g.fillStyle = '#FFFFFF';
+    for (let i = 0; i < 5; i++) {
+      const x = cx - 8 + i * 4;
+      const y = hy + 10.5 + (i === 0 || i === 4 ? -0.6 : 0.6);
+      g.beginPath();
+      g.moveTo(x - 1.6, y);
+      g.lineTo(x, y + 3.4);
+      g.lineTo(x + 1.6, y);
+      g.fill();
+    }
+    brilho(g, cx - 9, hy - 14, 6, 3, -0.5, 0.55);
+    brilho(g, cx - 10, by - 43, 4, 7, -0.3, 0.25);
+    pal = GEL;
+  }
+
   let SPRITES = null;
   function sprites() {
     if (SPRITES) return SPRITES;
@@ -314,21 +459,50 @@
       fn(g, i / 8, ...a);
       return c;
     });
-    SPRITES = { costas: fazer(diverCostas, false), lider: fazer(diverCostas, true), frente: fazer(diverFrente) };
+    SPRITES = {
+      costas: [0, 1, 2, 3].map((n) => fazer(diverCostas, false, n)),
+      lider: [0, 1, 2, 3].map((n) => fazer(diverCostas, true, n)),
+      frente: fazer(diverFrente),
+      mau: fazer(diverMau),
+    };
     return SPRITES;
   }
-
   /* =========================================================
      FASES: geradas com semente; o chefão é calibrado pelo melhor caminho
      ========================================================= */
   const inteiro = (a, b, r) => a + Math.floor(r() * (b - a + 1));
-  const aplicar = (op, c) => (op.t === '+' ? c + op.v : op.t === 'x' ? c * op.v : op.t === '-' ? c - op.v : Math.ceil(c / op.v));
+  const aplicar = (op, c) => (op.t === '+' ? c + op.v : op.t === 'x' ? c * op.v : op.t === '-' ? c - op.v : Math.floor(c / op.v));
   const rotuloOp = (op) => ({ '+': `+${op.v}`, x: `x${op.v}`, '-': `−${op.v}`, '÷': `÷${op.v}` }[op.t]);
   const bom = (op) => op.t === '+' || op.t === 'x';
+  const DIFICIL = 3; // a partir desta fase, o jogo fica pesado de verdade
+
+  /** Inimigos: vida (= quantos pinguins derruba antes de sumir), velocidade, tamanho e pontos por abate. */
+  const INIMIGOS = {
+    mau: { vida: 1, vel: 2.4, raio: 0.36, pts: 1, nome: 'Diver do mal' },
+    moreia: { vida: 3, vel: 6.5, raio: 0.5, pts: 3, nome: 'moreia' },
+    baiacu: { vida: 5, vel: 2.8, raio: 0.62, pts: 4, nome: 'baiacu' },
+    caranguejo: { vida: 9, vel: 2.0, raio: 0.85, pts: 6, nome: 'caranguejo capanga' },
+    tubarao: { vida: 16, vel: 3.8, raio: 1.0, pts: 10, nome: 'tubarão brutamontes' },
+  };
+  /** Ritmo dos inimigos por fase: intervalo entre ondas, força, tamanho do bando, quem aparece e se persegue o cardume. */
+  function ritmoInimigos(n) {
+    if (n === 1) return { intervalo: 2.5, mult: 1, bando: [3, 4], pesos: { mau: 3, moreia: 1.2, baiacu: 0.5 }, persegue: 0, chefe: 4.5 };
+    if (n === 2) return { intervalo: 1.7, mult: 1.25, bando: [4, 7], pesos: { mau: 3, moreia: 1.5, baiacu: 1.2, caranguejo: 0.6 }, persegue: 0.5, chefe: 3.5 };
+    const k = n - DIFICIL;
+    return {
+      intervalo: Math.max(0.42, 0.95 - 0.12 * k),
+      mult: 1.7 + 0.35 * k,
+      bando: [Math.min(16, 7 + 2 * k), Math.min(26, 11 + 3 * k)],
+      pesos: { mau: 3, moreia: 2, baiacu: 1.6, caranguejo: 1.3, tubarao: 0.7 + 0.25 * k },
+      persegue: Math.min(3, 1.5 + 0.3 * k),
+      chefe: Math.max(1.3, 2.2 - 0.2 * k),
+    };
+  }
 
   function gerarFase(n, r) {
     const v = Math.min(13.5, 9 + 0.45 * (n - 1));
     const comprimento = Math.round(v * CORRIDA);
+    const dificil = n >= DIFICIL;
     const eventos = [];
     const opBom = () => {
       const s = r();
@@ -336,15 +510,24 @@
       if (s < 0.42) return { t: 'x', v: 2 };
       return { t: '+', v: inteiro(4, 7 + 3 * n, r) };
     };
-    const opRuim = () => (n >= 3 && r() < 0.3 ? { t: '÷', v: 2 } : { t: '-', v: inteiro(2, 4 + 2 * n, r) });
+    const opRuim = () => {
+      if (dificil && r() < 0.35) return { t: '÷', v: n >= 4 && r() < 0.4 ? 3 : 2 };
+      if (n === 2 && r() < 0.2) return { t: '÷', v: 2 };
+      return { t: '-', v: dificil ? inteiro(8, 12 + 4 * n, r) : inteiro(2, 4 + 2 * n, r) };
+    };
     let z = 14;
     let i = 0;
+    let nivelArma = 0;
     while (z < comprimento - 20) {
       let tipo;
       if (i === 0) tipo = 'recrutas';
-      else if (i === 1) tipo = 'portal';
+      else if (i === 1) tipo = 'arma';
+      else if (i === 2) tipo = 'portal';
       else {
-        const pesos = { recrutas: 3, portal: 3, perigo: 2 + n * 0.45, perolas: 1.4, pedra: n >= 2 ? 1 + n * 0.3 : 0 };
+        const pesos = {
+          recrutas: 3, portal: 3, perigo: 2 + n * 0.45, perolas: 1.2,
+          pedra: n >= 2 ? 1 + n * 0.3 : 0, arma: nivelArma < 3 ? 1.3 : 0,
+        };
         const total = Object.values(pesos).reduce((a, b) => a + b, 0);
         let s = r() * total;
         tipo = Object.keys(pesos).find((k) => (s -= pesos[k]) < 0) || 'portal';
@@ -359,13 +542,21 @@
           return { x: clamp(gx + Math.cos(a) * rr, -3.1, 3.1), z: z + Math.sin(a) * rr * 0.8, fase: r(), junto: false };
         });
         eventos.push({ tipo, z, gente });
+      } else if (tipo === 'arma') {
+        nivelArma += 1;
+        // nas fases difíceis a arma fica perto da beira, e às vezes com um perigo do lado
+        const x = (r() < 0.5 ? -1 : 1) * (dificil ? 2.3 + r() * 0.6 : 0.6 + r() * 1.6);
+        eventos.push({ tipo, z, x, nivel: nivelArma, pega: false });
+        if (dificil && r() < 0.6) eventos.push({ tipo: 'agua', z: z + 2.5, itens: [{ x: x * 0.55, ph: r() * TAU }] });
       } else if (tipo === 'portal') {
-        const dilema = r() < 0.35;
+        const dilema = r() < (dificil ? 0.15 : 0.35);
         const a = opBom();
         let b = dilema ? opBom() : opRuim();
         if (dilema && b.t === a.t && b.v === a.v) b = { t: '+', v: a.v + inteiro(3, 8, r) };
         const ops = r() < 0.5 ? [a, b] : [b, a];
-        eventos.push({ tipo, z, ops, feito: false });
+        // cor trocada: a placa verde mente (−20) e a vermelha ajuda (x2). Leia o número!
+        const troca = !dilema && n >= 2 && r() < (n === 2 ? 0.25 : 0.45);
+        eventos.push({ tipo, z, ops, troca, feito: false });
       } else if (tipo === 'perigo') {
         const s = r();
         if (s < 0.38) {
@@ -380,7 +571,7 @@
       } else if (tipo === 'pedra') {
         const lado = inteiro(0, 2, r);
         const faixas = [[-MEIA, -0.2], [0.2, MEIA], [-1.6, 1.6]][lado];
-        eventos.push({ tipo, z, x0: faixas[0], x1: faixas[1], n: 4 + 3 * n + inteiro(0, 4, r), quebrou: false });
+        eventos.push({ tipo, z, x0: faixas[0], x1: faixas[1], n: (dificil ? 8 : 4) + 3 * n + inteiro(0, 4, r), quebrou: false });
       } else {
         const x = (r() * 2 - 1) * 2.4;
         const dx = (r() * 2 - 1) * 0.12;
@@ -396,68 +587,152 @@
       if (e.tipo === 'portal') c = Math.max(aplicar(e.ops[0], c), aplicar(e.ops[1], c));
       c = Math.min(9999, c);
     }
-    const fator = Math.min(0.62, 0.34 + 0.06 * (n - 1));
+    const fator = n === 1 ? 0.3 : n === 2 ? 0.4 : Math.min(1, 0.7 + 0.08 * (n - DIFICIL));
     const tema = TEMAS[(n - 1) % TEMAS.length];
     const chefe = CHEFES[(n - 1) % CHEFES.length];
-    return { n, v, comprimento, eventos, melhor: c, hp: Math.max(5, Math.round(c * fator)), tema, chefe };
+    const hp = Math.max(5, Math.round(c * fator)) + (dificil ? 40 + 30 * (n - DIFICIL) : 6 * n);
+    return { n, v, comprimento, eventos, melhor: c, hp, tema, chefe, ritmo: ritmoInimigos(n), dificil };
   }
 
   /* =========================================================
-     Chefões (desenho em unidades do mundo; 1 unidade = s px)
+     Cara de mau (chefões e inimigos; desenho em unidades do mundo)
      ========================================================= */
-  function olho(g, x, y, r, olhar, bravo, lado) {
-    g.fillStyle = '#FFFFFF';
-    g.strokeStyle = '#1E293B';
-    g.lineWidth = r * 0.16;
+  /** Olho bravo: brilho vermelho em volta, íris vermelha de fenda e sobrancelha em V. lado: −1 esquerdo, 1 direito. */
+  function olhoMau(g, x, y, r, lado) {
+    const gl = g.createRadialGradient(x, y, 0, x, y, r * 2.3);
+    gl.addColorStop(0, 'rgba(248, 113, 113, 0.7)');
+    gl.addColorStop(1, 'rgba(248, 113, 113, 0)');
+    g.fillStyle = gl;
     g.beginPath();
-    g.arc(x, y, r, 0, TAU);
+    g.arc(x, y, r * 2.3, 0, TAU);
     g.fill();
-    g.stroke();
-    g.fillStyle = '#0B2545';
-    g.beginPath();
-    g.arc(x + olhar * r * 0.25, y + r * 0.2, r * 0.48, 0, TAU);
-    g.fill();
-    brilho(g, x + olhar * r * 0.25 - r * 0.18, y, r * 0.16, r * 0.16, 0, 1);
-    if (bravo) {
-      g.strokeStyle = '#0B2545';
-      g.lineWidth = r * 0.42;
-      g.lineCap = 'round';
+    const ox = x + lado * r * 1.1;
+    const ix = x - lado * r;
+    const forma = () => {
       g.beginPath();
-      g.moveTo(x - r * 1.05 * lado, y - r * 1.35);
-      g.lineTo(x + r * 0.9 * lado, y - r * 0.85);
-      g.stroke();
+      g.moveTo(ix, y - r * 0.15);
+      g.lineTo(ox, y - r * 0.8);
+      g.quadraticCurveTo(x + lado * r * 0.6, y + r * 1.05, ix, y - r * 0.15);
+      g.closePath();
+    };
+    forma();
+    g.fillStyle = '#FEF08A';
+    g.fill();
+    g.save();
+    g.clip();
+    g.fillStyle = '#DC2626';
+    g.beginPath();
+    g.arc(x + lado * r * 0.05, y - r * 0.02, r * 0.5, 0, TAU);
+    g.fill();
+    g.fillStyle = '#0F0303';
+    g.beginPath();
+    g.ellipse(x + lado * r * 0.05, y - r * 0.02, r * 0.13, r * 0.42, 0, 0, TAU);
+    g.fill();
+    g.restore();
+    forma();
+    g.strokeStyle = '#1C0303';
+    g.lineWidth = r * 0.16;
+    g.lineJoin = 'round';
+    g.stroke();
+    g.strokeStyle = '#0F0303';
+    g.lineWidth = r * 0.46;
+    g.lineCap = 'round';
+    g.beginPath();
+    g.moveTo(ox + lado * r * 0.35, y - r * 1.4);
+    g.lineTo(ix - lado * r * 0.3, y - r * 0.45);
+    g.stroke();
+  }
+  /** Boca de sorriso malvado com dentes pontudos em cima e embaixo. */
+  function bocaMa(g, x, y, w, ab, nd) {
+    const x0 = x - w / 2;
+    const x1 = x + w / 2;
+    const yc = y - ab * 0.5;
+    const qb = (u, a, b, c) => (1 - u) * (1 - u) * a + 2 * (1 - u) * u * b + u * u * c;
+    const forma = () => {
+      g.beginPath();
+      g.moveTo(x0, yc);
+      g.quadraticCurveTo(x, y + ab * 0.2, x1, yc);
+      g.quadraticCurveTo(x, y + ab * 1.7, x0, yc);
+      g.closePath();
+    };
+    forma();
+    g.fillStyle = '#3B0606';
+    g.fill();
+    g.save();
+    g.clip();
+    g.fillStyle = '#9F1239';
+    g.beginPath();
+    g.ellipse(x, y + ab * 0.9, w * 0.25, ab * 0.35, 0, 0, TAU);
+    g.fill();
+    g.fillStyle = '#F8FAFC';
+    for (let i = 0; i < nd; i++) {
+      const u0 = i / nd;
+      const u1 = (i + 1) / nd;
+      const um = (u0 + u1) / 2;
+      g.beginPath();
+      g.moveTo(qb(u0, x0, x, x1), qb(u0, yc, y + ab * 0.2, yc) - ab * 0.1);
+      g.lineTo(qb(um, x0, x, x1), qb(um, yc, y + ab * 0.2, yc) + ab * 0.55);
+      g.lineTo(qb(u1, x0, x, x1), qb(u1, yc, y + ab * 0.2, yc) - ab * 0.1);
+      g.fill();
     }
+    for (let i = 1; i < nd - 1; i++) {
+      const u0 = i / nd;
+      const u1 = (i + 1) / nd;
+      const um = (u0 + u1) / 2;
+      g.beginPath();
+      g.moveTo(qb(u0, x0, x, x1), qb(u0, yc, y + ab * 1.7, yc) + ab * 0.1);
+      g.lineTo(qb(um, x0, x, x1), qb(um, yc, y + ab * 1.7, yc) - ab * 0.45);
+      g.lineTo(qb(u1, x0, x, x1), qb(u1, yc, y + ab * 1.7, yc) + ab * 0.1);
+      g.fill();
+    }
+    g.restore();
+    forma();
+    g.strokeStyle = '#1C0303';
+    g.lineWidth = Math.max(0.03, ab * 0.12);
+    g.stroke();
   }
   function gradBola(g, x, y, r, cores) {
     const gr = g.createRadialGradient(x - r * 0.4, y - r * 0.45, r * 0.05, x, y, r * 1.2);
     cores.forEach((c, i) => gr.addColorStop(i / (cores.length - 1), c));
     return gr;
   }
+  function espinhos(g, x, y, r, qtd, giro, cor, comp = 1.3) {
+    g.fillStyle = cor;
+    for (let i = 0; i < qtd; i++) {
+      const a = (i / qtd) * TAU + giro;
+      const b = 0.5 / qtd * Math.PI;
+      g.beginPath();
+      g.moveTo(x + Math.cos(a - b) * r * 0.95, y + Math.sin(a - b) * r * 0.95);
+      g.lineTo(x + Math.cos(a) * r * comp, y + Math.sin(a) * r * comp);
+      g.lineTo(x + Math.cos(a + b) * r * 0.95, y + Math.sin(a + b) * r * 0.95);
+      g.fill();
+    }
+  }
 
   function desenharChefe(g, tipo, st) {
     const t = st.t;
     const at = st.ataque; // 0..1 golpe
     const inf = 1 + st.dano * 0.12;
+    // aura vermelha pulsando
+    const pul = 0.75 + Math.sin(t * 3) * 0.25;
+    const au = g.createRadialGradient(0, -3, 0.3, 0, -3, 5.8);
+    au.addColorStop(0, `rgba(220, 38, 38, ${(0.45 * pul).toFixed(3)})`);
+    au.addColorStop(0.55, `rgba(127, 29, 29, ${(0.25 * pul).toFixed(3)})`);
+    au.addColorStop(1, 'rgba(127, 29, 29, 0)');
+    g.fillStyle = au;
+    g.beginPath();
+    g.arc(0, -3, 5.8, 0, TAU);
+    g.fill();
     if (tipo === 'baiacu') {
       const r = 2.25 * inf * (1 + Math.sin(t * 2) * 0.03);
       const cy = -2.9 - Math.sin(t * 2) * 0.12 + at * 0.6;
-      // espinhos
-      g.fillStyle = '#92400E';
-      for (let i = 0; i < 22; i++) {
-        const a = (i / 22) * TAU + t * 0.1;
-        const b = 0.13;
-        g.beginPath();
-        g.moveTo(Math.cos(a - b) * r * 0.95, cy + Math.sin(a - b) * r * 0.95);
-        g.lineTo(Math.cos(a) * r * 1.28, cy + Math.sin(a) * r * 1.28);
-        g.lineTo(Math.cos(a + b) * r * 0.95, cy + Math.sin(a + b) * r * 0.95);
-        g.fill();
-      }
+      espinhos(g, 0, cy, r, 24, t * 0.1, '#7F1D1D', 1.32);
       for (const lado of [-1, 1]) {
         g.save();
         g.translate(lado * r * 0.95, cy + 0.2);
         g.rotate(lado * (0.4 + Math.sin(t * 9) * 0.35));
-        g.fillStyle = gradBola(g, 0, 0, 0.8, ['#FEF3C7', '#FBBF24', '#D97706']);
-        g.strokeStyle = '#92400E';
+        g.fillStyle = gradBola(g, 0, 0, 0.8, ['#FED7AA', '#EA580C', '#7C2D12']);
+        g.strokeStyle = '#450A0A';
         g.lineWidth = 0.07;
         g.beginPath();
         g.ellipse(lado * 0.45, 0, 0.7, 0.35, 0, 0, TAU);
@@ -465,30 +740,25 @@
         g.stroke();
         g.restore();
       }
-      g.fillStyle = gradBola(g, 0, cy, r, ['#FFFBEB', '#FDE047', '#F59E0B', '#B45309']);
-      g.strokeStyle = '#7C2D12';
-      g.lineWidth = 0.09;
+      g.fillStyle = gradBola(g, 0, cy, r, ['#FEF3C7', '#F59E0B', '#C2410C', '#7C2D12']);
+      g.strokeStyle = '#450A0A';
+      g.lineWidth = 0.1;
       g.beginPath();
       g.arc(0, cy, r, 0, TAU);
       g.fill();
       g.stroke();
-      brilho(g, 0, cy + r * 0.45, r * 0.62, r * 0.38, 0, 0.35);
-      for (const [px, py] of [[-1.2, -0.7], [1.0, -1.1], [-0.4, -1.5], [1.4, 0.2]]) {
-        g.fillStyle = 'rgba(146, 64, 14, 0.35)';
+      for (const [px, py] of [[-1.3, -0.9], [1.1, -1.3], [-0.3, -1.7], [1.5, 0.3], [-1.6, 0.4]]) {
+        g.fillStyle = 'rgba(69, 10, 10, 0.4)';
         g.beginPath();
-        g.arc(px * r / 2.25, cy + py * r / 2.25, 0.18, 0, TAU);
+        g.arc(px * r / 2.25, cy + py * r / 2.25, 0.2, 0, TAU);
         g.fill();
       }
-      olho(g, -0.75, cy - 0.45, 0.48, Math.sin(t), true, -1);
-      olho(g, 0.75, cy - 0.45, 0.48, Math.sin(t), true, 1);
-      g.fillStyle = '#9F1239';
-      g.beginPath();
-      g.ellipse(0, cy + 0.65, 0.32 + at * 0.2, 0.22 + at * 0.25, 0, 0, TAU);
-      g.fill();
-      brilho(g, -r * 0.42, cy - r * 0.5, r * 0.3, r * 0.17, -0.6, 0.85);
+      olhoMau(g, -0.82, cy - 0.5, 0.5, -1);
+      olhoMau(g, 0.82, cy - 0.5, 0.5, 1);
+      bocaMa(g, 0, cy + 0.75, 1.8, 0.42 + at * 0.35, 7);
+      brilho(g, -r * 0.45, cy - r * 0.55, r * 0.26, r * 0.14, -0.6, 0.7);
     } else if (tipo === 'polvo') {
       const cy = -3.6 + Math.sin(t * 2) * 0.1;
-      // tentáculos
       for (let i = 0; i < 6; i++) {
         const base = -1.35 + i * 0.54;
         const frente = i === 2 || i === 3;
@@ -496,16 +766,16 @@
         const ergue = frente ? at * 1.8 : 0;
         const pts = [[base, cy + 1.3], [base * 1.5 + ondula, cy + 2.6 - ergue], [base * 2.2 - ondula, 0 - ergue * 1.3]];
         g.lineCap = 'round';
-        g.strokeStyle = '#9F1239';
-        g.lineWidth = 0.62;
+        g.strokeStyle = '#2E1065';
+        g.lineWidth = 0.64;
         g.beginPath();
         g.moveTo(pts[0][0], pts[0][1]);
         g.quadraticCurveTo(pts[1][0], pts[1][1], pts[2][0], pts[2][1]);
         g.stroke();
-        g.strokeStyle = '#FB7185';
-        g.lineWidth = 0.46;
+        g.strokeStyle = '#86198F';
+        g.lineWidth = 0.48;
         g.stroke();
-        g.fillStyle = '#FFE4E6';
+        g.fillStyle = '#F0ABFC';
         for (let k = 1; k <= 3; k++) {
           const u = k / 4;
           const x = (1 - u) * (1 - u) * pts[0][0] + 2 * (1 - u) * u * pts[1][0] + u * u * pts[2][0];
@@ -517,21 +787,22 @@
       }
       const rx = 2.15 * inf;
       const ry = 2.05 * inf;
-      g.fillStyle = gradBola(g, 0, cy, rx, ['#FFF1F2', '#FDA4AF', '#F43F5E', '#9F1239']);
-      g.strokeStyle = '#881337';
-      g.lineWidth = 0.09;
+      g.fillStyle = gradBola(g, 0, cy, rx, ['#F5D0FE', '#C026D3', '#701A75', '#2E1065']);
+      g.strokeStyle = '#1E0838';
+      g.lineWidth = 0.1;
       g.beginPath();
       g.ellipse(0, cy, rx, ry, 0, 0, TAU);
       g.fill();
       g.stroke();
       for (const [px, py, pr] of [[-1.1, -1.0, 0.24], [0.9, -1.3, 0.18], [1.35, -0.2, 0.2], [-1.5, 0.1, 0.14]]) {
-        g.fillStyle = 'rgba(255, 228, 230, 0.5)';
+        g.fillStyle = 'rgba(46, 16, 101, 0.45)';
         g.beginPath();
         g.arc(px, cy + py, pr, 0, TAU);
         g.fill();
       }
-      olho(g, -0.72, cy + 0.15, 0.5, Math.sin(t * 0.8), true, -1);
-      olho(g, 0.72, cy + 0.15, 0.5, Math.sin(t * 0.8), true, 1);
+      olhoMau(g, -0.75, cy - 0.1, 0.52, -1);
+      olhoMau(g, 0.75, cy - 0.1, 0.52, 1);
+      bocaMa(g, 0, cy + 1.0, 1.35, 0.34 + at * 0.35, 6);
       // coroa
       g.fillStyle = gradBola(g, 0, cy - ry - 0.3, 0.9, ['#FEF9C3', '#FACC15', '#B45309']);
       g.strokeStyle = '#854D0E';
@@ -547,14 +818,14 @@
       g.closePath();
       g.fill();
       g.stroke();
-      g.fillStyle = '#2DD4BF';
+      g.fillStyle = '#DC2626';
       g.beginPath();
       g.arc(0, cy - ry - 0.2, 0.13, 0, TAU);
       g.fill();
-      brilho(g, -rx * 0.42, cy - ry * 0.55, rx * 0.28, ry * 0.15, -0.5, 0.85);
+      brilho(g, -rx * 0.42, cy - ry * 0.55, rx * 0.26, ry * 0.13, -0.5, 0.6);
     } else if (tipo === 'caranguejo') {
       const cy = -2.0 + Math.sin(t * 3) * 0.06;
-      g.strokeStyle = '#3B0764';
+      g.strokeStyle = '#450A0A';
       g.lineCap = 'round';
       g.lineWidth = 0.22;
       for (const lado of [-1, 1]) {
@@ -567,43 +838,36 @@
           g.stroke();
         }
       }
-      // olhos nas antenas
       for (const lado of [-1, 1]) {
-        g.strokeStyle = '#4C1D95';
+        g.strokeStyle = '#450A0A';
         g.lineWidth = 0.16;
         g.beginPath();
         g.moveTo(lado * 0.55, cy - 1.0);
         g.lineTo(lado * 0.75, cy - 1.95);
         g.stroke();
-        olho(g, lado * 0.75, cy - 2.05, 0.38, Math.sin(t), true, lado);
+        g.fillStyle = '#1C0303';
+        g.beginPath();
+        g.arc(lado * 0.75, cy - 2.05, 0.42, 0, TAU);
+        g.fill();
+        olhoMau(g, lado * 0.75, cy - 2.05, 0.36, lado);
       }
       const rx = 2.35 * inf;
-      g.fillStyle = gradBola(g, 0, cy, rx, ['#F5F3FF', '#C4B5FD', '#7C3AED', '#3B0764']);
-      g.strokeStyle = '#2E1065';
-      g.lineWidth = 0.09;
+      g.fillStyle = gradBola(g, 0, cy, rx, ['#FECACA', '#DC2626', '#7F1D1D', '#2A0606']);
+      g.strokeStyle = '#1C0303';
+      g.lineWidth = 0.1;
       g.beginPath();
       g.ellipse(0, cy, rx, 1.35 * inf, 0, 0, TAU);
       g.fill();
       g.stroke();
-      g.fillStyle = '#E9D5FF';
-      for (let i = -3; i <= 3; i++) {
-        g.beginPath();
-        g.arc(i * 0.55, cy + 0.85 - Math.abs(i) * 0.08, 0.07, 0, TAU);
-        g.fill();
-      }
-      g.strokeStyle = '#2E1065';
-      g.lineWidth = 0.1;
-      g.beginPath();
-      g.arc(0, cy + 0.3, 0.55, 0.15 * Math.PI, 0.85 * Math.PI);
-      g.stroke();
-      brilho(g, -0.9, cy - 0.65, 0.7, 0.25, -0.2, 0.75);
-      // garras
+      espinhos(g, 0, cy - 0.1, 1.3, 9, Math.PI * 1.06, '#450A0A', 1.25);
+      bocaMa(g, 0, cy + 0.35, 1.6, 0.36 + at * 0.25, 7);
+      brilho(g, -0.9, cy - 0.65, 0.6, 0.2, -0.2, 0.55);
       for (const lado of [-1, 1]) {
         const ab = 0.25 + (Math.sin(t * 5 + lado) * 0.5 + 0.5) * 0.35;
         const gx = lado * 2.75;
         const gy = cy - 1.6 + at * 1.7;
-        g.strokeStyle = '#4C1D95';
-        g.lineWidth = 0.32;
+        g.strokeStyle = '#450A0A';
+        g.lineWidth = 0.34;
         g.beginPath();
         g.moveTo(lado * 1.9, cy - 0.2);
         g.quadraticCurveTo(lado * 2.9, cy - 0.3, gx, gy + 0.6);
@@ -613,13 +877,22 @@
         for (const s of [-1, 1]) {
           g.save();
           g.rotate(s * ab * lado);
-          g.fillStyle = gradBola(g, 0, -0.5, 0.9, ['#EDE9FE', '#A78BFA', '#5B21B6']);
-          g.strokeStyle = '#2E1065';
+          g.fillStyle = gradBola(g, 0, -0.5, 0.9, ['#FCA5A5', '#B91C1C', '#450A0A']);
+          g.strokeStyle = '#1C0303';
           g.lineWidth = 0.07;
           g.beginPath();
           g.ellipse(s * 0.28, -0.55, 0.36, 0.78, s * 0.25, 0, TAU);
           g.fill();
           g.stroke();
+          g.fillStyle = '#F8FAFC';
+          for (let k = 0; k < 3; k++) {
+            const yy = -0.95 + k * 0.3;
+            g.beginPath();
+            g.moveTo(s * 0.02, yy);
+            g.lineTo(-s * 0.14, yy + 0.08);
+            g.lineTo(s * 0.02, yy + 0.16);
+            g.fill();
+          }
           g.restore();
         }
         g.restore();
@@ -634,8 +907,8 @@
         g.save();
         g.translate(lado * 1.45, cy + 0.6);
         g.rotate(lado * (0.9 + Math.sin(t * 4) * 0.15));
-        g.fillStyle = gradBola(g, 0, 0, 1, ['#E2E8F0', '#94A3B8', '#475569']);
-        g.strokeStyle = '#1E293B';
+        g.fillStyle = gradBola(g, 0, 0, 1, ['#CBD5E1', '#64748B', '#1E293B']);
+        g.strokeStyle = '#020617';
         g.lineWidth = 0.07;
         g.beginPath();
         g.ellipse(0, 0.6, 0.38, 0.95, 0, 0, TAU);
@@ -643,44 +916,173 @@
         g.stroke();
         g.restore();
       }
-      g.fillStyle = gradBola(g, 0, cy, 2, ['#F1F5F9', '#A5B4C8', '#5B6B82', '#273449']);
-      g.strokeStyle = '#1E293B';
-      g.lineWidth = 0.09;
+      g.fillStyle = gradBola(g, 0, cy, 2, ['#CBD5E1', '#64748B', '#334155', '#0F172A']);
+      g.strokeStyle = '#020617';
+      g.lineWidth = 0.1;
       g.beginPath();
       g.ellipse(0, cy, 1.55 * inf, 2.2 * inf, 0, 0, TAU);
       g.fill();
       g.stroke();
-      g.fillStyle = 'rgba(248, 250, 252, 0.85)';
+      g.fillStyle = 'rgba(226, 232, 240, 0.7)';
       g.beginPath();
-      g.ellipse(0, cy + 0.6, 1.0, 1.35, 0, 0, TAU);
+      g.ellipse(0, cy + 0.7, 0.95, 1.25, 0, 0, TAU);
       g.fill();
-      // martelo
       const hy = cy - 2.0;
-      g.fillStyle = gradBola(g, 0, hy, 2.5, ['#F8FAFC', '#A5B4C8', '#475569']);
-      g.strokeStyle = '#1E293B';
-      g.lineWidth = 0.09;
+      g.fillStyle = gradBola(g, 0, hy, 2.5, ['#E2E8F0', '#64748B', '#1E293B']);
+      g.strokeStyle = '#020617';
+      g.lineWidth = 0.1;
       retRed(g, -2.6, hy - 0.55, 5.2, 1.1, 0.55);
       g.fill();
       g.stroke();
-      olho(g, -2.15, hy - 0.05, 0.36, Math.sin(t), true, -1);
-      olho(g, 2.15, hy - 0.05, 0.36, Math.sin(t), true, 1);
-      brilho(g, -1.1, hy - 0.3, 0.9, 0.16, 0, 0.8);
-      // boca com dentes
-      const ab = 0.25 + at * 0.45;
-      g.fillStyle = '#7F1D1D';
+      // cicatriz
+      g.strokeStyle = '#7F1D1D';
+      g.lineWidth = 0.08;
       g.beginPath();
-      g.ellipse(0, cy - 0.3, 0.95, ab, 0, 0, TAU);
-      g.fill();
-      g.fillStyle = '#FFFFFF';
-      for (let i = -3; i <= 3; i++) {
-        g.beginPath();
-        g.moveTo(i * 0.25 - 0.11, cy - 0.3 - ab * 0.85);
-        g.lineTo(i * 0.25, cy - 0.3 - ab * 0.85 + 0.22);
-        g.lineTo(i * 0.25 + 0.11, cy - 0.3 - ab * 0.85);
-        g.fill();
+      g.moveTo(-1.2, hy - 0.4);
+      g.lineTo(-0.5, hy + 0.35);
+      for (let k = 0; k < 3; k++) {
+        g.moveTo(-1.15 + k * 0.25, hy - 0.05 + k * 0.2);
+        g.lineTo(-0.85 + k * 0.25, hy - 0.2 + k * 0.2);
       }
-      brilho(g, -0.6, cy - 1.2, 0.4, 0.8, -0.2, 0.4);
+      g.stroke();
+      olhoMau(g, -2.1, hy - 0.05, 0.4, -1);
+      olhoMau(g, 2.1, hy - 0.05, 0.4, 1);
+      bocaMa(g, 0, cy - 0.35, 2.1, 0.5 + at * 0.5, 9);
+      brilho(g, -0.6, cy - 1.0, 0.3, 0.6, -0.2, 0.3);
       g.restore();
+    }
+  }
+
+  /** Inimigos que vêm de frente (menos o Diver do mal, que é sprite). Origem no chão; dano: 0..1 do último golpe. */
+  function desenharInimigo(g, tipo, t, dano) {
+    const sq = 1 + dano * 0.18;
+    g.scale(sq, 1 / sq);
+    if (tipo === 'moreia') {
+      for (let k = 7; k >= 1; k--) {
+        const x = Math.sin(t * 7 - k * 0.9) * 0.3 * (k / 7);
+        const y = -0.55 - k * 0.15;
+        const r = 0.3 - k * 0.022;
+        g.fillStyle = gradBola(g, x, y, r, ['#D9F99D', '#65A30D', '#365314']);
+        g.strokeStyle = '#1A2E05';
+        g.lineWidth = 0.04;
+        g.beginPath();
+        g.arc(x, y, r, 0, TAU);
+        g.fill();
+        g.stroke();
+      }
+      const hx = 0;
+      g.fillStyle = gradBola(g, hx, -0.55, 0.45, ['#ECFCCB', '#84CC16', '#3F6212', '#1A2E05']);
+      g.strokeStyle = '#1A2E05';
+      g.lineWidth = 0.05;
+      g.beginPath();
+      g.ellipse(hx, -0.55, 0.44, 0.38, 0, 0, TAU);
+      g.fill();
+      g.stroke();
+      olhoMau(g, -0.17, -0.68, 0.11, -1);
+      olhoMau(g, 0.17, -0.68, 0.11, 1);
+      bocaMa(g, 0, -0.45, 0.5, 0.13, 5);
+    } else if (tipo === 'baiacu') {
+      const cy = -0.75 + Math.sin(t * 3) * 0.05;
+      const r = 0.55;
+      espinhos(g, 0, cy, r, 16, t * 0.4, '#450A0A', 1.4);
+      g.fillStyle = gradBola(g, 0, cy, r, ['#FECACA', '#EF4444', '#991B1B', '#450A0A']);
+      g.strokeStyle = '#2A0606';
+      g.lineWidth = 0.05;
+      g.beginPath();
+      g.arc(0, cy, r, 0, TAU);
+      g.fill();
+      g.stroke();
+      olhoMau(g, -0.2, cy - 0.12, 0.14, -1);
+      olhoMau(g, 0.2, cy - 0.12, 0.14, 1);
+      bocaMa(g, 0, cy + 0.2, 0.48, 0.13, 5);
+      brilho(g, -0.2, cy - 0.3, 0.1, 0.05, -0.5, 0.6);
+    } else if (tipo === 'caranguejo') {
+      const cy = -0.55;
+      g.strokeStyle = '#2A0606';
+      g.lineCap = 'round';
+      g.lineWidth = 0.09;
+      for (const lado of [-1, 1]) {
+        for (let i = 0; i < 3; i++) {
+          g.beginPath();
+          g.moveTo(lado * 0.5, cy + 0.1 + i * 0.08);
+          g.lineTo(lado * (0.85 + i * 0.08), cy - 0.05 + i * 0.1 + Math.sin(t * 9 + i) * 0.05);
+          g.lineTo(lado * (1.0 + i * 0.1), 0);
+          g.stroke();
+        }
+        // garra erguida
+        const ab = 0.3 + (Math.sin(t * 6 + lado) * 0.5 + 0.5) * 0.4;
+        g.save();
+        g.translate(lado * 0.85, cy - 0.65);
+        for (const s of [-1, 1]) {
+          g.save();
+          g.rotate(s * ab * lado * 0.6);
+          g.fillStyle = gradBola(g, 0, -0.15, 0.3, ['#FCA5A5', '#B91C1C', '#450A0A']);
+          g.strokeStyle = '#1C0303';
+          g.lineWidth = 0.035;
+          g.beginPath();
+          g.ellipse(s * 0.09, -0.18, 0.12, 0.27, s * 0.25, 0, TAU);
+          g.fill();
+          g.stroke();
+          g.restore();
+        }
+        g.restore();
+        g.strokeStyle = '#2A0606';
+        g.lineWidth = 0.1;
+        g.beginPath();
+        g.moveTo(lado * 0.55, cy - 0.1);
+        g.lineTo(lado * 0.85, cy - 0.5);
+        g.stroke();
+      }
+      for (const lado of [-1, 1]) {
+        g.strokeStyle = '#2A0606';
+        g.lineWidth = 0.06;
+        g.beginPath();
+        g.moveTo(lado * 0.18, cy - 0.3);
+        g.lineTo(lado * 0.24, cy - 0.68);
+        g.stroke();
+        olhoMau(g, lado * 0.24, cy - 0.72, 0.13, lado);
+      }
+      g.fillStyle = gradBola(g, 0, cy, 0.75, ['#FECACA', '#DC2626', '#7F1D1D', '#2A0606']);
+      g.strokeStyle = '#1C0303';
+      g.lineWidth = 0.05;
+      g.beginPath();
+      g.ellipse(0, cy, 0.72, 0.42, 0, 0, TAU);
+      g.fill();
+      g.stroke();
+      bocaMa(g, 0, cy + 0.1, 0.62, 0.15, 6);
+    } else {
+      // tubarão brutamontes, de frente
+      const cy = -1.15 + Math.sin(t * 2.5) * 0.04;
+      g.fillStyle = '#1E293B';
+      g.beginPath();
+      g.moveTo(-0.22, cy - 0.85);
+      g.lineTo(0.05, cy - 1.75);
+      g.lineTo(0.3, cy - 0.85);
+      g.fill();
+      for (const lado of [-1, 1]) {
+        g.save();
+        g.translate(lado * 0.7, cy + 0.15);
+        g.rotate(lado * (1.0 + Math.sin(t * 4) * 0.12));
+        g.fillStyle = gradBola(g, 0, 0, 0.5, ['#CBD5E1', '#475569', '#0F172A']);
+        g.beginPath();
+        g.ellipse(0, 0.35, 0.2, 0.5, 0, 0, TAU);
+        g.fill();
+        g.restore();
+      }
+      g.fillStyle = gradBola(g, 0, cy, 1, ['#CBD5E1', '#64748B', '#334155', '#0F172A']);
+      g.strokeStyle = '#020617';
+      g.lineWidth = 0.05;
+      g.beginPath();
+      g.ellipse(0, cy, 0.78, 1.0, 0, 0, TAU);
+      g.fill();
+      g.stroke();
+      g.fillStyle = 'rgba(226, 232, 240, 0.75)';
+      g.beginPath();
+      g.ellipse(0, cy + 0.35, 0.5, 0.55, 0, 0, TAU);
+      g.fill();
+      olhoMau(g, -0.36, cy - 0.38, 0.17, -1);
+      olhoMau(g, 0.36, cy - 0.38, 0.17, 1);
+      bocaMa(g, 0, cy + 0.12, 1.0, 0.3, 8);
     }
   }
 
@@ -736,7 +1138,7 @@
     icone: 'i-onda',
     duracao: '30 s por fase',
     diario: false,
-    descricao: 'Arraste para os lados, junte Divers perdidos, escolha os portais certos e chegue no chefão com o maior cardume possível.',
+    descricao: 'Arraste para os lados, junte Divers, pegue armas d’água, derrube os inimigos e vença o chefão. Da fase 3 em diante, fica muito difícil.',
     abrir(ctx) {
       const SPR = sprites();
       const salvo = ctx.estado() || {};
@@ -824,6 +1226,7 @@
         Object.assign(P, {
           fase, estado: 'correndo', z: 0, x: 0, alvoX: 0, vx: 0, count: 1, membros: [], perolas: 0,
           invul: 0, contaPulso: 0, combo: 0, comboT: 0, chefe: null, liberar: 0, fimT: 0, sobreviventes: 0,
+          arma: 0, tiroT: 0, jatos: [], inimigos: [], balas: [], spawnT: 2.2, abates: 0, abatidos: 0,
           bolhasFundo: P.bolhasFundo || Array.from({ length: 26 }, () => ({ x: Math.random(), y: Math.random(), r: 1 + Math.random() * 3, v: 0.02 + Math.random() * 0.05 })),
         });
         faseEl.textContent = `Fase ${P.n} · ${fase.tema.nome}`;
@@ -834,7 +1237,7 @@
       }
 
       function atualizarPontos() {
-        pontosEl.lastChild.textContent = String(P ? P.total + (P.perolas || 0) : 0);
+        pontosEl.lastChild.textContent = String(P ? P.total + (P.perolas || 0) + (P.abates || 0) : 0);
       }
 
       /* ---------- Cardume ---------- */
@@ -877,8 +1280,9 @@
         som.tom(220, 0.14, 'triangle', 0.08, 0.5, 0, 'morte', 0.05);
         vibrar(6);
       }
+      /** Algo encostou no líder: perde o Diver mais perto. Sozinho, leva um esbarrão (fases 1 e 2) ou cai (fase 3+). */
       function atingirLider() {
-        if (P.invul > 0) return;
+        if (P.invul > 0) return false;
         P.invul = 0.45;
         if (P.count > 1) {
           let perto = 0;
@@ -886,14 +1290,20 @@
           P.membros.forEach((m, i) => { const d = Math.abs(m.x - P.x) + Math.abs(m.dz); if (d < melhor) { melhor = d; perto = i; } });
           if (P.membros.length) matarMembro(perto);
           else { P.count -= 1; P.contaPulso = 1; }
+        } else if (P.fase.dificil) {
+          P.count = 0;
+          poof(P.x, P.z, '#FB7185', 1.8);
+          if (!reduzir()) P.tremor = 0.35;
+          perder();
         } else {
-          // sozinho, o líder só leva um esbarrão: a partida termina no chefão, nunca no meio do caminho
+          // fases 1 e 2: sozinho, o líder só leva um esbarrão
           P.invul = 0.9;
           poof(P.x, P.z, '#FB7185', 1.4);
           if (!reduzir()) P.tremor = 0.2;
           som.tom(260, 0.18, 'triangle', 0.08, 0.6, 0, 'esbarrao', 0.2);
           vibrar(15);
         }
+        return true;
       }
 
       /* ---------- Partículas e textos ---------- */
@@ -940,6 +1350,7 @@
         if (P.estado === 'correndo') correr(dt);
         else if (P.estado === 'chefe') brigar(dt);
         else if (P.estado === 'vitoria') comemorar(dt);
+        if (P.estado === 'correndo' || P.estado === 'chefe') combate(dt);
         moverMembros(dt);
         camZ = P.z - DPLAYER;
         camX += (P.x * 0.28 - camX) * Math.min(1, dt * 4);
@@ -958,12 +1369,7 @@
       function correr(dt) {
         const f = P.fase;
         P.z += f.v * dt;
-        if (teclas.esq) P.alvoX -= 7.5 * dt;
-        if (teclas.dir) P.alvoX += 7.5 * dt;
-        P.alvoX = clamp(P.alvoX, -LIM, LIM);
-        const antes = P.x;
-        P.x += (P.alvoX - P.x) * Math.min(1, dt * 13);
-        P.vx = (P.x - antes) / Math.max(dt, 0.001);
+        guiar(dt);
         barra.style.width = `${clamp(P.z / f.comprimento, 0, 1) * 100}%`;
         const corpos = () => [{ x: P.x, z: P.z, lider: true }, ...P.membros.map((m, i) => ({ x: m.x, z: P.z + m.dz, i }))];
         for (const e of f.eventos) {
@@ -991,7 +1397,7 @@
             e.escolha = lado;
             const op = e.ops[lado];
             const antes2 = P.count;
-            const depois = clamp(aplicar(op, P.count), 1, 9999); // portal nunca leva o líder
+            const depois = clamp(aplicar(op, P.count), f.dificil ? 0 : 1, 9999); // nas fases 1 e 2, portal nunca leva o líder
             const meio = lado === 0 ? -MEIA / 2 : MEIA / 2;
             const p = proj(meio, 1.4, e.z);
             if (p) {
@@ -1018,6 +1424,23 @@
               vibrar(25);
             }
             aviso.textContent = `Portal ${rotuloOp(op)}: cardume com ${P.count}.`;
+            if (P.count <= 0) { perder(); return; }
+          } else if (e.tipo === 'arma' && !e.pega) {
+            const cs = corpos();
+            if (cs.some((c) => Math.abs(c.x - e.x) < 0.8 && Math.abs(c.z - e.z) < 0.8)) {
+              e.pega = true;
+              const antes3 = P.arma;
+              P.arma = Math.max(P.arma, e.nivel);
+              P.tiroT = 0;
+              const p = proj(e.x, 0.8, e.z);
+              if (p) faiscas(p.x, p.y, TANQUES[e.nivel][1], 16, 1.1);
+              const lp = proj(P.x, 2.2, P.z);
+              if (lp) texto(lp.x, lp.y - 30, P.arma > antes3 ? `${plural(P.arma, 'jato', 'jatos')}!` : 'Mais água!', '#7DD3FC', 36);
+              som.tom(660, 0.1, 'square', 0.05);
+              som.tom(990, 0.16, 'square', 0.05, 1.2, 0.08);
+              vibrar(14);
+              aviso.textContent = `Arma d'água: ${plural(P.arma, 'jato', 'jatos')} por tiro.`;
+            }
           } else if (e.tipo === 'agua' || e.tipo === 'ourico' || e.tipo === 'coral') {
             colidirPerigo(e);
             if (P.estado !== 'correndo') return;
@@ -1094,11 +1517,212 @@
         });
       }
 
+      function guiar(dt) {
+        if (teclas.esq) P.alvoX -= 7.5 * dt;
+        if (teclas.dir) P.alvoX += 7.5 * dt;
+        P.alvoX = clamp(P.alvoX, -LIM, LIM);
+        const antes = P.x;
+        P.x += (P.alvoX - P.x) * Math.min(1, dt * 13);
+        P.vx = (P.x - antes) / Math.max(dt, 0.001);
+      }
+
+      /* ---------- Armas d'água e inimigos ---------- */
+      const VJATO = 34;        // velocidade do jato
+      const AGUA_CHEFE = 0.3;  // quanto cada jato tira do chefão (o cardume é que derruba)
+      function combate(dt) {
+        atirar(dt);
+        moverJatos(dt);
+        if (P.estado !== 'correndo' && P.estado !== 'chefe') return;
+        gerarInimigos(dt);
+        moverInimigos(dt);
+        if (P.estado !== 'correndo' && P.estado !== 'chefe') return;
+        moverBalas(dt);
+      }
+
+      /** O cardume atira sozinho: o líder e alguns Divers (mais gente, mais atiradores), 1 a 3 jatos cada. */
+      function atirar(dt) {
+        if (!P.arma) return;
+        P.tiroT -= dt;
+        if (P.tiroT > 0) return;
+        P.tiroT = 0.3;
+        const fontes = [{ x: P.x, dz: 0.4 }];
+        const livres = P.membros.filter((m) => !m.carga);
+        const extra = clamp(Math.round(Math.sqrt(P.count) * 1.3), 1, 10) - 1;
+        for (let i = 0; i < extra && livres.length; i++) {
+          const m = livres.splice(Math.floor(Math.random() * livres.length), 1)[0];
+          fontes.push({ x: m.x, dz: m.dz + 0.3 });
+        }
+        const leque = [[0], [-1, 1], [-1, 0, 1]][P.arma - 1];
+        for (const f of fontes) {
+          for (const s of leque) {
+            if (P.jatos.length >= 240) break;
+            const z = P.z + Math.max(0, f.dz) + 0.3;
+            P.jatos.push({ x: f.x - 0.2 + s * 0.14, z, z0: z, vx: s * 1.6, y: 1.0 + Math.random() * 0.15, t: 0 });
+          }
+        }
+        som.tom(1300 + Math.random() * 300, 0.035, 'sine', 0.02, 0.5, 0, 'jato', 0.09);
+      }
+
+      function respingo(x, y, z) {
+        if (P.particulas.length > 380) return;
+        const p = proj(x, y, z);
+        if (!p) return;
+        for (let i = 0; i < (reduzir() ? 1 : 3); i++) {
+          const a = Math.random() * TAU;
+          P.particulas.push({ tipo: 'bolha', x: p.x, y: p.y, vx: Math.cos(a) * 70, vy: Math.sin(a) * 70 - 30, r: 1.5 + Math.random() * 2.5, vida: 0.35, t: 0, cor: '#7DD3FC' });
+        }
+      }
+
+      function moverJatos(dt) {
+        const c = P.estado === 'chefe' ? P.chefe : null;
+        for (const j of P.jatos) {
+          j.z0 = j.z;
+          j.z += VJATO * dt;
+          j.x += j.vx * dt;
+          j.t += dt;
+          for (const e of P.inimigos) {
+            if (e.vida <= 0) continue;
+            if (Math.abs(e.x - j.x) < e.raio + 0.12 && e.z + e.raio >= j.z0 - 0.2 && e.z - e.raio <= j.z + 0.2) {
+              ferirInimigo(e, j);
+              j.t = 99;
+              break;
+            }
+          }
+          if (j.t < 99 && c && c.hp > 0 && P.z >= c.z - 8.5 && j.z >= c.z - 2 && Math.abs(j.x) < 3) {
+            j.t = 99;
+            c.hp -= AGUA_CHEFE;
+            c.dano = Math.max(c.dano, 0.45);
+            respingo(j.x, j.y + 1.5, c.z - 2);
+            if (c.hp <= 0) { vencer(); return; }
+          }
+        }
+        P.jatos = P.jatos.filter((j) => j.t < 0.95 && Math.abs(j.x) < MEIA + 0.6);
+      }
+
+      function ferirInimigo(e, j) {
+        e.vida -= 1;
+        e.dano = 1;
+        respingo(j.x, j.y, e.z - e.raio);
+        if (e.vida > 0) {
+          som.tom(420, 0.04, 'square', 0.02, 0.8, 0, 'acerto', 0.05);
+          return;
+        }
+        P.abates += e.pts;
+        P.abatidos += 1;
+        poof(e.x, e.z, '#F87171', e.tipo === 'mau' ? 0.6 : 0.6 + e.raio);
+        if (e.pts >= 3) {
+          const p = proj(e.x, 1.6, e.z);
+          if (p) texto(p.x, p.y, `+${e.pts}`, '#FACC15', 24);
+        }
+        som.tom(e.tipo === 'mau' ? 760 : 300, 0.08, 'triangle', 0.05, 1.5, 0, 'abate', 0.04);
+        atualizarPontos();
+      }
+
+      function sortear(pesos) {
+        const total = Object.values(pesos).reduce((a, b) => a + b, 0);
+        let s = Math.random() * total;
+        return Object.keys(pesos).find((k) => (s -= pesos[k]) < 0) || 'mau';
+      }
+      function novoInimigo(tipo, x, z) {
+        if (P.inimigos.length >= 70) return;
+        const b = INIMIGOS[tipo];
+        const mult = P.fase.ritmo.mult;
+        const vida = tipo === 'mau' ? 1 : Math.round(b.vida * mult);
+        P.inimigos.push({
+          tipo, x: clamp(x, -3.1, 3.1), z, vida, max: vida, vel: b.vel * (0.9 + Math.random() * 0.25), raio: b.raio,
+          pts: tipo === 'mau' ? 1 : Math.round(b.pts * mult), fase: Math.random(), ph: Math.random() * TAU, dano: 0,
+        });
+      }
+      function bando(qtd, gx, z) {
+        for (let j = 0; j < qtd; j++) {
+          const a = j * 2.39996;
+          const rr = 0.45 * Math.sqrt(j);
+          novoInimigo('mau', gx + Math.cos(a) * rr, z + Math.sin(a) * rr * 0.9);
+        }
+      }
+      /** Inimigos o tempo todo: na corrida vêm lá da frente; na briga, o chefão chama reforços. */
+      function gerarInimigos(dt) {
+        const R = P.fase.ritmo;
+        P.spawnT -= dt;
+        if (P.spawnT > 0) return;
+        if (P.estado === 'correndo') {
+          if (P.z > P.fase.comprimento - 25) return;
+          P.spawnT = R.intervalo * (0.7 + Math.random() * 0.6);
+          const tipo = sortear(R.pesos);
+          const z = P.z + 46;
+          if (tipo === 'mau') bando(inteiro(R.bando[0], R.bando[1], Math.random), (Math.random() * 2 - 1) * 2.2, z);
+          else novoInimigo(tipo, (Math.random() * 2 - 1) * 2.6, z);
+        } else {
+          const c = P.chefe;
+          if (!c || P.z < c.z - 8.5) return;
+          P.spawnT = R.chefe * (0.8 + Math.random() * 0.4);
+          bando(Math.max(3, Math.round(R.bando[0] * 0.8)), (Math.random() * 2 - 1) * 1.8, c.z - 3);
+          if (P.fase.dificil && Math.random() < 0.45) novoInimigo(Math.random() < 0.5 ? 'baiacu' : 'moreia', (Math.random() * 2 - 1) * 2, c.z - 3);
+          som.tom(140, 0.25, 'sawtooth', 0.04, 1.4, 0, 'reforco', 0.5);
+        }
+      }
+
+      function moverInimigos(dt) {
+        const R = P.fase.ritmo;
+        for (const e of P.inimigos) {
+          if (e.vida <= 0) continue;
+          e.dano = Math.max(0, e.dano - dt * 5);
+          e.z -= e.vel * dt;
+          if (e.tipo === 'moreia') e.x += Math.cos(P.t * 4 + e.ph) * 2.4 * dt;
+          if (R.persegue && e.z - P.z < 30) {
+            const d = P.x - e.x;
+            e.x += clamp(d, -R.persegue * dt, R.persegue * dt);
+          }
+          e.x = clamp(e.x, -3.2, 3.2);
+          const alcance = e.raio + 0.28;
+          if (e.z - P.z > alcance + 14 || P.z - e.z > alcance + 4) continue;
+          for (let i = P.membros.length - 1; i >= 0 && e.vida > 0; i--) {
+            const m = P.membros[i];
+            if (Math.abs(m.x - e.x) < alcance && Math.abs(P.z + m.dz - e.z) < alcance) {
+              matarMembro(i, '#EF4444');
+              e.vida -= 1;
+              e.dano = 1;
+            }
+          }
+          if (e.vida > 0 && Math.abs(P.x - e.x) < alcance && Math.abs(P.z - e.z) < alcance && atingirLider()) {
+            e.vida -= 1;
+            e.dano = 1;
+          }
+          if (P.estado === 'fim') return;
+          if (e.vida <= 0) poof(e.x, e.z, '#EF4444', 0.7);
+        }
+        P.inimigos = P.inimigos.filter((e) => e.vida > 0 && e.z > P.z - 4);
+      }
+
+      /** Bolas do chefão (fase 3+): caem onde o alvo piscou e derrubam quem estiver perto. */
+      function moverBalas(dt) {
+        for (const b of P.balas) {
+          b.t += dt;
+          if (b.t < b.dur || b.feito) continue;
+          b.feito = true;
+          let mortos = 0;
+          for (let i = P.membros.length - 1; i >= 0 && mortos < 8; i--) {
+            const m = P.membros[i];
+            if (!m.carga && Math.hypot(m.x - b.x1, P.z + m.dz - b.z1) < 1.05) { matarMembro(i, '#A855F7'); mortos++; }
+          }
+          poof(b.x1, b.z1, '#A855F7', 1.6);
+          const p = proj(b.x1, 0.02, b.z1);
+          if (p) P.particulas.push({ tipo: 'anel', x: p.x, y: p.y, r: p.s * 0.6, vida: 0.4, t: 0, cor: '#C084FC', largo: true });
+          if (!reduzir()) P.tremor = Math.max(P.tremor, 0.2);
+          som.tom(90, 0.25, 'sawtooth', 0.06, 0.5);
+          vibrar(18);
+          if (Math.hypot(P.x - b.x1, P.z - b.z1) < 0.8) atingirLider();
+          if (P.estado === 'fim') return;
+        }
+        P.balas = P.balas.filter((b) => !b.feito);
+      }
+
       /* ---------- Chefão ---------- */
       function iniciarChefe() {
         const f = P.fase;
         P.estado = 'chefe';
-        P.chefe = { hp: f.hp, max: f.hp, z: f.comprimento + 15, t: 0, dano: 0, ataque: 0, proxAtaque: 1.6, morto: 0, mostra: f.hp };
+        P.chefe = { hp: f.hp, max: f.hp, z: f.comprimento + 15, t: 0, dano: 0, ataque: 0, proxAtaque: 1.6, proxBala: 1.2, morto: 0, mostra: f.hp };
+        P.spawnT = 1.5;
         P.liberar = 0;
         barra.style.width = '100%';
         aviso.textContent = `${f.chefe.nome}! Seu cardume tem ${P.count}, ele tem ${f.hp} de vida.`;
@@ -1112,10 +1736,19 @@
         c.ataque = Math.max(0, c.ataque - dt * 2.4);
         c.mostra += (c.hp - c.mostra) * Math.min(1, dt * 10);
         const parada = c.z - 8;
+        guiar(dt);
         if (P.z < parada) {
           P.z = Math.min(parada, P.z + P.fase.v * 0.6 * dt);
-          P.x += (0 - P.x) * Math.min(1, dt * 2);
           return;
+        }
+        // da fase 3 em diante, o chefão atira bolas (o alvo pisca no chão: saia dele)
+        if (P.fase.dificil) {
+          c.proxBala -= dt;
+          if (c.proxBala <= 0) {
+            c.proxBala = Math.max(0.6, 1.4 - 0.15 * (P.n - DIFICIL));
+            P.balas.push({ x0: (Math.random() - 0.5) * 2.4, z0: c.z - 2, x1: clamp(P.x + (Math.random() - 0.5) * 2.4, -3, 3), z1: P.z + (Math.random() - 0.3) * 1.6, t: 0, dur: 1.05, feito: false });
+            som.tom(180, 0.2, 'sawtooth', 0.04, 1.6, 0, 'bala', 0.2);
+          }
         }
         // solta o cardume em ondas
         const ritmo = clamp(P.count / 2.5, 14, 70);
@@ -1139,7 +1772,7 @@
           if (P.z + m.dz >= c.z - 1.6) {
             const p = proj(m.x, 1.4 + Math.random() * 2.5, c.z - 1.2);
             if (p) faiscas(p.x, p.y, '#FACC15', 4, 0.8);
-            const tira = Math.min(golpe, P.count - 1, c.hp);
+            const tira = Math.min(golpe, P.count - 1, Math.ceil(c.hp));
             c.hp -= Math.max(1, tira);
             P.count -= Math.max(1, tira);
             P.membros.splice(i, 1);
@@ -1151,9 +1784,9 @@
         // o chefão revida
         c.proxAtaque -= dt;
         if (c.proxAtaque <= 0) {
-          c.proxAtaque = Math.max(0.8, 1.5 - P.n * 0.05);
+          c.proxAtaque = P.fase.dificil ? Math.max(0.55, 1.1 - 0.08 * (P.n - DIFICIL)) : Math.max(0.8, 1.5 - P.n * 0.05);
           c.ataque = 1;
-          const alvos = P.membros.map((m, i) => ({ m, i })).filter((o) => o.m.carga).sort((a, b) => b.m.dz - a.m.dz).slice(0, 1 + Math.floor(P.n / 2));
+          const alvos = P.membros.map((m, i) => ({ m, i })).filter((o) => o.m.carga).sort((a, b) => b.m.dz - a.m.dz).slice(0, P.fase.dificil ? 3 + P.n : 1 + Math.floor(P.n / 2));
           alvos.sort((a, b) => b.i - a.i).forEach((o) => matarMembro(o.i, '#FB7185'));
           const p = proj(0, 0.1, c.z - 2.5);
           if (p) P.particulas.push({ tipo: 'anel', x: p.x, y: p.y, r: p.s * 0.5, vida: 0.45, t: 0, cor: '#E6F1FF', largo: true });
@@ -1165,7 +1798,7 @@
         if (!P.membros.length) {
           P.z += 10 * dt;
           if (P.z >= c.z - 1.8) {
-            const tira = Math.min(P.count, c.hp);
+            const tira = Math.min(P.count, Math.ceil(c.hp));
             c.hp -= tira;
             P.count -= tira;
             c.dano = 1;
@@ -1193,6 +1826,9 @@
           }
         }
         confete(70);
+        P.inimigos.forEach((e) => poof(e.x, e.z, '#EF4444', 0.7));
+        P.inimigos = [];
+        P.balas = [];
         P.membros.forEach((m) => { m.carga = false; });
         [523, 659, 784, 1047].forEach((f, i) => som.tom(f, 0.22, 'sine', 0.1, 1, i * 0.1));
         vibrar(40);
@@ -1216,9 +1852,10 @@
         P.estado = 'fim';
         [392, 330, 262, 196].forEach((f, i) => som.tom(f, 0.25, 'triangle', 0.08, 1, i * 0.12));
         vibrar(60);
-        const total = P.total + P.perolas;
+        const total = P.total + P.perolas + P.abates;
         P.total = total;
         P.perolas = 0;
+        P.abates = 0;
         P.pontuado = true;
         const novo = total > (P.recorde || 0);
         ctx.pontuar(total, { fase: P.n });
@@ -1233,11 +1870,11 @@
         abertura.replaceChildren(h('div', { class: 'cartao sd-car__cartao' },
           h('h2', { text: 'Bora juntar o cardume!' }),
           h('ul', { class: 'sd-car__regras' },
-            h('li', {}, 'Arraste para os lados (ou use as setas). O Diver nada sozinho.'),
-            h('li', {}, 'Toque nos Divers perdidos para eles entrarem no cardume.'),
-            h('li', {}, h('strong', { text: 'Portal turquesa ajuda; portal coral atrapalha.' }), ' Escolha o lado.'),
-            h('li', {}, 'Fuja das águas-vivas, dos ouriços e do coral que gira.'),
-            h('li', {}, 'No fim, o chefão: chegue com gente suficiente para vencer.')),
+            h('li', {}, 'Arraste para os lados (ou use as setas). O Diver nada sozinho; toque nos Divers perdidos para eles entrarem no cardume.'),
+            h('li', {}, 'Passe por cima da arma d’água: o cardume atira sozinho, com 1, 2 ou 3 jatos.'),
+            h('li', {}, h('strong', { text: 'Leia o número do portal:' }), ' às vezes a cor engana.'),
+            h('li', {}, 'Inimigos chegam o tempo todo. Cada um derruba tantos Divers quanto a vida dele.'),
+            h('li', {}, 'No fim, o chefão. ', h('strong', { text: 'Da fase 3 em diante, fica muito difícil.' }))),
           recorde ? h('p', { class: 'texto-suave', text: `Seu recorde: ${plural(recorde, 'ponto', 'pontos')}` }) : null,
           h('div', { class: 'acoes-linha' },
             h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-car-comecar', onclick: comecar }, icone('i-onda'), 'Começar'))));
@@ -1249,6 +1886,8 @@
         const bonusFase = 50 * P.n;
         const ganhoCardume = P.sobreviventes;
         const ganhoPerolas = P.perolas;
+        const ganhoAbates = P.abates;
+        const abatidos = P.abatidos;
         const r = ctx.aleatorio(`bau-${Date.now()}`);
         const premios = [10, 15, 20, 25, 30, 40, 50, 60, 100].sort(() => r() - 0.5);
         let escolhido = -1;
@@ -1258,8 +1897,9 @@
           onclick: () => {
             if (escolhido >= 0) return;
             escolhido = i;
-            P.total += bonusFase + ganhoCardume + ganhoPerolas + v;
+            P.total += bonusFase + ganhoCardume + ganhoPerolas + ganhoAbates + v;
             P.perolas = 0;
+            P.abates = 0;
             atualizarPontos();
             baus.forEach((b, j) => {
               b.classList.add('sd-car__bau--aberto');
@@ -1280,7 +1920,8 @@
           h('ul', { class: 'sd-car__soma' },
             h('li', {}, h('span', { text: `Fase ${P.n}` }), h('strong', { text: `+${bonusFase}` })),
             h('li', {}, h('span', { text: `Cardume que sobrou (${ganhoCardume})` }), h('strong', { text: `+${ganhoCardume}` })),
-            h('li', {}, h('span', { text: 'Pérolas' }), h('strong', { text: `+${ganhoPerolas}` }))),
+            h('li', {}, h('span', { text: 'Pérolas' }), h('strong', { text: `+${ganhoPerolas}` })),
+            h('li', {}, h('span', { text: `Inimigos derrubados (${abatidos})` }), h('strong', { text: `+${ganhoAbates}` }))),
           h('p', { class: 'sd-car__escolha', text: 'Escolha um baú da sorte:' }),
           h('div', { class: 'sd-car__baus' }, baus),
           h('div', { class: 'acoes-linha' }, proxima)));
@@ -1328,7 +1969,7 @@
         const p = proj(0, 0, 0);
         if (p) {
           sombra(0, 0, 1.3);
-          personagem(SPR.lider[0], p, 1.6, 1, 0, 1);
+          personagem(SPR.lider[0][0], p, 1.6, 1, 0, 1);
         }
         [-1.6, 1.6, -2.4, 2.4].forEach((x, i) => {
           const q = proj(x, 0, 4 + (i > 1 ? 2 : 0));
@@ -1506,8 +2147,16 @@
             lista.push({ d: d + 0.4, f: () => pedra(e) });
           } else if (e.tipo === 'perolas') {
             e.itens.forEach((pe) => { if (!pe.pega) lista.push({ d: pe.z - camZ, f: () => perola(pe, t) }); });
+          } else if (e.tipo === 'arma' && !e.pega) {
+            lista.push({ d, f: () => armaChao(e, t) });
           }
         }
+        for (const e of P.inimigos) {
+          const d = e.z - camZ;
+          if (d > 0.4 && d < 72) lista.push({ d, f: () => inimigo(e, t) });
+        }
+        for (const j of P.jatos) lista.push({ d: j.z - camZ, f: () => jato(j) });
+        for (const b of P.balas) lista.push({ d: b.z0 + (b.z1 - b.z0) * Math.min(1, b.t / b.dur) - camZ, f: () => bala(b) });
         if (P.chefe || f.comprimento - P.z < 70) {
           const cz = f.comprimento + 15;
           lista.push({ d: cz - camZ + 1, f: () => chefe(cz) });
@@ -1522,7 +2171,7 @@
             const qf = quadroDe(t * 1.8 * m.vel + m.fase);
             const pop = m.pop < 1 ? 0.55 + elastico(m.pop) * 0.45 : 1;
             const est = (1 + Math.sin(t * 12 * m.vel + m.fase * 6) * 0.05) * (m.pop < 1 ? 1 + (1 - m.pop) * 0.35 : 1);
-            personagem(SPR.costas[qf], p, 1.2 * pop, est, clamp(-P.vx * 0.025, -0.3, 0.3), alfaDist(p.d));
+            personagem(SPR.costas[P.arma][qf], p, 1.2 * pop, est, clamp(-P.vx * 0.025, -0.3, 0.3), alfaDist(p.d));
           } });
         });
         if (P.estado !== 'fim' || P.count > 0) {
@@ -1542,13 +2191,14 @@
             g.restore();
             const qf = quadroDe(t * 1.9);
             const pisca = P.invul > 0 && Math.floor(P.invul * 20) % 2 === 0;
-            personagem(SPR.lider[qf], p, 1.6, 1 + Math.sin(t * 12) * 0.05, clamp(-P.vx * 0.03, -0.35, 0.35), pisca ? 0.35 : 1);
+            personagem(SPR.lider[P.arma][qf], p, 1.6, 1 + Math.sin(t * 12) * 0.05, clamp(-P.vx * 0.03, -0.35, 0.35), pisca ? 0.35 : 1);
           } });
         }
         lista.sort((a, b) => b.d - a.d);
         // sombras do cardume primeiro (por baixo de tudo que está perto)
         P.membros.forEach((m) => sombra(m.x, P.z + m.dz, 1.15));
         sombra(P.x, P.z, 1.5);
+        for (const b of P.balas) alvoBala(b, t);
         for (const o of lista) o.f();
         void tema;
       }
@@ -1566,7 +2216,8 @@
           if (!a || !c) return;
           const usado = e.feito;
           if (usado && e.escolha === i) return; // o portal escolhido estourou
-          const cor = bom(op) ? (op.t === 'x' ? ['#FDE68A', '#FACC15'] : ['#99F6E4', '#14B8A6']) : ['#FECDD3', '#FB7185'];
+          const parece = e.troca ? !bom(op) : bom(op); // cor trocada: a placa mente, o número não
+          const cor = parece ? (op.t === 'x' && !e.troca ? ['#FDE68A', '#FACC15'] : ['#99F6E4', '#14B8A6']) : ['#FECDD3', '#FB7185'];
           g.save();
           g.globalAlpha = usado ? 0.25 : 0.62 * alfaDist(a.d);
           const gr = g.createLinearGradient(0, d.y, 0, a.y);
@@ -1598,12 +2249,203 @@
           g.textAlign = 'center';
           g.textBaseline = 'middle';
           g.lineWidth = Math.max(3, tam * 0.14);
-          g.strokeStyle = bom(op) ? '#0B5550' : '#881337';
+          g.strokeStyle = parece ? '#0B5550' : '#881337';
           g.strokeText(rotuloOp(op), (a.x + b.x) / 2, (a.y + d.y) / 2);
           g.fillStyle = '#FFFFFF';
           g.fillText(rotuloOp(op), (a.x + b.x) / 2, (a.y + d.y) / 2);
           g.restore();
         });
+      }
+
+      /** Arma d'água no chão: gira devagar sobre um anel de luz; as gotinhas mostram quantos jatos ela solta. */
+      function armaChao(e, t) {
+        const p0 = proj(e.x, 0.01, e.z);
+        const p = proj(e.x, 0.8 + Math.sin(t * 3) * 0.12, e.z);
+        if (!p || !p0) return;
+        const c = TANQUES[e.nivel];
+        const pul = 1 + Math.sin(t * 5) * 0.08;
+        g.save();
+        g.globalAlpha = alfaDist(p.d);
+        const fx = g.createLinearGradient(0, p0.y, 0, p0.y - p0.s * 2.4);
+        fx.addColorStop(0, `${c[1]}88`);
+        fx.addColorStop(1, `${c[1]}00`);
+        g.fillStyle = fx;
+        g.fillRect(p0.x - p0.s * 0.6, p0.y - p0.s * 2.4, p0.s * 1.2, p0.s * 2.4);
+        g.fillStyle = `${c[1]}55`;
+        g.strokeStyle = c[1];
+        g.lineWidth = Math.max(2, p0.s * 0.07);
+        g.beginPath();
+        g.ellipse(p0.x, p0.y, p0.s * 0.75 * pul, p0.s * 0.26 * pul, 0, 0, TAU);
+        g.fill();
+        g.stroke();
+        g.translate(p.x, p.y);
+        g.scale(p.s, p.s);
+        let gira = Math.cos(t * 2.2);
+        if (Math.abs(gira) < 0.18) gira = gira < 0 ? -0.18 : 0.18;
+        g.scale(gira * 1.1, 1.1);
+        g.lineJoin = 'round';
+        g.lineWidth = 0.05;
+        g.strokeStyle = '#06172D';
+        // cabo
+        g.fillStyle = c[2];
+        g.beginPath();
+        g.moveTo(-0.32, 0.05);
+        g.lineTo(-0.1, 0.05);
+        g.lineTo(-0.2, 0.48);
+        g.lineTo(-0.44, 0.44);
+        g.closePath();
+        g.fill();
+        g.stroke();
+        // cano e bico
+        g.fillStyle = '#E0F2FE';
+        retRed(g, 0.3, -0.12, 0.42, 0.13, 0.05);
+        g.fill();
+        g.stroke();
+        g.fillStyle = c[2];
+        retRed(g, 0.66, -0.15, 0.1, 0.19, 0.04);
+        g.fill();
+        g.stroke();
+        // corpo
+        const gc = g.createLinearGradient(0, -0.25, 0, 0.15);
+        gc.addColorStop(0, c[0]);
+        gc.addColorStop(0.5, c[1]);
+        gc.addColorStop(1, c[2]);
+        g.fillStyle = gc;
+        retRed(g, -0.55, -0.2, 0.9, 0.32, 0.14);
+        g.fill();
+        g.stroke();
+        // tanque em cima
+        g.fillStyle = gradBola(g, -0.12, -0.42, 0.24, ['#FFFFFF', c[0], c[1], c[2]]);
+        g.beginPath();
+        g.arc(-0.12, -0.4, 0.22, 0, TAU);
+        g.fill();
+        g.stroke();
+        brilho(g, -0.2, -0.48, 0.07, 0.04, -0.5, 0.9);
+        g.restore();
+        // gotinhas em cima: 1, 2 ou 3 jatos
+        const q = proj(e.x, 1.75 + Math.sin(t * 3) * 0.12, e.z);
+        if (q && q.s > 9) {
+          g.save();
+          g.globalAlpha = alfaDist(q.d);
+          const r = Math.max(3, q.s * 0.11);
+          for (let i = 0; i < e.nivel; i++) {
+            const gx = q.x + (i - (e.nivel - 1) / 2) * r * 2.4;
+            g.fillStyle = '#7DD3FC';
+            g.strokeStyle = '#06172D';
+            g.lineWidth = Math.max(1, r * 0.25);
+            g.beginPath();
+            g.moveTo(gx, q.y - r * 1.5);
+            g.quadraticCurveTo(gx + r * 1.1, q.y, gx, q.y + r * 0.9);
+            g.quadraticCurveTo(gx - r * 1.1, q.y, gx, q.y - r * 1.5);
+            g.fill();
+            g.stroke();
+          }
+          g.restore();
+        }
+      }
+
+      function jato(j) {
+        const a = proj(j.x - j.vx * 0.03, j.y, j.z - 0.9);
+        const b = proj(j.x, j.y, j.z);
+        if (!a || !b) return;
+        g.save();
+        g.globalAlpha = alfaDist(b.d);
+        g.lineCap = 'round';
+        g.strokeStyle = 'rgba(56, 189, 248, 0.9)';
+        g.lineWidth = Math.max(2, b.s * 0.13);
+        g.beginPath();
+        g.moveTo(a.x, a.y);
+        g.lineTo(b.x, b.y);
+        g.stroke();
+        g.strokeStyle = '#F0F9FF';
+        g.lineWidth = Math.max(1, b.s * 0.05);
+        g.stroke();
+        g.restore();
+      }
+
+      const ALTURA_INIMIGO = { moreia: 1.95, baiacu: 1.7, caranguejo: 1.6, tubarao: 2.95 };
+      function inimigo(e, t) {
+        const tt = t + e.fase * 5;
+        if (e.tipo === 'mau') {
+          const p = proj(e.x, Math.abs(Math.sin(tt * 7)) * 0.15, e.z);
+          if (!p) return;
+          sombra(e.x, e.z, 1.05);
+          personagem(SPR.mau[quadroDe(tt * 2)], p, 1.15, 1 + Math.sin(tt * 12) * 0.06 + e.dano * 0.2, Math.sin(tt * 6) * 0.08, alfaDist(p.d));
+          return;
+        }
+        const p = proj(e.x, 0, e.z);
+        if (!p) return;
+        sombra(e.x, e.z, e.raio * 2.4);
+        g.save();
+        g.globalAlpha = alfaDist(p.d);
+        g.translate(p.x, p.y);
+        g.scale(p.s, p.s);
+        desenharInimigo(g, e.tipo, tt, e.dano);
+        g.restore();
+        // vida em cima da cabeça
+        const q = proj(e.x, ALTURA_INIMIGO[e.tipo], e.z);
+        if (!q || q.s < 12) return;
+        const tam = clamp(q.s * 0.3, 10, 16);
+        const txt = String(e.vida);
+        g.save();
+        g.globalAlpha = alfaDist(q.d);
+        g.font = `800 ${tam}px 'Plus Jakarta Sans', system-ui, sans-serif`;
+        const w = Math.max(tam * 1.8, g.measureText(txt).width + tam);
+        g.fillStyle = 'rgba(69, 10, 10, 0.85)';
+        retRed(g, q.x - w / 2, q.y - tam * 0.75, w, tam * 1.5, tam * 0.75);
+        g.fill();
+        g.strokeStyle = '#FB7185';
+        g.lineWidth = 1.5;
+        g.stroke();
+        g.fillStyle = '#FFFFFF';
+        g.textAlign = 'center';
+        g.textBaseline = 'middle';
+        g.fillText(txt, q.x, q.y + 1);
+        g.restore();
+      }
+
+      /** Alvo da bola do chefão: pisca no chão, mais forte perto da queda. */
+      function alvoBala(b, t) {
+        const p = proj(b.x1, 0.02, b.z1);
+        if (!p) return;
+        const u = clamp(b.t / b.dur, 0, 1);
+        g.save();
+        g.globalAlpha = 0.25 + 0.6 * u * (0.7 + Math.sin(t * 20) * 0.3);
+        g.fillStyle = 'rgba(220, 38, 38, 0.35)';
+        g.strokeStyle = '#EF4444';
+        g.lineWidth = Math.max(2, p.s * 0.06);
+        g.beginPath();
+        g.ellipse(p.x, p.y, p.s * 1.05, p.s * 0.36, 0, 0, TAU);
+        g.fill();
+        g.stroke();
+        g.beginPath();
+        g.ellipse(p.x, p.y, p.s * 1.05 * (1 - u), p.s * 0.36 * (1 - u), 0, 0, TAU);
+        g.stroke();
+        g.restore();
+      }
+      function bala(b) {
+        const u = clamp(b.t / b.dur, 0, 1);
+        const x = b.x0 + (b.x1 - b.x0) * u;
+        const z = b.z0 + (b.z1 - b.z0) * u;
+        const y = 3.4 * (1 - u) + 5 * u * (1 - u) + 0.35 * u;
+        const p = proj(x, y, z);
+        if (!p) return;
+        const r = Math.max(5, p.s * 0.38);
+        g.save();
+        const gl = g.createRadialGradient(p.x, p.y, r * 0.3, p.x, p.y, r * 2);
+        gl.addColorStop(0, 'rgba(239, 68, 68, 0.55)');
+        gl.addColorStop(1, 'rgba(239, 68, 68, 0)');
+        g.fillStyle = gl;
+        g.beginPath();
+        g.arc(p.x, p.y, r * 2, 0, TAU);
+        g.fill();
+        espinhos(g, p.x, p.y, r, 10, b.t * 8, '#3B0764', 1.45);
+        g.fillStyle = gradBola(g, p.x, p.y, r, ['#F5D0FE', '#A855F7', '#581C87', '#1E0838']);
+        g.beginPath();
+        g.arc(p.x, p.y, r, 0, TAU);
+        g.fill();
+        brilho(g, p.x - r * 0.35, p.y - r * 0.35, r * 0.25, r * 0.15, -0.5, 0.8);
+        g.restore();
       }
 
       function aguaViva(x, z, t) {
@@ -1842,6 +2684,18 @@
         g.textAlign = 'center';
         g.textBaseline = 'middle';
         g.fillText(txt, 0, 1);
+        for (let i = 0; i < P.arma; i++) {
+          const gx = w / 2 + 9 + i * 10;
+          g.fillStyle = TANQUES[P.arma][1];
+          g.strokeStyle = '#06172D';
+          g.lineWidth = 1.5;
+          g.beginPath();
+          g.moveTo(gx, -8);
+          g.quadraticCurveTo(gx + 5, 1, gx, 5);
+          g.quadraticCurveTo(gx - 5, 1, gx, -8);
+          g.fill();
+          g.stroke();
+        }
         g.restore();
       }
 
@@ -1911,7 +2765,7 @@
       const teclas = { esq: false, dir: false };
       let arrasto = null;
       function aoTecla(ev, baixo) {
-        if (!P || P.estado !== 'correndo') return;
+        if (!P || (P.estado !== 'correndo' && P.estado !== 'chefe')) return;
         if (['ArrowLeft', 'a', 'A'].includes(ev.key)) { teclas.esq = baixo; ev.preventDefault(); }
         if (['ArrowRight', 'd', 'D'].includes(ev.key)) { teclas.dir = baixo; ev.preventDefault(); }
       }
@@ -1920,7 +2774,7 @@
       tela.addEventListener('keydown', tDown);
       tela.addEventListener('keyup', tUp);
       tela.addEventListener('pointerdown', (ev) => {
-        if (!P || P.estado !== 'correndo') return;
+        if (!P || (P.estado !== 'correndo' && P.estado !== 'chefe')) return;
         arrasto = { x: ev.clientX, alvo: P.alvoX };
         try { tela.setPointerCapture(ev.pointerId); } catch (e) { /* nada */ }
       });
@@ -1940,8 +2794,8 @@
 
       ctx.guia([
         { alvo: '#sd-car-canvas', desenho: 'onda', titulo: 'Guie o Diver', texto: 'Ele nada sozinho. Arraste para os lados (ou use as setas) e encoste nos Divers perdidos: eles entram no cardume.' },
-        { alvo: '#sd-car-canvas', desenho: 'estrela', titulo: 'Portais e perigos', texto: 'Portal turquesa ou amarelo ajuda (+7, x2); coral atrapalha (−4, ÷2). Água-viva, ouriço, coral que gira e pedra tiram gente do cardume.' },
-        { alvo: '#sd-car-pontos', desenho: 'trofeu', titulo: 'O chefão', texto: 'Cada fase dura uns 30 segundos e termina num chefão. Chegue com gente suficiente, abra um baú da sorte e siga para a próxima. Os pontos valem só o placar da sala.' },
+        { alvo: '#sd-car-canvas', desenho: 'estrela', titulo: 'Armas, portais e inimigos', texto: 'Pegue a arma d’água no chão: o cardume atira sozinho (1, 2 ou 3 jatos). Portal soma, multiplica ou tira; leia o número, porque às vezes a cor engana. Inimigos e perigos tiram gente do cardume.' },
+        { alvo: '#sd-car-pontos', desenho: 'trofeu', titulo: 'O chefão', texto: 'Cada fase dura uns 30 segundos e termina num chefão. Da fase 3 em diante ele atira bolas (saia do alvo vermelho) e chama reforços. Os pontos valem só o placar da sala.' },
       ]);
       medir();
       if (window.__diverTeste) {
@@ -1949,6 +2803,7 @@
           partida: () => P,
           mover: (x) => { if (P && Number.isFinite(x)) P.alvoX = clamp(x, -LIM, LIM); },
           avancar: (seg) => { for (let i = 0; i < seg * 60 && P && ['correndo', 'chefe', 'vitoria'].includes(P.estado); i++) passo(1 / 60); },
+          proxima: () => { if (P && P.estado === 'vitoria') { P.bauAberto = false; proximaFase(); } },
         };
       }
       faseEl.textContent = 'Cardume';
@@ -1958,7 +2813,7 @@
         emAndamento: () => !!(P && ['correndo', 'chefe', 'vitoria'].includes(P.estado)),
         parar() {
           cancelAnimationFrame(quadro);
-          if (P && !P.pontuado && P.total + P.perolas > 0) ctx.pontuar(P.total + P.perolas, { fase: P.n, saiu: true });
+          if (P && !P.pontuado && P.total + P.perolas + P.abates > 0) ctx.pontuar(P.total + P.perolas + P.abates, { fase: P.n, saiu: true });
           P = null;
           som.fechar();
           limpar.forEach((f) => f());
