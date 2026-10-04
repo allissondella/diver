@@ -147,7 +147,7 @@ const Descompressao = (() => {
           h('span', { class: 'pal-ranking__quem' }, h('span', { class: 'pal-ranking__nome', text: l.sou_eu ? `${l.nome} (você)` : l.nome })),
           h('span', { class: 'pal-ranking__pontos', text: `${l.pontos} pts` }))))
           : h('p', { class: 'texto-suave', text: 'Ninguém pontuou ainda. A primeira posição está esperando você.' }),
-        h('p', { class: 'texto-suave pal-ranking__nota', text: 'Investigação e palavra do dia: o melhor de cada dia, somado; treino da Palavrinha: até 60 por dia. Tiro ao Alvo e Pit Stop: o recorde. Batata Quente: vitórias do dia (até 150 por dia) + o recorde do Sozinho.' }));
+        h('p', { class: 'texto-suave pal-ranking__nota', text: 'Investigação e palavra do dia: o melhor de cada dia, somado; treino da Palavrinha: até 60 por dia. Tiro ao Alvo, Pit Stop e Cardume: o recorde. Batata Quente: vitórias do dia (até 150 por dia) + o recorde do Sozinho.' }));
       } catch (e) {
         lista.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui carregar o placar agora.' }));
       }
