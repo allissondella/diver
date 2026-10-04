@@ -118,7 +118,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2 };
+  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};
