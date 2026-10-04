@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-04 · Revisão da Georgia, parte 6: Travessia v2
+- **Feito:** as 5 fases (Linguagens, Humanas, Natureza, Matemática e Redação) com o "Aprender" completo (400–570 palavras) e pontos sem repetição; as 104 questões e as 24 variantes com comentário em cada uma das cinco alternativas; Dica de mergulhador nas variantes; temas agrupados, com a variante sempre no mesmo tema da original; 23 fichas da "Revisar a fundo". Enunciados, alternativas, gabaritos e ids não mudaram.
+- **Conferências:** `conferir-trilha.mjs` sem erro e sem aviso; `fila.mjs simular` com variantes continua funcionando; navegador (PC e celular) com o comentário seguindo a letra embaralhada e a "Revisar a fundo".
+- **Fim da revisão da Georgia:** os cinco cursos seguem o padrão novo.
+
 ## 2026-10-03 · Revisão da Georgia, parte 5: ISO/IEC 27001 v2
 - **Feito:** artigo nas 6 fases (antes nenhuma tinha), de 10–12 para 20 questões por fase (55 novas), comentários e Dica de mergulhador nas 120, temas agrupados, 17 fichas; 26 questões em que a certa entregava a resposta pelo tamanho foram reescritas; adivinha "Confidencialidade" ganhou as respostas aceitas que faltavam; caderno novo do curso.
 - **Conferências:** `conferir-trilha.mjs` sem erro e sem aviso; posição da certa equilibrada (A 34 · B 26 · C 30 · D 30); duas questões novas que repetiam outra fase foram trocadas; navegador (PC e celular) com artigo, tabela cabendo na tela, comentários e "Revisar a fundo".
