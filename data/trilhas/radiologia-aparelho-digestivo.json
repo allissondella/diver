@@ -66,8 +66,8 @@
               "titulo": "RM",
               "itens": [
                 "Fora de fase: gordura",
-                "TE longo: água",
-                "Hepatobiliar em 20 min"
+                "Em fase: ferro",
+                "Difusão: tumor celular e abscesso"
               ]
             },
             {
@@ -127,14 +127,6 @@
           ],
           "linhas": [
             [
-              "Queda de sinal no fora de fase",
-              "Gordura intracitoplasmática (esteatose, adenoma, CHC)"
-            ],
-            [
-              "Hipersinal em T2 que persiste no TE longo",
-              "Cisto, hemangioma"
-            ],
-            [
               "Hipersinal em T1 sem contraste",
               "Sangue, gordura, melanina, muco/proteína"
             ],
@@ -149,25 +141,30 @@
             [
               "Realce tardio progressivo",
               "Fibrose (colangiocarcinoma, cicatriz)"
-            ],
-            [
-              "Hipointenso na fase hepatobiliar",
-              "Sem hepatócitos funcionantes (metástase, CHC, hemangioma, adenoma)"
             ]
           ]
         },
         "pontos": [
           "A fase sem contraste mostra se a lesão já era hiperdensa antes de realçar.",
+          "Washout: realçou e depois ficou hipodensa em relação ao fígado; alerta para CHC e metástase hipervascular.",
           "Ferro faz o sinal cair no em fase; gordura, no fora de fase.",
-          "Contraste hepatobiliar funciona mal com bilirrubina alta.",
+          "No T2 com TE longo, só líquido e sangue lento (cisto, hemangioma) mantêm o hipersinal.",
+          "Fase hepatobiliar em cerca de 20 min; funciona mal com bilirrubina alta, e hipointenso nela não é sinônimo de maligno.",
+          "Isquemia começa nas fronteiras: Griffith (flexura esplênica) e Sudeck (retossigmoide).",
           "Cauda de cometa na parede da vesícula: adenomiomatose.",
-          "Só o bulbo duodenal é intraperitoneal.",
-          "Reto: baixo até 5 cm, médio 5–10 cm, alto 10–15 cm da borda anal."
+          "Só o bulbo duodenal é intraperitoneal."
         ],
         "perolas": [
           "Compare o realce da lesão com o sangue: o hemangioma acompanha a aorta.",
-          "Hipointenso na hepatobiliar não é sinônimo de maligno.",
-          "Lesão que deixa os vasos passarem por dentro, sem efeito de massa, costuma ser pseudolesão."
+          "Lesão que deixa os vasos passarem por dentro, sem efeito de massa, costuma ser pseudolesão.",
+          "Na criança, US primeiro e a menor dose que responda à pergunta."
+        ],
+        "reforcar": [
+          "washout",
+          "fora de fase",
+          "te longo",
+          "hepatobiliar",
+          "griffith"
         ]
       }
     },
@@ -214,15 +211,15 @@
             {
               "titulo": "Císticas",
               "itens": [
-                "Céu estrelado",
-                "Cistos filhos",
-                "Mucinosa: operar"
+                "Cisto simples: água, sem realce",
+                "Hidático: cistos filhos",
+                "Mucinosa: cirurgia"
               ]
             },
             {
               "titulo": "Hemangioma",
               "itens": [
-                "Nodular descontínuo",
+                "Nodular periférico e descontínuo",
                 "Acompanha a aorta",
                 "Kasabach-Merritt"
               ]
@@ -230,16 +227,15 @@
             {
               "titulo": "HNF",
               "itens": [
-                "Cicatriz com T2 alto",
-                "Retém na hepatobiliar"
+                "Cicatriz central: T2 alto",
+                "Não maligniza"
               ]
             },
             {
-              "titulo": "Hepatocelulares",
+              "titulo": "Hepatocelular",
               "itens": [
-                "HNF1-alfa: gordura",
-                "Atol: sangra",
-                "Beta-catenina: risco de CHC"
+                "Três subtipos",
+                "Sangra e pode malignizar"
               ]
             }
           ]
@@ -291,7 +287,7 @@
             ],
             [
               "Sinal",
-              "Igual ao fígado; cicatriz com T2 alto",
+              "Igual ao fígado em T1 e T2",
               "Gordura intracelular ou anel periférico em T2"
             ],
             [
@@ -302,17 +298,26 @@
           ]
         },
         "pontos": [
-          "Cisto simples: densidade de água e nenhum realce.",
+          "Hamartomas biliares: céu estrelado de focos com hipersinal em T2, sem comunicação com a via biliar.",
+          "Hemangioma: realce nodular periférico e descontínuo, sem washout.",
           "Hemangioma pequeno pode encher todo na arterial, sem lavar.",
+          "HNF: cicatriz central com hipersinal em T2 e realce tardio.",
+          "Subtipo inflamatório: sinal do atol; é o que mais sangra.",
+          "Subtipo beta-catenina: homem, anabolizante, maior risco de CHC.",
           "Hemangioma esclerosante simula colangiocarcinoma: compare com exames antigos.",
-          "O anticoncepcional faz a HNF crescer, mas não a cria.",
-          "Lesão cística com septos grossos e nódulos murais: cirurgia.",
-          "Hiperplasia nodular regenerativa: nódulos sem fibrose em distúrbios da microcirculação."
+          "Neoplasia cística mucinosa com septos grossos e nódulos murais: cirurgia."
         ],
         "perolas": [
           "Realce nodular abaixo da aorta não é hemangioma: pense em angiossarcoma.",
           "Na fase de transição, o hemangioma pode fingir washout.",
           "Lesão cística no segmento IV com hipersinal em T1: cisto ciliado."
+        ],
+        "reforcar": [
+          "ceu estrelado",
+          "nodular periferico",
+          "cicatriz central",
+          "atol",
+          "beta-catenina"
         ]
       }
     },
@@ -375,23 +380,30 @@
               "titulo": "LI-RADS",
               "itens": [
                 "Realce arterial + washout",
-                "Alvo: LR-M",
-                "Tumor na veia: LR-TIV"
+                "Cápsula e crescimento",
+                "Trombo que realça e alarga: LR-TIV"
               ]
             },
             {
               "titulo": "Depósitos",
               "itens": [
-                "Ferro primário poupa o baço",
+                "Esteatose: PDFF quantifica",
                 "Wilson: caudado normal"
               ]
             },
             {
               "titulo": "Não CHC",
               "itens": [
+                "Metástase: a mais comum",
                 "Fibrolamelar",
-                "Pirulito",
                 "Angiossarcoma"
+              ]
+            },
+            {
+              "titulo": "Transplante",
+              "itens": [
+                "Milão",
+                "Trombo tumoral contraindica"
               ]
             }
           ]
@@ -454,12 +466,14 @@
           ]
         },
         "pontos": [
-          "Hipertensão portal pré-sinusoidal: esquistossomose e trombose portal.",
-          "Trombo tumoral realça e alarga a veia.",
+          "Na carcinogênese, o portal cai e o arterial sobe: por isso o CHC realça na arterial e lava.",
+          "Trombo tumoral realça e alarga a veia; trombo brando não realça.",
+          "Padrão em alvo é LR-M: maligno, mas não necessariamente CHC.",
           "Rastreamento: US com alfa-fetoproteína a cada 6 meses.",
           "Milão: 1 nódulo até 5 cm ou até 3 de até 3 cm, sem invasão.",
+          "Hemocromatose poupa o baço; hemossiderose transfusional poupa o pâncreas.",
           "Esteatose: abaixo de 40 UH; PDFF quantifica.",
-          "Metástase é a lesão maligna mais comum do fígado."
+          "Sinal do pirulito: hemangioendotelioma epitelioide, em mulher jovem."
         ],
         "perolas": [
           "Nódulo hipervascular no Budd-Chiari crônico costuma ser regenerativo, não CHC.",
@@ -487,6 +501,13 @@
             "quando": "A cada 6 meses",
             "fato": "Rastreamento com US e alfa-fetoproteína no paciente de risco."
           }
+        ],
+        "reforcar": [
+          "lr-m",
+          "pirulito",
+          "hemocromatose",
+          "realca e alarga",
+          "milao"
         ]
       }
     },
@@ -534,14 +555,14 @@
               "titulo": "Vesícula",
               "itens": [
                 "Murphy ultrassonográfico",
-                "Gangrenosa e enfisematosa",
+                "Gangrenosa: sem Murphy",
                 "Pólipo de 10 mm ou mais"
               ]
             },
             {
               "titulo": "Colangites",
               "itens": [
-                "Colar de contas",
+                "Aguda: hiperemia periductal",
                 "IgG4: longa e lisa",
                 "Piogênica: lobo esquerdo"
               ]
@@ -549,9 +570,8 @@
             {
               "titulo": "Cistos",
               "itens": [
-                "Todani I: fusiforme",
-                "III: coledococele",
-                "V: ponto central"
+                "Todani I: fusiforme, o mais comum",
+                "III: coledococele"
               ]
             },
             {
@@ -620,22 +640,31 @@
             ],
             [
               "V",
-              "Caroli: dilatações intra-hepáticas"
+              "Dilatações intra-hepáticas (ponto central)"
             ]
           ]
         },
         "pontos": [
-          "Cálculo faz sombra e se move; pólipo fica preso à parede.",
-          "TC falha para cálculos de colesterol.",
+          "Cálculo faz sombra e se move; na TC, os de colesterol podem não aparecer.",
+          "Colecistite enfisematosa: gás na parede e no lúmen, em diabético; cirurgia urgente.",
           "Adenomiomatose sem microcistos pode ser igual a carcinoma.",
           "Coledocolitíase: colangio-RM.",
-          "Klatskin é o colangiocarcinoma mais comum.",
+          "Colangite esclerosante primária: colar de contas, em homem jovem com retocolite.",
+          "Caroli: dilatações intra-hepáticas com o ponto central.",
+          "Klatskin é o colangiocarcinoma mais comum; Bismuth IV costuma ser irressecável.",
           "Carcinoma ampular tem melhor prognóstico entre os periampulares."
         ],
         "perolas": [
           "Murphy negativo num séptico com colecistite não tranquiliza: pense em gangrenosa.",
           "Estenose longa e lisa com pâncreas em salsicha: IgG4, que responde a corticoide.",
           "Trombo tumoral fala mais de CHC que de colangiocarcinoma."
+        ],
+        "reforcar": [
+          "enfisematosa",
+          "adenomiomatose",
+          "colar de contas",
+          "caroli",
+          "klatskin"
         ]
       }
     },
@@ -699,15 +728,15 @@
             {
               "titulo": "Sólidos",
               "itens": [
-                "Adenocarcinoma hipovascular",
-                "Neuroendócrino hipervascular"
+                "Adenocarcinoma: hipoatenuante, duplo ducto",
+                "Neuroendócrino: hipervascular"
               ]
             },
             {
               "titulo": "Císticos",
               "itens": [
-                "Idade separa os três",
-                "IPMN fala com o ducto"
+                "Idosa, meia-idade, jovem",
+                "Só um comunica com o ducto"
               ]
             },
             {
@@ -778,11 +807,13 @@
         },
         "pontos": [
           "TC na pancreatite: para complicações, após 48–72 h.",
-          "Pseudocisto tem só líquido; WON tem debris.",
-          "Massa atravessada pelo ducto favorece pancreatite focal.",
+          "Atlanta: depois de 4 semanas, pseudocisto (só líquido) ou WON (com debris).",
+          "Ducto penetrante (atravessa a massa) favorece pancreatite focal.",
+          "Autoimune tipo 1: pâncreas em salsicha com halo; responde a corticoide.",
+          "Adenocarcinoma da cabeça: duplo ducto e icterícia indolor; corpo e cauda: diagnóstico tardio.",
+          "Tumor de Frantz: mulher jovem, massa sólido-cística com hemorragia.",
           "Bem diferenciado: Gálio-68; alto grau: FDG.",
-          "Corpo e cauda: diagnóstico tardio, sem icterícia.",
-          "TC pancreática decide quem opera."
+          "TC multifásica de protocolo pancreático decide quem opera."
         ],
         "perolas": [
           "Coleção que realça igual à aorta em todas as fases não é coleção: é pseudoaneurisma.",
@@ -806,6 +837,12 @@
             "quando": "≥ 4 semanas",
             "fato": "Pseudocisto (só líquido, parede) ou necrose encapsulada (WON)."
           }
+        ],
+        "reforcar": [
+          "ducto penetrante",
+          "salsicha",
+          "duplo ducto",
+          "frantz"
         ]
       }
     },
@@ -877,15 +914,14 @@
               "titulo": "Grande",
               "itens": [
                 "Índice esplênico",
-                "Olhar em volta"
+                "Procurar a causa em volta"
               ]
             },
             {
               "titulo": "Focais",
               "itens": [
-                "Hemangioma",
-                "SANT",
-                "Angiossarcoma"
+                "Hemangioma: o mais comum",
+                "Angiossarcoma: maligno primário"
               ]
             }
           ]
@@ -958,15 +994,23 @@
         "pontos": [
           "Igual ao baço em todas as fases: tecido esplênico.",
           "Fendas não são lacerações.",
-          "Corte fixo de 12 cm superdiagnostica.",
-          "PET: baço com captação maior que a do fígado é envolvimento.",
-          "Hemangioma é a lesão focal benigna mais comum.",
+          "Índice esplênico normal até cerca de 480; o corte fixo de 12 cm superdiagnostica.",
+          "Corpos de Gamna-Gandy: ferro com hipossinal em todas as sequências, maior no T2*.",
+          "Anemia falciforme: autoesplenectomia, baço pequeno e calcificado.",
+          "SANT: cicatriz central radiada, realce da periferia para o centro; não vai para esplenectomia.",
+          "Linfoma atinge o baço em até um terço dos casos; o PET/TC é o melhor método.",
           "Estável há mais de 1 ano: benigna."
         ],
         "perolas": [
           "Hematoma esplênico sem trauma num adulto: lembre de angiossarcoma e de mononucleose.",
           "Nódulo na cauda do pâncreas que acompanha o baço em todas as fases é baço acessório, não neuroendócrino.",
           "Baço que cresce durante quimioterapia com oxaliplatina: pense em obstrução sinusoidal."
+        ],
+        "reforcar": [
+          "indice esplenico",
+          "gamna-gandy",
+          "autoesplenectomia",
+          "sant"
         ]
       }
     },
@@ -1038,8 +1082,8 @@
               "titulo": "Cólon",
               "itens": [
                 "Sigmoide: idoso",
-                "Ceco: jovem",
-                "Ceco acima de 9 cm"
+                "Ceco: mais jovens",
+                "Ceco acima de 9 cm crescendo"
               ]
             },
             {
@@ -1114,10 +1158,12 @@
           ]
         },
         "pontos": [
-          "Delgado dilatado: acima de 2,5 cm.",
+          "Obstrução: delgado acima de 2,5 cm com ponto de transição; sem ele, pense em pseudo-obstrução.",
           "Bridas: diagnóstico por exclusão.",
-          "A TC afirma sofrimento com segurança, mas nega mal.",
-          "Distensão difusa sem ponto de transição: causa funcional.",
+          "Hérnia interna: sinal do cogumelo e redemoinho dos vasos.",
+          "Parede sem realce é o sinal mais confiável de sofrimento; a TC afirma bem, mas nega mal.",
+          "Alça fechada: alça em U ou C com bico nas duas pontas; principal causa de estrangulamento.",
+          "Contraste oral no cólon em 8 a 24 h: cerca de 99% resolvem sem cirurgia.",
           "Intussuscepção no adulto tem causa orgânica.",
           "Flegmão não tem coleção; abscesso tem parede."
         ],
@@ -1153,7 +1199,7 @@
             {
               "onde": "mesenterio",
               "titulo": "Mesentério e AMS",
-              "texto": "**Isquemia mesentérica**: arterial (parede fina) ou venosa (parede espessa); redemoinho na alça fechada."
+              "texto": "**Isquemia mesentérica**: arterial (parede fina) ou venosa (parede espessa); redemoinho dos vasos na torção."
             },
             {
               "onde": "figado",
@@ -1171,6 +1217,12 @@
             "quando": "12–24 h",
             "fato": "Ceco que cresce rápido acima de 9 cm: risco de perfuração."
           }
+        ],
+        "reforcar": [
+          "ponto de transicao",
+          "cogumelo",
+          "sem realce",
+          "alca fechada"
         ]
       }
     },
@@ -1225,16 +1277,10 @@
           "centro": "Intestino",
           "ramos": [
             {
-              "titulo": "Crohn",
+              "titulo": "DII",
               "itens": [
-                "Salteado e transmural",
-                "Atividade x fibrose"
-              ]
-            },
-            {
-              "titulo": "Retocolite",
-              "itens": [
-                "Contínua desde o reto",
+                "Salteada × contínua",
+                "Atividade × fibrose",
                 "Cano de chumbo"
               ]
             },
@@ -1242,13 +1288,13 @@
               "titulo": "Cólon",
               "itens": [
                 "Sincrônico em 5%",
-                "Curto com ombros"
+                "Curto com ombros: tumor"
               ]
             },
             {
               "titulo": "Reto na RM",
               "itens": [
-                "Fáscia a 1 mm",
+                "Fáscia mesorretal: 1 mm",
                 "T3 a, b, c, d",
                 "EMVI"
               ]
@@ -1256,7 +1302,7 @@
             {
               "titulo": "Delgado",
               "itens": [
-                "Luz larga: linfoma",
+                "Luz dilatada: linfoma",
                 "Exofítico: GIST"
               ]
             }
@@ -1330,19 +1376,23 @@
           ]
         },
         "pontos": [
+          "DII em atividade: realce estratificado e sinal do pente.",
           "Hipossinal em T2 e pouco realce na parede: fibrose.",
           "Seguimento de jovem com DII: entero-RM.",
-          "Achou câncer de cólon: avalie o cólon todo.",
-          "Reto: T2 de alta resolução perpendicular ao tumor.",
-          "Margem circunferencial: 1 mm.",
-          "Adenocarcinoma do delgado prefere o duodeno."
+          "Retocolite: contínua desde o reto; na fase crônica, cano de chumbo.",
+          "Achou câncer de cólon: avalie o cólon todo (sincrônicas em cerca de 5%).",
+          "Reto: T2 de alta resolução perpendicular ao tumor, sem contraste venoso.",
+          "Fáscia mesorretal ameaçada: tumor, depósito, EMVI ou linfonodo a 1 mm ou menos.",
+          "EMVI: veia do mesorreto com sinal de tumor; aumenta a chance de metástase."
         ],
         "reforcar": [
-          "Crohn",
-          "Retocolite"
+          "pente",
+          "cano de chumbo",
+          "fascia mesorretal",
+          "emvi"
         ],
         "perolas": [
-          "Veia do mesorreto com sinal de tumor muda o prognóstico: é EMVI.",
+          "Segmento curto, excêntrico e com ombros sugere tumor; longo e com divertículos, diverticulite.",
           "Linfonodo mucinoso é suspeito de qualquer tamanho.",
           "Ascite que molda o fígado e o baço: procure o apêndice."
         ],
@@ -1353,12 +1403,12 @@
             {
               "onde": "ileo-terminal",
               "titulo": "Íleo terminal",
-              "texto": "**Crohn**: transmural, sinal do pente, creeping fat, fístulas."
+              "texto": "**Crohn**: transmural, salteado, creeping fat, fístulas."
             },
             {
               "onde": "reto",
               "titulo": "Reto",
-              "texto": "**Retocolite** começa aqui e sobe contínua; **câncer de reto** estadiado pela RM."
+              "texto": "A doença que só pega a mucosa começa aqui e sobe contínua; **câncer de reto** estadiado pela RM."
             },
             {
               "onde": "flexura-esplenica",
@@ -1481,14 +1531,14 @@
             {
               "titulo": "Bolhas",
               "itens": [
-                "Uma: piloro ou antro",
-                "Duas: duodeno"
+                "Bolha única: piloro ou antro",
+                "Dupla bolha: duodeno"
               ]
             },
             {
               "titulo": "Cólon",
               "itens": [
-                "Cólon fininho",
+                "Microcólon: obstrução distal",
                 "Reto menor que o sigmoide"
               ]
             },
@@ -1496,7 +1546,7 @@
               "titulo": "Fígado e vias",
               "itens": [
                 "Canal comum longo",
-                "Discordância US x TC"
+                "Sólido no US, cístico na TC: sarcoma"
               ]
             }
           ]
@@ -1516,7 +1566,7 @@
           },
           {
             "icone": "🔺",
-            "conceito": "Triângulo",
+            "conceito": "Cordão triangular",
             "liga": "atresia de vias biliares",
             "porque": "Fibrose hiperecogênica na frente da bifurcação portal."
           },
@@ -1564,17 +1614,26 @@
           ]
         },
         "pontos": [
-          "US primeiro; TC só quando muda a conduta.",
-          "Risco de perfuração: nada de bário.",
-          "Dupla bolha com gás distal não tranquiliza.",
-          "Cólon de cerca de 1 cm: obstrução distal desde a vida fetal.",
-          "Invaginação recorrente ou acima de 3 anos: ponto de partida.",
-          "Sangramento indolor em menor de 2 anos: pertecnetato."
+          "US primeiro; com risco de perfuração, nada de bário.",
+          "Bateria de botão (dupla borda) no esôfago: endoscopia imediata.",
+          "Dupla bolha com gás distal não tranquiliza: pode ser volvo.",
+          "Volvo do intestino médio: duodeno em saca-rolhas no EED.",
+          "Microcólon (cerca de 1 cm): obstrução distal desde a vida fetal.",
+          "Atresia de vias biliares: cordão triangular no US; cirurgia de Kasai precoce.",
+          "Invaginação recorrente ou acima de 3 anos: procure ponto de partida.",
+          "Sangramento retal indolor antes dos 2 anos: Meckel, cintilografia com pertecnetato."
         ],
         "perolas": [
           "Vômito bilioso no neonato é volvo até prova em contrário.",
           "Criança de 8 anos com massa hepática sólida no US e cística na TC: sarcoma embrionário.",
           "Lactente com fígado infiltrado e bom estado geral: olhe a adrenal."
+        ],
+        "reforcar": [
+          "bateria",
+          "dupla bolha",
+          "saca-rolhas",
+          "microcolon",
+          "cordao triangular"
         ]
       }
     }

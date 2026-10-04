@@ -134,9 +134,9 @@ Toda fase segue o caminho **📚 Aprender → 🧠 Associar → 🃏 Praticar �
 | 🧠 Associar | `mapaMental` (3 a 5 ramos, 2 a 4 itens cada, só o essencial) + `associacoes` (4 a 6 "imagens de associação" **para os pontos de difícil memorização**: emoji + conceito → ligação + o porquê) + `tabela` | `fases[].resumo` e blocos `pares`/`sequencias` |
 | 🃏 Praticar | questões da fase (pelo menos 8 fáceis e médias) | `questoes` |
 | ⚔️ Desafio | questões difíceis, adivinhas e prova do curso | `questoes`, `adivinhas`, `prova` |
-| 🔄 Revisar | `pontos` (até 8) e `perolas` (até 6), enxutos, e variantes das questões nossas; `fichas` por tema para a "Revisar a fundo" | `fases[].resumo`, `variantes`, `fichas` |
+| 🔄 Revisar | `pontos` (até 8: **repetem o mais importante e difícil** do Aprender) e `perolas` (até 6), enxutos, e variantes das questões nossas; `fichas` por tema para a "Revisar a fundo" | `fases[].resumo`, `variantes`, `fichas` |
 
-**Nada repetido:** cada conceito aparece no máximo 2 a 3 vezes no material da fase (artigo + mapa mental + associações + pontos + pérolas). Só o que é muito importante e difícil de memorizar pode reaparecer (até 4 vezes); liste esses termos em `resumo.reforcar`.
+**Repetição na medida (regra da Georgia, 2026-10-04):** cada conteúdo aparece **no máximo 3 vezes** no material da fase, e quanto mais importante ou difícil de memorizar, mais ele repete, sempre no caminho **Aprender (explicação completa) → mapa mental ou associações (relembrar) → pontos-chave (última repetição)**. O mapa mental esquematiza o mais importante; as associações priorizam o difícil de decorar; os pontos-chave repetem o mais importante e difícil, sem assunto novo. Liste em `resumo.reforcar` os **3 a 5 conceitos** que fazem o caminho completo (o `conferir-trilha.mjs` confere o caminho e avisa ponto-chave ou item do mapa que não retoma o Aprender).
 
 Formato dos campos novos (todos opcionais para o app, mas obrigatórios para esta skill quando se aplicam):
 
