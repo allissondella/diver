@@ -57,6 +57,7 @@
 - 2026-10-03 · O Professor Diver **estuda a referência, entende e conta do nosso jeito**: divertido, fácil de aprender e de memorizar. Depois o conteúdo vai para a Fila de Validação com as outras IAs.
 - 2026-10-03 · Antes de cada fase, um **artigo** com textos claros e simples, mapa mental, imagens de associação, linha do tempo e mapas (geográficos ou do corpo) quando se aplicam. Caminho: Aprender → Associar → Praticar → Desafio → Revisar.
 - 2026-10-03 · As anotações da professora Georgia (seção 7) valem **para todos os cursos, sempre**.
+- 2026-10-04 · **Quem revisa cada curso (revisão humana):** Radiologia (Digestivo e Musculoesquelético) → professora Georgia, radiologista; Cibersegurança e ISO 27001 → o próprio Allisson, 12 anos na área. Travessia (Enem) ainda sem especialista por área. Item marcado `revisar` vai para o especialista do curso, que decide; nunca dê o fato como confirmado sem ele.
 
 ## 6. Lições gerais (de qualquer curso)
 

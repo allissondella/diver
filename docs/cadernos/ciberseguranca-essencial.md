@@ -10,6 +10,7 @@ Iniciantes, de empresas e alunos: "aprender a se cuidar" na vida digital e no tr
 - 2026-10-03 · Atualizar o curso com o material novo do Drive e aplicar o padrão da revisão da Georgia, que vale para todos os cursos.
 - 2026-10-04 · Mais conteúdo de vida digital e redes sociais (pedido do Allisson), como fase nova, não espalhado nas outras.
 - 2026-10-04 · No fim do curso, sugerir o jogo de detetive antes da prova, para relaxar.
+- 2026-10-04 · **Especialista do curso: o próprio Allisson**, que trabalha com segurança da informação há 12 anos. É ele quem faz a revisão humana do conteúdo técnico (etapa 6 de `docs/CONTEUDO_CURSINHO.md`): item marcado `revisar` vai para ele, no chat.
 
 ## Decisões
 - 2026-10-03 · **v2 (padrão Georgia):** artigo completo em cada fase (460–580 palavras), mapa mental, associações, tabela, 6 pontos e 3 pérolas, sem conceito em mais de 3 blocos; as 120 questões com os mesmos ids ganharam comentário em cada alternativa e Dica de mergulhador; temas agrupados (3 ou 4 por fase); 21 questões novas (de 20 para 23–24 por fase); 22 fichas da "Revisar a fundo".
@@ -38,6 +39,6 @@ Iniciantes, de empresas e alunos: "aprender a se cuidar" na vida digital e no tr
 
 ## Próximos passos e pendências
 - Mandar para a Fila de Validação (9 lotes de até 20 questões), com prioridade para as 21 novas da v2 e as 24 da fase "Vida digital e redes sociais".
-- Conferir com especialista a cib-vd-23 (lei do cyberbullying, 2024), marcada com `revisar`.
+- Conferir com o Allisson a cib-vd-23 (lei do cyberbullying, 2024), marcada com `revisar`.
 - Cartas dos jogos para os temas novos (botnet, pharming, passkey, exercício de mesa).
 - Variantes para a Revisão.
