@@ -222,10 +222,39 @@ const Progresso = (() => {
 
   /* ---------- Fases ---------- */
 
+  const feita = (prog, fase) => !!(prog.fases[fase.id] && prog.fases[fase.id].concluida);
+
+  /**
+   * Fase acrescentada depois que o curso foi publicado ("novaEm" no JSON) não tranca a fase seguinte:
+   * quem já tinha a próxima liberada continua com ela liberada.
+   */
   function faseDesbloqueada(prog, trilha, indice) {
     if (indice === 0 || trilha.fasesLivres) return true; // fasesLivres: o aluno escolhe a ordem
-    const anterior = trilha.fases[indice - 1];
-    return !!(prog.fases[anterior.id] && prog.fases[anterior.id].concluida);
+    for (let k = indice - 1; k >= 0; k--) {
+      if (!trilha.fases[k].novaEm) return feita(prog, trilha.fases[k]);
+    }
+    return true;
+  }
+
+  /**
+   * Na primeira vez que o aluno encontra uma fase "novaEm": se ele já tinha todas as outras fases
+   * feitas, ela fica recomendada (não obrigatória) para a Prova final. Retorna true se mudou algo.
+   */
+  function conhecerFasesNovas(prog, trilha) {
+    let mudou = false;
+    trilha.fases.filter((f) => f.novaEm).forEach((nova) => {
+      prog.fasesNovas = prog.fasesNovas || {};
+      if (prog.fasesNovas[nova.id]) return;
+      const outras = trilha.fases.filter((f) => !f.novaEm);
+      prog.fasesNovas[nova.id] = outras.every((f) => feita(prog, f)) && !feita(prog, nova) ? 'dispensada' : 'vista';
+      mudou = true;
+    });
+    return mudou;
+  }
+
+  /** Fases que a Prova final exige deste aluno (todas, menos as novas de que ele foi dispensado). */
+  function fasesExigidas(prog, trilha) {
+    return trilha.fases.filter((f) => !(prog.fasesNovas && prog.fasesNovas[f.id] === 'dispensada'));
   }
 
   /** Registra o fim de uma fase. Retorna os bônus concedidos. */
@@ -254,6 +283,6 @@ const Progresso = (() => {
     carregar, salvar, zerar, ultimaTrilha, definirUltimaTrilha,
     nivel, streakVigente, respondidasHoje,
     registrarResposta, registrarAvulsa, registrarEstudo, registrarVista, alternarMarcada, paraRevisar,
-    faseDesbloqueada, concluirFase, registrarTentativaFase,
+    faseDesbloqueada, conhecerFasesNovas, fasesExigidas, concluirFase, registrarTentativaFase,
   };
 })();

@@ -370,6 +370,7 @@ const App = (() => {
     if (!trilha) return;
     estado.trilha = trilha;
     estado.prog = Progresso.carregar(id);
+    if (Progresso.conhecerFasesNovas(estado.prog, trilha)) Progresso.salvar(id, estado.prog);
     estado.selecionada = id;
     if (lembrar) Progresso.definirUltimaTrilha(id);
     atualizarLateral();
@@ -758,7 +759,7 @@ const App = (() => {
       const ler = liberada && precisaLer(fase);
 
       let estadoTxt;
-      if (!liberada) estadoTxt = `Bloqueada: complete ${trilha.fases[i - 1].nome} para descer`;
+      if (!liberada) estadoTxt = `Bloqueada: complete ${trilha.fases.slice(0, i).reverse().find((f) => !f.novaEm).nome} para descer`;
       else if (concluida) estadoTxt = 'Concluída';
       else estadoTxt = plural(qtd, 'questão', 'questões');
 
@@ -1064,8 +1065,9 @@ const App = (() => {
   function renderizarProva() {
     const { trilha, prog } = estado;
     const cfg = configProva(trilha);
-    const concluidas = trilha.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
-    const fasesOk = concluidas.length === trilha.fases.length;
+    const exigidas = Progresso.fasesExigidas(prog, trilha);
+    const concluidas = exigidas.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
+    const fasesOk = concluidas.length === exigidas.length;
     const liberada = !cfg.exigeFases || fasesOk || Nuvem.ehAdmin() || Nuvem.ehProfessor();
     const provas = prog.provas || [];
     const aprovacao = provas.find((p) => p.aprovado);
@@ -1082,10 +1084,11 @@ const App = (() => {
           h('li', {}, icone('i-alvo'), h('span', {}, h('strong', { text: `${cfg.aprovacao}% de acertos` }), ` para ser aprovado (${Math.ceil((cfg.aprovacao / 100) * cfg.quantidade)} de ${cfg.quantidade})`)),
           h('li', {}, icone('i-check'), h('span', { text: 'Correção só no final, com a explicação de cada erro' }))),
         cfg.exigeFases ? h('div', { class: 'prova__fases' },
-          h('p', { class: 'rotulo-campo', text: `Pré-requisito: completar as ${trilha.fases.length} fases do Mergulho (${concluidas.length}/${trilha.fases.length})` }),
+          h('p', { class: 'rotulo-campo', text: `Pré-requisito: completar as ${exigidas.length} fases do Mergulho (${concluidas.length}/${exigidas.length})` }),
           h('ul', { class: 'prova__lista-fases' }, trilha.fases.map((f) => {
             const ok = prog.fases[f.id] && prog.fases[f.id].concluida;
-            return h('li', { class: ok ? 'texto-sucesso' : 'texto-suave' }, icone(ok ? 'i-check' : 'i-cadeado'), f.nome);
+            const recomendada = !ok && !exigidas.includes(f);
+            return h('li', { class: ok ? 'texto-sucesso' : 'texto-suave' }, icone(ok ? 'i-check' : recomendada ? 'i-estrela' : 'i-cadeado'), f.nome, recomendada ? ' (nova, recomendada)' : '');
           }))) : null,
         !fasesOk && cfg.exigeFases && (Nuvem.ehAdmin() || Nuvem.ehProfessor()) ? h('p', { class: 'jogo-card__dica', text: `Como ${Nuvem.ehAdmin() ? 'admin' : 'professor'}, você pode fazer a prova sem completar as fases (para conferir).` }) : null,
         liberada
@@ -1275,7 +1278,7 @@ const App = (() => {
   }
 
   function cursoCompleto(trilha, prog) {
-    return trilha.fases.every((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
+    return Progresso.fasesExigidas(prog, trilha).every((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
   }
 
   function detetiveAntesDaProva(trilha, prog) {
