@@ -59,21 +59,21 @@
               "titulo": "Proteger",
               "itens": [
                 "Ativos",
-                "Três propriedades"
+                "Confidencialidade, integridade, disponibilidade"
               ]
             },
             {
               "titulo": "Risco",
               "itens": [
-                "Ameaça e brecha",
-                "Medida muda o risco"
+                "Ameaça e vulnerabilidade",
+                "Risco zero não existe"
               ]
             },
             {
               "titulo": "Sistema de gestão",
               "itens": [
-                "Gestão, não produto",
-                "Planejar, fazer, checar, agir"
+                "Não é software nem departamento",
+                "Baseado em riscos"
               ]
             },
             {
@@ -89,7 +89,7 @@
           {
             "icone": "🔁",
             "conceito": "Roda que gira",
-            "liga": "melhoria contínua",
+            "liga": "ciclo PDCA (melhoria contínua)",
             "porque": "Planeja, faz, confere, ajusta e recomeça."
           },
           {
@@ -152,16 +152,24 @@
         },
         "pontos": [
           "A informação é ativo e tem dono.",
+          "Vazou: confidencialidade; mudou: integridade; caiu: disponibilidade.",
           "Risco zero não existe; risco se gerencia.",
           "Os controles saem da avaliação de riscos.",
           "Sistema de gestão, não produto.",
-          "A ISO escreve; o organismo certifica.",
-          "Auditoria e análise crítica são o \"checar\"."
+          "Ciclo PDCA: planejar, fazer, checar e agir, sem parar.",
+          "A ISO escreve; o organismo de certificação certifica.",
+          "Auditoria e análise crítica são o checar."
         ],
         "perolas": [
-          "Vazou: confidencialidade. Mudou: integridade. Caiu: disponibilidade.",
           "O guia de controles não certifica ninguém.",
           "Nenhuma lista de controles é obrigatória por inteiro: o que manda é o risco."
+        ],
+        "reforcar": [
+          "confidencialidade",
+          "integridade",
+          "disponibilidade",
+          "pdca",
+          "organismo"
         ]
       }
     },
@@ -203,7 +211,7 @@
               "titulo": "Contexto",
               "itens": [
                 "Fora e dentro",
-                "Quem é afetado",
+                "Partes interessadas",
                 "Limites claros"
               ]
             },
@@ -211,7 +219,7 @@
               "titulo": "Direção",
               "itens": [
                 "Recursos",
-                "Segurança nos processos"
+                "Delega tarefas, não a responsabilização"
               ]
             },
             {
@@ -240,7 +248,7 @@
           {
             "icone": "🗺️",
             "conceito": "Cerca no mapa",
-            "liga": "limites do SGSI",
+            "liga": "escopo (limites do SGSI)",
             "porque": "Mostra onde o SGSI vale e onde termina."
           },
           {
@@ -309,16 +317,21 @@
         },
         "pontos": [
           "Questão externa vem de fora; interna, de dentro.",
+          "Partes interessadas: quem pode afetar, ser afetado ou se sentir afetado.",
           "A versão 2022 pede dizer quais requisitos o SGSI vai tratar.",
-          "Escopo pode ser parte da empresa, com limites claros.",
-          "Escopo é informação documentada.",
+          "O escopo pode ser parte da empresa, com limites claros, e é informação documentada.",
+          "O escopo considera interfaces e dependências com terceiros, como o provedor de nuvem.",
           "A direção delega tarefas, não a responsabilização.",
           "Política documentada e comunicada."
         ],
         "perolas": [
-          "Escopo que esquece o provedor de nuvem é escopo furado.",
           "Política sem os dois compromissos não atende a 5.2.",
           "Alta direção não precisa configurar firewall; precisa garantir recursos."
+        ],
+        "reforcar": [
+          "partes interessadas",
+          "escopo",
+          "responsabilizacao"
         ]
       }
     },
@@ -373,8 +386,8 @@
             {
               "titulo": "Tratar",
               "itens": [
-                "Quatro opções",
-                "Conferir no anexo"
+                "Escolher a opção",
+                "Comparar com o Anexo A"
               ]
             },
             {
@@ -402,7 +415,7 @@
           {
             "icone": "🧾",
             "conceito": "Checklist controle por controle",
-            "liga": "DA",
+            "liga": "Declaração de Aplicabilidade",
             "porque": "Entra? Por quê? Já está pronto? Se saiu, por quê?"
           },
           {
@@ -414,7 +427,7 @@
           {
             "icone": "🧹",
             "conceito": "Resto no chão",
-            "liga": "o que sobra do risco",
+            "liga": "risco residual",
             "porque": "O que sobra depois da faxina precisa ser aceito pelo dono."
           }
         ],
@@ -449,17 +462,23 @@
           ]
         },
         "pontos": [
-          "Critérios antes de avaliar.",
+          "Critérios de risco vêm antes de avaliar.",
           "Identificar, analisar e avaliar; tratar vem depois.",
           "Aceitar é decisão; ignorar é omissão.",
-          "O anexo confere, não obriga.",
+          "Compare os controles com o Anexo A para verificar se nenhum necessário ficou de fora.",
+          "Declaração de Aplicabilidade: controles incluídos e excluídos, com justificativa, e se estão implementados.",
+          "O risco residual é aceito pelo proprietário do risco, não pela TI.",
           "Objetivo tem dono, prazo e medida.",
           "Avaliações repetidas precisam ser comparáveis."
         ],
         "perolas": [
           "Na DA, controle excluído sem justificativa é não conformidade certa.",
-          "Quem aceita o que sobra do risco é o proprietário dele, não a TI.",
           "A 6.3 é novidade de 2022: mudar o SGSI também exige plano."
+        ],
+        "reforcar": [
+          "criterios de risco",
+          "declaracao de aplicabilidade",
+          "risco residual"
         ]
       }
     },
@@ -506,7 +525,7 @@
               "titulo": "Pessoas",
               "itens": [
                 "Saber por função",
-                "Todo mundo informado"
+                "Conscientização: todos"
               ]
             },
             {
@@ -519,15 +538,15 @@
             {
               "titulo": "Documentos",
               "itens": [
-                "Orientam",
-                "Registros comprovam"
+                "Identificar e aprovar",
+                "Controlar o de fora"
               ]
             },
             {
               "titulo": "Operar",
               "itens": [
                 "Controlar mudanças",
-                "Terceiro sob controle"
+                "Implementar o plano"
               ]
             }
           ]
@@ -587,7 +606,7 @@
         },
         "pontos": [
           "Competência se comprova com evidência.",
-          "Conscientização é para todo mundo.",
+          "Conscientização é para todos; competência, para quem tem papel específico.",
           "Documento orienta; registro comprova.",
           "Documento de fora também se controla.",
           "Mudança não intencional também se analisa.",
@@ -597,6 +616,11 @@
           "Treinou? Ainda falta avaliar se o treino funcionou.",
           "Sistema novo, fusão ou serviço novo: avalie os riscos de novo.",
           "A quantidade de documentos depende do porte e da complexidade, não de um número fixo."
+        ],
+        "reforcar": [
+          "competencia",
+          "conscientizacao",
+          "registro"
         ]
       }
     },
@@ -649,7 +673,7 @@
               "titulo": "Auditar",
               "itens": [
                 "Programa",
-                "Sem auditar a si mesmo"
+                "Objetividade e imparcialidade"
               ]
             },
             {
@@ -663,7 +687,7 @@
               "titulo": "Melhorar",
               "itens": [
                 "Reagir",
-                "Atacar a causa"
+                "Melhoria contínua"
               ]
             }
           ]
@@ -684,7 +708,7 @@
           {
             "icone": "🧯",
             "conceito": "Apagar o fogo e trocar a fiação",
-            "liga": "corrigir e eliminar a causa",
+            "liga": "correção e ação corretiva",
             "porque": "Apagar resolve hoje; trocar a fiação evita o próximo."
           },
           {
@@ -727,16 +751,21 @@
         },
         "pontos": [
           "Medir com método que permita comparar.",
-          "Auditor não audita o próprio trabalho.",
+          "Auditor não audita o próprio trabalho: objetividade e imparcialidade.",
+          "Auditoria de primeira parte é interna; segunda, do cliente; terceira, independente.",
           "Resultado de auditoria vai para a direção.",
           "A análise da direção termina em decisões.",
-          "Primeiro reagir, depois atacar a causa.",
+          "Correção elimina a não conformidade; ação corretiva elimina a causa.",
           "Ação proporcional ao efeito da falha."
         ],
         "perolas": [
-          "Rodar o backup de novo resolve hoje; descobrir o disco cheio e monitorar o espaço evita amanhã.",
           "Mudanças nas expectativas das partes interessadas entraram na análise da direção em 2022.",
           "Na versão 2022, melhoria contínua vem antes da cláusula de não conformidade."
+        ],
+        "reforcar": [
+          "imparcialidade",
+          "primeira parte",
+          "acao corretiva"
         ]
       }
     },
@@ -790,21 +819,21 @@
               "titulo": "Novidades",
               "itens": [
                 "Ameaças e nuvem",
-                "Vazamento e dados mascarados"
+                "Prevenção de vazamento"
               ]
             },
             {
               "titulo": "Na prática",
               "itens": [
                 "Lista com dono",
-                "Acesso mínimo"
+                "Menor privilégio"
               ]
             },
             {
               "titulo": "Certificado",
               "itens": [
-                "Dois estágios",
-                "Ciclo de três anos"
+                "Estágio 1 e estágio 2",
+                "Manutenção todo ano"
               ]
             }
           ]
@@ -819,7 +848,7 @@
           {
             "icone": "💳",
             "conceito": "Cartão com asteriscos",
-            "liga": "esconder parte do dado",
+            "liga": "mascaramento de dados",
             "porque": "Mostra só os quatro últimos dígitos."
           },
           {
@@ -875,6 +904,8 @@
           "93 controles em 4 temas.",
           "O anexo é lista de conferência, não obrigação em bloco.",
           "Mesa limpa é controle físico; backup é tecnológico.",
+          "Mascaramento de dados: mostrar só os quatro últimos dígitos do cartão.",
+          "Acesso pelo menor privilégio e pela necessidade de conhecer.",
           "Políticas revisadas com prazo e nas mudanças.",
           "Estágio 1 confere o desenho; estágio 2, o funcionamento.",
           "Certificado vale três anos, com manutenção no meio."
@@ -883,6 +914,11 @@
           "114 controles em 14 domínios é a versão de 2013.",
           "Não conformidade maior segura o certificado até ser tratada.",
           "O escopo do SGSI é o que aparece escrito no certificado."
+        ],
+        "reforcar": [
+          "mascaramento",
+          "menor privilegio",
+          "estagio 1"
         ]
       }
     }
