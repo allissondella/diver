@@ -9,6 +9,7 @@ Residentes e radiologistas em formação (provas de título e laudo do dia a dia
 - 2026-10-03 · Curso criado "nos moldes do professor", com os jogos e tudo, como v1 de validação da skill.
 - 2026-10-03 · Antes de cada fase, artigo com mapa mental, associações, linha do tempo e mapa do corpo quando se aplicam.
 - 2026-10-03 · **Revisão da professora Georgia (radiologista)** aplicada ao curso inteiro e levada para todos os cursos (`professor-diver.md`, seção 7).
+- 2026-10-04 · **Especialista do curso: a professora Georgia (radiologista).** É ela quem faz a revisão humana do conteúdo técnico (etapa 6 de `docs/CONTEUDO_CURSINHO.md`); dúvida de fato médico vai para ela.
 
 ## Decisões
 - 2026-10-03 · 9 fases: fundamentos; osteomielite e infecção; osteoartrite e degenerativas; AR e cristais; ombro; cotovelo, punho e mão; joelho (meniscos e ligamentos); patela, tornozelo e pé; tumores ósseos.

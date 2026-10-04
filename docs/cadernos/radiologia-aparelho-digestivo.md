@@ -9,6 +9,7 @@ Residentes e radiologistas em formação: diagnóstico por imagem do fígado, vi
 - 2026-09 · Curso criado a partir das anotações do admin (aulas COR-SPR GI e Deu Laudo GI); questões originais em caso clínico.
 - 2026-10-03 · **Revitalizar com a metodologia nova sem os alunos perderem o que já fizeram**: só acrescentar o artigo da fase; nunca trocar ids.
 - 2026-10-03 · **Padrão Georgia** (revisão de uma radiologista, vale para todos os cursos; `professor-diver.md` seção 7): termos técnicos (hipersinal, hiperdenso, hiperecogênico, realce), Aprender completo, resto enxuto, comentário em cada alternativa, Dica de mergulhador, ~20 questões por fase e fichas por tema.
+- 2026-10-04 · **Especialista do curso: a professora Georgia (radiologista).** É ela quem faz a revisão humana do conteúdo técnico (etapa 6 de `docs/CONTEUDO_CURSINHO.md`); dúvida de fato médico vai para ela.
 
 ## Decisões
 - 2026-10-03 · Artigo nas 9 fases (caminho Aprender → Associar → Praticar → Desafio → Revisar): seções, mapa mental e associações em todas; linha do tempo em fundamentos (fases do contraste), fígado difuso (carcinogênese), pâncreas (tempo das coleções), abdome agudo e pediatria; mapa do abdome (`tipo: "abdome"`) em abdome agudo e intestino.

@@ -8,6 +8,7 @@ Quem vai fazer a prova Foundation ou começar a trabalhar com SGSI: entender o v
 ## Seu gosto (preferências do usuário)
 - 2026-09-29 · Curso criado com 65 questões originais em português.
 - 2026-10-03 · Aplicar o padrão da revisão da Georgia, que vale para todos os cursos.
+- 2026-10-04 · **Especialista do curso: o próprio Allisson**, que trabalha com segurança da informação há 12 anos. É ele quem faz a revisão humana do conteúdo técnico (etapa 6 de `docs/CONTEUDO_CURSINHO.md`): item marcado `revisar` vai para ele, no chat.
 
 ## Decisões
 - 2026-10-03 · **v2 (padrão Georgia):** artigo em todas as fases (antes não havia nenhum), 20 questões por fase (65 antigas com os mesmos ids + 55 novas), comentário em cada alternativa e Dica de mergulhador, temas agrupados (2 ou 3 por fase), 17 fichas da "Revisar a fundo".
