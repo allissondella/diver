@@ -11,6 +11,8 @@
  *   e o "padrão Georgia" (docs/cadernos/professor-diver.md, seção 7): comentário por alternativa,
  *   Dica de mergulhador, ~20 questões por fase, Aprender completo, revisão enxuta, conceito
  *   repetido em blocos demais e ficha para os assuntos da "Revisar a fundo".
+ *   Regra da repetição (Georgia, 2026-10-04): o mais importante e difícil (resumo.reforcar, 3 a 5 conceitos)
+ *   faz o caminho Aprender → mapa mental ou associações → pontos-chave; os pontos-chave retomam o Aprender.
  */
 import { readFileSync } from 'node:fs';
 
@@ -23,6 +25,8 @@ const t = JSON.parse(readFileSync(arq, 'utf8'));
 const erros = [];
 const avisos = [];
 const semAcento = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+// Palavras comuns que não contam como "retomar o assunto" do Aprender
+const COMUNS = new Set('sempre quando porque depois antes entre sobre outro outra outros outras nunca muito muita mesmo mesma fazer feito pode podem deve devem ainda todos todas toda todo cada primeiro primeira quem onde nossa nosso sinal coisa coisas parte maior menor melhor tanto quanto assim desde durante contra sobre isso essa esse esta este aquela aquele numa nesse nessa dessa desse pelos pelas tambem apenas mais menos qual quais tipo forma'.split(' '));
 const palavras = (s) => String(s).split(/\s+/).filter(Boolean).length;
 const textoDe = (x) => (x == null ? '' : typeof x === 'string' ? x : Array.isArray(x) ? x.map(textoDe).join(' ') : typeof x === 'object' ? Object.values(x).map(textoDe).join(' ') : String(x));
 
@@ -72,17 +76,33 @@ for (const f of t.fases) {
   if ((r.perolas || []).length > 6) avisos.push(`${f.id}: ${r.perolas.length} pérolas (máximo 6)`);
   // Conceito repetido demais: cada termo em **negrito** é procurado nos blocos do "Antes de mergulhar"
   // (o Aprender — introdução + seções — conta como um bloco; depois mapa mental, associações, tabela,
-  // linha do tempo, mapa, pontos e pérolas). Máximo 3 blocos; os de resumo.reforcar podem ir a 4.
+  // linha do tempo, mapa, pontos e pérolas). Máximo 3 blocos, para todos (regra da Georgia: até 3 vezes).
   if (f.resumo) {
     const blocos = [[r.introducao, r.secoes], r.mapaMental, r.associacoes, r.tabela, r.linhaDoTempo, r.mapa, r.pontos, r.perolas]
       .map((b) => semAcento(textoDe(b))).filter(Boolean);
-    const reforcar = new Set((r.reforcar || []).map(semAcento));
     const termos = new Set((textoDe(r).match(/\*\*([^*]+)\*\*/g) || []).map((m) => semAcento(m.slice(2, -2)).trim()).filter((x) => x.length >= 5));
     for (const termo of termos) {
       const vezes = blocos.filter((b) => b.includes(termo)).length;
-      const limite = reforcar.has(termo) ? 4 : 3;
-      if (vezes > limite) avisos.push(`${f.id}: "${termo}" aparece em ${vezes} blocos do resumo (máximo ${limite})`);
+      if (vezes > 3) avisos.push(`${f.id}: "${termo}" aparece em ${vezes} blocos do resumo (máximo 3)`);
     }
+    // O mais importante e difícil faz o caminho completo: Aprender → mapa mental ou associações → pontos-chave
+    const aprenderTxt = semAcento(textoDe([r.introducao, r.secoes]));
+    const associarTxt = semAcento(textoDe([r.mapaMental, r.associacoes]));
+    const pontosTxt = semAcento(textoDe(r.pontos));
+    const reforcar = (r.reforcar || []).map(semAcento);
+    if (reforcar.length < 3 || reforcar.length > 5) avisos.push(`${f.id}: resumo.reforcar com ${reforcar.length} conceitos (liste os 3 a 5 mais importantes e difíceis)`);
+    for (const termo of reforcar) {
+      const falta = [[aprenderTxt, 'Aprender'], [associarTxt, 'mapa mental/associações'], [pontosTxt, 'pontos-chave']].filter(([b]) => !b.includes(termo)).map(([, n]) => n);
+      if (falta.length) avisos.push(`${f.id}: "${termo}" (reforçar) não aparece em: ${falta.join(', ')}`);
+      const vezes = blocos.filter((b) => b.includes(termo)).length;
+      if (vezes > 3) avisos.push(`${f.id}: "${termo}" (reforçar) aparece em ${vezes} blocos do resumo (máximo 3: Aprender → mapa ou associações → pontos)`);
+    }
+    // Ponto-chave e item do mapa mental retomam o que o Aprender explicou (não trazem assunto novo)
+    const raizes = (txt) => semAcento(txt).replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter((w) => w.length >= 5 && !COMUNS.has(w)).map((w) => w.slice(0, 5));
+    const doAprender = new Set(raizes(aprenderTxt));
+    const ecoa = (txt) => { const rz = raizes(txt); return !rz.length || rz.filter((w) => doAprender.has(w)).length >= Math.min(2, rz.length); };
+    (r.pontos || []).forEach((p) => { if (!ecoa(p)) avisos.push(`${f.id}: ponto-chave não retoma o Aprender: "${p}"`); });
+    ((r.mapaMental && r.mapaMental.ramos) || []).forEach((ramo) => (ramo.itens || []).forEach((it) => { if (!ecoa(it)) avisos.push(`${f.id}: item do mapa mental fora do Aprender: "${it}"`); }));
   }
 }
 
