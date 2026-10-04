@@ -60,16 +60,15 @@
             {
               "titulo": "Pilares",
               "itens": [
-                "Confidencialidade",
-                "Integridade",
-                "Disponibilidade"
+                "Três pilares",
+                "Autenticidade e não repúdio"
               ]
             },
             {
               "titulo": "Risco",
               "itens": [
                 "Chance e estrago",
-                "Reduzir, não zerar"
+                "Reduzir o risco"
               ]
             },
             {
@@ -121,12 +120,13 @@
           }
         ],
         "pontos": [
+          "Confidencialidade: só quem tem autorização vê; integridade: ninguém altera sem permissão; disponibilidade: está lá quando você precisa.",
           "Ignorar uma ameaça não é tratá-la.",
           "Treino baixa a chance; backup baixa o estrago.",
-          "Senha é pessoal e intransferível.",
+          "Pediu com urgência? Pare, desconfie e confirme por outro canal.",
           "Erro de português não é mais o sinal do golpe; o pedido estranho é.",
           "Ninguém é pequeno demais para ser alvo.",
-          "Confirmar por telefone também é segurança."
+          "Senha é pessoal e intransferível."
         ],
         "perolas": [
           "Golpe bom não parece golpe: ele parece urgente, oficial ou irresistível.",
@@ -162,7 +162,13 @@
               "Falta de treinamento"
             ]
           ]
-        }
+        },
+        "reforcar": [
+          "confidencialidade",
+          "integridade",
+          "disponibilidade",
+          "outro canal"
+        ]
       }
     },
     {
@@ -209,14 +215,13 @@
               "titulo": "Senha forte",
               "itens": [
                 "Longa",
-                "Imprevisível",
                 "Única"
               ]
             },
             {
               "titulo": "Guardar",
               "itens": [
-                "Cofre de senhas",
+                "Gerenciador de senhas",
                 "Senha-mestra forte"
               ]
             },
@@ -258,13 +263,13 @@
           {
             "icone": "📱",
             "conceito": "Chip clonado",
-            "liga": "golpe do SIM swap",
+            "liga": "troca de chip (SIM swap)",
             "porque": "Com seu número, o golpista recebe os SMS."
           },
           {
             "icone": "📮",
             "conceito": "Caixa de correio mestra",
-            "liga": "conta de recuperação",
+            "liga": "e-mail principal",
             "porque": "Quem tem o e-mail recupera as outras contas."
           }
         ],
@@ -285,7 +290,7 @@
             ],
             [
               "SMS",
-              "Pode ser desviado com a troca de chip"
+              "Pode ser desviado para outro chip"
             ],
             [
               "Pergunta secreta",
@@ -294,17 +299,24 @@
           ]
         },
         "pontos": [
-          "Comprimento vale mais que símbolo.",
-          "Cada serviço, uma senha.",
+          "Comprimento vale mais que símbolo: prefira uma frase-senha longa e fácil de lembrar.",
+          "Cada serviço, uma senha; o gerenciador de senhas guarda todas.",
           "Troque quando houver motivo.",
           "Dois fatores de verdade são de tipos diferentes.",
+          "SMS pode ser desviado na troca de chip: prefira app autenticador ou chave física.",
           "Código de verificação não se repassa.",
+          "O e-mail principal recupera as outras contas: ele merece a melhor proteção.",
           "Computador público: saia da conta e não salve a senha."
         ],
         "perolas": [
           "Palavra, símbolo e ano é o primeiro palpite dos programas.",
-          "Pedido de aprovação que você não fez: alguém já tem a sua senha.",
-          "O e-mail que recupera tudo merece a melhor proteção."
+          "Pedido de aprovação que você não fez: alguém já tem a sua senha."
+        ],
+        "reforcar": [
+          "frase-senha",
+          "gerenciador de senhas",
+          "troca de chip",
+          "e-mail principal"
         ]
       }
     },
@@ -365,7 +377,7 @@
             {
               "titulo": "Sinais",
               "itens": [
-                "Pressa",
+                "Urgência",
                 "Prêmio",
                 "Pedido de código"
               ]
@@ -408,13 +420,13 @@
           {
             "icone": "🪧",
             "conceito": "Placa de rua trocada",
-            "liga": "site falso no endereço certo",
+            "liga": "pharming (site falso no endereço certo)",
             "porque": "Você segue o caminho certo e chega ao lugar errado."
           },
           {
             "icone": "💸",
             "conceito": "Pagar para receber",
-            "liga": "taxa antes do prêmio",
+            "liga": "fraude de antecipação de recursos",
             "porque": "Prêmio de verdade não cobra taxa antes."
           }
         ],
@@ -454,17 +466,24 @@
           ]
         },
         "pontos": [
-          "A extensão verdadeira do arquivo é a última.",
+          "Quem manda no endereço é o domínio, logo antes da primeira barra.",
           "Remetente e número na tela podem ser falsificados.",
           "Banco não pede senha, código nem transferência de teste.",
-          "Cadeado só diz que a conexão é cifrada.",
+          "Pharming: endereço certo, site falso; o cadeado só diz que a conexão é cifrada.",
+          "Áudio ou ligação com a voz de alguém conhecido pedindo dinheiro: confirme por outro canal.",
+          "Fraude de antecipação de recursos: prêmio que cobra taxa antes é golpe.",
           "Antes do Pix, confira nome e documento de quem recebe.",
           "E-mail suspeito no trabalho: reporte, não encaminhe."
         ],
         "perolas": [
-          "Prêmio que você não disputou e cobra taxa é golpe.",
-          "Pedido urgente e sigiloso de dinheiro, mesmo com a voz certa, se confirma por fora.",
+          "A extensão verdadeira do arquivo é a última.",
           "Caiu no golpe do Pix? Cada minuto conta: ligue para o banco."
+        ],
+        "reforcar": [
+          "primeira barra",
+          "pharming",
+          "voz",
+          "antecipacao"
         ]
       }
     },
@@ -520,21 +539,21 @@
               "titulo": "Apps",
               "itens": [
                 "Loja oficial",
-                "Permissão na medida"
+                "Extensões: poucas"
               ]
             },
             {
               "titulo": "Rede",
               "itens": [
-                "Wi-Fi aberto com cuidado",
+                "Dados móveis para o banco",
                 "Roteador sem senha de fábrica"
               ]
             },
             {
               "titulo": "Cópias",
               "itens": [
-                "Três, dois, um",
-                "Testar a volta"
+                "Uma cópia desconectada",
+                "Uma fora do local"
               ]
             }
           ]
@@ -561,13 +580,13 @@
           {
             "icone": "🔌",
             "conceito": "Tomada que espiona",
-            "liga": "USB público",
+            "liga": "juice jacking (USB público)",
             "porque": "A porta que dá energia também passa dados."
           },
           {
             "icone": "🥚",
             "conceito": "Ovos em cestas diferentes",
-            "liga": "backup",
+            "liga": "regra 3-2-1",
             "porque": "Uma queda não quebra todos."
           }
         ],
@@ -604,14 +623,22 @@
           "Atualização é segurança, não enfeite.",
           "Sistema sem suporte precisa sair de cena.",
           "Permissão tem que combinar com a função do app.",
+          "Juice jacking: a porta USB pública troca dados; use o seu carregador na tomada.",
+          "Wi-Fi gêmeo copia o nome da rede: banco só nos dados móveis ou com VPN confiável.",
+          "Backup na regra 3-2-1, com uma cópia desconectada e a restauração testada.",
           "Cadeado cifra o caminho, não garante o site.",
-          "Backup que não restaura não é backup.",
           "Levantou da mesa, bloqueou a tela."
         ],
         "perolas": [
           "O pendrive \"Salários\" no estacionamento foi deixado ali de propósito.",
-          "Rede com o nome do lugar e \"Grátis\" no fim pode ser armadilha.",
+          "Câmera e TV com senha de fábrica podem ser recrutadas para ataques em massa.",
           "A cópia desconectada é a que sobrevive ao sequestro de dados."
+        ],
+        "reforcar": [
+          "permiss",
+          "juice jacking",
+          "gemeo",
+          "3-2-1"
         ]
       }
     },
@@ -664,10 +691,10 @@
               ]
             },
             {
-              "titulo": "Regras de ouro",
+              "titulo": "Direitos",
               "itens": [
-                "Usar só para o fim informado",
-                "Coletar só o necessário"
+                "Titular tem direitos",
+                "Exclusão tem exceções"
               ]
             },
             {
@@ -681,7 +708,7 @@
               "titulo": "Na empresa",
               "itens": [
                 "Precisa saber?",
-                "Errou: avisar"
+                "Incidente de dados: avise"
               ]
             }
           ]
@@ -708,7 +735,7 @@
           {
             "icone": "🗝️",
             "conceito": "Chave do arquivo",
-            "liga": "acesso por necessidade",
+            "liga": "necessidade de conhecer",
             "porque": "Só abre quem precisa para trabalhar."
           },
           {
@@ -750,16 +777,24 @@
         },
         "pontos": [
           "Identificou alguém, é dado pessoal.",
-          "Colete só o necessário.",
+          "Finalidade: o dado só serve para o que foi informado ao titular.",
+          "Minimização: colete só o necessário.",
           "Exclusão tem exceções, como a guarda fiscal.",
+          "Documento, crachá, boleto e cartão de embarque não vão para as redes.",
+          "Na empresa, o acesso segue a necessidade de conhecer.",
           "Link aberto na nuvem vai parar em qualquer lugar.",
-          "Documento, crachá e boleto não vão para as redes.",
           "Papel com dados de clientes vai para a fragmentadora."
         ],
         "perolas": [
           "Teste divertido que pergunta o nome do primeiro bicho está coletando respostas de segurança.",
           "Viagem se posta na volta.",
           "Mandou para a pessoa errada? Avisar na hora é o que a lei e o bom senso pedem."
+        ],
+        "reforcar": [
+          "finalidade",
+          "minimizacao",
+          "cartao de embarque",
+          "necessidade de conhecer"
         ]
       }
     },
@@ -817,7 +852,7 @@
               "itens": [
                 "Perfil novo pedindo dinheiro",
                 "Romance sem câmera",
-                "Lucro garantido é golpe"
+                "Investimento milagroso: golpe"
               ]
             },
             {
@@ -919,6 +954,13 @@
           "Selo de verificado se compra; honestidade, não.",
           "Visualização única não segura a câmera de outro celular.",
           "App que mostra quem visitou o seu perfil só quer a sua senha."
+        ],
+        "reforcar": [
+          "tarefa paga",
+          "falso comprador",
+          "pegada digital",
+          "sextorsao",
+          "aliciamento"
         ]
       }
     },
@@ -978,7 +1020,7 @@
             {
               "titulo": "Acessos",
               "itens": [
-                "Só o necessário",
+                "Menor privilégio",
                 "Quem saiu, sai do sistema"
               ]
             },
@@ -1059,22 +1101,30 @@
             ],
             [
               "Ransomware",
-              "Cifra os arquivos e pede resgate"
+              "Cifra os arquivos e cobra para liberar"
             ]
           ]
         },
         "pontos": [
-          "Um precisa de clique; o outro anda sozinho.",
+          "Vírus precisa de clique; worm anda sozinho pela rede.",
+          "Aparelho invadido pode virar soldado de uma botnet e atacar sem você saber.",
           "Pagar o resgate não garante nada.",
-          "Conta de quem saiu se desativa no mesmo dia.",
+          "Menor privilégio: cada um acessa só o necessário; quem saiu, sai do sistema no mesmo dia.",
           "Ferramenta não aprovada pode vazar arquivos.",
           "Não apague nada: é evidência.",
-          "Celular da empresa perdido: TI na hora."
+          "Celular da empresa perdido: TI na hora.",
+          "Exercício de mesa treina a crise antes que ela chegue; depois vem a reunião pós-ação."
         ],
         "perolas": [
           "Desconecte primeiro: o sequestro de dados se espalha pela rede.",
-          "Quem reporta o próprio erro merece agradecimento, não bronca.",
-          "Treinar a crise numa mesa sai muito mais barato do que viver a crise de verdade."
+          "Quem reporta o próprio erro merece agradecimento, não bronca."
+        ],
+        "reforcar": [
+          "botnet",
+          "resgate",
+          "menor privilegio",
+          "evidencia",
+          "exercicio de mesa"
         ]
       }
     }
