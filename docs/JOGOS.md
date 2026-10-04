@@ -151,6 +151,7 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
 - Autoavaliação: **Sabia** (sobe uma caixa de Leitner), **Quase** (mantém), **Não sabia** (volta à caixa 1).
 - Só "Sabia" conta como acerto para XP; "Não sabia" vai para a lista de revisão.
 - Teclado: Espaço vira; 1, 2 e 3 avaliam.
+- **Depois do Mergulho (2026-10-04):** quando a rodada do Mergulho termina (fase completa ou sem oxigênio), a caixa do Diver sugere "Bora fixar com flashcards?" e o resultado ganha o botão **🃏 Fixar com flashcards**. Eles abrem o jogo com `opcoes.fase` = a fase do Mergulho: só cartas daquela fase (cada carta derivada guarda `fase`; com menos de 4, usa a trilha toda). No fim, o botão principal é **"Voltar para a trilha"** (mapa do Mergulho) e o secundário "Mais cartas desta fase"; sair no meio também volta para a trilha.
 
 #### Quiz Relâmpago (`quiz-relampago`) — semana 3
 - Múltipla escolha e V/F; cronômetro opcional por pergunta (15, 30 ou 60 s), mostrado como uma onda que vai subindo.
@@ -204,6 +205,7 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
 - Modo 2 jogadores alternando no mesmo aparelho.
 
 #### Caso Resolvido (`caso`) — "Operação Recife Sombrio" v2 (2026-10-02)
+- **Antes da prova (2026-10-04):** em curso com este jogo, quando todas as fases estão feitas e a Prova final ainda não foi aprovada, o app convida a relaxar no detetive: caixa do Diver ao concluir a última fase (no lugar da sugestão de flashcards), botão no resultado, no cartão "Parabéns" do Início e um cartão "Antes da prova, relaxe" na tela da Prova final. Aberto por esse convite (`opcoes.antesDaProva`), o resultado do jogo oferece "Ir para a Prova final". A prova continua liberada normalmente.
 - Arquivo `js/jogos/caso-resolvido.js`; precisa do bloco `casos` com `tipo: "operacao"` e `versao: 2` (`CasoResolvido.valido`). **Só o curso Cibersegurança Essencial tem esse bloco.** Não usa as questões da trilha. Sem datas na história: só "a Diver foi invadida".
 - **Casos em rodízio:** `CasoResolvido.novoCaso` sorteia a solução (quem, com o quê, como, entre 10 de cada) e reparte os 9 que NÃO são a solução de cada coluna entre as 4 pérolas (A: 3/2/2, B: 2/3/2, C: 2/2/3, D: 2/2/2), cada um com uma frase de álibi ou descarte sorteada. Os 2 suspeitos da pérola D + o culpado vão para o interrogatório. Fechou o caso (acusação), aparece **"Abrir caso novo"** com outra Sombra.
 - **Conteúdo que muda a cada tentativa** (inclusive no treino): os 8 e-mails (3 golpes + 5 legítimos de um banco de 11 + 12), o rastro em comum dos golpes (servidor, programa de envio ou endereço de retorno), a pessoa da rede social (5 perfis) e o código do cofre, as senhas do cardume, as 12 conexões do sonar e as anomalias dos registros.

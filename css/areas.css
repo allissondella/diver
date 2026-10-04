@@ -1452,6 +1452,10 @@ body.qd-travado { overflow: hidden; }
 /* ---------- Prova final ---------- */
 .prova { display: grid; gap: 14px; }
 .prova > .botao { justify-self: start; }
+/* Antes da prova: convite para o Caso Resolvido (cursos que têm o jogo) */
+.prova-detetive { display: grid; gap: var(--esp-3); }
+.prova-detetive p { margin: 0; }
+.prova-detetive .botao { justify-self: start; }
 .prova__regras { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .prova__regras li { display: flex; align-items: flex-start; gap: 10px; }
 .prova__regras .icone { color: var(--amarelo); margin-top: 2px; }

@@ -38,7 +38,7 @@ const Cartas = (() => {
   /** Flashcards: frente = enunciado; verso = alternativa correta + explicação. */
   function derivarFlash(trilha) {
     return trilha.questoes.map((q) => ({
-      id: q.id, frente: q.enunciado, verso: correta(q), explicacao: q.explicacao, tema: q.tema, dificuldade: q.dificuldade,
+      id: q.id, frente: q.enunciado, verso: correta(q), explicacao: q.explicacao, tema: q.tema, dificuldade: q.dificuldade, fase: q.fase,
     }));
   }
 

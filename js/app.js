@@ -478,9 +478,12 @@ const App = (() => {
         h('div', { class: 'continuar__texto' },
           h('span', { class: 'rotulo', text: 'Curso concluído' }),
           h('h2', { class: 'continuar__titulo', id: 'continuar-titulo', text: `Parabéns! Você concluiu ${trilha.nome}` }),
-          h('p', { class: 'continuar__sub', text: `${total === 1 ? 'A fase foi explorada' : `As ${total} fases foram exploradas`} até o fundo${aprovado ? ' e a prova final está aprovada' : ''}. Bora para a próxima travessia?` })),
+          h('p', { class: 'continuar__sub', text: !aprovado && temDetetive(trilha)
+            ? `As ${total} fases foram exploradas até o fundo. Antes da Prova final, que tal relaxar com a Operação Recife Sombrio?`
+            : `${total === 1 ? 'A fase foi explorada' : `As ${total} fases foram exploradas`} até o fundo${aprovado ? ' e a prova final está aprovada' : ''}. Bora para a próxima travessia?` })),
         h('div', { class: 'continuar__acoes' },
           aprovado ? null : h('button', { type: 'button', class: 'botao botao--primario', onclick: () => { definirTrilha(trilha.id); irPara('prova'); } }, icone('i-trofeu'), 'Fazer a Prova final'),
+          !aprovado && temDetetive(trilha) ? h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => { definirTrilha(trilha.id); abrirDetetive(); } }, icone('i-lupa'), 'Relaxar no detetive') : null,
           h('button', { type: 'button', class: aprovado ? 'botao botao--primario' : 'botao botao--secundario', onclick: () => abrirListaCursos(true) }, icone('i-livro'), 'Escolher o próximo curso'),
           verMapa)));
     } else {
@@ -1088,6 +1091,10 @@ const App = (() => {
         liberada
           ? h('button', { type: 'button', class: 'botao botao--primario botao--grande', onclick: iniciarProva }, icone('i-trofeu'), provas.length ? 'Fazer a prova de novo' : 'Começar a prova')
           : h('a', { class: 'botao botao--secundario', href: '#mergulho' }, 'Voltar ao mapa e completar as fases')),
+      fasesOk && !aprovacao && temDetetive(trilha) ? h('div', { class: 'cartao prova-detetive' },
+        h('h2', { class: 'cartao__titulo', text: 'Antes da prova, relaxe' }),
+        h('p', { class: 'texto-suave', text: 'Que tal um caso da Operação Recife Sombrio antes de começar? A Diver foi invadida, e você investiga com o que aprendeu. Ajuda a chegar na prova de cabeça leve.' }),
+        h('button', { type: 'button', class: 'botao botao--secundario', onclick: abrirDetetive }, icone('i-lupa'), 'Jogar o detetive')) : null,
       h('div', { class: 'cartao' },
         h('h2', { class: 'cartao__titulo', text: 'Suas tentativas' }),
         provas.length
@@ -1166,7 +1173,8 @@ const App = (() => {
     estado.subiuNivel = null;
     estado.jogo = { def, opcoes, desafio, controlador: null, fim: false };
     $('jogo-titulo').textContent = def.nome;
-    $('jogo-rotulo').textContent = desafio ? 'Desafio do Dia · XP em dobro' : estado.trilha.nome;
+    const faseFlash = opcoes.fase && estado.trilha.fases.find((f) => f.id === opcoes.fase);
+    $('jogo-rotulo').textContent = desafio ? 'Desafio do Dia · XP em dobro' : faseFlash ? `${estado.trilha.nome} · ${faseFlash.nome}` : estado.trilha.nome;
     $('tela-jogo').classList.toggle('tela--larga', !!def.largo); // ex.: Caso Resolvido (painel + log ao lado)
     const container = limpar($('jogo-palco'));
     mostrarTela('tela-jogo');
@@ -1230,7 +1238,7 @@ const App = (() => {
       if (d.acertou) temas[d.tema].acertos++;
     });
     renderizarResumo({
-      modo: 'jogo', jogo: partida.def, titulo: res.titulo, sub: res.subtitulo, desafio: partida.desafio, textoDeNovo: res.textoDeNovo,
+      modo: 'jogo', jogo: partida.def, opcoes: partida.opcoes, titulo: res.titulo, sub: res.subtitulo, desafio: partida.desafio, textoDeNovo: res.textoDeNovo,
       total: validos.length, acertos: res.acertos, pct: validos.length ? Math.round((res.acertos / validos.length) * 100) : 0,
       tempoSeg: res.tempoSegundos, porTema: Object.values(temas).sort((a, b) => a.acertos / a.total - b.acertos / b.total),
       paraRevisar: validos.filter((d) => !d.acertou),
@@ -1244,8 +1252,63 @@ const App = (() => {
     if (!estado.jogo) return;
     if (!(await UI.confirmar({ titulo: 'Sair do jogo?', texto: 'Esta partida não vale XP.', sim: 'Sair do jogo', nao: 'Continuar jogando', humor: 'triste' }))) return;
     if (!estado.jogo) return;
+    const daFase = !!(estado.jogo.opcoes && estado.jogo.opcoes.fase);
     abandonarAndamento();
-    irPara('jogos');
+    irPara(daFase ? 'mergulho' : 'jogos');
+  }
+
+  /* Flashcards da fase (fim do Mergulho → Cartas do Fundo → volta para a trilha) */
+  function flashcardsDaFase(fase) {
+    if (!fase || !estado.trilha || !Jogos.obter('cartas-do-fundo')) return 0;
+    return cartasDa(estado.trilha).flash.filter((c) => c.fase === fase.id).length;
+  }
+
+  function abrirFlashcards(fase) {
+    iniciarJogo('cartas-do-fundo', { fase: fase.id });
+  }
+
+  /* Detetive antes da prova: cursos com o Caso Resolvido (hoje, Cibersegurança) sugerem
+     relaxar na Operação Recife Sombrio quando todas as fases estão feitas e a prova ainda não. */
+  function temDetetive(trilha) {
+    const def = Jogos.obter('caso');
+    return !!(def && trilha && Jogos.estado(def, cartasDa(trilha)) === 'disponivel');
+  }
+
+  function cursoCompleto(trilha, prog) {
+    return trilha.fases.every((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
+  }
+
+  function detetiveAntesDaProva(trilha, prog) {
+    return temDetetive(trilha) && cursoCompleto(trilha, prog) && !(prog.provas || []).some((p) => p.aprovado);
+  }
+
+  function abrirDetetive() {
+    iniciarJogo('caso', { antesDaProva: true });
+  }
+
+  function sugerirDetetive() {
+    setTimeout(async () => {
+      if ($('tela-resumo').hidden || document.querySelector('dialog[open]')) return;
+      const ok = await UI.confirmar({
+        titulo: 'Antes da prova, um caso para relaxar?',
+        texto: 'Você completou todas as fases! Antes da Prova final, que tal desligar um pouco com a Operação Recife Sombrio? A Diver foi invadida e quem investiga é você, usando o que aprendeu no curso.\n\nA prova continua esperando: quando quiser, é só voltar.',
+        sim: 'Jogar o detetive', nao: 'Agora não', humor: 'feliz', foco: 'sim',
+      });
+      if (ok && !$('tela-resumo').hidden) abrirDetetive();
+    }, movimentoReduzido ? 300 : 900);
+  }
+
+  /** Caixa do Diver logo depois do resultado: sugere fixar a matéria com flashcards. */
+  function sugerirFlashcards(fase) {
+    setTimeout(async () => {
+      if ($('tela-resumo').hidden || document.querySelector('dialog[open]')) return;
+      const ok = await UI.confirmar({
+        titulo: 'Bora fixar com flashcards?',
+        texto: `Você acabou de mergulhar em ${fase.nome}. Agora, umas cartas rápidas dessa matéria ajudam a guardar o que caiu.\n\nQuando terminar, um botão traz você de volta para a trilha.`,
+        sim: 'Fazer flashcards', nao: 'Agora não', humor: 'feliz', foco: 'sim',
+      });
+      if (ok && !$('tela-resumo').hidden) abrirFlashcards(fase);
+    }, movimentoReduzido ? 300 : 900);
   }
 
   /* =========================================================
@@ -1520,6 +1583,8 @@ const App = (() => {
     avisarConquistas(novas);
     renderizarResumo(resumo, novas);
     mostrarTela('tela-resumo');
+    if (s.modo === 'mergulho' && resumo.faseConcluida && resumo.bonus && resumo.bonus.primeiraVez && detetiveAntesDaProva(estado.trilha, estado.prog)) sugerirDetetive();
+    else if (s.modo === 'mergulho' && motivo !== 'saiu' && flashcardsDaFase(s.fase) >= 4) sugerirFlashcards(s.fase);
   }
 
   /* =========================================================
@@ -1535,7 +1600,8 @@ const App = (() => {
         const i = trilha.fases.findIndex((f) => f.id === r.fase.id);
         const proxima = trilha.fases[i + 1];
         let sub;
-        if (!proxima) sub = 'Você tocou o fundo desta trilha. Lá embaixo é silencioso, e o silêncio é de respeito.';
+        if (detetiveAntesDaProva(trilha, estado.prog)) sub = 'Todas as fases feitas! Antes da Prova final, relaxe com a Operação Recife Sombrio: o caso usa tudo o que você aprendeu.';
+        else if (!proxima) sub = 'Você tocou o fundo desta trilha. Lá embaixo é silencioso, e o silêncio é de respeito.';
         else if (r.bonus && r.bonus.primeiraVez && trilha.fasesLivres) sub = `Fase no bolso! Próxima parada sugerida: ${proxima.nome}. Ou escolha outra no mapa.`;
         else if (r.bonus && r.bonus.primeiraVez) sub = `${proxima.nome} liberado. A água fica mais escura, mas você também chega mais preparado.`;
         else sub = 'Mais uma volta pela fase para fixar o conteúdo. É assim que se ganha fôlego.';
@@ -1583,8 +1649,9 @@ const App = (() => {
     const { trilha, prog } = estado;
     const { titulo, sub } = textosResumo(r);
 
+    const faseFlash = r.modo === 'jogo' && r.opcoes && r.opcoes.fase && trilha.fases.find((f) => f.id === r.opcoes.fase);
     $('resumo-rotulo').textContent = r.modo === 'jogo'
-      ? `${r.jogo.nome} · ${trilha.nome}`
+      ? `${r.jogo.nome} · ${faseFlash ? faseFlash.nome : trilha.nome}`
       : r.fase ? `${NOMES_MODO[r.modo]} · ${r.fase.nome}` : r.titulo ? `${NOMES_MODO[r.modo]} · ${r.titulo}` : NOMES_MODO[r.modo];
     $('resumo-titulo').textContent = titulo;
     $('resumo-subtitulo').textContent = sub;
@@ -1652,11 +1719,23 @@ const App = (() => {
     const voltar = $('btn-resumo-mapa');
     principal.hidden = false;
     principal.onclick = null;
-    if (r.modo === 'jogo') {
+    const flash = $('btn-resumo-flash');
+    flash.hidden = true;
+    const detetive = $('btn-resumo-detetive');
+    detetive.hidden = true;
+    detetive.onclick = abrirDetetive;
+    if (r.modo === 'jogo' && faseFlash) {
+      // Flashcards que vieram do fim do Mergulho: o caminho principal é voltar para a trilha
+      principal.textContent = 'Voltar para a trilha';
+      principal.onclick = () => irPara('mergulho');
+      voltar.textContent = 'Mais cartas desta fase';
+      voltar.onclick = () => abrirFlashcards(faseFlash);
+    } else if (r.modo === 'jogo') {
       principal.textContent = r.textoDeNovo || 'Jogar de novo'; // ex.: Caso Resolvido: "Voltar às missões"
       principal.onclick = () => iniciarJogo(r.jogo.id, estado.ultimoJogoOpcoes || {});
-      voltar.textContent = 'Voltar à Sala de Jogos';
-      voltar.onclick = () => irPara('jogos');
+      const antesDaProva = r.opcoes && r.opcoes.antesDaProva;
+      voltar.textContent = antesDaProva ? 'Ir para a Prova final' : 'Voltar à Sala de Jogos';
+      voltar.onclick = () => irPara(antesDaProva ? 'prova' : 'jogos');
       estado.ultimoJogoOpcoes = estado.jogo ? estado.jogo.opcoes : {};
     } else if (r.modo === 'mergulho') {
       const i = trilha.fases.findIndex((f) => f.id === r.fase.id);
@@ -1670,6 +1749,15 @@ const App = (() => {
       }
       voltar.textContent = 'Voltar ao mapa';
       voltar.onclick = () => irPara('mergulho');
+      if (r.motivo !== 'saiu' && flashcardsDaFase(r.fase) >= 4) {
+        flash.hidden = false;
+        flash.onclick = () => abrirFlashcards(r.fase);
+      }
+      if (r.faseConcluida && detetiveAntesDaProva(trilha, prog)) {
+        detetive.hidden = false;
+        principal.textContent = 'Ir para a Prova final';
+        principal.onclick = () => irPara('prova');
+      }
     } else if (r.modo === 'prova') {
       principal.textContent = r.aprovado ? 'Ver a prova final' : 'Tentar a prova de novo';
       principal.onclick = () => (r.aprovado ? irPara('prova') : iniciarProva());
