@@ -21,6 +21,7 @@ Iniciantes, de empresas e alunos: "aprender a se cuidar" na vida digital e no tr
 - 2026-10-04 · **Fase nova em curso já publicado** leva `novaEm` (`docs/ARQUITETURA.md`): não tranca a fase seguinte, e quem já tinha todas as outras feitas fica com ela recomendada, não obrigatória, na Prova final.
 - 2026-10-04 · Com o curso todo feito e a prova por aprovar, o app convida a relaxar na Operação Recife Sombrio antes da prova.
 - 2026-10-04 · cib-gp-03 reescrita (mesmo id): o enunciado antigo ("qual é o site de verdade?") era ambíguo e levou um aluno a marcar "site oficial do banco". Pergunta de domínio diz "em qual site você vai cair".
+- 2026-10-04 · cib-vd-23 (Lei 14.811/2024: bullying e cyberbullying no Código Penal, art. 146-A) conferida pelo Allisson: correta; marca `revisar` retirada.
 - 2026-10-04 · Regra de repetição da Georgia aplicada nas 7 fases (`resumo.reforcar`, pontos-chave que repetem o mais importante e difícil).
 
 ## O que as referências ensinaram (conclusões nossas, nunca trechos)
@@ -39,6 +40,5 @@ Iniciantes, de empresas e alunos: "aprender a se cuidar" na vida digital e no tr
 
 ## Próximos passos e pendências
 - Mandar para a Fila de Validação (9 lotes de até 20 questões), com prioridade para as 21 novas da v2 e as 24 da fase "Vida digital e redes sociais".
-- Conferir com o Allisson a cib-vd-23 (lei do cyberbullying, 2024), marcada com `revisar`.
 - Cartas dos jogos para os temas novos (botnet, pharming, passkey, exercício de mesa).
 - Variantes para a Revisão.
