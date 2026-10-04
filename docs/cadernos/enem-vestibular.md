@@ -18,6 +18,7 @@ Quem vai fazer o Enem e os vestibulares: terceirão, cursinho e quem volta a est
 - 2026-10-03 · Temas de cada Fase 1 escolhidos pelo peso nas provas de 2019 a 2025 (tabela abaixo) e pelo papel de base: Matemática (proporção, porcentagem e dados), Linguagens (leitura e variação), Humanas (Brasil em formação), Natureza (energia, que costura Física, Química e Biologia) e Redação (as regras do jogo).
 - 2026-10-03 · Ids novos com prefixo `trv-` (as questões antigas `enem-mat1-*` saíram).
 - 2026-10-03 · Prova do curso: 40 questões, 80 minutos, 60% para passar.
+- 2026-10-03 · **v2 (padrão Georgia):** as 128 questões (104 + 24 variantes) ganharam comentário em cada uma das cinco alternativas; as 24 variantes ganharam Dica de mergulhador; temas agrupados (4 ou 5 por fase, variantes com o mesmo tema da original); "Aprender" de 400 a 570 palavras por fase; pontos sem negrito repetido; 23 fichas da "Revisar a fundo". Enunciados, alternativas, gabaritos e ids não mudaram.
 
 ## Mapa tema × peso (provas regulares de 2019 a 2025, 1º e 2º dia, caderno azul)
 Classificação automática por palavras-chave, 315 questões por área; serve de bússola, não de estatística exata.
@@ -51,6 +52,7 @@ Classificação automática por palavras-chave, 315 questões por área; serve d
 - 2026-10-03 · **Redação 1: as regras do jogo**: 20 questões e linha do tempo dos temas (2019, 2020, 2022, 2025, conferidos nas provas).
 - Blocos: 33 pares, 26 V/F, 11 adivinhas, 8 sequências, 55 palavras (51 servem para a Palavrinha). 16 questões marcadas `revisar` (datas e fatos específicos).
 - Originalidade: 6 coincidências de 8+ palavras, todas nomes oficiais (temas de redação e nome da Competência 1).
+- 2026-10-03 · v2 pelo padrão Georgia: comentários e Dica em todas as 128 questões, 23 fichas, `conferir-trilha.mjs` sem erro e sem aviso.
 
 ## Próximos passos e pendências
 - Mandar para a Fila de Validação as 104 questões e as 24 variantes (lotes de até 20).
