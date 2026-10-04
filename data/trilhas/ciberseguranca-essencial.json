@@ -1934,20 +1934,20 @@
       "tema": "Links e endereços",
       "dificuldade": "medio",
       "fase": "golpes-phishing",
-      "enunciado": "Um e-mail do \"seu banco\" tem o link \"https://banco-seguro.atualizacao-clientes.net/login\". Qual é o site de verdade?",
+      "enunciado": "Um e-mail que diz ser do seu banco traz o link \"https://banco-seguro.atualizacao-clientes.net/login\". Se você clicar, em qual site vai cair de verdade?",
       "alternativas": [
-        "O site oficial do banco",
-        "login",
-        "atualizacao-clientes.net",
-        "banco-seguro"
+        "Numa página chamada \"login\", que é do banco",
+        "No site oficial do seu banco",
+        "No site atualizacao-clientes.net, que não é do banco",
+        "No site \"banco-seguro\", que é do banco"
       ],
       "correta": 2,
-      "explicacao": "O que manda é o final do endereço, logo antes da primeira barra: aqui, \"atualizacao-clientes.net\". O \"banco-seguro.\" do começo é só maquiagem. Dica de mergulhador: leia o domínio logo antes da primeira barra.",
+      "explicacao": "Quem manda no endereço é o domínio, o trecho logo antes da primeira barra: aqui, \"atualizacao-clientes.net\". O \"banco-seguro.\" do começo é só maquiagem para parecer o banco. Dica de mergulhador: leia o domínio logo antes da primeira barra.",
       "comentarios": [
-        "O banco aparece só como maquiagem no começo.",
-        "\"login\" é só o caminho dentro do site.",
+        "\"login\" é só o caminho dentro do site atualizacao-clientes.net.",
+        "O nome do banco aparece só como disfarce no começo; o dono do endereço é outro.",
         "",
-        "\"banco-seguro\" é um subdomínio, a maquiagem."
+        "\"banco-seguro\" é só um enfeite antes do domínio verdadeiro."
       ]
     },
     {
