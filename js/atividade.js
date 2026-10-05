@@ -20,7 +20,7 @@ const Atividade = (() => {
   const MAX_FILA = 2000;
   const LOTE = 100;
   const ENVIAR_A_CADA = 20; // eventos
-  const TIPOS = ['questao_respondida', 'jogo_concluido', 'mergulho_sessao', 'revisao_sessao', 'simulado_concluido', 'prova_concluida', 'certificado_emitido', 'cronograma_criado', 'bloco_concluido'];
+  const TIPOS = ['questao_respondida', 'jogo_concluido', 'mergulho_sessao', 'revisao_sessao', 'simulado_concluido', 'prova_concluida', 'certificado_emitido', 'cronograma_criado', 'bloco_concluido', 'diagnostica_concluida'];
 
   let timer = null;
   let enviando = null;

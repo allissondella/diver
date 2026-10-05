@@ -47,6 +47,7 @@ const App = (() => {
     tarefas: { tela: 'tela-tarefas', render: () => Quadros.render($('tela-tarefas')) },
     calendario: { tela: 'tela-calendario', render: () => Organizar.renderCalendario($('tela-calendario')) },
     cronograma: { tela: 'tela-cronograma', render: () => Cronograma.render($('tela-cronograma')) },
+    diagnostica: { tela: 'tela-diagnostica', render: () => Diagnostica.render($('tela-diagnostica')) },
     foco: { tela: 'tela-foco', render: () => Organizar.renderFoco($('tela-foco')) },
     cursos: { tela: 'tela-cursos', render: () => Biblioteca.renderCursos($('tela-cursos')) },
     pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },

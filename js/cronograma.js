@@ -68,7 +68,8 @@ const Cronograma = (() => {
 
   function novoRascunho(plano) {
     rascunho = plano
-      ? { passo: 0, params: JSON.parse(JSON.stringify(plano.params)), blocos: null, integracao: { ...plano.integracao }, sujo: true, editando: true, materiasMexidas: true }
+      ? { passo: 0, params: JSON.parse(JSON.stringify(plano.params)), blocos: null, integracao: { ...plano.integracao }, sujo: true, editando: true, materiasMexidas: true, modoNotas: 'manual',
+        diagAplicada: Diagnostica.situacao().atualizadoEm <= (plano.atualizadoEm || 0) ? Diagnostica.situacao().atualizadoEm : null }
       : { passo: 0, params: paramsPadrao(), blocos: null, integracao: { tarefas: false, calendario: false, soGuardar: true }, sujo: true, editando: false, materiasMexidas: false };
     semanaVista = null;
   }
@@ -229,6 +230,33 @@ const Cronograma = (() => {
     const p = rascunho.params;
     const enem = p.objetivo.tipo === 'enem';
     const mexeu = () => { rascunho.sujo = true; rascunho.materiasMexidas = true; };
+    // Avaliação Diagnóstica (Enem e vestibular): as notas dela entram aqui, uma vez por resultado novo
+    const podeDiag = p.objetivo.tipo !== 'outra';
+    const sit = Diagnostica.situacao();
+    if (podeDiag && sit.feitas && rascunho.diagAplicada !== sit.atualizadoEm) {
+      const nn = Diagnostica.notas();
+      p.materias.forEach((m) => { if (nn[m.id]) m.nota = nn[m.id]; });
+      rascunho.diagAplicada = sit.atualizadoEm;
+      rascunho.modoNotas = 'diagnostica';
+      rascunho.sujo = true;
+    }
+    const mostrarLista = !podeDiag || !!rascunho.modoNotas;
+    const escolha = !podeDiag ? null : sit.feitas
+      ? h('div', { class: 'cr-diag cr-diag--feita', role: 'status' },
+        h('p', {}, h('strong', { text: `Notas da sua Avaliação Diagnóstica aplicadas (${sit.feitas} de ${sit.total} áreas). ` }),
+          sit.feitas < sit.total ? 'Faça as outras áreas quando puder: o plano fica ainda mais certeiro. ' : '',
+          'A Redação você marca. Ajuste qualquer nota se achar justo.'),
+        h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', id: 'cr-diag-ver', onclick: () => Diagnostica.abrir() }, icone('i-grafico'), sit.feitas < sit.total ? 'Continuar a avaliação' : 'Ver meus pontos fortes e fracos'))
+      : h('div', { class: 'cr-diag' },
+        h('p', { class: 'cr-diag__titulo' }, h('strong', { text: 'Como você quer informar o seu nível em cada matéria?' })),
+        h('div', { class: 'cr-diag__opcoes' },
+          h('button', { type: 'button', class: 'cr-diag__opcao cr-diag__opcao--recomendada', id: 'cr-diag-fazer', onclick: () => Diagnostica.abrir() },
+            h('span', { class: 'chip chip--ativo', text: 'Recomendado' }),
+            h('strong', { class: 'cr-diag__nome', text: 'Fazer a Avaliação Diagnóstica' }),
+            h('span', { text: 'Muito importante: é o modo mais assertivo para você saber os seus pontos fortes e fracos, e ela personaliza a sua experiência e o seu plano. 10 questões por área, cerca de 1h30 no total, uma área por vez.' })),
+          h('button', { type: 'button', class: 'cr-diag__opcao', id: 'cr-diag-manual', 'aria-pressed': String(rascunho.modoNotas === 'manual'), onclick: () => { rascunho.modoNotas = 'manual'; redesenhar(); setTimeout(() => { const x = document.querySelector('.cr-materia input'); if (x) x.focus(); }, 0); } },
+            h('strong', { class: 'cr-diag__nome', text: 'Prefiro marcar eu mesmo' }),
+            h('span', { text: 'Dê uma nota de 1 a 5 para cada matéria, do jeito que você se vê hoje.' }))));
     const linha = (m) => {
       const nome = nomeMateria(p, m.id);
       const notas = h('div', { class: 'cr-notas', role: 'radiogroup', 'aria-label': `Nota de ${nome}` }, [1, 2, 3, 4, 5].map((n) => h('label', { class: 'cr-nota' },
@@ -251,7 +279,7 @@ const Cronograma = (() => {
     };
     const grupos = enem
       ? ['Linguagens', 'Humanas', 'Natureza', 'Matemática', 'Redação'].map((area) => h('div', { class: 'cr-area' },
-        h('h3', { class: 'cr-area__titulo', text: area === 'Redação' || area === 'Matemática' ? area : `${area} (45 questões)` }),
+        h('h3', { class: 'cr-area__titulo', text: area }),
         h('ul', { class: 'cr-materias' }, p.materias.filter((m) => (G.disciplina(m.id) || {}).area === area).map(linha))))
       : [h('ul', { class: 'cr-materias' }, p.materias.map(linha))];
     const nova = h('input', { class: 'campo', id: 'cr-nova', maxlength: '40', placeholder: 'Ex.: Direito constitucional' });
@@ -269,12 +297,15 @@ const Cronograma = (() => {
     h('button', { type: 'submit', class: 'botao botao--secundario botao--pequeno' }, icone('i-mais'), 'Adicionar'));
     return {
       el: h('div', { class: 'cr-campos' },
-        h('p', {}, 'De 1 a 5: ', h('strong', { text: '1 = ainda tenho muita dificuldade' }), ', ', h('strong', { text: '5 = já domino' }), '. Nota baixa ganha mais tempo, e nenhuma matéria marcada fica de fora.'),
-        enem ? null : h('p', { class: 'texto-suave cr-dica', text: 'Desmarque o que não cai na sua prova e diga o quanto cada matéria cai.' }),
-        ...grupos,
-        enem ? null : adicionar,
-        h('p', { class: 'texto-suave cr-dica', text: 'Em breve: um teste rápido para descobrir a sua nota em cada matéria.' })),
-      validar: () => (p.materias.some((m) => m.ativa && m.id !== 'redacao') ? null : 'Marque pelo menos uma matéria para estudar.'),
+        escolha,
+        mostrarLista ? h('p', {}, 'De 1 a 5: ', h('strong', { text: '1 = ainda tenho muita dificuldade' }), ', ', h('strong', { text: '5 = já domino' }), '. Nota baixa ganha mais tempo, e nenhuma matéria marcada fica de fora.') : null,
+        mostrarLista && !enem ? h('p', { class: 'texto-suave cr-dica', text: 'Desmarque o que não cai na sua prova e diga o quanto cada matéria cai.' }) : null,
+        ...(mostrarLista ? grupos : []),
+        mostrarLista && !enem ? adicionar : null),
+      validar: () => {
+        if (!mostrarLista) return 'Escolha: fazer a Avaliação Diagnóstica (recomendado) ou marcar as notas você mesmo.';
+        return p.materias.some((m) => m.ativa && m.id !== 'redacao') ? null : 'Marque pelo menos uma matéria para estudar.';
+      },
     };
   }
 
@@ -666,5 +697,17 @@ const Cronograma = (() => {
     else Quadros.removerOrigem(origem);
   }
 
-  return { render, concluirBloco };
+  /** Volta da Avaliação Diagnóstica: abre o passo "Suas matérias" com as notas novas (ou o assistente do começo). */
+  function abrirComDiagnostico() {
+    const plano = ler();
+    if (!rascunho) {
+      novoRascunho(plano);
+      if (plano) rascunho.diagAplicada = null;
+    }
+    if (rascunho.params.objetivo.data) rascunho.passo = 2;
+    else UI.toast('Notas guardadas', 'Responda a data e o seu tempo: no passo "Suas matérias", as notas da avaliação já entram.', 'i-alvo');
+    App.irPara('cronograma');
+  }
+
+  return { render, concluirBloco, abrirComDiagnostico };
 })();

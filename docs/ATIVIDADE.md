@@ -10,7 +10,7 @@
 | `id` | uuid gerado **pelo app** (reenviar o mesmo evento não duplica) |
 | `aluno_id` | quem fez (sempre quem está logado: o banco recusa outro) |
 | `curso_id` | id da trilha (pode ser nulo) |
-| `tipo` | um destes: `questao_respondida`, `jogo_concluido`, `mergulho_sessao`, `revisao_sessao`, `simulado_concluido`, `prova_concluida`, `certificado_emitido`, `cronograma_criado`, `bloco_concluido` |
+| `tipo` | um destes: `questao_respondida`, `jogo_concluido`, `mergulho_sessao`, `revisao_sessao`, `simulado_concluido`, `prova_concluida`, `certificado_emitido`, `cronograma_criado`, `bloco_concluido`, `diagnostica_concluida` |
 | `detalhes` | jsonb pequeno (até 4 KB), muda por tipo (abaixo) |
 | `criado_em` | hora do servidor; aceita a hora do aparelho se for dos últimos 7 dias (eventos guardados sem internet) |
 
@@ -26,6 +26,7 @@ dos alunos dele **só nos cursos em comum** (a mesma regra do progresso na tabel
 | `jogo_concluido` | `app.js` → `terminarJogo` (todos os jogos, pelo Resultado padrão) | `jogo`, `acertos`, `erros`, `total`, `pontuacao`, `tempo_seg`, `perfeito`, `desafio`, `xp`, `perolas` + o que o jogo mandar em `resultado.registro` |
 | `certificado_emitido` | **reservado**: o app ainda não emite certificado | — |
 | `cronograma_criado` | `cronograma.js` → salvar o plano (também ao refazer) | `objetivo`, `semanas`, `blocos`, `materias`, `refeito`, `tarefas`, `calendario` |
+| `diagnostica_concluida` | `diagnostica.js` → fim de uma área da Avaliação Diagnóstica | `area`, `acertos`, `total`, `nao_sei`, `nota`, `segundos`, `lingua` |
 | `bloco_concluido` | `cronograma.js` → bloco feito (checkbox, fim do Modo Foco ou subtarefa nas Tarefas); `curso_id` = trilha do bloco, se houver | `materia`, `tipo`, `minutos`, `via` (`manual`, `foco`, `tarefas`), `data` |
 
 A Palavrinha manda em `registro`: `jogo: 'palavrinha'`, `variante` (`x1`, `x2`, `x4`), `diaria` (palavra do dia ou treino), `data` (dia local), `venceu`, `tentativas`, `letras`, `palavras` (ids).

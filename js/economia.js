@@ -13,6 +13,7 @@ const Economia = (() => {
     bonusMaximo: { xp: 60, perolas: 15 }, // teto do bônus próprio de cada jogo
     tarefa: { xp: 10, perolas: 1 }, // concluir uma tarefa nas Tarefas (uma vez só por tarefa)
     foco: { xp: 15, perolas: 2 }, // completar um ciclo de foco
+    diagnostica: { xp: 25, perolas: 2 }, // concluir uma área da Avaliação Diagnóstica (uma vez por área)
     desafioMultiplicador: 2, // Desafio do Dia: XP em dobro
     precoDica: 1, // pérolas por dica extra (Forca do Náufrago)
   };

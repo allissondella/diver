@@ -1763,3 +1763,79 @@ body.qd-travado { overflow: hidden; }
 .cr-escolha:has(input:checked) { border-color: var(--turquesa); background: var(--superficie-turquesa); }
 .cr-escolha--linha { align-items: center; }
 @media (prefers-reduced-motion: reduce) { .cr-bloco { cursor: default; } }
+
+/* Cronograma, passo "Suas matérias": escolher entre a Avaliação Diagnóstica e marcar as notas */
+.cr-diag { display: grid; gap: var(--esp-3); }
+.cr-diag__titulo { margin: 0; }
+.cr-diag__opcoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--esp-3); }
+.cr-diag__opcao { display: grid; align-content: start; justify-items: start; gap: var(--esp-2); padding: var(--esp-4); border: 1px solid var(--borda); border-radius: var(--raio); background: var(--superficie); color: var(--texto); text-align: left; font: inherit; cursor: pointer; min-height: 48px; }
+.cr-diag__opcao > span:last-child { color: var(--texto-suave); font-size: 0.92rem; }
+.cr-diag__opcao:hover, .cr-diag__opcao:focus-visible { border-color: var(--turquesa); }
+.cr-diag__opcao:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.cr-diag__opcao--recomendada { border-color: var(--turquesa); background: var(--superficie-turquesa); box-shadow: 0 0 0 1px var(--turquesa) inset; }
+.cr-diag__opcao[aria-pressed="true"] { border-color: var(--turquesa); }
+.cr-diag__nome { font-size: 1.05rem; }
+.cr-diag--feita { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-3); padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-pequeno); background: var(--superficie-turquesa); }
+.cr-diag--feita p { margin: 0; flex: 1 1 260px; }
+
+/* =========================================================
+   AVALIAÇÃO DIAGNÓSTICA (js/diagnostica.js) — prefixo "dg-"
+   ========================================================= */
+.dg { display: grid; gap: var(--ritmo-cartoes, 16px); }
+.dg .cartao__titulo { margin: 0; }
+.dg-intro, .dg-mapa, .dg-usar, .dg-lingua, .dg-resultado, .dg-rever { display: grid; gap: var(--esp-3); }
+.dg-intro__destaque { margin: 0; padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-pequeno); background: var(--superficie-turquesa); box-shadow: inset 4px 0 0 var(--turquesa); }
+.dg-areas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: var(--ritmo-cartoes, 16px); }
+.dg-area { display: grid; align-content: start; gap: var(--esp-2); }
+.dg-area p { margin: 0; }
+.dg-area--feita { border-color: var(--turquesa); }
+.dg-area__topo { display: flex; justify-content: space-between; align-items: center; gap: var(--esp-2); }
+.dg-area__topo .chip { white-space: nowrap; }
+.dg-area__nome { margin: 0; font-size: 1.1rem; }
+.dg-area__nivel { margin: 0; }
+.dg-barras .cr-barra__valor.dg-nivel-1, .dg-barras .cr-barra__valor.dg-nivel-2 { background: var(--coral); }
+.dg-barras .cr-barra__valor.dg-nivel-3 { background: var(--amarelo); }
+.dg-barras .cr-barra__valor.dg-nivel-4, .dg-barras .cr-barra__valor.dg-nivel-5 { background: var(--turquesa); }
+.dg-barra__nota { color: var(--texto); }
+.dg-colunas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--esp-4); }
+.dg-coluna { display: grid; align-content: start; gap: var(--esp-2); padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-pequeno); background: var(--superficie); }
+.dg-coluna--fortes { box-shadow: inset 4px 0 0 var(--turquesa); }
+.dg-coluna--fracos { box-shadow: inset 4px 0 0 var(--coral); }
+.dg-temas { margin: 0; padding-left: var(--esp-5); display: grid; gap: var(--esp-1); font-size: 0.92rem; }
+
+/* uma questão por vez */
+.dg-questao { display: grid; gap: var(--esp-4); }
+.dg-questao__topo { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--esp-2); }
+.dg-relogio { font: 700 0.9rem var(--fonte-mono); color: var(--texto-suave); }
+.dg-relogio--passou { color: var(--amarelo); }
+.dg-questao .barra-progresso__preenchimento { background: var(--turquesa); }
+.dg-texto { display: grid; gap: var(--esp-1); padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-pequeno); background: var(--superficie); border-left: 4px solid var(--borda); }
+.dg-texto p { margin: 0; }
+.dg-enunciado { margin: 0; font-weight: 700; font-size: 1.05rem; }
+.dg-opcoes { display: grid; gap: var(--esp-2); margin: 0; padding: 0; border: 0; min-width: 0; }
+.dg-opcao { display: flex; align-items: flex-start; gap: var(--esp-3); padding: var(--esp-3); border: 1px solid var(--borda); border-radius: var(--raio-pequeno); background: var(--superficie); cursor: pointer; min-height: 48px; }
+.dg-opcao input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.dg-opcao__letra { display: inline-grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--borda); font-weight: 800; }
+.dg-opcao__texto { padding-top: 4px; }
+.dg-opcao:has(input:checked) { border-color: var(--turquesa); background: var(--superficie-turquesa); }
+.dg-opcao:has(input:checked) .dg-opcao__letra { background: var(--turquesa); border-color: var(--turquesa); color: var(--texto-escuro); }
+.dg-opcao:has(input:focus-visible) { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.dg-opcao--nao-sei { border-style: dashed; color: var(--texto-suave); margin-top: var(--esp-2); }
+.dg-opcao--nao-sei .dg-opcao__texto { padding-top: 0; }
+.dg-questao__acoes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--esp-3); }
+.dg-questao__acoes .botao:first-child { margin-right: auto; }
+
+/* revisão das questões */
+.dg-revisao { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-2); }
+.dg-rev details { border-radius: var(--raio-pequeno); background: var(--superficie); padding: var(--esp-3); }
+.dg-rev details[open] { display: grid; gap: var(--esp-3); }
+.dg-rev summary { display: flex; align-items: center; gap: var(--esp-3); cursor: pointer; font-weight: 700; min-height: 32px; }
+.dg-rev__marca { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; flex: none; font-weight: 800; background: rgba(230, 241, 255, 0.08); }
+.dg-rev--certa .dg-rev__marca { background: var(--superficie-turquesa); color: var(--turquesa); }
+.dg-rev--errada .dg-rev__marca { color: var(--coral); }
+.dg-rev__alts { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-1); font-size: 0.92rem; }
+.dg-rev__alts li { padding: var(--esp-1) var(--esp-2); border-radius: var(--raio-pequeno); }
+.dg-rev__alt--certa { background: var(--superficie-turquesa); box-shadow: inset 3px 0 0 var(--turquesa); }
+.dg-rev__alt--sua { box-shadow: inset 3px 0 0 var(--coral); }
+.dg-rev__coment { display: block; color: var(--texto-suave); margin-top: 2px; }
+.dg-rev__explica { margin: 0; color: var(--texto-suave); }

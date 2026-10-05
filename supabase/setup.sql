@@ -585,16 +585,16 @@ create table if not exists public.eventos_atividade (
   curso_id text check (curso_id is null or char_length(curso_id) between 1 and 120),
   tipo text not null check (tipo in ('questao_respondida', 'jogo_concluido', 'mergulho_sessao', 'revisao_sessao',
                                      'simulado_concluido', 'prova_concluida', 'certificado_emitido',
-                                     'cronograma_criado', 'bloco_concluido')),
+                                     'cronograma_criado', 'bloco_concluido', 'diagnostica_concluida')),
   detalhes jsonb not null default '{}'::jsonb check (jsonb_typeof(detalhes) = 'object' and octet_length(detalhes::text) <= 4096),
   criado_em timestamptz not null default now()
 );
--- 2026-10-05: tipos do Cronograma (plano criado e bloco de estudo feito). O "create table" acima só vale para
+-- 2026-10-05: tipos do Cronograma (plano criado e bloco de estudo feito) e da Avaliação Diagnóstica (área concluída). O "create table" acima só vale para
 -- banco novo; aqui a regra é refeita para quem já tinha a tabela (reexecutável, não apaga nada).
 alter table public.eventos_atividade drop constraint if exists eventos_atividade_tipo_check;
 alter table public.eventos_atividade add constraint eventos_atividade_tipo_check
   check (tipo in ('questao_respondida', 'jogo_concluido', 'mergulho_sessao', 'revisao_sessao', 'simulado_concluido',
-                  'prova_concluida', 'certificado_emitido', 'cronograma_criado', 'bloco_concluido'));
+                  'prova_concluida', 'certificado_emitido', 'cronograma_criado', 'bloco_concluido', 'diagnostica_concluida'));
 create index if not exists eventos_atividade_aluno on public.eventos_atividade (aluno_id, criado_em desc);
 create index if not exists eventos_atividade_curso on public.eventos_atividade (curso_id, tipo, criado_em desc);
 

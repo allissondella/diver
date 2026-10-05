@@ -31,6 +31,7 @@
 | 10b | `js/quadros.js` | `Quadros` | Tarefas em quadros: quadros → listas (colunas) → cartões, com subtarefas, etiquetas, prazo, notas com links, seção "Concluídas", arrastar e soltar (mouse e toque longo), atalhos, exportar/importar JSON. Expõe `render`, `comPrazo()` (para o Calendário e o Início), `abrirTarefa(id)` e as funções de `origem` usadas pelo Cronograma. |
 | 11 | `js/organizar.js` | `Organizar` | Calendário, Modo Foco e o resumo "Seu dia" (lê as tarefas de `Quadros.comPrazo()`). Eventos com `origem` (`sincronizarEventos`, `removerEventos`) e `focarBloco` para o Cronograma. |
 | 11b | `js/cronograma-gerador.js` + `js/cronograma.js` | `CronogramaGerador`, `Cronograma` | Aba Cronograma: a conta do plano (pura, sem IA) e o assistente de 5 passos, prévia editável e painel. Detalhes em `docs/CRONOGRAMA_ESTUDOS.md`. |
+| 11c | `js/diagnostica.js` | `Diagnostica` | Avaliação Diagnóstica (`#diagnostica`): 10 questões por área (`data/diagnostica/enem.json`), notas de 1 a 5 por disciplina para o Cronograma. Detalhes em `docs/AVALIACAO_DIAGNOSTICA.md`. |
 | 12 | `js/biblioteca.js` | `Biblioteca` | Cursos e trilhas (estudar, exportar, criar colando texto) e PDFs (IndexedDB). |
 | 13 | `js/perfil.js` | `Perfil` | Nível geral somando as trilhas, tabela por trilha, backup. |
 | 13b | `js/estatisticas.js` | `Estatisticas` | **Minhas Estatísticas** (Você) e o bloco "Estatísticas" no Progresso de cada pessoa (Admin/Professor), derivados do log de atividade. |
@@ -56,6 +57,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#tarefas` | Quadros de tarefas (listas e cartões) | `quadros.js` |
 | `#calendario` | Calendário (mês/semana) | `organizar.js` |
 | `#cronograma` | Cronograma de estudos (assistente + plano) | `cronograma.js` |
+| `#diagnostica` | Avaliação Diagnóstica (aberta pelo Cronograma) | `diagnostica.js` |
 | `#foco` | Modo Foco 25/5 ou 50/10 | `organizar.js` |
 | `#cursos` | Cursos e trilhas | `biblioteca.js` |
 | `#pdfs` | PDFs | `biblioteca.js` |
