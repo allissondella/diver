@@ -16,7 +16,7 @@ Um assistente que monta um plano de estudos até a prova. **V1, 2026-10-05.** Se
 
 1. **Objetivo:** Enem, vestibular ou outra prova, o nome e a data (pelo menos 7 dias à frente).
 2. **Seu tempo:** minutos em cada dia da semana (0 = descanso) e o horário em que costuma começar. Padrão: 2 h de segunda a sexta, 3 h no sábado, domingo de descanso. Sem nenhum dia de descanso, aparece uma dica gentil (não bloqueia).
-3. **Suas matérias:** no Enem e no vestibular, a pessoa escolhe entre **fazer a Avaliação Diagnóstica** (recomendada; `docs/AVALIACAO_DIAGNOSTICA.md`) ou **marcar ela mesma** a nota de 1 a 5 em cada **disciplina** (1 = muita dificuldade, 5 = domino). As notas da avaliação entram preenchidas e continuam editáveis. Fora do Enem, a pessoa desmarca o que não cai, diz se cada matéria "cai muito / médio / pouco" e pode acrescentar matérias próprias (ex.: Direito constitucional).
+3. **Suas matérias:** no Enem e no vestibular, a pessoa escolhe entre **fazer a Avaliação Diagnóstica** (recomendada, um teste só de 40 questões; `docs/AVALIACAO_DIAGNOSTICA.md`; "Continuar" sem escolher abre a avaliação) ou **marcar ela mesma** a nota de 1 a 5 em cada **disciplina** (1 = muita dificuldade, 5 = domino). As notas da avaliação entram preenchidas e continuam editáveis. Fora do Enem, a pessoa desmarca o que não cai, diz se cada matéria "cai muito / médio / pouco" e pode acrescentar matérias próprias (ex.: Direito constitucional).
 4. **Prévia:** resumo (semanas, horas, simulados, redações), "Onde vai o seu tempo" e a semana a semana, editável:
    - arrastar um bloco para outro dia (computador) ou "Mover para…" (celular);
    - remover e fixar/soltar;
@@ -139,7 +139,7 @@ Tudo o que o cronograma cria leva `origem: "cronograma:<id do plano>"`.
 
 ## 9. Próximas versões
 
-- **Feito (2026-10-05):** a Avaliação Diagnóstica (40 questões, 4 áreas, `docs/AVALIACAO_DIAGNOSTICA.md`).
+- **Feito (2026-10-05):** a Avaliação Diagnóstica (40 questões das 4 áreas num teste só, `docs/AVALIACAO_DIAGNOSTICA.md`).
 - **V2:** forma B da avaliação e diagnóstico adaptativo (o mesmo motor da Recapitulação do Ensino Médio).
 - **V3:**
   - reajuste automático pela taxa de acerto real por tema (do log);

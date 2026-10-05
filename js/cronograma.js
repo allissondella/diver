@@ -126,6 +126,7 @@ const Cronograma = (() => {
     const passo = [passoObjetivo, passoTempo, passoMaterias, passoPrevia, passoConfirmar][r.passo]();
     const erro = h('p', { class: 'texto-erro cr-erro', role: 'alert' });
     const avancar = () => {
+      if (passo.aoContinuar && passo.aoContinuar()) return;
       const msg = passo.validar ? passo.validar() : null;
       if (msg) { erro.textContent = msg; return; }
       if (r.passo === 4) { salvarRascunho(); return; }
@@ -233,7 +234,7 @@ const Cronograma = (() => {
     // Avaliação Diagnóstica (Enem e vestibular): as notas dela entram aqui, uma vez por resultado novo
     const podeDiag = p.objetivo.tipo !== 'outra';
     const sit = Diagnostica.situacao();
-    if (podeDiag && sit.feitas && rascunho.diagAplicada !== sit.atualizadoEm) {
+    if (podeDiag && sit.feita && rascunho.diagAplicada !== sit.atualizadoEm) {
       const nn = Diagnostica.notas();
       p.materias.forEach((m) => { if (nn[m.id]) m.nota = nn[m.id]; });
       rascunho.diagAplicada = sit.atualizadoEm;
@@ -241,19 +242,17 @@ const Cronograma = (() => {
       rascunho.sujo = true;
     }
     const mostrarLista = !podeDiag || !!rascunho.modoNotas;
-    const escolha = !podeDiag ? null : sit.feitas
+    const escolha = !podeDiag ? null : sit.feita
       ? h('div', { class: 'cr-diag cr-diag--feita', role: 'status' },
-        h('p', {}, h('strong', { text: `Notas da sua Avaliação Diagnóstica aplicadas (${sit.feitas} de ${sit.total} áreas). ` }),
-          sit.feitas < sit.total ? 'Faça as outras áreas quando puder: o plano fica ainda mais certeiro. ' : '',
-          'A Redação você marca. Ajuste qualquer nota se achar justo.'),
-        h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', id: 'cr-diag-ver', onclick: () => Diagnostica.abrir() }, icone('i-grafico'), sit.feitas < sit.total ? 'Continuar a avaliação' : 'Ver meus pontos fortes e fracos'))
+        h('p', {}, h('strong', { text: 'Notas da sua Avaliação Diagnóstica aplicadas. ' }), 'A Redação você marca. Ajuste qualquer nota se achar justo.'),
+        h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', id: 'cr-diag-ver', onclick: () => Diagnostica.abrir() }, icone('i-grafico'), 'Ver meus pontos fortes e fracos'))
       : h('div', { class: 'cr-diag' },
         h('p', { class: 'cr-diag__titulo' }, h('strong', { text: 'Como você quer informar o seu nível em cada matéria?' })),
         h('div', { class: 'cr-diag__opcoes' },
           h('button', { type: 'button', class: 'cr-diag__opcao cr-diag__opcao--recomendada', id: 'cr-diag-fazer', onclick: () => Diagnostica.abrir() },
             h('span', { class: 'chip chip--ativo', text: 'Recomendado' }),
-            h('strong', { class: 'cr-diag__nome', text: 'Fazer a Avaliação Diagnóstica' }),
-            h('span', { text: 'Muito importante: é o modo mais assertivo para você saber os seus pontos fortes e fracos, e ela personaliza a sua experiência e o seu plano. 10 questões por área, cerca de 1h30 no total, uma área por vez.' })),
+            h('strong', { class: 'cr-diag__nome', text: sit.respondidas ? `Continuar a Avaliação Diagnóstica (${sit.respondidas} de ${sit.total})` : 'Fazer a Avaliação Diagnóstica' }),
+            h('span', { text: 'Muito importante: é o modo mais assertivo para você saber os seus pontos fortes e fracos, e ela personaliza a sua experiência e o seu plano. 40 questões num teste só, cerca de 1h30, e dá para pausar.' })),
           h('button', { type: 'button', class: 'cr-diag__opcao', id: 'cr-diag-manual', 'aria-pressed': String(rascunho.modoNotas === 'manual'), onclick: () => { rascunho.modoNotas = 'manual'; redesenhar(); setTimeout(() => { const x = document.querySelector('.cr-materia input'); if (x) x.focus(); }, 0); } },
             h('strong', { class: 'cr-diag__nome', text: 'Prefiro marcar eu mesmo' }),
             h('span', { text: 'Dê uma nota de 1 a 5 para cada matéria, do jeito que você se vê hoje.' }))));
@@ -302,8 +301,9 @@ const Cronograma = (() => {
         mostrarLista && !enem ? h('p', { class: 'texto-suave cr-dica', text: 'Desmarque o que não cai na sua prova e diga o quanto cada matéria cai.' }) : null,
         ...(mostrarLista ? grupos : []),
         mostrarLista && !enem ? adicionar : null),
+      // sem escolher, o "Continuar" segue a opção recomendada: abre a Avaliação Diagnóstica
+      aoContinuar: () => { if (mostrarLista) return false; Diagnostica.abrir(); return true; },
       validar: () => {
-        if (!mostrarLista) return 'Escolha: fazer a Avaliação Diagnóstica (recomendado) ou marcar as notas você mesmo.';
         return p.materias.some((m) => m.ativa && m.id !== 'redacao') ? null : 'Marque pelo menos uma matéria para estudar.';
       },
     };
