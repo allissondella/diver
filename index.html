@@ -60,6 +60,8 @@
   <!-- Áreas -->
   <script src="js/quadros.js" defer></script>
   <script src="js/organizar.js" defer></script>
+  <script src="js/cronograma-gerador.js" defer></script>
+  <script src="js/cronograma.js" defer></script>
   <script src="js/biblioteca.js" defer></script>
   <script src="js/perfil.js" defer></script>
   <script src="js/estatisticas.js" defer></script>
@@ -207,6 +209,7 @@
         <p class="lateral__grupo">Organizar</p>
         <a href="#tarefas" data-secao="tarefas"><svg class="icone" aria-hidden="true"><use href="#i-colunas"/></svg>Tarefas</a>
         <a href="#calendario" data-secao="calendario"><svg class="icone" aria-hidden="true"><use href="#i-calendario"/></svg>Calendário</a>
+        <a href="#cronograma" data-secao="cronograma"><svg class="icone" aria-hidden="true"><use href="#i-alvo"/></svg>Cronograma</a>
         <a href="#foco" data-secao="foco"><svg class="icone" aria-hidden="true"><use href="#i-ampulheta"/></svg>Modo Foco<span class="lateral__badge lateral__badge--foco" id="badge-foco" hidden>ativo</span></a>
 
         <p class="lateral__grupo">Biblioteca</p>
@@ -522,6 +525,7 @@
       <!-- ============ ÁREAS (montadas pelos módulos organizar.js, biblioteca.js e perfil.js) ============ -->
       <section id="tela-tarefas" class="tela tela--larga tela--quadro" hidden aria-label="Tarefas"></section>
       <section id="tela-calendario" class="tela tela--larga" hidden aria-label="Calendário"></section>
+      <section id="tela-cronograma" class="tela tela--larga" hidden aria-label="Cronograma"></section>
       <section id="tela-foco" class="tela" hidden aria-label="Modo Foco"></section>
       <section id="tela-cursos" class="tela tela--larga" hidden aria-label="Cursos e trilhas"></section>
       <section id="tela-pdfs" class="tela tela--larga" hidden aria-label="PDFs"></section>

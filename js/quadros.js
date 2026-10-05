@@ -67,7 +67,7 @@ const Quadros = (() => {
 
     bruto.quadros.forEach((q) => {
       if (!q || !q.id || out.quadros.some((x) => x.id === String(q.id))) return;
-      const nq = { id: String(q.id), nome: texto(q.nome, LIMITES.quadro) || 'Quadro', listas: [], ocultarConcluidas: !!q.ocultarConcluidas };
+      const nq = { id: String(q.id), nome: texto(q.nome, LIMITES.quadro) || 'Quadro', listas: [], ocultarConcluidas: !!q.ocultarConcluidas, ...(q.origem ? { origem: texto(q.origem, 80) } : {}) };
       (Array.isArray(q.listas) ? q.listas : []).forEach((lidBruto) => {
         const lid = String(lidBruto);
         const l = listasBrutas[lid];
@@ -89,6 +89,7 @@ const Quadros = (() => {
             criadaEm: Number(t.criadaEm) || Date.now(),
             trilhaId: t.trilhaId ? String(t.trilhaId) : null,
             xpConcedido: !!t.xpConcedido,
+            ...(t.origem ? { origem: texto(t.origem, 80) } : {}), // quem criou (ex.: "cronograma:<id>"), para apagar tudo de uma vez
           };
           nl.tarefas.push(tid);
         });
@@ -1593,9 +1594,91 @@ const Quadros = (() => {
     const saida = [];
     d.quadros.forEach((q) => q.listas.forEach((lid) => d.listas[lid].tarefas.forEach((tid) => {
       const t = d.tarefas[tid];
-      if (t.prazo && !t.concluida) saida.push({ id: t.id, titulo: t.titulo, prazo: t.prazo, quadro: q.nome, lista: d.listas[lid].nome });
+      if (t.prazo && !t.concluida) saida.push({ id: t.id, titulo: t.titulo, prazo: t.prazo, quadro: q.nome, lista: d.listas[lid].nome, origem: t.origem || null });
     })));
     return saida;
+  }
+
+  /* =========================================================
+     ORIGEM: tarefas criadas por outra área (o Cronograma), que dá para refazer ou apagar de uma vez
+     ========================================================= */
+  function tirarTarefa(d, tid) {
+    const l = listaDe(d, tid);
+    if (l) l.tarefas.splice(l.tarefas.indexOf(tid), 1);
+    delete d.tarefas[tid];
+  }
+
+  /**
+   * Refaz as tarefas abertas de uma origem com prazo a partir de `desde` (as concluídas e as antigas ficam).
+   * itens: [{ titulo, prazo, notas, subtarefas: [{ id, titulo, feita }] }]. Ficam num quadro próprio, sem trocar o quadro aberto.
+   */
+  function sincronizarOrigem(origem, { nomeQuadro, desde, itens }) {
+    const d = ler();
+    const atual = d.quadroAtual;
+    let q = d.quadros.find((x) => x.origem === origem);
+    if (!q) {
+      q = criarQuadro(d, String(nomeQuadro).slice(0, LIMITES.quadro), ['Plano de estudos']);
+      q.origem = origem;
+      d.listas[q.listas[0]].ordenacao = 'prazo';
+      d.quadroAtual = atual || q.id;
+    } else q.nome = String(nomeQuadro).slice(0, LIMITES.quadro);
+    if (!q.listas.length) {
+      const l = criarLista(d, 'Plano de estudos');
+      l.ordenacao = 'prazo';
+      q.listas.push(l.id);
+    }
+    const lista = d.listas[q.listas[0]];
+    Object.values(d.tarefas).filter((t) => t.origem === origem && !t.concluida && t.prazo >= desde).forEach((t) => tirarTarefa(d, t.id));
+    const fechados = new Set(Object.values(d.tarefas).filter((t) => t.origem === origem && t.concluida).map((t) => t.prazo));
+    itens.filter((it) => !fechados.has(it.prazo)).forEach((it) => {
+      const t = novaTarefa(String(it.titulo).slice(0, LIMITES.titulo));
+      Object.assign(t, {
+        prazo: it.prazo, notas: String(it.notas || '').slice(0, LIMITES.notas), origem,
+        subtarefas: (it.subtarefas || []).map((s) => ({ id: String(s.id), titulo: String(s.titulo).slice(0, LIMITES.sub), feita: !!s.feita })),
+      });
+      d.tarefas[t.id] = t;
+      lista.tarefas.push(t.id);
+    });
+    salvar(d);
+  }
+
+  /** Apaga todas as tarefas de uma origem e o quadro dela (sempre sobra pelo menos um quadro). */
+  function removerOrigem(origem) {
+    const d = ler();
+    const antes = Object.keys(d.tarefas).length + d.quadros.length;
+    Object.values(d.tarefas).filter((t) => t.origem === origem).forEach((t) => tirarTarefa(d, t.id));
+    d.quadros.filter((q) => q.origem === origem).forEach((q) => {
+      q.listas.forEach((lid) => {
+        (d.listas[lid].tarefas || []).forEach((tid) => delete d.tarefas[tid]);
+        delete d.listas[lid];
+      });
+    });
+    d.quadros = d.quadros.filter((q) => q.origem !== origem);
+    if (!d.quadros.length) criarQuadro(d, 'Quadro principal', ['A fazer', 'Fazendo', 'Revisar']);
+    if (!d.quadros.some((q) => q.id === d.quadroAtual)) d.quadroAtual = d.quadros[0].id;
+    if (Object.keys(d.tarefas).length + d.quadros.length !== antes) salvar(d);
+  }
+
+  /** O que a pessoa já fez nas tarefas de uma origem: ids das subtarefas feitas e dias (prazos) das tarefas concluídas. */
+  function estadoOrigem(origem) {
+    const d = ler();
+    const feitas = new Set();
+    const dias = new Set();
+    Object.values(d.tarefas).filter((t) => t.origem === origem).forEach((t) => {
+      if (t.concluida) dias.add(t.prazo);
+      t.subtarefas.forEach((s) => { if (s.feita) feitas.add(s.id); });
+    });
+    return { feitas, dias };
+  }
+
+  /** Marca (ou desmarca) a subtarefa de id `subId` nas tarefas de uma origem. */
+  function marcarSubtarefa(origem, subId, feita) {
+    const d = ler();
+    let mudou = false;
+    Object.values(d.tarefas).filter((t) => t.origem === origem).forEach((t) => t.subtarefas.forEach((s) => {
+      if (s.id === subId && s.feita !== feita) { s.feita = feita; mudou = true; }
+    }));
+    if (mudou) salvar(d);
   }
 
   /** Abre a tela de Tarefas já com o painel da tarefa aberto. */
@@ -1610,5 +1693,5 @@ const Quadros = (() => {
     if (estado.detalhe) fecharDetalhe(false);
   });
 
-  return { render, comPrazo, abrirTarefa };
+  return { render, comPrazo, abrirTarefa, sincronizarOrigem, removerOrigem, estadoOrigem, marcarSubtarefa };
 })();

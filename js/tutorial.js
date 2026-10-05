@@ -86,7 +86,13 @@ const Tutorial = (() => {
       { desenho: 'quadro', titulo: 'Quadros de tarefas', texto: 'Organize os estudos em listas e cartões. Arraste para mudar de lugar, dê um prazo (ele vai para o Calendário) e conclua para ganhar XP.' },
     ],
     calendario: [
-      { desenho: 'calendario', titulo: 'Calendário', texto: 'Marque provas, aulas e blocos de estudo. O gerador de cronograma monta um plano até a data da sua prova.' },
+      { desenho: 'calendario', titulo: 'Calendário', texto: 'Marque provas, aulas e blocos de estudo. Para montar um plano até a data da prova, use a aba Cronograma.' },
+    ],
+    cronograma: [
+      { desenho: 'calendario', titulo: 'Cronograma', texto: 'Em 5 passos o Diver monta um plano de estudos até a sua prova: a data, o seu tempo e uma nota de 1 a 5 em cada matéria. Sem IA e sem pressa.' },
+      { alvo: '#cr-hoje', desenho: 'ampulheta', titulo: 'Hoje', texto: 'Os blocos do dia. Comece cada um pelo Modo Foco: ele abre no tempo certo e marca o bloco como feito no fim.' },
+      { alvo: '#cr-redistribuir', desenho: 'calendario', titulo: 'Perdeu um dia?', texto: 'Acontece. "Redistribuir" leva o que ficou para trás para os próximos dias.' },
+      { alvo: '#cr-ajustes-titulo', desenho: 'calendario', titulo: 'Tarefas e Calendário', texto: 'Mostre o plano nas Tarefas e no Calendário só se quiser. "Apagar cronograma" tira tudo de uma vez.' },
     ],
     foco: [
       { desenho: 'ampulheta', titulo: 'Modo Foco', texto: 'Ciclos de foco e pausa (25/5 ou 50/10). Cada bloco completo dá XP e pérolas. Celular longe, cabeça no fundo.' },
@@ -118,7 +124,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2, calendario: 2, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

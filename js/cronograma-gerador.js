@@ -206,15 +206,17 @@ const CronogramaGerador = (() => {
           }
         }
         // conteúdo: a matéria mais "atrasada" em relação à parte dela, sem repetir a anterior e no máximo 2 por dia
+        // (a conta é em minutos: um bloco de 50 vale o dobro de um de 25)
+        const vagas = d.vagas >= 2 ? 2 : 1;
+        const dur = vagas === 2 ? 50 : 25;
         const ordem = escolhidas
           .filter((m) => m.id !== anterior && (noDia[m.id] || 0) < 2)
-          .sort((a, b) => (parte[b.id] * (totalConteudo + 1) - recebido[b.id]) - (parte[a.id] * (totalConteudo + 1) - recebido[a.id]) || (a.id < b.id ? -1 : 1));
+          .sort((a, b) => (parte[b.id] * (totalConteudo + dur) - recebido[b.id]) - (parte[a.id] * (totalConteudo + dur) - recebido[a.id]) || (a.id < b.id ? -1 : 1));
         const m = ordem[0];
         if (!m) { d.vagas = 0; break; } // o dia já tem tudo o que cabe sem repetir demais
-        const vagas = d.vagas >= 2 ? 2 : 1;
-        d.blocos.push({ tipo: 'conteudo', materia: m.id, dur: vagas === 2 ? 50 : 25, vagas });
-        recebido[m.id] += 1;
-        totalConteudo += 1;
+        d.blocos.push({ tipo: 'conteudo', materia: m.id, dur, vagas });
+        recebido[m.id] += dur;
+        totalConteudo += dur;
         noDia[m.id] = (noDia[m.id] || 0) + 1;
         estudadoEm.push({ iso: d.iso, materia: m.id });
         anterior = m.id;
