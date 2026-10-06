@@ -1,5 +1,5 @@
 /*
- * organizar.js — área "Organizar": Calendário (com gerador de cronograma) e Modo Foco.
+ * organizar.js — área "Organizar": Calendário e Modo Foco (o plano de estudos fica em cronograma.js).
  * As Tarefas (quadros, listas e cartões) ficam em quadros.js; o Calendário lê delas
  * as tarefas abertas com prazo. Tudo salvo no navegador (localStorage, via Dados).
  * XP do foco passa pelo App -> Economia (nunca direto daqui).
@@ -49,12 +49,18 @@ const Organizar = (() => {
 
     secao.append(
       UI.cabecalho('Organizar', 'Calendário', 'Provas, aulas, sessões de estudo e dias de descanso. Tarefas com prazo aparecem aqui também.'),
-      cabecaCal, h('div', { class: 'cal-layout' }, grade, painelDia), cronograma());
+      cabecaCal, h('div', { class: 'cal-layout' }, grade, painelDia),
+      h('a', { class: 'cartao cal-atalho', href: '#cronograma' },
+        icone('i-alvo'),
+        h('span', {}, h('strong', { text: 'Montar meu cronograma' }), h('span', { class: 'texto-suave', text: ' · a data da prova, o seu tempo e as suas matérias viram um plano semana a semana' })),
+        icone('i-seta-dir')));
 
     function doDia(data) {
+      const todos = eventos();
+      const origens = new Set(todos.map((e) => e.origem).filter(Boolean)); // tarefa do cronograma que já tem evento: aparece uma vez só
       return {
-        evs: eventos().filter((e) => e.data === data).sort((a, b) => (a.hora || '').localeCompare(b.hora || '')),
-        tars: tarefasComPrazo().filter((t) => t.prazo === data),
+        evs: todos.filter((e) => e.data === data).sort((a, b) => (a.hora || '').localeCompare(b.hora || '')),
+        tars: tarefasComPrazo().filter((t) => t.prazo === data && !(t.origem && origens.has(t.origem))),
       };
     }
 
@@ -185,78 +191,13 @@ const Organizar = (() => {
         h('button', { type: 'submit', class: 'botao botao--primario botao--largo' }, icone('i-mais'), 'Adicionar'))].filter(Boolean));
     }
 
-    /* ---- Gerador de cronograma: data da prova + trilhas -> sessões distribuídas ---- */
-    function cronograma() {
-      const dataProva = h('input', { class: 'campo', type: 'date', required: true, min: UI.dataLocal(new Date(Date.now() + 2 * 864e5)), 'aria-label': 'Data da prova' });
-      const nomeProva = h('input', { class: 'campo', placeholder: 'Ex.: ENEM, prova de Direito…', maxlength: '60', 'aria-label': 'Nome da prova' });
-      const trilhasBox = h('div', { class: 'checks' }, App.trilhas().map((t) => h('label', { class: 'check' }, h('input', { type: 'checkbox', value: t.id, checked: true }), t.nome)));
-      const dias = h('div', { class: 'checks checks--dias' }, DIAS_SEMANA.map((d, k) => h('label', { class: 'check' }, h('input', { type: 'checkbox', value: String(k), checked: k >= 1 && k <= 5 }), d)));
-      const hora = h('input', { class: 'campo', type: 'time', value: '19:00', 'aria-label': 'Horário das sessões' });
-      const previa = h('div', { class: 'previa', 'aria-live': 'polite' });
-      let plano = [];
-
-      function gerar(e) {
-        e.preventDefault();
-        const escolhidas = [...trilhasBox.querySelectorAll('input:checked')].map((i) => i.value);
-        const diasOk = [...dias.querySelectorAll('input:checked')].map((i) => Number(i.value));
-        if (!dataProva.value || !escolhidas.length || !diasOk.length) {
-          previa.replaceChildren(h('p', { class: 'texto-erro', text: 'Escolha a data da prova, pelo menos uma trilha e um dia da semana.' }));
-          return;
-        }
-        const descansos = new Set(eventos().filter((x) => x.tipo === 'descanso').map((x) => x.data));
-        const ocupados = new Set(eventos().filter((x) => x.tipo === 'estudo').map((x) => x.data));
-        plano = [];
-        const d = new Date();
-        d.setDate(d.getDate() + 1);
-        const fim = UI.paraData(dataProva.value);
-        let k = 0;
-        while (d < fim && plano.length < 120) {
-          const iso = UI.dataLocal(d);
-          if (diasOk.includes(d.getDay()) && !descansos.has(iso) && !ocupados.has(iso)) {
-            const tid = escolhidas[k % escolhidas.length];
-            plano.push({ id: UI.id('evento'), titulo: `Estudo: ${nomeTrilha(tid)}`, tipo: 'estudo', data: iso, hora: hora.value || '', trilhaId: tid, gerado: true });
-            k++;
-          }
-          d.setDate(d.getDate() + 1);
-        }
-        const prova = { id: UI.id('evento'), titulo: nomeProva.value.trim() || 'Prova', tipo: 'prova', data: dataProva.value, hora: '', trilhaId: escolhidas.length === 1 ? escolhidas[0] : null, gerado: true };
-        if (!plano.length) {
-          previa.replaceChildren(h('p', { class: 'texto-erro', text: 'Não sobrou nenhum dia livre até a prova com esses filtros. Tente liberar mais dias da semana.' }));
-          return;
-        }
-        previa.replaceChildren(
-          h('p', {}, h('strong', { text: `${UI.plural(plano.length, 'sessão', 'sessões')} de estudo` }), ` até ${UI.formatarData(dataProva.value, { day: '2-digit', month: 'long' })}, revezando ${UI.plural(escolhidas.length, 'trilha', 'trilhas')}. Dias de descanso e dias que já têm estudo ficam de fora.`),
-          h('ol', { class: 'previa__lista' }, plano.slice(0, 6).map((p) => h('li', { text: `${UI.formatarData(p.data, { weekday: 'short', day: '2-digit', month: 'short' })} · ${p.titulo}` })),
-            plano.length > 6 ? h('li', { class: 'texto-suave', text: `…e mais ${plano.length - 6}` }) : null),
-          h('button', { type: 'button', class: 'botao botao--primario', onclick: () => {
-            salvarEventos([...eventos(), ...plano, prova]);
-            estadoCal.dia = plano[0].data;
-            estadoCal.mes = plano[0].data.slice(0, 7);
-            previa.replaceChildren(h('p', { class: 'texto-sucesso', text: 'Cronograma adicionado ao calendário. Bons mergulhos!' }));
-            desenhar();
-          } }, icone('i-check'), 'Adicionar ao calendário'));
-      }
-
-      return h('details', { class: 'cartao cronograma' },
-        h('summary', { class: 'cronograma__resumo' }, icone('i-alvo'), h('span', {}, h('strong', { text: 'Gerador de cronograma' }), h('span', { class: 'texto-suave', text: ' · data da prova + trilhas = plano pronto' }))),
-        h('form', { class: 'cronograma__form', onsubmit: gerar },
-          h('div', { class: 'form-evento__linha' },
-            h('label', {}, h('span', { class: 'rotulo-campo', text: 'Data da prova' }), dataProva),
-            h('label', { class: 'form-linha__grande' }, h('span', { class: 'rotulo-campo', text: 'Nome da prova' }), nomeProva),
-            h('label', {}, h('span', { class: 'rotulo-campo', text: 'Horário' }), hora)),
-          h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Trilhas' }), trilhasBox),
-          h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Dias da semana' }), dias),
-          h('button', { type: 'submit', class: 'botao botao--secundario' }, 'Gerar plano'),
-          previa));
-    }
-
     desenhar();
   }
 
   /* =========================================================
      MODO FOCO (25/5)
      ========================================================= */
-  const foco = { fase: 'parado', presetFoco: 25, presetPausa: 5, fim: 0, restante: 25 * 60, ciclos: 0, timer: null, faseAtiva: 'foco' };
+  const foco = { fase: 'parado', presetFoco: 25, presetPausa: 5, fim: 0, restante: 25 * 60, ciclos: 0, timer: null, faseAtiva: 'foco', bloco: null };
   const DICAS_PAUSA = ['Levanta, estica as costas e bebe água.', 'Olha pra longe por 20 segundos: seus olhos agradecem.', 'Respira fundo três vezes. Devagar.', 'Dá uma volta rápida. O cérebro também precisa de ar.'];
 
   function renderFoco(secao) {
@@ -272,7 +213,9 @@ const Organizar = (() => {
 
     secao.append(
       UI.cabecalho('Organizar', 'Modo Foco', `Blocos de foco com pausas de verdade. Cada bloco completo vale +${Economia.CONFIG.foco.xp} XP na trilha atual.`),
-      h('div', { class: 'cartao foco' }, presets, relogio, estadoTxt, botoes, h('p', { class: 'foco-ciclos', text: `Blocos de foco completos hoje: ${foco.ciclos}` })));
+      h('div', { class: 'cartao foco' },
+        foco.bloco ? h('p', { class: 'foco-bloco' }, icone('i-alvo'), h('span', {}, 'Bloco do cronograma: ', h('strong', { text: foco.bloco.titulo }))) : null,
+        presets, relogio, estadoTxt, botoes, h('p', { class: 'foco-ciclos', text: `Blocos de foco completos hoje: ${foco.ciclos}` })));
 
     function desenhar() {
       const seg = Math.max(0, Math.round((foco.fase === 'rodando' ? foco.fim - Date.now() : foco.restante * 1000) / 1000));
@@ -298,6 +241,10 @@ const Organizar = (() => {
         if (foco.faseAtiva === 'foco') {
           foco.ciclos++;
           App.concederXP(null, Economia.CONFIG.foco, 'Bloco de foco completo');
+          if (foco.bloco) {
+            Cronograma.concluirBloco(foco.bloco.id, 'foco'); // o bloco do cronograma que abriu este foco fica feito
+            foco.bloco = null;
+          }
           trocarFase('pausa');
         } else {
           UI.toast('Pausa encerrada', 'Bora mergulhar de novo?', 'i-relogio');
@@ -339,6 +286,35 @@ const Organizar = (() => {
     desenhar();
   }
 
+  /**
+   * Abre o Modo Foco já no tempo de um bloco do cronograma (25 ou 50 min). Quando o foco termina, o bloco fica feito.
+   * Se já tem um foco rodando, não atrapalha: só leva para a tela.
+   */
+  function focarBloco({ id, titulo, minutos }) {
+    if (foco.fase === 'rodando') {
+      UI.toast('Já tem um foco rodando', 'Termine este primeiro: o bloco espera você.', 'i-ampulheta');
+    } else {
+      clearInterval(foco.timer);
+      foco.presetFoco = minutos >= 50 ? 50 : 25;
+      foco.presetPausa = minutos >= 50 ? 10 : 5;
+      foco.faseAtiva = 'foco';
+      foco.restante = foco.presetFoco * 60;
+      foco.bloco = { id, titulo };
+    }
+    App.irPara('foco');
+  }
+
+  /** Eventos criados por outra área (ex.: "cronograma:<id>"): refaz os de `desde` em diante, ou apaga todos. */
+  function sincronizarEventos(origem, novos, desde) {
+    const ficam = eventos().filter((e) => !(e.origem === origem && e.data >= desde));
+    salvarEventos([...ficam, ...novos.map((e) => ({ id: UI.id('evento'), hora: '', trilhaId: null, ...e, origem }))]);
+  }
+  function removerEventos(origem) {
+    const lista = eventos();
+    const ficam = lista.filter((e) => e.origem !== origem);
+    if (ficam.length !== lista.length) salvarEventos(ficam);
+  }
+
   /** Resumo para a tela Início: tarefas para hoje (ou atrasadas) e próximos eventos. */
   function resumoDoDia() {
     const hoje = UI.dataLocal();
@@ -349,5 +325,5 @@ const Organizar = (() => {
     };
   }
 
-  return { renderCalendario, renderFoco, resumoDoDia, TIPOS, focoAtivo: () => foco.fase === 'rodando' };
+  return { renderCalendario, renderFoco, resumoDoDia, focarBloco, sincronizarEventos, removerEventos, TIPOS, focoAtivo: () => foco.fase === 'rodando' };
 })();

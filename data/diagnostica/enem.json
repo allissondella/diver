@@ -1,0 +1,1071 @@
+{
+ "id": "diagnostica-enem",
+ "nome": "Avaliação Diagnóstica",
+ "versao": 1,
+ "descricao": "10 questões por área (Linguagens, Humanas, Natureza e Matemática), originais, no estilo do Enem. Mede pontos fortes e fracos por disciplina para personalizar o Cronograma.",
+ "areas": [
+  {
+   "id": "linguagens",
+   "nome": "Linguagens",
+   "minutos": 20,
+   "disciplinas": [
+    "portugues",
+    "lingua-estrangeira"
+   ]
+  },
+  {
+   "id": "humanas",
+   "nome": "Humanas",
+   "minutos": 20,
+   "disciplinas": [
+    "historia",
+    "geografia",
+    "filosofia",
+    "sociologia"
+   ]
+  },
+  {
+   "id": "natureza",
+   "nome": "Natureza",
+   "minutos": 25,
+   "disciplinas": [
+    "fisica",
+    "quimica",
+    "biologia"
+   ]
+  },
+  {
+   "id": "matematica",
+   "nome": "Matemática",
+   "minutos": 25,
+   "disciplinas": [
+    "matematica"
+   ]
+  }
+ ],
+ "questoes": [
+  {
+   "id": "dg-lin-01",
+   "area": "linguagens",
+   "disciplina": "portugues",
+   "tema": "Gêneros e finalidade",
+   "dificuldade": "facil",
+   "texto": "ATENÇÃO, MORADORES!\nNa segunda-feira (12), a água será interrompida das 8h às 14h para a limpeza da caixa-d'água. Pedimos que armazenem água para esse período.\nA Administração",
+   "enunciado": "A principal finalidade desse texto é",
+   "alternativas": [
+    "informar uma interrupção no fornecimento de água e orientar os moradores a se prepararem.",
+    "convencer os moradores a votar na próxima assembleia do condomínio.",
+    "narrar um acontecimento que já terminou no prédio.",
+    "denunciar uma falha da administração na limpeza da caixa-d'água.",
+    "anunciar a venda de um serviço de limpeza para os moradores."
+   ],
+   "correta": 0,
+   "explicacao": "É um aviso: informa o que vai acontecer (corte de água, dia e horário) e orienta o leitor (armazenar água). Informar e orientar é a função típica do gênero. Dica de mergulhador: pergunte ao texto quem fala, para quem e para quê; o gênero responde junto.",
+   "comentarios": [
+    "",
+    "Não há votação nem assembleia no texto.",
+    "O fato ainda vai acontecer (\"a partir de segunda-feira\").",
+    "A administração é quem assina o aviso; não há denúncia.",
+    "Nada é vendido: a limpeza é do próprio condomínio."
+   ]
+  },
+  {
+   "id": "dg-lin-02",
+   "area": "linguagens",
+   "disciplina": "portugues",
+   "tema": "Funções da linguagem",
+   "dificuldade": "facil",
+   "texto": "Você merece acordar descansado. Troque seu colchão hoje e pague em 10 vezes sem juros.",
+   "enunciado": "Nesse anúncio, predomina a função da linguagem",
+   "alternativas": [
+    "referencial, porque descreve o colchão de forma neutra e objetiva.",
+    "emotiva, porque o anunciante expressa os próprios sentimentos.",
+    "metalinguística, porque explica o significado das palavras usadas.",
+    "fática, porque apenas testa se o canal de comunicação funciona.",
+    "conativa (apelativa), porque se dirige ao leitor para convencê-lo a comprar."
+   ],
+   "correta": 4,
+   "explicacao": "O texto fala com o leitor (\"você\") e usa verbos no imperativo (\"troque\", \"pague\") para levá-lo a agir: é a função conativa, a marca da publicidade. Dica de mergulhador: \"você\" + imperativo = alguém quer te convencer de alguma coisa.",
+   "comentarios": [
+    "Há apelo ao leitor, não uma descrição neutra.",
+    "O foco não é o sentimento de quem fala, e sim a ação de quem lê.",
+    "Nenhuma palavra é explicada no texto.",
+    "O texto não serve para testar o contato; ele quer vender.",
+    ""
+   ]
+  },
+  {
+   "id": "dg-lin-03",
+   "area": "linguagens",
+   "disciplina": "portugues",
+   "tema": "Variação linguística",
+   "dificuldade": "medio",
+   "texto": "Trecho de entrevista com um agricultor, publicado numa reportagem:\n\"A gente planta o feijão quando a chuva chega. Se atrasar, num dá pra esperar não, senão perde a safra.\"",
+   "enunciado": "Sobre a fala do agricultor, é correto afirmar que ela",
+   "alternativas": [
+    "contém erros que deveriam ter sido corrigidos antes da publicação.",
+    "prova que o entrevistado não sabe se comunicar e invalida o depoimento.",
+    "deveria seguir a norma-padrão, a única forma correta da língua.",
+    "mostra marcas da oralidade e de uma variedade regional e social, adequadas à situação de entrevista.",
+    "indica que a variação linguística só acontece na língua escrita."
+   ],
+   "correta": 3,
+   "explicacao": "\"A gente\", \"num\" e a dupla negação (\"num dá... não\") são marcas da fala espontânea e de variedades regionais e sociais. Numa entrevista oral, elas são adequadas: variação não é erro, é adequação à situação. Dica de mergulhador: no Enem, a alternativa que chama a variação de \"erro\" quase sempre é a armadilha.",
+   "comentarios": [
+    "Variação não é erro; a fala está adequada à situação.",
+    "A mensagem é clara; julgar o falante pela variedade é preconceito linguístico.",
+    "A norma-padrão é uma variedade de prestígio, não a única correta.",
+    "",
+    "A variação aparece principalmente na fala, como no próprio exemplo."
+   ]
+  },
+  {
+   "id": "dg-lin-04",
+   "area": "linguagens",
+   "disciplina": "portugues",
+   "tema": "Inferência e pressuposto",
+   "dificuldade": "medio",
+   "enunciado": "A frase \"Depois de três anos, Joana voltou a fumar\" permite concluir, com segurança, que Joana",
+   "alternativas": [
+    "fuma desde a adolescência, sem nunca ter parado.",
+    "nunca tinha fumado até agora.",
+    "já fumou antes, ficou um tempo sem fumar e recomeçou.",
+    "parou de fumar há três anos e não fuma mais.",
+    "pretende parar de fumar daqui a três anos."
+   ],
+   "correta": 2,
+   "explicacao": "\"Voltou a fumar\" pressupõe que ela já fumava e tinha parado; \"depois de três anos\" indica o tempo sem fumar. Pressuposto é o que a frase dá como certo sem dizer diretamente. Dica de mergulhador: verbos como \"voltar a\", \"deixar de\" e \"continuar\" carregam pressupostos; leia-os com lupa.",
+   "comentarios": [
+    "\"Voltou\" indica que houve uma pausa.",
+    "\"Voltar a\" só é possível para quem já fumou.",
+    "",
+    "A frase diz o contrário: ela fuma de novo agora.",
+    "Não há nada sobre planos futuros."
+   ]
+  },
+  {
+   "id": "dg-lin-05",
+   "area": "linguagens",
+   "disciplina": "portugues",
+   "tema": "Arte e sociedade",
+   "dificuldade": "medio",
+   "texto": "Um coletivo de artistas pinta murais nos muros de uma comunidade. Os desenhos mostram rostos de moradores e frases escritas por eles. Para o grupo, \"a obra só se completa quando quem vive aqui se reconhece nela e ajuda a pintar\".",
+   "enunciado": "Essa proposta artística valoriza principalmente",
+   "alternativas": [
+    "a arte como obra de um único gênio, feita para ser contemplada em museus.",
+    "a arte como prática coletiva, ligada ao território e à identidade de quem vive ali.",
+    "a técnica acadêmica europeia como modelo de qualidade.",
+    "a arte apenas como enfeite, sem relação com a vida da comunidade.",
+    "a cópia fiel de obras famosas para democratizar o acesso a elas."
+   ],
+   "correta": 1,
+   "explicacao": "O coletivo pinta rostos e frases dos próprios moradores, e a obra \"só se completa\" com a participação deles: arte coletiva, de pertencimento e ligada ao lugar. Dica de mergulhador: em questões de arte, procure quem produz, para quem e com que relação com o espaço.",
+   "comentarios": [
+    "A obra é coletiva e está na rua, não num museu.",
+    "",
+    "Não há referência a técnica acadêmica.",
+    "A obra fala da comunidade e conta com ela; não é só enfeite.",
+    "As imagens são novas, feitas com os moradores, não cópias."
+   ]
+  },
+  {
+   "id": "dg-lin-06",
+   "area": "linguagens",
+   "disciplina": "portugues",
+   "tema": "Argumentação",
+   "dificuldade": "dificil",
+   "texto": "Fala de um vereador numa audiência pública:\n\"Ou a cidade proíbe todos os carros no centro, ou vamos continuar com o trânsito parado para sempre. Não existe meio-termo.\"",
+   "enunciado": "O principal problema de argumentação dessa fala é",
+   "alternativas": [
+    "apresentar apenas duas saídas extremas, como se não houvesse outras possibilidades.",
+    "usar dados estatísticos de fonte desconhecida.",
+    "atacar a pessoa do adversário em vez de discutir a ideia.",
+    "recorrer à autoridade de um especialista sem citá-lo.",
+    "generalizar a partir de um único caso isolado."
+   ],
+   "correta": 0,
+   "explicacao": "A fala oferece só dois caminhos (proibir todos os carros ou trânsito parado para sempre) e ignora outros: ônibus melhores, ciclovias, horários escalonados. É o falso dilema. Dica de mergulhador: quando um texto diz \"ou isso ou aquilo\", pergunte se não existe um terceiro caminho.",
+   "comentarios": [
+    "",
+    "Não há números na fala.",
+    "Ninguém é atacado pessoalmente.",
+    "Não há especialista citado.",
+    "Não há um caso isolado sendo generalizado."
+   ]
+  },
+  {
+   "id": "dg-lin-07",
+   "area": "linguagens",
+   "disciplina": "portugues",
+   "tema": "Coesão e conectivos",
+   "dificuldade": "dificil",
+   "texto": "\"O projeto foi aprovado pela maioria dos vereadores; ______, ainda precisa da sanção do prefeito para entrar em vigor.\"",
+   "enunciado": "O conectivo que completa a frase mantendo o sentido de oposição é",
+   "alternativas": [
+    "portanto",
+    "porque",
+    "assim",
+    "por exemplo",
+    "contudo"
+   ],
+   "correta": 4,
+   "explicacao": "A segunda parte contraria a expectativa criada pela primeira (aprovado, mas ainda não vale): relação de oposição, expressa por \"contudo\" (como \"mas\", \"porém\", \"no entanto\"). Dica de mergulhador: descubra a relação entre as duas partes antes de olhar as alternativas.",
+   "comentarios": [
+    "\"Portanto\" indica conclusão, e a segunda parte não conclui a primeira.",
+    "\"Porque\" indica causa, e a sanção não é causa da aprovação.",
+    "\"Assim\" indica consequência ou modo.",
+    "\"Por exemplo\" introduz um exemplo, que não existe aqui.",
+    ""
+   ]
+  },
+  {
+   "id": "dg-lin-08",
+   "area": "linguagens",
+   "disciplina": "portugues",
+   "tema": "Literatura brasileira",
+   "dificuldade": "dificil",
+   "texto": "Um romance acompanha uma família de retirantes castigada pela seca no sertão nordestino. A linguagem é seca e direta, com poucas palavras, e a obra denuncia a miséria e as desigualdades sociais da região.",
+   "enunciado": "Essas características aproximam o romance descrito do",
+   "alternativas": [
+    "Arcadismo, que idealiza a vida simples no campo.",
+    "Romantismo indianista, que exalta o indígena como herói nacional.",
+    "Parnasianismo, preocupado com a forma perfeita e a arte pela arte.",
+    "romance de 1930, regionalista e de denúncia social.",
+    "Concretismo, que explora o espaço visual da página."
+   ],
+   "correta": 3,
+   "explicacao": "Seca, retirantes, linguagem seca e direta e denúncia das desigualdades do Nordeste são marcas do romance regionalista de 1930 (segunda geração modernista). Dica de mergulhador: ligue cada período a uma palavra-chave: Arcadismo = campo ideal; Parnasianismo = forma; Romance de 30 = denúncia social.",
+   "comentarios": [
+    "O sertão aparece duro e real, não idealizado.",
+    "Não há herói indígena nem exaltação nacionalista.",
+    "A preocupação é social, não a forma perfeita.",
+    "",
+    "É um romance em prosa, não poesia visual."
+   ]
+  },
+  {
+   "id": "dg-lin-09",
+   "area": "linguagens",
+   "disciplina": "lingua-estrangeira",
+   "tema": "Leitura em inglês",
+   "dificuldade": "facil",
+   "lingua": "ingles",
+   "texto": "PARK RULES\n• Dogs must be on a leash.\n• Please take your trash with you.\n• No swimming in the lake.",
+   "enunciado": "De acordo com a placa, os visitantes do parque podem",
+   "alternativas": [
+    "nadar no lago.",
+    "deixar o lixo na grama.",
+    "passear com o cachorro na coleira.",
+    "soltar o cachorro para correr.",
+    "acampar durante a noite."
+   ],
+   "correta": 2,
+   "explicacao": "\"Dogs must be on a leash\" (cães devem estar na coleira) permite passear com o cachorro, desde que na coleira. Dica de mergulhador: em placas, \"must\" indica obrigação e \"no + ação\" indica proibição.",
+   "comentarios": [
+    "\"No swimming in the lake\" proíbe nadar.",
+    "\"Please take your trash with you\" pede para levar o lixo.",
+    "",
+    "A placa exige a coleira.",
+    "A placa não fala de acampar."
+   ]
+  },
+  {
+   "id": "dg-lin-10",
+   "area": "linguagens",
+   "disciplina": "lingua-estrangeira",
+   "tema": "Leitura em inglês",
+   "dificuldade": "medio",
+   "lingua": "ingles",
+   "texto": "Sleep is not a luxury. Teenagers who sleep less than seven hours a night tend to have lower grades and more difficulty concentrating. Experts recommend turning off screens one hour before bed.",
+   "enunciado": "O objetivo principal do texto é",
+   "alternativas": [
+    "vender um aplicativo que bloqueia telas à noite.",
+    "mostrar que o sono influencia o desempenho escolar e dar uma recomendação.",
+    "narrar o sonho de um adolescente.",
+    "criticar os especialistas por exagerarem.",
+    "explicar como funcionam as telas de celular."
+   ],
+   "correta": 1,
+   "explicacao": "O texto afirma que dormir pouco se relaciona a notas mais baixas e menos concentração (\"lower grades\", \"difficulty concentrating\") e termina com uma recomendação (desligar as telas uma hora antes de dormir). Dica de mergulhador: leia a primeira e a última frase: muitas vezes elas mostram a ideia central e o objetivo.",
+   "comentarios": [
+    "Nenhum produto é oferecido.",
+    "",
+    "\"Sleep\" é sono, não sonho (\"dream\").",
+    "Os especialistas são citados como apoio, não criticados.",
+    "As telas aparecem só na recomendação."
+   ]
+  },
+  {
+   "id": "dg-lin-11",
+   "area": "linguagens",
+   "disciplina": "lingua-estrangeira",
+   "tema": "Leitura em espanhol",
+   "dificuldade": "facil",
+   "lingua": "espanhol",
+   "texto": "AVISO: La biblioteca estará cerrada el lunes por reformas. Los libros prestados podrán devolverse el martes sin multa.",
+   "enunciado": "O aviso informa que",
+   "alternativas": [
+    "os livros devolvidos na terça-feira não terão multa.",
+    "a biblioteca vai fechar definitivamente.",
+    "haverá multa dobrada para quem atrasar.",
+    "a reforma será feita na terça-feira.",
+    "novos empréstimos serão feitos na segunda-feira."
+   ],
+   "correta": 0,
+   "explicacao": "\"Podrán devolverse el martes sin multa\" quer dizer que poderão ser devolvidos na terça sem multa. O fechamento é só na segunda (\"el lunes\"). Dica de mergulhador: os dias da semana em espanhol (lunes, martes...) são pegadinha comum; confira com calma.",
+   "comentarios": [
+    "",
+    "Fecha só na segunda, por reforma.",
+    "\"Sin multa\" é sem multa.",
+    "A reforma é na segunda (\"el lunes\").",
+    "Na segunda a biblioteca estará fechada."
+   ]
+  },
+  {
+   "id": "dg-lin-12",
+   "area": "linguagens",
+   "disciplina": "lingua-estrangeira",
+   "tema": "Leitura em espanhol",
+   "dificuldade": "medio",
+   "lingua": "espanhol",
+   "texto": "En muchas ciudades, las bicicletas compartidas reducen el tráfico, pero solo funcionan bien cuando hay carriles seguros. Sin ellos, pocas personas se animan a pedalear.",
+   "enunciado": "Segundo o texto, para o sistema de bicicletas compartilhadas funcionar bem, é necessário",
+   "alternativas": [
+    "cobrar mais caro pelo aluguel das bicicletas.",
+    "proibir os carros em toda a cidade.",
+    "aumentar o número de estacionamentos.",
+    "oferecer bicicletas elétricas.",
+    "haver ciclovias seguras."
+   ],
+   "correta": 4,
+   "explicacao": "\"Solo funcionan bien cuando hay carriles seguros\": só funcionam bem quando há faixas (ciclovias) seguras; sem elas, poucas pessoas se animam a pedalar. Dica de mergulhador: \"solo... cuando\" marca a condição; é nela que mora a resposta.",
+   "comentarios": [
+    "O texto não fala de preço.",
+    "O texto não propõe proibir carros.",
+    "Estacionamentos não são citados.",
+    "O texto não fala de bicicletas elétricas.",
+    ""
+   ]
+  },
+  {
+   "id": "dg-hum-01",
+   "area": "humanas",
+   "disciplina": "historia",
+   "tema": "Brasil Colônia",
+   "dificuldade": "facil",
+   "enunciado": "Nos séculos XVI e XVII, a economia açucareira do Nordeste colonial se apoiava em",
+   "alternativas": [
+    "grandes propriedades, monocultura para exportação e trabalho de pessoas escravizadas.",
+    "pequenas propriedades familiares voltadas ao mercado interno.",
+    "trabalho assalariado de imigrantes europeus.",
+    "fábricas de açúcar refinado instaladas nas cidades.",
+    "mineração de ouro e diamantes."
+   ],
+   "correta": 0,
+   "explicacao": "O engenho combinava latifúndio, um único produto voltado à exportação e mão de obra escravizada, africana e indígena. Esse tripé marcou a sociedade colonial. Dica de mergulhador: Colônia exportadora = terra grande + um produto + trabalho escravizado.",
+   "comentarios": [
+    "",
+    "A produção era em grandes propriedades, para fora.",
+    "A imigração europeia assalariada é do fim do século XIX.",
+    "A produção era rural, nos engenhos.",
+    "A mineração é do século XVIII, em Minas Gerais."
+   ]
+  },
+  {
+   "id": "dg-hum-02",
+   "area": "humanas",
+   "disciplina": "historia",
+   "tema": "Independência e Império",
+   "dificuldade": "medio",
+   "enunciado": "A Independência do Brasil (1822) manteve várias estruturas do período colonial. Um exemplo dessa continuidade foi",
+   "alternativas": [
+    "a abolição imediata da escravidão.",
+    "a proclamação da República.",
+    "a reforma agrária nas terras da Coroa.",
+    "o voto universal para homens e mulheres.",
+    "a manutenção da escravidão e da grande propriedade rural."
+   ],
+   "correta": 4,
+   "explicacao": "A Independência mudou a política (o Brasil deixou de ser colônia), mas manteve a estrutura social: escravidão, latifúndio e uma elite agrária no poder, agora com a monarquia de D. Pedro I. Dica de mergulhador: no Enem, Independência costuma ser lida como \"mudança política com continuidade social\".",
+   "comentarios": [
+    "A abolição só veio em 1888.",
+    "O país virou Império; a República é de 1889.",
+    "Não houve reforma agrária.",
+    "O voto era censitário, restrito aos homens com renda.",
+    ""
+   ]
+  },
+  {
+   "id": "dg-hum-03",
+   "area": "humanas",
+   "disciplina": "historia",
+   "tema": "Abolição e pós-abolição",
+   "dificuldade": "dificil",
+   "enunciado": "A Lei Áurea (1888) libertou as pessoas escravizadas, mas não veio acompanhada de políticas de acesso à terra, à educação e ao trabalho. Uma consequência histórica dessa forma de abolição foi",
+   "alternativas": [
+    "a integração imediata da população negra ao mercado de trabalho formal.",
+    "a indenização dos libertos pelo Estado brasileiro.",
+    "a distribuição de terras devolutas aos ex-escravizados.",
+    "a marginalização da população negra e desigualdades que se reproduzem até hoje.",
+    "o fim das desigualdades raciais no início da República."
+   ],
+   "correta": 3,
+   "explicacao": "Sem terra, escola ou trabalho garantidos, a população liberta foi empurrada para a informalidade e para as periferias, e a desigualdade racial passou a se reproduzir nas instituições: é a raiz do que hoje se chama racismo estrutural. Dica de mergulhador: desconfie da alternativa que diz que um problema histórico \"acabou\" de uma vez.",
+   "comentarios": [
+    "Os libertos foram preteridos, inclusive em favor de imigrantes.",
+    "Ninguém indenizou os libertos; houve até pedidos de indenização aos ex-senhores.",
+    "A Lei de Terras (1850) dificultava o acesso à terra para quem não podia comprar.",
+    "",
+    "As desigualdades raciais continuam até hoje."
+   ]
+  },
+  {
+   "id": "dg-hum-04",
+   "area": "humanas",
+   "disciplina": "geografia",
+   "tema": "Espaço urbano",
+   "dificuldade": "facil",
+   "enunciado": "Um dos principais fatores do crescimento rápido e sem planejamento de muitas cidades brasileiras a partir de 1950 foi",
+   "alternativas": [
+    "a queda da população rural causada pela imigração europeia.",
+    "a mudança da capital federal para o Rio de Janeiro.",
+    "o êxodo rural, impulsionado pela industrialização das cidades e pela mecanização do campo.",
+    "o fim da atividade industrial nas metrópoles.",
+    "a redução da natalidade nas áreas urbanas."
+   ],
+   "correta": 2,
+   "explicacao": "Com a industrialização concentrada nas cidades e a mecanização e a concentração de terras no campo, milhões de pessoas migraram para as cidades, que cresceram mais rápido do que a oferta de moradia e serviços. Dica de mergulhador: urbanização acelerada no Brasil = êxodo rural + industrialização.",
+   "comentarios": [
+    "A imigração europeia é de antes e não esvaziou o campo.",
+    "A capital foi do Rio para Brasília (1960), e isso não explica o fenômeno.",
+    "",
+    "A indústria cresceu, não acabou.",
+    "Menos nascimentos não fazem as cidades crescerem."
+   ]
+  },
+  {
+   "id": "dg-hum-05",
+   "area": "humanas",
+   "disciplina": "geografia",
+   "tema": "Natureza e ambiente",
+   "dificuldade": "medio",
+   "enunciado": "Em bairros com muito asfalto e concreto e com rios canalizados, chuvas fortes costumam causar enchentes porque",
+   "alternativas": [
+    "o asfalto absorve a água da chuva mais rápido que a terra.",
+    "a água infiltra menos no solo e escorre depressa para rios e galerias, que transbordam.",
+    "o calor das cidades faz a chuva evaporar antes de chegar ao chão.",
+    "a vegetação urbana em excesso impede o escoamento da água.",
+    "os rios canalizados guardam mais água do que os rios naturais."
+   ],
+   "correta": 1,
+   "explicacao": "Superfícies impermeáveis impedem a infiltração; a água escorre rápido, em grande volume, e chega de uma vez aos rios e galerias, que não dão conta. Áreas verdes e várzeas ajudariam a segurar a água. Dica de mergulhador: em enchente urbana, pense em impermeabilização e no tempo que a água leva para escoar.",
+   "comentarios": [
+    "O asfalto é impermeável: ele não absorve a água.",
+    "",
+    "A chuva forte chega ao chão; o calor não a evapora no caminho.",
+    "A vegetação ajuda a água a infiltrar; o problema é a falta dela.",
+    "Canalizar acelera a água e tira a várzea onde ela se espalharia."
+   ]
+  },
+  {
+   "id": "dg-hum-06",
+   "area": "humanas",
+   "disciplina": "geografia",
+   "tema": "Espaço agrário",
+   "dificuldade": "facil",
+   "enunciado": "A expansão das lavouras de soja sobre o Cerrado e a Amazônia aumenta as exportações brasileiras, mas também é associada a",
+   "alternativas": [
+    "desmatamento, conflitos por terra e concentração fundiária.",
+    "reforma agrária e distribuição de terras.",
+    "recuperação da vegetação nativa.",
+    "fim da dependência de produtos primários.",
+    "aumento da agricultura de subsistência como principal atividade."
+   ],
+   "correta": 0,
+   "explicacao": "A fronteira agrícola avança derrubando vegetação nativa, em grandes propriedades mecanizadas, o que gera conflitos com povos indígenas, quilombolas e pequenos agricultores. Dica de mergulhador: agronegócio exportador = grande propriedade, mecanização e pressão sobre a vegetação.",
+   "comentarios": [
+    "",
+    "A soja avança em grandes propriedades, o contrário de reforma agrária.",
+    "A expansão retira vegetação, não a recupera.",
+    "A soja é um produto primário: a dependência continua.",
+    "A soja é monocultura comercial, não subsistência."
+   ]
+  },
+  {
+   "id": "dg-hum-07",
+   "area": "humanas",
+   "disciplina": "filosofia",
+   "tema": "Filosofia antiga",
+   "dificuldade": "medio",
+   "enunciado": "Na tradição atribuída a Sócrates, a ideia de \"só sei que nada sei\" expressa",
+   "alternativas": [
+    "a certeza de que nenhum conhecimento é possível.",
+    "o desprezo pela filosofia e pelo diálogo.",
+    "a defesa de que cada pessoa é a medida de todas as coisas.",
+    "a obediência cega às verdades da tradição.",
+    "o reconhecimento da própria ignorância como ponto de partida para buscar o conhecimento."
+   ],
+   "correta": 4,
+   "explicacao": "Para Sócrates, admitir que não sabe abre caminho para investigar: pelo diálogo e pelas perguntas, o interlocutor percebe as próprias contradições e busca definições melhores. Dica de mergulhador: Sócrates = perguntar para descobrir que não se sabe, e então procurar.",
+   "comentarios": [
+    "Ele não nega o conhecimento: ele o procura.",
+    "O diálogo era o método dele.",
+    "Essa frase é de Protágoras, um sofista.",
+    "Ele questionava a tradição, não a seguia cegamente.",
+    ""
+   ]
+  },
+  {
+   "id": "dg-hum-08",
+   "area": "humanas",
+   "disciplina": "filosofia",
+   "tema": "Filosofia política",
+   "dificuldade": "dificil",
+   "enunciado": "Para Thomas Hobbes, sem um poder comum que a todos imponha respeito, a vida humana no estado de natureza seria marcada",
+   "alternativas": [
+    "pela bondade natural, depois corrompida pela sociedade.",
+    "pela harmonia, já que todos respeitariam os direitos naturais à propriedade.",
+    "pela separação dos poderes em Executivo, Legislativo e Judiciário.",
+    "pela guerra de todos contra todos, o que justifica um Estado forte.",
+    "pelo desaparecimento do Estado e das classes sociais."
+   ],
+   "correta": 3,
+   "explicacao": "Hobbes descreve o estado de natureza como insegurança permanente; para escapar dela, as pessoas fazem um contrato e entregam o poder a um soberano forte (o Leviatã). Dica de mergulhador: entre os contratualistas, Hobbes = medo e Estado forte; Locke = propriedade e direitos; Rousseau = bondade natural e vontade geral.",
+   "comentarios": [
+    "Bondade natural corrompida é a tese de Rousseau.",
+    "Direitos naturais à propriedade são o centro de Locke, e mesmo para ele não há harmonia garantida.",
+    "Separação dos poderes é de Montesquieu.",
+    "",
+    "O fim do Estado é ideia de Marx e dos anarquistas."
+   ]
+  },
+  {
+   "id": "dg-hum-09",
+   "area": "humanas",
+   "disciplina": "sociologia",
+   "tema": "Conceitos clássicos",
+   "dificuldade": "medio",
+   "enunciado": "Quando dizemos que a língua, as regras de etiqueta e as leis já existiam antes de nós e nos influenciam mesmo sem querermos, estamos descrevendo o conceito de",
+   "alternativas": [
+    "ação social, de Max Weber.",
+    "luta de classes, de Karl Marx.",
+    "fato social, de Émile Durkheim.",
+    "indústria cultural, de Adorno e Horkheimer.",
+    "mais-valia, de Karl Marx."
+   ],
+   "correta": 2,
+   "explicacao": "Para Durkheim, o fato social é exterior (existe fora de cada pessoa), coercitivo (pressiona a seguir) e geral (vale para o grupo). Língua, leis e costumes são exemplos clássicos. Dica de mergulhador: Durkheim = fato social; Weber = ação social com sentido; Marx = classes e trabalho.",
+   "comentarios": [
+    "Ação social é a conduta orientada pelo sentido que a pessoa dá a ela.",
+    "Luta de classes trata do conflito entre classes sociais.",
+    "",
+    "Indústria cultural trata da cultura como mercadoria de massa.",
+    "Mais-valia é o valor do trabalho apropriado pelo patrão."
+   ]
+  },
+  {
+   "id": "dg-hum-10",
+   "area": "humanas",
+   "disciplina": "sociologia",
+   "tema": "Desigualdade e racismo",
+   "dificuldade": "dificil",
+   "enunciado": "Uma pesquisa enviou currículos iguais a várias empresas, mudando só o nome dos candidatos. Nomes associados a pessoas negras receberam bem menos chamadas para entrevista. A Sociologia explica esse resultado principalmente pelo conceito de",
+   "alternativas": [
+    "meritocracia, já que os currículos eram iguais.",
+    "racismo estrutural, presente em práticas e instituições mesmo sem intenção declarada.",
+    "democracia racial, que garante oportunidades iguais.",
+    "anomia, porque as empresas estavam sem regras.",
+    "mobilidade social ascendente."
+   ],
+   "correta": 1,
+   "explicacao": "Com currículos iguais, a única diferença era o nome: a desvantagem vem de práticas e critérios enraizados nas instituições, mesmo quando ninguém se declara racista. É o racismo estrutural. Dica de mergulhador: quando a desigualdade aparece com \"tudo o mais igual\", a explicação é estrutural, não de mérito.",
+   "comentarios": [
+    "Se fosse mérito, currículos iguais teriam o mesmo resultado.",
+    "",
+    "\"Democracia racial\" é um mito que a própria pesquisa desmente.",
+    "Anomia é a falta de normas na sociedade; as empresas tinham regras.",
+    "O resultado mostra uma barreira, não ascensão."
+   ]
+  },
+  {
+   "id": "dg-nat-01",
+   "area": "natureza",
+   "disciplina": "fisica",
+   "tema": "Eletricidade e consumo",
+   "dificuldade": "facil",
+   "enunciado": "Um chuveiro elétrico de 5 000 W fica ligado 20 minutos por dia. Em 30 dias, a energia elétrica consumida por ele é de",
+   "alternativas": [
+    "3 kWh",
+    "50 kWh",
+    "100 kWh",
+    "150 kWh",
+    "3 000 kWh"
+   ],
+   "correta": 1,
+   "explicacao": "Energia = potência × tempo. 5 000 W = 5 kW; 20 min = 1/3 h. Por dia: 5 × 1/3 ≈ 1,67 kWh. Em 30 dias: 1,67 × 30 = 50 kWh. Dica de mergulhador: conta de luz em 3 passos: watts ÷ 1 000, vezes horas por dia, vezes dias.",
+   "comentarios": [
+    "Esse valor mistura as unidades (5 × 20 × 30 ÷ 1 000): 20 é minutos, não horas.",
+    "",
+    "Esse valor usa 40 minutos por dia, o dobro do tempo.",
+    "Esse valor usa 1 hora por dia em vez de 20 minutos.",
+    "Esse valor usa minutos no lugar de horas (5 × 20 × 30)."
+   ]
+  },
+  {
+   "id": "dg-nat-02",
+   "area": "natureza",
+   "disciplina": "fisica",
+   "tema": "Calor e temperatura",
+   "dificuldade": "medio",
+   "enunciado": "À sombra, um banco de metal e um banco de madeira estão à mesma temperatura. Ao tocar os dois, a pessoa sente o metal mais frio porque",
+   "alternativas": [
+    "o metal conduz calor melhor e retira calor da mão mais depressa.",
+    "o metal está, na verdade, a uma temperatura menor que a madeira.",
+    "a madeira produz calor próprio por ser um material natural.",
+    "o metal transmite o \"frio\" para a mão da pessoa.",
+    "a madeira reflete mais a luz do sol."
+   ],
+   "correta": 0,
+   "explicacao": "Os dois estão à mesma temperatura, mas o metal é bom condutor térmico: o calor sai da mão para ele mais rápido, e é essa perda rápida que a pele sente como \"frio\". A madeira é isolante e tira calor devagar. Dica de mergulhador: a pele sente o fluxo de calor, não a temperatura do objeto.",
+   "comentarios": [
+    "",
+    "O enunciado diz que estão à mesma temperatura.",
+    "A madeira não gera calor.",
+    "O que flui é o calor, da mão para o metal; não existe \"frio\" sendo transmitido.",
+    "Os bancos estão à sombra; o motivo é a condução térmica."
+   ]
+  },
+  {
+   "id": "dg-nat-03",
+   "area": "natureza",
+   "disciplina": "fisica",
+   "tema": "Mecânica e energia",
+   "dificuldade": "dificil",
+   "enunciado": "Um carro passa de 40 km/h para 80 km/h. Mantida a mesma força de frenagem, a energia cinética do carro e, com ela, a distância necessária para parar ficam",
+   "alternativas": [
+    "iguais",
+    "duas vezes maiores",
+    "três vezes maiores",
+    "reduzidas à metade",
+    "quatro vezes maiores"
+   ],
+   "correta": 4,
+   "explicacao": "Energia cinética = m·v²/2: dobrando a velocidade, ela fica 2² = 4 vezes maior. Com a mesma força de freio, a distância de frenagem cresce na mesma proporção da energia (trabalho = força × distância). Dica de mergulhador: a velocidade entra ao quadrado; em dobro, o estrago quadruplica.",
+   "comentarios": [
+    "A energia depende da velocidade, que mudou.",
+    "Esse seria o efeito se a energia dependesse da velocidade de forma linear, não ao quadrado.",
+    "Não há fator 3 na relação.",
+    "A velocidade aumentou; a energia não pode diminuir.",
+    ""
+   ]
+  },
+  {
+   "id": "dg-nat-04",
+   "area": "natureza",
+   "disciplina": "quimica",
+   "tema": "Misturas e separação",
+   "dificuldade": "facil",
+   "enunciado": "Para obter água sem areia a partir de uma mistura das duas, de forma simples e sem aquecer, o processo mais adequado é a",
+   "alternativas": [
+    "destilação simples",
+    "fusão",
+    "filtração",
+    "sublimação",
+    "cristalização"
+   ],
+   "correta": 2,
+   "explicacao": "Areia e água formam uma mistura heterogênea com um sólido que não se dissolve: um filtro (até um pano ou papel) retém a areia e deixa a água passar. Dica de mergulhador: sólido que não dissolve + líquido = filtração ou decantação.",
+   "comentarios": [
+    "A destilação exige aquecimento e serve para separar o que está dissolvido.",
+    "Fusão é mudança de estado (sólido para líquido), não separação.",
+    "",
+    "Sublimação é passar de sólido para gás; não se aplica aqui.",
+    "Cristalização recupera um sólido dissolvido, e a areia não se dissolve."
+   ]
+  },
+  {
+   "id": "dg-nat-05",
+   "area": "natureza",
+   "disciplina": "quimica",
+   "tema": "Ácidos e bases",
+   "dificuldade": "medio",
+   "enunciado": "O suco gástrico tem pH próximo de 2. Um antiácido alivia a azia porque",
+   "alternativas": [
+    "é um ácido mais forte e diminui o pH do estômago.",
+    "estimula o estômago a produzir mais ácido.",
+    "é uma base que neutraliza parte do ácido e eleva o pH.",
+    "é um sal neutro que não reage com o ácido.",
+    "transforma o ácido do estômago em gás oxigênio."
+   ],
+   "correta": 2,
+   "explicacao": "pH 2 é bem ácido. O antiácido (como o hidróxido de magnésio ou o bicarbonato de sódio) tem caráter básico: reage com o ácido (neutralização) e o pH sobe, aliviando a queimação. Dica de mergulhador: na escala de pH, abaixo de 7 é ácido, acima de 7 é básico; neutralizar é aproximar do 7.",
+   "comentarios": [
+    "Mais ácido pioraria a azia.",
+    "O efeito é reduzir a acidez, não aumentar.",
+    "",
+    "Se não reagisse, não aliviaria nada.",
+    "A neutralização forma sal e água; no caso do bicarbonato, gás carbônico, nunca oxigênio."
+   ]
+  },
+  {
+   "id": "dg-nat-06",
+   "area": "natureza",
+   "disciplina": "quimica",
+   "tema": "Reações e estequiometria",
+   "dificuldade": "dificil",
+   "enunciado": "Na queima completa do metano: CH₄ + 2 O₂ → CO₂ + 2 H₂O. Use as massas molares C = 12 g/mol, H = 1 g/mol e O = 16 g/mol. A massa de CO₂ formada na queima completa de 32 g de metano é",
+   "alternativas": [
+    "32 g",
+    "44 g",
+    "64 g",
+    "88 g",
+    "176 g"
+   ],
+   "correta": 3,
+   "explicacao": "Massa molar do CH₄ = 12 + 4 = 16 g/mol; 32 g = 2 mol. A proporção é 1 CH₄ : 1 CO₂, então se formam 2 mol de CO₂. Massa molar do CO₂ = 12 + 32 = 44 g/mol; 2 × 44 = 88 g. Dica de mergulhador: em estequiometria, transforme tudo em mol, use a proporção da equação e só no fim volte para gramas.",
+   "comentarios": [
+    "Repete a massa do metano; a massa muda porque entram átomos de oxigênio.",
+    "É a massa de 1 mol de CO₂, mas 32 g de metano são 2 mol.",
+    "É a massa de 2 mol de O₂ (que reagem com só 1 mol de CH₄), não a de CO₂.",
+    "",
+    "Dobra a conta duas vezes: seriam 4 mol de CO₂."
+   ]
+  },
+  {
+   "id": "dg-nat-07",
+   "area": "natureza",
+   "disciplina": "biologia",
+   "tema": "Ecologia",
+   "dificuldade": "facil",
+   "enunciado": "Na cadeia alimentar capim → gafanhoto → sapo → cobra, o sapo ocupa a posição de",
+   "alternativas": [
+    "consumidor secundário",
+    "produtor",
+    "consumidor primário",
+    "consumidor terciário",
+    "decompositor"
+   ],
+   "correta": 0,
+   "explicacao": "O capim é o produtor; o gafanhoto, que come o capim, é consumidor primário; o sapo, que come o gafanhoto, é consumidor secundário; a cobra, terciário. Dica de mergulhador: conte as setas a partir do produtor: 1 seta = primário, 2 = secundário, 3 = terciário.",
+   "comentarios": [
+    "",
+    "Produtor é quem faz fotossíntese: o capim.",
+    "Consumidor primário é o gafanhoto, que come a planta.",
+    "Terciária é a cobra, que come o sapo.",
+    "Decompositores (fungos e bactérias) não aparecem na cadeia."
+   ]
+  },
+  {
+   "id": "dg-nat-08",
+   "area": "natureza",
+   "disciplina": "biologia",
+   "tema": "Saúde e imunidade",
+   "dificuldade": "medio",
+   "enunciado": "As vacinas protegem contra doenças porque",
+   "alternativas": [
+    "contêm anticorpos prontos que agem na hora.",
+    "matam os vírus e bactérias que já estão no corpo.",
+    "funcionam como antibióticos de efeito prolongado.",
+    "deixam o corpo sem nenhum micro-organismo.",
+    "estimulam o sistema imunológico a criar memória contra o agente, sem causar a doença grave."
+   ],
+   "correta": 4,
+   "explicacao": "A vacina apresenta ao corpo o agente enfraquecido, inativado ou só uma parte dele; o sistema imunológico produz anticorpos e células de memória, que reagem rápido num contato futuro. Dica de mergulhador: vacina previne (ensina o corpo); soro trata (traz anticorpos prontos).",
+   "comentarios": [
+    "Anticorpos prontos são o soro, que age na hora e não deixa memória.",
+    "A vacina previne; não é tratamento de uma infecção que já existe.",
+    "Antibiótico age contra bactérias e não é vacina.",
+    "Vivemos com muitos micro-organismos úteis; a vacina não elimina todos.",
+    ""
+   ]
+  },
+  {
+   "id": "dg-nat-09",
+   "area": "natureza",
+   "disciplina": "biologia",
+   "tema": "Genética",
+   "dificuldade": "medio",
+   "enunciado": "Em ervilhas, a cor amarela (A) é dominante sobre a verde (a). No cruzamento entre duas plantas Aa × Aa, a proporção esperada de sementes verdes é",
+   "alternativas": [
+    "0",
+    "1/4",
+    "1/2",
+    "3/4",
+    "1"
+   ],
+   "correta": 1,
+   "explicacao": "O cruzamento Aa × Aa dá 1 AA : 2 Aa : 1 aa. Só aa é verde (o recessivo precisa vir em dose dupla): 1 em 4, ou 25%. Dica de mergulhador: monte o quadro com os gametas (A, a) × (A, a) e conte; não confie na intuição.",
+   "comentarios": [
+    "Os dois pais carregam o alelo a, então aa é possível.",
+    "",
+    "1/2 é a proporção de heterozigotos (Aa).",
+    "3/4 é a proporção de amarelas (AA + Aa).",
+    "Para serem todas verdes, os dois pais teriam de ser aa."
+   ]
+  },
+  {
+   "id": "dg-nat-10",
+   "area": "natureza",
+   "disciplina": "biologia",
+   "tema": "Ecologia e poluição",
+   "dificuldade": "dificil",
+   "enunciado": "O despejo de esgoto rico em nutrientes num lago provoca grande proliferação de algas e, semanas depois, a morte de muitos peixes. A causa direta da morte dos peixes é",
+   "alternativas": [
+    "o excesso de oxigênio produzido pelas algas.",
+    "o aumento da luz que chega ao fundo do lago.",
+    "a intoxicação dos peixes que comem as algas.",
+    "a queda do oxigênio dissolvido, consumido pelas bactérias que decompõem a matéria orgânica.",
+    "a diminuição da temperatura da água."
+   ],
+   "correta": 3,
+   "explicacao": "É a eutrofização: os nutrientes fazem as algas se multiplicarem; a camada de algas na superfície bloqueia a luz, muitas morrem, e as bactérias aeróbias que as decompõem consomem o oxigênio da água. Sem oxigênio, os peixes morrem. Dica de mergulhador: em eutrofização, siga a cadeia: nutriente → algas → decomposição → falta de oxigênio.",
+   "comentarios": [
+    "O problema é a falta de oxigênio, não o excesso.",
+    "A camada de algas diminui a luz que chega ao fundo.",
+    "Algumas algas produzem toxinas, mas a causa típica e direta aqui é a falta de oxigênio.",
+    "",
+    "Não há relação com queda de temperatura."
+   ]
+  },
+  {
+   "id": "dg-mat-01",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Porcentagem",
+   "dificuldade": "facil",
+   "enunciado": "Uma camiseta de R$ 80,00 está com 25% de desconto. O preço final é",
+   "alternativas": [
+    "R$ 55,00",
+    "R$ 60,00",
+    "R$ 65,00",
+    "R$ 70,00",
+    "R$ 75,00"
+   ],
+   "correta": 1,
+   "explicacao": "25% de 80 = 20; 80 − 20 = 60. Ou direto: pagar 75% = 0,75 × 80 = 60. Dica de mergulhador: desconto de x% = multiplicar por (1 − x/100).",
+   "comentarios": [
+    "Esse valor desconta R$ 25,00, confundindo 25% com 25 reais.",
+    "",
+    "Esse valor desconta só R$ 15,00.",
+    "Esse valor desconta só R$ 10,00.",
+    "Esse valor desconta só R$ 5,00."
+   ]
+  },
+  {
+   "id": "dg-mat-02",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Razão e proporção",
+   "dificuldade": "facil",
+   "enunciado": "Uma receita usa 3 xícaras de farinha para fazer 12 biscoitos. Mantendo a proporção, para fazer 30 biscoitos são necessárias",
+   "alternativas": [
+    "6 xícaras",
+    "7 xícaras",
+    "7,5 xícaras",
+    "8 xícaras",
+    "10 xícaras"
+   ],
+   "correta": 2,
+   "explicacao": "3 xícaras para 12 biscoitos = 1 xícara para cada 4 biscoitos. 30 ÷ 4 = 7,5 xícaras. Dica de mergulhador: ache quanto vale \"1\" (aqui, 1 xícara = 4 biscoitos) e depois multiplique.",
+   "comentarios": [
+    "6 xícaras dariam só 24 biscoitos.",
+    "Arredondou para baixo; a conta exata é 7,5.",
+    "",
+    "8 xícaras dariam 32 biscoitos.",
+    "10 xícaras dariam 40 biscoitos."
+   ]
+  },
+  {
+   "id": "dg-mat-03",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Média, mediana e gráficos",
+   "dificuldade": "facil",
+   "enunciado": "As notas de um aluno em cinco provas foram 6, 8, 7, 9 e 5. A média aritmética dessas notas é",
+   "alternativas": [
+    "6",
+    "6,5",
+    "7",
+    "7,5",
+    "8"
+   ],
+   "correta": 2,
+   "explicacao": "Soma: 6 + 8 + 7 + 9 + 5 = 35. Média: 35 ÷ 5 = 7. Dica de mergulhador: média = soma de tudo ÷ quantidade de valores.",
+   "comentarios": [
+    "Fica abaixo da soma dividida por 5.",
+    "Fica abaixo da soma dividida por 5.",
+    "",
+    "Fica acima: a soma é 35, não 37,5.",
+    "8 é uma das notas, não a média."
+   ]
+  },
+  {
+   "id": "dg-mat-04",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Escala e unidades",
+   "dificuldade": "medio",
+   "enunciado": "Num mapa de escala 1 : 50 000, duas cidades estão a 8 cm de distância. Na realidade, a distância entre elas é de",
+   "alternativas": [
+    "400 m",
+    "4 km",
+    "8 km",
+    "40 km",
+    "400 km"
+   ],
+   "correta": 1,
+   "explicacao": "Cada 1 cm no mapa vale 50 000 cm na realidade. 8 × 50 000 = 400 000 cm = 4 000 m = 4 km. Dica de mergulhador: faça a conta em centímetros e só no fim converta (100 cm = 1 m; 1 000 m = 1 km).",
+   "comentarios": [
+    "400 000 cm são 4 000 m, não 400 m: faltou uma casa na conversão.",
+    "",
+    "8 km seria uma escala de 1 : 100 000.",
+    "Sobrou uma casa decimal na conversão.",
+    "Sobraram duas casas decimais na conversão."
+   ]
+  },
+  {
+   "id": "dg-mat-05",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Porcentagem",
+   "dificuldade": "medio",
+   "enunciado": "O preço de um produto subiu 20% e, no mês seguinte, caiu 20%. Em relação ao preço inicial, o preço final ficou",
+   "alternativas": [
+    "4% mais barato",
+    "igual",
+    "4% mais caro",
+    "2% mais barato",
+    "20% mais barato"
+   ],
+   "correta": 0,
+   "explicacao": "Aumentos e descontos seguidos se multiplicam: 1,20 × 0,80 = 0,96, ou seja, 96% do preço inicial: 4% mais barato. Os 20% de queda incidem sobre um valor maior. Dica de mergulhador: nunca some porcentagens seguidas; multiplique os fatores.",
+   "comentarios": [
+    "",
+    "Somar +20% e −20% dá zero, mas porcentagens seguidas não se somam.",
+    "O desconto incide sobre o valor já aumentado, então o resultado fica abaixo do inicial.",
+    "A conta dá 0,96, ou seja, 4%, não 2%.",
+    "O preço caiu só 4% no total."
+   ]
+  },
+  {
+   "id": "dg-mat-06",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Média, mediana e gráficos",
+   "dificuldade": "medio",
+   "enunciado": "Os salários (em mil reais) dos 7 funcionários de uma loja são: 2, 2, 3, 3, 4, 5 e 18. Para representar o salário típico da loja, a medida mais adequada e o seu valor são",
+   "alternativas": [
+    "a média, cerca de 5,3 mil reais.",
+    "a moda, 18 mil reais.",
+    "a média, 3 mil reais.",
+    "a mediana, 4 mil reais.",
+    "a mediana, 3 mil reais."
+   ],
+   "correta": 4,
+   "explicacao": "Com os valores em ordem (2, 2, 3, 3, 4, 5, 18), a mediana é o 4º: 3 mil. A média (37 ÷ 7 ≈ 5,3 mil) é puxada para cima pelo salário de 18 mil, um valor fora da curva, e não representa a maioria. Dica de mergulhador: com valor extremo (outlier), a mediana descreve melhor o \"típico\" do que a média.",
+   "comentarios": [
+    "A média existe, mas é distorcida pelo salário de 18 mil.",
+    "Moda é o valor que mais se repete; 18 aparece só uma vez.",
+    "A média é cerca de 5,3 mil, não 3 mil.",
+    "4 é o 5º valor; a mediana de 7 valores é o 4º.",
+    ""
+   ]
+  },
+  {
+   "id": "dg-mat-07",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Geometria plana",
+   "dificuldade": "medio",
+   "enunciado": "Um terreno retangular de 12 m por 20 m vai ganhar um piso em toda a área, menos num canteiro quadrado de 4 m de lado. A área do piso é",
+   "alternativas": [
+    "64 m²",
+    "208 m²",
+    "224 m²",
+    "240 m²",
+    "256 m²"
+   ],
+   "correta": 2,
+   "explicacao": "Área do terreno: 12 × 20 = 240 m². Área do canteiro: 4 × 4 = 16 m². Piso: 240 − 16 = 224 m². Dica de mergulhador: área com \"buraco\" = área total − área do buraco.",
+   "comentarios": [
+    "Esse valor é o perímetro do terreno (2 × 12 + 2 × 20).",
+    "Esse valor desconta 32 m², o dobro do canteiro.",
+    "",
+    "Esse valor esquece de descontar o canteiro.",
+    "Esse valor soma o canteiro em vez de subtrair."
+   ]
+  },
+  {
+   "id": "dg-mat-08",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Geometria espacial",
+   "dificuldade": "dificil",
+   "enunciado": "Uma caixa-d'água em forma de cubo tem aresta interna de 1,5 m. Sabendo que 1 m³ = 1 000 litros, a capacidade da caixa é de",
+   "alternativas": [
+    "337,5 litros",
+    "2 250 litros",
+    "3 375 litros",
+    "4 500 litros",
+    "33 750 litros"
+   ],
+   "correta": 2,
+   "explicacao": "Volume do cubo = aresta³ = 1,5 × 1,5 × 1,5 = 3,375 m³. Em litros: 3,375 × 1 000 = 3 375 L. Dica de mergulhador: volume é \"ao cubo\"; cuidado para não fazer só ao quadrado.",
+   "comentarios": [
+    "A conversão usou 100 em vez de 1 000 litros por m³.",
+    "Esse valor é 1,5² × 1 000: área, não volume.",
+    "",
+    "Esse valor é 1,5 × 3 × 1 000, uma conta sem sentido para o cubo.",
+    "Sobrou uma casa decimal na conversão."
+   ]
+  },
+  {
+   "id": "dg-mat-09",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Probabilidade",
+   "dificuldade": "dificil",
+   "enunciado": "Uma urna tem 3 bolas vermelhas e 2 azuis. Retiram-se duas bolas, uma depois da outra, sem reposição. A probabilidade de as duas serem vermelhas é",
+   "alternativas": [
+    "9/25",
+    "3/10",
+    "2/5",
+    "1/2",
+    "3/5"
+   ],
+   "correta": 1,
+   "explicacao": "1ª vermelha: 3/5. Sem repor, sobram 2 vermelhas em 4 bolas: 2/4. Probabilidade das duas: 3/5 × 2/4 = 6/20 = 3/10. Dica de mergulhador: \"sem reposição\" muda o total e a quantidade do que já saiu na segunda retirada.",
+   "comentarios": [
+    "9/25 seria com reposição (3/5 × 3/5).",
+    "",
+    "2/5 é a chance de a 1ª ser azul.",
+    "Não há conta que leve a 1/2 aqui.",
+    "3/5 é só a chance da 1ª bola ser vermelha."
+   ]
+  },
+  {
+   "id": "dg-mat-10",
+   "area": "matematica",
+   "disciplina": "matematica",
+   "tema": "Matemática financeira",
+   "dificuldade": "dificil",
+   "enunciado": "R$ 1 000,00 são aplicados a juros compostos de 10% ao ano. Depois de 2 anos, sem retiradas, o montante será de",
+   "alternativas": [
+    "R$ 1 020,00",
+    "R$ 1 100,00",
+    "R$ 1 200,00",
+    "R$ 1 210,00",
+    "R$ 1 221,00"
+   ],
+   "correta": 3,
+   "explicacao": "Juros compostos: os juros do 2º ano incidem sobre o montante do 1º. Ano 1: 1 000 × 1,1 = 1 100. Ano 2: 1 100 × 1,1 = 1 210. Ou: 1 000 × 1,1² = 1 210. Dica de mergulhador: juros compostos = multiplicar pelo fator (1 + taxa) uma vez para cada período.",
+   "comentarios": [
+    "Esse valor usa 1% ao ano, em vez de 10%.",
+    "Esse é o montante depois de só 1 ano.",
+    "Esses seriam juros simples (10% de 1 000 em cada ano).",
+    "",
+    "Esse valor não sai de uma conta correta: confira 1 000 × 1,1 × 1,1."
+   ]
+  }
+ ]
+}
