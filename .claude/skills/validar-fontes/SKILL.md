@@ -1,6 +1,6 @@
 ---
 name: validar-fontes
-description: Valida as informações do material que o usuário colocou no Google Drive (ou mandou por link, arquivo ou transcrição) ANTES de o Professor Diver estudar — atualidade (norma, lei, diretriz ou classificação substituída), fatos críticos conferidos em fontes oficiais, contradições entre arquivos e com o curso que já existe, lacunas de cobertura e confiabilidade da fonte. Gera o parecer em docs/validacoes/ (Aprovada, Aprovada com ressalvas ou Reprovada). Use sempre que houver material novo para criar um curso ou atualizar um curso existente, antes da skill criar-trilha. Nunca escreve questão, nunca chama IA paga e nunca grava texto de terceiro no repositório.
+description: Limpa e valida o material que o usuário colocou no Google Drive (ou mandou por link, arquivo ou transcrição) ANTES de o Professor Diver estudar. O foco é tirar a sujeira (duplicado, ilegível, fora do tema, propaganda, rascunho, versão velha) e as coisas erradas — atualidade (norma, lei, diretriz ou classificação substituída), fatos críticos conferidos em fontes oficiais, contradições entre arquivos e com o curso que já existe, lacunas de cobertura e confiabilidade da fonte. Gera o parecer em docs/validacoes/ (Aprovada, Aprovada com ressalvas ou Reprovada). Use sempre que houver material novo para criar um curso ou atualizar um curso existente, antes da skill criar-trilha. Nunca escreve questão, nunca chama IA paga e nunca grava texto de terceiro no repositório.
 ---
 
 # /validar-fontes — conferir o material antes de ensinar
@@ -11,7 +11,9 @@ O caminho de um conteúdo novo no Diver:
 Material no Drive → validar-fontes (esta skill) → criar-trilha (Professor Diver) → validar-questoes (Fila de Validação)
 ```
 
-O `garimpo` diz **o que é** a fonte e **se podemos usar** (direitos). Esta skill diz **se o que ela ensina está certo e atual**. A `validar-questoes` confere depois as questões **que nós escrevemos**. Se o material tem um erro ou uma regra velha e ninguém percebe aqui, o erro passa para o curso.
+O `garimpo` diz **o que é** a fonte e **se podemos usar** (direitos). Esta skill **limpa o material**: separa o que presta do que é sujeira e acha o que está errado, para o Professor estudar só o que é bom.
+
+**O foco (pedido do usuário, 2026-10-07): tirar a sujeira e as coisas erradas.** Cobertura e confiabilidade entram, mas o principal resultado é a lista do que **sai** e do que **fica**. A `validar-questoes` confere depois as questões **que nós escrevemos**. Se o material tem um erro ou uma regra velha e ninguém percebe aqui, o erro passa para o curso.
 
 Leia antes: `docs/CONTEUDO_CURSINHO.md` (seção 1, direitos), `docs/cadernos/LEIA-ME.md` (seção 3, o que pode ir para o repositório) e o caderno do curso, `docs/cadernos/<id-da-trilha>.md`, se existir.
 
@@ -34,9 +36,21 @@ Pergunte, se não estiver claro:
 Confira em `docs/FONTES_CATALOGADAS.md` se cada fonte já foi catalogada. Se não, faça a triagem da skill `garimpo` (classificação e regra de uso) e catalogue antes de seguir.
 - **Não identificado** ou **sem sinal verde de direitos:** pare e pergunte ao usuário. Não valide o que não pode ser usado.
 
-## 3. Validar as informações
+## 3. Limpar e validar
 
-Trabalhe por tema. Para cada ponto, escreva o achado **com as nossas palavras** e aponte o lugar do material só pelo número (arquivo, página, seção, slide ou minuto do vídeo).
+Trabalhe por tema.
+
+### 3.0 A sujeira (o que sai antes de tudo)
+Marque para **descarte**, arquivo por arquivo (e, dentro do arquivo, por páginas ou seções):
+- **Duplicado:** o mesmo conteúdo em outro arquivo ou outra versão (fica a mais completa e mais nova).
+- **Ilegível:** PDF só em imagem, digitalização ruim, texto embaralhado. Peça outra versão se for importante.
+- **Fora do tema:** matéria de outro curso, assunto que não cai, conteúdo raso demais para o nível do curso.
+- **Enchimento:** propaganda, capa, sumário, currículo do autor, avisos, páginas em branco, listas de exercícios sem conteúdo.
+- **Rascunho:** anotação solta, incompleta ou sem contexto, que não dá para conferir.
+- **Versão velha:** material inteiro baseado em norma, lei ou edital substituído (detalhes na 3.1).
+- **Errado:** trecho com fato que diverge da fonte oficial (detalhes na 3.2).
+
+O que sobra é o **material limpo**: só ele vai para a `criar-trilha`. Para cada ponto, escreva o achado **com as nossas palavras** e aponte o lugar do material só pelo número (arquivo, página, seção, slide ou minuto do vídeo).
 
 ### 3.1 Atualidade
 - **Versão da norma, lei, diretriz, classificação ou edital** que o material usa, comparada com a vigente. Exemplos: ISO/IEC 27001:2013 → 2022; LGPD e resoluções da ANPD; classificação da OMS de tumores; consenso ou diretriz de sociedade médica; matriz e edital do Enem.
@@ -66,7 +80,7 @@ O que a busca não resolve (conduta clínica, prática de mercado, interpretaç�
 | Resultado | Quando | O que acontece |
 |---|---|---|
 | **Aprovada** | Atual, fatos críticos conferem, sem contradição relevante | A `criar-trilha` pode usar |
-| **Aprovada com ressalvas** | Erros ou trechos velhos **pontuais**, cada um com a correção oficial | A `criar-trilha` usa o material, **não usa os trechos apontados** e ensina a versão corrigida |
+| **Aprovada com ressalvas** | Houve sujeira para tirar, ou erros e trechos velhos **pontuais**, cada um com a correção oficial | A `criar-trilha` usa **só o material limpo**, não usa os trechos descartados e ensina a versão corrigida |
 | **Reprovada** | A versão central está substituída (ex.: a norma inteira), erros graves em temas centrais, fonte não identificada ou sem direitos | **A `criar-trilha` fica bloqueada** para este material até o usuário liberar por escrito no parecer |
 
 Cada achado tem gravidade: **bloqueia** (leva à Reprovada), **ressalva** ou **nota** (só informativo).
@@ -87,6 +101,7 @@ Depois:
 
 Em poucas linhas:
 - o resultado de cada fonte;
+- **o que sai** (sujeira e erros) e **o que fica** (o material limpo), arquivo por arquivo;
 - os achados que **bloqueiam** e as **ressalvas**, com a correção;
 - as lacunas de cobertura;
 - os ids de questões do curso atual que precisam de ajuste (atualização);
