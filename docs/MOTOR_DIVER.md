@@ -219,6 +219,8 @@ O acervo guarda **o que** já criamos; os cadernos guardam **como** a gente ensi
 ```
 garimpo cataloga a fonte (docs/FONTES_CATALOGADAS.md)
         ↓
+validar-fontes confere se a fonte está certa e atual → parecer em docs/validacoes/
+        ↓  (Reprovada = para aqui até o usuário liberar)
 criar-trilha ABRE o caderno → estuda a fonte → cria o conteúdo autoral
         ↓  propõe "O que vou anotar no caderno" → grava com o OK do usuário
 Fila de Validação → Mergulho Triplo (aprovação por senha)

@@ -21,6 +21,11 @@ Pergunte, se não estiver claro:
 - Qual matéria/tema desta vez? (processar uma de cada vez, nunca tudo junto)
 - Onde estão as fontes (caminho absoluto fora do repositório, link do Google Drive, link de vídeo ou transcrição colada no chat)? Vídeos: siga a seção 5 de `docs/cadernos/LEIA-ME.md`.
 - A fonte já passou pela skill `garimpo` (está em `docs/FONTES_CATALOGADAS.md`)? Se não, rode o garimpo antes.
+- **O material já tem parecer da skill `validar-fontes`** (coluna "Validação" em `docs/FONTES_CATALOGADAS.md` e o arquivo em `docs/validacoes/`)? Se não, rode a `validar-fontes` antes. Depois, abra o parecer e siga:
+  - **Aprovada:** pode usar.
+  - **Aprovada com ressalvas:** use o material, mas **não use os trechos apontados**: ensine a versão corrigida, pela fonte oficial do parecer. Corrija no curso os ids listados em "Contradições com o curso atual" (com o OK do usuário).
+  - **Reprovada:** **pare.** Não estude esse material até o usuário liberar por escrito no parecer ("Liberado pelo usuário em ...").
+  - Item "com o especialista": não dê o fato como certo; marque `"revisar"` na questão (seção 3).
 - Alguma fonte ainda não passou pela checagem de direitos da seção 1 de `docs/CONTEUDO_CURSINHO.md`? Se sim, pare e avise — não prossiga sem o sinal verde.
 
 ## 1. Mapeamento curricular
