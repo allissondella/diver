@@ -3,6 +3,8 @@
  * As Tarefas (quadros, listas e cartões) ficam em quadros.js; o Calendário lê delas
  * as tarefas abertas com prazo. Tudo salvo no navegador (localStorage, via Dados).
  * XP do foco passa pelo App -> Economia (nunca direto daqui).
+ * Datas oficiais (feriados nacionais, Enem e vestibulares) vêm de data/calendario/datas-oficiais.json:
+ * iguais para todos, só leitura; cada pessoa escolhe se mostra feriados e vestibulares.
  */
 const Organizar = (() => {
   const { h, icone, limpar } = UI;
@@ -14,6 +16,39 @@ const Organizar = (() => {
     estudo: { nome: 'Estudo', icone: 'i-relogio' },
     descanso: { nome: 'Descanso', icone: 'i-onda' },
   };
+
+  // datas oficiais (só leitura, iguais para todos): não entram em TIPOS para não aparecerem no "Novo evento"
+  const OFICIAIS = {
+    feriado: { nome: 'Feriado', icone: 'i-bandeira' },
+    vestibular: { nome: 'Vestibular', icone: 'i-trofeu' },
+  };
+  const ARQUIVO_OFICIAIS = 'data/calendario/datas-oficiais.json';
+  const CHAVE_PREFS = 'diver:v1:calendario-prefs';
+  let oficiais = null; // { feriados, vestibulares, aviso } depois de carregar
+  let carregandoOficiais = null;
+  const prefsCal = () => ({ feriados: true, vestibulares: true, ...Dados.ler(CHAVE_PREFS, {}) });
+
+  function carregarOficiais() {
+    if (!carregandoOficiais) {
+      carregandoOficiais = fetch(ARQUIVO_OFICIAIS, { cache: 'no-cache' })
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null)
+        .then((d) => (oficiais = d || { feriados: [], vestibulares: [] }));
+    }
+    return carregandoOficiais;
+  }
+
+  /** Datas oficiais de um dia, já filtradas pelas preferências da pessoa. */
+  function oficiaisDoDia(data) {
+    if (!oficiais) return [];
+    const pr = prefsCal();
+    const fer = pr.feriados ? (oficiais.feriados || []).filter((f) => f.data === data).map((f) => ({
+      tipo: 'feriado', titulo: f.nome, detalhe: f.facultativo ? 'Ponto facultativo' : 'Feriado nacional' })) : [];
+    const ves = pr.vestibulares ? (oficiais.vestibulares || []).filter((v) => v.data === data).map((v) => ({
+      tipo: 'vestibular', titulo: v.titulo, hora: v.hora || '', instituicao: v.instituicao, prova: v.tipo === 'prova',
+      detalhe: [{ prova: 'Prova', inscricao: 'Inscrição', resultado: 'Resultado' }[v.tipo] || 'Vestibular', v.hora, v.obs].filter(Boolean).join(' · ') })) : [];
+    return [...fer, ...ves];
+  }
 
   const tarefasComPrazo = () => Quadros.comPrazo(); // abertas, de todos os quadros
   const eventos = () => Dados.ler(CHAVE_EVENTOS, []);
@@ -44,12 +79,13 @@ const Organizar = (() => {
     if (!estadoCal.dia) estadoCal.dia = hoje;
 
     const cabecaCal = h('div', { class: 'cal-barra' });
+    const filtros = h('div', { class: 'cal-filtros', role: 'group', 'aria-label': 'Datas oficiais no calendário' });
     const grade = h('div', { class: 'cal' });
     const painelDia = h('div', { class: 'cartao cal-dia', 'aria-live': 'polite' });
 
     secao.append(
       UI.cabecalho('Organizar', 'Calendário', 'Provas, aulas, sessões de estudo e dias de descanso. Tarefas com prazo aparecem aqui também.'),
-      cabecaCal, h('div', { class: 'cal-layout' }, grade, painelDia),
+      cabecaCal, filtros, h('div', { class: 'cal-layout' }, grade, painelDia),
       h('a', { class: 'cartao cal-atalho', href: '#cronograma' },
         icone('i-alvo'),
         h('span', {}, h('strong', { text: 'Montar meu cronograma' }), h('span', { class: 'texto-suave', text: ' · a data da prova, o seu tempo e as suas matérias viram um plano semana a semana' })),
@@ -59,6 +95,7 @@ const Organizar = (() => {
       const todos = eventos();
       const origens = new Set(todos.map((e) => e.origem).filter(Boolean)); // tarefa do cronograma que já tem evento: aparece uma vez só
       return {
+        ofs: oficiaisDoDia(data),
         evs: todos.filter((e) => e.data === data).sort((a, b) => (a.hora || '').localeCompare(b.hora || '')),
         tars: tarefasComPrazo().filter((t) => t.prazo === data && !(t.origem && origens.has(t.origem))),
       };
@@ -75,6 +112,14 @@ const Organizar = (() => {
         h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => { estadoCal.mes = hoje.slice(0, 7); estadoCal.dia = hoje; desenhar(); }, text: 'Hoje' }),
         h('div', { class: 'segmentado', role: 'group', 'aria-label': 'Visão' },
           ['mes', 'semana'].map((v) => h('button', { type: 'button', 'aria-pressed': String(estadoCal.visao === v), onclick: () => { estadoCal.visao = v; desenhar(); }, text: v === 'mes' ? 'Mês' : 'Semana' }))));
+
+      const pr = prefsCal();
+      const alternar = (k) => { Dados.gravar(CHAVE_PREFS, { ...prefsCal(), [k]: !prefsCal()[k] }); desenhar(); };
+      limpar(filtros).append(
+        h('span', { class: 'texto-suave cal-filtros__rotulo', text: 'Mostrar:' }),
+        ...Object.entries({ feriados: ['feriado', 'Feriados nacionais'], vestibulares: ['vestibular', 'Enem e vestibulares'] }).map(([k, [tipo, nome]]) =>
+          h('button', { type: 'button', class: `chip-filtro cal-filtro cal-filtro--${tipo}`, id: `cal-filtro-${k}`, 'aria-pressed': String(!!pr[k]), onclick: () => alternar(k) },
+            h('span', { class: `ponto ponto--${tipo}`, 'aria-hidden': 'true' }), nome)));
 
       limpar(grade);
       if (estadoCal.visao === 'mes') desenharMes(ano, mes);
@@ -103,18 +148,19 @@ const Organizar = (() => {
     }
 
     function botaoDia(iso, foraDoMes) {
-      const { evs, tars } = doDia(iso);
+      const { ofs, evs, tars } = doDia(iso);
       const d = UI.paraData(iso);
-      const resumo = [...new Set(evs.map((e) => e.tipo))];
+      const resumo = [...new Set([...ofs, ...evs].map((e) => e.tipo))];
+      const meta = (t) => OFICIAIS[t] || TIPOS[t];
       return h('button', {
         type: 'button', class: `cal__dia ${foraDoMes ? 'cal__dia--fora' : ''} ${iso === hoje ? 'cal__dia--hoje' : ''} ${iso === estadoCal.dia ? 'cal__dia--sel' : ''}`,
         'aria-pressed': String(iso === estadoCal.dia),
-        'aria-label': `${d.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}: ${UI.plural(evs.length, 'evento', 'eventos')}${tars.length ? `, ${UI.plural(tars.length, 'tarefa', 'tarefas')}` : ''}`,
+        'aria-label': `${d.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}: ${ofs.length ? `${ofs.map((o) => o.titulo).join(', ')}; ` : ''}${UI.plural(evs.length, 'evento', 'eventos')}${tars.length ? `, ${UI.plural(tars.length, 'tarefa', 'tarefas')}` : ''}`,
         onclick: () => { estadoCal.dia = iso; desenhar(); },
       },
       h('span', { class: 'cal__num', text: String(d.getDate()) }),
       h('span', { class: 'cal__marcas', 'aria-hidden': 'true' },
-        resumo.map((t) => h('span', { class: `ponto ponto--${t}`, title: TIPOS[t].nome })),
+        resumo.map((t) => h('span', { class: `ponto ponto--${t}`, title: meta(t).nome })),
         tars.length ? h('span', { class: 'ponto ponto--tarefa', title: 'Tarefa' }) : null));
     }
 
@@ -139,12 +185,13 @@ const Organizar = (() => {
         const d = new Date(ini);
         d.setDate(ini.getDate() + k);
         const iso = UI.dataLocal(d);
-        const { evs, tars } = doDia(iso);
+        const { ofs, evs, tars } = doDia(iso);
         lista.append(h('li', { class: `cal-semana-lista__dia ${iso === hoje ? 'cal__dia--hoje' : ''}` },
           h('button', { type: 'button', class: 'cal-semana-lista__data', onclick: () => { estadoCal.dia = iso; desenhar(); } },
             h('strong', { text: DIAS_SEMANA[k] }), h('span', { text: UI.formatarData(iso) })),
           h('div', { class: 'cal-semana-lista__itens' },
-            evs.length || tars.length ? null : h('span', { class: 'texto-suave', text: 'Livre' }),
+            ofs.length || evs.length || tars.length ? null : h('span', { class: 'texto-suave', text: 'Livre' }),
+            ofs.map((o) => h('span', { class: `evento-chip evento-chip--${o.tipo}` }, icone(OFICIAIS[o.tipo].icone), `${o.hora ? o.hora + ' · ' : ''}${o.titulo}`)),
             evs.map((e) => h('span', { class: `evento-chip evento-chip--${e.tipo}` }, icone(TIPOS[e.tipo].icone), `${e.hora ? e.hora + ' · ' : ''}${e.titulo}`)),
             tars.map((t) => h('span', { class: 'evento-chip evento-chip--tarefa' }, icone('i-colunas'), `Prazo: ${t.titulo}`)))));
       }
@@ -152,7 +199,9 @@ const Organizar = (() => {
     }
 
     function desenharDia() {
-      const { evs, tars } = doDia(estadoCal.dia);
+      const { ofs, evs, tars } = doDia(estadoCal.dia);
+      const provas = ofs.filter((o) => o.prova);
+      const conflito = new Set(provas.map((o) => o.instituicao)).size > 1;
       const titulo = UI.paraData(estadoCal.dia).toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
       const tituloEv = h('input', { class: 'campo', required: true, maxlength: '80', placeholder: 'Ex.: Prova de Química', 'aria-label': 'Título do evento' });
       const tipo = h('select', { 'aria-label': 'Tipo de evento' }, Object.entries(TIPOS).map(([v, t]) => h('option', { value: v, text: t.nome })));
@@ -162,8 +211,12 @@ const Organizar = (() => {
 
       limpar(painelDia).append(...[
         h('h2', { class: 'cartao__titulo', text: titulo[0].toUpperCase() + titulo.slice(1) }),
-        evs.length || tars.length ? null : h('p', { class: 'texto-suave', text: 'Dia livre. Que tal marcar uma sessão de estudo (ou um descanso merecido)?' }),
+        ofs.length || evs.length || tars.length ? null : h('p', { class: 'texto-suave', text: 'Dia livre. Que tal marcar uma sessão de estudo (ou um descanso merecido)?' }),
+        conflito ? h('p', { class: 'cal-conflito', role: 'note' }, icone('i-alerta'), h('span', {}, h('strong', { text: 'Atenção: provas no mesmo dia. ' }), `${[...new Set(provas.map((o) => o.instituicao))].join(' e ')} caem hoje: quem pretende fazer mais de uma precisa escolher.`)) : null,
         h('ul', { class: 'lista-eventos' },
+          ofs.map((o) => h('li', { class: `evento evento--${o.tipo}` },
+            h('span', { class: 'evento__icone' }, icone(OFICIAIS[o.tipo].icone)),
+            h('span', { class: 'evento__texto' }, h('strong', { text: o.titulo }), h('span', { text: o.detalhe })))),
           evs.map((e) => h('li', { class: `evento evento--${e.tipo}` },
             h('span', { class: 'evento__icone' }, icone(TIPOS[e.tipo].icone)),
             h('span', { class: 'evento__texto' }, h('strong', { text: e.titulo }), h('span', { text: [TIPOS[e.tipo].nome, e.hora, nomeTrilha(e.trilhaId)].filter(Boolean).join(' · ') })),
@@ -175,6 +228,7 @@ const Organizar = (() => {
             h('span', { class: 'evento__icone' }, icone('i-colunas')),
             h('span', { class: 'evento__texto' }, h('strong', { text: t.titulo }), h('span', { text: `Prazo de tarefa · ${t.quadro} › ${t.lista}` })),
             h('button', { type: 'button', class: 'botao-icone botao-icone--mini', 'aria-label': `Abrir a tarefa ${t.titulo}`, title: 'Abrir a tarefa', onclick: () => Quadros.abrirTarefa(t.id) }, icone('i-seta-dir'))))),
+        ofs.some((o) => o.tipo === 'vestibular') && oficiais.aviso ? h('p', { class: 'texto-suave cal-aviso', text: oficiais.aviso }) : null,
         h('form', { class: 'form-evento', onsubmit: (e) => {
           e.preventDefault();
           if (!tituloEv.value.trim() || !data.value) return;
@@ -192,6 +246,7 @@ const Organizar = (() => {
     }
 
     desenhar();
+    if (!oficiais) carregarOficiais().then(() => { if (secao.isConnected) desenhar(); });
   }
 
   /* =========================================================

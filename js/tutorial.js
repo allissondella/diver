@@ -87,6 +87,7 @@ const Tutorial = (() => {
     ],
     calendario: [
       { desenho: 'calendario', titulo: 'Calendário', texto: 'Marque provas, aulas e blocos de estudo. Para montar um plano até a data da prova, use a aba Cronograma.' },
+      { alvo: '.cal-filtros', desenho: 'calendario', titulo: 'Datas oficiais', texto: 'Feriados nacionais, o Enem e os principais vestibulares já estão aqui. Toque para mostrar ou esconder cada grupo. Confira sempre no edital.' },
     ],
     cronograma: [
       { desenho: 'calendario', titulo: 'Cronograma', texto: 'Em 5 passos o Diver monta um plano de estudos até a sua prova: a data, o seu tempo e uma nota de 1 a 5 em cada matéria. Sem IA e sem pressa.' },
@@ -124,7 +125,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2, calendario: 2, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};
