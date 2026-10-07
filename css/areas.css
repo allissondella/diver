@@ -264,6 +264,8 @@ details[open] > summary::after { content: "−"; }
 .ponto--estudo { background: var(--amarelo); }
 .ponto--descanso { background: var(--texto-suave); }
 .ponto--tarefa { background: var(--texto); border-radius: 2px; }
+.ponto--feriado { background: var(--laranja); }
+.ponto--vestibular { background: var(--lilas); }
 
 /* ---------- Painel: atalhos ---------- */
 .atalhos {
@@ -1138,6 +1140,8 @@ body.qd-travado { overflow: hidden; }
 .evento-chip--aula { color: var(--turquesa-claro); background: rgba(20, 184, 166, 0.14); }
 .evento-chip--estudo { color: var(--amarelo); background: rgba(250, 204, 21, 0.12); }
 .evento-chip--descanso { color: var(--texto-suave); }
+.evento-chip--feriado { color: var(--laranja); background: color-mix(in srgb, var(--laranja) 14%, transparent); }
+.evento-chip--vestibular { color: var(--lilas); background: color-mix(in srgb, var(--lilas) 14%, transparent); }
 .cal-dia { display: grid; gap: 12px; align-content: start; margin: 0 !important; }
 .lista-eventos {
   list-style: none;
@@ -1159,6 +1163,19 @@ body.qd-travado { overflow: hidden; }
 .evento--aula { border-left-color: var(--turquesa); }
 .evento--estudo { border-left-color: var(--amarelo); }
 .evento--tarefa { border-left-color: var(--texto); }
+.evento--feriado { border-left-color: var(--laranja); }
+.evento--vestibular { border-left-color: var(--lilas); }
+
+/* datas oficiais: filtros, conflito e aviso */
+.cal-filtros { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); margin: var(--esp-2) 0 var(--esp-3); }
+.cal-filtros__rotulo { font-size: 0.85rem; }
+.cal-filtro { display: inline-flex; align-items: center; gap: var(--esp-2); min-height: 40px; padding: 0 var(--esp-3); border-radius: 999px; border: 1px solid var(--borda); background: transparent; color: var(--texto-suave); font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+.cal-filtro[aria-pressed="true"] { color: var(--texto); background: var(--superficie); border-color: var(--texto-suave); }
+.cal-filtro[aria-pressed="false"] .ponto { opacity: 0.35; }
+.cal-filtro:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.cal-conflito { display: flex; gap: var(--esp-2); align-items: flex-start; margin: 0; padding: var(--esp-2) var(--esp-3); border-radius: var(--raio-pequeno); background: color-mix(in srgb, var(--amarelo) 12%, transparent); font-size: 0.9rem; }
+.cal-conflito .icone { flex: none; color: var(--amarelo); margin-top: 2px; }
+.cal-aviso { margin: 0; font-size: 0.8rem; }
 .evento__icone { display: grid; place-items: center; color: var(--texto-suave); }
 .evento__texto { flex: 1; display: grid; font-size: 0.9rem; }
 .evento__texto span { font-size: 0.8rem; color: var(--texto-suave); }

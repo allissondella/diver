@@ -29,6 +29,7 @@ const Cronograma = (() => {
   let tela = null;
   let rascunho = null; // { passo, params, blocos, fim, cobre, integracao, sujo, editando }
   let semanaVista = null; // segunda-feira da semana mostrada
+  let oficiais = null; // datas oficiais do Calendário (Enem e vestibulares), para escolher a prova no passo 1
 
   const ler = () => Dados.ler(CHAVE, null);
   const gravar = (p) => Dados.gravar(CHAVE, p);
@@ -165,11 +166,46 @@ const Cronograma = (() => {
     if (tela) tela.scrollIntoView({ block: 'start' });
   }
 
+  /** Provas da lista oficial que dão para escolher: só o 1º dia de cada fase e pelo menos uma semana à frente. */
+  function provasDaLista(minimo) {
+    if (!oficiais) return [];
+    return (oficiais.vestibulares || [])
+      .filter((v) => v.tipo === 'prova' && v.data >= minimo && !/\(dia [2-9]\)/.test(v.titulo))
+      .map((v) => ({
+        valor: `${v.data}|${v.titulo}`,
+        rede: v.rede,
+        tipo: v.rede === 'enem' ? 'enem' : 'vestibular',
+        nome: v.rede === 'enem' ? `Enem ${v.data.slice(0, 4)}` : v.titulo.replace(/ \(dia 1\)$/, ''),
+        data: v.data,
+      }))
+      .filter((v, i, l) => l.findIndex((x) => x.nome === v.nome) === i) // o Enem aparece uma vez (1º dia)
+      .sort((a, b) => a.data.localeCompare(b.data) || a.nome.localeCompare(b.nome));
+  }
+
   function passoObjetivo() {
     const p = rascunho.params;
-    const nome = h('input', { class: 'campo', id: 'cr-nome', maxlength: '60', value: p.objetivo.nome, oninput: (e) => { p.objetivo.nome = e.target.value; } });
     const minimo = G.somarDias(hoje(), 7);
-    const data = h('input', { class: 'campo', id: 'cr-data', type: 'date', min: minimo, value: p.objetivo.data, oninput: (e) => { p.objetivo.data = e.target.value; rascunho.sujo = true; } });
+    if (!oficiais) Organizar.datasOficiais().then((d) => { oficiais = d; if (rascunho && rascunho.passo === 0) { redesenhar(); } });
+    const lista = provasDaLista(minimo);
+    const escolhida = lista.find((v) => v.nome === p.objetivo.nome && v.data === p.objetivo.data);
+    const grupos = [['enem', 'Enem'], ['publica', 'Vestibulares públicos'], ['privada', 'Vestibulares privados']];
+    const daLista = h('select', { class: 'campo', id: 'cr-lista', disabled: !oficiais, onchange: (e) => {
+      const v = lista.find((x) => x.valor === e.target.value);
+      if (!v) return;
+      p.objetivo = { ...p.objetivo, tipo: v.tipo, nome: v.nome, data: v.data };
+      if (!rascunho.materiasMexidas) p.materias.forEach((m) => (m.ativa = true));
+      rascunho.sujo = true;
+      redesenhar();
+      setTimeout(() => { const s = document.getElementById('cr-lista'); if (s) s.focus(); }, 0);
+    } },
+    h('option', { value: '', text: oficiais ? 'Vou preencher à mão' : 'Carregando as datas…', selected: !escolhida }),
+    ...grupos.map(([rede, rotulo]) => {
+      const itens = lista.filter((v) => v.rede === rede);
+      return itens.length ? h('optgroup', { label: rotulo }, itens.map((v) => h('option', { value: v.valor, selected: escolhida === v, text: `${v.data.split('-').reverse().join('/')} · ${v.nome}` }))) : null;
+    }).filter(Boolean));
+    const aMao = () => { if (daLista.value) daLista.value = ''; };
+    const nome = h('input', { class: 'campo', id: 'cr-nome', maxlength: '60', value: p.objetivo.nome, oninput: (e) => { p.objetivo.nome = e.target.value; aMao(); } });
+    const data = h('input', { class: 'campo', id: 'cr-data', type: 'date', min: minimo, value: p.objetivo.data, oninput: (e) => { p.objetivo.data = e.target.value; rascunho.sujo = true; aMao(); } });
     const dica = h('p', { class: 'texto-suave cr-dica', text: OBJETIVOS[p.objetivo.tipo].dica });
     const tipos = h('div', { class: 'cr-opcoes', role: 'radiogroup', 'aria-label': 'Tipo de prova' }, Object.entries(OBJETIVOS).map(([id, o]) => h('label', { class: 'cr-opcao' },
       h('input', { type: 'radio', name: 'cr-tipo', value: id, checked: p.objetivo.tipo === id, onchange: () => {
@@ -187,11 +223,14 @@ const Cronograma = (() => {
     return {
       el: h('div', { class: 'cr-campos' },
         h('p', { text: 'Para qual prova você está se preparando?' }),
+        h('label', { class: 'cr-campo cr-campo--grande', for: 'cr-lista' }, h('span', { class: 'rotulo-campo', text: 'Escolher uma prova da lista' }), daLista),
+        h('p', { class: 'texto-suave cr-dica', text: lista.length || !oficiais ? 'O Enem e os principais vestibulares, com a data já preenchida. Não achou a sua? Preencha o nome e a data à mão logo abaixo.' : 'Nenhuma prova da lista está a mais de uma semana daqui. Preencha o nome e a data à mão logo abaixo.' }),
         tipos, dica,
         h('div', { class: 'cr-linha' },
           h('label', { class: 'cr-campo cr-campo--grande', for: 'cr-nome' }, h('span', { class: 'rotulo-campo', text: 'Nome da prova' }), nome),
           h('label', { class: 'cr-campo', for: 'cr-data' }, h('span', { class: 'rotulo-campo', text: 'Data da prova' }), data)),
-        p.objetivo.tipo === 'enem' ? h('p', { class: 'texto-suave cr-dica', text: 'Confira a data oficial no site do Inep. No Enem, use o primeiro dia de prova.' }) : null),
+        escolhida ? h('p', { class: 'texto-suave cr-dica', text: `${oficiais.aviso || 'Confira sempre no edital: datas podem mudar.'}${escolhida.tipo === 'enem' ? ' No Enem, o plano vai até o 1º dia de prova.' : ''}` })
+          : p.objetivo.tipo === 'enem' ? h('p', { class: 'texto-suave cr-dica', text: 'Confira a data oficial no site do Inep. No Enem, use o primeiro dia de prova.' }) : null),
       validar: () => {
         if (!p.objetivo.nome.trim()) return 'Dê um nome para a prova (ex.: Enem 2026, Fuvest, OAB).';
         if (!p.objetivo.data) return 'Escolha a data da prova.';
