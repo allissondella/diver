@@ -39,11 +39,13 @@ Adicione uma linha em `docs/FONTES_CATALOGADAS.md`. Se o arquivo não existir, c
 
 Registro de todo material de referência avaliado pela skill garimpo, para nunca reanalisar a mesma fonte duas vezes.
 
-| Data | Fonte | Classificação | Regra de uso | Para que serve | Status |
-|---|---|---|---|---|---|
+| Data | Fonte | Classificação | Regra de uso | Para que serve | Status | Validação |
+|---|---|---|---|---|---|---|
 ```
 
 Status possíveis: `Novo — aguardando decisão`, `Em uso`, `Descartado`.
+
+A coluna "Validação" nasce `Pendente` e é preenchida pela skill `validar-fontes` (resultado, data e caminho do parecer em `docs/validacoes/`).
 
 Na coluna "Fonte" vão título, autor/canal e link (ou caminho). Nunca cole trecho do material no catálogo.
 
@@ -56,7 +58,8 @@ Em poucas linhas:
 - Em qual classificação caiu, e por quê.
 - Para qual matéria, trilha ou tema ele parece útil.
 - Sugestão concreta de próximo passo (ex.: "isso pode virar a matriz da trilha X", "boa referência de abordagem para Y, mas não pode ser copiado literalmente").
+- Se a fonte vai virar conteúdo de curso, o próximo passo é a skill `validar-fontes` (conferir se o que ela ensina está certo e atual), antes da `criar-trilha`.
 
 ## 6. O que esta skill nunca faz
 
-Nunca gera questão, nunca escreve conteúdo novo, nunca chama a skill `criar-trilha` ou `validar-questoes` sozinha, nunca aciona qualquer IA paga. Essa skill só decide "o que é isso" e "o que daria para fazer com isso" — quem decide avançar é sempre o usuário, explicitamente, numa mensagem separada.
+Nunca gera questão, nunca escreve conteúdo novo, nunca chama a skill `validar-fontes`, `criar-trilha` ou `validar-questoes` sozinha (a `validar-fontes` pode chamar o garimpo, não o contrário), nunca aciona qualquer IA paga. Essa skill só decide "o que é isso" e "o que daria para fazer com isso" — quem decide avançar é sempre o usuário, explicitamente, numa mensagem separada.

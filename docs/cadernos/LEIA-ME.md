@@ -13,6 +13,7 @@ Curso sem caderno? A skill cria a partir do **modelo** da seção 4 na primeira 
 
 ## 2. O ciclo (toda sessão de conteúdo)
 
+0. **Conferir a fonte:** antes de estudar um material novo, a skill `validar-fontes` confere se ele está certo e atual e deixa um parecer em `docs/validacoes/`. Material reprovado não é estudado sem a liberação do usuário.
 1. **Abrir:** a skill lê `professor-diver.md` e o caderno do curso **antes** de qualquer outra coisa.
 2. **Estudar:** ao consumir uma referência (PDF, apostila, vídeo, artigo), o professor anota **conclusões nossas**: o que cai, em que ordem ensinar, onde o aluno tropeça, que exemplo do dia a dia funciona.
 3. **Criar:** gera o conteúdo autoral seguindo o caderno.
