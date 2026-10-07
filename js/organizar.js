@@ -380,5 +380,8 @@ const Organizar = (() => {
     };
   }
 
-  return { renderCalendario, renderFoco, resumoDoDia, focarBloco, sincronizarEventos, removerEventos, TIPOS, focoAtivo: () => foco.fase === 'rodando' };
+  /** Datas oficiais (para o Cronograma escolher a prova): promessa com { feriados, vestibulares, aviso }. */
+  const datasOficiais = () => carregarOficiais();
+
+  return { renderCalendario, renderFoco, resumoDoDia, focarBloco, sincronizarEventos, removerEventos, datasOficiais, TIPOS, focoAtivo: () => foco.fase === 'rodando' };
 })();
