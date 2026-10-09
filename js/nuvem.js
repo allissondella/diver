@@ -323,7 +323,7 @@ const Nuvem = (() => {
     papel,
     ehAdmin: () => papel() === 'admin',
     ehProfessor: () => papel() === 'professor',
-    matriculas: () => [...matriculas],
+    matriculas: () => matriculas.filter((c) => !c.startsWith('pacote:')), // marcadores de pacote (Admin) não são cursos
     entrar,
     sair,
     carregarPerfil,

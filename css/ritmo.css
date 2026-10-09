@@ -246,3 +246,10 @@ h1, h2, h3 { text-wrap: balance; }
 .modulo__barra > span { display: block; height: 100%; background: var(--turquesa); }
 .modulo__aulas { padding: 0 var(--esp-3) var(--esp-4); }
 @media (prefers-reduced-motion: reduce) { .modulo__cabeca::before { transition: none; } }
+
+/* ---------- Admin: pacote "Enem completo" ---------- */
+.check--pacote { flex-basis: 100%; border-radius: var(--raio-pequeno); justify-content: flex-start; text-align: left; border-color: var(--turquesa); }
+.check--pacote:has(input:checked) { background: var(--superficie-turquesa); }
+.check--pacote input { flex-shrink: 0; }
+.admin-pacotes { display: grid; gap: var(--esp-2); }
+.admin-pacotes p { margin: 0; }

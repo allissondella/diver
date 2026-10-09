@@ -18,9 +18,19 @@ const Admin = (() => {
   const papelDe = (p) => p.papel || (p.admin ? 'admin' : 'aluno');
 
   function nomeTrilha(id) {
+    if (PACOTES[id]) return `Pacote ${PACOTES[id].nome}`;
     const t = App.trilhas().find((x) => x.id === id);
     return t ? t.nome : `${id} (não encontrado)`;
   }
+
+  /*
+   * Pacotes (2026-10-09): um marcador na matrícula ("pacote:enem") que não é curso. Quem tem o marcador
+   * recebe todos os cursos da categoria; "Atualizar pacotes" acrescenta os cursos publicados depois.
+   * Não muda o banco: a coluna trilha_id aceita texto, e Nuvem.matriculas() ignora os marcadores.
+   */
+  const PACOTES = { 'pacote:enem': { nome: 'Enem completo', categoria: 'Enem e vestibular' } };
+  const ehPacote = (id) => !!PACOTES[id];
+  const cursosDoPacote = (id) => App.trilhas().filter((t) => t.categoria === PACOTES[id].categoria && !Trilhas.ehImportada(t.id)).map((t) => t.id);
 
   /** Mensagem pronta para mandar à pessoa (WhatsApp, e-mail...). */
   function mensagemAcesso(nome, email, senha, papel = 'aluno') {
@@ -53,8 +63,25 @@ const Admin = (() => {
   }
 
   function checksCursos(selecionados = [], nomeGrupo) {
-    return h('div', { class: 'checks' }, App.trilhas().map((t) => h('label', { class: 'check' },
+    const pacotes = Object.entries(PACOTES).filter(([id]) => cursosDoPacote(id).length).map(([id, pac]) => h('label', { class: 'check check--pacote' },
+      h('input', { type: 'checkbox', value: id, name: nomeGrupo, checked: selecionados.includes(id) }),
+      h('span', {}, h('strong', { text: `Pacote ${pac.nome}` }), h('span', { class: 'texto-suave', text: ` · todos os cursos de "${pac.categoria}", inclusive os que forem publicados depois` }))));
+    const caixa = h('div', { class: 'checks' }, ...pacotes, App.trilhas().map((t) => h('label', { class: 'check' },
       h('input', { type: 'checkbox', value: t.id, name: nomeGrupo, checked: selecionados.includes(t.id) }), t.nome)));
+    // marcar o pacote marca os cursos dele; desmarcar um curso do pacote tira o pacote (ele não está mais completo)
+    caixa.addEventListener('change', (e) => {
+      const alvo = e.target;
+      if (ehPacote(alvo.value)) {
+        cursosDoPacote(alvo.value).forEach((id) => { const c = caixa.querySelector(`input[value="${CSS.escape(id)}"]`); if (c) c.checked = alvo.checked; });
+      } else if (!alvo.checked) {
+        Object.keys(PACOTES).forEach((pid) => {
+          if (!cursosDoPacote(pid).includes(alvo.value)) return;
+          const pac = caixa.querySelector(`input[value="${CSS.escape(pid)}"]`);
+          if (pac) pac.checked = false;
+        });
+      }
+    });
+    return caixa;
   }
 
   /* ---------- Resumo do progresso de uma pessoa (a partir da tabela "estado") ---------- */
@@ -63,7 +90,7 @@ const Admin = (() => {
     try {
       const linhas = await Nuvem.rest('GET', `estado?usuario_id=eq.${encodeURIComponent(pessoa.id)}&chave=like.${encodeURIComponent('diver:v1:trilha:*')}&select=chave,valor,atualizado_em`);
       const porTrilha = new Map((linhas || []).map((l) => [l.chave.replace('diver:v1:trilha:', ''), l]));
-      let cursos = [...new Set([...pessoa.cursos, ...porTrilha.keys()])];
+      let cursos = [...new Set([...pessoa.cursos, ...porTrilha.keys()])].filter((c) => !ehPacote(c));
       if (!Nuvem.ehAdmin()) cursos = cursos.filter((c) => Nuvem.matriculas().includes(c));
       if (!cursos.length) return alvo.replaceChildren(h('p', { class: 'texto-suave', text: 'Nenhum curso atribuído ainda.' }));
       alvo.replaceChildren(h('div', { class: 'tabela-rolagem' }, h('table', { class: 'tabela tabela--compacta' },
@@ -100,6 +127,7 @@ const Admin = (() => {
     limpar(secao);
     const ehAdmin = Nuvem.ehAdmin();
     const lista = h('div', { class: 'pessoas', 'aria-live': 'polite' }, h('p', { class: 'texto-suave', text: 'Carregando pessoas…' }));
+    const cartaoPacotes = h('section', { class: 'cartao admin-pacotes', 'aria-live': 'polite' });
     const busca = h('input', { class: 'campo', type: 'search', placeholder: 'Buscar por nome ou e-mail…', value: estado.busca, 'aria-label': 'Buscar pessoas',
       oninput: (e) => { estado.busca = e.target.value; desenharLista(); } });
     const filtros = h('div', { class: 'segmentado', role: 'group', 'aria-label': 'Filtrar por tipo de conta' },
@@ -117,9 +145,44 @@ const Admin = (() => {
         ? UI.cabecalho('Admin', 'Pessoas e cursos', 'Cadastre alunos, professores e admins, escolha os cursos de cada pessoa e acompanhe o progresso.')
         : UI.cabecalho('Professor', 'Meus alunos', 'Os alunos dos seus cursos e o progresso de cada um. Para cadastrar ou mudar cursos, fale com o admin.'),
       ehAdmin ? formCadastro() : null,
+      ehAdmin ? cartaoPacotes : null,
       h('div', { class: 'acoes-linha' }, h('h2', { class: 'secao-titulo secao-titulo--linha', text: ehAdmin ? 'Pessoas' : 'Alunos' }), busca),
       ehAdmin ? filtros : null,
       lista].filter(Boolean));
+
+    /** Quem tem o marcador do pacote e ainda não tem algum curso dele (ex.: curso publicado depois). */
+    function pendentesDosPacotes() {
+      return estado.pessoas.filter((p) => p.papel !== 'admin').flatMap((p) => p.cursos.filter(ehPacote).map((pid) => ({
+        pessoa: p, pacote: pid, faltam: cursosDoPacote(pid).filter((c) => !p.cursos.includes(c)),
+      }))).filter((x) => x.faltam.length);
+    }
+
+    function desenharPacotes() {
+      if (!ehAdmin) return;
+      const com = estado.pessoas.filter((p) => p.cursos.some(ehPacote)).length;
+      const pend = pendentesDosPacotes();
+      const novos = pend.reduce((n, x) => n + x.faltam.length, 0);
+      const botao = h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', id: 'admin-atualizar-pacotes', disabled: !pend.length, onclick: async () => {
+        if (!(await UI.confirmar({ titulo: 'Atualizar os pacotes?', texto: `${UI.plural(pend.length, 'pessoa ganha', 'pessoas ganham')} ${UI.plural(novos, 'curso novo', 'cursos novos')} do pacote. O que cada uma já tem continua igual.`, sim: 'Atualizar pacotes', humor: 'feliz' }))) return;
+        botao.disabled = true;
+        let falhas = 0;
+        for (const x of pend) {
+          const novaLista = [...new Set([...x.pessoa.cursos, ...x.faltam])];
+          try {
+            await Nuvem.rpc('admin_definir_matriculas', { p_usuario: x.pessoa.id, p_trilhas: novaLista });
+            x.pessoa.cursos = novaLista;
+          } catch (e) {
+            falhas++;
+          }
+        }
+        UI.toast(falhas ? 'Pacotes atualizados em parte' : 'Pacotes atualizados', falhas ? `${falhas} não deram certo; tente de novo.` : `${UI.plural(novos, 'matrícula nova', 'matrículas novas')}.`, 'i-livro');
+        carregar();
+      } }, icone('i-revisao'), 'Atualizar pacotes');
+      cartaoPacotes.replaceChildren(
+        h('h2', { class: 'cartao__titulo', text: 'Pacote Enem completo' }),
+        h('p', { class: 'texto-suave', text: `${UI.plural(com, 'pessoa tem', 'pessoas têm')} o pacote. ${pend.length ? `${UI.plural(novos, 'curso publicado depois falta', 'cursos publicados depois faltam')} para ${UI.plural(pend.length, 'pessoa', 'pessoas')}.` : 'Todo mundo do pacote já tem todos os cursos dele.'}` }),
+        h('div', { class: 'acoes-linha' }, botao));
+    }
 
     async function carregar() {
       try {
@@ -127,6 +190,7 @@ const Admin = (() => {
         estado.pessoas = (dados || []).map((p) => ({ ...p, papel: papelDe(p), cursos: (p.matriculas || []).map((m) => m.trilha_id) }))
           .filter((p) => ehAdmin || (p.id !== Nuvem.usuario().id && p.papel === 'aluno')); // professor: só os alunos
         desenharLista();
+        desenharPacotes();
       } catch (erro) {
         lista.replaceChildren(h('p', { class: 'texto-erro', text: erro.message }));
       }
@@ -204,7 +268,7 @@ const Admin = (() => {
     function cartaoAluno(p) {
       const areaProgresso = h('div', { class: 'pessoa__progresso', hidden: !estado.abertos.has(p.id) });
       if (estado.abertos.has(p.id)) progressoDe(p, areaProgresso);
-      const meus = p.cursos.filter((c) => Nuvem.matriculas().includes(c));
+      const meus = p.cursos.filter((c) => !ehPacote(c) && Nuvem.matriculas().includes(c));
       return h('article', { class: `cartao pessoa ${p.ativo ? '' : 'pessoa--inativa'}` },
         h('div', { class: 'pessoa__cabeca' },
           h('span', { class: 'pessoa__avatar', 'aria-hidden': 'true', text: p.nome.trim().split(/\s+/).map((x) => x[0]).slice(0, 2).join('').toUpperCase() }),
@@ -272,6 +336,7 @@ const Admin = (() => {
             h('span', { class: 'texto-suave pessoa__email', text: p.email })),
           h('div', { class: 'pessoa__chips' },
             p.papel === 'admin' ? h('span', { class: 'chip chip--aviso', text: 'Admin' }) : p.papel === 'professor' ? h('span', { class: 'chip chip--papel', text: 'Professor' }) : null,
+            p.papel !== 'admin' ? p.cursos.filter(ehPacote).map((id) => h('span', { class: 'chip chip--ativo', text: nomeTrilha(id) })) : null,
             !p.ativo ? h('span', { class: 'chip chip--atrasada', text: 'Acesso desativado' }) : p.trocar_senha ? h('span', { class: 'chip', text: 'Aguardando primeiro acesso' }) : h('span', { class: 'chip chip--ativo', text: 'Ativo' }))),
         h('label', { class: 'pessoa__linha-papel' }, h('span', { class: 'rotulo-campo', text: 'Tipo de conta' }), seletorPapel),
         p.papel === 'admin'
