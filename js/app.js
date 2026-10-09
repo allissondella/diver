@@ -788,50 +788,101 @@ const App = (() => {
     const { trilha, prog } = estado;
     const mapa = limpar($('mapa-fases'));
     const n = trilha.fases.length;
-    $('mapa-sub').textContent = trilha.fasesLivres
-      ? 'Todas as fases estão abertas: escolha o tema que quer estudar. A ordem do mapa é só uma sugestão.'
-      : 'Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.';
+    const porModulo = trilha.fases.some((f) => f.modulo);
+    $('mapa-sub').textContent = porModulo
+      ? 'Todas as aulas estão abertas: a ordem é uma sugestão. Cada módulo fecha com uma revisão.'
+      : trilha.fasesLivres
+        ? 'Todas as fases estão abertas: escolha o tema que quer estudar. A ordem do mapa é só uma sugestão.'
+        : 'Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.';
+    mapa.classList.toggle('mapa--modulos', porModulo);
+    if (porModulo) return renderizarMapaModulos(mapa);
+    trilha.fases.forEach((fase, i) => mapa.append(itemFase(fase, i)));
+  }
 
-    trilha.fases.forEach((fase, i) => {
-      const liberada = Progresso.faseDesbloqueada(prog, trilha, i);
-      const info = prog.fases[fase.id];
-      const concluida = !!(info && info.concluida);
-      const qtd = Trilhas.questoesDaFase(trilha, fase.id).length;
-      const ler = liberada && precisaLer(fase);
+  /** Uma fase (aula) do mapa: o botão de mergulhar e o "Antes de mergulhar". */
+  function itemFase(fase, i) {
+    const { trilha, prog } = estado;
+    const n = trilha.fases.length;
+    const liberada = Progresso.faseDesbloqueada(prog, trilha, i);
+    const info = prog.fases[fase.id];
+    const concluida = !!(info && info.concluida);
+    const qtd = Trilhas.questoesDaFase(trilha, fase.id).length;
+    const ler = liberada && precisaLer(fase);
 
-      let estadoTxt;
-      if (!liberada) estadoTxt = `Bloqueada: complete ${trilha.fases.slice(0, i).reverse().find((f) => !f.novaEm).nome} para descer`;
-      else if (concluida) estadoTxt = 'Concluída';
-      else estadoTxt = plural(qtd, 'questão', 'questões');
+    let estadoTxt;
+    if (!liberada) estadoTxt = `Bloqueada: complete ${trilha.fases.slice(0, i).reverse().find((f) => !f.novaEm).nome} para descer`;
+    else if (concluida) estadoTxt = 'Concluída';
+    else estadoTxt = plural(qtd, 'questão', 'questões');
 
-      const estrelas = h('span', { class: 'estrelas', 'aria-hidden': 'true' },
-        [1, 2, 3].map((k) => icone('i-estrela', concluida && info.estrelas >= k ? 'ativa' : '')));
+    const estrelas = h('span', { class: 'estrelas', 'aria-hidden': 'true' },
+      [1, 2, 3].map((k) => icone('i-estrela', concluida && info.estrelas >= k ? 'ativa' : '')));
 
-      const botao = h('button', {
-        type: 'button',
-        class: `fase ${concluida ? 'fase--concluida' : ''} ${liberada ? '' : 'fase--bloqueada'}`,
-        style: `--prof:${n > 1 ? i / (n - 1) : 0}`,
-        disabled: !liberada,
-        'aria-label': `${fase.nome}${fase.profundidade ? ', ' + fase.profundidade : ''}. ${estadoTxt}` +
-          (concluida ? `, ${info.estrelas} de 3 estrelas` : '') + (ler ? '. Abra o "Antes de mergulhar" para liberar o Mergulho' : ''),
-        onclick: () => iniciarSessao('mergulho', { faseId: fase.id }),
-      },
-      h('span', { class: 'fase__no', 'aria-hidden': 'true' },
-        !liberada ? icone('i-cadeado') : concluida ? icone('i-check') : String(i + 1)),
-      h('span', { class: 'fase__info' },
-        h('span', { class: 'fase__nome' }, fase.nome, fase.profundidade ? h('span', { class: 'fase__prof', text: fase.profundidade }) : null),
-        fase.descricao ? h('span', { class: 'fase__descricao', text: fase.descricao }) : null,
-        h('span', { class: 'fase__estado' }, concluida ? estrelas : null, estadoTxt),
-      ),
-      liberada ? h('span', { class: `fase__cta ${ler ? 'fase__cta--ler' : ''}`, 'aria-hidden': 'true', text: ler ? 'Ler primeiro' : concluida ? 'Refazer' : 'Mergulhar' }) : null);
+    const botao = h('button', {
+      type: 'button',
+      class: `fase ${concluida ? 'fase--concluida' : ''} ${liberada ? '' : 'fase--bloqueada'}`,
+      style: `--prof:${n > 1 ? i / (n - 1) : 0}`,
+      disabled: !liberada,
+      'aria-label': `${fase.nome}${fase.profundidade ? ', ' + fase.profundidade : ''}. ${estadoTxt}` +
+        (concluida ? `, ${info.estrelas} de 3 estrelas` : '') + (ler ? '. Abra o "Antes de mergulhar" para liberar o Mergulho' : ''),
+      onclick: () => iniciarSessao('mergulho', { faseId: fase.id }),
+    },
+    h('span', { class: 'fase__no', 'aria-hidden': 'true' },
+      !liberada ? icone('i-cadeado') : concluida ? icone('i-check') : String(i + 1)),
+    h('span', { class: 'fase__info' },
+      h('span', { class: 'fase__nome' }, fase.nome, fase.profundidade ? h('span', { class: 'fase__prof', text: fase.profundidade }) : null),
+      fase.descricao ? h('span', { class: 'fase__descricao', text: fase.descricao }) : null,
+      h('span', { class: 'fase__estado' }, concluida ? estrelas : null, estadoTxt),
+    ),
+    liberada ? h('span', { class: `fase__cta ${ler ? 'fase__cta--ler' : ''}`, 'aria-hidden': 'true', text: ler ? 'Ler primeiro' : concluida ? 'Refazer' : 'Mergulhar' }) : null);
 
-      // "Antes de mergulhar": leitura curta da fase (opcional no JSON). Fica aberta mesmo com a fase bloqueada.
-      const estudo = fase.resumo
-        ? h('button', { type: 'button', class: `fase__estudo ${ler ? 'fase__estudo--pendente' : ''}`, onclick: () => abrirResumo(fase, liberada) },
-          icone('i-livro'), `Antes de mergulhar: ${fase.nome}`,
-          ler ? h('span', { class: 'fase__selo', text: 'Leia para liberar' }) : null)
-        : null;
-      mapa.append(h('li', {}, botao, estudo));
+    // "Antes de mergulhar": leitura curta da fase (opcional no JSON). Fica aberta mesmo com a fase bloqueada.
+    const estudo = fase.resumo
+      ? h('button', { type: 'button', class: `fase__estudo ${ler ? 'fase__estudo--pendente' : ''}`, onclick: () => abrirResumo(fase, liberada),
+        'aria-label': fase.modulo ? `Antes de mergulhar: ${fase.nome}${ler ? '. Leia para liberar' : ''}` : null },
+        icone('i-livro'), fase.modulo ? 'Antes de mergulhar' : `Antes de mergulhar: ${fase.nome}`,
+        ler ? h('span', { class: 'fase__selo', text: 'Leia para liberar' }) : null)
+      : null;
+    return h('li', { 'data-fase': fase.id }, botao, estudo);
+  }
+
+  /**
+   * Curso por matéria (fases com "modulo"): um bloco recolhível por módulo, com "x de y aulas" e barra
+   * de progresso; o módulo da próxima aula fica aberto. No topo, "Ir para a próxima aula".
+   */
+  function renderizarMapaModulos(mapa) {
+    const { trilha, prog } = estado;
+    const feita = (f) => !!(prog.fases[f.id] && prog.fases[f.id].concluida);
+    const proxima = trilha.fases.find((f, i) => !feita(f) && Progresso.faseDesbloqueada(prog, trilha, i));
+    const modulos = [];
+    trilha.fases.forEach((f, i) => {
+      const ultimo = modulos[modulos.length - 1];
+      if (ultimo && ultimo.nome === f.modulo) ultimo.fases.push([f, i]);
+      else modulos.push({ nome: f.modulo || 'Outras aulas', fases: [[f, i]] });
+    });
+    if (proxima) {
+      mapa.append(h('li', { class: 'mapa__atalho' },
+        h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', id: 'btn-proxima-aula', onclick: () => {
+          const li = mapa.querySelector(`li[data-fase="${CSS.escape(proxima.id)}"]`);
+          if (!li) return;
+          const det = li.closest('details');
+          if (det) det.open = true;
+          li.scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'center' });
+          const alvo = li.querySelector('.fase');
+          if (alvo) alvo.focus({ preventScroll: true });
+        } }, icone('i-seta-baixo'), `Ir para a próxima aula: ${proxima.nome}`)));
+    }
+    modulos.forEach((m) => {
+      const total = m.fases.length;
+      const feitas = m.fases.filter(([f]) => feita(f)).length;
+      const aberto = proxima ? m.fases.some(([f]) => f === proxima) : false;
+      mapa.append(h('li', { class: `modulo ${feitas === total ? 'modulo--feito' : ''}`.trim() },
+        h('details', { class: 'modulo__caixa', open: aberto },
+          h('summary', { class: 'modulo__cabeca' },
+            h('span', { class: 'modulo__nome', text: m.nome }),
+            h('span', { class: 'modulo__progresso' },
+              h('span', { class: 'modulo__barra', 'aria-hidden': 'true' }, h('span', { style: `width:${Math.round((feitas / total) * 100)}%` })),
+              h('span', { class: 'modulo__conta', text: `${feitas} de ${total} ${trilha.rotuloAula === 'Oficina' ? (total === 1 ? 'oficina' : 'oficinas') : (total === 1 ? 'aula' : 'aulas')}` }))),
+          h('ol', { class: 'mapa modulo__aulas' }, m.fases.map(([f, i]) => itemFase(f, i))))));
     });
   }
 

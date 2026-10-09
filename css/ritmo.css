@@ -224,3 +224,25 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .fila-lista { gap: var(--ritmo-cartoes); margin-top: var(--esp-4); }
 .fila-filtros { margin-top: var(--esp-3); }
+
+/* ---------- Mapa por módulo (cursos por matéria: fases com "modulo") ---------- */
+.mapa--modulos::before { display: none; }
+.mapa--modulos > li + li { margin-top: var(--esp-3); }
+.mapa__atalho { display: flex; justify-content: flex-start; }
+.modulo__caixa { border: 1px solid var(--borda); border-radius: var(--raio); background: var(--superficie); }
+.modulo--feito .modulo__caixa { border-color: var(--turquesa); }
+.modulo__cabeca {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2) var(--esp-4);
+  min-height: 56px; padding: var(--esp-3) var(--esp-4); cursor: pointer; list-style: none; border-radius: var(--raio);
+}
+.modulo__cabeca::-webkit-details-marker { display: none; }
+.modulo__caixa > .modulo__cabeca::after { content: none; }
+.modulo__cabeca::before { content: "›"; font-size: 1.4rem; font-weight: 800; color: var(--turquesa-claro); transition: transform var(--transicao); }
+.modulo__caixa[open] > .modulo__cabeca::before { transform: rotate(90deg); }
+.modulo__cabeca:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.modulo__nome { flex: 1 1 220px; font-weight: 800; font-size: 1.05rem; }
+.modulo__progresso { display: inline-flex; align-items: center; gap: var(--esp-2); font-size: 0.85rem; color: var(--texto-suave); white-space: nowrap; }
+.modulo__barra { display: inline-block; width: 90px; height: 6px; border-radius: 999px; background: var(--borda); overflow: hidden; }
+.modulo__barra > span { display: block; height: 100%; background: var(--turquesa); }
+.modulo__aulas { padding: 0 var(--esp-3) var(--esp-4); }
+@media (prefers-reduced-motion: reduce) { .modulo__cabeca::before { transition: none; } }
