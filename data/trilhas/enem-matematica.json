@@ -4491,7 +4491,7 @@
           {
             "titulo": "Simetria e como estudar esta revisão",
             "texto": [
-              "Polígono regular de n lados tem n eixos e giro mínimo de 360° ÷ n. Reflexões no plano trocam sinais; o giro de 180° troca os dois. Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada: os tropeços mais comuns são confundir complemento com suplemento, somar lados antes de elevar ao quadrado, usar a razão linear em áreas e deixar o ponteiro das horas parado."
+              "Todo polígono regular de n lados tem n eixos e giro mínimo de 360° ÷ n. Reflexões no plano trocam sinais; o giro de 180° troca os dois. Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada: os tropeços mais comuns são confundir complemento com suplemento, somar lados antes de elevar ao quadrado, usar a razão linear em áreas e deixar o ponteiro das horas parado."
             ]
           }
         ],
@@ -4553,6 +4553,309 @@
           "dois angulos iguais",
           "quadrado da hipotenusa",
           "externos somam"
+        ]
+      }
+    },
+    {
+      "id": "mat-perimetros",
+      "nome": "Aula 45 · Perímetros",
+      "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
+      "descricao": "Módulo 8 · aula 1 de 3 · 35 min · treina as habilidades H8 e H12",
+      "habilidades": [
+        "H8",
+        "H12"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Perímetro: o contorno",
+            "texto": [
+              "Perímetro é o comprimento do contorno de uma figura, a soma de todos os seus lados. Num retângulo de 8 m por 5 m, o perímetro é 2 × (8 + 5) = 26 m; num quadrado de lado 6 m, 4 × 6 = 24 m; num polígono regular de n lados, n vezes o lado. É a medida de cercas, rodapés, molduras, barras de toalha e voltas numa pista. Portões e portas que não recebem cerca ou rodapé saem da conta."
+            ]
+          },
+          {
+            "titulo": "Figuras com recortes e lados escondidos",
+            "texto": [
+              "Em figuras em L, em escada ou com recortes, some só o que está no contorno. Um truque útil: numa figura formada por degraus em ângulo reto, os segmentos horizontais somam o mesmo que a largura total, e os verticais, o mesmo que a altura total; o perímetro é o do **retângulo envolvente**. Tirar um retângulo do canto de outro não muda o perímetro, porque os lados novos substituem exatamente os que saíram. Quando um lado do contorno é desconhecido, ele costuma ser a diferença ou a soma de lados conhecidos."
+            ]
+          },
+          {
+            "titulo": "Perímetro e área não andam juntos",
+            "texto": [
+              "Figuras com o mesmo perímetro podem ter áreas bem diferentes: com 20 m de cerca, um retângulo de 9 m × 1 m cerca 9 m², e um quadrado de 5 m × 5 m cerca 25 m². Entre os retângulos de mesmo perímetro, o quadrado tem a **maior área**. Ao contrário, com a mesma área, o quadrado é o retângulo de menor perímetro. Quando um dos lados é um muro, a cerca cobre só três lados, e a melhor forma deixa de ser o quadrado."
+            ]
+          },
+          {
+            "titulo": "Ampliações, estacas e como o Enem cobra",
+            "texto": [
+              "Ao ampliar uma figura com razão k, o perímetro cresce na **mesma razão**, e a área, com o quadrado dela. Estacas a cada 2 m em volta de um terreno fechado de 40 m de perímetro são 20, porque o contorno fecha sobre si; numa cerca reta e aberta de 40 m, com estacas nas duas pontas, são 21. O Enem cobra cercas com portões, rodapés que descontam portas, molduras, número de estacas e a escolha do terreno com mais área para o mesmo perímetro."
+            ]
+          }
+        ],
+        "introducao": "Quantos metros de cerca para o terreno? Quanto rodapé para a sala? Quantas voltas na pista para completar o treino? O perímetro mede o contorno das figuras e aparece em problemas práticos, cheios de detalhes como portões, portas e estacas. Esta aula mostra como calcular perímetros, como lidar com figuras recortadas e por que perímetro e área não andam juntos.",
+        "mapaMental": {
+          "centro": "Perímetros",
+          "ramos": [
+            {
+              "titulo": "Contorno",
+              "itens": [
+                "soma dos lados",
+                "retângulo 2 × (base + altura)",
+                "portões saem da conta"
+              ]
+            },
+            {
+              "titulo": "Recortes",
+              "itens": [
+                "retângulo envolvente para figuras em escada",
+                "recorte de canto não muda o perímetro"
+              ]
+            },
+            {
+              "titulo": "Perímetro e área",
+              "itens": [
+                "mesmo perímetro, áreas diferentes",
+                "o quadrado tem a maior área"
+              ]
+            },
+            {
+              "titulo": "Ampliação",
+              "itens": [
+                "perímetro na mesma razão",
+                "estacas em contorno fechado"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧵",
+            "conceito": "Barbante em volta da figura",
+            "liga": "perímetro",
+            "porque": "Esticado, o barbante mostra o comprimento do contorno."
+          },
+          {
+            "icone": "🪵",
+            "conceito": "Estacas de cerca",
+            "liga": "contorno fechado",
+            "porque": "Na volta completa, a última estaca coincide com a primeira."
+          }
+        ],
+        "pontos": [
+          "Perímetro é a soma dos lados do contorno; portões e portas saem da conta.",
+          "Figuras em escada têm o perímetro do **retângulo envolvente**.",
+          "Com o mesmo perímetro, o quadrado tem a **maior área** entre os retângulos.",
+          "Numa ampliação, o perímetro cresce na **mesma razão**."
+        ],
+        "perolas": [
+          "Estacas em volta de um terreno: perímetro ÷ espaçamento.",
+          "Tirar o canto de um retângulo não muda o seu perímetro."
+        ],
+        "reforcar": [
+          "retangulo envolvente",
+          "maior area",
+          "mesma razao"
+        ]
+      }
+    },
+    {
+      "id": "mat-areas-planas",
+      "nome": "Aula 46 · Áreas de figuras planas",
+      "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
+      "descricao": "Módulo 8 · aula 2 de 3 · 35 min · treina as habilidades H8 e H12",
+      "habilidades": [
+        "H8",
+        "H12"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Área: quantos quadradinhos cabem",
+            "texto": [
+              "Área mede a superfície: quantos quadrados de uma unidade de lado cabem na figura. Retângulo: base × altura (8 m × 5 m = 40 m²). Quadrado: lado ao quadrado (6² = 36). Paralelogramo: base × altura, com a **altura perpendicular** à base, e não o lado inclinado: base 10 e altura 5 dão 50, mesmo que o lado inclinado meça 6. As unidades de área andam de 100 em 100: 1 m² = 10.000 cm², e uma lajota de 50 cm × 50 cm ocupa 0,25 m²."
+            ]
+          },
+          {
+            "titulo": "Triângulos",
+            "texto": [
+              "A área do triângulo é base × altura ÷ 2, porque ele é metade de um paralelogramo. A altura é sempre perpendicular à base, mesmo quando cai fora do triângulo. No triângulo retângulo, os catetos fazem o papel de base e altura: catetos 6 e 8 dão 24. No isósceles, a altura sobre a base a divide ao meio, e Pitágoras a encontra: lados 13, 13 e 10 têm altura 12 e área 60. No equilátero de lado ℓ, a área é ℓ²√3 ÷ 4."
+            ]
+          },
+          {
+            "titulo": "Trapézio e losango",
+            "texto": [
+              "No trapézio, a área é a **média das bases** vezes a altura: (base maior + base menor) × altura ÷ 2. Um trapézio de bases 10 e 6 e altura 4 tem 32. No losango, a área é **diagonal maior** × diagonal menor ÷ 2: diagonais 8 e 6 dão 24. Ligando os pontos médios dos lados de um retângulo, forma-se um losango com metade da área do retângulo."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Pisos e quantidade de lajotas, pintura de paredes descontando portas e janelas, terrenos com ruas que os cortam, telhados, plantações em hectares, preço por metro quadrado e comparação de figuras. Desenhe a altura antes de calcular e confira se todas as medidas estão na mesma unidade, de preferência em metros."
+            ]
+          }
+        ],
+        "introducao": "Quantas lajotas para o piso, quantos litros de tinta para a parede, quanto vale o terreno pelo preço do metro quadrado: a área está em quase toda questão de Geometria do Enem. Esta aula reúne as fórmulas das figuras planas, com o cuidado que mais derruba: a altura certa.",
+        "mapaMental": {
+          "centro": "Áreas planas",
+          "ramos": [
+            {
+              "titulo": "Retângulo e paralelogramo",
+              "itens": [
+                "base vezes altura perpendicular",
+                "1 m² são 10.000 cm²"
+              ]
+            },
+            {
+              "titulo": "Triângulo",
+              "itens": [
+                "base vezes altura dividido por 2",
+                "catetos no triângulo retângulo"
+              ]
+            },
+            {
+              "titulo": "Trapézio",
+              "itens": [
+                "média das bases vezes a altura"
+              ]
+            },
+            {
+              "titulo": "Losango",
+              "itens": [
+                "diagonal maior vezes diagonal menor dividido por 2"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧱",
+            "conceito": "Lajotas no piso",
+            "liga": "quantos quadradinhos cabem",
+            "porque": "Área do piso ÷ área de uma lajota."
+          },
+          {
+            "icone": "🪁",
+            "conceito": "Pipa em losango",
+            "liga": "diagonais",
+            "porque": "As varetas cruzadas são as diagonais que dão a área."
+          }
+        ],
+        "pontos": [
+          "Retângulo e paralelogramo: base vezes **altura perpendicular** à base.",
+          "Triângulo: base vezes altura dividido por 2.",
+          "Trapézio: a **média das bases** vezes a altura.",
+          "Losango: **diagonal maior** vezes diagonal menor dividido por 2.",
+          "Converta para a mesma unidade antes de calcular; 1 m² = 10.000 cm²."
+        ],
+        "perolas": [
+          "O lado inclinado não é a altura.",
+          "Ligando os pontos médios de um retângulo, sai um losango com metade da área."
+        ],
+        "reforcar": [
+          "altura perpendicular",
+          "media das bases",
+          "diagonal maior"
+        ]
+      }
+    },
+    {
+      "id": "mat-circulo",
+      "nome": "Aula 47 · Círculo e circunferência",
+      "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
+      "descricao": "Módulo 8 · aula 3 de 3 · 35 min · treina a habilidade H8",
+      "habilidades": [
+        "H8"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Circunferência e círculo",
+            "texto": [
+              "A circunferência é a linha formada pelos pontos à mesma distância do centro, distância chamada raio; o círculo é a região que ela cerca. O diâmetro passa pelo centro e vale dois raios. O **comprimento da circunferência** é 2πr, ou π vezes o diâmetro: uma roda de 30 cm de raio percorre 2 × 3,14 × 30 ≈ 188 cm a cada volta. O Enem costuma dar π ≈ 3 ou π ≈ 3,14. Para achar o raio a partir do comprimento, divida por 2π."
+            ]
+          },
+          {
+            "titulo": "Área do círculo",
+            "texto": [
+              "A **área do círculo** é πr²: com raio 10 m e π ≈ 3,14, a área é 314 m². Dobrar o raio quadruplica a área, porque o raio está ao quadrado. Uma pizza de 40 cm de diâmetro tem (40 ÷ 30)² ≈ 1,78 vez a área de uma de 30 cm, e é por isso que a maior costuma compensar. Cuidado com o diâmetro: se o enunciado der o diâmetro, divida por 2 antes de elevar ao quadrado."
+            ]
+          },
+          {
+            "titulo": "Setores, arcos e coroas",
+            "texto": [
+              "Um setor é uma fatia do círculo, e a sua fração é o ângulo central dividido por 360°: um setor de 90° tem um quarto da área. O comprimento do arco e a área do setor seguem a **mesma fração**: arco = (ângulo ÷ 360°) × 2πr; área = (ângulo ÷ 360°) × πr². A coroa circular, a região entre dois círculos de mesmo centro, tem área π(R² − r²), e não π(R − r)²."
+            ]
+          },
+          {
+            "titulo": "Voltas, polias e como o Enem cobra",
+            "texto": [
+              "Para saber quantas voltas uma roda dá num percurso, divida a distância pelo comprimento da roda, com as duas na mesma unidade. Em polias ligadas por correia, o produto raio × voltas é igual nas duas: a polia menor gira mais. Uma pista de atletismo tem trechos retos e duas curvas que, juntas, formam uma circunferência. O Enem cobra rodas, pistas, irrigação circular, pizzas, relógios, canteiros e engrenagens."
+            ]
+          }
+        ],
+        "introducao": "Rodas de bicicleta, pistas de atletismo, pizzas, relógios e pivôs de irrigação: as formas redondas estão por toda parte e em quase toda prova. Esta aula mostra como calcular o comprimento da circunferência, a área do círculo, setores, arcos e coroas, e como contar as voltas de uma roda.",
+        "mapaMental": {
+          "centro": "Círculo",
+          "ramos": [
+            {
+              "titulo": "Comprimento",
+              "itens": [
+                "comprimento da circunferência é 2πr",
+                "diâmetro vale dois raios"
+              ]
+            },
+            {
+              "titulo": "Área",
+              "itens": [
+                "área do círculo é πr²",
+                "dobrar o raio quadruplica a área"
+              ]
+            },
+            {
+              "titulo": "Setores",
+              "itens": [
+                "mesma fração para arco e área",
+                "coroa π(R² − r²)"
+              ]
+            },
+            {
+              "titulo": "Voltas",
+              "itens": [
+                "distância dividida pelo comprimento da roda",
+                "polias com raio vezes voltas iguais"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🍕",
+            "conceito": "Pizza grande",
+            "liga": "raio ao quadrado",
+            "porque": "Um pouco mais de raio dá bem mais pizza."
+          },
+          {
+            "icone": "🚲",
+            "conceito": "Roda de bicicleta",
+            "liga": "uma volta, 2πr",
+            "porque": "Cada giro empurra a bicicleta o contorno da roda."
+          }
+        ],
+        "pontos": [
+          "O **comprimento da circunferência** é 2πr, ou π vezes o diâmetro.",
+          "A **área do círculo** é πr²; dobrar o raio quadruplica a área.",
+          "Arco e área do setor seguem a **mesma fração**: ângulo ÷ 360°.",
+          "Voltas de uma roda: distância ÷ comprimento da roda.",
+          "Polias ligadas: raio × voltas é igual nas duas."
+        ],
+        "perolas": [
+          "Diâmetro dado? Divida por 2 antes de elevar.",
+          "Coroa é π(R² − r²), não π(R − r)²."
+        ],
+        "reforcar": [
+          "comprimento da circunferencia",
+          "area do circulo",
+          "mesma fracao"
         ]
       }
     }
@@ -24934,6 +25237,1386 @@
         "Refletiu no eixo errado.",
         "Fez só a reflexão.",
         "Girou no sentido horário."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q01",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Qual é o perímetro de um retângulo de 8 m por 5 m?",
+      "alternativas": [
+        "13 m",
+        "18 m",
+        "21 m",
+        "40 m",
+        "26 m"
+      ],
+      "correta": 4,
+      "explicacao": "2 × (8 + 5) = 26 m. Dica de mergulhador: retângulo tem dois pares de lados iguais.",
+      "comentarios": [
+        "Somou só dois lados.",
+        "Errou a soma.",
+        "Somou três lados.",
+        "Calculou a área.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-perimetros-q02",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Qual é o perímetro de um quadrado de lado 6 cm?",
+      "alternativas": [
+        "24 cm",
+        "12 cm",
+        "6 cm",
+        "36 cm",
+        "18 cm"
+      ],
+      "correta": 0,
+      "explicacao": "4 × 6 = 24 cm. Dica de mergulhador: quatro lados iguais.",
+      "comentarios": [
+        "",
+        "Somou só dois lados.",
+        "Repetiu o lado.",
+        "Calculou a área.",
+        "Somou três lados."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q03",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um rodapé vai contornar uma sala de 5 m por 4 m, exceto a porta, que tem 0,8 m de largura. Quantos metros de rodapé são necessários?",
+      "alternativas": [
+        "9 m",
+        "17,2 m",
+        "18,8 m",
+        "18 m",
+        "20 m"
+      ],
+      "correta": 1,
+      "explicacao": "Perímetro: 18 m. Sem a porta: 18 − 0,8 = 17,2 m. Dica de mergulhador: porta não leva rodapé.",
+      "comentarios": [
+        "Calculou meio perímetro.",
+        "",
+        "Somou a porta em vez de descontar.",
+        "Esqueceu de descontar a porta.",
+        "Calculou a área."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q04",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Um retângulo tem perímetro de 30 cm e comprimento de 9 cm. Quanto mede a largura?",
+      "alternativas": [
+        "12 cm",
+        "15 cm",
+        "21 cm",
+        "6 cm",
+        "3,33 cm"
+      ],
+      "correta": 3,
+      "explicacao": "Meio perímetro: 15 cm. Largura: 15 − 9 = 6 cm. Dica de mergulhador: comprimento + largura = metade do perímetro.",
+      "comentarios": [
+        "Subtraiu 18 de 30.",
+        "Calculou meio perímetro.",
+        "Subtraiu 9 do perímetro inteiro.",
+        "",
+        "Dividiu 30 por 9."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q05",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Quantas voltas numa pista retangular de 100 m por 50 m uma pessoa precisa dar para percorrer 3 km?",
+      "alternativas": [
+        "30",
+        "6",
+        "60",
+        "10",
+        "20"
+      ],
+      "correta": 3,
+      "explicacao": "Perímetro: 300 m. 3.000 ÷ 300 = 10 voltas. Dica de mergulhador: converta km para m.",
+      "comentarios": [
+        "Dividiu 3.000 por 100.",
+        "Errou a conversão.",
+        "Dividiu 3.000 por 50.",
+        "",
+        "Usou meio perímetro."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q06",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Um quadrado tem o mesmo perímetro que um retângulo de 10 cm por 6 cm. Quanto mede o lado do quadrado?",
+      "alternativas": [
+        "60 cm",
+        "32 cm",
+        "16 cm",
+        "8 cm",
+        "7,75 cm"
+      ],
+      "correta": 3,
+      "explicacao": "Perímetro: 32 cm. Lado do quadrado: 32 ÷ 4 = 8 cm. Dica de mergulhador: mesmo perímetro, não mesma área.",
+      "comentarios": [
+        "Calculou a área do retângulo.",
+        "É o perímetro.",
+        "Dividiu o perímetro por 2.",
+        "",
+        "Usou a raiz da área."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q07",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um triângulo isósceles tem perímetro de 32 cm e base de 10 cm. Quanto mede cada um dos lados iguais?",
+      "alternativas": [
+        "16 cm",
+        "10,67 cm",
+        "22 cm",
+        "11 cm",
+        "21 cm"
+      ],
+      "correta": 3,
+      "explicacao": "Lados iguais: (32 − 10) ÷ 2 = 11 cm. Dica de mergulhador: tire a base e divida por 2.",
+      "comentarios": [
+        "Dividiu o perímetro por 2.",
+        "Dividiu 32 por 3.",
+        "É a soma dos dois lados iguais.",
+        "",
+        "Subtraiu 11."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q08",
+      "tema": "Figuras compostas",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um terreno retangular de 20 m por 15 m vai ser cercado, deixando um portão de 3 m. Quantos metros de cerca são necessários?",
+      "alternativas": [
+        "67 m",
+        "32 m",
+        "70 m",
+        "73 m",
+        "300 m"
+      ],
+      "correta": 0,
+      "explicacao": "Perímetro: 70 m. Sem o portão: 67 m. Dica de mergulhador: portão não leva cerca.",
+      "comentarios": [
+        "",
+        "Usou meio perímetro menos o portão.",
+        "Esqueceu o portão.",
+        "Somou o portão.",
+        "Calculou a área."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q09",
+      "tema": "Figuras compostas",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "De um retângulo de 10 cm por 8 cm, recortou-se um retângulo de 4 cm por 3 cm num dos cantos, formando um L. Qual é o perímetro do L?",
+      "alternativas": [
+        "68 cm",
+        "36 cm",
+        "22 cm",
+        "50 cm",
+        "18 cm"
+      ],
+      "correta": 1,
+      "explicacao": "Os lados novos do recorte substituem exatamente os que saíram: o perímetro continua 2 × (10 + 8) = 36 cm. Dica de mergulhador: recorte de canto não muda o perímetro.",
+      "comentarios": [
+        "Calculou a área do L.",
+        "",
+        "Descontou os lados do recorte.",
+        "Somou os lados do recorte ao contorno.",
+        "Calculou meio perímetro."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q10",
+      "tema": "Figuras compostas",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Uma figura em escada tem 3 degraus de 30 cm de largura e 20 cm de altura cada, apoiada num piso de 90 cm e numa parede de 60 cm. Qual é o perímetro da figura?",
+      "alternativas": [
+        "150 cm",
+        "330 cm",
+        "240 cm",
+        "5.400 cm",
+        "300 cm"
+      ],
+      "correta": 4,
+      "explicacao": "Os degraus somam 90 cm na horizontal e 60 cm na vertical: perímetro do retângulo envolvente, 2 × (90 + 60) = 300 cm. Dica de mergulhador: degraus valem o retângulo que os envolve.",
+      "comentarios": [
+        "Calculou meio perímetro.",
+        "Contou um degrau a mais.",
+        "Esqueceu um lado.",
+        "Calculou a área do retângulo envolvente.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-perimetros-q11",
+      "tema": "Figuras compostas",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Uma moldura de 4 cm de largura contorna uma foto de 20 cm por 30 cm. Qual é o perímetro externo da moldura?",
+      "alternativas": [
+        "132 cm",
+        "1.064 cm",
+        "116 cm",
+        "164 cm",
+        "100 cm"
+      ],
+      "correta": 0,
+      "explicacao": "Medidas externas: 28 cm × 38 cm. Perímetro: 2 × 66 = 132 cm. Dica de mergulhador: a moldura cresce dos dois lados.",
+      "comentarios": [
+        "",
+        "Calculou a área externa.",
+        "Somou só 4 cm em cada medida.",
+        "Somou 8 cm de cada lado.",
+        "Calculou o perímetro da foto."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q12",
+      "tema": "Figuras compostas",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Um terreno fechado tem 40 m de perímetro, e uma estaca será colocada a cada 2 m em volta dele. Quantas estacas são necessárias?",
+      "alternativas": [
+        "21",
+        "20",
+        "40",
+        "19",
+        "80"
+      ],
+      "correta": 1,
+      "explicacao": "Contorno fechado: 40 ÷ 2 = 20 estacas, pois a última coincide com a primeira. Dica de mergulhador: em volta, divide; em linha aberta, divide e soma 1.",
+      "comentarios": [
+        "Contou como cerca aberta.",
+        "",
+        "Uma estaca por metro.",
+        "Descontou uma estaca.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q13",
+      "tema": "Figuras compostas",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Uma praça quadrada de 50 m de lado terá uma calçada de 2 m de largura por dentro, encostada nos lados. Qual é o perímetro da borda interna da calçada?",
+      "alternativas": [
+        "184 m",
+        "200 m",
+        "216 m",
+        "192 m",
+        "168 m"
+      ],
+      "correta": 0,
+      "explicacao": "O quadrado interno tem lado 50 − 2 × 2 = 46 m. Perímetro: 4 × 46 = 184 m. Dica de mergulhador: a calçada come dos dois lados.",
+      "comentarios": [
+        "",
+        "É o perímetro da praça.",
+        "Somou a calçada por fora.",
+        "Descontou só 2 m em cada lado.",
+        "Descontou 4 m de cada lado."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q14",
+      "tema": "Figuras compostas",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Cinco quadradinhos de 2 cm de lado formam uma cruz: um no centro e um encostado em cada lado dele. Qual é o perímetro da cruz?",
+      "alternativas": [
+        "40 cm",
+        "24 cm",
+        "20 cm",
+        "32 cm",
+        "16 cm"
+      ],
+      "correta": 1,
+      "explicacao": "O contorno tem 12 segmentos de 2 cm: 24 cm. Os lados encostados ficam por dentro. Dica de mergulhador: conte só os lados de fora.",
+      "comentarios": [
+        "Somou os perímetros dos cinco quadradinhos.",
+        "",
+        "Contou só 10 segmentos.",
+        "Contou 16 segmentos.",
+        "Contou só 8 segmentos."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q15",
+      "tema": "Perímetro e área",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Com 20 m de cerca, qual destes retângulos cerca a maior área?",
+      "alternativas": [
+        "9 m × 1 m",
+        "8 m × 2 m",
+        "7 m × 3 m",
+        "6 m × 4 m",
+        "5 m × 5 m"
+      ],
+      "correta": 4,
+      "explicacao": "Todos têm 20 m de perímetro; o quadrado 5 × 5 cerca 25 m², a maior área. Dica de mergulhador: mesmo perímetro, o quadrado ganha.",
+      "comentarios": [
+        "Área de 9 m².",
+        "Área de 16 m².",
+        "Área de 21 m².",
+        "Área de 24 m².",
+        ""
+      ]
+    },
+    {
+      "id": "mat-perimetros-q16",
+      "tema": "Perímetro e área",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Dois terrenos têm 40 m de perímetro: A mede 10 m × 10 m, e B mede 15 m × 5 m. Qual tem mais área?",
+      "alternativas": [
+        "B, porque é mais comprido",
+        "A, com 100 m² contra 75 m²",
+        "B, com 100 m²",
+        "Depende do preço",
+        "Os dois têm a mesma área"
+      ],
+      "correta": 1,
+      "explicacao": "A: 100 m². B: 75 m². Dica de mergulhador: perímetro igual, área diferente.",
+      "comentarios": [
+        "Comprimento não é área.",
+        "",
+        "Errou as contas.",
+        "A área é uma medida.",
+        "Mesmo perímetro não garante mesma área."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q17",
+      "tema": "Perímetro e área",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Um retângulo de perímetro 18 cm é ampliado com razão 3. Qual é o novo perímetro?",
+      "alternativas": [
+        "54 cm",
+        "162 cm",
+        "21 cm",
+        "6 cm",
+        "18 cm"
+      ],
+      "correta": 0,
+      "explicacao": "O perímetro cresce na mesma razão: 18 × 3 = 54 cm. Dica de mergulhador: perímetro × k; área × k².",
+      "comentarios": [
+        "",
+        "Multiplicou pela razão ao quadrado.",
+        "Somou 3.",
+        "Dividiu.",
+        "Achou que não muda."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q18",
+      "tema": "Perímetro e área",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Qual é o menor perímetro possível de um retângulo de lados inteiros e área 36 m²?",
+      "alternativas": [
+        "30 m",
+        "26 m",
+        "74 m",
+        "24 m",
+        "40 m"
+      ],
+      "correta": 3,
+      "explicacao": "Com área fixa, o quadrado 6 × 6 tem o menor perímetro: 24 m. Dica de mergulhador: área fixa, o quadrado gasta menos contorno.",
+      "comentarios": [
+        "É o do 3 × 12.",
+        "É o do retângulo 4 × 9.",
+        "É o do 1 × 36.",
+        "",
+        "É o do 2 × 18."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q19",
+      "tema": "Perímetro e área",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um fazendeiro tem 60 m de tela para cercar um terreno retangular encostado num muro, que dispensa cerca num dos lados maiores. Qual é a maior área que ele consegue cercar?",
+      "alternativas": [
+        "225 m²",
+        "400 m²",
+        "300 m²",
+        "450 m²",
+        "900 m²"
+      ],
+      "correta": 3,
+      "explicacao": "Lados x, x e y: 2x + y = 60. Área x(60 − 2x) é máxima com x = 15 e y = 30: 450 m². Dica de mergulhador: com muro, o lado paralelo a ele fica com metade da tela.",
+      "comentarios": [
+        "Usou um quadrado de 15 m.",
+        "Usou um quadrado de 20 m.",
+        "Usou 10 m × 30 m.",
+        "",
+        "Usou um quadrado de 30 m."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q20",
+      "tema": "Perímetro e área",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um retângulo tem perímetro de 50 m e área de 150 m². Quais são as suas medidas?",
+      "alternativas": [
+        "30 m e 5 m",
+        "15 m e 10 m",
+        "20 m e 5 m",
+        "12,5 m e 12,5 m",
+        "25 m e 6 m"
+      ],
+      "correta": 1,
+      "explicacao": "Base + altura = 25 e base × altura = 150: 15 e 10. Dica de mergulhador: procure dois números com essa soma e esse produto.",
+      "comentarios": [
+        "A área bate, mas o perímetro daria 70 m.",
+        "",
+        "O perímetro bate, mas a área daria 100 m².",
+        "O perímetro bate, mas a área daria 156,25 m².",
+        "A área bate, mas o perímetro daria 62 m."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q01",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um retângulo de 8 m por 5 m?",
+      "alternativas": [
+        "40 m²",
+        "20 m²",
+        "80 m²",
+        "13 m²",
+        "26 m²"
+      ],
+      "correta": 0,
+      "explicacao": "8 × 5 = 40 m². Dica de mergulhador: base vezes altura.",
+      "comentarios": [
+        "",
+        "Dividiu por 2.",
+        "Dobrou.",
+        "Somou os lados.",
+        "Calculou o perímetro."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q02",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um piso de 4 m por 3 m será coberto com lajotas de 50 cm × 50 cm. Quantas lajotas são necessárias, sem perdas?",
+      "alternativas": [
+        "12",
+        "4.800",
+        "0,48",
+        "24",
+        "48"
+      ],
+      "correta": 4,
+      "explicacao": "Piso: 12 m². Lajota: 0,5 × 0,5 = 0,25 m². 12 ÷ 0,25 = 48. Dica de mergulhador: converta antes de dividir.",
+      "comentarios": [
+        "Contou uma lajota por m².",
+        "Usou cm² no piso e m² na lajota.",
+        "Errou a conversão.",
+        "Usou lajotas de 0,5 m².",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q03",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um paralelogramo tem base de 10 cm, lado inclinado de 6 cm e altura de 5 cm. Qual é a área?",
+      "alternativas": [
+        "50 cm²",
+        "25 cm²",
+        "30 cm²",
+        "60 cm²",
+        "32 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Base × altura perpendicular: 10 × 5 = 50 cm². Dica de mergulhador: o lado inclinado não é a altura.",
+      "comentarios": [
+        "",
+        "Dividiu por 2.",
+        "Multiplicou 6 por 5.",
+        "Usou o lado inclinado como altura.",
+        "Calculou o perímetro."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q04",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Uma parede de 5 m por 2,8 m tem uma porta de 0,8 m × 2,1 m e uma janela de 1,2 m × 1 m. Qual é a área a ser pintada?",
+      "alternativas": [
+        "16,88 m²",
+        "11,12 m²",
+        "12,32 m²",
+        "12,8 m²",
+        "14 m²"
+      ],
+      "correta": 1,
+      "explicacao": "Parede: 14 m². Porta: 1,68 m². Janela: 1,2 m². 14 − 2,88 = 11,12 m². Dica de mergulhador: desconte todas as aberturas.",
+      "comentarios": [
+        "Somou as aberturas.",
+        "",
+        "Descontou só a porta.",
+        "Descontou só a janela.",
+        "Não descontou nada."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q05",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um quadrado tem área de 49 m². Qual é o seu perímetro?",
+      "alternativas": [
+        "196 m",
+        "7 m",
+        "49 m",
+        "14 m",
+        "28 m"
+      ],
+      "correta": 4,
+      "explicacao": "Lado: √49 = 7 m. Perímetro: 28 m. Dica de mergulhador: da área para o lado, raiz.",
+      "comentarios": [
+        "Multiplicou a área por 4.",
+        "É o lado.",
+        "Repetiu a área.",
+        "Somou dois lados.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q06",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um terreno de 30 m por 20 m é cortado por duas ruas de 2 m de largura, uma paralela a cada lado, de ponta a ponta. Qual é a área que sobra para construir?",
+      "alternativas": [
+        "600 m²",
+        "504 m²",
+        "540 m²",
+        "500 m²",
+        "496 m²"
+      ],
+      "correta": 1,
+      "explicacao": "Juntando os pedaços, sobra um retângulo de (30 − 2) × (20 − 2) = 28 × 18 = 504 m². Dica de mergulhador: o cruzamento pertence às duas ruas.",
+      "comentarios": [
+        "Não descontou as ruas.",
+        "",
+        "Descontou só uma rua.",
+        "Descontou o cruzamento das ruas duas vezes.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q07",
+      "tema": "Triângulos",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um triângulo de base 10 cm e altura 6 cm?",
+      "alternativas": [
+        "30 cm²",
+        "60 cm²",
+        "32 cm²",
+        "16 cm²",
+        "15 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "10 × 6 ÷ 2 = 30 cm². Dica de mergulhador: triângulo é metade do retângulo.",
+      "comentarios": [
+        "",
+        "Esqueceu de dividir por 2.",
+        "Calculou um perímetro.",
+        "Somou.",
+        "Dividiu por 4."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q08",
+      "tema": "Triângulos",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Os catetos de um triângulo retângulo medem 6 cm e 8 cm. Qual é a área?",
+      "alternativas": [
+        "14 cm²",
+        "48 cm²",
+        "40 cm²",
+        "10 cm²",
+        "24 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "Os catetos são base e altura: 6 × 8 ÷ 2 = 24 cm². Dica de mergulhador: no retângulo, a altura já está desenhada.",
+      "comentarios": [
+        "Somou.",
+        "Esqueceu de dividir.",
+        "Usou a hipotenusa.",
+        "Calculou a hipotenusa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q09",
+      "tema": "Triângulos",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um triângulo tem vértices nos pontos (0, 0), (8, 0) e (3, 5). Qual é a área?",
+      "alternativas": [
+        "20",
+        "40",
+        "24",
+        "15",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "Base no eixo x: 8. Altura: a ordenada do terceiro vértice, 5. Área: 8 × 5 ÷ 2 = 20. Dica de mergulhador: com a base no eixo, a altura é o y do vértice.",
+      "comentarios": [
+        "",
+        "Esqueceu de dividir.",
+        "Usou 3 como base.",
+        "Usou base 3 e altura 5... e errou.",
+        "Usou base 8 e altura 3."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q10",
+      "tema": "Triângulos",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um triângulo tem base de 12 cm e área de 54 cm². Qual é a altura?",
+      "alternativas": [
+        "4,5 cm",
+        "648 cm",
+        "9 cm",
+        "18 cm",
+        "42 cm"
+      ],
+      "correta": 2,
+      "explicacao": "12 × h ÷ 2 = 54, logo h = 108 ÷ 12 = 9 cm. Dica de mergulhador: dobre a área e divida pela base.",
+      "comentarios": [
+        "Esqueceu de dobrar a área.",
+        "Multiplicou.",
+        "",
+        "Dobrou duas vezes.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q11",
+      "tema": "Triângulos",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é, aproximadamente, a área de um triângulo equilátero de lado 4 cm?",
+      "alternativas": [
+        "12 cm²",
+        "16 cm²",
+        "6,93 cm²",
+        "8 cm²",
+        "3,46 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "ℓ²√3 ÷ 4 = 16 × 1,732 ÷ 4 ≈ 6,93 cm². Dica de mergulhador: ou base 4 × altura 2√3 ÷ 2.",
+      "comentarios": [
+        "Calculou o perímetro.",
+        "Calculou a área de um quadrado.",
+        "",
+        "Fez lado × lado ÷ 2.",
+        "Calculou a altura."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q12",
+      "tema": "Triângulos",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um telhado tem duas águas retangulares de 8 m por 5 m cada, e as paredes laterais (oitões) são triângulos de base 8 m e altura 3 m. Qual é a área total das águas e dos oitões?",
+      "alternativas": [
+        "128 m²",
+        "92 m²",
+        "52 m²",
+        "80 m²",
+        "104 m²"
+      ],
+      "correta": 4,
+      "explicacao": "Águas: 2 × 40 = 80 m². Oitões: 2 × (8 × 3 ÷ 2) = 24 m². Total: 104 m². Dica de mergulhador: some peça por peça.",
+      "comentarios": [
+        "Esqueceu de dividir os triângulos por 2.",
+        "Contou um oitão só.",
+        "Contou só uma água e um oitão.",
+        "Esqueceu os oitões.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q13",
+      "tema": "Triângulos",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um triângulo isósceles de lados 13 cm, 13 cm e 10 cm?",
+      "alternativas": [
+        "65 cm²",
+        "36 cm²",
+        "60 cm²",
+        "130 cm²",
+        "120 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "A altura divide a base ao meio: √(169 − 25) = 12 cm. Área: 10 × 12 ÷ 2 = 60 cm². Dica de mergulhador: no isósceles, Pitágoras dá a altura.",
+      "comentarios": [
+        "Usou o lado 13 como altura.",
+        "Errou a altura.",
+        "",
+        "Usou 13 como altura e não dividiu.",
+        "Esqueceu de dividir por 2."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q14",
+      "tema": "Trapézio e losango",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um trapézio de bases 10 cm e 6 cm e altura 4 cm?",
+      "alternativas": [
+        "64 cm²",
+        "16 cm²",
+        "32 cm²",
+        "240 cm²",
+        "20 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "(10 + 6) × 4 ÷ 2 = 32 cm². Dica de mergulhador: média das bases vezes a altura.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "Dividiu por 4.",
+        "",
+        "Multiplicou as três medidas.",
+        "Somou tudo."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q15",
+      "tema": "Trapézio e losango",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um losango de diagonais 8 cm e 6 cm?",
+      "alternativas": [
+        "14 cm²",
+        "48 cm²",
+        "24 cm²",
+        "28 cm²",
+        "7 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "8 × 6 ÷ 2 = 24 cm². Dica de mergulhador: diagonais vezes, dividido por 2.",
+      "comentarios": [
+        "Somou as diagonais.",
+        "Esqueceu de dividir por 2.",
+        "",
+        "Calculou outra medida.",
+        "Fez a média."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q16",
+      "tema": "Trapézio e losango",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um trapézio tem área de 60 cm² e bases de 14 cm e 10 cm. Qual é a altura?",
+      "alternativas": [
+        "2,5 cm",
+        "10 cm",
+        "5 cm",
+        "6 cm",
+        "4 cm"
+      ],
+      "correta": 2,
+      "explicacao": "(14 + 10) × h ÷ 2 = 60, logo 12h = 60 e h = 5 cm. Dica de mergulhador: média das bases é 12.",
+      "comentarios": [
+        "Esqueceu de dobrar a área.",
+        "Dobrou duas vezes.",
+        "",
+        "Dividiu 60 por 10.",
+        "Errou a soma das bases."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q17",
+      "tema": "Trapézio e losango",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um losango tem lado de 5 cm e diagonal menor de 6 cm. Qual é a área?",
+      "alternativas": [
+        "48 cm²",
+        "15 cm²",
+        "30 cm²",
+        "20 cm²",
+        "24 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "As diagonais se cortam ao meio em ângulo reto: metade da maior = √(25 − 9) = 4, diagonal maior 8. Área: 8 × 6 ÷ 2 = 24 cm². Dica de mergulhador: Pitágoras com as metades das diagonais.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "Dividiu 30 por 2.",
+        "Multiplicou lado por diagonal.",
+        "Errou a outra diagonal.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q18",
+      "tema": "Trapézio e losango",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um terreno em forma de trapézio tem frente de 20 m, fundo de 30 m e profundidade de 40 m. O metro quadrado custa R$ 150. Quanto vale o terreno?",
+      "alternativas": [
+        "R$ 90.000",
+        "R$ 6.000",
+        "R$ 180.000",
+        "R$ 150.000",
+        "R$ 300.000"
+      ],
+      "correta": 3,
+      "explicacao": "Área: (20 + 30) × 40 ÷ 2 = 1.000 m². Valor: 1.000 × 150 = R$ 150.000. Dica de mergulhador: área primeiro, preço depois.",
+      "comentarios": [
+        "Usou só a frente.",
+        "Multiplicou 40 por 150.",
+        "Usou só o fundo.",
+        "",
+        "Esqueceu de dividir por 2."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q19",
+      "tema": "Trapézio e losango",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um trapézio retângulo tem bases de 12 cm e 6 cm, e o lado oblíquo mede 10 cm. Qual é a área?",
+      "alternativas": [
+        "36 cm²",
+        "60 cm²",
+        "90 cm²",
+        "72 cm²",
+        "144 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "A diferença das bases, 6, e o lado oblíquo, 10, formam um triângulo retângulo: altura = √(100 − 36) = 8. Área: (12 + 6) × 8 ÷ 2 = 72 cm². Dica de mergulhador: Pitágoras acha a altura escondida.",
+      "comentarios": [
+        "Usou só a base menor.",
+        "Errou a altura.",
+        "Usou o lado oblíquo como altura.",
+        "",
+        "Esqueceu de dividir por 2."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q20",
+      "tema": "Trapézio e losango",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Num quadrado de lado 10 cm, ligam-se os pontos médios dos lados, formando um quadrilátero no centro. Qual é a área dele?",
+      "alternativas": [
+        "100 cm²",
+        "70,7 cm²",
+        "50 cm²",
+        "25 cm²",
+        "75 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Os quatro cantos cortados somam metade do quadrado: 100 ÷ 2 = 50 cm². Ou: diagonais 10 e 10, área 10 × 10 ÷ 2. Dica de mergulhador: pontos médios formam uma figura com metade da área.",
+      "comentarios": [
+        "É a área do quadrado original.",
+        "Usou a diagonal como lado.",
+        "",
+        "Usou um quarto.",
+        "Tirou só um triângulo."
+      ]
+    },
+    {
+      "id": "mat-circulo-q01",
+      "tema": "Comprimento",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é o comprimento de uma circunferência de raio 5 cm? Use π ≈ 3,14.",
+      "alternativas": [
+        "31,4 cm",
+        "78,5 cm",
+        "10 cm",
+        "62,8 cm",
+        "15,7 cm"
+      ],
+      "correta": 0,
+      "explicacao": "2 × 3,14 × 5 = 31,4 cm. Dica de mergulhador: comprimento é 2πr.",
+      "comentarios": [
+        "",
+        "Calculou a área.",
+        "Calculou o diâmetro.",
+        "Usou o diâmetro como raio.",
+        "Usou πr."
+      ]
+    },
+    {
+      "id": "mat-circulo-q02",
+      "tema": "Comprimento",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é o comprimento de uma circunferência de diâmetro 20 m? Use π ≈ 3.",
+      "alternativas": [
+        "30 m",
+        "60 m",
+        "40 m",
+        "120 m",
+        "300 m"
+      ],
+      "correta": 1,
+      "explicacao": "π × d = 3 × 20 = 60 m. Dica de mergulhador: com o diâmetro, multiplique por π.",
+      "comentarios": [
+        "Usou π vezes o raio.",
+        "",
+        "Dobrou o diâmetro.",
+        "Usou o diâmetro como raio.",
+        "Calculou a área."
+      ]
+    },
+    {
+      "id": "mat-circulo-q03",
+      "tema": "Comprimento",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "O raio de uma circunferência mede 7 cm. Quanto mede o diâmetro?",
+      "alternativas": [
+        "14 cm",
+        "49 cm",
+        "7 cm",
+        "3,5 cm",
+        "21 cm"
+      ],
+      "correta": 0,
+      "explicacao": "Diâmetro = 2 × raio = 14 cm. Dica de mergulhador: o diâmetro atravessa o círculo passando pelo centro.",
+      "comentarios": [
+        "",
+        "Elevou ao quadrado.",
+        "Repetiu.",
+        "Dividiu por 2.",
+        "Multiplicou por 3."
+      ]
+    },
+    {
+      "id": "mat-circulo-q04",
+      "tema": "Comprimento",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Uma roda de raio 30 cm gira sem deslizar. Quantas voltas ela dá para percorrer 942 m? Use π ≈ 3,14.",
+      "alternativas": [
+        "50",
+        "1.000",
+        "250",
+        "500",
+        "5.000"
+      ],
+      "correta": 3,
+      "explicacao": "Uma volta: 2 × 3,14 × 30 = 188,4 cm = 1,884 m. Voltas: 942 ÷ 1,884 = 500. Dica de mergulhador: mesma unidade antes de dividir.",
+      "comentarios": [
+        "Errou a conversão para o outro lado.",
+        "Usou π vezes o raio.",
+        "Usou o diâmetro como raio.",
+        "",
+        "Errou a conversão de cm para m."
+      ]
+    },
+    {
+      "id": "mat-circulo-q05",
+      "tema": "Comprimento",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Uma pista circular tem raio de 50 m. Quantas voltas é preciso dar para correr 3 km? Use π ≈ 3.",
+      "alternativas": [
+        "60",
+        "30",
+        "20",
+        "10",
+        "5"
+      ],
+      "correta": 3,
+      "explicacao": "Uma volta: 2 × 3 × 50 = 300 m. 3.000 ÷ 300 = 10. Dica de mergulhador: uma volta é o comprimento da circunferência.",
+      "comentarios": [
+        "Dividiu 3.000 por 50.",
+        "Dividiu 3.000 por 100.",
+        "Usou π vezes o raio.",
+        "",
+        "Usou o diâmetro como raio."
+      ]
+    },
+    {
+      "id": "mat-circulo-q06",
+      "tema": "Comprimento",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Um arame de 62,8 cm é dobrado em forma de circunferência. Qual é o raio? Use π ≈ 3,14.",
+      "alternativas": [
+        "31,4 cm",
+        "4,47 cm",
+        "20 cm",
+        "10 cm",
+        "5 cm"
+      ],
+      "correta": 3,
+      "explicacao": "r = 62,8 ÷ (2 × 3,14) = 10 cm. Dica de mergulhador: comprimento ÷ 2π.",
+      "comentarios": [
+        "Dividiu por 2 só.",
+        "Tratou o comprimento como área.",
+        "Calculou o diâmetro.",
+        "",
+        "Dividiu por 4π."
+      ]
+    },
+    {
+      "id": "mat-circulo-q07",
+      "tema": "Comprimento",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "Duas polias estão ligadas por uma correia. A menor tem raio de 10 cm, e a maior, de 25 cm. Quando a menor dá 50 voltas, quantas voltas dá a maior?",
+      "alternativas": [
+        "35",
+        "50",
+        "125",
+        "20",
+        "2,5"
+      ],
+      "correta": 3,
+      "explicacao": "A correia percorre o mesmo comprimento nas duas: 10 × 50 = 25 × n, logo n = 20. Dica de mergulhador: polia maior gira menos.",
+      "comentarios": [
+        "Subtraiu os raios.",
+        "Achou que giram igual.",
+        "Inverteu a relação.",
+        "",
+        "Dividiu os raios."
+      ]
+    },
+    {
+      "id": "mat-circulo-q08",
+      "tema": "Área do círculo",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é a área de um círculo de raio 10 m? Use π ≈ 3,14.",
+      "alternativas": [
+        "100 m²",
+        "314 m²",
+        "62,8 m²",
+        "31,4 m²",
+        "628 m²"
+      ],
+      "correta": 1,
+      "explicacao": "3,14 × 10² = 314 m². Dica de mergulhador: área é πr².",
+      "comentarios": [
+        "Esqueceu o π.",
+        "",
+        "Calculou o comprimento.",
+        "Usou πr.",
+        "Usou 2πr²."
+      ]
+    },
+    {
+      "id": "mat-circulo-q09",
+      "tema": "Área do círculo",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Se o raio de um círculo dobra, o que acontece com a área?",
+      "alternativas": [
+        "Fica 4 vezes maior",
+        "Não muda",
+        "Dobra",
+        "Fica 8 vezes maior",
+        "Fica π vezes maior"
+      ],
+      "correta": 0,
+      "explicacao": "(2r)² = 4r²: a área quadruplica. Dica de mergulhador: área segue o quadrado do fator.",
+      "comentarios": [
+        "",
+        "O raio mudou.",
+        "A área depende do raio ao quadrado.",
+        "Seria com o raio ao cubo.",
+        "π não muda."
+      ]
+    },
+    {
+      "id": "mat-circulo-q10",
+      "tema": "Área do círculo",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Uma pizza grande tem 40 cm de diâmetro, e uma média, 30 cm. Quantas vezes, aproximadamente, a área da grande é maior que a da média?",
+      "alternativas": [
+        "10 vezes",
+        "2,37 vezes",
+        "1,33 vez",
+        "1 vez",
+        "1,78 vez"
+      ],
+      "correta": 4,
+      "explicacao": "Razão de áreas: (40 ÷ 30)² = (4/3)² ≈ 1,78. Dica de mergulhador: compare áreas pelo quadrado da razão.",
+      "comentarios": [
+        "Usou a diferença dos diâmetros.",
+        "Elevou a razão ao cubo.",
+        "Comparou os diâmetros, não as áreas.",
+        "Achou que são iguais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-circulo-q11",
+      "tema": "Área do círculo",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é a área de um círculo de diâmetro 12 cm? Use π ≈ 3.",
+      "alternativas": [
+        "432 cm²",
+        "36 cm²",
+        "108 cm²",
+        "144 cm²",
+        "18 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Raio: 6. Área: 3 × 36 = 108 cm². Dica de mergulhador: diâmetro dado, divida por 2 primeiro.",
+      "comentarios": [
+        "Usou o diâmetro como raio.",
+        "Calculou o comprimento.",
+        "",
+        "Esqueceu o π e usou o diâmetro.",
+        "Usou π vezes o raio."
+      ]
+    },
+    {
+      "id": "mat-circulo-q12",
+      "tema": "Área do círculo",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Um pivô de irrigação rega um círculo de 500 m de raio. Qual é a área regada, em hectares? Use π ≈ 3,14.",
+      "alternativas": [
+        "7,85 ha",
+        "785 ha",
+        "78,5 ha",
+        "0,785 ha",
+        "157 ha"
+      ],
+      "correta": 2,
+      "explicacao": "Área: 3,14 × 250.000 = 785.000 m². Em hectares (÷ 10.000): 78,5 ha. Dica de mergulhador: 1 ha = 10.000 m².",
+      "comentarios": [
+        "Errou a conversão para o outro lado.",
+        "Errou a conversão para hectares.",
+        "",
+        "Dividiu por 1.000.000.",
+        "Usou o comprimento."
+      ]
+    },
+    {
+      "id": "mat-circulo-q13",
+      "tema": "Área do círculo",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "Uma praça quadrada de 20 m de lado tem um canteiro circular que encosta nos quatro lados. Qual é a área da praça fora do canteiro? Use π ≈ 3,14.",
+      "alternativas": [
+        "314 m²",
+        "1.256 m²",
+        "86 m²",
+        "337,2 m²",
+        "400 m²"
+      ],
+      "correta": 2,
+      "explicacao": "Raio do canteiro: 10 m; área 314 m². Fora: 400 − 314 = 86 m². Dica de mergulhador: círculo inscrito tem raio igual a meio lado.",
+      "comentarios": [
+        "É a área do canteiro.",
+        "Usou o lado como raio.",
+        "",
+        "Subtraiu o comprimento do canteiro.",
+        "É a área da praça."
+      ]
+    },
+    {
+      "id": "mat-circulo-q14",
+      "tema": "Área do círculo",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "Um círculo está inscrito num quadrado, e outro quadrado está inscrito nesse círculo, com os vértices na circunferência. Qual é a razão entre a área do quadrado maior e a do menor?",
+      "alternativas": [
+        "√2",
+        "1,5",
+        "2",
+        "π",
+        "4"
+      ],
+      "correta": 2,
+      "explicacao": "Com raio r: o quadrado maior tem lado 2r (área 4r²); o menor tem diagonal 2r (área 2r²). Razão: 2. Dica de mergulhador: no menor, o diâmetro é a diagonal.",
+      "comentarios": [
+        "Comparou os lados.",
+        "Chutou.",
+        "",
+        "Usou a área do círculo.",
+        "Comparou lados como se fossem 2 para 1."
+      ]
+    },
+    {
+      "id": "mat-circulo-q15",
+      "tema": "Setores e coroas",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Um círculo tem área de 400 cm². Qual é a área de um setor de 90°?",
+      "alternativas": [
+        "90 cm²",
+        "200 cm²",
+        "133 cm²",
+        "40 cm²",
+        "100 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "90° ÷ 360° = 1/4. 400 ÷ 4 = 100 cm². Dica de mergulhador: fração = ângulo ÷ 360°.",
+      "comentarios": [
+        "Usou o ângulo como área.",
+        "Usou meio círculo.",
+        "Usou um terço.",
+        "Usou 10%.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-circulo-q16",
+      "tema": "Setores e coroas",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Uma circunferência tem 50 cm de comprimento. Quanto mede um arco de 180°?",
+      "alternativas": [
+        "12,5 cm",
+        "180 cm",
+        "25 cm",
+        "50 cm",
+        "100 cm"
+      ],
+      "correta": 2,
+      "explicacao": "180° é meia volta: 50 ÷ 2 = 25 cm. Dica de mergulhador: arco é fração do comprimento.",
+      "comentarios": [
+        "Usou um quarto.",
+        "Usou o ângulo.",
+        "",
+        "Usou a circunferência inteira.",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-circulo-q17",
+      "tema": "Setores e coroas",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Num gráfico de setores, uma fatia tem 72°, e o círculo tem raio 10 cm. Qual é a área da fatia? Use π ≈ 3,14.",
+      "alternativas": [
+        "314 cm²",
+        "125,6 cm²",
+        "62,8 cm²",
+        "12,56 cm²",
+        "72 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Fração: 72 ÷ 360 = 0,2. Área: 0,2 × 314 = 62,8 cm². Dica de mergulhador: fração do círculo inteiro.",
+      "comentarios": [
+        "É a área do círculo inteiro.",
+        "Usou 40%.",
+        "",
+        "Calculou o arco.",
+        "Usou o ângulo como área."
+      ]
+    },
+    {
+      "id": "mat-circulo-q18",
+      "tema": "Setores e coroas",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é a área da coroa circular entre dois círculos de mesmo centro, com raios de 5 cm e 3 cm? Use π ≈ 3,14.",
+      "alternativas": [
+        "50,24 cm²",
+        "106,76 cm²",
+        "6,28 cm²",
+        "12,56 cm²",
+        "78,5 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "π(R² − r²) = 3,14 × (25 − 9) = 3,14 × 16 = 50,24 cm². Dica de mergulhador: subtraia as áreas, não os raios.",
+      "comentarios": [
+        "",
+        "Somou as áreas.",
+        "Usou a diferença dos comprimentos.",
+        "Usou π(R − r)².",
+        "Calculou só o círculo maior."
+      ]
+    },
+    {
+      "id": "mat-circulo-q19",
+      "tema": "Setores e coroas",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "O ponteiro dos minutos de um relógio mede 12 cm. Que distância a sua ponta percorre em 20 minutos? Use π ≈ 3,14.",
+      "alternativas": [
+        "12,56 cm",
+        "25,12 cm",
+        "240 cm",
+        "75,36 cm",
+        "150,72 cm"
+      ],
+      "correta": 1,
+      "explicacao": "20 minutos = 1/3 de volta. Arco: (1/3) × 2 × 3,14 × 12 = 25,12 cm. Dica de mergulhador: arco = fração × 2πr.",
+      "comentarios": [
+        "Usou um sexto da volta.",
+        "",
+        "Multiplicou 20 por 12.",
+        "Calculou a volta inteira.",
+        "Calculou a área do setor."
+      ]
+    },
+    {
+      "id": "mat-circulo-q20",
+      "tema": "Setores e coroas",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "Uma pista tem dois trechos retos de 100 m e duas curvas semicirculares de raio 30 m. Qual é o comprimento de uma volta? Use π ≈ 3.",
+      "alternativas": [
+        "200 m",
+        "290 m",
+        "560 m",
+        "260 m",
+        "380 m"
+      ],
+      "correta": 4,
+      "explicacao": "As duas meias-voltas formam uma circunferência: 2 × 3 × 30 = 180 m. Total: 200 + 180 = 380 m. Dica de mergulhador: duas semicircunferências valem uma inteira.",
+      "comentarios": [
+        "Esqueceu as curvas.",
+        "Contou só uma curva.",
+        "Contou cada curva como uma circunferência inteira.",
+        "Usou π vezes o raio nas duas curvas juntas.",
+        ""
       ]
     }
   ],
@@ -46201,6 +47884,1446 @@
         "Fez só a reflexão.",
         "Girou no sentido horário."
       ]
+    },
+    {
+      "id": "mat-perimetros-q01-v1",
+      "varianteDe": "mat-perimetros-q01",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Qual é o perímetro de um retângulo de 12 m por 7 m?",
+      "alternativas": [
+        "26 m",
+        "84 m",
+        "38 m",
+        "31 m",
+        "19 m"
+      ],
+      "correta": 2,
+      "explicacao": "2 × (12 + 7) = 38 m. Dica de mergulhador: dobre a soma de base e altura.",
+      "comentarios": [
+        "Errou a soma.",
+        "Calculou a área.",
+        "",
+        "Somou três lados.",
+        "Somou só dois lados."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q02-v1",
+      "varianteDe": "mat-perimetros-q02",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Qual é o perímetro de um hexágono regular de lado 4 cm?",
+      "alternativas": [
+        "24 cm",
+        "36 cm",
+        "16 cm",
+        "12 cm",
+        "20 cm"
+      ],
+      "correta": 0,
+      "explicacao": "6 × 4 = 24 cm. Dica de mergulhador: n lados vezes o lado.",
+      "comentarios": [
+        "",
+        "Usou 9 lados.",
+        "Usou 4 lados.",
+        "Usou 3 lados.",
+        "Usou 5 lados."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q03-v1",
+      "varianteDe": "mat-perimetros-q03",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um rodapé vai contornar uma sala de 6 m por 3 m, exceto a porta de 1 m. Quantos metros são necessários?",
+      "alternativas": [
+        "19 m",
+        "18 m",
+        "17 m",
+        "9 m",
+        "16 m"
+      ],
+      "correta": 2,
+      "explicacao": "18 − 1 = 17 m. Dica de mergulhador: desconte o vão da porta.",
+      "comentarios": [
+        "Somou a porta.",
+        "Esqueceu a porta.",
+        "",
+        "Calculou meio perímetro.",
+        "Descontou a porta duas vezes."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q04-v1",
+      "varianteDe": "mat-perimetros-q04",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Um retângulo tem perímetro de 46 cm e largura de 8 cm. Quanto mede o comprimento?",
+      "alternativas": [
+        "15 cm",
+        "38 cm",
+        "23 cm",
+        "5,75 cm",
+        "30 cm"
+      ],
+      "correta": 0,
+      "explicacao": "23 − 8 = 15 cm. Dica de mergulhador: use metade do perímetro.",
+      "comentarios": [
+        "",
+        "Subtraiu 8 do perímetro inteiro.",
+        "Calculou meio perímetro.",
+        "Dividiu 46 por 8.",
+        "Subtraiu 16 de 46."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q05-v1",
+      "varianteDe": "mat-perimetros-q05",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Quantas voltas numa quadra de 40 m por 20 m são necessárias para percorrer 2,4 km?",
+      "alternativas": [
+        "2",
+        "120",
+        "60",
+        "40",
+        "20"
+      ],
+      "correta": 4,
+      "explicacao": "Perímetro: 120 m. 2.400 ÷ 120 = 20. Dica de mergulhador: uma volta é o perímetro inteiro.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Dividiu 2.400 por 20.",
+        "Dividiu 2.400 por 40.",
+        "Usou meio perímetro.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-perimetros-q06-v1",
+      "varianteDe": "mat-perimetros-q06",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Um quadrado tem o mesmo perímetro que um retângulo de 15 cm por 9 cm. Quanto mede o lado do quadrado?",
+      "alternativas": [
+        "11,6 cm",
+        "135 cm",
+        "24 cm",
+        "48 cm",
+        "12 cm"
+      ],
+      "correta": 4,
+      "explicacao": "48 ÷ 4 = 12 cm. Dica de mergulhador: perímetro ÷ 4.",
+      "comentarios": [
+        "Usou a raiz da área.",
+        "Calculou a área.",
+        "Dividiu por 2.",
+        "É o perímetro.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-perimetros-q07-v1",
+      "varianteDe": "mat-perimetros-q07",
+      "tema": "Perímetro de polígonos",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um triângulo isósceles tem perímetro de 40 cm, e cada lado igual mede 13 cm. Quanto mede a base?",
+      "alternativas": [
+        "27 cm",
+        "26 cm",
+        "13,33 cm",
+        "14 cm",
+        "13 cm"
+      ],
+      "correta": 3,
+      "explicacao": "40 − 26 = 14 cm. Dica de mergulhador: perímetro menos os dois lados iguais.",
+      "comentarios": [
+        "Subtraiu só um lado.",
+        "É a soma dos lados iguais.",
+        "Dividiu 40 por 3.",
+        "",
+        "Supôs equilátero."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q08-v1",
+      "varianteDe": "mat-perimetros-q08",
+      "tema": "Figuras compostas",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um terreno de 25 m por 10 m vai ser cercado, deixando um portão de 4 m. Quantos metros de cerca são necessários?",
+      "alternativas": [
+        "31 m",
+        "70 m",
+        "74 m",
+        "250 m",
+        "66 m"
+      ],
+      "correta": 4,
+      "explicacao": "70 − 4 = 66 m. Dica de mergulhador: desconte o portão.",
+      "comentarios": [
+        "Usou meio perímetro.",
+        "Esqueceu o portão.",
+        "Somou o portão.",
+        "Calculou a área.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-perimetros-q09-v1",
+      "varianteDe": "mat-perimetros-q09",
+      "tema": "Figuras compostas",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "De um retângulo de 12 cm por 6 cm, recortou-se um retângulo de 3 cm por 2 cm num canto. Qual é o perímetro da figura?",
+      "alternativas": [
+        "36 cm",
+        "66 cm",
+        "26 cm",
+        "46 cm",
+        "18 cm"
+      ],
+      "correta": 0,
+      "explicacao": "2 × (12 + 6) = 36 cm. Dica de mergulhador: o contorno só muda de forma.",
+      "comentarios": [
+        "",
+        "Calculou a área.",
+        "Descontou os lados do recorte.",
+        "Somou os lados do recorte.",
+        "Calculou meio perímetro."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q10-v1",
+      "varianteDe": "mat-perimetros-q10",
+      "tema": "Figuras compostas",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Uma figura em escada tem 4 degraus de 25 cm de largura e 15 cm de altura, apoiada no chão e numa parede. Qual é o perímetro?",
+      "alternativas": [
+        "320 cm",
+        "6.000 cm",
+        "160 cm",
+        "280 cm",
+        "360 cm"
+      ],
+      "correta": 0,
+      "explicacao": "Largura: 100 cm; altura: 60 cm. Perímetro: 2 × 160 = 320 cm. Dica de mergulhador: some os degraus em cada direção.",
+      "comentarios": [
+        "",
+        "Calculou a área do envolvente.",
+        "Calculou meio perímetro.",
+        "Esqueceu um degrau.",
+        "Contou um degrau a mais."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q11-v1",
+      "varianteDe": "mat-perimetros-q11",
+      "tema": "Figuras compostas",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Uma moldura de 3 cm de largura contorna uma foto de 15 cm por 21 cm. Qual é o perímetro externo?",
+      "alternativas": [
+        "96 cm",
+        "120 cm",
+        "84 cm",
+        "567 cm",
+        "72 cm"
+      ],
+      "correta": 0,
+      "explicacao": "Externas: 21 × 27. Perímetro: 96 cm. Dica de mergulhador: some 2 vezes a largura da moldura.",
+      "comentarios": [
+        "",
+        "Somou 6 cm de cada lado.",
+        "Somou só 3 cm em cada medida.",
+        "Calculou a área.",
+        "Calculou o da foto."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q12-v1",
+      "varianteDe": "mat-perimetros-q12",
+      "tema": "Figuras compostas",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Uma cerca reta de 30 m terá estacas a cada 3 m, incluindo as duas pontas. Quantas estacas são necessárias?",
+      "alternativas": [
+        "11",
+        "9",
+        "90",
+        "10",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "30 ÷ 3 = 10 intervalos; com as pontas, 11 estacas. Dica de mergulhador: linha aberta tem uma estaca a mais que intervalos.",
+      "comentarios": [
+        "",
+        "Descontou as pontas.",
+        "Multiplicou.",
+        "Contou como contorno fechado.",
+        "Somou 2."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q13-v1",
+      "varianteDe": "mat-perimetros-q13",
+      "tema": "Figuras compostas",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Uma praça quadrada de 50 m de lado terá uma calçada de 3 m de largura por fora. Qual é o perímetro da borda externa da calçada?",
+      "alternativas": [
+        "224 m",
+        "200 m",
+        "176 m",
+        "236 m",
+        "212 m"
+      ],
+      "correta": 0,
+      "explicacao": "Lado externo: 50 + 6 = 56 m. Perímetro: 224 m. Dica de mergulhador: por fora, soma dos dois lados.",
+      "comentarios": [
+        "",
+        "É o perímetro da praça.",
+        "Descontou por dentro.",
+        "Somou 6 m de cada lado.",
+        "Somou 3 m em cada lado."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q14-v1",
+      "varianteDe": "mat-perimetros-q14",
+      "tema": "Figuras compostas",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Quatro quadradinhos de 3 cm de lado formam um quadrado maior, 2 por 2. Qual é o perímetro do quadrado maior?",
+      "alternativas": [
+        "18 cm",
+        "36 cm",
+        "48 cm",
+        "12 cm",
+        "24 cm"
+      ],
+      "correta": 4,
+      "explicacao": "O quadrado maior tem lado 6 cm: perímetro 24 cm. Dica de mergulhador: lados encostados não contam.",
+      "comentarios": [
+        "Contou 6 segmentos.",
+        "Contou 12 segmentos.",
+        "Somou os perímetros dos quatro.",
+        "Usou só um quadradinho.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-perimetros-q15-v1",
+      "varianteDe": "mat-perimetros-q15",
+      "tema": "Perímetro e área",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Com 36 m de cerca, qual destes retângulos cerca a maior área?",
+      "alternativas": [
+        "14 m × 4 m",
+        "16 m × 2 m",
+        "9 m × 9 m",
+        "10 m × 8 m",
+        "12 m × 6 m"
+      ],
+      "correta": 2,
+      "explicacao": "O quadrado 9 × 9 cerca 81 m². Dica de mergulhador: quanto mais perto do quadrado, maior a área.",
+      "comentarios": [
+        "Área de 56 m².",
+        "Área de 32 m².",
+        "",
+        "Área de 80 m².",
+        "Área de 72 m²."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q16-v1",
+      "varianteDe": "mat-perimetros-q16",
+      "tema": "Perímetro e área",
+      "dificuldade": "facil",
+      "fase": "mat-perimetros",
+      "enunciado": "Dois terrenos têm 24 m de perímetro: C mede 6 m × 6 m, e D mede 10 m × 2 m. Qual tem mais área?",
+      "alternativas": [
+        "D, porque é mais comprido",
+        "C, com 36 m² contra 20 m²",
+        "Depende da cerca",
+        "Os dois têm a mesma área",
+        "D, com 36 m²"
+      ],
+      "correta": 1,
+      "explicacao": "C: 36 m². D: 20 m². Dica de mergulhador: o quadrado aproveita melhor a cerca.",
+      "comentarios": [
+        "Comprimento não é área.",
+        "",
+        "A cerca é a mesma.",
+        "As áreas são diferentes.",
+        "Errou as contas."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q17-v1",
+      "varianteDe": "mat-perimetros-q17",
+      "tema": "Perímetro e área",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Um polígono de perímetro 40 cm é reduzido à metade em todas as medidas. Qual é o novo perímetro?",
+      "alternativas": [
+        "20 cm",
+        "80 cm",
+        "40 cm",
+        "10 cm",
+        "38 cm"
+      ],
+      "correta": 0,
+      "explicacao": "40 × 1/2 = 20 cm. Dica de mergulhador: perímetro segue a razão linear.",
+      "comentarios": [
+        "",
+        "Dobrou.",
+        "Achou que não muda.",
+        "Usou a razão ao quadrado.",
+        "Subtraiu 2."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q18-v1",
+      "varianteDe": "mat-perimetros-q18",
+      "tema": "Perímetro e área",
+      "dificuldade": "medio",
+      "fase": "mat-perimetros",
+      "enunciado": "Qual é o menor perímetro possível de um retângulo de lados inteiros e área 64 m²?",
+      "alternativas": [
+        "32 m",
+        "68 m",
+        "130 m",
+        "36 m",
+        "40 m"
+      ],
+      "correta": 0,
+      "explicacao": "O quadrado 8 × 8: perímetro 32 m. Dica de mergulhador: procure o quadrado.",
+      "comentarios": [
+        "",
+        "É o do 2 × 32.",
+        "É o do 1 × 64.",
+        "Errou a conta.",
+        "É o do 4 × 16."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q19-v1",
+      "varianteDe": "mat-perimetros-q19",
+      "tema": "Perímetro e área",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Com 40 m de tela, um terreno retangular será cercado encostado num muro, que dispensa um dos lados maiores. Qual é a maior área possível?",
+      "alternativas": [
+        "400 m²",
+        "200 m²",
+        "150 m²",
+        "300 m²",
+        "100 m²"
+      ],
+      "correta": 1,
+      "explicacao": "2x + y = 40; máximo com x = 10 e y = 20: 200 m². Dica de mergulhador: metade da tela no lado paralelo ao muro.",
+      "comentarios": [
+        "Usou um quadrado de 20 m.",
+        "",
+        "Usou 15 m × 10 m.",
+        "Errou a conta.",
+        "Usou um quadrado de 10 m."
+      ]
+    },
+    {
+      "id": "mat-perimetros-q20-v1",
+      "varianteDe": "mat-perimetros-q20",
+      "tema": "Perímetro e área",
+      "dificuldade": "dificil",
+      "fase": "mat-perimetros",
+      "enunciado": "Um retângulo tem perímetro de 34 m e área de 60 m². Quais são as suas medidas?",
+      "alternativas": [
+        "10 m e 7 m",
+        "30 m e 2 m",
+        "8,5 m e 8,5 m",
+        "12 m e 5 m",
+        "15 m e 4 m"
+      ],
+      "correta": 3,
+      "explicacao": "Soma 17 e produto 60: 12 e 5. Dica de mergulhador: teste os pares que dão o produto.",
+      "comentarios": [
+        "O perímetro bate, mas a área daria 70 m².",
+        "A área bate, mas o perímetro não.",
+        "O perímetro bate, mas a área não.",
+        "",
+        "A área bate, mas o perímetro daria 38 m."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q01-v1",
+      "varianteDe": "mat-areas-planas-q01",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um retângulo de 12 m por 7 m?",
+      "alternativas": [
+        "42 m²",
+        "19 m²",
+        "38 m²",
+        "84 m²",
+        "168 m²"
+      ],
+      "correta": 3,
+      "explicacao": "12 × 7 = 84 m². Dica de mergulhador: retângulo não divide por 2.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Somou.",
+        "Calculou o perímetro.",
+        "",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q02-v1",
+      "varianteDe": "mat-areas-planas-q02",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um piso de 5 m por 4 m será coberto com lajotas de 40 cm × 40 cm. Quantas são necessárias, sem perdas?",
+      "alternativas": [
+        "12,5",
+        "20",
+        "125",
+        "1.250",
+        "50"
+      ],
+      "correta": 2,
+      "explicacao": "20 ÷ 0,16 = 125. Dica de mergulhador: lajota em m² = 0,4 × 0,4.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Uma por m².",
+        "",
+        "Errou uma casa.",
+        "Usou lajotas de 0,4 m²."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q03-v1",
+      "varianteDe": "mat-areas-planas-q03",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um paralelogramo tem base de 12 cm, lado inclinado de 7 cm e altura de 4 cm. Qual é a área?",
+      "alternativas": [
+        "38 cm²",
+        "28 cm²",
+        "24 cm²",
+        "48 cm²",
+        "84 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "12 × 4 = 48 cm². Dica de mergulhador: altura é perpendicular à base.",
+      "comentarios": [
+        "Calculou o perímetro.",
+        "Multiplicou 7 por 4.",
+        "Dividiu por 2.",
+        "",
+        "Usou o lado inclinado."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q04-v1",
+      "varianteDe": "mat-areas-planas-q04",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Uma parede de 4 m por 3 m tem uma porta de 0,9 m × 2 m e uma janela de 1,5 m × 1 m. Qual é a área a pintar?",
+      "alternativas": [
+        "10,5 m²",
+        "8,7 m²",
+        "10,2 m²",
+        "15,3 m²",
+        "12 m²"
+      ],
+      "correta": 1,
+      "explicacao": "12 − 1,8 − 1,5 = 8,7 m². Dica de mergulhador: parede menos aberturas.",
+      "comentarios": [
+        "Descontou só a janela.",
+        "",
+        "Descontou só a porta.",
+        "Somou.",
+        "Não descontou."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q05-v1",
+      "varianteDe": "mat-areas-planas-q05",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um quadrado tem área de 81 m². Qual é o seu perímetro?",
+      "alternativas": [
+        "18 m",
+        "36 m",
+        "324 m",
+        "81 m",
+        "9 m"
+      ],
+      "correta": 1,
+      "explicacao": "Lado 9 m; perímetro 36 m. Dica de mergulhador: raiz e depois 4 vezes.",
+      "comentarios": [
+        "Somou dois lados.",
+        "",
+        "Multiplicou a área.",
+        "Repetiu a área.",
+        "É o lado."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q06-v1",
+      "varianteDe": "mat-areas-planas-q06",
+      "tema": "Retângulo e paralelogramo",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um terreno de 40 m por 25 m é cortado por duas ruas de 3 m de largura, uma paralela a cada lado. Qual é a área que sobra?",
+      "alternativas": [
+        "1.000 m²",
+        "880 m²",
+        "805 m²",
+        "814 m²",
+        "850 m²"
+      ],
+      "correta": 3,
+      "explicacao": "(40 − 3) × (25 − 3) = 37 × 22 = 814 m². Dica de mergulhador: junte os pedaços que sobram.",
+      "comentarios": [
+        "Não descontou.",
+        "Descontou só uma rua.",
+        "Descontou o cruzamento duas vezes.",
+        "",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q07-v1",
+      "varianteDe": "mat-areas-planas-q07",
+      "tema": "Triângulos",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um triângulo de base 14 cm e altura 5 cm?",
+      "alternativas": [
+        "35 cm²",
+        "38 cm²",
+        "70 cm²",
+        "19 cm²",
+        "17,5 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "14 × 5 ÷ 2 = 35 cm². Dica de mergulhador: divida por 2.",
+      "comentarios": [
+        "",
+        "Calculou outra medida.",
+        "Esqueceu de dividir.",
+        "Somou.",
+        "Dividiu por 4."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q08-v1",
+      "varianteDe": "mat-areas-planas-q08",
+      "tema": "Triângulos",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Os catetos de um triângulo retângulo medem 5 cm e 12 cm. Qual é a área?",
+      "alternativas": [
+        "60 cm²",
+        "30 cm²",
+        "17 cm²",
+        "13 cm²",
+        "65 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "5 × 12 ÷ 2 = 30 cm². Dica de mergulhador: catetos fazem base e altura.",
+      "comentarios": [
+        "Esqueceu de dividir.",
+        "",
+        "Somou.",
+        "Calculou a hipotenusa.",
+        "Usou a hipotenusa."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q09-v1",
+      "varianteDe": "mat-areas-planas-q09",
+      "tema": "Triângulos",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um triângulo tem vértices em (0, 0), (6, 0) e (2, 7). Qual é a área?",
+      "alternativas": [
+        "42",
+        "21",
+        "7",
+        "18",
+        "14"
+      ],
+      "correta": 1,
+      "explicacao": "Base 6, altura 7: 21. Dica de mergulhador: altura é a distância até a base.",
+      "comentarios": [
+        "Esqueceu de dividir.",
+        "",
+        "Usou base 2.",
+        "Usou altura 6.",
+        "Usou base 4."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q10-v1",
+      "varianteDe": "mat-areas-planas-q10",
+      "tema": "Triângulos",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um triângulo tem base de 15 cm e área de 60 cm². Qual é a altura?",
+      "alternativas": [
+        "900 cm",
+        "4 cm",
+        "8 cm",
+        "16 cm",
+        "45 cm"
+      ],
+      "correta": 2,
+      "explicacao": "h = 120 ÷ 15 = 8 cm. Dica de mergulhador: área × 2 ÷ base.",
+      "comentarios": [
+        "Multiplicou.",
+        "Esqueceu de dobrar.",
+        "",
+        "Dobrou duas vezes.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q11-v1",
+      "varianteDe": "mat-areas-planas-q11",
+      "tema": "Triângulos",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é, aproximadamente, a área de um triângulo equilátero de lado 6 cm?",
+      "alternativas": [
+        "5,2 cm²",
+        "18 cm²",
+        "36 cm²",
+        "31,2 cm²",
+        "15,6 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "36 × 1,732 ÷ 4 ≈ 15,6 cm². Dica de mergulhador: ℓ²√3/4.",
+      "comentarios": [
+        "Calculou a altura.",
+        "Fez lado × lado ÷ 2.",
+        "Calculou um quadrado.",
+        "Esqueceu de dividir por 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q12-v1",
+      "varianteDe": "mat-areas-planas-q12",
+      "tema": "Triângulos",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um telhado tem duas águas de 10 m por 6 m, e os oitões são triângulos de base 10 m e altura 4 m. Qual é a área total das águas e dos oitões?",
+      "alternativas": [
+        "160 m²",
+        "120 m²",
+        "80 m²",
+        "140 m²",
+        "200 m²"
+      ],
+      "correta": 0,
+      "explicacao": "2 × 60 + 2 × 20 = 160 m². Dica de mergulhador: triângulo divide por 2.",
+      "comentarios": [
+        "",
+        "Esqueceu os oitões.",
+        "Contou só uma água e um oitão.",
+        "Contou um oitão só.",
+        "Esqueceu de dividir os triângulos."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q13-v1",
+      "varianteDe": "mat-areas-planas-q13",
+      "tema": "Triângulos",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um triângulo isósceles de lados 10 cm, 10 cm e 12 cm?",
+      "alternativas": [
+        "96 cm²",
+        "48 cm²",
+        "60 cm²",
+        "36 cm²",
+        "120 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Altura: √(100 − 36) = 8 cm. Área: 12 × 8 ÷ 2 = 48 cm². Dica de mergulhador: metade da base e Pitágoras.",
+      "comentarios": [
+        "Esqueceu de dividir.",
+        "",
+        "Usou o lado 10 como altura.",
+        "Errou a altura.",
+        "Usou 10 como altura e não dividiu."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q14-v1",
+      "varianteDe": "mat-areas-planas-q14",
+      "tema": "Trapézio e losango",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um trapézio de bases 12 cm e 8 cm e altura 5 cm?",
+      "alternativas": [
+        "480 cm²",
+        "40 cm²",
+        "25 cm²",
+        "100 cm²",
+        "50 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "(12 + 8) × 5 ÷ 2 = 50 cm². Dica de mergulhador: some as bases, multiplique, divida por 2.",
+      "comentarios": [
+        "Multiplicou tudo.",
+        "Usou só a base menor.",
+        "Somou tudo.",
+        "Esqueceu de dividir.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q15-v1",
+      "varianteDe": "mat-areas-planas-q15",
+      "tema": "Trapézio e losango",
+      "dificuldade": "facil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Qual é a área de um losango de diagonais 10 cm e 4 cm?",
+      "alternativas": [
+        "7 cm²",
+        "40 cm²",
+        "14 cm²",
+        "25 cm²",
+        "20 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "10 × 4 ÷ 2 = 20 cm². Dica de mergulhador: o losango é metade do retângulo das diagonais.",
+      "comentarios": [
+        "Fez a média.",
+        "Esqueceu de dividir.",
+        "Somou.",
+        "Calculou outra medida.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q16-v1",
+      "varianteDe": "mat-areas-planas-q16",
+      "tema": "Trapézio e losango",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um trapézio tem área de 90 cm² e bases de 20 cm e 10 cm. Qual é a altura?",
+      "alternativas": [
+        "9 cm",
+        "6 cm",
+        "4,5 cm",
+        "3 cm",
+        "12 cm"
+      ],
+      "correta": 1,
+      "explicacao": "Média das bases: 15. h = 90 ÷ 15 = 6 cm. Dica de mergulhador: área ÷ média das bases.",
+      "comentarios": [
+        "Dividiu 90 por 10.",
+        "",
+        "Dividiu 90 por 20.",
+        "Esqueceu de dobrar.",
+        "Dobrou duas vezes."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q17-v1",
+      "varianteDe": "mat-areas-planas-q17",
+      "tema": "Trapézio e losango",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um losango tem lado de 13 cm e diagonal menor de 10 cm. Qual é a área?",
+      "alternativas": [
+        "60 cm²",
+        "130 cm²",
+        "240 cm²",
+        "120 cm²",
+        "65 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Metade da maior: √(169 − 25) = 12; diagonal maior 24. Área: 24 × 10 ÷ 2 = 120 cm². Dica de mergulhador: metades das diagonais formam um triângulo retângulo com o lado.",
+      "comentarios": [
+        "Usou a metade da diagonal maior.",
+        "Multiplicou lado por diagonal.",
+        "Esqueceu de dividir.",
+        "",
+        "Dividiu por 2 o produto errado."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q18-v1",
+      "varianteDe": "mat-areas-planas-q18",
+      "tema": "Trapézio e losango",
+      "dificuldade": "medio",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um terreno em forma de trapézio tem frente de 15 m, fundo de 25 m e profundidade de 30 m. O metro quadrado custa R$ 200. Quanto vale?",
+      "alternativas": [
+        "R$ 240.000",
+        "R$ 120.000",
+        "R$ 150.000",
+        "R$ 6.000",
+        "R$ 90.000"
+      ],
+      "correta": 1,
+      "explicacao": "Área: 40 × 30 ÷ 2 = 600 m². Valor: R$ 120.000. Dica de mergulhador: trapézio, média das bases.",
+      "comentarios": [
+        "Esqueceu de dividir.",
+        "",
+        "Usou só o fundo.",
+        "Multiplicou profundidade por preço.",
+        "Usou só a frente."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q19-v1",
+      "varianteDe": "mat-areas-planas-q19",
+      "tema": "Trapézio e losango",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Um trapézio retângulo tem bases de 15 cm e 7 cm, e o lado oblíquo mede 10 cm. Qual é a área?",
+      "alternativas": [
+        "66 cm²",
+        "132 cm²",
+        "80 cm²",
+        "33 cm²",
+        "110 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Diferença das bases: 8; altura: √(100 − 64) = 6. Área: 22 × 6 ÷ 2 = 66 cm². Dica de mergulhador: altura pelo triângulo do canto.",
+      "comentarios": [
+        "",
+        "Esqueceu de dividir.",
+        "Errou a altura.",
+        "Errou a conta.",
+        "Usou o lado oblíquo como altura."
+      ]
+    },
+    {
+      "id": "mat-areas-planas-q20-v1",
+      "varianteDe": "mat-areas-planas-q20",
+      "tema": "Trapézio e losango",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-planas",
+      "enunciado": "Num retângulo de 12 cm por 8 cm, ligam-se os pontos médios dos lados, formando um losango. Qual é a área do losango?",
+      "alternativas": [
+        "48 cm²",
+        "72 cm²",
+        "24 cm²",
+        "40 cm²",
+        "96 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "As diagonais do losango medem 12 e 8: 12 × 8 ÷ 2 = 48 cm². Dica de mergulhador: metade do retângulo.",
+      "comentarios": [
+        "",
+        "Tirou só um canto.",
+        "Usou um quarto.",
+        "Calculou o perímetro do retângulo.",
+        "É a área do retângulo."
+      ]
+    },
+    {
+      "id": "mat-circulo-q01-v1",
+      "varianteDe": "mat-circulo-q01",
+      "tema": "Comprimento",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é o comprimento de uma circunferência de raio 10 cm? Use π ≈ 3,14.",
+      "alternativas": [
+        "20 cm",
+        "31,4 cm",
+        "314 cm",
+        "125,6 cm",
+        "62,8 cm"
+      ],
+      "correta": 4,
+      "explicacao": "2 × 3,14 × 10 = 62,8 cm. Dica de mergulhador: 2 vezes π vezes o raio.",
+      "comentarios": [
+        "Calculou o diâmetro.",
+        "Usou πr.",
+        "Calculou a área.",
+        "Usou o diâmetro como raio.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-circulo-q02-v1",
+      "varianteDe": "mat-circulo-q02",
+      "tema": "Comprimento",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é o comprimento de uma circunferência de diâmetro 50 cm? Use π ≈ 3.",
+      "alternativas": [
+        "150 cm",
+        "75 cm",
+        "100 cm",
+        "1.875 cm",
+        "300 cm"
+      ],
+      "correta": 0,
+      "explicacao": "3 × 50 = 150 cm. Dica de mergulhador: comprimento = π × diâmetro.",
+      "comentarios": [
+        "",
+        "Usou π vezes o raio.",
+        "Dobrou o diâmetro.",
+        "Calculou a área.",
+        "Usou o diâmetro como raio."
+      ]
+    },
+    {
+      "id": "mat-circulo-q03-v1",
+      "varianteDe": "mat-circulo-q03",
+      "tema": "Comprimento",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "O diâmetro de uma roda mede 60 cm. Quanto mede o raio?",
+      "alternativas": [
+        "15 cm",
+        "120 cm",
+        "20 cm",
+        "30 cm",
+        "60 cm"
+      ],
+      "correta": 3,
+      "explicacao": "Raio = diâmetro ÷ 2 = 30 cm. Dica de mergulhador: raio vai do centro à borda.",
+      "comentarios": [
+        "Dividiu por 4.",
+        "Dobrou.",
+        "Dividiu por 3.",
+        "",
+        "Repetiu."
+      ]
+    },
+    {
+      "id": "mat-circulo-q04-v1",
+      "varianteDe": "mat-circulo-q04",
+      "tema": "Comprimento",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Uma roda de raio 40 cm gira sem deslizar. Quantas voltas ela dá para percorrer 720 m? Use π ≈ 3.",
+      "alternativas": [
+        "150",
+        "30",
+        "600",
+        "300",
+        "3.000"
+      ],
+      "correta": 3,
+      "explicacao": "Uma volta: 2 × 3 × 0,4 = 2,4 m. 720 ÷ 2,4 = 300. Dica de mergulhador: converta o raio para metros.",
+      "comentarios": [
+        "Usou o diâmetro como raio.",
+        "Errou a conversão para o outro lado.",
+        "Usou π vezes o raio.",
+        "",
+        "Errou a conversão."
+      ]
+    },
+    {
+      "id": "mat-circulo-q05-v1",
+      "varianteDe": "mat-circulo-q05",
+      "tema": "Comprimento",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Uma pista circular tem raio de 25 m. Quantas voltas é preciso dar para correr 2,25 km? Use π ≈ 3.",
+      "alternativas": [
+        "7,5",
+        "90",
+        "30",
+        "15",
+        "45"
+      ],
+      "correta": 3,
+      "explicacao": "Uma volta: 150 m. 2.250 ÷ 150 = 15. Dica de mergulhador: converta km para m.",
+      "comentarios": [
+        "Usou o diâmetro como raio.",
+        "Dividiu 2.250 por 25.",
+        "Usou π vezes o raio.",
+        "",
+        "Dividiu 2.250 por 50."
+      ]
+    },
+    {
+      "id": "mat-circulo-q06-v1",
+      "varianteDe": "mat-circulo-q06",
+      "tema": "Comprimento",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Um arame de 94,2 cm é dobrado em forma de circunferência. Qual é o raio? Use π ≈ 3,14.",
+      "alternativas": [
+        "30 cm",
+        "47,1 cm",
+        "15 cm",
+        "7,5 cm",
+        "5,48 cm"
+      ],
+      "correta": 2,
+      "explicacao": "94,2 ÷ 6,28 = 15 cm. Dica de mergulhador: divida por 2π.",
+      "comentarios": [
+        "Calculou o diâmetro.",
+        "Dividiu só por 2.",
+        "",
+        "Dividiu por 4π.",
+        "Tratou como área."
+      ]
+    },
+    {
+      "id": "mat-circulo-q07-v1",
+      "varianteDe": "mat-circulo-q07",
+      "tema": "Comprimento",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "Duas polias estão ligadas por uma correia, com raios de 6 cm e 18 cm. Quando a maior dá 12 voltas, quantas dá a menor?",
+      "alternativas": [
+        "36",
+        "24",
+        "12",
+        "3",
+        "4"
+      ],
+      "correta": 0,
+      "explicacao": "18 × 12 = 6 × n, logo n = 36. Dica de mergulhador: raio × voltas é constante.",
+      "comentarios": [
+        "",
+        "Somou 12.",
+        "Achou que giram igual.",
+        "Dividiu os raios.",
+        "Inverteu a relação."
+      ]
+    },
+    {
+      "id": "mat-circulo-q08-v1",
+      "varianteDe": "mat-circulo-q08",
+      "tema": "Área do círculo",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é a área de um círculo de raio 4 m? Use π ≈ 3.",
+      "alternativas": [
+        "96 m²",
+        "16 m²",
+        "12 m²",
+        "24 m²",
+        "48 m²"
+      ],
+      "correta": 4,
+      "explicacao": "3 × 16 = 48 m². Dica de mergulhador: raio ao quadrado, depois π.",
+      "comentarios": [
+        "Usou 2πr².",
+        "Esqueceu o π.",
+        "Usou πr.",
+        "Calculou o comprimento.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-circulo-q09-v1",
+      "varianteDe": "mat-circulo-q09",
+      "tema": "Área do círculo",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Se o raio de um círculo triplica, o que acontece com a área?",
+      "alternativas": [
+        "Fica 9 vezes maior",
+        "Não muda",
+        "Fica 27 vezes maior",
+        "Fica 6 vezes maior",
+        "Triplica"
+      ],
+      "correta": 0,
+      "explicacao": "(3r)² = 9r². Dica de mergulhador: fator ao quadrado.",
+      "comentarios": [
+        "",
+        "O raio mudou.",
+        "Seria o cubo.",
+        "Multiplicou por 2.",
+        "A área depende do quadrado."
+      ]
+    },
+    {
+      "id": "mat-circulo-q10-v1",
+      "varianteDe": "mat-circulo-q10",
+      "tema": "Área do círculo",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Uma pizza tem 35 cm de diâmetro, e outra, 25 cm. Quantas vezes a área da maior é maior que a da menor?",
+      "alternativas": [
+        "1,96 vez",
+        "10 vezes",
+        "1,4 vez",
+        "2,74 vezes",
+        "1 vez"
+      ],
+      "correta": 0,
+      "explicacao": "(35 ÷ 25)² = 1,4² = 1,96. Dica de mergulhador: razão ao quadrado.",
+      "comentarios": [
+        "",
+        "Usou a diferença.",
+        "Comparou diâmetros.",
+        "Elevou ao cubo.",
+        "Achou iguais."
+      ]
+    },
+    {
+      "id": "mat-circulo-q11-v1",
+      "varianteDe": "mat-circulo-q11",
+      "tema": "Área do círculo",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é a área de um círculo de diâmetro 20 cm? Use π ≈ 3.",
+      "alternativas": [
+        "400 cm²",
+        "60 cm²",
+        "1.200 cm²",
+        "100 cm²",
+        "300 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "Raio 10; área 3 × 100 = 300 cm². Dica de mergulhador: metade do diâmetro, ao quadrado.",
+      "comentarios": [
+        "Usou o diâmetro e esqueceu o π.",
+        "Calculou o comprimento.",
+        "Usou o diâmetro como raio.",
+        "Esqueceu o π.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-circulo-q12-v1",
+      "varianteDe": "mat-circulo-q12",
+      "tema": "Área do círculo",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Um pivô de irrigação rega um círculo de 300 m de raio. Qual é a área regada, em hectares? Use π ≈ 3.",
+      "alternativas": [
+        "27 ha",
+        "180 ha",
+        "270 ha",
+        "0,27 ha",
+        "2,7 ha"
+      ],
+      "correta": 0,
+      "explicacao": "3 × 90.000 = 270.000 m² = 27 ha. Dica de mergulhador: divida os m² por 10.000.",
+      "comentarios": [
+        "",
+        "Usou o comprimento.",
+        "Errou a conversão.",
+        "Dividiu por 1.000.000.",
+        "Errou a conversão para o outro lado."
+      ]
+    },
+    {
+      "id": "mat-circulo-q13-v1",
+      "varianteDe": "mat-circulo-q13",
+      "tema": "Área do círculo",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "Um quadrado de lado 10 cm tem um círculo inscrito, que encosta nos quatro lados. Qual é a área do quadrado fora do círculo? Use π ≈ 3.",
+      "alternativas": [
+        "200 cm²",
+        "75 cm²",
+        "25 cm²",
+        "70 cm²",
+        "100 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Raio 5; círculo 75 cm². Fora: 100 − 75 = 25 cm². Dica de mergulhador: meio lado é o raio.",
+      "comentarios": [
+        "Usou o lado como raio.",
+        "É a área do círculo.",
+        "",
+        "Subtraiu o comprimento.",
+        "É a área do quadrado."
+      ]
+    },
+    {
+      "id": "mat-circulo-q14-v1",
+      "varianteDe": "mat-circulo-q14",
+      "tema": "Área do círculo",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "Um quadrado de lado 10 cm tem um círculo inscrito, e nesse círculo está inscrito um quadrado menor. Qual é a área do quadrado menor?",
+      "alternativas": [
+        "50 cm²",
+        "100 cm²",
+        "75 cm²",
+        "25 cm²",
+        "70,7 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "A diagonal do quadrado menor é o diâmetro, 10 cm. Área: 10² ÷ 2 = 50 cm². Dica de mergulhador: área do quadrado = d² ÷ 2.",
+      "comentarios": [
+        "",
+        "É a área do maior.",
+        "Usou a área do círculo com π ≈ 3.",
+        "Usou um quarto.",
+        "Usou o lado vezes √2 × 5."
+      ]
+    },
+    {
+      "id": "mat-circulo-q15-v1",
+      "varianteDe": "mat-circulo-q15",
+      "tema": "Setores e coroas",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Um círculo tem área de 360 cm². Qual é a área de um setor de 60°?",
+      "alternativas": [
+        "36 cm²",
+        "120 cm²",
+        "6 cm²",
+        "60 cm²",
+        "180 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "60° ÷ 360° = 1/6. 360 ÷ 6 = 60 cm². Dica de mergulhador: setor é fração do todo.",
+      "comentarios": [
+        "Usou 10%.",
+        "Usou um terço.",
+        "Errou a fração.",
+        "",
+        "Usou meio círculo."
+      ]
+    },
+    {
+      "id": "mat-circulo-q16-v1",
+      "varianteDe": "mat-circulo-q16",
+      "tema": "Setores e coroas",
+      "dificuldade": "facil",
+      "fase": "mat-circulo",
+      "enunciado": "Uma circunferência tem 36 cm de comprimento. Quanto mede um arco de 120°?",
+      "alternativas": [
+        "9 cm",
+        "36 cm",
+        "12 cm",
+        "18 cm",
+        "120 cm"
+      ],
+      "correta": 2,
+      "explicacao": "120° ÷ 360° = 1/3: 12 cm. Dica de mergulhador: mesma fração do ângulo.",
+      "comentarios": [
+        "Usou um quarto.",
+        "Usou a volta inteira.",
+        "",
+        "Usou meia volta.",
+        "Usou o ângulo."
+      ]
+    },
+    {
+      "id": "mat-circulo-q17-v1",
+      "varianteDe": "mat-circulo-q17",
+      "tema": "Setores e coroas",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Um setor de 45° pertence a um círculo de raio 8 cm. Qual é a área do setor? Use π ≈ 3.",
+      "alternativas": [
+        "48 cm²",
+        "45 cm²",
+        "6 cm²",
+        "192 cm²",
+        "24 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "Círculo: 3 × 64 = 192. Fração 1/8: 24 cm². Dica de mergulhador: 45° é um oitavo da volta.",
+      "comentarios": [
+        "Usou um quarto.",
+        "Usou o ângulo.",
+        "Calculou o arco.",
+        "É o círculo inteiro.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-circulo-q18-v1",
+      "varianteDe": "mat-circulo-q18",
+      "tema": "Setores e coroas",
+      "dificuldade": "medio",
+      "fase": "mat-circulo",
+      "enunciado": "Qual é a área da coroa entre dois círculos de mesmo centro, com raios de 10 cm e 6 cm? Use π ≈ 3.",
+      "alternativas": [
+        "24 cm²",
+        "48 cm²",
+        "300 cm²",
+        "408 cm²",
+        "192 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "3 × (100 − 36) = 192 cm². Dica de mergulhador: R² − r², não (R − r)².",
+      "comentarios": [
+        "Usou a diferença dos comprimentos.",
+        "Usou π(R − r)².",
+        "Calculou só o maior.",
+        "Somou as áreas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-circulo-q19-v1",
+      "varianteDe": "mat-circulo-q19",
+      "tema": "Setores e coroas",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "O ponteiro dos minutos de um relógio mede 9 cm. Que distância a ponta percorre em 40 minutos? Use π ≈ 3.",
+      "alternativas": [
+        "36 cm",
+        "18 cm",
+        "360 cm",
+        "54 cm",
+        "162 cm"
+      ],
+      "correta": 0,
+      "explicacao": "40 minutos = 2/3 de volta. Arco: (2/3) × 2 × 3 × 9 = 36 cm. Dica de mergulhador: minutos ÷ 60 dão a fração.",
+      "comentarios": [
+        "",
+        "Usou um terço da volta.",
+        "Multiplicou 40 por 9.",
+        "Calculou a volta inteira.",
+        "Calculou a área do setor."
+      ]
+    },
+    {
+      "id": "mat-circulo-q20-v1",
+      "varianteDe": "mat-circulo-q20",
+      "tema": "Setores e coroas",
+      "dificuldade": "dificil",
+      "fase": "mat-circulo",
+      "enunciado": "Uma pista tem dois trechos retos de 80 m e duas curvas semicirculares de raio 20 m. Qual é o comprimento de uma volta? Use π ≈ 3,14.",
+      "alternativas": [
+        "411,2 m",
+        "200 m",
+        "222,8 m",
+        "285,6 m",
+        "160 m"
+      ],
+      "correta": 3,
+      "explicacao": "Curvas: 2 × 3,14 × 20 = 125,6 m. Total: 160 + 125,6 = 285,6 m. Dica de mergulhador: retas + uma circunferência.",
+      "comentarios": [
+        "Contou cada curva como circunferência inteira.",
+        "Somou às retas só os dois raios.",
+        "Contou só uma curva.",
+        "",
+        "Esqueceu as curvas."
+      ]
     }
   ],
   "pares": [
@@ -47259,6 +50382,78 @@
       "tema": "Revisão do módulo: figuras planas",
       "termo": "Giro mínimo",
       "definicao": "360° ÷ n"
+    },
+    {
+      "id": "mat-perimetros-par-01",
+      "tema": "Perímetros",
+      "termo": "Perímetro",
+      "definicao": "Comprimento do contorno"
+    },
+    {
+      "id": "mat-perimetros-par-02",
+      "tema": "Perímetros",
+      "termo": "Retângulo envolvente",
+      "definicao": "Perímetro de figuras em escada"
+    },
+    {
+      "id": "mat-perimetros-par-03",
+      "tema": "Perímetros",
+      "termo": "Maior área",
+      "definicao": "Quadrado, para o mesmo perímetro"
+    },
+    {
+      "id": "mat-perimetros-par-04",
+      "tema": "Perímetros",
+      "termo": "Contorno fechado",
+      "definicao": "Estacas = perímetro ÷ espaçamento"
+    },
+    {
+      "id": "mat-areas-planas-par-01",
+      "tema": "Áreas de figuras planas",
+      "termo": "Altura perpendicular",
+      "definicao": "Forma ângulo reto com a base"
+    },
+    {
+      "id": "mat-areas-planas-par-02",
+      "tema": "Áreas de figuras planas",
+      "termo": "Média das bases",
+      "definicao": "Base do cálculo do trapézio"
+    },
+    {
+      "id": "mat-areas-planas-par-03",
+      "tema": "Áreas de figuras planas",
+      "termo": "Diagonal maior × diagonal menor ÷ 2",
+      "definicao": "Área do losango"
+    },
+    {
+      "id": "mat-areas-planas-par-04",
+      "tema": "Áreas de figuras planas",
+      "termo": "Base × altura ÷ 2",
+      "definicao": "Área do triângulo"
+    },
+    {
+      "id": "mat-circulo-par-01",
+      "tema": "Círculo e circunferência",
+      "termo": "Comprimento da circunferência",
+      "definicao": "2πr"
+    },
+    {
+      "id": "mat-circulo-par-02",
+      "tema": "Círculo e circunferência",
+      "termo": "Área do círculo",
+      "definicao": "πr²"
+    },
+    {
+      "id": "mat-circulo-par-03",
+      "tema": "Círculo e circunferência",
+      "termo": "Setor de 90°",
+      "definicao": "Um quarto do círculo"
+    },
+    {
+      "id": "mat-circulo-par-04",
+      "tema": "Círculo e circunferência",
+      "termo": "Coroa circular",
+      "definicao": "π(R² − r²)"
     }
   ],
   "verdadeiroFalso": [
@@ -48171,6 +51366,69 @@
       "afirmacao": "Polígono regular com interno de 160° tem 18 lados.",
       "verdadeira": true,
       "explicacao": "Externo 20°."
+    },
+    {
+      "id": "mat-perimetros-vf-01",
+      "tema": "Perímetros",
+      "afirmacao": "Tirar um retângulo do canto de outro não muda o perímetro.",
+      "verdadeira": true,
+      "explicacao": "Os lados novos substituem os retirados."
+    },
+    {
+      "id": "mat-perimetros-vf-02",
+      "tema": "Perímetros",
+      "afirmacao": "Dois terrenos com o mesmo perímetro têm a mesma área.",
+      "verdadeira": false,
+      "explicacao": "Um quadrado tem mais área."
+    },
+    {
+      "id": "mat-perimetros-vf-03",
+      "tema": "Perímetros",
+      "afirmacao": "Ampliar uma figura 3 vezes triplica o perímetro.",
+      "verdadeira": true,
+      "explicacao": "Perímetro segue a razão linear."
+    },
+    {
+      "id": "mat-areas-planas-vf-01",
+      "tema": "Áreas de figuras planas",
+      "afirmacao": "Um piso de 12 m² recebe 48 lajotas de 50 cm × 50 cm.",
+      "verdadeira": true,
+      "explicacao": "12 ÷ 0,25."
+    },
+    {
+      "id": "mat-areas-planas-vf-02",
+      "tema": "Áreas de figuras planas",
+      "afirmacao": "A área de um paralelogramo é base vezes o lado inclinado.",
+      "verdadeira": false,
+      "explicacao": "É base vezes a altura perpendicular."
+    },
+    {
+      "id": "mat-areas-planas-vf-03",
+      "tema": "Áreas de figuras planas",
+      "afirmacao": "Um losango de diagonais 8 e 6 tem área 24.",
+      "verdadeira": true,
+      "explicacao": "8 × 6 ÷ 2."
+    },
+    {
+      "id": "mat-circulo-vf-01",
+      "tema": "Círculo e circunferência",
+      "afirmacao": "Dobrar o raio quadruplica a área do círculo.",
+      "verdadeira": true,
+      "explicacao": "(2r)² = 4r²."
+    },
+    {
+      "id": "mat-circulo-vf-02",
+      "tema": "Círculo e circunferência",
+      "afirmacao": "A área da coroa entre raios 5 e 3 é π × 2².",
+      "verdadeira": false,
+      "explicacao": "É π × (25 − 9)."
+    },
+    {
+      "id": "mat-circulo-vf-03",
+      "tema": "Círculo e circunferência",
+      "afirmacao": "Polias ligadas por correia têm raio × voltas igual.",
+      "verdadeira": true,
+      "explicacao": "A correia percorre o mesmo comprimento."
     }
   ],
   "sequencias": [
@@ -48702,6 +51960,42 @@
         "Conferir se o resultado faz sentido na figura"
       ],
       "explicacao": "Desenho primeiro, conta depois."
+    },
+    {
+      "id": "mat-perimetros-seq-01",
+      "tema": "Perímetros",
+      "titulo": "Calcular quantos metros de cerca comprar",
+      "itens": [
+        "Medir os lados do terreno",
+        "Somar para obter o perímetro",
+        "Descontar portões",
+        "Arredondar para cima se a cerca vier em rolos"
+      ],
+      "explicacao": "Portão não leva cerca."
+    },
+    {
+      "id": "mat-areas-planas-seq-01",
+      "tema": "Áreas de figuras planas",
+      "titulo": "Calcular a área de um trapézio retângulo com lado oblíquo dado",
+      "itens": [
+        "Subtrair as bases",
+        "Usar Pitágoras com o lado oblíquo para achar a altura",
+        "Somar as bases e multiplicar pela altura",
+        "Dividir por 2"
+      ],
+      "explicacao": "A altura pode estar escondida."
+    },
+    {
+      "id": "mat-circulo-seq-01",
+      "tema": "Círculo e circunferência",
+      "titulo": "Calcular quantas voltas uma roda dá",
+      "itens": [
+        "Achar o raio em metros",
+        "Calcular o comprimento 2πr",
+        "Converter a distância para metros",
+        "Dividir a distância pelo comprimento"
+      ],
+      "explicacao": "Mesma unidade sempre."
     }
   ],
   "adivinhas": [
@@ -49336,6 +52630,48 @@
         "Estuda formas e medidas",
         "Usa ângulos e lados",
         "Vem do grego, medir a terra"
+      ]
+    },
+    {
+      "id": "mat-perimetros-adv-01",
+      "tema": "Perímetros",
+      "dificuldade": "medio",
+      "resposta": "Perímetro",
+      "aceitas": [
+        "perimetro"
+      ],
+      "dicas": [
+        "Medida do contorno",
+        "Soma dos lados",
+        "Usada em cercas e rodapés"
+      ]
+    },
+    {
+      "id": "mat-areas-planas-adv-01",
+      "tema": "Áreas de figuras planas",
+      "dificuldade": "medio",
+      "resposta": "Área",
+      "aceitas": [
+        "area"
+      ],
+      "dicas": [
+        "Mede a superfície",
+        "Dada em unidades ao quadrado",
+        "Base vezes altura"
+      ]
+    },
+    {
+      "id": "mat-circulo-adv-01",
+      "tema": "Círculo e circunferência",
+      "dificuldade": "medio",
+      "resposta": "Circunferência",
+      "aceitas": [
+        "circunferencia"
+      ],
+      "dicas": [
+        "Linha a igual distância do centro",
+        "Seu comprimento é 2πr",
+        "Contorno do círculo"
       ]
     }
   ],
@@ -50377,6 +53713,78 @@
       "tema": "Matemática",
       "palavra": "Régua",
       "dica": "Instrumento para traçar retas"
+    },
+    {
+      "id": "mat-perimetros-pal-01",
+      "tema": "Matemática",
+      "palavra": "Cerca",
+      "dica": "Contorna o terreno"
+    },
+    {
+      "id": "mat-perimetros-pal-02",
+      "tema": "Matemática",
+      "palavra": "Rodapé",
+      "dica": "Acompanha o contorno da sala"
+    },
+    {
+      "id": "mat-perimetros-pal-03",
+      "tema": "Matemática",
+      "palavra": "Moldura",
+      "dica": "Contorna a foto"
+    },
+    {
+      "id": "mat-perimetros-pal-04",
+      "tema": "Matemática",
+      "palavra": "Estaca",
+      "dica": "Sustenta a cerca"
+    },
+    {
+      "id": "mat-areas-planas-pal-01",
+      "tema": "Matemática",
+      "palavra": "Lajota",
+      "dica": "Peça de piso"
+    },
+    {
+      "id": "mat-areas-planas-pal-02",
+      "tema": "Matemática",
+      "palavra": "Terreno",
+      "dica": "Área de terra à venda"
+    },
+    {
+      "id": "mat-areas-planas-pal-03",
+      "tema": "Matemática",
+      "palavra": "Losango",
+      "dica": "Figura das pipas"
+    },
+    {
+      "id": "mat-areas-planas-pal-04",
+      "tema": "Matemática",
+      "palavra": "Pintura",
+      "dica": "Cobre a área da parede"
+    },
+    {
+      "id": "mat-circulo-pal-01",
+      "tema": "Matemática",
+      "palavra": "Raio",
+      "dica": "Do centro até a borda"
+    },
+    {
+      "id": "mat-circulo-pal-02",
+      "tema": "Matemática",
+      "palavra": "Pizza",
+      "dica": "Círculo fatiado em setores"
+    },
+    {
+      "id": "mat-circulo-pal-03",
+      "tema": "Matemática",
+      "palavra": "Roda",
+      "dica": "Gira percorrendo 2πr"
+    },
+    {
+      "id": "mat-circulo-pal-04",
+      "tema": "Matemática",
+      "palavra": "Arco",
+      "dica": "Pedaço da circunferência"
     }
   ],
   "fichas": {
@@ -51904,6 +55312,132 @@
       "pegadinhas": [
         "Confundir complemento com suplemento.",
         "Somar lados antes de elevar ao quadrado."
+      ]
+    },
+    "Perímetro de polígonos": {
+      "texto": [
+        "Perímetro é a soma dos lados do contorno: retângulo 2 × (b + h), quadrado 4ℓ, polígono regular nℓ. Metade do perímetro do retângulo é base + altura, o que ajuda a achar um lado desconhecido.",
+        "Desconte portas e portões que não recebem rodapé ou cerca. Em pistas, uma volta é o perímetro inteiro; converta km em m antes de dividir."
+      ],
+      "pontos": [
+        "Meio perímetro = base + altura.",
+        "Portão sai da conta."
+      ],
+      "pegadinhas": [
+        "Confundir perímetro com área.",
+        "Somar só dois lados."
+      ]
+    },
+    "Figuras compostas": {
+      "texto": [
+        "Em figuras em escada, o perímetro é o do retângulo envolvente. Tirar um retângulo do canto não muda o perímetro; recortes no meio de um lado aumentam o contorno.",
+        "Em molduras e calçadas, a largura entra dos dois lados. Estacas: contorno fechado, perímetro ÷ espaçamento; linha aberta, intervalos + 1. Em figuras de quadradinhos, conte só os lados externos."
+      ],
+      "pontos": [
+        "Moldura soma 2 × largura em cada medida.",
+        "Fechado: sem estaca extra."
+      ],
+      "pegadinhas": [
+        "Somar os perímetros das peças.",
+        "Descontar os lados do recorte."
+      ]
+    },
+    "Perímetro e área": {
+      "texto": [
+        "Mesmo perímetro pode dar áreas diferentes; entre retângulos de mesmo perímetro, o quadrado tem a maior área, e, com área fixa, o quadrado tem o menor perímetro. Encostado num muro, o melhor terreno usa metade da tela no lado paralelo ao muro.",
+        "Numa ampliação de razão k, o perímetro é multiplicado por k e a área, por k². Dados perímetro e área de um retângulo, procure dois números com a soma (meio perímetro) e o produto (área)."
+      ],
+      "pontos": [
+        "Perímetro × k; área × k².",
+        "Soma e produto dão os lados."
+      ],
+      "pegadinhas": [
+        "Achar que perímetro igual dá área igual.",
+        "Usar k² no perímetro."
+      ]
+    },
+    "Retângulo e paralelogramo": {
+      "texto": [
+        "Retângulo e paralelogramo: base × altura, com a altura perpendicular à base (nunca o lado inclinado). Quadrado: lado²; do quadrado de área conhecida, o lado é a raiz.",
+        "Converta tudo para a mesma unidade (1 m² = 10.000 cm²) e desconte aberturas. Em terrenos cortados por ruas, junte os pedaços que sobram: o cruzamento pertence às duas ruas."
+      ],
+      "pontos": [
+        "Lajotas = área do piso ÷ área da lajota.",
+        "Altura é perpendicular."
+      ],
+      "pegadinhas": [
+        "Usar o lado inclinado como altura.",
+        "Descontar o cruzamento duas vezes."
+      ]
+    },
+    "Triângulos": {
+      "texto": [
+        "Área = base × altura ÷ 2. No triângulo retângulo, os catetos são base e altura. Com a base no eixo x, a altura é a ordenada do vértice oposto.",
+        "No isósceles, a altura divide a base ao meio e se acha por Pitágoras; no equilátero, área = ℓ²√3/4. Para achar a altura conhecendo a área, dobre a área e divida pela base."
+      ],
+      "pontos": [
+        "Altura = 2 × área ÷ base.",
+        "Isósceles: Pitágoras com meia base."
+      ],
+      "pegadinhas": [
+        "Esquecer de dividir por 2.",
+        "Usar o lado como altura."
+      ]
+    },
+    "Trapézio e losango": {
+      "texto": [
+        "Trapézio: (B + b) × h ÷ 2, a média das bases vezes a altura. No trapézio retângulo, a altura sai de Pitágoras com a diferença das bases e o lado oblíquo.",
+        "Losango: D × d ÷ 2. As diagonais se cortam ao meio em ângulo reto; com o lado e uma diagonal, Pitágoras dá a outra. Ligando os pontos médios de um retângulo, forma-se um losango com metade da área."
+      ],
+      "pontos": [
+        "Trapézio: média das bases × altura.",
+        "Losango: diagonais ÷ 2."
+      ],
+      "pegadinhas": [
+        "Usar o lado oblíquo como altura.",
+        "Multiplicar lado por diagonal no losango."
+      ]
+    },
+    "Comprimento": {
+      "texto": [
+        "Comprimento da circunferência: 2πr = πd. Diâmetro = 2r. Para achar o raio a partir do comprimento, divida por 2π.",
+        "Voltas de uma roda: distância ÷ comprimento da roda, na mesma unidade. Em polias ligadas por correia, raio × voltas é igual nas duas: a menor gira mais vezes."
+      ],
+      "pontos": [
+        "Uma volta = 2πr.",
+        "Polias: r₁ × n₁ = r₂ × n₂."
+      ],
+      "pegadinhas": [
+        "Usar πr no lugar de 2πr.",
+        "Esquecer de converter cm em m."
+      ]
+    },
+    "Área do círculo": {
+      "texto": [
+        "Área = πr². Se vier o diâmetro, divida por 2 antes de elevar ao quadrado. Dobrar o raio quadruplica a área; comparar pizzas pede a razão dos diâmetros ao quadrado.",
+        "Círculo inscrito num quadrado tem raio igual a meio lado; quadrado inscrito num círculo tem diagonal igual ao diâmetro. Para áreas em hectares, divida os m² por 10.000."
+      ],
+      "pontos": [
+        "Raio dobra, área × 4.",
+        "Quadrado inscrito: área = d² ÷ 2."
+      ],
+      "pegadinhas": [
+        "Usar o diâmetro como raio.",
+        "Confundir comprimento com área."
+      ]
+    },
+    "Setores e coroas": {
+      "texto": [
+        "Setor e arco são frações do círculo: ângulo ÷ 360°. Arco = fração × 2πr; área do setor = fração × πr². No relógio, minutos ÷ 60 dão a fração da volta.",
+        "Coroa circular: π(R² − r²). Em pistas com duas curvas semicirculares, as curvas juntas valem uma circunferência inteira."
+      ],
+      "pontos": [
+        "Fração = ângulo ÷ 360°.",
+        "Duas semicircunferências = uma inteira."
+      ],
+      "pegadinhas": [
+        "Fazer π(R − r)² na coroa.",
+        "Contar cada semicírculo como círculo inteiro."
       ]
     }
   }
