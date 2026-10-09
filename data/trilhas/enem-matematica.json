@@ -2640,6 +2640,305 @@
           "valor presente"
         ]
       }
+    },
+    {
+      "id": "mat-tabelas-graficos",
+      "nome": "Aula 26 · Tabelas e gráficos",
+      "modulo": "Módulo 5 · Estatística e leitura de dados",
+      "descricao": "Módulo 5 · aula 1 de 3 · 35 min · treina as habilidades H24 e H25",
+      "habilidades": [
+        "H24",
+        "H25"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Ler antes de calcular",
+            "texto": [
+              "Toda tabela e todo gráfico têm título, fonte, eixos ou colunas com unidades e, às vezes, legenda. Antes de qualquer conta, leia o que cada eixo mede, a unidade (mil, milhões, %) e o período. Boa parte dos erros com gráficos vem de pular essa leitura: confundir milhares com unidades, ano com mês ou o total com uma parte.",
+              "Numa tabela de **dupla entrada**, cada número é o cruzamento de uma linha com uma coluna (turno e sexo, idade e opinião). Cruze a linha e a coluna certas e use os totais de linha ou de coluna para calcular porcentagens."
+            ]
+          },
+          {
+            "titulo": "Cada gráfico tem uma função",
+            "texto": [
+              "O gráfico de colunas, ou de barras, compara quantidades entre categorias. O **gráfico de linhas** mostra a evolução ao longo do tempo. O **gráfico de setores**, a pizza, mostra a divisão de um todo em partes que somam 100%; cada 1% corresponde a 3,6 graus do círculo, e 25% ocupam 90 graus. Pictogramas usam figuras, e cada figura vale a quantidade indicada na legenda. Se as partes não formam um todo, como numa pesquisa em que se podia marcar mais de uma opção, a pizza não serve: use colunas."
+            ]
+          },
+          {
+            "titulo": "Tirar informação",
+            "texto": [
+              "Para comparar, calcule diferenças (quanto a mais) ou razões (quantas vezes, que porcentagem). Para ver crescimento, olhe a inclinação da linha: quanto mais íngreme, mais rápida a variação. A maior variação entre dois períodos é o trecho mais inclinado, não o ponto mais alto. E o maior aumento absoluto nem sempre é o maior aumento percentual."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Gráficos de economia, saúde, clima e população aparecem em quase toda prova. As perguntas pedem o maior aumento, o período de queda, a porcentagem de uma parte, a média de uma série, a leitura de um pictograma ou a escolha do gráfico mais adequado para uma informação."
+            ]
+          }
+        ],
+        "introducao": "Economia, saúde, clima, eleições: quase toda prova do Enem traz uma tabela ou um gráfico, e não só em Matemática. Esta aula ensina a ler cada tipo de representação, a tirar dela a informação certa e a escolher o gráfico adequado para cada dado.",
+        "mapaMental": {
+          "centro": "Tabelas e gráficos",
+          "ramos": [
+            {
+              "titulo": "Leitura",
+              "itens": [
+                "título, unidade e período",
+                "dupla entrada cruza linha e coluna"
+              ]
+            },
+            {
+              "titulo": "Tipos",
+              "itens": [
+                "colunas comparam categorias",
+                "gráfico de linhas mostra o tempo",
+                "gráfico de setores divide um todo"
+              ]
+            },
+            {
+              "titulo": "Informação",
+              "itens": [
+                "diferenças ou razões",
+                "trecho mais inclinado",
+                "absoluto não é percentual"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🍕",
+            "conceito": "Pizza fatiada",
+            "liga": "partes de um todo",
+            "porque": "As fatias sempre fecham a pizza inteira: 100%."
+          },
+          {
+            "icone": "⛰️",
+            "conceito": "Trilha na montanha",
+            "liga": "inclinação da linha",
+            "porque": "Quanto mais íngreme o trecho, mais rápida a subida."
+          }
+        ],
+        "pontos": [
+          "Leia título, unidade e período antes de calcular.",
+          "Na tabela de **dupla entrada**, cruze a linha e a coluna certas e use os totais.",
+          "O **gráfico de linhas** mostra a evolução no tempo; a maior variação é o trecho mais inclinado.",
+          "O **gráfico de setores** divide um todo: 1% vale 3,6 graus.",
+          "Maior aumento absoluto nem sempre é maior aumento percentual."
+        ],
+        "perolas": [
+          "Tabela em milhares: 102 quer dizer 102.000.",
+          "Pesquisa com várias respostas por pessoa não vira pizza."
+        ],
+        "reforcar": [
+          "dupla entrada",
+          "grafico de linhas",
+          "grafico de setores"
+        ]
+      }
+    },
+    {
+      "id": "mat-graficos-enganosos",
+      "nome": "Aula 27 · Gráficos que enganam: escala e recorte",
+      "modulo": "Módulo 5 · Estatística e leitura de dados",
+      "descricao": "Módulo 5 · aula 2 de 3 · 35 min · treina a habilidade H26",
+      "habilidades": [
+        "H26"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Eixo que não começa no zero",
+            "texto": [
+              "Num gráfico de colunas, a altura deve ser proporcional ao valor. Quando o eixo vertical começa em 90, e não em zero, uma diferença de 92 para 96 parece enorme: as alturas visíveis são 2 e 6, e a segunda coluna parece três vezes maior, embora o valor seja só cerca de 4% maior. É o **eixo truncado**. Às vezes ele é legítimo, para mostrar variações pequenas que importam, como a febre de um paciente; o problema é o leitor comparar alturas sem ler os números do eixo."
+            ]
+          },
+          {
+            "titulo": "Escalas e intervalos",
+            "texto": [
+              "Escalas irregulares (0, 10, 20, 50, 100 com o mesmo espaço) e intervalos de tempo desiguais (2000, 2010, 2015, 2016 lado a lado) deformam a inclinação. Ampliar ou achatar o eixo vertical muda a impressão: o mesmo dado pode parecer uma explosão ou uma calmaria. Comparar dois gráficos com escalas diferentes, lado a lado, também engana."
+            ]
+          },
+          {
+            "titulo": "Figuras e áreas",
+            "texto": [
+              "Em pictogramas, se o valor dobra e o desenho dobra de altura e de largura, a área fica quatro vezes maior, e o leitor vê um crescimento exagerado; com volume, oito vezes. O certo é repetir figuras do mesmo tamanho ou ajustar a área ao valor. Em gráficos 3D, a perspectiva faz as fatias e barras da frente parecerem maiores."
+            ]
+          },
+          {
+            "titulo": "Recorte, números absolutos e como o Enem cobra",
+            "texto": [
+              "O **recorte** escolhido também manipula: mostrar só os meses de alta esconde a queda do ano. Números absolutos escondem diferenças de tamanho: uma cidade grande tem mais casos de uma doença que uma pequena, mas pode ter uma **taxa por habitante** menor. Variações percentuais sobre bases pequenas (de 2 para 4 casos, \"alta de 100%\") também impressionam sem dizer muito. Antes de aceitar uma conclusão, pergunte: qual é a base, qual é o período e onde começa o eixo? O Enem pede para apontar o gráfico que distorce, recalcular a variação real e escolher a comparação justa."
+            ]
+          }
+        ],
+        "introducao": "Um gráfico pode estar com todos os números certos e, mesmo assim, enganar. Propaganda, política e redes sociais usam escalas cortadas, figuras infladas e recortes convenientes. Esta aula ensina a desmontar esses truques e a calcular a variação real, como o Enem pede.",
+        "mapaMental": {
+          "centro": "Gráficos que enganam",
+          "ramos": [
+            {
+              "titulo": "Eixo",
+              "itens": [
+                "eixo truncado exagera diferenças",
+                "leia os números do eixo"
+              ]
+            },
+            {
+              "titulo": "Escala",
+              "itens": [
+                "intervalos desiguais deformam a inclinação",
+                "escalas diferentes lado a lado"
+              ]
+            },
+            {
+              "titulo": "Figuras",
+              "itens": [
+                "dobrar altura e largura quadruplica a área",
+                "perspectiva 3D"
+              ]
+            },
+            {
+              "titulo": "Recorte",
+              "itens": [
+                "período escolhido esconde quedas",
+                "taxa por habitante contra números absolutos"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🔍",
+            "conceito": "Lupa sobre o topo das colunas",
+            "liga": "eixo cortado",
+            "porque": "Aumenta a diferença que, de longe, quase não existe."
+          },
+          {
+            "icone": "🎈",
+            "conceito": "Balão inflado",
+            "liga": "figura com o dobro de lado",
+            "porque": "O valor dobrou, mas o desenho ocupa quatro vezes mais espaço."
+          }
+        ],
+        "pontos": [
+          "O **eixo truncado** exagera diferenças: compare os números, não as alturas.",
+          "Intervalos de tempo desiguais deformam a inclinação de um gráfico.",
+          "Dobrar a altura e a largura de uma figura quadruplica a sua área.",
+          "O **recorte** do período pode esconder quedas ou altas.",
+          "Para comparar lugares de tamanhos diferentes, use a **taxa por habitante**."
+        ],
+        "perolas": [
+          "\"Alta de 100%\" pode ser de 2 para 4 casos.",
+          "Eixo sem o zero não é sempre fraude: o erro é não ler a escala."
+        ],
+        "reforcar": [
+          "eixo truncado",
+          "recorte",
+          "taxa por habitante"
+        ]
+      }
+    },
+    {
+      "id": "mat-media",
+      "nome": "Aula 28 · Média aritmética e média ponderada",
+      "modulo": "Módulo 5 · Estatística e leitura de dados",
+      "descricao": "Módulo 5 · aula 3 de 3 · 35 min · treina a habilidade H27",
+      "habilidades": [
+        "H27"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Média aritmética",
+            "texto": [
+              "A média aritmética é a soma dos valores dividida pela quantidade: notas 6, 7 e 8 têm média 21 ÷ 3 = 7. Ela é o valor que, repetido no lugar de todos, daria a mesma soma. Por isso, se a média de 5 números é 8, a soma deles é 40. Esse caminho de volta, da média para a soma, resolve muitas questões: quanto preciso tirar na última prova para ter média 7, que número entrou num grupo, qual nota estava errada."
+            ]
+          },
+          {
+            "titulo": "Média ponderada",
+            "texto": [
+              "Quando os valores têm importâncias diferentes, cada um é multiplicado pelo seu peso, e a soma é dividida pela soma dos pesos: na **média ponderada** de 6 (peso 2) e 9 (peso 1), o resultado é (12 + 9) ÷ 3 = 7. É assim que funcionam notas com pesos em vestibulares, o preço médio de compras em quantidades diferentes e a média de turmas de tamanhos diferentes. Trocar os pesos de lugar é o erro mais comum."
+            ]
+          },
+          {
+            "titulo": "Grupos e valores extremos",
+            "texto": [
+              "Para juntar dois grupos, não basta fazer a **média das médias**: uma turma de 10 alunos com média 8 e outra de 30 com média 6 têm média geral (80 + 180) ÷ 40 = 6,5, e não 7. A média de grupos é uma média ponderada pelos tamanhos. A média também é sensível a **valores extremos**: um salário muito alto puxa a média de uma empresa para cima, e ela deixa de representar a maioria. Nesses casos, a mediana, assunto da próxima aula, costuma descrever melhor o grupo."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Notas e médias de aprovação, preço médio, consumo médio, temperaturas médias, notas de corte com pesos por área e comparação de candidatos. A dica é sempre pensar na soma: média vezes quantidade dá o total, e o total é o que se mexe quando um valor entra, sai ou é corrigido."
+            ]
+          }
+        ],
+        "introducao": "Média de notas, preço médio, consumo médio, nota de corte: a média é a medida estatística mais usada no dia a dia e uma das mais cobradas no Enem. Esta aula ensina a calcular médias simples e ponderadas, a juntar grupos e a perceber quando a média engana.",
+        "mapaMental": {
+          "centro": "Média",
+          "ramos": [
+            {
+              "titulo": "Aritmética",
+              "itens": [
+                "soma dividida pela quantidade",
+                "média vezes quantidade dá a soma"
+              ]
+            },
+            {
+              "titulo": "Ponderada",
+              "itens": [
+                "média ponderada multiplica cada valor pelo peso",
+                "divida pela soma dos pesos"
+              ]
+            },
+            {
+              "titulo": "Grupos",
+              "itens": [
+                "média das médias só com grupos iguais",
+                "tamanhos funcionam como pesos"
+              ]
+            },
+            {
+              "titulo": "Cuidados",
+              "itens": [
+                "valores extremos puxam a média",
+                "valor corrigido muda a soma"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "⚖️",
+            "conceito": "Balança com pesos",
+            "liga": "peso maior puxa o resultado",
+            "porque": "O valor com mais peso puxa o resultado para o seu lado."
+          },
+          {
+            "icone": "🦈",
+            "conceito": "Tubarão no aquário de peixinhos",
+            "liga": "valor extremo",
+            "porque": "Um peixe enorme muda a média de tamanho do aquário inteiro."
+          }
+        ],
+        "pontos": [
+          "Média aritmética: soma dividida pela quantidade; média vezes quantidade dá a soma.",
+          "**Média ponderada**: some valor vezes peso e divida pela soma dos pesos.",
+          "Para juntar grupos, não use a **média das médias**: pondere pelos tamanhos.",
+          "**Valores extremos** puxam a média e podem deixá-la pouco representativa."
+        ],
+        "perolas": [
+          "Nota que faltava: média desejada vezes número de provas, menos o que já se tem.",
+          "Trocar os pesos de lugar é o erro mais comum quando há pesos."
+        ],
+        "reforcar": [
+          "media ponderada",
+          "media das medias",
+          "valores extremos"
+        ]
+      }
     }
   ],
   "questoes": [
@@ -14279,6 +14578,1386 @@
         "Usou juros simples sobre a dívida inicial.",
         "Esqueceu os juros.",
         "Descontou o pagamento antes dos juros."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q01",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela mostra as vendas de uma loja: janeiro, 120; fevereiro, 95; março, 140; abril, 110. Em que mês as vendas foram maiores?",
+      "alternativas": [
+        "Abril",
+        "Março",
+        "Não dá para saber",
+        "Fevereiro",
+        "Janeiro"
+      ],
+      "correta": 1,
+      "explicacao": "O maior valor da tabela é 140, em março. Dica de mergulhador: localize o maior número antes de responder.",
+      "comentarios": [
+        "110 é menor que 140.",
+        "",
+        "A tabela informa os valores.",
+        "Foi o mês de menor venda.",
+        "É o primeiro mês, não o maior valor."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q02",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela informa a população de uma cidade em milhares de habitantes: 2010, 85; 2020, 102. Quantos habitantes a cidade tinha em 2020?",
+      "alternativas": [
+        "102.000",
+        "17.000",
+        "102",
+        "1.020",
+        "10.200"
+      ],
+      "correta": 0,
+      "explicacao": "102 mil = 102 × 1.000 = 102.000 habitantes. Dica de mergulhador: a unidade da tabela muda o número.",
+      "comentarios": [
+        "",
+        "É o crescimento, não a população.",
+        "Ignorou que a tabela está em milhares.",
+        "Multiplicou por 10.",
+        "Multiplicou por 100."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q03",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma escola mostra numa tabela: manhã, 120 meninas e 100 meninos; tarde, 90 meninas e 110 meninos. Quantos meninos estudam à tarde?",
+      "alternativas": [
+        "210",
+        "110",
+        "90",
+        "100",
+        "200"
+      ],
+      "correta": 1,
+      "explicacao": "Cruzando a linha \"tarde\" com a coluna \"meninos\": 110. Dica de mergulhador: na tabela de dupla entrada, linha e coluna ao mesmo tempo.",
+      "comentarios": [
+        "É o total de meninos.",
+        "",
+        "São as meninas da tarde.",
+        "São os meninos da manhã.",
+        "É o total da tarde."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q04",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Na escola com manhã (120 meninas e 100 meninos) e tarde (90 meninas e 110 meninos), que porcentagem dos alunos da manhã são meninas?",
+      "alternativas": [
+        "Cerca de 54,5%",
+        "Cerca de 28,6%",
+        "Cerca de 57,1%",
+        "Cerca de 45,5%",
+        "Cerca de 52,4%"
+      ],
+      "correta": 0,
+      "explicacao": "Manhã: 120 + 100 = 220 alunos. 120 ÷ 220 ≈ 54,5%. Dica de mergulhador: \"dos alunos da manhã\" pede o total da linha da manhã.",
+      "comentarios": [
+        "",
+        "Dividiu pelo total da escola.",
+        "Dividiu pelo total de meninas da escola.",
+        "É a porcentagem de meninos da manhã.",
+        "É a parte da escola que estuda de manhã."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q05",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela mostra o consumo de água de uma casa, em m³: janeiro, 18; fevereiro, 15; março, 21; abril, 24. Qual foi o aumento percentual de março para abril?",
+      "alternativas": [
+        "3%",
+        "114,3%",
+        "12,5%",
+        "33,3%",
+        "Cerca de 14,3%"
+      ],
+      "correta": 4,
+      "explicacao": "Diferença: 3 m³. 3 ÷ 21 ≈ 14,3%. Dica de mergulhador: divida pelo valor inicial.",
+      "comentarios": [
+        "Usou a diferença em m³ como porcentagem.",
+        "Usou o fator como aumento.",
+        "Dividiu pelo valor de abril.",
+        "Comparou abril com fevereiro.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q06",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela traz os casos de dengue por semana: 1ª, 40; 2ª, 65; 3ª, 95; 4ª, 80. Entre quais semanas seguidas houve o maior aumento?",
+      "alternativas": [
+        "Da 2ª para a 3ª",
+        "Na 3ª semana, que tem o maior valor",
+        "Da 1ª para a 2ª",
+        "Da 1ª para a 4ª",
+        "Da 3ª para a 4ª"
+      ],
+      "correta": 0,
+      "explicacao": "Variações: +25, +30, −15. O maior aumento é +30, da 2ª para a 3ª. Dica de mergulhador: calcule as diferenças entre vizinhos.",
+      "comentarios": [
+        "",
+        "O maior valor não é a maior variação.",
+        "Aumento de 25, menor que 30.",
+        "Não são semanas seguidas.",
+        "Houve queda."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q07",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela mostra a produção de uma fábrica, em milhares de unidades, em dois anos: produto A, de 40 para 50; produto B, de 25 para 35; produto C, de 80 para 92. Qual produto teve o maior aumento percentual?",
+      "alternativas": [
+        "A, com 25%",
+        "B, com 40%",
+        "C, porque tem a maior produção",
+        "A e B empatam, ambos com 10 mil a mais",
+        "C, com aumento de 12 mil, o maior"
+      ],
+      "correta": 1,
+      "explicacao": "A: 10 ÷ 40 = 25%. B: 10 ÷ 25 = 40%. C: 12 ÷ 80 = 15%. Dica de mergulhador: percentual divide pela base de cada um.",
+      "comentarios": [
+        "B cresceu mais em porcentagem.",
+        "",
+        "Valor alto não é aumento alto.",
+        "O mesmo aumento absoluto pesa mais sobre a base menor.",
+        "Maior aumento absoluto não é maior percentual: C cresceu 15%."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q08",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma pesquisa com 400 pessoas mostra quem usa aplicativo de banco: 18 a 30 anos, 150 de 160; 31 a 50 anos, 120 de 150; acima de 50, 45 de 90. Em qual faixa a porcentagem de uso é menor, e qual é ela?",
+      "alternativas": [
+        "Acima de 50 anos, com 50%",
+        "31 a 50 anos, com 20%",
+        "Acima de 50 anos, com 45%",
+        "Acima de 50 anos, com 11,25%",
+        "18 a 30 anos, com 37,5%"
+      ],
+      "correta": 0,
+      "explicacao": "18 a 30: 150 ÷ 160 ≈ 94%. 31 a 50: 80%. Acima de 50: 45 ÷ 90 = 50%. Dica de mergulhador: cada faixa tem o seu próprio total.",
+      "comentarios": [
+        "",
+        "Calculou quem não usa.",
+        "Usou o número de pessoas como porcentagem.",
+        "Dividiu pelo total da pesquisa.",
+        "Dividiu pelo total da pesquisa."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q09",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Qual gráfico é mais adequado para mostrar a evolução da temperatura média de uma cidade ao longo dos 12 meses do ano?",
+      "alternativas": [
+        "Pictograma",
+        "Gráfico de linhas",
+        "Gráfico de colunas empilhadas",
+        "Gráfico de setores",
+        "Tabela de dupla entrada"
+      ],
+      "correta": 1,
+      "explicacao": "Evolução no tempo pede linha: a inclinação mostra subidas e descidas. Dica de mergulhador: tempo no eixo horizontal, linha.",
+      "comentarios": [
+        "Serve para contagens simples.",
+        "",
+        "Serve para partes de um total.",
+        "Serve para partes de um todo.",
+        "Não mostra a tendência de forma visual."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q10",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Num gráfico de setores, uma fatia representa 25% do total. Qual é o ângulo dessa fatia?",
+      "alternativas": [
+        "180°",
+        "45°",
+        "90°",
+        "72°",
+        "25°"
+      ],
+      "correta": 2,
+      "explicacao": "25% de 360° = 90°. Dica de mergulhador: cada 1% vale 3,6°.",
+      "comentarios": [
+        "Usou metade do círculo.",
+        "Usou um oitavo do círculo.",
+        "",
+        "Usou um quinto do círculo.",
+        "Usou a porcentagem como ângulo."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q11",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Num pictograma, cada figura de livro vale 50 livros vendidos. Uma livraria aparece com 6 figuras e meia. Quantos livros ela vendeu?",
+      "alternativas": [
+        "350",
+        "650",
+        "56,5",
+        "300",
+        "325"
+      ],
+      "correta": 4,
+      "explicacao": "6,5 × 50 = 325. Dica de mergulhador: leia a legenda e conte as frações de figura.",
+      "comentarios": [
+        "Contou a meia figura como inteira.",
+        "Multiplicou por 100.",
+        "Somou 50 e 6,5.",
+        "Ignorou a meia figura.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q12",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Num gráfico de setores sobre o meio de transporte de 600 alunos, o setor \"bicicleta\" tem 72°. Quantos alunos vão de bicicleta?",
+      "alternativas": [
+        "60",
+        "200",
+        "120",
+        "72",
+        "432"
+      ],
+      "correta": 2,
+      "explicacao": "72 ÷ 360 = 0,2 = 20%; 20% de 600 = 120. Dica de mergulhador: ângulo ÷ 360 dá a fração do todo.",
+      "comentarios": [
+        "Calculou 10%.",
+        "Dividiu 600 por 3.",
+        "",
+        "Usou o ângulo como quantidade.",
+        "Multiplicou 72 por 6."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q13",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma pesquisa perguntou a 200 pessoas quais redes sociais usam, e cada uma podia marcar mais de uma. As porcentagens somam 180%. Por que um gráfico de setores não serve para esses dados?",
+      "alternativas": [
+        "Porque as porcentagens deveriam ser inteiras",
+        "Porque gráfico de setores só serve para tempo",
+        "Porque as partes não formam um todo de 100%",
+        "Porque há mais de quatro categorias",
+        "Porque 200 pessoas é pouco"
+      ],
+      "correta": 2,
+      "explicacao": "Com respostas múltiplas, as fatias passariam do círculo inteiro. Dica de mergulhador: se não soma 100%, use colunas.",
+      "comentarios": [
+        "Não há essa exigência.",
+        "Tempo é com linhas.",
+        "",
+        "A pizza aceita várias fatias.",
+        "O tamanho da amostra não é o problema."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q14",
+      "tema": "Variação em gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Num gráfico de linhas, o trecho mais inclinado para cima indica:",
+      "alternativas": [
+        "O maior valor do gráfico",
+        "Que o valor ficou constante",
+        "O valor médio do período",
+        "O período de crescimento mais rápido",
+        "Um período de queda"
+      ],
+      "correta": 3,
+      "explicacao": "Inclinação mostra a rapidez da variação. Dica de mergulhador: íngreme é rápido.",
+      "comentarios": [
+        "O ponto mais alto não é o trecho mais inclinado.",
+        "Constante é um trecho horizontal.",
+        "Inclinação mede variação.",
+        "",
+        "Para cima é crescimento."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q15",
+      "tema": "Variação em gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um gráfico de linhas mostra o preço de um produto: R$ 20 em janeiro, R$ 24 em fevereiro, R$ 24 em março e R$ 18 em abril. Em que período o preço caiu?",
+      "alternativas": [
+        "De fevereiro para março",
+        "Em todos os períodos",
+        "Em nenhum período",
+        "De março para abril",
+        "De janeiro para fevereiro"
+      ],
+      "correta": 3,
+      "explicacao": "De 24 para 18, entre março e abril. Dica de mergulhador: compare cada mês com o anterior.",
+      "comentarios": [
+        "O preço ficou igual.",
+        "Houve alta e estabilidade.",
+        "Caiu de 24 para 18.",
+        "",
+        "O preço subiu."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q16",
+      "tema": "Variação em gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "A população de uma cidade foi de 80 mil em 2000, 100 mil em 2010 e 110 mil em 2020. Em qual década o crescimento percentual foi maior, e de quanto?",
+      "alternativas": [
+        "De 2000 a 2010, com 20%",
+        "De 2010 a 2020, porque a população é maior",
+        "De 2010 a 2020, com 10%",
+        "De 2000 a 2010, com 25%",
+        "De 2000 a 2010, com 20 mil"
+      ],
+      "correta": 3,
+      "explicacao": "2000–2010: 20 ÷ 80 = 25%. 2010–2020: 10 ÷ 100 = 10%. Dica de mergulhador: cada período tem a sua base.",
+      "comentarios": [
+        "Dividiu pelo valor final.",
+        "População maior não é crescimento maior.",
+        "10% é menor que 25%.",
+        "",
+        "Respondeu em número absoluto, não em porcentagem."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q17",
+      "tema": "Variação em gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um gráfico de colunas mostra as vendas de um ano por trimestre: 300, 450, 400 e 650. Qual foi a média trimestral?",
+      "alternativas": [
+        "475",
+        "1.800",
+        "400",
+        "450",
+        "425"
+      ],
+      "correta": 3,
+      "explicacao": "(300 + 450 + 400 + 650) ÷ 4 = 1.800 ÷ 4 = 450. Dica de mergulhador: some todas as colunas e divida pela quantidade.",
+      "comentarios": [
+        "Fez a média do menor e do maior.",
+        "É o total do ano.",
+        "Usou o 3º trimestre.",
+        "",
+        "Fez a média do 2º e do 3º."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q18",
+      "tema": "Variação em gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um gráfico mostra a taxa de desemprego: 12% em 2019, 14% em 2020, 13% em 2021 e 9% em 2022. Qual foi a maior variação entre anos seguidos?",
+      "alternativas": [
+        "Queda de 4 pontos percentuais, de 2021 para 2022",
+        "Alta de 2 pontos percentuais, de 2019 para 2020",
+        "14%, em 2020",
+        "Queda de 3 pontos, de 2019 para 2022",
+        "Queda de 5 pontos, de 2020 para 2022"
+      ],
+      "correta": 0,
+      "explicacao": "Variações: +2, −1, −4. A maior, em módulo, é a queda de 4 pontos. Dica de mergulhador: variação considera subidas e descidas.",
+      "comentarios": [
+        "",
+        "A queda de 4 pontos é maior.",
+        "É o maior valor, não a maior variação.",
+        "Não são anos seguidos.",
+        "Não são anos seguidos."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q19",
+      "tema": "Variação em gráficos",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um gráfico de colunas mostra as vendas mensais de duas lojas. Loja A: 20, 25, 30 e 35. Loja B: 40, 42, 44 e 46. Qual afirmação é correta?",
+      "alternativas": [
+        "B cresceu mais, porque vende mais",
+        "A cresceu mais em porcentagem: 75% contra 15% de B",
+        "B cresceu 6 unidades, mais que A",
+        "A cresceu 15% e B, 75%",
+        "As duas cresceram o mesmo por mês"
+      ],
+      "correta": 1,
+      "explicacao": "A: de 20 para 35, alta de 15 ÷ 20 = 75%. B: de 40 para 46, alta de 6 ÷ 40 = 15%. Dica de mergulhador: compare o início e o fim de cada série.",
+      "comentarios": [
+        "Vender mais não é crescer mais.",
+        "",
+        "A cresceu 15 unidades.",
+        "Trocou as lojas.",
+        "A cresceu 5 por mês; B, 2."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q20",
+      "tema": "Variação em gráficos",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela mostra o PIB de um país, em trilhões de reais, e a população, em milhões: no ano 1, PIB de 2,0 e 200 milhões de habitantes; no ano 2, PIB de 2,2 e 220 milhões. O que aconteceu com o PIB por habitante?",
+      "alternativas": [
+        "Subiu 20%",
+        "Caiu 10%",
+        "Caiu, porque a população cresceu",
+        "Subiu 10%",
+        "Ficou igual"
+      ],
+      "correta": 4,
+      "explicacao": "Ano 1: 2,0 trilhões ÷ 200 milhões = R$ 10 mil. Ano 2: 2,2 ÷ 220 = R$ 10 mil. Dica de mergulhador: grandezas \"por habitante\" exigem dividir as duas séries.",
+      "comentarios": [
+        "Somou as variações.",
+        "Considerou só a população.",
+        "O PIB cresceu na mesma proporção.",
+        "Considerou só o PIB.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q01",
+      "tema": "Eixos e escalas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Num gráfico de colunas, o eixo vertical começa em 90. Uma coluna vale 92 e outra, 96. O que o gráfico tende a fazer?",
+      "alternativas": [
+        "Esconder a diferença",
+        "Mostrar as colunas iguais",
+        "Mostrar a diferença real",
+        "Inverter a ordem das colunas",
+        "Exagerar a diferença entre as colunas"
+      ],
+      "correta": 4,
+      "explicacao": "Com o eixo em 90, as alturas visíveis são 2 e 6: parece o triplo, mas a diferença é de cerca de 4%. Dica de mergulhador: leia o número onde o eixo começa.",
+      "comentarios": [
+        "Ele a aumenta.",
+        "As alturas ficam bem diferentes.",
+        "As alturas visíveis não são proporcionais aos valores.",
+        "A ordem continua a mesma.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q02",
+      "tema": "Eixos e escalas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Com o eixo começando em 90, as colunas de 92 e 96 ficam com alturas visíveis de 2 e 6. Quantas vezes maior parece a segunda coluna?",
+      "alternativas": [
+        "3 vezes",
+        "2 vezes",
+        "Cerca de 1,04 vez",
+        "4 vezes",
+        "6 vezes"
+      ],
+      "correta": 0,
+      "explicacao": "6 ÷ 2 = 3: a coluna parece três vezes maior. Dica de mergulhador: a aparência vem das alturas visíveis.",
+      "comentarios": [
+        "",
+        "Errou a divisão.",
+        "Essa é a razão real entre os valores.",
+        "Usou a diferença como razão.",
+        "Usou a altura visível como razão."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q03",
+      "tema": "Eixos e escalas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Num gráfico, os anos no eixo horizontal são 2000, 2010, 2015, 2016 e 2017, igualmente espaçados. Qual é o problema?",
+      "alternativas": [
+        "Os números são grandes demais",
+        "Intervalos de tempo diferentes aparecem com o mesmo espaço",
+        "Os anos estão fora de ordem",
+        "Faltam os anos depois de 2017",
+        "O eixo não começa em zero"
+      ],
+      "correta": 1,
+      "explicacao": "Dez anos e um ano ocupam o mesmo espaço, o que deforma a inclinação. Dica de mergulhador: confira se os intervalos são iguais.",
+      "comentarios": [
+        "O tamanho não importa.",
+        "",
+        "Estão em ordem.",
+        "O período escolhido não é o problema aqui.",
+        "O eixo horizontal é de tempo."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q04",
+      "tema": "Eixos e escalas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico de colunas com eixo começando em 1.000 mostra vendas de 1.050 no ano 1 e 1.200 no ano 2. Qual foi o aumento real?",
+      "alternativas": [
+        "Cerca de 14,3%",
+        "12,5%",
+        "300%",
+        "4 vezes",
+        "150%"
+      ],
+      "correta": 0,
+      "explicacao": "150 ÷ 1.050 ≈ 14,3%. As alturas visíveis (50 e 200) sugerem 4 vezes. Dica de mergulhador: calcule com os valores, nunca com as alturas.",
+      "comentarios": [
+        "",
+        "Dividiu pelo valor do ano 2.",
+        "Comparou as alturas visíveis, 50 e 200.",
+        "É a impressão das alturas.",
+        "Usou a diferença como porcentagem."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q05",
+      "tema": "Eixos e escalas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Dois gráficos de linhas mostram o mesmo crescimento, de 100 para 110. No primeiro, o eixo vertical vai de 0 a 120; no segundo, de 95 a 112. Qual parece mostrar um crescimento maior?",
+      "alternativas": [
+        "Nenhum mostra crescimento",
+        "O segundo, porque o eixo ampliado aumenta a inclinação",
+        "O primeiro, porque começa no zero",
+        "Os dois parecem iguais",
+        "O primeiro, porque o eixo é maior"
+      ],
+      "correta": 1,
+      "explicacao": "Com o eixo de 95 a 112, os 10 pontos ocupam quase toda a altura: a linha fica íngreme. Dica de mergulhador: compare as escalas antes das linhas.",
+      "comentarios": [
+        "Os dois mostram.",
+        "",
+        "Começar no zero deixa a linha mais suave.",
+        "As escalas mudam a impressão.",
+        "O eixo longo achata a linha."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q06",
+      "tema": "Eixos e escalas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um telejornal mostrou o desemprego subindo de 11,8% para 12,1%, com o eixo de 11,7% a 12,2%. A linha parece quase vertical. Qual foi a variação real?",
+      "alternativas": [
+        "12,1%",
+        "Mais que dobrou",
+        "3 pontos percentuais",
+        "30%",
+        "0,3 ponto percentual"
+      ],
+      "correta": 4,
+      "explicacao": "12,1 − 11,8 = 0,3 ponto percentual. Dica de mergulhador: a escala apertada transforma pouco em muito.",
+      "comentarios": [
+        "É o valor final, não a variação.",
+        "É a impressão do eixo.",
+        "Errou a vírgula.",
+        "Confundiu pontos com variação relativa e errou a conta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q07",
+      "tema": "Eixos e escalas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico de colunas compara A = 40 e B = 50, com o eixo começando em 30. Quantas vezes mais alta parece a coluna B, e quantas vezes ela é maior de fato?",
+      "alternativas": [
+        "Parece e é 2 vezes",
+        "Parece 2 vezes; de fato, 1,25 vez",
+        "Parece 1,67 vez; de fato, 1,25 vez",
+        "Parece 1,25 vez; de fato, 2 vezes",
+        "Parece 2 vezes; de fato, 20% maior"
+      ],
+      "correta": 1,
+      "explicacao": "Alturas visíveis: 10 e 20 (2 vezes). Valores: 50 ÷ 40 = 1,25. Dica de mergulhador: subtraia o início do eixo para ver a ilusão.",
+      "comentarios": [
+        "O valor real é 1,25 vez.",
+        "",
+        "Dividiu 50 por 30.",
+        "Trocou a aparência pelo valor real.",
+        "Dividiu a diferença pelo valor de B."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q08",
+      "tema": "Eixos e escalas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico mostra a temperatura média de um planeta subindo 1,2 °C em 100 anos, com o eixo de 13,5 °C a 15 °C. Um crítico diz que o gráfico \"exagera\". O que é correto concluir?",
+      "alternativas": [
+        "O aumento foi de 1,2%",
+        "O gráfico é falso",
+        "O aumento foi de 13,5 °C",
+        "O eixo realça uma variação pequena; é preciso ler a escala",
+        "Eixos sem o zero são sempre proibidos"
+      ],
+      "correta": 3,
+      "explicacao": "Um eixo apertado é útil quando pequenas variações importam, mas o leitor precisa ler os números para avaliar o tamanho real. Dica de mergulhador: o problema não é o corte, é não ler a escala.",
+      "comentarios": [
+        "São graus, não porcentagem.",
+        "Os dados podem estar corretos.",
+        "É o início do eixo.",
+        "",
+        "Às vezes eles são necessários."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q09",
+      "tema": "Figuras e áreas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Num pictograma, o número de casas vendidas dobrou, e o desenho da casa foi feito com o dobro da altura e o dobro da largura. Quantas vezes maior parece a área do desenho?",
+      "alternativas": [
+        "2 vezes",
+        "16 vezes",
+        "8 vezes",
+        "4 vezes",
+        "3 vezes"
+      ],
+      "correta": 3,
+      "explicacao": "2 × 2 = 4: a área quadruplica, embora o valor tenha só dobrado. Dica de mergulhador: duas dimensões, fator ao quadrado.",
+      "comentarios": [
+        "É o aumento real do valor.",
+        "Elevou à quarta.",
+        "Seria em três dimensões.",
+        "",
+        "Somou em vez de multiplicar."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q10",
+      "tema": "Figuras e áreas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Qual é o jeito correto de mostrar, num pictograma, que um valor dobrou?",
+      "alternativas": [
+        "Desenhar a figura em 3D",
+        "Mudar só a cor da figura",
+        "Usar uma figura maior sem legenda",
+        "Dobrar a altura e a largura da figura",
+        "Usar o dobro de figuras do mesmo tamanho"
+      ],
+      "correta": 4,
+      "explicacao": "Figuras repetidas de mesmo tamanho mantêm a proporção. Dica de mergulhador: repita, não infle.",
+      "comentarios": [
+        "A perspectiva distorce.",
+        "Cor não mostra quantidade.",
+        "Sem legenda não há como ler.",
+        "A área quadruplica.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q11",
+      "tema": "Figuras e áreas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um anúncio mostra um saco de dinheiro pequeno (lucro de R$ 1 milhão) e outro com o triplo de altura, largura e profundidade (lucro de R$ 3 milhões). Como o saco maior pode ser percebido?",
+      "alternativas": [
+        "Como 6 vezes maior",
+        "Como 9 vezes maior",
+        "Como 27 vezes maior, pelo volume",
+        "Como igual ao pequeno",
+        "Como 3 vezes maior"
+      ],
+      "correta": 2,
+      "explicacao": "3 × 3 × 3 = 27: o volume aparente é 27 vezes maior, para um lucro 3 vezes maior. Dica de mergulhador: três dimensões, fator ao cubo.",
+      "comentarios": [
+        "Somou as dimensões.",
+        "Seria só a área.",
+        "",
+        "Ele é bem maior.",
+        "É o valor real."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q12",
+      "tema": "Figuras e áreas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Para representar uma alta de 50% com um ícone, um designer quer que a área do ícone cresça na mesma proporção. Por quanto deve multiplicar a altura e a largura?",
+      "alternativas": [
+        "0,5",
+        "1,25",
+        "Cerca de 1,22",
+        "1,5",
+        "2,25"
+      ],
+      "correta": 2,
+      "explicacao": "A área deve ser 1,5 vez maior; cada lado é multiplicado por √1,5 ≈ 1,22. Dica de mergulhador: para a área seguir o valor, use a raiz do fator nos lados.",
+      "comentarios": [
+        "Usou só a taxa.",
+        "Dividiu o aumento por 2.",
+        "",
+        "A área cresceria 2,25 vezes.",
+        "Elevou ao quadrado em vez de tirar a raiz."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q13",
+      "tema": "Figuras e áreas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico de setores em 3D mostra A = 30%, B = 30% e C = 40%. A fatia A está na frente, inclinada para o leitor. O que o leitor provavelmente percebe?",
+      "alternativas": [
+        "Exatamente os valores corretos",
+        "Que a soma passa de 100%",
+        "Que A é maior que B, embora sejam iguais",
+        "Que C é a menor fatia",
+        "Que B é maior que C"
+      ],
+      "correta": 2,
+      "explicacao": "Na perspectiva, a fatia mais próxima parece maior. Dica de mergulhador: 3D é enfeite que custa precisão.",
+      "comentarios": [
+        "A perspectiva distorce.",
+        "A soma é 100%.",
+        "",
+        "C é a maior.",
+        "B é 30% e C, 40%."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q14",
+      "tema": "Recorte e taxas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "A cidade A tem 1.000.000 de habitantes e 2.000 casos de uma doença; a cidade B tem 50.000 habitantes e 400 casos. Qual tem a maior taxa de casos por habitante?",
+      "alternativas": [
+        "A, com 2 casos por mil habitantes",
+        "B, com 400 casos por mil habitantes",
+        "As duas têm a mesma taxa",
+        "B, com 8 casos por mil habitantes",
+        "A, porque tem mais casos"
+      ],
+      "correta": 3,
+      "explicacao": "A: 2.000 ÷ 1.000 mil = 2 por mil. B: 400 ÷ 50 mil = 8 por mil. Dica de mergulhador: para comparar lugares, divida pela população.",
+      "comentarios": [
+        "A taxa de A é menor.",
+        "Usou o número absoluto como taxa.",
+        "As taxas são 2 e 8 por mil.",
+        "",
+        "Número absoluto não é taxa."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q15",
+      "tema": "Recorte e taxas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico mostra só os meses de março a junho, em que as vendas subiram, e omite o resto do ano, em que caíram. Isso é um exemplo de:",
+      "alternativas": [
+        "Eixo que não começa no zero",
+        "Gráfico de setores",
+        "Pictograma distorcido",
+        "Recorte escolhido para esconder parte dos dados",
+        "Escala irregular"
+      ],
+      "correta": 3,
+      "explicacao": "Escolher o período a dedo muda a conclusão. Dica de mergulhador: pergunte o que ficou de fora.",
+      "comentarios": [
+        "O problema é o período.",
+        "É um gráfico no tempo.",
+        "Não há figuras.",
+        "",
+        "A escala pode estar correta."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q16",
+      "tema": "Recorte e taxas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "O estado P tem 400 homicídios por ano e 4 milhões de habitantes; o estado Q tem 300 homicídios e 1,5 milhão de habitantes. Qual tem a maior taxa por 100 mil habitantes?",
+      "alternativas": [
+        "P, com 10 por 100 mil",
+        "P, porque tem mais homicídios",
+        "Q, com 300 por 100 mil",
+        "Q, com 20 por 100 mil",
+        "As duas são iguais"
+      ],
+      "correta": 3,
+      "explicacao": "P: 400 ÷ 40 = 10. Q: 300 ÷ 15 = 20 por 100 mil. Dica de mergulhador: divida a população em blocos de 100 mil.",
+      "comentarios": [
+        "A taxa de P é menor.",
+        "Número absoluto não é taxa.",
+        "Usou o número absoluto.",
+        "",
+        "São 10 e 20."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q17",
+      "tema": "Recorte e taxas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Uma manchete diz: \"Roubos de celular sobem 100% no bairro\". Os números foram de 2 para 4 casos. O que falta na manchete?",
+      "alternativas": [
+        "Nada: 100% é sempre um aumento grande",
+        "A cor do gráfico",
+        "O nome do bairro vizinho",
+        "Os números absolutos, que mostram uma variação pequena",
+        "A porcentagem de queda"
+      ],
+      "correta": 3,
+      "explicacao": "De 2 para 4 é o dobro, mas são só 2 casos a mais. Dica de mergulhador: porcentagem sobre base pequena impressiona sem dizer muito.",
+      "comentarios": [
+        "Sobre uma base pequena, não.",
+        "Irrelevante.",
+        "Não muda a conclusão.",
+        "",
+        "Não houve queda."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q18",
+      "tema": "Recorte e taxas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico compara as vendas de duas empresas, com eixos de escalas diferentes lado a lado: A vai de 0 a 100 e B, de 0 a 1.000. As colunas têm a mesma altura. O que se pode concluir?",
+      "alternativas": [
+        "B vende 100 vezes mais que A",
+        "As duas vendem o mesmo",
+        "B vende cerca de 10 vezes mais que A",
+        "A vende 10 vezes mais que B",
+        "Não dá para concluir nada"
+      ],
+      "correta": 2,
+      "explicacao": "Mesma altura em escalas de 100 e 1.000: B vende 10 vezes mais. Dica de mergulhador: leia cada eixo antes de comparar.",
+      "comentarios": [
+        "Errou a razão.",
+        "As escalas são diferentes.",
+        "",
+        "Inverteu.",
+        "Lendo as escalas, dá."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q19",
+      "tema": "Recorte e taxas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "A cidade X teve 120 acidentes em 2023 e 150 em 2024, e a frota passou de 40 mil para 60 mil veículos. O que aconteceu com a taxa de acidentes por mil veículos?",
+      "alternativas": [
+        "Subiu 25%",
+        "Subiu de 2,5 para 3",
+        "Caiu de 3 para 2,5",
+        "Ficou igual",
+        "Caiu 50%"
+      ],
+      "correta": 2,
+      "explicacao": "2023: 120 ÷ 40 = 3. 2024: 150 ÷ 60 = 2,5 por mil veículos. Dica de mergulhador: número absoluto subiu, mas a taxa caiu.",
+      "comentarios": [
+        "Considerou só os acidentes.",
+        "Inverteu os anos.",
+        "",
+        "As taxas são diferentes.",
+        "Errou a divisão."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q20",
+      "tema": "Recorte e taxas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "O número de adultos com diploma universitário subiu de 10 milhões para 15 milhões, enquanto a população adulta passou de 100 milhões para 150 milhões. O que aconteceu com a porcentagem de adultos com diploma?",
+      "alternativas": [
+        "Caiu",
+        "Ficou em 10%",
+        "Subiu 50%",
+        "Subiu 5 pontos percentuais",
+        "Dobrou"
+      ],
+      "correta": 1,
+      "explicacao": "10 ÷ 100 = 10% e 15 ÷ 150 = 10%. Dica de mergulhador: o total também cresceu.",
+      "comentarios": [
+        "As duas grandezas cresceram na mesma proporção.",
+        "",
+        "Considerou só os diplomados.",
+        "Somou 5 milhões como pontos.",
+        "Não dobrou."
+      ]
+    },
+    {
+      "id": "mat-media-q01",
+      "tema": "Média aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Qual é a média das notas 6, 7, 8 e 9?",
+      "alternativas": [
+        "8",
+        "7,5",
+        "7",
+        "30",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "(6 + 7 + 8 + 9) ÷ 4 = 30 ÷ 4 = 7,5. Dica de mergulhador: divida pela quantidade de valores.",
+      "comentarios": [
+        "Ignorou o 6.",
+        "",
+        "Ignorou o 9.",
+        "É a soma, sem dividir.",
+        "Dividiu a soma por 3."
+      ]
+    },
+    {
+      "id": "mat-media-q02",
+      "tema": "Média aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "A média de 5 números é 8. Qual é a soma deles?",
+      "alternativas": [
+        "40",
+        "13",
+        "8",
+        "3",
+        "1,6"
+      ],
+      "correta": 0,
+      "explicacao": "Soma = média × quantidade = 8 × 5 = 40. Dica de mergulhador: da média para a soma, multiplique.",
+      "comentarios": [
+        "",
+        "Somou 5 e 8.",
+        "Usou a média como soma.",
+        "Subtraiu.",
+        "Dividiu 8 por 5."
+      ]
+    },
+    {
+      "id": "mat-media-q03",
+      "tema": "Média aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Um carro rodou 180 km na segunda, 220 km na terça e 200 km na quarta. Qual foi a média diária?",
+      "alternativas": [
+        "300 km",
+        "200 km",
+        "180 km",
+        "220 km",
+        "600 km"
+      ],
+      "correta": 1,
+      "explicacao": "600 ÷ 3 = 200 km. Dica de mergulhador: total ÷ número de dias.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "",
+        "É o menor valor.",
+        "É o maior valor.",
+        "É o total."
+      ]
+    },
+    {
+      "id": "mat-media-q04",
+      "tema": "Média aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Num grupo, as idades são 15, 16, 16, 17 e 21. Qual é a média?",
+      "alternativas": [
+        "17",
+        "21",
+        "85",
+        "21,25",
+        "16"
+      ],
+      "correta": 0,
+      "explicacao": "85 ÷ 5 = 17. Dica de mergulhador: média não é o valor mais comum.",
+      "comentarios": [
+        "",
+        "É o maior valor.",
+        "É a soma.",
+        "Dividiu por 4.",
+        "É o valor que mais se repete."
+      ]
+    },
+    {
+      "id": "mat-media-q05",
+      "tema": "Média aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Um aluno tirou 6, 7 e 5 em três provas. Quanto precisa tirar na quarta para ficar com média 7?",
+      "alternativas": [
+        "6",
+        "8",
+        "28",
+        "7",
+        "10"
+      ],
+      "correta": 4,
+      "explicacao": "Soma necessária: 7 × 4 = 28. Já tem 18. Falta 28 − 18 = 10. Dica de mergulhador: média desejada × provas − o que já se tem.",
+      "comentarios": [
+        "É a média das três provas.",
+        "Somou 1 à melhor nota.",
+        "É a soma necessária.",
+        "É a média desejada, não a nota que falta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-media-q06",
+      "tema": "Média aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "A média de 4 números é 10. Acrescentando um quinto número, a média passa a ser 12. Qual é esse número?",
+      "alternativas": [
+        "20",
+        "14",
+        "2",
+        "12",
+        "22"
+      ],
+      "correta": 0,
+      "explicacao": "Soma antes: 40. Soma depois: 60. O número é 60 − 40 = 20. Dica de mergulhador: compare as somas, não as médias.",
+      "comentarios": [
+        "",
+        "Somou 2 à nova média.",
+        "É a diferença das médias.",
+        "É a nova média.",
+        "Somou 10 e 12."
+      ]
+    },
+    {
+      "id": "mat-media-q07",
+      "tema": "Média aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "A média salarial de 9 funcionários é R$ 2.000. Um novo funcionário entra ganhando R$ 7.000. Qual é a nova média?",
+      "alternativas": [
+        "R$ 2.777,78",
+        "R$ 2.500,00",
+        "R$ 7.000,00",
+        "R$ 4.500,00",
+        "R$ 2.000,00"
+      ],
+      "correta": 1,
+      "explicacao": "Soma: 18.000 + 7.000 = 25.000; 25.000 ÷ 10 = R$ 2.500. Dica de mergulhador: volte para a soma.",
+      "comentarios": [
+        "Dividiu por 9.",
+        "",
+        "Usou o salário novo.",
+        "Fez a média de 2.000 e 7.000.",
+        "Ignorou o novo funcionário."
+      ]
+    },
+    {
+      "id": "mat-media-q08",
+      "tema": "Média aritmética",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "Um conjunto de 10 notas tem média 6. Descobriu-se que uma nota 2 foi lançada errada: o certo era 8. Qual é a média corrigida?",
+      "alternativas": [
+        "6,6",
+        "12",
+        "7",
+        "6,8",
+        "6"
+      ],
+      "correta": 0,
+      "explicacao": "Soma: 60. Corrigida: 60 − 2 + 8 = 66. Média: 6,6. Dica de mergulhador: a correção de 6 pontos se divide pelas 10 notas.",
+      "comentarios": [
+        "",
+        "Somou a correção inteira à média.",
+        "Achou que a média sobe 1 ponto.",
+        "Somou 8 à soma sem tirar o 2.",
+        "Ignorou a correção."
+      ]
+    },
+    {
+      "id": "mat-media-q09",
+      "tema": "Média ponderada",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Uma prova tem nota 6, com peso 2, e um trabalho tem nota 9, com peso 1. Qual é a média ponderada?",
+      "alternativas": [
+        "7,5",
+        "7",
+        "5,25",
+        "10,5",
+        "21"
+      ],
+      "correta": 1,
+      "explicacao": "(6 × 2 + 9 × 1) ÷ 3 = 21 ÷ 3 = 7. Dica de mergulhador: divida pela soma dos pesos.",
+      "comentarios": [
+        "Fez a média simples.",
+        "",
+        "Dividiu por 4.",
+        "Dividiu por 2.",
+        "Não dividiu."
+      ]
+    },
+    {
+      "id": "mat-media-q10",
+      "tema": "Média ponderada",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Num vestibular, Matemática tem peso 3 e Português, peso 2. Um candidato tirou 7 em Matemática e 8 em Português. Qual é a média?",
+      "alternativas": [
+        "37",
+        "7,5",
+        "7,4",
+        "18,5",
+        "7,6"
+      ],
+      "correta": 2,
+      "explicacao": "(21 + 16) ÷ 5 = 37 ÷ 5 = 7,4. Dica de mergulhador: cada nota com o seu peso.",
+      "comentarios": [
+        "Não dividiu.",
+        "Fez a média simples.",
+        "",
+        "Dividiu por 2.",
+        "Trocou os pesos."
+      ]
+    },
+    {
+      "id": "mat-media-q11",
+      "tema": "Média ponderada",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Um comerciante comprou 30 kg de café a R$ 20 o quilo e 10 kg a R$ 28 o quilo. Qual foi o preço médio por quilo?",
+      "alternativas": [
+        "R$ 880,00",
+        "R$ 26,00",
+        "R$ 24,00",
+        "R$ 44,00",
+        "R$ 22,00"
+      ],
+      "correta": 4,
+      "explicacao": "(30 × 20 + 10 × 28) ÷ 40 = 880 ÷ 40 = R$ 22. Dica de mergulhador: as quantidades são os pesos.",
+      "comentarios": [
+        "É o total gasto.",
+        "Trocou as quantidades.",
+        "Fez a média simples dos preços.",
+        "Dividiu o total por 20.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-media-q12",
+      "tema": "Média ponderada",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Para ser aprovado, um aluno precisa de média ponderada 6, com prova de peso 3 e trabalho de peso 2. Ele tirou 5 na prova. Quanto precisa no trabalho?",
+      "alternativas": [
+        "6,67",
+        "7",
+        "7,5",
+        "15",
+        "6"
+      ],
+      "correta": 2,
+      "explicacao": "3 × 5 + 2x = 6 × 5 = 30, logo 2x = 15 e x = 7,5. Dica de mergulhador: média desejada × soma dos pesos.",
+      "comentarios": [
+        "Trocou os pesos.",
+        "Fez como média simples.",
+        "",
+        "Esqueceu de dividir pelo peso do trabalho.",
+        "Usou a média desejada."
+      ]
+    },
+    {
+      "id": "mat-media-q13",
+      "tema": "Média ponderada",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Um curso usa a nota de uma área do Enem com peso 4 e a redação com peso 6. Um candidato tem 650 na área e 800 na redação. Qual é a média?",
+      "alternativas": [
+        "725",
+        "710",
+        "740",
+        "1.450",
+        "7.400"
+      ],
+      "correta": 2,
+      "explicacao": "(650 × 4 + 800 × 6) ÷ 10 = (2.600 + 4.800) ÷ 10 = 740. Dica de mergulhador: pesos que somam 10 facilitam.",
+      "comentarios": [
+        "Fez a média simples.",
+        "Trocou os pesos.",
+        "",
+        "Somou as notas.",
+        "Não dividiu."
+      ]
+    },
+    {
+      "id": "mat-media-q14",
+      "tema": "Média ponderada",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "Dois candidatos: A tirou 8 em Matemática (peso 3) e 6 em Português (peso 1); B tirou 6 em Matemática e 9 em Português. Pela média ponderada, quem fica na frente?",
+      "alternativas": [
+        "Não dá para comparar sem a média simples",
+        "Os dois empatam com 7,5",
+        "B, porque a média simples dele é 7,5",
+        "A, com 7,5 contra 6,75",
+        "B, com 8,25 contra 6,5"
+      ],
+      "correta": 3,
+      "explicacao": "A: (24 + 6) ÷ 4 = 7,5. B: (18 + 9) ÷ 4 = 6,75. Dica de mergulhador: o peso alto favorece quem foi bem na matéria mais pesada.",
+      "comentarios": [
+        "A ponderada basta.",
+        "As médias ponderadas são diferentes.",
+        "A seleção usa média ponderada.",
+        "",
+        "Trocou os pesos."
+      ]
+    },
+    {
+      "id": "mat-media-q15",
+      "tema": "Média ponderada",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "Uma loja vendeu 40 camisetas a R$ 30, 25 a R$ 50 e 35 a R$ 40. Qual foi o preço médio de venda?",
+      "alternativas": [
+        "R$ 3.850,00",
+        "R$ 41,50",
+        "R$ 40,00",
+        "R$ 38,50",
+        "R$ 1.283,33"
+      ],
+      "correta": 3,
+      "explicacao": "(1.200 + 1.250 + 1.400) ÷ 100 = 3.850 ÷ 100 = R$ 38,50. Dica de mergulhador: divida pelo total de peças.",
+      "comentarios": [
+        "É o total vendido.",
+        "Trocou as quantidades de R$ 30 e R$ 50.",
+        "Fez a média simples dos preços.",
+        "",
+        "Dividiu o total pelo número de preços."
+      ]
+    },
+    {
+      "id": "mat-media-q16",
+      "tema": "Média de grupos",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Uma turma de 10 alunos tem média 8, e outra de 30 alunos tem média 6. Qual é a média de todos os 40 alunos?",
+      "alternativas": [
+        "13",
+        "260",
+        "7,5",
+        "6,5",
+        "7"
+      ],
+      "correta": 3,
+      "explicacao": "(10 × 8 + 30 × 6) ÷ 40 = 260 ÷ 40 = 6,5. Dica de mergulhador: a turma maior pesa mais.",
+      "comentarios": [
+        "Somou as médias.",
+        "É a soma das notas.",
+        "Trocou os tamanhos das turmas.",
+        "",
+        "Fez a média das médias."
+      ]
+    },
+    {
+      "id": "mat-media-q17",
+      "tema": "Média de grupos",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Numa empresa, 8 funcionários ganham R$ 2.000 e 2 gerentes ganham R$ 12.000. A média salarial representa bem a maioria?",
+      "alternativas": [
+        "Sim, porque a média sempre representa a maioria",
+        "Não: a média é R$ 12.000",
+        "Sim: a média é R$ 2.000",
+        "Não: a média é R$ 4.000, o dobro do que ganha a maioria",
+        "Sim: a média é R$ 7.000"
+      ],
+      "correta": 3,
+      "explicacao": "(16.000 + 24.000) ÷ 10 = R$ 4.000, puxada pelos salários altos. Dica de mergulhador: com valores extremos, desconfie da média.",
+      "comentarios": [
+        "Valores extremos a distorcem.",
+        "É o salário dos gerentes.",
+        "A média inclui os gerentes.",
+        "",
+        "Fez a média das médias."
+      ]
+    },
+    {
+      "id": "mat-media-q18",
+      "tema": "Média de grupos",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "A média de idade de 20 homens é 30 anos, e a de 30 mulheres é 25 anos. Qual é a média de idade do grupo todo?",
+      "alternativas": [
+        "27 anos",
+        "55 anos",
+        "28 anos",
+        "27,5 anos",
+        "1.350 anos"
+      ],
+      "correta": 0,
+      "explicacao": "(600 + 750) ÷ 50 = 27. Dica de mergulhador: média de grupos é média ponderada.",
+      "comentarios": [
+        "",
+        "Somou as médias.",
+        "Trocou os tamanhos dos grupos.",
+        "Fez a média das médias.",
+        "É a soma das idades."
+      ]
+    },
+    {
+      "id": "mat-media-q19",
+      "tema": "Média de grupos",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "Duas turmas, A e B, têm médias 6 e 9. Juntas, a média é 7. Qual é a razão entre o número de alunos de A e de B?",
+      "alternativas": [
+        "1 para 1",
+        "2 para 1",
+        "3 para 1",
+        "1 para 2",
+        "2 para 3"
+      ],
+      "correta": 1,
+      "explicacao": "6a + 9b = 7(a + b), logo 2b = a: A tem o dobro de alunos de B. Dica de mergulhador: a média geral fica mais perto da turma maior.",
+      "comentarios": [
+        "Com turmas iguais, a média seria 7,5.",
+        "",
+        "Errou a equação.",
+        "Inverteu.",
+        "Usou as médias 6 e 9 simplificadas."
+      ]
+    },
+    {
+      "id": "mat-media-q20",
+      "tema": "Média de grupos",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "A média de 30 alunos numa prova foi 6,2. O professor anulou uma questão e deu 0,5 ponto a todos. Depois, um aluno que tinha tirado 0 foi excluído da lista por erro de cadastro. Qual é a nova média, aproximadamente?",
+      "alternativas": [
+        "6,7",
+        "6,91",
+        "6,41",
+        "7,2",
+        "6,93"
+      ],
+      "correta": 1,
+      "explicacao": "Soma após o bônus: 30 × 6,7 = 201. O excluído tinha 0,5. Nova soma: 200,5; 200,5 ÷ 29 ≈ 6,91. Dica de mergulhador: acompanhe a soma a cada mudança.",
+      "comentarios": [
+        "Considerou só o bônus.",
+        "",
+        "Esqueceu o bônus.",
+        "Somou 1 ponto à média.",
+        "Esqueceu que o aluno excluído também tinha recebido o bônus."
       ]
     }
   ],
@@ -26426,6 +28105,1446 @@
         "Usou juros simples sobre a dívida inicial.",
         "Aplicou dois meses de juros e descontou um pagamento."
       ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q01-v1",
+      "varianteDe": "mat-tabelas-graficos-q01",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela mostra a temperatura máxima de uma semana: segunda, 28 °C; terça, 31 °C; quarta, 26 °C; quinta, 30 °C. Em que dia fez mais calor?",
+      "alternativas": [
+        "Terça",
+        "Quarta",
+        "Quinta",
+        "Não dá para saber",
+        "Segunda"
+      ],
+      "correta": 0,
+      "explicacao": "A maior temperatura é 31 °C, na terça. Dica de mergulhador: compare todos os valores.",
+      "comentarios": [
+        "",
+        "Foi o dia mais fresco.",
+        "30 °C é menor que 31 °C.",
+        "A tabela informa os valores.",
+        "É o primeiro dia, não o mais quente."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q02-v1",
+      "varianteDe": "mat-tabelas-graficos-q02",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela informa a produção de soja de um estado em milhões de toneladas: 3,5. Quantas toneladas são?",
+      "alternativas": [
+        "3.500 toneladas",
+        "3.500.000 toneladas",
+        "3,5 toneladas",
+        "35.000 toneladas",
+        "350.000 toneladas"
+      ],
+      "correta": 1,
+      "explicacao": "3,5 milhões = 3,5 × 1.000.000 = 3.500.000. Dica de mergulhador: milhão tem seis zeros.",
+      "comentarios": [
+        "Usou mil em vez de milhão.",
+        "",
+        "Ignorou a unidade.",
+        "Multiplicou por 10.000.",
+        "Multiplicou por 100.000."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q03-v1",
+      "varianteDe": "mat-tabelas-graficos-q03",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma clínica mostra numa tabela: adultos, 40 homens e 60 mulheres; crianças, 30 meninos e 25 meninas. Quantas meninas foram atendidas?",
+      "alternativas": [
+        "55",
+        "25",
+        "60",
+        "85",
+        "30"
+      ],
+      "correta": 1,
+      "explicacao": "Linha \"crianças\", coluna \"meninas\": 25. Dica de mergulhador: cruze as duas informações pedidas.",
+      "comentarios": [
+        "É o total de crianças.",
+        "",
+        "São as mulheres adultas.",
+        "Somou mulheres e meninas.",
+        "São os meninos."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q04-v1",
+      "varianteDe": "mat-tabelas-graficos-q04",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Na clínica com adultos (40 homens e 60 mulheres) e crianças (30 meninos e 25 meninas), que porcentagem das crianças são meninas?",
+      "alternativas": [
+        "Cerca de 54,5%",
+        "Cerca de 45,5%",
+        "Cerca de 35,5%",
+        "Cerca de 16,1%",
+        "Cerca de 29,4%"
+      ],
+      "correta": 1,
+      "explicacao": "Crianças: 55. 25 ÷ 55 ≈ 45,5%. Dica de mergulhador: o total certo é o da linha das crianças.",
+      "comentarios": [
+        "É a porcentagem de meninos.",
+        "",
+        "É a parte dos atendidos que são crianças.",
+        "Dividiu pelo total de atendidos.",
+        "Dividiu pelo total de pessoas do sexo feminino."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q05-v1",
+      "varianteDe": "mat-tabelas-graficos-q05",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um museu recebeu 400 visitantes em maio e 500 em junho. Qual foi o aumento percentual?",
+      "alternativas": [
+        "20%",
+        "25%",
+        "100%",
+        "125%",
+        "80%"
+      ],
+      "correta": 1,
+      "explicacao": "100 ÷ 400 = 25%. Dica de mergulhador: a base é o mês anterior.",
+      "comentarios": [
+        "Dividiu pelo valor de junho.",
+        "",
+        "Usou a diferença de 100 visitantes como porcentagem.",
+        "Usou o fator como aumento.",
+        "Dividiu 400 por 500."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q06-v1",
+      "varianteDe": "mat-tabelas-graficos-q06",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma tabela traz o preço de um produto por mês: janeiro, R$ 10; fevereiro, R$ 12; março, R$ 17; abril, R$ 19. Entre quais meses seguidos houve o maior aumento?",
+      "alternativas": [
+        "De março para abril",
+        "De janeiro para abril",
+        "Em abril, que tem o maior preço",
+        "De fevereiro para março",
+        "De janeiro para fevereiro"
+      ],
+      "correta": 3,
+      "explicacao": "Variações: +2, +5, +2. O maior aumento é de fevereiro para março. Dica de mergulhador: compare as diferenças, não os valores.",
+      "comentarios": [
+        "Aumento de 2.",
+        "Não são meses seguidos.",
+        "O maior valor não é a maior variação.",
+        "",
+        "Aumento de 2."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q07-v1",
+      "varianteDe": "mat-tabelas-graficos-q07",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "A população de três cidades, em milhares, mudou assim: X, de 200 para 230; Y, de 50 para 60; Z, de 120 para 150. Qual teve o maior crescimento percentual?",
+      "alternativas": [
+        "Y, com 20%",
+        "X, com 30%",
+        "Z, com 25%",
+        "X, porque tem a maior população",
+        "X e Z empatam, ambas com 30 mil a mais"
+      ],
+      "correta": 2,
+      "explicacao": "X: 30 ÷ 200 = 15%. Y: 10 ÷ 50 = 20%. Z: 30 ÷ 120 = 25%. Dica de mergulhador: compare porcentagens, não diferenças.",
+      "comentarios": [
+        "Z cresceu mais.",
+        "X cresceu 15%.",
+        "",
+        "População alta não é crescimento alto.",
+        "O aumento absoluto é igual, mas as bases são diferentes."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q08-v1",
+      "varianteDe": "mat-tabelas-graficos-q08",
+      "tema": "Leitura de tabelas",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Uma pesquisa com 500 alunos mostra quem faz exercício: 1º ano, 120 de 200; 2º ano, 90 de 180; 3º ano, 72 de 120. Em qual ano a porcentagem é menor, e qual é ela?",
+      "alternativas": [
+        "2º ano, com 90%",
+        "2º ano, com 50%",
+        "1º ano, com 24%",
+        "2º ano, com 18%",
+        "3º ano, com 14,4%"
+      ],
+      "correta": 1,
+      "explicacao": "1º: 60%. 2º: 90 ÷ 180 = 50%. 3º: 72 ÷ 120 = 60%. Dica de mergulhador: divida pelo total de cada grupo.",
+      "comentarios": [
+        "Usou o número de alunos como porcentagem.",
+        "",
+        "Dividiu pelo total da pesquisa.",
+        "Dividiu pelo total da pesquisa.",
+        "Dividiu pelo total da pesquisa."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q09-v1",
+      "varianteDe": "mat-tabelas-graficos-q09",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Qual gráfico mostra melhor como o orçamento de uma família se divide entre moradia, comida, transporte e lazer?",
+      "alternativas": [
+        "Gráfico de linhas",
+        "Gráfico de setores",
+        "Histograma",
+        "Gráfico de dispersão",
+        "Pictograma de pessoas"
+      ],
+      "correta": 1,
+      "explicacao": "Partes de um todo que somam 100% pedem pizza. Dica de mergulhador: divisão de um todo, setores.",
+      "comentarios": [
+        "Serve para evolução no tempo.",
+        "",
+        "Serve para faixas de valores.",
+        "Serve para relacionar duas variáveis.",
+        "Não mostra partes de um todo."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q10-v1",
+      "varianteDe": "mat-tabelas-graficos-q10",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Num gráfico de setores, uma fatia representa 15% do total. Qual é o ângulo dessa fatia?",
+      "alternativas": [
+        "36°",
+        "24°",
+        "54°",
+        "15°",
+        "150°"
+      ],
+      "correta": 2,
+      "explicacao": "15 × 3,6 = 54°. Dica de mergulhador: porcentagem × 3,6.",
+      "comentarios": [
+        "Calculou 10%.",
+        "Dividiu 360 por 15.",
+        "",
+        "Usou a porcentagem como ângulo.",
+        "Multiplicou por 10."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q11-v1",
+      "varianteDe": "mat-tabelas-graficos-q11",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Num pictograma, cada figura de carro vale 200 carros. Uma fábrica aparece com 4 figuras e um quarto. Quantos carros ela produziu?",
+      "alternativas": [
+        "1.000",
+        "425",
+        "204,25",
+        "850",
+        "800"
+      ],
+      "correta": 3,
+      "explicacao": "4,25 × 200 = 850. Dica de mergulhador: um quarto de figura vale um quarto da legenda.",
+      "comentarios": [
+        "Contou o quarto como figura inteira.",
+        "Multiplicou por 100.",
+        "Somou 200 e 4,25.",
+        "",
+        "Ignorou o quarto de figura."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q12-v1",
+      "varianteDe": "mat-tabelas-graficos-q12",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Num gráfico de setores sobre 900 eleitores, o setor de um candidato tem 120°. Quantos eleitores ele tem?",
+      "alternativas": [
+        "1.080",
+        "90",
+        "120",
+        "450",
+        "300"
+      ],
+      "correta": 4,
+      "explicacao": "120 ÷ 360 = 1/3; 900 ÷ 3 = 300. Dica de mergulhador: 120° é um terço do círculo.",
+      "comentarios": [
+        "Multiplicou 120 por 9.",
+        "Calculou 10%.",
+        "Usou o ângulo como quantidade.",
+        "Usou metade.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q13-v1",
+      "varianteDe": "mat-tabelas-graficos-q13",
+      "tema": "Tipos de gráfico",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Numa pesquisa, cada pessoa pode marcar vários esportes que pratica. Qual gráfico é adequado para mostrar os resultados?",
+      "alternativas": [
+        "Gráfico de setores, porque mostra partes",
+        "Gráfico de setores com uma fatia \"outros\"",
+        "Gráfico de linhas, ligando os esportes",
+        "Pictograma com uma figura por pessoa",
+        "Gráfico de colunas, uma para cada esporte"
+      ],
+      "correta": 4,
+      "explicacao": "Respostas múltiplas não formam um todo; colunas comparam cada opção. Dica de mergulhador: setores só para partes de um todo.",
+      "comentarios": [
+        "As partes não somam 100%.",
+        "Continua passando de 100%.",
+        "Não há evolução no tempo.",
+        "Não mostra os esportes.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q14-v1",
+      "varianteDe": "mat-tabelas-graficos-q14",
+      "tema": "Variação em gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Num gráfico de linhas, um trecho horizontal indica:",
+      "alternativas": [
+        "O maior valor do gráfico",
+        "Queda",
+        "Crescimento rápido",
+        "Um erro no gráfico",
+        "Que o valor ficou constante"
+      ],
+      "correta": 4,
+      "explicacao": "Linha horizontal: o valor não mudou. Dica de mergulhador: plano é parado.",
+      "comentarios": [
+        "Pode estar em qualquer altura.",
+        "Queda é um trecho para baixo.",
+        "Isso seria um trecho íngreme para cima.",
+        "É uma situação normal.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q15-v1",
+      "varianteDe": "mat-tabelas-graficos-q15",
+      "tema": "Variação em gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um gráfico mostra o nível de um reservatório: 60% em janeiro, 55% em fevereiro, 55% em março e 70% em abril. Em que período o nível caiu?",
+      "alternativas": [
+        "Em nenhum período",
+        "De março para abril",
+        "Em todos os períodos",
+        "De janeiro para fevereiro",
+        "De fevereiro para março"
+      ],
+      "correta": 3,
+      "explicacao": "De 60% para 55%, entre janeiro e fevereiro. Dica de mergulhador: queda é linha descendo.",
+      "comentarios": [
+        "Caiu de 60% para 55%.",
+        "Subiu.",
+        "Houve estabilidade e alta.",
+        "",
+        "Ficou igual."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q16-v1",
+      "varianteDe": "mat-tabelas-graficos-q16",
+      "tema": "Variação em gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "As vendas de uma empresa foram 50 mil em 2021, 60 mil em 2022 e 75 mil em 2023. Em qual período o crescimento percentual foi maior?",
+      "alternativas": [
+        "De 2021 a 2022, com 10 mil",
+        "De 2022 a 2023, com 25%",
+        "De 2021 a 2022, com 20%",
+        "De 2022 a 2023, com 20%",
+        "Os dois iguais"
+      ],
+      "correta": 1,
+      "explicacao": "2021–2022: 10 ÷ 50 = 20%. 2022–2023: 15 ÷ 60 = 25%. Dica de mergulhador: divida pelo valor de antes.",
+      "comentarios": [
+        "Respondeu em número absoluto.",
+        "",
+        "20% é menor que 25%.",
+        "Dividiu pelo valor final.",
+        "As taxas são 20% e 25%."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q17-v1",
+      "varianteDe": "mat-tabelas-graficos-q17",
+      "tema": "Variação em gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um gráfico de colunas mostra as matrículas de um curso por bimestre: 120, 180, 150 e 210. Qual foi a média por bimestre?",
+      "alternativas": [
+        "165",
+        "210",
+        "120",
+        "150",
+        "660"
+      ],
+      "correta": 0,
+      "explicacao": "660 ÷ 4 = 165. Dica de mergulhador: média é soma ÷ quantidade.",
+      "comentarios": [
+        "",
+        "Usou o maior valor.",
+        "Usou o menor valor.",
+        "Usou o 3º bimestre.",
+        "É o total."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q18-v1",
+      "varianteDe": "mat-tabelas-graficos-q18",
+      "tema": "Variação em gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um gráfico mostra a inflação anual: 4% no ano 1, 10% no ano 2, 6% no ano 3 e 5% no ano 4. Qual foi a maior variação entre anos seguidos?",
+      "alternativas": [
+        "10%, no ano 2",
+        "Alta de 1 ponto, do ano 1 para o ano 4",
+        "Alta de 6 pontos percentuais, do ano 1 para o ano 2",
+        "Queda de 5 pontos, do ano 2 para o ano 4",
+        "Queda de 4 pontos, do ano 2 para o ano 3"
+      ],
+      "correta": 2,
+      "explicacao": "Variações: +6, −4, −1. A maior é a alta de 6 pontos. Dica de mergulhador: calcule a diferença de cada par vizinho.",
+      "comentarios": [
+        "É o maior valor, não a maior variação.",
+        "Não são anos seguidos.",
+        "",
+        "Não são anos seguidos.",
+        "A alta de 6 é maior."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q19-v1",
+      "varianteDe": "mat-tabelas-graficos-q19",
+      "tema": "Variação em gráficos",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "Um gráfico mostra as matrículas de duas escolas. Escola X: 200, 220, 240 e 260. Escola Y: 50, 60, 70 e 80. Qual afirmação é correta?",
+      "alternativas": [
+        "Y cresceu mais em porcentagem: 60% contra 30% de X",
+        "X cresceu 60% e Y, 30%",
+        "As duas cresceram 30%",
+        "X cresceu mais, porque tem mais alunos",
+        "Y cresceu 30 alunos, mais que X"
+      ],
+      "correta": 0,
+      "explicacao": "X: 60 ÷ 200 = 30%. Y: 30 ÷ 50 = 60%. Dica de mergulhador: crescimento percentual divide pelo ponto de partida.",
+      "comentarios": [
+        "",
+        "Trocou as escolas.",
+        "Y cresceu 60%.",
+        "Tamanho não é crescimento.",
+        "X cresceu 60 alunos."
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-q20-v1",
+      "varianteDe": "mat-tabelas-graficos-q20",
+      "tema": "Variação em gráficos",
+      "dificuldade": "dificil",
+      "fase": "mat-tabelas-graficos",
+      "enunciado": "A produção de grãos de uma região passou de 300 mil para 360 mil toneladas, e a área plantada, de 100 mil para 150 mil hectares. O que aconteceu com a produtividade (toneladas por hectare)?",
+      "alternativas": [
+        "Ficou igual",
+        "Caiu 50%",
+        "Subiu 50%",
+        "Subiu 20%",
+        "Caiu 20%"
+      ],
+      "correta": 4,
+      "explicacao": "Antes: 3 t/ha. Depois: 360 ÷ 150 = 2,4 t/ha. Queda de 0,6 ÷ 3 = 20%. Dica de mergulhador: taxa por unidade, divida antes de comparar.",
+      "comentarios": [
+        "As variações são diferentes.",
+        "Errou a divisão.",
+        "Considerou só a área.",
+        "Considerou só a produção.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q01-v1",
+      "varianteDe": "mat-graficos-enganosos-q01",
+      "tema": "Eixos e escalas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Por que, num gráfico de colunas, o eixo vertical deve começar no zero?",
+      "alternativas": [
+        "Para mostrar números negativos",
+        "Para que a altura seja proporcional ao valor",
+        "Para combinar com as cores",
+        "Para caber na página",
+        "Porque fica mais bonito"
+      ],
+      "correta": 1,
+      "explicacao": "Só com o zero a altura de cada coluna representa o valor inteiro. Dica de mergulhador: altura proporcional, eixo no zero.",
+      "comentarios": [
+        "O zero não serve para isso.",
+        "",
+        "Cores não têm relação com o eixo.",
+        "Não é questão de espaço.",
+        "É questão de proporção, não de estética."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q02-v1",
+      "varianteDe": "mat-graficos-enganosos-q02",
+      "tema": "Eixos e escalas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Com o eixo começando em 80, colunas de 82 e 90 ficam com alturas visíveis de 2 e 10. Quantas vezes maior parece a segunda coluna?",
+      "alternativas": [
+        "Cerca de 1,1 vez",
+        "2 vezes",
+        "8 vezes",
+        "5 vezes",
+        "10 vezes"
+      ],
+      "correta": 3,
+      "explicacao": "10 ÷ 2 = 5. Dica de mergulhador: a ilusão vem do corte do eixo.",
+      "comentarios": [
+        "Essa é a razão real.",
+        "Errou a divisão.",
+        "Usou a diferença.",
+        "",
+        "Usou a altura visível."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q03-v1",
+      "varianteDe": "mat-graficos-enganosos-q03",
+      "tema": "Eixos e escalas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Num gráfico, o eixo vertical tem as marcas 0, 10, 20, 50 e 100, igualmente espaçadas. Qual é o problema?",
+      "alternativas": [
+        "A escala é irregular e deforma as alturas",
+        "Falta o número 200",
+        "O eixo começa no zero",
+        "Os números estão fora de ordem",
+        "Os números são redondos demais"
+      ],
+      "correta": 0,
+      "explicacao": "Espaços iguais para saltos de 10 e de 50 deformam a proporção. Dica de mergulhador: a escala precisa ter passos iguais.",
+      "comentarios": [
+        "",
+        "Não é esse o problema.",
+        "Isso é correto.",
+        "Estão em ordem.",
+        "Isso não é problema."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q04-v1",
+      "varianteDe": "mat-graficos-enganosos-q04",
+      "tema": "Eixos e escalas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico com eixo começando em 500 mostra 520 e 560. Qual foi o aumento real?",
+      "alternativas": [
+        "200%",
+        "Cerca de 7,1%",
+        "3 vezes",
+        "Cerca de 7,7%",
+        "40%"
+      ],
+      "correta": 3,
+      "explicacao": "40 ÷ 520 ≈ 7,7%. Dica de mergulhador: valor contra valor.",
+      "comentarios": [
+        "Comparou as alturas visíveis, 20 e 60.",
+        "Dividiu pelo valor final.",
+        "É a impressão das alturas.",
+        "",
+        "Usou a diferença como porcentagem."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q05-v1",
+      "varianteDe": "mat-graficos-enganosos-q05",
+      "tema": "Eixos e escalas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Dois gráficos mostram a mesma queda, de 50 para 45. No primeiro, o eixo vai de 0 a 60; no segundo, de 44 a 51. Qual parece mostrar uma queda maior?",
+      "alternativas": [
+        "Os dois parecem iguais",
+        "O primeiro, porque começa no zero",
+        "O primeiro, porque mostra o eixo inteiro",
+        "Nenhum mostra queda",
+        "O segundo, porque o eixo ampliado aumenta a inclinação"
+      ],
+      "correta": 4,
+      "explicacao": "No eixo de 44 a 51, a queda de 5 ocupa quase toda a altura. Dica de mergulhador: escala apertada, inclinação exagerada.",
+      "comentarios": [
+        "As escalas mudam a impressão.",
+        "O zero suaviza a queda.",
+        "O eixo inteiro deixa a queda suave.",
+        "Os dois mostram.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q06-v1",
+      "varianteDe": "mat-graficos-enganosos-q06",
+      "tema": "Eixos e escalas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico mostrou os juros passando de 10,50% para 10,75%, com o eixo de 10,4% a 10,8%. Qual foi a variação real?",
+      "alternativas": [
+        "10,75%",
+        "0,25 ponto percentual",
+        "2,5 pontos percentuais",
+        "25 pontos percentuais",
+        "Mais que dobrou"
+      ],
+      "correta": 1,
+      "explicacao": "10,75 − 10,50 = 0,25 ponto percentual. Dica de mergulhador: subtraia os valores do eixo.",
+      "comentarios": [
+        "É o valor final.",
+        "",
+        "Errou a vírgula.",
+        "Errou a vírgula.",
+        "É a impressão do eixo."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q07-v1",
+      "varianteDe": "mat-graficos-enganosos-q07",
+      "tema": "Eixos e escalas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico de colunas compara A = 60 e B = 90, com o eixo começando em 45. Quantas vezes mais alta parece B, e quantas vezes ela é maior de fato?",
+      "alternativas": [
+        "Parece e é 3 vezes",
+        "Parece 3 vezes; de fato, 33% maior",
+        "Parece 2 vezes; de fato, 1,5 vez",
+        "Parece 1,5 vez; de fato, 3 vezes",
+        "Parece 3 vezes; de fato, 1,5 vez"
+      ],
+      "correta": 4,
+      "explicacao": "Alturas visíveis: 15 e 45 (3 vezes). Valores: 90 ÷ 60 = 1,5. Dica de mergulhador: altura visível = valor − início do eixo.",
+      "comentarios": [
+        "O real é 1,5.",
+        "Dividiu a diferença pelo valor de B.",
+        "Dividiu 90 por 45.",
+        "Trocou a aparência pelo real.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q08-v1",
+      "varianteDe": "mat-graficos-enganosos-q08",
+      "tema": "Eixos e escalas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Uma linha mostra a febre de um paciente subindo de 37,0 °C para 39,0 °C, com o eixo de 36 °C a 40 °C. Esse eixo sem o zero é um erro?",
+      "alternativas": [
+        "Sim, porque esconde a febre",
+        "Sim, porque eixo sem zero sempre engana",
+        "Não: começar no zero achataria uma variação importante",
+        "Sim, porque exagera 2 °C como 200%",
+        "Não, porque temperatura nunca tem zero"
+      ],
+      "correta": 2,
+      "explicacao": "Variações pequenas e importantes justificam um eixo ajustado, desde que a escala esteja clara. Dica de mergulhador: avalie se o corte esconde ou revela.",
+      "comentarios": [
+        "Ele a mostra melhor.",
+        "Nem sempre.",
+        "",
+        "A escala está explícita.",
+        "Temperatura pode ser zero."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q09-v1",
+      "varianteDe": "mat-graficos-enganosos-q09",
+      "tema": "Figuras e áreas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Num pictograma, um valor triplicou, e a figura foi desenhada com o triplo da altura e o triplo da largura. Quantas vezes maior parece a área?",
+      "alternativas": [
+        "6 vezes",
+        "81 vezes",
+        "9 vezes",
+        "3 vezes",
+        "27 vezes"
+      ],
+      "correta": 2,
+      "explicacao": "3 × 3 = 9. Dica de mergulhador: área, fator ao quadrado.",
+      "comentarios": [
+        "Somou.",
+        "Elevou à quarta.",
+        "",
+        "É o aumento real.",
+        "Seria em três dimensões."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q10-v1",
+      "varianteDe": "mat-graficos-enganosos-q10",
+      "tema": "Figuras e áreas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Por que gráficos de setores em 3D podem enganar?",
+      "alternativas": [
+        "Porque não têm legenda",
+        "A perspectiva faz as fatias da frente parecerem maiores",
+        "Porque só aceitam três fatias",
+        "Porque as fatias não somam 100%",
+        "Porque são sempre coloridos"
+      ],
+      "correta": 1,
+      "explicacao": "A inclinação 3D aumenta visualmente o que está perto do leitor. Dica de mergulhador: prefira gráficos planos.",
+      "comentarios": [
+        "Podem ter.",
+        "",
+        "Aceitam várias.",
+        "Somam.",
+        "Cor não é o problema."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q11-v1",
+      "varianteDe": "mat-graficos-enganosos-q11",
+      "tema": "Figuras e áreas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico mostra um barril pequeno (produção de 1 milhão de barris) e outro com o dobro de altura, largura e profundidade (2 milhões). Como o barril maior pode ser percebido?",
+      "alternativas": [
+        "Como 6 vezes maior",
+        "Como 2 vezes maior",
+        "Como 4 vezes maior",
+        "Como 16 vezes maior",
+        "Como 8 vezes maior, pelo volume"
+      ],
+      "correta": 4,
+      "explicacao": "2³ = 8. Dica de mergulhador: volume, fator ao cubo.",
+      "comentarios": [
+        "Somou.",
+        "É o valor real.",
+        "Seria só a área.",
+        "Elevou à quarta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q12-v1",
+      "varianteDe": "mat-graficos-enganosos-q12",
+      "tema": "Figuras e áreas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um valor ficou 4 vezes maior. Para que a área de um ícone também fique 4 vezes maior, por quanto se multiplicam altura e largura?",
+      "alternativas": [
+        "8",
+        "1,41",
+        "2",
+        "4",
+        "16"
+      ],
+      "correta": 2,
+      "explicacao": "√4 = 2: lados dobram, área quadruplica. Dica de mergulhador: raiz do fator nos lados.",
+      "comentarios": [
+        "Multiplicou por 2.",
+        "Tirou a raiz de 2.",
+        "",
+        "A área ficaria 16 vezes maior.",
+        "Elevou ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q13-v1",
+      "varianteDe": "mat-graficos-enganosos-q13",
+      "tema": "Figuras e áreas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um gráfico de barras em 3D mostra duas barras de mesmo valor, uma na frente e outra ao fundo. O que pode acontecer?",
+      "alternativas": [
+        "A soma mudar",
+        "As duas parecerem iguais sempre",
+        "O eixo começar no zero",
+        "A barra da frente parecer maior, mesmo com valor igual",
+        "A barra do fundo sumir"
+      ],
+      "correta": 3,
+      "explicacao": "A perspectiva aumenta o que está perto. Dica de mergulhador: desconfie de profundidade em gráficos.",
+      "comentarios": [
+        "Os valores não mudam.",
+        "A perspectiva altera.",
+        "Não tem relação.",
+        "",
+        "Ela aparece, só que menor."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q14-v1",
+      "varianteDe": "mat-graficos-enganosos-q14",
+      "tema": "Recorte e taxas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "A cidade X tem 300 mil habitantes e 600 acidentes por ano; a cidade Y tem 40 mil habitantes e 120 acidentes. Qual tem a maior taxa por mil habitantes?",
+      "alternativas": [
+        "Y, com 3 por mil",
+        "Y, com 120 por mil",
+        "X, porque tem mais acidentes",
+        "As duas têm a mesma taxa",
+        "X, com 2 por mil"
+      ],
+      "correta": 0,
+      "explicacao": "X: 600 ÷ 300 = 2 por mil. Y: 120 ÷ 40 = 3 por mil. Dica de mergulhador: taxa compara lugares de tamanhos diferentes.",
+      "comentarios": [
+        "",
+        "Usou o número absoluto.",
+        "Número absoluto não é taxa.",
+        "São 2 e 3 por mil.",
+        "É menor que a de Y."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q15-v1",
+      "varianteDe": "mat-graficos-enganosos-q15",
+      "tema": "Recorte e taxas",
+      "dificuldade": "facil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um político mostra o crescimento da economia só a partir do mês em que ela começou a melhorar. O que o leitor deve perguntar?",
+      "alternativas": [
+        "Como foi o período que ficou de fora",
+        "Qual fonte de letra foi usada",
+        "Se o gráfico é bonito",
+        "Qual é a cor das linhas",
+        "Quantas linhas o gráfico tem"
+      ],
+      "correta": 0,
+      "explicacao": "Um recorte favorável pode esconder uma queda anterior. Dica de mergulhador: veja a série inteira.",
+      "comentarios": [
+        "",
+        "Irrelevante.",
+        "Estética não é dado.",
+        "Não muda a conclusão.",
+        "Não é o ponto."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q16-v1",
+      "varianteDe": "mat-graficos-enganosos-q16",
+      "tema": "Recorte e taxas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "O hospital R teve 150 internações por gripe numa área de 50 mil habitantes; o hospital S teve 400 numa área de 200 mil. Qual área tem a maior taxa por 100 mil habitantes?",
+      "alternativas": [
+        "A de S, com 200 por 100 mil",
+        "A de S, porque teve mais internações",
+        "A de R, com 150 por 100 mil",
+        "As duas são iguais",
+        "A de R, com 300 por 100 mil"
+      ],
+      "correta": 4,
+      "explicacao": "R: 150 ÷ 0,5 = 300. S: 400 ÷ 2 = 200 por 100 mil. Dica de mergulhador: taxa = casos ÷ população × 100 mil.",
+      "comentarios": [
+        "É menor que a de R.",
+        "Número absoluto não é taxa.",
+        "Esqueceu de ajustar a população.",
+        "São 300 e 200.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q17-v1",
+      "varianteDe": "mat-graficos-enganosos-q17",
+      "tema": "Recorte e taxas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Uma propaganda diz: \"Remédio reduz o risco pela metade\". O risco caiu de 2 em 10.000 para 1 em 10.000. O que falta na propaganda?",
+      "alternativas": [
+        "A cor da embalagem",
+        "O aumento do risco",
+        "Nada: metade é sempre muito",
+        "A redução absoluta, de 1 caso em 10.000",
+        "O preço do remédio"
+      ],
+      "correta": 3,
+      "explicacao": "O risco relativo caiu 50%, mas o absoluto caiu 0,01 ponto percentual. Dica de mergulhador: peça sempre os números absolutos.",
+      "comentarios": [
+        "Irrelevante.",
+        "O risco caiu.",
+        "Sobre uma base mínima, é pouco.",
+        "",
+        "Não muda a estatística."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q18-v1",
+      "varianteDe": "mat-graficos-enganosos-q18",
+      "tema": "Recorte e taxas",
+      "dificuldade": "medio",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Dois gráficos lado a lado: o eixo de A vai de 0 a 50 e o de B, de 0 a 200. A coluna de A chega ao topo (50) e a de B, à metade (100). O que se pode concluir?",
+      "alternativas": [
+        "B vende 4 vezes mais",
+        "A vende o dobro de B",
+        "As duas vendem o mesmo",
+        "A vende mais, porque a coluna é mais alta",
+        "B vende o dobro de A"
+      ],
+      "correta": 4,
+      "explicacao": "A: 50. B: 100. B vende o dobro. Dica de mergulhador: a altura só vale na sua própria escala.",
+      "comentarios": [
+        "Errou a leitura.",
+        "Inverteu.",
+        "50 e 100 são diferentes.",
+        "As escalas são diferentes.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q19-v1",
+      "varianteDe": "mat-graficos-enganosos-q19",
+      "tema": "Recorte e taxas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "Um hospital teve 80 infecções em 4.000 internações num ano e 90 em 6.000 no ano seguinte. O que aconteceu com a taxa de infecção?",
+      "alternativas": [
+        "Caiu de 2% para 1,5%",
+        "Subiu de 1,5% para 2%",
+        "Subiu 12,5%",
+        "Caiu 50%",
+        "Ficou igual"
+      ],
+      "correta": 0,
+      "explicacao": "80 ÷ 4.000 = 2%; 90 ÷ 6.000 = 1,5%. Dica de mergulhador: divida pelo número de internações de cada ano.",
+      "comentarios": [
+        "",
+        "Inverteu os anos.",
+        "Considerou só as infecções.",
+        "Errou a conta.",
+        "As taxas são diferentes."
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-q20-v1",
+      "varianteDe": "mat-graficos-enganosos-q20",
+      "tema": "Recorte e taxas",
+      "dificuldade": "dificil",
+      "fase": "mat-graficos-enganosos",
+      "enunciado": "O número de pessoas com smartphone subiu de 30 milhões para 45 milhões, e a população passou de 120 milhões para 150 milhões. O que aconteceu com a porcentagem com smartphone?",
+      "alternativas": [
+        "Caiu",
+        "Subiu 50%",
+        "Ficou igual",
+        "Subiu de 25% para 30%",
+        "Subiu 15 pontos percentuais"
+      ],
+      "correta": 3,
+      "explicacao": "30 ÷ 120 = 25%; 45 ÷ 150 = 30%. Dica de mergulhador: compare a parte com o seu total em cada momento.",
+      "comentarios": [
+        "Subiu.",
+        "Considerou só os usuários.",
+        "As porcentagens são diferentes.",
+        "",
+        "Usou a diferença em milhões como pontos."
+      ]
+    },
+    {
+      "id": "mat-media-q01-v1",
+      "varianteDe": "mat-media-q01",
+      "tema": "Média aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Qual é a média das notas 5, 8, 10 e 9?",
+      "alternativas": [
+        "7,67",
+        "9",
+        "10,67",
+        "8",
+        "32"
+      ],
+      "correta": 3,
+      "explicacao": "32 ÷ 4 = 8. Dica de mergulhador: conte quantos valores há.",
+      "comentarios": [
+        "Ignorou o 9.",
+        "Ignorou o 5.",
+        "Dividiu por 3.",
+        "",
+        "É a soma."
+      ]
+    },
+    {
+      "id": "mat-media-q02-v1",
+      "varianteDe": "mat-media-q02",
+      "tema": "Média aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "A média de 6 números é 12,5. Qual é a soma deles?",
+      "alternativas": [
+        "75",
+        "12,5",
+        "18,5",
+        "2,08",
+        "6,5"
+      ],
+      "correta": 0,
+      "explicacao": "12,5 × 6 = 75. Dica de mergulhador: média vezes quantidade.",
+      "comentarios": [
+        "",
+        "Usou a média.",
+        "Somou.",
+        "Dividiu.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-media-q03-v1",
+      "varianteDe": "mat-media-q03",
+      "tema": "Média aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Uma casa gastou 45, 55, 50 e 60 kWh em quatro semanas. Qual foi a média semanal?",
+      "alternativas": [
+        "210 kWh",
+        "50 kWh",
+        "70 kWh",
+        "57,5 kWh",
+        "52,5 kWh"
+      ],
+      "correta": 4,
+      "explicacao": "210 ÷ 4 = 52,5 kWh. Dica de mergulhador: some tudo e divida por 4.",
+      "comentarios": [
+        "É o total.",
+        "É um dos valores.",
+        "Dividiu por 3.",
+        "Usou só os dois maiores.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-media-q04-v1",
+      "varianteDe": "mat-media-q04",
+      "tema": "Média aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Num grupo, as idades são 20, 22, 22, 24 e 32. Qual é a média?",
+      "alternativas": [
+        "22",
+        "32",
+        "120",
+        "30",
+        "24"
+      ],
+      "correta": 4,
+      "explicacao": "120 ÷ 5 = 24. Dica de mergulhador: some e divida pela quantidade.",
+      "comentarios": [
+        "É o valor que mais se repete.",
+        "É o maior.",
+        "É a soma.",
+        "Dividiu por 4.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-media-q05-v1",
+      "varianteDe": "mat-media-q05",
+      "tema": "Média aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Uma aluna tirou 8, 5 e 6 em três provas. Quanto precisa tirar na quarta para ficar com média 7?",
+      "alternativas": [
+        "6,33",
+        "9",
+        "28",
+        "7",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "28 − 19 = 9. Dica de mergulhador: pense na soma.",
+      "comentarios": [
+        "É a média atual.",
+        "",
+        "É a soma necessária.",
+        "É a média desejada.",
+        "Errou a soma das notas."
+      ]
+    },
+    {
+      "id": "mat-media-q06-v1",
+      "varianteDe": "mat-media-q06",
+      "tema": "Média aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "A média de 6 números é 15. Retirando um deles, a média dos 5 restantes passa a ser 14. Qual número foi retirado?",
+      "alternativas": [
+        "15",
+        "20",
+        "1",
+        "14",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "Antes: 90. Depois: 70. Retirado: 20. Dica de mergulhador: a diferença das somas é o número.",
+      "comentarios": [
+        "É a média antiga.",
+        "",
+        "É a diferença das médias.",
+        "É a nova média.",
+        "Somou 1 à média."
+      ]
+    },
+    {
+      "id": "mat-media-q07-v1",
+      "varianteDe": "mat-media-q07",
+      "tema": "Média aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Quatro amigos têm média de idade de 20 anos. Entra um quinto, de 45 anos. Qual é a nova média?",
+      "alternativas": [
+        "45 anos",
+        "25 anos",
+        "31,25 anos",
+        "32,5 anos",
+        "20 anos"
+      ],
+      "correta": 1,
+      "explicacao": "(80 + 45) ÷ 5 = 25. Dica de mergulhador: soma antiga + novo valor.",
+      "comentarios": [
+        "Usou a idade nova.",
+        "",
+        "Dividiu por 4.",
+        "Fez a média de 20 e 45.",
+        "Ignorou o novo amigo."
+      ]
+    },
+    {
+      "id": "mat-media-q08-v1",
+      "varianteDe": "mat-media-q08",
+      "tema": "Média aritmética",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "Um conjunto de 8 notas tem média 7. Uma nota 9 foi lançada errada: o certo era 5. Qual é a média corrigida?",
+      "alternativas": [
+        "3",
+        "7",
+        "6",
+        "6,5",
+        "6,375"
+      ],
+      "correta": 3,
+      "explicacao": "Soma: 56. Corrigida: 56 − 9 + 5 = 52. Média: 6,5. Dica de mergulhador: corrija a soma e divida de novo.",
+      "comentarios": [
+        "Subtraiu a correção inteira da média.",
+        "Ignorou a correção.",
+        "Achou que a média cai 1 ponto.",
+        "",
+        "Tirou 5 da soma em vez de trocar."
+      ]
+    },
+    {
+      "id": "mat-media-q09-v1",
+      "varianteDe": "mat-media-q09",
+      "tema": "Média ponderada",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Uma prova tem nota 8, com peso 3, e um trabalho tem nota 4, com peso 1. Qual é a média ponderada?",
+      "alternativas": [
+        "7",
+        "6",
+        "9,33",
+        "14",
+        "28"
+      ],
+      "correta": 0,
+      "explicacao": "(24 + 4) ÷ 4 = 7. Dica de mergulhador: soma dos pesos no denominador.",
+      "comentarios": [
+        "",
+        "Fez a média simples.",
+        "Dividiu por 3.",
+        "Dividiu por 2.",
+        "Não dividiu."
+      ]
+    },
+    {
+      "id": "mat-media-q10-v1",
+      "varianteDe": "mat-media-q10",
+      "tema": "Média ponderada",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Num vestibular, Física tem peso 2 e Química, peso 3. Um candidato tirou 5 em Física e 8 em Química. Qual é a média?",
+      "alternativas": [
+        "6,5",
+        "34",
+        "6,2",
+        "6,8",
+        "17"
+      ],
+      "correta": 3,
+      "explicacao": "(10 + 24) ÷ 5 = 6,8. Dica de mergulhador: confira qual peso vai com qual nota.",
+      "comentarios": [
+        "Fez a média simples.",
+        "Não dividiu.",
+        "Trocou os pesos.",
+        "",
+        "Dividiu por 2."
+      ]
+    },
+    {
+      "id": "mat-media-q11-v1",
+      "varianteDe": "mat-media-q11",
+      "tema": "Média ponderada",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Um posto comprou 20 L de óleo a R$ 6 e 60 L a R$ 5. Qual foi o preço médio por litro?",
+      "alternativas": [
+        "R$ 21,00",
+        "R$ 5,75",
+        "R$ 5,50",
+        "R$ 420,00",
+        "R$ 5,25"
+      ],
+      "correta": 4,
+      "explicacao": "(120 + 300) ÷ 80 = R$ 5,25. Dica de mergulhador: quantidade como peso.",
+      "comentarios": [
+        "Dividiu o total por 20.",
+        "Trocou as quantidades.",
+        "Fez a média simples.",
+        "É o total.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-media-q12-v1",
+      "varianteDe": "mat-media-q12",
+      "tema": "Média ponderada",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Para média ponderada 7, com prova de peso 2 e trabalho de peso 1, uma aluna tirou 6 na prova. Quanto precisa no trabalho?",
+      "alternativas": [
+        "7",
+        "7,5",
+        "21",
+        "8",
+        "9"
+      ],
+      "correta": 4,
+      "explicacao": "2 × 6 + x = 21, logo x = 9. Dica de mergulhador: monte a soma ponderada.",
+      "comentarios": [
+        "Usou a média desejada.",
+        "Trocou os pesos.",
+        "É a soma necessária.",
+        "Fez como média simples.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-media-q13-v1",
+      "varianteDe": "mat-media-q13",
+      "tema": "Média ponderada",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Um curso usa Matemática com peso 2 e Linguagens com peso 1. Um candidato tem 700 e 580. Qual é a média?",
+      "alternativas": [
+        "660",
+        "640",
+        "1.980",
+        "990",
+        "620"
+      ],
+      "correta": 0,
+      "explicacao": "(1.400 + 580) ÷ 3 = 660. Dica de mergulhador: divida pela soma dos pesos.",
+      "comentarios": [
+        "",
+        "Fez a média simples.",
+        "Não dividiu.",
+        "Dividiu por 2.",
+        "Trocou os pesos."
+      ]
+    },
+    {
+      "id": "mat-media-q14-v1",
+      "varianteDe": "mat-media-q14",
+      "tema": "Média ponderada",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "Dois candidatos: C tirou 5 em Redação (peso 2) e 9 em Ciências (peso 1); D tirou 7 em Redação e 6 em Ciências. Pela média ponderada, quem fica na frente?",
+      "alternativas": [
+        "C, com cerca de 7,67 contra 6,33",
+        "Não dá para comparar",
+        "D, com cerca de 6,67 contra 6,33",
+        "Os dois empatam",
+        "C, porque a média simples dele é 7"
+      ],
+      "correta": 2,
+      "explicacao": "C: (10 + 9) ÷ 3 ≈ 6,33. D: (14 + 6) ÷ 3 ≈ 6,67. Dica de mergulhador: aplique os pesos a cada candidato.",
+      "comentarios": [
+        "Trocou os pesos.",
+        "Dá, pela média ponderada.",
+        "",
+        "As médias são diferentes.",
+        "A seleção usa média ponderada."
+      ]
+    },
+    {
+      "id": "mat-media-q15-v1",
+      "varianteDe": "mat-media-q15",
+      "tema": "Média ponderada",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "Um cinema vendeu 50 ingressos a R$ 20, 30 a R$ 40 e 20 a R$ 60. Qual foi o preço médio do ingresso?",
+      "alternativas": [
+        "R$ 46,00",
+        "R$ 40,00",
+        "R$ 1.133,33",
+        "R$ 3.400,00",
+        "R$ 34,00"
+      ],
+      "correta": 4,
+      "explicacao": "(1.000 + 1.200 + 1.200) ÷ 100 = R$ 34. Dica de mergulhador: quantidades são os pesos.",
+      "comentarios": [
+        "Trocou as quantidades de R$ 20 e R$ 60.",
+        "Fez a média simples.",
+        "Dividiu pelo número de preços.",
+        "É o total.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-media-q16-v1",
+      "varianteDe": "mat-media-q16",
+      "tema": "Média de grupos",
+      "dificuldade": "facil",
+      "fase": "mat-media",
+      "enunciado": "Um grupo de 20 alunos tem média 5, e outro de 5 alunos tem média 10. Qual é a média geral?",
+      "alternativas": [
+        "6",
+        "7,5",
+        "9",
+        "15",
+        "150"
+      ],
+      "correta": 0,
+      "explicacao": "(100 + 50) ÷ 25 = 6. Dica de mergulhador: pondere pelos tamanhos.",
+      "comentarios": [
+        "",
+        "Fez a média das médias.",
+        "Trocou os tamanhos.",
+        "Somou as médias.",
+        "É a soma."
+      ]
+    },
+    {
+      "id": "mat-media-q17-v1",
+      "varianteDe": "mat-media-q17",
+      "tema": "Média de grupos",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Numa rua, 9 casas valem R$ 300 mil e uma mansão vale R$ 6 milhões. A média representa bem o preço das casas da rua?",
+      "alternativas": [
+        "Sim: a média é cerca de R$ 3,15 milhões",
+        "Sim, porque a média sempre é representativa",
+        "Não: a média é R$ 870 mil, quase o triplo da maioria",
+        "Sim: a média é R$ 300 mil",
+        "Não: a média é R$ 6 milhões"
+      ],
+      "correta": 2,
+      "explicacao": "(2,7 milhões + 6 milhões) ÷ 10 = R$ 870 mil. Dica de mergulhador: um valor extremo puxa tudo.",
+      "comentarios": [
+        "Fez a média das médias.",
+        "Um valor extremo a distorce.",
+        "",
+        "A média inclui a mansão.",
+        "É o valor da mansão."
+      ]
+    },
+    {
+      "id": "mat-media-q18-v1",
+      "varianteDe": "mat-media-q18",
+      "tema": "Média de grupos",
+      "dificuldade": "medio",
+      "fase": "mat-media",
+      "enunciado": "Quinze caixas têm média de 4 kg, e outras 5 têm média de 8 kg. Qual é a média de todas?",
+      "alternativas": [
+        "12 kg",
+        "100 kg",
+        "6 kg",
+        "5 kg",
+        "7 kg"
+      ],
+      "correta": 3,
+      "explicacao": "(60 + 40) ÷ 20 = 5. Dica de mergulhador: o grupo maior pesa mais.",
+      "comentarios": [
+        "Somou as médias.",
+        "É a soma.",
+        "Fez a média das médias.",
+        "",
+        "Trocou as quantidades."
+      ]
+    },
+    {
+      "id": "mat-media-q19-v1",
+      "varianteDe": "mat-media-q19",
+      "tema": "Média de grupos",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "Duas turmas têm médias 5 e 8, e a média geral é 7. Qual é a razão entre os alunos da turma de média 5 e os da turma de média 8?",
+      "alternativas": [
+        "5 para 8",
+        "3 para 1",
+        "2 para 1",
+        "1 para 2",
+        "1 para 1"
+      ],
+      "correta": 3,
+      "explicacao": "5a + 8b = 7a + 7b, logo b = 2a. Dica de mergulhador: a média geral perto de 8 indica mais alunos na turma de 8.",
+      "comentarios": [
+        "Usou as médias.",
+        "Errou a equação.",
+        "Inverteu.",
+        "",
+        "Com turmas iguais, a média seria 6,5."
+      ]
+    },
+    {
+      "id": "mat-media-q20-v1",
+      "varianteDe": "mat-media-q20",
+      "tema": "Média de grupos",
+      "dificuldade": "dificil",
+      "fase": "mat-media",
+      "enunciado": "A média de 20 alunos foi 7. Todos ganharam 1 ponto de bônus. Depois, um aluno que tinha tirado 3 foi excluído da lista. Qual é a nova média, aproximadamente?",
+      "alternativas": [
+        "8,26",
+        "8,21",
+        "7,21",
+        "8,42",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "Soma com bônus: 20 × 8 = 160. O excluído tinha 4. Nova soma: 156; 156 ÷ 19 ≈ 8,21. Dica de mergulhador: tire da soma o valor que o aluno tinha naquele momento.",
+      "comentarios": [
+        "Retirou a nota sem o bônus.",
+        "",
+        "Esqueceu o bônus.",
+        "Dividiu a soma com bônus por 19 sem retirar o aluno.",
+        "Considerou só o bônus."
+      ]
     }
   ],
   "pares": [
@@ -27028,6 +30147,78 @@
       "tema": "Revisão do módulo: porcentagem e finanças",
       "termo": "Valor presente",
       "definicao": "Futuro dividido pelo fator"
+    },
+    {
+      "id": "mat-tabelas-graficos-par-01",
+      "tema": "Tabelas e gráficos",
+      "termo": "Gráfico de linhas",
+      "definicao": "Evolução no tempo"
+    },
+    {
+      "id": "mat-tabelas-graficos-par-02",
+      "tema": "Tabelas e gráficos",
+      "termo": "Gráfico de setores",
+      "definicao": "Partes de um todo"
+    },
+    {
+      "id": "mat-tabelas-graficos-par-03",
+      "tema": "Tabelas e gráficos",
+      "termo": "Gráfico de colunas",
+      "definicao": "Comparação entre categorias"
+    },
+    {
+      "id": "mat-tabelas-graficos-par-04",
+      "tema": "Tabelas e gráficos",
+      "termo": "Dupla entrada",
+      "definicao": "Cruzamento de linha e coluna"
+    },
+    {
+      "id": "mat-graficos-enganosos-par-01",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "termo": "Eixo truncado",
+      "definicao": "Eixo que não começa no zero"
+    },
+    {
+      "id": "mat-graficos-enganosos-par-02",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "termo": "Recorte",
+      "definicao": "Período escolhido a dedo"
+    },
+    {
+      "id": "mat-graficos-enganosos-par-03",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "termo": "Taxa por habitante",
+      "definicao": "Casos divididos pela população"
+    },
+    {
+      "id": "mat-graficos-enganosos-par-04",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "termo": "Figura inflada",
+      "definicao": "Área cresce com o quadrado"
+    },
+    {
+      "id": "mat-media-par-01",
+      "tema": "Média aritmética e média ponderada",
+      "termo": "Média ponderada",
+      "definicao": "Valores multiplicados pelos pesos"
+    },
+    {
+      "id": "mat-media-par-02",
+      "tema": "Média aritmética e média ponderada",
+      "termo": "Média das médias",
+      "definicao": "Só vale para grupos iguais"
+    },
+    {
+      "id": "mat-media-par-03",
+      "tema": "Média aritmética e média ponderada",
+      "termo": "Valores extremos",
+      "definicao": "Puxam a média"
+    },
+    {
+      "id": "mat-media-par-04",
+      "tema": "Média aritmética e média ponderada",
+      "termo": "Soma",
+      "definicao": "Média vezes quantidade"
     }
   ],
   "verdadeiroFalso": [
@@ -27541,6 +30732,69 @@
       "afirmacao": "R$ 1.331 em 3 meses, a 10% ao mês, valem hoje R$ 1.000.",
       "verdadeira": true,
       "explicacao": "1.331 ÷ 1,1³."
+    },
+    {
+      "id": "mat-tabelas-graficos-vf-01",
+      "tema": "Tabelas e gráficos",
+      "afirmacao": "Num gráfico de setores, 25% ocupam 90 graus.",
+      "verdadeira": true,
+      "explicacao": "25% de 360°."
+    },
+    {
+      "id": "mat-tabelas-graficos-vf-02",
+      "tema": "Tabelas e gráficos",
+      "afirmacao": "O ponto mais alto de um gráfico de linhas é o de maior crescimento.",
+      "verdadeira": false,
+      "explicacao": "O maior crescimento é o trecho mais inclinado."
+    },
+    {
+      "id": "mat-tabelas-graficos-vf-03",
+      "tema": "Tabelas e gráficos",
+      "afirmacao": "Pesquisa em que se marcam várias opções não deve virar pizza.",
+      "verdadeira": true,
+      "explicacao": "As partes passam de 100%."
+    },
+    {
+      "id": "mat-graficos-enganosos-vf-01",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "afirmacao": "Dobrar a altura e a largura de uma figura quadruplica a sua área.",
+      "verdadeira": true,
+      "explicacao": "2 × 2 = 4."
+    },
+    {
+      "id": "mat-graficos-enganosos-vf-02",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "afirmacao": "A cidade com mais casos sempre tem a maior taxa.",
+      "verdadeira": false,
+      "explicacao": "Depende da população."
+    },
+    {
+      "id": "mat-graficos-enganosos-vf-03",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "afirmacao": "Uma alta de 100% pode significar só 2 casos a mais.",
+      "verdadeira": true,
+      "explicacao": "De 2 para 4."
+    },
+    {
+      "id": "mat-media-vf-01",
+      "tema": "Média aritmética e média ponderada",
+      "afirmacao": "Se a média de 5 números é 8, a soma é 40.",
+      "verdadeira": true,
+      "explicacao": "8 × 5."
+    },
+    {
+      "id": "mat-media-vf-02",
+      "tema": "Média aritmética e média ponderada",
+      "afirmacao": "A média de turmas de 10 e 30 alunos é a média das duas médias.",
+      "verdadeira": false,
+      "explicacao": "É preciso ponderar pelos tamanhos."
+    },
+    {
+      "id": "mat-media-vf-03",
+      "tema": "Média aritmética e média ponderada",
+      "afirmacao": "Um salário muito alto pode deixar a média pouco representativa.",
+      "verdadeira": true,
+      "explicacao": "Valores extremos puxam a média."
     }
   ],
   "sequencias": [
@@ -27844,6 +31098,42 @@
         "Calcular e conferir se responde à pergunta"
       ],
       "explicacao": "A ferramenta certa vem antes da conta."
+    },
+    {
+      "id": "mat-tabelas-graficos-seq-01",
+      "tema": "Tabelas e gráficos",
+      "titulo": "Ler um gráfico antes de responder",
+      "itens": [
+        "Ler o título e a fonte",
+        "Conferir a unidade e o período",
+        "Localizar os valores pedidos",
+        "Calcular diferença, razão ou porcentagem"
+      ],
+      "explicacao": "A leitura vem antes da conta."
+    },
+    {
+      "id": "mat-graficos-enganosos-seq-01",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "titulo": "Desmontar um gráfico suspeito",
+      "itens": [
+        "Ler o início e os passos do eixo",
+        "Conferir o período mostrado",
+        "Trocar números absolutos por taxas",
+        "Recalcular a variação real"
+      ],
+      "explicacao": "Os números falam mais que o desenho."
+    },
+    {
+      "id": "mat-media-seq-01",
+      "tema": "Média aritmética e média ponderada",
+      "titulo": "Calcular a nota que falta para uma média",
+      "itens": [
+        "Multiplicar a média desejada pela quantidade de provas",
+        "Somar as notas que já se tem",
+        "Subtrair as duas somas",
+        "Conferir se a nota é possível"
+      ],
+      "explicacao": "Pense na soma."
     }
   ],
   "adivinhas": [
@@ -28211,6 +31501,48 @@
         "Preço do dinheiro no tempo",
         "Podem ser simples ou compostos",
         "O cartão cobra caro"
+      ]
+    },
+    {
+      "id": "mat-tabelas-graficos-adv-01",
+      "tema": "Tabelas e gráficos",
+      "dificuldade": "medio",
+      "resposta": "Pictograma",
+      "aceitas": [
+        "pictograma"
+      ],
+      "dicas": [
+        "Gráfico feito com figuras",
+        "Cada figura vale o que diz a legenda",
+        "Meia figura vale metade"
+      ]
+    },
+    {
+      "id": "mat-graficos-enganosos-adv-01",
+      "tema": "Gráficos que enganam: escala e recorte",
+      "dificuldade": "medio",
+      "resposta": "Recorte",
+      "aceitas": [
+        "recorte"
+      ],
+      "dicas": [
+        "Escolha do período mostrado",
+        "Pode esconder uma queda",
+        "Pergunte o que ficou de fora"
+      ]
+    },
+    {
+      "id": "mat-media-adv-01",
+      "tema": "Média aritmética e média ponderada",
+      "dificuldade": "medio",
+      "resposta": "Média",
+      "aceitas": [
+        "media"
+      ],
+      "dicas": [
+        "Soma dividida pela quantidade",
+        "Pode ser ponderada",
+        "Puxada por valores extremos"
       ]
     }
   ],
@@ -28796,6 +32128,78 @@
       "tema": "Matemática",
       "palavra": "Imposto",
       "dica": "Valor pago ao governo"
+    },
+    {
+      "id": "mat-tabelas-graficos-pal-01",
+      "tema": "Matemática",
+      "palavra": "Gráfico",
+      "dica": "Desenho que mostra dados"
+    },
+    {
+      "id": "mat-tabelas-graficos-pal-02",
+      "tema": "Matemática",
+      "palavra": "Tabela",
+      "dica": "Dados em linhas e colunas"
+    },
+    {
+      "id": "mat-tabelas-graficos-pal-03",
+      "tema": "Matemática",
+      "palavra": "Legenda",
+      "dica": "Explica cores e figuras"
+    },
+    {
+      "id": "mat-tabelas-graficos-pal-04",
+      "tema": "Matemática",
+      "palavra": "Fatia",
+      "dica": "Parte de um gráfico de setores"
+    },
+    {
+      "id": "mat-graficos-enganosos-pal-01",
+      "tema": "Matemática",
+      "palavra": "Escala",
+      "dica": "Marcas de um eixo"
+    },
+    {
+      "id": "mat-graficos-enganosos-pal-02",
+      "tema": "Matemática",
+      "palavra": "Eixo",
+      "dica": "Linha de referência do gráfico"
+    },
+    {
+      "id": "mat-graficos-enganosos-pal-03",
+      "tema": "Matemática",
+      "palavra": "Ilusão",
+      "dica": "O que parece, mas não é"
+    },
+    {
+      "id": "mat-graficos-enganosos-pal-04",
+      "tema": "Matemática",
+      "palavra": "Manchete",
+      "dica": "Título de notícia"
+    },
+    {
+      "id": "mat-media-pal-01",
+      "tema": "Matemática",
+      "palavra": "Peso",
+      "dica": "Importância de uma nota na média"
+    },
+    {
+      "id": "mat-media-pal-02",
+      "tema": "Matemática",
+      "palavra": "Nota",
+      "dica": "Resultado de uma prova"
+    },
+    {
+      "id": "mat-media-pal-03",
+      "tema": "Matemática",
+      "palavra": "Soma",
+      "dica": "Média vezes quantidade"
+    },
+    {
+      "id": "mat-media-pal-04",
+      "tema": "Matemática",
+      "palavra": "Turma",
+      "dica": "Grupo de alunos"
     }
   ],
   "fichas": {
@@ -29609,6 +33013,132 @@
       "pegadinhas": [
         "Somar descontos sucessivos.",
         "Subtrair a inflação do reajuste."
+      ]
+    },
+    "Leitura de tabelas": {
+      "texto": [
+        "Antes de calcular, leia título, unidade (mil, milhões, %) e período. Numa tabela de dupla entrada, o valor pedido está no cruzamento de uma linha e uma coluna, e as porcentagens usam o total da linha ou da coluna que a pergunta indica.",
+        "Para comparar crescimentos, calcule a variação percentual de cada item sobre o seu próprio valor inicial: o maior aumento absoluto pode ser o menor percentual. A maior variação entre períodos seguidos é a maior diferença entre vizinhos."
+      ],
+      "pontos": [
+        "Em milhares, 102 = 102.000.",
+        "Cada grupo tem o seu total."
+      ],
+      "pegadinhas": [
+        "Dividir pelo total da pesquisa quando a pergunta é sobre um grupo.",
+        "Confundir maior valor com maior variação."
+      ]
+    },
+    "Tipos de gráfico": {
+      "texto": [
+        "Colunas comparam categorias; linhas mostram a evolução no tempo; setores mostram partes de um todo que somam 100% (1% = 3,6°); pictogramas usam figuras com valor dado na legenda, e frações de figura contam.",
+        "Quando cada pessoa pode marcar mais de uma resposta, as porcentagens passam de 100% e a pizza não serve: use colunas. Para achar quantidades num gráfico de setores, divida o ângulo por 360 e multiplique pelo total."
+      ],
+      "pontos": [
+        "Ângulo ÷ 360 = fração do todo.",
+        "Respostas múltiplas: colunas."
+      ],
+      "pegadinhas": [
+        "Usar o ângulo como quantidade.",
+        "Ignorar a meia figura do pictograma."
+      ]
+    },
+    "Variação em gráficos": {
+      "texto": [
+        "Num gráfico de linhas, a inclinação mostra a rapidez da mudança: trecho íngreme para cima é crescimento rápido, horizontal é estabilidade, descendo é queda. Compare cada ponto com o anterior.",
+        "Para medidas \"por habitante\" ou \"por hectare\", divida as duas séries antes de comparar: o PIB pode crescer e o PIB por habitante ficar igual. Para médias de uma série, some todos os valores e divida pela quantidade."
+      ],
+      "pontos": [
+        "Variação = diferença entre vizinhos.",
+        "Por habitante: divida antes de comparar."
+      ],
+      "pegadinhas": [
+        "Confundir o ponto mais alto com o maior crescimento.",
+        "Comparar totais quando a pergunta é por unidade."
+      ]
+    },
+    "Eixos e escalas": {
+      "texto": [
+        "Um eixo vertical que não começa no zero faz as alturas deixarem de ser proporcionais aos valores: a altura visível é o valor menos o início do eixo. A razão entre alturas visíveis pode ser bem maior que a razão entre os valores.",
+        "Intervalos desiguais, escalas irregulares e eixos ampliados mudam a inclinação. Um eixo ajustado pode ser legítimo para variações pequenas e importantes; o essencial é ler os números e calcular a variação real."
+      ],
+      "pontos": [
+        "Altura visível = valor − início do eixo.",
+        "Compare valores, não alturas."
+      ],
+      "pegadinhas": [
+        "Dizer que a coluna é 3 vezes maior olhando só a altura.",
+        "Confundir pontos percentuais com variação relativa."
+      ]
+    },
+    "Figuras e áreas": {
+      "texto": [
+        "Quando um desenho cresce em duas dimensões, a área cresce com o quadrado do fator; em três, o volume cresce com o cubo. Dobrar o valor e dobrar altura e largura faz o desenho parecer 4 vezes maior.",
+        "Para mostrar um valor maior sem distorção, repita figuras do mesmo tamanho ou multiplique os lados pela raiz do fator. Gráficos 3D aumentam o que está na frente."
+      ],
+      "pontos": [
+        "Área: fator ao quadrado.",
+        "Volume: fator ao cubo."
+      ],
+      "pegadinhas": [
+        "Inflar a figura nas duas dimensões.",
+        "Confiar em fatias 3D."
+      ]
+    },
+    "Recorte e taxas": {
+      "texto": [
+        "Lugares de tamanhos diferentes se comparam por taxa: casos ÷ população (por mil ou por 100 mil). O número absoluto pode subir enquanto a taxa cai, quando a base cresce mais.",
+        "Recortes de período escondem quedas ou altas; porcentagens sobre bases pequenas impressionam (\"100% de alta\" de 2 para 4). Peça sempre os números absolutos e a série completa."
+      ],
+      "pontos": [
+        "Taxa = casos ÷ população.",
+        "Base pequena, porcentagem enganosa."
+      ],
+      "pegadinhas": [
+        "Comparar cidades pelo número de casos.",
+        "Aceitar um gráfico que mostra só o trecho favorável."
+      ]
+    },
+    "Média aritmética": {
+      "texto": [
+        "Média aritmética é soma ÷ quantidade. O caminho de volta é o mais útil: soma = média × quantidade. Com ele se acha a nota que falta, o número que entrou ou saiu de um grupo e a média depois de uma correção.",
+        "Quando um valor entra, sai ou é corrigido, mexa na soma e divida de novo pela quantidade certa. A média não é o valor mais comum nem o do meio."
+      ],
+      "pontos": [
+        "Nota que falta = média × provas − soma atual.",
+        "Correção: tire o errado e ponha o certo na soma."
+      ],
+      "pegadinhas": [
+        "Somar a correção inteira à média.",
+        "Dividir pela quantidade errada."
+      ]
+    },
+    "Média ponderada": {
+      "texto": [
+        "Média ponderada = soma de valor × peso ÷ soma dos pesos. Em compras, os pesos são as quantidades; em vestibulares, os pesos de cada prova.",
+        "Para achar uma nota que falta, multiplique a média desejada pela soma dos pesos e desconte o que já se tem. Confira sempre qual peso vai com qual nota: trocar os pesos muda o resultado e o ranking."
+      ],
+      "pontos": [
+        "Divida pela soma dos pesos.",
+        "Preço médio: quantidade é peso."
+      ],
+      "pegadinhas": [
+        "Fazer média simples quando há pesos.",
+        "Trocar os pesos entre as notas."
+      ]
+    },
+    "Média de grupos": {
+      "texto": [
+        "Para juntar grupos, some os totais de cada grupo (média × tamanho) e divida pelo total de pessoas. A média das médias só funciona com grupos do mesmo tamanho. A média geral fica mais perto da média do grupo maior.",
+        "Valores extremos puxam a média: com poucos salários muito altos, a média deixa de representar a maioria. Nesses casos, a mediana ajuda (próxima aula)."
+      ],
+      "pontos": [
+        "Média geral = soma total ÷ total de pessoas.",
+        "Grupo maior pesa mais."
+      ],
+      "pegadinhas": [
+        "Fazer a média das médias com grupos diferentes.",
+        "Achar que a média sempre representa a maioria."
       ]
     }
   }
