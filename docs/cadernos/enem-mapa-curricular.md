@@ -40,8 +40,8 @@
 | Enem · Português (`enem-portugues`) | 35 | 6 | Linguagens H1–H4, H18–H30 | alto |
 | Enem · Literatura (`enem-literatura`) | 20 | 4 | Linguagens H15–H17 | alto (~20% de Linguagens) |
 | Enem · Artes e Educação Física (`enem-artes-ef`) | 12 | 2 | Linguagens H9–H14 | alto (artes ~20%, práticas corporais ~13%) |
-| Enem · Inglês (`enem-ingles`) | 8 | 1 (*) | Linguagens H5–H8 | 5 questões |
-| Enem · Espanhol (`enem-espanhol`) | 8 | 1 (*) | Linguagens H5–H8 | 5 questões |
+| Enem · Inglês (`enem-ingles`) | 10 | 2 | Linguagens H5–H8 | 5 questões |
+| Enem · Espanhol (`enem-espanhol`) | 10 | 2 | Linguagens H5–H8 | 5 questões |
 | Enem · História (`enem-historia`) | 25 | 5 | Humanas H1–H5, H11–H25 | alto (Brasil ~24%, geral ~4% de Humanas) |
 | Enem · Geografia (`enem-geografia`) | 30 | 6 | Humanas H6–H10, H16–H20, H26–H30 | alto (~34% de Humanas) |
 | Enem · Filosofia (`enem-filosofia`) | 10 | 2 | Humanas H1–H5, H11–H15, H21–H25 | médio-alto (~12% de Humanas) |
@@ -49,11 +49,11 @@
 | Enem · Física (`enem-fisica`) | 22 | 4 | Natureza H1–H23 (C6 = H20–H23) | ~29% de Natureza |
 | Enem · Química (`enem-quimica`) | 27 | 5 | Natureza H1–H19, H24–H27 | ~35% de Natureza |
 | Enem · Biologia (`enem-biologia`) | 27 | 5 | Natureza H1–H19, H28–H30 | ~35% de Natureza |
-| **Conteúdo (o aluno faz uma língua)** | **301** | | | |
+| **Conteúdo (o aluno faz uma língua)** | **303** | | | |
 | Enem · Redação (`enem-redacao`) | 40 oficinas | 6 | 5 competências da redação | ~metade da nota de muitos cursos |
-| **A produzir (as duas línguas)** | **349** | | | |
+| **A produzir (as duas línguas)** | **353** | | | |
 
-(*) A língua estrangeira fura a regra de 5 a 7 aulas por módulo (um módulo de 8). Decisão pendente: manter 8 numa exceção, ou fazer 2 módulos de 5 (10 aulas por língua).
+Língua estrangeira: **2 módulos de 5 aulas (10 por língua)**, para seguir a regra de 5 a 7 aulas por módulo (decisão do usuário, 2026-10-09).
 
 O curso atual `enem-vestibular` continua como **"Enem e Vestibular · Comece por aqui"**: as 5 fases, as questões e os ids ficam, como porta de entrada de todas as áreas.
 
@@ -222,10 +222,11 @@ Competências da área: C1 números (H1–H5), C2 geometria (H6–H9), C3 grande
 | 1 · Artes: linguagens, obras e patrimônio | 6 | H12–H14 | alto (~20% de Linguagens) |
 | 2 · Práticas corporais, saúde e sociedade | 6 | H9–H11 | médio-alto (~13%) |
 
-### Enem · Inglês e Enem · Espanhol (8 aulas cada; o aluno escolhe uma)
+### Enem · Inglês e Enem · Espanhol (10 aulas cada; o aluno escolhe uma)
 | Módulo | Aulas | Habilidades | Peso |
 |---|---|---|---|
-| 1 · Estratégias de leitura: cognatos, contexto, gêneros e intenção | 8 (7 + revisão) | H5–H8 | 5 questões por prova |
+| 1 · Estratégias de leitura: cognatos, contexto e gêneros | 5 (4 + revisão) | H5–H6 | 5 questões por prova |
+| 2 · Intenção, cultura e uso da língua | 5 (4 + revisão) | H7–H8 | |
 
 ### Enem · História (25 aulas)
 | Módulo | Aulas | Habilidades | Peso |
