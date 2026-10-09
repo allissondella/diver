@@ -403,6 +403,106 @@
         "sequencias": 8,
         "palavras": 55
       }
+    },
+    {
+      "arquivo": "enem-matematica.json",
+      "id": "enem-matematica",
+      "nome": "Enem · Matemática",
+      "descricao": "Matemática completa para o Enem e os vestibulares, em módulos que vão das operações básicas ao nível de prova, com as 30 habilidades da Matriz do Inep.",
+      "categoria": "Enem e vestibular",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 45,
+        "minutos": 135,
+        "aprovacao": 60,
+        "exigeFases": false
+      },
+      "fases": [
+        {
+          "id": "mat-operacoes-inteiros",
+          "nome": "Aula 1 · Operações com números naturais e inteiros",
+          "modulo": "Módulo 1 · Números e operações",
+          "descricao": "Módulo 1 · aula 1 de 6 · 35 min · treina as habilidades H1 e H3",
+          "habilidades": [
+            "H1",
+            "H3"
+          ],
+          "temResumo": true,
+          "questoes": 23
+        },
+        {
+          "id": "mat-fracoes-decimais",
+          "nome": "Aula 2 · Frações e decimais no dia a dia",
+          "modulo": "Módulo 1 · Números e operações",
+          "descricao": "Módulo 1 · aula 2 de 6 · 35 min · treina as habilidades H1 e H3",
+          "habilidades": [
+            "H1",
+            "H3"
+          ],
+          "temResumo": true,
+          "questoes": 22
+        },
+        {
+          "id": "mat-potencias-notacao",
+          "nome": "Aula 3 · Potências, raízes e notação científica",
+          "modulo": "Módulo 1 · Números e operações",
+          "descricao": "Módulo 1 · aula 3 de 6 · 35 min · treina as habilidades H1 e H3",
+          "habilidades": [
+            "H1",
+            "H3"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "mat-divisibilidade",
+          "nome": "Aula 4 · Divisibilidade, MMC e MDC",
+          "modulo": "Módulo 1 · Números e operações",
+          "descricao": "Módulo 1 · aula 4 de 6 · 35 min · treina as habilidades H2 e H3",
+          "habilidades": [
+            "H2",
+            "H3"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "mat-estimativa",
+          "nome": "Aula 5 · Estimativa e razoabilidade de um resultado",
+          "modulo": "Módulo 1 · Números e operações",
+          "descricao": "Módulo 1 · aula 5 de 6 · 35 min · treina as habilidades H4 e H5",
+          "habilidades": [
+            "H4",
+            "H5"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "mat-revisao-numeros",
+          "nome": "Aula 6 · Revisão do módulo: números e operações",
+          "modulo": "Módulo 1 · Números e operações",
+          "descricao": "Módulo 1 · aula 6 de 6 · 35 min · treina as habilidades H1, H2, H3, H4 e H5",
+          "habilidades": [
+            "H1",
+            "H2",
+            "H3",
+            "H4",
+            "H5"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 125,
+        "variantes": 125,
+        "pares": 24,
+        "verdadeiroFalso": 17,
+        "adivinhas": 6,
+        "sequencias": 6,
+        "palavras": 22
+      }
     }
   ]
 }
