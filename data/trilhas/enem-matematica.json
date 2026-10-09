@@ -3949,7 +3949,7 @@
       "id": "mat-angulos-retas",
       "nome": "Aula 39 · Ângulos, retas paralelas e perpendiculares",
       "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
-      "descricao": "Módulo 7 · aula 1 de 3 · 35 min · treina as habilidades H6 e H7",
+      "descricao": "Módulo 7 · aula 1 de 6 · 35 min · treina as habilidades H6 e H7",
       "habilidades": [
         "H6",
         "H7"
@@ -4053,7 +4053,7 @@
       "id": "mat-triangulos-quadrilateros",
       "nome": "Aula 40 · Triângulos e quadriláteros",
       "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
-      "descricao": "Módulo 7 · aula 2 de 3 · 35 min · treina a habilidade H7",
+      "descricao": "Módulo 7 · aula 2 de 6 · 35 min · treina a habilidade H7",
       "habilidades": [
         "H7"
       ],
@@ -4155,7 +4155,7 @@
       "id": "mat-semelhanca-tales",
       "nome": "Aula 41 · Semelhança de triângulos e Teorema de Tales",
       "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
-      "descricao": "Módulo 7 · aula 3 de 3 · 35 min · treina a habilidade H8",
+      "descricao": "Módulo 7 · aula 3 de 6 · 35 min · treina a habilidade H8",
       "habilidades": [
         "H8"
       ],
@@ -4250,6 +4250,309 @@
           "razao de semelhanca",
           "dois angulos iguais",
           "teorema de tales"
+        ]
+      }
+    },
+    {
+      "id": "mat-pitagoras",
+      "nome": "Aula 42 · Teorema de Pitágoras e relações métricas",
+      "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
+      "descricao": "Módulo 7 · aula 4 de 6 · 35 min · treina as habilidades H8 e H9",
+      "habilidades": [
+        "H8",
+        "H9"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "O teorema",
+            "texto": [
+              "Num triângulo retângulo, o lado oposto ao ângulo reto é a **hipotenusa**, o maior dos três; os outros dois são os catetos. O Teorema de Pitágoras diz que o quadrado da hipotenusa é igual à soma dos quadrados dos catetos: a² = b² + c². Com catetos 3 e 4, a hipotenusa é √(9 + 16) = 5. Para achar um cateto, subtraia: com hipotenusa 13 e cateto 5, o outro é √(169 − 25) = 12. O erro mais comum é somar os lados antes de elevar ao quadrado: eleve cada lado e só depois some."
+            ]
+          },
+          {
+            "titulo": "Ternas que valem decorar",
+            "texto": [
+              "Algumas **ternas pitagóricas** aparecem o tempo todo: 3, 4, 5; 5, 12, 13; 8, 15, 17; 7, 24, 25; e os seus múltiplos, como 6, 8, 10 e 9, 12, 15. Reconhecê-las poupa contas. A diagonal de um quadrado de lado ℓ mede ℓ√2, e a altura de um triângulo equilátero de lado ℓ mede ℓ√3/2. No espaço, a diagonal de um bloco de arestas a, b e c mede √(a² + b² + c²)."
+            ]
+          },
+          {
+            "titulo": "Aplicações e teste do ângulo reto",
+            "texto": [
+              "Escadas apoiadas em paredes, rampas, cabos de sustentação, distâncias em mapas com ruas perpendiculares, diagonais de telas e de terrenos são aplicações diretas. A polegada de uma TV mede a diagonal da tela. Para saber se um triângulo é retângulo, compare o **maior lado ao quadrado** com a soma dos quadrados dos outros dois: se for igual, é retângulo; se for maior, é obtusângulo; se for menor, acutângulo."
+            ]
+          },
+          {
+            "titulo": "Relações métricas e como o Enem cobra",
+            "texto": [
+              "A altura relativa à hipotenusa divide o triângulo retângulo em dois triângulos menores, semelhantes a ele. Daí saem relações como h² = m × n, em que m e n são as projeções dos catetos sobre a hipotenusa, e b × c = a × h. O Enem cobra escadas, rampas, telas, terrenos, rotas de drones e a distância \"em linha reta\" entre dois pontos de um mapa."
+            ]
+          }
+        ],
+        "introducao": "Qual é o comprimento da escada que alcança uma janela? Qual é a distância em linha reta entre dois pontos do mapa? Quantas polegadas tem uma TV? O Teorema de Pitágoras, o mais famoso da Geometria, responde a todas essas perguntas sempre que houver um ângulo reto escondido no problema.",
+        "mapaMental": {
+          "centro": "Pitágoras",
+          "ramos": [
+            {
+              "titulo": "Teorema",
+              "itens": [
+                "hipotenusa oposta ao ângulo reto",
+                "a² = b² + c²",
+                "eleve antes de somar"
+              ]
+            },
+            {
+              "titulo": "Ternas",
+              "itens": [
+                "ternas pitagóricas 3, 4, 5 e 5, 12, 13",
+                "diagonal do quadrado ℓ√2"
+              ]
+            },
+            {
+              "titulo": "Teste",
+              "itens": [
+                "maior lado ao quadrado contra a soma dos outros quadrados"
+              ]
+            },
+            {
+              "titulo": "Relações",
+              "itens": [
+                "h² = m × n",
+                "b × c = a × h"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🪜",
+            "conceito": "Escada na parede",
+            "liga": "lado inclinado",
+            "porque": "Parede e chão formam o ângulo reto; a escada fecha o triângulo."
+          },
+          {
+            "icone": "📺",
+            "conceito": "TV de 50 polegadas",
+            "liga": "medida na diagonal",
+            "porque": "A polegada mede de um canto ao canto oposto da tela."
+          }
+        ],
+        "pontos": [
+          "A **hipotenusa** fica oposta ao ângulo reto: a² = b² + c².",
+          "Eleve os lados ao quadrado antes de somar.",
+          "**Ternas pitagóricas** como 3, 4, 5 e 5, 12, 13 poupam contas.",
+          "Compare o **maior lado ao quadrado** com a soma dos outros para classificar o triângulo.",
+          "Altura sobre a hipotenusa: h² = m × n."
+        ],
+        "perolas": [
+          "Diagonal do quadrado: lado × √2.",
+          "TV se mede pela diagonal."
+        ],
+        "reforcar": [
+          "hipotenusa",
+          "ternas pitagoricas",
+          "maior lado ao quadrado"
+        ]
+      }
+    },
+    {
+      "id": "mat-simetria",
+      "nome": "Aula 43 · Simetria, rotação e ladrilhamento",
+      "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
+      "descricao": "Módulo 7 · aula 5 de 6 · 35 min · treina as habilidades H6 e H7",
+      "habilidades": [
+        "H6",
+        "H7"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Simetria de reflexão",
+            "texto": [
+              "Uma figura tem **eixo de simetria** quando, dobrada sobre ele, as duas metades coincidem: cada ponto tem um correspondente do outro lado, à mesma distância do eixo. O quadrado tem 4 eixos; o retângulo que não é quadrado, 2; o losango que não é quadrado, 2 (as diagonais); o triângulo equilátero, 3; o isósceles, 1; o círculo, infinitos; um polígono regular de n lados tem n eixos. Letras como A, M e T têm eixo vertical; B, C, D e E, horizontal; H, O e X, os dois."
+            ]
+          },
+          {
+            "titulo": "Rotação e translação",
+            "texto": [
+              "Uma figura tem **simetria de rotação** quando, girada em torno do centro por um ângulo menor que 360°, coincide com ela mesma. O menor ângulo de giro de um polígono regular de n lados é 360° ÷ n: 120° no triângulo equilátero, 90° no quadrado, 60° no hexágono. Hélices, rodas e flores seguem a mesma regra. A **translação** desloca a figura sem girar nem refletir, como os padrões repetidos de uma estampa ou de uma faixa de azulejos."
+            ]
+          },
+          {
+            "titulo": "Reflexão e giro no plano cartesiano",
+            "texto": [
+              "Refletir no eixo x troca o sinal da ordenada: (3, 2) vira (3, −2). Refletir no eixo y troca o sinal da abscissa: (3, 2) vira (−3, 2). Girar 180° em torno da origem troca os dois sinais: (−3, −2). Uma rotação de 90° no sentido anti-horário leva (x, y) para (−y, x), e a reflexão na reta y = x troca as coordenadas de lugar."
+            ]
+          },
+          {
+            "titulo": "Ladrilhamento, espelhos e como o Enem cobra",
+            "texto": [
+              "Pisos, mosaicos, logotipos, bandeiras e azulejos combinam essas transformações. O Enem cobra contar eixos, completar figuras simétricas, prever a posição de uma peça depois de giros e reflexões e reconhecer padrões que se repetem. Uma dica prática: num espelho vertical, a esquerda e a direita se trocam, mas o alto e o baixo, não. Para prever giros de uma peça, acompanhe uma marca, como a ponta de uma seta, giro a giro."
+            ]
+          }
+        ],
+        "introducao": "Borboletas, logotipos, bandeiras, mosaicos e pisos repetem formas por reflexão, giro ou deslocamento. A simetria é a geometria do equilíbrio visual e aparece no Enem em questões de logotipos, azulejos, peças que giram e pontos refletidos no plano cartesiano.",
+        "mapaMental": {
+          "centro": "Simetria",
+          "ramos": [
+            {
+              "titulo": "Reflexão",
+              "itens": [
+                "eixo de simetria divide em metades iguais",
+                "polígono regular de n lados tem n eixos"
+              ]
+            },
+            {
+              "titulo": "Rotação",
+              "itens": [
+                "simetria de rotação com giro de 360° ÷ n",
+                "hélices e rodas"
+              ]
+            },
+            {
+              "titulo": "Plano",
+              "itens": [
+                "eixo x troca a ordenada",
+                "eixo y troca a abscissa",
+                "180° troca os dois"
+              ]
+            },
+            {
+              "titulo": "Repetição",
+              "itens": [
+                "translação sem girar",
+                "mosaicos e estampas"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🦋",
+            "conceito": "Borboleta",
+            "liga": "reflexão",
+            "porque": "As asas são o espelho uma da outra."
+          },
+          {
+            "icone": "🌀",
+            "conceito": "Hélice de três pás",
+            "liga": "giro de 120°",
+            "porque": "Cada terço de volta a hélice parece a mesma."
+          }
+        ],
+        "pontos": [
+          "Um **eixo de simetria** divide a figura em duas metades que coincidem quando dobradas.",
+          "Polígono regular de n lados: n eixos e **simetria de rotação** de 360° ÷ n.",
+          "Reflexão no eixo x troca o sinal de y; no eixo y, o sinal de x.",
+          "A **translação** desloca sem girar nem refletir."
+        ],
+        "perolas": [
+          "No espelho, troca a direita com a esquerda, não o alto com o baixo.",
+          "O círculo tem infinitos eixos."
+        ],
+        "reforcar": [
+          "eixo de simetria",
+          "simetria de rotacao",
+          "translacao"
+        ]
+      }
+    },
+    {
+      "id": "mat-revisao-figuras",
+      "nome": "Aula 44 · Revisão do módulo: figuras planas",
+      "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
+      "descricao": "Módulo 7 · aula 6 de 6 · 35 min · treina as habilidades H6, H7, H8 e H9",
+      "habilidades": [
+        "H6",
+        "H7",
+        "H8",
+        "H9"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Ângulos e retas",
+            "texto": [
+              "Complementares somam 90°; suplementares, 180°; opostos pelo vértice são iguais. Numa transversal a duas paralelas, só há dois valores de ângulo, que somam 180°: alternos e correspondentes são iguais. No relógio, o ponteiro dos minutos anda 6° por minuto, e o das horas, 0,5° por minuto. Para achar o ângulo entre eles, calcule a posição de cada um a partir do 12, subtraia e, se passar de 180°, tire de 360°."
+            ]
+          },
+          {
+            "titulo": "Triângulos e polígonos",
+            "texto": [
+              "Os ângulos de um triângulo somam 180°, e o externo é a soma dos dois internos não vizinhos. Cada lado é menor que a soma dos outros dois: é a desigualdade triangular, que diz se três medidas fecham um triângulo. Num polígono de n lados, os internos somam (n − 2) × 180°, e os **externos somam** 360°; no regular, o externo é 360° ÷ n, e o polígono ladrilha sozinho se o interno dividir 360°."
+            ]
+          },
+          {
+            "titulo": "Semelhança e Pitágoras",
+            "texto": [
+              "Bastam **dois ângulos iguais** para triângulos semelhantes; os lados seguem a razão, e as áreas, a razão ao quadrado. Sombras no mesmo momento e paralelas de Tales dão proporções. No triângulo retângulo, o **quadrado da hipotenusa** é a soma dos quadrados dos catetos; comparar o maior lado ao quadrado com a soma dos outros classifica o triângulo. Vale reconhecer as ternas 3, 4, 5 e 5, 12, 13 e os seus múltiplos, que aparecem em escadas, cabos e terrenos."
+            ]
+          },
+          {
+            "titulo": "Simetria e como estudar esta revisão",
+            "texto": [
+              "Polígono regular de n lados tem n eixos e giro mínimo de 360° ÷ n. Reflexões no plano trocam sinais; o giro de 180° troca os dois. Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada: os tropeços mais comuns são confundir complemento com suplemento, somar lados antes de elevar ao quadrado, usar a razão linear em áreas e deixar o ponteiro das horas parado."
+            ]
+          }
+        ],
+        "introducao": "Fim do módulo de figuras planas. As questões desta revisão vêm misturadas, como na prova: o desafio é reconhecer se a situação pede relações de ângulos, propriedades de triângulos e polígonos, semelhança, Pitágoras ou simetria.",
+        "mapaMental": {
+          "centro": "Figuras planas",
+          "ramos": [
+            {
+              "titulo": "Ângulos",
+              "itens": [
+                "complementares e suplementares",
+                "paralelas com dois valores",
+                "relógio"
+              ]
+            },
+            {
+              "titulo": "Polígonos",
+              "itens": [
+                "triângulo soma 180°",
+                "externos somam 360°",
+                "desigualdade triangular"
+              ]
+            },
+            {
+              "titulo": "Semelhança",
+              "itens": [
+                "dois ângulos iguais",
+                "área com a razão ao quadrado",
+                "Tales"
+              ]
+            },
+            {
+              "titulo": "Pitágoras",
+              "itens": [
+                "quadrado da hipotenusa",
+                "ternas 3, 4, 5"
+              ]
+            },
+            {
+              "titulo": "Simetria",
+              "itens": [
+                "n eixos",
+                "giro de 360° ÷ n",
+                "reflexões trocam sinais"
+              ]
+            }
+          ]
+        },
+        "pontos": [
+          "Bastam **dois ângulos iguais** para dois triângulos serem semelhantes.",
+          "O **quadrado da hipotenusa** é a soma dos quadrados dos catetos.",
+          "Os ângulos **externos somam** 360° em qualquer polígono.",
+          "Em áreas de figuras semelhantes, use a razão ao quadrado."
+        ],
+        "perolas": [
+          "Antes de calcular, procure o ângulo reto, as paralelas ou os ângulos iguais da figura."
+        ],
+        "reforcar": [
+          "dois angulos iguais",
+          "quadrado da hipotenusa",
+          "externos somam"
         ]
       }
     }
@@ -23251,6 +23554,1386 @@
         "Dividiu igualmente.",
         "Repetiu a primeira quadra.",
         "Trocou a ordem."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q01",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Os catetos de um triângulo retângulo medem 6 cm e 8 cm. Quanto mede a hipotenusa?",
+      "alternativas": [
+        "48 cm",
+        "7 cm",
+        "100 cm",
+        "10 cm",
+        "14 cm"
+      ],
+      "correta": 3,
+      "explicacao": "a² = 36 + 64 = 100, a = 10 cm. Dica de mergulhador: 6, 8, 10 é o dobro de 3, 4, 5.",
+      "comentarios": [
+        "Multiplicou os catetos.",
+        "Fez a média.",
+        "Esqueceu a raiz.",
+        "",
+        "Somou os catetos."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q02",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "A hipotenusa de um triângulo retângulo mede 13 cm, e um cateto mede 5 cm. Quanto mede o outro cateto?",
+      "alternativas": [
+        "8 cm",
+        "13,9 cm",
+        "18 cm",
+        "12 cm",
+        "144 cm"
+      ],
+      "correta": 3,
+      "explicacao": "c² = 169 − 25 = 144, c = 12 cm. Dica de mergulhador: para cateto, subtraia os quadrados.",
+      "comentarios": [
+        "Subtraiu os lados sem elevar ao quadrado.",
+        "Somou os quadrados em vez de subtrair.",
+        "Somou os lados.",
+        "",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q03",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Num triângulo retângulo, qual é o maior lado?",
+      "alternativas": [
+        "Todos são iguais",
+        "O cateto maior",
+        "Depende do triângulo",
+        "A hipotenusa",
+        "Um lado junto ao ângulo reto"
+      ],
+      "correta": 3,
+      "explicacao": "A hipotenusa fica oposta ao maior ângulo, o reto. Dica de mergulhador: maior ângulo, maior lado.",
+      "comentarios": [
+        "Os lados são diferentes.",
+        "A hipotenusa é sempre maior que os catetos.",
+        "No triângulo retângulo, é sempre a hipotenusa.",
+        "",
+        "Esses são os catetos."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q04",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Os catetos de um triângulo retângulo medem 1 cm e 2 cm. Quanto mede a hipotenusa, aproximadamente?",
+      "alternativas": [
+        "1,73 cm",
+        "2,24 cm",
+        "5 cm",
+        "2 cm",
+        "3 cm"
+      ],
+      "correta": 1,
+      "explicacao": "a² = 1 + 4 = 5, a = √5 ≈ 2,24 cm. Dica de mergulhador: nem toda hipotenusa é inteira.",
+      "comentarios": [
+        "Calculou √3.",
+        "",
+        "Esqueceu a raiz.",
+        "Repetiu o maior cateto.",
+        "Somou os catetos."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q05",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um triângulo tem lados de 7, 24 e 25 cm. Ele é retângulo?",
+      "alternativas": [
+        "Não dá para saber sem medir os ângulos",
+        "Sim, porque 7 + 24 = 31",
+        "Não, porque nenhum lado mede 90",
+        "Não, porque 7 + 24 é maior que 25",
+        "Sim, porque 7² + 24² = 625 = 25²"
+      ],
+      "correta": 4,
+      "explicacao": "49 + 576 = 625 = 25². É retângulo. Dica de mergulhador: compare quadrados.",
+      "comentarios": [
+        "O teste dos quadrados basta.",
+        "A soma simples não testa o ângulo reto.",
+        "Ângulos não se medem nos lados.",
+        "Essa é a condição de existência, não o teste do ângulo reto.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q06",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um triângulo tem lados de 5, 6 e 8 cm. Como ele é classificado quanto aos ângulos?",
+      "alternativas": [
+        "Impossível",
+        "Obtusângulo",
+        "Acutângulo",
+        "Retângulo",
+        "Isósceles"
+      ],
+      "correta": 1,
+      "explicacao": "5² + 6² = 61 < 8² = 64: o maior ângulo é obtuso. Dica de mergulhador: maior² maior que a soma, obtuso.",
+      "comentarios": [
+        "5 + 6 > 8, ele existe.",
+        "",
+        "O maior lado ao quadrado é maior que a soma.",
+        "25 + 36 não é igual a 64.",
+        "É classificação pelos lados, e os lados são diferentes."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q07",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Num triângulo retângulo, a altura relativa à hipotenusa divide a hipotenusa em segmentos de 4 cm e 9 cm. Quanto mede essa altura?",
+      "alternativas": [
+        "6 cm",
+        "6,5 cm",
+        "5 cm",
+        "13 cm",
+        "36 cm"
+      ],
+      "correta": 0,
+      "explicacao": "h² = m × n = 4 × 9 = 36, h = 6 cm. Dica de mergulhador: a altura é a média geométrica das projeções.",
+      "comentarios": [
+        "",
+        "Fez a média dos segmentos.",
+        "Subtraiu os segmentos.",
+        "É a hipotenusa.",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q08",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Qual destas ternas é pitagórica, isto é, forma um triângulo retângulo?",
+      "alternativas": [
+        "6, 8 e 12",
+        "8, 15 e 17",
+        "5, 6 e 7",
+        "2, 3 e 4",
+        "4, 5 e 6"
+      ],
+      "correta": 1,
+      "explicacao": "64 + 225 = 289 = 17². Dica de mergulhador: decore as ternas mais comuns.",
+      "comentarios": [
+        "36 + 64 não é 144.",
+        "",
+        "25 + 36 não é 49.",
+        "4 + 9 não é 16.",
+        "16 + 25 não é 36."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q09",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Quanto mede, aproximadamente, a diagonal de um quadrado de lado 5 cm?",
+      "alternativas": [
+        "7,07 cm",
+        "7,5 cm",
+        "10 cm",
+        "25 cm",
+        "5 cm"
+      ],
+      "correta": 0,
+      "explicacao": "d = 5√2 ≈ 7,07 cm. Dica de mergulhador: diagonal do quadrado = lado × √2.",
+      "comentarios": [
+        "",
+        "Somou metade do lado.",
+        "Somou os lados.",
+        "Calculou a área.",
+        "Repetiu o lado."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q10",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Quanto mede, aproximadamente, a altura de um triângulo equilátero de lado 10 cm?",
+      "alternativas": [
+        "10 cm",
+        "5 cm",
+        "7,5 cm",
+        "8,66 cm",
+        "17,3 cm"
+      ],
+      "correta": 3,
+      "explicacao": "A altura divide a base ao meio: h² = 100 − 25 = 75, h = 5√3 ≈ 8,66 cm. Dica de mergulhador: altura do equilátero = lado × √3 ÷ 2.",
+      "comentarios": [
+        "Igualou a altura ao lado.",
+        "Usou metade do lado.",
+        "Chutou entre os valores.",
+        "",
+        "Esqueceu de dividir por 2."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q11",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um terreno retangular mede 9 m por 12 m. Quanto mede a sua diagonal?",
+      "alternativas": [
+        "225 m",
+        "21 m",
+        "108 m",
+        "15 m",
+        "10,5 m"
+      ],
+      "correta": 3,
+      "explicacao": "d² = 81 + 144 = 225, d = 15 m. Dica de mergulhador: 9, 12, 15 é o triplo de 3, 4, 5.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "Somou os lados.",
+        "Multiplicou os lados.",
+        "",
+        "Fez a média."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q12",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Quanto mede a diagonal de uma caixa com arestas de 2 cm, 3 cm e 6 cm (do vértice de baixo ao vértice oposto de cima)?",
+      "alternativas": [
+        "36 cm",
+        "49 cm",
+        "3,6 cm",
+        "7 cm",
+        "11 cm"
+      ],
+      "correta": 3,
+      "explicacao": "d² = 4 + 9 + 36 = 49, d = 7 cm. Dica de mergulhador: no espaço, some os três quadrados.",
+      "comentarios": [
+        "Multiplicou.",
+        "Esqueceu a raiz.",
+        "Calculou só a diagonal da face 2 × 3.",
+        "",
+        "Somou as arestas."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q13",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "A diagonal de um quadrado mede 10 cm. Qual é a área do quadrado?",
+      "alternativas": [
+        "10 cm²",
+        "100 cm²",
+        "70,7 cm²",
+        "50 cm²",
+        "25 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "d² = 2ℓ², então ℓ² = 100 ÷ 2 = 50 cm². Dica de mergulhador: a área do quadrado é metade do quadrado da diagonal.",
+      "comentarios": [
+        "Repetiu a diagonal.",
+        "Elevou a diagonal ao quadrado.",
+        "Multiplicou a diagonal por √2 × 5.",
+        "",
+        "Usou metade da diagonal como lado."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q14",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma escada de 5 m está apoiada numa parede, com o pé a 3 m da parede. A que altura ela toca a parede?",
+      "alternativas": [
+        "4 m",
+        "2 m",
+        "8 m",
+        "5,83 m",
+        "16 m"
+      ],
+      "correta": 0,
+      "explicacao": "h² = 25 − 9 = 16, h = 4 m. Dica de mergulhador: a escada é o lado maior.",
+      "comentarios": [
+        "",
+        "Subtraiu sem elevar ao quadrado.",
+        "Somou.",
+        "Somou os quadrados.",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q15",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma pessoa anda 30 m para o leste e, depois, 40 m para o norte. A que distância, em linha reta, ela está do ponto de partida?",
+      "alternativas": [
+        "10 m",
+        "70 m",
+        "2.500 m",
+        "35 m",
+        "50 m"
+      ],
+      "correta": 4,
+      "explicacao": "d² = 900 + 1.600 = 2.500, d = 50 m. Dica de mergulhador: leste e norte formam ângulo reto.",
+      "comentarios": [
+        "Subtraiu.",
+        "Somou os trajetos.",
+        "Esqueceu a raiz.",
+        "Fez a média.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q16",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma rampa tem 10 m de comprimento e sobe 1 m. Qual é, aproximadamente, a distância horizontal que ela ocupa?",
+      "alternativas": [
+        "9,95 m",
+        "9 m",
+        "99 m",
+        "10,05 m",
+        "11 m"
+      ],
+      "correta": 0,
+      "explicacao": "x² = 100 − 1 = 99, x ≈ 9,95 m. Dica de mergulhador: o comprimento da rampa é o lado maior.",
+      "comentarios": [
+        "",
+        "Subtraiu sem elevar.",
+        "Esqueceu a raiz.",
+        "Somou os quadrados.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q17",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma tela de TV tem 16 unidades de largura e 9 de altura. Quanto mede, aproximadamente, a sua diagonal?",
+      "alternativas": [
+        "25 unidades",
+        "18,4 unidades",
+        "337 unidades",
+        "7 unidades",
+        "12,5 unidades"
+      ],
+      "correta": 1,
+      "explicacao": "d² = 256 + 81 = 337, d ≈ 18,4. Dica de mergulhador: polegada de TV é a diagonal.",
+      "comentarios": [
+        "Somou largura e altura.",
+        "",
+        "Esqueceu a raiz.",
+        "Subtraiu.",
+        "Fez a média."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q18",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um poste de 8 m é sustentado por um cabo preso no topo e fixado no chão a 6 m da base. Qual é o comprimento do cabo?",
+      "alternativas": [
+        "5,3 m",
+        "100 m",
+        "10 m",
+        "2 m",
+        "14 m"
+      ],
+      "correta": 2,
+      "explicacao": "c² = 64 + 36 = 100, c = 10 m. Dica de mergulhador: poste e chão formam o ângulo reto.",
+      "comentarios": [
+        "Calculou um cateto.",
+        "Esqueceu a raiz.",
+        "",
+        "Subtraiu.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q19",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma escada de 5 m está apoiada numa parede, com o pé a 3 m dela. O topo escorrega 1 m para baixo. Quanto o pé da escada se afasta da parede?",
+      "alternativas": [
+        "4 m",
+        "2 m",
+        "1 m",
+        "3 m",
+        "0 m"
+      ],
+      "correta": 2,
+      "explicacao": "Topo inicial: 4 m. Depois: 3 m. Pé: √(25 − 9) = 4 m. Afastou de 3 para 4 m: 1 m. Dica de mergulhador: a escada não muda de tamanho.",
+      "comentarios": [
+        "É a nova distância, não o afastamento.",
+        "Errou a nova posição do pé.",
+        "",
+        "É a distância inicial.",
+        "Achou que o pé não se move."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q20",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um drone sai do chão, voa 120 m para o norte e 160 m para o leste, e fica a 150 m de altura. A que distância, em linha reta, ele está do ponto de partida?",
+      "alternativas": [
+        "350 m",
+        "430 m",
+        "200 m",
+        "250 m",
+        "280 m"
+      ],
+      "correta": 3,
+      "explicacao": "Horizontal: √(120² + 160²) = 200 m. Com a altura: √(200² + 150²) = 250 m. Dica de mergulhador: Pitágoras duas vezes.",
+      "comentarios": [
+        "Somou a distância horizontal com a altura.",
+        "Somou os três deslocamentos.",
+        "Ignorou a altura.",
+        "",
+        "Somou os deslocamentos horizontais."
+      ]
+    },
+    {
+      "id": "mat-simetria-q01",
+      "tema": "Eixos de simetria",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem um quadrado?",
+      "alternativas": [
+        "4",
+        "Infinitos",
+        "8",
+        "2",
+        "1"
+      ],
+      "correta": 0,
+      "explicacao": "Duas diagonais e duas retas pelos meios dos lados: 4 eixos. Dica de mergulhador: polígono regular de 4 lados, 4 eixos.",
+      "comentarios": [
+        "",
+        "Isso vale para o círculo.",
+        "Contou cada eixo duas vezes.",
+        "Contou só as diagonais ou só as medianas.",
+        "Contou um eixo só."
+      ]
+    },
+    {
+      "id": "mat-simetria-q02",
+      "tema": "Eixos de simetria",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem um triângulo equilátero?",
+      "alternativas": [
+        "6",
+        "3",
+        "0",
+        "2",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "Um eixo por vértice, até o meio do lado oposto: 3. Dica de mergulhador: n lados, n eixos no regular.",
+      "comentarios": [
+        "Contou cada eixo duas vezes.",
+        "",
+        "Ele é bem simétrico.",
+        "Esqueceu um.",
+        "Esse é o do isósceles."
+      ]
+    },
+    {
+      "id": "mat-simetria-q03",
+      "tema": "Eixos de simetria",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Qual destas letras tem eixo de simetria vertical?",
+      "alternativas": [
+        "R",
+        "G",
+        "J",
+        "F",
+        "A"
+      ],
+      "correta": 4,
+      "explicacao": "O A, dobrado ao meio na vertical, coincide. Dica de mergulhador: imagine a letra num espelho em pé.",
+      "comentarios": [
+        "Não tem eixo.",
+        "Não tem eixo.",
+        "Não tem eixo.",
+        "Não tem eixo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q04",
+      "tema": "Eixos de simetria",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem um triângulo isósceles que não é equilátero?",
+      "alternativas": [
+        "0",
+        "1",
+        "3",
+        "Infinitos",
+        "2"
+      ],
+      "correta": 1,
+      "explicacao": "O eixo passa pelo vértice entre os lados iguais e pelo meio da base. Dica de mergulhador: dois lados iguais, um eixo.",
+      "comentarios": [
+        "Há o eixo pelo vértice principal.",
+        "",
+        "Esse é o do equilátero.",
+        "Isso é do círculo.",
+        "Só há um eixo."
+      ]
+    },
+    {
+      "id": "mat-simetria-q05",
+      "tema": "Eixos de simetria",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem um losango que não é quadrado?",
+      "alternativas": [
+        "2",
+        "0",
+        "3",
+        "1",
+        "4"
+      ],
+      "correta": 0,
+      "explicacao": "As duas diagonais são eixos de simetria do losango. Dica de mergulhador: no losango, os eixos são as diagonais.",
+      "comentarios": [
+        "",
+        "As diagonais são eixos.",
+        "Contou demais.",
+        "Há dois.",
+        "Isso é do quadrado."
+      ]
+    },
+    {
+      "id": "mat-simetria-q06",
+      "tema": "Eixos de simetria",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Numa figura com um eixo de simetria vertical, o ponto A está 3 cm à esquerda do eixo. Onde fica o seu simétrico?",
+      "alternativas": [
+        "3 cm à esquerda do eixo",
+        "1,5 cm à direita do eixo",
+        "6 cm à direita do eixo",
+        "Sobre o eixo",
+        "3 cm à direita do eixo"
+      ],
+      "correta": 4,
+      "explicacao": "O simétrico fica à mesma distância, do outro lado. Dica de mergulhador: espelho mantém a distância.",
+      "comentarios": [
+        "É o próprio ponto.",
+        "Dividiu a distância.",
+        "Dobrou a distância.",
+        "Só pontos do eixo ficam nele.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q07",
+      "tema": "Eixos de simetria",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem uma estrela regular de 5 pontas?",
+      "alternativas": [
+        "5",
+        "1",
+        "0",
+        "10",
+        "2"
+      ],
+      "correta": 0,
+      "explicacao": "Cada eixo passa por uma ponta e pelo meio entre as duas pontas opostas: 5. Dica de mergulhador: 5 pontas iguais, 5 eixos.",
+      "comentarios": [
+        "",
+        "Contou só o eixo vertical.",
+        "Ela é simétrica.",
+        "Contou cada eixo duas vezes.",
+        "Contou poucos."
+      ]
+    },
+    {
+      "id": "mat-simetria-q08",
+      "tema": "Rotação",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Qual é o menor ângulo de giro que faz um quadrado coincidir com ele mesmo?",
+      "alternativas": [
+        "180°",
+        "360°",
+        "45°",
+        "120°",
+        "90°"
+      ],
+      "correta": 4,
+      "explicacao": "360° ÷ 4 = 90°. Dica de mergulhador: 360° dividido pelo número de lados.",
+      "comentarios": [
+        "Coincide, mas não é o menor.",
+        "É a volta inteira.",
+        "Não coincide com 45°.",
+        "É o do triângulo equilátero.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q09",
+      "tema": "Rotação",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Uma hélice tem 3 pás iguais, igualmente espaçadas. A partir de que giro ela parece igual à posição inicial?",
+      "alternativas": [
+        "60°",
+        "90°",
+        "120°",
+        "360°",
+        "180°"
+      ],
+      "correta": 2,
+      "explicacao": "360° ÷ 3 = 120°. Dica de mergulhador: pás iguais, giro por fração da volta.",
+      "comentarios": [
+        "Seria para 6 pás.",
+        "Seria para 4 pás.",
+        "",
+        "É a volta inteira.",
+        "Seria para 2 pás."
+      ]
+    },
+    {
+      "id": "mat-simetria-q10",
+      "tema": "Rotação",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos giros diferentes, de 0° até antes de 360°, fazem um hexágono regular coincidir com ele mesmo?",
+      "alternativas": [
+        "6",
+        "3",
+        "1",
+        "60",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "0°, 60°, 120°, 180°, 240° e 300°: 6 giros. Dica de mergulhador: múltiplos de 360° ÷ n.",
+      "comentarios": [
+        "",
+        "Contou só os giros de 120°.",
+        "Contou só o giro de 0°.",
+        "Usou o ângulo.",
+        "Contou reflexões também."
+      ]
+    },
+    {
+      "id": "mat-simetria-q11",
+      "tema": "Rotação",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Um retângulo que não é quadrado gira em torno do seu centro. Qual é o menor giro que o faz coincidir com ele mesmo?",
+      "alternativas": [
+        "90°",
+        "180°",
+        "360°",
+        "120°",
+        "45°"
+      ],
+      "correta": 1,
+      "explicacao": "Meia-volta coloca cada lado sobre o lado oposto, igual a ele. Dica de mergulhador: retângulo tem simetria de meia-volta.",
+      "comentarios": [
+        "Com 90°, os lados trocam de lugar e não coincidem.",
+        "",
+        "Há um giro menor.",
+        "É do triângulo equilátero.",
+        "Não coincide."
+      ]
+    },
+    {
+      "id": "mat-simetria-q12",
+      "tema": "Rotação",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "Uma roda-gigante tem 12 cabines igualmente espaçadas. Ela gira 150°. A cabine que estava no topo vai parar na posição de qual cabine?",
+      "alternativas": [
+        "Na posição da 5ª cabine seguinte",
+        "Na posição da 6ª cabine seguinte",
+        "Na posição da 4ª cabine seguinte",
+        "Na posição da 12ª cabine",
+        "Na posição da 3ª cabine seguinte"
+      ],
+      "correta": 0,
+      "explicacao": "Entre cabines há 360° ÷ 12 = 30°. 150° ÷ 30° = 5 posições. Dica de mergulhador: divida o giro pelo ângulo entre posições.",
+      "comentarios": [
+        "",
+        "6 posições seriam 180°.",
+        "4 posições seriam 120°.",
+        "Seria uma volta inteira.",
+        "3 posições seriam 90°."
+      ]
+    },
+    {
+      "id": "mat-simetria-q13",
+      "tema": "Rotação",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "Uma peça quadrada tem uma seta desenhada apontando para cima. Ela gira 90° no sentido horário três vezes. Para onde aponta a seta?",
+      "alternativas": [
+        "Para baixo",
+        "Para a direita",
+        "Para cima",
+        "Para uma diagonal",
+        "Para a esquerda"
+      ],
+      "correta": 4,
+      "explicacao": "Três giros de 90° no horário somam 270°: cima → direita → baixo → esquerda. Dica de mergulhador: acompanhe giro a giro.",
+      "comentarios": [
+        "Seria um giro de 180°.",
+        "Seria um giro de 90°.",
+        "Seria um giro de 360°.",
+        "Giros de 90° mantêm direções retas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q14",
+      "tema": "Reflexão no plano",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "O ponto (3, 2) é refletido no eixo x. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(3, 2)",
+        "(−3, −2)",
+        "(2, 3)",
+        "(3, −2)",
+        "(−3, 2)"
+      ],
+      "correta": 3,
+      "explicacao": "Refletir no eixo x troca o sinal de y. Dica de mergulhador: eixo x é horizontal; o ponto pula para baixo.",
+      "comentarios": [
+        "Não refletiu.",
+        "Girou 180°.",
+        "Trocou as coordenadas.",
+        "",
+        "Refletiu no eixo y."
+      ]
+    },
+    {
+      "id": "mat-simetria-q15",
+      "tema": "Reflexão no plano",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "O ponto (2, −5) gira 180° em torno da origem. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(5, −2)",
+        "(2, 5)",
+        "(−5, 2)",
+        "(−2, 5)",
+        "(−2, −5)"
+      ],
+      "correta": 3,
+      "explicacao": "Meia-volta troca os dois sinais. Dica de mergulhador: 180° vale duas reflexões.",
+      "comentarios": [
+        "Trocou as coordenadas.",
+        "Refletiu no eixo x.",
+        "Girou 90°.",
+        "",
+        "Refletiu no eixo y."
+      ]
+    },
+    {
+      "id": "mat-simetria-q16",
+      "tema": "Reflexão no plano",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "O ponto (3, 1) gira 90° no sentido anti-horário em torno da origem. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(1, −3)",
+        "(−3, −1)",
+        "(−3, 1)",
+        "(−1, 3)",
+        "(1, 3)"
+      ],
+      "correta": 3,
+      "explicacao": "(x, y) vai para (−y, x): (−1, 3). Dica de mergulhador: anti-horário, troque e mude o sinal da primeira.",
+      "comentarios": [
+        "Girou no sentido horário.",
+        "Girou 180°.",
+        "Refletiu no eixo y.",
+        "",
+        "Só trocou as coordenadas."
+      ]
+    },
+    {
+      "id": "mat-simetria-q17",
+      "tema": "Reflexão no plano",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "O ponto (5, 2) é refletido na reta y = x. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(5, −2)",
+        "(−5, 2)",
+        "(−2, −5)",
+        "(2, 5)",
+        "(2, −5)"
+      ],
+      "correta": 3,
+      "explicacao": "A reflexão em y = x troca as coordenadas de lugar. Dica de mergulhador: x vira y e y vira x.",
+      "comentarios": [
+        "Refletiu no eixo x.",
+        "Refletiu no eixo y.",
+        "Refletiu na reta y = −x.",
+        "",
+        "Girou 90° no sentido horário."
+      ]
+    },
+    {
+      "id": "mat-simetria-q18",
+      "tema": "Reflexão no plano",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Diante de um espelho vertical, uma pessoa levanta a mão direita. Qual mão a imagem no espelho parece levantar?",
+      "alternativas": [
+        "A esquerda",
+        "As duas",
+        "Nenhuma",
+        "A direita",
+        "Depende da distância ao espelho"
+      ],
+      "correta": 0,
+      "explicacao": "O espelho vertical reflete na direção da frente: direita e esquerda trocam. Dica de mergulhador: espelho não troca alto e baixo.",
+      "comentarios": [
+        "",
+        "Só uma mão foi levantada.",
+        "A imagem acompanha o movimento.",
+        "O espelho troca direita e esquerda.",
+        "A distância não muda o lado."
+      ]
+    },
+    {
+      "id": "mat-simetria-q19",
+      "tema": "Reflexão no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "O triângulo de vértices (1, 1), (4, 1) e (1, 3) é refletido no eixo y e, depois, no eixo x. Quais são os novos vértices?",
+      "alternativas": [
+        "(−1, 1), (−4, 1) e (−1, 3)",
+        "(−1, −1), (−1, −4) e (−3, −1)",
+        "(1, 1), (4, 1) e (1, 3)",
+        "(1, −1), (4, −1) e (1, −3)",
+        "(−1, −1), (−4, −1) e (−1, −3)"
+      ],
+      "correta": 4,
+      "explicacao": "Eixo y troca o sinal de x; eixo x troca o sinal de y. As duas juntas equivalem a um giro de 180°. Dica de mergulhador: reflexões em eixos perpendiculares somam meia-volta.",
+      "comentarios": [
+        "Fez só a reflexão no eixo y.",
+        "Trocou as coordenadas.",
+        "Achou que as reflexões se anulam.",
+        "Fez só a reflexão no eixo x.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q20",
+      "tema": "Reflexão no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "Uma faixa de azulejos repete o mesmo desenho a cada 30 cm, sem girar nem refletir. Quantas vezes o desenho aparece completo numa faixa de 2,7 m?",
+      "alternativas": [
+        "9",
+        "27",
+        "8",
+        "10",
+        "90"
+      ],
+      "correta": 0,
+      "explicacao": "270 cm ÷ 30 cm = 9 repetições, por translação. Dica de mergulhador: translação é repetição com passo fixo.",
+      "comentarios": [
+        "",
+        "Dividiu por 10.",
+        "Descontou uma repetição sem motivo.",
+        "Somou uma repetição sem motivo.",
+        "Não converteu metros em centímetros."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q01",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Qual é o complemento de um ângulo de 28°?",
+      "alternativas": [
+        "152°",
+        "28°",
+        "332°",
+        "62°",
+        "72°"
+      ],
+      "correta": 3,
+      "explicacao": "90° − 28° = 62°. Dica de mergulhador: complemento sai de 90°.",
+      "comentarios": [
+        "É o suplemento.",
+        "Repetiu.",
+        "Subtraiu de 360°.",
+        "",
+        "Errou a subtração."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q02",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois ângulos de um triângulo medem 48° e 77°. Quanto mede o terceiro?",
+      "alternativas": [
+        "45°",
+        "29°",
+        "65°",
+        "125°",
+        "55°"
+      ],
+      "correta": 4,
+      "explicacao": "180° − 125° = 55°. Dica de mergulhador: triângulo soma 180°.",
+      "comentarios": [
+        "Errou a subtração.",
+        "Subtraiu.",
+        "Errou a conta.",
+        "Somou os dois.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q03",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Os catetos de um triângulo retângulo medem 9 cm e 12 cm. Quanto mede a hipotenusa?",
+      "alternativas": [
+        "21 cm",
+        "108 cm",
+        "10,5 cm",
+        "15 cm",
+        "225 cm"
+      ],
+      "correta": 3,
+      "explicacao": "√(81 + 144) = √225 = 15 cm. Dica de mergulhador: triplo de 3, 4, 5.",
+      "comentarios": [
+        "Somou os catetos.",
+        "Multiplicou.",
+        "Fez a média.",
+        "",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q04",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Quantos eixos de simetria tem um pentágono regular?",
+      "alternativas": [
+        "5",
+        "2",
+        "0",
+        "10",
+        "1"
+      ],
+      "correta": 0,
+      "explicacao": "Polígono regular de n lados tem n eixos. Dica de mergulhador: 5 lados, 5 eixos.",
+      "comentarios": [
+        "",
+        "Contou poucos.",
+        "O regular é simétrico.",
+        "Contou cada eixo duas vezes.",
+        "Contou um só."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q05",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "No mesmo momento, uma vara de 1 m projeta sombra de 2 m, e uma árvore projeta sombra de 14 m. Qual é a altura da árvore?",
+      "alternativas": [
+        "3,5 m",
+        "7 m",
+        "15 m",
+        "28 m",
+        "13 m"
+      ],
+      "correta": 1,
+      "explicacao": "Altura/sombra = 1/2: árvore = 14 ÷ 2 = 7 m. Dica de mergulhador: mesma razão para todos.",
+      "comentarios": [
+        "Dividiu por 4.",
+        "",
+        "Somou 1.",
+        "Inverteu a razão.",
+        "Subtraiu 1."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q06",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Quanto mede cada ângulo externo de um polígono regular de 10 lados?",
+      "alternativas": [
+        "72°",
+        "18°",
+        "1.440°",
+        "144°",
+        "36°"
+      ],
+      "correta": 4,
+      "explicacao": "360° ÷ 10 = 36°. Dica de mergulhador: externos somam 360°.",
+      "comentarios": [
+        "Dividiu 360 por 5.",
+        "Dividiu 180 por 10.",
+        "É a soma dos internos.",
+        "É o ângulo interno.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q07",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "O ponto (−2, 6) é refletido no eixo x. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(6, −2)",
+        "(−2, −6)",
+        "(2, −6)",
+        "(−2, 6)",
+        "(2, 6)"
+      ],
+      "correta": 1,
+      "explicacao": "Eixo x troca o sinal de y. Dica de mergulhador: horizontal, pula para baixo.",
+      "comentarios": [
+        "Trocou as coordenadas.",
+        "",
+        "Girou 180°.",
+        "Não refletiu.",
+        "Refletiu no eixo y."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q08",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros do relógio às 8h em ponto?",
+      "alternativas": [
+        "120°",
+        "150°",
+        "60°",
+        "80°",
+        "240°"
+      ],
+      "correta": 0,
+      "explicacao": "8 × 30° = 240°; o menor é 360° − 240° = 120°. Dica de mergulhador: se passar de 180°, tire de 360°.",
+      "comentarios": [
+        "",
+        "Usou 5 horas.",
+        "Usou 2 horas.",
+        "Multiplicou 8 por 10.",
+        "É o maior ângulo."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q09",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois lados de um triângulo medem 6 cm e 11 cm. Quantos valores inteiros o terceiro lado pode ter?",
+      "alternativas": [
+        "12",
+        "11",
+        "17",
+        "5",
+        "13"
+      ],
+      "correta": 1,
+      "explicacao": "O terceiro lado fica entre 5 e 17, sem os extremos: de 6 a 16, 11 valores. Dica de mergulhador: entre a diferença e a soma.",
+      "comentarios": [
+        "Incluiu um extremo.",
+        "",
+        "Contou até a soma.",
+        "Contou só a diferença.",
+        "Incluiu os dois extremos."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q10",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois triângulos semelhantes têm razão de semelhança 4. A área do menor é 5 cm². Qual é a área do maior?",
+      "alternativas": [
+        "20 cm²",
+        "9 cm²",
+        "80 cm²",
+        "320 cm²",
+        "25 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "5 × 4² = 80 cm². Dica de mergulhador: área, razão ao quadrado.",
+      "comentarios": [
+        "Usou a razão linear.",
+        "Somou.",
+        "",
+        "Usou a razão ao cubo.",
+        "Elevou a área ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q11",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois terrenos entre ruas paralelas têm frentes de 18 m e 24 m para a rua A. Na rua B, as frentes somam 56 m. Quanto mede cada uma?",
+      "alternativas": [
+        "21 m e 35 m",
+        "28 m e 28 m",
+        "24 m e 32 m",
+        "18 m e 38 m",
+        "32 m e 24 m"
+      ],
+      "correta": 2,
+      "explicacao": "Razão 18 : 24 = 3 : 4. 56 em 7 partes de 8: 24 m e 32 m. Dica de mergulhador: Tales é divisão proporcional.",
+      "comentarios": [
+        "Errou a razão.",
+        "Dividiu igualmente.",
+        "",
+        "Repetiu a primeira frente.",
+        "Trocou a ordem."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q12",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Uma escada de 13 m está apoiada numa parede, com o pé a 5 m dela. A que altura ela toca a parede?",
+      "alternativas": [
+        "144 m",
+        "18 m",
+        "12 m",
+        "13,9 m",
+        "8 m"
+      ],
+      "correta": 2,
+      "explicacao": "√(169 − 25) = 12 m. Dica de mergulhador: 5, 12, 13.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "Somou.",
+        "",
+        "Somou os quadrados.",
+        "Subtraiu sem elevar."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q13",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Duas paralelas são cortadas por uma transversal, e dois ângulos alternos internos medem 2x + 10° e 3x − 30°. Quanto mede cada um?",
+      "alternativas": [
+        "70°",
+        "40°",
+        "50°",
+        "110°",
+        "90°"
+      ],
+      "correta": 4,
+      "explicacao": "Alternos internos são iguais: 2x + 10 = 3x − 30, x = 40, ângulo 90°. Dica de mergulhador: substitua no fim.",
+      "comentarios": [
+        "Errou a substituição.",
+        "É o valor de x.",
+        "Errou o sinal.",
+        "Errou a equação.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q14",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Qual é o menor ângulo de giro que faz um pentágono regular coincidir com ele mesmo?",
+      "alternativas": [
+        "108°",
+        "60°",
+        "90°",
+        "36°",
+        "72°"
+      ],
+      "correta": 4,
+      "explicacao": "360° ÷ 5 = 72°. Dica de mergulhador: giro = 360° ÷ n.",
+      "comentarios": [
+        "É o ângulo interno.",
+        "É o do hexágono.",
+        "É o do quadrado.",
+        "Dividiu 180 por 5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q15",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Um triângulo tem lados de 9, 12 e 16 cm. Como ele é classificado quanto aos ângulos?",
+      "alternativas": [
+        "Acutângulo",
+        "Equilátero",
+        "Obtusângulo",
+        "Retângulo",
+        "Impossível"
+      ],
+      "correta": 2,
+      "explicacao": "9² + 12² = 225 < 16² = 256: obtusângulo. Dica de mergulhador: compare quadrados.",
+      "comentarios": [
+        "O maior lado ao quadrado é maior que a soma.",
+        "Os lados são diferentes.",
+        "",
+        "81 + 144 = 225, diferente de 256.",
+        "9 + 12 > 16, ele existe."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q16",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Um polígono regular tem ângulo interno de 160°. Quantos lados ele tem?",
+      "alternativas": [
+        "16",
+        "20",
+        "18",
+        "36",
+        "9"
+      ],
+      "correta": 2,
+      "explicacao": "Externo: 20°. Lados: 360° ÷ 20° = 18. Dica de mergulhador: pelo externo.",
+      "comentarios": [
+        "Dividiu 160 por 10.",
+        "Errou o externo.",
+        "",
+        "Usou o externo de 10°.",
+        "Usou o externo de 40°."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q17",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Uma escada de 6,5 m tem o pé a 2,5 m da parede. O topo escorrega até ficar a 5,2 m do chão. Quanto o pé se afasta da parede?",
+      "alternativas": [
+        "2,5 m",
+        "1,6 m",
+        "1,4 m",
+        "3,9 m",
+        "0,8 m"
+      ],
+      "correta": 2,
+      "explicacao": "Topo inicial: √(42,25 − 6,25) = 6 m. Novo pé: √(42,25 − 27,04) = √15,21 = 3,9 m. Afastamento: 3,9 − 2,5 = 1,4 m. Dica de mergulhador: comprimento fixo, recalcule.",
+      "comentarios": [
+        "É a distância inicial.",
+        "Errou a raiz.",
+        "",
+        "É a nova distância, não o afastamento.",
+        "Usou o quanto o topo desceu."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q18",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "No triângulo ABC, DE é paralelo a BC, com AD = 6 cm e AB = 15 cm. A área do triângulo ADE é 8 cm². Qual é a área de ABC?",
+      "alternativas": [
+        "32 cm²",
+        "12,5 cm²",
+        "20 cm²",
+        "50 cm²",
+        "125 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Razão: 15/6 = 2,5. Área: 8 × 2,5² = 8 × 6,25 = 50 cm². Dica de mergulhador: paralela gera semelhança; área com razão ao quadrado.",
+      "comentarios": [
+        "Multiplicou por 4.",
+        "Dividiu em vez de multiplicar.",
+        "Usou a razão linear.",
+        "",
+        "Usou a razão ao cubo."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q19",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros às 5h24?",
+      "alternativas": [
+        "30°",
+        "342°",
+        "12°",
+        "18°",
+        "6°"
+      ],
+      "correta": 3,
+      "explicacao": "Minutos: 24 × 6° = 144°. Horas: 150° + 24 × 0,5° = 162°. Diferença: 18°. Dica de mergulhador: os dois ponteiros andam.",
+      "comentarios": [
+        "Usou uma hora inteira.",
+        "É o maior ângulo.",
+        "Errou o avanço do ponteiro das horas.",
+        "",
+        "Deixou o ponteiro das horas parado no 5."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q20",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "O ponto (4, −1) gira 90° no sentido anti-horário em torno da origem e, depois, é refletido no eixo y. Onde ele termina?",
+      "alternativas": [
+        "(1, 4)",
+        "(−1, 4)",
+        "(−1, −4)",
+        "(−4, −1)",
+        "(1, −4)"
+      ],
+      "correta": 1,
+      "explicacao": "Giro de 90° anti-horário: (x, y) → (−y, x) = (1, 4). Reflexão no eixo y: (−1, 4). Dica de mergulhador: uma transformação de cada vez.",
+      "comentarios": [
+        "Fez só o giro.",
+        "",
+        "Refletiu no eixo errado.",
+        "Fez só a reflexão.",
+        "Girou no sentido horário."
       ]
     }
   ],
@@ -43078,6 +44761,1446 @@
         "Dividiu igualmente.",
         ""
       ]
+    },
+    {
+      "id": "mat-pitagoras-q01-v1",
+      "varianteDe": "mat-pitagoras-q01",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Os catetos de um triângulo retângulo medem 5 cm e 12 cm. Quanto mede a hipotenusa?",
+      "alternativas": [
+        "8,5 cm",
+        "169 cm",
+        "60 cm",
+        "13 cm",
+        "17 cm"
+      ],
+      "correta": 3,
+      "explicacao": "a² = 25 + 144 = 169, a = 13 cm. Dica de mergulhador: terna 5, 12, 13.",
+      "comentarios": [
+        "Fez a média.",
+        "Esqueceu a raiz.",
+        "Multiplicou.",
+        "",
+        "Somou os catetos."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q02-v1",
+      "varianteDe": "mat-pitagoras-q02",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "A hipotenusa de um triângulo retângulo mede 10 cm, e um cateto mede 6 cm. Quanto mede o outro?",
+      "alternativas": [
+        "11,7 cm",
+        "4 cm",
+        "8 cm",
+        "16 cm",
+        "64 cm"
+      ],
+      "correta": 2,
+      "explicacao": "c² = 100 − 36 = 64, c = 8 cm. Dica de mergulhador: hipotenusa² − cateto².",
+      "comentarios": [
+        "Somou os quadrados.",
+        "Subtraiu sem elevar.",
+        "",
+        "Somou.",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q03-v1",
+      "varianteDe": "mat-pitagoras-q03",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Num triângulo retângulo, qual lado fica oposto ao ângulo reto?",
+      "alternativas": [
+        "O cateto maior",
+        "A mediana",
+        "O cateto menor",
+        "A altura",
+        "A hipotenusa"
+      ],
+      "correta": 4,
+      "explicacao": "A hipotenusa é o lado oposto ao ângulo de 90°. Dica de mergulhador: os catetos formam o ângulo reto.",
+      "comentarios": [
+        "Fica oposto a um ângulo agudo.",
+        "Não é um lado.",
+        "Fica oposto a um ângulo agudo.",
+        "A altura não é um lado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q04-v1",
+      "varianteDe": "mat-pitagoras-q04",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Os catetos de um triângulo retângulo medem 2 cm e 3 cm. Quanto mede a hipotenusa, aproximadamente?",
+      "alternativas": [
+        "13 cm",
+        "3,61 cm",
+        "3,5 cm",
+        "2,24 cm",
+        "5 cm"
+      ],
+      "correta": 1,
+      "explicacao": "a² = 4 + 9 = 13, a = √13 ≈ 3,61 cm. Dica de mergulhador: eleve, some, tire a raiz.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "",
+        "Chutou entre os catetos.",
+        "Calculou √5.",
+        "Somou os catetos."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q05-v1",
+      "varianteDe": "mat-pitagoras-q05",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um triângulo tem lados de 6, 8 e 11 cm. Ele é retângulo?",
+      "alternativas": [
+        "Não: 6² + 8² = 100, menor que 11² = 121",
+        "Não, porque nenhum lado mede 90",
+        "Sim, porque 6 + 8 > 11",
+        "Sim, porque 6, 8 e 10 é terna pitagórica",
+        "Não dá para saber"
+      ],
+      "correta": 0,
+      "explicacao": "36 + 64 = 100 < 121: não é retângulo (é obtusângulo). Dica de mergulhador: igualdade dos quadrados só no retângulo.",
+      "comentarios": [
+        "",
+        "Ângulos não estão nos lados.",
+        "Isso só garante que existe.",
+        "O lado é 11, não 10.",
+        "O teste dos quadrados basta."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q06-v1",
+      "varianteDe": "mat-pitagoras-q06",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um triângulo tem lados de 6, 7 e 9 cm. Como ele é classificado quanto aos ângulos?",
+      "alternativas": [
+        "Obtusângulo",
+        "Acutângulo",
+        "Retângulo",
+        "Impossível",
+        "Equilátero"
+      ],
+      "correta": 1,
+      "explicacao": "36 + 49 = 85 > 81: todos os ângulos são agudos. Dica de mergulhador: maior² menor que a soma, acutângulo.",
+      "comentarios": [
+        "O maior lado ao quadrado é menor que a soma.",
+        "",
+        "36 + 49 não é igual a 81.",
+        "Ele existe.",
+        "É classificação pelos lados."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q07-v1",
+      "varianteDe": "mat-pitagoras-q07",
+      "tema": "Hipotenusa e catetos",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Num triângulo retângulo, a altura relativa à hipotenusa divide a hipotenusa em segmentos de 2 cm e 8 cm. Quanto mede a altura?",
+      "alternativas": [
+        "4 cm",
+        "10 cm",
+        "16 cm",
+        "5 cm",
+        "6 cm"
+      ],
+      "correta": 0,
+      "explicacao": "h² = 2 × 8 = 16, h = 4 cm. Dica de mergulhador: h² = m × n.",
+      "comentarios": [
+        "",
+        "É a hipotenusa.",
+        "Esqueceu a raiz.",
+        "Fez a média.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q08-v1",
+      "varianteDe": "mat-pitagoras-q08",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Qual destas ternas é pitagórica?",
+      "alternativas": [
+        "6, 7 e 8",
+        "9, 12 e 15",
+        "4, 6 e 8",
+        "3, 5 e 7",
+        "5, 10 e 15"
+      ],
+      "correta": 1,
+      "explicacao": "81 + 144 = 225 = 15². É o triplo de 3, 4, 5. Dica de mergulhador: múltiplos de ternas também são ternas.",
+      "comentarios": [
+        "36 + 49 não é 64.",
+        "",
+        "16 + 36 não é 64.",
+        "9 + 25 não é 49.",
+        "Nem forma triângulo."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q09-v1",
+      "varianteDe": "mat-pitagoras-q09",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Quanto mede, aproximadamente, a diagonal de um quadrado de lado 8 cm?",
+      "alternativas": [
+        "16 cm",
+        "12 cm",
+        "11,3 cm",
+        "8 cm",
+        "64 cm"
+      ],
+      "correta": 2,
+      "explicacao": "d = 8√2 ≈ 11,3 cm. Dica de mergulhador: lado × 1,41.",
+      "comentarios": [
+        "Somou os lados.",
+        "Somou metade do lado.",
+        "",
+        "Repetiu o lado.",
+        "Calculou a área."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q10-v1",
+      "varianteDe": "mat-pitagoras-q10",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Quanto mede, aproximadamente, a altura de um triângulo equilátero de lado 6 cm?",
+      "alternativas": [
+        "3 cm",
+        "4,5 cm",
+        "6 cm",
+        "5,2 cm",
+        "10,4 cm"
+      ],
+      "correta": 3,
+      "explicacao": "h² = 36 − 9 = 27, h = 3√3 ≈ 5,2 cm. Dica de mergulhador: metade da base e Pitágoras.",
+      "comentarios": [
+        "Usou metade do lado.",
+        "Chutou.",
+        "Igualou ao lado.",
+        "",
+        "Esqueceu de dividir por 2."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q11-v1",
+      "varianteDe": "mat-pitagoras-q11",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um terreno retangular mede 20 m por 21 m. Quanto mede a sua diagonal?",
+      "alternativas": [
+        "29 m",
+        "420 m",
+        "41 m",
+        "841 m",
+        "20,5 m"
+      ],
+      "correta": 0,
+      "explicacao": "d² = 400 + 441 = 841, d = 29 m. Dica de mergulhador: 20, 21, 29 também é terna.",
+      "comentarios": [
+        "",
+        "Multiplicou.",
+        "Somou.",
+        "Esqueceu a raiz.",
+        "Fez a média."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q12-v1",
+      "varianteDe": "mat-pitagoras-q12",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Quanto mede, aproximadamente, a diagonal de um cubo de aresta 2 cm?",
+      "alternativas": [
+        "4 cm",
+        "6 cm",
+        "8 cm",
+        "3,46 cm",
+        "2,83 cm"
+      ],
+      "correta": 3,
+      "explicacao": "d² = 4 + 4 + 4 = 12, d = 2√3 ≈ 3,46 cm. Dica de mergulhador: diagonal do cubo = aresta × √3.",
+      "comentarios": [
+        "Dobrou a aresta.",
+        "Somou as arestas.",
+        "Calculou o volume.",
+        "",
+        "Calculou a diagonal de uma face."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q13-v1",
+      "varianteDe": "mat-pitagoras-q13",
+      "tema": "Ternas e diagonais",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "A diagonal de um quadrado mede 6 cm. Qual é a área do quadrado?",
+      "alternativas": [
+        "36 cm²",
+        "24 cm²",
+        "18 cm²",
+        "12 cm²",
+        "9 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "ℓ² = d² ÷ 2 = 36 ÷ 2 = 18 cm². Dica de mergulhador: área = d² ÷ 2.",
+      "comentarios": [
+        "Elevou a diagonal ao quadrado.",
+        "Errou a divisão.",
+        "",
+        "Dobrou a diagonal.",
+        "Usou metade da diagonal como lado."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q14-v1",
+      "varianteDe": "mat-pitagoras-q14",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma escada de 10 m está apoiada numa parede, com o pé a 6 m dela. A que altura toca a parede?",
+      "alternativas": [
+        "64 m",
+        "11,7 m",
+        "8 m",
+        "4 m",
+        "16 m"
+      ],
+      "correta": 2,
+      "explicacao": "h² = 100 − 36 = 64, h = 8 m. Dica de mergulhador: 6, 8, 10.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "Somou os quadrados.",
+        "",
+        "Subtraiu sem elevar.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q15-v1",
+      "varianteDe": "mat-pitagoras-q15",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um barco navega 9 km para o norte e, depois, 12 km para o oeste. A que distância, em linha reta, está do ponto de partida?",
+      "alternativas": [
+        "225 km",
+        "15 km",
+        "21 km",
+        "3 km",
+        "10,5 km"
+      ],
+      "correta": 1,
+      "explicacao": "d² = 81 + 144 = 225, d = 15 km. Dica de mergulhador: trajetos perpendiculares, Pitágoras.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "",
+        "Somou.",
+        "Subtraiu.",
+        "Fez a média."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q16-v1",
+      "varianteDe": "mat-pitagoras-q16",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma rampa tem 13 m de comprimento e sobe 5 m. Qual é a distância horizontal que ela ocupa?",
+      "alternativas": [
+        "13,9 m",
+        "12 m",
+        "18 m",
+        "8 m",
+        "144 m"
+      ],
+      "correta": 1,
+      "explicacao": "x² = 169 − 25 = 144, x = 12 m. Dica de mergulhador: terna 5, 12, 13.",
+      "comentarios": [
+        "Somou os quadrados.",
+        "",
+        "Somou.",
+        "Subtraiu sem elevar.",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q17-v1",
+      "varianteDe": "mat-pitagoras-q17",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um monitor tem tela de 40 cm por 30 cm. Quanto mede a diagonal?",
+      "alternativas": [
+        "10 cm",
+        "50 cm",
+        "2.500 cm",
+        "35 cm",
+        "70 cm"
+      ],
+      "correta": 1,
+      "explicacao": "d² = 1.600 + 900 = 2.500, d = 50 cm. Dica de mergulhador: 30, 40, 50.",
+      "comentarios": [
+        "Subtraiu.",
+        "",
+        "Esqueceu a raiz.",
+        "Fez a média.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q18-v1",
+      "varianteDe": "mat-pitagoras-q18",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma antena de 12 m é sustentada por um cabo preso no topo e fixado no chão a 5 m da base. Qual é o comprimento do cabo?",
+      "alternativas": [
+        "7 m",
+        "13 m",
+        "17 m",
+        "169 m",
+        "10,9 m"
+      ],
+      "correta": 1,
+      "explicacao": "c² = 144 + 25 = 169, c = 13 m. Dica de mergulhador: 5, 12, 13.",
+      "comentarios": [
+        "Subtraiu.",
+        "",
+        "Somou.",
+        "Esqueceu a raiz.",
+        "Calculou um cateto."
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q19-v1",
+      "varianteDe": "mat-pitagoras-q19",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Uma escada de 10 m tem o pé a 6 m da parede. O topo escorrega 2 m para baixo. Quanto o pé se afasta?",
+      "alternativas": [
+        "8 m",
+        "6 m",
+        "0 m",
+        "4 m",
+        "2 m"
+      ],
+      "correta": 4,
+      "explicacao": "Topo: 8 m, depois 6 m. Pé: √(100 − 36) = 8 m. Afastou 2 m. Dica de mergulhador: comprimento fixo, recalcule o outro cateto.",
+      "comentarios": [
+        "É a nova distância.",
+        "É a distância inicial.",
+        "Achou que o pé não se move.",
+        "Errou a conta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pitagoras-q20-v1",
+      "varianteDe": "mat-pitagoras-q20",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-pitagoras",
+      "enunciado": "Um drone voa 60 m para o norte e 80 m para o leste, a 240 m de altura do ponto de partida. A que distância, em linha reta, ele está?",
+      "alternativas": [
+        "140 m",
+        "340 m",
+        "380 m",
+        "260 m",
+        "100 m"
+      ],
+      "correta": 3,
+      "explicacao": "Horizontal: 100 m. Total: √(100² + 240²) = 260 m. Dica de mergulhador: primeiro o chão, depois a altura.",
+      "comentarios": [
+        "Somou os horizontais.",
+        "Somou a horizontal com a altura.",
+        "Somou tudo.",
+        "",
+        "Ignorou a altura."
+      ]
+    },
+    {
+      "id": "mat-simetria-q01-v1",
+      "varianteDe": "mat-simetria-q01",
+      "tema": "Eixos de simetria",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem um retângulo que não é quadrado?",
+      "alternativas": [
+        "Infinitos",
+        "1",
+        "4",
+        "2",
+        "0"
+      ],
+      "correta": 3,
+      "explicacao": "Os eixos passam pelos meios dos lados opostos; as diagonais não servem. Dica de mergulhador: dobre na diagonal e veja que não coincide.",
+      "comentarios": [
+        "Isso é do círculo.",
+        "Há dois eixos.",
+        "As diagonais do retângulo não são eixos.",
+        "",
+        "Há eixos pelos meios dos lados."
+      ]
+    },
+    {
+      "id": "mat-simetria-q02-v1",
+      "varianteDe": "mat-simetria-q02",
+      "tema": "Eixos de simetria",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem um hexágono regular?",
+      "alternativas": [
+        "6",
+        "12",
+        "1",
+        "2",
+        "3"
+      ],
+      "correta": 0,
+      "explicacao": "3 eixos por vértices opostos e 3 pelos meios de lados opostos: 6. Dica de mergulhador: regular de n lados, n eixos.",
+      "comentarios": [
+        "",
+        "Contou cada eixo duas vezes.",
+        "Contou um só.",
+        "Contou poucos.",
+        "Contou só os que passam por vértices."
+      ]
+    },
+    {
+      "id": "mat-simetria-q03-v1",
+      "varianteDe": "mat-simetria-q03",
+      "tema": "Eixos de simetria",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Qual destas letras tem eixo de simetria horizontal e vertical?",
+      "alternativas": [
+        "E",
+        "T",
+        "N",
+        "A",
+        "H"
+      ],
+      "correta": 4,
+      "explicacao": "O H coincide dobrado nas duas direções. Dica de mergulhador: teste as duas dobras.",
+      "comentarios": [
+        "Só tem eixo horizontal.",
+        "Só tem eixo vertical.",
+        "Não tem eixo, só simetria de giro.",
+        "Só tem eixo vertical.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q04-v1",
+      "varianteDe": "mat-simetria-q04",
+      "tema": "Eixos de simetria",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem um trapézio isósceles?",
+      "alternativas": [
+        "4",
+        "2",
+        "1",
+        "3",
+        "0"
+      ],
+      "correta": 2,
+      "explicacao": "O eixo passa pelos meios das duas bases. Dica de mergulhador: lados não paralelos iguais, um eixo.",
+      "comentarios": [
+        "Confundiu com o quadrado.",
+        "Só há um.",
+        "",
+        "Confundiu com o triângulo equilátero.",
+        "Há o eixo pelos meios das bases."
+      ]
+    },
+    {
+      "id": "mat-simetria-q05-v1",
+      "varianteDe": "mat-simetria-q05",
+      "tema": "Eixos de simetria",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos eixos de simetria tem um paralelogramo que não é losango nem retângulo?",
+      "alternativas": [
+        "1",
+        "2",
+        "Infinitos",
+        "0",
+        "4"
+      ],
+      "correta": 3,
+      "explicacao": "O paralelogramo comum não tem eixo, só simetria de giro de 180°. Dica de mergulhador: nem toda figura simétrica tem eixo.",
+      "comentarios": [
+        "Nenhuma dobra faz coincidir.",
+        "As diagonais não são eixos.",
+        "Isso é do círculo.",
+        "",
+        "Confundiu com o quadrado."
+      ]
+    },
+    {
+      "id": "mat-simetria-q06-v1",
+      "varianteDe": "mat-simetria-q06",
+      "tema": "Eixos de simetria",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Numa figura com um eixo horizontal, o ponto B está 5 cm acima do eixo. Onde fica o seu simétrico?",
+      "alternativas": [
+        "5 cm abaixo do eixo",
+        "2,5 cm abaixo do eixo",
+        "Sobre o eixo",
+        "10 cm abaixo do eixo",
+        "5 cm acima do eixo"
+      ],
+      "correta": 0,
+      "explicacao": "Mesma distância, lado oposto. Dica de mergulhador: reflexão inverte o lado e mantém a distância.",
+      "comentarios": [
+        "",
+        "Dividiu.",
+        "Só pontos do eixo ficam nele.",
+        "Dobrou.",
+        "É o próprio ponto."
+      ]
+    },
+    {
+      "id": "mat-simetria-q07-v1",
+      "varianteDe": "mat-simetria-q07",
+      "tema": "Eixos de simetria",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "Uma flor tem 8 pétalas iguais, distribuídas igualmente em volta do centro. Quantos eixos de simetria ela tem?",
+      "alternativas": [
+        "4",
+        "2",
+        "1",
+        "8",
+        "16"
+      ],
+      "correta": 3,
+      "explicacao": "4 eixos passam por pétalas opostas e 4 entre pétalas: 8. Dica de mergulhador: n partes iguais, n eixos.",
+      "comentarios": [
+        "Contou só os eixos pelas pétalas.",
+        "Contou poucos.",
+        "Contou um.",
+        "",
+        "Contou cada eixo duas vezes."
+      ]
+    },
+    {
+      "id": "mat-simetria-q08-v1",
+      "varianteDe": "mat-simetria-q08",
+      "tema": "Rotação",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Qual é o menor ângulo de giro que faz um triângulo equilátero coincidir com ele mesmo?",
+      "alternativas": [
+        "120°",
+        "90°",
+        "60°",
+        "360°",
+        "180°"
+      ],
+      "correta": 0,
+      "explicacao": "360° ÷ 3 = 120°. Dica de mergulhador: giro mínimo = 360° ÷ n.",
+      "comentarios": [
+        "",
+        "É o do quadrado.",
+        "É o ângulo interno, não o giro.",
+        "É a volta inteira.",
+        "Não coincide."
+      ]
+    },
+    {
+      "id": "mat-simetria-q09-v1",
+      "varianteDe": "mat-simetria-q09",
+      "tema": "Rotação",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "Um ventilador tem 4 pás iguais. A partir de que giro ele parece igual à posição inicial?",
+      "alternativas": [
+        "45°",
+        "180°",
+        "120°",
+        "360°",
+        "90°"
+      ],
+      "correta": 4,
+      "explicacao": "360° ÷ 4 = 90°. Dica de mergulhador: divida a volta pelo número de pás.",
+      "comentarios": [
+        "Seria para 8 pás.",
+        "Coincide, mas não é o menor.",
+        "Seria para 3 pás.",
+        "É a volta inteira.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q10-v1",
+      "varianteDe": "mat-simetria-q10",
+      "tema": "Rotação",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Quantos giros diferentes, de 0° até antes de 360°, fazem um pentágono regular coincidir com ele mesmo?",
+      "alternativas": [
+        "4",
+        "1",
+        "72",
+        "5",
+        "10"
+      ],
+      "correta": 3,
+      "explicacao": "0°, 72°, 144°, 216° e 288°: 5 giros. Dica de mergulhador: n giros no polígono regular.",
+      "comentarios": [
+        "Esqueceu o 0°.",
+        "Contou só o 0°.",
+        "Usou o ângulo.",
+        "",
+        "Contou reflexões."
+      ]
+    },
+    {
+      "id": "mat-simetria-q11-v1",
+      "varianteDe": "mat-simetria-q11",
+      "tema": "Rotação",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "A letra N, girada em torno do seu centro, volta a parecer N com qual giro?",
+      "alternativas": [
+        "45°",
+        "90°",
+        "360°",
+        "180°",
+        "270°"
+      ],
+      "correta": 3,
+      "explicacao": "O N tem simetria de meia-volta, como o S e o Z. Dica de mergulhador: vire a página de cabeça para baixo.",
+      "comentarios": [
+        "Não coincide.",
+        "Viraria um Z deitado.",
+        "Há um giro menor.",
+        "",
+        "Não coincide."
+      ]
+    },
+    {
+      "id": "mat-simetria-q12-v1",
+      "varianteDe": "mat-simetria-q12",
+      "tema": "Rotação",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "Uma roda tem 8 raios igualmente espaçados. Ela gira 135°. Um raio que apontava para cima vai parar na posição de qual raio?",
+      "alternativas": [
+        "Na posição do 5º raio seguinte",
+        "Na posição do 4º raio seguinte",
+        "Na posição do 2º raio seguinte",
+        "Na posição do 8º raio",
+        "Na posição do 3º raio seguinte"
+      ],
+      "correta": 4,
+      "explicacao": "Entre raios: 45°. 135° ÷ 45° = 3. Dica de mergulhador: giro ÷ ângulo entre posições.",
+      "comentarios": [
+        "5 posições seriam 225°.",
+        "4 posições seriam 180°.",
+        "2 posições seriam 90°.",
+        "Seria uma volta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q13-v1",
+      "varianteDe": "mat-simetria-q13",
+      "tema": "Rotação",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "Uma peça com uma seta apontando para cima gira 90° no sentido horário seis vezes. Para onde aponta a seta?",
+      "alternativas": [
+        "Para cima",
+        "Para baixo",
+        "Para a direita",
+        "Para uma diagonal",
+        "Para a esquerda"
+      ],
+      "correta": 1,
+      "explicacao": "6 × 90° = 540° = 360° + 180°: meia-volta. Dica de mergulhador: tire as voltas completas.",
+      "comentarios": [
+        "Seis giros de 90° são 540°, não 360°.",
+        "",
+        "Seria 90° ou 450°.",
+        "Giros de 90° mantêm direções retas.",
+        "Seria 270°."
+      ]
+    },
+    {
+      "id": "mat-simetria-q14-v1",
+      "varianteDe": "mat-simetria-q14",
+      "tema": "Reflexão no plano",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "O ponto (−4, 5) é refletido no eixo y. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(5, −4)",
+        "(−4, 5)",
+        "(4, −5)",
+        "(−4, −5)",
+        "(4, 5)"
+      ],
+      "correta": 4,
+      "explicacao": "Refletir no eixo y troca o sinal de x. Dica de mergulhador: eixo y é vertical; o ponto pula para o outro lado.",
+      "comentarios": [
+        "Trocou e mudou sinais.",
+        "Não refletiu.",
+        "Girou 180°.",
+        "Refletiu no eixo x.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-simetria-q15-v1",
+      "varianteDe": "mat-simetria-q15",
+      "tema": "Reflexão no plano",
+      "dificuldade": "facil",
+      "fase": "mat-simetria",
+      "enunciado": "O ponto (−1, 3) gira 180° em torno da origem. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(1, −3)",
+        "(−3, −1)",
+        "(−1, −3)",
+        "(3, −1)",
+        "(1, 3)"
+      ],
+      "correta": 0,
+      "explicacao": "Troca os dois sinais. Dica de mergulhador: meia-volta inverte tudo.",
+      "comentarios": [
+        "",
+        "Girou 90°.",
+        "Refletiu no eixo x.",
+        "Trocou as coordenadas.",
+        "Refletiu no eixo y."
+      ]
+    },
+    {
+      "id": "mat-simetria-q16-v1",
+      "varianteDe": "mat-simetria-q16",
+      "tema": "Reflexão no plano",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "O ponto (2, 4) gira 90° no sentido anti-horário em torno da origem. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(−2, −4)",
+        "(4, −2)",
+        "(−4, 2)",
+        "(4, 2)",
+        "(−2, 4)"
+      ],
+      "correta": 2,
+      "explicacao": "(x, y) → (−y, x) = (−4, 2). Dica de mergulhador: desenhe para conferir o quadrante.",
+      "comentarios": [
+        "Girou 180°.",
+        "Girou no sentido horário.",
+        "",
+        "Só trocou.",
+        "Refletiu no eixo y."
+      ]
+    },
+    {
+      "id": "mat-simetria-q17-v1",
+      "varianteDe": "mat-simetria-q17",
+      "tema": "Reflexão no plano",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "O ponto (−3, 7) é refletido na reta y = x. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(3, 7)",
+        "(7, −3)",
+        "(−7, 3)",
+        "(−3, −7)",
+        "(3, −7)"
+      ],
+      "correta": 1,
+      "explicacao": "Troca as coordenadas: (7, −3). Dica de mergulhador: a reta y = x é a diagonal do primeiro quadrante.",
+      "comentarios": [
+        "Refletiu no eixo y.",
+        "",
+        "Refletiu em y = −x.",
+        "Refletiu no eixo x.",
+        "Girou 180°."
+      ]
+    },
+    {
+      "id": "mat-simetria-q18-v1",
+      "varianteDe": "mat-simetria-q18",
+      "tema": "Reflexão no plano",
+      "dificuldade": "medio",
+      "fase": "mat-simetria",
+      "enunciado": "Um relógio de ponteiros, visto num espelho, parece marcar 3h. Que horas ele marca de verdade?",
+      "alternativas": [
+        "9h",
+        "15h",
+        "3h",
+        "12h",
+        "6h"
+      ],
+      "correta": 0,
+      "explicacao": "O ponteiro que parece no 3 está, de fato, no 9. Dica de mergulhador: espelho troca os lados do mostrador.",
+      "comentarios": [
+        "",
+        "Confundiu com o horário de 24 horas.",
+        "O espelho inverte esquerda e direita.",
+        "Errou a reflexão.",
+        "Inverteu o alto e o baixo."
+      ]
+    },
+    {
+      "id": "mat-simetria-q19-v1",
+      "varianteDe": "mat-simetria-q19",
+      "tema": "Reflexão no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "O triângulo de vértices (2, 0), (5, 0) e (2, 4) é refletido no eixo x e, depois, girado 180° em torno da origem. Quais são os novos vértices?",
+      "alternativas": [
+        "(−2, 0), (−5, 0) e (−2, 4)",
+        "(−2, 0), (−5, 0) e (−2, −4)",
+        "(0, −2), (0, −5) e (4, −2)",
+        "(2, 0), (5, 0) e (2, −4)",
+        "(2, 0), (5, 0) e (2, 4)"
+      ],
+      "correta": 0,
+      "explicacao": "Reflexão no eixo x: (2, 0), (5, 0), (2, −4). Giro de 180°: troca os dois sinais. O resultado equivale a refletir no eixo y. Dica de mergulhador: faça uma transformação de cada vez.",
+      "comentarios": [
+        "",
+        "Fez só o giro de 180°.",
+        "Trocou as coordenadas.",
+        "Fez só a reflexão no eixo x.",
+        "Achou que as transformações se anulam."
+      ]
+    },
+    {
+      "id": "mat-simetria-q20-v1",
+      "varianteDe": "mat-simetria-q20",
+      "tema": "Reflexão no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-simetria",
+      "enunciado": "Uma estampa repete o mesmo desenho a cada 20 cm, sem girar nem refletir. Quantas vezes ele aparece completo numa faixa de 2,4 m?",
+      "alternativas": [
+        "120",
+        "11",
+        "12",
+        "13",
+        "24"
+      ],
+      "correta": 2,
+      "explicacao": "240 ÷ 20 = 12. Dica de mergulhador: mesma unidade antes de dividir.",
+      "comentarios": [
+        "Não converteu.",
+        "Descontou uma repetição.",
+        "",
+        "Somou uma.",
+        "Dividiu por 10."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q01-v1",
+      "varianteDe": "mat-revisao-figuras-q01",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Qual é o suplemento de um ângulo de 75°?",
+      "alternativas": [
+        "75°",
+        "115°",
+        "15°",
+        "105°",
+        "285°"
+      ],
+      "correta": 3,
+      "explicacao": "180° − 75° = 105°. Dica de mergulhador: suplemento sai de 180°.",
+      "comentarios": [
+        "Repetiu.",
+        "Errou a subtração.",
+        "É o complemento.",
+        "",
+        "Subtraiu de 360°."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q02-v1",
+      "varianteDe": "mat-revisao-figuras-q02",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois ângulos de um triângulo medem 90° e 34°. Quanto mede o terceiro?",
+      "alternativas": [
+        "146°",
+        "66°",
+        "46°",
+        "124°",
+        "56°"
+      ],
+      "correta": 4,
+      "explicacao": "180° − 124° = 56°. Dica de mergulhador: no retângulo, os agudos somam 90°.",
+      "comentarios": [
+        "Subtraiu só o 34°.",
+        "Errou a conta.",
+        "Errou a subtração.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q03-v1",
+      "varianteDe": "mat-revisao-figuras-q03",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Os catetos de um triângulo retângulo medem 8 cm e 15 cm. Quanto mede a hipotenusa?",
+      "alternativas": [
+        "120 cm",
+        "23 cm",
+        "17 cm",
+        "11,5 cm",
+        "289 cm"
+      ],
+      "correta": 2,
+      "explicacao": "√(64 + 225) = 17 cm. Dica de mergulhador: terna 8, 15, 17.",
+      "comentarios": [
+        "Multiplicou.",
+        "Somou.",
+        "",
+        "Fez a média.",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q04-v1",
+      "varianteDe": "mat-revisao-figuras-q04",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Quantos eixos de simetria tem um octógono regular?",
+      "alternativas": [
+        "2",
+        "1",
+        "8",
+        "4",
+        "16"
+      ],
+      "correta": 2,
+      "explicacao": "Regular de 8 lados: 8 eixos. Dica de mergulhador: n lados, n eixos.",
+      "comentarios": [
+        "Contou poucos.",
+        "Contou um.",
+        "",
+        "Contou só os que passam por vértices.",
+        "Contou duas vezes."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q05-v1",
+      "varianteDe": "mat-revisao-figuras-q05",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "No mesmo momento, uma vara de 2 m projeta sombra de 3 m, e um poste projeta 9 m. Qual é a altura do poste?",
+      "alternativas": [
+        "13,5 m",
+        "6 m",
+        "8 m",
+        "18 m",
+        "4,5 m"
+      ],
+      "correta": 1,
+      "explicacao": "2/3 = h/9, h = 6 m. Dica de mergulhador: altura/sombra constante.",
+      "comentarios": [
+        "Inverteu.",
+        "",
+        "Subtraiu 1.",
+        "Multiplicou por 2.",
+        "Dividiu por 2."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q06-v1",
+      "varianteDe": "mat-revisao-figuras-q06",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Quanto mede cada ângulo externo de um polígono regular de 12 lados?",
+      "alternativas": [
+        "1.800°",
+        "30°",
+        "15°",
+        "150°",
+        "60°"
+      ],
+      "correta": 1,
+      "explicacao": "360° ÷ 12 = 30°. Dica de mergulhador: externo = 360° ÷ n.",
+      "comentarios": [
+        "É a soma dos internos.",
+        "",
+        "Dividiu 180 por 12.",
+        "É o interno.",
+        "Dividiu 360 por 6."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q07-v1",
+      "varianteDe": "mat-revisao-figuras-q07",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "O ponto (5, −1) é refletido no eixo y. Quais são as novas coordenadas?",
+      "alternativas": [
+        "(−1, 5)",
+        "(−5, 1)",
+        "(5, 1)",
+        "(−5, −1)",
+        "(5, −1)"
+      ],
+      "correta": 3,
+      "explicacao": "Eixo y troca o sinal de x. Dica de mergulhador: vertical, pula para o lado.",
+      "comentarios": [
+        "Trocou.",
+        "Girou 180°.",
+        "Refletiu no eixo x.",
+        "",
+        "Não refletiu."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q08-v1",
+      "varianteDe": "mat-revisao-figuras-q08",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros às 9h30?",
+      "alternativas": [
+        "75°",
+        "120°",
+        "105°",
+        "90°",
+        "255°"
+      ],
+      "correta": 2,
+      "explicacao": "Minutos: 180°. Horas: 270° + 15° = 285°. Diferença: 105°. Dica de mergulhador: o ponteiro das horas anda 0,5° por minuto.",
+      "comentarios": [
+        "Errou o avanço do ponteiro das horas.",
+        "Usou 4 horas.",
+        "",
+        "Deixou o ponteiro das horas parado no 9.",
+        "É o maior ângulo."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q09-v1",
+      "varianteDe": "mat-revisao-figuras-q09",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois lados de um triângulo medem 2 cm e 8 cm. Quantos valores inteiros o terceiro lado pode ter?",
+      "alternativas": [
+        "4",
+        "6",
+        "10",
+        "3",
+        "5"
+      ],
+      "correta": 3,
+      "explicacao": "Entre 6 e 10, sem extremos: 7, 8, 9. Dica de mergulhador: extremos não fecham.",
+      "comentarios": [
+        "Incluiu um extremo.",
+        "Contou só a diferença.",
+        "Contou até a soma.",
+        "",
+        "Incluiu os dois."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q10-v1",
+      "varianteDe": "mat-revisao-figuras-q10",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois triângulos semelhantes têm razão 1,5. A área do menor é 20 cm². Qual é a área do maior?",
+      "alternativas": [
+        "45 cm²",
+        "40 cm²",
+        "67,5 cm²",
+        "30 cm²",
+        "21,5 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "20 × 2,25 = 45 cm². Dica de mergulhador: 1,5² = 2,25.",
+      "comentarios": [
+        "",
+        "Dobrou.",
+        "Usou a razão ao cubo.",
+        "Usou a razão linear.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q11-v1",
+      "varianteDe": "mat-revisao-figuras-q11",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois lotes entre ruas paralelas têm frentes de 10 m e 15 m para a rua A. Na rua B, as frentes somam 60 m. Quanto mede cada uma?",
+      "alternativas": [
+        "30 m e 30 m",
+        "24 m e 36 m",
+        "20 m e 40 m",
+        "10 m e 50 m",
+        "36 m e 24 m"
+      ],
+      "correta": 1,
+      "explicacao": "Razão 2 : 3. 60 em 5 partes de 12: 24 m e 36 m. Dica de mergulhador: mesma razão na outra rua.",
+      "comentarios": [
+        "Dividiu igualmente.",
+        "",
+        "Errou a razão.",
+        "Repetiu a primeira.",
+        "Trocou a ordem."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q12-v1",
+      "varianteDe": "mat-revisao-figuras-q12",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Um cabo de 17 m vai do topo de um poste de 15 m até o chão. A que distância da base do poste ele está fixado?",
+      "alternativas": [
+        "22,7 m",
+        "2 m",
+        "64 m",
+        "32 m",
+        "8 m"
+      ],
+      "correta": 4,
+      "explicacao": "√(289 − 225) = 8 m. Dica de mergulhador: 8, 15, 17.",
+      "comentarios": [
+        "Somou os quadrados.",
+        "Subtraiu sem elevar.",
+        "Esqueceu a raiz.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q13-v1",
+      "varianteDe": "mat-revisao-figuras-q13",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Dois ângulos correspondentes medem 4x − 5° e 2x + 35°. Quanto mede cada um?",
+      "alternativas": [
+        "20°",
+        "55°",
+        "85°",
+        "105°",
+        "75°"
+      ],
+      "correta": 4,
+      "explicacao": "4x − 5 = 2x + 35, x = 20, ângulo 75°. Dica de mergulhador: correspondentes são iguais.",
+      "comentarios": [
+        "É o valor de x.",
+        "Errou o sinal.",
+        "Errou a substituição.",
+        "Usou o suplemento.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q14-v1",
+      "varianteDe": "mat-revisao-figuras-q14",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Qual é o menor ângulo de giro que faz um octógono regular coincidir com ele mesmo?",
+      "alternativas": [
+        "45°",
+        "22,5°",
+        "60°",
+        "135°",
+        "90°"
+      ],
+      "correta": 0,
+      "explicacao": "360° ÷ 8 = 45°. Dica de mergulhador: giro mínimo = externo do regular.",
+      "comentarios": [
+        "",
+        "Dividiu 180 por 8.",
+        "É o do hexágono.",
+        "É o ângulo interno.",
+        "É o do quadrado."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q15-v1",
+      "varianteDe": "mat-revisao-figuras-q15",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Um triângulo tem lados de 10, 10 e 14 cm. Como ele é classificado quanto aos ângulos?",
+      "alternativas": [
+        "Equilátero",
+        "Obtusângulo",
+        "Impossível",
+        "Acutângulo",
+        "Retângulo"
+      ],
+      "correta": 3,
+      "explicacao": "100 + 100 = 200 > 196: acutângulo. Dica de mergulhador: menor que a soma, todos agudos.",
+      "comentarios": [
+        "Um lado é diferente.",
+        "O maior lado ao quadrado é menor que a soma.",
+        "Ele existe.",
+        "",
+        "200 é diferente de 196."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q16-v1",
+      "varianteDe": "mat-revisao-figuras-q16",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Um polígono regular tem ângulo interno de 156°. Quantos lados ele tem?",
+      "alternativas": [
+        "18",
+        "24",
+        "15",
+        "10",
+        "12"
+      ],
+      "correta": 2,
+      "explicacao": "Externo: 24°. Lados: 360° ÷ 24° = 15. Dica de mergulhador: externos somam 360°.",
+      "comentarios": [
+        "Usou o externo de 20°.",
+        "Usou o externo de 15°.",
+        "",
+        "Usou o externo de 36°.",
+        "Usou o externo de 30°."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q17-v1",
+      "varianteDe": "mat-revisao-figuras-q17",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Uma escada de 2,5 m tem o pé a 0,7 m da parede. O topo escorrega 0,4 m para baixo. Quanto o pé se afasta?",
+      "alternativas": [
+        "0,8 m",
+        "1,5 m",
+        "0,4 m",
+        "0,7 m",
+        "1,1 m"
+      ],
+      "correta": 0,
+      "explicacao": "Topo: √(6,25 − 0,49) = 2,4 m; desce para 2,0 m. Pé: √(6,25 − 4) = 1,5 m. Afastamento: 0,8 m. Dica de mergulhador: dois Pitágoras.",
+      "comentarios": [
+        "",
+        "É a nova distância.",
+        "Usou o quanto o topo desceu.",
+        "É a distância inicial.",
+        "Errou a raiz."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q18-v1",
+      "varianteDe": "mat-revisao-figuras-q18",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "No triângulo ABC, DE é paralelo a BC, com AD = 4 cm e AB = 12 cm. A área de ADE é 5 cm². Qual é a área de ABC?",
+      "alternativas": [
+        "135 cm²",
+        "15 cm²",
+        "9 cm²",
+        "20 cm²",
+        "45 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "Razão: 3. Área: 5 × 9 = 45 cm². Dica de mergulhador: razão ao quadrado.",
+      "comentarios": [
+        "Usou a razão ao cubo.",
+        "Usou a razão linear.",
+        "Somou.",
+        "Multiplicou por 4.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q19-v1",
+      "varianteDe": "mat-revisao-figuras-q19",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros às 1h50?",
+      "alternativas": [
+        "245°",
+        "125°",
+        "115°",
+        "90°",
+        "55°"
+      ],
+      "correta": 2,
+      "explicacao": "Minutos: 300°. Horas: 30° + 25° = 55°. Diferença: 245°; menor: 115°. Dica de mergulhador: passou de 180°, tire de 360°.",
+      "comentarios": [
+        "É o maior ângulo.",
+        "Errou o avanço.",
+        "",
+        "Deixou o ponteiro das horas parado no 1.",
+        "É a posição do ponteiro das horas."
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-q20-v1",
+      "varianteDe": "mat-revisao-figuras-q20",
+      "tema": "Revisão: figuras planas",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-figuras",
+      "enunciado": "O ponto (2, 3) gira 90° no sentido anti-horário em torno da origem e, depois, é refletido no eixo x. Onde ele termina?",
+      "alternativas": [
+        "(3, 2)",
+        "(−3, −2)",
+        "(−3, 2)",
+        "(2, −3)",
+        "(3, −2)"
+      ],
+      "correta": 1,
+      "explicacao": "Giro: (−3, 2). Reflexão no eixo x: (−3, −2). Dica de mergulhador: anote o resultado intermediário.",
+      "comentarios": [
+        "Errou os dois sinais.",
+        "",
+        "Fez só o giro.",
+        "Fez só a reflexão.",
+        "Girou no sentido horário."
+      ]
     }
   ],
   "pares": [
@@ -44064,6 +47187,78 @@
       "tema": "Semelhança de triângulos e Teorema de Tales",
       "termo": "Sombra",
       "definicao": "Mede alturas por semelhança"
+    },
+    {
+      "id": "mat-pitagoras-par-01",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "termo": "Hipotenusa",
+      "definicao": "Lado oposto ao ângulo reto"
+    },
+    {
+      "id": "mat-pitagoras-par-02",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "termo": "Terna pitagórica",
+      "definicao": "3, 4 e 5"
+    },
+    {
+      "id": "mat-pitagoras-par-03",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "termo": "Diagonal do quadrado",
+      "definicao": "Lado vezes √2"
+    },
+    {
+      "id": "mat-pitagoras-par-04",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "termo": "h² = m × n",
+      "definicao": "Altura sobre a hipotenusa"
+    },
+    {
+      "id": "mat-simetria-par-01",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "termo": "Eixo de simetria",
+      "definicao": "Divide a figura em metades iguais"
+    },
+    {
+      "id": "mat-simetria-par-02",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "termo": "Simetria de rotação",
+      "definicao": "Coincide após um giro"
+    },
+    {
+      "id": "mat-simetria-par-03",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "termo": "Translação",
+      "definicao": "Desloca sem girar"
+    },
+    {
+      "id": "mat-simetria-par-04",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "termo": "Reflexão no eixo x",
+      "definicao": "Troca o sinal de y"
+    },
+    {
+      "id": "mat-revisao-figuras-par-01",
+      "tema": "Revisão do módulo: figuras planas",
+      "termo": "Dois ângulos iguais",
+      "definicao": "Triângulos semelhantes"
+    },
+    {
+      "id": "mat-revisao-figuras-par-02",
+      "tema": "Revisão do módulo: figuras planas",
+      "termo": "Quadrado da hipotenusa",
+      "definicao": "Soma dos quadrados dos catetos"
+    },
+    {
+      "id": "mat-revisao-figuras-par-03",
+      "tema": "Revisão do módulo: figuras planas",
+      "termo": "Externos somam",
+      "definicao": "360° em qualquer polígono"
+    },
+    {
+      "id": "mat-revisao-figuras-par-04",
+      "tema": "Revisão do módulo: figuras planas",
+      "termo": "Giro mínimo",
+      "definicao": "360° ÷ n"
     }
   ],
   "verdadeiroFalso": [
@@ -44913,6 +48108,69 @@
       "afirmacao": "Pessoa de 1,80 m com sombra de 1,20 m indica prédio de 30 m com sombra de 20 m.",
       "verdadeira": true,
       "explicacao": "Mesma razão."
+    },
+    {
+      "id": "mat-pitagoras-vf-01",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "afirmacao": "Com catetos 6 e 8, a hipotenusa mede 10.",
+      "verdadeira": true,
+      "explicacao": "36 + 64 = 100."
+    },
+    {
+      "id": "mat-pitagoras-vf-02",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "afirmacao": "Um triângulo de lados 6, 8 e 11 é retângulo.",
+      "verdadeira": false,
+      "explicacao": "100 é menor que 121."
+    },
+    {
+      "id": "mat-pitagoras-vf-03",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "afirmacao": "A diagonal de um cubo de aresta a mede a√3.",
+      "verdadeira": true,
+      "explicacao": "a² + a² + a² = 3a²."
+    },
+    {
+      "id": "mat-simetria-vf-01",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "afirmacao": "O quadrado tem 4 eixos de simetria.",
+      "verdadeira": true,
+      "explicacao": "Duas diagonais e duas medianas."
+    },
+    {
+      "id": "mat-simetria-vf-02",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "afirmacao": "As diagonais de um retângulo são eixos de simetria.",
+      "verdadeira": false,
+      "explicacao": "Dobrando na diagonal, não coincide."
+    },
+    {
+      "id": "mat-simetria-vf-03",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "afirmacao": "Girar 180° troca os sinais das duas coordenadas.",
+      "verdadeira": true,
+      "explicacao": "(x, y) vira (−x, −y)."
+    },
+    {
+      "id": "mat-revisao-figuras-vf-01",
+      "tema": "Revisão do módulo: figuras planas",
+      "afirmacao": "Um triângulo de lados 9, 12 e 16 é obtusângulo.",
+      "verdadeira": true,
+      "explicacao": "225 < 256."
+    },
+    {
+      "id": "mat-revisao-figuras-vf-02",
+      "tema": "Revisão do módulo: figuras planas",
+      "afirmacao": "Às 9h30, os ponteiros formam 90°.",
+      "verdadeira": false,
+      "explicacao": "Formam 105°."
+    },
+    {
+      "id": "mat-revisao-figuras-vf-03",
+      "tema": "Revisão do módulo: figuras planas",
+      "afirmacao": "Polígono regular com interno de 160° tem 18 lados.",
+      "verdadeira": true,
+      "explicacao": "Externo 20°."
     }
   ],
   "sequencias": [
@@ -45408,6 +48666,42 @@
         "Resolver a regra de três"
       ],
       "explicacao": "Os raios de sol são paralelos."
+    },
+    {
+      "id": "mat-pitagoras-seq-01",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "titulo": "Aplicar Pitágoras",
+      "itens": [
+        "Identificar o ângulo reto",
+        "Reconhecer a hipotenusa, oposta a ele",
+        "Elevar os lados conhecidos ao quadrado",
+        "Somar ou subtrair e tirar a raiz"
+      ],
+      "explicacao": "Hipotenusa sempre sozinha de um lado."
+    },
+    {
+      "id": "mat-simetria-seq-01",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "titulo": "Achar a imagem de um ponto depois de duas transformações",
+      "itens": [
+        "Aplicar a primeira transformação",
+        "Anotar as novas coordenadas",
+        "Aplicar a segunda sobre elas",
+        "Conferir o quadrante com um desenho"
+      ],
+      "explicacao": "Uma transformação de cada vez."
+    },
+    {
+      "id": "mat-revisao-figuras-seq-01",
+      "tema": "Revisão do módulo: figuras planas",
+      "titulo": "Resolver uma questão de Geometria plana",
+      "itens": [
+        "Desenhar ou marcar a figura",
+        "Procurar ângulos retos, paralelas e ângulos iguais",
+        "Escolher a propriedade certa",
+        "Conferir se o resultado faz sentido na figura"
+      ],
+      "explicacao": "Desenho primeiro, conta depois."
     }
   ],
   "adivinhas": [
@@ -46000,6 +49294,48 @@
         "Mesma forma, tamanhos diferentes",
         "Ângulos iguais e lados proporcionais",
         "Ampliação ou redução"
+      ]
+    },
+    {
+      "id": "mat-pitagoras-adv-01",
+      "tema": "Teorema de Pitágoras e relações métricas",
+      "dificuldade": "medio",
+      "resposta": "Pitágoras",
+      "aceitas": [
+        "pitagoras"
+      ],
+      "dicas": [
+        "Teorema do triângulo retângulo",
+        "a² = b² + c²",
+        "Mede escadas e diagonais"
+      ]
+    },
+    {
+      "id": "mat-simetria-adv-01",
+      "tema": "Simetria, rotação e ladrilhamento",
+      "dificuldade": "medio",
+      "resposta": "Simetria",
+      "aceitas": [
+        "simetria"
+      ],
+      "dicas": [
+        "Equilíbrio entre partes iguais",
+        "Pode ser de reflexão ou de giro",
+        "Presente em borboletas e logotipos"
+      ]
+    },
+    {
+      "id": "mat-revisao-figuras-adv-01",
+      "tema": "Revisão do módulo: figuras planas",
+      "dificuldade": "medio",
+      "resposta": "Geometria",
+      "aceitas": [
+        "geometria"
+      ],
+      "dicas": [
+        "Estuda formas e medidas",
+        "Usa ângulos e lados",
+        "Vem do grego, medir a terra"
       ]
     }
   ],
@@ -46969,6 +50305,78 @@
       "tema": "Matemática",
       "palavra": "Feixe",
       "dica": "Conjunto de retas paralelas"
+    },
+    {
+      "id": "mat-pitagoras-pal-01",
+      "tema": "Matemática",
+      "palavra": "Escada",
+      "dica": "Lado inclinado do triângulo"
+    },
+    {
+      "id": "mat-pitagoras-pal-02",
+      "tema": "Matemática",
+      "palavra": "Cateto",
+      "dica": "Lado junto ao ângulo reto"
+    },
+    {
+      "id": "mat-pitagoras-pal-03",
+      "tema": "Matemática",
+      "palavra": "Diagonal",
+      "dica": "Liga cantos opostos"
+    },
+    {
+      "id": "mat-pitagoras-pal-04",
+      "tema": "Matemática",
+      "palavra": "Drone",
+      "dica": "Voa em três dimensões"
+    },
+    {
+      "id": "mat-simetria-pal-01",
+      "tema": "Matemática",
+      "palavra": "Espelho",
+      "dica": "Reflete trocando os lados"
+    },
+    {
+      "id": "mat-simetria-pal-02",
+      "tema": "Matemática",
+      "palavra": "Hélice",
+      "dica": "Gira com pás iguais"
+    },
+    {
+      "id": "mat-simetria-pal-03",
+      "tema": "Matemática",
+      "palavra": "Mosaico",
+      "dica": "Desenho que se repete"
+    },
+    {
+      "id": "mat-simetria-pal-04",
+      "tema": "Matemática",
+      "palavra": "Eixo",
+      "dica": "Linha da dobra"
+    },
+    {
+      "id": "mat-revisao-figuras-pal-01",
+      "tema": "Matemática",
+      "palavra": "Figura",
+      "dica": "Forma desenhada no plano"
+    },
+    {
+      "id": "mat-revisao-figuras-pal-02",
+      "tema": "Matemática",
+      "palavra": "Lado",
+      "dica": "Segmento de um polígono"
+    },
+    {
+      "id": "mat-revisao-figuras-pal-03",
+      "tema": "Matemática",
+      "palavra": "Quadrado",
+      "dica": "Quatro lados iguais e ângulos retos"
+    },
+    {
+      "id": "mat-revisao-figuras-pal-04",
+      "tema": "Matemática",
+      "palavra": "Régua",
+      "dica": "Instrumento para traçar retas"
     }
   ],
   "fichas": {
@@ -48398,6 +51806,104 @@
       "pegadinhas": [
         "Dividir em partes iguais.",
         "Trocar a ordem dos segmentos."
+      ]
+    },
+    "Hipotenusa e catetos": {
+      "texto": [
+        "Num triângulo retângulo, a hipotenusa (oposta ao ângulo reto) é o maior lado: a² = b² + c². Para achar um cateto, subtraia os quadrados. Eleve antes de somar ou subtrair.",
+        "Para classificar um triângulo pelos ângulos, compare o maior lado ao quadrado com a soma dos quadrados dos outros: igual, retângulo; maior, obtusângulo; menor, acutângulo. A altura sobre a hipotenusa satisfaz h² = m × n."
+      ],
+      "pontos": [
+        "Cateto = √(a² − b²).",
+        "Igualdade dos quadrados: ângulo reto."
+      ],
+      "pegadinhas": [
+        "Somar os lados antes de elevar.",
+        "Somar os quadrados para achar um cateto."
+      ]
+    },
+    "Ternas e diagonais": {
+      "texto": [
+        "Ternas pitagóricas comuns: 3, 4, 5; 5, 12, 13; 8, 15, 17; 7, 24, 25; 20, 21, 29; e múltiplos. Diagonal do quadrado: ℓ√2; altura do equilátero: ℓ√3/2.",
+        "Diagonal de uma caixa: √(a² + b² + c²); do cubo, a√3. Conhecida a diagonal do quadrado, a área é d² ÷ 2."
+      ],
+      "pontos": [
+        "Área do quadrado = d² ÷ 2.",
+        "Múltiplos de ternas são ternas."
+      ],
+      "pegadinhas": [
+        "Elevar a diagonal ao quadrado e chamar de área.",
+        "Esquecer uma aresta na diagonal da caixa."
+      ]
+    },
+    "Aplicações": {
+      "texto": [
+        "Escadas, rampas, cabos e trajetos perpendiculares formam triângulos retângulos: o lado inclinado é a hipotenusa. Quando a escada escorrega, o comprimento fica fixo e se recalcula o outro cateto.",
+        "Em três dimensões, use Pitágoras duas vezes: primeiro a distância no chão, depois com a altura. Diagonais de telas e terrenos também são hipotenusas."
+      ],
+      "pontos": [
+        "Lado inclinado = hipotenusa.",
+        "3D: chão e depois altura."
+      ],
+      "pegadinhas": [
+        "Somar trajetos em vez de usar Pitágoras.",
+        "Achar que o pé da escada fica parado."
+      ]
+    },
+    "Eixos de simetria": {
+      "texto": [
+        "Eixo de simetria divide a figura em metades que coincidem quando dobradas; cada ponto tem um simétrico à mesma distância do outro lado. Polígono regular de n lados: n eixos. Quadrado: 4; retângulo: 2; losango: 2 (diagonais); equilátero: 3; isósceles: 1; paralelogramo comum: 0; círculo: infinitos.",
+        "Para letras e logotipos, imagine dobrar a figura na vertical e na horizontal. Figuras com n partes iguais em volta do centro (estrelas, flores) têm n eixos."
+      ],
+      "pontos": [
+        "Regular de n lados: n eixos.",
+        "Diagonal do retângulo não é eixo."
+      ],
+      "pegadinhas": [
+        "Contar as diagonais do retângulo como eixos.",
+        "Contar cada eixo duas vezes."
+      ]
+    },
+    "Rotação": {
+      "texto": [
+        "Simetria de rotação: a figura coincide com ela mesma depois de um giro menor que 360°. Giro mínimo do polígono regular: 360° ÷ n; os giros possíveis são os múltiplos dele.",
+        "Em peças que giram várias vezes, some os giros e tire as voltas completas (múltiplos de 360°). Em rodas com n posições, cada posição vale 360° ÷ n."
+      ],
+      "pontos": [
+        "Giro mínimo = 360° ÷ n.",
+        "Tire as voltas inteiras."
+      ],
+      "pegadinhas": [
+        "Confundir ângulo interno com giro.",
+        "Esquecer o giro de 0° na contagem."
+      ]
+    },
+    "Reflexão no plano": {
+      "texto": [
+        "Eixo x: (x, y) → (x, −y). Eixo y: (x, y) → (−x, y). Giro de 180°: (−x, −y). Giro de 90° anti-horário: (−y, x). Reta y = x: (y, x).",
+        "Duas reflexões em eixos perpendiculares equivalem a um giro de 180°. Num espelho vertical, direita e esquerda trocam. Translação repete o desenho com passo fixo, sem girar."
+      ],
+      "pontos": [
+        "Duas reflexões perpendiculares = 180°.",
+        "Espelho troca os lados, não o alto."
+      ],
+      "pegadinhas": [
+        "Trocar o eixo da reflexão.",
+        "Girar no sentido errado."
+      ]
+    },
+    "Revisão: figuras planas": {
+      "texto": [
+        "Escolha a ferramenta: ângulos (complementares, suplementares, paralelas, relógio), triângulos e polígonos (180°, externo, desigualdade triangular, (n − 2) × 180°), semelhança (dois ângulos iguais, razão, área ao quadrado, Tales), Pitágoras (ângulo reto) ou simetria (eixos, giros, reflexões).",
+        "Antes de marcar, confira: o ângulo pedido é o menor? O lado calculado é cateto ou hipotenusa? A razão foi aplicada a lado ou a área? O ponteiro das horas andou?"
+      ],
+      "pontos": [
+        "Procure o ângulo reto escondido.",
+        "Área: razão ao quadrado."
+      ],
+      "pegadinhas": [
+        "Confundir complemento com suplemento.",
+        "Somar lados antes de elevar ao quadrado."
       ]
     }
   }
