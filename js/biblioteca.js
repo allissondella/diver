@@ -41,7 +41,7 @@ const Biblioteca = (() => {
       const nivel = Progresso.nivel(prog.xp);
       const concluidas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
       const importada = Trilhas.ehImportada(t.id);
-      const extras = ['pares', 'verdadeiroFalso', 'adivinhas', 'sequencias', 'palavras'].filter((b) => Array.isArray(t[b]) && t[b].length).length;
+      const extras = ['pares', 'verdadeiroFalso', 'adivinhas', 'sequencias', 'palavras'].filter((b) => (Array.isArray(t[b]) && t[b].length) || (t._parcial && t.contagem && t.contagem[b])).length;
       lista.append(h('article', { class: 'cartao curso' },
         h('div', { class: 'curso__cabeca' },
           h('span', { class: 'rotulo', text: t.categoria || 'Trilha' }),
@@ -49,14 +49,14 @@ const Biblioteca = (() => {
         h('h2', { class: 'curso__nome', text: t.nome }),
         h('p', { class: 'curso__descricao', text: t.descricao }),
         h('ul', { class: 'curso__numeros' },
-          h('li', {}, h('strong', { text: String(t.questoes.length) }), 'questões'),
+          h('li', {}, h('strong', { text: String(Trilhas.totalQuestoes(t)) }), 'questões'),
           h('li', {}, h('strong', { text: `${concluidas}/${t.fases.length}` }), 'fases'),
           h('li', {}, h('strong', { text: `Nv. ${nivel.numero}` }), `${prog.xp} XP`),
           h('li', {}, h('strong', { text: String(extras) }), 'tipos extras de carta')),
         h('div', { class: 'curso__acoes' },
           h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => App.abrirTrilha(t.id) }, 'Estudar'),
           h('a', { class: 'botao botao--fantasma botao--pequeno', href: '#jogos', onclick: () => App.definirTrilha(t.id) }, icone('i-controle'), 'Jogar'),
-          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => UI.baixarArquivo(`${t.id}.json`, JSON.stringify(t, null, 2)) }, icone('i-download'), 'Exportar'),
+          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => Trilhas.completar(t).then(() => UI.baixarArquivo(`${t.id}.json`, JSON.stringify(t, null, 2)), () => UI.toast('Não consegui baixar o curso', 'Confira a internet e tente de novo.', 'i-alerta')) }, icone('i-download'), 'Exportar'),
           importada ? h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: async () => {
             if (!(await UI.confirmar({ titulo: 'Remover esta trilha?', texto: `"${t.nome}" sai deste navegador. O progresso dela continua guardado.`, sim: 'Remover trilha', perigo: true, humor: 'triste' }))) return;
             Trilhas.removerImportada(t.id);

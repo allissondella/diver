@@ -5,6 +5,11 @@
  *  1. data/trilhas/indice.json (lista de arquivos)
  *  2. listagem do diretório data/trilhas/ (se o servidor oferecer)
  *  3. trilhas importadas manualmente (salvas no localStorage)
+ *
+ * Catálogo leve (2026-10-09): se existir data/trilhas/catalogo.json (scripts/gerar-catalogo.mjs), os cursos
+ * dele entram só com o "cabeçalho" (nome, fases, contagens) e a marca _parcial; o curso inteiro é baixado
+ * por completar(trilha) quando o aluno entra nele, NO MESMO OBJETO (quem guardou a referência continua
+ * valendo). Arquivo do índice que não está no catálogo é carregado inteiro, como antes.
  */
 const Trilhas = (() => {
   const PASTA = 'data/trilhas/';
@@ -113,7 +118,7 @@ const Trilhas = (() => {
       const base = new URL(PASTA, location.href);
       const nomes = [...html.matchAll(/href="([^"]+?\.json)"/gi)]
         .map((m) => decodeURIComponent(new URL(m[1], base).pathname.split('/').pop()));
-      return nomes.filter((n) => n !== 'indice.json');
+      return nomes.filter((n) => n !== 'indice.json' && n !== 'catalogo.json');
     } catch (e) {
       return [];
     }
@@ -132,9 +137,12 @@ const Trilhas = (() => {
    * Retorna { trilhas, problemas, semServidor }.
    */
   async function carregarTodas() {
-    const indice = await buscarJSON(PASTA + 'indice.json');
-    const doDiretorio = await listarDiretorio();
-    const arquivos = [...new Set([...(Array.isArray(indice) ? indice : []), ...doDiretorio])];
+    const [indice, doDiretorio, catalogo] = await Promise.all([buscarJSON(PASTA + 'indice.json'), listarDiretorio(), buscarJSON(PASTA + 'catalogo.json')]);
+    const doCatalogo = catalogo && Array.isArray(catalogo.cursos)
+      ? catalogo.cursos.filter((c) => c && typeof c.id === 'string' && typeof c.arquivo === 'string' && Array.isArray(c.fases) && c.fases.length)
+      : [];
+    const noCatalogo = new Set(doCatalogo.map((c) => c.arquivo));
+    const arquivos = [...new Set([...(Array.isArray(indice) ? indice : []), ...doDiretorio])].filter((a) => !noCatalogo.has(a));
 
     const trilhas = [];
     const problemas = [];
@@ -150,6 +158,13 @@ const Trilhas = (() => {
       trilhas.push(t);
     }
 
+    // cabeçalhos do catálogo primeiro (na ordem do catálogo); o curso inteiro vem depois, por completar()
+    doCatalogo.forEach((c) => {
+      if (ids.has(c.id)) return;
+      ids.add(c.id);
+      trilhas.push({ ...c, _parcial: true, _arquivo: c.arquivo });
+    });
+
     const conteudos = await Promise.all(arquivos.map((a) => buscarJSON(PASTA + a)));
     conteudos.forEach((t, i) => {
       if (t === null) problemas.push({ origem: arquivos[i], erros: ['não foi possível ler o arquivo (JSON inválido?)'] });
@@ -161,6 +176,37 @@ const Trilhas = (() => {
     const semServidor = indice === null && doDiretorio.length === 0;
     return { trilhas, problemas, semServidor };
   }
+
+  /* ---------- Curso inteiro sob demanda ---------- */
+  const completando = new Map();
+
+  /**
+   * Garante o curso inteiro (questões, blocos e artigos). Curso que já veio inteiro resolve na hora.
+   * Copia o conteúdo para o MESMO objeto e tira a marca _parcial. Falhou (sem internet)? Rejeita e
+   * deixa tentar de novo depois.
+   */
+  function completar(t) {
+    if (!t || !t._parcial) return Promise.resolve(t);
+    if (!completando.has(t.id)) {
+      completando.set(t.id, buscarJSON(PASTA + t._arquivo).then((cheia) => {
+        const erros = cheia ? validar(cheia) : ['não foi possível baixar o curso'];
+        if (!erros.length && cheia.id !== t.id) erros.push('o arquivo não é deste curso');
+        if (erros.length) throw new Error(erros[0]);
+        const descartadas = limparVariantes(cheia);
+        if (descartadas.length) console.warn(`[Diver] ${t._arquivo}: variantes ignoradas`, descartadas);
+        Object.keys(t).forEach((k) => { if (!(k in cheia)) delete t[k]; }); // sai o que era só do catálogo (_parcial, contagem…)
+        Object.assign(t, cheia);
+        return t;
+      }).catch((e) => {
+        completando.delete(t.id);
+        throw e;
+      }));
+    }
+    return completando.get(t.id);
+  }
+
+  /** Quantas questões o curso tem (do catálogo, se ele ainda não foi baixado). */
+  const totalQuestoes = (t) => (t._parcial ? (t.contagem && t.contagem.questoes) || 0 : t.questoes.length);
 
   /** Importa arquivos .json escolhidos pelo usuário. Retorna { ok, erros }. */
   async function importarArquivos(listaArquivos) {
@@ -221,5 +267,5 @@ const Trilhas = (() => {
     return trilha.questoes.filter((q) => q.fase === faseId);
   }
 
-  return { carregarTodas, importarArquivos, validar, limparVariantes, variantesDe, questoesDaFase, ehImportada, salvarImportada, removerImportada };
+  return { carregarTodas, completar, totalQuestoes, importarArquivos, validar, limparVariantes, variantesDe, questoesDaFase, ehImportada, salvarImportada, removerImportada };
 })();

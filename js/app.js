@@ -96,6 +96,12 @@ const App = (() => {
       secao = 'inicio';
       history.replaceState(null, '', '#inicio');
     }
+    // Curso que veio só do catálogo: baixa o curso inteiro antes de abrir a área
+    if (ROTAS[secao].precisaTrilha && estado.trilha._parcial) {
+      const alvo = secao;
+      comCursoCompleto(() => { if (location.hash === '#' + alvo || estado.secao === alvo) navegar(alvo); });
+      return;
+    }
     Tutorial.fechar(false);
     estado.secao = secao;
     ROTAS[secao].render();
@@ -177,7 +183,7 @@ const App = (() => {
     $('topo-perolas').append(icone('i-perola', 'icone--perola'), String(prog.perolas));
     $('topo-perolas').setAttribute('aria-label', `${prog.perolas} pérolas`);
 
-    const qtd = Progresso.paraRevisar(prog, estado.trilha).length;
+    const qtd = estado.trilha._parcial ? 0 : Progresso.paraRevisar(prog, estado.trilha).length;
     $('badge-revisao').hidden = qtd === 0;
     $('badge-revisao').textContent = String(qtd);
     $('badge-foco').hidden = !Organizar.focoAtivo();
@@ -275,8 +281,12 @@ const App = (() => {
     definirTrilha(id);
     const rota = ROTAS[estado.secao];
     if (rota && $(rota.tela) && !$(rota.tela).hidden) {
-      rota.render();
-      atualizarLateral();
+      const secao = estado.secao;
+      comCursoCompleto(() => {
+        if (estado.secao !== secao) return;
+        rota.render();
+        atualizarLateral();
+      });
     }
     $('seletor-trilha-botao').focus();
     toast('Trilha atual', estado.trilha.nome, 'i-livro');
@@ -323,6 +333,23 @@ const App = (() => {
       el.classList.add('transicao--saindo');
       estado.cortinaTimer = setTimeout(() => el.classList.remove('transicao--on', 'transicao--saindo'), 450);
     }, 650);
+  }
+
+  /**
+   * Curso inteiro sob demanda (catálogo leve, Trilhas.completar): roda fn quando o curso atual estiver
+   * completo. Se ainda não está, mostra a cortina enquanto baixa. Sem internet: avisa e não abre nada.
+   */
+  function comCursoCompleto(fn, texto = 'Abrindo o curso…') {
+    const t = estado.trilha;
+    if (!t || !t._parcial) return fn();
+    cortina(texto);
+    const lento = setTimeout(() => toast('Abrindo o curso…', 'Baixando as aulas, só um instante.', 'i-livro'), 1200);
+    Trilhas.completar(t).finally(() => clearTimeout(lento)).then(() => {
+      if (estado.trilha !== t) return;
+      estado.cartasCache = {};
+      atualizarLateral();
+      fn();
+    }, () => toast('Não consegui abrir o curso', 'Confira a internet e tente de novo.', 'i-alerta'));
   }
 
   /* ---------- Bolhas do fundo ---------- */
@@ -376,6 +403,8 @@ const App = (() => {
     estado.selecionada = id;
     if (lembrar) Progresso.definirUltimaTrilha(id);
     atualizarLateral();
+    // catálogo leve: o curso escolhido já começa a baixar (quando a pessoa entrar, provavelmente já chegou)
+    if (trilha._parcial) Trilhas.completar(trilha).then(() => { if (estado.trilha === trilha) atualizarLateral(); }, () => {});
   }
 
   function cartasDa(trilha) {
@@ -567,7 +596,7 @@ const App = (() => {
       h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
       h('span', { class: 'trilha__meta' },
         h('span', {}, icone('i-seta-baixo'), `${concluidas}/${t.fases.length} fases`),
-        h('span', {}, plural(t.questoes.length, 'questão', 'questões')),
+        h('span', {}, plural(Trilhas.totalQuestoes(t), 'questão', 'questões')),
         prog.xp > 0 ? h('span', {}, icone('i-estrela'), `Nível ${nivel.numero}`) : null,
         Progresso.streakVigente(prog) > 0 ? h('span', {}, icone('i-onda'), plural(Progresso.streakVigente(prog), 'dia', 'dias')) : null,
       ));
@@ -640,26 +669,36 @@ const App = (() => {
   }
 
   /* ---------- Desafio do Dia: jogo + trilha sorteados pela data (funciona offline) ---------- */
+  /**
+   * A "semente" da data sorteia o curso; depois, o jogo entre os que o curso tem. O mesmo desafio o dia
+   * todo, outro amanhã. Curso que ainda não foi baixado (catálogo leve) volta como { pendente: true }:
+   * o Início baixa só ele e desenha de novo.
+   */
   function desafioDoDia() {
     const hoje = UI.dataLocal();
-    const opcoes = [];
-    [...estado.trilhas].sort((a, b) => a.id.localeCompare(b.id)).forEach((t) => {
-      Jogos.lista()
-        .filter((j) => !j.nucleo && !j.emBreve && Jogos.estado(j, cartasDa(t)) === 'disponivel')
-        .forEach((j) => opcoes.push({ trilha: t, jogo: j }));
-    });
-    if (!opcoes.length) return null;
-    // "semente" da data: o mesmo desafio o dia todo, outro amanhã
     let semente = 0;
     for (const c of hoje) semente = (semente * 31 + c.charCodeAt(0)) >>> 0;
     const feito = !!Dados.ler(CHAVE_DESAFIOS, {})[hoje];
-    return { ...opcoes[semente % opcoes.length], feito, data: hoje };
+    const cursos = [...estado.trilhas].sort((a, b) => a.id.localeCompare(b.id));
+    for (let k = 0; k < cursos.length; k++) {
+      const t = cursos[(semente + k) % cursos.length];
+      if (t._parcial) return { trilha: t, pendente: true, feito, data: hoje };
+      const jogos = Jogos.lista().filter((j) => !j.nucleo && !j.emBreve && Jogos.estado(j, cartasDa(t)) === 'disponivel');
+      if (jogos.length) return { trilha: t, jogo: jogos[semente % jogos.length], feito, data: hoje };
+    }
+    return null;
   }
 
   function renderizarHoje() {
     const area = limpar($('hoje'));
     if (!estado.trilhas.length) return;
-    const desafio = desafioDoDia();
+    let desafio = desafioDoDia();
+    if (desafio && desafio.pendente) {
+      // baixa só o curso sorteado e desenha "Seu dia" de novo (se a pessoa ainda estiver no Início)
+      const t = desafio.trilha;
+      Trilhas.completar(t).then(() => { estado.cartasCache = {}; if (estado.secao === 'inicio') renderizarHoje(); }, () => {});
+      desafio = null;
+    }
     const { tarefas, eventos } = Organizar.resumoDoDia();
     const prog = estado.prog;
     const feitas = prog ? Math.min(Progresso.respondidasHoje(prog), prog.metaDiaria) : 0;
@@ -1165,6 +1204,7 @@ const App = (() => {
   }
 
   function iniciarJogo(id, opcoes = {}, { desafio = false } = {}) {
+    if (estado.trilha && estado.trilha._parcial) return comCursoCompleto(() => iniciarJogo(id, opcoes, { desafio }));
     const def = Jogos.obter(id);
     if (!def || !estado.trilha) return;
     const cartas = cartasDa(estado.trilha);
@@ -1275,6 +1315,7 @@ const App = (() => {
   /* Detetive antes da prova: cursos com o Caso Resolvido (hoje, Cibersegurança) sugerem
      relaxar na Operação Recife Sombrio quando todas as fases estão feitas e a prova ainda não. */
   function temDetetive(trilha) {
+    if (trilha && trilha._parcial) return !!(trilha.contagem && trilha.contagem.casos); // pelo catálogo
     const def = Jogos.obter('caso');
     return !!(def && trilha && Jogos.estado(def, cartasDa(trilha)) === 'disponivel');
   }
@@ -1320,6 +1361,7 @@ const App = (() => {
      SESSÃO DE ESTUDO (QUIZ) — Mergulho, Simulado e Revisão
      ========================================================= */
   function iniciarSessao(modo, opcoes = {}) {
+    if (estado.trilha && estado.trilha._parcial) return comCursoCompleto(() => iniciarSessao(modo, opcoes));
     if (modo === 'mergulho' && opcoes.faseId) {
       const fase = estado.trilha.fases.find((f) => f.id === opcoes.faseId);
       if (precisaLer(fase)) { avisarLeitura(fase); return; }

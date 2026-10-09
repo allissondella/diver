@@ -23,6 +23,7 @@ import { resolve, relative } from 'node:path';
 import readline from 'node:readline';
 import { RAIZ, ambienteSupabase } from './lib/config.mjs';
 import { slugMateria, lerAcervo, gravarAcervo, gravarJSON, guardarNoAcervo, caminhoAcervo } from './lib/acervo.mjs';
+import { atualizarCatalogo } from './gerar-catalogo.mjs';
 import { assinatura, promptFato, promptLogica, montarLotes as montarLotesDaTrilha } from '../supabase/functions/_shared/mergulho-nucleo.mjs';
 
 function argumentos(argv) {
@@ -183,6 +184,7 @@ async function aplicarLote(lote, args) {
   }
   gravarJSON(caminho, trilha);
   if (rel.acervo) gravarAcervo(lote.materia, acervo);
+  if (atualizarCatalogo(resolve(RAIZ, 'data', 'trilhas'))) console.log('Catálogo dos cursos atualizado (data/trilhas/catalogo.json).');
 
   const r = lote.resultado.relatorio || {};
   console.log(`\n══════ Mergulho Triplo — lote ${lote.id} ══════`);

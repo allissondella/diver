@@ -1,0 +1,408 @@
+{
+  "versao": 1,
+  "cursos": [
+    {
+      "arquivo": "iso-27001-foundation.json",
+      "id": "iso-27001-foundation",
+      "nome": "ISO/IEC 27001:2022 Foundation",
+      "descricao": "Fundamentos do sistema de gestão da segurança da informação (SGSI): requisitos das cláusulas 4 a 10, gestão de riscos, controles do Anexo A, auditorias e certificação.",
+      "categoria": "Certificação",
+      "prova": {
+        "questoes": 40,
+        "minutos": 60,
+        "aprovacao": 65
+      },
+      "fases": [
+        {
+          "id": "raso",
+          "nome": "Raso",
+          "descricao": "Fundamentos: CID, família ISO 27000, SGSI e PDCA.",
+          "profundidade": "0–10 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "recife",
+          "nome": "Recife",
+          "descricao": "Contexto da organização e liderança (cláusulas 4 e 5).",
+          "profundidade": "10–40 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "naufragio",
+          "nome": "Naufrágio",
+          "descricao": "Riscos, tratamento, Declaração de Aplicabilidade e objetivos (cláusula 6).",
+          "profundidade": "40–100 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "caverna",
+          "nome": "Caverna",
+          "descricao": "Apoio e operação: competência, comunicação, documentos (cláusulas 7 e 8).",
+          "profundidade": "100–200 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "abismo",
+          "nome": "Abismo",
+          "descricao": "Avaliação de desempenho, auditorias e melhoria (cláusulas 9 e 10).",
+          "profundidade": "200–1000 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "fossa",
+          "nome": "Fossa",
+          "descricao": "Controles do Anexo A e o caminho da certificação.",
+          "profundidade": "1000 m+",
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 120,
+        "pares": 12,
+        "verdadeiroFalso": 10,
+        "adivinhas": 6,
+        "sequencias": 5,
+        "palavras": 48
+      }
+    },
+    {
+      "arquivo": "radiologia-aparelho-digestivo.json",
+      "id": "radiologia-aparelho-digestivo",
+      "nome": "Radiologia: Aparelho Digestivo",
+      "descricao": "Diagnóstico por imagem do fígado, vias biliares, pâncreas, baço, intestino e pediatria, com casos clínicos, diagnóstico diferencial e as pegadinhas das provas de título.",
+      "categoria": "Medicina",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 60,
+        "minutos": 90,
+        "aprovacao": 70,
+        "exigeFases": true
+      },
+      "fases": [
+        {
+          "id": "fundamentos",
+          "nome": "Fundamentos e protocolos",
+          "descricao": "Fases do contraste, sequências de RM e sinais de US",
+          "profundidade": "0–10 m",
+          "temResumo": true,
+          "questoes": 23
+        },
+        {
+          "id": "figado-benigno",
+          "nome": "Fígado: lesões benignas",
+          "descricao": "Cistos, hemangioma, HNF, adenomas e o contraste hepatobiliar",
+          "profundidade": "10–20 m",
+          "temResumo": true,
+          "questoes": 26
+        },
+        {
+          "id": "figado-difuso-maligno",
+          "nome": "Fígado: difuso e maligno",
+          "descricao": "Cirrose, CHC e LI-RADS, depósitos, Budd-Chiari e tumores malignos",
+          "profundidade": "20–35 m",
+          "temResumo": true,
+          "questoes": 28
+        },
+        {
+          "id": "vias-biliares",
+          "nome": "Vesícula e vias biliares",
+          "descricao": "Litíase, colecistites, pólipos, colangites, cistos de colédoco e colangiocarcinoma",
+          "profundidade": "35–50 m",
+          "temResumo": true,
+          "questoes": 26
+        },
+        {
+          "id": "pancreas",
+          "nome": "Pâncreas",
+          "descricao": "Embriologia, pancreatites, neoplasias sólidas e císticas, ressecabilidade",
+          "profundidade": "50–70 m",
+          "temResumo": true,
+          "questoes": 28
+        },
+        {
+          "id": "baco",
+          "nome": "Baço",
+          "descricao": "Variantes, esplenomegalia, doenças sistêmicas e lesões focais",
+          "profundidade": "70–90 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "abdome-agudo",
+          "nome": "Abdome agudo",
+          "descricao": "Obstrução, volvo, intussuscepção, isquemia, perfuração e inflamações agudas",
+          "profundidade": "90–110 m",
+          "temResumo": true,
+          "questoes": 26
+        },
+        {
+          "id": "intestino-dii-tumores",
+          "nome": "Intestino: DII e tumores",
+          "descricao": "Crohn, retocolite, câncer colorretal, RM do reto e tumores do delgado",
+          "profundidade": "110–130 m",
+          "temResumo": true,
+          "questoes": 25
+        },
+        {
+          "id": "pediatria",
+          "nome": "Pediatria",
+          "descricao": "Obstruções neonatais, má rotação, Hirschsprung, vias biliares e massas hepáticas da criança",
+          "profundidade": "130 m+",
+          "temResumo": true,
+          "questoes": 30
+        }
+      ],
+      "contagem": {
+        "questoes": 232,
+        "pares": 68,
+        "verdadeiroFalso": 42,
+        "adivinhas": 16,
+        "sequencias": 16,
+        "palavras": 74
+      }
+    },
+    {
+      "arquivo": "radiologia-musculoesqueletico.json",
+      "id": "radiologia-musculoesqueletico",
+      "nome": "Radiologia: Musculoesquelético",
+      "descricao": "Diagnóstico por imagem do sistema musculoesquelético: fundamentos, infecção, artropatias degenerativas, inflamatórias e por cristais, ombro, cotovelo, punho e mão, joelho, patela, tornozelo e pé e tumores ósseos, com casos clínicos e as pegadinhas das provas de título.",
+      "categoria": "Medicina",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 50,
+        "minutos": 75,
+        "aprovacao": 70,
+        "exigeFases": true
+      },
+      "fases": [
+        {
+          "id": "fundamentos",
+          "nome": "Fundamentos da imagem MSK",
+          "descricao": "Osso, métodos de imagem, sequências de RM e as primeiras perguntas diante de uma lesão",
+          "profundidade": "0–10 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "infeccao",
+          "nome": "Osteomielite e infecção",
+          "descricao": "Osteomielite aguda e crônica, abscesso de Brodie, sinal da penumbra e pé diabético",
+          "profundidade": "10–20 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "degenerativas",
+          "nome": "Osteoartrite e artropatias degenerativas",
+          "descricao": "Achados clássicos, incidências por articulação, osteoartrite atípica, hemocromatose, hemofilia e Charcot",
+          "profundidade": "20–30 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "inflamatorias",
+          "nome": "Artrite reumatoide e cristais",
+          "descricao": "Artrite reumatoide do diagnóstico precoce às deformidades, gota, CPPD e hidroxiapatita",
+          "profundidade": "30–40 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "ombro",
+          "nome": "Ombro: manguito, lábio e instabilidade",
+          "descricao": "Manguito rotador, roturas parciais e transfixantes, instabilidade, glenoid track, capsulite e denervação",
+          "profundidade": "40–50 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "cotovelo-punho-mao",
+          "nome": "Cotovelo, punho e mão",
+          "descricao": "Epicondilites, bíceps distal, túnel do carpo, Guyon, De Quervain, instabilidade do carpo e aparelho extensor",
+          "profundidade": "50–60 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "joelho",
+          "nome": "Joelho: meniscos e ligamentos",
+          "descricao": "Critérios de rotura meniscal, alça de balde, ramp lesion, armadilhas, LCA e padrões de contusão óssea",
+          "profundidade": "60–70 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "patela-tornozelo-pe",
+          "nome": "Patela, tornozelo e pé",
+          "descricao": "Instabilidade femoropatelar (escola de Lyon), fraturas de Weber, ligamentos do tornozelo, Lisfranc, Haglund e fáscia plantar",
+          "profundidade": "70–80 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "tumores",
+          "nome": "Tumores ósseos e lesões que imitam",
+          "descricao": "Checklist do tumor ósseo, Lodwick, reação periosteal, matriz, lesões benignas e malignas, mieloma × metástase e hiperparatireoidismo",
+          "profundidade": "80–100 m",
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 180,
+        "pares": 60,
+        "verdadeiroFalso": 29,
+        "adivinhas": 9,
+        "sequencias": 10,
+        "palavras": 56
+      }
+    },
+    {
+      "arquivo": "ciberseguranca-essencial.json",
+      "id": "ciberseguranca-essencial",
+      "nome": "Cibersegurança Essencial",
+      "descricao": "Aprenda a se proteger no dia a dia e no trabalho: senhas, golpes e phishing, celular e redes, dados pessoais, vida nas redes sociais e o que fazer quando algo dá errado.",
+      "categoria": "Segurança digital",
+      "prova": {
+        "questoes": 40,
+        "minutos": 60,
+        "aprovacao": 70,
+        "exigeFases": true
+      },
+      "fases": [
+        {
+          "id": "primeiros-passos",
+          "nome": "Primeiros passos",
+          "descricao": "Por que segurança é com você: riscos, ameaças e o fator humano",
+          "profundidade": "0–10 m",
+          "temResumo": true,
+          "questoes": 23
+        },
+        {
+          "id": "senhas-contas",
+          "nome": "Senhas e contas",
+          "descricao": "Frases-senha, gerenciador de senhas, verificação em duas etapas e vazamentos",
+          "profundidade": "10–20 m",
+          "temResumo": true,
+          "questoes": 23
+        },
+        {
+          "id": "golpes-phishing",
+          "nome": "Golpes e phishing",
+          "descricao": "E-mail, SMS, ligação, WhatsApp, QR code e Pix: como reconhecer e o que fazer",
+          "profundidade": "20–35 m",
+          "temResumo": true,
+          "questoes": 24
+        },
+        {
+          "id": "dispositivos-redes",
+          "nome": "Dispositivos e redes",
+          "descricao": "Atualizações, backup, celular, Wi-Fi público, VPN e pendrives",
+          "profundidade": "35–50 m",
+          "temResumo": true,
+          "questoes": 24
+        },
+        {
+          "id": "dados-privacidade",
+          "nome": "Dados e privacidade",
+          "descricao": "LGPD sem juridiquês, dados pessoais, redes sociais e informação da empresa",
+          "profundidade": "50–65 m",
+          "temResumo": true,
+          "questoes": 23
+        },
+        {
+          "id": "vida-digital-redes",
+          "nome": "Vida digital e redes sociais",
+          "descricao": "Conta e perfil protegidos, golpes que nascem nas redes, pegada digital, boatos, cyberbullying e criança na internet",
+          "profundidade": "65–80 m",
+          "novaEm": "2026-10-04",
+          "temResumo": true,
+          "questoes": 24
+        },
+        {
+          "id": "trabalho-incidentes",
+          "nome": "No trabalho e incidentes",
+          "descricao": "Malware e ransomware, acesso físico, trabalho remoto e como reportar um incidente",
+          "profundidade": "80–95 m",
+          "temResumo": true,
+          "questoes": 24
+        }
+      ],
+      "contagem": {
+        "questoes": 165,
+        "pares": 42,
+        "verdadeiroFalso": 28,
+        "adivinhas": 14,
+        "sequencias": 10,
+        "palavras": 66,
+        "casos": 1
+      }
+    },
+    {
+      "arquivo": "enem-vestibular.json",
+      "id": "enem-vestibular",
+      "nome": "Enem e Vestibular · Comece por aqui",
+      "descricao": "Preparação para o Enem e os vestibulares com a primeira fase de cada área: Linguagens, Humanas, Natureza, Matemática e Redação. Temas escolhidos pelo peso real nas provas de 2019 a 2025.",
+      "categoria": "Enem e vestibular",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 40,
+        "minutos": 80,
+        "aprovacao": 60,
+        "exigeFases": true
+      },
+      "fases": [
+        {
+          "id": "linguagens-1",
+          "nome": "Linguagens 1: ler como o Enem lê",
+          "descricao": "Gêneros e finalidade, funções da linguagem, variação linguística, implícitos e argumentação",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "humanas-1",
+          "nome": "Humanas 1: Brasil em formação",
+          "descricao": "Terra, trabalho e resistência: da colônia à abolição, com Geografia, Filosofia e Sociologia no caminho",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "natureza-1",
+          "nome": "Natureza 1: energia no dia a dia",
+          "descricao": "Transformações de energia, consumo elétrico, calor, combustão, efeito estufa e energia nos seres vivos",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "matematica-1",
+          "nome": "Matemática 1: proporção, porcentagem e dados",
+          "descricao": "Razão, regra de três, escala, unidades, porcentagem e leitura de tabelas e médias",
+          "temResumo": true,
+          "questoes": 24
+        },
+        {
+          "id": "redacao-1",
+          "nome": "Redação 1: as regras do jogo",
+          "descricao": "As cinco competências, o texto dissertativo-argumentativo, a tese, o repertório e a proposta de intervenção",
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 104,
+        "variantes": 24,
+        "pares": 33,
+        "verdadeiroFalso": 26,
+        "adivinhas": 11,
+        "sequencias": 8,
+        "palavras": 55
+      }
+    }
+  ]
+}
