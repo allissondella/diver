@@ -2645,7 +2645,7 @@
       "id": "mat-tabelas-graficos",
       "nome": "Aula 26 · Tabelas e gráficos",
       "modulo": "Módulo 5 · Estatística e leitura de dados",
-      "descricao": "Módulo 5 · aula 1 de 3 · 35 min · treina as habilidades H24 e H25",
+      "descricao": "Módulo 5 · aula 1 de 7 · 35 min · treina as habilidades H24 e H25",
       "habilidades": [
         "H24",
         "H25"
@@ -2743,7 +2743,7 @@
       "id": "mat-graficos-enganosos",
       "nome": "Aula 27 · Gráficos que enganam: escala e recorte",
       "modulo": "Módulo 5 · Estatística e leitura de dados",
-      "descricao": "Módulo 5 · aula 2 de 3 · 35 min · treina a habilidade H26",
+      "descricao": "Módulo 5 · aula 2 de 7 · 35 min · treina a habilidade H26",
       "habilidades": [
         "H26"
       ],
@@ -2844,7 +2844,7 @@
       "id": "mat-media",
       "nome": "Aula 28 · Média aritmética e média ponderada",
       "modulo": "Módulo 5 · Estatística e leitura de dados",
-      "descricao": "Módulo 5 · aula 3 de 3 · 35 min · treina a habilidade H27",
+      "descricao": "Módulo 5 · aula 3 de 7 · 35 min · treina a habilidade H27",
       "habilidades": [
         "H27"
       ],
@@ -2937,6 +2937,409 @@
           "media ponderada",
           "media das medias",
           "valores extremos"
+        ]
+      }
+    },
+    {
+      "id": "mat-moda-mediana",
+      "nome": "Aula 29 · Moda e mediana",
+      "modulo": "Módulo 5 · Estatística e leitura de dados",
+      "descricao": "Módulo 5 · aula 4 de 7 · 35 min · treina a habilidade H27",
+      "habilidades": [
+        "H27"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Moda",
+            "texto": [
+              "A moda é o valor que **mais se repete**: em 3, 5, 5, 7, 8, a moda é 5. Um conjunto pode ter duas modas (bimodal) ou nenhuma, quando todos os valores aparecem o mesmo número de vezes. A moda é a única medida que serve para dados que não são números, como a cor de carro mais vendida ou o tamanho de camiseta mais pedido. Numa tabela de frequências, a moda é o valor com a maior frequência, e não a frequência em si."
+            ]
+          },
+          {
+            "titulo": "Mediana",
+            "texto": [
+              "A mediana é o **valor do meio**, com os dados em ordem. Com quantidade ímpar, é o termo central: em 2, 4, 7, 9, 12, a mediana é 7. Com quantidade par, é a média dos dois centrais: em 3, 5, 8, 10, a mediana é (5 + 8) ÷ 2 = 6,5. O erro mais comum é esquecer de ordenar. Numa tabela de frequências com n dados, a mediana fica na posição (n + 1) ÷ 2, e a **frequência acumulada** mostra em que valor essa posição cai."
+            ]
+          },
+          {
+            "titulo": "Qual medida usar",
+            "texto": [
+              "A média usa todos os valores, mas é puxada por extremos; a mediana divide o grupo ao meio e não se abala com um valor muito alto ou muito baixo; a moda mostra o caso mais comum. Em salários e preços de imóveis, com poucos valores muito altos, a mediana descreve melhor o grupo. Quando a média fica bem acima da mediana, há valores altos puxando a média; quando fica abaixo, há valores baixos. Num conjunto simétrico, média e mediana coincidem."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Tabelas de frequência com notas, idades ou gols, listas que precisam ser ordenadas, escolha da medida que representa melhor um grupo e o efeito de acrescentar ou retirar valores na média e na mediana."
+            ]
+          }
+        ],
+        "introducao": "Qual é o salário típico de uma empresa em que o dono ganha 50 vezes mais que todo mundo? Qual tamanho de camiseta a loja deve encomendar mais? A média nem sempre responde bem. Esta aula apresenta a moda e a mediana, mostra como calculá-las em listas e tabelas e quando cada uma é a melhor escolha.",
+        "mapaMental": {
+          "centro": "Moda e mediana",
+          "ramos": [
+            {
+              "titulo": "Moda",
+              "itens": [
+                "o valor que mais se repete",
+                "pode ter duas ou nenhuma",
+                "serve para dados não numéricos"
+              ]
+            },
+            {
+              "titulo": "Mediana",
+              "itens": [
+                "valor do meio com os dados em ordem",
+                "média dos dois centrais quando a quantidade é par"
+              ]
+            },
+            {
+              "titulo": "Tabelas",
+              "itens": [
+                "posição (n + 1) ÷ 2",
+                "frequência acumulada"
+              ]
+            },
+            {
+              "titulo": "Escolha",
+              "itens": [
+                "extremos puxam a média",
+                "mediana para salários e imóveis"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "👕",
+            "conceito": "Prateleira da loja",
+            "liga": "tamanho mais pedido",
+            "porque": "A loja encomenda mais da camiseta que todo mundo leva."
+          },
+          {
+            "icone": "🛣️",
+            "conceito": "Canteiro central",
+            "liga": "divide a estrada ao meio",
+            "porque": "Metade dos dados fica de cada lado."
+          }
+        ],
+        "pontos": [
+          "A moda é o valor que **mais se repete** e serve até para dados que não são números.",
+          "A mediana é o **valor do meio**: ordene os dados antes de procurar.",
+          "Com quantidade par, a mediana é a média dos dois termos centrais.",
+          "Em tabelas, a **frequência acumulada** mostra onde cai a posição (n + 1) ÷ 2.",
+          "Com valores extremos, a mediana representa melhor o grupo que a média."
+        ],
+        "perolas": [
+          "Primeiro ordene, depois procure o meio.",
+          "Na tabela, a moda é o valor, não a frequência."
+        ],
+        "reforcar": [
+          "mais se repete",
+          "valor do meio",
+          "frequencia acumulada"
+        ]
+      }
+    },
+    {
+      "id": "mat-desvio-variancia",
+      "nome": "Aula 30 · Desvio, variância e dispersão",
+      "modulo": "Módulo 5 · Estatística e leitura de dados",
+      "descricao": "Módulo 5 · aula 5 de 7 · 35 min · treina as habilidades H27 e H28",
+      "habilidades": [
+        "H27",
+        "H28"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Medir o quanto os dados se espalham",
+            "texto": [
+              "Duas turmas podem ter média 7 e ser bem diferentes: numa, todos tiraram entre 6 e 8; na outra, metade tirou 4 e metade, 10. As medidas de dispersão dizem o quanto os valores se afastam do centro. A mais simples é a **amplitude**, o maior valor menos o menor: em 4, 6, 9 e 15, a amplitude é 11. Ela é fácil, mas depende só dos extremos: um único valor fora da curva muda tudo."
+            ]
+          },
+          {
+            "titulo": "Variância e desvio padrão",
+            "texto": [
+              "O desvio de um valor é a sua diferença para a média. A soma dos desvios é sempre zero, porque os positivos e os negativos se cancelam; por isso, a variância usa os quadrados: é a média dos quadrados dos desvios. O **desvio padrão** é a raiz quadrada da variância e volta à unidade dos dados. Para 2, 4, 6 e 8 (média 5), os desvios são −3, −1, 1 e 3; os quadrados, 9, 1, 1 e 9; a variância é 20 ÷ 4 = 5; o desvio padrão, √5 ≈ 2,24. Se os dados estão em centímetros, a variância está em cm² e o desvio padrão, em cm."
+            ]
+          },
+          {
+            "titulo": "Interpretar",
+            "texto": [
+              "Desvio padrão pequeno indica dados **homogêneos**, próximos da média; desvio padrão grande, dados espalhados; desvio padrão zero, todos iguais. Somar uma constante a todos os valores muda a média, mas não o desvio padrão; multiplicar todos por um número multiplica a média e o desvio padrão por esse número. Para comparar a regularidade de grupos com médias muito diferentes, usa-se o coeficiente de variação, o desvio padrão dividido pela média."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Escolher o atleta ou o fornecedor mais regular, comparar turmas, decidir qual máquina produz peças mais uniformes e ler tabelas com média e desvio padrão. Muitas vezes não é preciso calcular a variância inteira: basta saber que menor desvio padrão significa maior regularidade."
+            ]
+          }
+        ],
+        "introducao": "Duas turmas com a mesma média podem ser muito diferentes: numa, todos tiraram nota parecida; na outra, há notas muito altas e muito baixas. Esta aula ensina a medir esse espalhamento com a amplitude, a variância e o desvio padrão, e a usá-los para decidir quem é mais regular.",
+        "mapaMental": {
+          "centro": "Dispersão",
+          "ramos": [
+            {
+              "titulo": "Amplitude",
+              "itens": [
+                "maior menos menor",
+                "depende só dos extremos"
+              ]
+            },
+            {
+              "titulo": "Variância",
+              "itens": [
+                "média dos quadrados dos desvios",
+                "a soma dos desvios é zero"
+              ]
+            },
+            {
+              "titulo": "Desvio padrão",
+              "itens": [
+                "raiz da variância",
+                "mesma unidade dos dados"
+              ]
+            },
+            {
+              "titulo": "Interpretar",
+              "itens": [
+                "dados homogêneos têm desvio pequeno",
+                "somar constante não muda",
+                "coeficiente de variação"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🎯",
+            "conceito": "Dardos no alvo",
+            "liga": "desvio pequeno",
+            "porque": "Dardos juntinhos, mesmo longe do centro, mostram regularidade."
+          },
+          {
+            "icone": "🌪️",
+            "conceito": "Folhas ao vento",
+            "liga": "dados espalhados",
+            "porque": "Quanto mais longe umas das outras, maior a dispersão."
+          }
+        ],
+        "pontos": [
+          "A **amplitude** é o maior valor menos o menor, e depende só dos extremos.",
+          "A variância é a média dos quadrados dos desvios; os desvios sozinhos somam zero.",
+          "O **desvio padrão** é a raiz da variância, na mesma unidade dos dados.",
+          "Desvio padrão pequeno: dados **homogêneos** e mais regularidade.",
+          "Somar uma constante não muda o desvio padrão; multiplicar, multiplica."
+        ],
+        "perolas": [
+          "Mesma média não quer dizer mesmo grupo.",
+          "Variância em cm², e a raiz dela volta para cm."
+        ],
+        "reforcar": [
+          "amplitude",
+          "desvio padrao",
+          "homogeneos"
+        ]
+      }
+    },
+    {
+      "id": "mat-estatistica-decisao",
+      "nome": "Aula 31 · Estatística para decidir",
+      "modulo": "Módulo 5 · Estatística e leitura de dados",
+      "descricao": "Módulo 5 · aula 6 de 7 · 35 min · treina as habilidades H29 e H30",
+      "habilidades": [
+        "H29",
+        "H30"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Dados para decidir",
+            "texto": [
+              "A estatística não serve só para descrever: ela ajuda a escolher. Para decidir com dados, defina o critério antes de olhar os números (menor custo, maior média, maior regularidade, maior lucro esperado) e aplique o mesmo critério a todas as opções. Mudar de critério no meio do caminho é a forma mais comum de errar. Quando há mais de um fator, como preço e aluguel, some tudo o que pesa na decisão."
+            ]
+          },
+          {
+            "titulo": "Amostra e pesquisa",
+            "texto": [
+              "Raramente se pesquisa todo mundo. Uma **amostra** é uma parte da população escolhida para representá-la. Para ser confiável, ela precisa ser aleatória e representativa: perguntar sobre transporte só a quem está num ponto de ônibus, ou fazer pesquisa só pela internet sobre o acesso à internet, gera **viés**. Amostras maiores reduzem a **margem de erro**, mas nenhum tamanho corrige uma amostra enviesada. Uma pesquisa com margem de 3 pontos que dá 45% a um candidato indica um valor provável entre 42% e 48%; se os intervalos de dois candidatos se sobrepõem, há empate técnico."
+            ]
+          },
+          {
+            "titulo": "Comparar com justiça",
+            "texto": [
+              "Compare proporções, não totais: 30 aprovados em 50 inscritos (60%) é melhor que 40 em 100 (40%). Use a mesma base de tempo e a mesma unidade. Quando as médias são próximas, a dispersão desempata. E correlação não é causa: cidades com mais sorveterias têm mais afogamentos porque as duas coisas aumentam no calor, não porque sorvete afoga alguém: um terceiro fator, o calor, explica as duas. Para testar se uma mudança funcionou, compare com um grupo que não mudou nada; se os dois melhoraram quase igual, o efeito próprio da mudança é pequeno."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Escolher o melhor fornecedor, plano, candidato ou estratégia a partir de tabelas; criticar pesquisas feitas com grupos mal escolhidos; interpretar margens de erro em pesquisas eleitorais; e identificar conclusões que confundem correlação com causa."
+            ]
+          }
+        ],
+        "introducao": "Escolher um fornecedor, um plano, um candidato ou uma estratégia é, quase sempre, uma decisão com dados. Esta aula junta o que o módulo ensinou para decidir com critério: comparar com justiça, desconfiar de pesquisas mal feitas, ler margens de erro e não confundir correlação com causa.",
+        "mapaMental": {
+          "centro": "Estatística para decidir",
+          "ramos": [
+            {
+              "titulo": "Critério",
+              "itens": [
+                "definido antes dos dados",
+                "o mesmo para todas as opções",
+                "some todos os custos"
+              ]
+            },
+            {
+              "titulo": "Pesquisa",
+              "itens": [
+                "amostra aleatória e representativa",
+                "viés não se corrige com tamanho",
+                "margem de erro e empate técnico"
+              ]
+            },
+            {
+              "titulo": "Justiça",
+              "itens": [
+                "proporções em vez de totais",
+                "dispersão desempata"
+              ]
+            },
+            {
+              "titulo": "Cuidado",
+              "itens": [
+                "correlação não é causa",
+                "terceiro fator explica as duas"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🍦",
+            "conceito": "Sorvete e praia lotada",
+            "liga": "correlação sem causa",
+            "porque": "O calor aumenta os dois ao mesmo tempo."
+          },
+          {
+            "icone": "🥄",
+            "conceito": "Provar a sopa",
+            "liga": "parte que representa o todo",
+            "porque": "Uma colherada basta, se a panela estiver bem mexida."
+          }
+        ],
+        "pontos": [
+          "Defina o critério antes de olhar os dados e use-o em todas as opções.",
+          "Uma **amostra** precisa ser aleatória e representativa da população.",
+          "Grupo mal escolhido gera **viés**, e aumentar a pesquisa não o corrige.",
+          "A **margem de erro** cria um intervalo; intervalos que se sobrepõem indicam empate técnico.",
+          "Compare proporções, não totais; correlação não prova causa."
+        ],
+        "perolas": [
+          "Uma colher de sopa basta, se a panela estiver mexida.",
+          "Calor vende sorvete e lota a praia: o culpado é o terceiro fator."
+        ],
+        "reforcar": [
+          "amostra",
+          "vies",
+          "margem de erro"
+        ]
+      }
+    },
+    {
+      "id": "mat-revisao-estatistica",
+      "nome": "Aula 32 · Revisão do módulo: estatística",
+      "modulo": "Módulo 5 · Estatística e leitura de dados",
+      "descricao": "Módulo 5 · aula 7 de 7 · 35 min · treina as habilidades H24, H25, H26, H27, H28, H29 e H30",
+      "habilidades": [
+        "H24",
+        "H25",
+        "H26",
+        "H27",
+        "H28",
+        "H29",
+        "H30"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "O mapa do módulo",
+            "texto": [
+              "Ler antes de calcular: título, unidade e período. Cada gráfico tem uma função: colunas comparam, linhas mostram o tempo, setores dividem um todo (1% = 3,6°). Desconfie de eixos que não começam no zero, figuras infladas, recortes convenientes e números absolutos que deveriam ser taxas. Numa tabela de dupla entrada, cruze a linha e a coluna certas e use o total do grupo que a pergunta indica; a maior variação entre períodos é a maior diferença entre vizinhos, não o ponto mais alto."
+            ]
+          },
+          {
+            "titulo": "Medidas de centro",
+            "texto": [
+              "A média é a soma dividida pela quantidade; com pesos, é ponderada; e é puxada por valores extremos. A mediana é o valor do meio com os dados **em ordem**, e resiste a extremos. A moda é o valor mais frequente e serve até para categorias. Para juntar grupos, pondere pelos tamanhos. Quando a média fica bem acima da mediana, há valores muito altos puxando a média; quando fica abaixo, valores muito baixos."
+            ]
+          },
+          {
+            "titulo": "Dispersão e decisão",
+            "texto": [
+              "Amplitude é o maior menos o menor. Variância é a média dos quadrados dos desvios; o **desvio padrão** é a raiz dela, na unidade dos dados, e quanto menor, mais regular. Somar uma constante não muda o desvio; multiplicar, multiplica. Para decidir, defina o **critério antes** de olhar os dados, compare proporções, desconfie de grupos mal escolhidos e não confunda correlação com causa. Numa pesquisa, a margem de erro cria um intervalo em pontos percentuais; se os intervalos de dois candidatos se cruzam, há empate técnico. Para comparar lugares de tamanhos diferentes, use taxas por habitante."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada. Os tropeços mais comuns do módulo são esquecer de ordenar antes da mediana, fazer média das médias, comparar alturas num eixo cortado, confundir variância com desvio padrão e trocar o critério da questão."
+            ]
+          }
+        ],
+        "introducao": "Fim do módulo de estatística, o tema que mais cai na Matemática do Enem. As questões desta revisão vêm misturadas, como na prova: o desafio é reconhecer se a situação pede leitura de gráfico, média, mediana, moda, dispersão ou um critério de decisão.",
+        "mapaMental": {
+          "centro": "Estatística",
+          "ramos": [
+            {
+              "titulo": "Gráficos",
+              "itens": [
+                "colunas, linhas e setores",
+                "eixo cortado e recorte"
+              ]
+            },
+            {
+              "titulo": "Centro",
+              "itens": [
+                "média puxada por extremos",
+                "mediana com dados em ordem",
+                "moda para categorias"
+              ]
+            },
+            {
+              "titulo": "Dispersão",
+              "itens": [
+                "desvio padrão na unidade dos dados",
+                "menor é mais regular"
+              ]
+            },
+            {
+              "titulo": "Decisão",
+              "itens": [
+                "critério antes dos dados",
+                "proporções",
+                "correlação não é causa"
+              ]
+            }
+          ]
+        },
+        "pontos": [
+          "Para a mediana, coloque os dados **em ordem**.",
+          "Média de grupos: pondere pelos tamanhos.",
+          "O **desvio padrão** mede a regularidade: quanto menor, mais regular.",
+          "Defina o **critério antes** de olhar os dados.",
+          "Compare taxas e proporções, não totais."
+        ],
+        "perolas": [
+          "Antes de calcular, pergunte: a pergunta é sobre o centro, o espalhamento ou a decisão?"
+        ],
+        "reforcar": [
+          "em ordem",
+          "desvio padrao",
+          "criterio antes"
         ]
       }
     }
@@ -15958,6 +16361,1846 @@
         "Esqueceu o bônus.",
         "Somou 1 ponto à média.",
         "Esqueceu que o aluno excluído também tinha recebido o bônus."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q01",
+      "tema": "Moda",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Qual é a moda do conjunto 3, 5, 5, 7, 8, 5, 9?",
+      "alternativas": [
+        "7",
+        "6",
+        "3",
+        "5",
+        "9"
+      ],
+      "correta": 3,
+      "explicacao": "O 5 aparece três vezes, mais que qualquer outro. Dica de mergulhador: moda é o mais frequente.",
+      "comentarios": [
+        "É o termo do meio da lista sem ordenar.",
+        "É a média.",
+        "É quantas vezes o 5 aparece.",
+        "",
+        "É o maior valor."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q02",
+      "tema": "Moda",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Uma loja vendeu camisetas: P, 12; M, 30; G, 25; GG, 8. Qual é a moda dos tamanhos?",
+      "alternativas": [
+        "30",
+        "G",
+        "Não existe moda para tamanhos",
+        "M",
+        "P"
+      ],
+      "correta": 3,
+      "explicacao": "O tamanho mais vendido é M, com 30 unidades. Dica de mergulhador: a moda é o valor com maior frequência.",
+      "comentarios": [
+        "É a frequência, não o tamanho.",
+        "Vendeu menos que M.",
+        "A moda serve para dados não numéricos.",
+        "",
+        "Vendeu pouco."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q03",
+      "tema": "Moda",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "O conjunto 2, 3, 3, 5, 7, 7, 9 tem quantas modas?",
+      "alternativas": [
+        "Uma: 7",
+        "Uma: 3",
+        "Nenhuma",
+        "Duas: 3 e 7",
+        "Três"
+      ],
+      "correta": 3,
+      "explicacao": "3 e 7 aparecem duas vezes cada: o conjunto é bimodal. Dica de mergulhador: empate na maior frequência, mais de uma moda.",
+      "comentarios": [
+        "O 3 também aparece duas vezes.",
+        "O 7 também aparece duas vezes.",
+        "Há valores repetidos.",
+        "",
+        "Só dois valores se repetem."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q04",
+      "tema": "Moda",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Numa tabela de frequências, a nota 6 aparece 4 vezes, a 7 aparece 9 vezes, a 8 aparece 9 vezes e a 9 aparece 3 vezes. Qual é a moda?",
+      "alternativas": [
+        "7 e 8",
+        "9",
+        "25",
+        "8",
+        "7,5"
+      ],
+      "correta": 0,
+      "explicacao": "As notas 7 e 8 têm a maior frequência, 9: o conjunto é bimodal. Dica de mergulhador: compare as frequências e responda com os valores.",
+      "comentarios": [
+        "",
+        "É a maior frequência, não a nota.",
+        "É o total de notas.",
+        "O 7 tem a mesma frequência.",
+        "Fez a média das duas modas."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q05",
+      "tema": "Moda",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Numa pesquisa sobre o meio de transporte preferido, o resultado foi: ônibus, 45%; metrô, 20%; carro, 25%; bicicleta, 10%. Qual medida de tendência central faz sentido para esses dados?",
+      "alternativas": [
+        "A média, que é 25%",
+        "A moda, que é o ônibus",
+        "A mediana, que é 22,5%",
+        "Nenhuma medida serve",
+        "A média dos meios de transporte"
+      ],
+      "correta": 1,
+      "explicacao": "Para categorias, só a moda faz sentido: ônibus. Dica de mergulhador: dado não numérico, moda.",
+      "comentarios": [
+        "Não se faz média de meios de transporte.",
+        "",
+        "A mediana não se aplica a categorias sem ordem.",
+        "A moda serve.",
+        "Categorias não têm média."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q06",
+      "tema": "Moda",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Num conjunto de 5 números inteiros, a moda é 4, a mediana é 5 e a média é 6. Qual é o maior valor possível para o maior número?",
+      "alternativas": [
+        "11",
+        "17",
+        "12",
+        "9",
+        "30"
+      ],
+      "correta": 0,
+      "explicacao": "Moda 4 e mediana 5 dão 4, 4, 5, d, e; a soma é 30, então d + e = 17. Para e ser o maior possível, d = 6 e e = 11. Dica de mergulhador: monte a lista ordenada e use a soma.",
+      "comentarios": [
+        "",
+        "Esqueceu que o quarto número precisa ser maior que 5.",
+        "Repetiu o 5, criando uma segunda moda.",
+        "É o menor valor possível, não o maior.",
+        "É a soma dos cinco números."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q07",
+      "tema": "Mediana",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Qual é a mediana do conjunto 2, 4, 7, 9, 12?",
+      "alternativas": [
+        "9",
+        "6,8",
+        "12",
+        "5",
+        "7"
+      ],
+      "correta": 4,
+      "explicacao": "Com 5 valores ordenados, o meio é o 3º: 7. Dica de mergulhador: quantidade ímpar, termo central.",
+      "comentarios": [
+        "É o quarto termo.",
+        "É a média.",
+        "É o maior valor.",
+        "É a quantidade de números.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q08",
+      "tema": "Mediana",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Qual é a mediana do conjunto 3, 5, 8, 10?",
+      "alternativas": [
+        "26",
+        "8",
+        "6,5",
+        "5",
+        "13"
+      ],
+      "correta": 2,
+      "explicacao": "Quantidade par: (5 + 8) ÷ 2 = 6,5. Dica de mergulhador: com par, média dos dois do meio.",
+      "comentarios": [
+        "É a soma.",
+        "Pegou só o outro termo central.",
+        "",
+        "Pegou só um dos termos centrais.",
+        "Somou os centrais sem dividir."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q09",
+      "tema": "Mediana",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Qual é a mediana do conjunto 9, 2, 12, 4, 7?",
+      "alternativas": [
+        "2",
+        "12",
+        "9",
+        "6,8",
+        "7"
+      ],
+      "correta": 4,
+      "explicacao": "Em ordem: 2, 4, 7, 9, 12. O meio é 7. Dica de mergulhador: ordene antes.",
+      "comentarios": [
+        "É o menor valor.",
+        "Pegou o termo do meio sem ordenar.",
+        "É o primeiro valor da lista.",
+        "É a média.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q10",
+      "tema": "Mediana",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "As idades de 6 amigos são 18, 25, 20, 30, 22 e 19. Qual é a mediana?",
+      "alternativas": [
+        "20",
+        "21",
+        "22,33",
+        "24",
+        "25"
+      ],
+      "correta": 1,
+      "explicacao": "Em ordem: 18, 19, 20, 22, 25, 30. Mediana: (20 + 22) ÷ 2 = 21. Dica de mergulhador: ordene e pegue os dois centrais.",
+      "comentarios": [
+        "Pegou só um dos termos centrais.",
+        "",
+        "É a média.",
+        "Fez a média do menor e do maior.",
+        "Fez a média dos centrais sem ordenar."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q11",
+      "tema": "Mediana",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Em 15 jogos, um time fez 0 gols em 3 jogos, 1 gol em 5, 2 gols em 4 e 3 gols em 3. Qual é a mediana de gols por jogo?",
+      "alternativas": [
+        "1 gol",
+        "5 gols",
+        "8 gols",
+        "1,5 gol",
+        "1,47 gol"
+      ],
+      "correta": 0,
+      "explicacao": "A mediana é o 8º valor. Acumulado: 0 gols vai até o 3º, 1 gol até o 8º. Mediana: 1. Dica de mergulhador: posição (15 + 1) ÷ 2 = 8 e frequência acumulada.",
+      "comentarios": [
+        "",
+        "Usou a maior frequência.",
+        "É a posição da mediana.",
+        "Fez a média dos valores da tabela.",
+        "É a média."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q12",
+      "tema": "Mediana",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Acrescentando o número 100 ao conjunto 2, 4, 6, 8, 10, o que acontece com a média e com a mediana?",
+      "alternativas": [
+        "Nenhuma das duas muda",
+        "A média vai para 7 e a mediana para 21,7",
+        "As duas sobem para cerca de 21,7",
+        "A mediana sobe muito e a média pouco",
+        "A média vai de 6 para cerca de 21,7; a mediana, de 6 para 7"
+      ],
+      "correta": 4,
+      "explicacao": "Média: 130 ÷ 6 ≈ 21,7. Mediana: (6 + 8) ÷ 2 = 7. Dica de mergulhador: valores extremos mexem muito na média e pouco na mediana.",
+      "comentarios": [
+        "As duas mudam.",
+        "Trocou as medidas.",
+        "A mediana muda pouco.",
+        "É o contrário.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q13",
+      "tema": "Mediana",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "A mediana de 5 números inteiros e diferentes é 10, e o maior deles é 20. Qual é o maior valor possível da média?",
+      "alternativas": [
+        "13,2",
+        "10",
+        "13,4",
+        "15",
+        "11,6"
+      ],
+      "correta": 0,
+      "explicacao": "Para a maior média: 8, 9, 10, 19, 20. Soma 66; média 13,2. Dica de mergulhador: empurre cada número ao máximo que as regras permitem.",
+      "comentarios": [
+        "",
+        "Usou a mediana.",
+        "Repetiu o 9, mas os números são diferentes.",
+        "Fez a média da mediana com o maior número.",
+        "Escolheu o menor valor possível para o quarto número."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q14",
+      "tema": "Mediana",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Uma lista de 7 valores tem mediana 15. Retiram-se o maior e o menor valor. Qual é a nova mediana?",
+      "alternativas": [
+        "Aumenta",
+        "Continua 15",
+        "Passa a ser a média",
+        "Diminui",
+        "Não dá para saber sem os valores"
+      ],
+      "correta": 1,
+      "explicacao": "Tirando um valor de cada ponta, o termo central continua no meio. Dica de mergulhador: mexer igual nas duas pontas não move o meio.",
+      "comentarios": [
+        "O meio continua o mesmo.",
+        "",
+        "A mediana não vira média.",
+        "O meio continua o mesmo.",
+        "A posição central não muda."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q15",
+      "tema": "Escolha da medida",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Num bairro, a maioria das casas vale entre R$ 200 mil e R$ 300 mil, mas há duas mansões de R$ 5 milhões. Qual medida representa melhor o preço típico?",
+      "alternativas": [
+        "A mediana",
+        "A amplitude",
+        "A soma dos valores",
+        "A média",
+        "O maior valor"
+      ],
+      "correta": 0,
+      "explicacao": "A mediana não se abala com os valores extremos. Dica de mergulhador: extremos? Mediana.",
+      "comentarios": [
+        "",
+        "Mede a dispersão, não o centro.",
+        "Não representa uma casa típica.",
+        "É puxada pelas mansões.",
+        "Só mostra as mansões."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q16",
+      "tema": "Escolha da medida",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Uma fábrica de sapatos quer saber qual número produzir em maior quantidade. Qual medida deve usar?",
+      "alternativas": [
+        "A mediana",
+        "A moda",
+        "A amplitude",
+        "O desvio padrão",
+        "A média"
+      ],
+      "correta": 1,
+      "explicacao": "O número mais vendido é a moda. Dica de mergulhador: o mais comum, a moda.",
+      "comentarios": [
+        "Divide ao meio, mas não mostra o mais procurado.",
+        "",
+        "Mede a dispersão.",
+        "Mede a dispersão.",
+        "Pode dar um número que nem existe, como 38,6."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q17",
+      "tema": "Escolha da medida",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Num conjunto simétrico, como 2, 4, 6, 8, 10, o que se pode dizer da média e da mediana?",
+      "alternativas": [
+        "A média é 30",
+        "A mediana é maior",
+        "Não existe mediana",
+        "A média é maior",
+        "São iguais, ambas 6"
+      ],
+      "correta": 4,
+      "explicacao": "Média: 30 ÷ 5 = 6. Mediana: 6. Dica de mergulhador: simetria, média e mediana juntas.",
+      "comentarios": [
+        "30 é a soma.",
+        "Não há extremo puxando.",
+        "Existe: 6.",
+        "Não há extremo puxando.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q18",
+      "tema": "Escolha da medida",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Uma turma teve as notas 2, 7, 7, 8, 8, 9 e 9. A média é cerca de 7,14 e a mediana é 8. Por que a média ficou abaixo da mediana?",
+      "alternativas": [
+        "A mediana sempre é maior que a média",
+        "Porque há duas modas",
+        "Houve erro de conta",
+        "Porque são 7 notas",
+        "A nota 2, muito baixa, puxou a média para baixo"
+      ],
+      "correta": 4,
+      "explicacao": "Um valor extremo baixo puxa a média, mas não move a mediana. Dica de mergulhador: média abaixo da mediana, extremo baixo.",
+      "comentarios": [
+        "Depende dos dados.",
+        "As modas não afetam a média.",
+        "As contas estão certas.",
+        "A quantidade não explica.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q19",
+      "tema": "Escolha da medida",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Dois candidatos fizeram 5 provas. A: 6, 6, 7, 9, 10 (média 7,6; mediana 7). B: 2, 8, 8, 9, 9 (média 7,2; mediana 8). Se a escolha for pela mediana, quem vence, e por que a média prejudica o vencedor?",
+      "alternativas": [
+        "B, com mediana 8; a nota 2 baixa a média dele",
+        "Empatam, porque as medianas são parecidas",
+        "A, que tem a maior média",
+        "A, porque a mediana dele é 8",
+        "B, porque a moda dele é a maior"
+      ],
+      "correta": 0,
+      "explicacao": "Pela mediana, B vence (8 contra 7). A média de B cai por causa de uma nota 2. Dica de mergulhador: o critério decide o vencedor.",
+      "comentarios": [
+        "",
+        "8 e 7 são diferentes.",
+        "O critério é a mediana.",
+        "A mediana de A é 7.",
+        "O critério é a mediana."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q20",
+      "tema": "Escolha da medida",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "O salário mediano de uma empresa é R$ 3.000 e a média é R$ 5.000. O que é mais provável?",
+      "alternativas": [
+        "Os salários são simétricos",
+        "Metade ganha mais de R$ 5.000",
+        "A maioria ganha R$ 5.000",
+        "Poucos salários muito altos puxam a média para cima",
+        "Todos ganham entre R$ 3.000 e R$ 5.000"
+      ],
+      "correta": 3,
+      "explicacao": "Média bem acima da mediana indica extremos altos. Dica de mergulhador: compare média e mediana para ver a assimetria.",
+      "comentarios": [
+        "Com simetria, média e mediana seriam próximas.",
+        "Metade ganha mais de R$ 3.000.",
+        "A mediana mostra que metade ganha até R$ 3.000.",
+        "",
+        "Nada indica isso."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q01",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Qual é a amplitude do conjunto 4, 6, 9, 15?",
+      "alternativas": [
+        "8,5",
+        "11",
+        "19",
+        "7,5",
+        "15"
+      ],
+      "correta": 1,
+      "explicacao": "15 − 4 = 11. Dica de mergulhador: maior menos menor.",
+      "comentarios": [
+        "É a média.",
+        "",
+        "Somou o maior e o menor.",
+        "É a mediana.",
+        "É o maior valor."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q02",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "A média de 2, 4, 6 e 8 é 5. Qual é o desvio do valor 8 em relação à média?",
+      "alternativas": [
+        "3",
+        "13",
+        "8",
+        "−3",
+        "1,6"
+      ],
+      "correta": 0,
+      "explicacao": "Desvio = 8 − 5 = 3. Dica de mergulhador: desvio é valor menos média.",
+      "comentarios": [
+        "",
+        "Somou valor e média.",
+        "É o próprio valor.",
+        "Inverteu o sinal.",
+        "Dividiu 8 por 5."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q03",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Qual é a soma dos desvios em relação à média de qualquer conjunto?",
+      "alternativas": [
+        "A média",
+        "Depende do conjunto",
+        "O número de valores",
+        "A variância",
+        "Zero"
+      ],
+      "correta": 4,
+      "explicacao": "Os desvios positivos e negativos se cancelam exatamente. Dica de mergulhador: por isso a variância eleva ao quadrado.",
+      "comentarios": [
+        "Os desvios se cancelam.",
+        "É sempre zero.",
+        "Não tem relação.",
+        "A variância usa os quadrados.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q04",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Duas turmas têm média 7. Turma A: 6, 7, 7, 8. Turma B: 4, 4, 10, 10. Qual é mais homogênea?",
+      "alternativas": [
+        "Não dá para comparar",
+        "B, porque tem notas altas",
+        "As duas, porque a média é igual",
+        "B, com amplitude 6",
+        "A, com valores mais próximos da média"
+      ],
+      "correta": 4,
+      "explicacao": "A tem amplitude 2; B, amplitude 6 e desvios grandes. Dica de mergulhador: homogêneo é perto da média.",
+      "comentarios": [
+        "Os valores mostram.",
+        "Notas altas e baixas espalham.",
+        "Média igual não é dispersão igual.",
+        "Amplitude maior é mais dispersão.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q05",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "O conjunto 3, 3, 3, 3, 30 tem amplitude 27, e o conjunto 10, 12, 14, 16, 18 tem amplitude 8. Por que a amplitude pode enganar nesse caso?",
+      "alternativas": [
+        "Porque amplitude é igual à média",
+        "Porque depende só dos extremos: um único valor muda tudo",
+        "Porque a amplitude usa todos os valores",
+        "Porque o primeiro conjunto é mais espalhado em todos os valores",
+        "Porque a conta está errada"
+      ],
+      "correta": 1,
+      "explicacao": "No primeiro conjunto, quatro valores são iguais e só um foge: a amplitude exagera a dispersão. Dica de mergulhador: amplitude olha só as pontas.",
+      "comentarios": [
+        "São medidas diferentes.",
+        "",
+        "Usa só dois.",
+        "Quatro valores são iguais.",
+        "As amplitudes estão certas."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q06",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "As temperaturas de duas cidades em 5 dias foram: X, 20, 22, 24, 26 e 28; Y, 23, 24, 24, 24 e 25. As médias são iguais. Qual tem a maior variância, e qual é a variância de X?",
+      "alternativas": [
+        "X, com variância 8",
+        "Y, com variância 0,4",
+        "As duas são iguais",
+        "X, com variância 40",
+        "X, com variância 2,83"
+      ],
+      "correta": 0,
+      "explicacao": "Média de X: 24. Desvios: −4, −2, 0, 2, 4. Quadrados: 16, 4, 0, 4, 16 = 40. Variância: 40 ÷ 5 = 8. Dica de mergulhador: média dos quadrados.",
+      "comentarios": [
+        "",
+        "A variância de Y é a menor.",
+        "Os espalhamentos são diferentes.",
+        "Não dividiu pela quantidade.",
+        "Esse é o desvio padrão de X."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q07",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Se a variância de um conjunto é 9, qual é o desvio padrão?",
+      "alternativas": [
+        "81",
+        "3",
+        "9",
+        "4,5",
+        "18"
+      ],
+      "correta": 1,
+      "explicacao": "Desvio padrão = √9 = 3. Dica de mergulhador: raiz da variância.",
+      "comentarios": [
+        "Elevou ao quadrado.",
+        "",
+        "Usou a variância.",
+        "Dividiu por 2.",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q08",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Em que unidade é dado o desvio padrão de alturas medidas em centímetros?",
+      "alternativas": [
+        "Centímetros",
+        "Centímetros quadrados",
+        "Sem unidade",
+        "Metros",
+        "Porcentagem"
+      ],
+      "correta": 0,
+      "explicacao": "A raiz da variância (cm²) volta para cm. Dica de mergulhador: desvio padrão fala a língua dos dados.",
+      "comentarios": [
+        "",
+        "Essa é a unidade da variância.",
+        "O desvio padrão tem unidade.",
+        "A unidade é a mesma dos dados.",
+        "Isso seria o coeficiente de variação."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q09",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Qual é a variância do conjunto 2, 4, 6, 8?",
+      "alternativas": [
+        "2,24",
+        "20",
+        "0",
+        "6,67",
+        "5"
+      ],
+      "correta": 4,
+      "explicacao": "Média 5; desvios −3, −1, 1, 3; quadrados 9, 1, 1, 9 = 20; variância 20 ÷ 4 = 5. Dica de mergulhador: média, desvios, quadrados, média dos quadrados.",
+      "comentarios": [
+        "É o desvio padrão.",
+        "Não dividiu pela quantidade.",
+        "Somou os desvios sem elevar ao quadrado.",
+        "Dividiu por 3.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q10",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Qual é o desvio padrão do conjunto 5, 5, 5, 5?",
+      "alternativas": [
+        "25",
+        "1",
+        "5",
+        "0",
+        "20"
+      ],
+      "correta": 3,
+      "explicacao": "Todos iguais à média: desvios zero, desvio padrão zero. Dica de mergulhador: sem espalhamento, desvio padrão zero.",
+      "comentarios": [
+        "É 5 ao quadrado.",
+        "Não há dispersão nenhuma.",
+        "É a média.",
+        "",
+        "É a soma."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q11",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Somando 10 a todos os valores de um conjunto com média 20 e desvio padrão 4, quais ficam a nova média e o novo desvio padrão?",
+      "alternativas": [
+        "Média 30 e desvio padrão 40",
+        "Média 20 e desvio padrão 4",
+        "Média 200 e desvio padrão 4",
+        "Média 30 e desvio padrão 4",
+        "Média 30 e desvio padrão 14"
+      ],
+      "correta": 3,
+      "explicacao": "Somar uma constante desloca tudo: a média sobe 10 e o espalhamento fica igual. Dica de mergulhador: somar move, não espalha.",
+      "comentarios": [
+        "Multiplicou o desvio.",
+        "A média muda.",
+        "Multiplicou a média.",
+        "",
+        "Somou 10 também ao desvio."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q12",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Multiplicando por 3 todos os valores de um conjunto com média 10 e desvio padrão 2, quais ficam a média e o desvio padrão?",
+      "alternativas": [
+        "Média 13 e desvio padrão 5",
+        "Média 30 e desvio padrão 18",
+        "Média 30 e desvio padrão 2",
+        "Média 30 e desvio padrão 6",
+        "Média 10 e desvio padrão 6"
+      ],
+      "correta": 3,
+      "explicacao": "Multiplicar por 3 estica tudo: média e desvio padrão triplicam (a variância fica 9 vezes maior). Dica de mergulhador: multiplicar espalha.",
+      "comentarios": [
+        "Somou 3 em vez de multiplicar.",
+        "Multiplicou o desvio por 9.",
+        "O desvio também é multiplicado.",
+        "",
+        "A média também é multiplicada."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q13",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Um conjunto de 4 valores tem média 10, e três dos desvios são −2, −1 e 1. Qual é o quarto desvio, e qual é a variância?",
+      "alternativas": [
+        "Desvio 2 e variância 1,58",
+        "Desvio −2 e variância 2,5",
+        "Desvio 2 e variância 10",
+        "Desvio 2 e variância 2,5",
+        "Desvio 0 e variância 1,5"
+      ],
+      "correta": 3,
+      "explicacao": "−2 − 1 + 1 + x = 0, então x = 2. Quadrados: 4, 1, 1, 4 = 10; variância 10 ÷ 4 = 2,5. Dica de mergulhador: desvios somam zero.",
+      "comentarios": [
+        "Esse é o desvio padrão.",
+        "Os desvios precisam somar zero.",
+        "Não dividiu pela quantidade.",
+        "",
+        "Os desvios precisam somar zero."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q14",
+      "tema": "Regularidade",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Dois atletas têm a mesma média de tempo, mas desvios padrão de 0,5 s e 2 s. Qual é mais regular?",
+      "alternativas": [
+        "O de desvio padrão 2 s",
+        "Os dois, porque a média é igual",
+        "O de desvio padrão 0,5 s",
+        "Não dá para saber",
+        "O mais rápido"
+      ],
+      "correta": 2,
+      "explicacao": "Menor desvio padrão, tempos mais próximos da média. Dica de mergulhador: regular é desvio pequeno.",
+      "comentarios": [
+        "Desvio maior é menos regular.",
+        "A dispersão é diferente.",
+        "",
+        "O desvio padrão responde.",
+        "As médias são iguais."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q15",
+      "tema": "Regularidade",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "O que um desvio padrão igual a zero indica?",
+      "alternativas": [
+        "A variância é negativa",
+        "A média é zero",
+        "Todos os valores são iguais",
+        "Os dados estão muito espalhados",
+        "Não há dados"
+      ],
+      "correta": 2,
+      "explicacao": "Sem nenhum afastamento da média, todos os valores são iguais. Dica de mergulhador: zero de desvio, zero de diferença.",
+      "comentarios": [
+        "A variância nunca é negativa.",
+        "A média pode ser qualquer valor.",
+        "",
+        "É o contrário.",
+        "Há dados, todos iguais."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q16",
+      "tema": "Regularidade",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Uma empresa compra parafusos de 10 mm. Fornecedor A: média 10,0 mm e desvio padrão 0,4 mm. Fornecedor B: média 10,0 mm e desvio padrão 0,1 mm. Qual deve escolher?",
+      "alternativas": [
+        "Tanto faz, porque a média é igual",
+        "A, porque 0,4 mm é mais preciso",
+        "A, porque o desvio é maior",
+        "B, porque a média é maior",
+        "B, porque as peças variam menos"
+      ],
+      "correta": 4,
+      "explicacao": "Com médias iguais, vence o menor desvio padrão. Dica de mergulhador: média empatada, desempate pela dispersão.",
+      "comentarios": [
+        "A dispersão decide.",
+        "É menos preciso.",
+        "Desvio maior é pior.",
+        "As médias são iguais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q17",
+      "tema": "Regularidade",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "O atleta A tem média 9,0 e desvio padrão 0,2; o atleta B tem média 9,4 e desvio padrão 1,5. Um técnico quer o atleta mais regular. Qual escolhe?",
+      "alternativas": [
+        "Tanto faz",
+        "B, porque tem a maior média",
+        "A",
+        "B, porque desvio maior é mais regular",
+        "A, porque tem a maior média"
+      ],
+      "correta": 2,
+      "explicacao": "Regularidade é medida pelo desvio padrão: 0,2 contra 1,5. Dica de mergulhador: leia o critério antes de escolher.",
+      "comentarios": [
+        "Os desvios são bem diferentes.",
+        "O critério é a regularidade.",
+        "",
+        "É o contrário.",
+        "A média de A é menor; ele vence pela regularidade."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q18",
+      "tema": "Regularidade",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "O grupo X tem média 50 e desvio padrão 5; o grupo Y tem média 200 e desvio padrão 10. Pelo coeficiente de variação, qual é relativamente mais homogêneo?",
+      "alternativas": [
+        "X, com coeficiente de 10%",
+        "Y, porque a média é maior",
+        "X, porque o desvio padrão é menor",
+        "Os dois são iguais",
+        "Y, com coeficiente de 5% contra 10% de X"
+      ],
+      "correta": 4,
+      "explicacao": "X: 5 ÷ 50 = 10%. Y: 10 ÷ 200 = 5%. Dica de mergulhador: coeficiente de variação = desvio ÷ média.",
+      "comentarios": [
+        "10% indica mais dispersão relativa.",
+        "A média sozinha não mede dispersão.",
+        "Com médias tão diferentes, compare o relativo.",
+        "Os coeficientes são 10% e 5%.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q19",
+      "tema": "Regularidade",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Três turmas: T1, média 7,0 e desvio padrão 2,0; T2, média 7,0 e desvio padrão 0,8; T3, média 6,5 e desvio padrão 0,8. Qual tem o melhor desempenho com regularidade?",
+      "alternativas": [
+        "T2: mesma média de T1 e menor dispersão",
+        "T3, porque é a mais regular",
+        "T1 e T2 empatam",
+        "T1, porque empata em média",
+        "T3, porque tem a maior média"
+      ],
+      "correta": 0,
+      "explicacao": "T2 tem a maior média (empatada) e o menor desvio. Dica de mergulhador: compare as duas medidas.",
+      "comentarios": [
+        "",
+        "Empata em regularidade com T2, mas tem média menor.",
+        "Os desvios são diferentes.",
+        "Tem dispersão maior que T2.",
+        "Tem a menor."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q20",
+      "tema": "Regularidade",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Um grupo de 4 valores tem média 6 e variância 5. Acrescenta-se um quinto valor igual a 6. O que acontece?",
+      "alternativas": [
+        "A média cai e a variância continua 5",
+        "A média continua 6 e a variância cai para 4",
+        "A variância sobe para 6",
+        "A média e a variância continuam iguais",
+        "A média sobe para 6,2"
+      ],
+      "correta": 1,
+      "explicacao": "A soma dos quadrados dos desvios era 5 × 4 = 20; o novo desvio é 0. Variância: 20 ÷ 5 = 4. Dica de mergulhador: um valor na média dilui a dispersão.",
+      "comentarios": [
+        "O novo valor é igual à média.",
+        "",
+        "Um valor igual à média reduz a dispersão.",
+        "A soma dos quadrados é dividida por 5 agora.",
+        "O novo valor é igual à média."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q01",
+      "tema": "Critério de decisão",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Três planos de celular custam R$ 40, R$ 55 e R$ 35 por mês, com a mesma franquia. Pelo critério de menor custo, qual escolher?",
+      "alternativas": [
+        "O de R$ 55",
+        "O do meio",
+        "Qualquer um",
+        "O de R$ 40",
+        "O de R$ 35"
+      ],
+      "correta": 4,
+      "explicacao": "Com franquias iguais, vence o menor preço. Dica de mergulhador: critério definido, decisão rápida.",
+      "comentarios": [
+        "É o mais caro.",
+        "O critério é menor custo.",
+        "O critério diferencia.",
+        "Não é o mais barato.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q02",
+      "tema": "Critério de decisão",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma escola vai premiar a turma com maior taxa de aprovação. Turma A: 30 aprovados de 50. Turma B: 40 aprovados de 100. Qual vence?",
+      "alternativas": [
+        "B, com 40%",
+        "A, com 30 aprovados",
+        "A, com 60%",
+        "As duas empatam",
+        "B, porque teve mais aprovados"
+      ],
+      "correta": 2,
+      "explicacao": "A: 30 ÷ 50 = 60%. B: 40 ÷ 100 = 40%. Dica de mergulhador: taxa compara grupos de tamanhos diferentes.",
+      "comentarios": [
+        "40% é menor.",
+        "Número absoluto não é taxa.",
+        "",
+        "As taxas são 60% e 40%.",
+        "O critério é a taxa."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q03",
+      "tema": "Critério de decisão",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Por que é importante definir o critério de escolha antes de olhar os dados?",
+      "alternativas": [
+        "Para terminar mais rápido",
+        "Para não precisar fazer contas",
+        "Para não escolher o critério que favorece a opção desejada",
+        "Porque o primeiro critério é sempre o certo",
+        "Porque os dados mudam depois"
+      ],
+      "correta": 2,
+      "explicacao": "Escolher o critério depois de ver os números abre espaço para viés. Dica de mergulhador: regra antes, jogo depois.",
+      "comentarios": [
+        "Rapidez não é o motivo.",
+        "As contas continuam necessárias.",
+        "",
+        "Não existe essa regra.",
+        "Os dados não mudam."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q04",
+      "tema": "Critério de decisão",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "O vendedor A vendeu R$ 60 mil em 12 meses; o vendedor B vendeu R$ 33 mil em 6 meses. Pela média mensal, quem foi melhor?",
+      "alternativas": [
+        "B, com R$ 33 mil",
+        "A, porque vendeu mais no total",
+        "B, com R$ 5.500 por mês",
+        "Os dois empatam",
+        "A, com R$ 5.000 por mês"
+      ],
+      "correta": 2,
+      "explicacao": "A: 60 ÷ 12 = 5 mil. B: 33 ÷ 6 = 5,5 mil por mês. Dica de mergulhador: mesma base de tempo.",
+      "comentarios": [
+        "É o total, não a média.",
+        "Os períodos são diferentes.",
+        "",
+        "As médias são diferentes.",
+        "É menor que a de B."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q05",
+      "tema": "Critério de decisão",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Para uma viagem de 600 km em 2 dias, o carro A faz 12 km/L e custa R$ 100 por dia; o carro B faz 15 km/L e custa R$ 120 por dia. A gasolina custa R$ 6. Qual é o mais barato no total?",
+      "alternativas": [
+        "A, porque a diária é menor",
+        "B, com R$ 240",
+        "B, com R$ 480 contra R$ 500 de A",
+        "Os dois empatam",
+        "A, com R$ 500"
+      ],
+      "correta": 2,
+      "explicacao": "A: 50 L × 6 = 300 + 200 = 500. B: 40 L × 6 = 240 + 240 = 480. Dica de mergulhador: some todos os custos.",
+      "comentarios": [
+        "Falta somar a gasolina.",
+        "Esqueceu o aluguel.",
+        "",
+        "São R$ 500 e R$ 480.",
+        "É mais caro que B."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q06",
+      "tema": "Critério de decisão",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Três fornecedores têm prazos de entrega com estas médias e desvios padrão, em dias: F1, 5 e 3; F2, 6 e 0,5; F3, 5 e 1. A empresa quer média de até 5 dias e, entre esses, o mais regular. Qual escolhe?",
+      "alternativas": [
+        "F2",
+        "F1",
+        "Nenhum",
+        "F1 e F3 empatam",
+        "F3"
+      ],
+      "correta": 4,
+      "explicacao": "Média até 5: F1 e F3. Mais regular: F3 (desvio 1). Dica de mergulhador: aplique os critérios na ordem.",
+      "comentarios": [
+        "É o mais regular, mas a média passa de 5.",
+        "Tem média 5, mas é menos regular.",
+        "F3 cumpre os dois critérios.",
+        "Os desvios são diferentes.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q07",
+      "tema": "Critério de decisão",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma seleção usa a nota final = 0,6 × prova + 0,4 × entrevista. Ana tirou 80 na prova e 60 na entrevista; Bia, 70 e 80. Quem vence?",
+      "alternativas": [
+        "Empatam",
+        "Bia, com 76 contra 68",
+        "Bia, com 74 contra 72",
+        "Ana, com 70 contra 75",
+        "Ana, porque a prova pesa mais"
+      ],
+      "correta": 2,
+      "explicacao": "Ana: 48 + 24 = 72. Bia: 42 + 32 = 74. Dica de mergulhador: aplique os pesos do edital.",
+      "comentarios": [
+        "As notas são 72 e 74.",
+        "Trocou os pesos.",
+        "",
+        "Fez média simples e trocou o vencedor.",
+        "A entrevista de Bia compensa."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q08",
+      "tema": "Critério de decisão",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma loja pode destacar um de três produtos. P dá lucro de R$ 50 com 40% de chance de venda; Q, R$ 30 com 70%; R, R$ 80 com 20%. Pelo lucro esperado (lucro × chance), qual deve destacar?",
+      "alternativas": [
+        "R, com R$ 16 esperados",
+        "P, com R$ 20 esperados",
+        "Q, com R$ 21 esperados",
+        "P e Q empatam",
+        "R, porque tem o maior lucro"
+      ],
+      "correta": 2,
+      "explicacao": "P: 50 × 0,4 = 20. Q: 30 × 0,7 = 21. R: 80 × 0,2 = 16. Dica de mergulhador: valor esperado junta ganho e chance.",
+      "comentarios": [
+        "É o menor.",
+        "É um pouco menor que Q.",
+        "",
+        "São R$ 20 e R$ 21.",
+        "A chance de venda é baixa."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q09",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma prefeitura quer saber o que os moradores acham do transporte e entrevista só pessoas num ponto de ônibus. Qual é o problema?",
+      "alternativas": [
+        "O ponto de ônibus fica longe",
+        "Não há problema",
+        "O grupo não representa todos os moradores",
+        "Deveriam entrevistar só motoristas",
+        "Faltou perguntar o nome"
+      ],
+      "correta": 2,
+      "explicacao": "Quem está no ponto usa ônibus; quem não usa ficou fora: a pesquisa tem viés. Dica de mergulhador: pergunte quem ficou de fora.",
+      "comentarios": [
+        "Não é o problema estatístico.",
+        "Quem não usa ônibus ficou de fora.",
+        "",
+        "Também seria um grupo parcial.",
+        "Nome não melhora a pesquisa."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q10",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma pesquisa eleitoral dá 45% a um candidato, com margem de erro de 3 pontos percentuais. Qual intervalo é provável?",
+      "alternativas": [
+        "De 42% a 45%",
+        "De 43,65% a 46,35%",
+        "De 45% a 48%",
+        "De 3% a 45%",
+        "De 42% a 48%"
+      ],
+      "correta": 4,
+      "explicacao": "45 − 3 = 42 e 45 + 3 = 48. Dica de mergulhador: margem em pontos, some e subtraia.",
+      "comentarios": [
+        "Esqueceu o limite de cima.",
+        "Calculou 3% de 45 em vez de 3 pontos.",
+        "Esqueceu o limite de baixo.",
+        "Confundiu margem com intervalo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q11",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Numa pesquisa, A tem 41% e B tem 38%, com margem de erro de 2 pontos. O que se pode afirmar?",
+      "alternativas": [
+        "B vence, porque a margem favorece quem está atrás",
+        "Estão tecnicamente empatados, porque os intervalos se sobrepõem",
+        "A vence com certeza, porque está 3 pontos à frente",
+        "A tem exatamente 3 pontos a mais que B",
+        "A pesquisa não tem valor, por causa da margem"
+      ],
+      "correta": 1,
+      "explicacao": "A: 39% a 43%. B: 36% a 40%. Os intervalos se cruzam entre 39% e 40%. Dica de mergulhador: compare os intervalos, não os números.",
+      "comentarios": [
+        "A margem vale para os dois.",
+        "",
+        "Os intervalos se cruzam.",
+        "A margem impede a certeza.",
+        "Ela mostra o empate técnico."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q12",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Mantendo o mesmo método, o que acontece com a margem de erro quando se aumenta o tamanho da amostra?",
+      "alternativas": [
+        "Diminui",
+        "Não muda",
+        "Aumenta",
+        "Dobra",
+        "Vira zero"
+      ],
+      "correta": 0,
+      "explicacao": "Amostras maiores estimam melhor: a margem cai. Dica de mergulhador: mais gente, menos incerteza, se o método for bom.",
+      "comentarios": [
+        "",
+        "O tamanho influencia.",
+        "Mais dados dão mais precisão.",
+        "É o contrário.",
+        "Só com toda a população."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q13",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Numa escola de 1.200 alunos, 25% estudam à noite. Uma amostra de 80 alunos deve ter a mesma proporção. Quantos alunos da noite devem estar nela?",
+      "alternativas": [
+        "80",
+        "20",
+        "300",
+        "60",
+        "25"
+      ],
+      "correta": 1,
+      "explicacao": "25% de 80 = 20. Dica de mergulhador: amostra proporcional mantém as porcentagens.",
+      "comentarios": [
+        "É a amostra inteira.",
+        "",
+        "É o total da noite na escola.",
+        "É o número dos outros turnos.",
+        "Usou a porcentagem como quantidade."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q14",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma pesquisa por telefone fixo concluiu que \"jovens quase não usam redes sociais\". Qual é a falha mais grave?",
+      "alternativas": [
+        "A pesquisa deveria ser presencial em um único shopping",
+        "O número de entrevistas foi pequeno",
+        "Faltou perguntar o nome das redes",
+        "Jovens que atendem telefone fixo não representam os jovens",
+        "Não há falha"
+      ],
+      "correta": 3,
+      "explicacao": "O meio da pesquisa selecionou um tipo específico de jovem. Dica de mergulhador: quem consegue responder já é um filtro.",
+      "comentarios": [
+        "Também seria enviesada.",
+        "Mesmo grande, o grupo seria enviesado.",
+        "Não muda o viés.",
+        "",
+        "O meio escolhido distorce o resultado."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q15",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Numa amostra de 400 eleitores, 55% votam num candidato. A cidade tem 80.000 eleitores, e a margem de erro é de 5 pontos. Quantos votos se esperam, e em que intervalo?",
+      "alternativas": [
+        "Cerca de 220 votos",
+        "Cerca de 44.000, entre 43.995 e 44.005",
+        "Cerca de 44.000, entre 39.600 e 48.400",
+        "Cerca de 44.000, entre 40.000 e 48.000",
+        "Cerca de 55.000"
+      ],
+      "correta": 3,
+      "explicacao": "55% de 80.000 = 44.000. Intervalo: 50% a 60%, ou 40.000 a 48.000. Dica de mergulhador: aplique a margem à porcentagem e depois à população.",
+      "comentarios": [
+        "É o número na amostra.",
+        "Usou 5 votos de margem.",
+        "Aplicou 10% sobre os votos, e não 5 pontos.",
+        "",
+        "Usou a porcentagem como milhar."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q16",
+      "tema": "Correlação e causa",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Em várias cidades, quanto mais sorveterias, mais afogamentos. O que explica essa relação?",
+      "alternativas": [
+        "É coincidência sem explicação",
+        "Sorvete causa afogamento",
+        "Sorveterias ficam sempre na praia",
+        "As duas coisas aumentam no calor: é correlação, não causa",
+        "Afogamentos aumentam a venda de sorvete"
+      ],
+      "correta": 3,
+      "explicacao": "O calor aumenta as idas à praia e o consumo de sorvete. Dica de mergulhador: procure o terceiro fator.",
+      "comentarios": [
+        "Existe um terceiro fator.",
+        "Não há mecanismo para isso.",
+        "Não explica a relação em geral.",
+        "",
+        "Também não há causa."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q17",
+      "tema": "Correlação e causa",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Um estudo mostrou que alunos que tomam café da manhã têm notas melhores. Qual é a conclusão mais cuidadosa?",
+      "alternativas": [
+        "Quem não toma café vai reprovar",
+        "Não há relação nenhuma",
+        "Notas boas causam fome de manhã",
+        "Há associação, mas outros fatores podem explicar as notas",
+        "O café da manhã causa notas melhores"
+      ],
+      "correta": 3,
+      "explicacao": "Rotina, sono e renda podem influenciar as duas coisas. Dica de mergulhador: associação é pista, não prova.",
+      "comentarios": [
+        "Generalização sem base.",
+        "O estudo mostrou associação.",
+        "Não há base para isso.",
+        "",
+        "Associação não prova causa."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q18",
+      "tema": "Correlação e causa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Num gráfico de dispersão, os pontos de horas de estudo e notas sobem juntos, quase em linha reta. O que isso indica?",
+      "alternativas": [
+        "Correlação positiva forte",
+        "Que as notas caem com o estudo",
+        "Nenhuma correlação",
+        "Correlação negativa",
+        "Causa comprovada"
+      ],
+      "correta": 0,
+      "explicacao": "Quando uma cresce, a outra também, de forma regular. Dica de mergulhador: sobem juntos, correlação positiva.",
+      "comentarios": [
+        "",
+        "Elas sobem.",
+        "Há um padrão claro.",
+        "Os dois sobem juntos.",
+        "Correlação sozinha não prova causa."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q19",
+      "tema": "Correlação e causa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma cidade instalou radares, e, no ano seguinte, os acidentes caíram 20%. Na região inteira, sem radares novos, os acidentes também caíram 18%. O que se conclui?",
+      "alternativas": [
+        "Os radares reduziram 38%",
+        "O efeito próprio dos radares parece pequeno, pois a queda geral foi parecida",
+        "A região instalou radares escondidos",
+        "Os radares reduziram os acidentes em 20%",
+        "Os radares aumentaram os acidentes"
+      ],
+      "correta": 1,
+      "explicacao": "Comparar com um grupo sem a mudança mostra o efeito real. Dica de mergulhador: compare com quem não mudou nada.",
+      "comentarios": [
+        "Somou as quedas.",
+        "",
+        "Não há dado sobre isso.",
+        "A região caiu quase o mesmo sem radares.",
+        "Houve queda."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q20",
+      "tema": "Correlação e causa",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma pesquisa encontrou que países que consomem mais chocolate têm mais prêmios Nobel por habitante. Qual é a explicação mais provável?",
+      "alternativas": [
+        "Como a pesquisa é grande, a causa está provada",
+        "Riqueza: países ricos consomem mais chocolate e investem mais em ciência",
+        "É impossível explicar",
+        "Ganhar o Nobel faz comer chocolate",
+        "Chocolate aumenta a inteligência"
+      ],
+      "correta": 1,
+      "explicacao": "Um terceiro fator, a renda do país, explica as duas coisas. Dica de mergulhador: antes de aceitar causa, procure o fator escondido.",
+      "comentarios": [
+        "Tamanho não prova causa.",
+        "",
+        "Há um fator comum provável.",
+        "Inverteu sem base.",
+        "A correlação não prova isso."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q01",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a média do conjunto 4, 8, 5, 10, 8?",
+      "alternativas": [
+        "7",
+        "6",
+        "8,75",
+        "35",
+        "8"
+      ],
+      "correta": 0,
+      "explicacao": "35 ÷ 5 = 7. Dica de mergulhador: soma ÷ quantidade.",
+      "comentarios": [
+        "",
+        "É a amplitude.",
+        "Dividiu por 4.",
+        "É a soma.",
+        "É a mediana e a moda."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q02",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a mediana do conjunto 7, 3, 12, 1, 5?",
+      "alternativas": [
+        "11",
+        "5",
+        "5,6",
+        "6",
+        "12"
+      ],
+      "correta": 1,
+      "explicacao": "Em ordem: 1, 3, 5, 7, 12. Mediana: 5. Dica de mergulhador: ordene antes.",
+      "comentarios": [
+        "É a amplitude.",
+        "",
+        "É a média.",
+        "Fez a média de 5 e 7.",
+        "Pegou o termo do meio sem ordenar."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q03",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a moda do conjunto 1, 1, 1, 3, 6, 8, 9?",
+      "alternativas": [
+        "8",
+        "9",
+        "4,14",
+        "3",
+        "1"
+      ],
+      "correta": 4,
+      "explicacao": "O 1 aparece três vezes. Dica de mergulhador: moda é o mais frequente.",
+      "comentarios": [
+        "É a amplitude.",
+        "É o maior valor.",
+        "É a média.",
+        "É a mediana.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q04",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Num gráfico de setores, uma fatia representa 30% do total. Qual é o ângulo dela?",
+      "alternativas": [
+        "30°",
+        "120°",
+        "54°",
+        "108°",
+        "90°"
+      ],
+      "correta": 3,
+      "explicacao": "30 × 3,6 = 108°. Dica de mergulhador: 1% vale 3,6°.",
+      "comentarios": [
+        "Usou a porcentagem como ângulo.",
+        "Multiplicou por 4.",
+        "Calculou 15%.",
+        "",
+        "É o ângulo de 25%."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q05",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual medida uma loja deve usar para saber o número de calçado mais vendido?",
+      "alternativas": [
+        "O desvio padrão",
+        "A média",
+        "A mediana",
+        "A moda",
+        "A amplitude"
+      ],
+      "correta": 3,
+      "explicacao": "O mais vendido é o mais frequente. Dica de mergulhador: o mais comum, a moda.",
+      "comentarios": [
+        "Mede dispersão.",
+        "Pode dar um número que não existe.",
+        "Divide ao meio, não mostra o mais vendido.",
+        "",
+        "Mede dispersão."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q06",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Se a variância de um conjunto é 25, qual é o desvio padrão?",
+      "alternativas": [
+        "625",
+        "25",
+        "50",
+        "5",
+        "12,5"
+      ],
+      "correta": 3,
+      "explicacao": "√25 = 5. Dica de mergulhador: raiz da variância.",
+      "comentarios": [
+        "Elevou ao quadrado.",
+        "Usou a variância.",
+        "Dobrou.",
+        "",
+        "Dividiu por 2."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q07",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "A cidade A tem 500 mil habitantes e 1.500 casos de uma doença; a cidade B tem 80 mil e 400 casos. Qual tem a maior taxa por mil habitantes?",
+      "alternativas": [
+        "As duas são iguais",
+        "B, com 400 por mil",
+        "A, com 3 por mil",
+        "B, com 5 por mil",
+        "A, porque tem mais casos"
+      ],
+      "correta": 3,
+      "explicacao": "A: 1.500 ÷ 500 = 3. B: 400 ÷ 80 = 5 por mil. Dica de mergulhador: taxa compara lugares de tamanhos diferentes.",
+      "comentarios": [
+        "São 3 e 5 por mil.",
+        "Usou o número absoluto.",
+        "É menor que a de B.",
+        "",
+        "Número absoluto não é taxa."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q08",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Um aluno tirou 8 na prova (peso 3), 5 no trabalho (peso 2) e 10 em participação (peso 1). Qual é a média ponderada?",
+      "alternativas": [
+        "8",
+        "Cerca de 7,33",
+        "44",
+        "Cerca de 14,67",
+        "Cerca de 7,67"
+      ],
+      "correta": 1,
+      "explicacao": "(24 + 10 + 10) ÷ 6 = 44 ÷ 6 ≈ 7,33. Dica de mergulhador: divida pela soma dos pesos.",
+      "comentarios": [
+        "Inverteu a ordem dos pesos.",
+        "",
+        "Não dividiu.",
+        "Dividiu por 3.",
+        "Fez a média simples."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q09",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a mediana do conjunto 12, 15, 9, 20, 18, 11?",
+      "alternativas": [
+        "27",
+        "Cerca de 14,17",
+        "14,5",
+        "12",
+        "13,5"
+      ],
+      "correta": 4,
+      "explicacao": "Em ordem: 9, 11, 12, 15, 18, 20. Mediana: (12 + 15) ÷ 2 = 13,5. Dica de mergulhador: com par, média dos dois do meio.",
+      "comentarios": [
+        "Somou os centrais sem dividir.",
+        "É a média.",
+        "Fez a média dos centrais sem ordenar.",
+        "Pegou só um dos centrais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q10",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Um gráfico de colunas tem o eixo começando em 50. As colunas valem 55 e 70. Quantas vezes maior parece a segunda, e quantas vezes ela é maior de fato?",
+      "alternativas": [
+        "Parece 1,27 vez; de fato, 4 vezes",
+        "Parece 4 vezes; de fato, 15% maior",
+        "Parece 4 vezes; de fato, cerca de 1,27 vez",
+        "Parece 15 vezes; de fato, 1,27 vez",
+        "Parece e é 4 vezes"
+      ],
+      "correta": 2,
+      "explicacao": "Alturas visíveis: 5 e 20 (4 vezes). Valores: 70 ÷ 55 ≈ 1,27. Dica de mergulhador: compare valores, não alturas.",
+      "comentarios": [
+        "Trocou a aparência pelo real.",
+        "Errou a variação real.",
+        "",
+        "Usou a diferença.",
+        "O real é 1,27."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q11",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Uma turma de 20 alunos tem média 6, e outra de 30 alunos tem média 8. Qual é a média geral?",
+      "alternativas": [
+        "360",
+        "7",
+        "7,2",
+        "14",
+        "6,8"
+      ],
+      "correta": 2,
+      "explicacao": "(120 + 240) ÷ 50 = 7,2. Dica de mergulhador: pondere pelos tamanhos.",
+      "comentarios": [
+        "É a soma das notas.",
+        "Fez a média das médias.",
+        "",
+        "Somou as médias.",
+        "Trocou os tamanhos."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q12",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Dois fornecedores de peças de 20 mm têm a mesma média; os desvios padrão são 0,3 mm e 1,2 mm. Qual é mais regular?",
+      "alternativas": [
+        "O de desvio padrão 1,2 mm",
+        "Os dois, porque a média é igual",
+        "O de desvio padrão 0,3 mm",
+        "Nenhum",
+        "Não dá para saber sem a variância"
+      ],
+      "correta": 2,
+      "explicacao": "Menor desvio padrão, peças mais parecidas. Dica de mergulhador: médias iguais, desempate pela dispersão.",
+      "comentarios": [
+        "Desvio maior é menos regular.",
+        "A dispersão é diferente.",
+        "",
+        "O de 0,3 mm é mais regular.",
+        "O desvio padrão basta."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q13",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Uma pesquisa dá 48% a um candidato, com margem de erro de 3 pontos. Ele pode ter mais da metade dos votos?",
+      "alternativas": [
+        "Sim, porque 48 + 3 = 51",
+        "Sim, com certeza",
+        "Não, porque 48% é menor que 50%",
+        "Não dá para saber nada",
+        "Pode: o intervalo vai de 45% a 51%, sem garantia de maioria"
+      ],
+      "correta": 4,
+      "explicacao": "48 ± 3: de 45% a 51%. Dica de mergulhador: leia o intervalo inteiro.",
+      "comentarios": [
+        "Esqueceu o limite de baixo.",
+        "Também pode estar abaixo.",
+        "A margem permite passar de 50%.",
+        "O intervalo informa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q14",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "As notas de uma turma têm média 6,5 e desvio padrão 1,2. O professor soma 2 pontos a todos. Quais ficam a média e o desvio padrão?",
+      "alternativas": [
+        "Média 8,5 e desvio padrão 3,2",
+        "Média 8,5 e desvio padrão 2,4",
+        "Média 8,5 e desvio padrão 1,2",
+        "Média 6,5 e desvio padrão 1,2",
+        "Média 13 e desvio padrão 2,4"
+      ],
+      "correta": 2,
+      "explicacao": "Somar desloca a média, mas não muda a dispersão. Dica de mergulhador: somar move, não espalha.",
+      "comentarios": [
+        "Somou 2 ao desvio.",
+        "Multiplicou o desvio.",
+        "",
+        "A média muda.",
+        "Multiplicou por 2."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q15",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Um anúncio diz: \"Nossos clientes economizam, em média, R$ 500 por ano\". A mediana da economia é R$ 50. O que isso indica?",
+      "alternativas": [
+        "O anúncio está correto e representa todos",
+        "A maioria economiza R$ 500",
+        "Poucos clientes economizam muito e puxam a média para cima",
+        "Metade economiza mais de R$ 500",
+        "A economia é igual para todos"
+      ],
+      "correta": 2,
+      "explicacao": "Média muito acima da mediana: poucos valores enormes. Dica de mergulhador: compare média e mediana antes de acreditar.",
+      "comentarios": [
+        "A média é puxada pelos extremos.",
+        "A mediana mostra que metade economiza até R$ 50.",
+        "",
+        "Metade economiza mais de R$ 50.",
+        "Média e mediana seriam iguais."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q16",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "As notas de um aluno são 5, 6, 7, 8 e x, e a média é 7. Qual é x, e qual é a mediana?",
+      "alternativas": [
+        "x = 7 e mediana 7",
+        "x = 9 e mediana 8",
+        "x = 6 e mediana 6",
+        "x = 35 e mediana 8",
+        "x = 9 e mediana 7"
+      ],
+      "correta": 4,
+      "explicacao": "Soma: 35; 26 + x = 35, x = 9. Em ordem: 5, 6, 7, 8, 9. Mediana: 7. Dica de mergulhador: média → soma → valor que falta → ordene.",
+      "comentarios": [
+        "Usou a média como nota.",
+        "Pegou o quarto termo.",
+        "Errou a soma necessária.",
+        "Usou a soma como nota.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q17",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Uma pesquisa sobre hábitos de lazer, feita só com sócios de um clube esportivo, concluiu que 90% da cidade pratica esporte. Qual é o problema?",
+      "alternativas": [
+        "90% é um número alto demais para existir",
+        "Não há problema",
+        "O grupo pesquisado não representa a cidade",
+        "Faltou um gráfico de setores",
+        "A pesquisa deveria ter mais sócios"
+      ],
+      "correta": 2,
+      "explicacao": "Quem é sócio de clube esportivo tende a praticar esporte: viés de seleção. Dica de mergulhador: veja quem respondeu.",
+      "comentarios": [
+        "O problema é a escolha do grupo.",
+        "Sócios de clube praticam mais esporte.",
+        "",
+        "Gráfico não corrige o viés.",
+        "Mais sócios manteriam o viés."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q18",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a variância e o desvio padrão do conjunto 2, 4, 4, 4, 5, 5, 7, 9, cuja média é 5?",
+      "alternativas": [
+        "Variância 2 e desvio padrão 4",
+        "Variância 0 e desvio padrão 0",
+        "Variância de cerca de 4,57 e desvio padrão de cerca de 2,14",
+        "Variância 32 e desvio padrão de cerca de 5,66",
+        "Variância 4 e desvio padrão 2"
+      ],
+      "correta": 4,
+      "explicacao": "Desvios: −3, −1, −1, −1, 0, 0, 2, 4. Quadrados: 9, 1, 1, 1, 0, 0, 4, 16 = 32. Variância: 32 ÷ 8 = 4; desvio padrão: 2. Dica de mergulhador: média, desvios, quadrados, média, raiz.",
+      "comentarios": [
+        "Trocou as medidas.",
+        "Somou os desvios sem elevar ao quadrado.",
+        "Dividiu por 7.",
+        "Não dividiu pela quantidade.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q19",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Uma cidade teve 200 casos de uma doença em 2023, com 100 mil habitantes, e 240 casos em 2024, com 150 mil habitantes. O que aconteceu com a taxa por 100 mil habitantes?",
+      "alternativas": [
+        "Caiu de 200 para 160, uma queda de 20%",
+        "Ficou igual",
+        "Caiu 50%",
+        "Subiu de 160 para 200",
+        "Subiu 20%"
+      ],
+      "correta": 0,
+      "explicacao": "2023: 200. 2024: 240 ÷ 1,5 = 160 por 100 mil. Queda: 40 ÷ 200 = 20%. Dica de mergulhador: com a população mudando, compare taxas.",
+      "comentarios": [
+        "",
+        "As taxas são diferentes.",
+        "Errou a conta.",
+        "Inverteu os anos.",
+        "Olhou só os casos."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q20",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Três atletas saltaram 5 vezes. A: média 7,2 m e desvio padrão 0,1. B: média 7,5 m e desvio padrão 0,6. C: média 7,2 m e desvio padrão 0,4. O técnico escolhe pela maior média e, em caso de empate, pelo menor desvio. Quem escolhe?",
+      "alternativas": [
+        "A e C empatam",
+        "Nenhum",
+        "A, porque é o mais regular",
+        "B",
+        "C"
+      ],
+      "correta": 3,
+      "explicacao": "Maior média: B, com 7,5 m. O desempate nem é necessário. Dica de mergulhador: siga a ordem dos critérios.",
+      "comentarios": [
+        "B tem a maior média.",
+        "B cumpre o primeiro critério.",
+        "O primeiro critério é a média.",
+        "",
+        "Tem média menor e é menos regular que A."
       ]
     }
   ],
@@ -29545,6 +31788,1926 @@
         "Dividiu a soma com bônus por 19 sem retirar o aluno.",
         "Considerou só o bônus."
       ]
+    },
+    {
+      "id": "mat-moda-mediana-q01-v1",
+      "varianteDe": "mat-moda-mediana-q01",
+      "tema": "Moda",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Qual é a moda do conjunto 2, 4, 4, 6, 4, 8?",
+      "alternativas": [
+        "4,67",
+        "4",
+        "3",
+        "5",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "O 4 aparece três vezes. Dica de mergulhador: conte as repetições.",
+      "comentarios": [
+        "É a média.",
+        "",
+        "É quantas vezes o 4 aparece.",
+        "Fez a média dos termos do meio sem ordenar.",
+        "É o maior valor."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q02-v1",
+      "varianteDe": "mat-moda-mediana-q02",
+      "tema": "Moda",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Uma concessionária vendeu carros: branco, 40; preto, 35; prata, 50; vermelho, 10. Qual é a moda das cores?",
+      "alternativas": [
+        "Branco",
+        "50",
+        "Prata",
+        "Vermelho",
+        "Não existe moda para cores"
+      ],
+      "correta": 2,
+      "explicacao": "A cor mais vendida é prata. Dica de mergulhador: categoria mais frequente.",
+      "comentarios": [
+        "Vendeu menos que prata.",
+        "É a frequência, não a cor.",
+        "",
+        "Vendeu menos.",
+        "A moda vale para categorias."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q03-v1",
+      "varianteDe": "mat-moda-mediana-q03",
+      "tema": "Moda",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "O conjunto 1, 2, 3, 4, 5 tem quantas modas?",
+      "alternativas": [
+        "Cinco",
+        "Nenhuma",
+        "Uma: 3",
+        "Uma: 5",
+        "Uma: 1"
+      ],
+      "correta": 1,
+      "explicacao": "Todos aparecem uma vez: não há moda. Dica de mergulhador: sem repetição, sem moda.",
+      "comentarios": [
+        "Todos empatam, e então não há moda.",
+        "",
+        "3 é a mediana.",
+        "Nenhum se repete.",
+        "Nenhum se repete."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q04-v1",
+      "varianteDe": "mat-moda-mediana-q04",
+      "tema": "Moda",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Numa tabela de idades, 15 anos aparece 5 vezes, 16 anos 12 vezes, 17 anos 8 vezes e 18 anos 12 vezes. Qual é a moda?",
+      "alternativas": [
+        "16 anos",
+        "16 e 18 anos",
+        "17 anos",
+        "12",
+        "37"
+      ],
+      "correta": 1,
+      "explicacao": "16 e 18 têm frequência 12. Dica de mergulhador: empate na maior frequência, duas modas.",
+      "comentarios": [
+        "O 18 empata.",
+        "",
+        "Fez a média das modas.",
+        "É a frequência.",
+        "É o total."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q05-v1",
+      "varianteDe": "mat-moda-mediana-q05",
+      "tema": "Moda",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Numa pesquisa sobre o sabor de sorvete preferido, o resultado foi: chocolate, 40%; morango, 25%; creme, 20%; limão, 15%. Qual medida de tendência central faz sentido?",
+      "alternativas": [
+        "A média, que é 25%",
+        "A média dos sabores",
+        "A mediana, que é 22,5%",
+        "Nenhuma medida serve",
+        "A moda, que é chocolate"
+      ],
+      "correta": 4,
+      "explicacao": "Sabor mais escolhido: chocolate. Dica de mergulhador: categorias pedem moda.",
+      "comentarios": [
+        "Não há média de sabores.",
+        "Categorias não têm média.",
+        "Sabores não têm ordem numérica.",
+        "A moda serve.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q06-v1",
+      "varianteDe": "mat-moda-mediana-q06",
+      "tema": "Moda",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Num conjunto de 5 números inteiros, a moda é 2, a mediana é 3 e a média é 4. Qual é o maior valor possível para o maior número?",
+      "alternativas": [
+        "20",
+        "9",
+        "7",
+        "13",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "2, 2, 3, d, e com soma 20: d + e = 13. Com d = 4, e = 9. Dica de mergulhador: ordene e use a soma.",
+      "comentarios": [
+        "É a soma.",
+        "",
+        "É o menor valor possível.",
+        "Esqueceu que o quarto número precisa ser maior que 3.",
+        "Repetiu o 3, criando uma segunda moda."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q07-v1",
+      "varianteDe": "mat-moda-mediana-q07",
+      "tema": "Mediana",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Qual é a mediana do conjunto 1, 3, 3, 8, 10?",
+      "alternativas": [
+        "10",
+        "3",
+        "5",
+        "8",
+        "5,5"
+      ],
+      "correta": 1,
+      "explicacao": "O 3º termo é 3. Dica de mergulhador: o meio, não a média.",
+      "comentarios": [
+        "É o maior.",
+        "",
+        "É a média.",
+        "É o quarto termo.",
+        "Fez a média do menor e do maior."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q08-v1",
+      "varianteDe": "mat-moda-mediana-q08",
+      "tema": "Mediana",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Qual é a mediana do conjunto 2, 6, 9, 15, 20, 21?",
+      "alternativas": [
+        "12",
+        "9",
+        "24",
+        "73",
+        "15"
+      ],
+      "correta": 0,
+      "explicacao": "(9 + 15) ÷ 2 = 12. Dica de mergulhador: dois centrais, divida por 2.",
+      "comentarios": [
+        "",
+        "Pegou só um dos centrais.",
+        "Somou os centrais sem dividir.",
+        "É a soma.",
+        "Pegou só o outro."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q09-v1",
+      "varianteDe": "mat-moda-mediana-q09",
+      "tema": "Mediana",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Qual é a mediana do conjunto 15, 3, 20, 8, 11?",
+      "alternativas": [
+        "20",
+        "3",
+        "11,4",
+        "11",
+        "15"
+      ],
+      "correta": 3,
+      "explicacao": "Em ordem: 3, 8, 11, 15, 20. Mediana: 11. Dica de mergulhador: sem ordem, sem mediana.",
+      "comentarios": [
+        "Pegou o termo do meio sem ordenar.",
+        "É o menor.",
+        "É a média.",
+        "",
+        "É o primeiro da lista."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q10-v1",
+      "varianteDe": "mat-moda-mediana-q10",
+      "tema": "Mediana",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Os salários de 6 pessoas são R$ 1.500, R$ 3.000, R$ 2.000, R$ 1.800, R$ 2.400 e R$ 6.000. Qual é a mediana?",
+      "alternativas": [
+        "R$ 2.200",
+        "R$ 1.900",
+        "R$ 2.000",
+        "R$ 3.750",
+        "R$ 2.783,33"
+      ],
+      "correta": 0,
+      "explicacao": "Em ordem: 1.500, 1.800, 2.000, 2.400, 3.000, 6.000. Mediana: (2.000 + 2.400) ÷ 2 = 2.200. Dica de mergulhador: a mediana ignora o tamanho do salário mais alto.",
+      "comentarios": [
+        "",
+        "Fez a média dos centrais sem ordenar.",
+        "Pegou só um dos centrais.",
+        "Fez a média do menor e do maior.",
+        "É a média."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q11-v1",
+      "varianteDe": "mat-moda-mediana-q11",
+      "tema": "Mediana",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Numa turma de 17 alunos, a nota 4 aparece 2 vezes, a 5 aparece 6 vezes, a 6 aparece 3 vezes, a 7 aparece 4 vezes e a 8 aparece 2 vezes. Qual é a mediana?",
+      "alternativas": [
+        "8",
+        "5",
+        "5,88",
+        "6",
+        "9"
+      ],
+      "correta": 3,
+      "explicacao": "Posição 9. Acumulado: 4 até o 2º, 5 até o 8º, 6 até o 11º. A 9ª nota é 6. Dica de mergulhador: acumule até passar da posição.",
+      "comentarios": [
+        "Usou a frequência acumulada como nota.",
+        "É a moda.",
+        "É a média.",
+        "",
+        "É a posição da mediana."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q12-v1",
+      "varianteDe": "mat-moda-mediana-q12",
+      "tema": "Mediana",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Acrescentando o número 1 ao conjunto 20, 30, 40, 50, 60, o que acontece com a média e com a mediana?",
+      "alternativas": [
+        "A média vai de 40 para 33,5; a mediana, de 40 para 35",
+        "A média vai para 35 e a mediana para 33,5",
+        "A mediana cai muito e a média pouco",
+        "Nenhuma das duas muda",
+        "As duas caem para 33,5"
+      ],
+      "correta": 0,
+      "explicacao": "Média: 201 ÷ 6 = 33,5. Mediana: (30 + 40) ÷ 2 = 35. Dica de mergulhador: extremo baixo também puxa a média.",
+      "comentarios": [
+        "",
+        "Trocou as medidas.",
+        "É o contrário.",
+        "As duas mudam.",
+        "A mediana cai menos."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q13-v1",
+      "varianteDe": "mat-moda-mediana-q13",
+      "tema": "Mediana",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "A mediana de 5 números inteiros e diferentes é 6, e o maior deles é 12. Qual é o maior valor possível da média?",
+      "alternativas": [
+        "6",
+        "6,8",
+        "7,8",
+        "7,6",
+        "9"
+      ],
+      "correta": 3,
+      "explicacao": "4, 5, 6, 11, 12: soma 38; média 7,6. Dica de mergulhador: os dois menores ficam logo abaixo da mediana.",
+      "comentarios": [
+        "Usou a mediana.",
+        "Escolheu o menor quarto número.",
+        "Repetiu o 5.",
+        "",
+        "Fez a média da mediana com o maior."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q14-v1",
+      "varianteDe": "mat-moda-mediana-q14",
+      "tema": "Mediana",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Uma lista de 9 valores tem mediana 40. Acrescentam-se um valor menor que todos e outro maior que todos. Qual é a nova mediana?",
+      "alternativas": [
+        "Continua 40",
+        "Diminui",
+        "Não dá para saber",
+        "Aumenta",
+        "Vira a média dos dois novos"
+      ],
+      "correta": 0,
+      "explicacao": "Um valor em cada ponta mantém o termo central. Dica de mergulhador: equilíbrio nas pontas, mesmo meio.",
+      "comentarios": [
+        "",
+        "Entrou um valor de cada lado.",
+        "O meio não se move.",
+        "Entrou um valor de cada lado.",
+        "Os novos ficam nas pontas."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q15-v1",
+      "varianteDe": "mat-moda-mediana-q15",
+      "tema": "Escolha da medida",
+      "dificuldade": "facil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Numa empresa, a maioria ganha cerca de R$ 3 mil, mas o dono ganha R$ 80 mil. Qual medida representa melhor o salário típico?",
+      "alternativas": [
+        "A mediana",
+        "A soma dos salários",
+        "A amplitude",
+        "O maior salário",
+        "A média"
+      ],
+      "correta": 0,
+      "explicacao": "A mediana descreve a pessoa do meio. Dica de mergulhador: salário típico, mediana.",
+      "comentarios": [
+        "",
+        "Não é um salário típico.",
+        "Mede a dispersão.",
+        "Só mostra o dono.",
+        "É puxada pelo salário do dono."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q16-v1",
+      "varianteDe": "mat-moda-mediana-q16",
+      "tema": "Escolha da medida",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Um restaurante quer saber qual prato preparar em maior quantidade. Qual medida deve usar?",
+      "alternativas": [
+        "A amplitude",
+        "A média",
+        "A mediana",
+        "A moda",
+        "O desvio padrão"
+      ],
+      "correta": 3,
+      "explicacao": "O prato mais pedido é a moda. Dica de mergulhador: categoria, moda.",
+      "comentarios": [
+        "Mede a dispersão.",
+        "Não há média de pratos.",
+        "Pratos não têm ordem.",
+        "",
+        "Mede a dispersão."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q17-v1",
+      "varianteDe": "mat-moda-mediana-q17",
+      "tema": "Escolha da medida",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "No conjunto simétrico 3, 5, 5, 7, o que se pode dizer de média, mediana e moda?",
+      "alternativas": [
+        "As três são iguais a 5",
+        "A média é 20",
+        "A média é maior",
+        "A mediana é 6",
+        "A moda é 7"
+      ],
+      "correta": 0,
+      "explicacao": "Média 20 ÷ 4 = 5, mediana (5 + 5) ÷ 2 = 5 e moda 5. Dica de mergulhador: simetria aproxima as três medidas.",
+      "comentarios": [
+        "",
+        "20 é a soma.",
+        "Não há extremo.",
+        "Os centrais são 5 e 5.",
+        "A moda é 5."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q18-v1",
+      "varianteDe": "mat-moda-mediana-q18",
+      "tema": "Escolha da medida",
+      "dificuldade": "medio",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Os salários, em mil reais, de 6 pessoas são 2, 2, 3, 3, 3 e 20. A média é 5,5 e a mediana é 3. Por que a média ficou acima?",
+      "alternativas": [
+        "Porque a moda é 3",
+        "Porque são 6 pessoas",
+        "A média sempre é maior",
+        "Houve erro de conta",
+        "O salário de 20 mil puxou a média para cima"
+      ],
+      "correta": 4,
+      "explicacao": "Um valor extremo alto puxa a média. Dica de mergulhador: média acima da mediana, extremo alto.",
+      "comentarios": [
+        "A moda não mexe na média.",
+        "A quantidade não explica.",
+        "Depende dos dados.",
+        "Está certo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q19-v1",
+      "varianteDe": "mat-moda-mediana-q19",
+      "tema": "Escolha da medida",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Dois candidatos fizeram 5 provas. C: 5, 5, 6, 10, 10 (média 7,2; mediana 6). D: 3, 7, 7, 8, 9 (média 6,8; mediana 7). Pela mediana, quem vence?",
+      "alternativas": [
+        "Empatam",
+        "C, que tem a maior média",
+        "D, com mediana 7; a nota 3 baixa a média dele",
+        "C, porque a mediana dele é 7",
+        "D, porque a moda dele é 9"
+      ],
+      "correta": 2,
+      "explicacao": "Medianas: C, 6; D, 7. Dica de mergulhador: aplique o critério pedido.",
+      "comentarios": [
+        "As medianas são 6 e 7.",
+        "O critério é a mediana.",
+        "",
+        "A de C é 6.",
+        "A moda de D é 7, e o critério é a mediana."
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-q20-v1",
+      "varianteDe": "mat-moda-mediana-q20",
+      "tema": "Escolha da medida",
+      "dificuldade": "dificil",
+      "fase": "mat-moda-mediana",
+      "enunciado": "Num hospital, o tempo mediano de espera é 40 minutos e o tempo médio é 25 minutos. O que é mais provável?",
+      "alternativas": [
+        "Todos esperam entre 25 e 40 minutos",
+        "Os tempos são simétricos",
+        "Alguns atendimentos muito rápidos puxam a média para baixo",
+        "Metade espera menos de 25 minutos",
+        "A maioria espera 25 minutos"
+      ],
+      "correta": 2,
+      "explicacao": "Média abaixo da mediana indica valores extremos baixos. Dica de mergulhador: a média vai para o lado dos extremos.",
+      "comentarios": [
+        "Nada indica isso.",
+        "A média e a mediana estariam próximas.",
+        "",
+        "Metade espera menos de 40.",
+        "Metade espera 40 minutos ou mais."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q01-v1",
+      "varianteDe": "mat-desvio-variancia-q01",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Qual é a amplitude do conjunto 12, 3, 18, 7?",
+      "alternativas": [
+        "10",
+        "15",
+        "18",
+        "9,5",
+        "21"
+      ],
+      "correta": 1,
+      "explicacao": "18 − 3 = 15. Dica de mergulhador: procure o maior e o menor, sem precisar ordenar tudo.",
+      "comentarios": [
+        "É a média.",
+        "",
+        "É o maior valor.",
+        "É a mediana.",
+        "Somou o maior e o menor."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q02-v1",
+      "varianteDe": "mat-desvio-variancia-q02",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "A média de 10, 12 e 20 é 14. Qual é o desvio do valor 10?",
+      "alternativas": [
+        "0,71",
+        "4",
+        "−4",
+        "10",
+        "24"
+      ],
+      "correta": 2,
+      "explicacao": "10 − 14 = −4. Dica de mergulhador: abaixo da média, desvio negativo.",
+      "comentarios": [
+        "Dividiu 10 por 14.",
+        "Esqueceu o sinal.",
+        "",
+        "É o próprio valor.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q03-v1",
+      "varianteDe": "mat-desvio-variancia-q03",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Por que a variância eleva os desvios ao quadrado?",
+      "alternativas": [
+        "Para ficar igual à média",
+        "Para que desvios negativos não cancelem os positivos",
+        "Para mudar a unidade de propósito",
+        "Para ficar maior",
+        "Para dar zero"
+      ],
+      "correta": 1,
+      "explicacao": "Ao quadrado, todo desvio fica positivo e a soma mede o espalhamento. Dica de mergulhador: quadrado tira o sinal.",
+      "comentarios": [
+        "Não tem relação.",
+        "",
+        "A mudança de unidade é um efeito, não o motivo.",
+        "O objetivo não é aumentar.",
+        "Sem o quadrado é que daria zero."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q04-v1",
+      "varianteDe": "mat-desvio-variancia-q04",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Duas lojas vendem, em média, 50 itens por dia. Loja X: 48, 50, 52. Loja Y: 20, 50, 80. Qual tem vendas mais homogêneas?",
+      "alternativas": [
+        "X, com vendas próximas da média",
+        "Não dá para comparar",
+        "Y, com amplitude 60",
+        "Y, porque vende 80 em alguns dias",
+        "As duas, porque a média é igual"
+      ],
+      "correta": 0,
+      "explicacao": "X varia de 48 a 52; Y, de 20 a 80. Dica de mergulhador: compare os afastamentos da média.",
+      "comentarios": [
+        "",
+        "Os dados mostram.",
+        "Amplitude maior é mais dispersão.",
+        "Isso é dispersão.",
+        "A dispersão é diferente."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q05-v1",
+      "varianteDe": "mat-desvio-variancia-q05",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Duas máquinas produzem peças. Máquina A: 50, 50, 50, 50, 58. Máquina B: 46, 48, 50, 52, 54. A amplitude de A é 8, igual à de B. O que a amplitude esconde?",
+      "alternativas": [
+        "Que A tem média menor",
+        "Que as duas são iguais em tudo",
+        "Nada, a amplitude basta",
+        "Que A é quase sempre exata e só uma peça fugiu",
+        "Que B é mais regular em todas as peças"
+      ],
+      "correta": 3,
+      "explicacao": "A amplitude empata, mas a distribuição é diferente. Dica de mergulhador: amplitude não mostra o miolo.",
+      "comentarios": [
+        "A média de A é 51,6, maior que 50.",
+        "Os valores são bem diferentes.",
+        "Ela ignora os valores do meio.",
+        "",
+        "A tem quatro peças iguais."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q06-v1",
+      "varianteDe": "mat-desvio-variancia-q06",
+      "tema": "Amplitude e desvios",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Dois grupos têm média 15. A: 10, 15, 20. B: 14, 15, 16. Qual tem a maior variância, e qual é a variância de A?",
+      "alternativas": [
+        "A, com variância de cerca de 16,7",
+        "A, com variância de cerca de 4,08",
+        "A, com variância 50",
+        "B, com variância de cerca de 0,67",
+        "As duas são iguais"
+      ],
+      "correta": 0,
+      "explicacao": "Desvios de A: −5, 0, 5. Quadrados: 25, 0, 25 = 50. Variância: 50 ÷ 3 ≈ 16,7. Dica de mergulhador: divida pela quantidade.",
+      "comentarios": [
+        "",
+        "É o desvio padrão.",
+        "Não dividiu.",
+        "A de B é a menor.",
+        "Os espalhamentos diferem."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q07-v1",
+      "varianteDe": "mat-desvio-variancia-q07",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Se a variância de um conjunto é 16, qual é o desvio padrão?",
+      "alternativas": [
+        "8",
+        "256",
+        "16",
+        "32",
+        "4"
+      ],
+      "correta": 4,
+      "explicacao": "√16 = 4. Dica de mergulhador: desvio padrão é a raiz.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Elevou ao quadrado.",
+        "Usou a variância.",
+        "Dobrou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q08-v1",
+      "varianteDe": "mat-desvio-variancia-q08",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Em que unidade é dada a variância de massas medidas em quilogramas?",
+      "alternativas": [
+        "Sem unidade",
+        "Quilogramas",
+        "Porcentagem",
+        "Gramas",
+        "Quilogramas ao quadrado"
+      ],
+      "correta": 4,
+      "explicacao": "A variância usa quadrados: kg². Dica de mergulhador: variância ao quadrado, desvio padrão na unidade.",
+      "comentarios": [
+        "A variância tem unidade.",
+        "Essa é a unidade do desvio padrão.",
+        "Não é razão.",
+        "Não é conversão.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q09-v1",
+      "varianteDe": "mat-desvio-variancia-q09",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Qual é a variância do conjunto 1, 3, 5, 7, 9?",
+      "alternativas": [
+        "40",
+        "2,83",
+        "8",
+        "10",
+        "0"
+      ],
+      "correta": 2,
+      "explicacao": "Média 5; quadrados dos desvios 16, 4, 0, 4, 16 = 40; 40 ÷ 5 = 8. Dica de mergulhador: divida pela quantidade de valores.",
+      "comentarios": [
+        "Não dividiu.",
+        "É o desvio padrão.",
+        "",
+        "Dividiu por 4.",
+        "Somou os desvios."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q10-v1",
+      "varianteDe": "mat-desvio-variancia-q10",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Qual é o desvio padrão do conjunto 7, 7, 7?",
+      "alternativas": [
+        "7",
+        "21",
+        "1",
+        "0",
+        "49"
+      ],
+      "correta": 3,
+      "explicacao": "Nenhum valor se afasta da média. Dica de mergulhador: valores iguais, desvio zero.",
+      "comentarios": [
+        "É a média.",
+        "É a soma.",
+        "Não há dispersão.",
+        "",
+        "É 7 ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q11-v1",
+      "varianteDe": "mat-desvio-variancia-q11",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Subtraindo 5 de todos os valores de um conjunto com média 50 e desvio padrão 6, quais ficam a média e o desvio padrão?",
+      "alternativas": [
+        "Média 50 e desvio padrão 6",
+        "Média 45 e desvio padrão 11",
+        "Média 45 e desvio padrão 6",
+        "Média 45 e desvio padrão 1",
+        "Média 50 e desvio padrão 1"
+      ],
+      "correta": 2,
+      "explicacao": "A média cai 5; o desvio padrão continua 6. Dica de mergulhador: deslocar não muda a dispersão.",
+      "comentarios": [
+        "A média muda.",
+        "Somou 5 ao desvio.",
+        "",
+        "Subtraiu 5 do desvio.",
+        "Mudou só o desvio."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q12-v1",
+      "varianteDe": "mat-desvio-variancia-q12",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Dividindo por 2 todos os valores de um conjunto com média 40 e desvio padrão 8, quais ficam a média e o desvio padrão?",
+      "alternativas": [
+        "Média 40 e desvio padrão 4",
+        "Média 20 e desvio padrão 8",
+        "Média 20 e desvio padrão 2",
+        "Média 38 e desvio padrão 6",
+        "Média 20 e desvio padrão 4"
+      ],
+      "correta": 4,
+      "explicacao": "Dividir por 2 reduz média e desvio padrão pela metade. Dica de mergulhador: o desvio segue o fator.",
+      "comentarios": [
+        "A média também é dividida.",
+        "O desvio também é dividido.",
+        "Dividiu o desvio por 4.",
+        "Subtraiu 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q13-v1",
+      "varianteDe": "mat-desvio-variancia-q13",
+      "tema": "Variância e desvio padrão",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Um conjunto de 5 valores tem os desvios 3, −1, 0, −4 e x. Qual é x, e qual é a variância?",
+      "alternativas": [
+        "x = 0 e variância 5,2",
+        "x = 2 e variância de cerca de 2,45",
+        "x = 2 e variância 6",
+        "x = 2 e variância 30",
+        "x = −2 e variância 6"
+      ],
+      "correta": 2,
+      "explicacao": "3 − 1 + 0 − 4 + x = 0, x = 2. Quadrados: 9, 1, 0, 16, 4 = 30; 30 ÷ 5 = 6. Dica de mergulhador: use a soma zero para achar o que falta.",
+      "comentarios": [
+        "Os desvios precisam somar zero.",
+        "É o desvio padrão.",
+        "",
+        "Não dividiu.",
+        "Os desvios precisam somar zero."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q14-v1",
+      "varianteDe": "mat-desvio-variancia-q14",
+      "tema": "Regularidade",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Duas máquinas enchem pacotes com média de 1 kg, uma com desvio padrão de 5 g e outra de 20 g. Qual é mais regular?",
+      "alternativas": [
+        "Não dá para saber",
+        "As duas, porque a média é igual",
+        "A de desvio padrão 5 g",
+        "A de desvio padrão 20 g",
+        "A que enche mais rápido"
+      ],
+      "correta": 2,
+      "explicacao": "5 g de desvio indica pacotes mais parecidos. Dica de mergulhador: menor desvio, mais uniforme.",
+      "comentarios": [
+        "O desvio padrão responde.",
+        "A dispersão difere.",
+        "",
+        "Desvio maior é menos regular.",
+        "Velocidade não é regularidade."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q15-v1",
+      "varianteDe": "mat-desvio-variancia-q15",
+      "tema": "Regularidade",
+      "dificuldade": "facil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "O que um desvio padrão grande indica?",
+      "alternativas": [
+        "Todos os valores iguais",
+        "Poucos dados",
+        "Média grande",
+        "Valores muito próximos da média",
+        "Valores espalhados, longe da média"
+      ],
+      "correta": 4,
+      "explicacao": "Desvio padrão grande, dados dispersos. Dica de mergulhador: grande é espalhado.",
+      "comentarios": [
+        "Isso daria zero.",
+        "Não tem relação com a quantidade.",
+        "Desvio e média são coisas diferentes.",
+        "Isso é desvio pequeno.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q16-v1",
+      "varianteDe": "mat-desvio-variancia-q16",
+      "tema": "Regularidade",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Uma loja compra lâmpadas com duração média de 1.000 h. Marca C: desvio padrão de 50 h. Marca D: desvio padrão de 200 h. Qual oferece duração mais previsível?",
+      "alternativas": [
+        "D, porque o desvio é maior",
+        "C, porque a média é maior",
+        "D, porque dura mais",
+        "C, porque a duração varia menos",
+        "Tanto faz"
+      ],
+      "correta": 3,
+      "explicacao": "Menor desvio padrão, duração mais previsível. Dica de mergulhador: previsível é pouco disperso.",
+      "comentarios": [
+        "Desvio maior é menos previsível.",
+        "As médias são iguais.",
+        "As médias são iguais.",
+        "",
+        "A dispersão é diferente."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q17-v1",
+      "varianteDe": "mat-desvio-variancia-q17",
+      "tema": "Regularidade",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Duas vendedoras: Carla, média de 30 vendas por semana e desvio padrão 2; Dora, média de 34 e desvio padrão 9. A gerente quer a mais regular. Quem escolhe?",
+      "alternativas": [
+        "Carla, porque vende mais",
+        "Dora, porque vende mais",
+        "Tanto faz",
+        "Dora, porque desvio maior é melhor",
+        "Carla"
+      ],
+      "correta": 4,
+      "explicacao": "Desvio padrão 2 contra 9: Carla é mais regular. Dica de mergulhador: critério de regularidade, olhe o desvio.",
+      "comentarios": [
+        "Dora vende mais; Carla vence pela regularidade.",
+        "O critério é a regularidade.",
+        "Os desvios são diferentes.",
+        "É o contrário.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q18-v1",
+      "varianteDe": "mat-desvio-variancia-q18",
+      "tema": "Regularidade",
+      "dificuldade": "medio",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "O grupo P tem média 20 e desvio padrão 4; o grupo Q tem média 100 e desvio padrão 10. Qual é relativamente mais homogêneo?",
+      "alternativas": [
+        "Os dois são iguais",
+        "Q, porque a média é maior",
+        "Q, com coeficiente de 10% contra 20% de P",
+        "P, porque o desvio padrão é menor",
+        "P, com 20%"
+      ],
+      "correta": 2,
+      "explicacao": "P: 4 ÷ 20 = 20%. Q: 10 ÷ 100 = 10%. Dica de mergulhador: divida o desvio pela média.",
+      "comentarios": [
+        "São 20% e 10%.",
+        "Média não mede dispersão.",
+        "",
+        "Compare o relativo.",
+        "20% é mais disperso."
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q19-v1",
+      "varianteDe": "mat-desvio-variancia-q19",
+      "tema": "Regularidade",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Três fornecedores, com prazo de entrega em dias: F1, média 5 e desvio padrão 2; F2, média 5 e desvio padrão 1; F3, média 6 e desvio padrão 1. Qual entrega mais rápido e com mais regularidade?",
+      "alternativas": [
+        "F3, porque a média é maior",
+        "F3, porque é regular",
+        "F1 e F2 empatam",
+        "F1, porque empata em média",
+        "F2"
+      ],
+      "correta": 4,
+      "explicacao": "F2 tem o menor prazo médio (empatado) e o menor desvio. Dica de mergulhador: menor média e menor desvio, quando o assunto é prazo.",
+      "comentarios": [
+        "Prazo maior é pior.",
+        "Demora mais em média.",
+        "Os desvios são diferentes.",
+        "Tem dispersão maior.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-q20-v1",
+      "varianteDe": "mat-desvio-variancia-q20",
+      "tema": "Regularidade",
+      "dificuldade": "dificil",
+      "fase": "mat-desvio-variancia",
+      "enunciado": "Um grupo de 3 valores tem média 10 e variância 6. Acrescenta-se um quarto valor igual a 10. O que acontece?",
+      "alternativas": [
+        "A média sobe para 13,3",
+        "A média cai para 7,5 e a variância para 4,5",
+        "A média continua 10 e a variância cai para 3",
+        "A média e a variância continuam iguais",
+        "A média continua 10 e a variância cai para 4,5"
+      ],
+      "correta": 4,
+      "explicacao": "Soma dos quadrados: 6 × 3 = 18; nova variância: 18 ÷ 4 = 4,5. Dica de mergulhador: trabalhe com a soma dos quadrados.",
+      "comentarios": [
+        "Errou a soma.",
+        "Dividiu a soma por 4 sem somar o novo 10.",
+        "Dividiu a variância por 2.",
+        "A soma dos quadrados passa a ser dividida por 4.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q01-v1",
+      "varianteDe": "mat-estatistica-decisao-q01",
+      "tema": "Critério de decisão",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Três fornecedores entregam o mesmo produto em 3, 5 e 2 dias. Pelo critério de menor prazo, qual escolher?",
+      "alternativas": [
+        "Qualquer um",
+        "O de 3 dias",
+        "O de 2 dias",
+        "O do meio",
+        "O de 5 dias"
+      ],
+      "correta": 2,
+      "explicacao": "Menor prazo: 2 dias. Dica de mergulhador: aplique o critério ao pé da letra.",
+      "comentarios": [
+        "O critério diferencia.",
+        "Não é o mais rápido.",
+        "",
+        "O critério é menor prazo.",
+        "É o mais lento."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q02-v1",
+      "varianteDe": "mat-estatistica-decisao-q02",
+      "tema": "Critério de decisão",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Dois hospitais: C curou 45 de 60 pacientes; D curou 70 de 100. Qual tem a maior taxa de cura?",
+      "alternativas": [
+        "C, com 45 curas",
+        "D, com 70%",
+        "C, com 75%",
+        "D, porque curou mais",
+        "Os dois empatam"
+      ],
+      "correta": 2,
+      "explicacao": "C: 45 ÷ 60 = 75%. D: 70%. Dica de mergulhador: proporção, não total.",
+      "comentarios": [
+        "Número absoluto não é taxa.",
+        "É menor.",
+        "",
+        "O critério é a taxa.",
+        "São 75% e 70%."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q03-v1",
+      "varianteDe": "mat-estatistica-decisao-q03",
+      "tema": "Critério de decisão",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Ao comparar duas lojas, uma pessoa usa o preço para avaliar a primeira e a qualidade para avaliar a segunda. Qual é o erro?",
+      "alternativas": [
+        "Considerar o preço",
+        "Usar critérios diferentes para as opções",
+        "Considerar a qualidade",
+        "Não há erro",
+        "Comparar só duas lojas"
+      ],
+      "correta": 1,
+      "explicacao": "Para comparar, o critério precisa ser o mesmo para todas. Dica de mergulhador: mesma régua para todos.",
+      "comentarios": [
+        "Preço é um critério válido.",
+        "",
+        "Qualidade é um critério válido.",
+        "Critérios diferentes impedem a comparação.",
+        "Duas bastam."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q04-v1",
+      "varianteDe": "mat-estatistica-decisao-q04",
+      "tema": "Critério de decisão",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "O corredor C fez 42 km em 3 horas; o corredor D fez 30 km em 2 horas. Pela velocidade média, quem foi mais rápido?",
+      "alternativas": [
+        "D, com 30 km",
+        "D, com 15 km/h",
+        "C, porque correu mais",
+        "C, com 14 km/h",
+        "Os dois empatam"
+      ],
+      "correta": 1,
+      "explicacao": "C: 14 km/h. D: 15 km/h. Dica de mergulhador: divida pelo tempo de cada um.",
+      "comentarios": [
+        "É a distância.",
+        "",
+        "As durações são diferentes.",
+        "É menor.",
+        "14 e 15 km/h."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q05-v1",
+      "varianteDe": "mat-estatistica-decisao-q05",
+      "tema": "Critério de decisão",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Para 900 km em 3 dias, a van X faz 9 km/L e custa R$ 150 por dia; a van Y faz 12 km/L e custa R$ 180 por dia. O diesel custa R$ 6. Qual é mais barata no total?",
+      "alternativas": [
+        "As duas empatam",
+        "Y, com R$ 990 contra R$ 1.050 de X",
+        "X, com R$ 1.050",
+        "X, porque a diária é menor",
+        "Y, com R$ 450"
+      ],
+      "correta": 1,
+      "explicacao": "X: 100 L × 6 = 600 + 450 = 1.050. Y: 75 L × 6 = 450 + 540 = 990. Dica de mergulhador: custo total decide.",
+      "comentarios": [
+        "São R$ 1.050 e R$ 990.",
+        "",
+        "É mais cara.",
+        "Falta o combustível.",
+        "Esqueceu o aluguel."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q06-v1",
+      "varianteDe": "mat-estatistica-decisao-q06",
+      "tema": "Critério de decisão",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Três equipes têm tempos de atendimento, em minutos, com estas médias e desvios: G1, 10 e 4; G2, 12 e 1; G3, 10 e 2. A empresa quer média de até 10 minutos e, entre essas, a mais regular. Qual escolhe?",
+      "alternativas": [
+        "G1",
+        "G2",
+        "Nenhuma",
+        "G1 e G3 empatam",
+        "G3"
+      ],
+      "correta": 4,
+      "explicacao": "Até 10 minutos: G1 e G3; mais regular: G3. Dica de mergulhador: primeiro filtre, depois desempate.",
+      "comentarios": [
+        "É menos regular.",
+        "A média passa de 10.",
+        "G3 cumpre os critérios.",
+        "Os desvios diferem.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q07-v1",
+      "varianteDe": "mat-estatistica-decisao-q07",
+      "tema": "Critério de decisão",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma seleção usa a nota final = 0,7 × técnica + 0,3 × prática. Caio tirou 90 e 50; Davi, 75 e 90. Quem vence?",
+      "alternativas": [
+        "Davi, com 79,5 contra 78",
+        "Caio, porque a técnica pesa mais",
+        "Davi, com 85,5 contra 72",
+        "Empatam",
+        "Caio, com 70 contra 82,5"
+      ],
+      "correta": 0,
+      "explicacao": "Caio: 63 + 15 = 78. Davi: 52,5 + 27 = 79,5. Dica de mergulhador: multiplique cada nota pelo seu peso.",
+      "comentarios": [
+        "",
+        "A prática de Davi compensa.",
+        "Trocou os pesos.",
+        "As notas são diferentes.",
+        "Fez média simples."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q08-v1",
+      "varianteDe": "mat-estatistica-decisao-q08",
+      "tema": "Critério de decisão",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma empresa escolhe um de três projetos. S rende R$ 100 mil com 30% de chance; T, R$ 60 mil com 45%; U, R$ 40 mil com 80%. Pelo valor esperado, qual escolhe?",
+      "alternativas": [
+        "U, com R$ 32 mil esperados",
+        "S, porque tem o maior ganho",
+        "Todos empatam",
+        "T, com R$ 27 mil",
+        "S, com R$ 30 mil"
+      ],
+      "correta": 0,
+      "explicacao": "S: 30. T: 27. U: 32 (mil). Dica de mergulhador: ganho × chance.",
+      "comentarios": [
+        "",
+        "A chance é baixa.",
+        "Os valores são diferentes.",
+        "É menor que U.",
+        "É menor que U."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q09-v1",
+      "varianteDe": "mat-estatistica-decisao-q09",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma pesquisa feita só pela internet concluiu que quase todos os brasileiros têm acesso à internet. Qual é o problema?",
+      "alternativas": [
+        "Não há problema",
+        "Faltou perguntar a idade",
+        "A internet é lenta",
+        "Quem não tem internet não pôde responder",
+        "A pesquisa deveria ser maior"
+      ],
+      "correta": 3,
+      "explicacao": "O meio da pesquisa excluiu exatamente quem a pergunta queria contar. Dica de mergulhador: o canal da pesquisa pode criar viés.",
+      "comentarios": [
+        "O grupo exclui quem não tem acesso.",
+        "Não corrige a exclusão.",
+        "Não é o problema estatístico.",
+        "",
+        "Mais respostas online não corrigem o viés."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q10-v1",
+      "varianteDe": "mat-estatistica-decisao-q10",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma pesquisa dá 30% a uma proposta, com margem de 2 pontos percentuais. Qual intervalo é provável?",
+      "alternativas": [
+        "De 28% a 30%",
+        "De 29,4% a 30,6%",
+        "De 28% a 32%",
+        "De 30% a 32%",
+        "De 2% a 30%"
+      ],
+      "correta": 2,
+      "explicacao": "30 ± 2. Dica de mergulhador: pontos para cima e para baixo.",
+      "comentarios": [
+        "Esqueceu o limite de cima.",
+        "Calculou 2% de 30.",
+        "",
+        "Esqueceu o limite de baixo.",
+        "Confundiu margem com intervalo."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q11-v1",
+      "varianteDe": "mat-estatistica-decisao-q11",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Numa pesquisa, C tem 52% e D tem 44%, com margem de 3 pontos. O que se pode afirmar?",
+      "alternativas": [
+        "C está à frente além da margem de erro",
+        "C vence com 8 pontos exatos",
+        "A pesquisa não tem valor",
+        "Estão tecnicamente empatados",
+        "D vence"
+      ],
+      "correta": 0,
+      "explicacao": "C: 49% a 55%. D: 41% a 47%. Sem sobreposição. Dica de mergulhador: intervalos separados, vantagem real.",
+      "comentarios": [
+        "",
+        "A margem impede a exatidão.",
+        "Ela mostra uma vantagem clara.",
+        "Os intervalos não se cruzam.",
+        "C está à frente."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q12-v1",
+      "varianteDe": "mat-estatistica-decisao-q12",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma pesquisa muito grande, feita só entre leitores de uma revista de luxo, é confiável para falar da população toda?",
+      "alternativas": [
+        "Não: o tamanho não corrige o viés",
+        "Sim, porque leitores são bem informados",
+        "Sim, se for repetida",
+        "Não, porque pesquisas grandes erram mais",
+        "Sim, porque é muito grande"
+      ],
+      "correta": 0,
+      "explicacao": "Um grupo de um só perfil, por maior que seja, não representa o todo. Dica de mergulhador: qualidade da escolha vale mais que quantidade.",
+      "comentarios": [
+        "",
+        "Não representam a população.",
+        "Repetir não muda o grupo.",
+        "O problema é o viés.",
+        "Tamanho não conserta grupo enviesado."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q13-v1",
+      "varianteDe": "mat-estatistica-decisao-q13",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Numa empresa de 2.000 funcionários, 40% trabalham em vendas. Uma amostra de 150 deve manter a proporção. Quantos devem ser de vendas?",
+      "alternativas": [
+        "60",
+        "40",
+        "90",
+        "800",
+        "150"
+      ],
+      "correta": 0,
+      "explicacao": "40% de 150 = 60. Dica de mergulhador: a amostra é uma miniatura da população.",
+      "comentarios": [
+        "",
+        "Usou a porcentagem.",
+        "É o resto.",
+        "É o total de vendas.",
+        "É a amostra."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q14-v1",
+      "varianteDe": "mat-estatistica-decisao-q14",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma loja fez uma pesquisa de satisfação só com clientes que voltaram para comprar de novo e concluiu que 95% estão satisfeitos. Qual é a falha mais grave?",
+      "alternativas": [
+        "A pesquisa foi pequena",
+        "A pesquisa deveria ser online",
+        "Os clientes insatisfeitos provavelmente não voltaram",
+        "Faltou perguntar o valor da compra",
+        "Não há falha"
+      ],
+      "correta": 2,
+      "explicacao": "Quem voltou já tende a estar satisfeito: viés de seleção. Dica de mergulhador: veja quem a pesquisa deixou de fora.",
+      "comentarios": [
+        "O problema é o grupo.",
+        "Também precisaria alcançar quem não voltou.",
+        "",
+        "Não muda o viés.",
+        "O grupo exclui os insatisfeitos."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q15-v1",
+      "varianteDe": "mat-estatistica-decisao-q15",
+      "tema": "Amostra e pesquisa",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Numa amostra de 600 pessoas, 30% aprovam uma obra. A cidade tem 50.000 habitantes adultos, e a margem é de 4 pontos. Quantos devem aprovar, e em que intervalo?",
+      "alternativas": [
+        "Cerca de 15.000, entre 14.400 e 15.600",
+        "Cerca de 180",
+        "Cerca de 15.000, entre 14.996 e 15.004",
+        "Cerca de 15.000, entre 13.000 e 17.000",
+        "Cerca de 30.000"
+      ],
+      "correta": 3,
+      "explicacao": "30% de 50.000 = 15.000. Intervalo: 26% a 34%, ou 13.000 a 17.000. Dica de mergulhador: margem em pontos percentuais.",
+      "comentarios": [
+        "Aplicou 4% sobre os 15.000.",
+        "É o número na amostra.",
+        "Usou 4 pessoas de margem.",
+        "",
+        "Usou a porcentagem como milhar."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q16-v1",
+      "varianteDe": "mat-estatistica-decisao-q16",
+      "tema": "Correlação e causa",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Bairros com mais bombeiros registram mais incêndios. O que explica essa relação?",
+      "alternativas": [
+        "A presença de bombeiros provoca mais incêndios",
+        "Bairros maiores e com mais riscos têm mais incêndios e mais bombeiros",
+        "É pura coincidência, sem nenhuma explicação",
+        "Os bombeiros escolhem morar nesses bairros",
+        "Cada incêndio faz a cidade contratar um bombeiro"
+      ],
+      "correta": 1,
+      "explicacao": "O tamanho e o risco do bairro explicam as duas coisas. Dica de mergulhador: correlação pede um terceiro olhar.",
+      "comentarios": [
+        "Não há causa.",
+        "",
+        "Há um fator comum.",
+        "Não explica a relação.",
+        "Inverteu e simplificou."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q17-v1",
+      "varianteDe": "mat-estatistica-decisao-q17",
+      "tema": "Correlação e causa",
+      "dificuldade": "facil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Pessoas que dormem mais horas ganham, em média, salários maiores. Qual é a conclusão mais cuidadosa?",
+      "alternativas": [
+        "Salário alto faz as pessoas dormirem menos",
+        "Todos devem dormir 12 horas para ganhar mais",
+        "Não existe relação entre sono e salário",
+        "Há associação, mas ela não prova que dormir aumenta o salário",
+        "Dormir mais horas aumenta o salário de qualquer pessoa"
+      ],
+      "correta": 3,
+      "explicacao": "Tipo de trabalho e condições de vida podem explicar as duas. Dica de mergulhador: desconfie de causa em dados de associação.",
+      "comentarios": [
+        "Contradiz o dado.",
+        "Conclusão sem base.",
+        "O dado mostra associação.",
+        "",
+        "Associação não prova causa."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q18-v1",
+      "varianteDe": "mat-estatistica-decisao-q18",
+      "tema": "Correlação e causa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Num gráfico de dispersão, os pontos de horas de uso do celular à noite e horas de sono descem: quem usa mais dorme menos. O que isso indica?",
+      "alternativas": [
+        "Correlação positiva",
+        "Que o sono aumenta com o celular",
+        "Causa comprovada",
+        "Correlação negativa",
+        "Nenhuma correlação"
+      ],
+      "correta": 3,
+      "explicacao": "Uma grandeza cresce enquanto a outra cai. Dica de mergulhador: sentidos opostos, correlação negativa.",
+      "comentarios": [
+        "Uma sobe e a outra desce.",
+        "Diminui.",
+        "Correlação não prova causa.",
+        "",
+        "Há padrão."
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q19-v1",
+      "varianteDe": "mat-estatistica-decisao-q19",
+      "tema": "Correlação e causa",
+      "dificuldade": "medio",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Uma escola adotou um método novo, e as notas subiram 10%. Na rede inteira, sem o método, as notas subiram 9%. O que se conclui?",
+      "alternativas": [
+        "O método piorou as notas",
+        "As notas da rede caíram",
+        "O método aumentou as notas em 10%",
+        "O método aumentou as notas em 19%",
+        "O efeito próprio do método parece pequeno"
+      ],
+      "correta": 4,
+      "explicacao": "A comparação com a rede mostra que quase toda a alta veio de outros fatores. Dica de mergulhador: grupo de comparação revela o efeito.",
+      "comentarios": [
+        "As notas subiram.",
+        "Subiram 9%.",
+        "A rede subiu quase o mesmo.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-q20-v1",
+      "varianteDe": "mat-estatistica-decisao-q20",
+      "tema": "Correlação e causa",
+      "dificuldade": "dificil",
+      "fase": "mat-estatistica-decisao",
+      "enunciado": "Cidades com mais igrejas registram mais crimes. Qual é a explicação mais provável?",
+      "alternativas": [
+        "População: cidades maiores têm mais igrejas e mais crimes",
+        "Como os números são grandes, a causa está provada",
+        "É impossível explicar",
+        "Crimes fazem construir igrejas",
+        "Igrejas causam crimes"
+      ],
+      "correta": 0,
+      "explicacao": "O tamanho da população explica as duas contagens. Dica de mergulhador: compare taxas por habitante.",
+      "comentarios": [
+        "",
+        "Não está.",
+        "O tamanho da cidade explica.",
+        "Sem base.",
+        "A correlação não prova isso."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q01-v1",
+      "varianteDe": "mat-revisao-estatistica-q01",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a média do conjunto 3, 9, 6, 9, 13?",
+      "alternativas": [
+        "9",
+        "6,67",
+        "40",
+        "8",
+        "10"
+      ],
+      "correta": 3,
+      "explicacao": "40 ÷ 5 = 8. Dica de mergulhador: conte os valores.",
+      "comentarios": [
+        "É a mediana e a moda.",
+        "Dividiu por 6.",
+        "É a soma.",
+        "",
+        "É a amplitude."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q02-v1",
+      "varianteDe": "mat-revisao-estatistica-q02",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a mediana do conjunto 10, 2, 15, 6, 4?",
+      "alternativas": [
+        "6",
+        "8",
+        "7,4",
+        "13",
+        "15"
+      ],
+      "correta": 0,
+      "explicacao": "Em ordem: 2, 4, 6, 10, 15. Mediana: 6. Dica de mergulhador: com 5 valores, o 3º.",
+      "comentarios": [
+        "",
+        "Fez a média de 6 e 10.",
+        "É a média.",
+        "É a amplitude.",
+        "Não ordenou."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q03-v1",
+      "varianteDe": "mat-revisao-estatistica-q03",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a moda do conjunto 2, 3, 3, 4, 5, 5, 5, 6?",
+      "alternativas": [
+        "4,125",
+        "5",
+        "4,5",
+        "3",
+        "6"
+      ],
+      "correta": 1,
+      "explicacao": "O 5 aparece três vezes. Dica de mergulhador: conte as repetições.",
+      "comentarios": [
+        "É a média.",
+        "",
+        "É a mediana.",
+        "Aparece só duas vezes.",
+        "É o maior valor."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q04-v1",
+      "varianteDe": "mat-revisao-estatistica-q04",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Num gráfico de setores, uma fatia representa 40% do total. Qual é o ângulo dela?",
+      "alternativas": [
+        "144°",
+        "72°",
+        "40°",
+        "90°",
+        "160°"
+      ],
+      "correta": 0,
+      "explicacao": "40 × 3,6 = 144°. Dica de mergulhador: porcentagem × 3,6.",
+      "comentarios": [
+        "",
+        "Calculou 20%.",
+        "Usou a porcentagem.",
+        "É o ângulo de 25%.",
+        "Multiplicou por 4."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q05-v1",
+      "varianteDe": "mat-revisao-estatistica-q05",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual medida representa melhor o salário típico numa empresa em que poucos ganham muito mais que os outros?",
+      "alternativas": [
+        "A mediana",
+        "A amplitude",
+        "O maior salário",
+        "A moda",
+        "A média"
+      ],
+      "correta": 0,
+      "explicacao": "A mediana resiste aos valores extremos. Dica de mergulhador: extremos, mediana.",
+      "comentarios": [
+        "",
+        "Mede dispersão.",
+        "Não é típico.",
+        "Pode não existir ou não descrever o meio.",
+        "É puxada pelos salários altos."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q06-v1",
+      "varianteDe": "mat-revisao-estatistica-q06",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Se a variância de um conjunto é 0,49, qual é o desvio padrão?",
+      "alternativas": [
+        "0,49",
+        "0,2401",
+        "0,245",
+        "0,7",
+        "0,98"
+      ],
+      "correta": 3,
+      "explicacao": "√0,49 = 0,7. Dica de mergulhador: raiz de número menor que 1 fica maior que ele.",
+      "comentarios": [
+        "Usou a variância.",
+        "Elevou ao quadrado.",
+        "Dividiu por 2.",
+        "",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q07-v1",
+      "varianteDe": "mat-revisao-estatistica-q07",
+      "tema": "Revisão: estatística",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "A cidade X tem 200 mil habitantes e 1.000 casos; a cidade Y tem 1 milhão e 3.000 casos. Qual tem a maior taxa por mil?",
+      "alternativas": [
+        "X, com 5 por mil",
+        "Y, porque tem mais casos",
+        "X, com 1.000 por mil",
+        "Y, com 3 por mil",
+        "As duas são iguais"
+      ],
+      "correta": 0,
+      "explicacao": "X: 1.000 ÷ 200 = 5. Y: 3.000 ÷ 1.000 = 3. Dica de mergulhador: divida pela população.",
+      "comentarios": [
+        "",
+        "Número absoluto não é taxa.",
+        "Usou o número absoluto.",
+        "É menor.",
+        "São 5 e 3."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q08-v1",
+      "varianteDe": "mat-revisao-estatistica-q08",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Uma aluna tirou 6 (peso 2), 9 (peso 2) e 4 (peso 1). Qual é a média ponderada?",
+      "alternativas": [
+        "Cerca de 11,33",
+        "Cerca de 6,33",
+        "6,4",
+        "34",
+        "6,8"
+      ],
+      "correta": 4,
+      "explicacao": "(12 + 18 + 4) ÷ 5 = 6,8. Dica de mergulhador: cada nota com o seu peso.",
+      "comentarios": [
+        "Dividiu por 3.",
+        "Fez a média simples.",
+        "Trocou os pesos.",
+        "Não dividiu.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q09-v1",
+      "varianteDe": "mat-revisao-estatistica-q09",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a mediana do conjunto 30, 22, 25, 40, 28, 35?",
+      "alternativas": [
+        "58",
+        "32,5",
+        "30",
+        "28",
+        "29"
+      ],
+      "correta": 4,
+      "explicacao": "Em ordem: 22, 25, 28, 30, 35, 40. Mediana: (28 + 30) ÷ 2 = 29. Dica de mergulhador: ordene e pegue os dois centrais.",
+      "comentarios": [
+        "Somou sem dividir.",
+        "Não ordenou.",
+        "É a média.",
+        "Pegou só um dos centrais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q10-v1",
+      "varianteDe": "mat-revisao-estatistica-q10",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Um gráfico tem o eixo começando em 100. As colunas valem 110 e 130. Quantas vezes maior parece a segunda, e quantas vezes é de fato?",
+      "alternativas": [
+        "Parece e é 3 vezes",
+        "Parece 3 vezes; de fato, 20% maior",
+        "Parece 20 vezes; de fato, 1,18 vez",
+        "Parece 3 vezes; de fato, cerca de 1,18 vez",
+        "Parece 1,18 vez; de fato, 3 vezes"
+      ],
+      "correta": 3,
+      "explicacao": "Alturas: 10 e 30 (3 vezes). Valores: 130 ÷ 110 ≈ 1,18. Dica de mergulhador: altura visível = valor − início do eixo.",
+      "comentarios": [
+        "O real é 1,18.",
+        "Errou a variação real.",
+        "Usou a diferença.",
+        "",
+        "Trocou."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q11-v1",
+      "varianteDe": "mat-revisao-estatistica-q11",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Um grupo de 12 alunos tem média 9, e outro de 18 alunos tem média 5. Qual é a média geral?",
+      "alternativas": [
+        "198",
+        "14",
+        "6,6",
+        "7,4",
+        "7"
+      ],
+      "correta": 2,
+      "explicacao": "(108 + 90) ÷ 30 = 6,6. Dica de mergulhador: o grupo maior pesa mais.",
+      "comentarios": [
+        "É a soma.",
+        "Somou as médias.",
+        "",
+        "Trocou os tamanhos.",
+        "Fez a média das médias."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q12-v1",
+      "varianteDe": "mat-revisao-estatistica-q12",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Duas máquinas enchem garrafas com a mesma média; os desvios padrão são 8 mL e 2 mL. Qual é mais regular?",
+      "alternativas": [
+        "As duas",
+        "A de 8 mL",
+        "A de desvio padrão 2 mL",
+        "Nenhuma",
+        "Não dá para saber"
+      ],
+      "correta": 2,
+      "explicacao": "2 mL de desvio: garrafas mais parecidas. Dica de mergulhador: pequeno é regular.",
+      "comentarios": [
+        "A dispersão é diferente.",
+        "Desvio maior é menos regular.",
+        "",
+        "A de 2 mL é mais regular.",
+        "O desvio responde."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q13-v1",
+      "varianteDe": "mat-revisao-estatistica-q13",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Uma pesquisa dá 53% a uma proposta, com margem de 2 pontos. Ela tem maioria garantida pela pesquisa?",
+      "alternativas": [
+        "Não, porque pesquisas nunca garantem",
+        "Não, porque a margem pode baixar para 50%",
+        "Sim: o intervalo vai de 51% a 55%, todo acima de 50%",
+        "Não dá para saber",
+        "Sim, porque 53 é maior que 50"
+      ],
+      "correta": 2,
+      "explicacao": "53 ± 2: de 51% a 55%. Dica de mergulhador: confira o limite de baixo.",
+      "comentarios": [
+        "Dentro da margem, o intervalo está acima de 50%.",
+        "O mínimo é 51%.",
+        "",
+        "O intervalo informa.",
+        "A conclusão está certa, mas é preciso olhar o limite de baixo."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q14-v1",
+      "varianteDe": "mat-revisao-estatistica-q14",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Notas de média 0,7 e desvio padrão 0,1 são multiplicadas por 10. Quais ficam a média e o desvio padrão?",
+      "alternativas": [
+        "Média 7 e desvio padrão 1",
+        "Média 10,7 e desvio padrão 10,1",
+        "Média 7 e desvio padrão 10",
+        "Média 7 e desvio padrão 0,1",
+        "Média 0,7 e desvio padrão 1"
+      ],
+      "correta": 0,
+      "explicacao": "Multiplicar por 10 multiplica a média e o desvio padrão. Dica de mergulhador: multiplicar espalha.",
+      "comentarios": [
+        "",
+        "Somou 10.",
+        "Multiplicou o desvio por 100.",
+        "O desvio também é multiplicado.",
+        "A média também muda."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q15-v1",
+      "varianteDe": "mat-revisao-estatistica-q15",
+      "tema": "Revisão: estatística",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Uma empresa diz que o prazo médio de entrega é de 2 dias, mas a mediana é de 5 dias. O que isso indica?",
+      "alternativas": [
+        "A maioria chega em 2 dias",
+        "Metade chega em menos de 2 dias",
+        "Média e mediana sempre são iguais",
+        "Os prazos são simétricos",
+        "Alguns pedidos muito rápidos puxam a média para baixo"
+      ],
+      "correta": 4,
+      "explicacao": "Média abaixo da mediana: extremos baixos. Dica de mergulhador: a média vai para o lado dos extremos.",
+      "comentarios": [
+        "Metade leva 5 dias ou mais.",
+        "Metade chega em menos de 5.",
+        "Não são.",
+        "Média e mediana seriam próximas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q16-v1",
+      "varianteDe": "mat-revisao-estatistica-q16",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Os valores 10, 12, 15, 20 e x têm média 14. Qual é x, e qual é a mediana?",
+      "alternativas": [
+        "x = 13 e mediana 13,5",
+        "x = 70 e mediana 15",
+        "x = 13 e mediana 13",
+        "x = 13 e mediana 15",
+        "x = 14 e mediana 14"
+      ],
+      "correta": 2,
+      "explicacao": "Soma: 70; 57 + x = 70, x = 13. Em ordem: 10, 12, 13, 15, 20. Mediana: 13. Dica de mergulhador: depois de achar x, ordene de novo.",
+      "comentarios": [
+        "Fez a média de dois centrais com 5 valores.",
+        "Usou a soma.",
+        "",
+        "Não reordenou depois de incluir x.",
+        "Usou a média como valor."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q17-v1",
+      "varianteDe": "mat-revisao-estatistica-q17",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "A avaliação de um professor foi respondida só pelos alunos aprovados, e 98% o elogiaram. Qual é o problema?",
+      "alternativas": [
+        "Os alunos reprovados ficaram de fora",
+        "98% é impossível",
+        "A pesquisa foi pequena",
+        "Não há problema",
+        "Faltou calcular a mediana"
+      ],
+      "correta": 0,
+      "explicacao": "A seleção dos respondentes distorce o resultado. Dica de mergulhador: grupo escolhido a dedo, conclusão torta.",
+      "comentarios": [
+        "",
+        "O número é possível.",
+        "O problema é o grupo.",
+        "O grupo exclui os insatisfeitos prováveis.",
+        "Não corrige o viés."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q18-v1",
+      "varianteDe": "mat-revisao-estatistica-q18",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Qual é a variância e o desvio padrão do conjunto 1, 3, 5, 7, cuja média é 4?",
+      "alternativas": [
+        "Variância de cerca de 6,67 e desvio padrão de cerca de 2,58",
+        "Variância 0 e desvio padrão 0",
+        "Variância de cerca de 2,24 e desvio padrão 5",
+        "Variância 20 e desvio padrão de cerca de 4,47",
+        "Variância 5 e desvio padrão de cerca de 2,24"
+      ],
+      "correta": 4,
+      "explicacao": "Desvios: −3, −1, 1, 3. Quadrados: 9, 1, 1, 9 = 20. Variância 5; desvio padrão √5 ≈ 2,24. Dica de mergulhador: divida pela quantidade.",
+      "comentarios": [
+        "Dividiu por 3.",
+        "Somou os desvios.",
+        "Trocou as medidas.",
+        "Não dividiu.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q19-v1",
+      "varianteDe": "mat-revisao-estatistica-q19",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Uma região teve 90 casos com 30 mil habitantes em 2023 e 120 casos com 60 mil habitantes em 2024. O que aconteceu com a taxa por 100 mil?",
+      "alternativas": [
+        "Caiu de 300 para 200, uma queda de cerca de 33%",
+        "Caiu 20%",
+        "Subiu cerca de 33%",
+        "Subiu de 200 para 300",
+        "Ficou igual"
+      ],
+      "correta": 0,
+      "explicacao": "2023: 90 ÷ 0,3 = 300. 2024: 120 ÷ 0,6 = 200. Queda: 100 ÷ 300 ≈ 33%. Dica de mergulhador: taxa = casos ÷ população.",
+      "comentarios": [
+        "",
+        "Errou a conta.",
+        "Olhou só os casos.",
+        "Inverteu os anos.",
+        "As taxas são diferentes."
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-q20-v1",
+      "varianteDe": "mat-revisao-estatistica-q20",
+      "tema": "Revisão: estatística",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-estatistica",
+      "enunciado": "Três atletas: D, média 6,8 e desvio 0,2; E, média 7,0 e desvio 0,2; F, média 7,4 e desvio 0,5. O critério é o menor desvio padrão e, em caso de empate, a maior média. Quem é escolhido?",
+      "alternativas": [
+        "Nenhum",
+        "D, que empata no desvio",
+        "E",
+        "F, que tem a maior média",
+        "D e E empatam"
+      ],
+      "correta": 2,
+      "explicacao": "Menor desvio: D e E (0,2). Desempate pela média: E. Dica de mergulhador: o critério do enunciado manda.",
+      "comentarios": [
+        "E cumpre os dois critérios.",
+        "Perde no desempate pela média.",
+        "",
+        "O primeiro critério é o desvio.",
+        "A média desempata."
+      ]
     }
   ],
   "pares": [
@@ -30219,6 +34382,102 @@
       "tema": "Média aritmética e média ponderada",
       "termo": "Soma",
       "definicao": "Média vezes quantidade"
+    },
+    {
+      "id": "mat-moda-mediana-par-01",
+      "tema": "Moda e mediana",
+      "termo": "Moda",
+      "definicao": "Valor que mais se repete"
+    },
+    {
+      "id": "mat-moda-mediana-par-02",
+      "tema": "Moda e mediana",
+      "termo": "Mediana",
+      "definicao": "Valor do meio dos dados em ordem"
+    },
+    {
+      "id": "mat-moda-mediana-par-03",
+      "tema": "Moda e mediana",
+      "termo": "Bimodal",
+      "definicao": "Conjunto com duas modas"
+    },
+    {
+      "id": "mat-moda-mediana-par-04",
+      "tema": "Moda e mediana",
+      "termo": "Frequência acumulada",
+      "definicao": "Mostra onde cai a mediana numa tabela"
+    },
+    {
+      "id": "mat-desvio-variancia-par-01",
+      "tema": "Desvio, variância e dispersão",
+      "termo": "Amplitude",
+      "definicao": "Maior valor menos o menor"
+    },
+    {
+      "id": "mat-desvio-variancia-par-02",
+      "tema": "Desvio, variância e dispersão",
+      "termo": "Variância",
+      "definicao": "Média dos quadrados dos desvios"
+    },
+    {
+      "id": "mat-desvio-variancia-par-03",
+      "tema": "Desvio, variância e dispersão",
+      "termo": "Desvio padrão",
+      "definicao": "Raiz da variância"
+    },
+    {
+      "id": "mat-desvio-variancia-par-04",
+      "tema": "Desvio, variância e dispersão",
+      "termo": "Dados homogêneos",
+      "definicao": "Desvio padrão pequeno"
+    },
+    {
+      "id": "mat-estatistica-decisao-par-01",
+      "tema": "Estatística para decidir",
+      "termo": "Amostra",
+      "definicao": "Parte que representa a população"
+    },
+    {
+      "id": "mat-estatistica-decisao-par-02",
+      "tema": "Estatística para decidir",
+      "termo": "Viés",
+      "definicao": "Distorção causada pela escolha do grupo"
+    },
+    {
+      "id": "mat-estatistica-decisao-par-03",
+      "tema": "Estatística para decidir",
+      "termo": "Margem de erro",
+      "definicao": "Intervalo em torno do resultado"
+    },
+    {
+      "id": "mat-estatistica-decisao-par-04",
+      "tema": "Estatística para decidir",
+      "termo": "Correlação",
+      "definicao": "Variação conjunta, sem prova de causa"
+    },
+    {
+      "id": "mat-revisao-estatistica-par-01",
+      "tema": "Revisão do módulo: estatística",
+      "termo": "Mediana",
+      "definicao": "Valor do meio em ordem"
+    },
+    {
+      "id": "mat-revisao-estatistica-par-02",
+      "tema": "Revisão do módulo: estatística",
+      "termo": "Moda",
+      "definicao": "Valor mais frequente"
+    },
+    {
+      "id": "mat-revisao-estatistica-par-03",
+      "tema": "Revisão do módulo: estatística",
+      "termo": "Desvio padrão",
+      "definicao": "Raiz da variância"
+    },
+    {
+      "id": "mat-revisao-estatistica-par-04",
+      "tema": "Revisão do módulo: estatística",
+      "termo": "Taxa",
+      "definicao": "Casos divididos pela população"
     }
   ],
   "verdadeiroFalso": [
@@ -30795,6 +35054,90 @@
       "afirmacao": "Um salário muito alto pode deixar a média pouco representativa.",
       "verdadeira": true,
       "explicacao": "Valores extremos puxam a média."
+    },
+    {
+      "id": "mat-moda-mediana-vf-01",
+      "tema": "Moda e mediana",
+      "afirmacao": "A mediana de 3, 5, 8 e 10 é 6,5.",
+      "verdadeira": true,
+      "explicacao": "Média dos centrais 5 e 8."
+    },
+    {
+      "id": "mat-moda-mediana-vf-02",
+      "tema": "Moda e mediana",
+      "afirmacao": "A moda só existe para dados numéricos.",
+      "verdadeira": false,
+      "explicacao": "Serve também para categorias."
+    },
+    {
+      "id": "mat-moda-mediana-vf-03",
+      "tema": "Moda e mediana",
+      "afirmacao": "Um valor muito alto muda mais a média que a mediana.",
+      "verdadeira": true,
+      "explicacao": "A mediana resiste a extremos."
+    },
+    {
+      "id": "mat-desvio-variancia-vf-01",
+      "tema": "Desvio, variância e dispersão",
+      "afirmacao": "A soma dos desvios em relação à média é sempre zero.",
+      "verdadeira": true,
+      "explicacao": "Positivos e negativos se cancelam."
+    },
+    {
+      "id": "mat-desvio-variancia-vf-02",
+      "tema": "Desvio, variância e dispersão",
+      "afirmacao": "Somar 10 a todos os valores aumenta o desvio padrão em 10.",
+      "verdadeira": false,
+      "explicacao": "O desvio padrão não muda."
+    },
+    {
+      "id": "mat-desvio-variancia-vf-03",
+      "tema": "Desvio, variância e dispersão",
+      "afirmacao": "Se a variância é 9, o desvio padrão é 3.",
+      "verdadeira": true,
+      "explicacao": "Raiz de 9."
+    },
+    {
+      "id": "mat-estatistica-decisao-vf-01",
+      "tema": "Estatística para decidir",
+      "afirmacao": "Intervalos de dois candidatos que se cruzam indicam empate técnico.",
+      "verdadeira": true,
+      "explicacao": "Nenhum está à frente com segurança."
+    },
+    {
+      "id": "mat-estatistica-decisao-vf-02",
+      "tema": "Estatística para decidir",
+      "afirmacao": "Uma amostra muito grande sempre elimina o viés.",
+      "verdadeira": false,
+      "explicacao": "Tamanho não corrige a escolha do grupo."
+    },
+    {
+      "id": "mat-estatistica-decisao-vf-03",
+      "tema": "Estatística para decidir",
+      "afirmacao": "30 aprovados em 50 é uma taxa maior que 40 em 100.",
+      "verdadeira": true,
+      "explicacao": "60% contra 40%."
+    },
+    {
+      "id": "mat-revisao-estatistica-vf-01",
+      "tema": "Revisão do módulo: estatística",
+      "afirmacao": "Somar 2 a todas as notas não muda o desvio padrão.",
+      "verdadeira": true,
+      "explicacao": "Só desloca os dados."
+    },
+    {
+      "id": "mat-revisao-estatistica-vf-02",
+      "tema": "Revisão do módulo: estatística",
+      "afirmacao": "A média de turmas de 20 e 30 alunos é a média das médias.",
+      "verdadeira": false,
+      "explicacao": "É preciso ponderar."
+    },
+    {
+      "id": "mat-revisao-estatistica-vf-03",
+      "tema": "Revisão do módulo: estatística",
+      "afirmacao": "Uma fatia de 30% num gráfico de setores tem 108°.",
+      "verdadeira": true,
+      "explicacao": "30 × 3,6."
     }
   ],
   "sequencias": [
@@ -31134,6 +35477,54 @@
         "Conferir se a nota é possível"
       ],
       "explicacao": "Pense na soma."
+    },
+    {
+      "id": "mat-moda-mediana-seq-01",
+      "tema": "Moda e mediana",
+      "titulo": "Achar a mediana numa tabela de frequências",
+      "itens": [
+        "Somar as frequências para obter n",
+        "Calcular a posição (n + 1) ÷ 2",
+        "Acumular as frequências",
+        "Ver em que valor a posição cai"
+      ],
+      "explicacao": "Com n par, faça a média das duas posições centrais."
+    },
+    {
+      "id": "mat-desvio-variancia-seq-01",
+      "tema": "Desvio, variância e dispersão",
+      "titulo": "Calcular o desvio padrão",
+      "itens": [
+        "Calcular a média",
+        "Calcular o desvio de cada valor",
+        "Elevar os desvios ao quadrado e tirar a média",
+        "Tirar a raiz quadrada"
+      ],
+      "explicacao": "A raiz volta à unidade dos dados."
+    },
+    {
+      "id": "mat-estatistica-decisao-seq-01",
+      "tema": "Estatística para decidir",
+      "titulo": "Avaliar uma pesquisa",
+      "itens": [
+        "Ver quem foi entrevistado",
+        "Conferir se o grupo representa a população",
+        "Ler o resultado com a margem de erro",
+        "Verificar se a conclusão confunde correlação com causa"
+      ],
+      "explicacao": "Desconfie de grupos mal escolhidos."
+    },
+    {
+      "id": "mat-revisao-estatistica-seq-01",
+      "tema": "Revisão do módulo: estatística",
+      "titulo": "Resolver uma questão de estatística",
+      "itens": [
+        "Ler a tabela ou o gráfico com cuidado",
+        "Identificar se pedem centro, dispersão ou decisão",
+        "Organizar os dados e calcular",
+        "Conferir se a resposta usa o critério pedido"
+      ],
+      "explicacao": "Ferramenta certa antes da conta."
     }
   ],
   "adivinhas": [
@@ -31543,6 +35934,62 @@
         "Soma dividida pela quantidade",
         "Pode ser ponderada",
         "Puxada por valores extremos"
+      ]
+    },
+    {
+      "id": "mat-moda-mediana-adv-01",
+      "tema": "Moda e mediana",
+      "dificuldade": "medio",
+      "resposta": "Mediana",
+      "aceitas": [
+        "mediana"
+      ],
+      "dicas": [
+        "Valor do meio",
+        "Exige dados em ordem",
+        "Resiste a valores extremos"
+      ]
+    },
+    {
+      "id": "mat-desvio-variancia-adv-01",
+      "tema": "Desvio, variância e dispersão",
+      "dificuldade": "medio",
+      "resposta": "Desvio padrão",
+      "aceitas": [
+        "desvio padrao"
+      ],
+      "dicas": [
+        "Mede a dispersão",
+        "É a raiz da variância",
+        "Quanto menor, mais regular"
+      ]
+    },
+    {
+      "id": "mat-estatistica-decisao-adv-01",
+      "tema": "Estatística para decidir",
+      "dificuldade": "medio",
+      "resposta": "Amostra",
+      "aceitas": [
+        "amostra"
+      ],
+      "dicas": [
+        "Parte da população",
+        "Precisa ser representativa",
+        "Se mal escolhida, gera viés"
+      ]
+    },
+    {
+      "id": "mat-revisao-estatistica-adv-01",
+      "tema": "Revisão do módulo: estatística",
+      "dificuldade": "medio",
+      "resposta": "Estatística",
+      "aceitas": [
+        "estatistica"
+      ],
+      "dicas": [
+        "Ciência dos dados",
+        "Usa média, mediana e desvio",
+        "Ajuda a decidir"
       ]
     }
   ],
@@ -32200,6 +36647,102 @@
       "tema": "Matemática",
       "palavra": "Turma",
       "dica": "Grupo de alunos"
+    },
+    {
+      "id": "mat-moda-mediana-pal-01",
+      "tema": "Matemática",
+      "palavra": "Moda",
+      "dica": "Valor mais frequente"
+    },
+    {
+      "id": "mat-moda-mediana-pal-02",
+      "tema": "Matemática",
+      "palavra": "Ordem",
+      "dica": "Exigida para achar a mediana"
+    },
+    {
+      "id": "mat-moda-mediana-pal-03",
+      "tema": "Matemática",
+      "palavra": "Meio",
+      "dica": "Onde fica a mediana"
+    },
+    {
+      "id": "mat-moda-mediana-pal-04",
+      "tema": "Matemática",
+      "palavra": "Tamanho",
+      "dica": "Exemplo de dado com moda"
+    },
+    {
+      "id": "mat-desvio-variancia-pal-01",
+      "tema": "Matemática",
+      "palavra": "Desvio",
+      "dica": "Diferença para a média"
+    },
+    {
+      "id": "mat-desvio-variancia-pal-02",
+      "tema": "Matemática",
+      "palavra": "Raiz",
+      "dica": "Leva a variância ao desvio padrão"
+    },
+    {
+      "id": "mat-desvio-variancia-pal-03",
+      "tema": "Matemática",
+      "palavra": "Regular",
+      "dica": "Com pouca variação"
+    },
+    {
+      "id": "mat-desvio-variancia-pal-04",
+      "tema": "Matemática",
+      "palavra": "Dardo",
+      "dica": "Imagem de valores agrupados"
+    },
+    {
+      "id": "mat-estatistica-decisao-pal-01",
+      "tema": "Matemática",
+      "palavra": "Viés",
+      "dica": "Distorção numa pesquisa"
+    },
+    {
+      "id": "mat-estatistica-decisao-pal-02",
+      "tema": "Matemática",
+      "palavra": "Critério",
+      "dica": "Regra para decidir"
+    },
+    {
+      "id": "mat-estatistica-decisao-pal-03",
+      "tema": "Matemática",
+      "palavra": "Margem",
+      "dica": "Folga em torno do resultado"
+    },
+    {
+      "id": "mat-estatistica-decisao-pal-04",
+      "tema": "Matemática",
+      "palavra": "Eleitor",
+      "dica": "Quem vota"
+    },
+    {
+      "id": "mat-revisao-estatistica-pal-01",
+      "tema": "Matemática",
+      "palavra": "Dado",
+      "dica": "Informação coletada"
+    },
+    {
+      "id": "mat-revisao-estatistica-pal-02",
+      "tema": "Matemática",
+      "palavra": "Média",
+      "dica": "Soma dividida pela quantidade"
+    },
+    {
+      "id": "mat-revisao-estatistica-pal-03",
+      "tema": "Matemática",
+      "palavra": "Pesquisa",
+      "dica": "Coleta de opiniões"
+    },
+    {
+      "id": "mat-revisao-estatistica-pal-04",
+      "tema": "Matemática",
+      "palavra": "Gráfico",
+      "dica": "Desenho dos dados"
     }
   ],
   "fichas": {
@@ -33139,6 +37682,146 @@
       "pegadinhas": [
         "Fazer a média das médias com grupos diferentes.",
         "Achar que a média sempre representa a maioria."
+      ]
+    },
+    "Moda": {
+      "texto": [
+        "Moda é o valor mais frequente. Pode haver uma, duas (bimodal) ou nenhuma. É a única medida de centro que serve para categorias, como cores, tamanhos e meios de transporte.",
+        "Numa tabela de frequências, a moda é o valor com a maior frequência; responda com o valor, não com o número de vezes. Em problemas que combinam moda, mediana e média, monte a lista ordenada e use a soma (média × quantidade)."
+      ],
+      "pontos": [
+        "Empate na maior frequência: mais de uma moda.",
+        "Categorias: só a moda."
+      ],
+      "pegadinhas": [
+        "Responder a frequência no lugar do valor.",
+        "Fazer média de categorias."
+      ]
+    },
+    "Mediana": {
+      "texto": [
+        "Mediana é o valor do meio dos dados em ordem. Com quantidade ímpar, é o termo central; com par, a média dos dois centrais. Numa tabela, a posição é (n + 1) ÷ 2, e a frequência acumulada mostra o valor dessa posição.",
+        "A mediana muda pouco quando entra um valor extremo; a média muda muito. Tirar ou pôr um valor em cada ponta não move a mediana."
+      ],
+      "pontos": [
+        "Ordene sempre.",
+        "Posição (n + 1) ÷ 2."
+      ],
+      "pegadinhas": [
+        "Pegar o termo do meio sem ordenar.",
+        "Usar só um dos dois centrais."
+      ]
+    },
+    "Escolha da medida": {
+      "texto": [
+        "Média usa todos os valores, mas é puxada por extremos; mediana representa o grupo quando há extremos (salários, imóveis); moda mostra o mais comum e serve para categorias.",
+        "Média acima da mediana indica extremos altos; abaixo, extremos baixos; em conjuntos simétricos, média e mediana coincidem. Num concurso, aplique o critério anunciado, mesmo que outra medida favoreça outro candidato."
+      ],
+      "pontos": [
+        "Extremos: mediana.",
+        "O mais vendido: moda."
+      ],
+      "pegadinhas": [
+        "Usar a média de salários com valores extremos.",
+        "Trocar o critério do enunciado."
+      ]
+    },
+    "Amplitude e desvios": {
+      "texto": [
+        "Amplitude é o maior valor menos o menor; é rápida, mas depende só dos extremos e esconde como os valores do meio se distribuem. Desvio é valor menos média, com sinal.",
+        "A soma dos desvios é sempre zero; por isso, ela não mede dispersão. Para comparar grupos com médias iguais, veja quão perto da média os valores estão."
+      ],
+      "pontos": [
+        "Amplitude = maior − menor.",
+        "Desvios somam zero."
+      ],
+      "pegadinhas": [
+        "Somar o maior e o menor.",
+        "Usar a soma dos desvios como medida."
+      ]
+    },
+    "Variância e desvio padrão": {
+      "texto": [
+        "Variância = média dos quadrados dos desvios. Desvio padrão = raiz da variância, na unidade dos dados. Passo a passo: média, desvios, quadrados, soma, divisão pela quantidade, raiz.",
+        "Somar uma constante a todos os valores não muda o desvio padrão; multiplicar por k multiplica o desvio padrão por k e a variância por k². Se faltar um desvio, use que todos somam zero."
+      ],
+      "pontos": [
+        "Variância em unidade ao quadrado.",
+        "Desvio padrão zero: todos iguais."
+      ],
+      "pegadinhas": [
+        "Esquecer de dividir pela quantidade.",
+        "Confundir variância com desvio padrão."
+      ]
+    },
+    "Regularidade": {
+      "texto": [
+        "Menor desvio padrão indica maior regularidade. Com médias iguais, o desvio desempata; com médias muito diferentes, compare o coeficiente de variação (desvio ÷ média).",
+        "Leia o critério do problema: o mais regular, o de maior média, ou o melhor nos dois. Um valor igual à média acrescentado ao grupo reduz a variância."
+      ],
+      "pontos": [
+        "Coeficiente de variação = desvio ÷ média.",
+        "Prazo: menor média e menor desvio."
+      ],
+      "pegadinhas": [
+        "Escolher pela média quando o critério é regularidade.",
+        "Comparar desvios de grupos com médias muito diferentes."
+      ]
+    },
+    "Critério de decisão": {
+      "texto": [
+        "Defina o critério antes de ver os dados e aplique-o a todas as opções. Some todos os custos relevantes (combustível e aluguel, por exemplo). Compare taxas e médias na mesma base de tempo.",
+        "Com vários critérios, filtre pelo primeiro e desempate pelo segundo. Em escolhas com risco, use o valor esperado: ganho × chance."
+      ],
+      "pontos": [
+        "Mesmo critério para todos.",
+        "Valor esperado = ganho × chance."
+      ],
+      "pegadinhas": [
+        "Escolher pelo total quando os períodos são diferentes.",
+        "Esquecer um dos custos."
+      ]
+    },
+    "Amostra e pesquisa": {
+      "texto": [
+        "Uma amostra deve ser aleatória e representativa; o meio e o local da pesquisa podem excluir grupos e gerar viés. Aumentar a amostra reduz a margem de erro, mas não corrige o viés.",
+        "A margem de erro cria um intervalo (valor ± margem em pontos percentuais). Intervalos de dois candidatos que se cruzam indicam empate técnico. Amostras estratificadas mantêm as proporções da população."
+      ],
+      "pontos": [
+        "Margem em pontos, não porcentagem do valor.",
+        "Intervalos cruzados: empate técnico."
+      ],
+      "pegadinhas": [
+        "Achar que amostra grande corrige viés.",
+        "Aplicar a margem como porcentagem do resultado."
+      ]
+    },
+    "Correlação e causa": {
+      "texto": [
+        "Correlação é quando duas grandezas variam juntas (positiva) ou em sentidos opostos (negativa). Ela não prova causa: um terceiro fator, como calor, renda ou tamanho da população, pode explicar as duas.",
+        "Para avaliar o efeito de uma mudança, compare com um grupo que não mudou: se os dois melhoraram quase igual, o efeito próprio é pequeno."
+      ],
+      "pontos": [
+        "Procure o terceiro fator.",
+        "Compare com um grupo de controle."
+      ],
+      "pegadinhas": [
+        "Concluir causa a partir de associação.",
+        "Atribuir à mudança uma melhora que aconteceu em todo lugar."
+      ]
+    },
+    "Revisão: estatística": {
+      "texto": [
+        "Escolha a ferramenta: ler gráficos e tabelas (unidade, período, eixo), centro (média, mediana, moda), dispersão (amplitude, variância, desvio padrão) ou decisão (critério, taxas, amostra, correlação).",
+        "Antes de marcar, confira se ordenou os dados para a mediana, se ponderou ao juntar grupos, se comparou valores e não alturas, se usou taxas em vez de totais e se aplicou o critério na ordem do enunciado."
+      ],
+      "pontos": [
+        "Mediana: dados em ordem.",
+        "Regularidade: menor desvio padrão."
+      ],
+      "pegadinhas": [
+        "Média das médias com grupos diferentes.",
+        "Trocar a ordem dos critérios."
       ]
     }
   }
