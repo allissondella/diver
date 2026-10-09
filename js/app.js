@@ -738,10 +738,32 @@ const App = (() => {
   /* =========================================================
      MERGULHO: PAINEL DA TRILHA
      ========================================================= */
-  function abrirTrilha(id) {
+  /**
+   * Abre o mapa do curso. Opções (Cronograma): { proximaAula: true } rola até a próxima aula não feita
+   * e põe o foco nela; { fase: '<id>' } faz o mesmo com uma fase certa.
+   */
+  function abrirTrilha(id, { proximaAula = false, fase = null } = {}) {
     definirTrilha(id);
+    estado.focarNoMapa = fase || (proximaAula ? 'proxima' : null);
     cortina('Bora mergulhar!');
     irPara('mergulho');
+  }
+
+  /** Rola o mapa até a aula (abrindo o módulo dela) e põe o foco no botão. */
+  function focarAula(faseId) {
+    const li = $('mapa-fases').querySelector(`li[data-fase="${CSS.escape(faseId)}"]`);
+    if (!li) return;
+    const det = li.closest('details');
+    if (det) det.open = true;
+    li.scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'center' });
+    const alvo = li.querySelector('.fase');
+    if (alvo) alvo.focus({ preventScroll: true });
+  }
+
+  /** A próxima aula não feita (e liberada) do curso atual. */
+  function proximaAula() {
+    const { trilha, prog } = estado;
+    return trilha.fases.find((f, i) => !(prog.fases[f.id] && prog.fases[f.id].concluida) && Progresso.faseDesbloqueada(prog, trilha, i));
   }
 
   function renderizarPainel() {
@@ -795,8 +817,13 @@ const App = (() => {
         ? 'Todas as fases estão abertas: escolha o tema que quer estudar. A ordem do mapa é só uma sugestão.'
         : 'Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.';
     mapa.classList.toggle('mapa--modulos', porModulo);
-    if (porModulo) return renderizarMapaModulos(mapa);
-    trilha.fases.forEach((fase, i) => mapa.append(itemFase(fase, i)));
+    if (porModulo) renderizarMapaModulos(mapa);
+    else trilha.fases.forEach((fase, i) => mapa.append(itemFase(fase, i)));
+    if (estado.focarNoMapa) {
+      const alvo = estado.focarNoMapa === 'proxima' ? proximaAula() : { id: estado.focarNoMapa };
+      estado.focarNoMapa = null;
+      if (alvo) setTimeout(() => focarAula(alvo.id), 50);
+    }
   }
 
   /** Uma fase (aula) do mapa: o botão de mergulhar e o "Antes de mergulhar". */
@@ -852,7 +879,7 @@ const App = (() => {
   function renderizarMapaModulos(mapa) {
     const { trilha, prog } = estado;
     const feita = (f) => !!(prog.fases[f.id] && prog.fases[f.id].concluida);
-    const proxima = trilha.fases.find((f, i) => !feita(f) && Progresso.faseDesbloqueada(prog, trilha, i));
+    const proxima = proximaAula();
     const modulos = [];
     trilha.fases.forEach((f, i) => {
       const ultimo = modulos[modulos.length - 1];
@@ -861,15 +888,8 @@ const App = (() => {
     });
     if (proxima) {
       mapa.append(h('li', { class: 'mapa__atalho' },
-        h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', id: 'btn-proxima-aula', onclick: () => {
-          const li = mapa.querySelector(`li[data-fase="${CSS.escape(proxima.id)}"]`);
-          if (!li) return;
-          const det = li.closest('details');
-          if (det) det.open = true;
-          li.scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'center' });
-          const alvo = li.querySelector('.fase');
-          if (alvo) alvo.focus({ preventScroll: true });
-        } }, icone('i-seta-baixo'), `Ir para a próxima aula: ${proxima.nome}`)));
+        h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', id: 'btn-proxima-aula', onclick: () => focarAula(proxima.id) },
+          icone('i-seta-baixo'), `Ir para a próxima aula: ${proxima.nome}`)));
     }
     modulos.forEach((m) => {
       const total = m.fases.length;

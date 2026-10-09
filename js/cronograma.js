@@ -47,11 +47,28 @@ const Cronograma = (() => {
   function tituloBloco(b) {
     return G.titulo(b);
   }
-  /** Curso do Diver para estudar o bloco (só se a pessoa tem acesso a ele). */
+  /**
+   * Curso do Diver para estudar o bloco (só se a pessoa tem acesso a ele).
+   * Primeiro os cursos por matéria (DISCIPLINAS[].cursos): o bloco abre a PRÓXIMA AULA não feita
+   * (fase: null). Com vários (Português, Literatura, Artes), o bloco escolhe um pelo peso, sempre o
+   * mesmo para o mesmo bloco. Na língua estrangeira, a língua da Avaliação Diagnóstica (padrão: inglês).
+   * Sem nenhum deles, o "Comece por aqui" na fase da disciplina, como antes.
+   */
   function cursoDo(b) {
     const d = b.materia ? G.disciplina(b.materia) : G.disciplina('matematica');
-    if (!d || !d.curso) return null;
-    const trilha = App.trilhas().find((t) => t.id === d.curso.trilha);
+    if (!d) return null;
+    const tenho = (id) => App.trilhas().find((t) => t.id === id);
+    let opcoes = (d.cursos || []).filter((c) => tenho(c.trilha));
+    const lingua = (Dados.ler('diver:v1:diagnostica', {}) || {}).lingua || 'ingles';
+    if (opcoes.some((c) => c.lingua === lingua)) opcoes = opcoes.filter((c) => !c.lingua || c.lingua === lingua);
+    if (opcoes.length) {
+      const total = opcoes.reduce((n, c) => n + (c.peso || 1), 0);
+      let r = [...String(b.id)].reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7) % total;
+      const c = opcoes.find((x) => (r -= x.peso || 1) < 0) || opcoes[0];
+      return { trilha: tenho(c.trilha), fase: null };
+    }
+    if (!d.curso) return null;
+    const trilha = tenho(d.curso.trilha);
     return trilha ? { trilha, fase: (trilha.fases || []).find((f) => f.id === d.curso.fase) || null } : null;
   }
 
@@ -642,7 +659,7 @@ const Cronograma = (() => {
     App.definirTrilha(curso.trilha.id);
     if (b.tipo === 'revisao') App.irPara('revisao');
     else if (b.tipo === 'simulado') App.irPara('simulado');
-    else App.abrirTrilha(curso.trilha.id);
+    else App.abrirTrilha(curso.trilha.id, curso.fase ? { fase: curso.fase.id } : { proximaAula: true }); // o mapa abre já na aula
   }
 
   async function apagar(plano) {
