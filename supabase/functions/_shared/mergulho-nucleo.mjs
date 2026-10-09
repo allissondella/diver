@@ -271,8 +271,12 @@ export function slugMateria(nome) {
  * Com variantes: manda o bloco "variantes" e aplica a trava 1 de 3 (nunca variante de questão do Enem,
  * nunca variante igual à original). Só os campos da questão viajam (questaoLimpa).
  */
-export async function montarLotes(trilha, { materia, arquivo, fase = null, ids = null, variantes = false, refazer = false }) {
+/** Nome de onda ("1A", "1B", "mat-m1"...): o mesmo formato que o banco aceita (fila_validacao.onda). */
+export const ONDA = /^[A-Za-z0-9][A-Za-z0-9._-]{0,39}$/;
+
+export async function montarLotes(trilha, { materia, arquivo, fase = null, ids = null, variantes = false, refazer = false, onda = null }) {
   const slug = slugMateria(materia);
+  if (onda && !ONDA.test(onda)) throw new Error(`nome de onda inválido: "${onda}" (use letras, números, ponto, hífen ou _, até 40)`);
   const questoes = new Map((trilha.questoes || []).map((q) => [q.id, q]));
   const fonte = variantes ? trilha.variantes || [] : trilha.questoes || [];
   if (variantes && !fonte.length) throw new Error('a trilha não tem bloco "variantes"');
@@ -304,7 +308,9 @@ export async function montarLotes(trilha, { materia, arquivo, fase = null, ids =
       const proibidas = variantesProibidas(conteudo); // a mesma regra do servidor, conferida antes de enviar
       if (proibidas.length) throw new Error(`lote recusado: ${proibidas.map((p) => `${p.id}: ${p.motivo}`).join('; ')}`);
     }
-    lotes.push({ trilha_id: trilha.id, materia: slug, quantidade_questoes: parte.length, custo_estimado_usd: estimarCusto(parte), conteudo_pendente: conteudo });
+    const lote = { trilha_id: trilha.id, materia: slug, quantidade_questoes: parte.length, custo_estimado_usd: estimarCusto(parte), conteudo_pendente: conteudo };
+    if (onda) lote.onda = onda;
+    lotes.push(lote);
   }
   return { lotes, puladas };
 }

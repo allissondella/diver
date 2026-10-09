@@ -64,7 +64,8 @@ Um assistente que monta um plano de estudos até a prova. **V1, 2026-10-05.** Se
 - **Hoje:** os blocos do dia, cada um com:
   - checkbox de feito;
   - botão **Modo Foco**, que abre no tempo do bloco e, quando o foco termina, marca o bloco como feito;
-  - botão "Estudar no curso", quando existe conteúdo do Diver. Ele abre a fase da Travessia (conteúdo e redação), a Revisão (revisão) ou o Simulado (simulado), e só aparece se a pessoa tem acesso ao curso. Sem curso, o bloco fica genérico.
+  - botão "Estudar no curso", quando existe conteúdo do Diver. Ele abre o curso (conteúdo e redação), a Revisão (revisão) ou o Simulado (simulado), e só aparece se a pessoa tem acesso ao curso. Sem curso, o bloco fica genérico.
+  - **Qual curso (2026-10-09):** primeiro os **cursos por matéria** que a pessoa tem (`DISCIPLINAS[].cursos` no gerador: `enem-matematica`, `enem-historia`, `enem-redacao`...). Em Português, o bloco escolhe entre Português, Literatura e Artes e Ed. Física pelo peso (35, 20, 12), sempre o mesmo para o mesmo bloco; na Língua estrangeira, a língua da Avaliação Diagnóstica (sem ela, inglês). O mapa abre **já na próxima aula não feita** (módulo aberto e foco no botão). Sem nenhum curso por matéria, vale o de antes: a fase da disciplina no "Enem e Vestibular · Comece por aqui", com o foco nela. A conta do plano não muda.
   - O texto sugere usar o Modo Foco.
 - **Ficou para trás:** "A vida aconteceu, tudo bem." O botão **Redistribuir**:
   - leva os blocos não feitos do passado para as próximas vagas livres;

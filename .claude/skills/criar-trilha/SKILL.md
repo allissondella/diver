@@ -96,6 +96,7 @@ Depois de gerar e salvar as questões no JSON da trilha (e passar no autocheck d
    node scripts/fila.mjs enviar data/trilhas/<trilha>.json --materia <materia> --fase <fase>
    ```
    (`--ambiente producao` só quando for para a produção; o padrão é o ambiente de testes. Lotes de até 20 questões; mais que isso vira vários lotes.)
+   Curso grande, em ondas (ex.: Enem por matéria): acrescente `--onda <nome>` (ex.: `--onda 1A`) para o admin aprovar a onda inteira com uma senha e um teto em US$ (`docs/MOTOR_DIVER.md`, seção 11.8).
 3. Depois que o admin aprovar e o lote ficar **Concluído**, o usuário roda `node scripts/fila.mjs baixar <id-do-lote>`: isso grava o bloco `validacao` nas questões da trilha, move as `revisar_humano` para `emRevisao` e adiciona as aprovadas em `data/acervo/<materia>.json`. Revise o `git diff` e faça o commit.
 4. Questões reprovadas pela 1ª vez: corrija (fato: só o trecho apontado; lógica: reescreva do zero) e envie de novo só elas (`--ids`).
 

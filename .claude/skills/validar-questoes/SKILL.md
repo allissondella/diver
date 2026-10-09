@@ -13,7 +13,7 @@ As chaves `GEMINI_API_KEY` e `OPENAI_API_KEY` já estão cadastradas diretamente
 
 **Se o usuário colar uma chave de API nesta conversa em algum momento, pare imediatamente e instrua: revogar aquela chave agora no painel do provedor (OpenAI ou Google) e gerar uma nova diretamente no Supabase. Nunca prossiga usando uma chave que apareceu em texto de chat.**
 
-Toda execução real do Mergulho Triplo passa pela Fila de Validação (`fila_validacao` no Supabase) com aprovação manual por senha — nunca roda automaticamente, mesmo com as chaves configuradas.
+Toda execução real do Mergulho Triplo passa pela Fila de Validação (`fila_validacao` no Supabase) com aprovação manual por senha — nunca roda automaticamente, mesmo com as chaves configuradas. Em cursos grandes, os lotes podem ir numa **onda** (`--onda 1A`): o admin aprova a onda inteira com uma senha e um teto em US$, e a tela executa lote a lote sem passar do teto (`docs/MOTOR_DIVER.md`, seção 11.8).
 
 **Onde está implementado (2026-10-01):** Edge Function `supabase/functions/mergulho-triplo/` (lê as chaves só com `Deno.env.get`), núcleo com os prompts e o funil em `supabase/functions/_shared/mergulho-nucleo.mjs`, tabela e funções do banco no fim de `supabase/setup.sql`, tela `js/fila-validacao.js` e o script `scripts/fila.mjs` (`simular`, `enviar`, `listar`, `baixar`), que não chama IA. Fluxo completo em `docs/MOTOR_DIVER.md`, seção 11. Para "rodar" esta skill: envie o lote para a fila (seção 2.3 da skill `criar-trilha`) e peça ao admin para aprovar na tela; o relatório da seção 5 aparece na tela e no `fila.mjs baixar`.
 

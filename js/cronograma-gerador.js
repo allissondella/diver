@@ -23,31 +23,42 @@ const CronogramaGerador = (() => {
    * segue o mapa tema × peso das provas de 2019 a 2025, docs/cadernos/enem-vestibular.md).
    * temas = sugestões para o bloco, na ordem do que mais cai. curso = fase do Diver para estudar.
    */
+  /*
+   * curso: o "Comece por aqui" (enem-vestibular), que todo mundo do Enem tem.
+   * cursos (2026-10-09): os cursos por matéria. O Cronograma usa o primeiro que a pessoa tem;
+   * com mais de um (Português, Literatura, Artes), reveza pelo peso; na língua estrangeira, segue a
+   * língua escolhida na Avaliação Diagnóstica. Não entra na conta do plano: só diz onde estudar.
+   */
   const DISCIPLINAS = [
     { id: 'matematica', nome: 'Matemática', area: 'Matemática', peso: 45,
       temas: ['Estatística e leitura de dados', 'Geometria plana', 'Porcentagem e matemática financeira', 'Geometria espacial', 'Razão, proporção e escala', 'Probabilidade e contagem'],
-      curso: { trilha: 'enem-vestibular', fase: 'matematica-1' } },
+      curso: { trilha: 'enem-vestibular', fase: 'matematica-1' }, cursos: [{ trilha: 'enem-matematica' }] },
     { id: 'portugues', nome: 'Português e Literatura', area: 'Linguagens', peso: 40,
       temas: ['Interpretação e gêneros', 'Literatura', 'Artes', 'Variação e gramática', 'Tecnologias e comunicação'],
-      curso: { trilha: 'enem-vestibular', fase: 'linguagens-1' } },
-    { id: 'lingua-estrangeira', nome: 'Língua estrangeira', area: 'Linguagens', peso: 5, temas: ['Leitura e interpretação'] },
+      curso: { trilha: 'enem-vestibular', fase: 'linguagens-1' },
+      cursos: [{ trilha: 'enem-portugues', peso: 35 }, { trilha: 'enem-literatura', peso: 20 }, { trilha: 'enem-artes-ef', peso: 12 }] },
+    { id: 'lingua-estrangeira', nome: 'Língua estrangeira', area: 'Linguagens', peso: 5, temas: ['Leitura e interpretação'],
+      curso: { trilha: 'enem-vestibular', fase: 'linguagens-1' }, cursos: [{ trilha: 'enem-ingles', lingua: 'ingles' }, { trilha: 'enem-espanhol', lingua: 'espanhol' }] },
     { id: 'historia', nome: 'História', area: 'Humanas', peso: 15,
       temas: ['História do Brasil', 'História geral'],
-      curso: { trilha: 'enem-vestibular', fase: 'humanas-1' } },
-    { id: 'geografia', nome: 'Geografia', area: 'Humanas', peso: 18, temas: ['Espaço urbano, agrário e economia', 'Natureza e ambiente'] },
-    { id: 'filosofia', nome: 'Filosofia', area: 'Humanas', peso: 6, temas: [] },
-    { id: 'sociologia', nome: 'Sociologia', area: 'Humanas', peso: 6, temas: [] },
+      curso: { trilha: 'enem-vestibular', fase: 'humanas-1' }, cursos: [{ trilha: 'enem-historia' }] },
+    { id: 'geografia', nome: 'Geografia', area: 'Humanas', peso: 18, temas: ['Espaço urbano, agrário e economia', 'Natureza e ambiente'],
+      curso: { trilha: 'enem-vestibular', fase: 'humanas-1' }, cursos: [{ trilha: 'enem-geografia' }] },
+    { id: 'filosofia', nome: 'Filosofia', area: 'Humanas', peso: 6, temas: [],
+      curso: { trilha: 'enem-vestibular', fase: 'humanas-1' }, cursos: [{ trilha: 'enem-filosofia' }] },
+    { id: 'sociologia', nome: 'Sociologia', area: 'Humanas', peso: 6, temas: [],
+      curso: { trilha: 'enem-vestibular', fase: 'humanas-1' }, cursos: [{ trilha: 'enem-sociologia' }] },
     { id: 'fisica', nome: 'Física', area: 'Natureza', peso: 13,
       temas: ['Mecânica', 'Ondas e óptica', 'Eletricidade', 'Calor e energia'],
-      curso: { trilha: 'enem-vestibular', fase: 'natureza-1' } },
+      curso: { trilha: 'enem-vestibular', fase: 'natureza-1' }, cursos: [{ trilha: 'enem-fisica' }] },
     { id: 'quimica', nome: 'Química', area: 'Natureza', peso: 16,
       temas: ['Reações e estequiometria', 'Ácidos e bases', 'Química orgânica'],
-      curso: { trilha: 'enem-vestibular', fase: 'natureza-1' } },
+      curso: { trilha: 'enem-vestibular', fase: 'natureza-1' }, cursos: [{ trilha: 'enem-quimica' }] },
     { id: 'biologia', nome: 'Biologia', area: 'Natureza', peso: 16,
       temas: ['Saúde e fisiologia', 'Ecologia', 'Genética'],
-      curso: { trilha: 'enem-vestibular', fase: 'natureza-1' } },
+      curso: { trilha: 'enem-vestibular', fase: 'natureza-1' }, cursos: [{ trilha: 'enem-biologia' }] },
     { id: 'redacao', nome: 'Redação', area: 'Redação', peso: 0, temas: ['Uma redação completa', 'Proposta de intervenção', 'Repertório e argumentos'],
-      curso: { trilha: 'enem-vestibular', fase: 'redacao-1' } },
+      curso: { trilha: 'enem-vestibular', fase: 'redacao-1' }, cursos: [{ trilha: 'enem-redacao' }] },
   ];
   const AREAS_SIMULADO = ['Linguagens', 'Humanas', 'Natureza', 'Matemática'];
   const PESO_ESCOLHIDO = { muito: 30, medio: 18, pouco: 8 }; // outras provas: o aluno diz quanto cai

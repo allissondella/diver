@@ -437,6 +437,12 @@ alter table public.fila_validacao add column if not exists concluido_em timestam
 alter table public.fila_validacao add column if not exists resultado jsonb;       -- validações, itens aprovados para o acervo, relatório
 alter table public.fila_validacao add column if not exists custo_real_usd numeric(10,4);
 alter table public.fila_validacao add column if not exists erro text;
+-- Onda (2026-10-09): rótulo opcional que junta lotes de um mesmo pacote de trabalho ("1A", "1B"...).
+-- onda_aprovacao aponta a autorização da onda (fila_ondas) que aprovou o lote; só o banco preenche.
+alter table public.fila_validacao add column if not exists onda text;
+alter table public.fila_validacao drop constraint if exists fila_validacao_onda_formato;
+alter table public.fila_validacao add constraint fila_validacao_onda_formato
+  check (onda is null or onda ~ '^[A-Za-z0-9][A-Za-z0-9._-]{0,39}$');
 create index if not exists fila_validacao_status on public.fila_validacao (status, criado_em desc);
 
 -- Todo lote nasce 'pendente', sem aprovação nem resultado; a quantidade vem do próprio conteúdo.
@@ -457,6 +463,7 @@ begin
   new.resultado := null;
   new.custo_real_usd := null;
   new.erro := null;
+  new.onda_aprovacao := null;
   new.quantidade_questoes := jsonb_array_length(new.conteudo_pendente->'questoes');
   -- Trava: questão do Enem NUNCA ganha variante (licença CC BY-ND, "Sem Derivações";
   -- docs/CONTEUDO_CURSINHO.md 1.1). Variante precisa trazer a origem da original em "originais";
@@ -566,6 +573,156 @@ begin
 end;
 $$;
 
+-- ---------- Aprovar uma ONDA inteira (2026-10-09; docs/MOTOR_DIVER.md seção 11.8) ----------
+-- Uma senha aprova todos os lotes pendentes de uma onda, com um TETO em US$ escolhido pelo admin.
+-- A execução segue lote a lote com a tela aberta; antes de CADA lote o banco confere, numa operação
+-- só (fila_onda_iniciar_lote, chamada só pela Edge Function), se a autorização está ativa, dentro da
+-- validade e se o gasto + o custo estimado do lote cabem no teto. Pausar não pede senha.
+create table if not exists public.fila_ondas (
+  id uuid primary key default gen_random_uuid(),
+  onda text not null check (onda ~ '^[A-Za-z0-9][A-Za-z0-9._-]{0,39}$'),
+  teto_usd numeric(10,4) not null check (teto_usd > 0 and teto_usd < 1000),
+  lotes integer not null default 0,
+  custo_estimado_usd numeric(10,4) not null default 0,
+  status text not null default 'ativa' check (status in ('ativa', 'pausada', 'encerrada')),
+  aprovado_por uuid references public.perfis (id) on delete set null,
+  aprovado_em timestamptz not null default now(),
+  expira_em timestamptz not null,
+  motivo_fim text
+);
+create index if not exists fila_ondas_onda on public.fila_ondas (onda, aprovado_em desc);
+alter table public.fila_validacao add column if not exists onda_aprovacao uuid references public.fila_ondas (id) on delete set null;
+
+alter table public.fila_ondas enable row level security;
+drop policy if exists "ondas: admin le" on public.fila_ondas;
+create policy "ondas: admin le" on public.fila_ondas
+  for select to authenticated using (public.eh_admin());
+-- (só leitura para o app; criar, pausar e gastar só pelas funções abaixo)
+revoke all on public.fila_ondas from anon, authenticated;
+grant select on public.fila_ondas to authenticated;
+
+-- Quanto a autorização já gastou: o custo real dos lotes dela e, para os que estão executando agora,
+-- o maior entre o real e o estimado (reserva). Conservador de propósito: nunca passa do teto.
+create or replace function public.fila_onda_gasto(p_onda uuid)
+returns numeric
+language sql stable security definer
+set search_path = public
+as $$
+  select coalesce(sum(case when status = 'executando'
+                           then greatest(coalesce(custo_real_usd, 0), custo_estimado_usd)
+                           else coalesce(custo_real_usd, 0) end), 0)
+    from public.fila_validacao
+   where onda_aprovacao = p_onda;
+$$;
+
+-- Aprovar a onda: admin + senha nos últimos 5 minutos. Entram todos os lotes da onda que ainda não
+-- rodaram (pendentes e aprovados). Aprovar de novo (ex.: para subir o teto) encerra a aprovação
+-- anterior: o teto vale por aprovação. Vale por 12 horas.
+create or replace function public.fila_aprovar_onda(p_onda text, p_teto numeric)
+returns jsonb
+language plpgsql security definer
+set search_path = public
+as $$
+declare
+  v_id uuid;
+  v_lotes integer;
+  v_custo numeric;
+  v_expira timestamptz := now() + interval '12 hours';
+begin
+  if not public.eh_admin() then
+    raise exception 'Só o admin aprova ondas da fila.' using errcode = '42501';
+  end if;
+  if not public.senha_recente(300) then
+    raise exception 'Confirme sua senha para aprovar (vale por 5 minutos).' using errcode = '42501';
+  end if;
+  if p_onda is null or p_onda !~ '^[A-Za-z0-9][A-Za-z0-9._-]{0,39}$' then
+    raise exception 'Nome de onda inválido.';
+  end if;
+  if p_teto is null or p_teto <= 0 or p_teto >= 1000 then
+    raise exception 'O teto precisa ser maior que zero e menor que US$ 1.000.';
+  end if;
+  update public.fila_ondas set status = 'encerrada', motivo_fim = 'Substituída por uma nova aprovação.'
+   where onda = p_onda and status = 'ativa';
+  insert into public.fila_ondas (onda, teto_usd, aprovado_por, expira_em)
+       values (p_onda, round(p_teto, 4), auth.uid(), v_expira)
+    returning id into v_id;
+  update public.fila_validacao
+     set status = 'aprovado', aprovado_por = auth.uid(), aprovado_em = now(), erro = null, onda_aprovacao = v_id
+   where onda = p_onda and status in ('pendente', 'aprovado');
+  get diagnostics v_lotes = row_count;
+  if v_lotes = 0 then
+    raise exception 'Esta onda não tem lote pendente para aprovar.';
+  end if;
+  select coalesce(sum(custo_estimado_usd), 0) into v_custo from public.fila_validacao where onda_aprovacao = v_id;
+  update public.fila_ondas set lotes = v_lotes, custo_estimado_usd = v_custo where id = v_id;
+  return jsonb_build_object('id', v_id, 'onda', p_onda, 'lotes', v_lotes, 'custo_estimado_usd', v_custo,
+                            'teto_usd', round(p_teto, 4), 'expira_em', v_expira);
+end;
+$$;
+
+-- Pausar: não custa nada, então não pede senha. O lote que já está executando termina; os outros
+-- voltam a ser lotes aprovados comuns (executar um a um pede a senha, como antes).
+create or replace function public.fila_onda_pausar(p_id uuid)
+returns void
+language plpgsql security definer
+set search_path = public
+as $$
+begin
+  if not public.eh_admin() then
+    raise exception 'Só o admin mexe na fila.' using errcode = '42501';
+  end if;
+  update public.fila_ondas set status = 'pausada', motivo_fim = 'Pausada pelo admin.'
+   where id = p_id and status = 'ativa';
+  if not found then
+    raise exception 'Esta onda não está ativa.';
+  end if;
+  update public.fila_validacao set onda_aprovacao = null
+   where onda_aprovacao = p_id and status = 'aprovado';
+end;
+$$;
+
+-- Só a Edge Function chama (service_role): trava a autorização, confere validade e teto e passa o
+-- lote de 'aprovado' para 'executando' numa operação só. Devolve { ok, motivo }.
+create or replace function public.fila_onda_iniciar_lote(p_id uuid, p_usuario uuid)
+returns jsonb
+language plpgsql security definer
+set search_path = public
+as $$
+declare
+  l public.fila_validacao%rowtype;
+  o public.fila_ondas%rowtype;
+  v_gasto numeric;
+begin
+  select * into l from public.fila_validacao where id = p_id;
+  if not found or l.onda_aprovacao is null then
+    return jsonb_build_object('ok', false, 'motivo', 'Este lote não está numa onda aprovada.');
+  end if;
+  select * into o from public.fila_ondas where id = l.onda_aprovacao for update;
+  if o.status <> 'ativa' then
+    return jsonb_build_object('ok', false, 'motivo', 'A onda foi pausada ou encerrada.');
+  end if;
+  if o.expira_em <= now() then
+    update public.fila_ondas set status = 'encerrada', motivo_fim = 'Venceu (a aprovação vale 12 horas).' where id = o.id;
+    update public.fila_validacao set onda_aprovacao = null where onda_aprovacao = o.id and status = 'aprovado';
+    return jsonb_build_object('ok', false, 'motivo', 'A aprovação da onda venceu (vale 12 horas). Aprove a onda de novo para continuar.');
+  end if;
+  if l.status <> 'aprovado' then
+    return jsonb_build_object('ok', false, 'motivo', 'Este lote não está aprovado (ou já está executando).');
+  end if;
+  v_gasto := public.fila_onda_gasto(o.id);
+  -- o lote conta inteiro (estimado), mesmo que já tenha gasto parte numa execução anterior
+  if v_gasto + l.custo_estimado_usd > o.teto_usd then
+    return jsonb_build_object('ok', false, 'teto', true,
+      'motivo', format('O teto da onda chegou: gasto US$ %s + este lote (até US$ %s) passaria de US$ %s. Aprove a onda de novo com um teto maior para continuar.',
+                       round(v_gasto, 4), round(l.custo_estimado_usd, 4), round(o.teto_usd, 4)));
+  end if;
+  update public.fila_validacao
+     set status = 'executando', iniciado_em = now(), executado_por = p_usuario, erro = null
+   where id = p_id and status = 'aprovado';
+  return jsonb_build_object('ok', true, 'gasto_usd', v_gasto, 'teto_usd', o.teto_usd);
+end;
+$$;
+
 revoke all on function public.senha_recente(integer) from public, anon;
 revoke all on function public.fila_aprovar(uuid) from public, anon;
 revoke all on function public.fila_rejeitar(uuid) from public, anon;
@@ -574,6 +731,14 @@ grant execute on function public.senha_recente(integer) to authenticated;
 grant execute on function public.fila_aprovar(uuid) to authenticated;
 grant execute on function public.fila_rejeitar(uuid) to authenticated;
 grant execute on function public.fila_destravar(uuid) to authenticated;
+revoke all on function public.fila_onda_gasto(uuid) from public, anon, authenticated;
+revoke all on function public.fila_aprovar_onda(text, numeric) from public, anon;
+revoke all on function public.fila_onda_pausar(uuid) from public, anon;
+revoke all on function public.fila_onda_iniciar_lote(uuid, uuid) from public, anon, authenticated;
+grant execute on function public.fila_onda_gasto(uuid) to service_role;
+grant execute on function public.fila_aprovar_onda(text, numeric) to authenticated;
+grant execute on function public.fila_onda_pausar(uuid) to authenticated;
+grant execute on function public.fila_onda_iniciar_lote(uuid, uuid) to service_role;
 
 -- ---------- Log de atividade (docs/ATIVIDADE.md) ----------
 -- Cada coisa que o aluno faz vira uma linha: responder questão, terminar jogo, sessão de Mergulho,

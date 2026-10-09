@@ -224,3 +224,48 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .fila-lista { gap: var(--ritmo-cartoes); margin-top: var(--esp-4); }
 .fila-filtros { margin-top: var(--esp-3); }
+
+/* ---------- Mapa por módulo (cursos por matéria: fases com "modulo") ---------- */
+.mapa--modulos::before { display: none; }
+.mapa--modulos > li + li { margin-top: var(--esp-3); }
+.mapa__atalho { display: flex; justify-content: flex-start; }
+.modulo__caixa { border: 1px solid var(--borda); border-radius: var(--raio); background: var(--superficie); }
+.modulo--feito .modulo__caixa { border-color: var(--turquesa); }
+.modulo__cabeca {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2) var(--esp-4);
+  min-height: 56px; padding: var(--esp-3) var(--esp-4); cursor: pointer; list-style: none; border-radius: var(--raio);
+}
+.modulo__cabeca::-webkit-details-marker { display: none; }
+.modulo__caixa > .modulo__cabeca::after { content: none; }
+.modulo__cabeca::before { content: "›"; font-size: 1.4rem; font-weight: 800; color: var(--turquesa-claro); transition: transform var(--transicao); }
+.modulo__caixa[open] > .modulo__cabeca::before { transform: rotate(90deg); }
+.modulo__cabeca:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.modulo__nome { flex: 1 1 220px; font-weight: 800; font-size: 1.05rem; }
+.modulo__progresso { display: inline-flex; align-items: center; gap: var(--esp-2); font-size: 0.85rem; color: var(--texto-suave); white-space: nowrap; }
+.modulo__barra { display: inline-block; width: 90px; height: 6px; border-radius: 999px; background: var(--borda); overflow: hidden; }
+.modulo__barra > span { display: block; height: 100%; background: var(--turquesa); }
+.modulo__aulas { padding: 0 var(--esp-3) var(--esp-4); }
+@media (prefers-reduced-motion: reduce) { .modulo__cabeca::before { transition: none; } }
+
+/* ---------- Admin: pacote "Enem completo" ---------- */
+.check--pacote { flex-basis: 100%; border-radius: var(--raio-pequeno); justify-content: flex-start; text-align: left; border-color: var(--turquesa); }
+.check--pacote:has(input:checked) { background: var(--superficie-turquesa); }
+.check--pacote input { flex-shrink: 0; }
+.admin-pacotes { display: grid; gap: var(--esp-2); }
+.admin-pacotes p { margin: 0; }
+
+/* ---------- Fila de Validação: ondas (js/fila-validacao.js) ---------- */
+.fila-ondas { display: grid; gap: var(--ritmo-cartoes); }
+.fila-ondas:empty { display: none; }
+.fila-ondas .secao-titulo { margin: 0; }
+.fila-onda { display: grid; gap: var(--esp-3); border-color: var(--turquesa); }
+.fila-onda p { margin: 0; }
+.fila-onda__linha { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); }
+.fila-onda__teto { display: grid; gap: var(--esp-2); }
+.fila-onda__teto strong, .fila-onda__custo { color: var(--amarelo); }
+.fila-onda__barra { height: 8px; border-radius: 999px; background: var(--borda); overflow: hidden; }
+.fila-onda__barra > span { display: block; height: 100%; min-width: 4px; border-radius: inherit; background: linear-gradient(90deg, var(--turquesa), var(--amarelo)); transition: width 400ms ease; }
+.fila-onda__progresso { display: flex; align-items: center; gap: var(--esp-2); font-weight: 700; color: var(--turquesa-claro); }
+.fila-onda__progresso .icone { flex: none; width: 20px; height: 20px; }
+.fila-envio__dica { font-size: 0.8rem; }
+@media (prefers-reduced-motion: reduce) { .fila-onda__barra > span { transition: none; } }

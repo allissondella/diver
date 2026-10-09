@@ -98,6 +98,7 @@ const Nuvem = (() => {
     if (!resp.ok) {
       const erro = new Error(mensagemDeErro(dados, resp.status));
       erro.status = resp.status;
+      erro.dados = dados; // o corpo da resposta (ex.: { erro, teto } da função mergulho-triplo)
       throw erro;
     }
     return dados;
@@ -323,7 +324,7 @@ const Nuvem = (() => {
     papel,
     ehAdmin: () => papel() === 'admin',
     ehProfessor: () => papel() === 'professor',
-    matriculas: () => [...matriculas],
+    matriculas: () => matriculas.filter((c) => !c.startsWith('pacote:')), // marcadores de pacote (Admin) não são cursos
     entrar,
     sair,
     carregarPerfil,
