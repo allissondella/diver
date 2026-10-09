@@ -253,3 +253,19 @@ h1, h2, h3 { text-wrap: balance; }
 .check--pacote input { flex-shrink: 0; }
 .admin-pacotes { display: grid; gap: var(--esp-2); }
 .admin-pacotes p { margin: 0; }
+
+/* ---------- Fila de Validação: ondas (js/fila-validacao.js) ---------- */
+.fila-ondas { display: grid; gap: var(--ritmo-cartoes); }
+.fila-ondas:empty { display: none; }
+.fila-ondas .secao-titulo { margin: 0; }
+.fila-onda { display: grid; gap: var(--esp-3); border-color: var(--turquesa); }
+.fila-onda p { margin: 0; }
+.fila-onda__linha { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); }
+.fila-onda__teto { display: grid; gap: var(--esp-2); }
+.fila-onda__teto strong, .fila-onda__custo { color: var(--amarelo); }
+.fila-onda__barra { height: 8px; border-radius: 999px; background: var(--borda); overflow: hidden; }
+.fila-onda__barra > span { display: block; height: 100%; min-width: 4px; border-radius: inherit; background: linear-gradient(90deg, var(--turquesa), var(--amarelo)); transition: width 400ms ease; }
+.fila-onda__progresso { display: flex; align-items: center; gap: var(--esp-2); font-weight: 700; color: var(--turquesa-claro); }
+.fila-onda__progresso .icone { flex: none; width: 20px; height: 20px; }
+.fila-envio__dica { font-size: 0.8rem; }
+@media (prefers-reduced-motion: reduce) { .fila-onda__barra > span { transition: none; } }

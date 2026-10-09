@@ -282,8 +282,12 @@ function slugMateria(nome) {
  * Com variantes: manda o bloco "variantes" e aplica a trava 1 de 3 (nunca variante de questão do Enem,
  * nunca variante igual à original). Só os campos da questão viajam (questaoLimpa).
  */
-async function montarLotes(trilha, { materia, arquivo, fase = null, ids = null, variantes = false, refazer = false }) {
+/** Nome de onda ("1A", "1B", "mat-m1"...): o mesmo formato que o banco aceita (fila_validacao.onda). */
+const ONDA = /^[A-Za-z0-9][A-Za-z0-9._-]{0,39}$/;
+
+async function montarLotes(trilha, { materia, arquivo, fase = null, ids = null, variantes = false, refazer = false, onda = null }) {
   const slug = slugMateria(materia);
+  if (onda && !ONDA.test(onda)) throw new Error(`nome de onda inválido: "${onda}" (use letras, números, ponto, hífen ou _, até 40)`);
   const questoes = new Map((trilha.questoes || []).map((q) => [q.id, q]));
   const fonte = variantes ? trilha.variantes || [] : trilha.questoes || [];
   if (variantes && !fonte.length) throw new Error('a trilha não tem bloco "variantes"');
@@ -315,7 +319,9 @@ async function montarLotes(trilha, { materia, arquivo, fase = null, ids = null, 
       const proibidas = variantesProibidas(conteudo); // a mesma regra do servidor, conferida antes de enviar
       if (proibidas.length) throw new Error(`lote recusado: ${proibidas.map((p) => `${p.id}: ${p.motivo}`).join('; ')}`);
     }
-    lotes.push({ trilha_id: trilha.id, materia: slug, quantidade_questoes: parte.length, custo_estimado_usd: estimarCusto(parte), conteudo_pendente: conteudo });
+    const lote = { trilha_id: trilha.id, materia: slug, quantidade_questoes: parte.length, custo_estimado_usd: estimarCusto(parte), conteudo_pendente: conteudo };
+    if (onda) lote.onda = onda;
+    lotes.push(lote);
   }
   return { lotes, puladas };
 }
@@ -555,6 +561,11 @@ function relatorio(questoes, resultado) {
  *   4. o lote não tem variante de questão do Enem (processarLote recusa sem custo; o banco já
  *      recusa na entrada da fila — licença Sem Derivações, docs/MOTOR_DIVER.md seção 12).
  *
+ * Lote de uma ONDA aprovada (fila_aprovar_onda, com a senha e um teto em US$): os itens 2 e 3 viram a
+ * função do banco fila_onda_iniciar_lote, que confere numa operação só se a autorização está ativa,
+ * se não venceu (12 h) e se o gasto da onda + o custo estimado do lote cabem no teto. Assim a tela
+ * executa a onda lote a lote sem pedir a senha a cada 5 minutos, e nunca passa do teto aprovado.
+ *
  * Chaves: GEMINI_API_KEY e OPENAI_API_KEY vêm SÓ de Deno.env.get (Secrets das Edge Functions,
  * cadastrados pelo admin no painel do Supabase). Nunca de tabela, arquivo ou resposta; o valor
  * nunca aparece em log nem em mensagem de erro. A ação "status" diz apenas se cada chave EXISTE.
@@ -639,7 +650,6 @@ Deno.serve(async (req) => {
 
   const c = claims(token);
   if (c.sub !== quem.user.id) return resposta(401, { erro: 'Sessão inválida. Entre de novo.' });
-  if (!senhaRecente(c)) return resposta(403, { erro: 'Confirme sua senha de novo para executar (vale por 5 minutos).' });
   if (!corpo.id || !UUID.test(corpo.id)) return resposta(400, { erro: 'Lote inválido.' });
 
   const geminiKey = Deno.env.get('GEMINI_API_KEY');
@@ -648,13 +658,26 @@ Deno.serve(async (req) => {
     return resposta(500, { erro: `Falta cadastrar nos Secrets das Edge Functions: ${[!geminiKey && 'GEMINI_API_KEY', !openaiKey && 'OPENAI_API_KEY'].filter(Boolean).join(' e ')}.` });
   }
 
-  // aprovado → executando numa operação só: se outro clique chegou antes, este não roda.
-  const { data: linhas, error: erroTrava } = await db.from('fila_validacao')
-    .update({ status: 'executando', iniciado_em: new Date().toISOString(), executado_por: quem.user.id, erro: null })
-    .eq('id', corpo.id).eq('status', 'aprovado').select('*');
-  if (erroTrava) return resposta(500, { erro: 'Não consegui travar o lote para execução.' });
-  if (!linhas || !linhas.length) return resposta(409, { erro: 'Este lote não está aprovado (ou já está executando).' });
-  const linha = linhas[0];
+  const { data: alvo } = await db.from('fila_validacao').select('onda_aprovacao').eq('id', corpo.id).maybeSingle();
+  let linha;
+  if (alvo && alvo.onda_aprovacao) {
+    // Lote de onda aprovada: o banco confere validade e teto e passa para 'executando' numa operação só.
+    const { data: inicio, error: erroOnda } = await db.rpc('fila_onda_iniciar_lote', { p_id: corpo.id, p_usuario: quem.user.id });
+    if (erroOnda) return resposta(500, { erro: 'Não consegui conferir a onda para execução.' });
+    if (!inicio || !inicio.ok) return resposta(409, { erro: (inicio && inicio.motivo) || 'A onda não permite executar este lote.', teto: !!(inicio && inicio.teto) });
+    const { data: l } = await db.from('fila_validacao').select('*').eq('id', corpo.id).maybeSingle();
+    if (!l) return resposta(500, { erro: 'Não encontrei o lote depois de travar.' });
+    linha = l;
+  } else {
+    if (!senhaRecente(c)) return resposta(403, { erro: 'Confirme sua senha de novo para executar (vale por 5 minutos).' });
+    // aprovado → executando numa operação só: se outro clique chegou antes, este não roda.
+    const { data: linhas, error: erroTrava } = await db.from('fila_validacao')
+      .update({ status: 'executando', iniciado_em: new Date().toISOString(), executado_por: quem.user.id, erro: null })
+      .eq('id', corpo.id).eq('status', 'aprovado').select('*');
+    if (erroTrava) return resposta(500, { erro: 'Não consegui travar o lote para execução.' });
+    if (!linhas || !linhas.length) return resposta(409, { erro: 'Este lote não está aprovado (ou já está executando).' });
+    linha = linhas[0];
+  }
 
   const clientes = criarClientes({ geminiKey, openaiKey });
   const hoje = new Date().toISOString().slice(0, 10);

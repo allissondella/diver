@@ -7,6 +7,10 @@
  * O navegador nunca vê chave de IA: a tela só pergunta à função SE as chaves existem nos Secrets.
  * "Mandar para a fila" cria lotes 'pendente' (sem custo) com as mesmas regras do scripts/fila.mjs:
  * as duas usam montarLotes do núcleo compartilhado (supabase/functions/_shared/mergulho-nucleo.mjs).
+ *
+ * ONDAS (2026-10-09; docs/MOTOR_DIVER.md seção 11.8): lotes com o mesmo rótulo "onda" ("1A"...) são
+ * aprovados juntos com UMA senha e um TETO em US$ (fila_aprovar_onda). A tela executa a onda lote a lote
+ * enquanto fica aberta; antes de cada lote o banco confere validade (12 h) e teto. Pausar não pede senha.
  */
 const FilaValidacao = (() => {
   const { h, icone, limpar } = UI;
@@ -18,7 +22,7 @@ const FilaValidacao = (() => {
     rejeitado: { nome: 'Rejeitado', classe: '' },
   };
   const FILTROS = [['pendente', 'Pendentes'], ['andamento', 'Em andamento'], ['concluido', 'Concluídos'], ['rejeitado', 'Rejeitados'], ['', 'Todos']];
-  const estado = { filtro: 'pendente', lotes: [], abertos: new Set(), timer: null, secao: null };
+  const estado = { filtro: 'pendente', lotes: [], ondas: [], abertos: new Set(), timer: null, secao: null, rodando: null, progresso: '' };
   const dolar = (v) => `US$ ${Number(v || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 4 })}`;
   const quando = (d) => (d ? new Date(d).toLocaleString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : '—');
   const nomeTrilha = (id) => (App.trilhas().find((t) => t.id === id) || {}).nome || id;
@@ -45,6 +49,7 @@ const FilaValidacao = (() => {
         chaves,
         h('p', { class: 'texto-suave fila-info__nota', text: 'As chaves ficam só nos Secrets das Edge Functions do Supabase (cadastradas por você no painel). Esta tela nunca mostra nem guarda o valor delas.' })),
       cartaoEnviar(),
+      h('div', { class: 'fila-ondas', id: 'fila-ondas', 'aria-live': 'polite' }),
       h('div', { class: 'acoes-linha' }, h('h2', { class: 'secao-titulo secao-titulo--linha', text: 'Lotes' }),
         h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => carregar() }, icone('i-revisao'), 'Atualizar')),
       filtros,
@@ -80,6 +85,7 @@ const FilaValidacao = (() => {
       h('option', { value: 'questoes', text: 'Questões do curso' }),
       h('option', { value: 'variantes', text: 'Variantes (versões novas para a Revisão)' }));
     const materia = h('input', { class: 'campo', id: 'fila-env-materia', autocomplete: 'off', spellcheck: 'false' });
+    const onda = h('input', { class: 'campo', id: 'fila-env-onda', autocomplete: 'off', spellcheck: 'false', maxlength: '40', placeholder: 'ex.: 1A (opcional)', 'aria-describedby': 'fila-env-onda-dica' });
     const resumo = h('div', { class: 'fila-envio__resumo', 'aria-live': 'polite' });
     const enviar = h('button', { type: 'submit', class: 'botao botao--primario' }, icone('i-upload'), 'Mandar para a fila');
     const trilhaEscolhida = () => trilhas.find((t) => t.id === selTrilha.value);
@@ -103,7 +109,7 @@ const FilaValidacao = (() => {
       const resp = await fetch(arquivo, { cache: 'no-cache' });
       if (!resp.ok) throw new Error(`Não encontrei o arquivo ${arquivo} do curso.`);
       const n = await carregarNucleo();
-      return n.montarLotes(await resp.json(), { materia: materia.value, arquivo, fase: selFase.value || null, variantes: selTipo.value === 'variantes' });
+      return n.montarLotes(await resp.json(), { materia: materia.value, arquivo, fase: selFase.value || null, variantes: selTipo.value === 'variantes', onda: onda.value.trim() || null });
     }
 
     const form = h('form', { class: 'fila-envio__form', onsubmit: async (e) => {
@@ -121,7 +127,7 @@ const FilaValidacao = (() => {
         const unidade = selTipo.value === 'variantes' ? ['variante', 'variantes'] : ['questão', 'questões'];
         const ok = await UI.confirmar({
           titulo: `Mandar ${UI.plural(itens, ...unidade)} para a fila?`,
-          texto: `${UI.plural(lotes.length, 'lote', 'lotes')} · custo estimado: ${dolar(custo)}.\n\nNada roda nem é cobrado agora: o lote fica "Pendente" até você aprovar com a senha.`,
+          texto: `${UI.plural(lotes.length, 'lote', 'lotes')}${lotes[0].onda ? ` na onda ${lotes[0].onda}` : ''} · custo estimado: ${dolar(custo)}.\n\nNada roda nem é cobrado agora: o lote fica "Pendente" até você aprovar com a senha.`,
           sim: 'Mandar para a fila', foco: 'sim',
         });
         if (!ok) { resumo.replaceChildren(); return; }
@@ -141,7 +147,9 @@ const FilaValidacao = (() => {
       h('div', { class: 'campo-grupo' }, h('label', { class: 'rotulo-campo', for: 'fila-env-trilha', text: 'Curso' }), selTrilha),
       h('div', { class: 'campo-grupo' }, h('label', { class: 'rotulo-campo', for: 'fila-env-fase', text: 'Fase' }), selFase),
       h('div', { class: 'campo-grupo' }, h('label', { class: 'rotulo-campo', for: 'fila-env-tipo', text: 'O que validar' }), selTipo),
-      h('div', { class: 'campo-grupo' }, h('label', { class: 'rotulo-campo', for: 'fila-env-materia', text: 'Matéria do acervo' }), materia)),
+      h('div', { class: 'campo-grupo' }, h('label', { class: 'rotulo-campo', for: 'fila-env-materia', text: 'Matéria do acervo' }), materia),
+      h('div', { class: 'campo-grupo' }, h('label', { class: 'rotulo-campo', for: 'fila-env-onda', text: 'Onda' }), onda,
+        h('span', { class: 'texto-suave fila-envio__dica', id: 'fila-env-onda-dica', text: 'Lotes da mesma onda são aprovados juntos, com uma senha e um teto.' }))),
     h('div', { class: 'acoes-linha' }, enviar),
     resumo);
 
@@ -167,7 +175,13 @@ const FilaValidacao = (() => {
     const lista = document.getElementById('fila-lista');
     if (!lista) return;
     try {
-      estado.lotes = (await Nuvem.rest('GET', 'fila_validacao?select=*&order=criado_em.desc')) || [];
+      const [lotes, ondas] = await Promise.all([
+        Nuvem.rest('GET', 'fila_validacao?select=*&order=criado_em.desc'),
+        Nuvem.rest('GET', 'fila_ondas?select=*&order=aprovado_em.desc&limit=100').catch(() => []), // banco sem as ondas: segue sem elas
+      ]);
+      estado.lotes = lotes || [];
+      estado.ondas = ondas || [];
+      desenharOndas();
       desenharLista();
     } catch (e) {
       lista.replaceChildren(h('p', { class: 'texto-erro', text: e.message }));
@@ -179,7 +193,7 @@ const FilaValidacao = (() => {
   function vigiar() {
     clearTimeout(estado.timer);
     const naTela = estado.secao && !estado.secao.hidden && document.getElementById('fila-lista');
-    if (naTela && estado.lotes.some((l) => l.status === 'executando')) estado.timer = setTimeout(carregar, 5000);
+    if (naTela && !estado.rodando && estado.lotes.some((l) => l.status === 'executando')) estado.timer = setTimeout(carregar, 5000);
   }
 
   function desenharLista() {
@@ -223,7 +237,7 @@ const FilaValidacao = (() => {
       h('div', { class: 'fila-lote__topo' },
         h('div', {},
           h('h3', { class: 'fila-lote__titulo', text: `${nomeTrilha(l.trilha_id)} · ${l.materia}` }),
-          h('p', { class: 'texto-suave', text: `${variantes ? UI.plural(l.quantidade_questoes, 'variante', 'variantes') + ' para a Revisão' : UI.plural(l.quantidade_questoes, 'questão', 'questões')}${l.conteudo_pendente && l.conteudo_pendente.fase ? ` · fase ${l.conteudo_pendente.fase}` : ''} · enviado em ${quando(l.criado_em)}` })),
+          h('p', { class: 'texto-suave', text: `${l.onda ? `Onda ${l.onda} · ` : ''}${variantes ? UI.plural(l.quantidade_questoes, 'variante', 'variantes') + ' para a Revisão' : UI.plural(l.quantidade_questoes, 'questão', 'questões')}${l.conteudo_pendente && l.conteudo_pendente.fase ? ` · fase ${l.conteudo_pendente.fase}` : ''} · enviado em ${quando(l.criado_em)}` })),
         h('span', { class: `chip ${st.classe}`.trim(), text: st.nome })),
       h('dl', { class: 'fila-lote__custos' },
         h('div', { class: 'fila-lote__custo' }, h('dt', { text: 'Custo estimado' }), h('dd', { text: dolar(l.custo_estimado_usd) })),
@@ -238,6 +252,215 @@ const FilaValidacao = (() => {
         return h('li', {}, h('strong', { text: `${q.id}${q.varianteDe ? ` (variante de ${q.varianteDe})` : ''} · ${q.tema} · ${q.dificuldade}${sit}` }), h('span', { text: q.enunciado.length > 180 ? q.enunciado.slice(0, 180) + '…' : q.enunciado }));
       })) : null,
       h('div', { class: 'acoes-linha fila-lote__acoes' }, acoes));
+  }
+
+  /* ---------- Ondas: uma senha e um teto para vários lotes ---------- */
+  const ativa = (a) => a && a.status === 'ativa' && new Date(a.expira_em).getTime() > Date.now();
+  /** A autorização em vigor de uma onda (a mais nova ativa e dentro da validade). */
+  const autorizacaoDe = (nome) => estado.ondas.find((a) => a.onda === nome && ativa(a)) || null;
+  /** Gasto de uma autorização: custo real dos lotes dela; os que estão executando reservam o estimado. */
+  const gastoDe = (a) => estado.lotes.filter((l) => l.onda_aprovacao === a.id)
+    .reduce((s, l) => s + (l.status === 'executando' ? Math.max(Number(l.custo_real_usd || 0), Number(l.custo_estimado_usd)) : Number(l.custo_real_usd || 0)), 0);
+
+  function resumoDasOndas() {
+    const nomes = [...new Set(estado.lotes.filter((l) => l.onda).map((l) => l.onda))];
+    return nomes.map((nome) => {
+      const daOnda = estado.lotes.filter((l) => l.onda === nome);
+      const aut = autorizacaoDe(nome);
+      // aprovar de novo pega todos os que ainda não rodaram (o banco encerra a aprovação anterior)
+      const aAprovar = daOnda.filter((l) => ['pendente', 'aprovado'].includes(l.status));
+      const daAut = aut ? daOnda.filter((l) => l.onda_aprovacao === aut.id) : [];
+      const novos = aAprovar.filter((l) => !(aut && l.onda_aprovacao === aut.id)); // pendentes ou sem aprovação em vigor
+      const conta = (st) => daOnda.filter((l) => l.status === st).length;
+      return { nome, daOnda, aut, aAprovar, novos, daAut, feitos: conta('concluido'), executando: conta('executando'), porExecutar: daAut.filter((l) => l.status === 'aprovado').length };
+    }).filter((o) => o.aAprovar.length || o.aut || o.executando);
+  }
+
+  function desenharOndas() {
+    const caixa = document.getElementById('fila-ondas');
+    if (!caixa) return;
+    const ondas = resumoDasOndas();
+    if (!ondas.length) { caixa.replaceChildren(); return; }
+    caixa.replaceChildren(h('h2', { class: 'secao-titulo', text: 'Ondas' }), ...ondas.map(cartaoOnda));
+  }
+
+  function cartaoOnda(o) {
+    const { nome, aut } = o;
+    const custoNovos = o.novos.reduce((s, l) => s + Number(l.custo_estimado_usd), 0);
+    const itens = o.novos.reduce((s, l) => s + l.quantidade_questoes, 0);
+    const rodandoEsta = aut && estado.rodando === aut.id;
+    const acoes = [];
+    if (o.aAprovar.length && !rodandoEsta) {
+      acoes.push(h('button', { type: 'button', class: `botao ${aut ? 'botao--fantasma' : 'botao--primario'}`, 'data-onda': nome, onclick: () => aprovarOnda(o) }, icone('i-cadeado'), aut ? 'Aprovar de novo (novo teto)' : 'Aprovar onda'));
+    }
+    const cabe = aut && o.daAut.some((l) => l.status === 'aprovado' && gastoDe(aut) + Number(l.custo_estimado_usd) <= Number(aut.teto_usd) + 1e-9);
+    if (cabe && !rodandoEsta) {
+      acoes.push(h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => executarOnda(aut) }, icone('i-ancora'), 'Executar onda'));
+    }
+    if (aut) acoes.push(h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => pausarOnda(aut) }, 'Pausar onda'));
+
+    let corpo;
+    if (aut) {
+      const gasto = gastoDe(aut);
+      const pct = Math.min(100, Math.round((gasto / Number(aut.teto_usd)) * 100));
+      corpo = [
+        h('p', { class: 'fila-onda__linha' }, h('span', { class: 'chip chip--ativo', text: 'Aprovada' }),
+          h('span', { text: `até ${quando(aut.expira_em)} · ${UI.plural(o.daAut.length, 'lote', 'lotes')} · ${o.feitos} ${o.feitos === 1 ? 'concluído' : 'concluídos'}${o.porExecutar ? ` · ${o.porExecutar} por executar` : ''}` })),
+        h('div', { class: 'fila-onda__teto' },
+          h('div', { class: 'fila-onda__barra', role: 'progressbar', 'aria-label': 'Gasto da onda em relação ao teto', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(pct) },
+            h('span', { style: `width:${pct}%` })),
+          h('p', {}, 'Gasto ', h('strong', { text: dolar(gasto) }), ` de ${dolar(aut.teto_usd)} (teto)`)),
+      ];
+    } else {
+      corpo = [h('p', { class: 'texto-suave', text: 'Ainda não aprovada.' })];
+    }
+    if (o.novos.length) corpo.push(h('p', {}, `${UI.plural(o.novos.length, 'lote', 'lotes')} a aprovar (${UI.plural(itens, 'item', 'itens')}) · custo estimado `, h('strong', { class: 'fila-onda__custo', text: dolar(custoNovos) })));
+    if (rodandoEsta) corpo.push(h('p', { class: 'fila-onda__progresso', role: 'status' }, icone('i-ancora'), h('span', { text: estado.progresso || 'Executando a onda…' })),
+      h('p', { class: 'texto-suave', text: 'Deixe esta página aberta: a onda segue lote a lote e para sozinha antes de passar do teto.' }));
+
+    return h('article', { class: 'cartao fila-onda', 'aria-label': `Onda ${nome}` },
+      h('div', { class: 'fila-lote__topo' }, h('h3', { class: 'fila-lote__titulo', text: `Onda ${nome}` })),
+      ...corpo,
+      acoes.length ? h('div', { class: 'acoes-linha fila-lote__acoes' }, acoes) : null);
+  }
+
+  /** Aprovar a onda inteira: teto em US$ + senha (fila_aprovar_onda), e já começa a executar. */
+  function aprovarOnda(o) {
+    let dialogo = document.getElementById('dialogo-fila-senha');
+    if (!dialogo) {
+      dialogo = h('dialog', { id: 'dialogo-fila-senha', class: 'dialogo dialogo--estreito', 'aria-labelledby': 'dialogo-fila-titulo' });
+      window.addEventListener('hashchange', () => dialogo.open && dialogo.close());
+      document.body.append(dialogo);
+    }
+    const estimado = o.aAprovar.reduce((s, l) => s + Number(l.custo_estimado_usd), 0);
+    const sugestao = Math.max(0.01, Math.ceil(Math.round(estimado * 10000) / 100) / 100); // arredonda para cima, em centavos
+    const teto = h('input', { class: 'campo', id: 'fila-onda-teto', type: 'number', inputmode: 'decimal', min: '0.01', max: '999', step: '0.01', required: true, value: String(sugestao), 'aria-describedby': 'fila-onda-teto-dica' });
+    const tetoDica = h('p', { class: 'texto-suave', id: 'fila-onda-teto-dica', 'aria-live': 'polite' });
+    const avisarTeto = () => {
+      const v = Number(teto.value);
+      tetoDica.textContent = v && v < estimado
+        ? `O teto é menor que o custo estimado (${dolar(estimado)}): a onda vai parar antes do fim.`
+        : 'A execução para antes de qualquer lote que passaria deste valor.';
+    };
+    teto.addEventListener('input', avisarTeto);
+    avisarTeto();
+    const senha = h('input', { class: 'campo', id: 'fila-senha', type: 'password', autocomplete: 'current-password', required: true });
+    const msg = h('p', { class: 'texto-erro', 'aria-live': 'assertive' });
+    const confirmar = h('button', { type: 'submit', class: 'botao botao--primario' }, icone('i-cadeado'), 'Aprovar e executar a onda');
+    limpar(dialogo).append(h('form', { class: 'dialogo__caixa', onsubmit: async (e) => {
+      e.preventDefault();
+      const v = Number(teto.value);
+      if (!(v > 0 && v < 1000)) { msg.textContent = 'O teto precisa ser maior que zero e menor que US$ 1.000.'; teto.focus(); return; }
+      if (!senha.value) return;
+      confirmar.disabled = true;
+      msg.textContent = '';
+      try {
+        await Nuvem.confirmarSenha(senha.value);
+        senha.value = '';
+        const r = await Nuvem.rpc('fila_aprovar_onda', { p_onda: o.nome, p_teto: v });
+        dialogo.close();
+        UI.toast(`Onda ${o.nome} aprovada`, `${UI.plural(r.lotes, 'lote', 'lotes')} · teto ${dolar(r.teto_usd)} · vale por 12 horas.`, 'i-check');
+        await carregar();
+        const aut = estado.ondas.find((a) => a.id === r.id);
+        if (aut) executarOnda(aut);
+      } catch (erro) {
+        senha.value = '';
+        msg.textContent = erro.message;
+        confirmar.disabled = false;
+        senha.focus();
+      }
+    } },
+    h('header', { class: 'dialogo__topo' },
+      h('div', {}, h('span', { class: 'rotulo', text: 'Confirmação por senha' }), h('h2', { id: 'dialogo-fila-titulo', class: 'dialogo__titulo', text: `Aprovar a onda ${o.nome}?` })),
+      h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'))),
+    h('div', { class: 'dialogo__corpo' },
+      h('p', {}, `${UI.plural(o.aAprovar.length, 'lote', 'lotes')} (${UI.plural(o.aAprovar.reduce((s, l) => s + l.quantidade_questoes, 0), 'item', 'itens')}). As IAs pagas (Gemini com busca e OpenAI) vão validar um lote de cada vez.`),
+      o.aut ? h('p', { class: 'texto-suave', text: `A aprovação de agora (teto ${dolar(o.aut.teto_usd)}, gasto ${dolar(gastoDe(o.aut))}) é encerrada; o novo teto vale para os lotes que faltam.` }) : null,
+      h('p', { class: 'fila-senha__custo' }, 'Custo estimado: ', h('strong', { text: dolar(estimado) })),
+      h('label', { for: 'fila-onda-teto', class: 'rotulo-campo', text: 'Teto desta aprovação (US$)' }),
+      teto, tetoDica,
+      h('label', { for: 'fila-senha', class: 'rotulo-campo', text: `Sua senha (${(Nuvem.usuario() || {}).email || 'admin'})` }),
+      senha,
+      h('p', { class: 'texto-suave', text: 'A aprovação da onda vale por 12 horas. Você pode pausar a qualquer momento, sem senha.' }),
+      msg),
+    h('footer', { class: 'dialogo__rodape' },
+      h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => dialogo.close() }, 'Cancelar'),
+      confirmar)));
+    dialogo.showModal();
+    teto.focus();
+    teto.select();
+  }
+
+  const esperar = (ms) => new Promise((ok) => setTimeout(ok, ms));
+  const TENTATIVAS_POR_LOTE = 4; // lote que volta "parcial" (tempo da função) continua de onde parou
+
+  /** Executa a onda lote a lote enquanto a página está aberta. O banco confere validade e teto antes de cada um. */
+  async function executarOnda(aut) {
+    if (estado.rodando) return;
+    estado.rodando = aut.id;
+    const tentativas = {};
+    const sair = () => { if (estado.rodando === aut.id) estado.rodando = null; };
+    window.addEventListener('hashchange', sair, { once: true });
+    let fim = null;
+    try {
+      while (estado.rodando === aut.id) {
+        await carregar();
+        const a = estado.ondas.find((x) => x.id === aut.id);
+        if (!ativa(a)) { fim = a && a.status === 'pausada' ? 'Onda pausada.' : 'A aprovação da onda não está mais valendo.'; break; }
+        const daAut = estado.lotes.filter((l) => l.onda_aprovacao === aut.id);
+        if (daAut.some((l) => l.status === 'executando')) { estado.progresso = 'Esperando o lote em execução terminar…'; desenharOndas(); await esperar(5000); continue; }
+        const prox = daAut.find((l) => l.status === 'aprovado' && (tentativas[l.id] || 0) < TENTATIVAS_POR_LOTE);
+        if (!prox) {
+          const sobrou = daAut.filter((l) => l.status === 'aprovado').length;
+          fim = sobrou ? `${UI.plural(sobrou, 'lote não terminou', 'lotes não terminaram')} depois de ${TENTATIVAS_POR_LOTE} tentativas. Veja o erro no lote.` : `Onda ${a.onda} concluída. Mandou bem, Diver!`;
+          break;
+        }
+        tentativas[prox.id] = (tentativas[prox.id] || 0) + 1;
+        const n = daAut.filter((l) => ['concluido', 'rejeitado'].includes(l.status)).length + 1;
+        estado.progresso = `Lote ${n} de ${daAut.length}${tentativas[prox.id] > 1 ? ' (continuando)' : ''} · ${nomeTrilha(prox.trilha_id)} · ${prox.materia}`;
+        desenharOndas();
+        try {
+          await Nuvem.funcao('mergulho-triplo', { acao: 'executar', id: prox.id });
+        } catch (erro) {
+          fim = erro.message; // teto, onda pausada ou vencida, chave faltando: para aqui
+          break;
+        }
+        // espera o lote sair de "executando"
+        for (;;) {
+          await esperar(5000);
+          if (estado.rodando !== aut.id) break;
+          const [l] = (await Nuvem.rest('GET', `fila_validacao?id=eq.${prox.id}&select=status,erro`)) || [];
+          if (!l || l.status !== 'executando') {
+            // voltou "aprovado" com erro que não é de tempo (modelo não encontrado etc.): não adianta repetir
+            if (l && l.status === 'aprovado' && l.erro && !/^Faltaram/.test(l.erro)) fim = l.erro;
+            break;
+          }
+        }
+        if (fim) break;
+      }
+    } catch (erro) {
+      fim = erro.message;
+    } finally {
+      window.removeEventListener('hashchange', sair);
+      const parouPorFora = estado.rodando !== aut.id;
+      estado.rodando = null;
+      estado.progresso = '';
+      if (!parouPorFora || fim) UI.toast(`Onda ${aut.onda}`, fim || 'Execução parada.', /concluída/.test(fim || '') ? 'i-check' : 'i-ancora');
+      carregar();
+    }
+  }
+
+  async function pausarOnda(aut) {
+    const ok = await UI.confirmar({ titulo: `Pausar a onda ${aut.onda}?`, texto: 'O lote que está rodando agora termina; os outros esperam. Para continuar, aprove a onda de novo (com a senha).', sim: 'Pausar onda', perigo: true });
+    if (!ok) return;
+    try {
+      await Nuvem.rpc('fila_onda_pausar', { p_id: aut.id });
+      if (estado.rodando === aut.id) estado.rodando = null;
+      UI.toast('Onda pausada', 'Nada mais roda sem você aprovar de novo.', 'i-check');
+    } catch (e) {
+      UI.toast('Não deu para pausar', e.message, 'i-x');
+    }
+    carregar();
   }
 
   /* ---------- Aprovar com senha ---------- */

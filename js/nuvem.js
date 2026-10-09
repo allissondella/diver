@@ -98,6 +98,7 @@ const Nuvem = (() => {
     if (!resp.ok) {
       const erro = new Error(mensagemDeErro(dados, resp.status));
       erro.status = resp.status;
+      erro.dados = dados; // o corpo da resposta (ex.: { erro, teto } da função mergulho-triplo)
       throw erro;
     }
     return dados;

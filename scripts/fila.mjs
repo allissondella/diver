@@ -8,6 +8,8 @@
  *   simular <trilha.json> --materia M [--fase F] [--ids a,b]   custo estimado e prompts (sem internet)
  *   enviar  <trilha.json> --materia M [--fase F] [--ids a,b]   cria lote(s) 'pendente' na fila (máx. 20 questões cada)
  *           acrescente --variantes para mandar o bloco "variantes" da trilha em vez das questões
+ *           e --onda <nome> (ex.: --onda 1A) para juntar os lotes numa onda: a tela aprova a onda
+ *           inteira com uma senha e um teto em US$ (docs/MOTOR_DIVER.md, seção 11.8)
  *           (variante de questão origem "enem" é recusada aqui, no banco e na Edge Function)
  *   listar                                                      últimos lotes da fila
  *   baixar  <id-do-lote> [--arquivo <trilha.json>]              aplica o resultado na trilha e no data/acervo/<materia>.json
@@ -27,7 +29,7 @@ import { atualizarCatalogo } from './gerar-catalogo.mjs';
 import { assinatura, promptFato, promptLogica, montarLotes as montarLotesDaTrilha } from '../supabase/functions/_shared/mergulho-nucleo.mjs';
 
 function argumentos(argv) {
-  const a = { comando: argv[0], alvo: null, materia: null, fase: null, ids: null, ambiente: 'testes', arquivo: null, refazer: false, variantes: false };
+  const a = { comando: argv[0], alvo: null, materia: null, fase: null, ids: null, ambiente: 'testes', arquivo: null, refazer: false, variantes: false, onda: null };
   for (let i = 1; i < argv.length; i++) {
     const x = argv[i];
     if (x === '--materia') a.materia = argv[++i];
@@ -37,6 +39,7 @@ function argumentos(argv) {
     else if (x === '--arquivo') a.arquivo = argv[++i];
     else if (x === '--refazer') a.refazer = true;
     else if (x === '--variantes') a.variantes = true;
+    else if (x === '--onda') a.onda = argv[++i];
     else if (x.startsWith('--')) throw new Error(`opção desconhecida: ${x}`);
     else a.alvo = x;
   }
@@ -89,14 +92,14 @@ async function montarLotes(args) {
   if (!existsSync(arquivo)) throw new Error(`arquivo não encontrado: ${args.alvo}`);
   const trilha = JSON.parse(readFileSync(arquivo, 'utf8'));
   const { lotes, puladas } = await montarLotesDaTrilha(trilha, {
-    materia: args.materia, arquivo: relative(RAIZ, arquivo), fase: args.fase, ids: args.ids, variantes: args.variantes, refazer: args.refazer,
+    materia: args.materia, arquivo: relative(RAIZ, arquivo), fase: args.fase, ids: args.ids, variantes: args.variantes, refazer: args.refazer, onda: args.onda,
   });
   return { lotes, puladas, trilha };
 }
 
 function resumoDosLotes({ lotes, puladas }) {
   const total = lotes.reduce((s, l) => s + l.custo_estimado_usd, 0);
-  lotes.forEach((l, i) => console.log(`  Lote ${i + 1}: ${l.quantidade_questoes} ${l.conteudo_pendente.tipo === 'variantes' ? 'variante(s)' : 'questão(ões)'} · custo estimado US$ ${l.custo_estimado_usd.toFixed(4)}`));
+  lotes.forEach((l, i) => console.log(`  Lote ${i + 1}${l.onda ? ` (onda ${l.onda})` : ''}: ${l.quantidade_questoes} ${l.conteudo_pendente.tipo === 'variantes' ? 'variante(s)' : 'questão(ões)'} · custo estimado US$ ${l.custo_estimado_usd.toFixed(4)}`));
   if (puladas.length) console.log(`  Puladas (${puladas.length}): ${puladas.join(', ')}`);
   console.log(`  Total estimado: US$ ${total.toFixed(4)} (teto: preços de docs/ASSINATURA_E_VALIDACAO.md, seção 3, com 30% de folga para o desempate)`);
 }
@@ -124,15 +127,17 @@ async function enviar(args) {
   console.log('\nNa fila:');
   const unidade = args.variantes ? 'variante(s)' : 'questão(ões)';
   criados.forEach((c) => console.log(`  ${c.id} · ${c.status} · ${c.quantidade_questoes} ${unidade} · US$ ${Number(c.custo_estimado_usd).toFixed(4)}`));
-  console.log('\nPróximo passo: Admin → Fila de Validação → Aprovar (pede sua senha).');
+  console.log(args.onda
+    ? `\nPróximo passo: Admin → Fila de Validação → Onda ${args.onda} → "Aprovar onda" (uma senha e um teto em US$ para todos os lotes).`
+    : '\nPróximo passo: Admin → Fila de Validação → Aprovar (pede sua senha).');
 }
 
 async function listar(args) {
   const amb = ambienteSupabase(args.ambiente);
   const token = await entrar(amb);
-  const linhas = await rest(amb, token, 'GET', 'fila_validacao?select=id,status,trilha_id,materia,quantidade_questoes,custo_estimado_usd,custo_real_usd,criado_em,erro&order=criado_em.desc&limit=30');
+  const linhas = await rest(amb, token, 'GET', 'fila_validacao?select=id,status,onda,trilha_id,materia,quantidade_questoes,custo_estimado_usd,custo_real_usd,criado_em,erro&order=criado_em.desc&limit=30');
   if (!linhas.length) return console.log('Fila vazia.');
-  linhas.forEach((l) => console.log(`${l.id} · ${l.status.padEnd(10)} · ${l.trilha_id}/${l.materia} · ${l.quantidade_questoes} q · estimado US$ ${Number(l.custo_estimado_usd).toFixed(4)}${l.custo_real_usd !== null ? ` · real US$ ${Number(l.custo_real_usd).toFixed(4)}` : ''}${l.erro ? ` · ${l.erro}` : ''}`));
+  linhas.forEach((l) => console.log(`${l.id} · ${l.status.padEnd(10)} · ${l.onda ? `onda ${l.onda} · ` : ''}${l.trilha_id}/${l.materia} · ${l.quantidade_questoes} q · estimado US$ ${Number(l.custo_estimado_usd).toFixed(4)}${l.custo_real_usd !== null ? ` · real US$ ${Number(l.custo_real_usd).toFixed(4)}` : ''}${l.erro ? ` · ${l.erro}` : ''}`));
 }
 
 async function baixar(args) {

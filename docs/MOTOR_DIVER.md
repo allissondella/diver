@@ -152,7 +152,7 @@ Por questão: tokens de entrada ≈ tamanho do prompt ÷ 4; saída prevista = 80
    - Esse arquivo é a mesma função de `supabase/functions/`, juntada num arquivo só por `node scripts/juntar-funcao.mjs` (quem mexe na função roda de novo; `--conferir` avisa se ficou desatualizado).
    - Quem preferir o terminal: `npx supabase functions deploy mergulho-triplo --project-ref xtuzdecteeeldnaegkxl` (testes) ou `bdrwqmxjhvxqwfywpikg` (produção).
 4. **Conferir:** no site, Admin → Fila de Validação: o cartão "Chaves das IAs" deve mostrar as duas como "cadastrada" (só a ação `status`, sem custo).
-5. **Mandar um lote:** na mesma tela, cartão **"Mandar para a fila"**: escolha o curso, a fase e "Questões" ou "Variantes" → o site mostra quantos itens e o custo estimado → confirme. O lote nasce **Pendente** (nada cobrado). (Pelo terminal, o equivalente é `node scripts/fila.mjs enviar …`.)
+5. **Mandar um lote:** na mesma tela, cartão **"Mandar para a fila"**: escolha o curso, a fase, "Questões" ou "Variantes" e, se quiser, a **onda** (seção 11.8) → o site mostra quantos itens e o custo estimado → confirme. O lote nasce **Pendente** (nada cobrado). (Pelo terminal, o equivalente é `node scripts/fila.mjs enviar …`.)
 6. **Aprovar:** "Aprovar e executar" no lote → senha → as IAs rodam.
 7. **Levar o resultado para o site:** quando ficar **Concluído**, "Baixar resultado" e mande o arquivo no chat do Claude, que roda `node scripts/fila.mjs aplicar <arquivo>` (sem internet e sem login), confere o `git diff` e faz o commit. (Com terminal e login: `node scripts/fila.mjs baixar <id>`.)
 
@@ -160,6 +160,17 @@ Por questão: tokens de entrada ≈ tamanho do prompt ÷ 4; saída prevista = 80
 - **Tempo da função:** no plano grátis, cada execução tem cerca de 150 s. Por isso os lotes têm no máximo 20 questões, 3 rodam ao mesmo tempo e a função para de começar questões novas aos 110 s. O que faltar fica com status `aprovado`, com aviso, e o botão "Continuar execução" (pede a senha de novo) segue de onde parou, sem pagar de novo o que já foi validado.
 - **Travou:** se um lote ficar em "Executando…" por mais de 15 minutos, aparece o botão "Destravar" (`fila_destravar`).
 - **Modelo com nome errado:** a função para antes de qualquer chamada paga e mostra o nome que faltou.
+
+### 11.8 Ondas: aprovar muitos lotes com uma senha e um teto (2026-10-09)
+Um curso grande (o Enem completo tem ~590 lotes) não dá para aprovar lote a lote. A **onda** junta lotes de um mesmo pacote de trabalho ("1A" = Matemática, módulos 1 a 4) para aprovar de uma vez, **sem tirar a regra de ouro: nenhuma IA paga roda sem o admin aprovar na tela, com a senha, vendo o custo.**
+
+1. **Mandar com onda:** no cartão "Mandar para a fila", campo **Onda** (ou `node scripts/fila.mjs enviar … --onda 1A`). O nome aceita letras, números, ponto, hífen e `_` (até 40); o banco confere o mesmo formato.
+2. **Aprovar a onda:** a seção **Ondas** da tela mostra cada onda com os lotes a aprovar e o custo estimado somado. **"Aprovar onda"** pede o **teto em US$** (o padrão é o custo estimado, arredondado para cima) e a **senha**. A função `fila_aprovar_onda` (admin + senha dos últimos 5 minutos) cria a autorização em `fila_ondas`, que **vale 12 horas**, e marca os lotes com `onda_aprovacao`.
+3. **Executar:** a tela já começa a rodar **um lote de cada vez enquanto fica aberta** (sair da página para o laço; o lote que estava rodando termina no servidor). Antes de **cada** lote, a Edge Function chama `fila_onda_iniciar_lote` (só a função pode: `service_role`), que numa operação só trava a autorização e confere: ativa, dentro da validade e **gasto + custo estimado do lote ≤ teto**. O gasto conta o custo real dos lotes já rodados e reserva o estimado do que está rodando: a conta é conservadora e nunca passa do teto.
+4. **Parou no teto?** A tela avisa e mostra "Aprovar de novo (novo teto)": a nova aprovação (senha de novo) encerra a anterior e vale para os lotes que faltam. **O teto vale por aprovação.**
+5. **Pausar onda** não pede senha: o lote que está rodando termina e os outros voltam a ser lotes aprovados comuns (executar um a um pede a senha, como antes). Lote parcial (tempo da função) é retomado sozinho até 4 vezes; erro que não é de tempo (ex.: modelo não encontrado) para a onda.
+
+Lote **sem** onda segue igual a antes (seção 11.6, passo 6). Tabela e funções: `supabase/setup.sql` (seção da Fila); tela: `js/fila-validacao.js`.
 
 ## 12. Variantes na Revisão (2026-10-01)
 
