@@ -4560,7 +4560,7 @@
       "id": "mat-perimetros",
       "nome": "Aula 45 · Perímetros",
       "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
-      "descricao": "Módulo 8 · aula 1 de 3 · 35 min · treina as habilidades H8 e H12",
+      "descricao": "Módulo 8 · aula 1 de 6 · 35 min · treina as habilidades H8 e H12",
       "habilidades": [
         "H8",
         "H12"
@@ -4662,7 +4662,7 @@
       "id": "mat-areas-planas",
       "nome": "Aula 46 · Áreas de figuras planas",
       "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
-      "descricao": "Módulo 8 · aula 2 de 3 · 35 min · treina as habilidades H8 e H12",
+      "descricao": "Módulo 8 · aula 2 de 6 · 35 min · treina as habilidades H8 e H12",
       "habilidades": [
         "H8",
         "H12"
@@ -4762,7 +4762,7 @@
       "id": "mat-circulo",
       "nome": "Aula 47 · Círculo e circunferência",
       "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
-      "descricao": "Módulo 8 · aula 3 de 3 · 35 min · treina a habilidade H8",
+      "descricao": "Módulo 8 · aula 3 de 6 · 35 min · treina a habilidade H8",
       "habilidades": [
         "H8"
       ],
@@ -4856,6 +4856,302 @@
           "comprimento da circunferencia",
           "area do circulo",
           "mesma fracao"
+        ]
+      }
+    },
+    {
+      "id": "mat-areas-compostas",
+      "nome": "Aula 48 · Áreas compostas e efeito da escala nas áreas",
+      "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
+      "descricao": "Módulo 8 · aula 4 de 6 · 35 min · treina as habilidades H8 e H11",
+      "habilidades": [
+        "H8",
+        "H11"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Somar e subtrair peças",
+            "texto": [
+              "Uma figura composta é feita de peças simples: some as áreas das peças ou calcule a área de uma figura maior e subtraia o que falta. Uma sala em L pode ser dividida em dois retângulos ou calculada como um retângulo grande menos o canto vazio. Uma casa desenhada como retângulo com um triângulo em cima tem a área das duas peças somadas. O caminho mais curto é o que exige menos medidas desconhecidas."
+            ]
+          },
+          {
+            "titulo": "Regiões entre figuras",
+            "texto": [
+              "Faixas, molduras, calçadas e partes sombreadas são a diferença entre duas figuras: a área é a figura de **fora menos dentro**. Uma moldura de 4 cm numa foto de 20 cm × 30 cm tem (28 × 38) − (20 × 30) = 464 cm². Um terreno com um canteiro redondo tem área livre igual ao retângulo menos o círculo; quatro quartos de círculo nos cantos de um quadrado formam, juntos, um círculo inteiro."
+            ]
+          },
+          {
+            "titulo": "Malhas quadriculadas",
+            "texto": [
+              "Em figuras desenhadas em malha, conte os quadradinhos inteiros e junte as metades: cada triângulo que corta um quadradinho pela diagonal vale meio quadradinho. Outra estratégia é desenhar o **retângulo envolvente**, que encosta nos pontos mais externos da figura, e subtrair os triângulos retângulos que sobram nos cantos. Um hexágono regular se divide em seis triângulos equiláteros iguais."
+            ]
+          },
+          {
+            "titulo": "Escala e áreas",
+            "texto": [
+              "Numa planta de escala 1 : 100, cada lado real é 100 vezes maior, e a área, 100² = 10.000 vezes. Ao ampliar uma figura com razão k, a área é multiplicada por **k ao quadrado**: uma foto 3 vezes maior em cada lado ocupa 9 vezes mais papel e gasta 9 vezes mais tinta. O caminho mais seguro é converter os lados para o real e só então calcular a área. Ao contrário, se as áreas forem conhecidas, a escala linear é a raiz da razão entre elas. O Enem cobra plantas, terrenos irregulares, pisos com recortes, logotipos e ampliações."
+            ]
+          }
+        ],
+        "introducao": "Salas em L, terrenos com piscina, logotipos com partes sombreadas, plantas de casas: no mundo real, quase nenhuma figura é um retângulo perfeito. Esta aula ensina a quebrar figuras complicadas em peças simples, a calcular regiões entre figuras e a passar áreas da planta para o real.",
+        "mapaMental": {
+          "centro": "Áreas compostas",
+          "ramos": [
+            {
+              "titulo": "Peças",
+              "itens": [
+                "some as peças ou subtraia o que falta",
+                "menos medidas desconhecidas"
+              ]
+            },
+            {
+              "titulo": "Regiões",
+              "itens": [
+                "fora menos dentro",
+                "moldura e calçada",
+                "quartos de círculo formam um círculo"
+              ]
+            },
+            {
+              "titulo": "Malhas",
+              "itens": [
+                "metades de quadradinho",
+                "retângulo envolvente menos os cantos"
+              ]
+            },
+            {
+              "titulo": "Escala",
+              "itens": [
+                "área real com k ao quadrado",
+                "converta os lados antes"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧩",
+            "conceito": "Quebra-cabeça",
+            "liga": "peças simples",
+            "porque": "Toda figura difícil é um encaixe de figuras fáceis."
+          },
+          {
+            "icone": "🖼️",
+            "conceito": "Moldura",
+            "liga": "quadro grande sem a foto",
+            "porque": "A moldura é o quadro grande sem a foto."
+          }
+        ],
+        "pontos": [
+          "Some as peças ou subtraia o que falta de uma figura maior.",
+          "Regiões entre figuras: **fora menos dentro**.",
+          "Em malhas, use o **retângulo envolvente** e tire os cantos.",
+          "Ampliação de razão k: a área é multiplicada por **k ao quadrado**."
+        ],
+        "perolas": [
+          "Quatro quartos de círculo nos cantos somam um círculo inteiro.",
+          "Planta 1 : 100: cada cm² do papel vale 1 m² no real."
+        ],
+        "reforcar": [
+          "fora menos dentro",
+          "retangulo envolvente",
+          "k ao quadrado"
+        ]
+      }
+    },
+    {
+      "id": "mat-trigonometria-triangulo",
+      "nome": "Aula 49 · Trigonometria no triângulo retângulo",
+      "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
+      "descricao": "Módulo 8 · aula 5 de 6 · 35 min · treina as habilidades H8 e H9",
+      "habilidades": [
+        "H8",
+        "H9"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Seno, cosseno e tangente",
+            "texto": [
+              "No triângulo retângulo, para um ângulo agudo θ, o **cateto oposto** fica à frente dele, e o **cateto adjacente** fica encostado nele, junto da hipotenusa. As razões trigonométricas são: seno = oposto ÷ hipotenusa; cosseno = adjacente ÷ hipotenusa; tangente = oposto ÷ adjacente. No triângulo 3, 4, 5, o ângulo oposto ao lado 3 tem seno 3/5 = 0,6, cosseno 4/5 = 0,8 e tangente 3/4 = 0,75. As razões dependem só do ângulo, não do tamanho do triângulo: triângulos semelhantes têm as mesmas razões. Para qualquer ângulo, sen² + cos² = 1."
+            ]
+          },
+          {
+            "titulo": "Ângulos notáveis",
+            "texto": [
+              "Os **ângulos notáveis** 30°, 45° e 60° aparecem o tempo todo, e vale decorar: sen 30° = cos 60° = 1/2; sen 60° = cos 30° = √3/2 ≈ 0,87; sen 45° = cos 45° = √2/2 ≈ 0,71; tg 30° = √3/3 ≈ 0,58, tg 45° = 1 e tg 60° = √3 ≈ 1,73. O seno de um ângulo é o cosseno do seu complemento. Num triângulo retângulo com ângulo de 30°, o cateto oposto a ele é metade da hipotenusa."
+            ]
+          },
+          {
+            "titulo": "Aplicações",
+            "texto": [
+              "Para achar a altura de um prédio cujo topo é visto sob 60°, a 20 m de distância: tg 60° = h ÷ 20, então h = 20 × 1,73 ≈ 34,6 m. Rampas usam a tangente: inclinação de 10% significa subir 10 cm a cada 100 cm na horizontal, tangente 0,1. Escadas, cabos e aviões usam seno e cosseno quando o comprimento inclinado é conhecido. Com o sol a um certo ângulo acima do horizonte, a sombra é a altura dividida pela tangente desse ângulo."
+            ]
+          },
+          {
+            "titulo": "Escolher a razão e como o Enem cobra",
+            "texto": [
+              "Pergunte: o que eu tenho e o que eu quero? Hipotenusa e oposto: seno. Hipotenusa e adjacente: cosseno. Os dois catetos: tangente. O Enem cobra alturas de prédios e árvores, rampas, telhados, sombras com o ângulo do sol, decolagens e ângulos de visão, quase sempre dando os valores aproximados das razões."
+            ]
+          }
+        ],
+        "introducao": "Como saber a altura de um prédio só com uma trena e um ângulo? Qual é a inclinação de uma rampa? A que altura chega um avião depois de voar certa distância em subida? Seno, cosseno e tangente ligam ângulos e lados do triângulo retângulo e respondem a essas perguntas.",
+        "mapaMental": {
+          "centro": "Trigonometria",
+          "ramos": [
+            {
+              "titulo": "Razões",
+              "itens": [
+                "seno é oposto sobre hipotenusa",
+                "cosseno é adjacente sobre hipotenusa",
+                "tangente é oposto sobre adjacente"
+              ]
+            },
+            {
+              "titulo": "Lados",
+              "itens": [
+                "cateto oposto à frente do ângulo",
+                "cateto adjacente encostado nele"
+              ]
+            },
+            {
+              "titulo": "Notáveis",
+              "itens": [
+                "ângulos notáveis de 30°, 45° e 60°",
+                "seno de um é o cosseno do complemento"
+              ]
+            },
+            {
+              "titulo": "Aplicações",
+              "itens": [
+                "altura pela tangente",
+                "inclinação de rampa como tangente",
+                "sombra dividindo pela tangente"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🏢",
+            "conceito": "Prédio visto de longe",
+            "liga": "tangente",
+            "porque": "A distância é um cateto, a altura é o outro."
+          },
+          {
+            "icone": "✈️",
+            "conceito": "Avião subindo",
+            "liga": "seno",
+            "porque": "O caminho voado é inclinado; a altura é o lado em frente ao ângulo."
+          }
+        ],
+        "pontos": [
+          "O **cateto oposto** fica à frente do ângulo; o **cateto adjacente**, encostado nele.",
+          "Seno = oposto ÷ hipotenusa; cosseno = adjacente ÷ hipotenusa; tangente = oposto ÷ adjacente.",
+          "Decore os **ângulos notáveis**: sen 30° = 1/2, tg 45° = 1, tg 60° ≈ 1,73.",
+          "Escolha a razão pelo que se tem e pelo que se quer."
+        ],
+        "perolas": [
+          "Com 30°, o lado em frente é metade da hipotenusa.",
+          "Rampa de 10% sobe 10 cm a cada metro."
+        ],
+        "reforcar": [
+          "cateto oposto",
+          "cateto adjacente",
+          "angulos notaveis"
+        ]
+      }
+    },
+    {
+      "id": "mat-revisao-areas",
+      "nome": "Aula 50 · Revisão do módulo: medidas no plano",
+      "modulo": "Módulo 8 · Geometria plana: perímetros, áreas e trigonometria",
+      "descricao": "Módulo 8 · aula 6 de 6 · 35 min · treina as habilidades H8, H9, H10, H11 e H12",
+      "habilidades": [
+        "H8",
+        "H9",
+        "H10",
+        "H11",
+        "H12"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Perímetro e área",
+            "texto": [
+              "Perímetro é o contorno; área é a superfície. Retângulo: 2 × (b + h) e b × h. Triângulo: base × altura ÷ 2. Trapézio: média das bases vezes a altura. Losango: diagonais multiplicadas e divididas por 2. Em todas, a **altura perpendicular** à base, nunca o lado inclinado. Converta as medidas para a mesma unidade, desconte portas e portões e arredonde caixas e latas para cima. Com o mesmo perímetro, o quadrado cerca a maior área; numa figura em escada, o perímetro é o do retângulo que a envolve."
+            ]
+          },
+          {
+            "titulo": "Círculo",
+            "texto": [
+              "Comprimento da circunferência: 2πr. Área do círculo: πr². Se vier o diâmetro, divida por 2. Setores e arcos são frações do círculo: ângulo ÷ 360°. Voltas de uma roda: distância ÷ comprimento da roda; polias ligadas mantêm raio × voltas. Dobrar o raio quadruplica a área, e a coroa entre dois círculos é π(R² − r²). Para comparar pizzas, calcule o preço por centímetro quadrado."
+            ]
+          },
+          {
+            "titulo": "Figuras compostas e escala",
+            "texto": [
+              "Some as peças ou calcule a figura de **fora menos dentro**. Em malhas, conte metades ou use o retângulo envolvente. Numa ampliação de razão k, o perímetro é multiplicado por k e a área, por k²; numa planta 1 : 100, cada cm² do papel vale 1 m²."
+            ]
+          },
+          {
+            "titulo": "Trigonometria e como estudar esta revisão",
+            "texto": [
+              "No triângulo retângulo, **seno e cosseno** usam a hipotenusa (oposto e adjacente sobre ela), e a tangente compara os catetos. Decore 30°, 45° e 60°: sen 30° = 1/2, tg 45° = 1 e tg 60° ≈ 1,73. Altura de um prédio é a distância vezes a tangente do ângulo de visão; inclinação em porcentagem também é uma tangente. Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada: os tropeços mais comuns são confundir perímetro com área, usar o diâmetro como raio, esquecer de dividir o triângulo por 2, usar a escala linear em áreas e trocar o cateto oposto pelo adjacente."
+            ]
+          }
+        ],
+        "introducao": "Fim do módulo de medidas no plano. As questões desta revisão vêm misturadas, como na prova: o desafio é reconhecer se a situação pede perímetro, área, círculo, composição de figuras, escala ou trigonometria, e quais medidas usar.",
+        "mapaMental": {
+          "centro": "Medidas no plano",
+          "ramos": [
+            {
+              "titulo": "Perímetro e área",
+              "itens": [
+                "contorno e superfície",
+                "altura perpendicular",
+                "trapézio e losango"
+              ]
+            },
+            {
+              "titulo": "Círculo",
+              "itens": [
+                "2πr e πr²",
+                "setores pela fração do ângulo"
+              ]
+            },
+            {
+              "titulo": "Compostas",
+              "itens": [
+                "fora menos dentro",
+                "retângulo envolvente",
+                "área com k²"
+              ]
+            },
+            {
+              "titulo": "Trigonometria",
+              "itens": [
+                "seno e cosseno com a hipotenusa",
+                "tangente entre os catetos"
+              ]
+            }
+          ]
+        },
+        "pontos": [
+          "Use sempre a **altura perpendicular** à base.",
+          "Regiões entre figuras: **fora menos dentro**.",
+          "**Seno e cosseno** usam a hipotenusa; a tangente compara os catetos.",
+          "Numa ampliação de razão k, a área é multiplicada por k²."
+        ],
+        "perolas": [
+          "Antes de calcular, pergunte: é contorno, superfície ou ângulo?"
+        ],
+        "reforcar": [
+          "altura perpendicular",
+          "fora menos dentro",
+          "seno e cosseno"
         ]
       }
     }
@@ -26616,6 +26912,1386 @@
         "Contou só uma curva.",
         "Contou cada curva como uma circunferência inteira.",
         "Usou π vezes o raio nas duas curvas juntas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q01",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma sala em L é formada por um retângulo de 6 m × 4 m e outro de 3 m × 2 m, encostados. Qual é a área da sala?",
+      "alternativas": [
+        "24 m²",
+        "60 m²",
+        "30 m²",
+        "18 m²",
+        "35 m²"
+      ],
+      "correta": 2,
+      "explicacao": "24 + 6 = 30 m². Dica de mergulhador: divida o L em retângulos.",
+      "comentarios": [
+        "Esqueceu o retângulo menor.",
+        "Dobrou.",
+        "",
+        "Subtraiu as áreas.",
+        "Errou uma das áreas."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q02",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um terreno de 20 m × 15 m tem uma piscina de 8 m × 4 m. Qual é a área livre?",
+      "alternativas": [
+        "32 m²",
+        "300 m²",
+        "332 m²",
+        "238 m²",
+        "268 m²"
+      ],
+      "correta": 4,
+      "explicacao": "300 − 32 = 268 m². Dica de mergulhador: total menos o que está ocupado.",
+      "comentarios": [
+        "É a área da piscina.",
+        "Não descontou a piscina.",
+        "Somou a piscina.",
+        "Errou a subtração.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q03",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um jardim retangular de 10 m × 8 m tem, no meio, um canteiro circular de raio 3 m. Qual é a área fora do canteiro? Use π ≈ 3.",
+      "alternativas": [
+        "62 m²",
+        "80 m²",
+        "53 m²",
+        "27 m²",
+        "107 m²"
+      ],
+      "correta": 2,
+      "explicacao": "Canteiro: 3 × 9 = 27 m². Fora: 80 − 27 = 53 m². Dica de mergulhador: retângulo menos círculo.",
+      "comentarios": [
+        "Subtraiu o comprimento do canteiro.",
+        "Não descontou o canteiro.",
+        "",
+        "É a área do canteiro.",
+        "Somou o canteiro."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q04",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "A fachada de uma casa é desenhada como um retângulo de 12 m × 6 m com um triângulo em cima, de base 12 m e altura 4 m. Qual é a área da fachada?",
+      "alternativas": [
+        "24 m²",
+        "120 m²",
+        "96 m²",
+        "72 m²",
+        "84 m²"
+      ],
+      "correta": 2,
+      "explicacao": "Retângulo: 72. Triângulo: 12 × 4 ÷ 2 = 24. Total: 96 m². Dica de mergulhador: some peça por peça.",
+      "comentarios": [
+        "É só o triângulo.",
+        "Esqueceu de dividir o triângulo por 2.",
+        "",
+        "Esqueceu o triângulo.",
+        "Usou altura 2 no triângulo."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q05",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um palco é formado por um retângulo de 10 m × 6 m e um semicírculo de diâmetro 6 m encostado num dos lados menores. Qual é a área do palco? Use π ≈ 3.",
+      "alternativas": [
+        "87 m²",
+        "69 m²",
+        "73,5 m²",
+        "60 m²",
+        "114 m²"
+      ],
+      "correta": 2,
+      "explicacao": "Semicírculo de raio 3: 3 × 9 ÷ 2 = 13,5. Total: 60 + 13,5 = 73,5 m². Dica de mergulhador: semicírculo é metade de πr².",
+      "comentarios": [
+        "Usou o círculo inteiro.",
+        "Errou a área do semicírculo.",
+        "",
+        "Esqueceu o semicírculo.",
+        "Usou o diâmetro como raio."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q06",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "De um quadrado de lado 10 cm, retiram-se quatro quartos de círculo de raio 5 cm, um em cada canto. Qual é a área que sobra? Use π ≈ 3,14.",
+      "alternativas": [
+        "100 cm²",
+        "68,6 cm²",
+        "21,5 cm²",
+        "80,375 cm²",
+        "78,5 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Os quatro quartos formam um círculo de raio 5: 78,5 cm². Sobra: 100 − 78,5 = 21,5 cm². Dica de mergulhador: junte os pedaços de círculo.",
+      "comentarios": [
+        "É a área do quadrado.",
+        "Subtraiu o comprimento da circunferência.",
+        "",
+        "Tirou só um dos cantos.",
+        "É a área retirada."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q07",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma sala de 7 m × 5 m tem um pilar de 0,5 m × 0,5 m e um armário embutido de 2 m × 0,6 m que não recebem piso. O piso vem em caixas de 2,5 m², e compram-se 10% a mais para perdas. Quantas caixas são necessárias?",
+      "alternativas": [
+        "14",
+        "16",
+        "37",
+        "13",
+        "15"
+      ],
+      "correta": 4,
+      "explicacao": "Área: 35 − 0,25 − 1,2 = 33,55 m². Com perdas: 36,9 m². Caixas: 36,9 ÷ 2,5 ≈ 14,8, ou seja, 15. Dica de mergulhador: desconte, acrescente a perda e arredonde para cima.",
+      "comentarios": [
+        "Esqueceu os 10% de perda.",
+        "Não descontou o pilar e o armário.",
+        "Respondeu em metros quadrados.",
+        "Arredondou para baixo e esqueceu as perdas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q08",
+      "tema": "Regiões e malhas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma moldura de 4 cm de largura contorna uma foto de 20 cm × 30 cm. Qual é a área da moldura?",
+      "alternativas": [
+        "400 cm²",
+        "1.064 cm²",
+        "200 cm²",
+        "600 cm²",
+        "464 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "Total: 28 × 38 = 1.064 cm². Foto: 600 cm². Moldura: 464 cm². Dica de mergulhador: fora menos dentro.",
+      "comentarios": [
+        "Multiplicou 4 pelo meio perímetro... e errou.",
+        "É a área total com a foto.",
+        "Multiplicou 4 por 50.",
+        "É a área da foto.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q09",
+      "tema": "Regiões e malhas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Numa malha de quadradinhos de 1 cm², uma figura cobre 12 quadradinhos inteiros e 6 metades. Qual é a área da figura?",
+      "alternativas": [
+        "6 cm²",
+        "12 cm²",
+        "15 cm²",
+        "18 cm²",
+        "9 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "12 + 6 × 0,5 = 15 cm². Dica de mergulhador: duas metades fazem um quadradinho.",
+      "comentarios": [
+        "Contou só as metades.",
+        "Ignorou as metades.",
+        "",
+        "Contou as metades como inteiros.",
+        "Contou as metades como inteiros e ignorou os inteiros."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q10",
+      "tema": "Regiões e malhas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma calçada de 2 m de largura contorna, por fora, uma piscina de 10 m × 5 m. Qual é a área da calçada?",
+      "alternativas": [
+        "50 m²",
+        "76 m²",
+        "30 m²",
+        "126 m²",
+        "60 m²"
+      ],
+      "correta": 1,
+      "explicacao": "Total: 14 × 9 = 126. Piscina: 50. Calçada: 76 m². Dica de mergulhador: os quatro cantos da calçada também contam.",
+      "comentarios": [
+        "É a área da piscina.",
+        "",
+        "Usou meio perímetro.",
+        "É a área total.",
+        "Multiplicou a largura pelo perímetro e esqueceu os cantos."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q11",
+      "tema": "Regiões e malhas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Numa malha, um triângulo tem vértices em (0, 0), (10, 0) e (4, 6). Usando o retângulo envolvente de 10 × 6, qual é a área do triângulo?",
+      "alternativas": [
+        "30",
+        "24",
+        "42",
+        "60",
+        "18"
+      ],
+      "correta": 0,
+      "explicacao": "Retângulo: 60. Cantos: 4 × 6 ÷ 2 = 12 e 6 × 6 ÷ 2 = 18. Triângulo: 60 − 30 = 30. Confere com base 10 × altura 6 ÷ 2. Dica de mergulhador: envolva e tire os cantos.",
+      "comentarios": [
+        "",
+        "Errou a conta dos cantos.",
+        "Tirou só um dos cantos.",
+        "É a área do retângulo envolvente.",
+        "Tirou os cantos duas vezes."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q12",
+      "tema": "Regiões e malhas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um quadrado de lado 6 cm está desenhado no centro de um quadrado de lado 10 cm. Qual é a área da região entre eles?",
+      "alternativas": [
+        "100 cm²",
+        "36 cm²",
+        "136 cm²",
+        "16 cm²",
+        "64 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "100 − 36 = 64 cm². Dica de mergulhador: subtraia áreas, não lados.",
+      "comentarios": [
+        "É o quadrado maior.",
+        "É o quadrado menor.",
+        "Somou as áreas.",
+        "Subtraiu os lados e elevou ao quadrado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q13",
+      "tema": "Regiões e malhas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um hexágono regular de lado 2 cm é formado por 6 triângulos equiláteros, cada um com área de cerca de 1,73 cm². Qual é a área do hexágono?",
+      "alternativas": [
+        "Cerca de 10,4 cm²",
+        "12 cm²",
+        "Cerca de 3,46 cm²",
+        "Cerca de 20,8 cm²",
+        "Cerca de 1,73 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "6 × 1,73 ≈ 10,4 cm². Dica de mergulhador: o hexágono regular é feito de 6 equiláteros.",
+      "comentarios": [
+        "",
+        "Calculou o perímetro.",
+        "Contou dois triângulos.",
+        "Contou 12 triângulos.",
+        "Contou um triângulo só."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q14",
+      "tema": "Regiões e malhas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um logotipo é um quadrado de lado 8 cm com um quarto de círculo de raio 8 cm desenhado a partir de um dos vértices. Qual é a área do quadrado fora do quarto de círculo? Use π ≈ 3,14.",
+      "alternativas": [
+        "32 cm²",
+        "13,76 cm²",
+        "51,44 cm²",
+        "64 cm²",
+        "50,24 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Quarto de círculo: 3,14 × 64 ÷ 4 = 50,24 cm². Fora: 64 − 50,24 = 13,76 cm². Dica de mergulhador: um quarto de πr².",
+      "comentarios": [
+        "Tirou metade do quadrado.",
+        "",
+        "Subtraiu o comprimento do arco.",
+        "É a área do quadrado.",
+        "É a área do quarto de círculo."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q15",
+      "tema": "Escala e áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Numa planta de escala 1 : 100, uma sala aparece com 4 cm × 5 cm. Qual é a área real?",
+      "alternativas": [
+        "20 m²",
+        "2 m²",
+        "0,2 m²",
+        "2.000 m²",
+        "200 m²"
+      ],
+      "correta": 0,
+      "explicacao": "Lados reais: 4 m e 5 m. Área: 20 m². Dica de mergulhador: converta os lados antes.",
+      "comentarios": [
+        "",
+        "Errou a conversão dos lados.",
+        "Usou a escala linear na área sem converter.",
+        "Multiplicou a área por 100.",
+        "Errou a conversão."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q16",
+      "tema": "Escala e áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma foto é ampliada para ficar 3 vezes maior em cada lado. Quantas vezes mais papel ela ocupa?",
+      "alternativas": [
+        "27 vezes",
+        "9 vezes",
+        "6 vezes",
+        "3 vezes",
+        "12 vezes"
+      ],
+      "correta": 1,
+      "explicacao": "Área: 3² = 9. Dica de mergulhador: área segue o quadrado da razão.",
+      "comentarios": [
+        "Usou o cubo.",
+        "",
+        "Multiplicou por 2.",
+        "Usou a razão linear.",
+        "Somou errado."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q17",
+      "tema": "Escala e áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Num mapa de escala 1 : 10.000, um terreno retangular aparece com 2 cm × 3 cm. Qual é a área real, em hectares?",
+      "alternativas": [
+        "0,06 ha",
+        "60 ha",
+        "600 ha",
+        "0,6 ha",
+        "6 ha"
+      ],
+      "correta": 4,
+      "explicacao": "Lados reais: 200 m e 300 m. Área: 60.000 m² = 6 ha. Dica de mergulhador: 1 ha = 10.000 m².",
+      "comentarios": [
+        "Usou a escala linear na área.",
+        "Errou a conversão para hectares.",
+        "Errou duas casas.",
+        "Errou a conversão para o outro lado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q18",
+      "tema": "Escala e áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Numa planta de escala 1 : 200, um jardim ocupa 30 cm². Qual é a área real?",
+      "alternativas": [
+        "1.200 m²",
+        "120 m²",
+        "0,6 m²",
+        "12 m²",
+        "60 m²"
+      ],
+      "correta": 1,
+      "explicacao": "Cada cm² vale 200² = 40.000 cm² = 4 m². 30 × 4 = 120 m². Dica de mergulhador: área usa a escala ao quadrado.",
+      "comentarios": [
+        "Errou a conversão de cm² para m².",
+        "",
+        "Usou a escala linear na área.",
+        "Errou uma casa.",
+        "Usou a escala 1 : 100."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q19",
+      "tema": "Escala e áreas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um logotipo de 10 cm² gasta 2 mL de tinta. Ele será pintado num muro com cada medida 50 vezes maior, com a tinta proporcional à área. Quanta tinta será gasta?",
+      "alternativas": [
+        "0,5 L",
+        "100 mL",
+        "250 L",
+        "50 L",
+        "5 L"
+      ],
+      "correta": 4,
+      "explicacao": "Área: × 50² = 2.500. Tinta: 2 mL × 2.500 = 5.000 mL = 5 L. Dica de mergulhador: tinta segue a área.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Usou a razão linear.",
+        "Usou o cubo.",
+        "Errou uma casa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q20",
+      "tema": "Escala e áreas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um terreno quadrado tem área real de 2.500 m² e aparece numa planta com área de 25 cm². Qual é a escala da planta?",
+      "alternativas": [
+        "1 : 100",
+        "1 : 10.000",
+        "1 : 1.000",
+        "1 : 500",
+        "1 : 1.000.000"
+      ],
+      "correta": 2,
+      "explicacao": "Lado real: 50 m = 5.000 cm. Lado na planta: 5 cm. Escala: 5 : 5.000 = 1 : 1.000. Dica de mergulhador: escala é razão entre lados, a raiz da razão entre áreas.",
+      "comentarios": [
+        "Dividiu as áreas sem converter as unidades.",
+        "Errou a conversão.",
+        "",
+        "Errou o lado.",
+        "Usou a razão entre as áreas."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q01",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo de lados 3, 4 e 5, qual é o seno do ângulo oposto ao lado 3?",
+      "alternativas": [
+        "0,8",
+        "1,67",
+        "0,6",
+        "0,75",
+        "1,33"
+      ],
+      "correta": 2,
+      "explicacao": "Seno = oposto ÷ hipotenusa = 3/5 = 0,6. Dica de mergulhador: seno usa a hipotenusa no denominador.",
+      "comentarios": [
+        "É o cosseno.",
+        "Inverteu o seno.",
+        "",
+        "É a tangente.",
+        "Inverteu a tangente."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q02",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "No triângulo de lados 3, 4 e 5, qual é o cosseno do ângulo oposto ao lado 3?",
+      "alternativas": [
+        "0,75",
+        "1,33",
+        "0,8",
+        "1,25",
+        "0,6"
+      ],
+      "correta": 2,
+      "explicacao": "O adjacente a esse ângulo é 4: cosseno = 4/5 = 0,8. Dica de mergulhador: cosseno usa o cateto encostado.",
+      "comentarios": [
+        "É a tangente.",
+        "Inverteu a tangente.",
+        "",
+        "Inverteu o cosseno.",
+        "É o seno."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q03",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, a tangente de um ângulo agudo é:",
+      "alternativas": [
+        "Cateto oposto ÷ hipotenusa",
+        "Cateto adjacente ÷ hipotenusa",
+        "Cateto adjacente ÷ cateto oposto",
+        "Hipotenusa ÷ cateto oposto",
+        "Cateto oposto ÷ cateto adjacente"
+      ],
+      "correta": 4,
+      "explicacao": "Tangente compara os dois catetos. Dica de mergulhador: tangente não usa a hipotenusa.",
+      "comentarios": [
+        "É o seno.",
+        "É o cosseno.",
+        "É o inverso da tangente.",
+        "É o inverso do seno.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q04",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, a hipotenusa mede 10 cm, e o seno de um ângulo θ é 0,6. Quanto mede o cateto oposto a θ?",
+      "alternativas": [
+        "0,06 cm",
+        "16,7 cm",
+        "6 cm",
+        "60 cm",
+        "8 cm"
+      ],
+      "correta": 2,
+      "explicacao": "Oposto = hipotenusa × seno = 10 × 0,6 = 6 cm. Dica de mergulhador: isole o lado na razão.",
+      "comentarios": [
+        "Dividiu 0,6 por 10.",
+        "Dividiu 10 por 0,6.",
+        "",
+        "Multiplicou por 100.",
+        "Calculou o adjacente."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q05",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, o cateto adjacente a θ mede 8 cm, e tg θ = 0,75. Quanto mede o cateto oposto?",
+      "alternativas": [
+        "10,67 cm",
+        "0,09 cm",
+        "6 cm",
+        "10 cm",
+        "8,75 cm"
+      ],
+      "correta": 2,
+      "explicacao": "Oposto = adjacente × tangente = 8 × 0,75 = 6 cm. Dica de mergulhador: tangente liga os dois catetos.",
+      "comentarios": [
+        "Dividiu 8 por 0,75.",
+        "Dividiu 0,75 por 8.",
+        "",
+        "Calculou a hipotenusa.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q06",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, sen θ = 0,8. Qual é o valor de cos θ?",
+      "alternativas": [
+        "1,25",
+        "0,8",
+        "0,2",
+        "0,64",
+        "0,6"
+      ],
+      "correta": 4,
+      "explicacao": "sen² + cos² = 1: cos² = 1 − 0,64 = 0,36, cos θ = 0,6. Dica de mergulhador: é o triângulo 3, 4, 5.",
+      "comentarios": [
+        "Inverteu o seno.",
+        "Repetiu o seno.",
+        "Fez 1 − 0,8.",
+        "Elevou o seno ao quadrado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q07",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Dois triângulos retângulos são semelhantes. O menor tem catetos de 3 cm e 4 cm; o maior tem hipotenusa de 15 cm. Qual é o seno do menor ângulo do triângulo maior, e quanto mede o cateto oposto a ele?",
+      "alternativas": [
+        "0,2 e 3 cm",
+        "0,6 e 3 cm",
+        "0,6 e 9 cm",
+        "0,75 e 11,25 cm",
+        "0,8 e 12 cm"
+      ],
+      "correta": 2,
+      "explicacao": "O menor ângulo fica oposto ao menor cateto: seno = 3/5 = 0,6 nos dois triângulos. Oposto no maior: 15 × 0,6 = 9 cm. Dica de mergulhador: semelhança mantém as razões.",
+      "comentarios": [
+        "Dividiu 3 por 15.",
+        "Usou o cateto do triângulo menor.",
+        "",
+        "Usou a tangente.",
+        "Usou o cosseno e o outro cateto."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q08",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Qual é o valor de sen 30°?",
+      "alternativas": [
+        "1",
+        "0",
+        "√3/2",
+        "1/2",
+        "√2/2"
+      ],
+      "correta": 3,
+      "explicacao": "sen 30° = 1/2. Dica de mergulhador: com 30°, o oposto é metade da hipotenusa.",
+      "comentarios": [
+        "É sen 90°.",
+        "É sen 0°.",
+        "É sen 60°.",
+        "",
+        "É sen 45°."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q09",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Qual é o valor de tg 45°?",
+      "alternativas": [
+        "√3",
+        "√2/2",
+        "1/2",
+        "1",
+        "0"
+      ],
+      "correta": 3,
+      "explicacao": "Com 45°, os catetos são iguais: tangente 1. Dica de mergulhador: 45° divide o ângulo reto ao meio.",
+      "comentarios": [
+        "É tg 60°.",
+        "É sen 45°.",
+        "É sen 30°.",
+        "",
+        "É tg 0°."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q10",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Uma escada de 6 m está apoiada numa parede e forma 60° com o chão. A que altura ela toca a parede? Use sen 60° ≈ 0,87.",
+      "alternativas": [
+        "6 m",
+        "3 m",
+        "Cerca de 3,46 m",
+        "Cerca de 10,4 m",
+        "Cerca de 5,2 m"
+      ],
+      "correta": 4,
+      "explicacao": "A altura é o lado oposto ao ângulo do chão: 6 × 0,87 ≈ 5,2 m. Dica de mergulhador: hipotenusa e oposto, seno.",
+      "comentarios": [
+        "Repetiu o comprimento.",
+        "Usou o cosseno.",
+        "Dividiu 6 pela tangente.",
+        "Usou a tangente.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q11",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Uma rampa de 10 m de comprimento forma 30° com o chão. Quanto ela sobe?",
+      "alternativas": [
+        "Cerca de 17,3 m",
+        "Cerca de 5,77 m",
+        "5 m",
+        "10 m",
+        "Cerca de 8,66 m"
+      ],
+      "correta": 2,
+      "explicacao": "Subida = 10 × sen 30° = 5 m. Dica de mergulhador: comprimento inclinado é a hipotenusa.",
+      "comentarios": [
+        "Multiplicou pela tangente de 60°.",
+        "Usou a tangente.",
+        "",
+        "Repetiu o comprimento.",
+        "Usou o cosseno."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q12",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Quanto vale sen 30° + cos 60°?",
+      "alternativas": [
+        "2",
+        "1/2",
+        "1",
+        "√3",
+        "0"
+      ],
+      "correta": 2,
+      "explicacao": "1/2 + 1/2 = 1. Dica de mergulhador: sen 30° = cos 60°.",
+      "comentarios": [
+        "Usou 1 para cada.",
+        "Contou só uma parcela.",
+        "",
+        "Usou os valores de 60° e 30° trocados.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q13",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, a hipotenusa mede 12 cm e um dos ângulos agudos mede 30°. Quanto medem os catetos?",
+      "alternativas": [
+        "6 cm e 6 cm",
+        "12 cm e 6 cm",
+        "6 cm e cerca de 10,4 cm",
+        "3 cm e 6 cm",
+        "4 cm e 8 cm"
+      ],
+      "correta": 2,
+      "explicacao": "Oposto a 30°: 12 × 1/2 = 6 cm. Adjacente: 12 × √3/2 ≈ 10,4 cm. Dica de mergulhador: confira com Pitágoras: 36 + 108 = 144.",
+      "comentarios": [
+        "Supôs catetos iguais.",
+        "Repetiu a hipotenusa.",
+        "",
+        "Dividiu duas vezes.",
+        "Dividiu em terços."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q14",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Um observador vê o topo de um prédio sob um ângulo de 30°. Ele anda 20 m em direção ao prédio e passa a ver o topo sob 60°. Qual é, aproximadamente, a altura do prédio?",
+      "alternativas": [
+        "Cerca de 11,5 m",
+        "10 m",
+        "Cerca de 17,3 m",
+        "Cerca de 34,6 m",
+        "20 m"
+      ],
+      "correta": 2,
+      "explicacao": "O triângulo formado pelo observador nas duas posições e o topo é isósceles (ângulos de 30° e 30°): a distância do segundo ponto ao topo é 20 m. Altura = 20 × sen 60° ≈ 17,3 m. Dica de mergulhador: o ângulo externo de 60° é a soma de 30° + 30°.",
+      "comentarios": [
+        "Usou tg 30° com 20 m.",
+        "Usou sen 30° com 20 m.",
+        "",
+        "Usou tg 60° com 20 m.",
+        "Igualou a altura ao trecho andado."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q15",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "A 20 m de um prédio, uma pessoa vê o topo sob um ângulo de 45° (despreze a altura dos olhos). Qual é a altura do prédio?",
+      "alternativas": [
+        "Cerca de 14,1 m",
+        "10 m",
+        "20 m",
+        "40 m",
+        "Cerca de 28,3 m"
+      ],
+      "correta": 2,
+      "explicacao": "tg 45° = 1: altura = distância = 20 m. Dica de mergulhador: com 45°, os catetos são iguais.",
+      "comentarios": [
+        "Usou o seno.",
+        "Usou metade.",
+        "",
+        "Dobrou.",
+        "Calculou a hipotenusa."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q16",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Uma rampa tem inclinação de 10%. Quanto ela sobe a cada 50 m na horizontal?",
+      "alternativas": [
+        "10 m",
+        "50 m",
+        "5 m",
+        "0,5 m",
+        "500 m"
+      ],
+      "correta": 2,
+      "explicacao": "10% de 50 m = 5 m. Dica de mergulhador: inclinação em porcentagem é a tangente.",
+      "comentarios": [
+        "Usou 20%.",
+        "Repetiu a distância.",
+        "",
+        "Usou 1%.",
+        "Multiplicou por 10."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q17",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "A 20 m de um prédio, uma pessoa vê o topo sob 60°. Qual é, aproximadamente, a altura do prédio? Use tg 60° ≈ 1,73.",
+      "alternativas": [
+        "11,6 m",
+        "10 m",
+        "40 m",
+        "17,3 m",
+        "34,6 m"
+      ],
+      "correta": 4,
+      "explicacao": "tg 60° = h ÷ 20, h = 20 × 1,73 = 34,6 m. Dica de mergulhador: distância e altura são os dois catetos.",
+      "comentarios": [
+        "Dividiu pela tangente.",
+        "Usou o cosseno.",
+        "Calculou a hipotenusa.",
+        "Usou o seno.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q18",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Um cabo de 50 m está preso a uma torre e forma 60° com o chão. A que altura ele está preso? Use sen 60° ≈ 0,87.",
+      "alternativas": [
+        "28,9 m",
+        "50 m",
+        "43,5 m",
+        "25 m",
+        "86,5 m"
+      ],
+      "correta": 2,
+      "explicacao": "Altura = 50 × 0,87 = 43,5 m. Dica de mergulhador: comprimento inclinado e altura: seno.",
+      "comentarios": [
+        "Dividiu pela tangente.",
+        "Repetiu o comprimento.",
+        "",
+        "Usou o cosseno.",
+        "Usou a tangente."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q19",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "O sol está a 30° acima do horizonte. Qual é, aproximadamente, a sombra de um prédio de 30 m? Use tg 30° ≈ 0,58.",
+      "alternativas": [
+        "30 m",
+        "15 m",
+        "Cerca de 52 m",
+        "Cerca de 17,4 m",
+        "60 m"
+      ],
+      "correta": 2,
+      "explicacao": "tg 30° = altura ÷ sombra, sombra = 30 ÷ 0,58 ≈ 51,7 m. Dica de mergulhador: sol baixo, sombra longa.",
+      "comentarios": [
+        "Supôs 45°.",
+        "Usou o seno.",
+        "",
+        "Multiplicou pela tangente.",
+        "Calculou a hipotenusa."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q20",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Uma rampa precisa vencer uma altura de 0,6 m com inclinação de tangente 1/12. Qual é o comprimento horizontal mínimo?",
+      "alternativas": [
+        "12 m",
+        "6 m",
+        "0,05 m",
+        "7,2 m",
+        "72 m"
+      ],
+      "correta": 3,
+      "explicacao": "tg = altura ÷ horizontal: 1/12 = 0,6 ÷ x, x = 7,2 m. Dica de mergulhador: horizontal = altura ÷ tangente.",
+      "comentarios": [
+        "Usou o denominador como medida.",
+        "Multiplicou por 10.",
+        "Dividiu 0,6 por 12.",
+        "",
+        "Errou a vírgula."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q01",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Um quadrado tem área de 64 m². Qual é o seu perímetro?",
+      "alternativas": [
+        "64 m",
+        "8 m",
+        "32 m",
+        "16 m",
+        "256 m"
+      ],
+      "correta": 2,
+      "explicacao": "Lado: 8 m. Perímetro: 32 m. Dica de mergulhador: da área ao lado, raiz.",
+      "comentarios": [
+        "Repetiu a área.",
+        "É o lado.",
+        "",
+        "Somou dois lados.",
+        "Multiplicou a área por 4."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q02",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é a área de um triângulo de base 9 cm e altura 8 cm?",
+      "alternativas": [
+        "72 cm²",
+        "17 cm²",
+        "36 cm²",
+        "34 cm²",
+        "18 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "9 × 8 ÷ 2 = 36 cm². Dica de mergulhador: triângulo divide por 2.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "Somou.",
+        "",
+        "Calculou outra medida.",
+        "Dividiu por 4."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q03",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é o comprimento de uma circunferência de raio 7 m? Use π ≈ 3.",
+      "alternativas": [
+        "84 m",
+        "21 m",
+        "42 m",
+        "14 m",
+        "147 m"
+      ],
+      "correta": 2,
+      "explicacao": "2 × 3 × 7 = 42 m. Dica de mergulhador: 2πr.",
+      "comentarios": [
+        "Usou o diâmetro como raio.",
+        "Usou πr.",
+        "",
+        "Calculou o diâmetro.",
+        "Calculou a área."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q04",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é a área de um trapézio de bases 8 cm e 4 cm e altura 5 cm?",
+      "alternativas": [
+        "17 cm²",
+        "160 cm²",
+        "60 cm²",
+        "30 cm²",
+        "20 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "(8 + 4) × 5 ÷ 2 = 30 cm². Dica de mergulhador: média das bases vezes a altura.",
+      "comentarios": [
+        "Somou tudo.",
+        "Multiplicou tudo.",
+        "Esqueceu de dividir por 2.",
+        "",
+        "Usou só a base menor."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q05",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Num triângulo retângulo de lados 6, 8 e 10, qual é o seno do ângulo oposto ao lado 8?",
+      "alternativas": [
+        "1,25",
+        "1,33",
+        "0,6",
+        "0,8",
+        "0,75"
+      ],
+      "correta": 3,
+      "explicacao": "Seno = 8 ÷ 10 = 0,8. Dica de mergulhador: oposto sobre hipotenusa.",
+      "comentarios": [
+        "Inverteu.",
+        "É a tangente.",
+        "É o cosseno.",
+        "",
+        "É a tangente do outro ângulo."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q06",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é a área de um círculo de raio 5 m? Use π ≈ 3,14.",
+      "alternativas": [
+        "25 m²",
+        "314 m²",
+        "31,4 m²",
+        "78,5 m²",
+        "15,7 m²"
+      ],
+      "correta": 3,
+      "explicacao": "3,14 × 25 = 78,5 m². Dica de mergulhador: πr².",
+      "comentarios": [
+        "Esqueceu o π.",
+        "Usou o diâmetro como raio.",
+        "Calculou o comprimento.",
+        "",
+        "Usou πr."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q07",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Numa planta de escala 1 : 100, um cômodo aparece com 3 cm × 4 cm. Qual é a área real?",
+      "alternativas": [
+        "1,2 m²",
+        "120 m²",
+        "1.200 m²",
+        "12 m²",
+        "0,12 m²"
+      ],
+      "correta": 3,
+      "explicacao": "Lados reais: 3 m e 4 m. Área: 12 m². Dica de mergulhador: na 1 : 100, cada cm vale 1 m.",
+      "comentarios": [
+        "Errou uma casa para o outro lado.",
+        "Errou uma casa.",
+        "Multiplicou por 100.",
+        "",
+        "Errou a conversão."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q08",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Um piso de 6 m × 5 m será coberto com lajotas de 30 cm × 30 cm. Quantas lajotas inteiras são necessárias, sem perdas?",
+      "alternativas": [
+        "33",
+        "334",
+        "3.334",
+        "333",
+        "300"
+      ],
+      "correta": 1,
+      "explicacao": "Piso: 30 m². Lajota: 0,09 m². 30 ÷ 0,09 ≈ 333,3: são 334. Dica de mergulhador: lajota incompleta conta como inteira.",
+      "comentarios": [
+        "Errou uma casa.",
+        "",
+        "Errou uma casa para o outro lado.",
+        "Arredondou para baixo.",
+        "Usou lajotas de 0,1 m²."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q09",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma pizza grande tem raio de 15 cm e custa R$ 45; uma pequena tem raio de 10 cm e custa R$ 25. Qual é mais barata por centímetro quadrado? Use π ≈ 3,14.",
+      "alternativas": [
+        "A grande, com cerca de R$ 0,064 por cm² contra R$ 0,080",
+        "A grande, porque o raio é 50% maior",
+        "A pequena, com cerca de R$ 0,064 por cm²",
+        "A pequena, porque custa menos",
+        "As duas têm o mesmo custo por cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Grande: 45 ÷ 706,5 ≈ 0,064. Pequena: 25 ÷ 314 ≈ 0,080. Dica de mergulhador: compare preço por área.",
+      "comentarios": [
+        "",
+        "A conclusão está certa, mas sem a conta.",
+        "Trocou as contas.",
+        "O preço total não compara o custo por área.",
+        "Os valores são diferentes."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q10",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Um losango tem diagonais de 12 cm e 16 cm. Qual é o seu perímetro?",
+      "alternativas": [
+        "40 cm",
+        "28 cm",
+        "96 cm",
+        "56 cm",
+        "20 cm"
+      ],
+      "correta": 0,
+      "explicacao": "As metades das diagonais, 6 e 8, formam um triângulo retângulo com o lado: lado = 10 cm. Perímetro: 40 cm. Dica de mergulhador: Pitágoras com as metades.",
+      "comentarios": [
+        "",
+        "Somou as diagonais.",
+        "Calculou a área.",
+        "Somou as diagonais duas vezes.",
+        "Usou a soma das metades."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q11",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é o comprimento de um arco de 60° numa circunferência de raio 9 cm? Use π ≈ 3.",
+      "alternativas": [
+        "54 cm",
+        "60 cm",
+        "40,5 cm",
+        "27 cm",
+        "9 cm"
+      ],
+      "correta": 4,
+      "explicacao": "Circunferência: 54 cm. 60° é um sexto: 9 cm. Dica de mergulhador: fração do ângulo vezes 2πr.",
+      "comentarios": [
+        "Calculou a circunferência inteira.",
+        "Usou o ângulo.",
+        "Calculou a área do setor.",
+        "Usou meia circunferência.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q12",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma rampa de 12 m de comprimento forma 30° com o chão. Quanto ela sobe?",
+      "alternativas": [
+        "6 m",
+        "24 m",
+        "12 m",
+        "Cerca de 6,9 m",
+        "Cerca de 10,4 m"
+      ],
+      "correta": 0,
+      "explicacao": "12 × sen 30° = 6 m. Dica de mergulhador: com 30°, metade.",
+      "comentarios": [
+        "",
+        "Dividiu pelo seno.",
+        "Repetiu.",
+        "Usou a tangente.",
+        "Usou o cosseno."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q13",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma figura é formada por um quadrado de lado 10 cm com um semicírculo de diâmetro 10 cm encostado num dos lados. Qual é a área? Use π ≈ 3,14.",
+      "alternativas": [
+        "178,5 cm²",
+        "139,25 cm²",
+        "257 cm²",
+        "115,7 cm²",
+        "100 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Semicírculo de raio 5: 3,14 × 25 ÷ 2 = 39,25. Total: 139,25 cm². Dica de mergulhador: metade de πr².",
+      "comentarios": [
+        "Usou o círculo inteiro.",
+        "",
+        "Usou o diâmetro como raio.",
+        "Somou o comprimento do semicírculo.",
+        "Esqueceu o semicírculo."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q14",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma calçada de 1,5 m de largura contorna, por fora, uma piscina de 8 m × 4 m. Qual é a área da calçada?",
+      "alternativas": [
+        "45 m²",
+        "77 m²",
+        "18 m²",
+        "36 m²",
+        "32 m²"
+      ],
+      "correta": 0,
+      "explicacao": "Total: 11 × 7 = 77. Piscina: 32. Calçada: 45 m². Dica de mergulhador: fora menos dentro.",
+      "comentarios": [
+        "",
+        "É a área total.",
+        "Usou meio perímetro.",
+        "Esqueceu os cantos.",
+        "É a área da piscina."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q15",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Um logotipo de 12 cm² será ampliado 2,5 vezes em cada medida. Qual será a nova área?",
+      "alternativas": [
+        "30 cm²",
+        "75 cm²",
+        "14,5 cm²",
+        "187,5 cm²",
+        "24 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "12 × 2,5² = 12 × 6,25 = 75 cm². Dica de mergulhador: área × k².",
+      "comentarios": [
+        "Usou a razão linear.",
+        "",
+        "Somou 2,5.",
+        "Usou o cubo.",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q16",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Um terreno triangular tem lados de 20 m, 20 m e 24 m. O metro quadrado custa R$ 300. Quanto vale o terreno?",
+      "alternativas": [
+        "R$ 48.000",
+        "R$ 115.200",
+        "R$ 72.000",
+        "R$ 19.200",
+        "R$ 57.600"
+      ],
+      "correta": 4,
+      "explicacao": "Altura sobre a base 24: √(400 − 144) = 16 m. Área: 24 × 16 ÷ 2 = 192 m². Valor: 192 × 300 = R$ 57.600. Dica de mergulhador: isósceles, altura por Pitágoras.",
+      "comentarios": [
+        "Errou a altura.",
+        "Esqueceu de dividir a área por 2.",
+        "Usou o lado 20 como altura.",
+        "Multiplicou o perímetro por 300.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q17",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "A 30 m de uma árvore, uma pessoa vê o topo sob 30°. Ela se aproxima até ver o topo sob 60°. Quanto ela andou? Use tg 30° ≈ 0,577 e tg 60° ≈ 1,732.",
+      "alternativas": [
+        "15 m",
+        "20 m",
+        "30 m",
+        "17,3 m",
+        "10 m"
+      ],
+      "correta": 1,
+      "explicacao": "Altura: 30 × 0,577 ≈ 17,3 m. Nova distância: 17,3 ÷ 1,732 = 10 m. Andou: 30 − 10 = 20 m. Dica de mergulhador: a altura é a mesma nas duas posições.",
+      "comentarios": [
+        "Dividiu 30 por 2.",
+        "",
+        "Achou que chegou à árvore.",
+        "É a altura da árvore.",
+        "É a nova distância, não o quanto andou."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q18",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Num quadrado de lado 4 cm, desenham-se para dentro dois semicírculos de diâmetro 4 cm, sobre dois lados opostos. Qual é a área do quadrado que fica fora dos semicírculos? Use π ≈ 3,14.",
+      "alternativas": [
+        "3,44 cm²",
+        "12,56 cm²",
+        "8 cm²",
+        "9,72 cm²",
+        "16 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Cada semicírculo de raio 2: 3,14 × 4 ÷ 2 = 6,28. Os dois: 12,56. Fora: 16 − 12,56 = 3,44 cm². Dica de mergulhador: dois semicírculos iguais formam um círculo.",
+      "comentarios": [
+        "",
+        "É a área dos dois semicírculos.",
+        "Tirou metade do quadrado.",
+        "Tirou só um semicírculo.",
+        "É a área do quadrado."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q19",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é, aproximadamente, a área de um hexágono regular de lado 6 cm? Use √3 ≈ 1,73.",
+      "alternativas": [
+        "15,6 cm²",
+        "93,4 cm²",
+        "216 cm²",
+        "46,7 cm²",
+        "36 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Seis triângulos equiláteros de área 36 × 1,73 ÷ 4 ≈ 15,57: 6 × 15,57 ≈ 93,4 cm². Dica de mergulhador: hexágono = 6 equiláteros.",
+      "comentarios": [
+        "Calculou um triângulo só.",
+        "",
+        "Multiplicou 6 por 36.",
+        "Calculou metade.",
+        "Calculou um quadrado."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q20",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma escada de 5 m forma com o chão um ângulo cujo cosseno é 0,6. A que distância da parede está o pé da escada, e a que altura ela toca a parede?",
+      "alternativas": [
+        "Pé a 3 m e altura de 2 m",
+        "Pé a 4 m e altura de 3 m",
+        "Pé a 0,6 m e altura de 4,4 m",
+        "Pé a 3 m e altura de 5 m",
+        "Pé a 3 m e altura de 4 m"
+      ],
+      "correta": 4,
+      "explicacao": "Pé = 5 × 0,6 = 3 m. Altura: √(25 − 9) = 4 m. Dica de mergulhador: cosseno dá o lado encostado no ângulo.",
+      "comentarios": [
+        "Subtraiu em vez de usar Pitágoras.",
+        "Trocou cosseno com seno.",
+        "Usou o cosseno como medida.",
+        "Usou a escada como altura.",
         ""
       ]
     }
@@ -49324,6 +51000,1446 @@
         "",
         "Esqueceu as curvas."
       ]
+    },
+    {
+      "id": "mat-areas-compostas-q01-v1",
+      "varianteDe": "mat-areas-compostas-q01",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma loja em L é formada por um retângulo de 8 m × 5 m e outro de 4 m × 3 m. Qual é a área?",
+      "alternativas": [
+        "104 m²",
+        "28 m²",
+        "64 m²",
+        "40 m²",
+        "52 m²"
+      ],
+      "correta": 4,
+      "explicacao": "40 + 12 = 52 m². Dica de mergulhador: some as peças.",
+      "comentarios": [
+        "Dobrou.",
+        "Subtraiu.",
+        "Errou uma área.",
+        "Esqueceu o menor.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q02-v1",
+      "varianteDe": "mat-areas-compostas-q02",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um terreno de 30 m × 12 m tem um galpão de 10 m × 6 m. Qual é a área livre?",
+      "alternativas": [
+        "300 m²",
+        "60 m²",
+        "420 m²",
+        "360 m²",
+        "280 m²"
+      ],
+      "correta": 0,
+      "explicacao": "360 − 60 = 300 m². Dica de mergulhador: subtraia a construção.",
+      "comentarios": [
+        "",
+        "É a área do galpão.",
+        "Somou o galpão.",
+        "Não descontou.",
+        "Errou a subtração."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q03-v1",
+      "varianteDe": "mat-areas-compostas-q03",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma praça quadrada de 12 m de lado tem um chafariz circular de raio 4 m. Qual é a área fora do chafariz? Use π ≈ 3.",
+      "alternativas": [
+        "96 m²",
+        "192 m²",
+        "48 m²",
+        "120 m²",
+        "144 m²"
+      ],
+      "correta": 0,
+      "explicacao": "144 − 3 × 16 = 96 m². Dica de mergulhador: área do círculo é πr².",
+      "comentarios": [
+        "",
+        "Somou.",
+        "É a área do chafariz.",
+        "Subtraiu o comprimento.",
+        "Não descontou."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q04-v1",
+      "varianteDe": "mat-areas-compostas-q04",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma figura é formada por um retângulo de 10 m × 5 m com um triângulo em cima, de base 10 m e altura 3 m. Qual é a área?",
+      "alternativas": [
+        "80 m²",
+        "50 m²",
+        "15 m²",
+        "58 m²",
+        "65 m²"
+      ],
+      "correta": 4,
+      "explicacao": "50 + 15 = 65 m². Dica de mergulhador: triângulo divide por 2.",
+      "comentarios": [
+        "Esqueceu de dividir o triângulo.",
+        "Esqueceu o triângulo.",
+        "É só o triângulo.",
+        "Errou a conta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q05-v1",
+      "varianteDe": "mat-areas-compostas-q05",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma mesa é formada por um retângulo de 8 dm × 4 dm e um semicírculo de diâmetro 4 dm num dos lados menores. Qual é a área? Use π ≈ 3.",
+      "alternativas": [
+        "56 dm²",
+        "32 dm²",
+        "34 dm²",
+        "38 dm²",
+        "44 dm²"
+      ],
+      "correta": 3,
+      "explicacao": "Semicírculo: 3 × 4 ÷ 2 = 6. Total: 38 dm². Dica de mergulhador: raio é metade do diâmetro.",
+      "comentarios": [
+        "Usou o diâmetro como raio.",
+        "Esqueceu o semicírculo.",
+        "Errou a conta.",
+        "",
+        "Usou o círculo inteiro."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q06-v1",
+      "varianteDe": "mat-areas-compostas-q06",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "De um quadrado de lado 8 cm, retiram-se quatro quartos de círculo de raio 4 cm, um em cada canto. Qual é a área que sobra? Use π ≈ 3.",
+      "alternativas": [
+        "52 cm²",
+        "48 cm²",
+        "16 cm²",
+        "64 cm²",
+        "40 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Os quatro quartos formam um círculo: 3 × 16 = 48. Sobra: 16 cm². Dica de mergulhador: quatro quartos, um inteiro.",
+      "comentarios": [
+        "Tirou só um canto.",
+        "É a área retirada.",
+        "",
+        "É a área do quadrado.",
+        "Subtraiu o comprimento."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q07-v1",
+      "varianteDe": "mat-areas-compostas-q07",
+      "tema": "Soma e subtração de áreas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma sala de 6 m × 4 m tem um pilar de 0,4 m × 0,4 m e um nicho de 1 m × 0,5 m sem piso. O piso vem em caixas de 2 m², com 10% a mais para perdas. Quantas caixas são necessárias?",
+      "alternativas": [
+        "12",
+        "14",
+        "26",
+        "13",
+        "11"
+      ],
+      "correta": 3,
+      "explicacao": "Área: 24 − 0,16 − 0,5 = 23,34 m². Com perdas: 25,7 m². Caixas: 12,8, ou seja, 13. Dica de mergulhador: caixa incompleta não existe.",
+      "comentarios": [
+        "Esqueceu as perdas.",
+        "Não descontou o pilar e o nicho.",
+        "Respondeu em m².",
+        "",
+        "Arredondou para baixo."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q08-v1",
+      "varianteDe": "mat-areas-compostas-q08",
+      "tema": "Regiões e malhas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma moldura de 2 cm de largura contorna uma foto de 10 cm × 15 cm. Qual é a área da moldura?",
+      "alternativas": [
+        "266 cm²",
+        "150 cm²",
+        "100 cm²",
+        "116 cm²",
+        "50 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Total: 14 × 19 = 266. Foto: 150. Moldura: 116 cm². Dica de mergulhador: os cantos também entram.",
+      "comentarios": [
+        "É a área total.",
+        "É a área da foto.",
+        "Multiplicou 2 pelo perímetro sem os cantos.",
+        "",
+        "Multiplicou 2 por 25."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q09-v1",
+      "varianteDe": "mat-areas-compostas-q09",
+      "tema": "Regiões e malhas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Numa malha de quadradinhos de 1 cm², uma figura cobre 20 inteiros e 4 metades. Qual é a área?",
+      "alternativas": [
+        "20 cm²",
+        "4 cm²",
+        "22 cm²",
+        "24 cm²",
+        "26 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "20 + 2 = 22 cm². Dica de mergulhador: metades em pares.",
+      "comentarios": [
+        "Ignorou as metades.",
+        "Contou só as metades.",
+        "",
+        "Contou as metades como inteiros.",
+        "Errou a soma."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q10-v1",
+      "varianteDe": "mat-areas-compostas-q10",
+      "tema": "Regiões e malhas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma calçada de 1 m de largura contorna, por fora, um canteiro de 6 m × 4 m. Qual é a área da calçada?",
+      "alternativas": [
+        "24 m²",
+        "20 m²",
+        "48 m²",
+        "28 m²",
+        "10 m²"
+      ],
+      "correta": 0,
+      "explicacao": "Total: 8 × 6 = 48. Canteiro: 24. Calçada: 24 m². Dica de mergulhador: fora menos dentro.",
+      "comentarios": [
+        "",
+        "Esqueceu os cantos.",
+        "É a área total.",
+        "Errou a conta.",
+        "Usou meio perímetro."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q11-v1",
+      "varianteDe": "mat-areas-compostas-q11",
+      "tema": "Regiões e malhas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Numa malha, um triângulo tem vértices em (0, 0), (6, 0) e (2, 4). Usando o retângulo envolvente, qual é a área?",
+      "alternativas": [
+        "24",
+        "20",
+        "12",
+        "16",
+        "8"
+      ],
+      "correta": 2,
+      "explicacao": "Retângulo: 24. Cantos: 4 e 8. Triângulo: 12. Dica de mergulhador: retângulo envolvente menos os triângulos de fora.",
+      "comentarios": [
+        "É o retângulo envolvente.",
+        "Tirou só um canto.",
+        "",
+        "Errou a conta.",
+        "Errou os cantos."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q12-v1",
+      "varianteDe": "mat-areas-compostas-q12",
+      "tema": "Regiões e malhas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um quadrado de lado 8 cm está no centro de um quadrado de lado 12 cm. Qual é a área da região entre eles?",
+      "alternativas": [
+        "208 cm²",
+        "144 cm²",
+        "64 cm²",
+        "16 cm²",
+        "80 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "144 − 64 = 80 cm². Dica de mergulhador: fora menos dentro.",
+      "comentarios": [
+        "Somou.",
+        "É o maior.",
+        "É o menor.",
+        "Subtraiu os lados e elevou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q13-v1",
+      "varianteDe": "mat-areas-compostas-q13",
+      "tema": "Regiões e malhas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um hexágono regular de lado 4 cm é formado por 6 triângulos equiláteros de área 4√3 ≈ 6,93 cm² cada. Qual é a área do hexágono?",
+      "alternativas": [
+        "Cerca de 41,6 cm²",
+        "24 cm²",
+        "Cerca de 83,1 cm²",
+        "Cerca de 13,9 cm²",
+        "Cerca de 6,93 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "6 × 6,93 ≈ 41,6 cm². Dica de mergulhador: seis triângulos iguais.",
+      "comentarios": [
+        "",
+        "Calculou o perímetro.",
+        "Contou 12 triângulos.",
+        "Contou dois triângulos.",
+        "Contou um triângulo."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q14-v1",
+      "varianteDe": "mat-areas-compostas-q14",
+      "tema": "Regiões e malhas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um quadrado de lado 6 cm tem um quarto de círculo de raio 6 cm desenhado a partir de um vértice. Qual é a área do quadrado fora dele? Use π ≈ 3.",
+      "alternativas": [
+        "36 cm²",
+        "27 cm²",
+        "45 cm²",
+        "9 cm²",
+        "18 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Quarto: 3 × 36 ÷ 4 = 27 cm². Fora: 36 − 27 = 9 cm². Dica de mergulhador: quarto de círculo é πr² ÷ 4.",
+      "comentarios": [
+        "É a área do quadrado.",
+        "É a área do quarto de círculo.",
+        "Somou.",
+        "",
+        "Tirou metade do quadrado."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q15-v1",
+      "varianteDe": "mat-areas-compostas-q15",
+      "tema": "Escala e áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Numa planta de escala 1 : 50, um quarto aparece com 8 cm × 6 cm. Qual é a área real?",
+      "alternativas": [
+        "2,4 m²",
+        "120 m²",
+        "12 m²",
+        "48 m²",
+        "1,2 m²"
+      ],
+      "correta": 2,
+      "explicacao": "Lados reais: 4 m e 3 m. Área: 12 m². Dica de mergulhador: 1 : 50, cada cm vale 0,5 m.",
+      "comentarios": [
+        "Usou a escala linear na área.",
+        "Errou a conversão.",
+        "",
+        "Usou 1 cm = 1 m.",
+        "Errou uma casa."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q16-v1",
+      "varianteDe": "mat-areas-compostas-q16",
+      "tema": "Escala e áreas",
+      "dificuldade": "facil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Uma figura é reduzida à metade em cada lado. Que fração da área original ela ocupa?",
+      "alternativas": [
+        "1/8",
+        "2/3",
+        "1/3",
+        "1/4",
+        "1/2"
+      ],
+      "correta": 3,
+      "explicacao": "(1/2)² = 1/4. Dica de mergulhador: razão ao quadrado também na redução.",
+      "comentarios": [
+        "Usou o cubo.",
+        "Chutou.",
+        "Errou a conta.",
+        "",
+        "Usou a razão linear."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q17-v1",
+      "varianteDe": "mat-areas-compostas-q17",
+      "tema": "Escala e áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Num mapa de escala 1 : 5.000, um terreno aparece com 4 cm × 5 cm. Qual é a área real, em hectares?",
+      "alternativas": [
+        "50 ha",
+        "500 ha",
+        "0,5 ha",
+        "5 ha",
+        "0,05 ha"
+      ],
+      "correta": 3,
+      "explicacao": "Lados reais: 200 m e 250 m. Área: 50.000 m² = 5 ha. Dica de mergulhador: cada cm vale 50 m.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Errou duas casas.",
+        "Errou a conversão para o outro lado.",
+        "",
+        "Usou a escala linear."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q18-v1",
+      "varianteDe": "mat-areas-compostas-q18",
+      "tema": "Escala e áreas",
+      "dificuldade": "medio",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Numa planta de escala 1 : 100, uma varanda ocupa 25 cm². Qual é a área real?",
+      "alternativas": [
+        "25 m²",
+        "2,5 m²",
+        "2.500 m²",
+        "250 m²",
+        "0,25 m²"
+      ],
+      "correta": 0,
+      "explicacao": "Cada cm² vale 10.000 cm² = 1 m². 25 × 1 = 25 m². Dica de mergulhador: na escala 1 : 100, cm² no papel vira m² no real.",
+      "comentarios": [
+        "",
+        "Errou uma casa.",
+        "Errou duas casas.",
+        "Errou a conversão.",
+        "Usou a escala linear."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q19-v1",
+      "varianteDe": "mat-areas-compostas-q19",
+      "tema": "Escala e áreas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um adesivo de 4 cm² gasta 1 mL de tinta. Ele será ampliado 20 vezes em cada medida. Quanta tinta será gasta?",
+      "alternativas": [
+        "400 mL",
+        "8.000 mL",
+        "20 mL",
+        "4 L",
+        "80 mL"
+      ],
+      "correta": 0,
+      "explicacao": "1 mL × 20² = 400 mL. Dica de mergulhador: razão ao quadrado.",
+      "comentarios": [
+        "",
+        "Usou o cubo.",
+        "Usou a razão linear.",
+        "Errou a conversão.",
+        "Multiplicou por 4."
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-q20-v1",
+      "varianteDe": "mat-areas-compostas-q20",
+      "tema": "Escala e áreas",
+      "dificuldade": "dificil",
+      "fase": "mat-areas-compostas",
+      "enunciado": "Um terreno quadrado tem área real de 400 m² e aparece numa planta com 16 cm². Qual é a escala?",
+      "alternativas": [
+        "1 : 25",
+        "1 : 5.000",
+        "1 : 50",
+        "1 : 500",
+        "1 : 250.000"
+      ],
+      "correta": 3,
+      "explicacao": "Lado real: 20 m = 2.000 cm. Lado na planta: 4 cm. Escala: 1 : 500. Dica de mergulhador: compare lados, não áreas.",
+      "comentarios": [
+        "Dividiu as áreas sem converter.",
+        "Errou a conversão.",
+        "Errou uma casa.",
+        "",
+        "Usou a razão entre as áreas."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q01-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q01",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo de lados 5, 12 e 13, qual é o seno do ângulo oposto ao lado 5?",
+      "alternativas": [
+        "12/13",
+        "12/5",
+        "5/13",
+        "13/5",
+        "5/12"
+      ],
+      "correta": 2,
+      "explicacao": "Oposto 5, hipotenusa 13: 5/13. Dica de mergulhador: seno = oposto ÷ hipotenusa.",
+      "comentarios": [
+        "É o cosseno.",
+        "Inverteu a tangente.",
+        "",
+        "Inverteu o seno.",
+        "É a tangente."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q02-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q02",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "No triângulo de lados 8, 15 e 17, qual é o cosseno do ângulo oposto ao lado 8?",
+      "alternativas": [
+        "8/17",
+        "15/8",
+        "17/15",
+        "15/17",
+        "8/15"
+      ],
+      "correta": 3,
+      "explicacao": "Adjacente 15, hipotenusa 17: 15/17. Dica de mergulhador: adjacente é o cateto que forma o ângulo.",
+      "comentarios": [
+        "É o seno.",
+        "Inverteu a tangente.",
+        "Inverteu.",
+        "",
+        "É a tangente."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q03-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q03",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, o seno de um ângulo agudo é:",
+      "alternativas": [
+        "Cateto oposto ÷ cateto adjacente",
+        "Cateto adjacente ÷ cateto oposto",
+        "Cateto adjacente ÷ hipotenusa",
+        "Hipotenusa ÷ cateto oposto",
+        "Cateto oposto ÷ hipotenusa"
+      ],
+      "correta": 4,
+      "explicacao": "Seno: o que está em frente, sobre o maior lado. Dica de mergulhador: seno, oposto e hipotenusa.",
+      "comentarios": [
+        "É a tangente.",
+        "É o inverso da tangente.",
+        "É o cosseno.",
+        "É o inverso.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q04-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q04",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, a hipotenusa mede 20 cm, e o cosseno de θ é 0,8. Quanto mede o cateto adjacente a θ?",
+      "alternativas": [
+        "0,04 cm",
+        "25 cm",
+        "12 cm",
+        "160 cm",
+        "16 cm"
+      ],
+      "correta": 4,
+      "explicacao": "Adjacente = 20 × 0,8 = 16 cm. Dica de mergulhador: lado = hipotenusa × razão.",
+      "comentarios": [
+        "Dividiu 0,8 por 20.",
+        "Dividiu 20 por 0,8.",
+        "Calculou o oposto.",
+        "Errou a vírgula.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q05-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q05",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, o cateto adjacente a θ mede 12 cm, e tg θ = 0,5. Quanto mede o oposto?",
+      "alternativas": [
+        "13,4 cm",
+        "12,5 cm",
+        "0,04 cm",
+        "24 cm",
+        "6 cm"
+      ],
+      "correta": 4,
+      "explicacao": "12 × 0,5 = 6 cm. Dica de mergulhador: oposto = adjacente × tangente.",
+      "comentarios": [
+        "Calculou a hipotenusa.",
+        "Somou.",
+        "Dividiu 0,5 por 12.",
+        "Dividiu 12 por 0,5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q06-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q06",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, sen θ = 5/13. Qual é o valor de cos θ?",
+      "alternativas": [
+        "5/12",
+        "13/5",
+        "8/13",
+        "12/13",
+        "5/13"
+      ],
+      "correta": 3,
+      "explicacao": "cos² = 1 − 25/169 = 144/169, cos θ = 12/13. Dica de mergulhador: sen² + cos² = 1.",
+      "comentarios": [
+        "Calculou a tangente.",
+        "Inverteu.",
+        "Fez 1 − 5/13.",
+        "",
+        "Repetiu o seno."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q07-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q07",
+      "tema": "Razões trigonométricas",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Dois triângulos retângulos são semelhantes. O menor tem catetos de 5 cm e 12 cm; o maior tem hipotenusa de 26 cm. Qual é o seno do menor ângulo, e quanto mede o cateto oposto a ele no maior?",
+      "alternativas": [
+        "5/12 e 10,8 cm",
+        "12/13 e 24 cm",
+        "5/13 e 10 cm",
+        "5/26 e 5 cm",
+        "5/13 e 5 cm"
+      ],
+      "correta": 2,
+      "explicacao": "Seno: 5/13. Oposto no maior: 26 × 5/13 = 10 cm. Dica de mergulhador: as razões não mudam com o tamanho.",
+      "comentarios": [
+        "Usou a tangente.",
+        "Usou o cosseno.",
+        "",
+        "Dividiu 5 por 26.",
+        "Usou o cateto do menor."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q08-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q08",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Qual é o valor de cos 60°?",
+      "alternativas": [
+        "1",
+        "1/2",
+        "√2/2",
+        "0",
+        "√3/2"
+      ],
+      "correta": 1,
+      "explicacao": "cos 60° = sen 30° = 1/2. Dica de mergulhador: complementares trocam seno e cosseno.",
+      "comentarios": [
+        "É cos 0°.",
+        "",
+        "É cos 45°.",
+        "É cos 90°.",
+        "É cos 30°."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q09-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q09",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Qual é o valor de cos 45°?",
+      "alternativas": [
+        "√2",
+        "√3/2",
+        "1",
+        "√2/2",
+        "1/2"
+      ],
+      "correta": 3,
+      "explicacao": "cos 45° = sen 45° = √2/2 ≈ 0,71. Dica de mergulhador: em 45°, seno e cosseno são iguais.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "É cos 30°.",
+        "É tg 45°.",
+        "",
+        "É cos 60°."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q10-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q10",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Uma escada de 8 m forma 30° com o chão. A que altura ela toca a parede?",
+      "alternativas": [
+        "8 m",
+        "Cerca de 6,9 m",
+        "16 m",
+        "4 m",
+        "Cerca de 4,6 m"
+      ],
+      "correta": 3,
+      "explicacao": "8 × sen 30° = 8 × 0,5 = 4 m. Dica de mergulhador: com 30°, metade da hipotenusa.",
+      "comentarios": [
+        "Repetiu o comprimento.",
+        "Usou o cosseno.",
+        "Dividiu por sen 30°.",
+        "",
+        "Usou a tangente."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q11-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q11",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Um cabo de 20 m vai do chão até o alto de um mastro e forma 30° com o chão. A que altura ele está preso?",
+      "alternativas": [
+        "Cerca de 11,5 m",
+        "10 m",
+        "Cerca de 17,3 m",
+        "40 m",
+        "20 m"
+      ],
+      "correta": 1,
+      "explicacao": "20 × 0,5 = 10 m. Dica de mergulhador: seno de 30° é metade.",
+      "comentarios": [
+        "Usou a tangente.",
+        "",
+        "Usou o cosseno.",
+        "Dividiu pelo seno.",
+        "Repetiu."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q12-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q12",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Quanto vale sen 60° × cos 30°?",
+      "alternativas": [
+        "√3/2",
+        "3/4",
+        "3/2",
+        "1/4",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "(√3/2) × (√3/2) = 3/4. Dica de mergulhador: √3 × √3 = 3.",
+      "comentarios": [
+        "Contou um fator só.",
+        "",
+        "Esqueceu de dividir por 4.",
+        "Usou 1/2 × 1/2.",
+        "Supôs que se cancelam."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q13-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q13",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Num triângulo retângulo, a hipotenusa mede 20 cm e um ângulo agudo mede 60°. Quanto medem os catetos?",
+      "alternativas": [
+        "20 cm e 10 cm",
+        "Cerca de 34,6 cm e 20 cm",
+        "Cerca de 17,3 cm e 10 cm",
+        "5 cm e 15 cm",
+        "10 cm e 10 cm"
+      ],
+      "correta": 2,
+      "explicacao": "Oposto a 60°: 20 × √3/2 ≈ 17,3 cm. Adjacente: 20 × 1/2 = 10 cm. Dica de mergulhador: o lado oposto a 30° é o menor.",
+      "comentarios": [
+        "Repetiu a hipotenusa.",
+        "Usou a tangente.",
+        "",
+        "Dividiu em quartos.",
+        "Supôs iguais."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q14-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q14",
+      "tema": "Ângulos notáveis",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Um observador vê o topo de uma torre sob 30°. Ele anda 40 m em direção a ela e passa a ver o topo sob 60°. Qual é, aproximadamente, a altura da torre?",
+      "alternativas": [
+        "20 m",
+        "Cerca de 69,2 m",
+        "40 m",
+        "Cerca de 34,6 m",
+        "Cerca de 23,1 m"
+      ],
+      "correta": 3,
+      "explicacao": "Pelo triângulo isósceles, o segundo ponto está a 40 m do topo: altura = 40 × sen 60° ≈ 34,6 m. Dica de mergulhador: procure o triângulo isósceles escondido.",
+      "comentarios": [
+        "Usou sen 30° com 40 m.",
+        "Usou tg 60° com 40 m.",
+        "Igualou a altura ao trecho andado.",
+        "",
+        "Usou tg 30° com 40 m."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q15-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q15",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "A 15 m de uma árvore, uma pessoa vê o topo sob 45°. Qual é a altura da árvore (despreze a altura dos olhos)?",
+      "alternativas": [
+        "Cerca de 10,6 m",
+        "7,5 m",
+        "30 m",
+        "15 m",
+        "Cerca de 21,2 m"
+      ],
+      "correta": 3,
+      "explicacao": "tg 45° = 1: altura = 15 m. Dica de mergulhador: 45° iguala os catetos.",
+      "comentarios": [
+        "Usou o seno.",
+        "Usou metade.",
+        "Dobrou.",
+        "",
+        "Calculou a hipotenusa."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q16-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q16",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Uma rua tem inclinação de 8%. Quanto ela sobe a cada 25 m na horizontal?",
+      "alternativas": [
+        "2 m",
+        "8 m",
+        "25 m",
+        "0,2 m",
+        "3,125 m"
+      ],
+      "correta": 0,
+      "explicacao": "8% de 25 m = 2 m. Dica de mergulhador: tangente = subida ÷ horizontal.",
+      "comentarios": [
+        "",
+        "Usou o percentual como medida.",
+        "Repetiu a distância.",
+        "Usou 0,8%.",
+        "Dividiu 25 por 8."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q17-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q17",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "A 30 m de uma torre, uma pessoa vê o topo sob 30°. Qual é, aproximadamente, a altura? Use tg 30° ≈ 0,58.",
+      "alternativas": [
+        "17,4 m",
+        "15 m",
+        "34,6 m",
+        "51,7 m",
+        "26 m"
+      ],
+      "correta": 0,
+      "explicacao": "h = 30 × 0,58 = 17,4 m. Dica de mergulhador: altura = distância × tangente.",
+      "comentarios": [
+        "",
+        "Usou o seno.",
+        "Calculou a hipotenusa.",
+        "Dividiu pela tangente.",
+        "Usou o cosseno."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q18-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q18",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Um cabo de 30 m está preso a um poste e forma 30° com o chão. A que altura ele está preso?",
+      "alternativas": [
+        "15 m",
+        "60 m",
+        "30 m",
+        "17,3 m",
+        "26 m"
+      ],
+      "correta": 0,
+      "explicacao": "30 × 0,5 = 15 m. Dica de mergulhador: seno de 30° é metade.",
+      "comentarios": [
+        "",
+        "Dividiu pelo seno.",
+        "Repetiu.",
+        "Usou a tangente.",
+        "Usou o cosseno."
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q19-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q19",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "O sol está a 60° acima do horizonte. Qual é, aproximadamente, a sombra de um poste de 9 m? Use tg 60° ≈ 1,73.",
+      "alternativas": [
+        "18 m",
+        "Cerca de 15,6 m",
+        "9 m",
+        "4,5 m",
+        "Cerca de 5,2 m"
+      ],
+      "correta": 4,
+      "explicacao": "Sombra = 9 ÷ 1,73 ≈ 5,2 m. Dica de mergulhador: sol alto, sombra curta.",
+      "comentarios": [
+        "Calculou a hipotenusa.",
+        "Multiplicou pela tangente.",
+        "Supôs 45°.",
+        "Usou o cosseno.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-q20-v1",
+      "varianteDe": "mat-trigonometria-triangulo-q20",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-trigonometria-triangulo",
+      "enunciado": "Uma rampa precisa vencer uma altura de 1 m com inclinação de tangente 1/10. Qual é o comprimento horizontal mínimo?",
+      "alternativas": [
+        "0,1 m",
+        "100 m",
+        "10 m",
+        "1 m",
+        "11 m"
+      ],
+      "correta": 2,
+      "explicacao": "x = 1 ÷ 0,1 = 10 m. Dica de mergulhador: inclinação menor pede rampa mais longa.",
+      "comentarios": [
+        "Dividiu 1 por 10.",
+        "Elevou ao quadrado.",
+        "",
+        "Repetiu a altura.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q01-v1",
+      "varianteDe": "mat-revisao-areas-q01",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é o perímetro de um retângulo de 9 m por 4 m?",
+      "alternativas": [
+        "18 m",
+        "26 m",
+        "22 m",
+        "36 m",
+        "13 m"
+      ],
+      "correta": 1,
+      "explicacao": "2 × 13 = 26 m. Dica de mergulhador: perímetro é contorno.",
+      "comentarios": [
+        "Dobrou o maior lado.",
+        "",
+        "Somou três lados.",
+        "Calculou a área.",
+        "Somou dois lados."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q02-v1",
+      "varianteDe": "mat-revisao-areas-q02",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é a área de um triângulo de base 11 cm e altura 6 cm?",
+      "alternativas": [
+        "34 cm²",
+        "17 cm²",
+        "33 cm²",
+        "16,5 cm²",
+        "66 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "11 × 6 ÷ 2 = 33 cm². Dica de mergulhador: base × altura ÷ 2.",
+      "comentarios": [
+        "Calculou um perímetro.",
+        "Somou.",
+        "",
+        "Dividiu por 4.",
+        "Esqueceu de dividir."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q03-v1",
+      "varianteDe": "mat-revisao-areas-q03",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é o comprimento de uma circunferência de diâmetro 30 cm? Use π ≈ 3,14.",
+      "alternativas": [
+        "706,5 cm",
+        "188,4 cm",
+        "94,2 cm",
+        "47,1 cm",
+        "60 cm"
+      ],
+      "correta": 2,
+      "explicacao": "π × 30 = 94,2 cm. Dica de mergulhador: π × diâmetro.",
+      "comentarios": [
+        "Calculou a área.",
+        "Usou o diâmetro como raio.",
+        "",
+        "Usou π vezes o raio.",
+        "Dobrou o diâmetro."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q04-v1",
+      "varianteDe": "mat-revisao-areas-q04",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é a área de um trapézio de bases 9 cm e 5 cm e altura 6 cm?",
+      "alternativas": [
+        "84 cm²",
+        "42 cm²",
+        "270 cm²",
+        "20 cm²",
+        "30 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "14 × 6 ÷ 2 = 42 cm². Dica de mergulhador: some as bases primeiro.",
+      "comentarios": [
+        "Esqueceu de dividir.",
+        "",
+        "Multiplicou tudo.",
+        "Somou.",
+        "Usou só a base menor."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q05-v1",
+      "varianteDe": "mat-revisao-areas-q05",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Num triângulo retângulo de lados 6, 8 e 10, qual é a tangente do ângulo oposto ao lado 8?",
+      "alternativas": [
+        "1,25",
+        "0,8",
+        "0,6",
+        "Cerca de 1,33",
+        "0,75"
+      ],
+      "correta": 3,
+      "explicacao": "Tangente = 8 ÷ 6 ≈ 1,33. Dica de mergulhador: oposto sobre adjacente.",
+      "comentarios": [
+        "Usou a hipotenusa.",
+        "É o seno.",
+        "É o cosseno.",
+        "",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q06-v1",
+      "varianteDe": "mat-revisao-areas-q06",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é a área de um círculo de raio 6 m? Use π ≈ 3.",
+      "alternativas": [
+        "108 m²",
+        "432 m²",
+        "36 m²",
+        "216 m²",
+        "18 m²"
+      ],
+      "correta": 0,
+      "explicacao": "3 × 36 = 108 m². Dica de mergulhador: raio ao quadrado vezes π.",
+      "comentarios": [
+        "",
+        "Usou o diâmetro como raio.",
+        "Calculou o comprimento.",
+        "Usou 2πr².",
+        "Usou πr."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q07-v1",
+      "varianteDe": "mat-revisao-areas-q07",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Numa planta de escala 1 : 50, um banheiro aparece com 6 cm × 4 cm. Qual é a área real?",
+      "alternativas": [
+        "12 m²",
+        "2,4 m²",
+        "0,6 m²",
+        "6 m²",
+        "24 m²"
+      ],
+      "correta": 3,
+      "explicacao": "Lados reais: 3 m e 2 m. Área: 6 m². Dica de mergulhador: cada cm vale 0,5 m.",
+      "comentarios": [
+        "Usou só uma das medidas convertida.",
+        "Errou a conversão.",
+        "Errou uma casa.",
+        "",
+        "Usou 1 cm = 1 m."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q08-v1",
+      "varianteDe": "mat-revisao-areas-q08",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Um piso de 4 m × 3 m será coberto com lajotas de 60 cm × 60 cm. Quantas lajotas inteiras são necessárias, sem perdas?",
+      "alternativas": [
+        "33",
+        "20",
+        "334",
+        "34",
+        "3"
+      ],
+      "correta": 3,
+      "explicacao": "12 ÷ 0,36 ≈ 33,3: 34 lajotas. Dica de mergulhador: arredonde para cima.",
+      "comentarios": [
+        "Arredondou para baixo.",
+        "Usou lajotas de 0,6 m².",
+        "Errou uma casa.",
+        "",
+        "Errou uma casa."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q09-v1",
+      "varianteDe": "mat-revisao-areas-q09",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma pizza de 40 cm de diâmetro custa R$ 60; uma de 30 cm custa R$ 40. Qual é mais barata por cm²? Use π ≈ 3,14.",
+      "alternativas": [
+        "A de 40 cm, com cerca de R$ 0,048 por cm² contra R$ 0,057",
+        "A de 30 cm, com cerca de R$ 0,048",
+        "A de 40 cm, porque é maior",
+        "As duas iguais",
+        "A de 30 cm, porque custa menos"
+      ],
+      "correta": 0,
+      "explicacao": "Grande: 60 ÷ 1.256 ≈ 0,048. Pequena: 40 ÷ 706,5 ≈ 0,057. Dica de mergulhador: raio é metade do diâmetro.",
+      "comentarios": [
+        "",
+        "Trocou.",
+        "Falta a conta.",
+        "Os valores diferem.",
+        "O preço total não basta."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q10-v1",
+      "varianteDe": "mat-revisao-areas-q10",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Um losango tem diagonais de 10 cm e 24 cm. Qual é o seu perímetro?",
+      "alternativas": [
+        "34 cm",
+        "52 cm",
+        "120 cm",
+        "68 cm",
+        "17 cm"
+      ],
+      "correta": 1,
+      "explicacao": "Metades: 5 e 12; lado: 13 cm. Perímetro: 52 cm. Dica de mergulhador: terna 5, 12, 13.",
+      "comentarios": [
+        "Somou as diagonais.",
+        "",
+        "Calculou a área.",
+        "Somou as diagonais duas vezes.",
+        "Somou as metades."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q11-v1",
+      "varianteDe": "mat-revisao-areas-q11",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é a área de um setor de 120° num círculo de raio 6 cm? Use π ≈ 3.",
+      "alternativas": [
+        "54 cm²",
+        "108 cm²",
+        "36 cm²",
+        "120 cm²",
+        "12 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Círculo: 108. Um terço: 36 cm². Dica de mergulhador: 120° é um terço da volta.",
+      "comentarios": [
+        "Usou meio círculo.",
+        "É o círculo inteiro.",
+        "",
+        "Usou o ângulo.",
+        "Calculou o arco."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q12-v1",
+      "varianteDe": "mat-revisao-areas-q12",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma escada de 10 m forma 60° com o chão. A que altura toca a parede? Use sen 60° ≈ 0,87.",
+      "alternativas": [
+        "5 m",
+        "17,3 m",
+        "11,5 m",
+        "8,7 m",
+        "10 m"
+      ],
+      "correta": 3,
+      "explicacao": "10 × 0,87 = 8,7 m. Dica de mergulhador: oposto ao ângulo do chão.",
+      "comentarios": [
+        "Usou o cosseno.",
+        "Usou a tangente.",
+        "Dividiu pelo seno.",
+        "",
+        "Repetiu."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q13-v1",
+      "varianteDe": "mat-revisao-areas-q13",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma figura é formada por um retângulo de 8 cm × 6 cm com um semicírculo de diâmetro 6 cm num dos lados. Qual é a área? Use π ≈ 3.",
+      "alternativas": [
+        "48 cm²",
+        "102 cm²",
+        "61,5 cm²",
+        "57 cm²",
+        "75 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Semicírculo: 3 × 9 ÷ 2 = 13,5. Total: 61,5 cm². Dica de mergulhador: raio = 3.",
+      "comentarios": [
+        "Esqueceu o semicírculo.",
+        "Usou o diâmetro como raio.",
+        "",
+        "Somou o comprimento.",
+        "Usou o círculo inteiro."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q14-v1",
+      "varianteDe": "mat-revisao-areas-q14",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma calçada de 2 m de largura contorna, por fora, um tanque de 6 m × 3 m. Qual é a área da calçada?",
+      "alternativas": [
+        "26 m²",
+        "70 m²",
+        "52 m²",
+        "18 m²",
+        "36 m²"
+      ],
+      "correta": 2,
+      "explicacao": "Total: 10 × 7 = 70. Tanque: 18. Calçada: 52 m². Dica de mergulhador: a calçada soma dos dois lados.",
+      "comentarios": [
+        "Usou meio perímetro.",
+        "É a área total.",
+        "",
+        "É a área do tanque.",
+        "Esqueceu os cantos."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q15-v1",
+      "varianteDe": "mat-revisao-areas-q15",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma figura de 50 cm² é reduzida para 0,4 da medida em cada lado. Qual será a nova área?",
+      "alternativas": [
+        "3,2 cm²",
+        "125 cm²",
+        "8 cm²",
+        "20 cm²",
+        "49,6 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "50 × 0,4² = 50 × 0,16 = 8 cm². Dica de mergulhador: redução também ao quadrado.",
+      "comentarios": [
+        "Usou o cubo.",
+        "Dividiu pela razão.",
+        "",
+        "Usou a razão linear.",
+        "Subtraiu 0,4."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q16-v1",
+      "varianteDe": "mat-revisao-areas-q16",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Um terreno triangular tem lados de 25 m, 25 m e 14 m. O metro quadrado custa R$ 250. Quanto vale?",
+      "alternativas": [
+        "R$ 84.000",
+        "R$ 21.000",
+        "R$ 43.750",
+        "R$ 16.000",
+        "R$ 42.000"
+      ],
+      "correta": 4,
+      "explicacao": "Altura: √(625 − 49) = 24 m. Área: 14 × 24 ÷ 2 = 168 m². Valor: R$ 42.000. Dica de mergulhador: metade da base e Pitágoras.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "Dividiu duas vezes.",
+        "Usou o lado 25 como altura.",
+        "Multiplicou o perímetro.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q17-v1",
+      "varianteDe": "mat-revisao-areas-q17",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "A 45 m de uma torre, uma pessoa vê o topo sob 30°. Ela se aproxima até ver o topo sob 60°. Quanto andou? Use tg 30° ≈ 0,577 e tg 60° ≈ 1,732.",
+      "alternativas": [
+        "45 m",
+        "30 m",
+        "15 m",
+        "22,5 m",
+        "26 m"
+      ],
+      "correta": 1,
+      "explicacao": "Altura: 45 × 0,577 ≈ 26 m. Nova distância: 26 ÷ 1,732 ≈ 15 m. Andou: 30 m. Dica de mergulhador: com 30° e 60°, a nova distância é um terço da antiga.",
+      "comentarios": [
+        "Achou que chegou à torre.",
+        "",
+        "É a nova distância.",
+        "Dividiu 45 por 2.",
+        "É a altura da torre."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q18-v1",
+      "varianteDe": "mat-revisao-areas-q18",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Num quadrado de lado 6 cm, desenham-se para dentro dois semicírculos de diâmetro 6 cm, sobre dois lados opostos. Qual é a área fora deles? Use π ≈ 3.",
+      "alternativas": [
+        "18 cm²",
+        "9 cm²",
+        "27 cm²",
+        "36 cm²",
+        "22,5 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Dois semicírculos de raio 3: um círculo de 27 cm². Fora: 36 − 27 = 9 cm². Dica de mergulhador: fora menos dentro.",
+      "comentarios": [
+        "Tirou metade.",
+        "",
+        "É a área dos dois semicírculos.",
+        "É o quadrado.",
+        "Tirou só um semicírculo."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q19-v1",
+      "varianteDe": "mat-revisao-areas-q19",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Qual é, aproximadamente, a área de um hexágono regular de lado 2 cm? Use √3 ≈ 1,73.",
+      "alternativas": [
+        "24 cm²",
+        "1,73 cm²",
+        "4 cm²",
+        "10,4 cm²",
+        "5,2 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Cada triângulo: 4 × 1,73 ÷ 4 = 1,73. Seis: 10,4 cm². Dica de mergulhador: lado² × √3 ÷ 4 por triângulo.",
+      "comentarios": [
+        "Multiplicou 6 por 4.",
+        "Calculou um triângulo.",
+        "Calculou um quadrado.",
+        "",
+        "Calculou metade."
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-q20-v1",
+      "varianteDe": "mat-revisao-areas-q20",
+      "tema": "Revisão: medidas no plano",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-areas",
+      "enunciado": "Uma escada de 10 m forma com o chão um ângulo cujo seno é 0,8. A que altura ela toca a parede, e a que distância está o pé?",
+      "alternativas": [
+        "Altura de 8 m e pé a 6 m",
+        "Altura de 8 m e pé a 2 m",
+        "Altura de 8 m e pé a 10 m",
+        "Altura de 6 m e pé a 8 m",
+        "Altura de 0,8 m e pé a 9,2 m"
+      ],
+      "correta": 0,
+      "explicacao": "Altura = 10 × 0,8 = 8 m. Pé: √(100 − 64) = 6 m. Dica de mergulhador: seno dá o lado oposto.",
+      "comentarios": [
+        "",
+        "Subtraiu.",
+        "Usou a escada.",
+        "Trocou seno com cosseno.",
+        "Usou o seno como medida."
+      ]
     }
   ],
   "pares": [
@@ -50454,6 +53570,78 @@
       "tema": "Círculo e circunferência",
       "termo": "Coroa circular",
       "definicao": "π(R² − r²)"
+    },
+    {
+      "id": "mat-areas-compostas-par-01",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "termo": "Fora menos dentro",
+      "definicao": "Área de molduras e calçadas"
+    },
+    {
+      "id": "mat-areas-compostas-par-02",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "termo": "Retângulo envolvente",
+      "definicao": "Truque das malhas"
+    },
+    {
+      "id": "mat-areas-compostas-par-03",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "termo": "k ao quadrado",
+      "definicao": "Fator de área numa ampliação"
+    },
+    {
+      "id": "mat-areas-compostas-par-04",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "termo": "Semicírculo",
+      "definicao": "Metade de πr²"
+    },
+    {
+      "id": "mat-trigonometria-triangulo-par-01",
+      "tema": "Trigonometria no triângulo retângulo",
+      "termo": "Seno",
+      "definicao": "Oposto ÷ hipotenusa"
+    },
+    {
+      "id": "mat-trigonometria-triangulo-par-02",
+      "tema": "Trigonometria no triângulo retângulo",
+      "termo": "Cosseno",
+      "definicao": "Adjacente ÷ hipotenusa"
+    },
+    {
+      "id": "mat-trigonometria-triangulo-par-03",
+      "tema": "Trigonometria no triângulo retângulo",
+      "termo": "Tangente",
+      "definicao": "Oposto ÷ adjacente"
+    },
+    {
+      "id": "mat-trigonometria-triangulo-par-04",
+      "tema": "Trigonometria no triângulo retângulo",
+      "termo": "sen 30°",
+      "definicao": "1/2"
+    },
+    {
+      "id": "mat-revisao-areas-par-01",
+      "tema": "Revisão do módulo: medidas no plano",
+      "termo": "Altura perpendicular",
+      "definicao": "Usada em todas as áreas"
+    },
+    {
+      "id": "mat-revisao-areas-par-02",
+      "tema": "Revisão do módulo: medidas no plano",
+      "termo": "Fora menos dentro",
+      "definicao": "Área de regiões entre figuras"
+    },
+    {
+      "id": "mat-revisao-areas-par-03",
+      "tema": "Revisão do módulo: medidas no plano",
+      "termo": "Seno e cosseno",
+      "definicao": "Usam a hipotenusa"
+    },
+    {
+      "id": "mat-revisao-areas-par-04",
+      "tema": "Revisão do módulo: medidas no plano",
+      "termo": "πr²",
+      "definicao": "Área do círculo"
     }
   ],
   "verdadeiroFalso": [
@@ -51429,6 +54617,69 @@
       "afirmacao": "Polias ligadas por correia têm raio × voltas igual.",
       "verdadeira": true,
       "explicacao": "A correia percorre o mesmo comprimento."
+    },
+    {
+      "id": "mat-areas-compostas-vf-01",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "afirmacao": "Na escala 1 : 100, 1 cm² no papel vale 1 m² no real.",
+      "verdadeira": true,
+      "explicacao": "100 cm × 100 cm."
+    },
+    {
+      "id": "mat-areas-compostas-vf-02",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "afirmacao": "Ampliar uma foto 3 vezes em cada lado triplica o papel.",
+      "verdadeira": false,
+      "explicacao": "O papel fica 9 vezes maior."
+    },
+    {
+      "id": "mat-areas-compostas-vf-03",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "afirmacao": "Quatro quartos de círculo de mesmo raio formam um círculo.",
+      "verdadeira": true,
+      "explicacao": "Quatro quartos, um inteiro."
+    },
+    {
+      "id": "mat-trigonometria-triangulo-vf-01",
+      "tema": "Trigonometria no triângulo retângulo",
+      "afirmacao": "tg 45° vale 1.",
+      "verdadeira": true,
+      "explicacao": "Os catetos são iguais."
+    },
+    {
+      "id": "mat-trigonometria-triangulo-vf-02",
+      "tema": "Trigonometria no triângulo retângulo",
+      "afirmacao": "O seno de um ângulo depende do tamanho do triângulo.",
+      "verdadeira": false,
+      "explicacao": "Depende só do ângulo."
+    },
+    {
+      "id": "mat-trigonometria-triangulo-vf-03",
+      "tema": "Trigonometria no triângulo retângulo",
+      "afirmacao": "Uma rampa de 10% sobe 5 m em 50 m na horizontal.",
+      "verdadeira": true,
+      "explicacao": "0,1 × 50."
+    },
+    {
+      "id": "mat-revisao-areas-vf-01",
+      "tema": "Revisão do módulo: medidas no plano",
+      "afirmacao": "Um quadrado de área 64 m² tem perímetro de 32 m.",
+      "verdadeira": true,
+      "explicacao": "Lado 8."
+    },
+    {
+      "id": "mat-revisao-areas-vf-02",
+      "tema": "Revisão do módulo: medidas no plano",
+      "afirmacao": "Ampliar 2,5 vezes um logotipo de 12 cm² dá 30 cm².",
+      "verdadeira": false,
+      "explicacao": "Dá 75 cm²."
+    },
+    {
+      "id": "mat-revisao-areas-vf-03",
+      "tema": "Revisão do módulo: medidas no plano",
+      "afirmacao": "Uma rampa de 12 m a 30° sobe 6 m.",
+      "verdadeira": true,
+      "explicacao": "sen 30° = 1/2."
     }
   ],
   "sequencias": [
@@ -51996,6 +55247,42 @@
         "Dividir a distância pelo comprimento"
       ],
       "explicacao": "Mesma unidade sempre."
+    },
+    {
+      "id": "mat-areas-compostas-seq-01",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "titulo": "Calcular a área de uma figura composta",
+      "itens": [
+        "Dividir a figura em peças simples",
+        "Anotar as medidas de cada peça",
+        "Calcular cada área",
+        "Somar as peças ou subtrair o que falta"
+      ],
+      "explicacao": "Desenho primeiro, conta depois."
+    },
+    {
+      "id": "mat-trigonometria-triangulo-seq-01",
+      "tema": "Trigonometria no triângulo retângulo",
+      "titulo": "Calcular a altura de um prédio pelo ângulo de visão",
+      "itens": [
+        "Medir a distância até o prédio",
+        "Medir o ângulo até o topo",
+        "Multiplicar a distância pela tangente do ângulo",
+        "Somar a altura dos olhos, se for dada"
+      ],
+      "explicacao": "Distância e altura são catetos."
+    },
+    {
+      "id": "mat-revisao-areas-seq-01",
+      "tema": "Revisão do módulo: medidas no plano",
+      "titulo": "Resolver uma questão de medidas no plano",
+      "itens": [
+        "Identificar se é contorno, superfície ou ângulo",
+        "Desenhar a figura com as medidas",
+        "Escolher a fórmula certa",
+        "Conferir unidades e arredondamentos"
+      ],
+      "explicacao": "A figura guia a fórmula."
     }
   ],
   "adivinhas": [
@@ -52672,6 +55959,48 @@
         "Linha a igual distância do centro",
         "Seu comprimento é 2πr",
         "Contorno do círculo"
+      ]
+    },
+    {
+      "id": "mat-areas-compostas-adv-01",
+      "tema": "Áreas compostas e efeito da escala nas áreas",
+      "dificuldade": "medio",
+      "resposta": "Moldura",
+      "aceitas": [
+        "moldura"
+      ],
+      "dicas": [
+        "Contorna uma foto",
+        "A sua área é fora menos dentro",
+        "Tem largura constante"
+      ]
+    },
+    {
+      "id": "mat-trigonometria-triangulo-adv-01",
+      "tema": "Trigonometria no triângulo retângulo",
+      "dificuldade": "medio",
+      "resposta": "Tangente",
+      "aceitas": [
+        "tangente"
+      ],
+      "dicas": [
+        "Razão entre os catetos",
+        "Mede a inclinação de rampas",
+        "Vale 1 em 45°"
+      ]
+    },
+    {
+      "id": "mat-revisao-areas-adv-01",
+      "tema": "Revisão do módulo: medidas no plano",
+      "dificuldade": "medio",
+      "resposta": "Hexágono",
+      "aceitas": [
+        "hexagono"
+      ],
+      "dicas": [
+        "Polígono de seis lados",
+        "Formado por seis triângulos equiláteros",
+        "Aparece no favo de mel"
       ]
     }
   ],
@@ -53785,6 +57114,78 @@
       "tema": "Matemática",
       "palavra": "Arco",
       "dica": "Pedaço da circunferência"
+    },
+    {
+      "id": "mat-areas-compostas-pal-01",
+      "tema": "Matemática",
+      "palavra": "Planta",
+      "dica": "Desenho da casa em escala"
+    },
+    {
+      "id": "mat-areas-compostas-pal-02",
+      "tema": "Matemática",
+      "palavra": "Malha",
+      "dica": "Papel quadriculado"
+    },
+    {
+      "id": "mat-areas-compostas-pal-03",
+      "tema": "Matemática",
+      "palavra": "Piscina",
+      "dica": "Recorte no terreno"
+    },
+    {
+      "id": "mat-areas-compostas-pal-04",
+      "tema": "Matemática",
+      "palavra": "Calçada",
+      "dica": "Faixa em volta"
+    },
+    {
+      "id": "mat-trigonometria-triangulo-pal-01",
+      "tema": "Matemática",
+      "palavra": "Seno",
+      "dica": "Oposto sobre hipotenusa"
+    },
+    {
+      "id": "mat-trigonometria-triangulo-pal-02",
+      "tema": "Matemática",
+      "palavra": "Rampa",
+      "dica": "Superfície inclinada"
+    },
+    {
+      "id": "mat-trigonometria-triangulo-pal-03",
+      "tema": "Matemática",
+      "palavra": "Sombra",
+      "dica": "Medida com o ângulo do sol"
+    },
+    {
+      "id": "mat-trigonometria-triangulo-pal-04",
+      "tema": "Matemática",
+      "palavra": "Ângulo",
+      "dica": "Abertura entre dois lados"
+    },
+    {
+      "id": "mat-revisao-areas-pal-01",
+      "tema": "Matemática",
+      "palavra": "Escala",
+      "dica": "Razão entre planta e real"
+    },
+    {
+      "id": "mat-revisao-areas-pal-02",
+      "tema": "Matemática",
+      "palavra": "Pizza",
+      "dica": "Compara-se pelo preço por área"
+    },
+    {
+      "id": "mat-revisao-areas-pal-03",
+      "tema": "Matemática",
+      "palavra": "Losango",
+      "dica": "Quatro lados iguais"
+    },
+    {
+      "id": "mat-revisao-areas-pal-04",
+      "tema": "Matemática",
+      "palavra": "Seno",
+      "dica": "Oposto sobre hipotenusa"
     }
   ],
   "fichas": {
@@ -55246,16 +58647,16 @@
     },
     "Aplicações": {
       "texto": [
-        "Escadas, rampas, cabos e trajetos perpendiculares formam triângulos retângulos: o lado inclinado é a hipotenusa. Quando a escada escorrega, o comprimento fica fixo e se recalcula o outro cateto.",
-        "Em três dimensões, use Pitágoras duas vezes: primeiro a distância no chão, depois com a altura. Diagonais de telas e terrenos também são hipotenusas."
+        "Distância e altura são catetos: use a tangente (altura = distância × tg). Comprimento inclinado e altura: seno. Comprimento inclinado e distância horizontal: cosseno.",
+        "Inclinação em porcentagem é a tangente (10% = 0,1). A sombra é a altura dividida pela tangente do ângulo do sol: sol baixo, sombra longa."
       ],
       "pontos": [
-        "Lado inclinado = hipotenusa.",
-        "3D: chão e depois altura."
+        "Altura = distância × tangente.",
+        "Sombra = altura ÷ tangente."
       ],
       "pegadinhas": [
-        "Somar trajetos em vez de usar Pitágoras.",
-        "Achar que o pé da escada fica parado."
+        "Multiplicar pela tangente para achar a sombra.",
+        "Usar seno quando os dois lados são catetos."
       ]
     },
     "Eixos de simetria": {
@@ -55438,6 +58839,90 @@
       "pegadinhas": [
         "Fazer π(R − r)² na coroa.",
         "Contar cada semicírculo como círculo inteiro."
+      ]
+    },
+    "Soma e subtração de áreas": {
+      "texto": [
+        "Divida figuras compostas em retângulos, triângulos e partes de círculo e some, ou calcule uma figura maior e subtraia o que falta. Quatro quartos de círculo nos cantos formam um círculo inteiro; um semicírculo é metade de πr².",
+        "Em pisos, desconte pilares e armários, acrescente a margem de perda e arredonde as caixas para cima."
+      ],
+      "pontos": [
+        "Escolha o caminho com menos medidas desconhecidas.",
+        "Semicírculo: πr² ÷ 2."
+      ],
+      "pegadinhas": [
+        "Usar o diâmetro como raio.",
+        "Esquecer de dividir o triângulo por 2."
+      ]
+    },
+    "Regiões e malhas": {
+      "texto": [
+        "Regiões entre figuras (molduras, calçadas, partes sombreadas) são a figura de fora menos a de dentro. Subtraia áreas, nunca lados.",
+        "Em malhas, conte inteiros e metades, ou use o retângulo envolvente e tire os triângulos dos cantos. Polígonos regulares se dividem em triângulos iguais."
+      ],
+      "pontos": [
+        "Moldura: total − foto.",
+        "Duas metades = um quadradinho."
+      ],
+      "pegadinhas": [
+        "Multiplicar a largura pelo perímetro e esquecer os cantos.",
+        "Subtrair os lados e elevar ao quadrado."
+      ]
+    },
+    "Escala e áreas": {
+      "texto": [
+        "Numa escala de 1 : k, os lados reais são k vezes maiores e as áreas, k² vezes. Na 1 : 100, cada cm² do papel vale 1 m². Converta os lados para o real e depois calcule a área.",
+        "Tinta, papel e material seguem a área: ampliar 50 vezes em cada lado gasta 2.500 vezes mais. Para descobrir a escala a partir de áreas, tire a raiz da razão entre elas ou compare os lados."
+      ],
+      "pontos": [
+        "Área real = área no papel × k².",
+        "Escala vem dos lados."
+      ],
+      "pegadinhas": [
+        "Usar a escala linear na área.",
+        "Dividir áreas para achar a escala."
+      ]
+    },
+    "Razões trigonométricas": {
+      "texto": [
+        "Para um ângulo agudo θ: seno = oposto ÷ hipotenusa; cosseno = adjacente ÷ hipotenusa; tangente = oposto ÷ adjacente. O oposto fica em frente ao ângulo; o adjacente forma o ângulo com a hipotenusa.",
+        "As razões não dependem do tamanho do triângulo: triângulos semelhantes têm as mesmas razões. Vale sempre sen² + cos² = 1. Para achar um lado, multiplique o lado conhecido pela razão (ou divida, conforme o lado que está no denominador)."
+      ],
+      "pontos": [
+        "Lado = hipotenusa × seno (oposto).",
+        "sen² + cos² = 1."
+      ],
+      "pegadinhas": [
+        "Confundir oposto com adjacente.",
+        "Dividir quando era para multiplicar."
+      ]
+    },
+    "Ângulos notáveis": {
+      "texto": [
+        "sen 30° = cos 60° = 1/2; sen 60° = cos 30° = √3/2 ≈ 0,87; sen 45° = cos 45° ≈ 0,71; tg 30° ≈ 0,58; tg 45° = 1; tg 60° ≈ 1,73.",
+        "Com 30°, o cateto oposto é metade da hipotenusa. Quando um observador anda em direção a um prédio e o ângulo de visão dobra de 30° para 60°, forma-se um triângulo isósceles: a distância andada é igual à distância do segundo ponto ao topo."
+      ],
+      "pontos": [
+        "tg 45° = 1: catetos iguais.",
+        "Seno de um = cosseno do complemento."
+      ],
+      "pegadinhas": [
+        "Trocar sen 30° por sen 60°.",
+        "Esquecer de dividir √2 e √3 por 2."
+      ]
+    },
+    "Revisão: medidas no plano": {
+      "texto": [
+        "Escolha a ferramenta: contorno (perímetro), superfície (área com altura perpendicular), redondo (2πr e πr²), composta (soma ou fora menos dentro), escala (lados × k, área × k²) ou ângulo (seno, cosseno, tangente).",
+        "Antes de marcar, confira: usei raio ou diâmetro? Dividi o triângulo por 2? As medidas estão na mesma unidade? A razão trigonométrica tem a hipotenusa? Arredondei caixas para cima?"
+      ],
+      "pontos": [
+        "Altura é perpendicular.",
+        "Área com k²."
+      ],
+      "pegadinhas": [
+        "Confundir perímetro com área.",
+        "Trocar oposto e adjacente."
       ]
     }
   }
