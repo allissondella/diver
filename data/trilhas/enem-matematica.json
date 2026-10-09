@@ -3342,6 +3342,311 @@
           "criterio antes"
         ]
       }
+    },
+    {
+      "id": "mat-principio-contagem",
+      "nome": "Aula 33 · Princípio fundamental da contagem",
+      "modulo": "Módulo 6 · Contagem e probabilidade",
+      "descricao": "Módulo 6 · aula 1 de 3 · 35 min · treina a habilidade H2",
+      "habilidades": [
+        "H2"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Multiplicar as escolhas",
+            "texto": [
+              "Quando uma decisão é feita em etapas e cada etapa tem suas opções, o total de possibilidades é o produto das opções de cada etapa: é o **princípio multiplicativo**. Com 3 camisetas e 4 calças, há 3 × 4 = 12 combinações de roupa. Uma senha de 4 algarismos, com repetição, tem 10 × 10 × 10 × 10 = 10.000 possibilidades; uma moeda lançada 5 vezes gera 2⁵ = 32 sequências. O princípio vale para qualquer número de etapas, desde que a quantidade de opções de cada uma não dependa do que foi escolhido antes; quando depende, conte com cuidado etapa por etapa."
+            ]
+          },
+          {
+            "titulo": "Quando somar",
+            "texto": [
+              "Se as opções são alternativas que se excluem, como ir de ônibus ou de metrô, elas se somam: 5 linhas de ônibus e 3 de metrô dão 8 caminhos. A regra que resume: \"e\" multiplica, \"ou\" soma. Quando dois grupos se sobrepõem, some e desconte a parte comum: de 1 a 100, há 50 múltiplos de 2 e 20 múltiplos de 5, mas os 10 múltiplos de 10 foram contados duas vezes, e o total é 60."
+            ]
+          },
+          {
+            "titulo": "Restrições",
+            "texto": [
+              "Com restrições, comece pela **etapa mais restrita**. Para formar números de 3 algarismos distintos com 0 a 9, a centena não pode ser 0: 9 opções; depois, 9 para a dezena (entra o 0, sai o da centena) e 8 para a unidade: 9 × 9 × 8 = 648. Para números pares, comece pela unidade. Para contar \"pelo menos um\", costuma ser mais fácil usar o **complementar**: o total menos os casos sem nenhum."
+            ]
+          },
+          {
+            "titulo": "Árvore e como o Enem cobra",
+            "texto": [
+              "A árvore de possibilidades mostra cada etapa como um galho e ajuda a conferir contagens pequenas. O Enem cobra senhas, códigos, placas, cardápios, caminhos num mapa e cores de bandeiras, quase sempre com alguma restrição escondida no enunciado."
+            ]
+          }
+        ],
+        "introducao": "Quantas senhas de 4 dígitos existem? Quantos looks dá para montar com o que está no armário? Quantos caminhos levam de uma cidade a outra? Contar sem listar tudo é a base de toda a análise combinatória e da probabilidade. Esta aula ensina a ferramenta principal: multiplicar as escolhas.",
+        "mapaMental": {
+          "centro": "Contagem",
+          "ramos": [
+            {
+              "titulo": "Multiplicar",
+              "itens": [
+                "etapas em sequência",
+                "princípio multiplicativo",
+                "senhas e roupas"
+              ]
+            },
+            {
+              "titulo": "Somar",
+              "itens": [
+                "alternativas que se excluem",
+                "e multiplica, ou soma",
+                "desconte a parte comum"
+              ]
+            },
+            {
+              "titulo": "Restrições",
+              "itens": [
+                "comece pela etapa mais restrita",
+                "a centena não pode ser zero"
+              ]
+            },
+            {
+              "titulo": "Complementar",
+              "itens": [
+                "total menos os casos sem nenhum"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "👕",
+            "conceito": "Guarda-roupa",
+            "liga": "camisetas vezes calças",
+            "porque": "Cada camiseta combina com todas as calças."
+          },
+          {
+            "icone": "🔐",
+            "conceito": "Cadeado de 4 rodinhas",
+            "liga": "10 × 10 × 10 × 10",
+            "porque": "Cada rodinha gira de 0 a 9, sem depender das outras."
+          }
+        ],
+        "pontos": [
+          "**Princípio multiplicativo**: etapas em sequência, multiplique as opções.",
+          "Alternativas que se excluem se somam: \"e\" multiplica, \"ou\" soma.",
+          "Com restrições, comece pela **etapa mais restrita**.",
+          "\"Pelo menos um\": use o **complementar**, total menos os casos sem nenhum."
+        ],
+        "perolas": [
+          "Número de 3 algarismos não começa com zero.",
+          "Moeda lançada n vezes: 2 elevado a n sequências."
+        ],
+        "reforcar": [
+          "principio multiplicativo",
+          "etapa mais restrita",
+          "complementar"
+        ]
+      }
+    },
+    {
+      "id": "mat-permutacoes-arranjos",
+      "nome": "Aula 34 · Permutações e arranjos",
+      "modulo": "Módulo 6 · Contagem e probabilidade",
+      "descricao": "Módulo 6 · aula 2 de 3 · 35 min · treina a habilidade H2",
+      "habilidades": [
+        "H2"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Permutação: todos em fila",
+            "texto": [
+              "Ordenar n objetos diferentes em fila dá n! maneiras, onde n! (lê-se \"n fatorial\") é n × (n − 1) × ... × 1. Quatro livros numa estante podem ficar de 4! = 24 formas. Em permutações e arranjos, **a ordem importa**: ABC e CBA são resultados diferentes. Por convenção, 0! = 1. Os fatoriais crescem muito rápido (5! = 120, 6! = 720, 10! passa de 3 milhões), e quase sempre dá para simplificar antes de multiplicar: 7! ÷ 5! = 7 × 6 = 42."
+            ]
+          },
+          {
+            "titulo": "Anagramas e repetições",
+            "texto": [
+              "Anagramas de uma palavra sem letras repetidas são n!: AMOR tem 4! = 24. Com letras repetidas, divide-se pelo fatorial de cada repetição, porque trocar duas letras iguais não cria um anagrama novo: ARARA tem 5! ÷ (3! × 2!) = 10. É a **permutação com repetição**. Restrições como \"começa com C\" fixam uma letra e permutam o resto; \"começa e termina com vogal\" escolhe as vogais das pontas e permuta o miolo; \"vogais juntas\" transforma as vogais num bloco."
+            ]
+          },
+          {
+            "titulo": "Arranjo: escolher e ordenar",
+            "texto": [
+              "Quando se escolhem k elementos entre n e a ordem importa, como num pódio ou em cargos de presidente e vice, usa-se o arranjo: multiplicam-se k fatores decrescentes a partir de n. Oito atletas disputando ouro, prata e bronze: 8 × 7 × 6 = 336. É o princípio multiplicativo sem repetição. Quando o arranjo usa todos os elementos, ele vira a permutação."
+            ]
+          },
+          {
+            "titulo": "Blocos, mesas e como o Enem cobra",
+            "texto": [
+              "Elementos que devem ficar juntos viram um bloco: trate o bloco como um elemento só e multiplique pelas ordens internas. Para \"não podem ficar juntos\", faça o total menos os casos juntos. Numa mesa redonda, girar todos não cria uma arrumação nova: fixa-se uma pessoa, e a **permutação circular** de n é (n − 1)!. O Enem cobra filas, senhas sem repetição, anagramas, pódios, estantes e mesas."
+            ]
+          }
+        ],
+        "introducao": "Organizar livros numa estante, formar anagramas, montar um pódio, sentar pessoas em volta de uma mesa: em todas essas situações, trocar a posição muda o resultado. Esta aula ensina a contar ordenações com permutações e arranjos, inclusive com letras repetidas, blocos e mesas redondas.",
+        "mapaMental": {
+          "centro": "Permutações e arranjos",
+          "ramos": [
+            {
+              "titulo": "Permutação",
+              "itens": [
+                "n fatorial",
+                "a ordem importa",
+                "0! vale 1"
+              ]
+            },
+            {
+              "titulo": "Anagramas",
+              "itens": [
+                "palavra sem repetição, n fatorial",
+                "permutação com repetição divide pelos fatoriais"
+              ]
+            },
+            {
+              "titulo": "Arranjo",
+              "itens": [
+                "k fatores decrescentes",
+                "pódio e cargos"
+              ]
+            },
+            {
+              "titulo": "Casos especiais",
+              "itens": [
+                "blocos juntos",
+                "total menos juntos",
+                "permutação circular"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🏆",
+            "conceito": "Pódio",
+            "liga": "arranjo",
+            "porque": "Ouro, prata e bronze são lugares diferentes."
+          },
+          {
+            "icone": "🎡",
+            "conceito": "Roda-gigante",
+            "liga": "mesa redonda",
+            "porque": "Girar a roda não muda quem está ao lado de quem."
+          }
+        ],
+        "pontos": [
+          "Em permutações e arranjos, **a ordem importa**.",
+          "n objetos em fila: n! maneiras.",
+          "Letras repetidas: **permutação com repetição**, divida pelos fatoriais das repetições.",
+          "Arranjo: multiplique k fatores decrescentes a partir de n.",
+          "Mesa redonda: **permutação circular**, (n − 1)!."
+        ],
+        "perolas": [
+          "Juntos viram bloco; separados é o total menos os juntos.",
+          "0! vale 1."
+        ],
+        "reforcar": [
+          "a ordem importa",
+          "permutacao com repeticao",
+          "permutacao circular"
+        ]
+      }
+    },
+    {
+      "id": "mat-combinacoes",
+      "nome": "Aula 35 · Combinações",
+      "modulo": "Módulo 6 · Contagem e probabilidade",
+      "descricao": "Módulo 6 · aula 3 de 3 · 35 min · treina a habilidade H2",
+      "habilidades": [
+        "H2"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Quando a ordem não importa",
+            "texto": [
+              "Escolher 3 pessoas para uma comissão é diferente de escolher presidente, vice e secretário: na comissão, Ana, Beto e Caio formam o mesmo grupo que Caio, Ana e Beto. Quando **a ordem não importa**, usa-se a combinação: C(n, k) = n! ÷ [k! × (n − k)!]. Um jeito prático é fazer o arranjo e dividir por k!, porque cada grupo foi contado k! vezes. Comissões de 3 entre 6 pessoas: (6 × 5 × 4) ÷ 3! = 120 ÷ 6 = 20."
+            ]
+          },
+          {
+            "titulo": "Propriedades úteis",
+            "texto": [
+              "C(n, k) = C(n, n − k): escolher 2 para ficar é o mesmo que escolher os 3 que saem, entre 5. C(n, 1) = n e C(n, n) = 1. Apertos de mão entre 10 pessoas: C(10, 2) = 45. Jogos de um campeonato com turno único entre 12 times: C(12, 2) = 66. Diagonais de um polígono de n lados: C(n, 2) − n, porque os lados também ligam dois vértices."
+            ]
+          },
+          {
+            "titulo": "Combinações com condições",
+            "texto": [
+              "Para grupos com regras, separe os tipos e **multiplique as escolhas** de cada tipo: 2 homens entre 5 e 2 mulheres entre 4 dão C(5, 2) × C(4, 2) = 10 × 6 = 60. Elementos obrigatórios saem da conta: se 3 questões são obrigatórias, escolhem-se só as restantes. Para \"pelo menos um\" ou \"não podem estar juntos\", use o complementar. Loterias também são combinações: a ordem dos números sorteados não muda a aposta, e é por isso que o número de apostas possíveis é tão grande e a chance de acertar, tão pequena."
+            ]
+          },
+          {
+            "titulo": "Como decidir e como o Enem cobra",
+            "texto": [
+              "Pergunte: **trocando dois elementos** de lugar, o resultado muda? Se muda, é arranjo; se não muda, é combinação. O Enem cobra comissões, equipes, saladas e pizzas, apostas de loteria, apertos de mão, campeonatos e figuras formadas por pontos."
+            ]
+          }
+        ],
+        "introducao": "Montar uma comissão, escolher ingredientes de uma pizza, apostar na loteria, contar apertos de mão: nessas situações, o que importa é quem está no grupo, não a ordem em que foi escolhido. Esta aula ensina a contar grupos com combinações e a decidir quando usar arranjo ou combinação.",
+        "mapaMental": {
+          "centro": "Combinações",
+          "ramos": [
+            {
+              "titulo": "Grupos",
+              "itens": [
+                "a ordem não importa",
+                "arranjo dividido por k!"
+              ]
+            },
+            {
+              "titulo": "Propriedades",
+              "itens": [
+                "C(n, k) = C(n, n − k)",
+                "apertos de mão",
+                "diagonais"
+              ]
+            },
+            {
+              "titulo": "Condições",
+              "itens": [
+                "multiplique as escolhas de cada tipo",
+                "obrigatórios saem da conta",
+                "complementar"
+              ]
+            },
+            {
+              "titulo": "Decidir",
+              "itens": [
+                "trocando dois elementos de lugar, o resultado muda?"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🍕",
+            "conceito": "Pizza de três ingredientes",
+            "liga": "combinação",
+            "porque": "Calabresa, cebola e queijo é a mesma pizza em qualquer ordem."
+          },
+          {
+            "icone": "🤝",
+            "conceito": "Aperto de mão",
+            "liga": "pares sem ordem",
+            "porque": "Ana cumprimentar Beto é o mesmo que Beto cumprimentar Ana."
+          }
+        ],
+        "pontos": [
+          "Combinação: **a ordem não importa**; faça o arranjo e divida por k!.",
+          "C(n, k) = C(n, n − k).",
+          "Grupos com tipos diferentes: **multiplique as escolhas** de cada tipo.",
+          "Para decidir: **trocando dois elementos** de lugar, o resultado muda? Se não muda, é combinação."
+        ],
+        "perolas": [
+          "Apertos de mão entre n pessoas: C(n, 2).",
+          "Loteria é combinação: a ordem do sorteio não importa."
+        ],
+        "reforcar": [
+          "a ordem nao importa",
+          "multiplique as escolhas",
+          "trocando dois elementos"
+        ]
+      }
     }
   ],
   "questoes": [
@@ -18201,6 +18506,1386 @@
         "O primeiro critério é a média.",
         "",
         "Tem média menor e é menos regular que A."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q01",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma pessoa tem 3 camisetas e 4 calças. Quantas combinações diferentes de camiseta e calça ela pode montar?",
+      "alternativas": [
+        "12",
+        "7",
+        "81",
+        "4",
+        "3"
+      ],
+      "correta": 0,
+      "explicacao": "3 × 4 = 12. Dica de mergulhador: etapas em sequência, multiplique.",
+      "comentarios": [
+        "",
+        "Somou as opções.",
+        "Elevou 3 a 4.",
+        "Contou só as calças.",
+        "Contou só as camisetas."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q02",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantas senhas de 4 algarismos (0 a 9) existem, se os algarismos podem se repetir?",
+      "alternativas": [
+        "5.040",
+        "40",
+        "9.999",
+        "1.000",
+        "10.000"
+      ],
+      "correta": 4,
+      "explicacao": "10 × 10 × 10 × 10 = 10.000. Dica de mergulhador: cada posição tem 10 opções.",
+      "comentarios": [
+        "Proibiu a repetição.",
+        "Multiplicou 10 por 4.",
+        "Esqueceu a senha 0000.",
+        "Contou só 3 algarismos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q03",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Um restaurante tem 3 entradas, 4 pratos principais e 2 sobremesas. Quantas refeições diferentes, com um item de cada, podem ser montadas?",
+      "alternativas": [
+        "24",
+        "9",
+        "12",
+        "6",
+        "8"
+      ],
+      "correta": 0,
+      "explicacao": "3 × 4 × 2 = 24. Dica de mergulhador: três etapas, três fatores.",
+      "comentarios": [
+        "",
+        "Somou.",
+        "Esqueceu as sobremesas.",
+        "Esqueceu os pratos principais.",
+        "Esqueceu as entradas."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q04",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Um código tem 2 letras (26) seguidas de 3 algarismos (0 a 9), com repetição. Quantos códigos existem?",
+      "alternativas": [
+        "31",
+        "52.000",
+        "67.600",
+        "676.000",
+        "1.757.600"
+      ],
+      "correta": 3,
+      "explicacao": "26² × 10³ = 676 × 1.000 = 676.000. Dica de mergulhador: uma potência para letras e outra para algarismos.",
+      "comentarios": [
+        "Somou opções.",
+        "Multiplicou 26 por 2 em vez de 26 × 26.",
+        "Usou só 2 algarismos.",
+        "",
+        "Usou 3 letras e 2 algarismos."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q05",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma moeda é lançada 5 vezes, e anota-se a sequência de caras e coroas. Quantas sequências são possíveis?",
+      "alternativas": [
+        "64",
+        "25",
+        "5",
+        "32",
+        "10"
+      ],
+      "correta": 3,
+      "explicacao": "2⁵ = 32. Dica de mergulhador: 2 opções em cada um dos 5 lançamentos.",
+      "comentarios": [
+        "Usou 6 lançamentos.",
+        "Elevou 5 ao quadrado.",
+        "Contou os lançamentos.",
+        "",
+        "Multiplicou 2 por 5."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q06",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Há 3 estradas da cidade A para B e 4 de B para C. Uma pessoa vai de A até C e volta, sem usar nenhuma estrada duas vezes. Quantos trajetos de ida e volta existem?",
+      "alternativas": [
+        "12",
+        "144",
+        "24",
+        "72",
+        "36"
+      ],
+      "correta": 3,
+      "explicacao": "Ida: 3 × 4 = 12. Volta, sem repetir: 3 × 2 = 6. Total: 12 × 6 = 72. Dica de mergulhador: na volta, cada trecho perde a estrada já usada.",
+      "comentarios": [
+        "Contou só a ida.",
+        "Permitiu repetir as estradas na volta.",
+        "Multiplicou a ida por 2.",
+        "",
+        "Errou a volta."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q07",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma bandeira de 4 listras será pintada com 5 cores disponíveis, sem duas listras vizinhas da mesma cor (as cores podem se repetir em listras não vizinhas). De quantas formas?",
+      "alternativas": [
+        "625",
+        "120",
+        "1.024",
+        "320",
+        "20"
+      ],
+      "correta": 3,
+      "explicacao": "1ª listra: 5. Cada seguinte: 4 (não pode repetir a vizinha). 5 × 4 × 4 × 4 = 320. Dica de mergulhador: a restrição é só com a listra de antes.",
+      "comentarios": [
+        "Ignorou a restrição.",
+        "Proibiu qualquer repetição de cor.",
+        "Elevou 4 a 5.",
+        "",
+        "Parou na segunda listra."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q08",
+      "tema": "Soma ou produto",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Para ir de casa ao trabalho, uma pessoa pode usar uma de 5 linhas de ônibus ou uma de 3 linhas de metrô. Quantas opções ela tem?",
+      "alternativas": [
+        "15",
+        "2",
+        "3",
+        "5",
+        "8"
+      ],
+      "correta": 4,
+      "explicacao": "É ônibus OU metrô: 5 + 3 = 8. Dica de mergulhador: \"ou\" soma.",
+      "comentarios": [
+        "Multiplicou alternativas que se excluem.",
+        "Contou os meios de transporte.",
+        "Contou só o metrô.",
+        "Contou só os ônibus.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q09",
+      "tema": "Soma ou produto",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma pessoa escolhe um sabor de sorvete e uma cobertura. Como se conta o total de opções?",
+      "alternativas": [
+        "Multiplicando as opções de sabor e de cobertura",
+        "Dividindo as opções",
+        "Subtraindo as opções",
+        "Somando as opções",
+        "Elevando os sabores às coberturas"
+      ],
+      "correta": 0,
+      "explicacao": "Sabor E cobertura: etapas em sequência, multiplica-se. Dica de mergulhador: \"e\" multiplica.",
+      "comentarios": [
+        "",
+        "Não faz sentido.",
+        "Não há o que descontar.",
+        "Ela escolhe os dois, e não um ou outro.",
+        "Não é potência."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q10",
+      "tema": "Soma ou produto",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Um cardápio tem 4 sanduíches e 3 saladas. A pessoa escolhe um prato principal (sanduíche ou salada) e uma de 5 bebidas. Quantas refeições podem ser montadas?",
+      "alternativas": [
+        "20",
+        "35",
+        "7",
+        "60",
+        "12"
+      ],
+      "correta": 1,
+      "explicacao": "Prato: 4 + 3 = 7. Com bebida: 7 × 5 = 35. Dica de mergulhador: some as alternativas, depois multiplique as etapas.",
+      "comentarios": [
+        "Contou só os sanduíches.",
+        "",
+        "Esqueceu as bebidas.",
+        "Multiplicou sanduíches, saladas e bebidas.",
+        "Somou tudo."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q11",
+      "tema": "Soma ou produto",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números de 1 a 100 são múltiplos de 2 ou de 5?",
+      "alternativas": [
+        "60",
+        "10",
+        "40",
+        "70",
+        "50"
+      ],
+      "correta": 0,
+      "explicacao": "Múltiplos de 2: 50. De 5: 20. De 10 (contados duas vezes): 10. Total: 50 + 20 − 10 = 60. Dica de mergulhador: some e desconte a parte comum.",
+      "comentarios": [
+        "",
+        "Contou só os múltiplos de 10.",
+        "Subtraiu em vez de somar.",
+        "Esqueceu de descontar os múltiplos de 10.",
+        "Contou só os múltiplos de 2."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q12",
+      "tema": "Soma ou produto",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Senhas de 3 caracteres usam letras (26) ou algarismos (10), com repetição. Quantas senhas têm pelo menos uma letra?",
+      "alternativas": [
+        "17.576",
+        "26.000",
+        "1.000",
+        "46.656",
+        "45.656"
+      ],
+      "correta": 4,
+      "explicacao": "Total: 36³ = 46.656. Sem letra: 10³ = 1.000. Pelo menos uma letra: 46.656 − 1.000 = 45.656. Dica de mergulhador: \"pelo menos um\" pelo complementar.",
+      "comentarios": [
+        "Contou só senhas com três letras.",
+        "Fixou uma letra e esqueceu os outros casos.",
+        "São as senhas sem letra nenhuma.",
+        "É o total, sem a condição.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q13",
+      "tema": "Restrições",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números de dois algarismos (de 10 a 99) existem?",
+      "alternativas": [
+        "90",
+        "99",
+        "81",
+        "89",
+        "100"
+      ],
+      "correta": 0,
+      "explicacao": "Dezena: 9 opções (1 a 9). Unidade: 10. 9 × 10 = 90. Dica de mergulhador: o primeiro algarismo não pode ser zero.",
+      "comentarios": [
+        "",
+        "Contou de 1 a 99.",
+        "Proibiu o zero também nas unidades.",
+        "Subtraiu 99 − 10 sem somar 1.",
+        "Contou de 0 a 99."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q14",
+      "tema": "Restrições",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quatro pessoas vão formar uma fila, e Ana precisa ser a primeira. De quantas formas a fila pode ser montada?",
+      "alternativas": [
+        "4",
+        "3",
+        "24",
+        "6",
+        "12"
+      ],
+      "correta": 3,
+      "explicacao": "Ana fixa no início; as outras 3 se organizam de 3 × 2 × 1 = 6 formas. Dica de mergulhador: posição fixa sai da conta.",
+      "comentarios": [
+        "Contou só as pessoas.",
+        "Contou só as outras pessoas.",
+        "Ignorou a restrição.",
+        "",
+        "Errou o produto."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q15",
+      "tema": "Restrições",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números de 3 algarismos distintos podem ser formados com os algarismos de 0 a 9?",
+      "alternativas": [
+        "900",
+        "1.000",
+        "720",
+        "648",
+        "504"
+      ],
+      "correta": 3,
+      "explicacao": "Centena: 9 (sem o 0). Dezena: 9 (entra o 0, sai o da centena). Unidade: 8. 9 × 9 × 8 = 648. Dica de mergulhador: a etapa mais restrita primeiro.",
+      "comentarios": [
+        "Permitiu repetição.",
+        "Ignorou as restrições.",
+        "Permitiu o zero na centena.",
+        "",
+        "Proibiu o zero em todas as posições."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q16",
+      "tema": "Restrições",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números pares de 3 algarismos (de 100 a 999) existem, com repetição permitida?",
+      "alternativas": [
+        "900",
+        "405",
+        "360",
+        "450",
+        "500"
+      ],
+      "correta": 3,
+      "explicacao": "Unidade: 5 (0, 2, 4, 6, 8). Centena: 9. Dezena: 10. 9 × 10 × 5 = 450. Dica de mergulhador: par depende só da unidade.",
+      "comentarios": [
+        "Esqueceu a condição de par.",
+        "Proibiu o zero na dezena.",
+        "Usou 4 opções na unidade.",
+        "",
+        "Permitiu o zero na centena."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q17",
+      "tema": "Restrições",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Com os algarismos 1, 2, 3, 4 e 5, sem repetir, quantos números de 3 algarismos maiores que 300 podem ser formados?",
+      "alternativas": [
+        "48",
+        "27",
+        "60",
+        "36",
+        "24"
+      ],
+      "correta": 3,
+      "explicacao": "Centena: 3, 4 ou 5 (3 opções). Depois 4 e 3: 3 × 4 × 3 = 36. Dica de mergulhador: a condição de tamanho está na centena.",
+      "comentarios": [
+        "Usou 4 opções na centena.",
+        "Permitiu repetição nas outras posições com 3 opções.",
+        "Esqueceu a condição.",
+        "",
+        "Usou 2 opções na centena."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q18",
+      "tema": "Restrições",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma senha tem 4 algarismos distintos, começa com algarismo ímpar e termina com algarismo par. Quantas senhas são possíveis?",
+      "alternativas": [
+        "5.040",
+        "625",
+        "2.500",
+        "1.250",
+        "1.400"
+      ],
+      "correta": 4,
+      "explicacao": "1º: 5 ímpares. Último: 5 pares (sempre diferentes do 1º). Meio: 8 × 7. Total: 5 × 8 × 7 × 5 = 1.400. Dica de mergulhador: preencha as pontas restritas, depois o miolo.",
+      "comentarios": [
+        "Ignorou as condições de ímpar e par.",
+        "Usou 5 opções em todas as posições.",
+        "Permitiu repetição no meio.",
+        "Errou o miolo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q19",
+      "tema": "Restrições",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números de 4 algarismos (de 1.000 a 9.999) têm pelo menos um algarismo 7?",
+      "alternativas": [
+        "3.168",
+        "9.000",
+        "2.916",
+        "1.000",
+        "5.832"
+      ],
+      "correta": 0,
+      "explicacao": "Total: 9.000. Sem 7: 8 × 9 × 9 × 9 = 5.832. Com pelo menos um 7: 3.168. Dica de mergulhador: pelo menos um, use o complementar.",
+      "comentarios": [
+        "",
+        "É o total.",
+        "Contou um 7 por posição sem considerar repetições.",
+        "Contou só os que começam com 7.",
+        "São os números sem nenhum 7."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q20",
+      "tema": "Restrições",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma prova tem 5 questões de múltipla escolha com 4 alternativas. O aluno pode deixar questões em branco. De quantas formas ele pode preencher o gabarito?",
+      "alternativas": [
+        "1.024",
+        "20",
+        "625",
+        "25",
+        "3.125"
+      ],
+      "correta": 4,
+      "explicacao": "Cada questão tem 5 opções (4 letras ou branco): 5⁵ = 3.125. Dica de mergulhador: \"em branco\" é mais uma opção.",
+      "comentarios": [
+        "Esqueceu a opção em branco.",
+        "Multiplicou 4 por 5.",
+        "Usou 4 questões.",
+        "Multiplicou 5 por 5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q01",
+      "tema": "Permutação",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "De quantas formas 4 livros diferentes podem ser organizados numa estante?",
+      "alternativas": [
+        "24",
+        "10",
+        "16",
+        "4",
+        "256"
+      ],
+      "correta": 0,
+      "explicacao": "4! = 4 × 3 × 2 × 1 = 24. Dica de mergulhador: cada posição tem uma opção a menos.",
+      "comentarios": [
+        "",
+        "Somou 4 + 3 + 2 + 1.",
+        "Elevou 4 ao quadrado.",
+        "Contou os livros.",
+        "Elevou 4 a 4."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q02",
+      "tema": "Permutação",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quanto vale 6!?",
+      "alternativas": [
+        "36",
+        "30",
+        "21",
+        "120",
+        "720"
+      ],
+      "correta": 4,
+      "explicacao": "6 × 5 × 4 × 3 × 2 × 1 = 720. Dica de mergulhador: 6! = 6 × 5!.",
+      "comentarios": [
+        "Elevou 6 ao quadrado.",
+        "Multiplicou 6 por 5.",
+        "Somou de 1 a 6.",
+        "Calculou 5!.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q03",
+      "tema": "Permutação",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "De quantas formas 5 pessoas podem sentar numa mesa redonda, considerando iguais as arrumações que só diferem por um giro?",
+      "alternativas": [
+        "24",
+        "5",
+        "20",
+        "60",
+        "120"
+      ],
+      "correta": 0,
+      "explicacao": "Permutação circular: (5 − 1)! = 24. Dica de mergulhador: fixe uma pessoa e permute as outras.",
+      "comentarios": [
+        "",
+        "Contou as pessoas.",
+        "Multiplicou 5 por 4.",
+        "Dividiu 120 por 2.",
+        "Contou como fila."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q04",
+      "tema": "Permutação",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Seis pessoas vão formar uma fila, e Ana e Beto querem ficar juntos. De quantas formas?",
+      "alternativas": [
+        "720",
+        "240",
+        "48",
+        "120",
+        "480"
+      ],
+      "correta": 1,
+      "explicacao": "Ana e Beto viram um bloco: 5 elementos, 5! = 120; o bloco pode ser AB ou BA: 120 × 2 = 240. Dica de mergulhador: bloco conta como um, e por dentro se permuta.",
+      "comentarios": [
+        "Ignorou a restrição.",
+        "",
+        "Usou 4! × 2.",
+        "Esqueceu que Ana e Beto podem trocar de lugar.",
+        "Contou o bloco duas vezes."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q05",
+      "tema": "Permutação",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Cinco pessoas vão formar uma fila, mas Ana e Beto não podem ficar juntos. De quantas formas?",
+      "alternativas": [
+        "24",
+        "96",
+        "48",
+        "120",
+        "72"
+      ],
+      "correta": 4,
+      "explicacao": "Total: 5! = 120. Juntos: 4! × 2 = 48. Separados: 120 − 48 = 72. Dica de mergulhador: \"não juntos\" = total − juntos.",
+      "comentarios": [
+        "Fixou os dois.",
+        "Errou o número de casos juntos.",
+        "Esses são os casos com os dois juntos.",
+        "É o total, sem a restrição.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q06",
+      "tema": "Permutação",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Três homens e três mulheres vão formar uma fila, alternando homem e mulher. De quantas formas?",
+      "alternativas": [
+        "144",
+        "72",
+        "12",
+        "720",
+        "36"
+      ],
+      "correta": 1,
+      "explicacao": "Começando por homem: 3! × 3! = 36. Começando por mulher: mais 36. Total: 72. Dica de mergulhador: decida o padrão e permute cada grupo.",
+      "comentarios": [
+        "Contou o início quatro vezes.",
+        "",
+        "Somou os fatoriais.",
+        "Ignorou a alternância.",
+        "Esqueceu que a fila pode começar por homem ou por mulher."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q07",
+      "tema": "Permutação",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Uma família de 4 pessoas vai sentar numa mesa redonda, e pai e mãe querem ficar lado a lado. De quantas formas, sem contar giros?",
+      "alternativas": [
+        "4",
+        "2",
+        "6",
+        "8",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "O casal vira um bloco: 3 elementos na mesa, (3 − 1)! = 2; × 2 trocas = 4. Dica de mergulhador: bloco e mesa redonda juntos.",
+      "comentarios": [
+        "",
+        "Esqueceu a troca entre pai e mãe.",
+        "Ignorou a restrição.",
+        "Contou giros como diferentes.",
+        "Contou como fila."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q08",
+      "tema": "Anagramas",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas tem a palavra AMOR?",
+      "alternativas": [
+        "4",
+        "256",
+        "12",
+        "16",
+        "24"
+      ],
+      "correta": 4,
+      "explicacao": "4 letras diferentes: 4! = 24. Dica de mergulhador: anagrama sem repetição é fatorial.",
+      "comentarios": [
+        "Contou as letras.",
+        "Elevou 4 a 4.",
+        "Dividiu por 2 sem letra repetida.",
+        "Elevou 4 ao quadrado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q09",
+      "tema": "Anagramas",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas tem a palavra ARARA?",
+      "alternativas": [
+        "10",
+        "20",
+        "60",
+        "5",
+        "120"
+      ],
+      "correta": 0,
+      "explicacao": "3 letras A e 2 letras R: 5! ÷ (3! × 2!) = 120 ÷ 12 = 10. Dica de mergulhador: divida pelo fatorial de cada repetição.",
+      "comentarios": [
+        "",
+        "Dividiu só por 3!.",
+        "Dividiu só por 2!.",
+        "Contou as letras.",
+        "Ignorou as letras repetidas."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q10",
+      "tema": "Anagramas",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas da palavra CAMELO começam com C?",
+      "alternativas": [
+        "600",
+        "720",
+        "24",
+        "120",
+        "6"
+      ],
+      "correta": 3,
+      "explicacao": "C fixo; as outras 5 letras: 5! = 120. Dica de mergulhador: letra fixa sai da permutação.",
+      "comentarios": [
+        "Subtraiu 120 do total.",
+        "Ignorou a restrição.",
+        "Fixou duas letras.",
+        "",
+        "Contou as letras."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q11",
+      "tema": "Anagramas",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas da palavra AMIGO começam e terminam com vogal?",
+      "alternativas": [
+        "120",
+        "18",
+        "12",
+        "36",
+        "72"
+      ],
+      "correta": 3,
+      "explicacao": "Vogais: A, I, O. Primeira: 3 opções; última: 2; miolo: 3 letras, 3! = 6. Total: 3 × 2 × 6 = 36. Dica de mergulhador: pontas primeiro, miolo depois.",
+      "comentarios": [
+        "Ignorou a restrição.",
+        "Esqueceu uma das ordens das pontas.",
+        "Usou 2! no miolo.",
+        "",
+        "Contou as pontas duas vezes."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q12",
+      "tema": "Anagramas",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas tem a palavra PAPAI?",
+      "alternativas": [
+        "10",
+        "120",
+        "15",
+        "30",
+        "60"
+      ],
+      "correta": 3,
+      "explicacao": "2 P, 2 A e 1 I: 5! ÷ (2! × 2!) = 120 ÷ 4 = 30. Dica de mergulhador: duas letras repetidas, dois fatoriais.",
+      "comentarios": [
+        "Dividiu por 12.",
+        "Ignorou as repetições.",
+        "Dividiu por 8.",
+        "",
+        "Dividiu só por um 2!."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q13",
+      "tema": "Anagramas",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas da palavra BRASIL têm as vogais juntas?",
+      "alternativas": [
+        "48",
+        "720",
+        "480",
+        "240",
+        "120"
+      ],
+      "correta": 3,
+      "explicacao": "Vogais A e I formam um bloco: 5 elementos, 5! = 120; × 2 (AI ou IA) = 240. Dica de mergulhador: bloco de vogais conta como uma letra.",
+      "comentarios": [
+        "Usou 4! × 2.",
+        "Ignorou a restrição.",
+        "Contou o bloco duas vezes.",
+        "",
+        "Esqueceu a troca entre as vogais."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q14",
+      "tema": "Arranjo",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Oito atletas disputam ouro, prata e bronze. De quantas formas o pódio pode ser formado?",
+      "alternativas": [
+        "24",
+        "56",
+        "512",
+        "6.720",
+        "336"
+      ],
+      "correta": 4,
+      "explicacao": "8 × 7 × 6 = 336. Dica de mergulhador: pódio é arranjo, a ordem importa.",
+      "comentarios": [
+        "Multiplicou 8 por 3.",
+        "Ignorou a ordem das medalhas.",
+        "Permitiu repetição.",
+        "Usou 4 posições.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q15",
+      "tema": "Arranjo",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantas senhas de 4 algarismos distintos existem?",
+      "alternativas": [
+        "5.040",
+        "10.000",
+        "210",
+        "40",
+        "3.024"
+      ],
+      "correta": 0,
+      "explicacao": "10 × 9 × 8 × 7 = 5.040. Dica de mergulhador: sem repetição, cada posição perde uma opção.",
+      "comentarios": [
+        "",
+        "Permitiu repetição.",
+        "Ignorou a ordem.",
+        "Multiplicou 10 por 4.",
+        "Proibiu o zero na primeira posição."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q16",
+      "tema": "Arranjo",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "De quantas formas 5 pessoas podem ocupar 3 cadeiras numeradas, sobrando 2 em pé?",
+      "alternativas": [
+        "10",
+        "60",
+        "125",
+        "120",
+        "15"
+      ],
+      "correta": 1,
+      "explicacao": "5 × 4 × 3 = 60. Dica de mergulhador: cadeiras numeradas, a ordem importa.",
+      "comentarios": [
+        "Ignorou que as cadeiras são numeradas.",
+        "",
+        "Permitiu repetição.",
+        "Colocou as 5 pessoas.",
+        "Multiplicou 5 por 3."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q17",
+      "tema": "Arranjo",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Num campeonato com 10 times, cada time joga duas vezes contra cada adversário, uma em casa e outra fora. Quantos jogos há?",
+      "alternativas": [
+        "90",
+        "45",
+        "180",
+        "20",
+        "100"
+      ],
+      "correta": 0,
+      "explicacao": "Cada jogo é um par ordenado (mandante, visitante): 10 × 9 = 90. Dica de mergulhador: casa e fora tornam a ordem importante.",
+      "comentarios": [
+        "",
+        "Contou só um jogo por par.",
+        "Dobrou os 90.",
+        "Multiplicou 10 por 2.",
+        "Incluiu jogos de um time contra ele mesmo."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q18",
+      "tema": "Arranjo",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos números de 4 algarismos distintos podem ser formados com os algarismos 1, 2, 3, 4, 5 e 6?",
+      "alternativas": [
+        "720",
+        "360",
+        "15",
+        "24",
+        "1.296"
+      ],
+      "correta": 1,
+      "explicacao": "6 × 5 × 4 × 3 = 360. Dica de mergulhador: arranjo de 6 tomados 4 a 4.",
+      "comentarios": [
+        "Usou 6 posições.",
+        "",
+        "Ignorou a ordem.",
+        "Usou só 4 algarismos.",
+        "Permitiu repetição."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q19",
+      "tema": "Arranjo",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos números pares de 4 algarismos distintos podem ser formados com os algarismos de 0 a 9?",
+      "alternativas": [
+        "504",
+        "2.268",
+        "2.520",
+        "4.536",
+        "2.296"
+      ],
+      "correta": 4,
+      "explicacao": "Terminando em 0: 9 × 8 × 7 = 504. Terminando em 2, 4, 6 ou 8: 8 × 8 × 7 × 4 = 1.792. Total: 2.296. Dica de mergulhador: separe o caso do zero.",
+      "comentarios": [
+        "Contou só os que terminam em 0.",
+        "Supôs que metade dos números é par.",
+        "Ignorou que o zero não pode começar.",
+        "Contou todos, pares e ímpares.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q20",
+      "tema": "Arranjo",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Numa corrida com 6 carros, de quantas formas os 3 primeiros lugares podem ser ocupados, se o carro A precisa estar entre eles?",
+      "alternativas": [
+        "60",
+        "10",
+        "30",
+        "20",
+        "120"
+      ],
+      "correta": 0,
+      "explicacao": "Total: 6 × 5 × 4 = 120. Sem A: 5 × 4 × 3 = 60. Com A: 120 − 60 = 60. Dica de mergulhador: \"precisa estar\" pelo complementar.",
+      "comentarios": [
+        "",
+        "Ignorou a ordem.",
+        "Errou as posições de A.",
+        "Fixou A só no 1º lugar.",
+        "Ignorou a restrição."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q01",
+      "tema": "Combinação simples",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "De quantas formas se pode escolher uma comissão de 3 pessoas entre 6?",
+      "alternativas": [
+        "120",
+        "20",
+        "18",
+        "720",
+        "216"
+      ],
+      "correta": 1,
+      "explicacao": "(6 × 5 × 4) ÷ 3! = 120 ÷ 6 = 20. Dica de mergulhador: comissão não tem ordem.",
+      "comentarios": [
+        "Contou a ordem (arranjo).",
+        "",
+        "Multiplicou 6 por 3.",
+        "Calculou 6!.",
+        "Permitiu repetição e ordem."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q02",
+      "tema": "Combinação simples",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Numa reunião com 10 pessoas, cada uma aperta a mão de todas as outras uma vez. Quantos apertos de mão acontecem?",
+      "alternativas": [
+        "45",
+        "90",
+        "100",
+        "20",
+        "10"
+      ],
+      "correta": 0,
+      "explicacao": "C(10, 2) = (10 × 9) ÷ 2 = 45. Dica de mergulhador: aperto de mão é par sem ordem.",
+      "comentarios": [
+        "",
+        "Contou cada aperto duas vezes.",
+        "Incluiu apertos consigo mesmo.",
+        "Multiplicou 10 por 2.",
+        "Contou as pessoas."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q03",
+      "tema": "Combinação simples",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Qual é o valor de C(8, 6)?",
+      "alternativas": [
+        "48",
+        "20.160",
+        "56",
+        "2",
+        "28"
+      ],
+      "correta": 4,
+      "explicacao": "C(8, 6) = C(8, 2) = (8 × 7) ÷ 2 = 28. Dica de mergulhador: escolher 6 para ficar é escolher 2 para sair.",
+      "comentarios": [
+        "Multiplicou 8 por 6.",
+        "Calculou o arranjo.",
+        "Calculou C(8, 3).",
+        "Subtraiu 8 − 6.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q04",
+      "tema": "Combinação simples",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Num campeonato com 12 times em turno único, cada time enfrenta cada adversário uma vez. Quantos jogos há?",
+      "alternativas": [
+        "12",
+        "144",
+        "24",
+        "66",
+        "132"
+      ],
+      "correta": 3,
+      "explicacao": "C(12, 2) = (12 × 11) ÷ 2 = 66. Dica de mergulhador: turno único é par sem ordem.",
+      "comentarios": [
+        "Contou os times.",
+        "Incluiu jogos contra si mesmo.",
+        "Multiplicou 12 por 2.",
+        "",
+        "Contou casa e fora."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q05",
+      "tema": "Combinação simples",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma pizzaria deixa escolher 3 ingredientes diferentes entre 8. Quantas pizzas diferentes podem ser montadas?",
+      "alternativas": [
+        "11",
+        "336",
+        "24",
+        "56",
+        "512"
+      ],
+      "correta": 3,
+      "explicacao": "C(8, 3) = 336 ÷ 6 = 56. Dica de mergulhador: ingredientes não têm ordem.",
+      "comentarios": [
+        "Somou 8 + 3.",
+        "Contou a ordem dos ingredientes.",
+        "Multiplicou 8 por 3.",
+        "",
+        "Permitiu repetição e ordem."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q06",
+      "tema": "Combinação simples",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Quantas diagonais tem um octógono (polígono de 8 lados)?",
+      "alternativas": [
+        "28",
+        "40",
+        "56",
+        "20",
+        "16"
+      ],
+      "correta": 3,
+      "explicacao": "Segmentos entre vértices: C(8, 2) = 28. Tirando os 8 lados: 20. Dica de mergulhador: diagonais = C(n, 2) − n.",
+      "comentarios": [
+        "Contou também os lados.",
+        "Multiplicou 8 por 5 sem dividir.",
+        "Contou a ordem dos vértices.",
+        "",
+        "Multiplicou 8 por 2."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q07",
+      "tema": "Combinação simples",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Numa loteria, o apostador escolhe 6 números de 1 a 60, e a ordem não importa. Quantas apostas simples diferentes existem?",
+      "alternativas": [
+        "46.656.000.000",
+        "36.045.979.200",
+        "360",
+        "50.063.860",
+        "10"
+      ],
+      "correta": 3,
+      "explicacao": "C(60, 6) = (60 × 59 × 58 × 57 × 56 × 55) ÷ 6! = 50.063.860. Dica de mergulhador: sorteio é grupo, não fila.",
+      "comentarios": [
+        "Permitiu repetição e ordem.",
+        "Contou a ordem dos números.",
+        "Multiplicou 60 por 6.",
+        "",
+        "Dividiu 60 por 6."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q08",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Para escolher presidente e vice de um grêmio entre 10 alunos, que tipo de contagem se usa?",
+      "alternativas": [
+        "Soma das opções",
+        "Permutação de todos os 10",
+        "Combinação, porque a ordem não importa",
+        "Combinação, porque são pessoas",
+        "Arranjo, porque os cargos são diferentes"
+      ],
+      "correta": 4,
+      "explicacao": "Ana presidente e Beto vice é diferente de Beto presidente e Ana vice. Dica de mergulhador: trocou e mudou? Arranjo.",
+      "comentarios": [
+        "As escolhas acontecem juntas.",
+        "Só 2 serão escolhidos.",
+        "Aqui a ordem importa.",
+        "Pessoas em cargos diferentes têm ordem.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q09",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Entre 6 frutas, escolhem-se 2 para uma vitamina. Quantas vitaminas diferentes existem?",
+      "alternativas": [
+        "36",
+        "12",
+        "15",
+        "720",
+        "30"
+      ],
+      "correta": 2,
+      "explicacao": "C(6, 2) = 30 ÷ 2 = 15. Dica de mergulhador: na vitamina, a ordem das frutas não importa.",
+      "comentarios": [
+        "Permitiu repetição e ordem.",
+        "Multiplicou 6 por 2.",
+        "",
+        "Calculou 6!.",
+        "Contou a ordem."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q10",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "De quantas formas se podem dar 3 prêmios diferentes a 3 de 10 alunos? E 3 prêmios iguais?",
+      "alternativas": [
+        "720 e 720",
+        "720 e 120",
+        "1.000 e 120",
+        "120 e 720",
+        "120 e 120"
+      ],
+      "correta": 1,
+      "explicacao": "Diferentes: 10 × 9 × 8 = 720 (arranjo). Iguais: 720 ÷ 3! = 120 (combinação). Dica de mergulhador: prêmios diferentes dão ordem.",
+      "comentarios": [
+        "Esqueceu que prêmios iguais não têm ordem.",
+        "",
+        "Permitiu repetir aluno.",
+        "Trocou os casos.",
+        "Esqueceu que prêmios diferentes têm ordem."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q11",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Um time de vôlei de 6 jogadores será escolhido entre 9 atletas, sem posições definidas. Quantos times são possíveis?",
+      "alternativas": [
+        "84",
+        "15",
+        "54",
+        "60.480",
+        "504"
+      ],
+      "correta": 0,
+      "explicacao": "C(9, 6) = C(9, 3) = 504 ÷ 6 = 84. Dica de mergulhador: escolher 6 que jogam é escolher 3 que ficam.",
+      "comentarios": [
+        "",
+        "Somou.",
+        "Multiplicou 9 por 6.",
+        "Contou a ordem.",
+        "Calculou só 9 × 8 × 7."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q12",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Sete pontos distintos estão sobre uma circunferência. Quantos triângulos com vértices nesses pontos podem ser formados?",
+      "alternativas": [
+        "21",
+        "35",
+        "343",
+        "7",
+        "210"
+      ],
+      "correta": 1,
+      "explicacao": "Três pontos de uma circunferência nunca estão alinhados: C(7, 3) = 35. Dica de mergulhador: o triângulo ABC é o mesmo que CBA.",
+      "comentarios": [
+        "Calculou C(7, 2).",
+        "",
+        "Permitiu repetição e ordem.",
+        "Contou os pontos.",
+        "Contou a ordem dos vértices."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q13",
+      "tema": "Combinações com condições",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma comissão terá 2 homens, escolhidos entre 5, e 2 mulheres, escolhidas entre 4. Quantas comissões são possíveis?",
+      "alternativas": [
+        "240",
+        "126",
+        "20",
+        "16",
+        "60"
+      ],
+      "correta": 4,
+      "explicacao": "C(5, 2) × C(4, 2) = 10 × 6 = 60. Dica de mergulhador: grupos diferentes, multiplique as escolhas.",
+      "comentarios": [
+        "Usou arranjos.",
+        "Ignorou a divisão por grupos.",
+        "Multiplicou 5 por 4.",
+        "Somou as escolhas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q14",
+      "tema": "Combinações com condições",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Num baile, há 5 meninos e 3 meninas. De quantas formas se pode escolher um par com um menino e uma menina?",
+      "alternativas": [
+        "56",
+        "15",
+        "8",
+        "30",
+        "28"
+      ],
+      "correta": 1,
+      "explicacao": "5 × 3 = 15. Dica de mergulhador: um de cada grupo, multiplique.",
+      "comentarios": [
+        "Calculou o arranjo de 8 dois a dois.",
+        "",
+        "Somou.",
+        "Contou a ordem do par.",
+        "Calculou C(8, 2)."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q15",
+      "tema": "Combinações com condições",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Um grupo tem 6 homens e 4 mulheres. Quantas comissões de 4 pessoas têm pelo menos uma mulher?",
+      "alternativas": [
+        "195",
+        "336",
+        "84",
+        "15",
+        "210"
+      ],
+      "correta": 0,
+      "explicacao": "Total: C(10, 4) = 210. Só homens: C(6, 4) = 15. Pelo menos uma mulher: 195. Dica de mergulhador: pelo menos um, complementar.",
+      "comentarios": [
+        "",
+        "Fixou uma mulher e contou grupos repetidos.",
+        "Calculou C(9, 3).",
+        "São as comissões sem mulher.",
+        "É o total, sem a condição."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q16",
+      "tema": "Combinações com condições",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma comissão de 3 pessoas será escolhida entre 8, mas Ana e Beto não podem estar juntos nela. Quantas comissões são possíveis?",
+      "alternativas": [
+        "20",
+        "30",
+        "56",
+        "6",
+        "50"
+      ],
+      "correta": 4,
+      "explicacao": "Total: C(8, 3) = 56. Com os dois juntos: C(6, 1) = 6. Resposta: 50. Dica de mergulhador: \"não juntos\" = total − juntos.",
+      "comentarios": [
+        "Excluiu Ana e Beto completamente.",
+        "Contou só as comissões com exatamente um dos dois.",
+        "É o total, sem a restrição.",
+        "São as comissões com os dois juntos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q17",
+      "tema": "Combinações com condições",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma prova tem 10 questões, e o aluno deve responder 7, sendo obrigatórias as 3 primeiras. De quantas formas ele pode escolher as questões?",
+      "alternativas": [
+        "35",
+        "840",
+        "7",
+        "120",
+        "210"
+      ],
+      "correta": 0,
+      "explicacao": "Faltam 4 questões entre as 7 restantes: C(7, 4) = 35. Dica de mergulhador: obrigatórias saem da conta.",
+      "comentarios": [
+        "",
+        "Contou a ordem.",
+        "Contou só as questões livres.",
+        "Ignorou as obrigatórias.",
+        "Errou o grupo restante."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q18",
+      "tema": "Combinações com condições",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma lanchonete monta sanduíches com 1 pão (3 tipos), 2 recheios diferentes (entre 6) e 1 molho (entre 4) ou nenhum molho. Quantos sanduíches são possíveis?",
+      "alternativas": [
+        "450",
+        "225",
+        "360",
+        "13",
+        "180"
+      ],
+      "correta": 1,
+      "explicacao": "Pão: 3. Recheios: C(6, 2) = 15. Molho: 4 + 1 = 5. Total: 3 × 15 × 5 = 225. Dica de mergulhador: \"nenhum\" é mais uma opção.",
+      "comentarios": [
+        "Contou a ordem dos recheios.",
+        "",
+        "Contou a ordem e esqueceu o sem molho.",
+        "Somou as opções.",
+        "Esqueceu a opção sem molho."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q19",
+      "tema": "Combinações com condições",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Num grupo de 7 pessoas, quantas comissões com pelo menos 2 pessoas podem ser formadas?",
+      "alternativas": [
+        "121",
+        "127",
+        "128",
+        "21",
+        "120"
+      ],
+      "correta": 4,
+      "explicacao": "Cada pessoa está ou não na comissão: 2⁷ = 128 grupos. Tiram-se o vazio (1) e os de uma pessoa (7): 120. Dica de mergulhador: complementar dos grupos pequenos.",
+      "comentarios": [
+        "Esqueceu de tirar o grupo vazio.",
+        "Tirou só o grupo vazio.",
+        "Contou todos os subconjuntos, inclusive o vazio e os de uma pessoa.",
+        "Contou só as duplas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q20",
+      "tema": "Combinações com condições",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma urna tem 5 bolas vermelhas e 4 azuis, todas numeradas. De quantas formas se tiram 3 bolas com exatamente 2 vermelhas?",
+      "alternativas": [
+        "10",
+        "84",
+        "40",
+        "14",
+        "80"
+      ],
+      "correta": 2,
+      "explicacao": "C(5, 2) × C(4, 1) = 10 × 4 = 40. Dica de mergulhador: \"exatamente\" fixa quantos de cada cor.",
+      "comentarios": [
+        "Esqueceu a bola azul.",
+        "Ignorou a condição.",
+        "",
+        "Somou as escolhas.",
+        "Usou arranjo nas vermelhas."
       ]
     }
   ],
@@ -33708,6 +35393,1446 @@
         "O primeiro critério é o desvio.",
         "A média desempata."
       ]
+    },
+    {
+      "id": "mat-principio-contagem-q01-v1",
+      "varianteDe": "mat-principio-contagem-q01",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma pizzaria oferece 5 sabores e 3 tipos de borda. Quantas pizzas diferentes, com um sabor e uma borda, podem ser pedidas?",
+      "alternativas": [
+        "15",
+        "8",
+        "5",
+        "125",
+        "243"
+      ],
+      "correta": 0,
+      "explicacao": "5 × 3 = 15. Dica de mergulhador: cada sabor com cada borda.",
+      "comentarios": [
+        "",
+        "Somou.",
+        "Contou só os sabores.",
+        "Elevou 5 ao cubo.",
+        "Elevou 3 a 5."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q02-v1",
+      "varianteDe": "mat-principio-contagem-q02",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos códigos de 3 letras (26 letras) existem, se as letras podem se repetir?",
+      "alternativas": [
+        "78",
+        "2.600",
+        "676",
+        "15.600",
+        "17.576"
+      ],
+      "correta": 4,
+      "explicacao": "26 × 26 × 26 = 17.576. Dica de mergulhador: com repetição, cada posição tem todas as opções.",
+      "comentarios": [
+        "Multiplicou 26 por 3.",
+        "Ignorou a ordem.",
+        "Contou só 2 letras.",
+        "Proibiu a repetição.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q03-v1",
+      "varianteDe": "mat-principio-contagem-q03",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma lanchonete tem 2 entradas, 5 pratos e 3 bebidas. Quantas refeições com um item de cada podem ser montadas?",
+      "alternativas": [
+        "60",
+        "30",
+        "6",
+        "15",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "2 × 5 × 3 = 30. Dica de mergulhador: multiplique todas as etapas.",
+      "comentarios": [
+        "Dobrou o resultado.",
+        "",
+        "Esqueceu os pratos.",
+        "Esqueceu as entradas.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q04-v1",
+      "varianteDe": "mat-principio-contagem-q04",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Um código tem 1 letra (26) seguida de 4 algarismos, com repetição. Quantos códigos existem?",
+      "alternativas": [
+        "2.600",
+        "36",
+        "26.000",
+        "260.000",
+        "10.400"
+      ],
+      "correta": 3,
+      "explicacao": "26 × 10⁴ = 260.000. Dica de mergulhador: 26 vezes 10.000.",
+      "comentarios": [
+        "Usou só 2 algarismos.",
+        "Somou.",
+        "Usou só 3 algarismos.",
+        "",
+        "Multiplicou 26 por 400."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q05-v1",
+      "varianteDe": "mat-principio-contagem-q05",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Um dado é lançado 3 vezes, e anota-se a sequência dos resultados. Quantas sequências são possíveis?",
+      "alternativas": [
+        "216",
+        "18",
+        "6",
+        "729",
+        "36"
+      ],
+      "correta": 0,
+      "explicacao": "6³ = 216. Dica de mergulhador: 6 opções em cada lançamento.",
+      "comentarios": [
+        "",
+        "Multiplicou 6 por 3.",
+        "Contou só um lançamento.",
+        "Elevou 3 a 6.",
+        "Usou 2 lançamentos."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q06-v1",
+      "varianteDe": "mat-principio-contagem-q06",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Há 5 caminhos de A para B e 2 de B para C. Uma pessoa vai de A até C e volta, sem repetir nenhum caminho. Quantos trajetos de ida e volta existem?",
+      "alternativas": [
+        "14",
+        "100",
+        "20",
+        "10",
+        "40"
+      ],
+      "correta": 4,
+      "explicacao": "Ida: 5 × 2 = 10. Volta: 1 × 4 = 4. Total: 40. Dica de mergulhador: tire o caminho usado em cada trecho.",
+      "comentarios": [
+        "Somou ida e volta.",
+        "Permitiu repetir.",
+        "Multiplicou a ida por 2.",
+        "Contou só a ida.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q07-v1",
+      "varianteDe": "mat-principio-contagem-q07",
+      "tema": "Princípio multiplicativo",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma bandeira de 3 listras será pintada com 6 cores, sem listras vizinhas da mesma cor. De quantas formas?",
+      "alternativas": [
+        "30",
+        "150",
+        "18",
+        "120",
+        "216"
+      ],
+      "correta": 1,
+      "explicacao": "6 × 5 × 5 = 150. Dica de mergulhador: a 3ª listra só não pode repetir a 2ª.",
+      "comentarios": [
+        "Parou na segunda listra.",
+        "",
+        "Multiplicou 6 por 3.",
+        "Proibiu qualquer repetição.",
+        "Ignorou a restrição."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q08-v1",
+      "varianteDe": "mat-principio-contagem-q08",
+      "tema": "Soma ou produto",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma pessoa vai assistir a um filme: há 4 de ação e 6 comédias disponíveis. Quantas opções ela tem?",
+      "alternativas": [
+        "24",
+        "6",
+        "4",
+        "2",
+        "10"
+      ],
+      "correta": 4,
+      "explicacao": "Um filme de ação OU uma comédia: 4 + 6 = 10. Dica de mergulhador: escolha única, some.",
+      "comentarios": [
+        "Multiplicou.",
+        "Contou só as comédias.",
+        "Contou só os de ação.",
+        "Contou os gêneros.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q09-v1",
+      "varianteDe": "mat-principio-contagem-q09",
+      "tema": "Soma ou produto",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma pessoa vai ao trabalho a pé, por 2 caminhos, ou de bicicleta, por 3 caminhos. Como se conta o total de opções?",
+      "alternativas": [
+        "Dividindo os caminhos",
+        "Somando os caminhos",
+        "Subtraindo os caminhos",
+        "Multiplicando os caminhos",
+        "Elevando um ao outro"
+      ],
+      "correta": 1,
+      "explicacao": "A pé OU de bicicleta: 2 + 3 = 5. Dica de mergulhador: \"ou\" soma.",
+      "comentarios": [
+        "Não faz sentido.",
+        "",
+        "Não há sobreposição.",
+        "Ela usa um ou outro, não os dois.",
+        "Não é potência."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q10-v1",
+      "varianteDe": "mat-principio-contagem-q10",
+      "tema": "Soma ou produto",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Uma pessoa escolhe um livro (2 romances ou 5 de ficção) e um de 3 marcadores. Quantas escolhas existem?",
+      "alternativas": [
+        "30",
+        "15",
+        "10",
+        "7",
+        "21"
+      ],
+      "correta": 4,
+      "explicacao": "Livro: 2 + 5 = 7. Com marcador: 7 × 3 = 21. Dica de mergulhador: \"ou\" dentro da etapa, \"e\" entre etapas.",
+      "comentarios": [
+        "Multiplicou tudo.",
+        "Contou só a ficção.",
+        "Somou tudo.",
+        "Esqueceu os marcadores.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q11-v1",
+      "varianteDe": "mat-principio-contagem-q11",
+      "tema": "Soma ou produto",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números de 1 a 60 são múltiplos de 3 ou de 4?",
+      "alternativas": [
+        "20",
+        "35",
+        "25",
+        "5",
+        "30"
+      ],
+      "correta": 4,
+      "explicacao": "Múltiplos de 3: 20. De 4: 15. De 12: 5. Total: 20 + 15 − 5 = 30. Dica de mergulhador: a parte comum é contada uma vez só.",
+      "comentarios": [
+        "Contou só os múltiplos de 3.",
+        "Esqueceu de descontar os múltiplos de 12.",
+        "Errou a parte comum.",
+        "Contou só os múltiplos de 12.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q12-v1",
+      "varianteDe": "mat-principio-contagem-q12",
+      "tema": "Soma ou produto",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Códigos de 2 caracteres usam letras (26) ou algarismos (10), com repetição. Quantos têm pelo menos um algarismo?",
+      "alternativas": [
+        "620",
+        "1.296",
+        "260",
+        "676",
+        "100"
+      ],
+      "correta": 0,
+      "explicacao": "Total: 36² = 1.296. Sem algarismo: 26² = 676. Resposta: 620. Dica de mergulhador: total menos os que não servem.",
+      "comentarios": [
+        "",
+        "É o total.",
+        "Fixou um algarismo e esqueceu casos.",
+        "São os códigos sem algarismo.",
+        "Contou só códigos com dois algarismos."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q13-v1",
+      "varianteDe": "mat-principio-contagem-q13",
+      "tema": "Restrições",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números de três algarismos (de 100 a 999) existem?",
+      "alternativas": [
+        "999",
+        "899",
+        "900",
+        "1.000",
+        "729"
+      ],
+      "correta": 2,
+      "explicacao": "9 × 10 × 10 = 900. Dica de mergulhador: comece pela posição com restrição.",
+      "comentarios": [
+        "Contou de 1 a 999.",
+        "Subtraiu sem somar 1.",
+        "",
+        "Contou de 0 a 999.",
+        "Proibiu o zero em todas as posições."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q14-v1",
+      "varianteDe": "mat-principio-contagem-q14",
+      "tema": "Restrições",
+      "dificuldade": "facil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Cinco pessoas vão formar uma fila, e João precisa ser o último. De quantas formas?",
+      "alternativas": [
+        "120",
+        "5",
+        "4",
+        "24",
+        "20"
+      ],
+      "correta": 3,
+      "explicacao": "As outras 4: 4 × 3 × 2 × 1 = 24. Dica de mergulhador: fixe e organize o resto.",
+      "comentarios": [
+        "Ignorou a restrição.",
+        "Contou as pessoas.",
+        "Contou só as outras.",
+        "",
+        "Errou o produto."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q15-v1",
+      "varianteDe": "mat-principio-contagem-q15",
+      "tema": "Restrições",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números de 2 algarismos distintos podem ser formados com os algarismos de 0 a 9?",
+      "alternativas": [
+        "72",
+        "90",
+        "81",
+        "100",
+        "89"
+      ],
+      "correta": 2,
+      "explicacao": "Dezena: 9. Unidade: 9 (com o 0, sem o da dezena). 81. Dica de mergulhador: o zero entra depois da primeira posição.",
+      "comentarios": [
+        "Proibiu o zero nas duas posições.",
+        "Permitiu repetição.",
+        "",
+        "Ignorou as restrições.",
+        "Subtraiu em vez de multiplicar."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q16-v1",
+      "varianteDe": "mat-principio-contagem-q16",
+      "tema": "Restrições",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números ímpares de 2 algarismos existem?",
+      "alternativas": [
+        "90",
+        "25",
+        "40",
+        "50",
+        "45"
+      ],
+      "correta": 4,
+      "explicacao": "Dezena: 9. Unidade: 5 (1, 3, 5, 7, 9). 9 × 5 = 45. Dica de mergulhador: ímpar depende da unidade.",
+      "comentarios": [
+        "Esqueceu a condição.",
+        "Usou 5 opções na dezena.",
+        "Usou 4 ímpares.",
+        "Permitiu o zero na dezena.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q17-v1",
+      "varianteDe": "mat-principio-contagem-q17",
+      "tema": "Restrições",
+      "dificuldade": "medio",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Com os algarismos de 1 a 6, sem repetir, quantos números de 3 algarismos menores que 400 podem ser formados?",
+      "alternativas": [
+        "60",
+        "120",
+        "72",
+        "45",
+        "40"
+      ],
+      "correta": 0,
+      "explicacao": "Centena: 1, 2 ou 3. Depois 5 e 4: 3 × 5 × 4 = 60. Dica de mergulhador: restrição primeiro.",
+      "comentarios": [
+        "",
+        "Esqueceu a condição.",
+        "Usou 4 opções na centena sem descontar.",
+        "Errou as posições seguintes.",
+        "Usou 2 opções na centena."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q18-v1",
+      "varianteDe": "mat-principio-contagem-q18",
+      "tema": "Restrições",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Um código tem 3 algarismos distintos, começa com algarismo par e termina com ímpar. Quantos códigos existem?",
+      "alternativas": [
+        "100",
+        "125",
+        "200",
+        "250",
+        "720"
+      ],
+      "correta": 2,
+      "explicacao": "5 pares × 8 no meio × 5 ímpares = 200. Dica de mergulhador: pontas primeiro.",
+      "comentarios": [
+        "Errou o meio.",
+        "Usou 5 opções em tudo.",
+        "",
+        "Permitiu repetição no meio.",
+        "Ignorou as condições."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q19-v1",
+      "varianteDe": "mat-principio-contagem-q19",
+      "tema": "Restrições",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Quantos números de 3 algarismos (de 100 a 999) têm pelo menos um algarismo 0?",
+      "alternativas": [
+        "171",
+        "900",
+        "90",
+        "180",
+        "729"
+      ],
+      "correta": 0,
+      "explicacao": "Total: 900. Sem zero: 9³ = 729. Com pelo menos um zero: 171. Dica de mergulhador: total menos os que não têm.",
+      "comentarios": [
+        "",
+        "É o total.",
+        "Contou só os que terminam em 0.",
+        "Contou zeros por posição sem ajustar.",
+        "São os números sem zero."
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-q20-v1",
+      "varianteDe": "mat-principio-contagem-q20",
+      "tema": "Restrições",
+      "dificuldade": "dificil",
+      "fase": "mat-principio-contagem",
+      "enunciado": "Um questionário tem 3 perguntas de verdadeiro ou falso, e pode-se deixar em branco. De quantas formas ele pode ser preenchido?",
+      "alternativas": [
+        "27",
+        "6",
+        "8",
+        "9",
+        "18"
+      ],
+      "correta": 0,
+      "explicacao": "3 opções por pergunta: 3³ = 27. Dica de mergulhador: conte todas as opções de cada etapa.",
+      "comentarios": [
+        "",
+        "Somou 3 + 3.",
+        "Esqueceu o branco.",
+        "Multiplicou 3 por 3.",
+        "Errou a potência."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q01-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q01",
+      "tema": "Permutação",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "De quantas formas 5 pessoas podem formar uma fila?",
+      "alternativas": [
+        "25",
+        "120",
+        "5",
+        "3.125",
+        "15"
+      ],
+      "correta": 1,
+      "explicacao": "5! = 120. Dica de mergulhador: fatorial é produto, não soma.",
+      "comentarios": [
+        "Elevou 5 ao quadrado.",
+        "",
+        "Contou as pessoas.",
+        "Elevou 5 a 5.",
+        "Somou 5 + 4 + 3 + 2 + 1."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q02-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q02",
+      "tema": "Permutação",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quanto vale 5! ÷ 3!?",
+      "alternativas": [
+        "20",
+        "1,67",
+        "6",
+        "2",
+        "120"
+      ],
+      "correta": 0,
+      "explicacao": "5! ÷ 3! = 5 × 4 = 20. Dica de mergulhador: corte os fatores comuns.",
+      "comentarios": [
+        "",
+        "Dividiu 5 por 3.",
+        "Calculou só 3!.",
+        "Dividiu 5 por 3 e arredondou.",
+        "Calculou só 5!."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q03-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q03",
+      "tema": "Permutação",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "De quantas formas 6 pessoas podem sentar numa mesa redonda, sem contar giros como arrumações novas?",
+      "alternativas": [
+        "6",
+        "120",
+        "720",
+        "30",
+        "360"
+      ],
+      "correta": 1,
+      "explicacao": "(6 − 1)! = 120. Dica de mergulhador: mesa redonda, um fatorial a menos.",
+      "comentarios": [
+        "Contou as pessoas.",
+        "",
+        "Contou como fila.",
+        "Multiplicou 6 por 5.",
+        "Dividiu 720 por 2."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q04-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q04",
+      "tema": "Permutação",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Cinco livros vão para uma estante, e os dois de Matemática devem ficar juntos. De quantas formas?",
+      "alternativas": [
+        "48",
+        "120",
+        "12",
+        "24",
+        "96"
+      ],
+      "correta": 0,
+      "explicacao": "Bloco + 3 livros = 4 elementos: 4! = 24; × 2 = 48. Dica de mergulhador: multiplique pelas ordens dentro do bloco.",
+      "comentarios": [
+        "",
+        "Ignorou a restrição.",
+        "Usou 3! × 2.",
+        "Esqueceu a troca interna.",
+        "Contou o bloco duas vezes."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q05-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q05",
+      "tema": "Permutação",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Seis pessoas vão formar uma fila, e duas delas não podem ficar juntas. De quantas formas?",
+      "alternativas": [
+        "240",
+        "720",
+        "600",
+        "120",
+        "480"
+      ],
+      "correta": 4,
+      "explicacao": "Total: 720. Juntas: 5! × 2 = 240. Separadas: 480. Dica de mergulhador: complementar dos juntos.",
+      "comentarios": [
+        "São os casos juntos.",
+        "É o total.",
+        "Errou os casos juntos.",
+        "Fixou as duas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q06-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q06",
+      "tema": "Permutação",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quatro meninos e quatro meninas vão formar uma fila, alternando. De quantas formas?",
+      "alternativas": [
+        "1.152",
+        "48",
+        "2.304",
+        "576",
+        "40.320"
+      ],
+      "correta": 0,
+      "explicacao": "2 × 4! × 4! = 2 × 24 × 24 = 1.152. Dica de mergulhador: padrão × permutação de cada grupo.",
+      "comentarios": [
+        "",
+        "Somou os fatoriais.",
+        "Contou o início quatro vezes.",
+        "Esqueceu os dois começos possíveis.",
+        "Ignorou a alternância."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q07-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q07",
+      "tema": "Permutação",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Cinco pessoas vão sentar numa mesa redonda, e duas delas querem ficar lado a lado. De quantas formas, sem contar giros?",
+      "alternativas": [
+        "24",
+        "6",
+        "120",
+        "12",
+        "48"
+      ],
+      "correta": 3,
+      "explicacao": "Bloco + 3 pessoas = 4 elementos: (4 − 1)! = 6; × 2 = 12. Dica de mergulhador: circular com bloco.",
+      "comentarios": [
+        "Ignorou a restrição.",
+        "Esqueceu a troca interna.",
+        "Contou como fila sem restrição.",
+        "",
+        "Contou como fila."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q08-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q08",
+      "tema": "Anagramas",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas tem a palavra LIVRO?",
+      "alternativas": [
+        "25",
+        "120",
+        "24",
+        "60",
+        "5"
+      ],
+      "correta": 1,
+      "explicacao": "5 letras diferentes: 5! = 120. Dica de mergulhador: confira se há letras repetidas.",
+      "comentarios": [
+        "Elevou 5 ao quadrado.",
+        "",
+        "Calculou 4!.",
+        "Dividiu por 2 sem repetição.",
+        "Contou as letras."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q09-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q09",
+      "tema": "Anagramas",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas tem a palavra BANANA?",
+      "alternativas": [
+        "720",
+        "120",
+        "360",
+        "60",
+        "20"
+      ],
+      "correta": 3,
+      "explicacao": "3 A, 2 N e 1 B: 6! ÷ (3! × 2!) = 720 ÷ 12 = 60. Dica de mergulhador: um fatorial no denominador para cada letra repetida.",
+      "comentarios": [
+        "Ignorou as repetições.",
+        "Dividiu só por 3!.",
+        "Dividiu só por 2!.",
+        "",
+        "Dividiu por 3! duas vezes."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q10-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q10",
+      "tema": "Anagramas",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas da palavra PRATO começam com P?",
+      "alternativas": [
+        "6",
+        "120",
+        "5",
+        "24",
+        "96"
+      ],
+      "correta": 3,
+      "explicacao": "P fixo; 4 letras restantes: 4! = 24. Dica de mergulhador: fixe e permute o resto.",
+      "comentarios": [
+        "Fixou duas letras.",
+        "Ignorou a restrição.",
+        "Contou as letras.",
+        "",
+        "Subtraiu do total."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q11-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q11",
+      "tema": "Anagramas",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas da palavra MOLAR começam e terminam com vogal?",
+      "alternativas": [
+        "12",
+        "36",
+        "24",
+        "6",
+        "120"
+      ],
+      "correta": 0,
+      "explicacao": "Vogais: O e A. Pontas: 2 × 1. Miolo: 3! = 6. Total: 12. Dica de mergulhador: conte as vogais da palavra.",
+      "comentarios": [
+        "",
+        "Usou 3 vogais.",
+        "Contou as pontas duas vezes.",
+        "Esqueceu a troca das vogais.",
+        "Ignorou a restrição."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q12-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q12",
+      "tema": "Anagramas",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas tem a palavra CASCATA?",
+      "alternativas": [
+        "2.520",
+        "5.040",
+        "840",
+        "210",
+        "420"
+      ],
+      "correta": 4,
+      "explicacao": "7 letras, com 3 A e 2 C: 7! ÷ (3! × 2!) = 5.040 ÷ 12 = 420. Dica de mergulhador: conte cada letra antes.",
+      "comentarios": [
+        "Dividiu só por 2!.",
+        "Ignorou as repetições.",
+        "Dividiu só por 3!.",
+        "Dividiu por 24.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q13-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q13",
+      "tema": "Anagramas",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos anagramas da palavra CINEMA têm as três vogais juntas?",
+      "alternativas": [
+        "144",
+        "288",
+        "24",
+        "720",
+        "36"
+      ],
+      "correta": 0,
+      "explicacao": "Vogais I, E, A em bloco: 4 elementos, 4! = 24; × 3! = 144. Dica de mergulhador: multiplique pelas ordens dentro do bloco.",
+      "comentarios": [
+        "",
+        "Contou o bloco duas vezes.",
+        "Esqueceu as ordens das vogais.",
+        "Ignorou a restrição.",
+        "Usou 3! × 3!."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q14-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q14",
+      "tema": "Arranjo",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Dez candidatos disputam os cargos de presidente e vice. De quantas formas eles podem ser preenchidos?",
+      "alternativas": [
+        "90",
+        "100",
+        "45",
+        "720",
+        "20"
+      ],
+      "correta": 0,
+      "explicacao": "10 × 9 = 90. Dica de mergulhador: cargos diferentes, a ordem importa.",
+      "comentarios": [
+        "",
+        "Permitiu a mesma pessoa nos dois cargos.",
+        "Ignorou a ordem dos cargos.",
+        "Usou 3 cargos.",
+        "Multiplicou 10 por 2."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q15-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q15",
+      "tema": "Arranjo",
+      "dificuldade": "facil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos códigos de 3 letras distintas (26 letras) existem?",
+      "alternativas": [
+        "650",
+        "78",
+        "15.600",
+        "2.600",
+        "17.576"
+      ],
+      "correta": 2,
+      "explicacao": "26 × 25 × 24 = 15.600. Dica de mergulhador: letras distintas, fatores decrescentes.",
+      "comentarios": [
+        "Usou só 2 letras.",
+        "Multiplicou 26 por 3.",
+        "",
+        "Ignorou a ordem.",
+        "Permitiu repetição."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q16-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q16",
+      "tema": "Arranjo",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "De quantas formas 7 pessoas podem ocupar 2 cadeiras numeradas?",
+      "alternativas": [
+        "49",
+        "14",
+        "21",
+        "42",
+        "5.040"
+      ],
+      "correta": 3,
+      "explicacao": "7 × 6 = 42. Dica de mergulhador: arranjo de 7 tomados 2 a 2.",
+      "comentarios": [
+        "Permitiu repetição.",
+        "Multiplicou 7 por 2.",
+        "Ignorou a numeração.",
+        "",
+        "Usou 7!."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q17-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q17",
+      "tema": "Arranjo",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Num torneio com 6 times, cada um joga em casa e fora contra cada adversário. Quantos jogos há?",
+      "alternativas": [
+        "30",
+        "36",
+        "12",
+        "15",
+        "60"
+      ],
+      "correta": 0,
+      "explicacao": "6 × 5 = 30. Dica de mergulhador: mandante e visitante, arranjo.",
+      "comentarios": [
+        "",
+        "Incluiu jogos contra si mesmo.",
+        "Multiplicou 6 por 2.",
+        "Contou um jogo por par.",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q18-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q18",
+      "tema": "Arranjo",
+      "dificuldade": "medio",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos números de 3 algarismos distintos podem ser formados com os algarismos de 1 a 7?",
+      "alternativas": [
+        "5.040",
+        "343",
+        "21",
+        "35",
+        "210"
+      ],
+      "correta": 4,
+      "explicacao": "7 × 6 × 5 = 210. Dica de mergulhador: três fatores decrescentes.",
+      "comentarios": [
+        "Usou 7!.",
+        "Permitiu repetição.",
+        "Usou 2 posições sem ordem.",
+        "Ignorou a ordem.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q19-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q19",
+      "tema": "Arranjo",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Quantos números pares de 3 algarismos distintos podem ser formados com os algarismos de 0 a 9?",
+      "alternativas": [
+        "72",
+        "360",
+        "324",
+        "648",
+        "328"
+      ],
+      "correta": 4,
+      "explicacao": "Terminando em 0: 9 × 8 = 72. Em 2, 4, 6, 8: 8 × 8 × 4 = 256. Total: 328. Dica de mergulhador: o zero muda a contagem.",
+      "comentarios": [
+        "Contou só os que terminam em 0.",
+        "Ignorou o zero na frente.",
+        "Supôs que metade é par.",
+        "Contou todos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-q20-v1",
+      "varianteDe": "mat-permutacoes-arranjos-q20",
+      "tema": "Arranjo",
+      "dificuldade": "dificil",
+      "fase": "mat-permutacoes-arranjos",
+      "enunciado": "Sete candidatos disputam presidente, vice e secretário. De quantas formas, se Bia precisa ter um dos cargos?",
+      "alternativas": [
+        "120",
+        "15",
+        "90",
+        "210",
+        "30"
+      ],
+      "correta": 2,
+      "explicacao": "Total: 7 × 6 × 5 = 210. Sem Bia: 6 × 5 × 4 = 120. Com Bia: 90. Dica de mergulhador: total menos os casos sem ela.",
+      "comentarios": [
+        "São os casos sem Bia.",
+        "Ignorou a ordem.",
+        "",
+        "Ignorou a restrição.",
+        "Fixou Bia num só cargo."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q01-v1",
+      "varianteDe": "mat-combinacoes-q01",
+      "tema": "Combinação simples",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "De quantas formas se pode escolher 2 pessoas entre 5 para uma tarefa?",
+      "alternativas": [
+        "7",
+        "20",
+        "10",
+        "120",
+        "25"
+      ],
+      "correta": 2,
+      "explicacao": "(5 × 4) ÷ 2 = 10. Dica de mergulhador: divida o arranjo por 2!.",
+      "comentarios": [
+        "Somou.",
+        "Contou a ordem.",
+        "",
+        "Calculou 5!.",
+        "Permitiu repetição."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q02-v1",
+      "varianteDe": "mat-combinacoes-q02",
+      "tema": "Combinação simples",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Numa festa com 8 pessoas, cada uma cumprimenta todas as outras uma vez. Quantos cumprimentos acontecem?",
+      "alternativas": [
+        "56",
+        "28",
+        "64",
+        "16",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "C(8, 2) = 56 ÷ 2 = 28. Dica de mergulhador: pares não ordenados.",
+      "comentarios": [
+        "Contou cada cumprimento duas vezes.",
+        "",
+        "Incluiu cumprimentos consigo mesmo.",
+        "Multiplicou 8 por 2.",
+        "Contou as pessoas."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q03-v1",
+      "varianteDe": "mat-combinacoes-q03",
+      "tema": "Combinação simples",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Qual é o valor de C(9, 7)?",
+      "alternativas": [
+        "63",
+        "181.440",
+        "36",
+        "2",
+        "72"
+      ],
+      "correta": 2,
+      "explicacao": "C(9, 7) = C(9, 2) = 72 ÷ 2 = 36. Dica de mergulhador: use o lado menor.",
+      "comentarios": [
+        "Multiplicou 9 por 7.",
+        "Calculou o arranjo.",
+        "",
+        "Subtraiu.",
+        "Esqueceu de dividir por 2."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q04-v1",
+      "varianteDe": "mat-combinacoes-q04",
+      "tema": "Combinação simples",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Num torneio com 15 times em turno único, quantos jogos há?",
+      "alternativas": [
+        "210",
+        "105",
+        "15",
+        "225",
+        "30"
+      ],
+      "correta": 1,
+      "explicacao": "C(15, 2) = 210 ÷ 2 = 105. Dica de mergulhador: divida o arranjo por 2.",
+      "comentarios": [
+        "Contou casa e fora.",
+        "",
+        "Contou os times.",
+        "Incluiu jogos contra si mesmo.",
+        "Multiplicou 15 por 2."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q05-v1",
+      "varianteDe": "mat-combinacoes-q05",
+      "tema": "Combinação simples",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma salada leva 4 ingredientes diferentes, escolhidos entre 7. Quantas saladas podem ser montadas?",
+      "alternativas": [
+        "2.401",
+        "28",
+        "840",
+        "11",
+        "35"
+      ],
+      "correta": 4,
+      "explicacao": "C(7, 4) = 840 ÷ 24 = 35. Dica de mergulhador: arranjo ÷ k!.",
+      "comentarios": [
+        "Permitiu repetição e ordem.",
+        "Multiplicou 7 por 4.",
+        "Contou a ordem.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q06-v1",
+      "varianteDe": "mat-combinacoes-q06",
+      "tema": "Combinação simples",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Quantas diagonais tem um hexágono?",
+      "alternativas": [
+        "12",
+        "9",
+        "6",
+        "15",
+        "18"
+      ],
+      "correta": 1,
+      "explicacao": "C(6, 2) − 6 = 15 − 6 = 9. Dica de mergulhador: desconte os lados.",
+      "comentarios": [
+        "Multiplicou 6 por 2.",
+        "",
+        "Contou os lados.",
+        "Contou também os lados.",
+        "Não dividiu por 2."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q07-v1",
+      "varianteDe": "mat-combinacoes-q07",
+      "tema": "Combinação simples",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Numa loteria, escolhem-se 5 números de 1 a 50, sem ordem. Quantas apostas simples existem?",
+      "alternativas": [
+        "10",
+        "250",
+        "254.251.200",
+        "2.118.760",
+        "312.500.000"
+      ],
+      "correta": 3,
+      "explicacao": "C(50, 5) = 254.251.200 ÷ 120 = 2.118.760. Dica de mergulhador: divida o arranjo por 5!.",
+      "comentarios": [
+        "Dividiu 50 por 5.",
+        "Multiplicou 50 por 5.",
+        "Contou a ordem.",
+        "",
+        "Permitiu repetição e ordem."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q08-v1",
+      "varianteDe": "mat-combinacoes-q08",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Para escolher 2 representantes de turma com o mesmo papel entre 10 alunos, que tipo de contagem se usa?",
+      "alternativas": [
+        "Permutação de todos",
+        "Arranjo, porque são pessoas",
+        "Soma das opções",
+        "Arranjo, porque são duas vagas",
+        "Combinação, porque a ordem não importa"
+      ],
+      "correta": 4,
+      "explicacao": "Trocando os dois, o grupo é o mesmo. Dica de mergulhador: trocou e não mudou? Combinação.",
+      "comentarios": [
+        "Só 2 serão escolhidos.",
+        "O papel igual tira a ordem.",
+        "As escolhas acontecem juntas.",
+        "As vagas são iguais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q09-v1",
+      "varianteDe": "mat-combinacoes-q09",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Entre 7 cores de caneta, escolhem-se 3 para um kit. Quantos kits diferentes existem?",
+      "alternativas": [
+        "35",
+        "343",
+        "10",
+        "210",
+        "21"
+      ],
+      "correta": 0,
+      "explicacao": "C(7, 3) = 210 ÷ 6 = 35. Dica de mergulhador: kit é grupo.",
+      "comentarios": [
+        "",
+        "Permitiu repetição e ordem.",
+        "Somou.",
+        "Contou a ordem.",
+        "Multiplicou 7 por 3."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q10-v1",
+      "varianteDe": "mat-combinacoes-q10",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Entre 8 pessoas, de quantas formas se preenchem 2 cargos diferentes? E 2 vagas iguais?",
+      "alternativas": [
+        "28 e 28",
+        "64 e 28",
+        "28 e 56",
+        "56 e 28",
+        "56 e 56"
+      ],
+      "correta": 3,
+      "explicacao": "Cargos: 8 × 7 = 56. Vagas iguais: 56 ÷ 2 = 28. Dica de mergulhador: mesma conta, com ou sem divisão.",
+      "comentarios": [
+        "Esqueceu que cargos diferentes têm ordem.",
+        "Permitiu repetir pessoa.",
+        "Trocou os casos.",
+        "",
+        "Esqueceu que vagas iguais não têm ordem."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q11-v1",
+      "varianteDe": "mat-combinacoes-q11",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Um time de basquete de 5 jogadores será escolhido entre 8, sem posições definidas. Quantos times são possíveis?",
+      "alternativas": [
+        "6.720",
+        "336",
+        "56",
+        "40",
+        "13"
+      ],
+      "correta": 2,
+      "explicacao": "C(8, 5) = C(8, 3) = 336 ÷ 6 = 56. Dica de mergulhador: use o lado menor.",
+      "comentarios": [
+        "Contou a ordem.",
+        "Calculou só 8 × 7 × 6.",
+        "",
+        "Multiplicou.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q12-v1",
+      "varianteDe": "mat-combinacoes-q12",
+      "tema": "Arranjo ou combinação",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Oito pontos distintos estão sobre uma circunferência. Quantos quadriláteros com vértices nesses pontos podem ser formados?",
+      "alternativas": [
+        "70",
+        "56",
+        "32",
+        "1.680",
+        "4.096"
+      ],
+      "correta": 0,
+      "explicacao": "C(8, 4) = 1.680 ÷ 24 = 70. Dica de mergulhador: figura é grupo de vértices.",
+      "comentarios": [
+        "",
+        "Calculou C(8, 3).",
+        "Multiplicou 8 por 4.",
+        "Contou a ordem.",
+        "Permitiu repetição e ordem."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q13-v1",
+      "varianteDe": "mat-combinacoes-q13",
+      "tema": "Combinações com condições",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Um grupo terá 1 professor, escolhido entre 3, e 2 alunos, escolhidos entre 6. Quantos grupos são possíveis?",
+      "alternativas": [
+        "84",
+        "90",
+        "9",
+        "18",
+        "45"
+      ],
+      "correta": 4,
+      "explicacao": "3 × C(6, 2) = 3 × 15 = 45. Dica de mergulhador: um fator por grupo.",
+      "comentarios": [
+        "Ignorou os grupos.",
+        "Usou arranjo nos alunos.",
+        "Somou 3 + 6.",
+        "Somou as escolhas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q14-v1",
+      "varianteDe": "mat-combinacoes-q14",
+      "tema": "Combinações com condições",
+      "dificuldade": "facil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma dupla de trabalho terá um aluno do 1º ano, entre 6, e um do 2º ano, entre 4. Quantas duplas são possíveis?",
+      "alternativas": [
+        "90",
+        "10",
+        "48",
+        "45",
+        "24"
+      ],
+      "correta": 4,
+      "explicacao": "6 × 4 = 24. Dica de mergulhador: um de cada lado.",
+      "comentarios": [
+        "Calculou o arranjo.",
+        "Somou.",
+        "Contou a ordem.",
+        "Calculou C(10, 2).",
+        ""
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q15-v1",
+      "varianteDe": "mat-combinacoes-q15",
+      "tema": "Combinações com condições",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Um grupo tem 5 homens e 4 mulheres. Quantas comissões de 3 pessoas têm pelo menos um homem?",
+      "alternativas": [
+        "140",
+        "10",
+        "80",
+        "4",
+        "84"
+      ],
+      "correta": 2,
+      "explicacao": "Total: C(9, 3) = 84. Só mulheres: C(4, 3) = 4. Resposta: 80. Dica de mergulhador: total menos o que não serve.",
+      "comentarios": [
+        "Fixou um homem e contou grupos repetidos.",
+        "Calculou C(5, 3).",
+        "",
+        "São as comissões só de mulheres.",
+        "É o total."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q16-v1",
+      "varianteDe": "mat-combinacoes-q16",
+      "tema": "Combinações com condições",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma equipe de 4 pessoas será escolhida entre 7, mas Caio e Davi não podem estar juntos. Quantas equipes são possíveis?",
+      "alternativas": [
+        "5",
+        "10",
+        "35",
+        "25",
+        "20"
+      ],
+      "correta": 3,
+      "explicacao": "Total: C(7, 4) = 35. Com os dois: C(5, 2) = 10. Resposta: 25. Dica de mergulhador: complementar dos juntos.",
+      "comentarios": [
+        "Excluiu os dois.",
+        "São as equipes com os dois.",
+        "É o total.",
+        "",
+        "Contou só com exatamente um."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q17-v1",
+      "varianteDe": "mat-combinacoes-q17",
+      "tema": "Combinações com condições",
+      "dificuldade": "medio",
+      "fase": "mat-combinacoes",
+      "enunciado": "Uma prova tem 12 questões, e o aluno deve responder 8, sendo obrigatórias as 2 primeiras. De quantas formas ele escolhe?",
+      "alternativas": [
+        "210",
+        "45",
+        "495",
+        "151.200",
+        "10"
+      ],
+      "correta": 0,
+      "explicacao": "Faltam 6 entre 10: C(10, 6) = C(10, 4) = 210. Dica de mergulhador: obrigatórias já estão escolhidas.",
+      "comentarios": [
+        "",
+        "Calculou C(10, 2).",
+        "Ignorou as obrigatórias.",
+        "Contou a ordem.",
+        "Contou as livres."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q18-v1",
+      "varianteDe": "mat-combinacoes-q18",
+      "tema": "Combinações com condições",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Um prato leva 1 massa (2 tipos), 2 molhos diferentes (entre 5) e 1 queijo (entre 3) ou nenhum. Quantos pratos são possíveis?",
+      "alternativas": [
+        "160",
+        "12",
+        "80",
+        "120",
+        "60"
+      ],
+      "correta": 2,
+      "explicacao": "2 × C(5, 2) × (3 + 1) = 2 × 10 × 4 = 80. Dica de mergulhador: some a opção \"nenhum\".",
+      "comentarios": [
+        "Contou a ordem dos molhos.",
+        "Somou.",
+        "",
+        "Contou a ordem e esqueceu o sem queijo.",
+        "Esqueceu a opção sem queijo."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q19-v1",
+      "varianteDe": "mat-combinacoes-q19",
+      "tema": "Combinações com condições",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Num grupo de 6 pessoas, quantas comissões com pelo menos 2 pessoas podem ser formadas?",
+      "alternativas": [
+        "58",
+        "63",
+        "64",
+        "57",
+        "15"
+      ],
+      "correta": 3,
+      "explicacao": "2⁶ = 64; menos 1 vazio e 6 unitários: 57. Dica de mergulhador: está ou não está, duas opções por pessoa.",
+      "comentarios": [
+        "Esqueceu o vazio.",
+        "Tirou só o vazio.",
+        "Contou todos os subconjuntos.",
+        "",
+        "Contou só as duplas."
+      ]
+    },
+    {
+      "id": "mat-combinacoes-q20-v1",
+      "varianteDe": "mat-combinacoes-q20",
+      "tema": "Combinações com condições",
+      "dificuldade": "dificil",
+      "fase": "mat-combinacoes",
+      "enunciado": "Há 6 meninos e 5 meninas. De quantas formas se forma um grupo de 4 com exatamente 1 menina?",
+      "alternativas": [
+        "330",
+        "20",
+        "100",
+        "25",
+        "600"
+      ],
+      "correta": 2,
+      "explicacao": "C(5, 1) × C(6, 3) = 5 × 20 = 100. Dica de mergulhador: cada tipo com a sua quantidade exata.",
+      "comentarios": [
+        "Ignorou a condição.",
+        "Esqueceu a menina.",
+        "",
+        "Somou.",
+        "Usou arranjo nos meninos."
+      ]
     }
   ],
   "pares": [
@@ -34478,6 +37603,78 @@
       "tema": "Revisão do módulo: estatística",
       "termo": "Taxa",
       "definicao": "Casos divididos pela população"
+    },
+    {
+      "id": "mat-principio-contagem-par-01",
+      "tema": "Princípio fundamental da contagem",
+      "termo": "Princípio multiplicativo",
+      "definicao": "Etapas em sequência se multiplicam"
+    },
+    {
+      "id": "mat-principio-contagem-par-02",
+      "tema": "Princípio fundamental da contagem",
+      "termo": "Alternativas que se excluem",
+      "definicao": "Somam-se"
+    },
+    {
+      "id": "mat-principio-contagem-par-03",
+      "tema": "Princípio fundamental da contagem",
+      "termo": "Etapa mais restrita",
+      "definicao": "Começa a contagem"
+    },
+    {
+      "id": "mat-principio-contagem-par-04",
+      "tema": "Princípio fundamental da contagem",
+      "termo": "Complementar",
+      "definicao": "Total menos os casos sem nenhum"
+    },
+    {
+      "id": "mat-permutacoes-arranjos-par-01",
+      "tema": "Permutações e arranjos",
+      "termo": "Permutação",
+      "definicao": "Todos os elementos em fila"
+    },
+    {
+      "id": "mat-permutacoes-arranjos-par-02",
+      "tema": "Permutações e arranjos",
+      "termo": "Arranjo",
+      "definicao": "Escolher e ordenar"
+    },
+    {
+      "id": "mat-permutacoes-arranjos-par-03",
+      "tema": "Permutações e arranjos",
+      "termo": "Permutação com repetição",
+      "definicao": "Divide pelos fatoriais das repetições"
+    },
+    {
+      "id": "mat-permutacoes-arranjos-par-04",
+      "tema": "Permutações e arranjos",
+      "termo": "Permutação circular",
+      "definicao": "Mesa redonda, (n − 1)!"
+    },
+    {
+      "id": "mat-combinacoes-par-01",
+      "tema": "Combinações",
+      "termo": "Combinação",
+      "definicao": "Grupo em que a ordem não importa"
+    },
+    {
+      "id": "mat-combinacoes-par-02",
+      "tema": "Combinações",
+      "termo": "Aperto de mão",
+      "definicao": "C(n, 2)"
+    },
+    {
+      "id": "mat-combinacoes-par-03",
+      "tema": "Combinações",
+      "termo": "C(n, k)",
+      "definicao": "Igual a C(n, n − k)"
+    },
+    {
+      "id": "mat-combinacoes-par-04",
+      "tema": "Combinações",
+      "termo": "Loteria",
+      "definicao": "Combinação de números"
     }
   ],
   "verdadeiroFalso": [
@@ -35138,6 +38335,69 @@
       "afirmacao": "Uma fatia de 30% num gráfico de setores tem 108°.",
       "verdadeira": true,
       "explicacao": "30 × 3,6."
+    },
+    {
+      "id": "mat-principio-contagem-vf-01",
+      "tema": "Princípio fundamental da contagem",
+      "afirmacao": "Uma moeda lançada 5 vezes gera 32 sequências.",
+      "verdadeira": true,
+      "explicacao": "2⁵ = 32."
+    },
+    {
+      "id": "mat-principio-contagem-vf-02",
+      "tema": "Princípio fundamental da contagem",
+      "afirmacao": "Há 100 números de dois algarismos.",
+      "verdadeira": false,
+      "explicacao": "São 90, de 10 a 99."
+    },
+    {
+      "id": "mat-principio-contagem-vf-03",
+      "tema": "Princípio fundamental da contagem",
+      "afirmacao": "Uma senha de 4 algarismos com repetição tem 10.000 possibilidades.",
+      "verdadeira": true,
+      "explicacao": "10⁴."
+    },
+    {
+      "id": "mat-permutacoes-arranjos-vf-01",
+      "tema": "Permutações e arranjos",
+      "afirmacao": "ARARA tem 10 anagramas.",
+      "verdadeira": true,
+      "explicacao": "5! ÷ (3! × 2!)."
+    },
+    {
+      "id": "mat-permutacoes-arranjos-vf-02",
+      "tema": "Permutações e arranjos",
+      "afirmacao": "Numa mesa redonda, 5 pessoas sentam de 120 formas.",
+      "verdadeira": false,
+      "explicacao": "São (5 − 1)! = 24."
+    },
+    {
+      "id": "mat-permutacoes-arranjos-vf-03",
+      "tema": "Permutações e arranjos",
+      "afirmacao": "Um pódio entre 8 atletas pode ser formado de 336 formas.",
+      "verdadeira": true,
+      "explicacao": "8 × 7 × 6."
+    },
+    {
+      "id": "mat-combinacoes-vf-01",
+      "tema": "Combinações",
+      "afirmacao": "Comissões de 3 entre 6 pessoas são 20.",
+      "verdadeira": true,
+      "explicacao": "(6 × 5 × 4) ÷ 3!."
+    },
+    {
+      "id": "mat-combinacoes-vf-02",
+      "tema": "Combinações",
+      "afirmacao": "Escolher presidente e vice é uma combinação.",
+      "verdadeira": false,
+      "explicacao": "Os cargos dão ordem."
+    },
+    {
+      "id": "mat-combinacoes-vf-03",
+      "tema": "Combinações",
+      "afirmacao": "Um octógono tem 20 diagonais.",
+      "verdadeira": true,
+      "explicacao": "C(8, 2) − 8."
     }
   ],
   "sequencias": [
@@ -35525,6 +38785,42 @@
         "Conferir se a resposta usa o critério pedido"
       ],
       "explicacao": "Ferramenta certa antes da conta."
+    },
+    {
+      "id": "mat-principio-contagem-seq-01",
+      "tema": "Princípio fundamental da contagem",
+      "titulo": "Contar possibilidades com restrição",
+      "itens": [
+        "Identificar as etapas",
+        "Começar pela etapa mais restrita",
+        "Preencher as demais descontando o que já foi usado",
+        "Multiplicar as opções"
+      ],
+      "explicacao": "\"Pelo menos um\" pede o complementar."
+    },
+    {
+      "id": "mat-permutacoes-arranjos-seq-01",
+      "tema": "Permutações e arranjos",
+      "titulo": "Contar filas com duas pessoas juntas",
+      "itens": [
+        "Juntar as duas num bloco",
+        "Permutar o bloco com os demais",
+        "Multiplicar pelas ordens dentro do bloco",
+        "Para separados, subtrair do total"
+      ],
+      "explicacao": "Bloco conta como um."
+    },
+    {
+      "id": "mat-combinacoes-seq-01",
+      "tema": "Combinações",
+      "titulo": "Contar uma comissão com condições",
+      "itens": [
+        "Separar os tipos de pessoas",
+        "Escolher a quantidade de cada tipo com combinação",
+        "Multiplicar as escolhas",
+        "Usar o complementar se a condição for \"pelo menos\""
+      ],
+      "explicacao": "Grupo não tem ordem."
     }
   ],
   "adivinhas": [
@@ -35990,6 +39286,48 @@
         "Ciência dos dados",
         "Usa média, mediana e desvio",
         "Ajuda a decidir"
+      ]
+    },
+    {
+      "id": "mat-principio-contagem-adv-01",
+      "tema": "Princípio fundamental da contagem",
+      "dificuldade": "medio",
+      "resposta": "Senha",
+      "aceitas": [
+        "senha"
+      ],
+      "dicas": [
+        "Sequência de caracteres",
+        "Cada posição tem várias opções",
+        "Contada pelo princípio multiplicativo"
+      ]
+    },
+    {
+      "id": "mat-permutacoes-arranjos-adv-01",
+      "tema": "Permutações e arranjos",
+      "dificuldade": "medio",
+      "resposta": "Anagrama",
+      "aceitas": [
+        "anagrama"
+      ],
+      "dicas": [
+        "Nova ordem das letras de uma palavra",
+        "Não precisa ter sentido",
+        "Letras repetidas reduzem a conta"
+      ]
+    },
+    {
+      "id": "mat-combinacoes-adv-01",
+      "tema": "Combinações",
+      "dificuldade": "medio",
+      "resposta": "Comissão",
+      "aceitas": [
+        "comissao"
+      ],
+      "dicas": [
+        "Grupo escolhido para uma tarefa",
+        "A ordem não importa",
+        "Contada por combinação"
       ]
     }
   ],
@@ -36743,6 +40081,78 @@
       "tema": "Matemática",
       "palavra": "Gráfico",
       "dica": "Desenho dos dados"
+    },
+    {
+      "id": "mat-principio-contagem-pal-01",
+      "tema": "Matemática",
+      "palavra": "Senha",
+      "dica": "Código secreto"
+    },
+    {
+      "id": "mat-principio-contagem-pal-02",
+      "tema": "Matemática",
+      "palavra": "Etapa",
+      "dica": "Parte de uma escolha em sequência"
+    },
+    {
+      "id": "mat-principio-contagem-pal-03",
+      "tema": "Matemática",
+      "palavra": "Árvore",
+      "dica": "Desenho que mostra as possibilidades"
+    },
+    {
+      "id": "mat-principio-contagem-pal-04",
+      "tema": "Matemática",
+      "palavra": "Placa",
+      "dica": "Código de letras e números de um veículo"
+    },
+    {
+      "id": "mat-permutacoes-arranjos-pal-01",
+      "tema": "Matemática",
+      "palavra": "Pódio",
+      "dica": "Lugar dos três primeiros"
+    },
+    {
+      "id": "mat-permutacoes-arranjos-pal-02",
+      "tema": "Matemática",
+      "palavra": "Fila",
+      "dica": "Pessoas em ordem"
+    },
+    {
+      "id": "mat-permutacoes-arranjos-pal-03",
+      "tema": "Matemática",
+      "palavra": "Fatorial",
+      "dica": "Produto de 1 até n"
+    },
+    {
+      "id": "mat-permutacoes-arranjos-pal-04",
+      "tema": "Matemática",
+      "palavra": "Estante",
+      "dica": "Onde os livros se organizam"
+    },
+    {
+      "id": "mat-combinacoes-pal-01",
+      "tema": "Matemática",
+      "palavra": "Grupo",
+      "dica": "Conjunto sem ordem"
+    },
+    {
+      "id": "mat-combinacoes-pal-02",
+      "tema": "Matemática",
+      "palavra": "Equipe",
+      "dica": "Grupo de trabalho"
+    },
+    {
+      "id": "mat-combinacoes-pal-03",
+      "tema": "Matemática",
+      "palavra": "Sorteio",
+      "dica": "Escolha ao acaso"
+    },
+    {
+      "id": "mat-combinacoes-pal-04",
+      "tema": "Matemática",
+      "palavra": "Salada",
+      "dica": "Mistura de ingredientes sem ordem"
     }
   ],
   "fichas": {
@@ -37822,6 +41232,132 @@
       "pegadinhas": [
         "Média das médias com grupos diferentes.",
         "Trocar a ordem dos critérios."
+      ]
+    },
+    "Princípio multiplicativo": {
+      "texto": [
+        "Em decisões feitas em etapas, multiplique o número de opções de cada etapa: roupas (camiseta × calça), senhas (10 por posição) e lançamentos (2 por moeda, 6 por dado).",
+        "Quando há restrições entre etapas vizinhas, como listras que não podem repetir a cor da anterior, a primeira etapa tem todas as opções e as seguintes perdem uma. Em idas e voltas sem repetir caminho, cada trecho da volta perde o caminho já usado."
+      ],
+      "pontos": [
+        "Etapas em sequência: multiplique.",
+        "Com repetição, a mesma quantidade em cada posição."
+      ],
+      "pegadinhas": [
+        "Somar etapas que acontecem juntas.",
+        "Multiplicar o número de opções pelo número de etapas."
+      ]
+    },
+    "Soma ou produto": {
+      "texto": [
+        "\"E\" multiplica; \"ou\" soma. Escolher um sanduíche ou uma salada é uma etapa com 4 + 3 opções; escolher prato e bebida são duas etapas que se multiplicam.",
+        "Quando dois grupos se sobrepõem, some e desconte a parte comum (múltiplos de 2 ou de 5 menos os de 10). Para \"pelo menos um\", calcule o total e tire os casos que não têm nenhum."
+      ],
+      "pontos": [
+        "Parte comum: conte uma vez.",
+        "Pelo menos um: complementar."
+      ],
+      "pegadinhas": [
+        "Multiplicar alternativas que se excluem.",
+        "Esquecer a interseção."
+      ]
+    },
+    "Restrições": {
+      "texto": [
+        "Comece pela etapa mais restrita: a primeira posição de um número não pode ser zero; um número par depende da unidade; uma pessoa fixa sai da conta. Depois preencha as demais, descontando os já usados quando não pode repetir.",
+        "Opções extras, como deixar em branco, contam como mais uma escolha. Para \"pelo menos um 7\", conte os números sem 7 e subtraia do total."
+      ],
+      "pontos": [
+        "Zero não começa número.",
+        "Em branco é mais uma opção."
+      ],
+      "pegadinhas": [
+        "Permitir o zero na primeira posição.",
+        "Contar \"pelo menos um\" posição por posição."
+      ]
+    },
+    "Permutação": {
+      "texto": [
+        "Permutação de n elementos diferentes: n!. Em mesa redonda, girar não muda a arrumação: (n − 1)!. Com elementos que devem ficar juntos, trate-os como um bloco e multiplique pelas ordens internas.",
+        "Para \"não podem ficar juntos\", faça o total menos os casos juntos. Em filas alternadas, escolha o padrão (começa por homem ou por mulher) e permute cada grupo."
+      ],
+      "pontos": [
+        "Bloco = um elemento + ordens internas.",
+        "Mesa redonda: (n − 1)!."
+      ],
+      "pegadinhas": [
+        "Esquecer a troca dentro do bloco.",
+        "Contar giros da mesa como arrumações novas."
+      ]
+    },
+    "Anagramas": {
+      "texto": [
+        "Anagramas de palavras sem letras repetidas: n!. Com repetições, divida pelo fatorial de cada letra repetida (ARARA: 5! ÷ (3! × 2!)).",
+        "Restrições fixam letras: \"começa com C\" deixa n − 1 letras para permutar; \"começa e termina com vogal\" escolhe as vogais das pontas e permuta o miolo; \"vogais juntas\" forma um bloco."
+      ],
+      "pontos": [
+        "Conte cada letra antes.",
+        "Letra fixa sai da conta."
+      ],
+      "pegadinhas": [
+        "Ignorar letras repetidas.",
+        "Dividir por um fatorial só quando há duas repetições."
+      ]
+    },
+    "Arranjo": {
+      "texto": [
+        "Arranjo é escolher k de n quando a ordem importa: multiplicam-se k fatores decrescentes (8 × 7 × 6 para o pódio). Senhas sem repetição, cargos diferentes e jogos em casa e fora são arranjos.",
+        "Com o zero, separe os casos: números pares de algarismos distintos terminam em 0 ou em outro par. Para \"precisa estar\", faça o total menos os casos sem o elemento."
+      ],
+      "pontos": [
+        "Cargos diferentes: arranjo.",
+        "Separe o caso do zero."
+      ],
+      "pegadinhas": [
+        "Ignorar a ordem num pódio.",
+        "Supor que metade dos números é par quando há restrições."
+      ]
+    },
+    "Combinação simples": {
+      "texto": [
+        "Combinação conta grupos sem ordem: C(n, k) = arranjo ÷ k!. Comissões, ingredientes, apertos de mão, jogos de turno único e apostas de loteria são combinações.",
+        "Use C(n, k) = C(n, n − k) para encurtar as contas (C(8, 6) = C(8, 2)). Diagonais de um polígono: C(n, 2) − n."
+      ],
+      "pontos": [
+        "Arranjo ÷ k!.",
+        "Diagonais = C(n, 2) − n."
+      ],
+      "pegadinhas": [
+        "Contar a ordem num grupo.",
+        "Incluir os lados nas diagonais."
+      ]
+    },
+    "Arranjo ou combinação": {
+      "texto": [
+        "Pergunte: trocando dois elementos de lugar, o resultado muda? Cargos diferentes, pódios e senhas mudam (arranjo); comissões, vitaminas e kits não mudam (combinação).",
+        "A mesma situação pode virar um ou outro: 3 prêmios diferentes para 3 alunos é arranjo; 3 prêmios iguais é combinação."
+      ],
+      "pontos": [
+        "Mudou com a troca: arranjo.",
+        "Não mudou: combinação."
+      ],
+      "pegadinhas": [
+        "Usar combinação para cargos.",
+        "Usar arranjo para comissões."
+      ]
+    },
+    "Combinações com condições": {
+      "texto": [
+        "Com grupos de tipos diferentes, escolha cada tipo separadamente e multiplique: 2 homens entre 5 e 2 mulheres entre 4 dão 10 × 6. Elementos obrigatórios saem da conta; \"nenhum\" pode ser uma opção a mais.",
+        "Para \"pelo menos um\" e \"não podem estar juntos\", use o complementar. Para grupos de qualquer tamanho, cada pessoa está ou não está: 2ⁿ subconjuntos."
+      ],
+      "pontos": [
+        "Exatamente k de um tipo: C(tipo, k).",
+        "Pelo menos um: total − nenhum."
+      ],
+      "pegadinhas": [
+        "Somar as escolhas de cada tipo.",
+        "Fixar um elemento e contar grupos repetidos."
       ]
     }
   }
