@@ -3944,6 +3944,314 @@
           "probabilidade condicional"
         ]
       }
+    },
+    {
+      "id": "mat-angulos-retas",
+      "nome": "Aula 39 · Ângulos, retas paralelas e perpendiculares",
+      "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
+      "descricao": "Módulo 7 · aula 1 de 3 · 35 min · treina as habilidades H6 e H7",
+      "habilidades": [
+        "H6",
+        "H7"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Ângulos e suas medidas",
+            "texto": [
+              "Ângulo é a abertura entre duas semirretas de mesma origem, medida em graus: a volta completa tem 360°, meia-volta tem 180° e um quarto de volta tem 90°, o ângulo reto. Abaixo de 90°, o ângulo é agudo; entre 90° e 180°, obtuso. Dois ângulos são **complementares** quando somam 90° e **suplementares** quando somam 180°: o complemento de 35° é 55°, e o suplemento é 145°. Ângulos em volta de um ponto somam 360°; ângulos lado a lado sobre uma reta somam 180°."
+            ]
+          },
+          {
+            "titulo": "Retas que se cruzam",
+            "texto": [
+              "Duas retas concorrentes formam quatro ângulos: os **opostos pelo vértice** são iguais, e os vizinhos somam 180°. Se um dos ângulos mede 40°, os outros medem 140°, 40° e 140°. Quando os quatro medem 90°, as retas são perpendiculares. Retas paralelas, num mesmo plano, nunca se encontram e mantêm sempre a mesma distância entre si."
+            ]
+          },
+          {
+            "titulo": "Paralelas cortadas por uma transversal",
+            "texto": [
+              "Uma reta que corta duas paralelas forma oito ângulos, mas só dois valores: os agudos são todos iguais entre si, os obtusos também, e um agudo mais um obtuso dá 180°. Ângulos alternos internos são iguais, desenhando um Z; correspondentes também são iguais, desenhando um F. Com um ponto entre duas paralelas, o ângulo nesse ponto é a soma dos ângulos que os segmentos fazem com cada paralela."
+            ]
+          },
+          {
+            "titulo": "Relógio, rumos e como o Enem cobra",
+            "texto": [
+              "O ponteiro dos minutos anda 6° por minuto; o das horas anda 30° por hora, ou 0,5° por minuto. Às 3h, o ângulo entre eles é 90°; às 2h30, o ponteiro das horas já andou metade do caminho entre o 2 e o 3, e o ângulo é 105°, não 90°. Rumos de navegação medidos a partir do norte, giros de câmeras, rampas, telhados e ruas que cortam avenidas paralelas completam as questões."
+            ]
+          }
+        ],
+        "introducao": "Rampas, telhados, cruzamentos de ruas, ponteiros de relógio e rumos de navegação: tudo isso é medido em ângulos. Esta aula organiza as relações entre ângulos que o Enem mais cobra, das retas que se cruzam às paralelas cortadas por uma transversal, e mostra como calcular o ângulo entre os ponteiros de um relógio.",
+        "mapaMental": {
+          "centro": "Ângulos",
+          "ramos": [
+            {
+              "titulo": "Medidas",
+              "itens": [
+                "complementares somam 90°",
+                "suplementares somam 180°",
+                "volta de 360°"
+              ]
+            },
+            {
+              "titulo": "Retas",
+              "itens": [
+                "opostos pelo vértice são iguais",
+                "vizinhos somam 180°",
+                "perpendiculares a 90°"
+              ]
+            },
+            {
+              "titulo": "Paralelas",
+              "itens": [
+                "agudos iguais e obtusos iguais",
+                "alternos internos em Z",
+                "correspondentes em F"
+              ]
+            },
+            {
+              "titulo": "Relógio",
+              "itens": [
+                "minutos andam 6° por minuto",
+                "horas andam 0,5° por minuto"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "✂️",
+            "conceito": "Tesoura aberta",
+            "liga": "ângulos opostos",
+            "porque": "As duas lâminas abrem o mesmo ângulo dos dois lados do eixo."
+          },
+          {
+            "icone": "🛤️",
+            "conceito": "Trilhos cortados por uma estrada",
+            "liga": "paralelas e transversal",
+            "porque": "Os cruzamentos repetem os mesmos dois ângulos."
+          }
+        ],
+        "pontos": [
+          "Ângulos **complementares** somam 90°; **suplementares**, 180°.",
+          "Os ângulos **opostos pelo vértice** são iguais.",
+          "Numa transversal a duas paralelas, só há dois valores de ângulo, e eles somam 180°.",
+          "O ponteiro das horas anda 0,5° por minuto: às 2h30, o ângulo é 105°."
+        ],
+        "perolas": [
+          "Z de alternos, F de correspondentes.",
+          "Ponteiro das horas nunca fica parado no número."
+        ],
+        "reforcar": [
+          "complementares",
+          "suplementares",
+          "opostos pelo vertice"
+        ]
+      }
+    },
+    {
+      "id": "mat-triangulos-quadrilateros",
+      "nome": "Aula 40 · Triângulos e quadriláteros",
+      "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
+      "descricao": "Módulo 7 · aula 2 de 3 · 35 min · treina a habilidade H7",
+      "habilidades": [
+        "H7"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Triângulos",
+            "texto": [
+              "A soma dos ângulos internos de qualquer triângulo é 180°. Pelos lados, o triângulo é equilátero (três lados iguais e ângulos de 60°), isósceles (dois lados iguais, e os ângulos da base também iguais) ou escaleno (todos diferentes). Pelos ângulos, é acutângulo, retângulo (com um ângulo de 90°) ou obtusângulo. O **ângulo externo** é igual à soma dos dois ângulos internos não vizinhos a ele: num triângulo com ângulos de 45° e 70°, o externo junto ao terceiro vértice mede 115°."
+            ]
+          },
+          {
+            "titulo": "Condição de existência",
+            "texto": [
+              "Três segmentos só formam um triângulo se cada lado for menor que a soma dos outros dois: 3, 4 e 8 não fecham, porque 3 + 4 < 8; e 3, 5 e 8 ficam \"deitados\", sem formar triângulo. Essa é a **desigualdade triangular**. Com dois lados, 4 e 9, o terceiro precisa estar entre 9 − 4 = 5 e 9 + 4 = 13. O maior lado fica oposto ao maior ângulo."
+            ]
+          },
+          {
+            "titulo": "Quadriláteros",
+            "texto": [
+              "A soma dos ângulos internos de um quadrilátero é 360°, porque uma diagonal o divide em dois triângulos. Paralelogramo tem lados opostos paralelos e iguais, e ângulos opostos iguais; retângulo é o paralelogramo com quatro ângulos retos; losango tem quatro lados iguais; quadrado é retângulo e losango ao mesmo tempo; trapézio tem só um par de lados paralelos. As diagonais do losango e do quadrado são perpendiculares."
+            ]
+          },
+          {
+            "titulo": "Polígonos e como o Enem cobra",
+            "texto": [
+              "Num polígono de n lados, a **soma dos ângulos internos** é (n − 2) × 180°, porque ele se divide em n − 2 triângulos a partir de um vértice. No polígono regular, cada ângulo interno é essa soma dividida por n, e os externos somam sempre 360°: no hexágono regular, cada interno mede 120°. Para ladrilhar um piso só com um polígono regular, o ângulo interno precisa dividir 360° exatamente: servem o triângulo, o quadrado e o hexágono. O Enem cobra telhados, estruturas rígidas, pisos, placas e logotipos."
+            ]
+          }
+        ],
+        "introducao": "O triângulo é a figura mais forte da engenharia: é a única que não se deforma quando se empurra um vértice, e por isso aparece em telhados, pontes e torres. Esta aula reúne as propriedades dos triângulos, dos quadriláteros e dos polígonos que o Enem mais cobra: soma dos ângulos, classificação, condição de existência e ladrilhamento.",
+        "mapaMental": {
+          "centro": "Triângulos e quadriláteros",
+          "ramos": [
+            {
+              "titulo": "Triângulo",
+              "itens": [
+                "ângulos somam 180°",
+                "ângulo externo soma os dois internos não vizinhos"
+              ]
+            },
+            {
+              "titulo": "Existência",
+              "itens": [
+                "desigualdade triangular",
+                "terceiro lado entre a diferença e a soma"
+              ]
+            },
+            {
+              "titulo": "Quadriláteros",
+              "itens": [
+                "ângulos somam 360°",
+                "paralelogramo, retângulo, losango, quadrado e trapézio"
+              ]
+            },
+            {
+              "titulo": "Polígonos",
+              "itens": [
+                "soma dos ângulos internos (n − 2) × 180°",
+                "externos somam 360°",
+                "ladrilhamento"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🏠",
+            "conceito": "Tesoura do telhado",
+            "liga": "triângulo rígido",
+            "porque": "Empurre um vértice: o triângulo não se deforma."
+          },
+          {
+            "icone": "🐝",
+            "conceito": "Favo de mel",
+            "liga": "hexágono regular",
+            "porque": "Três ângulos de 120° fecham o vértice sem deixar buraco."
+          }
+        ],
+        "pontos": [
+          "Os ângulos de um triângulo somam 180°, e os de um quadrilátero, 360°.",
+          "O **ângulo externo** é a soma dos dois internos não vizinhos.",
+          "**Desigualdade triangular**: cada lado é menor que a soma dos outros dois.",
+          "**Soma dos ângulos internos** de um polígono de n lados: (n − 2) × 180°.",
+          "Os ângulos externos de qualquer polígono somam 360°."
+        ],
+        "perolas": [
+          "3, 5 e 8 não fecham um triângulo: ficam deitados.",
+          "O quadrado é retângulo e losango ao mesmo tempo."
+        ],
+        "reforcar": [
+          "angulo externo",
+          "desigualdade triangular",
+          "soma dos angulos internos"
+        ]
+      }
+    },
+    {
+      "id": "mat-semelhanca-tales",
+      "nome": "Aula 41 · Semelhança de triângulos e Teorema de Tales",
+      "modulo": "Módulo 7 · Geometria plana: figuras e ângulos",
+      "descricao": "Módulo 7 · aula 3 de 3 · 35 min · treina a habilidade H8",
+      "habilidades": [
+        "H8"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Figuras semelhantes",
+            "texto": [
+              "Duas figuras são semelhantes quando uma é ampliação ou redução da outra: têm os mesmos ângulos e lados proporcionais. A razão entre lados correspondentes é a **razão de semelhança**: se um triângulo tem lados 3, 4 e 5 e outro tem 6, 8 e 10, a razão é 2. Perímetros seguem a mesma razão; áreas ficam multiplicadas pela razão ao quadrado, e volumes, pela razão ao cubo, como na aula de escala."
+            ]
+          },
+          {
+            "titulo": "Triângulos semelhantes",
+            "texto": [
+              "Basta ter **dois ângulos iguais** para dois triângulos serem semelhantes: o terceiro vem junto, porque a soma é 180°. Uma reta paralela a um lado de um triângulo corta os outros dois e forma um triângulo menor semelhante ao maior. O cuidado é emparelhar os lados correspondentes, os que ficam opostos aos ângulos iguais; montada a proporção, a regra de três resolve."
+            ]
+          },
+          {
+            "titulo": "Sombras, espelhos e alturas",
+            "texto": [
+              "No mesmo momento e no mesmo lugar, os raios de sol chegam praticamente paralelos: objeto e sombra formam triângulos semelhantes. Se uma pessoa de 1,80 m projeta sombra de 1,20 m e um prédio projeta 20 m, o prédio tem 20 × 1,80 ÷ 1,20 = 30 m. Com um espelho no chão, os ângulos de chegada e de saída da luz são iguais, e a mesma proporção aparece. Com uma lâmpada num poste, a sombra de uma pessoa também forma triângulos semelhantes, um dentro do outro."
+            ]
+          },
+          {
+            "titulo": "Teorema de Tales e como o Enem cobra",
+            "texto": [
+              "Um feixe de retas paralelas cortado por duas transversais determina segmentos proporcionais: é o **teorema de Tales**. Terrenos entre ruas paralelas, com frentes para duas avenidas, são o exemplo clássico: as frentes numa avenida são proporcionais às frentes na outra. O Enem cobra sombras, rampas, mapas, fotos ampliadas, terrenos e alturas de objetos inacessíveis, quase sempre com uma figura que pede para identificar os dois triângulos semelhantes."
+            ]
+          }
+        ],
+        "introducao": "Como medir a altura de um prédio sem subir nele? Ou a largura de um rio sem atravessá-lo? A semelhança de triângulos responde, usando sombras, espelhos e paralelas. Esta aula mostra quando duas figuras são semelhantes, como montar a proporção certa e como o Teorema de Tales divide terrenos entre ruas paralelas.",
+        "mapaMental": {
+          "centro": "Semelhança e Tales",
+          "ramos": [
+            {
+              "titulo": "Semelhança",
+              "itens": [
+                "mesmos ângulos e lados proporcionais",
+                "razão de semelhança",
+                "área ao quadrado"
+              ]
+            },
+            {
+              "titulo": "Triângulos",
+              "itens": [
+                "dois ângulos iguais bastam",
+                "paralela a um lado forma triângulo semelhante"
+              ]
+            },
+            {
+              "titulo": "Sombras",
+              "itens": [
+                "raios de sol paralelos",
+                "espelho com ângulos iguais",
+                "poste com lâmpada"
+              ]
+            },
+            {
+              "titulo": "Tales",
+              "itens": [
+                "teorema de Tales com paralelas e transversais",
+                "terrenos entre ruas"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🌞",
+            "conceito": "Sombra ao meio da tarde",
+            "liga": "triângulos semelhantes",
+            "porque": "O sol inclina todas as sombras do mesmo jeito."
+          },
+          {
+            "icone": "📸",
+            "conceito": "Foto ampliada",
+            "liga": "mesma proporção em tudo",
+            "porque": "Tudo cresce na mesma proporção, sem deformar."
+          }
+        ],
+        "pontos": [
+          "A **razão de semelhança** vale para lados e perímetros; áreas usam a razão ao quadrado.",
+          "Bastam **dois ângulos iguais** para dois triângulos serem semelhantes.",
+          "Objeto e sombra, no mesmo momento, formam triângulos semelhantes.",
+          "**Teorema de Tales**: paralelas cortadas por transversais dão segmentos proporcionais."
+        ],
+        "perolas": [
+          "Emparelhe os lados opostos aos ângulos iguais.",
+          "Foto com o dobro do lado gasta quatro vezes mais papel."
+        ],
+        "reforcar": [
+          "razao de semelhanca",
+          "dois angulos iguais",
+          "teorema de tales"
+        ]
+      }
     }
   ],
   "questoes": [
@@ -21563,6 +21871,1386 @@
         "É a chance de todos serem iguais.",
         "Errou a conta.",
         ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q01",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o complemento de um ângulo de 35°?",
+      "alternativas": [
+        "55°",
+        "65°",
+        "325°",
+        "145°",
+        "35°"
+      ],
+      "correta": 0,
+      "explicacao": "Complemento: 90° − 35° = 55°. Dica de mergulhador: complementares fecham um ângulo reto.",
+      "comentarios": [
+        "",
+        "Errou a subtração.",
+        "Subtraiu de 360°.",
+        "É o suplemento.",
+        "Repetiu o ângulo."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q02",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o suplemento de um ângulo de 110°?",
+      "alternativas": [
+        "110°",
+        "80°",
+        "250°",
+        "20°",
+        "70°"
+      ],
+      "correta": 4,
+      "explicacao": "180° − 110° = 70°. Dica de mergulhador: suplemento fecha meia-volta.",
+      "comentarios": [
+        "Repetiu.",
+        "Errou a subtração.",
+        "Subtraiu de 360°.",
+        "Subtraiu de 90° e ignorou o sinal.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q03",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas retas se cruzam, e um dos ângulos formados mede 40°. Quanto mede o ângulo oposto pelo vértice?",
+      "alternativas": [
+        "40°",
+        "320°",
+        "50°",
+        "80°",
+        "140°"
+      ],
+      "correta": 0,
+      "explicacao": "Opostos pelo vértice são iguais: 40°. Dica de mergulhador: lados opostos da tesoura, mesma abertura.",
+      "comentarios": [
+        "",
+        "Subtraiu de 360°.",
+        "É o complemento.",
+        "Dobrou.",
+        "É o ângulo vizinho."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q04",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Um ângulo mede o dobro do seu complemento. Quanto mede esse ângulo?",
+      "alternativas": [
+        "90°",
+        "60°",
+        "120°",
+        "45°",
+        "30°"
+      ],
+      "correta": 1,
+      "explicacao": "x = 2(90° − x), logo 3x = 180° e x = 60°. Dica de mergulhador: escreva o complemento como 90° − x.",
+      "comentarios": [
+        "Errou a equação.",
+        "",
+        "Usou o suplemento.",
+        "Supôs ângulos iguais.",
+        "É o complemento."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q05",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Três ângulos em volta de um ponto medem 2x, 3x e 4x. Quanto mede o maior?",
+      "alternativas": [
+        "160°",
+        "40°",
+        "120°",
+        "180°",
+        "80°"
+      ],
+      "correta": 0,
+      "explicacao": "Em volta de um ponto: 9x = 360°, x = 40°. Maior: 4x = 160°. Dica de mergulhador: em volta de um ponto, 360°.",
+      "comentarios": [
+        "",
+        "É o valor de x.",
+        "É o ângulo do meio.",
+        "Usou meia-volta como soma.",
+        "É o menor ângulo."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q06",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "O suplemento de um ângulo é o quádruplo do seu complemento. Quanto mede o ângulo?",
+      "alternativas": [
+        "120°",
+        "60°",
+        "45°",
+        "30°",
+        "36°"
+      ],
+      "correta": 1,
+      "explicacao": "180° − x = 4(90° − x), logo 180 − x = 360 − 4x, 3x = 180 e x = 60°. Dica de mergulhador: escreva os dois em função de x.",
+      "comentarios": [
+        "É o suplemento.",
+        "",
+        "Supôs suplemento e complemento proporcionais de outra forma.",
+        "É o complemento.",
+        "Dividiu 180 por 5."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q07",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas retas paralelas são cortadas por uma transversal, e um dos ângulos agudos formados mede 50°. Quanto mede cada ângulo obtuso?",
+      "alternativas": [
+        "90°",
+        "50°",
+        "310°",
+        "40°",
+        "130°"
+      ],
+      "correta": 4,
+      "explicacao": "Agudo + obtuso = 180°: 180° − 50° = 130°. Dica de mergulhador: só dois valores na figura.",
+      "comentarios": [
+        "Supôs perpendiculares.",
+        "É o agudo.",
+        "Subtraiu de 360°.",
+        "É o complemento.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q08",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas paralelas são cortadas por uma transversal. Um ângulo mede 65°. Quanto mede o seu alterno interno?",
+      "alternativas": [
+        "115°",
+        "130°",
+        "25°",
+        "295°",
+        "65°"
+      ],
+      "correta": 4,
+      "explicacao": "Alternos internos são iguais (desenho em Z): 65°. Dica de mergulhador: Z de iguais.",
+      "comentarios": [
+        "É o suplemento.",
+        "Dobrou.",
+        "É o complemento.",
+        "Subtraiu de 360°.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q09",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas paralelas são cortadas por uma transversal. Dois ângulos colaterais internos medem x + 30° e 2x. Quanto vale x?",
+      "alternativas": [
+        "50°",
+        "150°",
+        "60°",
+        "75°",
+        "30°"
+      ],
+      "correta": 0,
+      "explicacao": "Colaterais internos somam 180°: 3x + 30 = 180, x = 50°. Os ângulos são 80° e 100°. Dica de mergulhador: colaterais somam; alternos são iguais.",
+      "comentarios": [
+        "",
+        "Esqueceu de dividir por 3.",
+        "Errou a equação.",
+        "Usou 180° − 30° ÷ 2.",
+        "Igualou os ângulos."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q10",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Uma rua corta duas avenidas paralelas e forma, com a primeira, um ângulo de 72° do lado leste. Que ângulo ela forma com a segunda avenida, na posição correspondente?",
+      "alternativas": [
+        "18°",
+        "108°",
+        "72°",
+        "36°",
+        "144°"
+      ],
+      "correta": 2,
+      "explicacao": "Ângulos correspondentes entre paralelas são iguais. Dica de mergulhador: mesma posição, mesmo ângulo.",
+      "comentarios": [
+        "É o complemento.",
+        "É o suplemento.",
+        "",
+        "Dividiu por 2.",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q11",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas paralelas são cortadas por uma transversal, formando ângulos correspondentes de 4x + 10° e 6x − 30°. Quanto mede cada um desses ângulos?",
+      "alternativas": [
+        "20°",
+        "110°",
+        "90°",
+        "70°",
+        "50°"
+      ],
+      "correta": 2,
+      "explicacao": "4x + 10 = 6x − 30, logo x = 20 e o ângulo mede 90°. Dica de mergulhador: depois de achar x, substitua.",
+      "comentarios": [
+        "É o valor de x.",
+        "Errou a equação.",
+        "",
+        "Errou o sinal.",
+        "Errou a substituição."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q12",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Um ponto P fica entre duas retas paralelas. O segmento de P até a reta de cima faz 30° com ela, e o segmento de P até a reta de baixo faz 40° com ela. Quanto mede o ângulo em P entre os dois segmentos?",
+      "alternativas": [
+        "140°",
+        "110°",
+        "10°",
+        "290°",
+        "70°"
+      ],
+      "correta": 4,
+      "explicacao": "Traçando por P uma paralela às duas retas, o ângulo em P se divide em 30° + 40° = 70° (alternos internos). Dica de mergulhador: uma paralela auxiliar revela os Z.",
+      "comentarios": [
+        "Somou os suplementos.",
+        "Usou o suplemento.",
+        "Subtraiu os ângulos.",
+        "Usou o replemento.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q13",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Numa transversal a duas paralelas, o ângulo obtuso é 5 vezes o agudo. Quanto mede o agudo?",
+      "alternativas": [
+        "36°",
+        "150°",
+        "30°",
+        "15°",
+        "60°"
+      ],
+      "correta": 2,
+      "explicacao": "x + 5x = 180°, x = 30°. Dica de mergulhador: agudo e obtuso somam 180°.",
+      "comentarios": [
+        "Dividiu 180 por 5.",
+        "É o obtuso.",
+        "",
+        "Dividiu 90 por 6.",
+        "Dividiu 180 por 3."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q14",
+      "tema": "Relógio e giros",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros de um relógio às 3h em ponto?",
+      "alternativas": [
+        "180°",
+        "30°",
+        "90°",
+        "45°",
+        "15°"
+      ],
+      "correta": 2,
+      "explicacao": "Entre o 12 e o 3 há 3 horas × 30° = 90°. Dica de mergulhador: cada hora do mostrador vale 30°.",
+      "comentarios": [
+        "Supôs ponteiros opostos.",
+        "Usou uma hora só.",
+        "",
+        "Supôs metade de um reto.",
+        "Usou os 15 minutos."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q15",
+      "tema": "Relógio e giros",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Quantos graus o ponteiro dos minutos gira em 20 minutos?",
+      "alternativas": [
+        "20°",
+        "10°",
+        "120°",
+        "60°",
+        "200°"
+      ],
+      "correta": 2,
+      "explicacao": "6° por minuto × 20 = 120°. Dica de mergulhador: 360° em 60 minutos.",
+      "comentarios": [
+        "Usou 1° por minuto.",
+        "Usou o ponteiro das horas.",
+        "",
+        "Usou 3° por minuto.",
+        "Usou 10° por minuto."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q16",
+      "tema": "Relógio e giros",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros às 2h30?",
+      "alternativas": [
+        "120°",
+        "150°",
+        "105°",
+        "75°",
+        "90°"
+      ],
+      "correta": 2,
+      "explicacao": "Minutos no 6: 180°. Horas: 60° + 30 × 0,5° = 75°. Diferença: 105°. Dica de mergulhador: o ponteiro das horas anda 0,5° por minuto.",
+      "comentarios": [
+        "Contou 4 horas de distância.",
+        "Usou 5 horas de distância.",
+        "",
+        "Errou a posição do ponteiro das horas.",
+        "Supôs o ponteiro das horas parado no 2."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q17",
+      "tema": "Relógio e giros",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Uma pessoa vira 90° para a direita, depois 135° para a direita e, por fim, 45° para a esquerda. Em relação à direção inicial, para onde ela está voltada?",
+      "alternativas": [
+        "Para a direita: girou 270°",
+        "Para a direita: girou 90°",
+        "Girou 225°",
+        "Para a frente: girou 0°",
+        "Para trás: girou 180° no total"
+      ],
+      "correta": 4,
+      "explicacao": "Direita conta positivo, esquerda negativo: 90 + 135 − 45 = 180°: meia-volta. Dica de mergulhador: some os giros com sinal.",
+      "comentarios": [
+        "Esqueceu de descontar o giro à esquerda.",
+        "Errou a soma.",
+        "Descontou duas vezes.",
+        "Subtraiu tudo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q18",
+      "tema": "Relógio e giros",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Um navio segue para o norte, vira 60° no sentido horário e, depois, mais 50° no mesmo sentido. Qual é o rumo final, medido a partir do norte no sentido horário?",
+      "alternativas": [
+        "110°",
+        "50°",
+        "60°",
+        "250°",
+        "10°"
+      ],
+      "correta": 0,
+      "explicacao": "60° + 50° = 110°. Dica de mergulhador: rumo soma os giros no mesmo sentido.",
+      "comentarios": [
+        "",
+        "Considerou só o último giro.",
+        "Considerou só o primeiro giro.",
+        "Mediu no sentido contrário.",
+        "Subtraiu os giros."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q19",
+      "tema": "Relógio e giros",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Entre 3h e 4h, em que momento, aproximadamente, os ponteiros do relógio ficam sobrepostos?",
+      "alternativas": [
+        "3h20",
+        "3h00",
+        "3h18",
+        "3h15",
+        "Por volta de 3h16min"
+      ],
+      "correta": 4,
+      "explicacao": "Depois de t minutos: horas em 90° + 0,5t; minutos em 6t. Iguais quando 5,5t = 90, t ≈ 16,4 min. Dica de mergulhador: o ponteiro dos minutos tira 5,5° de diferença por minuto.",
+      "comentarios": [
+        "Errou a conta.",
+        "Os ponteiros estão separados por 90°.",
+        "Errou a velocidade relativa.",
+        "Ignorou que o ponteiro das horas anda.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q20",
+      "tema": "Relógio e giros",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros às 10h20?",
+      "alternativas": [
+        "180°",
+        "120°",
+        "170°",
+        "190°",
+        "10°"
+      ],
+      "correta": 2,
+      "explicacao": "Minutos no 4: 120°. Horas: 300° + 20 × 0,5° = 310°. Diferença: 190°; o menor ângulo é 360° − 190° = 170°. Dica de mergulhador: se passar de 180°, tire de 360°.",
+      "comentarios": [
+        "Supôs o ponteiro das horas parado no 10.",
+        "Usou só o ponteiro dos minutos.",
+        "",
+        "É o maior ângulo.",
+        "Errou a diferença."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q01",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Dois ângulos de um triângulo medem 50° e 60°. Quanto mede o terceiro?",
+      "alternativas": [
+        "70°",
+        "110°",
+        "180°",
+        "90°",
+        "10°"
+      ],
+      "correta": 0,
+      "explicacao": "180° − 50° − 60° = 70°. Dica de mergulhador: os três somam 180°.",
+      "comentarios": [
+        "",
+        "Somou os dois ângulos.",
+        "É a soma total.",
+        "Supôs triângulo retângulo.",
+        "Subtraiu os ângulos."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q02",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo isósceles, o ângulo do vértice mede 40°. Quanto mede cada ângulo da base?",
+      "alternativas": [
+        "140°",
+        "70°",
+        "40°",
+        "80°",
+        "50°"
+      ],
+      "correta": 1,
+      "explicacao": "(180° − 40°) ÷ 2 = 70°. Dica de mergulhador: no isósceles, os ângulos da base são iguais.",
+      "comentarios": [
+        "É a soma dos ângulos da base.",
+        "",
+        "Repetiu o ângulo do vértice.",
+        "Dobrou.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q03",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Quanto mede cada ângulo interno de um triângulo equilátero?",
+      "alternativas": [
+        "90°",
+        "45°",
+        "180°",
+        "120°",
+        "60°"
+      ],
+      "correta": 4,
+      "explicacao": "180° ÷ 3 = 60°. Dica de mergulhador: três ângulos iguais.",
+      "comentarios": [
+        "Confundiu com o quadrado.",
+        "Confundiu com o retângulo isósceles.",
+        "É a soma.",
+        "Confundiu com o hexágono.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q04",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo, dois ângulos internos medem 45° e 70°. Quanto mede o ângulo externo junto ao terceiro vértice?",
+      "alternativas": [
+        "65°",
+        "115°",
+        "180°",
+        "135°",
+        "25°"
+      ],
+      "correta": 1,
+      "explicacao": "Externo = soma dos internos não vizinhos: 45° + 70° = 115°. Dica de mergulhador: ou faça 180° − 65°.",
+      "comentarios": [
+        "É o terceiro ângulo interno.",
+        "",
+        "Usou a soma total.",
+        "Usou 180° − 45°.",
+        "Subtraiu 70 − 45."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q05",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Os ângulos de um triângulo medem x, 2x e 3x. Quanto mede o maior?",
+      "alternativas": [
+        "90°",
+        "30°",
+        "180°",
+        "60°",
+        "120°"
+      ],
+      "correta": 0,
+      "explicacao": "6x = 180°, x = 30°, maior 90°. Dica de mergulhador: some as expressões e iguale a 180°.",
+      "comentarios": [
+        "",
+        "É o valor de x.",
+        "É a soma.",
+        "É o ângulo do meio.",
+        "Usou 4x."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q06",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo retângulo, um ângulo agudo é o dobro do outro. Quanto mede o menor?",
+      "alternativas": [
+        "45°",
+        "22,5°",
+        "60°",
+        "90°",
+        "30°"
+      ],
+      "correta": 4,
+      "explicacao": "x + 2x = 90°, x = 30°. Dica de mergulhador: os agudos do triângulo retângulo somam 90°.",
+      "comentarios": [
+        "Supôs agudos iguais.",
+        "Dividiu 45 por 2.",
+        "É o maior agudo.",
+        "É o ângulo reto.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q07",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo isósceles, o ângulo externo junto a um vértice da base mede 110°. Quanto mede o ângulo do vértice?",
+      "alternativas": [
+        "40°",
+        "55°",
+        "110°",
+        "20°",
+        "70°"
+      ],
+      "correta": 0,
+      "explicacao": "Interno da base: 180° − 110° = 70°. As duas bases: 140°. Vértice: 40°. Dica de mergulhador: passe do externo para o interno.",
+      "comentarios": [
+        "",
+        "Dividiu 110 por 2.",
+        "Usou o externo.",
+        "Errou a conta.",
+        "É o ângulo interno da base."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q08",
+      "tema": "Existência e classificação",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Quais medidas, em centímetros, podem ser os lados de um triângulo?",
+      "alternativas": [
+        "1, 1 e 3",
+        "4, 4 e 9",
+        "3, 5 e 8",
+        "2, 3 e 6",
+        "5, 6 e 10"
+      ],
+      "correta": 4,
+      "explicacao": "5 + 6 = 11 > 10: fecha. Dica de mergulhador: os dois menores precisam somar mais que o maior.",
+      "comentarios": [
+        "1 + 1 é menor que 3.",
+        "4 + 4 é menor que 9.",
+        "3 + 5 é igual a 8: não fecha.",
+        "2 + 3 é menor que 6.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q09",
+      "tema": "Existência e classificação",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um triângulo tem lados de 5 cm, 5 cm e 8 cm. Como ele é classificado quanto aos lados?",
+      "alternativas": [
+        "Retângulo",
+        "Escaleno",
+        "Isósceles",
+        "Impossível",
+        "Equilátero"
+      ],
+      "correta": 2,
+      "explicacao": "Dois lados iguais: isósceles. Dica de mergulhador: conte os lados iguais.",
+      "comentarios": [
+        "Essa é uma classificação pelos ângulos.",
+        "Dois lados são iguais.",
+        "",
+        "5 + 5 > 8, ele existe.",
+        "Nem todos os lados são iguais."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q10",
+      "tema": "Existência e classificação",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um triângulo tem dois lados de 4 cm e 9 cm. Quantos valores inteiros, em centímetros, o terceiro lado pode ter?",
+      "alternativas": [
+        "7",
+        "9",
+        "5",
+        "8",
+        "13"
+      ],
+      "correta": 0,
+      "explicacao": "O terceiro lado fica entre 5 e 13, sem os extremos: 6, 7, 8, 9, 10, 11, 12. Dica de mergulhador: entre a diferença e a soma.",
+      "comentarios": [
+        "",
+        "Incluiu os dois extremos.",
+        "Contou só a diferença.",
+        "Incluiu um dos extremos.",
+        "Contou até a soma."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q11",
+      "tema": "Existência e classificação",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo, qual lado fica oposto ao maior ângulo?",
+      "alternativas": [
+        "Um lado igual aos outros",
+        "O maior lado",
+        "O lado da base",
+        "O menor lado",
+        "Qualquer lado"
+      ],
+      "correta": 1,
+      "explicacao": "Quanto maior o ângulo, maior a abertura e o lado oposto. Dica de mergulhador: maior ângulo, maior lado.",
+      "comentarios": [
+        "Só no equilátero.",
+        "",
+        "Depende do triângulo.",
+        "O menor lado fica oposto ao menor ângulo.",
+        "Há relação entre lados e ângulos."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q12",
+      "tema": "Existência e classificação",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um triângulo tem perímetro 20 e lados inteiros, e um dos lados mede 9. Qual é o menor valor possível do menor lado?",
+      "alternativas": [
+        "2",
+        "3",
+        "5,5",
+        "11",
+        "1"
+      ],
+      "correta": 0,
+      "explicacao": "Os outros dois somam 11. Com 1 e 10, 1 + 9 = 10 não fecha. Com 2 e 9: 2 + 9 > 9 e 9 + 9 > 2: fecha. Dica de mergulhador: teste o maior lado contra a soma dos outros.",
+      "comentarios": [
+        "",
+        "Há um valor menor que funciona.",
+        "Dividiu 11 por 2.",
+        "É a soma dos outros dois.",
+        "Com 1, 9 e 10, não há triângulo: 1 + 9 = 10."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q13",
+      "tema": "Existência e classificação",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Quantos triângulos diferentes com lados inteiros têm perímetro 9?",
+      "alternativas": [
+        "4",
+        "7",
+        "1",
+        "2",
+        "3"
+      ],
+      "correta": 4,
+      "explicacao": "Lados possíveis: 1, 4, 4; 2, 3, 4; 3, 3, 3. Os casos 1, 1, 7; 1, 2, 6; 1, 3, 5 e 2, 2, 5 não fecham. Dica de mergulhador: liste em ordem e teste a desigualdade.",
+      "comentarios": [
+        "Contou um caso que não fecha.",
+        "Contou combinações sem testar.",
+        "Contou só o equilátero.",
+        "Esqueceu um caso.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q14",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Três ângulos de um quadrilátero medem 80°, 95° e 110°. Quanto mede o quarto?",
+      "alternativas": [
+        "255°",
+        "95°",
+        "360°",
+        "75°",
+        "105°"
+      ],
+      "correta": 3,
+      "explicacao": "360° − (80° + 95° + 110°) = 360° − 285° = 75°. Dica de mergulhador: quadrilátero soma 360°.",
+      "comentarios": [
+        "Somou os três.",
+        "Repetiu um ângulo.",
+        "É a soma total.",
+        "",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q15",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Qual quadrilátero tem quatro lados iguais e quatro ângulos retos?",
+      "alternativas": [
+        "Retângulo",
+        "Paralelogramo qualquer",
+        "Losango",
+        "Quadrado",
+        "Trapézio"
+      ],
+      "correta": 3,
+      "explicacao": "O quadrado é retângulo e losango ao mesmo tempo. Dica de mergulhador: lados iguais e ângulos retos juntos.",
+      "comentarios": [
+        "Tem ângulos retos, mas nem sempre lados iguais.",
+        "Não exige lados iguais nem ângulos retos.",
+        "Tem lados iguais, mas nem sempre ângulos retos.",
+        "",
+        "Tem só um par de lados paralelos."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q16",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Qual é a soma dos ângulos internos de um octógono?",
+      "alternativas": [
+        "900°",
+        "1.260°",
+        "1.440°",
+        "1.080°",
+        "360°"
+      ],
+      "correta": 3,
+      "explicacao": "(8 − 2) × 180° = 1.080°. Dica de mergulhador: n − 2 triângulos.",
+      "comentarios": [
+        "Usou 7 lados.",
+        "Usou 9 lados.",
+        "Multiplicou 8 por 180.",
+        "",
+        "É a soma dos externos."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q17",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Quanto mede cada ângulo interno de um hexágono regular?",
+      "alternativas": [
+        "720°",
+        "135°",
+        "108°",
+        "120°",
+        "60°"
+      ],
+      "correta": 3,
+      "explicacao": "Soma: 4 × 180° = 720°; cada um: 720° ÷ 6 = 120°. Dica de mergulhador: ou 180° menos o externo de 60°.",
+      "comentarios": [
+        "É a soma dos internos.",
+        "É o do octógono.",
+        "É o do pentágono.",
+        "",
+        "É o ângulo externo."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q18",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num paralelogramo, um dos ângulos mede 65°. Quanto medem os outros três?",
+      "alternativas": [
+        "65°, 115° e 115°",
+        "115°, 115° e 115°",
+        "65°, 295° e 65°",
+        "25°, 65° e 25°",
+        "65°, 65° e 65°"
+      ],
+      "correta": 0,
+      "explicacao": "Ângulos opostos são iguais, e vizinhos somam 180°: 65°, 115°, 65°, 115°. Dica de mergulhador: opostos iguais, vizinhos suplementares.",
+      "comentarios": [
+        "",
+        "O oposto ao de 65° também mede 65°.",
+        "Usou 360° − 65°.",
+        "Usou o complemento.",
+        "Os ângulos vizinhos somam 180°."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q19",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um polígono regular tem ângulo interno de 140°. Quantos lados ele tem?",
+      "alternativas": [
+        "14",
+        "8",
+        "7",
+        "10",
+        "9"
+      ],
+      "correta": 4,
+      "explicacao": "Externo: 180° − 140° = 40°. Lados: 360° ÷ 40° = 9. Dica de mergulhador: pelo externo é mais rápido.",
+      "comentarios": [
+        "Usou 140 ÷ 10.",
+        "Usou o externo de 45°.",
+        "Errou a divisão.",
+        "Usou o externo de 36°.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q20",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um arquiteto quer cobrir um piso usando só ladrilhos iguais, todos com a forma de um mesmo polígono regular, sem buracos nem sobreposições. Qual polígono NÃO serve?",
+      "alternativas": [
+        "Triângulo equilátero",
+        "Quadrado",
+        "Nenhum deles serve",
+        "Pentágono regular",
+        "Hexágono regular"
+      ],
+      "correta": 3,
+      "explicacao": "O ângulo do pentágono regular é 108°, e 360 ÷ 108 não é inteiro: sobra espaço no vértice. Dica de mergulhador: o ângulo interno precisa dividir 360°.",
+      "comentarios": [
+        "Seis ângulos de 60° fecham 360°.",
+        "Quatro ângulos de 90° fecham 360°.",
+        "Três deles servem.",
+        "",
+        "Três ângulos de 120° fecham 360°."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q01",
+      "tema": "Semelhança",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Um triângulo tem lados de 3, 4 e 5 cm, e outro, semelhante a ele, tem lados de 6, 8 e 10 cm. Qual é a razão de semelhança do maior para o menor?",
+      "alternativas": [
+        "4",
+        "2",
+        "3",
+        "24",
+        "1/2"
+      ],
+      "correta": 1,
+      "explicacao": "6/3 = 8/4 = 10/5 = 2. Dica de mergulhador: divida lados correspondentes.",
+      "comentarios": [
+        "Usou a diferença entre 8 e 4.",
+        "",
+        "Usou a diferença entre 6 e 3.",
+        "Usou o perímetro do maior.",
+        "Inverteu a razão."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q02",
+      "tema": "Semelhança",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Dois triângulos são semelhantes, com razão 3 do maior para o menor. Um lado do menor mede 4 cm. Quanto mede o lado correspondente do maior?",
+      "alternativas": [
+        "12 cm",
+        "4/3 cm",
+        "1,33 cm",
+        "7 cm",
+        "64 cm"
+      ],
+      "correta": 0,
+      "explicacao": "4 × 3 = 12 cm. Dica de mergulhador: lado do maior = lado do menor × razão.",
+      "comentarios": [
+        "",
+        "Dividiu.",
+        "Dividiu.",
+        "Somou 3.",
+        "Elevou ao cubo."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q03",
+      "tema": "Semelhança",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "O que basta para garantir que dois triângulos são semelhantes?",
+      "alternativas": [
+        "Ter a mesma área",
+        "Ter o mesmo perímetro",
+        "Ter um ângulo igual",
+        "Ter um lado igual",
+        "Ter dois ângulos iguais"
+      ],
+      "correta": 4,
+      "explicacao": "Com dois ângulos iguais, o terceiro também é igual, e a forma é a mesma. Dica de mergulhador: forma é questão de ângulos.",
+      "comentarios": [
+        "Áreas iguais não garantem a forma.",
+        "Perímetros iguais não garantem a forma.",
+        "Um ângulo só não basta.",
+        "Lados iguais não garantem a forma.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q04",
+      "tema": "Semelhança",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Dois triângulos semelhantes têm razão de semelhança 3. A área do menor é 10 cm². Qual é a área do maior?",
+      "alternativas": [
+        "90 cm²",
+        "100 cm²",
+        "13 cm²",
+        "30 cm²",
+        "270 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Área: razão ao quadrado, 3² = 9. 10 × 9 = 90 cm². Dica de mergulhador: área, fator ao quadrado.",
+      "comentarios": [
+        "",
+        "Elevou a área ao quadrado.",
+        "Somou 3.",
+        "Usou a razão linear na área.",
+        "Usou a razão ao cubo."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q05",
+      "tema": "Semelhança",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "No triângulo ABC, o segmento DE é paralelo a BC, com D em AB e E em AC. Se AD = 4 cm, DB = 6 cm e DE = 6 cm, quanto mede BC?",
+      "alternativas": [
+        "10 cm",
+        "15 cm",
+        "24 cm",
+        "9 cm",
+        "12 cm"
+      ],
+      "correta": 1,
+      "explicacao": "AD/AB = DE/BC: 4/10 = 6/BC, logo BC = 15 cm. Dica de mergulhador: compare o triângulo pequeno com o grande inteiro.",
+      "comentarios": [
+        "É a medida de AB.",
+        "",
+        "Errou a proporção.",
+        "Usou DB no lugar de AB.",
+        "Dobrou DE."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q06",
+      "tema": "Semelhança",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma foto de 10 cm × 15 cm será ampliada para que o lado menor passe a medir 25 cm. Quanto medirá o lado maior, e quantas vezes maior ficará a área?",
+      "alternativas": [
+        "30 cm e 6,25 vezes",
+        "37,5 cm e 2,5 vezes",
+        "40 cm e 6,25 vezes",
+        "30 cm e 2,5 vezes",
+        "37,5 cm e 6,25 vezes"
+      ],
+      "correta": 4,
+      "explicacao": "Razão: 25 ÷ 10 = 2,5. Lado maior: 15 × 2,5 = 37,5 cm. Área: 2,5² = 6,25 vezes. Dica de mergulhador: lados × razão; área × razão².",
+      "comentarios": [
+        "Errou o lado maior.",
+        "Usou a razão linear na área.",
+        "Somou 25 ao lado maior.",
+        "Somou 15 ao lado e usou a razão linear na área.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q07",
+      "tema": "Semelhança",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Dois triângulos semelhantes têm perímetros de 24 cm e 36 cm. A área do menor é 32 cm². Qual é a área do maior?",
+      "alternativas": [
+        "108 cm²",
+        "72 cm²",
+        "64 cm²",
+        "96 cm²",
+        "48 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Razão: 36/24 = 1,5. Área: 32 × 1,5² = 32 × 2,25 = 72 cm². Dica de mergulhador: perímetro dá a razão linear.",
+      "comentarios": [
+        "Usou a razão ao cubo.",
+        "",
+        "Dobrou a área.",
+        "Multiplicou por 3.",
+        "Usou a razão linear."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q08",
+      "tema": "Sombras e alturas",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "No mesmo momento, uma pessoa de 1,80 m projeta sombra de 1,20 m, e um prédio projeta sombra de 20 m. Qual é a altura do prédio?",
+      "alternativas": [
+        "30 m",
+        "21,8 m",
+        "13,3 m",
+        "36 m",
+        "24 m"
+      ],
+      "correta": 0,
+      "explicacao": "Altura/sombra é igual: 1,80/1,20 = h/20, logo h = 30 m. Dica de mergulhador: a razão altura/sombra é a mesma para todos.",
+      "comentarios": [
+        "",
+        "Somou as medidas.",
+        "Inverteu a razão.",
+        "Multiplicou 20 por 1,80.",
+        "Multiplicou 20 por 1,20."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q09",
+      "tema": "Sombras e alturas",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Por que objetos e as suas sombras, no mesmo momento, formam triângulos semelhantes?",
+      "alternativas": [
+        "Porque todos os objetos têm a mesma altura",
+        "Porque o sol fica sempre a pino",
+        "Porque as sombras têm o mesmo tamanho",
+        "Porque o chão é curvo",
+        "Porque os raios de sol chegam paralelos e formam ângulos iguais com o chão"
+      ],
+      "correta": 4,
+      "explicacao": "Raios paralelos e objetos verticais dão triângulos com dois ângulos iguais. Dica de mergulhador: mesmos ângulos, triângulos semelhantes.",
+      "comentarios": [
+        "As alturas variam.",
+        "O sol muda de posição ao longo do dia.",
+        "As sombras variam.",
+        "O chão é tratado como plano.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q10",
+      "tema": "Sombras e alturas",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma lâmpada está no topo de um poste de 6 m. Uma pessoa de 1,5 m está a 9 m do poste. Quanto mede a sombra da pessoa?",
+      "alternativas": [
+        "2,25 m",
+        "1,5 m",
+        "4,5 m",
+        "3 m",
+        "36 m"
+      ],
+      "correta": 3,
+      "explicacao": "Triângulos semelhantes: 6/1,5 = (9 + x)/x, logo 4x = 9 + x e x = 3 m. Dica de mergulhador: a sombra do poste vai do pé do poste até a ponta da sombra.",
+      "comentarios": [
+        "Usou a distância ao poste como se fosse a sombra do poste.",
+        "Igualou à altura.",
+        "Dividiu 9 por 2.",
+        "",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q11",
+      "tema": "Sombras e alturas",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma pessoa cujos olhos estão a 1,6 m do chão vê o topo de uma árvore refletido num espelho no chão. Ela está a 2 m do espelho, e o espelho está a 10 m da árvore. Qual é a altura da árvore?",
+      "alternativas": [
+        "3,2 m",
+        "16 m",
+        "12,5 m",
+        "8 m",
+        "0,32 m"
+      ],
+      "correta": 3,
+      "explicacao": "Ângulos iguais no espelho: 1,6/2 = h/10, h = 8 m. Dica de mergulhador: altura/distância ao espelho é igual nos dois lados.",
+      "comentarios": [
+        "Multiplicou 1,6 por 2.",
+        "Multiplicou 1,6 por 10.",
+        "Errou a proporção.",
+        "",
+        "Inverteu a razão."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q12",
+      "tema": "Sombras e alturas",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma rampa sobe 0,6 m a cada 5 m na horizontal. Quanto ela sobe em 18 m de horizontal?",
+      "alternativas": [
+        "3,6 m",
+        "30 m",
+        "1,08 m",
+        "2,16 m",
+        "108 m"
+      ],
+      "correta": 3,
+      "explicacao": "0,6/5 = h/18, h = 18 × 0,12 = 2,16 m. Dica de mergulhador: a inclinação é a mesma em qualquer trecho.",
+      "comentarios": [
+        "Usou 0,2 m por metro.",
+        "Inverteu a razão.",
+        "Usou metade.",
+        "",
+        "Errou a vírgula."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q13",
+      "tema": "Sombras e alturas",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma árvore e um poste de 4 m projetam sombras de 9 m e 3 m. Uma hora depois, a sombra do poste mede 2 m. Quanto mede, nesse momento, a sombra da árvore?",
+      "alternativas": [
+        "3 m",
+        "8 m",
+        "4,5 m",
+        "6 m",
+        "13,5 m"
+      ],
+      "correta": 3,
+      "explicacao": "Altura da árvore: 4 × 9/3 = 12 m. Depois, sombra/altura = 2/4 = 0,5: sombra da árvore = 6 m. Dica de mergulhador: primeiro descubra a altura, depois use a nova razão.",
+      "comentarios": [
+        "Repetiu a sombra antiga do poste.",
+        "Subtraiu 1 m da sombra da árvore.",
+        "Dividiu 9 por 2.",
+        "",
+        "Inverteu a mudança."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q14",
+      "tema": "Teorema de Tales",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três retas paralelas são cortadas por duas transversais. Na primeira, os segmentos entre as paralelas medem 4 cm e 6 cm. Na segunda, o primeiro segmento mede 6 cm. Quanto mede o segundo?",
+      "alternativas": [
+        "6 cm",
+        "4 cm",
+        "9 cm",
+        "12 cm",
+        "8 cm"
+      ],
+      "correta": 2,
+      "explicacao": "4/6 = 6/x, x = 9 cm. Dica de mergulhador: segmentos correspondentes em proporção.",
+      "comentarios": [
+        "Repetiu.",
+        "Repetiu o primeiro.",
+        "",
+        "Dobrou.",
+        "Somou 2."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q15",
+      "tema": "Teorema de Tales",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "O que afirma o Teorema de Tales?",
+      "alternativas": [
+        "O quadrado da hipotenusa é a soma dos quadrados dos catetos",
+        "Ângulos opostos pelo vértice são iguais",
+        "Toda reta tem uma paralela",
+        "A soma dos ângulos de um triângulo é 180°",
+        "Paralelas cortadas por transversais determinam segmentos proporcionais"
+      ],
+      "correta": 4,
+      "explicacao": "Feixe de paralelas, transversais, segmentos proporcionais. Dica de mergulhador: Tales é proporção entre paralelas.",
+      "comentarios": [
+        "É o Teorema de Pitágoras.",
+        "É outra propriedade.",
+        "Não é o teorema.",
+        "É outra propriedade.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q16",
+      "tema": "Teorema de Tales",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três terrenos ficam entre duas ruas paralelas. As frentes para a rua A medem 20 m, 30 m e 50 m. No mesmo trecho, a rua B tem 120 m de frente. Quanto mede, na rua B, a frente do terreno do meio?",
+      "alternativas": [
+        "32 m",
+        "40 m",
+        "36 m",
+        "30 m",
+        "50 m"
+      ],
+      "correta": 2,
+      "explicacao": "Rua A soma 100 m; rua B, 120 m: fator 1,2. Terreno do meio: 30 × 1,2 = 36 m. Dica de mergulhador: Tales com o total.",
+      "comentarios": [
+        "Errou a proporção.",
+        "Dividiu 120 por 3.",
+        "",
+        "Repetiu a frente na rua A.",
+        "Somou 20."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q17",
+      "tema": "Teorema de Tales",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três paralelas cortadas por duas transversais determinam, numa delas, segmentos x + 1 e 2x; na outra, 3 e 4. Quanto vale x?",
+      "alternativas": [
+        "0,5",
+        "4",
+        "2",
+        "1",
+        "3"
+      ],
+      "correta": 2,
+      "explicacao": "(x + 1)/2x = 3/4, logo 4x + 4 = 6x e x = 2. Dica de mergulhador: multiplique em cruz.",
+      "comentarios": [
+        "Inverteu a proporção.",
+        "Igualou 2x a 4 errado.",
+        "",
+        "Errou a equação.",
+        "Igualou x + 1 a 3 sem montar a proporção."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q18",
+      "tema": "Teorema de Tales",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Num triângulo, uma reta paralela à base divide um lado em 2 cm e 7 cm, a partir do vértice, e o outro lado em x e 14 cm. Quanto vale x?",
+      "alternativas": [
+        "4 cm",
+        "7 cm",
+        "1 cm",
+        "49 cm",
+        "9 cm"
+      ],
+      "correta": 0,
+      "explicacao": "2/7 = x/14, x = 4 cm. Dica de mergulhador: a paralela divide os lados na mesma razão.",
+      "comentarios": [
+        "",
+        "Repetiu.",
+        "Inverteu.",
+        "Multiplicou 7 por 7.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q19",
+      "tema": "Teorema de Tales",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três lotes entre duas ruas paralelas têm frentes de 10 m, 15 m e 25 m para a rua A. Na rua B, o mesmo trecho mede 75 m. Qual é a frente do maior lote na rua B?",
+      "alternativas": [
+        "25 m",
+        "37,5 m",
+        "30 m",
+        "22,5 m",
+        "50 m"
+      ],
+      "correta": 1,
+      "explicacao": "Rua A: 50 m. Fator: 75/50 = 1,5. Maior lote: 25 × 1,5 = 37,5 m. Dica de mergulhador: calcule o fator com os totais.",
+      "comentarios": [
+        "Repetiu a frente na rua A.",
+        "",
+        "Dividiu 75 em partes iguais e errou.",
+        "Calculou a do lote do meio.",
+        "Somou 25."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q20",
+      "tema": "Teorema de Tales",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três ruas paralelas são cortadas por duas avenidas. Na avenida 1, as duas quadras medem 120 m e 180 m. Na avenida 2, as duas quadras somam 400 m. Quanto mede cada quadra na avenida 2?",
+      "alternativas": [
+        "133 m e 267 m",
+        "160 m e 240 m",
+        "200 m e 200 m",
+        "120 m e 280 m",
+        "240 m e 160 m"
+      ],
+      "correta": 1,
+      "explicacao": "Razão 120 : 180 = 2 : 3. 400 dividido em 2 + 3 = 5 partes de 80: 160 m e 240 m. Dica de mergulhador: Tales é divisão proporcional.",
+      "comentarios": [
+        "Errou a razão.",
+        "",
+        "Dividiu igualmente.",
+        "Repetiu a primeira quadra.",
+        "Trocou a ordem."
       ]
     }
   ],
@@ -39950,6 +41638,1446 @@
         "Errou a conta.",
         "Chutou."
       ]
+    },
+    {
+      "id": "mat-angulos-retas-q01-v1",
+      "varianteDe": "mat-angulos-retas-q01",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o complemento de um ângulo de 62°?",
+      "alternativas": [
+        "62°",
+        "118°",
+        "28°",
+        "298°",
+        "38°"
+      ],
+      "correta": 2,
+      "explicacao": "90° − 62° = 28°. Dica de mergulhador: complemento sai de 90°.",
+      "comentarios": [
+        "Repetiu.",
+        "É o suplemento.",
+        "",
+        "Subtraiu de 360°.",
+        "Errou a subtração."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q02-v1",
+      "varianteDe": "mat-angulos-retas-q02",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o suplemento de um ângulo de 47°?",
+      "alternativas": [
+        "43°",
+        "133°",
+        "143°",
+        "47°",
+        "313°"
+      ],
+      "correta": 1,
+      "explicacao": "180° − 47° = 133°. Dica de mergulhador: suplemento sai de 180°.",
+      "comentarios": [
+        "É o complemento.",
+        "",
+        "Errou a subtração.",
+        "Repetiu.",
+        "Subtraiu de 360°."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q03-v1",
+      "varianteDe": "mat-angulos-retas-q03",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas retas se cruzam, e um dos ângulos mede 115°. Quanto mede um ângulo vizinho a ele?",
+      "alternativas": [
+        "245°",
+        "25°",
+        "115°",
+        "180°",
+        "65°"
+      ],
+      "correta": 4,
+      "explicacao": "Vizinhos somam 180°: 180° − 115° = 65°. Dica de mergulhador: lado a lado sobre a reta, meia-volta.",
+      "comentarios": [
+        "Subtraiu de 360°.",
+        "Subtraiu de 90°.",
+        "É o oposto pelo vértice.",
+        "É a soma.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q04-v1",
+      "varianteDe": "mat-angulos-retas-q04",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Um ângulo mede o triplo do seu suplemento. Quanto mede esse ângulo?",
+      "alternativas": [
+        "60°",
+        "45°",
+        "120°",
+        "135°",
+        "90°"
+      ],
+      "correta": 3,
+      "explicacao": "x = 3(180° − x), logo 4x = 540° e x = 135°. Dica de mergulhador: suplemento é 180° − x.",
+      "comentarios": [
+        "Usou o complemento.",
+        "É o suplemento.",
+        "Errou a equação.",
+        "",
+        "Supôs ângulos iguais."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q05-v1",
+      "varianteDe": "mat-angulos-retas-q05",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Três ângulos lado a lado sobre uma reta medem x, 2x e 3x. Quanto mede o maior?",
+      "alternativas": [
+        "120°",
+        "30°",
+        "180°",
+        "90°",
+        "60°"
+      ],
+      "correta": 3,
+      "explicacao": "Sobre uma reta: 6x = 180°, x = 30°. Maior: 90°. Dica de mergulhador: sobre a reta, 180°.",
+      "comentarios": [
+        "Usou 360° como soma.",
+        "É o valor de x.",
+        "É a soma.",
+        "",
+        "É o do meio."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q06-v1",
+      "varianteDe": "mat-angulos-retas-q06",
+      "tema": "Medidas de ângulos",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "O suplemento de um ângulo é o triplo do seu complemento. Quanto mede o ângulo?",
+      "alternativas": [
+        "90°",
+        "30°",
+        "60°",
+        "135°",
+        "45°"
+      ],
+      "correta": 4,
+      "explicacao": "180 − x = 3(90 − x), logo 2x = 90 e x = 45°. Dica de mergulhador: monte e resolva a equação.",
+      "comentarios": [
+        "Supôs ângulo reto.",
+        "Errou a equação.",
+        "Usou o quádruplo.",
+        "É o suplemento.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q07-v1",
+      "varianteDe": "mat-angulos-retas-q07",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas paralelas são cortadas por uma transversal, e um ângulo obtuso mede 105°. Quanto mede cada ângulo agudo?",
+      "alternativas": [
+        "15°",
+        "85°",
+        "75°",
+        "255°",
+        "105°"
+      ],
+      "correta": 2,
+      "explicacao": "180° − 105° = 75°. Dica de mergulhador: agudo e obtuso somam 180°.",
+      "comentarios": [
+        "Subtraiu de 90°.",
+        "Errou a subtração.",
+        "",
+        "Subtraiu de 360°.",
+        "É o obtuso."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q08-v1",
+      "varianteDe": "mat-angulos-retas-q08",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas paralelas são cortadas por uma transversal. Um ângulo mede 120°. Quanto mede o seu correspondente?",
+      "alternativas": [
+        "30°",
+        "60°",
+        "180°",
+        "240°",
+        "120°"
+      ],
+      "correta": 4,
+      "explicacao": "Correspondentes são iguais (desenho em F): 120°. Dica de mergulhador: F de iguais.",
+      "comentarios": [
+        "Subtraiu de 90° sem sentido.",
+        "É o suplemento.",
+        "Usou a soma.",
+        "Subtraiu de 360°.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q09-v1",
+      "varianteDe": "mat-angulos-retas-q09",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Duas paralelas são cortadas por uma transversal. Dois ângulos alternos internos medem 3x − 20° e x + 40°. Quanto vale x?",
+      "alternativas": [
+        "15°",
+        "30°",
+        "40°",
+        "60°",
+        "20°"
+      ],
+      "correta": 1,
+      "explicacao": "Alternos internos são iguais: 3x − 20 = x + 40, 2x = 60, x = 30°. Dica de mergulhador: ângulos iguais, iguale as expressões.",
+      "comentarios": [
+        "Errou a equação.",
+        "",
+        "Usou só um dos termos.",
+        "Somou os ângulos e igualou a 180°.",
+        "Errou o sinal."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q10-v1",
+      "varianteDe": "mat-angulos-retas-q10",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Uma ferrovia corta duas estradas paralelas e forma, com a primeira, um ângulo de 128°. Que ângulo ela forma com a segunda, na posição correspondente?",
+      "alternativas": [
+        "232°",
+        "52°",
+        "38°",
+        "64°",
+        "128°"
+      ],
+      "correta": 4,
+      "explicacao": "Correspondentes são iguais. Dica de mergulhador: F de iguais.",
+      "comentarios": [
+        "Subtraiu de 360°.",
+        "É o suplemento.",
+        "Subtraiu de 90°.",
+        "Dividiu por 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q11-v1",
+      "varianteDe": "mat-angulos-retas-q11",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Correspondentes medem 5x − 15° e 3x + 25°. Quanto mede cada um?",
+      "alternativas": [
+        "85°",
+        "40°",
+        "95°",
+        "20°",
+        "105°"
+      ],
+      "correta": 0,
+      "explicacao": "5x − 15 = 3x + 25, x = 20, ângulo 85°. Dica de mergulhador: iguale, resolva, substitua.",
+      "comentarios": [
+        "",
+        "Errou o sinal.",
+        "Errou a substituição.",
+        "É o valor de x.",
+        "Errou a equação."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q12-v1",
+      "varianteDe": "mat-angulos-retas-q12",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Um ponto P fica entre duas paralelas. Os segmentos de P até as retas fazem 25° e 55° com elas. Quanto mede o ângulo em P?",
+      "alternativas": [
+        "280°",
+        "30°",
+        "155°",
+        "80°",
+        "100°"
+      ],
+      "correta": 3,
+      "explicacao": "25° + 55° = 80°. Dica de mergulhador: paralela auxiliar por P.",
+      "comentarios": [
+        "Usou o replemento.",
+        "Subtraiu.",
+        "Somou suplementos errados.",
+        "",
+        "Usou o suplemento."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q13-v1",
+      "varianteDe": "mat-angulos-retas-q13",
+      "tema": "Paralelas e transversal",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Numa transversal a duas paralelas, o ângulo obtuso é o dobro do agudo. Quanto mede o agudo?",
+      "alternativas": [
+        "60°",
+        "30°",
+        "45°",
+        "90°",
+        "120°"
+      ],
+      "correta": 0,
+      "explicacao": "x + 2x = 180°, x = 60°. Dica de mergulhador: os dois valores somam 180°.",
+      "comentarios": [
+        "",
+        "Errou a equação.",
+        "Dividiu 90 por 2.",
+        "Dividiu 180 por 2.",
+        "É o obtuso."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q14-v1",
+      "varianteDe": "mat-angulos-retas-q14",
+      "tema": "Relógio e giros",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros às 4h em ponto?",
+      "alternativas": [
+        "40°",
+        "240°",
+        "30°",
+        "120°",
+        "90°"
+      ],
+      "correta": 3,
+      "explicacao": "4 × 30° = 120°. Dica de mergulhador: 30° por hora no mostrador.",
+      "comentarios": [
+        "Multiplicou por 10.",
+        "É o maior ângulo.",
+        "Usou uma hora.",
+        "",
+        "Usou 3 horas."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q15-v1",
+      "varianteDe": "mat-angulos-retas-q15",
+      "tema": "Relógio e giros",
+      "dificuldade": "facil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Quantos graus o ponteiro dos minutos gira em 45 minutos?",
+      "alternativas": [
+        "45°",
+        "22,5°",
+        "270°",
+        "135°",
+        "90°"
+      ],
+      "correta": 2,
+      "explicacao": "6 × 45 = 270°. Dica de mergulhador: três quartos de volta.",
+      "comentarios": [
+        "Usou 1° por minuto.",
+        "Usou o ponteiro das horas.",
+        "",
+        "Usou 3° por minuto.",
+        "Usou 2° por minuto."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q16-v1",
+      "varianteDe": "mat-angulos-retas-q16",
+      "tema": "Relógio e giros",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros às 4h30?",
+      "alternativas": [
+        "60°",
+        "90°",
+        "75°",
+        "45°",
+        "30°"
+      ],
+      "correta": 3,
+      "explicacao": "Minutos: 180°. Horas: 120° + 15° = 135°. Diferença: 45°. Dica de mergulhador: às e meia, o ponteiro das horas fica no meio do caminho.",
+      "comentarios": [
+        "Supôs o ponteiro das horas parado no 4.",
+        "Usou 3 horas de distância.",
+        "Somou 15° em vez de subtrair.",
+        "",
+        "Errou a posição do ponteiro das horas."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q17-v1",
+      "varianteDe": "mat-angulos-retas-q17",
+      "tema": "Relógio e giros",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Uma câmera gira 45° para a direita, depois 90° para a esquerda e, por fim, 135° para a direita. Para onde ela aponta em relação à posição inicial?",
+      "alternativas": [
+        "0°, de volta ao início",
+        "180°, para trás",
+        "270° para a direita",
+        "90° para a esquerda",
+        "90° para a direita"
+      ],
+      "correta": 4,
+      "explicacao": "45 − 90 + 135 = 90° para a direita. Dica de mergulhador: giros com sinal.",
+      "comentarios": [
+        "Errou a soma.",
+        "Errou a conta.",
+        "Somou tudo sem sinal.",
+        "Trocou o sentido.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q18-v1",
+      "varianteDe": "mat-angulos-retas-q18",
+      "tema": "Relógio e giros",
+      "dificuldade": "medio",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Um barco segue no rumo de 30° e vira 75° no sentido anti-horário. Qual é o novo rumo, medido a partir do norte no sentido horário?",
+      "alternativas": [
+        "45°",
+        "75°",
+        "315°",
+        "345°",
+        "105°"
+      ],
+      "correta": 2,
+      "explicacao": "30° − 75° = −45°, que corresponde a 360° − 45° = 315°. Dica de mergulhador: rumo negativo, some 360°.",
+      "comentarios": [
+        "Ignorou que o rumo passou do norte.",
+        "Usou só o giro.",
+        "",
+        "Errou a conta.",
+        "Virou no sentido horário."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q19-v1",
+      "varianteDe": "mat-angulos-retas-q19",
+      "tema": "Relógio e giros",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Entre 2h e 3h, em que momento, aproximadamente, os ponteiros ficam sobrepostos?",
+      "alternativas": [
+        "2h15",
+        "2h20",
+        "2h05",
+        "Por volta de 2h11min",
+        "2h10"
+      ],
+      "correta": 3,
+      "explicacao": "60° + 0,5t = 6t, t = 60 ÷ 5,5 ≈ 10,9 min. Dica de mergulhador: diferença inicial ÷ 5,5.",
+      "comentarios": [
+        "Errou a conta.",
+        "Usou o 4.",
+        "Errou a velocidade.",
+        "",
+        "Ignorou que o ponteiro das horas anda."
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-q20-v1",
+      "varianteDe": "mat-angulos-retas-q20",
+      "tema": "Relógio e giros",
+      "dificuldade": "dificil",
+      "fase": "mat-angulos-retas",
+      "enunciado": "Qual é o menor ângulo entre os ponteiros às 7h40?",
+      "alternativas": [
+        "10°",
+        "350°",
+        "20°",
+        "30°",
+        "40°"
+      ],
+      "correta": 0,
+      "explicacao": "Minutos no 8: 240°. Horas: 210° + 40 × 0,5° = 230°. Diferença: 10°. Dica de mergulhador: o ponteiro das horas já quase chegou ao 8.",
+      "comentarios": [
+        "",
+        "É o maior ângulo.",
+        "Errou o avanço do ponteiro das horas.",
+        "Supôs o ponteiro das horas parado no 7.",
+        "Usou os minutos."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q01-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q01",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Dois ângulos de um triângulo medem 35° e 85°. Quanto mede o terceiro?",
+      "alternativas": [
+        "50°",
+        "120°",
+        "95°",
+        "30°",
+        "60°"
+      ],
+      "correta": 4,
+      "explicacao": "180° − 120° = 60°. Dica de mergulhador: 180° menos a soma dos conhecidos.",
+      "comentarios": [
+        "Subtraiu.",
+        "Somou os dois.",
+        "Errou a conta.",
+        "Errou a subtração.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q02-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q02",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo isósceles, cada ângulo da base mede 65°. Quanto mede o ângulo do vértice?",
+      "alternativas": [
+        "65°",
+        "115°",
+        "25°",
+        "50°",
+        "130°"
+      ],
+      "correta": 3,
+      "explicacao": "180° − 130° = 50°. Dica de mergulhador: tire os dois ângulos da base.",
+      "comentarios": [
+        "Repetiu.",
+        "Subtraiu só um ângulo da base.",
+        "Errou a conta.",
+        "",
+        "É a soma dos ângulos da base."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q03-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q03",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo retângulo isósceles, quanto mede cada ângulo agudo?",
+      "alternativas": [
+        "22,5°",
+        "90°",
+        "30°",
+        "45°",
+        "60°"
+      ],
+      "correta": 3,
+      "explicacao": "(180° − 90°) ÷ 2 = 45°. Dica de mergulhador: os dois agudos são iguais.",
+      "comentarios": [
+        "Dividiu 45 por 2.",
+        "É o ângulo reto.",
+        "Errou a conta.",
+        "",
+        "Confundiu com o equilátero."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q04-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q04",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo, dois ângulos internos medem 38° e 72°. Quanto mede o ângulo externo junto ao terceiro vértice?",
+      "alternativas": [
+        "70°",
+        "108°",
+        "110°",
+        "34°",
+        "142°"
+      ],
+      "correta": 2,
+      "explicacao": "38° + 72° = 110°. Dica de mergulhador: externo soma os dois de longe.",
+      "comentarios": [
+        "É o terceiro interno.",
+        "Usou 180° − 72°.",
+        "",
+        "Subtraiu.",
+        "Usou 180° − 38°."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q05-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q05",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Os ângulos de um triângulo medem x, x + 20° e x + 40°. Quanto mede o maior?",
+      "alternativas": [
+        "100°",
+        "40°",
+        "60°",
+        "80°",
+        "120°"
+      ],
+      "correta": 3,
+      "explicacao": "3x + 60 = 180, x = 40°, maior 80°. Dica de mergulhador: substitua depois de achar x.",
+      "comentarios": [
+        "Errou a equação.",
+        "É o valor de x.",
+        "É o ângulo do meio.",
+        "",
+        "Somou 40 a x duas vezes."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q06-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q06",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo retângulo, um ângulo agudo é o quádruplo do outro. Quanto mede o menor?",
+      "alternativas": [
+        "36°",
+        "22,5°",
+        "72°",
+        "45°",
+        "18°"
+      ],
+      "correta": 4,
+      "explicacao": "x + 4x = 90°, x = 18°. Dica de mergulhador: agudos somam 90°.",
+      "comentarios": [
+        "Dividiu 180 por 5.",
+        "Dividiu 90 por 4.",
+        "É o maior.",
+        "Supôs iguais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q07-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q07",
+      "tema": "Ângulos do triângulo",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo isósceles, o ângulo externo junto ao vértice principal mede 100°. Quanto mede cada ângulo da base?",
+      "alternativas": [
+        "40°",
+        "20°",
+        "80°",
+        "50°",
+        "100°"
+      ],
+      "correta": 3,
+      "explicacao": "Interno do vértice: 80°. Bases: (180° − 80°) ÷ 2 = 50°. Dica de mergulhador: externo e interno somam 180°.",
+      "comentarios": [
+        "Errou a conta.",
+        "Errou a subtração.",
+        "É o ângulo interno do vértice.",
+        "",
+        "Usou o externo."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q08-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q08",
+      "tema": "Existência e classificação",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um marceneiro tem ripas de vários tamanhos. Com qual trio de ripas, em metros, ele consegue montar um triângulo?",
+      "alternativas": [
+        "3, 3 e 7",
+        "7, 8 e 12",
+        "6, 4 e 10",
+        "2, 5 e 8",
+        "1, 2 e 4"
+      ],
+      "correta": 1,
+      "explicacao": "7 + 8 = 15 > 12. Dica de mergulhador: teste só o maior lado.",
+      "comentarios": [
+        "3 + 3 < 7.",
+        "",
+        "6 + 4 = 10: não fecha.",
+        "2 + 5 < 8.",
+        "1 + 2 < 4."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q09-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q09",
+      "tema": "Existência e classificação",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um triângulo tem lados de 6 cm, 7 cm e 9 cm. Como ele é classificado quanto aos lados?",
+      "alternativas": [
+        "Equilátero",
+        "Impossível",
+        "Escaleno",
+        "Retângulo",
+        "Isósceles"
+      ],
+      "correta": 2,
+      "explicacao": "Três lados diferentes: escaleno. Dica de mergulhador: nenhum igual, escaleno.",
+      "comentarios": [
+        "Os lados são diferentes.",
+        "6 + 7 > 9.",
+        "",
+        "É classificação pelos ângulos.",
+        "Não há lados iguais."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q10-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q10",
+      "tema": "Existência e classificação",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um triângulo tem dois lados de 3 cm e 7 cm. Quantos valores inteiros o terceiro lado pode ter?",
+      "alternativas": [
+        "5",
+        "7",
+        "10",
+        "4",
+        "6"
+      ],
+      "correta": 0,
+      "explicacao": "Entre 4 e 10, sem extremos: 5, 6, 7, 8, 9. Dica de mergulhador: extremos não fecham o triângulo.",
+      "comentarios": [
+        "",
+        "Incluiu os dois extremos.",
+        "Contou até a soma.",
+        "Contou só a diferença.",
+        "Incluiu um extremo."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q11-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q11",
+      "tema": "Existência e classificação",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num triângulo com ângulos de 30°, 60° e 90°, qual é o maior lado?",
+      "alternativas": [
+        "Todos são iguais",
+        "Não dá para saber",
+        "O oposto ao ângulo de 90°",
+        "O oposto ao ângulo de 30°",
+        "O oposto ao ângulo de 60°"
+      ],
+      "correta": 2,
+      "explicacao": "O maior ângulo, 90°, fica oposto ao maior lado, a hipotenusa. Dica de mergulhador: lado e ângulo opostos crescem juntos.",
+      "comentarios": [
+        "Os ângulos são diferentes.",
+        "O maior ângulo indica o maior lado.",
+        "",
+        "É o menor.",
+        "É o intermediário."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q12-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q12",
+      "tema": "Existência e classificação",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um triângulo tem perímetro 15 e lados inteiros, e um dos lados mede 7. Qual é o menor valor possível do menor lado?",
+      "alternativas": [
+        "4",
+        "0",
+        "2",
+        "8",
+        "1"
+      ],
+      "correta": 4,
+      "explicacao": "Os outros dois somam 8. Com 1 e 7: 1 + 7 > 7, então 1, 7 e 7 formam um triângulo isósceles. Dica de mergulhador: teste o maior lado contra a soma dos outros.",
+      "comentarios": [
+        "Dividiu 8 por 2.",
+        "Lado zero não existe.",
+        "Há um valor menor que funciona.",
+        "É a soma dos outros dois.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q13-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q13",
+      "tema": "Existência e classificação",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Quantos triângulos diferentes com lados inteiros têm perímetro 7?",
+      "alternativas": [
+        "1",
+        "7",
+        "2",
+        "3",
+        "4"
+      ],
+      "correta": 2,
+      "explicacao": "Lados possíveis: 1, 3, 3 e 2, 2, 3. O caso 1, 2, 4 não fecha. Dica de mergulhador: liste em ordem crescente.",
+      "comentarios": [
+        "Esqueceu um caso.",
+        "Usou o perímetro.",
+        "",
+        "Contou um caso que não fecha.",
+        "Contou combinações sem testar."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q14-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q14",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Três ângulos de um quadrilátero medem 70°, 120° e 100°. Quanto mede o quarto?",
+      "alternativas": [
+        "360°",
+        "70°",
+        "110°",
+        "80°",
+        "290°"
+      ],
+      "correta": 1,
+      "explicacao": "360° − 290° = 70°. Dica de mergulhador: 360° menos o que já se tem.",
+      "comentarios": [
+        "É a soma.",
+        "",
+        "Errou a conta.",
+        "Errou a subtração.",
+        "Somou os três."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q15-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q15",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "facil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Qual quadrilátero tem apenas um par de lados paralelos?",
+      "alternativas": [
+        "Paralelogramo",
+        "Retângulo",
+        "Trapézio",
+        "Losango",
+        "Quadrado"
+      ],
+      "correta": 2,
+      "explicacao": "Trapézio: só um par de lados paralelos, as bases. Dica de mergulhador: trapézio é o \"meio paralelo\".",
+      "comentarios": [
+        "Tem dois pares.",
+        "Tem dois pares.",
+        "",
+        "Tem dois pares.",
+        "Tem dois pares."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q16-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q16",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Qual é a soma dos ângulos internos de um pentágono?",
+      "alternativas": [
+        "720°",
+        "540°",
+        "900°",
+        "180°",
+        "360°"
+      ],
+      "correta": 1,
+      "explicacao": "(5 − 2) × 180° = 540°. Dica de mergulhador: um pentágono vira 3 triângulos.",
+      "comentarios": [
+        "Usou 6 lados.",
+        "",
+        "Multiplicou 5 por 180.",
+        "Usou o triângulo.",
+        "É a soma dos externos."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q17-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q17",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Quanto mede cada ângulo interno de um octógono regular?",
+      "alternativas": [
+        "144°",
+        "120°",
+        "1.080°",
+        "135°",
+        "45°"
+      ],
+      "correta": 3,
+      "explicacao": "1.080° ÷ 8 = 135°. Dica de mergulhador: externo 360° ÷ 8 = 45°; interno 180° − 45°.",
+      "comentarios": [
+        "É o do decágono.",
+        "É o do hexágono.",
+        "É a soma.",
+        "",
+        "É o ângulo externo."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q18-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q18",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "medio",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Num losango, um dos ângulos mede 100°. Quanto medem os outros três?",
+      "alternativas": [
+        "100°, 80° e 80°",
+        "100°, 100° e 100°",
+        "80°, 80° e 80°",
+        "100°, 260° e 100°",
+        "10°, 100° e 10°"
+      ],
+      "correta": 0,
+      "explicacao": "Opostos iguais (100° e 100°), vizinhos 80°. Dica de mergulhador: losango é um paralelogramo.",
+      "comentarios": [
+        "",
+        "Os vizinhos somam 180°.",
+        "O oposto também mede 100°.",
+        "Usou 360° − 100°.",
+        "Usou 90° − 80°."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q19-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q19",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Um polígono regular tem ângulo interno de 150°. Quantos lados ele tem?",
+      "alternativas": [
+        "15",
+        "6",
+        "10",
+        "12",
+        "8"
+      ],
+      "correta": 3,
+      "explicacao": "Externo: 30°. Lados: 360° ÷ 30° = 12. Dica de mergulhador: externos somam 360°.",
+      "comentarios": [
+        "Usou 150 ÷ 10.",
+        "Usou o externo de 60°.",
+        "Usou o externo de 36°.",
+        "",
+        "Usou o externo de 45°."
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-q20-v1",
+      "varianteDe": "mat-triangulos-quadrilateros-q20",
+      "tema": "Quadriláteros e polígonos",
+      "dificuldade": "dificil",
+      "fase": "mat-triangulos-quadrilateros",
+      "enunciado": "Por que o hexágono regular serve para ladrilhar um piso sozinho?",
+      "alternativas": [
+        "Porque tem seis lados, um número par",
+        "Porque os lados são iguais",
+        "Porque é usado pelas abelhas",
+        "Porque é a figura de maior área",
+        "Porque três ângulos de 120° fecham exatamente 360° num vértice"
+      ],
+      "correta": 4,
+      "explicacao": "O encaixe depende do ângulo interno dividir 360°. Dica de mergulhador: confira o vértice.",
+      "comentarios": [
+        "O octógono também tem lados pares e não serve.",
+        "O pentágono regular também tem lados iguais.",
+        "As abelhas aproveitam a propriedade, não a criam.",
+        "Área não decide o encaixe.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q01-v1",
+      "varianteDe": "mat-semelhanca-tales-q01",
+      "tema": "Semelhança",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Um triângulo tem lados de 5, 12 e 13 cm, e outro, semelhante, tem lados de 15, 36 e 39 cm. Qual é a razão do maior para o menor?",
+      "alternativas": [
+        "1/3",
+        "10",
+        "3",
+        "90",
+        "24"
+      ],
+      "correta": 2,
+      "explicacao": "15/5 = 36/12 = 39/13 = 3. Dica de mergulhador: razão é divisão, não subtração.",
+      "comentarios": [
+        "Inverteu.",
+        "Usou a diferença.",
+        "",
+        "Usou o perímetro.",
+        "Usou a diferença de 36 e 12."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q02-v1",
+      "varianteDe": "mat-semelhanca-tales-q02",
+      "tema": "Semelhança",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Dois triângulos são semelhantes, com razão 1/2 do menor para o maior. Um lado do maior mede 10 cm. Quanto mede o correspondente do menor?",
+      "alternativas": [
+        "5 cm",
+        "2,5 cm",
+        "9,5 cm",
+        "20 cm",
+        "10 cm"
+      ],
+      "correta": 0,
+      "explicacao": "10 × 1/2 = 5 cm. Dica de mergulhador: confira o sentido da razão.",
+      "comentarios": [
+        "",
+        "Dividiu por 4.",
+        "Subtraiu 1/2.",
+        "Multiplicou por 2.",
+        "Repetiu."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q03-v1",
+      "varianteDe": "mat-semelhanca-tales-q03",
+      "tema": "Semelhança",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Dois triângulos têm ângulos de 50° e 60°. Eles são semelhantes?",
+      "alternativas": [
+        "Não, porque falta o terceiro ângulo",
+        "Só se forem isósceles",
+        "Sim, porque o terceiro ângulo também é igual, 70°",
+        "Só se tiverem a mesma área",
+        "Não, porque falta conhecer os lados"
+      ],
+      "correta": 2,
+      "explicacao": "Dois ângulos iguais garantem o terceiro: 70°. Dica de mergulhador: ângulos iguais, forma igual.",
+      "comentarios": [
+        "Ele é 180° − 110°.",
+        "Não há essa exigência.",
+        "",
+        "A área não é necessária.",
+        "Os ângulos bastam."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q04-v1",
+      "varianteDe": "mat-semelhanca-tales-q04",
+      "tema": "Semelhança",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Dois triângulos semelhantes têm razão 2. A área do maior é 48 cm². Qual é a área do menor?",
+      "alternativas": [
+        "96 cm²",
+        "12 cm²",
+        "46 cm²",
+        "6 cm²",
+        "24 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "48 ÷ 2² = 12 cm². Dica de mergulhador: divida pela razão ao quadrado.",
+      "comentarios": [
+        "Multiplicou em vez de dividir.",
+        "",
+        "Subtraiu 2.",
+        "Usou a razão ao cubo.",
+        "Usou a razão linear."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q05-v1",
+      "varianteDe": "mat-semelhanca-tales-q05",
+      "tema": "Semelhança",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "No triângulo ABC, DE é paralelo a BC. Se AD = 3 cm, DB = 9 cm e DE = 5 cm, quanto mede BC?",
+      "alternativas": [
+        "15 cm",
+        "20 cm",
+        "12 cm",
+        "45 cm",
+        "17 cm"
+      ],
+      "correta": 1,
+      "explicacao": "3/12 = 5/BC, BC = 20 cm. Dica de mergulhador: lado inteiro do triângulo grande.",
+      "comentarios": [
+        "Usou DB no lugar de AB.",
+        "",
+        "É a medida de AB.",
+        "Multiplicou 5 por 9.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q06-v1",
+      "varianteDe": "mat-semelhanca-tales-q06",
+      "tema": "Semelhança",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma foto de 9 cm × 12 cm será reduzida para que o lado menor meça 6 cm. Quanto medirá o lado maior, e que fração da área original terá?",
+      "alternativas": [
+        "9 cm e 4/9 da área",
+        "9 cm e 2/3 da área",
+        "8 cm e 4/9 da área",
+        "8 cm e 2/3 da área",
+        "6 cm e 4/9 da área"
+      ],
+      "correta": 2,
+      "explicacao": "Razão: 6/9 = 2/3. Lado maior: 12 × 2/3 = 8 cm. Área: (2/3)² = 4/9. Dica de mergulhador: reduzir também segue a razão.",
+      "comentarios": [
+        "Subtraiu 3 do lado maior.",
+        "Subtraiu 3 do lado e usou a razão linear.",
+        "",
+        "Usou a razão linear na área.",
+        "Errou o lado maior."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q07-v1",
+      "varianteDe": "mat-semelhanca-tales-q07",
+      "tema": "Semelhança",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Dois triângulos semelhantes têm perímetros de 20 cm e 50 cm. A área do maior é 125 cm². Qual é a área do menor?",
+      "alternativas": [
+        "8 cm²",
+        "50 cm²",
+        "312,5 cm²",
+        "20 cm²",
+        "100 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Razão: 2,5. Área do menor: 125 ÷ 6,25 = 20 cm². Dica de mergulhador: divida pela razão ao quadrado.",
+      "comentarios": [
+        "Usou a razão ao cubo.",
+        "Usou a razão linear.",
+        "Multiplicou em vez de dividir.",
+        "",
+        "Subtraiu 25."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q08-v1",
+      "varianteDe": "mat-semelhanca-tales-q08",
+      "tema": "Sombras e alturas",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "No mesmo momento, uma estaca de 2 m projeta sombra de 0,5 m, e uma árvore projeta 3 m. Qual é a altura da árvore?",
+      "alternativas": [
+        "0,75 m",
+        "1,5 m",
+        "6 m",
+        "5,5 m",
+        "12 m"
+      ],
+      "correta": 4,
+      "explicacao": "2/0,5 = h/3, h = 12 m. Dica de mergulhador: altura é 4 vezes a sombra.",
+      "comentarios": [
+        "Inverteu.",
+        "Multiplicou 3 por 0,5.",
+        "Multiplicou 3 por 2.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q09-v1",
+      "varianteDe": "mat-semelhanca-tales-q09",
+      "tema": "Sombras e alturas",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Num certo horário, a sombra de uma vara tem o mesmo comprimento que a vara. Qual é a altura de um prédio cuja sombra, nesse horário, mede 25 m?",
+      "alternativas": [
+        "625 m",
+        "5 m",
+        "12,5 m",
+        "50 m",
+        "25 m"
+      ],
+      "correta": 4,
+      "explicacao": "Se altura = sombra para a vara, também é para o prédio. Dica de mergulhador: a razão é 1.",
+      "comentarios": [
+        "Elevou ao quadrado.",
+        "Tirou a raiz.",
+        "Dividiu por 2.",
+        "Dobrou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q10-v1",
+      "varianteDe": "mat-semelhanca-tales-q10",
+      "tema": "Sombras e alturas",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma lâmpada está no topo de um poste de 5 m. Uma pessoa de 1,6 m está a 6,8 m do poste. Quanto mede a sombra da pessoa?",
+      "alternativas": [
+        "1,6 m",
+        "21,25 m",
+        "3,2 m",
+        "4 m",
+        "2,18 m"
+      ],
+      "correta": 2,
+      "explicacao": "5/1,6 = (6,8 + x)/x, logo 5x = 10,88 + 1,6x e x = 3,2 m. Dica de mergulhador: monte a proporção com a sombra inteira do poste.",
+      "comentarios": [
+        "Igualou à altura.",
+        "Multiplicou.",
+        "",
+        "Errou a equação.",
+        "Usou a distância como sombra do poste."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q11-v1",
+      "varianteDe": "mat-semelhanca-tales-q11",
+      "tema": "Sombras e alturas",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma pessoa com olhos a 1,5 m do chão está a 3 m de um espelho no chão e vê nele o topo de um prédio que está a 12 m do espelho. Qual é a altura do prédio?",
+      "alternativas": [
+        "24 m",
+        "18 m",
+        "4,5 m",
+        "0,375 m",
+        "6 m"
+      ],
+      "correta": 4,
+      "explicacao": "1,5/3 = h/12, h = 6 m. Dica de mergulhador: espelho iguala os ângulos.",
+      "comentarios": [
+        "Errou a proporção.",
+        "Multiplicou 1,5 por 12.",
+        "Multiplicou 1,5 por 3.",
+        "Inverteu.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q12-v1",
+      "varianteDe": "mat-semelhanca-tales-q12",
+      "tema": "Sombras e alturas",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Uma rampa sobe 1 m a cada 8 m na horizontal. Quanto ela sobe em 20 m de horizontal?",
+      "alternativas": [
+        "160 m",
+        "2,5 m",
+        "0,4 m",
+        "28 m",
+        "12 m"
+      ],
+      "correta": 1,
+      "explicacao": "1/8 = h/20, h = 2,5 m. Dica de mergulhador: triângulos semelhantes ao longo da rampa.",
+      "comentarios": [
+        "Multiplicou.",
+        "",
+        "Inverteu.",
+        "Somou.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q13-v1",
+      "varianteDe": "mat-semelhanca-tales-q13",
+      "tema": "Sombras e alturas",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Um prédio e uma vara de 2 m projetam sombras de 15 m e 1,5 m. Mais tarde, a sombra da vara mede 3 m. Quanto mede a sombra do prédio?",
+      "alternativas": [
+        "7,5 m",
+        "16,5 m",
+        "10 m",
+        "30 m",
+        "45 m"
+      ],
+      "correta": 3,
+      "explicacao": "Altura do prédio: 2 × 15/1,5 = 20 m. Nova razão sombra/altura: 3/2 = 1,5. Sombra: 30 m. Dica de mergulhador: altura fixa, sombra muda.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Somou 1,5.",
+        "Errou a altura.",
+        "",
+        "Multiplicou 15 por 3."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q14-v1",
+      "varianteDe": "mat-semelhanca-tales-q14",
+      "tema": "Teorema de Tales",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três paralelas cortadas por duas transversais determinam, na primeira, segmentos de 3 cm e x; na segunda, de 5 cm e 10 cm. Quanto vale x?",
+      "alternativas": [
+        "1,5 cm",
+        "15 cm",
+        "8 cm",
+        "6 cm",
+        "10 cm"
+      ],
+      "correta": 3,
+      "explicacao": "3/x = 5/10, x = 6 cm. Dica de mergulhador: monte a proporção na ordem.",
+      "comentarios": [
+        "Inverteu.",
+        "Multiplicou 3 por 5.",
+        "Somou 5.",
+        "",
+        "Repetiu."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q15-v1",
+      "varianteDe": "mat-semelhanca-tales-q15",
+      "tema": "Teorema de Tales",
+      "dificuldade": "facil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Em que situação o Teorema de Tales se aplica?",
+      "alternativas": [
+        "Em ângulos de um relógio",
+        "Em qualquer par de retas concorrentes",
+        "Em círculos, com o raio",
+        "Em retas paralelas cortadas por transversais",
+        "Em triângulos retângulos, com os lados ao quadrado"
+      ],
+      "correta": 3,
+      "explicacao": "O teorema exige um feixe de paralelas. Dica de mergulhador: procure as paralelas.",
+      "comentarios": [
+        "Não é Tales.",
+        "Precisa de paralelas.",
+        "Não é Tales.",
+        "",
+        "É Pitágoras."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q16-v1",
+      "varianteDe": "mat-semelhanca-tales-q16",
+      "tema": "Teorema de Tales",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três lotes entre duas ruas paralelas têm frentes de 15 m, 25 m e 40 m para a rua A. Na rua B, o mesmo trecho mede 100 m. Quanto mede, na rua B, a frente do lote de 25 m?",
+      "alternativas": [
+        "25 m",
+        "31,25 m",
+        "45 m",
+        "33,3 m",
+        "20 m"
+      ],
+      "correta": 1,
+      "explicacao": "Fator: 100/80 = 1,25. 25 × 1,25 = 31,25 m. Dica de mergulhador: total da rua B ÷ total da rua A.",
+      "comentarios": [
+        "Repetiu.",
+        "",
+        "Somou 20.",
+        "Dividiu 100 por 3.",
+        "Usou o fator ao contrário."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q17-v1",
+      "varianteDe": "mat-semelhanca-tales-q17",
+      "tema": "Teorema de Tales",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Paralelas determinam segmentos x e x + 4 numa transversal, e 3 e 5 na outra. Quanto vale x?",
+      "alternativas": [
+        "2",
+        "4",
+        "3",
+        "6",
+        "12"
+      ],
+      "correta": 3,
+      "explicacao": "x/(x + 4) = 3/5, logo 5x = 3x + 12 e x = 6. Dica de mergulhador: multiplique em cruz e isole.",
+      "comentarios": [
+        "Inverteu a proporção.",
+        "Errou a equação.",
+        "Igualou x a 3.",
+        "",
+        "Esqueceu de dividir."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q18-v1",
+      "varianteDe": "mat-semelhanca-tales-q18",
+      "tema": "Teorema de Tales",
+      "dificuldade": "medio",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Num triângulo, uma paralela à base divide um lado em 3 cm e 5 cm, a partir do vértice, e o outro em x e 10 cm. Quanto vale x?",
+      "alternativas": [
+        "8 cm",
+        "12 cm",
+        "16,67 cm",
+        "6 cm",
+        "2 cm"
+      ],
+      "correta": 3,
+      "explicacao": "3/5 = x/10, x = 6 cm. Dica de mergulhador: mesma razão nos dois lados.",
+      "comentarios": [
+        "Somou.",
+        "Multiplicou errado.",
+        "Inverteu a razão.",
+        "",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q19-v1",
+      "varianteDe": "mat-semelhanca-tales-q19",
+      "tema": "Teorema de Tales",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três lotes têm frentes de 12 m, 18 m e 30 m para a rua A. Na rua B, o trecho mede 90 m. Qual é a frente do maior lote na rua B?",
+      "alternativas": [
+        "36 m",
+        "27 m",
+        "60 m",
+        "45 m",
+        "30 m"
+      ],
+      "correta": 3,
+      "explicacao": "Rua A: 60 m. Fator: 1,5. 30 × 1,5 = 45 m. Dica de mergulhador: proporção com os totais.",
+      "comentarios": [
+        "Errou o fator.",
+        "Calculou o do meio.",
+        "Somou 30.",
+        "",
+        "Repetiu."
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-q20-v1",
+      "varianteDe": "mat-semelhanca-tales-q20",
+      "tema": "Teorema de Tales",
+      "dificuldade": "dificil",
+      "fase": "mat-semelhanca-tales",
+      "enunciado": "Três ruas paralelas são cortadas por duas avenidas. Na avenida 1, as quadras medem 80 m e 120 m. Na avenida 2, elas somam 250 m. Quanto mede cada uma?",
+      "alternativas": [
+        "150 m e 100 m",
+        "80 m e 170 m",
+        "110 m e 140 m",
+        "125 m e 125 m",
+        "100 m e 150 m"
+      ],
+      "correta": 4,
+      "explicacao": "Razão 2 : 3; 250 em 5 partes de 50: 100 m e 150 m. Dica de mergulhador: mesma razão na outra avenida.",
+      "comentarios": [
+        "Trocou a ordem.",
+        "Repetiu a primeira.",
+        "Errou a razão.",
+        "Dividiu igualmente.",
+        ""
+      ]
     }
   ],
   "pares": [
@@ -40864,6 +43992,78 @@
       "tema": "Revisão do módulo: contagem e probabilidade",
       "termo": "Probabilidade condicional",
       "definicao": "Divide pelo grupo da condição"
+    },
+    {
+      "id": "mat-angulos-retas-par-01",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "termo": "Complementares",
+      "definicao": "Somam 90°"
+    },
+    {
+      "id": "mat-angulos-retas-par-02",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "termo": "Suplementares",
+      "definicao": "Somam 180°"
+    },
+    {
+      "id": "mat-angulos-retas-par-03",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "termo": "Opostos pelo vértice",
+      "definicao": "Ângulos iguais"
+    },
+    {
+      "id": "mat-angulos-retas-par-04",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "termo": "Alternos internos",
+      "definicao": "Iguais, em forma de Z"
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-par-01",
+      "tema": "Triângulos e quadriláteros",
+      "termo": "Desigualdade triangular",
+      "definicao": "Cada lado menor que a soma dos outros"
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-par-02",
+      "tema": "Triângulos e quadriláteros",
+      "termo": "Ângulo externo",
+      "definicao": "Soma dos dois internos não vizinhos"
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-par-03",
+      "tema": "Triângulos e quadriláteros",
+      "termo": "Soma dos ângulos internos",
+      "definicao": "(n − 2) × 180°"
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-par-04",
+      "tema": "Triângulos e quadriláteros",
+      "termo": "Trapézio",
+      "definicao": "Um par de lados paralelos"
+    },
+    {
+      "id": "mat-semelhanca-tales-par-01",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "termo": "Razão de semelhança",
+      "definicao": "Divisão entre lados correspondentes"
+    },
+    {
+      "id": "mat-semelhanca-tales-par-02",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "termo": "Dois ângulos iguais",
+      "definicao": "Bastam para triângulos semelhantes"
+    },
+    {
+      "id": "mat-semelhanca-tales-par-03",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "termo": "Teorema de Tales",
+      "definicao": "Paralelas dão segmentos proporcionais"
+    },
+    {
+      "id": "mat-semelhanca-tales-par-04",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "termo": "Sombra",
+      "definicao": "Mede alturas por semelhança"
     }
   ],
   "verdadeiroFalso": [
@@ -41650,6 +44850,69 @@
       "afirmacao": "Pelo menos uma cara em 4 lançamentos tem chance 15/16.",
       "verdadeira": true,
       "explicacao": "1 − 1/16."
+    },
+    {
+      "id": "mat-angulos-retas-vf-01",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "afirmacao": "Às 3h, os ponteiros formam 90°.",
+      "verdadeira": true,
+      "explicacao": "Três horas de 30°."
+    },
+    {
+      "id": "mat-angulos-retas-vf-02",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "afirmacao": "Às 2h30, os ponteiros formam 90°.",
+      "verdadeira": false,
+      "explicacao": "O ponteiro das horas andou: são 105°."
+    },
+    {
+      "id": "mat-angulos-retas-vf-03",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "afirmacao": "O suplemento de 110° é 70°.",
+      "verdadeira": true,
+      "explicacao": "180° − 110°."
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-vf-01",
+      "tema": "Triângulos e quadriláteros",
+      "afirmacao": "Os ângulos externos de qualquer polígono somam 360°.",
+      "verdadeira": true,
+      "explicacao": "Uma volta completa."
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-vf-02",
+      "tema": "Triângulos e quadriláteros",
+      "afirmacao": "Segmentos de 3, 5 e 8 formam um triângulo.",
+      "verdadeira": false,
+      "explicacao": "3 + 5 = 8 não fecha."
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-vf-03",
+      "tema": "Triângulos e quadriláteros",
+      "afirmacao": "Cada ângulo interno do hexágono regular mede 120°.",
+      "verdadeira": true,
+      "explicacao": "720° ÷ 6."
+    },
+    {
+      "id": "mat-semelhanca-tales-vf-01",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "afirmacao": "Se a razão de semelhança é 3, a área fica 9 vezes maior.",
+      "verdadeira": true,
+      "explicacao": "Razão ao quadrado."
+    },
+    {
+      "id": "mat-semelhanca-tales-vf-02",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "afirmacao": "Dois triângulos com um ângulo igual são sempre semelhantes.",
+      "verdadeira": false,
+      "explicacao": "São precisos dois ângulos iguais."
+    },
+    {
+      "id": "mat-semelhanca-tales-vf-03",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "afirmacao": "Pessoa de 1,80 m com sombra de 1,20 m indica prédio de 30 m com sombra de 20 m.",
+      "verdadeira": true,
+      "explicacao": "Mesma razão."
     }
   ],
   "sequencias": [
@@ -42109,6 +45372,42 @@
         "Usar complementar ou condição se a pergunta pedir"
       ],
       "explicacao": "Contar bem é metade da resposta."
+    },
+    {
+      "id": "mat-angulos-retas-seq-01",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "titulo": "Calcular o ângulo entre os ponteiros",
+      "itens": [
+        "Achar a posição dos minutos (6° por minuto)",
+        "Achar a posição das horas (30° por hora e 0,5° por minuto)",
+        "Subtrair as posições",
+        "Se passar de 180°, tirar de 360°"
+      ],
+      "explicacao": "O ponteiro das horas sempre anda."
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-seq-01",
+      "tema": "Triângulos e quadriláteros",
+      "titulo": "Descobrir quantos lados tem um polígono regular",
+      "itens": [
+        "Ler o ângulo interno",
+        "Calcular o externo, 180° menos o interno",
+        "Dividir 360° pelo externo",
+        "Conferir se o resultado é inteiro"
+      ],
+      "explicacao": "Externos somam 360°."
+    },
+    {
+      "id": "mat-semelhanca-tales-seq-01",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "titulo": "Medir a altura de um prédio pela sombra",
+      "itens": [
+        "Medir a sua altura e a sua sombra",
+        "Medir a sombra do prédio no mesmo momento",
+        "Montar altura/sombra igual nos dois",
+        "Resolver a regra de três"
+      ],
+      "explicacao": "Os raios de sol são paralelos."
     }
   ],
   "adivinhas": [
@@ -42658,6 +45957,49 @@
         "Arte de contar sem listar",
         "Usa arranjos e combinações",
         "Base da probabilidade"
+      ]
+    },
+    {
+      "id": "mat-angulos-retas-adv-01",
+      "tema": "Ângulos, retas paralelas e perpendiculares",
+      "dificuldade": "medio",
+      "resposta": "Ângulo reto",
+      "aceitas": [
+        "angulo reto",
+        "reto"
+      ],
+      "dicas": [
+        "Mede 90°",
+        "Um quarto de volta",
+        "Formado por retas perpendiculares"
+      ]
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-adv-01",
+      "tema": "Triângulos e quadriláteros",
+      "dificuldade": "medio",
+      "resposta": "Triângulo",
+      "aceitas": [
+        "triangulo"
+      ],
+      "dicas": [
+        "Figura de três lados",
+        "Ângulos somam 180°",
+        "Não se deforma"
+      ]
+    },
+    {
+      "id": "mat-semelhanca-tales-adv-01",
+      "tema": "Semelhança de triângulos e Teorema de Tales",
+      "dificuldade": "medio",
+      "resposta": "Semelhança",
+      "aceitas": [
+        "semelhanca"
+      ],
+      "dicas": [
+        "Mesma forma, tamanhos diferentes",
+        "Ângulos iguais e lados proporcionais",
+        "Ampliação ou redução"
       ]
     }
   ],
@@ -43555,6 +46897,78 @@
       "tema": "Matemática",
       "palavra": "Bola",
       "dica": "O que se tira de uma urna"
+    },
+    {
+      "id": "mat-angulos-retas-pal-01",
+      "tema": "Matemática",
+      "palavra": "Grau",
+      "dica": "Unidade de medida de ângulo"
+    },
+    {
+      "id": "mat-angulos-retas-pal-02",
+      "tema": "Matemática",
+      "palavra": "Reto",
+      "dica": "Ângulo de 90°"
+    },
+    {
+      "id": "mat-angulos-retas-pal-03",
+      "tema": "Matemática",
+      "palavra": "Paralela",
+      "dica": "Reta que nunca encontra a outra"
+    },
+    {
+      "id": "mat-angulos-retas-pal-04",
+      "tema": "Matemática",
+      "palavra": "Rumo",
+      "dica": "Direção medida a partir do norte"
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-pal-01",
+      "tema": "Matemática",
+      "palavra": "Losango",
+      "dica": "Quatro lados iguais"
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-pal-02",
+      "tema": "Matemática",
+      "palavra": "Hexágono",
+      "dica": "Polígono de seis lados"
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-pal-03",
+      "tema": "Matemática",
+      "palavra": "Vértice",
+      "dica": "Ponto onde os lados se encontram"
+    },
+    {
+      "id": "mat-triangulos-quadrilateros-pal-04",
+      "tema": "Matemática",
+      "palavra": "Telhado",
+      "dica": "Usa triângulos por serem rígidos"
+    },
+    {
+      "id": "mat-semelhanca-tales-pal-01",
+      "tema": "Matemática",
+      "palavra": "Sombra",
+      "dica": "Mede alturas com o sol"
+    },
+    {
+      "id": "mat-semelhanca-tales-pal-02",
+      "tema": "Matemática",
+      "palavra": "Espelho",
+      "dica": "Iguala os ângulos da luz"
+    },
+    {
+      "id": "mat-semelhanca-tales-pal-03",
+      "tema": "Matemática",
+      "palavra": "Razão",
+      "dica": "Divisão entre lados"
+    },
+    {
+      "id": "mat-semelhanca-tales-pal-04",
+      "tema": "Matemática",
+      "palavra": "Feixe",
+      "dica": "Conjunto de retas paralelas"
     }
   ],
   "fichas": {
@@ -44858,6 +48272,132 @@
       "pegadinhas": [
         "Contar a ordem numa comissão.",
         "Somar probabilidades em sequência."
+      ]
+    },
+    "Medidas de ângulos": {
+      "texto": [
+        "Complementares somam 90°; suplementares, 180°; em volta de um ponto, 360°; lado a lado sobre uma reta, 180°. Opostos pelo vértice são iguais.",
+        "Em problemas com \"o dobro do complemento\" ou \"o triplo do suplemento\", escreva o complemento como 90° − x e o suplemento como 180° − x e resolva a equação."
+      ],
+      "pontos": [
+        "Complemento: 90° − x.",
+        "Suplemento: 180° − x."
+      ],
+      "pegadinhas": [
+        "Confundir complemento com suplemento.",
+        "Usar 180° para ângulos em volta de um ponto."
+      ]
+    },
+    "Paralelas e transversal": {
+      "texto": [
+        "Uma transversal a duas paralelas forma só dois valores de ângulo: agudos iguais, obtusos iguais, e agudo + obtuso = 180°. Alternos internos (Z) e correspondentes (F) são iguais; colaterais internos somam 180°.",
+        "Com um ponto entre as paralelas, trace por ele uma paralela auxiliar: o ângulo no ponto é a soma dos ângulos com cada reta."
+      ],
+      "pontos": [
+        "Z e F: iguais.",
+        "Colaterais: somam 180°."
+      ],
+      "pegadinhas": [
+        "Igualar ângulos colaterais.",
+        "Somar ângulos que deviam ser iguais."
+      ]
+    },
+    "Relógio e giros": {
+      "texto": [
+        "Minutos andam 6° por minuto; horas andam 30° por hora, ou 0,5° por minuto. Calcule a posição de cada ponteiro a partir do 12 e subtraia; se passar de 180°, o menor ângulo é 360° menos a diferença.",
+        "Em giros e rumos, dê sinal ao sentido (direita positivo, esquerda negativo) e some. Rumo negativo vira positivo somando 360°."
+      ],
+      "pontos": [
+        "Ponteiro das horas: 30h + 0,5m.",
+        "Sobreposição: diferença ÷ 5,5."
+      ],
+      "pegadinhas": [
+        "Deixar o ponteiro das horas parado no número.",
+        "Somar giros sem sinal."
+      ]
+    },
+    "Ângulos do triângulo": {
+      "texto": [
+        "Os ângulos internos de um triângulo somam 180°. No isósceles, os ângulos da base são iguais; no equilátero, todos medem 60°; no retângulo, os dois agudos somam 90°.",
+        "O ângulo externo é a soma dos dois internos não vizinhos (ou 180° menos o interno vizinho). Em problemas com expressões (x, 2x, 3x), some e iguale a 180°."
+      ],
+      "pontos": [
+        "Externo = soma dos internos de longe.",
+        "Isósceles: bases iguais."
+      ],
+      "pegadinhas": [
+        "Usar 360° para o triângulo.",
+        "Confundir ângulo externo com interno."
+      ]
+    },
+    "Existência e classificação": {
+      "texto": [
+        "Desigualdade triangular: cada lado é menor que a soma dos outros dois. Basta testar o maior lado contra a soma dos menores; igualdade não forma triângulo. Com dois lados conhecidos, o terceiro fica entre a diferença e a soma, sem os extremos.",
+        "Pelos lados: equilátero, isósceles, escaleno. Pelos ângulos: acutângulo, retângulo, obtusângulo. O maior lado fica oposto ao maior ângulo."
+      ],
+      "pontos": [
+        "Terceiro lado entre |a − b| e a + b.",
+        "Igualdade não fecha."
+      ],
+      "pegadinhas": [
+        "Aceitar 3, 5 e 8 como triângulo.",
+        "Incluir os extremos do intervalo."
+      ]
+    },
+    "Quadriláteros e polígonos": {
+      "texto": [
+        "Quadriláteros somam 360°. Paralelogramo: opostos iguais, vizinhos somam 180°. Retângulo, losango e quadrado são paralelogramos especiais; o trapézio tem só um par de lados paralelos.",
+        "Polígono de n lados: internos somam (n − 2) × 180°; externos somam 360°. No regular, externo = 360° ÷ n e interno = 180° − externo. Ladrilha sozinho o polígono cujo interno divide 360°: triângulo, quadrado e hexágono."
+      ],
+      "pontos": [
+        "Lados = 360° ÷ externo.",
+        "Hexágono regular: 120°."
+      ],
+      "pegadinhas": [
+        "Multiplicar n por 180°.",
+        "Achar que todo polígono regular ladrilha."
+      ]
+    },
+    "Semelhança": {
+      "texto": [
+        "Figuras semelhantes têm os mesmos ângulos e lados proporcionais. A razão de semelhança vale para lados e perímetros; áreas usam a razão ao quadrado e volumes, ao cubo.",
+        "Dois ângulos iguais bastam para triângulos semelhantes. Uma paralela a um lado cria um triângulo menor semelhante: compare com o triângulo grande inteiro (AD com AB, não com DB)."
+      ],
+      "pontos": [
+        "Razão = lado maior ÷ correspondente menor.",
+        "Área: razão²."
+      ],
+      "pegadinhas": [
+        "Usar o segmento DB no lugar do lado AB.",
+        "Aplicar a razão linear na área."
+      ]
+    },
+    "Sombras e alturas": {
+      "texto": [
+        "No mesmo momento, altura ÷ sombra é igual para todos os objetos. Com um espelho no chão, altura ÷ distância ao espelho é igual dos dois lados.",
+        "Com uma lâmpada num poste, a sombra do poste vai do pé do poste até a ponta da sombra da pessoa: monte a proporção com essa distância total. Em rampas, a subida por metro é constante."
+      ],
+      "pontos": [
+        "Altura/sombra constante.",
+        "Poste: sombra total = distância + sombra da pessoa."
+      ],
+      "pegadinhas": [
+        "Inverter a razão.",
+        "Usar só a distância até o poste."
+      ]
+    },
+    "Teorema de Tales": {
+      "texto": [
+        "Paralelas cortadas por transversais determinam segmentos proporcionais. Em terrenos entre ruas paralelas, calcule o fator dividindo o total de uma rua pelo total da outra e aplique a cada frente.",
+        "Quando a soma dos segmentos é dada, é uma divisão proporcional: 400 m na razão 2 : 3 viram 160 m e 240 m. Com incógnitas, monte a proporção e multiplique em cruz."
+      ],
+      "pontos": [
+        "Fator = total B ÷ total A.",
+        "Divida na mesma razão."
+      ],
+      "pegadinhas": [
+        "Dividir em partes iguais.",
+        "Trocar a ordem dos segmentos."
       ]
     }
   }
