@@ -15,6 +15,7 @@
  *   faz o caminho Aprender → mapa mental ou associações → pontos-chave; os pontos-chave retomam o Aprender.
  */
 import { readFileSync } from 'node:fs';
+import { numerar } from './numerar-aulas.mjs';
 
 const arq = process.argv[2];
 if (!arq) {
@@ -159,6 +160,15 @@ if (semComentarios) avisos.push(`${semComentarios} questões sem "comentarios" (
 if (semDica) avisos.push(`${semDica} questões sem "Dica de mergulhador:" na explicação`);
 if (semFicha.length) avisos.push(`temas sem ficha: ${semFicha.join('; ')}`);
 console.log('variantes:', (t.variantes || []).length, '| revisar:', t.questoes.filter((q) => q.revisar).length);
+/* ---------- Cursos por matéria: módulos e numeração das aulas (scripts/numerar-aulas.mjs) ---------- */
+if (t.fases.some((f) => f.modulo)) {
+  const copia = JSON.parse(JSON.stringify(t));
+  const { mudou, avisos: avisosNumeracao } = numerar(copia);
+  if (mudou) erros.push(`${mudou} fase(s) com nome, módulo ou descrição fora da numeração: rode node scripts/numerar-aulas.mjs ${arq}`);
+  avisosNumeracao.forEach((a) => avisos.push(a));
+  t.fases.filter((f) => f.modulo && f.profundidade).forEach((f) => avisos.push(`fase ${f.id}: curso por matéria não usa "profundidade"`));
+}
+
 avisos.forEach((a) => console.log('AVISO', a));
 erros.forEach((e) => console.log('ERRO', e));
 console.log(erros.length ? `${erros.length} erro(s), ${avisos.length} aviso(s)` : `OK, sem erros (${avisos.length} aviso(s))`);
