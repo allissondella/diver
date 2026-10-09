@@ -3347,7 +3347,7 @@
       "id": "mat-principio-contagem",
       "nome": "Aula 33 · Princípio fundamental da contagem",
       "modulo": "Módulo 6 · Contagem e probabilidade",
-      "descricao": "Módulo 6 · aula 1 de 3 · 35 min · treina a habilidade H2",
+      "descricao": "Módulo 6 · aula 1 de 6 · 35 min · treina a habilidade H2",
       "habilidades": [
         "H2"
       ],
@@ -3448,7 +3448,7 @@
       "id": "mat-permutacoes-arranjos",
       "nome": "Aula 34 · Permutações e arranjos",
       "modulo": "Módulo 6 · Contagem e probabilidade",
-      "descricao": "Módulo 6 · aula 2 de 3 · 35 min · treina a habilidade H2",
+      "descricao": "Módulo 6 · aula 2 de 6 · 35 min · treina a habilidade H2",
       "habilidades": [
         "H2"
       ],
@@ -3551,7 +3551,7 @@
       "id": "mat-combinacoes",
       "nome": "Aula 35 · Combinações",
       "modulo": "Módulo 6 · Contagem e probabilidade",
-      "descricao": "Módulo 6 · aula 3 de 3 · 35 min · treina a habilidade H2",
+      "descricao": "Módulo 6 · aula 3 de 6 · 35 min · treina a habilidade H2",
       "habilidades": [
         "H2"
       ],
@@ -3645,6 +3645,303 @@
           "a ordem nao importa",
           "multiplique as escolhas",
           "trocando dois elementos"
+        ]
+      }
+    },
+    {
+      "id": "mat-probabilidade",
+      "nome": "Aula 36 · Probabilidade: casos favoráveis e possíveis",
+      "modulo": "Módulo 6 · Contagem e probabilidade",
+      "descricao": "Módulo 6 · aula 4 de 6 · 35 min · treina a habilidade H28",
+      "habilidades": [
+        "H28"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Casos favoráveis sobre casos possíveis",
+            "texto": [
+              "Quando todos os resultados têm a mesma chance, isto é, são **equiprováveis**, a probabilidade de um evento é o número de casos favoráveis dividido pelo número de casos possíveis. No lançamento de um dado, a chance de sair um número par é 3/6 = 1/2. A probabilidade fica sempre entre 0 (impossível) e 1 (certo) e pode ser escrita como fração, decimal ou porcentagem: 1/4 = 0,25 = 25%. Numa rifa de 200 números, quem comprou 8 tem 8/200 = 4% de chance."
+            ]
+          },
+          {
+            "titulo": "Contar os casos",
+            "texto": [
+              "O segredo é contar bem o **espaço amostral**, o conjunto de todos os resultados possíveis. Com dois dados, há 6 × 6 = 36 resultados, e não 11 somas: a soma 7 sai de 6 formas (1 e 6, 2 e 5, ..., 6 e 1), com probabilidade 6/36 = 1/6, enquanto a soma 2 sai de uma forma só. Com três moedas, há 2³ = 8 sequências, e exatamente duas caras aparecem em 3 delas. Quando a contagem é grande, use o princípio multiplicativo e as combinações."
+            ]
+          },
+          {
+            "titulo": "Evento complementar",
+            "texto": [
+              "A probabilidade de um evento não acontecer é 1 menos a de acontecer: se a chance de chover é 30%, a de não chover é 70%. Para \"pelo menos um\", o **evento complementar** costuma ser o caminho mais curto: a chance de tirar pelo menos uma cara em 3 lançamentos é 1 − 1/8 = 7/8, porque o único caso sem cara é coroa, coroa, coroa."
+            ]
+          },
+          {
+            "titulo": "União e como o Enem cobra",
+            "texto": [
+              "A probabilidade de A ou B é P(A) + P(B) − P(A e B); se A e B não podem acontecer juntos, basta somar. Em palavras: some as duas chances e desconte a parte comum, que foi contada duas vezes. Numa urna com bolas numeradas de 1 a 10, a chance de sair par ou múltiplo de 5 é (5 + 2 − 1) ÷ 10 = 6/10, porque o 10 é par e múltiplo de 5. O Enem cobra sorteios, urnas, dados, cartas, pesquisas que viram probabilidade e defeitos em produção."
+            ]
+          }
+        ],
+        "introducao": "Qual é a chance de ganhar uma rifa, de sair 7 na soma de dois dados, de uma peça vir com defeito? A probabilidade mede a incerteza com números e aparece em todo Enem, quase sempre ligada à contagem. Esta aula ensina a calcular probabilidades simples, usar o evento complementar e juntar eventos com \"ou\".",
+        "mapaMental": {
+          "centro": "Probabilidade",
+          "ramos": [
+            {
+              "titulo": "Definição",
+              "itens": [
+                "favoráveis sobre possíveis",
+                "resultados equiprováveis",
+                "entre 0 e 1"
+              ]
+            },
+            {
+              "titulo": "Contagem",
+              "itens": [
+                "espaço amostral com 36 pares para dois dados",
+                "use o princípio multiplicativo"
+              ]
+            },
+            {
+              "titulo": "Complementar",
+              "itens": [
+                "1 menos a probabilidade",
+                "evento complementar para pelo menos um"
+              ]
+            },
+            {
+              "titulo": "União",
+              "itens": [
+                "some e desconte a parte comum",
+                "eventos que não acontecem juntos só somam"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🎲",
+            "conceito": "Dois dados",
+            "liga": "36 resultados, não 11 somas",
+            "porque": "A soma 7 tem seis caminhos; a soma 2, só um."
+          },
+          {
+            "icone": "🎟️",
+            "conceito": "Rifa",
+            "liga": "números comprados sobre o total",
+            "porque": "Quem compra mais números tem mais chance, mas nunca certeza."
+          }
+        ],
+        "pontos": [
+          "Com resultados **equiprováveis**, a probabilidade é favoráveis sobre possíveis.",
+          "Conte bem o **espaço amostral**: dois dados geram 36 resultados.",
+          "A probabilidade fica entre 0 e 1 e pode ser escrita em porcentagem.",
+          "\"Pelo menos um\": use o **evento complementar**, 1 − P(nenhum).",
+          "P(A ou B) = P(A) + P(B) − P(A e B)."
+        ],
+        "perolas": [
+          "Soma 7 é a mais provável com dois dados.",
+          "Chance de chover 30% é chance de não chover 70%."
+        ],
+        "reforcar": [
+          "equiprovaveis",
+          "espaco amostral",
+          "evento complementar"
+        ]
+      }
+    },
+    {
+      "id": "mat-probabilidade-condicional",
+      "nome": "Aula 37 · Eventos sucessivos e probabilidade condicional",
+      "modulo": "Módulo 6 · Contagem e probabilidade",
+      "descricao": "Módulo 6 · aula 5 de 6 · 35 min · treina as habilidades H28 e H29",
+      "habilidades": [
+        "H28",
+        "H29"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Eventos sucessivos",
+            "texto": [
+              "Quando dois eventos acontecem em sequência e um não interfere no outro, eles são **independentes**, e as probabilidades se multiplicam: a chance de tirar cara e depois 6 no dado é 1/2 × 1/6 = 1/12. Lançamentos de moeda e de dado, sorteios com reposição e máquinas que funcionam separadamente costumam ser independentes. A chance de duas máquinas falharem juntas, com falhas de 10% e 20%, é 0,1 × 0,2 = 2%."
+            ]
+          },
+          {
+            "titulo": "Sem reposição",
+            "texto": [
+              "Sorteando sem devolver, a segunda probabilidade muda, porque a urna mudou: numa urna com 3 bolas vermelhas e 2 azuis, a chance de tirar duas vermelhas seguidas, sem reposição, é 3/5 × 2/4 = 3/10. Com reposição, seria 3/5 × 3/5 = 9/25. Cada etapa usa o que sobrou: na segunda tirada, o numerador e o denominador diminuem. Para \"cores diferentes\", some as duas ordens: vermelha e azul, ou azul e vermelha."
+            ]
+          },
+          {
+            "titulo": "Probabilidade condicional",
+            "texto": [
+              "A **probabilidade condicional** P(A | B) é a chance de A sabendo que B aconteceu: o espaço amostral encolhe para os casos de B. Numa tabela de 100 pacientes, com 30 fumantes, dos quais 12 têm uma doença, a chance de ter a doença sabendo que a pessoa fuma é 12/30 = 40%, e não 12/100. Pela fórmula, P(A | B) = P(A e B) ÷ P(B). Numa tabela de dupla entrada, divida pelo total da linha ou da coluna da condição."
+            ]
+          },
+          {
+            "titulo": "Árvore, testes e como o Enem cobra",
+            "texto": [
+              "Uma árvore de probabilidades organiza as etapas: **multiplique ao longo** de cada galho e some os galhos que levam ao mesmo resultado. É assim que se calcula a chance de um teste dar positivo e, depois, a chance de a pessoa estar doente sabendo que deu positivo: com uma doença rara, ela costuma ser bem menor do que parece, porque os falsos positivos entre os saudáveis são muitos. O Enem cobra urnas, testes diagnósticos, controle de qualidade, tabelas de dupla entrada e jogos."
+            ]
+          }
+        ],
+        "introducao": "Qual é a chance de dois sorteios seguidos darem certo? E se a primeira bola não voltar para a urna? Se um exame deu positivo, qual é a chance real de a pessoa estar doente? Esta aula trata de probabilidades em sequência, com e sem reposição, e da probabilidade condicional, que aparece em testes, pesquisas e controle de qualidade.",
+        "mapaMental": {
+          "centro": "Probabilidade condicional",
+          "ramos": [
+            {
+              "titulo": "Sucessivos",
+              "itens": [
+                "eventos independentes multiplicam",
+                "moedas, dados e reposição"
+              ]
+            },
+            {
+              "titulo": "Sem reposição",
+              "itens": [
+                "cada etapa usa o que sobrou",
+                "cores diferentes somam as duas ordens"
+              ]
+            },
+            {
+              "titulo": "Condicional",
+              "itens": [
+                "espaço amostral encolhe para a condição",
+                "divida pelo total do grupo dado"
+              ]
+            },
+            {
+              "titulo": "Árvore",
+              "itens": [
+                "multiplique ao longo do galho",
+                "some galhos com o mesmo resultado",
+                "testes e falsos positivos"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🌳",
+            "conceito": "Galhos de uma árvore",
+            "liga": "etapas em sequência",
+            "porque": "Multiplique ao subir pelo galho, some galhos que chegam ao mesmo lugar."
+          },
+          {
+            "icone": "🔦",
+            "conceito": "Lanterna num quarto escuro",
+            "liga": "condição dada",
+            "porque": "Saber a condição ilumina só uma parte do espaço."
+          }
+        ],
+        "pontos": [
+          "Eventos **independentes**: multiplique as probabilidades.",
+          "Sem reposição, cada etapa usa o que sobrou na urna.",
+          "**Probabilidade condicional**: divida pelos casos da condição, não pelo total geral.",
+          "Na árvore, **multiplique ao longo** do galho e some os galhos de mesmo resultado.",
+          "Teste positivo para doença rara: a chance real de estar doente é menor do que parece."
+        ],
+        "perolas": [
+          "Com reposição, a urna não muda; sem reposição, muda a cada tirada.",
+          "\"Sabendo que\" encolhe o espaço amostral."
+        ],
+        "reforcar": [
+          "independentes",
+          "probabilidade condicional",
+          "multiplique ao longo"
+        ]
+      }
+    },
+    {
+      "id": "mat-revisao-probabilidade",
+      "nome": "Aula 38 · Revisão do módulo: contagem e probabilidade",
+      "modulo": "Módulo 6 · Contagem e probabilidade",
+      "descricao": "Módulo 6 · aula 6 de 6 · 35 min · treina as habilidades H2, H28, H29 e H30",
+      "habilidades": [
+        "H2",
+        "H28",
+        "H29",
+        "H30"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Contar",
+            "texto": [
+              "Etapas em sequência se multiplicam; alternativas que se excluem se somam. Comece pela etapa mais restrita e use o complementar para \"pelo menos um\". Para decidir entre arranjo e combinação, troque dois elementos de lugar: se o resultado muda, a **ordem importa** e é arranjo; se não muda, é combinação, e o arranjo se divide por k!. Permutação é a fila de todos (n!); com letras repetidas, divide-se pelos fatoriais das repetições; em mesa redonda, (n − 1)!."
+            ]
+          },
+          {
+            "titulo": "Probabilidade",
+            "texto": [
+              "Com resultados equiprováveis, a probabilidade é favoráveis sobre possíveis, e o primeiro passo é contar bem o espaço amostral: dois dados geram 36 pares. O **complementar** resolve \"pelo menos um\": 1 − P(nenhum). Para \"A ou B\", some e desconte a interseção. Probabilidade e contagem andam juntas: quando o sorteio é de um grupo, como duas pessoas ou três bolas, conte os casos favoráveis e os possíveis com combinações, e a fração sai igual à que se obtém multiplicando as etapas sem reposição."
+            ]
+          },
+          {
+            "titulo": "Eventos em sequência",
+            "texto": [
+              "Eventos independentes multiplicam as probabilidades. Sem reposição, cada etapa usa o que sobrou. A **probabilidade condicional** restringe o espaço aos casos da condição: divida pelo total do grupo dado, e não pelo total geral. Numa árvore, multiplique ao longo dos galhos e some os galhos que levam ao mesmo resultado; \"exatamente um\" costuma ter mais de uma ordem. Em testes para doenças raras, a chance de estar doente sabendo que o teste deu positivo é a dos positivos verdadeiros dividida por todos os positivos, e costuma ser bem menor do que a precisão do teste sugere."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada. Os tropeços mais comuns do módulo são contar a ordem quando ela não importa, esquecer que sem reposição o total diminui, dividir pelo total geral numa condicional, somar probabilidades de eventos em sequência e esquecer o zero na primeira posição de um número."
+            ]
+          }
+        ],
+        "introducao": "Fim do módulo de contagem e probabilidade. As questões desta revisão vêm misturadas, como na prova: o desafio é reconhecer se a situação pede princípio multiplicativo, permutação, arranjo, combinação ou probabilidade, e com que cuidados.",
+        "mapaMental": {
+          "centro": "Contagem e probabilidade",
+          "ramos": [
+            {
+              "titulo": "Contar",
+              "itens": [
+                "multiplicar etapas",
+                "somar alternativas",
+                "etapa mais restrita"
+              ]
+            },
+            {
+              "titulo": "Ordem",
+              "itens": [
+                "a ordem importa no arranjo",
+                "combinação divide por k!",
+                "permutação de todos"
+              ]
+            },
+            {
+              "titulo": "Chance",
+              "itens": [
+                "favoráveis sobre possíveis",
+                "complementar para pelo menos um",
+                "união desconta a interseção"
+              ]
+            },
+            {
+              "titulo": "Sequência",
+              "itens": [
+                "independentes multiplicam",
+                "sem reposição muda a urna",
+                "probabilidade condicional divide pelo grupo dado"
+              ]
+            }
+          ]
+        },
+        "pontos": [
+          "Trocou dois elementos e o resultado mudou? A **ordem importa**: arranjo.",
+          "Use o **complementar** para \"pelo menos um\".",
+          "Eventos independentes multiplicam; sem reposição, a urna muda.",
+          "Na **probabilidade condicional**, divida pelos casos da condição."
+        ],
+        "perolas": [
+          "Antes de contar, pergunte: trocar dois elementos muda o resultado? Há repetição?"
+        ],
+        "reforcar": [
+          "ordem importa",
+          "complementar",
+          "probabilidade condicional"
         ]
       }
     }
@@ -19886,6 +20183,1386 @@
         "",
         "Somou as escolhas.",
         "Usou arranjo nas vermelhas."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q01",
+      "tema": "Casos favoráveis",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Num dado comum, qual é a probabilidade de sair um número par?",
+      "alternativas": [
+        "2/3",
+        "1/3",
+        "3",
+        "1/2",
+        "1/6"
+      ],
+      "correta": 3,
+      "explicacao": "Pares: 2, 4, 6. Probabilidade: 3/6 = 1/2. Dica de mergulhador: favoráveis sobre possíveis.",
+      "comentarios": [
+        "Contou 4 casos favoráveis.",
+        "Errou os casos favoráveis.",
+        "São os casos favoráveis, não a probabilidade.",
+        "",
+        "Contou um caso favorável só."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q02",
+      "tema": "Casos favoráveis",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma urna tem 3 bolas vermelhas, 5 azuis e 2 verdes. Qual é a probabilidade de sortear uma bola azul?",
+      "alternativas": [
+        "5/3",
+        "1/3",
+        "5",
+        "1/2",
+        "1/5"
+      ],
+      "correta": 3,
+      "explicacao": "5 azuis em 10 bolas: 5/10 = 1/2. Dica de mergulhador: conte bolas, não cores.",
+      "comentarios": [
+        "Dividiu pelas vermelhas.",
+        "Contou as cores, não as bolas.",
+        "São os casos favoráveis.",
+        "",
+        "Inverteu a fração."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q03",
+      "tema": "Casos favoráveis",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma probabilidade de 25% corresponde a que fração?",
+      "alternativas": [
+        "25",
+        "2/5",
+        "1/25",
+        "1/4",
+        "4"
+      ],
+      "correta": 3,
+      "explicacao": "25/100 = 1/4. Dica de mergulhador: porcentagem é fração de 100.",
+      "comentarios": [
+        "Esqueceu de dividir por 100.",
+        "Confundiu com 40%.",
+        "Usou 25 no denominador.",
+        "",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q04",
+      "tema": "Casos favoráveis",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma rifa tem 200 números, e uma pessoa comprou 8. Qual é a chance de ela ganhar?",
+      "alternativas": [
+        "4%",
+        "0,04%",
+        "8%",
+        "1/8",
+        "25%"
+      ],
+      "correta": 0,
+      "explicacao": "8/200 = 0,04 = 4%. Dica de mergulhador: números comprados sobre o total.",
+      "comentarios": [
+        "",
+        "Errou a vírgula.",
+        "Usou o número comprado como porcentagem.",
+        "Inverteu a ideia.",
+        "Dividiu 200 por 8."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q05",
+      "tema": "Casos favoráveis",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Dois dados são lançados. Qual é a probabilidade de a soma ser 7?",
+      "alternativas": [
+        "1/2",
+        "1/6",
+        "1/11",
+        "1/36",
+        "7/36"
+      ],
+      "correta": 1,
+      "explicacao": "Casos: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1): 6 em 36. 6/36 = 1/6. Dica de mergulhador: o espaço amostral tem 36 pares.",
+      "comentarios": [
+        "Errou a contagem.",
+        "",
+        "Tratou as 11 somas como igualmente prováveis.",
+        "Contou um caso só.",
+        "Usou a soma como número de casos."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q06",
+      "tema": "Casos favoráveis",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma moeda é lançada 3 vezes. Qual é a probabilidade de saírem exatamente 2 caras?",
+      "alternativas": [
+        "1/8",
+        "2/3",
+        "1/4",
+        "1/2",
+        "3/8"
+      ],
+      "correta": 4,
+      "explicacao": "8 sequências; com exatamente 2 caras: KKC, KCK, CKK (3). 3/8. Dica de mergulhador: a cara \"a mais\" pode estar em qualquer posição.",
+      "comentarios": [
+        "Contou um caso só.",
+        "Dividiu caras por lançamentos.",
+        "Contou só 2 casos favoráveis.",
+        "Errou a contagem.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q07",
+      "tema": "Casos favoráveis",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma senha de 3 algarismos (0 a 9) é gerada ao acaso, com repetição permitida. Qual é a probabilidade de os três algarismos serem iguais?",
+      "alternativas": [
+        "3%",
+        "1%",
+        "1/1.000",
+        "10%",
+        "1/3"
+      ],
+      "correta": 1,
+      "explicacao": "Favoráveis: 000, 111, ..., 999 (10). Possíveis: 1.000. 10/1.000 = 1%. Dica de mergulhador: são 10 senhas com algarismos iguais.",
+      "comentarios": [
+        "Multiplicou 1% por 3.",
+        "",
+        "Contou só uma senha favorável.",
+        "Usou 10 em 100.",
+        "Errou o espaço amostral."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q08",
+      "tema": "Casos favoráveis",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Escolhem-se 2 pessoas ao acaso num grupo de 4 homens e 6 mulheres. Qual é a probabilidade de serem duas mulheres?",
+      "alternativas": [
+        "1/3",
+        "2/3",
+        "36%",
+        "3/5",
+        "1/5"
+      ],
+      "correta": 0,
+      "explicacao": "Favoráveis: C(6, 2) = 15. Possíveis: C(10, 2) = 45. 15/45 = 1/3. Dica de mergulhador: grupos sem ordem nos dois lados da fração.",
+      "comentarios": [
+        "",
+        "Errou a contagem.",
+        "Calculou como se a mesma pessoa pudesse ser sorteada duas vezes.",
+        "Considerou só a primeira escolha.",
+        "Dividiu 2 por 10."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q09",
+      "tema": "Evento complementar",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "A chance de chover amanhã é de 30%. Qual é a chance de não chover?",
+      "alternativas": [
+        "3%",
+        "70%",
+        "30%",
+        "0%",
+        "100%"
+      ],
+      "correta": 1,
+      "explicacao": "100% − 30% = 70%. Dica de mergulhador: um evento e o seu contrário somam 100%.",
+      "comentarios": [
+        "Errou a vírgula.",
+        "",
+        "É a chance de chover.",
+        "Ignorou o complementar.",
+        "Somou as chances."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q10",
+      "tema": "Evento complementar",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Numa turma de 30 alunos, 18 gostam de futebol. Sorteado um aluno, qual é a chance de ele não gostar de futebol?",
+      "alternativas": [
+        "18%",
+        "1/12",
+        "40%",
+        "12%",
+        "60%"
+      ],
+      "correta": 2,
+      "explicacao": "Não gostam: 12. 12/30 = 40%. Dica de mergulhador: 1 − 18/30.",
+      "comentarios": [
+        "Usou o número dos que gostam.",
+        "Inverteu.",
+        "",
+        "Usou o número de alunos como porcentagem.",
+        "É a chance de gostar."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q11",
+      "tema": "Evento complementar",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma moeda é lançada 3 vezes. Qual é a probabilidade de sair pelo menos uma cara?",
+      "alternativas": [
+        "1/8",
+        "1/2",
+        "7/8",
+        "3/4",
+        "3/8"
+      ],
+      "correta": 2,
+      "explicacao": "Sem cara: só coroa, coroa, coroa (1/8). Pelo menos uma: 1 − 1/8 = 7/8. Dica de mergulhador: pelo menos um, complementar.",
+      "comentarios": [
+        "É a chance de não sair cara nenhuma.",
+        "Considerou só um lançamento.",
+        "",
+        "Errou o complementar.",
+        "É a chance de exatamente uma cara."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q12",
+      "tema": "Evento complementar",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Um dado é lançado duas vezes. Qual é a probabilidade de sair pelo menos um 6?",
+      "alternativas": [
+        "1/36",
+        "25/36",
+        "11/36",
+        "1/3",
+        "10/36"
+      ],
+      "correta": 2,
+      "explicacao": "Nenhum 6: (5/6)² = 25/36. Pelo menos um: 1 − 25/36 = 11/36. Dica de mergulhador: o complementar evita contar duas vezes.",
+      "comentarios": [
+        "É a chance de dois 6.",
+        "É a chance de nenhum 6.",
+        "",
+        "Somou 1/6 + 1/6, contando o (6, 6) duas vezes.",
+        "Descontou o (6, 6) duas vezes."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q13",
+      "tema": "Evento complementar",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma peça tem 10% de chance de ser defeituosa. Escolhendo 3 peças independentes, qual é a chance de pelo menos uma ser defeituosa?",
+      "alternativas": [
+        "30%",
+        "72,9%",
+        "10%",
+        "0,1%",
+        "27,1%"
+      ],
+      "correta": 4,
+      "explicacao": "Nenhuma defeituosa: 0,9³ = 0,729. Pelo menos uma: 1 − 0,729 = 0,271. Dica de mergulhador: somar chances de vários eventos superestima.",
+      "comentarios": [
+        "Somou as chances.",
+        "É a chance de nenhuma defeituosa.",
+        "Considerou uma peça.",
+        "É a chance de as três serem defeituosas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q14",
+      "tema": "Evento complementar",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Cinco pessoas escolhem, ao acaso e de forma independente, um dos 7 dias da semana para uma folga. Qual é, aproximadamente, a probabilidade de pelo menos duas escolherem o mesmo dia?",
+      "alternativas": [
+        "71%",
+        "15%",
+        "50%",
+        "14%",
+        "85%"
+      ],
+      "correta": 4,
+      "explicacao": "Todos diferentes: (7 × 6 × 5 × 4 × 3) ÷ 7⁵ = 2.520 ÷ 16.807 ≈ 0,15. Pelo menos dois iguais: 1 − 0,15 ≈ 0,85. Dica de mergulhador: \"pelo menos dois iguais\" é o contrário de \"todos diferentes\".",
+      "comentarios": [
+        "Usou 5/7.",
+        "É a chance de todos os dias serem diferentes.",
+        "Chutou meio a meio.",
+        "Usou 1/7.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q15",
+      "tema": "União de eventos",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Num dado comum, qual é a probabilidade de sair 1 ou 6?",
+      "alternativas": [
+        "7/6",
+        "1/6",
+        "1/3",
+        "1/2",
+        "1/36"
+      ],
+      "correta": 2,
+      "explicacao": "Os eventos não acontecem juntos: 1/6 + 1/6 = 2/6 = 1/3. Dica de mergulhador: \"ou\" de eventos exclusivos soma.",
+      "comentarios": [
+        "Somou os números.",
+        "Considerou só um número.",
+        "",
+        "Contou três números.",
+        "Multiplicou as chances."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q16",
+      "tema": "União de eventos",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Bolas numeradas de 1 a 10 estão numa urna. Qual é a probabilidade de sortear um número par ou múltiplo de 5?",
+      "alternativas": [
+        "2/10",
+        "7/10",
+        "6/10",
+        "1/10",
+        "5/10"
+      ],
+      "correta": 2,
+      "explicacao": "Pares: 5. Múltiplos de 5: 2. Os dois: 1 (o 10). 5 + 2 − 1 = 6. 6/10. Dica de mergulhador: desconte o que foi contado duas vezes.",
+      "comentarios": [
+        "Contou só os múltiplos de 5.",
+        "Contou o 10 duas vezes.",
+        "",
+        "Contou só a interseção.",
+        "Contou só os pares."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q17",
+      "tema": "União de eventos",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Numa turma, 60% estudam inglês, 40% estudam espanhol e 20% estudam os dois. Sorteado um aluno, qual é a chance de ele estudar inglês ou espanhol?",
+      "alternativas": [
+        "100%",
+        "24%",
+        "80%",
+        "20%",
+        "40%"
+      ],
+      "correta": 2,
+      "explicacao": "60% + 40% − 20% = 80%. Dica de mergulhador: os 20% foram contados nas duas línguas.",
+      "comentarios": [
+        "Somou sem descontar os que estudam os dois.",
+        "Multiplicou as chances.",
+        "",
+        "É a interseção.",
+        "Usou só o espanhol."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q18",
+      "tema": "União de eventos",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Tira-se uma carta de um baralho de 52. Qual é a probabilidade de ser de copas ou uma figura (valete, dama ou rei)?",
+      "alternativas": [
+        "3/52",
+        "25/52",
+        "12/52",
+        "11/26",
+        "1/4"
+      ],
+      "correta": 3,
+      "explicacao": "Copas: 13. Figuras: 12. Figuras de copas: 3. 13 + 12 − 3 = 22. 22/52 = 11/26. Dica de mergulhador: desconte as cartas que estão nos dois grupos.",
+      "comentarios": [
+        "Contou só as figuras de copas.",
+        "Contou as figuras de copas duas vezes.",
+        "Contou só as figuras.",
+        "",
+        "Contou só copas."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q19",
+      "tema": "União de eventos",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Numa pesquisa com 100 pessoas, 45 leem jornal, 60 usam redes sociais para se informar e 25 fazem as duas coisas. Sorteada uma pessoa, qual é a chance de ela não fazer nenhuma das duas?",
+      "alternativas": [
+        "80%",
+        "0%",
+        "25%",
+        "20%",
+        "40%"
+      ],
+      "correta": 3,
+      "explicacao": "Pelo menos uma: 45 + 60 − 25 = 80. Nenhuma: 100 − 80 = 20. Dica de mergulhador: união primeiro, complementar depois.",
+      "comentarios": [
+        "É a chance de fazer pelo menos uma.",
+        "Achou que todos fazem alguma das duas.",
+        "É a interseção.",
+        "",
+        "Descontou só as redes sociais."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q20",
+      "tema": "União de eventos",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Dois eventos têm P(A) = 0,5, P(B) = 0,3 e P(A ou B) = 0,6. Qual é P(A e B)?",
+      "alternativas": [
+        "0,15",
+        "0,2",
+        "0,4",
+        "0,1",
+        "0,8"
+      ],
+      "correta": 1,
+      "explicacao": "P(A ou B) = P(A) + P(B) − P(A e B): 0,6 = 0,8 − P(A e B), logo P(A e B) = 0,2. Dica de mergulhador: isole a interseção na fórmula da união.",
+      "comentarios": [
+        "Multiplicou, supondo independência.",
+        "",
+        "Errou a fórmula.",
+        "Subtraiu 0,5 de 0,6.",
+        "Somou P(A) e P(B)."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q01",
+      "tema": "Eventos independentes",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma moeda e um dado são lançados. Qual é a probabilidade de sair cara e o número 6?",
+      "alternativas": [
+        "1/2",
+        "1/12",
+        "1/8",
+        "2/3",
+        "1/6"
+      ],
+      "correta": 1,
+      "explicacao": "Independentes: 1/2 × 1/6 = 1/12. Dica de mergulhador: \"e\" em sequência multiplica.",
+      "comentarios": [
+        "Considerou só a moeda.",
+        "",
+        "Errou o espaço amostral.",
+        "Somou as probabilidades.",
+        "Considerou só o dado."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q02",
+      "tema": "Eventos independentes",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma moeda é lançada duas vezes. Qual é a probabilidade de saírem duas caras?",
+      "alternativas": [
+        "1/4",
+        "3/4",
+        "1",
+        "1/3",
+        "1/2"
+      ],
+      "correta": 0,
+      "explicacao": "1/2 × 1/2 = 1/4. Dica de mergulhador: são 4 sequências, uma delas KK.",
+      "comentarios": [
+        "",
+        "É a chance de pelo menos uma cara.",
+        "Somou 1/2 + 1/2.",
+        "Contou 3 resultados.",
+        "Considerou um lançamento."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q03",
+      "tema": "Eventos independentes",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Duas máquinas funcionam de forma independente. A máquina A falha com 10% de chance, e a B, com 20%. Qual é a probabilidade de as duas falharem?",
+      "alternativas": [
+        "72%",
+        "28%",
+        "15%",
+        "30%",
+        "2%"
+      ],
+      "correta": 4,
+      "explicacao": "0,1 × 0,2 = 0,02 = 2%. Dica de mergulhador: as duas juntas, multiplique.",
+      "comentarios": [
+        "É a chance de nenhuma falhar.",
+        "É a chance de pelo menos uma falhar.",
+        "Fez a média.",
+        "Somou as chances.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q04",
+      "tema": "Eventos independentes",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "As máquinas A e B falham com 10% e 20% de chance, de forma independente. Qual é a probabilidade de nenhuma falhar?",
+      "alternativas": [
+        "72%",
+        "70%",
+        "28%",
+        "98%",
+        "2%"
+      ],
+      "correta": 0,
+      "explicacao": "A não falha: 0,9. B não falha: 0,8. Nenhuma: 0,9 × 0,8 = 0,72. Dica de mergulhador: multiplique os complementares.",
+      "comentarios": [
+        "",
+        "Fez 100% − 30%.",
+        "É a chance de pelo menos uma falhar.",
+        "Fez 100% − 2%.",
+        "É a chance de as duas falharem."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q05",
+      "tema": "Eventos independentes",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Um time vence 60% dos seus jogos, e os resultados são independentes. Qual é a probabilidade de vencer os dois próximos jogos?",
+      "alternativas": [
+        "16%",
+        "36%",
+        "30%",
+        "60%",
+        "120%"
+      ],
+      "correta": 1,
+      "explicacao": "0,6 × 0,6 = 0,36. Dica de mergulhador: probabilidade nunca passa de 100%.",
+      "comentarios": [
+        "É a chance de perder os dois.",
+        "",
+        "Dividiu por 2.",
+        "Considerou um jogo.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q06",
+      "tema": "Eventos independentes",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma prova tem 5 questões de múltipla escolha com 4 alternativas cada. Um aluno chuta todas. Qual é a probabilidade de acertar as cinco?",
+      "alternativas": [
+        "1/4",
+        "5/4",
+        "5/1.024",
+        "1/20",
+        "1/1.024"
+      ],
+      "correta": 4,
+      "explicacao": "(1/4)⁵ = 1/1.024. Dica de mergulhador: chutar tudo certo é muito improvável.",
+      "comentarios": [
+        "Considerou uma questão.",
+        "Somou as chances.",
+        "Multiplicou por 5 sem motivo.",
+        "Multiplicou 4 por 5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q07",
+      "tema": "Sem reposição",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma urna tem 3 bolas vermelhas e 2 azuis. Tira-se uma bola, anota-se a cor, devolve-se e tira-se outra. Qual é a probabilidade de as duas serem vermelhas?",
+      "alternativas": [
+        "3/5",
+        "9/25",
+        "6/5",
+        "3/10",
+        "6/25"
+      ],
+      "correta": 1,
+      "explicacao": "Com reposição, a urna não muda: 3/5 × 3/5 = 9/25. Dica de mergulhador: devolveu, a chance se repete.",
+      "comentarios": [
+        "Considerou uma tirada.",
+        "",
+        "Somou.",
+        "Calculou sem reposição.",
+        "Errou o segundo fator."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q08",
+      "tema": "Sem reposição",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma urna tem 3 bolas vermelhas e 2 azuis. Tiram-se duas bolas, sem reposição. Qual é a probabilidade de as duas serem vermelhas?",
+      "alternativas": [
+        "3/10",
+        "1/2",
+        "3/5",
+        "6/5",
+        "9/25"
+      ],
+      "correta": 0,
+      "explicacao": "3/5 × 2/4 = 6/20 = 3/10. Dica de mergulhador: sem reposição, numerador e denominador caem.",
+      "comentarios": [
+        "",
+        "Errou a contagem.",
+        "Considerou uma tirada.",
+        "Somou.",
+        "Calculou com reposição."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q09",
+      "tema": "Sem reposição",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma caixa tem 10 lâmpadas, 2 delas queimadas. Tiram-se 2, sem reposição. Qual é a probabilidade de nenhuma estar queimada?",
+      "alternativas": [
+        "64%",
+        "36%",
+        "80%",
+        "1/45",
+        "28/45"
+      ],
+      "correta": 4,
+      "explicacao": "8/10 × 7/9 = 56/90 = 28/45 ≈ 62%. Dica de mergulhador: boas sobre o total, e depois boas que sobraram sobre o que sobrou.",
+      "comentarios": [
+        "Calculou com reposição.",
+        "Fez 1 − 0,64.",
+        "Considerou uma lâmpada.",
+        "É a chance de as duas estarem queimadas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q10",
+      "tema": "Sem reposição",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "De um baralho de 52 cartas, tiram-se 2, sem reposição. Qual é a probabilidade de as duas serem ases?",
+      "alternativas": [
+        "8/52",
+        "1/169",
+        "1/221",
+        "1/13",
+        "2/13"
+      ],
+      "correta": 2,
+      "explicacao": "4/52 × 3/51 = 12/2.652 = 1/221. Dica de mergulhador: depois de um ás, restam 3 em 51.",
+      "comentarios": [
+        "Somou os ases.",
+        "Calculou com reposição.",
+        "",
+        "Considerou uma carta.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q11",
+      "tema": "Sem reposição",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Num sorteio, 3 prêmios serão dados entre 20 pessoas, e ninguém ganha duas vezes. Você é uma das 20. Qual é a probabilidade de ganhar algum prêmio?",
+      "alternativas": [
+        "5%",
+        "Cerca de 14,3%",
+        "15%",
+        "85%",
+        "3%"
+      ],
+      "correta": 2,
+      "explicacao": "Não ganhar: 19/20 × 18/19 × 17/18 = 17/20. Ganhar: 3/20 = 15%. Dica de mergulhador: 3 vencedores entre 20 pessoas, cada uma com a mesma chance.",
+      "comentarios": [
+        "Considerou um prêmio só.",
+        "Calculou como se a mesma pessoa pudesse ganhar de novo.",
+        "",
+        "É a chance de não ganhar.",
+        "Usou o número de prêmios."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q12",
+      "tema": "Sem reposição",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma urna tem 4 bolas vermelhas e 6 azuis. Tiram-se 2, sem reposição. Qual é a probabilidade de serem de cores diferentes?",
+      "alternativas": [
+        "48%",
+        "4/15",
+        "8/15",
+        "1/2",
+        "2/15"
+      ],
+      "correta": 2,
+      "explicacao": "V depois A: 4/10 × 6/9 = 24/90. A depois V: 6/10 × 4/9 = 24/90. Total: 48/90 = 8/15. Dica de mergulhador: cores diferentes têm duas ordens.",
+      "comentarios": [
+        "Calculou com reposição.",
+        "Contou só a ordem vermelha e depois azul.",
+        "",
+        "Chutou meio a meio.",
+        "É a chance de duas vermelhas."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q13",
+      "tema": "Condicional e árvores",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Um dado foi lançado, e sabe-se que saiu um número par. Qual é a probabilidade de ser o 6?",
+      "alternativas": [
+        "1/2",
+        "3/6",
+        "1/6",
+        "2/3",
+        "1/3"
+      ],
+      "correta": 4,
+      "explicacao": "Os pares são 2, 4 e 6: o espaço encolhe para 3 casos. 1/3. Dica de mergulhador: \"sabe-se que\" encolhe o espaço.",
+      "comentarios": [
+        "Errou o novo espaço.",
+        "É a chance de par.",
+        "Ignorou a informação dada.",
+        "Contou dois casos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q14",
+      "tema": "Condicional e árvores",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Num grupo de 100 pacientes, 30 são fumantes, e 12 desses fumantes têm uma doença. Sorteado um fumante, qual é a chance de ele ter a doença?",
+      "alternativas": [
+        "3,6%",
+        "30%",
+        "70%",
+        "40%",
+        "12%"
+      ],
+      "correta": 3,
+      "explicacao": "Entre os 30 fumantes, 12 têm a doença: 12/30 = 40%. Dica de mergulhador: divida pelo grupo da condição.",
+      "comentarios": [
+        "Multiplicou as porcentagens.",
+        "É a porcentagem de fumantes.",
+        "É a porcentagem de não fumantes.",
+        "",
+        "Dividiu pelo total de pacientes."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q15",
+      "tema": "Condicional e árvores",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Entre 200 pessoas, 120 foram vacinadas e 6 delas pegaram gripe; das 80 não vacinadas, 16 pegaram gripe. Qual é a chance de pegar gripe entre os vacinados e entre os não vacinados?",
+      "alternativas": [
+        "5% e 8%",
+        "6% e 16%",
+        "3% e 8%",
+        "5% e 20%",
+        "27% e 73%"
+      ],
+      "correta": 3,
+      "explicacao": "Vacinados: 6/120 = 5%. Não vacinados: 16/80 = 20%. Dica de mergulhador: cada grupo com o seu total.",
+      "comentarios": [
+        "Usou um total diferente para cada grupo.",
+        "Usou os números de casos.",
+        "Dividiu pelo total de 200.",
+        "",
+        "Dividiu pelos 22 casos de gripe."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q16",
+      "tema": "Condicional e árvores",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Numa turma, 40% são meninas. Usam óculos 30% das meninas e 20% dos meninos. Sorteada uma pessoa, qual é a chance de ela usar óculos?",
+      "alternativas": [
+        "6%",
+        "25%",
+        "50%",
+        "24%",
+        "12%"
+      ],
+      "correta": 3,
+      "explicacao": "Meninas de óculos: 0,4 × 0,3 = 0,12. Meninos: 0,6 × 0,2 = 0,12. Total: 0,24. Dica de mergulhador: multiplique ao longo de cada galho e some.",
+      "comentarios": [
+        "Multiplicou as duas taxas.",
+        "Fez a média simples.",
+        "Somou as porcentagens.",
+        "",
+        "Considerou só as meninas."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q17",
+      "tema": "Condicional e árvores",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Escolhe-se uma de duas urnas jogando uma moeda. A urna 1 tem 3 bolas vermelhas e 1 azul; a urna 2 tem 1 vermelha e 3 azuis. Qual é a probabilidade de sair uma bola vermelha?",
+      "alternativas": [
+        "1/4",
+        "3/16",
+        "3/4",
+        "1/2",
+        "1"
+      ],
+      "correta": 3,
+      "explicacao": "1/2 × 3/4 + 1/2 × 1/4 = 3/8 + 1/8 = 1/2. Dica de mergulhador: multiplique pela chance de cada urna e some.",
+      "comentarios": [
+        "Considerou só a urna 2.",
+        "Multiplicou as duas chances.",
+        "Considerou só a urna 1.",
+        "",
+        "Somou 3/4 + 1/4."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q18",
+      "tema": "Condicional e árvores",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma doença atinge 1% da população. Um teste dá positivo em 90% dos doentes e, por engano, em 10% dos saudáveis. Uma pessoa testou positivo. Qual é, aproximadamente, a chance de ela estar doente?",
+      "alternativas": [
+        "50%",
+        "10%",
+        "1%",
+        "90%",
+        "Cerca de 8%"
+      ],
+      "correta": 4,
+      "explicacao": "Positivos doentes: 0,01 × 0,9 = 0,009. Positivos saudáveis: 0,99 × 0,1 = 0,099. Doente dado positivo: 0,009 ÷ 0,108 ≈ 8,3%. Dica de mergulhador: com doença rara, os falsos positivos dominam.",
+      "comentarios": [
+        "Chutou meio a meio.",
+        "É a taxa de falso positivo.",
+        "Ignorou o resultado do teste.",
+        "É a chance de positivo entre doentes, não o contrário.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q19",
+      "tema": "Condicional e árvores",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Numa pesquisa com 500 eleitores, 300 votam em A (180 mulheres) e 200 votam em B (80 mulheres). Sorteada uma mulher, qual é a chance de ela votar em A?",
+      "alternativas": [
+        "36%",
+        "Cerca de 69%",
+        "52%",
+        "31%",
+        "60%"
+      ],
+      "correta": 1,
+      "explicacao": "Mulheres: 260. Votam em A: 180. 180/260 ≈ 69%. Dica de mergulhador: a condição \"mulher\" define o denominador.",
+      "comentarios": [
+        "Dividiu pelo total de eleitores.",
+        "",
+        "É a porcentagem de mulheres.",
+        "É a chance de votar em B.",
+        "É a chance de ser mulher entre os eleitores de A."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q20",
+      "tema": "Condicional e árvores",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Um atirador acerta 70% dos tiros, de forma independente. Qual é a probabilidade de acertar exatamente 1 de 2 tiros?",
+      "alternativas": [
+        "9%",
+        "21%",
+        "70%",
+        "49%",
+        "42%"
+      ],
+      "correta": 4,
+      "explicacao": "Acerta e erra: 0,7 × 0,3 = 0,21. Erra e acerta: 0,21. Total: 0,42. Dica de mergulhador: \"exatamente um\" tem mais de uma ordem.",
+      "comentarios": [
+        "É a chance de dois erros.",
+        "Contou só a ordem acerto e erro.",
+        "Considerou um tiro.",
+        "É a chance de dois acertos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q01",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma pessoa tem 4 camisas e 3 bermudas. Quantas combinações de camisa e bermuda ela pode montar?",
+      "alternativas": [
+        "7",
+        "81",
+        "12",
+        "4",
+        "64"
+      ],
+      "correta": 2,
+      "explicacao": "4 × 3 = 12. Dica de mergulhador: etapas se multiplicam.",
+      "comentarios": [
+        "Somou.",
+        "Elevou 3 a 4.",
+        "",
+        "Contou só as camisas.",
+        "Elevou 4 ao cubo."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q02",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Quantos anagramas tem a palavra PEIXE?",
+      "alternativas": [
+        "30",
+        "10",
+        "60",
+        "24",
+        "120"
+      ],
+      "correta": 2,
+      "explicacao": "5 letras com 2 E: 5! ÷ 2! = 60. Dica de mergulhador: divida pela repetição.",
+      "comentarios": [
+        "Dividiu por 4.",
+        "Dividiu por 12.",
+        "",
+        "Calculou 4!.",
+        "Ignorou o E repetido."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q03",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "De quantas formas se escolhem 2 pessoas entre 7 para uma tarefa?",
+      "alternativas": [
+        "42",
+        "14",
+        "9",
+        "49",
+        "21"
+      ],
+      "correta": 4,
+      "explicacao": "C(7, 2) = 42 ÷ 2 = 21. Dica de mergulhador: tarefa igual, sem ordem.",
+      "comentarios": [
+        "Contou a ordem.",
+        "Multiplicou 7 por 2.",
+        "Somou.",
+        "Permitiu repetição.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q04",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Num dado comum, qual é a probabilidade de sair um múltiplo de 3?",
+      "alternativas": [
+        "1/2",
+        "1/6",
+        "1/3",
+        "2/3",
+        "2"
+      ],
+      "correta": 2,
+      "explicacao": "Múltiplos de 3: 3 e 6. 2/6 = 1/3. Dica de mergulhador: favoráveis sobre possíveis.",
+      "comentarios": [
+        "Contou três casos.",
+        "Contou só o 3.",
+        "",
+        "Contou os não múltiplos.",
+        "São os casos favoráveis."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q05",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Num dado comum, qual é a probabilidade de não sair 6?",
+      "alternativas": [
+        "1/6",
+        "0",
+        "5/6",
+        "6/5",
+        "1/2"
+      ],
+      "correta": 2,
+      "explicacao": "1 − 1/6 = 5/6. Dica de mergulhador: complementar.",
+      "comentarios": [
+        "É a chance de sair 6.",
+        "Ignorou os outros números.",
+        "",
+        "Inverteu.",
+        "Errou a contagem."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q06",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma moeda é lançada duas vezes. Qual é a probabilidade de saírem duas coroas?",
+      "alternativas": [
+        "1/3",
+        "3/4",
+        "1/2",
+        "1",
+        "1/4"
+      ],
+      "correta": 4,
+      "explicacao": "1/2 × 1/2 = 1/4. Dica de mergulhador: independentes, multiplique.",
+      "comentarios": [
+        "Contou 3 resultados.",
+        "É a chance de pelo menos uma coroa.",
+        "Considerou um lançamento.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q07",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Quantas senhas de 3 algarismos distintos (0 a 9) existem?",
+      "alternativas": [
+        "1.000",
+        "120",
+        "720",
+        "30",
+        "648"
+      ],
+      "correta": 2,
+      "explicacao": "10 × 9 × 8 = 720. Dica de mergulhador: senha pode começar com zero.",
+      "comentarios": [
+        "Permitiu repetição.",
+        "Ignorou a ordem.",
+        "",
+        "Multiplicou 10 por 3.",
+        "Proibiu o zero na primeira posição."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q08",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "De quantas formas 6 pessoas podem sentar numa mesa redonda, sem contar giros como arrumações novas?",
+      "alternativas": [
+        "360",
+        "6",
+        "120",
+        "36",
+        "720"
+      ],
+      "correta": 2,
+      "explicacao": "(6 − 1)! = 120. Dica de mergulhador: fixe uma pessoa.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Contou as pessoas.",
+        "",
+        "Elevou 6 ao quadrado.",
+        "Contou como fila."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q09",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Dois dados são lançados. Qual é a probabilidade de a soma ser 8?",
+      "alternativas": [
+        "1/11",
+        "1/6",
+        "2/36",
+        "8/36",
+        "5/36"
+      ],
+      "correta": 4,
+      "explicacao": "(2,6), (3,5), (4,4), (5,3), (6,2): 5/36. Dica de mergulhador: liste os pares ordenados.",
+      "comentarios": [
+        "Tratou as somas como equiprováveis.",
+        "Contou 6 casos.",
+        "Esqueceu pares.",
+        "Usou a soma como número de casos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q10",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma urna tem 5 bolas vermelhas e 3 azuis. Tiram-se 2, sem reposição. Qual é a probabilidade de as duas serem azuis?",
+      "alternativas": [
+        "9/64",
+        "1/4",
+        "3/8",
+        "3/28",
+        "3/4"
+      ],
+      "correta": 3,
+      "explicacao": "3/8 × 2/7 = 6/56 = 3/28. Dica de mergulhador: sem reposição, a urna muda.",
+      "comentarios": [
+        "Calculou com reposição.",
+        "Errou a conta.",
+        "Considerou uma tirada.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q11",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma moeda é lançada 4 vezes. Qual é a probabilidade de sair pelo menos uma cara?",
+      "alternativas": [
+        "4/16",
+        "1/16",
+        "1/2",
+        "15/16",
+        "1"
+      ],
+      "correta": 3,
+      "explicacao": "1 − (1/2)⁴ = 15/16. Dica de mergulhador: complementar.",
+      "comentarios": [
+        "É a chance de exatamente uma cara.",
+        "É a chance de nenhuma cara.",
+        "Considerou um lançamento.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q12",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma equipe de 3 pessoas será escolhida entre 5 homens e 3 mulheres, com exatamente 2 mulheres. Quantas equipes são possíveis?",
+      "alternativas": [
+        "3",
+        "30",
+        "8",
+        "15",
+        "56"
+      ],
+      "correta": 3,
+      "explicacao": "C(3, 2) × C(5, 1) = 3 × 5 = 15. Dica de mergulhador: cada tipo com a sua quantidade.",
+      "comentarios": [
+        "Esqueceu o homem.",
+        "Usou arranjo nas mulheres.",
+        "Somou.",
+        "",
+        "Ignorou a condição."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q13",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Bolas numeradas de 1 a 30 estão numa urna. Qual é a probabilidade de sair um múltiplo de 5 ou de 6?",
+      "alternativas": [
+        "1/5",
+        "11/30",
+        "1/6",
+        "1/3",
+        "1/30"
+      ],
+      "correta": 3,
+      "explicacao": "Múltiplos de 5: 6. De 6: 5. De 30: 1. 6 + 5 − 1 = 10. 10/30 = 1/3. Dica de mergulhador: desconte a parte comum.",
+      "comentarios": [
+        "Contou só os múltiplos de 5.",
+        "Contou o 30 duas vezes.",
+        "Contou só os múltiplos de 6.",
+        "",
+        "Contou só a interseção."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q14",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Numa turma de 50 alunos, 20 fazem inglês, e 8 desses também fazem espanhol. Sorteado um aluno de inglês, qual é a chance de ele fazer espanhol?",
+      "alternativas": [
+        "8%",
+        "40%",
+        "16%",
+        "60%",
+        "20%"
+      ],
+      "correta": 1,
+      "explicacao": "Entre os 20 de inglês, 8 fazem espanhol: 8/20 = 40%. Dica de mergulhador: a condição define o total.",
+      "comentarios": [
+        "Usou o número como porcentagem.",
+        "",
+        "Dividiu pelo total da turma.",
+        "É a chance de não fazer espanhol.",
+        "Errou o denominador."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q15",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "De quantas formas se escolhem presidente, vice e tesoureiro entre 8 pessoas?",
+      "alternativas": [
+        "24",
+        "56",
+        "512",
+        "6.720",
+        "336"
+      ],
+      "correta": 4,
+      "explicacao": "8 × 7 × 6 = 336. Dica de mergulhador: cargos diferentes, arranjo.",
+      "comentarios": [
+        "Multiplicou 8 por 3.",
+        "Ignorou a ordem dos cargos.",
+        "Permitiu repetição.",
+        "Usou 4 cargos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q16",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma doença atinge 5% de uma população. Um teste dá positivo em 80% dos doentes e em 10% dos saudáveis. Uma pessoa testou positivo. Qual é, aproximadamente, a chance de estar doente?",
+      "alternativas": [
+        "50%",
+        "Cerca de 30%",
+        "80%",
+        "5%",
+        "10%"
+      ],
+      "correta": 1,
+      "explicacao": "Doentes positivos: 0,05 × 0,8 = 0,04. Saudáveis positivos: 0,95 × 0,1 = 0,095. 0,04 ÷ 0,135 ≈ 29,6%. Dica de mergulhador: positivos verdadeiros sobre todos os positivos.",
+      "comentarios": [
+        "Chutou meio a meio.",
+        "",
+        "É a chance de positivo entre doentes.",
+        "Ignorou o teste.",
+        "É a taxa de falso positivo."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q17",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Quantos números de 4 algarismos distintos, formados com os algarismos de 1 a 6, são maiores que 4.000?",
+      "alternativas": [
+        "180",
+        "120",
+        "360",
+        "60",
+        "216"
+      ],
+      "correta": 0,
+      "explicacao": "Milhar: 4, 5 ou 6 (3 opções). Depois 5, 4 e 3: 3 × 5 × 4 × 3 = 180. Dica de mergulhador: a condição de tamanho está no primeiro algarismo.",
+      "comentarios": [
+        "",
+        "Usou 2 opções no milhar.",
+        "Esqueceu a condição.",
+        "Usou 1 opção no milhar.",
+        "Permitiu repetição nas outras posições."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q18",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma urna tem 3 bolas brancas e 2 pretas. Tiram-se 3, sem reposição. Qual é a probabilidade de saírem exatamente 2 brancas?",
+      "alternativas": [
+        "40%",
+        "60%",
+        "10%",
+        "30%",
+        "43,2%"
+      ],
+      "correta": 1,
+      "explicacao": "Favoráveis: C(3, 2) × C(2, 1) = 6. Possíveis: C(5, 3) = 10. 6/10 = 60%. Dica de mergulhador: combinações para cada cor.",
+      "comentarios": [
+        "Usou a fração de bolas pretas.",
+        "",
+        "É a chance de três brancas.",
+        "Contou só uma ordem.",
+        "Calculou com reposição."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q19",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Um sistema funciona se pelo menos uma de duas máquinas independentes funcionar. As máquinas funcionam com 90% e 80% de chance. Qual é a probabilidade de o sistema funcionar?",
+      "alternativas": [
+        "98%",
+        "72%",
+        "85%",
+        "2%",
+        "170%"
+      ],
+      "correta": 0,
+      "explicacao": "Falha só se as duas falharem: 0,1 × 0,2 = 0,02. Funciona: 0,98. Dica de mergulhador: pelo menos uma, complementar.",
+      "comentarios": [
+        "",
+        "É a chance de as duas funcionarem.",
+        "Fez a média.",
+        "É a chance de o sistema falhar.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q20",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma senha de 4 algarismos (0 a 9) é gerada ao acaso, com repetição. Qual é a probabilidade de ela ter pelo menos dois algarismos iguais?",
+      "alternativas": [
+        "50,4%",
+        "10%",
+        "0,1%",
+        "25%",
+        "49,6%"
+      ],
+      "correta": 4,
+      "explicacao": "Todos diferentes: 10 × 9 × 8 × 7 = 5.040 em 10.000. Pelo menos dois iguais: 1 − 0,504 = 0,496. Dica de mergulhador: o contrário de \"algum igual\" é \"todos diferentes\".",
+      "comentarios": [
+        "É a chance de todos serem diferentes.",
+        "Chutou um valor redondo.",
+        "É a chance de todos serem iguais.",
+        "Errou a conta.",
+        ""
       ]
     }
   ],
@@ -36833,6 +38510,1446 @@
         "Somou.",
         "Usou arranjo nos meninos."
       ]
+    },
+    {
+      "id": "mat-probabilidade-q01-v1",
+      "varianteDe": "mat-probabilidade-q01",
+      "tema": "Casos favoráveis",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Num dado comum, qual é a probabilidade de sair um número maior que 4?",
+      "alternativas": [
+        "1/6",
+        "1/3",
+        "2/3",
+        "2",
+        "1/2"
+      ],
+      "correta": 1,
+      "explicacao": "Maiores que 4: 5 e 6. 2/6 = 1/3. Dica de mergulhador: \"maior que\" não inclui o próprio número.",
+      "comentarios": [
+        "Contou só o 6.",
+        "",
+        "Contou os casos menores.",
+        "São os casos favoráveis.",
+        "Incluiu o 4."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q02-v1",
+      "varianteDe": "mat-probabilidade-q02",
+      "tema": "Casos favoráveis",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma urna tem 4 bolas brancas e 6 pretas. Qual é a probabilidade de sortear uma branca?",
+      "alternativas": [
+        "1/4",
+        "4",
+        "4/6",
+        "2/5",
+        "1/2"
+      ],
+      "correta": 3,
+      "explicacao": "4/10 = 2/5. Dica de mergulhador: o denominador é o total de bolas.",
+      "comentarios": [
+        "Inverteu.",
+        "São os casos favoráveis.",
+        "Dividiu pelas pretas.",
+        "",
+        "Contou as cores."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q03-v1",
+      "varianteDe": "mat-probabilidade-q03",
+      "tema": "Casos favoráveis",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma probabilidade de 3/5 corresponde a que porcentagem?",
+      "alternativas": [
+        "53%",
+        "30%",
+        "60%",
+        "3,5%",
+        "35%"
+      ],
+      "correta": 2,
+      "explicacao": "3 ÷ 5 = 0,6 = 60%. Dica de mergulhador: divida e multiplique por 100.",
+      "comentarios": [
+        "Inverteu os algarismos.",
+        "Usou 3/10.",
+        "",
+        "Juntou e errou a vírgula.",
+        "Juntou os algarismos."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q04-v1",
+      "varianteDe": "mat-probabilidade-q04",
+      "tema": "Casos favoráveis",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma rifa tem 500 números, e uma pessoa comprou 15. Qual é a chance de ela ganhar?",
+      "alternativas": [
+        "3%",
+        "0,3%",
+        "1/15",
+        "15%",
+        "33,3%"
+      ],
+      "correta": 0,
+      "explicacao": "15/500 = 0,03 = 3%. Dica de mergulhador: favoráveis ÷ possíveis.",
+      "comentarios": [
+        "",
+        "Errou a vírgula.",
+        "Inverteu.",
+        "Usou o número comprado.",
+        "Dividiu 500 por 15."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q05-v1",
+      "varianteDe": "mat-probabilidade-q05",
+      "tema": "Casos favoráveis",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Dois dados são lançados. Qual é a probabilidade de a soma ser 10?",
+      "alternativas": [
+        "1/6",
+        "1/11",
+        "1/12",
+        "10/36",
+        "1/36"
+      ],
+      "correta": 2,
+      "explicacao": "Casos: (4,6), (5,5), (6,4): 3/36 = 1/12. Dica de mergulhador: liste os pares ordenados.",
+      "comentarios": [
+        "Contou 6 casos.",
+        "Tratou as somas como equiprováveis.",
+        "",
+        "Usou a soma como casos.",
+        "Contou um caso."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q06-v1",
+      "varianteDe": "mat-probabilidade-q06",
+      "tema": "Casos favoráveis",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma moeda é lançada 4 vezes. Qual é a probabilidade de saírem exatamente 3 caras?",
+      "alternativas": [
+        "3/16",
+        "1/4",
+        "1/16",
+        "1/2",
+        "3/4"
+      ],
+      "correta": 1,
+      "explicacao": "16 sequências; com 3 caras: C(4, 3) = 4. 4/16 = 1/4. Dica de mergulhador: escolha as posições das caras.",
+      "comentarios": [
+        "Contou 3 casos.",
+        "",
+        "Contou um caso.",
+        "Errou a contagem.",
+        "Dividiu caras por lançamentos."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q07-v1",
+      "varianteDe": "mat-probabilidade-q07",
+      "tema": "Casos favoráveis",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Um código de 2 letras (26 letras) é gerado ao acaso, com repetição. Qual é a probabilidade de as duas letras serem iguais?",
+      "alternativas": [
+        "1/26",
+        "1/2",
+        "26%",
+        "2/26",
+        "1/676"
+      ],
+      "correta": 0,
+      "explicacao": "Favoráveis: 26 (AA, BB, ...). Possíveis: 676. 26/676 = 1/26. Dica de mergulhador: a segunda letra só precisa repetir a primeira.",
+      "comentarios": [
+        "",
+        "Errou o espaço.",
+        "Confundiu fração com porcentagem.",
+        "Multiplicou por 2.",
+        "Contou um código só."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q08-v1",
+      "varianteDe": "mat-probabilidade-q08",
+      "tema": "Casos favoráveis",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Tiram-se 3 bolas de uma urna com 5 vermelhas e 3 azuis. Qual é a probabilidade de as três serem vermelhas?",
+      "alternativas": [
+        "5/28",
+        "1/2",
+        "5/8",
+        "Cerca de 24,4%",
+        "3/8"
+      ],
+      "correta": 0,
+      "explicacao": "C(5, 3) = 10 favoráveis; C(8, 3) = 56 possíveis: 10/56 = 5/28 ≈ 17,9%. Dica de mergulhador: combinações em cima e embaixo.",
+      "comentarios": [
+        "",
+        "Errou a contagem.",
+        "Considerou só a primeira bola.",
+        "Calculou com reposição.",
+        "Usou a fração de azuis."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q09-v1",
+      "varianteDe": "mat-probabilidade-q09",
+      "tema": "Evento complementar",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "A chance de uma peça sair com defeito é de 2%. Qual é a chance de sair sem defeito?",
+      "alternativas": [
+        "20%",
+        "98%",
+        "2%",
+        "100%",
+        "0%"
+      ],
+      "correta": 1,
+      "explicacao": "100% − 2% = 98%. Dica de mergulhador: complementar é 1 − p.",
+      "comentarios": [
+        "Errou a vírgula.",
+        "",
+        "É a chance de defeito.",
+        "Somou.",
+        "Ignorou o complementar."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q10-v1",
+      "varianteDe": "mat-probabilidade-q10",
+      "tema": "Evento complementar",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Numa empresa de 50 funcionários, 35 vão de carro. Sorteado um, qual é a chance de ele não ir de carro?",
+      "alternativas": [
+        "70%",
+        "1/15",
+        "15%",
+        "30%",
+        "35%"
+      ],
+      "correta": 3,
+      "explicacao": "Não vão: 15. 15/50 = 30%. Dica de mergulhador: complementar.",
+      "comentarios": [
+        "É a chance de ir de carro.",
+        "Inverteu.",
+        "Usou o número de pessoas.",
+        "",
+        "Usou o número dos que vão."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q11-v1",
+      "varianteDe": "mat-probabilidade-q11",
+      "tema": "Evento complementar",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma moeda é lançada 4 vezes. Qual é a probabilidade de sair pelo menos uma coroa?",
+      "alternativas": [
+        "1/16",
+        "3/4",
+        "1/2",
+        "15/16",
+        "4/16"
+      ],
+      "correta": 3,
+      "explicacao": "1 − (1/2)⁴ = 1 − 1/16 = 15/16. Dica de mergulhador: tire o único caso sem coroa.",
+      "comentarios": [
+        "É a chance de nenhuma coroa.",
+        "Errou o complementar.",
+        "Considerou um lançamento.",
+        "",
+        "É a chance de exatamente uma."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q12-v1",
+      "varianteDe": "mat-probabilidade-q12",
+      "tema": "Evento complementar",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Dois dados são lançados. Qual é a probabilidade de sair pelo menos um número par?",
+      "alternativas": [
+        "9/36",
+        "3/4",
+        "1/4",
+        "1/2",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "Nenhum par: (1/2)² = 1/4. Pelo menos um: 3/4. Dica de mergulhador: complementar.",
+      "comentarios": [
+        "É a chance de dois ímpares.",
+        "",
+        "É a chance de nenhum par.",
+        "Considerou um dado só.",
+        "Somou 1/2 + 1/2."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q13-v1",
+      "varianteDe": "mat-probabilidade-q13",
+      "tema": "Evento complementar",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Uma peça tem 20% de chance de defeito. Escolhendo 2 peças independentes, qual é a chance de pelo menos uma ser defeituosa?",
+      "alternativas": [
+        "20%",
+        "36%",
+        "4%",
+        "40%",
+        "64%"
+      ],
+      "correta": 1,
+      "explicacao": "1 − 0,8² = 1 − 0,64 = 0,36. Dica de mergulhador: complementar com multiplicação.",
+      "comentarios": [
+        "Considerou uma peça.",
+        "",
+        "É a chance de as duas serem defeituosas.",
+        "Somou.",
+        "É a chance de nenhuma."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q14-v1",
+      "varianteDe": "mat-probabilidade-q14",
+      "tema": "Evento complementar",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Três pessoas escolhem, ao acaso, um de 5 sabores de sorvete. Qual é a probabilidade de pelo menos duas escolherem o mesmo sabor?",
+      "alternativas": [
+        "60%",
+        "4%",
+        "48%",
+        "52%",
+        "20%"
+      ],
+      "correta": 3,
+      "explicacao": "Todos diferentes: (5 × 4 × 3) ÷ 5³ = 60/125 = 48%. Pelo menos dois iguais: 52%. Dica de mergulhador: conte o caso \"todos diferentes\" e tire de 1.",
+      "comentarios": [
+        "Usou 3/5.",
+        "Usou 1/25.",
+        "É a chance de todos diferentes.",
+        "",
+        "Usou 1/5."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q15-v1",
+      "varianteDe": "mat-probabilidade-q15",
+      "tema": "União de eventos",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Tira-se uma carta de um baralho de 52. Qual é a probabilidade de ser um ás ou um rei?",
+      "alternativas": [
+        "1/2",
+        "1/169",
+        "4/52",
+        "2/13",
+        "1/13"
+      ],
+      "correta": 3,
+      "explicacao": "4 ases + 4 reis = 8 cartas: 8/52 = 2/13. Dica de mergulhador: carta não é ás e rei ao mesmo tempo, então some.",
+      "comentarios": [
+        "Errou a contagem.",
+        "Multiplicou as chances.",
+        "Considerou só um tipo.",
+        "",
+        "Considerou só ases."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q16-v1",
+      "varianteDe": "mat-probabilidade-q16",
+      "tema": "União de eventos",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Bolas numeradas de 1 a 20 estão numa urna. Qual é a probabilidade de sortear um múltiplo de 3 ou de 4?",
+      "alternativas": [
+        "1/2",
+        "6/20",
+        "1/20",
+        "11/20",
+        "5/20"
+      ],
+      "correta": 0,
+      "explicacao": "Múltiplos de 3: 6. De 4: 5. De 12: 1. 6 + 5 − 1 = 10. 10/20 = 1/2. Dica de mergulhador: some e desconte a parte comum.",
+      "comentarios": [
+        "",
+        "Contou só os múltiplos de 3.",
+        "Contou só a interseção.",
+        "Contou o 12 duas vezes.",
+        "Contou só os múltiplos de 4."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q17-v1",
+      "varianteDe": "mat-probabilidade-q17",
+      "tema": "União de eventos",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Numa pesquisa, 50% assistem à série A, 30% à série B e 10% às duas. Qual é a chance de um entrevistado assistir a A ou B?",
+      "alternativas": [
+        "10%",
+        "70%",
+        "90%",
+        "15%",
+        "80%"
+      ],
+      "correta": 1,
+      "explicacao": "50% + 30% − 10% = 70%. Dica de mergulhador: união = soma − interseção.",
+      "comentarios": [
+        "É a interseção.",
+        "",
+        "Somou a interseção.",
+        "Multiplicou.",
+        "Somou sem descontar."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q18-v1",
+      "varianteDe": "mat-probabilidade-q18",
+      "tema": "União de eventos",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade",
+      "enunciado": "Tira-se uma carta de um baralho de 52. Qual é a probabilidade de ser vermelha ou um ás?",
+      "alternativas": [
+        "30/52",
+        "2/52",
+        "7/13",
+        "1/2",
+        "4/52"
+      ],
+      "correta": 2,
+      "explicacao": "Vermelhas: 26. Ases: 4. Ases vermelhos: 2. 26 + 4 − 2 = 28. 28/52 = 7/13. Dica de mergulhador: interseção uma vez só.",
+      "comentarios": [
+        "Contou os ases vermelhos duas vezes.",
+        "Contou só os ases vermelhos.",
+        "",
+        "Contou só as vermelhas.",
+        "Contou só os ases."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q19-v1",
+      "varianteDe": "mat-probabilidade-q19",
+      "tema": "União de eventos",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Numa escola de 200 alunos, 120 praticam esporte, 90 tocam um instrumento e 40 fazem as duas coisas. Sorteado um aluno, qual é a chance de ele não fazer nenhuma das duas?",
+      "alternativas": [
+        "0%",
+        "15%",
+        "20%",
+        "40%",
+        "85%"
+      ],
+      "correta": 1,
+      "explicacao": "Pelo menos uma: 120 + 90 − 40 = 170. Nenhuma: 30 de 200 = 15%. Dica de mergulhador: complementar da união.",
+      "comentarios": [
+        "Achou que todos fazem algo.",
+        "",
+        "É a interseção em porcentagem.",
+        "Descontou só o esporte.",
+        "É a chance de fazer pelo menos uma."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-q20-v1",
+      "varianteDe": "mat-probabilidade-q20",
+      "tema": "União de eventos",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade",
+      "enunciado": "Dois eventos têm P(A) = 0,7, P(B) = 0,4 e P(A ou B) = 0,8. Qual é P(A e B)?",
+      "alternativas": [
+        "0,1",
+        "0,3",
+        "1,1",
+        "0,28",
+        "0,4"
+      ],
+      "correta": 1,
+      "explicacao": "0,8 = 0,7 + 0,4 − P(A e B), logo P(A e B) = 0,3. Dica de mergulhador: soma − união = interseção.",
+      "comentarios": [
+        "Subtraiu 0,7 de 0,8.",
+        "",
+        "Somou.",
+        "Multiplicou.",
+        "Usou P(B)."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q01-v1",
+      "varianteDe": "mat-probabilidade-condicional-q01",
+      "tema": "Eventos independentes",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Dois dados são lançados. Qual é a probabilidade de os dois mostrarem 6?",
+      "alternativas": [
+        "11/36",
+        "1/36",
+        "1/12",
+        "1/6",
+        "1/3"
+      ],
+      "correta": 1,
+      "explicacao": "1/6 × 1/6 = 1/36. Dica de mergulhador: independentes, multiplique.",
+      "comentarios": [
+        "É a chance de pelo menos um 6.",
+        "",
+        "Multiplicou 1/6 por 1/2.",
+        "Considerou um dado.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q02-v1",
+      "varianteDe": "mat-probabilidade-condicional-q02",
+      "tema": "Eventos independentes",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma moeda é lançada 3 vezes. Qual é a probabilidade de saírem três coroas?",
+      "alternativas": [
+        "1/2",
+        "3/8",
+        "1/6",
+        "1/8",
+        "1/3"
+      ],
+      "correta": 3,
+      "explicacao": "(1/2)³ = 1/8. Dica de mergulhador: multiplique um meio três vezes.",
+      "comentarios": [
+        "Considerou um lançamento.",
+        "É a chance de exatamente uma coroa.",
+        "Somou errado.",
+        "",
+        "Errou o espaço."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q03-v1",
+      "varianteDe": "mat-probabilidade-condicional-q03",
+      "tema": "Eventos independentes",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Duas máquinas independentes falham com 5% e 4% de chance. Qual é a probabilidade de as duas falharem?",
+      "alternativas": [
+        "20%",
+        "9%",
+        "0,2%",
+        "4,5%",
+        "91,2%"
+      ],
+      "correta": 2,
+      "explicacao": "0,05 × 0,04 = 0,002 = 0,2%. Dica de mergulhador: multiplique os decimais.",
+      "comentarios": [
+        "Errou a vírgula.",
+        "Somou.",
+        "",
+        "Fez a média.",
+        "É a chance de nenhuma falhar."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q04-v1",
+      "varianteDe": "mat-probabilidade-condicional-q04",
+      "tema": "Eventos independentes",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Duas máquinas independentes falham com 5% e 4%. Qual é a probabilidade de nenhuma falhar?",
+      "alternativas": [
+        "99,8%",
+        "91%",
+        "8,8%",
+        "91,2%",
+        "0,2%"
+      ],
+      "correta": 3,
+      "explicacao": "0,95 × 0,96 = 0,912. Dica de mergulhador: complementar de cada uma, multiplicados.",
+      "comentarios": [
+        "Fez 100% − 0,2%.",
+        "Fez 100% − 9%.",
+        "É a chance de pelo menos uma falhar.",
+        "",
+        "É a chance de as duas falharem."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q05-v1",
+      "varianteDe": "mat-probabilidade-condicional-q05",
+      "tema": "Eventos independentes",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Um atirador acerta 80% dos tiros, de forma independente. Qual é a probabilidade de acertar 3 tiros seguidos?",
+      "alternativas": [
+        "240%",
+        "80%",
+        "64%",
+        "51,2%",
+        "0,8%"
+      ],
+      "correta": 3,
+      "explicacao": "0,8³ = 0,512. Dica de mergulhador: três etapas, três fatores.",
+      "comentarios": [
+        "Somou.",
+        "Considerou um tiro.",
+        "Considerou dois tiros.",
+        "",
+        "Errou a vírgula."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q06-v1",
+      "varianteDe": "mat-probabilidade-condicional-q06",
+      "tema": "Eventos independentes",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Um teste tem 3 questões de verdadeiro ou falso. Um aluno chuta todas. Qual é a probabilidade de acertar as três?",
+      "alternativas": [
+        "1/6",
+        "3/8",
+        "1/8",
+        "1/2",
+        "3/2"
+      ],
+      "correta": 2,
+      "explicacao": "(1/2)³ = 1/8. Dica de mergulhador: um fator por questão.",
+      "comentarios": [
+        "Multiplicou 2 por 3.",
+        "É a chance de acertar exatamente uma.",
+        "",
+        "Considerou uma questão.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q07-v1",
+      "varianteDe": "mat-probabilidade-condicional-q07",
+      "tema": "Sem reposição",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma urna tem 4 bolas brancas e 1 preta. Tiram-se duas, com reposição. Qual é a probabilidade de as duas serem brancas?",
+      "alternativas": [
+        "16/25",
+        "4/5",
+        "8/5",
+        "3/5",
+        "1/25"
+      ],
+      "correta": 0,
+      "explicacao": "4/5 × 4/5 = 16/25. Dica de mergulhador: com reposição, mesmo fator.",
+      "comentarios": [
+        "",
+        "Considerou uma tirada.",
+        "Somou.",
+        "Calculou sem reposição.",
+        "É a chance de duas pretas."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q08-v1",
+      "varianteDe": "mat-probabilidade-condicional-q08",
+      "tema": "Sem reposição",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma urna tem 4 bolas brancas e 1 preta. Tiram-se duas, sem reposição. Qual é a probabilidade de as duas serem brancas?",
+      "alternativas": [
+        "12/25",
+        "3/5",
+        "16/25",
+        "4/5",
+        "1/5"
+      ],
+      "correta": 1,
+      "explicacao": "4/5 × 3/4 = 12/20 = 3/5. Dica de mergulhador: a segunda tirada usa o que sobrou.",
+      "comentarios": [
+        "Tirou uma bola do numerador, mas não do denominador.",
+        "",
+        "Calculou com reposição.",
+        "Considerou uma tirada.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q09-v1",
+      "varianteDe": "mat-probabilidade-condicional-q09",
+      "tema": "Sem reposição",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma caixa tem 12 ovos, 3 deles quebrados. Tiram-se 2, sem reposição. Qual é a probabilidade de nenhum estar quebrado?",
+      "alternativas": [
+        "75%",
+        "56,25%",
+        "43,75%",
+        "1/22",
+        "6/11"
+      ],
+      "correta": 4,
+      "explicacao": "9/12 × 8/11 = 72/132 = 6/11 ≈ 54,5%. Dica de mergulhador: sem reposição, os dois números caem.",
+      "comentarios": [
+        "Considerou um ovo.",
+        "Calculou com reposição.",
+        "Fez 1 − 0,5625.",
+        "É a chance de os dois estarem quebrados.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q10-v1",
+      "varianteDe": "mat-probabilidade-condicional-q10",
+      "tema": "Sem reposição",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "De um baralho de 52 cartas, tiram-se 2, sem reposição. Qual é a probabilidade de as duas serem de copas?",
+      "alternativas": [
+        "1/4",
+        "1/17",
+        "1/2",
+        "1/16",
+        "26/52"
+      ],
+      "correta": 1,
+      "explicacao": "13/52 × 12/51 = 156/2.652 = 1/17. Dica de mergulhador: restam 12 copas em 51.",
+      "comentarios": [
+        "Considerou uma carta.",
+        "",
+        "Somou.",
+        "Calculou com reposição.",
+        "Somou copas."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q11-v1",
+      "varianteDe": "mat-probabilidade-condicional-q11",
+      "tema": "Sem reposição",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Num sorteio, 5 prêmios serão dados entre 40 pessoas, sem repetir ganhador. Qual é a probabilidade de uma pessoa ganhar algum?",
+      "alternativas": [
+        "5%",
+        "Cerca de 11,9%",
+        "2,5%",
+        "87,5%",
+        "12,5%"
+      ],
+      "correta": 4,
+      "explicacao": "5 vencedores entre 40: 5/40 = 12,5%. Dica de mergulhador: sem repetição, é vagas ÷ pessoas.",
+      "comentarios": [
+        "Usou o número de prêmios.",
+        "Calculou com reposição.",
+        "Considerou um prêmio.",
+        "É a chance de não ganhar.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q12-v1",
+      "varianteDe": "mat-probabilidade-condicional-q12",
+      "tema": "Sem reposição",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma urna tem 3 bolas brancas e 5 pretas. Tiram-se 2, sem reposição. Qual é a probabilidade de serem de cores diferentes?",
+      "alternativas": [
+        "3/28",
+        "15/28",
+        "1/2",
+        "15/56",
+        "Cerca de 46,9%"
+      ],
+      "correta": 1,
+      "explicacao": "2 × (3/8 × 5/7) = 30/56 = 15/28. Dica de mergulhador: some as duas ordens.",
+      "comentarios": [
+        "É a chance de duas brancas.",
+        "",
+        "Chutou.",
+        "Contou só uma ordem.",
+        "Calculou com reposição."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q13-v1",
+      "varianteDe": "mat-probabilidade-condicional-q13",
+      "tema": "Condicional e árvores",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Um dado foi lançado, e sabe-se que saiu um número maior que 3. Qual é a probabilidade de ser o 5?",
+      "alternativas": [
+        "1/6",
+        "1/3",
+        "1/2",
+        "1/5",
+        "2/3"
+      ],
+      "correta": 1,
+      "explicacao": "Maiores que 3: 4, 5, 6. 1/3. Dica de mergulhador: novo espaço amostral.",
+      "comentarios": [
+        "Ignorou a informação.",
+        "",
+        "Errou o novo espaço.",
+        "Errou a contagem.",
+        "Contou dois casos."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q14-v1",
+      "varianteDe": "mat-probabilidade-condicional-q14",
+      "tema": "Condicional e árvores",
+      "dificuldade": "facil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Numa escola de 200 alunos, 80 estudam à noite, e 20 desses estão de recuperação. Sorteado um aluno da noite, qual é a chance de ele estar de recuperação?",
+      "alternativas": [
+        "40%",
+        "4%",
+        "75%",
+        "25%",
+        "10%"
+      ],
+      "correta": 3,
+      "explicacao": "20/80 = 25%. Dica de mergulhador: \"sorteado um aluno da noite\" muda o total.",
+      "comentarios": [
+        "É a porcentagem da noite.",
+        "Multiplicou.",
+        "É a chance de não estar.",
+        "",
+        "Dividiu pelo total da escola."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q15-v1",
+      "varianteDe": "mat-probabilidade-condicional-q15",
+      "tema": "Condicional e árvores",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Entre 300 motoristas, 100 usam celular ao volante e 15 deles se acidentaram; dos 200 que não usam, 10 se acidentaram. Qual é a chance de acidente em cada grupo?",
+      "alternativas": [
+        "60% e 40%",
+        "15% e 5%",
+        "15% e 3,3%",
+        "15 e 10",
+        "5% e 3,3%"
+      ],
+      "correta": 1,
+      "explicacao": "Com celular: 15/100. Sem: 10/200 = 5%. Dica de mergulhador: compare taxas dentro de cada grupo.",
+      "comentarios": [
+        "Dividiu pelos 25 acidentes.",
+        "",
+        "Usou o total geral no segundo grupo.",
+        "Usou os números de casos.",
+        "Dividiu pelo total de 300."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q16-v1",
+      "varianteDe": "mat-probabilidade-condicional-q16",
+      "tema": "Condicional e árvores",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "A máquina A faz 70% das peças, com 2% de defeito; a máquina B faz 30%, com 5% de defeito. Qual é a chance de uma peça ser defeituosa?",
+      "alternativas": [
+        "3,5%",
+        "2,9%",
+        "7%",
+        "1,4%",
+        "0,1%"
+      ],
+      "correta": 1,
+      "explicacao": "0,7 × 0,02 + 0,3 × 0,05 = 0,014 + 0,015 = 0,029. Dica de mergulhador: árvore com dois galhos.",
+      "comentarios": [
+        "Fez a média simples.",
+        "",
+        "Somou as taxas.",
+        "Considerou só a máquina A.",
+        "Multiplicou as taxas."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q17-v1",
+      "varianteDe": "mat-probabilidade-condicional-q17",
+      "tema": "Condicional e árvores",
+      "dificuldade": "medio",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Escolhe-se uma de duas urnas com uma moeda. A urna 1 tem 2 bolas brancas e 3 pretas; a urna 2 tem 4 brancas e 1 preta. Qual é a probabilidade de sair branca?",
+      "alternativas": [
+        "2/5",
+        "3/5",
+        "6/5",
+        "4/25",
+        "4/5"
+      ],
+      "correta": 1,
+      "explicacao": "1/2 × 2/5 + 1/2 × 4/5 = 1/5 + 2/5 = 3/5. Dica de mergulhador: galhos ponderados pela escolha da urna.",
+      "comentarios": [
+        "Considerou só a urna 1.",
+        "",
+        "Somou.",
+        "Multiplicou.",
+        "Considerou só a urna 2."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q18-v1",
+      "varianteDe": "mat-probabilidade-condicional-q18",
+      "tema": "Condicional e árvores",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Uma doença atinge 2% da população. Um teste dá positivo em 95% dos doentes e em 5% dos saudáveis. Uma pessoa testou positivo. Qual é, aproximadamente, a chance de estar doente?",
+      "alternativas": [
+        "50%",
+        "Cerca de 28%",
+        "95%",
+        "5%",
+        "2%"
+      ],
+      "correta": 1,
+      "explicacao": "Doentes positivos: 0,02 × 0,95 = 0,019. Saudáveis positivos: 0,98 × 0,05 = 0,049. 0,019 ÷ 0,068 ≈ 28%. Dica de mergulhador: divida pelos positivos totais.",
+      "comentarios": [
+        "Chutou.",
+        "",
+        "É a chance de positivo entre doentes.",
+        "É a taxa de falso positivo.",
+        "Ignorou o teste."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q19-v1",
+      "varianteDe": "mat-probabilidade-condicional-q19",
+      "tema": "Condicional e árvores",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Numa escola de 400 alunos, 250 foram aprovados (150 estudam em grupo) e 150 foram reprovados (30 estudam em grupo). Sorteado um aluno que estuda em grupo, qual é a chance de ele ter sido aprovado?",
+      "alternativas": [
+        "17%",
+        "Cerca de 83%",
+        "37,5%",
+        "45%",
+        "60%"
+      ],
+      "correta": 1,
+      "explicacao": "Em grupo: 180. Aprovados entre eles: 150. 150/180 ≈ 83%. Dica de mergulhador: inverta a pergunta com cuidado.",
+      "comentarios": [
+        "É a chance de reprovado.",
+        "",
+        "Dividiu pelo total.",
+        "É a porcentagem que estuda em grupo.",
+        "É a chance de estudar em grupo entre os aprovados."
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-q20-v1",
+      "varianteDe": "mat-probabilidade-condicional-q20",
+      "tema": "Condicional e árvores",
+      "dificuldade": "dificil",
+      "fase": "mat-probabilidade-condicional",
+      "enunciado": "Um dado é lançado 3 vezes. Qual é a probabilidade de sair exatamente um 6?",
+      "alternativas": [
+        "1/2",
+        "1/216",
+        "25/216",
+        "91/216",
+        "75/216"
+      ],
+      "correta": 4,
+      "explicacao": "O 6 pode estar em 3 posições: 3 × 1/6 × (5/6)² = 75/216 ≈ 34,7%. Dica de mergulhador: multiplique pelo número de posições.",
+      "comentarios": [
+        "Somou 1/6 três vezes.",
+        "É a chance de três 6.",
+        "Contou só uma posição para o 6.",
+        "É a chance de pelo menos um 6.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q01-v1",
+      "varianteDe": "mat-revisao-probabilidade-q01",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma sorveteria tem 5 sabores e 2 coberturas. Quantos sorvetes com um sabor e uma cobertura existem?",
+      "alternativas": [
+        "7",
+        "5",
+        "10",
+        "32",
+        "25"
+      ],
+      "correta": 2,
+      "explicacao": "5 × 2 = 10. Dica de mergulhador: sabor e cobertura, multiplique.",
+      "comentarios": [
+        "Somou.",
+        "Contou só os sabores.",
+        "",
+        "Elevou 2 a 5.",
+        "Elevou 5 ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q02-v1",
+      "varianteDe": "mat-revisao-probabilidade-q02",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Quantos anagramas tem a palavra CASA?",
+      "alternativas": [
+        "4",
+        "8",
+        "24",
+        "12",
+        "6"
+      ],
+      "correta": 3,
+      "explicacao": "4! ÷ 2! = 12. Dica de mergulhador: letras iguais trocadas não criam anagrama novo.",
+      "comentarios": [
+        "Contou as letras.",
+        "Errou a divisão.",
+        "Ignorou o A repetido.",
+        "",
+        "Dividiu por 4."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q03-v1",
+      "varianteDe": "mat-revisao-probabilidade-q03",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "De quantas formas se escolhem 3 pessoas entre 5 para uma comissão?",
+      "alternativas": [
+        "8",
+        "60",
+        "15",
+        "125",
+        "10"
+      ],
+      "correta": 4,
+      "explicacao": "C(5, 3) = 60 ÷ 6 = 10. Dica de mergulhador: comissão é combinação.",
+      "comentarios": [
+        "Somou.",
+        "Contou a ordem.",
+        "Multiplicou 5 por 3.",
+        "Permitiu repetição e ordem.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q04-v1",
+      "varianteDe": "mat-revisao-probabilidade-q04",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Num dado comum, qual é a probabilidade de sair um número primo?",
+      "alternativas": [
+        "1/6",
+        "1/2",
+        "2/3",
+        "1/3",
+        "3"
+      ],
+      "correta": 1,
+      "explicacao": "Primos: 2, 3, 5. 3/6 = 1/2. Dica de mergulhador: 1 não é primo.",
+      "comentarios": [
+        "Contou um só.",
+        "",
+        "Incluiu o 1 como primo.",
+        "Esqueceu um primo.",
+        "São os casos favoráveis."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q05-v1",
+      "varianteDe": "mat-revisao-probabilidade-q05",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma rifa tem 100 números, e uma pessoa comprou 3. Qual é a chance de ela não ganhar?",
+      "alternativas": [
+        "100%",
+        "3%",
+        "97%",
+        "33%",
+        "0,97%"
+      ],
+      "correta": 2,
+      "explicacao": "1 − 3/100 = 97%. Dica de mergulhador: complementar.",
+      "comentarios": [
+        "Ignorou os números comprados.",
+        "É a chance de ganhar.",
+        "",
+        "Dividiu 100 por 3.",
+        "Errou a vírgula."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q06-v1",
+      "varianteDe": "mat-revisao-probabilidade-q06",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Dois dados são lançados. Qual é a probabilidade de os dois mostrarem números pares?",
+      "alternativas": [
+        "1/36",
+        "3/4",
+        "1/2",
+        "1/6",
+        "1/4"
+      ],
+      "correta": 4,
+      "explicacao": "1/2 × 1/2 = 1/4. Dica de mergulhador: um meio para cada dado.",
+      "comentarios": [
+        "Contou um caso.",
+        "É a chance de pelo menos um par.",
+        "Considerou um dado.",
+        "Errou o espaço.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q07-v1",
+      "varianteDe": "mat-revisao-probabilidade-q07",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Quantos códigos de 3 letras distintas podem ser feitos com as letras A, B, C, D e E?",
+      "alternativas": [
+        "10",
+        "60",
+        "125",
+        "15",
+        "20"
+      ],
+      "correta": 1,
+      "explicacao": "5 × 4 × 3 = 60. Dica de mergulhador: arranjo.",
+      "comentarios": [
+        "Ignorou a ordem.",
+        "",
+        "Permitiu repetição.",
+        "Multiplicou 5 por 3.",
+        "Usou 2 letras."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q08-v1",
+      "varianteDe": "mat-revisao-probabilidade-q08",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "De quantas formas 7 pessoas podem sentar numa mesa redonda, sem contar giros?",
+      "alternativas": [
+        "49",
+        "720",
+        "2.520",
+        "7",
+        "5.040"
+      ],
+      "correta": 1,
+      "explicacao": "(7 − 1)! = 720. Dica de mergulhador: circular, (n − 1)!.",
+      "comentarios": [
+        "Elevou ao quadrado.",
+        "",
+        "Dividiu por 2.",
+        "Contou as pessoas.",
+        "Contou como fila."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q09-v1",
+      "varianteDe": "mat-revisao-probabilidade-q09",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Dois dados são lançados. Qual é a probabilidade de a soma ser 4?",
+      "alternativas": [
+        "1/6",
+        "1/12",
+        "4/36",
+        "1/11",
+        "1/36"
+      ],
+      "correta": 1,
+      "explicacao": "(1,3), (2,2), (3,1): 3/36 = 1/12. Dica de mergulhador: 36 resultados no espaço.",
+      "comentarios": [
+        "Contou 6 casos.",
+        "",
+        "Usou a soma como casos.",
+        "Tratou as somas como equiprováveis.",
+        "Contou um caso."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q10-v1",
+      "varianteDe": "mat-revisao-probabilidade-q10",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma urna tem 4 bolas vermelhas e 6 azuis. Tiram-se 2, sem reposição. Qual é a probabilidade de as duas serem vermelhas?",
+      "alternativas": [
+        "4/5",
+        "2/5",
+        "4/25",
+        "1/5",
+        "2/15"
+      ],
+      "correta": 4,
+      "explicacao": "4/10 × 3/9 = 12/90 = 2/15. Dica de mergulhador: cada etapa usa o que sobrou.",
+      "comentarios": [
+        "Somou.",
+        "Considerou uma tirada.",
+        "Calculou com reposição.",
+        "Errou a conta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q11-v1",
+      "varianteDe": "mat-revisao-probabilidade-q11",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Dois dados são lançados. Qual é a probabilidade de sair pelo menos um número 1?",
+      "alternativas": [
+        "25/36",
+        "1/3",
+        "11/36",
+        "1/6",
+        "1/36"
+      ],
+      "correta": 2,
+      "explicacao": "1 − (5/6)² = 11/36. Dica de mergulhador: o complementar evita contar duas vezes.",
+      "comentarios": [
+        "É a chance de nenhum 1.",
+        "Somou 1/6 + 1/6.",
+        "",
+        "Considerou um dado.",
+        "É a chance de dois 1."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q12-v1",
+      "varianteDe": "mat-revisao-probabilidade-q12",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Um grupo de 4 será escolhido entre 6 meninos e 4 meninas, com exatamente 2 meninas. Quantos grupos são possíveis?",
+      "alternativas": [
+        "180",
+        "6",
+        "21",
+        "90",
+        "210"
+      ],
+      "correta": 3,
+      "explicacao": "C(4, 2) × C(6, 2) = 6 × 15 = 90. Dica de mergulhador: multiplique as escolhas.",
+      "comentarios": [
+        "Usou arranjo num dos grupos.",
+        "Esqueceu os meninos.",
+        "Somou.",
+        "",
+        "Ignorou a condição."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q13-v1",
+      "varianteDe": "mat-revisao-probabilidade-q13",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Bolas numeradas de 1 a 50 estão numa urna. Qual é a probabilidade de sair um múltiplo de 4 ou de 10?",
+      "alternativas": [
+        "3/10",
+        "5/50",
+        "2/50",
+        "17/50",
+        "12/50"
+      ],
+      "correta": 0,
+      "explicacao": "Múltiplos de 4: 12. De 10: 5. De 20: 2. 12 + 5 − 2 = 15. 15/50 = 3/10. Dica de mergulhador: interseção uma vez.",
+      "comentarios": [
+        "",
+        "Contou só os de 10.",
+        "Contou só a interseção.",
+        "Contou os múltiplos de 20 duas vezes.",
+        "Contou só os de 4."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q14-v1",
+      "varianteDe": "mat-revisao-probabilidade-q14",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Numa empresa de 80 funcionários, 30 trabalham à noite, e 12 desses têm mais de 40 anos. Sorteado um funcionário da noite, qual é a chance de ter mais de 40 anos?",
+      "alternativas": [
+        "37,5%",
+        "40%",
+        "60%",
+        "15%",
+        "12%"
+      ],
+      "correta": 1,
+      "explicacao": "12/30 = 40%. Dica de mergulhador: divida pelo grupo da noite.",
+      "comentarios": [
+        "Errou o denominador.",
+        "",
+        "É a chance contrária.",
+        "Dividiu pelo total.",
+        "Usou o número como porcentagem."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q15-v1",
+      "varianteDe": "mat-revisao-probabilidade-q15",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Seis corredores disputam ouro, prata e bronze. De quantas formas o pódio pode ser formado?",
+      "alternativas": [
+        "120",
+        "18",
+        "216",
+        "720",
+        "20"
+      ],
+      "correta": 0,
+      "explicacao": "6 × 5 × 4 = 120. Dica de mergulhador: pódio tem ordem.",
+      "comentarios": [
+        "",
+        "Multiplicou 6 por 3.",
+        "Permitiu repetição.",
+        "Usou 6!.",
+        "Ignorou a ordem."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q16-v1",
+      "varianteDe": "mat-revisao-probabilidade-q16",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma doença atinge 10% de uma população. Um teste dá positivo em 90% dos doentes e em 20% dos saudáveis. Uma pessoa testou positivo. Qual é a chance de estar doente?",
+      "alternativas": [
+        "Cerca de 33%",
+        "20%",
+        "10%",
+        "90%",
+        "70%"
+      ],
+      "correta": 0,
+      "explicacao": "Doentes positivos: 0,09. Saudáveis positivos: 0,9 × 0,2 = 0,18. 0,09 ÷ 0,27 ≈ 33%. Dica de mergulhador: árvore e depois a divisão.",
+      "comentarios": [
+        "",
+        "É a taxa de falso positivo.",
+        "Ignorou o teste.",
+        "É a chance de positivo entre doentes.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q17-v1",
+      "varianteDe": "mat-revisao-probabilidade-q17",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Quantos números de 3 algarismos distintos, formados com os algarismos de 1 a 7, são maiores que 500?",
+      "alternativas": [
+        "90",
+        "60",
+        "30",
+        "147",
+        "210"
+      ],
+      "correta": 0,
+      "explicacao": "Centena: 5, 6 ou 7. Depois 6 e 5: 3 × 6 × 5 = 90. Dica de mergulhador: restrição primeiro.",
+      "comentarios": [
+        "",
+        "Usou 2 opções na centena.",
+        "Usou 1 opção na centena.",
+        "Permitiu repetição.",
+        "Esqueceu a condição."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q18-v1",
+      "varianteDe": "mat-revisao-probabilidade-q18",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma urna tem 4 bolas vermelhas e 3 azuis. Tiram-se 2, sem reposição. Qual é a probabilidade de sair exatamente 1 vermelha?",
+      "alternativas": [
+        "1/7",
+        "3/7",
+        "4/7",
+        "2/7",
+        "24/49"
+      ],
+      "correta": 2,
+      "explicacao": "Favoráveis: 4 × 3 = 12. Possíveis: C(7, 2) = 21. 12/21 = 4/7. Dica de mergulhador: em grupos, combinações; em sequência, as duas ordens.",
+      "comentarios": [
+        "É a chance de duas azuis.",
+        "Usou a fração de azuis.",
+        "",
+        "Considerou só a ordem vermelha e depois azul.",
+        "Calculou com reposição."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q19-v1",
+      "varianteDe": "mat-revisao-probabilidade-q19",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Três lâmpadas independentes acendem, cada uma, com 70% de chance. Qual é a probabilidade de pelo menos uma acender?",
+      "alternativas": [
+        "97,3%",
+        "210%",
+        "2,7%",
+        "70%",
+        "34,3%"
+      ],
+      "correta": 0,
+      "explicacao": "Nenhuma: 0,3³ = 0,027. Pelo menos uma: 0,973. Dica de mergulhador: complementar com produto.",
+      "comentarios": [
+        "",
+        "Somou.",
+        "É a chance de nenhuma acender.",
+        "Considerou uma lâmpada.",
+        "É a chance de as três acenderem."
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-q20-v1",
+      "varianteDe": "mat-revisao-probabilidade-q20",
+      "tema": "Revisão: contagem e probabilidade",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-probabilidade",
+      "enunciado": "Uma senha de 3 algarismos é gerada ao acaso, com repetição. Qual é a probabilidade de ter pelo menos dois algarismos iguais?",
+      "alternativas": [
+        "28%",
+        "72%",
+        "1%",
+        "10%",
+        "30%"
+      ],
+      "correta": 0,
+      "explicacao": "Todos diferentes: 720/1.000. Pelo menos dois iguais: 1 − 0,72 = 0,28. Dica de mergulhador: complementar.",
+      "comentarios": [
+        "",
+        "É a chance de todos diferentes.",
+        "É a chance de todos iguais.",
+        "Errou a conta.",
+        "Chutou."
+      ]
     }
   ],
   "pares": [
@@ -37675,6 +40792,78 @@
       "tema": "Combinações",
       "termo": "Loteria",
       "definicao": "Combinação de números"
+    },
+    {
+      "id": "mat-probabilidade-par-01",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "termo": "Espaço amostral",
+      "definicao": "Todos os resultados possíveis"
+    },
+    {
+      "id": "mat-probabilidade-par-02",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "termo": "Evento complementar",
+      "definicao": "1 menos a probabilidade"
+    },
+    {
+      "id": "mat-probabilidade-par-03",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "termo": "Equiprováveis",
+      "definicao": "Resultados com a mesma chance"
+    },
+    {
+      "id": "mat-probabilidade-par-04",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "termo": "União",
+      "definicao": "Soma menos a interseção"
+    },
+    {
+      "id": "mat-probabilidade-condicional-par-01",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "termo": "Independentes",
+      "definicao": "Probabilidades se multiplicam"
+    },
+    {
+      "id": "mat-probabilidade-condicional-par-02",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "termo": "Sem reposição",
+      "definicao": "Cada tirada usa o que sobrou"
+    },
+    {
+      "id": "mat-probabilidade-condicional-par-03",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "termo": "Probabilidade condicional",
+      "definicao": "Espaço encolhido pela condição"
+    },
+    {
+      "id": "mat-probabilidade-condicional-par-04",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "termo": "Árvore",
+      "definicao": "Multiplica no galho, soma entre galhos"
+    },
+    {
+      "id": "mat-revisao-probabilidade-par-01",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "termo": "Arranjo",
+      "definicao": "A ordem importa"
+    },
+    {
+      "id": "mat-revisao-probabilidade-par-02",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "termo": "Combinação",
+      "definicao": "A ordem não importa"
+    },
+    {
+      "id": "mat-revisao-probabilidade-par-03",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "termo": "Complementar",
+      "definicao": "1 menos a probabilidade"
+    },
+    {
+      "id": "mat-revisao-probabilidade-par-04",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "termo": "Probabilidade condicional",
+      "definicao": "Divide pelo grupo da condição"
     }
   ],
   "verdadeiroFalso": [
@@ -38398,6 +41587,69 @@
       "afirmacao": "Um octógono tem 20 diagonais.",
       "verdadeira": true,
       "explicacao": "C(8, 2) − 8."
+    },
+    {
+      "id": "mat-probabilidade-vf-01",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "afirmacao": "Com dois dados, a chance de soma 7 é 1/6.",
+      "verdadeira": true,
+      "explicacao": "6 casos em 36."
+    },
+    {
+      "id": "mat-probabilidade-vf-02",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "afirmacao": "A chance de pelo menos um 6 em dois lançamentos é 1/3.",
+      "verdadeira": false,
+      "explicacao": "É 11/36."
+    },
+    {
+      "id": "mat-probabilidade-vf-03",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "afirmacao": "Se a chance de chover é 30%, a de não chover é 70%.",
+      "verdadeira": true,
+      "explicacao": "Complementar."
+    },
+    {
+      "id": "mat-probabilidade-condicional-vf-01",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "afirmacao": "Tirar duas vermelhas sem reposição de 3 vermelhas e 2 azuis tem chance 3/10.",
+      "verdadeira": true,
+      "explicacao": "3/5 × 2/4."
+    },
+    {
+      "id": "mat-probabilidade-condicional-vf-02",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "afirmacao": "Se um teste acerta 90% dos doentes, quem deu positivo tem 90% de chance de estar doente.",
+      "verdadeira": false,
+      "explicacao": "Depende da raridade da doença e dos falsos positivos."
+    },
+    {
+      "id": "mat-probabilidade-condicional-vf-03",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "afirmacao": "Sabendo que saiu par num dado, a chance de ser 6 é 1/3.",
+      "verdadeira": true,
+      "explicacao": "O espaço encolhe para 2, 4, 6."
+    },
+    {
+      "id": "mat-revisao-probabilidade-vf-01",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "afirmacao": "Com dois dados, a soma 8 tem chance 5/36.",
+      "verdadeira": true,
+      "explicacao": "5 pares em 36."
+    },
+    {
+      "id": "mat-revisao-probabilidade-vf-02",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "afirmacao": "Pódio entre 8 atletas é uma combinação.",
+      "verdadeira": false,
+      "explicacao": "É arranjo: as medalhas são diferentes."
+    },
+    {
+      "id": "mat-revisao-probabilidade-vf-03",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "afirmacao": "Pelo menos uma cara em 4 lançamentos tem chance 15/16.",
+      "verdadeira": true,
+      "explicacao": "1 − 1/16."
     }
   ],
   "sequencias": [
@@ -38821,6 +42073,42 @@
         "Usar o complementar se a condição for \"pelo menos\""
       ],
       "explicacao": "Grupo não tem ordem."
+    },
+    {
+      "id": "mat-probabilidade-seq-01",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "titulo": "Calcular a chance de \"pelo menos um\"",
+      "itens": [
+        "Identificar o caso contrário, \"nenhum\"",
+        "Calcular a chance de nenhum",
+        "Subtrair de 1",
+        "Conferir se o resultado está entre 0 e 1"
+      ],
+      "explicacao": "O complementar evita contagens duplas."
+    },
+    {
+      "id": "mat-probabilidade-condicional-seq-01",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "titulo": "Calcular P(doente | positivo)",
+      "itens": [
+        "Calcular positivos entre doentes",
+        "Calcular positivos entre saudáveis",
+        "Somar para obter todos os positivos",
+        "Dividir os positivos doentes pelo total de positivos"
+      ],
+      "explicacao": "A condição vai no denominador."
+    },
+    {
+      "id": "mat-revisao-probabilidade-seq-01",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "titulo": "Resolver uma questão de probabilidade",
+      "itens": [
+        "Definir o espaço amostral",
+        "Contar os casos favoráveis com a ferramenta certa",
+        "Dividir favoráveis por possíveis",
+        "Usar complementar ou condição se a pergunta pedir"
+      ],
+      "explicacao": "Contar bem é metade da resposta."
     }
   ],
   "adivinhas": [
@@ -39328,6 +42616,48 @@
         "Grupo escolhido para uma tarefa",
         "A ordem não importa",
         "Contada por combinação"
+      ]
+    },
+    {
+      "id": "mat-probabilidade-adv-01",
+      "tema": "Probabilidade: casos favoráveis e possíveis",
+      "dificuldade": "medio",
+      "resposta": "Probabilidade",
+      "aceitas": [
+        "probabilidade"
+      ],
+      "dicas": [
+        "Favoráveis sobre possíveis",
+        "Fica entre 0 e 1",
+        "Pode virar porcentagem"
+      ]
+    },
+    {
+      "id": "mat-probabilidade-condicional-adv-01",
+      "tema": "Eventos sucessivos e probabilidade condicional",
+      "dificuldade": "medio",
+      "resposta": "Condicional",
+      "aceitas": [
+        "condicional"
+      ],
+      "dicas": [
+        "Probabilidade sabendo que algo aconteceu",
+        "Encolhe o espaço amostral",
+        "Usa a barra vertical"
+      ]
+    },
+    {
+      "id": "mat-revisao-probabilidade-adv-01",
+      "tema": "Revisão do módulo: contagem e probabilidade",
+      "dificuldade": "medio",
+      "resposta": "Combinatória",
+      "aceitas": [
+        "combinatoria"
+      ],
+      "dicas": [
+        "Arte de contar sem listar",
+        "Usa arranjos e combinações",
+        "Base da probabilidade"
       ]
     }
   ],
@@ -40153,6 +43483,78 @@
       "tema": "Matemática",
       "palavra": "Salada",
       "dica": "Mistura de ingredientes sem ordem"
+    },
+    {
+      "id": "mat-probabilidade-pal-01",
+      "tema": "Matemática",
+      "palavra": "Dado",
+      "dica": "Cubo com faces de 1 a 6"
+    },
+    {
+      "id": "mat-probabilidade-pal-02",
+      "tema": "Matemática",
+      "palavra": "Moeda",
+      "dica": "Cara ou coroa"
+    },
+    {
+      "id": "mat-probabilidade-pal-03",
+      "tema": "Matemática",
+      "palavra": "Rifa",
+      "dica": "Sorteio de números"
+    },
+    {
+      "id": "mat-probabilidade-pal-04",
+      "tema": "Matemática",
+      "palavra": "Chance",
+      "dica": "Possibilidade de acontecer"
+    },
+    {
+      "id": "mat-probabilidade-condicional-pal-01",
+      "tema": "Matemática",
+      "palavra": "Urna",
+      "dica": "Caixa de onde se sorteiam bolas"
+    },
+    {
+      "id": "mat-probabilidade-condicional-pal-02",
+      "tema": "Matemática",
+      "palavra": "Teste",
+      "dica": "Exame que pode dar falso positivo"
+    },
+    {
+      "id": "mat-probabilidade-condicional-pal-03",
+      "tema": "Matemática",
+      "palavra": "Galho",
+      "dica": "Etapa de uma árvore de probabilidades"
+    },
+    {
+      "id": "mat-probabilidade-condicional-pal-04",
+      "tema": "Matemática",
+      "palavra": "Sorteio",
+      "dica": "Escolha ao acaso"
+    },
+    {
+      "id": "mat-revisao-probabilidade-pal-01",
+      "tema": "Matemática",
+      "palavra": "Pódio",
+      "dica": "Primeiro, segundo e terceiro lugares"
+    },
+    {
+      "id": "mat-revisao-probabilidade-pal-02",
+      "tema": "Matemática",
+      "palavra": "Moeda",
+      "dica": "Cara ou coroa"
+    },
+    {
+      "id": "mat-revisao-probabilidade-pal-03",
+      "tema": "Matemática",
+      "palavra": "Comissão",
+      "dica": "Grupo sem ordem"
+    },
+    {
+      "id": "mat-revisao-probabilidade-pal-04",
+      "tema": "Matemática",
+      "palavra": "Bola",
+      "dica": "O que se tira de uma urna"
     }
   ],
   "fichas": {
@@ -41358,6 +44760,104 @@
       "pegadinhas": [
         "Somar as escolhas de cada tipo.",
         "Fixar um elemento e contar grupos repetidos."
+      ]
+    },
+    "Casos favoráveis": {
+      "texto": [
+        "Com resultados equiprováveis, probabilidade = favoráveis ÷ possíveis. Conte bem o espaço amostral: dois dados geram 36 pares ordenados, três moedas geram 8 sequências.",
+        "Para sorteios de grupos (2 pessoas, 3 bolas), use combinações em cima e embaixo. A probabilidade fica entre 0 e 1 e pode ser escrita como fração, decimal ou porcentagem."
+      ],
+      "pontos": [
+        "Dois dados: 36 resultados.",
+        "Soma 7 é a mais provável."
+      ],
+      "pegadinhas": [
+        "Tratar as somas de dois dados como igualmente prováveis.",
+        "Contar cores em vez de bolas."
+      ]
+    },
+    "Evento complementar": {
+      "texto": [
+        "P(não A) = 1 − P(A). Para \"pelo menos um\", calcule a chance de nenhum e tire de 1: pelo menos uma cara em 3 lançamentos = 1 − 1/8.",
+        "Com peças ou tentativas independentes, a chance de nenhum é o produto das chances de cada um falhar ou dar certo. Somar chances de vários eventos superestima o resultado."
+      ],
+      "pontos": [
+        "Pelo menos um = 1 − P(nenhum).",
+        "Pelo menos dois iguais = 1 − P(todos diferentes)."
+      ],
+      "pegadinhas": [
+        "Somar 1/6 + 1/6 para \"pelo menos um 6\".",
+        "Responder a chance de nenhum."
+      ]
+    },
+    "União de eventos": {
+      "texto": [
+        "P(A ou B) = P(A) + P(B) − P(A e B). Se A e B não podem acontecer juntos (sair 1 e 6 no mesmo dado), a interseção é zero e basta somar.",
+        "Para \"nenhum dos dois\", calcule a união e use o complementar. Conhecendo a união, isole a interseção: P(A e B) = P(A) + P(B) − P(A ou B)."
+      ],
+      "pontos": [
+        "União = soma − interseção.",
+        "Nenhum = 1 − união."
+      ],
+      "pegadinhas": [
+        "Somar sem descontar a interseção.",
+        "Multiplicar quando a pergunta é \"ou\"."
+      ]
+    },
+    "Eventos independentes": {
+      "texto": [
+        "Eventos independentes não interferem um no outro: multiplicam-se as probabilidades. Moedas, dados, sorteios com reposição e máquinas separadas são os exemplos mais comuns.",
+        "Para \"nenhum\", multiplique as chances de cada um não acontecer; para \"todos\", multiplique as chances de cada um. Somar probabilidades de eventos em sequência dá resultados acima de 100%."
+      ],
+      "pontos": [
+        "E em sequência: multiplique.",
+        "Nenhum falhar: produto dos complementares."
+      ],
+      "pegadinhas": [
+        "Somar chances de eventos sucessivos.",
+        "Fazer 100% − soma para \"nenhum\"."
+      ]
+    },
+    "Sem reposição": {
+      "texto": [
+        "Sem reposição, cada tirada muda a urna: o denominador cai uma unidade e o numerador cai se a bola tirada era do tipo desejado. Com reposição, a urna volta ao início e o fator se repete.",
+        "Para cores diferentes, some as ordens (vermelha e azul, azul e vermelha). Em sorteios de prêmios sem repetir ganhador, a chance de uma pessoa ganhar é o número de prêmios ÷ número de pessoas."
+      ],
+      "pontos": [
+        "Segunda tirada: use o que sobrou.",
+        "Cores diferentes: duas ordens."
+      ],
+      "pegadinhas": [
+        "Calcular com reposição quando não há.",
+        "Contar só uma ordem."
+      ]
+    },
+    "Condicional e árvores": {
+      "texto": [
+        "P(A | B) considera só os casos de B: divida pelos casos da condição. Numa tabela, use o total da linha ou da coluna indicada (\"sorteado um fumante\", \"sorteada uma mulher\").",
+        "Numa árvore, multiplique ao longo dos galhos e some os que levam ao mesmo resultado. Em testes para doenças raras, a chance de estar doente dado um positivo é pequena: divida os positivos verdadeiros por todos os positivos."
+      ],
+      "pontos": [
+        "Condição define o denominador.",
+        "Exatamente um: some as ordens."
+      ],
+      "pegadinhas": [
+        "Dividir pelo total geral.",
+        "Confundir P(positivo | doente) com P(doente | positivo)."
+      ]
+    },
+    "Revisão: contagem e probabilidade": {
+      "texto": [
+        "Escolha a ferramenta: etapas (multiplicar), alternativas (somar), fila de todos (permutação), escolher com ordem (arranjo), escolher sem ordem (combinação), chance (favoráveis ÷ possíveis), em sequência (multiplicar), condição (dividir pelo grupo dado).",
+        "Antes de marcar, confira: a ordem importa? Há repetição? O zero pode começar? É com ou sem reposição? A pergunta é \"exatamente\", \"pelo menos\" ou \"todos\"? O denominador é o grupo da condição?"
+      ],
+      "pontos": [
+        "Pelo menos um: complementar.",
+        "Exatamente um: todas as ordens."
+      ],
+      "pegadinhas": [
+        "Contar a ordem numa comissão.",
+        "Somar probabilidades em sequência."
       ]
     }
   }
