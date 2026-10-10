@@ -1,0 +1,3625 @@
+{
+  "id": "enem-quimica",
+  "nome": "Enem · Química",
+  "descricao": "Química para o Enem e os vestibulares: matéria e átomos, ligações e funções inorgânicas, quantidades e soluções, energia, velocidade e equilíbrio, química orgânica, polímeros e ambiente, com as habilidades da Matriz do Inep.",
+  "categoria": "Enem e vestibular",
+  "fasesLivres": true,
+  "prova": {
+    "questoes": 45,
+    "minutos": 135,
+    "aprovacao": 60,
+    "exigeFases": false
+  },
+  "fases": [
+    {
+      "id": "qui-materia",
+      "nome": "Aula 1 · Matéria: substâncias, misturas e propriedades",
+      "modulo": "Módulo 1 · Matéria, átomos e tabela periódica",
+      "descricao": "Módulo 1 · aula 1 de 3 · 35 min · treina as habilidades H17 e H24",
+      "habilidades": [
+        "H17",
+        "H24"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Substâncias e misturas",
+            "texto": [
+              "Uma **substância pura** tem composição fixa e propriedades constantes. Ela pode ser simples, formada por um só elemento (O₂, O₃, ferro), ou composta, com elementos diferentes (água, gás carbônico, sal de cozinha). O mesmo elemento pode formar substâncias simples diferentes, a alotropia: oxigênio e ozônio; diamante e grafite. Misturas reúnem duas ou mais substâncias: homogêneas têm uma só fase (água com sal dissolvido, ar filtrado, ligas metálicas como o bronze e o aço); heterogêneas têm mais de uma fase (água e óleo, granito, água com areia)."
+            ]
+          },
+          {
+            "titulo": "Propriedades da matéria",
+            "texto": [
+              "Massa e volume são propriedades gerais; as específicas identificam o material: ponto de fusão, ponto de ebulição, solubilidade e **densidade**, a massa dividida pelo volume (d = m/V). O gelo é menos denso que a água líquida e flutua; o óleo também flutua na água. Numa substância pura, a temperatura fica constante durante a fusão e a ebulição, e o gráfico de aquecimento mostra dois patamares; numa mistura comum, a temperatura varia durante a mudança de estado. Há exceções: misturas eutéticas fundem a temperatura constante (como a solda de estanho e chumbo), e misturas azeotrópicas fervem a temperatura constante (como o álcool 96%)."
+            ]
+          },
+          {
+            "titulo": "Estados físicos e transformações",
+            "texto": [
+              "Os estados físicos são sólido, líquido e gasoso. As mudanças são fusão, solidificação, vaporização (evaporação lenta, ebulição rápida), condensação e sublimação (gelo-seco e naftalina passam direto do sólido para o gás). O ponto de ebulição depende da pressão: em cidades altas, a água ferve abaixo de 100 °C; a panela de pressão eleva esse ponto e cozinha mais rápido. Num fenômeno físico, a substância continua a mesma (gelo derretendo, açúcar dissolvendo); num **fenômeno químico**, formam-se novas substâncias, com sinais como mudança de cor, liberação de gás, de calor ou de luz (queima do papel, ferrugem, bolo assando)."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Gráficos de aquecimento, cálculo de densidade, identificação de misturas e de fenômenos do cotidiano e efeitos da pressão sobre o ponto de ebulição."
+            ]
+          }
+        ],
+        "introducao": "Tudo o que tem massa e ocupa espaço é matéria: a água do copo, o ar do quarto, o ouro de um anel. Esta aula separa substâncias de misturas, apresenta as propriedades que identificam cada material, as mudanças de estado e a diferença entre transformar fisicamente e quimicamente.",
+        "mapaMental": {
+          "centro": "Matéria",
+          "ramos": [
+            {
+              "titulo": "Substâncias",
+              "itens": [
+                "substância pura",
+                "simples e composta",
+                "alotropia"
+              ]
+            },
+            {
+              "titulo": "Misturas",
+              "itens": [
+                "homogêneas",
+                "heterogêneas",
+                "ligas metálicas"
+              ]
+            },
+            {
+              "titulo": "Propriedades",
+              "itens": [
+                "densidade",
+                "ponto de fusão e de ebulição",
+                "patamares"
+              ]
+            },
+            {
+              "titulo": "Transformações",
+              "itens": [
+                "mudanças de estado",
+                "fenômeno químico",
+                "panela de pressão"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧊",
+            "conceito": "Gelo boiando",
+            "liga": "menos denso que a água",
+            "porque": "O sólido flutua no próprio líquido."
+          },
+          {
+            "icone": "💎",
+            "conceito": "Diamante e grafite",
+            "liga": "mesmo elemento, outra forma",
+            "porque": "Carbono em arranjos diferentes."
+          },
+          {
+            "icone": "🍰",
+            "conceito": "Bolo no forno",
+            "liga": "nova substância",
+            "porque": "Massa crua não volta depois de assar."
+          },
+          {
+            "icone": "🏔️",
+            "conceito": "Água fervendo na montanha",
+            "liga": "menor pressão",
+            "porque": "Ferve antes de 100 °C."
+          }
+        ],
+        "pontos": [
+          "**Substância pura** tem composição fixa e patamares de fusão e ebulição.",
+          "**Densidade** = massa ÷ volume; o menos denso flutua.",
+          "Mistura homogênea tem uma fase; heterogênea, mais de uma.",
+          "**Fenômeno químico** forma substâncias novas; físico, não."
+        ],
+        "perolas": [
+          "Patamar no gráfico, temperatura parada: sinal de pureza."
+        ],
+        "reforcar": [
+          "substancia pura",
+          "densidade",
+          "fenomeno quimico"
+        ]
+      }
+    },
+    {
+      "id": "qui-separacao",
+      "nome": "Aula 2 · Separação de misturas e tratamento de água",
+      "modulo": "Módulo 1 · Matéria, átomos e tabela periódica",
+      "descricao": "Módulo 1 · aula 2 de 3 · 35 min · treina as habilidades H24, H25 e H27",
+      "habilidades": [
+        "H24",
+        "H25",
+        "H27"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Misturas heterogêneas",
+            "texto": [
+              "Para sólido com sólido, usam-se catação (escolher o feijão), peneiração, ventilação (separar a palha do arroz), levigação (a água corrente arrasta o material leve, como no garimpo) e separação magnética. Para sólido e líquido, a filtração (café no coador) e a **decantação**, em que o sólido se deposita no fundo pela gravidade; a centrifugação acelera esse processo (separação do sangue, máquina de lavar). Dois líquidos que não se misturam, como água e óleo, são separados no funil de decantação."
+            ]
+          },
+          {
+            "titulo": "Misturas homogêneas",
+            "texto": [
+              "Na destilação simples, a mistura de sólido dissolvido num líquido é aquecida: o líquido evapora, condensa no condensador e é recolhido, e o sólido fica no balão (água e sal). Na **destilação fracionada**, líquidos com pontos de ebulição diferentes são separados em ordem, como no refino do petróleo e na separação dos gases do ar liquefeito. A evaporação, nas salinas, obtém o sal da água do mar. A cromatografia separa pigmentos que se deslocam com velocidades diferentes num papel ou numa coluna."
+            ]
+          },
+          {
+            "titulo": "Tratamento de água",
+            "texto": [
+              "Na estação de tratamento, a água bruta recebe sulfato de alumínio (com cal para ajustar o pH); na **floculação**, as impurezas se juntam em flocos, que descem na decantação. Depois, a água passa por filtros de areia, cascalho e às vezes carvão ativado, recebe cloro para matar microrganismos (desinfecção), flúor para prevenir cáries e correção final de pH. No tratamento de esgoto, grades retiram objetos, a areia se deposita, bactérias degradam a matéria orgânica e o lodo é separado. Em regiões secas ou em navios, a dessalinização por osmose reversa produz água doce. Sem tratamento, a água pode transmitir cólera, hepatite A e outras doenças, e por isso o saneamento é tema de saúde pública e não só de laboratório."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Esquemas de aparelhos de laboratório, a sequência de uma estação de tratamento, garimpo e mercúrio, refino do petróleo e escolha do método adequado para cada mistura."
+            ]
+          }
+        ],
+        "introducao": "Do café coado ao petróleo refinado, separar misturas é uma das tarefas mais antigas da Química. Esta aula apresenta os métodos para misturas heterogêneas e homogêneas e mostra, passo a passo, como a água bruta vira água de beber e como o esgoto é tratado.",
+        "mapaMental": {
+          "centro": "Separação de misturas",
+          "ramos": [
+            {
+              "titulo": "Heterogêneas",
+              "itens": [
+                "filtração",
+                "decantação",
+                "centrifugação"
+              ]
+            },
+            {
+              "titulo": "Sólidos",
+              "itens": [
+                "catação",
+                "peneiração",
+                "separação magnética"
+              ]
+            },
+            {
+              "titulo": "Homogêneas",
+              "itens": [
+                "destilação simples",
+                "destilação fracionada",
+                "cromatografia"
+              ]
+            },
+            {
+              "titulo": "Água",
+              "itens": [
+                "floculação",
+                "filtração em areia",
+                "cloro e flúor"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "☕",
+            "conceito": "Coador de café",
+            "liga": "filtração",
+            "porque": "O pó fica; o líquido passa."
+          },
+          {
+            "icone": "🛢️",
+            "conceito": "Torre de refinaria",
+            "liga": "separar por ponto de ebulição",
+            "porque": "Cada fração sai numa altura."
+          },
+          {
+            "icone": "🧂",
+            "conceito": "Salina",
+            "liga": "evaporação",
+            "porque": "O sol leva a água e deixa o sal."
+          },
+          {
+            "icone": "🧶",
+            "conceito": "Novelos de sujeira",
+            "liga": "flocos que afundam",
+            "porque": "Impurezas se juntam e descem."
+          }
+        ],
+        "pontos": [
+          "**Decantação** separa pela gravidade; centrifugação acelera; funil separa líquidos imiscíveis.",
+          "**Destilação fracionada** separa líquidos por pontos de ebulição diferentes (petróleo).",
+          "Destilação simples separa sólido dissolvido de líquido; cromatografia separa pigmentos.",
+          "Na água: **floculação**, decantação, filtração, cloro e flúor."
+        ],
+        "perolas": [
+          "Escolha o método pela diferença entre os componentes."
+        ],
+        "reforcar": [
+          "decantacao",
+          "destilacao fracionada",
+          "floculacao"
+        ]
+      }
+    },
+    {
+      "id": "qui-atomo",
+      "nome": "Aula 3 · Átomo, modelos e radioatividade",
+      "modulo": "Módulo 1 · Matéria, átomos e tabela periódica",
+      "descricao": "Módulo 1 · aula 3 de 3 · 35 min · treina as habilidades H17, H24 e H26",
+      "habilidades": [
+        "H17",
+        "H24",
+        "H26"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Modelos atômicos",
+            "texto": [
+              "Dalton, no início do século XIX, propôs átomos como esferas maciças e indivisíveis. Thomson descobriu o elétron e imaginou uma esfera positiva com elétrons incrustados, o \"pudim de passas\". Rutherford bombardeou uma fina lâmina de ouro com partículas alfa: a maioria atravessou, e poucas foram desviadas. Concluiu que o átomo é quase todo vazio, com um núcleo pequeno, denso e positivo, e elétrons ao redor. Bohr acrescentou os níveis de energia: o elétron que recebe energia salta para um nível mais externo e, ao voltar, emite luz de cor característica, como nos fogos de artifício e no teste de chama."
+            ]
+          },
+          {
+            "titulo": "Partículas e isótopos",
+            "texto": [
+              "O núcleo tem prótons (carga positiva) e nêutrons (sem carga); a eletrosfera tem elétrons (carga negativa). O **número atômico** (Z) é o número de prótons e identifica o elemento; o número de massa (A) é a soma de prótons e nêutrons (A = Z + N). Um átomo neutro tem tantos elétrons quanto prótons; o cátion perdeu elétrons e o ânion ganhou. **Isótopos** são átomos do mesmo elemento com números de nêutrons diferentes, como carbono-12, carbono-13 e carbono-14; isóbaros têm a mesma massa; isótonos, o mesmo número de nêutrons."
+            ]
+          },
+          {
+            "titulo": "Radioatividade",
+            "texto": [
+              "Núcleos instáveis emitem radiação. A partícula alfa (dois prótons e dois nêutrons) é pouco penetrante e uma folha de papel a barra; a beta (um elétron emitido pelo núcleo) atravessa o papel, mas é barrada por uma placa de alumínio; a gama é onda eletromagnética muito penetrante, contida por chumbo ou concreto espesso. A **meia-vida** é o tempo para metade dos núcleos de uma amostra decair; o carbono-14, com meia-vida de cerca de 5.730 anos, data fósseis e objetos antigos. A radioatividade é usada em radioterapia, exames de medicina nuclear, esterilização e usinas nucleares (fissão do urânio), mas exige controle rigoroso: o acidente com césio-137 em Goiânia, em 1987, mostrou os riscos do descarte inadequado."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Interpretação do experimento de Rutherford, cálculos de prótons, nêutrons e elétrons, isótopos, cores de fogos, meia-vida e usos e riscos da energia nuclear."
+            ]
+          }
+        ],
+        "introducao": "Ninguém nunca viu um átomo a olho nu, mas experimentos engenhosos revelaram como ele é por dentro. Esta aula conta a evolução dos modelos atômicos, apresenta prótons, nêutrons e elétrons, os isótopos e a radioatividade, com seus usos na medicina e na energia e seus riscos.",
+        "mapaMental": {
+          "centro": "Átomo",
+          "ramos": [
+            {
+              "titulo": "Modelos",
+              "itens": [
+                "Dalton",
+                "Thomson",
+                "Rutherford e Bohr"
+              ]
+            },
+            {
+              "titulo": "Partículas",
+              "itens": [
+                "prótons e nêutrons",
+                "elétrons",
+                "número atômico"
+              ]
+            },
+            {
+              "titulo": "Variações",
+              "itens": [
+                "isótopos",
+                "cátion e ânion",
+                "isóbaros e isótonos"
+              ]
+            },
+            {
+              "titulo": "Radioatividade",
+              "itens": [
+                "alfa, beta e gama",
+                "meia-vida",
+                "usos e riscos"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🍮",
+            "conceito": "Pudim de passas",
+            "liga": "modelo de Thomson",
+            "porque": "Massa positiva com elétrons espalhados."
+          },
+          {
+            "icone": "🏟️",
+            "conceito": "Formiga no estádio",
+            "liga": "núcleo minúsculo",
+            "porque": "O átomo é quase todo vazio."
+          },
+          {
+            "icone": "🎆",
+            "conceito": "Fogos de artifício",
+            "liga": "elétrons voltando de nível",
+            "porque": "Cada elemento, uma cor."
+          },
+          {
+            "icone": "⏳",
+            "conceito": "Ampulheta",
+            "liga": "metade a cada período",
+            "porque": "A amostra cai pela metade de tempos em tempos."
+          }
+        ],
+        "pontos": [
+          "O **número atômico** (prótons) identifica o elemento; A = Z + N.",
+          "**Isótopos** têm o mesmo número de prótons e nêutrons diferentes.",
+          "Rutherford mostrou o núcleo; Bohr, os níveis de energia e as cores emitidas.",
+          "**Meia-vida**: tempo para metade dos núcleos decair; o carbono-14 data fósseis."
+        ],
+        "perolas": [
+          "Alfa para no papel; beta, no alumínio; gama exige chumbo."
+        ],
+        "reforcar": [
+          "numero atomico",
+          "isotopos",
+          "meia-vida"
+        ]
+      }
+    }
+  ],
+  "questoes": [
+    {
+      "id": "qui-materia-q01",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "A água destilada é exemplo de:",
+      "alternativas": [
+        "Elemento químico isolado",
+        "Substância pura composta",
+        "Substância pura simples",
+        "Mistura heterogênea",
+        "Mistura homogênea"
+      ],
+      "correta": 1,
+      "explicacao": "H₂O tem composição fixa. Dica de mergulhador: um tipo de molécula, substância pura.",
+      "comentarios": [
+        "É composto de H e O.",
+        "",
+        "Tem dois elementos.",
+        "Tem uma fase e uma substância.",
+        "Tem uma substância só."
+      ]
+    },
+    {
+      "id": "qui-materia-q02",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "Água e óleo num copo formam:",
+      "alternativas": [
+        "Uma liga metálica",
+        "Uma mistura homogênea",
+        "Uma substância pura",
+        "Um elemento químico",
+        "Uma mistura heterogênea"
+      ],
+      "correta": 4,
+      "explicacao": "Duas fases visíveis. Dica de mergulhador: deu para ver a divisão, é heterogênea.",
+      "comentarios": [
+        "Não são metais.",
+        "Têm duas fases.",
+        "São duas substâncias.",
+        "Não faz sentido.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q03",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "O oxigênio (O₂) e o ozônio (O₃) são:",
+      "alternativas": [
+        "Misturas heterogêneas",
+        "Formas alotrópicas do mesmo elemento",
+        "Isótopos do oxigênio",
+        "Substâncias compostas",
+        "Elementos diferentes"
+      ],
+      "correta": 1,
+      "explicacao": "Mesmo elemento, número diferente de átomos. Dica de mergulhador: alotropia = mesmo tijolo, outra construção.",
+      "comentarios": [
+        "São substâncias puras.",
+        "",
+        "Isótopo é outro conceito.",
+        "Têm um só elemento.",
+        "São do mesmo elemento."
+      ]
+    },
+    {
+      "id": "qui-materia-q04",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "A densidade de um material é calculada por:",
+      "alternativas": [
+        "Massa mais volume",
+        "Volume dividido pela massa",
+        "Temperatura dividida pela massa",
+        "Massa dividida pelo volume",
+        "Massa vezes volume"
+      ],
+      "correta": 3,
+      "explicacao": "d = m/V. Dica de mergulhador: densidade é massa por volume.",
+      "comentarios": [
+        "Não é a fórmula.",
+        "Está invertido.",
+        "Não é a fórmula.",
+        "",
+        "Não é a fórmula."
+      ]
+    },
+    {
+      "id": "qui-materia-q05",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "O gelo flutua na água líquida porque:",
+      "alternativas": [
+        "Não tem volume",
+        "É uma substância diferente da água",
+        "Tem mais massa que a água",
+        "É menos denso que a água líquida",
+        "É mais denso que a água"
+      ],
+      "correta": 3,
+      "explicacao": "O sólido ocupa mais espaço que o líquido. Dica de mergulhador: menos denso, flutua.",
+      "comentarios": [
+        "Tem volume.",
+        "É a mesma substância.",
+        "Não é o critério.",
+        "",
+        "Afundaria."
+      ]
+    },
+    {
+      "id": "qui-materia-q06",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "A passagem direta do estado sólido para o gasoso, como no gelo-seco, chama-se:",
+      "alternativas": [
+        "Solidificação",
+        "Fusão",
+        "Condensação",
+        "Sublimação",
+        "Evaporação"
+      ],
+      "correta": 3,
+      "explicacao": "A naftalina também sublima. Dica de mergulhador: sublima quem pula o líquido.",
+      "comentarios": [
+        "Líquido para sólido.",
+        "Sólido para líquido.",
+        "Gás para líquido.",
+        "",
+        "Líquido para gás."
+      ]
+    },
+    {
+      "id": "qui-materia-q07",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "Qual destes é um fenômeno químico?",
+      "alternativas": [
+        "Gelo derretendo",
+        "Papel sendo rasgado",
+        "Açúcar dissolvendo no café",
+        "Um prego enferrujando",
+        "Água fervendo"
+      ],
+      "correta": 3,
+      "explicacao": "Forma-se uma substância nova, o óxido de ferro. Dica de mergulhador: virou outra coisa, é químico.",
+      "comentarios": [
+        "É físico.",
+        "É físico.",
+        "É físico.",
+        "",
+        "É físico."
+      ]
+    },
+    {
+      "id": "qui-materia-q08",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "Num gráfico de aquecimento, um material apresenta patamar na fusão e na ebulição. Ele provavelmente é:",
+      "alternativas": [
+        "Uma substância pura",
+        "Uma liga metálica comum",
+        "Uma mistura heterogênea qualquer",
+        "Uma solução de sal em água",
+        "Uma mistura comum"
+      ],
+      "correta": 0,
+      "explicacao": "Temperatura constante nas mudanças de estado. Dica de mergulhador: dois patamares, substância pura.",
+      "comentarios": [
+        "",
+        "Não teria patamar na fusão.",
+        "Não teria dois patamares.",
+        "A temperatura variaria.",
+        "A temperatura variaria nas mudanças."
+      ]
+    },
+    {
+      "id": "qui-materia-q09",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "O ar filtrado, formado principalmente por nitrogênio e oxigênio, é:",
+      "alternativas": [
+        "Um elemento químico",
+        "Uma substância simples",
+        "Uma mistura heterogênea",
+        "Uma substância pura",
+        "Uma mistura homogênea"
+      ],
+      "correta": 4,
+      "explicacao": "Gases sempre se misturam numa fase. Dica de mergulhador: gás com gás, mistura homogênea.",
+      "comentarios": [
+        "É mistura.",
+        "Tem várias substâncias.",
+        "Tem uma só fase.",
+        "Tem vários gases.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q10",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "Um bloco de 300 g é colocado numa proveta com 100 mL de água, e o nível sobe para 160 mL. A densidade do bloco é:",
+      "alternativas": [
+        "1,875 g/mL",
+        "3 g/mL",
+        "60 g/mL",
+        "0,2 g/mL",
+        "5 g/mL"
+      ],
+      "correta": 4,
+      "explicacao": "Volume deslocado = 60 mL; 300 ÷ 60. Dica de mergulhador: o volume do sólido é o quanto a água subiu.",
+      "comentarios": [
+        "Usou o volume final.",
+        "Usou o volume inicial.",
+        "Não é o caso.",
+        "Inverteu a divisão.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q11",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "Para saber se uma joia é de ouro puro, uma propriedade útil é:",
+      "alternativas": [
+        "O formato",
+        "O volume total",
+        "A densidade, que é característica do material",
+        "A cor apenas",
+        "A massa total"
+      ],
+      "correta": 2,
+      "explicacao": "Propriedade específica identifica substâncias. Dica de mergulhador: densidade é impressão digital.",
+      "comentarios": [
+        "Não identifica o material.",
+        "Depende do tamanho.",
+        "",
+        "Pode enganar.",
+        "Depende do tamanho."
+      ]
+    },
+    {
+      "id": "qui-materia-q12",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "A solda usada em eletrônica, mistura de estanho e chumbo, funde a temperatura constante. Ela é uma mistura:",
+      "alternativas": [
+        "Gasosa",
+        "Azeotrópica",
+        "Eutética",
+        "Heterogênea",
+        "Pura"
+      ],
+      "correta": 2,
+      "explicacao": "Comportamento de substância pura só na fusão. Dica de mergulhador: eutética funde parada.",
+      "comentarios": [
+        "É sólida.",
+        "Ferve a temperatura constante.",
+        "",
+        "Tem aspecto uniforme.",
+        "É mistura."
+      ],
+      "revisar": "solda estanho-chumbo como mistura eutética"
+    },
+    {
+      "id": "qui-materia-q13",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "Em cidades muito altas, o feijão demora mais para cozinhar porque:",
+      "alternativas": [
+        "A água ferve acima de 100 °C",
+        "O feijão fica mais denso",
+        "A água ferve abaixo de 100 °C pela menor pressão",
+        "Não há oxigênio para cozinhar",
+        "A chama é mais quente"
+      ],
+      "correta": 2,
+      "explicacao": "Menor pressão, menor ponto de ebulição. Dica de mergulhador: no alto, água ferve mais fria.",
+      "comentarios": [
+        "Ferve abaixo.",
+        "Não é o motivo.",
+        "",
+        "Não é o motivo.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-materia-q14",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "Um sinal de que ocorreu uma transformação química é:",
+      "alternativas": [
+        "Dissolução de sal na água",
+        "Corte de uma folha de papel",
+        "Liberação de gás e mudança de cor sem aquecimento externo",
+        "Derretimento de uma vela apenas",
+        "Mudança de forma de um objeto"
+      ],
+      "correta": 2,
+      "explicacao": "Indícios de nova substância. Dica de mergulhador: bolha, cor, calor ou luz são pistas.",
+      "comentarios": [
+        "É física.",
+        "É física.",
+        "",
+        "É física.",
+        "É física."
+      ]
+    },
+    {
+      "id": "qui-materia-q15",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "A diferença entre evaporação e ebulição é que:",
+      "alternativas": [
+        "As duas ocorrem só a 100 °C",
+        "A evaporação só ocorre com fogo",
+        "Evaporar ocorre a qualquer temperatura; ferver, não",
+        "São o mesmo processo",
+        "A ebulição é lenta e superficial"
+      ],
+      "correta": 2,
+      "explicacao": "Roupa no varal evapora; água na panela ferve. Dica de mergulhador: varal evapora; panela ferve.",
+      "comentarios": [
+        "A evaporação ocorre em várias temperaturas.",
+        "Não precisa.",
+        "",
+        "Diferem na rapidez e na temperatura.",
+        "É rápida e em todo o líquido."
+      ]
+    },
+    {
+      "id": "qui-materia-q16",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Um estudante diz que o ar puro é uma substância pura. A correção adequada é:",
+      "alternativas": [
+        "O ar é uma mistura heterogênea",
+        "O ar é um elemento químico",
+        "O ar é uma mistura homogênea de vários gases",
+        "O ar é uma substância simples",
+        "A afirmação está correta"
+      ],
+      "correta": 2,
+      "explicacao": "\"Puro\" no cotidiano não é o mesmo que na Química. Dica de mergulhador: ar limpo ainda é mistura.",
+      "comentarios": [
+        "Tem uma fase.",
+        "Não é.",
+        "",
+        "Tem vários gases.",
+        "Não está."
+      ]
+    },
+    {
+      "id": "qui-materia-q17",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Um gráfico de aquecimento mostra temperatura constante na fusão, mas variando durante a ebulição. O material é provavelmente:",
+      "alternativas": [
+        "Uma substância pura",
+        "Uma mistura comum",
+        "Um gás nobre",
+        "Uma mistura azeotrópica",
+        "Uma mistura eutética"
+      ],
+      "correta": 4,
+      "explicacao": "Patamar só na fusão. Dica de mergulhador: eutética para na fusão.",
+      "comentarios": [
+        "Teria dois patamares.",
+        "Não teria patamar.",
+        "Não é o caso.",
+        "Teria patamar na ebulição.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q18",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Três líquidos que não se misturam (densidades 0,8; 1,0 e 1,3 g/mL) são colocados num tubo. De cima para baixo, a ordem será:",
+      "alternativas": [
+        "Todos misturados",
+        "0,8; 1,3; 1,0",
+        "0,8; 1,0; 1,3",
+        "1,3; 1,0; 0,8",
+        "1,0; 0,8; 1,3"
+      ],
+      "correta": 2,
+      "explicacao": "O menos denso fica em cima. Dica de mergulhador: torre de densidade, leve em cima.",
+      "comentarios": [
+        "Não se misturam.",
+        "Fora de ordem.",
+        "",
+        "Está invertido.",
+        "Fora de ordem."
+      ]
+    },
+    {
+      "id": "qui-materia-q19",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Uma amostra de leite tem densidade menor que a de referência. Uma possível adulteração é:",
+      "alternativas": [
+        "Congelamento",
+        "Aquecimento do leite",
+        "Adição de água ou retirada de gordura alterando a composição",
+        "Aumento da massa sem mudar o volume",
+        "Adição de mais leite igual"
+      ],
+      "correta": 2,
+      "explicacao": "A densidade denuncia a mudança de composição. Dica de mergulhador: densidade fora do padrão, leite suspeito.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não é adulteração.",
+        "",
+        "Aumentaria a densidade.",
+        "Não muda a densidade."
+      ],
+      "revisar": "uso da densidade na fiscalização do leite"
+    },
+    {
+      "id": "qui-materia-q20",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "No inverno, garrafas cheias de água esquecidas no congelador podem estourar porque:",
+      "alternativas": [
+        "A água diminui de volume",
+        "A garrafa derrete",
+        "O gelo é mais denso que a água",
+        "A água vira gás",
+        "A água aumenta de volume ao solidificar"
+      ],
+      "correta": 4,
+      "explicacao": "Comportamento incomum da água. Dica de mergulhador: gelo ocupa mais espaço.",
+      "comentarios": [
+        "Aumenta.",
+        "Não é o caso.",
+        "É menos denso.",
+        "Não é o caso.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q01",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Ao passar o café no coador, o método de separação usado é a:",
+      "alternativas": [
+        "Filtração",
+        "Decantação",
+        "Sublimação",
+        "Catação",
+        "Destilação"
+      ],
+      "correta": 0,
+      "explicacao": "O sólido fica retido no papel. Dica de mergulhador: coador = filtro.",
+      "comentarios": [
+        "",
+        "Usa a gravidade sem filtro.",
+        "Não é método aqui.",
+        "É escolher com a mão.",
+        "Usa aquecimento e condensação."
+      ]
+    },
+    {
+      "id": "qui-separacao-q02",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Para separar água e óleo, o equipamento mais adequado é o:",
+      "alternativas": [
+        "Ímã",
+        "Coador de papel",
+        "Peneira",
+        "Condensador",
+        "Funil de decantação"
+      ],
+      "correta": 4,
+      "explicacao": "O líquido mais denso é retirado por baixo. Dica de mergulhador: funil com torneira separa camadas.",
+      "comentarios": [
+        "Não atrai líquidos.",
+        "Não separa bem dois líquidos.",
+        "Não serve para líquidos.",
+        "É da destilação.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q03",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "A separação de limalha de ferro misturada à areia pode ser feita por:",
+      "alternativas": [
+        "Separação magnética",
+        "Filtração",
+        "Destilação",
+        "Decantação em água",
+        "Sublimação"
+      ],
+      "correta": 0,
+      "explicacao": "O ímã atrai o ferro. Dica de mergulhador: ferro vai com o ímã.",
+      "comentarios": [
+        "",
+        "Os dois são sólidos.",
+        "Não é o caso.",
+        "Não é o melhor.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-separacao-q04",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Para obter água pura a partir da água do mar em laboratório, usa-se a:",
+      "alternativas": [
+        "Separação magnética",
+        "Filtração",
+        "Catação",
+        "Destilação simples",
+        "Decantação"
+      ],
+      "correta": 3,
+      "explicacao": "A água evapora e condensa; o sal fica. Dica de mergulhador: sal dissolvido não fica no filtro.",
+      "comentarios": [
+        "O sal não é atraído.",
+        "O sal dissolvido passa pelo filtro.",
+        "Não é possível.",
+        "",
+        "O sal não se deposita."
+      ]
+    },
+    {
+      "id": "qui-separacao-q05",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "O refino do petróleo, que separa gasolina, diesel e outros derivados, usa principalmente a:",
+      "alternativas": [
+        "Peneiração",
+        "Catação",
+        "Separação magnética",
+        "Destilação fracionada",
+        "Filtração"
+      ],
+      "correta": 3,
+      "explicacao": "Cada fração sai numa temperatura. Dica de mergulhador: refinaria é destilação em torre.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não é possível.",
+        "Não é o caso.",
+        "",
+        "Não separa líquidos misturados."
+      ]
+    },
+    {
+      "id": "qui-separacao-q06",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Na estação de tratamento de água, o cloro é adicionado para:",
+      "alternativas": [
+        "Formar os flocos",
+        "Deixar a água colorida",
+        "Prevenir cáries",
+        "Eliminar microrganismos causadores de doenças",
+        "Retirar a areia"
+      ],
+      "correta": 3,
+      "explicacao": "É a desinfecção. Dica de mergulhador: cloro mata micróbio.",
+      "comentarios": [
+        "É o sulfato de alumínio.",
+        "Não é o objetivo.",
+        "É o flúor.",
+        "",
+        "É a filtração."
+      ]
+    },
+    {
+      "id": "qui-separacao-q07",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "A etapa em que as impurezas se juntam em flocos maiores, com ajuda do sulfato de alumínio, é a:",
+      "alternativas": [
+        "Desinfecção",
+        "Fluoretação",
+        "Evaporação",
+        "Floculação",
+        "Destilação"
+      ],
+      "correta": 3,
+      "explicacao": "Os flocos depois descem na decantação. Dica de mergulhador: floco = sujeira agrupada.",
+      "comentarios": [
+        "É a do cloro.",
+        "É a do flúor.",
+        "Não é o caso.",
+        "",
+        "Não ocorre na estação."
+      ]
+    },
+    {
+      "id": "qui-separacao-q08",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "No garimpo, a água corrente arrasta a areia mais leve e deixa o ouro, mais denso, no fundo da bateia. O método é a:",
+      "alternativas": [
+        "Ventilação",
+        "Cromatografia",
+        "Destilação",
+        "Catação",
+        "Levigação"
+      ],
+      "correta": 4,
+      "explicacao": "Separação por diferença de densidade com água. Dica de mergulhador: levigação é lavar e deixar o pesado.",
+      "comentarios": [
+        "Usa o ar.",
+        "Não é o caso.",
+        "Usa calor.",
+        "É manual.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q09",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Num exame de sangue, a centrífuga separa:",
+      "alternativas": [
+        "As células, no fundo, do plasma, em cima",
+        "Os vírus da água",
+        "O ferro da hemoglobina",
+        "O sangue em gases",
+        "O sal do plasma"
+      ],
+      "correta": 0,
+      "explicacao": "As células são mais densas. Dica de mergulhador: no tubo girado, o pesado vai para baixo.",
+      "comentarios": [
+        "",
+        "Não é o objetivo.",
+        "Não é o caso.",
+        "Não é o caso.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-separacao-q10",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Na destilação simples de água com sal, o condensador serve para:",
+      "alternativas": [
+        "Formar flocos",
+        "Resfriar o vapor e transformá-lo de volta em líquido",
+        "Filtrar a água",
+        "Aquecer a mistura",
+        "Reter o sal"
+      ],
+      "correta": 1,
+      "explicacao": "A água fria circula por fora do tubo. Dica de mergulhador: condensador devolve o vapor ao líquido.",
+      "comentarios": [
+        "Não é o caso.",
+        "",
+        "Não é filtro.",
+        "É a chama ou manta.",
+        "O sal fica no balão."
+      ]
+    },
+    {
+      "id": "qui-separacao-q11",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Para separar álcool e água por destilação fracionada, usa-se a diferença:",
+      "alternativas": [
+        "Dos pontos de ebulição",
+        "Das densidades, apenas",
+        "Do tamanho das moléculas visível a olho nu",
+        "Das cores",
+        "Do magnetismo"
+      ],
+      "correta": 0,
+      "explicacao": "O álcool ferve antes da água. Dica de mergulhador: destilar é separar pelo ponto de ebulição.",
+      "comentarios": [
+        "",
+        "Não é o princípio da destilação.",
+        "Não é o caso.",
+        "Não é o critério.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-separacao-q12",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "A ordem correta das etapas numa estação de tratamento de água é:",
+      "alternativas": [
+        "Filtração, floculação, cloração e decantação",
+        "Fluoretação, floculação, catação e filtração",
+        "Decantação, destilação, floculação e filtração",
+        "Desinfecção, filtração, floculação e decantação",
+        "Floculação, decantação, filtração e desinfecção"
+      ],
+      "correta": 4,
+      "explicacao": "Juntar, descer, filtrar e desinfetar. Dica de mergulhador: flocos, fundo, filtro, cloro.",
+      "comentarios": [
+        "Fora de ordem.",
+        "Fora de ordem.",
+        "Não há destilação.",
+        "Fora de ordem.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q13",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "No tratamento de esgoto, a etapa biológica usa:",
+      "alternativas": [
+        "Bactérias que decompõem a matéria orgânica",
+        "Destilação fracionada",
+        "Ímãs",
+        "Fluoretação",
+        "Cloro em excesso para tudo"
+      ],
+      "correta": 0,
+      "explicacao": "Microrganismos fazem a limpeza. Dica de mergulhador: bactéria boa limpa o esgoto.",
+      "comentarios": [
+        "",
+        "Não é usada.",
+        "Não é o caso.",
+        "É da água potável.",
+        "Não é a etapa biológica."
+      ]
+    },
+    {
+      "id": "qui-separacao-q14",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Uma mistura tem areia, sal e limalha de ferro. A sequência adequada para separar tudo é:",
+      "alternativas": [
+        "Evaporação, catação e centrifugação",
+        "Decantação, sublimação e ventilação",
+        "Filtração, ímã e destilação fracionada",
+        "Ímã, água para dissolver o sal, filtração e evaporação",
+        "Destilação, ímã e cromatografia"
+      ],
+      "correta": 3,
+      "explicacao": "Ferro sai com ímã; sal se dissolve e passa pelo filtro; evaporar recupera o sal. Dica de mergulhador: uma propriedade de cada vez.",
+      "comentarios": [
+        "Não separa bem.",
+        "Não é adequado.",
+        "Ordem e métodos inadequados.",
+        "",
+        "Não é adequado."
+      ]
+    },
+    {
+      "id": "qui-separacao-q15",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Na destilação de uma mistura de água e etanol, mesmo com coluna de fracionamento, não se obtém etanol 100% porque:",
+      "alternativas": [
+        "O condensador falha sempre",
+        "A água ferve antes do etanol",
+        "O etanol não evapora",
+        "Forma-se uma mistura azeotrópica",
+        "O etanol vira sal"
+      ],
+      "correta": 3,
+      "explicacao": "O azeótropo se comporta como substância pura na ebulição. Dica de mergulhador: azeótropo trava a destilação.",
+      "comentarios": [
+        "Não é o motivo.",
+        "É o contrário.",
+        "Evapora.",
+        "",
+        "Não faz sentido."
+      ],
+      "revisar": "azeótropo etanol-água (cerca de 96%)"
+    },
+    {
+      "id": "qui-separacao-q16",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Em cidades costeiras com pouca água doce, a dessalinização por osmose reversa funciona porque:",
+      "alternativas": [
+        "O ímã retira o sal",
+        "O cloro transforma o sal em água",
+        "A filtração comum retém o sal dissolvido",
+        "A pressão força a água a atravessar uma membrana, deixando os sais para trás",
+        "O sal evapora antes da água"
+      ],
+      "correta": 3,
+      "explicacao": "É o inverso da osmose natural. Dica de mergulhador: empurra a água e segura o sal.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não faz sentido.",
+        "Não retém.",
+        "",
+        "Não evapora."
+      ]
+    },
+    {
+      "id": "qui-separacao-q17",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Para separar os pigmentos da tinta de uma caneta, um estudante pinga a tinta num papel e mergulha a ponta em álcool. O método e o princípio usados são:",
+      "alternativas": [
+        "Decantação: os pigmentos afundam",
+        "Evaporação: o álcool leva todos juntos",
+        "Destilação: pigmentos fervem em ordem",
+        "Cromatografia: pigmentos andam com velocidades diferentes",
+        "Filtração: o papel retém o pigmento"
+      ],
+      "correta": 3,
+      "explicacao": "Cada pigmento interage diferente com o papel e com o solvente e para num ponto. Dica de mergulhador: manchas que viram faixas coloridas = cromatografia.",
+      "comentarios": [
+        "Não há sedimentação.",
+        "Eles se separam em faixas.",
+        "Não houve aquecimento.",
+        "",
+        "Os pigmentos se deslocam e se separam."
+      ]
+    },
+    {
+      "id": "qui-separacao-q18",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Depois da decantação, a água da estação passa por camadas de areia e cascalho. Essa etapa serve para:",
+      "alternativas": [
+        "Adicionar flúor",
+        "Formar os flocos",
+        "Matar bactérias",
+        "Dissolver os sais",
+        "Reter as partículas pequenas que não afundaram"
+      ],
+      "correta": 4,
+      "explicacao": "A filtração completa a retirada de sólidos em suspensão. Dica de mergulhador: areia segura o que a gravidade deixou passar.",
+      "comentarios": [
+        "É outra etapa.",
+        "Isso é a floculação, antes.",
+        "Isso é a cloração.",
+        "A filtração não dissolve.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q19",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Uma mistura de acetona (ebulição a 56 °C) e água (100 °C) é aquecida num aparelho com coluna de fracionamento. Com o termômetro no topo, o que se observa primeiro?",
+      "alternativas": [
+        "A temperatura fica perto de 56 °C enquanto sai quase só acetona",
+        "As duas saem juntas a 78 °C",
+        "Nada destila abaixo de 100 °C",
+        "A temperatura sobe sem parar desde o início",
+        "Sai primeiro a água, a 100 °C"
+      ],
+      "correta": 0,
+      "explicacao": "O componente mais volátil (menor ponto de ebulição) sai primeiro; depois a temperatura sobe até a da água. Dica de mergulhador: na fracionada, quem ferve mais baixo sai primeiro.",
+      "comentarios": [
+        "",
+        "Não é azeótropo dado.",
+        "A acetona ferve antes.",
+        "Há um patamar aproximado.",
+        "A água tem ebulição maior."
+      ]
+    },
+    {
+      "id": "qui-separacao-q20",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Uma cidade adiciona sulfato de alumínio e cal à água bruta. Se a cal fosse retirada, a etapa mais prejudicada seria:",
+      "alternativas": [
+        "A fluoretação, que depende da cal",
+        "A captação do rio",
+        "A destilação da água",
+        "A osmose reversa",
+        "A floculação, que depende do pH adequado para formar flocos"
+      ],
+      "correta": 4,
+      "explicacao": "O hidróxido de alumínio gelatinoso se forma melhor em pH ajustado pela cal; sem ele, os flocos não se formam bem e a água sai turva. Dica de mergulhador: cal acerta o pH para o floco nascer.",
+      "comentarios": [
+        "Não depende.",
+        "Não tem relação.",
+        "Não há destilação na estação.",
+        "Não é usada nesse tratamento.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-atomo-q01",
+      "tema": "Modelos atômicos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "O modelo atômico conhecido como \"pudim de passas\" foi proposto por:",
+      "alternativas": [
+        "Rutherford",
+        "Bohr",
+        "Dalton",
+        "Mendeleev",
+        "Thomson"
+      ],
+      "correta": 4,
+      "explicacao": "Esfera positiva com elétrons incrustados. Dica de mergulhador: Thomson achou o elétron e o espalhou no pudim.",
+      "comentarios": [
+        "Núcleo e eletrosfera.",
+        "Níveis de energia.",
+        "Esfera maciça indivisível.",
+        "Organizou a tabela periódica.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-atomo-q02",
+      "tema": "Modelos atômicos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "O experimento de Rutherford com a lâmina de ouro mostrou que o átomo:",
+      "alternativas": [
+        "É do tamanho do núcleo",
+        "É maciço e indivisível",
+        "Tem um núcleo pequeno, denso e positivo",
+        "Tem carga negativa no centro",
+        "Não tem elétrons"
+      ],
+      "correta": 2,
+      "explicacao": "A maioria das partículas atravessou. Dica de mergulhador: quase tudo vazio, núcleo no centro.",
+      "comentarios": [
+        "O núcleo é muito menor.",
+        "Era a ideia de Dalton.",
+        "",
+        "O núcleo é positivo.",
+        "Tem."
+      ]
+    },
+    {
+      "id": "qui-atomo-q03",
+      "tema": "Modelos atômicos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "As cores dos fogos de artifício se explicam pelo modelo de Bohr porque:",
+      "alternativas": [
+        "Os núcleos se dividem",
+        "Os prótons mudam de cor",
+        "Elétrons excitados voltam a níveis menores e emitem luz",
+        "Os nêutrons brilham",
+        "A pólvora tem tinta"
+      ],
+      "correta": 2,
+      "explicacao": "Cada elemento emite cores próprias. Dica de mergulhador: elétron que volta, luz que sai.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não é o mecanismo.",
+        "",
+        "Não é o caso.",
+        "Não é a explicação."
+      ]
+    },
+    {
+      "id": "qui-atomo-q04",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "O número atômico de um elemento corresponde ao número de:",
+      "alternativas": [
+        "Moléculas",
+        "Elétrons de um íon",
+        "Nêutrons",
+        "Prótons",
+        "Prótons mais nêutrons"
+      ],
+      "correta": 3,
+      "explicacao": "Z identifica o elemento. Dica de mergulhador: Z = prótons.",
+      "comentarios": [
+        "Não é o conceito.",
+        "Varia.",
+        "Não identifica o elemento.",
+        "",
+        "É o número de massa."
+      ]
+    },
+    {
+      "id": "qui-atomo-q05",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "Isótopos são átomos que têm:",
+      "alternativas": [
+        "O mesmo número de massa",
+        "Prótons diferentes",
+        "O mesmo número de nêutrons",
+        "O mesmo número de prótons e diferente número de nêutrons",
+        "Nenhuma partícula em comum"
+      ],
+      "correta": 3,
+      "explicacao": "Carbono-12 e carbono-14 são exemplos. Dica de mergulhador: isótopo = mesmo elemento, outro peso.",
+      "comentarios": [
+        "São isóbaros.",
+        "Seriam elementos diferentes.",
+        "São isótonos.",
+        "",
+        "Têm os prótons."
+      ]
+    },
+    {
+      "id": "qui-atomo-q06",
+      "tema": "Radioatividade",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "A radiação mais penetrante, que exige chumbo ou concreto espesso para ser contida, é a:",
+      "alternativas": [
+        "Luz visível",
+        "Beta",
+        "Infravermelha",
+        "Gama",
+        "Alfa"
+      ],
+      "correta": 3,
+      "explicacao": "Onda eletromagnética de alta energia. Dica de mergulhador: gama atravessa quase tudo.",
+      "comentarios": [
+        "Não é radiação nuclear.",
+        "É barrada por alumínio.",
+        "Não é a mais penetrante.",
+        "",
+        "É barrada por papel."
+      ]
+    },
+    {
+      "id": "qui-atomo-q07",
+      "tema": "Modelos atômicos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Segundo Bohr, um elétron só emite luz quando:",
+      "alternativas": [
+        "Encontra um nêutron",
+        "Ganha energia e sobe de nível",
+        "Fica parado no mesmo nível",
+        "Passa de um nível de maior energia para um de menor energia",
+        "Sai do núcleo"
+      ],
+      "correta": 3,
+      "explicacao": "A diferença de energia sai como luz. Dica de mergulhador: subir absorve; descer emite.",
+      "comentarios": [
+        "Não é o mecanismo.",
+        "Nesse caso absorve.",
+        "Não emite.",
+        "",
+        "Elétrons não estão no núcleo."
+      ]
+    },
+    {
+      "id": "qui-atomo-q08",
+      "tema": "Modelos atômicos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Se o núcleo de um átomo fosse do tamanho de uma formiga no centro de um estádio, a eletrosfera teria o tamanho:",
+      "alternativas": [
+        "De um grão de areia",
+        "Igual ao núcleo",
+        "Do estádio inteiro",
+        "De uma bola de futebol",
+        "Da própria formiga"
+      ],
+      "correta": 2,
+      "explicacao": "O átomo é quase todo vazio. Dica de mergulhador: formiga no meio, estádio vazio.",
+      "comentarios": [
+        "É muito maior.",
+        "É muito maior.",
+        "",
+        "É muito maior.",
+        "É muito maior."
+      ]
+    },
+    {
+      "id": "qui-atomo-q09",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "O íon Na⁺ tem 11 prótons. Quantos elétrons ele tem?",
+      "alternativas": [
+        "11",
+        "23",
+        "10",
+        "1",
+        "12"
+      ],
+      "correta": 2,
+      "explicacao": "Cátion perdeu um elétron. Dica de mergulhador: sinal de mais, elétron a menos.",
+      "comentarios": [
+        "Seria o átomo neutro.",
+        "É o número de massa típico.",
+        "",
+        "Não é o caso.",
+        "Seria ânion."
+      ]
+    },
+    {
+      "id": "qui-atomo-q10",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Um átomo tem número atômico 26 e número de massa 56. Ele tem:",
+      "alternativas": [
+        "26 prótons, 26 nêutrons e 30 elétrons",
+        "26 prótons, 56 nêutrons e 26 elétrons",
+        "56 prótons, 26 nêutrons e 56 elétrons",
+        "30 prótons, 26 nêutrons e 30 elétrons",
+        "26 prótons, 30 nêutrons e 26 elétrons"
+      ],
+      "correta": 4,
+      "explicacao": "N = A − Z. Dica de mergulhador: nêutrons = massa menos prótons.",
+      "comentarios": [
+        "Não fecha.",
+        "Usou A como N.",
+        "Trocou Z e A.",
+        "Trocou.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-atomo-q11",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Os átomos ⁴⁰Ca (Z = 20) e ⁴⁰K (Z = 19) têm o mesmo número de massa. Eles são:",
+      "alternativas": [
+        "Alótropos",
+        "Isóbaros",
+        "Isótonos",
+        "Isótopos",
+        "O mesmo elemento"
+      ],
+      "correta": 1,
+      "explicacao": "Mesma massa, elementos diferentes. Dica de mergulhador: isóbaro = mesmo A.",
+      "comentarios": [
+        "É conceito de substância.",
+        "",
+        "Não têm o mesmo N.",
+        "Têm Z diferentes.",
+        "São diferentes."
+      ]
+    },
+    {
+      "id": "qui-atomo-q12",
+      "tema": "Radioatividade",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Uma amostra radioativa tem 80 g, e sua meia-vida é de 10 dias. Depois de 30 dias, restarão:",
+      "alternativas": [
+        "10 g",
+        "40 g",
+        "5 g",
+        "0 g",
+        "20 g"
+      ],
+      "correta": 0,
+      "explicacao": "30 dias = 3 meias-vidas: 80 → 40 → 20 → 10. Dica de mergulhador: divida por dois a cada meia-vida.",
+      "comentarios": [
+        "",
+        "Passou só uma meia-vida.",
+        "Passaram quatro.",
+        "Ainda resta.",
+        "Passaram duas meias-vidas."
+      ]
+    },
+    {
+      "id": "qui-atomo-q13",
+      "tema": "Radioatividade",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "A datação por carbono-14 é usada para estimar a idade de:",
+      "alternativas": [
+        "Planetas",
+        "Restos de seres vivos, como ossos e madeira antiga",
+        "Água da torneira",
+        "Metais recém-fabricados",
+        "Rochas de bilhões de anos"
+      ],
+      "correta": 1,
+      "explicacao": "Seres vivos trocam carbono até morrer. Dica de mergulhador: C-14 conta o tempo desde a morte.",
+      "comentarios": [
+        "Não é o caso.",
+        "",
+        "Não é o caso.",
+        "Não é o caso.",
+        "Usa outros isótopos."
+      ]
+    },
+    {
+      "id": "qui-atomo-q14",
+      "tema": "Modelos atômicos",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "Dos modelos de Dalton, Thomson, Rutherford e Bohr, o primeiro a explicar por que cada elemento emite luz de cores específicas foi o de:",
+      "alternativas": [
+        "Bohr",
+        "Rutherford",
+        "Thomson",
+        "Nenhum deles",
+        "Dalton"
+      ],
+      "correta": 0,
+      "explicacao": "Níveis de energia quantizados. Dica de mergulhador: Bohr pôs escadas no átomo.",
+      "comentarios": [
+        "",
+        "Não explicava as cores.",
+        "Não tinha níveis.",
+        "Bohr explicou.",
+        "Não tinha elétrons."
+      ]
+    },
+    {
+      "id": "qui-atomo-q15",
+      "tema": "Modelos atômicos",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "Um estudante diz que os modelos antigos foram \"inúteis\" porque estavam errados. A melhor resposta é:",
+      "alternativas": [
+        "A ciência não muda",
+        "Modelos não precisam de experimentos",
+        "O modelo de Dalton está totalmente certo hoje",
+        "Concorda, deviam ser esquecidos",
+        "Cada modelo foi aperfeiçoado por novas evidências"
+      ],
+      "correta": 4,
+      "explicacao": "Ciência é construção. Dica de mergulhador: modelo é mapa que melhora com novas viagens.",
+      "comentarios": [
+        "Muda com evidências.",
+        "Precisam.",
+        "Foi superado.",
+        "Foram etapas importantes.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-atomo-q16",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "O hidrogênio tem três isótopos: prótio (1 nêutron a menos que o deutério), deutério e trítio. Se o deutério tem massa 2, quantos nêutrons tem o trítio, de massa 3?",
+      "alternativas": [
+        "2",
+        "4",
+        "1",
+        "3",
+        "0"
+      ],
+      "correta": 0,
+      "explicacao": "Z = 1 para todos; N = 3 − 1. Dica de mergulhador: hidrogênio tem sempre um próton.",
+      "comentarios": [
+        "",
+        "Não é o caso.",
+        "É o do deutério.",
+        "É o número de massa.",
+        "É o do prótio."
+      ]
+    },
+    {
+      "id": "qui-atomo-q17",
+      "tema": "Radioatividade",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "Em 1987, em Goiânia, uma cápsula de césio-137 de um aparelho de radioterapia abandonado foi aberta, contaminando pessoas. A lição principal do acidente é:",
+      "alternativas": [
+        "Basta lavar as mãos para eliminar a radiação",
+        "Materiais radioativos exigem controle e descarte rigorosos",
+        "O acidente foi causado por usina nuclear",
+        "A radioatividade não oferece riscos",
+        "O césio-137 não é radioativo"
+      ],
+      "correta": 1,
+      "explicacao": "Fontes radioativas fora de controle são perigosas. Dica de mergulhador: fonte radioativa não é sucata.",
+      "comentarios": [
+        "Não basta.",
+        "",
+        "Não foi.",
+        "Oferece.",
+        "É."
+      ],
+      "revisar": "acidente radiológico de Goiânia (1987)"
+    },
+    {
+      "id": "qui-atomo-q18",
+      "tema": "Radioatividade",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "A emissão de radiação pelo núcleo de átomos instáveis é chamada de:",
+      "alternativas": [
+        "Eletrização",
+        "Combustão",
+        "Destilação",
+        "Radioatividade",
+        "Fusão do gelo"
+      ],
+      "correta": 3,
+      "explicacao": "Núcleos instáveis emitem partículas e energia até ficarem estáveis. Dica de mergulhador: radioatividade vem do núcleo.",
+      "comentarios": [
+        "Envolve elétrons, não o núcleo.",
+        "É reação com oxigênio.",
+        "É separação de misturas.",
+        "",
+        "É mudança de estado."
+      ]
+    },
+    {
+      "id": "qui-atomo-q19",
+      "tema": "Radioatividade",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Uma amostra de 80 g de um isótopo com meia-vida de 5 anos é guardada por 15 anos. Restam:",
+      "alternativas": [
+        "0 g",
+        "5 g",
+        "20 g",
+        "10 g",
+        "40 g"
+      ],
+      "correta": 3,
+      "explicacao": "15 anos = 3 meias-vidas: 80 → 40 → 20 → 10 g. Dica de mergulhador: conte quantas vezes cabe a meia-vida e divida por 2 cada vez.",
+      "comentarios": [
+        "Nunca zera nesse cálculo.",
+        "Quatro meias-vidas.",
+        "Duas meias-vidas.",
+        "",
+        "Só uma meia-vida."
+      ]
+    },
+    {
+      "id": "qui-atomo-q20",
+      "tema": "Radioatividade",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "Um núcleo emite uma partícula alfa (2 prótons e 2 nêutrons). Em relação ao núcleo original, o novo núcleo tem:",
+      "alternativas": [
+        "Número atômico 2 menor e massa 4 menor",
+        "Número atômico 4 menor e massa 2 menor",
+        "Mesmo número atômico e mesma massa",
+        "Número atômico 1 maior e mesma massa",
+        "Número atômico 2 maior"
+      ],
+      "correta": 0,
+      "explicacao": "A alfa leva 2 prótons e 4 unidades de massa; o elemento muda. Dica de mergulhador: alfa tira 2 do Z e 4 do A.",
+      "comentarios": [
+        "",
+        "Inverteu os valores.",
+        "Isso é só gama.",
+        "Isso é emissão beta.",
+        "Perde prótons."
+      ]
+    }
+  ],
+  "variantes": [
+    {
+      "id": "qui-materia-q01-v1",
+      "varianteDe": "qui-materia-q01",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "O gás oxigênio (O₂) é exemplo de:",
+      "alternativas": [
+        "Substância pura simples",
+        "Mistura homogênea",
+        "Mistura heterogênea",
+        "Substância composta",
+        "Liga metálica"
+      ],
+      "correta": 0,
+      "explicacao": "Formado só pelo elemento oxigênio. Dica de mergulhador: simples = um elemento só.",
+      "comentarios": [
+        "",
+        "É uma substância só.",
+        "Tem uma fase.",
+        "Tem um só elemento.",
+        "Não é metal."
+      ]
+    },
+    {
+      "id": "qui-materia-q02-v1",
+      "varianteDe": "qui-materia-q02",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "O aço, formado principalmente por ferro e carbono, é:",
+      "alternativas": [
+        "Um elemento químico",
+        "Uma mistura homogênea, chamada liga metálica",
+        "Uma substância pura simples",
+        "Uma mistura heterogênea",
+        "Um gás nobre"
+      ],
+      "correta": 1,
+      "explicacao": "Ligas metálicas são misturas homogêneas. Dica de mergulhador: liga é mistura que parece uma coisa só.",
+      "comentarios": [
+        "É mistura.",
+        "",
+        "Tem mais de um componente.",
+        "Tem aspecto uniforme.",
+        "Não faz sentido."
+      ]
+    },
+    {
+      "id": "qui-materia-q03-v1",
+      "varianteDe": "qui-materia-q03",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "Diamante e grafite são formados:",
+      "alternativas": [
+        "Pela mesma estrutura cristalina",
+        "Por oxigênio e hidrogênio",
+        "Pelo mesmo elemento, o carbono, com arranjos diferentes",
+        "Por elementos diferentes",
+        "Por misturas de metais"
+      ],
+      "correta": 2,
+      "explicacao": "São alótropos do carbono. Dica de mergulhador: duro e brilhante ou mole e escuro, ambos carbono.",
+      "comentarios": [
+        "As estruturas diferem.",
+        "Não é o caso.",
+        "",
+        "São de carbono.",
+        "Não são metais."
+      ]
+    },
+    {
+      "id": "qui-materia-q04-v1",
+      "varianteDe": "qui-materia-q04",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "Um objeto de 200 g ocupa 50 cm³. Sua densidade é:",
+      "alternativas": [
+        "250 g/cm³",
+        "4 g/cm³",
+        "150 g/cm³",
+        "0,25 g/cm³",
+        "10.000 g/cm³"
+      ],
+      "correta": 1,
+      "explicacao": "200 ÷ 50. Dica de mergulhador: massa em cima, volume embaixo.",
+      "comentarios": [
+        "Somou.",
+        "",
+        "Subtraiu.",
+        "Inverteu a divisão.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "qui-materia-q05-v1",
+      "varianteDe": "qui-materia-q05",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "O óleo de cozinha fica por cima da água porque:",
+      "alternativas": [
+        "É mais quente",
+        "Tem mais massa total",
+        "Dissolve-se na água",
+        "Tem densidade menor que a da água",
+        "Tem densidade maior"
+      ],
+      "correta": 3,
+      "explicacao": "Líquidos se organizam por densidade. Dica de mergulhador: o mais leve por volume sobe.",
+      "comentarios": [
+        "Não é o motivo.",
+        "Não é o critério.",
+        "Não se dissolve.",
+        "",
+        "Afundaria."
+      ]
+    },
+    {
+      "id": "qui-materia-q06-v1",
+      "varianteDe": "qui-materia-q06",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "A transformação de vapor de água em gotas no espelho do banheiro é a:",
+      "alternativas": [
+        "Ebulição",
+        "Solidificação",
+        "Fusão",
+        "Sublimação",
+        "Condensação"
+      ],
+      "correta": 4,
+      "explicacao": "O vapor encontra a superfície fria. Dica de mergulhador: espelho embaçado é condensação.",
+      "comentarios": [
+        "Líquido para gás.",
+        "Líquido para sólido.",
+        "Sólido para líquido.",
+        "Sólido para gás.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q07-v1",
+      "varianteDe": "qui-materia-q07",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "facil",
+      "fase": "qui-materia",
+      "enunciado": "Qual destes é um fenômeno físico?",
+      "alternativas": [
+        "Madeira queimando",
+        "Leite azedando",
+        "Fogos de artifício explodindo",
+        "Bolo assando",
+        "Vidro quebrando"
+      ],
+      "correta": 4,
+      "explicacao": "A substância continua sendo vidro. Dica de mergulhador: só mudou de forma, é físico.",
+      "comentarios": [
+        "É químico.",
+        "É químico.",
+        "É químico.",
+        "É químico.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q08-v1",
+      "varianteDe": "qui-materia-q08",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "No gráfico de aquecimento de uma mistura comum, durante a fusão:",
+      "alternativas": [
+        "A temperatura continua subindo",
+        "A temperatura cai a zero",
+        "A massa desaparece",
+        "Não há mudança de estado",
+        "A temperatura fica constante"
+      ],
+      "correta": 0,
+      "explicacao": "Por isso não há patamar. Dica de mergulhador: rampa sem patamar, mistura.",
+      "comentarios": [
+        "",
+        "Não é o caso.",
+        "Não desaparece.",
+        "Há.",
+        "Isso é de substância pura."
+      ]
+    },
+    {
+      "id": "qui-materia-q09-v1",
+      "varianteDe": "qui-materia-q09",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "Água com gelo é um sistema com:",
+      "alternativas": [
+        "Uma substância e uma fase",
+        "Duas substâncias e duas fases",
+        "Uma substância e duas fases",
+        "Duas substâncias e uma fase",
+        "Três substâncias"
+      ],
+      "correta": 2,
+      "explicacao": "Mesma substância em estados diferentes. Dica de mergulhador: fase não é substância.",
+      "comentarios": [
+        "Há sólido e líquido.",
+        "É uma substância.",
+        "",
+        "É uma substância só.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-materia-q10-v1",
+      "varianteDe": "qui-materia-q10",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "Um líquido tem densidade 0,8 g/mL. A massa de 250 mL dele é:",
+      "alternativas": [
+        "312,5 g",
+        "250 g",
+        "80 g",
+        "0,0032 g",
+        "200 g"
+      ],
+      "correta": 4,
+      "explicacao": "m = d × V. Dica de mergulhador: densidade vezes volume dá a massa.",
+      "comentarios": [
+        "Dividiu.",
+        "Usou densidade 1.",
+        "Não é o caso.",
+        "Inverteu.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q11-v1",
+      "varianteDe": "qui-materia-q11",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "A massa e o volume são chamados de propriedades gerais porque:",
+      "alternativas": [
+        "Todo material tem, e eles não identificam a substância",
+        "Identificam qualquer substância",
+        "Só existem em gases",
+        "São constantes para todo material",
+        "Só os metais têm"
+      ],
+      "correta": 0,
+      "explicacao": "As específicas, como a densidade, é que identificam. Dica de mergulhador: geral é de todo mundo.",
+      "comentarios": [
+        "",
+        "Não identificam.",
+        "Não é o caso.",
+        "Variam com a quantidade.",
+        "Todo material tem."
+      ]
+    },
+    {
+      "id": "qui-materia-q12-v1",
+      "varianteDe": "qui-materia-q12",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "O álcool 96%, mistura de etanol e água que ferve a temperatura constante, é uma mistura:",
+      "alternativas": [
+        "Eutética",
+        "Sólida",
+        "Azeotrópica",
+        "Heterogênea",
+        "Pura"
+      ],
+      "correta": 2,
+      "explicacao": "Por isso a destilação simples não separa tudo. Dica de mergulhador: azeotrópica ferve parada.",
+      "comentarios": [
+        "Funde a temperatura constante.",
+        "É líquida.",
+        "",
+        "Tem uma fase.",
+        "É mistura."
+      ],
+      "revisar": "álcool 96% como mistura azeotrópica"
+    },
+    {
+      "id": "qui-materia-q13-v1",
+      "varianteDe": "qui-materia-q13",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "A panela de pressão cozinha os alimentos mais rápido porque:",
+      "alternativas": [
+        "Aumenta a pressão e eleva o ponto de ebulição da água",
+        "Muda a substância da água",
+        "Faz a água ferver mais fria",
+        "Elimina o vapor",
+        "Diminui a pressão"
+      ],
+      "correta": 0,
+      "explicacao": "A água fica líquida acima de 100 °C. Dica de mergulhador: pressão alta, água mais quente.",
+      "comentarios": [
+        "",
+        "Não muda.",
+        "Mais quente.",
+        "Retém.",
+        "Aumenta."
+      ]
+    },
+    {
+      "id": "qui-materia-q14-v1",
+      "varianteDe": "qui-materia-q14",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "Ao misturar vinagre e bicarbonato de sódio, surgem bolhas. Isso indica:",
+      "alternativas": [
+        "Condensação do ar",
+        "Uma reação química que libera gás carbônico",
+        "Fusão do bicarbonato",
+        "Um fenômeno apenas físico",
+        "Evaporação do vinagre"
+      ],
+      "correta": 1,
+      "explicacao": "Ácido com bicarbonato forma CO₂. Dica de mergulhador: bolhas sem ferver indicam reação.",
+      "comentarios": [
+        "Não é o caso.",
+        "",
+        "Não é o caso.",
+        "Forma-se substância nova.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-materia-q15-v1",
+      "varianteDe": "qui-materia-q15",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "medio",
+      "fase": "qui-materia",
+      "enunciado": "A roupa seca no varal sem chegar a 100 °C porque ocorre:",
+      "alternativas": [
+        "Condensação",
+        "Sublimação",
+        "Ebulição",
+        "Fusão",
+        "Evaporação"
+      ],
+      "correta": 4,
+      "explicacao": "Moléculas da superfície escapam aos poucos. Dica de mergulhador: varal é evaporação lenta.",
+      "comentarios": [
+        "É o contrário.",
+        "A água está líquida.",
+        "Precisaria do ponto de ebulição.",
+        "Não é o caso.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q16-v1",
+      "varianteDe": "qui-materia-q16",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Uma garrafa de \"água mineral natural\" é, do ponto de vista químico:",
+      "alternativas": [
+        "Uma substância pura",
+        "Um elemento químico",
+        "Uma mistura homogênea com sais dissolvidos",
+        "Água destilada",
+        "Uma mistura heterogênea"
+      ],
+      "correta": 2,
+      "explicacao": "O rótulo lista os sais. Dica de mergulhador: mineral = água com minerais.",
+      "comentarios": [
+        "Tem sais dissolvidos.",
+        "Não é.",
+        "",
+        "Não é.",
+        "Tem uma fase."
+      ]
+    },
+    {
+      "id": "qui-materia-q17-v1",
+      "varianteDe": "qui-materia-q17",
+      "tema": "Substâncias e misturas",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Um gráfico mostra temperatura variando na fusão e constante na ebulição. O material é provavelmente:",
+      "alternativas": [
+        "Uma liga metálica eutética",
+        "Uma mistura azeotrópica",
+        "Uma mistura eutética",
+        "Uma substância pura",
+        "Uma mistura comum"
+      ],
+      "correta": 1,
+      "explicacao": "Patamar só na ebulição. Dica de mergulhador: azeotrópica para na ebulição.",
+      "comentarios": [
+        "Não é o caso.",
+        "",
+        "Teria patamar na fusão.",
+        "Teria dois patamares.",
+        "Não teria patamar."
+      ]
+    },
+    {
+      "id": "qui-materia-q18-v1",
+      "varianteDe": "qui-materia-q18",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Uma bolinha de densidade 1,1 g/mL é colocada no tubo com líquidos de 0,8; 1,0 e 1,3 g/mL. Ela ficará:",
+      "alternativas": [
+        "No topo",
+        "Dissolvida",
+        "No fundo do tubo",
+        "Entre 0,8 e 1,0",
+        "Entre os líquidos de 1,0 e 1,3 g/mL"
+      ],
+      "correta": 4,
+      "explicacao": "Afunda no menos denso e flutua no mais denso. Dica de mergulhador: ela para onde encontra quem a sustenta.",
+      "comentarios": [
+        "É mais densa que 0,8 e 1,0.",
+        "É sólida.",
+        "É menos densa que 1,3.",
+        "É mais densa que 1,0.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-materia-q19-v1",
+      "varianteDe": "qui-materia-q19",
+      "tema": "Propriedades da matéria",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Uma joia de 38,6 g desloca 2 mL de água. Sabendo que o ouro tem densidade de cerca de 19,3 g/mL, a joia:",
+      "alternativas": [
+        "É menos densa que o ouro",
+        "É compatível com ouro puro",
+        "Certamente é de cobre",
+        "Não pode ser analisada",
+        "Tem metade do ouro"
+      ],
+      "correta": 1,
+      "explicacao": "38,6 ÷ 2 = 19,3 g/mL. Dica de mergulhador: densidade confere, suspeita afastada.",
+      "comentarios": [
+        "É igual.",
+        "",
+        "A densidade bate com o ouro.",
+        "Pode.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-materia-q20-v1",
+      "varianteDe": "qui-materia-q20",
+      "tema": "Estados físicos e transformações",
+      "dificuldade": "dificil",
+      "fase": "qui-materia",
+      "enunciado": "Nos lagos de regiões frias, a vida resiste no inverno porque:",
+      "alternativas": [
+        "O gelo é mais denso",
+        "O gelo afunda e aquece o fundo",
+        "Os peixes produzem calor suficiente",
+        "O gelo flutua e isola a água líquida abaixo",
+        "A água não congela nunca"
+      ],
+      "correta": 3,
+      "explicacao": "A camada de gelo protege o resto do lago. Dica de mergulhador: tampa de gelo, peixe vivo embaixo.",
+      "comentarios": [
+        "É menos denso.",
+        "Ele flutua.",
+        "Não é o motivo.",
+        "",
+        "A superfície congela."
+      ]
+    },
+    {
+      "id": "qui-separacao-q01-v1",
+      "varianteDe": "qui-separacao-q01",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Um aspirador de pó separa o pó do ar por meio de:",
+      "alternativas": [
+        "Destilação",
+        "Filtração",
+        "Cromatografia",
+        "Levigação",
+        "Catação"
+      ],
+      "correta": 1,
+      "explicacao": "O filtro segura as partículas. Dica de mergulhador: aspirador também coa.",
+      "comentarios": [
+        "Não há aquecimento.",
+        "",
+        "Não é o caso.",
+        "Não usa água corrente.",
+        "Não é manual."
+      ]
+    },
+    {
+      "id": "qui-separacao-q02-v1",
+      "varianteDe": "qui-separacao-q02",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Escolher manualmente as pedrinhas do feijão antes de cozinhar é um exemplo de:",
+      "alternativas": [
+        "Filtração",
+        "Decantação",
+        "Destilação",
+        "Peneiração",
+        "Catação"
+      ],
+      "correta": 4,
+      "explicacao": "Separação manual. Dica de mergulhador: catar é escolher com a mão.",
+      "comentarios": [
+        "Não usa filtro.",
+        "Não usa gravidade.",
+        "Não usa calor.",
+        "Não usa peneira.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q03-v1",
+      "varianteDe": "qui-separacao-q03",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Na centrifugação, o sólido se separa do líquido mais rápido porque:",
+      "alternativas": [
+        "A temperatura sobe muito",
+        "A rotação acelera a sedimentação",
+        "O sólido se dissolve",
+        "O ímã atrai o sólido",
+        "O líquido evapora"
+      ],
+      "correta": 1,
+      "explicacao": "É uma decantação acelerada. Dica de mergulhador: centrífuga é decantação com pressa.",
+      "comentarios": [
+        "Não é o mecanismo.",
+        "",
+        "Não se dissolve.",
+        "Não há ímã.",
+        "Não evapora."
+      ]
+    },
+    {
+      "id": "qui-separacao-q04-v1",
+      "varianteDe": "qui-separacao-q04",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Nas salinas, o sal é obtido da água do mar por:",
+      "alternativas": [
+        "Filtração",
+        "Centrifugação",
+        "Destilação fracionada",
+        "Evaporação",
+        "Catação"
+      ],
+      "correta": 3,
+      "explicacao": "O sol e o vento evaporam a água. Dica de mergulhador: sol leva a água, sal fica.",
+      "comentarios": [
+        "Não separa o sal dissolvido.",
+        "Não é o caso.",
+        "Não é o caso.",
+        "",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-separacao-q05-v1",
+      "varianteDe": "qui-separacao-q05",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "A separação dos pigmentos da tinta de uma caneta num papel molhado com álcool é a:",
+      "alternativas": [
+        "Cromatografia",
+        "Destilação",
+        "Sublimação",
+        "Decantação",
+        "Filtração"
+      ],
+      "correta": 0,
+      "explicacao": "Os pigmentos sobem com velocidades diferentes. Dica de mergulhador: manchas coloridas que se separam no papel.",
+      "comentarios": [
+        "",
+        "Não há aquecimento.",
+        "Não é o caso.",
+        "Não é o caso.",
+        "Não é o princípio."
+      ]
+    },
+    {
+      "id": "qui-separacao-q06-v1",
+      "varianteDe": "qui-separacao-q06",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "O flúor é adicionado à água de abastecimento para:",
+      "alternativas": [
+        "Retirar o sal",
+        "Formar flocos",
+        "Prevenir cáries",
+        "Aumentar o pH",
+        "Matar bactérias"
+      ],
+      "correta": 2,
+      "explicacao": "Medida de saúde coletiva. Dica de mergulhador: flúor é para o dente.",
+      "comentarios": [
+        "Não é o caso.",
+        "É o sulfato de alumínio.",
+        "",
+        "É a cal.",
+        "É o cloro."
+      ],
+      "revisar": "fluoretação da água no Brasil"
+    },
+    {
+      "id": "qui-separacao-q07-v1",
+      "varianteDe": "qui-separacao-q07",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "facil",
+      "fase": "qui-separacao",
+      "enunciado": "Depois da floculação, os flocos são retirados principalmente por:",
+      "alternativas": [
+        "Sublimação",
+        "Decantação e filtração",
+        "Catação manual",
+        "Separação magnética",
+        "Destilação fracionada"
+      ],
+      "correta": 1,
+      "explicacao": "Primeiro descem, depois os restos ficam nos filtros. Dica de mergulhador: flocos descem e o filtro pega o resto.",
+      "comentarios": [
+        "Não é o caso.",
+        "",
+        "Não é o caso.",
+        "Não é usada.",
+        "Não é usada."
+      ]
+    },
+    {
+      "id": "qui-separacao-q08-v1",
+      "varianteDe": "qui-separacao-q08",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Separar a palha dos grãos de arroz soprando ou com o vento é a:",
+      "alternativas": [
+        "Levigação",
+        "Decantação",
+        "Filtração",
+        "Destilação",
+        "Ventilação"
+      ],
+      "correta": 4,
+      "explicacao": "O ar leva o material mais leve. Dica de mergulhador: vento leva a palha.",
+      "comentarios": [
+        "Usa água.",
+        "Usa gravidade em líquido.",
+        "Usa filtro.",
+        "Usa calor.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q09-v1",
+      "varianteDe": "qui-separacao-q09",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "A máquina de lavar retira a água da roupa na centrifugação porque:",
+      "alternativas": [
+        "O sabão seca a roupa",
+        "A rotação expulsa a água pelos furos do tambor",
+        "A roupa absorve a água",
+        "A água evapora na hora",
+        "O ímã puxa a água"
+      ],
+      "correta": 1,
+      "explicacao": "Movimento circular rápido. Dica de mergulhador: girou, a água saiu.",
+      "comentarios": [
+        "Não seca.",
+        "",
+        "É o contrário.",
+        "Não é o mecanismo.",
+        "Não há ímã."
+      ]
+    },
+    {
+      "id": "qui-separacao-q10-v1",
+      "varianteDe": "qui-separacao-q10",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Na destilação simples, ao final, o sal:",
+      "alternativas": [
+        "Sai junto com o vapor",
+        "Fica no condensador",
+        "Vira gás",
+        "Desaparece",
+        "Fica no balão de destilação"
+      ],
+      "correta": 4,
+      "explicacao": "Só a água evapora na temperatura usada. Dica de mergulhador: o sal fica onde estava.",
+      "comentarios": [
+        "Não evapora.",
+        "Não chega lá.",
+        "Não vira.",
+        "Não desaparece.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q11-v1",
+      "varianteDe": "qui-separacao-q11",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "A destilação fracionada do ar liquefeito permite obter:",
+      "alternativas": [
+        "Água salgada",
+        "Sal de cozinha",
+        "Nitrogênio e oxigênio separados",
+        "Petróleo",
+        "Ferro"
+      ],
+      "correta": 2,
+      "explicacao": "Cada gás tem seu ponto de ebulição. Dica de mergulhador: até o ar pode ser destilado.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não é o caso.",
+        "",
+        "Não é o caso.",
+        "Não é o caso."
+      ],
+      "revisar": "destilação fracionada do ar liquefeito"
+    },
+    {
+      "id": "qui-separacao-q12-v1",
+      "varianteDe": "qui-separacao-q12",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "A cal é adicionada à água na estação de tratamento para:",
+      "alternativas": [
+        "Ajustar o pH e ajudar a formação dos flocos",
+        "Matar bactérias",
+        "Colorir a água",
+        "Retirar o sal da água",
+        "Prevenir cáries"
+      ],
+      "correta": 0,
+      "explicacao": "O pH certo melhora a floculação. Dica de mergulhador: cal acerta o pH.",
+      "comentarios": [
+        "",
+        "É o cloro.",
+        "Não é o caso.",
+        "Não é o caso.",
+        "É o flúor."
+      ],
+      "revisar": "uso da cal no tratamento de água"
+    },
+    {
+      "id": "qui-separacao-q13-v1",
+      "varianteDe": "qui-separacao-q13",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Lançar esgoto sem tratamento num rio provoca:",
+      "alternativas": [
+        "Melhora da qualidade da água",
+        "Formação de sal",
+        "Contaminação e queda de oxigênio na água",
+        "Diminuição de bactérias",
+        "Aumento dos peixes"
+      ],
+      "correta": 2,
+      "explicacao": "Eutrofização e doenças. Dica de mergulhador: esgoto cru, rio doente.",
+      "comentarios": [
+        "Piora.",
+        "Não é o caso.",
+        "",
+        "Aumenta.",
+        "Diminui."
+      ]
+    },
+    {
+      "id": "qui-separacao-q14-v1",
+      "varianteDe": "qui-separacao-q14",
+      "tema": "Misturas heterogêneas",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Uma mistura tem areia, sal e água. Para recuperar a areia e o sal, faz-se:",
+      "alternativas": [
+        "Só filtração",
+        "Só evaporação",
+        "Destilação fracionada",
+        "Filtração para a areia e evaporação para o sal",
+        "Separação magnética"
+      ],
+      "correta": 3,
+      "explicacao": "Dois passos, duas propriedades. Dica de mergulhador: filtro para o sólido, sol para o dissolvido.",
+      "comentarios": [
+        "O sal passa dissolvido.",
+        "A areia fica junto com o sal.",
+        "Não é necessária.",
+        "",
+        "Nada é atraído."
+      ]
+    },
+    {
+      "id": "qui-separacao-q15-v1",
+      "varianteDe": "qui-separacao-q15",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Um rótulo de álcool comum indica 96 °GL. Isso significa que:",
+      "alternativas": [
+        "O álcool ferve a 96 °C sempre",
+        "Há cerca de 96% de etanol em volume, e o resto é água",
+        "É etanol puro",
+        "Há 96% de água",
+        "Contém 96 gramas de sal"
+      ],
+      "correta": 1,
+      "explicacao": "Graduação em volume. Dica de mergulhador: °GL é porcentagem de álcool.",
+      "comentarios": [
+        "Não é o significado.",
+        "",
+        "Há água.",
+        "É o contrário.",
+        "Não é o caso."
+      ],
+      "revisar": "graduação °GL"
+    },
+    {
+      "id": "qui-separacao-q16-v1",
+      "varianteDe": "qui-separacao-q16",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Uma desvantagem da dessalinização é:",
+      "alternativas": [
+        "Não remover nenhum sal",
+        "Contaminar a água com flúor",
+        "Ser impossível tecnicamente",
+        "Produzir água salgada",
+        "O alto gasto de energia e o descarte de salmoura concentrada"
+      ],
+      "correta": 4,
+      "explicacao": "Custo e impacto ambiental. Dica de mergulhador: água doce do mar custa energia.",
+      "comentarios": [
+        "Remove.",
+        "Não é o caso.",
+        "É possível.",
+        "Produz água doce.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q17-v1",
+      "varianteDe": "qui-separacao-q17",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Num laboratório de perícia, uma gota de tinta de um documento é separada em faixas coloridas num papel com solvente. Essa técnica é a:",
+      "alternativas": [
+        "Catação",
+        "Cromatografia",
+        "Centrifugação",
+        "Levigação",
+        "Destilação fracionada"
+      ],
+      "correta": 1,
+      "explicacao": "As faixas mostram os componentes da tinta. Dica de mergulhador: faixas no papel = cromatografia.",
+      "comentarios": [
+        "É manual.",
+        "",
+        "Usa rotação.",
+        "Usa água corrente sobre sólidos.",
+        "Precisa de aquecimento."
+      ]
+    },
+    {
+      "id": "qui-separacao-q18-v1",
+      "varianteDe": "qui-separacao-q18",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "medio",
+      "fase": "qui-separacao",
+      "enunciado": "Numa estação de tratamento, a etapa que vem logo depois da decantação e antes da cloração é a:",
+      "alternativas": [
+        "Fluoretação",
+        "Captação",
+        "Filtração em camadas de areia e cascalho",
+        "Floculação",
+        "Coagulação"
+      ],
+      "correta": 2,
+      "explicacao": "Ordem: coagulação, floculação, decantação, filtração, cloração e flúor. Dica de mergulhador: flocos descem, areia filtra, cloro desinfeta.",
+      "comentarios": [
+        "Vem no fim.",
+        "É a entrada da água.",
+        "",
+        "Vem antes da decantação.",
+        "É a primeira etapa."
+      ]
+    },
+    {
+      "id": "qui-separacao-q19-v1",
+      "varianteDe": "qui-separacao-q19",
+      "tema": "Misturas homogêneas",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Benzeno (80 °C) e tolueno (111 °C) são separados por destilação fracionada. A ordem de saída e a explicação correta são:",
+      "alternativas": [
+        "Primeiro o tolueno, por ferver mais alto",
+        "Nenhum, pois não se separam",
+        "Primeiro o tolueno, por ser mais pesado",
+        "Os dois juntos, por serem líquidos",
+        "Primeiro o benzeno, por ter menor ponto de ebulição"
+      ],
+      "correta": 4,
+      "explicacao": "O mais volátil chega antes ao topo da coluna. Dica de mergulhador: menor ponto de ebulição, primeiro na saída.",
+      "comentarios": [
+        "Ferve depois.",
+        "Separam-se.",
+        "Sai depois.",
+        "A coluna os separa.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-separacao-q20-v1",
+      "varianteDe": "qui-separacao-q20",
+      "tema": "Tratamento de água e esgoto",
+      "dificuldade": "dificil",
+      "fase": "qui-separacao",
+      "enunciado": "Numa estação, a água chega muito ácida e a formação de flocos falha. A correção adequada antes da floculação é:",
+      "alternativas": [
+        "Adicionar cal para elevar o pH",
+        "Adicionar flúor",
+        "Adicionar mais cloro",
+        "Retirar o sulfato de alumínio",
+        "Aquecer a água"
+      ],
+      "correta": 0,
+      "explicacao": "O pH certo permite formar o hidróxido de alumínio, que arrasta as impurezas. Dica de mergulhador: floco falhou, confira o pH.",
+      "comentarios": [
+        "",
+        "Previne cáries.",
+        "Desinfeta, não ajusta o floco.",
+        "Ele forma o floco.",
+        "Não resolve o pH."
+      ]
+    },
+    {
+      "id": "qui-atomo-q01-v1",
+      "varianteDe": "qui-atomo-q01",
+      "tema": "Modelos atômicos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "O modelo de átomo como esfera maciça e indivisível é de:",
+      "alternativas": [
+        "Dalton",
+        "Rutherford",
+        "Thomson",
+        "Lavoisier",
+        "Bohr"
+      ],
+      "correta": 0,
+      "explicacao": "Primeiro modelo atômico moderno. Dica de mergulhador: Dalton = bolinha de bilhar.",
+      "comentarios": [
+        "",
+        "Propôs o núcleo.",
+        "Incluiu elétrons.",
+        "Estudou a conservação da massa.",
+        "Propôs níveis."
+      ]
+    },
+    {
+      "id": "qui-atomo-q02-v1",
+      "varianteDe": "qui-atomo-q02",
+      "tema": "Modelos atômicos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "No experimento de Rutherford, a maioria das partículas alfa atravessou a lâmina de ouro. Isso indica que:",
+      "alternativas": [
+        "As partículas não têm massa",
+        "O ouro é líquido",
+        "O núcleo é enorme",
+        "O átomo é formado principalmente por espaço vazio",
+        "O átomo é maciço"
+      ],
+      "correta": 3,
+      "explicacao": "Poucas partículas encontraram o núcleo. Dica de mergulhador: estádio vazio com formiga no meio.",
+      "comentarios": [
+        "Têm.",
+        "Não é o caso.",
+        "É minúsculo.",
+        "",
+        "Elas seriam barradas."
+      ]
+    },
+    {
+      "id": "qui-atomo-q03-v1",
+      "varianteDe": "qui-atomo-q03",
+      "tema": "Modelos atômicos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "No teste de chama, sais de diferentes metais deixam a chama com cores diferentes porque:",
+      "alternativas": [
+        "O oxigênio muda de cor",
+        "Cada elemento tem níveis de energia próprios",
+        "Os sais têm corantes",
+        "A chama esquenta mais com alguns metais",
+        "Os metais derretem com cores"
+      ],
+      "correta": 1,
+      "explicacao": "Os saltos de elétrons têm energias características. Dica de mergulhador: cor da chama, impressão digital do elemento.",
+      "comentarios": [
+        "Não é o caso.",
+        "",
+        "Não é o caso.",
+        "Não é o motivo.",
+        "Não é a explicação."
+      ]
+    },
+    {
+      "id": "qui-atomo-q04-v1",
+      "varianteDe": "qui-atomo-q04",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "Um átomo tem 11 prótons e 12 nêutrons. Seu número de massa é:",
+      "alternativas": [
+        "12",
+        "132",
+        "11",
+        "23",
+        "1"
+      ],
+      "correta": 3,
+      "explicacao": "A = Z + N. Dica de mergulhador: massa soma o núcleo.",
+      "comentarios": [
+        "É o número de nêutrons.",
+        "Multiplicou.",
+        "É o número atômico.",
+        "",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "qui-atomo-q05-v1",
+      "varianteDe": "qui-atomo-q05",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "O carbono-12 e o carbono-14 diferem no número de:",
+      "alternativas": [
+        "Elementos",
+        "Prótons",
+        "Cargas positivas",
+        "Nêutrons",
+        "Elétrons no átomo neutro"
+      ],
+      "correta": 3,
+      "explicacao": "O C-14 tem 2 nêutrons a mais. Dica de mergulhador: o número depois do nome é a massa.",
+      "comentarios": [
+        "São o mesmo elemento.",
+        "Ambos têm 6.",
+        "Iguais.",
+        "",
+        "Ambos têm 6."
+      ]
+    },
+    {
+      "id": "qui-atomo-q06-v1",
+      "varianteDe": "qui-atomo-q06",
+      "tema": "Radioatividade",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "A partícula alfa é formada por:",
+      "alternativas": [
+        "Um elétron",
+        "Dois prótons e dois nêutrons",
+        "Dois elétrons",
+        "Uma onda eletromagnética",
+        "Um próton apenas"
+      ],
+      "correta": 1,
+      "explicacao": "Igual ao núcleo do hélio. Dica de mergulhador: alfa é pesada e para no papel.",
+      "comentarios": [
+        "É a beta.",
+        "",
+        "Não é o caso.",
+        "É a gama.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-atomo-q07-v1",
+      "varianteDe": "qui-atomo-q07",
+      "tema": "Modelos atômicos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Pulseiras e adesivos que brilham no escuro depois de expostos à luz funcionam porque:",
+      "alternativas": [
+        "Os prótons mudam de nível",
+        "O material é radioativo forte",
+        "O ar dentro brilha",
+        "A cor é tinta comum",
+        "Elétrons excitados retornam lentamente e emitem luz"
+      ],
+      "correta": 4,
+      "explicacao": "Energia guardada e devolvida como luz. Dica de mergulhador: carrega na luz, brilha no escuro.",
+      "comentarios": [
+        "São os elétrons.",
+        "Não é o caso comum.",
+        "Não é o caso.",
+        "Não explica o brilho.",
+        ""
+      ],
+      "revisar": "fosforescência em materiais que brilham no escuro"
+    },
+    {
+      "id": "qui-atomo-q08-v1",
+      "varianteDe": "qui-atomo-q08",
+      "tema": "Modelos atômicos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Rutherford concluiu que o núcleo é positivo porque:",
+      "alternativas": [
+        "Todas as partículas foram absorvidas",
+        "Os elétrons ficaram no núcleo",
+        "Algumas partículas alfa foram muito desviadas",
+        "A lâmina ficou negativa",
+        "Nenhuma partícula foi desviada"
+      ],
+      "correta": 2,
+      "explicacao": "Cargas iguais se repelem. Dica de mergulhador: repulsão revela núcleo positivo.",
+      "comentarios": [
+        "Não foram.",
+        "Não é o caso.",
+        "",
+        "Não é a evidência.",
+        "Algumas foram."
+      ]
+    },
+    {
+      "id": "qui-atomo-q09-v1",
+      "varianteDe": "qui-atomo-q09",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "O íon Cl⁻ tem 17 prótons. Quantos elétrons ele tem?",
+      "alternativas": [
+        "18",
+        "35",
+        "16",
+        "1",
+        "17"
+      ],
+      "correta": 0,
+      "explicacao": "Ânion ganhou um elétron. Dica de mergulhador: sinal de menos, elétron a mais.",
+      "comentarios": [
+        "",
+        "É o número de massa.",
+        "Seria cátion.",
+        "Não é o caso.",
+        "Seria neutro."
+      ]
+    },
+    {
+      "id": "qui-atomo-q10-v1",
+      "varianteDe": "qui-atomo-q10",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "O ferro-56 e o ferro-54 são isótopos. O número de prótons do ferro-54 é:",
+      "alternativas": [
+        "54",
+        "28",
+        "24",
+        "30",
+        "26, o mesmo do ferro-56"
+      ],
+      "correta": 4,
+      "explicacao": "Isótopos têm o mesmo número atômico. Dica de mergulhador: mesmo elemento, mesmos prótons.",
+      "comentarios": [
+        "É o número de massa.",
+        "Mudaria o elemento.",
+        "Mudaria o elemento.",
+        "É o número de nêutrons do ferro-56.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-atomo-q11-v1",
+      "varianteDe": "qui-atomo-q11",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Dois átomos com o mesmo número de nêutrons, mas elementos diferentes, são:",
+      "alternativas": [
+        "Isótopos",
+        "Alótropos",
+        "Isótonos",
+        "Isóbaros",
+        "Íons"
+      ],
+      "correta": 2,
+      "explicacao": "Isótonos têm N igual. Dica de mergulhador: isótono = mesmo N.",
+      "comentarios": [
+        "Mesmo número de prótons.",
+        "É outro conceito.",
+        "",
+        "Mesmo número de massa.",
+        "É outro conceito."
+      ]
+    },
+    {
+      "id": "qui-atomo-q12-v1",
+      "varianteDe": "qui-atomo-q12",
+      "tema": "Radioatividade",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Um isótopo tem meia-vida de 8 dias. Uma amostra de 64 mg ficará com 4 mg depois de:",
+      "alternativas": [
+        "64 dias",
+        "24 dias",
+        "8 dias",
+        "32 dias",
+        "16 dias"
+      ],
+      "correta": 3,
+      "explicacao": "64 → 32 → 16 → 8 → 4: 4 meias-vidas × 8 dias. Dica de mergulhador: conte as divisões por dois.",
+      "comentarios": [
+        "Tempo demais.",
+        "Seria 8 mg.",
+        "Seria 32 mg.",
+        "",
+        "Seria 16 mg."
+      ]
+    },
+    {
+      "id": "qui-atomo-q13-v1",
+      "varianteDe": "qui-atomo-q13",
+      "tema": "Radioatividade",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "O iodo radioativo é usado em exames e tratamentos da tireoide porque:",
+      "alternativas": [
+        "Ele não emite radiação",
+        "A glândula absorve iodo e concentra o isótopo",
+        "A tireoide não usa iodo",
+        "O iodo radioativo é uma vitamina",
+        "Ele cura qualquer câncer"
+      ],
+      "correta": 1,
+      "explicacao": "O alvo recebe a radiação. Dica de mergulhador: tireoide guarda iodo, e o remédio vai junto.",
+      "comentarios": [
+        "Emite.",
+        "",
+        "Usa.",
+        "Não é.",
+        "Não é o caso."
+      ],
+      "revisar": "uso de iodo-131 na tireoide"
+    },
+    {
+      "id": "qui-atomo-q14-v1",
+      "varianteDe": "qui-atomo-q14",
+      "tema": "Modelos atômicos",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "O modelo de Rutherford tinha um problema: um elétron girando perderia energia e cairia no núcleo. Bohr resolveu isso propondo que:",
+      "alternativas": [
+        "Não existem elétrons",
+        "O elétron fica parado no núcleo",
+        "O elétron só ocupa níveis de energia permitidos",
+        "O átomo é maciço",
+        "O núcleo é negativo"
+      ],
+      "correta": 2,
+      "explicacao": "Órbitas estacionárias. Dica de mergulhador: em cada degrau, o elétron fica estável.",
+      "comentarios": [
+        "Existem.",
+        "Não é o caso.",
+        "",
+        "Voltaria a Dalton.",
+        "É positivo."
+      ]
+    },
+    {
+      "id": "qui-atomo-q15-v1",
+      "varianteDe": "qui-atomo-q15",
+      "tema": "Modelos atômicos",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "O modelo atual do átomo não descreve o elétron numa órbita exata porque:",
+      "alternativas": [
+        "O átomo é maciço",
+        "Os elétrons ficam no núcleo",
+        "Só se fala em probabilidade de achá-lo numa região",
+        "O elétron não existe",
+        "A luz não interage com átomos"
+      ],
+      "correta": 2,
+      "explicacao": "Orbitais são regiões de probabilidade. Dica de mergulhador: nuvem, não trilho.",
+      "comentarios": [
+        "Não é.",
+        "Não ficam.",
+        "",
+        "Existe.",
+        "Interage."
+      ]
+    },
+    {
+      "id": "qui-atomo-q16-v1",
+      "varianteDe": "qui-atomo-q16",
+      "tema": "Partículas e isótopos",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "O deutério, isótopo do hidrogênio com massa 2, tem:",
+      "alternativas": [
+        "1 próton e 2 nêutrons",
+        "1 próton e 1 nêutron",
+        "Nenhum próton",
+        "2 prótons e 2 nêutrons",
+        "2 prótons e nenhum nêutron"
+      ],
+      "correta": 1,
+      "explicacao": "Z = 1, N = 1. Dica de mergulhador: deutério = hidrogênio com um nêutron.",
+      "comentarios": [
+        "É o trítio.",
+        "",
+        "Não seria hidrogênio.",
+        "É o hélio-4.",
+        "Seria hélio."
+      ]
+    },
+    {
+      "id": "qui-atomo-q17-v1",
+      "varianteDe": "qui-atomo-q17",
+      "tema": "Radioatividade",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "Usinas nucleares geram eletricidade a partir:",
+      "alternativas": [
+        "Da combustão de gasolina",
+        "Da luz solar",
+        "Da fissão de núcleos de urânio, que libera calor",
+        "Da fusão de hidrogênio, como no Sol",
+        "Da queima de carvão"
+      ],
+      "correta": 2,
+      "explicacao": "O calor gera vapor que move turbinas. Dica de mergulhador: fissão divide, fusão junta.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não é o caso.",
+        "",
+        "As usinas atuais usam fissão.",
+        "Não é nuclear."
+      ]
+    },
+    {
+      "id": "qui-atomo-q18-v1",
+      "varianteDe": "qui-atomo-q18",
+      "tema": "Radioatividade",
+      "dificuldade": "facil",
+      "fase": "qui-atomo",
+      "enunciado": "O fenômeno descoberto no fim do século XIX, em que núcleos instáveis emitem radiação espontaneamente, é a:",
+      "alternativas": [
+        "Radioatividade",
+        "Condução elétrica",
+        "Oxidação",
+        "Fotossíntese",
+        "Ebulição"
+      ],
+      "correta": 0,
+      "explicacao": "A emissão é espontânea e nuclear. Dica de mergulhador: núcleo instável fala por radiação.",
+      "comentarios": [
+        "",
+        "Envolve elétrons livres.",
+        "É reação química comum.",
+        "É processo biológico.",
+        "É mudança de estado."
+      ],
+      "revisar": "descoberta da radioatividade no fim do século XIX (Becquerel, 1896)"
+    },
+    {
+      "id": "qui-atomo-q19-v1",
+      "varianteDe": "qui-atomo-q19",
+      "tema": "Radioatividade",
+      "dificuldade": "medio",
+      "fase": "qui-atomo",
+      "enunciado": "Um isótopo com meia-vida de 2 dias tem 64 mg na entrega. Depois de 8 dias, restam:",
+      "alternativas": [
+        "2 mg",
+        "4 mg",
+        "32 mg",
+        "8 mg",
+        "16 mg"
+      ],
+      "correta": 1,
+      "explicacao": "8 dias = 4 meias-vidas: 64 → 32 → 16 → 8 → 4. Dica de mergulhador: divida por 2 a cada meia-vida.",
+      "comentarios": [
+        "Cinco meias-vidas.",
+        "",
+        "Uma meia-vida.",
+        "Três meias-vidas.",
+        "Duas meias-vidas."
+      ]
+    },
+    {
+      "id": "qui-atomo-q20-v1",
+      "varianteDe": "qui-atomo-q20",
+      "tema": "Radioatividade",
+      "dificuldade": "dificil",
+      "fase": "qui-atomo",
+      "enunciado": "Um núcleo emite uma partícula beta (um nêutron vira próton e sai um elétron). O novo núcleo tem:",
+      "alternativas": [
+        "Número atômico 1 menor",
+        "Mesmo número atômico",
+        "Massa 1 menor",
+        "Número atômico 1 maior e a mesma massa",
+        "Número atômico 2 menor e massa 4 menor"
+      ],
+      "correta": 3,
+      "explicacao": "Um nêutron vira próton: Z sobe 1, A fica igual. Dica de mergulhador: beta soma 1 no Z.",
+      "comentarios": [
+        "Aumenta.",
+        "O Z muda.",
+        "A massa se mantém.",
+        "",
+        "Isso é alfa."
+      ]
+    }
+  ],
+  "pares": [
+    {
+      "id": "qui-materia-par-01",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "termo": "Densidade",
+      "definicao": "Massa por volume"
+    },
+    {
+      "id": "qui-materia-par-02",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "termo": "Sublimação",
+      "definicao": "Sólido para gás"
+    },
+    {
+      "id": "qui-materia-par-03",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "termo": "Alotropia",
+      "definicao": "Diamante e grafite"
+    },
+    {
+      "id": "qui-materia-par-04",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "termo": "Fenômeno químico",
+      "definicao": "Nova substância"
+    },
+    {
+      "id": "qui-separacao-par-01",
+      "tema": "Separação de misturas e tratamento de água",
+      "termo": "Filtração",
+      "definicao": "Coador de café"
+    },
+    {
+      "id": "qui-separacao-par-02",
+      "tema": "Separação de misturas e tratamento de água",
+      "termo": "Destilação fracionada",
+      "definicao": "Refino do petróleo"
+    },
+    {
+      "id": "qui-separacao-par-03",
+      "tema": "Separação de misturas e tratamento de água",
+      "termo": "Floculação",
+      "definicao": "Sulfato de alumínio"
+    },
+    {
+      "id": "qui-separacao-par-04",
+      "tema": "Separação de misturas e tratamento de água",
+      "termo": "Separação magnética",
+      "definicao": "Ímã e ferro"
+    },
+    {
+      "id": "qui-atomo-par-01",
+      "tema": "Átomo, modelos e radioatividade",
+      "termo": "Thomson",
+      "definicao": "Pudim de passas"
+    },
+    {
+      "id": "qui-atomo-par-02",
+      "tema": "Átomo, modelos e radioatividade",
+      "termo": "Rutherford",
+      "definicao": "Núcleo positivo"
+    },
+    {
+      "id": "qui-atomo-par-03",
+      "tema": "Átomo, modelos e radioatividade",
+      "termo": "Bohr",
+      "definicao": "Níveis de energia"
+    },
+    {
+      "id": "qui-atomo-par-04",
+      "tema": "Átomo, modelos e radioatividade",
+      "termo": "Isótopos",
+      "definicao": "Mesmo número de prótons"
+    }
+  ],
+  "verdadeiroFalso": [
+    {
+      "id": "qui-materia-vf-01",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "afirmacao": "O gelo é menos denso que a água líquida.",
+      "verdadeira": true,
+      "explicacao": "Por isso flutua."
+    },
+    {
+      "id": "qui-materia-vf-02",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "afirmacao": "Dissolver sal na água é fenômeno químico.",
+      "verdadeira": false,
+      "explicacao": "É físico."
+    },
+    {
+      "id": "qui-materia-vf-03",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "afirmacao": "Na altitude, a água ferve abaixo de 100 °C.",
+      "verdadeira": true,
+      "explicacao": "A pressão é menor."
+    },
+    {
+      "id": "qui-separacao-vf-01",
+      "tema": "Separação de misturas e tratamento de água",
+      "afirmacao": "A filtração não retém sal dissolvido.",
+      "verdadeira": true,
+      "explicacao": "O sal passa com a água."
+    },
+    {
+      "id": "qui-separacao-vf-02",
+      "tema": "Separação de misturas e tratamento de água",
+      "afirmacao": "O cloro na água serve para prevenir cáries.",
+      "verdadeira": false,
+      "explicacao": "Ele desinfeta; o flúor previne cáries."
+    },
+    {
+      "id": "qui-separacao-vf-03",
+      "tema": "Separação de misturas e tratamento de água",
+      "afirmacao": "A centrifugação acelera a decantação.",
+      "verdadeira": true,
+      "explicacao": "A rotação leva o sólido ao fundo."
+    },
+    {
+      "id": "qui-atomo-vf-01",
+      "tema": "Átomo, modelos e radioatividade",
+      "afirmacao": "O átomo é formado principalmente por espaço vazio.",
+      "verdadeira": true,
+      "explicacao": "Conclusão de Rutherford."
+    },
+    {
+      "id": "qui-atomo-vf-02",
+      "tema": "Átomo, modelos e radioatividade",
+      "afirmacao": "A radiação gama é barrada por uma folha de papel.",
+      "verdadeira": false,
+      "explicacao": "Exige chumbo ou concreto."
+    },
+    {
+      "id": "qui-atomo-vf-03",
+      "tema": "Átomo, modelos e radioatividade",
+      "afirmacao": "Um cátion perdeu elétrons.",
+      "verdadeira": true,
+      "explicacao": "Fica com carga positiva."
+    }
+  ],
+  "sequencias": [
+    {
+      "id": "qui-materia-seq-01",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "titulo": "Aquecimento do gelo até o vapor",
+      "itens": [
+        "Gelo",
+        "Fusão",
+        "Água líquida",
+        "Ebulição",
+        "Vapor"
+      ],
+      "explicacao": "Dois patamares na substância pura."
+    },
+    {
+      "id": "qui-separacao-seq-01",
+      "tema": "Separação de misturas e tratamento de água",
+      "titulo": "Estação de tratamento de água",
+      "itens": [
+        "Floculação",
+        "Decantação",
+        "Filtração",
+        "Desinfecção"
+      ],
+      "explicacao": "Juntar, descer, filtrar e desinfetar."
+    },
+    {
+      "id": "qui-atomo-seq-01",
+      "tema": "Átomo, modelos e radioatividade",
+      "titulo": "Modelos atômicos",
+      "itens": [
+        "Dalton",
+        "Thomson",
+        "Rutherford",
+        "Bohr"
+      ],
+      "explicacao": "Da bola maciça aos níveis de energia."
+    }
+  ],
+  "adivinhas": [
+    {
+      "id": "qui-materia-adv-01",
+      "tema": "Matéria: substâncias, misturas e propriedades",
+      "dificuldade": "medio",
+      "resposta": "Densidade",
+      "aceitas": [
+        "densidades"
+      ],
+      "dicas": [
+        "Massa por volume",
+        "Gelo flutua",
+        "Identifica materiais"
+      ]
+    },
+    {
+      "id": "qui-separacao-adv-01",
+      "tema": "Separação de misturas e tratamento de água",
+      "dificuldade": "medio",
+      "resposta": "Decantação",
+      "aceitas": [
+        "decantacao"
+      ],
+      "dicas": [
+        "Gravidade",
+        "Sólido no fundo",
+        "Água e óleo no funil"
+      ]
+    },
+    {
+      "id": "qui-atomo-adv-01",
+      "tema": "Átomo, modelos e radioatividade",
+      "dificuldade": "dificil",
+      "resposta": "Meia-vida",
+      "aceitas": [
+        "meia vida, periodo de semidesintegracao"
+      ],
+      "dicas": [
+        "Metade decai",
+        "Carbono-14",
+        "Ampulheta"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "id": "qui-materia-pal-01",
+      "tema": "Química",
+      "palavra": "Liga",
+      "dica": "Mistura de metais"
+    },
+    {
+      "id": "qui-materia-pal-02",
+      "tema": "Química",
+      "palavra": "Gelo",
+      "dica": "Flutua na água"
+    },
+    {
+      "id": "qui-materia-pal-03",
+      "tema": "Química",
+      "palavra": "Ferrugem",
+      "dica": "Sinal de reação no ferro"
+    },
+    {
+      "id": "qui-materia-pal-04",
+      "tema": "Química",
+      "palavra": "Vapor",
+      "dica": "Água no estado gasoso"
+    },
+    {
+      "id": "qui-separacao-pal-01",
+      "tema": "Química",
+      "palavra": "Filtro",
+      "dica": "Retém o sólido"
+    },
+    {
+      "id": "qui-separacao-pal-02",
+      "tema": "Química",
+      "palavra": "Salina",
+      "dica": "Onde o sol tira o sal do mar"
+    },
+    {
+      "id": "qui-separacao-pal-03",
+      "tema": "Química",
+      "palavra": "Ímã",
+      "dica": "Atrai o ferro"
+    },
+    {
+      "id": "qui-separacao-pal-04",
+      "tema": "Química",
+      "palavra": "Cloro",
+      "dica": "Desinfeta a água"
+    },
+    {
+      "id": "qui-atomo-pal-01",
+      "tema": "Química",
+      "palavra": "Próton",
+      "dica": "Carga positiva do núcleo"
+    },
+    {
+      "id": "qui-atomo-pal-02",
+      "tema": "Química",
+      "palavra": "Elétron",
+      "dica": "Carga negativa"
+    },
+    {
+      "id": "qui-atomo-pal-03",
+      "tema": "Química",
+      "palavra": "Núcleo",
+      "dica": "Centro denso do átomo"
+    },
+    {
+      "id": "qui-atomo-pal-04",
+      "tema": "Química",
+      "palavra": "Urânio",
+      "dica": "Combustível das usinas nucleares"
+    }
+  ],
+  "fichas": {
+    "Substâncias e misturas": {
+      "texto": [
+        "Substância pura (composição fixa): simples (O₂, O₃, ferro) e composta (H₂O, CO₂). Alotropia: O₂ e O₃; diamante e grafite. Misturas homogêneas (uma fase: água com sal, ar, ligas) e heterogêneas (mais fases: água e óleo, granito).",
+        "Gráfico de aquecimento: substância pura tem dois patamares; mistura comum não tem; eutética tem patamar só na fusão; azeotrópica, só na ebulição. Fase não é substância (água com gelo)."
+      ],
+      "pontos": [
+        "Dois patamares, substância pura.",
+        "Gás com gás, mistura homogênea."
+      ],
+      "pegadinhas": [
+        "Chamar o ar de substância pura.",
+        "Confundir fase com substância."
+      ]
+    },
+    "Propriedades da matéria": {
+      "texto": [
+        "Gerais (massa, volume) e específicas (densidade, PF, PE, solubilidade). Densidade = m/V; o menos denso flutua (gelo e óleo na água). Volume de sólido irregular pelo deslocamento de água.",
+        "Densidade identifica materiais (ouro, leite adulterado). Torre de líquidos: do menos ao mais denso, de cima para baixo."
+      ],
+      "pontos": [
+        "Massa em cima, volume embaixo.",
+        "Densidade é impressão digital do material."
+      ],
+      "pegadinhas": [
+        "Inverter a divisão da densidade.",
+        "Usar o volume total da proveta em vez do deslocado."
+      ]
+    },
+    "Estados físicos e transformações": {
+      "texto": [
+        "Fusão, solidificação, vaporização (evaporação, ebulição), condensação, sublimação. Ponto de ebulição cai com a altitude e sobe na panela de pressão. A água aumenta de volume ao congelar.",
+        "Fenômeno físico: a substância permanece. Químico: nova substância (ferrugem, queima, bolo assando, vinagre com bicarbonato); sinais: gás, cor, calor, luz."
+      ],
+      "pontos": [
+        "Varal evapora; panela ferve.",
+        "Virou outra coisa, é químico."
+      ],
+      "pegadinhas": [
+        "Dizer que dissolver açúcar é químico.",
+        "Achar que a água ferve sempre a 100 °C."
+      ]
+    },
+    "Misturas heterogêneas": {
+      "texto": [
+        "Sólido-sólido: catação, peneiração, ventilação, levigação (garimpo), separação magnética. Sólido-líquido: filtração (café, aspirador), decantação e centrifugação (sangue, máquina de lavar). Líquidos imiscíveis: funil de decantação.",
+        "Misturas com vários componentes exigem sequência: ímã para o ferro, dissolver o sal, filtrar a areia e evaporar a água para recuperar o sal."
+      ],
+      "pontos": [
+        "Centrífuga é decantação com pressa.",
+        "Uma propriedade de cada vez."
+      ],
+      "pegadinhas": [
+        "Achar que o filtro retém sal dissolvido.",
+        "Confundir levigação com ventilação."
+      ]
+    },
+    "Misturas homogêneas": {
+      "texto": [
+        "Destilação simples (sólido dissolvido e líquido: água e sal); destilação fracionada (líquidos com PE diferentes: petróleo, ar liquefeito, álcool e água); evaporação (salinas); cromatografia (pigmentos). Condensador transforma vapor em líquido.",
+        "Azeótropo etanol-água (cerca de 96 °GL) impede obter etanol puro por destilação comum."
+      ],
+      "pontos": [
+        "Destilar é separar pelo ponto de ebulição.",
+        "O sal fica no balão."
+      ],
+      "pegadinhas": [
+        "Usar filtração para tirar sal da água.",
+        "Achar que o condensador aquece."
+      ]
+    },
+    "Tratamento de água e esgoto": {
+      "texto": [
+        "ETA: sulfato de alumínio e cal (floculação), decantação, filtração (areia, cascalho, carvão), cloro (desinfecção), flúor (cáries), correção de pH. ETE: grades, caixa de areia, tratamento biológico com bactérias, separação do lodo.",
+        "Dessalinização por osmose reversa produz água doce com alto gasto de energia. Esgoto sem tratamento contamina e reduz o oxigênio dos rios."
+      ],
+      "pontos": [
+        "Flocos, fundo, filtro, cloro.",
+        "Cloro mata micróbio; flúor protege dente."
+      ],
+      "pegadinhas": [
+        "Trocar a função do cloro pela do flúor.",
+        "Pensar que a estação destila a água."
+      ]
+    },
+    "Modelos atômicos": {
+      "texto": [
+        "Dalton (esfera maciça), Thomson (elétron, pudim de passas), Rutherford (lâmina de ouro: núcleo pequeno, denso e positivo; átomo quase vazio), Bohr (níveis de energia; elétron que volta emite luz: fogos e teste de chama). Modelo atual: regiões de probabilidade.",
+        "Cada modelo explicou evidências da sua época e foi aperfeiçoado. Subir de nível absorve energia; descer emite."
+      ],
+      "pontos": [
+        "Quase tudo vazio, núcleo no centro.",
+        "Subir absorve; descer emite."
+      ],
+      "pegadinhas": [
+        "Atribuir o núcleo a Thomson.",
+        "Dizer que os prótons emitem a luz das cores."
+      ]
+    },
+    "Partículas e isótopos": {
+      "texto": [
+        "Prótons (+) e nêutrons no núcleo; elétrons (−) na eletrosfera. Z = prótons; A = Z + N; N = A − Z. Cátion perdeu elétrons; ânion ganhou.",
+        "Isótopos (mesmo Z: C-12, C-14; hidrogênio, deutério, trítio), isóbaros (mesmo A), isótonos (mesmo N)."
+      ],
+      "pontos": [
+        "Sinal de mais, elétron a menos.",
+        "Isótopo = mesmo elemento."
+      ],
+      "pegadinhas": [
+        "Usar A como número de nêutrons.",
+        "Trocar isóbaro por isótopo."
+      ]
+    },
+    "Radioatividade": {
+      "texto": [
+        "Alfa (2p + 2n; barrada por papel), beta (elétron; barrada por alumínio), gama (onda; chumbo ou concreto). Meia-vida: metade decai a cada período; C-14 (~5.730 anos) data restos de seres vivos.",
+        "Usos: radioterapia, medicina nuclear (iodo e tireoide), esterilização, usinas (fissão do urânio). Riscos: acidente de Goiânia (césio-137, 1987)."
+      ],
+      "pontos": [
+        "Divida por dois a cada meia-vida.",
+        "Fissão divide; fusão junta."
+      ],
+      "pegadinhas": [
+        "Dizer que a amostra some após uma meia-vida.",
+        "Achar que usinas atuais usam fusão."
+      ]
+    }
+  }
+}
