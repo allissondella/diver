@@ -2824,6 +2824,445 @@
         "sequencias": 27,
         "palavras": 108
       }
+    },
+    {
+      "arquivo": "enem-geografia.json",
+      "id": "enem-geografia",
+      "nome": "Enem · Geografia",
+      "descricao": "Geografia para o Enem e os vestibulares: cartografia, relevo, solos e clima, biomas e recursos naturais, questões ambientais, população e cidades, campo, indústria, energia e globalização, com as habilidades da Matriz do Inep.",
+      "categoria": "Enem e vestibular",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 45,
+        "minutos": 135,
+        "aprovacao": 60,
+        "exigeFases": false
+      },
+      "fases": [
+        {
+          "id": "geo-orientacao",
+          "nome": "Aula 1 · Orientação, coordenadas e fusos horários",
+          "modulo": "Módulo 1 · Cartografia, escala e leitura de mapas",
+          "descricao": "Módulo 1 · aula 1 de 5 · 35 min · treina as habilidades H6 e H8",
+          "habilidades": [
+            "H6",
+            "H8"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-escala",
+          "nome": "Aula 2 · Escala e projeções cartográficas",
+          "modulo": "Módulo 1 · Cartografia, escala e leitura de mapas",
+          "descricao": "Módulo 1 · aula 2 de 5 · 35 min · treina as habilidades H6 e H8",
+          "habilidades": [
+            "H6",
+            "H8"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-cartografia-tematica",
+          "nome": "Aula 3 · Mapas temáticos, gráficos e geotecnologias",
+          "modulo": "Módulo 1 · Cartografia, escala e leitura de mapas",
+          "descricao": "Módulo 1 · aula 3 de 5 · 35 min · treina as habilidades H6 e H7",
+          "habilidades": [
+            "H6",
+            "H7"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-territorio-brasil",
+          "nome": "Aula 4 · Território brasileiro: formação, regiões e fronteiras",
+          "modulo": "Módulo 1 · Cartografia, escala e leitura de mapas",
+          "descricao": "Módulo 1 · aula 4 de 5 · 35 min · treina as habilidades H6, H7 e H8",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H8"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-revisao-cartografia",
+          "nome": "Aula 5 · Revisão do módulo: cartografia e território",
+          "modulo": "Módulo 1 · Cartografia, escala e leitura de mapas",
+          "descricao": "Módulo 1 · aula 5 de 5 · 35 min · treina as habilidades H6, H7 e H8",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H8"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-estrutura-geologica",
+          "nome": "Aula 6 · Estrutura geológica, placas e rochas",
+          "modulo": "Módulo 2 · Relevo, solos e clima",
+          "descricao": "Módulo 2 · aula 1 de 5 · 35 min · treina as habilidades H26, H27 e H28",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-relevo",
+          "nome": "Aula 7 · Relevo e agentes do modelado",
+          "modulo": "Módulo 2 · Relevo, solos e clima",
+          "descricao": "Módulo 2 · aula 2 de 5 · 35 min · treina as habilidades H26, H27 e H28",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-solos",
+          "nome": "Aula 8 · Solos: formação, uso e conservação",
+          "modulo": "Módulo 2 · Relevo, solos e clima",
+          "descricao": "Módulo 2 · aula 3 de 5 · 35 min · treina as habilidades H26, H27, H28 e H29",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-clima",
+          "nome": "Aula 9 · Clima: fatores, massas de ar e climas do Brasil",
+          "modulo": "Módulo 2 · Relevo, solos e clima",
+          "descricao": "Módulo 2 · aula 4 de 5 · 35 min · treina as habilidades H26, H27 e H29",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H29"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-revisao-natureza-fisica",
+          "nome": "Aula 10 · Revisão do módulo: relevo, solos e clima",
+          "modulo": "Módulo 2 · Relevo, solos e clima",
+          "descricao": "Módulo 2 · aula 5 de 5 · 35 min · treina as habilidades H26, H27, H28 e H29",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-biomas-brasil",
+          "nome": "Aula 11 · Biomas e domínios morfoclimáticos do Brasil",
+          "modulo": "Módulo 3 · Biomas, água e recursos naturais",
+          "descricao": "Módulo 3 · aula 1 de 5 · 35 min · treina as habilidades H26, H27, H28, H29 e H30",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-formacoes-vegetais-mundo",
+          "nome": "Aula 12 · Paisagens naturais e climas do mundo",
+          "modulo": "Módulo 3 · Biomas, água e recursos naturais",
+          "descricao": "Módulo 3 · aula 2 de 5 · 35 min · treina as habilidades H26, H27 e H29",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H29"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-hidrografia",
+          "nome": "Aula 13 · Águas: bacias, aquíferos e crise hídrica",
+          "modulo": "Módulo 3 · Biomas, água e recursos naturais",
+          "descricao": "Módulo 3 · aula 3 de 5 · 35 min · treina as habilidades H26, H27, H28, H29 e H30",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-recursos-minerais",
+          "nome": "Aula 14 · Recursos minerais e mineração no Brasil",
+          "modulo": "Módulo 3 · Biomas, água e recursos naturais",
+          "descricao": "Módulo 3 · aula 4 de 5 · 35 min · treina as habilidades H26, H27, H28 e H29",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-revisao-biomas",
+          "nome": "Aula 15 · Revisão do módulo: biomas, água e recursos naturais",
+          "modulo": "Módulo 3 · Biomas, água e recursos naturais",
+          "descricao": "Módulo 3 · aula 5 de 5 · 35 min · treina as habilidades H26, H27, H28, H29 e H30",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-mudancas-climaticas",
+          "nome": "Aula 16 · Mudanças climáticas e acordos internacionais",
+          "modulo": "Módulo 4 · Questões ambientais e sustentabilidade",
+          "descricao": "Módulo 4 · aula 1 de 5 · 35 min · treina as habilidades H26, H27, H28 e H30",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H30"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-desmatamento-queimadas",
+          "nome": "Aula 17 · Desmatamento e queimadas",
+          "modulo": "Módulo 4 · Questões ambientais e sustentabilidade",
+          "descricao": "Módulo 4 · aula 2 de 5 · 35 min · treina as habilidades H26, H27, H28 e H29",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-problemas-urbanos-ambientais",
+          "nome": "Aula 18 · Problemas ambientais urbanos",
+          "modulo": "Módulo 4 · Questões ambientais e sustentabilidade",
+          "descricao": "Módulo 4 · aula 3 de 5 · 35 min · treina as habilidades H26, H27, H28 e H29",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-desenvolvimento-sustentavel",
+          "nome": "Aula 19 · Desenvolvimento sustentável e conferências ambientais",
+          "modulo": "Módulo 4 · Questões ambientais e sustentabilidade",
+          "descricao": "Módulo 4 · aula 4 de 5 · 35 min · treina as habilidades H26, H27, H28 e H30",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H30"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-revisao-ambiente",
+          "nome": "Aula 20 · Revisão do módulo: questões ambientais e sustentabilidade",
+          "modulo": "Módulo 4 · Questões ambientais e sustentabilidade",
+          "descricao": "Módulo 4 · aula 5 de 5 · 35 min · treina as habilidades H26, H27, H28, H29 e H30",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-populacao",
+          "nome": "Aula 21 · População: crescimento e estrutura",
+          "modulo": "Módulo 5 · População, cidades e urbanização",
+          "descricao": "Módulo 5 · aula 1 de 5 · 35 min · treina as habilidades H6, H16, H17 e H18",
+          "habilidades": [
+            "H6",
+            "H16",
+            "H17",
+            "H18"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-migracoes",
+          "nome": "Aula 22 · Migrações no Brasil e no mundo",
+          "modulo": "Módulo 5 · População, cidades e urbanização",
+          "descricao": "Módulo 5 · aula 2 de 5 · 35 min · treina as habilidades H6, H7, H16 e H18",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H16",
+            "H18"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-urbanizacao",
+          "nome": "Aula 23 · Urbanização no Brasil e no mundo",
+          "modulo": "Módulo 5 · População, cidades e urbanização",
+          "descricao": "Módulo 5 · aula 3 de 5 · 35 min · treina as habilidades H6, H7, H16 e H17",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H16",
+            "H17"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-espaco-urbano",
+          "nome": "Aula 24 · O espaço urbano: desigualdade, moradia e mobilidade",
+          "modulo": "Módulo 5 · População, cidades e urbanização",
+          "descricao": "Módulo 5 · aula 4 de 5 · 35 min · treina as habilidades H7, H8, H9 e H16",
+          "habilidades": [
+            "H7",
+            "H8",
+            "H9",
+            "H16"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-revisao-populacao",
+          "nome": "Aula 25 · Revisão do módulo: população, cidades e urbanização",
+          "modulo": "Módulo 5 · População, cidades e urbanização",
+          "descricao": "Módulo 5 · aula 5 de 5 · 35 min · treina as habilidades H6, H7, H16, H17 e H18",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H16",
+            "H17",
+            "H18"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-espaco-agrario",
+          "nome": "Aula 26 · Espaço agrário brasileiro",
+          "modulo": "Módulo 6 · Campo, indústria, energia e globalização",
+          "descricao": "Módulo 6 · aula 1 de 5 · 35 min · treina as habilidades H18, H19, H20 e H27",
+          "habilidades": [
+            "H18",
+            "H19",
+            "H20",
+            "H27"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-industria",
+          "nome": "Aula 27 · Indústria no Brasil e no mundo",
+          "modulo": "Módulo 6 · Campo, indústria, energia e globalização",
+          "descricao": "Módulo 6 · aula 2 de 5 · 35 min · treina as habilidades H17, H18, H19 e H20",
+          "habilidades": [
+            "H17",
+            "H18",
+            "H19",
+            "H20"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-energia",
+          "nome": "Aula 28 · Fontes de energia e matriz energética",
+          "modulo": "Módulo 6 · Campo, indústria, energia e globalização",
+          "descricao": "Módulo 6 · aula 3 de 5 · 35 min · treina as habilidades H26, H27, H28 e H29",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-globalizacao",
+          "nome": "Aula 29 · Globalização, blocos econômicos e ordem mundial",
+          "modulo": "Módulo 6 · Campo, indústria, energia e globalização",
+          "descricao": "Módulo 6 · aula 4 de 5 · 35 min · treina as habilidades H6, H7, H17 e H20",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H17",
+            "H20"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "geo-revisao-economia",
+          "nome": "Aula 30 · Revisão do módulo: campo, indústria, energia e globalização",
+          "modulo": "Módulo 6 · Campo, indústria, energia e globalização",
+          "descricao": "Módulo 6 · aula 5 de 5 · 35 min · treina as habilidades H17, H18, H19, H20 e H27",
+          "habilidades": [
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H27"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 600,
+        "variantes": 600,
+        "pares": 120,
+        "verdadeiroFalso": 90,
+        "adivinhas": 30,
+        "sequencias": 30,
+        "palavras": 120
+      }
     }
   ]
 }
