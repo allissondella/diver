@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-10 · Enem por matéria, Onda 1: Enem · Matemática completo
+- **Feito:** as 75 aulas do curso `enem-matematica` em 12 módulos, pelo plano de `docs/cadernos/enem-mapa-curricular.md` (seção 4): 1.506 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), comentário em cada alternativa e Dica de mergulhador, 1.506 variantes, 190 fichas da "Revisar a fundo", artigo completo em todas as aulas e blocos para todos os jogos. Construtor `scripts/montar-aulas.mjs` (formato compacto → JSON, com conferência das contas). Caderno novo do curso.
+- **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim do curso.
+- **Decisões:** curso 100% autoral nesta versão (sem literais do Enem); π ≈ 3 nas contas de geometria, como a prova costuma fazer.
+- **Pendências:** Mergulho Triplo (estimativa de US$ 56 para as questões e US$ 56 para as variantes; só com aprovação do admin); revisão de um professor de Matemática.
+- **Próximo passo:** Onda 2 (Português e Literatura), sempre `validar-fontes` → `criar-trilha` → `validar-questoes`.
+
 ## 2026-10-04 · Revisão da Georgia, parte 6: Travessia v2
 - **Feito:** as 5 fases (Linguagens, Humanas, Natureza, Matemática e Redação) com o "Aprender" completo (400–570 palavras) e pontos sem repetição; as 104 questões e as 24 variantes com comentário em cada uma das cinco alternativas; Dica de mergulhador nas variantes; temas agrupados, com a variante sempre no mesmo tema da original; 23 fichas da "Revisar a fundo". Enunciados, alternativas, gabaritos e ids não mudaram.
 - **Conferências:** `conferir-trilha.mjs` sem erro e sem aviso; `fila.mjs simular` com variantes continua funcionando; navegador (PC e celular) com o comentário seguindo a letra embaralhada e a "Revisar a fundo".
