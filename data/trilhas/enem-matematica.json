@@ -6656,6 +6656,327 @@
           "ponto de virada"
         ]
       }
+    },
+    {
+      "id": "mat-equacoes-1grau",
+      "nome": "Aula 65 · Expressões e equações do 1º grau",
+      "modulo": "Módulo 11 · Álgebra e sequências",
+      "descricao": "Módulo 11 · aula 1 de 3 · 35 min · treina as habilidades H19 e H21",
+      "habilidades": [
+        "H19",
+        "H21"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Expressões algébricas",
+            "texto": [
+              "Uma expressão algébrica mistura números e letras: 3x + 5 representa \"o triplo de um número mais cinco\". Traduzir bem é metade do caminho: \"o dobro de x\" é 2x, \"a metade de x\" é x ÷ 2, \"x aumentado de 20%\" é 1,2x e \"dois números consecutivos\" são x e x + 1. Termos semelhantes, com a mesma letra, podem ser somados: 3x + 2x = 5x. Na distributiva, o número de fora multiplica cada termo de dentro: 2(x + 4) = 2x + 8."
+            ]
+          },
+          {
+            "titulo": "A balança",
+            "texto": [
+              "Uma equação é uma igualdade com um valor desconhecido, a **incógnita**. Ela funciona como uma balança em equilíbrio: o que se faz de um lado precisa ser feito do outro. Para isolar x, use a **operação inversa**: o que soma passa subtraindo, o que multiplica passa dividindo. Em 3x + 5 = 20, tira-se 5 dos dois lados (3x = 15) e divide-se por 3 (x = 5)."
+            ]
+          },
+          {
+            "titulo": "Cuidados",
+            "texto": [
+              "Com parênteses, aplique a distributiva antes; com frações, multiplique todos os termos pelo denominador comum para eliminá-las. Sinal de menos antes de parênteses troca o sinal de tudo que está dentro: −(x − 3) = −x + 3. No fim, **confira a resposta** substituindo o valor encontrado na equação original: se os dois lados derem o mesmo número, está certo."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Compras com itens de preços diferentes, divisão de contas, idades, números consecutivos, salário com faltas descontadas, aumentos e descontos e problemas em que parte de um total foi gasta. O caminho é sempre o mesmo: dar nome ao desconhecido, montar a equação com as informações do texto, resolver e responder exatamente o que foi perguntado, que nem sempre é o próprio x. Se a pergunta for o preço de três itens, por exemplo, multiplique o valor encontrado antes de marcar a alternativa."
+            ]
+          }
+        ],
+        "introducao": "Descobrir quanto custa cada item de uma compra, quantos dias dura um estoque, que idade alguém tem: grande parte dos problemas do Enem vira uma equação simples. Esta aula ensina a traduzir o texto em linguagem matemática e a resolver equações do 1º grau sem tropeçar.",
+        "mapaMental": {
+          "centro": "Equações do 1º grau",
+          "ramos": [
+            {
+              "titulo": "Traduzir",
+              "itens": [
+                "dobro é 2x",
+                "metade é x ÷ 2",
+                "consecutivos x e x + 1"
+              ]
+            },
+            {
+              "titulo": "Expressões",
+              "itens": [
+                "termos semelhantes",
+                "distributiva"
+              ]
+            },
+            {
+              "titulo": "Resolver",
+              "itens": [
+                "incógnita isolada",
+                "faça o mesmo nos dois lados"
+              ]
+            },
+            {
+              "titulo": "Conferir",
+              "itens": [
+                "confira a resposta na equação original",
+                "responda o que foi perguntado"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "⚖️",
+            "conceito": "Balança em equilíbrio",
+            "liga": "mexeu de um lado, mexe do outro",
+            "porque": "Tirar 5 de um prato exige tirar 5 do outro."
+          },
+          {
+            "icone": "🔄",
+            "conceito": "Desfazer o caminho",
+            "liga": "operação inversa",
+            "porque": "Somou? Subtraia. Multiplicou? Divida."
+          },
+          {
+            "icone": "🏷️",
+            "conceito": "Etiqueta escondida",
+            "liga": "x é o preço que falta",
+            "porque": "Dê nome ao desconhecido antes de calcular."
+          }
+        ],
+        "pontos": [
+          "A **incógnita** é o valor desconhecido; dê nome a ela antes de montar a equação.",
+          "Isole x com a **operação inversa**, fazendo o mesmo nos dois lados.",
+          "Distributiva antes; frações saem multiplicando pelo denominador comum.",
+          "No fim, **confira a resposta** na equação original."
+        ],
+        "perolas": [
+          "Menos antes de parênteses troca todos os sinais de dentro.",
+          "Responda o que foi pedido, nem sempre o x."
+        ],
+        "reforcar": [
+          "incognita",
+          "operacao inversa",
+          "confira a resposta"
+        ]
+      }
+    },
+    {
+      "id": "mat-sistemas",
+      "nome": "Aula 66 · Sistemas de equações",
+      "modulo": "Módulo 11 · Álgebra e sequências",
+      "descricao": "Módulo 11 · aula 2 de 3 · 35 min · treina as habilidades H21 e H22",
+      "habilidades": [
+        "H21",
+        "H22"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Por que duas informações",
+            "texto": [
+              "Com uma equação e duas incógnitas, há infinitas respostas: x + y = 10 aceita 3 e 7, 4 e 6, e assim por diante. Uma segunda informação independente fixa a resposta. Por isso, um problema com dois valores desconhecidos pede **duas equações**: uma para cada informação do texto. No estacionamento com 30 veículos e 100 rodas, x + y = 30 conta os veículos e 4x + 2y = 100 conta as rodas."
+            ]
+          },
+          {
+            "titulo": "Método da substituição",
+            "texto": [
+              "Na **substituição**, isola-se uma incógnita numa equação e troca-se na outra. De x + y = 30 vem y = 30 − x; em 4x + 2y = 100, fica 4x + 60 − 2x = 100, então 2x = 40 e x = 20 carros. Voltando, y = 10 motos. É o melhor caminho quando uma das letras já aparece sozinha ou com coeficiente 1. Depois de achar o primeiro valor, volte a qualquer uma das equações para descobrir o segundo."
+            ]
+          },
+          {
+            "titulo": "Método da adição",
+            "texto": [
+              "Na **adição**, multiplicam-se as equações por números convenientes para que, somadas, uma das letras suma. Em x + y = 30 e 4x + 2y = 100, multiplicando a primeira por −2: −2x − 2y = −60; somando com a segunda, 2x = 40. Funciona bem quando os coeficientes já são iguais ou opostos. Seja qual for o método, substitua os dois valores nas duas equações para conferir."
+            ]
+          },
+          {
+            "titulo": "Gráfico e como o Enem cobra",
+            "texto": [
+              "Cada equação do 1º grau com duas incógnitas é uma reta, e a solução do sistema é o ponto em que as retas se cruzam. Retas paralelas não se cruzam: o sistema não tem solução; retas coincidentes têm infinitas soluções. O Enem cobra estacionamentos, ingressos, cédulas e moedas, cestas de produtos, misturas, idades, provas com pontos e descontos e qualquer situação com dois totais conhecidos."
+            ]
+          }
+        ],
+        "introducao": "Carros e motos num estacionamento, ingressos de inteira e de meia, duas compras com os mesmos produtos: quando há duas quantidades desconhecidas, são precisas duas informações. Esta aula mostra como montar e resolver sistemas de duas equações com duas incógnitas, um clássico do Enem.",
+        "mapaMental": {
+          "centro": "Sistemas",
+          "ramos": [
+            {
+              "titulo": "Montar",
+              "itens": [
+                "duas equações",
+                "uma para cada informação"
+              ]
+            },
+            {
+              "titulo": "Substituição",
+              "itens": [
+                "isolar uma letra",
+                "trocar na outra equação"
+              ]
+            },
+            {
+              "titulo": "Adição",
+              "itens": [
+                "multiplicar para uma letra sumir",
+                "equações somadas"
+              ]
+            },
+            {
+              "titulo": "Gráfico",
+              "itens": [
+                "retas que se cruzam",
+                "paralelas sem solução"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🚗",
+            "conceito": "Carros e motos",
+            "liga": "contar veículos e rodas",
+            "porque": "Duas pistas para dois valores escondidos."
+          },
+          {
+            "icone": "🎟️",
+            "conceito": "Inteira e meia",
+            "liga": "dois preços, dois totais",
+            "porque": "O total de pessoas e o total arrecadado formam o par."
+          },
+          {
+            "icone": "✂️",
+            "conceito": "Tesoura",
+            "liga": "fazer uma letra sumir",
+            "porque": "Combine as equações para cortar uma das incógnitas."
+          }
+        ],
+        "pontos": [
+          "Duas incógnitas pedem **duas equações**, uma para cada informação.",
+          "**Substituição**: isole uma letra e troque na outra equação.",
+          "**Adição**: multiplique para que uma letra suma ao somar.",
+          "Solução = ponto onde as retas se cruzam; confira nas duas equações."
+        ],
+        "perolas": [
+          "Retas paralelas: sistema sem solução."
+        ],
+        "reforcar": [
+          "duas equacoes",
+          "substituicao",
+          "adicao"
+        ]
+      }
+    },
+    {
+      "id": "mat-equacoes-2grau",
+      "nome": "Aula 67 · Equações do 2º grau",
+      "modulo": "Módulo 11 · Álgebra e sequências",
+      "descricao": "Módulo 11 · aula 3 de 3 · 35 min · treina a habilidade H21",
+      "habilidades": [
+        "H21"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Equações incompletas",
+            "texto": [
+              "A equação do 2º grau tem a forma ax² + bx + c = 0, com a ≠ 0. Quando falta um termo, há atalhos. Sem o b, como em x² − 49 = 0, isola-se x²: x² = 49, e x = 7 ou x = −7. Sem o c, como em x² − 6x = 0, coloca-se x em evidência: x(x − 6) = 0, e um produto só é zero se um dos fatores for zero, então x = 0 ou x = 6. Essas são as equações **incompletas**: resolva sem fórmula."
+            ]
+          },
+          {
+            "titulo": "Fórmula geral",
+            "texto": [
+              "Para a equação completa, calcula-se o **discriminante** Δ = b² − 4ac e usa-se x = (−b ± √Δ) ÷ 2a, a conhecida fórmula de Bhaskara. Em 2x² − 7x + 3 = 0: Δ = 49 − 24 = 25, e x = (7 ± 5) ÷ 4, ou seja, x = 3 ou x = 1/2. O sinal de Δ diz quantas soluções reais existem: positivo, duas; zero, uma; negativo, nenhuma. Quando Δ não é quadrado perfeito, a resposta fica com raiz, como 1 ± √2."
+            ]
+          },
+          {
+            "titulo": "Soma e produto",
+            "texto": [
+              "Quando a = 1 e as raízes são inteiras, vale procurar dois números com **soma e produto** conhecidos: em x² − 9x + 20 = 0, a soma é 9 e o produto, 20; os números são 4 e 5. Em geral, a soma das raízes é −b ÷ a e o produto é c ÷ a. O caminho inverso também cai: a equação com raízes 2 e 7 é x² − 9x + 14 = 0."
+            ]
+          },
+          {
+            "titulo": "Montar e como o Enem cobra",
+            "texto": [
+              "Ao montar, dê nome ao desconhecido e escreva a informação do texto: um retângulo com área 60 m² e um lado 4 m maior que o outro dá x(x + 4) = 60, ou x² + 4x − 60 = 0, com x = 6. Descarte respostas que não fazem sentido, como medidas e quantidades negativas. O Enem cobra áreas e molduras, números com produto conhecido, divisão de valores entre pessoas, lançamentos e lucros."
+            ]
+          }
+        ],
+        "introducao": "Um terreno com área conhecida e um lado maior que o outro, dois números cujo produto se sabe, um grupo que divide uma conta: muitos problemas levam a uma equação com x². Esta aula reúne os jeitos de resolver a equação do 2º grau, do atalho mais rápido à fórmula geral, e mostra como montá-la a partir do texto.",
+        "mapaMental": {
+          "centro": "Equação do 2º grau",
+          "ramos": [
+            {
+              "titulo": "Incompletas",
+              "itens": [
+                "sem b, isolar x²",
+                "sem c, x em evidência"
+              ]
+            },
+            {
+              "titulo": "Fórmula geral",
+              "itens": [
+                "Δ = b² − 4ac",
+                "x = (−b ± √Δ) ÷ 2a"
+              ]
+            },
+            {
+              "titulo": "Soma e produto",
+              "itens": [
+                "soma −b ÷ a",
+                "produto c ÷ a",
+                "caminho inverso"
+              ]
+            },
+            {
+              "titulo": "Montar",
+              "itens": [
+                "dar nome ao desconhecido",
+                "descartar medida negativa"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🔍",
+            "conceito": "Lupa",
+            "liga": "discriminante",
+            "porque": "Antes de resolver, o Δ revela quantas soluções existem."
+          },
+          {
+            "icone": "🧩",
+            "conceito": "Dois números escondidos",
+            "liga": "duas pistas: quanto somam e quanto dá o produto",
+            "porque": "Basta achar o par que encaixa nas duas pistas."
+          },
+          {
+            "icone": "🚫",
+            "conceito": "Medida negativa",
+            "liga": "resposta descartada",
+            "porque": "Lado de terreno nunca é negativo."
+          }
+        ],
+        "pontos": [
+          "Equações **incompletas**: sem b, isole x²; sem c, coloque x em evidência.",
+          "**Discriminante**: Δ = b² − 4ac decide quantas soluções reais existem.",
+          "Fórmula geral: x = (−b ± √Δ) ÷ 2a.",
+          "**Soma e produto** das raízes: −b ÷ a e c ÷ a."
+        ],
+        "perolas": [
+          "Produto igual a zero: algum fator é zero.",
+          "Lado e quantidade nunca são negativos."
+        ],
+        "reforcar": [
+          "incompletas",
+          "discriminante",
+          "soma e produto"
+        ]
+      }
     }
   ],
   "questoes": [
@@ -36234,6 +36555,1386 @@
         "0,8³ = 0,512, não 0,52.",
         "Descontou 60% de uma vez do segundo.",
         "Usou 0,8 × 3 = 2,4.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q01",
+      "tema": "Expressões algébricas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual expressão representa \"o dobro de um número, aumentado de 7\"?",
+      "alternativas": [
+        "x² + 7",
+        "2x + 7",
+        "2(x + 7)",
+        "x + 2 + 7",
+        "7x + 2"
+      ],
+      "correta": 1,
+      "explicacao": "Dobro: 2x. Aumentado de 7: + 7. Dica de mergulhador: traduza parte por parte.",
+      "comentarios": [
+        "Dobro não é quadrado.",
+        "",
+        "Dobrou também o 7.",
+        "Somou 2 em vez de dobrar.",
+        "Trocou os números."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q02",
+      "tema": "Expressões algébricas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a forma simplificada de 3x + 2x − x?",
+      "alternativas": [
+        "4x",
+        "5x",
+        "6x",
+        "4x³",
+        "4"
+      ],
+      "correta": 0,
+      "explicacao": "3 + 2 − 1 = 4: 4x. Dica de mergulhador: some só os números dos termos semelhantes.",
+      "comentarios": [
+        "",
+        "Esqueceu o − x.",
+        "Somou o − x.",
+        "Multiplicou as letras.",
+        "Sumiu com a letra."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q03",
+      "tema": "Expressões algébricas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é o resultado de 2(x + 4)?",
+      "alternativas": [
+        "2x + 4",
+        "2x + 6",
+        "x + 8",
+        "8x",
+        "2x + 8"
+      ],
+      "correta": 4,
+      "explicacao": "O 2 multiplica o x e o 4: 2x + 8. Dica de mergulhador: distributiva alcança todos de dentro.",
+      "comentarios": [
+        "Não multiplicou o 4.",
+        "Somou 2 ao 4.",
+        "Não multiplicou o x.",
+        "Juntou tudo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q04",
+      "tema": "Expressões algébricas",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é o valor de 3x² − 2x para x = −2?",
+      "alternativas": [
+        "16",
+        "−16",
+        "8",
+        "−8",
+        "40"
+      ],
+      "correta": 0,
+      "explicacao": "3 × 4 − 2 × (−2) = 12 + 4 = 16. Dica de mergulhador: (−2)² = 4 e −2 × (−2) = +4.",
+      "comentarios": [
+        "",
+        "Errou os dois sinais.",
+        "Errou o sinal de −2x.",
+        "Fez (−2)² negativo.",
+        "Fez (3 × −2)²."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q05",
+      "tema": "Expressões algébricas",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Um retângulo tem lados x e x + 3. Qual expressão dá o seu perímetro?",
+      "alternativas": [
+        "4x + 3",
+        "4x + 6",
+        "2x + 3",
+        "x² + 3x",
+        "2x + 6"
+      ],
+      "correta": 1,
+      "explicacao": "2 × x + 2 × (x + 3) = 4x + 6. Dica de mergulhador: perímetro soma os quatro lados.",
+      "comentarios": [
+        "Esqueceu de dobrar o 3.",
+        "",
+        "Somou só dois lados.",
+        "É a área.",
+        "Contou só dois x."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q06",
+      "tema": "Expressões algébricas",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a forma simplificada de −(x − 3) + 2(x + 1)?",
+      "alternativas": [
+        "3x + 5",
+        "x + 1",
+        "3x − 1",
+        "−x + 5",
+        "x + 5"
+      ],
+      "correta": 4,
+      "explicacao": "−x + 3 + 2x + 2 = x + 5. Dica de mergulhador: menos antes de parênteses troca todos os sinais.",
+      "comentarios": [
+        "Somou x em vez de subtrair.",
+        "Errou o sinal do 3.",
+        "Não trocou os sinais do primeiro parêntese.",
+        "Errou o sinal do x.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q07",
+      "tema": "Resolver equações",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de 3x + 5 = 20?",
+      "alternativas": [
+        "x = 15",
+        "x = 5",
+        "x = 60",
+        "x = 8,3",
+        "x = 25"
+      ],
+      "correta": 1,
+      "explicacao": "3x = 15, então x = 5. Dica de mergulhador: desfaça na ordem inversa.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "",
+        "Multiplicou por 3.",
+        "Dividiu 25 por 3.",
+        "Somou 5 em vez de subtrair."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q08",
+      "tema": "Resolver equações",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de x ÷ 4 = 6?",
+      "alternativas": [
+        "x = 64",
+        "x = 2",
+        "x = 10",
+        "x = 1,5",
+        "x = 24"
+      ],
+      "correta": 4,
+      "explicacao": "x = 6 × 4 = 24. Dica de mergulhador: o que divide passa multiplicando.",
+      "comentarios": [
+        "Elevou.",
+        "Subtraiu.",
+        "Somou.",
+        "Dividiu 6 por 4.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q09",
+      "tema": "Resolver equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de 5x − 3 = 2x + 9?",
+      "alternativas": [
+        "x = 6",
+        "x = 4",
+        "x = 12",
+        "x = 1,7",
+        "x = 2"
+      ],
+      "correta": 1,
+      "explicacao": "3x = 12, então x = 4. Dica de mergulhador: letras de um lado, números do outro.",
+      "comentarios": [
+        "Passou o −3 sem trocar o sinal.",
+        "",
+        "Esqueceu de dividir por 3.",
+        "Dividiu 12 por 7.",
+        "Somou 3x ao lado errado."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q10",
+      "tema": "Resolver equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de 2(x − 3) = x + 4?",
+      "alternativas": [
+        "x = 2",
+        "x = 10",
+        "x = 7",
+        "x = 5",
+        "x = 1"
+      ],
+      "correta": 1,
+      "explicacao": "2x − 6 = x + 4 → x = 10. Dica de mergulhador: distributiva primeiro.",
+      "comentarios": [
+        "Subtraiu 4 em vez de somar.",
+        "",
+        "Não multiplicou o 3 por 2.",
+        "Dividiu 10 por 2.",
+        "Errou o sinal do 6."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q11",
+      "tema": "Resolver equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de x ÷ 2 + x ÷ 3 = 10?",
+      "alternativas": [
+        "x = 12",
+        "x = 25",
+        "x = 6",
+        "x = 60",
+        "x = 2"
+      ],
+      "correta": 0,
+      "explicacao": "Multiplicando por 6: 3x + 2x = 60 → x = 12. Dica de mergulhador: denominador comum some com as frações.",
+      "comentarios": [
+        "",
+        "Usou x ÷ 5 = 10 e dividiu.",
+        "Errou o denominador comum.",
+        "Multiplicou por 6 só um lado.",
+        "Somou as frações como 2/5."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q12",
+      "tema": "Resolver equações",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de (x + 1) ÷ 3 = (x − 1) ÷ 2?",
+      "alternativas": [
+        "x = 3",
+        "x = 0,2",
+        "x = 1",
+        "x = −5",
+        "x = 5"
+      ],
+      "correta": 4,
+      "explicacao": "Multiplicando em cruz: 2(x + 1) = 3(x − 1) → 2x + 2 = 3x − 3 → x = 5. Dica de mergulhador: multiplique em cruz.",
+      "comentarios": [
+        "Trocou os denominadores.",
+        "Inverteu a divisão.",
+        "Cancelou os x.",
+        "Errou os sinais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q13",
+      "tema": "Problemas com equações",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Três cadernos iguais e uma caneta de R$ 2 custaram R$ 32. Quanto custa cada caderno?",
+      "alternativas": [
+        "R$ 10",
+        "R$ 30",
+        "R$ 15",
+        "R$ 11,33",
+        "R$ 8"
+      ],
+      "correta": 0,
+      "explicacao": "3x + 2 = 32 → 3x = 30 → x = 10. Dica de mergulhador: tire o que é fixo e divida.",
+      "comentarios": [
+        "",
+        "Descontou a caneta, mas não dividiu.",
+        "Dividiu por 2.",
+        "Não descontou a caneta.",
+        "Descontou a caneta duas vezes."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q14",
+      "tema": "Problemas com equações",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Três números inteiros consecutivos somam 48. Qual é o menor deles?",
+      "alternativas": [
+        "17",
+        "15",
+        "12",
+        "16",
+        "14"
+      ],
+      "correta": 1,
+      "explicacao": "x + (x + 1) + (x + 2) = 48 → 3x = 45 → x = 15. Dica de mergulhador: consecutivos são x, x + 1, x + 2.",
+      "comentarios": [
+        "É o maior.",
+        "",
+        "Dividiu 48 por 4.",
+        "É o do meio.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q15",
+      "tema": "Problemas com equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Um pai tem o triplo da idade do filho, e juntos eles somam 48 anos. Qual é a idade do filho?",
+      "alternativas": [
+        "12 anos",
+        "9,6 anos",
+        "24 anos",
+        "16 anos",
+        "36 anos"
+      ],
+      "correta": 0,
+      "explicacao": "x + 3x = 48 → 4x = 48 → x = 12. Dica de mergulhador: filho é x; pai, 3x.",
+      "comentarios": [
+        "",
+        "Dividiu 48 por 5.",
+        "Dividiu 48 por 2.",
+        "Dividiu 48 por 3.",
+        "É a idade do pai."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q16",
+      "tema": "Problemas com equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Uma pessoa gastou 1/3 do salário com aluguel e 1/4 com comida, e sobraram R$ 1.250. Qual é o salário?",
+      "alternativas": [
+        "R$ 1.250",
+        "R$ 3.000",
+        "R$ 5.000",
+        "R$ 1.875",
+        "R$ 2.142"
+      ],
+      "correta": 1,
+      "explicacao": "Gastou 1/3 + 1/4 = 7/12; sobrou 5/12 = 1.250 → salário = 1.250 × 12 ÷ 5 = 3.000. Dica de mergulhador: ache a fração que sobrou.",
+      "comentarios": [
+        "É o que sobrou.",
+        "",
+        "Usou só 1/4.",
+        "Usou só 1/3.",
+        "Usou 7/12 como o que sobrou."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q17",
+      "tema": "Problemas com equações",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Cinco amigos iam dividir uma conta igualmente, mas um deles não pagou, e cada um dos outros quatro pagou R$ 6 a mais. Qual era o valor da conta?",
+      "alternativas": [
+        "R$ 96",
+        "R$ 24",
+        "R$ 150",
+        "R$ 30",
+        "R$ 120"
+      ],
+      "correta": 4,
+      "explicacao": "x ÷ 4 = x ÷ 5 + 6 → x ÷ 20 = 6 → x = 120. Dica de mergulhador: os R$ 24 extras cobrem a parte de quem não pagou.",
+      "comentarios": [
+        "Multiplicou 24 por 4.",
+        "Multiplicou 6 por 4.",
+        "Usou 6 × 25.",
+        "É o que cada um pagaria.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q18",
+      "tema": "Problemas com equações",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Um trabalhador recebe R$ 80 por dia trabalhado e paga R$ 20 por dia de falta. Em 30 dias, recebeu R$ 1.900. Quantos dias trabalhou?",
+      "alternativas": [
+        "23,75 dias",
+        "5 dias",
+        "19 dias",
+        "28 dias",
+        "25 dias"
+      ],
+      "correta": 4,
+      "explicacao": "80x − 20(30 − x) = 1.900 → 100x = 2.500 → x = 25. Dica de mergulhador: faltas = 30 − trabalhados.",
+      "comentarios": [
+        "Ignorou as faltas.",
+        "São as faltas.",
+        "Dividiu 1.900 por 100 sem somar.",
+        "Errou a conta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q19",
+      "tema": "Problemas com equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Um carro faz 12 km por litro. Ele saiu com o tanque de 50 L cheio e, depois da viagem, restaram 15 L. Quantos km ele rodou?",
+      "alternativas": [
+        "420 km",
+        "180 km",
+        "600 km",
+        "35 km",
+        "780 km"
+      ],
+      "correta": 0,
+      "explicacao": "Gastou 35 L × 12 = 420 km. Dica de mergulhador: só conta o que foi gasto.",
+      "comentarios": [
+        "",
+        "Usou os 15 L que sobraram.",
+        "Usou o tanque todo.",
+        "Parou nos litros gastos.",
+        "Somou os litros."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q20",
+      "tema": "Problemas com equações",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Após um aumento de 20% e, depois, um desconto de R$ 30, um produto passou a custar R$ 150. Qual era o preço inicial?",
+      "alternativas": [
+        "R$ 144",
+        "R$ 180",
+        "R$ 150",
+        "R$ 125",
+        "R$ 100"
+      ],
+      "correta": 2,
+      "explicacao": "1,2x − 30 = 150 → 1,2x = 180 → x = 150. Dica de mergulhador: desfaça na ordem inversa.",
+      "comentarios": [
+        "Tirou 20% de 180.",
+        "Somou 30 a 150.",
+        "",
+        "Tirou 20% de 150.",
+        "Esqueceu os R$ 30."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q01",
+      "tema": "Montar o sistema",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Num estacionamento há 30 veículos, entre carros (x) e motos (y), com 100 rodas no total. Qual sistema representa a situação?",
+      "alternativas": [
+        "x + y = 30 e 2x + 4y = 100",
+        "x + y = 30 e x + y = 100",
+        "x + y = 30 e 4x + 2y = 100",
+        "x + y = 100 e 4x + 2y = 30",
+        "4x + 2y = 30 e x + y = 100"
+      ],
+      "correta": 2,
+      "explicacao": "Veículos: x + y = 30. Rodas: 4 por carro e 2 por moto. Dica de mergulhador: uma equação para cada total.",
+      "comentarios": [
+        "Trocou as rodas de carro e moto.",
+        "As rodas pedem os pesos 4 e 2.",
+        "",
+        "Trocou os totais.",
+        "Trocou as duas equações."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q02",
+      "tema": "Montar o sistema",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "A soma de dois números é 25 e a diferença entre eles é 7. Qual sistema representa a situação?",
+      "alternativas": [
+        "x + y = 25 e x + y = 7",
+        "x · y = 25 e x − y = 7",
+        "2x = 25 e y = 7",
+        "x + y = 7 e x − y = 25",
+        "x + y = 25 e x − y = 7"
+      ],
+      "correta": 4,
+      "explicacao": "Soma: x + y = 25. Diferença: x − y = 7. Dica de mergulhador: traduza palavra por palavra.",
+      "comentarios": [
+        "Diferença é subtração.",
+        "Soma não é produto.",
+        "Não traduziu o texto.",
+        "Trocou soma e diferença.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-sistemas-q03",
+      "tema": "Montar o sistema",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Quantos pares de números (x, y) satisfazem apenas a equação x − y = 3?",
+      "alternativas": [
+        "Exatamente um",
+        "Dois",
+        "Infinitos",
+        "Três",
+        "Nenhum"
+      ],
+      "correta": 2,
+      "explicacao": "Sem outra informação, qualquer par com x três unidades maior serve. Dica de mergulhador: duas incógnitas pedem duas equações.",
+      "comentarios": [
+        "Seria preciso uma segunda equação.",
+        "(5, 2), (4, 1), (10, 7)... são muitos.",
+        "",
+        "Não há limite.",
+        "Há, por exemplo, (5, 2)."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q04",
+      "tema": "Montar o sistema",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Um cinema cobra R$ 20 a inteira e R$ 10 a meia. Numa sessão, 50 pessoas pagaram R$ 800 no total. Sendo x as inteiras e y as meias, qual é o sistema?",
+      "alternativas": [
+        "x + y = 30 e 20x + 10y = 800",
+        "20x + 10y = 50 e x + y = 800",
+        "x + y = 50 e 20x + 10y = 800",
+        "x + y = 50 e 10x + 20y = 800",
+        "x + y = 800 e 20x + 10y = 50"
+      ],
+      "correta": 2,
+      "explicacao": "Pessoas: x + y = 50. Dinheiro: 20x + 10y = 800. Dica de mergulhador: quantidade e valor são duas equações.",
+      "comentarios": [
+        "Usou o total errado de pessoas.",
+        "Trocou as equações.",
+        "",
+        "Trocou os preços.",
+        "Trocou os totais."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q05",
+      "tema": "Montar o sistema",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Um comerciante mistura café A, de R$ 30 o kg, com café B, de R$ 20 o kg, para obter 10 kg que custam R$ 240 no total. Qual sistema representa a mistura?",
+      "alternativas": [
+        "x + y = 10 e 50(x + y) = 240",
+        "x + y = 240 e 30x + 20y = 10",
+        "x + y = 10 e 30x + 20y = 240",
+        "30x + 20y = 10 e x − y = 240",
+        "x + y = 10 e 20x + 30y = 240"
+      ],
+      "correta": 2,
+      "explicacao": "Massa: x + y = 10. Custo: 30x + 20y = 240. Dica de mergulhador: misturas também viram duas equações.",
+      "comentarios": [
+        "Somou os preços.",
+        "Trocou os totais.",
+        "",
+        "Misturou tudo.",
+        "Trocou os preços."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q06",
+      "tema": "Montar o sistema",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Quantas soluções tem o sistema x + 2y = 5 e 2x + 4y = 7?",
+      "alternativas": [
+        "Duas",
+        "Infinitas",
+        "Nenhuma",
+        "Uma",
+        "Uma, com x = 1 e y = 2"
+      ],
+      "correta": 2,
+      "explicacao": "Dobrando a primeira: 2x + 4y = 10, que contradiz 2x + 4y = 7. As retas são paralelas. Dica de mergulhador: mesmos coeficientes, totais incompatíveis: sem solução.",
+      "comentarios": [
+        "Retas se cruzam no máximo uma vez.",
+        "Isso exigiria 2x + 4y = 10.",
+        "",
+        "As retas não se cruzam.",
+        "Não satisfaz a segunda."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q07",
+      "tema": "Resolver sistemas",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de x + y = 10 e x − y = 4?",
+      "alternativas": [
+        "x = 5 e y = 5",
+        "x = 3 e y = 7",
+        "x = 6 e y = 4",
+        "x = 14 e y = 6",
+        "x = 7 e y = 3"
+      ],
+      "correta": 4,
+      "explicacao": "Somando: 2x = 14 → x = 7; y = 3. Dica de mergulhador: somar faz o y sumir.",
+      "comentarios": [
+        "Não satisfaz x − y = 4.",
+        "Trocou os valores.",
+        "Não satisfaz x − y = 4.",
+        "Esqueceu de dividir por 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-sistemas-q08",
+      "tema": "Resolver sistemas",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de y = 2x e x + y = 18?",
+      "alternativas": [
+        "x = 6 e y = 12",
+        "x = 12 e y = 6",
+        "x = 9 e y = 9",
+        "x = 9 e y = 18",
+        "x = 3 e y = 6"
+      ],
+      "correta": 0,
+      "explicacao": "x + 2x = 18 → x = 6; y = 12. Dica de mergulhador: y já está isolado: substitua.",
+      "comentarios": [
+        "",
+        "Trocou os valores.",
+        "Não satisfaz y = 2x.",
+        "Não satisfaz a soma.",
+        "Não satisfaz a soma."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q09",
+      "tema": "Resolver sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de 2x + y = 11 e x − y = 1?",
+      "alternativas": [
+        "x = 5 e y = 1",
+        "x = 3 e y = 4",
+        "x = 12 e y = 11",
+        "x = 6 e y = 5",
+        "x = 4 e y = 3"
+      ],
+      "correta": 4,
+      "explicacao": "Somando: 3x = 12 → x = 4; y = 3. Dica de mergulhador: y com sinais opostos some na soma.",
+      "comentarios": [
+        "Não satisfaz x − y = 1.",
+        "Trocou os valores.",
+        "Esqueceu de dividir por 3.",
+        "Não satisfaz 2x + y = 11.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-sistemas-q10",
+      "tema": "Resolver sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Num estacionamento há 30 veículos entre carros e motos, com 100 rodas. Quantos são os carros?",
+      "alternativas": [
+        "25",
+        "20",
+        "10",
+        "50",
+        "15"
+      ],
+      "correta": 1,
+      "explicacao": "x + y = 30 e 4x + 2y = 100 → 4x + 60 − 2x = 100 → x = 20. Dica de mergulhador: substitua y = 30 − x.",
+      "comentarios": [
+        "Dividiu 100 por 4.",
+        "",
+        "São as motos.",
+        "Dividiu 100 por 2.",
+        "Dividiu 30 por 2."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q11",
+      "tema": "Resolver sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de 3x + 2y = 16 e 2x − 2y = 4?",
+      "alternativas": [
+        "x = 4 e y = 2",
+        "x = 6 e y = −1",
+        "x = 2 e y = 4",
+        "x = 3 e y = 3,5",
+        "x = 20 e y = 2"
+      ],
+      "correta": 0,
+      "explicacao": "Somando: 5x = 20 → x = 4; 12 + 2y = 16 → y = 2. Dica de mergulhador: 2y e −2y se cancelam.",
+      "comentarios": [
+        "",
+        "Não satisfaz a segunda.",
+        "Trocou os valores.",
+        "Não satisfaz a segunda.",
+        "Esqueceu de dividir por 5."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q12",
+      "tema": "Resolver sistemas",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de 2x + 3y = 12 e 3x + 2y = 13?",
+      "alternativas": [
+        "x = 2 e y = 3",
+        "x = 4 e y = 1",
+        "x = 5 e y = 0",
+        "x = 1 e y = 5",
+        "x = 3 e y = 2"
+      ],
+      "correta": 4,
+      "explicacao": "Somando: 5x + 5y = 25 → x + y = 5. Subtraindo: x − y = 1. Logo x = 3 e y = 2. Dica de mergulhador: coeficientes trocados pedem somar e subtrair.",
+      "comentarios": [
+        "Trocou os valores.",
+        "Não satisfaz a primeira.",
+        "Não satisfaz a primeira.",
+        "Não satisfaz a segunda.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-sistemas-q13",
+      "tema": "Resolver sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Em que ponto se cruzam as retas y = x + 1 e y = −x + 7?",
+      "alternativas": [
+        "(3, 4)",
+        "(6, 7)",
+        "(4, 3)",
+        "(1, 7)",
+        "(0, 1)"
+      ],
+      "correta": 0,
+      "explicacao": "x + 1 = −x + 7 → 2x = 6 → x = 3; y = 4. Dica de mergulhador: o cruzamento é a solução do sistema.",
+      "comentarios": [
+        "",
+        "Não dividiu por 2.",
+        "Trocou as coordenadas.",
+        "Usou os números das leis.",
+        "Só está na primeira reta."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q14",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Um cinema cobra R$ 20 a inteira e R$ 10 a meia. Numa sessão, 50 pessoas pagaram R$ 800. Quantas pagaram inteira?",
+      "alternativas": [
+        "25",
+        "30",
+        "20",
+        "40",
+        "80"
+      ],
+      "correta": 1,
+      "explicacao": "20x + 10(50 − x) = 800 → 10x = 300 → x = 30. Dica de mergulhador: substitua as meias por 50 − x.",
+      "comentarios": [
+        "Dividiu 50 por 2.",
+        "",
+        "São as meias.",
+        "Dividiu 800 por 20.",
+        "Dividiu 800 por 10."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q15",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Café A (R$ 30 o kg) e café B (R$ 20 o kg) foram misturados em 10 kg que custaram R$ 240. Quantos kg de café A foram usados?",
+      "alternativas": [
+        "4 kg",
+        "12 kg",
+        "6 kg",
+        "8 kg",
+        "5 kg"
+      ],
+      "correta": 0,
+      "explicacao": "30x + 20(10 − x) = 240 → 10x = 40 → x = 4. Dica de mergulhador: confira: 120 + 120 = 240.",
+      "comentarios": [
+        "",
+        "Dividiu 240 por 20.",
+        "É o café B.",
+        "Dividiu 240 por 30.",
+        "Dividiu 10 por 2."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q16",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Uma pessoa tem 20 notas, de R$ 10 e de R$ 50, somando R$ 520. Quantas são de R$ 50?",
+      "alternativas": [
+        "10",
+        "8",
+        "10,4",
+        "52",
+        "12"
+      ],
+      "correta": 1,
+      "explicacao": "10(20 − y) + 50y = 520 → 40y = 320 → y = 8. Dica de mergulhador: confira: 120 + 400 = 520.",
+      "comentarios": [
+        "Dividiu 20 por 2.",
+        "",
+        "Dividiu 520 por 50.",
+        "Dividiu 520 por 10.",
+        "São as de R$ 10."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q17",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Dois sucos e três pães custam R$ 13; um suco e dois pães custam R$ 7,50. Quanto custa um suco?",
+      "alternativas": [
+        "R$ 4,00",
+        "R$ 5,50",
+        "R$ 2,00",
+        "R$ 2,60",
+        "R$ 3,50"
+      ],
+      "correta": 4,
+      "explicacao": "s = 7,50 − 2p → 2(7,50 − 2p) + 3p = 13 → p = 2; s = 3,50. Dica de mergulhador: isole o suco na compra menor.",
+      "comentarios": [
+        "Errou a conta.",
+        "Subtraiu as compras.",
+        "É o preço do pão.",
+        "Dividiu 13 por 5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-sistemas-q18",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Hoje, um pai tem o triplo da idade do filho. Daqui a 10 anos, terá o dobro. Qual é a idade atual do pai?",
+      "alternativas": [
+        "20 anos",
+        "60 anos",
+        "10 anos",
+        "40 anos",
+        "30 anos"
+      ],
+      "correta": 4,
+      "explicacao": "p = 3f e p + 10 = 2(f + 10) → 3f + 10 = 2f + 20 → f = 10; p = 30. Dica de mergulhador: os dois envelhecem 10 anos.",
+      "comentarios": [
+        "É a idade do filho daqui a 10 anos.",
+        "Usou o dobro de 30.",
+        "É a idade do filho.",
+        "É a idade do pai daqui a 10 anos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-sistemas-q19",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Numa prova com 40 questões, cada acerto vale 5 pontos e cada erro tira 2. Um aluno respondeu todas e fez 116 pontos. Quantas acertou?",
+      "alternativas": [
+        "28",
+        "23",
+        "30",
+        "12",
+        "33"
+      ],
+      "correta": 0,
+      "explicacao": "a + e = 40 e 5a − 2e = 116 → 5a − 80 + 2a = 116 → 7a = 196 → a = 28. Dica de mergulhador: confira: 140 − 24 = 116.",
+      "comentarios": [
+        "",
+        "Dividiu 116 por 5.",
+        "Errou a conta.",
+        "São os erros.",
+        "Dividiu 116 por 3,5."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q20",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Uma loja vende camisetas a R$ 30 e bermudas a R$ 50. Num dia, vendeu 3 camisetas a mais que bermudas e arrecadou R$ 490. Quantas camisetas vendeu?",
+      "alternativas": [
+        "16",
+        "8",
+        "5",
+        "9,8",
+        "11"
+      ],
+      "correta": 1,
+      "explicacao": "c = b + 3; 30(b + 3) + 50b = 490 → 80b = 400 → b = 5; c = 8. Dica de mergulhador: confira: 240 + 250 = 490.",
+      "comentarios": [
+        "Dividiu 490 por 30.",
+        "",
+        "São as bermudas.",
+        "Dividiu 490 por 50.",
+        "Somou 3 às camisetas."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q01",
+      "tema": "Equações incompletas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de 3x² − 75 = 0?",
+      "alternativas": [
+        "x = 0 ou x = 25",
+        "x = 15 ou x = −15",
+        "x = 5 ou x = −5",
+        "x = 25 ou x = −25",
+        "Só x = 5"
+      ],
+      "correta": 2,
+      "explicacao": "3x² = 75 → x² = 25 → x = ±5. Dica de mergulhador: sem b, isole x² e tire a raiz com ±.",
+      "comentarios": [
+        "Fatorou errado.",
+        "Não dividiu por 3.",
+        "",
+        "Não tirou a raiz.",
+        "Esqueceu a solução negativa."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q02",
+      "tema": "Equações incompletas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de x² − 6x = 0?",
+      "alternativas": [
+        "Só x = 6",
+        "x = 0 ou x = −6",
+        "x = 3 ou x = 2",
+        "x = 6 ou x = −6",
+        "x = 0 ou x = 6"
+      ],
+      "correta": 4,
+      "explicacao": "x(x − 6) = 0: x = 0 ou x = 6. Dica de mergulhador: sem c, x em evidência.",
+      "comentarios": [
+        "Esqueceu o x = 0.",
+        "Errou o sinal.",
+        "Procurou produto 6.",
+        "Tratou como x² = 36.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q03",
+      "tema": "Equações incompletas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quantas soluções reais tem a equação x² + 9 = 0?",
+      "alternativas": [
+        "Uma: −3",
+        "Uma: 0",
+        "Nenhuma",
+        "Duas: 3 e −3",
+        "Infinitas"
+      ],
+      "correta": 2,
+      "explicacao": "x² = −9 não tem solução real: quadrado nunca é negativo. Dica de mergulhador: x² negativo, sem solução real.",
+      "comentarios": [
+        "(−3)² = 9, não −9.",
+        "0² + 9 = 9.",
+        "",
+        "Isso seria x² = 9.",
+        "Equação do 2º grau tem no máximo duas."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q04",
+      "tema": "Equações incompletas",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de 5x² = 20x?",
+      "alternativas": [
+        "x = 0 ou x = −4",
+        "x = 4 ou x = −4",
+        "x = 0 ou x = 4",
+        "x = 0 ou x = 20",
+        "Só x = 4"
+      ],
+      "correta": 2,
+      "explicacao": "5x² − 20x = 0 → 5x(x − 4) = 0: x = 0 ou x = 4. Dica de mergulhador: nunca divida por x; coloque em evidência.",
+      "comentarios": [
+        "Errou o sinal.",
+        "Tratou como x² = 16.",
+        "",
+        "Não dividiu por 5.",
+        "Dividiu por x e perdeu o zero."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q05",
+      "tema": "Equações incompletas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Um terreno quadrado tem 144 m² de área. Qual é a medida do lado?",
+      "alternativas": [
+        "36 m",
+        "72 m",
+        "14,4 m",
+        "−12 m",
+        "12 m"
+      ],
+      "correta": 4,
+      "explicacao": "x² = 144 → x = ±12; como é medida, x = 12 m. Dica de mergulhador: descarte a solução negativa.",
+      "comentarios": [
+        "Dividiu por 4.",
+        "Dividiu por 2.",
+        "Dividiu por 10.",
+        "Lado não é negativo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q06",
+      "tema": "Equações incompletas",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de (x − 3)² = 16?",
+      "alternativas": [
+        "x = 7 ou x = 1",
+        "x = 19 ou x = 13",
+        "x = 7 ou x = −1",
+        "Só x = 7",
+        "x = 4 ou x = −4"
+      ],
+      "correta": 2,
+      "explicacao": "x − 3 = ±4: x = 7 ou x = −1. Dica de mergulhador: tire a raiz antes de abrir o quadrado.",
+      "comentarios": [
+        "Errou a conta com −4.",
+        "Não tirou a raiz.",
+        "",
+        "Esqueceu o −4.",
+        "Ignorou o −3."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q07",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Qual é o discriminante Δ da equação x² − 4x + 5 = 0?",
+      "alternativas": [
+        "−20",
+        "36",
+        "−4",
+        "4",
+        "16"
+      ],
+      "correta": 2,
+      "explicacao": "Δ = 16 − 20 = −4: sem solução real. Dica de mergulhador: Δ = b² − 4ac.",
+      "comentarios": [
+        "Esqueceu o b².",
+        "Somou 4ac.",
+        "",
+        "Errou o sinal.",
+        "Esqueceu o − 4ac."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q08",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de x² − 9x + 20 = 0?",
+      "alternativas": [
+        "−4 e −5",
+        "2 e 10",
+        "9 e 20",
+        "4 e 5",
+        "1 e 20"
+      ],
+      "correta": 3,
+      "explicacao": "Soma 9 e produto 20: 4 e 5. Dica de mergulhador: com a = 1, ache o par.",
+      "comentarios": [
+        "Errou os sinais.",
+        "Produto 20, mas soma 12.",
+        "Usou os coeficientes.",
+        "",
+        "Produto 20, mas soma 21."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q09",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de 2x² − 7x + 3 = 0?",
+      "alternativas": [
+        "6 e 1",
+        "−3 e −1/2",
+        "3 e 2",
+        "3 e 1/2",
+        "12 e 2"
+      ],
+      "correta": 3,
+      "explicacao": "Δ = 49 − 24 = 25; x = (7 ± 5) ÷ 4: 3 ou 1/2. Dica de mergulhador: o denominador é 2a = 4.",
+      "comentarios": [
+        "Dividiu por 2, não por 4.",
+        "Errou o sinal de −b.",
+        "Errou a segunda raiz.",
+        "",
+        "Esqueceu de dividir."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q10",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Qual equação tem raízes 2 e 7?",
+      "alternativas": [
+        "x² − 5x + 14 = 0",
+        "x² + 9x − 14 = 0",
+        "x² − 14x + 9 = 0",
+        "x² − 9x + 14 = 0",
+        "x² + 9x + 14 = 0"
+      ],
+      "correta": 3,
+      "explicacao": "x² − (soma)x + produto: x² − 9x + 14. Dica de mergulhador: o b é a soma com o sinal trocado.",
+      "comentarios": [
+        "Usou a diferença.",
+        "Errou os sinais.",
+        "Trocou soma e produto.",
+        "",
+        "As raízes seriam −2 e −7."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q11",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Para que valor de k a equação x² − 6x + k = 0 tem uma única solução real?",
+      "alternativas": [
+        "k = 6",
+        "k = 3",
+        "k = 0",
+        "k = 9",
+        "k = 36"
+      ],
+      "correta": 3,
+      "explicacao": "Δ = 36 − 4k = 0 → k = 9. Dica de mergulhador: uma solução, Δ = 0.",
+      "comentarios": [
+        "Usou o b.",
+        "Dividiu 6 por 2 e parou.",
+        "Com k = 0, há duas soluções.",
+        "",
+        "Esqueceu o 4a."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q12",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de x² − 2x − 1 = 0?",
+      "alternativas": [
+        "Não tem solução real",
+        "2 + √2 e 2 − √2",
+        "1 + √8 e 1 − √8",
+        "1 + √2 e 1 − √2",
+        "1 e −1"
+      ],
+      "correta": 3,
+      "explicacao": "Δ = 4 + 4 = 8; x = (2 ± 2√2) ÷ 2 = 1 ± √2. Dica de mergulhador: √8 = 2√2.",
+      "comentarios": [
+        "Δ = 8 é positivo.",
+        "Esqueceu de dividir o −b por 2.",
+        "Esqueceu de dividir a raiz por 2.",
+        "",
+        "Tratou como x² = 1."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q13",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Sem resolver, qual é a soma das raízes de 3x² − 12x + 7 = 0?",
+      "alternativas": [
+        "12",
+        "7/3",
+        "−4",
+        "4",
+        "−12"
+      ],
+      "correta": 3,
+      "explicacao": "Soma = −b ÷ a = 12 ÷ 3 = 4. Dica de mergulhador: soma, −b ÷ a.",
+      "comentarios": [
+        "Esqueceu de dividir por a.",
+        "É o produto.",
+        "Errou o sinal.",
+        "",
+        "Usou o b sem dividir e sem trocar o sinal."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q14",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "O produto de dois números inteiros positivos e consecutivos é 56. Quais são eles?",
+      "alternativas": [
+        "28 e 2",
+        "4 e 14",
+        "8 e 9",
+        "6 e 7",
+        "7 e 8"
+      ],
+      "correta": 4,
+      "explicacao": "x(x + 1) = 56 → x² + x − 56 = 0 → x = 7. Dica de mergulhador: confira: 7 × 8 = 56.",
+      "comentarios": [
+        "Não são consecutivos.",
+        "Não são consecutivos.",
+        "O produto é 72.",
+        "O produto é 42.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q15",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Um retângulo tem 60 m² de área, e um lado é 4 m maior que o outro. Quais são as medidas?",
+      "alternativas": [
+        "10 m e 14 m",
+        "6 m e 10 m",
+        "5 m e 12 m",
+        "2 m e 30 m",
+        "4 m e 15 m"
+      ],
+      "correta": 1,
+      "explicacao": "x(x + 4) = 60 → x² + 4x − 60 = 0 → Δ = 256 → x = 6. Dica de mergulhador: descarte x = −10.",
+      "comentarios": [
+        "A área seria 140.",
+        "",
+        "Diferem em 7.",
+        "Não diferem em 4.",
+        "Não diferem em 4."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q16",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "O quadrado de um número positivo menos o seu triplo é 10. Qual é esse número?",
+      "alternativas": [
+        "5",
+        "13",
+        "4",
+        "2",
+        "10"
+      ],
+      "correta": 0,
+      "explicacao": "x² − 3x − 10 = 0 → (x − 5)(x + 2) = 0 → x = 5. Dica de mergulhador: confira: 25 − 15 = 10.",
+      "comentarios": [
+        "",
+        "Somou 10 e 3.",
+        "16 − 12 = 4.",
+        "É o módulo da raiz negativa.",
+        "Repetiu o resultado."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q17",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Um grupo ia dividir R$ 600 igualmente. Como 5 pessoas desistiram, cada uma das outras pagou R$ 20 a mais. Quantas pessoas havia no grupo inicial?",
+      "alternativas": [
+        "25",
+        "15",
+        "30",
+        "10",
+        "20"
+      ],
+      "correta": 1,
+      "explicacao": "600 ÷ (n − 5) = 600 ÷ n + 20 → n² − 5n − 150 = 0 → n = 15. Dica de mergulhador: confira: 600 ÷ 10 = 60 = 40 + 20.",
+      "comentarios": [
+        "Somou 5 a 20.",
+        "",
+        "Dividiu 600 por 20.",
+        "São as que pagaram.",
+        "Errou a equação."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q18",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Um quadro de 20 cm × 30 cm recebe uma moldura de largura x em toda a volta, e o conjunto passa a ter 1.064 cm². Qual é a largura x?",
+      "alternativas": [
+        "4 cm",
+        "7,7 cm",
+        "8 cm",
+        "29 cm",
+        "2 cm"
+      ],
+      "correta": 0,
+      "explicacao": "(20 + 2x)(30 + 2x) = 1.064 → x² + 25x − 116 = 0 → Δ = 1.089 → x = 4. Dica de mergulhador: a moldura soma 2x em cada medida.",
+      "comentarios": [
+        "",
+        "Dividiu a área a mais pelo perímetro.",
+        "Usou a largura total acrescentada.",
+        "É a raiz negativa sem o sinal.",
+        "Somou x só de um lado."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q19",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "O lucro de uma oficina é L(x) = −x² + 14x − 40, em que x é o número de consertos por dia. Para que valores de x o lucro é zero?",
+      "alternativas": [
+        "x = 2 e x = 20",
+        "x = 4 e x = 10",
+        "x = 7",
+        "x = −4 e x = −10",
+        "x = 14 e x = 40"
+      ],
+      "correta": 1,
+      "explicacao": "−x² + 14x − 40 = 0 → x² − 14x + 40 = 0 → x = 4 ou 10. Dica de mergulhador: multiplique por −1 para facilitar.",
+      "comentarios": [
+        "O produto é 40, mas a soma não é 14.",
+        "",
+        "É o ponto de lucro máximo.",
+        "Errou os sinais.",
+        "Usou os coeficientes."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q20",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "O produto das idades de dois irmãos é 120, e um tem 2 anos a mais que o outro. Quais são as idades?",
+      "alternativas": [
+        "11 e 13 anos",
+        "8 e 15 anos",
+        "9 e 11 anos",
+        "6 e 20 anos",
+        "10 e 12 anos"
+      ],
+      "correta": 4,
+      "explicacao": "x(x + 2) = 120 → x² + 2x − 120 = 0 → Δ = 484 → x = 10. Dica de mergulhador: confira: 10 × 12 = 120.",
+      "comentarios": [
+        "O produto é 143.",
+        "Diferem em 7.",
+        "O produto é 99.",
+        "Diferem em 14.",
         ""
       ]
     }
@@ -67102,6 +68803,1446 @@
         "O segundo vale R$ 18.000, menos que R$ 20.480.",
         "Os valores são diferentes."
       ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q01-v1",
+      "varianteDe": "mat-equacoes-1grau-q01",
+      "tema": "Expressões algébricas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual expressão representa \"a metade de um número, diminuída de 3\"?",
+      "alternativas": [
+        "x ÷ 2 − 3",
+        "3 − x ÷ 2",
+        "2x − 3",
+        "x − 2 − 3",
+        "(x − 3) ÷ 2"
+      ],
+      "correta": 0,
+      "explicacao": "Metade: x ÷ 2. Diminuída de 3: − 3. Dica de mergulhador: a ordem das palavras importa.",
+      "comentarios": [
+        "",
+        "Inverteu a subtração.",
+        "Metade não é dobro.",
+        "Subtraiu 2 em vez de dividir.",
+        "Dividiu também o 3."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q02-v1",
+      "varianteDe": "mat-equacoes-1grau-q02",
+      "tema": "Expressões algébricas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a forma simplificada de 5a − 2a + 4a?",
+      "alternativas": [
+        "7a³",
+        "−a",
+        "7a",
+        "11a",
+        "3a"
+      ],
+      "correta": 2,
+      "explicacao": "5 − 2 + 4 = 7: 7a. Dica de mergulhador: a letra fica igual.",
+      "comentarios": [
+        "Multiplicou as letras.",
+        "Errou os sinais.",
+        "",
+        "Somou o − 2a.",
+        "Esqueceu o + 4a."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q03-v1",
+      "varianteDe": "mat-equacoes-1grau-q03",
+      "tema": "Expressões algébricas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é o resultado de 3(2x − 5)?",
+      "alternativas": [
+        "5x − 15",
+        "6x − 5",
+        "6x − 15",
+        "6x − 8",
+        "6x + 15"
+      ],
+      "correta": 2,
+      "explicacao": "3 × 2x = 6x e 3 × (−5) = −15. Dica de mergulhador: o sinal vai junto.",
+      "comentarios": [
+        "Somou 3 + 2.",
+        "Não multiplicou o 5.",
+        "",
+        "Somou 3 ao 5.",
+        "Errou o sinal."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q04-v1",
+      "varianteDe": "mat-equacoes-1grau-q04",
+      "tema": "Expressões algébricas",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é o valor de 2x² + 3x para x = −3?",
+      "alternativas": [
+        "−9",
+        "9",
+        "27",
+        "−27",
+        "45"
+      ],
+      "correta": 1,
+      "explicacao": "2 × 9 + 3 × (−3) = 18 − 9 = 9. Dica de mergulhador: use parênteses ao substituir negativos.",
+      "comentarios": [
+        "Errou os dois sinais.",
+        "",
+        "Errou o sinal de 3x.",
+        "Fez (−3)² negativo.",
+        "Errou o quadrado."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q05-v1",
+      "varianteDe": "mat-equacoes-1grau-q05",
+      "tema": "Expressões algébricas",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Um triângulo tem lados x, x + 2 e 2x. Qual expressão dá o seu perímetro?",
+      "alternativas": [
+        "3x + 2",
+        "4x",
+        "2x³ + 2",
+        "2x + 4",
+        "4x + 2"
+      ],
+      "correta": 4,
+      "explicacao": "x + x + 2 + 2x = 4x + 2. Dica de mergulhador: some os x e depois os números.",
+      "comentarios": [
+        "Contou 2x como x.",
+        "Esqueceu o + 2.",
+        "Multiplicou as letras.",
+        "Errou a soma.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q06-v1",
+      "varianteDe": "mat-equacoes-1grau-q06",
+      "tema": "Expressões algébricas",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a forma simplificada de 3(x − 2) − (2x − 4)?",
+      "alternativas": [
+        "x − 6",
+        "x − 2",
+        "x + 2",
+        "5x − 10",
+        "x − 10"
+      ],
+      "correta": 1,
+      "explicacao": "3x − 6 − 2x + 4 = x − 2. Dica de mergulhador: o menos vira mais no −4.",
+      "comentarios": [
+        "Esqueceu o 4.",
+        "",
+        "Errou o sinal do 6.",
+        "Somou os parênteses.",
+        "Não trocou o sinal do 4."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q07-v1",
+      "varianteDe": "mat-equacoes-1grau-q07",
+      "tema": "Resolver equações",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de 4x − 7 = 21?",
+      "alternativas": [
+        "x = 3,5",
+        "x = 28",
+        "x = 7",
+        "x = 14",
+        "x = 112"
+      ],
+      "correta": 2,
+      "explicacao": "4x = 28, então x = 7. Dica de mergulhador: o −7 passa somando.",
+      "comentarios": [
+        "Subtraiu 7 em vez de somar.",
+        "Esqueceu de dividir por 4.",
+        "",
+        "Dividiu por 2.",
+        "Multiplicou por 4."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q08-v1",
+      "varianteDe": "mat-equacoes-1grau-q08",
+      "tema": "Resolver equações",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de x ÷ 5 + 2 = 6?",
+      "alternativas": [
+        "x = 9",
+        "x = 40",
+        "x = 20",
+        "x = 30",
+        "x = 0,8"
+      ],
+      "correta": 2,
+      "explicacao": "x ÷ 5 = 4, então x = 20. Dica de mergulhador: primeiro tire o 2, depois multiplique.",
+      "comentarios": [
+        "Somou 5.",
+        "Somou 2 em vez de subtrair.",
+        "",
+        "Multiplicou 6 por 5.",
+        "Dividiu 4 por 5."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q09-v1",
+      "varianteDe": "mat-equacoes-1grau-q09",
+      "tema": "Resolver equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de 7x + 2 = 3x + 22?",
+      "alternativas": [
+        "x = 2",
+        "x = 5",
+        "x = 2,4",
+        "x = 20",
+        "x = 6"
+      ],
+      "correta": 1,
+      "explicacao": "4x = 20, então x = 5. Dica de mergulhador: confira: 37 = 37.",
+      "comentarios": [
+        "Somou 3x de um lado.",
+        "",
+        "Dividiu 24 por 10.",
+        "Esqueceu de dividir por 4.",
+        "Errou o sinal do 2."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q10-v1",
+      "varianteDe": "mat-equacoes-1grau-q10",
+      "tema": "Resolver equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de 3(x + 2) = 2x + 11?",
+      "alternativas": [
+        "x = 1",
+        "x = 17",
+        "x = 5",
+        "x = 13",
+        "x = 9"
+      ],
+      "correta": 2,
+      "explicacao": "3x + 6 = 2x + 11 → x = 5. Dica de mergulhador: 3 vezes tudo que está dentro.",
+      "comentarios": [
+        "Errou um sinal.",
+        "Somou o 6.",
+        "",
+        "Usou 3x = 2x + 13.",
+        "Não multiplicou o 2 por 3."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q11-v1",
+      "varianteDe": "mat-equacoes-1grau-q11",
+      "tema": "Resolver equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de x ÷ 3 + x ÷ 4 = 14?",
+      "alternativas": [
+        "x = 24",
+        "x = 12",
+        "x = 98",
+        "x = 168",
+        "x = 2"
+      ],
+      "correta": 0,
+      "explicacao": "Multiplicando por 12: 4x + 3x = 168 → x = 24. Dica de mergulhador: confira: 8 + 6 = 14.",
+      "comentarios": [
+        "",
+        "Errou o denominador comum.",
+        "Usou x ÷ 7 = 14.",
+        "Multiplicou por 12 só um lado.",
+        "Somou as frações como 2/7."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q12-v1",
+      "varianteDe": "mat-equacoes-1grau-q12",
+      "tema": "Resolver equações",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Qual é a solução de (x − 2) ÷ 4 = (x + 1) ÷ 5?",
+      "alternativas": [
+        "x = 6",
+        "x = −14",
+        "x = 3",
+        "x = 14",
+        "x = 2"
+      ],
+      "correta": 3,
+      "explicacao": "5(x − 2) = 4(x + 1) → 5x − 10 = 4x + 4 → x = 14. Dica de mergulhador: confira: 3 = 3.",
+      "comentarios": [
+        "Errou o sinal do 4.",
+        "Errou os sinais.",
+        "Trocou os denominadores.",
+        "",
+        "Igualou os numeradores."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q13-v1",
+      "varianteDe": "mat-equacoes-1grau-q13",
+      "tema": "Problemas com equações",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Quatro lanches iguais e um suco de R$ 6 custaram R$ 54. Quanto custa cada lanche?",
+      "alternativas": [
+        "R$ 12",
+        "R$ 15",
+        "R$ 48",
+        "R$ 13,50",
+        "R$ 10,50"
+      ],
+      "correta": 0,
+      "explicacao": "4x + 6 = 54 → 4x = 48 → x = 12. Dica de mergulhador: a incógnita é o preço de um lanche.",
+      "comentarios": [
+        "",
+        "Somou o suco.",
+        "Não dividiu.",
+        "Não descontou o suco.",
+        "Descontou o suco duas vezes."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q14-v1",
+      "varianteDe": "mat-equacoes-1grau-q14",
+      "tema": "Problemas com equações",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Três números inteiros consecutivos somam 72. Qual é o menor deles?",
+      "alternativas": [
+        "24",
+        "22",
+        "18",
+        "25",
+        "23"
+      ],
+      "correta": 4,
+      "explicacao": "3x + 3 = 72 → x = 23. Dica de mergulhador: o do meio é a média.",
+      "comentarios": [
+        "É o do meio.",
+        "Errou a conta.",
+        "Dividiu 72 por 4.",
+        "É o maior.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q15-v1",
+      "varianteDe": "mat-equacoes-1grau-q15",
+      "tema": "Problemas com equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Uma mãe tem o quádruplo da idade da filha, e juntas somam 55 anos. Qual é a idade da filha?",
+      "alternativas": [
+        "11 anos",
+        "44 anos",
+        "13,75 anos",
+        "9,2 anos",
+        "15 anos"
+      ],
+      "correta": 0,
+      "explicacao": "x + 4x = 55 → 5x = 55 → x = 11. Dica de mergulhador: some as partes: 1 + 4 = 5.",
+      "comentarios": [
+        "",
+        "É a idade da mãe.",
+        "Dividiu 55 por 4.",
+        "Dividiu 55 por 6.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q16-v1",
+      "varianteDe": "mat-equacoes-1grau-q16",
+      "tema": "Problemas com equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Uma pessoa gastou 2/5 do salário com aluguel e 1/4 com comida, e sobraram R$ 1.400. Qual é o salário?",
+      "alternativas": [
+        "R$ 3.500",
+        "R$ 4.000",
+        "R$ 2.153",
+        "R$ 5.600",
+        "R$ 1.400"
+      ],
+      "correta": 1,
+      "explicacao": "Gastou 2/5 + 1/4 = 13/20; sobrou 7/20 = 1.400 → salário = 4.000. Dica de mergulhador: 1 − gastos = sobra.",
+      "comentarios": [
+        "Usou só 2/5.",
+        "",
+        "Usou 13/20 como o que sobrou.",
+        "Usou só 1/4.",
+        "É o que sobrou."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q17-v1",
+      "varianteDe": "mat-equacoes-1grau-q17",
+      "tema": "Problemas com equações",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Seis colegas iam dividir um presente igualmente, mas dois desistiram, e cada um dos outros quatro pagou R$ 10 a mais. Qual era o valor do presente?",
+      "alternativas": [
+        "R$ 240",
+        "R$ 20",
+        "R$ 60",
+        "R$ 120",
+        "R$ 40"
+      ],
+      "correta": 3,
+      "explicacao": "x ÷ 4 = x ÷ 6 + 10 → x ÷ 12 = 10 → x = 120. Dica de mergulhador: os R$ 40 extras cobrem as duas partes.",
+      "comentarios": [
+        "Dobrou o resultado.",
+        "É a parte de cada um no plano inicial.",
+        "Usou 10 × 6.",
+        "",
+        "Multiplicou 10 por 4."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q18-v1",
+      "varianteDe": "mat-equacoes-1grau-q18",
+      "tema": "Problemas com equações",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Um trabalhador recebe R$ 60 por dia trabalhado e paga R$ 15 por dia de falta. Em 30 dias, recebeu R$ 1.350. Quantos dias trabalhou?",
+      "alternativas": [
+        "25 dias",
+        "6 dias",
+        "22,5 dias",
+        "24 dias",
+        "18 dias"
+      ],
+      "correta": 3,
+      "explicacao": "60x − 15(30 − x) = 1.350 → 75x = 1.800 → x = 24. Dica de mergulhador: monte com as duas partes.",
+      "comentarios": [
+        "Errou a conta.",
+        "São as faltas.",
+        "Ignorou as faltas.",
+        "",
+        "Dividiu 1.350 por 75 sem somar."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q19-v1",
+      "varianteDe": "mat-equacoes-1grau-q19",
+      "tema": "Problemas com equações",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Um carro faz 14 km por litro. Ele saiu com o tanque de 45 L cheio e, depois da viagem, restaram 10 L. Quantos km ele rodou?",
+      "alternativas": [
+        "770 km",
+        "630 km",
+        "140 km",
+        "490 km",
+        "35 km"
+      ],
+      "correta": 3,
+      "explicacao": "Gastou 35 L × 14 = 490 km. Dica de mergulhador: gasto = cheio − sobra.",
+      "comentarios": [
+        "Somou os litros.",
+        "Usou o tanque todo.",
+        "Usou os 10 L que sobraram.",
+        "",
+        "Parou nos litros gastos."
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-q20-v1",
+      "varianteDe": "mat-equacoes-1grau-q20",
+      "tema": "Problemas com equações",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-1grau",
+      "enunciado": "Após um aumento de 25% e, depois, um desconto de R$ 20, um produto passou a custar R$ 230. Qual era o preço inicial?",
+      "alternativas": [
+        "R$ 250",
+        "R$ 200",
+        "R$ 184",
+        "R$ 187,50",
+        "R$ 172,50"
+      ],
+      "correta": 1,
+      "explicacao": "1,25x − 20 = 230 → 1,25x = 250 → x = 200. Dica de mergulhador: primeiro devolva os R$ 20, depois divida por 1,25.",
+      "comentarios": [
+        "Somou 20 a 230.",
+        "",
+        "Esqueceu os R$ 20.",
+        "Tirou 25% de 250.",
+        "Tirou 25% de 230."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q01-v1",
+      "varianteDe": "mat-sistemas-q01",
+      "tema": "Montar o sistema",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Num sítio há 40 animais, entre galinhas (x) e cabras (y), com 110 patas no total. Qual sistema representa a situação?",
+      "alternativas": [
+        "x + y = 40 e x + y = 110",
+        "x + y = 40 e 2x + 4y = 110",
+        "x + y = 110 e 2x + 4y = 40",
+        "x + y = 40 e 4x + 2y = 110",
+        "2x + 4y = 40 e x + y = 110"
+      ],
+      "correta": 1,
+      "explicacao": "Animais: x + y = 40. Patas: 2 por galinha e 4 por cabra. Dica de mergulhador: cada informação vira uma equação.",
+      "comentarios": [
+        "As patas pedem os pesos 2 e 4.",
+        "",
+        "Trocou os totais.",
+        "Trocou as patas.",
+        "Trocou as equações."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q02-v1",
+      "varianteDe": "mat-sistemas-q02",
+      "tema": "Montar o sistema",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "A soma de dois números é 40, e um deles é o triplo do outro. Qual sistema representa a situação?",
+      "alternativas": [
+        "x + y = 40 e x = y + 3",
+        "x − y = 40 e x = 3y",
+        "x + y = 40 e x = 3y",
+        "3x + y = 40 e x = y",
+        "x · y = 40 e x = 3y"
+      ],
+      "correta": 2,
+      "explicacao": "Soma: x + y = 40. Triplo: x = 3y. Dica de mergulhador: triplo é multiplicar por 3.",
+      "comentarios": [
+        "Triplo é vezes 3.",
+        "Soma é adição.",
+        "",
+        "Não traduziu o triplo.",
+        "Soma não é produto."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q03-v1",
+      "varianteDe": "mat-sistemas-q03",
+      "tema": "Montar o sistema",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "A equação x + y = 10, sozinha, tem quantas soluções reais?",
+      "alternativas": [
+        "Dez",
+        "Uma",
+        "Nenhuma",
+        "Infinitas",
+        "Duas"
+      ],
+      "correta": 3,
+      "explicacao": "Qualquer par que some 10 serve: (3, 7), (2,5; 7,5)... Dica de mergulhador: uma equação só não fixa duas incógnitas.",
+      "comentarios": [
+        "Há também valores não inteiros.",
+        "Falta outra informação.",
+        "(3, 7) é solução.",
+        "",
+        "Há muito mais."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q04-v1",
+      "varianteDe": "mat-sistemas-q04",
+      "tema": "Montar o sistema",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Um show cobra R$ 30 a inteira e R$ 15 a meia. Numa noite, 80 pessoas pagaram R$ 1.800 no total. Sendo x as inteiras e y as meias, qual é o sistema?",
+      "alternativas": [
+        "x + y = 80 e 15x + 30y = 1.800",
+        "x + y = 1.800 e 30x + 15y = 80",
+        "x + y = 80 e 30x + 15y = 1.800",
+        "x + y = 80 e 45(x + y) = 1.800",
+        "30x = 1.800 e y = 80"
+      ],
+      "correta": 2,
+      "explicacao": "Pessoas: x + y = 80. Dinheiro: 30x + 15y = 1.800. Dica de mergulhador: cada tipo com seu preço.",
+      "comentarios": [
+        "Trocou os preços.",
+        "Trocou os totais.",
+        "",
+        "Somou os preços.",
+        "Ignorou as meias."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q05-v1",
+      "varianteDe": "mat-sistemas-q05",
+      "tema": "Montar o sistema",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Um suco é feito com polpa A, de R$ 5 o litro, e polpa B, de R$ 8 o litro, para obter 6 L que custam R$ 39 no total. Qual sistema representa a mistura?",
+      "alternativas": [
+        "x + y = 6 e 8x + 5y = 39",
+        "x + y = 6 e 5x + 8y = 39",
+        "x + y = 39 e 5x + 8y = 6",
+        "5x = 39 e y = 6",
+        "x + y = 6 e 13(x + y) = 39"
+      ],
+      "correta": 1,
+      "explicacao": "Volume: x + y = 6. Custo: 5x + 8y = 39. Dica de mergulhador: uma equação conta litros; a outra, reais.",
+      "comentarios": [
+        "Trocou os preços.",
+        "",
+        "Trocou os totais.",
+        "Ignorou a polpa B.",
+        "Somou os preços."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q06-v1",
+      "varianteDe": "mat-sistemas-q06",
+      "tema": "Montar o sistema",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Quantas soluções tem o sistema 3x − y = 2 e 6x − 2y = 4?",
+      "alternativas": [
+        "Infinitas",
+        "Duas",
+        "Uma",
+        "Nenhuma",
+        "Uma, com x = 0 e y = 0"
+      ],
+      "correta": 0,
+      "explicacao": "A segunda é o dobro da primeira: mesma reta. Dica de mergulhador: equações proporcionais, infinitas soluções.",
+      "comentarios": [
+        "",
+        "Retas coincidentes têm todos os pontos em comum.",
+        "As retas coincidem.",
+        "A segunda é a primeira dobrada.",
+        "Não satisfaz 3x − y = 2."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q07-v1",
+      "varianteDe": "mat-sistemas-q07",
+      "tema": "Resolver sistemas",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de x + y = 15 e x − y = 3?",
+      "alternativas": [
+        "x = 18 e y = 12",
+        "x = 9 e y = 6",
+        "x = 10 e y = 5",
+        "x = 7,5 e y = 7,5",
+        "x = 6 e y = 9"
+      ],
+      "correta": 1,
+      "explicacao": "2x = 18 → x = 9; y = 6. Dica de mergulhador: confira nas duas.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "",
+        "Não satisfaz x − y = 3.",
+        "Não satisfaz x − y = 3.",
+        "Trocou os valores."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q08-v1",
+      "varianteDe": "mat-sistemas-q08",
+      "tema": "Resolver sistemas",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de y = 3x e x + y = 24?",
+      "alternativas": [
+        "x = 8 e y = 24",
+        "x = 18 e y = 6",
+        "x = 4 e y = 12",
+        "x = 12 e y = 12",
+        "x = 6 e y = 18"
+      ],
+      "correta": 4,
+      "explicacao": "x + 3x = 24 → x = 6; y = 18. Dica de mergulhador: troque y por 3x.",
+      "comentarios": [
+        "Não satisfaz a soma.",
+        "Trocou os valores.",
+        "Não satisfaz a soma.",
+        "Não satisfaz y = 3x.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-sistemas-q09-v1",
+      "varianteDe": "mat-sistemas-q09",
+      "tema": "Resolver sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de 3x + y = 14 e x − y = 2?",
+      "alternativas": [
+        "x = 2 e y = 4",
+        "x = 3 e y = 5",
+        "x = 5 e y = 3",
+        "x = 4 e y = 2",
+        "x = 16 e y = 14"
+      ],
+      "correta": 3,
+      "explicacao": "Somando: 4x = 16 → x = 4; y = 2. Dica de mergulhador: confira: 12 + 2 = 14.",
+      "comentarios": [
+        "Trocou os valores.",
+        "Não satisfaz x − y = 2.",
+        "Não satisfaz 3x + y = 14.",
+        "",
+        "Esqueceu de dividir por 4."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q10-v1",
+      "varianteDe": "mat-sistemas-q10",
+      "tema": "Resolver sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Num sítio há 40 animais, entre galinhas e cabras, com 110 patas. Quantas são as galinhas?",
+      "alternativas": [
+        "25",
+        "55",
+        "27",
+        "20",
+        "15"
+      ],
+      "correta": 0,
+      "explicacao": "2x + 4(40 − x) = 110 → −2x = −50 → x = 25. Dica de mergulhador: confira: 50 + 60 = 110 patas.",
+      "comentarios": [
+        "",
+        "Dividiu 110 por 2.",
+        "Dividiu 110 por 4.",
+        "Dividiu 40 por 2.",
+        "São as cabras."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q11-v1",
+      "varianteDe": "mat-sistemas-q11",
+      "tema": "Resolver sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de 5x + 3y = 21 e 2x − 3y = 0?",
+      "alternativas": [
+        "x = 21 e y = 14",
+        "x = 0 e y = 7",
+        "x = 3 e y = 2",
+        "x = 2 e y = 3",
+        "x = 6 e y = −3"
+      ],
+      "correta": 2,
+      "explicacao": "Somando: 7x = 21 → x = 3; 6 − 3y = 0 → y = 2. Dica de mergulhador: coeficientes opostos, soma direta.",
+      "comentarios": [
+        "Esqueceu de dividir por 7.",
+        "Não satisfaz a segunda.",
+        "",
+        "Trocou os valores.",
+        "Não satisfaz a segunda."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q12-v1",
+      "varianteDe": "mat-sistemas-q12",
+      "tema": "Resolver sistemas",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Qual é a solução de 4x + 3y = 25 e 3x + 4y = 24?",
+      "alternativas": [
+        "x = 7 e y = 0",
+        "x = 3 e y = 4",
+        "x = 4 e y = 3",
+        "x = 5 e y = 2",
+        "x = 1 e y = 7"
+      ],
+      "correta": 2,
+      "explicacao": "Somando: 7x + 7y = 49 → x + y = 7. Subtraindo: x − y = 1. Logo x = 4, y = 3. Dica de mergulhador: some e subtraia as equações.",
+      "comentarios": [
+        "Não satisfaz a primeira.",
+        "Trocou os valores.",
+        "",
+        "Não satisfaz a segunda.",
+        "Não satisfaz a primeira."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q13-v1",
+      "varianteDe": "mat-sistemas-q13",
+      "tema": "Resolver sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Em que ponto se cruzam as retas y = 2x − 1 e y = x + 3?",
+      "alternativas": [
+        "(4, 3)",
+        "(7, 4)",
+        "(2, 3)",
+        "(4, 7)",
+        "(3, 5)"
+      ],
+      "correta": 3,
+      "explicacao": "2x − 1 = x + 3 → x = 4; y = 7. Dica de mergulhador: iguale os y.",
+      "comentarios": [
+        "Errou o y.",
+        "Trocou as coordenadas.",
+        "Errou a conta.",
+        "",
+        "Só está na primeira reta."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q14-v1",
+      "varianteDe": "mat-sistemas-q14",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Um show cobra R$ 30 a inteira e R$ 15 a meia. Numa noite, 80 pessoas pagaram R$ 1.800. Quantas pagaram inteira?",
+      "alternativas": [
+        "20",
+        "120",
+        "40",
+        "60",
+        "30"
+      ],
+      "correta": 2,
+      "explicacao": "30x + 15(80 − x) = 1.800 → 15x = 600 → x = 40. Dica de mergulhador: confira: 1.200 + 600 = 1.800.",
+      "comentarios": [
+        "Usou 1.500 de diferença.",
+        "Dividiu 1.800 por 15.",
+        "",
+        "Dividiu 1.800 por 30.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q15-v1",
+      "varianteDe": "mat-sistemas-q15",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Polpa A (R$ 5 o litro) e polpa B (R$ 8 o litro) foram misturadas em 6 L que custaram R$ 39. Quantos litros de polpa A foram usados?",
+      "alternativas": [
+        "7,8 L",
+        "2 L",
+        "6 L",
+        "4,9 L",
+        "3 L"
+      ],
+      "correta": 4,
+      "explicacao": "5x + 8(6 − x) = 39 → −3x = −9 → x = 3. Dica de mergulhador: 15 + 24 = 39.",
+      "comentarios": [
+        "Dividiu 39 por 5.",
+        "Errou a conta.",
+        "Usou o total.",
+        "Dividiu 39 por 8.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-sistemas-q16-v1",
+      "varianteDe": "mat-sistemas-q16",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "facil",
+      "fase": "mat-sistemas",
+      "enunciado": "Uma pessoa tem 25 notas, de R$ 5 e de R$ 20, somando R$ 290. Quantas são de R$ 20?",
+      "alternativas": [
+        "12",
+        "58",
+        "14",
+        "11",
+        "14,5"
+      ],
+      "correta": 3,
+      "explicacao": "5(25 − y) + 20y = 290 → 15y = 165 → y = 11. Dica de mergulhador: confira: 70 + 220 = 290.",
+      "comentarios": [
+        "Errou a conta.",
+        "Dividiu 290 por 5.",
+        "São as de R$ 5.",
+        "",
+        "Dividiu 290 por 20."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q17-v1",
+      "varianteDe": "mat-sistemas-q17",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "medio",
+      "fase": "mat-sistemas",
+      "enunciado": "Três cafés e dois bolos custam R$ 19; um café e um bolo custam R$ 7,50. Quanto custa um café?",
+      "alternativas": [
+        "R$ 3,50",
+        "R$ 3,80",
+        "R$ 4,50",
+        "R$ 4,00",
+        "R$ 11,50"
+      ],
+      "correta": 3,
+      "explicacao": "b = 7,50 − c → 3c + 2(7,50 − c) = 19 → c = 4. Dica de mergulhador: confira: 12 + 7 = 19.",
+      "comentarios": [
+        "É o preço do bolo.",
+        "Dividiu 19 por 5.",
+        "Errou a conta.",
+        "",
+        "Subtraiu as compras."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q18-v1",
+      "varianteDe": "mat-sistemas-q18",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Hoje, uma mãe tem o quádruplo da idade da filha. Daqui a 5 anos, terá o triplo. Qual é a idade atual da mãe?",
+      "alternativas": [
+        "10 anos",
+        "15 anos",
+        "45 anos",
+        "40 anos",
+        "30 anos"
+      ],
+      "correta": 3,
+      "explicacao": "m = 4f e m + 5 = 3(f + 5) → 4f + 5 = 3f + 15 → f = 10; m = 40. Dica de mergulhador: some o tempo nas duas idades.",
+      "comentarios": [
+        "É a idade da filha.",
+        "É a idade da filha daqui a 5 anos.",
+        "É a idade da mãe daqui a 5 anos.",
+        "",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q19-v1",
+      "varianteDe": "mat-sistemas-q19",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Numa prova com 30 questões, cada acerto vale 4 pontos e cada erro tira 1. Um aluno respondeu todas e fez 85 pontos. Quantas acertou?",
+      "alternativas": [
+        "23",
+        "17",
+        "7",
+        "21",
+        "25"
+      ],
+      "correta": 0,
+      "explicacao": "4a − (30 − a) = 85 → 5a = 115 → a = 23. Dica de mergulhador: confira: 92 − 7 = 85.",
+      "comentarios": [
+        "",
+        "Dividiu 85 por 5.",
+        "São os erros.",
+        "Dividiu 85 por 4.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "mat-sistemas-q20-v1",
+      "varianteDe": "mat-sistemas-q20",
+      "tema": "Problemas com sistemas",
+      "dificuldade": "dificil",
+      "fase": "mat-sistemas",
+      "enunciado": "Uma papelaria vende canetas a R$ 4 e cadernos a R$ 15. Num dia, vendeu 5 canetas a mais que cadernos e arrecadou R$ 134. Quantas canetas vendeu?",
+      "alternativas": [
+        "6",
+        "11",
+        "33",
+        "8,9",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "k = cadernos; 4(k + 5) + 15k = 134 → 19k = 114 → k = 6; canetas = 11. Dica de mergulhador: confira: 44 + 90 = 134.",
+      "comentarios": [
+        "São os cadernos.",
+        "",
+        "Dividiu 134 por 4.",
+        "Dividiu 134 por 15.",
+        "Somou 5 às canetas."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q01-v1",
+      "varianteDe": "mat-equacoes-2grau-q01",
+      "tema": "Equações incompletas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de 2x² − 32 = 0?",
+      "alternativas": [
+        "x = 8 ou x = −8",
+        "x = 0 ou x = 16",
+        "x = 4 ou x = −4",
+        "x = 16 ou x = −16",
+        "Só x = 4"
+      ],
+      "correta": 2,
+      "explicacao": "2x² = 32 → x² = 16 → x = ±4. Dica de mergulhador: raiz quadrada tem dois sinais.",
+      "comentarios": [
+        "Dividiu 32 por 4.",
+        "Fatorou errado.",
+        "",
+        "Não tirou a raiz.",
+        "Esqueceu a solução negativa."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q02-v1",
+      "varianteDe": "mat-equacoes-2grau-q02",
+      "tema": "Equações incompletas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de x² + 5x = 0?",
+      "alternativas": [
+        "x = 0 ou x = 5",
+        "x = 5 ou x = −5",
+        "Só x = −5",
+        "x = 0 ou x = −5",
+        "x = 1 ou x = 5"
+      ],
+      "correta": 3,
+      "explicacao": "x(x + 5) = 0: x = 0 ou x = −5. Dica de mergulhador: um fator zero basta.",
+      "comentarios": [
+        "Errou o sinal.",
+        "Tratou como x² = 25.",
+        "Esqueceu o x = 0.",
+        "",
+        "Inventou um produto."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q03-v1",
+      "varianteDe": "mat-equacoes-2grau-q03",
+      "tema": "Equações incompletas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quantas soluções reais tem a equação x² + 25 = 0?",
+      "alternativas": [
+        "Duas: 25 e −25",
+        "Nenhuma",
+        "Duas: 5 e −5",
+        "Uma: −5",
+        "Uma: 0"
+      ],
+      "correta": 1,
+      "explicacao": "x² = −25: impossível nos reais. Dica de mergulhador: quadrado de real é sempre ≥ 0.",
+      "comentarios": [
+        "Não tirou a raiz.",
+        "",
+        "Isso seria x² = 25.",
+        "(−5)² = 25, não −25.",
+        "0² + 25 = 25."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q04-v1",
+      "varianteDe": "mat-equacoes-2grau-q04",
+      "tema": "Equações incompletas",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de 4x² = 12x?",
+      "alternativas": [
+        "x = 0 ou x = 12",
+        "x = 0 ou x = 3",
+        "x = 3 ou x = −3",
+        "x = 0 ou x = −3",
+        "Só x = 3"
+      ],
+      "correta": 1,
+      "explicacao": "4x(x − 3) = 0: x = 0 ou x = 3. Dica de mergulhador: dividir por x apaga uma solução.",
+      "comentarios": [
+        "Não dividiu por 4.",
+        "",
+        "Tratou como x² = 9.",
+        "Errou o sinal.",
+        "Dividiu por x e perdeu o zero."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q05-v1",
+      "varianteDe": "mat-equacoes-2grau-q05",
+      "tema": "Equações incompletas",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Um terreno quadrado tem 225 m² de área. Qual é a medida do lado?",
+      "alternativas": [
+        "112,5 m",
+        "22,5 m",
+        "56,25 m",
+        "−15 m",
+        "15 m"
+      ],
+      "correta": 4,
+      "explicacao": "x² = 225 → x = 15 m. Dica de mergulhador: área do quadrado é lado ao quadrado.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Dividiu por 10.",
+        "Dividiu por 4.",
+        "Lado não é negativo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q06-v1",
+      "varianteDe": "mat-equacoes-2grau-q06",
+      "tema": "Equações incompletas",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de (x + 2)² = 25?",
+      "alternativas": [
+        "x = 3 ou x = 7",
+        "x = 23 ou x = 27",
+        "Só x = 3",
+        "x = 3 ou x = −7",
+        "x = 5 ou x = −5"
+      ],
+      "correta": 3,
+      "explicacao": "x + 2 = ±5: x = 3 ou x = −7. Dica de mergulhador: ± antes de isolar.",
+      "comentarios": [
+        "Errou o sinal.",
+        "Não tirou a raiz.",
+        "Esqueceu o −5.",
+        "",
+        "Ignorou o +2."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q07-v1",
+      "varianteDe": "mat-equacoes-2grau-q07",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Qual é o discriminante Δ da equação x² − 6x + 8 = 0?",
+      "alternativas": [
+        "4",
+        "36",
+        "−4",
+        "68",
+        "−32"
+      ],
+      "correta": 0,
+      "explicacao": "Δ = 36 − 32 = 4: duas soluções. Dica de mergulhador: (−6)² = 36, positivo.",
+      "comentarios": [
+        "",
+        "Esqueceu o − 4ac.",
+        "Errou o sinal.",
+        "Somou 4ac.",
+        "Esqueceu o b²."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q08-v1",
+      "varianteDe": "mat-equacoes-2grau-q08",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de x² − 11x + 24 = 0?",
+      "alternativas": [
+        "−3 e −8",
+        "11 e 24",
+        "2 e 12",
+        "4 e 6",
+        "3 e 8"
+      ],
+      "correta": 4,
+      "explicacao": "Soma 11 e produto 24: 3 e 8. Dica de mergulhador: liste os pares de produto 24.",
+      "comentarios": [
+        "Errou os sinais.",
+        "Usou os coeficientes.",
+        "Produto 24, mas soma 14.",
+        "Produto 24, mas soma 10.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q09-v1",
+      "varianteDe": "mat-equacoes-2grau-q09",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de 3x² − 10x + 3 = 0?",
+      "alternativas": [
+        "3 e 3",
+        "18 e 2",
+        "3 e 1/3",
+        "−3 e −1/3",
+        "9 e 1"
+      ],
+      "correta": 2,
+      "explicacao": "Δ = 100 − 36 = 64; x = (10 ± 8) ÷ 6: 3 ou 1/3. Dica de mergulhador: 2a = 6.",
+      "comentarios": [
+        "Errou a segunda raiz.",
+        "Esqueceu de dividir.",
+        "",
+        "Errou o sinal de −b.",
+        "Dividiu por 2, não por 6."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q10-v1",
+      "varianteDe": "mat-equacoes-2grau-q10",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Qual equação tem raízes −3 e 5?",
+      "alternativas": [
+        "x² − 2x − 15 = 0",
+        "x² − 15x − 2 = 0",
+        "x² − 2x + 15 = 0",
+        "x² + 2x − 15 = 0",
+        "x² − 8x − 15 = 0"
+      ],
+      "correta": 0,
+      "explicacao": "Soma 2 e produto −15: x² − 2x − 15. Dica de mergulhador: x² − Sx + P.",
+      "comentarios": [
+        "",
+        "Trocou soma e produto.",
+        "O produto é negativo.",
+        "As raízes seriam 3 e −5.",
+        "Usou a diferença."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q11-v1",
+      "varianteDe": "mat-equacoes-2grau-q11",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Para que valor de k a equação x² + 10x + k = 0 tem uma única solução real?",
+      "alternativas": [
+        "k = 10",
+        "k = 100",
+        "k = 5",
+        "k = −25",
+        "k = 25"
+      ],
+      "correta": 4,
+      "explicacao": "Δ = 100 − 4k = 0 → k = 25. Dica de mergulhador: Δ zero, raiz dupla.",
+      "comentarios": [
+        "Usou o b.",
+        "Esqueceu o 4a.",
+        "Dividiu 10 por 2 e parou.",
+        "Errou o sinal.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q12-v1",
+      "varianteDe": "mat-equacoes-2grau-q12",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Quais são as soluções de x² − 4x + 1 = 0?",
+      "alternativas": [
+        "2 + √3 e 2 − √3",
+        "1 e 3",
+        "Não tem solução real",
+        "4 + √3 e 4 − √3",
+        "2 + √12 e 2 − √12"
+      ],
+      "correta": 0,
+      "explicacao": "Δ = 16 − 4 = 12; x = (4 ± 2√3) ÷ 2 = 2 ± √3. Dica de mergulhador: √12 = 2√3.",
+      "comentarios": [
+        "",
+        "O produto seria 3.",
+        "Δ = 12 é positivo.",
+        "Esqueceu de dividir o −b por 2.",
+        "Esqueceu de dividir a raiz por 2."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q13-v1",
+      "varianteDe": "mat-equacoes-2grau-q13",
+      "tema": "Bhaskara e soma e produto",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Sem resolver, qual é o produto das raízes de 2x² + 5x − 8 = 0?",
+      "alternativas": [
+        "−4",
+        "−5/2",
+        "4",
+        "8",
+        "−8"
+      ],
+      "correta": 0,
+      "explicacao": "Produto = c ÷ a = −8 ÷ 2 = −4. Dica de mergulhador: produto, c ÷ a.",
+      "comentarios": [
+        "",
+        "É a soma.",
+        "Errou o sinal.",
+        "Usou o c sem sinal.",
+        "Esqueceu de dividir por a."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q14-v1",
+      "varianteDe": "mat-equacoes-2grau-q14",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "facil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "O produto de dois números inteiros positivos e consecutivos é 90. Quais são eles?",
+      "alternativas": [
+        "10 e 11",
+        "6 e 15",
+        "9 e 10",
+        "8 e 9",
+        "45 e 2"
+      ],
+      "correta": 2,
+      "explicacao": "x(x + 1) = 90 → x = 9. Dica de mergulhador: consecutivos são x e x + 1.",
+      "comentarios": [
+        "O produto é 110.",
+        "Não são consecutivos.",
+        "",
+        "O produto é 72.",
+        "Não são consecutivos."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q15-v1",
+      "varianteDe": "mat-equacoes-2grau-q15",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Um retângulo tem 96 m² de área, e um lado é 4 m maior que o outro. Quais são as medidas?",
+      "alternativas": [
+        "8 m e 12 m",
+        "10 m e 14 m",
+        "4 m e 24 m",
+        "12 m e 16 m",
+        "6 m e 16 m"
+      ],
+      "correta": 0,
+      "explicacao": "x² + 4x − 96 = 0 → Δ = 400 → x = 8. Dica de mergulhador: confira: 8 × 12 = 96.",
+      "comentarios": [
+        "",
+        "A área seria 140.",
+        "Diferem em 20.",
+        "A área seria 192.",
+        "Diferem em 10."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q16-v1",
+      "varianteDe": "mat-equacoes-2grau-q16",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "O quadrado de um número positivo mais o seu dobro é 48. Qual é esse número?",
+      "alternativas": [
+        "6",
+        "5",
+        "7",
+        "8",
+        "24"
+      ],
+      "correta": 0,
+      "explicacao": "x² + 2x − 48 = 0 → Δ = 196 → x = 6. Dica de mergulhador: confira: 36 + 12 = 48.",
+      "comentarios": [
+        "",
+        "25 + 10 = 35.",
+        "49 + 14 = 63.",
+        "É o módulo da raiz negativa.",
+        "Dividiu 48 por 2."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q17-v1",
+      "varianteDe": "mat-equacoes-2grau-q17",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Um grupo ia dividir R$ 360 igualmente. Como 3 pessoas desistiram, cada uma das outras pagou R$ 20 a mais. Quantas pessoas havia no grupo inicial?",
+      "alternativas": [
+        "12",
+        "6",
+        "23",
+        "9",
+        "18"
+      ],
+      "correta": 3,
+      "explicacao": "360 ÷ (n − 3) = 360 ÷ n + 20 → n² − 3n − 54 = 0 → n = 9. Dica de mergulhador: confira: 60 = 40 + 20.",
+      "comentarios": [
+        "Errou a equação.",
+        "São as que pagaram.",
+        "Somou 3 a 20.",
+        "",
+        "Dividiu 360 por 20."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q18-v1",
+      "varianteDe": "mat-equacoes-2grau-q18",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "Um quadro de 10 cm × 20 cm recebe uma moldura de largura x em toda a volta, e o conjunto passa a ter 336 cm². Qual é a largura x?",
+      "alternativas": [
+        "4,5 cm",
+        "1 cm",
+        "17 cm",
+        "4 cm",
+        "2 cm"
+      ],
+      "correta": 4,
+      "explicacao": "(10 + 2x)(20 + 2x) = 336 → x² + 15x − 34 = 0 → Δ = 361 → x = 2. Dica de mergulhador: confira: 14 × 24 = 336.",
+      "comentarios": [
+        "Dividiu a área a mais pelo perímetro.",
+        "Errou a conta.",
+        "É a raiz negativa sem o sinal.",
+        "Usou a largura total acrescentada.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q19-v1",
+      "varianteDe": "mat-equacoes-2grau-q19",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "O lucro de uma barraca é L(x) = −x² + 12x − 20, em que x é o número de lotes vendidos. Para que valores de x o lucro é zero?",
+      "alternativas": [
+        "x = 2 e x = 10",
+        "x = 6",
+        "x = 4 e x = 5",
+        "x = 12 e x = 20",
+        "x = −2 e x = −10"
+      ],
+      "correta": 0,
+      "explicacao": "x² − 12x + 20 = 0 → x = 2 ou 10. Dica de mergulhador: soma 12, produto 20.",
+      "comentarios": [
+        "",
+        "É o ponto de lucro máximo.",
+        "Produto 20, mas soma 9.",
+        "Usou os coeficientes.",
+        "Errou os sinais."
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-q20-v1",
+      "varianteDe": "mat-equacoes-2grau-q20",
+      "tema": "Problemas do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-equacoes-2grau",
+      "enunciado": "O produto das idades de duas primas é 99, e uma tem 2 anos a mais que a outra. Quais são as idades?",
+      "alternativas": [
+        "3 e 33 anos",
+        "8 e 10 anos",
+        "10 e 12 anos",
+        "9 e 11 anos",
+        "1 e 99 anos"
+      ],
+      "correta": 3,
+      "explicacao": "x² + 2x − 99 = 0 → Δ = 400 → x = 9. Dica de mergulhador: confira: 9 × 11 = 99.",
+      "comentarios": [
+        "Diferem em 30.",
+        "O produto é 80.",
+        "O produto é 120.",
+        "",
+        "Não diferem em 2."
+      ]
     }
   ],
   "pares": [
@@ -68640,6 +71781,78 @@
       "tema": "Revisão do módulo: funções",
       "termo": "log alvo ÷ log fator",
       "definicao": "Tempo para atingir"
+    },
+    {
+      "id": "mat-equacoes-1grau-par-01",
+      "tema": "Expressões e equações do 1º grau",
+      "termo": "Dobro de x",
+      "definicao": "2x"
+    },
+    {
+      "id": "mat-equacoes-1grau-par-02",
+      "tema": "Expressões e equações do 1º grau",
+      "termo": "Incógnita",
+      "definicao": "Valor desconhecido"
+    },
+    {
+      "id": "mat-equacoes-1grau-par-03",
+      "tema": "Expressões e equações do 1º grau",
+      "termo": "Operação inversa",
+      "definicao": "Desfaz a conta"
+    },
+    {
+      "id": "mat-equacoes-1grau-par-04",
+      "tema": "Expressões e equações do 1º grau",
+      "termo": "Consecutivos",
+      "definicao": "x e x + 1"
+    },
+    {
+      "id": "mat-sistemas-par-01",
+      "tema": "Sistemas de equações",
+      "termo": "Duas incógnitas",
+      "definicao": "Duas equações"
+    },
+    {
+      "id": "mat-sistemas-par-02",
+      "tema": "Sistemas de equações",
+      "termo": "Substituição",
+      "definicao": "Isolar e trocar"
+    },
+    {
+      "id": "mat-sistemas-par-03",
+      "tema": "Sistemas de equações",
+      "termo": "Adição",
+      "definicao": "Somar para uma letra sumir"
+    },
+    {
+      "id": "mat-sistemas-par-04",
+      "tema": "Sistemas de equações",
+      "termo": "Retas paralelas",
+      "definicao": "Sem solução"
+    },
+    {
+      "id": "mat-equacoes-2grau-par-01",
+      "tema": "Equações do 2º grau",
+      "termo": "Equação incompleta sem c",
+      "definicao": "x em evidência"
+    },
+    {
+      "id": "mat-equacoes-2grau-par-02",
+      "tema": "Equações do 2º grau",
+      "termo": "Δ < 0",
+      "definicao": "Sem solução real"
+    },
+    {
+      "id": "mat-equacoes-2grau-par-03",
+      "tema": "Equações do 2º grau",
+      "termo": "Soma das raízes",
+      "definicao": "−b ÷ a"
+    },
+    {
+      "id": "mat-equacoes-2grau-par-04",
+      "tema": "Equações do 2º grau",
+      "termo": "Produto das raízes",
+      "definicao": "c ÷ a"
     }
   ],
   "verdadeiroFalso": [
@@ -69972,6 +73185,69 @@
       "afirmacao": "A raiz de f(x) = 5x − 20 é 4.",
       "verdadeira": true,
       "explicacao": "5 × 4 − 20 = 0."
+    },
+    {
+      "id": "mat-equacoes-1grau-vf-01",
+      "tema": "Expressões e equações do 1º grau",
+      "afirmacao": "−(x − 3) é igual a −x + 3.",
+      "verdadeira": true,
+      "explicacao": "O menos troca os sinais."
+    },
+    {
+      "id": "mat-equacoes-1grau-vf-02",
+      "tema": "Expressões e equações do 1º grau",
+      "afirmacao": "2(x + 4) é igual a 2x + 4.",
+      "verdadeira": false,
+      "explicacao": "É 2x + 8."
+    },
+    {
+      "id": "mat-equacoes-1grau-vf-03",
+      "tema": "Expressões e equações do 1º grau",
+      "afirmacao": "Em equações, o que se faz de um lado se faz do outro.",
+      "verdadeira": true,
+      "explicacao": "Como numa balança."
+    },
+    {
+      "id": "mat-sistemas-vf-01",
+      "tema": "Sistemas de equações",
+      "afirmacao": "A solução de um sistema é o cruzamento das retas.",
+      "verdadeira": true,
+      "explicacao": "Cada equação é uma reta."
+    },
+    {
+      "id": "mat-sistemas-vf-02",
+      "tema": "Sistemas de equações",
+      "afirmacao": "x + y = 10 sozinha tem uma única solução.",
+      "verdadeira": false,
+      "explicacao": "Tem infinitas."
+    },
+    {
+      "id": "mat-sistemas-vf-03",
+      "tema": "Sistemas de equações",
+      "afirmacao": "Equações proporcionais têm infinitas soluções.",
+      "verdadeira": true,
+      "explicacao": "São a mesma reta."
+    },
+    {
+      "id": "mat-equacoes-2grau-vf-01",
+      "tema": "Equações do 2º grau",
+      "afirmacao": "x² − 6x = 0 tem a solução x = 0.",
+      "verdadeira": true,
+      "explicacao": "Sempre, quando falta o c."
+    },
+    {
+      "id": "mat-equacoes-2grau-vf-02",
+      "tema": "Equações do 2º grau",
+      "afirmacao": "x² + 9 = 0 tem soluções 3 e −3.",
+      "verdadeira": false,
+      "explicacao": "Não há solução real."
+    },
+    {
+      "id": "mat-equacoes-2grau-vf-03",
+      "tema": "Equações do 2º grau",
+      "afirmacao": "A equação com raízes 2 e 7 é x² − 9x + 14 = 0.",
+      "verdadeira": true,
+      "explicacao": "Soma 9, produto 14."
     }
   ],
   "sequencias": [
@@ -70743,6 +74019,42 @@
         "Responder exatamente o que foi pedido"
       ],
       "explicacao": "x ou y?"
+    },
+    {
+      "id": "mat-equacoes-1grau-seq-01",
+      "tema": "Expressões e equações do 1º grau",
+      "titulo": "Resolver um problema com equação",
+      "itens": [
+        "Dar nome ao desconhecido",
+        "Montar a equação com o texto",
+        "Isolar a incógnita",
+        "Conferir e responder o que foi pedido"
+      ],
+      "explicacao": "Leia de novo a pergunta."
+    },
+    {
+      "id": "mat-sistemas-seq-01",
+      "tema": "Sistemas de equações",
+      "titulo": "Resolver um sistema pela substituição",
+      "itens": [
+        "Isolar uma letra numa equação",
+        "Trocar na outra equação",
+        "Resolver a equação de uma letra",
+        "Voltar para achar a outra"
+      ],
+      "explicacao": "Confira nas duas."
+    },
+    {
+      "id": "mat-equacoes-2grau-seq-01",
+      "tema": "Equações do 2º grau",
+      "titulo": "Resolver pela fórmula geral",
+      "itens": [
+        "Identificar a, b e c",
+        "Calcular Δ = b² − 4ac",
+        "Aplicar x = (−b ± √Δ) ÷ 2a",
+        "Conferir e descartar o que não faz sentido"
+      ],
+      "explicacao": "Δ primeiro."
     }
   ],
   "adivinhas": [
@@ -71657,6 +74969,48 @@
         "Relaciona entrada e saída",
         "Pode ser afim, quadrática ou exponencial",
         "Escreve-se f(x)"
+      ]
+    },
+    {
+      "id": "mat-equacoes-1grau-adv-01",
+      "tema": "Expressões e equações do 1º grau",
+      "dificuldade": "medio",
+      "resposta": "Equação",
+      "aceitas": [
+        "equacao, equação"
+      ],
+      "dicas": [
+        "Igualdade com uma incógnita",
+        "Funciona como balança",
+        "Resolve-se isolando x"
+      ]
+    },
+    {
+      "id": "mat-sistemas-adv-01",
+      "tema": "Sistemas de equações",
+      "dificuldade": "medio",
+      "resposta": "Sistema",
+      "aceitas": [
+        "sistema"
+      ],
+      "dicas": [
+        "Duas equações juntas",
+        "Duas incógnitas",
+        "Resolve-se por substituição ou adição"
+      ]
+    },
+    {
+      "id": "mat-equacoes-2grau-adv-01",
+      "tema": "Equações do 2º grau",
+      "dificuldade": "medio",
+      "resposta": "Bhaskara",
+      "aceitas": [
+        "bhaskara"
+      ],
+      "dicas": [
+        "Fórmula com ±",
+        "Usa o delta",
+        "Resolve equações do 2º grau"
       ]
     }
   ],
@@ -73178,6 +76532,78 @@
       "tema": "Matemática",
       "palavra": "Lucro",
       "dica": "Tem máximo"
+    },
+    {
+      "id": "mat-equacoes-1grau-pal-01",
+      "tema": "Matemática",
+      "palavra": "Balança",
+      "dica": "Imagem da equação"
+    },
+    {
+      "id": "mat-equacoes-1grau-pal-02",
+      "tema": "Matemática",
+      "palavra": "Dobro",
+      "dica": "Duas vezes o número"
+    },
+    {
+      "id": "mat-equacoes-1grau-pal-03",
+      "tema": "Matemática",
+      "palavra": "Metade",
+      "dica": "Dividir por dois"
+    },
+    {
+      "id": "mat-equacoes-1grau-pal-04",
+      "tema": "Matemática",
+      "palavra": "Sinal",
+      "dica": "Mais ou menos"
+    },
+    {
+      "id": "mat-sistemas-pal-01",
+      "tema": "Matemática",
+      "palavra": "Meia",
+      "dica": "Ingresso com desconto"
+    },
+    {
+      "id": "mat-sistemas-pal-02",
+      "tema": "Matemática",
+      "palavra": "Rodas",
+      "dica": "Contam carros e motos"
+    },
+    {
+      "id": "mat-sistemas-pal-03",
+      "tema": "Matemática",
+      "palavra": "Mistura",
+      "dica": "Dois tipos, um total"
+    },
+    {
+      "id": "mat-sistemas-pal-04",
+      "tema": "Matemática",
+      "palavra": "Retas",
+      "dica": "Cruzam na solução"
+    },
+    {
+      "id": "mat-equacoes-2grau-pal-01",
+      "tema": "Matemática",
+      "palavra": "Delta",
+      "dica": "Discriminante"
+    },
+    {
+      "id": "mat-equacoes-2grau-pal-02",
+      "tema": "Matemática",
+      "palavra": "Moldura",
+      "dica": "Soma 2x em cada lado"
+    },
+    {
+      "id": "mat-equacoes-2grau-pal-03",
+      "tema": "Matemática",
+      "palavra": "Produto",
+      "dica": "Resultado da multiplicação"
+    },
+    {
+      "id": "mat-equacoes-2grau-pal-04",
+      "tema": "Matemática",
+      "palavra": "Quadrado",
+      "dica": "Número vezes ele mesmo"
     }
   ],
   "fichas": {
@@ -75433,6 +78859,132 @@
       "pegadinhas": [
         "Somar porcentagens seguidas.",
         "Responder o momento quando pediram o valor."
+      ]
+    },
+    "Expressões algébricas": {
+      "texto": [
+        "Traduza o texto: dobro 2x, metade x ÷ 2, consecutivos x e x + 1, aumento de 20% é 1,2x. Termos semelhantes se somam pelos números; a letra fica.",
+        "Distributiva: o número de fora multiplica todos os termos de dentro. Menos antes de parênteses troca todos os sinais. Ao substituir negativos, use parênteses: (−2)² = 4."
+      ],
+      "pontos": [
+        "2(x + 4) = 2x + 8.",
+        "−(x − 3) = −x + 3."
+      ],
+      "pegadinhas": [
+        "Dobrar só um termo do parêntese.",
+        "Esquecer o sinal ao substituir."
+      ]
+    },
+    "Resolver equações": {
+      "texto": [
+        "Isole a incógnita com a operação inversa, sempre nos dois lados. Primeiro desfaça somas e subtrações, depois multiplicações e divisões.",
+        "Parênteses: distributiva antes. Frações: multiplique tudo pelo denominador comum, ou multiplique em cruz quando há uma fração de cada lado. Confira substituindo."
+      ],
+      "pontos": [
+        "Letras de um lado, números do outro.",
+        "Em cruz: a/b = c/d → ad = bc."
+      ],
+      "pegadinhas": [
+        "Passar um termo sem trocar o sinal.",
+        "Multiplicar só um lado pelo denominador."
+      ]
+    },
+    "Problemas com equações": {
+      "texto": [
+        "Dê nome ao desconhecido, escreva cada informação como parte da equação e resolva. Idades: filho x, pai 3x. Consecutivos: x, x + 1, x + 2. Gastos fracionários: ache a fração que sobrou.",
+        "Problemas com faltas ou multas: dias trabalhados x e faltas (total − x). Divisões que mudam: iguale a parte nova à parte antiga mais o acréscimo. Responda o que foi perguntado."
+      ],
+      "pontos": [
+        "Some as partes: 1 + 3 = 4.",
+        "Aumento e desconto: desfaça na ordem inversa."
+      ],
+      "pegadinhas": [
+        "Responder a idade do pai quando pediram a do filho.",
+        "Esquecer o valor fixo da compra."
+      ]
+    },
+    "Montar o sistema": {
+      "texto": [
+        "Duas incógnitas pedem duas informações independentes: cada total do texto vira uma equação. Quantidades e valores: x + y = total de itens e px + qy = total em dinheiro.",
+        "Uma equação sozinha tem infinitas soluções. Equações proporcionais (uma é múltiplo da outra) têm infinitas soluções; mesmos coeficientes com totais incompatíveis, nenhuma."
+      ],
+      "pontos": [
+        "Rodas, patas, preços e quilos são os pesos.",
+        "Uma equação para cada total."
+      ],
+      "pegadinhas": [
+        "Trocar os pesos entre as incógnitas.",
+        "Somar os preços em vez de pesar cada um."
+      ]
+    },
+    "Resolver sistemas": {
+      "texto": [
+        "Substituição: isole uma letra e troque na outra equação. Adição: multiplique para que uma letra suma ao somar. Com coeficientes trocados (2x + 3y e 3x + 2y), some e subtraia as equações.",
+        "Graficamente, cada equação é uma reta; a solução é o ponto de cruzamento. Sempre confira os dois valores nas duas equações."
+      ],
+      "pontos": [
+        "Sinais opostos: some direto.",
+        "Letra sozinha: substitua."
+      ],
+      "pegadinhas": [
+        "Trocar os valores de x e y na resposta.",
+        "Esquecer de dividir pelo coeficiente."
+      ]
+    },
+    "Problemas com sistemas": {
+      "texto": [
+        "Ingressos, notas, misturas, compras, idades e provas com pontos e descontos: dois totais e duas incógnitas. Monte, resolva e responda o que foi pedido.",
+        "Idades: os dois envelhecem o mesmo tempo. Provas: acertos + erros = total de questões. \"A mais que\": c = b + 3."
+      ],
+      "pontos": [
+        "Confira com os números do texto.",
+        "Pediram inteiras ou meias? Carros ou motos?"
+      ],
+      "pegadinhas": [
+        "Responder a outra incógnita.",
+        "Somar anos só para um dos dois."
+      ]
+    },
+    "Equações incompletas": {
+      "texto": [
+        "Sem b (ax² + c = 0): isole x² e tire a raiz com ±. Sem c (ax² + bx = 0): x em evidência; x = 0 é sempre uma solução. x² negativo não tem solução real.",
+        "Nunca divida a equação por x: perde-se a solução zero. Formas como (x − 3)² = 16: tire a raiz com ± antes de isolar x."
+      ],
+      "pontos": [
+        "x(x − 6) = 0 → x = 0 ou 6.",
+        "Medida negativa se descarta."
+      ],
+      "pegadinhas": [
+        "Esquecer a solução negativa.",
+        "Dividir por x."
+      ]
+    },
+    "Bhaskara e soma e produto": {
+      "texto": [
+        "Δ = b² − 4ac; x = (−b ± √Δ) ÷ 2a. Δ > 0: duas soluções; Δ = 0: uma; Δ < 0: nenhuma real. Δ não quadrado perfeito: resposta com raiz (1 ± √2).",
+        "Soma das raízes −b ÷ a; produto c ÷ a. Com raízes r e s: x² − (r + s)x + rs = 0. Uma solução única: Δ = 0."
+      ],
+      "pontos": [
+        "Denominador 2a, não 2.",
+        "x² − Sx + P = 0."
+      ],
+      "pegadinhas": [
+        "Esquecer o sinal de −b.",
+        "Dividir só parte do numerador."
+      ]
+    },
+    "Problemas do 2º grau": {
+      "texto": [
+        "Monte com o texto: consecutivos x(x + 1); lado maior em 4, x(x + 4); moldura soma 2x em cada medida. Descarte soluções negativas em medidas e quantidades.",
+        "Divisão de valores com desistências: valor ÷ (n − k) = valor ÷ n + acréscimo, que vira equação do 2º grau. Lucro zero: raízes da função lucro."
+      ],
+      "pontos": [
+        "Confira com os números do texto.",
+        "Moldura: (a + 2x)(b + 2x)."
+      ],
+      "pegadinhas": [
+        "Somar x só de um lado na moldura.",
+        "Responder as pessoas que pagaram em vez do grupo inicial."
       ]
     }
   }
