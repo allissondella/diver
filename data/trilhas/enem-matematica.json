@@ -6661,7 +6661,7 @@
       "id": "mat-equacoes-1grau",
       "nome": "Aula 65 · Expressões e equações do 1º grau",
       "modulo": "Módulo 11 · Álgebra e sequências",
-      "descricao": "Módulo 11 · aula 1 de 3 · 35 min · treina as habilidades H19 e H21",
+      "descricao": "Módulo 11 · aula 1 de 6 · 35 min · treina as habilidades H19 e H21",
       "habilidades": [
         "H19",
         "H21"
@@ -6769,7 +6769,7 @@
       "id": "mat-sistemas",
       "nome": "Aula 66 · Sistemas de equações",
       "modulo": "Módulo 11 · Álgebra e sequências",
-      "descricao": "Módulo 11 · aula 2 de 3 · 35 min · treina as habilidades H21 e H22",
+      "descricao": "Módulo 11 · aula 2 de 6 · 35 min · treina as habilidades H21 e H22",
       "habilidades": [
         "H21",
         "H22"
@@ -6791,7 +6791,7 @@
           {
             "titulo": "Método da adição",
             "texto": [
-              "Na **adição**, multiplicam-se as equações por números convenientes para que, somadas, uma das letras suma. Em x + y = 30 e 4x + 2y = 100, multiplicando a primeira por −2: −2x − 2y = −60; somando com a segunda, 2x = 40. Funciona bem quando os coeficientes já são iguais ou opostos. Seja qual for o método, substitua os dois valores nas duas equações para conferir."
+              "Na **adição**, multiplicam-se as equações por números convenientes para que, somadas, uma das letras suma. Em x + y = 30 e 4x + 2y = 100, multiplicando a primeira por −2: −2x − 2y = −60; somando com a segunda, 2x = 40. Funciona bem quando os coeficientes já são iguais ou opostos, como 2y e −2y. Seja qual for o método, substitua os dois valores nas duas equações para conferir."
             ]
           },
           {
@@ -6875,7 +6875,7 @@
       "id": "mat-equacoes-2grau",
       "nome": "Aula 67 · Equações do 2º grau",
       "modulo": "Módulo 11 · Álgebra e sequências",
-      "descricao": "Módulo 11 · aula 3 de 3 · 35 min · treina a habilidade H21",
+      "descricao": "Módulo 11 · aula 3 de 6 · 35 min · treina a habilidade H21",
       "habilidades": [
         "H21"
       ],
@@ -6975,6 +6975,326 @@
           "incompletas",
           "discriminante",
           "soma e produto"
+        ]
+      }
+    },
+    {
+      "id": "mat-inequacoes",
+      "nome": "Aula 68 · Inequações e comparação de planos",
+      "modulo": "Módulo 11 · Álgebra e sequências",
+      "descricao": "Módulo 11 · aula 4 de 6 · 35 min · treina as habilidades H21 e H23",
+      "habilidades": [
+        "H21",
+        "H23"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Desigualdades",
+            "texto": [
+              "Uma inequação usa os sinais > (maior), < (menor), ≥ (maior ou igual) e ≤ (menor ou igual). Resolve-se quase como uma equação: soma-se, subtrai-se, multiplica-se e divide-se dos dois lados. Há uma regra a mais: multiplicando ou dividindo por um número negativo, o sentido **inverte o sinal** da desigualdade. Em −2x > 8, divide-se por −2 e fica x < −4. Confira com um número: x = −5 dá 10 > 8, verdadeiro."
+            ]
+          },
+          {
+            "titulo": "Conjunto solução",
+            "texto": [
+              "A resposta de uma inequação não é um número só, mas um **intervalo**: todos os valores que tornam a desigualdade verdadeira. x > 3 inclui 3,1, 4 e 100, mas não o próprio 3; x ≥ 3 inclui o 3. Em problemas com quantidades inteiras, como pessoas ou peças, escolha o menor ou o maior inteiro dentro dele: se x > 12,5, a primeira quantidade inteira é 13; se x ≤ 20,8, a maior é 20."
+            ]
+          },
+          {
+            "titulo": "Comparar planos",
+            "texto": [
+              "Para saber quando um plano é melhor que outro, escreva o custo de cada um e monte a desigualdade. A cobra R$ 50 mais R$ 0,20 por minuto; B cobra R$ 30 mais R$ 0,40. A é mais barato quando 50 + 0,2x < 30 + 0,4x, ou seja, 20 < 0,2x, e x > 100 minutos. O **empate**, em 100 minutos, separa os dois trechos, e a partir dele vale o plano com a menor taxa por minuto."
+            ]
+          },
+          {
+            "titulo": "2º grau e como o Enem cobra",
+            "texto": [
+              "Em inequações como x² − 5x + 6 < 0, ache as raízes (2 e 3) e use o formato da curva: com a > 0, ela fica abaixo do eixo entre as raízes, então 2 < x < 3; fora delas, fica acima. O Enem cobra comparação de planos e tarifas, lucro positivo, limites de peso e de velocidade, notas mínimas para aprovação e quantidades máximas dentro de um orçamento."
+            ]
+          }
+        ],
+        "introducao": "Quantas idas à academia compensam o plano mensal, a partir de quantos quilômetros o carro alugado sai mais barato, quantas peças a fábrica precisa vender para ter lucro: quando a pergunta é \"a partir de quando\" ou \"no máximo quanto\", a ferramenta é a inequação. Esta aula mostra como resolver e interpretar inequações.",
+        "mapaMental": {
+          "centro": "Inequações",
+          "ramos": [
+            {
+              "titulo": "Sinais",
+              "itens": [
+                "> e <",
+                "≥ e ≤ incluem o próprio número"
+              ]
+            },
+            {
+              "titulo": "Resolver",
+              "itens": [
+                "como equação",
+                "negativo vira a desigualdade"
+              ]
+            },
+            {
+              "titulo": "Resposta",
+              "itens": [
+                "intervalo de valores",
+                "inteiro certo dentro dele"
+              ]
+            },
+            {
+              "titulo": "Planos",
+              "itens": [
+                "empate separa os trechos",
+                "depois vale a menor taxa"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🪞",
+            "conceito": "Espelho",
+            "liga": "inverte o sinal",
+            "porque": "Multiplicou por negativo? A desigualdade se vira, como no espelho."
+          },
+          {
+            "icone": "🚦",
+            "conceito": "Placa de velocidade máxima 60",
+            "liga": "v ≤ 60",
+            "porque": "Limite é desigualdade, não um valor só."
+          },
+          {
+            "icone": "🍽️",
+            "conceito": "Rodízio ou à la carte",
+            "liga": "a conta muda de lado",
+            "porque": "Abaixo de certa quantidade, um vale mais; acima, o outro."
+          }
+        ],
+        "pontos": [
+          "Multiplicando ou dividindo por negativo, **inverte o sinal** da desigualdade.",
+          "A resposta é um **intervalo**; em quantidades inteiras, escolha o inteiro certo.",
+          "Planos: ache o **empate**; depois dele, vale a menor taxa.",
+          "2º grau com a > 0: negativo entre as raízes, positivo fora delas."
+        ],
+        "perolas": [
+          "x > 3 não inclui o 3; x ≥ 3 inclui."
+        ],
+        "reforcar": [
+          "inverte o sinal",
+          "intervalo",
+          "empate"
+        ]
+      }
+    },
+    {
+      "id": "mat-pa-pg",
+      "nome": "Aula 69 · Sequências, PA e PG",
+      "modulo": "Módulo 11 · Álgebra e sequências",
+      "descricao": "Módulo 11 · aula 5 de 6 · 35 min · treina as habilidades H2 e H15",
+      "habilidades": [
+        "H2",
+        "H15"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Padrões",
+            "texto": [
+              "Uma sequência é uma lista ordenada de números, os termos: a₁ é o primeiro, a₂ o segundo, e assim por diante. Para descobrir a regra, compare termos vizinhos: se a diferença é sempre a mesma, soma-se um valor fixo; se a divisão é sempre a mesma, multiplica-se por um valor fixo. Em figuras com palitos ou bolinhas, conte as três primeiras e veja quanto aumenta de uma para a outra. Há também sequências de outros tipos, como os quadrados (1, 4, 9, 16) e as que somam os dois termos anteriores."
+            ]
+          },
+          {
+            "titulo": "Progressão aritmética",
+            "texto": [
+              "Na **progressão aritmética** (PA), cada termo é o anterior mais a razão r: 3, 7, 11, 15 tem r = 4. O **termo geral** é aₙ = a₁ + (n − 1)r: o 20º termo dessa PA é 3 + 19 × 4 = 79. A soma dos n primeiros termos é Sₙ = (a₁ + aₙ) × n ÷ 2, a média do primeiro com o último vezes a quantidade: de 1 a 100, a soma é 101 × 100 ÷ 2 = 5.050. A PA é a versão em sequência da função afim."
+            ]
+          },
+          {
+            "titulo": "Progressão geométrica",
+            "texto": [
+              "Na **progressão geométrica** (PG), cada termo é o anterior vezes a razão q: 2, 6, 18, 54 tem q = 3. O termo geral é aₙ = a₁ · qⁿ⁻¹: o 6º termo é 2 × 3⁵ = 486. A soma de n termos é a₁(qⁿ − 1) ÷ (q − 1): 1 + 2 + 4 + ... + 512 = 1.023. Se q > 1, a PG cresce cada vez mais rápido; se 0 < q < 1, os termos diminuem pela mesma fração. A PG é a versão em sequência da função exponencial: juros compostos, populações e meia-vida formam PGs."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Figuras que crescem com palitos ou quadradinhos, economias com depósitos crescentes, prestações, degraus, assentos de teatro com fileiras que aumentam, empilhamentos, juros compostos e crescimento de populações. Antes de usar fórmulas, escreva os primeiros termos, descubra se a regra soma ou multiplica e confira o resultado num termo que você consegue contar."
+            ]
+          }
+        ],
+        "introducao": "Degraus de uma escada, poupança que cresce todo mês, figuras feitas com palitos, uma epidemia que dobra a cada semana: quando os números seguem uma regra, formam uma sequência. Esta aula ensina a descobrir padrões e a trabalhar com as duas sequências mais cobradas: a progressão aritmética e a progressão geométrica.",
+        "mapaMental": {
+          "centro": "Sequências",
+          "ramos": [
+            {
+              "titulo": "Padrão",
+              "itens": [
+                "comparar termos vizinhos",
+                "diferença fixa ou divisão fixa"
+              ]
+            },
+            {
+              "titulo": "Progressão aritmética",
+              "itens": [
+                "soma a razão r",
+                "aₙ = a₁ + (n − 1)r",
+                "Sₙ = (a₁ + aₙ) · n ÷ 2"
+              ]
+            },
+            {
+              "titulo": "Progressão geométrica",
+              "itens": [
+                "multiplica pela razão q",
+                "aₙ = a₁ · qⁿ⁻¹"
+              ]
+            },
+            {
+              "titulo": "Ligações",
+              "itens": [
+                "PA e função afim",
+                "PG e função exponencial"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🪜",
+            "conceito": "Escada",
+            "liga": "soma sempre o mesmo degrau",
+            "porque": "Cada degrau sobe a mesma altura: PA."
+          },
+          {
+            "icone": "🧫",
+            "conceito": "Colônia que dobra",
+            "liga": "multiplica a cada semana",
+            "porque": "Dobrar sempre é PG de razão 2."
+          },
+          {
+            "icone": "🎯",
+            "conceito": "Atalho para o 100º",
+            "liga": "termo geral",
+            "porque": "Não precisa listar todos: a fórmula vai direto."
+          }
+        ],
+        "pontos": [
+          "**Progressão aritmética**: soma a razão r; aₙ = a₁ + (n − 1)r.",
+          "Soma da PA: (a₁ + aₙ) × n ÷ 2.",
+          "**Progressão geométrica**: multiplica pela razão q; aₙ = a₁ · qⁿ⁻¹.",
+          "O **termo geral** leva direto a qualquer posição."
+        ],
+        "perolas": [
+          "De 1 a 100 somam 5.050.",
+          "PA anda como reta; PG, como exponencial."
+        ],
+        "reforcar": [
+          "progressao aritmetica",
+          "progressao geometrica",
+          "termo geral"
+        ]
+      }
+    },
+    {
+      "id": "mat-revisao-algebra",
+      "nome": "Aula 70 · Revisão do módulo: álgebra",
+      "modulo": "Módulo 11 · Álgebra e sequências",
+      "descricao": "Módulo 11 · aula 6 de 6 · 35 min · treina as habilidades H15, H19, H20, H21, H22 e H23",
+      "habilidades": [
+        "H15",
+        "H19",
+        "H20",
+        "H21",
+        "H22",
+        "H23"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Equações e sistemas",
+            "texto": [
+              "Traduza o texto: dê nome ao desconhecido e escreva cada informação. Equações do 1º grau se resolvem com a **operação inversa**, fazendo o mesmo dos dois lados; aplique a distributiva antes e elimine frações pelo denominador comum. Com duas quantidades desconhecidas, são precisas duas equações: resolva por substituição ou por adição e confira os dois valores nas duas equações."
+            ]
+          },
+          {
+            "titulo": "2º grau e inequações",
+            "texto": [
+              "Equações do 2º grau incompletas têm atalhos: sem b, isole x²; sem c, coloque x em evidência. Nas completas, calcule Δ = b² − 4ac e use x = (−b ± √Δ) ÷ 2a, descartando medidas negativas. Nas inequações, o cuidado é com o número negativo: multiplicando ou dividindo por ele, o sentido da desigualdade **se inverte**. Para comparar planos, ache o empate e veja qual vale depois dele."
+            ]
+          },
+          {
+            "titulo": "Sequências",
+            "texto": [
+              "Na PA, soma-se a razão: aₙ = a₁ + (n − 1)r, e a soma é (a₁ + aₙ) × n ÷ 2. Na PG, multiplica-se pela razão: aₙ = a₁ · qⁿ⁻¹. Antes da fórmula, escreva os primeiros termos e descubra se a regra soma ou multiplica; o **termo geral** leva direto a qualquer posição. Uma PA lembra a função afim; uma PG, a exponencial, como nos juros compostos."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada. Os tropeços mais comuns são passar um termo sem trocar o sinal, esquecer a solução negativa ou a solução zero, não inverter a desigualdade com negativos, responder a outra incógnita do sistema e contar n em vez de n − 1 no termo geral da PA. Quando errar, refaça a questão do zero no papel, sem olhar a resolução, e só então siga para a próxima: é assim que o erro vira acerto na prova."
+            ]
+          }
+        ],
+        "introducao": "Fim do módulo de álgebra e sequências. As questões desta revisão vêm misturadas, como na prova: o desafio é perceber se o problema pede uma equação, um sistema, uma equação do 2º grau, uma inequação ou uma sequência, e montar a conta certa a partir do texto.",
+        "mapaMental": {
+          "centro": "Álgebra",
+          "ramos": [
+            {
+              "titulo": "Equações",
+              "itens": [
+                "operação inversa",
+                "faça o mesmo nos dois lados",
+                "distributiva antes"
+              ]
+            },
+            {
+              "titulo": "Sistemas",
+              "itens": [
+                "duas equações",
+                "substituição ou adição"
+              ]
+            },
+            {
+              "titulo": "2º grau e inequações",
+              "itens": [
+                "Δ = b² − 4ac",
+                "desigualdade com negativo",
+                "empate"
+              ]
+            },
+            {
+              "titulo": "Sequências",
+              "itens": [
+                "PA soma a razão",
+                "PG multiplica pela razão"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🔁",
+            "conceito": "Placa virada",
+            "liga": "com negativo, o sinal se inverte",
+            "porque": "Dividiu por negativo? A desigualdade muda de lado."
+          },
+          {
+            "icone": "🎯",
+            "conceito": "GPS da sequência",
+            "liga": "termo geral",
+            "porque": "Vai direto à posição pedida sem listar tudo."
+          }
+        ],
+        "pontos": [
+          "Equações: **operação inversa** nos dois lados; confira a resposta.",
+          "Duas incógnitas pedem duas equações.",
+          "Com negativo, a desigualdade **se inverte**.",
+          "PA soma, PG multiplica; o **termo geral** vai a qualquer posição."
+        ],
+        "perolas": [
+          "Antes da fórmula, escreva os primeiros termos."
+        ],
+        "reforcar": [
+          "operacao inversa",
+          "se inverte",
+          "termo geral"
         ]
       }
     }
@@ -37935,6 +38255,1386 @@
         "Diferem em 7.",
         "O produto é 99.",
         "Diferem em 14.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q01",
+      "tema": "Resolver inequações",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é a solução de 2x + 3 > 11?",
+      "alternativas": [
+        "x > 7",
+        "x > 8",
+        "x > 4",
+        "x = 4",
+        "x < 4"
+      ],
+      "correta": 2,
+      "explicacao": "2x > 8, então x > 4. Dica de mergulhador: dividindo por positivo, o sinal fica.",
+      "comentarios": [
+        "Somou 3 em vez de subtrair.",
+        "Esqueceu de dividir por 2.",
+        "",
+        "A resposta é um intervalo.",
+        "Inverteu o sinal sem motivo."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q02",
+      "tema": "Resolver inequações",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é a solução de −2x > 8?",
+      "alternativas": [
+        "x > 4",
+        "x < 4",
+        "x < −4",
+        "x > −4",
+        "x > −16"
+      ],
+      "correta": 2,
+      "explicacao": "Dividindo por −2, o sentido inverte: x < −4. Dica de mergulhador: dividiu por negativo, vira o sinal.",
+      "comentarios": [
+        "Errou o sinal do número.",
+        "Errou o sinal do número.",
+        "",
+        "Não inverteu o sinal.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q03",
+      "tema": "Resolver inequações",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual destes números satisfaz x ≥ 5?",
+      "alternativas": [
+        "4,9",
+        "−5",
+        "4",
+        "0",
+        "5"
+      ],
+      "correta": 4,
+      "explicacao": "O sinal ≥ inclui o próprio 5. Dica de mergulhador: o tracinho embaixo é o \"ou igual\".",
+      "comentarios": [
+        "É menor que 5.",
+        "É menor que 5.",
+        "É menor que 5.",
+        "É menor que 5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q04",
+      "tema": "Resolver inequações",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é a solução de 5 − x < 2?",
+      "alternativas": [
+        "x > 7",
+        "x < 3",
+        "x > −3",
+        "x < −3",
+        "x > 3"
+      ],
+      "correta": 4,
+      "explicacao": "−x < −3; multiplicando por −1, x > 3. Dica de mergulhador: −x também pede inverter.",
+      "comentarios": [
+        "Somou 5.",
+        "Não inverteu o sinal.",
+        "Errou o sinal do número.",
+        "Errou o sinal do número.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q05",
+      "tema": "Resolver inequações",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é o menor número inteiro que satisfaz 3x − 7 > 30?",
+      "alternativas": [
+        "11",
+        "12,3",
+        "13",
+        "37",
+        "12"
+      ],
+      "correta": 2,
+      "explicacao": "3x > 37 → x > 12,33...; o menor inteiro é 13. Dica de mergulhador: arredonde para o inteiro dentro da solução.",
+      "comentarios": [
+        "Errou a conta.",
+        "Não é inteiro.",
+        "",
+        "Esqueceu de dividir por 3.",
+        "3 × 12 − 7 = 29, menor que 30."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q06",
+      "tema": "Resolver inequações",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Um aluno tirou 6 e 7 em duas provas e precisa de média pelo menos 7 nas três. Qual é a menor nota que ele pode tirar na terceira?",
+      "alternativas": [
+        "1",
+        "7",
+        "8",
+        "7,5",
+        "9"
+      ],
+      "correta": 2,
+      "explicacao": "(6 + 7 + x) ÷ 3 ≥ 7 → 13 + x ≥ 21 → x ≥ 8. Dica de mergulhador: multiplique a média pelo número de provas.",
+      "comentarios": [
+        "Subtraiu 13 de 14.",
+        "A média ficaria 6,67.",
+        "",
+        "Usou média de duas provas.",
+        "É mais do que precisa."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q07",
+      "tema": "Resolver inequações",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Um elevador suporta no máximo 600 kg. O operador pesa 80 kg e vai levar caixas de 25 kg. Quantas caixas, no máximo, ele pode levar junto?",
+      "alternativas": [
+        "24",
+        "26",
+        "20",
+        "21",
+        "20,8"
+      ],
+      "correta": 2,
+      "explicacao": "80 + 25n ≤ 600 → n ≤ 20,8 → no máximo 20 caixas. Dica de mergulhador: no máximo, arredonde para baixo.",
+      "comentarios": [
+        "Esqueceu o operador.",
+        "Somou o peso do operador.",
+        "",
+        "Arredondou 20,8 para cima e passaria do limite.",
+        "Caixa não se divide."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q08",
+      "tema": "Comparar planos",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "O plano A cobra R$ 50 mais R$ 0,20 por minuto; o plano B, R$ 30 mais R$ 0,40 por minuto. Para quem usa 80 minutos, qual é mais barato?",
+      "alternativas": [
+        "Os dois custam o mesmo",
+        "O A, com R$ 66 contra R$ 62",
+        "O B, com R$ 32",
+        "O B, com R$ 62 contra R$ 66",
+        "O A, por ter taxa menor"
+      ],
+      "correta": 3,
+      "explicacao": "A: 50 + 16 = 66. B: 30 + 32 = 62. Dica de mergulhador: antes do empate, ganha quem tem fixo menor.",
+      "comentarios": [
+        "O empate é em 100 minutos.",
+        "R$ 62 é menor.",
+        "Esqueceu o fixo.",
+        "",
+        "Abaixo do empate, vence o fixo menor."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q09",
+      "tema": "Comparar planos",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Um estúdio cobra R$ 80 por mês, sem limite, ou R$ 2 por hora avulsa. Até quantas horas inteiras no mês a hora avulsa sai mais barata?",
+      "alternativas": [
+        "Até 40 horas",
+        "Até 80 horas",
+        "Até 20 horas",
+        "Até 39 horas",
+        "A partir de 40 horas"
+      ],
+      "correta": 3,
+      "explicacao": "2x < 80 → x < 40: até 39 horas inteiras. Dica de mergulhador: em 40, há empate.",
+      "comentarios": [
+        "Com 40, os dois custam R$ 80.",
+        "Usou R$ 1 por hora.",
+        "Dividiu por 4.",
+        "",
+        "Aí o mensal vence ou empata."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q10",
+      "tema": "Comparar planos",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "A locadora A cobra R$ 100 por dia, sem limite de km. A locadora B cobra R$ 60 por dia mais R$ 0,50 por km. A partir de quantos km, num dia, a locadora A fica mais barata?",
+      "alternativas": [
+        "Mais de 120 km",
+        "Mais de 40 km",
+        "Menos de 80 km",
+        "Mais de 80 km",
+        "Mais de 200 km"
+      ],
+      "correta": 3,
+      "explicacao": "60 + 0,5x > 100 → 0,5x > 40 → x > 80 km. Dica de mergulhador: ache onde B passa do preço de A.",
+      "comentarios": [
+        "Dividiu 60 por 0,5.",
+        "Dividiu 40 por 1.",
+        "Abaixo de 80, B é mais barata.",
+        "",
+        "Dividiu 100 por 0,5."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q11",
+      "tema": "Comparar planos",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Uma academia cobra R$ 90 por mês ou R$ 12 por dia avulso. A partir de quantas idas no mês o plano mensal compensa?",
+      "alternativas": [
+        "A partir de 12 idas",
+        "A partir de 9 idas",
+        "A partir de 7,5 idas",
+        "A partir de 8 idas",
+        "A partir de 7 idas"
+      ],
+      "correta": 3,
+      "explicacao": "12x > 90 → x > 7,5; o primeiro inteiro é 8. Dica de mergulhador: compare com o inteiro seguinte.",
+      "comentarios": [
+        "Usou o preço da diária.",
+        "Com 8 já compensa.",
+        "Ninguém vai meia vez.",
+        "",
+        "7 avulsas custam R$ 84, menos que R$ 90."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q12",
+      "tema": "Comparar planos",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Um vendedor pode escolher: A, salário fixo de R$ 2.000; ou B, R$ 1.200 mais 4% das vendas. A partir de quanto em vendas o B é melhor?",
+      "alternativas": [
+        "Mais de R$ 30.000",
+        "Mais de R$ 800",
+        "Mais de R$ 50.000",
+        "Mais de R$ 20.000",
+        "Mais de R$ 3.200"
+      ],
+      "correta": 3,
+      "explicacao": "1.200 + 0,04v > 2.000 → 0,04v > 800 → v > 20.000. Dica de mergulhador: a comissão precisa cobrir a diferença.",
+      "comentarios": [
+        "Dividiu 1.200 por 0,04.",
+        "É a diferença dos fixos.",
+        "Dividiu 2.000 por 0,04.",
+        "",
+        "Somou os salários."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q13",
+      "tema": "Comparar planos",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Três planos: A cobra R$ 40 mais R$ 1 por hora; B, R$ 20 mais R$ 2 por hora; C, R$ 70 fixos. Para que uso o plano C é o mais barato de todos?",
+      "alternativas": [
+        "Mais de 25 horas",
+        "Nunca",
+        "Menos de 25 horas",
+        "Mais de 30 horas",
+        "Mais de 20 horas"
+      ],
+      "correta": 3,
+      "explicacao": "C < A: 70 < 40 + x → x > 30. C < B: 70 < 20 + 2x → x > 25. Os dois juntos: x > 30. Dica de mergulhador: precisa vencer os dois rivais.",
+      "comentarios": [
+        "Entre 25 e 30 horas, A ainda é mais barato que C.",
+        "Acima de 30 horas, C vence.",
+        "Aí C é o mais caro.",
+        "",
+        "É o empate de A e B."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q14",
+      "tema": "Comparar planos",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Uma fábrica vende cada peça por R$ 15. O custo é R$ 2.000 fixos mais R$ 7 por peça. Quantas peças, no mínimo, ela precisa vender para ter lucro?",
+      "alternativas": [
+        "251",
+        "134",
+        "250",
+        "91",
+        "286"
+      ],
+      "correta": 0,
+      "explicacao": "15x > 2.000 + 7x → 8x > 2.000 → x > 250; mínimo 251. Dica de mergulhador: lucro exige passar do empate.",
+      "comentarios": [
+        "",
+        "Dividiu 2.000 por 15.",
+        "Com 250, o lucro é zero.",
+        "Dividiu 2.000 por 22.",
+        "Dividiu 2.000 por 7."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q15",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "As raízes de x² − 5x + 6 são 2 e 3. Qual é a solução de x² − 5x + 6 < 0?",
+      "alternativas": [
+        "x < 2",
+        "2 < x < 3",
+        "x < 2 ou x > 3",
+        "x = 2 ou x = 3",
+        "x > 3"
+      ],
+      "correta": 1,
+      "explicacao": "Com a > 0, a curva fica abaixo do eixo entre as raízes. Dica de mergulhador: a positivo: negativo entre as raízes.",
+      "comentarios": [
+        "Aí a expressão é positiva.",
+        "",
+        "Aí a expressão é positiva.",
+        "Aí a expressão é zero.",
+        "Aí a expressão é positiva."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q16",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é a solução de x² − 9 ≤ 0?",
+      "alternativas": [
+        "−9 ≤ x ≤ 9",
+        "x ≤ 3",
+        "x ≤ −3 ou x ≥ 3",
+        "x = 3",
+        "−3 ≤ x ≤ 3"
+      ],
+      "correta": 4,
+      "explicacao": "Raízes −3 e 3; com a > 0, negativo entre elas, incluindo as raízes pelo ≤. Dica de mergulhador: ≤ inclui as raízes.",
+      "comentarios": [
+        "Não tirou a raiz.",
+        "Inclui −4, com 16 − 9 > 0.",
+        "Aí a expressão é positiva.",
+        "A resposta é um intervalo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q17",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "O lucro de uma oficina é L(x) = −x² + 14x − 40, com x consertos por dia. Para que valores de x há lucro positivo?",
+      "alternativas": [
+        "x > 4",
+        "4 < x < 10",
+        "x < 4 ou x > 10",
+        "x = 7",
+        "4 ≤ x ≤ 10"
+      ],
+      "correta": 1,
+      "explicacao": "Raízes 4 e 10; com a < 0, positivo entre elas. Dica de mergulhador: a negativo, positivo no meio.",
+      "comentarios": [
+        "Acima de 10, há prejuízo.",
+        "",
+        "Aí o lucro é negativo.",
+        "É o máximo, não o único lucro.",
+        "Nas raízes, o lucro é zero."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q18",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Quantos números inteiros satisfazem x² − 6x + 5 < 0?",
+      "alternativas": [
+        "3",
+        "2",
+        "5",
+        "4",
+        "Infinitos"
+      ],
+      "correta": 0,
+      "explicacao": "Raízes 1 e 5: 1 < x < 5, ou seja, 2, 3 e 4. Dica de mergulhador: desigualdade estrita exclui as raízes.",
+      "comentarios": [
+        "",
+        "Esqueceu o 3 ou o 4.",
+        "Incluiu as raízes 1 e 5.",
+        "Incluiu uma das raízes.",
+        "O intervalo é limitado."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q19",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "A altura de uma bola é h(t) = −5t² + 30t, em metros, com t em segundos. Durante que intervalo ela fica acima de 40 m?",
+      "alternativas": [
+        "Antes de 2 s",
+        "Entre 2 s e 4 s",
+        "Entre 0 s e 6 s",
+        "Depois de 4 s",
+        "Só em 3 s"
+      ],
+      "correta": 1,
+      "explicacao": "−5t² + 30t > 40 → t² − 6t + 8 < 0 → 2 < t < 4. Dica de mergulhador: passe tudo para um lado e ache as raízes.",
+      "comentarios": [
+        "Aí ainda está abaixo de 40 m.",
+        "",
+        "É todo o voo.",
+        "Depois de 4 s ela desce abaixo de 40 m.",
+        "Em 3 s está no topo, mas não só ali."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q20",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Para que valores reais de x vale x² + 4 > 0?",
+      "alternativas": [
+        "Para x > 2 ou x < −2",
+        "Só para x > 0",
+        "Só para x = 0",
+        "Para nenhum número real",
+        "Para todos os números reais"
+      ],
+      "correta": 4,
+      "explicacao": "x² ≥ 0, então x² + 4 ≥ 4 > 0 sempre. Dica de mergulhador: Δ < 0 com a > 0: sempre positivo.",
+      "comentarios": [
+        "Tratou como x² − 4.",
+        "Negativos ao quadrado também são positivos.",
+        "Vale para todos.",
+        "x² + 4 é sempre pelo menos 4.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q01",
+      "tema": "Padrões e sequências",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o próximo termo da sequência 5, 9, 13, 17, ...?",
+      "alternativas": [
+        "34",
+        "19",
+        "20",
+        "21",
+        "22"
+      ],
+      "correta": 3,
+      "explicacao": "A diferença é sempre 4: 17 + 4 = 21. Dica de mergulhador: compare vizinhos.",
+      "comentarios": [
+        "Dobrou.",
+        "Somou 2.",
+        "Somou 3.",
+        "",
+        "Somou 5."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q02",
+      "tema": "Padrões e sequências",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o próximo termo da sequência 3, 6, 12, 24, ...?",
+      "alternativas": [
+        "27",
+        "72",
+        "36",
+        "48",
+        "30"
+      ],
+      "correta": 3,
+      "explicacao": "Cada termo é o dobro do anterior: 24 × 2 = 48. Dica de mergulhador: divisão constante, multiplicação constante.",
+      "comentarios": [
+        "Somou 3.",
+        "Multiplicou por 3.",
+        "Somou 12.",
+        "",
+        "Somou 6."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q03",
+      "tema": "Padrões e sequências",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Com palitos, monta-se uma fila de quadrados encostados: 1 quadrado usa 4 palitos, 2 quadrados usam 7 e 3 quadrados usam 10. Quantos palitos são precisos para 5 quadrados?",
+      "alternativas": [
+        "15",
+        "20",
+        "13",
+        "16",
+        "19"
+      ],
+      "correta": 3,
+      "explicacao": "Cada quadrado novo acrescenta 3 palitos: 10, 13, 16. Dica de mergulhador: conte quanto aumenta de uma figura para a outra.",
+      "comentarios": [
+        "Usou 3 por quadrado sem o palito inicial.",
+        "Usou 4 palitos por quadrado.",
+        "É para 4 quadrados.",
+        "",
+        "É para 6 quadrados."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q04",
+      "tema": "Padrões e sequências",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o 7º termo da sequência 1, 4, 9, 16, ...?",
+      "alternativas": [
+        "64",
+        "49",
+        "25",
+        "28",
+        "36"
+      ],
+      "correta": 1,
+      "explicacao": "São os quadrados: o 7º termo é 7² = 49. Dica de mergulhador: termo n = n².",
+      "comentarios": [
+        "É o 8º termo.",
+        "",
+        "É o 5º termo.",
+        "Somou 3, 5, 7... de forma errada.",
+        "É o 6º termo."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q05",
+      "tema": "Padrões e sequências",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Na fila de quadrados de palitos (4, 7, 10, ...), quantos palitos são precisos para 20 quadrados?",
+      "alternativas": [
+        "61",
+        "60",
+        "80",
+        "58",
+        "64"
+      ],
+      "correta": 0,
+      "explicacao": "Regra: 3n + 1. Para n = 20: 61. Dica de mergulhador: ache a fórmula e substitua.",
+      "comentarios": [
+        "",
+        "Esqueceu o palito inicial.",
+        "Usou 4 por quadrado.",
+        "Usou 3 × 19 + 1.",
+        "Errou a regra."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q06",
+      "tema": "Padrões e sequências",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Na sequência 1, 1, 2, 3, 5, 8, ..., cada termo é a soma dos dois anteriores. Qual é o 10º termo?",
+      "alternativas": [
+        "89",
+        "55",
+        "34",
+        "21",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "1, 1, 2, 3, 5, 8, 13, 21, 34, 55. Dica de mergulhador: escreva termo a termo.",
+      "comentarios": [
+        "É o 11º termo.",
+        "",
+        "É o 9º termo.",
+        "É o 8º termo.",
+        "Dobrou o 8."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q07",
+      "tema": "Progressão aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é a razão da PA 3, 7, 11, 15, ...?",
+      "alternativas": [
+        "7/3",
+        "3",
+        "2",
+        "15",
+        "4"
+      ],
+      "correta": 4,
+      "explicacao": "7 − 3 = 4. Dica de mergulhador: razão da PA = diferença entre vizinhos.",
+      "comentarios": [
+        "Dividiu termos, como numa PG.",
+        "É o primeiro termo.",
+        "Dividiu 4 por 2.",
+        "É o quarto termo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q08",
+      "tema": "Progressão aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o 20º termo da PA 3, 7, 11, ...?",
+      "alternativas": [
+        "80",
+        "60",
+        "76",
+        "83",
+        "79"
+      ],
+      "correta": 4,
+      "explicacao": "a₂₀ = 3 + 19 × 4 = 79. Dica de mergulhador: do 1º ao 20º são 19 saltos.",
+      "comentarios": [
+        "Multiplicou 20 por 4.",
+        "Multiplicou 20 por 3.",
+        "Usou 19 × 4 sem o a₁.",
+        "Usou n em vez de n − 1.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q09",
+      "tema": "Progressão aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é a soma de todos os inteiros de 1 a 100?",
+      "alternativas": [
+        "101",
+        "10.100",
+        "5.050",
+        "4.950",
+        "5.000"
+      ],
+      "correta": 2,
+      "explicacao": "(1 + 100) × 100 ÷ 2 = 5.050. Dica de mergulhador: primeiro mais último, vezes a quantidade, dividido por 2.",
+      "comentarios": [
+        "Parou em a₁ + aₙ.",
+        "Esqueceu de dividir por 2.",
+        "",
+        "Somou de 1 a 99.",
+        "Fez 100 × 100 ÷ 2."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q10",
+      "tema": "Progressão aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Um teatro tem 15 fileiras. A primeira tem 20 cadeiras, e cada fileira tem 2 cadeiras a mais que a anterior. Quantas cadeiras há no total?",
+      "alternativas": [
+        "1.020",
+        "300",
+        "510",
+        "480",
+        "720"
+      ],
+      "correta": 2,
+      "explicacao": "a₁₅ = 20 + 14 × 2 = 48. Total: (20 + 48) × 15 ÷ 2 = 510. Dica de mergulhador: ache o último antes de somar.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "Usou 20 cadeiras em todas.",
+        "",
+        "Usou a última fileira com 44.",
+        "Usou 48 em todas."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q11",
+      "tema": "Progressão aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Uma pessoa guarda R$ 50 no 1º mês, R$ 60 no 2º, R$ 70 no 3º, e assim por diante. Quanto ela guarda no 12º mês?",
+      "alternativas": [
+        "R$ 110",
+        "R$ 600",
+        "R$ 160",
+        "R$ 120",
+        "R$ 170"
+      ],
+      "correta": 2,
+      "explicacao": "a₁₂ = 50 + 11 × 10 = 160. Dica de mergulhador: 11 aumentos do 1º ao 12º.",
+      "comentarios": [
+        "Usou 6 saltos.",
+        "Multiplicou 50 por 12.",
+        "",
+        "Somou 10 × 12 sem o inicial.",
+        "Usou 12 saltos."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q12",
+      "tema": "Progressão aritmética",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Guardando R$ 50 no 1º mês, R$ 60 no 2º, R$ 70 no 3º, e assim por diante, quanto a pessoa terá guardado ao todo em 12 meses?",
+      "alternativas": [
+        "R$ 2.520",
+        "R$ 160",
+        "R$ 1.920",
+        "R$ 600",
+        "R$ 1.260"
+      ],
+      "correta": 4,
+      "explicacao": "a₁₂ = 160. Soma: (50 + 160) × 12 ÷ 2 = 1.260. Dica de mergulhador: total pede a soma, não o último.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "É só o 12º depósito.",
+        "Usou R$ 160 todo mês.",
+        "Usou R$ 50 todo mês.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q13",
+      "tema": "Progressão aritmética",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Numa PA, o 3º termo é 10 e o 7º é 22. Qual é o 20º termo?",
+      "alternativas": [
+        "44",
+        "58",
+        "61",
+        "64",
+        "70"
+      ],
+      "correta": 2,
+      "explicacao": "Do 3º ao 7º são 4 saltos: r = 12 ÷ 4 = 3. a₁ = 10 − 6 = 4. a₂₀ = 4 + 57 = 61. Dica de mergulhador: entre dois termos, divida a diferença pelos saltos.",
+      "comentarios": [
+        "Dobrou o 7º termo.",
+        "Usou 18 saltos.",
+        "",
+        "Errou o primeiro termo.",
+        "Usou razão 3 a partir do 10."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q14",
+      "tema": "Progressão geométrica",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é a razão da PG 2, 6, 18, 54, ...?",
+      "alternativas": [
+        "2",
+        "1/3",
+        "3",
+        "4",
+        "12"
+      ],
+      "correta": 2,
+      "explicacao": "6 ÷ 2 = 3. Dica de mergulhador: razão da PG = divisão entre vizinhos.",
+      "comentarios": [
+        "É o primeiro termo.",
+        "Inverteu a divisão.",
+        "",
+        "Subtraiu, como numa PA.",
+        "Subtraiu 6 de 18."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q15",
+      "tema": "Progressão geométrica",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o 6º termo da PG 2, 6, 18, ...?",
+      "alternativas": [
+        "36",
+        "728",
+        "486",
+        "1.458",
+        "162"
+      ],
+      "correta": 2,
+      "explicacao": "a₆ = 2 × 3⁵ = 2 × 243 = 486. Dica de mergulhador: expoente n − 1.",
+      "comentarios": [
+        "Multiplicou 2 × 3 × 6.",
+        "Somou os termos.",
+        "",
+        "Usou 3⁶.",
+        "É o 5º termo."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q16",
+      "tema": "Progressão geométrica",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Numa epidemia, houve 10 casos na semana 1, e o número de casos novos dobra a cada semana. Quantos casos novos há na semana 6?",
+      "alternativas": [
+        "60",
+        "160",
+        "320",
+        "120",
+        "640"
+      ],
+      "correta": 2,
+      "explicacao": "a₆ = 10 × 2⁵ = 320. Dica de mergulhador: semana 1 é o a₁.",
+      "comentarios": [
+        "Somou 10 por semana.",
+        "É a semana 5.",
+        "",
+        "Multiplicou 10 × 2 × 6.",
+        "Usou 2⁶."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q17",
+      "tema": "Progressão geométrica",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "R$ 1.000 rendem 10% ao mês, com juros compostos: R$ 1.100, R$ 1.210, R$ 1.331, ... Qual é a razão dessa PG?",
+      "alternativas": [
+        "10",
+        "0,1",
+        "1,21",
+        "110",
+        "1,1"
+      ],
+      "correta": 4,
+      "explicacao": "1.210 ÷ 1.100 = 1,1. Dica de mergulhador: crescer 10% é multiplicar por 1,1.",
+      "comentarios": [
+        "Usou o número da porcentagem.",
+        "É só o juro.",
+        "É o fator acumulado de dois meses.",
+        "Subtraiu, como numa PA.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q18",
+      "tema": "Progressão geométrica",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Uma bola cai de 8 m e, a cada quique, sobe à metade da altura anterior. Que altura ela atinge depois do 4º quique?",
+      "alternativas": [
+        "0,5 m",
+        "2 m",
+        "0,25 m",
+        "4 m",
+        "1 m"
+      ],
+      "correta": 0,
+      "explicacao": "8 × (1/2)⁴ = 8 ÷ 16 = 0,5 m. Dica de mergulhador: cada quique multiplica por 1/2.",
+      "comentarios": [
+        "",
+        "Dividiu 8 por 4.",
+        "É depois do 5º quique.",
+        "É depois do 1º quique.",
+        "É depois do 3º quique."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q19",
+      "tema": "Progressão geométrica",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é a soma dos 10 primeiros termos da PG 1, 2, 4, 8, ...?",
+      "alternativas": [
+        "1.024",
+        "110",
+        "512",
+        "2.047",
+        "1.023"
+      ],
+      "correta": 4,
+      "explicacao": "S₁₀ = 1 × (2¹⁰ − 1) ÷ (2 − 1) = 1.023. Dica de mergulhador: Sₙ = a₁(qⁿ − 1) ÷ (q − 1).",
+      "comentarios": [
+        "É 2¹⁰, sem o − 1.",
+        "Somou como PA.",
+        "É só o 10º termo.",
+        "Somou 11 termos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q20",
+      "tema": "Progressão geométrica",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Ana deposita R$ 100 no mês 1 e aumenta R$ 100 a cada mês (100, 200, 300...). Bia deposita R$ 1 no mês 1 e dobra a cada mês (1, 2, 4...). Em que mês o depósito de Bia passa a ser maior que o de Ana pela primeira vez?",
+      "alternativas": [
+        "No mês 10",
+        "No mês 11",
+        "No mês 20",
+        "No mês 12",
+        "Nunca"
+      ],
+      "correta": 3,
+      "explicacao": "Mês 11: 1.100 contra 1.024. Mês 12: 1.200 contra 2.048. Dica de mergulhador: compare termo a termo perto do cruzamento.",
+      "comentarios": [
+        "Ana deposita 1.000 e Bia 512.",
+        "Ana deposita 1.100 e Bia 1.024.",
+        "Já passou bem antes.",
+        "",
+        "A PG sempre passa a PA."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q01",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é a solução de 5x − 8 = 27?",
+      "alternativas": [
+        "x = 7",
+        "x = 3,8",
+        "x = 6",
+        "x = 35",
+        "x = 19"
+      ],
+      "correta": 0,
+      "explicacao": "5x = 35, então x = 7. Dica de mergulhador: desfaça o − 8 e depois o × 5.",
+      "comentarios": [
+        "",
+        "Subtraiu 8 em vez de somar.",
+        "Errou a conta.",
+        "Esqueceu de dividir por 5.",
+        "Dividiu só o 27."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q02",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Dois números somam 20 e a diferença entre eles é 6. Qual é o maior?",
+      "alternativas": [
+        "26",
+        "13",
+        "14",
+        "10",
+        "7"
+      ],
+      "correta": 1,
+      "explicacao": "x + y = 20 e x − y = 6: 2x = 26, x = 13. Dica de mergulhador: some as equações.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "",
+        "Errou a conta.",
+        "Dividiu 20 por 2.",
+        "É o menor."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q03",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Quais são as soluções de x² − 36 = 0?",
+      "alternativas": [
+        "x = 0 ou x = 36",
+        "Só x = 6",
+        "x = 18 ou x = −18",
+        "x = 36 ou x = −36",
+        "x = 6 ou x = −6"
+      ],
+      "correta": 4,
+      "explicacao": "x² = 36 → x = ±6. Dica de mergulhador: raiz com ±.",
+      "comentarios": [
+        "Fatorou errado.",
+        "Esqueceu o negativo.",
+        "Dividiu por 2.",
+        "Não tirou a raiz.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q04",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é a solução de −4x > 20?",
+      "alternativas": [
+        "x > −5",
+        "x > −80",
+        "x < 5",
+        "x > 5",
+        "x < −5"
+      ],
+      "correta": 4,
+      "explicacao": "Dividindo por −4, inverte: x < −5. Dica de mergulhador: negativo vira a desigualdade.",
+      "comentarios": [
+        "Não inverteu o sinal.",
+        "Multiplicou.",
+        "Errou o sinal do número.",
+        "Errou o sinal do número.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q05",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é o 10º termo da PA 4, 9, 14, ...?",
+      "alternativas": [
+        "49",
+        "40",
+        "50",
+        "54",
+        "45"
+      ],
+      "correta": 0,
+      "explicacao": "a₁₀ = 4 + 9 × 5 = 49. Dica de mergulhador: n − 1 saltos.",
+      "comentarios": [
+        "",
+        "Multiplicou 10 por 4.",
+        "Multiplicou 10 por 5.",
+        "Usou 10 saltos.",
+        "Esqueceu o primeiro termo."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q06",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é o 6º termo da PG 5, 10, 20, ...?",
+      "alternativas": [
+        "320",
+        "160",
+        "30",
+        "60",
+        "80"
+      ],
+      "correta": 1,
+      "explicacao": "a₆ = 5 × 2⁵ = 160. Dica de mergulhador: expoente n − 1.",
+      "comentarios": [
+        "Usou 2⁶.",
+        "",
+        "Somou 5.",
+        "Multiplicou 5 × 2 × 6.",
+        "É o 5º termo."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q07",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual expressão representa \"o triplo de um número, menos 4\"?",
+      "alternativas": [
+        "3x − 4",
+        "x − 3 − 4",
+        "4 − 3x",
+        "x³ − 4",
+        "3(x − 4)"
+      ],
+      "correta": 0,
+      "explicacao": "Triplo: 3x. Menos 4: − 4. Dica de mergulhador: traduza parte por parte.",
+      "comentarios": [
+        "",
+        "Subtraiu 3 em vez de triplicar.",
+        "Inverteu a subtração.",
+        "Triplo não é cubo.",
+        "Triplicou também o 4."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q08",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Duas camisetas e três bonés custam R$ 190. A camiseta custa R$ 20 a mais que o boné. Quanto custa a camiseta?",
+      "alternativas": [
+        "R$ 58",
+        "R$ 30",
+        "R$ 40",
+        "R$ 50",
+        "R$ 38"
+      ],
+      "correta": 3,
+      "explicacao": "2(b + 20) + 3b = 190 → 5b = 150 → b = 30; camiseta R$ 50. Dica de mergulhador: responda a incógnita pedida.",
+      "comentarios": [
+        "Somou 20 ao preço médio.",
+        "É o preço do boné.",
+        "Errou a conta.",
+        "",
+        "Dividiu 190 por 5."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q09",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é a soma de todos os inteiros de 1 a 40?",
+      "alternativas": [
+        "780",
+        "1.640",
+        "41",
+        "820",
+        "800"
+      ],
+      "correta": 3,
+      "explicacao": "(1 + 40) × 40 ÷ 2 = 820. Dica de mergulhador: primeiro + último, vezes n, ÷ 2.",
+      "comentarios": [
+        "Somou de 1 a 39.",
+        "Esqueceu de dividir por 2.",
+        "Parou em a₁ + aₙ.",
+        "",
+        "Fez 40 × 40 ÷ 2."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q10",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Um retângulo tem 72 m² de área, e o comprimento é o dobro da largura. Quais são as medidas?",
+      "alternativas": [
+        "36 m e 2 m",
+        "4 m e 18 m",
+        "8 m e 9 m",
+        "6 m e 12 m",
+        "12 m e 24 m"
+      ],
+      "correta": 3,
+      "explicacao": "x · 2x = 72 → x² = 36 → x = 6. Dica de mergulhador: descarte o −6.",
+      "comentarios": [
+        "Não respeita o dobro.",
+        "Não respeita o dobro.",
+        "O comprimento não é o dobro.",
+        "",
+        "A área seria 288."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q11",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "O táxi A cobra R$ 6 de bandeirada mais R$ 2,50 por km; o táxi B, R$ 10 mais R$ 2,00 por km. A partir de quantos km o táxi B fica mais barato?",
+      "alternativas": [
+        "Menos de 8 km",
+        "Mais de 2 km",
+        "Mais de 4 km",
+        "Mais de 8 km",
+        "Mais de 20 km"
+      ],
+      "correta": 3,
+      "explicacao": "10 + 2x < 6 + 2,5x → 4 < 0,5x → x > 8. Dica de mergulhador: depois do empate, vence a taxa menor.",
+      "comentarios": [
+        "Abaixo de 8, o A é mais barato.",
+        "Dividiu 4 por 2.",
+        "Usou a diferença dos fixos sem dividir.",
+        "",
+        "Dividiu 10 por 0,5."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q12",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma pessoa tem 15 moedas, de R$ 0,50 e de R$ 1,00, que somam R$ 11. Quantas são de R$ 0,50?",
+      "alternativas": [
+        "11",
+        "22",
+        "4",
+        "8",
+        "7"
+      ],
+      "correta": 3,
+      "explicacao": "0,5x + 1(15 − x) = 11 → −0,5x = −4 → x = 8. Dica de mergulhador: confira: 4 + 7 = 11.",
+      "comentarios": [
+        "Usou o total em reais.",
+        "Dividiu 11 por 0,5.",
+        "Errou a conta.",
+        "",
+        "São as de R$ 1,00."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q13",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Quais são as soluções de x² − x − 12 = 0?",
+      "alternativas": [
+        "12 e 1",
+        "6 e −2",
+        "−4 e 3",
+        "4 e −3",
+        "3 e 4"
+      ],
+      "correta": 3,
+      "explicacao": "Δ = 1 + 48 = 49; x = (1 ± 7) ÷ 2: 4 ou −3. Dica de mergulhador: produto −12, soma 1.",
+      "comentarios": [
+        "Usou os coeficientes.",
+        "A soma seria 4.",
+        "Errou o sinal de −b.",
+        "",
+        "O produto seria +12."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q14",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Um aluno tirou 6 e 8 em duas provas e precisa de média pelo menos 7,5 nas três. Qual é a menor nota que pode tirar na terceira?",
+      "alternativas": [
+        "1,5",
+        "8,5",
+        "9",
+        "7,5",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "14 + x ≥ 22,5 → x ≥ 8,5. Dica de mergulhador: total = média × número de provas.",
+      "comentarios": [
+        "Subtraiu 6 de 7,5.",
+        "",
+        "É mais do que precisa.",
+        "A média ficaria 7,17.",
+        "A média ficaria 7,33."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q15",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma colônia começa com 200 bactérias e triplica a cada hora. Quantas haverá depois de 4 horas?",
+      "alternativas": [
+        "16.200",
+        "5.400",
+        "2.600",
+        "2.400",
+        "48.600"
+      ],
+      "correta": 0,
+      "explicacao": "200 × 3⁴ = 200 × 81 = 16.200. Dica de mergulhador: depois de 4 horas, 4 multiplicações.",
+      "comentarios": [
+        "",
+        "Contou 3 horas.",
+        "Multiplicou 200 por 13.",
+        "Somou 600 por hora.",
+        "Contou 5 horas."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q16",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Quantos números inteiros satisfazem x² − 4x − 5 < 0?",
+      "alternativas": [
+        "6",
+        "Infinitos",
+        "4",
+        "7",
+        "5"
+      ],
+      "correta": 4,
+      "explicacao": "Raízes −1 e 5: −1 < x < 5, ou seja, 0, 1, 2, 3 e 4. Dica de mergulhador: estrito exclui as raízes.",
+      "comentarios": [
+        "Incluiu uma raiz.",
+        "O intervalo é limitado.",
+        "Esqueceu o zero.",
+        "Incluiu as raízes −1 e 5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q17",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Um auditório tem 10 cadeiras na primeira fileira e 2 a mais em cada fileira seguinte. Ao todo, há 360 cadeiras. Quantas fileiras há?",
+      "alternativas": [
+        "15",
+        "18",
+        "12",
+        "24",
+        "36"
+      ],
+      "correta": 0,
+      "explicacao": "Sₙ = n(10 + 10 + 2(n − 1)) ÷ 2 = n² + 9n = 360 → n² + 9n − 360 = 0 → n = 15. Dica de mergulhador: soma da PA vira equação do 2º grau.",
+      "comentarios": [
+        "",
+        "Dividiu 360 por 20.",
+        "Errou a equação.",
+        "Usou a última fileira como quantidade.",
+        "Dividiu 360 por 10."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q18",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "A soma das idades de um pai e de um filho é 50 anos. Há 5 anos, o pai tinha 4 vezes a idade do filho. Qual é a idade atual do filho?",
+      "alternativas": [
+        "8 anos",
+        "13 anos",
+        "12,5 anos",
+        "37 anos",
+        "10 anos"
+      ],
+      "correta": 1,
+      "explicacao": "p + f = 50 e p − 5 = 4(f − 5) → p = 4f − 15 → 5f − 15 = 50 → f = 13. Dica de mergulhador: há 5 anos, os dois tinham 5 a menos.",
+      "comentarios": [
+        "É a idade do filho há 5 anos.",
+        "",
+        "Dividiu 50 por 4.",
+        "É a idade do pai.",
+        "Usou a idade do pai como 4 vezes hoje."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q19",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma pessoa guarda R$ 100 no 1º mês e aumenta R$ 20 a cada mês. Em quantos meses o total guardado chega a R$ 2.200?",
+      "alternativas": [
+        "11 meses",
+        "15 meses",
+        "22 meses",
+        "12 meses",
+        "10 meses"
+      ],
+      "correta": 0,
+      "explicacao": "Sₙ = n(200 + 20(n − 1)) ÷ 2 = 10n² + 90n = 2.200 → n² + 9n − 220 = 0 → n = 11. Dica de mergulhador: confira: último 300; (100 + 300) × 11 ÷ 2 = 2.200.",
+      "comentarios": [
+        "",
+        "Usou R$ 2.200 como o último depósito.",
+        "Usou R$ 100 todo mês.",
+        "Arredondou para cima sem conferir.",
+        "Errou a equação."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q20",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma peça é vendida a R$ 18. O custo é R$ 2.400 fixos mais R$ 10 por peça. Quantas peças, no mínimo, garantem lucro de pelo menos R$ 1.600?",
+      "alternativas": [
+        "160",
+        "222",
+        "300",
+        "200",
+        "500"
+      ],
+      "correta": 4,
+      "explicacao": "18x − (2.400 + 10x) ≥ 1.600 → 8x ≥ 4.000 → x ≥ 500. Dica de mergulhador: lucro = receita − custo.",
+      "comentarios": [
+        "Dividiu 1.600 por 10.",
+        "Dividiu 4.000 por 18.",
+        "É o ponto de lucro zero.",
+        "Dividiu 1.600 por 8.",
         ""
       ]
     }
@@ -70243,6 +71943,1446 @@
         "",
         "Não diferem em 2."
       ]
+    },
+    {
+      "id": "mat-inequacoes-q01-v1",
+      "varianteDe": "mat-inequacoes-q01",
+      "tema": "Resolver inequações",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é a solução de 3x − 5 ≤ 13?",
+      "alternativas": [
+        "x ≥ 6",
+        "x ≤ 6",
+        "x ≤ 18",
+        "x = 6",
+        "x ≤ 2,7"
+      ],
+      "correta": 1,
+      "explicacao": "3x ≤ 18, então x ≤ 6. Dica de mergulhador: igual a uma equação, com o sinal no lugar do igual.",
+      "comentarios": [
+        "Inverteu o sinal sem motivo.",
+        "",
+        "Esqueceu de dividir por 3.",
+        "A resposta é um intervalo.",
+        "Subtraiu 5 em vez de somar."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q02-v1",
+      "varianteDe": "mat-inequacoes-q02",
+      "tema": "Resolver inequações",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é a solução de −3x ≤ 12?",
+      "alternativas": [
+        "x ≤ −36",
+        "x ≤ −4",
+        "x ≥ −4",
+        "x ≥ 4",
+        "x ≤ 4"
+      ],
+      "correta": 2,
+      "explicacao": "Dividindo por −3, o sentido inverte: x ≥ −4. Dica de mergulhador: confira com x = 0: 0 ≤ 12.",
+      "comentarios": [
+        "Multiplicou.",
+        "Não inverteu o sinal.",
+        "",
+        "Errou o sinal do número.",
+        "Errou os dois sinais."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q03-v1",
+      "varianteDe": "mat-inequacoes-q03",
+      "tema": "Resolver inequações",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual destes números satisfaz x < −2?",
+      "alternativas": [
+        "−3",
+        "0",
+        "2",
+        "−2",
+        "−1"
+      ],
+      "correta": 0,
+      "explicacao": "−3 fica à esquerda de −2 na reta. Dica de mergulhador: entre negativos, maior em módulo é menor.",
+      "comentarios": [
+        "",
+        "É maior que −2.",
+        "É maior que −2.",
+        "O sinal < não inclui o −2.",
+        "É maior que −2."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q04-v1",
+      "varianteDe": "mat-inequacoes-q04",
+      "tema": "Resolver inequações",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é a solução de 10 − 2x ≥ 4?",
+      "alternativas": [
+        "x ≥ −3",
+        "x ≤ 6",
+        "x ≤ 3",
+        "x ≤ 7",
+        "x ≥ 3"
+      ],
+      "correta": 2,
+      "explicacao": "−2x ≥ −6; dividindo por −2, x ≤ 3. Dica de mergulhador: confira com x = 0: 10 ≥ 4.",
+      "comentarios": [
+        "Errou o sinal.",
+        "Esqueceu de dividir por 2.",
+        "",
+        "Somou 4.",
+        "Não inverteu o sinal."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q05-v1",
+      "varianteDe": "mat-inequacoes-q05",
+      "tema": "Resolver inequações",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é o menor número inteiro que satisfaz 4x + 5 > 50?",
+      "alternativas": [
+        "14",
+        "45",
+        "11",
+        "12",
+        "11,25"
+      ],
+      "correta": 3,
+      "explicacao": "4x > 45 → x > 11,25; o menor inteiro é 12. Dica de mergulhador: teste o inteiro anterior.",
+      "comentarios": [
+        "Somou 5 em vez de subtrair.",
+        "Esqueceu de dividir por 4.",
+        "4 × 11 + 5 = 49.",
+        "",
+        "Não é inteiro."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q06-v1",
+      "varianteDe": "mat-inequacoes-q06",
+      "tema": "Resolver inequações",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Uma aluna tirou 7 e 5 em duas provas e precisa de média pelo menos 6,5 nas três. Qual é a menor nota que ela pode tirar na terceira?",
+      "alternativas": [
+        "6,5",
+        "7,5",
+        "1,5",
+        "7",
+        "8"
+      ],
+      "correta": 1,
+      "explicacao": "12 + x ≥ 19,5 → x ≥ 7,5. Dica de mergulhador: total necessário = média × provas.",
+      "comentarios": [
+        "A média ficaria 6,17.",
+        "",
+        "Subtraiu errado.",
+        "A média ficaria 6,33.",
+        "É mais do que precisa."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q07-v1",
+      "varianteDe": "mat-inequacoes-q07",
+      "tema": "Resolver inequações",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Um elevador suporta no máximo 450 kg. Uma pessoa de 70 kg vai levar caixas de 30 kg. Quantas caixas, no máximo, ela pode levar junto?",
+      "alternativas": [
+        "13",
+        "12",
+        "12,7",
+        "17",
+        "15"
+      ],
+      "correta": 1,
+      "explicacao": "70 + 30n ≤ 450 → n ≤ 12,67 → no máximo 12. Dica de mergulhador: limite máximo, inteiro para baixo.",
+      "comentarios": [
+        "Arredondou para cima e passaria do limite.",
+        "",
+        "Caixa não se divide.",
+        "Somou o peso da pessoa.",
+        "Esqueceu a pessoa."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q08-v1",
+      "varianteDe": "mat-inequacoes-q08",
+      "tema": "Comparar planos",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "O plano A cobra R$ 50 mais R$ 0,20 por minuto; o plano B, R$ 30 mais R$ 0,40 por minuto. Para quem usa 150 minutos, qual é mais barato?",
+      "alternativas": [
+        "O A, com R$ 30",
+        "Os dois custam o mesmo",
+        "O B, com R$ 90 contra R$ 80",
+        "O A, com R$ 80 contra R$ 90",
+        "O B, por ter fixo menor"
+      ],
+      "correta": 3,
+      "explicacao": "A: 50 + 30 = 80. B: 30 + 60 = 90. Dica de mergulhador: depois do empate, ganha a menor taxa.",
+      "comentarios": [
+        "Esqueceu o fixo.",
+        "O empate é em 100 minutos.",
+        "R$ 80 é menor.",
+        "",
+        "Depois do empate, vence a taxa menor."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q09-v1",
+      "varianteDe": "mat-inequacoes-q09",
+      "tema": "Comparar planos",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Uma escola de música cobra R$ 120 por mês, sem limite, ou R$ 3 por aula avulsa. Até quantas aulas no mês a avulsa sai mais barata?",
+      "alternativas": [
+        "A partir de 40 aulas",
+        "Até 60 aulas",
+        "Até 40 aulas",
+        "Até 36 aulas",
+        "Até 39 aulas"
+      ],
+      "correta": 4,
+      "explicacao": "3x < 120 → x < 40: até 39 aulas. Dica de mergulhador: menor estrito exclui o empate.",
+      "comentarios": [
+        "Aí o mensal vence ou empata.",
+        "Usou R$ 2 por aula.",
+        "Com 40, os dois custam R$ 120.",
+        "Errou a conta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q10-v1",
+      "varianteDe": "mat-inequacoes-q10",
+      "tema": "Comparar planos",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "A locadora A cobra R$ 150 por dia, sem limite de km. A locadora B cobra R$ 90 por dia mais R$ 0,60 por km. A partir de quantos km, num dia, a locadora A fica mais barata?",
+      "alternativas": [
+        "Mais de 150 km",
+        "Mais de 250 km",
+        "Mais de 60 km",
+        "Mais de 100 km",
+        "Menos de 100 km"
+      ],
+      "correta": 3,
+      "explicacao": "90 + 0,6x > 150 → 0,6x > 60 → x > 100 km. Dica de mergulhador: diferença dos fixos ÷ taxa.",
+      "comentarios": [
+        "Dividiu 90 por 0,6.",
+        "Dividiu 150 por 0,6.",
+        "Usou a diferença sem dividir.",
+        "",
+        "Abaixo de 100, B é mais barata."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q11-v1",
+      "varianteDe": "mat-inequacoes-q11",
+      "tema": "Comparar planos",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Um clube cobra R$ 120 por mês ou R$ 15 por dia avulso. A partir de quantas idas no mês o plano mensal compensa?",
+      "alternativas": [
+        "A partir de 15 idas",
+        "A partir de 8 idas",
+        "A partir de 9 idas",
+        "A partir de 10 idas",
+        "A partir de 7 idas"
+      ],
+      "correta": 2,
+      "explicacao": "15x > 120 → x > 8; o primeiro inteiro é 9. Dica de mergulhador: em 8 há empate.",
+      "comentarios": [
+        "Usou o preço da diária.",
+        "Com 8, os dois custam R$ 120.",
+        "",
+        "Com 9 já compensa.",
+        "7 avulsas custam R$ 105."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q12-v1",
+      "varianteDe": "mat-inequacoes-q12",
+      "tema": "Comparar planos",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Uma vendedora pode escolher: A, salário fixo de R$ 2.500; ou B, R$ 1.000 mais 5% das vendas. A partir de quanto em vendas o B é melhor?",
+      "alternativas": [
+        "Mais de R$ 30.000",
+        "Mais de R$ 50.000",
+        "Mais de R$ 20.000",
+        "Mais de R$ 3.500",
+        "Mais de R$ 1.500"
+      ],
+      "correta": 0,
+      "explicacao": "1.000 + 0,05v > 2.500 → 0,05v > 1.500 → v > 30.000. Dica de mergulhador: diferença ÷ porcentagem.",
+      "comentarios": [
+        "",
+        "Dividiu 2.500 por 0,05.",
+        "Dividiu 1.000 por 0,05.",
+        "Somou os salários.",
+        "É a diferença dos fixos."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q13-v1",
+      "varianteDe": "mat-inequacoes-q13",
+      "tema": "Comparar planos",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Três planos: A cobra R$ 30 mais R$ 1,50 por hora; B, R$ 10 mais R$ 2,50 por hora; C, R$ 90 fixos. Para que uso o plano C é o mais barato de todos?",
+      "alternativas": [
+        "Nunca",
+        "Menos de 32 horas",
+        "Mais de 32 horas",
+        "Mais de 20 horas",
+        "Mais de 40 horas"
+      ],
+      "correta": 4,
+      "explicacao": "C < A: 90 < 30 + 1,5x → x > 40. C < B: 90 < 10 + 2,5x → x > 32. Juntos: x > 40. Dica de mergulhador: vale a condição mais exigente.",
+      "comentarios": [
+        "Acima de 40 horas, C vence.",
+        "Aí C é o mais caro.",
+        "Entre 32 e 40 horas, A ainda é mais barato.",
+        "É o empate de A e B.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q14-v1",
+      "varianteDe": "mat-inequacoes-q14",
+      "tema": "Comparar planos",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Uma fábrica vende cada peça por R$ 22. O custo é R$ 3.300 fixos mais R$ 10 por peça. Quantas peças, no mínimo, ela precisa vender para ter lucro?",
+      "alternativas": [
+        "103",
+        "150",
+        "276",
+        "275",
+        "330"
+      ],
+      "correta": 2,
+      "explicacao": "22x > 3.300 + 10x → 12x > 3.300 → x > 275; mínimo 276. Dica de mergulhador: margem = preço − custo variável.",
+      "comentarios": [
+        "Dividiu 3.300 por 32.",
+        "Dividiu 3.300 por 22.",
+        "",
+        "Com 275, o lucro é zero.",
+        "Dividiu 3.300 por 10."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q15-v1",
+      "varianteDe": "mat-inequacoes-q15",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "As raízes de x² − 7x + 10 são 2 e 5. Qual é a solução de x² − 7x + 10 > 0?",
+      "alternativas": [
+        "x < 5",
+        "2 < x < 5",
+        "x < 2 ou x > 5",
+        "x > 5",
+        "x = 2 ou x = 5"
+      ],
+      "correta": 2,
+      "explicacao": "Com a > 0, positivo fora das raízes. Dica de mergulhador: positivo nas pontas.",
+      "comentarios": [
+        "Inclui trechos negativos.",
+        "Aí a expressão é negativa.",
+        "",
+        "Faltou a parte x < 2.",
+        "Aí a expressão é zero."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q16-v1",
+      "varianteDe": "mat-inequacoes-q16",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "facil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Qual é a solução de x² − 16 > 0?",
+      "alternativas": [
+        "x > 16",
+        "x ≥ −4",
+        "−4 < x < 4",
+        "x < −4 ou x > 4",
+        "x > 4"
+      ],
+      "correta": 3,
+      "explicacao": "Raízes −4 e 4; positivo fora delas. Dica de mergulhador: x² grande, positivo nas pontas.",
+      "comentarios": [
+        "Não tirou a raiz.",
+        "Inclui o zero, com −16 < 0.",
+        "Aí a expressão é negativa.",
+        "",
+        "Faltou x < −4."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q17-v1",
+      "varianteDe": "mat-inequacoes-q17",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "O lucro de uma barraca é L(x) = −x² + 12x − 20, com x lotes por dia. Para que valores de x há lucro positivo?",
+      "alternativas": [
+        "2 ≤ x ≤ 10",
+        "x < 2 ou x > 10",
+        "x > 2",
+        "x = 6",
+        "2 < x < 10"
+      ],
+      "correta": 4,
+      "explicacao": "Raízes 2 e 10; a < 0: positivo entre elas. Dica de mergulhador: estritamente positivo exclui as raízes.",
+      "comentarios": [
+        "Nas raízes, o lucro é zero.",
+        "Aí o lucro é negativo.",
+        "Acima de 10, há prejuízo.",
+        "É o máximo, não o único lucro.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q18-v1",
+      "varianteDe": "mat-inequacoes-q18",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "Quantos números inteiros satisfazem x² − 8x + 12 ≤ 0?",
+      "alternativas": [
+        "3",
+        "6",
+        "5",
+        "Infinitos",
+        "4"
+      ],
+      "correta": 2,
+      "explicacao": "Raízes 2 e 6: 2 ≤ x ≤ 6, ou seja, 2, 3, 4, 5 e 6. Dica de mergulhador: ≤ inclui as raízes.",
+      "comentarios": [
+        "Excluiu as raízes 2 e 6.",
+        "Contou um a mais.",
+        "",
+        "O intervalo é limitado.",
+        "Excluiu uma raiz."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q19-v1",
+      "varianteDe": "mat-inequacoes-q19",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "dificil",
+      "fase": "mat-inequacoes",
+      "enunciado": "A altura de uma bola é h(t) = −5t² + 40t, em metros, com t em segundos. Durante que intervalo ela fica acima de 60 m?",
+      "alternativas": [
+        "Antes de 2 s",
+        "Entre 0 s e 8 s",
+        "Entre 2 s e 6 s",
+        "Só em 4 s",
+        "Depois de 6 s"
+      ],
+      "correta": 2,
+      "explicacao": "−5t² + 40t > 60 → t² − 8t + 12 < 0 → 2 < t < 6. Dica de mergulhador: divida por −5 e inverta o sinal.",
+      "comentarios": [
+        "Aí ainda está abaixo de 60 m.",
+        "É todo o voo.",
+        "",
+        "Em 4 s está no topo, mas não só ali.",
+        "Depois de 6 s ela desce abaixo de 60 m."
+      ]
+    },
+    {
+      "id": "mat-inequacoes-q20-v1",
+      "varianteDe": "mat-inequacoes-q20",
+      "tema": "Inequações do 2º grau",
+      "dificuldade": "medio",
+      "fase": "mat-inequacoes",
+      "enunciado": "Para que valores reais de x vale x² + 4 < 0?",
+      "alternativas": [
+        "Só para x < 0",
+        "Para nenhum número real",
+        "Para −2 < x < 2",
+        "Para todos os números reais",
+        "Só para x = 0"
+      ],
+      "correta": 1,
+      "explicacao": "x² + 4 ≥ 4, nunca negativo. Dica de mergulhador: curva acima do eixo o tempo todo.",
+      "comentarios": [
+        "Negativo ao quadrado é positivo.",
+        "",
+        "Tratou como x² − 4.",
+        "x² + 4 é sempre positivo.",
+        "0 + 4 = 4."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q01-v1",
+      "varianteDe": "mat-pa-pg-q01",
+      "tema": "Padrões e sequências",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o próximo termo da sequência 40, 34, 28, 22, ...?",
+      "alternativas": [
+        "28",
+        "15",
+        "16",
+        "11",
+        "18"
+      ],
+      "correta": 2,
+      "explicacao": "A diferença é sempre −6: 22 − 6 = 16. Dica de mergulhador: a razão pode ser negativa.",
+      "comentarios": [
+        "Somou 6.",
+        "Subtraiu 7.",
+        "",
+        "Dividiu por 2.",
+        "Subtraiu 4."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q02-v1",
+      "varianteDe": "mat-pa-pg-q02",
+      "tema": "Padrões e sequências",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o próximo termo da sequência 81, 27, 9, 3, ...?",
+      "alternativas": [
+        "1,5",
+        "0",
+        "1",
+        "−3",
+        "6"
+      ],
+      "correta": 2,
+      "explicacao": "Cada termo é a terça parte do anterior: 3 ÷ 3 = 1. Dica de mergulhador: razão 1/3 diminui.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Subtraiu 3.",
+        "",
+        "Subtraiu 6.",
+        "Inverteu a regra."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q03-v1",
+      "varianteDe": "mat-pa-pg-q03",
+      "tema": "Padrões e sequências",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Com palitos, monta-se uma fila de triângulos encostados: 1 triângulo usa 3 palitos, 2 usam 5 e 3 usam 7. Quantos palitos são precisos para 6 triângulos?",
+      "alternativas": [
+        "11",
+        "18",
+        "13",
+        "15",
+        "12"
+      ],
+      "correta": 2,
+      "explicacao": "Cada triângulo novo acrescenta 2 palitos: 7, 9, 11, 13. Dica de mergulhador: 2n + 1.",
+      "comentarios": [
+        "É para 5 triângulos.",
+        "Usou 3 palitos por triângulo.",
+        "",
+        "É para 7 triângulos.",
+        "Usou 2 por triângulo sem o palito inicial."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q04-v1",
+      "varianteDe": "mat-pa-pg-q04",
+      "tema": "Padrões e sequências",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o 6º termo da sequência 2, 5, 10, 17, ...?",
+      "alternativas": [
+        "37",
+        "36",
+        "50",
+        "26",
+        "24"
+      ],
+      "correta": 0,
+      "explicacao": "Termo n = n² + 1: 36 + 1 = 37. Dica de mergulhador: compare com os quadrados.",
+      "comentarios": [
+        "",
+        "Esqueceu o + 1.",
+        "É o 7º termo.",
+        "É o 5º termo.",
+        "Somou 7 ao 17."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q05-v1",
+      "varianteDe": "mat-pa-pg-q05",
+      "tema": "Padrões e sequências",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Na fila de triângulos de palitos (3, 5, 7, ...), quantos palitos são precisos para 25 triângulos?",
+      "alternativas": [
+        "75",
+        "50",
+        "49",
+        "53",
+        "51"
+      ],
+      "correta": 4,
+      "explicacao": "Regra: 2n + 1. Para n = 25: 51. Dica de mergulhador: teste a fórmula nas primeiras figuras.",
+      "comentarios": [
+        "Usou 3 por triângulo.",
+        "Esqueceu o palito inicial.",
+        "Usou 2 × 24 + 1.",
+        "Somou 2 a mais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q06-v1",
+      "varianteDe": "mat-pa-pg-q06",
+      "tema": "Padrões e sequências",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Na sequência 1, 3, 4, 7, 11, 18, ..., cada termo é a soma dos dois anteriores. Qual é o 8º termo?",
+      "alternativas": [
+        "25",
+        "36",
+        "47",
+        "29",
+        "76"
+      ],
+      "correta": 2,
+      "explicacao": "1, 3, 4, 7, 11, 18, 29, 47. Dica de mergulhador: some sempre os dois últimos.",
+      "comentarios": [
+        "Somou 7 ao 18.",
+        "Dobrou o 18.",
+        "",
+        "É o 7º termo.",
+        "É o 9º termo."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q07-v1",
+      "varianteDe": "mat-pa-pg-q07",
+      "tema": "Progressão aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é a razão da PA 20, 17, 14, 11, ...?",
+      "alternativas": [
+        "−3",
+        "20",
+        "3",
+        "−6",
+        "17/20"
+      ],
+      "correta": 0,
+      "explicacao": "17 − 20 = −3. Dica de mergulhador: PA decrescente tem razão negativa.",
+      "comentarios": [
+        "",
+        "É o primeiro termo.",
+        "Esqueceu o sinal.",
+        "Pulou um termo.",
+        "Dividiu termos."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q08-v1",
+      "varianteDe": "mat-pa-pg-q08",
+      "tema": "Progressão aritmética",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o 10º termo da PA 5, 8, 11, ...?",
+      "alternativas": [
+        "50",
+        "27",
+        "30",
+        "35",
+        "32"
+      ],
+      "correta": 4,
+      "explicacao": "a₁₀ = 5 + 9 × 3 = 32. Dica de mergulhador: n − 1 saltos.",
+      "comentarios": [
+        "Multiplicou 10 por 5.",
+        "Usou 9 × 3 sem o a₁.",
+        "Multiplicou 10 por 3.",
+        "Usou n em vez de n − 1.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q09-v1",
+      "varianteDe": "mat-pa-pg-q09",
+      "tema": "Progressão aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é a soma de todos os inteiros de 1 a 50?",
+      "alternativas": [
+        "1.275",
+        "1.225",
+        "2.550",
+        "1.250",
+        "51"
+      ],
+      "correta": 0,
+      "explicacao": "(1 + 50) × 50 ÷ 2 = 1.275. Dica de mergulhador: Sₙ = (a₁ + aₙ) × n ÷ 2.",
+      "comentarios": [
+        "",
+        "Somou de 1 a 49.",
+        "Esqueceu de dividir por 2.",
+        "Fez 50 × 50 ÷ 2.",
+        "Parou em a₁ + aₙ."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q10-v1",
+      "varianteDe": "mat-pa-pg-q10",
+      "tema": "Progressão aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Um auditório tem 10 fileiras. A primeira tem 12 cadeiras, e cada fileira tem 3 cadeiras a mais que a anterior. Quantas cadeiras há no total?",
+      "alternativas": [
+        "510",
+        "120",
+        "270",
+        "255",
+        "390"
+      ],
+      "correta": 3,
+      "explicacao": "a₁₀ = 12 + 9 × 3 = 39. Total: (12 + 39) × 10 ÷ 2 = 255. Dica de mergulhador: média das pontas vezes a quantidade.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "Usou 12 em todas.",
+        "Usou a última com 42.",
+        "",
+        "Usou 39 em todas."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q11-v1",
+      "varianteDe": "mat-pa-pg-q11",
+      "tema": "Progressão aritmética",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Uma pessoa guarda R$ 100 no 1º mês, R$ 115 no 2º, R$ 130 no 3º, e assim por diante. Quanto ela guarda no 10º mês?",
+      "alternativas": [
+        "R$ 150",
+        "R$ 220",
+        "R$ 250",
+        "R$ 235",
+        "R$ 1.000"
+      ],
+      "correta": 3,
+      "explicacao": "a₁₀ = 100 + 9 × 15 = 235. Dica de mergulhador: n − 1 aumentos.",
+      "comentarios": [
+        "Somou 15 × 10 sem o inicial.",
+        "Usou 8 saltos.",
+        "Usou 10 saltos.",
+        "",
+        "Multiplicou 100 por 10."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q12-v1",
+      "varianteDe": "mat-pa-pg-q12",
+      "tema": "Progressão aritmética",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Guardando R$ 100 no 1º mês, R$ 115 no 2º, R$ 130 no 3º, e assim por diante, quanto a pessoa terá guardado ao todo em 10 meses?",
+      "alternativas": [
+        "R$ 1.675",
+        "R$ 2.350",
+        "R$ 1.000",
+        "R$ 3.350",
+        "R$ 235"
+      ],
+      "correta": 0,
+      "explicacao": "a₁₀ = 235. Soma: (100 + 235) × 10 ÷ 2 = 1.675. Dica de mergulhador: média do primeiro e do último.",
+      "comentarios": [
+        "",
+        "Usou R$ 235 todo mês.",
+        "Usou R$ 100 todo mês.",
+        "Esqueceu de dividir por 2.",
+        "É só o 10º depósito."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q13-v1",
+      "varianteDe": "mat-pa-pg-q13",
+      "tema": "Progressão aritmética",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Numa PA, o 2º termo é 9 e o 6º é 29. Qual é o 15º termo?",
+      "alternativas": [
+        "69",
+        "74",
+        "58",
+        "79",
+        "84"
+      ],
+      "correta": 1,
+      "explicacao": "r = 20 ÷ 4 = 5; a₁ = 4; a₁₅ = 4 + 14 × 5 = 74. Dica de mergulhador: confira com o 6º: 4 + 25 = 29.",
+      "comentarios": [
+        "Usou 13 saltos.",
+        "",
+        "Dobrou o 6º termo.",
+        "Usou 15 saltos.",
+        "Errou o primeiro termo."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q14-v1",
+      "varianteDe": "mat-pa-pg-q14",
+      "tema": "Progressão geométrica",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é a razão da PG 64, 16, 4, 1, ...?",
+      "alternativas": [
+        "1/4",
+        "−48",
+        "4",
+        "16",
+        "1/2"
+      ],
+      "correta": 0,
+      "explicacao": "16 ÷ 64 = 1/4. Dica de mergulhador: PG que diminui tem razão entre 0 e 1.",
+      "comentarios": [
+        "",
+        "Subtraiu, como numa PA.",
+        "Inverteu a divisão.",
+        "É o segundo termo.",
+        "Errou a divisão."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q15-v1",
+      "varianteDe": "mat-pa-pg-q15",
+      "tema": "Progressão geométrica",
+      "dificuldade": "facil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é o 5º termo da PG 3, 6, 12, ...?",
+      "alternativas": [
+        "48",
+        "15",
+        "30",
+        "24",
+        "96"
+      ],
+      "correta": 0,
+      "explicacao": "a₅ = 3 × 2⁴ = 48. Dica de mergulhador: 4 multiplicações do 1º ao 5º.",
+      "comentarios": [
+        "",
+        "Somou 3.",
+        "Multiplicou 3 × 2 × 5.",
+        "É o 4º termo.",
+        "Usou 2⁵."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q16-v1",
+      "varianteDe": "mat-pa-pg-q16",
+      "tema": "Progressão geométrica",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Numa infestação, houve 5 focos na semana 1, e o número de focos novos triplica a cada semana. Quantos focos novos há na semana 5?",
+      "alternativas": [
+        "75",
+        "1.215",
+        "135",
+        "405",
+        "20"
+      ],
+      "correta": 3,
+      "explicacao": "a₅ = 5 × 3⁴ = 405. Dica de mergulhador: n − 1 multiplicações.",
+      "comentarios": [
+        "Multiplicou 5 × 3 × 5.",
+        "Usou 3⁵.",
+        "É a semana 4.",
+        "",
+        "Somou 3 por semana."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q17-v1",
+      "varianteDe": "mat-pa-pg-q17",
+      "tema": "Progressão geométrica",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Um carro de R$ 50.000 perde 20% do valor por ano: R$ 40.000, R$ 32.000, R$ 25.600, ... Qual é a razão dessa PG?",
+      "alternativas": [
+        "0,8",
+        "−8.000",
+        "20",
+        "0,2",
+        "1,2"
+      ],
+      "correta": 0,
+      "explicacao": "32.000 ÷ 40.000 = 0,8. Dica de mergulhador: perder 20% é multiplicar por 0,8.",
+      "comentarios": [
+        "",
+        "Subtraiu, como numa PA.",
+        "Usou o número da porcentagem.",
+        "É só a perda.",
+        "Seria um aumento."
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q18-v1",
+      "varianteDe": "mat-pa-pg-q18",
+      "tema": "Progressão geométrica",
+      "dificuldade": "medio",
+      "fase": "mat-pa-pg",
+      "enunciado": "Uma bola cai de 27 m e, a cada quique, sobe a 1/3 da altura anterior. Que altura ela atinge depois do 3º quique?",
+      "alternativas": [
+        "18 m",
+        "3 m",
+        "1/3 m",
+        "9 m",
+        "1 m"
+      ],
+      "correta": 4,
+      "explicacao": "27 × (1/3)³ = 1 m. Dica de mergulhador: 27, 9, 3, 1.",
+      "comentarios": [
+        "Subtraiu 9.",
+        "É depois do 2º quique.",
+        "É depois do 4º quique.",
+        "É depois do 1º quique.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q19-v1",
+      "varianteDe": "mat-pa-pg-q19",
+      "tema": "Progressão geométrica",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Qual é a soma dos 6 primeiros termos da PG 3, 6, 12, ...?",
+      "alternativas": [
+        "63",
+        "192",
+        "96",
+        "381",
+        "189"
+      ],
+      "correta": 4,
+      "explicacao": "S₆ = 3 × (2⁶ − 1) ÷ 1 = 3 × 63 = 189. Dica de mergulhador: confira: 3 + 6 + 12 + 24 + 48 + 96 = 189.",
+      "comentarios": [
+        "Esqueceu o a₁ = 3.",
+        "Usou 3 × 2⁶.",
+        "É só o 6º termo.",
+        "Somou 7 termos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-pa-pg-q20-v1",
+      "varianteDe": "mat-pa-pg-q20",
+      "tema": "Progressão geométrica",
+      "dificuldade": "dificil",
+      "fase": "mat-pa-pg",
+      "enunciado": "Caio deposita R$ 50 no mês 1 e aumenta R$ 50 a cada mês (50, 100, 150...). Davi deposita R$ 1 no mês 1 e dobra a cada mês (1, 2, 4...). Em que mês o depósito de Davi passa a ser maior que o de Caio pela primeira vez?",
+      "alternativas": [
+        "No mês 11",
+        "No mês 10",
+        "Nunca",
+        "No mês 8",
+        "No mês 9"
+      ],
+      "correta": 1,
+      "explicacao": "Mês 9: 450 contra 256. Mês 10: 500 contra 512. Dica de mergulhador: a PG começa devagar e dispara.",
+      "comentarios": [
+        "Já tinha passado no mês 10.",
+        "",
+        "A PG sempre passa a PA.",
+        "Caio deposita 400 e Davi 128.",
+        "Caio deposita 450 e Davi 256."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q01-v1",
+      "varianteDe": "mat-revisao-algebra-q01",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é a solução de 6x + 4 = 40?",
+      "alternativas": [
+        "x = 5",
+        "x = 7,3",
+        "x = 6",
+        "x = 10",
+        "x = 36"
+      ],
+      "correta": 2,
+      "explicacao": "6x = 36, então x = 6. Dica de mergulhador: operação inversa na ordem contrária.",
+      "comentarios": [
+        "Errou a conta.",
+        "Somou 4 em vez de subtrair.",
+        "",
+        "Dividiu 40 por 4.",
+        "Esqueceu de dividir por 6."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q02-v1",
+      "varianteDe": "mat-revisao-algebra-q02",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Dois números somam 30 e a diferença entre eles é 8. Qual é o maior?",
+      "alternativas": [
+        "15",
+        "19",
+        "11",
+        "22",
+        "38"
+      ],
+      "correta": 1,
+      "explicacao": "2x = 38, x = 19. Dica de mergulhador: confira: 19 − 11 = 8.",
+      "comentarios": [
+        "Dividiu 30 por 2.",
+        "",
+        "É o menor.",
+        "Somou 8 a 14.",
+        "Esqueceu de dividir por 2."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q03-v1",
+      "varianteDe": "mat-revisao-algebra-q03",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Quais são as soluções de x² − 7x = 0?",
+      "alternativas": [
+        "Só x = 7",
+        "x = 1 ou x = 7",
+        "x = 7 ou x = −7",
+        "x = 0 ou x = −7",
+        "x = 0 ou x = 7"
+      ],
+      "correta": 4,
+      "explicacao": "x(x − 7) = 0 → x = 0 ou x = 7. Dica de mergulhador: sem c, x em evidência.",
+      "comentarios": [
+        "Esqueceu o zero.",
+        "Inventou um fator.",
+        "Tratou como x² = 49.",
+        "Errou o sinal.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q04-v1",
+      "varianteDe": "mat-revisao-algebra-q04",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é a solução de −5x ≤ −15?",
+      "alternativas": [
+        "x ≤ −3",
+        "x ≤ 3",
+        "x ≥ 3",
+        "x ≥ 75",
+        "x ≥ −3"
+      ],
+      "correta": 2,
+      "explicacao": "Dividindo por −5, inverte: x ≥ 3. Dica de mergulhador: confira com x = 4: −20 ≤ −15.",
+      "comentarios": [
+        "Errou os dois sinais.",
+        "Não inverteu o sinal.",
+        "",
+        "Multiplicou.",
+        "Errou o sinal do número."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q05-v1",
+      "varianteDe": "mat-revisao-algebra-q05",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é o 12º termo da PA 7, 10, 13, ...?",
+      "alternativas": [
+        "84",
+        "40",
+        "36",
+        "43",
+        "33"
+      ],
+      "correta": 1,
+      "explicacao": "a₁₂ = 7 + 11 × 3 = 40. Dica de mergulhador: termo geral, a₁ + (n − 1)r.",
+      "comentarios": [
+        "Multiplicou 12 por 7.",
+        "",
+        "Multiplicou 12 por 3.",
+        "Usou 12 saltos.",
+        "Esqueceu o primeiro termo."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q06-v1",
+      "varianteDe": "mat-revisao-algebra-q06",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é o 5º termo da PG 1, 3, 9, ...?",
+      "alternativas": [
+        "27",
+        "15",
+        "81",
+        "13",
+        "243"
+      ],
+      "correta": 2,
+      "explicacao": "a₅ = 1 × 3⁴ = 81. Dica de mergulhador: 1, 3, 9, 27, 81.",
+      "comentarios": [
+        "É o 4º termo.",
+        "Multiplicou 3 × 5.",
+        "",
+        "Somou 4 ao 9.",
+        "Usou 3⁵."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q07-v1",
+      "varianteDe": "mat-revisao-algebra-q07",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual expressão representa \"o quadrado de um número mais o seu dobro\"?",
+      "alternativas": [
+        "(x + 2)²",
+        "2x²",
+        "2x + 2",
+        "x² + 2x",
+        "x² + 2"
+      ],
+      "correta": 3,
+      "explicacao": "Quadrado: x². Dobro: 2x. Dica de mergulhador: cada palavra vira um termo.",
+      "comentarios": [
+        "Elevou a soma.",
+        "Dobrou o quadrado.",
+        "Dobro não é quadrado.",
+        "",
+        "Somou 2, não o dobro."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q08-v1",
+      "varianteDe": "mat-revisao-algebra-q08",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Três cadernos e dois estojos custam R$ 85. O caderno custa R$ 5 a mais que o estojo. Quanto custa o caderno?",
+      "alternativas": [
+        "R$ 17",
+        "R$ 20",
+        "R$ 19",
+        "R$ 22",
+        "R$ 14"
+      ],
+      "correta": 2,
+      "explicacao": "3(e + 5) + 2e = 85 → 5e = 70 → e = 14; caderno R$ 19. Dica de mergulhador: confira: 57 + 28 = 85.",
+      "comentarios": [
+        "Dividiu 85 por 5.",
+        "Errou a conta.",
+        "",
+        "Somou 5 ao preço médio.",
+        "É o preço do estojo."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q09-v1",
+      "varianteDe": "mat-revisao-algebra-q09",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Qual é a soma dos números pares de 2 a 60?",
+      "alternativas": [
+        "1.860",
+        "930",
+        "900",
+        "1.830",
+        "62"
+      ],
+      "correta": 1,
+      "explicacao": "São 30 termos: (2 + 60) × 30 ÷ 2 = 930. Dica de mergulhador: conte quantos termos há.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "",
+        "Usou 30 × 30.",
+        "Somou todos de 1 a 60.",
+        "Parou em a₁ + aₙ."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q10-v1",
+      "varianteDe": "mat-revisao-algebra-q10",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Um retângulo tem 50 m² de área, e o comprimento é o dobro da largura. Quais são as medidas?",
+      "alternativas": [
+        "25 m e 2 m",
+        "2,5 m e 20 m",
+        "10 m e 20 m",
+        "5 m e 10 m",
+        "7 m e 7 m"
+      ],
+      "correta": 3,
+      "explicacao": "2x² = 50 → x² = 25 → x = 5. Dica de mergulhador: sem b, isole x².",
+      "comentarios": [
+        "Não respeita o dobro.",
+        "Não respeita o dobro.",
+        "A área seria 200.",
+        "",
+        "Seria um quadrado."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q11-v1",
+      "varianteDe": "mat-revisao-algebra-q11",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "O táxi A cobra R$ 4 de bandeirada mais R$ 3 por km; o táxi B, R$ 9 mais R$ 2,50 por km. A partir de quantos km o táxi B fica mais barato?",
+      "alternativas": [
+        "Mais de 5 km",
+        "Mais de 2 km",
+        "Menos de 10 km",
+        "Mais de 18 km",
+        "Mais de 10 km"
+      ],
+      "correta": 4,
+      "explicacao": "9 + 2,5x < 4 + 3x → 5 < 0,5x → x > 10. Dica de mergulhador: diferença dos fixos ÷ diferença das taxas.",
+      "comentarios": [
+        "Usou a diferença dos fixos sem dividir.",
+        "Dividiu 5 por 2,5.",
+        "Abaixo de 10, o A é mais barato.",
+        "Dividiu 9 por 0,5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q12-v1",
+      "varianteDe": "mat-revisao-algebra-q12",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma pessoa tem 20 moedas, de R$ 0,25 e de R$ 1,00, que somam R$ 11. Quantas são de R$ 0,25?",
+      "alternativas": [
+        "11",
+        "44",
+        "9",
+        "8",
+        "12"
+      ],
+      "correta": 4,
+      "explicacao": "0,25x + (20 − x) = 11 → −0,75x = −9 → x = 12. Dica de mergulhador: confira: 3 + 8 = 11.",
+      "comentarios": [
+        "Usou o total em reais.",
+        "Dividiu 11 por 0,25.",
+        "Errou a conta.",
+        "São as de R$ 1,00.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q13-v1",
+      "varianteDe": "mat-revisao-algebra-q13",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Quais são as soluções de x² + 3x − 10 = 0?",
+      "alternativas": [
+        "1 e −10",
+        "2 e −5",
+        "2 e 5",
+        "10 e 1",
+        "−2 e 5"
+      ],
+      "correta": 1,
+      "explicacao": "Δ = 9 + 40 = 49; x = (−3 ± 7) ÷ 2: 2 ou −5. Dica de mergulhador: soma −3, produto −10.",
+      "comentarios": [
+        "A soma seria −9.",
+        "",
+        "O produto seria +10.",
+        "Usou os coeficientes.",
+        "Errou o sinal de −b."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q14-v1",
+      "varianteDe": "mat-revisao-algebra-q14",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma aluna tirou 5 e 9 em duas provas e precisa de média pelo menos 7 nas três. Qual é a menor nota que pode tirar na terceira?",
+      "alternativas": [
+        "9",
+        "7",
+        "0",
+        "8",
+        "6"
+      ],
+      "correta": 1,
+      "explicacao": "14 + x ≥ 21 → x ≥ 7. Dica de mergulhador: confira: 21 ÷ 3 = 7.",
+      "comentarios": [
+        "Repetiu a maior nota.",
+        "",
+        "Somou 5 e 9 e parou.",
+        "É mais do que precisa.",
+        "A média ficaria 6,67."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q15-v1",
+      "varianteDe": "mat-revisao-algebra-q15",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma colônia começa com 500 bactérias e dobra a cada hora. Quantas haverá depois de 5 horas?",
+      "alternativas": [
+        "32.000",
+        "8.000",
+        "16.000",
+        "2.500",
+        "5.000"
+      ],
+      "correta": 2,
+      "explicacao": "500 × 2⁵ = 16.000. Dica de mergulhador: 2⁵ = 32.",
+      "comentarios": [
+        "Contou 6 horas.",
+        "Contou 4 horas.",
+        "",
+        "Multiplicou 500 por 5.",
+        "Somou 1.000 por hora."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q16-v1",
+      "varianteDe": "mat-revisao-algebra-q16",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Quantos números inteiros satisfazem x² − 2x − 8 ≤ 0?",
+      "alternativas": [
+        "Infinitos",
+        "7",
+        "5",
+        "4",
+        "6"
+      ],
+      "correta": 1,
+      "explicacao": "Raízes −2 e 4: −2 ≤ x ≤ 4, ou seja, −2, −1, 0, 1, 2, 3 e 4. Dica de mergulhador: ≤ inclui as raízes.",
+      "comentarios": [
+        "O intervalo é limitado.",
+        "",
+        "Excluiu as raízes −2 e 4.",
+        "Contou só os positivos.",
+        "Excluiu uma raiz."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q17-v1",
+      "varianteDe": "mat-revisao-algebra-q17",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Um auditório tem 12 cadeiras na primeira fileira e 2 a mais em cada fileira seguinte. Ao todo, há 210 cadeiras. Quantas fileiras há?",
+      "alternativas": [
+        "17",
+        "21",
+        "7",
+        "10",
+        "30"
+      ],
+      "correta": 3,
+      "explicacao": "Sₙ = n(24 + 2(n − 1)) ÷ 2 = n² + 11n = 210 → n = 10. Dica de mergulhador: confira: 12 + 30 = 42; (12 + 30) × 10 ÷ 2 = 210.",
+      "comentarios": [
+        "Dividiu 210 por 12.",
+        "Dividiu 210 por 10.",
+        "Errou a equação.",
+        "",
+        "Usou a última fileira como quantidade."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q18-v1",
+      "varianteDe": "mat-revisao-algebra-q18",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "A soma das idades de uma mãe e de uma filha é 60 anos. Há 6 anos, a mãe tinha 5 vezes a idade da filha. Qual é a idade atual da filha?",
+      "alternativas": [
+        "12 anos",
+        "46 anos",
+        "10 anos",
+        "14 anos",
+        "8 anos"
+      ],
+      "correta": 3,
+      "explicacao": "m + f = 60 e m − 6 = 5(f − 6) → m = 5f − 24 → 6f − 24 = 60 → f = 14. Dica de mergulhador: confira: 40 = 5 × 8.",
+      "comentarios": [
+        "Dividiu 60 por 5.",
+        "É a idade da mãe.",
+        "Usou 5 vezes hoje.",
+        "",
+        "É a idade da filha há 6 anos."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q19-v1",
+      "varianteDe": "mat-revisao-algebra-q19",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma pessoa guarda R$ 50 no 1º mês e aumenta R$ 10 a cada mês. Em quantos meses o total guardado chega a R$ 1.800?",
+      "alternativas": [
+        "12 meses",
+        "15 meses",
+        "18 meses",
+        "14 meses",
+        "36 meses"
+      ],
+      "correta": 1,
+      "explicacao": "Sₙ = n(100 + 10(n − 1)) ÷ 2 = 5n² + 45n = 1.800 → n² + 9n − 360 = 0 → n = 15. Dica de mergulhador: confira: último 190; (50 + 190) × 15 ÷ 2 = 1.800.",
+      "comentarios": [
+        "Errou a equação.",
+        "",
+        "Dividiu 1.800 por 100.",
+        "Errou a conta.",
+        "Usou R$ 50 todo mês."
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-q20-v1",
+      "varianteDe": "mat-revisao-algebra-q20",
+      "tema": "Revisão: álgebra",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-algebra",
+      "enunciado": "Uma peça é vendida a R$ 25. O custo é R$ 3.000 fixos mais R$ 13 por peça. Quantas peças, no mínimo, garantem lucro de pelo menos R$ 1.800?",
+      "alternativas": [
+        "192",
+        "400",
+        "250",
+        "150",
+        "138"
+      ],
+      "correta": 1,
+      "explicacao": "25x − (3.000 + 13x) ≥ 1.800 → 12x ≥ 4.800 → x ≥ 400. Dica de mergulhador: margem por peça = 12.",
+      "comentarios": [
+        "Dividiu 4.800 por 25.",
+        "",
+        "É o ponto de lucro zero.",
+        "Dividiu 1.800 por 12.",
+        "Dividiu 1.800 por 13."
+      ]
     }
   ],
   "pares": [
@@ -71853,6 +74993,78 @@
       "tema": "Equações do 2º grau",
       "termo": "Produto das raízes",
       "definicao": "c ÷ a"
+    },
+    {
+      "id": "mat-inequacoes-par-01",
+      "tema": "Inequações e comparação de planos",
+      "termo": "Dividir por negativo",
+      "definicao": "Inverte o sinal"
+    },
+    {
+      "id": "mat-inequacoes-par-02",
+      "tema": "Inequações e comparação de planos",
+      "termo": "x ≥ 5",
+      "definicao": "Inclui o 5"
+    },
+    {
+      "id": "mat-inequacoes-par-03",
+      "tema": "Inequações e comparação de planos",
+      "termo": "Empate de planos",
+      "definicao": "Separa os trechos"
+    },
+    {
+      "id": "mat-inequacoes-par-04",
+      "tema": "Inequações e comparação de planos",
+      "termo": "a > 0 e Δ < 0",
+      "definicao": "Sempre positivo"
+    },
+    {
+      "id": "mat-pa-pg-par-01",
+      "tema": "Sequências, PA e PG",
+      "termo": "Progressão aritmética",
+      "definicao": "Soma a razão"
+    },
+    {
+      "id": "mat-pa-pg-par-02",
+      "tema": "Sequências, PA e PG",
+      "termo": "Progressão geométrica",
+      "definicao": "Multiplica pela razão"
+    },
+    {
+      "id": "mat-pa-pg-par-03",
+      "tema": "Sequências, PA e PG",
+      "termo": "Termo geral da PA",
+      "definicao": "a₁ + (n − 1)r"
+    },
+    {
+      "id": "mat-pa-pg-par-04",
+      "tema": "Sequências, PA e PG",
+      "termo": "Soma de 1 a 100",
+      "definicao": "5.050"
+    },
+    {
+      "id": "mat-revisao-algebra-par-01",
+      "tema": "Revisão do módulo: álgebra",
+      "termo": "Operação inversa",
+      "definicao": "Desfaz a conta"
+    },
+    {
+      "id": "mat-revisao-algebra-par-02",
+      "tema": "Revisão do módulo: álgebra",
+      "termo": "Dividir por negativo",
+      "definicao": "Inverte a desigualdade"
+    },
+    {
+      "id": "mat-revisao-algebra-par-03",
+      "tema": "Revisão do módulo: álgebra",
+      "termo": "PA",
+      "definicao": "Soma a razão"
+    },
+    {
+      "id": "mat-revisao-algebra-par-04",
+      "tema": "Revisão do módulo: álgebra",
+      "termo": "PG",
+      "definicao": "Multiplica pela razão"
     }
   ],
   "verdadeiroFalso": [
@@ -73248,6 +76460,69 @@
       "afirmacao": "A equação com raízes 2 e 7 é x² − 9x + 14 = 0.",
       "verdadeira": true,
       "explicacao": "Soma 9, produto 14."
+    },
+    {
+      "id": "mat-inequacoes-vf-01",
+      "tema": "Inequações e comparação de planos",
+      "afirmacao": "−2x > 8 tem solução x < −4.",
+      "verdadeira": true,
+      "explicacao": "Dividiu por negativo."
+    },
+    {
+      "id": "mat-inequacoes-vf-02",
+      "tema": "Inequações e comparação de planos",
+      "afirmacao": "x > 3 inclui o número 3.",
+      "verdadeira": false,
+      "explicacao": "Só x ≥ 3 inclui."
+    },
+    {
+      "id": "mat-inequacoes-vf-03",
+      "tema": "Inequações e comparação de planos",
+      "afirmacao": "Depois do empate, vence o plano de menor taxa.",
+      "verdadeira": true,
+      "explicacao": "A taxa pesa mais com o uso."
+    },
+    {
+      "id": "mat-pa-pg-vf-01",
+      "tema": "Sequências, PA e PG",
+      "afirmacao": "A PG 2, 6, 18 tem razão 3.",
+      "verdadeira": true,
+      "explicacao": "6 ÷ 2 = 3."
+    },
+    {
+      "id": "mat-pa-pg-vf-02",
+      "tema": "Sequências, PA e PG",
+      "afirmacao": "O 20º termo da PA 3, 7, 11 é 3 + 20 × 4.",
+      "verdadeira": false,
+      "explicacao": "São 19 saltos."
+    },
+    {
+      "id": "mat-pa-pg-vf-03",
+      "tema": "Sequências, PA e PG",
+      "afirmacao": "Juros compostos formam uma PG.",
+      "verdadeira": true,
+      "explicacao": "Multiplicam pelo mesmo fator."
+    },
+    {
+      "id": "mat-revisao-algebra-vf-01",
+      "tema": "Revisão do módulo: álgebra",
+      "afirmacao": "x² − 7x = 0 tem a solução x = 0.",
+      "verdadeira": true,
+      "explicacao": "x em evidência."
+    },
+    {
+      "id": "mat-revisao-algebra-vf-02",
+      "tema": "Revisão do módulo: álgebra",
+      "afirmacao": "−4x > 20 tem solução x > −5.",
+      "verdadeira": false,
+      "explicacao": "É x < −5."
+    },
+    {
+      "id": "mat-revisao-algebra-vf-03",
+      "tema": "Revisão do módulo: álgebra",
+      "afirmacao": "A soma de 1 a 40 é 820.",
+      "verdadeira": true,
+      "explicacao": "(1 + 40) × 40 ÷ 2."
     }
   ],
   "sequencias": [
@@ -74055,6 +77330,42 @@
         "Conferir e descartar o que não faz sentido"
       ],
       "explicacao": "Δ primeiro."
+    },
+    {
+      "id": "mat-inequacoes-seq-01",
+      "tema": "Inequações e comparação de planos",
+      "titulo": "Comparar dois planos",
+      "itens": [
+        "Escrever o custo de cada plano",
+        "Igualar para achar o empate",
+        "Ver qual vence antes do empate",
+        "Ver qual vence depois do empate"
+      ],
+      "explicacao": "O empate divide a resposta."
+    },
+    {
+      "id": "mat-pa-pg-seq-01",
+      "tema": "Sequências, PA e PG",
+      "titulo": "Achar o n-ésimo termo de uma PA",
+      "itens": [
+        "Identificar o primeiro termo",
+        "Calcular a razão",
+        "Contar os saltos (n − 1)",
+        "Somar razão × saltos ao primeiro termo"
+      ],
+      "explicacao": "Saltos, não posições."
+    },
+    {
+      "id": "mat-revisao-algebra-seq-01",
+      "tema": "Revisão do módulo: álgebra",
+      "titulo": "Resolver um problema de álgebra",
+      "itens": [
+        "Ler e dar nome ao desconhecido",
+        "Escolher equação, sistema, inequação ou sequência",
+        "Resolver com cuidado nos sinais",
+        "Conferir e responder o que foi pedido"
+      ],
+      "explicacao": "Leia de novo a pergunta."
     }
   ],
   "adivinhas": [
@@ -75011,6 +78322,48 @@
         "Fórmula com ±",
         "Usa o delta",
         "Resolve equações do 2º grau"
+      ]
+    },
+    {
+      "id": "mat-inequacoes-adv-01",
+      "tema": "Inequações e comparação de planos",
+      "dificuldade": "medio",
+      "resposta": "Inequação",
+      "aceitas": [
+        "inequacao, inequação"
+      ],
+      "dicas": [
+        "Usa > ou <",
+        "A resposta é um intervalo",
+        "Dividir por negativo inverte"
+      ]
+    },
+    {
+      "id": "mat-pa-pg-adv-01",
+      "tema": "Sequências, PA e PG",
+      "dificuldade": "medio",
+      "resposta": "Razão",
+      "aceitas": [
+        "razao, razão"
+      ],
+      "dicas": [
+        "Diferença na PA",
+        "Divisão na PG",
+        "Constante da sequência"
+      ]
+    },
+    {
+      "id": "mat-revisao-algebra-adv-01",
+      "tema": "Revisão do módulo: álgebra",
+      "dificuldade": "medio",
+      "resposta": "Álgebra",
+      "aceitas": [
+        "algebra, álgebra"
+      ],
+      "dicas": [
+        "Usa letras no lugar de números",
+        "Equações e sistemas",
+        "Também estuda sequências"
       ]
     }
   ],
@@ -76604,6 +79957,78 @@
       "tema": "Matemática",
       "palavra": "Quadrado",
       "dica": "Número vezes ele mesmo"
+    },
+    {
+      "id": "mat-inequacoes-pal-01",
+      "tema": "Matemática",
+      "palavra": "Maior",
+      "dica": "Sinal >"
+    },
+    {
+      "id": "mat-inequacoes-pal-02",
+      "tema": "Matemática",
+      "palavra": "Menor",
+      "dica": "Sinal <"
+    },
+    {
+      "id": "mat-inequacoes-pal-03",
+      "tema": "Matemática",
+      "palavra": "Limite",
+      "dica": "Valor que não se passa"
+    },
+    {
+      "id": "mat-inequacoes-pal-04",
+      "tema": "Matemática",
+      "palavra": "Plano",
+      "dica": "Fixo mais taxa"
+    },
+    {
+      "id": "mat-pa-pg-pal-01",
+      "tema": "Matemática",
+      "palavra": "Termo",
+      "dica": "Elemento da sequência"
+    },
+    {
+      "id": "mat-pa-pg-pal-02",
+      "tema": "Matemática",
+      "palavra": "Escada",
+      "dica": "Lembra uma PA"
+    },
+    {
+      "id": "mat-pa-pg-pal-03",
+      "tema": "Matemática",
+      "palavra": "Dobro",
+      "dica": "PG de razão 2"
+    },
+    {
+      "id": "mat-pa-pg-pal-04",
+      "tema": "Matemática",
+      "palavra": "Palito",
+      "dica": "Monta figuras em sequência"
+    },
+    {
+      "id": "mat-revisao-algebra-pal-01",
+      "tema": "Matemática",
+      "palavra": "Sistema",
+      "dica": "Duas equações juntas"
+    },
+    {
+      "id": "mat-revisao-algebra-pal-02",
+      "tema": "Matemática",
+      "palavra": "Razão",
+      "dica": "Passo da progressão"
+    },
+    {
+      "id": "mat-revisao-algebra-pal-03",
+      "tema": "Matemática",
+      "palavra": "Sinal",
+      "dica": "Inverte com negativo"
+    },
+    {
+      "id": "mat-revisao-algebra-pal-04",
+      "tema": "Matemática",
+      "palavra": "Termo",
+      "dica": "Posição na sequência"
     }
   ],
   "fichas": {
@@ -78985,6 +82410,104 @@
       "pegadinhas": [
         "Somar x só de um lado na moldura.",
         "Responder as pessoas que pagaram em vez do grupo inicial."
+      ]
+    },
+    "Resolver inequações": {
+      "texto": [
+        "Resolva como equação, com uma regra a mais: multiplicando ou dividindo por negativo, o sentido da desigualdade inverte. A resposta é um intervalo; confira com um número.",
+        "Em quantidades inteiras: \"no mínimo\" arredonda para cima dentro da solução; \"no máximo\", para baixo. Médias: total necessário = média × número de provas."
+      ],
+      "pontos": [
+        "−x < −3 vira x > 3.",
+        "Teste o inteiro anterior."
+      ],
+      "pegadinhas": [
+        "Esquecer de inverter com negativos.",
+        "Arredondar para cima um limite máximo."
+      ]
+    },
+    "Comparar planos": {
+      "texto": [
+        "Escreva o custo de cada plano e ache o empate; antes dele vence o de menor fixo, depois dele o de menor taxa. \"A partir de\" pede o primeiro inteiro depois do empate.",
+        "Com três planos, o vencedor precisa ser mais barato que os dois: vale a condição mais exigente. Lucro: receita > custo, ou seja, passar do ponto de equilíbrio."
+      ],
+      "pontos": [
+        "Diferença dos fixos ÷ diferença das taxas.",
+        "No empate, ninguém compensa."
+      ],
+      "pegadinhas": [
+        "Considerar só um rival.",
+        "Incluir o empate como vantagem."
+      ]
+    },
+    "Inequações do 2º grau": {
+      "texto": [
+        "Ache as raízes e use a concavidade: com a > 0, negativo entre as raízes e positivo fora; com a < 0, o contrário. ≤ e ≥ incluem as raízes.",
+        "Se Δ < 0, a expressão tem sempre o sinal de a: x² + 4 é sempre positivo. Para contar inteiros, liste os que estão no intervalo."
+      ],
+      "pontos": [
+        "a positivo: entre as raízes, negativo.",
+        "Estrito exclui as raízes."
+      ],
+      "pegadinhas": [
+        "Trocar dentro e fora das raízes.",
+        "Esquecer metade da solução (x < −4)."
+      ]
+    },
+    "Padrões e sequências": {
+      "texto": [
+        "Compare termos vizinhos: diferença constante é PA; divisão constante é PG. Em figuras, veja quanto se acrescenta de uma para a outra e escreva a regra (3n + 1, 2n + 1).",
+        "Outros padrões comuns: quadrados (n²), quadrados mais 1 (n² + 1) e sequências em que cada termo é a soma dos dois anteriores. Escreva termo a termo quando não houver fórmula."
+      ],
+      "pontos": [
+        "Teste a regra nas primeiras figuras.",
+        "Razão negativa: sequência que desce."
+      ],
+      "pegadinhas": [
+        "Usar 4 palitos por quadrado encostado.",
+        "Pular um termo ao listar."
+      ]
+    },
+    "Progressão aritmética": {
+      "texto": [
+        "PA: soma-se a razão r. Termo geral aₙ = a₁ + (n − 1)r: do 1º ao n-ésimo há n − 1 saltos. Soma: Sₙ = (a₁ + aₙ) × n ÷ 2.",
+        "Com dois termos conhecidos, a razão é a diferença dividida pelo número de saltos entre eles. Total pede a soma; mês ou fileira pede o termo."
+      ],
+      "pontos": [
+        "De 1 a 100: 5.050.",
+        "Ache o último antes de somar."
+      ],
+      "pegadinhas": [
+        "Usar n saltos em vez de n − 1.",
+        "Responder o último termo quando pediram o total."
+      ]
+    },
+    "Progressão geométrica": {
+      "texto": [
+        "PG: multiplica-se pela razão q. Termo geral aₙ = a₁ · qⁿ⁻¹. Soma: Sₙ = a₁(qⁿ − 1) ÷ (q − 1). Crescer i% dá q = 1 + i; perder i%, q = 1 − i.",
+        "A PG com q > 1 começa devagar e dispara: sempre passa uma PA crescente em algum momento. Com 0 < q < 1, os termos diminuem pela mesma fração (quiques, meia-vida)."
+      ],
+      "pontos": [
+        "Expoente n − 1 no termo geral.",
+        "Quiques: multiplique pela fração a cada vez."
+      ],
+      "pegadinhas": [
+        "Subtrair termos para achar a razão.",
+        "Usar qⁿ no termo geral."
+      ]
+    },
+    "Revisão: álgebra": {
+      "texto": [
+        "Equação: operação inversa nos dois lados. Sistema: duas equações, por substituição ou adição. 2º grau: atalhos nas incompletas e Bhaskara nas completas. Inequação: com negativo, inverte o sinal.",
+        "PA: aₙ = a₁ + (n − 1)r e soma (a₁ + aₙ) × n ÷ 2. PG: aₙ = a₁ · qⁿ⁻¹. Quando a soma de uma PA é dada, a quantidade de termos sai de uma equação do 2º grau."
+      ],
+      "pontos": [
+        "Confira a resposta no texto.",
+        "Responda a incógnita pedida."
+      ],
+      "pegadinhas": [
+        "Esquecer a solução negativa ou o zero.",
+        "Contar n saltos em vez de n − 1."
       ]
     }
   }
