@@ -1788,7 +1788,7 @@
       "id": "qui-termoquimica",
       "nome": "Aula 16 · Termoquímica",
       "modulo": "Módulo 4 · Energia, velocidade e equilíbrio",
-      "descricao": "Módulo 4 · aula 1 de 3 · 35 min · treina as habilidades H17, H21, H24 e H26",
+      "descricao": "Módulo 4 · aula 1 de 6 · 35 min · treina as habilidades H17, H21, H24 e H26",
       "habilidades": [
         "H17",
         "H21",
@@ -1906,7 +1906,7 @@
       "id": "qui-cinetica",
       "nome": "Aula 17 · Cinética química",
       "modulo": "Módulo 4 · Energia, velocidade e equilíbrio",
-      "descricao": "Módulo 4 · aula 2 de 3 · 35 min · treina as habilidades H17, H24 e H25",
+      "descricao": "Módulo 4 · aula 2 de 6 · 35 min · treina as habilidades H17, H24 e H25",
       "habilidades": [
         "H17",
         "H24",
@@ -2023,7 +2023,7 @@
       "id": "qui-equilibrio",
       "nome": "Aula 18 · Equilíbrio químico",
       "modulo": "Módulo 4 · Energia, velocidade e equilíbrio",
-      "descricao": "Módulo 4 · aula 3 de 3 · 35 min · treina as habilidades H17, H24 e H25",
+      "descricao": "Módulo 4 · aula 3 de 6 · 35 min · treina as habilidades H17, H24 e H25",
       "habilidades": [
         "H17",
         "H24",
@@ -2127,6 +2127,366 @@
           "equilibrio dinamico",
           "constante de equilibrio",
           "le chatelier"
+        ]
+      }
+    },
+    {
+      "id": "qui-ph",
+      "nome": "Aula 19 · pH e equilíbrio iônico da água",
+      "modulo": "Módulo 4 · Energia, velocidade e equilíbrio",
+      "descricao": "Módulo 4 · aula 4 de 6 · 35 min · treina as habilidades H17, H24, H25 e H30",
+      "habilidades": [
+        "H17",
+        "H24",
+        "H25",
+        "H30"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "A água e a escala de pH",
+            "texto": [
+              "Mesmo pura, a água se ioniza um pouquinho: H₂O ⇌ H⁺ + OH⁻. A 25 °C, o **produto iônico** da água é [H⁺] × [OH⁻] = 10⁻¹⁴. Na água pura, [H⁺] = [OH⁻] = 10⁻⁷ mol/L: o meio é neutro. Como esses números são pequenos demais, usa-se o logaritmo: pH = −log [H⁺] e pOH = −log [OH⁻], com pH + pOH = 14 a 25 °C. Na **escala de pH**, de 0 a 14, valores abaixo de 7 indicam meio ácido, 7 é neutro e acima de 7 é básico. Cada unidade corresponde a um fator de 10: um meio de pH 3 tem dez vezes mais H⁺ que um de pH 4 e mil vezes mais que um de pH 6."
+            ]
+          },
+          {
+            "titulo": "Calculando o pH",
+            "texto": [
+              "Se [H⁺] = 10⁻³ mol/L, o pH é 3. Um ácido forte como o HCl ioniza por completo: uma solução 0,01 mol/L (10⁻² mol/L) tem pH 2. Uma base forte como o NaOH 0,001 mol/L tem [OH⁻] = 10⁻³, pOH 3 e pH 11. Diluir um ácido forte dez vezes sobe o pH em uma unidade, mas nenhuma diluição de ácido passa do pH 7: o meio só se aproxima do neutro."
+            ]
+          },
+          {
+            "titulo": "pH no cotidiano e no ambiente",
+            "texto": [
+              "Valores aproximados: suco gástrico 1 a 2, limão 2, refrigerante 3, café 5, chuva comum 5,6, água pura 7, sangue 7,35 a 7,45, água do mar perto de 8, sabão 9 a 10, água sanitária 12 e soda cáustica 13 a 14. O sangue se mantém numa faixa estreita graças à **solução tampão** de ácido carbônico e bicarbonato, que neutraliza pequenas quantidades de ácido ou de base: um tampão é a mistura de um ácido fraco com seu sal (ou de uma base fraca com seu sal). Respirar rápido demais elimina CO₂ e eleva o pH do sangue. Depois de comer açúcar, bactérias da boca produzem ácidos, e o pH abaixo de cerca de 5,5 começa a dissolver o esmalte dos dentes. No mar, o CO₂ absorvido forma ácido carbônico, baixa o pH e dificulta a formação de conchas e corais."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Ler tabelas de pH, comparar acidez entre soluções, calcular pH de ácidos e bases fortes, explicar tampões e relacionar pH com saúde, agricultura e ambiente."
+            ]
+          }
+        ],
+        "introducao": "O pH aparece no rótulo do xampu, no exame de sangue, na piscina e no solo da lavoura. Esta aula mostra de onde vem a escala de pH, como calculá-lo a partir das concentrações de H⁺ e OH⁻ e por que pequenas mudanças de pH importam tanto para o corpo, para os oceanos e para os dentes.",
+        "mapaMental": {
+          "centro": "pH",
+          "ramos": [
+            {
+              "titulo": "Água",
+              "itens": [
+                "ioniza um pouquinho",
+                "produto iônico",
+                "neutro em 10⁻⁷"
+              ]
+            },
+            {
+              "titulo": "Escala",
+              "itens": [
+                "abaixo de 7 ácido",
+                "7 neutro",
+                "acima de 7 básico"
+              ]
+            },
+            {
+              "titulo": "Cálculo",
+              "itens": [
+                "pH = −log [H⁺]",
+                "pH + pOH = 14",
+                "fator de 10 por unidade"
+              ]
+            },
+            {
+              "titulo": "Cotidiano",
+              "itens": [
+                "sangue e tampão",
+                "dentes",
+                "oceanos"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "📏",
+            "conceito": "Régua de 0 a 14",
+            "liga": "escala de pH",
+            "porque": "Cada degrau vale dez vezes."
+          },
+          {
+            "icone": "🛡️",
+            "conceito": "Escudo do sangue",
+            "liga": "solução tampão",
+            "porque": "Segura o pH em 7,4."
+          },
+          {
+            "icone": "🦷",
+            "conceito": "Dente depois do doce",
+            "liga": "pH baixo",
+            "porque": "Ácido das bactérias ataca o esmalte."
+          },
+          {
+            "icone": "🐚",
+            "conceito": "Concha no mar ácido",
+            "liga": "acidificação",
+            "porque": "Menos carbonato para construir."
+          }
+        ],
+        "pontos": [
+          "**Produto iônico** da água: [H⁺][OH⁻] = 10⁻¹⁴ a 25 °C.",
+          "pH = −log [H⁺]; pH + pOH = 14; na **escala de pH**, cada unidade é fator 10.",
+          "Ácido forte 10⁻ⁿ mol/L tem pH n; base forte 10⁻ⁿ tem pOH n.",
+          "**Solução tampão** resiste a mudanças de pH (sangue: bicarbonato)."
+        ],
+        "perolas": [
+          "Diluir ácido nunca passa do neutro."
+        ],
+        "reforcar": [
+          "produto ionico",
+          "escala de ph",
+          "solucao tampao"
+        ]
+      }
+    },
+    {
+      "id": "qui-eletroquimica",
+      "nome": "Aula 20 · Oxirredução, pilhas e eletrólise",
+      "modulo": "Módulo 4 · Energia, velocidade e equilíbrio",
+      "descricao": "Módulo 4 · aula 5 de 6 · 35 min · treina as habilidades H17, H21, H24 e H26",
+      "habilidades": [
+        "H17",
+        "H21",
+        "H24",
+        "H26"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Oxirredução",
+            "texto": [
+              "Oxidação é a perda de elétrons; redução é o ganho. As duas acontecem juntas: os elétrons que um perde, outro recebe. Para acompanhar, usa-se o **número de oxidação** (Nox): substância simples tem Nox zero; o hidrogênio costuma ter +1 e o oxigênio −2 (−1 nos peróxidos); metais alcalinos têm +1 e alcalinoterrosos +2; num composto, a soma dos Nox é zero e, num íon, é igual à carga. Quem oxida tem o Nox aumentado e é o agente redutor; quem reduz tem o Nox diminuído e é o agente oxidante. Em Zn + Cu²⁺ → Zn²⁺ + Cu, o zinco oxida (0 → +2) e o íon cobre reduz (+2 → 0)."
+            ]
+          },
+          {
+            "titulo": "Pilhas e baterias",
+            "texto": [
+              "A pilha transforma energia química em elétrica numa reação espontânea. Na pilha de Daniell, a placa de zinco é o ânodo: ali ocorre a oxidação, é o polo negativo e a placa se desgasta. A placa de cobre é o cátodo: ali ocorre a redução, é o polo positivo e a placa ganha massa. Os elétrons vão do ânodo para o cátodo pelo fio externo, e a **ponte salina** fecha o circuito, liberando íons que mantêm as soluções eletricamente neutras. Quem tem maior potencial de redução sofre redução; a diferença de potencial é E° do cátodo menos E° do ânodo: cobre (+0,34 V) e zinco (−0,76 V) dão 1,10 V. Baterias comuns: chumbo-ácido nos carros, íon-lítio em celulares e alcalinas no controle remoto. Pilhas e baterias usadas devem ir para pontos de coleta, porque podem ter metais pesados como chumbo, cádmio e mercúrio."
+            ]
+          },
+          {
+            "titulo": "Eletrólise e corrosão",
+            "texto": [
+              "Na **eletrólise**, a corrente elétrica força uma reação não espontânea. Na eletrólise ígnea do NaCl fundido, forma-se sódio metálico no cátodo e gás cloro no ânodo; na solução aquosa, formam-se hidrogênio, cloro e soda cáustica. A eletrólise refina o cobre, produz o alumínio a partir da bauxita, com enorme consumo de energia (por isso reciclar latas economiza tanto), e faz a galvanoplastia, que reveste peças com cromo, níquel ou ouro. A corrosão do ferro é uma oxidação que precisa de oxigênio e água e é acelerada pelo sal. Protege-se com tinta, galvanização (camada de zinco) ou metal de sacrifício: um metal mais fácil de oxidar, como magnésio ou zinco, preso a cascos de navio e tubulações, oxida no lugar do ferro."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Identificar quem oxida e quem reduz, calcular Nox e ddp, interpretar esquemas de pilhas, escolher metais para proteção contra corrosão e discutir descarte de baterias e reciclagem do alumínio."
+            ]
+          }
+        ],
+        "introducao": "A bateria do celular, a ferrugem do portão, a cromagem da bicicleta e a lata de alumínio têm a mesma química por trás: a troca de elétrons. Esta aula ensina a reconhecer oxidação e redução, a calcular o número de oxidação, a entender como uma pilha gera corrente e como a eletrólise usa a corrente para produzir substâncias.",
+        "mapaMental": {
+          "centro": "Eletroquímica",
+          "ramos": [
+            {
+              "titulo": "Oxirredução",
+              "itens": [
+                "número de oxidação",
+                "perde elétrons, oxida",
+                "ganha elétrons, reduz"
+              ]
+            },
+            {
+              "titulo": "Pilha",
+              "itens": [
+                "ânodo negativo",
+                "cátodo positivo",
+                "elétrons pelo fio"
+              ]
+            },
+            {
+              "titulo": "Eletrólise",
+              "itens": [
+                "corrente força a reação",
+                "galvanoplastia",
+                "alumínio"
+              ]
+            },
+            {
+              "titulo": "Corrosão",
+              "itens": [
+                "oxigênio e água",
+                "galvanização",
+                "metal de sacrifício"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🏃",
+            "conceito": "Corredor que perde o boné",
+            "liga": "oxidação",
+            "porque": "Perdeu elétron, Nox subiu."
+          },
+          {
+            "icone": "🧂",
+            "conceito": "Ponte salina",
+            "liga": "fecha o circuito",
+            "porque": "Íons equilibram as cargas."
+          },
+          {
+            "icone": "🛳️",
+            "conceito": "Bloco de zinco no navio",
+            "liga": "metal de sacrifício",
+            "porque": "Ele enferruja para o casco não enferrujar."
+          },
+          {
+            "icone": "🥫",
+            "conceito": "Lata reciclada",
+            "liga": "energia poupada",
+            "porque": "Fazer alumínio novo gasta muita eletricidade."
+          }
+        ],
+        "pontos": [
+          "Oxidação perde elétrons (**número de oxidação** sobe); redução ganha (Nox desce).",
+          "Pilha: ânodo (oxidação, polo −) e cátodo (redução, polo +); **ponte salina** fecha o circuito.",
+          "ddp = E° do cátodo − E° do ânodo; quem tem maior potencial de redução reduz.",
+          "**Eletrólise**: corrente elétrica força reação não espontânea."
+        ],
+        "perolas": [
+          "Na pilha, ânodo some e cátodo cresce."
+        ],
+        "reforcar": [
+          "numero de oxidacao",
+          "ponte salina",
+          "eletrolise"
+        ]
+      }
+    },
+    {
+      "id": "qui-revisao-fisico",
+      "nome": "Aula 21 · Revisão do módulo: energia, velocidade e equilíbrio",
+      "modulo": "Módulo 4 · Energia, velocidade e equilíbrio",
+      "descricao": "Módulo 4 · aula 6 de 6 · 35 min · treina as habilidades H17, H21, H24 e H25",
+      "habilidades": [
+        "H17",
+        "H21",
+        "H24",
+        "H25"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Energia nas reações",
+            "texto": [
+              "Reação **exotérmica** libera calor e tem ΔH negativo; endotérmica absorve e tem ΔH positivo. Quebrar ligações absorve energia; formar libera. Pela lei de Hess, o ΔH só depende dos estados inicial e final: ao inverter uma equação, troca-se o sinal; ao multiplicá-la, multiplica-se o ΔH. Combustíveis são comparados pela energia por grama."
+            ]
+          },
+          {
+            "titulo": "Velocidade",
+            "texto": [
+              "As reações dependem de colisões com energia mínima, a energia de ativação. Temperatura, concentração e superfície de contato maiores aceleram as reações. O **catalisador** abre um caminho com menor energia de ativação, não é consumido e não muda o ΔH; as enzimas são os catalisadores do corpo."
+            ]
+          },
+          {
+            "titulo": "Equilíbrio e pH",
+            "texto": [
+              "No equilíbrio, as velocidades direta e inversa se igualam, e Kc relaciona as concentrações. Pelo princípio de Le Chatelier, o sistema desloca para compensar mudanças de concentração, pressão e temperatura; o catalisador não desloca. Na **escala de pH**, abaixo de 7 é ácido e acima é básico, e cada unidade é um fator de 10; tampões, como o do sangue, resistem a variações."
+            ]
+          },
+          {
+            "titulo": "Eletroquímica",
+            "texto": [
+              "Oxidação é perda de elétrons e redução é ganho. A pilha converte energia química em elétrica: o ânodo oxida e se desgasta, o cátodo reduz e ganha massa. A eletrólise faz o contrário e consome eletricidade, como na produção de alumínio. Metais de sacrifício protegem o ferro da corrosão."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Resolva sem consultar o resumo e leia o comentário de cada alternativa. Os tropeços mais comuns: trocar o sinal de ΔH, achar que o catalisador muda o rendimento, confundir velocidade com equilíbrio, tratar a escala de pH como linear e trocar ânodo e cátodo. Antes de calcular, pergunte-se qual assunto a questão cobra: energia, velocidade, equilíbrio, pH ou elétrons. Lembre também que temperatura mexe em tudo ao mesmo tempo: acelera as reações, desloca o equilíbrio para o lado endotérmico e muda o valor de Kc. Em problemas de indústria, a escolha das condições é sempre um meio-termo entre rapidez, rendimento e custo de energia."
+            ]
+          }
+        ],
+        "introducao": "Fim do quarto módulo de Química, a físico-química. Esta revisão junta termoquímica, cinética, equilíbrio, pH e eletroquímica, do jeito que a prova cobra: combustíveis e energia, conservação de alimentos, indústria, corpo humano, oceanos e baterias.",
+        "mapaMental": {
+          "centro": "Revisão do módulo",
+          "ramos": [
+            {
+              "titulo": "Energia",
+              "itens": [
+                "ΔH negativo libera",
+                "lei de Hess",
+                "energia por grama"
+              ]
+            },
+            {
+              "titulo": "Velocidade",
+              "itens": [
+                "energia de ativação",
+                "temperatura e superfície",
+                "enzimas"
+              ]
+            },
+            {
+              "titulo": "Equilíbrio",
+              "itens": [
+                "velocidades se igualam",
+                "Le Chatelier",
+                "fator de 10 no pH"
+              ]
+            },
+            {
+              "titulo": "Elétrons",
+              "itens": [
+                "oxidação e redução",
+                "pilha",
+                "eletrólise e corrosão"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🔥",
+            "conceito": "Fogão aceso",
+            "liga": "exotérmica",
+            "porque": "ΔH negativo."
+          },
+          {
+            "icone": "🚇",
+            "conceito": "Túnel na montanha",
+            "liga": "catalisador",
+            "porque": "Encurta a subida sem mudar o destino."
+          },
+          {
+            "icone": "📏",
+            "conceito": "Régua de 0 a 14",
+            "liga": "escala de pH",
+            "porque": "Cada degrau, dez vezes."
+          },
+          {
+            "icone": "🔋",
+            "conceito": "Pilha",
+            "liga": "química em elétrica",
+            "porque": "Ânodo perde, cátodo ganha."
+          }
+        ],
+        "pontos": [
+          "Reação **exotérmica**: ΔH < 0; inverter equação troca o sinal.",
+          "**Catalisador**: menor energia de ativação; não muda ΔH nem equilíbrio.",
+          "Le Chatelier: o sistema compensa; pressão alta favorece menos mols de gás.",
+          "**Escala de pH**: logarítmica; pilha: ânodo oxida, cátodo reduz."
+        ],
+        "perolas": [
+          "Pergunte primeiro: energia, velocidade ou equilíbrio?"
+        ],
+        "reforcar": [
+          "exotermica",
+          "catalisador",
+          "escala de ph"
         ]
       }
     }
@@ -10449,6 +10809,1398 @@
         "Desloca para os reagentes."
       ],
       "revisar": "condições do processo Haber-Bosch"
+    },
+    {
+      "id": "qui-ph-q01",
+      "tema": "Escala de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Qual destes valores de pH indica uma solução ácida?",
+      "alternativas": [
+        "pH 9",
+        "pH 14",
+        "pH 3",
+        "pH 7",
+        "pH 12"
+      ],
+      "correta": 2,
+      "explicacao": "Abaixo de 7, o meio é ácido. Dica de mergulhador: menos que 7, ácido.",
+      "comentarios": [
+        "É básico.",
+        "É muito básico.",
+        "",
+        "É neutro.",
+        "É básico."
+      ]
+    },
+    {
+      "id": "qui-ph-q02",
+      "tema": "Escala de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "A água pura a 25 °C tem pH:",
+      "alternativas": [
+        "1",
+        "14",
+        "10",
+        "0",
+        "7"
+      ],
+      "correta": 4,
+      "explicacao": "[H⁺] = [OH⁻] = 10⁻⁷ mol/L. Dica de mergulhador: neutro é 7 a 25 °C.",
+      "comentarios": [
+        "Seria muito ácida.",
+        "Seria muito básica.",
+        "Seria básica.",
+        "Seria muito ácida.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-ph-q03",
+      "tema": "Escala de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Uma água sanitária tem pH 12. Ela é:",
+      "alternativas": [
+        "Neutra",
+        "Um ácido forte",
+        "Básica",
+        "Igual à água pura",
+        "Ácida"
+      ],
+      "correta": 2,
+      "explicacao": "pH 12 está bem acima de 7. Dica de mergulhador: limpeza pesada costuma ser básica.",
+      "comentarios": [
+        "Não é 7.",
+        "É básica.",
+        "",
+        "Bem diferente.",
+        "pH acima de 7."
+      ],
+      "revisar": "pH aproximado da água sanitária"
+    },
+    {
+      "id": "qui-ph-q04",
+      "tema": "Cálculo de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução tem [H⁺] = 10⁻³ mol/L. Seu pH é:",
+      "alternativas": [
+        "7",
+        "0,001",
+        "3",
+        "11",
+        "−3"
+      ],
+      "correta": 2,
+      "explicacao": "pH = −log 10⁻³ = 3. Dica de mergulhador: o expoente, sem o sinal, é o pH.",
+      "comentarios": [
+        "Seria neutro.",
+        "É a concentração.",
+        "",
+        "É o pOH.",
+        "O pH é positivo aqui."
+      ]
+    },
+    {
+      "id": "qui-ph-q05",
+      "tema": "Cálculo de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução tem pH 4 a 25 °C. Seu pOH é:",
+      "alternativas": [
+        "7",
+        "4",
+        "10",
+        "14",
+        "18"
+      ],
+      "correta": 2,
+      "explicacao": "pOH = 14 − 4 = 10. Dica de mergulhador: pH + pOH = 14.",
+      "comentarios": [
+        "Seria neutro.",
+        "pH e pOH somam 14.",
+        "",
+        "Esqueceu o pH.",
+        "Somou em vez de subtrair."
+      ]
+    },
+    {
+      "id": "qui-ph-q06",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "O suco gástrico do estômago tem pH entre 1 e 2. Isso significa que ele é:",
+      "alternativas": [
+        "Levemente básico",
+        "Básico",
+        "Muito ácido",
+        "Neutro",
+        "Igual ao sangue"
+      ],
+      "correta": 2,
+      "explicacao": "O HCl do estômago deixa o meio fortemente ácido. Dica de mergulhador: estômago é o lugar mais ácido do corpo.",
+      "comentarios": [
+        "É ácido.",
+        "Está abaixo de 7.",
+        "",
+        "Está longe de 7.",
+        "O sangue é levemente básico."
+      ],
+      "revisar": "pH do suco gástrico"
+    },
+    {
+      "id": "qui-ph-q07",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "O pH do sangue humano fica normalmente entre 7,35 e 7,45. O sangue é, portanto:",
+      "alternativas": [
+        "Fortemente básico",
+        "Fortemente ácido",
+        "Ácido como o estômago",
+        "Exatamente neutro",
+        "Levemente básico"
+      ],
+      "correta": 4,
+      "explicacao": "Uma faixa estreita e levemente acima de 7. Dica de mergulhador: sangue é 7,4, quase neutro, puxando para o básico.",
+      "comentarios": [
+        "É só um pouco acima.",
+        "Está acima de 7.",
+        "É básico.",
+        "Está um pouco acima.",
+        ""
+      ],
+      "revisar": "faixa de pH do sangue"
+    },
+    {
+      "id": "qui-ph-q08",
+      "tema": "Escala de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução de pH 3 tem quantas vezes mais H⁺ que uma de pH 4?",
+      "alternativas": [
+        "1 vez",
+        "100 vezes",
+        "4 vezes",
+        "3 vezes",
+        "10 vezes"
+      ],
+      "correta": 4,
+      "explicacao": "Cada unidade de pH vale um fator 10. Dica de mergulhador: um degrau de pH, dez vezes.",
+      "comentarios": [
+        "São diferentes.",
+        "Seria diferença de 2.",
+        "A escala é logarítmica.",
+        "A escala é logarítmica.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-ph-q09",
+      "tema": "Escala de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "O refrigerante tem pH perto de 3 e a chuva comum, perto de 6. O refrigerante tem quantas vezes mais H⁺?",
+      "alternativas": [
+        "3 vezes",
+        "10 vezes",
+        "1.000 vezes",
+        "100 vezes",
+        "2 vezes"
+      ],
+      "correta": 2,
+      "explicacao": "Diferença de 3 unidades: 10³ = 1.000. Dica de mergulhador: três degraus, mil vezes.",
+      "comentarios": [
+        "A escala é logarítmica.",
+        "Seria diferença de 1.",
+        "",
+        "Seria diferença de 2.",
+        "A escala é logarítmica."
+      ]
+    },
+    {
+      "id": "qui-ph-q10",
+      "tema": "Cálculo de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução tem [OH⁻] = 10⁻² mol/L a 25 °C. Seu pH é:",
+      "alternativas": [
+        "7",
+        "12",
+        "2",
+        "14",
+        "10"
+      ],
+      "correta": 1,
+      "explicacao": "pOH = 2; pH = 14 − 2 = 12. Dica de mergulhador: com OH⁻, calcule o pOH primeiro.",
+      "comentarios": [
+        "Seria neutro.",
+        "",
+        "É o pOH.",
+        "Esqueceu o pOH.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "qui-ph-q11",
+      "tema": "Cálculo de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução de HCl, ácido forte, tem concentração 0,01 mol/L. Seu pH é:",
+      "alternativas": [
+        "2",
+        "7",
+        "1",
+        "12",
+        "0,01"
+      ],
+      "correta": 0,
+      "explicacao": "Ionização completa: [H⁺] = 10⁻² mol/L; pH = 2. Dica de mergulhador: ácido forte, [H⁺] igual à concentração.",
+      "comentarios": [
+        "",
+        "Seria neutra.",
+        "Seria 0,1 mol/L.",
+        "É o pOH.",
+        "É a concentração."
+      ]
+    },
+    {
+      "id": "qui-ph-q12",
+      "tema": "Cálculo de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução de NaOH, base forte, tem concentração 0,001 mol/L a 25 °C. Seu pH é:",
+      "alternativas": [
+        "3",
+        "13",
+        "7",
+        "0,001",
+        "11"
+      ],
+      "correta": 4,
+      "explicacao": "[OH⁻] = 10⁻³; pOH = 3; pH = 11. Dica de mergulhador: base forte, calcule pOH e complete 14.",
+      "comentarios": [
+        "É o pOH.",
+        "Errou o expoente.",
+        "Seria neutra.",
+        "É a concentração.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-ph-q13",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "O sangue mantém o pH perto de 7,4 mesmo recebendo ácidos do metabolismo. Isso é possível graças:",
+      "alternativas": [
+        "À solução tampão de ácido carbônico e bicarbonato",
+        "Ao sangue ser fortemente básico",
+        "À ausência de ácidos no corpo",
+        "À água pura do sangue",
+        "Ao sal de cozinha"
+      ],
+      "correta": 0,
+      "explicacao": "O tampão neutraliza pequenas quantidades de ácido ou base. Dica de mergulhador: tampão é o escudo do pH.",
+      "comentarios": [
+        "",
+        "É levemente básico.",
+        "O metabolismo produz ácidos.",
+        "Não é água pura.",
+        "Não é o tampão principal."
+      ]
+    },
+    {
+      "id": "qui-ph-q14",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Mesmo sem poluição, a água da chuva tem pH perto de 5,6. Considera-se chuva ácida aquela com pH:",
+      "alternativas": [
+        "Acima de 5,6",
+        "Abaixo de 5,6",
+        "Acima de 7",
+        "Exatamente 7",
+        "Igual a 14"
+      ],
+      "correta": 1,
+      "explicacao": "A acidez extra vem de óxidos de enxofre e nitrogênio. Dica de mergulhador: chuva ácida é mais ácida que a chuva comum.",
+      "comentarios": [
+        "Seria menos ácida que a comum.",
+        "",
+        "Seria básica.",
+        "Seria neutra.",
+        "Seria muito básica."
+      ],
+      "revisar": "limite de pH para chuva ácida (5,6)"
+    },
+    {
+      "id": "qui-ph-q15",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Depois de comer doce, o pH na superfície dos dentes cai. O risco para o esmalte é:",
+      "alternativas": [
+        "Desmineralização quando o pH fica abaixo de cerca de 5,5",
+        "Formação de esmalte novo",
+        "Ganho de minerais",
+        "Nenhum, pois o açúcar é neutro",
+        "Alcalinização da boca"
+      ],
+      "correta": 0,
+      "explicacao": "Bactérias fermentam o açúcar e liberam ácidos que dissolvem o esmalte. Dica de mergulhador: doce vira ácido na boca.",
+      "comentarios": [
+        "",
+        "Não é o efeito.",
+        "Ocorre o contrário.",
+        "As bactérias produzem ácidos.",
+        "A boca fica ácida."
+      ],
+      "revisar": "pH crítico do esmalte dentário (cerca de 5,5)"
+    },
+    {
+      "id": "qui-ph-q16",
+      "tema": "Escala de pH",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução de HCl de pH 2 é diluída 10 vezes e depois mais 10 vezes. Os pH obtidos são:",
+      "alternativas": [
+        "20 e depois 200",
+        "3 e depois 4",
+        "3 e depois 13",
+        "7 e depois 7",
+        "1 e depois 0"
+      ],
+      "correta": 1,
+      "explicacao": "Cada diluição de 10 vezes diminui [H⁺] em 10 e sobe o pH em 1. Dica de mergulhador: diluir ácido aproxima do 7, sem passar dele.",
+      "comentarios": [
+        "pH não multiplica.",
+        "",
+        "Não passa de 7.",
+        "Ainda é ácido.",
+        "Diluir aumenta o pH."
+      ]
+    },
+    {
+      "id": "qui-ph-q17",
+      "tema": "Cálculo de pH",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "Misturam-se 100 mL de HCl 0,1 mol/L com 900 mL de água. O pH final é:",
+      "alternativas": [
+        "7",
+        "3",
+        "1",
+        "0,01",
+        "2"
+      ],
+      "correta": 4,
+      "explicacao": "C₂ = 0,1 × 100 ÷ 1.000 = 0,01 mol/L; pH = 2. Dica de mergulhador: dilua primeiro, calcule o pH depois.",
+      "comentarios": [
+        "Ainda é ácido.",
+        "Diluiu demais.",
+        "É o pH antes da diluição.",
+        "É a concentração.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-ph-q18",
+      "tema": "Cálculo de pH",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "Misturam-se 50 mL de HCl 0,11 mol/L com 50 mL de NaOH 0,09 mol/L. O pH da mistura é:",
+      "alternativas": [
+        "12",
+        "2",
+        "1",
+        "0,01",
+        "7"
+      ],
+      "correta": 1,
+      "explicacao": "H⁺: 0,0055 mol; OH⁻: 0,0045 mol; sobram 0,001 mol de H⁺ em 0,1 L: 0,01 mol/L, pH 2. Dica de mergulhador: neutralize, ache o excesso e divida pelo volume total.",
+      "comentarios": [
+        "Sobra ácido, não base.",
+        "",
+        "Errou o excesso.",
+        "É a concentração do excesso.",
+        "Sobra ácido."
+      ]
+    },
+    {
+      "id": "qui-ph-q19",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "No sangue, CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻. Uma pessoa ansiosa respira rápido demais e elimina muito CO₂. O pH do sangue:",
+      "alternativas": [
+        "Fica igual ao do estômago",
+        "Vai a 14",
+        "Não muda",
+        "Cai, pois aumenta o H⁺",
+        "Sobe, pois o equilíbrio desloca e consome H⁺"
+      ],
+      "correta": 4,
+      "explicacao": "Retirando CO₂, o equilíbrio desloca para a esquerda e o H⁺ diminui: alcalose respiratória. Dica de mergulhador: menos CO₂, menos ácido no sangue.",
+      "comentarios": [
+        "Não.",
+        "A variação é pequena.",
+        "Muda.",
+        "A perda de CO₂ reduz o H⁺.",
+        ""
+      ],
+      "revisar": "alcalose respiratória por hiperventilação"
+    },
+    {
+      "id": "qui-ph-q20",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "A absorção de CO₂ pelos oceanos é chamada de acidificação marinha. A consequência química para corais e moluscos é:",
+      "alternativas": [
+        "O mar fica básico",
+        "Nenhuma, pois o CO₂ não reage com água",
+        "Menos íons carbonato disponíveis para formar conchas",
+        "Mais carbonato e conchas mais grossas",
+        "A água do mar congela"
+      ],
+      "correta": 2,
+      "explicacao": "O H⁺ formado reage com o carbonato, e os animais têm mais dificuldade de construir esqueletos de CaCO₃. Dica de mergulhador: oceano mais ácido, recife mais frágil.",
+      "comentarios": [
+        "Fica menos básico.",
+        "Reage.",
+        "",
+        "Ocorre o contrário.",
+        "Não congela."
+      ],
+      "revisar": "acidificação dos oceanos e carbonato"
+    },
+    {
+      "id": "qui-eletroquimica-q01",
+      "tema": "Oxirredução",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na oxidação, um átomo ou íon:",
+      "alternativas": [
+        "Ganha prótons",
+        "Perde nêutrons",
+        "Ganha elétrons",
+        "Não muda",
+        "Perde elétrons"
+      ],
+      "correta": 4,
+      "explicacao": "Oxidar é perder elétrons, e o Nox aumenta. Dica de mergulhador: oxidou, perdeu.",
+      "comentarios": [
+        "Não é a definição.",
+        "Não é a definição.",
+        "Isso é redução.",
+        "Muda o número de elétrons.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q02",
+      "tema": "Oxirredução",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "O número de oxidação do oxigênio na substância simples O₂ é:",
+      "alternativas": [
+        "+4",
+        "−2",
+        "0",
+        "−1",
+        "+2"
+      ],
+      "correta": 2,
+      "explicacao": "Toda substância simples tem Nox zero. Dica de mergulhador: elemento sozinho, Nox zero.",
+      "comentarios": [
+        "Não é o caso.",
+        "Vale nos compostos comuns.",
+        "",
+        "Vale nos peróxidos.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q03",
+      "tema": "Oxirredução",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na reação Zn + Cu²⁺ → Zn²⁺ + Cu, o zinco:",
+      "alternativas": [
+        "Sofre redução",
+        "Ganha 2 elétrons",
+        "Sofre oxidação, perdendo 2 elétrons",
+        "Recebe elétrons do cobre metálico",
+        "Não reage"
+      ],
+      "correta": 2,
+      "explicacao": "Zn (0) → Zn²⁺ (+2): perda de elétrons. Dica de mergulhador: Nox subiu, oxidou.",
+      "comentarios": [
+        "O Nox aumenta.",
+        "Perde.",
+        "",
+        "Doa ao Cu²⁺.",
+        "Vira Zn²⁺."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q04",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Uma pilha comum transforma:",
+      "alternativas": [
+        "Movimento em calor",
+        "Calor em luz",
+        "Energia elétrica em química",
+        "Energia química em energia elétrica",
+        "Energia nuclear em elétrica"
+      ],
+      "correta": 3,
+      "explicacao": "Uma reação espontânea de oxirredução gera corrente. Dica de mergulhador: pilha dá energia; eletrólise consome.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não é o caso.",
+        "Isso é a eletrólise.",
+        "",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q05",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Pilhas e baterias usadas não devem ir para o lixo comum porque:",
+      "alternativas": [
+        "Explodem sempre no lixo",
+        "Têm valor nulo para reciclagem",
+        "São feitas só de papel",
+        "Podem conter metais pesados tóxicos",
+        "Contaminam só o ar"
+      ],
+      "correta": 3,
+      "explicacao": "Chumbo, cádmio e mercúrio podem contaminar solo e água. Dica de mergulhador: pilha velha vai para o ponto de coleta.",
+      "comentarios": [
+        "Não é o principal.",
+        "Podem ser recicladas.",
+        "Não são.",
+        "",
+        "Contaminam solo e água."
+      ],
+      "revisar": "metais pesados em pilhas e baterias"
+    },
+    {
+      "id": "qui-eletroquimica-q06",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na eletrólise, ocorre:",
+      "alternativas": [
+        "Fusão nuclear",
+        "Combustão",
+        "Mistura física",
+        "Uma reação não espontânea forçada pela corrente elétrica",
+        "Geração espontânea de corrente"
+      ],
+      "correta": 3,
+      "explicacao": "A eletricidade fornece energia para a reação acontecer. Dica de mergulhador: eletrólise é reação na tomada.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não é o caso.",
+        "Há reação química.",
+        "",
+        "Isso é pilha."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q07",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Um prego de ferro enferruja mais rápido quando está:",
+      "alternativas": [
+        "Num ambiente sem água",
+        "Mergulhado em óleo",
+        "Num frasco sem ar e seco",
+        "Em contato com ar úmido",
+        "Coberto de tinta"
+      ],
+      "correta": 3,
+      "explicacao": "A ferrugem precisa de oxigênio e água. Dica de mergulhador: ferro, ar e água, ferrugem garantida.",
+      "comentarios": [
+        "Falta água.",
+        "O óleo isola.",
+        "Falta oxigênio e água.",
+        "",
+        "A tinta protege."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q08",
+      "tema": "Oxirredução",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "O número de oxidação do enxofre no ácido sulfúrico (H₂SO₄) é:",
+      "alternativas": [
+        "+2",
+        "0",
+        "+6",
+        "−2",
+        "+4"
+      ],
+      "correta": 2,
+      "explicacao": "2 × (+1) + S + 4 × (−2) = 0 → S = +6. Dica de mergulhador: soma dos Nox no composto é zero.",
+      "comentarios": [
+        "Errou a soma.",
+        "Seria enxofre puro.",
+        "",
+        "Seria no H₂S.",
+        "Seria no H₂SO₃."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q09",
+      "tema": "Oxirredução",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "O número de oxidação do manganês no permanganato de potássio (KMnO₄) é:",
+      "alternativas": [
+        "+4",
+        "−1",
+        "+7",
+        "+8",
+        "+2"
+      ],
+      "correta": 2,
+      "explicacao": "+1 + Mn + 4 × (−2) = 0 → Mn = +7. Dica de mergulhador: potássio +1 sempre.",
+      "comentarios": [
+        "Errou a soma.",
+        "É a carga do íon permanganato.",
+        "",
+        "Esqueceu o potássio.",
+        "Errou a soma."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q10",
+      "tema": "Oxirredução",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "No alto-forno, Fe₂O₃ + 3 CO → 2 Fe + 3 CO₂. O agente redutor é:",
+      "alternativas": [
+        "O oxigênio do ar",
+        "O Fe₂O₃, que se oxida",
+        "O CO₂",
+        "O ferro metálico",
+        "O CO, que se oxida a CO₂"
+      ],
+      "correta": 4,
+      "explicacao": "O carbono passa de +2 (CO) a +4 (CO₂): oxida e reduz o ferro (+3 → 0). Dica de mergulhador: o redutor é quem oxida.",
+      "comentarios": [
+        "Não aparece na equação.",
+        "Ele se reduz.",
+        "É produto.",
+        "É produto.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q11",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na pilha de Daniell, com eletrodos de zinco e de cobre, o eletrodo de zinco:",
+      "alternativas": [
+        "Sofre redução",
+        "É o ânodo, sofre oxidação e se desgasta",
+        "É o polo positivo",
+        "É o cátodo e ganha massa",
+        "Não participa"
+      ],
+      "correta": 1,
+      "explicacao": "O zinco se oxida a Zn²⁺, que passa para a solução. Dica de mergulhador: na pilha, ânodo é oxidação e emagrece.",
+      "comentarios": [
+        "Sofre oxidação.",
+        "",
+        "É o negativo.",
+        "Isso é o cobre.",
+        "Fornece os elétrons."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q12",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Os potenciais de redução são: Cu²⁺/Cu = +0,34 V e Zn²⁺/Zn = −0,76 V. A ddp da pilha de Daniell é:",
+      "alternativas": [
+        "1,10 V",
+        "0,42 V",
+        "0,34 V",
+        "0,76 V",
+        "−1,10 V"
+      ],
+      "correta": 0,
+      "explicacao": "ddp = E°cátodo − E°ânodo = 0,34 − (−0,76) = 1,10 V. Dica de mergulhador: maior menos menor.",
+      "comentarios": [
+        "",
+        "Somou os valores com sinal.",
+        "Usou só o cobre.",
+        "Usou só o zinco.",
+        "A ddp da pilha é positiva."
+      ],
+      "revisar": "potenciais-padrão de redução do cobre e do zinco"
+    },
+    {
+      "id": "qui-eletroquimica-q13",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Numa pilha de zinco e cobre, os elétrons circulam pelo fio externo:",
+      "alternativas": [
+        "Nos dois sentidos igualmente",
+        "Do zinco para o cobre",
+        "Não circulam",
+        "Pela ponte salina",
+        "Do cobre para o zinco"
+      ],
+      "correta": 1,
+      "explicacao": "Os elétrons saem do ânodo (zinco) e chegam ao cátodo (cobre). Dica de mergulhador: elétron sai de quem perde e vai para quem ganha.",
+      "comentarios": [
+        "Há um sentido.",
+        "",
+        "Circulam.",
+        "Pela ponte passam íons.",
+        "Saem de quem oxida."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q14",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Para proteger o ferro, faz-se a galvanização, que é revestir a peça com:",
+      "alternativas": [
+        "Zinco, que se oxida antes do ferro",
+        "Cobre, que oxida no lugar do ferro",
+        "Sal de cozinha",
+        "Água",
+        "Ouro, que protege por ser caro"
+      ],
+      "correta": 0,
+      "explicacao": "O zinco forma uma barreira e, se riscado, se sacrifica no lugar do ferro. Dica de mergulhador: ferro galvanizado veste zinco.",
+      "comentarios": [
+        "",
+        "O cobre oxida menos que o ferro.",
+        "Acelera a corrosão.",
+        "Favorece a ferrugem.",
+        "Não é a galvanização."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q15",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Reciclar latas de alumínio economiza muita energia porque:",
+      "alternativas": [
+        "O alumínio não pode ser derretido",
+        "A bauxita é infinita",
+        "A reciclagem não usa energia",
+        "O alumínio reciclado é mais pesado",
+        "Produzir alumínio novo por eletrólise gasta muita eletricidade"
+      ],
+      "correta": 4,
+      "explicacao": "Derreter sucata consome uma fração pequena da energia da eletrólise. Dica de mergulhador: lata reciclada é eletricidade economizada.",
+      "comentarios": [
+        "Pode.",
+        "É recurso finito.",
+        "Usa, mas bem menos.",
+        "Não é o caso.",
+        ""
+      ],
+      "revisar": "economia de energia na reciclagem do alumínio (cerca de 95%)"
+    },
+    {
+      "id": "qui-eletroquimica-q16",
+      "tema": "Oxirredução",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "No bafômetro antigo, o dicromato de potássio (K₂Cr₂O₇, laranja) reage com o etanol do hálito e forma Cr³⁺ (verde). Nessa reação, o cromo:",
+      "alternativas": [
+        "Reduz de +6 para +3, e o etanol oxida",
+        "Oxida, e o etanol reduz",
+        "Não muda de Nox",
+        "Oxida de +3 para +6",
+        "Reduz de +7 para +3"
+      ],
+      "correta": 0,
+      "explicacao": "No K₂Cr₂O₇: 2 × (+1) + 2 Cr + 7 × (−2) = 0 → Cr = +6. A mudança de cor denuncia o álcool. Dica de mergulhador: laranja para verde, cromo recebendo elétrons.",
+      "comentarios": [
+        "",
+        "Inverteu.",
+        "Muda.",
+        "O Nox do cromo diminui.",
+        "No dicromato, é +6."
+      ],
+      "revisar": "química do bafômetro com dicromato"
+    },
+    {
+      "id": "qui-eletroquimica-q17",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Potenciais de redução: Mg²⁺/Mg −2,37 V; Zn²⁺/Zn −0,76 V; Cu²⁺/Cu +0,34 V; Ag⁺/Ag +0,80 V. A pilha de maior ddp é a de:",
+      "alternativas": [
+        "Cobre e prata, com 0,46 V",
+        "Magnésio e prata, com 3,17 V",
+        "Magnésio e prata, com 1,57 V",
+        "Zinco e cobre, com 1,10 V",
+        "Magnésio e zinco, com 1,61 V"
+      ],
+      "correta": 1,
+      "explicacao": "Maior ddp: maior potencial (prata) menos menor (magnésio): 0,80 − (−2,37) = 3,17 V. Dica de mergulhador: escolha os extremos da tabela.",
+      "comentarios": [
+        "É a menor.",
+        "",
+        "Somou com sinal errado.",
+        "Não é a maior.",
+        "Não é a maior."
+      ],
+      "revisar": "potenciais-padrão de redução"
+    },
+    {
+      "id": "qui-eletroquimica-q18",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Numa pilha de Daniell, retira-se a ponte salina. A consequência é:",
+      "alternativas": [
+        "O zinco passa a ser cátodo",
+        "A corrente aumenta",
+        "A ddp dobra",
+        "A corrente para, pois as soluções acumulam cargas",
+        "Nada muda"
+      ],
+      "correta": 3,
+      "explicacao": "Sem a ponte, a solução do zinco fica com excesso de cátions e a do cobre com excesso de ânions; o circuito se interrompe. Dica de mergulhador: sem ponte salina, não há pilha funcionando.",
+      "comentarios": [
+        "Não muda os papéis.",
+        "Para.",
+        "Não.",
+        "",
+        "A ponte é essencial."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q19",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na eletrólise ígnea do NaCl (fundido), formam-se:",
+      "alternativas": [
+        "Nada, pois o sal não conduz",
+        "Soda cáustica e hidrogênio",
+        "Hidrogênio e oxigênio",
+        "Sódio metálico no cátodo e gás cloro no ânodo",
+        "Gás cloro no cátodo e sódio no ânodo"
+      ],
+      "correta": 3,
+      "explicacao": "Na⁺ recebe elétrons no cátodo (redução); Cl⁻ perde no ânodo (oxidação). Dica de mergulhador: cátodo reduz o cátion; ânodo oxida o ânion.",
+      "comentarios": [
+        "Fundido, conduz.",
+        "Isso é em solução aquosa.",
+        "Não há água.",
+        "",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q20",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Para proteger o casco de aço de um navio, prendem-se blocos de magnésio ou zinco. Isso funciona porque esses metais:",
+      "alternativas": [
+        "Têm menor potencial de redução e oxidam no lugar do ferro",
+        "Formam uma pilha em que o ferro é ânodo",
+        "Não reagem com a água do mar",
+        "Têm maior potencial de redução e reduzem",
+        "São mais nobres que o ferro"
+      ],
+      "correta": 0,
+      "explicacao": "O metal de sacrifício vira ânodo e se desgasta; o casco, cátodo, fica protegido. Dica de mergulhador: bloco de sacrifício é trocado, o casco fica.",
+      "comentarios": [
+        "",
+        "O ferro vira cátodo.",
+        "Reagem, e esse é o objetivo.",
+        "Oxidam.",
+        "São menos nobres."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q01",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "O derretimento do gelo num copo é um processo que:",
+      "alternativas": [
+        "Libera calor para o ambiente",
+        "Não troca calor",
+        "Tem ΔH negativo",
+        "É uma combustão",
+        "Absorve calor do ambiente"
+      ],
+      "correta": 4,
+      "explicacao": "A fusão é endotérmica. Dica de mergulhador: gelo derretendo esfria a bebida porque rouba calor.",
+      "comentarios": [
+        "A fusão absorve.",
+        "Troca.",
+        "É positivo.",
+        "Não é.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q02",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Uma reação com ΔH = −500 kJ é:",
+      "alternativas": [
+        "Impossível",
+        "Endotérmica",
+        "Exotérmica",
+        "Sem troca de calor",
+        "Sempre lenta"
+      ],
+      "correta": 2,
+      "explicacao": "ΔH negativo significa calor liberado. Dica de mergulhador: menos no ΔH, calor para fora.",
+      "comentarios": [
+        "É comum.",
+        "O sinal é negativo.",
+        "",
+        "Há troca.",
+        "ΔH não indica velocidade."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q03",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Ao fim de uma reação catalisada, o catalisador:",
+      "alternativas": [
+        "Foi todo consumido",
+        "Mudou o ΔH",
+        "Está intacto, pois não é consumido",
+        "Virou produto",
+        "Aumentou de massa"
+      ],
+      "correta": 2,
+      "explicacao": "Ele participa de etapas intermediárias e é regenerado. Dica de mergulhador: catalisador sai como entrou.",
+      "comentarios": [
+        "Não é consumido.",
+        "Não muda.",
+        "",
+        "Não vira.",
+        "Não muda."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q04",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Batatas cortadas em pedaços pequenos cozinham mais rápido que inteiras porque:",
+      "alternativas": [
+        "A batata é catalisador",
+        "Viram outro alimento",
+        "A temperatura da água sobe",
+        "A massa aumenta",
+        "A superfície de contato é maior"
+      ],
+      "correta": 4,
+      "explicacao": "Mais área exposta à água quente. Dica de mergulhador: cortou, acelerou.",
+      "comentarios": [
+        "Não é.",
+        "Não viram.",
+        "Não muda.",
+        "Não aumenta.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q05",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Num equilíbrio, adiciona-se mais reagente. O sistema:",
+      "alternativas": [
+        "Desloca para formar mais reagente",
+        "Não se altera",
+        "Desloca para formar mais produto",
+        "Para de reagir",
+        "Muda o Kc"
+      ],
+      "correta": 2,
+      "explicacao": "Le Chatelier: o sistema consome parte do excesso. Dica de mergulhador: empurrou de um lado, vai para o outro.",
+      "comentarios": [
+        "Aumentaria ainda mais o reagente.",
+        "Desloca.",
+        "",
+        "Continua.",
+        "Não muda."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q06",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Um suco tem pH 3. Ele é:",
+      "alternativas": [
+        "Neutro",
+        "Básico",
+        "Ácido",
+        "Mais básico que o sabão",
+        "Igual à água pura"
+      ],
+      "correta": 2,
+      "explicacao": "pH abaixo de 7. Dica de mergulhador: pH baixo, azedo.",
+      "comentarios": [
+        "Não é 7.",
+        "Abaixo de 7 é ácido.",
+        "",
+        "É muito mais ácido.",
+        "É mais ácido."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q07",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Numa pilha, o eletrodo onde ocorre a oxidação é o:",
+      "alternativas": [
+        "Cátodo",
+        "Polo positivo",
+        "Ânodo",
+        "Ponte salina",
+        "Fio"
+      ],
+      "correta": 2,
+      "explicacao": "Ânodo oxida; cátodo reduz. Dica de mergulhador: ânodo e oxidação começam com vogal.",
+      "comentarios": [
+        "Ali ocorre redução.",
+        "Na pilha, é o negativo.",
+        "",
+        "Não é eletrodo.",
+        "Não é eletrodo."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q08",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Se A → B tem ΔH = −100 kJ, então 2 B → 2 A tem ΔH de:",
+      "alternativas": [
+        "−100 kJ",
+        "+100 kJ",
+        "−200 kJ",
+        "+200 kJ",
+        "0 kJ"
+      ],
+      "correta": 3,
+      "explicacao": "Inverter troca o sinal (+100) e multiplicar por 2 dobra (+200). Dica de mergulhador: primeiro o sinal, depois o fator.",
+      "comentarios": [
+        "Não fez nenhum ajuste.",
+        "Esqueceu de multiplicar.",
+        "Inverteu sem trocar o sinal.",
+        "",
+        "Há energia."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q09",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "O hidrogênio libera cerca de 143 kJ por grama na combustão. A energia liberada por 4 g de H₂ é:",
+      "alternativas": [
+        "286 kJ",
+        "147 kJ",
+        "143 kJ",
+        "572 kJ",
+        "36 kJ"
+      ],
+      "correta": 3,
+      "explicacao": "4 × 143 = 572 kJ. Dica de mergulhador: energia por grama vezes gramas.",
+      "comentarios": [
+        "Isso é por 2 g.",
+        "Somou.",
+        "Isso é por grama.",
+        "",
+        "Dividiu."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q10",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Numa reação, 0,8 mol de produto se forma em 4 minutos. A velocidade média de formação é:",
+      "alternativas": [
+        "0,8 mol/min",
+        "4,8 mol/min",
+        "5 mol/min",
+        "3,2 mol/min",
+        "0,2 mol/min"
+      ],
+      "correta": 4,
+      "explicacao": "0,8 ÷ 4 = 0,2 mol/min. Dica de mergulhador: quantidade por tempo.",
+      "comentarios": [
+        "Ignorou o tempo.",
+        "Somou.",
+        "Inverteu.",
+        "Multiplicou.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q11",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Para 2 SO₂(g) + O₂(g) ⇌ 2 SO₃(g), aumentar a pressão desloca o equilíbrio:",
+      "alternativas": [
+        "Para o SO₃, lado com menos mols de gás",
+        "E muda o Kc",
+        "Para nenhum lado",
+        "Até a reação parar",
+        "Para SO₂ e O₂"
+      ],
+      "correta": 0,
+      "explicacao": "3 mols de gás à esquerda e 2 à direita. Dica de mergulhador: pressão alta, lado mais \"enxuto\".",
+      "comentarios": [
+        "",
+        "O Kc não muda.",
+        "Os mols de gás diferem.",
+        "Não para.",
+        "Ali há 3 mols de gás."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q12",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Uma solução tem [H⁺] = 10⁻⁴ mol/L. Seu pH é:",
+      "alternativas": [
+        "0,0001",
+        "4",
+        "7",
+        "10",
+        "−4"
+      ],
+      "correta": 1,
+      "explicacao": "pH = −log 10⁻⁴ = 4. Dica de mergulhador: o expoente diz o pH.",
+      "comentarios": [
+        "É a concentração.",
+        "",
+        "Seria neutra.",
+        "É o pOH.",
+        "Sem sinal negativo."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q13",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Uma solução de KOH, base forte, tem concentração 0,01 mol/L a 25 °C. Seu pH é:",
+      "alternativas": [
+        "12",
+        "14",
+        "7",
+        "2",
+        "10"
+      ],
+      "correta": 0,
+      "explicacao": "[OH⁻] = 10⁻²; pOH = 2; pH = 12. Dica de mergulhador: base forte, pOH primeiro.",
+      "comentarios": [
+        "",
+        "Esqueceu o pOH.",
+        "Seria neutra.",
+        "É o pOH.",
+        "Errou o expoente."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q14",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "O número de oxidação do ferro no Fe₂O₃ (ferrugem) é:",
+      "alternativas": [
+        "+6",
+        "+3",
+        "0",
+        "+2",
+        "−3"
+      ],
+      "correta": 1,
+      "explicacao": "2 Fe + 3 × (−2) = 0 → Fe = +3. Dica de mergulhador: divida a carga total pelo número de átomos.",
+      "comentarios": [
+        "É a soma dos dois ferros.",
+        "",
+        "Seria ferro metálico.",
+        "Seria no FeO.",
+        "Metais não têm Nox negativo assim."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q15",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Um prego em água salgada enferruja mais rápido que em água de torneira porque:",
+      "alternativas": [
+        "O prego vira sódio",
+        "O sal impede o contato com oxigênio",
+        "O sal é catalisador inerte",
+        "A água salgada é ácida forte",
+        "O sal aumenta a condutividade e acelera a oxidação"
+      ],
+      "correta": 4,
+      "explicacao": "Os íons facilitam o fluxo de cargas nas microrregiões que formam pilhas no metal. Dica de mergulhador: sal na água, ferrugem ligeira.",
+      "comentarios": [
+        "Não vira.",
+        "Não impede.",
+        "O efeito é eletroquímico.",
+        "Não é o motivo.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q16",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Dados: C + O₂ → CO₂, ΔH = −394 kJ; H₂ + ½ O₂ → H₂O, ΔH = −286 kJ; CH₄ + 2 O₂ → CO₂ + 2 H₂O, ΔH = −890 kJ. O ΔH de C + 2 H₂ → CH₄ é:",
+      "alternativas": [
+        "−966 kJ",
+        "−76 kJ",
+        "−680 kJ",
+        "+76 kJ",
+        "−1.570 kJ"
+      ],
+      "correta": 1,
+      "explicacao": "Mantém a 1ª, multiplica a 2ª por 2 e inverte a 3ª: −394 − 572 + 890 = −76 kJ. Dica de mergulhador: arrume cada equação para o alvo e some.",
+      "comentarios": [
+        "Esqueceu a terceira equação.",
+        "",
+        "Esqueceu de multiplicar a água por 2.",
+        "Errou o sinal.",
+        "Somou tudo sem inverter."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q17",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Na síntese da amônia, adicionar um catalisador:",
+      "alternativas": [
+        "Faz chegar mais rápido ao equilíbrio, sem mudar a quantidade de amônia nele",
+        "Aumenta a quantidade de amônia no equilíbrio",
+        "Aumenta o Kc",
+        "Consome o nitrogênio mais rápido sem formar amônia",
+        "Muda o ΔH da reação"
+      ],
+      "correta": 0,
+      "explicacao": "O catalisador acelera igualmente as reações direta e inversa. Dica de mergulhador: catalisador ganha tempo, não rendimento.",
+      "comentarios": [
+        "",
+        "Não desloca.",
+        "Não muda.",
+        "Forma amônia.",
+        "Não muda."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q18",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Para A + B ⇌ 2 C, no equilíbrio [A] = 0,5, [B] = 0,2 e [C] = 1,0 mol/L. O Kc é:",
+      "alternativas": [
+        "0,1",
+        "10",
+        "1",
+        "5",
+        "2"
+      ],
+      "correta": 1,
+      "explicacao": "Kc = 1,0² ÷ (0,5 × 0,2) = 1 ÷ 0,1 = 10. Dica de mergulhador: coeficiente vira expoente.",
+      "comentarios": [
+        "Inverteu.",
+        "",
+        "Errou a conta.",
+        "Esqueceu o expoente 2.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q19",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Potenciais de redução: Ag⁺/Ag +0,80 V e Cu²⁺/Cu +0,34 V. Numa pilha de prata e cobre, o ânodo e a ddp são:",
+      "alternativas": [
+        "Cobre; 0,46 V",
+        "Prata; 0,46 V",
+        "Prata; 1,14 V",
+        "Cobre; 1,14 V",
+        "Cobre; −0,46 V"
+      ],
+      "correta": 0,
+      "explicacao": "Quem tem menor potencial oxida (cobre); ddp = 0,80 − 0,34 = 0,46 V. Dica de mergulhador: menor potencial vira ânodo.",
+      "comentarios": [
+        "",
+        "A prata reduz, é o cátodo.",
+        "Errou o ânodo e a conta.",
+        "Somou.",
+        "A ddp é positiva."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q20",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Uma pequena quantidade de ácido é adicionada a uma solução tampão e a água pura, separadamente. O que se espera do pH?",
+      "alternativas": [
+        "Sobe nos dois",
+        "No tampão, quase não muda; na água, cai bastante",
+        "Cai igual nos dois",
+        "Não muda em nenhum",
+        "No tampão cai muito; na água não muda"
+      ],
+      "correta": 1,
+      "explicacao": "O tampão neutraliza o H⁺ adicionado; a água pura não tem essa defesa. Dica de mergulhador: tampão é escudo; água pura não tem escudo.",
+      "comentarios": [
+        "O ácido baixa o pH.",
+        "",
+        "O tampão resiste.",
+        "Na água, muda.",
+        "Inverteu."
+      ]
     }
   ],
   "variantes": [
@@ -19110,6 +20862,1450 @@
         "O equilíbrio desloca para os reagentes.",
         ""
       ]
+    },
+    {
+      "id": "qui-ph-q01-v1",
+      "varianteDe": "qui-ph-q01",
+      "tema": "Escala de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Qual destes valores de pH indica uma solução básica?",
+      "alternativas": [
+        "pH 2",
+        "pH 7",
+        "pH 6",
+        "pH 10",
+        "pH 5"
+      ],
+      "correta": 3,
+      "explicacao": "Acima de 7, o meio é básico. Dica de mergulhador: mais que 7, básico.",
+      "comentarios": [
+        "É ácido.",
+        "É neutro.",
+        "É ácido.",
+        "",
+        "É ácido."
+      ]
+    },
+    {
+      "id": "qui-ph-q02-v1",
+      "varianteDe": "qui-ph-q02",
+      "tema": "Escala de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Numa solução neutra a 25 °C, a concentração de H⁺ é:",
+      "alternativas": [
+        "10⁻¹⁴ mol/L",
+        "10⁻⁷ mol/L",
+        "0 mol/L",
+        "10⁻¹ mol/L",
+        "7 mol/L"
+      ],
+      "correta": 1,
+      "explicacao": "Neutro: [H⁺] = [OH⁻] = 10⁻⁷. Dica de mergulhador: pH 7 é [H⁺] de 10⁻⁷.",
+      "comentarios": [
+        "É o produto iônico.",
+        "",
+        "Há H⁺ na água.",
+        "Seria muito ácida.",
+        "7 é o pH."
+      ]
+    },
+    {
+      "id": "qui-ph-q03-v1",
+      "varianteDe": "qui-ph-q03",
+      "tema": "Escala de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Um sabonete tem pH 10. Em relação à água pura, ele é:",
+      "alternativas": [
+        "Igual",
+        "Básico",
+        "Ácido",
+        "Mais ácido",
+        "Neutro"
+      ],
+      "correta": 1,
+      "explicacao": "pH acima de 7 indica meio básico. Dica de mergulhador: sabão é básico.",
+      "comentarios": [
+        "É diferente.",
+        "",
+        "Acima de 7.",
+        "É menos ácido.",
+        "Não é 7."
+      ]
+    },
+    {
+      "id": "qui-ph-q04-v1",
+      "varianteDe": "qui-ph-q04",
+      "tema": "Cálculo de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução tem [H⁺] = 10⁻⁵ mol/L. Seu pH é:",
+      "alternativas": [
+        "0,00001",
+        "7",
+        "5",
+        "9",
+        "−5"
+      ],
+      "correta": 2,
+      "explicacao": "pH = −log 10⁻⁵ = 5. Dica de mergulhador: olhe o expoente de 10.",
+      "comentarios": [
+        "É a concentração.",
+        "Seria neutro.",
+        "",
+        "É o pOH.",
+        "Sem sinal negativo."
+      ]
+    },
+    {
+      "id": "qui-ph-q05-v1",
+      "varianteDe": "qui-ph-q05",
+      "tema": "Cálculo de pH",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução tem pOH 3 a 25 °C. Seu pH é:",
+      "alternativas": [
+        "7",
+        "3",
+        "14",
+        "11",
+        "17"
+      ],
+      "correta": 3,
+      "explicacao": "pH = 14 − 3 = 11. Dica de mergulhador: complete até 14.",
+      "comentarios": [
+        "Seria neutro.",
+        "Esse é o pOH.",
+        "Esqueceu o pOH.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "qui-ph-q06-v1",
+      "varianteDe": "qui-ph-q06",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "O suco de limão tem pH perto de 2, e o café, perto de 5. Comparando os dois:",
+      "alternativas": [
+        "Os dois são básicos",
+        "O limão é mais ácido que o café",
+        "Têm a mesma acidez",
+        "O café é mais ácido",
+        "O limão é básico"
+      ],
+      "correta": 1,
+      "explicacao": "Quanto menor o pH, maior a acidez. Dica de mergulhador: pH menor, mais azedo.",
+      "comentarios": [
+        "São ácidos.",
+        "",
+        "O pH é diferente.",
+        "Tem pH maior.",
+        "É ácido."
+      ],
+      "revisar": "pH aproximado do limão e do café"
+    },
+    {
+      "id": "qui-ph-q07-v1",
+      "varianteDe": "qui-ph-q07",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "facil",
+      "fase": "qui-ph",
+      "enunciado": "A água do mar tem pH perto de 8. Ela é:",
+      "alternativas": [
+        "Muito básica",
+        "Ácida",
+        "Neutra",
+        "Igual ao suco gástrico",
+        "Levemente básica"
+      ],
+      "correta": 4,
+      "explicacao": "Os carbonatos dissolvidos deixam o mar levemente básico. Dica de mergulhador: oceano é um pouco básico.",
+      "comentarios": [
+        "É levemente.",
+        "Está acima de 7.",
+        "Não é 7.",
+        "Muito diferente.",
+        ""
+      ],
+      "revisar": "pH da água do mar"
+    },
+    {
+      "id": "qui-ph-q08-v1",
+      "varianteDe": "qui-ph-q08",
+      "tema": "Escala de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução de pH 5 tem quantas vezes mais H⁺ que uma de pH 7?",
+      "alternativas": [
+        "2 vezes",
+        "100 vezes",
+        "10 vezes",
+        "1.000 vezes",
+        "35 vezes"
+      ],
+      "correta": 1,
+      "explicacao": "Diferença de 2 unidades: 10² = 100. Dica de mergulhador: eleve 10 à diferença de pH.",
+      "comentarios": [
+        "A escala é logarítmica.",
+        "",
+        "Seria diferença de 1.",
+        "Seria diferença de 3.",
+        "Não é assim."
+      ]
+    },
+    {
+      "id": "qui-ph-q09-v1",
+      "varianteDe": "qui-ph-q09",
+      "tema": "Escala de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Um lago passou de pH 7 para pH 4 por causa da chuva ácida. A concentração de H⁺ aumentou:",
+      "alternativas": [
+        "3 vezes",
+        "10.000 vezes",
+        "100 vezes",
+        "1.000 vezes",
+        "30 vezes"
+      ],
+      "correta": 3,
+      "explicacao": "10³ = 1.000. Dica de mergulhador: pequena queda no pH é grande aumento de acidez.",
+      "comentarios": [
+        "A escala é logarítmica.",
+        "Seria diferença de 4.",
+        "Seria diferença de 2.",
+        "",
+        "Não é assim."
+      ]
+    },
+    {
+      "id": "qui-ph-q10-v1",
+      "varianteDe": "qui-ph-q10",
+      "tema": "Cálculo de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução tem [OH⁻] = 10⁻⁴ mol/L a 25 °C. Seu pH é:",
+      "alternativas": [
+        "4",
+        "18",
+        "7",
+        "10",
+        "14"
+      ],
+      "correta": 3,
+      "explicacao": "pOH = 4; pH = 10. Dica de mergulhador: OH⁻ dá pOH; pH completa 14.",
+      "comentarios": [
+        "É o pOH.",
+        "Somou.",
+        "Seria neutro.",
+        "",
+        "Esqueceu o pOH."
+      ]
+    },
+    {
+      "id": "qui-ph-q11-v1",
+      "varianteDe": "qui-ph-q11",
+      "tema": "Cálculo de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução de HNO₃, ácido forte, tem concentração 0,001 mol/L. Seu pH é:",
+      "alternativas": [
+        "1",
+        "3",
+        "7",
+        "11",
+        "0,001"
+      ],
+      "correta": 1,
+      "explicacao": "[H⁺] = 10⁻³; pH = 3. Dica de mergulhador: conte as casas: 0,001 = 10⁻³.",
+      "comentarios": [
+        "Errou o expoente.",
+        "",
+        "Seria neutra.",
+        "É o pOH.",
+        "É a concentração."
+      ]
+    },
+    {
+      "id": "qui-ph-q12-v1",
+      "varianteDe": "qui-ph-q12",
+      "tema": "Cálculo de pH",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução de KOH, base forte, tem concentração 0,1 mol/L a 25 °C. Seu pH é:",
+      "alternativas": [
+        "11",
+        "14",
+        "1",
+        "7",
+        "13"
+      ],
+      "correta": 4,
+      "explicacao": "[OH⁻] = 10⁻¹; pOH = 1; pH = 13. Dica de mergulhador: base forte 0,1 mol/L tem pH 13.",
+      "comentarios": [
+        "Errou o expoente.",
+        "Esqueceu o pOH.",
+        "É o pOH.",
+        "Seria neutra.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-ph-q13-v1",
+      "varianteDe": "qui-ph-q13",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Uma solução tampão é formada, por exemplo, por:",
+      "alternativas": [
+        "Água pura",
+        "Ácido acético e acetato de sódio",
+        "Sal de cozinha e água",
+        "Ácido clorídrico e água",
+        "Hidróxido de sódio e água"
+      ],
+      "correta": 1,
+      "explicacao": "Ácido fraco com seu sal (ou base fraca com seu sal). Dica de mergulhador: tampão é dupla de fraco com seu sal.",
+      "comentarios": [
+        "Não é tampão.",
+        "",
+        "Não é tampão.",
+        "Não resiste à variação.",
+        "Não é tampão."
+      ]
+    },
+    {
+      "id": "qui-ph-q14-v1",
+      "varianteDe": "qui-ph-q14",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "A chuva comum tem pH perto de 5,6 por causa do:",
+      "alternativas": [
+        "Nitrogênio puro",
+        "CO₂ dissolvido, que forma ácido carbônico",
+        "Sal do mar",
+        "Ácido sulfúrico natural",
+        "Oxigênio do ar"
+      ],
+      "correta": 1,
+      "explicacao": "O ácido carbônico é fraco e baixa um pouco o pH. Dica de mergulhador: toda chuva já nasce levemente ácida.",
+      "comentarios": [
+        "É inerte.",
+        "",
+        "Não acidifica.",
+        "Vem de poluição.",
+        "Não forma ácido."
+      ]
+    },
+    {
+      "id": "qui-ph-q15-v1",
+      "varianteDe": "qui-ph-q15",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "medio",
+      "fase": "qui-ph",
+      "enunciado": "Escovar os dentes e usar creme dental com flúor ajuda contra as cáries porque:",
+      "alternativas": [
+        "O flúor dissolve o esmalte",
+        "Não há relação com pH",
+        "O açúcar vira base",
+        "O creme deixa a boca muito ácida",
+        "Tira bactérias, e o flúor protege o esmalte"
+      ],
+      "correta": 4,
+      "explicacao": "Menos bactérias, menos ácido; esmalte com flúor resiste mais. Dica de mergulhador: escova tira o ácido de cena.",
+      "comentarios": [
+        "Fortalece.",
+        "A cárie começa com ácidos.",
+        "Não vira.",
+        "Não é o efeito.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-ph-q16-v1",
+      "varianteDe": "qui-ph-q16",
+      "tema": "Escala de pH",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "Diluindo-se muitas vezes uma solução ácida de pH 3, o pH final tende a:",
+      "alternativas": [
+        "Passar de 7 e ficar básico",
+        "Chegar a 14",
+        "Ficar em 3",
+        "Ficar cada vez mais perto de 7, sem passar",
+        "Cair abaixo de 3"
+      ],
+      "correta": 3,
+      "explicacao": "A água adicionada tende ao neutro, e o ácido não vira base. Dica de mergulhador: água demais leva qualquer solução para perto do 7.",
+      "comentarios": [
+        "Não fica básico.",
+        "Não.",
+        "Muda com a diluição.",
+        "",
+        "Sobe."
+      ]
+    },
+    {
+      "id": "qui-ph-q17-v1",
+      "varianteDe": "qui-ph-q17",
+      "tema": "Cálculo de pH",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "Misturam-se 10 mL de NaOH 0,1 mol/L com água até 1 L. O pH final, a 25 °C, é:",
+      "alternativas": [
+        "11",
+        "3",
+        "13",
+        "7",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "C₂ = 0,1 × 10 ÷ 1.000 = 0,001; pOH = 3; pH = 11. Dica de mergulhador: diluir base 100 vezes desce 2 no pH.",
+      "comentarios": [
+        "",
+        "É o pOH.",
+        "É o pH antes de diluir.",
+        "Ainda é básico.",
+        "Errou a diluição."
+      ]
+    },
+    {
+      "id": "qui-ph-q18-v1",
+      "varianteDe": "qui-ph-q18",
+      "tema": "Cálculo de pH",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "Misturam-se 100 mL de NaOH 0,03 mol/L com 100 mL de HCl 0,01 mol/L. O pH da mistura, a 25 °C, é:",
+      "alternativas": [
+        "7",
+        "12",
+        "13",
+        "11",
+        "2"
+      ],
+      "correta": 1,
+      "explicacao": "OH⁻: 0,003; H⁺: 0,001; sobram 0,002 mol em 0,2 L: 0,01 mol/L, pOH 2, pH 12. Dica de mergulhador: o volume final é a soma dos dois.",
+      "comentarios": [
+        "Sobra base.",
+        "",
+        "Esqueceu de somar os volumes.",
+        "Errou o excesso.",
+        "Sobra base, não ácido."
+      ]
+    },
+    {
+      "id": "qui-ph-q19-v1",
+      "varianteDe": "qui-ph-q19",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "Uma pessoa com dificuldade de respirar acumula CO₂ no sangue. Pelo mesmo equilíbrio, o pH do sangue:",
+      "alternativas": [
+        "Vai a 0",
+        "Não muda",
+        "Fica neutro exatamente",
+        "Sobe, pois diminui o H⁺",
+        "Cai, pois aumenta o H⁺"
+      ],
+      "correta": 4,
+      "explicacao": "Mais CO₂ desloca para a direita e libera H⁺: acidose respiratória. Dica de mergulhador: CO₂ preso, sangue mais ácido.",
+      "comentarios": [
+        "A variação é pequena.",
+        "Muda.",
+        "Fica mais ácido que o normal.",
+        "O acúmulo de CO₂ aumenta o H⁺.",
+        ""
+      ],
+      "revisar": "acidose respiratória por retenção de CO₂"
+    },
+    {
+      "id": "qui-ph-q20-v1",
+      "varianteDe": "qui-ph-q20",
+      "tema": "pH no cotidiano e no ambiente",
+      "dificuldade": "dificil",
+      "fase": "qui-ph",
+      "enunciado": "Na acidificação dos oceanos, o pH da água do mar:",
+      "alternativas": [
+        "Diminui, ficando menos básico",
+        "Vai abaixo de 1",
+        "Fica exatamente 7",
+        "Aumenta muito",
+        "Não muda"
+      ],
+      "correta": 0,
+      "explicacao": "O CO₂ dissolvido forma ácido carbônico e libera H⁺. Dica de mergulhador: mar \"menos básico\" já é problema para os corais.",
+      "comentarios": [
+        "",
+        "A queda é pequena, mas importante.",
+        "Continua acima de 7.",
+        "Diminui.",
+        "Muda."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q01-v1",
+      "varianteDe": "qui-eletroquimica-q01",
+      "tema": "Oxirredução",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na redução, um átomo ou íon:",
+      "alternativas": [
+        "Perde elétrons",
+        "Perde massa nuclear",
+        "Tem o Nox aumentado",
+        "Ganha elétrons e tem o Nox diminuído",
+        "Ganha prótons"
+      ],
+      "correta": 3,
+      "explicacao": "Ganhar elétrons (negativos) faz o Nox cair. Dica de mergulhador: reduziu, ganhou.",
+      "comentarios": [
+        "Isso é oxidação.",
+        "Não é a definição.",
+        "Diminui.",
+        "",
+        "Não é a definição."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q02-v1",
+      "varianteDe": "qui-eletroquimica-q02",
+      "tema": "Oxirredução",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "O número de oxidação do ferro numa barra de ferro metálico (Fe) é:",
+      "alternativas": [
+        "0",
+        "+3",
+        "−2",
+        "+2",
+        "+8"
+      ],
+      "correta": 0,
+      "explicacao": "Substância simples, Nox zero. Dica de mergulhador: metal puro, Nox zero.",
+      "comentarios": [
+        "",
+        "Vale no íon Fe³⁺.",
+        "Metais não têm Nox negativo assim.",
+        "Vale no íon Fe²⁺.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q03-v1",
+      "varianteDe": "qui-eletroquimica-q03",
+      "tema": "Oxirredução",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na mesma reação, o íon Cu²⁺:",
+      "alternativas": [
+        "É o agente redutor",
+        "Sofre redução, ganhando 2 elétrons",
+        "Perde 2 elétrons",
+        "Vira Cu³⁺",
+        "Sofre oxidação"
+      ],
+      "correta": 1,
+      "explicacao": "Cu²⁺ (+2) → Cu (0). Dica de mergulhador: Nox desceu, reduziu.",
+      "comentarios": [
+        "É o oxidante.",
+        "",
+        "Ganha.",
+        "Vira Cu metálico.",
+        "O Nox diminui."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q04-v1",
+      "varianteDe": "qui-eletroquimica-q04",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Ao carregar a bateria de um celular, ocorre:",
+      "alternativas": [
+        "Fusão nuclear",
+        "Conversão de energia elétrica em química",
+        "Nada, só armazena eletricidade pura",
+        "Combustão do lítio",
+        "Conversão de química em elétrica"
+      ],
+      "correta": 1,
+      "explicacao": "Recarregar inverte a reação, como uma eletrólise. Dica de mergulhador: carregar guarda; usar devolve.",
+      "comentarios": [
+        "Não é o caso.",
+        "",
+        "Armazena na forma química.",
+        "Não é o caso.",
+        "Isso é ao usar."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q05-v1",
+      "varianteDe": "qui-eletroquimica-q05",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Baterias de carro, de chumbo-ácido, devem ser devolvidas no local de compra porque:",
+      "alternativas": [
+        "O ácido é neutro",
+        "O chumbo é inofensivo",
+        "Contêm chumbo e ácido sulfúrico, perigosos ao ambiente",
+        "Não podem ser recicladas",
+        "São de plástico apenas"
+      ],
+      "correta": 2,
+      "explicacao": "O chumbo e o ácido são reaproveitados na reciclagem. Dica de mergulhador: bateria velha volta para a loja.",
+      "comentarios": [
+        "É ácido forte.",
+        "É tóxico.",
+        "",
+        "Podem.",
+        "Têm chumbo e ácido."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q06-v1",
+      "varianteDe": "qui-eletroquimica-q06",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "A produção de alumínio a partir da bauxita usa:",
+      "alternativas": [
+        "Filtração",
+        "Combustão simples",
+        "Eletrólise, com grande consumo de energia elétrica",
+        "Pilha",
+        "Destilação"
+      ],
+      "correta": 2,
+      "explicacao": "O alumínio é obtido pela eletrólise da alumina fundida. Dica de mergulhador: alumínio novo come muita eletricidade.",
+      "comentarios": [
+        "Não é o processo.",
+        "Não é o processo.",
+        "",
+        "A pilha gera energia; aqui se consome.",
+        "Não é o processo."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q07-v1",
+      "varianteDe": "qui-eletroquimica-q07",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "facil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Carros em cidades litorâneas enferrujam mais rápido porque:",
+      "alternativas": [
+        "O sal protege o ferro",
+        "O mar não tem oxigênio",
+        "A umidade é menor no litoral",
+        "O sal da maresia acelera a corrosão",
+        "O ferro vira ouro"
+      ],
+      "correta": 3,
+      "explicacao": "Íons do sal tornam a água melhor condutora e aceleram a oxidação. Dica de mergulhador: maresia é inimiga do ferro.",
+      "comentarios": [
+        "Acelera.",
+        "O ar tem.",
+        "É maior.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q08-v1",
+      "varianteDe": "qui-eletroquimica-q08",
+      "tema": "Oxirredução",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "O número de oxidação do nitrogênio no ácido nítrico (HNO₃) é:",
+      "alternativas": [
+        "0",
+        "+5",
+        "+6",
+        "+3",
+        "−3"
+      ],
+      "correta": 1,
+      "explicacao": "+1 + N + 3 × (−2) = 0 → N = +5. Dica de mergulhador: H +1, O −2, o resto fecha a conta.",
+      "comentarios": [
+        "Seria N₂.",
+        "",
+        "Errou a soma.",
+        "Seria no HNO₂.",
+        "Seria na amônia."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q09-v1",
+      "varianteDe": "qui-eletroquimica-q09",
+      "tema": "Oxirredução",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "O número de oxidação do cloro no hipoclorito de sódio (NaClO), da água sanitária, é:",
+      "alternativas": [
+        "+1",
+        "−1",
+        "+3",
+        "0",
+        "+7"
+      ],
+      "correta": 0,
+      "explicacao": "+1 + Cl + (−2) = 0 → Cl = +1. Dica de mergulhador: o mesmo elemento muda de Nox de composto para composto.",
+      "comentarios": [
+        "",
+        "Seria no cloreto.",
+        "Errou a soma.",
+        "Seria Cl₂.",
+        "Seria no perclorato."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q10-v1",
+      "varianteDe": "qui-eletroquimica-q10",
+      "tema": "Oxirredução",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na mesma reação, o agente oxidante é:",
+      "alternativas": [
+        "O CO₂",
+        "Nenhum",
+        "O Fe₂O₃, que se reduz a Fe",
+        "O CO, que se oxida",
+        "O ferro metálico"
+      ],
+      "correta": 2,
+      "explicacao": "O ferro passa de +3 a 0: recebe elétrons e oxida o CO. Dica de mergulhador: o oxidante é quem reduz.",
+      "comentarios": [
+        "É produto.",
+        "Há oxidante.",
+        "",
+        "Esse é o redutor.",
+        "É produto."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q11-v1",
+      "varianteDe": "qui-eletroquimica-q11",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na pilha de Daniell, o eletrodo de cobre:",
+      "alternativas": [
+        "Não recebe elétrons",
+        "É o cátodo e ganha massa com cobre depositado",
+        "É o ânodo e se desgasta",
+        "É o polo negativo",
+        "Sofre oxidação"
+      ],
+      "correta": 1,
+      "explicacao": "Cu²⁺ da solução vira Cu sobre a placa. Dica de mergulhador: cátodo é redução e engorda.",
+      "comentarios": [
+        "Recebe pelo fio.",
+        "",
+        "Isso é o zinco.",
+        "É o positivo.",
+        "Sofre redução."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q12-v1",
+      "varianteDe": "qui-eletroquimica-q12",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Os potenciais de redução são: Ag⁺/Ag = +0,80 V e Cu²⁺/Cu = +0,34 V. Numa pilha com esses metais, a ddp é:",
+      "alternativas": [
+        "0,80 V",
+        "0,34 V",
+        "1,14 V",
+        "−0,46 V",
+        "0,46 V"
+      ],
+      "correta": 4,
+      "explicacao": "0,80 − 0,34 = 0,46 V; a prata reduz e o cobre oxida. Dica de mergulhador: quem tem maior potencial é o cátodo.",
+      "comentarios": [
+        "Usou só a prata.",
+        "Usou só o cobre.",
+        "Somou.",
+        "A ddp da pilha é positiva.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q13-v1",
+      "varianteDe": "qui-eletroquimica-q13",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Numa pilha, o polo negativo é:",
+      "alternativas": [
+        "O fio",
+        "Os dois eletrodos",
+        "O ânodo, onde ocorre a oxidação",
+        "A ponte salina",
+        "O cátodo, onde ocorre a redução"
+      ],
+      "correta": 2,
+      "explicacao": "Os elétrons saem do ânodo, que fica com excesso de carga negativa. Dica de mergulhador: na pilha, ânodo é o lado menos.",
+      "comentarios": [
+        "Não é polo.",
+        "Só um é negativo.",
+        "",
+        "Não é polo.",
+        "É o positivo."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q14-v1",
+      "varianteDe": "qui-eletroquimica-q14",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Uma calha de ferro galvanizado demora a enferrujar porque:",
+      "alternativas": [
+        "O zinco é menos reativo que o ferro",
+        "O ferro vira zinco",
+        "O zinco atrai a água",
+        "A calha não pega chuva",
+        "A camada de zinco oxida no lugar do ferro"
+      ],
+      "correta": 4,
+      "explicacao": "O zinco tem menor potencial de redução e se oxida primeiro. Dica de mergulhador: zinco se sacrifica pelo ferro.",
+      "comentarios": [
+        "É mais reativo.",
+        "Não vira.",
+        "Não é o mecanismo.",
+        "Pega.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q15-v1",
+      "varianteDe": "qui-eletroquimica-q15",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "medio",
+      "fase": "qui-eletroquimica",
+      "enunciado": "A galvanoplastia, usada para cromar peças de bicicleta, é um processo de:",
+      "alternativas": [
+        "Pilha que gera corrente",
+        "Fusão do cromo sobre a peça",
+        "Eletrólise que deposita metal sobre a peça",
+        "Pintura comum",
+        "Combustão"
+      ],
+      "correta": 2,
+      "explicacao": "A peça fica no cátodo e os íons do metal se reduzem sobre ela. Dica de mergulhador: galvanoplastia é eletrólise que veste a peça.",
+      "comentarios": [
+        "Consome corrente.",
+        "Não é o processo.",
+        "",
+        "É eletroquímica.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q16-v1",
+      "varianteDe": "qui-eletroquimica-q16",
+      "tema": "Oxirredução",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "No cromato de potássio (K₂CrO₄), o número de oxidação do cromo é:",
+      "alternativas": [
+        "+8",
+        "+6",
+        "+3",
+        "+4",
+        "0"
+      ],
+      "correta": 1,
+      "explicacao": "2 × (+1) + Cr + 4 × (−2) = 0 → Cr = +6. Dica de mergulhador: confira a soma zero.",
+      "comentarios": [
+        "Esqueceu o potássio.",
+        "",
+        "Seria no Cr³⁺.",
+        "Errou a soma.",
+        "Seria cromo metálico."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q17-v1",
+      "varianteDe": "qui-eletroquimica-q17",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Com os mesmos potenciais, numa pilha de magnésio e cobre, o cátodo e a ddp são:",
+      "alternativas": [
+        "Cobre; 2,71 V",
+        "Magnésio; 2,03 V",
+        "Cobre; 0,34 V",
+        "Cobre; 2,03 V",
+        "Magnésio; 2,71 V"
+      ],
+      "correta": 0,
+      "explicacao": "O cobre tem maior potencial e reduz: 0,34 − (−2,37) = 2,71 V. Dica de mergulhador: maior potencial vira cátodo.",
+      "comentarios": [
+        "",
+        "Errou o cátodo e a conta.",
+        "Usou só o cobre.",
+        "Somou com sinal errado.",
+        "O magnésio é o ânodo."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q18-v1",
+      "varianteDe": "qui-eletroquimica-q18",
+      "tema": "Pilhas e baterias",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "A função da ponte salina numa pilha é:",
+      "alternativas": [
+        "Conduzir elétrons entre as placas",
+        "Impedir a reação",
+        "Deixar passar íons e manter a neutralidade",
+        "Trocar os polos",
+        "Fornecer energia à pilha"
+      ],
+      "correta": 2,
+      "explicacao": "Íons da ponte compensam as cargas que se acumulariam. Dica de mergulhador: fio leva elétron; ponte leva íon.",
+      "comentarios": [
+        "Os elétrons vão pelo fio.",
+        "Permite que ela continue.",
+        "",
+        "Não troca.",
+        "A energia vem da reação."
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-q19-v1",
+      "varianteDe": "qui-eletroquimica-q19",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Na eletrólise de uma solução aquosa de NaCl, os produtos principais são:",
+      "alternativas": [
+        "Só oxigênio",
+        "Ácido sulfúrico",
+        "Só sal sólido",
+        "Hidrogênio, cloro e hidróxido de sódio",
+        "Sódio metálico e cloro"
+      ],
+      "correta": 3,
+      "explicacao": "Na água, quem reduz no cátodo é a água (H₂), e sobra NaOH em solução. Dica de mergulhador: com água, sai H₂ no lugar do sódio.",
+      "comentarios": [
+        "Não é o caso.",
+        "Não há enxofre.",
+        "Há reação.",
+        "",
+        "Isso é a eletrólise ígnea."
+      ],
+      "revisar": "produtos da eletrólise aquosa do NaCl"
+    },
+    {
+      "id": "qui-eletroquimica-q20-v1",
+      "varianteDe": "qui-eletroquimica-q20",
+      "tema": "Eletrólise e corrosão",
+      "dificuldade": "dificil",
+      "fase": "qui-eletroquimica",
+      "enunciado": "Um engenheiro quer proteger uma tubulação de ferro enterrada. Entre os metais abaixo, o mais adequado como metal de sacrifício é:",
+      "alternativas": [
+        "Prata",
+        "Chumbo",
+        "Ouro",
+        "Cobre",
+        "Magnésio"
+      ],
+      "correta": 4,
+      "explicacao": "O magnésio tem potencial de redução bem menor que o do ferro. Dica de mergulhador: sacrifício é o metal mais \"disposto\" a oxidar.",
+      "comentarios": [
+        "É mais nobre.",
+        "Não oxida antes do ferro de forma eficiente.",
+        "É mais nobre.",
+        "Oxida menos que o ferro.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q01-v1",
+      "varianteDe": "qui-revisao-fisico-q01",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "A condensação do vapor na tampa de uma panela é um processo que:",
+      "alternativas": [
+        "Absorve calor",
+        "Não troca calor",
+        "É uma reação química",
+        "Libera calor",
+        "Tem ΔH positivo"
+      ],
+      "correta": 3,
+      "explicacao": "Gás virando líquido libera energia. Dica de mergulhador: condensar aquece a tampa.",
+      "comentarios": [
+        "Condensar libera.",
+        "Troca.",
+        "É mudança de estado.",
+        "",
+        "É negativo."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q02-v1",
+      "varianteDe": "qui-revisao-fisico-q02",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Uma reação com ΔH = +90 kJ é:",
+      "alternativas": [
+        "Sempre rápida",
+        "Sem troca de calor",
+        "Endotérmica",
+        "Uma combustão",
+        "Exotérmica"
+      ],
+      "correta": 2,
+      "explicacao": "ΔH positivo: o sistema absorve energia. Dica de mergulhador: mais no ΔH, calor para dentro.",
+      "comentarios": [
+        "ΔH não indica velocidade.",
+        "Há troca.",
+        "",
+        "Combustões liberam calor.",
+        "O sinal é positivo."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q03-v1",
+      "varianteDe": "qui-revisao-fisico-q03",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Uma enzima que acelera a digestão de amido, ao fim do processo:",
+      "alternativas": [
+        "Pode agir de novo, pois não foi consumida",
+        "Foi destruída pela reação",
+        "Mudou o ΔH da digestão",
+        "Virou glicose",
+        "Virou amido"
+      ],
+      "correta": 0,
+      "explicacao": "Enzimas são catalisadores reutilizáveis. Dica de mergulhador: a mesma enzima trabalha muitas vezes.",
+      "comentarios": [
+        "",
+        "Não é consumida.",
+        "Não muda.",
+        "Não vira.",
+        "Não vira."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q04-v1",
+      "varianteDe": "qui-revisao-fisico-q04",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Um comprimido mastigado age mais rápido que um engolido inteiro porque:",
+      "alternativas": [
+        "A temperatura do corpo cai",
+        "O comprimido muda de fórmula",
+        "A massa do remédio aumenta",
+        "A superfície de contato aumenta",
+        "A saliva é catalisador universal"
+      ],
+      "correta": 3,
+      "explicacao": "Pedaços menores dissolvem mais depressa. Dica de mergulhador: pedaço pequeno, reação rápida.",
+      "comentarios": [
+        "Não cai.",
+        "Não muda.",
+        "Não aumenta.",
+        "",
+        "Não é o principal."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q05-v1",
+      "varianteDe": "qui-revisao-fisico-q05",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Num equilíbrio, retira-se parte de um reagente. O sistema:",
+      "alternativas": [
+        "Desloca para repor o reagente",
+        "Desloca para formar mais produto",
+        "Não se altera",
+        "Para de reagir",
+        "Muda o Kc"
+      ],
+      "correta": 0,
+      "explicacao": "O sistema compensa a retirada. Dica de mergulhador: tirou de um lado, ele repõe aquele lado.",
+      "comentarios": [
+        "",
+        "Vai no sentido contrário.",
+        "Desloca.",
+        "Continua.",
+        "Não muda."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q06-v1",
+      "varianteDe": "qui-revisao-fisico-q06",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Um produto de limpeza tem pH 11. Ele é:",
+      "alternativas": [
+        "Ácido",
+        "Igual ao vinagre",
+        "Básico",
+        "Mais ácido que o limão",
+        "Neutro"
+      ],
+      "correta": 2,
+      "explicacao": "pH acima de 7. Dica de mergulhador: pH alto, escorregadio e básico.",
+      "comentarios": [
+        "Acima de 7 é básico.",
+        "O vinagre é ácido.",
+        "",
+        "É básico.",
+        "Não é 7."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q07-v1",
+      "varianteDe": "qui-revisao-fisico-q07",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "facil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Numa pilha, o eletrodo que ganha massa com metal depositado é o:",
+      "alternativas": [
+        "Polo negativo",
+        "Ânodo",
+        "Cátodo",
+        "Ponte salina",
+        "Fio"
+      ],
+      "correta": 2,
+      "explicacao": "Os cátions se reduzem e depositam metal no cátodo. Dica de mergulhador: cátodo engorda.",
+      "comentarios": [
+        "Na pilha, é o positivo.",
+        "Se desgasta.",
+        "",
+        "Não é eletrodo.",
+        "Não muda."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q08-v1",
+      "varianteDe": "qui-revisao-fisico-q08",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Se X → Y tem ΔH = +40 kJ, então ½ Y → ½ X tem ΔH de:",
+      "alternativas": [
+        "+20 kJ",
+        "+80 kJ",
+        "−80 kJ",
+        "−40 kJ",
+        "−20 kJ"
+      ],
+      "correta": 4,
+      "explicacao": "Inverter: −40; dividir por 2: −20. Dica de mergulhador: cada ajuste vale para o ΔH.",
+      "comentarios": [
+        "Esqueceu de trocar o sinal.",
+        "Errou sinal e fator.",
+        "Multiplicou em vez de dividir.",
+        "Esqueceu de dividir.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q09-v1",
+      "varianteDe": "qui-revisao-fisico-q09",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "O metano libera cerca de 55 kJ por grama. A energia liberada por 20 g de metano é:",
+      "alternativas": [
+        "550 kJ",
+        "55 kJ",
+        "2,75 kJ",
+        "75 kJ",
+        "1.100 kJ"
+      ],
+      "correta": 4,
+      "explicacao": "20 × 55 = 1.100 kJ. Dica de mergulhador: multiplique pela massa.",
+      "comentarios": [
+        "Usou 10 g.",
+        "Isso é por grama.",
+        "Dividiu.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q10-v1",
+      "varianteDe": "qui-revisao-fisico-q10",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Numa reação, 1,5 mol de reagente é consumido em 30 segundos. A velocidade média de consumo é:",
+      "alternativas": [
+        "20 mol/s",
+        "1,5 mol/s",
+        "0,5 mol/s",
+        "45 mol/s",
+        "0,05 mol/s"
+      ],
+      "correta": 4,
+      "explicacao": "1,5 ÷ 30 = 0,05 mol/s. Dica de mergulhador: confira a unidade de tempo pedida.",
+      "comentarios": [
+        "Inverteu.",
+        "Ignorou o tempo.",
+        "Errou a divisão.",
+        "Multiplicou.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q11-v1",
+      "varianteDe": "qui-revisao-fisico-q11",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Para PCl₅(g) ⇌ PCl₃(g) + Cl₂(g), diminuir a pressão desloca o equilíbrio:",
+      "alternativas": [
+        "Até a reação parar",
+        "Para PCl₃ e Cl₂, lado com mais mols de gás",
+        "Para nenhum lado",
+        "E muda o Kc",
+        "Para o PCl₅"
+      ],
+      "correta": 1,
+      "explicacao": "1 mol à esquerda e 2 à direita: menos pressão favorece mais mols. Dica de mergulhador: aliviou a pressão, o sistema se espalha.",
+      "comentarios": [
+        "Não para.",
+        "",
+        "Os mols diferem.",
+        "Não muda.",
+        "Ali há menos mols."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q12-v1",
+      "varianteDe": "qui-revisao-fisico-q12",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Uma solução tem [H⁺] = 10⁻⁹ mol/L. Seu pH é:",
+      "alternativas": [
+        "5",
+        "14",
+        "−9",
+        "9",
+        "7"
+      ],
+      "correta": 3,
+      "explicacao": "pH = 9, meio básico. Dica de mergulhador: H⁺ pequeno, pH alto.",
+      "comentarios": [
+        "É o pOH.",
+        "Errou a conta.",
+        "Sem sinal negativo.",
+        "",
+        "Seria neutra."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q13-v1",
+      "varianteDe": "qui-revisao-fisico-q13",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Uma solução de HCl, ácido forte, tem concentração 0,0001 mol/L. Seu pH é:",
+      "alternativas": [
+        "10",
+        "7",
+        "0,0001",
+        "1",
+        "4"
+      ],
+      "correta": 4,
+      "explicacao": "[H⁺] = 10⁻⁴; pH = 4. Dica de mergulhador: conte as casas decimais.",
+      "comentarios": [
+        "É o pOH.",
+        "Seria neutra.",
+        "É a concentração.",
+        "Errou o expoente.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q14-v1",
+      "varianteDe": "qui-revisao-fisico-q14",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "O número de oxidação do cobre no CuO é:",
+      "alternativas": [
+        "−2",
+        "+4",
+        "0",
+        "+2",
+        "+1"
+      ],
+      "correta": 3,
+      "explicacao": "Cu + (−2) = 0 → Cu = +2. Dica de mergulhador: soma zero no composto.",
+      "comentarios": [
+        "É o do oxigênio.",
+        "Errou a soma.",
+        "Seria cobre metálico.",
+        "",
+        "Seria no Cu₂O."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q15-v1",
+      "varianteDe": "qui-revisao-fisico-q15",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "medio",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Para retardar a corrosão de grades de ferro no litoral, a medida mais eficaz entre as abaixo é:",
+      "alternativas": [
+        "Deixar o ferro exposto",
+        "Molhar com frequência",
+        "Pintar ou galvanizar o ferro",
+        "Lavar com água salgada",
+        "Prender cobre ao ferro"
+      ],
+      "correta": 2,
+      "explicacao": "Barreiras e zinco protegem o ferro. Dica de mergulhador: isole o ferro do ar úmido.",
+      "comentarios": [
+        "Acelera.",
+        "Acelera.",
+        "",
+        "Acelera.",
+        "O ferro oxidaria antes do cobre."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q16-v1",
+      "varianteDe": "qui-revisao-fisico-q16",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Dados: S + O₂ → SO₂, ΔH = −297 kJ; 2 SO₂ + O₂ → 2 SO₃, ΔH = −198 kJ. O ΔH de 2 S + 3 O₂ → 2 SO₃ é:",
+      "alternativas": [
+        "−594 kJ",
+        "−396 kJ",
+        "−495 kJ",
+        "+792 kJ",
+        "−792 kJ"
+      ],
+      "correta": 4,
+      "explicacao": "2 × (−297) + (−198) = −792 kJ. Dica de mergulhador: dobre a primeira para ter 2 S.",
+      "comentarios": [
+        "Esqueceu a segunda.",
+        "Usou metade.",
+        "Esqueceu de dobrar a primeira.",
+        "Errou o sinal.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q17-v1",
+      "varianteDe": "qui-revisao-fisico-q17",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Numa reação exotérmica em equilíbrio, resfriar o sistema:",
+      "alternativas": [
+        "Muda só a velocidade",
+        "Diminui o produto e acelera",
+        "Aumenta o produto e acelera",
+        "Não muda nada",
+        "Mais produto no equilíbrio, reação mais lenta"
+      ],
+      "correta": 4,
+      "explicacao": "Frio favorece o sentido exotérmico e diminui a velocidade. Dica de mergulhador: equilíbrio e velocidade respondem diferente à temperatura.",
+      "comentarios": [
+        "Desloca também.",
+        "Inverteu os dois efeitos.",
+        "O frio desacelera.",
+        "Muda os dois.",
+        ""
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q18-v1",
+      "varianteDe": "qui-revisao-fisico-q18",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Para 2 A ⇌ B, no equilíbrio [A] = 0,1 e [B] = 0,05 mol/L. O Kc é:",
+      "alternativas": [
+        "50",
+        "0,5",
+        "5",
+        "0,2",
+        "2"
+      ],
+      "correta": 2,
+      "explicacao": "Kc = 0,05 ÷ 0,1² = 0,05 ÷ 0,01 = 5. Dica de mergulhador: eleve o reagente ao quadrado.",
+      "comentarios": [
+        "Errou a potência.",
+        "Esqueceu o expoente.",
+        "",
+        "Inverteu.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q19-v1",
+      "varianteDe": "qui-revisao-fisico-q19",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "Potenciais de redução: Zn²⁺/Zn −0,76 V e Ag⁺/Ag +0,80 V. Numa pilha de zinco e prata, o cátodo e a ddp são:",
+      "alternativas": [
+        "Zinco; 0,04 V",
+        "Zinco; 1,56 V",
+        "Prata; 1,56 V",
+        "Prata; −1,56 V",
+        "Prata; 0,04 V"
+      ],
+      "correta": 2,
+      "explicacao": "A prata tem maior potencial e reduz; 0,80 − (−0,76) = 1,56 V. Dica de mergulhador: maior menos menor.",
+      "comentarios": [
+        "Errou cátodo e conta.",
+        "O zinco é o ânodo.",
+        "",
+        "A ddp é positiva.",
+        "Somou com sinal errado."
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-q20-v1",
+      "varianteDe": "qui-revisao-fisico-q20",
+      "tema": "Revisão: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "fase": "qui-revisao-fisico",
+      "enunciado": "O sangue recebe ácido lático durante um exercício intenso, mas o pH muda pouco. Isso ocorre porque:",
+      "alternativas": [
+        "O sangue é fortemente básico",
+        "O ácido lático é neutro",
+        "O exercício produz base",
+        "O pH do sangue não depende de nada",
+        "O tampão bicarbonato neutraliza parte do H⁺"
+      ],
+      "correta": 4,
+      "explicacao": "O HCO₃⁻ reage com o H⁺ e forma ácido carbônico, eliminado como CO₂ na respiração. Dica de mergulhador: tampão e pulmão trabalham juntos.",
+      "comentarios": [
+        "É levemente básico.",
+        "É ácido.",
+        "Produz ácido.",
+        "Depende, mas o tampão segura.",
+        ""
+      ]
     }
   ],
   "pares": [
@@ -19544,6 +22740,78 @@
       "tema": "Equilíbrio químico",
       "termo": "Catalisador",
       "definicao": "Não desloca"
+    },
+    {
+      "id": "qui-ph-par-01",
+      "tema": "pH e equilíbrio iônico da água",
+      "termo": "pH < 7",
+      "definicao": "Meio ácido"
+    },
+    {
+      "id": "qui-ph-par-02",
+      "tema": "pH e equilíbrio iônico da água",
+      "termo": "pH = 7",
+      "definicao": "Meio neutro"
+    },
+    {
+      "id": "qui-ph-par-03",
+      "tema": "pH e equilíbrio iônico da água",
+      "termo": "pH > 7",
+      "definicao": "Meio básico"
+    },
+    {
+      "id": "qui-ph-par-04",
+      "tema": "pH e equilíbrio iônico da água",
+      "termo": "Tampão",
+      "definicao": "Resiste à mudança de pH"
+    },
+    {
+      "id": "qui-eletroquimica-par-01",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "termo": "Oxidação",
+      "definicao": "Perda de elétrons"
+    },
+    {
+      "id": "qui-eletroquimica-par-02",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "termo": "Redução",
+      "definicao": "Ganho de elétrons"
+    },
+    {
+      "id": "qui-eletroquimica-par-03",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "termo": "Ânodo da pilha",
+      "definicao": "Polo negativo"
+    },
+    {
+      "id": "qui-eletroquimica-par-04",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "termo": "Metal de sacrifício",
+      "definicao": "Magnésio ou zinco"
+    },
+    {
+      "id": "qui-revisao-fisico-par-01",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "termo": "ΔH negativo",
+      "definicao": "Exotérmica"
+    },
+    {
+      "id": "qui-revisao-fisico-par-02",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "termo": "Catalisador",
+      "definicao": "Menor energia de ativação"
+    },
+    {
+      "id": "qui-revisao-fisico-par-03",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "termo": "pH 2",
+      "definicao": "Muito ácido"
+    },
+    {
+      "id": "qui-revisao-fisico-par-04",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "termo": "Ânodo",
+      "definicao": "Oxidação"
     }
   ],
   "verdadeiroFalso": [
@@ -19924,6 +23192,69 @@
       "afirmacao": "Só a temperatura altera o valor de Kc.",
       "verdadeira": true,
       "explicacao": "Concentração e pressão só deslocam."
+    },
+    {
+      "id": "qui-ph-vf-01",
+      "tema": "pH e equilíbrio iônico da água",
+      "afirmacao": "Um meio de pH 4 tem 10 vezes mais H⁺ que um de pH 5.",
+      "verdadeira": true,
+      "explicacao": "Cada unidade é fator 10."
+    },
+    {
+      "id": "qui-ph-vf-02",
+      "tema": "pH e equilíbrio iônico da água",
+      "afirmacao": "Diluir muito um ácido pode deixá-lo básico.",
+      "verdadeira": false,
+      "explicacao": "O pH só se aproxima de 7."
+    },
+    {
+      "id": "qui-ph-vf-03",
+      "tema": "pH e equilíbrio iônico da água",
+      "afirmacao": "O sangue humano é levemente básico.",
+      "verdadeira": true,
+      "explicacao": "pH entre 7,35 e 7,45."
+    },
+    {
+      "id": "qui-eletroquimica-vf-01",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "afirmacao": "Na pilha de Daniell, a placa de zinco se desgasta.",
+      "verdadeira": true,
+      "explicacao": "Ela sofre oxidação."
+    },
+    {
+      "id": "qui-eletroquimica-vf-02",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "afirmacao": "A eletrólise produz energia elétrica.",
+      "verdadeira": false,
+      "explicacao": "Ela consome energia elétrica."
+    },
+    {
+      "id": "qui-eletroquimica-vf-03",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "afirmacao": "O agente redutor é a espécie que sofre oxidação.",
+      "verdadeira": true,
+      "explicacao": "Ele doa elétrons."
+    },
+    {
+      "id": "qui-revisao-fisico-vf-01",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "afirmacao": "Inverter uma equação troca o sinal do ΔH.",
+      "verdadeira": true,
+      "explicacao": "Lei de Hess."
+    },
+    {
+      "id": "qui-revisao-fisico-vf-02",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "afirmacao": "O catalisador aumenta a quantidade de produto no equilíbrio.",
+      "verdadeira": false,
+      "explicacao": "Só acelera a chegada."
+    },
+    {
+      "id": "qui-revisao-fisico-vf-03",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "afirmacao": "Uma solução de pH 3 tem dez vezes mais H⁺ que uma de pH 4.",
+      "verdadeira": true,
+      "explicacao": "A escala é logarítmica."
     }
   ],
   "sequencias": [
@@ -20140,6 +23471,43 @@
         "Aplicar a expressão de Kc"
       ],
       "explicacao": "Início, reage, equilíbrio."
+    },
+    {
+      "id": "qui-ph-seq-01",
+      "tema": "pH e equilíbrio iônico da água",
+      "titulo": "Do mais ácido ao mais básico",
+      "itens": [
+        "Suco gástrico",
+        "Refrigerante",
+        "Água pura",
+        "Sabão",
+        "Soda cáustica"
+      ],
+      "explicacao": "pH sobe da esquerda para a direita."
+    },
+    {
+      "id": "qui-eletroquimica-seq-01",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "titulo": "Funcionamento da pilha de Daniell",
+      "itens": [
+        "Zinco oxida no ânodo",
+        "Elétrons passam pelo fio",
+        "Cu²⁺ reduz no cátodo",
+        "Ponte salina equilibra as cargas"
+      ],
+      "explicacao": "Química virando corrente."
+    },
+    {
+      "id": "qui-revisao-fisico-seq-01",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "titulo": "Pergunta a fazer diante de uma questão de físico-química",
+      "itens": [
+        "Envolve calor? Termoquímica",
+        "Envolve tempo? Cinética",
+        "Envolve sentido e Kc? Equilíbrio",
+        "Envolve elétrons? Eletroquímica"
+      ],
+      "explicacao": "Cada assunto tem sua ferramenta."
     }
   ],
   "adivinhas": [
@@ -20393,6 +23761,48 @@
         "Perturbação",
         "Deslocamento",
         "Compensar"
+      ]
+    },
+    {
+      "id": "qui-ph-adv-01",
+      "tema": "pH e equilíbrio iônico da água",
+      "dificuldade": "dificil",
+      "resposta": "Tampão",
+      "aceitas": [
+        "solucao tampao, tampao"
+      ],
+      "dicas": [
+        "Sangue",
+        "Bicarbonato",
+        "Resiste ao pH"
+      ]
+    },
+    {
+      "id": "qui-eletroquimica-adv-01",
+      "tema": "Oxirredução, pilhas e eletrólise",
+      "dificuldade": "dificil",
+      "resposta": "Galvanização",
+      "aceitas": [
+        "galvanizacao, galvanizado"
+      ],
+      "dicas": [
+        "Zinco",
+        "Ferro protegido",
+        "Calhas e telhas"
+      ]
+    },
+    {
+      "id": "qui-revisao-fisico-adv-01",
+      "tema": "Revisão do módulo: energia, velocidade e equilíbrio",
+      "dificuldade": "dificil",
+      "resposta": "Energia de ativação",
+      "aceitas": [
+        "energia de ativacao, ativacao"
+      ],
+      "dicas": [
+        "Montanha",
+        "Catalisador baixa",
+        "Colisão eficaz"
       ]
     }
   ],
@@ -20828,6 +24238,78 @@
       "tema": "Química",
       "palavra": "Esteira",
       "dica": "Corre sem sair do lugar"
+    },
+    {
+      "id": "qui-ph-pal-01",
+      "tema": "Química",
+      "palavra": "Tampão",
+      "dica": "Segura o pH do sangue"
+    },
+    {
+      "id": "qui-ph-pal-02",
+      "tema": "Química",
+      "palavra": "Alcalose",
+      "dica": "pH do sangue acima do normal"
+    },
+    {
+      "id": "qui-ph-pal-03",
+      "tema": "Química",
+      "palavra": "Esmalte",
+      "dica": "Desmineraliza em pH baixo"
+    },
+    {
+      "id": "qui-ph-pal-04",
+      "tema": "Química",
+      "palavra": "Neutro",
+      "dica": "pH 7 a 25 °C"
+    },
+    {
+      "id": "qui-eletroquimica-pal-01",
+      "tema": "Química",
+      "palavra": "Ânodo",
+      "dica": "Polo negativo da pilha"
+    },
+    {
+      "id": "qui-eletroquimica-pal-02",
+      "tema": "Química",
+      "palavra": "Cátodo",
+      "dica": "Onde ocorre a redução"
+    },
+    {
+      "id": "qui-eletroquimica-pal-03",
+      "tema": "Química",
+      "palavra": "Ferrugem",
+      "dica": "Corrosão do ferro"
+    },
+    {
+      "id": "qui-eletroquimica-pal-04",
+      "tema": "Química",
+      "palavra": "Bateria",
+      "dica": "Conjunto de pilhas recarregável"
+    },
+    {
+      "id": "qui-revisao-fisico-pal-01",
+      "tema": "Química",
+      "palavra": "Entalpia",
+      "dica": "Mede o calor da reação"
+    },
+    {
+      "id": "qui-revisao-fisico-pal-02",
+      "tema": "Química",
+      "palavra": "Pilha",
+      "dica": "Química virando corrente"
+    },
+    {
+      "id": "qui-revisao-fisico-pal-03",
+      "tema": "Química",
+      "palavra": "Ativação",
+      "dica": "Energia mínima para começar"
+    },
+    {
+      "id": "qui-revisao-fisico-pal-04",
+      "tema": "Química",
+      "palavra": "Oxidação",
+      "dica": "Perda de elétrons"
     }
   ],
   "fichas": {
@@ -21501,6 +24983,104 @@
       "pegadinhas": [
         "Achar que o catalisador aumenta o rendimento no equilíbrio.",
         "Esquecer de contar só os gases ao analisar a pressão."
+      ]
+    },
+    "Escala de pH": {
+      "texto": [
+        "Água: H₂O ⇌ H⁺ + OH⁻; produto iônico 10⁻¹⁴ a 25 °C; neutro: [H⁺] = [OH⁻] = 10⁻⁷, pH 7. Ácido: pH < 7; básico: pH > 7.",
+        "Escala logarítmica: cada unidade = fator 10 (pH 3 tem 1.000 vezes mais H⁺ que pH 6). Diluir ácido sobe o pH, mas nunca passa de 7."
+      ],
+      "pontos": [
+        "Um degrau, dez vezes.",
+        "Diluição aproxima do 7."
+      ],
+      "pegadinhas": [
+        "Achar que pH 3 é só \"um pouco\" mais ácido que pH 6.",
+        "Achar que diluir ácido pode torná-lo básico."
+      ]
+    },
+    "Cálculo de pH": {
+      "texto": [
+        "pH = −log [H⁺]; pOH = −log [OH⁻]; pH + pOH = 14. Ácido forte: [H⁺] = concentração. Base forte: [OH⁻] = concentração (calcule pOH e complete 14).",
+        "Diluição: C₁V₁ = C₂V₂ e depois o pH. Mistura ácido + base: neutralize, ache o excesso e divida pelo volume total."
+      ],
+      "pontos": [
+        "0,001 = 10⁻³.",
+        "Volume final é a soma."
+      ],
+      "pegadinhas": [
+        "Dar o pOH como pH.",
+        "Esquecer de somar os volumes na mistura."
+      ]
+    },
+    "pH no cotidiano e no ambiente": {
+      "texto": [
+        "Valores: estômago 1–2, limão 2, refrigerante 3, café 5, chuva 5,6, água 7, sangue 7,35–7,45, mar ~8, sabão 9–10, água sanitária 12.",
+        "Tampão: ácido fraco + seu sal (sangue: H₂CO₃/HCO₃⁻). Hiperventilação: perde CO₂, pH sobe; retenção de CO₂: pH cai. Dentes: abaixo de ~5,5 desmineraliza. Oceanos: CO₂ baixa o pH e o carbonato."
+      ],
+      "pontos": [
+        "Menos CO₂, sangue mais básico.",
+        "Chuva ácida: pH abaixo de 5,6."
+      ],
+      "pegadinhas": [
+        "Dizer que o sangue é ácido.",
+        "Achar que o oceano ficou ácido (pH < 7)."
+      ]
+    },
+    "Oxirredução": {
+      "texto": [
+        "Oxidação: perde elétrons, Nox sobe (agente redutor). Redução: ganha elétrons, Nox desce (agente oxidante). Regras de Nox: simples = 0; H +1; O −2 (peróxido −1); alcalinos +1; alcalinoterrosos +2; soma zero no composto, igual à carga no íon.",
+        "Exemplos: S em H₂SO₄ +6; N em HNO₃ +5; Mn em KMnO₄ +7; Cl em NaClO +1; Cr em K₂Cr₂O₇ +6 (bafômetro: Cr⁶⁺ → Cr³⁺). Alto-forno: CO é o redutor."
+      ],
+      "pontos": [
+        "Redutor oxida; oxidante reduz.",
+        "Soma dos Nox = 0."
+      ],
+      "pegadinhas": [
+        "Chamar de oxidante quem oxida.",
+        "Usar −2 para o oxigênio no peróxido."
+      ]
+    },
+    "Pilhas e baterias": {
+      "texto": [
+        "Pilha: química → elétrica, espontânea. Ânodo: oxidação, polo −, se desgasta. Cátodo: redução, polo +, ganha massa. Elétrons pelo fio do ânodo ao cátodo; íons pela ponte salina.",
+        "ddp = E°cátodo − E°ânodo (Cu/Zn 1,10 V; Mg/Ag 3,17 V). Maior potencial reduz. Descarte: pontos de coleta (Pb, Cd, Hg)."
+      ],
+      "pontos": [
+        "Maior menos menor.",
+        "Fio leva elétron; ponte leva íon."
+      ],
+      "pegadinhas": [
+        "Dizer que o ânodo é o polo positivo na pilha.",
+        "Somar os potenciais com sinal errado."
+      ]
+    },
+    "Eletrólise e corrosão": {
+      "texto": [
+        "Eletrólise: elétrica → química, não espontânea. Ígnea do NaCl: Na (cátodo) e Cl₂ (ânodo). Aquosa: H₂, Cl₂ e NaOH. Usos: alumínio (muita energia; reciclar poupa), refino do cobre, galvanoplastia.",
+        "Corrosão do ferro: O₂ + água, acelerada pelo sal. Proteção: tinta, galvanização (zinco), metal de sacrifício (Mg, Zn) com menor potencial de redução."
+      ],
+      "pontos": [
+        "Sacrifício é o menos nobre.",
+        "Eletrólise consome energia."
+      ],
+      "pegadinhas": [
+        "Usar cobre como metal de sacrifício do ferro.",
+        "Confundir eletrólise ígnea com aquosa."
+      ]
+    },
+    "Revisão: energia, velocidade e equilíbrio": {
+      "texto": [
+        "Energia: exotérmica (ΔH < 0) e endotérmica (ΔH > 0); Hess: inverter troca sinal, multiplicar multiplica. Velocidade: energia de ativação; temperatura, concentração e superfície aceleram; catalisador não é consumido nem muda ΔH ou equilíbrio.",
+        "Equilíbrio: velocidades iguais; Kc com expoentes; Le Chatelier (concentração, pressão, temperatura). pH = −log [H⁺]; cada unidade = fator 10; tampões. Eletroquímica: oxidação perde, redução ganha; pilha (ânodo −, cátodo +), eletrólise consome energia; metal de sacrifício."
+      ],
+      "pontos": [
+        "Identifique o assunto antes da conta.",
+        "Catalisador: tempo, não rendimento."
+      ],
+      "pegadinhas": [
+        "Confundir velocidade com posição do equilíbrio.",
+        "Tratar a escala de pH como linear."
       ]
     }
   }
