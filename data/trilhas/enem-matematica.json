@@ -5159,7 +5159,7 @@
       "id": "mat-solidos-vistas",
       "nome": "Aula 51 · Sólidos, vistas e planificações",
       "modulo": "Módulo 9 · Geometria espacial",
-      "descricao": "Módulo 9 · aula 1 de 3 · 35 min · treina as habilidades H6 e H7",
+      "descricao": "Módulo 9 · aula 1 de 7 · 35 min · treina as habilidades H6 e H7",
       "habilidades": [
         "H6",
         "H7"
@@ -5262,7 +5262,7 @@
       "id": "mat-prismas",
       "nome": "Aula 52 · Prismas e cubos: área e volume",
       "modulo": "Módulo 9 · Geometria espacial",
-      "descricao": "Módulo 9 · aula 2 de 3 · 35 min · treina as habilidades H8 e H12",
+      "descricao": "Módulo 9 · aula 2 de 7 · 35 min · treina as habilidades H8 e H12",
       "habilidades": [
         "H8",
         "H12"
@@ -5363,7 +5363,7 @@
       "id": "mat-cilindros",
       "nome": "Aula 53 · Cilindros",
       "modulo": "Módulo 9 · Geometria espacial",
-      "descricao": "Módulo 9 · aula 3 de 3 · 35 min · treina as habilidades H8 e H12",
+      "descricao": "Módulo 9 · aula 3 de 7 · 35 min · treina as habilidades H8 e H12",
       "habilidades": [
         "H8",
         "H12"
@@ -5458,6 +5458,434 @@
           "area lateral",
           "comprimento da circunferencia",
           "raio ao quadrado"
+        ]
+      }
+    },
+    {
+      "id": "mat-piramides-cones",
+      "nome": "Aula 54 · Pirâmides e cones",
+      "modulo": "Módulo 9 · Geometria espacial",
+      "descricao": "Módulo 9 · aula 4 de 7 · 35 min · treina a habilidade H8",
+      "habilidades": [
+        "H8"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Pirâmide e cone",
+            "texto": [
+              "A pirâmide é o sólido com uma base poligonal e faces laterais triangulares que se encontram num único vértice; o cone faz o mesmo com uma base circular. A altura é a distância do vértice até o plano da base, medida na perpendicular, e não a medida da face inclinada. Numa pirâmide regular, a base é um polígono regular e o vértice fica bem acima do centro dela. A altura de cada triângulo lateral se chama apótema da pirâmide."
+            ]
+          },
+          {
+            "titulo": "Volume: um terço",
+            "texto": [
+              "O volume de pirâmides e cones é **um terço** do volume do prisma ou do cilindro de mesma base e mesma altura: V = área da base × altura ÷ 3. Para o cone, V = πr²h ÷ 3. Dá para conferir em casa: são precisos três copos cônicos cheios de água para encher um copo cilíndrico de mesma boca e mesma altura. Uma pirâmide de base quadrada com 6 cm de lado e 10 cm de altura tem 36 × 10 ÷ 3 = 120 cm³."
+            ]
+          },
+          {
+            "titulo": "Geratriz e áreas",
+            "texto": [
+              "No cone reto, a **geratriz** é o segmento que vai do vértice até a borda da base. Ela forma um triângulo retângulo com a altura e o raio: g² = h² + r². Um cone de raio 6 e altura 8 tem geratriz 10. A área lateral do cone é π × r × g, e a área total soma a base, πr². Na pirâmide, a área lateral é a soma dos triângulos: lado da base vezes o apótema, dividido por 2, vezes o número de faces. O apótema também sai por Pitágoras, com a altura e a metade do lado da base."
+            ]
+          },
+          {
+            "titulo": "Corte da ponta e como o Enem cobra",
+            "texto": [
+              "Com um corte paralelo à base, a ponta sai e sobra um **tronco**, o formato de baldes, vasos e muitos copos. O pedaço de cima é uma pirâmide ou um cone semelhante ao original: se a altura dele é a metade, o volume é (1/2)³ = 1/8 do total, e o resto fica com 7/8. Por isso um copo cônico cheio até a metade da altura tem só um oitavo da capacidade. O Enem cobra casquinhas, funis, montes de areia e de grãos, telhados, embalagens e copos, quase sempre com π ≈ 3 e conversão para litros."
+            ]
+          }
+        ],
+        "introducao": "Pirâmides de vidro, telhados, casquinhas de sorvete, funis, montes de areia e chapéus de festa: todos afinam até uma ponta, o vértice. Esta aula mostra por que o volume desses sólidos é uma fração do volume do prisma e do cilindro, como achar a geratriz e as áreas e como lidar com a parte que sobra quando se corta a ponta.",
+        "mapaMental": {
+          "centro": "Pirâmides e cones",
+          "ramos": [
+            {
+              "titulo": "Elementos",
+              "itens": [
+                "vértice e base",
+                "altura perpendicular",
+                "apótema da face"
+              ]
+            },
+            {
+              "titulo": "Volume",
+              "itens": [
+                "um terço do prisma",
+                "πr²h ÷ 3 no cone"
+              ]
+            },
+            {
+              "titulo": "Áreas",
+              "itens": [
+                "lateral do cone π × r × g",
+                "soma dos triângulos da pirâmide"
+              ]
+            },
+            {
+              "titulo": "Corte paralelo",
+              "itens": [
+                "tronco que sobra",
+                "volume do topo é um oitavo na metade da altura"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🍦",
+            "conceito": "Casquinha de sorvete",
+            "liga": "três casquinhas enchem um copo",
+            "porque": "Mesma boca e mesma altura: o cone é a terça parte do cilindro."
+          },
+          {
+            "icone": "🎉",
+            "conceito": "Chapéu de festa",
+            "liga": "geratriz",
+            "porque": "A costura do chapéu vai da ponta até a borda."
+          },
+          {
+            "icone": "🪣",
+            "conceito": "Balde",
+            "liga": "cone sem a ponta",
+            "porque": "Corta-se o topo e fica a parte de baixo."
+          }
+        ],
+        "pontos": [
+          "Volume de pirâmide e cone: **um terço** de área da base × altura.",
+          "**Geratriz** do cone: g² = h² + r².",
+          "Área lateral do cone: π × r × g.",
+          "O **tronco** é o que sobra ao cortar a ponta; o topo com metade da altura tem 1/8 do volume."
+        ],
+        "perolas": [
+          "Três cones enchem o cilindro de mesma base e altura.",
+          "Copo cônico cheio até a metade da altura: só 1/8 da capacidade."
+        ],
+        "reforcar": [
+          "um terco",
+          "geratriz",
+          "tronco"
+        ]
+      }
+    },
+    {
+      "id": "mat-esfera",
+      "nome": "Aula 55 · Esfera",
+      "modulo": "Módulo 9 · Geometria espacial",
+      "descricao": "Módulo 9 · aula 5 de 7 · 35 min · treina a habilidade H8",
+      "habilidades": [
+        "H8"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Esfera e suas partes",
+            "texto": [
+              "A esfera é formada por todos os pontos do espaço que ficam à mesma distância, o raio, de um ponto central. Todo corte plano numa esfera dá um círculo; o maior deles passa pelo centro e se chama círculo máximo, com o mesmo raio da esfera. Metade da esfera é o **hemisfério**, como a Terra dividida pela linha do Equador ou uma tigela redonda. Se o problema der o diâmetro, divida por 2 antes de qualquer conta."
+            ]
+          },
+          {
+            "titulo": "Volume",
+            "texto": [
+              "V = 4πr³ ÷ 3. O volume cresce com o **raio ao cubo**: uma bola com o dobro do raio tem 8 vezes o volume, e uma com o triplo, 27 vezes. Por isso uma melancia com o dobro do diâmetro de outra rende oito vezes mais polpa. Com π ≈ 3, a fórmula vira V ≈ 4r³: uma bola de raio 10 cm tem cerca de 4.000 cm³, ou 4 litros. A metade, o volume da tigela, é 2πr³ ÷ 3."
+            ]
+          },
+          {
+            "titulo": "Área da superfície",
+            "texto": [
+              "A área da superfície esférica é 4πr², o mesmo que **quatro círculos** máximos. Ela mede o couro de uma bola, a tinta para pintar um globo ou a casca de uma laranja. A área cresce com o quadrado do raio: o dobro do raio dá quatro vezes a área. Numa meia esfera com tampa, como um peso de papel, a área é a parte curva, 2πr², mais o círculo plano, πr²: 3πr² no total."
+            ]
+          },
+          {
+            "titulo": "Comparações e como o Enem cobra",
+            "texto": [
+              "Uma esfera dentro de um cilindro que a envolve exatamente, com raio r e altura 2r, ocupa dois terços do volume do cilindro; a descoberta é atribuída a Arquimedes. Uma bola dentro de uma caixa cúbica com aresta igual ao diâmetro ocupa um pouco mais da metade da caixa, cerca de 52%. O Enem cobra embalagens de bolas, laranjas e bombons, reservatórios esféricos, sorvetes com bolas, comparação de tamanhos e preços e quanto material reveste uma superfície, quase sempre com π ≈ 3."
+            ]
+          }
+        ],
+        "introducao": "Bolas, laranjas, bolinhas de gude, globos, bombons e reservatórios de gás: a esfera é o sólido mais redondo que existe. Esta aula traz o volume e a área da superfície da esfera, as partes dela e as comparações com o cilindro e o cubo que aparecem nas questões de embalagem.",
+        "mapaMental": {
+          "centro": "Esfera",
+          "ramos": [
+            {
+              "titulo": "Partes",
+              "itens": [
+                "centro e raio",
+                "círculo máximo",
+                "hemisfério"
+              ]
+            },
+            {
+              "titulo": "Volume",
+              "itens": [
+                "4πr³ ÷ 3",
+                "cerca de 4r³ com π ≈ 3"
+              ]
+            },
+            {
+              "titulo": "Superfície",
+              "itens": [
+                "4πr²",
+                "quatro círculos máximos"
+              ]
+            },
+            {
+              "titulo": "Comparações",
+              "itens": [
+                "dois terços do cilindro",
+                "cerca de 52% da caixa cúbica"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🍉",
+            "conceito": "Melancia com o dobro do diâmetro",
+            "liga": "rende 8 vezes mais",
+            "porque": "O volume acompanha o raio ao cubo."
+          },
+          {
+            "icone": "🍊",
+            "conceito": "Casca de laranja",
+            "liga": "área da superfície",
+            "porque": "A casca é a superfície da esfera: 4πr²."
+          },
+          {
+            "icone": "🏛️",
+            "conceito": "Arquimedes",
+            "liga": "esfera no cilindro",
+            "porque": "A bola ocupa dois terços do cilindro que a envolve."
+          }
+        ],
+        "pontos": [
+          "Volume da esfera: 4πr³ ÷ 3; com π ≈ 3, cerca de 4r³.",
+          "O volume cresce com o **raio ao cubo**; a área, com o quadrado do raio.",
+          "Superfície: 4πr², o mesmo que **quatro círculos** máximos.",
+          "O **hemisfério** é meia esfera; com tampa, a área é 3πr²."
+        ],
+        "perolas": [
+          "Bola de raio 10 cm: cerca de 4 litros.",
+          "Todo corte plano numa esfera é um círculo."
+        ],
+        "reforcar": [
+          "hemisferio",
+          "raio ao cubo",
+          "quatro circulos"
+        ]
+      }
+    },
+    {
+      "id": "mat-capacidade-embalagens",
+      "nome": "Aula 56 · Capacidade e embalagens",
+      "modulo": "Módulo 9 · Geometria espacial",
+      "descricao": "Módulo 9 · aula 6 de 7 · 35 min · treina as habilidades H9 e H14",
+      "habilidades": [
+        "H9",
+        "H14"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Volume e capacidade",
+            "texto": [
+              "Volume é o espaço ocupado; capacidade é quanto cabe dentro. A ponte entre os dois é o **decímetro cúbico**: um cubo de 10 cm de aresta guarda exatamente 1 litro. Daí saem as conversões: 1 L = 1.000 cm³ = 1 dm³, 1 mL = 1 cm³ e 1 m³ = 1.000 L. Uma caixa d'água de 1 m × 1 m × 0,5 m guarda 0,5 m³, ou 500 litros. Converta todas as medidas para a mesma unidade antes de multiplicar."
+            ]
+          },
+          {
+            "titulo": "Escolher a embalagem",
+            "texto": [
+              "Para comparar ofertas, divida o preço pelo volume e escolha o menor **preço por litro** (ou por mililitro). Uma lata de 350 mL por R$ 3,50 custa R$ 10 o litro; uma garrafa de 2 L por R$ 9, R$ 4,50. Embalagens maiores costumam sair mais em conta, mas não sempre: faça a conta. Para gastar menos material com o mesmo volume, as formas mais compactas ganham: entre caixas de mesmo volume, o cubo tem a menor área; entre latas, a de altura igual ao diâmetro."
+            ]
+          },
+          {
+            "titulo": "Enchimento e esvaziamento",
+            "texto": [
+              "A **vazão** é o volume que passa por unidade de tempo, em litros por minuto ou metros cúbicos por hora. O tempo para encher é volume ÷ vazão: uma piscina de 30.000 L com uma mangueira de 20 L/min leva 1.500 minutos, ou 25 horas. Duas torneiras juntas somam as vazões; um ralo aberto desconta a dele. Num recipiente de seção constante, como um prisma ou um cilindro em pé, a altura da água sobe sempre no mesmo ritmo; numa garrafa que afina para cima, o nível sobe cada vez mais rápido, e num vaso que alarga, cada vez mais devagar."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Caixas d'água e cisternas, piscinas, aquários, embalagens de leite e suco, latas, copos, tanques de combustível, chuva medida em milímetros e a escolha da embalagem mais econômica. Lembre-se de que 1 mm de chuva sobre 1 m² dá 1 litro. Muitas vezes a pergunta pede um arredondamento: quantas caixas comprar, quantas viagens fazer ou quantas garrafas encher, e a resposta vai para cima quando falta e para baixo quando só valem unidades cheias."
+            ]
+          }
+        ],
+        "introducao": "Quanto cabe numa caixa d'água, em quanto tempo a piscina enche, qual embalagem gasta menos material e qual sai mais barata? Esta aula junta volume, unidades de capacidade e proporção para resolver as perguntas práticas de embalagens e reservatórios que aparecem todo ano no Enem.",
+        "mapaMental": {
+          "centro": "Capacidade",
+          "ramos": [
+            {
+              "titulo": "Conversões",
+              "itens": [
+                "decímetro cúbico = 1 L",
+                "1 m³ = 1.000 L",
+                "1 mL = 1 cm³"
+              ]
+            },
+            {
+              "titulo": "Embalagem",
+              "itens": [
+                "dividir o preço pelo volume",
+                "cubo gasta menos material"
+              ]
+            },
+            {
+              "titulo": "Enchimento",
+              "itens": [
+                "tempo = volume ÷ vazão",
+                "torneiras somam"
+              ]
+            },
+            {
+              "titulo": "Chuva",
+              "itens": [
+                "1 mm sobre 1 m² = 1 litro"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧊",
+            "conceito": "Cubo de 10 cm",
+            "liga": "garrafa de 1 litro",
+            "porque": "Um cubinho de 10 cm de aresta enche uma garrafa de 1 L."
+          },
+          {
+            "icone": "🛒",
+            "conceito": "Etiqueta do mercado",
+            "liga": "preço por litro",
+            "porque": "Compare o preço da unidade, não o da embalagem."
+          },
+          {
+            "icone": "🚿",
+            "conceito": "Torneira e ralo",
+            "liga": "entra menos sai",
+            "porque": "A torneira põe água e o ralo tira: use a diferença."
+          }
+        ],
+        "pontos": [
+          "1 **decímetro cúbico** = 1 L = 1.000 cm³; 1 m³ = 1.000 L.",
+          "Compare ofertas pelo **preço por litro**.",
+          "Tempo de enchimento = volume ÷ **vazão**.",
+          "1 mm de chuva sobre 1 m² dá 1 litro."
+        ],
+        "perolas": [
+          "Faltou caixa? Arredonde para cima.",
+          "Garrafa que afina enche cada vez mais rápido no alto."
+        ],
+        "reforcar": [
+          "decimetro cubico",
+          "preco por litro",
+          "vazao"
+        ]
+      }
+    },
+    {
+      "id": "mat-revisao-espacial",
+      "nome": "Aula 57 · Revisão do módulo: geometria espacial",
+      "modulo": "Módulo 9 · Geometria espacial",
+      "descricao": "Módulo 9 · aula 7 de 7 · 35 min · treina as habilidades H6, H7, H8, H9 e H12",
+      "habilidades": [
+        "H6",
+        "H7",
+        "H8",
+        "H9",
+        "H12"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Reconhecer o sólido",
+            "texto": [
+              "Poliedros têm faces planas; cilindro, cone e esfera são corpos redondos. A **relação de Euler**, V − A + F = 2, confere contagens de faces, arestas e vértices. A planificação mostra o material de uma embalagem, e as vistas de frente, de lado e de cima ajudam a identificar o objeto. A sombra com luz a pino é a vista de cima."
+            ]
+          },
+          {
+            "titulo": "Volumes",
+            "texto": [
+              "Prisma e cilindro: área da base × altura. Pirâmide e cone: um terço disso. Esfera: 4πr³ ÷ 3, cerca de 4r³ com π ≈ 3. Um objeto mergulhado desloca o próprio volume de água: a subida vezes a área da base do recipiente. Numa ampliação de razão k, a área é multiplicada por k² e o volume pelo **fator ao cubo**, k³; por isso o topo de um cone cortado na metade da altura tem um oitavo do volume, e uma estátua com o dobro da altura pesa oito vezes mais."
+            ]
+          },
+          {
+            "titulo": "Áreas e capacidade",
+            "texto": [
+              "Área total é a soma das faces ou da planificação: caixa, 2(ab + ac + bc); cilindro, 2πrh + 2πr²; cone, πrg + πr²; esfera, 4πr². Para capacidade, use 1 dm³ = 1 L, 1 cm³ = 1 mL e 1 m³ = 1.000 L, sempre com todas as medidas na **mesma unidade** antes de multiplicar. Compare embalagens pelo preço do litro e calcule o tempo de enchimento como volume dividido pela vazão."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada. Os tropeços mais comuns são esquecer o ÷ 3 de pirâmides e cones, usar o diâmetro como raio, multiplicar centímetros por metros, confundir área com volume, usar k² em vez de k³ e esquecer de arredondar para cima quando faltam caixas ou viagens, ou para baixo quando só valem unidades inteiras. Depois de cada acerto, confira se a unidade da resposta faz sentido."
+            ]
+          }
+        ],
+        "introducao": "Fim do módulo de geometria espacial. As questões desta revisão vêm misturadas, como na prova: o desafio é reconhecer o sólido, escolher entre área e volume, converter unidades e decidir se a resposta pede arredondamento.",
+        "mapaMental": {
+          "centro": "Geometria espacial",
+          "ramos": [
+            {
+              "titulo": "Reconhecer",
+              "itens": [
+                "relação de Euler",
+                "planificação",
+                "vistas e sombras"
+              ]
+            },
+            {
+              "titulo": "Volumes",
+              "itens": [
+                "área da base × altura",
+                "um terço em pirâmides e cones",
+                "4r³ na esfera com π ≈ 3"
+              ]
+            },
+            {
+              "titulo": "Áreas",
+              "itens": [
+                "soma das faces",
+                "πrg no cone",
+                "4πr² na esfera"
+              ]
+            },
+            {
+              "titulo": "Capacidade",
+              "itens": [
+                "1 dm³ = 1 L",
+                "preço do litro",
+                "volume dividido pela vazão"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "📏",
+            "conceito": "Régua e trena juntas",
+            "liga": "mesma unidade",
+            "porque": "Centímetro com metro estraga a conta."
+          },
+          {
+            "icone": "🗿",
+            "conceito": "Estátua com o dobro da altura",
+            "liga": "fator ao cubo",
+            "porque": "Oito vezes o material, oito vezes o peso."
+          }
+        ],
+        "pontos": [
+          "**Relação de Euler**: V − A + F = 2.",
+          "Pirâmide e cone: um terço do prisma e do cilindro.",
+          "Ampliação de razão k: área com k² e volume com o **fator ao cubo**.",
+          "Converta tudo para a **mesma unidade** antes de multiplicar."
+        ],
+        "perolas": [
+          "Área em unidade ao quadrado; volume em unidade ao cubo."
+        ],
+        "reforcar": [
+          "relacao de euler",
+          "fator ao cubo",
+          "mesma unidade"
         ]
       }
     }
@@ -29979,6 +30407,1846 @@
         "Errou o volume da lata.",
         "É o volume da caixa.",
         "É o volume da lata."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q01",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide de base quadrada tem 6 cm de lado e 10 cm de altura. Qual é o seu volume?",
+      "alternativas": [
+        "180 cm³",
+        "200 cm³",
+        "360 cm³",
+        "60 cm³",
+        "120 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "Base: 6 × 6 = 36 cm². Volume: 36 × 10 ÷ 3 = 120 cm³. Dica de mergulhador: pirâmide é um terço do prisma.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Usou 60 × 10 ÷ 3.",
+        "Esqueceu de dividir por 3.",
+        "Multiplicou o lado pela altura.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q02",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um prisma e uma pirâmide têm a mesma base e a mesma altura. O prisma tem volume de 90 litros. Qual é o volume da pirâmide?",
+      "alternativas": [
+        "60 litros",
+        "90 litros",
+        "30 litros",
+        "270 litros",
+        "45 litros"
+      ],
+      "correta": 2,
+      "explicacao": "A pirâmide tem um terço do prisma: 90 ÷ 3 = 30 L. Dica de mergulhador: três pirâmides enchem o prisma.",
+      "comentarios": [
+        "Tirou um terço em vez de ficar com ele.",
+        "Os volumes não são iguais.",
+        "",
+        "Multiplicou por 3.",
+        "Dividiu por 2."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q03",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Qual é a fórmula do volume de uma pirâmide?",
+      "alternativas": [
+        "Área da base × altura",
+        "Área da base × altura ÷ 2",
+        "Área da base × altura ÷ 3",
+        "Lado × altura ÷ 3",
+        "Perímetro da base × altura ÷ 3"
+      ],
+      "correta": 2,
+      "explicacao": "O volume da pirâmide é um terço do volume do prisma de mesma base e altura. Dica de mergulhador: Ab × h ÷ 3.",
+      "comentarios": [
+        "É a do prisma.",
+        "O fator é um terço.",
+        "",
+        "Falta elevar o lado ao quadrado na base quadrada.",
+        "Usa a área, não o perímetro."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q04",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide tem base retangular de 8 m por 5 m e altura de 6 m. Qual é o seu volume?",
+      "alternativas": [
+        "26 m³",
+        "120 m³",
+        "240 m³",
+        "80 m³",
+        "40 m³"
+      ],
+      "correta": 3,
+      "explicacao": "Base: 8 × 5 = 40 m². Volume: 40 × 6 ÷ 3 = 80 m³. Dica de mergulhador: base retangular, área = comprimento × largura.",
+      "comentarios": [
+        "Somou as medidas e multiplicou por 2.",
+        "Dividiu por 2.",
+        "Esqueceu de dividir por 3.",
+        "",
+        "É a área da base."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q05",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide tem como base um triângulo retângulo de catetos 6 cm e 8 cm, e altura de 10 cm. Qual é o seu volume?",
+      "alternativas": [
+        "240 cm³",
+        "480 cm³",
+        "160 cm³",
+        "80 cm³",
+        "100 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "Base: 6 × 8 ÷ 2 = 24 cm². Volume: 24 × 10 ÷ 3 = 80 cm³. Dica de mergulhador: são duas divisões, uma pelo triângulo e outra pela pirâmide.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "Não dividiu nem por 2 nem por 3.",
+        "Não dividiu a base triangular por 2.",
+        "",
+        "Usou a hipotenusa 10 na base."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q06",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um peso de papel de vidro tem forma de pirâmide de base quadrada, com 4 cm de lado e 6 cm de altura. Cada cm³ desse vidro tem massa de 2,5 g. Qual é a massa do peso de papel?",
+      "alternativas": [
+        "40 g",
+        "32 g",
+        "60 g",
+        "80 g",
+        "240 g"
+      ],
+      "correta": 3,
+      "explicacao": "Volume: 16 × 6 ÷ 3 = 32 cm³. Massa: 32 × 2,5 = 80 g. Dica de mergulhador: massa = volume × densidade.",
+      "comentarios": [
+        "Dividiu a massa por 2.",
+        "Parou no volume.",
+        "Usou 4 × 6 como base.",
+        "",
+        "Esqueceu de dividir o volume por 3."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q07",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide é cortada por um plano paralelo à base, exatamente na metade da altura. Que fração do volume total fica na pirâmide pequena do topo?",
+      "alternativas": [
+        "7/8",
+        "1/3",
+        "1/2",
+        "1/8",
+        "1/4"
+      ],
+      "correta": 3,
+      "explicacao": "A pirâmide do topo é semelhante à original com razão 1/2; volumes vão ao cubo: (1/2)³ = 1/8. Dica de mergulhador: metade da altura, um oitavo do volume.",
+      "comentarios": [
+        "É a fração do tronco, a parte de baixo.",
+        "Confundiu com a fórmula do volume.",
+        "O volume não acompanha a altura de forma direta.",
+        "",
+        "Usou o fator ao quadrado, que vale para áreas."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q08",
+      "tema": "Volume do cone",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um cone tem raio da base de 3 cm e altura de 10 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "90 cm³",
+        "900 cm³",
+        "180 cm³",
+        "270 cm³",
+        "30 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "V = 3 × 9 × 10 ÷ 3 = 90 cm³. Dica de mergulhador: cone é um terço do cilindro.",
+      "comentarios": [
+        "",
+        "Usou o diâmetro ao quadrado sem dividir.",
+        "Dividiu por 3 duas vezes de menos.",
+        "Esqueceu de dividir por 3.",
+        "Usou o raio sem elevar ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q09",
+      "tema": "Volume do cone",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um cone e um cilindro têm a mesma base e a mesma altura. O cilindro tem 600 mL. Qual é a capacidade do cone?",
+      "alternativas": [
+        "300 mL",
+        "200 mL",
+        "400 mL",
+        "600 mL",
+        "1.800 mL"
+      ],
+      "correta": 1,
+      "explicacao": "O cone tem um terço do cilindro: 600 ÷ 3 = 200 mL. Dica de mergulhador: três cones enchem o cilindro.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "",
+        "Tirou um terço em vez de ficar com ele.",
+        "Os volumes não são iguais.",
+        "Multiplicou por 3."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q10",
+      "tema": "Volume do cone",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma casquinha de sorvete tem forma de cone, com raio de 3 cm e altura de 12 cm. Quanto sorvete cabe dentro dela, até a borda? Use π ≈ 3.",
+      "alternativas": [
+        "54 cm³",
+        "324 cm³",
+        "432 cm³",
+        "36 cm³",
+        "108 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "V = 3 × 9 × 12 ÷ 3 = 108 cm³. Dica de mergulhador: primeiro r², depois π e h, por fim ÷ 3.",
+      "comentarios": [
+        "Dividiu por 6.",
+        "Esqueceu de dividir por 3.",
+        "Usou 6 de raio.",
+        "Usou o raio sem elevar ao quadrado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q11",
+      "tema": "Volume do cone",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um funil cônico tem raio de 10 cm e altura de 30 cm. Com a saída tampada, quantos litros ele comporta? Use π ≈ 3,14.",
+      "alternativas": [
+        "0,314 L",
+        "3,14 L",
+        "31,4 L",
+        "9,42 L",
+        "6,28 L"
+      ],
+      "correta": 1,
+      "explicacao": "V = 3,14 × 100 × 30 ÷ 3 = 3.140 cm³ = 3,14 L. Dica de mergulhador: 1.000 cm³ = 1 L.",
+      "comentarios": [
+        "Usou o raio sem elevar ao quadrado.",
+        "",
+        "Errou a conversão de cm³ para litros.",
+        "Esqueceu de dividir por 3.",
+        "Dividiu só por 1,5."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q12",
+      "tema": "Volume do cone",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um monte de areia tem forma de cone, com raio de 3 m e altura de 2 m. Um caminhão leva 6 m³ por viagem. Quantas viagens são necessárias para levar o monte todo? Use π ≈ 3.",
+      "alternativas": [
+        "3",
+        "9",
+        "18",
+        "1",
+        "2"
+      ],
+      "correta": 0,
+      "explicacao": "V = 3 × 9 × 2 ÷ 3 = 18 m³. Viagens: 18 ÷ 6 = 3. Dica de mergulhador: volume ÷ capacidade do caminhão.",
+      "comentarios": [
+        "",
+        "Esqueceu de dividir o volume por 3.",
+        "Respondeu o volume em m³.",
+        "Usou só a altura.",
+        "Usou o raio sem elevar ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q13",
+      "tema": "Volume do cone",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Dois cones têm a mesma altura, mas o raio do segundo é o dobro do raio do primeiro. Quantas vezes o volume do segundo é maior?",
+      "alternativas": [
+        "3 vezes",
+        "4 vezes",
+        "6 vezes",
+        "8 vezes",
+        "2 vezes"
+      ],
+      "correta": 1,
+      "explicacao": "O volume depende de r²: 2² = 4. Dica de mergulhador: com a altura fixa, o raio vai ao quadrado.",
+      "comentarios": [
+        "Confundiu com o fator do cone.",
+        "",
+        "Somou em vez de elevar.",
+        "Só a base mudou, não a altura.",
+        "O raio entra ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q14",
+      "tema": "Volume do cone",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um copo cônico, com a ponta para baixo, tem 8 cm de altura e capacidade de 240 mL. Ele é enchido até 4 cm de altura. Quantos mL de água há no copo?",
+      "alternativas": [
+        "30 mL",
+        "80 mL",
+        "60 mL",
+        "210 mL",
+        "120 mL"
+      ],
+      "correta": 0,
+      "explicacao": "A água forma um cone semelhante com razão 1/2: (1/2)³ = 1/8; 240 ÷ 8 = 30 mL. Dica de mergulhador: no copo cônico, a metade da altura é só um oitavo.",
+      "comentarios": [
+        "",
+        "Dividiu por 3.",
+        "Usou o fator ao quadrado.",
+        "É o que falta para encher.",
+        "A capacidade não acompanha a altura de forma direta."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q15",
+      "tema": "Volume do cone",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um vaso tem forma de tronco de cone. Ele foi obtido de um cone de raio 6 cm e altura 12 cm, do qual se tirou a ponta: um cone de raio 3 cm e altura 6 cm. Qual é o volume do vaso? Use π ≈ 3.",
+      "alternativas": [
+        "216 cm³",
+        "486 cm³",
+        "54 cm³",
+        "432 cm³",
+        "378 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "Cone grande: 3 × 36 × 12 ÷ 3 = 432. Ponta: 3 × 9 × 6 ÷ 3 = 54. Tronco: 432 − 54 = 378 cm³. Dica de mergulhador: tronco é o cone grande menos o pequeno.",
+      "comentarios": [
+        "Dividiu o cone inteiro por 2.",
+        "Somou a ponta em vez de subtrair.",
+        "É a ponta retirada.",
+        "É o cone inteiro.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q16",
+      "tema": "Geratriz e área",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um cone reto tem raio de 6 cm e altura de 8 cm. Qual é a medida da geratriz?",
+      "alternativas": [
+        "10 cm",
+        "7 cm",
+        "100 cm",
+        "14 cm",
+        "2 cm"
+      ],
+      "correta": 0,
+      "explicacao": "g² = 8² + 6² = 100, então g = 10 cm. Dica de mergulhador: altura, raio e geratriz formam um triângulo retângulo.",
+      "comentarios": [
+        "",
+        "Fez a média.",
+        "Parou em g² sem tirar a raiz.",
+        "Somou raio e altura.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q17",
+      "tema": "Geratriz e área",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um cone tem raio de 3 cm e geratriz de 5 cm. Qual é a sua área lateral? Use π ≈ 3,14.",
+      "alternativas": [
+        "94,2 cm²",
+        "47,1 cm²",
+        "78,5 cm²",
+        "28,26 cm²",
+        "75,36 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Área lateral: π × r × g = 3,14 × 3 × 5 = 47,1 cm². Dica de mergulhador: lateral do cone, π r g.",
+      "comentarios": [
+        "Multiplicou por 2.",
+        "",
+        "Usou a geratriz como raio da base.",
+        "É a área da base.",
+        "É a área total."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q18",
+      "tema": "Geratriz e área",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide de base quadrada tem lado da base de 10 cm, e cada face lateral tem altura (apótema) de 13 cm. Qual é a área lateral da pirâmide?",
+      "alternativas": [
+        "260 cm²",
+        "520 cm²",
+        "65 cm²",
+        "130 cm²",
+        "360 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Cada face: 10 × 13 ÷ 2 = 65. Quatro faces: 260 cm². Dica de mergulhador: lateral da pirâmide é a soma dos triângulos.",
+      "comentarios": [
+        "",
+        "Não dividiu os triângulos por 2.",
+        "É a área de uma face só.",
+        "Contou só duas faces.",
+        "Somou a base."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q19",
+      "tema": "Geratriz e área",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide de base quadrada tem lado de 12 cm e altura de 8 cm. Qual é a sua área total?",
+      "alternativas": [
+        "240 cm²",
+        "384 cm²",
+        "144 cm²",
+        "528 cm²",
+        "336 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Apótema: √(8² + 6²) = 10. Lateral: 4 × 12 × 10 ÷ 2 = 240. Base: 144. Total: 384 cm². Dica de mergulhador: o apótema sai da altura e da metade do lado.",
+      "comentarios": [
+        "É só a área lateral.",
+        "",
+        "É só a base.",
+        "Não dividiu os triângulos por 2.",
+        "Usou a altura 8 como apótema."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q20",
+      "tema": "Geratriz e área",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um chapéu de festa é um cone sem base, com raio de 10 cm e altura de 24 cm. Quanto papel ele usa? Use π ≈ 3.",
+      "alternativas": [
+        "300 cm²",
+        "1.080 cm²",
+        "1.560 cm²",
+        "780 cm²",
+        "720 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Geratriz: √(24² + 10²) = 26. Área lateral: 3 × 10 × 26 = 780 cm². Dica de mergulhador: chapéu é só a área lateral, com a geratriz.",
+      "comentarios": [
+        "É a área da base, que o chapéu não tem.",
+        "Somou a base.",
+        "Multiplicou por 2.",
+        "",
+        "Usou a altura no lugar da geratriz."
+      ]
+    },
+    {
+      "id": "mat-esfera-q01",
+      "tema": "Volume da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Uma esfera tem raio de 3 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "108 cm³",
+        "324 cm³",
+        "27 cm³",
+        "81 cm³",
+        "36 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "V = 4 × 3 × 27 ÷ 3 = 108 cm³. Dica de mergulhador: com π ≈ 3, V ≈ 4r³.",
+      "comentarios": [
+        "",
+        "Esqueceu de dividir por 3.",
+        "Calculou só r³.",
+        "Esqueceu o 4 e o ÷ 3.",
+        "Usou r² no lugar de r³."
+      ]
+    },
+    {
+      "id": "mat-esfera-q02",
+      "tema": "Volume da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Se o raio de uma esfera dobra, o que acontece com o volume?",
+      "alternativas": [
+        "Fica 4 vezes maior",
+        "Dobra",
+        "Fica 6 vezes maior",
+        "Fica 16 vezes maior",
+        "Fica 8 vezes maior"
+      ],
+      "correta": 4,
+      "explicacao": "2³ = 8. Dica de mergulhador: volume acompanha o raio ao cubo.",
+      "comentarios": [
+        "Isso acontece com a área.",
+        "O raio entra ao cubo.",
+        "Multiplicou 2 por 3.",
+        "Elevou à quarta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q03",
+      "tema": "Volume da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Uma tigela tem forma de meia esfera, com raio de 6 cm. Quantos cm³ cabem nela? Use π ≈ 3.",
+      "alternativas": [
+        "432 cm³",
+        "864 cm³",
+        "216 cm³",
+        "1.296 cm³",
+        "72 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "Esfera: 4 × 3 × 216 ÷ 3 = 864. Metade: 432 cm³. Dica de mergulhador: meia esfera, 2πr³ ÷ 3.",
+      "comentarios": [
+        "",
+        "É a esfera inteira.",
+        "Calculou só r³.",
+        "Esqueceu de dividir por 3.",
+        "Usou r² no lugar de r³."
+      ]
+    },
+    {
+      "id": "mat-esfera-q04",
+      "tema": "Volume da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma bola tem raio de 10 cm. Quantos litros de ar cabem nela, aproximadamente? Use π ≈ 3.",
+      "alternativas": [
+        "0,4 litro",
+        "40 litros",
+        "12 litros",
+        "4 litros",
+        "1,2 litro"
+      ],
+      "correta": 3,
+      "explicacao": "V = 4 × 3 × 1.000 ÷ 3 = 4.000 cm³ = 4 L. Dica de mergulhador: 1.000 cm³ = 1 litro.",
+      "comentarios": [
+        "Dividiu por 10.000.",
+        "Errou a conversão para litros.",
+        "Esqueceu de dividir por 3.",
+        "",
+        "Usou r² no lugar de r³."
+      ]
+    },
+    {
+      "id": "mat-esfera-q05",
+      "tema": "Volume da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Um reservatório esférico tem raio de 2 m. Quantos litros ele comporta? Use π ≈ 3.",
+      "alternativas": [
+        "3.200 litros",
+        "96.000 litros",
+        "16.000 litros",
+        "32.000 litros",
+        "32 litros"
+      ],
+      "correta": 3,
+      "explicacao": "V = 4 × 3 × 8 ÷ 3 = 32 m³ = 32.000 L. Dica de mergulhador: 1 m³ = 1.000 L.",
+      "comentarios": [
+        "Multiplicou por 100.",
+        "Esqueceu de dividir por 3.",
+        "Usou r² no lugar de r³.",
+        "",
+        "Não converteu m³ em litros."
+      ]
+    },
+    {
+      "id": "mat-esfera-q06",
+      "tema": "Volume da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma esfera de metal de raio 5 cm é derretida para fazer bolinhas de raio 1 cm. Quantas bolinhas saem, sem perda?",
+      "alternativas": [
+        "25",
+        "5",
+        "15",
+        "125",
+        "500"
+      ],
+      "correta": 3,
+      "explicacao": "A razão dos raios é 5; a dos volumes, 5³ = 125. Dica de mergulhador: número de bolinhas = (R ÷ r)³.",
+      "comentarios": [
+        "Usou a razão ao quadrado.",
+        "Dividiu os raios.",
+        "Multiplicou a razão por 3.",
+        "",
+        "Respondeu o volume da esfera grande."
+      ]
+    },
+    {
+      "id": "mat-esfera-q07",
+      "tema": "Volume da esfera",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Um sorvete é uma casquinha cônica de raio 3 cm e altura 10 cm, cheia, com meia bola de sorvete de raio 3 cm por cima. Qual é o volume total de sorvete? Use π ≈ 3.",
+      "alternativas": [
+        "90 cm³",
+        "198 cm³",
+        "324 cm³",
+        "144 cm³",
+        "54 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "Cone: 3 × 9 × 10 ÷ 3 = 90. Meia bola: 4 × 3 × 27 ÷ 3 ÷ 2 = 54. Total: 144 cm³. Dica de mergulhador: some as partes do sólido composto.",
+      "comentarios": [
+        "Contou só o cone.",
+        "Usou a bola inteira por cima.",
+        "Esqueceu de dividir o cone por 3.",
+        "",
+        "Contou só a meia bola."
+      ]
+    },
+    {
+      "id": "mat-esfera-q08",
+      "tema": "Volume da esfera",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Um aquário tem base retangular de 25 cm por 20 cm. Uma bola maciça de raio 5 cm é colocada no fundo e fica totalmente coberta. Quanto o nível da água sobe? Use π ≈ 3.",
+      "alternativas": [
+        "0,5 cm",
+        "1 cm",
+        "5 cm",
+        "10 cm",
+        "3 cm"
+      ],
+      "correta": 1,
+      "explicacao": "Bola: 4 × 3 × 125 ÷ 3 = 500 cm³. Base: 500 cm². Subida: 500 ÷ 500 = 1 cm. Dica de mergulhador: subida = volume do objeto ÷ área da base.",
+      "comentarios": [
+        "Dividiu o volume pelo dobro da base.",
+        "",
+        "Usou o raio como subida.",
+        "Usou o diâmetro como subida.",
+        "Esqueceu de dividir o volume por 3."
+      ]
+    },
+    {
+      "id": "mat-esfera-q09",
+      "tema": "Área da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Uma esfera tem raio de 5 cm. Qual é a área da sua superfície? Use π ≈ 3.",
+      "alternativas": [
+        "300 cm²",
+        "60 cm²",
+        "75 cm²",
+        "500 cm²",
+        "150 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "A = 4 × 3 × 25 = 300 cm². Dica de mergulhador: quatro círculos máximos.",
+      "comentarios": [
+        "",
+        "Usou 4πr.",
+        "É a área de um círculo máximo.",
+        "É o volume.",
+        "Usou 2πr²."
+      ]
+    },
+    {
+      "id": "mat-esfera-q10",
+      "tema": "Área da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "A área da superfície de uma esfera equivale à área de quantos círculos máximos dela?",
+      "alternativas": [
+        "8",
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "correta": 2,
+      "explicacao": "A = 4πr², ou seja, 4 vezes πr². Dica de mergulhador: a casca da laranja forra quatro discos do mesmo raio.",
+      "comentarios": [
+        "Confundiu com o fator do volume.",
+        "É a meia esfera com tampa.",
+        "",
+        "A superfície é bem maior.",
+        "É a parte curva do hemisfério."
+      ]
+    },
+    {
+      "id": "mat-esfera-q11",
+      "tema": "Área da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Se o raio de uma bola dobra, o que acontece com a quantidade de couro para revesti-la?",
+      "alternativas": [
+        "Fica 6 vezes maior",
+        "Dobra",
+        "Fica 4 vezes maior",
+        "Não muda",
+        "Fica 8 vezes maior"
+      ],
+      "correta": 2,
+      "explicacao": "Área ∝ r²: 2² = 4. Dica de mergulhador: superfície ao quadrado, volume ao cubo.",
+      "comentarios": [
+        "Somou.",
+        "A área depende do quadrado do raio.",
+        "",
+        "O couro cobre a superfície.",
+        "Isso acontece com o volume."
+      ]
+    },
+    {
+      "id": "mat-esfera-q12",
+      "tema": "Área da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma bola de couro tem raio de 10 cm. Quanto couro reveste a bola, sem contar as costuras? Use π ≈ 3,14.",
+      "alternativas": [
+        "628 cm²",
+        "4.186,7 cm²",
+        "1.256 cm²",
+        "314 cm²",
+        "125,6 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "A = 4 × 3,14 × 100 = 1.256 cm². Dica de mergulhador: superfície, 4πr².",
+      "comentarios": [
+        "Usou 2πr².",
+        "É o volume.",
+        "",
+        "É um círculo máximo.",
+        "Usou 4πr."
+      ]
+    },
+    {
+      "id": "mat-esfera-q13",
+      "tema": "Área da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Um peso de papel tem forma de meia esfera maciça, com raio de 4 cm. Qual é a área total da sua superfície, contando a base plana? Use π ≈ 3.",
+      "alternativas": [
+        "48 cm²",
+        "96 cm²",
+        "240 cm²",
+        "192 cm²",
+        "144 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "Curva: 2 × 3 × 16 = 96. Base: 3 × 16 = 48. Total: 144 cm² (3πr²). Dica de mergulhador: meia esfera com tampa, 3πr².",
+      "comentarios": [
+        "Contou só a base.",
+        "Esqueceu a base plana.",
+        "Somou a base à esfera inteira.",
+        "Usou a esfera inteira.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q14",
+      "tema": "Área da esfera",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Dez esferas decorativas de raio 50 cm serão pintadas. Cada litro de tinta cobre 3 m². Quantos litros são necessários? Use π ≈ 3.",
+      "alternativas": [
+        "2,5 litros",
+        "100 litros",
+        "10 litros",
+        "1 litro",
+        "30 litros"
+      ],
+      "correta": 2,
+      "explicacao": "Cada esfera: 4 × 3 × 0,5² = 3 m². Dez: 30 m². Tinta: 30 ÷ 3 = 10 L. Dica de mergulhador: passe 50 cm para 0,5 m antes.",
+      "comentarios": [
+        "Usou um círculo máximo.",
+        "Usou o raio em centímetros na conta em m².",
+        "",
+        "Pintou uma esfera só.",
+        "Parou na área total, sem dividir por 3."
+      ]
+    },
+    {
+      "id": "mat-esfera-q15",
+      "tema": "Comparar sólidos",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Uma esfera está dentro de um cilindro que a envolve exatamente, com o mesmo raio e altura igual ao diâmetro. Que fração do volume do cilindro a esfera ocupa?",
+      "alternativas": [
+        "1/3",
+        "4/3",
+        "2/3",
+        "1/2",
+        "3/4"
+      ],
+      "correta": 2,
+      "explicacao": "Esfera: 4πr³ ÷ 3. Cilindro: πr² × 2r = 2πr³. Razão: 2/3. Dica de mergulhador: a bola ocupa dois terços da lata justa.",
+      "comentarios": [
+        "É a fração que fica vazia.",
+        "A esfera não é maior que o cilindro.",
+        "",
+        "A esfera ocupa mais que a metade.",
+        "É a razão das áreas de círculo e quadrado com π ≈ 3."
+      ]
+    },
+    {
+      "id": "mat-esfera-q16",
+      "tema": "Comparar sólidos",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma bola de raio 6 cm está numa caixa cúbica de aresta 12 cm. Qual é o volume do espaço vazio dentro da caixa? Use π ≈ 3.",
+      "alternativas": [
+        "216 cm³",
+        "0 cm³",
+        "1.296 cm³",
+        "1.728 cm³",
+        "864 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "Caixa: 12³ = 1.728. Bola: 4 × 3 × 216 ÷ 3 = 864. Vazio: 864 cm³. Dica de mergulhador: com π ≈ 3, a bola ocupa metade do cubo justo.",
+      "comentarios": [
+        "Usou a aresta 6.",
+        "A bola não preenche os cantos.",
+        "Usou a meia bola.",
+        "É o volume da caixa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q17",
+      "tema": "Comparar sólidos",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma loja vende bombons esféricos: o de raio 2 cm custa R$ 3,00 e o de raio 4 cm custa R$ 20,00. Do mesmo chocolate, qual compensa mais?",
+      "alternativas": [
+        "Tanto faz, pois os preços são proporcionais",
+        "O pequeno, pois o grande vale só 4 pequenos",
+        "O grande, pois vale 8 pequenos, que custariam R$ 24",
+        "O grande, pois vale só 2 pequenos",
+        "O pequeno, pois o grande custa mais que 6 vezes o pequeno"
+      ],
+      "correta": 2,
+      "explicacao": "Raio dobrado, volume 8 vezes maior. Oito pequenos custariam 8 × 3 = R$ 24, mais que R$ 20. Dica de mergulhador: compare pelo volume, ao cubo.",
+      "comentarios": [
+        "O preço por volume é diferente.",
+        "Usou o fator ao quadrado.",
+        "",
+        "O fator do volume é 8.",
+        "O grande tem 8 vezes o volume, não 2."
+      ]
+    },
+    {
+      "id": "mat-esfera-q18",
+      "tema": "Comparar sólidos",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Um cilindro e uma esfera têm o mesmo raio, 3 cm, e o mesmo volume. Qual é a altura do cilindro?",
+      "alternativas": [
+        "3 cm",
+        "12 cm",
+        "6 cm",
+        "2 cm",
+        "4 cm"
+      ],
+      "correta": 4,
+      "explicacao": "πr²h = 4πr³ ÷ 3, então h = 4r ÷ 3 = 4 cm. Dica de mergulhador: iguale as fórmulas e corte o que se repete.",
+      "comentarios": [
+        "Igualou a altura ao raio.",
+        "Esqueceu de dividir por 3.",
+        "É o diâmetro: com essa altura o cilindro tem mais volume.",
+        "Inverteu a razão 4/3.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q19",
+      "tema": "Comparar sólidos",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Três bolas de tênis de raio 3 cm vêm empilhadas num tubo cilíndrico justo: raio 3 cm e altura 18 cm. Qual é o volume de ar no tubo, fora das bolas? Use π ≈ 3.",
+      "alternativas": [
+        "162 cm³",
+        "324 cm³",
+        "54 cm³",
+        "378 cm³",
+        "486 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "Tubo: 3 × 9 × 18 = 486. Bolas: 3 × 108 = 324. Ar: 162 cm³. Dica de mergulhador: no tubo justo, as bolas ocupam 2/3.",
+      "comentarios": [
+        "",
+        "É o volume das bolas.",
+        "Descontou demais.",
+        "Descontou uma bola só.",
+        "É o volume do tubo."
+      ]
+    },
+    {
+      "id": "mat-esfera-q20",
+      "tema": "Comparar sólidos",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "O que tem mais volume: uma bola de raio 5 cm ou um cubo de aresta 8 cm? Use π ≈ 3.",
+      "alternativas": [
+        "O cubo, com 512 cm³ contra 300 cm³",
+        "Os dois têm o mesmo volume",
+        "O cubo, com 512 cm³ contra 500 cm³",
+        "A bola, com 500 cm³ contra 320 cm³",
+        "A bola, com 1.500 cm³"
+      ],
+      "correta": 2,
+      "explicacao": "Bola: 4 × 3 × 125 ÷ 3 = 500. Cubo: 8³ = 512. Dica de mergulhador: calcule os dois antes de escolher.",
+      "comentarios": [
+        "Usou a área da esfera.",
+        "Há 12 cm³ de diferença.",
+        "",
+        "O volume do cubo é 8³.",
+        "Esqueceu de dividir por 3."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q01",
+      "tema": "Litros e volumes",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Quantos litros cabem num cubo oco de 10 cm de aresta?",
+      "alternativas": [
+        "100 litros",
+        "10 litros",
+        "0,1 litro",
+        "30 litros",
+        "1 litro"
+      ],
+      "correta": 4,
+      "explicacao": "10 × 10 × 10 = 1.000 cm³ = 1 dm³ = 1 L. Dica de mergulhador: o cubo de 10 cm é o litro.",
+      "comentarios": [
+        "Usou só 10 × 10.",
+        "Confundiu cm³ com dL.",
+        "Dividiu por 10.000.",
+        "Somou as arestas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q02",
+      "tema": "Litros e volumes",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Quantos litros há em 2,5 m³?",
+      "alternativas": [
+        "2.500 litros",
+        "25 litros",
+        "2,5 litros",
+        "25.000 litros",
+        "250 litros"
+      ],
+      "correta": 0,
+      "explicacao": "1 m³ = 1.000 L; 2,5 × 1.000 = 2.500 L. Dica de mergulhador: metro cúbico vezes mil.",
+      "comentarios": [
+        "",
+        "Multiplicou por 10.",
+        "Não converteu.",
+        "Multiplicou por 10.000.",
+        "Multiplicou por 100."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q03",
+      "tema": "Litros e volumes",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um aquário tem 50 cm de comprimento, 30 cm de largura e 40 cm de altura. Quantos litros ele comporta?",
+      "alternativas": [
+        "600 litros",
+        "60 litros",
+        "6 litros",
+        "1,5 litro",
+        "120 litros"
+      ],
+      "correta": 1,
+      "explicacao": "50 × 30 × 40 = 60.000 cm³ = 60 L. Dica de mergulhador: cm³ ÷ 1.000 = litros.",
+      "comentarios": [
+        "Dividiu por 100.",
+        "",
+        "Dividiu por 10.000.",
+        "Usou só uma face.",
+        "Multiplicou por 2."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q04",
+      "tema": "Litros e volumes",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma caixa d'água tem 2 m × 1,5 m × 1 m e está cheia. Uma família gasta 500 litros por dia. Para quantos dias a água dá?",
+      "alternativas": [
+        "3 dias",
+        "60 dias",
+        "0,6 dia",
+        "6 dias",
+        "9 dias"
+      ],
+      "correta": 3,
+      "explicacao": "Volume: 3 m³ = 3.000 L. Dias: 3.000 ÷ 500 = 6. Dica de mergulhador: passe para litros antes de dividir.",
+      "comentarios": [
+        "Usou 3 × 500 sem converter m³.",
+        "Errou a conversão para litros.",
+        "Dividiu por 5.000.",
+        "",
+        "Somou as medidas."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q05",
+      "tema": "Litros e volumes",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Choveu 20 mm sobre um telhado de 50 m², e toda a água foi para uma cisterna. Quantos litros a cisterna recebeu?",
+      "alternativas": [
+        "70 litros",
+        "100 litros",
+        "10.000 litros",
+        "1.000 litros",
+        "2,5 litros"
+      ],
+      "correta": 3,
+      "explicacao": "1 mm sobre 1 m² = 1 L. 20 × 50 = 1.000 L. Dica de mergulhador: milímetros de chuva × metros quadrados = litros.",
+      "comentarios": [
+        "Somou chuva e área.",
+        "Errou a conversão de mm.",
+        "Usou 1 mm = 10 L.",
+        "",
+        "Dividiu a área pela chuva."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q06",
+      "tema": "Litros e volumes",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma cisterna cilíndrica tem raio de 1 m e altura de 2 m. Quantos litros ela comporta? Use π ≈ 3.",
+      "alternativas": [
+        "600 litros",
+        "12.000 litros",
+        "2.000 litros",
+        "6.000 litros",
+        "6 litros"
+      ],
+      "correta": 3,
+      "explicacao": "V = 3 × 1 × 2 = 6 m³ = 6.000 L. Dica de mergulhador: cilindro é πr²h, sem ÷ 3.",
+      "comentarios": [
+        "Multiplicou por 100.",
+        "Usou o diâmetro como raio na base.",
+        "Dividiu por 3, como num cone.",
+        "",
+        "Não converteu m³ em litros."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q07",
+      "tema": "Litros e volumes",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um tanque cilíndrico de raio 20 cm e altura 50 cm, cheio de suco, será distribuído em garrafinhas de 250 mL. Quantas garrafinhas ficam cheias? Use π ≈ 3.",
+      "alternativas": [
+        "80",
+        "60",
+        "2.400",
+        "240",
+        "24"
+      ],
+      "correta": 3,
+      "explicacao": "V = 3 × 400 × 50 = 60.000 cm³ = 60 L. Garrafinhas: 60.000 ÷ 250 = 240. Dica de mergulhador: 1 mL = 1 cm³.",
+      "comentarios": [
+        "Dividiu por 3, como num cone.",
+        "Parou nos litros.",
+        "Dividiu por 25.",
+        "",
+        "Errou a conversão."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q08",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma lata de 350 mL custa R$ 3,50. Qual é o preço do litro desse refrigerante?",
+      "alternativas": [
+        "R$ 12,25",
+        "R$ 35,00",
+        "R$ 10,00",
+        "R$ 3,50",
+        "R$ 1,00"
+      ],
+      "correta": 2,
+      "explicacao": "3,50 ÷ 0,35 = R$ 10 por litro. Dica de mergulhador: preço ÷ volume em litros.",
+      "comentarios": [
+        "Multiplicou 3,5 por 3,5.",
+        "Errou a conversão de mL para L.",
+        "",
+        "É o preço da lata.",
+        "Dividiu por 3,5."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q09",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um suco vem em garrafa de 1 L por R$ 6,00 ou de 1,5 L por R$ 8,40. Qual compensa mais?",
+      "alternativas": [
+        "Tanto faz, o litro custa igual",
+        "A de 1 L, com litro a R$ 6,00",
+        "A de 1,5 L, com litro a R$ 5,60",
+        "A de 1 L, que é mais barata",
+        "A de 1,5 L, com litro a R$ 4,20"
+      ],
+      "correta": 2,
+      "explicacao": "8,40 ÷ 1,5 = R$ 5,60 o litro, menos que R$ 6,00. Dica de mergulhador: compare sempre o litro.",
+      "comentarios": [
+        "Os preços por litro são diferentes.",
+        "R$ 6,00 é mais caro que R$ 5,60.",
+        "",
+        "Comparou o preço da embalagem, não do litro.",
+        "Dividiu 8,40 por 2."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q10",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Entre caixas de papelão com o mesmo volume, qual forma gasta menos material?",
+      "alternativas": [
+        "A caixa mais alta e fina",
+        "O cubo",
+        "Todas gastam o mesmo",
+        "A caixa mais achatada",
+        "A caixa com a base mais comprida"
+      ],
+      "correta": 1,
+      "explicacao": "Para o mesmo volume, o cubo tem a menor área total entre os paralelepípedos. Dica de mergulhador: quanto mais compacta, menos papelão.",
+      "comentarios": [
+        "Gasta mais material.",
+        "",
+        "A área muda com a forma.",
+        "Gasta mais material.",
+        "Gasta mais material."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q11",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um detergente vem em frasco de 500 mL por R$ 2,40 ou em galão de 5 L por R$ 22,00. Quanto se economiza por litro comprando o galão?",
+      "alternativas": [
+        "R$ 0,40",
+        "R$ 2,00",
+        "Nada, o galão é mais caro",
+        "R$ 4,40",
+        "R$ 0,80"
+      ],
+      "correta": 0,
+      "explicacao": "Frasco: 2,40 ÷ 0,5 = R$ 4,80/L. Galão: 22 ÷ 5 = R$ 4,40/L. Economia: R$ 0,40. Dica de mergulhador: compare o litro e subtraia.",
+      "comentarios": [
+        "",
+        "Comparou 24 com 22 sem dividir.",
+        "O litro do galão é mais barato.",
+        "É o preço do litro no galão.",
+        "Usou o litro do frasco como R$ 5,20."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q12",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma caixa de 20 cm × 10 cm × 5 cm e um cubo de 10 cm de aresta têm o mesmo volume. Quanto papelão o cubo economiza, considerando as caixas fechadas?",
+      "alternativas": [
+        "50 cm²",
+        "100 cm²",
+        "600 cm²",
+        "700 cm²",
+        "0 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Caixa: 2(200 + 100 + 50) = 700. Cubo: 6 × 100 = 600. Economia: 100 cm². Dica de mergulhador: área total = 2(ab + ac + bc).",
+      "comentarios": [
+        "Contou só metade das faces.",
+        "",
+        "É a área do cubo.",
+        "É a área da caixa.",
+        "Volumes iguais não significam áreas iguais."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q13",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma lata cilíndrica tem raio de 4 cm e altura de 10 cm. Quantos mL ela comporta? Use π ≈ 3.",
+      "alternativas": [
+        "48 mL",
+        "120 mL",
+        "160 mL",
+        "1.920 mL",
+        "480 mL"
+      ],
+      "correta": 4,
+      "explicacao": "V = 3 × 16 × 10 = 480 cm³ = 480 mL. Dica de mergulhador: 1 cm³ = 1 mL.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Usou o raio sem elevar ao quadrado.",
+        "Dividiu por 3, como num cone.",
+        "Usou o diâmetro como raio.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q14",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um fabricante troca uma caixa de 10 cm × 10 cm × 20 cm por um cilindro de mesma altura, com diâmetro de 10 cm. Quantos cm³ a nova embalagem perde? Use π ≈ 3.",
+      "alternativas": [
+        "0 cm³",
+        "1.400 cm³",
+        "2.000 cm³",
+        "1.500 cm³",
+        "500 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "Caixa: 2.000. Cilindro: 3 × 25 × 20 = 1.500. Perda: 500 cm³. Dica de mergulhador: com π ≈ 3, o cilindro justo tem 3/4 da caixa.",
+      "comentarios": [
+        "O cilindro cabe dentro da caixa e é menor.",
+        "Usou o diâmetro como raio.",
+        "É o volume da caixa.",
+        "É o volume do cilindro.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q15",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma piscina de 30.000 L é enchida por uma mangueira de 20 L/min. Quanto tempo leva?",
+      "alternativas": [
+        "25 horas",
+        "600 horas",
+        "15 horas",
+        "1.500 horas",
+        "2,5 horas"
+      ],
+      "correta": 0,
+      "explicacao": "30.000 ÷ 20 = 1.500 min = 25 h. Dica de mergulhador: tempo = volume ÷ vazão.",
+      "comentarios": [
+        "",
+        "Multiplicou em vez de dividir.",
+        "Dividiu por 100.",
+        "Não converteu minutos em horas.",
+        "Errou um zero."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q16",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Duas torneiras, de 10 L/min e 15 L/min, enchem juntas um tanque de 500 L. Quanto tempo leva?",
+      "alternativas": [
+        "50 minutos",
+        "20 minutos",
+        "100 minutos",
+        "12,5 minutos",
+        "33 minutos"
+      ],
+      "correta": 1,
+      "explicacao": "Vazão total: 25 L/min. Tempo: 500 ÷ 25 = 20 min. Dica de mergulhador: torneiras juntas somam as vazões.",
+      "comentarios": [
+        "Usou só a torneira de 10 L/min.",
+        "",
+        "Subtraiu as vazões.",
+        "Somou as vazões duas vezes.",
+        "Usou só a torneira de 15 L/min."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q17",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma caixa de 1.000 L vazia recebe água de uma torneira de 25 L/min, mas o ralo ficou aberto e deixa sair 5 L/min. Em quanto tempo ela enche?",
+      "alternativas": [
+        "50 minutos",
+        "20 minutos",
+        "200 minutos",
+        "33 minutos",
+        "40 minutos"
+      ],
+      "correta": 0,
+      "explicacao": "Vazão efetiva: 25 − 5 = 20 L/min. Tempo: 1.000 ÷ 20 = 50 min. Dica de mergulhador: ralo aberto desconta.",
+      "comentarios": [
+        "",
+        "Respondeu a vazão.",
+        "Usou só o ralo.",
+        "Somou as vazões.",
+        "Ignorou o ralo."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q18",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Água entra com vazão constante num vaso em forma de cone com a ponta para baixo. Como a altura da água muda com o tempo?",
+      "alternativas": [
+        "Não depende da forma do vaso",
+        "Sobe sempre no mesmo ritmo",
+        "Sobe rápido e depois para",
+        "Sobe rápido no início e cada vez mais devagar",
+        "Sobe devagar no início e cada vez mais rápido"
+      ],
+      "correta": 3,
+      "explicacao": "Embaixo o cone é estreito: pouco volume já sobe muito. Em cima, alarga e o nível desacelera. Dica de mergulhador: estreito sobe rápido, largo sobe devagar.",
+      "comentarios": [
+        "A forma decide o ritmo.",
+        "Isso só vale para seção constante.",
+        "A água continua subindo até encher.",
+        "",
+        "O vaso alarga para cima."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q19",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um reservatório de 5 m³ está cheio. Uma bomba retira 250 L/min. Em quanto tempo ele fica com apenas 1/5 da água?",
+      "alternativas": [
+        "25 minutos",
+        "4 minutos",
+        "1,6 minuto",
+        "16 minutos",
+        "20 minutos"
+      ],
+      "correta": 3,
+      "explicacao": "Retirar 4/5 de 5.000 L = 4.000 L. Tempo: 4.000 ÷ 250 = 16 min. Dica de mergulhador: calcule só o que precisa sair.",
+      "comentarios": [
+        "Dividiu 5.000 por 200.",
+        "Calculou só o 1/5 que fica.",
+        "Errou a conversão de m³.",
+        "",
+        "Esvaziou tudo."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q20",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma caixa d'água tem base de 2 m × 2 m. Uma bomba coloca 400 L/min. Quanto o nível sobe em 10 minutos?",
+      "alternativas": [
+        "0,25 m",
+        "4 m",
+        "2 m",
+        "10 cm",
+        "1 m"
+      ],
+      "correta": 4,
+      "explicacao": "Em 10 min: 4.000 L = 4 m³. Subida: 4 ÷ 4 = 1 m. Dica de mergulhador: altura = volume ÷ área da base.",
+      "comentarios": [
+        "Dividiu errado.",
+        "Não dividiu pela área da base.",
+        "Dividiu só por 2.",
+        "Errou a conversão de litros para m³.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q01",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um poliedro convexo tem 6 vértices e 9 arestas. Quantas faces ele tem?",
+      "alternativas": [
+        "5",
+        "7",
+        "4",
+        "3",
+        "15"
+      ],
+      "correta": 0,
+      "explicacao": "V − A + F = 2: 6 − 9 + F = 2, então F = 5. Dica de mergulhador: é o prisma triangular.",
+      "comentarios": [
+        "",
+        "Errou o sinal na relação de Euler.",
+        "Esqueceu o 2 da relação.",
+        "Fez 9 − 6.",
+        "Somou vértices e arestas."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q02",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Qual é o volume de um paralelepípedo de 5 cm × 4 cm × 3 cm?",
+      "alternativas": [
+        "20 cm³",
+        "60 cm³",
+        "94 cm³",
+        "30 cm³",
+        "12 cm³"
+      ],
+      "correta": 1,
+      "explicacao": "5 × 4 × 3 = 60 cm³. Dica de mergulhador: volume é o produto das três dimensões.",
+      "comentarios": [
+        "Multiplicou só duas medidas.",
+        "",
+        "É a área total.",
+        "Dividiu por 2.",
+        "Somou as medidas."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q03",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Qual é a área total de um cubo de aresta 3 cm?",
+      "alternativas": [
+        "18 cm²",
+        "36 cm²",
+        "9 cm²",
+        "27 cm²",
+        "54 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "6 faces de 9 cm²: 54 cm². Dica de mergulhador: cubo tem 6 faces iguais.",
+      "comentarios": [
+        "Multiplicou a aresta por 6.",
+        "Contou só 4 faces.",
+        "É uma face só.",
+        "É o volume.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q04",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma pirâmide tem área da base de 30 cm² e altura de 10 cm. Qual é o seu volume?",
+      "alternativas": [
+        "300 cm³",
+        "40 cm³",
+        "150 cm³",
+        "100 cm³",
+        "3 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "30 × 10 ÷ 3 = 100 cm³. Dica de mergulhador: pirâmide, um terço.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "Somou.",
+        "Dividiu por 2.",
+        "",
+        "Dividiu a base pela altura."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q05",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Quantos litros há em 4.500 cm³?",
+      "alternativas": [
+        "4.500 litros",
+        "45 litros",
+        "450 litros",
+        "4,5 litros",
+        "0,45 litro"
+      ],
+      "correta": 3,
+      "explicacao": "4.500 ÷ 1.000 = 4,5 L. Dica de mergulhador: 1.000 cm³ = 1 L.",
+      "comentarios": [
+        "Não converteu.",
+        "Dividiu por 100.",
+        "Dividiu por 10.",
+        "",
+        "Dividiu por 10.000."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q06",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Qual é a vista de cima de uma lata cilíndrica em pé?",
+      "alternativas": [
+        "Um retângulo",
+        "Um quadrado",
+        "Um trapézio",
+        "Um círculo",
+        "Um triângulo"
+      ],
+      "correta": 3,
+      "explicacao": "De cima, vê-se a tampa redonda. Dica de mergulhador: vista de cima é a sombra com sol a pino.",
+      "comentarios": [
+        "É a vista de frente.",
+        "É a vista do cubo.",
+        "Seria de um balde visto de frente.",
+        "",
+        "É a vista de frente do cone."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q07",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um cilindro tem raio de 2 cm e altura de 5 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "240 cm³",
+        "120 cm³",
+        "30 cm³",
+        "60 cm³",
+        "20 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "V = 3 × 4 × 5 = 60 cm³. Dica de mergulhador: cilindro é πr²h.",
+      "comentarios": [
+        "Usou o diâmetro como raio.",
+        "Multiplicou por 2.",
+        "Usou o raio sem elevar ao quadrado.",
+        "",
+        "Dividiu por 3, como num cone."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q08",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um cone tem raio de 4 cm e altura de 6 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "288 cm³",
+        "384 cm³",
+        "24 cm³",
+        "48 cm³",
+        "96 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "V = 3 × 16 × 6 ÷ 3 = 96 cm³. Dica de mergulhador: cone é cilindro ÷ 3.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "Usou o diâmetro como raio.",
+        "Usou o raio sem elevar ao quadrado.",
+        "Dividiu por 6.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q09",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma esfera tem raio de 4 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "256 cm³",
+        "192 cm³",
+        "768 cm³",
+        "64 cm³",
+        "128 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "V = 4 × 3 × 64 ÷ 3 = 256 cm³. Dica de mergulhador: com π ≈ 3, V ≈ 4r³.",
+      "comentarios": [
+        "",
+        "É a área da superfície.",
+        "Esqueceu de dividir por 3.",
+        "Calculou só r³.",
+        "Dividiu por 2."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q10",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma escultura maciça de 5 kg é ampliada com razão 2, no mesmo material. Qual é a massa da ampliação?",
+      "alternativas": [
+        "10 kg",
+        "80 kg",
+        "40 kg",
+        "15 kg",
+        "20 kg"
+      ],
+      "correta": 2,
+      "explicacao": "A massa acompanha o volume: 2³ = 8; 5 × 8 = 40 kg. Dica de mergulhador: volume e massa vão ao cubo.",
+      "comentarios": [
+        "Usou a razão direto.",
+        "Elevou à quarta.",
+        "",
+        "Somou.",
+        "Usou a razão ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q11",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Ao colocar uma pedra num aquário de base 40 cm × 25 cm, a água sobe 2 cm. Qual é o volume da pedra?",
+      "alternativas": [
+        "1 litro",
+        "20 litros",
+        "2 litros",
+        "67 litros",
+        "0,2 litro"
+      ],
+      "correta": 2,
+      "explicacao": "40 × 25 × 2 = 2.000 cm³ = 2 L. Dica de mergulhador: volume da pedra = base × subida.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Errou a conversão.",
+        "",
+        "Somou as medidas.",
+        "Dividiu por 10.000."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q12",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma caixa sem tampa tem 30 cm × 20 cm de base e 10 cm de altura. Quanto papelão ela usa?",
+      "alternativas": [
+        "2.200 cm²",
+        "6.000 cm²",
+        "1.600 cm²",
+        "1.000 cm²",
+        "800 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Base: 600. Laterais: 2 × 300 + 2 × 200 = 1.000. Total: 1.600 cm². Dica de mergulhador: sem tampa, uma face a menos.",
+      "comentarios": [
+        "Contou a tampa.",
+        "É o volume.",
+        "",
+        "Esqueceu a base.",
+        "Contou só metade das laterais."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q13",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um refrigerante vem em garrafa de 1,5 L por R$ 6,00 ou em lata de 600 mL por R$ 3,00. Qual compensa mais?",
+      "alternativas": [
+        "A lata, com litro a R$ 3,00",
+        "Tanto faz",
+        "A lata, que é mais barata",
+        "A garrafa, com litro a R$ 6,00",
+        "A garrafa, com litro a R$ 4,00"
+      ],
+      "correta": 4,
+      "explicacao": "Garrafa: 6 ÷ 1,5 = R$ 4/L. Lata: 3 ÷ 0,6 = R$ 5/L. Dica de mergulhador: preço do litro decide.",
+      "comentarios": [
+        "O litro da lata custa R$ 5,00.",
+        "Os preços por litro são diferentes.",
+        "Comparou o preço da embalagem.",
+        "Esqueceu de dividir por 1,5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q14",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma piscina tem 8 m × 4 m × 1,5 m. Uma mangueira coloca 1.000 L por hora. Quanto tempo leva para enchê-la?",
+      "alternativas": [
+        "4,8 horas",
+        "32 horas",
+        "48 horas",
+        "13,5 horas",
+        "480 horas"
+      ],
+      "correta": 2,
+      "explicacao": "8 × 4 × 1,5 = 48 m³ = 48.000 L. Tempo: 48 h. Dica de mergulhador: m³ × 1.000 = litros.",
+      "comentarios": [
+        "Errou a conversão de m³.",
+        "Esqueceu a profundidade.",
+        "",
+        "Somou as medidas.",
+        "Multiplicou por 10."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q15",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um cone tem raio de 9 cm e altura de 12 cm. Qual é a geratriz?",
+      "alternativas": [
+        "225 cm",
+        "21 cm",
+        "15 cm",
+        "3 cm",
+        "10,5 cm"
+      ],
+      "correta": 2,
+      "explicacao": "g² = 144 + 81 = 225, g = 15 cm. Dica de mergulhador: é o 3, 4, 5 multiplicado por 3.",
+      "comentarios": [
+        "Não tirou a raiz.",
+        "Somou raio e altura.",
+        "",
+        "Subtraiu.",
+        "Fez a média."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q16",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um copo cônico, com a ponta para baixo, tem capacidade de 270 mL. Ele é enchido até 1/3 da sua altura. Quantos mL há no copo?",
+      "alternativas": [
+        "90 mL",
+        "30 mL",
+        "45 mL",
+        "260 mL",
+        "10 mL"
+      ],
+      "correta": 4,
+      "explicacao": "A água forma um cone semelhante de razão 1/3: (1/3)³ = 1/27; 270 ÷ 27 = 10 mL. Dica de mergulhador: volume ao cubo da razão.",
+      "comentarios": [
+        "A capacidade não acompanha a altura de forma direta.",
+        "Usou o fator ao quadrado.",
+        "Dividiu por 6.",
+        "É o que falta.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q17",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Seis latas de raio 3 cm e altura 10 cm vão numa caixa de 18 cm × 12 cm × 10 cm, em duas fileiras de três. Qual é o volume vazio da caixa? Use π ≈ 3.",
+      "alternativas": [
+        "1.620 cm³",
+        "0 cm³",
+        "540 cm³",
+        "1.890 cm³",
+        "2.160 cm³"
+      ],
+      "correta": 2,
+      "explicacao": "Caixa: 2.160. Latas: 6 × 3 × 9 × 10 = 1.620. Vazio: 540 cm³. Dica de mergulhador: caixa menos as latas.",
+      "comentarios": [
+        "É o volume das latas.",
+        "Latas redondas deixam frestas.",
+        "",
+        "Descontou uma lata só.",
+        "É o volume da caixa."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q18",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um tanque cilíndrico de raio 1 m e altura 3 m está cheio até a metade. Uma bomba retira 300 L/min. Em quanto tempo ele esvazia? Use π ≈ 3.",
+      "alternativas": [
+        "5 minutos",
+        "4,5 minutos",
+        "15 minutos",
+        "30 minutos",
+        "1,5 minuto"
+      ],
+      "correta": 2,
+      "explicacao": "Volume total: 3 × 1 × 3 = 9 m³. Metade: 4,5 m³ = 4.500 L. Tempo: 4.500 ÷ 300 = 15 min. Dica de mergulhador: calcule só a água que existe.",
+      "comentarios": [
+        "Dividiu por 3, como num cone.",
+        "Errou a conversão de m³.",
+        "",
+        "Usou o tanque cheio.",
+        "Dividiu errado."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q19",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um bloco cúbico de cera de 6 cm de aresta é derretido para fazer velas cônicas de raio 3 cm e altura 4 cm. Quantas velas saem, sem perda? Use π ≈ 3.",
+      "alternativas": [
+        "54",
+        "2",
+        "3",
+        "18",
+        "6"
+      ],
+      "correta": 4,
+      "explicacao": "Cubo: 216 cm³. Vela: 3 × 9 × 4 ÷ 3 = 36 cm³. Velas: 216 ÷ 36 = 6. Dica de mergulhador: volume total ÷ volume de cada peça.",
+      "comentarios": [
+        "Usou a área do cubo.",
+        "Esqueceu de dividir o cone por 3.",
+        "Usou o cubo de aresta 3.",
+        "Dividiu pelo volume da base.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q20",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um silo é um cilindro de raio 3 m e altura 10 m com um cone de raio 3 m e altura 2 m em cima. Qual é a sua capacidade? Use π ≈ 3.",
+      "alternativas": [
+        "288 m³",
+        "18 m³",
+        "324 m³",
+        "96 m³",
+        "270 m³"
+      ],
+      "correta": 0,
+      "explicacao": "Cilindro: 3 × 9 × 10 = 270. Cone: 3 × 9 × 2 ÷ 3 = 18. Total: 288 m³. Dica de mergulhador: some as partes, cada uma com a sua fórmula.",
+      "comentarios": [
+        "",
+        "Contou só o cone.",
+        "Esqueceu de dividir o cone por 3.",
+        "Dividiu tudo por 3.",
+        "Contou só o cilindro."
       ]
     }
   ],
@@ -55566,6 +57834,1926 @@
         "Usou π ÷ 10.",
         "Usou um quarto."
       ]
+    },
+    {
+      "id": "mat-piramides-cones-q01-v1",
+      "varianteDe": "mat-piramides-cones-q01",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide de base quadrada tem 9 cm de lado e 4 cm de altura. Qual é o seu volume?",
+      "alternativas": [
+        "324 cm³",
+        "36 cm³",
+        "54 cm³",
+        "162 cm³",
+        "108 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "Base: 81 cm². Volume: 81 × 4 ÷ 3 = 108 cm³. Dica de mergulhador: área da base × altura ÷ 3.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "Multiplicou o lado pela altura.",
+        "Dividiu por 6.",
+        "Dividiu por 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q02-v1",
+      "varianteDe": "mat-piramides-cones-q02",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um prisma e uma pirâmide têm a mesma base e a mesma altura. A pirâmide tem volume de 50 cm³. Qual é o volume do prisma?",
+      "alternativas": [
+        "50 cm³",
+        "16,7 cm³",
+        "150 cm³",
+        "25 cm³",
+        "100 cm³"
+      ],
+      "correta": 2,
+      "explicacao": "O prisma tem o triplo da pirâmide: 50 × 3 = 150 cm³. Dica de mergulhador: o caminho de volta é vezes 3.",
+      "comentarios": [
+        "Os volumes não são iguais.",
+        "Dividiu em vez de multiplicar.",
+        "",
+        "Dividiu por 2.",
+        "Multiplicou por 2."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q03-v1",
+      "varianteDe": "mat-piramides-cones-q03",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Quantas pirâmides cheias de areia são necessárias para encher um prisma de mesma base e mesma altura?",
+      "alternativas": [
+        "6",
+        "3",
+        "4",
+        "2",
+        "1"
+      ],
+      "correta": 1,
+      "explicacao": "Cada pirâmide tem um terço do volume do prisma, então são 3. Dica de mergulhador: três pontas enchem uma caixa.",
+      "comentarios": [
+        "Confundiu com o número de faces.",
+        "",
+        "Exagerou.",
+        "A pirâmide é um terço, não metade.",
+        "Os volumes são diferentes."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q04-v1",
+      "varianteDe": "mat-piramides-cones-q04",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide tem base retangular de 12 m por 4 m e altura de 9 m. Qual é o seu volume?",
+      "alternativas": [
+        "144 m³",
+        "75 m³",
+        "48 m³",
+        "216 m³",
+        "432 m³"
+      ],
+      "correta": 0,
+      "explicacao": "Base: 48 m². Volume: 48 × 9 ÷ 3 = 144 m³. Dica de mergulhador: primeiro a base, depois a altura, por fim ÷ 3.",
+      "comentarios": [
+        "",
+        "Somou as medidas e multiplicou por 3.",
+        "É a área da base.",
+        "Dividiu por 2.",
+        "Esqueceu de dividir por 3."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q05-v1",
+      "varianteDe": "mat-piramides-cones-q05",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide tem como base um triângulo retângulo de catetos 3 cm e 4 cm, e altura de 15 cm. Qual é o seu volume?",
+      "alternativas": [
+        "180 cm³",
+        "90 cm³",
+        "30 cm³",
+        "25 cm³",
+        "60 cm³"
+      ],
+      "correta": 2,
+      "explicacao": "Base: 3 × 4 ÷ 2 = 6 cm². Volume: 6 × 15 ÷ 3 = 30 cm³. Dica de mergulhador: triângulo ÷ 2, pirâmide ÷ 3.",
+      "comentarios": [
+        "Não dividiu nem por 2 nem por 3.",
+        "Esqueceu de dividir por 3.",
+        "",
+        "Usou a hipotenusa 5 no lugar da área.",
+        "Não dividiu a base por 2."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q06-v1",
+      "varianteDe": "mat-piramides-cones-q06",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um enfeite maciço de resina tem forma de pirâmide de base quadrada, com 6 cm de lado e 5 cm de altura. Cada cm³ da resina tem massa de 3 g. Qual é a massa do enfeite?",
+      "alternativas": [
+        "180 g",
+        "90 g",
+        "60 g",
+        "540 g",
+        "30 g"
+      ],
+      "correta": 0,
+      "explicacao": "Volume: 36 × 5 ÷ 3 = 60 cm³. Massa: 60 × 3 = 180 g. Dica de mergulhador: ache o volume e multiplique pela massa de cada cm³.",
+      "comentarios": [
+        "",
+        "Dividiu por 2.",
+        "Parou no volume.",
+        "Esqueceu de dividir o volume por 3.",
+        "Usou 6 × 5 ÷ 3 × 3."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q07-v1",
+      "varianteDe": "mat-piramides-cones-q07",
+      "tema": "Volume da pirâmide",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide é cortada por um plano paralelo à base, a 1/3 da altura contada a partir do vértice. Que fração do volume total fica na pirâmide pequena do topo?",
+      "alternativas": [
+        "1/3",
+        "1/9",
+        "26/27",
+        "1/27",
+        "1/6"
+      ],
+      "correta": 3,
+      "explicacao": "Razão de semelhança 1/3; volume: (1/3)³ = 1/27. Dica de mergulhador: volume vai ao cubo da razão.",
+      "comentarios": [
+        "O volume não segue a altura de forma direta.",
+        "Usou o fator ao quadrado.",
+        "É a fração do tronco.",
+        "",
+        "Multiplicou 1/3 por 1/2."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q08-v1",
+      "varianteDe": "mat-piramides-cones-q08",
+      "tema": "Volume do cone",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um cone tem raio da base de 2 cm e altura de 9 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "108 cm³",
+        "18 cm³",
+        "36 cm³",
+        "12 cm³",
+        "72 cm³"
+      ],
+      "correta": 2,
+      "explicacao": "V = 3 × 4 × 9 ÷ 3 = 36 cm³. Dica de mergulhador: πr²h ÷ 3.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "Usou o raio sem elevar ao quadrado.",
+        "",
+        "Dividiu por 9.",
+        "Dividiu só por 1,5."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q09-v1",
+      "varianteDe": "mat-piramides-cones-q09",
+      "tema": "Volume do cone",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um cone e um cilindro têm a mesma base e a mesma altura. O cilindro tem 1,2 L. Qual é a capacidade do cone?",
+      "alternativas": [
+        "3,6 L",
+        "1,2 L",
+        "0,4 L",
+        "0,6 L",
+        "0,8 L"
+      ],
+      "correta": 2,
+      "explicacao": "1,2 ÷ 3 = 0,4 L. Dica de mergulhador: cilindro ÷ 3.",
+      "comentarios": [
+        "Multiplicou por 3.",
+        "Os volumes não são iguais.",
+        "",
+        "Dividiu por 2.",
+        "Tirou um terço em vez de ficar com ele."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q10-v1",
+      "varianteDe": "mat-piramides-cones-q10",
+      "tema": "Volume do cone",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um funil pequeno tem forma de cone, com raio de 2 cm e altura de 15 cm. Quanto líquido cabe nele com a ponta tampada? Use π ≈ 3.",
+      "alternativas": [
+        "30 cm³",
+        "60 cm³",
+        "90 cm³",
+        "180 cm³",
+        "240 cm³"
+      ],
+      "correta": 1,
+      "explicacao": "V = 3 × 4 × 15 ÷ 3 = 60 cm³. Dica de mergulhador: funil e casquinha são cones.",
+      "comentarios": [
+        "Usou o raio sem elevar ao quadrado.",
+        "",
+        "Dividiu por 2.",
+        "Esqueceu de dividir por 3.",
+        "Usou o diâmetro como raio."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q11-v1",
+      "varianteDe": "mat-piramides-cones-q11",
+      "tema": "Volume do cone",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um funil cônico tem raio de 6 cm e altura de 25 cm. Com a saída tampada, quantos litros ele comporta? Use π ≈ 3.",
+      "alternativas": [
+        "3,6 L",
+        "2,7 L",
+        "0,9 L",
+        "0,15 L",
+        "9 L"
+      ],
+      "correta": 2,
+      "explicacao": "V = 3 × 36 × 25 ÷ 3 = 900 cm³ = 0,9 L. Dica de mergulhador: divida por 1.000 para chegar aos litros.",
+      "comentarios": [
+        "Usou o diâmetro como raio.",
+        "Esqueceu de dividir por 3.",
+        "",
+        "Usou o raio sem elevar ao quadrado.",
+        "Errou a conversão de cm³ para litros."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q12-v1",
+      "varianteDe": "mat-piramides-cones-q12",
+      "tema": "Volume do cone",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um monte de brita tem forma de cone, com raio de 4 m e altura de 1,5 m. Um caminhão leva 5 m³ por viagem. Quantas viagens são necessárias para levar o monte todo? Use π ≈ 3.",
+      "alternativas": [
+        "24",
+        "2",
+        "4",
+        "15",
+        "5"
+      ],
+      "correta": 4,
+      "explicacao": "V = 3 × 16 × 1,5 ÷ 3 = 24 m³. 24 ÷ 5 = 4,8, então 5 viagens. Dica de mergulhador: se sobra carga, a viagem extra é obrigatória.",
+      "comentarios": [
+        "Respondeu o volume em m³.",
+        "Usou o raio sem elevar ao quadrado.",
+        "Arredondou para baixo e deixou brita para trás.",
+        "Esqueceu de dividir o volume por 3.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q13-v1",
+      "varianteDe": "mat-piramides-cones-q13",
+      "tema": "Volume do cone",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Dois cones têm a mesma altura, mas o raio do segundo é o triplo do raio do primeiro. Quantas vezes o volume do segundo é maior?",
+      "alternativas": [
+        "6 vezes",
+        "1 vez",
+        "9 vezes",
+        "27 vezes",
+        "3 vezes"
+      ],
+      "correta": 2,
+      "explicacao": "3² = 9. Dica de mergulhador: raio triplo, base nove vezes maior.",
+      "comentarios": [
+        "Multiplicou por 2.",
+        "O volume muda com o raio.",
+        "",
+        "Só a base mudou, não a altura.",
+        "O raio entra ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q14-v1",
+      "varianteDe": "mat-piramides-cones-q14",
+      "tema": "Volume do cone",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um copo cônico, com a ponta para baixo, tem 9 cm de altura e capacidade de 270 mL. Ele é enchido até 6 cm de altura. Quantos mL de água há no copo?",
+      "alternativas": [
+        "190 mL",
+        "120 mL",
+        "80 mL",
+        "90 mL",
+        "180 mL"
+      ],
+      "correta": 2,
+      "explicacao": "Razão 6/9 = 2/3; (2/3)³ = 8/27; 270 × 8 ÷ 27 = 80 mL. Dica de mergulhador: eleve a razão das alturas ao cubo.",
+      "comentarios": [
+        "É o que falta para encher.",
+        "Usou o fator ao quadrado.",
+        "",
+        "Dividiu por 3.",
+        "A capacidade não segue a altura de forma direta."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q15-v1",
+      "varianteDe": "mat-piramides-cones-q15",
+      "tema": "Volume do cone",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um balde tem forma de tronco de cone. Ele foi obtido de um cone de raio 6 dm e altura 9 dm, do qual se tirou a ponta: um cone de raio 2 dm e altura 3 dm. Qual é o volume do balde? Use π ≈ 3.",
+      "alternativas": [
+        "162 dm³",
+        "336 dm³",
+        "12 dm³",
+        "312 dm³",
+        "324 dm³"
+      ],
+      "correta": 3,
+      "explicacao": "Grande: 3 × 36 × 9 ÷ 3 = 324. Ponta: 3 × 4 × 3 ÷ 3 = 12. Balde: 324 − 12 = 312 dm³. Dica de mergulhador: grande menos pequeno.",
+      "comentarios": [
+        "Dividiu o cone inteiro por 2.",
+        "Somou a ponta em vez de subtrair.",
+        "É a ponta retirada.",
+        "",
+        "É o cone inteiro."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q16-v1",
+      "varianteDe": "mat-piramides-cones-q16",
+      "tema": "Geratriz e área",
+      "dificuldade": "facil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um cone reto tem raio de 5 cm e altura de 12 cm. Qual é a medida da geratriz?",
+      "alternativas": [
+        "169 cm",
+        "13 cm",
+        "7 cm",
+        "8,5 cm",
+        "17 cm"
+      ],
+      "correta": 1,
+      "explicacao": "g² = 144 + 25 = 169, então g = 13 cm. Dica de mergulhador: o terno 5, 12, 13 aparece muito.",
+      "comentarios": [
+        "Parou em g² sem tirar a raiz.",
+        "",
+        "Subtraiu.",
+        "Fez a média.",
+        "Somou raio e altura."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q17-v1",
+      "varianteDe": "mat-piramides-cones-q17",
+      "tema": "Geratriz e área",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um cone tem raio de 4 cm e geratriz de 10 cm. Qual é a sua área lateral? Use π ≈ 3.",
+      "alternativas": [
+        "48 cm²",
+        "168 cm²",
+        "120 cm²",
+        "240 cm²",
+        "300 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "π × r × g = 3 × 4 × 10 = 120 cm². Dica de mergulhador: a base fica de fora da área lateral.",
+      "comentarios": [
+        "É a área da base.",
+        "É a área total.",
+        "",
+        "Multiplicou por 2.",
+        "Usou a geratriz como raio da base."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q18-v1",
+      "varianteDe": "mat-piramides-cones-q18",
+      "tema": "Geratriz e área",
+      "dificuldade": "medio",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide de base quadrada tem lado da base de 6 cm, e cada face lateral tem altura (apótema) de 5 cm. Qual é a área lateral da pirâmide?",
+      "alternativas": [
+        "15 cm²",
+        "60 cm²",
+        "30 cm²",
+        "96 cm²",
+        "120 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Cada face: 6 × 5 ÷ 2 = 15. Quatro faces: 60 cm². Dica de mergulhador: um triângulo por lado da base.",
+      "comentarios": [
+        "É a área de uma face só.",
+        "",
+        "Contou só duas faces.",
+        "Somou a base.",
+        "Não dividiu os triângulos por 2."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q19-v1",
+      "varianteDe": "mat-piramides-cones-q19",
+      "tema": "Geratriz e área",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Uma pirâmide de base quadrada tem lado de 10 cm e altura de 12 cm. Qual é a sua área total?",
+      "alternativas": [
+        "360 cm²",
+        "620 cm²",
+        "340 cm²",
+        "260 cm²",
+        "100 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Apótema: √(144 + 25) = 13. Lateral: 4 × 10 × 13 ÷ 2 = 260. Base: 100. Total: 360 cm². Dica de mergulhador: use metade do lado no Pitágoras.",
+      "comentarios": [
+        "",
+        "Não dividiu os triângulos por 2.",
+        "Usou a altura 12 como apótema.",
+        "É só a área lateral.",
+        "É só a base."
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-q20-v1",
+      "varianteDe": "mat-piramides-cones-q20",
+      "tema": "Geratriz e área",
+      "dificuldade": "dificil",
+      "fase": "mat-piramides-cones",
+      "enunciado": "Um copinho de papel é um cone sem tampa, com raio de 5 cm e altura de 12 cm. Quanto papel ele usa? Use π ≈ 3.",
+      "alternativas": [
+        "390 cm²",
+        "180 cm²",
+        "195 cm²",
+        "75 cm²",
+        "270 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Geratriz: √(144 + 25) = 13. Lateral: 3 × 5 × 13 = 195 cm². Dica de mergulhador: sem base, só π r g.",
+      "comentarios": [
+        "Multiplicou por 2.",
+        "Usou a altura no lugar da geratriz.",
+        "",
+        "É a área do círculo da boca.",
+        "Somou a boca, que fica aberta."
+      ]
+    },
+    {
+      "id": "mat-esfera-q01-v1",
+      "varianteDe": "mat-esfera-q01",
+      "tema": "Volume da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Uma esfera tem raio de 2 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "8 cm³",
+        "24 cm³",
+        "16 cm³",
+        "32 cm³",
+        "96 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "V = 4 × 3 × 8 ÷ 3 = 32 cm³. Dica de mergulhador: 4 vezes o raio ao cubo.",
+      "comentarios": [
+        "Calculou só r³.",
+        "Esqueceu o 4 e o ÷ 3.",
+        "Usou r² no lugar de r³.",
+        "",
+        "Esqueceu de dividir por 3."
+      ]
+    },
+    {
+      "id": "mat-esfera-q02-v1",
+      "varianteDe": "mat-esfera-q02",
+      "tema": "Volume da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Se o raio de uma esfera triplica, o que acontece com o volume?",
+      "alternativas": [
+        "Fica 27 vezes maior",
+        "Fica 6 vezes maior",
+        "Fica 9 vezes maior",
+        "Fica 81 vezes maior",
+        "Triplica"
+      ],
+      "correta": 0,
+      "explicacao": "3³ = 27. Dica de mergulhador: triplo do raio, 27 vezes o volume.",
+      "comentarios": [
+        "",
+        "Multiplicou 3 por 2.",
+        "Isso acontece com a área.",
+        "Elevou à quarta.",
+        "O raio entra ao cubo."
+      ]
+    },
+    {
+      "id": "mat-esfera-q03-v1",
+      "varianteDe": "mat-esfera-q03",
+      "tema": "Volume da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Uma tigela tem forma de meia esfera, com raio de 3 cm. Quantos cm³ cabem nela? Use π ≈ 3.",
+      "alternativas": [
+        "108 cm³",
+        "27 cm³",
+        "54 cm³",
+        "162 cm³",
+        "18 cm³"
+      ],
+      "correta": 2,
+      "explicacao": "Esfera: 108. Metade: 54 cm³. Dica de mergulhador: calcule a esfera e divida por 2.",
+      "comentarios": [
+        "É a esfera inteira.",
+        "Calculou só r³.",
+        "",
+        "Esqueceu de dividir por 3.",
+        "Usou r² no lugar de r³."
+      ]
+    },
+    {
+      "id": "mat-esfera-q04-v1",
+      "varianteDe": "mat-esfera-q04",
+      "tema": "Volume da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma bola tem raio de 5 cm. Quantos litros de ar cabem nela, aproximadamente? Use π ≈ 3.",
+      "alternativas": [
+        "5 litros",
+        "0,5 litro",
+        "1,5 litro",
+        "4 litros",
+        "0,3 litro"
+      ],
+      "correta": 1,
+      "explicacao": "V = 4 × 3 × 125 ÷ 3 = 500 cm³ = 0,5 L. Dica de mergulhador: divida os cm³ por 1.000.",
+      "comentarios": [
+        "Errou a conversão para litros.",
+        "",
+        "Esqueceu de dividir por 3.",
+        "Usou raio 10.",
+        "Usou r² no lugar de r³."
+      ]
+    },
+    {
+      "id": "mat-esfera-q05-v1",
+      "varianteDe": "mat-esfera-q05",
+      "tema": "Volume da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Um reservatório esférico tem raio de 3 m. Quantos litros ele comporta? Use π ≈ 3.",
+      "alternativas": [
+        "108.000 litros",
+        "108 litros",
+        "10.800 litros",
+        "36.000 litros",
+        "324.000 litros"
+      ],
+      "correta": 0,
+      "explicacao": "V = 4 × 3 × 27 ÷ 3 = 108 m³ = 108.000 L. Dica de mergulhador: m³ vezes 1.000 dá litros.",
+      "comentarios": [
+        "",
+        "Não converteu m³ em litros.",
+        "Multiplicou por 100.",
+        "Usou r² no lugar de r³.",
+        "Esqueceu de dividir por 3."
+      ]
+    },
+    {
+      "id": "mat-esfera-q06-v1",
+      "varianteDe": "mat-esfera-q06",
+      "tema": "Volume da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma esfera de cera de raio 6 cm é derretida para fazer bolinhas de raio 2 cm. Quantas bolinhas saem, sem perda?",
+      "alternativas": [
+        "3",
+        "27",
+        "54",
+        "9",
+        "864"
+      ],
+      "correta": 1,
+      "explicacao": "Razão dos raios: 6 ÷ 2 = 3; dos volumes: 3³ = 27. Dica de mergulhador: compare os raios e eleve ao cubo.",
+      "comentarios": [
+        "Dividiu os raios.",
+        "",
+        "Multiplicou 27 por 2.",
+        "Usou a razão ao quadrado.",
+        "Respondeu o volume da esfera grande."
+      ]
+    },
+    {
+      "id": "mat-esfera-q07-v1",
+      "varianteDe": "mat-esfera-q07",
+      "tema": "Volume da esfera",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Um sorvete é uma casquinha cônica de raio 2 cm e altura 9 cm, cheia, com meia bola de sorvete de raio 2 cm por cima. Qual é o volume total de sorvete? Use π ≈ 3.",
+      "alternativas": [
+        "68 cm³",
+        "36 cm³",
+        "124 cm³",
+        "52 cm³",
+        "16 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "Cone: 3 × 4 × 9 ÷ 3 = 36. Meia bola: 32 ÷ 2 = 16. Total: 52 cm³. Dica de mergulhador: cone mais meia esfera.",
+      "comentarios": [
+        "Usou a bola inteira por cima.",
+        "Contou só o cone.",
+        "Esqueceu de dividir o cone por 3.",
+        "",
+        "Contou só a meia bola."
+      ]
+    },
+    {
+      "id": "mat-esfera-q08-v1",
+      "varianteDe": "mat-esfera-q08",
+      "tema": "Volume da esfera",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Um aquário tem base retangular de 24 cm por 9 cm. Quatro bolinhas maciças de raio 3 cm são colocadas no fundo e ficam cobertas. Quanto o nível da água sobe? Use π ≈ 3.",
+      "alternativas": [
+        "1 cm",
+        "6 cm",
+        "0,5 cm",
+        "6,5 cm",
+        "2 cm"
+      ],
+      "correta": 4,
+      "explicacao": "Cada bolinha: 108 cm³; quatro: 432 cm³. Base: 216 cm². Subida: 432 ÷ 216 = 2 cm. Dica de mergulhador: some os volumes antes de dividir.",
+      "comentarios": [
+        "Dividiu pelo dobro da base.",
+        "Usou o diâmetro como subida.",
+        "Contou uma bolinha só.",
+        "Esqueceu de dividir o volume por 3.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q09-v1",
+      "varianteDe": "mat-esfera-q09",
+      "tema": "Área da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Uma esfera tem raio de 2 cm. Qual é a área da sua superfície? Use π ≈ 3.",
+      "alternativas": [
+        "96 cm²",
+        "12 cm²",
+        "48 cm²",
+        "32 cm²",
+        "24 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "A = 4 × 3 × 4 = 48 cm². Dica de mergulhador: 4πr².",
+      "comentarios": [
+        "Multiplicou por 8.",
+        "É a área de um círculo máximo.",
+        "",
+        "É o volume.",
+        "Usou 2πr²."
+      ]
+    },
+    {
+      "id": "mat-esfera-q10-v1",
+      "varianteDe": "mat-esfera-q10",
+      "tema": "Área da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "A parte curva de uma tigela em forma de meia esfera equivale à área de quantos círculos máximos?",
+      "alternativas": [
+        "2",
+        "4",
+        "1",
+        "3",
+        "8"
+      ],
+      "correta": 0,
+      "explicacao": "Meia esfera: metade de 4πr² = 2πr². Dica de mergulhador: casca inteira 4, meia casca 2.",
+      "comentarios": [
+        "",
+        "É a esfera inteira.",
+        "É só a boca da tigela.",
+        "Somou a tampa.",
+        "Confundiu com o fator do volume."
+      ]
+    },
+    {
+      "id": "mat-esfera-q11-v1",
+      "varianteDe": "mat-esfera-q11",
+      "tema": "Área da esfera",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Se o raio de um globo triplica, o que acontece com a quantidade de tinta para pintá-lo?",
+      "alternativas": [
+        "Fica 6 vezes maior",
+        "Triplica",
+        "Não muda",
+        "Fica 9 vezes maior",
+        "Fica 27 vezes maior"
+      ],
+      "correta": 3,
+      "explicacao": "3² = 9. Dica de mergulhador: tinta é área, área é r².",
+      "comentarios": [
+        "Multiplicou por 2.",
+        "A área depende do quadrado do raio.",
+        "A tinta cobre a superfície.",
+        "",
+        "Isso acontece com o volume."
+      ]
+    },
+    {
+      "id": "mat-esfera-q12-v1",
+      "varianteDe": "mat-esfera-q12",
+      "tema": "Área da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma bola de borracha tem raio de 15 cm. Quanta borracha reveste a bola? Use π ≈ 3.",
+      "alternativas": [
+        "13.500 cm²",
+        "1.350 cm²",
+        "180 cm²",
+        "2.700 cm²",
+        "675 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "A = 4 × 3 × 225 = 2.700 cm². Dica de mergulhador: eleve o raio ao quadrado antes.",
+      "comentarios": [
+        "É o volume.",
+        "Usou 2πr².",
+        "Usou 4πr.",
+        "",
+        "É um círculo máximo."
+      ]
+    },
+    {
+      "id": "mat-esfera-q13-v1",
+      "varianteDe": "mat-esfera-q13",
+      "tema": "Área da esfera",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Um enfeite tem forma de meia esfera maciça, com raio de 5 cm. Qual é a área total da sua superfície, contando a base plana? Use π ≈ 3.",
+      "alternativas": [
+        "150 cm²",
+        "75 cm²",
+        "225 cm²",
+        "375 cm²",
+        "300 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "Curva: 150. Base: 75. Total: 225 cm². Dica de mergulhador: 2πr² + πr².",
+      "comentarios": [
+        "Esqueceu a base plana.",
+        "Contou só a base.",
+        "",
+        "Somou a base à esfera inteira.",
+        "Usou a esfera inteira."
+      ]
+    },
+    {
+      "id": "mat-esfera-q14-v1",
+      "varianteDe": "mat-esfera-q14",
+      "tema": "Área da esfera",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Vinte boias esféricas de raio 1 m serão pintadas. Cada litro de tinta cobre 8 m². Quantos litros são necessários? Use π ≈ 3.",
+      "alternativas": [
+        "15 litros",
+        "30 litros",
+        "7,5 litros",
+        "240 litros",
+        "1,5 litro"
+      ],
+      "correta": 1,
+      "explicacao": "Cada boia: 4 × 3 × 1 = 12 m². Vinte: 240 m². Tinta: 240 ÷ 8 = 30 L. Dica de mergulhador: área total ÷ rendimento.",
+      "comentarios": [
+        "Usou 2πr².",
+        "",
+        "Usou um círculo máximo.",
+        "Parou na área total, sem dividir por 8.",
+        "Pintou uma boia só."
+      ]
+    },
+    {
+      "id": "mat-esfera-q15-v1",
+      "varianteDe": "mat-esfera-q15",
+      "tema": "Comparar sólidos",
+      "dificuldade": "facil",
+      "fase": "mat-esfera",
+      "enunciado": "Uma esfera está dentro de um cilindro que a envolve exatamente, com o mesmo raio e altura igual ao diâmetro. Que fração do volume do cilindro fica vazia?",
+      "alternativas": [
+        "2/3",
+        "1/4",
+        "1/6",
+        "1/2",
+        "1/3"
+      ],
+      "correta": 4,
+      "explicacao": "A esfera ocupa 2/3; sobra 1 − 2/3 = 1/3. Dica de mergulhador: o vazio é o que falta para o inteiro.",
+      "comentarios": [
+        "É a fração ocupada pela esfera.",
+        "Chutou.",
+        "Dividiu 1/3 por 2.",
+        "A esfera ocupa mais que a metade.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q16-v1",
+      "varianteDe": "mat-esfera-q16",
+      "tema": "Comparar sólidos",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma bola de raio 5 cm está numa caixa cúbica de aresta 10 cm. Qual é o volume do espaço vazio dentro da caixa? Use π ≈ 3.",
+      "alternativas": [
+        "500 cm³",
+        "1.000 cm³",
+        "750 cm³",
+        "0 cm³",
+        "125 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "Caixa: 1.000. Bola: 500. Vazio: 500 cm³. Dica de mergulhador: caixa menos bola.",
+      "comentarios": [
+        "",
+        "É o volume da caixa.",
+        "Usou a meia bola.",
+        "A bola não preenche os cantos.",
+        "Usou a aresta 5."
+      ]
+    },
+    {
+      "id": "mat-esfera-q17-v1",
+      "varianteDe": "mat-esfera-q17",
+      "tema": "Comparar sólidos",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "Uma sorveteria vende bolas de raio 3 cm por R$ 5,00 e bolas de raio 6 cm por R$ 45,00. Qual compensa mais?",
+      "alternativas": [
+        "A grande, pois vale 9 pequenas",
+        "A grande, pois vale só 2 pequenas",
+        "Tanto faz, pois os preços são proporcionais",
+        "A grande, pois vale 4 pequenas",
+        "As pequenas, pois 8 delas custam R$ 40"
+      ],
+      "correta": 4,
+      "explicacao": "Raio dobrado, volume 8 vezes maior. Oito pequenas custam 8 × 5 = R$ 40, menos que R$ 45. Dica de mergulhador: compare o preço de volumes iguais.",
+      "comentarios": [
+        "Usou um fator errado.",
+        "O volume vai ao cubo.",
+        "O preço por volume é diferente.",
+        "Usou o fator ao quadrado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q18-v1",
+      "varianteDe": "mat-esfera-q18",
+      "tema": "Comparar sólidos",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Um cilindro e uma esfera têm o mesmo raio, 6 cm, e o mesmo volume. Qual é a altura do cilindro?",
+      "alternativas": [
+        "24 cm",
+        "6 cm",
+        "12 cm",
+        "4,5 cm",
+        "8 cm"
+      ],
+      "correta": 4,
+      "explicacao": "h = 4r ÷ 3 = 4 × 6 ÷ 3 = 8 cm. Dica de mergulhador: h = 4r/3.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "Igualou a altura ao raio.",
+        "É o diâmetro: o cilindro ficaria maior.",
+        "Inverteu a razão 4/3.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q19-v1",
+      "varianteDe": "mat-esfera-q19",
+      "tema": "Comparar sólidos",
+      "dificuldade": "dificil",
+      "fase": "mat-esfera",
+      "enunciado": "Quatro bolinhas de raio 2 cm vêm empilhadas num tubo cilíndrico justo: raio 2 cm e altura 16 cm. Qual é o volume de ar no tubo, fora das bolinhas? Use π ≈ 3.",
+      "alternativas": [
+        "32 cm³",
+        "192 cm³",
+        "160 cm³",
+        "128 cm³",
+        "64 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "Tubo: 3 × 4 × 16 = 192. Bolinhas: 4 × 32 = 128. Ar: 64 cm³. Dica de mergulhador: tubo menos bolas.",
+      "comentarios": [
+        "Descontou demais.",
+        "É o volume do tubo.",
+        "Descontou uma bolinha só.",
+        "É o volume das bolinhas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-esfera-q20-v1",
+      "varianteDe": "mat-esfera-q20",
+      "tema": "Comparar sólidos",
+      "dificuldade": "medio",
+      "fase": "mat-esfera",
+      "enunciado": "O que tem mais volume: uma bola de raio 6 cm ou um cubo de aresta 9 cm? Use π ≈ 3.",
+      "alternativas": [
+        "A bola, com 2.592 cm³",
+        "O cubo, com 729 cm³ contra 432 cm³ de área",
+        "O cubo, com 729 cm³ contra 432 cm³",
+        "A bola, com 864 cm³ contra 729 cm³",
+        "Os dois têm o mesmo volume"
+      ],
+      "correta": 3,
+      "explicacao": "Bola: 4 × 3 × 216 ÷ 3 = 864. Cubo: 9³ = 729. Dica de mergulhador: faça as duas contas.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "Comparou volume com área.",
+        "Usou a meia bola.",
+        "",
+        "Há 135 cm³ de diferença."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q01-v1",
+      "varianteDe": "mat-capacidade-embalagens-q01",
+      "tema": "Litros e volumes",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Quantos litros cabem num cubo oco de 20 cm de aresta?",
+      "alternativas": [
+        "80 litros",
+        "2 litros",
+        "8 litros",
+        "4 litros",
+        "0,8 litro"
+      ],
+      "correta": 2,
+      "explicacao": "20³ = 8.000 cm³ = 8 L. Dica de mergulhador: aresta dobrada, oito litros.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Dobrou o litro em vez de elevar ao cubo.",
+        "",
+        "Usou só a área da face.",
+        "Dividiu por 10.000."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q02-v1",
+      "varianteDe": "mat-capacidade-embalagens-q02",
+      "tema": "Litros e volumes",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Quantos litros há em 0,75 m³?",
+      "alternativas": [
+        "750 litros",
+        "7,5 litros",
+        "7.500 litros",
+        "75 litros",
+        "0,75 litro"
+      ],
+      "correta": 0,
+      "explicacao": "0,75 × 1.000 = 750 L. Dica de mergulhador: 1 m³ = 1.000 L.",
+      "comentarios": [
+        "",
+        "Multiplicou por 10.",
+        "Multiplicou por 10.000.",
+        "Multiplicou por 100.",
+        "Não converteu."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q03-v1",
+      "varianteDe": "mat-capacidade-embalagens-q03",
+      "tema": "Litros e volumes",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um aquário tem 40 cm de comprimento, 25 cm de largura e 30 cm de altura. Quantos litros ele comporta?",
+      "alternativas": [
+        "30 litros",
+        "3 litros",
+        "1 litro",
+        "60 litros",
+        "300 litros"
+      ],
+      "correta": 0,
+      "explicacao": "40 × 25 × 30 = 30.000 cm³ = 30 L. Dica de mergulhador: multiplique as três medidas e divida por 1.000.",
+      "comentarios": [
+        "",
+        "Dividiu por 10.000.",
+        "Usou só uma face.",
+        "Multiplicou por 2.",
+        "Dividiu por 100."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q04-v1",
+      "varianteDe": "mat-capacidade-embalagens-q04",
+      "tema": "Litros e volumes",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma caixa d'água tem 1,5 m × 1,2 m × 1 m e está cheia. Uma família gasta 450 litros por dia. Para quantos dias a água dá?",
+      "alternativas": [
+        "2 dias",
+        "40 dias",
+        "1,8 dia",
+        "4 dias",
+        "8 dias"
+      ],
+      "correta": 3,
+      "explicacao": "Volume: 1,8 m³ = 1.800 L. Dias: 1.800 ÷ 450 = 4. Dica de mergulhador: m³ × 1.000 = litros.",
+      "comentarios": [
+        "Usou 1,8 ÷ 0,9.",
+        "Errou a conversão para litros.",
+        "Não converteu m³ para litros.",
+        "",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q05-v1",
+      "varianteDe": "mat-capacidade-embalagens-q05",
+      "tema": "Litros e volumes",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Choveu 15 mm sobre um telhado de 80 m², e toda a água foi para uma cisterna. Quantos litros a cisterna recebeu?",
+      "alternativas": [
+        "120 litros",
+        "12.000 litros",
+        "1.200 litros",
+        "95 litros",
+        "5,3 litros"
+      ],
+      "correta": 2,
+      "explicacao": "15 × 80 = 1.200 L. Dica de mergulhador: 1 mm em 1 m² é 1 litro.",
+      "comentarios": [
+        "Errou a conversão de mm.",
+        "Usou 1 mm = 10 L.",
+        "",
+        "Somou chuva e área.",
+        "Dividiu a área pela chuva."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q06-v1",
+      "varianteDe": "mat-capacidade-embalagens-q06",
+      "tema": "Litros e volumes",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma cisterna cilíndrica tem raio de 2 m e altura de 1,5 m. Quantos litros ela comporta? Use π ≈ 3.",
+      "alternativas": [
+        "9.000 litros",
+        "1.800 litros",
+        "6.000 litros",
+        "18.000 litros",
+        "18 litros"
+      ],
+      "correta": 3,
+      "explicacao": "V = 3 × 4 × 1,5 = 18 m³ = 18.000 L. Dica de mergulhador: m³ vezes mil.",
+      "comentarios": [
+        "Usou o raio sem elevar ao quadrado.",
+        "Multiplicou por 100.",
+        "Dividiu por 3, como num cone.",
+        "",
+        "Não converteu m³ em litros."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q07-v1",
+      "varianteDe": "mat-capacidade-embalagens-q07",
+      "tema": "Litros e volumes",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um tanque cúbico de aresta 40 cm, cheio de água, será distribuído em garrafas de 400 mL. Quantas garrafas ficam cheias?",
+      "alternativas": [
+        "64",
+        "160",
+        "1.600",
+        "100",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "V = 40³ = 64.000 cm³. Garrafas: 64.000 ÷ 400 = 160. Dica de mergulhador: cm³ e mL são a mesma coisa.",
+      "comentarios": [
+        "Parou nos litros.",
+        "",
+        "Dividiu por 40.",
+        "Usou só a área da face.",
+        "Errou a conversão."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q08-v1",
+      "varianteDe": "mat-capacidade-embalagens-q08",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma caixinha de 200 mL de suco custa R$ 1,60. Qual é o preço do litro desse suco?",
+      "alternativas": [
+        "R$ 3,20",
+        "R$ 80,00",
+        "R$ 1,60",
+        "R$ 0,80",
+        "R$ 8,00"
+      ],
+      "correta": 4,
+      "explicacao": "1,60 ÷ 0,2 = R$ 8 por litro. Dica de mergulhador: 200 mL é um quinto do litro.",
+      "comentarios": [
+        "Multiplicou por 2.",
+        "Errou a conversão de mL para L.",
+        "É o preço da caixinha.",
+        "Dividiu por 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q09-v1",
+      "varianteDe": "mat-capacidade-embalagens-q09",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um iogurte vem em pote de 500 mL por R$ 4,00 ou de 2 L por R$ 14,00. Qual compensa mais?",
+      "alternativas": [
+        "O de 500 mL, que é mais barato",
+        "O de 2 L, com litro a R$ 3,50",
+        "O de 500 mL, com litro a R$ 4,00",
+        "O de 2 L, com litro a R$ 7,00",
+        "Tanto faz, o litro custa igual"
+      ],
+      "correta": 3,
+      "explicacao": "Pequeno: 4 ÷ 0,5 = R$ 8/L. Grande: 14 ÷ 2 = R$ 7/L. Dica de mergulhador: menor preço por litro vence.",
+      "comentarios": [
+        "Comparou o preço da embalagem.",
+        "Dividiu por 4.",
+        "O litro do pote pequeno custa R$ 8,00.",
+        "",
+        "Os preços por litro são diferentes."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q10-v1",
+      "varianteDe": "mat-capacidade-embalagens-q10",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Entre latas cilíndricas com o mesmo volume, qual gasta menos material?",
+      "alternativas": [
+        "A mais baixa e larga",
+        "A mais alta e fina",
+        "Todas gastam o mesmo",
+        "A de altura igual ao raio",
+        "A de altura igual ao diâmetro"
+      ],
+      "correta": 4,
+      "explicacao": "Para o mesmo volume, a lata com h = 2r tem a menor área total. Dica de mergulhador: a lata mais econômica cabe num quadrado visto de lado.",
+      "comentarios": [
+        "Gasta mais chapa.",
+        "Gasta mais chapa.",
+        "A área muda com a forma.",
+        "Fica achatada demais.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q11-v1",
+      "varianteDe": "mat-capacidade-embalagens-q11",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um suco vem em caixa de 1 L por R$ 7,20 ou em garrafinha de 300 mL por R$ 2,40. Quanto se economiza por litro comprando a caixa?",
+      "alternativas": [
+        "R$ 8,00",
+        "R$ 0,80",
+        "R$ 7,20",
+        "R$ 4,80",
+        "Nada, a caixa é mais cara"
+      ],
+      "correta": 1,
+      "explicacao": "Garrafinha: 2,40 ÷ 0,3 = R$ 8/L. Caixa: R$ 7,20/L. Economia: R$ 0,80. Dica de mergulhador: passe tudo para o litro.",
+      "comentarios": [
+        "É o preço do litro na garrafinha.",
+        "",
+        "É o preço da caixa.",
+        "Subtraiu os preços das embalagens.",
+        "O litro da caixa é mais barato."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q12-v1",
+      "varianteDe": "mat-capacidade-embalagens-q12",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma caixa de 25 cm × 8 cm × 5 cm e um cubo de 10 cm de aresta têm o mesmo volume. Quanto papelão o cubo economiza, considerando as caixas fechadas?",
+      "alternativas": [
+        "730 cm²",
+        "130 cm²",
+        "600 cm²",
+        "65 cm²",
+        "0 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Caixa: 2(200 + 125 + 40) = 730. Cubo: 600. Economia: 130 cm². Dica de mergulhador: calcule as duas áreas e subtraia.",
+      "comentarios": [
+        "É a área da caixa.",
+        "",
+        "É a área do cubo.",
+        "Contou só metade das faces.",
+        "Volumes iguais não significam áreas iguais."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q13-v1",
+      "varianteDe": "mat-capacidade-embalagens-q13",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma lata cilíndrica tem raio de 3 cm e altura de 12 cm. Quantos mL ela comporta? Use π ≈ 3.",
+      "alternativas": [
+        "32,4 mL",
+        "324 mL",
+        "216 mL",
+        "108 mL",
+        "1.296 mL"
+      ],
+      "correta": 1,
+      "explicacao": "V = 3 × 9 × 12 = 324 cm³ = 324 mL. Dica de mergulhador: πr²h, com r ao quadrado.",
+      "comentarios": [
+        "Errou a conversão.",
+        "",
+        "Usou π ≈ 2.",
+        "Usou o raio sem elevar ao quadrado.",
+        "Usou o diâmetro como raio."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q14-v1",
+      "varianteDe": "mat-capacidade-embalagens-q14",
+      "tema": "Escolher a embalagem",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um fabricante troca uma caixa de 12 cm × 12 cm × 10 cm por um cilindro de mesma altura, com diâmetro de 12 cm. Quantos cm³ a nova embalagem perde? Use π ≈ 3.",
+      "alternativas": [
+        "360 cm³",
+        "1.080 cm³",
+        "2.880 cm³",
+        "0 cm³",
+        "1.440 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "Caixa: 1.440. Cilindro: 3 × 36 × 10 = 1.080. Perda: 360 cm³. Dica de mergulhador: raio é metade do diâmetro.",
+      "comentarios": [
+        "",
+        "É o volume do cilindro.",
+        "Usou o diâmetro como raio.",
+        "O cilindro é menor que a caixa.",
+        "É o volume da caixa."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q15-v1",
+      "varianteDe": "mat-capacidade-embalagens-q15",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma piscina de 12.000 L é enchida por uma mangueira de 25 L/min. Quanto tempo leva?",
+      "alternativas": [
+        "480 horas",
+        "8 horas",
+        "4,8 horas",
+        "300 horas",
+        "48 horas"
+      ],
+      "correta": 1,
+      "explicacao": "12.000 ÷ 25 = 480 min = 8 h. Dica de mergulhador: 60 minutos fazem 1 hora.",
+      "comentarios": [
+        "Não converteu minutos em horas.",
+        "",
+        "Dividiu por 100.",
+        "Multiplicou em vez de dividir.",
+        "Errou a conversão."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q16-v1",
+      "varianteDe": "mat-capacidade-embalagens-q16",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "facil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Duas torneiras, de 12 L/min e 18 L/min, enchem juntas um tanque de 900 L. Quanto tempo leva?",
+      "alternativas": [
+        "50 minutos",
+        "150 minutos",
+        "30 minutos",
+        "15 minutos",
+        "75 minutos"
+      ],
+      "correta": 2,
+      "explicacao": "12 + 18 = 30 L/min; 900 ÷ 30 = 30 min. Dica de mergulhador: some e depois divida.",
+      "comentarios": [
+        "Usou só a de 18 L/min.",
+        "Subtraiu as vazões.",
+        "",
+        "Somou as vazões duas vezes.",
+        "Usou só a de 12 L/min."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q17-v1",
+      "varianteDe": "mat-capacidade-embalagens-q17",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "medio",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um tanque de 1.200 L vazio recebe 40 L/min de uma bomba, mas um vazamento tira 10 L/min. Em quanto tempo ele enche?",
+      "alternativas": [
+        "24 minutos",
+        "4 minutos",
+        "30 minutos",
+        "120 minutos",
+        "40 minutos"
+      ],
+      "correta": 4,
+      "explicacao": "40 − 10 = 30 L/min; 1.200 ÷ 30 = 40 min. Dica de mergulhador: entra menos sai.",
+      "comentarios": [
+        "Somou as vazões.",
+        "Dividiu errado.",
+        "Ignorou o vazamento.",
+        "Usou só o vazamento.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q18-v1",
+      "varianteDe": "mat-capacidade-embalagens-q18",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Água entra com vazão constante numa garrafa cônica com a base larga embaixo e a boca estreita em cima. Como a altura da água muda com o tempo?",
+      "alternativas": [
+        "Sobe rápido no início e cada vez mais devagar",
+        "Não depende da forma",
+        "Sobe devagar no início e cada vez mais rápido",
+        "Sobe rápido e depois para",
+        "Sobe sempre no mesmo ritmo"
+      ],
+      "correta": 2,
+      "explicacao": "Embaixo é largo: o nível sobe devagar. Perto da boca, estreito: sobe rápido. Dica de mergulhador: garrafa que afina acelera no alto.",
+      "comentarios": [
+        "Isso é do cone com a ponta para baixo.",
+        "A forma decide o ritmo.",
+        "",
+        "A água continua subindo.",
+        "Isso só vale para seção constante."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q19-v1",
+      "varianteDe": "mat-capacidade-embalagens-q19",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Um reservatório de 3 m³ está cheio. Uma bomba retira 150 L/min. Em quanto tempo ele fica com apenas 1/4 da água?",
+      "alternativas": [
+        "5 minutos",
+        "15 minutos",
+        "1,5 minuto",
+        "20 minutos",
+        "10 minutos"
+      ],
+      "correta": 1,
+      "explicacao": "Sair 3/4 de 3.000 L = 2.250 L. Tempo: 2.250 ÷ 150 = 15 min. Dica de mergulhador: o que sai é o total menos o que fica.",
+      "comentarios": [
+        "Calculou só o 1/4 que fica.",
+        "",
+        "Errou a conversão de m³.",
+        "Esvaziou tudo.",
+        "Usou metade."
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-q20-v1",
+      "varianteDe": "mat-capacidade-embalagens-q20",
+      "tema": "Enchimento e vazão",
+      "dificuldade": "dificil",
+      "fase": "mat-capacidade-embalagens",
+      "enunciado": "Uma caixa d'água tem base de 3 m × 2 m. Uma bomba coloca 300 L/min. Quanto o nível sobe em 12 minutos?",
+      "alternativas": [
+        "60 cm",
+        "3,6 m",
+        "1,2 m",
+        "6 cm",
+        "36 cm"
+      ],
+      "correta": 0,
+      "explicacao": "Em 12 min: 3.600 L = 3,6 m³. Subida: 3,6 ÷ 6 = 0,6 m = 60 cm. Dica de mergulhador: m³ ÷ m² = m.",
+      "comentarios": [
+        "",
+        "Não dividiu pela área da base.",
+        "Dividiu só por 3.",
+        "Errou a conversão de litros para m³.",
+        "Dividiu por 10."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q01-v1",
+      "varianteDe": "mat-revisao-espacial-q01",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um poliedro convexo tem 10 vértices e 15 arestas. Quantas faces ele tem?",
+      "alternativas": [
+        "9",
+        "6",
+        "7",
+        "5",
+        "25"
+      ],
+      "correta": 2,
+      "explicacao": "10 − 15 + F = 2, então F = 7. Dica de mergulhador: é o prisma pentagonal.",
+      "comentarios": [
+        "Errou o sinal na relação de Euler.",
+        "Esqueceu um termo da relação.",
+        "",
+        "Fez 15 − 10.",
+        "Somou vértices e arestas."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q02-v1",
+      "varianteDe": "mat-revisao-espacial-q02",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Qual é o volume de um paralelepípedo de 7 cm × 3 cm × 2 cm?",
+      "alternativas": [
+        "42 cm³",
+        "14 cm³",
+        "82 cm³",
+        "21 cm³",
+        "12 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "7 × 3 × 2 = 42 cm³. Dica de mergulhador: multiplique as três medidas.",
+      "comentarios": [
+        "",
+        "Usou 7 × 2.",
+        "É a área total.",
+        "Multiplicou só duas medidas.",
+        "Somou as medidas."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q03-v1",
+      "varianteDe": "mat-revisao-espacial-q03",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Qual é a área total de um cubo de aresta 5 cm?",
+      "alternativas": [
+        "100 cm²",
+        "30 cm²",
+        "25 cm²",
+        "125 cm²",
+        "150 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "6 × 25 = 150 cm². Dica de mergulhador: 6 vezes a aresta ao quadrado.",
+      "comentarios": [
+        "Contou só 4 faces.",
+        "Multiplicou a aresta por 6.",
+        "É uma face só.",
+        "É o volume.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q04-v1",
+      "varianteDe": "mat-revisao-espacial-q04",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma pirâmide tem área da base de 45 cm² e altura de 8 cm. Qual é o seu volume?",
+      "alternativas": [
+        "360 cm³",
+        "15 cm³",
+        "53 cm³",
+        "180 cm³",
+        "120 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "45 × 8 ÷ 3 = 120 cm³. Dica de mergulhador: base × altura ÷ 3.",
+      "comentarios": [
+        "Esqueceu de dividir por 3.",
+        "Dividiu 45 por 3 e parou.",
+        "Somou.",
+        "Dividiu por 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q05-v1",
+      "varianteDe": "mat-revisao-espacial-q05",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Quantos litros há em 750 cm³?",
+      "alternativas": [
+        "750 litros",
+        "75 litros",
+        "7,5 litros",
+        "0,75 litro",
+        "0,075 litro"
+      ],
+      "correta": 3,
+      "explicacao": "750 ÷ 1.000 = 0,75 L. Dica de mergulhador: cm³ é mL.",
+      "comentarios": [
+        "Não converteu.",
+        "Dividiu por 10.",
+        "Dividiu por 100.",
+        "",
+        "Dividiu por 10.000."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q06-v1",
+      "varianteDe": "mat-revisao-espacial-q06",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Qual é a vista de frente de uma pirâmide de base quadrada?",
+      "alternativas": [
+        "Um triângulo",
+        "Um círculo",
+        "Um trapézio",
+        "Um retângulo",
+        "Um quadrado"
+      ],
+      "correta": 0,
+      "explicacao": "De frente, vê-se a face triangular. Dica de mergulhador: pirâmide e cone de frente são triângulos.",
+      "comentarios": [
+        "",
+        "É do cilindro ou do cone vistos de cima.",
+        "Seria do tronco de pirâmide.",
+        "É do prisma.",
+        "É a vista de cima."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q07-v1",
+      "varianteDe": "mat-revisao-espacial-q07",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um cilindro tem raio de 3 cm e altura de 4 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "54 cm³",
+        "216 cm³",
+        "432 cm³",
+        "36 cm³",
+        "108 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "V = 3 × 9 × 4 = 108 cm³. Dica de mergulhador: raio ao quadrado vezes π vezes altura.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Multiplicou por 2.",
+        "Usou o diâmetro como raio.",
+        "Dividiu por 3, como num cone.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q08-v1",
+      "varianteDe": "mat-revisao-espacial-q08",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um cone tem raio de 5 cm e altura de 3 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "25 cm³",
+        "225 cm³",
+        "300 cm³",
+        "75 cm³",
+        "15 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "V = 3 × 25 × 3 ÷ 3 = 75 cm³. Dica de mergulhador: com π ≈ 3, o cone vira r² × h.",
+      "comentarios": [
+        "Dividiu por 9.",
+        "Esqueceu de dividir por 3.",
+        "Usou o diâmetro como raio.",
+        "",
+        "Usou o raio sem elevar ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q09-v1",
+      "varianteDe": "mat-revisao-espacial-q09",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma esfera tem raio de 6 cm. Qual é o seu volume? Use π ≈ 3.",
+      "alternativas": [
+        "864 cm³",
+        "144 cm³",
+        "216 cm³",
+        "432 cm³",
+        "2.592 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "V = 4 × 216 = 864 cm³. Dica de mergulhador: 4 vezes o raio ao cubo.",
+      "comentarios": [
+        "",
+        "Usou r² no lugar de r³.",
+        "Calculou só r³.",
+        "É a área da superfície.",
+        "Esqueceu de dividir por 3."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q10-v1",
+      "varianteDe": "mat-revisao-espacial-q10",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma estatueta maciça de 2 kg é ampliada com razão 3, no mesmo material. Qual é a massa da ampliação?",
+      "alternativas": [
+        "18 kg",
+        "8 kg",
+        "162 kg",
+        "54 kg",
+        "6 kg"
+      ],
+      "correta": 3,
+      "explicacao": "3³ = 27; 2 × 27 = 54 kg. Dica de mergulhador: razão 3, volume 27.",
+      "comentarios": [
+        "Usou a razão ao quadrado.",
+        "Somou.",
+        "Elevou à quarta.",
+        "",
+        "Usou a razão direto."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q11-v1",
+      "varianteDe": "mat-revisao-espacial-q11",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Ao colocar um objeto num aquário de base 30 cm × 20 cm, a água sobe 3 cm. Qual é o volume do objeto?",
+      "alternativas": [
+        "0,6 litro",
+        "53 litros",
+        "1,8 litro",
+        "18 litros",
+        "0,18 litro"
+      ],
+      "correta": 2,
+      "explicacao": "30 × 20 × 3 = 1.800 cm³ = 1,8 L. Dica de mergulhador: a água que sobe tem o volume do objeto.",
+      "comentarios": [
+        "Esqueceu a subida.",
+        "Somou as medidas.",
+        "",
+        "Errou a conversão.",
+        "Dividiu por 10.000."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q12-v1",
+      "varianteDe": "mat-revisao-espacial-q12",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma caixa sem tampa tem 40 cm × 30 cm de base e 10 cm de altura. Quanto papelão ela usa?",
+      "alternativas": [
+        "12.000 cm²",
+        "2.600 cm²",
+        "3.800 cm²",
+        "1.400 cm²",
+        "1.900 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Base: 1.200. Laterais: 2 × 400 + 2 × 300 = 1.400. Total: 2.600 cm². Dica de mergulhador: base + quatro laterais.",
+      "comentarios": [
+        "É o volume.",
+        "",
+        "Contou a tampa.",
+        "Esqueceu a base.",
+        "Contou só metade das laterais."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q13-v1",
+      "varianteDe": "mat-revisao-espacial-q13",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um suco vem em garrafa de 2 L por R$ 11,00 ou em lata de 350 mL por R$ 1,75. Qual compensa mais?",
+      "alternativas": [
+        "Tanto faz",
+        "A lata, com litro a R$ 5,00",
+        "A garrafa, por ser maior",
+        "A lata, com litro a R$ 1,75",
+        "A garrafa, com litro a R$ 5,00"
+      ],
+      "correta": 1,
+      "explicacao": "Garrafa: 11 ÷ 2 = R$ 5,50/L. Lata: 1,75 ÷ 0,35 = R$ 5/L. Dica de mergulhador: faça a conta, não confie no tamanho.",
+      "comentarios": [
+        "Os preços por litro são diferentes.",
+        "",
+        "A maior nem sempre é a mais barata.",
+        "É o preço da lata.",
+        "O litro da garrafa custa R$ 5,50."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q14-v1",
+      "varianteDe": "mat-revisao-espacial-q14",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Uma piscina tem 6 m × 3 m × 1,2 m. Uma mangueira coloca 1.200 L por hora. Quanto tempo leva para enchê-la?",
+      "alternativas": [
+        "180 horas",
+        "21,6 horas",
+        "15 horas",
+        "18 horas",
+        "1,8 hora"
+      ],
+      "correta": 3,
+      "explicacao": "6 × 3 × 1,2 = 21,6 m³ = 21.600 L. 21.600 ÷ 1.200 = 18 h. Dica de mergulhador: volume em litros ÷ vazão.",
+      "comentarios": [
+        "Multiplicou por 10.",
+        "Parou no volume.",
+        "Esqueceu a profundidade.",
+        "",
+        "Errou a conversão de m³."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q15-v1",
+      "varianteDe": "mat-revisao-espacial-q15",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um cone tem raio de 8 cm e altura de 15 cm. Qual é a geratriz?",
+      "alternativas": [
+        "11,5 cm",
+        "17 cm",
+        "7 cm",
+        "289 cm",
+        "23 cm"
+      ],
+      "correta": 1,
+      "explicacao": "g² = 225 + 64 = 289, g = 17 cm. Dica de mergulhador: terno 8, 15, 17.",
+      "comentarios": [
+        "Fez a média.",
+        "",
+        "Subtraiu.",
+        "Não tirou a raiz.",
+        "Somou raio e altura."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q16-v1",
+      "varianteDe": "mat-revisao-espacial-q16",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um copo cônico, com a ponta para baixo, tem capacidade de 320 mL. Ele é enchido até a metade da sua altura. Quantos mL há no copo?",
+      "alternativas": [
+        "160 mL",
+        "40 mL",
+        "80 mL",
+        "280 mL",
+        "107 mL"
+      ],
+      "correta": 1,
+      "explicacao": "(1/2)³ = 1/8; 320 ÷ 8 = 40 mL. Dica de mergulhador: metade da altura, um oitavo.",
+      "comentarios": [
+        "A capacidade não acompanha a altura de forma direta.",
+        "",
+        "Usou o fator ao quadrado.",
+        "É o que falta.",
+        "Dividiu por 3."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q17-v1",
+      "varianteDe": "mat-revisao-espacial-q17",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Quatro latas de raio 4 cm e altura 12 cm vão numa caixa de 16 cm × 16 cm × 12 cm, em duas fileiras de duas. Qual é o volume vazio da caixa? Use π ≈ 3.",
+      "alternativas": [
+        "3.072 cm³",
+        "768 cm³",
+        "2.304 cm³",
+        "0 cm³",
+        "2.496 cm³"
+      ],
+      "correta": 1,
+      "explicacao": "Caixa: 3.072. Latas: 4 × 3 × 16 × 12 = 2.304. Vazio: 768 cm³. Dica de mergulhador: com π ≈ 3, sobra 1/4 da caixa.",
+      "comentarios": [
+        "É o volume da caixa.",
+        "",
+        "É o volume das latas.",
+        "Latas redondas deixam frestas.",
+        "Descontou uma lata só."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q18-v1",
+      "varianteDe": "mat-revisao-espacial-q18",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um tanque cilíndrico de raio 2 m e altura 2 m está com 1/4 da capacidade. Uma bomba retira 500 L/min. Em quanto tempo ele esvazia? Use π ≈ 3.",
+      "alternativas": [
+        "6 minutos",
+        "24 minutos",
+        "12 minutos",
+        "48 minutos",
+        "4 minutos"
+      ],
+      "correta": 2,
+      "explicacao": "Total: 3 × 4 × 2 = 24 m³. 1/4: 6 m³ = 6.000 L. Tempo: 6.000 ÷ 500 = 12 min. Dica de mergulhador: primeiro o volume que há, depois a vazão.",
+      "comentarios": [
+        "Errou a conversão de m³.",
+        "Usou metade do tanque.",
+        "",
+        "Usou o tanque cheio.",
+        "Dividiu por 3, como num cone."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q19-v1",
+      "varianteDe": "mat-revisao-espacial-q19",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um bloco de cera de 12 cm × 6 cm × 5 cm é derretido para fazer velas cilíndricas de raio 2 cm e altura 4 cm. Quantas velas inteiras saem? Use π ≈ 3.",
+      "alternativas": [
+        "30",
+        "15",
+        "7",
+        "22",
+        "8"
+      ],
+      "correta": 2,
+      "explicacao": "Bloco: 360 cm³. Vela: 3 × 4 × 4 = 48 cm³. 360 ÷ 48 = 7,5, então 7 velas inteiras. Dica de mergulhador: peça inteira, arredonde para baixo.",
+      "comentarios": [
+        "Usou só o raio na base.",
+        "Dividiu o bloco pela base da vela.",
+        "",
+        "Dividiu por 3, como num cone.",
+        "Arredondou para cima, mas falta cera para a oitava."
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-q20-v1",
+      "varianteDe": "mat-revisao-espacial-q20",
+      "tema": "Revisão: geometria espacial",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-espacial",
+      "enunciado": "Um silo é um cilindro de raio 2 m e altura 8 m com um cone de raio 2 m e altura 3 m em cima. Qual é a sua capacidade? Use π ≈ 3.",
+      "alternativas": [
+        "132 m³",
+        "96 m³",
+        "12 m³",
+        "108 m³",
+        "36 m³"
+      ],
+      "correta": 3,
+      "explicacao": "Cilindro: 3 × 4 × 8 = 96. Cone: 3 × 4 × 3 ÷ 3 = 12. Total: 108 m³. Dica de mergulhador: cilindro sem ÷ 3, cone com ÷ 3.",
+      "comentarios": [
+        "Esqueceu de dividir o cone por 3.",
+        "Contou só o cilindro.",
+        "Contou só o cone.",
+        "",
+        "Dividiu tudo por 3."
+      ]
     }
   ],
   "pares": [
@@ -56840,6 +61028,102 @@
       "tema": "Cilindros",
       "termo": "Raio ao quadrado",
       "definicao": "Pesa mais que a altura"
+    },
+    {
+      "id": "mat-piramides-cones-par-01",
+      "tema": "Pirâmides e cones",
+      "termo": "Volume da pirâmide",
+      "definicao": "Área da base × altura ÷ 3"
+    },
+    {
+      "id": "mat-piramides-cones-par-02",
+      "tema": "Pirâmides e cones",
+      "termo": "Geratriz",
+      "definicao": "Do vértice à borda da base"
+    },
+    {
+      "id": "mat-piramides-cones-par-03",
+      "tema": "Pirâmides e cones",
+      "termo": "Área lateral do cone",
+      "definicao": "π × r × g"
+    },
+    {
+      "id": "mat-piramides-cones-par-04",
+      "tema": "Pirâmides e cones",
+      "termo": "Tronco",
+      "definicao": "Sólido sem a ponta"
+    },
+    {
+      "id": "mat-esfera-par-01",
+      "tema": "Esfera",
+      "termo": "Volume da esfera",
+      "definicao": "4πr³ ÷ 3"
+    },
+    {
+      "id": "mat-esfera-par-02",
+      "tema": "Esfera",
+      "termo": "Área da esfera",
+      "definicao": "4πr²"
+    },
+    {
+      "id": "mat-esfera-par-03",
+      "tema": "Esfera",
+      "termo": "Hemisfério",
+      "definicao": "Meia esfera"
+    },
+    {
+      "id": "mat-esfera-par-04",
+      "tema": "Esfera",
+      "termo": "Esfera no cilindro justo",
+      "definicao": "Ocupa 2/3"
+    },
+    {
+      "id": "mat-capacidade-embalagens-par-01",
+      "tema": "Capacidade e embalagens",
+      "termo": "1 dm³",
+      "definicao": "1 litro"
+    },
+    {
+      "id": "mat-capacidade-embalagens-par-02",
+      "tema": "Capacidade e embalagens",
+      "termo": "1 m³",
+      "definicao": "1.000 litros"
+    },
+    {
+      "id": "mat-capacidade-embalagens-par-03",
+      "tema": "Capacidade e embalagens",
+      "termo": "Vazão",
+      "definicao": "Volume por tempo"
+    },
+    {
+      "id": "mat-capacidade-embalagens-par-04",
+      "tema": "Capacidade e embalagens",
+      "termo": "1 mm de chuva em 1 m²",
+      "definicao": "1 litro"
+    },
+    {
+      "id": "mat-revisao-espacial-par-01",
+      "tema": "Revisão do módulo: geometria espacial",
+      "termo": "Prisma e cilindro",
+      "definicao": "Base × altura"
+    },
+    {
+      "id": "mat-revisao-espacial-par-02",
+      "tema": "Revisão do módulo: geometria espacial",
+      "termo": "Pirâmide e cone",
+      "definicao": "Base × altura ÷ 3"
+    },
+    {
+      "id": "mat-revisao-espacial-par-03",
+      "tema": "Revisão do módulo: geometria espacial",
+      "termo": "Esfera",
+      "definicao": "4πr³ ÷ 3"
+    },
+    {
+      "id": "mat-revisao-espacial-par-04",
+      "tema": "Revisão do módulo: geometria espacial",
+      "termo": "Relação de Euler",
+      "definicao": "V − A + F = 2"
     }
   ],
   "verdadeiroFalso": [
@@ -57941,6 +62225,90 @@
       "afirmacao": "Ao despejar água num cilindro mais largo, o volume se conserva.",
       "verdadeira": true,
       "explicacao": "Só a altura muda."
+    },
+    {
+      "id": "mat-piramides-cones-vf-01",
+      "tema": "Pirâmides e cones",
+      "afirmacao": "Três cones enchem um cilindro de mesma base e altura.",
+      "verdadeira": true,
+      "explicacao": "O cone é um terço do cilindro."
+    },
+    {
+      "id": "mat-piramides-cones-vf-02",
+      "tema": "Pirâmides e cones",
+      "afirmacao": "Um copo cônico cheio até a metade da altura está pela metade.",
+      "verdadeira": false,
+      "explicacao": "Tem só 1/8 da capacidade."
+    },
+    {
+      "id": "mat-piramides-cones-vf-03",
+      "tema": "Pirâmides e cones",
+      "afirmacao": "Na pirâmide, o apótema é a altura de uma face lateral.",
+      "verdadeira": true,
+      "explicacao": "É a altura do triângulo."
+    },
+    {
+      "id": "mat-esfera-vf-01",
+      "tema": "Esfera",
+      "afirmacao": "Dobrando o raio, o volume da esfera fica 8 vezes maior.",
+      "verdadeira": true,
+      "explicacao": "2³ = 8."
+    },
+    {
+      "id": "mat-esfera-vf-02",
+      "tema": "Esfera",
+      "afirmacao": "A área da esfera é igual à de dois círculos máximos.",
+      "verdadeira": false,
+      "explicacao": "São quatro."
+    },
+    {
+      "id": "mat-esfera-vf-03",
+      "tema": "Esfera",
+      "afirmacao": "Todo corte plano numa esfera é um círculo.",
+      "verdadeira": true,
+      "explicacao": "O maior é o círculo máximo."
+    },
+    {
+      "id": "mat-capacidade-embalagens-vf-01",
+      "tema": "Capacidade e embalagens",
+      "afirmacao": "Um cubo de 10 cm de aresta comporta 1 litro.",
+      "verdadeira": true,
+      "explicacao": "10 × 10 × 10 = 1.000 cm³."
+    },
+    {
+      "id": "mat-capacidade-embalagens-vf-02",
+      "tema": "Capacidade e embalagens",
+      "afirmacao": "A embalagem maior é sempre a mais barata por litro.",
+      "verdadeira": false,
+      "explicacao": "Faça a conta do litro."
+    },
+    {
+      "id": "mat-capacidade-embalagens-vf-03",
+      "tema": "Capacidade e embalagens",
+      "afirmacao": "Duas torneiras abertas juntas somam as vazões.",
+      "verdadeira": true,
+      "explicacao": "E o ralo desconta."
+    },
+    {
+      "id": "mat-revisao-espacial-vf-01",
+      "tema": "Revisão do módulo: geometria espacial",
+      "afirmacao": "Uma estátua com o dobro da altura pesa 8 vezes mais.",
+      "verdadeira": true,
+      "explicacao": "Massa vai com o volume, k³."
+    },
+    {
+      "id": "mat-revisao-espacial-vf-02",
+      "tema": "Revisão do módulo: geometria espacial",
+      "afirmacao": "Para saber o papelão de uma caixa, calcula-se o volume.",
+      "verdadeira": false,
+      "explicacao": "Papelão é área."
+    },
+    {
+      "id": "mat-revisao-espacial-vf-03",
+      "tema": "Revisão do módulo: geometria espacial",
+      "afirmacao": "1 m³ tem 1.000 litros.",
+      "verdadeira": true,
+      "explicacao": "1 m³ = 1.000 dm³."
     }
   ],
   "sequencias": [
@@ -58580,6 +62948,54 @@
         "Converter cm³ para litros"
       ],
       "explicacao": "1.000 cm³ = 1 L."
+    },
+    {
+      "id": "mat-piramides-cones-seq-01",
+      "tema": "Pirâmides e cones",
+      "titulo": "Calcular o volume de um cone",
+      "itens": [
+        "Achar o raio da base",
+        "Calcular a área da base",
+        "Multiplicar pela altura",
+        "Dividir por 3"
+      ],
+      "explicacao": "Raio, não diâmetro."
+    },
+    {
+      "id": "mat-esfera-seq-01",
+      "tema": "Esfera",
+      "titulo": "Calcular o volume de uma bola",
+      "itens": [
+        "Achar o raio",
+        "Elevar ao cubo",
+        "Multiplicar por 4π",
+        "Dividir por 3"
+      ],
+      "explicacao": "Com π ≈ 3, é 4r³."
+    },
+    {
+      "id": "mat-capacidade-embalagens-seq-01",
+      "tema": "Capacidade e embalagens",
+      "titulo": "Escolher a oferta mais barata",
+      "itens": [
+        "Anotar preço e volume de cada embalagem",
+        "Passar os volumes para litros",
+        "Dividir o preço pelos litros",
+        "Escolher o menor preço do litro"
+      ],
+      "explicacao": "Compare o litro."
+    },
+    {
+      "id": "mat-revisao-espacial-seq-01",
+      "tema": "Revisão do módulo: geometria espacial",
+      "titulo": "Resolver uma questão de sólido",
+      "itens": [
+        "Identificar o sólido",
+        "Decidir se pede área ou volume",
+        "Passar as medidas para a mesma unidade",
+        "Aplicar a fórmula e conferir o arredondamento"
+      ],
+      "explicacao": "Unidade primeiro."
     }
   ],
   "adivinhas": [
@@ -59340,6 +63756,62 @@
         "Sólido de bases circulares",
         "Volume πr²h",
         "Forma de latas e canos"
+      ]
+    },
+    {
+      "id": "mat-piramides-cones-adv-01",
+      "tema": "Pirâmides e cones",
+      "dificuldade": "medio",
+      "resposta": "Geratriz",
+      "aceitas": [
+        "geratriz"
+      ],
+      "dicas": [
+        "Segmento do cone",
+        "Vai da ponta até a borda",
+        "Sai de Pitágoras com raio e altura"
+      ]
+    },
+    {
+      "id": "mat-esfera-adv-01",
+      "tema": "Esfera",
+      "dificuldade": "medio",
+      "resposta": "Hemisfério",
+      "aceitas": [
+        "hemisferio, hemisfério"
+      ],
+      "dicas": [
+        "Metade de um sólido redondo",
+        "A Terra tem o Norte e o Sul",
+        "Uma tigela redonda lembra"
+      ]
+    },
+    {
+      "id": "mat-capacidade-embalagens-adv-01",
+      "tema": "Capacidade e embalagens",
+      "dificuldade": "medio",
+      "resposta": "Vazão",
+      "aceitas": [
+        "vazao, vazão"
+      ],
+      "dicas": [
+        "Medida de torneiras e bombas",
+        "Litros por minuto",
+        "Volume dividido pelo tempo"
+      ]
+    },
+    {
+      "id": "mat-revisao-espacial-adv-01",
+      "tema": "Revisão do módulo: geometria espacial",
+      "dificuldade": "medio",
+      "resposta": "Volume",
+      "aceitas": [
+        "volume"
+      ],
+      "dicas": [
+        "Espaço que o sólido ocupa",
+        "Medido em unidade ao cubo",
+        "Cabe nele em litros"
       ]
     }
   ],
@@ -60597,6 +65069,102 @@
       "tema": "Matemática",
       "palavra": "Rolo",
       "dica": "Cilindro de papel"
+    },
+    {
+      "id": "mat-piramides-cones-pal-01",
+      "tema": "Matemática",
+      "palavra": "Cone",
+      "dica": "Casquinha de sorvete"
+    },
+    {
+      "id": "mat-piramides-cones-pal-02",
+      "tema": "Matemática",
+      "palavra": "Funil",
+      "dica": "Cone de cozinha"
+    },
+    {
+      "id": "mat-piramides-cones-pal-03",
+      "tema": "Matemática",
+      "palavra": "Vértice",
+      "dica": "Ponta da pirâmide"
+    },
+    {
+      "id": "mat-piramides-cones-pal-04",
+      "tema": "Matemática",
+      "palavra": "Balde",
+      "dica": "Tronco de cone"
+    },
+    {
+      "id": "mat-esfera-pal-01",
+      "tema": "Matemática",
+      "palavra": "Esfera",
+      "dica": "Sólido de uma bola"
+    },
+    {
+      "id": "mat-esfera-pal-02",
+      "tema": "Matemática",
+      "palavra": "Raio",
+      "dica": "Do centro até a superfície"
+    },
+    {
+      "id": "mat-esfera-pal-03",
+      "tema": "Matemática",
+      "palavra": "Globo",
+      "dica": "Esfera da Terra"
+    },
+    {
+      "id": "mat-esfera-pal-04",
+      "tema": "Matemática",
+      "palavra": "Bola",
+      "dica": "Esfera do futebol"
+    },
+    {
+      "id": "mat-capacidade-embalagens-pal-01",
+      "tema": "Matemática",
+      "palavra": "Litro",
+      "dica": "Um decímetro cúbico"
+    },
+    {
+      "id": "mat-capacidade-embalagens-pal-02",
+      "tema": "Matemática",
+      "palavra": "Cisterna",
+      "dica": "Guarda água da chuva"
+    },
+    {
+      "id": "mat-capacidade-embalagens-pal-03",
+      "tema": "Matemática",
+      "palavra": "Torneira",
+      "dica": "Tem vazão"
+    },
+    {
+      "id": "mat-capacidade-embalagens-pal-04",
+      "tema": "Matemática",
+      "palavra": "Lata",
+      "dica": "Embalagem cilíndrica"
+    },
+    {
+      "id": "mat-revisao-espacial-pal-01",
+      "tema": "Matemática",
+      "palavra": "Silo",
+      "dica": "Guarda grãos"
+    },
+    {
+      "id": "mat-revisao-espacial-pal-02",
+      "tema": "Matemática",
+      "palavra": "Sólido",
+      "dica": "Ocupa espaço"
+    },
+    {
+      "id": "mat-revisao-espacial-pal-03",
+      "tema": "Matemática",
+      "palavra": "Esfera",
+      "dica": "Bola perfeita"
+    },
+    {
+      "id": "mat-revisao-espacial-pal-04",
+      "tema": "Matemática",
+      "palavra": "Caixa",
+      "dica": "Tem seis faces"
     }
   ],
   "fichas": {
@@ -62460,6 +67028,146 @@
       "pegadinhas": [
         "Comparar só as alturas.",
         "Usar a razão linear dos raios."
+      ]
+    },
+    "Volume da pirâmide": {
+      "texto": [
+        "O volume da pirâmide é um terço do volume do prisma de mesma base e mesma altura: V = área da base × altura ÷ 3. A base pode ser quadrada, retangular ou triangular; calcule a área dela primeiro.",
+        "Cortando a pirâmide por um plano paralelo à base, o topo é uma pirâmide semelhante. Com razão k entre as alturas, o volume do topo é k³ do total; o tronco fica com o resto."
+      ],
+      "pontos": [
+        "V = Ab × h ÷ 3.",
+        "Base triangular: divida por 2 e depois por 3."
+      ],
+      "pegadinhas": [
+        "Esquecer o ÷ 3.",
+        "Usar k² no volume do topo cortado."
+      ]
+    },
+    "Volume do cone": {
+      "texto": [
+        "O cone tem um terço do volume do cilindro de mesma base e altura: V = πr²h ÷ 3. Com π ≈ 3, a conta fica r² × h.",
+        "Com a mesma altura, dobrar o raio quadruplica o volume. Num copo cônico com a ponta para baixo, a água até a metade da altura ocupa só 1/8. Tronco de cone = cone grande − cone da ponta."
+      ],
+      "pontos": [
+        "Com π ≈ 3, o volume do cone é r² × h.",
+        "Arredonde para cima viagens e caixas."
+      ],
+      "pegadinhas": [
+        "Usar o diâmetro como raio.",
+        "Achar que metade da altura é metade do volume."
+      ]
+    },
+    "Geratriz e área": {
+      "texto": [
+        "No cone reto, a geratriz liga o vértice à borda da base: g² = h² + r². Área lateral: π × r × g; área total: π × r × g + πr².",
+        "Na pirâmide, a área lateral é a soma dos triângulos (lado × apótema ÷ 2 em cada um). O apótema sai de Pitágoras com a altura e a metade do lado da base."
+      ],
+      "pontos": [
+        "Ternos úteis: 6, 8, 10 e 5, 12, 13.",
+        "Chapéu e copinho: só a área lateral."
+      ],
+      "pegadinhas": [
+        "Usar a altura no lugar da geratriz.",
+        "Somar a base quando o objeto é aberto."
+      ]
+    },
+    "Volume da esfera": {
+      "texto": [
+        "V = 4πr³ ÷ 3; com π ≈ 3, V ≈ 4r³. Meia esfera: metade disso. Bola de raio 10 cm ≈ 4 L.",
+        "Volume cresce com o cubo do raio: dobro do raio, 8 vezes; triplo, 27 vezes. Derreter uma esfera em bolinhas: número = (R ÷ r)³. Objeto mergulhado: subida = volume ÷ área da base."
+      ],
+      "pontos": [
+        "Com π ≈ 3, V ≈ 4r³.",
+        "Sólido composto: some as partes."
+      ],
+      "pegadinhas": [
+        "Usar r² no volume.",
+        "Usar o diâmetro como raio."
+      ]
+    },
+    "Área da esfera": {
+      "texto": [
+        "A = 4πr², quatro círculos máximos. Meia esfera: parte curva 2πr²; com a tampa plana, 3πr².",
+        "Área cresce com o quadrado do raio: dobro do raio, 4 vezes mais couro ou tinta. Para tinta, área total ÷ rendimento por litro."
+      ],
+      "pontos": [
+        "Meia esfera com tampa: 3πr².",
+        "Converta cm para m antes de usar m²."
+      ],
+      "pegadinhas": [
+        "Confundir área (r²) com volume (r³).",
+        "Esquecer a base plana da meia esfera."
+      ]
+    },
+    "Comparar sólidos": {
+      "texto": [
+        "Esfera no cilindro justo (altura 2r): ocupa 2/3. Esfera no cubo justo: π/6, cerca de 52% (com π ≈ 3, metade).",
+        "Para comparar preços de esferas, compare volumes: o dobro do raio vale 8 unidades pequenas. Mesmo volume e mesmo raio: altura do cilindro = 4r ÷ 3."
+      ],
+      "pontos": [
+        "Tubo de bolas justo: 1/3 de ar.",
+        "Calcule os dois volumes antes de escolher."
+      ],
+      "pegadinhas": [
+        "Comparar pelo raio e não pelo volume.",
+        "Usar o fator 4 no lugar de 8."
+      ]
+    },
+    "Litros e volumes": {
+      "texto": [
+        "1 dm³ = 1 L = 1.000 cm³; 1 cm³ = 1 mL; 1 m³ = 1.000 L. Calcule o volume com todas as medidas na mesma unidade e só depois converta.",
+        "Chuva: 1 mm sobre 1 m² = 1 L. Consumo: volume em litros ÷ gasto diário. Garrafas: volume em mL ÷ tamanho da garrafa, contando só as cheias."
+      ],
+      "pontos": [
+        "cm³ ÷ 1.000 = L.",
+        "m³ × 1.000 = L."
+      ],
+      "pegadinhas": [
+        "Multiplicar metros por centímetros.",
+        "Dividir os cm³ por 100."
+      ]
+    },
+    "Escolher a embalagem": {
+      "texto": [
+        "Para comparar ofertas, calcule o preço de 1 litro em cada embalagem: preço ÷ volume em litros. A maior nem sempre é a mais barata.",
+        "Para o mesmo volume, o cubo é a caixa com menor área; a lata com altura igual ao diâmetro é a cilíndrica mais econômica. Trocar caixa por cilindro justo (π ≈ 3) perde 1/4 do volume."
+      ],
+      "pontos": [
+        "Preço do litro = preço ÷ litros.",
+        "Área da caixa: 2(ab + ac + bc)."
+      ],
+      "pegadinhas": [
+        "Comparar o preço da embalagem.",
+        "Achar que volume igual dá área igual."
+      ]
+    },
+    "Enchimento e vazão": {
+      "texto": [
+        "Tempo = volume ÷ vazão. Torneiras juntas somam as vazões; ralo ou vazamento subtrai. Converta minutos em horas no fim.",
+        "Em prisma ou cilindro em pé, o nível sobe no mesmo ritmo: subida = volume ÷ área da base. Em recipientes que afinam, o nível acelera; nos que alargam, desacelera."
+      ],
+      "pontos": [
+        "Vazão efetiva = entra − sai.",
+        "Calcule só o volume que precisa entrar ou sair."
+      ],
+      "pegadinhas": [
+        "Ignorar o ralo aberto.",
+        "Esquecer de converter litros em m³."
+      ]
+    },
+    "Revisão: geometria espacial": {
+      "texto": [
+        "Reconheça o sólido e escolha a fórmula: prisma e cilindro, base × altura; pirâmide e cone, ÷ 3; esfera, 4πr³ ÷ 3. Áreas são somas de faces ou da planificação.",
+        "Ampliação de razão k: área × k², volume e massa × k³. Capacidade: 1 dm³ = 1 L e 1 m³ = 1.000 L. Tempo = volume ÷ vazão. Arredonde para cima o que falta (viagens, caixas) e para baixo o que precisa ser inteiro (velas, garrafas cheias)."
+      ],
+      "pontos": [
+        "Antes de calcular, pergunte: é área ou volume?",
+        "Raio é metade do diâmetro."
+      ],
+      "pegadinhas": [
+        "Esquecer o ÷ 3 de pirâmides e cones.",
+        "Usar k² no volume."
       ]
     }
   }
