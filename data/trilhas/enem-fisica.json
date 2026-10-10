@@ -1,0 +1,3603 @@
+{
+  "id": "enem-fisica",
+  "nome": "Enem · Física",
+  "descricao": "Física para o Enem e os vestibulares: movimento e forças, energia, fluidos e gravitação, calor e ondas, óptica, eletricidade e magnetismo, com as habilidades da Matriz do Inep.",
+  "categoria": "Enem e vestibular",
+  "fasesLivres": true,
+  "prova": {
+    "questoes": 45,
+    "minutos": 135,
+    "aprovacao": 60,
+    "exigeFases": false
+  },
+  "fases": [
+    {
+      "id": "fis-grandezas",
+      "nome": "Aula 1 · Grandezas, unidades e vetores",
+      "modulo": "Módulo 1 · Movimento e forças",
+      "descricao": "Módulo 1 · aula 1 de 3 · 35 min · treina as habilidades H17 e H20",
+      "habilidades": [
+        "H17",
+        "H20"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Grandezas e unidades",
+            "texto": [
+              "Grandeza é tudo o que pode ser medido, como comprimento, massa, tempo e temperatura. O **Sistema Internacional** (SI) padroniza as unidades no mundo todo: metro (m) para comprimento, quilograma (kg) para massa, segundo (s) para tempo, kelvin (K) para temperatura e ampere (A) para corrente elétrica. Os prefixos multiplicam a unidade: quilo vale 10³, mega vale 10⁶, mili vale 10⁻³ e micro vale 10⁻⁶. Converter é rotina: 1 km = 1.000 m, 1 h = 3.600 s, e para passar de km/h para m/s basta dividir por 3,6. Outras unidades derivam das básicas: velocidade em m/s, aceleração em m/s², força em newton (N = kg·m/s²), energia em joule (J) e potência em watt (W). Conferir as unidades de uma fórmula, a análise dimensional, ajuda a evitar erros."
+            ]
+          },
+          {
+            "titulo": "Notação científica e ordem de grandeza",
+            "texto": [
+              "A **notação científica** escreve um número como a × 10ⁿ, com a maior ou igual a 1 e menor que 10. A velocidade da luz, 300.000 km/s, vira 3 × 10⁵ km/s, ou 3 × 10⁸ m/s. Para multiplicar, multiplicam-se os números e somam-se os expoentes; para dividir, dividem-se os números e subtraem-se os expoentes. A ordem de grandeza é a potência de 10 mais próxima do valor: se a for menor que cerca de 3,16, fica 10ⁿ; se for maior, sobe para 10ⁿ⁺¹. Os algarismos significativos mostram a precisão da medida."
+            ]
+          },
+          {
+            "titulo": "Vetores",
+            "texto": [
+              "Grandezas escalares ficam definidas só pelo valor e pela unidade, como massa, tempo, temperatura e energia. Já as **grandezas vetoriais**, como deslocamento, velocidade, aceleração e força, exigem módulo, direção e sentido e são representadas por setas. Vetores na mesma direção e no mesmo sentido se somam; em sentidos opostos, se subtraem; perpendiculares se combinam pelo teorema de Pitágoras (3 e 4 dão 5). Deslocamento não é o mesmo que distância percorrida: quem dá uma volta completa numa pista percorre 400 m, mas tem deslocamento zero."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Converter unidades em situações do dia a dia, estimar ordens de grandeza e combinar vetores de força ou de velocidade."
+            ]
+          }
+        ],
+        "introducao": "Antes de calcular qualquer movimento, é preciso medir direito: em que unidade, com que tamanho e em que direção. Esta aula apresenta o Sistema Internacional, a notação científica e os vetores, ferramentas que aparecem em quase toda questão de Física do Enem.",
+        "mapaMental": {
+          "centro": "Medidas e vetores",
+          "ramos": [
+            {
+              "titulo": "Unidades",
+              "itens": [
+                "metro",
+                "quilograma",
+                "segundo"
+              ]
+            },
+            {
+              "titulo": "Prefixos",
+              "itens": [
+                "quilo",
+                "mili",
+                "mega"
+              ]
+            },
+            {
+              "titulo": "Potência de 10",
+              "itens": [
+                "ordem de grandeza",
+                "algarismos significativos",
+                "conversões"
+              ]
+            },
+            {
+              "titulo": "Escalares",
+              "itens": [
+                "massa",
+                "tempo",
+                "temperatura"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "📏",
+            "conceito": "Régua igual no mundo inteiro",
+            "liga": "Sistema Internacional",
+            "porque": "Metro, quilograma e segundo para todos."
+          },
+          {
+            "icone": "🔟",
+            "conceito": "Número com expoente",
+            "liga": "notação científica",
+            "porque": "a × 10ⁿ para números enormes ou minúsculos."
+          },
+          {
+            "icone": "➡️",
+            "conceito": "Seta com tamanho e rumo",
+            "liga": "grandezas vetoriais",
+            "porque": "Módulo, direção e sentido."
+          }
+        ],
+        "pontos": [
+          "**Sistema Internacional**: metro, quilograma, segundo, kelvin e ampere.",
+          "Prefixos: quilo (10³), mega (10⁶), mili (10⁻³), micro (10⁻⁶).",
+          "De km/h para m/s, divide-se por 3,6.",
+          "**Notação científica**: a × 10ⁿ, com a entre 1 e 10.",
+          "**Grandezas vetoriais** têm módulo, direção e sentido; escalares, só valor.",
+          "Vetores perpendiculares se combinam por Pitágoras."
+        ],
+        "perolas": [
+          "Unidade errada transforma acerto em erro."
+        ],
+        "reforcar": [
+          "sistema internacional",
+          "notacao cientifica",
+          "grandezas vetoriais"
+        ]
+      }
+    },
+    {
+      "id": "fis-cinematica-mu",
+      "nome": "Aula 2 · Movimento uniforme e velocidade média",
+      "modulo": "Módulo 1 · Movimento e forças",
+      "descricao": "Módulo 1 · aula 2 de 3 · 35 min · treina as habilidades H17 e H20",
+      "habilidades": [
+        "H17",
+        "H20"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Referencial e trajetória",
+            "texto": [
+              "Movimento e repouso dependem do **referencial**, o corpo ou ponto escolhido para observar. Um passageiro sentado no ônibus está em repouso em relação ao banco e em movimento em relação à calçada. A trajetória também muda com o observador: uma bola solta dentro de um trem cai em linha reta para quem está no vagão e descreve uma curva para quem está na plataforma. Posição (s) é o lugar do corpo marcado numa reta orientada a partir de uma origem; deslocamento é a variação dessa posição."
+            ]
+          },
+          {
+            "titulo": "Velocidade média",
+            "texto": [
+              "A **velocidade média** é o deslocamento dividido pelo intervalo de tempo: v = Δs/Δt. Um carro que percorre 120 km em 2 h tem média de 60 km/h, mesmo que tenha parado em pedágios ou acelerado nas retas. Um erro clássico é tirar a média aritmética das velocidades de trechos diferentes: se os trechos têm a mesma distância e tempos diferentes, é preciso somar as distâncias e dividir pelo tempo total. Velocímetro mostra a velocidade instantânea; radar de trecho calcula a média entre dois pontos."
+            ]
+          },
+          {
+            "titulo": "Movimento uniforme",
+            "texto": [
+              "No movimento uniforme (MU) a velocidade é constante e não nula: o corpo percorre distâncias iguais em tempos iguais. A função horária é s = s₀ + v·t. Quando dois corpos andam na mesma reta, usa-se a **velocidade relativa**: em sentidos opostos as velocidades se somam; no mesmo sentido, subtraem-se. Assim se calcula quando dois trens se cruzam ou quanto tempo um carro leva para ultrapassar outro. Para um trem passar inteiro por uma ponte, ele percorre o próprio comprimento mais o comprimento da ponte. O som no ar, a cerca de 340 m/s, é um exemplo de propagação com velocidade constante."
+            ]
+          },
+          {
+            "titulo": "Gráficos do movimento",
+            "texto": [
+              "No gráfico posição × tempo do MU, a linha é reta e a inclinação dá a velocidade: subindo, velocidade positiva; descendo, negativa; horizontal, o corpo está parado. No gráfico velocidade × tempo, a linha do MU é horizontal, e a área sob ela é o deslocamento."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Desenhe a reta com a origem, marque posições e sentido e só então escreva a função horária. Nos gráficos, leia primeiro o que está em cada eixo e as unidades."
+            ]
+          }
+        ],
+        "introducao": "Quem está parado e quem está em movimento? A resposta depende de onde se olha. Esta aula define referencial, velocidade média e movimento uniforme, e ensina a ler os gráficos de posição e de velocidade que o Enem adora.",
+        "mapaMental": {
+          "centro": "Movimento uniforme",
+          "ramos": [
+            {
+              "titulo": "Trajetória",
+              "itens": [
+                "depende do observador",
+                "reta ou curva",
+                "posição na reta"
+              ]
+            },
+            {
+              "titulo": "Função horária",
+              "itens": [
+                "s = s₀ + v·t",
+                "distâncias iguais em tempos iguais",
+                "velocidade constante"
+              ]
+            },
+            {
+              "titulo": "Gráfico s × t",
+              "itens": [
+                "inclinação",
+                "reta horizontal = parado",
+                "reta descendo"
+              ]
+            },
+            {
+              "titulo": "Gráfico v × t",
+              "itens": [
+                "linha horizontal",
+                "área = deslocamento"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🚌",
+            "conceito": "Passageiro parado e em movimento",
+            "liga": "referencial",
+            "porque": "Depende de onde se olha."
+          },
+          {
+            "icone": "🛣️",
+            "conceito": "Radar de trecho",
+            "liga": "velocidade media",
+            "porque": "Distância total dividida pelo tempo total."
+          },
+          {
+            "icone": "🚆",
+            "conceito": "Dois trens se cruzando",
+            "liga": "velocidade relativa",
+            "porque": "Opostos somam; mesmo sentido subtrai."
+          }
+        ],
+        "pontos": [
+          "O **referencial** decide quem está parado.",
+          "**Velocidade média** = deslocamento ÷ tempo total, nunca média aritmética das velocidades.",
+          "MU: s = s₀ + v·t.",
+          "**Velocidade relativa**: sentidos opostos somam; mesmo sentido subtrai.",
+          "Trem na ponte percorre o próprio comprimento mais o da ponte.",
+          "No gráfico s × t, a inclinação é a velocidade."
+        ],
+        "perolas": [
+          "Parado é sempre \"parado em relação a quê?\"."
+        ],
+        "reforcar": [
+          "referencial",
+          "velocidade media",
+          "velocidade relativa"
+        ]
+      }
+    },
+    {
+      "id": "fis-muv-queda",
+      "nome": "Aula 3 · Movimento variado e queda livre",
+      "modulo": "Módulo 1 · Movimento e forças",
+      "descricao": "Módulo 1 · aula 3 de 3 · 35 min · treina as habilidades H17 e H20",
+      "habilidades": [
+        "H17",
+        "H20"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Aceleração e MUV",
+            "texto": [
+              "**Aceleração** é a variação da velocidade dividida pelo tempo: a = Δv/Δt, medida em m/s². Um carro que vai de 0 a 20 m/s em 5 s tem aceleração de 4 m/s², ou seja, ganha 4 m/s a cada segundo. No movimento uniformemente variado (MUV) a aceleração é constante, e valem três equações: v = v₀ + a·t; s = s₀ + v₀·t + a·t²/2; e a de Torricelli, v² = v₀² + 2·a·Δs, útil quando o tempo não é dado. O movimento é acelerado quando velocidade e aceleração têm o mesmo sinal, e retardado quando têm sinais opostos, como numa frenagem. No gráfico v × t, o MUV vira uma reta inclinada, cuja inclinação é a aceleração; no s × t, uma parábola."
+            ]
+          },
+          {
+            "titulo": "Queda e lançamento vertical",
+            "texto": [
+              "Perto da superfície, sem resistência do ar, todos os corpos caem com a mesma aceleração, g ≈ 10 m/s², não importa a massa. É a **queda livre**: a velocidade cresce 10 m/s a cada segundo e a altura percorrida é h = g·t²/2. Em 2 s, um corpo cai 20 m e chega a 20 m/s. No lançamento vertical para cima, a velocidade diminui 10 m/s a cada segundo até zerar no ponto mais alto, e o tempo de subida é igual ao de descida. No ar real, uma folha cai mais devagar que uma pedra porque o atrito com o ar pesa mais para ela; no vácuo, chegariam juntas."
+            ]
+          },
+          {
+            "titulo": "Segurança no trânsito",
+            "texto": [
+              "Parar um carro leva duas etapas. No tempo de reação, cerca de 1 s, o carro segue com a mesma velocidade. Depois vem a **distância de frenagem**, dada por Torricelli: d = v²/(2a). Como depende do quadrado da velocidade, dobrar a velocidade quadruplica essa distância. Álcool, sono e celular aumentam o tempo de reação; pista molhada e pneu gasto diminuem a desaceleração. Cinto e airbag aumentam o tempo de parada do corpo numa colisão e assim reduzem a força sobre ele."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Liste o que o problema dá (v₀, v, a, t, Δs) e escolha a equação que não exige o dado que falta. Adote g = 10 m/s², como o Enem costuma indicar."
+            ]
+          }
+        ],
+        "introducao": "Quase nada no dia a dia anda com velocidade constante: o carro arranca, freia, a bola sobe e desce. Esta aula trata da aceleração, das equações do movimento uniformemente variado, da queda dos corpos e da física por trás da segurança no trânsito.",
+        "mapaMental": {
+          "centro": "Movimento variado",
+          "ramos": [
+            {
+              "titulo": "Equações",
+              "itens": [
+                "v = v₀ + a·t",
+                "s = s₀ + v₀·t + a·t²/2",
+                "Torricelli sem o tempo"
+              ]
+            },
+            {
+              "titulo": "Gráficos",
+              "itens": [
+                "v × t em reta inclinada",
+                "s × t em parábola"
+              ]
+            },
+            {
+              "titulo": "Lançamento vertical",
+              "itens": [
+                "velocidade diminui 10 m/s a cada segundo",
+                "velocidade zero no topo",
+                "subida e descida iguais"
+              ]
+            },
+            {
+              "titulo": "Parada do carro",
+              "itens": [
+                "tempo de reação",
+                "pista molhada",
+                "cinto e airbag"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🏎️",
+            "conceito": "Ganhar velocidade a cada segundo",
+            "liga": "aceleracao",
+            "porque": "Δv/Δt em m/s²."
+          },
+          {
+            "icone": "🪶",
+            "conceito": "Pena e pedra no vácuo",
+            "liga": "queda livre",
+            "porque": "Mesma aceleração g, sem ar."
+          },
+          {
+            "icone": "🛑",
+            "conceito": "Velocidade em dobro, pista quatro vezes maior",
+            "liga": "distancia de frenagem",
+            "porque": "Depende de v²."
+          }
+        ],
+        "pontos": [
+          "**Aceleração** = Δv/Δt, em m/s².",
+          "MUV: v = v₀ + a·t; s = s₀ + v₀·t + a·t²/2; Torricelli v² = v₀² + 2·a·Δs.",
+          "**Queda livre**: g ≈ 10 m/s², igual para qualquer massa.",
+          "Subida e descida têm o mesmo tempo.",
+          "**Distância de frenagem** = v²/(2a): o dobro da velocidade dá o quádruplo.",
+          "Tempo de reação: o carro anda sem frear."
+        ],
+        "perolas": [
+          "Correr o dobro é precisar de quatro vezes mais espaço para parar."
+        ],
+        "reforcar": [
+          "aceleracao",
+          "queda livre",
+          "distancia de frenagem"
+        ]
+      }
+    }
+  ],
+  "questoes": [
+    {
+      "id": "fis-grandezas-q01",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "No Sistema Internacional, a unidade de massa é o:",
+      "alternativas": [
+        "Newton",
+        "Grama",
+        "Litro",
+        "Quilograma",
+        "Metro"
+      ],
+      "correta": 3,
+      "explicacao": "O padrão do SI é o kg. Dica de mergulhador: massa no SI tem quilo no nome.",
+      "comentarios": [
+        "É de força.",
+        "É submúltiplo.",
+        "É de volume.",
+        "",
+        "É de comprimento."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q02",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Quantos metros há em 2,5 km?",
+      "alternativas": [
+        "2,5 m",
+        "25 m",
+        "25.000 m",
+        "2.500 m",
+        "250 m"
+      ],
+      "correta": 3,
+      "explicacao": "1 km = 1.000 m; 2,5 × 1.000 = 2.500. Dica de mergulhador: quilo é mil.",
+      "comentarios": [
+        "Não converteu.",
+        "Errou a casa.",
+        "Errou a casa.",
+        "",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q03",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Uma velocidade de 72 km/h equivale a:",
+      "alternativas": [
+        "2 m/s",
+        "72 m/s",
+        "7,2 m/s",
+        "20 m/s",
+        "259,2 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "72 ÷ 3,6 = 20. Dica de mergulhador: de km/h para m/s, divide por 3,6.",
+      "comentarios": [
+        "Errou a casa.",
+        "Não converteu.",
+        "Errou a conta.",
+        "",
+        "Multiplicou em vez de dividir."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q04",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "O prefixo mili indica:",
+      "alternativas": [
+        "Um milésimo, ou 10⁻³",
+        "Mil vezes, ou 10³",
+        "Um milhão de vezes",
+        "Um centésimo",
+        "Um milionésimo"
+      ],
+      "correta": 0,
+      "explicacao": "1 mm é a milésima parte do metro. Dica de mergulhador: mili é milésimo.",
+      "comentarios": [
+        "",
+        "Isso é quilo.",
+        "Isso é mega.",
+        "Isso é centi.",
+        "Isso é micro."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q05",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "A unidade de força no SI, o newton, equivale a:",
+      "alternativas": [
+        "kg/m",
+        "kg·m/s",
+        "m/s²",
+        "J/s",
+        "kg·m/s²"
+      ],
+      "correta": 4,
+      "explicacao": "F = m·a: massa vezes aceleração. Dica de mergulhador: newton é quilo vezes aceleração.",
+      "comentarios": [
+        "Não.",
+        "Falta um segundo.",
+        "É só aceleração.",
+        "É o watt.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q06",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Um carro a 108 km/h percorre, em 10 segundos:",
+      "alternativas": [
+        "300 m",
+        "1.080 m",
+        "3.000 m",
+        "108 m",
+        "30 m"
+      ],
+      "correta": 0,
+      "explicacao": "108 km/h = 30 m/s; 30 × 10 = 300 m. Dica de mergulhador: converta antes de multiplicar.",
+      "comentarios": [
+        "",
+        "Não converteu a unidade.",
+        "Errou a casa.",
+        "Não multiplicou pelo tempo.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q07",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Pela análise dimensional, se d é distância (m) e t é tempo (s), a grandeza d/t² tem unidade de:",
+      "alternativas": [
+        "m/s, uma velocidade",
+        "m/s², uma aceleração",
+        "m·s², uma força",
+        "kg, uma massa",
+        "s/m, um tempo"
+      ],
+      "correta": 1,
+      "explicacao": "Metro dividido por segundo ao quadrado. Dica de mergulhador: confira as unidades da fórmula.",
+      "comentarios": [
+        "Falta um segundo.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q08",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Em notação científica, 300.000 se escreve:",
+      "alternativas": [
+        "0,3 × 10⁶",
+        "3 × 10⁶",
+        "30 × 10⁴",
+        "3 × 10⁴",
+        "3 × 10⁵"
+      ],
+      "correta": 4,
+      "explicacao": "Cinco casas depois do 3. Dica de mergulhador: conte os zeros.",
+      "comentarios": [
+        "O número antes da potência é menor que 1.",
+        "Um zero a mais.",
+        "O número antes da potência passa de 10.",
+        "Um zero a menos.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q09",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Na notação científica a × 10ⁿ, o número a deve ser:",
+      "alternativas": [
+        "Menor que 1",
+        "Maior ou igual a 1 e menor que 10",
+        "Sempre negativo",
+        "Sempre zero",
+        "Sempre maior que 10"
+      ],
+      "correta": 1,
+      "explicacao": "Assim cada número tem uma só forma. Dica de mergulhador: um algarismo antes da vírgula.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q10",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "A velocidade da luz, 300.000 km/s, em m/s, é:",
+      "alternativas": [
+        "3 × 10⁵ m/s",
+        "3 × 10⁶ m/s",
+        "3 × 10² m/s",
+        "3 × 10⁸ m/s",
+        "3 × 10¹¹ m/s"
+      ],
+      "correta": 3,
+      "explicacao": "3 × 10⁵ × 10³ = 3 × 10⁸. Dica de mergulhador: km para m soma três no expoente.",
+      "comentarios": [
+        "Esqueceu os 1.000 metros.",
+        "Errou o expoente.",
+        "Dividiu.",
+        "",
+        "Multiplicou demais."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q11",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "O produto (2 × 10³) × (3 × 10⁴) vale:",
+      "alternativas": [
+        "5 × 10⁷",
+        "23 × 10⁷",
+        "6 × 10¹",
+        "6 × 10⁷",
+        "6 × 10¹²"
+      ],
+      "correta": 3,
+      "explicacao": "Multiplica 2 × 3 e soma os expoentes 3 + 4. Dica de mergulhador: multiplicação soma expoentes.",
+      "comentarios": [
+        "Somou 2 e 3.",
+        "Juntou os números.",
+        "Subtraiu os expoentes.",
+        "",
+        "Multiplicou os expoentes."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q12",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "A ordem de grandeza de 800 é:",
+      "alternativas": [
+        "10²",
+        "10⁸",
+        "10¹",
+        "10³",
+        "10⁴"
+      ],
+      "correta": 3,
+      "explicacao": "800 = 8 × 10²; como 8 > 3,16, a ordem é 10³. Dica de mergulhador: passou de 3,16, sobe um degrau.",
+      "comentarios": [
+        "8 passa de 3,16, então sobe.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q13",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Um coração bate cerca de 70 vezes por minuto. Em um dia, o número de batimentos tem ordem de grandeza de:",
+      "alternativas": [
+        "10⁴",
+        "10³",
+        "10⁷",
+        "10⁵",
+        "10⁶"
+      ],
+      "correta": 3,
+      "explicacao": "70 × 60 × 24 = 100.800, cerca de 1 × 10⁵. Dica de mergulhador: multiplique minutos, horas e estime.",
+      "comentarios": [
+        "Errou a ordem.",
+        "Esqueceu as horas.",
+        "Errou a ordem.",
+        "",
+        "Errou a ordem."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q14",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Um vírus mede cerca de 100 nanômetros, e 1 nm = 10⁻⁹ m. Em metros, isso é:",
+      "alternativas": [
+        "10⁷ m",
+        "10⁻¹¹ m",
+        "10⁻⁷ m",
+        "10² m",
+        "10⁻⁹ m"
+      ],
+      "correta": 2,
+      "explicacao": "10² × 10⁻⁹ = 10⁻⁷. Dica de mergulhador: some os expoentes.",
+      "comentarios": [
+        "Sinal errado.",
+        "Subtraiu errado.",
+        "",
+        "Não converteu.",
+        "Esqueceu o 100."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q15",
+      "tema": "Vetores",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Qual destas grandezas é vetorial?",
+      "alternativas": [
+        "Tempo",
+        "Temperatura",
+        "Energia",
+        "Massa",
+        "Velocidade"
+      ],
+      "correta": 4,
+      "explicacao": "Precisa de direção e sentido. Dica de mergulhador: se tem rumo, é vetor.",
+      "comentarios": [
+        "Escalar.",
+        "Escalar.",
+        "Escalar.",
+        "Escalar.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q16",
+      "tema": "Vetores",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Para definir uma grandeza vetorial, é preciso dar:",
+      "alternativas": [
+        "Só o tempo",
+        "Só a unidade",
+        "Módulo, direção e sentido",
+        "Só o valor numérico",
+        "Só a cor da seta"
+      ],
+      "correta": 2,
+      "explicacao": "A seta mostra os três. Dica de mergulhador: tamanho, reta e ponta.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Isso é escalar.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q17",
+      "tema": "Vetores",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "Duas forças de 3 N e 4 N, na mesma direção e no mesmo sentido, têm resultante de:",
+      "alternativas": [
+        "0 N",
+        "12 N",
+        "7 N",
+        "1 N",
+        "5 N"
+      ],
+      "correta": 2,
+      "explicacao": "Mesmo sentido, soma. Dica de mergulhador: puxando junto, soma.",
+      "comentarios": [
+        "Não.",
+        "Multiplicou.",
+        "",
+        "Seria em sentidos opostos.",
+        "Seria perpendicular."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q18",
+      "tema": "Vetores",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "Duas forças perpendiculares de 3 N e 4 N têm resultante de:",
+      "alternativas": [
+        "7 N",
+        "12 N",
+        "25 N",
+        "1 N",
+        "5 N"
+      ],
+      "correta": 4,
+      "explicacao": "√(3² + 4²) = 5. Dica de mergulhador: triângulo 3, 4, 5.",
+      "comentarios": [
+        "Seria no mesmo sentido.",
+        "Multiplicou.",
+        "Esqueceu a raiz.",
+        "Seria oposto.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q19",
+      "tema": "Vetores",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "Um atleta dá uma volta completa numa pista de 400 m. Seu deslocamento é:",
+      "alternativas": [
+        "200 m",
+        "800 m",
+        "Zero",
+        "400 m",
+        "100 m"
+      ],
+      "correta": 2,
+      "explicacao": "Terminou onde começou. Dica de mergulhador: voltou ao início, deslocamento nulo.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "É a distância percorrida.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q20",
+      "tema": "Vetores",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Um barco atravessa um rio com velocidade de 4 m/s perpendicular à correnteza, que tem 3 m/s. A velocidade resultante do barco é:",
+      "alternativas": [
+        "25 m/s",
+        "12 m/s",
+        "1 m/s",
+        "5 m/s",
+        "7 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "√(4² + 3²) = 5. Dica de mergulhador: correnteza de lado, Pitágoras.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "Multiplicou.",
+        "Seria oposto.",
+        "",
+        "Seria no mesmo sentido."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q01",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um passageiro sentado num ônibus em movimento está em repouso em relação:",
+      "alternativas": [
+        "A uma árvore na rua",
+        "A um carro parado",
+        "Ao banco do ônibus",
+        "Ao Sol",
+        "À calçada"
+      ],
+      "correta": 2,
+      "explicacao": "Ele não muda de posição em relação ao banco. Dica de mergulhador: repouso sempre tem um \"em relação a\".",
+      "comentarios": [
+        "Ele se move em relação a ela.",
+        "Não.",
+        "",
+        "Não.",
+        "Em relação a ela ele se move."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q02",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um carro percorre 120 km em 2 h. Sua velocidade média é:",
+      "alternativas": [
+        "240 km/h",
+        "122 km/h",
+        "60 km/h",
+        "120 km/h",
+        "30 km/h"
+      ],
+      "correta": 2,
+      "explicacao": "v = 120 ÷ 2 = 60. Dica de mergulhador: distância dividida pelo tempo.",
+      "comentarios": [
+        "Multiplicou.",
+        "Somou.",
+        "",
+        "Esqueceu o tempo.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q03",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "O velocímetro de um carro indica:",
+      "alternativas": [
+        "O tempo de viagem",
+        "A velocidade média da viagem",
+        "A velocidade instantânea",
+        "A distância total",
+        "A aceleração"
+      ],
+      "correta": 2,
+      "explicacao": "Ele mostra a velocidade a cada instante. Dica de mergulhador: ponteiro é o agora.",
+      "comentarios": [
+        "Não.",
+        "Mostra o valor naquele momento.",
+        "",
+        "Isso é o hodômetro.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q04",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Uma bola é solta dentro de um trem que anda em linha reta com velocidade constante. Para quem está na plataforma, a trajetória da bola é:",
+      "alternativas": [
+        "Uma reta vertical",
+        "Uma circunferência",
+        "Uma curva",
+        "Um ponto fixo",
+        "Uma reta horizontal"
+      ],
+      "correta": 2,
+      "explicacao": "A bola cai e avança junto com o trem. Dica de mergulhador: a trajetória depende do observador.",
+      "comentarios": [
+        "Isso é para quem está no trem.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q05",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um carro faz 60 km em 1 h e depois mais 60 km em 2 h. A velocidade média na viagem toda é:",
+      "alternativas": [
+        "30 km/h",
+        "60 km/h",
+        "45 km/h",
+        "90 km/h",
+        "40 km/h"
+      ],
+      "correta": 4,
+      "explicacao": "120 km ÷ 3 h = 40 km/h. Dica de mergulhador: some as distâncias e os tempos.",
+      "comentarios": [
+        "Só o segundo trecho.",
+        "Só o primeiro trecho.",
+        "É a média aritmética de 60 e 30.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q06",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um motorista faz metade de uma viagem de 120 km a 60 km/h e a outra metade a 40 km/h. Sua velocidade média é:",
+      "alternativas": [
+        "50 km/h",
+        "20 km/h",
+        "48 km/h",
+        "40 km/h",
+        "100 km/h"
+      ],
+      "correta": 2,
+      "explicacao": "Tempos: 1 h e 1,5 h; 120 ÷ 2,5 = 48. Dica de mergulhador: média de velocidades não é média aritmética.",
+      "comentarios": [
+        "É a média aritmética.",
+        "Subtraiu.",
+        "",
+        "Só a segunda metade.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q07",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Num trecho de 10 km de rodovia com radar de trecho e limite de 100 km/h, um carro leva 5 minutos. Ele:",
+      "alternativas": [
+        "Respeitou o limite, com média de 100 km/h",
+        "Respeitou o limite, com média de 50 km/h",
+        "Excedeu o limite, com média de 120 km/h",
+        "Não pode ser avaliado",
+        "Excedeu o limite, com média de 200 km/h"
+      ],
+      "correta": 2,
+      "explicacao": "5 min = 1/12 h; 10 × 12 = 120 km/h. Dica de mergulhador: minutos para hora, divide por 60.",
+      "comentarios": [
+        "Errou a conta.",
+        "Errou a conversão.",
+        "",
+        "Pode.",
+        "Errou a conta."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q08",
+      "tema": "Movimento uniforme",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No movimento uniforme, a velocidade é:",
+      "alternativas": [
+        "Sempre decrescente",
+        "Variável sem regra",
+        "Constante e diferente de zero",
+        "Sempre crescente",
+        "Sempre zero"
+      ],
+      "correta": 2,
+      "explicacao": "Distâncias iguais em tempos iguais. Dica de mergulhador: uniforme é sem mudança.",
+      "comentarios": [
+        "Seria retardado.",
+        "Não.",
+        "",
+        "Isso seria acelerado.",
+        "Seria repouso."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q09",
+      "tema": "Movimento uniforme",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Pela função s = 10 + 5t (SI), a posição inicial e a velocidade são:",
+      "alternativas": [
+        "15 m e 5 m/s",
+        "0 m e 5 m/s",
+        "10 m e 5 m/s",
+        "5 m e 10 m/s",
+        "10 m e 15 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "Compare com s = s₀ + v·t. Dica de mergulhador: o número sozinho é o começo; o que acompanha t é a velocidade.",
+      "comentarios": [
+        "Não.",
+        "A posição inicial é 10.",
+        "",
+        "Inverteu.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q10",
+      "tema": "Movimento uniforme",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um relâmpago é visto e o trovão é ouvido 3 s depois. Com o som a 340 m/s, a descarga ocorreu a cerca de:",
+      "alternativas": [
+        "340 m",
+        "1.020 m",
+        "343 m",
+        "3.400 m",
+        "113 m"
+      ],
+      "correta": 1,
+      "explicacao": "340 × 3 = 1.020 m. Dica de mergulhador: a luz chega quase na hora; conte os segundos do som.",
+      "comentarios": [
+        "Só um segundo.",
+        "",
+        "Somou.",
+        "Errou.",
+        "Dividiu."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q11",
+      "tema": "Movimento uniforme",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Dois carros partem um em direção ao outro de cidades a 300 km de distância, a 60 km/h e 90 km/h. Eles se encontram após:",
+      "alternativas": [
+        "1 h",
+        "10 h",
+        "5 h",
+        "3 h",
+        "2 h"
+      ],
+      "correta": 4,
+      "explicacao": "Velocidade relativa 150 km/h; 300 ÷ 150 = 2 h. Dica de mergulhador: um vindo ao outro, some as velocidades.",
+      "comentarios": [
+        "Errou.",
+        "Subtraiu as velocidades.",
+        "Usou só a velocidade do mais lento.",
+        "Errou a soma.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q12",
+      "tema": "Movimento uniforme",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Duas pessoas andam numa esteira rolante no mesmo sentido dela. A esteira tem 1 m/s e a pessoa anda a 1,5 m/s sobre ela. Para quem está fora, a pessoa se move a:",
+      "alternativas": [
+        "1,5 m/s²",
+        "2,5 m/s",
+        "1,5 m/s",
+        "0,5 m/s",
+        "1 m/s"
+      ],
+      "correta": 1,
+      "explicacao": "Mesmo sentido em relação ao chão: soma. Dica de mergulhador: esteira empurra junto.",
+      "comentarios": [
+        "Unidade errada.",
+        "",
+        "Ignorou a esteira.",
+        "Subtraiu.",
+        "Só a esteira."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q13",
+      "tema": "Movimento uniforme",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um trem de 200 m, a 20 m/s, atravessa completamente uma ponte de 400 m. O tempo da travessia é:",
+      "alternativas": [
+        "30 s",
+        "600 s",
+        "12.000 s",
+        "20 s",
+        "10 s"
+      ],
+      "correta": 0,
+      "explicacao": "Percorre 200 + 400 = 600 m; 600 ÷ 20 = 30 s. Dica de mergulhador: trem inteiro na ponte, some os comprimentos.",
+      "comentarios": [
+        "",
+        "Esqueceu a velocidade.",
+        "Multiplicou.",
+        "Esqueceu o comprimento do trem.",
+        "Usou só o trem."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q14",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No gráfico posição × tempo, uma linha horizontal indica que o corpo está:",
+      "alternativas": [
+        "Acelerando",
+        "Voltando",
+        "Em queda",
+        "Parado",
+        "Em velocidade alta"
+      ],
+      "correta": 3,
+      "explicacao": "A posição não muda com o tempo. Dica de mergulhador: reta deitada, corpo parado.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q15",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No gráfico s × t, uma reta que desce indica:",
+      "alternativas": [
+        "Queda livre",
+        "Aceleração",
+        "Velocidade positiva",
+        "Velocidade negativa, o corpo volta em direção à origem",
+        "Corpo parado"
+      ],
+      "correta": 3,
+      "explicacao": "A posição diminui com o tempo. Dica de mergulhador: desce, volta.",
+      "comentarios": [
+        "Não necessariamente.",
+        "Reta é velocidade constante.",
+        "A reta subiria.",
+        "",
+        "Seria horizontal."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q16",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No gráfico s × t, a posição passa de 10 m para 40 m entre t = 0 e t = 5 s. A velocidade é:",
+      "alternativas": [
+        "8 m/s",
+        "30 m/s",
+        "2 m/s",
+        "6 m/s",
+        "50 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "(40 − 10) ÷ 5 = 6. Dica de mergulhador: variação de posição sobre variação de tempo.",
+      "comentarios": [
+        "Usou só o 40.",
+        "Esqueceu o tempo.",
+        "Usou só o 10.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q17",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No gráfico velocidade × tempo, um corpo tem 15 m/s constantes durante 4 s. O deslocamento é:",
+      "alternativas": [
+        "3,75 m",
+        "15 m",
+        "4 m",
+        "60 m, a área sob a linha",
+        "19 m"
+      ],
+      "correta": 3,
+      "explicacao": "Área do retângulo: 15 × 4 = 60. Dica de mergulhador: no v × t, a área é o deslocamento.",
+      "comentarios": [
+        "Dividiu.",
+        "Só a velocidade.",
+        "Só o tempo.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q18",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Dois corpos A e B têm, no gráfico s × t, retas que se cruzam em t = 4 s. Isso significa que nesse instante:",
+      "alternativas": [
+        "Os dois estão parados",
+        "Os dois estão na mesma posição",
+        "Os dois têm a mesma velocidade",
+        "Os dois têm a mesma massa",
+        "Os dois têm aceleração"
+      ],
+      "correta": 1,
+      "explicacao": "O cruzamento é o encontro. Dica de mergulhador: retas que se cruzam, corpos que se encontram.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Velocidade é a inclinação.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q19",
+      "tema": "Movimento uniforme",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um carro em movimento uniforme a 80 km/h viaja por 3 h. Ele percorre:",
+      "alternativas": [
+        "240 km",
+        "160 km",
+        "83 km",
+        "80 km",
+        "26,7 km"
+      ],
+      "correta": 0,
+      "explicacao": "d = v · t = 80 × 3. Dica de mergulhador: no MU, distância é velocidade vezes tempo.",
+      "comentarios": [
+        "",
+        "Só duas horas.",
+        "Somou.",
+        "Só uma hora.",
+        "Dividiu."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q20",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Pela função s = 50 − 10t (SI), o corpo:",
+      "alternativas": [
+        "Parte de 10 m e anda a 50 m/s",
+        "Parte de 50 m e anda no sentido negativo a 10 m/s",
+        "Acelera a 10 m/s²",
+        "Está parado em 50 m",
+        "Anda no sentido positivo"
+      ],
+      "correta": 1,
+      "explicacao": "Velocidade −10 m/s: no gráfico s × t, a reta desce. Dica de mergulhador: sinal de menos, reta descendo.",
+      "comentarios": [
+        "Inverteu.",
+        "",
+        "No MU não há aceleração.",
+        "Tem velocidade.",
+        "O sinal é negativo."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q01",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro vai de 0 a 20 m/s em 5 s. Sua aceleração média é:",
+      "alternativas": [
+        "25 m/s²",
+        "100 m/s²",
+        "4 m/s²",
+        "0,25 m/s²",
+        "15 m/s²"
+      ],
+      "correta": 2,
+      "explicacao": "a = 20 ÷ 5 = 4. Dica de mergulhador: aceleração é ganho de velocidade por segundo.",
+      "comentarios": [
+        "Somou.",
+        "Multiplicou.",
+        "",
+        "Inverteu.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q02",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "A unidade de aceleração no SI é:",
+      "alternativas": [
+        "m/s",
+        "km/h",
+        "m/s²",
+        "N",
+        "s/m"
+      ],
+      "correta": 2,
+      "explicacao": "Metro por segundo, a cada segundo. Dica de mergulhador: aceleração tem o segundo ao quadrado.",
+      "comentarios": [
+        "É velocidade.",
+        "É velocidade.",
+        "",
+        "É força.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q03",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um corpo parte do repouso com aceleração de 2 m/s². Após 6 s, sua velocidade é:",
+      "alternativas": [
+        "36 m/s",
+        "3 m/s",
+        "8 m/s",
+        "72 m/s",
+        "12 m/s"
+      ],
+      "correta": 4,
+      "explicacao": "v = 0 + 2 × 6. Dica de mergulhador: v = v₀ + a·t.",
+      "comentarios": [
+        "Elevou ao quadrado.",
+        "Dividiu.",
+        "Somou.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q04",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um corpo parte do repouso com aceleração de 4 m/s². Ao percorrer 50 m, sua velocidade é:",
+      "alternativas": [
+        "200 m/s",
+        "54 m/s",
+        "20 m/s",
+        "400 m/s",
+        "12,5 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "v² = 0 + 2 × 4 × 50 = 400; v = 20. Dica de mergulhador: sem tempo, Torricelli.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "Somou.",
+        "",
+        "Errou.",
+        "Dividiu."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q05",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro freia de 20 m/s até parar, com velocidade e aceleração de sinais opostos. Esse movimento é:",
+      "alternativas": [
+        "Em repouso",
+        "Acelerado",
+        "Retardado",
+        "Uniforme",
+        "Circular"
+      ],
+      "correta": 2,
+      "explicacao": "A velocidade diminui em módulo. Dica de mergulhador: sinais opostos, freando.",
+      "comentarios": [
+        "Está se movendo.",
+        "Os sinais são opostos.",
+        "",
+        "A velocidade muda.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q06",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um corpo parte do repouso com aceleração de 2 m/s². Em 5 s, ele percorre:",
+      "alternativas": [
+        "10 m",
+        "50 m",
+        "100 m",
+        "5 m",
+        "25 m"
+      ],
+      "correta": 4,
+      "explicacao": "s = a·t²/2 = 2 × 25 ÷ 2 = 25. Dica de mergulhador: partindo do repouso, metade de a vezes t².",
+      "comentarios": [
+        "É a velocidade final.",
+        "Esqueceu o meio.",
+        "Errou.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q07",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Sem resistência do ar, uma bola de ferro e uma bolinha de papel soltas da mesma altura chegam ao chão:",
+      "alternativas": [
+        "A de papel antes",
+        "Nunca chegam",
+        "Juntas",
+        "Depende da cor",
+        "A de ferro antes"
+      ],
+      "correta": 2,
+      "explicacao": "Todos caem com a mesma aceleração g. Dica de mergulhador: no vácuo, peso não acelera mais.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "No vácuo a massa não importa."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q08",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Na queda livre, com g = 10 m/s², a velocidade de um corpo solto do repouso após 3 s é:",
+      "alternativas": [
+        "45 m/s",
+        "13 m/s",
+        "30 m/s",
+        "10 m/s",
+        "90 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "v = g·t = 10 × 3. Dica de mergulhador: ganha 10 m/s por segundo.",
+      "comentarios": [
+        "É a altura.",
+        "Somou.",
+        "",
+        "Só um segundo.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q09",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um objeto cai do repouso durante 2 s, com g = 10 m/s². A altura da queda é:",
+      "alternativas": [
+        "5 m",
+        "40 m",
+        "200 m",
+        "10 m",
+        "20 m"
+      ],
+      "correta": 4,
+      "explicacao": "h = 10 × 4 ÷ 2 = 20. Dica de mergulhador: h = g·t²/2.",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu o meio.",
+        "Errou.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q10",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Uma bola é lançada para cima a 30 m/s, com g = 10 m/s². Ela atinge o ponto mais alto após:",
+      "alternativas": [
+        "300 s",
+        "30 s",
+        "3 s",
+        "1,5 s",
+        "6 s"
+      ],
+      "correta": 2,
+      "explicacao": "Perde 10 m/s por segundo até zerar. Dica de mergulhador: no topo, velocidade zero.",
+      "comentarios": [
+        "Multiplicou.",
+        "Esqueceu o g.",
+        "",
+        "Errou.",
+        "É ida e volta."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q11",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "No ponto mais alto de um lançamento vertical, a aceleração da bola é:",
+      "alternativas": [
+        "Depende da massa",
+        "Infinita",
+        "g, para baixo",
+        "g, para cima",
+        "Zero"
+      ],
+      "correta": 2,
+      "explicacao": "A gravidade continua agindo. Dica de mergulhador: velocidade zera, gravidade não.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "A gravidade puxa para baixo.",
+        "Só a velocidade zera."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q12",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Uma bola é lançada para cima a 20 m/s, com g = 10 m/s². A altura máxima é:",
+      "alternativas": [
+        "200 m",
+        "40 m",
+        "10 m",
+        "2 m",
+        "20 m"
+      ],
+      "correta": 4,
+      "explicacao": "0 = 400 − 2 × 10 × h; h = 20. Dica de mergulhador: no topo, v = 0 em Torricelli.",
+      "comentarios": [
+        "Esqueceu a divisão.",
+        "Esqueceu o 2 de Torricelli.",
+        "Errou.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q13",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Uma pedra cai num poço e o barulho na água é ouvido 2 s depois. Desprezando o tempo do som, a profundidade é cerca de:",
+      "alternativas": [
+        "680 m",
+        "40 m",
+        "20 m",
+        "10 m",
+        "4 m"
+      ],
+      "correta": 2,
+      "explicacao": "h = 10 × 4 ÷ 2 = 20 m. Dica de mergulhador: em poço raso, o som chega quase na hora.",
+      "comentarios": [
+        "Usou a velocidade do som.",
+        "Esqueceu o meio.",
+        "",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q14",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Durante o tempo de reação do motorista, antes de pisar no freio, o carro:",
+      "alternativas": [
+        "Acelera sozinho",
+        "Anda de ré",
+        "Segue com a mesma velocidade",
+        "Já está parando",
+        "Para na hora"
+      ],
+      "correta": 2,
+      "explicacao": "O pé ainda não chegou ao freio. Dica de mergulhador: reagir também consome pista.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Ainda não freou.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q15",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro a 20 m/s e um motorista com 1 s de tempo de reação. Antes de começar a frear, o carro anda:",
+      "alternativas": [
+        "40 m",
+        "200 m",
+        "20 m",
+        "10 m",
+        "1 m"
+      ],
+      "correta": 2,
+      "explicacao": "Na reação, o movimento é uniforme: 20 × 1. Dica de mergulhador: cada segundo distraído, metros sem freio.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q16",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro a 20 m/s freia com desaceleração de 5 m/s². A distância de frenagem é:",
+      "alternativas": [
+        "80 m",
+        "100 m",
+        "40 m",
+        "20 m",
+        "4 m"
+      ],
+      "correta": 2,
+      "explicacao": "d = 400 ÷ 10 = 40. Dica de mergulhador: d = v²/(2a).",
+      "comentarios": [
+        "Esqueceu o 2.",
+        "Errou.",
+        "",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q17",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Se um carro dobra a velocidade, mantida a mesma desaceleração, a distância de frenagem:",
+      "alternativas": [
+        "Cai pela metade",
+        "Fica igual",
+        "Fica oito vezes maior",
+        "Dobra",
+        "Fica quatro vezes maior"
+      ],
+      "correta": 4,
+      "explicacao": "Depende de v². Dica de mergulhador: velocidade em dobro, freada em quádruplo.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Depende do quadrado.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q18",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro a 20 m/s, motorista com 1 s de reação e desaceleração de 5 m/s². A distância total até parar é:",
+      "alternativas": [
+        "20 m",
+        "40 m",
+        "80 m",
+        "60 m",
+        "45 m"
+      ],
+      "correta": 3,
+      "explicacao": "Reação 20 m + frenagem 40 m. Dica de mergulhador: parada = reação + frenagem.",
+      "comentarios": [
+        "Só a reação.",
+        "Esqueceu a reação.",
+        "Errou.",
+        "",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q19",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Cinto de segurança e airbag diminuem as lesões numa batida porque:",
+      "alternativas": [
+        "Diminuem a massa do passageiro",
+        "Aumentam a velocidade do carro",
+        "Fazem o carro parar antes",
+        "Alongam a parada e reduzem a força",
+        "Eliminam a inércia"
+      ],
+      "correta": 3,
+      "explicacao": "Mais tempo para parar, menos força. Dica de mergulhador: parada macia, força menor.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "A inércia continua."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q20",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "No movimento uniformemente variado, a aceleração é:",
+      "alternativas": [
+        "Sempre crescente",
+        "Sempre zero",
+        "Aleatória",
+        "Igual à velocidade",
+        "Constante"
+      ],
+      "correta": 4,
+      "explicacao": "A velocidade muda sempre no mesmo ritmo. Dica de mergulhador: variado na velocidade, uniforme na aceleração.",
+      "comentarios": [
+        "Não.",
+        "Isso é MU.",
+        "Não.",
+        "São grandezas diferentes.",
+        ""
+      ]
+    }
+  ],
+  "variantes": [
+    {
+      "id": "fis-grandezas-q01-v1",
+      "varianteDe": "fis-grandezas-q01",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "No Sistema Internacional, a unidade de tempo é o:",
+      "alternativas": [
+        "Dia",
+        "Metro",
+        "Minuto",
+        "Hora",
+        "Segundo"
+      ],
+      "correta": 4,
+      "explicacao": "Minutos e horas são múltiplos aceitos, mas a base é o segundo. Dica de mergulhador: SI conta em segundos.",
+      "comentarios": [
+        "Não.",
+        "Comprimento.",
+        "Não é a do SI.",
+        "Não é a do SI.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q02-v1",
+      "varianteDe": "fis-grandezas-q02",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Quantos segundos há em 2 horas?",
+      "alternativas": [
+        "72.000 s",
+        "7.200 s",
+        "120 s",
+        "720 s",
+        "3.600 s"
+      ],
+      "correta": 1,
+      "explicacao": "1 h = 3.600 s; 2 × 3.600 = 7.200. Dica de mergulhador: hora tem 3.600 segundos.",
+      "comentarios": [
+        "Errou a casa.",
+        "",
+        "São minutos.",
+        "Errou a casa.",
+        "É uma hora."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q03-v1",
+      "varianteDe": "fis-grandezas-q03",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Uma velocidade de 10 m/s equivale a:",
+      "alternativas": [
+        "360 km/h",
+        "2,8 km/h",
+        "10 km/h",
+        "36 km/h",
+        "3,6 km/h"
+      ],
+      "correta": 3,
+      "explicacao": "10 × 3,6 = 36. Dica de mergulhador: de m/s para km/h, multiplica por 3,6.",
+      "comentarios": [
+        "Errou a casa.",
+        "Dividiu em vez de multiplicar.",
+        "Não converteu.",
+        "",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q04-v1",
+      "varianteDe": "fis-grandezas-q04",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "Quantos miligramas há em 1 grama?",
+      "alternativas": [
+        "1.000 mg",
+        "1.000.000 mg",
+        "0,001 mg",
+        "100 mg",
+        "10 mg"
+      ],
+      "correta": 0,
+      "explicacao": "Mili é a milésima parte. Dica de mergulhador: um grama, mil miligramas.",
+      "comentarios": [
+        "",
+        "Isso seria micro.",
+        "Inverteu.",
+        "Isso seria centi.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q05-v1",
+      "varianteDe": "fis-grandezas-q05",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "A energia, no Sistema Internacional, é medida em:",
+      "alternativas": [
+        "Watt",
+        "Ampere",
+        "Pascal",
+        "Newton",
+        "Joule"
+      ],
+      "correta": 4,
+      "explicacao": "Kilowatt-hora também mede energia, mas não é do SI. Dica de mergulhador: energia em joule.",
+      "comentarios": [
+        "É potência.",
+        "É corrente.",
+        "É pressão.",
+        "É força.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q06-v1",
+      "varianteDe": "fis-grandezas-q06",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Um atleta corre 100 m em 10 s. Sua velocidade média em km/h é:",
+      "alternativas": [
+        "100 km/h",
+        "2,8 km/h",
+        "360 km/h",
+        "36 km/h",
+        "10 km/h"
+      ],
+      "correta": 3,
+      "explicacao": "10 m/s × 3,6 = 36 km/h. Dica de mergulhador: velocista anda a 36 por hora.",
+      "comentarios": [
+        "Não.",
+        "Dividiu por 3,6.",
+        "Errou a casa.",
+        "",
+        "É em m/s."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q07-v1",
+      "varianteDe": "fis-grandezas-q07",
+      "tema": "Grandezas e unidades",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Se F = m·a, com m em kg e a em m/s², a unidade de F é:",
+      "alternativas": [
+        "kg·m, o joule",
+        "m/s, a velocidade",
+        "kg/s, o watt",
+        "s², o tempo",
+        "kg·m/s², o newton"
+      ],
+      "correta": 4,
+      "explicacao": "Unidades se multiplicam como números. Dica de mergulhador: a unidade também faz conta.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q08-v1",
+      "varianteDe": "fis-grandezas-q08",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Em notação científica, 0,002 se escreve:",
+      "alternativas": [
+        "2 × 10⁻³",
+        "2 × 10³",
+        "2 × 10⁻²",
+        "0,2 × 10⁻²",
+        "20 × 10⁻⁴"
+      ],
+      "correta": 0,
+      "explicacao": "A vírgula andou três casas para a direita. Dica de mergulhador: número pequeno, expoente negativo.",
+      "comentarios": [
+        "",
+        "Expoente com sinal errado.",
+        "Errou as casas.",
+        "O número antes da potência é menor que 1.",
+        "O número passa de 10."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q09-v1",
+      "varianteDe": "fis-grandezas-q09",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Qual destes números está escrito corretamente em notação científica?",
+      "alternativas": [
+        "0,45 × 10⁸",
+        "45 × 10⁶",
+        "4,5 × 10⁷",
+        "4,5 × 7¹⁰",
+        "450 × 10⁵"
+      ],
+      "correta": 2,
+      "explicacao": "O fator está entre 1 e 10. Dica de mergulhador: um dígito e depois a vírgula.",
+      "comentarios": [
+        "0,45 é menor que 1.",
+        "45 passa de 10.",
+        "",
+        "A base deve ser 10.",
+        "Passa de 10."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q10-v1",
+      "varianteDe": "fis-grandezas-q10",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "A distância de 150 milhões de km, em notação científica, é:",
+      "alternativas": [
+        "1,5 × 10⁹ km",
+        "1,5 × 10⁸ km",
+        "1,5 × 10⁶ km",
+        "150 × 10⁶ km",
+        "15 × 10⁷ km"
+      ],
+      "correta": 1,
+      "explicacao": "Cento e cinquenta milhões = 1,5 × 10⁸. Dica de mergulhador: milhão é 10⁶; cem milhões, 10⁸.",
+      "comentarios": [
+        "Errou o expoente.",
+        "",
+        "Errou o expoente.",
+        "Não está na forma correta.",
+        "15 passa de 10."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q11-v1",
+      "varianteDe": "fis-grandezas-q11",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "O quociente (8 × 10⁶) ÷ (2 × 10²) vale:",
+      "alternativas": [
+        "4 × 10⁸",
+        "16 × 10⁴",
+        "6 × 10⁴",
+        "4 × 10³",
+        "4 × 10⁴"
+      ],
+      "correta": 4,
+      "explicacao": "Divide 8 ÷ 2 e subtrai 6 − 2. Dica de mergulhador: divisão subtrai expoentes.",
+      "comentarios": [
+        "Somou os expoentes.",
+        "Multiplicou.",
+        "Subtraiu 8 − 2.",
+        "Errou a subtração.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q12-v1",
+      "varianteDe": "fis-grandezas-q12",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "A ordem de grandeza de 200 é:",
+      "alternativas": [
+        "10³",
+        "10⁰",
+        "2 × 10²",
+        "10¹",
+        "10²"
+      ],
+      "correta": 4,
+      "explicacao": "2 é menor que 3,16, então fica 10². Dica de mergulhador: abaixo de 3,16, mantém.",
+      "comentarios": [
+        "2 é menor que 3,16.",
+        "Não.",
+        "Isso é notação científica.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-grandezas-q13-v1",
+      "varianteDe": "fis-grandezas-q13",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Uma pessoa respira cerca de 15 vezes por minuto. Em um dia, respira cerca de:",
+      "alternativas": [
+        "900 vezes",
+        "216.000 vezes",
+        "360 vezes",
+        "21.600 vezes",
+        "2.160 vezes"
+      ],
+      "correta": 3,
+      "explicacao": "15 × 60 × 24 = 21.600. Dica de mergulhador: minuto, hora, dia.",
+      "comentarios": [
+        "É em uma hora.",
+        "Errou a casa.",
+        "Errou.",
+        "",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q14-v1",
+      "varianteDe": "fis-grandezas-q14",
+      "tema": "Notação científica e ordem de grandeza",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Um fio de cabelo tem cerca de 0,1 mm de espessura. Em metros, em notação científica:",
+      "alternativas": [
+        "1 × 10⁻³ m",
+        "1 × 10⁻⁴ m",
+        "1 × 10⁴ m",
+        "1 × 10⁻² m",
+        "1 × 10⁻¹ m"
+      ],
+      "correta": 1,
+      "explicacao": "0,1 mm = 0,0001 m. Dica de mergulhador: milímetro é 10⁻³ m.",
+      "comentarios": [
+        "Isso é 1 mm.",
+        "",
+        "Sinal errado.",
+        "Isso é 1 cm.",
+        "Isso é 10 cm."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q15-v1",
+      "varianteDe": "fis-grandezas-q15",
+      "tema": "Vetores",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Qual destas grandezas é escalar?",
+      "alternativas": [
+        "Temperatura",
+        "Força",
+        "Velocidade",
+        "Aceleração",
+        "Deslocamento"
+      ],
+      "correta": 0,
+      "explicacao": "Basta o número e a unidade. Dica de mergulhador: termômetro não aponta direção.",
+      "comentarios": [
+        "",
+        "Vetorial.",
+        "Vetorial.",
+        "Vetorial.",
+        "Vetorial."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q16-v1",
+      "varianteDe": "fis-grandezas-q16",
+      "tema": "Vetores",
+      "dificuldade": "facil",
+      "fase": "fis-grandezas",
+      "enunciado": "Massa, tempo e energia são grandezas:",
+      "alternativas": [
+        "Vetoriais",
+        "Sem unidade",
+        "Escalares",
+        "Imaginárias",
+        "Todas de força"
+      ],
+      "correta": 2,
+      "explicacao": "Ficam definidas pelo número e pela unidade. Dica de mergulhador: sem seta, escalar.",
+      "comentarios": [
+        "Não têm direção.",
+        "Têm unidade.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q17-v1",
+      "varianteDe": "fis-grandezas-q17",
+      "tema": "Vetores",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "Duas forças de 10 N e 6 N, na mesma direção e em sentidos opostos, têm resultante de:",
+      "alternativas": [
+        "4 N",
+        "16 N",
+        "60 N",
+        "8 N",
+        "0 N"
+      ],
+      "correta": 0,
+      "explicacao": "Sentidos opostos, subtrai. Dica de mergulhador: cabo de guerra, vence a diferença.",
+      "comentarios": [
+        "",
+        "Seria no mesmo sentido.",
+        "Multiplicou.",
+        "Errou.",
+        "Não se anulam."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q18-v1",
+      "varianteDe": "fis-grandezas-q18",
+      "tema": "Vetores",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "Uma pessoa anda 6 m para o norte e depois 8 m para o leste. Seu deslocamento é de:",
+      "alternativas": [
+        "100 m",
+        "10 m",
+        "2 m",
+        "14 m",
+        "48 m"
+      ],
+      "correta": 1,
+      "explicacao": "√(36 + 64) = 10. Dica de mergulhador: em ângulo reto, Pitágoras.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "",
+        "Subtraiu.",
+        "É a distância percorrida.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q19-v1",
+      "varianteDe": "fis-grandezas-q19",
+      "tema": "Vetores",
+      "dificuldade": "medio",
+      "fase": "fis-grandezas",
+      "enunciado": "Na mesma volta completa, a distância percorrida foi de:",
+      "alternativas": [
+        "800 m",
+        "200 m",
+        "400 m",
+        "Zero",
+        "4 m"
+      ],
+      "correta": 2,
+      "explicacao": "Distância conta todo o caminho. Dica de mergulhador: o odômetro não zera na chegada.",
+      "comentarios": [
+        "Duas voltas.",
+        "Meia volta.",
+        "",
+        "Esse é o deslocamento.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-grandezas-q20-v1",
+      "varianteDe": "fis-grandezas-q20",
+      "tema": "Vetores",
+      "dificuldade": "dificil",
+      "fase": "fis-grandezas",
+      "enunciado": "Um avião voa a 80 m/s para o norte com vento de 60 m/s para o leste. A velocidade resultante é:",
+      "alternativas": [
+        "4.800 m/s",
+        "10.000 m/s",
+        "20 m/s",
+        "140 m/s",
+        "100 m/s"
+      ],
+      "correta": 4,
+      "explicacao": "√(6.400 + 3.600) = 100. Dica de mergulhador: 6, 8, 10 vezes dez.",
+      "comentarios": [
+        "Multiplicou.",
+        "Esqueceu a raiz.",
+        "Subtraiu.",
+        "Somou direto.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q01-v1",
+      "varianteDe": "fis-cinematica-mu-q01",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Para uma pessoa parada na calçada, o passageiro sentado no ônibus em movimento está:",
+      "alternativas": [
+        "Em repouso",
+        "Parado e em movimento ao mesmo tempo para ela",
+        "Sempre em queda",
+        "Sem posição",
+        "Em movimento"
+      ],
+      "correta": 4,
+      "explicacao": "Para a calçada, ele muda de posição. Dica de mergulhador: troque o observador, troque a resposta.",
+      "comentarios": [
+        "Só em relação ao ônibus.",
+        "Para um mesmo observador não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q02-v1",
+      "varianteDe": "fis-cinematica-mu-q02",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um ciclista percorre 45 km em 3 h. Sua velocidade média é:",
+      "alternativas": [
+        "135 km/h",
+        "15 km/h",
+        "5 km/h",
+        "42 km/h",
+        "48 km/h"
+      ],
+      "correta": 1,
+      "explicacao": "45 ÷ 3 = 15. Dica de mergulhador: divida, não multiplique.",
+      "comentarios": [
+        "Multiplicou.",
+        "",
+        "Errou a conta.",
+        "Subtraiu.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q03-v1",
+      "varianteDe": "fis-cinematica-mu-q03",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "O radar que mede o tempo entre dois pontos de uma estrada calcula:",
+      "alternativas": [
+        "O consumo",
+        "A velocidade média no trecho",
+        "A aceleração",
+        "A massa do carro",
+        "A velocidade instantânea"
+      ],
+      "correta": 1,
+      "explicacao": "Distância entre os pontos dividida pelo tempo. Dica de mergulhador: radar de trecho é média.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não.",
+        "Isso é o radar fixo."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q04-v1",
+      "varianteDe": "fis-cinematica-mu-q04",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Para um passageiro dentro do mesmo trem, a bola solta cai em:",
+      "alternativas": [
+        "Círculo",
+        "Linha reta vertical",
+        "Zigue-zague",
+        "Curva para frente",
+        "Curva para trás"
+      ],
+      "correta": 1,
+      "explicacao": "Bola e passageiro andam juntos com o trem. Dica de mergulhador: no vagão, cai reto.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não.",
+        "Ela acompanha o trem."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q05-v1",
+      "varianteDe": "fis-cinematica-mu-q05",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um ônibus anda 100 km em 2 h, para 1 h no almoço e anda mais 50 km em 1 h. A velocidade média total é:",
+      "alternativas": [
+        "25 km/h",
+        "75 km/h",
+        "37,5 km/h",
+        "150 km/h",
+        "50 km/h"
+      ],
+      "correta": 2,
+      "explicacao": "150 km ÷ 4 h = 37,5 km/h. Dica de mergulhador: parada também conta no tempo.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "",
+        "Esqueceu o tempo.",
+        "Ignorou a parada."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q06-v1",
+      "varianteDe": "fis-cinematica-mu-q06",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um corredor faz 2 km a 10 km/h e mais 2 km a 5 km/h. Sua velocidade média é:",
+      "alternativas": [
+        "Cerca de 6,7 km/h",
+        "7,5 km/h",
+        "10 km/h",
+        "5 km/h",
+        "15 km/h"
+      ],
+      "correta": 0,
+      "explicacao": "Tempos: 0,2 h e 0,4 h; 4 ÷ 0,6 ≈ 6,7. Dica de mergulhador: o trecho lento pesa mais.",
+      "comentarios": [
+        "",
+        "É a média aritmética.",
+        "Só o primeiro trecho.",
+        "Só o segundo trecho.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q07-v1",
+      "varianteDe": "fis-cinematica-mu-q07",
+      "tema": "Referencial e velocidade média",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No mesmo trecho de 10 km, outro carro leva 8 minutos. Sua velocidade média é:",
+      "alternativas": [
+        "80 km/h",
+        "1,25 km/h",
+        "125 km/h",
+        "75 km/h",
+        "60 km/h"
+      ],
+      "correta": 3,
+      "explicacao": "8 min = 8/60 h; 10 ÷ (8/60) = 75. Dica de mergulhador: converta minutos em horas.",
+      "comentarios": [
+        "Errou a conta.",
+        "Não converteu.",
+        "Inverteu.",
+        "",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q08-v1",
+      "varianteDe": "fis-cinematica-mu-q08",
+      "tema": "Movimento uniforme",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No movimento uniforme, em tempos iguais o corpo percorre:",
+      "alternativas": [
+        "Distâncias aleatórias",
+        "Distâncias iguais",
+        "Distância nula",
+        "Distâncias cada vez maiores",
+        "Distâncias cada vez menores"
+      ],
+      "correta": 1,
+      "explicacao": "Velocidade constante. Dica de mergulhador: passo sempre do mesmo tamanho.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Seria repouso.",
+        "Isso é acelerado.",
+        "Isso é retardado."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q09-v1",
+      "varianteDe": "fis-cinematica-mu-q09",
+      "tema": "Movimento uniforme",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Pela mesma função s = 10 + 5t, a posição em t = 4 s é:",
+      "alternativas": [
+        "60 m",
+        "30 m",
+        "20 m",
+        "14 m",
+        "19 m"
+      ],
+      "correta": 1,
+      "explicacao": "10 + 5 × 4 = 30. Dica de mergulhador: substitua o tempo.",
+      "comentarios": [
+        "Multiplicou tudo.",
+        "",
+        "Esqueceu a posição inicial.",
+        "Somou 10 + 4.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q10-v1",
+      "varianteDe": "fis-cinematica-mu-q10",
+      "tema": "Movimento uniforme",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um eco volta 2 s depois do grito. Com o som a 340 m/s, o paredão está a:",
+      "alternativas": [
+        "170 m",
+        "680 m",
+        "1.360 m",
+        "2 m",
+        "340 m"
+      ],
+      "correta": 4,
+      "explicacao": "O som foi e voltou: 680 ÷ 2 = 340 m. Dica de mergulhador: eco é ida e volta.",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu a ida e volta.",
+        "Errou.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q11-v1",
+      "varianteDe": "fis-cinematica-mu-q11",
+      "tema": "Movimento uniforme",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um carro a 100 km/h persegue outro a 80 km/h, no mesmo sentido, 40 km à frente. Ele alcança o outro em:",
+      "alternativas": [
+        "0,4 h",
+        "1 h",
+        "4 h",
+        "2 h",
+        "0,2 h"
+      ],
+      "correta": 3,
+      "explicacao": "Velocidade relativa 20 km/h; 40 ÷ 20 = 2 h. Dica de mergulhador: mesmo sentido, subtraia.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "Errou.",
+        "",
+        "Somou as velocidades."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q12-v1",
+      "varianteDe": "fis-cinematica-mu-q12",
+      "tema": "Movimento uniforme",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Se a pessoa andar a 1,5 m/s contra o sentido da esteira de 1 m/s, para quem está fora ela se move a:",
+      "alternativas": [
+        "Zero",
+        "1,5 m/s",
+        "2,5 m/s",
+        "1 m/s",
+        "0,5 m/s"
+      ],
+      "correta": 4,
+      "explicacao": "Sentidos opostos: 1,5 − 1. Dica de mergulhador: contra a esteira, a diferença.",
+      "comentarios": [
+        "Não se anulam.",
+        "Ignorou a esteira.",
+        "Seria no mesmo sentido.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q13-v1",
+      "varianteDe": "fis-cinematica-mu-q13",
+      "tema": "Movimento uniforme",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Um caminhão de 20 m, a 10 m/s, atravessa um túnel de 180 m. O tempo para passar inteiro é:",
+      "alternativas": [
+        "2 s",
+        "18 s",
+        "20 s",
+        "16 s",
+        "2.000 s"
+      ],
+      "correta": 2,
+      "explicacao": "20 + 180 = 200 m; 200 ÷ 10 = 20 s. Dica de mergulhador: entra a frente, sai a traseira.",
+      "comentarios": [
+        "Usou só o caminhão.",
+        "Esqueceu o caminhão.",
+        "",
+        "Subtraiu.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q14-v1",
+      "varianteDe": "fis-cinematica-mu-q14",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No gráfico posição × tempo do MU, a linha é:",
+      "alternativas": [
+        "Uma reta inclinada",
+        "Uma parábola",
+        "Sempre horizontal",
+        "Uma hipérbole",
+        "Uma circunferência"
+      ],
+      "correta": 0,
+      "explicacao": "A posição varia igualmente no tempo. Dica de mergulhador: MU dá reta.",
+      "comentarios": [
+        "",
+        "Isso é MUV.",
+        "Seria repouso.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q15-v1",
+      "varianteDe": "fis-cinematica-mu-q15",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Uma reta mais inclinada no gráfico s × t indica:",
+      "alternativas": [
+        "Velocidade negativa sempre",
+        "Corpo parado",
+        "Maior massa",
+        "Maior velocidade",
+        "Menor velocidade"
+      ],
+      "correta": 3,
+      "explicacao": "A inclinação é a velocidade. Dica de mergulhador: mais em pé, mais rápido.",
+      "comentarios": [
+        "Depende do sentido.",
+        "Não.",
+        "Não.",
+        "",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q16-v1",
+      "varianteDe": "fis-cinematica-mu-q16",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No gráfico s × t, a posição cai de 50 m para 20 m entre 0 e 10 s. A velocidade é:",
+      "alternativas": [
+        "30 m/s",
+        "−3 m/s",
+        "3 m/s",
+        "−7 m/s",
+        "−30 m/s"
+      ],
+      "correta": 1,
+      "explicacao": "(20 − 50) ÷ 10 = −3. Dica de mergulhador: posição caindo, velocidade negativa.",
+      "comentarios": [
+        "Esqueceu o tempo.",
+        "",
+        "Esqueceu o sinal.",
+        "Errou.",
+        "Esqueceu o tempo."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q17-v1",
+      "varianteDe": "fis-cinematica-mu-q17",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No gráfico v × t, um corpo anda a 8 m/s por 5 s e depois a 4 m/s por 5 s. O deslocamento total é:",
+      "alternativas": [
+        "60 m",
+        "40 m",
+        "12 m",
+        "20 m",
+        "120 m"
+      ],
+      "correta": 0,
+      "explicacao": "40 + 20 = 60 m. Dica de mergulhador: some as áreas.",
+      "comentarios": [
+        "",
+        "Só o primeiro trecho.",
+        "Somou as velocidades.",
+        "Só o segundo trecho.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q18-v1",
+      "varianteDe": "fis-cinematica-mu-q18",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "dificil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "No gráfico s × t, duas retas paralelas indicam corpos com:",
+      "alternativas": [
+        "A mesma velocidade, que nunca se encontram",
+        "Massa igual",
+        "Encontro garantido",
+        "Repouso",
+        "Velocidades opostas"
+      ],
+      "correta": 0,
+      "explicacao": "Mesma inclinação, mesma velocidade. Dica de mergulhador: paralelas andam lado a lado.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Paralelas não se cruzam.",
+        "Não necessariamente.",
+        "Teriam inclinações diferentes."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q19-v1",
+      "varianteDe": "fis-cinematica-mu-q19",
+      "tema": "Movimento uniforme",
+      "dificuldade": "facil",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Uma tartaruga anda a 0,5 m/s constantes durante 60 s. Ela percorre:",
+      "alternativas": [
+        "60,5 m",
+        "300 m",
+        "0,5 m",
+        "30 m",
+        "120 m"
+      ],
+      "correta": 3,
+      "explicacao": "0,5 × 60 = 30 m. Dica de mergulhador: devagar e sempre também soma distância.",
+      "comentarios": [
+        "Somou.",
+        "Errou a casa.",
+        "Só um segundo.",
+        "",
+        "Dividiu."
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-q20-v1",
+      "varianteDe": "fis-cinematica-mu-q20",
+      "tema": "Gráficos do movimento",
+      "dificuldade": "medio",
+      "fase": "fis-cinematica-mu",
+      "enunciado": "Pela função s = 50 − 10t (SI), o corpo passa pela origem no instante:",
+      "alternativas": [
+        "500 s",
+        "5 s",
+        "10 s",
+        "50 s",
+        "40 s"
+      ],
+      "correta": 1,
+      "explicacao": "0 = 50 − 10t, então t = 5 s. Dica de mergulhador: na origem, s = 0.",
+      "comentarios": [
+        "Multiplicou.",
+        "",
+        "Errou.",
+        "Errou.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q01-v1",
+      "varianteDe": "fis-muv-queda-q01",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Uma moto vai de 10 m/s a 30 m/s em 4 s. Sua aceleração média é:",
+      "alternativas": [
+        "7,5 m/s²",
+        "5 m/s²",
+        "10 m/s²",
+        "80 m/s²",
+        "2,5 m/s²"
+      ],
+      "correta": 1,
+      "explicacao": "(30 − 10) ÷ 4 = 5. Dica de mergulhador: use a variação, não o valor final.",
+      "comentarios": [
+        "Usou só o 30.",
+        "",
+        "Errou.",
+        "Multiplicou.",
+        "Usou só o 10."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q02-v1",
+      "varianteDe": "fis-muv-queda-q02",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Uma aceleração de 3 m/s² significa que a velocidade:",
+      "alternativas": [
+        "Aumenta 3 m a cada segundo",
+        "É sempre 3 m/s",
+        "Triplica a cada segundo",
+        "Aumenta 3 m/s a cada segundo",
+        "Diminui 3 m/s por hora"
+      ],
+      "correta": 3,
+      "explicacao": "Ganho constante por segundo. Dica de mergulhador: m/s a cada s.",
+      "comentarios": [
+        "Isso é velocidade.",
+        "Isso é MU.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q03-v1",
+      "varianteDe": "fis-muv-queda-q03",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um corpo a 5 m/s acelera a 3 m/s² por 4 s. Sua velocidade final é:",
+      "alternativas": [
+        "12 m/s",
+        "17 m/s",
+        "60 m/s",
+        "12 m/s²",
+        "9 m/s"
+      ],
+      "correta": 1,
+      "explicacao": "v = 5 + 3 × 4 = 17. Dica de mergulhador: não esqueça a velocidade inicial.",
+      "comentarios": [
+        "Esqueceu o v₀.",
+        "",
+        "Multiplicou tudo.",
+        "Unidade errada.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q04-v1",
+      "varianteDe": "fis-muv-queda-q04",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um corpo parte do repouso com aceleração de 2 m/s². Ao percorrer 25 m, sua velocidade é:",
+      "alternativas": [
+        "27 m/s",
+        "12,5 m/s",
+        "100 m/s",
+        "10 m/s",
+        "50 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "v² = 2 × 2 × 25 = 100; v = 10. Dica de mergulhador: quando falta o tempo, Torricelli.",
+      "comentarios": [
+        "Somou.",
+        "Dividiu.",
+        "Errou.",
+        "",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q05-v1",
+      "varianteDe": "fis-muv-queda-q05",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "No gráfico v × t do MUV, a linha é:",
+      "alternativas": [
+        "Um círculo",
+        "Uma reta inclinada",
+        "Uma parábola",
+        "Uma linha vertical",
+        "Uma reta horizontal"
+      ],
+      "correta": 1,
+      "explicacao": "A velocidade varia por igual. Dica de mergulhador: v × t do MUV é reta; s × t é parábola.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Isso é o s × t.",
+        "Não.",
+        "Isso é o MU."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q06-v1",
+      "varianteDe": "fis-muv-queda-q06",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um corpo a 4 m/s acelera a 2 m/s² por 3 s. Ele percorre:",
+      "alternativas": [
+        "12 m",
+        "9 m",
+        "21 m",
+        "30 m",
+        "18 m"
+      ],
+      "correta": 2,
+      "explicacao": "4 × 3 + 2 × 9 ÷ 2 = 12 + 9 = 21. Dica de mergulhador: some as duas partes.",
+      "comentarios": [
+        "Esqueceu a aceleração.",
+        "Esqueceu a velocidade inicial.",
+        "",
+        "Errou.",
+        "Esqueceu o meio."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q07-v1",
+      "varianteDe": "fis-muv-queda-q07",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "No ar, uma folha cai mais devagar que uma pedra porque:",
+      "alternativas": [
+        "A resistência do ar pesa mais para a folha",
+        "A folha é atraída para cima",
+        "A pedra tem gravidade própria maior",
+        "A pedra é mais fria",
+        "A gravidade não age na folha"
+      ],
+      "correta": 0,
+      "explicacao": "Sem ar, cairiam juntas. Dica de mergulhador: o ar freia mais o que é leve e largo.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não é isso.",
+        "Não.",
+        "Age."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q08-v1",
+      "varianteDe": "fis-muv-queda-q08",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Na queda livre, um corpo solto do repouso atinge 40 m/s após:",
+      "alternativas": [
+        "2 s",
+        "8 s",
+        "400 s",
+        "40 s",
+        "4 s"
+      ],
+      "correta": 4,
+      "explicacao": "t = 40 ÷ 10. Dica de mergulhador: divida a velocidade por 10.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "Multiplicou.",
+        "Esqueceu o g.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q09-v1",
+      "varianteDe": "fis-muv-queda-q09",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um objeto cai do repouso durante 4 s, com g = 10 m/s². A altura da queda é:",
+      "alternativas": [
+        "160 m",
+        "80 m",
+        "8 m",
+        "20 m",
+        "40 m"
+      ],
+      "correta": 1,
+      "explicacao": "h = 10 × 16 ÷ 2 = 80. Dica de mergulhador: o tempo entra ao quadrado.",
+      "comentarios": [
+        "Esqueceu o meio.",
+        "",
+        "Errou.",
+        "Errou.",
+        "É a velocidade."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q10-v1",
+      "varianteDe": "fis-muv-queda-q10",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "A mesma bola lançada a 30 m/s volta à mão do lançador após:",
+      "alternativas": [
+        "9 s",
+        "6 s",
+        "30 s",
+        "12 s",
+        "3 s"
+      ],
+      "correta": 1,
+      "explicacao": "Subida e descida levam o mesmo tempo. Dica de mergulhador: sobe 3, desce 3.",
+      "comentarios": [
+        "Errou.",
+        "",
+        "Esqueceu o g.",
+        "Errou.",
+        "Só a subida."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q11-v1",
+      "varianteDe": "fis-muv-queda-q11",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Durante a subida de uma bola lançada para cima, a velocidade:",
+      "alternativas": [
+        "Fica constante",
+        "Zera na hora",
+        "Aumenta 10 m/s a cada segundo",
+        "Diminui 10 m/s a cada segundo",
+        "Dobra a cada segundo"
+      ],
+      "correta": 3,
+      "explicacao": "A gravidade se opõe ao movimento. Dica de mergulhador: subindo, perde velocidade.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Isso é na descida.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q12-v1",
+      "varianteDe": "fis-muv-queda-q12",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Uma bola é lançada para cima a 10 m/s, com g = 10 m/s². A altura máxima é:",
+      "alternativas": [
+        "1 m",
+        "10 m",
+        "100 m",
+        "20 m",
+        "5 m"
+      ],
+      "correta": 4,
+      "explicacao": "h = 100 ÷ 20 = 5. Dica de mergulhador: h = v₀²/2g.",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu o 2.",
+        "Esqueceu a divisão.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q13-v1",
+      "varianteDe": "fis-muv-queda-q13",
+      "tema": "Queda livre e lançamento vertical",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Uma pedra solta de uma ponte leva 3 s para tocar a água. A altura da ponte é:",
+      "alternativas": [
+        "45 m",
+        "30 m",
+        "9 m",
+        "15 m",
+        "90 m"
+      ],
+      "correta": 0,
+      "explicacao": "h = 10 × 9 ÷ 2 = 45. Dica de mergulhador: 3 ao quadrado é 9.",
+      "comentarios": [
+        "",
+        "É a velocidade final.",
+        "Errou.",
+        "Errou.",
+        "Esqueceu o meio."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q14-v1",
+      "varianteDe": "fis-muv-queda-q14",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "O que aumenta o tempo de reação de um motorista?",
+      "alternativas": [
+        "Álcool, sono e uso do celular",
+        "Pista seca",
+        "Pneus novos",
+        "Faróis acesos",
+        "Cinto afivelado"
+      ],
+      "correta": 0,
+      "explicacao": "Atrasam a percepção e a resposta. Dica de mergulhador: distração é metros a mais.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não afeta a reação.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q15-v1",
+      "varianteDe": "fis-muv-queda-q15",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro a 30 m/s, com motorista distraído que demora 2 s para reagir, anda antes de frear:",
+      "alternativas": [
+        "30 m",
+        "900 m",
+        "15 m",
+        "60 m",
+        "32 m"
+      ],
+      "correta": 3,
+      "explicacao": "30 × 2 = 60. Dica de mergulhador: dois segundos são uma piscina olímpica a mais.",
+      "comentarios": [
+        "Só um segundo.",
+        "Errou.",
+        "Dividiu.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q16-v1",
+      "varianteDe": "fis-muv-queda-q16",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro a 10 m/s freia com desaceleração de 5 m/s². A distância de frenagem é:",
+      "alternativas": [
+        "1 m",
+        "10 m",
+        "2 m",
+        "20 m",
+        "50 m"
+      ],
+      "correta": 1,
+      "explicacao": "d = 100 ÷ 10 = 10. Dica de mergulhador: v ao quadrado sobre 2a.",
+      "comentarios": [
+        "Errou.",
+        "",
+        "Errou.",
+        "Esqueceu o 2.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q17-v1",
+      "varianteDe": "fis-muv-queda-q17",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "medio",
+      "fase": "fis-muv-queda",
+      "enunciado": "Se um carro triplica a velocidade, mantida a mesma desaceleração, a distância de frenagem:",
+      "alternativas": [
+        "Fica seis vezes maior",
+        "Fica 27 vezes maior",
+        "Fica igual",
+        "Triplica",
+        "Fica nove vezes maior"
+      ],
+      "correta": 4,
+      "explicacao": "3² = 9. Dica de mergulhador: eleve o fator ao quadrado.",
+      "comentarios": [
+        "Não.",
+        "Seria o cubo.",
+        "Não.",
+        "Depende do quadrado.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q18-v1",
+      "varianteDe": "fis-muv-queda-q18",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro a 30 m/s, motorista com 1 s de reação e desaceleração de 9 m/s². A distância total até parar é:",
+      "alternativas": [
+        "130 m",
+        "60 m",
+        "50 m",
+        "30 m",
+        "80 m"
+      ],
+      "correta": 4,
+      "explicacao": "30 + 900 ÷ 18 = 30 + 50 = 80. Dica de mergulhador: some os dois trechos.",
+      "comentarios": [
+        "Esqueceu o 2.",
+        "Errou.",
+        "Esqueceu a reação.",
+        "Só a reação.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q19-v1",
+      "varianteDe": "fis-muv-queda-q19",
+      "tema": "Segurança no trânsito",
+      "dificuldade": "dificil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Numa batida, um passageiro sem cinto continua indo para a frente porque:",
+      "alternativas": [
+        "O carro acelera para trás",
+        "Tende a manter a velocidade que tinha, por inércia",
+        "O vento o empurra",
+        "A gravidade o puxa para frente",
+        "É empurrado pelo banco de trás"
+      ],
+      "correta": 1,
+      "explicacao": "O corpo mantém o movimento até algo pará-lo. Dica de mergulhador: sem cinto, quem para é o para-brisa.",
+      "comentarios": [
+        "Não explica.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-muv-queda-q20-v1",
+      "varianteDe": "fis-muv-queda-q20",
+      "tema": "Aceleração e MUV",
+      "dificuldade": "facil",
+      "fase": "fis-muv-queda",
+      "enunciado": "Um carro que ganha 2 m/s a cada segundo, sempre igual, está em:",
+      "alternativas": [
+        "Movimento circular uniforme",
+        "Repouso",
+        "Movimento uniforme",
+        "Queda livre obrigatória",
+        "Movimento uniformemente variado"
+      ],
+      "correta": 4,
+      "explicacao": "Aceleração constante de 2 m/s². Dica de mergulhador: ganho igual por segundo é MUV.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "A velocidade muda.",
+        "Não.",
+        ""
+      ]
+    }
+  ],
+  "pares": [
+    {
+      "id": "fis-grandezas-par-01",
+      "tema": "Grandezas, unidades e vetores",
+      "termo": "Metro",
+      "definicao": "Comprimento"
+    },
+    {
+      "id": "fis-grandezas-par-02",
+      "tema": "Grandezas, unidades e vetores",
+      "termo": "Quilograma",
+      "definicao": "Massa"
+    },
+    {
+      "id": "fis-grandezas-par-03",
+      "tema": "Grandezas, unidades e vetores",
+      "termo": "Newton",
+      "definicao": "Força"
+    },
+    {
+      "id": "fis-grandezas-par-04",
+      "tema": "Grandezas, unidades e vetores",
+      "termo": "Joule",
+      "definicao": "Energia"
+    },
+    {
+      "id": "fis-cinematica-mu-par-01",
+      "tema": "Movimento uniforme e velocidade média",
+      "termo": "Velocímetro",
+      "definicao": "Velocidade instantânea"
+    },
+    {
+      "id": "fis-cinematica-mu-par-02",
+      "tema": "Movimento uniforme e velocidade média",
+      "termo": "Radar de trecho",
+      "definicao": "Velocidade média"
+    },
+    {
+      "id": "fis-cinematica-mu-par-03",
+      "tema": "Movimento uniforme e velocidade média",
+      "termo": "Reta horizontal no s × t",
+      "definicao": "Repouso"
+    },
+    {
+      "id": "fis-cinematica-mu-par-04",
+      "tema": "Movimento uniforme e velocidade média",
+      "termo": "Área no v × t",
+      "definicao": "Deslocamento"
+    },
+    {
+      "id": "fis-muv-queda-par-01",
+      "tema": "Movimento variado e queda livre",
+      "termo": "Aceleração",
+      "definicao": "m/s²"
+    },
+    {
+      "id": "fis-muv-queda-par-02",
+      "tema": "Movimento variado e queda livre",
+      "termo": "Torricelli",
+      "definicao": "Equação sem o tempo"
+    },
+    {
+      "id": "fis-muv-queda-par-03",
+      "tema": "Movimento variado e queda livre",
+      "termo": "g",
+      "definicao": "Cerca de 10 m/s²"
+    },
+    {
+      "id": "fis-muv-queda-par-04",
+      "tema": "Movimento variado e queda livre",
+      "termo": "Tempo de reação",
+      "definicao": "Carro anda sem frear"
+    }
+  ],
+  "verdadeiroFalso": [
+    {
+      "id": "fis-grandezas-vf-01",
+      "tema": "Grandezas, unidades e vetores",
+      "afirmacao": "Velocidade é uma grandeza vetorial.",
+      "verdadeira": true,
+      "explicacao": "Tem módulo, direção e sentido."
+    },
+    {
+      "id": "fis-grandezas-vf-02",
+      "tema": "Grandezas, unidades e vetores",
+      "afirmacao": "Um quilômetro tem cem metros.",
+      "verdadeira": false,
+      "explicacao": "Tem mil metros."
+    },
+    {
+      "id": "fis-grandezas-vf-03",
+      "tema": "Grandezas, unidades e vetores",
+      "afirmacao": "72 km/h equivalem a 20 m/s.",
+      "verdadeira": true,
+      "explicacao": "Divide-se por 3,6."
+    },
+    {
+      "id": "fis-cinematica-mu-vf-01",
+      "tema": "Movimento uniforme e velocidade média",
+      "afirmacao": "Um passageiro pode estar parado e em movimento, conforme o referencial.",
+      "verdadeira": true,
+      "explicacao": "Depende do observador."
+    },
+    {
+      "id": "fis-cinematica-mu-vf-02",
+      "tema": "Movimento uniforme e velocidade média",
+      "afirmacao": "A velocidade média é sempre a média aritmética das velocidades.",
+      "verdadeira": false,
+      "explicacao": "É distância total sobre tempo total."
+    },
+    {
+      "id": "fis-cinematica-mu-vf-03",
+      "tema": "Movimento uniforme e velocidade média",
+      "afirmacao": "No MU, a função horária é s = s₀ + v·t.",
+      "verdadeira": true,
+      "explicacao": "Velocidade constante."
+    },
+    {
+      "id": "fis-muv-queda-vf-01",
+      "tema": "Movimento variado e queda livre",
+      "afirmacao": "No vácuo, corpos de massas diferentes caem juntos.",
+      "verdadeira": true,
+      "explicacao": "Mesma aceleração g."
+    },
+    {
+      "id": "fis-muv-queda-vf-02",
+      "tema": "Movimento variado e queda livre",
+      "afirmacao": "No ponto mais alto, a aceleração da bola é zero.",
+      "verdadeira": false,
+      "explicacao": "Continua sendo g."
+    },
+    {
+      "id": "fis-muv-queda-vf-03",
+      "tema": "Movimento variado e queda livre",
+      "afirmacao": "Dobrar a velocidade quadruplica a distância de frenagem.",
+      "verdadeira": true,
+      "explicacao": "Depende de v²."
+    }
+  ],
+  "sequencias": [
+    {
+      "id": "fis-grandezas-seq-01",
+      "tema": "Grandezas, unidades e vetores",
+      "titulo": "Prefixos do menor para o maior",
+      "itens": [
+        "Micro",
+        "Mili",
+        "Unidade",
+        "Quilo",
+        "Mega"
+      ],
+      "explicacao": "Potências de 10 em escada."
+    },
+    {
+      "id": "fis-cinematica-mu-seq-01",
+      "tema": "Movimento uniforme e velocidade média",
+      "titulo": "Resolver um encontro",
+      "itens": [
+        "Desenhar a reta",
+        "Marcar posições",
+        "Achar a velocidade relativa",
+        "Dividir a distância"
+      ],
+      "explicacao": "Antes da conta, o desenho."
+    },
+    {
+      "id": "fis-muv-queda-seq-01",
+      "tema": "Movimento variado e queda livre",
+      "titulo": "Parada de um carro",
+      "itens": [
+        "Perigo aparece",
+        "Tempo de reação",
+        "Pé no freio",
+        "Frenagem",
+        "Carro parado"
+      ],
+      "explicacao": "Reação + frenagem."
+    }
+  ],
+  "adivinhas": [
+    {
+      "id": "fis-grandezas-adv-01",
+      "tema": "Grandezas, unidades e vetores",
+      "dificuldade": "medio",
+      "resposta": "Vetor",
+      "aceitas": [
+        "vetor, vetores"
+      ],
+      "dicas": [
+        "Seta",
+        "Módulo",
+        "Sentido"
+      ]
+    },
+    {
+      "id": "fis-cinematica-mu-adv-01",
+      "tema": "Movimento uniforme e velocidade média",
+      "dificuldade": "medio",
+      "resposta": "Referencial",
+      "aceitas": [
+        "referencial, referencia"
+      ],
+      "dicas": [
+        "Observador",
+        "Repouso",
+        "Em relação a"
+      ]
+    },
+    {
+      "id": "fis-muv-queda-adv-01",
+      "tema": "Movimento variado e queda livre",
+      "dificuldade": "medio",
+      "resposta": "Gravidade",
+      "aceitas": [
+        "gravidade, g"
+      ],
+      "dicas": [
+        "Queda",
+        "10 m/s²",
+        "Puxa para baixo"
+      ]
+    }
+  ],
+  "palavras": [
+    {
+      "id": "fis-grandezas-pal-01",
+      "tema": "Física",
+      "palavra": "Metro",
+      "dica": "Unidade de comprimento do SI"
+    },
+    {
+      "id": "fis-grandezas-pal-02",
+      "tema": "Física",
+      "palavra": "Joule",
+      "dica": "Unidade de energia"
+    },
+    {
+      "id": "fis-grandezas-pal-03",
+      "tema": "Física",
+      "palavra": "Newton",
+      "dica": "Unidade de força"
+    },
+    {
+      "id": "fis-grandezas-pal-04",
+      "tema": "Física",
+      "palavra": "Segundo",
+      "dica": "Unidade de tempo do SI"
+    },
+    {
+      "id": "fis-cinematica-mu-pal-01",
+      "tema": "Física",
+      "palavra": "Trem",
+      "dica": "Atravessa a ponte com o próprio comprimento"
+    },
+    {
+      "id": "fis-cinematica-mu-pal-02",
+      "tema": "Física",
+      "palavra": "Pista",
+      "dica": "Volta completa dá deslocamento zero nela"
+    },
+    {
+      "id": "fis-cinematica-mu-pal-03",
+      "tema": "Física",
+      "palavra": "Rapidez",
+      "dica": "Sinônimo popular de velocidade"
+    },
+    {
+      "id": "fis-cinematica-mu-pal-04",
+      "tema": "Física",
+      "palavra": "Viagem",
+      "dica": "Tem média de velocidade com paradas"
+    },
+    {
+      "id": "fis-muv-queda-pal-01",
+      "tema": "Física",
+      "palavra": "Freio",
+      "dica": "Pedal que inicia a frenagem"
+    },
+    {
+      "id": "fis-muv-queda-pal-02",
+      "tema": "Física",
+      "palavra": "Queda",
+      "dica": "Movimento livre com aceleração g"
+    },
+    {
+      "id": "fis-muv-queda-pal-03",
+      "tema": "Física",
+      "palavra": "Cinto",
+      "dica": "Item que segura o passageiro na batida"
+    },
+    {
+      "id": "fis-muv-queda-pal-04",
+      "tema": "Física",
+      "palavra": "Airbag",
+      "dica": "Bolsa que infla e aumenta o tempo de parada"
+    }
+  ],
+  "fichas": {
+    "Grandezas e unidades": {
+      "texto": [
+        "SI: metro, quilograma, segundo, kelvin, ampere. Prefixos quilo (10³), mega (10⁶), mili (10⁻³), micro (10⁻⁶). Unidades derivadas: m/s, m/s², newton, joule, watt.",
+        "Conversões: 1 km = 1.000 m; 1 h = 3.600 s; km/h ÷ 3,6 = m/s. Análise dimensional confere fórmulas."
+      ],
+      "pontos": [
+        "De km/h para m/s, divide por 3,6.",
+        "Converta antes de multiplicar."
+      ],
+      "pegadinhas": [
+        "Usar grama como unidade de massa do SI.",
+        "Multiplicar por 3,6 na conversão para m/s."
+      ]
+    },
+    "Notação científica e ordem de grandeza": {
+      "texto": [
+        "a × 10ⁿ com 1 ≤ a < 10. Multiplicação soma expoentes; divisão subtrai.",
+        "Ordem de grandeza: potência de 10 mais próxima; se a passa de cerca de 3,16, sobe uma potência."
+      ],
+      "pontos": [
+        "Número pequeno, expoente negativo.",
+        "Passou de 3,16, sobe um degrau."
+      ],
+      "pegadinhas": [
+        "Deixar 45 × 10⁶ como resposta final.",
+        "Multiplicar os expoentes num produto."
+      ]
+    },
+    "Vetores": {
+      "texto": [
+        "Escalares (massa, tempo, temperatura, energia) e vetoriais (deslocamento, velocidade, aceleração, força), com módulo, direção e sentido.",
+        "Mesmo sentido soma; oposto subtrai; perpendiculares por Pitágoras. Deslocamento é diferente de distância percorrida."
+      ],
+      "pontos": [
+        "Se tem rumo, é vetor.",
+        "Triângulo 3, 4, 5."
+      ],
+      "pegadinhas": [
+        "Somar direto vetores perpendiculares.",
+        "Confundir deslocamento com distância."
+      ]
+    },
+    "Referencial e velocidade média": {
+      "texto": [
+        "Repouso e movimento dependem do referencial; a trajetória também. Velocidade média é deslocamento total sobre tempo total, incluindo paradas.",
+        "Média de trechos com mesma distância não é média aritmética das velocidades. Velocímetro mostra a instantânea; radar de trecho, a média."
+      ],
+      "pontos": [
+        "Distância total dividida pelo tempo total.",
+        "Converta minutos em horas antes de dividir."
+      ],
+      "pegadinhas": [
+        "Tirar a média aritmética das velocidades.",
+        "Esquecer o tempo parado."
+      ]
+    },
+    "Movimento uniforme": {
+      "texto": [
+        "s = s₀ + v·t, velocidade constante. Encontro: opostos somam velocidades; mesmo sentido subtrai.",
+        "Objeto com comprimento percorre o próprio tamanho mais o da ponte ou túnel. Eco é ida e volta."
+      ],
+      "pontos": [
+        "Trem na ponte, some os comprimentos.",
+        "Eco, divida por dois."
+      ],
+      "pegadinhas": [
+        "Somar velocidades no mesmo sentido.",
+        "Esquecer o comprimento do trem."
+      ]
+    },
+    "Gráficos do movimento": {
+      "texto": [
+        "s × t do MU: reta; inclinação = velocidade; horizontal = parado; descendo = velocidade negativa.",
+        "v × t do MU: linha horizontal; área = deslocamento. Cruzamento no s × t é encontro."
+      ],
+      "pontos": [
+        "Mais em pé, mais rápido.",
+        "Área do v × t é deslocamento."
+      ],
+      "pegadinhas": [
+        "Ler cruzamento de retas como velocidades iguais."
+      ]
+    },
+    "Aceleração e MUV": {
+      "texto": [
+        "a = Δv/Δt em m/s². MUV: v = v₀ + a·t; s = s₀ + v₀·t + a·t²/2; Torricelli v² = v₀² + 2·a·Δs.",
+        "Acelerado: sinais iguais; retardado: opostos. Gráfico v × t do MUV é reta inclinada; s × t é parábola."
+      ],
+      "pontos": [
+        "Sem tempo, use Torricelli.",
+        "Partindo do repouso, s = a·t²/2."
+      ],
+      "pegadinhas": [
+        "Esquecer a velocidade inicial.",
+        "Esquecer a raiz em Torricelli."
+      ]
+    },
+    "Queda livre e lançamento vertical": {
+      "texto": [
+        "Sem ar, todos caem com g ≈ 10 m/s². v = g·t e h = g·t²/2.",
+        "Lançamento para cima: perde 10 m/s por segundo, velocidade zero no topo, subida e descida com tempos iguais; altura máxima v₀²/2g."
+      ],
+      "pontos": [
+        "No topo, velocidade zero e aceleração g.",
+        "O tempo entra ao quadrado na altura."
+      ],
+      "pegadinhas": [
+        "Achar que o mais pesado cai antes no vácuo.",
+        "Dizer que a aceleração é zero no topo."
+      ]
+    },
+    "Segurança no trânsito": {
+      "texto": [
+        "Parada = distância de reação (MU) + distância de frenagem (v²/2a).",
+        "Dobrar a velocidade quadruplica a frenagem. Cinto e airbag aumentam o tempo de parada e reduzem a força."
+      ],
+      "pontos": [
+        "Parada = reação + frenagem.",
+        "Velocidade em dobro, freada em quádruplo."
+      ],
+      "pegadinhas": [
+        "Achar que a frenagem só dobra.",
+        "Esquecer o trecho percorrido na reação."
+      ]
+    }
+  }
+}
