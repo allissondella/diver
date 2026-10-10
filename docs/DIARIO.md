@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-10 · Enem por matéria, Onda 2: Enem · Português e Enem · Literatura completos
+- **Feito:** `enem-portugues` com 35 aulas em 6 módulos (leitura e gêneros, funções da linguagem, variação e norma, gramática a serviço do texto, argumentação, mídia e gêneros digitais): 700 questões originais, 700 variantes, 93 fichas. `enem-literatura` com 20 aulas em 4 módulos (o texto literário, das origens ao Romantismo, do Realismo ao Simbolismo, Modernismo e contemporâneos): 400 questões originais, 400 variantes, 52 fichas. Em todas as aulas: 7 fáceis, 8 médias e 5 difíceis, comentário em cada alternativa, Dica de mergulhador, artigo completo, blocos para todos os jogos e prova de 45 questões. Parecer das fontes em `docs/validacoes/enem-linguagens-2026-10-10.md`; cadernos novos dos dois cursos.
+- **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos nos dois cursos; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.
+- **Decisões:** cursos 100% autorais; em Literatura, citação literal só de autor em domínio público, curta, e trechos "ao modo de" sempre marcados como autorais; 72 itens de Literatura marcados `revisar` (datas, autoria, citações).
+- **Pendências:** Mergulho Triplo (estimativa de US$ 52 para Português e US$ 30 para Literatura, questões e variantes; só com aprovação do admin); revisão de professores de Português e de Literatura.
+- **Próximo passo:** Ondas 3 e 4 (Biologia e Química).
+
 ## 2026-10-10 · Enem por matéria, Onda 1: Enem · Matemática completo
 - **Feito:** as 75 aulas do curso `enem-matematica` em 12 módulos, pelo plano de `docs/cadernos/enem-mapa-curricular.md` (seção 4): 1.506 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), comentário em cada alternativa e Dica de mergulhador, 1.506 variantes, 190 fichas da "Revisar a fundo", artigo completo em todas as aulas e blocos para todos os jogos. Construtor `scripts/montar-aulas.mjs` (formato compacto → JSON, com conferência das contas). Caderno novo do curso.
 - **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim do curso.
