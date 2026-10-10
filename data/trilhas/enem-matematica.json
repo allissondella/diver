@@ -5893,7 +5893,7 @@
       "id": "mat-plano-cartesiano",
       "nome": "Aula 58 · Plano cartesiano e leitura de gráficos",
       "modulo": "Módulo 10 · Funções",
-      "descricao": "Módulo 10 · aula 1 de 3 · 35 min · treina as habilidades H6 e H20",
+      "descricao": "Módulo 10 · aula 1 de 7 · 35 min · treina as habilidades H6 e H20",
       "habilidades": [
         "H6",
         "H20"
@@ -6003,7 +6003,7 @@
       "id": "mat-ideia-funcao",
       "nome": "Aula 59 · A ideia de função",
       "modulo": "Módulo 10 · Funções",
-      "descricao": "Módulo 10 · aula 2 de 3 · 35 min · treina as habilidades H19 e H20",
+      "descricao": "Módulo 10 · aula 2 de 7 · 35 min · treina as habilidades H19 e H20",
       "habilidades": [
         "H19",
         "H20"
@@ -6112,7 +6112,7 @@
       "id": "mat-funcao-afim",
       "nome": "Aula 60 · Função afim",
       "modulo": "Módulo 10 · Funções",
-      "descricao": "Módulo 10 · aula 3 de 3 · 35 min · treina as habilidades H19 e H21",
+      "descricao": "Módulo 10 · aula 3 de 7 · 35 min · treina as habilidades H19 e H21",
       "habilidades": [
         "H19",
         "H21"
@@ -6213,6 +6213,447 @@
           "coeficiente linear",
           "coeficiente angular",
           "raiz"
+        ]
+      }
+    },
+    {
+      "id": "mat-funcao-quadratica",
+      "nome": "Aula 61 · Função quadrática",
+      "modulo": "Módulo 10 · Funções",
+      "descricao": "Módulo 10 · aula 4 de 7 · 35 min · treina as habilidades H21 e H22",
+      "habilidades": [
+        "H21",
+        "H22"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "A forma f(x) = ax² + bx + c",
+            "texto": [
+              "A função quadrática tem lei f(x) = ax² + bx + c, com a ≠ 0. O gráfico é uma **parábola**. Se a > 0, ela tem a boca para cima, como um sorriso, e um ponto de mínimo; se a < 0, a boca fica para baixo e há um ponto de máximo. Essa abertura para cima ou para baixo é a **concavidade**. O número c é o valor em x = 0: é onde a curva corta o eixo y."
+            ]
+          },
+          {
+            "titulo": "Raízes",
+            "texto": [
+              "As raízes são os valores de x com f(x) = 0, onde a curva toca o eixo x. Pela fórmula de Bhaskara, Δ = b² − 4ac e x = (−b ± √Δ) ÷ 2a. Se Δ > 0, há duas raízes; se Δ = 0, uma só, e a curva apenas encosta no eixo; se Δ < 0, nenhuma raiz real. Muitas vezes dá para fatorar: x² − 5x + 6 = (x − 2)(x − 3), com raízes 2 e 3. A soma das raízes é −b ÷ a, e o produto, c ÷ a."
+            ]
+          },
+          {
+            "titulo": "Máximo e mínimo",
+            "texto": [
+              "O **vértice** é o ponto de virada da curva. A abscissa dele é x = −b ÷ 2a, que também é a média das raízes; a ordenada se acha substituindo esse x na lei. Uma bola lançada com altura h(t) = −5t² + 20t sobe até t = 2 s e chega a h(2) = 20 m, a altura máxima. O gráfico é simétrico em relação à reta vertical que passa pelo ponto de virada: as raízes ficam à mesma distância dela."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Lançamentos de bolas e projéteis, lucro e receita em função do preço, área máxima de cercados com uma quantidade fixa de tela, pontes e antenas parabólicas. A pergunta quase sempre é \"qual o valor máximo\", \"em que momento\" ou \"qual preço dá o maior lucro\". Leia com atenção se pedem o x do ponto de virada (o momento, o preço) ou o y (a altura, o lucro)."
+            ]
+          }
+        ],
+        "introducao": "A trajetória de uma bola chutada, o lucro que cresce e depois cai quando o preço sobe demais, a área máxima de um cercado: tudo isso segue uma função quadrática. Esta aula mostra a forma do gráfico, como achar as raízes e, principalmente, como achar o valor máximo ou mínimo, o ponto mais cobrado pelo Enem.",
+        "mapaMental": {
+          "centro": "Função quadrática",
+          "ramos": [
+            {
+              "titulo": "Gráfico",
+              "itens": [
+                "parábola",
+                "a > 0 com mínimo",
+                "a < 0 com máximo",
+                "c corta o eixo y"
+              ]
+            },
+            {
+              "titulo": "Raízes",
+              "itens": [
+                "Δ = b² − 4ac",
+                "Bhaskara",
+                "soma −b ÷ a e produto c ÷ a"
+              ]
+            },
+            {
+              "titulo": "Vértice",
+              "itens": [
+                "x = −b ÷ 2a",
+                "média das raízes",
+                "y substituindo na lei"
+              ]
+            },
+            {
+              "titulo": "Aplicações",
+              "itens": [
+                "altura máxima",
+                "maior lucro",
+                "área máxima"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "😊",
+            "conceito": "Sorriso e cara fechada",
+            "liga": "concavidade",
+            "porque": "a positivo sorri para cima; a negativo fecha a cara."
+          },
+          {
+            "icone": "⚽",
+            "conceito": "Bola chutada",
+            "liga": "sobe, para e desce",
+            "porque": "O ponto mais alto é o máximo da função."
+          },
+          {
+            "icone": "🪞",
+            "conceito": "Espelho",
+            "liga": "simetria da curva",
+            "porque": "As raízes ficam à mesma distância do eixo de simetria."
+          }
+        ],
+        "pontos": [
+          "f(x) = ax² + bx + c tem gráfico em **parábola**; c é o corte no eixo y.",
+          "**Concavidade**: a > 0, boca para cima e mínimo; a < 0, boca para baixo e máximo.",
+          "Raízes por Bhaskara: Δ = b² − 4ac e x = (−b ± √Δ) ÷ 2a.",
+          "**Vértice**: x = −b ÷ 2a; o y sai substituindo na lei."
+        ],
+        "perolas": [
+          "Δ < 0: a curva não toca o eixo x.",
+          "Pediram o momento ou o valor máximo? Leia duas vezes."
+        ],
+        "reforcar": [
+          "parabola",
+          "concavidade",
+          "vertice"
+        ]
+      }
+    },
+    {
+      "id": "mat-funcao-exponencial",
+      "nome": "Aula 62 · Função exponencial",
+      "modulo": "Módulo 10 · Funções",
+      "descricao": "Módulo 10 · aula 5 de 7 · 35 min · treina a habilidade H21",
+      "habilidades": [
+        "H21"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "A forma f(x) = k · aˣ",
+            "texto": [
+              "Na função exponencial, f(x) = k · aˣ, o número k é o valor inicial e a é o fator de cada período, com a > 0 e a ≠ 1. Se a > 1, há **crescimento exponencial**: uma cultura de 100 bactérias que dobra a cada hora tem 100 · 2ᵗ bactérias, ou seja, 200, 400, 800, 1.600. Se 0 < a < 1, há decaimento: a grandeza diminui, mas nunca chega a zero. Diferente da função afim, que soma sempre o mesmo valor, a exponencial multiplica sempre pelo mesmo número."
+            ]
+          },
+          {
+            "titulo": "Porcentagem vira fator",
+            "texto": [
+              "Crescer 10% ao período é multiplicar por 1,10; cair 20% é multiplicar por 0,80. Assim, uma cidade de 50 mil habitantes que cresce 2% ao ano terá 50.000 · 1,02ᵗ habitantes depois de t anos, e um carro de R$ 40.000 que perde 10% ao ano vale 40.000 · 0,9ᵗ. Os juros compostos seguem a mesma lei: M = C · (1 + i)ᵗ. Aumentos e descontos seguidos se multiplicam: subir 20% e depois cair 20% dá 1,2 × 0,8 = 0,96, uma perda de 4%."
+            ]
+          },
+          {
+            "titulo": "Dobrar e cair pela metade",
+            "texto": [
+              "O **tempo de duplicação** é o período para a grandeza dobrar; depois de n períodos desses, ela fica 2ⁿ vezes maior. A **meia-vida** é o tempo para a quantidade cair pela metade: depois de n meias-vidas, sobra (1/2)ⁿ do valor inicial. Um material radioativo de 800 g com meia-vida de 5 anos tem 400 g em 5 anos, 200 g em 10 e 100 g em 15. Remédios e substâncias no corpo também caem assim."
+            ]
+          },
+          {
+            "titulo": "Gráfico e como o Enem cobra",
+            "texto": [
+              "O gráfico de f(x) = aˣ passa por (0, 1), fica sempre acima do eixo x e sobe cada vez mais rápido quando a > 1; quando 0 < a < 1, desce e se aproxima do eixo sem tocá-lo. O Enem cobra crescimento de bactérias e de populações, juros compostos, depreciação, meia-vida de remédios e de materiais radioativos, e a comparação entre crescimento linear e exponencial."
+            ]
+          }
+        ],
+        "introducao": "Bactérias que se dividem, dinheiro rendendo juros compostos, remédio sendo eliminado do corpo, notícia que se espalha: quando a grandeza é multiplicada pelo mesmo número a cada período, o crescimento é exponencial. Esta aula mostra como reconhecer, calcular e comparar esse tipo de função.",
+        "mapaMental": {
+          "centro": "Função exponencial",
+          "ramos": [
+            {
+              "titulo": "Forma",
+              "itens": [
+                "k valor inicial",
+                "a fator de cada período",
+                "multiplica sempre pelo mesmo número"
+              ]
+            },
+            {
+              "titulo": "Tipos",
+              "itens": [
+                "crescimento exponencial com a > 1",
+                "decaimento com 0 < a < 1"
+              ]
+            },
+            {
+              "titulo": "Porcentagem",
+              "itens": [
+                "mais 10% é × 1,10",
+                "menos 20% é × 0,80"
+              ]
+            },
+            {
+              "titulo": "Metade",
+              "itens": [
+                "meia-vida",
+                "sobra (1/2)ⁿ depois de n períodos"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🦠",
+            "conceito": "Bactéria que se divide",
+            "liga": "tempo de duplicação",
+            "porque": "A cada divisão, a população dobra: 1, 2, 4, 8."
+          },
+          {
+            "icone": "📰",
+            "conceito": "Notícia compartilhada",
+            "liga": "multiplicar, não somar",
+            "porque": "Cada pessoa passa para várias, e o total dispara."
+          },
+          {
+            "icone": "💊",
+            "conceito": "Remédio no sangue",
+            "liga": "cai pela metade",
+            "porque": "A cada período, o corpo elimina metade do que resta."
+          }
+        ],
+        "pontos": [
+          "f(x) = k · aˣ: k é o valor inicial e a é o fator de cada período.",
+          "**Crescimento exponencial** com a > 1; decaimento com 0 < a < 1.",
+          "Crescer i% é multiplicar por (1 + i); cair i%, por (1 − i).",
+          "**Tempo de duplicação**: após n deles, 2ⁿ vezes; **meia-vida**: após n delas, sobra (1/2)ⁿ."
+        ],
+        "perolas": [
+          "O gráfico de aˣ passa por (0, 1).",
+          "Afim soma; exponencial multiplica."
+        ],
+        "reforcar": [
+          "crescimento exponencial",
+          "tempo de duplicacao",
+          "meia-vida"
+        ]
+      }
+    },
+    {
+      "id": "mat-logaritmos",
+      "nome": "Aula 63 · Logaritmos",
+      "modulo": "Módulo 10 · Funções",
+      "descricao": "Módulo 10 · aula 6 de 7 · 35 min · treina as habilidades H21 e H23",
+      "habilidades": [
+        "H21",
+        "H23"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "O que é",
+            "texto": [
+              "O **logaritmo** responde à pergunta: a que número devo elevar a base para obter um valor? Assim, log₂ 8 = 3 porque 2³ = 8, e log₁₀ 1.000 = 3 porque 10³ = 1.000. Em geral, log_b a = x significa bˣ = a, com a > 0, b > 0 e b ≠ 1. Ele é o caminho de volta da potência, como a raiz quadrada é o caminho de volta do quadrado. Quando a base não aparece, ela é 10: log 100 = 2."
+            ]
+          },
+          {
+            "titulo": "Valores que valem decorar",
+            "texto": [
+              "Para qualquer base, o log de 1 é 0, e o log da própria base é 1. Na base 10, log 10 = 1, log 100 = 2 e log 0,01 = −2. Os valores aproximados log 2 ≈ 0,30 e log 3 ≈ 0,48 costumam vir no enunciado e resolvem muitas contas, porque vários números são produtos de 2, 3 e 10."
+            ]
+          },
+          {
+            "titulo": "Propriedades",
+            "texto": [
+              "O **produto vira soma**: log (a · b) = log a + log b. A divisão vira subtração: log (a ÷ b) = log a − log b. A potência desce multiplicando: log aⁿ = n · log a. Assim, log 6 = log 2 + log 3 ≈ 0,78, log 5 = log 10 − log 2 ≈ 0,70 e log 8 = 3 · log 2 ≈ 0,90. Para resolver 2ˣ = 10, aplique log dos dois lados: x · log 2 = 1, então x ≈ 1 ÷ 0,30 ≈ 3,3."
+            ]
+          },
+          {
+            "titulo": "Escalas e como o Enem cobra",
+            "texto": [
+              "Uma **escala logarítmica** conta potências de 10: subir 1 ponto significa multiplicar por 10. É o caso do pH (cada unidade a menos é 10 vezes mais ácido), da magnitude dos terremotos (cada ponto a mais indica amplitude 10 vezes maior) e dos decibéis (cada 10 dB a mais, intensidade 10 vezes maior). O Enem cobra o tempo para um investimento ou uma população atingir um valor, meias-vidas, pH, terremotos, som e leitura de tabelas de logaritmos dadas no enunciado."
+            ]
+          }
+        ],
+        "introducao": "Em quantos anos um investimento dobra? Quantas meias-vidas até um remédio quase sumir? Por que um terremoto de magnitude 7 é muito mais forte que um de magnitude 5? Para descobrir o expoente de uma potência, usa-se o logaritmo. Esta aula mostra o que ele é, as propriedades e as escalas que o usam.",
+        "mapaMental": {
+          "centro": "Logaritmos",
+          "ramos": [
+            {
+              "titulo": "Definição",
+              "itens": [
+                "log_b a = x quando bˣ = a",
+                "base 10 quando não aparece"
+              ]
+            },
+            {
+              "titulo": "Valores",
+              "itens": [
+                "log de 1 é 0",
+                "log da base é 1",
+                "log 2 ≈ 0,30"
+              ]
+            },
+            {
+              "titulo": "Propriedades",
+              "itens": [
+                "divisão vira subtração",
+                "potência desce multiplicando"
+              ]
+            },
+            {
+              "titulo": "Escala logarítmica",
+              "itens": [
+                "pH",
+                "magnitude dos terremotos",
+                "decibéis"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🔙",
+            "conceito": "Caminho de volta",
+            "liga": "do resultado ao expoente",
+            "porque": "A potência sobe; o log pergunta quantas vezes se multiplicou."
+          },
+          {
+            "icone": "➕",
+            "conceito": "Multiplicar fica fácil",
+            "liga": "produto vira soma",
+            "porque": "Somar é mais fácil que multiplicar números grandes."
+          },
+          {
+            "icone": "🌋",
+            "conceito": "Terremoto",
+            "liga": "1 ponto a mais, 10 vezes",
+            "porque": "Cada grau da escala multiplica a amplitude por 10."
+          }
+        ],
+        "pontos": [
+          "**Logaritmo**: log_b a = x quando bˣ = a.",
+          "log 1 = 0 e o log da própria base é 1.",
+          "**Produto vira soma**; divisão vira subtração; potência desce multiplicando.",
+          "**Escala logarítmica**: 1 ponto a mais é 10 vezes mais."
+        ],
+        "perolas": [
+          "log 2 ≈ 0,30 e log 3 ≈ 0,48.",
+          "pH menor, mais ácido."
+        ],
+        "reforcar": [
+          "logaritmo",
+          "produto vira soma",
+          "escala logaritmica"
+        ]
+      }
+    },
+    {
+      "id": "mat-revisao-funcoes",
+      "nome": "Aula 64 · Revisão do módulo: funções",
+      "modulo": "Módulo 10 · Funções",
+      "descricao": "Módulo 10 · aula 7 de 7 · 35 min · treina as habilidades H19, H20, H21, H22 e H23",
+      "habilidades": [
+        "H19",
+        "H20",
+        "H21",
+        "H22",
+        "H23"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Ler o problema",
+            "texto": [
+              "Primeiro, identifique quem depende de quem: x é a entrada (tempo, quantidade, preço) e y é a saída. Leia o gráfico pelo título, pelos eixos e pelas unidades. A taxa de variação, Δy ÷ Δx, diz quanto y muda por unidade de x; trecho horizontal é constante, e cruzamento de linhas é empate. Domínio e imagem dizem os valores possíveis de entrada e de saída."
+            ]
+          },
+          {
+            "titulo": "Afim ou exponencial",
+            "texto": [
+              "Se a grandeza soma sempre o **mesmo valor** por período, a função é afim, f(x) = ax + b: b é a parte fixa e a é a taxa. Se ela multiplica sempre pelo **mesmo fator**, é exponencial, f(x) = k · aˣ: crescer i% é multiplicar por (1 + i), e meia-vida é cair pela metade a cada período. Para comparar planos afins, iguale as leis; para comparar crescimentos, lembre que o exponencial sempre ultrapassa o linear em algum momento."
+            ]
+          },
+          {
+            "titulo": "Quadrática e logaritmo",
+            "texto": [
+              "Na quadrática, f(x) = ax² + bx + c, o gráfico é uma curva com **ponto de virada** em x = −b ÷ 2a: é ali que estão a altura máxima, o maior lucro e a área máxima. As raízes saem por Bhaskara ou por fatoração. O logaritmo encontra o expoente: para saber quando uma exponencial atinge um valor, aplique log dos dois lados, lembrando que produto vira soma e potência desce multiplicando."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Faça as questões sem consultar o resumo e, a cada erro, leia o comentário da alternativa marcada. Os tropeços mais comuns são trocar a parte fixa pela taxa, somar porcentagens em vez de multiplicar fatores, responder o x do máximo quando pediram o y, esquecer que raiz é onde y = 0 e ler escalas logarítmicas como se fossem lineares. Antes de marcar, confira se a resposta tem a unidade certa e se faz sentido na situação."
+            ]
+          }
+        ],
+        "introducao": "Fim do módulo de funções. As questões desta revisão vêm misturadas, como na prova: o desafio é reconhecer se a situação é afim, quadrática, exponencial ou logarítmica, e o que a pergunta quer: um valor, um momento, um máximo ou uma comparação.",
+        "mapaMental": {
+          "centro": "Funções",
+          "ramos": [
+            {
+              "titulo": "Leitura",
+              "itens": [
+                "entrada x e saída y",
+                "taxa Δy ÷ Δx",
+                "cruzamento é empate"
+              ]
+            },
+            {
+              "titulo": "Afim",
+              "itens": [
+                "parte fixa b",
+                "taxa a",
+                "iguale as leis para comparar"
+              ]
+            },
+            {
+              "titulo": "Exponencial",
+              "itens": [
+                "multiplica pelo mesmo fator",
+                "crescer i% é × (1 + i)",
+                "meia-vida"
+              ]
+            },
+            {
+              "titulo": "Quadrática",
+              "itens": [
+                "ponto de virada em x = −b ÷ 2a",
+                "raízes por Bhaskara"
+              ]
+            },
+            {
+              "titulo": "Logaritmo",
+              "itens": [
+                "acha o expoente",
+                "produto vira soma"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "➕",
+            "conceito": "Mesada que sobe R$ 10 por mês",
+            "liga": "mesmo valor somado",
+            "porque": "É afim: soma fixa a cada período."
+          },
+          {
+            "icone": "✖️",
+            "conceito": "Dinheiro que rende 10% ao mês",
+            "liga": "fator 1,10",
+            "porque": "É exponencial: multiplica a cada período."
+          }
+        ],
+        "pontos": [
+          "Soma o **mesmo valor** por período: afim; multiplica pelo **mesmo fator**: exponencial.",
+          "Afim: f(x) = ax + b; raiz em x = −b ÷ a.",
+          "Quadrática: **ponto de virada** em x = −b ÷ 2a; o y é o máximo ou o mínimo.",
+          "Logaritmo acha o expoente: produto vira soma."
+        ],
+        "perolas": [
+          "Pediram o momento ou o valor? Confira antes de marcar."
+        ],
+        "reforcar": [
+          "mesmo valor",
+          "mesmo fator",
+          "ponto de virada"
         ]
       }
     }
@@ -33953,6 +34394,1846 @@
         "Não dividiu por 2.",
         "Usou só um corte.",
         "Usou só a raiz.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q01",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Para que lado fica a boca do gráfico de f(x) = −2x² + 3x + 1?",
+      "alternativas": [
+        "Para a direita",
+        "Para cima, pois b = 3",
+        "Para baixo, pois a = −2",
+        "Para cima, pois c = 1",
+        "Não tem concavidade"
+      ],
+      "correta": 2,
+      "explicacao": "a < 0: concavidade para baixo, com ponto de máximo. Dica de mergulhador: a negativo, cara fechada.",
+      "comentarios": [
+        "A curva abre para cima ou para baixo.",
+        "Quem decide é o a.",
+        "",
+        "Quem decide é o a.",
+        "Toda parábola tem."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q02",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Em que ponto o gráfico de f(x) = x² − 3x + 5 corta o eixo y?",
+      "alternativas": [
+        "(0, 1)",
+        "(5, 0)",
+        "(0, 5)",
+        "(0, 3)",
+        "(0, −3)"
+      ],
+      "correta": 2,
+      "explicacao": "f(0) = 5. Dica de mergulhador: em x = 0, sobra o c.",
+      "comentarios": [
+        "O 1 é o a.",
+        "Inverteu as coordenadas.",
+        "",
+        "Usou b sem sinal.",
+        "O −3 é o b."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q03",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Se f(x) = x² + 2x − 3, quanto vale f(2)?",
+      "alternativas": [
+        "−3",
+        "11",
+        "5",
+        "3",
+        "1"
+      ],
+      "correta": 2,
+      "explicacao": "f(2) = 4 + 4 − 3 = 5. Dica de mergulhador: eleve antes de multiplicar.",
+      "comentarios": [
+        "Usou x = 0.",
+        "Fez 2² = 8.",
+        "",
+        "Esqueceu o 2x.",
+        "Fez 2 + 2 − 3."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q04",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Qual destas funções tem ponto de máximo?",
+      "alternativas": [
+        "f(x) = 4x − 1",
+        "f(x) = 2x² − 4",
+        "f(x) = −x² + 4x",
+        "f(x) = x²",
+        "f(x) = x² + 4x"
+      ],
+      "correta": 2,
+      "explicacao": "Só a função com a < 0 tem concavidade para baixo e máximo. Dica de mergulhador: máximo pede a negativo.",
+      "comentarios": [
+        "É afim, sem máximo.",
+        "a > 0 dá mínimo.",
+        "",
+        "a > 0 dá mínimo.",
+        "a > 0 dá mínimo."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q05",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Em quantos pontos o gráfico de f(x) = x² − 6x + 9 toca o eixo x?",
+      "alternativas": [
+        "Em 3 pontos",
+        "Em nenhum ponto",
+        "Em 9 pontos",
+        "Em 2 pontos",
+        "Em 1 ponto"
+      ],
+      "correta": 4,
+      "explicacao": "Δ = 36 − 36 = 0: uma raiz, x = 3. A curva só encosta no eixo. Dica de mergulhador: Δ zero, toque único.",
+      "comentarios": [
+        "Parábola toca no máximo em 2.",
+        "Δ = 0, não negativo.",
+        "9 é o c.",
+        "Δ = 0, não positivo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q06",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Uma função quadrática tem raízes 1 e 3 e corta o eixo y em 3. Qual é a sua lei?",
+      "alternativas": [
+        "f(x) = −x² + 4x − 3",
+        "f(x) = x² − 3x + 1",
+        "f(x) = x² − 4x + 3",
+        "f(x) = x² + 4x + 3",
+        "f(x) = 3x² − 12x + 9"
+      ],
+      "correta": 2,
+      "explicacao": "f(x) = a(x − 1)(x − 3); f(0) = 3a = 3, então a = 1: x² − 4x + 3. Dica de mergulhador: raízes dão os fatores; o corte em y dá o a.",
+      "comentarios": [
+        "Corta o eixo y em −3.",
+        "Não tem raízes 1 e 3.",
+        "",
+        "As raízes seriam −1 e −3.",
+        "Corta o eixo y em 9."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q07",
+      "tema": "Raízes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Quais são as raízes de x² − 5x + 6 = 0?",
+      "alternativas": [
+        "5 e 6",
+        "−1 e 6",
+        "2 e 3",
+        "−2 e −3",
+        "1 e 6"
+      ],
+      "correta": 2,
+      "explicacao": "Soma 5 e produto 6: 2 e 3. Dica de mergulhador: quando a = 1, procure dois números com soma −b e produto c.",
+      "comentarios": [
+        "Usou os coeficientes.",
+        "A soma seria 5, mas o produto −6.",
+        "",
+        "Errou os sinais.",
+        "O produto é 6, mas a soma seria 7."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q08",
+      "tema": "Raízes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Quais são as raízes de x² − 9 = 0?",
+      "alternativas": [
+        "Não tem raízes reais",
+        "Só 3",
+        "0 e 9",
+        "−3 e 3",
+        "9 e −9"
+      ],
+      "correta": 3,
+      "explicacao": "x² = 9, então x = ±3. Dica de mergulhador: quadrado tem duas raízes, uma de cada sinal.",
+      "comentarios": [
+        "x² = 9 tem solução.",
+        "Esqueceu a raiz negativa.",
+        "Fatorou errado.",
+        "",
+        "Não tirou a raiz quadrada."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q09",
+      "tema": "Raízes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Quais são as raízes de 2x² − 8x = 0?",
+      "alternativas": [
+        "0 e 8",
+        "Só 4",
+        "0 e −4",
+        "0 e 4",
+        "2 e 8"
+      ],
+      "correta": 3,
+      "explicacao": "2x(x − 4) = 0: x = 0 ou x = 4. Dica de mergulhador: sem c, coloque x em evidência.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "Esqueceu o x = 0.",
+        "Errou o sinal.",
+        "",
+        "Usou os coeficientes."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q10",
+      "tema": "Raízes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Pela fórmula de Bhaskara, quais são as raízes de x² − 2x − 15 = 0?",
+      "alternativas": [
+        "8 e −8",
+        "5 e −3",
+        "−5 e 3",
+        "10 e −6",
+        "15 e 1"
+      ],
+      "correta": 1,
+      "explicacao": "Δ = 4 + 60 = 64; x = (2 ± 8) ÷ 2: 5 ou −3. Dica de mergulhador: −b muda o sinal de b.",
+      "comentarios": [
+        "Parou em ±√Δ.",
+        "",
+        "Errou o sinal de b.",
+        "Esqueceu de dividir por 2a.",
+        "Usou os coeficientes."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q11",
+      "tema": "Raízes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Sem resolver a equação 2x² − 12x + 10 = 0, qual é a soma e qual é o produto das raízes?",
+      "alternativas": [
+        "Soma 6 e produto 10",
+        "Soma −6 e produto 5",
+        "Soma 12 e produto 10",
+        "Soma 5 e produto 6",
+        "Soma 6 e produto 5"
+      ],
+      "correta": 4,
+      "explicacao": "Soma: −(−12) ÷ 2 = 6. Produto: 10 ÷ 2 = 5. Dica de mergulhador: −b ÷ a e c ÷ a.",
+      "comentarios": [
+        "Esqueceu de dividir c por a.",
+        "A soma é −b ÷ a.",
+        "Esqueceu de dividir por a.",
+        "Trocou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q12",
+      "tema": "Raízes",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Uma bola é chutada do chão e sua altura, em metros, é h(t) = −5t² + 20t, com t em segundos. Depois de quanto tempo ela volta ao chão?",
+      "alternativas": [
+        "5 segundos",
+        "4 segundos",
+        "2 segundos",
+        "0 segundo",
+        "20 segundos"
+      ],
+      "correta": 1,
+      "explicacao": "h(t) = 0: −5t(t − 4) = 0, então t = 0 ou t = 4. Dica de mergulhador: voltar ao chão é a outra raiz.",
+      "comentarios": [
+        "Usou o a.",
+        "",
+        "É o momento da altura máxima.",
+        "É o momento do chute.",
+        "Usou o b."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q13",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Qual é a abscissa do vértice de f(x) = x² − 6x + 5?",
+      "alternativas": [
+        "x = 3",
+        "x = −3",
+        "x = 6",
+        "x = 1",
+        "x = 5"
+      ],
+      "correta": 0,
+      "explicacao": "x = −b ÷ 2a = 6 ÷ 2 = 3. Dica de mergulhador: −b ÷ 2a.",
+      "comentarios": [
+        "",
+        "Errou o sinal.",
+        "Esqueceu de dividir por 2a.",
+        "É uma das raízes.",
+        "Usou o c."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q14",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Uma parábola tem raízes 2 e 8. Qual é a abscissa do vértice?",
+      "alternativas": [
+        "10",
+        "16",
+        "6",
+        "5",
+        "3"
+      ],
+      "correta": 3,
+      "explicacao": "O vértice está no meio das raízes: (2 + 8) ÷ 2 = 5. Dica de mergulhador: simetria, média das raízes.",
+      "comentarios": [
+        "Somou sem dividir.",
+        "Multiplicou as raízes.",
+        "É a distância entre as raízes.",
+        "",
+        "É a metade da distância."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q15",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "A altura de uma bola é h(t) = −5t² + 20t, em metros, com t em segundos. Qual é a altura máxima?",
+      "alternativas": [
+        "40 m",
+        "2 m",
+        "4 m",
+        "20 m",
+        "60 m"
+      ],
+      "correta": 3,
+      "explicacao": "t = −20 ÷ (−10) = 2; h(2) = −20 + 40 = 20 m. Dica de mergulhador: ache o t e substitua.",
+      "comentarios": [
+        "Esqueceu o −5t².",
+        "É o tempo da altura máxima.",
+        "É o tempo de voltar ao chão.",
+        "",
+        "Somou os módulos."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q16",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Qual é o valor mínimo de f(x) = x² − 4x + 7?",
+      "alternativas": [
+        "11",
+        "−4",
+        "7",
+        "3",
+        "2"
+      ],
+      "correta": 3,
+      "explicacao": "x = 2; f(2) = 4 − 8 + 7 = 3. Dica de mergulhador: o valor mínimo é o y do vértice.",
+      "comentarios": [
+        "Somou 4 em vez de subtrair.",
+        "É o b.",
+        "É o corte no eixo y.",
+        "",
+        "É o x do vértice."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q17",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "O lucro de uma loja, em reais, é L(x) = −x² + 40x − 300, em que x é o preço de venda. Qual preço dá o maior lucro?",
+      "alternativas": [
+        "R$ 10",
+        "R$ 40",
+        "R$ 30",
+        "R$ 20",
+        "R$ 100"
+      ],
+      "correta": 3,
+      "explicacao": "x = −40 ÷ (−2) = 20. Dica de mergulhador: o preço é o x do vértice.",
+      "comentarios": [
+        "É uma das raízes.",
+        "Esqueceu de dividir por 2a.",
+        "É a outra raiz.",
+        "",
+        "É o lucro máximo."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q18",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Uma loja vende 100 − 2p unidades quando o preço é p reais. A receita é R(p) = p(100 − 2p). Qual é a receita máxima?",
+      "alternativas": [
+        "R$ 2.500",
+        "R$ 1.250",
+        "R$ 50",
+        "R$ 5.000",
+        "R$ 25"
+      ],
+      "correta": 1,
+      "explicacao": "R(p) = −2p² + 100p; p = 100 ÷ 4 = 25; R = 25 × 50 = R$ 1.250. Dica de mergulhador: preço ótimo vezes quantidade vendida.",
+      "comentarios": [
+        "Esqueceu o −2p.",
+        "",
+        "É a quantidade vendida no preço ótimo.",
+        "Usou p = 50.",
+        "É o preço ótimo."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q19",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Com 40 m de tela, quer-se cercar um terreno retangular com a maior área possível. Qual é essa área?",
+      "alternativas": [
+        "100 m²",
+        "40 m²",
+        "400 m²",
+        "96 m²",
+        "75 m²"
+      ],
+      "correta": 0,
+      "explicacao": "Lados x e 20 − x; A = x(20 − x), máxima em x = 10: quadrado de 10 × 10 = 100 m². Dica de mergulhador: com perímetro fixo, o quadrado vence.",
+      "comentarios": [
+        "",
+        "Repetiu o perímetro.",
+        "Usou lado 20.",
+        "Usou 12 por 8.",
+        "Usou 15 por 5."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q20",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Um terreno retangular encostado num muro será cercado nos outros três lados com 40 m de tela. Qual é a maior área possível?",
+      "alternativas": [
+        "200 m²",
+        "192 m²",
+        "400 m²",
+        "100 m²",
+        "150 m²"
+      ],
+      "correta": 0,
+      "explicacao": "Lados x, x e 40 − 2x: A = x(40 − 2x), máxima em x = 10: 10 × 20 = 200 m². Dica de mergulhador: o muro economiza um lado inteiro.",
+      "comentarios": [
+        "",
+        "Usou 8 por 24.",
+        "Usou 20 por 20.",
+        "Cercou os quatro lados.",
+        "Usou 15 por 10."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q01",
+      "tema": "Potências e crescimento",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma cultura começa com 100 bactérias e dobra a cada hora. Quantas bactérias há depois de 3 horas?",
+      "alternativas": [
+        "300",
+        "400",
+        "800",
+        "900",
+        "600"
+      ],
+      "correta": 2,
+      "explicacao": "100 × 2³ = 100 × 8 = 800. Dica de mergulhador: dobrar 3 vezes é multiplicar por 8.",
+      "comentarios": [
+        "Somou 100 por hora.",
+        "Contou só 2 horas.",
+        "",
+        "Fez 100 × 3².",
+        "Somou 200 por hora."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q02",
+      "tema": "Potências e crescimento",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Se f(x) = 3ˣ, quanto vale f(4)?",
+      "alternativas": [
+        "7",
+        "27",
+        "81",
+        "12",
+        "64"
+      ],
+      "correta": 2,
+      "explicacao": "3⁴ = 3 × 3 × 3 × 3 = 81. Dica de mergulhador: o x é o expoente.",
+      "comentarios": [
+        "Somou.",
+        "Fez 3³.",
+        "",
+        "Multiplicou 3 × 4.",
+        "Fez 4³."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q03",
+      "tema": "Potências e crescimento",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Qual destas funções representa crescimento exponencial?",
+      "alternativas": [
+        "f(x) = 5 − 1,2x",
+        "f(x) = 5 + 1,2x",
+        "f(x) = 5 · 1,2ˣ",
+        "f(x) = 5 · 0,8ˣ",
+        "f(x) = 1,2x²"
+      ],
+      "correta": 2,
+      "explicacao": "Fator 1,2 > 1 no expoente: crescimento exponencial. Dica de mergulhador: x no expoente e fator maior que 1.",
+      "comentarios": [
+        "É afim decrescente.",
+        "É afim.",
+        "",
+        "Fator menor que 1: decaimento.",
+        "É quadrática."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q04",
+      "tema": "Potências e crescimento",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Se f(x) = 3 · 2ˣ, para que valor de x temos f(x) = 96?",
+      "alternativas": [
+        "x = 16",
+        "x = 4",
+        "x = 6",
+        "x = 5",
+        "x = 32"
+      ],
+      "correta": 3,
+      "explicacao": "3 · 2ˣ = 96 → 2ˣ = 32 → x = 5. Dica de mergulhador: isole a potência antes.",
+      "comentarios": [
+        "Dividiu 96 por 6.",
+        "3 · 2⁴ = 48.",
+        "Errou a potência.",
+        "",
+        "Parou em 2ˣ = 32."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q05",
+      "tema": "Potências e crescimento",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "A conta A começa com 1.000 e ganha 500 por mês. A conta B começa com 1.000 e dobra a cada mês. Depois de 4 meses, quanto B tem a mais que A?",
+      "alternativas": [
+        "0",
+        "3.000",
+        "16.000",
+        "13.000",
+        "5.000"
+      ],
+      "correta": 3,
+      "explicacao": "A: 1.000 + 4 × 500 = 3.000. B: 1.000 × 2⁴ = 16.000. Diferença: 13.000. Dica de mergulhador: exponencial ultrapassa o linear.",
+      "comentarios": [
+        "As duas crescem de jeitos diferentes.",
+        "É o valor de A.",
+        "É o valor de B.",
+        "",
+        "Usou 8.000 para B."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q06",
+      "tema": "Potências e crescimento",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Por qual ponto passa sempre o gráfico de f(x) = 2ˣ?",
+      "alternativas": [
+        "(1, 0)",
+        "(0, 0)",
+        "(2, 2)",
+        "(0, 1)",
+        "(0, 2)"
+      ],
+      "correta": 3,
+      "explicacao": "Qualquer número não nulo elevado a 0 dá 1. Dica de mergulhador: aˣ sempre passa por (0, 1).",
+      "comentarios": [
+        "2¹ = 2.",
+        "2⁰ = 1.",
+        "2² = 4.",
+        "",
+        "Confundiu a base com o valor em x = 0."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q07",
+      "tema": "Potências e crescimento",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma pessoa conta um segredo para 3 amigos na primeira rodada; na rodada seguinte, cada pessoa que acabou de saber conta para outras 3, e assim por diante. Quantas pessoas novas ficam sabendo na 5ª rodada?",
+      "alternativas": [
+        "15",
+        "125",
+        "81",
+        "243",
+        "363"
+      ],
+      "correta": 3,
+      "explicacao": "Novas por rodada: 3, 9, 27, 81, 243 = 3⁵. Dica de mergulhador: a rodada vira o expoente.",
+      "comentarios": [
+        "Somou 3 por rodada.",
+        "Fez 5³.",
+        "É a 4ª rodada.",
+        "",
+        "Somou todas as rodadas."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q08",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Crescer 10% ao ano equivale a multiplicar por qual fator a cada ano?",
+      "alternativas": [
+        "1,01",
+        "0,10",
+        "1,10",
+        "10",
+        "0,90"
+      ],
+      "correta": 2,
+      "explicacao": "100% + 10% = 110% = 1,10. Dica de mergulhador: crescer i% é multiplicar por 1 + i.",
+      "comentarios": [
+        "Seria 1%.",
+        "É só o aumento.",
+        "",
+        "Usou o número da porcentagem.",
+        "É o fator de uma queda."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q09",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma cidade de 50.000 habitantes cresce 2% ao ano. Qual expressão dá a população depois de t anos?",
+      "alternativas": [
+        "50.000 + 0,02t",
+        "50.000 · 2ᵗ",
+        "50.000 · 1,02ᵗ",
+        "50.000 · 0,02ᵗ",
+        "50.000 + 1.000t"
+      ],
+      "correta": 2,
+      "explicacao": "Fator anual: 1,02. P(t) = 50.000 · 1,02ᵗ. Dica de mergulhador: porcentagem constante vira expoente.",
+      "comentarios": [
+        "Somou 0,02 pessoa por ano.",
+        "Supôs que dobra a cada ano.",
+        "",
+        "Usou só o aumento como fator.",
+        "É crescimento linear."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q10",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Um carro de R$ 40.000 perde 10% do valor por ano. Quanto ele vale depois de 2 anos?",
+      "alternativas": [
+        "R$ 32.400",
+        "R$ 36.000",
+        "R$ 48.400",
+        "R$ 8.000",
+        "R$ 32.000"
+      ],
+      "correta": 0,
+      "explicacao": "40.000 × 0,9² = 40.000 × 0,81 = R$ 32.400. Dica de mergulhador: 10% de 10% não somam 20%.",
+      "comentarios": [
+        "",
+        "Descontou só um ano.",
+        "Aumentou em vez de diminuir.",
+        "É a perda linear de 2 anos.",
+        "Descontou 20% de uma vez."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q11",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "R$ 1.000 são aplicados a juros compostos de 10% ao mês. Qual é o montante depois de 3 meses?",
+      "alternativas": [
+        "R$ 1.210",
+        "R$ 3.000",
+        "R$ 1.300",
+        "R$ 1.030",
+        "R$ 1.331"
+      ],
+      "correta": 4,
+      "explicacao": "1.000 × 1,1³ = 1.000 × 1,331 = R$ 1.331. Dica de mergulhador: juro sobre juro.",
+      "comentarios": [
+        "Contou só 2 meses.",
+        "Multiplicou por 3.",
+        "Usou juros simples.",
+        "Usou 1% ao mês.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q12",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma cidade de 200 mil habitantes cresce 10% ao ano. Quantos habitantes terá depois de 2 anos?",
+      "alternativas": [
+        "242 mil",
+        "400 mil",
+        "240 mil",
+        "220 mil",
+        "202 mil"
+      ],
+      "correta": 0,
+      "explicacao": "200 × 1,1² = 200 × 1,21 = 242 mil. Dica de mergulhador: o segundo aumento incide sobre o novo total.",
+      "comentarios": [
+        "",
+        "Supôs que dobra.",
+        "Somou 20% de uma vez.",
+        "Contou só um ano.",
+        "Usou 1%."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q13",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Um preço sobe 20% e, no mês seguinte, cai 20%. Qual é a variação final em relação ao preço inicial?",
+      "alternativas": [
+        "Queda de 40%",
+        "Queda de 4%",
+        "Nenhuma variação",
+        "Alta de 4%",
+        "Queda de 20%"
+      ],
+      "correta": 1,
+      "explicacao": "1,2 × 0,8 = 0,96: o preço fica 4% menor. Dica de mergulhador: porcentagens seguidas se multiplicam.",
+      "comentarios": [
+        "Somou as duas porcentagens.",
+        "",
+        "Os 20% incidem sobre bases diferentes.",
+        "O resultado fica abaixo do inicial.",
+        "Ignorou o aumento."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q14",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Um investimento rende 10% ao ano, com juros compostos. Sabendo que 1,1⁷ ≈ 1,95 e 1,1⁸ ≈ 2,14, depois de quantos anos inteiros o valor passa a ser mais que o dobro do inicial?",
+      "alternativas": [
+        "8 anos",
+        "20 anos",
+        "10 anos",
+        "5 anos",
+        "7 anos"
+      ],
+      "correta": 0,
+      "explicacao": "Em 7 anos, 1,95 < 2; em 8 anos, 2,14 > 2. Dica de mergulhador: os juros compostos dobram antes dos simples.",
+      "comentarios": [
+        "",
+        "Dividiu 2 por 0,1.",
+        "Usou juros simples.",
+        "Errou a leitura dos valores.",
+        "Em 7 anos ainda não dobrou: 1,95."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q15",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma amostra radioativa tem 800 g, com meia-vida de 5 anos. Quanto resta depois de 15 anos?",
+      "alternativas": [
+        "400 g",
+        "100 g",
+        "50 g",
+        "266 g",
+        "200 g"
+      ],
+      "correta": 1,
+      "explicacao": "15 ÷ 5 = 3 meias-vidas: 800 → 400 → 200 → 100 g. Dica de mergulhador: conte quantas metades.",
+      "comentarios": [
+        "Contou 1 meia-vida.",
+        "",
+        "Contou 4 meias-vidas.",
+        "Dividiu por 3.",
+        "Contou 2 meias-vidas."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q16",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Depois de 3 meias-vidas, que fração da quantidade inicial resta?",
+      "alternativas": [
+        "3/8",
+        "1/2",
+        "1/3",
+        "1/6",
+        "1/8"
+      ],
+      "correta": 4,
+      "explicacao": "(1/2)³ = 1/8. Dica de mergulhador: cada meia-vida multiplica por 1/2.",
+      "comentarios": [
+        "Errou o numerador.",
+        "É só uma meia-vida.",
+        "Dividiu por 3.",
+        "Fez 1/2 × 3.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q17",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma colônia de 500 bactérias dobra a cada 20 minutos. Quantas bactérias haverá depois de 2 horas?",
+      "alternativas": [
+        "1.000",
+        "32.000",
+        "64.000",
+        "3.000",
+        "6.000"
+      ],
+      "correta": 1,
+      "explicacao": "2 h = 120 min = 6 duplicações: 500 × 2⁶ = 500 × 64 = 32.000. Dica de mergulhador: transforme o tempo em número de duplicações.",
+      "comentarios": [
+        "Dobrou uma vez só.",
+        "",
+        "Contou 7 duplicações.",
+        "Somou 500 a cada período.",
+        "Multiplicou 500 por 12."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q18",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma substância cai de 1.600 mg para 100 mg, com meia-vida de 8 dias. Quanto tempo levou?",
+      "alternativas": [
+        "24 dias",
+        "16 dias",
+        "128 dias",
+        "32 dias",
+        "8 dias"
+      ],
+      "correta": 3,
+      "explicacao": "1.600 → 800 → 400 → 200 → 100: 4 meias-vidas × 8 dias = 32 dias. Dica de mergulhador: conte as metades até chegar.",
+      "comentarios": [
+        "Contou 3 meias-vidas.",
+        "Contou 2 meias-vidas.",
+        "Multiplicou 16 × 8.",
+        "",
+        "É uma meia-vida só."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q19",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Um material tem meia-vida de 10 anos. Que porcentagem da quantidade inicial resta depois de 30 anos?",
+      "alternativas": [
+        "25%",
+        "6,25%",
+        "33,3%",
+        "12,5%",
+        "70%"
+      ],
+      "correta": 3,
+      "explicacao": "3 meias-vidas: (1/2)³ = 1/8 = 12,5%. Dica de mergulhador: metade, um quarto, um oitavo.",
+      "comentarios": [
+        "Contou 2 meias-vidas.",
+        "Contou 4 meias-vidas.",
+        "Dividiu por 3.",
+        "",
+        "Tirou 10% por ano."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q20",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma população dobra a cada 25 anos. Em quanto tempo ela passa de 10 mil para 160 mil habitantes?",
+      "alternativas": [
+        "150 anos",
+        "75 anos",
+        "100 anos",
+        "400 anos",
+        "375 anos"
+      ],
+      "correta": 2,
+      "explicacao": "160 ÷ 10 = 16 = 2⁴: 4 duplicações × 25 = 100 anos. Dica de mergulhador: transforme a razão em potência de 2.",
+      "comentarios": [
+        "Dividiu 160 por 10 e somou.",
+        "Contou 3 duplicações.",
+        "",
+        "Multiplicou 16 por 25.",
+        "Somou 10 mil a cada 25 anos."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q01",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log₂ 8?",
+      "alternativas": [
+        "4",
+        "16",
+        "6",
+        "2",
+        "3"
+      ],
+      "correta": 4,
+      "explicacao": "2³ = 8, então log₂ 8 = 3. Dica de mergulhador: pergunte \"2 elevado a quanto dá 8?\".",
+      "comentarios": [
+        "Dividiu 8 por 2.",
+        "Multiplicou.",
+        "Subtraiu.",
+        "Usou a base.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q02",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log 1.000, na base 10?",
+      "alternativas": [
+        "1.000",
+        "3",
+        "30",
+        "4",
+        "100"
+      ],
+      "correta": 1,
+      "explicacao": "10³ = 1.000. Dica de mergulhador: na base 10, conte os zeros.",
+      "comentarios": [
+        "É o próprio número.",
+        "",
+        "Multiplicou 3 por 10.",
+        "Contou os algarismos.",
+        "Dividiu por 10."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q03",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log₅ 1?",
+      "alternativas": [
+        "0",
+        "1",
+        "5",
+        "Não existe",
+        "1/5"
+      ],
+      "correta": 0,
+      "explicacao": "5⁰ = 1. Dica de mergulhador: log de 1 é sempre 0.",
+      "comentarios": [
+        "",
+        "log da base é 1; log de 1 é 0.",
+        "Usou a base.",
+        "log de 1 existe e vale 0.",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q04",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Se log₂ x = 5, quanto vale x?",
+      "alternativas": [
+        "10",
+        "2,5",
+        "25",
+        "7",
+        "32"
+      ],
+      "correta": 4,
+      "explicacao": "log₂ x = 5 significa 2⁵ = x = 32. Dica de mergulhador: log vira potência.",
+      "comentarios": [
+        "Multiplicou 2 × 5.",
+        "Dividiu.",
+        "Fez 5².",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q05",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Se logₓ 49 = 2, qual é a base x?",
+      "alternativas": [
+        "7",
+        "47",
+        "98",
+        "2",
+        "24,5"
+      ],
+      "correta": 0,
+      "explicacao": "x² = 49, então x = 7 (a base é positiva). Dica de mergulhador: a base elevada ao log dá o número.",
+      "comentarios": [
+        "",
+        "Subtraiu.",
+        "Multiplicou.",
+        "Usou o logaritmo.",
+        "Dividiu 49 por 2."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q06",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log₄ 2?",
+      "alternativas": [
+        "2",
+        "1/2",
+        "16",
+        "8",
+        "1/4"
+      ],
+      "correta": 1,
+      "explicacao": "4^(1/2) = √4 = 2. Dica de mergulhador: raiz quadrada é expoente 1/2.",
+      "comentarios": [
+        "Dividiu 4 por 2.",
+        "",
+        "Elevou ao quadrado.",
+        "Multiplicou.",
+        "Inverteu a base."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q07",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log₂ (log₃ 81)?",
+      "alternativas": [
+        "2",
+        "4",
+        "16",
+        "3",
+        "81"
+      ],
+      "correta": 0,
+      "explicacao": "log₃ 81 = 4; log₂ 4 = 2. Dica de mergulhador: resolva de dentro para fora.",
+      "comentarios": [
+        "",
+        "Parou em log₃ 81.",
+        "Elevou 2 a 4.",
+        "Calculou log₂ 8.",
+        "Não aplicou os logs."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q08",
+      "tema": "Propriedades",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30 e log 3 ≈ 0,48. Quanto vale log 6?",
+      "alternativas": [
+        "0,60",
+        "1,8",
+        "0,78",
+        "0,144",
+        "0,18"
+      ],
+      "correta": 2,
+      "explicacao": "log 6 = log 2 + log 3 = 0,30 + 0,48 = 0,78. Dica de mergulhador: produto vira soma.",
+      "comentarios": [
+        "Dobrou o log 2.",
+        "Multiplicou 0,30 por 6.",
+        "",
+        "Multiplicou os logs.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q09",
+      "tema": "Propriedades",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30. Quanto vale log 8?",
+      "alternativas": [
+        "0,60",
+        "2,40",
+        "0,90",
+        "0,027",
+        "0,33"
+      ],
+      "correta": 2,
+      "explicacao": "log 8 = log 2³ = 3 × 0,30 = 0,90. Dica de mergulhador: potência desce multiplicando.",
+      "comentarios": [
+        "Usou 2 como expoente.",
+        "Multiplicou por 8.",
+        "",
+        "Elevou o log ao cubo.",
+        "Somou 0,03."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q10",
+      "tema": "Propriedades",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30. Quanto vale log 5?",
+      "alternativas": [
+        "0,25",
+        "0,60",
+        "0,15",
+        "1,50",
+        "0,70"
+      ],
+      "correta": 4,
+      "explicacao": "log 5 = log (10 ÷ 2) = 1 − 0,30 = 0,70. Dica de mergulhador: 5 é 10 dividido por 2.",
+      "comentarios": [
+        "Chutou.",
+        "Dobrou o log 2.",
+        "Dividiu 0,30 por 2.",
+        "Multiplicou 0,30 por 5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q11",
+      "tema": "Propriedades",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30. Quanto vale log 200?",
+      "alternativas": [
+        "60",
+        "2,30",
+        "2,00",
+        "0,60",
+        "3,00"
+      ],
+      "correta": 1,
+      "explicacao": "log 200 = log 2 + log 100 = 0,30 + 2 = 2,30. Dica de mergulhador: separe a potência de 10.",
+      "comentarios": [
+        "Multiplicou 0,30 por 200.",
+        "",
+        "Esqueceu o log 2.",
+        "Fez log 2 × 2.",
+        "Contou os algarismos."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q12",
+      "tema": "Propriedades",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30 e log 3 ≈ 0,48. Quanto vale log 12?",
+      "alternativas": [
+        "1,08",
+        "3,60",
+        "0,78",
+        "0,0432",
+        "0,96"
+      ],
+      "correta": 0,
+      "explicacao": "12 = 2² × 3: 2 × 0,30 + 0,48 = 1,08. Dica de mergulhador: fatore o número em primos.",
+      "comentarios": [
+        "",
+        "Multiplicou 0,30 por 12.",
+        "Fez só log 2 + log 3.",
+        "Multiplicou os logs.",
+        "Fez 2 × log 3."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q13",
+      "tema": "Propriedades",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30. Qual é o valor aproximado de x em 2ˣ = 10?",
+      "alternativas": [
+        "x = 3",
+        "x ≈ 3,3",
+        "x = 20",
+        "x ≈ 0,30",
+        "x = 5"
+      ],
+      "correta": 1,
+      "explicacao": "x · log 2 = log 10 = 1, então x = 1 ÷ 0,30 ≈ 3,3. Dica de mergulhador: log nos dois lados derruba o expoente.",
+      "comentarios": [
+        "2³ = 8, ainda menor que 10.",
+        "",
+        "Multiplicou.",
+        "É o log 2.",
+        "Dividiu 10 por 2."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q14",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Uma solução tem pH 4 e outra, pH 6. Quantas vezes a de pH 4 é mais ácida?",
+      "alternativas": [
+        "100 vezes",
+        "20 vezes",
+        "2 vezes",
+        "1,5 vez",
+        "1.000 vezes"
+      ],
+      "correta": 0,
+      "explicacao": "2 unidades de diferença: 10² = 100 vezes. Dica de mergulhador: cada unidade de pH é 10 vezes.",
+      "comentarios": [
+        "",
+        "Multiplicou a diferença por 10.",
+        "Subtraiu os pH.",
+        "Dividiu 6 por 4.",
+        "Contou 3 unidades."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q15",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Um terremoto tem magnitude 7 e outro, magnitude 5. Quantas vezes maior é a amplitude das ondas do primeiro?",
+      "alternativas": [
+        "35 vezes",
+        "100 vezes",
+        "2 vezes",
+        "1,4 vez",
+        "20 vezes"
+      ],
+      "correta": 1,
+      "explicacao": "2 pontos de diferença: 10² = 100 vezes. Dica de mergulhador: cada ponto multiplica por 10.",
+      "comentarios": [
+        "Multiplicou as magnitudes.",
+        "",
+        "Subtraiu as magnitudes.",
+        "Dividiu 7 por 5.",
+        "Multiplicou a diferença por 10."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q16",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Um show tem 90 dB e uma conversa, 60 dB. Quantas vezes maior é a intensidade sonora do show?",
+      "alternativas": [
+        "1.000 vezes",
+        "1,5 vez",
+        "300 vezes",
+        "3 vezes",
+        "30 vezes"
+      ],
+      "correta": 0,
+      "explicacao": "30 dB = 3 blocos de 10 dB: 10³ = 1.000 vezes. Dica de mergulhador: cada 10 dB, intensidade × 10.",
+      "comentarios": [
+        "",
+        "Dividiu 90 por 60.",
+        "Multiplicou 30 por 10.",
+        "Contou só os blocos de 10 dB.",
+        "Subtraiu os decibéis."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q17",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Um investimento rende 10% ao ano, com juros compostos. Usando log 2 ≈ 0,30 e log 1,1 ≈ 0,04, em quanto tempo ele dobra?",
+      "alternativas": [
+        "20 anos",
+        "12 anos",
+        "10 anos",
+        "0,13 ano",
+        "Cerca de 7,5 anos"
+      ],
+      "correta": 4,
+      "explicacao": "1,1ᵗ = 2 → t · 0,04 = 0,30 → t = 7,5 anos. Dica de mergulhador: log nos dois lados e divida.",
+      "comentarios": [
+        "Dividiu 2 por 0,1.",
+        "Dividiu 0,30 por 0,025.",
+        "Usou juros simples.",
+        "Dividiu 0,04 por 0,30.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q18",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Uma colônia de bactérias dobra a cada hora. Usando log 2 ≈ 0,30, em quanto tempo ela fica 1.000 vezes maior?",
+      "alternativas": [
+        "100 horas",
+        "30 horas",
+        "500 horas",
+        "Cerca de 10 horas",
+        "3 horas"
+      ],
+      "correta": 3,
+      "explicacao": "2ᵗ = 1.000 → t · 0,30 = 3 → t = 10 h. Dica de mergulhador: log 1.000 = 3.",
+      "comentarios": [
+        "Dividiu 30 por 0,3.",
+        "Multiplicou 3 por 10.",
+        "Dividiu 1.000 por 2.",
+        "",
+        "É log 1.000."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q19",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Uma substância tem meia-vida de 5 anos. Usando log 2 ≈ 0,30, em quanto tempo resta só 1% da quantidade inicial?",
+      "alternativas": [
+        "10 anos",
+        "6,7 anos",
+        "20 anos",
+        "Cerca de 33 anos",
+        "500 anos"
+      ],
+      "correta": 3,
+      "explicacao": "(1/2)ⁿ = 1/100 → n · 0,30 = 2 → n ≈ 6,7 meias-vidas × 5 ≈ 33 anos. Dica de mergulhador: ache n e multiplique pela meia-vida.",
+      "comentarios": [
+        "Usou 2 meias-vidas.",
+        "É o número de meias-vidas, não o tempo.",
+        "Usou 4 meias-vidas.",
+        "",
+        "Multiplicou 100 por 5."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q20",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Um terremoto teve amplitude 10.000 vezes maior que outro, de magnitude 3. Qual foi a magnitude do mais forte?",
+      "alternativas": [
+        "13",
+        "4",
+        "12",
+        "7",
+        "30.000"
+      ],
+      "correta": 3,
+      "explicacao": "10.000 = 10⁴: 4 pontos a mais. 3 + 4 = 7. Dica de mergulhador: amplitude 10ⁿ vezes, n pontos a mais.",
+      "comentarios": [
+        "Somou 10 à magnitude.",
+        "É só a diferença.",
+        "Multiplicou 3 por 4.",
+        "",
+        "Multiplicou a amplitude pela magnitude."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q01",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Se f(x) = 4x − 3, quanto vale f(5)?",
+      "alternativas": [
+        "17",
+        "20",
+        "6",
+        "23",
+        "2"
+      ],
+      "correta": 0,
+      "explicacao": "f(5) = 20 − 3 = 17. Dica de mergulhador: substitua e calcule.",
+      "comentarios": [
+        "",
+        "Esqueceu o − 3.",
+        "Somou 4 + 5 − 3.",
+        "Somou 3.",
+        "Fez 5 − 3."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q02",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Em que quadrante está o ponto (−2, −5)?",
+      "alternativas": [
+        "No 1º quadrante",
+        "Sobre o eixo y",
+        "No 2º quadrante",
+        "No 4º quadrante",
+        "No 3º quadrante"
+      ],
+      "correta": 4,
+      "explicacao": "Os dois negativos: 3º quadrante. Dica de mergulhador: (−, −) é o 3º.",
+      "comentarios": [
+        "Lá os dois são positivos.",
+        "x não é zero.",
+        "Lá y é positivo.",
+        "Lá x é positivo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q03",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Qual destas situações é descrita por uma função exponencial?",
+      "alternativas": [
+        "Uma aplicação que rende 2% ao mês sobre o saldo",
+        "Uma vela que encurta 2 cm por hora",
+        "A área de um quadrado em função do lado",
+        "Um salário fixo mais comissão por venda",
+        "Um táxi com bandeirada e preço por km"
+      ],
+      "correta": 0,
+      "explicacao": "Rendimento percentual sobre o saldo: multiplica pelo mesmo fator a cada mês. Dica de mergulhador: porcentagem sobre o acumulado é exponencial.",
+      "comentarios": [
+        "",
+        "É afim decrescente.",
+        "É quadrática.",
+        "É afim.",
+        "É afim."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q04",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Qual é a raiz de f(x) = 5x − 20?",
+      "alternativas": [
+        "20",
+        "4",
+        "15",
+        "100",
+        "−4"
+      ],
+      "correta": 1,
+      "explicacao": "5x − 20 = 0 → x = 4. Dica de mergulhador: raiz é onde y = 0.",
+      "comentarios": [
+        "É o termo fixo.",
+        "",
+        "Subtraiu.",
+        "Multiplicou.",
+        "Errou o sinal."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q05",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Quanto vale log 10.000, na base 10?",
+      "alternativas": [
+        "4",
+        "10.000",
+        "1.000",
+        "40",
+        "5"
+      ],
+      "correta": 0,
+      "explicacao": "10⁴ = 10.000. Dica de mergulhador: conte os zeros.",
+      "comentarios": [
+        "",
+        "É o próprio número.",
+        "Dividiu por 10.",
+        "Multiplicou 4 por 10.",
+        "Contou os algarismos."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q06",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "O gráfico de f(x) = −3x² + x é uma curva com boca para cima ou para baixo, e tem máximo ou mínimo?",
+      "alternativas": [
+        "Para cima, com ponto de mínimo",
+        "Para baixo, com ponto de máximo",
+        "Para cima, com ponto de máximo",
+        "Para baixo, com ponto de mínimo",
+        "É uma reta"
+      ],
+      "correta": 1,
+      "explicacao": "a = −3 < 0: boca para baixo e máximo. Dica de mergulhador: a negativo, máximo.",
+      "comentarios": [
+        "a é negativo.",
+        "",
+        "Boca para cima tem mínimo.",
+        "Boca para baixo tem máximo.",
+        "Tem x²."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q07",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Um tanque tinha 30 L no minuto 2 e 50 L no minuto 7, enchendo em ritmo constante. Qual é a taxa de variação?",
+      "alternativas": [
+        "20 L por minuto",
+        "10 L por minuto",
+        "7,1 L por minuto",
+        "5 L por minuto",
+        "4 L por minuto"
+      ],
+      "correta": 4,
+      "explicacao": "(50 − 30) ÷ (7 − 2) = 20 ÷ 5 = 4 L/min. Dica de mergulhador: Δy ÷ Δx.",
+      "comentarios": [
+        "Não dividiu pelo tempo.",
+        "Dividiu 20 por 2.",
+        "Dividiu 50 por 7.",
+        "Dividiu 20 por 4.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q08",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Uma função afim passa por (0, 15) e (5, 40). Quanto vale f(8)?",
+      "alternativas": [
+        "40",
+        "48",
+        "120",
+        "55",
+        "64"
+      ],
+      "correta": 3,
+      "explicacao": "b = 15; a = 25 ÷ 5 = 5; f(8) = 40 + 15 = 55. Dica de mergulhador: x = 0 dá o b.",
+      "comentarios": [
+        "Usou x = 5.",
+        "Usou a = 4,1.",
+        "Multiplicou 15 por 8.",
+        "",
+        "Usou a = 8."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q09",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "O plano A cobra R$ 20 mais R$ 1,50 por item; o plano B, R$ 50 mais R$ 0,50 por item. Com quantos itens os dois custam o mesmo?",
+      "alternativas": [
+        "20 itens",
+        "100 itens",
+        "15 itens",
+        "30 itens",
+        "60 itens"
+      ],
+      "correta": 3,
+      "explicacao": "20 + 1,5x = 50 + 0,5x → x = 30. Dica de mergulhador: diferença dos fixos ÷ diferença das taxas.",
+      "comentarios": [
+        "Dividiu 30 por 1,5.",
+        "Dividiu 50 por 0,5.",
+        "Dividiu 30 por 2.",
+        "",
+        "Dividiu 30 por 0,5."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q10",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Quais são as raízes de x² − 8x + 12 = 0?",
+      "alternativas": [
+        "8 e 12",
+        "3 e 4",
+        "−2 e −6",
+        "2 e 6",
+        "1 e 12"
+      ],
+      "correta": 3,
+      "explicacao": "Soma 8, produto 12: 2 e 6. Dica de mergulhador: soma −b, produto c.",
+      "comentarios": [
+        "Usou os coeficientes.",
+        "O produto é 12, mas a soma seria 7.",
+        "Errou os sinais.",
+        "",
+        "A soma seria 13."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q11",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "A altura de uma bola é h(t) = −5t² + 40t, em metros. Qual é a altura máxima?",
+      "alternativas": [
+        "8 m",
+        "200 m",
+        "4 m",
+        "80 m",
+        "160 m"
+      ],
+      "correta": 3,
+      "explicacao": "t = 40 ÷ 10 = 4; h(4) = −80 + 160 = 80 m. Dica de mergulhador: o x do ponto de virada, depois o y.",
+      "comentarios": [
+        "É o momento de voltar ao chão.",
+        "Usou t = 5 de forma errada.",
+        "É o momento do máximo.",
+        "",
+        "Esqueceu o −5t²."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q12",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "R$ 5.000 são aplicados a juros compostos de 10% ao ano. Qual é o montante depois de 2 anos?",
+      "alternativas": [
+        "R$ 10.000",
+        "R$ 5.100",
+        "R$ 6.000",
+        "R$ 6.050",
+        "R$ 5.500"
+      ],
+      "correta": 3,
+      "explicacao": "5.000 × 1,1² = 5.000 × 1,21 = R$ 6.050. Dica de mergulhador: mesmo fator, multiplicado duas vezes.",
+      "comentarios": [
+        "Supôs que dobra.",
+        "Usou 1% ao ano.",
+        "Usou juros simples.",
+        "",
+        "Contou só um ano."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q13",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Um remédio tem 1.200 mg no sangue, com meia-vida de 6 horas. Quanto resta depois de 24 horas?",
+      "alternativas": [
+        "150 mg",
+        "600 mg",
+        "37,5 mg",
+        "75 mg",
+        "300 mg"
+      ],
+      "correta": 3,
+      "explicacao": "24 ÷ 6 = 4 meias-vidas: 1.200 ÷ 16 = 75 mg. Dica de mergulhador: (1/2)⁴ = 1/16.",
+      "comentarios": [
+        "Contou 3 meias-vidas.",
+        "Contou 1 meia-vida.",
+        "Contou 5 meias-vidas.",
+        "",
+        "Dividiu por 4."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q14",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "A função f(x) = 3x + 2 tem domínio de 0 a 10. Qual é a sua imagem?",
+      "alternativas": [
+        "De 2 a 32",
+        "De 0 a 30",
+        "De 3 a 32",
+        "De 0 a 10",
+        "De 2 a 30"
+      ],
+      "correta": 0,
+      "explicacao": "f(0) = 2 e f(10) = 32. Dica de mergulhador: calcule nas pontas do domínio.",
+      "comentarios": [
+        "",
+        "Esqueceu o + 2.",
+        "Começou em x = 1, sem o fixo.",
+        "É o domínio.",
+        "Esqueceu de somar 2 no máximo."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q15",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Uma solução tem pH 3 e outra, pH 6. Quantas vezes a de pH 3 é mais ácida?",
+      "alternativas": [
+        "100 vezes",
+        "1.000 vezes",
+        "30 vezes",
+        "3 vezes",
+        "2 vezes"
+      ],
+      "correta": 1,
+      "explicacao": "3 unidades: 10³ = 1.000 vezes. Dica de mergulhador: escala logarítmica, fator 10 por unidade.",
+      "comentarios": [
+        "Contou 2 unidades.",
+        "",
+        "Multiplicou a diferença por 10.",
+        "Subtraiu os pH.",
+        "Dividiu 6 por 3."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q16",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "O lucro de uma loja é L(p) = −p² + 30p − 125, em reais, sendo p o preço de venda. Qual é o lucro máximo?",
+      "alternativas": [
+        "R$ 100",
+        "R$ 225",
+        "R$ 350",
+        "R$ 5",
+        "R$ 15"
+      ],
+      "correta": 0,
+      "explicacao": "p = 30 ÷ 2 = 15; L(15) = −225 + 450 − 125 = R$ 100. Dica de mergulhador: lucro é o y do ponto de virada.",
+      "comentarios": [
+        "",
+        "Esqueceu o −125.",
+        "Somou o 125.",
+        "É uma das raízes.",
+        "É o preço ótimo."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q17",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "A conta A começa com R$ 500 e ganha R$ 100 por mês. A conta B começa com R$ 50 e dobra a cada mês. Em que mês B passa a ter mais que A pela primeira vez?",
+      "alternativas": [
+        "No 4º mês",
+        "No 10º mês",
+        "Nunca",
+        "No 3º mês",
+        "No 5º mês"
+      ],
+      "correta": 4,
+      "explicacao": "Mês 4: A = 900, B = 800. Mês 5: A = 1.000, B = 1.600. Dica de mergulhador: monte a tabela mês a mês.",
+      "comentarios": [
+        "A tem 900 e B tem 800.",
+        "Já tinha passado antes.",
+        "A exponencial sempre ultrapassa a linear.",
+        "A tem 800 e B tem 400.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q18",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Uma população cresce 25% ao ano. Usando log 2 ≈ 0,30 e log 1,25 ≈ 0,10, em quantos anos ela dobra?",
+      "alternativas": [
+        "Cerca de 3 anos",
+        "0,33 ano",
+        "4 anos",
+        "12 anos",
+        "8 anos"
+      ],
+      "correta": 0,
+      "explicacao": "1,25ᵗ = 2 → t · 0,10 = 0,30 → t = 3 anos. Dica de mergulhador: t = log 2 ÷ log do fator.",
+      "comentarios": [
+        "",
+        "Dividiu 0,10 por 0,30.",
+        "Usou crescimento linear.",
+        "Dividiu 0,30 por 0,025.",
+        "Dividiu 2 por 0,25."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q19",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Um terreno retangular encostado num muro será cercado nos outros três lados com 80 m de tela. Qual é a maior área possível?",
+      "alternativas": [
+        "600 m²",
+        "800 m²",
+        "750 m²",
+        "1.600 m²",
+        "400 m²"
+      ],
+      "correta": 1,
+      "explicacao": "A = x(80 − 2x), máxima em x = 20: 20 × 40 = 800 m². Dica de mergulhador: o lado do muro é o dobro do outro.",
+      "comentarios": [
+        "Usou 30 por 20.",
+        "",
+        "Usou 25 por 30.",
+        "Usou 40 por 40.",
+        "Cercou os quatro lados."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q20",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Dois carros valem R$ 50.000. O primeiro perde 20% do valor por ano; o segundo perde R$ 8.000 por ano. Depois de 3 anos, qual vale mais, e quanto a mais?",
+      "alternativas": [
+        "O primeiro, R$ 400 a mais",
+        "Valem o mesmo",
+        "O primeiro, R$ 6.000 a mais",
+        "O segundo, R$ 4.000 a mais",
+        "O segundo, R$ 400 a mais"
+      ],
+      "correta": 4,
+      "explicacao": "Primeiro: 50.000 × 0,8³ = 25.600. Segundo: 50.000 − 24.000 = 26.000. Diferença: R$ 400. Dica de mergulhador: porcentagem multiplica; valor fixo subtrai.",
+      "comentarios": [
+        "0,8³ dá R$ 25.600, menos que R$ 26.000.",
+        "0,8³ = 0,512, não 0,52.",
+        "Descontou 60% de uma vez do segundo.",
+        "Usou 0,8 × 3 = 2,4.",
         ""
       ]
     }
@@ -62901,6 +65182,1926 @@
         "Somou os cortes.",
         "Dividiu a raiz por 2 e multiplicou por 3."
       ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q01-v1",
+      "varianteDe": "mat-funcao-quadratica-q01",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Para que lado fica a boca do gráfico de f(x) = x² − 4x + 7?",
+      "alternativas": [
+        "Para a esquerda",
+        "Para baixo, pois c = 7",
+        "Depende de x",
+        "Para baixo, pois b = −4",
+        "Para cima, pois a = 1"
+      ],
+      "correta": 4,
+      "explicacao": "a > 0: concavidade para cima, com ponto de mínimo. Dica de mergulhador: a positivo, sorriso.",
+      "comentarios": [
+        "A curva abre para cima ou para baixo.",
+        "Quem decide é o a.",
+        "A concavidade é fixa.",
+        "Quem decide é o a.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q02-v1",
+      "varianteDe": "mat-funcao-quadratica-q02",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Em que ponto o gráfico de f(x) = 2x² + x − 6 corta o eixo y?",
+      "alternativas": [
+        "(0, −6)",
+        "(0, 1)",
+        "(−6, 0)",
+        "(0, 2)",
+        "(0, 6)"
+      ],
+      "correta": 0,
+      "explicacao": "f(0) = −6. Dica de mergulhador: o c é o corte no eixo y.",
+      "comentarios": [
+        "",
+        "O 1 é o b.",
+        "Inverteu as coordenadas.",
+        "O 2 é o a.",
+        "Esqueceu o sinal."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q03-v1",
+      "varianteDe": "mat-funcao-quadratica-q03",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Se f(x) = 2x² − x + 1, quanto vale f(3)?",
+      "alternativas": [
+        "10",
+        "14",
+        "36",
+        "16",
+        "22"
+      ],
+      "correta": 3,
+      "explicacao": "f(3) = 2 × 9 − 3 + 1 = 16. Dica de mergulhador: 2x² é 2 vezes x², não (2x)².",
+      "comentarios": [
+        "Esqueceu o x².",
+        "Esqueceu o + 1.",
+        "Fez (2 × 3)².",
+        "",
+        "Somou o −x."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q04-v1",
+      "varianteDe": "mat-funcao-quadratica-q04",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Qual destas funções tem ponto de mínimo?",
+      "alternativas": [
+        "f(x) = −2x²",
+        "f(x) = 3x² − 6x + 2",
+        "f(x) = −x² + 1",
+        "f(x) = 6x + 2",
+        "f(x) = −3x² + 6x"
+      ],
+      "correta": 1,
+      "explicacao": "a = 3 > 0: concavidade para cima e mínimo. Dica de mergulhador: mínimo pede a positivo.",
+      "comentarios": [
+        "a < 0 dá máximo.",
+        "",
+        "a < 0 dá máximo.",
+        "É afim.",
+        "a < 0 dá máximo."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q05-v1",
+      "varianteDe": "mat-funcao-quadratica-q05",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Em quantos pontos o gráfico de f(x) = x² + 2x + 5 toca o eixo x?",
+      "alternativas": [
+        "Em 2 pontos",
+        "Em 3 pontos",
+        "Em 5 pontos",
+        "Em 1 ponto",
+        "Em nenhum ponto"
+      ],
+      "correta": 4,
+      "explicacao": "Δ = 4 − 20 = −16 < 0: nenhuma raiz real. Dica de mergulhador: Δ negativo, curva longe do eixo.",
+      "comentarios": [
+        "Δ é negativo.",
+        "Parábola toca no máximo em 2.",
+        "5 é o c.",
+        "Δ é negativo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q06-v1",
+      "varianteDe": "mat-funcao-quadratica-q06",
+      "tema": "Parábola e coeficientes",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Uma função quadrática tem raízes −2 e 4 e corta o eixo y em −8. Qual é a sua lei?",
+      "alternativas": [
+        "f(x) = x² − 2x − 8",
+        "f(x) = −x² + 2x + 8",
+        "f(x) = x² + 2x − 8",
+        "f(x) = x² − 8",
+        "f(x) = 2x² − 4x − 16"
+      ],
+      "correta": 0,
+      "explicacao": "f(x) = a(x + 2)(x − 4); f(0) = −8a = −8, a = 1: x² − 2x − 8. Dica de mergulhador: confira as raízes na lei final.",
+      "comentarios": [
+        "",
+        "Corta o eixo y em 8.",
+        "As raízes seriam 2 e −4.",
+        "Não tem essas raízes.",
+        "Corta o eixo y em −16."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q07-v1",
+      "varianteDe": "mat-funcao-quadratica-q07",
+      "tema": "Raízes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Quais são as raízes de x² − 7x + 10 = 0?",
+      "alternativas": [
+        "−2 e −5",
+        "3 e 4",
+        "1 e 10",
+        "2 e 5",
+        "7 e 10"
+      ],
+      "correta": 3,
+      "explicacao": "Soma 7 e produto 10: 2 e 5. Dica de mergulhador: soma e produto resolvem rápido.",
+      "comentarios": [
+        "Errou os sinais.",
+        "O produto seria 12.",
+        "A soma seria 11.",
+        "",
+        "Usou os coeficientes."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q08-v1",
+      "varianteDe": "mat-funcao-quadratica-q08",
+      "tema": "Raízes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Quais são as raízes de x² − 16 = 0?",
+      "alternativas": [
+        "16 e −16",
+        "Só 4",
+        "0 e 16",
+        "−8 e 8",
+        "−4 e 4"
+      ],
+      "correta": 4,
+      "explicacao": "x² = 16, x = ±4. Dica de mergulhador: ± na raiz.",
+      "comentarios": [
+        "Não tirou a raiz quadrada.",
+        "Esqueceu a raiz negativa.",
+        "Fatorou errado.",
+        "Dividiu por 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q09-v1",
+      "varianteDe": "mat-funcao-quadratica-q09",
+      "tema": "Raízes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Quais são as raízes de 3x² + 12x = 0?",
+      "alternativas": [
+        "3 e 12",
+        "Só −4",
+        "0 e −12",
+        "0 e 4",
+        "0 e −4"
+      ],
+      "correta": 4,
+      "explicacao": "3x(x + 4) = 0: x = 0 ou x = −4. Dica de mergulhador: x em evidência sempre dá a raiz zero.",
+      "comentarios": [
+        "Usou os coeficientes.",
+        "Esqueceu o x = 0.",
+        "Esqueceu de dividir por 3.",
+        "Errou o sinal.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q10-v1",
+      "varianteDe": "mat-funcao-quadratica-q10",
+      "tema": "Raízes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Pela fórmula de Bhaskara, quais são as raízes de x² + 4x − 12 = 0?",
+      "alternativas": [
+        "12 e 1",
+        "−2 e 6",
+        "8 e −8",
+        "4 e −12",
+        "2 e −6"
+      ],
+      "correta": 4,
+      "explicacao": "Δ = 16 + 48 = 64; x = (−4 ± 8) ÷ 2: 2 ou −6. Dica de mergulhador: −4ac com c negativo soma.",
+      "comentarios": [
+        "Usou os coeficientes.",
+        "Errou o sinal de b.",
+        "Parou em ±√Δ.",
+        "Esqueceu de dividir por 2a.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q11-v1",
+      "varianteDe": "mat-funcao-quadratica-q11",
+      "tema": "Raízes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Sem resolver a equação x² − 10x + 21 = 0, qual é a soma e qual é o produto das raízes?",
+      "alternativas": [
+        "Soma 10 e produto −21",
+        "Soma −10 e produto 21",
+        "Soma 10 e produto 21",
+        "Soma 21 e produto 10",
+        "Soma 1 e produto 21"
+      ],
+      "correta": 2,
+      "explicacao": "Soma: 10. Produto: 21. As raízes são 3 e 7. Dica de mergulhador: com a = 1, soma é −b e produto é c.",
+      "comentarios": [
+        "O produto é c ÷ a, com o sinal de c.",
+        "A soma é −b ÷ a.",
+        "",
+        "Trocou.",
+        "Usou o a como soma."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q12-v1",
+      "varianteDe": "mat-funcao-quadratica-q12",
+      "tema": "Raízes",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Uma bola é lançada do chão e sua altura, em metros, é h(t) = −5t² + 30t, com t em segundos. Depois de quanto tempo ela volta ao chão?",
+      "alternativas": [
+        "5 segundos",
+        "30 segundos",
+        "0 segundo",
+        "6 segundos",
+        "3 segundos"
+      ],
+      "correta": 3,
+      "explicacao": "−5t(t − 6) = 0: t = 6 s. Dica de mergulhador: a raiz não nula é a queda.",
+      "comentarios": [
+        "Usou o a.",
+        "Usou o b.",
+        "É o momento do lançamento.",
+        "",
+        "É o momento da altura máxima."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q13-v1",
+      "varianteDe": "mat-funcao-quadratica-q13",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Qual é a abscissa do vértice de f(x) = −x² + 8x?",
+      "alternativas": [
+        "x = 8",
+        "x = −4",
+        "x = 0",
+        "x = 16",
+        "x = 4"
+      ],
+      "correta": 4,
+      "explicacao": "x = −8 ÷ (2 × (−1)) = 4. Dica de mergulhador: com a negativo, os sinais se cancelam.",
+      "comentarios": [
+        "Esqueceu de dividir por 2a.",
+        "Errou o sinal.",
+        "É uma das raízes.",
+        "É o valor máximo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q14-v1",
+      "varianteDe": "mat-funcao-quadratica-q14",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Uma parábola tem raízes −1 e 7. Qual é a abscissa do vértice?",
+      "alternativas": [
+        "−7",
+        "8",
+        "6",
+        "4",
+        "3"
+      ],
+      "correta": 4,
+      "explicacao": "(−1 + 7) ÷ 2 = 3. Dica de mergulhador: o meio entre as raízes.",
+      "comentarios": [
+        "Multiplicou as raízes.",
+        "É a distância entre as raízes.",
+        "Somou sem dividir.",
+        "É a metade da distância.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q15-v1",
+      "varianteDe": "mat-funcao-quadratica-q15",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "A altura de uma bola é h(t) = −5t² + 30t, em metros, com t em segundos. Qual é a altura máxima?",
+      "alternativas": [
+        "90 m",
+        "3 m",
+        "135 m",
+        "6 m",
+        "45 m"
+      ],
+      "correta": 4,
+      "explicacao": "t = 3; h(3) = −45 + 90 = 45 m. Dica de mergulhador: o pedido é a altura, não o tempo.",
+      "comentarios": [
+        "Esqueceu o −5t².",
+        "É o tempo da altura máxima.",
+        "Somou os módulos.",
+        "É o tempo de voltar ao chão.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q16-v1",
+      "varianteDe": "mat-funcao-quadratica-q16",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Qual é o valor mínimo de f(x) = 2x² − 12x + 20?",
+      "alternativas": [
+        "20",
+        "−12",
+        "38",
+        "2",
+        "3"
+      ],
+      "correta": 3,
+      "explicacao": "x = 12 ÷ 4 = 3; f(3) = 18 − 36 + 20 = 2. Dica de mergulhador: substitua o x do vértice.",
+      "comentarios": [
+        "É o corte no eixo y.",
+        "É o b.",
+        "Somou 18 em vez de subtrair.",
+        "",
+        "É o x do vértice."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q17-v1",
+      "varianteDe": "mat-funcao-quadratica-q17",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "O lucro de uma loja, em reais, é L(x) = −2x² + 120x − 1.000, em que x é o preço de venda. Qual preço dá o maior lucro?",
+      "alternativas": [
+        "R$ 30",
+        "R$ 10",
+        "R$ 120",
+        "R$ 60",
+        "R$ 800"
+      ],
+      "correta": 0,
+      "explicacao": "x = −120 ÷ (−4) = 30. Dica de mergulhador: 2a = −4.",
+      "comentarios": [
+        "",
+        "É uma das raízes.",
+        "Usou o b.",
+        "Esqueceu o 2 do a.",
+        "É o lucro máximo."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q18-v1",
+      "varianteDe": "mat-funcao-quadratica-q18",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Uma loja vende 120 − 3p unidades quando o preço é p reais. A receita é R(p) = p(120 − 3p). Qual é a receita máxima?",
+      "alternativas": [
+        "R$ 1.200",
+        "R$ 4.800",
+        "R$ 2.400",
+        "R$ 60",
+        "R$ 20"
+      ],
+      "correta": 0,
+      "explicacao": "R(p) = −3p² + 120p; p = 120 ÷ 6 = 20; R = 20 × 60 = R$ 1.200. Dica de mergulhador: abra o produto e use −b ÷ 2a.",
+      "comentarios": [
+        "",
+        "Usou p = 40.",
+        "Esqueceu o −3p.",
+        "É a quantidade vendida no preço ótimo.",
+        "É o preço ótimo."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q19-v1",
+      "varianteDe": "mat-funcao-quadratica-q19",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Com 60 m de tela, quer-se cercar um terreno retangular com a maior área possível. Qual é essa área?",
+      "alternativas": [
+        "225 m²",
+        "200 m²",
+        "900 m²",
+        "216 m²",
+        "60 m²"
+      ],
+      "correta": 0,
+      "explicacao": "A = x(30 − x), máxima em x = 15: 15 × 15 = 225 m². Dica de mergulhador: semiperímetro dividido em dois lados iguais.",
+      "comentarios": [
+        "",
+        "Usou 20 por 10.",
+        "Usou lado 30.",
+        "Usou 18 por 12.",
+        "Repetiu o perímetro."
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-q20-v1",
+      "varianteDe": "mat-funcao-quadratica-q20",
+      "tema": "Vértice: máximo e mínimo",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-quadratica",
+      "enunciado": "Um terreno retangular encostado num muro será cercado nos outros três lados com 60 m de tela. Qual é a maior área possível?",
+      "alternativas": [
+        "450 m²",
+        "400 m²",
+        "900 m²",
+        "432 m²",
+        "225 m²"
+      ],
+      "correta": 0,
+      "explicacao": "A = x(60 − 2x), máxima em x = 15: 15 × 30 = 450 m². Dica de mergulhador: o lado paralelo ao muro é o dobro do outro.",
+      "comentarios": [
+        "",
+        "Usou 10 por 40.",
+        "Usou 30 por 30.",
+        "Usou 12 por 36.",
+        "Cercou os quatro lados."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q01-v1",
+      "varianteDe": "mat-funcao-exponencial-q01",
+      "tema": "Potências e crescimento",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma cultura começa com 50 bactérias e triplica a cada hora. Quantas bactérias há depois de 2 horas?",
+      "alternativas": [
+        "350",
+        "300",
+        "150",
+        "2.500",
+        "450"
+      ],
+      "correta": 4,
+      "explicacao": "50 × 3² = 50 × 9 = 450. Dica de mergulhador: o tempo vai no expoente.",
+      "comentarios": [
+        "Somou 150 por hora.",
+        "Fez 50 × 3 × 2.",
+        "Contou só 1 hora.",
+        "Fez 50².",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q02-v1",
+      "varianteDe": "mat-funcao-exponencial-q02",
+      "tema": "Potências e crescimento",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Se f(x) = 2ˣ, quanto vale f(5)?",
+      "alternativas": [
+        "32",
+        "7",
+        "16",
+        "10",
+        "25"
+      ],
+      "correta": 0,
+      "explicacao": "2⁵ = 32. Dica de mergulhador: multiplique o 2 por ele mesmo 5 vezes.",
+      "comentarios": [
+        "",
+        "Somou.",
+        "Fez 2⁴.",
+        "Multiplicou 2 × 5.",
+        "Fez 5²."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q03-v1",
+      "varianteDe": "mat-funcao-exponencial-q03",
+      "tema": "Potências e crescimento",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Qual destas funções representa decaimento exponencial?",
+      "alternativas": [
+        "f(x) = 0,5x²",
+        "f(x) = 200 · 1,5ˣ",
+        "f(x) = 200 + 5x",
+        "f(x) = 200 · 0,5ˣ",
+        "f(x) = 200 − 0,5x"
+      ],
+      "correta": 3,
+      "explicacao": "Fator 0,5 < 1 no expoente: decaimento. Dica de mergulhador: fator entre 0 e 1, a grandeza cai.",
+      "comentarios": [
+        "É quadrática.",
+        "Fator maior que 1: crescimento.",
+        "É afim crescente.",
+        "",
+        "É afim."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q04-v1",
+      "varianteDe": "mat-funcao-exponencial-q04",
+      "tema": "Potências e crescimento",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Se f(x) = 5 · 3ˣ, para que valor de x temos f(x) = 405?",
+      "alternativas": [
+        "x = 4",
+        "x = 5",
+        "x = 81",
+        "x = 3",
+        "x = 27"
+      ],
+      "correta": 0,
+      "explicacao": "5 · 3ˣ = 405 → 3ˣ = 81 → x = 4. Dica de mergulhador: divida pelo valor inicial.",
+      "comentarios": [
+        "",
+        "Errou a potência.",
+        "Parou em 3ˣ = 81.",
+        "5 · 3³ = 135.",
+        "Dividiu 405 por 15."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q05-v1",
+      "varianteDe": "mat-funcao-exponencial-q05",
+      "tema": "Potências e crescimento",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "A conta A começa com 1.000 e ganha 500 por mês. A conta B começa com 1.000 e dobra a cada mês. Depois de 5 meses, quanto B tem a mais que A?",
+      "alternativas": [
+        "12.500",
+        "32.000",
+        "28.500",
+        "0",
+        "3.500"
+      ],
+      "correta": 2,
+      "explicacao": "A: 1.000 + 2.500 = 3.500. B: 1.000 × 32 = 32.000. Diferença: 28.500. Dica de mergulhador: cada mês, B dobra.",
+      "comentarios": [
+        "Usou 16.000 para B.",
+        "É o valor de B.",
+        "",
+        "As duas crescem de jeitos diferentes.",
+        "É o valor de A."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q06-v1",
+      "varianteDe": "mat-funcao-exponencial-q06",
+      "tema": "Potências e crescimento",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Em que ponto o gráfico de f(x) = 5 · 3ˣ corta o eixo y?",
+      "alternativas": [
+        "(0, 15)",
+        "(0, 1)",
+        "(0, 0)",
+        "(0, 3)",
+        "(0, 5)"
+      ],
+      "correta": 4,
+      "explicacao": "f(0) = 5 × 3⁰ = 5. Dica de mergulhador: o k é o valor inicial.",
+      "comentarios": [
+        "Fez 5 × 3.",
+        "Esqueceu o 5.",
+        "3⁰ = 1, não 0.",
+        "Usou a base.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q07-v1",
+      "varianteDe": "mat-funcao-exponencial-q07",
+      "tema": "Potências e crescimento",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma pessoa repassa um vídeo para 2 contatos na primeira rodada; na seguinte, cada um que acabou de receber repassa para outros 2, e assim por diante. Quantas pessoas novas recebem o vídeo na 6ª rodada?",
+      "alternativas": [
+        "64",
+        "32",
+        "36",
+        "126",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "Novas por rodada: 2, 4, 8, 16, 32, 64 = 2⁶. Dica de mergulhador: rodada n, 2ⁿ pessoas novas.",
+      "comentarios": [
+        "",
+        "É a 5ª rodada.",
+        "Fez 6².",
+        "Somou todas as rodadas.",
+        "Somou 2 por rodada."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q08-v1",
+      "varianteDe": "mat-funcao-exponencial-q08",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Cair 20% ao ano equivale a multiplicar por qual fator a cada ano?",
+      "alternativas": [
+        "1,20",
+        "20",
+        "0,80",
+        "0,20",
+        "0,98"
+      ],
+      "correta": 2,
+      "explicacao": "100% − 20% = 80% = 0,80. Dica de mergulhador: cair i% é multiplicar por 1 − i.",
+      "comentarios": [
+        "É o fator de um aumento.",
+        "Usou o número da porcentagem.",
+        "",
+        "É só a queda.",
+        "Seria 2%."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q09-v1",
+      "varianteDe": "mat-funcao-exponencial-q09",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Um carro de R$ 40.000 perde 10% do valor por ano. Qual expressão dá o valor depois de t anos?",
+      "alternativas": [
+        "40.000 · 0,9ᵗ",
+        "40.000 · 1,1ᵗ",
+        "40.000 · 0,1ᵗ",
+        "40.000 − 4.000t",
+        "40.000 − 0,1t"
+      ],
+      "correta": 0,
+      "explicacao": "Fator anual: 0,9. V(t) = 40.000 · 0,9ᵗ. Dica de mergulhador: sobra 90% a cada ano.",
+      "comentarios": [
+        "",
+        "O valor cai.",
+        "Usou só a perda como fator.",
+        "É depreciação linear.",
+        "Subtraiu 10 centavos por ano."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q10-v1",
+      "varianteDe": "mat-funcao-exponencial-q10",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma moto de R$ 50.000 perde 20% do valor por ano. Quanto ela vale depois de 2 anos?",
+      "alternativas": [
+        "R$ 20.000",
+        "R$ 40.000",
+        "R$ 32.000",
+        "R$ 72.000",
+        "R$ 30.000"
+      ],
+      "correta": 2,
+      "explicacao": "50.000 × 0,8² = 50.000 × 0,64 = R$ 32.000. Dica de mergulhador: multiplique os fatores.",
+      "comentarios": [
+        "É a perda linear de 2 anos.",
+        "Descontou só um ano.",
+        "",
+        "Aumentou em vez de diminuir.",
+        "Descontou 40% de uma vez."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q11-v1",
+      "varianteDe": "mat-funcao-exponencial-q11",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "R$ 2.000 são aplicados a juros compostos de 5% ao mês. Qual é o montante depois de 2 meses?",
+      "alternativas": [
+        "R$ 2.020",
+        "R$ 2.205",
+        "R$ 4.000",
+        "R$ 2.100",
+        "R$ 2.200"
+      ],
+      "correta": 1,
+      "explicacao": "2.000 × 1,05² = 2.000 × 1,1025 = R$ 2.205. Dica de mergulhador: M = C · (1 + i)ᵗ.",
+      "comentarios": [
+        "Usou 0,5% ao mês.",
+        "",
+        "Multiplicou por 2.",
+        "Contou só 1 mês.",
+        "Usou juros simples."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q12-v1",
+      "varianteDe": "mat-funcao-exponencial-q12",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma cidade de 80 mil habitantes cresce 5% ao ano. Quantos habitantes terá depois de 2 anos?",
+      "alternativas": [
+        "88.000",
+        "84.000",
+        "160.000",
+        "88.200",
+        "80.800"
+      ],
+      "correta": 3,
+      "explicacao": "80.000 × 1,05² = 80.000 × 1,1025 = 88.200. Dica de mergulhador: multiplique duas vezes por 1,05.",
+      "comentarios": [
+        "Somou 10% de uma vez.",
+        "Contou só um ano.",
+        "Supôs que dobra.",
+        "",
+        "Usou 0,5%."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q13-v1",
+      "varianteDe": "mat-funcao-exponencial-q13",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma ação sobe 50% num dia e cai 50% no dia seguinte. Qual é a variação final em relação ao valor inicial?",
+      "alternativas": [
+        "Nenhuma variação",
+        "Queda de 25%",
+        "Queda de 100%",
+        "Alta de 25%",
+        "Queda de 50%"
+      ],
+      "correta": 1,
+      "explicacao": "1,5 × 0,5 = 0,75: queda de 25%. Dica de mergulhador: sobe e cai o mesmo percentual? Sempre perde.",
+      "comentarios": [
+        "As bases são diferentes.",
+        "",
+        "Somou as porcentagens.",
+        "O resultado fica abaixo do inicial.",
+        "Ignorou a alta."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q14-v1",
+      "varianteDe": "mat-funcao-exponencial-q14",
+      "tema": "Porcentagem e juros",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Um investimento rende 20% ao ano, com juros compostos. Sabendo que 1,2³ ≈ 1,73 e 1,2⁴ ≈ 2,07, depois de quantos anos inteiros o valor passa a ser mais que o dobro do inicial?",
+      "alternativas": [
+        "5 anos",
+        "2 anos",
+        "10 anos",
+        "4 anos",
+        "3 anos"
+      ],
+      "correta": 3,
+      "explicacao": "Em 3 anos, 1,73 < 2; em 4 anos, 2,07 > 2. Dica de mergulhador: procure o primeiro valor acima de 2.",
+      "comentarios": [
+        "Usou juros simples.",
+        "1,2² = 1,44.",
+        "Dividiu 2 por 0,2.",
+        "",
+        "Em 3 anos ainda não dobrou: 1,73."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q15-v1",
+      "varianteDe": "mat-funcao-exponencial-q15",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Um remédio tem 640 mg no sangue, com meia-vida de 6 horas. Quanto resta depois de 18 horas?",
+      "alternativas": [
+        "80 mg",
+        "213 mg",
+        "160 mg",
+        "320 mg",
+        "40 mg"
+      ],
+      "correta": 0,
+      "explicacao": "18 ÷ 6 = 3: 640 → 320 → 160 → 80 mg. Dica de mergulhador: tempo ÷ meia-vida = número de metades.",
+      "comentarios": [
+        "",
+        "Dividiu por 3.",
+        "Contou 2 meias-vidas.",
+        "Contou 1 meia-vida.",
+        "Contou 4 meias-vidas."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q16-v1",
+      "varianteDe": "mat-funcao-exponencial-q16",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Depois de 4 meias-vidas, que fração da quantidade inicial resta?",
+      "alternativas": [
+        "1/16",
+        "1/4",
+        "1/2",
+        "4/16",
+        "1/8"
+      ],
+      "correta": 0,
+      "explicacao": "(1/2)⁴ = 1/16. Dica de mergulhador: 2, 4, 8, 16 no denominador.",
+      "comentarios": [
+        "",
+        "Dividiu por 4.",
+        "É só uma.",
+        "Errou o numerador.",
+        "São 3 meias-vidas."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q17-v1",
+      "varianteDe": "mat-funcao-exponencial-q17",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma colônia de 300 bactérias dobra a cada 30 minutos. Quantas bactérias haverá depois de 2 horas?",
+      "alternativas": [
+        "1.500",
+        "2.400",
+        "4.800",
+        "9.600",
+        "600"
+      ],
+      "correta": 2,
+      "explicacao": "120 ÷ 30 = 4 duplicações: 300 × 16 = 4.800. Dica de mergulhador: 2⁴ = 16.",
+      "comentarios": [
+        "Somou 300 a cada período.",
+        "Contou 3 duplicações.",
+        "",
+        "Contou 5 duplicações.",
+        "Dobrou uma vez só."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q18-v1",
+      "varianteDe": "mat-funcao-exponencial-q18",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma amostra cai de 2.400 g para 300 g, com meia-vida de 10 dias. Quanto tempo levou?",
+      "alternativas": [
+        "20 dias",
+        "80 dias",
+        "30 dias",
+        "10 dias",
+        "40 dias"
+      ],
+      "correta": 2,
+      "explicacao": "2.400 → 1.200 → 600 → 300: 3 meias-vidas × 10 = 30 dias. Dica de mergulhador: razão 8 = 2³.",
+      "comentarios": [
+        "Contou 2 meias-vidas.",
+        "Usou a razão 8 como número de meias-vidas.",
+        "",
+        "É uma meia-vida só.",
+        "Contou 4 meias-vidas."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q19-v1",
+      "varianteDe": "mat-funcao-exponencial-q19",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Um material tem meia-vida de 5 anos. Que porcentagem da quantidade inicial resta depois de 20 anos?",
+      "alternativas": [
+        "6,25%",
+        "25%",
+        "12,5%",
+        "80%",
+        "3,125%"
+      ],
+      "correta": 0,
+      "explicacao": "4 meias-vidas: (1/2)⁴ = 1/16 = 6,25%. Dica de mergulhador: 100, 50, 25, 12,5, 6,25.",
+      "comentarios": [
+        "",
+        "Dividiu por 4.",
+        "Contou 3 meias-vidas.",
+        "Tirou 5% por ano.",
+        "Contou 5 meias-vidas."
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-q20-v1",
+      "varianteDe": "mat-funcao-exponencial-q20",
+      "tema": "Meia-vida e duplicação",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-exponencial",
+      "enunciado": "Uma população dobra a cada 15 anos. Em quanto tempo ela passa de 3 mil para 96 mil habitantes?",
+      "alternativas": [
+        "480 anos",
+        "465 anos",
+        "60 anos",
+        "90 anos",
+        "75 anos"
+      ],
+      "correta": 4,
+      "explicacao": "96 ÷ 3 = 32 = 2⁵: 5 × 15 = 75 anos. Dica de mergulhador: razão 32 = cinco dobras.",
+      "comentarios": [
+        "Multiplicou 32 por 15.",
+        "Somou 3 mil a cada 15 anos.",
+        "Contou 4 duplicações.",
+        "Contou 6 duplicações.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q01-v1",
+      "varianteDe": "mat-logaritmos-q01",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log₃ 81?",
+      "alternativas": [
+        "9",
+        "27",
+        "243",
+        "3",
+        "4"
+      ],
+      "correta": 4,
+      "explicacao": "3⁴ = 81, então log₃ 81 = 4. Dica de mergulhador: conte quantos 3 se multiplicam.",
+      "comentarios": [
+        "É a raiz quadrada de 81.",
+        "Dividiu 81 por 3.",
+        "Multiplicou.",
+        "3³ = 27.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q02-v1",
+      "varianteDe": "mat-logaritmos-q02",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log 0,01, na base 10?",
+      "alternativas": [
+        "−2",
+        "2",
+        "0",
+        "−1",
+        "0,01"
+      ],
+      "correta": 0,
+      "explicacao": "10⁻² = 0,01. Dica de mergulhador: número menor que 1 tem log negativo.",
+      "comentarios": [
+        "",
+        "Esqueceu o sinal.",
+        "log 1 = 0.",
+        "10⁻¹ = 0,1.",
+        "É o próprio número."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q03-v1",
+      "varianteDe": "mat-logaritmos-q03",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log₇ 7?",
+      "alternativas": [
+        "7",
+        "1/7",
+        "1",
+        "0",
+        "49"
+      ],
+      "correta": 2,
+      "explicacao": "7¹ = 7. Dica de mergulhador: log da própria base é 1.",
+      "comentarios": [
+        "Usou o número.",
+        "Inverteu.",
+        "",
+        "log de 1 é 0; log da base é 1.",
+        "Elevou ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q04-v1",
+      "varianteDe": "mat-logaritmos-q04",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Se log₃ x = 4, quanto vale x?",
+      "alternativas": [
+        "12",
+        "27",
+        "64",
+        "81",
+        "7"
+      ],
+      "correta": 3,
+      "explicacao": "3⁴ = 81. Dica de mergulhador: base elevada ao resultado.",
+      "comentarios": [
+        "Multiplicou 3 × 4.",
+        "Fez 3³.",
+        "Fez 4³.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q05-v1",
+      "varianteDe": "mat-logaritmos-q05",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Se logₓ 125 = 3, qual é a base x?",
+      "alternativas": [
+        "375",
+        "3",
+        "5",
+        "25",
+        "41,7"
+      ],
+      "correta": 2,
+      "explicacao": "x³ = 125, então x = 5. Dica de mergulhador: raiz cúbica de 125.",
+      "comentarios": [
+        "Multiplicou.",
+        "Usou o logaritmo.",
+        "",
+        "25³ é muito maior.",
+        "Dividiu 125 por 3."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q06-v1",
+      "varianteDe": "mat-logaritmos-q06",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log₈ 2?",
+      "alternativas": [
+        "1/8",
+        "16",
+        "3",
+        "1/3",
+        "4"
+      ],
+      "correta": 3,
+      "explicacao": "8^(1/3) = ∛8 = 2. Dica de mergulhador: raiz cúbica é expoente 1/3.",
+      "comentarios": [
+        "Inverteu a base.",
+        "Multiplicou.",
+        "Inverteu: log₂ 8 = 3.",
+        "",
+        "Dividiu 8 por 2."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q07-v1",
+      "varianteDe": "mat-logaritmos-q07",
+      "tema": "Definição de logaritmo",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Quanto vale log₃ (log₂ 8)?",
+      "alternativas": [
+        "9",
+        "1",
+        "0",
+        "8",
+        "3"
+      ],
+      "correta": 1,
+      "explicacao": "log₂ 8 = 3; log₃ 3 = 1. Dica de mergulhador: primeiro o de dentro.",
+      "comentarios": [
+        "Elevou 3 ao quadrado.",
+        "",
+        "log₃ 3 = 1.",
+        "Não aplicou os logs.",
+        "Parou em log₂ 8."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q08-v1",
+      "varianteDe": "mat-logaritmos-q08",
+      "tema": "Propriedades",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 3 ≈ 0,48. Quanto vale log 9?",
+      "alternativas": [
+        "1,44",
+        "0,2304",
+        "4,32",
+        "0,96",
+        "0,48"
+      ],
+      "correta": 3,
+      "explicacao": "log 9 = log 3² = 2 × 0,48 = 0,96. Dica de mergulhador: o expoente desce multiplicando.",
+      "comentarios": [
+        "Multiplicou por 3.",
+        "Elevou o log ao quadrado.",
+        "Multiplicou por 9.",
+        "",
+        "Esqueceu o expoente."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q09-v1",
+      "varianteDe": "mat-logaritmos-q09",
+      "tema": "Propriedades",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30. Quanto vale log 16?",
+      "alternativas": [
+        "0,90",
+        "0,34",
+        "0,0081",
+        "1,20",
+        "4,80"
+      ],
+      "correta": 3,
+      "explicacao": "log 16 = log 2⁴ = 4 × 0,30 = 1,20. Dica de mergulhador: 16 = 2⁴.",
+      "comentarios": [
+        "Usou 3 como expoente.",
+        "Somou 0,04.",
+        "Elevou o log à quarta.",
+        "",
+        "Multiplicou por 16."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q10-v1",
+      "varianteDe": "mat-logaritmos-q10",
+      "tema": "Propriedades",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30 e log 3 ≈ 0,48. Quanto vale log 1,5?",
+      "alternativas": [
+        "0,45",
+        "1,6",
+        "0,18",
+        "0,78",
+        "0,144"
+      ],
+      "correta": 2,
+      "explicacao": "log 1,5 = log (3 ÷ 2) = 0,48 − 0,30 = 0,18. Dica de mergulhador: divisão vira subtração.",
+      "comentarios": [
+        "Multiplicou 0,30 por 1,5.",
+        "Dividiu os logs.",
+        "",
+        "Somou em vez de subtrair.",
+        "Multiplicou os logs."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q11-v1",
+      "varianteDe": "mat-logaritmos-q11",
+      "tema": "Propriedades",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 3 ≈ 0,48. Quanto vale log 3.000?",
+      "alternativas": [
+        "3,48",
+        "1,44",
+        "4,00",
+        "1.440",
+        "3,00"
+      ],
+      "correta": 0,
+      "explicacao": "log 3.000 = log 3 + log 1.000 = 0,48 + 3 = 3,48. Dica de mergulhador: 3.000 = 3 × 10³.",
+      "comentarios": [
+        "",
+        "Fez log 3 × 3.",
+        "Contou os algarismos.",
+        "Multiplicou 0,48 por 3.000.",
+        "Esqueceu o log 3."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q12-v1",
+      "varianteDe": "mat-logaritmos-q12",
+      "tema": "Propriedades",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 2 ≈ 0,30 e log 3 ≈ 0,48. Quanto vale log 18?",
+      "alternativas": [
+        "1,08",
+        "5,40",
+        "1,26",
+        "0,0691",
+        "0,78"
+      ],
+      "correta": 2,
+      "explicacao": "18 = 2 × 3²: 0,30 + 2 × 0,48 = 1,26. Dica de mergulhador: decomponha antes de calcular.",
+      "comentarios": [
+        "Fez 2 log 2 + log 3.",
+        "Multiplicou 0,30 por 18.",
+        "",
+        "Multiplicou os logs.",
+        "Fez só log 2 + log 3."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q13-v1",
+      "varianteDe": "mat-logaritmos-q13",
+      "tema": "Propriedades",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Use log 3 ≈ 0,48. Qual é o valor aproximado de x em 3ˣ = 100?",
+      "alternativas": [
+        "x ≈ 0,48",
+        "x = 4",
+        "x ≈ 4,2",
+        "x = 2",
+        "x ≈ 33,3"
+      ],
+      "correta": 2,
+      "explicacao": "x · 0,48 = 2, então x = 2 ÷ 0,48 ≈ 4,2. Dica de mergulhador: log 100 = 2.",
+      "comentarios": [
+        "É log 3.",
+        "3⁴ = 81, ainda menor que 100.",
+        "",
+        "É log 100.",
+        "Dividiu 100 por 3."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q14-v1",
+      "varianteDe": "mat-logaritmos-q14",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Uma solução tem pH 2 e outra, pH 5. Quantas vezes a de pH 2 é mais ácida?",
+      "alternativas": [
+        "2,5 vezes",
+        "100 vezes",
+        "1.000 vezes",
+        "30 vezes",
+        "3 vezes"
+      ],
+      "correta": 2,
+      "explicacao": "3 unidades: 10³ = 1.000 vezes. Dica de mergulhador: escala de pH é logarítmica.",
+      "comentarios": [
+        "Dividiu 5 por 2.",
+        "Contou 2 unidades.",
+        "",
+        "Multiplicou a diferença por 10.",
+        "Subtraiu os pH."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q15-v1",
+      "varianteDe": "mat-logaritmos-q15",
+      "tema": "Aplicações",
+      "dificuldade": "facil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Um terremoto tem magnitude 8 e outro, magnitude 5. Quantas vezes maior é a amplitude das ondas do primeiro?",
+      "alternativas": [
+        "1.000 vezes",
+        "100 vezes",
+        "3 vezes",
+        "1,6 vez",
+        "30 vezes"
+      ],
+      "correta": 0,
+      "explicacao": "3 pontos: 10³ = 1.000 vezes. Dica de mergulhador: diferença vira expoente de 10.",
+      "comentarios": [
+        "",
+        "Contou 2 pontos.",
+        "Subtraiu as magnitudes.",
+        "Dividiu 8 por 5.",
+        "Multiplicou a diferença por 10."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q16-v1",
+      "varianteDe": "mat-logaritmos-q16",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Uma britadeira tem 100 dB e um aspirador, 80 dB. Quantas vezes maior é a intensidade sonora da britadeira?",
+      "alternativas": [
+        "2 vezes",
+        "100 vezes",
+        "1,25 vez",
+        "200 vezes",
+        "20 vezes"
+      ],
+      "correta": 1,
+      "explicacao": "20 dB = 2 blocos: 10² = 100 vezes. Dica de mergulhador: divida a diferença por 10 e use como expoente.",
+      "comentarios": [
+        "Contou só os blocos de 10 dB.",
+        "",
+        "Dividiu 100 por 80.",
+        "Multiplicou 20 por 10.",
+        "Subtraiu os decibéis."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q17-v1",
+      "varianteDe": "mat-logaritmos-q17",
+      "tema": "Aplicações",
+      "dificuldade": "medio",
+      "fase": "mat-logaritmos",
+      "enunciado": "Um investimento rende 5% ao ano, com juros compostos. Usando log 2 ≈ 0,30 e log 1,05 ≈ 0,02, em quanto tempo ele dobra?",
+      "alternativas": [
+        "Cerca de 15 anos",
+        "6 anos",
+        "0,07 ano",
+        "40 anos",
+        "20 anos"
+      ],
+      "correta": 0,
+      "explicacao": "1,05ᵗ = 2 → t · 0,02 = 0,30 → t = 15 anos. Dica de mergulhador: t = log 2 ÷ log do fator.",
+      "comentarios": [
+        "",
+        "Dividiu 0,30 por 0,05.",
+        "Dividiu 0,02 por 0,30.",
+        "Dividiu 2 por 0,05.",
+        "Usou juros simples."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q18-v1",
+      "varianteDe": "mat-logaritmos-q18",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Uma colônia de bactérias dobra a cada 2 horas. Usando log 2 ≈ 0,30, em quanto tempo ela fica 100 vezes maior?",
+      "alternativas": [
+        "200 horas",
+        "50 horas",
+        "Cerca de 13,3 horas",
+        "2 horas",
+        "6,7 horas"
+      ],
+      "correta": 2,
+      "explicacao": "2ⁿ = 100 → n = 2 ÷ 0,30 ≈ 6,7 dobras; × 2 h ≈ 13,3 h. Dica de mergulhador: número de dobras vezes a duração de cada uma.",
+      "comentarios": [
+        "Multiplicou 100 por 2.",
+        "Dividiu 100 por 2.",
+        "",
+        "É log 100.",
+        "Esqueceu que cada dobra leva 2 horas."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q19-v1",
+      "varianteDe": "mat-logaritmos-q19",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Uma substância tem meia-vida de 8 dias. Usando log 2 ≈ 0,30, em quanto tempo resta só 1/1.000 da quantidade inicial?",
+      "alternativas": [
+        "24 dias",
+        "8.000 dias",
+        "80 dias",
+        "10 dias",
+        "40 dias"
+      ],
+      "correta": 2,
+      "explicacao": "(1/2)ⁿ = 1/1.000 → n · 0,30 = 3 → n = 10 meias-vidas × 8 = 80 dias. Dica de mergulhador: 2¹⁰ ≈ 1.000.",
+      "comentarios": [
+        "Usou 3 meias-vidas.",
+        "Multiplicou 1.000 por 8.",
+        "",
+        "É o número de meias-vidas.",
+        "Usou 5 meias-vidas."
+      ]
+    },
+    {
+      "id": "mat-logaritmos-q20-v1",
+      "varianteDe": "mat-logaritmos-q20",
+      "tema": "Aplicações",
+      "dificuldade": "dificil",
+      "fase": "mat-logaritmos",
+      "enunciado": "Um terremoto teve amplitude 1.000 vezes maior que outro, de magnitude 4,5. Qual foi a magnitude do mais forte?",
+      "alternativas": [
+        "7,5",
+        "3",
+        "14,5",
+        "4.500",
+        "13,5"
+      ],
+      "correta": 0,
+      "explicacao": "1.000 = 10³: 3 pontos a mais. 4,5 + 3 = 7,5. Dica de mergulhador: conte os zeros da amplitude.",
+      "comentarios": [
+        "",
+        "É só a diferença.",
+        "Somou 10.",
+        "Multiplicou a amplitude pela magnitude.",
+        "Multiplicou 4,5 por 3."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q01-v1",
+      "varianteDe": "mat-revisao-funcoes-q01",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Se f(x) = 10 − 2x, quanto vale f(3)?",
+      "alternativas": [
+        "5",
+        "4",
+        "24",
+        "7",
+        "16"
+      ],
+      "correta": 1,
+      "explicacao": "f(3) = 10 − 6 = 4. Dica de mergulhador: multiplique antes de subtrair.",
+      "comentarios": [
+        "Fez 10 − 2 − 3.",
+        "",
+        "Fez (10 − 2) × 3.",
+        "Fez 10 − 3.",
+        "Somou 6."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q02-v1",
+      "varianteDe": "mat-revisao-funcoes-q02",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Em que quadrante está o ponto (6, −1)?",
+      "alternativas": [
+        "Sobre o eixo x",
+        "No 3º quadrante",
+        "No 4º quadrante",
+        "No 1º quadrante",
+        "No 2º quadrante"
+      ],
+      "correta": 2,
+      "explicacao": "x positivo e y negativo: 4º quadrante. Dica de mergulhador: (+, −) é o 4º.",
+      "comentarios": [
+        "y não é zero.",
+        "x é positivo.",
+        "",
+        "y é negativo.",
+        "x é positivo."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q03-v1",
+      "varianteDe": "mat-revisao-funcoes-q03",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Qual destas situações é descrita por uma função afim?",
+      "alternativas": [
+        "A altura de uma bola chutada",
+        "Uma conta com R$ 20 fixos mais R$ 3 por item",
+        "Um remédio que cai pela metade a cada 6 horas",
+        "Um investimento a juros compostos",
+        "Uma colônia de bactérias que dobra a cada hora"
+      ],
+      "correta": 1,
+      "explicacao": "Parte fixa mais um valor constante por item: afim. Dica de mergulhador: soma constante é afim.",
+      "comentarios": [
+        "É quadrática.",
+        "",
+        "É exponencial.",
+        "É exponencial.",
+        "É exponencial."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q04-v1",
+      "varianteDe": "mat-revisao-funcoes-q04",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Qual é a raiz de f(x) = 18 − 6x?",
+      "alternativas": [
+        "12",
+        "3",
+        "18",
+        "108",
+        "−3"
+      ],
+      "correta": 1,
+      "explicacao": "18 − 6x = 0 → x = 3. Dica de mergulhador: −b ÷ a.",
+      "comentarios": [
+        "Subtraiu.",
+        "",
+        "É o termo fixo.",
+        "Multiplicou.",
+        "Errou o sinal."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q05-v1",
+      "varianteDe": "mat-revisao-funcoes-q05",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Quanto vale log₂ 64?",
+      "alternativas": [
+        "8",
+        "6",
+        "5",
+        "32",
+        "128"
+      ],
+      "correta": 1,
+      "explicacao": "2⁶ = 64. Dica de mergulhador: 2, 4, 8, 16, 32, 64.",
+      "comentarios": [
+        "É a raiz quadrada.",
+        "",
+        "2⁵ = 32.",
+        "Dividiu 64 por 2.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q06-v1",
+      "varianteDe": "mat-revisao-funcoes-q06",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "O gráfico de f(x) = 2x² − 5 é uma curva com boca para cima ou para baixo, e tem máximo ou mínimo?",
+      "alternativas": [
+        "Para baixo, com ponto de máximo",
+        "Para baixo, com ponto de mínimo",
+        "É uma reta",
+        "Para cima, com ponto de máximo",
+        "Para cima, com ponto de mínimo"
+      ],
+      "correta": 4,
+      "explicacao": "a = 2 > 0: boca para cima e mínimo. Dica de mergulhador: a positivo, mínimo.",
+      "comentarios": [
+        "a é positivo.",
+        "Boca para baixo tem máximo.",
+        "Tem x².",
+        "Boca para cima tem mínimo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q07-v1",
+      "varianteDe": "mat-revisao-funcoes-q07",
+      "tema": "Revisão: funções",
+      "dificuldade": "facil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "A temperatura era 12 °C à 1 h e 30 °C às 7 h, subindo em ritmo constante. Qual é a taxa de variação?",
+      "alternativas": [
+        "3 °C por hora",
+        "18 °C por hora",
+        "4,3 °C por hora",
+        "6 °C por hora",
+        "2,6 °C por hora"
+      ],
+      "correta": 0,
+      "explicacao": "(30 − 12) ÷ (7 − 1) = 18 ÷ 6 = 3 °C/h. Dica de mergulhador: conte os intervalos de tempo.",
+      "comentarios": [
+        "",
+        "Não dividiu pelo tempo.",
+        "Dividiu 30 por 7.",
+        "Dividiu 18 por 3.",
+        "Dividiu 18 por 7."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q08-v1",
+      "varianteDe": "mat-revisao-funcoes-q08",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Uma função afim passa por (0, 80) e (4, 60). Quanto vale f(10)?",
+      "alternativas": [
+        "30",
+        "130",
+        "20",
+        "50",
+        "0"
+      ],
+      "correta": 0,
+      "explicacao": "b = 80; a = −20 ÷ 4 = −5; f(10) = −50 + 80 = 30. Dica de mergulhador: reta descendo, a negativo.",
+      "comentarios": [
+        "",
+        "Usou a = +5.",
+        "Usou a = −6.",
+        "Usou a = −3.",
+        "Supôs que zera em 10."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q09-v1",
+      "varianteDe": "mat-revisao-funcoes-q09",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "O plano A cobra R$ 15 mais R$ 2 por item; o plano B, R$ 45 mais R$ 1,50 por item. Com quantos itens os dois custam o mesmo?",
+      "alternativas": [
+        "20 itens",
+        "30 itens",
+        "15 itens",
+        "60 itens",
+        "90 itens"
+      ],
+      "correta": 3,
+      "explicacao": "15 + 2x = 45 + 1,5x → 0,5x = 30 → x = 60. Dica de mergulhador: iguale as leis.",
+      "comentarios": [
+        "Dividiu 30 por 1,5.",
+        "É a diferença dos fixos.",
+        "Dividiu 30 por 2.",
+        "",
+        "Dividiu 45 por 0,5."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q10-v1",
+      "varianteDe": "mat-revisao-funcoes-q10",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Quais são as raízes de x² + x − 20 = 0?",
+      "alternativas": [
+        "1 e −20",
+        "−4 e 5",
+        "4 e −5",
+        "2 e −10",
+        "5 e 4"
+      ],
+      "correta": 2,
+      "explicacao": "Δ = 1 + 80 = 81; x = (−1 ± 9) ÷ 2: 4 ou −5. Dica de mergulhador: produto negativo, raízes de sinais opostos.",
+      "comentarios": [
+        "Usou os coeficientes.",
+        "Errou os sinais.",
+        "",
+        "A soma seria −8.",
+        "O produto seria +20."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q11-v1",
+      "varianteDe": "mat-revisao-funcoes-q11",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "A altura de uma bola é h(t) = −5t² + 50t, em metros. Qual é a altura máxima?",
+      "alternativas": [
+        "125 m",
+        "250 m",
+        "375 m",
+        "5 m",
+        "10 m"
+      ],
+      "correta": 0,
+      "explicacao": "t = 5; h(5) = −125 + 250 = 125 m. Dica de mergulhador: pediram a altura, não o tempo.",
+      "comentarios": [
+        "",
+        "Esqueceu o −5t².",
+        "Somou os módulos.",
+        "É o momento do máximo.",
+        "É o momento de voltar ao chão."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q12-v1",
+      "varianteDe": "mat-revisao-funcoes-q12",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "R$ 8.000 são aplicados a juros compostos de 5% ao ano. Qual é o montante depois de 2 anos?",
+      "alternativas": [
+        "R$ 8.820",
+        "R$ 8.400",
+        "R$ 8.080",
+        "R$ 16.000",
+        "R$ 8.800"
+      ],
+      "correta": 0,
+      "explicacao": "8.000 × 1,05² = 8.000 × 1,1025 = R$ 8.820. Dica de mergulhador: juro sobre juro.",
+      "comentarios": [
+        "",
+        "Contou só um ano.",
+        "Usou 0,5% ao ano.",
+        "Supôs que dobra.",
+        "Usou juros simples."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q13-v1",
+      "varianteDe": "mat-revisao-funcoes-q13",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Uma substância tem 960 mg, com meia-vida de 3 horas. Quanto resta depois de 15 horas?",
+      "alternativas": [
+        "30 mg",
+        "60 mg",
+        "480 mg",
+        "192 mg",
+        "15 mg"
+      ],
+      "correta": 0,
+      "explicacao": "15 ÷ 3 = 5 meias-vidas: 960 ÷ 32 = 30 mg. Dica de mergulhador: 2⁵ = 32.",
+      "comentarios": [
+        "",
+        "Contou 4 meias-vidas.",
+        "Contou 1 meia-vida.",
+        "Dividiu por 5.",
+        "Contou 6 meias-vidas."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q14-v1",
+      "varianteDe": "mat-revisao-funcoes-q14",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "A função f(x) = 50 − 4x tem domínio de 0 a 10. Qual é a sua imagem?",
+      "alternativas": [
+        "De 0 a 10",
+        "De 46 a 50",
+        "De 10 a 50",
+        "De 0 a 50",
+        "De −40 a 50"
+      ],
+      "correta": 2,
+      "explicacao": "f(0) = 50 e f(10) = 10. Dica de mergulhador: função decrescente, o maior y é no começo.",
+      "comentarios": [
+        "É o domínio.",
+        "Usou só x = 1.",
+        "",
+        "f(10) = 10, não 0.",
+        "Esqueceu o 50 no mínimo."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q15-v1",
+      "varianteDe": "mat-revisao-funcoes-q15",
+      "tema": "Revisão: funções",
+      "dificuldade": "medio",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Um terremoto tem magnitude 6 e outro, magnitude 4. Quantas vezes maior é a amplitude das ondas do primeiro?",
+      "alternativas": [
+        "1,5 vez",
+        "2 vezes",
+        "1.000 vezes",
+        "100 vezes",
+        "20 vezes"
+      ],
+      "correta": 3,
+      "explicacao": "2 pontos: 10² = 100 vezes. Dica de mergulhador: diferença vira expoente de 10.",
+      "comentarios": [
+        "Dividiu 6 por 4.",
+        "Subtraiu as magnitudes.",
+        "Contou 3 pontos.",
+        "",
+        "Multiplicou a diferença por 10."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q16-v1",
+      "varianteDe": "mat-revisao-funcoes-q16",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "O lucro de uma loja é L(p) = −2p² + 48p − 200, em reais, sendo p o preço de venda. Qual é o lucro máximo?",
+      "alternativas": [
+        "R$ 12",
+        "R$ 88",
+        "R$ 488",
+        "R$ 376",
+        "R$ 288"
+      ],
+      "correta": 1,
+      "explicacao": "p = 48 ÷ 4 = 12; L(12) = −288 + 576 − 200 = R$ 88. Dica de mergulhador: x = −b ÷ 2a, depois o y.",
+      "comentarios": [
+        "É o preço ótimo.",
+        "",
+        "Somou o 200.",
+        "Usou p = 24.",
+        "Esqueceu o −200."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q17-v1",
+      "varianteDe": "mat-revisao-funcoes-q17",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "A conta A começa com R$ 1.000 e ganha R$ 200 por mês. A conta B começa com R$ 60 e dobra a cada mês. Em que mês B passa a ter mais que A pela primeira vez?",
+      "alternativas": [
+        "No 5º mês",
+        "No 8º mês",
+        "Nunca",
+        "No 6º mês",
+        "No 4º mês"
+      ],
+      "correta": 3,
+      "explicacao": "Mês 5: A = 2.000, B = 1.920. Mês 6: A = 2.200, B = 3.840. Dica de mergulhador: compare mês a mês.",
+      "comentarios": [
+        "A tem 2.000 e B tem 1.920.",
+        "Já tinha passado antes.",
+        "A exponencial sempre ultrapassa a linear.",
+        "",
+        "A tem 1.800 e B tem 960."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q18-v1",
+      "varianteDe": "mat-revisao-funcoes-q18",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Um investimento rende 10% ao ano. Usando log 3 ≈ 0,48 e log 1,1 ≈ 0,04, em quantos anos ele triplica?",
+      "alternativas": [
+        "20 anos",
+        "7,5 anos",
+        "0,08 ano",
+        "Cerca de 12 anos",
+        "30 anos"
+      ],
+      "correta": 3,
+      "explicacao": "1,1ᵗ = 3 → t · 0,04 = 0,48 → t = 12 anos. Dica de mergulhador: log do alvo ÷ log do fator.",
+      "comentarios": [
+        "Usou crescimento linear.",
+        "É o tempo para dobrar.",
+        "Dividiu 0,04 por 0,48.",
+        "",
+        "Dividiu 3 por 0,1."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q19-v1",
+      "varianteDe": "mat-revisao-funcoes-q19",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Um terreno retangular encostado num muro será cercado nos outros três lados com 100 m de tela. Qual é a maior área possível?",
+      "alternativas": [
+        "1.000 m²",
+        "1.250 m²",
+        "1.200 m²",
+        "2.500 m²",
+        "625 m²"
+      ],
+      "correta": 1,
+      "explicacao": "A = x(100 − 2x), máxima em x = 25: 25 × 50 = 1.250 m². Dica de mergulhador: x = tela ÷ 4.",
+      "comentarios": [
+        "Usou 10 por 100.",
+        "",
+        "Usou 20 por 60.",
+        "Usou 50 por 50.",
+        "Cercou os quatro lados."
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-q20-v1",
+      "varianteDe": "mat-revisao-funcoes-q20",
+      "tema": "Revisão: funções",
+      "dificuldade": "dificil",
+      "fase": "mat-revisao-funcoes",
+      "enunciado": "Dois carros valem R$ 50.000. O primeiro perde 20% do valor por ano; o segundo perde R$ 8.000 por ano. Depois de 4 anos, qual vale mais, e quanto a mais?",
+      "alternativas": [
+        "O primeiro, R$ 2.480 a mais",
+        "O primeiro, R$ 10.000 a mais",
+        "O segundo, R$ 400 a mais",
+        "O segundo, R$ 2.480 a mais",
+        "Valem o mesmo"
+      ],
+      "correta": 0,
+      "explicacao": "Primeiro: 50.000 × 0,8⁴ = 20.480. Segundo: 50.000 − 32.000 = 18.000. Diferença: R$ 2.480. Dica de mergulhador: a perda percentual diminui com o valor.",
+      "comentarios": [
+        "",
+        "Descontou 80% de uma vez.",
+        "É o resultado de 3 anos.",
+        "O segundo vale R$ 18.000, menos que R$ 20.480.",
+        "Os valores são diferentes."
+      ]
     }
   ],
   "pares": [
@@ -64343,6 +68544,102 @@
       "tema": "Função afim",
       "termo": "Retas paralelas",
       "definicao": "Mesmo a"
+    },
+    {
+      "id": "mat-funcao-quadratica-par-01",
+      "tema": "Função quadrática",
+      "termo": "Parábola",
+      "definicao": "Gráfico da quadrática"
+    },
+    {
+      "id": "mat-funcao-quadratica-par-02",
+      "tema": "Função quadrática",
+      "termo": "a < 0",
+      "definicao": "Ponto de máximo"
+    },
+    {
+      "id": "mat-funcao-quadratica-par-03",
+      "tema": "Função quadrática",
+      "termo": "Vértice",
+      "definicao": "x = −b ÷ 2a"
+    },
+    {
+      "id": "mat-funcao-quadratica-par-04",
+      "tema": "Função quadrática",
+      "termo": "Δ < 0",
+      "definicao": "Nenhuma raiz real"
+    },
+    {
+      "id": "mat-funcao-exponencial-par-01",
+      "tema": "Função exponencial",
+      "termo": "Fator 1,10",
+      "definicao": "Crescer 10%"
+    },
+    {
+      "id": "mat-funcao-exponencial-par-02",
+      "tema": "Função exponencial",
+      "termo": "Fator 0,80",
+      "definicao": "Cair 20%"
+    },
+    {
+      "id": "mat-funcao-exponencial-par-03",
+      "tema": "Função exponencial",
+      "termo": "Meia-vida",
+      "definicao": "Tempo para cair à metade"
+    },
+    {
+      "id": "mat-funcao-exponencial-par-04",
+      "tema": "Função exponencial",
+      "termo": "f(0) da exponencial",
+      "definicao": "Valor inicial k"
+    },
+    {
+      "id": "mat-logaritmos-par-01",
+      "tema": "Logaritmos",
+      "termo": "log₂ 8",
+      "definicao": "3"
+    },
+    {
+      "id": "mat-logaritmos-par-02",
+      "tema": "Logaritmos",
+      "termo": "log de 1",
+      "definicao": "0"
+    },
+    {
+      "id": "mat-logaritmos-par-03",
+      "tema": "Logaritmos",
+      "termo": "log (a · b)",
+      "definicao": "log a + log b"
+    },
+    {
+      "id": "mat-logaritmos-par-04",
+      "tema": "Logaritmos",
+      "termo": "pH 4 e pH 6",
+      "definicao": "100 vezes mais ácido"
+    },
+    {
+      "id": "mat-revisao-funcoes-par-01",
+      "tema": "Revisão do módulo: funções",
+      "termo": "Soma constante",
+      "definicao": "Afim"
+    },
+    {
+      "id": "mat-revisao-funcoes-par-02",
+      "tema": "Revisão do módulo: funções",
+      "termo": "Fator constante",
+      "definicao": "Exponencial"
+    },
+    {
+      "id": "mat-revisao-funcoes-par-03",
+      "tema": "Revisão do módulo: funções",
+      "termo": "x = −b ÷ 2a",
+      "definicao": "Máximo ou mínimo"
+    },
+    {
+      "id": "mat-revisao-funcoes-par-04",
+      "tema": "Revisão do módulo: funções",
+      "termo": "log alvo ÷ log fator",
+      "definicao": "Tempo para atingir"
     }
   ],
   "verdadeiroFalso": [
@@ -65591,6 +69888,90 @@
       "afirmacao": "Função linear é afim com b = 0.",
       "verdadeira": true,
       "explicacao": "Proporção direta."
+    },
+    {
+      "id": "mat-funcao-quadratica-vf-01",
+      "tema": "Função quadrática",
+      "afirmacao": "Se a > 0, a parábola tem ponto de mínimo.",
+      "verdadeira": true,
+      "explicacao": "Boca para cima."
+    },
+    {
+      "id": "mat-funcao-quadratica-vf-02",
+      "tema": "Função quadrática",
+      "afirmacao": "O c decide a concavidade.",
+      "verdadeira": false,
+      "explicacao": "Quem decide é o a."
+    },
+    {
+      "id": "mat-funcao-quadratica-vf-03",
+      "tema": "Função quadrática",
+      "afirmacao": "O vértice fica no meio das raízes.",
+      "verdadeira": true,
+      "explicacao": "Por simetria."
+    },
+    {
+      "id": "mat-funcao-exponencial-vf-01",
+      "tema": "Função exponencial",
+      "afirmacao": "Subir 20% e cair 20% resulta em perda.",
+      "verdadeira": true,
+      "explicacao": "1,2 × 0,8 = 0,96."
+    },
+    {
+      "id": "mat-funcao-exponencial-vf-02",
+      "tema": "Função exponencial",
+      "afirmacao": "Na exponencial, soma-se o mesmo valor a cada período.",
+      "verdadeira": false,
+      "explicacao": "Multiplica-se pelo mesmo fator."
+    },
+    {
+      "id": "mat-funcao-exponencial-vf-03",
+      "tema": "Função exponencial",
+      "afirmacao": "Depois de 3 meias-vidas, resta 1/8.",
+      "verdadeira": true,
+      "explicacao": "(1/2)³."
+    },
+    {
+      "id": "mat-logaritmos-vf-01",
+      "tema": "Logaritmos",
+      "afirmacao": "log 1.000 = 3.",
+      "verdadeira": true,
+      "explicacao": "10³ = 1.000."
+    },
+    {
+      "id": "mat-logaritmos-vf-02",
+      "tema": "Logaritmos",
+      "afirmacao": "log 6 = log 2 × log 3.",
+      "verdadeira": false,
+      "explicacao": "É log 2 + log 3."
+    },
+    {
+      "id": "mat-logaritmos-vf-03",
+      "tema": "Logaritmos",
+      "afirmacao": "Cada 10 dB a mais multiplicam a intensidade por 10.",
+      "verdadeira": true,
+      "explicacao": "Escala logarítmica."
+    },
+    {
+      "id": "mat-revisao-funcoes-vf-01",
+      "tema": "Revisão do módulo: funções",
+      "afirmacao": "Juros compostos são uma função exponencial.",
+      "verdadeira": true,
+      "explicacao": "M = C · (1 + i)ᵗ."
+    },
+    {
+      "id": "mat-revisao-funcoes-vf-02",
+      "tema": "Revisão do módulo: funções",
+      "afirmacao": "Uma vela que encurta 2 cm por hora é exponencial.",
+      "verdadeira": false,
+      "explicacao": "É afim."
+    },
+    {
+      "id": "mat-revisao-funcoes-vf-03",
+      "tema": "Revisão do módulo: funções",
+      "afirmacao": "A raiz de f(x) = 5x − 20 é 4.",
+      "verdadeira": true,
+      "explicacao": "5 × 4 − 20 = 0."
     }
   ],
   "sequencias": [
@@ -66314,6 +70695,54 @@
         "Conferir no outro ponto"
       ],
       "explicacao": "Δy ÷ Δx."
+    },
+    {
+      "id": "mat-funcao-quadratica-seq-01",
+      "tema": "Função quadrática",
+      "titulo": "Achar o valor máximo",
+      "itens": [
+        "Conferir que a é negativo",
+        "Calcular x = −b ÷ 2a",
+        "Substituir x na lei",
+        "Responder o y encontrado"
+      ],
+      "explicacao": "Leia se pedem x ou y."
+    },
+    {
+      "id": "mat-funcao-exponencial-seq-01",
+      "tema": "Função exponencial",
+      "titulo": "Calcular o que resta após um tempo",
+      "itens": [
+        "Dividir o tempo pela meia-vida",
+        "Elevar 1/2 a esse número",
+        "Multiplicar pela quantidade inicial",
+        "Conferir a unidade"
+      ],
+      "explicacao": "Conte as metades."
+    },
+    {
+      "id": "mat-logaritmos-seq-01",
+      "tema": "Logaritmos",
+      "titulo": "Resolver aˣ = N com logs",
+      "itens": [
+        "Aplicar log dos dois lados",
+        "Descer o expoente: x · log a",
+        "Dividir log N por log a",
+        "Conferir se o resultado faz sentido"
+      ],
+      "explicacao": "O log derruba o expoente."
+    },
+    {
+      "id": "mat-revisao-funcoes-seq-01",
+      "tema": "Revisão do módulo: funções",
+      "titulo": "Resolver uma questão de função",
+      "itens": [
+        "Identificar entrada e saída",
+        "Reconhecer o tipo de função",
+        "Montar a lei",
+        "Responder exatamente o que foi pedido"
+      ],
+      "explicacao": "x ou y?"
     }
   ],
   "adivinhas": [
@@ -67172,6 +71601,62 @@
         "Gráfico da função afim",
         "Tem inclinação constante",
         "Basta dois pontos para traçar"
+      ]
+    },
+    {
+      "id": "mat-funcao-quadratica-adv-01",
+      "tema": "Função quadrática",
+      "dificuldade": "medio",
+      "resposta": "Parábola",
+      "aceitas": [
+        "parabola, parábola"
+      ],
+      "dicas": [
+        "Curva da função quadrática",
+        "Lembra a trajetória de uma bola",
+        "Tem um vértice"
+      ]
+    },
+    {
+      "id": "mat-funcao-exponencial-adv-01",
+      "tema": "Função exponencial",
+      "dificuldade": "medio",
+      "resposta": "Juros compostos",
+      "aceitas": [
+        "juros compostos, juro composto"
+      ],
+      "dicas": [
+        "Juro sobre juro",
+        "M = C · (1 + i)ᵗ",
+        "Crescem como exponencial"
+      ]
+    },
+    {
+      "id": "mat-logaritmos-adv-01",
+      "tema": "Logaritmos",
+      "dificuldade": "medio",
+      "resposta": "Expoente",
+      "aceitas": [
+        "expoente"
+      ],
+      "dicas": [
+        "O logaritmo procura por ele",
+        "Fica no alto da potência",
+        "Em 2³, é o 3"
+      ]
+    },
+    {
+      "id": "mat-revisao-funcoes-adv-01",
+      "tema": "Revisão do módulo: funções",
+      "dificuldade": "medio",
+      "resposta": "Função",
+      "aceitas": [
+        "funcao, função"
+      ],
+      "dicas": [
+        "Relaciona entrada e saída",
+        "Pode ser afim, quadrática ou exponencial",
+        "Escreve-se f(x)"
       ]
     }
   ],
@@ -68597,6 +73082,102 @@
       "tema": "Matemática",
       "palavra": "Plano",
       "dica": "Fixo mais minutos"
+    },
+    {
+      "id": "mat-funcao-quadratica-pal-01",
+      "tema": "Matemática",
+      "palavra": "Raiz",
+      "dica": "Onde y vale zero"
+    },
+    {
+      "id": "mat-funcao-quadratica-pal-02",
+      "tema": "Matemática",
+      "palavra": "Delta",
+      "dica": "Decide o número de raízes"
+    },
+    {
+      "id": "mat-funcao-quadratica-pal-03",
+      "tema": "Matemática",
+      "palavra": "Lucro",
+      "dica": "Tem preço ótimo"
+    },
+    {
+      "id": "mat-funcao-quadratica-pal-04",
+      "tema": "Matemática",
+      "palavra": "Curva",
+      "dica": "Forma do gráfico de ax² + bx + c"
+    },
+    {
+      "id": "mat-funcao-exponencial-pal-01",
+      "tema": "Matemática",
+      "palavra": "Dobro",
+      "dica": "Duas vezes mais"
+    },
+    {
+      "id": "mat-funcao-exponencial-pal-02",
+      "tema": "Matemática",
+      "palavra": "Metade",
+      "dica": "Meia-vida"
+    },
+    {
+      "id": "mat-funcao-exponencial-pal-03",
+      "tema": "Matemática",
+      "palavra": "Fator",
+      "dica": "Multiplica a cada período"
+    },
+    {
+      "id": "mat-funcao-exponencial-pal-04",
+      "tema": "Matemática",
+      "palavra": "Bactéria",
+      "dica": "Cresce dobrando"
+    },
+    {
+      "id": "mat-logaritmos-pal-01",
+      "tema": "Matemática",
+      "palavra": "Base",
+      "dica": "Número que se eleva"
+    },
+    {
+      "id": "mat-logaritmos-pal-02",
+      "tema": "Matemática",
+      "palavra": "Decibel",
+      "dica": "Medida de som"
+    },
+    {
+      "id": "mat-logaritmos-pal-03",
+      "tema": "Matemática",
+      "palavra": "Escala",
+      "dica": "Régua de medida"
+    },
+    {
+      "id": "mat-logaritmos-pal-04",
+      "tema": "Matemática",
+      "palavra": "Ácido",
+      "dica": "pH baixo"
+    },
+    {
+      "id": "mat-revisao-funcoes-pal-01",
+      "tema": "Matemática",
+      "palavra": "Afim",
+      "dica": "Soma constante"
+    },
+    {
+      "id": "mat-revisao-funcoes-pal-02",
+      "tema": "Matemática",
+      "palavra": "Raiz",
+      "dica": "y igual a zero"
+    },
+    {
+      "id": "mat-revisao-funcoes-pal-03",
+      "tema": "Matemática",
+      "palavra": "Juros",
+      "dica": "Crescem exponencialmente"
+    },
+    {
+      "id": "mat-revisao-funcoes-pal-04",
+      "tema": "Matemática",
+      "palavra": "Lucro",
+      "dica": "Tem máximo"
     }
   ],
   "fichas": {
@@ -70058,16 +74639,16 @@
     },
     "Aplicações": {
       "texto": [
-        "Distância e altura são catetos: use a tangente (altura = distância × tg). Comprimento inclinado e altura: seno. Comprimento inclinado e distância horizontal: cosseno.",
-        "Inclinação em porcentagem é a tangente (10% = 0,1). A sombra é a altura dividida pela tangente do ângulo do sol: sol baixo, sombra longa."
+        "Escalas logarítmicas: cada unidade é um fator 10. pH: diferença de n unidades, 10ⁿ vezes mais ácido. Magnitude: n pontos, amplitude 10ⁿ vezes. Decibéis: cada 10 dB, intensidade 10 vezes.",
+        "Tempo para dobrar: t = log 2 ÷ log (1 + i). Para meia-vida: n = log (fator) ÷ log 2 meias-vidas, e o tempo é n vezes a meia-vida."
       ],
       "pontos": [
-        "Altura = distância × tangente.",
-        "Sombra = altura ÷ tangente."
+        "2¹⁰ ≈ 1.000.",
+        "Tempo = número de períodos × duração."
       ],
       "pegadinhas": [
-        "Multiplicar pela tangente para achar a sombra.",
-        "Usar seno quando os dois lados são catetos."
+        "Ler a escala como linear.",
+        "Responder o número de meias-vidas em vez do tempo."
       ]
     },
     "Eixos de simetria": {
@@ -70726,6 +75307,132 @@
       "pegadinhas": [
         "Inverter as coordenadas do corte.",
         "Esquecer de dividir a área por 2."
+      ]
+    },
+    "Parábola e coeficientes": {
+      "texto": [
+        "f(x) = ax² + bx + c com a ≠ 0. a > 0: concavidade para cima e mínimo; a < 0: para baixo e máximo. c é o corte no eixo y.",
+        "Δ = b² − 4ac decide quantas vezes a curva toca o eixo x: Δ > 0, duas; Δ = 0, uma; Δ < 0, nenhuma. Com raízes r e s, a lei é a(x − r)(x − s); o corte em y dá o a."
+      ],
+      "pontos": [
+        "Só o a decide a concavidade.",
+        "2x² não é (2x)²."
+      ],
+      "pegadinhas": [
+        "Usar o c para decidir a concavidade.",
+        "Esquecer o sinal de c no corte em y."
+      ]
+    },
+    "Raízes": {
+      "texto": [
+        "Raízes: f(x) = 0. Bhaskara: x = (−b ± √Δ) ÷ 2a. Sem c: x em evidência (uma raiz é 0). Sem b: isole x² e use ±.",
+        "Soma das raízes = −b ÷ a; produto = c ÷ a. Em lançamentos, a raiz não nula é o momento em que o objeto volta ao chão."
+      ],
+      "pontos": [
+        "Com a = 1, procure soma −b e produto c.",
+        "x² = 9 tem duas raízes."
+      ],
+      "pegadinhas": [
+        "Esquecer a raiz negativa.",
+        "Não dividir por 2a."
+      ]
+    },
+    "Vértice: máximo e mínimo": {
+      "texto": [
+        "Vértice: x = −b ÷ 2a, a média das raízes; o y sai substituindo esse x. É o ponto de máximo (a < 0) ou de mínimo (a > 0).",
+        "Aplicações: altura máxima, preço de maior lucro, receita máxima (preço × quantidade) e área máxima. Perímetro fixo: o quadrado dá a maior área; com muro, o lado paralelo a ele é o dobro do outro."
+      ],
+      "pontos": [
+        "Pediram o momento (x) ou o valor (y)?",
+        "Receita = preço × quantidade vendida."
+      ],
+      "pegadinhas": [
+        "Responder o x quando pediram o y.",
+        "Cercar o lado do muro."
+      ]
+    },
+    "Potências e crescimento": {
+      "texto": [
+        "f(x) = k · aˣ: k é o valor inicial e a o fator por período. a > 1: crescimento; 0 < a < 1: decaimento. O gráfico de aˣ passa por (0, 1) e nunca toca o eixo x.",
+        "Para achar x, isole a potência (divida pelo k) e descubra o expoente. A exponencial sempre ultrapassa o crescimento linear: a afim soma, a exponencial multiplica."
+      ],
+      "pontos": [
+        "Rodada n de quem repassa para 3: 3ⁿ.",
+        "f(0) = k."
+      ],
+      "pegadinhas": [
+        "Multiplicar a base pelo expoente.",
+        "Confundir 0,8ˣ com crescimento."
+      ]
+    },
+    "Porcentagem e juros": {
+      "texto": [
+        "Crescer i% é multiplicar por (1 + i); cair i%, por (1 − i). Juros compostos: M = C · (1 + i)ᵗ. População e depreciação seguem a mesma lei.",
+        "Porcentagens seguidas se multiplicam: +20% e −20% dão 0,96 (queda de 4%). Para saber quando dobra, procure o primeiro período com fator acumulado acima de 2."
+      ],
+      "pontos": [
+        "10% duas vezes = × 1,21.",
+        "Sobe e cai o mesmo percentual: perda."
+      ],
+      "pegadinhas": [
+        "Somar porcentagens seguidas.",
+        "Usar só o aumento (0,02) como fator."
+      ]
+    },
+    "Meia-vida e duplicação": {
+      "texto": [
+        "Meia-vida: tempo para cair à metade; depois de n delas, resta (1/2)ⁿ. Tempo de duplicação: depois de n, fica 2ⁿ vezes maior.",
+        "Transforme o tempo em número de períodos (tempo ÷ meia-vida) ou a razão em potência de 2 (16 = 2⁴). Em porcentagem: 50%, 25%, 12,5%, 6,25%."
+      ],
+      "pontos": [
+        "Número de períodos = tempo ÷ duração do período.",
+        "Razão 8 = 3 dobras."
+      ],
+      "pegadinhas": [
+        "Dividir pelo número de períodos.",
+        "Usar a razão como número de meias-vidas."
+      ]
+    },
+    "Definição de logaritmo": {
+      "texto": [
+        "log_b a = x significa bˣ = a (a > 0, b > 0, b ≠ 1). Sem base escrita, é base 10. log de 1 é 0; log da base é 1.",
+        "Para achar o número, eleve a base ao log; para achar a base, tire a raiz. Raiz quadrada é expoente 1/2, raiz cúbica é 1/3. Logs encaixados: resolva de dentro para fora."
+      ],
+      "pontos": [
+        "Na base 10, conte os zeros.",
+        "Número entre 0 e 1 tem log negativo."
+      ],
+      "pegadinhas": [
+        "Dividir o número pela base.",
+        "Confundir log de 1 com log da base."
+      ]
+    },
+    "Propriedades": {
+      "texto": [
+        "log (a · b) = log a + log b; log (a ÷ b) = log a − log b; log aⁿ = n · log a. Com log 2 ≈ 0,30 e log 3 ≈ 0,48, fatore o número em 2, 3 e 10.",
+        "Para resolver aˣ = N, aplique log: x = log N ÷ log a. log 5 = 1 − log 2 ≈ 0,70."
+      ],
+      "pontos": [
+        "12 = 2² × 3.",
+        "200 = 2 × 100."
+      ],
+      "pegadinhas": [
+        "Multiplicar os logs em vez de somar.",
+        "Multiplicar o log pelo número."
+      ]
+    },
+    "Revisão: funções": {
+      "texto": [
+        "Reconheça o tipo: soma constante, afim (ax + b); multiplica por fator constante, exponencial (k · aˣ); tem x², quadrática; procura o expoente, logaritmo.",
+        "Afim: raiz −b ÷ a e empate de planos igualando as leis. Quadrática: máximo ou mínimo em x = −b ÷ 2a e o valor substituindo. Exponencial: porcentagens se multiplicam e meia-vida divide por 2. Logaritmo: t = log alvo ÷ log fator."
+      ],
+      "pontos": [
+        "Pediram x ou y?",
+        "Exponencial sempre ultrapassa a linear."
+      ],
+      "pegadinhas": [
+        "Somar porcentagens seguidas.",
+        "Responder o momento quando pediram o valor."
       ]
     }
   }
