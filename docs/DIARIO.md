@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-10 · Enem por matéria, Onda 6: Enem · História completo
+- **Feito:** `enem-historia` com 25 aulas em 5 módulos (fontes, tempo e o mundo antigo e medieval; Brasil Colônia; mundo moderno; Brasil Império e Primeira República; século XX), 500 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 500 variantes, 65 fichas, artigo completo e blocos para todos os jogos. Parecer das fontes: o de Ciências Humanas (`docs/validacoes/enem-humanas-2026-10-10.md`). Caderno novo do curso.
+- **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos (contas de datas e porcentagens conferidas pelo construtor); autocheck de originalidade sem trechos copiados; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.
+- **Decisões:** curso 100% autoral; protagonismo de indígenas, africanos, mulheres e trabalhadores; memória como tema; 89 itens marcados `revisar`.
+- **Pendências:** Mergulho Triplo (cerca de US$ 37 para questões e variantes; só com aprovação do admin); revisão de um professor de História.
+- **Próximo passo:** Onda 7 (Física), com o parecer de Ciências da Natureza.
+
 ## 2026-10-10 · Enem por matéria, Onda 5: Enem · Geografia completo
 - **Feito:** parecer das fontes de Ciências Humanas (Matriz do Inep e Caderno Marista de Humanas: Aprovada com ressalvas, `docs/validacoes/enem-humanas-2026-10-10.md`, vale também para História, Filosofia e Sociologia). `enem-geografia` com 30 aulas em 6 módulos (cartografia, escala e leitura de mapas; relevo, solos e clima; biomas, água e recursos naturais; questões ambientais e sustentabilidade; população, cidades e urbanização; campo, indústria, energia e globalização): 600 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 600 variantes, 79 fichas, artigo completo e blocos para todos os jogos. Caderno novo do curso.
 - **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos (todas as contas conferidas pelo construtor); autocheck de originalidade sem trechos iguais às fontes; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.
