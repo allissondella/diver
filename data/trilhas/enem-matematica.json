@@ -5154,6 +5154,312 @@
           "seno e cosseno"
         ]
       }
+    },
+    {
+      "id": "mat-solidos-vistas",
+      "nome": "Aula 51 · Sólidos, vistas e planificações",
+      "modulo": "Módulo 9 · Geometria espacial",
+      "descricao": "Módulo 9 · aula 1 de 3 · 35 min · treina as habilidades H6 e H7",
+      "habilidades": [
+        "H6",
+        "H7"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Poliedros e corpos redondos",
+            "texto": [
+              "Sólidos geométricos ocupam espaço. Os **poliedros** têm todas as faces planas, que são polígonos: cubos, prismas e pirâmides. Os corpos redondos têm superfícies curvas: cilindro, cone e esfera. Num poliedro, as faces se encontram nas arestas, e as arestas, nos vértices. O cubo tem 6 faces, 12 arestas e 8 vértices; a pirâmide de base quadrada tem 5 faces, 8 arestas e 5 vértices."
+            ]
+          },
+          {
+            "titulo": "Relação de Euler",
+            "texto": [
+              "Nos poliedros convexos, vale a relação de Euler: V − A + F = 2. Ela ajuda a descobrir um número que falta: um poliedro com 8 faces e 12 vértices tem 18 arestas. Num prisma cuja base tem n lados, há 2n vértices, 3n arestas e n + 2 faces; numa pirâmide, n + 1 vértices, 2n arestas e n + 1 faces. Quando se conhecem os tipos de face, cada aresta é contada por duas faces: some os lados de todas as faces e divida por 2."
+            ]
+          },
+          {
+            "titulo": "Planificações",
+            "texto": [
+              "A **planificação** é o sólido aberto e esticado no plano, como uma caixa desmontada. O cubo tem 11 planificações diferentes, todas com 6 quadrados, e nelas as faces opostas nunca ficam lado a lado. O cilindro planificado vira dois círculos e um retângulo cuja largura é o comprimento da circunferência da base; o cone vira um círculo e um setor circular. A área da planificação é a quantidade de material da embalagem."
+            ]
+          },
+          {
+            "titulo": "Vistas e como o Enem cobra",
+            "texto": [
+              "As **vistas** frontal, lateral e superior mostram o sólido como ele é visto de frente, de lado e de cima, como numa planta de arquitetura. Um cone em pé tem vista de cima circular e vista de frente triangular; um cilindro em pé, circular e retangular. Em pilhas de cubinhos, a vista de cima com o número de cubos em cada coluna permite contar o total. O Enem cobra embalagens, planificações de caixas, vistas de objetos, contagem de elementos e sombras de sólidos."
+            ]
+          }
+        ],
+        "introducao": "Caixas desmontadas, embalagens, prédios vistos de cima, pilhas de cubos: a Geometria espacial começa por enxergar o sólido em três dimensões e reconhecê-lo em desenhos planos. Esta aula organiza os tipos de sólidos, a contagem de faces, arestas e vértices, as planificações e as vistas que o Enem mais cobra.",
+        "mapaMental": {
+          "centro": "Sólidos",
+          "ramos": [
+            {
+              "titulo": "Tipos",
+              "itens": [
+                "poliedros com faces planas",
+                "corpos redondos com superfície curva"
+              ]
+            },
+            {
+              "titulo": "Contagem",
+              "itens": [
+                "relação de Euler V − A + F = 2",
+                "prisma com 2n vértices",
+                "pirâmide com n + 1 faces"
+              ]
+            },
+            {
+              "titulo": "Planificação",
+              "itens": [
+                "cubo com 6 quadrados",
+                "cilindro com retângulo e dois círculos",
+                "cone com setor"
+              ]
+            },
+            {
+              "titulo": "Vistas",
+              "itens": [
+                "frente, lado e cima",
+                "número de cubos em cada coluna"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "📦",
+            "conceito": "Caixa desmontada",
+            "liga": "caixa aberta no chão",
+            "porque": "Abra as abas e o sólido vira um desenho no chão."
+          },
+          {
+            "icone": "🏗️",
+            "conceito": "Planta de arquitetura",
+            "liga": "olhar o prédio de cima e de frente",
+            "porque": "Cada vista mostra uma face do prédio."
+          }
+        ],
+        "pontos": [
+          "**Poliedros** têm faces planas; cilindro, cone e esfera são corpos redondos.",
+          "Relação de Euler: V − A + F = 2.",
+          "A **planificação** abre o sólido no plano e mostra o material gasto.",
+          "As **vistas** mostram o sólido de frente, de lado e de cima."
+        ],
+        "perolas": [
+          "No dado, as faces opostas somam 7.",
+          "Cubo: 6 faces, 12 arestas, 8 vértices."
+        ],
+        "reforcar": [
+          "poliedros",
+          "planificacao",
+          "vistas"
+        ]
+      }
+    },
+    {
+      "id": "mat-prismas",
+      "nome": "Aula 52 · Prismas e cubos: área e volume",
+      "modulo": "Módulo 9 · Geometria espacial",
+      "descricao": "Módulo 9 · aula 2 de 3 · 35 min · treina as habilidades H8 e H12",
+      "habilidades": [
+        "H8",
+        "H12"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Prisma e paralelepípedo",
+            "texto": [
+              "Um prisma tem duas bases iguais e paralelas, ligadas por faces laterais, que no prisma reto são retângulos. O paralelepípedo retângulo, a forma das caixas, tem 6 faces retangulares; o cubo tem as 6 faces quadradas. O nome do prisma vem da base: triangular, quadrangular, hexagonal."
+            ]
+          },
+          {
+            "titulo": "Volume",
+            "texto": [
+              "O volume de qualquer prisma é a **área da base vezes altura**. No paralelepípedo, V = comprimento × largura × altura: uma caixa de 20 cm × 10 cm × 5 cm tem 1.000 cm³, ou 1 litro. No cubo de aresta a, V = a³. Num prisma triangular, primeiro se calcula a área do triângulo da base. Lembre: 1 dm³ = 1 L, 1 cm³ = 1 mL e 1 m³ = 1.000 L. Uma piscina com água até certa altura tem volume de água igual à base vezes essa altura, e não a profundidade total."
+            ]
+          },
+          {
+            "titulo": "Área total",
+            "texto": [
+              "A área total é a soma das áreas de todas as faces: as duas bases mais a **área lateral**. No paralelepípedo, a área total é 2(ab + ac + bc); no cubo, 6a². A área lateral de um prisma reto é o perímetro da base vezes a altura. Área é a medida de papelão, tinta e azulejo; volume é a de líquido, areia e concreto."
+            ]
+          },
+          {
+            "titulo": "Proporções e como o Enem cobra",
+            "texto": [
+              "Dobrando todas as arestas, a área fica 4 vezes maior e o volume, **8 vezes**. Colocando uma pedra num aquário e medindo quanto a água sobe, o volume da pedra é a área da base do aquário vezes a subida. O Enem cobra caixas d'água, piscinas, aquários, embalagens, tijolos e caixas abertas feitas cortando os cantos de uma folha, quase sempre com conversão para litros. Antes de calcular, anote as três medidas na mesma unidade e confira se a caixa tem tampa: uma caixa aberta perde uma das faces na conta da área."
+            ]
+          }
+        ],
+        "introducao": "Caixas, aquários, piscinas, contêineres, tijolos e caixas d'água têm a forma de prismas. Esta aula ensina a calcular quanto cabe dentro deles, o volume, e quanto material é preciso para fazê-los, a área, além do efeito de ampliar um sólido e do truque de medir volumes pela água que sobe.",
+        "mapaMental": {
+          "centro": "Prismas",
+          "ramos": [
+            {
+              "titulo": "Volume",
+              "itens": [
+                "área da base vezes altura",
+                "caixa com comprimento × largura × altura"
+              ]
+            },
+            {
+              "titulo": "Área",
+              "itens": [
+                "área lateral é perímetro da base vezes altura",
+                "caixa com 2(ab + ac + bc)"
+              ]
+            },
+            {
+              "titulo": "Unidades",
+              "itens": [
+                "1 dm³ é 1 litro",
+                "1 m³ são 1.000 litros"
+              ]
+            },
+            {
+              "titulo": "Proporções",
+              "itens": [
+                "arestas dobradas, volume 8 vezes",
+                "água que sobe mede o volume"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🐠",
+            "conceito": "Pedra no aquário",
+            "liga": "volume pela água",
+            "porque": "A água sobe exatamente o volume da pedra."
+          },
+          {
+            "icone": "🧊",
+            "conceito": "Cubinho de gelo dobrado",
+            "liga": "2 × 2 × 2",
+            "porque": "Dobrar a aresta enche 8 forminhas."
+          }
+        ],
+        "pontos": [
+          "Volume do prisma: **área da base vezes altura**.",
+          "A **área lateral** do prisma reto é o perímetro da base vezes a altura.",
+          "1 dm³ = 1 L e 1 m³ = 1.000 L.",
+          "Dobrando as arestas, o volume fica **8 vezes** maior."
+        ],
+        "perolas": [
+          "Área mede o material; volume mede o conteúdo.",
+          "Água até 1,2 m não é piscina cheia."
+        ],
+        "reforcar": [
+          "area da base vezes altura",
+          "area lateral",
+          "8 vezes"
+        ]
+      }
+    },
+    {
+      "id": "mat-cilindros",
+      "nome": "Aula 53 · Cilindros",
+      "modulo": "Módulo 9 · Geometria espacial",
+      "descricao": "Módulo 9 · aula 3 de 3 · 35 min · treina as habilidades H8 e H12",
+      "habilidades": [
+        "H8",
+        "H12"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Volume do cilindro",
+            "texto": [
+              "O cilindro funciona como um prisma de base circular: volume = área da base vezes altura = πr²h. Uma lata de raio 4 cm e altura 10 cm, com π ≈ 3, tem 3 × 16 × 10 = 480 cm³, ou 0,48 L. Cuidado com o diâmetro: divida por 2 antes de elevar ao quadrado. Em canos longos, use a mesma unidade para o raio e o comprimento; em decímetros, o resultado já sai em litros."
+            ]
+          },
+          {
+            "titulo": "Área do cilindro",
+            "texto": [
+              "Planificado, o cilindro vira dois círculos, as bases, e um retângulo, a lateral. O retângulo tem largura igual ao **comprimento da circunferência**, 2πr, e altura h: a **área lateral** é 2πrh. A área total é 2πrh + 2πr². É a quantidade de chapa de uma lata, ou de papel no rótulo de uma garrafa, que cobre só a lateral. Uma caixa d'água sem fundo exposto, pintada por fora, recebe lateral e tampa."
+            ]
+          },
+          {
+            "titulo": "O raio pesa mais",
+            "texto": [
+              "Como o **raio ao quadrado** entra no volume, mudar o raio mexe mais que mudar a altura: dobrar o raio multiplica o volume por 4; dobrar a altura, por 2. Um copo com o dobro do raio e metade da altura tem o dobro do volume. Despejando a água de um cilindro em outro mais largo, o volume se conserva, e a nova altura é o volume dividido pela nova área da base. Um cilindro dentro de uma caixa de mesma altura e base quadrada que o abraça ocupa π ÷ 4, cerca de 78,5%, da caixa."
+            ]
+          },
+          {
+            "titulo": "Como o Enem cobra",
+            "texto": [
+              "Caixas d'água cilíndricas, tubos e canos, latas, copos, rolos de papel, silos e piscinas redondas, com comparação de preço por volume. Converter cm³ em litros (1.000 cm³ = 1 L) e m³ em litros (1 m³ = 1.000 L) faz parte de quase toda questão. Antes de calcular, confira se o problema dá o raio ou o diâmetro e se a lata tem tampa, porque isso muda a conta da área."
+            ]
+          }
+        ],
+        "introducao": "Latas, copos, canos, caixas d'água redondas, silos e rolos de papel são cilindros. Esta aula mostra como calcular o volume e a área de um cilindro, por que o raio pesa mais que a altura e como comparar embalagens redondas.",
+        "mapaMental": {
+          "centro": "Cilindros",
+          "ramos": [
+            {
+              "titulo": "Volume",
+              "itens": [
+                "πr²h",
+                "diâmetro dividido por 2 antes de elevar"
+              ]
+            },
+            {
+              "titulo": "Área",
+              "itens": [
+                "área lateral 2πrh",
+                "retângulo com o comprimento da circunferência",
+                "total com as duas bases"
+              ]
+            },
+            {
+              "titulo": "Proporções",
+              "itens": [
+                "raio ao quadrado pesa mais",
+                "dobrar o raio quadruplica o volume"
+              ]
+            },
+            {
+              "titulo": "Transferir",
+              "itens": [
+                "volume se conserva",
+                "nova altura = volume ÷ nova base"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🥫",
+            "conceito": "Rótulo da lata",
+            "liga": "retângulo enrolado",
+            "porque": "Desenrolado, o rótulo tem a largura da volta da lata."
+          },
+          {
+            "icone": "🥤",
+            "conceito": "Copo largo e baixo",
+            "liga": "raio pesa mais",
+            "porque": "Um pouco mais de largura enche mais que muito mais de altura."
+          }
+        ],
+        "pontos": [
+          "Volume do cilindro: πr²h.",
+          "A **área lateral** é 2πrh: o retângulo tem o **comprimento da circunferência**.",
+          "O **raio ao quadrado** faz o raio pesar mais que a altura no volume.",
+          "Ao despejar líquido, o volume se conserva."
+        ],
+        "perolas": [
+          "Dobrou o raio, quatro vezes o volume.",
+          "Rótulo cobre só a lateral."
+        ],
+        "reforcar": [
+          "area lateral",
+          "comprimento da circunferencia",
+          "raio ao quadrado"
+        ]
+      }
     }
   ],
   "questoes": [
@@ -28293,6 +28599,1386 @@
         "Usou o cosseno como medida.",
         "Usou a escada como altura.",
         ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q01",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Quantas faces, arestas e vértices tem um cubo, nessa ordem?",
+      "alternativas": [
+        "6, 8 e 12",
+        "8, 12 e 6",
+        "12, 6 e 8",
+        "6, 12 e 8",
+        "4, 6 e 8"
+      ],
+      "correta": 3,
+      "explicacao": "6 faces quadradas, 12 arestas e 8 cantos. Dica de mergulhador: Euler confere: 8 − 12 + 6 = 2.",
+      "comentarios": [
+        "Trocou arestas e vértices.",
+        "Trocou faces e vértices.",
+        "Trocou faces e arestas.",
+        "",
+        "Contou só as faces laterais."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q02",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Qual destes sólidos é um corpo redondo?",
+      "alternativas": [
+        "Tetraedro",
+        "Cubo",
+        "Prisma",
+        "Cilindro",
+        "Pirâmide"
+      ],
+      "correta": 3,
+      "explicacao": "O cilindro tem superfície curva. Dica de mergulhador: rola? É corpo redondo.",
+      "comentarios": [
+        "É um poliedro.",
+        "Tem faces planas.",
+        "É um poliedro.",
+        "",
+        "É um poliedro."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q03",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Quantas faces tem uma pirâmide de base quadrada?",
+      "alternativas": [
+        "9",
+        "8",
+        "6",
+        "5",
+        "4"
+      ],
+      "correta": 3,
+      "explicacao": "Base quadrada + 4 triângulos = 5 faces. Dica de mergulhador: pirâmide de n lados tem n + 1 faces.",
+      "comentarios": [
+        "Errou a contagem.",
+        "Contou as arestas.",
+        "Confundiu com o cubo.",
+        "",
+        "Esqueceu a base."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q04",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um poliedro convexo tem 8 faces e 12 vértices. Quantas arestas ele tem?",
+      "alternativas": [
+        "2",
+        "22",
+        "20",
+        "16",
+        "18"
+      ],
+      "correta": 4,
+      "explicacao": "V − A + F = 2: 12 − A + 8 = 2, A = 18. Dica de mergulhador: Euler resolve o número que falta.",
+      "comentarios": [
+        "Subtraiu.",
+        "Somou em vez de usar Euler.",
+        "Somou faces e vértices.",
+        "Errou o sinal.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q05",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Quantas arestas tem um prisma de base pentagonal?",
+      "alternativas": [
+        "15",
+        "10",
+        "7",
+        "12",
+        "20"
+      ],
+      "correta": 0,
+      "explicacao": "5 em cada base + 5 laterais = 15. Dica de mergulhador: prisma de n lados tem 3n arestas.",
+      "comentarios": [
+        "",
+        "Contou só as das bases.",
+        "Contou as faces.",
+        "Errou a conta.",
+        "Usou 4 por lado."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q06",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Uma pirâmide tem 10 arestas. Qual é o polígono da sua base?",
+      "alternativas": [
+        "Decágono",
+        "Pentágono",
+        "Quadrado",
+        "Triângulo",
+        "Hexágono"
+      ],
+      "correta": 1,
+      "explicacao": "Pirâmide de base com n lados tem 2n arestas: 2n = 10, n = 5. Dica de mergulhador: metade das arestas está na base.",
+      "comentarios": [
+        "Usou n = 10.",
+        "",
+        "Teria 8 arestas.",
+        "Teria 6 arestas.",
+        "Teria 12 arestas."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q07",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um poliedro convexo tem 6 faces quadradas e 8 faces triangulares. Quantas arestas e quantos vértices ele tem?",
+      "alternativas": [
+        "24 arestas e 12 vértices",
+        "48 arestas e 36 vértices",
+        "14 arestas e 24 vértices",
+        "12 arestas e 24 vértices",
+        "24 arestas e 14 vértices"
+      ],
+      "correta": 0,
+      "explicacao": "Lados somados: 6 × 4 + 8 × 3 = 48; cada aresta é contada duas vezes: 24. Euler: V = 24 − 14 + 2 = 12. Dica de mergulhador: cada aresta é vizinha de duas faces.",
+      "comentarios": [
+        "",
+        "Não dividiu as arestas por 2.",
+        "Usou as faces como arestas.",
+        "Trocou.",
+        "Usou o número de faces como vértices."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q08",
+      "tema": "Planificações",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "De que é formada a planificação de um cilindro?",
+      "alternativas": [
+        "Dois retângulos",
+        "Dois círculos e um retângulo",
+        "Um círculo e um setor circular",
+        "Seis quadrados",
+        "Dois círculos e um triângulo"
+      ],
+      "correta": 1,
+      "explicacao": "As bases viram círculos, e a lateral, desenrolada, vira um retângulo. Dica de mergulhador: pense no rótulo de uma lata.",
+      "comentarios": [
+        "Faltam as bases.",
+        "",
+        "É a do cone.",
+        "É a do cubo.",
+        "A lateral do cilindro é retangular."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q09",
+      "tema": "Planificações",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Quantos quadrados tem a planificação de um cubo?",
+      "alternativas": [
+        "5",
+        "4",
+        "8",
+        "12",
+        "6"
+      ],
+      "correta": 4,
+      "explicacao": "O cubo tem 6 faces quadradas. Dica de mergulhador: uma face para cada lado do dado.",
+      "comentarios": [
+        "Esqueceu a tampa.",
+        "Esqueceu as bases.",
+        "Contou os vértices.",
+        "Contou as arestas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q10",
+      "tema": "Planificações",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um cilindro tem raio de 5 cm e altura de 10 cm. Quais são as medidas do retângulo da sua planificação? Use π ≈ 3,14.",
+      "alternativas": [
+        "31,4 cm por 5 cm",
+        "31,4 cm por 10 cm",
+        "15,7 cm por 10 cm",
+        "10 cm por 10 cm",
+        "78,5 cm por 10 cm"
+      ],
+      "correta": 1,
+      "explicacao": "Largura: 2 × 3,14 × 5 = 31,4 cm (a volta da base). Altura: 10 cm. Dica de mergulhador: o retângulo abraça a base.",
+      "comentarios": [
+        "Usou o raio como altura.",
+        "",
+        "Usou π vezes o raio.",
+        "Usou o diâmetro.",
+        "Usou a área da base."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q11",
+      "tema": "Planificações",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Ao montar um cubo a partir da sua planificação, o que acontece com as faces opostas do cubo?",
+      "alternativas": [
+        "Nunca ficam lado a lado na planificação",
+        "São as maiores faces",
+        "Sempre ficam lado a lado",
+        "Ficam sempre nos cantos",
+        "Dobram juntas sobre a mesma aresta"
+      ],
+      "correta": 0,
+      "explicacao": "Faces que dividem uma aresta no desenho ficam vizinhas no cubo; as opostas ficam separadas por uma face. Dica de mergulhador: entre duas opostas há sempre outra face.",
+      "comentarios": [
+        "",
+        "No cubo, todas são iguais.",
+        "Faces vizinhas no desenho viram vizinhas no cubo.",
+        "Não há essa regra.",
+        "Isso é das faces vizinhas."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q12",
+      "tema": "Planificações",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Uma caixa de 20 cm × 10 cm × 5 cm será feita de papelão, sem abas. Qual é a área da planificação?",
+      "alternativas": [
+        "350 cm²",
+        "1.400 cm²",
+        "1.000 cm²",
+        "35 cm²",
+        "700 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "2 × (20 × 10 + 20 × 5 + 10 × 5) = 2 × 350 = 700 cm². Dica de mergulhador: faces vêm em pares.",
+      "comentarios": [
+        "Contou cada face uma vez só.",
+        "Dobrou a área total.",
+        "Calculou o volume.",
+        "Somou as dimensões.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q13",
+      "tema": "Planificações",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um cone tem raio da base de 6 cm e geratriz de 10 cm. Qual é o ângulo do setor circular da sua planificação?",
+      "alternativas": [
+        "216°",
+        "108°",
+        "120°",
+        "360°",
+        "60°"
+      ],
+      "correta": 0,
+      "explicacao": "O arco do setor é a volta da base, 2π × 6 = 12π; a volta inteira do círculo de raio 10 é 20π. Fração: 12/20 = 0,6; ângulo: 0,6 × 360° = 216°. Dica de mergulhador: ângulo = 360° × raio da base ÷ geratriz.",
+      "comentarios": [
+        "",
+        "Usou metade.",
+        "Usou um terço.",
+        "Usou a volta inteira.",
+        "Dividiu 6 por 10 e usou como grau."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q14",
+      "tema": "Planificações",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Uma lata cilíndrica de raio 4 cm e altura 10 cm será feita de folha metálica, com tampa e fundo. Quanto de folha é necessário, sem perdas? Use π ≈ 3.",
+      "alternativas": [
+        "288 cm²",
+        "336 cm²",
+        "480 cm²",
+        "240 cm²",
+        "432 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Lateral: 2 × 3 × 4 × 10 = 240. Bases: 2 × 3 × 16 = 96. Total: 336 cm². Dica de mergulhador: retângulo + dois círculos.",
+      "comentarios": [
+        "Contou só uma das bases.",
+        "",
+        "Calculou o volume.",
+        "Contou só a lateral.",
+        "Contou três bases."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q15",
+      "tema": "Vistas",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Qual é a vista de cima de um cilindro em pé?",
+      "alternativas": [
+        "Um setor circular",
+        "Um quadrado",
+        "Um retângulo",
+        "Um triângulo",
+        "Um círculo"
+      ],
+      "correta": 4,
+      "explicacao": "De cima, só se vê a tampa redonda. Dica de mergulhador: imagine-se olhando a lata do teto.",
+      "comentarios": [
+        "É parte da planificação do cone.",
+        "É a vista do cubo.",
+        "É a vista de frente.",
+        "É a vista de frente do cone.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q16",
+      "tema": "Vistas",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Qual é a vista de frente de um cubo apoiado numa face?",
+      "alternativas": [
+        "Um círculo",
+        "Um quadrado",
+        "Um triângulo",
+        "Um hexágono",
+        "Um retângulo comprido"
+      ],
+      "correta": 1,
+      "explicacao": "De frente, vê-se uma face quadrada. Dica de mergulhador: todas as vistas do cubo apoiado são quadrados.",
+      "comentarios": [
+        "O cubo não é redondo.",
+        "",
+        "Não aparece triângulo.",
+        "Seria visto por um vértice.",
+        "As faces do cubo são quadradas."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q17",
+      "tema": "Vistas",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um sólido tem vista de frente triangular, vista lateral triangular e vista de cima circular. Que sólido é esse?",
+      "alternativas": [
+        "Cone",
+        "Esfera",
+        "Pirâmide",
+        "Prisma triangular",
+        "Cilindro"
+      ],
+      "correta": 0,
+      "explicacao": "Triângulo de frente e de lado, círculo por cima: cone. Dica de mergulhador: combine as três vistas.",
+      "comentarios": [
+        "",
+        "Todas as vistas seriam círculos.",
+        "A vista de cima seria um polígono.",
+        "A vista de cima seria um retângulo ou triângulo.",
+        "A vista de frente seria um retângulo."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q18",
+      "tema": "Vistas",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Uma pilha de cubinhos encostada num canto tem camadas de 3 × 3, 2 × 2 e 1 × 1 cubinhos, uma sobre a outra. Quantos cubinhos há na pilha?",
+      "alternativas": [
+        "6",
+        "13",
+        "27",
+        "9",
+        "14"
+      ],
+      "correta": 4,
+      "explicacao": "9 + 4 + 1 = 14 cubinhos. Dica de mergulhador: conte camada por camada.",
+      "comentarios": [
+        "Somou 3 + 2 + 1.",
+        "Esqueceu o cubinho do topo.",
+        "Supôs um cubo 3 × 3 × 3.",
+        "Contou só a camada de baixo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q19",
+      "tema": "Vistas",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "A vista de cima de uma construção de cubinhos é um quadrado 2 × 2, e em cada quadradinho está o número de cubos empilhados ali: 3, 1, 2 e 2. Quantos cubinhos há, e qual é a altura máxima da construção?",
+      "alternativas": [
+        "8 cubinhos e altura de 3 cubos",
+        "8 cubinhos e altura de 2",
+        "12 cubinhos e altura de 3",
+        "6 cubinhos e altura de 3",
+        "4 cubinhos e altura de 3"
+      ],
+      "correta": 0,
+      "explicacao": "Total: 3 + 1 + 2 + 2 = 8. Altura máxima: a maior coluna, 3. Dica de mergulhador: some as colunas da vista de cima.",
+      "comentarios": [
+        "",
+        "Errou a altura máxima.",
+        "Supôs 3 em todas as colunas.",
+        "Errou a soma.",
+        "Contou só os quadradinhos da vista."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q20",
+      "tema": "Vistas",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um cone em pé é iluminado por cima, com o sol a pino, e de frente, por uma lanterna distante na horizontal. Que sombras aparecem no chão e na parede ao fundo?",
+      "alternativas": [
+        "Um círculo no chão e um triângulo na parede",
+        "Um círculo nos dois",
+        "Um triângulo no chão e um círculo na parede",
+        "Um retângulo no chão e um círculo na parede",
+        "Um triângulo nos dois"
+      ],
+      "correta": 0,
+      "explicacao": "A sombra no chão é a vista de cima; na parede, a vista de frente. Dica de mergulhador: sombra é vista projetada.",
+      "comentarios": [
+        "",
+        "A parede recebe a vista de frente.",
+        "Trocou as sombras.",
+        "Não há retângulo no cone.",
+        "O chão recebe a vista de cima."
+      ]
+    },
+    {
+      "id": "mat-prismas-q01",
+      "tema": "Volume do prisma",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Qual é o volume de uma caixa de 20 cm × 10 cm × 5 cm?",
+      "alternativas": [
+        "35 cm³",
+        "700 cm³",
+        "200 cm³",
+        "100 cm³",
+        "1.000 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "20 × 10 × 5 = 1.000 cm³, ou 1 L. Dica de mergulhador: volume multiplica as três medidas.",
+      "comentarios": [
+        "Somou as medidas.",
+        "Calculou a área total.",
+        "Multiplicou só duas medidas.",
+        "Errou uma casa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-prismas-q02",
+      "tema": "Volume do prisma",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Qual é o volume de um cubo de aresta 4 cm?",
+      "alternativas": [
+        "16 cm³",
+        "64 cm³",
+        "48 cm³",
+        "96 cm³",
+        "12 cm³"
+      ],
+      "correta": 1,
+      "explicacao": "4³ = 64 cm³. Dica de mergulhador: cubo, aresta ao cubo.",
+      "comentarios": [
+        "Calculou a área de uma face.",
+        "",
+        "Calculou a soma das arestas.",
+        "Calculou a área total.",
+        "Multiplicou por 3."
+      ]
+    },
+    {
+      "id": "mat-prismas-q03",
+      "tema": "Volume do prisma",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa d'água mede 2 m × 1,5 m × 1 m. Quantos litros ela comporta?",
+      "alternativas": [
+        "3.000 L",
+        "3 L",
+        "300 L",
+        "4,5 L",
+        "30.000 L"
+      ],
+      "correta": 0,
+      "explicacao": "2 × 1,5 × 1 = 3 m³ = 3.000 L. Dica de mergulhador: cada m³ vale 1.000 L.",
+      "comentarios": [
+        "",
+        "Esqueceu de converter m³ em litros.",
+        "Errou a conversão.",
+        "Somou as medidas.",
+        "Errou a conversão para o outro lado."
+      ]
+    },
+    {
+      "id": "mat-prismas-q04",
+      "tema": "Volume do prisma",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um prisma tem como base um triângulo retângulo de catetos 3 cm e 4 cm, e altura de 10 cm. Qual é o volume?",
+      "alternativas": [
+        "120 cm³",
+        "600 cm³",
+        "70 cm³",
+        "50 cm³",
+        "60 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "Base: 3 × 4 ÷ 2 = 6 cm². Volume: 6 × 10 = 60 cm³. Dica de mergulhador: área da base primeiro.",
+      "comentarios": [
+        "Esqueceu de dividir a base por 2.",
+        "Errou uma casa.",
+        "Somou em vez de multiplicar.",
+        "Usou a hipotenusa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-prismas-q05",
+      "tema": "Volume do prisma",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Uma piscina de 10 m × 5 m tem 1,5 m de profundidade, mas está cheia só até 1,2 m. Quantos litros de água ela tem?",
+      "alternativas": [
+        "60.000 L",
+        "6.000 L",
+        "60 L",
+        "600.000 L",
+        "75.000 L"
+      ],
+      "correta": 0,
+      "explicacao": "10 × 5 × 1,2 = 60 m³ = 60.000 L. Dica de mergulhador: volume da água usa a altura da água.",
+      "comentarios": [
+        "",
+        "Errou uma casa.",
+        "Esqueceu de converter.",
+        "Errou a conversão.",
+        "Usou a profundidade total."
+      ]
+    },
+    {
+      "id": "mat-prismas-q06",
+      "tema": "Volume do prisma",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um prisma tem base hexagonal regular de área 30 cm² e altura de 12 cm. Qual é o volume?",
+      "alternativas": [
+        "30 cm³",
+        "360 cm³",
+        "180 cm³",
+        "42 cm³",
+        "720 cm³"
+      ],
+      "correta": 1,
+      "explicacao": "30 × 12 = 360 cm³. Dica de mergulhador: qualquer prisma, base × altura.",
+      "comentarios": [
+        "Esqueceu a altura.",
+        "",
+        "Dividiu por 2.",
+        "Somou.",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-prismas-q07",
+      "tema": "Volume do prisma",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa sem tampa é feita cortando quadrados de 5 cm nos cantos de uma folha de 40 cm × 30 cm e dobrando as abas para cima. Qual é o volume da caixa?",
+      "alternativas": [
+        "3.000 cm³",
+        "6.000 cm³",
+        "1.200 cm³",
+        "4.375 cm³",
+        "1.000 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "Base: (40 − 10) × (30 − 10) = 30 × 20. Altura: 5. Volume: 3.000 cm³. Dica de mergulhador: o corte sai dos dois lados.",
+      "comentarios": [
+        "",
+        "Usou as medidas da folha inteira.",
+        "Calculou a área da folha.",
+        "Descontou 5 cm só de um lado.",
+        "Errou as medidas da base."
+      ]
+    },
+    {
+      "id": "mat-prismas-q08",
+      "tema": "Área total",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Qual é a área total de um cubo de aresta 3 cm?",
+      "alternativas": [
+        "18 cm²",
+        "36 cm²",
+        "54 cm²",
+        "27 cm²",
+        "9 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "6 × 3² = 54 cm². Dica de mergulhador: seis faces quadradas.",
+      "comentarios": [
+        "Contou 2 faces.",
+        "Contou 4 faces.",
+        "",
+        "Calculou o volume.",
+        "Calculou uma face."
+      ]
+    },
+    {
+      "id": "mat-prismas-q09",
+      "tema": "Área total",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Qual é a área total de uma caixa de 20 cm × 10 cm × 5 cm?",
+      "alternativas": [
+        "1.400 cm²",
+        "350 cm²",
+        "700 cm²",
+        "1.000 cm²",
+        "35 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "2 × (200 + 100 + 50) = 700 cm². Dica de mergulhador: faces em pares.",
+      "comentarios": [
+        "Dobrou.",
+        "Contou cada face uma vez.",
+        "",
+        "Calculou o volume.",
+        "Somou as medidas."
+      ]
+    },
+    {
+      "id": "mat-prismas-q10",
+      "tema": "Área total",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um prisma tem base quadrada de lado 5 cm e altura de 12 cm. Qual é a área lateral?",
+      "alternativas": [
+        "120 cm²",
+        "60 cm²",
+        "300 cm²",
+        "290 cm²",
+        "240 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "Perímetro da base: 20 cm. Área lateral: 20 × 12 = 240 cm². Dica de mergulhador: perímetro da base × altura.",
+      "comentarios": [
+        "Contou duas faces laterais.",
+        "Contou uma face lateral.",
+        "Calculou o volume.",
+        "Calculou a área total.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-prismas-q11",
+      "tema": "Área total",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um quarto de 4 m × 3 m tem 2,5 m de altura. Quantos metros quadrados de paredes e teto serão pintados, sem descontar portas e janelas?",
+      "alternativas": [
+        "59 m²",
+        "47 m²",
+        "30 m²",
+        "35 m²",
+        "23,5 m²"
+      ],
+      "correta": 1,
+      "explicacao": "Paredes: 2 × (4 × 2,5 + 3 × 2,5) = 35. Teto: 12. Total: 47 m². Dica de mergulhador: o chão não se pinta.",
+      "comentarios": [
+        "Incluiu o chão.",
+        "",
+        "Calculou o volume.",
+        "Esqueceu o teto.",
+        "Contou cada parede uma vez."
+      ]
+    },
+    {
+      "id": "mat-prismas-q12",
+      "tema": "Área total",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um cubo tem volume de 125 cm³. Qual é a sua área total?",
+      "alternativas": [
+        "150 cm²",
+        "100 cm²",
+        "125 cm²",
+        "30 cm²",
+        "25 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Aresta: ∛125 = 5 cm. Área: 6 × 25 = 150 cm². Dica de mergulhador: do volume à aresta, raiz cúbica.",
+      "comentarios": [
+        "",
+        "Contou 4 faces.",
+        "Repetiu o volume.",
+        "Calculou a soma de 6 arestas.",
+        "Calculou uma face."
+      ]
+    },
+    {
+      "id": "mat-prismas-q13",
+      "tema": "Área total",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa de base quadrada, com tampa, tem volume de 500 cm³ e altura de 5 cm. Quanto papelão é necessário para fazê-la, sem abas?",
+      "alternativas": [
+        "200 cm²",
+        "400 cm²",
+        "600 cm²",
+        "500 cm²",
+        "300 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Base: 500 ÷ 5 = 100 cm², lado 10 cm. Área: 2 × 100 + 4 × 10 × 5 = 400 cm². Dica de mergulhador: volume dá a base; base dá o lado.",
+      "comentarios": [
+        "Contou só as laterais.",
+        "",
+        "Errou a base.",
+        "Repetiu o volume.",
+        "Esqueceu a tampa."
+      ]
+    },
+    {
+      "id": "mat-prismas-q14",
+      "tema": "Área total",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Um cubo de aresta 3 cm é pintado por fora e depois cortado em 27 cubinhos de 1 cm. Quantos cubinhos têm exatamente duas faces pintadas?",
+      "alternativas": [
+        "12",
+        "1",
+        "8",
+        "6",
+        "27"
+      ],
+      "correta": 0,
+      "explicacao": "Os cubinhos com duas faces pintadas ficam no meio de cada aresta: 12 arestas, um em cada. Dica de mergulhador: cantos têm 3 faces; meio das arestas, 2.",
+      "comentarios": [
+        "",
+        "É o do centro, sem tinta.",
+        "Esses são os dos cantos, com três faces.",
+        "Esses são os do centro das faces, com uma face.",
+        "É o total."
+      ]
+    },
+    {
+      "id": "mat-prismas-q15",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Se as arestas de um cubo dobram, o que acontece com o volume?",
+      "alternativas": [
+        "Fica 16 vezes maior",
+        "Fica 8 vezes maior",
+        "Dobra",
+        "Fica 4 vezes maior",
+        "Fica 6 vezes maior"
+      ],
+      "correta": 1,
+      "explicacao": "2³ = 8. Dica de mergulhador: volume, fator ao cubo.",
+      "comentarios": [
+        "Errou a potência.",
+        "",
+        "O volume usa as três dimensões.",
+        "Isso acontece com a área.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-prismas-q16",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Um aquário tem base de 40 cm × 25 cm. Ao colocar uma pedra, a água sobe 2 cm. Qual é o volume da pedra?",
+      "alternativas": [
+        "2.000 cm³",
+        "50 cm³",
+        "80 cm³",
+        "4.000 cm³",
+        "1.000 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "Volume deslocado: 40 × 25 × 2 = 2.000 cm³. Dica de mergulhador: a água que sobe é o volume do objeto.",
+      "comentarios": [
+        "",
+        "Somou as medidas.",
+        "Multiplicou só 40 por 2.",
+        "Dobrou.",
+        "Usou metade da base."
+      ]
+    },
+    {
+      "id": "mat-prismas-q17",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Duas caixas são semelhantes, e as arestas da maior são 3 vezes as da menor. A menor tem capacidade de 2 L. Qual é a capacidade da maior?",
+      "alternativas": [
+        "18 L",
+        "27 L",
+        "6 L",
+        "8 L",
+        "54 L"
+      ],
+      "correta": 4,
+      "explicacao": "Volume: × 3³ = 27. 2 × 27 = 54 L. Dica de mergulhador: capacidade segue o cubo da razão.",
+      "comentarios": [
+        "Usou a razão ao quadrado.",
+        "Esqueceu de multiplicar pelos 2 L.",
+        "Usou a razão linear.",
+        "Usou 2³ com a menor como fator.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-prismas-q18",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa d'água cúbica de 1 m de aresta está cheia e vaza 10 litros por hora. Em quanto tempo ela esvazia?",
+      "alternativas": [
+        "0,1 hora",
+        "1 hora",
+        "10 horas",
+        "100 horas",
+        "1.000 horas"
+      ],
+      "correta": 3,
+      "explicacao": "1 m³ = 1.000 L; 1.000 ÷ 10 = 100 horas. Dica de mergulhador: converta para litros.",
+      "comentarios": [
+        "Dividiu 1 por 10.",
+        "Esqueceu a conversão.",
+        "Usou 100 litros.",
+        "",
+        "Usou 10.000 litros."
+      ]
+    },
+    {
+      "id": "mat-prismas-q19",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Um tanque de 2 m × 1,5 m tem água. Colocam-se nele 300 tijolos maciços de 20 cm × 10 cm × 5 cm, todos submersos. Quanto a água sobe?",
+      "alternativas": [
+        "30 cm",
+        "0,3 cm",
+        "20 cm",
+        "10 cm",
+        "1 cm"
+      ],
+      "correta": 3,
+      "explicacao": "Cada tijolo: 0,2 × 0,1 × 0,05 = 0,001 m³. Total: 0,3 m³. Base: 3 m². Subida: 0,3 ÷ 3 = 0,1 m = 10 cm. Dica de mergulhador: volume submerso ÷ área da base.",
+      "comentarios": [
+        "Dividiu pela base errada.",
+        "Errou duas casas.",
+        "Usou a base de 1,5 m².",
+        "",
+        "Errou a conversão."
+      ]
+    },
+    {
+      "id": "mat-prismas-q20",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa de leite tem 1 L e base de 9,5 cm × 6,5 cm. Qual é, aproximadamente, a sua altura?",
+      "alternativas": [
+        "61,75 cm",
+        "162 cm",
+        "16,2 cm",
+        "1,62 cm",
+        "10 cm"
+      ],
+      "correta": 2,
+      "explicacao": "Base: 61,75 cm². Altura: 1.000 ÷ 61,75 ≈ 16,2 cm. Dica de mergulhador: 1 L = 1.000 cm³.",
+      "comentarios": [
+        "É a área da base.",
+        "Errou uma casa para o outro lado.",
+        "",
+        "Errou uma casa.",
+        "Supôs um cubo de 1 L."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q01",
+      "tema": "Volume do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Qual é o volume de uma lata de raio 4 cm e altura 10 cm? Use π ≈ 3.",
+      "alternativas": [
+        "160 cm³",
+        "1.920 cm³",
+        "240 cm³",
+        "120 cm³",
+        "480 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "3 × 16 × 10 = 480 cm³. Dica de mergulhador: πr²h.",
+      "comentarios": [
+        "Esqueceu o π.",
+        "Usou o diâmetro como raio.",
+        "Calculou a área lateral.",
+        "Usou o raio sem elevar ao quadrado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-cilindros-q02",
+      "tema": "Volume do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Um pote cilíndrico tem raio de 10 cm e altura de 10 cm. Quantos litros ele comporta? Use π ≈ 3.",
+      "alternativas": [
+        "0,3 L",
+        "3 L",
+        "6 L",
+        "30 L",
+        "300 L"
+      ],
+      "correta": 1,
+      "explicacao": "3 × 100 × 10 = 3.000 cm³ = 3 L. Dica de mergulhador: 1.000 cm³ = 1 L.",
+      "comentarios": [
+        "Errou para o outro lado.",
+        "",
+        "Usou 2πr no lugar de πr².",
+        "Errou uma casa.",
+        "Errou a conversão."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q03",
+      "tema": "Volume do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma caixa d'água cilíndrica tem raio de 1 m e altura de 2 m. Quantos litros ela comporta? Use π ≈ 3,14.",
+      "alternativas": [
+        "6.280 L",
+        "12,56 L",
+        "628 L",
+        "6,28 L",
+        "62,8 L"
+      ],
+      "correta": 0,
+      "explicacao": "3,14 × 1 × 2 = 6,28 m³ = 6.280 L. Dica de mergulhador: m³ × 1.000.",
+      "comentarios": [
+        "",
+        "Calculou a área lateral.",
+        "Errou a conversão.",
+        "Esqueceu de converter.",
+        "Errou duas casas."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q04",
+      "tema": "Volume do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Um cano de 20 m de comprimento tem diâmetro interno de 10 cm e está cheio de água. Quantos litros ele contém? Use π ≈ 3,14.",
+      "alternativas": [
+        "31,4 L",
+        "157 L",
+        "628 L",
+        "15,7 L",
+        "1.570 L"
+      ],
+      "correta": 1,
+      "explicacao": "Em decímetros: raio 0,5 dm e comprimento 200 dm. Volume: 3,14 × 0,25 × 200 = 157 dm³ = 157 L. Dica de mergulhador: em dm, o resultado sai em litros.",
+      "comentarios": [
+        "Usou 2πr.",
+        "",
+        "Usou o diâmetro como raio.",
+        "Errou uma casa.",
+        "Errou para o outro lado."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q05",
+      "tema": "Volume do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Um copo cilíndrico tem raio de 3 cm. Até que altura chega um suco de 270 mL? Use π ≈ 3.",
+      "alternativas": [
+        "10 cm",
+        "3 cm",
+        "30 cm",
+        "15 cm",
+        "90 cm"
+      ],
+      "correta": 0,
+      "explicacao": "Base: 3 × 9 = 27 cm². Altura: 270 ÷ 27 = 10 cm. Dica de mergulhador: altura = volume ÷ área da base.",
+      "comentarios": [
+        "",
+        "Usou o raio.",
+        "Dividiu só por 9.",
+        "Usou 2πr no lugar de πr².",
+        "Dividiu só por 3."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q06",
+      "tema": "Volume do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma lata tem diâmetro de 12 cm e altura de 15 cm. Qual é, aproximadamente, a sua capacidade? Use π ≈ 3,14.",
+      "alternativas": [
+        "0,57 L",
+        "1.695 L",
+        "6,8 L",
+        "17 L",
+        "1,7 L"
+      ],
+      "correta": 4,
+      "explicacao": "Raio 6: 3,14 × 36 × 15 ≈ 1.695,6 cm³ ≈ 1,7 L. Dica de mergulhador: diâmetro ÷ 2 antes de tudo.",
+      "comentarios": [
+        "Calculou a área lateral.",
+        "Esqueceu de converter.",
+        "Usou o diâmetro como raio.",
+        "Errou uma casa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-cilindros-q07",
+      "tema": "Volume do cilindro",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "Um silo cilíndrico de 6 m de diâmetro e 10 m de altura está cheio de grãos com densidade de 0,8 tonelada por m³. Qual é a massa dos grãos? Use π ≈ 3.",
+      "alternativas": [
+        "216 t",
+        "864 t",
+        "144 t",
+        "337,5 t",
+        "270 t"
+      ],
+      "correta": 0,
+      "explicacao": "Volume: 3 × 9 × 10 = 270 m³. Massa: 270 × 0,8 = 216 t. Dica de mergulhador: massa = volume × densidade.",
+      "comentarios": [
+        "",
+        "Usou o diâmetro como raio.",
+        "Usou a área lateral.",
+        "Dividiu pela densidade.",
+        "Esqueceu a densidade."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q08",
+      "tema": "Área do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Qual é a área lateral de uma lata de raio 4 cm e altura 10 cm? Use π ≈ 3.",
+      "alternativas": [
+        "96 cm²",
+        "240 cm²",
+        "480 cm²",
+        "120 cm²",
+        "336 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "2 × 3 × 4 × 10 = 240 cm². Dica de mergulhador: lateral = 2πrh.",
+      "comentarios": [
+        "Calculou as duas bases.",
+        "",
+        "Calculou o volume.",
+        "Usou πrh.",
+        "Calculou a área total."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q09",
+      "tema": "Área do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma garrafa cilíndrica tem diâmetro de 8 cm, e o rótulo cobre 6 cm de altura da lateral. Qual é a área do rótulo? Use π ≈ 3.",
+      "alternativas": [
+        "144 cm²",
+        "48 cm²",
+        "288 cm²",
+        "24 cm²",
+        "72 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Volta: 2 × 3 × 4 = 24 cm. Rótulo: 24 × 6 = 144 cm². Dica de mergulhador: rótulo é a lateral.",
+      "comentarios": [
+        "",
+        "Calculou a área da base.",
+        "Usou o diâmetro como raio.",
+        "Calculou só a volta da garrafa.",
+        "Usou πrh."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q10",
+      "tema": "Área do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Qual é a área total de uma lata de raio 4 cm e altura 10 cm, com tampa e fundo? Use π ≈ 3.",
+      "alternativas": [
+        "288 cm²",
+        "240 cm²",
+        "480 cm²",
+        "384 cm²",
+        "336 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "Lateral: 240. Bases: 2 × 48 = 96. Total: 336 cm². Dica de mergulhador: retângulo e dois círculos.",
+      "comentarios": [
+        "Contou uma base só.",
+        "Contou só a lateral.",
+        "Calculou o volume.",
+        "Contou três bases.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-cilindros-q11",
+      "tema": "Área do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "A planificação da lateral de um cilindro é um retângulo de 31,4 cm × 20 cm, sendo 31,4 cm a volta da base. Qual é o raio da base? Use π ≈ 3,14.",
+      "alternativas": [
+        "5 cm",
+        "10 cm",
+        "15,7 cm",
+        "3,16 cm",
+        "20 cm"
+      ],
+      "correta": 0,
+      "explicacao": "2πr = 31,4, r = 31,4 ÷ 6,28 = 5 cm. Dica de mergulhador: a largura do retângulo é 2πr.",
+      "comentarios": [
+        "",
+        "É o diâmetro.",
+        "Dividiu só por 2.",
+        "Tratou 31,4 como área.",
+        "Usou a altura."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q12",
+      "tema": "Área do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma caixa d'água cilíndrica de raio 1 m e altura 2 m será pintada por fora, na lateral e na tampa de cima. Qual é a área a pintar? Use π ≈ 3,14.",
+      "alternativas": [
+        "12,56 m²",
+        "15,7 m²",
+        "18,84 m²",
+        "9,42 m²",
+        "6,28 m²"
+      ],
+      "correta": 1,
+      "explicacao": "Lateral: 2 × 3,14 × 1 × 2 = 12,56. Tampa: 3,14. Total: 15,7 m². Dica de mergulhador: só o que recebe tinta.",
+      "comentarios": [
+        "Esqueceu a tampa.",
+        "",
+        "Incluiu o fundo.",
+        "Usou πrh na lateral.",
+        "Calculou o volume."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q13",
+      "tema": "Área do cilindro",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma lata de 2 L tem raio de 5 cm. Qual é, aproximadamente, a sua altura e a área total de chapa? Use π ≈ 3.",
+      "alternativas": [
+        "Altura de cerca de 26,7 cm e área de 950 cm²",
+        "Altura de cerca de 26,7 cm e área de 800 cm²",
+        "Altura de cerca de 26,7 cm e área de 875 cm²",
+        "Altura de cerca de 2,67 cm e área de 230 cm²",
+        "Altura de cerca de 8,9 cm e área de 417 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Base: 75 cm². Altura: 2.000 ÷ 75 ≈ 26,7 cm. Lateral: 2 × 3 × 5 × 26,7 ≈ 800. Bases: 150. Total: ≈ 950 cm². Dica de mergulhador: volume dá a altura; altura dá a área.",
+      "comentarios": [
+        "",
+        "Esqueceu as bases.",
+        "Contou uma base só.",
+        "Errou a conversão de litros.",
+        "Usou 2πr no lugar de πr²."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q14",
+      "tema": "Área do cilindro",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "Um rolo de papel-toalha tem raio externo de 6 cm, um tubo de papelão de 2 cm de raio no meio e 25 cm de altura. Qual é o volume ocupado pelo papel? Use π ≈ 3.",
+      "alternativas": [
+        "1.200 cm³",
+        "2.700 cm³",
+        "96 cm³",
+        "2.400 cm³",
+        "300 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "Volume: π(R² − r²) × h = 3 × (36 − 4) × 25 = 2.400 cm³. Dica de mergulhador: cilindro grande menos o tubo.",
+      "comentarios": [
+        "Usou π(R − r)².",
+        "Não descontou o tubo.",
+        "Esqueceu a altura.",
+        "",
+        "Calculou só o tubo."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q15",
+      "tema": "Comparar cilindros",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Se o raio de um cilindro dobra e a altura não muda, o que acontece com o volume?",
+      "alternativas": [
+        "Dobra",
+        "Fica 8 vezes maior",
+        "Fica 6 vezes maior",
+        "Fica 4 vezes maior",
+        "Não muda"
+      ],
+      "correta": 3,
+      "explicacao": "(2r)² = 4r²: volume × 4. Dica de mergulhador: raio pesa ao quadrado.",
+      "comentarios": [
+        "O raio está ao quadrado.",
+        "Só a altura não mudou.",
+        "Somou.",
+        "",
+        "O raio mudou."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q16",
+      "tema": "Comparar cilindros",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Duas latas têm a mesma altura; uma tem raio 3 cm e a outra, raio 6 cm. Quantas vezes o volume da maior é o da menor?",
+      "alternativas": [
+        "6 vezes",
+        "2 vezes",
+        "3 vezes",
+        "4 vezes",
+        "8 vezes"
+      ],
+      "correta": 3,
+      "explicacao": "(6 ÷ 3)² = 4. Dica de mergulhador: mesma altura, compare os raios ao quadrado.",
+      "comentarios": [
+        "Usou o raio maior.",
+        "Usou a razão dos raios.",
+        "Subtraiu os raios.",
+        "",
+        "Elevou ao cubo."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q17",
+      "tema": "Comparar cilindros",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "O copo A tem raio de 4 cm e altura de 10 cm; o copo B tem raio de 8 cm e altura de 5 cm. Qual tem mais volume?",
+      "alternativas": [
+        "A, com o dobro do volume de B",
+        "Os dois têm o mesmo volume",
+        "B, com 4 vezes o volume de A",
+        "B, com o dobro do volume de A",
+        "A, porque é mais alto"
+      ],
+      "correta": 3,
+      "explicacao": "A: π × 16 × 10 = 160π. B: π × 64 × 5 = 320π. B tem o dobro. Dica de mergulhador: raio dobrado vale 4; altura pela metade vale 1/2.",
+      "comentarios": [
+        "Inverteu.",
+        "O raio pesa mais.",
+        "Esqueceu que a altura caiu à metade.",
+        "",
+        "Altura não decide sozinha."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q18",
+      "tema": "Comparar cilindros",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "A lata A, de raio 4 cm e altura 12 cm, custa R$ 6. A lata B, de raio 6 cm e altura 6 cm, custa R$ 9. As duas têm o mesmo produto. Qual é mais barata por volume?",
+      "alternativas": [
+        "As duas têm o mesmo preço por volume",
+        "A, porque é mais alta",
+        "A, porque o preço por cm³ é menor",
+        "B, porque é mais larga",
+        "B, porque tem mais volume"
+      ],
+      "correta": 2,
+      "explicacao": "A: 192π cm³ por R$ 6 (R$ 1 por 32π). B: 216π cm³ por R$ 9 (R$ 1 por 24π). A rende mais por real. Dica de mergulhador: divida o preço pelo volume.",
+      "comentarios": [
+        "As contas diferem.",
+        "Conclusão certa, motivo errado.",
+        "",
+        "Largura sozinha não decide.",
+        "Ter mais volume não basta: o preço também é maior."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q19",
+      "tema": "Comparar cilindros",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "A água de um cilindro de raio 10 cm e altura 30 cm é despejada num cilindro de raio 20 cm. Que altura ela atinge?",
+      "alternativas": [
+        "3,75 cm",
+        "60 cm",
+        "7,5 cm",
+        "15 cm",
+        "30 cm"
+      ],
+      "correta": 2,
+      "explicacao": "Volume: π × 100 × 30 = 3.000π. Nova base: 400π. Altura: 3.000π ÷ 400π = 7,5 cm. Dica de mergulhador: raio dobrado, altura dividida por 4.",
+      "comentarios": [
+        "Dividiu duas vezes demais.",
+        "Inverteu a relação.",
+        "",
+        "Usou a razão linear dos raios.",
+        "Achou que a altura não muda."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q20",
+      "tema": "Comparar cilindros",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma lata cilíndrica de diâmetro 10 cm e altura 12 cm cabe exatamente numa caixa de 10 cm × 10 cm × 12 cm. Quanto espaço da caixa fica vazio? Use π ≈ 3.",
+      "alternativas": [
+        "300 cm³",
+        "0 cm³",
+        "600 cm³",
+        "1.200 cm³",
+        "900 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "Caixa: 1.200 cm³. Lata: 3 × 25 × 12 = 900 cm³. Vazio: 300 cm³. Dica de mergulhador: os cantos da caixa ficam vazios.",
+      "comentarios": [
+        "",
+        "Achou que a lata enche a caixa.",
+        "Errou o volume da lata.",
+        "É o volume da caixa.",
+        "É o volume da lata."
       ]
     }
   ],
@@ -52440,6 +54126,1446 @@
         "Trocou seno com cosseno.",
         "Usou o seno como medida."
       ]
+    },
+    {
+      "id": "mat-solidos-vistas-q01-v1",
+      "varianteDe": "mat-solidos-vistas-q01",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Quantas faces, arestas e vértices tem um prisma de base triangular, nessa ordem?",
+      "alternativas": [
+        "4, 6 e 4",
+        "6, 9 e 5",
+        "5, 6 e 9",
+        "3, 9 e 6",
+        "5, 9 e 6"
+      ],
+      "correta": 4,
+      "explicacao": "Faces: 3 + 2 = 5. Arestas: 3 × 3 = 9. Vértices: 2 × 3 = 6. Dica de mergulhador: prisma de n lados: n + 2, 3n e 2n.",
+      "comentarios": [
+        "Confundiu com a pirâmide triangular.",
+        "Trocou faces e vértices.",
+        "Trocou arestas e vértices.",
+        "Esqueceu as bases.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q02-v1",
+      "varianteDe": "mat-solidos-vistas-q02",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Qual destes sólidos é um poliedro?",
+      "alternativas": [
+        "Pirâmide de base quadrada",
+        "Cilindro",
+        "Esfera",
+        "Bola de futebol perfeita",
+        "Cone"
+      ],
+      "correta": 0,
+      "explicacao": "Todas as faces da pirâmide são polígonos planos. Dica de mergulhador: poliedro só tem faces planas.",
+      "comentarios": [
+        "",
+        "Tem superfície curva.",
+        "É corpo redondo.",
+        "É uma esfera.",
+        "Tem superfície curva."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q03-v1",
+      "varianteDe": "mat-solidos-vistas-q03",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Quantas faces tem uma pirâmide de base hexagonal?",
+      "alternativas": [
+        "12",
+        "13",
+        "8",
+        "7",
+        "6"
+      ],
+      "correta": 3,
+      "explicacao": "1 base + 6 laterais = 7. Dica de mergulhador: n + 1 faces.",
+      "comentarios": [
+        "Contou as arestas.",
+        "Errou a contagem.",
+        "Confundiu com o prisma.",
+        "",
+        "Esqueceu a base."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q04-v1",
+      "varianteDe": "mat-solidos-vistas-q04",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um poliedro convexo tem 10 vértices e 15 arestas. Quantas faces ele tem?",
+      "alternativas": [
+        "5",
+        "7",
+        "25",
+        "8",
+        "3"
+      ],
+      "correta": 1,
+      "explicacao": "10 − 15 + F = 2, F = 7. Dica de mergulhador: V − A + F = 2.",
+      "comentarios": [
+        "Errou o sinal.",
+        "",
+        "Somou.",
+        "Errou a conta.",
+        "Subtraiu errado."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q05-v1",
+      "varianteDe": "mat-solidos-vistas-q05",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Quantos vértices tem um prisma de base hexagonal?",
+      "alternativas": [
+        "7",
+        "6",
+        "18",
+        "8",
+        "12"
+      ],
+      "correta": 4,
+      "explicacao": "6 vértices em cada base: 12. Dica de mergulhador: prisma de n lados tem 2n vértices.",
+      "comentarios": [
+        "Confundiu com a pirâmide.",
+        "Contou só uma base.",
+        "Contou as arestas.",
+        "Contou as faces.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q06-v1",
+      "varianteDe": "mat-solidos-vistas-q06",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Uma pirâmide tem 7 vértices. Qual é o polígono da sua base?",
+      "alternativas": [
+        "Octógono",
+        "Heptágono",
+        "Pentágono",
+        "Hexágono",
+        "Quadrado"
+      ],
+      "correta": 3,
+      "explicacao": "n + 1 = 7, n = 6. Dica de mergulhador: um vértice é o topo.",
+      "comentarios": [
+        "Teria 9 vértices.",
+        "Usou n = 7.",
+        "Teria 6 vértices.",
+        "",
+        "Teria 5 vértices."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q07-v1",
+      "varianteDe": "mat-solidos-vistas-q07",
+      "tema": "Faces, arestas e vértices",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um poliedro convexo tem 12 faces pentagonais. Quantas arestas e quantos vértices ele tem?",
+      "alternativas": [
+        "30 arestas e 22 vértices",
+        "20 arestas e 30 vértices",
+        "30 arestas e 12 vértices",
+        "30 arestas e 20 vértices",
+        "60 arestas e 50 vértices"
+      ],
+      "correta": 3,
+      "explicacao": "Arestas: 12 × 5 ÷ 2 = 30. Vértices: 30 − 12 + 2 = 20. Dica de mergulhador: some os lados e divida por 2.",
+      "comentarios": [
+        "Errou Euler.",
+        "Trocou.",
+        "Usou as faces como vértices.",
+        "",
+        "Não dividiu por 2."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q08-v1",
+      "varianteDe": "mat-solidos-vistas-q08",
+      "tema": "Planificações",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "De que é formada a planificação de um cone?",
+      "alternativas": [
+        "Um círculo e um triângulo",
+        "Um círculo e um setor circular",
+        "Dois círculos e um retângulo",
+        "Seis quadrados",
+        "Quatro triângulos e um quadrado"
+      ],
+      "correta": 1,
+      "explicacao": "A base é um círculo; a lateral, aberta, é um setor. Dica de mergulhador: chapéu de festa aberto vira um leque.",
+      "comentarios": [
+        "A lateral do cone é curva.",
+        "",
+        "É a do cilindro.",
+        "É a do cubo.",
+        "É a da pirâmide."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q09-v1",
+      "varianteDe": "mat-solidos-vistas-q09",
+      "tema": "Planificações",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "De que é formada a planificação de um prisma de base triangular?",
+      "alternativas": [
+        "Quatro triângulos",
+        "Três triângulos e dois retângulos",
+        "Dois triângulos e três retângulos",
+        "Dois triângulos e dois retângulos",
+        "Um triângulo e três retângulos"
+      ],
+      "correta": 2,
+      "explicacao": "Duas bases triangulares e uma lateral para cada lado. Dica de mergulhador: prisma de n lados tem n retângulos.",
+      "comentarios": [
+        "É a do tetraedro.",
+        "Inverteu.",
+        "",
+        "Faltou uma face lateral.",
+        "Faltou uma base."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q10-v1",
+      "varianteDe": "mat-solidos-vistas-q10",
+      "tema": "Planificações",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um cilindro tem raio de 3 cm e altura de 8 cm. Quais são as medidas do retângulo da planificação? Use π ≈ 3.",
+      "alternativas": [
+        "27 cm por 8 cm",
+        "18 cm por 3 cm",
+        "6 cm por 8 cm",
+        "18 cm por 8 cm",
+        "9 cm por 8 cm"
+      ],
+      "correta": 3,
+      "explicacao": "Largura: 2 × 3 × 3 = 18 cm. Altura: 8 cm. Dica de mergulhador: largura = comprimento da circunferência.",
+      "comentarios": [
+        "Usou a área da base.",
+        "Usou o raio como altura.",
+        "Usou o diâmetro.",
+        "",
+        "Usou π vezes o raio."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q11-v1",
+      "varianteDe": "mat-solidos-vistas-q11",
+      "tema": "Planificações",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Num dado comum, as faces opostas somam 7. Se o 2 está na face de cima, qual número está na face de baixo?",
+      "alternativas": [
+        "7",
+        "5",
+        "6",
+        "2",
+        "4"
+      ],
+      "correta": 1,
+      "explicacao": "Oposto ao 2: 7 − 2 = 5. Dica de mergulhador: em cima e embaixo são opostas.",
+      "comentarios": [
+        "É a soma.",
+        "",
+        "Usou soma 8.",
+        "Repetiu a face de cima.",
+        "Usou soma 6."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q12-v1",
+      "varianteDe": "mat-solidos-vistas-q12",
+      "tema": "Planificações",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Uma caixa de 30 cm × 20 cm × 10 cm será feita de papelão, sem abas. Qual é a área da planificação?",
+      "alternativas": [
+        "6.000 cm²",
+        "4.400 cm²",
+        "1.100 cm²",
+        "60 cm²",
+        "2.200 cm²"
+      ],
+      "correta": 4,
+      "explicacao": "2 × (600 + 300 + 200) = 2.200 cm². Dica de mergulhador: três pares de faces.",
+      "comentarios": [
+        "Calculou o volume.",
+        "Dobrou.",
+        "Contou cada face uma vez.",
+        "Somou as dimensões.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q13-v1",
+      "varianteDe": "mat-solidos-vistas-q13",
+      "tema": "Planificações",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um cone tem raio da base de 4 cm e geratriz de 12 cm. Qual é o ângulo do setor da planificação?",
+      "alternativas": [
+        "360°",
+        "60°",
+        "33°",
+        "240°",
+        "120°"
+      ],
+      "correta": 4,
+      "explicacao": "Fração: 4/12 = 1/3; ângulo: 120°. Dica de mergulhador: raio ÷ geratriz dá a fração da volta.",
+      "comentarios": [
+        "Usou a volta inteira.",
+        "Usou um sexto.",
+        "Usou 4/12 como grau.",
+        "Usou dois terços.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q14-v1",
+      "varianteDe": "mat-solidos-vistas-q14",
+      "tema": "Planificações",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Uma lata cilíndrica de raio 5 cm e altura 12 cm terá tampa e fundo. Quanto de folha é necessário? Use π ≈ 3.",
+      "alternativas": [
+        "510 cm²",
+        "360 cm²",
+        "585 cm²",
+        "435 cm²",
+        "900 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "Lateral: 360. Bases: 2 × 75 = 150. Total: 510 cm². Dica de mergulhador: planificação completa.",
+      "comentarios": [
+        "",
+        "Contou só a lateral.",
+        "Contou três bases.",
+        "Contou só uma base.",
+        "Calculou o volume."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q15-v1",
+      "varianteDe": "mat-solidos-vistas-q15",
+      "tema": "Vistas",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Qual é a vista de frente de um cone em pé?",
+      "alternativas": [
+        "Um setor circular",
+        "Um retângulo",
+        "Um círculo",
+        "Um trapézio",
+        "Um triângulo"
+      ],
+      "correta": 4,
+      "explicacao": "De frente, o cone aparece como um triângulo. Dica de mergulhador: chapéu de festa visto de lado.",
+      "comentarios": [
+        "É parte da planificação.",
+        "É a vista do cilindro.",
+        "É a vista de cima.",
+        "Seria um tronco de cone.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q16-v1",
+      "varianteDe": "mat-solidos-vistas-q16",
+      "tema": "Vistas",
+      "dificuldade": "facil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Qual é a vista de cima de uma pirâmide de base quadrada, apoiada na base?",
+      "alternativas": [
+        "Um pentágono",
+        "Um quadrado com as duas diagonais",
+        "Um quadrado sem nenhuma linha",
+        "Um triângulo",
+        "Um círculo"
+      ],
+      "correta": 1,
+      "explicacao": "De cima, vê-se a base e as quatro arestas laterais indo até o centro. Dica de mergulhador: o topo fica no meio do quadrado.",
+      "comentarios": [
+        "Não há cinco lados na vista.",
+        "",
+        "As arestas laterais aparecem como diagonais.",
+        "É a vista de frente.",
+        "É do cone."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q17-v1",
+      "varianteDe": "mat-solidos-vistas-q17",
+      "tema": "Vistas",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um sólido tem vista de frente retangular, vista lateral retangular e vista de cima circular. Que sólido é esse?",
+      "alternativas": [
+        "Cubo",
+        "Cilindro",
+        "Esfera",
+        "Pirâmide",
+        "Cone"
+      ],
+      "correta": 1,
+      "explicacao": "Retângulo de frente e de lado, círculo de cima: cilindro. Dica de mergulhador: lata em pé.",
+      "comentarios": [
+        "A vista de cima seria quadrada.",
+        "",
+        "Todas seriam círculos.",
+        "A vista de frente seria triangular.",
+        "A vista de frente seria triangular."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q18-v1",
+      "varianteDe": "mat-solidos-vistas-q18",
+      "tema": "Vistas",
+      "dificuldade": "medio",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Uma pilha de cubinhos tem camadas de 4 × 4, 3 × 3, 2 × 2 e 1 × 1. Quantos cubinhos há?",
+      "alternativas": [
+        "10",
+        "29",
+        "64",
+        "30",
+        "16"
+      ],
+      "correta": 3,
+      "explicacao": "16 + 9 + 4 + 1 = 30. Dica de mergulhador: soma dos quadrados.",
+      "comentarios": [
+        "Somou 4 + 3 + 2 + 1.",
+        "Esqueceu o topo.",
+        "Supôs um cubo 4 × 4 × 4.",
+        "",
+        "Contou só a de baixo."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q19-v1",
+      "varianteDe": "mat-solidos-vistas-q19",
+      "tema": "Vistas",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "A vista de cima de uma construção é um retângulo 2 × 3, com os números de cubos em cada coluna: 1, 2, 3, 1, 1 e 2. Quantos cubinhos há, e qual é a altura máxima?",
+      "alternativas": [
+        "6 cubinhos e altura de 3",
+        "18 cubinhos e altura de 3",
+        "10 cubinhos e altura de 3 cubos",
+        "9 cubinhos e altura de 3",
+        "10 cubinhos e altura de 2"
+      ],
+      "correta": 2,
+      "explicacao": "1 + 2 + 3 + 1 + 1 + 2 = 10. Altura máxima: 3. Dica de mergulhador: a vista de cima com números é um mapa de alturas.",
+      "comentarios": [
+        "Contou só os quadradinhos.",
+        "Supôs 3 em todas.",
+        "",
+        "Errou a soma.",
+        "Errou a altura."
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-q20-v1",
+      "varianteDe": "mat-solidos-vistas-q20",
+      "tema": "Vistas",
+      "dificuldade": "dificil",
+      "fase": "mat-solidos-vistas",
+      "enunciado": "Um cilindro em pé é iluminado por cima, com o sol a pino, e de frente, por uma lanterna distante na horizontal. Que sombras aparecem no chão e na parede?",
+      "alternativas": [
+        "Um círculo nos dois",
+        "Um retângulo no chão e um círculo na parede",
+        "Um retângulo nos dois",
+        "Um círculo no chão e um retângulo na parede",
+        "Um triângulo na parede"
+      ],
+      "correta": 3,
+      "explicacao": "Chão: vista de cima, círculo. Parede: vista de frente, retângulo. Dica de mergulhador: sombra é vista.",
+      "comentarios": [
+        "A parede recebe a vista de frente.",
+        "Trocou.",
+        "O chão recebe a vista de cima.",
+        "",
+        "Isso seria do cone."
+      ]
+    },
+    {
+      "id": "mat-prismas-q01-v1",
+      "varianteDe": "mat-prismas-q01",
+      "tema": "Volume do prisma",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Qual é o volume de uma caixa de 30 cm × 20 cm × 10 cm?",
+      "alternativas": [
+        "60 cm³",
+        "600 cm³",
+        "6.000 cm³",
+        "2.200 cm³",
+        "60.000 cm³"
+      ],
+      "correta": 2,
+      "explicacao": "30 × 20 × 10 = 6.000 cm³ = 6 L. Dica de mergulhador: três medidas multiplicadas.",
+      "comentarios": [
+        "Somou.",
+        "Multiplicou duas medidas.",
+        "",
+        "Calculou a área.",
+        "Errou uma casa."
+      ]
+    },
+    {
+      "id": "mat-prismas-q02-v1",
+      "varianteDe": "mat-prismas-q02",
+      "tema": "Volume do prisma",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Qual é o volume de um cubo de aresta 5 cm?",
+      "alternativas": [
+        "60 cm³",
+        "125 cm³",
+        "25 cm³",
+        "150 cm³",
+        "15 cm³"
+      ],
+      "correta": 1,
+      "explicacao": "5³ = 125 cm³. Dica de mergulhador: a × a × a.",
+      "comentarios": [
+        "Calculou a soma das arestas.",
+        "",
+        "Calculou uma face.",
+        "Calculou a área total.",
+        "Multiplicou por 3."
+      ]
+    },
+    {
+      "id": "mat-prismas-q03-v1",
+      "varianteDe": "mat-prismas-q03",
+      "tema": "Volume do prisma",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa d'água mede 1,2 m × 1 m × 0,5 m. Quantos litros ela comporta?",
+      "alternativas": [
+        "60 L",
+        "600 L",
+        "2,7 L",
+        "0,6 L",
+        "6.000 L"
+      ],
+      "correta": 1,
+      "explicacao": "0,6 m³ = 600 L. Dica de mergulhador: m³ × 1.000.",
+      "comentarios": [
+        "Errou a conversão.",
+        "",
+        "Somou.",
+        "Esqueceu de converter.",
+        "Errou para o outro lado."
+      ]
+    },
+    {
+      "id": "mat-prismas-q04-v1",
+      "varianteDe": "mat-prismas-q04",
+      "tema": "Volume do prisma",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um prisma tem como base um triângulo retângulo de catetos 6 cm e 8 cm, e altura de 5 cm. Qual é o volume?",
+      "alternativas": [
+        "12 cm³",
+        "95 cm³",
+        "240 cm³",
+        "120 cm³",
+        "250 cm³"
+      ],
+      "correta": 3,
+      "explicacao": "Base: 24 cm². Volume: 24 × 5 = 120 cm³. Dica de mergulhador: triângulo divide por 2.",
+      "comentarios": [
+        "Errou uma casa.",
+        "Somou.",
+        "Esqueceu de dividir a base.",
+        "",
+        "Usou a hipotenusa."
+      ]
+    },
+    {
+      "id": "mat-prismas-q05-v1",
+      "varianteDe": "mat-prismas-q05",
+      "tema": "Volume do prisma",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Uma piscina de 8 m × 4 m tem 2 m de profundidade, mas está cheia até 1,5 m. Quantos litros tem?",
+      "alternativas": [
+        "48 L",
+        "48.000 L",
+        "480.000 L",
+        "4.800 L",
+        "64.000 L"
+      ],
+      "correta": 1,
+      "explicacao": "8 × 4 × 1,5 = 48 m³ = 48.000 L. Dica de mergulhador: altura da água, não da piscina.",
+      "comentarios": [
+        "Esqueceu de converter.",
+        "",
+        "Errou a conversão.",
+        "Errou uma casa.",
+        "Usou a profundidade total."
+      ]
+    },
+    {
+      "id": "mat-prismas-q06-v1",
+      "varianteDe": "mat-prismas-q06",
+      "tema": "Volume do prisma",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um prisma tem base pentagonal de área 20 cm² e altura de 15 cm. Qual é o volume?",
+      "alternativas": [
+        "600 cm³",
+        "35 cm³",
+        "300 cm³",
+        "20 cm³",
+        "150 cm³"
+      ],
+      "correta": 2,
+      "explicacao": "20 × 15 = 300 cm³. Dica de mergulhador: o formato da base não muda a regra.",
+      "comentarios": [
+        "Dobrou.",
+        "Somou.",
+        "",
+        "Esqueceu a altura.",
+        "Dividiu por 2."
+      ]
+    },
+    {
+      "id": "mat-prismas-q07-v1",
+      "varianteDe": "mat-prismas-q07",
+      "tema": "Volume do prisma",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa sem tampa é feita cortando quadrados de 4 cm nos cantos de uma folha de 30 cm × 20 cm. Qual é o volume?",
+      "alternativas": [
+        "600 cm³",
+        "1.056 cm³",
+        "2.400 cm³",
+        "528 cm³",
+        "1.664 cm³"
+      ],
+      "correta": 1,
+      "explicacao": "Base: 22 × 12. Volume: 22 × 12 × 4 = 1.056 cm³. Dica de mergulhador: tire 2 × o corte de cada medida.",
+      "comentarios": [
+        "Calculou a área da folha.",
+        "",
+        "Usou as medidas da folha.",
+        "Dividiu por 2.",
+        "Descontou 4 cm só de um lado."
+      ]
+    },
+    {
+      "id": "mat-prismas-q08-v1",
+      "varianteDe": "mat-prismas-q08",
+      "tema": "Área total",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Qual é a área total de um cubo de aresta 6 cm?",
+      "alternativas": [
+        "216 cm²",
+        "432 cm²",
+        "72 cm²",
+        "144 cm²",
+        "36 cm²"
+      ],
+      "correta": 0,
+      "explicacao": "6 × 36 = 216 cm². Dica de mergulhador: 6a².",
+      "comentarios": [
+        "",
+        "Contou 12 faces.",
+        "Contou 2 faces.",
+        "Contou 4 faces.",
+        "Calculou uma face."
+      ]
+    },
+    {
+      "id": "mat-prismas-q09-v1",
+      "varianteDe": "mat-prismas-q09",
+      "tema": "Área total",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Qual é a área total de uma caixa de 10 cm × 8 cm × 4 cm?",
+      "alternativas": [
+        "22 cm²",
+        "152 cm²",
+        "304 cm²",
+        "608 cm²",
+        "320 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "2 × (80 + 40 + 32) = 304 cm². Dica de mergulhador: 2(ab + ac + bc).",
+      "comentarios": [
+        "Somou.",
+        "Contou cada face uma vez.",
+        "",
+        "Dobrou.",
+        "Calculou o volume."
+      ]
+    },
+    {
+      "id": "mat-prismas-q10-v1",
+      "varianteDe": "mat-prismas-q10",
+      "tema": "Área total",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um prisma tem base triangular equilátera de lado 6 cm e altura de 10 cm. Qual é a área lateral?",
+      "alternativas": [
+        "18 cm²",
+        "180 cm²",
+        "120 cm²",
+        "60 cm²",
+        "360 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Perímetro: 18 cm. Área lateral: 18 × 10 = 180 cm². Dica de mergulhador: três retângulos de 6 × 10.",
+      "comentarios": [
+        "Calculou o perímetro.",
+        "",
+        "Contou duas faces.",
+        "Contou uma face.",
+        "Dobrou."
+      ]
+    },
+    {
+      "id": "mat-prismas-q11-v1",
+      "varianteDe": "mat-prismas-q11",
+      "tema": "Área total",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um quarto de 5 m × 4 m tem 3 m de altura. Quantos metros quadrados de paredes e teto serão pintados?",
+      "alternativas": [
+        "37 m²",
+        "54 m²",
+        "74 m²",
+        "94 m²",
+        "60 m²"
+      ],
+      "correta": 2,
+      "explicacao": "Paredes: 2 × (15 + 12) = 54. Teto: 20. Total: 74 m². Dica de mergulhador: quatro paredes e o teto.",
+      "comentarios": [
+        "Contou cada parede uma vez.",
+        "Esqueceu o teto.",
+        "",
+        "Incluiu o chão.",
+        "Calculou o volume."
+      ]
+    },
+    {
+      "id": "mat-prismas-q12-v1",
+      "varianteDe": "mat-prismas-q12",
+      "tema": "Área total",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Um cubo tem volume de 512 cm³. Qual é a sua área total?",
+      "alternativas": [
+        "512 cm²",
+        "48 cm²",
+        "256 cm²",
+        "384 cm²",
+        "64 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Aresta: 8 cm. Área: 6 × 64 = 384 cm². Dica de mergulhador: 8 × 8 × 8 = 512.",
+      "comentarios": [
+        "Repetiu o volume.",
+        "Errou a conta.",
+        "Contou 4 faces.",
+        "",
+        "Calculou uma face."
+      ]
+    },
+    {
+      "id": "mat-prismas-q13-v1",
+      "varianteDe": "mat-prismas-q13",
+      "tema": "Área total",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa de base quadrada, com tampa, tem volume de 720 cm³ e altura de 5 cm. Quanto papelão é necessário?",
+      "alternativas": [
+        "432 cm²",
+        "528 cm²",
+        "240 cm²",
+        "720 cm²",
+        "384 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Base: 144 cm², lado 12 cm. Área: 288 + 4 × 12 × 5 = 528 cm². Dica de mergulhador: duas bases e quatro laterais.",
+      "comentarios": [
+        "Errou a lateral.",
+        "",
+        "Contou só as laterais.",
+        "Repetiu o volume.",
+        "Esqueceu a tampa."
+      ]
+    },
+    {
+      "id": "mat-prismas-q14-v1",
+      "varianteDe": "mat-prismas-q14",
+      "tema": "Área total",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Um cubo de aresta 3 cm é pintado por fora e cortado em 27 cubinhos de 1 cm. Quantos cubinhos têm exatamente uma face pintada?",
+      "alternativas": [
+        "1",
+        "12",
+        "8",
+        "6",
+        "27"
+      ],
+      "correta": 3,
+      "explicacao": "Um no centro de cada face: 6. Dica de mergulhador: faces do cubo grande, centros pintados de um lado só.",
+      "comentarios": [
+        "É o do centro.",
+        "São os do meio das arestas.",
+        "São os dos cantos.",
+        "",
+        "É o total."
+      ]
+    },
+    {
+      "id": "mat-prismas-q15-v1",
+      "varianteDe": "mat-prismas-q15",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Se as arestas de um cubo triplicam, o que acontece com o volume?",
+      "alternativas": [
+        "Triplica",
+        "Fica 81 vezes maior",
+        "Fica 27 vezes maior",
+        "Fica 9 vezes maior",
+        "Fica 6 vezes maior"
+      ],
+      "correta": 2,
+      "explicacao": "O volume depende das três arestas, então o fator 3 entra três vezes: 3³ = 27. Dica de mergulhador: no volume, o fator de ampliação vai ao cubo.",
+      "comentarios": [
+        "O volume usa três dimensões.",
+        "Errou a potência.",
+        "",
+        "Isso é a área.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "mat-prismas-q16-v1",
+      "varianteDe": "mat-prismas-q16",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "facil",
+      "fase": "mat-prismas",
+      "enunciado": "Um aquário tem base de 30 cm × 20 cm. Ao colocar uma peça, a água sobe 3 cm. Qual é o volume da peça?",
+      "alternativas": [
+        "1.800 cm³",
+        "53 cm³",
+        "3.600 cm³",
+        "90 cm³",
+        "600 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "30 × 20 × 3 = 1.800 cm³. Dica de mergulhador: base vezes subida.",
+      "comentarios": [
+        "",
+        "Somou.",
+        "Dobrou.",
+        "Multiplicou só 30 por 3.",
+        "Esqueceu a subida."
+      ]
+    },
+    {
+      "id": "mat-prismas-q17-v1",
+      "varianteDe": "mat-prismas-q17",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Duas caixas são semelhantes, e as arestas da maior são o dobro das da menor. A menor tem 5 L. Qual é a capacidade da maior?",
+      "alternativas": [
+        "20 L",
+        "10 L",
+        "40 L",
+        "8 L",
+        "125 L"
+      ],
+      "correta": 2,
+      "explicacao": "5 × 2³ = 40 L. Dica de mergulhador: dobro das arestas, 8 vezes o volume.",
+      "comentarios": [
+        "Usou a razão ao quadrado.",
+        "Usou a razão linear.",
+        "",
+        "Esqueceu os 5 L.",
+        "Elevou 5 ao cubo."
+      ]
+    },
+    {
+      "id": "mat-prismas-q18-v1",
+      "varianteDe": "mat-prismas-q18",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "medio",
+      "fase": "mat-prismas",
+      "enunciado": "Uma caixa d'água de 2 m × 1 m × 0,5 m é enchida por uma torneira de 25 litros por minuto. Em quanto tempo enche?",
+      "alternativas": [
+        "40 minutos",
+        "400 minutos",
+        "25 minutos",
+        "0,04 minuto",
+        "4 minutos"
+      ],
+      "correta": 0,
+      "explicacao": "1 m³ = 1.000 L; 1.000 ÷ 25 = 40 min. Dica de mergulhador: volume ÷ vazão.",
+      "comentarios": [
+        "",
+        "Usou 10.000 litros.",
+        "Usou a vazão como tempo.",
+        "Dividiu ao contrário.",
+        "Usou 100 litros."
+      ]
+    },
+    {
+      "id": "mat-prismas-q19-v1",
+      "varianteDe": "mat-prismas-q19",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Um tanque de base 1 m × 1 m tem água. Colocam-se nele 200 blocos maciços de 10 cm × 10 cm × 10 cm, submersos. Quanto a água sobe?",
+      "alternativas": [
+        "20 cm",
+        "200 cm",
+        "0,2 cm",
+        "2 cm",
+        "10 cm"
+      ],
+      "correta": 0,
+      "explicacao": "Cada bloco: 0,001 m³. Total: 0,2 m³. Subida: 0,2 ÷ 1 = 0,2 m = 20 cm. Dica de mergulhador: mesma ideia do aquário.",
+      "comentarios": [
+        "",
+        "Esqueceu a área da base.",
+        "Errou duas casas.",
+        "Errou a conversão.",
+        "Contou metade dos blocos."
+      ]
+    },
+    {
+      "id": "mat-prismas-q20-v1",
+      "varianteDe": "mat-prismas-q20",
+      "tema": "Proporções e deslocamento",
+      "dificuldade": "dificil",
+      "fase": "mat-prismas",
+      "enunciado": "Uma embalagem tem 0,5 L e base de 8 cm × 5 cm. Qual é a altura?",
+      "alternativas": [
+        "125 cm",
+        "12,5 cm",
+        "40 cm",
+        "1,25 cm",
+        "8 cm"
+      ],
+      "correta": 1,
+      "explicacao": "500 ÷ 40 = 12,5 cm. Dica de mergulhador: altura = volume ÷ base.",
+      "comentarios": [
+        "Errou para o outro lado.",
+        "",
+        "É a área da base.",
+        "Errou uma casa.",
+        "Supôs um cubo."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q01-v1",
+      "varianteDe": "mat-cilindros-q01",
+      "tema": "Volume do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Qual é o volume de uma lata de raio 5 cm e altura 8 cm? Use π ≈ 3.",
+      "alternativas": [
+        "600 cm³",
+        "120 cm³",
+        "200 cm³",
+        "240 cm³",
+        "2.400 cm³"
+      ],
+      "correta": 0,
+      "explicacao": "3 × 25 × 8 = 600 cm³. Dica de mergulhador: raio ao quadrado primeiro.",
+      "comentarios": [
+        "",
+        "Não elevou o raio ao quadrado.",
+        "Esqueceu o π.",
+        "Calculou a área lateral.",
+        "Usou o diâmetro."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q02-v1",
+      "varianteDe": "mat-cilindros-q02",
+      "tema": "Volume do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Um pote cilíndrico tem raio de 5 cm e altura de 20 cm. Quantos litros ele comporta? Use π ≈ 3.",
+      "alternativas": [
+        "150 L",
+        "15 L",
+        "1,5 L",
+        "0,15 L",
+        "0,6 L"
+      ],
+      "correta": 2,
+      "explicacao": "3 × 25 × 20 = 1.500 cm³ = 1,5 L. Dica de mergulhador: divida os cm³ por 1.000.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Errou uma casa.",
+        "",
+        "Errou para o outro lado.",
+        "Usou 2πr."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q03-v1",
+      "varianteDe": "mat-cilindros-q03",
+      "tema": "Volume do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma caixa d'água cilíndrica tem raio de 0,5 m e altura de 1,2 m. Quantos litros ela comporta? Use π ≈ 3.",
+      "alternativas": [
+        "90 L",
+        "0,9 L",
+        "3.600 L",
+        "9 L",
+        "900 L"
+      ],
+      "correta": 4,
+      "explicacao": "3 × 0,25 × 1,2 = 0,9 m³ = 900 L. Dica de mergulhador: 0,5² = 0,25.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Esqueceu de converter.",
+        "Usou o diâmetro como raio.",
+        "Errou duas casas.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-cilindros-q04-v1",
+      "varianteDe": "mat-cilindros-q04",
+      "tema": "Volume do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Um tubo de 10 m de comprimento tem diâmetro interno de 20 cm e está cheio. Quantos litros contém? Use π ≈ 3.",
+      "alternativas": [
+        "30 L",
+        "300 L",
+        "3.000 L",
+        "1.200 L",
+        "60 L"
+      ],
+      "correta": 1,
+      "explicacao": "Raio: 1 dm. Comprimento: 100 dm. Volume: 3 × 1 × 100 = 300 L. Dica de mergulhador: decímetros simplificam.",
+      "comentarios": [
+        "Errou uma casa.",
+        "",
+        "Errou para o outro lado.",
+        "Usou o diâmetro como raio.",
+        "Usou 2πr."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q05-v1",
+      "varianteDe": "mat-cilindros-q05",
+      "tema": "Volume do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Um copo cilíndrico tem raio de 5 cm. Até que altura chega um líquido de 600 mL? Use π ≈ 3.",
+      "alternativas": [
+        "24 cm",
+        "5 cm",
+        "20 cm",
+        "8 cm",
+        "40 cm"
+      ],
+      "correta": 3,
+      "explicacao": "Base: 75 cm². Altura: 600 ÷ 75 = 8 cm. Dica de mergulhador: mL = cm³.",
+      "comentarios": [
+        "Dividiu só por 25.",
+        "Usou o raio.",
+        "Usou 2πr.",
+        "",
+        "Dividiu só por 15."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q06-v1",
+      "varianteDe": "mat-cilindros-q06",
+      "tema": "Volume do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma lata tem diâmetro de 8 cm e altura de 20 cm. Qual é a capacidade? Use π ≈ 3.",
+      "alternativas": [
+        "9,6 L",
+        "0,96 L",
+        "960 L",
+        "0,48 L",
+        "3,84 L"
+      ],
+      "correta": 1,
+      "explicacao": "Raio 4: 3 × 16 × 20 = 960 cm³ = 0,96 L. Dica de mergulhador: raio é metade.",
+      "comentarios": [
+        "Errou uma casa.",
+        "",
+        "Esqueceu de converter.",
+        "Calculou a área lateral.",
+        "Usou o diâmetro como raio."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q07-v1",
+      "varianteDe": "mat-cilindros-q07",
+      "tema": "Volume do cilindro",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "Um silo cilíndrico de 4 m de diâmetro e 5 m de altura está cheio de grãos com densidade de 0,75 t/m³. Qual é a massa? Use π ≈ 3.",
+      "alternativas": [
+        "80 t",
+        "45 t",
+        "180 t",
+        "9 t",
+        "60 t"
+      ],
+      "correta": 1,
+      "explicacao": "Volume: 3 × 4 × 5 = 60 m³. Massa: 60 × 0,75 = 45 t. Dica de mergulhador: volume primeiro, depois a densidade.",
+      "comentarios": [
+        "Dividiu pela densidade.",
+        "",
+        "Usou o diâmetro como raio.",
+        "Esqueceu a altura.",
+        "Esqueceu a densidade."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q08-v1",
+      "varianteDe": "mat-cilindros-q08",
+      "tema": "Área do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Qual é a área lateral de uma lata de raio 5 cm e altura 12 cm? Use π ≈ 3.",
+      "alternativas": [
+        "150 cm²",
+        "180 cm²",
+        "510 cm²",
+        "360 cm²",
+        "900 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "2 × 3 × 5 × 12 = 360 cm². Dica de mergulhador: retângulo de 2πr por h.",
+      "comentarios": [
+        "Calculou as bases.",
+        "Usou πrh.",
+        "Calculou a área total.",
+        "",
+        "Calculou o volume."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q09-v1",
+      "varianteDe": "mat-cilindros-q09",
+      "tema": "Área do cilindro",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma garrafa cilíndrica tem diâmetro de 10 cm, e o rótulo cobre 8 cm de altura. Qual é a área do rótulo? Use π ≈ 3,14.",
+      "alternativas": [
+        "31,4 cm²",
+        "251,2 cm²",
+        "78,5 cm²",
+        "502,4 cm²",
+        "125,6 cm²"
+      ],
+      "correta": 1,
+      "explicacao": "Volta: 31,4 cm. Rótulo: 31,4 × 8 = 251,2 cm². Dica de mergulhador: volta × altura.",
+      "comentarios": [
+        "Calculou só a volta.",
+        "",
+        "Calculou a base.",
+        "Usou o diâmetro como raio.",
+        "Usou πrh."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q10-v1",
+      "varianteDe": "mat-cilindros-q10",
+      "tema": "Área do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Qual é a área total de uma lata de raio 5 cm e altura 12 cm, com tampa e fundo? Use π ≈ 3.",
+      "alternativas": [
+        "435 cm²",
+        "900 cm²",
+        "510 cm²",
+        "585 cm²",
+        "360 cm²"
+      ],
+      "correta": 2,
+      "explicacao": "360 + 150 = 510 cm². Dica de mergulhador: 2πrh + 2πr².",
+      "comentarios": [
+        "Contou uma base.",
+        "Calculou o volume.",
+        "",
+        "Contou três bases.",
+        "Contou só a lateral."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q11-v1",
+      "varianteDe": "mat-cilindros-q11",
+      "tema": "Área do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "A lateral planificada de um cilindro é um retângulo de 18 cm × 10 cm, sendo 18 cm a volta da base. Qual é o raio? Use π ≈ 3.",
+      "alternativas": [
+        "6 cm",
+        "3 cm",
+        "9 cm",
+        "2,45 cm",
+        "10 cm"
+      ],
+      "correta": 1,
+      "explicacao": "2 × 3 × r = 18, r = 3 cm. Dica de mergulhador: volta ÷ 2π.",
+      "comentarios": [
+        "É o diâmetro.",
+        "",
+        "Dividiu só por 2.",
+        "Tratou como área.",
+        "Usou a altura."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q12-v1",
+      "varianteDe": "mat-cilindros-q12",
+      "tema": "Área do cilindro",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma caixa d'água cilíndrica de raio 2 m e altura 3 m será pintada na lateral e na tampa. Qual é a área? Use π ≈ 3.",
+      "alternativas": [
+        "18 m²",
+        "48 m²",
+        "60 m²",
+        "72 m²",
+        "36 m²"
+      ],
+      "correta": 1,
+      "explicacao": "Lateral: 2 × 3 × 2 × 3 = 36. Tampa: 12. Total: 48 m². Dica de mergulhador: lateral + uma base.",
+      "comentarios": [
+        "Usou πrh.",
+        "",
+        "Incluiu o fundo.",
+        "Calculou outra medida.",
+        "Esqueceu a tampa."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q13-v1",
+      "varianteDe": "mat-cilindros-q13",
+      "tema": "Área do cilindro",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "Uma lata de 1,5 L tem raio de 5 cm. Qual é a altura e a área total de chapa? Use π ≈ 3.",
+      "alternativas": [
+        "Altura de 2 cm e área de 210 cm²",
+        "Altura de 6,7 cm e área de 351 cm²",
+        "Altura de 20 cm e área de 675 cm²",
+        "Altura de 20 cm e área de 750 cm²",
+        "Altura de 20 cm e área de 600 cm²"
+      ],
+      "correta": 3,
+      "explicacao": "Altura: 1.500 ÷ 75 = 20 cm. Lateral: 600. Bases: 150. Total: 750 cm². Dica de mergulhador: 1,5 L = 1.500 cm³.",
+      "comentarios": [
+        "Errou a conversão.",
+        "Usou 2πr.",
+        "Contou uma base.",
+        "",
+        "Esqueceu as bases."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q14-v1",
+      "varianteDe": "mat-cilindros-q14",
+      "tema": "Área do cilindro",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "Um rolo de papel tem raio externo de 5 cm, tubo de 1 cm de raio e altura de 20 cm. Qual é o volume do papel? Use π ≈ 3.",
+      "alternativas": [
+        "72 cm³",
+        "1.500 cm³",
+        "60 cm³",
+        "960 cm³",
+        "1.440 cm³"
+      ],
+      "correta": 4,
+      "explicacao": "3 × (25 − 1) × 20 = 1.440 cm³. Dica de mergulhador: R² − r², não (R − r)².",
+      "comentarios": [
+        "Esqueceu a altura.",
+        "Não descontou o tubo.",
+        "Calculou só o tubo.",
+        "Usou π(R − r)².",
+        ""
+      ]
+    },
+    {
+      "id": "mat-cilindros-q15-v1",
+      "varianteDe": "mat-cilindros-q15",
+      "tema": "Comparar cilindros",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Se a altura de um cilindro dobra e o raio não muda, o que acontece com o volume?",
+      "alternativas": [
+        "Dobra",
+        "Fica pela metade",
+        "Não muda",
+        "Fica 8 vezes maior",
+        "Fica 4 vezes maior"
+      ],
+      "correta": 0,
+      "explicacao": "A altura entra uma vez: volume × 2. Dica de mergulhador: altura é linear.",
+      "comentarios": [
+        "",
+        "Aumentou.",
+        "A altura mudou.",
+        "Só uma medida mudou.",
+        "A altura não está ao quadrado."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q16-v1",
+      "varianteDe": "mat-cilindros-q16",
+      "tema": "Comparar cilindros",
+      "dificuldade": "facil",
+      "fase": "mat-cilindros",
+      "enunciado": "Duas latas têm a mesma altura; uma tem raio 2 cm e a outra, raio 6 cm. Quantas vezes o volume da maior é o da menor?",
+      "alternativas": [
+        "27 vezes",
+        "36 vezes",
+        "9 vezes",
+        "3 vezes",
+        "4 vezes"
+      ],
+      "correta": 2,
+      "explicacao": "(6 ÷ 2)² = 9. Dica de mergulhador: razão ao quadrado.",
+      "comentarios": [
+        "Elevou ao cubo.",
+        "Elevou o raio maior.",
+        "",
+        "Usou a razão dos raios.",
+        "Subtraiu os raios."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q17-v1",
+      "varianteDe": "mat-cilindros-q17",
+      "tema": "Comparar cilindros",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "O copo A tem raio de 6 cm e altura de 4 cm; o B tem raio de 3 cm e altura de 12 cm. Qual tem mais volume?",
+      "alternativas": [
+        "A, com 144π contra 108π",
+        "B, porque é mais alto",
+        "A, com o dobro de B",
+        "B, com 144π",
+        "Os dois são iguais"
+      ],
+      "correta": 0,
+      "explicacao": "A: 36 × 4 = 144π. B: 9 × 12 = 108π. Dica de mergulhador: compare r² × h.",
+      "comentarios": [
+        "",
+        "Altura não decide sozinha.",
+        "A razão é 4/3.",
+        "Trocou as contas.",
+        "Os volumes diferem."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q18-v1",
+      "varianteDe": "mat-cilindros-q18",
+      "tema": "Comparar cilindros",
+      "dificuldade": "medio",
+      "fase": "mat-cilindros",
+      "enunciado": "A lata A, de raio 5 cm e altura 10 cm, custa R$ 10. A lata B, de raio 10 cm e altura 5 cm, custa R$ 18. Qual é mais barata por volume?",
+      "alternativas": [
+        "A, porque é mais barata",
+        "A, porque é mais alta",
+        "B, porque é mais larga",
+        "B, porque o preço por cm³ é menor",
+        "As duas iguais"
+      ],
+      "correta": 3,
+      "explicacao": "A: 250π por R$ 10 (0,04/π). B: 500π por R$ 18 (0,036/π). B rende mais. Dica de mergulhador: preço ÷ volume.",
+      "comentarios": [
+        "Preço total não decide.",
+        "Altura não decide.",
+        "Conclusão certa, motivo incompleto.",
+        "",
+        "As contas diferem."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q19-v1",
+      "varianteDe": "mat-cilindros-q19",
+      "tema": "Comparar cilindros",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "A água de um cilindro de raio 6 cm e altura 20 cm é despejada num cilindro de raio 12 cm. Que altura ela atinge?",
+      "alternativas": [
+        "80 cm",
+        "20 cm",
+        "10 cm",
+        "5 cm",
+        "2,5 cm"
+      ],
+      "correta": 3,
+      "explicacao": "36 × 20 = 720; 720 ÷ 144 = 5 cm. Dica de mergulhador: volume se conserva.",
+      "comentarios": [
+        "Inverteu.",
+        "Achou que não muda.",
+        "Usou a razão linear.",
+        "",
+        "Dividiu demais."
+      ]
+    },
+    {
+      "id": "mat-cilindros-q20-v1",
+      "varianteDe": "mat-cilindros-q20",
+      "tema": "Comparar cilindros",
+      "dificuldade": "dificil",
+      "fase": "mat-cilindros",
+      "enunciado": "Um cilindro tem base inscrita no quadrado da base de um prisma de mesma altura. Que fração do prisma o cilindro ocupa? Use π ≈ 3,14.",
+      "alternativas": [
+        "50%",
+        "100%",
+        "Cerca de 78,5%",
+        "31,4%",
+        "25%"
+      ],
+      "correta": 2,
+      "explicacao": "Cilindro: πr²h. Prisma: (2r)²h = 4r²h. Fração: π ÷ 4 ≈ 0,785. Dica de mergulhador: o lado do quadrado é o diâmetro.",
+      "comentarios": [
+        "Chutou metade.",
+        "Achou que enche.",
+        "",
+        "Usou π ÷ 10.",
+        "Usou um quarto."
+      ]
     }
   ],
   "pares": [
@@ -53642,6 +56768,78 @@
       "tema": "Revisão do módulo: medidas no plano",
       "termo": "πr²",
       "definicao": "Área do círculo"
+    },
+    {
+      "id": "mat-solidos-vistas-par-01",
+      "tema": "Sólidos, vistas e planificações",
+      "termo": "Poliedros",
+      "definicao": "Sólidos de faces planas"
+    },
+    {
+      "id": "mat-solidos-vistas-par-02",
+      "tema": "Sólidos, vistas e planificações",
+      "termo": "Relação de Euler",
+      "definicao": "V − A + F = 2"
+    },
+    {
+      "id": "mat-solidos-vistas-par-03",
+      "tema": "Sólidos, vistas e planificações",
+      "termo": "Planificação",
+      "definicao": "Sólido aberto no plano"
+    },
+    {
+      "id": "mat-solidos-vistas-par-04",
+      "tema": "Sólidos, vistas e planificações",
+      "termo": "Vista de cima",
+      "definicao": "O que se vê do teto"
+    },
+    {
+      "id": "mat-prismas-par-01",
+      "tema": "Prismas e cubos: área e volume",
+      "termo": "Volume do prisma",
+      "definicao": "Área da base vezes altura"
+    },
+    {
+      "id": "mat-prismas-par-02",
+      "tema": "Prismas e cubos: área e volume",
+      "termo": "Área lateral",
+      "definicao": "Perímetro da base vezes altura"
+    },
+    {
+      "id": "mat-prismas-par-03",
+      "tema": "Prismas e cubos: área e volume",
+      "termo": "1 m³",
+      "definicao": "1.000 litros"
+    },
+    {
+      "id": "mat-prismas-par-04",
+      "tema": "Prismas e cubos: área e volume",
+      "termo": "Arestas dobradas",
+      "definicao": "Volume 8 vezes maior"
+    },
+    {
+      "id": "mat-cilindros-par-01",
+      "tema": "Cilindros",
+      "termo": "Volume do cilindro",
+      "definicao": "πr²h"
+    },
+    {
+      "id": "mat-cilindros-par-02",
+      "tema": "Cilindros",
+      "termo": "Área lateral",
+      "definicao": "2πrh"
+    },
+    {
+      "id": "mat-cilindros-par-03",
+      "tema": "Cilindros",
+      "termo": "Comprimento da circunferência",
+      "definicao": "Largura do retângulo da lateral"
+    },
+    {
+      "id": "mat-cilindros-par-04",
+      "tema": "Cilindros",
+      "termo": "Raio ao quadrado",
+      "definicao": "Pesa mais que a altura"
     }
   ],
   "verdadeiroFalso": [
@@ -54680,6 +57878,69 @@
       "afirmacao": "Uma rampa de 12 m a 30° sobe 6 m.",
       "verdadeira": true,
       "explicacao": "sen 30° = 1/2."
+    },
+    {
+      "id": "mat-solidos-vistas-vf-01",
+      "tema": "Sólidos, vistas e planificações",
+      "afirmacao": "O cubo tem 12 arestas.",
+      "verdadeira": true,
+      "explicacao": "4 em cima, 4 embaixo, 4 em pé."
+    },
+    {
+      "id": "mat-solidos-vistas-vf-02",
+      "tema": "Sólidos, vistas e planificações",
+      "afirmacao": "A planificação do cone tem um retângulo.",
+      "verdadeira": false,
+      "explicacao": "Tem um setor circular."
+    },
+    {
+      "id": "mat-solidos-vistas-vf-03",
+      "tema": "Sólidos, vistas e planificações",
+      "afirmacao": "A vista de cima de um cilindro em pé é um círculo.",
+      "verdadeira": true,
+      "explicacao": "Vê-se a tampa."
+    },
+    {
+      "id": "mat-prismas-vf-01",
+      "tema": "Prismas e cubos: área e volume",
+      "afirmacao": "Uma caixa de 20 × 10 × 5 cm tem 1 litro.",
+      "verdadeira": true,
+      "explicacao": "1.000 cm³."
+    },
+    {
+      "id": "mat-prismas-vf-02",
+      "tema": "Prismas e cubos: área e volume",
+      "afirmacao": "Dobrar a aresta de um cubo dobra o volume.",
+      "verdadeira": false,
+      "explicacao": "O volume fica 8 vezes maior."
+    },
+    {
+      "id": "mat-prismas-vf-03",
+      "tema": "Prismas e cubos: área e volume",
+      "afirmacao": "A água que sobe num aquário mede o volume do objeto submerso.",
+      "verdadeira": true,
+      "explicacao": "Deslocamento."
+    },
+    {
+      "id": "mat-cilindros-vf-01",
+      "tema": "Cilindros",
+      "afirmacao": "Dobrar o raio de uma lata quadruplica o volume.",
+      "verdadeira": true,
+      "explicacao": "(2r)² = 4r²."
+    },
+    {
+      "id": "mat-cilindros-vf-02",
+      "tema": "Cilindros",
+      "afirmacao": "O rótulo de uma lata cobre a sua área total.",
+      "verdadeira": false,
+      "explicacao": "Cobre só a lateral."
+    },
+    {
+      "id": "mat-cilindros-vf-03",
+      "tema": "Cilindros",
+      "afirmacao": "Ao despejar água num cilindro mais largo, o volume se conserva.",
+      "verdadeira": true,
+      "explicacao": "Só a altura muda."
     }
   ],
   "sequencias": [
@@ -55283,6 +58544,42 @@
         "Conferir unidades e arredondamentos"
       ],
       "explicacao": "A figura guia a fórmula."
+    },
+    {
+      "id": "mat-solidos-vistas-seq-01",
+      "tema": "Sólidos, vistas e planificações",
+      "titulo": "Identificar um sólido pelas vistas",
+      "itens": [
+        "Observar a vista de cima",
+        "Observar a vista de frente",
+        "Observar a vista lateral",
+        "Pensar no sólido que dá as três ao mesmo tempo"
+      ],
+      "explicacao": "Uma vista só pode enganar."
+    },
+    {
+      "id": "mat-prismas-seq-01",
+      "tema": "Prismas e cubos: área e volume",
+      "titulo": "Calcular quantos litros cabem numa caixa",
+      "itens": [
+        "Medir as três dimensões na mesma unidade",
+        "Multiplicar para obter o volume",
+        "Converter para dm³ ou m³",
+        "Transformar em litros"
+      ],
+      "explicacao": "1 dm³ = 1 L."
+    },
+    {
+      "id": "mat-cilindros-seq-01",
+      "tema": "Cilindros",
+      "titulo": "Calcular quantos litros cabem numa lata",
+      "itens": [
+        "Achar o raio (metade do diâmetro)",
+        "Calcular a área da base πr²",
+        "Multiplicar pela altura",
+        "Converter cm³ para litros"
+      ],
+      "explicacao": "1.000 cm³ = 1 L."
     }
   ],
   "adivinhas": [
@@ -56001,6 +59298,48 @@
         "Polígono de seis lados",
         "Formado por seis triângulos equiláteros",
         "Aparece no favo de mel"
+      ]
+    },
+    {
+      "id": "mat-solidos-vistas-adv-01",
+      "tema": "Sólidos, vistas e planificações",
+      "dificuldade": "medio",
+      "resposta": "Poliedro",
+      "aceitas": [
+        "poliedro"
+      ],
+      "dicas": [
+        "Sólido de faces planas",
+        "Cubo e pirâmide são exemplos",
+        "Obedece à relação de Euler"
+      ]
+    },
+    {
+      "id": "mat-prismas-adv-01",
+      "tema": "Prismas e cubos: área e volume",
+      "dificuldade": "medio",
+      "resposta": "Paralelepípedo",
+      "aceitas": [
+        "paralelepipedo"
+      ],
+      "dicas": [
+        "Forma das caixas",
+        "Seis faces retangulares",
+        "Volume é comprimento × largura × altura"
+      ]
+    },
+    {
+      "id": "mat-cilindros-adv-01",
+      "tema": "Cilindros",
+      "dificuldade": "medio",
+      "resposta": "Cilindro",
+      "aceitas": [
+        "cilindro"
+      ],
+      "dicas": [
+        "Sólido de bases circulares",
+        "Volume πr²h",
+        "Forma de latas e canos"
       ]
     }
   ],
@@ -57186,6 +60525,78 @@
       "tema": "Matemática",
       "palavra": "Seno",
       "dica": "Oposto sobre hipotenusa"
+    },
+    {
+      "id": "mat-solidos-vistas-pal-01",
+      "tema": "Matemática",
+      "palavra": "Cubo",
+      "dica": "Seis faces quadradas"
+    },
+    {
+      "id": "mat-solidos-vistas-pal-02",
+      "tema": "Matemática",
+      "palavra": "Aresta",
+      "dica": "Encontro de duas faces"
+    },
+    {
+      "id": "mat-solidos-vistas-pal-03",
+      "tema": "Matemática",
+      "palavra": "Cone",
+      "dica": "Tem vista de frente triangular"
+    },
+    {
+      "id": "mat-solidos-vistas-pal-04",
+      "tema": "Matemática",
+      "palavra": "Caixa",
+      "dica": "Paralelepípedo de papelão"
+    },
+    {
+      "id": "mat-prismas-pal-01",
+      "tema": "Matemática",
+      "palavra": "Aquário",
+      "dica": "Prisma cheio de água"
+    },
+    {
+      "id": "mat-prismas-pal-02",
+      "tema": "Matemática",
+      "palavra": "Tijolo",
+      "dica": "Paralelepípedo da obra"
+    },
+    {
+      "id": "mat-prismas-pal-03",
+      "tema": "Matemática",
+      "palavra": "Litro",
+      "dica": "Um decímetro cúbico"
+    },
+    {
+      "id": "mat-prismas-pal-04",
+      "tema": "Matemática",
+      "palavra": "Caixa",
+      "dica": "Embalagem retangular"
+    },
+    {
+      "id": "mat-cilindros-pal-01",
+      "tema": "Matemática",
+      "palavra": "Lata",
+      "dica": "Cilindro de metal"
+    },
+    {
+      "id": "mat-cilindros-pal-02",
+      "tema": "Matemática",
+      "palavra": "Cano",
+      "dica": "Cilindro longo e oco"
+    },
+    {
+      "id": "mat-cilindros-pal-03",
+      "tema": "Matemática",
+      "palavra": "Silo",
+      "dica": "Guarda grãos"
+    },
+    {
+      "id": "mat-cilindros-pal-04",
+      "tema": "Matemática",
+      "palavra": "Rolo",
+      "dica": "Cilindro de papel"
     }
   ],
   "fichas": {
@@ -58923,6 +62334,132 @@
       "pegadinhas": [
         "Confundir perímetro com área.",
         "Trocar oposto e adjacente."
+      ]
+    },
+    "Faces, arestas e vértices": {
+      "texto": [
+        "Poliedros têm faces planas (cubo, prismas, pirâmides); corpos redondos têm superfícies curvas (cilindro, cone, esfera). Relação de Euler: V − A + F = 2.",
+        "Prisma de base com n lados: 2n vértices, 3n arestas e n + 2 faces. Pirâmide: n + 1 vértices, 2n arestas e n + 1 faces. Com os tipos de face conhecidos, some os lados de todas as faces e divida por 2 para obter as arestas."
+      ],
+      "pontos": [
+        "Cubo: 6, 12, 8.",
+        "Arestas = soma dos lados ÷ 2."
+      ],
+      "pegadinhas": [
+        "Esquecer a base na pirâmide.",
+        "Não dividir os lados por 2."
+      ]
+    },
+    "Planificações": {
+      "texto": [
+        "Planificação é o sólido aberto no plano. Cubo: 6 quadrados, com faces opostas nunca vizinhas no desenho. Cilindro: dois círculos e um retângulo de largura 2πr. Cone: um círculo e um setor cujo ângulo é 360° × raio ÷ geratriz.",
+        "A área da planificação é o material gasto: caixa, 2(ab + ac + bc); lata, 2πrh + 2πr²."
+      ],
+      "pontos": [
+        "Retângulo do cilindro: 2πr × h.",
+        "Dado: opostas somam 7."
+      ],
+      "pegadinhas": [
+        "Usar πr no retângulo do cilindro.",
+        "Contar só uma base."
+      ]
+    },
+    "Vistas": {
+      "texto": [
+        "Vistas são o sólido visto de frente, de lado e de cima. Cone em pé: triângulo e círculo; cilindro em pé: retângulo e círculo; pirâmide de base quadrada vista de cima: quadrado com as diagonais.",
+        "Em construções de cubos, a vista de cima com números dá a altura de cada coluna: some para contar os cubos. Sombras com luz de cima ou de frente reproduzem as vistas."
+      ],
+      "pontos": [
+        "Combine as três vistas para identificar.",
+        "Pilha em degraus: soma dos quadrados."
+      ],
+      "pegadinhas": [
+        "Trocar vista de cima e de frente.",
+        "Contar só os quadradinhos da vista."
+      ]
+    },
+    "Volume do prisma": {
+      "texto": [
+        "Volume de qualquer prisma: área da base × altura. Paralelepípedo: c × l × a; cubo: a³; prisma triangular: área do triângulo × altura.",
+        "Converta: 1 cm³ = 1 mL, 1 dm³ = 1 L, 1 m³ = 1.000 L. O volume de água usa a altura da água. Caixas abertas feitas cortando quadrados nos cantos: base (c − 2x)(l − 2x) e altura x."
+      ],
+      "pontos": [
+        "Base × altura.",
+        "1 m³ = 1.000 L."
+      ],
+      "pegadinhas": [
+        "Usar a profundidade total para água parcial.",
+        "Descontar o corte de um lado só."
+      ]
+    },
+    "Área total": {
+      "texto": [
+        "Área total = soma das faces. Paralelepípedo: 2(ab + ac + bc); cubo: 6a². Área lateral do prisma reto: perímetro da base × altura.",
+        "Em pinturas, conte só o que recebe tinta (sem chão, por exemplo). Do volume do cubo, tire a raiz cúbica para achar a aresta. Num cubo pintado e cortado, cantos têm 3 faces pintadas, meio das arestas 2, centros das faces 1."
+      ],
+      "pontos": [
+        "Lateral = perímetro × altura.",
+        "Cubo: aresta = ∛V."
+      ],
+      "pegadinhas": [
+        "Confundir área com volume.",
+        "Esquecer a tampa ou incluir o chão."
+      ]
+    },
+    "Proporções e deslocamento": {
+      "texto": [
+        "Ampliando as arestas k vezes, a área fica k² vezes maior e o volume, k³. Caixas semelhantes: capacidade proporcional ao cubo da razão.",
+        "Um objeto submerso faz a água subir: volume = área da base do recipiente × subida. Tempo para encher ou esvaziar = volume ÷ vazão, com o volume em litros."
+      ],
+      "pontos": [
+        "Volume × k³.",
+        "Volume do objeto = base × subida."
+      ],
+      "pegadinhas": [
+        "Usar k² no volume.",
+        "Esquecer de converter m³ em litros."
+      ]
+    },
+    "Volume do cilindro": {
+      "texto": [
+        "Volume = πr²h. Com o diâmetro, divida por 2 antes de elevar. Converta: 1.000 cm³ = 1 L; 1 m³ = 1.000 L; em decímetros, dm³ já é litro.",
+        "Para achar a altura do líquido, divida o volume pela área da base. Para massas, multiplique o volume pela densidade."
+      ],
+      "pontos": [
+        "Altura = volume ÷ πr².",
+        "Massa = volume × densidade."
+      ],
+      "pegadinhas": [
+        "Usar o diâmetro como raio.",
+        "Confundir área lateral com volume."
+      ]
+    },
+    "Área do cilindro": {
+      "texto": [
+        "Lateral = 2πrh (retângulo de largura 2πr); bases = 2πr²; total = soma. Rótulos cobrem só a lateral; caixas d'água pintadas por fora costumam incluir a tampa, mas não o fundo.",
+        "Na planificação, a largura do retângulo dá o raio: r = largura ÷ 2π. Volumes com tubo no meio (rolos) usam π(R² − r²) × h."
+      ],
+      "pontos": [
+        "Lateral = 2πrh.",
+        "Rolo: π(R² − r²)h."
+      ],
+      "pegadinhas": [
+        "Usar πrh na lateral.",
+        "Esquecer uma das bases."
+      ]
+    },
+    "Comparar cilindros": {
+      "texto": [
+        "O raio entra ao quadrado: dobrar o raio quadruplica o volume; dobrar a altura, dobra. Compare embalagens por r² × h e pelo preço por volume.",
+        "Despejando de um cilindro para outro, o volume se conserva: nova altura = volume ÷ nova base. Um cilindro numa caixa de base quadrada que o abraça ocupa π/4 dela."
+      ],
+      "pontos": [
+        "Compare r² × h.",
+        "Volume conservado."
+      ],
+      "pegadinhas": [
+        "Comparar só as alturas.",
+        "Usar a razão linear dos raios."
       ]
     }
   }
