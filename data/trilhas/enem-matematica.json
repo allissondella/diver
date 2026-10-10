@@ -5888,6 +5888,333 @@
           "mesma unidade"
         ]
       }
+    },
+    {
+      "id": "mat-plano-cartesiano",
+      "nome": "Aula 58 · Plano cartesiano e leitura de gráficos",
+      "modulo": "Módulo 10 · Funções",
+      "descricao": "Módulo 10 · aula 1 de 3 · 35 min · treina as habilidades H6 e H20",
+      "habilidades": [
+        "H6",
+        "H20"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Eixos e pontos",
+            "texto": [
+              "O plano cartesiano tem dois eixos perpendiculares: o horizontal, das abscissas (x), e o vertical, das ordenadas (y), que se cruzam na origem (0, 0). Cada ponto é um **par ordenado** (x, y): primeiro se anda na horizontal, depois na vertical. O ponto (3, −2) fica 3 unidades à direita e 2 abaixo da origem. A ordem importa: (3, −2) e (−2, 3) são pontos diferentes. Pontos sobre o eixo x têm y = 0; sobre o eixo y, x = 0."
+            ]
+          },
+          {
+            "titulo": "Quadrantes e distâncias",
+            "texto": [
+              "Os eixos dividem o plano em quatro **quadrantes**, numerados no sentido anti-horário a partir do canto superior direito. No 1º, x e y são positivos; no 2º, x é negativo e y positivo; no 3º, os dois são negativos; no 4º, x é positivo e y negativo. Para a distância entre dois pontos na mesma horizontal, subtraia os x; na mesma vertical, subtraia os y; em diagonal, use Pitágoras com essas duas diferenças. O ponto médio de um segmento tem a média dos x e a média dos y."
+            ]
+          },
+          {
+            "titulo": "Ler um gráfico",
+            "texto": [
+              "Antes de responder, leia o título, o que cada eixo mede e as unidades. Em gráficos de linha, o ponto mais alto é o máximo e o mais baixo, o mínimo; trechos subindo indicam crescimento, descendo indicam queda, e trechos horizontais, valor constante. O cruzamento de duas linhas mostra o momento em que as grandezas se igualam. Cuidado com eixos que não começam no zero e com escalas diferentes, que exageram ou escondem diferenças."
+            ]
+          },
+          {
+            "titulo": "Taxa de variação e como o Enem cobra",
+            "texto": [
+              "A **taxa de variação** mede quanto y muda para cada unidade de x: (y₂ − y₁) ÷ (x₂ − x₁). Se a temperatura passa de 10 °C às 6 h para 22 °C às 10 h, sobe 12 °C em 4 h, ou 3 °C por hora. Num gráfico de linha, quanto mais inclinado o trecho, maior a taxa; trecho horizontal tem taxa zero, e trecho descendo, taxa negativa. O Enem cobra gráficos de consumo, temperatura, velocidade, nível de reservatórios e preços ao longo do tempo, pedindo o período de maior crescimento, o máximo, o mínimo e o valor num instante."
+            ]
+          }
+        ],
+        "introducao": "Mapas de cidade, batalha naval, gráficos de temperatura, de preço e de velocidade: tudo usa um plano com dois eixos. Esta aula ensina a localizar pontos, a ler gráficos de linha como o Enem cobra e a medir quanto uma grandeza muda em relação a outra.",
+        "mapaMental": {
+          "centro": "Plano cartesiano",
+          "ramos": [
+            {
+              "titulo": "Eixos",
+              "itens": [
+                "abscissas x na horizontal",
+                "ordenadas y na vertical",
+                "origem (0, 0)"
+              ]
+            },
+            {
+              "titulo": "Quadrantes",
+              "itens": [
+                "(+, +), (−, +), (−, −), (+, −)",
+                "sentido anti-horário"
+              ]
+            },
+            {
+              "titulo": "Distâncias",
+              "itens": [
+                "subtrair os x ou os y",
+                "Pitágoras em diagonal",
+                "ponto médio pela média"
+              ]
+            },
+            {
+              "titulo": "Gráfico",
+              "itens": [
+                "máximo e mínimo",
+                "queda e crescimento",
+                "trecho horizontal constante"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🚢",
+            "conceito": "Batalha naval",
+            "liga": "par ordenado",
+            "porque": "Primeiro a coluna, depois a linha: a ordem acha o navio."
+          },
+          {
+            "icone": "⛰️",
+            "conceito": "Ladeira íngreme",
+            "liga": "taxa de variação alta",
+            "porque": "Quanto mais inclinada a subida, mais y muda a cada passo."
+          },
+          {
+            "icone": "🕐",
+            "conceito": "Relógio deitado",
+            "liga": "tempo no eixo x",
+            "porque": "Nos gráficos do dia a dia, o tempo corre na horizontal."
+          }
+        ],
+        "pontos": [
+          "Cada ponto é um **par ordenado** (x, y): primeiro x, depois y.",
+          "**Quadrantes**: (+, +), (−, +), (−, −), (+, −), no sentido anti-horário.",
+          "Leia título, eixos e unidades antes de responder.",
+          "**Taxa de variação** = (y₂ − y₁) ÷ (x₂ − x₁)."
+        ],
+        "perolas": [
+          "Trecho horizontal: valor constante, taxa zero.",
+          "Eixo que não começa no zero exagera as diferenças."
+        ],
+        "reforcar": [
+          "par ordenado",
+          "quadrantes",
+          "taxa de variacao"
+        ]
+      }
+    },
+    {
+      "id": "mat-ideia-funcao",
+      "nome": "Aula 59 · A ideia de função",
+      "modulo": "Módulo 10 · Funções",
+      "descricao": "Módulo 10 · aula 2 de 3 · 35 min · treina as habilidades H19 e H20",
+      "habilidades": [
+        "H19",
+        "H20"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "O que é uma função",
+            "texto": [
+              "Função é uma regra que associa a cada valor de entrada, x, um único valor de saída, y. A máquina de refrigerante funciona assim: aperta-se um botão e sai sempre a mesma bebida. Se um botão pudesse soltar duas bebidas diferentes, não seria função. Num gráfico, isso vira o teste da reta vertical: qualquer reta vertical corta o gráfico de uma função no máximo uma vez. Uma circunferência inteira não passa no teste, então não é gráfico de função."
+            ]
+          },
+          {
+            "titulo": "Lei de formação e notação",
+            "texto": [
+              "A **lei de formação** é a fórmula que liga as duas grandezas. Um táxi que cobra R$ 5 de bandeirada mais R$ 2 por quilômetro tem lei f(x) = 5 + 2x, em que x é a distância. Escrever f(10) significa calcular o valor para x = 10: f(10) = 5 + 20 = 25 reais. O caminho contrário também cai: se a corrida custou R$ 31, então 5 + 2x = 31 e x = 13 km. Quando o problema traz uma tabela, procure o padrão entre as linhas para descobrir a fórmula."
+            ]
+          },
+          {
+            "titulo": "Domínio e imagem",
+            "texto": [
+              "O **domínio** é o conjunto dos valores que x pode assumir; a **imagem**, os valores que y efetivamente assume. Em situações reais, o domínio tem limites naturais: não há quantidade negativa de pães nem ônibus com mais passageiros que lugares. Se uma fábrica produz de 0 a 500 peças por dia, o domínio é de 0 a 500. No gráfico, o domínio aparece projetado no eixo x, e a imagem, projetada no eixo y."
+            ]
+          },
+          {
+            "titulo": "Gráfico e como o Enem cobra",
+            "texto": [
+              "Para traçar o gráfico, monte uma tabela com alguns valores de x, calcule os de y e marque os pares no plano. Função crescente sobe da esquerda para a direita; decrescente desce. Os zeros da função são os valores de x em que y = 0, onde o gráfico cruza o eixo x. O Enem cobra tarifas de táxi, contas de água e luz por faixa, salários com comissão, planos de celular, estacionamentos e tabelas que pedem a lei de formação ou o valor numa situação."
+            ]
+          }
+        ],
+        "introducao": "O preço da corrida de aplicativo depende da distância, a conta de luz depende do consumo, a área do quadrado depende do lado. Sempre que uma grandeza depende de outra de um jeito bem definido, existe uma função. Esta aula apresenta a ideia, a linguagem f(x) e a leitura de gráficos de funções.",
+        "mapaMental": {
+          "centro": "Função",
+          "ramos": [
+            {
+              "titulo": "Ideia",
+              "itens": [
+                "cada x com um único y",
+                "teste da reta vertical"
+              ]
+            },
+            {
+              "titulo": "Lei de formação",
+              "itens": [
+                "calcular f(10)",
+                "caminho contrário",
+                "padrão da tabela"
+              ]
+            },
+            {
+              "titulo": "Domínio e imagem",
+              "itens": [
+                "valores de x projetados no eixo x",
+                "valores de y projetados no eixo y"
+              ]
+            },
+            {
+              "titulo": "Gráfico",
+              "itens": [
+                "tabela de valores",
+                "crescente ou decrescente",
+                "zeros"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🥤",
+            "conceito": "Máquina de refrigerante",
+            "liga": "cada botão, uma bebida",
+            "porque": "Um botão que soltasse duas bebidas não seria função."
+          },
+          {
+            "icone": "🚕",
+            "conceito": "Taxímetro",
+            "liga": "bandeirada mais quilômetros",
+            "porque": "O preço depende da distância: f(x) = 5 + 2x."
+          },
+          {
+            "icone": "📏",
+            "conceito": "Reta vertical",
+            "liga": "teste de função",
+            "porque": "Se cortar o gráfico duas vezes, não é função."
+          }
+        ],
+        "pontos": [
+          "Função: cada x tem um único y.",
+          "**Lei de formação**: a fórmula que liga x e y; f(10) é o valor para x = 10.",
+          "**Domínio**: valores possíveis de x; **imagem**: valores que y assume.",
+          "Zeros: onde o gráfico cruza o eixo x."
+        ],
+        "perolas": [
+          "Circunferência inteira não é gráfico de função.",
+          "Não existe meio passageiro nem pão negativo."
+        ],
+        "reforcar": [
+          "lei de formacao",
+          "dominio",
+          "imagem"
+        ]
+      }
+    },
+    {
+      "id": "mat-funcao-afim",
+      "nome": "Aula 60 · Função afim",
+      "modulo": "Módulo 10 · Funções",
+      "descricao": "Módulo 10 · aula 3 de 3 · 35 min · treina as habilidades H19 e H21",
+      "habilidades": [
+        "H19",
+        "H21"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "A forma f(x) = ax + b",
+            "texto": [
+              "A função afim tem lei f(x) = ax + b. O número b é o **coeficiente linear**: o valor quando x = 0, a parte fixa, como a bandeirada do táxi ou a assinatura do plano. O número a é o **coeficiente angular**: quanto y muda a cada unidade de x, a taxa constante, como o preço por quilômetro. No gráfico, a mede a inclinação da reta, e b, a altura em que ela corta o eixo vertical. Se b = 0, a função é linear, e y é diretamente proporcional a x."
+            ]
+          },
+          {
+            "titulo": "Crescente, decrescente e raiz",
+            "texto": [
+              "Se a > 0, a função cresce; se a < 0, decresce; se a = 0, é constante. A **raiz**, ou zero, é o x que faz f(x) = 0: basta resolver ax + b = 0, o que dá x = −b ÷ a. Uma vela de 20 cm que queima 2 cm por hora tem altura h(t) = 20 − 2t e acaba quando 20 − 2t = 0, ou seja, em 10 horas. A raiz é o ponto em que a reta corta o eixo x."
+            ]
+          },
+          {
+            "titulo": "Achar a lei com dois pontos",
+            "texto": [
+              "Com dois pontos (x₁, y₁) e (x₂, y₂), o número a é (y₂ − y₁) ÷ (x₂ − x₁). Depois, substitua um dos pontos na lei para achar b. Se uma conta de luz é R$ 70 com 100 kWh e R$ 110 com 200 kWh, a = 40 ÷ 100 = 0,40 por kWh, e b = 70 − 40 = 30 reais de taxa fixa: f(x) = 30 + 0,4x. Confira a lei nos dois pontos antes de usar."
+            ]
+          },
+          {
+            "titulo": "Gráfico e como o Enem cobra",
+            "texto": [
+              "O gráfico é uma reta que corta o eixo y em b. Duas retas paralelas têm o mesmo a; o ponto em que duas retas se cruzam mostra quando dois planos custam o mesmo. O Enem cobra táxis, planos de celular, contas com taxa fixa, salários com comissão, reservatórios que enchem ou esvaziam em ritmo constante, depreciação de bens, ponto de equilíbrio entre receita e custo e a comparação de dois planos para descobrir a partir de quando um passa a valer mais a pena."
+            ]
+          }
+        ],
+        "introducao": "Corrida de táxi, conta de celular com valor fixo, salário com comissão, vela que derrete sempre no mesmo ritmo: quando uma grandeza cresce ou cai a mesma quantidade por unidade, o gráfico é uma reta. Essa é a função afim, a mais cobrada do Enem dentro do tema funções.",
+        "mapaMental": {
+          "centro": "Função afim",
+          "ramos": [
+            {
+              "titulo": "Lei",
+              "itens": [
+                "f(x) = ax + b",
+                "coeficiente linear b é a parte fixa"
+              ]
+            },
+            {
+              "titulo": "Inclinação",
+              "itens": [
+                "a > 0 cresce",
+                "a < 0 decresce",
+                "a = 0 constante"
+              ]
+            },
+            {
+              "titulo": "Raiz",
+              "itens": [
+                "x = −b ÷ a",
+                "onde a reta corta o eixo x"
+              ]
+            },
+            {
+              "titulo": "Dois pontos",
+              "itens": [
+                "a = (y₂ − y₁) ÷ (x₂ − x₁)",
+                "substituir para achar b"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🚕",
+            "conceito": "Bandeirada",
+            "liga": "parte fixa b",
+            "porque": "Paga-se mesmo sem andar: é o valor em x = 0."
+          },
+          {
+            "icone": "📐",
+            "conceito": "Rampa",
+            "liga": "coeficiente angular",
+            "porque": "Quanto mais íngreme a rampa, maior o a."
+          },
+          {
+            "icone": "🕯️",
+            "conceito": "Vela queimando",
+            "liga": "reta que desce",
+            "porque": "Perde a mesma altura a cada hora até acabar."
+          }
+        ],
+        "pontos": [
+          "f(x) = ax + b: o **coeficiente linear** b é o valor em x = 0.",
+          "O **coeficiente angular** a é a taxa: a > 0 cresce, a < 0 decresce.",
+          "**Raiz**: x = −b ÷ a, onde a reta cruza o eixo x.",
+          "Com dois pontos: a = Δy ÷ Δx; depois substitua para achar b."
+        ],
+        "perolas": [
+          "Retas paralelas têm o mesmo a.",
+          "Se b = 0, a função é linear: proporção direta."
+        ],
+        "reforcar": [
+          "coeficiente linear",
+          "coeficiente angular",
+          "raiz"
+        ]
+      }
     }
   ],
   "questoes": [
@@ -32247,6 +32574,1386 @@
         "Esqueceu de dividir o cone por 3.",
         "Dividiu tudo por 3.",
         "Contou só o cilindro."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q01",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Em que quadrante está o ponto (−3, 5)?",
+      "alternativas": [
+        "No 4º quadrante",
+        "No 3º quadrante",
+        "Sobre o eixo y",
+        "No 1º quadrante",
+        "No 2º quadrante"
+      ],
+      "correta": 4,
+      "explicacao": "x negativo e y positivo: 2º quadrante. Dica de mergulhador: (+, +), (−, +), (−, −), (+, −).",
+      "comentarios": [
+        "Lá x é positivo e y negativo.",
+        "Lá os dois são negativos.",
+        "Isso exigiria x = 0.",
+        "Lá os dois são positivos.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q02",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Qual é o ponto que fica 3 unidades à esquerda da origem e 2 unidades acima dela?",
+      "alternativas": [
+        "(2, −3)",
+        "(3, −2)",
+        "(−3, 2)",
+        "(3, 2)",
+        "(−2, 3)"
+      ],
+      "correta": 2,
+      "explicacao": "Esquerda: x = −3. Acima: y = 2. Dica de mergulhador: primeiro x, depois y.",
+      "comentarios": [
+        "Inverteu a ordem e o sinal.",
+        "Trocou os dois sinais.",
+        "",
+        "Esquerda é negativo.",
+        "Inverteu a ordem."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q03",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Onde fica o ponto (0, 7)?",
+      "alternativas": [
+        "Na origem",
+        "No 2º quadrante",
+        "Sobre o eixo y",
+        "Sobre o eixo x",
+        "No 1º quadrante"
+      ],
+      "correta": 2,
+      "explicacao": "Com x = 0, o ponto está sobre o eixo vertical. Dica de mergulhador: x = 0 é eixo y; y = 0 é eixo x.",
+      "comentarios": [
+        "A origem é (0, 0).",
+        "x não é negativo.",
+        "",
+        "Lá y = 0.",
+        "Com x = 0, o ponto está num eixo."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q04",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Qual é a distância entre os pontos (2, 3) e (2, 11)?",
+      "alternativas": [
+        "0",
+        "14",
+        "4",
+        "11",
+        "8"
+      ],
+      "correta": 4,
+      "explicacao": "Mesmo x: distância = 11 − 3 = 8. Dica de mergulhador: na mesma vertical, subtraia os y.",
+      "comentarios": [
+        "Os x iguais não tornam a distância zero.",
+        "Somou os y.",
+        "Dividiu por 2.",
+        "É só o y do segundo ponto.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q05",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Qual é a distância entre os pontos (1, 2) e (4, 6)?",
+      "alternativas": [
+        "1",
+        "25",
+        "5",
+        "7",
+        "13"
+      ],
+      "correta": 2,
+      "explicacao": "Diferenças: 3 e 4. Distância: √(9 + 16) = 5. Dica de mergulhador: em diagonal, Pitágoras.",
+      "comentarios": [
+        "Subtraiu as diferenças.",
+        "Não tirou a raiz.",
+        "",
+        "Somou as diferenças 3 e 4.",
+        "Somou todas as coordenadas."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q06",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um terreno retangular tem vértices nos pontos (1, 1), (7, 1), (7, 5) e (1, 5), com medidas em metros. Qual é a sua área?",
+      "alternativas": [
+        "12 m²",
+        "20 m²",
+        "24 m²",
+        "48 m²",
+        "35 m²"
+      ],
+      "correta": 2,
+      "explicacao": "Base: 7 − 1 = 6. Altura: 5 − 1 = 4. Área: 24 m². Dica de mergulhador: lado é diferença de coordenadas.",
+      "comentarios": [
+        "Dividiu por 2.",
+        "Somou os lados.",
+        "",
+        "Multiplicou por 2.",
+        "Usou 7 × 5."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q07",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Uma ciclovia reta liga os pontos (2, 8) e (6, 2) de um mapa. Um bebedouro fica exatamente no meio dela. Quais são as coordenadas do bebedouro?",
+      "alternativas": [
+        "(5, 4)",
+        "(4, 3)",
+        "(4, 5)",
+        "(2, 3)",
+        "(8, 10)"
+      ],
+      "correta": 2,
+      "explicacao": "x: (2 + 6) ÷ 2 = 4. y: (8 + 2) ÷ 2 = 5. Dica de mergulhador: ponto médio é a média de cada coordenada.",
+      "comentarios": [
+        "Inverteu a ordem.",
+        "Errou a média dos y.",
+        "",
+        "Fez metade das diferenças.",
+        "Somou sem dividir por 2."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q08",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico de linha mostra a temperatura de uma cidade ao longo de um dia: 14 °C às 6 h, 20 °C às 9 h, 27 °C às 12 h, 25 °C às 15 h e 18 °C às 18 h. Qual foi a temperatura máxima registrada?",
+      "alternativas": [
+        "25 °C",
+        "27 °C",
+        "20 °C",
+        "18 °C",
+        "14 °C"
+      ],
+      "correta": 1,
+      "explicacao": "O ponto mais alto do gráfico é 27 °C, ao meio-dia. Dica de mergulhador: máximo é o ponto mais alto.",
+      "comentarios": [
+        "É a das 15 h.",
+        "",
+        "É a das 9 h.",
+        "É a das 18 h.",
+        "É a mínima."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q09",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Num gráfico de linha, o que indica um trecho horizontal?",
+      "alternativas": [
+        "Que o valor ficou constante",
+        "Que o valor subiu",
+        "Que faltam dados",
+        "Que o valor chegou a zero",
+        "Que o valor caiu"
+      ],
+      "correta": 0,
+      "explicacao": "Horizontal: y não muda enquanto x avança. Dica de mergulhador: reta deitada, nada mudou.",
+      "comentarios": [
+        "",
+        "Subida é trecho inclinado para cima.",
+        "O trecho mostra um valor que não mudou.",
+        "Trecho horizontal pode estar em qualquer altura.",
+        "Queda é trecho descendo."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q10",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Os custos de dois planos de celular aparecem num mesmo gráfico, e as duas linhas se cruzam no ponto de 300 minutos. O que isso significa?",
+      "alternativas": [
+        "Com 300 minutos, os dois planos ficam grátis",
+        "Acima de 300 minutos, os dois custam igual",
+        "Os dois planos dão 300 minutos grátis",
+        "O plano mais barato tem 300 minutos",
+        "Com 300 minutos, os dois planos custam o mesmo"
+      ],
+      "correta": 4,
+      "explicacao": "No cruzamento, as duas linhas têm o mesmo y para o mesmo x. Dica de mergulhador: cruzou, empatou.",
+      "comentarios": [
+        "Custo igual não é custo zero.",
+        "Só no cruzamento os custos se igualam.",
+        "O cruzamento compara os custos.",
+        "O cruzamento é o ponto de empate.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q11",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Com as temperaturas 14 °C às 6 h, 20 °C às 9 h, 27 °C às 12 h, 25 °C às 15 h e 18 °C às 18 h, em que intervalo a temperatura mais subiu?",
+      "alternativas": [
+        "Das 9 h às 12 h",
+        "Das 12 h às 15 h",
+        "Das 6 h às 12 h",
+        "Das 15 h às 18 h",
+        "Das 6 h às 9 h"
+      ],
+      "correta": 0,
+      "explicacao": "Subidas: 6 °C (6 h–9 h) e 7 °C (9 h–12 h). Maior: 9 h às 12 h. Dica de mergulhador: compare as diferenças de cada trecho.",
+      "comentarios": [
+        "",
+        "Nesse intervalo, caiu.",
+        "São dois intervalos juntos.",
+        "Nesse intervalo, caiu.",
+        "Subiu 6 °C, menos que os 7 °C seguintes."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q12",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico de barras tem o eixo vertical começando em 90 mil. Ele mostra 92 mil vendas num ano e 96 mil no seguinte, e a segunda barra parece três vezes maior. Qual foi o aumento real, aproximado?",
+      "alternativas": [
+        "4 mil por cento",
+        "Cerca de 4%",
+        "300%",
+        "200%",
+        "Cerca de 40%"
+      ],
+      "correta": 1,
+      "explicacao": "(96 − 92) ÷ 92 ≈ 0,043, cerca de 4%. Dica de mergulhador: eixo cortado exagera; calcule com os valores.",
+      "comentarios": [
+        "Confundiu unidades.",
+        "",
+        "É a impressão visual, não o aumento real.",
+        "Comparou as alturas desenhadas.",
+        "Errou a vírgula."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q13",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico de velocidade de um ônibus mostra 80 km/h de 0 h a 2 h, 0 km/h de 2 h a 3 h e 60 km/h de 3 h a 5 h. Que distância ele percorreu?",
+      "alternativas": [
+        "280 km",
+        "160 km",
+        "140 km",
+        "200 km",
+        "350 km"
+      ],
+      "correta": 0,
+      "explicacao": "80 × 2 + 0 × 1 + 60 × 2 = 160 + 120 = 280 km. Dica de mergulhador: distância = velocidade × tempo em cada trecho.",
+      "comentarios": [
+        "",
+        "Contou só o primeiro trecho.",
+        "Somou as velocidades.",
+        "Contou só o primeiro trecho e meio.",
+        "Contou o tempo parado a 70 km/h."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q14",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico mostra a distância de um estudante até a casa dele: 0 km aos 0 min, 3 km aos 10 min, 3 km aos 20 min e 0 km aos 40 min. Qual foi a velocidade dele na volta?",
+      "alternativas": [
+        "0 km/h",
+        "9 km/h",
+        "6 km/h",
+        "3 km/h",
+        "18 km/h"
+      ],
+      "correta": 1,
+      "explicacao": "Volta: 3 km em 20 min = 1/3 h. Velocidade: 3 ÷ (1/3) = 9 km/h. Dica de mergulhador: converta minutos em horas.",
+      "comentarios": [
+        "É a do trecho parado.",
+        "",
+        "Usou 3 km em 30 min.",
+        "Usou 3 km em 1 hora.",
+        "É a velocidade da ida."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q15",
+      "tema": "Taxa de variação",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "A temperatura passou de 10 °C às 6 h para 22 °C às 10 h, subindo no mesmo ritmo. Qual foi a taxa de variação?",
+      "alternativas": [
+        "3 °C por hora",
+        "2,2 °C por hora",
+        "12 °C por hora",
+        "1,2 °C por hora",
+        "4 °C por hora"
+      ],
+      "correta": 0,
+      "explicacao": "(22 − 10) ÷ (10 − 6) = 12 ÷ 4 = 3 °C por hora. Dica de mergulhador: diferença de y ÷ diferença de x.",
+      "comentarios": [
+        "",
+        "Dividiu 22 por 10.",
+        "Não dividiu pelo tempo.",
+        "Dividiu 12 por 10.",
+        "Dividiu 12 por 3."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q16",
+      "tema": "Taxa de variação",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "O preço de um produto foi de R$ 4,00 em 2020 para R$ 6,00 em 2024, crescendo de forma constante. Quanto subiu por ano?",
+      "alternativas": [
+        "R$ 1,50",
+        "R$ 0,50",
+        "R$ 0,40",
+        "R$ 2,00",
+        "R$ 1,00"
+      ],
+      "correta": 1,
+      "explicacao": "(6 − 4) ÷ (2024 − 2020) = 2 ÷ 4 = R$ 0,50 por ano. Dica de mergulhador: são 4 intervalos de um ano.",
+      "comentarios": [
+        "Dividiu 6 por 4.",
+        "",
+        "Dividiu 2 por 5.",
+        "É a subida total.",
+        "Dividiu 4 por 4."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q17",
+      "tema": "Taxa de variação",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico liga os pontos (0, 0), (2, 6), (5, 9) e (6, 13). Em qual trecho a taxa de variação é maior?",
+      "alternativas": [
+        "De (0, 0) a (6, 13)",
+        "Todos têm a mesma taxa",
+        "De (0, 0) a (2, 6)",
+        "De (2, 6) a (5, 9)",
+        "De (5, 9) a (6, 13)"
+      ],
+      "correta": 4,
+      "explicacao": "Taxas: 6 ÷ 2 = 3; 3 ÷ 3 = 1; 4 ÷ 1 = 4. Maior: o último trecho. Dica de mergulhador: maior taxa, trecho mais inclinado.",
+      "comentarios": [
+        "Esse não é um trecho do gráfico.",
+        "As inclinações são diferentes.",
+        "A taxa é 3, menor que 4.",
+        "A taxa é 1.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q18",
+      "tema": "Taxa de variação",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um reservatório tinha 800 L às 8 h e 500 L às 14 h, perdendo água sempre no mesmo ritmo. Mantido o ritmo, a que horas ele fica vazio?",
+      "alternativas": [
+        "Às 20 h",
+        "Às 16 h",
+        "Às 18 h",
+        "À meia-noite (24 h)",
+        "Às 22 h"
+      ],
+      "correta": 3,
+      "explicacao": "Taxa: (500 − 800) ÷ 6 = −50 L/h. Os 500 L duram 10 h: 14 h + 10 h = 24 h. Dica de mergulhador: taxa negativa é perda.",
+      "comentarios": [
+        "Supôs que os 500 L acabariam em 6 h.",
+        "Usou 250 L/h.",
+        "Usou uma taxa de 125 L/h.",
+        "",
+        "Errou a taxa."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q19",
+      "tema": "Taxa de variação",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Uma planta tem 8 cm na semana 2 e 20 cm na semana 6, crescendo a uma taxa constante. Qual era a altura dela na semana 0?",
+      "alternativas": [
+        "5 cm",
+        "8 cm",
+        "0 cm",
+        "2 cm",
+        "4 cm"
+      ],
+      "correta": 3,
+      "explicacao": "Taxa: 12 ÷ 4 = 3 cm por semana. Semana 0: 8 − 2 × 3 = 2 cm. Dica de mergulhador: ache a taxa e volte no tempo.",
+      "comentarios": [
+        "Usou 1,5 cm por semana.",
+        "É a altura na semana 2.",
+        "A planta já existia.",
+        "",
+        "Usou 2 cm por semana."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q20",
+      "tema": "Taxa de variação",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "A cidade A passou de 20 mil para 26 mil habitantes em 3 anos; a cidade B, de 50 mil para 56 mil em 4 anos, ambas em ritmo constante. Qual cresceu mais habitantes por ano?",
+      "alternativas": [
+        "A cidade A, com 6 mil por ano",
+        "As duas igualmente, com 6 mil",
+        "A cidade A, com 2 mil por ano",
+        "A cidade B, por ser maior",
+        "A cidade B, com 1,5 mil por ano"
+      ],
+      "correta": 2,
+      "explicacao": "A: 6 ÷ 3 = 2 mil por ano. B: 6 ÷ 4 = 1,5 mil por ano. Dica de mergulhador: mesma subida em menos tempo, taxa maior.",
+      "comentarios": [
+        "6 mil foi o total em 3 anos.",
+        "O tempo foi diferente.",
+        "",
+        "Tamanho não é taxa.",
+        "1,5 mil é menos que 2 mil."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q01",
+      "tema": "O que é função",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Qual destas relações é uma função?",
+      "alternativas": [
+        "A cada cidade, os seus bairros",
+        "A cada ano, os seus feriados",
+        "A cada mãe, os seus filhos",
+        "A cada número positivo, as suas raízes quadradas",
+        "A cada pessoa, a sua data de nascimento"
+      ],
+      "correta": 4,
+      "explicacao": "Cada pessoa tem uma única data de nascimento. Dica de mergulhador: função não deixa a entrada com duas saídas.",
+      "comentarios": [
+        "Uma cidade tem vários bairros.",
+        "Um ano tem vários feriados.",
+        "Uma mãe pode ter vários filhos.",
+        "São duas raízes, uma positiva e uma negativa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q02",
+      "tema": "O que é função",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Se f(x) = 3x + 1, quanto vale f(4)?",
+      "alternativas": [
+        "13",
+        "31",
+        "16",
+        "8",
+        "12"
+      ],
+      "correta": 0,
+      "explicacao": "f(4) = 3 × 4 + 1 = 13. Dica de mergulhador: troque o x pelo número.",
+      "comentarios": [
+        "",
+        "Colocou o 4 ao lado do 3.",
+        "Fez 3 × (4 + 1) + 1.",
+        "Somou 4 + 3 + 1.",
+        "Esqueceu o + 1."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q03",
+      "tema": "O que é função",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Pelo teste da reta vertical, quando um gráfico representa uma função?",
+      "alternativas": [
+        "Quando ele é uma linha reta",
+        "Quando toda reta vertical o corta no máximo uma vez",
+        "Quando toda reta horizontal o corta uma vez",
+        "Quando toda reta vertical o corta duas vezes",
+        "Quando ele passa pela origem"
+      ],
+      "correta": 1,
+      "explicacao": "Uma reta vertical é um x fixo; cortar duas vezes seria ter dois y. Dica de mergulhador: régua em pé, no máximo um toque.",
+      "comentarios": [
+        "Curvas também podem ser funções.",
+        "",
+        "O teste é com retas verticais.",
+        "Duas vezes mostra dois y para um x.",
+        "Não é exigência."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q04",
+      "tema": "O que é função",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Um táxi cobra f(x) = 5 + 2x reais, em que x é a distância em km. Uma corrida custou R$ 31. Qual foi a distância?",
+      "alternativas": [
+        "26 km",
+        "18 km",
+        "67 km",
+        "15,5 km",
+        "13 km"
+      ],
+      "correta": 4,
+      "explicacao": "5 + 2x = 31, então 2x = 26 e x = 13 km. Dica de mergulhador: tire a parte fixa e divida pelo preço por km.",
+      "comentarios": [
+        "Esqueceu de dividir por 2.",
+        "Somou a bandeirada em vez de subtrair.",
+        "Calculou f(31).",
+        "Dividiu 31 por 2 sem tirar a bandeirada.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q05",
+      "tema": "O que é função",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma tabela tem x = 1, 2, 3, 4 e y = 5, 8, 11, 14. Qual é a lei de formação?",
+      "alternativas": [
+        "y = 5x",
+        "y = 3x + 2",
+        "y = 2x + 3",
+        "y = 3x + 5",
+        "y = x + 4"
+      ],
+      "correta": 1,
+      "explicacao": "y aumenta 3 a cada x; voltando de x = 1 para 0, y = 5 − 3 = 2. Dica de mergulhador: teste a lei em duas linhas da tabela.",
+      "comentarios": [
+        "Só serve para x = 1.",
+        "",
+        "Só serve para x = 1.",
+        "O valor em x = 0 seria 2.",
+        "Só serve para x = 1."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q06",
+      "tema": "O que é função",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma vendedora recebe R$ 1.500 fixos mais 5% do que vende no mês. Quanto ela recebe num mês com R$ 20.000 em vendas?",
+      "alternativas": [
+        "R$ 2.500",
+        "R$ 3.500",
+        "R$ 21.500",
+        "R$ 1.000",
+        "R$ 1.505"
+      ],
+      "correta": 0,
+      "explicacao": "S = 1.500 + 0,05 × 20.000 = 1.500 + 1.000 = R$ 2.500. Dica de mergulhador: fixo + porcentagem das vendas.",
+      "comentarios": [
+        "",
+        "Usou 10%.",
+        "Somou as vendas ao fixo.",
+        "Esqueceu o fixo.",
+        "Somou 5 reais."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q07",
+      "tema": "O que é função",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma função da forma f(x) = ax + b tem f(2) = 7 e f(5) = 16. Quanto vale f(10)?",
+      "alternativas": [
+        "35",
+        "31",
+        "28",
+        "32",
+        "70"
+      ],
+      "correta": 1,
+      "explicacao": "a = (16 − 7) ÷ (5 − 2) = 3; b = 7 − 6 = 1. f(10) = 31. Dica de mergulhador: primeiro a taxa, depois a parte fixa.",
+      "comentarios": [
+        "Dobrou f(5) e somou 3.",
+        "",
+        "Usou f(x) = 3x − 2.",
+        "Usou f(x) = 3x + 2.",
+        "Multiplicou f(2) por 10."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q08",
+      "tema": "Domínio e imagem",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma padaria calcula o preço de x pães. Qual destes valores não pode estar no domínio dessa função?",
+      "alternativas": [
+        "12",
+        "1",
+        "30",
+        "−3",
+        "0"
+      ],
+      "correta": 3,
+      "explicacao": "Não existe quantidade negativa de pães. Dica de mergulhador: o domínio respeita a vida real.",
+      "comentarios": [
+        "Uma dúzia é possível.",
+        "Um pão é possível.",
+        "Trinta pães são possíveis.",
+        "",
+        "Comprar zero pães é possível."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q09",
+      "tema": "Domínio e imagem",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "A função f(x) = 2x tem domínio {1, 2, 3}. Qual é a sua imagem?",
+      "alternativas": [
+        "{1, 4, 9}",
+        "{2, 3, 4}",
+        "{1, 2, 3}",
+        "{2, 4, 6}",
+        "{3, 4, 5}"
+      ],
+      "correta": 3,
+      "explicacao": "f(1) = 2, f(2) = 4, f(3) = 6. Dica de mergulhador: imagem são as saídas.",
+      "comentarios": [
+        "Elevou ao quadrado.",
+        "Somou 1.",
+        "É o domínio.",
+        "",
+        "Somou 2."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q10",
+      "tema": "Domínio e imagem",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma fábrica produz de 0 a 500 peças por dia, com custo C(x) = 1.000 + 3x reais. Qual é a imagem dessa função?",
+      "alternativas": [
+        "De R$ 3 a R$ 1.500",
+        "De R$ 0 a R$ 1.500",
+        "De R$ 1.000 a R$ 2.500",
+        "De 0 a 500",
+        "De R$ 1.000 a R$ 1.500"
+      ],
+      "correta": 2,
+      "explicacao": "C(0) = 1.000 e C(500) = 1.000 + 1.500 = 2.500. Dica de mergulhador: imagem vai do menor ao maior y.",
+      "comentarios": [
+        "Começou em x = 1, sem o fixo.",
+        "Esqueceu o custo fixo.",
+        "",
+        "É o domínio.",
+        "Esqueceu de somar o fixo no máximo."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q11",
+      "tema": "Domínio e imagem",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Um gráfico mostra a temperatura de uma cidade das 0 h às 24 h, variando entre 12 °C e 30 °C. Quais são o domínio e a imagem?",
+      "alternativas": [
+        "Domínio de 12 h a 30 h e imagem de 0 °C a 24 °C",
+        "Domínio de 0 h a 24 h e imagem de 0 °C a 30 °C",
+        "Domínio de 0 h a 24 h e imagem de 12 °C a 30 °C",
+        "Domínio de 12 °C a 30 °C e imagem de 0 h a 24 h",
+        "Domínio e imagem de 0 a 30"
+      ],
+      "correta": 2,
+      "explicacao": "O tempo está no eixo x (domínio); a temperatura, no eixo y (imagem). Dica de mergulhador: domínio na horizontal, imagem na vertical.",
+      "comentarios": [
+        "Trocou as unidades.",
+        "A temperatura não chegou a 0 °C.",
+        "",
+        "Inverteu.",
+        "Misturou os eixos."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q12",
+      "tema": "Domínio e imagem",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Um estacionamento cobra R$ 8 pela primeira hora e R$ 3 por hora adicional, com permanência máxima de 12 horas. Qual é o maior valor que um cliente pode pagar?",
+      "alternativas": [
+        "R$ 96",
+        "R$ 36",
+        "R$ 41",
+        "R$ 38",
+        "R$ 44"
+      ],
+      "correta": 2,
+      "explicacao": "8 + 11 × 3 = 8 + 33 = R$ 41. Dica de mergulhador: a primeira hora já está nos R$ 8.",
+      "comentarios": [
+        "Cobrou R$ 8 por todas as horas.",
+        "Esqueceu a primeira hora.",
+        "",
+        "Cobrou 10 horas adicionais.",
+        "Cobrou 12 horas adicionais."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q13",
+      "tema": "Domínio e imagem",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma caixa sem tampa é feita de uma folha quadrada de 20 cm de lado, cortando um quadrado de lado x em cada canto e dobrando as abas. Que valores x pode ter?",
+      "alternativas": [
+        "Qualquer valor positivo",
+        "De 0 a 5 cm",
+        "Maiores que 10 cm",
+        "Maiores que 0 e menores que 20 cm",
+        "Maiores que 0 e menores que 10 cm"
+      ],
+      "correta": 4,
+      "explicacao": "A base fica com 20 − 2x, que precisa ser positiva: x < 10. E x > 0 para haver aba. Dica de mergulhador: o domínio vem da geometria.",
+      "comentarios": [
+        "Os cortes não podem ultrapassar a folha.",
+        "Até 10 cm ainda sobra fundo.",
+        "Não sobraria folha.",
+        "Saem dois cortes por lado.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q14",
+      "tema": "Gráfico e lei",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Qual destas funções é decrescente?",
+      "alternativas": [
+        "f(x) = 3x + 10",
+        "f(x) = 2x",
+        "f(x) = x − 10",
+        "f(x) = 10 − 3x",
+        "f(x) = 0,5x + 1"
+      ],
+      "correta": 3,
+      "explicacao": "O número que multiplica x é −3: y cai quando x aumenta. Dica de mergulhador: sinal negativo no x, descida.",
+      "comentarios": [
+        "O número que multiplica x é positivo.",
+        "Cresce.",
+        "Cresce, mesmo começando negativa.",
+        "",
+        "Cresce devagar."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q15",
+      "tema": "Gráfico e lei",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Qual é o zero da função f(x) = 2x − 8?",
+      "alternativas": [
+        "−4",
+        "8",
+        "6",
+        "4",
+        "16"
+      ],
+      "correta": 3,
+      "explicacao": "2x − 8 = 0, então x = 4. Dica de mergulhador: zero é o x que faz y = 0.",
+      "comentarios": [
+        "Errou o sinal.",
+        "É o valor fixo.",
+        "Fez 8 − 2.",
+        "",
+        "Multiplicou em vez de dividir."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q16",
+      "tema": "Gráfico e lei",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Qual destes pontos pertence ao gráfico de f(x) = 3x + 1?",
+      "alternativas": [
+        "(7, 2)",
+        "(0, 3)",
+        "(1, 3)",
+        "(2, 7)",
+        "(2, 6)"
+      ],
+      "correta": 3,
+      "explicacao": "f(2) = 6 + 1 = 7. Dica de mergulhador: substitua o x e confira o y.",
+      "comentarios": [
+        "Inverteu as coordenadas.",
+        "f(0) = 1.",
+        "Esqueceu o + 1.",
+        "",
+        "Esqueceu o + 1."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q17",
+      "tema": "Gráfico e lei",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Em que pontos o gráfico de f(x) = 2x + 6 corta os eixos?",
+      "alternativas": [
+        "(0, 6) e (3, 0)",
+        "(0, 0) e (−3, 0)",
+        "(0, 2) e (−6, 0)",
+        "(0, 6) e (−3, 0)",
+        "(6, 0) e (0, −3)"
+      ],
+      "correta": 3,
+      "explicacao": "Eixo y: f(0) = 6. Eixo x: 2x + 6 = 0, x = −3. Dica de mergulhador: x = 0 dá o corte em y; y = 0 dá o corte em x.",
+      "comentarios": [
+        "Errou o sinal do zero.",
+        "f(0) = 6.",
+        "Trocou os papéis de 2 e 6.",
+        "",
+        "Inverteu as coordenadas."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q18",
+      "tema": "Gráfico e lei",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "O plano A cobra R$ 30 mais R$ 0,50 por minuto; o plano B, R$ 50 mais R$ 0,25 por minuto. Com quantos minutos os dois custam o mesmo?",
+      "alternativas": [
+        "40 minutos",
+        "20 minutos",
+        "160 minutos",
+        "100 minutos",
+        "80 minutos"
+      ],
+      "correta": 4,
+      "explicacao": "30 + 0,5x = 50 + 0,25x; 0,25x = 20; x = 80 min. Dica de mergulhador: iguale as duas leis.",
+      "comentarios": [
+        "Dividiu 20 por 0,5.",
+        "É a diferença das taxas fixas.",
+        "Dividiu 20 por 0,125.",
+        "Dividiu 50 por 0,5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q19",
+      "tema": "Gráfico e lei",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "A conta de água custa R$ 30 fixos para até 10 m³; acima disso, cada m³ excedente custa R$ 5. Quanto paga quem consome 16 m³?",
+      "alternativas": [
+        "R$ 80",
+        "R$ 60",
+        "R$ 110",
+        "R$ 30",
+        "R$ 50"
+      ],
+      "correta": 1,
+      "explicacao": "Excedente: 6 m³ × 5 = 30. Total: 30 + 30 = R$ 60. Dica de mergulhador: em faixas, só o que passa do limite paga a mais.",
+      "comentarios": [
+        "Cobrou R$ 5 por todos os 16 m³.",
+        "",
+        "Somou o fixo a 16 × 5.",
+        "Ignorou o excedente.",
+        "Cobrou 4 m³ excedentes."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q20",
+      "tema": "Gráfico e lei",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "O gráfico de uma função de lei f(x) = ax + b é uma reta que passa por (0, 4) e (2, 10). Quanto vale f(5)?",
+      "alternativas": [
+        "15",
+        "19",
+        "20",
+        "25",
+        "14"
+      ],
+      "correta": 1,
+      "explicacao": "b = 4; a = (10 − 4) ÷ 2 = 3. f(5) = 15 + 4 = 19. Dica de mergulhador: o ponto com x = 0 entrega o b.",
+      "comentarios": [
+        "Usou a = 2,2.",
+        "",
+        "Multiplicou 4 por 5.",
+        "Usou a = 5.",
+        "Usou a = 2."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q01",
+      "tema": "Coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Na função f(x) = 3x + 7, quais são o coeficiente angular e o coeficiente linear, nessa ordem?",
+      "alternativas": [
+        "3 e 0",
+        "10 e 0",
+        "1 e 7",
+        "7 e 3",
+        "3 e 7"
+      ],
+      "correta": 4,
+      "explicacao": "a = 3 (multiplica x) e b = 7 (termo fixo). Dica de mergulhador: a acompanha o x; b fica sozinho.",
+      "comentarios": [
+        "O linear é o termo sem x.",
+        "Somou os dois.",
+        "O angular multiplica o x.",
+        "Inverteu.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q02",
+      "tema": "Coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um plano de celular cobra R$ 40 fixos mais R$ 0,50 por minuto. Qual é a lei do valor f(x) para x minutos?",
+      "alternativas": [
+        "f(x) = 40 − 0,5x",
+        "f(x) = 40,5x",
+        "f(x) = 40 + 0,5x",
+        "f(x) = 0,5 + 40x",
+        "f(x) = 40x"
+      ],
+      "correta": 2,
+      "explicacao": "Fixo: 40. Por minuto: 0,5. Dica de mergulhador: o que não depende de x é o b.",
+      "comentarios": [
+        "O valor cresce com os minutos.",
+        "Juntou os dois.",
+        "",
+        "Trocou fixo e taxa.",
+        "Esqueceu a taxa por minuto."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q03",
+      "tema": "Coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "A função f(x) = −2x + 5 é crescente ou decrescente?",
+      "alternativas": [
+        "Decrescente, pois b = 5",
+        "Constante",
+        "Decrescente, pois a = −2",
+        "Crescente, pois b = 5",
+        "Crescente, pois 5 > 2"
+      ],
+      "correta": 2,
+      "explicacao": "a < 0: decrescente. Dica de mergulhador: olhe só o sinal de a.",
+      "comentarios": [
+        "O b não decide.",
+        "a não é zero.",
+        "",
+        "Quem decide é o a.",
+        "Quem decide é o sinal de a."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q04",
+      "tema": "Coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Qual é a lei da função afim que passa pelos pontos (1, 5) e (3, 11)?",
+      "alternativas": [
+        "f(x) = 2x + 3",
+        "f(x) = 5x",
+        "f(x) = 6x − 1",
+        "f(x) = 3x + 2",
+        "f(x) = 3x + 5"
+      ],
+      "correta": 3,
+      "explicacao": "a = (11 − 5) ÷ (3 − 1) = 3. b = 5 − 3 = 2. Dica de mergulhador: confira nos dois pontos.",
+      "comentarios": [
+        "Errou a taxa.",
+        "Só passa por (1, 5).",
+        "Não dividiu por 2.",
+        "",
+        "Usou 5 como b."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q05",
+      "tema": "Coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Uma conta de luz foi de R$ 70 com 100 kWh e de R$ 110 com 200 kWh, numa tarifa da forma f(x) = ax + b. Qual é a taxa fixa b?",
+      "alternativas": [
+        "R$ 40",
+        "R$ 10",
+        "R$ 0,40",
+        "R$ 30",
+        "R$ 70"
+      ],
+      "correta": 3,
+      "explicacao": "a = 40 ÷ 100 = 0,40. b = 70 − 0,40 × 100 = 30. Dica de mergulhador: tire do total a parte que depende do consumo.",
+      "comentarios": [
+        "É a diferença das contas.",
+        "Errou a conta.",
+        "É o preço do kWh.",
+        "",
+        "É a conta toda com 100 kWh."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q06",
+      "tema": "Coeficientes",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "O gráfico de uma função afim corta o eixo y em (0, 200) e o eixo x em (4, 0). Qual é a lei?",
+      "alternativas": [
+        "f(x) = 200 + 50x",
+        "f(x) = 4 − 200x",
+        "f(x) = 50x",
+        "f(x) = 200 − 50x",
+        "f(x) = 200 − 4x"
+      ],
+      "correta": 3,
+      "explicacao": "b = 200; a = (0 − 200) ÷ 4 = −50. Dica de mergulhador: os cortes nos eixos entregam b e a raiz.",
+      "comentarios": [
+        "A reta desce.",
+        "Trocou os pontos.",
+        "Esqueceu o b.",
+        "",
+        "Usou a raiz como taxa."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q07",
+      "tema": "Coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Numa feira, 5 kg de batata custam R$ 35, e o preço é diretamente proporcional ao peso. Qual é a lei do preço f(x) para x kg?",
+      "alternativas": [
+        "f(x) = 5x + 35",
+        "f(x) = 35x",
+        "f(x) = x + 30",
+        "f(x) = 7x",
+        "f(x) = 7x + 5"
+      ],
+      "correta": 3,
+      "explicacao": "Proporcional: b = 0. a = 35 ÷ 5 = 7. Dica de mergulhador: proporção direta é afim com b = 0.",
+      "comentarios": [
+        "Não há parte fixa.",
+        "Usou o preço de 5 kg por quilo.",
+        "Não é proporcional.",
+        "",
+        "Não há parte fixa."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q08",
+      "tema": "Problemas com função afim",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um táxi cobra f(x) = 5 + 2x reais, com x em km. Quanto custa uma corrida de 12 km?",
+      "alternativas": [
+        "R$ 29",
+        "R$ 24",
+        "R$ 84",
+        "R$ 34",
+        "R$ 19"
+      ],
+      "correta": 0,
+      "explicacao": "f(12) = 5 + 24 = R$ 29. Dica de mergulhador: bandeirada + taxa × km.",
+      "comentarios": [
+        "",
+        "Esqueceu a bandeirada.",
+        "Fez (5 + 2) × 12.",
+        "Usou R$ 2,50 por km.",
+        "Somou 5 + 2 + 12."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q09",
+      "tema": "Problemas com função afim",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Uma vela de 20 cm queima 2 cm por hora. Em quantas horas ela acaba?",
+      "alternativas": [
+        "40 horas",
+        "10 horas",
+        "5 horas",
+        "22 horas",
+        "18 horas"
+      ],
+      "correta": 1,
+      "explicacao": "h(t) = 20 − 2t = 0, então t = 10 h. Dica de mergulhador: a raiz é quando acaba.",
+      "comentarios": [
+        "Multiplicou.",
+        "",
+        "Dividiu por 4.",
+        "Somou.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q10",
+      "tema": "Problemas com função afim",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um vendedor ganha R$ 1.200 fixos mais 3% das vendas. Quanto recebe com R$ 10.000 em vendas?",
+      "alternativas": [
+        "R$ 11.200",
+        "R$ 1.230",
+        "R$ 300",
+        "R$ 4.200",
+        "R$ 1.500"
+      ],
+      "correta": 4,
+      "explicacao": "1.200 + 0,03 × 10.000 = 1.200 + 300 = R$ 1.500. Dica de mergulhador: fixo é b; comissão é a × vendas.",
+      "comentarios": [
+        "Somou as vendas.",
+        "Usou 0,3%.",
+        "Esqueceu o fixo.",
+        "Usou 30%.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q11",
+      "tema": "Problemas com função afim",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "O plano A cobra R$ 50 mais R$ 0,20 por minuto; o plano B, R$ 30 mais R$ 0,40 por minuto. A partir de quantos minutos o plano A fica mais barato?",
+      "alternativas": [
+        "Acima de 20 minutos",
+        "Acima de 100 minutos",
+        "Acima de 250 minutos",
+        "Abaixo de 100 minutos",
+        "Acima de 50 minutos"
+      ],
+      "correta": 1,
+      "explicacao": "50 + 0,2x < 30 + 0,4x → 20 < 0,2x → x > 100. Dica de mergulhador: depois do empate, ganha quem cobra menos por minuto.",
+      "comentarios": [
+        "É a diferença das taxas fixas.",
+        "",
+        "Dividiu 50 por 0,2.",
+        "Abaixo de 100, o B é mais barato.",
+        "Dividiu 20 por 0,4."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q12",
+      "tema": "Problemas com função afim",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um carro de R$ 60.000 perde R$ 4.000 de valor por ano, de forma constante. Quanto ele vale depois de 6 anos?",
+      "alternativas": [
+        "R$ 36.000",
+        "R$ 40.000",
+        "R$ 24.000",
+        "R$ 84.000",
+        "R$ 56.000"
+      ],
+      "correta": 0,
+      "explicacao": "V(t) = 60.000 − 4.000t; V(6) = 60.000 − 24.000 = R$ 36.000. Dica de mergulhador: depreciação constante é reta descendo.",
+      "comentarios": [
+        "",
+        "Descontou 5 anos.",
+        "É a perda total.",
+        "Somou a perda.",
+        "Descontou só um ano."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q13",
+      "tema": "Problemas com função afim",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um reservatório com 1.200 L perde 40 L por hora. Em quantas horas ele fica com 400 L?",
+      "alternativas": [
+        "40 horas",
+        "20 horas",
+        "30 horas",
+        "10 horas",
+        "8 horas"
+      ],
+      "correta": 1,
+      "explicacao": "1.200 − 40t = 400 → 40t = 800 → t = 20 h. Dica de mergulhador: iguale a lei ao valor pedido.",
+      "comentarios": [
+        "Dividiu 1.600 por 40.",
+        "",
+        "Calculou até esvaziar.",
+        "Dividiu 400 por 40.",
+        "Dividiu 320 por 40."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q14",
+      "tema": "Problemas com função afim",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um produto é vendido a R$ 12 a unidade. A fábrica tem custo fixo mensal de R$ 3.000 e gasta R$ 7 por unidade. Quantas unidades precisa vender para não ter prejuízo nem lucro?",
+      "alternativas": [
+        "600",
+        "429",
+        "250",
+        "158",
+        "1.000"
+      ],
+      "correta": 0,
+      "explicacao": "Receita 12x = custo 3.000 + 7x → 5x = 3.000 → x = 600. Dica de mergulhador: cada unidade cobre R$ 5 do fixo.",
+      "comentarios": [
+        "",
+        "Dividiu 3.000 por 7.",
+        "Dividiu 3.000 por 12.",
+        "Dividiu 3.000 por 19.",
+        "Dividiu 3.000 por 3."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q15",
+      "tema": "Problemas com função afim",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "A água congela a 0 °C ou 32 °F e ferve a 100 °C ou 212 °F, e a relação entre as escalas é afim. Quantos °F correspondem a 25 °C?",
+      "alternativas": [
+        "57 °F",
+        "82 °F",
+        "45 °F",
+        "13,9 °F",
+        "77 °F"
+      ],
+      "correta": 4,
+      "explicacao": "a = 180 ÷ 100 = 1,8; b = 32. F = 1,8 × 25 + 32 = 77 °F. Dica de mergulhador: dois pontos, uma reta.",
+      "comentarios": [
+        "Esqueceu de multiplicar por 1,8.",
+        "Usou 2 no lugar de 1,8.",
+        "Esqueceu o + 32.",
+        "Fez a conta ao contrário.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q16",
+      "tema": "Gráfico da reta",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Em que ponto o gráfico de f(x) = 2x − 6 corta o eixo y?",
+      "alternativas": [
+        "(0, −6)",
+        "(0, 6)",
+        "(−6, 0)",
+        "(0, 2)",
+        "(3, 0)"
+      ],
+      "correta": 0,
+      "explicacao": "Em x = 0, f(0) = −6. Dica de mergulhador: corte em y é o b.",
+      "comentarios": [
+        "",
+        "Errou o sinal.",
+        "Inverteu as coordenadas.",
+        "O 2 é a inclinação.",
+        "É o corte no eixo x."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q17",
+      "tema": "Gráfico da reta",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Qual é a raiz de f(x) = 4x − 10?",
+      "alternativas": [
+        "−2,5",
+        "2,5",
+        "10",
+        "6",
+        "40"
+      ],
+      "correta": 1,
+      "explicacao": "4x − 10 = 0 → x = 10 ÷ 4 = 2,5. Dica de mergulhador: x = −b ÷ a.",
+      "comentarios": [
+        "Errou o sinal.",
+        "",
+        "É o termo fixo.",
+        "Subtraiu.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q18",
+      "tema": "Gráfico da reta",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Qual destas retas é paralela a y = 3x + 1?",
+      "alternativas": [
+        "y = 3x − 4",
+        "y = −x/3 + 1",
+        "y = 4x + 1",
+        "y = −3x + 1",
+        "y = x + 3"
+      ],
+      "correta": 0,
+      "explicacao": "Paralelas têm o mesmo a: 3. Dica de mergulhador: mesmo a, mesma inclinação.",
+      "comentarios": [
+        "",
+        "É perpendicular.",
+        "Tem inclinação 4.",
+        "Tem inclinação oposta.",
+        "Tem inclinação 1."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q19",
+      "tema": "Gráfico da reta",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Em que ponto se cruzam as retas f(x) = 2x + 1 e g(x) = −x + 10?",
+      "alternativas": [
+        "(3, 10)",
+        "(3, 7)",
+        "(1, 3)",
+        "(7, 3)",
+        "(9, 19)"
+      ],
+      "correta": 1,
+      "explicacao": "2x + 1 = −x + 10 → 3x = 9 → x = 3; y = 7. Dica de mergulhador: iguale e depois substitua.",
+      "comentarios": [
+        "Errou o y.",
+        "",
+        "Usou x = 1.",
+        "Inverteu as coordenadas.",
+        "Errou a conta de x."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q20",
+      "tema": "Gráfico da reta",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "A reta y = −2x + 8 forma um triângulo com os eixos x e y. Qual é a área desse triângulo?",
+      "alternativas": [
+        "12",
+        "32",
+        "8",
+        "4",
+        "16"
+      ],
+      "correta": 4,
+      "explicacao": "Cortes: (0, 8) e (4, 0). Área: 4 × 8 ÷ 2 = 16. Dica de mergulhador: os cortes são os catetos.",
+      "comentarios": [
+        "Somou os cortes.",
+        "Não dividiu por 2.",
+        "Usou só um corte.",
+        "Usou só a raiz.",
+        ""
       ]
     }
   ],
@@ -59754,6 +61461,1446 @@
         "",
         "Dividiu tudo por 3."
       ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q01-v1",
+      "varianteDe": "mat-plano-cartesiano-q01",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Em que quadrante está o ponto (4, −1)?",
+      "alternativas": [
+        "No 4º quadrante",
+        "No 2º quadrante",
+        "No 3º quadrante",
+        "No 1º quadrante",
+        "Sobre o eixo x"
+      ],
+      "correta": 0,
+      "explicacao": "x positivo e y negativo: 4º quadrante. Dica de mergulhador: olhe o sinal de cada coordenada.",
+      "comentarios": [
+        "",
+        "Lá x é negativo.",
+        "Lá os dois são negativos.",
+        "Lá os dois são positivos.",
+        "Isso exigiria y = 0."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q02-v1",
+      "varianteDe": "mat-plano-cartesiano-q02",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Qual é o ponto que fica 5 unidades à direita da origem e 4 unidades abaixo dela?",
+      "alternativas": [
+        "(5, −4)",
+        "(5, 4)",
+        "(−4, 5)",
+        "(4, −5)",
+        "(−5, 4)"
+      ],
+      "correta": 0,
+      "explicacao": "Direita: x = 5. Abaixo: y = −4. Dica de mergulhador: a primeira coordenada é a horizontal.",
+      "comentarios": [
+        "",
+        "Abaixo é negativo.",
+        "Inverteu a ordem.",
+        "Inverteu a ordem.",
+        "Trocou os dois sinais."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q03-v1",
+      "varianteDe": "mat-plano-cartesiano-q03",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Onde fica o ponto (−6, 0)?",
+      "alternativas": [
+        "Sobre o eixo x",
+        "No 3º quadrante",
+        "Na origem",
+        "Sobre o eixo y",
+        "No 2º quadrante"
+      ],
+      "correta": 0,
+      "explicacao": "Com y = 0, o ponto está sobre o eixo horizontal. Dica de mergulhador: coordenada zero, ponto no eixo.",
+      "comentarios": [
+        "",
+        "Com y = 0, o ponto está num eixo.",
+        "A origem é (0, 0).",
+        "Lá x = 0.",
+        "Com y = 0, o ponto está num eixo."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q04-v1",
+      "varianteDe": "mat-plano-cartesiano-q04",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Qual é a distância entre os pontos (−4, 5) e (6, 5)?",
+      "alternativas": [
+        "10",
+        "11",
+        "0",
+        "5",
+        "2"
+      ],
+      "correta": 0,
+      "explicacao": "Mesmo y: distância = 6 − (−4) = 10. Dica de mergulhador: menos com menos vira mais.",
+      "comentarios": [
+        "",
+        "Somou 5 + 6.",
+        "Os y iguais não tornam a distância zero.",
+        "Dividiu por 2.",
+        "Fez 6 − 4, ignorando o sinal."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q05-v1",
+      "varianteDe": "mat-plano-cartesiano-q05",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Qual é a distância entre os pontos (−2, 1) e (4, 9)?",
+      "alternativas": [
+        "100",
+        "2",
+        "10",
+        "14",
+        "6"
+      ],
+      "correta": 2,
+      "explicacao": "Diferenças: 6 e 8. Distância: √(36 + 64) = 10. Dica de mergulhador: 6, 8, 10 é o 3, 4, 5 dobrado.",
+      "comentarios": [
+        "Não tirou a raiz.",
+        "Subtraiu as diferenças.",
+        "",
+        "Somou as diferenças 6 e 8.",
+        "Usou só a diferença dos x."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q06-v1",
+      "varianteDe": "mat-plano-cartesiano-q06",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um terreno retangular tem vértices nos pontos (−2, 0), (4, 0), (4, 3) e (−2, 3), com medidas em metros. Qual é a sua área?",
+      "alternativas": [
+        "6 m²",
+        "12 m²",
+        "9 m²",
+        "18 m²",
+        "18 m"
+      ],
+      "correta": 3,
+      "explicacao": "Base: 4 − (−2) = 6. Altura: 3. Área: 18 m². Dica de mergulhador: cuidado com o sinal do −2.",
+      "comentarios": [
+        "Usou 2 × 3.",
+        "Usou 4 × 3.",
+        "Dividiu por 2.",
+        "",
+        "Área é em m²."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q07-v1",
+      "varianteDe": "mat-plano-cartesiano-q07",
+      "tema": "Pares ordenados e quadrantes",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Uma tubulação reta liga os pontos (−3, 4) e (5, 10) de uma planta. Uma válvula fica exatamente no meio dela. Quais são as coordenadas da válvula?",
+      "alternativas": [
+        "(1, 7)",
+        "(7, 1)",
+        "(−4, 7)",
+        "(2, 14)",
+        "(4, 3)"
+      ],
+      "correta": 0,
+      "explicacao": "x: (−3 + 5) ÷ 2 = 1. y: (4 + 10) ÷ 2 = 7. Dica de mergulhador: some e divida por 2.",
+      "comentarios": [
+        "",
+        "Inverteu a ordem.",
+        "Errou o sinal na média dos x.",
+        "Somou sem dividir por 2.",
+        "Fez metade das diferenças."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q08-v1",
+      "varianteDe": "mat-plano-cartesiano-q08",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico mostra o nível de um reservatório no início de cada mês: 40% em janeiro, 55% em fevereiro, 70% em março, 62% em abril e 50% em maio. Qual foi o nível máximo registrado?",
+      "alternativas": [
+        "70%",
+        "62%",
+        "40%",
+        "50%",
+        "55%"
+      ],
+      "correta": 0,
+      "explicacao": "O ponto mais alto é 70%, em março. Dica de mergulhador: procure o pico do gráfico.",
+      "comentarios": [
+        "",
+        "É o de abril.",
+        "É o mínimo.",
+        "É o de maio.",
+        "É o de fevereiro."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q09-v1",
+      "varianteDe": "mat-plano-cartesiano-q09",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Num gráfico de linha, o que indica um trecho descendo da esquerda para a direita?",
+      "alternativas": [
+        "Que o tempo voltou",
+        "Que o valor é negativo",
+        "Que o valor ficou constante",
+        "Que o valor aumentou",
+        "Que o valor diminuiu"
+      ],
+      "correta": 4,
+      "explicacao": "Descendo da esquerda para a direita: queda. Dica de mergulhador: leia como quem caminha para a direita.",
+      "comentarios": [
+        "O tempo segue para a direita.",
+        "Pode descer e continuar positivo.",
+        "Isso é trecho horizontal.",
+        "Aumento é trecho subindo.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q10-v1",
+      "varianteDe": "mat-plano-cartesiano-q10",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "As vendas mensais de duas lojas aparecem num mesmo gráfico, e as linhas se cruzam em maio. O que isso significa?",
+      "alternativas": [
+        "Em maio, as duas lojas venderam o mesmo",
+        "As lojas fecharam em maio",
+        "Em maio, as vendas dobraram",
+        "Em maio, as duas lojas não venderam",
+        "A partir de maio, as vendas são sempre iguais"
+      ],
+      "correta": 0,
+      "explicacao": "Linhas que se cruzam têm o mesmo valor naquele ponto. Dica de mergulhador: cruzamento é empate.",
+      "comentarios": [
+        "",
+        "O gráfico mostra vendas iguais.",
+        "O cruzamento mostra empate.",
+        "Cruzamento não é zero.",
+        "Só no cruzamento são iguais."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q11-v1",
+      "varianteDe": "mat-plano-cartesiano-q11",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Com o nível do reservatório em 40% (jan.), 55% (fev.), 70% (mar.), 62% (abr.) e 50% (maio), em que intervalo houve a maior queda?",
+      "alternativas": [
+        "De fevereiro a março",
+        "De abril a maio",
+        "De janeiro a fevereiro",
+        "De março a maio",
+        "De março a abril"
+      ],
+      "correta": 1,
+      "explicacao": "Quedas: 8 (mar.–abr.) e 12 (abr.–maio). Maior: abril a maio. Dica de mergulhador: calcule cada trecho separado.",
+      "comentarios": [
+        "Nesse intervalo, subiu.",
+        "",
+        "Nesse intervalo, subiu.",
+        "São dois intervalos juntos.",
+        "Caiu 8 pontos, menos que os 12 seguintes."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q12-v1",
+      "varianteDe": "mat-plano-cartesiano-q12",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico de barras tem o eixo vertical começando em 50. Ele mostra 52 num mês e 60 no seguinte, e a segunda barra parece cinco vezes maior. Qual foi o aumento real, aproximado?",
+      "alternativas": [
+        "Cerca de 15%",
+        "Cerca de 1,5%",
+        "400%",
+        "500%",
+        "Cerca de 8%"
+      ],
+      "correta": 0,
+      "explicacao": "(60 − 52) ÷ 52 ≈ 0,154, cerca de 15%. Dica de mergulhador: use os números, não o desenho.",
+      "comentarios": [
+        "",
+        "Errou a vírgula.",
+        "É a impressão visual.",
+        "Comparou as alturas desenhadas.",
+        "Usou a diferença sem dividir."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q13-v1",
+      "varianteDe": "mat-plano-cartesiano-q13",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico de velocidade de um carro mostra 90 km/h de 0 h a 1 h, 0 km/h de 1 h a 1,5 h e 70 km/h de 1,5 h a 3,5 h. Que distância ele percorreu?",
+      "alternativas": [
+        "160 km",
+        "140 km",
+        "90 km",
+        "230 km",
+        "265 km"
+      ],
+      "correta": 3,
+      "explicacao": "90 × 1 + 70 × 2 = 90 + 140 = 230 km. Dica de mergulhador: trecho parado não soma distância.",
+      "comentarios": [
+        "Somou as velocidades.",
+        "Contou só o último trecho.",
+        "Contou só o primeiro trecho.",
+        "",
+        "Contou o tempo parado."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q14-v1",
+      "varianteDe": "mat-plano-cartesiano-q14",
+      "tema": "Leitura de gráficos",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico mostra a distância de uma ciclista até a casa dela: 0 km aos 0 min, 6 km aos 20 min, 6 km aos 35 min e 0 km aos 65 min. Qual foi a velocidade dela na volta?",
+      "alternativas": [
+        "12 km/h",
+        "6 km/h",
+        "18 km/h",
+        "0 km/h",
+        "8 km/h"
+      ],
+      "correta": 0,
+      "explicacao": "Volta: 6 km em 30 min = 0,5 h. Velocidade: 12 km/h. Dica de mergulhador: trecho horizontal é parada.",
+      "comentarios": [
+        "",
+        "Usou 6 km em 1 hora.",
+        "É a velocidade da ida.",
+        "É a do trecho parado.",
+        "Usou 6 km em 45 min."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q15-v1",
+      "varianteDe": "mat-plano-cartesiano-q15",
+      "tema": "Taxa de variação",
+      "dificuldade": "facil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "O nível de um rio passou de 2 m às 6 h para 5 m às 12 h, subindo no mesmo ritmo. Qual foi a taxa de variação?",
+      "alternativas": [
+        "0,5 m por hora",
+        "0,42 m por hora",
+        "2 m por hora",
+        "1 m por hora",
+        "3 m por hora"
+      ],
+      "correta": 0,
+      "explicacao": "(5 − 2) ÷ (12 − 6) = 3 ÷ 6 = 0,5 m por hora. Dica de mergulhador: taxa = Δy ÷ Δx.",
+      "comentarios": [
+        "",
+        "Dividiu 5 por 12.",
+        "Dividiu 6 por 3.",
+        "Dividiu 3 por 3.",
+        "Não dividiu pelo tempo."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q16-v1",
+      "varianteDe": "mat-plano-cartesiano-q16",
+      "tema": "Taxa de variação",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "O preço de um ingresso foi de R$ 30 em 2018 para R$ 45 em 2023, crescendo de forma constante. Quanto subiu por ano?",
+      "alternativas": [
+        "R$ 3,75",
+        "R$ 2,50",
+        "R$ 9,00",
+        "R$ 3,00",
+        "R$ 15,00"
+      ],
+      "correta": 3,
+      "explicacao": "(45 − 30) ÷ (2023 − 2018) = 15 ÷ 5 = R$ 3 por ano. Dica de mergulhador: conte os intervalos: 5.",
+      "comentarios": [
+        "Dividiu 15 por 4.",
+        "Dividiu 15 por 6.",
+        "Dividiu 45 por 5.",
+        "",
+        "É a subida total."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q17-v1",
+      "varianteDe": "mat-plano-cartesiano-q17",
+      "tema": "Taxa de variação",
+      "dificuldade": "medio",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um gráfico liga os pontos (0, 10), (4, 18), (5, 21) e (9, 25). Em qual trecho a taxa de variação é maior?",
+      "alternativas": [
+        "De (4, 18) a (5, 21)",
+        "De (0, 10) a (4, 18)",
+        "Todos têm a mesma taxa",
+        "De (0, 10) a (9, 25)",
+        "De (5, 21) a (9, 25)"
+      ],
+      "correta": 0,
+      "explicacao": "Taxas: 8 ÷ 4 = 2; 3 ÷ 1 = 3; 4 ÷ 4 = 1. Maior: o trecho do meio. Dica de mergulhador: o trecho que sobe mais em menos x.",
+      "comentarios": [
+        "",
+        "A taxa é 2, menor que 3.",
+        "As inclinações são diferentes.",
+        "Não é um trecho do gráfico.",
+        "A taxa é 1."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q18-v1",
+      "varianteDe": "mat-plano-cartesiano-q18",
+      "tema": "Taxa de variação",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Um tanque tinha 1.200 L às 6 h e 900 L às 9 h, perdendo água sempre no mesmo ritmo. Mantido o ritmo, a que horas ele fica vazio?",
+      "alternativas": [
+        "Às 24 h",
+        "Às 12 h",
+        "Às 15 h",
+        "Às 18 h",
+        "Às 21 h"
+      ],
+      "correta": 3,
+      "explicacao": "Taxa: −100 L/h. Os 900 L duram 9 h: 9 h + 9 h = 18 h. Dica de mergulhador: o que resta ÷ a perda por hora.",
+      "comentarios": [
+        "Usou 60 L/h.",
+        "Supôs que os 900 L acabariam em 3 h.",
+        "Usou 150 L/h.",
+        "",
+        "Contou a partir das 9 h com 1.200 L."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q19-v1",
+      "varianteDe": "mat-plano-cartesiano-q19",
+      "tema": "Taxa de variação",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "Uma árvore tem 15 dm no ano 3 e 27 dm no ano 7, crescendo a uma taxa constante. Qual era a altura dela no ano 0?",
+      "alternativas": [
+        "0 dm",
+        "15 dm",
+        "6 dm",
+        "12 dm",
+        "3 dm"
+      ],
+      "correta": 2,
+      "explicacao": "Taxa: 12 ÷ 4 = 3 dm por ano. Ano 0: 15 − 3 × 3 = 6 dm. Dica de mergulhador: subtraia a taxa tantas vezes quantos anos voltar.",
+      "comentarios": [
+        "A árvore já existia.",
+        "É a altura no ano 3.",
+        "",
+        "Voltou só um ano.",
+        "Errou a taxa."
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-q20-v1",
+      "varianteDe": "mat-plano-cartesiano-q20",
+      "tema": "Taxa de variação",
+      "dificuldade": "dificil",
+      "fase": "mat-plano-cartesiano",
+      "enunciado": "A cidade A passou de 40 mil para 49 mil habitantes em 3 anos; a cidade B, de 10 mil para 22 mil em 6 anos, ambas em ritmo constante. Qual cresceu mais habitantes por ano?",
+      "alternativas": [
+        "A cidade B, com 2 mil por ano",
+        "A cidade A, com 3 mil por ano",
+        "As duas igualmente",
+        "A cidade B, que cresceu 12 mil",
+        "A cidade A, com 9 mil por ano"
+      ],
+      "correta": 1,
+      "explicacao": "A: 9 ÷ 3 = 3 mil por ano. B: 12 ÷ 6 = 2 mil por ano. Dica de mergulhador: divida a subida pelo tempo.",
+      "comentarios": [
+        "2 mil é menos que 3 mil.",
+        "",
+        "As taxas são diferentes.",
+        "Foi em 6 anos.",
+        "9 mil foi o total em 3 anos."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q01-v1",
+      "varianteDe": "mat-ideia-funcao-q01",
+      "tema": "O que é função",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Em qual destas relações cada entrada tem uma única saída, formando uma função?",
+      "alternativas": [
+        "A cada time, os seus jogadores",
+        "A cada livro, os seus capítulos",
+        "A cada rua, as suas casas",
+        "A cada produto do mercado, o seu preço na etiqueta",
+        "A cada professor, as suas turmas"
+      ],
+      "correta": 3,
+      "explicacao": "Cada produto tem um único preço na etiqueta. Dica de mergulhador: uma entrada, uma saída.",
+      "comentarios": [
+        "Um time tem vários jogadores.",
+        "Um livro tem vários capítulos.",
+        "Uma rua tem várias casas.",
+        "",
+        "Um professor pode ter várias turmas."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q02-v1",
+      "varianteDe": "mat-ideia-funcao-q02",
+      "tema": "O que é função",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Se f(x) = 2x − 5, quanto vale f(6)?",
+      "alternativas": [
+        "12",
+        "17",
+        "1",
+        "3",
+        "7"
+      ],
+      "correta": 4,
+      "explicacao": "f(6) = 2 × 6 − 5 = 7. Dica de mergulhador: multiplique antes de subtrair.",
+      "comentarios": [
+        "Esqueceu o − 5.",
+        "Somou 5 em vez de subtrair.",
+        "Fez 6 − 5.",
+        "Fez 6 − 5 + 2.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q03-v1",
+      "varianteDe": "mat-ideia-funcao-q03",
+      "tema": "O que é função",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma circunferência inteira desenhada no plano é gráfico de função?",
+      "alternativas": [
+        "Não, pois não passa pela origem",
+        "Sim, pois tem centro e raio",
+        "Não, pois uma reta vertical a corta em dois pontos",
+        "Sim, se o raio for 1",
+        "Sim, pois é uma curva fechada"
+      ],
+      "correta": 2,
+      "explicacao": "Para um mesmo x, há um ponto em cima e outro embaixo: dois y. Dica de mergulhador: dois toques, não é função.",
+      "comentarios": [
+        "Isso não decide.",
+        "O teste é da reta vertical.",
+        "",
+        "O raio não muda o teste.",
+        "Ser fechada não basta."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q04-v1",
+      "varianteDe": "mat-ideia-funcao-q04",
+      "tema": "O que é função",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Um aplicativo cobra f(x) = 4,50 + 2,50x reais, em que x é a distância em km. Uma corrida custou R$ 29,50. Qual foi a distância?",
+      "alternativas": [
+        "10 km",
+        "11,8 km",
+        "78,25 km",
+        "13,6 km",
+        "25 km"
+      ],
+      "correta": 0,
+      "explicacao": "4,50 + 2,50x = 29,50; 2,50x = 25; x = 10 km. Dica de mergulhador: caminho contrário: subtrai e divide.",
+      "comentarios": [
+        "",
+        "Dividiu sem tirar a parte fixa.",
+        "Calculou f(29,50).",
+        "Somou a parte fixa.",
+        "Esqueceu de dividir por 2,50."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q05-v1",
+      "varianteDe": "mat-ideia-funcao-q05",
+      "tema": "O que é função",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma tabela tem x = 0, 1, 2, 3 e y = 10, 8, 6, 4. Qual é a lei de formação?",
+      "alternativas": [
+        "y = 10 − x",
+        "y = 10 + 2x",
+        "y = 2x + 4",
+        "y = 10 − 2x",
+        "y = 8x"
+      ],
+      "correta": 3,
+      "explicacao": "Em x = 0, y = 10; a cada x, y cai 2. Dica de mergulhador: o valor em x = 0 é a parte fixa.",
+      "comentarios": [
+        "y cai 2 a cada passo.",
+        "y diminui, não aumenta.",
+        "Só serve para x = 3.",
+        "",
+        "Não serve para x = 0."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q06-v1",
+      "varianteDe": "mat-ideia-funcao-q06",
+      "tema": "O que é função",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Um vendedor recebe R$ 1.800 fixos mais 4% do que vende no mês. Quanto ele recebe num mês com R$ 15.000 em vendas?",
+      "alternativas": [
+        "R$ 2.400",
+        "R$ 16.800",
+        "R$ 3.300",
+        "R$ 1.804",
+        "R$ 600"
+      ],
+      "correta": 0,
+      "explicacao": "S = 1.800 + 0,04 × 15.000 = 1.800 + 600 = R$ 2.400. Dica de mergulhador: 4% de 15.000 = 600.",
+      "comentarios": [
+        "",
+        "Somou as vendas ao fixo.",
+        "Usou 10%.",
+        "Somou 4 reais.",
+        "Esqueceu o fixo."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q07-v1",
+      "varianteDe": "mat-ideia-funcao-q07",
+      "tema": "O que é função",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma função da forma f(x) = ax + b tem f(1) = 6 e f(3) = 10. Quanto vale f(8)?",
+      "alternativas": [
+        "48",
+        "20",
+        "16",
+        "22",
+        "26"
+      ],
+      "correta": 1,
+      "explicacao": "a = (10 − 6) ÷ 2 = 2; b = 6 − 2 = 4. f(8) = 16 + 4 = 20. Dica de mergulhador: ache a e b antes de calcular.",
+      "comentarios": [
+        "Multiplicou f(1) por 8.",
+        "",
+        "Usou f(x) = 2x.",
+        "Usou b = 6.",
+        "Usou f(x) = 3x + 2."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q08-v1",
+      "varianteDe": "mat-ideia-funcao-q08",
+      "tema": "Domínio e imagem",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Um ônibus de 40 lugares calcula a arrecadação com x passageiros sentados. Qual destes valores não pode estar no domínio?",
+      "alternativas": [
+        "40",
+        "1",
+        "20",
+        "45",
+        "0"
+      ],
+      "correta": 3,
+      "explicacao": "Com 40 lugares, não há 45 sentados. Dica de mergulhador: limite físico também limita o domínio.",
+      "comentarios": [
+        "Lotado é possível.",
+        "Um passageiro é possível.",
+        "Vinte passageiros cabem.",
+        "",
+        "Ônibus vazio é possível."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q09-v1",
+      "varianteDe": "mat-ideia-funcao-q09",
+      "tema": "Domínio e imagem",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "A função f(x) = x + 5 tem domínio {0, 1, 2}. Qual é a sua imagem?",
+      "alternativas": [
+        "{5, 6, 7}",
+        "{6, 7, 8}",
+        "{0, 5, 10}",
+        "{0, 1, 2}",
+        "{5, 10, 15}"
+      ],
+      "correta": 0,
+      "explicacao": "f(0) = 5, f(1) = 6, f(2) = 7. Dica de mergulhador: aplique a regra a cada entrada.",
+      "comentarios": [
+        "",
+        "Somou 6.",
+        "Multiplicou por 5.",
+        "É o domínio.",
+        "Multiplicou e somou."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q10-v1",
+      "varianteDe": "mat-ideia-funcao-q10",
+      "tema": "Domínio e imagem",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma oficina conserta de 0 a 200 peças por mês, com custo C(x) = 400 + 5x reais. Qual é a imagem dessa função?",
+      "alternativas": [
+        "De R$ 400 a R$ 1.400",
+        "De 0 a 200",
+        "De R$ 0 a R$ 1.000",
+        "De R$ 5 a R$ 1.000",
+        "De R$ 400 a R$ 1.000"
+      ],
+      "correta": 0,
+      "explicacao": "C(0) = 400; C(200) = 400 + 1.000 = 1.400. Dica de mergulhador: calcule nas pontas do domínio.",
+      "comentarios": [
+        "",
+        "É o domínio.",
+        "Esqueceu o custo fixo.",
+        "Começou em x = 1, sem o fixo.",
+        "Esqueceu de somar o fixo no máximo."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q11-v1",
+      "varianteDe": "mat-ideia-funcao-q11",
+      "tema": "Domínio e imagem",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Um gráfico mostra a altura de uma bola dos 0 s aos 4 s, variando entre 0 m e 20 m. Quais são o domínio e a imagem?",
+      "alternativas": [
+        "Domínio de 4 s e imagem de 20 m",
+        "Domínio e imagem de 0 a 20",
+        "Domínio de 0 m a 20 m e imagem de 0 s a 4 s",
+        "Domínio de 0 s a 20 s e imagem de 0 m a 4 m",
+        "Domínio de 0 s a 4 s e imagem de 0 m a 20 m"
+      ],
+      "correta": 4,
+      "explicacao": "O tempo no eixo x é o domínio; a altura no eixo y é a imagem. Dica de mergulhador: entrada é tempo, saída é altura.",
+      "comentarios": [
+        "Domínio e imagem são intervalos.",
+        "Misturou os eixos.",
+        "Inverteu.",
+        "Trocou os números.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q12-v1",
+      "varianteDe": "mat-ideia-funcao-q12",
+      "tema": "Domínio e imagem",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Um estacionamento cobra R$ 10 pela primeira hora e R$ 4 por hora adicional, com permanência máxima de 10 horas. Qual é o maior valor que um cliente pode pagar?",
+      "alternativas": [
+        "R$ 46",
+        "R$ 42",
+        "R$ 40",
+        "R$ 100",
+        "R$ 50"
+      ],
+      "correta": 0,
+      "explicacao": "10 + 9 × 4 = R$ 46. Dica de mergulhador: horas adicionais = total − 1.",
+      "comentarios": [
+        "",
+        "Cobrou 8 horas adicionais.",
+        "Esqueceu a primeira hora.",
+        "Cobrou R$ 10 por todas as horas.",
+        "Cobrou 10 horas adicionais."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q13-v1",
+      "varianteDe": "mat-ideia-funcao-q13",
+      "tema": "Domínio e imagem",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Uma caixa sem tampa é feita de uma folha retangular de 30 cm por 16 cm, cortando um quadrado de lado x em cada canto e dobrando as abas. Que valores x pode ter?",
+      "alternativas": [
+        "Maiores que 0 e menores que 16 cm",
+        "Qualquer valor positivo",
+        "Maiores que 0 e menores que 8 cm",
+        "Maiores que 0 e menores que 15 cm",
+        "De 8 a 15 cm"
+      ],
+      "correta": 2,
+      "explicacao": "O lado menor fica 16 − 2x > 0, então x < 8. Dica de mergulhador: o lado menor manda.",
+      "comentarios": [
+        "Saem dois cortes por lado.",
+        "Os cortes não podem passar da folha.",
+        "",
+        "O lado menor limita antes.",
+        "Com x ≥ 8 o lado menor some."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q14-v1",
+      "varianteDe": "mat-ideia-funcao-q14",
+      "tema": "Gráfico e lei",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Qual destas funções é crescente?",
+      "alternativas": [
+        "f(x) = 7 − 4x",
+        "f(x) = −2x + 9",
+        "f(x) = 5",
+        "f(x) = −x",
+        "f(x) = 4x − 7"
+      ],
+      "correta": 4,
+      "explicacao": "O número que multiplica x é 4, positivo. Dica de mergulhador: sinal positivo no x, subida.",
+      "comentarios": [
+        "O número que multiplica x é negativo.",
+        "Decresce.",
+        "É constante.",
+        "Decresce.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q15-v1",
+      "varianteDe": "mat-ideia-funcao-q15",
+      "tema": "Gráfico e lei",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Qual é o zero da função f(x) = 3x + 12?",
+      "alternativas": [
+        "9",
+        "4",
+        "12",
+        "−36",
+        "−4"
+      ],
+      "correta": 4,
+      "explicacao": "3x + 12 = 0, então x = −4. Dica de mergulhador: passe o 12 para o outro lado com sinal trocado.",
+      "comentarios": [
+        "Fez 12 − 3.",
+        "Errou o sinal.",
+        "É o valor fixo.",
+        "Multiplicou.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q16-v1",
+      "varianteDe": "mat-ideia-funcao-q16",
+      "tema": "Gráfico e lei",
+      "dificuldade": "facil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Qual destes pontos pertence ao gráfico de f(x) = 5 − x?",
+      "alternativas": [
+        "(4, 2)",
+        "(3, 8)",
+        "(5, 5)",
+        "(0, 0)",
+        "(3, 2)"
+      ],
+      "correta": 4,
+      "explicacao": "f(3) = 5 − 3 = 2. Dica de mergulhador: primeiro x, depois y.",
+      "comentarios": [
+        "f(4) = 1.",
+        "Somou em vez de subtrair.",
+        "f(5) = 0.",
+        "f(0) = 5.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q17-v1",
+      "varianteDe": "mat-ideia-funcao-q17",
+      "tema": "Gráfico e lei",
+      "dificuldade": "medio",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "Em que pontos o gráfico de f(x) = 12 − 4x corta os eixos?",
+      "alternativas": [
+        "(0, 12) e (3, 0)",
+        "(0, 12) e (48, 0)",
+        "(12, 0) e (0, 3)",
+        "(0, 4) e (12, 0)",
+        "(0, 12) e (−3, 0)"
+      ],
+      "correta": 0,
+      "explicacao": "Eixo y: f(0) = 12. Eixo x: 12 − 4x = 0, x = 3. Dica de mergulhador: dois cortes, duas contas.",
+      "comentarios": [
+        "",
+        "Multiplicou em vez de dividir.",
+        "Inverteu as coordenadas.",
+        "Trocou os papéis de 4 e 12.",
+        "Errou o sinal do zero."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q18-v1",
+      "varianteDe": "mat-ideia-funcao-q18",
+      "tema": "Gráfico e lei",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "O plano A cobra R$ 40 mais R$ 0,80 por minuto; o plano B, R$ 70 mais R$ 0,50 por minuto. Com quantos minutos os dois custam o mesmo?",
+      "alternativas": [
+        "60 minutos",
+        "30 minutos",
+        "140 minutos",
+        "100 minutos",
+        "37,5 minutos"
+      ],
+      "correta": 3,
+      "explicacao": "40 + 0,8x = 70 + 0,5x; 0,3x = 30; x = 100 min. Dica de mergulhador: diferença dos fixos ÷ diferença das taxas.",
+      "comentarios": [
+        "Dividiu 30 por 0,5.",
+        "É a diferença das taxas fixas.",
+        "Dividiu 70 por 0,5.",
+        "",
+        "Dividiu 30 por 0,8."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q19-v1",
+      "varianteDe": "mat-ideia-funcao-q19",
+      "tema": "Gráfico e lei",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "A conta de água custa R$ 40 fixos para até 10 m³; acima disso, cada m³ excedente custa R$ 6. Quanto paga quem consome 18 m³?",
+      "alternativas": [
+        "R$ 88",
+        "R$ 100",
+        "R$ 40",
+        "R$ 108",
+        "R$ 148"
+      ],
+      "correta": 0,
+      "explicacao": "Excedente: 8 × 6 = 48. Total: 40 + 48 = R$ 88. Dica de mergulhador: limite primeiro, excedente depois.",
+      "comentarios": [
+        "",
+        "Cobrou 10 m³ excedentes.",
+        "Ignorou o excedente.",
+        "Cobrou R$ 6 por todos os 18 m³.",
+        "Somou o fixo a 18 × 6."
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-q20-v1",
+      "varianteDe": "mat-ideia-funcao-q20",
+      "tema": "Gráfico e lei",
+      "dificuldade": "dificil",
+      "fase": "mat-ideia-funcao",
+      "enunciado": "O gráfico de uma função de lei f(x) = ax + b é uma reta que passa por (0, 20) e (4, 12). Quanto vale f(7)?",
+      "alternativas": [
+        "13",
+        "6",
+        "0",
+        "26",
+        "34"
+      ],
+      "correta": 1,
+      "explicacao": "b = 20; a = (12 − 20) ÷ 4 = −2. f(7) = −14 + 20 = 6. Dica de mergulhador: reta descendo, a negativo.",
+      "comentarios": [
+        "Usou a = −1.",
+        "",
+        "Supôs que a reta zera em x = 7.",
+        "Usou a = +2, sem o sinal.",
+        "Somou em vez de subtrair."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q01-v1",
+      "varianteDe": "mat-funcao-afim-q01",
+      "tema": "Coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Na função f(x) = 12 − 4x, quais são o coeficiente angular e o coeficiente linear, nessa ordem?",
+      "alternativas": [
+        "−4 e 12",
+        "12 e −4",
+        "8 e 0",
+        "−4 e 0",
+        "4 e 12"
+      ],
+      "correta": 0,
+      "explicacao": "a = −4 e b = 12. Dica de mergulhador: o sinal vem junto com o número.",
+      "comentarios": [
+        "",
+        "Inverteu.",
+        "Somou os dois.",
+        "O linear é o termo sem x.",
+        "Esqueceu o sinal."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q02-v1",
+      "varianteDe": "mat-funcao-afim-q02",
+      "tema": "Coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Uma academia cobra R$ 60 de matrícula mais R$ 90 por mês. Qual é a lei do valor total f(x) para x meses?",
+      "alternativas": [
+        "f(x) = 60x",
+        "f(x) = 150x",
+        "f(x) = 60 + 90x",
+        "f(x) = 90x − 60",
+        "f(x) = 90 + 60x"
+      ],
+      "correta": 2,
+      "explicacao": "Matrícula: fixo 60. Mensalidade: 90 por mês. Dica de mergulhador: fixo + taxa × x.",
+      "comentarios": [
+        "Usou a matrícula como mensalidade.",
+        "Juntou os dois.",
+        "",
+        "A matrícula soma.",
+        "Trocou fixo e taxa."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q03-v1",
+      "varianteDe": "mat-funcao-afim-q03",
+      "tema": "Coeficientes",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "A função f(x) = 0,5x − 3 é crescente ou decrescente?",
+      "alternativas": [
+        "Decrescente, pois b = −3",
+        "Decrescente, pois 0,5 < 1",
+        "Crescente, pois b = −3",
+        "Constante",
+        "Crescente, pois a = 0,5"
+      ],
+      "correta": 4,
+      "explicacao": "a > 0: crescente. Dica de mergulhador: a positivo, reta subindo.",
+      "comentarios": [
+        "Quem decide é o a.",
+        "Basta a ser positivo.",
+        "O b não decide.",
+        "a não é zero.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q04-v1",
+      "varianteDe": "mat-funcao-afim-q04",
+      "tema": "Coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Qual é a lei da função afim que passa pelos pontos (2, 9) e (5, 3)?",
+      "alternativas": [
+        "f(x) = −6x + 21",
+        "f(x) = −2x + 13",
+        "f(x) = −2x + 9",
+        "f(x) = 2x + 5",
+        "f(x) = −3x + 15"
+      ],
+      "correta": 1,
+      "explicacao": "a = (3 − 9) ÷ (5 − 2) = −2. b = 9 + 4 = 13. Dica de mergulhador: reta descendo, a negativo.",
+      "comentarios": [
+        "Não dividiu por 3.",
+        "",
+        "Usou 9 como b.",
+        "Esqueceu o sinal.",
+        "Errou a taxa."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q05-v1",
+      "varianteDe": "mat-funcao-afim-q05",
+      "tema": "Coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Uma conta de luz foi de R$ 100 com 150 kWh e de R$ 150 com 250 kWh, numa tarifa da forma f(x) = ax + b. Qual é a taxa fixa b?",
+      "alternativas": [
+        "R$ 25",
+        "R$ 100",
+        "R$ 75",
+        "R$ 50",
+        "R$ 0,50"
+      ],
+      "correta": 0,
+      "explicacao": "a = 50 ÷ 100 = 0,50. b = 100 − 0,5 × 150 = 25. Dica de mergulhador: primeiro a, depois b.",
+      "comentarios": [
+        "",
+        "É a conta toda com 150 kWh.",
+        "Usou só metade do consumo.",
+        "É a diferença das contas.",
+        "É o preço do kWh."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q06-v1",
+      "varianteDe": "mat-funcao-afim-q06",
+      "tema": "Coeficientes",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "O gráfico de uma função afim corta o eixo y em (0, 30) e o eixo x em (6, 0). Qual é a lei?",
+      "alternativas": [
+        "f(x) = 30 + 5x",
+        "f(x) = 5x",
+        "f(x) = 30 − 6x",
+        "f(x) = 30 − 5x",
+        "f(x) = 6 − 30x"
+      ],
+      "correta": 3,
+      "explicacao": "b = 30; a = −30 ÷ 6 = −5. Dica de mergulhador: a = −b ÷ raiz.",
+      "comentarios": [
+        "A reta desce.",
+        "Esqueceu o b.",
+        "Usou a raiz como taxa.",
+        "",
+        "Trocou os pontos."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q07-v1",
+      "varianteDe": "mat-funcao-afim-q07",
+      "tema": "Coeficientes",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Num posto, 3 litros de um produto custam R$ 13,50, e o preço é diretamente proporcional ao volume. Qual é a lei do preço f(x) para x litros?",
+      "alternativas": [
+        "f(x) = 3x + 13,5",
+        "f(x) = x + 10,5",
+        "f(x) = 13,5x",
+        "f(x) = 4,5x + 3",
+        "f(x) = 4,5x"
+      ],
+      "correta": 4,
+      "explicacao": "a = 13,50 ÷ 3 = 4,50; b = 0. Dica de mergulhador: preço da unidade é o a.",
+      "comentarios": [
+        "Não há parte fixa.",
+        "Não é proporcional.",
+        "Usou o preço de 3 L por litro.",
+        "Não há parte fixa.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q08-v1",
+      "varianteDe": "mat-funcao-afim-q08",
+      "tema": "Problemas com função afim",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um aplicativo cobra f(x) = 4,50 + 2,50x reais, com x em km. Quanto custa uma corrida de 8 km?",
+      "alternativas": [
+        "R$ 20,00",
+        "R$ 24,50",
+        "R$ 15,00",
+        "R$ 22,50",
+        "R$ 56,00"
+      ],
+      "correta": 1,
+      "explicacao": "f(8) = 4,50 + 20 = R$ 24,50. Dica de mergulhador: multiplique antes de somar.",
+      "comentarios": [
+        "Esqueceu a parte fixa.",
+        "",
+        "Somou tudo.",
+        "Usou 7 km.",
+        "Fez (4,50 + 2,50) × 8."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q09-v1",
+      "varianteDe": "mat-funcao-afim-q09",
+      "tema": "Problemas com função afim",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Uma vela de 30 cm queima 1,5 cm por hora. Em quantas horas ela acaba?",
+      "alternativas": [
+        "20 horas",
+        "45 horas",
+        "31,5 horas",
+        "15 horas",
+        "28,5 horas"
+      ],
+      "correta": 0,
+      "explicacao": "30 − 1,5t = 0, então t = 20 h. Dica de mergulhador: comprimento ÷ queima por hora.",
+      "comentarios": [
+        "",
+        "Multiplicou.",
+        "Somou.",
+        "Dividiu por 2.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q10-v1",
+      "varianteDe": "mat-funcao-afim-q10",
+      "tema": "Problemas com função afim",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Uma vendedora ganha R$ 1.600 fixos mais 4% das vendas. Quanto recebe com R$ 25.000 em vendas?",
+      "alternativas": [
+        "R$ 26.600",
+        "R$ 11.600",
+        "R$ 2.600",
+        "R$ 1.700",
+        "R$ 1.000"
+      ],
+      "correta": 2,
+      "explicacao": "1.600 + 0,04 × 25.000 = 1.600 + 1.000 = R$ 2.600. Dica de mergulhador: 4% = 0,04.",
+      "comentarios": [
+        "Somou as vendas.",
+        "Usou 40%.",
+        "",
+        "Usou 0,4%.",
+        "Esqueceu o fixo."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q11-v1",
+      "varianteDe": "mat-funcao-afim-q11",
+      "tema": "Problemas com função afim",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "O plano A cobra R$ 80 mais R$ 0,10 por minuto; o plano B, R$ 20 mais R$ 0,40 por minuto. A partir de quantos minutos o plano A fica mais barato?",
+      "alternativas": [
+        "Acima de 150 minutos",
+        "Abaixo de 200 minutos",
+        "Acima de 200 minutos",
+        "Acima de 800 minutos",
+        "Acima de 60 minutos"
+      ],
+      "correta": 2,
+      "explicacao": "80 + 0,1x < 20 + 0,4x → 60 < 0,3x → x > 200. Dica de mergulhador: fixos sobre taxas.",
+      "comentarios": [
+        "Dividiu 60 por 0,4.",
+        "Abaixo disso, o B é mais barato.",
+        "",
+        "Dividiu 80 por 0,1.",
+        "É a diferença das taxas fixas."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q12-v1",
+      "varianteDe": "mat-funcao-afim-q12",
+      "tema": "Problemas com função afim",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Uma máquina de R$ 25.000 perde R$ 1.500 de valor por ano, de forma constante. Quanto ela vale depois de 8 anos?",
+      "alternativas": [
+        "R$ 13.000",
+        "R$ 12.000",
+        "R$ 14.500",
+        "R$ 37.000",
+        "R$ 23.500"
+      ],
+      "correta": 0,
+      "explicacao": "25.000 − 1.500 × 8 = 25.000 − 12.000 = R$ 13.000. Dica de mergulhador: valor inicial menos perda × anos.",
+      "comentarios": [
+        "",
+        "É a perda total.",
+        "Descontou 7 anos.",
+        "Somou a perda.",
+        "Descontou só um ano."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q13-v1",
+      "varianteDe": "mat-funcao-afim-q13",
+      "tema": "Problemas com função afim",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um tanque com 900 L perde 25 L por hora. Em quantas horas ele fica com 300 L?",
+      "alternativas": [
+        "20 horas",
+        "12 horas",
+        "24 horas",
+        "36 horas",
+        "48 horas"
+      ],
+      "correta": 2,
+      "explicacao": "900 − 25t = 300 → 25t = 600 → t = 24 h. Dica de mergulhador: o que precisa sair ÷ a perda por hora.",
+      "comentarios": [
+        "Usou 30 L por hora.",
+        "Dividiu 300 por 25.",
+        "",
+        "Calculou até esvaziar.",
+        "Dividiu 1.200 por 25."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q14-v1",
+      "varianteDe": "mat-funcao-afim-q14",
+      "tema": "Problemas com função afim",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Um produto é vendido a R$ 25 a unidade. A fábrica tem custo fixo mensal de R$ 4.800 e gasta R$ 13 por unidade. Quantas unidades precisa vender para não ter prejuízo nem lucro?",
+      "alternativas": [
+        "400",
+        "480",
+        "126",
+        "369",
+        "192"
+      ],
+      "correta": 0,
+      "explicacao": "25x = 4.800 + 13x → 12x = 4.800 → x = 400. Dica de mergulhador: margem por unidade = preço − custo variável.",
+      "comentarios": [
+        "",
+        "Dividiu 4.800 por 10.",
+        "Dividiu 4.800 por 38.",
+        "Dividiu 4.800 por 13.",
+        "Dividiu 4.800 por 25."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q15-v1",
+      "varianteDe": "mat-funcao-afim-q15",
+      "tema": "Problemas com função afim",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Numa escala inventada, a água congela a 10 °X e ferve a 60 °X, e a relação com a escala Celsius é afim. Quantos °X correspondem a 40 °C?",
+      "alternativas": [
+        "90 °X",
+        "20 °X",
+        "34 °X",
+        "30 °X",
+        "50 °X"
+      ],
+      "correta": 3,
+      "explicacao": "a = 50 ÷ 100 = 0,5; b = 10. X = 0,5 × 40 + 10 = 30 °X. Dica de mergulhador: taxa = diferença entre os pontos.",
+      "comentarios": [
+        "Fez a conta ao contrário.",
+        "Esqueceu o + 10.",
+        "Usou a = 0,6.",
+        "",
+        "Somou 10 a 40."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q16-v1",
+      "varianteDe": "mat-funcao-afim-q16",
+      "tema": "Gráfico da reta",
+      "dificuldade": "facil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Em que ponto o gráfico de f(x) = 9 − 3x corta o eixo y?",
+      "alternativas": [
+        "(0, 9)",
+        "(0, 3)",
+        "(9, 0)",
+        "(3, 0)",
+        "(0, −3)"
+      ],
+      "correta": 0,
+      "explicacao": "f(0) = 9. Dica de mergulhador: x = 0 deixa só o termo fixo.",
+      "comentarios": [
+        "",
+        "Dividiu.",
+        "Inverteu as coordenadas.",
+        "É o corte no eixo x.",
+        "O −3 é a inclinação."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q17-v1",
+      "varianteDe": "mat-funcao-afim-q17",
+      "tema": "Gráfico da reta",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Qual é a raiz de f(x) = −5x + 15?",
+      "alternativas": [
+        "15",
+        "10",
+        "3",
+        "−75",
+        "−3"
+      ],
+      "correta": 2,
+      "explicacao": "−5x + 15 = 0 → x = 3. Dica de mergulhador: −b ÷ a = −15 ÷ (−5) = 3.",
+      "comentarios": [
+        "É o termo fixo.",
+        "Subtraiu.",
+        "",
+        "Multiplicou.",
+        "Errou o sinal."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q18-v1",
+      "varianteDe": "mat-funcao-afim-q18",
+      "tema": "Gráfico da reta",
+      "dificuldade": "medio",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Qual destas retas é paralela a y = −2x + 5?",
+      "alternativas": [
+        "y = 2x + 5",
+        "y = 5x − 2",
+        "y = −5x + 2",
+        "y = −2x",
+        "y = x/2 + 5"
+      ],
+      "correta": 3,
+      "explicacao": "Mesmo a = −2. Dica de mergulhador: o b pode mudar; o a, não.",
+      "comentarios": [
+        "Tem inclinação oposta.",
+        "Trocou os números.",
+        "Tem inclinação −5.",
+        "",
+        "É perpendicular."
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q19-v1",
+      "varianteDe": "mat-funcao-afim-q19",
+      "tema": "Gráfico da reta",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "Em que ponto se cruzam as retas f(x) = 3x − 2 e g(x) = x + 6?",
+      "alternativas": [
+        "(10, 4)",
+        "(4, 6)",
+        "(8, 22)",
+        "(2, 4)",
+        "(4, 10)"
+      ],
+      "correta": 4,
+      "explicacao": "3x − 2 = x + 6 → 2x = 8 → x = 4; y = 10. Dica de mergulhador: confira o y nas duas leis.",
+      "comentarios": [
+        "Inverteu as coordenadas.",
+        "Errou o y.",
+        "Não dividiu por 2.",
+        "Errou a conta de x.",
+        ""
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-q20-v1",
+      "varianteDe": "mat-funcao-afim-q20",
+      "tema": "Gráfico da reta",
+      "dificuldade": "dificil",
+      "fase": "mat-funcao-afim",
+      "enunciado": "A reta y = −3x + 9 forma um triângulo com os eixos x e y. Qual é a área desse triângulo?",
+      "alternativas": [
+        "9",
+        "27",
+        "13,5",
+        "12",
+        "4,5"
+      ],
+      "correta": 2,
+      "explicacao": "Cortes: (0, 9) e (3, 0). Área: 3 × 9 ÷ 2 = 13,5. Dica de mergulhador: catetos nos eixos, área ÷ 2.",
+      "comentarios": [
+        "Usou só um corte.",
+        "Não dividiu por 2.",
+        "",
+        "Somou os cortes.",
+        "Dividiu a raiz por 2 e multiplicou por 3."
+      ]
     }
   ],
   "pares": [
@@ -61124,6 +64271,78 @@
       "tema": "Revisão do módulo: geometria espacial",
       "termo": "Relação de Euler",
       "definicao": "V − A + F = 2"
+    },
+    {
+      "id": "mat-plano-cartesiano-par-01",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "termo": "Par ordenado",
+      "definicao": "(x, y)"
+    },
+    {
+      "id": "mat-plano-cartesiano-par-02",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "termo": "2º quadrante",
+      "definicao": "(−, +)"
+    },
+    {
+      "id": "mat-plano-cartesiano-par-03",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "termo": "Taxa de variação",
+      "definicao": "Δy ÷ Δx"
+    },
+    {
+      "id": "mat-plano-cartesiano-par-04",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "termo": "Trecho horizontal",
+      "definicao": "Valor constante"
+    },
+    {
+      "id": "mat-ideia-funcao-par-01",
+      "tema": "A ideia de função",
+      "termo": "Função",
+      "definicao": "Cada x com um único y"
+    },
+    {
+      "id": "mat-ideia-funcao-par-02",
+      "tema": "A ideia de função",
+      "termo": "f(10)",
+      "definicao": "Valor de y para x = 10"
+    },
+    {
+      "id": "mat-ideia-funcao-par-03",
+      "tema": "A ideia de função",
+      "termo": "Domínio",
+      "definicao": "Valores possíveis de x"
+    },
+    {
+      "id": "mat-ideia-funcao-par-04",
+      "tema": "A ideia de função",
+      "termo": "Zero da função",
+      "definicao": "x que faz y = 0"
+    },
+    {
+      "id": "mat-funcao-afim-par-01",
+      "tema": "Função afim",
+      "termo": "Coeficiente linear",
+      "definicao": "Valor em x = 0"
+    },
+    {
+      "id": "mat-funcao-afim-par-02",
+      "tema": "Função afim",
+      "termo": "Coeficiente angular",
+      "definicao": "Taxa e inclinação"
+    },
+    {
+      "id": "mat-funcao-afim-par-03",
+      "tema": "Função afim",
+      "termo": "Raiz",
+      "definicao": "x = −b ÷ a"
+    },
+    {
+      "id": "mat-funcao-afim-par-04",
+      "tema": "Função afim",
+      "termo": "Retas paralelas",
+      "definicao": "Mesmo a"
     }
   ],
   "verdadeiroFalso": [
@@ -62309,6 +65528,69 @@
       "afirmacao": "1 m³ tem 1.000 litros.",
       "verdadeira": true,
       "explicacao": "1 m³ = 1.000 dm³."
+    },
+    {
+      "id": "mat-plano-cartesiano-vf-01",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "afirmacao": "O ponto (0, 5) está sobre o eixo y.",
+      "verdadeira": true,
+      "explicacao": "x = 0."
+    },
+    {
+      "id": "mat-plano-cartesiano-vf-02",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "afirmacao": "(3, 2) e (2, 3) são o mesmo ponto.",
+      "verdadeira": false,
+      "explicacao": "A ordem importa."
+    },
+    {
+      "id": "mat-plano-cartesiano-vf-03",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "afirmacao": "Eixo que não começa no zero pode exagerar diferenças.",
+      "verdadeira": true,
+      "explicacao": "Calcule com os valores."
+    },
+    {
+      "id": "mat-ideia-funcao-vf-01",
+      "tema": "A ideia de função",
+      "afirmacao": "Uma circunferência inteira não é gráfico de função.",
+      "verdadeira": true,
+      "explicacao": "A reta vertical corta duas vezes."
+    },
+    {
+      "id": "mat-ideia-funcao-vf-02",
+      "tema": "A ideia de função",
+      "afirmacao": "A imagem fica no eixo horizontal.",
+      "verdadeira": false,
+      "explicacao": "Imagem é o eixo y."
+    },
+    {
+      "id": "mat-ideia-funcao-vf-03",
+      "tema": "A ideia de função",
+      "afirmacao": "f(x) = 10 − 3x é decrescente.",
+      "verdadeira": true,
+      "explicacao": "O número de x é negativo."
+    },
+    {
+      "id": "mat-funcao-afim-vf-01",
+      "tema": "Função afim",
+      "afirmacao": "Se a < 0, a função afim é decrescente.",
+      "verdadeira": true,
+      "explicacao": "A reta desce."
+    },
+    {
+      "id": "mat-funcao-afim-vf-02",
+      "tema": "Função afim",
+      "afirmacao": "Em f(x) = 5 + 2x, o coeficiente angular é 5.",
+      "verdadeira": false,
+      "explicacao": "É 2."
+    },
+    {
+      "id": "mat-funcao-afim-vf-03",
+      "tema": "Função afim",
+      "afirmacao": "Função linear é afim com b = 0.",
+      "verdadeira": true,
+      "explicacao": "Proporção direta."
     }
   ],
   "sequencias": [
@@ -62996,6 +66278,42 @@
         "Aplicar a fórmula e conferir o arredondamento"
       ],
       "explicacao": "Unidade primeiro."
+    },
+    {
+      "id": "mat-plano-cartesiano-seq-01",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "titulo": "Ler um gráfico",
+      "itens": [
+        "Ler o título",
+        "Ver o que cada eixo mede",
+        "Conferir as unidades",
+        "Responder com os valores do gráfico"
+      ],
+      "explicacao": "Título e eixos primeiro."
+    },
+    {
+      "id": "mat-ideia-funcao-seq-01",
+      "tema": "A ideia de função",
+      "titulo": "Achar a lei por uma tabela",
+      "itens": [
+        "Ver quanto y muda a cada passo de x",
+        "Achar o valor de y em x = 0",
+        "Escrever y = taxa × x + valor fixo",
+        "Conferir em outra linha da tabela"
+      ],
+      "explicacao": "Teste sempre."
+    },
+    {
+      "id": "mat-funcao-afim-seq-01",
+      "tema": "Função afim",
+      "titulo": "Achar a lei por dois pontos",
+      "itens": [
+        "Calcular a diferença dos y",
+        "Dividir pela diferença dos x",
+        "Substituir um ponto para achar b",
+        "Conferir no outro ponto"
+      ],
+      "explicacao": "Δy ÷ Δx."
     }
   ],
   "adivinhas": [
@@ -63812,6 +67130,48 @@
         "Espaço que o sólido ocupa",
         "Medido em unidade ao cubo",
         "Cabe nele em litros"
+      ]
+    },
+    {
+      "id": "mat-plano-cartesiano-adv-01",
+      "tema": "Plano cartesiano e leitura de gráficos",
+      "dificuldade": "medio",
+      "resposta": "Origem",
+      "aceitas": [
+        "origem"
+      ],
+      "dicas": [
+        "Ponto (0, 0)",
+        "Onde os eixos se cruzam",
+        "Começo de tudo no plano"
+      ]
+    },
+    {
+      "id": "mat-ideia-funcao-adv-01",
+      "tema": "A ideia de função",
+      "dificuldade": "medio",
+      "resposta": "Função",
+      "aceitas": [
+        "funcao, função"
+      ],
+      "dicas": [
+        "Cada entrada tem uma saída",
+        "Escreve-se f(x)",
+        "Passa no teste da reta vertical"
+      ]
+    },
+    {
+      "id": "mat-funcao-afim-adv-01",
+      "tema": "Função afim",
+      "dificuldade": "medio",
+      "resposta": "Reta",
+      "aceitas": [
+        "reta"
+      ],
+      "dicas": [
+        "Gráfico da função afim",
+        "Tem inclinação constante",
+        "Basta dois pontos para traçar"
       ]
     }
   ],
@@ -65165,6 +68525,78 @@
       "tema": "Matemática",
       "palavra": "Caixa",
       "dica": "Tem seis faces"
+    },
+    {
+      "id": "mat-plano-cartesiano-pal-01",
+      "tema": "Matemática",
+      "palavra": "Eixo",
+      "dica": "Reta de referência"
+    },
+    {
+      "id": "mat-plano-cartesiano-pal-02",
+      "tema": "Matemática",
+      "palavra": "Ponto",
+      "dica": "Par de coordenadas"
+    },
+    {
+      "id": "mat-plano-cartesiano-pal-03",
+      "tema": "Matemática",
+      "palavra": "Gráfico",
+      "dica": "Desenho dos dados"
+    },
+    {
+      "id": "mat-plano-cartesiano-pal-04",
+      "tema": "Matemática",
+      "palavra": "Abscissa",
+      "dica": "Coordenada x"
+    },
+    {
+      "id": "mat-ideia-funcao-pal-01",
+      "tema": "Matemática",
+      "palavra": "Domínio",
+      "dica": "Valores de entrada"
+    },
+    {
+      "id": "mat-ideia-funcao-pal-02",
+      "tema": "Matemática",
+      "palavra": "Imagem",
+      "dica": "Valores de saída"
+    },
+    {
+      "id": "mat-ideia-funcao-pal-03",
+      "tema": "Matemática",
+      "palavra": "Tabela",
+      "dica": "Ajuda a achar a lei"
+    },
+    {
+      "id": "mat-ideia-funcao-pal-04",
+      "tema": "Matemática",
+      "palavra": "Zero",
+      "dica": "Onde o gráfico toca o eixo x"
+    },
+    {
+      "id": "mat-funcao-afim-pal-01",
+      "tema": "Matemática",
+      "palavra": "Afim",
+      "dica": "Função do tipo ax + b"
+    },
+    {
+      "id": "mat-funcao-afim-pal-02",
+      "tema": "Matemática",
+      "palavra": "Taxa",
+      "dica": "Muda a cada unidade"
+    },
+    {
+      "id": "mat-funcao-afim-pal-03",
+      "tema": "Matemática",
+      "palavra": "Vela",
+      "dica": "Derrete em ritmo constante"
+    },
+    {
+      "id": "mat-funcao-afim-pal-04",
+      "tema": "Matemática",
+      "palavra": "Plano",
+      "dica": "Fixo mais minutos"
     }
   ],
   "fichas": {
@@ -67168,6 +70600,132 @@
       "pegadinhas": [
         "Esquecer o ÷ 3 de pirâmides e cones.",
         "Usar k² no volume."
+      ]
+    },
+    "Pares ordenados e quadrantes": {
+      "texto": [
+        "Ponto = par ordenado (x, y): primeiro a horizontal, depois a vertical. Quadrantes no sentido anti-horário: (+, +), (−, +), (−, −), (+, −). Coordenada zero põe o ponto num eixo.",
+        "Distância na horizontal ou na vertical: subtraia as coordenadas que mudam. Em diagonal: Pitágoras com as diferenças. Ponto médio: média dos x e média dos y."
+      ],
+      "pontos": [
+        "x = 0 é o eixo y; y = 0 é o eixo x.",
+        "Lado de retângulo = diferença de coordenadas."
+      ],
+      "pegadinhas": [
+        "Inverter a ordem do par.",
+        "Ignorar o sinal ao subtrair."
+      ]
+    },
+    "Leitura de gráficos": {
+      "texto": [
+        "Leia título, eixos e unidades. Ponto mais alto é o máximo; mais baixo, o mínimo. Trecho subindo: crescimento; descendo: queda; horizontal: constante. Cruzamento de linhas: valores iguais.",
+        "Em gráfico de velocidade, distância = velocidade × tempo de cada trecho. Em gráfico de distância até casa, trecho horizontal é parada. Eixo que não começa no zero exagera diferenças: calcule com os números."
+      ],
+      "pontos": [
+        "Compare intervalo a intervalo.",
+        "Cruzou, empatou."
+      ],
+      "pegadinhas": [
+        "Ler o tamanho da barra num eixo cortado.",
+        "Somar dois intervalos como se fossem um."
+      ]
+    },
+    "Taxa de variação": {
+      "texto": [
+        "Taxa de variação = (y₂ − y₁) ÷ (x₂ − x₁): quanto y muda por unidade de x. Positiva: sobe; negativa: desce; zero: constante.",
+        "Com a taxa, dá para prever: o que resta ÷ a perda por hora diz quando acaba; voltando no tempo, subtraia a taxa. Para comparar ritmos, divida cada subida pelo seu tempo."
+      ],
+      "pontos": [
+        "Maior taxa = trecho mais inclinado.",
+        "Conte os intervalos, não os anos."
+      ],
+      "pegadinhas": [
+        "Esquecer de dividir pelo tempo.",
+        "Comparar subidas totais em tempos diferentes."
+      ]
+    },
+    "O que é função": {
+      "texto": [
+        "Função associa a cada x um único y. Teste da reta vertical: nenhuma reta vertical corta o gráfico duas vezes. Notação: f(4) é o valor de y quando x = 4.",
+        "O caminho contrário (achar x dado y) é resolver uma equação. Em tabelas, ache quanto y muda a cada passo de x e o valor em x = 0. Com dois pontos de uma reta, a = Δy ÷ Δx e depois b."
+      ],
+      "pontos": [
+        "Substitua e confira.",
+        "Parte fixa + parte que depende de x."
+      ],
+      "pegadinhas": [
+        "Inverter x e y.",
+        "Esquecer a parte fixa no caminho contrário."
+      ]
+    },
+    "Domínio e imagem": {
+      "texto": [
+        "Domínio: valores que x pode assumir; imagem: valores que y assume. No gráfico, domínio na horizontal e imagem na vertical.",
+        "Em problemas reais, o domínio tem limites: nada negativo, capacidade máxima, cortes que não passam da folha. Para achar a imagem de uma função afim, calcule nas pontas do domínio."
+      ],
+      "pontos": [
+        "Horas adicionais = total − 1.",
+        "O lado menor limita os cortes."
+      ],
+      "pegadinhas": [
+        "Trocar domínio e imagem.",
+        "Esquecer o valor fixo ao calcular a imagem."
+      ]
+    },
+    "Gráfico e lei": {
+      "texto": [
+        "Crescente sobe da esquerda para a direita (número de x positivo); decrescente desce. Zero: x que faz y = 0. Corte no eixo y: f(0).",
+        "Dois planos custam o mesmo onde as leis se igualam. Em contas por faixa, só o que passa do limite paga a tarifa extra. Pelo gráfico, b é o ponto em x = 0 e a é a inclinação."
+      ],
+      "pontos": [
+        "Diferença dos fixos ÷ diferença das taxas.",
+        "Zero e corte em y são duas contas diferentes."
+      ],
+      "pegadinhas": [
+        "Cobrar a tarifa extra sobre todo o consumo.",
+        "Errar o sinal do zero."
+      ]
+    },
+    "Coeficientes": {
+      "texto": [
+        "f(x) = ax + b. b é o valor em x = 0 (parte fixa, corte no eixo y); a é a taxa constante (inclinação). a > 0 cresce; a < 0 decresce; a = 0 constante.",
+        "Com dois pontos: a = Δy ÷ Δx; substitua um ponto para achar b. Pelos cortes nos eixos: b é o corte em y, e a = −b ÷ raiz. Proporção direta: b = 0."
+      ],
+      "pontos": [
+        "O sinal vem junto com o número.",
+        "Confira a lei nos dois pontos."
+      ],
+      "pegadinhas": [
+        "Trocar a e b.",
+        "Usar o valor de um ponto como b."
+      ]
+    },
+    "Problemas com função afim": {
+      "texto": [
+        "Situações com parte fixa e parte por unidade: táxi, planos, salário com comissão, depreciação, reservatório. Escreva a lei e substitua, ou iguale a lei ao valor pedido.",
+        "Comparar planos: iguale as leis para achar o empate; depois dele, vence o de menor taxa. Ponto de equilíbrio: receita = custo; cada unidade contribui com preço − custo variável."
+      ],
+      "pontos": [
+        "Diferença dos fixos ÷ diferença das taxas.",
+        "A raiz é quando a grandeza acaba."
+      ],
+      "pegadinhas": [
+        "Somar fixo e taxa antes de multiplicar.",
+        "Dividir o custo fixo só pelo preço."
+      ]
+    },
+    "Gráfico da reta": {
+      "texto": [
+        "Reta de f(x) = ax + b: corta o eixo y em (0, b) e o eixo x na raiz −b ÷ a. Paralelas têm o mesmo a.",
+        "Cruzamento de duas retas: iguale as leis, ache x e substitua para o y. O triângulo formado com os eixos tem catetos nos cortes: área = base × altura ÷ 2."
+      ],
+      "pontos": [
+        "Corte em y: x = 0. Corte em x: y = 0.",
+        "Mesmo a, retas paralelas."
+      ],
+      "pegadinhas": [
+        "Inverter as coordenadas do corte.",
+        "Esquecer de dividir a área por 2."
       ]
     }
   }
