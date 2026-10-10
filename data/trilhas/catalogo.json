@@ -2068,6 +2068,69 @@
         "sequencias": 20,
         "palavras": 80
       }
+    },
+    {
+      "arquivo": "enem-biologia.json",
+      "id": "enem-biologia",
+      "nome": "Enem · Biologia",
+      "descricao": "Biologia para o Enem e os vestibulares: célula e metabolismo, genética e biotecnologia, evolução e diversidade, corpo humano e saúde, ecologia e ambiente, com as habilidades da Matriz do Inep.",
+      "categoria": "Enem e vestibular",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 45,
+        "minutos": 135,
+        "aprovacao": 60,
+        "exigeFases": false
+      },
+      "fases": [
+        {
+          "id": "bio-celula",
+          "nome": "Aula 1 · A célula e suas organelas",
+          "modulo": "Módulo 1 · Célula, metabolismo e energia",
+          "descricao": "Módulo 1 · aula 1 de 3 · 35 min · treina as habilidades H14, H15 e H16",
+          "habilidades": [
+            "H14",
+            "H15",
+            "H16"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "bio-membrana",
+          "nome": "Aula 2 · Membrana e transportes",
+          "modulo": "Módulo 1 · Célula, metabolismo e energia",
+          "descricao": "Módulo 1 · aula 2 de 3 · 35 min · treina as habilidades H14 e H15",
+          "habilidades": [
+            "H14",
+            "H15"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "bio-moleculas",
+          "nome": "Aula 3 · Moléculas da vida",
+          "modulo": "Módulo 1 · Célula, metabolismo e energia",
+          "descricao": "Módulo 1 · aula 3 de 3 · 35 min · treina as habilidades H14, H15 e H30",
+          "habilidades": [
+            "H14",
+            "H15",
+            "H30"
+          ],
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 60,
+        "variantes": 60,
+        "pares": 12,
+        "verdadeiroFalso": 9,
+        "adivinhas": 3,
+        "sequencias": 3,
+        "palavras": 12
+      }
     }
   ]
 }
