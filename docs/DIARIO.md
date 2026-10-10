@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-10 · Enem por matéria, Onda 4: Enem · Química completo
+- **Feito:** `enem-quimica` com 27 aulas em 5 módulos (matéria, átomos e tabela periódica; ligações, substâncias e funções inorgânicas; quantidades, estequiometria e soluções; energia, velocidade e equilíbrio; química orgânica, polímeros, ambiente e energia): 540 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 540 variantes, 71 fichas, artigo completo e blocos para todos os jogos. Parecer das fontes: o de Ciências da Natureza (`docs/validacoes/enem-natureza-2026-10-10.md`). Caderno novo do curso.
+- **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos (todas as contas conferidas pelo construtor); navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.
+- **Decisões:** curso 100% autoral; pH só com potências de 10 exatas; ambiente sempre com a causa química; 69 itens marcados `revisar`.
+- **Pendências:** Mergulho Triplo (cerca de US$ 40 para questões e variantes; só com aprovação do admin); revisão de um professor de Química.
+- **Próximo passo:** Ondas 5 e 6 (Geografia e História), com o parecer das fontes de Humanas antes.
+
 ## 2026-10-10 · Enem por matéria, Onda 3: Enem · Biologia completo
 - **Feito:** parecer das fontes de Ciências da Natureza (Matriz do Inep e Caderno Marista: Aprovada com ressalvas, `docs/validacoes/enem-natureza-2026-10-10.md`, vale também para Química e Física). `enem-biologia` com 27 aulas em 5 módulos (célula, metabolismo e energia; genética e biotecnologia; evolução e diversidade; corpo humano e saúde; ecologia e ambiente): 540 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 540 variantes, 71 fichas, artigo completo e blocos para todos os jogos. Caderno novo do curso.
 - **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.
