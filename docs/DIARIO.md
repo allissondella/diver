@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-10 · Enem por matéria, Onda 5: Enem · Geografia completo
+- **Feito:** parecer das fontes de Ciências Humanas (Matriz do Inep e Caderno Marista de Humanas: Aprovada com ressalvas, `docs/validacoes/enem-humanas-2026-10-10.md`, vale também para História, Filosofia e Sociologia). `enem-geografia` com 30 aulas em 6 módulos (cartografia, escala e leitura de mapas; relevo, solos e clima; biomas, água e recursos naturais; questões ambientais e sustentabilidade; população, cidades e urbanização; campo, indústria, energia e globalização): 600 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 600 variantes, 79 fichas, artigo completo e blocos para todos os jogos. Caderno novo do curso.
+- **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos (todas as contas conferidas pelo construtor); autocheck de originalidade sem trechos iguais às fontes; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.
+- **Decisões:** curso 100% autoral; casos brasileiros em cada tema; espaço urbano e ambiente sempre com "quem causa, quem sofre e quem decide"; 129 itens marcados `revisar`.
+- **Pendências:** Mergulho Triplo (cerca de US$ 45 para questões e variantes; só com aprovação do admin); revisão de um professor de Geografia.
+- **Próximo passo:** Onda 6 (História), com o mesmo parecer de Humanas.
+
 ## 2026-10-10 · Enem por matéria, Onda 4: Enem · Química completo
 - **Feito:** `enem-quimica` com 27 aulas em 5 módulos (matéria, átomos e tabela periódica; ligações, substâncias e funções inorgânicas; quantidades, estequiometria e soluções; energia, velocidade e equilíbrio; química orgânica, polímeros, ambiente e energia): 540 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 540 variantes, 71 fichas, artigo completo e blocos para todos os jogos. Parecer das fontes: o de Ciências da Natureza (`docs/validacoes/enem-natureza-2026-10-10.md`). Caderno novo do curso.
 - **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos (todas as contas conferidas pelo construtor); navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.
