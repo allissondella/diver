@@ -1815,7 +1815,7 @@
       "id": "fis-optica",
       "nome": "Aula 17 · Óptica: luz, espelhos, lentes e visão",
       "modulo": "Módulo 4 · Óptica, eletricidade e magnetismo",
-      "descricao": "Módulo 4 · aula 1 de 3 · 35 min · treina as habilidades H1, H5 e H21",
+      "descricao": "Módulo 4 · aula 1 de 5 · 35 min · treina as habilidades H1, H5 e H21",
       "habilidades": [
         "H1",
         "H5",
@@ -1928,7 +1928,7 @@
       "id": "fis-eletrostatica",
       "nome": "Aula 18 · Eletrostática: cargas, força e campo",
       "modulo": "Módulo 4 · Óptica, eletricidade e magnetismo",
-      "descricao": "Módulo 4 · aula 2 de 3 · 35 min · treina as habilidades H5, H6 e H21",
+      "descricao": "Módulo 4 · aula 2 de 5 · 35 min · treina as habilidades H5, H6 e H21",
       "habilidades": [
         "H5",
         "H6",
@@ -2041,7 +2041,7 @@
       "id": "fis-eletrodinamica",
       "nome": "Aula 19 · Corrente, resistência e potência elétrica",
       "modulo": "Módulo 4 · Óptica, eletricidade e magnetismo",
-      "descricao": "Módulo 4 · aula 3 de 3 · 35 min · treina as habilidades H5, H6 e H7",
+      "descricao": "Módulo 4 · aula 3 de 5 · 35 min · treina as habilidades H5, H6 e H7",
       "habilidades": [
         "H5",
         "H6",
@@ -2147,6 +2147,231 @@
           "corrente eletrica",
           "lei de ohm",
           "efeito joule"
+        ]
+      }
+    },
+    {
+      "id": "fis-circuitos",
+      "nome": "Aula 20 · Circuitos: série, paralelo e instalações",
+      "modulo": "Módulo 4 · Óptica, eletricidade e magnetismo",
+      "descricao": "Módulo 4 · aula 4 de 5 · 35 min · treina as habilidades H5, H6 e H7",
+      "habilidades": [
+        "H5",
+        "H6",
+        "H7"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Associação em série",
+            "texto": [
+              "Na **associação em série**, os resistores ficam um depois do outro, num caminho único: a corrente é a mesma em todos, e a tensão total se divide entre eles. A resistência equivalente é a soma: Req = R₁ + R₂ + ... Assim, três resistores de 10 Ω em série valem 30 Ω. Se um componente se rompe, o circuito se abre e tudo para: era o defeito dos antigos pisca-piscas de Natal. Fusíveis e disjuntores são ligados em série com o circuito que protegem, justamente para interromper a corrente quando ela fica perigosa."
+            ]
+          },
+          {
+            "titulo": "Associação em paralelo",
+            "texto": [
+              "Na **associação em paralelo**, os resistores ficam lado a lado, ligados aos mesmos dois pontos: a tensão é a mesma em todos, e a corrente total se divide entre os ramos. O inverso da resistência equivalente é a soma dos inversos: 1/Req = 1/R₁ + 1/R₂ + ...; para dois resistores, Req = R₁·R₂/(R₁ + R₂), e para n resistores iguais, Req = R/n. A equivalente é sempre menor que a menor das resistências. As tomadas e as lâmpadas de uma casa são ligadas em paralelo: todas recebem a tensão da rede, cada uma funciona de forma independente, e ligar mais aparelhos aumenta a corrente total que passa pelo disjuntor geral."
+            ]
+          },
+          {
+            "titulo": "Instalações e segurança",
+            "texto": [
+              "Benjamins e extensões ligam vários aparelhos em paralelo na mesma tomada, somando as correntes; com aparelhos potentes, o fio pode superaquecer e causar incêndio. O **aterramento**, o terceiro pino da tomada, liga a carcaça metálica dos aparelhos à terra e desvia para lá correntes de fuga, evitando choques. Curto-circuito é a ligação direta entre os polos, com resistência quase nula e corrente enorme: o disjuntor deve desarmar. O dispositivo DR desliga o circuito quando percebe corrente escapando por uma pessoa."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Desenhe o circuito e marque o que é igual: em série, a corrente; em paralelo, a tensão. Depois calcule a resistência equivalente e use U = R·i."
+            ]
+          }
+        ],
+        "introducao": "Por que, quando uma lâmpada da casa queima, as outras continuam acesas? E por que, num pisca-pisca antigo, uma queimada apagava todas? Esta aula trata das associações de resistores em série e em paralelo e das regras de segurança das instalações elétricas.",
+        "mapaMental": {
+          "centro": "Circuitos",
+          "ramos": [
+            {
+              "titulo": "Caminho único",
+              "itens": [
+                "corrente igual",
+                "tensão total se divide",
+                "um queimou, tudo apaga"
+              ]
+            },
+            {
+              "titulo": "Lado a lado",
+              "itens": [
+                "mesma tensão",
+                "corrente total se divide",
+                "equivalente menor que a menor"
+              ]
+            },
+            {
+              "titulo": "Casa",
+              "itens": [
+                "tomadas e lâmpadas independentes",
+                "disjuntor geral"
+              ]
+            },
+            {
+              "titulo": "Riscos",
+              "itens": [
+                "benjamins e extensões",
+                "curto-circuito",
+                "dispositivo DR"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🎄",
+            "conceito": "Pisca-pisca que apaga inteiro",
+            "liga": "associacao em serie",
+            "porque": "Caminho único: rompeu, apagou."
+          },
+          {
+            "icone": "🏠",
+            "conceito": "Lâmpadas da casa independentes",
+            "liga": "associacao em paralelo",
+            "porque": "Mesma tensão em todas."
+          },
+          {
+            "icone": "🔌",
+            "conceito": "Terceiro pino da tomada",
+            "liga": "aterramento",
+            "porque": "Leva a corrente de fuga para a terra."
+          }
+        ],
+        "pontos": [
+          "**Associação em série**: mesma corrente; Req = soma.",
+          "**Associação em paralelo**: mesma tensão; 1/Req = soma dos inversos.",
+          "n resistores iguais em paralelo: R/n.",
+          "Casa: ligações em paralelo; disjuntor em série.",
+          "**Aterramento** desvia correntes de fuga da carcaça.",
+          "Curto-circuito: resistência quase nula, corrente enorme."
+        ],
+        "perolas": [
+          "Benjamim cheio de aparelhos fortes é convite ao incêndio."
+        ],
+        "reforcar": [
+          "associacao em serie",
+          "associacao em paralelo",
+          "aterramento"
+        ]
+      }
+    },
+    {
+      "id": "fis-magnetismo",
+      "nome": "Aula 21 · Magnetismo, eletroímãs e indução",
+      "modulo": "Módulo 4 · Óptica, eletricidade e magnetismo",
+      "descricao": "Módulo 4 · aula 5 de 5 · 35 min · treina as habilidades H5, H6 e H21",
+      "habilidades": [
+        "H5",
+        "H6",
+        "H21"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Ímãs e campo magnético",
+            "texto": [
+              "Todo ímã tem dois polos, norte e sul; polos iguais se repelem e opostos se atraem. Cortar um ímã ao meio não separa os polos: cada pedaço vira um ímã completo. Em volta do ímã existe um **campo magnético**, representado por linhas que saem do polo norte e entram no sul. A Terra se comporta como um grande ímã, e a agulha da bússola, que é um pequeno ímã, alinha-se com esse campo: o polo norte da agulha aponta para o norte geográfico, onde fica, na verdade, um polo sul magnético. Ferro, níquel e cobalto são atraídos por ímãs; alumínio, cobre e plástico, praticamente não."
+            ]
+          },
+          {
+            "titulo": "Eletromagnetismo",
+            "texto": [
+              "Em 1820, Oersted percebeu que a corrente elétrica num fio desvia a agulha de uma bússola: toda corrente cria campo magnético ao redor. Enrolando o fio em espiras, forma-se uma bobina, e com um núcleo de ferro dentro ela vira um **eletroímã**, que pode ser ligado e desligado e tem força ajustável pela corrente e pelo número de espiras. Eletroímãs aparecem em guindastes de ferro-velho, campainhas, fechaduras elétricas e no trem de levitação magnética. Um fio com corrente dentro de um campo magnético sofre força; é assim que funcionam o motor elétrico, que transforma energia elétrica em movimento, e o alto-falante, cuja bobina vibra no ritmo do sinal."
+            ]
+          },
+          {
+            "titulo": "Indução e geração de energia",
+            "texto": [
+              "Faraday descobriu o caminho inverso: um campo magnético que varia através de uma bobina gera corrente nela. É a **indução eletromagnética**. Ímã parado diante da bobina não gera nada; é preciso movimento ou variação. Quase toda a eletricidade do mundo vem de geradores que giram bobinas entre ímãs (ou ímãs entre bobinas), movidos por água, vapor ou vento: o gerador transforma energia mecânica em elétrica. O transformador usa duas bobinas para elevar ou baixar a tensão alternada, U₁/U₂ = N₁/N₂; ele só funciona com corrente alternada, porque precisa de campo variável. Carregadores sem fio, fogões de indução e o dínamo da bicicleta também usam indução."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Lembre a dupla: corrente cria campo (motor, eletroímã) e campo variável cria corrente (gerador, transformador). Identifique qual dos dois a questão descreve."
+            ]
+          }
+        ],
+        "introducao": "A bússola, o alto-falante, o motor do liquidificador, o carregador sem fio e a usina que gera a luz da sua casa dependem da mesma ligação entre eletricidade e magnetismo. Esta aula vai do ímã ao gerador.",
+        "mapaMental": {
+          "centro": "Eletricidade e magnetismo",
+          "ramos": [
+            {
+              "titulo": "Ímãs",
+              "itens": [
+                "norte e sul",
+                "cortado vira dois ímãs",
+                "bússola alinhada à Terra"
+              ]
+            },
+            {
+              "titulo": "Oersted",
+              "itens": [
+                "corrente desvia a bússola",
+                "bobina",
+                "núcleo de ferro"
+              ]
+            },
+            {
+              "titulo": "Força no fio",
+              "itens": [
+                "motor elétrico",
+                "alto-falante",
+                "levitação"
+              ]
+            },
+            {
+              "titulo": "Faraday",
+              "itens": [
+                "gerador",
+                "transformador",
+                "só com corrente alternada"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧭",
+            "conceito": "Agulha que aponta o norte",
+            "liga": "campo magnetico",
+            "porque": "Linhas do norte para o sul do ímã."
+          },
+          {
+            "icone": "🏗️",
+            "conceito": "Guindaste que solta o ferro-velho",
+            "liga": "eletroima",
+            "porque": "Bobina com núcleo de ferro, liga e desliga."
+          },
+          {
+            "icone": "🚲",
+            "conceito": "Dínamo que acende o farol",
+            "liga": "inducao eletromagnetica",
+            "porque": "Campo variando gera corrente."
+          }
+        ],
+        "pontos": [
+          "Polos iguais se repelem; ímã cortado vira dois ímãs.",
+          "**Campo magnético** sai do norte e entra no sul.",
+          "Corrente cria campo: **eletroímã** e motor.",
+          "**Indução eletromagnética**: campo variável gera corrente.",
+          "Gerador: mecânica em elétrica; motor: elétrica em mecânica.",
+          "Transformador: U₁/U₂ = N₁/N₂, só com corrente alternada."
+        ],
+        "perolas": [
+          "Motor e gerador são a mesma máquina vista de lados opostos."
+        ],
+        "reforcar": [
+          "campo magnetico",
+          "eletroima",
+          "inducao eletromagnetica"
         ]
       }
     }
@@ -10897,6 +11122,927 @@
         "Não converteu os minutos.",
         "",
         "É um dia só."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q01",
+      "tema": "Associação em série",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Três resistores de 10 Ω ligados em série têm resistência equivalente de:",
+      "alternativas": [
+        "10 Ω",
+        "30 Ω",
+        "1.000 Ω",
+        "13 Ω",
+        "3,3 Ω"
+      ],
+      "correta": 1,
+      "explicacao": "Em série, soma. Dica de mergulhador: série é fila: soma tudo.",
+      "comentarios": [
+        "Não somou.",
+        "",
+        "Multiplicou.",
+        "Errou.",
+        "Seria paralelo."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q02",
+      "tema": "Associação em série",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Num circuito em série, a grandeza que é igual em todos os resistores é:",
+      "alternativas": [
+        "A corrente",
+        "A resistência",
+        "A potência sempre",
+        "A tensão",
+        "A carga total armazenada"
+      ],
+      "correta": 0,
+      "explicacao": "Caminho único, mesma corrente. Dica de mergulhador: na fila, todos passam no mesmo ritmo.",
+      "comentarios": [
+        "",
+        "Pode ser diferente.",
+        "Depende de R.",
+        "Divide-se.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q03",
+      "tema": "Associação em série",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Um resistor de 4 Ω e outro de 6 Ω, em série, estão ligados a 20 V. A corrente no circuito é:",
+      "alternativas": [
+        "5 A",
+        "0,5 A",
+        "200 A",
+        "3,3 A",
+        "2 A"
+      ],
+      "correta": 4,
+      "explicacao": "Req = 10 Ω; i = 20 ÷ 10. Dica de mergulhador: primeiro a equivalente.",
+      "comentarios": [
+        "Usou só 4 Ω.",
+        "Inverteu.",
+        "Multiplicou.",
+        "Usou só 6 Ω.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-circuitos-q04",
+      "tema": "Associação em série",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Fusíveis e disjuntores são ligados em série com o circuito que protegem porque:",
+      "alternativas": [
+        "Precisam de tensão igual",
+        "Assim aumentam a tensão",
+        "Assim gastam menos energia",
+        "Em paralelo seriam mais seguros",
+        "Assim conseguem interromper toda a corrente do circuito"
+      ],
+      "correta": 4,
+      "explicacao": "Abrindo-se, cortam o único caminho. Dica de mergulhador: guarda na porta de entrada.",
+      "comentarios": [
+        "Não é o motivo.",
+        "Não.",
+        "Não é o motivo.",
+        "Não interromperiam.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-circuitos-q05",
+      "tema": "Associação em série",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "Três resistores de 2 Ω, 3 Ω e 5 Ω em série estão ligados a 30 V. A potência dissipada no de 5 Ω é:",
+      "alternativas": [
+        "9 W",
+        "45 W",
+        "15 W",
+        "180 W",
+        "90 W"
+      ],
+      "correta": 1,
+      "explicacao": "i = 3 A; P = 5 × 9. Dica de mergulhador: R·i² com a corrente do circuito.",
+      "comentarios": [
+        "Usou a corrente ao quadrado sem R.",
+        "",
+        "É a tensão.",
+        "Errou.",
+        "É a potência total."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q06",
+      "tema": "Associação em paralelo",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "As lâmpadas e tomadas de uma casa são ligadas em:",
+      "alternativas": [
+        "Paralelo",
+        "Série",
+        "Fios separados para cada cidade",
+        "Nenhuma ligação",
+        "Só em curto-circuito"
+      ],
+      "correta": 0,
+      "explicacao": "Cada aparelho recebe a tensão da rede. Dica de mergulhador: casa é tudo lado a lado.",
+      "comentarios": [
+        "",
+        "Uma queimada apagaria todas.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q07",
+      "tema": "Associação em paralelo",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Num circuito em paralelo, a grandeza que é igual em todos os resistores é:",
+      "alternativas": [
+        "A corrente",
+        "A tensão",
+        "A potência sempre",
+        "A resistência",
+        "O comprimento do fio"
+      ],
+      "correta": 1,
+      "explicacao": "Todos ligados aos mesmos dois pontos. Dica de mergulhador: paralelo divide a corrente, não a tensão.",
+      "comentarios": [
+        "Divide-se nos ramos.",
+        "",
+        "Depende de R.",
+        "Pode ser diferente.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q08",
+      "tema": "Associação em paralelo",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Resistores de 6 Ω e 3 Ω em paralelo têm resistência equivalente de:",
+      "alternativas": [
+        "2 Ω",
+        "9 Ω",
+        "4,5 Ω",
+        "18 Ω",
+        "3 Ω"
+      ],
+      "correta": 0,
+      "explicacao": "6 × 3 ÷ (6 + 3). Dica de mergulhador: produto sobre soma.",
+      "comentarios": [
+        "",
+        "Seria série.",
+        "Média simples.",
+        "Esqueceu de dividir.",
+        "A equivalente é menor que a menor."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q09",
+      "tema": "Associação em paralelo",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Três resistores de 30 Ω em paralelo estão ligados a 60 V. A corrente total é:",
+      "alternativas": [
+        "0,67 A",
+        "2 A",
+        "180 A",
+        "3 A",
+        "6 A"
+      ],
+      "correta": 4,
+      "explicacao": "Req = 10 Ω; i = 60 ÷ 10. Dica de mergulhador: ou some as três correntes de 2 A.",
+      "comentarios": [
+        "Usou série.",
+        "É a de um ramo.",
+        "Errou.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-circuitos-q10",
+      "tema": "Associação em paralelo",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "Numa casa de 127 V, ligam-se ao mesmo tempo um forno de 1.270 W, uma geladeira de 254 W e um micro-ondas de 1.016 W. A corrente total no disjuntor é:",
+      "alternativas": [
+        "8 A",
+        "20 A",
+        "2 A",
+        "2.540 A",
+        "10 A"
+      ],
+      "correta": 1,
+      "explicacao": "Potência total 2.540 W; i = 2.540 ÷ 127. Dica de mergulhador: em paralelo, as correntes somam.",
+      "comentarios": [
+        "Só o micro-ondas.",
+        "",
+        "Só a geladeira.",
+        "Somou as potências.",
+        "Só o forno."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q11",
+      "tema": "Instalações e segurança",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "O terceiro pino da tomada de três pinos serve para:",
+      "alternativas": [
+        "Enfeitar o plugue",
+        "Economizar energia",
+        "Ligar mais rápido",
+        "Aumentar a tensão",
+        "Aterrar o aparelho"
+      ],
+      "correta": 4,
+      "explicacao": "Leva correntes de fuga para a terra. Dica de mergulhador: terceiro pino é proteção, não enfeite.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-circuitos-q12",
+      "tema": "Instalações e segurança",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Ligar vários aparelhos potentes num mesmo benjamim é perigoso porque:",
+      "alternativas": [
+        "O disjuntor deixa de existir",
+        "As correntes somam e podem superaquecer os fios e o benjamim",
+        "Os aparelhos ficam em série",
+        "A tensão de cada aparelho aumenta",
+        "A corrente total diminui"
+      ],
+      "correta": 1,
+      "explicacao": "Paralelo soma correntes. Dica de mergulhador: benjamim cheio, fio quente.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Ficam em paralelo.",
+        "Fica a mesma.",
+        "Aumenta."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q13",
+      "tema": "Instalações e segurança",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "O dispositivo DR (diferencial residual) desliga o circuito quando:",
+      "alternativas": [
+        "Percebe corrente escapando por uma pessoa",
+        "A conta de luz fica alta",
+        "Chove",
+        "A tensão sobe um pouco",
+        "Uma lâmpada queima"
+      ],
+      "correta": 0,
+      "explicacao": "Compara a corrente que vai e a que volta. Dica de mergulhador: DR protege gente; disjuntor protege fio.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não é o critério.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q14",
+      "tema": "Associação em série",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Num circuito em série com 12 V, dois resistores iguais recebem, cada um:",
+      "alternativas": [
+        "12 V",
+        "3 V",
+        "0 V",
+        "6 V",
+        "24 V"
+      ],
+      "correta": 3,
+      "explicacao": "A tensão se divide igualmente entre iguais. Dica de mergulhador: em série, a tensão é repartida.",
+      "comentarios": [
+        "Isso seria paralelo.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q15",
+      "tema": "Associação em série",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Ao acrescentar mais uma lâmpada em série a um circuito com uma pilha, as lâmpadas:",
+      "alternativas": [
+        "Queimam",
+        "Ficam com o dobro da corrente",
+        "Brilham igual",
+        "Brilham menos, porque a corrente diminui",
+        "Brilham mais"
+      ],
+      "correta": 3,
+      "explicacao": "Req maior, corrente menor. Dica de mergulhador: mais gente na fila, fila mais lenta.",
+      "comentarios": [
+        "Não.",
+        "Ao contrário.",
+        "A resistência aumentou.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q16",
+      "tema": "Associação em paralelo",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Ao ligar mais um aparelho numa tomada de casa, a tensão nos outros aparelhos:",
+      "alternativas": [
+        "Dobra",
+        "Zera",
+        "Cai pela metade",
+        "Continua a mesma",
+        "Inverte"
+      ],
+      "correta": 3,
+      "explicacao": "Em paralelo, todos ficam com a tensão da rede. Dica de mergulhador: em paralelo, ninguém rouba a tensão do outro.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q17",
+      "tema": "Associação em paralelo",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "Quatro lâmpadas iguais de 60 Ω estão em paralelo numa fonte de 12 V. A potência total é:",
+      "alternativas": [
+        "240 W",
+        "2,4 W",
+        "0,6 W",
+        "9,6 W",
+        "48 W"
+      ],
+      "correta": 3,
+      "explicacao": "Cada uma: 144 ÷ 60 = 2,4 W; quatro: 9,6 W. Dica de mergulhador: em paralelo, as potências somam.",
+      "comentarios": [
+        "Errou.",
+        "É uma só.",
+        "Usou série.",
+        "",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q18",
+      "tema": "Instalações e segurança",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Quando há sobrecarga num circuito, o disjuntor:",
+      "alternativas": [
+        "Aumenta a corrente",
+        "Desarma e interrompe a corrente",
+        "Aumenta a tensão",
+        "Liga outro circuito",
+        "Esquenta a água"
+      ],
+      "correta": 1,
+      "explicacao": "Protege a fiação. Dica de mergulhador: desarmou, tem coisa demais ligada.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q19",
+      "tema": "Instalações e segurança",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Um chuveiro de 6.600 W em 220 V exige um disjuntor que suporte pelo menos:",
+      "alternativas": [
+        "30 A",
+        "22 A",
+        "6,6 A",
+        "3 A",
+        "300 A"
+      ],
+      "correta": 0,
+      "explicacao": "i = 6.600 ÷ 220. Dica de mergulhador: disjuntor à altura da corrente do aparelho.",
+      "comentarios": [
+        "",
+        "Abaixo da corrente.",
+        "Usou kW.",
+        "Errou a casa.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q20",
+      "tema": "Instalações e segurança",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "Duas residências usam um chuveiro de mesma potência, uma em 127 V e outra em 220 V. A de 127 V precisa de fios mais grossos porque:",
+      "alternativas": [
+        "O fio grosso aumenta a tensão",
+        "A tensão maior exige fio grosso",
+        "A corrente é maior, e fios finos aqueceriam demais",
+        "A água é mais fria",
+        "O chuveiro gasta mais energia"
+      ],
+      "correta": 2,
+      "explicacao": "Mesma potência com menos tensão exige mais corrente. Dica de mergulhador: 127 V, mais ampères, fio mais grosso.",
+      "comentarios": [
+        "Não.",
+        "Ao contrário.",
+        "",
+        "Não.",
+        "A potência é a mesma."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q01",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Dois ímãs são aproximados pelos polos norte. Eles:",
+      "alternativas": [
+        "Esquentam",
+        "Se repelem",
+        "Se fundem",
+        "Se atraem",
+        "Ficam neutros"
+      ],
+      "correta": 1,
+      "explicacao": "Polos iguais se repelem. Dica de mergulhador: norte com norte se empurra.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Opostos é que se atraem.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q02",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Ao cortar um ímã em barra ao meio, obtém-se:",
+      "alternativas": [
+        "Dois ímãs, cada um com norte e sul",
+        "Dois pedaços sem magnetismo",
+        "Um ímã e um pedaço de ferro",
+        "Uma pilha",
+        "Um polo norte e um polo sul separados"
+      ],
+      "correta": 0,
+      "explicacao": "Os polos sempre vêm em pares. Dica de mergulhador: ímã cortado continua ímã.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não é possível separar."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q03",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "A agulha de uma bússola aponta para o norte geográfico porque:",
+      "alternativas": [
+        "O vento a empurra",
+        "O Sol a orienta",
+        "Ela é feita de cobre",
+        "É atraída pelo Polo Norte por gravidade",
+        "Ela é um ímã que se alinha ao campo magnético da Terra"
+      ],
+      "correta": 4,
+      "explicacao": "A Terra é um grande ímã. Dica de mergulhador: bússola obedece ao ímã Terra.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q04",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "O polo norte da agulha da bússola aponta para o norte geográfico. Isso indica que, perto do norte geográfico, há um polo magnético:",
+      "alternativas": [
+        "Elétrico",
+        "Neutro",
+        "Norte",
+        "Sul",
+        "Inexistente"
+      ],
+      "correta": 3,
+      "explicacao": "Opostos se atraem. Dica de mergulhador: o norte geográfico é sul magnético.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Norte repeliria o norte da agulha.",
+        "",
+        "Existe."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q05",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Um clipe de aço preso a um ímã atrai outro clipe porque:",
+      "alternativas": [
+        "Tem cola",
+        "A gravidade aumenta",
+        "Ficou eletrizado",
+        "Ficou magnetizado por indução do ímã",
+        "É de cobre"
+      ],
+      "correta": 3,
+      "explicacao": "Materiais ferromagnéticos se magnetizam perto do ímã. Dica de mergulhador: o clipe vira ímã emprestado.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "É magnetismo.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q06",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Aves migratórias conseguem se orientar em longas viagens, em parte, porque:",
+      "alternativas": [
+        "Seguem os aviões",
+        "A gravidade aponta o caminho",
+        "Seguem o cheiro do mar sempre",
+        "Percebem o campo magnético da Terra",
+        "Usam GPS"
+      ],
+      "correta": 3,
+      "explicacao": "A Terra funciona como um grande ímã. Dica de mergulhador: algumas aves têm bússola interna.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não é o principal.",
+        "",
+        "Não."
+      ],
+      "revisar": "orientação magnética em aves migratórias"
+    },
+    {
+      "id": "fis-magnetismo-q07",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Oersted observou que um fio com corrente elétrica:",
+      "alternativas": [
+        "Atrai plástico",
+        "Produz luz sempre",
+        "Não interage com ímãs",
+        "Desvia a agulha de uma bússola próxima",
+        "Esfria a bússola"
+      ],
+      "correta": 3,
+      "explicacao": "Corrente cria campo magnético. Dica de mergulhador: eletricidade faz magnetismo.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Interage.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q08",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "A grande vantagem do eletroímã sobre o ímã comum, em guindastes de ferro-velho, é:",
+      "alternativas": [
+        "Poder ser ligado e desligado",
+        "Atrair plástico",
+        "Funcionar sem corrente",
+        "Ser sempre mais leve",
+        "Não precisar de energia"
+      ],
+      "correta": 0,
+      "explicacao": "Desligando, a carga é solta. Dica de mergulhador: pega, leva e solta.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não é a vantagem.",
+        "Precisa."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q09",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "O motor elétrico de um liquidificador transforma:",
+      "alternativas": [
+        "Calor em eletricidade",
+        "Som em eletricidade",
+        "Energia mecânica em elétrica",
+        "Luz em movimento",
+        "Energia elétrica em energia mecânica"
+      ],
+      "correta": 4,
+      "explicacao": "Força em fio com corrente num campo. Dica de mergulhador: motor gasta eletricidade e gira.",
+      "comentarios": [
+        "Não.",
+        "Isso é microfone.",
+        "Isso é gerador.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q10",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Trens de levitação magnética andam sem tocar os trilhos porque:",
+      "alternativas": [
+        "Flutuam na água",
+        "Forças magnéticas de eletroímãs os erguem e os impulsionam",
+        "A gravidade não age neles",
+        "São muito leves",
+        "Usam hélices"
+      ],
+      "correta": 1,
+      "explicacao": "Sem contato, quase sem atrito. Dica de mergulhador: trem que flutua no ímã.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Age.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q11",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Um gerador elétrico transforma:",
+      "alternativas": [
+        "Energia mecânica em energia elétrica",
+        "Elétrica em mecânica",
+        "Química em elétrica",
+        "Elétrica em calor",
+        "Luz em elétrica"
+      ],
+      "correta": 0,
+      "explicacao": "Bobina girando num campo magnético. Dica de mergulhador: gerador é o motor ao contrário.",
+      "comentarios": [
+        "",
+        "Isso é motor.",
+        "Isso é pilha.",
+        "Isso é resistor.",
+        "Isso é placa solar."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q12",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Um ímã parado dentro de uma bobina:",
+      "alternativas": [
+        "Induz corrente constante",
+        "Não induz corrente",
+        "Induz corrente cada vez maior",
+        "Queima a bobina",
+        "Cria tensão de 220 V"
+      ],
+      "correta": 1,
+      "explicacao": "Só o campo variável induz. Dica de mergulhador: sem movimento, sem corrente.",
+      "comentarios": [
+        "Precisa haver variação.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q13",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Um transformador tem 1.000 espiras no primário, ligado a 220 V, e 50 espiras no secundário. A tensão de saída é:",
+      "alternativas": [
+        "4.400 V",
+        "220 V",
+        "110 V",
+        "22 V",
+        "11 V"
+      ],
+      "correta": 4,
+      "explicacao": "U₂ = 220 × 50 ÷ 1.000. Dica de mergulhador: tensão proporcional ao número de espiras.",
+      "comentarios": [
+        "Inverteu.",
+        "Não transformou.",
+        "Errou.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q14",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Um carregador de celular sem fio funciona porque:",
+      "alternativas": [
+        "Ele emite raios X",
+        "A base induz corrente no celular",
+        "Usa luz infravermelha",
+        "O ar conduz a eletricidade",
+        "O celular tem um ímã fixo que basta"
+      ],
+      "correta": 1,
+      "explicacao": "Indução eletromagnética entre duas bobinas. Dica de mergulhador: transformador sem fio.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não.",
+        "Precisa de variação."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q15",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Limalha de ferro espalhada sobre um papel em cima de um ímã em barra se acumula principalmente:",
+      "alternativas": [
+        "Nos polos do ímã",
+        "No meio do ímã",
+        "Em linha reta para cima",
+        "Longe do ímã",
+        "Em lugar nenhum"
+      ],
+      "correta": 0,
+      "explicacao": "O campo é mais intenso nos polos. Dica de mergulhador: a limalha desenha as linhas do campo.",
+      "comentarios": [
+        "",
+        "Ali o campo é mais fraco.",
+        "Não.",
+        "Não.",
+        "Ela se organiza."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q16",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "A campainha elétrica funciona porque:",
+      "alternativas": [
+        "Um ímã comum bate sozinho",
+        "O botão faz o barulho",
+        "A pilha vibra",
+        "O som é gerado por luz",
+        "Um eletroímã atrai e solta um martelinho repetidamente"
+      ],
+      "correta": 4,
+      "explicacao": "O circuito liga e desliga o eletroímã. Dica de mergulhador: eletroímã que bate o sino.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q17",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Se a corrente num eletroímã for desligada, ele:",
+      "alternativas": [
+        "Perde quase todo o magnetismo",
+        "Inverte os polos sozinho",
+        "Continua igual para sempre",
+        "Vira pilha",
+        "Fica mais forte"
+      ],
+      "correta": 0,
+      "explicacao": "Sem corrente, sem campo da bobina. Dica de mergulhador: sem corrente, o ferro-velho cai.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q18",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Num motor elétrico de corrente contínua, o que faz a bobina girar continuamente é:",
+      "alternativas": [
+        "A gravidade",
+        "A pilha girando",
+        "O calor dos fios",
+        "O atrito com o ar",
+        "Força magnética e comutador"
+      ],
+      "correta": 4,
+      "explicacao": "Sem inverter, a bobina pararia. Dica de mergulhador: o comutador dá o empurrão na hora certa.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q19",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Numa usina hidrelétrica, o que gira dentro do gerador para produzir eletricidade é:",
+      "alternativas": [
+        "Um painel solar",
+        "Uma pilha gigante",
+        "Um conjunto de bobinas e ímãs movido pela turbina",
+        "Um forno",
+        "A água sozinha dentro dos fios"
+      ],
+      "correta": 2,
+      "explicacao": "Movimento relativo entre ímãs e bobinas. Dica de mergulhador: girou o ímã, nasceu a corrente.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q20",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Aproxima-se rapidamente um ímã de uma bobina ligada a um amperímetro. Depois, afasta-se o ímã. O amperímetro mostra:",
+      "alternativas": [
+        "Nenhuma corrente",
+        "Corrente num sentido ao aproximar e no sentido oposto ao afastar",
+        "Corrente sempre no mesmo sentido",
+        "Corrente constante",
+        "Corrente só quando o ímã está parado"
+      ],
+      "correta": 1,
+      "explicacao": "Variação oposta, corrente oposta. Dica de mergulhador: vai e volta do ímã, vai e volta da corrente.",
+      "comentarios": [
+        "Há variação.",
+        "",
+        "Inverte.",
+        "Não.",
+        "Ao contrário."
       ]
     }
   ],
@@ -20025,6 +21171,966 @@
         "Usou a potência de uso.",
         "Não converteu para kW."
       ]
+    },
+    {
+      "id": "fis-circuitos-q01-v1",
+      "varianteDe": "fis-circuitos-q01",
+      "tema": "Associação em série",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Resistores de 5 Ω, 15 Ω e 20 Ω em série têm resistência equivalente de:",
+      "alternativas": [
+        "40 Ω",
+        "20 Ω",
+        "1.500 Ω",
+        "5 Ω",
+        "2,7 Ω"
+      ],
+      "correta": 0,
+      "explicacao": "5 + 15 + 20. Dica de mergulhador: em série, some.",
+      "comentarios": [
+        "",
+        "Só o maior.",
+        "Multiplicou.",
+        "Só o menor.",
+        "Seria paralelo."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q02-v1",
+      "varianteDe": "fis-circuitos-q02",
+      "tema": "Associação em série",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Num pisca-pisca antigo em série, quando uma lâmpada queima:",
+      "alternativas": [
+        "Nada muda",
+        "As outras brilham mais",
+        "Todas apagam",
+        "Só ela apaga",
+        "A tensão dobra"
+      ],
+      "correta": 2,
+      "explicacao": "O circuito se abre. Dica de mergulhador: série é corrente de mãos dadas.",
+      "comentarios": [
+        "Muda.",
+        "Não há corrente.",
+        "",
+        "Isso seria paralelo.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q03-v1",
+      "varianteDe": "fis-circuitos-q03",
+      "tema": "Associação em série",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "No mesmo circuito (4 Ω e 6 Ω em série, 20 V), a tensão no resistor de 6 Ω é:",
+      "alternativas": [
+        "10 V",
+        "12 V",
+        "8 V",
+        "6 V",
+        "20 V"
+      ],
+      "correta": 1,
+      "explicacao": "U = 6 × 2. Dica de mergulhador: em série, o maior resistor fica com a maior tensão.",
+      "comentarios": [
+        "Dividiu ao meio.",
+        "",
+        "É no de 4 Ω.",
+        "Errou.",
+        "É a total."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q04-v1",
+      "varianteDe": "fis-circuitos-q04",
+      "tema": "Associação em série",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Duas lâmpadas iguais são ligadas em série numa tomada. Comparadas a uma só lâmpada ligada sozinha, cada uma brilha:",
+      "alternativas": [
+        "Menos, porque recebe metade da tensão",
+        "Mais",
+        "Igual",
+        "O dobro",
+        "Nada"
+      ],
+      "correta": 0,
+      "explicacao": "Cada uma fica com metade da tensão. Dica de mergulhador: em série, a tensão é dividida.",
+      "comentarios": [
+        "",
+        "Não.",
+        "A tensão se divide.",
+        "Não.",
+        "Acende, fraca."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q05-v1",
+      "varianteDe": "fis-circuitos-q05",
+      "tema": "Associação em série",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "Num circuito em série com 10 Ω e R, ligado a 24 V, a corrente é 1,2 A. O valor de R é:",
+      "alternativas": [
+        "12 Ω",
+        "20 Ω",
+        "2 Ω",
+        "28,8 Ω",
+        "10 Ω"
+      ],
+      "correta": 4,
+      "explicacao": "Req = 24 ÷ 1,2 = 20 Ω; R = 20 − 10. Dica de mergulhador: equivalente menos o conhecido.",
+      "comentarios": [
+        "Errou.",
+        "É a equivalente.",
+        "Errou.",
+        "Multiplicou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-circuitos-q06-v1",
+      "varianteDe": "fis-circuitos-q06",
+      "tema": "Associação em paralelo",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Numa casa, quando uma lâmpada queima, as outras continuam acesas porque:",
+      "alternativas": [
+        "Estão ligadas em paralelo",
+        "Estão em série",
+        "O disjuntor as protege",
+        "São de LED sempre",
+        "Têm pilhas próprias"
+      ],
+      "correta": 0,
+      "explicacao": "Cada ramo é independente. Dica de mergulhador: lado a lado, cada um por si.",
+      "comentarios": [
+        "",
+        "Apagariam todas.",
+        "Não é o motivo.",
+        "Não é o motivo.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q07-v1",
+      "varianteDe": "fis-circuitos-q07",
+      "tema": "Associação em paralelo",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Dois resistores de 10 Ω em paralelo têm resistência equivalente de:",
+      "alternativas": [
+        "5 Ω",
+        "2 Ω",
+        "10 Ω",
+        "20 Ω",
+        "100 Ω"
+      ],
+      "correta": 0,
+      "explicacao": "R/n = 10 ÷ 2. Dica de mergulhador: iguais em paralelo, divida pelo número.",
+      "comentarios": [
+        "",
+        "Errou.",
+        "Não.",
+        "Seria série.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q08-v1",
+      "varianteDe": "fis-circuitos-q08",
+      "tema": "Associação em paralelo",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Resistores de 12 Ω e 4 Ω em paralelo têm resistência equivalente de:",
+      "alternativas": [
+        "3 Ω",
+        "48 Ω",
+        "4 Ω",
+        "8 Ω",
+        "16 Ω"
+      ],
+      "correta": 0,
+      "explicacao": "48 ÷ 16. Dica de mergulhador: produto sobre soma.",
+      "comentarios": [
+        "",
+        "Não dividiu.",
+        "A equivalente é menor que a menor.",
+        "Média simples.",
+        "Seria série."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q09-v1",
+      "varianteDe": "fis-circuitos-q09",
+      "tema": "Associação em paralelo",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Em paralelo, um resistor de 20 Ω e outro de 5 Ω estão ligados a 10 V. A corrente no de 5 Ω é:",
+      "alternativas": [
+        "0,5 A",
+        "2 A",
+        "2,5 A",
+        "10 A",
+        "50 A"
+      ],
+      "correta": 1,
+      "explicacao": "Mesma tensão: 10 ÷ 5. Dica de mergulhador: no paralelo, o menor resistor leva a maior corrente.",
+      "comentarios": [
+        "É no de 20 Ω.",
+        "",
+        "É a total.",
+        "Errou.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q10-v1",
+      "varianteDe": "fis-circuitos-q10",
+      "tema": "Associação em paralelo",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "Um disjuntor de 15 A protege um circuito de 220 V. A maior potência total que pode ser ligada sem desarmar é:",
+      "alternativas": [
+        "1.500 W",
+        "235 W",
+        "14,7 W",
+        "33.000 W",
+        "3.300 W"
+      ],
+      "correta": 4,
+      "explicacao": "P = 220 × 15. Dica de mergulhador: potência máxima = tensão × corrente do disjuntor.",
+      "comentarios": [
+        "Errou.",
+        "Somou.",
+        "Dividiu.",
+        "Errou a casa.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-circuitos-q11-v1",
+      "varianteDe": "fis-circuitos-q11",
+      "tema": "Instalações e segurança",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Cortar o pino terra do plugue para encaixar numa tomada antiga é perigoso porque:",
+      "alternativas": [
+        "O aparelho fica mais lento",
+        "O aparelho para de funcionar sempre",
+        "A tensão cai",
+        "Aumenta a conta de luz",
+        "O aparelho perde a proteção contra choques na carcaça"
+      ],
+      "correta": 4,
+      "explicacao": "Sem aterramento, a fuga pode passar pela pessoa. Dica de mergulhador: pino cortado, proteção cortada.",
+      "comentarios": [
+        "Não.",
+        "Pode funcionar.",
+        "Não.",
+        "Não é o risco.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-circuitos-q12-v1",
+      "varianteDe": "fis-circuitos-q12",
+      "tema": "Instalações e segurança",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Um curto-circuito ocorre quando:",
+      "alternativas": [
+        "O circuito está aberto",
+        "A tensão cai a zero lentamente",
+        "A lâmpada queima em série",
+        "Polos ligados quase sem resistência",
+        "Um resistor muito grande é ligado"
+      ],
+      "correta": 3,
+      "explicacao": "i = U/R com R quase nulo. Dica de mergulhador: curto é atalho perigoso.",
+      "comentarios": [
+        "Não passa corrente.",
+        "Não.",
+        "Isso abre o circuito.",
+        "",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q13-v1",
+      "varianteDe": "fis-circuitos-q13",
+      "tema": "Instalações e segurança",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "A diferença entre o disjuntor comum e o DR é que:",
+      "alternativas": [
+        "O DR liga os aparelhos em série",
+        "São iguais",
+        "O DR aumenta a tensão",
+        "Disjuntor cuida do fio; DR, de pessoas",
+        "O disjuntor protege só pessoas"
+      ],
+      "correta": 3,
+      "explicacao": "Funções complementares. Dica de mergulhador: um cuida do fio, o outro de você.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Protege a fiação."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q14-v1",
+      "varianteDe": "fis-circuitos-q14",
+      "tema": "Associação em série",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Num circuito em série, a resistência equivalente é sempre:",
+      "alternativas": [
+        "Igual à média",
+        "Zero",
+        "Menor que a menor",
+        "Maior que a maior das resistências",
+        "Igual à menor"
+      ],
+      "correta": 3,
+      "explicacao": "Somar só aumenta. Dica de mergulhador: em série, a resistência cresce.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Isso é paralelo.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q15-v1",
+      "varianteDe": "fis-circuitos-q15",
+      "tema": "Associação em série",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Um resistor de 8 Ω e outro de 2 Ω, em série, estão ligados a 5 V. A corrente é:",
+      "alternativas": [
+        "0,5 A",
+        "2,5 A",
+        "2 A",
+        "0,625 A",
+        "50 A"
+      ],
+      "correta": 0,
+      "explicacao": "5 ÷ 10. Dica de mergulhador: some e divida.",
+      "comentarios": [
+        "",
+        "Usou só 2 Ω.",
+        "Inverteu.",
+        "Usou só 8 Ω.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q16-v1",
+      "varianteDe": "fis-circuitos-q16",
+      "tema": "Associação em paralelo",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "Ao ligar mais um aparelho numa tomada de casa, a corrente total no disjuntor:",
+      "alternativas": [
+        "Diminui",
+        "Inverte",
+        "Zera",
+        "Aumenta",
+        "Fica igual"
+      ],
+      "correta": 3,
+      "explicacao": "As correntes dos ramos se somam. Dica de mergulhador: mais aparelhos, mais ampères.",
+      "comentarios": [
+        "Ao contrário.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q17-v1",
+      "varianteDe": "fis-circuitos-q17",
+      "tema": "Associação em paralelo",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "Resistores de 6 Ω, 6 Ω e 3 Ω estão em paralelo. A resistência equivalente é:",
+      "alternativas": [
+        "1,5 Ω",
+        "5 Ω",
+        "2 Ω",
+        "3 Ω",
+        "15 Ω"
+      ],
+      "correta": 0,
+      "explicacao": "1/6 + 1/6 + 1/3 = 2/3; Req = 1,5. Dica de mergulhador: some os inversos.",
+      "comentarios": [
+        "",
+        "Média.",
+        "Errou.",
+        "A equivalente é menor que a menor.",
+        "Seria série."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q18-v1",
+      "varianteDe": "fis-circuitos-q18",
+      "tema": "Instalações e segurança",
+      "dificuldade": "facil",
+      "fase": "fis-circuitos",
+      "enunciado": "Antes de trocar uma lâmpada ou mexer numa tomada, deve-se:",
+      "alternativas": [
+        "Desligar o disjuntor do circuito",
+        "Tocar nos fios para testar",
+        "Usar uma escada de metal",
+        "Deixar a luz ligada para ver melhor",
+        "Molhar as mãos"
+      ],
+      "correta": 0,
+      "explicacao": "Sem corrente, sem choque. Dica de mergulhador: desliga primeiro, mexe depois.",
+      "comentarios": [
+        "",
+        "Perigoso.",
+        "Perigoso.",
+        "Perigoso.",
+        "Perigoso."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q19-v1",
+      "varianteDe": "fis-circuitos-q19",
+      "tema": "Instalações e segurança",
+      "dificuldade": "medio",
+      "fase": "fis-circuitos",
+      "enunciado": "O mesmo chuveiro de 6.600 W ligado em 127 V exigiria uma corrente de cerca de:",
+      "alternativas": [
+        "5,2 A",
+        "838 A",
+        "52 A",
+        "30 A",
+        "127 A"
+      ],
+      "correta": 2,
+      "explicacao": "6.600 ÷ 127 ≈ 52. Dica de mergulhador: tensão menor, corrente maior para a mesma potência.",
+      "comentarios": [
+        "Errou a casa.",
+        "Multiplicou.",
+        "",
+        "É em 220 V.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-circuitos-q20-v1",
+      "varianteDe": "fis-circuitos-q20",
+      "tema": "Instalações e segurança",
+      "dificuldade": "dificil",
+      "fase": "fis-circuitos",
+      "enunciado": "Por que as linhas de transmissão de energia usam tensões muito altas?",
+      "alternativas": [
+        "Porque é mais barato produzir alta tensão na usina",
+        "Porque os fios são isolantes",
+        "Para dar choque em quem se aproximar",
+        "Para aumentar a corrente",
+        "Para transmitir a mesma potência com corrente menor e menos perda por calor"
+      ],
+      "correta": 4,
+      "explicacao": "Perda R·i² cai com a corrente menor. Dica de mergulhador: tensão alta, corrente baixa, menos perda.",
+      "comentarios": [
+        "Não é o motivo.",
+        "Não.",
+        "Não.",
+        "Ao contrário.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q01-v1",
+      "varianteDe": "fis-magnetismo-q01",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "O polo norte de um ímã e o polo sul de outro:",
+      "alternativas": [
+        "Trocam de nome",
+        "Se atraem",
+        "Se anulam",
+        "Se repelem",
+        "Não interagem"
+      ],
+      "correta": 1,
+      "explicacao": "Opostos se atraem. Dica de mergulhador: norte gosta de sul.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Iguais é que se repelem.",
+        "Interagem."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q02-v1",
+      "varianteDe": "fis-magnetismo-q02",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Qual destes materiais é atraído por um ímã?",
+      "alternativas": [
+        "Cobre",
+        "Alumínio",
+        "Plástico",
+        "Vidro",
+        "Ferro"
+      ],
+      "correta": 4,
+      "explicacao": "Ferro, níquel e cobalto são ferromagnéticos. Dica de mergulhador: lata de alumínio não gruda no ímã.",
+      "comentarios": [
+        "Praticamente não.",
+        "Praticamente não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q03-v1",
+      "varianteDe": "fis-magnetismo-q03",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "As linhas do campo de um ímã:",
+      "alternativas": [
+        "Saem do polo norte e entram no polo sul",
+        "Não existem",
+        "Formam retas paralelas sempre",
+        "Saem do sul e entram no norte",
+        "Saem dos dois polos"
+      ],
+      "correta": 0,
+      "explicacao": "Convenção do campo magnético. Dica de mergulhador: sai do norte, chega no sul.",
+      "comentarios": [
+        "",
+        "Existem.",
+        "Não.",
+        "Ao contrário, fora do ímã.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q04-v1",
+      "varianteDe": "fis-magnetismo-q04",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Uma bússola colocada perto de um ímã em barra:",
+      "alternativas": [
+        "Continua apontando o norte geográfico sempre",
+        "Gira sem parar",
+        "Aponta para cima",
+        "Alinha-se às linhas do campo do ímã",
+        "Para de funcionar"
+      ],
+      "correta": 3,
+      "explicacao": "O campo local é mais forte. Dica de mergulhador: perto de ímã, a bússola mente o norte.",
+      "comentarios": [
+        "O ímã próximo domina.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q05-v1",
+      "varianteDe": "fis-magnetismo-q05",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Cartões de banco com tarja magnética podem ser danificados se ficarem perto de:",
+      "alternativas": [
+        "Luz da lâmpada",
+        "Moedas de plástico",
+        "Água fria",
+        "Papel",
+        "Ímãs fortes"
+      ],
+      "correta": 4,
+      "explicacao": "O ímã pode alterar a magnetização da tarja. Dica de mergulhador: tarja longe do ímã.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não é o risco principal.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q06-v1",
+      "varianteDe": "fis-magnetismo-q06",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "As auroras polares ocorrem perto dos polos porque:",
+      "alternativas": [
+        "O gelo reflete o Sol",
+        "O campo da Terra guia partículas do Sol",
+        "A Lua ilumina os polos",
+        "Os polos são mais frios",
+        "Há vulcões nos polos"
+      ],
+      "correta": 1,
+      "explicacao": "Partículas carregadas seguem as linhas de campo. Dica de mergulhador: o escudo magnético brilha nos polos.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não é a causa.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q07-v1",
+      "varianteDe": "fis-magnetismo-q07",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Um eletroímã é formado por:",
+      "alternativas": [
+        "Uma lâmpada",
+        "Um fio de plástico",
+        "Uma pilha sozinha",
+        "Uma bobina de fio com corrente e um núcleo de ferro",
+        "Dois ímãs colados"
+      ],
+      "correta": 3,
+      "explicacao": "Corrente na bobina magnetiza o ferro. Dica de mergulhador: eletroímã liga e desliga.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q08-v1",
+      "varianteDe": "fis-magnetismo-q08",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Para aumentar a força de um eletroímã, pode-se:",
+      "alternativas": [
+        "Usar fio de plástico",
+        "Tirar o núcleo de ferro",
+        "Aumentar a corrente ou o número de espiras",
+        "Esfriar a bobina sem corrente",
+        "Diminuir a corrente"
+      ],
+      "correta": 2,
+      "explicacao": "Mais corrente e mais voltas, campo mais forte. Dica de mergulhador: mais voltas, mais força.",
+      "comentarios": [
+        "Não conduz.",
+        "Diminui.",
+        "",
+        "Não.",
+        "Diminui."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q09-v1",
+      "varianteDe": "fis-magnetismo-q09",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "O alto-falante produz som porque:",
+      "alternativas": [
+        "A corrente vira luz",
+        "O cone gera eletricidade",
+        "O ímã produz som sozinho",
+        "A bobina vibra perto de um ímã",
+        "O ar esquenta"
+      ],
+      "correta": 3,
+      "explicacao": "Força magnética no ritmo do sinal. Dica de mergulhador: bobina dança, cone canta.",
+      "comentarios": [
+        "Não.",
+        "Isso é o microfone.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q10-v1",
+      "varianteDe": "fis-magnetismo-q10",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Aparelhos de ressonância magnética usam bobinas que criam campos muito intensos. Pacientes não podem entrar com objetos de ferro porque:",
+      "alternativas": [
+        "O ferro bloqueia a luz",
+        "O ferro seria fortemente atraído e poderia virar projétil",
+        "O ferro gera radiação ionizante",
+        "O ferro esquentaria o ar",
+        "O ferro muda de cor"
+      ],
+      "correta": 1,
+      "explicacao": "Campo muito forte atrai materiais ferromagnéticos. Dica de mergulhador: na sala do ímã, nada de metal.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não é o risco principal.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q11-v1",
+      "varianteDe": "fis-magnetismo-q11",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "A indução eletromagnética foi descoberta por:",
+      "alternativas": [
+        "Kepler",
+        "Isaac Newton",
+        "Galileu",
+        "Arquimedes",
+        "Michael Faraday"
+      ],
+      "correta": 4,
+      "explicacao": "Campo variável gera corrente. Dica de mergulhador: Faraday fez o ímã virar luz.",
+      "comentarios": [
+        "Órbitas.",
+        "Gravitação.",
+        "Queda dos corpos.",
+        "Empuxo.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q12-v1",
+      "varianteDe": "fis-magnetismo-q12",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "O transformador só funciona com corrente alternada porque:",
+      "alternativas": [
+        "A alternada tem mais energia",
+        "Ele é feito de plástico",
+        "A corrente contínua é perigosa",
+        "Precisa de um campo magnético que varie no tempo",
+        "A contínua não cria campo"
+      ],
+      "correta": 3,
+      "explicacao": "Indução exige variação. Dica de mergulhador: transformador precisa de \"vai e vem\".",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não é o motivo.",
+        "",
+        "Cria, mas constante."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q13-v1",
+      "varianteDe": "fis-magnetismo-q13",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Um transformador eleva 127 V para 254 V. Se o primário tem 200 espiras, o secundário tem:",
+      "alternativas": [
+        "127 espiras",
+        "100 espiras",
+        "800 espiras",
+        "400 espiras",
+        "200 espiras"
+      ],
+      "correta": 3,
+      "explicacao": "Tensão dobra, espiras dobram. Dica de mergulhador: U₁/U₂ = N₁/N₂.",
+      "comentarios": [
+        "Não.",
+        "Baixaria a tensão.",
+        "Errou.",
+        "",
+        "Não mudaria."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q14-v1",
+      "varianteDe": "fis-magnetismo-q14",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "No fogão de indução, a panela esquenta porque:",
+      "alternativas": [
+        "Correntes induzidas aquecem a panela",
+        "A chapa fica em brasa",
+        "O ar aquece a panela",
+        "Há uma chama escondida",
+        "A panela de vidro conduz melhor"
+      ],
+      "correta": 0,
+      "explicacao": "Correntes induzidas e efeito Joule. Dica de mergulhador: no fogão de indução, quem esquenta é a panela.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Precisa ser ferromagnética."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q15-v1",
+      "varianteDe": "fis-magnetismo-q15",
+      "tema": "Ímãs e campo magnético",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "O desenho formado pela limalha de ferro em volta de um ímã mostra:",
+      "alternativas": [
+        "As linhas do campo magnético",
+        "A temperatura do ímã",
+        "As cargas elétricas do ímã",
+        "A corrente elétrica do ímã",
+        "A massa do ímã"
+      ],
+      "correta": 0,
+      "explicacao": "Cada grão se alinha ao campo. Dica de mergulhador: limalha é o mapa do ímã.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q16-v1",
+      "varianteDe": "fis-magnetismo-q16",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Fechaduras elétricas de portões costumam usar:",
+      "alternativas": [
+        "Eletroímãs",
+        "Termômetros",
+        "Espelhos",
+        "Lentes",
+        "Ímãs que nunca desligam"
+      ],
+      "correta": 0,
+      "explicacao": "Ligado, prende; desligado, solta. Dica de mergulhador: porteiro aperta, eletroímã solta.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não abririam."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q17-v1",
+      "varianteDe": "fis-magnetismo-q17",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Se o sentido da corrente num eletroímã for invertido, os polos:",
+      "alternativas": [
+        "Se invertem",
+        "Desaparecem",
+        "Ficam iguais",
+        "Dobram de força",
+        "Viram cargas elétricas"
+      ],
+      "correta": 0,
+      "explicacao": "O sentido do campo acompanha a corrente. Dica de mergulhador: inverteu a corrente, trocou norte e sul.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Mudam.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q18-v1",
+      "varianteDe": "fis-magnetismo-q18",
+      "tema": "Eletromagnetismo",
+      "dificuldade": "dificil",
+      "fase": "fis-magnetismo",
+      "enunciado": "Um microfone dinâmico funciona como um alto-falante ao contrário porque:",
+      "alternativas": [
+        "Usa luz",
+        "Esquenta com a voz",
+        "Precisa de raio X",
+        "O som move uma bobina perto de um ímã e induz corrente",
+        "Converte corrente em som"
+      ],
+      "correta": 3,
+      "explicacao": "Indução eletromagnética. Dica de mergulhador: voz mexe a bobina, bobina gera sinal.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Isso é o alto-falante."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q19-v1",
+      "varianteDe": "fis-magnetismo-q19",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "facil",
+      "fase": "fis-magnetismo",
+      "enunciado": "O dínamo da bicicleta acende o farol porque:",
+      "alternativas": [
+        "A roda gira um ímã junto à bobina",
+        "O pneu atrita e eletriza",
+        "Tem uma pilha escondida",
+        "O vento acende",
+        "Usa a luz do Sol"
+      ],
+      "correta": 0,
+      "explicacao": "Indução eletromagnética. Dica de mergulhador: pedalou, gerou.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-magnetismo-q20-v1",
+      "varianteDe": "fis-magnetismo-q20",
+      "tema": "Indução e geração de energia",
+      "dificuldade": "medio",
+      "fase": "fis-magnetismo",
+      "enunciado": "Ao girar mais rápido a manivela de um gerador manual, a lâmpada ligada a ele:",
+      "alternativas": [
+        "Apaga",
+        "Brilha menos",
+        "Brilha igual",
+        "Brilha mais, porque a variação do campo é mais rápida",
+        "Muda de cor sempre"
+      ],
+      "correta": 3,
+      "explicacao": "Variação mais rápida, tensão induzida maior. Dica de mergulhador: manivela rápida, luz forte.",
+      "comentarios": [
+        "Não.",
+        "Ao contrário.",
+        "Muda.",
+        "",
+        "Não."
+      ]
     }
   ],
   "pares": [
@@ -20483,6 +22589,54 @@
       "tema": "Corrente, resistência e potência elétrica",
       "termo": "Watt",
       "definicao": "Potência"
+    },
+    {
+      "id": "fis-circuitos-par-01",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "termo": "Série",
+      "definicao": "Mesma corrente"
+    },
+    {
+      "id": "fis-circuitos-par-02",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "termo": "Paralelo",
+      "definicao": "Mesma tensão"
+    },
+    {
+      "id": "fis-circuitos-par-03",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "termo": "Terceiro pino",
+      "definicao": "Aterramento"
+    },
+    {
+      "id": "fis-circuitos-par-04",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "termo": "DR",
+      "definicao": "Protege pessoas"
+    },
+    {
+      "id": "fis-magnetismo-par-01",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "termo": "Bússola",
+      "definicao": "Campo da Terra"
+    },
+    {
+      "id": "fis-magnetismo-par-02",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "termo": "Eletroímã",
+      "definicao": "Bobina com núcleo de ferro"
+    },
+    {
+      "id": "fis-magnetismo-par-03",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "termo": "Motor",
+      "definicao": "Elétrica em mecânica"
+    },
+    {
+      "id": "fis-magnetismo-par-04",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "termo": "Gerador",
+      "definicao": "Mecânica em elétrica"
     }
   ],
   "verdadeiroFalso": [
@@ -20884,6 +23038,48 @@
       "afirmacao": "O efeito Joule aquece a água do chuveiro.",
       "verdadeira": true,
       "explicacao": "Energia elétrica vira calor."
+    },
+    {
+      "id": "fis-circuitos-vf-01",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "afirmacao": "Em paralelo, a resistência equivalente é menor que a menor resistência.",
+      "verdadeira": true,
+      "explicacao": "Mais caminhos, menos oposição."
+    },
+    {
+      "id": "fis-circuitos-vf-02",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "afirmacao": "As lâmpadas de uma casa são ligadas em série.",
+      "verdadeira": false,
+      "explicacao": "São em paralelo."
+    },
+    {
+      "id": "fis-circuitos-vf-03",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "afirmacao": "O disjuntor fica em série com o circuito.",
+      "verdadeira": true,
+      "explicacao": "Para cortar a corrente."
+    },
+    {
+      "id": "fis-magnetismo-vf-01",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "afirmacao": "Toda corrente elétrica cria campo magnético.",
+      "verdadeira": true,
+      "explicacao": "Experiência de Oersted."
+    },
+    {
+      "id": "fis-magnetismo-vf-02",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "afirmacao": "Um ímã parado numa bobina gera corrente.",
+      "verdadeira": false,
+      "explicacao": "Precisa haver variação."
+    },
+    {
+      "id": "fis-magnetismo-vf-03",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "afirmacao": "O transformador precisa de corrente alternada.",
+      "verdadeira": true,
+      "explicacao": "Campo variável."
     }
   ],
   "sequencias": [
@@ -21124,6 +23320,31 @@
         "Multiplicar pela tarifa"
       ],
       "explicacao": "kWh × R$."
+    },
+    {
+      "id": "fis-circuitos-seq-01",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "titulo": "Resolver um circuito misto",
+      "itens": [
+        "Identificar série e paralelo",
+        "Calcular as equivalentes",
+        "Achar a corrente total",
+        "Distribuir tensões e correntes"
+      ],
+      "explicacao": "Do simples ao todo."
+    },
+    {
+      "id": "fis-magnetismo-seq-01",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "titulo": "Da usina à tomada",
+      "itens": [
+        "Gerador na usina",
+        "Transformador eleva a tensão",
+        "Linhas de transmissão",
+        "Transformador baixa a tensão",
+        "Tomada"
+      ],
+      "explicacao": "Indução nas duas pontas."
     }
   ],
   "adivinhas": [
@@ -21391,6 +23612,34 @@
         "Quadro de luz",
         "Desarma",
         "Protege a fiação"
+      ]
+    },
+    {
+      "id": "fis-circuitos-adv-01",
+      "tema": "Circuitos: série, paralelo e instalações",
+      "dificuldade": "medio",
+      "resposta": "Curto",
+      "aceitas": [
+        "curto, curto-circuito"
+      ],
+      "dicas": [
+        "Faísca",
+        "Resistência quase zero",
+        "Disjuntor desarma"
+      ]
+    },
+    {
+      "id": "fis-magnetismo-adv-01",
+      "tema": "Magnetismo, eletroímãs e indução",
+      "dificuldade": "medio",
+      "resposta": "Bússola",
+      "aceitas": [
+        "bussola, bússola"
+      ],
+      "dicas": [
+        "Agulha",
+        "Norte",
+        "Navegação"
       ]
     }
   ],
@@ -21850,6 +24099,54 @@
       "tema": "Física",
       "palavra": "Fusível",
       "dica": "Queima para proteger o circuito"
+    },
+    {
+      "id": "fis-circuitos-pal-01",
+      "tema": "Física",
+      "palavra": "Benjamim",
+      "dica": "Adaptador que soma correntes"
+    },
+    {
+      "id": "fis-circuitos-pal-02",
+      "tema": "Física",
+      "palavra": "Plugue",
+      "dica": "Tem dois ou três pinos"
+    },
+    {
+      "id": "fis-circuitos-pal-03",
+      "tema": "Física",
+      "palavra": "Lâmpada",
+      "dica": "Fica independente em paralelo"
+    },
+    {
+      "id": "fis-circuitos-pal-04",
+      "tema": "Física",
+      "palavra": "Faísca",
+      "dica": "Aparece no curto"
+    },
+    {
+      "id": "fis-magnetismo-pal-01",
+      "tema": "Física",
+      "palavra": "Ímã",
+      "dica": "Tem polos norte e sul"
+    },
+    {
+      "id": "fis-magnetismo-pal-02",
+      "tema": "Física",
+      "palavra": "Bobina",
+      "dica": "Fio enrolado em espiras"
+    },
+    {
+      "id": "fis-magnetismo-pal-03",
+      "tema": "Física",
+      "palavra": "Gerador",
+      "dica": "Gira para produzir eletricidade"
+    },
+    {
+      "id": "fis-magnetismo-pal-04",
+      "tema": "Física",
+      "palavra": "Motor",
+      "dica": "Gira gastando eletricidade"
     }
   ],
   "fichas": {
@@ -22564,6 +24861,90 @@
       "pegadinhas": [
         "Esquecer de passar watt para quilowatt.",
         "Achar que a posição \"inverno\" tem mais resistência."
+      ]
+    },
+    "Associação em série": {
+      "texto": [
+        "Caminho único: mesma corrente; tensões se dividem; Req = soma. Um componente rompido abre o circuito.",
+        "Fusíveis e disjuntores vão em série com o que protegem. Em série, o maior resistor fica com a maior tensão."
+      ],
+      "pontos": [
+        "Série é fila: soma tudo.",
+        "Primeiro a equivalente, depois U = R·i."
+      ],
+      "pegadinhas": [
+        "Dividir a corrente entre resistores em série.",
+        "Esquecer que a tensão se divide."
+      ]
+    },
+    "Associação em paralelo": {
+      "texto": [
+        "Mesma tensão; correntes somam; 1/Req = Σ 1/R; dois: produto sobre soma; n iguais: R/n.",
+        "Casas usam paralelo: aparelhos independentes; mais aparelhos, mais corrente no disjuntor."
+      ],
+      "pontos": [
+        "Produto sobre soma.",
+        "A equivalente é menor que a menor."
+      ],
+      "pegadinhas": [
+        "Somar resistências em paralelo.",
+        "Achar que ligar mais aparelhos diminui a corrente."
+      ]
+    },
+    "Instalações e segurança": {
+      "texto": [
+        "Aterramento (terceiro pino) leva correntes de fuga para a terra. Benjamim sobrecarregado soma correntes e aquece.",
+        "Curto-circuito: R quase zero, corrente enorme. Disjuntor protege a fiação; DR protege pessoas."
+      ],
+      "pontos": [
+        "Terceiro pino é proteção.",
+        "DR protege gente; disjuntor protege fio."
+      ],
+      "pegadinhas": [
+        "Cortar o pino terra.",
+        "Achar que o disjuntor evita todo choque."
+      ]
+    },
+    "Ímãs e campo magnético": {
+      "texto": [
+        "Polos norte e sul; iguais se repelem, opostos se atraem; ímã cortado vira dois. Linhas saem do norte e entram no sul.",
+        "Bússola se alinha ao campo da Terra; o norte geográfico é um sul magnético. Ferro, níquel e cobalto são atraídos."
+      ],
+      "pontos": [
+        "Ímã cortado continua ímã.",
+        "Perto de ímã, a bússola mente o norte."
+      ],
+      "pegadinhas": [
+        "Achar que dá para separar os polos.",
+        "Dizer que o alumínio gruda no ímã."
+      ]
+    },
+    "Eletromagnetismo": {
+      "texto": [
+        "Oersted: corrente cria campo. Bobina com núcleo de ferro é eletroímã; força cresce com corrente e espiras.",
+        "Fio com corrente num campo sofre força: motor elétrico, alto-falante, levitação magnética."
+      ],
+      "pontos": [
+        "Eletroímã liga e desliga.",
+        "Motor gasta eletricidade e gira."
+      ],
+      "pegadinhas": [
+        "Confundir motor com gerador.",
+        "Tirar o núcleo de ferro para aumentar a força."
+      ]
+    },
+    "Indução e geração de energia": {
+      "texto": [
+        "Faraday: campo magnético variável induz corrente. Ímã parado não induz.",
+        "Gerador: mecânica em elétrica. Transformador: U₁/U₂ = N₁/N₂, só com alternada. Carregador sem fio e fogão de indução."
+      ],
+      "pontos": [
+        "Sem movimento, sem corrente.",
+        "Tensão proporcional às espiras."
+      ],
+      "pegadinhas": [
+        "Usar transformador com corrente contínua.",
+        "Inverter a proporção das espiras."
       ]
     }
   }
