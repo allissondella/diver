@@ -1252,7 +1252,7 @@
       "id": "fis-termometria-calor",
       "nome": "Aula 12 · Temperatura, calor e dilatação",
       "modulo": "Módulo 3 · Calor e ondas",
-      "descricao": "Módulo 3 · aula 1 de 3 · 35 min · treina as habilidades H21, H22 e H23",
+      "descricao": "Módulo 3 · aula 1 de 5 · 35 min · treina as habilidades H21, H22 e H23",
       "habilidades": [
         "H21",
         "H22",
@@ -1365,7 +1365,7 @@
       "id": "fis-termodinamica",
       "nome": "Aula 13 · Gases e termodinâmica",
       "modulo": "Módulo 3 · Calor e ondas",
-      "descricao": "Módulo 3 · aula 2 de 3 · 35 min · treina as habilidades H21, H22 e H23",
+      "descricao": "Módulo 3 · aula 2 de 5 · 35 min · treina as habilidades H21, H22 e H23",
       "habilidades": [
         "H21",
         "H22",
@@ -1477,7 +1477,7 @@
       "id": "fis-ondas",
       "nome": "Aula 14 · Ondas e espectro eletromagnético",
       "modulo": "Módulo 3 · Calor e ondas",
-      "descricao": "Módulo 3 · aula 3 de 3 · 35 min · treina as habilidades H1, H21 e H22",
+      "descricao": "Módulo 3 · aula 3 de 5 · 35 min · treina as habilidades H1, H21 e H22",
       "habilidades": [
         "H1",
         "H21",
@@ -1583,6 +1583,231 @@
           "comprimento de onda",
           "espectro eletromagnetico",
           "ressonancia"
+        ]
+      }
+    },
+    {
+      "id": "fis-acustica",
+      "nome": "Aula 15 · Som e acústica",
+      "modulo": "Módulo 3 · Calor e ondas",
+      "descricao": "Módulo 3 · aula 4 de 5 · 35 min · treina as habilidades H1, H21 e H22",
+      "habilidades": [
+        "H1",
+        "H21",
+        "H22"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Qualidades do som",
+            "texto": [
+              "O som é uma onda mecânica longitudinal que o ouvido humano percebe entre cerca de 20 Hz e 20.000 Hz; abaixo fica o infrassom e acima, o ultrassom. Três qualidades distinguem um som de outro. A **altura do som** depende da frequência: som alto, para a Física, é agudo (frequência alta), e som baixo é grave. A intensidade depende da amplitude e da energia: é o que chamamos no dia a dia de volume, medido em decibéis (dB). A cada 10 dB a mais, a intensidade fica 10 vezes maior; exposições longas acima de cerca de 85 dB podem causar perda auditiva. O timbre depende da forma da onda e permite distinguir um violão de um piano tocando a mesma nota."
+            ]
+          },
+          {
+            "titulo": "Velocidade, eco e ultrassom",
+            "texto": [
+              "O som é mais rápido nos sólidos e líquidos do que nos gases: cerca de 340 m/s no ar, 1.500 m/s na água e mais de 5.000 m/s no aço. Por isso dá para ouvir o trem chegando com o ouvido no trilho. O eco é o som refletido que chega ao ouvido separado do original, o que exige obstáculo a pelo menos cerca de 17 m; com obstáculos mais próximos, ocorre reverberação. Sonares de navios e morcegos medem distâncias pelo tempo de ida e volta do som. O **ultrassom**, de frequência acima de 20 kHz, é usado em exames de imagem, como na gravidez, porque não usa radiação ionizante."
+            ]
+          },
+          {
+            "titulo": "Efeito Doppler e instrumentos",
+            "texto": [
+              "O **efeito Doppler** é a mudança na frequência percebida quando fonte e observador se aproximam ou se afastam: a sirene da ambulância parece mais aguda chegando e mais grave indo embora. Radares de trânsito e exames de fluxo sanguíneo usam esse efeito. Nos instrumentos, cordas e colunas de ar vibram em frequências próprias. Numa corda, a nota fica mais aguda quando ela é mais curta, mais esticada ou mais fina: é o que o violonista faz ao apertar a corda no braço do violão. A caixa do violão amplifica o som por ressonância."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Separe as três qualidades: frequência é altura, amplitude é intensidade e forma da onda é timbre. Nas contas de eco e sonar, divida o tempo por dois."
+            ]
+          }
+        ],
+        "introducao": "O som é a onda mais presente no nosso dia: na conversa, na música, no trânsito e até nos exames de ultrassom. Esta aula mostra as qualidades do som, sua velocidade nos diferentes meios, o eco e o sonar, o ultrassom, o efeito Doppler e como os instrumentos produzem notas.",
+        "mapaMental": {
+          "centro": "Som",
+          "ramos": [
+            {
+              "titulo": "Faixa audível",
+              "itens": [
+                "20 Hz a 20.000 Hz",
+                "infrassom abaixo"
+              ]
+            },
+            {
+              "titulo": "Intensidade",
+              "itens": [
+                "decibéis",
+                "10 dB a mais, 10 vezes mais",
+                "perda auditiva acima de 85 dB"
+              ]
+            },
+            {
+              "titulo": "Timbre",
+              "itens": [
+                "forma da onda",
+                "violão e piano na mesma nota"
+              ]
+            },
+            {
+              "titulo": "Meios",
+              "itens": [
+                "ar 340 m/s",
+                "água 1.500 m/s",
+                "aço mais rápido"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🎻",
+            "conceito": "Violino agudo, tuba grave",
+            "liga": "altura do som",
+            "porque": "Altura é frequência, não volume."
+          },
+          {
+            "icone": "🦇",
+            "conceito": "Morcego que enxerga ouvindo",
+            "liga": "ultrassom",
+            "porque": "Acima de 20 kHz; sonar e exames."
+          },
+          {
+            "icone": "🚑",
+            "conceito": "Sirene que muda ao passar",
+            "liga": "efeito doppler",
+            "porque": "Aproximando, agudo; afastando, grave."
+          }
+        ],
+        "pontos": [
+          "**Altura do som** = frequência: agudo é alto, grave é baixo.",
+          "Intensidade (volume) em decibéis; timbre pela forma da onda.",
+          "Som: mais rápido em sólidos e líquidos que no ar.",
+          "Eco e sonar: tempo de ida e volta.",
+          "**Ultrassom**: acima de 20 kHz, sem radiação ionizante.",
+          "**Efeito Doppler**: fonte chegando soa mais aguda."
+        ],
+        "perolas": [
+          "\"Abaixa o som\" na Física quer dizer deixar mais grave."
+        ],
+        "reforcar": [
+          "altura do som",
+          "ultrassom",
+          "efeito doppler"
+        ]
+      }
+    },
+    {
+      "id": "fis-revisao-calor-ondas",
+      "nome": "Aula 16 · Revisão do módulo: calor e ondas",
+      "modulo": "Módulo 3 · Calor e ondas",
+      "descricao": "Módulo 3 · aula 5 de 5 · 35 min · treina as habilidades H1, H21, H22 e H23",
+      "habilidades": [
+        "H1",
+        "H21",
+        "H22",
+        "H23"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Calor: medir, trocar e transformar",
+            "texto": [
+              "Temperatura mede a agitação das partículas; calor é energia em trânsito do quente para o frio até o equilíbrio. As contas usam Q = m·c·ΔT para aquecer e Q = m·L para mudar de estado, com temperatura constante durante a mudança. O calor se propaga por condução, convecção e irradiação, e só esta última atravessa o vácuo. Nos gases, p·V/T é constante, sempre com a temperatura em kelvin. A **primeira lei da termodinâmica**, Q = τ + ΔU, é a conservação da energia; a segunda diz que nenhum motor converte todo o calor em trabalho, e o limite é o rendimento de Carnot, 1 − T₂/T₁. A geladeira usa trabalho para levar calor do frio ao quente."
+            ]
+          },
+          {
+            "titulo": "Ondas: medir e classificar",
+            "texto": [
+              "Ondas transportam energia sem transportar matéria, e todas obedecem a v = λ·f; ao mudar de meio, a frequência se mantém. As mecânicas, como o som, precisam de meio; as eletromagnéticas atravessam o vácuo a 3 × 10⁸ m/s. A **frequência da onda** organiza o espectro: rádio, micro-ondas, infravermelho, visível, ultravioleta, raios X e gama, com energia crescente. Reflexão, refração, difração, interferência e ressonância aparecem em eco, arco-íris, fones e taças."
+            ]
+          },
+          {
+            "titulo": "Som: qualidades e aplicações",
+            "texto": [
+              "Altura é frequência (agudo ou grave), intensidade é o volume em decibéis, e timbre é a forma da onda. O som é mais rápido nos sólidos e líquidos. Eco, sonar e ultrassom medem distâncias pelo tempo de ida e volta, e o **efeito Doppler** muda a frequência percebida quando fonte e ouvinte se aproximam ou se afastam."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Classifique cada questão: calor, gás, motor, onda ou som. Depois escreva a fórmula que governa aquele tema e confira as unidades, sobretudo kelvin e hertz. Errou? Volte à aula do tema, releia o resumo e refaça as questões dela em outro dia. Espaçar as revisões ajuda a memória a guardar."
+            ]
+          }
+        ],
+        "introducao": "Temperatura, calor, gases, motores, ondas, espectro e som: esta revisão junta o módulo em questões novas e misturadas, com situações que o Enem adora, como a geladeira, o forno de micro-ondas, o protetor solar e o exame de ultrassom.",
+        "mapaMental": {
+          "centro": "Revisão do módulo",
+          "ramos": [
+            {
+              "titulo": "Calor",
+              "itens": [
+                "m·c·ΔT",
+                "m·L",
+                "condução, convecção e irradiação"
+              ]
+            },
+            {
+              "titulo": "Gases e motores",
+              "itens": [
+                "kelvin sempre",
+                "Carnot",
+                "geladeira"
+              ]
+            },
+            {
+              "titulo": "Ondas",
+              "itens": [
+                "v = λ·f",
+                "espectro",
+                "ressonância"
+              ]
+            },
+            {
+              "titulo": "Som",
+              "itens": [
+                "altura, intensidade e timbre",
+                "eco e sonar",
+                "ultrassom"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "⚙️",
+            "conceito": "Calor que vira trabalho e energia interna",
+            "liga": "primeira lei da termodinamica",
+            "porque": "Q = τ + ΔU."
+          },
+          {
+            "icone": "📻",
+            "conceito": "Botão que sintoniza a estação",
+            "liga": "frequencia da onda",
+            "porque": "Organiza o espectro e define a energia."
+          },
+          {
+            "icone": "🚓",
+            "conceito": "Viatura que passa com a sirene",
+            "liga": "efeito doppler",
+            "porque": "Chegando, agudo; indo, grave."
+          }
+        ],
+        "pontos": [
+          "Q = m·c·ΔT aquece; Q = m·L muda o estado.",
+          "Gases: p·V/T constante, em kelvin.",
+          "**Primeira lei da termodinâmica**: Q = τ + ΔU.",
+          "Carnot: rendimento máximo 1 − T₂/T₁.",
+          "v = λ·f; a **frequência da onda** não muda com o meio.",
+          "**Efeito Doppler**: aproximação, frequência maior."
+        ],
+        "perolas": [
+          "Kelvin para gases, hertz para ondas: unidade certa, conta certa."
+        ],
+        "reforcar": [
+          "primeira lei da termodinamica",
+          "frequencia da onda",
+          "efeito doppler"
         ]
       }
     }
@@ -8031,6 +8256,928 @@
         "Não.",
         "Sofre, em fendas pequenas.",
         ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q01",
+      "tema": "Qualidades do som",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "A qualidade do som que permite distinguir um som agudo de um grave é:",
+      "alternativas": [
+        "A intensidade",
+        "O timbre",
+        "A altura, ligada à frequência",
+        "A cor",
+        "A velocidade"
+      ],
+      "correta": 2,
+      "explicacao": "Agudo tem frequência alta. Dica de mergulhador: altura é frequência.",
+      "comentarios": [
+        "É o volume.",
+        "Distingue instrumentos.",
+        "",
+        "Não.",
+        "É a mesma no ar."
+      ]
+    },
+    {
+      "id": "fis-acustica-q02",
+      "tema": "Qualidades do som",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "Quando alguém pede para \"aumentar o volume\" do rádio, está pedindo, em termos físicos, para aumentar:",
+      "alternativas": [
+        "O timbre",
+        "A altura do som",
+        "A intensidade do som",
+        "A frequência",
+        "A velocidade do som"
+      ],
+      "correta": 2,
+      "explicacao": "Volume é intensidade, ligada à amplitude. Dica de mergulhador: volume é amplitude, não altura.",
+      "comentarios": [
+        "Não.",
+        "Isso deixaria agudo.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q03",
+      "tema": "Qualidades do som",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "Um violão e um piano tocam a mesma nota com o mesmo volume. Conseguimos distinguir os dois pelo:",
+      "alternativas": [
+        "Intensidade",
+        "Período",
+        "Altura",
+        "Comprimento de onda",
+        "Timbre"
+      ],
+      "correta": 4,
+      "explicacao": "A forma da onda é diferente. Dica de mergulhador: timbre é a impressão digital do som.",
+      "comentarios": [
+        "É o mesmo volume.",
+        "É o mesmo.",
+        "É a mesma nota.",
+        "É o mesmo.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q04",
+      "tema": "Qualidades do som",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "O ouvido humano percebe sons entre cerca de:",
+      "alternativas": [
+        "1 Hz e 10 Hz",
+        "20 kHz e 200 kHz",
+        "100 MHz e 200 MHz",
+        "20 Hz e 20.000 Hz",
+        "0 Hz e 100 Hz"
+      ],
+      "correta": 3,
+      "explicacao": "Abaixo, infrassom; acima, ultrassom. Dica de mergulhador: de 20 a 20 mil.",
+      "comentarios": [
+        "É infrassom.",
+        "É ultrassom.",
+        "É rádio FM.",
+        "",
+        "Faixa muito curta."
+      ],
+      "revisar": "faixa audível humana"
+    },
+    {
+      "id": "fis-acustica-q05",
+      "tema": "Qualidades do som",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Um aumento de 20 dB no nível sonoro corresponde a uma intensidade:",
+      "alternativas": [
+        "1.000 vezes maior",
+        "10 vezes maior",
+        "20 vezes maior",
+        "100 vezes maior",
+        "2 vezes maior"
+      ],
+      "correta": 3,
+      "explicacao": "Cada 10 dB multiplica por 10: 10 × 10. Dica de mergulhador: decibel soma, intensidade multiplica.",
+      "comentarios": [
+        "Isso é 30 dB.",
+        "Isso é 10 dB.",
+        "A escala é logarítmica.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q06",
+      "tema": "Qualidades do som",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Uma pessoa trabalha todo dia ao lado de máquinas com 95 dB, sem protetor auricular. O risco principal é:",
+      "alternativas": [
+        "Ficar com a voz mais aguda",
+        "Aumento da visão",
+        "Nenhum, pois decibéis não fazem mal",
+        "Perda auditiva por exposição prolongada",
+        "Febre"
+      ],
+      "correta": 3,
+      "explicacao": "Exposições longas acima de cerca de 85 dB lesam o ouvido. Dica de mergulhador: barulho constante cobra a conta depois.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Fazem.",
+        "",
+        "Não."
+      ],
+      "revisar": "limite de exposição sonora ocupacional"
+    },
+    {
+      "id": "fis-acustica-q07",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "O som se propaga mais rápido:",
+      "alternativas": [
+        "No vácuo",
+        "Na água, mais que no aço",
+        "No ar",
+        "No aço",
+        "Igual em todos os meios"
+      ],
+      "correta": 3,
+      "explicacao": "Sólidos transmitem melhor a vibração. Dica de mergulhador: ouvido no trilho ouve o trem antes.",
+      "comentarios": [
+        "Não se propaga.",
+        "O aço é mais rápido.",
+        "É o mais lento dos três.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q08",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "O sonar de um navio emite um pulso e recebe o eco do fundo 2 s depois. Com o som a 1.500 m/s na água, a profundidade é:",
+      "alternativas": [
+        "750 m",
+        "340 m",
+        "1.500 m",
+        "3.000 m",
+        "1.502 m"
+      ],
+      "correta": 2,
+      "explicacao": "1.500 × 2 ÷ 2. Dica de mergulhador: eco é ida e volta.",
+      "comentarios": [
+        "Dividiu duas vezes.",
+        "Usou o ar.",
+        "",
+        "Esqueceu a ida e volta.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-acustica-q09",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Exames de ultrassom são indicados na gravidez porque:",
+      "alternativas": [
+        "Usam raios X fracos",
+        "Usam luz ultravioleta",
+        "Não emitem nada",
+        "Usam raios gama",
+        "Usam ondas mecânicas, sem radiação ionizante"
+      ],
+      "correta": 4,
+      "explicacao": "O ultrassom reflete nas estruturas e forma a imagem. Dica de mergulhador: ultrassom é eco que vira imagem.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Emitem som.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q10",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Para ouvir o eco separado do som original, o ouvido precisa de cerca de 0,1 s entre eles. Com o som a 340 m/s, o obstáculo deve estar a pelo menos:",
+      "alternativas": [
+        "17 m",
+        "8,5 m",
+        "3,4 m",
+        "34 m",
+        "340 m"
+      ],
+      "correta": 0,
+      "explicacao": "340 × 0,1 = 34 m de ida e volta. Dica de mergulhador: metade de 34.",
+      "comentarios": [
+        "",
+        "Dividiu duas vezes.",
+        "Errou a casa.",
+        "Esqueceu a ida e volta.",
+        "Esqueceu o tempo."
+      ]
+    },
+    {
+      "id": "fis-acustica-q11",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "A sirene de uma ambulância que se aproxima parece:",
+      "alternativas": [
+        "Sem som",
+        "Mais aguda",
+        "Mais lenta",
+        "Mais grave",
+        "Sempre igual"
+      ],
+      "correta": 1,
+      "explicacao": "O observador recebe mais ondas por segundo. Dica de mergulhador: chegando, agudo.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Isso quando se afasta.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q12",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Ao apertar uma corda do violão numa casa mais perto do corpo do instrumento, o violonista deixa a parte que vibra mais curta. A nota fica:",
+      "alternativas": [
+        "Mais aguda",
+        "Mais alta em volume",
+        "Igual",
+        "Sem som",
+        "Mais grave"
+      ],
+      "correta": 0,
+      "explicacao": "Corda curta vibra mais rápido. Dica de mergulhador: corda curta, nota aguda.",
+      "comentarios": [
+        "",
+        "Não necessariamente.",
+        "Não.",
+        "Não.",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-acustica-q13",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Os radares de trânsito que medem a velocidade dos carros usam:",
+      "alternativas": [
+        "O som do motor",
+        "A temperatura",
+        "A cor do carro",
+        "A gravidade",
+        "O efeito Doppler das ondas refletidas"
+      ],
+      "correta": 4,
+      "explicacao": "A frequência refletida muda com a velocidade. Dica de mergulhador: radar ouve a mudança da onda.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q14",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Um carro de polícia parado toca a sirene. Um observador vai de moto em direção a ele. O som que ele ouve é:",
+      "alternativas": [
+        "Mais agudo que o emitido",
+        "Mais grave",
+        "Mudo",
+        "Mais lento",
+        "Igual"
+      ],
+      "correta": 0,
+      "explicacao": "Basta haver aproximação, da fonte ou do observador. Dica de mergulhador: aproximação, agudo.",
+      "comentarios": [
+        "",
+        "Ele se aproxima.",
+        "Não.",
+        "Não.",
+        "Há movimento relativo."
+      ]
+    },
+    {
+      "id": "fis-acustica-q15",
+      "tema": "Qualidades do som",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "Uma onda sonora com maior amplitude é percebida como:",
+      "alternativas": [
+        "Um ultrassom",
+        "Um som mais intenso, mais forte",
+        "Um som mais lento",
+        "Um som de outro timbre",
+        "Um som mais agudo"
+      ],
+      "correta": 1,
+      "explicacao": "Amplitude está ligada à energia. Dica de mergulhador: onda mais alta no gráfico, som mais forte.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não.",
+        "Agudo é frequência."
+      ]
+    },
+    {
+      "id": "fis-acustica-q16",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "O som não pode ser ouvido no espaço, fora da atmosfera, porque:",
+      "alternativas": [
+        "Os astronautas usam capacete",
+        "É frio demais",
+        "O som vira luz",
+        "A gravidade é zero",
+        "Não há meio material para ele se propagar"
+      ],
+      "correta": 4,
+      "explicacao": "Onda mecânica precisa de meio. Dica de mergulhador: no espaço, ninguém ouve a explosão.",
+      "comentarios": [
+        "Não é o motivo físico.",
+        "Não é o motivo.",
+        "Não.",
+        "Não é o motivo.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q17",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Um trovão é ouvido 5 s depois do relâmpago. Com o som a 340 m/s, o raio caiu a cerca de:",
+      "alternativas": [
+        "68 m",
+        "1,7 km",
+        "340 m",
+        "3,4 km",
+        "17 km"
+      ],
+      "correta": 1,
+      "explicacao": "340 × 5 = 1.700 m. Dica de mergulhador: aqui não há volta; só ida.",
+      "comentarios": [
+        "Dividiu.",
+        "",
+        "Só um segundo.",
+        "Usou ida e volta.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-acustica-q18",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Um mesmo som de 680 Hz passa do ar (340 m/s) para a água (1.500 m/s). Seu comprimento de onda:",
+      "alternativas": [
+        "Passa de 0,5 m para 0,1 m",
+        "Fica igual",
+        "Passa de 2 m para 0,5 m",
+        "Some",
+        "Passa de 0,5 m para cerca de 2,2 m"
+      ],
+      "correta": 4,
+      "explicacao": "λ = v/f: 340/680 = 0,5 m e 1.500/680 ≈ 2,2 m. Dica de mergulhador: frequência fixa, λ acompanha a velocidade.",
+      "comentarios": [
+        "Diminuiu, mas deveria aumentar.",
+        "A velocidade mudou.",
+        "Inverteu.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q19",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Numa flauta, ao tapar furos e deixar a coluna de ar vibrante mais longa, a nota fica:",
+      "alternativas": [
+        "Igual",
+        "Mais grave",
+        "Mais aguda",
+        "Mais forte sempre",
+        "Sem som"
+      ],
+      "correta": 1,
+      "explicacao": "Coluna maior, frequência menor. Dica de mergulhador: tubo longo, som grave.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Ao contrário.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q20",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Um exame de Doppler vascular mede a velocidade do sangue porque:",
+      "alternativas": [
+        "O sangue emite som próprio",
+        "O ultrassom tinge o sangue",
+        "Ele usa raios X",
+        "A cor do sangue muda",
+        "O eco nas hemácias muda de frequência"
+      ],
+      "correta": 4,
+      "explicacao": "Efeito Doppler aplicado à medicina. Dica de mergulhador: sangue que corre muda o eco.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q01",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma panela de alumínio no fogo esquenta por inteiro principalmente por:",
+      "alternativas": [
+        "Dilatação",
+        "Irradiação apenas",
+        "Condução",
+        "Convecção no metal",
+        "Ressonância"
+      ],
+      "correta": 2,
+      "explicacao": "O calor passa de partícula em partícula no metal. Dica de mergulhador: metal conduz.",
+      "comentarios": [
+        "Não é propagação.",
+        "Não é o principal no metal.",
+        "",
+        "O metal não flui.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q02",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Qual destas radiações é usada para esquentar comida no forno doméstico?",
+      "alternativas": [
+        "Raios gama",
+        "Raios X",
+        "Ondas de rádio AM",
+        "Ultravioleta",
+        "Micro-ondas"
+      ],
+      "correta": 4,
+      "explicacao": "Agitam as moléculas de água. Dica de mergulhador: o nome já diz.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q03",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma temperatura de −73 °C, em kelvin, vale:",
+      "alternativas": [
+        "−200 K",
+        "273 K",
+        "200 K",
+        "73 K",
+        "346 K"
+      ],
+      "correta": 2,
+      "explicacao": "−73 + 273 = 200. Dica de mergulhador: kelvin nunca é negativo.",
+      "comentarios": [
+        "Kelvin não é negativo.",
+        "É 0 °C.",
+        "",
+        "Errou.",
+        "Somou 73."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q04",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "A nota mais aguda de um piano, comparada à mais grave, tem:",
+      "alternativas": [
+        "Frequência menor",
+        "Amplitude sempre menor",
+        "Frequência maior",
+        "Timbre de outro instrumento",
+        "Velocidade maior no ar"
+      ],
+      "correta": 2,
+      "explicacao": "Agudo é frequência alta. Dica de mergulhador: tecla da direita, som fino.",
+      "comentarios": [
+        "Ao contrário.",
+        "Não necessariamente.",
+        "",
+        "Não.",
+        "A velocidade é a mesma."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q05",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma onda de 0,5 m e 680 Hz se propaga com velocidade de:",
+      "alternativas": [
+        "680,5 m/s",
+        "1.360 m/s",
+        "340 m/s",
+        "34 m/s",
+        "170 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "v = 0,5 × 680. Dica de mergulhador: λ vezes f.",
+      "comentarios": [
+        "Somou.",
+        "Dividiu.",
+        "",
+        "Errou a casa.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q06",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "O motivo de lagos congelarem só na superfície é:",
+      "alternativas": [
+        "O gelo ser mais denso",
+        "O fundo receber Sol",
+        "A água ser mais densa a 4 °C e o gelo boiar",
+        "Os peixes esquentarem a água",
+        "O vento congelar só em cima"
+      ],
+      "correta": 2,
+      "explicacao": "Anomalia da água. Dica de mergulhador: gelo em cima protege o fundo.",
+      "comentarios": [
+        "Boia.",
+        "Não.",
+        "",
+        "Não.",
+        "Não é o motivo físico."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q07",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma pessoa ouve a sirene de uma ambulância ficar mais grave. A ambulância está:",
+      "alternativas": [
+        "Desligada",
+        "Parada perto",
+        "Se aproximando",
+        "Acelerando para cima",
+        "Se afastando"
+      ],
+      "correta": 4,
+      "explicacao": "Afastamento diminui a frequência percebida. Dica de mergulhador: grave é adeus.",
+      "comentarios": [
+        "Não.",
+        "Não mudaria.",
+        "Ficaria mais aguda.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q08",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Quanto calor é preciso para aquecer 2 kg de água de 20 °C a 100 °C (c = 1 cal/g·°C)?",
+      "alternativas": [
+        "160 cal",
+        "40.000 cal",
+        "1.600 cal",
+        "200.000 cal",
+        "160.000 cal"
+      ],
+      "correta": 4,
+      "explicacao": "2.000 g × 1 × 80. Dica de mergulhador: passe kg para g.",
+      "comentarios": [
+        "Usou 2 g.",
+        "Usou 20 °C.",
+        "Errou a casa.",
+        "Usou 100 °C.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q09",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma rádio AM transmite em 1.000 kHz. Suas ondas têm comprimento de (c = 3 × 10⁸ m/s):",
+      "alternativas": [
+        "30 m",
+        "3.000 m",
+        "300 m",
+        "0,3 m",
+        "3 m"
+      ],
+      "correta": 2,
+      "explicacao": "3 × 10⁸ ÷ 10⁶. Dica de mergulhador: quilo-hertz mil vezes mil é mega.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou a casa.",
+        "",
+        "Errou.",
+        "Isso é FM de 100 MHz."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q10",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um gás recebe 1.000 J de calor e sua energia interna aumenta 600 J. O trabalho realizado pelo gás foi:",
+      "alternativas": [
+        "1.600 J",
+        "400 J",
+        "1.000 J",
+        "−400 J",
+        "600 J"
+      ],
+      "correta": 1,
+      "explicacao": "τ = Q − ΔU. Dica de mergulhador: calor menos o que ficou dentro.",
+      "comentarios": [
+        "Somou.",
+        "",
+        "É o calor.",
+        "Sinal errado.",
+        "É a ΔU."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q11",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um sonar recebe o eco do fundo do mar 4 s após emitir o pulso. Com o som a 1.500 m/s, a profundidade é:",
+      "alternativas": [
+        "3.000 m",
+        "680 m",
+        "375 m",
+        "1.500 m",
+        "6.000 m"
+      ],
+      "correta": 0,
+      "explicacao": "1.500 × 4 ÷ 2. Dica de mergulhador: eco, metade do tempo.",
+      "comentarios": [
+        "",
+        "Usou o ar.",
+        "Dividiu demais.",
+        "Usou 2 s errado.",
+        "Esqueceu a ida e volta."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q12",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma garrafa térmica conserva o café quente porque:",
+      "alternativas": [
+        "Produz calor",
+        "Usa micro-ondas",
+        "Esfria o café",
+        "Só aumenta a irradiação",
+        "Reduz a condução, a convecção e a irradiação"
+      ],
+      "correta": 4,
+      "explicacao": "Vácuo, tampa e espelho. Dica de mergulhador: barreira para os três caminhos.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Reduz.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q13",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um motor real opera entre 800 K e 400 K. Seu rendimento pode ser, no máximo:",
+      "alternativas": [
+        "50%",
+        "40%",
+        "200%",
+        "100%",
+        "80%"
+      ],
+      "correta": 0,
+      "explicacao": "Carnot: 1 − 400/800. Dica de mergulhador: o real fica abaixo desse limite.",
+      "comentarios": [
+        "",
+        "Não é o limite.",
+        "Não.",
+        "Impossível.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q14",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Coloca-se 100 g de gelo a 0 °C em 500 g de água a 40 °C, sem perdas (L = 80 cal/g; c = 1 cal/g·°C). A temperatura final é:",
+      "alternativas": [
+        "10 °C",
+        "20 °C",
+        "33 °C",
+        "40 °C",
+        "0 °C"
+      ],
+      "correta": 1,
+      "explicacao": "Derreter: 8.000 cal; 500·(40 − T) = 8.000 + 100·T; T = 20. Dica de mergulhador: primeiro o gelo derrete, depois tudo se equilibra.",
+      "comentarios": [
+        "Errou.",
+        "",
+        "Esqueceu o calor latente.",
+        "Não.",
+        "Sobra calor depois de derreter."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q15",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma panela com 1 kg de água a 25 °C é aquecida por um fogão que fornece 500 cal/s, sem perdas (c = 1 cal/g·°C). A água começa a ferver ao nível do mar após:",
+      "alternativas": [
+        "1.500 s",
+        "50 s",
+        "200 s",
+        "75 s",
+        "150 s"
+      ],
+      "correta": 4,
+      "explicacao": "Q = 1.000 × 75 = 75.000 cal; 75.000 ÷ 500. Dica de mergulhador: calor necessário sobre potência.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou.",
+        "Usou 100 °C inteiros.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q16",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma pessoa com ouvido no trilho ouve uma batida no metal 0,2 s antes de ouvi-la pelo ar. Com o som a 340 m/s no ar e 5.100 m/s no aço, a batida foi a cerca de:",
+      "alternativas": [
+        "68 m",
+        "73 m",
+        "34 m",
+        "1.020 m",
+        "146 m"
+      ],
+      "correta": 1,
+      "explicacao": "d/340 − d/5.100 = 0,2; d ≈ 72,9 m. Dica de mergulhador: a diferença de tempos dá a distância.",
+      "comentarios": [
+        "Usou só o ar.",
+        "",
+        "Errou.",
+        "Usou só o aço.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q17",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um mergulhador está debaixo d'água e ouve um barco. Em relação ao mesmo som no ar, debaixo d'água:",
+      "alternativas": [
+        "Mesma frequência, mais velocidade e λ",
+        "A frequência aumenta",
+        "Nada muda",
+        "A velocidade diminui",
+        "O comprimento de onda diminui"
+      ],
+      "correta": 0,
+      "explicacao": "Na troca de meio, f fica. Dica de mergulhador: no mar, o som corre mais.",
+      "comentarios": [
+        "",
+        "Fica igual.",
+        "Velocidade e λ mudam.",
+        "Aumenta.",
+        "Aumenta."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q18",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma geladeira retira 300 J de calor do interior e consome 100 J de trabalho do compressor. O calor jogado para o ambiente é:",
+      "alternativas": [
+        "200 J",
+        "100 J",
+        "300 J",
+        "400 J",
+        "30.000 J"
+      ],
+      "correta": 3,
+      "explicacao": "Q quente = Q frio + τ. Dica de mergulhador: a grade de trás devolve tudo o que entrou.",
+      "comentarios": [
+        "Subtraiu.",
+        "É o trabalho.",
+        "Esqueceu o trabalho.",
+        "",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q19",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma corda de violão vibra a 220 Hz. O violonista a encurta pela metade, mantendo a tensão. A nova frequência é:",
+      "alternativas": [
+        "330 Hz",
+        "110 Hz",
+        "220 Hz",
+        "440 Hz",
+        "880 Hz"
+      ],
+      "correta": 3,
+      "explicacao": "Frequência inversa ao comprimento da corda. Dica de mergulhador: corda pela metade, oitava acima.",
+      "comentarios": [
+        "Errou.",
+        "Inverteu.",
+        "Mudou.",
+        "",
+        "Exagerou."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q20",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma barra metálica de 1 m (α = 2 × 10⁻⁵ °C⁻¹) a 20 °C é aquecida até 520 °C. Seu novo comprimento é:",
+      "alternativas": [
+        "2 m",
+        "1,0001 m",
+        "1,01 m",
+        "1,001 m",
+        "1,1 m"
+      ],
+      "correta": 2,
+      "explicacao": "ΔL = 1 × 2 × 10⁻⁵ × 500 = 0,01 m. Dica de mergulhador: some a dilatação ao comprimento inicial.",
+      "comentarios": [
+        "Errou muito.",
+        "Errou.",
+        "",
+        "Errou a casa.",
+        "Errou a casa."
       ]
     }
   ],
@@ -14756,6 +15903,967 @@
         "Pouca difração.",
         "Não."
       ]
+    },
+    {
+      "id": "fis-acustica-q01-v1",
+      "varianteDe": "fis-acustica-q01",
+      "tema": "Qualidades do som",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "Um som agudo, comparado a um grave, tem:",
+      "alternativas": [
+        "Comprimento de onda maior",
+        "Frequência maior",
+        "Velocidade maior no ar",
+        "Sempre mais volume",
+        "Frequência menor"
+      ],
+      "correta": 1,
+      "explicacao": "Mais vibrações por segundo. Dica de mergulhador: apito é agudo, trovão é grave.",
+      "comentarios": [
+        "Menor.",
+        "",
+        "A velocidade é a mesma.",
+        "Não.",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-acustica-q02-v1",
+      "varianteDe": "fis-acustica-q02",
+      "tema": "Qualidades do som",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "A intensidade sonora é medida em:",
+      "alternativas": [
+        "Hertz",
+        "Decibéis",
+        "Metros",
+        "Watts por hora",
+        "Graus"
+      ],
+      "correta": 1,
+      "explicacao": "dB é a escala do volume. Dica de mergulhador: decibelímetro mede barulho.",
+      "comentarios": [
+        "Mede frequência.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q03-v1",
+      "varianteDe": "fis-acustica-q03",
+      "tema": "Qualidades do som",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "Reconhecemos a voz de um amigo ao telefone, mesmo sem vê-lo, pelo:",
+      "alternativas": [
+        "Volume",
+        "Timbre da voz",
+        "Velocidade do som",
+        "Efeito Doppler",
+        "Eco"
+      ],
+      "correta": 1,
+      "explicacao": "Cada voz tem a sua forma de onda. Dica de mergulhador: timbre identifica quem fala.",
+      "comentarios": [
+        "Varia.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q04-v1",
+      "varianteDe": "fis-acustica-q04",
+      "tema": "Qualidades do som",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Um som de 10 Hz é:",
+      "alternativas": [
+        "Muito agudo e audível",
+        "Uma onda de rádio",
+        "Luz",
+        "Infrassom, inaudível para humanos",
+        "Ultrassom"
+      ],
+      "correta": 3,
+      "explicacao": "Abaixo de 20 Hz. Dica de mergulhador: infra embaixo, ultra em cima.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Seria acima de 20 kHz."
+      ]
+    },
+    {
+      "id": "fis-acustica-q05-v1",
+      "varianteDe": "fis-acustica-q05",
+      "tema": "Qualidades do som",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Um aumento de 30 dB no nível sonoro corresponde a uma intensidade:",
+      "alternativas": [
+        "3 vezes maior",
+        "300 vezes maior",
+        "1.000 vezes maior",
+        "30 vezes maior",
+        "100 vezes maior"
+      ],
+      "correta": 2,
+      "explicacao": "10 × 10 × 10. Dica de mergulhador: três degraus de 10 dB.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "Isso é 20 dB."
+      ]
+    },
+    {
+      "id": "fis-acustica-q06-v1",
+      "varianteDe": "fis-acustica-q06",
+      "tema": "Qualidades do som",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Duas fontes iguais, cada uma de 60 dB, são ligadas juntas. O nível sonoro total fica em cerca de:",
+      "alternativas": [
+        "60 dB",
+        "63 dB",
+        "120 dB",
+        "70 dB",
+        "30 dB"
+      ],
+      "correta": 1,
+      "explicacao": "Dobrar a intensidade soma cerca de 3 dB. Dica de mergulhador: duas fontes iguais, mais 3 dB.",
+      "comentarios": [
+        "A intensidade dobrou.",
+        "",
+        "Decibéis não se somam direto.",
+        "Seria dez vezes mais.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q07-v1",
+      "varianteDe": "fis-acustica-q07",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "Antigamente, para saber se um trem se aproximava, encostava-se o ouvido no trilho porque:",
+      "alternativas": [
+        "O ar é mais rápido",
+        "O som se propaga mais rápido e melhor no metal",
+        "O metal produz som sozinho",
+        "O som não passa no ar",
+        "O trilho é ímã"
+      ],
+      "correta": 1,
+      "explicacao": "Sólidos conduzem melhor o som. Dica de mergulhador: o trilho fala primeiro.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Passa.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q08-v1",
+      "varianteDe": "fis-acustica-q08",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Um morcego emite um ultrassom e ouve o eco de um inseto 0,02 s depois. Com o som a 340 m/s, o inseto está a:",
+      "alternativas": [
+        "6,8 m",
+        "3,4 m",
+        "0,34 m",
+        "340 m",
+        "17 m"
+      ],
+      "correta": 1,
+      "explicacao": "340 × 0,02 ÷ 2. Dica de mergulhador: metade do caminho total.",
+      "comentarios": [
+        "Esqueceu a ida e volta.",
+        "",
+        "Errou a casa.",
+        "Esqueceu o tempo.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-acustica-q09-v1",
+      "varianteDe": "fis-acustica-q09",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "O ultrassom forma imagens do corpo porque:",
+      "alternativas": [
+        "Ele atravessa tudo sem refletir",
+        "As ondas brilham nos ossos",
+        "Ele aquece os órgãos",
+        "As ondas se refletem nas fronteiras entre tecidos diferentes",
+        "Ele usa raios X"
+      ],
+      "correta": 3,
+      "explicacao": "O aparelho mede o tempo dos ecos. Dica de mergulhador: imagem feita de ecos.",
+      "comentarios": [
+        "Não forma imagem assim.",
+        "Não.",
+        "Não é o princípio.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q10-v1",
+      "varianteDe": "fis-acustica-q10",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Numa sala pequena, com paredes a 5 m, o som refletido chega rápido demais e se mistura ao original. Esse efeito chama-se:",
+      "alternativas": [
+        "Eco nítido",
+        "Difração",
+        "Ressonância",
+        "Efeito Doppler",
+        "Reverberação"
+      ],
+      "correta": 4,
+      "explicacao": "O som parece prolongado. Dica de mergulhador: banheiro de azulejo reverbera.",
+      "comentarios": [
+        "Precisaria de mais distância.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q11-v1",
+      "varianteDe": "fis-acustica-q11",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "A sirene de uma ambulância que se afasta parece:",
+      "alternativas": [
+        "Inaudível na hora",
+        "Igual",
+        "Mais aguda",
+        "Mais grave",
+        "Mais rápida"
+      ],
+      "correta": 3,
+      "explicacao": "Menos ondas por segundo chegam ao ouvido. Dica de mergulhador: indo embora, grave.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Isso quando se aproxima.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q12-v1",
+      "varianteDe": "fis-acustica-q12",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Ao esticar mais uma corda de violão, girando a tarraxa, a nota fica:",
+      "alternativas": [
+        "Mais aguda",
+        "Igual",
+        "Sem som",
+        "Com outro timbre só",
+        "Mais grave"
+      ],
+      "correta": 0,
+      "explicacao": "Mais tensão, maior frequência. Dica de mergulhador: afinar é esticar ou soltar.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Muda a altura.",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-acustica-q13-v1",
+      "varianteDe": "fis-acustica-q13",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "A caixa de madeira do violão serve para:",
+      "alternativas": [
+        "Guardar as palhetas",
+        "Esfriar as cordas",
+        "Mudar a nota",
+        "Afinar as cordas",
+        "Amplificar o som por ressonância"
+      ],
+      "correta": 4,
+      "explicacao": "O ar e a madeira vibram junto com as cordas. Dica de mergulhador: caixa é o amplificador do violão.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q14-v1",
+      "varianteDe": "fis-acustica-q14",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Astrônomos notaram que a luz de galáxias distantes chega com frequência menor, deslocada para o vermelho. Isso indica que elas:",
+      "alternativas": [
+        "Estão se afastando de nós",
+        "Estão se aproximando",
+        "Estão paradas",
+        "Não emitem luz",
+        "São mais quentes"
+      ],
+      "correta": 0,
+      "explicacao": "Efeito Doppler da luz. Dica de mergulhador: vermelho é afastando.",
+      "comentarios": [
+        "",
+        "Seria para o azul.",
+        "Não haveria desvio.",
+        "Emitem.",
+        "Não é o efeito."
+      ]
+    },
+    {
+      "id": "fis-acustica-q15-v1",
+      "varianteDe": "fis-acustica-q15",
+      "tema": "Qualidades do som",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "Um som de 1.000 Hz e outro de 250 Hz, com o mesmo volume. O de 1.000 Hz é:",
+      "alternativas": [
+        "De mesmo timbre necessariamente",
+        "Inaudível",
+        "Mais agudo",
+        "Mais grave",
+        "Mais forte"
+      ],
+      "correta": 2,
+      "explicacao": "Frequência maior, som mais agudo. Dica de mergulhador: mais hertz, mais fino.",
+      "comentarios": [
+        "Não.",
+        "É audível.",
+        "",
+        "Ao contrário.",
+        "Volume igual."
+      ]
+    },
+    {
+      "id": "fis-acustica-q16-v1",
+      "varianteDe": "fis-acustica-q16",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "facil",
+      "fase": "fis-acustica",
+      "enunciado": "Golfinhos e morcegos localizam objetos usando:",
+      "alternativas": [
+        "Ecos de sons que eles mesmos emitem",
+        "Calor do corpo",
+        "Luz ultravioleta",
+        "Ondas de rádio",
+        "Raios X"
+      ],
+      "correta": 0,
+      "explicacao": "Ecolocalização. Dica de mergulhador: grita e escuta a volta.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q17-v1",
+      "varianteDe": "fis-acustica-q17",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Uma pessoa vê um martelo bater numa estaca distante e ouve o som 0,5 s depois. Com o som a 340 m/s, a estaca está a:",
+      "alternativas": [
+        "680 m",
+        "17 m",
+        "85 m",
+        "340 m",
+        "170 m"
+      ],
+      "correta": 4,
+      "explicacao": "340 × 0,5. Dica de mergulhador: só ida, sem dividir por dois.",
+      "comentarios": [
+        "Multiplicou.",
+        "Errou a casa.",
+        "Dividiu de novo.",
+        "Usou 1 s.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-acustica-q18-v1",
+      "varianteDe": "fis-acustica-q18",
+      "tema": "Velocidade, eco e ultrassom",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Um aparelho de ultrassom médico usa 2 MHz, e o som nos tecidos tem cerca de 1.540 m/s. O comprimento de onda é cerca de:",
+      "alternativas": [
+        "0,77 mm",
+        "3.080 mm",
+        "77 mm",
+        "0,077 mm",
+        "7,7 mm"
+      ],
+      "correta": 0,
+      "explicacao": "λ = 1.540 ÷ 2 × 10⁶ = 7,7 × 10⁻⁴ m. Dica de mergulhador: mega é 10⁶.",
+      "comentarios": [
+        "",
+        "Multiplicou.",
+        "Errou a casa.",
+        "Errou a casa.",
+        "Errou a casa."
+      ],
+      "revisar": "velocidade média do som nos tecidos moles"
+    },
+    {
+      "id": "fis-acustica-q19-v1",
+      "varianteDe": "fis-acustica-q19",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "medio",
+      "fase": "fis-acustica",
+      "enunciado": "Entre as cordas de um violão, as mais grossas produzem notas:",
+      "alternativas": [
+        "Mais agudas",
+        "Iguais às finas",
+        "Mais graves",
+        "Sem timbre",
+        "Inaudíveis"
+      ],
+      "correta": 2,
+      "explicacao": "Corda mais pesada vibra mais devagar. Dica de mergulhador: corda grossa, som grosso.",
+      "comentarios": [
+        "Ao contrário.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-acustica-q20-v1",
+      "varianteDe": "fis-acustica-q20",
+      "tema": "Efeito Doppler e instrumentos",
+      "dificuldade": "dificil",
+      "fase": "fis-acustica",
+      "enunciado": "Um trem apita a 500 Hz e se aproxima de uma estação. Um passageiro sentado dentro do trem ouve o apito em:",
+      "alternativas": [
+        "1.000 Hz",
+        "0 Hz",
+        "500 Hz, pois não há movimento relativo entre ele e o apito",
+        "Menos que 500 Hz",
+        "Mais que 500 Hz"
+      ],
+      "correta": 2,
+      "explicacao": "O Doppler depende do movimento relativo entre fonte e ouvinte. Dica de mergulhador: no trem, o apito soa normal.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "Isso é para quem está na estação."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q01-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q01",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "A água de uma panela no fogo esquenta por inteiro principalmente por:",
+      "alternativas": [
+        "Ressonância",
+        "Condução apenas",
+        "Convecção",
+        "Reflexão",
+        "Irradiação do Sol"
+      ],
+      "correta": 2,
+      "explicacao": "A água quente sobe e a fria desce. Dica de mergulhador: no líquido, a água se move.",
+      "comentarios": [
+        "Não.",
+        "Não é o principal no líquido.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q02-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q02",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Qual destas radiações causa bronzeamento e queimaduras solares?",
+      "alternativas": [
+        "Micro-ondas",
+        "Ultravioleta",
+        "Ondas de rádio",
+        "Infravermelho apenas",
+        "Luz vermelha"
+      ],
+      "correta": 1,
+      "explicacao": "UV tem energia para afetar as células da pele. Dica de mergulhador: protetor contra UV.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Aquece, mas não bronzeia.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q03-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q03",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "O zero absoluto, 0 K, corresponde a cerca de:",
+      "alternativas": [
+        "−100 °C",
+        "−273 °C",
+        "273 °C",
+        "−32 °C",
+        "0 °C"
+      ],
+      "correta": 1,
+      "explicacao": "K = °C + 273. Dica de mergulhador: abaixo de −273 °C não há.",
+      "comentarios": [
+        "Errou.",
+        "",
+        "Sinal errado.",
+        "Errou.",
+        "É 273 K."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q04-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q04",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Duas pessoas falam com o mesmo volume e a mesma nota, mas reconhecemos quem é quem pelo:",
+      "alternativas": [
+        "Doppler",
+        "Timbre",
+        "Volume",
+        "Eco",
+        "Altura"
+      ],
+      "correta": 1,
+      "explicacao": "Forma de onda própria de cada voz. Dica de mergulhador: timbre é a assinatura.",
+      "comentarios": [
+        "Não.",
+        "",
+        "É igual.",
+        "Não.",
+        "É igual."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q05-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q05",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma onda de 1,5 m se propaga a 300 m/s. Sua frequência é:",
+      "alternativas": [
+        "200 Hz",
+        "301,5 Hz",
+        "450 Hz",
+        "20 Hz",
+        "0,005 Hz"
+      ],
+      "correta": 0,
+      "explicacao": "f = 300 ÷ 1,5. Dica de mergulhador: f = v/λ.",
+      "comentarios": [
+        "",
+        "Somou.",
+        "Multiplicou.",
+        "Errou a casa.",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q06-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q06",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma garrafa de refrigerante esquecida no congelador estoura porque:",
+      "alternativas": [
+        "O gelo é mais denso",
+        "O gás some",
+        "A garrafa encolhe muito",
+        "A água se expande ao congelar",
+        "O líquido evapora"
+      ],
+      "correta": 3,
+      "explicacao": "Ao congelar, a água aumenta de volume. Dica de mergulhador: gelo pede espaço.",
+      "comentarios": [
+        "É menos denso.",
+        "Não.",
+        "Não é o principal.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q07-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q07",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "O radar que mede a velocidade de um carro na estrada usa:",
+      "alternativas": [
+        "O efeito Doppler",
+        "A convecção",
+        "A ressonância",
+        "A difração",
+        "O calor do motor"
+      ],
+      "correta": 0,
+      "explicacao": "A onda refletida volta com outra frequência. Dica de mergulhador: radar ouve a mudança.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q08-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q08",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um aquecedor fornece 4.000 cal a 200 g de água (c = 1 cal/g·°C). A temperatura sobe:",
+      "alternativas": [
+        "20 °C",
+        "200 °C",
+        "4.200 °C",
+        "2 °C",
+        "0,05 °C"
+      ],
+      "correta": 0,
+      "explicacao": "ΔT = 4.000 ÷ 200. Dica de mergulhador: ΔT = Q/(m·c).",
+      "comentarios": [
+        "",
+        "Errou a casa.",
+        "Somou.",
+        "Errou a casa.",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q09-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q09",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma estação de rádio tem ondas de 2 m. Sua frequência é (c = 3 × 10⁸ m/s):",
+      "alternativas": [
+        "1,5 MHz",
+        "600 MHz",
+        "15 MHz",
+        "0,67 MHz",
+        "150 MHz"
+      ],
+      "correta": 4,
+      "explicacao": "3 × 10⁸ ÷ 2 = 1,5 × 10⁸ Hz. Dica de mergulhador: f = c/λ.",
+      "comentarios": [
+        "Errou a casa.",
+        "Multiplicou.",
+        "Errou a casa.",
+        "Inverteu.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q10-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q10",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um gás é comprimido recebendo 500 J de trabalho, e sua energia interna aumenta 500 J. O calor trocado foi:",
+      "alternativas": [
+        "1.000 J",
+        "500 J recebidos",
+        "Zero",
+        "−1.000 J",
+        "500 J perdidos"
+      ],
+      "correta": 2,
+      "explicacao": "Q = τ + ΔU = −500 + 500 = 0. Dica de mergulhador: todo o trabalho virou energia interna, adiabática.",
+      "comentarios": [
+        "Somou.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q11-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q11",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um alpinista grita diante de um paredão e ouve o eco 3 s depois. Com o som a 340 m/s, o paredão está a:",
+      "alternativas": [
+        "255 m",
+        "340 m",
+        "1.020 m",
+        "510 m",
+        "113 m"
+      ],
+      "correta": 3,
+      "explicacao": "340 × 3 ÷ 2. Dica de mergulhador: ida e volta.",
+      "comentarios": [
+        "Dividiu duas vezes.",
+        "Usou 2 s.",
+        "Esqueceu a ida e volta.",
+        "",
+        "Dividiu."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q12-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q12",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Num dia frio, o piso de cerâmica parece mais gelado que o tapete, mesmo à mesma temperatura, porque:",
+      "alternativas": [
+        "A cerâmica conduz melhor o calor e o tira mais rápido do pé",
+        "O tapete produz calor",
+        "O tapete é mais denso",
+        "A cerâmica está mais fria",
+        "A cerâmica irradia frio"
+      ],
+      "correta": 0,
+      "explicacao": "Bons condutores retiram calor depressa. Dica de mergulhador: sensação não é termômetro.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não é o motivo.",
+        "Estão à mesma temperatura.",
+        "Não existe \"frio\" que irradia."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q13-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q13",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um gás a 300 K e 3 atm, em volume constante, é aquecido até 400 K. A pressão final é:",
+      "alternativas": [
+        "2,25 atm",
+        "9 atm",
+        "6 atm",
+        "3 atm",
+        "4 atm"
+      ],
+      "correta": 4,
+      "explicacao": "p/T constante: 3 × 400 ÷ 300. Dica de mergulhador: em kelvin, proporção direta.",
+      "comentarios": [
+        "Inverteu.",
+        "Errou.",
+        "Errou.",
+        "Mudou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q14-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q14",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Coloca-se 50 g de gelo a 0 °C em 200 g de água a 30 °C, sem perdas (L = 80 cal/g; c = 1 cal/g·°C). A temperatura final é:",
+      "alternativas": [
+        "8 °C",
+        "24 °C",
+        "15 °C",
+        "30 °C",
+        "0 °C"
+      ],
+      "correta": 0,
+      "explicacao": "(6.000 − 4.000) ÷ 250 = 8. Dica de mergulhador: calor da água menos o do derretimento.",
+      "comentarios": [
+        "",
+        "Esqueceu o latente.",
+        "Média simples.",
+        "Não.",
+        "Sobra calor."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q15-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q15",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Depois de ferver, para vaporizar toda a água daquela panela (1 kg, L = 540 cal/g) com o mesmo fogão de 500 cal/s, seriam necessários:",
+      "alternativas": [
+        "150 s",
+        "540 s",
+        "270.000 s",
+        "1.080 s",
+        "108 s"
+      ],
+      "correta": 3,
+      "explicacao": "540.000 ÷ 500. Dica de mergulhador: ferver tudo demora bem mais que esquentar.",
+      "comentarios": [
+        "É o aquecimento.",
+        "Esqueceu a massa certa.",
+        "Multiplicou.",
+        "",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q16-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q16",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Um relâmpago é visto, e o trovão chega 6 s depois. Considerando a luz instantânea e o som a 340 m/s, a distância é:",
+      "alternativas": [
+        "57 m",
+        "1.020 m",
+        "340 m",
+        "4.080 m",
+        "2.040 m"
+      ],
+      "correta": 4,
+      "explicacao": "340 × 6. Dica de mergulhador: luz chega na hora, o som atrasa.",
+      "comentarios": [
+        "Dividiu.",
+        "Dividiu por dois sem ser eco.",
+        "Só um segundo.",
+        "Dobrou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q17-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q17",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "A luz passa do ar para o vidro, onde sua velocidade diminui. Nesse caso, o comprimento de onda:",
+      "alternativas": [
+        "Aumenta",
+        "Diminui, e a frequência fica igual",
+        "Aumenta junto com a frequência",
+        "Fica igual, e a frequência diminui",
+        "Some"
+      ],
+      "correta": 1,
+      "explicacao": "λ = v/f com f fixo. Dica de mergulhador: mais lento, onda mais curta.",
+      "comentarios": [
+        "A velocidade caiu.",
+        "",
+        "Não.",
+        "Ao contrário.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q18-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q18",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Deixar a porta da geladeira aberta para esfriar a cozinha não funciona porque:",
+      "alternativas": [
+        "O compressor congela",
+        "O ar da cozinha é mais denso",
+        "O frio escapa e esfria tudo",
+        "A geladeira desliga",
+        "A geladeira joga para a cozinha mais calor do que retira"
+      ],
+      "correta": 4,
+      "explicacao": "O trabalho do motor também vira calor na cozinha. Dica de mergulhador: geladeira aberta esquenta o ambiente.",
+      "comentarios": [
+        "Não.",
+        "Não é o motivo.",
+        "O calor total aumenta.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q19-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q19",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma nota de 440 Hz e outra de 880 Hz soam como a mesma nota em alturas diferentes. A de 880 Hz é:",
+      "alternativas": [
+        "Uma oitava abaixo",
+        "Uma oitava acima, mais aguda",
+        "Outro timbre",
+        "Mais forte",
+        "A mesma frequência"
+      ],
+      "correta": 1,
+      "explicacao": "Dobrar a frequência sobe uma oitava. Dica de mergulhador: dobrou, oitava.",
+      "comentarios": [
+        "Ao contrário.",
+        "",
+        "Não.",
+        "Não necessariamente.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-q20-v1",
+      "varianteDe": "fis-revisao-calor-ondas-q20",
+      "tema": "Revisão: calor e ondas",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-calor-ondas",
+      "enunciado": "Uma ponte de concreto de 200 m (α = 1,2 × 10⁻⁵ °C⁻¹) sofre variação de 40 °C entre o inverno e o verão. A dilatação é:",
+      "alternativas": [
+        "96 m",
+        "9,6 cm",
+        "4,8 cm",
+        "96 cm",
+        "0,96 cm"
+      ],
+      "correta": 1,
+      "explicacao": "200 × 1,2 × 10⁻⁵ × 40 = 0,096 m. Dica de mergulhador: por isso as juntas.",
+      "comentarios": [
+        "Errou muito.",
+        "",
+        "Errou.",
+        "Errou a casa.",
+        "Errou a casa."
+      ]
     }
   ],
   "pares": [
@@ -15094,6 +17202,54 @@
       "tema": "Ondas e espectro eletromagnético",
       "termo": "Taça que quebra",
       "definicao": "Ressonância"
+    },
+    {
+      "id": "fis-acustica-par-01",
+      "tema": "Som e acústica",
+      "termo": "Altura",
+      "definicao": "Frequência"
+    },
+    {
+      "id": "fis-acustica-par-02",
+      "tema": "Som e acústica",
+      "termo": "Intensidade",
+      "definicao": "Amplitude"
+    },
+    {
+      "id": "fis-acustica-par-03",
+      "tema": "Som e acústica",
+      "termo": "Timbre",
+      "definicao": "Forma da onda"
+    },
+    {
+      "id": "fis-acustica-par-04",
+      "tema": "Som e acústica",
+      "termo": "Sirene que muda",
+      "definicao": "Efeito Doppler"
+    },
+    {
+      "id": "fis-revisao-calor-ondas-par-01",
+      "tema": "Revisão do módulo: calor e ondas",
+      "termo": "Condução",
+      "definicao": "Panela de metal"
+    },
+    {
+      "id": "fis-revisao-calor-ondas-par-02",
+      "tema": "Revisão do módulo: calor e ondas",
+      "termo": "Convecção",
+      "definicao": "Água que circula na panela"
+    },
+    {
+      "id": "fis-revisao-calor-ondas-par-03",
+      "tema": "Revisão do módulo: calor e ondas",
+      "termo": "Carnot",
+      "definicao": "Rendimento máximo"
+    },
+    {
+      "id": "fis-revisao-calor-ondas-par-04",
+      "tema": "Revisão do módulo: calor e ondas",
+      "termo": "Sonar",
+      "definicao": "Eco no mar"
     }
   ],
   "verdadeiroFalso": [
@@ -15390,6 +17546,48 @@
       "afirmacao": "Raios gama têm frequência maior que a luz visível.",
       "verdadeira": true,
       "explicacao": "Topo do espectro."
+    },
+    {
+      "id": "fis-acustica-vf-01",
+      "tema": "Som e acústica",
+      "afirmacao": "Na Física, som alto é som agudo.",
+      "verdadeira": true,
+      "explicacao": "Altura é frequência."
+    },
+    {
+      "id": "fis-acustica-vf-02",
+      "tema": "Som e acústica",
+      "afirmacao": "O som é mais rápido no ar do que na água.",
+      "verdadeira": false,
+      "explicacao": "É mais rápido na água."
+    },
+    {
+      "id": "fis-acustica-vf-03",
+      "tema": "Som e acústica",
+      "afirmacao": "O ultrassom não usa radiação ionizante.",
+      "verdadeira": true,
+      "explicacao": "É onda mecânica."
+    },
+    {
+      "id": "fis-revisao-calor-ondas-vf-01",
+      "tema": "Revisão do módulo: calor e ondas",
+      "afirmacao": "Kelvin nunca é negativo.",
+      "verdadeira": true,
+      "explicacao": "Começa no zero absoluto."
+    },
+    {
+      "id": "fis-revisao-calor-ondas-vf-02",
+      "tema": "Revisão do módulo: calor e ondas",
+      "afirmacao": "O som muda de frequência ao entrar na água.",
+      "verdadeira": false,
+      "explicacao": "Muda velocidade e λ."
+    },
+    {
+      "id": "fis-revisao-calor-ondas-vf-03",
+      "tema": "Revisão do módulo: calor e ondas",
+      "afirmacao": "Uma máquina real rende menos que a de Carnot.",
+      "verdadeira": true,
+      "explicacao": "Carnot é o limite."
     }
   ],
   "sequencias": [
@@ -15569,6 +17767,30 @@
         "Gama"
       ],
       "explicacao": "Mais frequência, mais energia."
+    },
+    {
+      "id": "fis-acustica-seq-01",
+      "tema": "Som e acústica",
+      "titulo": "Do grave ao agudo",
+      "itens": [
+        "Infrassom",
+        "Graves audíveis",
+        "Agudos audíveis",
+        "Ultrassom"
+      ],
+      "explicacao": "Frequência crescente."
+    },
+    {
+      "id": "fis-revisao-calor-ondas-seq-01",
+      "tema": "Revisão do módulo: calor e ondas",
+      "titulo": "Gelo na água morna",
+      "itens": [
+        "Gelo recebe calor",
+        "Gelo derrete a 0 °C",
+        "Água fria aquece",
+        "Mistura chega ao equilíbrio"
+      ],
+      "explicacao": "O latente vem antes."
     }
   ],
   "adivinhas": [
@@ -15766,6 +17988,34 @@
         "Frequência",
         "Oscilações por segundo",
         "Rádio"
+      ]
+    },
+    {
+      "id": "fis-acustica-adv-01",
+      "tema": "Som e acústica",
+      "dificuldade": "medio",
+      "resposta": "Sonar",
+      "aceitas": [
+        "sonar"
+      ],
+      "dicas": [
+        "Navio",
+        "Eco",
+        "Profundidade"
+      ]
+    },
+    {
+      "id": "fis-revisao-calor-ondas-adv-01",
+      "tema": "Revisão do módulo: calor e ondas",
+      "dificuldade": "medio",
+      "resposta": "Decibel",
+      "aceitas": [
+        "decibel, decibeis, db"
+      ],
+      "dicas": [
+        "Volume",
+        "Escala do barulho",
+        "Ouvido"
       ]
     }
   ],
@@ -16105,6 +18355,54 @@
       "tema": "Física",
       "palavra": "Taça",
       "dica": "Pode quebrar por ressonância"
+    },
+    {
+      "id": "fis-acustica-pal-01",
+      "tema": "Física",
+      "palavra": "Sirene",
+      "dica": "Muda de nota ao passar"
+    },
+    {
+      "id": "fis-acustica-pal-02",
+      "tema": "Física",
+      "palavra": "Violão",
+      "dica": "Caixa que amplifica as cordas"
+    },
+    {
+      "id": "fis-acustica-pal-03",
+      "tema": "Física",
+      "palavra": "Morcego",
+      "dica": "Caça pelo eco"
+    },
+    {
+      "id": "fis-acustica-pal-04",
+      "tema": "Física",
+      "palavra": "Timbre",
+      "dica": "Distingue piano de flauta"
+    },
+    {
+      "id": "fis-revisao-calor-ondas-pal-01",
+      "tema": "Física",
+      "palavra": "Kelvin",
+      "dica": "Escala absoluta de temperatura"
+    },
+    {
+      "id": "fis-revisao-calor-ondas-pal-02",
+      "tema": "Física",
+      "palavra": "Fone",
+      "dica": "Pode cancelar ruído por interferência"
+    },
+    {
+      "id": "fis-revisao-calor-ondas-pal-03",
+      "tema": "Física",
+      "palavra": "Fogão",
+      "dica": "Fornece calor à panela"
+    },
+    {
+      "id": "fis-revisao-calor-ondas-pal-04",
+      "tema": "Física",
+      "palavra": "Ruído",
+      "dica": "Som indesejado do trânsito"
     }
   ],
   "fichas": {
@@ -16637,6 +18935,62 @@
       "pegadinhas": [
         "Confundir eco com difração.",
         "Achar que o micro-ondas deixa a comida radioativa."
+      ]
+    },
+    "Qualidades do som": {
+      "texto": [
+        "Altura = frequência (agudo/grave); intensidade = amplitude (volume, em dB); timbre = forma da onda.",
+        "Audível: 20 Hz a 20 kHz. Cada 10 dB multiplica a intensidade por 10; longos períodos acima de cerca de 85 dB lesam o ouvido."
+      ],
+      "pontos": [
+        "Altura é frequência, não volume.",
+        "Decibel soma, intensidade multiplica."
+      ],
+      "pegadinhas": [
+        "Chamar volume de \"altura\".",
+        "Somar decibéis diretamente."
+      ]
+    },
+    "Velocidade, eco e ultrassom": {
+      "texto": [
+        "Som: mais rápido em sólidos e líquidos; ar 340 m/s, água 1.500 m/s. Eco precisa de cerca de 17 m; abaixo disso, reverberação.",
+        "Sonar e morcego medem tempo de ida e volta. Ultrassom forma imagens por ecos, sem radiação ionizante."
+      ],
+      "pontos": [
+        "Eco é ida e volta.",
+        "Ouvido no trilho ouve antes."
+      ],
+      "pegadinhas": [
+        "Esquecer de dividir o tempo por dois.",
+        "Achar que ultrassom usa raio X."
+      ]
+    },
+    "Efeito Doppler e instrumentos": {
+      "texto": [
+        "Aproximação: frequência percebida maior (agudo); afastamento: menor (grave). Vale para som, radar e luz.",
+        "Corda mais curta, mais esticada ou mais fina dá nota mais aguda; a caixa amplifica por ressonância."
+      ],
+      "pontos": [
+        "Chegando, agudo; indo, grave.",
+        "Corda curta, nota aguda."
+      ],
+      "pegadinhas": [
+        "Achar que o Doppler muda a velocidade do som.",
+        "Confundir nota aguda com volume alto."
+      ]
+    },
+    "Revisão: calor e ondas": {
+      "texto": [
+        "Calor: m·c·ΔT, m·L, propagação; gases em kelvin; Q = τ + ΔU; Carnot 1 − T₂/T₁.",
+        "Ondas: v = λ·f, f fixa na troca de meio, espectro por frequência; som: altura, intensidade, timbre, eco, ultrassom e Doppler."
+      ],
+      "pontos": [
+        "Kelvin para gases, hertz para ondas.",
+        "Na mistura com gelo, primeiro derrete."
+      ],
+      "pegadinhas": [
+        "Esquecer o calor latente nas misturas com gelo.",
+        "Dividir por dois quando não há eco."
       ]
     }
   }
