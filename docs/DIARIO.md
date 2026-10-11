@@ -5,6 +5,14 @@
 
 ---
 
+## 2026-10-11 · Enem por matéria, Onda 7: Enem · Física completo + comentários explicativos em todos os cursos
+- **Feito:** `enem-fisica` com 22 aulas em 4 módulos (movimento e forças; energia, fluidos e gravitação; calor e ondas; óptica, eletricidade e magnetismo), 440 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 440 variantes, 58 fichas, artigo completo e blocos para todos os jogos. Parecer das fontes: o de Ciências da Natureza (`docs/validacoes/enem-natureza-2026-10-10.md`). Caderno novo do curso.
+- **Correção em todos os cursos Enem:** no teste do navegador apareceram muitas alternativas erradas com comentário vazio ("Não.", "Errou."), sobretudo em Física, Geografia e História (e em menor número em Química, Matemática, Biologia, Literatura e Português). Todas foram reescritas com o motivo do erro (a conta certa ou o conceito trocado), sem mudar enunciados, alternativas, gabaritos nem ids. O `conferir-trilha.mjs` ganhou um aviso para comentário vazio, para isso não voltar.
+- **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos em todos os cursos; autocheck de originalidade da Física sem trechos copiados; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.
+- **Decisões:** Física 100% autoral, com o cotidiano brasileiro (conta de luz, chuveiro, usinas); todas as contas conferidas pelo construtor; 8 itens marcados `revisar`.
+- **Pendências:** Mergulho Triplo (cerca de US$ 33 para questões e variantes; só com aprovação do admin); revisão de um professor de Física.
+- **Próximo passo:** Onda 8 (Redação, 40 oficinas), com o parecer das fontes antes.
+
 ## 2026-10-10 · Enem por matéria, Onda 6: Enem · História completo
 - **Feito:** `enem-historia` com 25 aulas em 5 módulos (fontes, tempo e o mundo antigo e medieval; Brasil Colônia; mundo moderno; Brasil Império e Primeira República; século XX), 500 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 500 variantes, 65 fichas, artigo completo e blocos para todos os jogos. Parecer das fontes: o de Ciências Humanas (`docs/validacoes/enem-humanas-2026-10-10.md`). Caderno novo do curso.
 - **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos (contas de datas e porcentagens conferidas pelo construtor); autocheck de originalidade sem trechos copiados; navegador (celular e computador) com o mapa por módulos, o artigo e o Mergulho de aulas do começo, do meio e do fim.

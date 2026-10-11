@@ -60,6 +60,8 @@ for (const q of [...t.questoes, ...(t.variantes || [])]) {
   if (q.comentarios !== undefined) {
     if (!Array.isArray(q.comentarios) || q.comentarios.length !== q.alternativas.length) erros.push(`${q.id}: "comentarios" precisa ter um item por alternativa`);
     else if (q.comentarios.some((c, i) => i !== q.correta && !String(c || '').trim())) erros.push(`${q.id}: alternativa errada sem comentário`);
+    // comentário que não explica nada ("Não.", "Errou.") não conta como comentário (padrão Georgia)
+    else if (q.comentarios.some((c, i) => i !== q.correta && /^(n[ãa]o|errou|errou a conta|n[ãa]o [ée]|errado|incorreto)\.?$/i.test(String(c).trim()))) avisos.push(`${q.id}: comentário vazio ("Não.", "Errou.") numa alternativa errada; diga por que ela está errada`);
   } else semComentarios++;
   if (!/Dica de mergulhador:/i.test(q.explicacao || '')) semDica++;
 }
