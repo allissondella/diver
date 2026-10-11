@@ -684,6 +684,342 @@
           "segunda lei de newton"
         ]
       }
+    },
+    {
+      "id": "fis-trabalho-energia",
+      "nome": "Aula 7 · Trabalho, potência e energia",
+      "modulo": "Módulo 2 · Energia, fluidos e gravitação",
+      "descricao": "Módulo 2 · aula 1 de 3 · 35 min · treina as habilidades H17, H20 e H21",
+      "habilidades": [
+        "H17",
+        "H20",
+        "H21"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Trabalho de uma força",
+            "texto": [
+              "Em Física, **trabalho** é a energia transferida por uma força quando ela desloca um corpo: τ = F·d·cos θ, medido em joule (J). Se a força tem a mesma direção e sentido do deslocamento, τ = F·d; se é contrária, o trabalho é negativo, como o do atrito que freia; se é perpendicular, o trabalho é nulo, como o do peso de uma mala carregada na horizontal ou o da força centrípeta. Segurar um peso parado cansa o corpo, mas não realiza trabalho mecânico sobre o objeto, porque não há deslocamento. O trabalho do peso depende só do desnível: τ = m·g·h, seja pela escada, seja pela rampa."
+            ]
+          },
+          {
+            "titulo": "Potência e rendimento",
+            "texto": [
+              "A **potência** mede a rapidez com que se realiza trabalho ou se transfere energia: P = τ/Δt, em watt (W = J/s). Subir a mesma escada correndo exige mais potência que subir devagar, embora o trabalho seja igual. O cavalo-vapor (cv) vale cerca de 735 W, e o quilowatt-hora (kWh), usado na conta de luz, é energia: 1 kWh = 3,6 × 10⁶ J. Nenhuma máquina aproveita toda a energia que recebe: parte vira calor e ruído. O **rendimento** é a razão entre a potência útil e a potência total, η = P útil/P total, sempre menor que 1 (ou 100%). Um motor que recebe 1.000 W e entrega 800 W tem rendimento de 80%."
+            ]
+          },
+          {
+            "titulo": "Energia cinética e potencial",
+            "texto": [
+              "A energia cinética é a energia do movimento: Ec = m·v²/2. Como depende do quadrado da velocidade, um carro a 80 km/h tem quatro vezes a energia cinética que tinha a 40 km/h, o que explica a gravidade das batidas em alta velocidade. O teorema da energia cinética diz que o trabalho da força resultante é igual à variação da energia cinética. A energia potencial gravitacional é a energia guardada pela altura: Ep = m·g·h, medida a partir de um nível de referência. A energia potencial elástica fica guardada numa mola deformada: Ee = k·x²/2."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Antes de calcular, identifique a força e o deslocamento e veja o ângulo entre eles. Nas questões de potência, confira se a pergunta quer energia (J ou kWh) ou rapidez (W)."
+            ]
+          }
+        ],
+        "introducao": "Energia é o tema que mais atravessa a prova de Natureza: aparece em motores, usinas, elevadores e na conta de luz. Esta aula define trabalho, potência e rendimento e apresenta as formas mecânicas de energia, a cinética e a potencial.",
+        "mapaMental": {
+          "centro": "Energia mecânica",
+          "ramos": [
+            {
+              "titulo": "Força e deslocamento",
+              "itens": [
+                "τ = F·d·cos θ",
+                "força perpendicular não trabalha",
+                "atrito negativo"
+              ]
+            },
+            {
+              "titulo": "Rapidez",
+              "itens": [
+                "watt",
+                "cavalo-vapor",
+                "quilowatt-hora é energia"
+              ]
+            },
+            {
+              "titulo": "Cinética",
+              "itens": [
+                "m·v²/2",
+                "velocidade em dobro, quatro vezes mais"
+              ]
+            },
+            {
+              "titulo": "Armazenada",
+              "itens": [
+                "altura m·g·h",
+                "mola k·x²/2"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🏋️",
+            "conceito": "Mala carregada no plano",
+            "liga": "trabalho",
+            "porque": "Força perpendicular ao deslocamento não trabalha."
+          },
+          {
+            "icone": "🏃",
+            "conceito": "Subir correndo cansa mais",
+            "liga": "potencia",
+            "porque": "Mesmo trabalho em menos tempo."
+          },
+          {
+            "icone": "🔥",
+            "conceito": "Motor quente desperdiça",
+            "liga": "rendimento",
+            "porque": "Útil sobre total, sempre menor que 100%."
+          }
+        ],
+        "pontos": [
+          "**Trabalho** = F·d·cos θ; perpendicular dá zero.",
+          "**Potência** = τ/Δt, em watt.",
+          "1 kWh = 3,6 × 10⁶ J.",
+          "**Rendimento** = útil ÷ total.",
+          "Ec = m·v²/2; Ep = m·g·h; Ee = k·x²/2.",
+          "Trabalho da resultante = variação da energia cinética."
+        ],
+        "perolas": [
+          "Cansar não é o mesmo que transferir energia."
+        ],
+        "reforcar": [
+          "trabalho",
+          "potencia",
+          "rendimento"
+        ]
+      }
+    },
+    {
+      "id": "fis-conservacao-energia",
+      "nome": "Aula 8 · Conservação da energia, usinas e colisões",
+      "modulo": "Módulo 2 · Energia, fluidos e gravitação",
+      "descricao": "Módulo 2 · aula 2 de 3 · 35 min · treina as habilidades H21, H22 e H23",
+      "habilidades": [
+        "H21",
+        "H22",
+        "H23"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Conservação da energia mecânica",
+            "texto": [
+              "A **energia mecânica** é a soma das energias cinética e potencial: Em = Ec + Ep. Sem atrito e sem resistência do ar, ela se conserva: o que um corpo perde em altura ganha em velocidade, e vice-versa. Numa montanha-russa sem atrito, o carrinho que desce de 20 m chega embaixo a 20 m/s, porque m·g·h = m·v²/2 e a massa se cancela: v = √(2gh). Num pêndulo, a energia vai e volta entre potencial, no ponto mais alto, e cinética, no ponto mais baixo. Quando há atrito, parte da energia mecânica vira calor; a energia total continua conservada, mas a mecânica diminui."
+            ]
+          },
+          {
+            "titulo": "Fontes de energia e usinas",
+            "texto": [
+              "Toda usina transforma uma forma de energia em energia elétrica, quase sempre girando uma turbina ligada a um gerador. Na **usina hidrelétrica**, a água represada tem energia potencial gravitacional, que vira cinética na queda e gira a turbina; é a principal fonte de eletricidade do Brasil, renovável, mas alaga áreas e afeta rios e comunidades. A termelétrica queima carvão, óleo, gás ou biomassa para ferver água e mover a turbina com vapor; é acionada nas secas, mas emite gases. A nuclear também aquece água, com a fissão do urânio. A eólica usa o vento; a solar fotovoltaica converte luz diretamente em eletricidade, sem turbina. Nenhuma conversão é perfeita: há perdas em calor."
+            ]
+          },
+          {
+            "titulo": "Quantidade de movimento e colisões",
+            "texto": [
+              "A **quantidade de movimento** (ou momento linear) é Q = m·v, uma grandeza vetorial. O impulso de uma força é I = F·Δt e é igual à variação da quantidade de movimento. Num sistema isolado, como numa colisão ou numa explosão, a quantidade de movimento total se conserva. Se um carrinho de 2 kg a 3 m/s bate e gruda num de 1 kg parado, os dois seguem a 2 m/s. Numa colisão perfeitamente inelástica, os corpos grudam e a energia cinética diminui; numa elástica, ela se conserva."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Antes da conta, escreva a energia no início e no fim. Nas colisões, some as quantidades de movimento antes e depois, com sinal."
+            ]
+          }
+        ],
+        "introducao": "A energia não se cria nem se destrói: muda de forma. Essa ideia explica a montanha-russa, a usina que acende a luz da sua casa e até o que acontece numa batida. Esta aula trata da conservação da energia, das fontes de eletricidade e da quantidade de movimento.",
+        "mapaMental": {
+          "centro": "Energia que muda de forma",
+          "ramos": [
+            {
+              "titulo": "Sem atrito",
+              "itens": [
+                "perde altura, ganha velocidade",
+                "v = √(2gh)",
+                "pêndulo vai e volta"
+              ]
+            },
+            {
+              "titulo": "Com atrito",
+              "itens": [
+                "parte vira calor",
+                "energia total conservada"
+              ]
+            },
+            {
+              "titulo": "Outras usinas",
+              "itens": [
+                "termelétrica a vapor",
+                "nuclear com urânio",
+                "eólica e solar"
+              ]
+            },
+            {
+              "titulo": "Impulso",
+              "itens": [
+                "F·Δt",
+                "variação de Q",
+                "colisão em que os corpos grudam"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🎢",
+            "conceito": "Montanha-russa sem atrito",
+            "liga": "energia mecanica",
+            "porque": "Cinética + potencial, constante."
+          },
+          {
+            "icone": "💧",
+            "conceito": "Água que cai e gira a turbina",
+            "liga": "usina hidreletrica",
+            "porque": "Potencial da represa vira eletricidade."
+          },
+          {
+            "icone": "🎱",
+            "conceito": "Bola de bilhar que para e passa o movimento",
+            "liga": "quantidade de movimento",
+            "porque": "m·v se conserva na batida."
+          }
+        ],
+        "pontos": [
+          "**Energia mecânica** = cinética + potencial; sem atrito, constante.",
+          "Com atrito, parte da mecânica vira calor.",
+          "**Usina hidrelétrica**: potencial da água → cinética → elétrica.",
+          "Termelétrica e nuclear aquecem água; solar fotovoltaica não usa turbina.",
+          "**Quantidade de movimento** Q = m·v; impulso F·Δt = ΔQ.",
+          "Em colisões e explosões, Q total se conserva."
+        ],
+        "perolas": [
+          "Energia não some: troca de roupa."
+        ],
+        "reforcar": [
+          "energia mecanica",
+          "usina hidreletrica",
+          "quantidade de movimento"
+        ]
+      }
+    },
+    {
+      "id": "fis-hidrostatica",
+      "nome": "Aula 9 · Hidrostática: densidade, pressão e empuxo",
+      "modulo": "Módulo 2 · Energia, fluidos e gravitação",
+      "descricao": "Módulo 2 · aula 3 de 3 · 35 min · treina as habilidades H17, H20 e H21",
+      "habilidades": [
+        "H17",
+        "H20",
+        "H21"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Densidade e pressão",
+            "texto": [
+              "A **densidade** é a massa por unidade de volume: d = m/V. A água tem cerca de 1 g/cm³, ou 1.000 kg/m³; o óleo, menos, e por isso fica por cima; o ferro, cerca de 7,9 g/cm³. Um corpo maciço afunda num líquido se for mais denso que ele e flutua se for menos denso. A pressão é a força dividida pela área em que ela se distribui: p = F/A, em pascal (Pa = N/m²). A mesma força concentrada numa área pequena gera pressão grande: por isso a faca afiada corta, o salto fino afunda na areia e o esqui ou a raquete de neve espalham o peso e evitam que a pessoa afunde."
+            ]
+          },
+          {
+            "titulo": "Pressão nos líquidos e no ar",
+            "texto": [
+              "Dentro de um líquido, a pressão aumenta com a profundidade: p = p₀ + d·g·h, a lei de Stevin. Na água, a cada 10 m de profundidade a pressão sobe cerca de 1 atmosfera; por isso o mergulhador sente o ouvido apertar e precisa compensar. A pressão não depende do formato do recipiente, só da profundidade, e pontos na mesma altura de um líquido em repouso têm a mesma pressão, o princípio dos vasos comunicantes, que leva água à caixa-d'água. A **pressão atmosférica** é o peso do ar sobre nós: vale cerca de 10⁵ Pa ao nível do mar e diminui com a altitude, o que explica a água fervendo abaixo de 100 °C nas montanhas e o canudinho que funciona porque o ar empurra o líquido. Pelo princípio de Pascal, um acréscimo de pressão num líquido se transmite a todos os pontos: na prensa hidráulica e no freio do carro, uma força pequena num êmbolo estreito vira força grande no largo."
+            ]
+          },
+          {
+            "titulo": "Empuxo",
+            "texto": [
+              "Todo corpo mergulhado num fluido recebe uma força vertical para cima, o **empuxo**, igual ao peso do fluido deslocado: E = d(líquido)·V(submerso)·g, o princípio de Arquimedes. O navio de aço flutua porque seu casco oco desloca muita água, e a densidade média do conjunto é menor que a dela. O submarino afunda ou sobe enchendo ou esvaziando tanques de lastro. Um corpo dentro da água parece mais leve: seu peso aparente é o peso menos o empuxo."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Confira as unidades: densidade em kg/m³ para usar no SI, área em m². Nas questões de flutuação, compare densidades antes de calcular."
+            ]
+          }
+        ],
+        "introducao": "Por que um navio de aço flutua e um prego afunda? Por que o ouvido dói no fundo da piscina e a faca afiada corta melhor? A hidrostática estuda os fluidos em repouso e responde a essas perguntas com três ideias: densidade, pressão e empuxo. Para um Diver, é a física do mergulho.",
+        "mapaMental": {
+          "centro": "Fluidos em repouso",
+          "ramos": [
+            {
+              "titulo": "Pressão",
+              "itens": [
+                "força sobre área",
+                "faca afiada",
+                "raquete de neve"
+              ]
+            },
+            {
+              "titulo": "Profundidade",
+              "itens": [
+                "p₀ + d·g·h",
+                "1 atm a cada 10 m",
+                "vasos comunicantes"
+              ]
+            },
+            {
+              "titulo": "Pascal",
+              "itens": [
+                "prensa hidráulica",
+                "freio do carro",
+                "força pequena vira grande"
+              ]
+            },
+            {
+              "titulo": "Arquimedes",
+              "itens": [
+                "peso do fluido deslocado",
+                "navio de casco oco",
+                "peso aparente"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🛢️",
+            "conceito": "Óleo boiando na água",
+            "liga": "densidade",
+            "porque": "Menos denso fica por cima."
+          },
+          {
+            "icone": "⛰️",
+            "conceito": "Água fervendo antes no alto da serra",
+            "liga": "pressao atmosferica",
+            "porque": "Menos ar em cima, menos pressão."
+          },
+          {
+            "icone": "🛳️",
+            "conceito": "Navio de aço que flutua",
+            "liga": "empuxo",
+            "porque": "Peso da água deslocada empurra para cima."
+          }
+        ],
+        "pontos": [
+          "**Densidade** = m/V; a água tem 1 g/cm³.",
+          "Pressão = F/A: área pequena, pressão grande.",
+          "Stevin: p = p₀ + d·g·h; +1 atm a cada 10 m de água.",
+          "**Pressão atmosférica** cai com a altitude.",
+          "Pascal: prensa hidráulica multiplica a força.",
+          "**Empuxo** = peso do líquido deslocado."
+        ],
+        "perolas": [
+          "Para o mergulhador, cada 10 m é uma atmosfera a mais."
+        ],
+        "reforcar": [
+          "densidade",
+          "pressao atmosferica",
+          "empuxo"
+        ]
+      }
     }
   ],
   "questoes": [
@@ -3445,6 +3781,1387 @@
         "Esqueceu a massa.",
         "",
         "Subtraiu."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q01",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma força de 50 N empurra uma caixa por 4 m, na mesma direção e sentido do deslocamento. O trabalho é:",
+      "alternativas": [
+        "46 J",
+        "200 J",
+        "12,5 J",
+        "54 J",
+        "2.000 J"
+      ],
+      "correta": 1,
+      "explicacao": "τ = F·d = 50 × 4. Dica de mergulhador: força vezes deslocamento.",
+      "comentarios": [
+        "Subtraiu.",
+        "",
+        "Dividiu.",
+        "Somou.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q02",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "A unidade de trabalho no SI é:",
+      "alternativas": [
+        "Quilograma",
+        "Newton",
+        "Watt",
+        "Pascal",
+        "Joule"
+      ],
+      "correta": 4,
+      "explicacao": "Trabalho é energia transferida. Dica de mergulhador: trabalho e energia, mesma unidade.",
+      "comentarios": [
+        "É massa.",
+        "É força.",
+        "É potência.",
+        "É pressão.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q03",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma pessoa segura uma mochila parada no alto por 10 minutos. O trabalho mecânico que ela realiza sobre a mochila é:",
+      "alternativas": [
+        "Igual ao peso",
+        "Nulo",
+        "Igual à potência",
+        "Negativo",
+        "Muito grande"
+      ],
+      "correta": 1,
+      "explicacao": "Sem deslocamento, sem trabalho. Dica de mergulhador: cansar não é trabalhar, para a Física.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não.",
+        "Não há deslocamento."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q04",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma pessoa carrega uma mala andando em linha reta no plano horizontal, com velocidade constante. O trabalho do peso da mala é:",
+      "alternativas": [
+        "Nulo, porque o peso é perpendicular ao deslocamento",
+        "Máximo",
+        "Positivo",
+        "Igual a m·g·d",
+        "Negativo"
+      ],
+      "correta": 0,
+      "explicacao": "cos 90° = 0. Dica de mergulhador: força em ângulo reto não trabalha.",
+      "comentarios": [
+        "",
+        "Não.",
+        "O peso é vertical.",
+        "O ângulo é 90°.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q05",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "O trabalho da força de atrito sobre um bloco que desliza e para é:",
+      "alternativas": [
+        "Nulo",
+        "Negativo",
+        "Positivo",
+        "Infinito",
+        "Igual ao peso"
+      ],
+      "correta": 1,
+      "explicacao": "A força tem sentido contrário ao deslocamento. Dica de mergulhador: força contra, trabalho negativo.",
+      "comentarios": [
+        "Há deslocamento.",
+        "",
+        "O atrito se opõe ao movimento.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q06",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma caixa de 20 kg é levada do chão até 3 m de altura, uma vez pela escada e outra por uma rampa (g = 10 m/s²). O trabalho do peso, em módulo, é:",
+      "alternativas": [
+        "600 J nos dois caminhos",
+        "Maior pela escada",
+        "Maior pela rampa",
+        "60 J",
+        "6.000 J"
+      ],
+      "correta": 0,
+      "explicacao": "m·g·h = 20 × 10 × 3. Dica de mergulhador: para o peso, só a altura importa.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Depende só do desnível.",
+        "Esqueceu o g.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q07",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma força de 100 N puxa um trenó formando 60° com o deslocamento de 10 m (cos 60° = 0,5). O trabalho é:",
+      "alternativas": [
+        "1.000 J",
+        "0 J",
+        "50 J",
+        "600 J",
+        "500 J"
+      ],
+      "correta": 4,
+      "explicacao": "τ = 100 × 10 × 0,5. Dica de mergulhador: só a parte da força na direção do caminho trabalha.",
+      "comentarios": [
+        "Esqueceu o ângulo.",
+        "Não é perpendicular.",
+        "Errou.",
+        "Somou o ângulo.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q08",
+      "tema": "Potência e rendimento",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "A unidade de potência no SI é:",
+      "alternativas": [
+        "Quilowatt-hora",
+        "Volt",
+        "Newton",
+        "Watt",
+        "Joule"
+      ],
+      "correta": 3,
+      "explicacao": "W = J/s. Dica de mergulhador: potência é joule por segundo.",
+      "comentarios": [
+        "É energia.",
+        "É tensão.",
+        "É força.",
+        "",
+        "É energia."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q09",
+      "tema": "Potência e rendimento",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um motor realiza 6.000 J de trabalho em 30 s. Sua potência é:",
+      "alternativas": [
+        "180.000 W",
+        "2.000 W",
+        "20 W",
+        "200 W",
+        "6.030 W"
+      ],
+      "correta": 3,
+      "explicacao": "P = 6.000 ÷ 30. Dica de mergulhador: trabalho dividido pelo tempo.",
+      "comentarios": [
+        "Multiplicou.",
+        "Errou a casa.",
+        "Errou a casa.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q10",
+      "tema": "Potência e rendimento",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Duas pessoas iguais sobem a mesma escada, uma correndo em 10 s e outra andando em 20 s. Comparando as duas:",
+      "alternativas": [
+        "O trabalho de quem corre é o dobro",
+        "A potência é igual",
+        "Quem anda tem mais potência",
+        "O trabalho é igual, e a potência de quem corre é o dobro",
+        "Ninguém realiza trabalho"
+      ],
+      "correta": 3,
+      "explicacao": "Mesmo m·g·h, tempo pela metade. Dica de mergulhador: mesma escada, quem corre gasta energia mais depressa.",
+      "comentarios": [
+        "O desnível é o mesmo.",
+        "O tempo é diferente.",
+        "Ao contrário.",
+        "",
+        "Há subida."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q11",
+      "tema": "Potência e rendimento",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um motor recebe 1.000 W e entrega 800 W úteis. Seu rendimento é:",
+      "alternativas": [
+        "125%",
+        "20%",
+        "100%",
+        "80%",
+        "800%"
+      ],
+      "correta": 3,
+      "explicacao": "η = 800 ÷ 1.000. Dica de mergulhador: útil sobre total.",
+      "comentarios": [
+        "Inverteu.",
+        "É a perda.",
+        "Nenhuma máquina real chega lá.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q12",
+      "tema": "Potência e rendimento",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um chuveiro de 5.000 W fica ligado 30 minutos por dia. Em 30 dias, consome:",
+      "alternativas": [
+        "150 kWh",
+        "7,5 kWh",
+        "4.500 kWh",
+        "75 kWh",
+        "2,5 kWh"
+      ],
+      "correta": 3,
+      "explicacao": "5 kW × 0,5 h × 30 = 75 kWh. Dica de mergulhador: kW vezes horas vezes dias.",
+      "comentarios": [
+        "Usou uma hora por dia.",
+        "Errou a casa.",
+        "Não converteu os minutos.",
+        "",
+        "É um dia só."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q13",
+      "tema": "Potência e rendimento",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um motor de rendimento 50% ergue 200 kg a 10 m de altura em 20 s (g = 10 m/s²). A potência total que ele consome é:",
+      "alternativas": [
+        "500 W",
+        "4.000 W",
+        "20.000 W",
+        "2.000 W",
+        "1.000 W"
+      ],
+      "correta": 3,
+      "explicacao": "Útil: 20.000 J ÷ 20 s = 1.000 W; total = 1.000 ÷ 0,5. Dica de mergulhador: total = útil ÷ rendimento.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "Esqueceu o tempo.",
+        "",
+        "É a potência útil."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q14",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um corpo de 2 kg a 3 m/s tem energia cinética de:",
+      "alternativas": [
+        "12 J",
+        "18 J",
+        "9 J",
+        "6 J",
+        "3 J"
+      ],
+      "correta": 2,
+      "explicacao": "Ec = 2 × 9 ÷ 2. Dica de mergulhador: metade de m vezes v².",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu o meio.",
+        "",
+        "Esqueceu o quadrado.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q15",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Se a velocidade de um carro passa de 40 km/h para 80 km/h, sua energia cinética fica:",
+      "alternativas": [
+        "Pela metade",
+        "Oito vezes maior",
+        "Quatro vezes maior",
+        "Duas vezes maior",
+        "Igual"
+      ],
+      "correta": 2,
+      "explicacao": "Ec depende do quadrado da velocidade. Dica de mergulhador: dobro da velocidade, quádruplo da energia.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Depende de v².",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q16",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um vaso de 2 kg está numa varanda a 10 m do chão (g = 10 m/s²). Sua energia potencial gravitacional em relação ao chão é:",
+      "alternativas": [
+        "2.000 J",
+        "100 J",
+        "200 J",
+        "22 J",
+        "20 J"
+      ],
+      "correta": 2,
+      "explicacao": "Ep = 2 × 10 × 10. Dica de mergulhador: m·g·h.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou.",
+        "",
+        "Somou.",
+        "Esqueceu o g."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q17",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um carro de 1.000 kg vai de 10 m/s a 20 m/s. O trabalho da força resultante foi:",
+      "alternativas": [
+        "200.000 J",
+        "100.000 J",
+        "10.000 J",
+        "50.000 J",
+        "150.000 J"
+      ],
+      "correta": 4,
+      "explicacao": "ΔEc = 1.000 × (400 − 100) ÷ 2. Dica de mergulhador: trabalho da resultante é a variação da cinética.",
+      "comentarios": [
+        "Usou só a final.",
+        "Subtraiu antes de elevar ao quadrado.",
+        "Errou.",
+        "Usou só a velocidade inicial.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q18",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "A energia que um corpo tem por estar em movimento chama-se:",
+      "alternativas": [
+        "Energia potencial gravitacional",
+        "Energia química",
+        "Energia cinética",
+        "Energia nuclear",
+        "Energia elástica"
+      ],
+      "correta": 2,
+      "explicacao": "Ec = m·v²/2. Dica de mergulhador: cinética lembra cinema, imagem em movimento.",
+      "comentarios": [
+        "É a da altura.",
+        "É a das ligações.",
+        "",
+        "É a do núcleo.",
+        "É a da mola."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q19",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma mola comprimida de um brinquedo guarda energia na forma:",
+      "alternativas": [
+        "Nuclear",
+        "Luminosa",
+        "Potencial elástica",
+        "Gravitacional",
+        "Cinética"
+      ],
+      "correta": 2,
+      "explicacao": "Ee = k·x²/2. Dica de mergulhador: mola apertada é energia guardada.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não depende da altura.",
+        "Está parada."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q20",
+      "tema": "Potência e rendimento",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um elevador ergue 800 kg a 15 m em 20 s (g = 10 m/s²). A potência útil é:",
+      "alternativas": [
+        "120.000 W",
+        "3.000 W",
+        "600 W",
+        "12.000 W",
+        "6.000 W"
+      ],
+      "correta": 4,
+      "explicacao": "m·g·h ÷ t = 120.000 ÷ 20. Dica de mergulhador: energia potencial dividida pelo tempo.",
+      "comentarios": [
+        "Esqueceu o tempo.",
+        "Errou.",
+        "Errou a casa.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q01",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Numa montanha-russa sem atrito, quando o carrinho desce, sua energia potencial se transforma em:",
+      "alternativas": [
+        "Nada, ela some",
+        "Massa",
+        "Energia nuclear",
+        "Energia cinética",
+        "Energia química"
+      ],
+      "correta": 3,
+      "explicacao": "Perde altura, ganha velocidade. Dica de mergulhador: desceu, acelerou.",
+      "comentarios": [
+        "A energia se conserva.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q02",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "A energia mecânica de um corpo é a soma das energias:",
+      "alternativas": [
+        "Cinética e térmica",
+        "Sonora e luminosa",
+        "Térmica e elétrica",
+        "Cinética e potencial",
+        "Química e nuclear"
+      ],
+      "correta": 3,
+      "explicacao": "Em = Ec + Ep. Dica de mergulhador: movimento mais posição.",
+      "comentarios": [
+        "Térmica não é mecânica.",
+        "Não.",
+        "Não são mecânicas.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q03",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Um carrinho parte do repouso a 20 m de altura numa montanha-russa sem atrito (g = 10 m/s²). No ponto mais baixo, sua velocidade é:",
+      "alternativas": [
+        "10 m/s",
+        "200 m/s",
+        "40 m/s",
+        "20 m/s",
+        "400 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "v = √(2 × 10 × 20) = 20. Dica de mergulhador: a massa se cancela.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "Errou.",
+        "",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q04",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma bola de 0,5 kg cai de 10 m e chega ao chão com 12 m/s (g = 10 m/s²). A energia dissipada pelo ar foi:",
+      "alternativas": [
+        "36 J",
+        "86 J",
+        "50 J",
+        "0 J",
+        "14 J"
+      ],
+      "correta": 4,
+      "explicacao": "50 J − 36 J = 14 J. Dica de mergulhador: perdido = inicial − final.",
+      "comentarios": [
+        "É a cinética final.",
+        "Somou.",
+        "É a potencial inicial.",
+        "Houve perda.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q05",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Quando há atrito, a energia mecânica de um corpo:",
+      "alternativas": [
+        "Fica constante",
+        "Aumenta",
+        "Diminui, porque parte vira calor",
+        "Some do universo",
+        "Vira massa"
+      ],
+      "correta": 2,
+      "explicacao": "O atrito dissipa energia em calor. Dica de mergulhador: freio quente é energia que foi embora da mecânica.",
+      "comentarios": [
+        "Só sem atrito.",
+        "Não.",
+        "",
+        "A total se conserva.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q06",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Um corpo é lançado para cima a 10 m/s, sem resistência do ar (g = 10 m/s²). Na metade da altura máxima, sua velocidade é cerca de:",
+      "alternativas": [
+        "5 m/s",
+        "10 m/s",
+        "7,1 m/s",
+        "0 m/s",
+        "2,5 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "Hmax = 5 m; em 2,5 m, v² = 100 − 50 = 50; v ≈ 7,1. Dica de mergulhador: metade da altura, metade da energia cinética.",
+      "comentarios": [
+        "A velocidade não cai pela metade.",
+        "Errou.",
+        "",
+        "Isso é no topo.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q07",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Numa usina hidrelétrica, a transformação principal de energia é:",
+      "alternativas": [
+        "Elétrica em potencial",
+        "Química em elétrica",
+        "Potencial gravitacional da água em elétrica",
+        "Luminosa em elétrica",
+        "Nuclear em elétrica"
+      ],
+      "correta": 2,
+      "explicacao": "A água cai, gira a turbina e o gerador. Dica de mergulhador: represa é energia guardada na altura.",
+      "comentarios": [
+        "Ao contrário.",
+        "Isso é pilha.",
+        "",
+        "Isso é solar.",
+        "Isso é usina nuclear."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q08",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "A principal fonte de eletricidade do Brasil é:",
+      "alternativas": [
+        "A maremotriz",
+        "O carvão mineral",
+        "A hidrelétrica",
+        "O petróleo",
+        "A nuclear"
+      ],
+      "correta": 2,
+      "explicacao": "O país tem muitos rios caudalosos com desnível. Dica de mergulhador: no Brasil, a luz vem da água.",
+      "comentarios": [
+        "Quase inexistente.",
+        "É pequena.",
+        "",
+        "Não.",
+        "É pequena no país."
+      ],
+      "revisar": "participação das fontes na matriz elétrica brasileira"
+    },
+    {
+      "id": "fis-conservacao-energia-q09",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Numa termelétrica a gás, a sequência de transformações é:",
+      "alternativas": [
+        "Nuclear → térmica → elétrica",
+        "Elétrica → química → térmica",
+        "Luminosa → elétrica",
+        "Potencial → cinética → elétrica",
+        "Química → térmica → cinética → elétrica"
+      ],
+      "correta": 4,
+      "explicacao": "A queima aquece água, o vapor gira a turbina. Dica de mergulhador: termelétrica é chaleira gigante.",
+      "comentarios": [
+        "Isso é nuclear.",
+        "Ao contrário.",
+        "Isso é solar.",
+        "Isso é hidrelétrica.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q10",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma placa solar fotovoltaica se diferencia das outras usinas porque:",
+      "alternativas": [
+        "Funciona com urânio",
+        "Precisa de represa",
+        "Usa o vento",
+        "Queima combustível",
+        "Converte luz em eletricidade sem turbina"
+      ],
+      "correta": 4,
+      "explicacao": "O efeito fotovoltaico gera corrente direto. Dica de mergulhador: placa solar não gira nada.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q11",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "A água cai de 100 m de altura numa turbina, com vazão de 1.000 kg por segundo (g = 10 m/s²). Com rendimento de 90%, a potência elétrica é:",
+      "alternativas": [
+        "9.000 kW",
+        "900 kW",
+        "90 kW",
+        "100 kW",
+        "1.000 kW"
+      ],
+      "correta": 1,
+      "explicacao": "1.000 × 10 × 100 = 10⁶ W; × 0,9 = 900 kW. Dica de mergulhador: m·g·h por segundo, vezes o rendimento.",
+      "comentarios": [
+        "Errou a casa.",
+        "",
+        "Errou a casa.",
+        "Errou.",
+        "Esqueceu o rendimento."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q12",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "A quantidade de movimento de um corpo de 3 kg a 4 m/s é:",
+      "alternativas": [
+        "12 kg·m/s",
+        "0,75 kg·m/s",
+        "48 kg·m/s",
+        "7 kg·m/s",
+        "24 kg·m/s"
+      ],
+      "correta": 0,
+      "explicacao": "Q = m·v = 3 × 4. Dica de mergulhador: massa vezes velocidade.",
+      "comentarios": [
+        "",
+        "Dividiu.",
+        "Errou.",
+        "Somou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q13",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Um carrinho de 2 kg a 3 m/s bate num carrinho de 1 kg parado, e os dois seguem grudados. A velocidade final é:",
+      "alternativas": [
+        "1 m/s",
+        "2 m/s",
+        "1,5 m/s",
+        "3 m/s",
+        "6 m/s"
+      ],
+      "correta": 1,
+      "explicacao": "2 × 3 = 3 × v; v = 2. Dica de mergulhador: Q antes = Q depois.",
+      "comentarios": [
+        "Errou.",
+        "",
+        "Dividiu por 2.",
+        "Ignorou o outro carrinho.",
+        "Esqueceu a massa total."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q14",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Um canhão de 1.000 kg dispara uma bala de 10 kg a 200 m/s. A velocidade de recuo do canhão é:",
+      "alternativas": [
+        "0,2 m/s",
+        "0 m/s",
+        "20 m/s",
+        "2 m/s",
+        "200 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "Q inicial zero: 10 × 200 = 1.000 × v. Dica de mergulhador: explosão parte do zero e soma zero.",
+      "comentarios": [
+        "Errou a casa.",
+        "Há recuo.",
+        "Errou a casa.",
+        "",
+        "Ignorou a massa."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q15",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Um goleiro amortece uma bola de 0,4 kg que chega a 25 m/s, parando-a em 0,1 s. A força média sobre a bola é:",
+      "alternativas": [
+        "10 N",
+        "2,5 N",
+        "250 N",
+        "100 N",
+        "1.000 N"
+      ],
+      "correta": 3,
+      "explicacao": "ΔQ = 10 kg·m/s; F = 10 ÷ 0,1. Dica de mergulhador: impulso é variação de Q.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou.",
+        "Esqueceu a massa.",
+        "",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q16",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Numa colisão em que os dois corpos ficam grudados, é correto afirmar que:",
+      "alternativas": [
+        "A quantidade de movimento dobra",
+        "As duas se conservam",
+        "Nenhuma se conserva",
+        "Q se conserva e a cinética diminui",
+        "A energia cinética aumenta"
+      ],
+      "correta": 3,
+      "explicacao": "Parte da energia vira calor e deformação. Dica de mergulhador: grudou, perdeu energia, manteve Q.",
+      "comentarios": [
+        "Não.",
+        "Isso é colisão elástica.",
+        "Q se conserva.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q17",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "O princípio da conservação da energia afirma que a energia:",
+      "alternativas": [
+        "Some quando há atrito",
+        "Só existe em movimento",
+        "Pode ser criada por máquinas",
+        "Não se cria nem se destrói, só se transforma",
+        "É sempre elétrica"
+      ],
+      "correta": 3,
+      "explicacao": "A energia total de um sistema isolado é constante. Dica de mergulhador: energia troca de roupa.",
+      "comentarios": [
+        "Vira calor.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q18",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Qual destas fontes de energia elétrica é renovável?",
+      "alternativas": [
+        "Solar",
+        "Urânio",
+        "Carvão mineral",
+        "Gás natural",
+        "Petróleo"
+      ],
+      "correta": 0,
+      "explicacao": "O Sol se renova todo dia. Dica de mergulhador: renovável é o que a natureza repõe rápido.",
+      "comentarios": [
+        "",
+        "Recurso mineral finito.",
+        "Fóssil.",
+        "Fóssil.",
+        "Fóssil."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q19",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma família quer gerar a própria energia em casa, numa cidade ensolarada e sem rios próximos. A opção mais adequada é:",
+      "alternativas": [
+        "Uma usina nuclear",
+        "Painéis solares fotovoltaicos no telhado",
+        "Uma pequena hidrelétrica no quintal",
+        "Uma usina maremotriz",
+        "Uma termelétrica a carvão"
+      ],
+      "correta": 1,
+      "explicacao": "Sol abundante e instalação no telhado. Dica de mergulhador: use o que a região oferece.",
+      "comentarios": [
+        "Inviável e proibida para uso doméstico.",
+        "",
+        "Não há rio nem desnível.",
+        "Exige mar.",
+        "Poluente e inviável."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q20",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "A quantidade de movimento é uma grandeza:",
+      "alternativas": [
+        "Sem unidade",
+        "Escalar",
+        "Vetorial, com a direção e o sentido da velocidade",
+        "Sempre nula",
+        "Igual à energia"
+      ],
+      "correta": 2,
+      "explicacao": "Q = m·v, vetor como v. Dica de mergulhador: Q aponta para onde o corpo vai.",
+      "comentarios": [
+        "É kg·m/s.",
+        "Tem direção.",
+        "",
+        "Não.",
+        "São diferentes."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q01",
+      "tema": "Densidade e pressão",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um bloco tem 200 g e volume de 50 cm³. Sua densidade é:",
+      "alternativas": [
+        "10.000 g/cm³",
+        "4 g/cm³",
+        "250 g/cm³",
+        "0,25 g/cm³",
+        "150 g/cm³"
+      ],
+      "correta": 1,
+      "explicacao": "d = 200 ÷ 50. Dica de mergulhador: massa sobre volume.",
+      "comentarios": [
+        "Multiplicou.",
+        "",
+        "Somou.",
+        "Inverteu.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q02",
+      "tema": "Densidade e pressão",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Ao misturar óleo e água num copo, o óleo fica por cima porque:",
+      "alternativas": [
+        "É mais quente",
+        "É mais denso que a água",
+        "É mais pesado no total",
+        "Evapora",
+        "É menos denso que a água"
+      ],
+      "correta": 4,
+      "explicacao": "O menos denso flutua. Dica de mergulhador: leve por volume vai para cima.",
+      "comentarios": [
+        "Não é o motivo.",
+        "Afundaria.",
+        "Depende da densidade.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q03",
+      "tema": "Densidade e pressão",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Uma faca afiada corta melhor que uma cega porque:",
+      "alternativas": [
+        "Tem mais área",
+        "Concentra a força numa área menor, aumentando a pressão",
+        "É mais fria",
+        "Faz menos força",
+        "Tem mais massa"
+      ],
+      "correta": 1,
+      "explicacao": "p = F/A. Dica de mergulhador: ponta fina, pressão grande.",
+      "comentarios": [
+        "Ao contrário.",
+        "",
+        "Não.",
+        "A força pode ser a mesma.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q04",
+      "tema": "Densidade e pressão",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Uma caixa de 600 N está apoiada numa face de 0,5 m². A pressão no chão é:",
+      "alternativas": [
+        "1.200 Pa",
+        "120 Pa",
+        "600 Pa",
+        "300 Pa",
+        "600,5 Pa"
+      ],
+      "correta": 0,
+      "explicacao": "p = 600 ÷ 0,5. Dica de mergulhador: força sobre área.",
+      "comentarios": [
+        "",
+        "Errou a casa.",
+        "Esqueceu a área.",
+        "Multiplicou.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q05",
+      "tema": "Densidade e pressão",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um tijolo é apoiado no chão primeiro pela face maior e depois pela menor. Comparando:",
+      "alternativas": [
+        "A força é maior na face menor",
+        "O peso muda",
+        "A pressão é maior na face maior",
+        "A pressão é a mesma",
+        "A força no chão é a mesma, e a pressão é maior na face menor"
+      ],
+      "correta": 4,
+      "explicacao": "Mesmo peso, áreas diferentes. Dica de mergulhador: em pé, o tijolo afunda mais na areia.",
+      "comentarios": [
+        "O peso é o mesmo.",
+        "Não.",
+        "Ao contrário.",
+        "A área mudou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q06",
+      "tema": "Densidade e pressão",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um cubo maciço de 10 cm de aresta tem massa de 2,7 kg. Sua densidade é:",
+      "alternativas": [
+        "2,7 g/cm³",
+        "2.700 g/cm³",
+        "270 g/cm³",
+        "27 g/cm³",
+        "0,27 g/cm³"
+      ],
+      "correta": 0,
+      "explicacao": "V = 1.000 cm³; 2.700 g ÷ 1.000 cm³. Dica de mergulhador: aresta ao cubo dá o volume.",
+      "comentarios": [
+        "",
+        "Não converteu.",
+        "Usou a área.",
+        "Errou a casa.",
+        "Errou o volume."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q07",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "A pressão dentro de uma piscina:",
+      "alternativas": [
+        "Diminui com a profundidade",
+        "Aumenta com a profundidade",
+        "Depende só da largura da piscina",
+        "É zero no fundo",
+        "É igual em todos os pontos"
+      ],
+      "correta": 1,
+      "explicacao": "Quanto mais fundo, mais água em cima. Dica de mergulhador: desceu, apertou o ouvido.",
+      "comentarios": [
+        "Ao contrário.",
+        "",
+        "Não.",
+        "Não.",
+        "Depende da profundidade."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q08",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Num lago, um mergulhador desce de 0 a 20 m de profundidade. A pressão sobre ele aumenta cerca de:",
+      "alternativas": [
+        "200 atm",
+        "0,2 atm",
+        "1 atm",
+        "20 atm",
+        "2 atm"
+      ],
+      "correta": 4,
+      "explicacao": "A cada 10 m de água, +1 atm. Dica de mergulhador: divida a profundidade por 10.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "Só 10 m.",
+        "É 1 atm a cada 10 m.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q09",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "A água ferve abaixo de 100 °C no alto de montanhas porque:",
+      "alternativas": [
+        "O fogo é mais forte",
+        "A pressão atmosférica é menor",
+        "A água é diferente",
+        "Há mais oxigênio",
+        "A gravidade é maior"
+      ],
+      "correta": 1,
+      "explicacao": "Com menos pressão, ferve mais cedo. Dica de mergulhador: panela de pressão faz o contrário.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Há menos.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q10",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Numa prensa hidráulica, uma força de 100 N num êmbolo de 10 cm² sustenta, no êmbolo de 200 cm²:",
+      "alternativas": [
+        "5 N",
+        "20.000 N",
+        "100 N",
+        "2.000 N",
+        "300 N"
+      ],
+      "correta": 3,
+      "explicacao": "Mesma pressão: F₂ = 100 × 200 ÷ 10. Dica de mergulhador: força proporcional à área.",
+      "comentarios": [
+        "Inverteu.",
+        "Errou a casa.",
+        "Não multiplicou.",
+        "",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q11",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Dois recipientes de formatos diferentes têm água até a mesma altura. A pressão no fundo deles é:",
+      "alternativas": [
+        "Zero nos dois",
+        "Maior no que tem mais água",
+        "Maior no mais largo",
+        "Igual, porque depende só da profundidade",
+        "Maior no mais estreito"
+      ],
+      "correta": 3,
+      "explicacao": "Lei de Stevin. Dica de mergulhador: altura do líquido manda, não a forma.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "O formato não importa.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q12",
+      "tema": "Empuxo",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "O empuxo sobre um corpo mergulhado num líquido aponta:",
+      "alternativas": [
+        "Em qualquer direção",
+        "Para o fundo sempre",
+        "Para baixo",
+        "Para cima",
+        "Para os lados"
+      ],
+      "correta": 3,
+      "explicacao": "O líquido empurra o corpo para cima. Dica de mergulhador: empuxo é a mão da água por baixo.",
+      "comentarios": [
+        "É vertical.",
+        "Não.",
+        "É o peso que aponta para baixo.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q13",
+      "tema": "Empuxo",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um navio de aço flutua, embora o aço seja mais denso que a água, porque:",
+      "alternativas": [
+        "O motor o mantém no alto",
+        "A água do mar não tem peso",
+        "O empuxo é zero",
+        "A densidade média do casco oco é menor",
+        "O aço do navio é diferente"
+      ],
+      "correta": 3,
+      "explicacao": "Ar dentro do casco desloca muita água. Dica de mergulhador: densidade média, não do material.",
+      "comentarios": [
+        "Não.",
+        "Tem.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q14",
+      "tema": "Empuxo",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um corpo de volume 0,002 m³ está totalmente mergulhado na água (d = 1.000 kg/m³, g = 10 m/s²). O empuxo é:",
+      "alternativas": [
+        "200 N",
+        "0,02 N",
+        "2 N",
+        "2.000 N",
+        "20 N"
+      ],
+      "correta": 4,
+      "explicacao": "E = 1.000 × 0,002 × 10. Dica de mergulhador: densidade do líquido vezes volume vezes g.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou.",
+        "Esqueceu o g.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q15",
+      "tema": "Densidade e pressão",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "A unidade de pressão no SI é:",
+      "alternativas": [
+        "Joule",
+        "Newton",
+        "Pascal",
+        "Watt",
+        "Quilograma"
+      ],
+      "correta": 2,
+      "explicacao": "Pa = N/m². Dica de mergulhador: pressão em pascal, como o cientista dos fluidos.",
+      "comentarios": [
+        "É energia.",
+        "É força.",
+        "",
+        "É potência.",
+        "É massa."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q16",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Tomar suco de canudinho funciona porque:",
+      "alternativas": [
+        "A boca puxa o suco por atração",
+        "O suco é menos denso que o ar",
+        "O ar de fora empurra o suco para cima",
+        "A gravidade some no canudo",
+        "O canudo cria energia"
+      ],
+      "correta": 2,
+      "explicacao": "A pressão atmosférica empurra o líquido. Dica de mergulhador: no vácuo, canudinho não funciona.",
+      "comentarios": [
+        "Quem empurra é o ar.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q17",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um mergulhador está a 30 m de profundidade no mar. A pressão total sobre ele é cerca de:",
+      "alternativas": [
+        "31 atm",
+        "3 atm",
+        "4 atm",
+        "1 atm",
+        "30 atm"
+      ],
+      "correta": 2,
+      "explicacao": "1 atm do ar + 3 atm da água. Dica de mergulhador: some a atmosfera da superfície.",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu a pressão do ar.",
+        "",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q18",
+      "tema": "Empuxo",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Dentro da piscina, uma pessoa consegue erguer um colega com facilidade porque:",
+      "alternativas": [
+        "A pressão é zero",
+        "O colega perde massa",
+        "O empuxo da água ajuda a sustentar o corpo",
+        "A água empurra para baixo",
+        "A gravidade some na água"
+      ],
+      "correta": 2,
+      "explicacao": "O peso aparente é menor. Dica de mergulhador: na água, todo mundo é mais leve.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q19",
+      "tema": "Empuxo",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "É mais fácil boiar no mar do que numa piscina de água doce porque:",
+      "alternativas": [
+        "O mar tem ondas que seguram",
+        "A água doce é mais densa",
+        "O sal diminui a massa do corpo",
+        "A gravidade é menor no mar",
+        "A água salgada é mais densa e gera mais empuxo"
+      ],
+      "correta": 4,
+      "explicacao": "E depende da densidade do líquido. Dica de mergulhador: mar salgado, boia mais.",
+      "comentarios": [
+        "Não é o motivo principal.",
+        "Ao contrário.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q20",
+      "tema": "Empuxo",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um bloco de madeira de densidade 0,6 g/cm³ flutua na água. A fração do seu volume que fica submersa é:",
+      "alternativas": [
+        "166%",
+        "60%",
+        "6%",
+        "40%",
+        "100%"
+      ],
+      "correta": 1,
+      "explicacao": "Na flutuação, fração submersa = d(corpo) ÷ d(água). Dica de mergulhador: densidade 0,6, 60% afundado.",
+      "comentarios": [
+        "Inverteu.",
+        "",
+        "Errou a casa.",
+        "É a parte fora da água.",
+        "Ele flutua."
       ]
     }
   ],
@@ -6328,6 +8045,1447 @@
         "Multiplicou.",
         ""
       ]
+    },
+    {
+      "id": "fis-trabalho-energia-q01-v1",
+      "varianteDe": "fis-trabalho-energia-q01",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma força de 20 N puxa um carrinho por 15 m no sentido do movimento. O trabalho é:",
+      "alternativas": [
+        "3.000 J",
+        "35 J",
+        "300 J",
+        "5 J",
+        "1,33 J"
+      ],
+      "correta": 2,
+      "explicacao": "20 × 15 = 300. Dica de mergulhador: joule é newton vezes metro.",
+      "comentarios": [
+        "Errou a casa.",
+        "Somou.",
+        "",
+        "Subtraiu.",
+        "Dividiu."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q02-v1",
+      "varianteDe": "fis-trabalho-energia-q02",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um joule equivale a:",
+      "alternativas": [
+        "Um newton por segundo",
+        "Um watt vezes um metro",
+        "Um metro por segundo",
+        "Um newton vezes um metro",
+        "Um quilograma por metro"
+      ],
+      "correta": 3,
+      "explicacao": "Como τ = F·d, a unidade é newton vezes metro. Dica de mergulhador: J = N·m.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q03-v1",
+      "varianteDe": "fis-trabalho-energia-q03",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma pessoa empurra uma parede com força, e a parede não se move. O trabalho sobre a parede é:",
+      "alternativas": [
+        "Negativo",
+        "Infinito",
+        "Igual à força",
+        "Zero",
+        "Positivo"
+      ],
+      "correta": 3,
+      "explicacao": "τ = F·d com d = 0. Dica de mergulhador: parede parada, trabalho zero.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Falta o deslocamento.",
+        "",
+        "Não há deslocamento."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q04-v1",
+      "varianteDe": "fis-trabalho-energia-q04",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Num movimento circular uniforme, o trabalho da força centrípeta é:",
+      "alternativas": [
+        "Nulo",
+        "Máximo",
+        "Positivo",
+        "Negativo",
+        "Igual à energia cinética"
+      ],
+      "correta": 0,
+      "explicacao": "Ela é sempre perpendicular à velocidade. Dica de mergulhador: centrípeta muda o rumo, não a energia.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q05-v1",
+      "varianteDe": "fis-trabalho-energia-q05",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um corpo é levantado com velocidade constante. O trabalho do peso durante a subida é:",
+      "alternativas": [
+        "Igual à força aplicada com sinal positivo",
+        "Nulo",
+        "Positivo",
+        "Negativo",
+        "Infinito"
+      ],
+      "correta": 3,
+      "explicacao": "Peso para baixo, deslocamento para cima. Dica de mergulhador: subindo, o peso trabalha contra.",
+      "comentarios": [
+        "O peso é contra a subida.",
+        "Há deslocamento vertical.",
+        "O peso aponta para baixo.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q06-v1",
+      "varianteDe": "fis-trabalho-energia-q06",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma criança de 30 kg desce um escorregador de 2 m de altura (g = 10 m/s²). O trabalho do peso é:",
+      "alternativas": [
+        "150 J",
+        "6.000 J",
+        "600 J",
+        "300 J",
+        "60 J"
+      ],
+      "correta": 2,
+      "explicacao": "30 × 10 × 2. Dica de mergulhador: descendo, o peso trabalha a favor.",
+      "comentarios": [
+        "Dividiu.",
+        "Errou a casa.",
+        "",
+        "Errou.",
+        "Esqueceu o g."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q07-v1",
+      "varianteDe": "fis-trabalho-energia-q07",
+      "tema": "Trabalho de uma força",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma força de 40 N puxa uma caixa a 60° com o deslocamento de 5 m (cos 60° = 0,5). O trabalho é:",
+      "alternativas": [
+        "200 J",
+        "100 J",
+        "0 J",
+        "20 J",
+        "400 J"
+      ],
+      "correta": 1,
+      "explicacao": "40 × 5 × 0,5. Dica de mergulhador: multiplique pelo cosseno.",
+      "comentarios": [
+        "Esqueceu o ângulo.",
+        "",
+        "Não.",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q08-v1",
+      "varianteDe": "fis-trabalho-energia-q08",
+      "tema": "Potência e rendimento",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "O quilowatt-hora, que aparece na conta de luz, mede:",
+      "alternativas": [
+        "Tensão",
+        "Energia",
+        "Corrente",
+        "Potência",
+        "Força"
+      ],
+      "correta": 1,
+      "explicacao": "kW × h dá energia. Dica de mergulhador: conta de luz cobra energia.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não; é potência vezes tempo.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q09-v1",
+      "varianteDe": "fis-trabalho-energia-q09",
+      "tema": "Potência e rendimento",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma lâmpada de 60 W fica ligada por 10 s. A energia consumida é:",
+      "alternativas": [
+        "60 J",
+        "70 J",
+        "6 J",
+        "6.000 J",
+        "600 J"
+      ],
+      "correta": 4,
+      "explicacao": "E = P × t = 60 × 10. Dica de mergulhador: energia é potência vezes tempo.",
+      "comentarios": [
+        "Esqueceu o tempo.",
+        "Somou.",
+        "Dividiu.",
+        "Errou a casa.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q10-v1",
+      "varianteDe": "fis-trabalho-energia-q10",
+      "tema": "Potência e rendimento",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um guindaste A ergue uma carga em 5 s, e o guindaste B ergue a mesma carga à mesma altura em 15 s. A potência de A é:",
+      "alternativas": [
+        "Igual",
+        "O dobro",
+        "Nove vezes",
+        "Um terço",
+        "O triplo da de B"
+      ],
+      "correta": 4,
+      "explicacao": "Mesmo trabalho em um terço do tempo. Dica de mergulhador: menos tempo, mais potência.",
+      "comentarios": [
+        "O tempo é diferente.",
+        "Errou.",
+        "Não.",
+        "Inverteu.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q11-v1",
+      "varianteDe": "fis-trabalho-energia-q11",
+      "tema": "Potência e rendimento",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma lâmpada recebe 100 W e emite 15 W em forma de luz. Seu rendimento luminoso é:",
+      "alternativas": [
+        "85%",
+        "1,5%",
+        "100%",
+        "15%",
+        "667%"
+      ],
+      "correta": 3,
+      "explicacao": "15 ÷ 100. Dica de mergulhador: o resto vira calor.",
+      "comentarios": [
+        "É a parte que vira calor.",
+        "Errou a casa.",
+        "Não.",
+        "",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q12-v1",
+      "varianteDe": "fis-trabalho-energia-q12",
+      "tema": "Potência e rendimento",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma geladeira de 200 W funciona, em média, 12 horas por dia. Em 30 dias, consome:",
+      "alternativas": [
+        "7,2 kWh",
+        "72 kWh",
+        "2,4 kWh",
+        "6 kWh",
+        "72.000 kWh"
+      ],
+      "correta": 1,
+      "explicacao": "0,2 kW × 12 h × 30 = 72 kWh. Dica de mergulhador: passe watt para quilowatt.",
+      "comentarios": [
+        "Errou a casa.",
+        "",
+        "É um dia só.",
+        "Errou.",
+        "Não converteu para kW."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q13-v1",
+      "varianteDe": "fis-trabalho-energia-q13",
+      "tema": "Potência e rendimento",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma bomba de rendimento 80% eleva 400 kg de água a 5 m em 10 s (g = 10 m/s²). A potência total é:",
+      "alternativas": [
+        "1.600 W",
+        "25.000 W",
+        "20.000 W",
+        "2.000 W",
+        "2.500 W"
+      ],
+      "correta": 4,
+      "explicacao": "Útil 2.000 W; total 2.000 ÷ 0,8. Dica de mergulhador: divida pelo rendimento.",
+      "comentarios": [
+        "Multiplicou pelo rendimento.",
+        "Errou a casa.",
+        "Esqueceu o tempo.",
+        "É a útil.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q14-v1",
+      "varianteDe": "fis-trabalho-energia-q14",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma bola de 0,5 kg a 10 m/s tem energia cinética de:",
+      "alternativas": [
+        "2,5 J",
+        "5 J",
+        "250 J",
+        "50 J",
+        "25 J"
+      ],
+      "correta": 4,
+      "explicacao": "0,5 × 100 ÷ 2. Dica de mergulhador: eleve a velocidade ao quadrado.",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu o quadrado.",
+        "Errou a casa.",
+        "Esqueceu o meio.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q15-v1",
+      "varianteDe": "fis-trabalho-energia-q15",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Se a massa de um corpo dobra e a velocidade continua igual, a energia cinética:",
+      "alternativas": [
+        "Dobra",
+        "Quadruplica",
+        "Fica igual",
+        "Cai pela metade",
+        "Fica oito vezes maior"
+      ],
+      "correta": 0,
+      "explicacao": "Ec é proporcional à massa. Dica de mergulhador: massa entra simples, velocidade ao quadrado.",
+      "comentarios": [
+        "",
+        "A massa não está ao quadrado.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q16-v1",
+      "varianteDe": "fis-trabalho-energia-q16",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma mola com k = 400 N/m é comprimida 0,1 m. A energia potencial elástica é:",
+      "alternativas": [
+        "2 J",
+        "0,2 J",
+        "4 J",
+        "40 J",
+        "20 J"
+      ],
+      "correta": 0,
+      "explicacao": "Ee = 400 × 0,01 ÷ 2. Dica de mergulhador: k·x²/2.",
+      "comentarios": [
+        "",
+        "Errou a casa.",
+        "Esqueceu o meio.",
+        "Esqueceu o quadrado.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q17-v1",
+      "varianteDe": "fis-trabalho-energia-q17",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Uma bola de 0,2 kg a 20 m/s é parada pela luva do goleiro. O trabalho da força da luva é:",
+      "alternativas": [
+        "−40 J",
+        "40 J",
+        "0 J",
+        "−80 J",
+        "−4 J"
+      ],
+      "correta": 0,
+      "explicacao": "ΔEc = 0 − 0,2 × 400 ÷ 2. Dica de mergulhador: freou, trabalho negativo.",
+      "comentarios": [
+        "",
+        "A força freia.",
+        "A energia mudou.",
+        "Esqueceu o meio.",
+        "Esqueceu o quadrado."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q18-v1",
+      "varianteDe": "fis-trabalho-energia-q18",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "facil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "A energia guardada num corpo por estar no alto chama-se:",
+      "alternativas": [
+        "Energia cinética",
+        "Energia potencial gravitacional",
+        "Energia elástica",
+        "Energia sonora",
+        "Energia térmica"
+      ],
+      "correta": 1,
+      "explicacao": "Ep = m·g·h. Dica de mergulhador: altura guarda energia.",
+      "comentarios": [
+        "É a do movimento.",
+        "",
+        "É a da mola.",
+        "Não.",
+        "É a da agitação das partículas."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q19-v1",
+      "varianteDe": "fis-trabalho-energia-q19",
+      "tema": "Energia cinética e potencial",
+      "dificuldade": "medio",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Ao soltar a mola comprimida, a energia elástica se transforma principalmente em:",
+      "alternativas": [
+        "Energia cinética do brinquedo",
+        "Energia química",
+        "Nada",
+        "Energia nuclear",
+        "Massa"
+      ],
+      "correta": 0,
+      "explicacao": "A mola empurra e o brinquedo ganha velocidade. Dica de mergulhador: mola solta vira movimento.",
+      "comentarios": [
+        "",
+        "Não.",
+        "A energia não some.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-q20-v1",
+      "varianteDe": "fis-trabalho-energia-q20",
+      "tema": "Potência e rendimento",
+      "dificuldade": "dificil",
+      "fase": "fis-trabalho-energia",
+      "enunciado": "Um atleta de 70 kg sobe 20 m de escada em 35 s (g = 10 m/s²). Sua potência média é:",
+      "alternativas": [
+        "14.000 W",
+        "700 W",
+        "40 W",
+        "400 W",
+        "200 W"
+      ],
+      "correta": 3,
+      "explicacao": "70 × 10 × 20 ÷ 35 = 400. Dica de mergulhador: m·g·h sobre t.",
+      "comentarios": [
+        "Esqueceu o tempo.",
+        "Errou.",
+        "Errou a casa.",
+        "",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q01-v1",
+      "varianteDe": "fis-conservacao-energia-q01",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Quando o carrinho sobe uma nova colina, sua energia cinética se transforma em:",
+      "alternativas": [
+        "Energia potencial gravitacional",
+        "Energia elétrica",
+        "Energia sonora apenas",
+        "Massa",
+        "Nada"
+      ],
+      "correta": 0,
+      "explicacao": "Ganha altura, perde velocidade. Dica de mergulhador: subiu, desacelerou.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não some."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q02-v1",
+      "varianteDe": "fis-conservacao-energia-q02",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "No ponto mais baixo de um pêndulo, a energia é principalmente:",
+      "alternativas": [
+        "Cinética",
+        "Elétrica",
+        "Potencial",
+        "Química",
+        "Nula"
+      ],
+      "correta": 0,
+      "explicacao": "Embaixo, velocidade máxima. Dica de mergulhador: pêndulo embaixo é pura pressa.",
+      "comentarios": [
+        "",
+        "Não.",
+        "É máxima no ponto mais alto.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q03-v1",
+      "varianteDe": "fis-conservacao-energia-q03",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Um skatista parte do repouso a 5 m de altura numa pista sem atrito (g = 10 m/s²). Embaixo, sua velocidade é:",
+      "alternativas": [
+        "5 m/s",
+        "25 m/s",
+        "50 m/s",
+        "100 m/s",
+        "10 m/s"
+      ],
+      "correta": 4,
+      "explicacao": "v = √(2 × 10 × 5) = 10. Dica de mergulhador: v = √(2gh).",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "Errou.",
+        "Esqueceu a raiz.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q04-v1",
+      "varianteDe": "fis-conservacao-energia-q04",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Um carrinho de 2 kg desce de 5 m e chega embaixo a 8 m/s (g = 10 m/s²). A energia perdida no atrito foi:",
+      "alternativas": [
+        "0 J",
+        "164 J",
+        "100 J",
+        "64 J",
+        "36 J"
+      ],
+      "correta": 4,
+      "explicacao": "100 − 64 = 36 J. Dica de mergulhador: compare começo e fim.",
+      "comentarios": [
+        "Houve perda.",
+        "Somou.",
+        "É a inicial.",
+        "É a final.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q05-v1",
+      "varianteDe": "fis-conservacao-energia-q05",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Ao frear, um carro perde energia cinética. Para onde ela vai principalmente?",
+      "alternativas": [
+        "Para o calor nos freios e nos pneus",
+        "Vira massa do carro",
+        "Vai para a Lua",
+        "Some",
+        "Para o tanque de combustível"
+      ],
+      "correta": 0,
+      "explicacao": "A energia se transforma em térmica. Dica de mergulhador: disco de freio esquenta.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não some.",
+        "Não, em carros comuns."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q06-v1",
+      "varianteDe": "fis-conservacao-energia-q06",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma bola é solta de 20 m (g = 10 m/s²), sem ar. Quando passa por 15 m de altura, sua velocidade é:",
+      "alternativas": [
+        "15 m/s",
+        "5 m/s",
+        "20 m/s",
+        "10 m/s",
+        "100 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "Caiu 5 m: v = √(2 × 10 × 5). Dica de mergulhador: conte a altura que caiu.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "É a do chão.",
+        "",
+        "Esqueceu a raiz."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q07-v1",
+      "varianteDe": "fis-conservacao-energia-q07",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Numa usina eólica, a energia elétrica vem:",
+      "alternativas": [
+        "Do calor do Sol direto",
+        "Da energia cinética do vento",
+        "Da maré",
+        "Da fissão do urânio",
+        "Da queima de carvão"
+      ],
+      "correta": 1,
+      "explicacao": "O vento gira as pás e o gerador. Dica de mergulhador: cata-vento gigante.",
+      "comentarios": [
+        "Isso é solar térmica.",
+        "",
+        "Isso é maremotriz.",
+        "Isso é nuclear.",
+        "Isso é termelétrica."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q08-v1",
+      "varianteDe": "fis-conservacao-energia-q08",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma vantagem das usinas hidrelétricas é:",
+      "alternativas": [
+        "Funcionar sem água",
+        "Não alagar nenhuma área",
+        "Usar uma fonte renovável",
+        "Emitir muito gás",
+        "Não afetar os rios"
+      ],
+      "correta": 2,
+      "explicacao": "A água volta pelo ciclo hidrológico. Dica de mergulhador: renovável não quer dizer sem impacto.",
+      "comentarios": [
+        "Não.",
+        "Alagam.",
+        "",
+        "Emitem pouco ao gerar.",
+        "Afetam."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q09-v1",
+      "varianteDe": "fis-conservacao-energia-q09",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Numa usina nuclear, a energia que aquece a água vem:",
+      "alternativas": [
+        "Do vento",
+        "Da queima de carvão",
+        "Da luz do Sol",
+        "Da fissão de núcleos de urânio",
+        "Da queda da água"
+      ],
+      "correta": 3,
+      "explicacao": "A fissão libera calor. Dica de mergulhador: nuclear também ferve água.",
+      "comentarios": [
+        "Isso é eólica.",
+        "Isso é termelétrica.",
+        "Isso é solar.",
+        "",
+        "Isso é hidrelétrica."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q10-v1",
+      "varianteDe": "fis-conservacao-energia-q10",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Nos períodos de seca, o Brasil aciona mais termelétricas porque:",
+      "alternativas": [
+        "Os reservatórios das hidrelétricas ficam baixos",
+        "O Sol some",
+        "O vento para em todo o país",
+        "As termelétricas não emitem gases",
+        "A energia térmica é renovável"
+      ],
+      "correta": 0,
+      "explicacao": "Com pouca água, falta energia potencial nas represas. Dica de mergulhador: represa baixa, bandeira tarifária alta.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Emitem.",
+        "Em geral não."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q11-v1",
+      "varianteDe": "fis-conservacao-energia-q11",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma pequena usina tem queda de 20 m e vazão de 500 kg por segundo (g = 10 m/s²), com rendimento de 80%. A potência elétrica é:",
+      "alternativas": [
+        "800 kW",
+        "100 kW",
+        "8 kW",
+        "125 kW",
+        "80 kW"
+      ],
+      "correta": 4,
+      "explicacao": "500 × 10 × 20 = 100 kW; × 0,8 = 80 kW. Dica de mergulhador: multiplique pelo rendimento.",
+      "comentarios": [
+        "Errou a casa.",
+        "Esqueceu o rendimento.",
+        "Errou a casa.",
+        "Dividiu pelo rendimento.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q12-v1",
+      "varianteDe": "fis-conservacao-energia-q12",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma bola de 0,4 kg tem quantidade de movimento de 8 kg·m/s. Sua velocidade é:",
+      "alternativas": [
+        "0,05 m/s",
+        "8,4 m/s",
+        "3,2 m/s",
+        "2 m/s",
+        "20 m/s"
+      ],
+      "correta": 4,
+      "explicacao": "v = 8 ÷ 0,4. Dica de mergulhador: v = Q/m.",
+      "comentarios": [
+        "Inverteu.",
+        "Somou.",
+        "Multiplicou.",
+        "Errou a casa.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q13-v1",
+      "varianteDe": "fis-conservacao-energia-q13",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Um vagão de 4 t a 5 m/s engata num vagão de 1 t parado. Juntos, seguem a:",
+      "alternativas": [
+        "20 m/s",
+        "5 m/s",
+        "1 m/s",
+        "4 m/s",
+        "2,5 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "4 × 5 = 5 × v; v = 4. Dica de mergulhador: grudou, divide pela massa total.",
+      "comentarios": [
+        "Esqueceu a massa total.",
+        "Ignorou o outro.",
+        "Errou.",
+        "",
+        "Dividiu por 2."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q14-v1",
+      "varianteDe": "fis-conservacao-energia-q14",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma pessoa de 60 kg, parada num barco de 90 kg, pula para a margem a 3 m/s. O barco recua a:",
+      "alternativas": [
+        "2 m/s",
+        "4,5 m/s",
+        "1 m/s",
+        "3 m/s",
+        "0 m/s"
+      ],
+      "correta": 0,
+      "explicacao": "60 × 3 = 90 × v; v = 2. Dica de mergulhador: o pesado recua devagar.",
+      "comentarios": [
+        "",
+        "Inverteu.",
+        "Errou.",
+        "As massas são diferentes.",
+        "Há recuo."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q15-v1",
+      "varianteDe": "fis-conservacao-energia-q15",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Se o goleiro recuar as mãos e parar a mesma bola em 0,2 s, a força média fica:",
+      "alternativas": [
+        "0 N",
+        "200 N",
+        "50 N, a metade",
+        "100 N",
+        "25 N"
+      ],
+      "correta": 2,
+      "explicacao": "Mesmo ΔQ em dobro do tempo. Dica de mergulhador: mão que recua dói menos.",
+      "comentarios": [
+        "Não.",
+        "Inverteu.",
+        "",
+        "O tempo dobrou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q16-v1",
+      "varianteDe": "fis-conservacao-energia-q16",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Numa colisão elástica entre duas bolas de bilhar:",
+      "alternativas": [
+        "As bolas sempre grudam",
+        "Nenhuma se conserva",
+        "Conservam-se a quantidade de movimento e a energia cinética",
+        "Só a quantidade de movimento se conserva",
+        "Só a energia cinética se conserva"
+      ],
+      "correta": 2,
+      "explicacao": "Elástica: nada vira deformação permanente. Dica de mergulhador: bilhar é quase elástico.",
+      "comentarios": [
+        "Isso é inelástica.",
+        "Não.",
+        "",
+        "Na elástica, Ec também.",
+        "Q também."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q17-v1",
+      "varianteDe": "fis-conservacao-energia-q17",
+      "tema": "Conservação da energia mecânica",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Num pêndulo sem atrito, no ponto mais alto da oscilação, a energia é principalmente:",
+      "alternativas": [
+        "Química",
+        "Nula",
+        "Cinética",
+        "Potencial gravitacional",
+        "Elétrica"
+      ],
+      "correta": 3,
+      "explicacao": "No topo, para por um instante. Dica de mergulhador: pêndulo no alto é pura altura.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "A velocidade é zero lá.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q18-v1",
+      "varianteDe": "fis-conservacao-energia-q18",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "facil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Qual destas usinas emite mais gases de efeito estufa ao gerar eletricidade?",
+      "alternativas": [
+        "Nuclear",
+        "Eólica",
+        "Termelétrica a carvão",
+        "Hidrelétrica",
+        "Solar"
+      ],
+      "correta": 2,
+      "explicacao": "Queima de combustível fóssil libera CO₂. Dica de mergulhador: carvão queimado é fumaça no céu.",
+      "comentarios": [
+        "Não queima combustível.",
+        "Quase não emite ao gerar.",
+        "",
+        "Emite pouco ao gerar.",
+        "Quase não emite ao gerar."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q19-v1",
+      "varianteDe": "fis-conservacao-energia-q19",
+      "tema": "Fontes de energia e usinas",
+      "dificuldade": "dificil",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Uma região litorânea com ventos fortes e constantes, como partes do Nordeste, tem grande potencial para:",
+      "alternativas": [
+        "Energia geotérmica",
+        "Hidrelétricas de grande queda",
+        "Energia eólica",
+        "Energia nuclear",
+        "Usinas a carvão"
+      ],
+      "correta": 2,
+      "explicacao": "Vento constante gira as pás. Dica de mergulhador: onde venta, gira.",
+      "comentarios": [
+        "Exige calor do subsolo.",
+        "Exige relevo e rios.",
+        "",
+        "Não depende do vento.",
+        "Não aproveita o vento."
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-q20-v1",
+      "varianteDe": "fis-conservacao-energia-q20",
+      "tema": "Quantidade de movimento e colisões",
+      "dificuldade": "medio",
+      "fase": "fis-conservacao-energia",
+      "enunciado": "Dois patinadores de 50 kg vêm um contra o outro, ambos a 2 m/s. A quantidade de movimento total do sistema é:",
+      "alternativas": [
+        "4 kg·m/s",
+        "200 kg·m/s",
+        "100 kg·m/s",
+        "Zero",
+        "50 kg·m/s"
+      ],
+      "correta": 3,
+      "explicacao": "+100 − 100 = 0. Dica de mergulhador: sentidos opostos, sinais opostos.",
+      "comentarios": [
+        "Não.",
+        "Os sentidos são opostos.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q01-v1",
+      "varianteDe": "fis-hidrostatica-q01",
+      "tema": "Densidade e pressão",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um líquido tem 1.600 g em 2.000 cm³. Sua densidade é:",
+      "alternativas": [
+        "1,25 g/cm³",
+        "3.600 g/cm³",
+        "400 g/cm³",
+        "0,8 g/cm³",
+        "8 g/cm³"
+      ],
+      "correta": 3,
+      "explicacao": "1.600 ÷ 2.000. Dica de mergulhador: menos de 1, boia na água se não se misturar.",
+      "comentarios": [
+        "Inverteu.",
+        "Somou.",
+        "Subtraiu.",
+        "",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q02-v1",
+      "varianteDe": "fis-hidrostatica-q02",
+      "tema": "Densidade e pressão",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um objeto maciço de densidade 2,5 g/cm³ colocado na água:",
+      "alternativas": [
+        "Dissolve",
+        "Flutua",
+        "Fica na superfície parcialmente",
+        "Afunda",
+        "Sobe"
+      ],
+      "correta": 3,
+      "explicacao": "Mais denso que 1 g/cm³ afunda. Dica de mergulhador: passou de 1, vai ao fundo.",
+      "comentarios": [
+        "Não necessariamente.",
+        "É mais denso que a água.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q03-v1",
+      "varianteDe": "fis-hidrostatica-q03",
+      "tema": "Densidade e pressão",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Raquetes de neve evitam que a pessoa afunde porque:",
+      "alternativas": [
+        "Aumentam a pressão",
+        "Esquentam a neve",
+        "Espalham o peso numa área maior, reduzindo a pressão",
+        "Reduzem a massa",
+        "Diminuem o peso"
+      ],
+      "correta": 2,
+      "explicacao": "Mesma força, área maior. Dica de mergulhador: pé largo, pressão pequena.",
+      "comentarios": [
+        "Ao contrário.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q04-v1",
+      "varianteDe": "fis-hidrostatica-q04",
+      "tema": "Densidade e pressão",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Uma pessoa de 600 N se apoia num pé só, com área de 0,02 m². A pressão no chão é:",
+      "alternativas": [
+        "600 Pa",
+        "300.000 Pa",
+        "3.000 Pa",
+        "12 Pa",
+        "30.000 Pa"
+      ],
+      "correta": 4,
+      "explicacao": "600 ÷ 0,02. Dica de mergulhador: área pequena, número grande.",
+      "comentarios": [
+        "Esqueceu a área.",
+        "Errou a casa.",
+        "Errou a casa.",
+        "Multiplicou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q05-v1",
+      "varianteDe": "fis-hidrostatica-q05",
+      "tema": "Densidade e pressão",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um prego entra na madeira pela ponta, e não pela cabeça, porque:",
+      "alternativas": [
+        "A ponta tem área muito pequena e gera pressão alta",
+        "A cabeça é mais pesada",
+        "A madeira atrai a ponta",
+        "A pressão é igual nas duas",
+        "A ponta tem mais massa"
+      ],
+      "correta": 0,
+      "explicacao": "Mesma martelada, áreas diferentes. Dica de mergulhador: prego é a física da ponta fina.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q06-v1",
+      "varianteDe": "fis-hidrostatica-q06",
+      "tema": "Densidade e pressão",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um bloco de 2 cm × 5 cm × 10 cm tem massa de 790 g. Sua densidade é:",
+      "alternativas": [
+        "0,79 g/cm³",
+        "79 g/cm³",
+        "7.900 g/cm³",
+        "7,9 g/cm³",
+        "39,5 g/cm³"
+      ],
+      "correta": 3,
+      "explicacao": "V = 100 cm³; 790 ÷ 100. Dica de mergulhador: multiplique as três medidas.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou a casa.",
+        "Não dividiu.",
+        "",
+        "Usou só duas medidas."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q07-v1",
+      "varianteDe": "fis-hidrostatica-q07",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Ao subir uma serra de carro, a pressão atmosférica:",
+      "alternativas": [
+        "Aumenta",
+        "Diminui",
+        "Fica igual",
+        "Zera",
+        "Dobra"
+      ],
+      "correta": 1,
+      "explicacao": "Menos ar acima. Dica de mergulhador: no alto, o ouvido estala.",
+      "comentarios": [
+        "Ao contrário.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q08-v1",
+      "varianteDe": "fis-hidrostatica-q08",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "A pressão hidrostática da água (d = 1.000 kg/m³, g = 10 m/s²) a 5 m de profundidade é:",
+      "alternativas": [
+        "50.000 Pa",
+        "500.000 Pa",
+        "5.000 Pa",
+        "500 Pa",
+        "50 Pa"
+      ],
+      "correta": 0,
+      "explicacao": "d·g·h = 1.000 × 10 × 5. Dica de mergulhador: Stevin sem o p₀.",
+      "comentarios": [
+        "",
+        "Errou a casa.",
+        "Esqueceu o g.",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q09-v1",
+      "varianteDe": "fis-hidrostatica-q09",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "A panela de pressão cozinha mais rápido porque:",
+      "alternativas": [
+        "A pressão maior faz a água ferver acima de 100 °C",
+        "Esfria o alimento",
+        "Faz a água ferver abaixo de 100 °C",
+        "Diminui a pressão",
+        "Gasta menos água"
+      ],
+      "correta": 0,
+      "explicacao": "Mais pressão, temperatura de ebulição maior. Dica de mergulhador: panela fechada, água mais quente.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Ao contrário.",
+        "Aumenta.",
+        "Não é o motivo."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q10-v1",
+      "varianteDe": "fis-hidrostatica-q10",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Num elevador hidráulico de oficina, o êmbolo largo tem área 50 vezes maior. Para erguer um carro de 10.000 N, basta:",
+      "alternativas": [
+        "200 N",
+        "500.000 N",
+        "50 N",
+        "2.000 N",
+        "10.000 N"
+      ],
+      "correta": 0,
+      "explicacao": "10.000 ÷ 50. Dica de mergulhador: Pascal multiplica a força pela razão das áreas.",
+      "comentarios": [
+        "",
+        "Multiplicou.",
+        "Errou.",
+        "Errou a casa.",
+        "Não dividiu."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q11-v1",
+      "varianteDe": "fis-hidrostatica-q11",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "A caixa-d'água fica no alto da casa porque:",
+      "alternativas": [
+        "Precisa de bomba nas torneiras",
+        "Fica longe do sol",
+        "A altura dá pressão às torneiras",
+        "O ar quente sobe com a água",
+        "A água é mais leve no alto"
+      ],
+      "correta": 2,
+      "explicacao": "A altura gera pressão nas torneiras de baixo. Dica de mergulhador: caixa alta, chuveiro forte.",
+      "comentarios": [
+        "Não.",
+        "Não é o motivo.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q12-v1",
+      "varianteDe": "fis-hidrostatica-q12",
+      "tema": "Empuxo",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Pelo princípio de Arquimedes, o empuxo é igual:",
+      "alternativas": [
+        "À massa do recipiente",
+        "À pressão atmosférica",
+        "Ao peso do corpo sempre",
+        "Ao volume do corpo, sem mais nada",
+        "Ao peso do líquido deslocado"
+      ],
+      "correta": 4,
+      "explicacao": "E = d·V·g. Dica de mergulhador: a água empurra com o peso que tirou do lugar.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Só quando flutua.",
+        "Falta densidade e g.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q13-v1",
+      "varianteDe": "fis-hidrostatica-q13",
+      "tema": "Empuxo",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um submarino consegue afundar porque:",
+      "alternativas": [
+        "Enche os tanques de lastro com água",
+        "Aquece a água",
+        "Desliga o empuxo",
+        "Fica mais leve",
+        "Esvazia os tanques"
+      ],
+      "correta": 0,
+      "explicacao": "Mais massa no mesmo volume. Dica de mergulhador: encheu de água, desceu.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não é possível.",
+        "Fica mais pesado.",
+        "Isso o faz subir."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q14-v1",
+      "varianteDe": "fis-hidrostatica-q14",
+      "tema": "Empuxo",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Uma pedra de 50 N, com volume de 0,002 m³, é pesada dentro da água (d = 1.000 kg/m³, g = 10 m/s²). Seu peso aparente é:",
+      "alternativas": [
+        "30 N",
+        "70 N",
+        "20 N",
+        "0 N",
+        "50 N"
+      ],
+      "correta": 0,
+      "explicacao": "50 − 20 = 30 N. Dica de mergulhador: na água, o peso aparente é menor.",
+      "comentarios": [
+        "",
+        "Somou.",
+        "É o empuxo.",
+        "Ela não flutua.",
+        "Esqueceu o empuxo."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q15-v1",
+      "varianteDe": "fis-hidrostatica-q15",
+      "tema": "Densidade e pressão",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um pascal equivale a:",
+      "alternativas": [
+        "Um metro por segundo",
+        "Um newton por metro quadrado",
+        "Um quilograma por metro cúbico",
+        "Um newton vezes um metro",
+        "Um joule por segundo"
+      ],
+      "correta": 1,
+      "explicacao": "p = F/A. Dica de mergulhador: força dividida por área.",
+      "comentarios": [
+        "Isso é velocidade.",
+        "",
+        "Isso é densidade.",
+        "Isso é joule.",
+        "Isso é watt."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q16-v1",
+      "varianteDe": "fis-hidrostatica-q16",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Uma ventosa gruda no azulejo porque:",
+      "alternativas": [
+        "O ar de dentro empurra mais",
+        "O azulejo a atrai",
+        "O ar de fora a pressiona contra a parede",
+        "A gravidade a segura",
+        "Ela tem cola"
+      ],
+      "correta": 2,
+      "explicacao": "Sem ar dentro, sobra a pressão de fora. Dica de mergulhador: ventosa é o ar segurando.",
+      "comentarios": [
+        "Quase não há ar dentro.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q17-v1",
+      "varianteDe": "fis-hidrostatica-q17",
+      "tema": "Pressão nos líquidos e no ar",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "A 15 m de profundidade num lago, a pressão total sobre um mergulhador é cerca de:",
+      "alternativas": [
+        "1,5 atm",
+        "1 atm",
+        "2,5 atm",
+        "16 atm",
+        "15 atm"
+      ],
+      "correta": 2,
+      "explicacao": "1 + 1,5 = 2,5 atm. Dica de mergulhador: ar mais água.",
+      "comentarios": [
+        "Esqueceu a do ar.",
+        "Errou.",
+        "",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q18-v1",
+      "varianteDe": "fis-hidrostatica-q18",
+      "tema": "Empuxo",
+      "dificuldade": "facil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um corpo que flutua parado na superfície da água tem empuxo:",
+      "alternativas": [
+        "Maior que o peso",
+        "Nulo",
+        "Igual ao próprio peso",
+        "Menor que o peso",
+        "Igual ao dobro do peso"
+      ],
+      "correta": 2,
+      "explicacao": "Equilíbrio: E = P. Dica de mergulhador: boiando parado, forças empatadas.",
+      "comentarios": [
+        "Ele subiria.",
+        "Não.",
+        "",
+        "Ele afundaria.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q19-v1",
+      "varianteDe": "fis-hidrostatica-q19",
+      "tema": "Empuxo",
+      "dificuldade": "medio",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um ovo afunda na água pura e boia quando se dissolve bastante sal nela. Isso ocorre porque:",
+      "alternativas": [
+        "O sal diminui a massa do ovo",
+        "A água esfria",
+        "O ovo fica oco",
+        "O sal reduz o empuxo",
+        "O sal deixa a água mais densa que o ovo"
+      ],
+      "correta": 4,
+      "explicacao": "Líquido mais denso, empuxo maior. Dica de mergulhador: salmoura segura o ovo.",
+      "comentarios": [
+        "Não.",
+        "Não é o motivo.",
+        "Não.",
+        "Aumenta.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-q20-v1",
+      "varianteDe": "fis-hidrostatica-q20",
+      "tema": "Empuxo",
+      "dificuldade": "dificil",
+      "fase": "fis-hidrostatica",
+      "enunciado": "Um iceberg tem densidade de cerca de 0,9 g/cm³ e flutua na água de densidade 1,0. A fração visível acima da água é cerca de:",
+      "alternativas": [
+        "50%",
+        "90%",
+        "0%",
+        "10%",
+        "1%"
+      ],
+      "correta": 3,
+      "explicacao": "Submerso 0,9; visível 0,1. Dica de mergulhador: a ponta do iceberg é só um décimo.",
+      "comentarios": [
+        "Não.",
+        "É a fração submersa.",
+        "Ele flutua.",
+        "",
+        "Não."
+      ],
+      "revisar": "densidades do gelo e da água do mar"
     }
   ],
   "pares": [
@@ -6474,6 +9632,78 @@
       "tema": "Revisão do módulo: movimento e forças",
       "termo": "Curva sem derrapar",
       "definicao": "Atrito como centrípeta"
+    },
+    {
+      "id": "fis-trabalho-energia-par-01",
+      "tema": "Trabalho, potência e energia",
+      "termo": "Trabalho",
+      "definicao": "F·d·cos θ"
+    },
+    {
+      "id": "fis-trabalho-energia-par-02",
+      "tema": "Trabalho, potência e energia",
+      "termo": "Potência",
+      "definicao": "Trabalho ÷ tempo"
+    },
+    {
+      "id": "fis-trabalho-energia-par-03",
+      "tema": "Trabalho, potência e energia",
+      "termo": "Energia cinética",
+      "definicao": "m·v²/2"
+    },
+    {
+      "id": "fis-trabalho-energia-par-04",
+      "tema": "Trabalho, potência e energia",
+      "termo": "Quilowatt-hora",
+      "definicao": "Energia da conta de luz"
+    },
+    {
+      "id": "fis-conservacao-energia-par-01",
+      "tema": "Conservação da energia, usinas e colisões",
+      "termo": "Montanha-russa",
+      "definicao": "Energia mecânica"
+    },
+    {
+      "id": "fis-conservacao-energia-par-02",
+      "tema": "Conservação da energia, usinas e colisões",
+      "termo": "Hidrelétrica",
+      "definicao": "Potencial da água"
+    },
+    {
+      "id": "fis-conservacao-energia-par-03",
+      "tema": "Conservação da energia, usinas e colisões",
+      "termo": "Placa fotovoltaica",
+      "definicao": "Luz em eletricidade"
+    },
+    {
+      "id": "fis-conservacao-energia-par-04",
+      "tema": "Conservação da energia, usinas e colisões",
+      "termo": "Impulso",
+      "definicao": "F·Δt"
+    },
+    {
+      "id": "fis-hidrostatica-par-01",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "termo": "Densidade",
+      "definicao": "m/V"
+    },
+    {
+      "id": "fis-hidrostatica-par-02",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "termo": "Pressão",
+      "definicao": "F/A"
+    },
+    {
+      "id": "fis-hidrostatica-par-03",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "termo": "Prensa hidráulica",
+      "definicao": "Princípio de Pascal"
+    },
+    {
+      "id": "fis-hidrostatica-par-04",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "termo": "Empuxo",
+      "definicao": "Princípio de Arquimedes"
     }
   ],
   "verdadeiroFalso": [
@@ -6602,6 +9832,69 @@
       "afirmacao": "Airbag reduz a força aumentando o tempo de parada.",
       "verdadeira": true,
       "explicacao": "Segunda lei."
+    },
+    {
+      "id": "fis-trabalho-energia-vf-01",
+      "tema": "Trabalho, potência e energia",
+      "afirmacao": "Força perpendicular ao deslocamento não realiza trabalho.",
+      "verdadeira": true,
+      "explicacao": "cos 90° = 0."
+    },
+    {
+      "id": "fis-trabalho-energia-vf-02",
+      "tema": "Trabalho, potência e energia",
+      "afirmacao": "Quilowatt-hora é unidade de potência.",
+      "verdadeira": false,
+      "explicacao": "É de energia."
+    },
+    {
+      "id": "fis-trabalho-energia-vf-03",
+      "tema": "Trabalho, potência e energia",
+      "afirmacao": "O rendimento de uma máquina real é menor que 100%.",
+      "verdadeira": true,
+      "explicacao": "Parte vira calor."
+    },
+    {
+      "id": "fis-conservacao-energia-vf-01",
+      "tema": "Conservação da energia, usinas e colisões",
+      "afirmacao": "Sem atrito, a energia mecânica se conserva.",
+      "verdadeira": true,
+      "explicacao": "Ec + Ep constante."
+    },
+    {
+      "id": "fis-conservacao-energia-vf-02",
+      "tema": "Conservação da energia, usinas e colisões",
+      "afirmacao": "Em toda colisão a energia cinética se conserva.",
+      "verdadeira": false,
+      "explicacao": "Só nas elásticas."
+    },
+    {
+      "id": "fis-conservacao-energia-vf-03",
+      "tema": "Conservação da energia, usinas e colisões",
+      "afirmacao": "Termelétricas e usinas nucleares aquecem água.",
+      "verdadeira": true,
+      "explicacao": "O vapor gira a turbina."
+    },
+    {
+      "id": "fis-hidrostatica-vf-01",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "afirmacao": "A pressão num líquido aumenta com a profundidade.",
+      "verdadeira": true,
+      "explicacao": "Lei de Stevin."
+    },
+    {
+      "id": "fis-hidrostatica-vf-02",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "afirmacao": "A água ferve a 100 °C em qualquer altitude.",
+      "verdadeira": false,
+      "explicacao": "Depende da pressão."
+    },
+    {
+      "id": "fis-hidrostatica-vf-03",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "afirmacao": "O navio flutua pela densidade média do conjunto.",
+      "verdadeira": true,
+      "explicacao": "Casco oco."
     }
   ],
   "sequencias": [
@@ -6679,6 +9972,43 @@
         "Somar"
       ],
       "explicacao": "Reação + frenagem."
+    },
+    {
+      "id": "fis-trabalho-energia-seq-01",
+      "tema": "Trabalho, potência e energia",
+      "titulo": "Calcular o consumo",
+      "itens": [
+        "Passar watt para kW",
+        "Passar minutos para horas",
+        "Multiplicar pelos dias",
+        "Multiplicar pela tarifa"
+      ],
+      "explicacao": "kW × h × dias."
+    },
+    {
+      "id": "fis-conservacao-energia-seq-01",
+      "tema": "Conservação da energia, usinas e colisões",
+      "titulo": "Hidrelétrica",
+      "itens": [
+        "Água represada",
+        "Queda pelo duto",
+        "Turbina gira",
+        "Gerador",
+        "Linhas de transmissão"
+      ],
+      "explicacao": "Potencial vira elétrica."
+    },
+    {
+      "id": "fis-hidrostatica-seq-01",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "titulo": "Mergulho seguro",
+      "itens": [
+        "Descer devagar",
+        "Compensar o ouvido",
+        "Controlar o ar",
+        "Subir sem pressa"
+      ],
+      "explicacao": "Pressão muda com a profundidade."
     }
   ],
   "adivinhas": [
@@ -6764,6 +10094,48 @@
         "Sem tempo",
         "v ao quadrado",
         "Frenagem"
+      ]
+    },
+    {
+      "id": "fis-trabalho-energia-adv-01",
+      "tema": "Trabalho, potência e energia",
+      "dificuldade": "medio",
+      "resposta": "Watt",
+      "aceitas": [
+        "watt, watts"
+      ],
+      "dicas": [
+        "Potência",
+        "Joule por segundo",
+        "Lâmpada"
+      ]
+    },
+    {
+      "id": "fis-conservacao-energia-adv-01",
+      "tema": "Conservação da energia, usinas e colisões",
+      "dificuldade": "medio",
+      "resposta": "Turbina",
+      "aceitas": [
+        "turbina, turbinas"
+      ],
+      "dicas": [
+        "Pás",
+        "Gira com água ou vapor",
+        "Liga ao gerador"
+      ]
+    },
+    {
+      "id": "fis-hidrostatica-adv-01",
+      "tema": "Hidrostática: densidade, pressão e empuxo",
+      "dificuldade": "medio",
+      "resposta": "Arquimedes",
+      "aceitas": [
+        "arquimedes"
+      ],
+      "dicas": [
+        "Empuxo",
+        "Eureca",
+        "Banheira"
       ]
     }
   ],
@@ -6911,6 +10283,78 @@
       "tema": "Física",
       "palavra": "Bloco",
       "dica": "Corpo isolado no desenho de forças"
+    },
+    {
+      "id": "fis-trabalho-energia-pal-01",
+      "tema": "Física",
+      "palavra": "Energia",
+      "dica": "Grandeza medida em joule"
+    },
+    {
+      "id": "fis-trabalho-energia-pal-02",
+      "tema": "Física",
+      "palavra": "Watt",
+      "dica": "Mede a rapidez da energia"
+    },
+    {
+      "id": "fis-trabalho-energia-pal-03",
+      "tema": "Física",
+      "palavra": "Motor",
+      "dica": "Recebe energia e devolve parte útil"
+    },
+    {
+      "id": "fis-trabalho-energia-pal-04",
+      "tema": "Física",
+      "palavra": "Escada",
+      "dica": "Mesmo trabalho, devagar ou correndo"
+    },
+    {
+      "id": "fis-conservacao-energia-pal-01",
+      "tema": "Física",
+      "palavra": "Represa",
+      "dica": "Guarda água no alto da usina"
+    },
+    {
+      "id": "fis-conservacao-energia-pal-02",
+      "tema": "Física",
+      "palavra": "Vento",
+      "dica": "Gira as pás da eólica"
+    },
+    {
+      "id": "fis-conservacao-energia-pal-03",
+      "tema": "Física",
+      "palavra": "Urânio",
+      "dica": "Combustível da fissão"
+    },
+    {
+      "id": "fis-conservacao-energia-pal-04",
+      "tema": "Física",
+      "palavra": "Colisão",
+      "dica": "Batida que conserva o momento"
+    },
+    {
+      "id": "fis-hidrostatica-pal-01",
+      "tema": "Física",
+      "palavra": "Navio",
+      "dica": "Flutua com casco oco"
+    },
+    {
+      "id": "fis-hidrostatica-pal-02",
+      "tema": "Física",
+      "palavra": "Prensa",
+      "dica": "Multiplica a força com líquido"
+    },
+    {
+      "id": "fis-hidrostatica-pal-03",
+      "tema": "Física",
+      "palavra": "Lastro",
+      "dica": "Tanque que o submarino enche"
+    },
+    {
+      "id": "fis-hidrostatica-pal-04",
+      "tema": "Física",
+      "palavra": "Boia",
+      "dica": "Objeto pouco denso que flutua"
     }
   ],
   "fichas": {
@@ -7135,6 +10579,132 @@
       "pegadinhas": [
         "Esquecer o tempo de reação na parada.",
         "Dizer que a aceleração é zero no topo do lançamento."
+      ]
+    },
+    "Trabalho de uma força": {
+      "texto": [
+        "τ = F·d·cos θ, em joule. Força a favor: positivo; contra: negativo; perpendicular: nulo. Sem deslocamento, sem trabalho.",
+        "O trabalho do peso depende só do desnível: m·g·h, qualquer que seja o caminho."
+      ],
+      "pontos": [
+        "Força em ângulo reto não trabalha.",
+        "Para o peso, só a altura importa."
+      ],
+      "pegadinhas": [
+        "Achar que segurar um peso parado é trabalho mecânico.",
+        "Esquecer o cosseno do ângulo."
+      ]
+    },
+    "Potência e rendimento": {
+      "texto": [
+        "P = τ/Δt, em watt. kWh é energia: 1 kWh = 3,6 × 10⁶ J. Consumo = potência × tempo.",
+        "Rendimento = útil ÷ total, sempre menor que 100%; total = útil ÷ rendimento."
+      ],
+      "pontos": [
+        "Passe watt para quilowatt e minutos para horas.",
+        "Mesmo trabalho em menos tempo, mais potência."
+      ],
+      "pegadinhas": [
+        "Tratar kWh como potência.",
+        "Multiplicar pelo rendimento em vez de dividir."
+      ]
+    },
+    "Energia cinética e potencial": {
+      "texto": [
+        "Ec = m·v²/2; Ep = m·g·h; Ee = k·x²/2.",
+        "Teorema da energia cinética: trabalho da resultante = variação da energia cinética."
+      ],
+      "pontos": [
+        "Dobro da velocidade, quádruplo da energia.",
+        "Freou, trabalho negativo."
+      ],
+      "pegadinhas": [
+        "Esquecer de elevar a velocidade ao quadrado.",
+        "Subtrair as velocidades antes de elevar ao quadrado."
+      ]
+    },
+    "Conservação da energia mecânica": {
+      "texto": [
+        "Em = Ec + Ep; sem atrito, constante: v = √(2gh) independe da massa. Com atrito, perda = Em inicial − Em final, em calor.",
+        "Pêndulo e montanha-russa trocam cinética e potencial; a energia total sempre se conserva."
+      ],
+      "pontos": [
+        "A massa se cancela.",
+        "Perdido = inicial − final."
+      ],
+      "pegadinhas": [
+        "Achar que na metade da altura a velocidade cai pela metade.",
+        "Dizer que a energia some com o atrito."
+      ]
+    },
+    "Fontes de energia e usinas": {
+      "texto": [
+        "Hidrelétrica: potencial → cinética → elétrica; renovável, mas alaga áreas. Termelétrica e nuclear aquecem água e geram vapor.",
+        "Eólica usa o vento; fotovoltaica converte luz sem turbina. Potência hidráulica = vazão × g × h × rendimento."
+      ],
+      "pontos": [
+        "No Brasil, a luz vem principalmente da água.",
+        "Termelétrica é chaleira gigante."
+      ],
+      "pegadinhas": [
+        "Dizer que renovável não tem impacto.",
+        "Esquecer o rendimento na potência elétrica."
+      ]
+    },
+    "Quantidade de movimento e colisões": {
+      "texto": [
+        "Q = m·v (vetor); impulso I = F·Δt = ΔQ. Sistemas isolados conservam Q em colisões e explosões.",
+        "Inelástica: corpos grudam e Ec diminui; elástica: Ec se conserva."
+      ],
+      "pontos": [
+        "Q antes = Q depois.",
+        "Mais tempo de parada, menos força."
+      ],
+      "pegadinhas": [
+        "Somar só as velocidades numa colisão.",
+        "Achar que Ec se conserva quando os corpos grudam."
+      ]
+    },
+    "Densidade e pressão": {
+      "texto": [
+        "d = m/V; água 1 g/cm³ = 1.000 kg/m³. Corpo maciço mais denso afunda. p = F/A em pascal.",
+        "Faca, prego e salto fino concentram a força; raquete e esqui espalham."
+      ],
+      "pontos": [
+        "Massa sobre volume.",
+        "Área pequena, pressão grande."
+      ],
+      "pegadinhas": [
+        "Confundir pressão com força.",
+        "Esquecer de calcular o volume do cubo."
+      ]
+    },
+    "Pressão nos líquidos e no ar": {
+      "texto": [
+        "Stevin: p = p₀ + d·g·h; +1 atm a cada 10 m de água; não depende da forma do recipiente.",
+        "Pressão atmosférica cai com a altitude; ebulição varia com ela. Pascal: prensa hidráulica, F₁/A₁ = F₂/A₂."
+      ],
+      "pontos": [
+        "Altura do líquido manda, não a forma.",
+        "Força proporcional à área na prensa."
+      ],
+      "pegadinhas": [
+        "Achar que a pressão depende da quantidade de água.",
+        "Dizer que a prensa cria energia."
+      ]
+    },
+    "Empuxo": {
+      "texto": [
+        "Arquimedes: E = d(líquido)·V(submerso)·g, vertical para cima. Peso aparente = peso − empuxo.",
+        "Navio flutua pela densidade média; submarino controla o lastro."
+      ],
+      "pontos": [
+        "Empuxo é o peso do líquido deslocado.",
+        "Densidade média, não do material."
+      ],
+      "pegadinhas": [
+        "Usar a densidade do corpo no cálculo do empuxo.",
+        "Achar que o empuxo é sempre igual ao peso do corpo."
       ]
     }
   }
