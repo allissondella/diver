@@ -689,7 +689,7 @@
       "id": "fis-trabalho-energia",
       "nome": "Aula 7 · Trabalho, potência e energia",
       "modulo": "Módulo 2 · Energia, fluidos e gravitação",
-      "descricao": "Módulo 2 · aula 1 de 3 · 35 min · treina as habilidades H17, H20 e H21",
+      "descricao": "Módulo 2 · aula 1 de 5 · 35 min · treina as habilidades H17, H20 e H21",
       "habilidades": [
         "H17",
         "H20",
@@ -800,7 +800,7 @@
       "id": "fis-conservacao-energia",
       "nome": "Aula 8 · Conservação da energia, usinas e colisões",
       "modulo": "Módulo 2 · Energia, fluidos e gravitação",
-      "descricao": "Módulo 2 · aula 2 de 3 · 35 min · treina as habilidades H21, H22 e H23",
+      "descricao": "Módulo 2 · aula 2 de 5 · 35 min · treina as habilidades H21, H22 e H23",
       "habilidades": [
         "H21",
         "H22",
@@ -912,7 +912,7 @@
       "id": "fis-hidrostatica",
       "nome": "Aula 9 · Hidrostática: densidade, pressão e empuxo",
       "modulo": "Módulo 2 · Energia, fluidos e gravitação",
-      "descricao": "Módulo 2 · aula 3 de 3 · 35 min · treina as habilidades H17, H20 e H21",
+      "descricao": "Módulo 2 · aula 3 de 5 · 35 min · treina as habilidades H17, H20 e H21",
       "habilidades": [
         "H17",
         "H20",
@@ -1018,6 +1018,233 @@
           "densidade",
           "pressao atmosferica",
           "empuxo"
+        ]
+      }
+    },
+    {
+      "id": "fis-gravitacao",
+      "nome": "Aula 10 · Gravitação, planetas e satélites",
+      "modulo": "Módulo 2 · Energia, fluidos e gravitação",
+      "descricao": "Módulo 2 · aula 4 de 5 · 35 min · treina as habilidades H17, H20 e H21",
+      "habilidades": [
+        "H17",
+        "H20",
+        "H21"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "As leis de Kepler",
+            "texto": [
+              "Analisando observações precisas dos planetas, Kepler chegou a três regras, as **leis de Kepler**. Primeira: as órbitas são elipses, com o Sol num dos focos; as da Terra e da maioria dos planetas são quase circulares. Segunda: a linha que liga o planeta ao Sol varre áreas iguais em tempos iguais; por isso o planeta anda mais rápido perto do Sol (periélio) e mais devagar longe dele (afélio). Terceira: o quadrado do período é proporcional ao cubo do raio médio da órbita, T² = k·R³; planetas mais distantes demoram muito mais para dar a volta. As estações do ano não vêm da distância ao Sol, mas da inclinação do eixo da Terra."
+            ]
+          },
+          {
+            "titulo": "Gravitação universal",
+            "texto": [
+              "Newton propôs que dois corpos quaisquer se atraem com força proporcional ao produto das massas e inversamente proporcional ao quadrado da distância entre os centros: F = G·M·m/d². É a lei da **gravitação universal**, e G é uma constante muito pequena, o que explica por que só notamos a atração de corpos enormes como a Terra. Se a distância dobra, a força cai para um quarto; se triplica, para um nono. A aceleração da gravidade na superfície de um planeta vem da mesma lei, g = G·M/R², e por isso é menor na Lua. As marés resultam principalmente da atração da Lua sobre os oceanos, com ajuda do Sol: alinhados, nas luas nova e cheia, produzem as marés mais altas."
+            ]
+          },
+          {
+            "titulo": "Satélites e órbitas",
+            "texto": [
+              "Um satélite está em queda contínua: a gravidade faz o papel de força centrípeta e o desvia da linha reta o tempo todo, sem que ele se aproxime da Terra. Quanto mais baixa a órbita, maior a velocidade e menor o período. O **satélite geoestacionário** fica a cerca de 36 mil km de altitude sobre o equador, com período de 24 h, parado em relação ao solo; é usado em TV e meteorologia. Os astronautas da estação espacial flutuam não porque falta gravidade, que lá ainda é cerca de 90% da da superfície, mas porque eles e a estação caem juntos, em queda livre ao redor da Terra."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Nas questões de força, use proporções: o que acontece com F se a massa ou a distância mudam. Nas de órbita, lembre que gravidade é a centrípeta."
+            ]
+          }
+        ],
+        "introducao": "A mesma força que derruba a maçã mantém a Lua em volta da Terra e os satélites de GPS no céu. Esta aula apresenta as leis de Kepler, a lei da gravitação de Newton e a física das órbitas, das marés e da sensação de flutuar no espaço.",
+        "mapaMental": {
+          "centro": "Céu em movimento",
+          "ramos": [
+            {
+              "titulo": "Órbitas",
+              "itens": [
+                "elipses",
+                "áreas iguais em tempos iguais",
+                "T² proporcional a R³"
+              ]
+            },
+            {
+              "titulo": "Atração",
+              "itens": [
+                "G·M·m/d²",
+                "distância em dobro, um quarto",
+                "marés da Lua"
+              ]
+            },
+            {
+              "titulo": "Gravidade local",
+              "itens": [
+                "g = G·M/R²",
+                "menor na Lua",
+                "constante G muito pequena"
+              ]
+            },
+            {
+              "titulo": "Em órbita",
+              "itens": [
+                "queda contínua",
+                "centrípeta é a gravidade",
+                "astronautas flutuando"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🪐",
+            "conceito": "Planeta acelera perto do Sol",
+            "liga": "leis de kepler",
+            "porque": "Áreas iguais em tempos iguais."
+          },
+          {
+            "icone": "🍎",
+            "conceito": "Maçã e Lua puxadas pela mesma força",
+            "liga": "gravitacao universal",
+            "porque": "F = G·M·m/d²."
+          },
+          {
+            "icone": "📡",
+            "conceito": "Antena parada apontada para o céu",
+            "liga": "satelite geoestacionario",
+            "porque": "Período de 24 h, parado sobre o equador."
+          }
+        ],
+        "pontos": [
+          "**Leis de Kepler**: elipses, áreas iguais, T² ∝ R³.",
+          "**Gravitação universal**: F = G·M·m/d²; distância em dobro, força em um quarto.",
+          "g = G·M/R²: menor na Lua.",
+          "Marés: principalmente atração da Lua.",
+          "**Satélite geoestacionário**: 24 h, sobre o equador.",
+          "Astronauta flutua porque está em queda livre com a nave."
+        ],
+        "perolas": [
+          "Em órbita, ninguém escapa da gravidade: todos caem juntos."
+        ],
+        "reforcar": [
+          "leis de kepler",
+          "gravitacao universal",
+          "satelite geoestacionario"
+        ]
+      }
+    },
+    {
+      "id": "fis-revisao-energia",
+      "nome": "Aula 11 · Revisão do módulo: energia, fluidos e gravitação",
+      "modulo": "Módulo 2 · Energia, fluidos e gravitação",
+      "descricao": "Módulo 2 · aula 5 de 5 · 35 min · treina as habilidades H17, H20, H21, H22 e H23",
+      "habilidades": [
+        "H17",
+        "H20",
+        "H21",
+        "H22",
+        "H23"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Energia: medir, transformar e pagar",
+            "texto": [
+              "Toda transformação de energia passa por três perguntas: quanto (joule ou kWh), em quanto tempo (potência, em watt) e com que aproveitamento (rendimento). O trabalho de uma força é F·d·cos θ; a energia cinética é m·v²/2 e a potencial gravitacional, m·g·h. Sem atrito, a **energia mecânica** se conserva e v = √(2gh); com atrito, parte vira calor. Nas usinas, a cadeia de transformações termina no gerador, e o consumo de casa é potência vezes tempo: 1 kWh = 3,6 × 10⁶ J. Nas colisões, a quantidade de movimento m·v se conserva, e a energia cinética só se conserva nas elásticas."
+            ]
+          },
+          {
+            "titulo": "Fluidos: pressão e empuxo",
+            "texto": [
+              "A pressão é F/A e, num líquido, cresce com a profundidade pela **lei de Stevin**, p = p₀ + d·g·h: na água, cerca de 1 atmosfera a cada 10 m. A pressão atmosférica diminui com a altitude e muda a temperatura de ebulição. Pelo princípio de Pascal, a prensa hidráulica multiplica forças. O empuxo, igual ao peso do líquido deslocado, explica por que navios flutuam e por que na água o peso parece menor."
+            ]
+          },
+          {
+            "titulo": "Gravitação: do chão ao céu",
+            "texto": [
+              "A **gravitação universal**, F = G·M·m/d², explica o peso, as marés e as órbitas. As leis de Kepler descrevem as órbitas elípticas e o ano mais longo dos planetas distantes. Satélites caem o tempo todo em volta da Terra, e os astronautas flutuam porque caem junto com a nave. Quanto mais baixa a órbita, mais rápida é a volta; o satélite geoestacionário, lá no alto, leva 24 horas."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Identifique primeiro o tema de cada questão: energia, fluido ou gravitação. Depois escreva o que se conserva ou o que se iguala (energia, quantidade de movimento, pressão ou forças) e só então faça a conta. Se errar, volte à aula daquele tema, releia o resumo e refaça as questões dela. Revisar em dias diferentes fixa melhor do que repetir tudo de uma vez na véspera."
+            ]
+          }
+        ],
+        "introducao": "Trabalho, potência, conservação da energia, usinas, colisões, fluidos e gravitação: esta revisão junta o módulo em questões novas que misturam os temas, como o Enem faz com a conta de luz, a represa, o mergulho e o satélite.",
+        "mapaMental": {
+          "centro": "Revisão do módulo",
+          "ramos": [
+            {
+              "titulo": "Energia",
+              "itens": [
+                "trabalho e potência",
+                "rendimento",
+                "kWh na conta de luz"
+              ]
+            },
+            {
+              "titulo": "Colisões",
+              "itens": [
+                "m·v antes e depois",
+                "cinética só nas elásticas"
+              ]
+            },
+            {
+              "titulo": "Fluidos",
+              "itens": [
+                "força sobre área",
+                "prensa hidráulica",
+                "empuxo"
+              ]
+            },
+            {
+              "titulo": "Céu",
+              "itens": [
+                "leis de Kepler",
+                "marés",
+                "satélites caem o tempo todo"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🎢",
+            "conceito": "Carrinho que troca altura por velocidade",
+            "liga": "energia mecanica",
+            "porque": "Cinética + potencial constante sem atrito."
+          },
+          {
+            "icone": "🤿",
+            "conceito": "Ouvido apertando no fundo",
+            "liga": "lei de stevin",
+            "porque": "Mais fundo, mais pressão."
+          },
+          {
+            "icone": "🌕",
+            "conceito": "Lua puxando o mar",
+            "liga": "gravitacao universal",
+            "porque": "Massas se atraem com o inverso do quadrado."
+          }
+        ],
+        "pontos": [
+          "Energia: quanto, em quanto tempo e com que aproveitamento.",
+          "**Energia mecânica** conservada sem atrito: v = √(2gh).",
+          "Consumo = potência × tempo.",
+          "**Lei de Stevin**: +1 atm a cada 10 m de água.",
+          "Empuxo = peso do líquido deslocado.",
+          "**Gravitação universal**: força cai com o quadrado da distância."
+        ],
+        "perolas": [
+          "Antes da conta, pergunte o que se conserva."
+        ],
+        "reforcar": [
+          "energia mecanica",
+          "lei de stevin",
+          "gravitacao universal"
         ]
       }
     }
@@ -5162,6 +5389,930 @@
         "Errou a casa.",
         "É a parte fora da água.",
         "Ele flutua."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q01",
+      "tema": "As leis de Kepler",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Pela primeira lei de Kepler, as órbitas dos planetas são:",
+      "alternativas": [
+        "Elipses, com o Sol num dos focos",
+        "Retas",
+        "Espirais",
+        "Elipses com a Terra no foco",
+        "Círculos perfeitos com o Sol fora deles"
+      ],
+      "correta": 0,
+      "explicacao": "Muitas são quase circulares, mas são elipses. Dica de mergulhador: elipse com o Sol no foco.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "O Sol está no foco.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q02",
+      "tema": "As leis de Kepler",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Pela segunda lei de Kepler, um planeta se move mais rápido:",
+      "alternativas": [
+        "Quando está parado",
+        "Quando está mais perto do Sol",
+        "Só no inverno",
+        "Quando está mais longe do Sol",
+        "Sempre na mesma velocidade"
+      ],
+      "correta": 1,
+      "explicacao": "Áreas iguais em tempos iguais. Dica de mergulhador: perto do Sol, pé no acelerador.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Ao contrário.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q03",
+      "tema": "As leis de Kepler",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "As estações do ano na Terra ocorrem principalmente por causa:",
+      "alternativas": [
+        "Da inclinação do eixo de rotação da Terra",
+        "Da Lua",
+        "Das marés",
+        "Da distância ao Sol",
+        "Da velocidade da Terra"
+      ],
+      "correta": 0,
+      "explicacao": "A inclinação muda o ângulo de chegada da luz. Dica de mergulhador: eixo torto, estações.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "A órbita é quase circular.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q04",
+      "tema": "As leis de Kepler",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Pela terceira lei de Kepler, um planeta mais distante do Sol tem:",
+      "alternativas": [
+        "O mesmo período",
+        "Período zero",
+        "Órbita reta",
+        "Período de translação maior",
+        "Período menor"
+      ],
+      "correta": 3,
+      "explicacao": "T² proporcional a R³. Dica de mergulhador: mais longe, ano mais longo.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q05",
+      "tema": "As leis de Kepler",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "A segunda lei de Kepler diz que a linha Sol–planeta varre:",
+      "alternativas": [
+        "Velocidades iguais",
+        "Massas iguais",
+        "Distâncias iguais em tempos iguais",
+        "Áreas iguais em tempos iguais",
+        "Ângulos iguais sempre"
+      ],
+      "correta": 3,
+      "explicacao": "Por isso a velocidade varia na órbita. Dica de mergulhador: área igual, ritmo diferente.",
+      "comentarios": [
+        "A velocidade varia.",
+        "Não.",
+        "São as áreas.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q06",
+      "tema": "As leis de Kepler",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "O raio da órbita de Marte é cerca de 1,5 vez o da Terra. Pela terceira lei de Kepler, o ano marciano dura cerca de:",
+      "alternativas": [
+        "3,4 anos",
+        "0,5 ano",
+        "1,5 ano",
+        "1,8 ano terrestre",
+        "2,25 anos"
+      ],
+      "correta": 3,
+      "explicacao": "T = √(1,5³) ≈ 1,84. Dica de mergulhador: cubo do raio, depois raiz quadrada.",
+      "comentarios": [
+        "É o cubo, sem raiz.",
+        "Não.",
+        "Não é proporcional direto.",
+        "",
+        "É o quadrado."
+      ],
+      "revisar": "raio orbital e período de Marte"
+    },
+    {
+      "id": "fis-gravitacao-q07",
+      "tema": "Gravitação universal",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Pela lei de Newton, a força gravitacional entre dois corpos aumenta quando:",
+      "alternativas": [
+        "A temperatura cai",
+        "A distância aumenta",
+        "As massas diminuem",
+        "As massas aumentam",
+        "Os corpos são pintados"
+      ],
+      "correta": 3,
+      "explicacao": "F proporcional ao produto das massas. Dica de mergulhador: mais massa, mais atração.",
+      "comentarios": [
+        "Não.",
+        "Diminui.",
+        "Ao contrário.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q08",
+      "tema": "Gravitação universal",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Se a distância entre dois corpos dobra, a força gravitacional entre eles:",
+      "alternativas": [
+        "Quadruplica",
+        "Fica quatro vezes menor",
+        "Fica duas vezes menor",
+        "Dobra",
+        "Fica igual"
+      ],
+      "correta": 1,
+      "explicacao": "F ∝ 1/d²: 1/2² = 1/4. Dica de mergulhador: distância em dobro, força em um quarto.",
+      "comentarios": [
+        "Inverteu.",
+        "",
+        "É o quadrado.",
+        "Ao contrário.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q09",
+      "tema": "Gravitação universal",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Uma pessoa pesa menos na Lua do que na Terra porque:",
+      "alternativas": [
+        "A gravidade da Lua é menor",
+        "A Lua não tem ar",
+        "Na Lua não há gravidade",
+        "A pessoa perde massa",
+        "A Lua gira mais rápido"
+      ],
+      "correta": 0,
+      "explicacao": "g = G·M/R². Dica de mergulhador: menos massa no astro, peso menor.",
+      "comentarios": [
+        "",
+        "Não é o motivo.",
+        "Há, mas é menor.",
+        "A massa é a mesma.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q10",
+      "tema": "Gravitação universal",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "As marés altas e baixas dos oceanos são causadas principalmente:",
+      "alternativas": [
+        "Pelos terremotos",
+        "Pela atração gravitacional da Lua",
+        "Pela rotação do Sol",
+        "Pelos rios",
+        "Pelo vento"
+      ],
+      "correta": 1,
+      "explicacao": "A Lua puxa a água, com ajuda do Sol. Dica de mergulhador: maré segue a Lua.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "Não.",
+        "Gera ondas, não marés."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q11",
+      "tema": "Gravitação universal",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Se a massa de um corpo dobra e a distância até outro também dobra, a força gravitacional entre eles:",
+      "alternativas": [
+        "Quadruplica",
+        "Fica igual",
+        "Dobra",
+        "Fica quatro vezes menor",
+        "Fica pela metade"
+      ],
+      "correta": 4,
+      "explicacao": "2 ÷ 2² = 1/2. Dica de mergulhador: multiplique os fatores.",
+      "comentarios": [
+        "Não.",
+        "A distância entra ao quadrado.",
+        "Não.",
+        "Esqueceu a massa.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q12",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "A força que mantém a Lua em órbita ao redor da Terra é:",
+      "alternativas": [
+        "O atrito com o espaço",
+        "A gravidade da Terra",
+        "A força magnética",
+        "O vento solar",
+        "Nenhuma força"
+      ],
+      "correta": 1,
+      "explicacao": "A gravidade é a força centrípeta da órbita. Dica de mergulhador: a mesma força da maçã.",
+      "comentarios": [
+        "Não há.",
+        "",
+        "Não.",
+        "Não.",
+        "Seguiria em reta."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q13",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Um satélite geoestacionário:",
+      "alternativas": [
+        "Gira em 24 h, parado sobre o equador",
+        "Passa sobre os polos a cada hora",
+        "Não sente gravidade",
+        "Fica parado no espaço sem girar",
+        "Tem órbita muito baixa"
+      ],
+      "correta": 0,
+      "explicacao": "Acompanha a rotação da Terra. Dica de mergulhador: antena fixa, satélite fixo no céu.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Sente.",
+        "Gira junto com a Terra.",
+        "É alta, cerca de 36 mil km."
+      ],
+      "revisar": "altitude da órbita geoestacionária"
+    },
+    {
+      "id": "fis-gravitacao-q14",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Astronautas flutuam dentro da estação espacial, a cerca de 400 km de altitude, porque:",
+      "alternativas": [
+        "Lá não há gravidade",
+        "Eles e a estação estão em queda livre ao redor da Terra",
+        "A estação tem ímãs",
+        "A Lua os puxa",
+        "O vácuo os empurra para cima"
+      ],
+      "correta": 1,
+      "explicacao": "Todos caem juntos, sem apoio. Dica de mergulhador: flutuar é cair junto com a nave.",
+      "comentarios": [
+        "A gravidade ainda é cerca de 90% da superfície.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ],
+      "revisar": "gravidade a 400 km de altitude"
+    },
+    {
+      "id": "fis-gravitacao-q15",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Dois satélites orbitam a Terra, um a 500 km e outro a 20.000 km de altitude. O mais baixo tem:",
+      "alternativas": [
+        "Maior velocidade e menor período",
+        "Velocidade zero",
+        "Período de 24 h",
+        "A mesma velocidade",
+        "Menor velocidade e maior período"
+      ],
+      "correta": 0,
+      "explicacao": "Mais perto, gravidade maior, volta mais rápida. Dica de mergulhador: órbita baixa, volta curta.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Isso é o geoestacionário.",
+        "Não.",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q16",
+      "tema": "As leis de Kepler",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "O tempo que um planeta leva para dar uma volta completa em torno do Sol chama-se:",
+      "alternativas": [
+        "Período de rotação",
+        "Eclipse",
+        "Afélio",
+        "Frequência de maré",
+        "Período de translação"
+      ],
+      "correta": 4,
+      "explicacao": "Na Terra, cerca de um ano. Dica de mergulhador: translação é a volta no Sol; rotação, o giro do dia.",
+      "comentarios": [
+        "É a volta em torno de si.",
+        "Não.",
+        "É um ponto da órbita.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q17",
+      "tema": "Gravitação universal",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "A lei da gravitação universal foi proposta por:",
+      "alternativas": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Galileu Galilei",
+        "Johannes Kepler",
+        "Nicolau Copérnico"
+      ],
+      "correta": 0,
+      "explicacao": "A mesma força para a maçã e a Lua. Dica de mergulhador: Newton juntou céu e Terra.",
+      "comentarios": [
+        "",
+        "Propôs a relatividade depois.",
+        "Estudou a queda dos corpos.",
+        "Descreveu as órbitas.",
+        "Propôs o heliocentrismo."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q18",
+      "tema": "Gravitação universal",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Um corpo pesa 800 N na superfície da Terra. A uma altura igual a um raio terrestre (distância do centro dobrada), ele pesaria:",
+      "alternativas": [
+        "800 N",
+        "400 N",
+        "1.600 N",
+        "200 N",
+        "0 N"
+      ],
+      "correta": 3,
+      "explicacao": "800 ÷ 4. Dica de mergulhador: conte a distância a partir do centro.",
+      "comentarios": [
+        "Muda com a distância.",
+        "A distância entra ao quadrado.",
+        "Ao contrário.",
+        "",
+        "Não some."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q19",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Num satélite em órbita circular, a força centrípeta é:",
+      "alternativas": [
+        "O empuxo do ar",
+        "A força do motor",
+        "Nula",
+        "A própria força gravitacional",
+        "A pressão da luz"
+      ],
+      "correta": 3,
+      "explicacao": "F = G·M·m/d² faz o papel de m·v²/R. Dica de mergulhador: gravidade curva a trajetória.",
+      "comentarios": [
+        "Não.",
+        "Não precisa.",
+        "Sem ela, não haveria curva.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q20",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "A Estação Espacial Internacional dá uma volta na Terra em cerca de 90 minutos. Em um dia, ela dá cerca de:",
+      "alternativas": [
+        "16 voltas",
+        "90 voltas",
+        "4 voltas",
+        "24 voltas",
+        "1 volta"
+      ],
+      "correta": 0,
+      "explicacao": "1.440 min ÷ 90 min = 16. Dica de mergulhador: minutos do dia sobre o período.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Errou.",
+        "Uma por hora não.",
+        "Isso é o geoestacionário."
+      ],
+      "revisar": "período orbital da Estação Espacial Internacional"
+    },
+    {
+      "id": "fis-revisao-energia-q01",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma TV de 100 W fica ligada 5 horas por dia. Em 30 dias, consome:",
+      "alternativas": [
+        "150 kWh",
+        "15 kWh",
+        "500 kWh",
+        "0,5 kWh",
+        "3 kWh"
+      ],
+      "correta": 1,
+      "explicacao": "0,1 kW × 5 h × 30 = 15 kWh. Dica de mergulhador: kW × h × dias.",
+      "comentarios": [
+        "Errou a casa.",
+        "",
+        "Não converteu watt para kW.",
+        "É um dia.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q02",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma bola de 1 kg a 4 m/s tem energia cinética de:",
+      "alternativas": [
+        "32 J",
+        "16 J",
+        "4 J",
+        "2 J",
+        "8 J"
+      ],
+      "correta": 4,
+      "explicacao": "1 × 16 ÷ 2. Dica de mergulhador: m·v²/2.",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu o meio.",
+        "Esqueceu o quadrado.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q03",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma rolha de cortiça flutua na água e uma bolinha de chumbo afunda porque:",
+      "alternativas": [
+        "O chumbo é menos denso",
+        "A cortiça é menos densa que a água, e o chumbo é mais denso",
+        "A cortiça não tem massa",
+        "A água atrai o chumbo",
+        "A cortiça é mais pesada"
+      ],
+      "correta": 1,
+      "explicacao": "Comparação de densidades. Dica de mergulhador: menos denso que a água, boia.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Tem.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q04",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Qual transformação de energia ocorre num ventilador ligado?",
+      "alternativas": [
+        "Elétrica em cinética",
+        "Luminosa em química",
+        "Cinética em elétrica",
+        "Térmica em elétrica",
+        "Química em nuclear"
+      ],
+      "correta": 0,
+      "explicacao": "O motor gira as pás. Dica de mergulhador: motor é o gerador ao contrário.",
+      "comentarios": [
+        "",
+        "Isso é fotossíntese.",
+        "Isso é gerador.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q05",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Segundo a terceira lei de Kepler, Netuno, muito mais distante do Sol que a Terra, tem:",
+      "alternativas": [
+        "O mesmo ano",
+        "Um ano muito mais longo que o terrestre",
+        "Um ano mais curto",
+        "Nenhuma órbita",
+        "Ano de um dia"
+      ],
+      "correta": 1,
+      "explicacao": "T² ∝ R³. Dica de mergulhador: longe do Sol, ano longo.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Ao contrário.",
+        "Tem.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q06",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um mergulhador nota que, ao descer, a pressão nos ouvidos aumenta. Isso acontece porque:",
+      "alternativas": [
+        "Há mais água acima dele",
+        "O oxigênio acaba",
+        "A água esfria",
+        "A gravidade aumenta muito",
+        "O empuxo some"
+      ],
+      "correta": 0,
+      "explicacao": "Lei de Stevin. Dica de mergulhador: cada 10 m, mais uma atmosfera.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não é o motivo.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q07",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um motor que recebe 2.000 W e entrega 1.500 W tem rendimento de:",
+      "alternativas": [
+        "25%",
+        "50%",
+        "133%",
+        "100%",
+        "75%"
+      ],
+      "correta": 4,
+      "explicacao": "1.500 ÷ 2.000. Dica de mergulhador: útil sobre total.",
+      "comentarios": [
+        "É a perda.",
+        "Errou.",
+        "Inverteu.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q08",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma criança desce um escorregador de 5 m de altura e chega embaixo a 6 m/s (g = 10 m/s²). A porcentagem de energia mecânica perdida foi:",
+      "alternativas": [
+        "50%",
+        "100%",
+        "0%",
+        "64%",
+        "36%"
+      ],
+      "correta": 3,
+      "explicacao": "Inicial 50 J/kg; final 18 J/kg; perdeu 32 de 50. Dica de mergulhador: compare por quilo, a massa se cancela.",
+      "comentarios": [
+        "Errou.",
+        "Ela chegou com velocidade.",
+        "Houve perda.",
+        "",
+        "É a que sobrou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q09",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um bloco de 4 kg a 6 m/s colide e gruda num bloco de 2 kg parado. A velocidade do conjunto é:",
+      "alternativas": [
+        "6 m/s",
+        "12 m/s",
+        "2 m/s",
+        "4 m/s",
+        "3 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "24 ÷ 6 = 4. Dica de mergulhador: Q antes = Q depois.",
+      "comentarios": [
+        "Ignorou o outro bloco.",
+        "Errou.",
+        "Errou.",
+        "",
+        "Dividiu por 2."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q10",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma pessoa de 600 N está numa piscina e recebe empuxo de 540 N. Seu peso aparente é:",
+      "alternativas": [
+        "540 N",
+        "600 N",
+        "1.140 N",
+        "60 N",
+        "0 N"
+      ],
+      "correta": 3,
+      "explicacao": "600 − 540. Dica de mergulhador: peso aparente = peso − empuxo.",
+      "comentarios": [
+        "É o empuxo.",
+        "Esqueceu o empuxo.",
+        "Somou.",
+        "",
+        "Ela não flutua por completo."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q11",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um elevador hidráulico tem êmbolos de 5 cm² e 500 cm². Para erguer 8.000 N, a força no êmbolo menor é:",
+      "alternativas": [
+        "8.000 N",
+        "800 N",
+        "16 N",
+        "80 N",
+        "800.000 N"
+      ],
+      "correta": 3,
+      "explicacao": "Razão de áreas 100: 8.000 ÷ 100. Dica de mergulhador: área cem vezes maior, força cem vezes maior.",
+      "comentarios": [
+        "Não dividiu.",
+        "Errou a casa.",
+        "Errou.",
+        "",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q12",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Se a distância entre a Terra e a Lua fosse a metade, a atração entre elas seria:",
+      "alternativas": [
+        "Duas vezes maior",
+        "Oito vezes maior",
+        "Quatro vezes menor",
+        "Quatro vezes maior",
+        "Igual"
+      ],
+      "correta": 3,
+      "explicacao": "1/(1/2)² = 4. Dica de mergulhador: metade da distância, quádruplo da força.",
+      "comentarios": [
+        "É ao quadrado.",
+        "Não.",
+        "Inverteu.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q13",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma bomba eleva 600 kg de água a uma caixa a 10 m de altura em 1 minuto (g = 10 m/s²). A potência útil é:",
+      "alternativas": [
+        "100 W",
+        "6.000 W",
+        "600 W",
+        "1.000 W",
+        "60.000 W"
+      ],
+      "correta": 3,
+      "explicacao": "60.000 J ÷ 60 s. Dica de mergulhador: minuto em segundos antes de dividir.",
+      "comentarios": [
+        "Errou a casa.",
+        "Usou 10 s.",
+        "Errou.",
+        "",
+        "Esqueceu o tempo."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q14",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma represa tem queda de 80 m e vazão de 500 m³/s (d = 1.000 kg/m³, g = 10 m/s²). Com rendimento de 90%, a potência elétrica é:",
+      "alternativas": [
+        "3.600 MW",
+        "36 MW",
+        "360 MW",
+        "400 MW",
+        "40 MW"
+      ],
+      "correta": 2,
+      "explicacao": "500.000 kg/s × 10 × 80 = 4 × 10⁸ W; × 0,9 = 3,6 × 10⁸ W. Dica de mergulhador: m³ de água vira mil kg.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou a casa.",
+        "",
+        "Esqueceu o rendimento.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q15",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma bola de 0,2 kg é solta de 5 m e sobe só até 3,2 m após quicar (g = 10 m/s²). A energia perdida no choque com o chão foi:",
+      "alternativas": [
+        "0 J",
+        "16,4 J",
+        "3,6 J",
+        "10 J",
+        "6,4 J"
+      ],
+      "correta": 2,
+      "explicacao": "0,2 × 10 × (5 − 3,2). Dica de mergulhador: compare as alturas.",
+      "comentarios": [
+        "Houve perda.",
+        "Somou.",
+        "",
+        "É a inicial.",
+        "É a final."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q16",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um objeto flutua na água com 75% do volume submerso. Colocado num líquido de densidade 1,5 g/cm³, a fração submersa passa a ser:",
+      "alternativas": [
+        "25%",
+        "112,5%",
+        "50%",
+        "100%",
+        "75%"
+      ],
+      "correta": 2,
+      "explicacao": "d(objeto) = 0,75 g/cm³; 0,75 ÷ 1,5. Dica de mergulhador: fração submersa = d(corpo) ÷ d(líquido).",
+      "comentarios": [
+        "Errou.",
+        "Multiplicou.",
+        "",
+        "Ele flutua com folga.",
+        "A densidade do líquido mudou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q17",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Num planeta com a mesma massa da Terra e metade do raio, um astronauta de 70 kg pesaria (g da Terra = 10 m/s²):",
+      "alternativas": [
+        "1.400 N",
+        "350 N",
+        "175 N",
+        "700 N",
+        "2.800 N"
+      ],
+      "correta": 4,
+      "explicacao": "g = 4 × 10 = 40 m/s²; P = 70 × 40. Dica de mergulhador: raio pela metade, gravidade quatro vezes.",
+      "comentarios": [
+        "Esqueceu o quadrado.",
+        "Inverteu.",
+        "Inverteu e elevou.",
+        "É o peso na Terra.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q18",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma bola de 0,5 kg é lançada para cima a 8 m/s, sem resistência do ar (g = 10 m/s²). A altura máxima é:",
+      "alternativas": [
+        "6,4 m",
+        "32 m",
+        "3,2 m",
+        "1,6 m",
+        "0,8 m"
+      ],
+      "correta": 2,
+      "explicacao": "m·g·h = m·v²/2: h = 64 ÷ 20. Dica de mergulhador: a massa não importa.",
+      "comentarios": [
+        "Esqueceu o meio.",
+        "Errou a casa.",
+        "",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q19",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um prédio tem uma caixa-d'água 12 m acima de uma torneira (d = 1.000 kg/m³, g = 10 m/s²). A pressão da água na torneira, além da atmosférica, é:",
+      "alternativas": [
+        "1.200.000 Pa",
+        "120 Pa",
+        "120.000 Pa",
+        "1.200 Pa",
+        "12.000 Pa"
+      ],
+      "correta": 2,
+      "explicacao": "d·g·h = 1.000 × 10 × 12. Dica de mergulhador: cerca de 1,2 atm a mais.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou.",
+        "",
+        "Errou.",
+        "Esqueceu o g."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q20",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um carro de 1.000 kg a 20 m/s freia até parar em 40 m. A força média de atrito foi:",
+      "alternativas": [
+        "10.000 N",
+        "2.500 N",
+        "500 N",
+        "200.000 N",
+        "5.000 N"
+      ],
+      "correta": 4,
+      "explicacao": "Trabalho do atrito = ΔEc: F × 40 = 200.000. Dica de mergulhador: energia cinética dividida pela distância.",
+      "comentarios": [
+        "Esqueceu o meio.",
+        "Errou.",
+        "Errou a casa.",
+        "Esqueceu a distância.",
+        ""
       ]
     }
   ],
@@ -9486,6 +10637,966 @@
         "Não."
       ],
       "revisar": "densidades do gelo e da água do mar"
+    },
+    {
+      "id": "fis-gravitacao-q01-v1",
+      "varianteDe": "fis-gravitacao-q01",
+      "tema": "As leis de Kepler",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Segundo Kepler, o Sol ocupa, na órbita elíptica de um planeta:",
+      "alternativas": [
+        "Um dos focos da elipse",
+        "Nenhuma posição fixa",
+        "Um ponto fora da elipse",
+        "O centro exato",
+        "A borda da órbita"
+      ],
+      "correta": 0,
+      "explicacao": "Primeira lei. Dica de mergulhador: foco, não centro.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Está num foco.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q02-v1",
+      "varianteDe": "fis-gravitacao-q02",
+      "tema": "As leis de Kepler",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "O ponto da órbita mais próximo do Sol chama-se:",
+      "alternativas": [
+        "Zênite",
+        "Equinócio",
+        "Afélio",
+        "Solstício",
+        "Periélio"
+      ],
+      "correta": 4,
+      "explicacao": "Peri = perto. Dica de mergulhador: periélio, perto; afélio, afastado.",
+      "comentarios": [
+        "É o ponto acima do observador.",
+        "É uma data das estações.",
+        "É o mais distante.",
+        "É outra data.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q03-v1",
+      "varianteDe": "fis-gravitacao-q03",
+      "tema": "As leis de Kepler",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Quando é verão no Hemisfério Sul, no Hemisfério Norte é:",
+      "alternativas": [
+        "Não há estação",
+        "Verão também",
+        "Outono sempre",
+        "Sempre primavera",
+        "Inverno"
+      ],
+      "correta": 4,
+      "explicacao": "Inclinação do eixo. Dica de mergulhador: Natal no calor aqui, na neve lá.",
+      "comentarios": [
+        "Há.",
+        "Os hemisférios se alternam.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q04-v1",
+      "varianteDe": "fis-gravitacao-q04",
+      "tema": "As leis de Kepler",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Um planeta tem raio orbital 4 vezes o de outro. Seu período é maior em:",
+      "alternativas": [
+        "16 vezes",
+        "64 vezes",
+        "2 vezes",
+        "4 vezes",
+        "8 vezes"
+      ],
+      "correta": 4,
+      "explicacao": "T² ∝ R³: T ∝ √(4³) = 8. Dica de mergulhador: raio ao cubo, depois raiz.",
+      "comentarios": [
+        "Não.",
+        "Isso é o R³.",
+        "Não.",
+        "Não é proporcional direto.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q05-v1",
+      "varianteDe": "fis-gravitacao-q05",
+      "tema": "As leis de Kepler",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Um cometa com órbita muito alongada passa perto do Sol e depois vai para longe. Em relação à velocidade, ele:",
+      "alternativas": [
+        "Para no afélio",
+        "É muito rápido perto do Sol e lento longe",
+        "Tem velocidade constante",
+        "Acelera longe do Sol",
+        "É lento perto do Sol"
+      ],
+      "correta": 1,
+      "explicacao": "Segunda lei. Dica de mergulhador: cometa passa rapidinho pelo Sol.",
+      "comentarios": [
+        "Desacelera, mas não para.",
+        "",
+        "Não.",
+        "Não.",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q06-v1",
+      "varianteDe": "fis-gravitacao-q06",
+      "tema": "As leis de Kepler",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Um planeta hipotético tem raio orbital 9 vezes o da Terra. Seu período é:",
+      "alternativas": [
+        "9 anos",
+        "3 anos",
+        "81 anos",
+        "27 anos terrestres",
+        "729 anos"
+      ],
+      "correta": 3,
+      "explicacao": "T = √(9³) = √729 = 27. Dica de mergulhador: T² ∝ R³.",
+      "comentarios": [
+        "Não é proporcional direto.",
+        "É a raiz.",
+        "É o quadrado.",
+        "",
+        "É o cubo."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q07-v1",
+      "varianteDe": "fis-gravitacao-q07",
+      "tema": "Gravitação universal",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Pela lei de Newton, a força gravitacional diminui quando:",
+      "alternativas": [
+        "As massas aumentam",
+        "Os corpos esquentam",
+        "O dia acaba",
+        "A distância diminui",
+        "A distância entre os corpos aumenta"
+      ],
+      "correta": 4,
+      "explicacao": "F inversamente proporcional a d². Dica de mergulhador: longe, atração fraca.",
+      "comentarios": [
+        "Aumenta.",
+        "Não.",
+        "Não.",
+        "Aumenta.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q08-v1",
+      "varianteDe": "fis-gravitacao-q08",
+      "tema": "Gravitação universal",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Se a distância entre dois corpos triplica, a força gravitacional fica:",
+      "alternativas": [
+        "Nove vezes maior",
+        "Três vezes menor",
+        "Nove vezes menor",
+        "27 vezes menor",
+        "Seis vezes menor"
+      ],
+      "correta": 2,
+      "explicacao": "1/3² = 1/9. Dica de mergulhador: eleve o fator ao quadrado.",
+      "comentarios": [
+        "Inverteu.",
+        "É o quadrado.",
+        "",
+        "Seria o cubo.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q09-v1",
+      "varianteDe": "fis-gravitacao-q09",
+      "tema": "Gravitação universal",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Por que não sentimos a atração gravitacional entre duas pessoas próximas?",
+      "alternativas": [
+        "Porque ela não existe",
+        "Porque a Terra a cancela",
+        "Porque o ar a bloqueia",
+        "Porque G é muito pequeno e as massas são pequenas",
+        "Porque só existe entre planetas"
+      ],
+      "correta": 3,
+      "explicacao": "A força é minúscula. Dica de mergulhador: só gigantes puxam forte.",
+      "comentarios": [
+        "Existe.",
+        "Não.",
+        "Não.",
+        "",
+        "Vale para tudo."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q10-v1",
+      "varianteDe": "fis-gravitacao-q10",
+      "tema": "Gravitação universal",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "As marés mais altas, chamadas de sizígia, ocorrem nas fases:",
+      "alternativas": [
+        "Quarto crescente e minguante",
+        "Em qualquer fase igual",
+        "Lua nova e Lua cheia",
+        "Só na Lua cheia",
+        "Só no eclipse"
+      ],
+      "correta": 2,
+      "explicacao": "Sol, Terra e Lua alinhados somam as atrações. Dica de mergulhador: alinhou, a maré subiu.",
+      "comentarios": [
+        "São as marés mais fracas.",
+        "Não.",
+        "",
+        "Nova também.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q11-v1",
+      "varianteDe": "fis-gravitacao-q11",
+      "tema": "Gravitação universal",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Um planeta tem o dobro da massa e o dobro do raio da Terra. A gravidade na sua superfície é:",
+      "alternativas": [
+        "O dobro",
+        "Um quarto",
+        "Igual",
+        "Quatro vezes maior",
+        "Metade da terrestre"
+      ],
+      "correta": 4,
+      "explicacao": "g ∝ M/R²: 2 ÷ 4. Dica de mergulhador: massa em cima, raio ao quadrado embaixo.",
+      "comentarios": [
+        "O raio entra ao quadrado.",
+        "Esqueceu a massa.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q12-v1",
+      "varianteDe": "fis-gravitacao-q12",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Se a gravidade da Terra desaparecesse de repente, a Lua:",
+      "alternativas": [
+        "Cairia na Terra",
+        "Continuaria em órbita",
+        "Seguiria em linha reta pela tangente",
+        "Voltaria",
+        "Ficaria parada"
+      ],
+      "correta": 2,
+      "explicacao": "Inércia sem força centrípeta. Dica de mergulhador: sem barbante gravitacional, reta.",
+      "comentarios": [
+        "Não haveria atração.",
+        "Sem centrípeta, não.",
+        "",
+        "Não.",
+        "Tem velocidade."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q13-v1",
+      "varianteDe": "fis-gravitacao-q13",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Antenas de TV por assinatura ficam fixas, sem girar, porque o satélite:",
+      "alternativas": [
+        "Está na superfície",
+        "Muda de lugar todo dia",
+        "Gira ao contrário da Terra",
+        "É geoestacionário, com o mesmo período da rotação da Terra",
+        "Fica parado no espaço"
+      ],
+      "correta": 3,
+      "explicacao": "Período de 24 h. Dica de mergulhador: girando junto, parece parado.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Gira com a Terra."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q14-v1",
+      "varianteDe": "fis-gravitacao-q14",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Num elevador cujo cabo se rompe, em queda livre, uma pessoa sobre a balança vê marcar:",
+      "alternativas": [
+        "Metade do peso",
+        "O próprio peso",
+        "Zero",
+        "O dobro do peso",
+        "Um valor negativo"
+      ],
+      "correta": 2,
+      "explicacao": "Pessoa e balança caem juntas. Dica de mergulhador: mesma sensação do astronauta.",
+      "comentarios": [
+        "Não.",
+        "Não há apoio.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q15-v1",
+      "varianteDe": "fis-gravitacao-q15",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Por que um satélite em órbita não cai na Terra?",
+      "alternativas": [
+        "A Lua o segura",
+        "O ar o sustenta",
+        "Ele cai sem parar, mas contorna a Terra",
+        "A gravidade não age nele",
+        "Ele tem motor sempre ligado"
+      ],
+      "correta": 2,
+      "explicacao": "A órbita é uma queda contínua que não atinge o chão. Dica de mergulhador: cai e erra o chão para sempre.",
+      "comentarios": [
+        "Não.",
+        "Quase não há ar.",
+        "",
+        "Age.",
+        "Não precisa."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q16-v1",
+      "varianteDe": "fis-gravitacao-q16",
+      "tema": "As leis de Kepler",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "A rotação da Terra em torno do próprio eixo determina:",
+      "alternativas": [
+        "O ano",
+        "As fases da Lua",
+        "As estações do ano",
+        "As marés sozinha",
+        "O dia e a noite"
+      ],
+      "correta": 4,
+      "explicacao": "Uma volta em cerca de 24 h. Dica de mergulhador: rotação, relógio do dia.",
+      "comentarios": [
+        "É a translação.",
+        "Não.",
+        "Vêm da inclinação e da translação.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q17-v1",
+      "varianteDe": "fis-gravitacao-q17",
+      "tema": "Gravitação universal",
+      "dificuldade": "facil",
+      "fase": "fis-gravitacao",
+      "enunciado": "A ideia de que o Sol, e não a Terra, está no centro do sistema planetário é chamada de:",
+      "alternativas": [
+        "Heliocentrismo",
+        "Gravitação",
+        "Relatividade",
+        "Geocentrismo",
+        "Atomismo"
+      ],
+      "correta": 0,
+      "explicacao": "Defendido por Copérnico e confirmado por Galileu e Kepler. Dica de mergulhador: hélio é Sol.",
+      "comentarios": [
+        "",
+        "É a força.",
+        "Não.",
+        "Terra no centro.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q18-v1",
+      "varianteDe": "fis-gravitacao-q18",
+      "tema": "Gravitação universal",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Um corpo pesa 900 N na superfície. A uma distância do centro da Terra igual a três raios, pesaria:",
+      "alternativas": [
+        "2.700 N",
+        "100 N",
+        "900 N",
+        "0 N",
+        "300 N"
+      ],
+      "correta": 1,
+      "explicacao": "900 ÷ 9. Dica de mergulhador: três raios, um nono do peso.",
+      "comentarios": [
+        "Inverteu.",
+        "",
+        "Muda.",
+        "Não some.",
+        "É ao quadrado."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q19-v1",
+      "varianteDe": "fis-gravitacao-q19",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "medio",
+      "fase": "fis-gravitacao",
+      "enunciado": "Para colocar um satélite numa órbita mais alta, ele precisa ter, nessa órbita:",
+      "alternativas": [
+        "A mesma velocidade",
+        "Velocidade da luz",
+        "Velocidade menor que numa órbita baixa",
+        "Velocidade zero",
+        "Velocidade maior"
+      ],
+      "correta": 2,
+      "explicacao": "Mais longe, gravidade menor, menos velocidade para fazer a curva. Dica de mergulhador: lá em cima, devagar.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Cairia.",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-gravitacao-q20-v1",
+      "varianteDe": "fis-gravitacao-q20",
+      "tema": "Satélites e órbitas",
+      "dificuldade": "dificil",
+      "fase": "fis-gravitacao",
+      "enunciado": "Um satélite com período de 120 minutos dá, em um dia:",
+      "alternativas": [
+        "2 voltas",
+        "24 voltas",
+        "5 voltas",
+        "12 voltas",
+        "120 voltas"
+      ],
+      "correta": 3,
+      "explicacao": "1.440 ÷ 120. Dica de mergulhador: 1.440 minutos num dia.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "Errou.",
+        "",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q01-v1",
+      "varianteDe": "fis-revisao-energia-q01",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um computador de 300 W fica ligado 4 horas por dia. Em 30 dias, consome:",
+      "alternativas": [
+        "360 kWh",
+        "1,2 kWh",
+        "36 kWh",
+        "12 kWh",
+        "36.000 kWh"
+      ],
+      "correta": 2,
+      "explicacao": "0,3 × 4 × 30 = 36 kWh. Dica de mergulhador: passe watt para quilowatt.",
+      "comentarios": [
+        "Errou a casa.",
+        "É um dia.",
+        "",
+        "Errou.",
+        "Não converteu."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q02-v1",
+      "varianteDe": "fis-revisao-energia-q02",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um livro de 1 kg está numa estante a 2 m do chão (g = 10 m/s²). Sua energia potencial é:",
+      "alternativas": [
+        "2 J",
+        "20 J",
+        "10 J",
+        "200 J",
+        "12 J"
+      ],
+      "correta": 1,
+      "explicacao": "Ep = m·g·h = 1 × 10 × 2 = 20 J. Dica de mergulhador: altura guarda energia.",
+      "comentarios": [
+        "Esqueceu o g.",
+        "",
+        "Errou.",
+        "Errou a casa.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q03-v1",
+      "varianteDe": "fis-revisao-energia-q03",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um cubo de gelo flutua num copo de água porque:",
+      "alternativas": [
+        "A água esquenta o gelo",
+        "O copo o segura",
+        "O gelo é mais denso",
+        "O gelo é menos denso que a água líquida",
+        "O gelo não tem peso"
+      ],
+      "correta": 3,
+      "explicacao": "A água se expande ao congelar. Dica de mergulhador: gelo boia, por isso lagos congelam por cima.",
+      "comentarios": [
+        "Não explica.",
+        "Não.",
+        "Afundaria.",
+        "",
+        "Tem."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q04-v1",
+      "varianteDe": "fis-revisao-energia-q04",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Num gerador de bicicleta (dínamo) que acende o farol, a transformação é:",
+      "alternativas": [
+        "Química em elétrica",
+        "Cinética em elétrica e depois em luminosa",
+        "Nuclear em luminosa",
+        "Elétrica em cinética",
+        "Térmica em cinética"
+      ],
+      "correta": 1,
+      "explicacao": "O pedal gira o dínamo. Dica de mergulhador: pedalou, acendeu.",
+      "comentarios": [
+        "Isso é pilha.",
+        "",
+        "Não.",
+        "Ao contrário.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q05-v1",
+      "varianteDe": "fis-revisao-energia-q05",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Mercúrio, o planeta mais próximo do Sol, tem:",
+      "alternativas": [
+        "Órbita reta",
+        "Período igual ao da Terra",
+        "O maior período",
+        "O menor período de translação",
+        "Nenhuma translação"
+      ],
+      "correta": 3,
+      "explicacao": "Raio pequeno, período pequeno. Dica de mergulhador: perto do Sol, ano curto.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Ao contrário.",
+        "",
+        "Tem."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q06-v1",
+      "varianteDe": "fis-revisao-energia-q06",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Ao subir de avião, os ouvidos \"estalam\" porque:",
+      "alternativas": [
+        "O ar fica mais denso",
+        "A gravidade some",
+        "A pressão do ar externo diminui com a altitude",
+        "O avião vibra",
+        "A pressão aumenta"
+      ],
+      "correta": 2,
+      "explicacao": "O ar de dentro do ouvido se ajusta. Dica de mergulhador: no alto, menos ar em cima.",
+      "comentarios": [
+        "Fica menos.",
+        "Não.",
+        "",
+        "Não é o motivo.",
+        "Diminui."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q07-v1",
+      "varianteDe": "fis-revisao-energia-q07",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um motor de rendimento 60% recebe 500 W. A potência útil é:",
+      "alternativas": [
+        "200 W",
+        "300 W",
+        "500 W",
+        "833 W",
+        "60 W"
+      ],
+      "correta": 1,
+      "explicacao": "500 × 0,6. Dica de mergulhador: útil = total × rendimento.",
+      "comentarios": [
+        "É a perda.",
+        "",
+        "Esqueceu o rendimento.",
+        "Dividiu.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q08-v1",
+      "varianteDe": "fis-revisao-energia-q08",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um carrinho desce de 10 m e chega embaixo a 10 m/s (g = 10 m/s²). A fração de energia perdida foi:",
+      "alternativas": [
+        "75%",
+        "50%",
+        "25%",
+        "0%",
+        "100%"
+      ],
+      "correta": 1,
+      "explicacao": "Inicial 100 J/kg; final 50 J/kg. Dica de mergulhador: g·h contra v²/2.",
+      "comentarios": [
+        "Errou.",
+        "",
+        "Errou.",
+        "Houve perda.",
+        "Ele chegou com velocidade."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q09-v1",
+      "varianteDe": "fis-revisao-energia-q09",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Na colisão anterior, a energia cinética antes e depois é:",
+      "alternativas": [
+        "36 J antes e 24 J depois",
+        "48 J antes e 72 J depois",
+        "72 J antes e 72 J depois",
+        "144 J antes e 96 J depois",
+        "72 J antes e 48 J depois"
+      ],
+      "correta": 4,
+      "explicacao": "4 × 36 ÷ 2 = 72; 6 × 16 ÷ 2 = 48. Dica de mergulhador: inelástica perde cinética.",
+      "comentarios": [
+        "Esqueceu o quadrado.",
+        "Inverteu.",
+        "Grudou, perdeu energia.",
+        "Esqueceu o meio.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q10-v1",
+      "varianteDe": "fis-revisao-energia-q10",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma estátua de 2.000 N, mergulhada na água, recebe empuxo de 500 N. O cabo que a ergue lentamente faz força de:",
+      "alternativas": [
+        "2.500 N",
+        "500 N",
+        "1.500 N",
+        "0 N",
+        "2.000 N"
+      ],
+      "correta": 2,
+      "explicacao": "Equilíbrio: T + E = P. Dica de mergulhador: na água, o guindaste trabalha menos.",
+      "comentarios": [
+        "Somou.",
+        "É o empuxo.",
+        "",
+        "Não.",
+        "Esqueceu o empuxo."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q11-v1",
+      "varianteDe": "fis-revisao-energia-q11",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "No mesmo elevador hidráulico, se o êmbolo menor desce 50 cm, o maior sobe:",
+      "alternativas": [
+        "0,5 cm",
+        "5.000 cm",
+        "50 cm",
+        "5 cm",
+        "0 cm"
+      ],
+      "correta": 0,
+      "explicacao": "O volume de óleo é o mesmo: 5 × 50 = 500 × h. Dica de mergulhador: ganha força, perde deslocamento.",
+      "comentarios": [
+        "",
+        "Inverteu.",
+        "As áreas são diferentes.",
+        "Errou a casa.",
+        "Ele sobe."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q12-v1",
+      "varianteDe": "fis-revisao-energia-q12",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Se a massa da Lua fosse o triplo, a atração entre a Terra e a Lua seria:",
+      "alternativas": [
+        "Três vezes maior",
+        "Igual",
+        "27 vezes maior",
+        "Nove vezes maior",
+        "Três vezes menor"
+      ],
+      "correta": 0,
+      "explicacao": "F proporcional a cada massa. Dica de mergulhador: massa entra simples.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "A massa não entra ao quadrado.",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q13-v1",
+      "varianteDe": "fis-revisao-energia-q13",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um guindaste ergue 1.200 kg a 5 m em 30 s (g = 10 m/s²). A potência útil é:",
+      "alternativas": [
+        "20.000 W",
+        "200 W",
+        "400 W",
+        "2.000 W",
+        "60.000 W"
+      ],
+      "correta": 3,
+      "explicacao": "60.000 ÷ 30. Dica de mergulhador: m·g·h sobre t.",
+      "comentarios": [
+        "Errou a casa.",
+        "Errou a casa.",
+        "Errou.",
+        "",
+        "Esqueceu o tempo."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q14-v1",
+      "varianteDe": "fis-revisao-energia-q14",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma usina tem queda de 50 m e vazão de 200 m³/s (d = 1.000 kg/m³, g = 10 m/s²), com rendimento de 80%. A potência elétrica é:",
+      "alternativas": [
+        "800 MW",
+        "100 MW",
+        "125 MW",
+        "8 MW",
+        "80 MW"
+      ],
+      "correta": 4,
+      "explicacao": "200.000 × 10 × 50 = 10⁸ W; × 0,8. Dica de mergulhador: potência hidráulica vezes rendimento.",
+      "comentarios": [
+        "Errou a casa.",
+        "Esqueceu o rendimento.",
+        "Dividiu pelo rendimento.",
+        "Errou a casa.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q15-v1",
+      "varianteDe": "fis-revisao-energia-q15",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma bola de 0,5 kg é solta de 4 m e sobe até 3 m após quicar (g = 10 m/s²). A fração de energia perdida foi:",
+      "alternativas": [
+        "75%",
+        "50%",
+        "0%",
+        "33%",
+        "25%"
+      ],
+      "correta": 4,
+      "explicacao": "Perdeu 1 m de 4 m de altura. Dica de mergulhador: altura perdida sobre altura inicial.",
+      "comentarios": [
+        "É a que sobrou.",
+        "Errou.",
+        "Houve perda.",
+        "Usou 1/3.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q16-v1",
+      "varianteDe": "fis-revisao-energia-q16",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um bloco de densidade 0,8 g/cm³ flutua num óleo de densidade 0,9 g/cm³. A fração submersa é cerca de:",
+      "alternativas": [
+        "89%",
+        "72%",
+        "11%",
+        "80%",
+        "100%"
+      ],
+      "correta": 0,
+      "explicacao": "0,8 ÷ 0,9 ≈ 0,89. Dica de mergulhador: divida as densidades.",
+      "comentarios": [
+        "",
+        "Multiplicou.",
+        "É a parte emersa.",
+        "Usou a água como referência.",
+        "Ele flutua."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q17-v1",
+      "varianteDe": "fis-revisao-energia-q17",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Num planeta com o quádruplo da massa e o dobro do raio da Terra, a gravidade na superfície é:",
+      "alternativas": [
+        "Quatro vezes maior",
+        "Igual à da Terra",
+        "Dezesseis vezes maior",
+        "Duas vezes maior",
+        "Metade"
+      ],
+      "correta": 1,
+      "explicacao": "4 ÷ 2² = 1. Dica de mergulhador: massa em cima, raio ao quadrado embaixo.",
+      "comentarios": [
+        "Esqueceu o raio.",
+        "",
+        "Errou.",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q18-v1",
+      "varianteDe": "fis-revisao-energia-q18",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Uma pedra é lançada para cima a 12 m/s, sem ar (g = 10 m/s²). A altura máxima é:",
+      "alternativas": [
+        "14,4 m",
+        "7,2 m",
+        "1,2 m",
+        "3,6 m",
+        "72 m"
+      ],
+      "correta": 1,
+      "explicacao": "h = 144 ÷ 20. Dica de mergulhador: v₀²/2g.",
+      "comentarios": [
+        "Esqueceu o meio.",
+        "",
+        "Errou.",
+        "Errou.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q19-v1",
+      "varianteDe": "fis-revisao-energia-q19",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Para que a água chegue com mais pressão ao chuveiro de uma casa, a caixa-d'água deve ficar:",
+      "alternativas": [
+        "Mais alta em relação ao chuveiro",
+        "Pintada de preto",
+        "Mais cheia de ar",
+        "Mais baixa",
+        "Mais larga, na mesma altura"
+      ],
+      "correta": 0,
+      "explicacao": "A pressão depende da altura da coluna. Dica de mergulhador: caixa alta, banho forte.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Ao contrário.",
+        "A largura não muda a pressão."
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-q20-v1",
+      "varianteDe": "fis-revisao-energia-q20",
+      "tema": "Revisão: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-energia",
+      "enunciado": "Um ciclista com bicicleta, total de 100 kg, a 10 m/s, para em 25 m só com o atrito. A força média de atrito foi:",
+      "alternativas": [
+        "200 N",
+        "20 N",
+        "400 N",
+        "5.000 N",
+        "40 N"
+      ],
+      "correta": 0,
+      "explicacao": "Ec = 5.000 J; 5.000 ÷ 25. Dica de mergulhador: F·d = ΔEc.",
+      "comentarios": [
+        "",
+        "Errou a casa.",
+        "Esqueceu o meio.",
+        "Esqueceu a distância.",
+        "Errou."
+      ]
     }
   ],
   "pares": [
@@ -9704,6 +11815,54 @@
       "tema": "Hidrostática: densidade, pressão e empuxo",
       "termo": "Empuxo",
       "definicao": "Princípio de Arquimedes"
+    },
+    {
+      "id": "fis-gravitacao-par-01",
+      "tema": "Gravitação, planetas e satélites",
+      "termo": "Primeira lei de Kepler",
+      "definicao": "Órbitas elípticas"
+    },
+    {
+      "id": "fis-gravitacao-par-02",
+      "tema": "Gravitação, planetas e satélites",
+      "termo": "Segunda lei de Kepler",
+      "definicao": "Áreas iguais"
+    },
+    {
+      "id": "fis-gravitacao-par-03",
+      "tema": "Gravitação, planetas e satélites",
+      "termo": "Terceira lei de Kepler",
+      "definicao": "T² ∝ R³"
+    },
+    {
+      "id": "fis-gravitacao-par-04",
+      "tema": "Gravitação, planetas e satélites",
+      "termo": "Marés",
+      "definicao": "Atração da Lua"
+    },
+    {
+      "id": "fis-revisao-energia-par-01",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "termo": "Consumo",
+      "definicao": "Potência × tempo"
+    },
+    {
+      "id": "fis-revisao-energia-par-02",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "termo": "Prensa hidráulica",
+      "definicao": "Pascal"
+    },
+    {
+      "id": "fis-revisao-energia-par-03",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "termo": "Peso aparente",
+      "definicao": "Peso − empuxo"
+    },
+    {
+      "id": "fis-revisao-energia-par-04",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "termo": "Força gravitacional",
+      "definicao": "Inverso do quadrado da distância"
     }
   ],
   "verdadeiroFalso": [
@@ -9895,6 +12054,48 @@
       "afirmacao": "O navio flutua pela densidade média do conjunto.",
       "verdadeira": true,
       "explicacao": "Casco oco."
+    },
+    {
+      "id": "fis-gravitacao-vf-01",
+      "tema": "Gravitação, planetas e satélites",
+      "afirmacao": "Se a distância dobra, a força gravitacional cai a um quarto.",
+      "verdadeira": true,
+      "explicacao": "Inverso do quadrado."
+    },
+    {
+      "id": "fis-gravitacao-vf-02",
+      "tema": "Gravitação, planetas e satélites",
+      "afirmacao": "Na estação espacial não há gravidade.",
+      "verdadeira": false,
+      "explicacao": "Há cerca de 90% da superficial."
+    },
+    {
+      "id": "fis-gravitacao-vf-03",
+      "tema": "Gravitação, planetas e satélites",
+      "afirmacao": "Um planeta anda mais rápido perto do Sol.",
+      "verdadeira": true,
+      "explicacao": "Segunda lei de Kepler."
+    },
+    {
+      "id": "fis-revisao-energia-vf-01",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "afirmacao": "Na prensa hidráulica, o êmbolo largo sobe menos que o estreito desce.",
+      "verdadeira": true,
+      "explicacao": "Ganha força, perde deslocamento."
+    },
+    {
+      "id": "fis-revisao-energia-vf-02",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "afirmacao": "Com atrito, a energia total do universo diminui.",
+      "verdadeira": false,
+      "explicacao": "Só a mecânica diminui; vira calor."
+    },
+    {
+      "id": "fis-revisao-energia-vf-03",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "afirmacao": "A gravidade num planeta depende da massa e do raio dele.",
+      "verdadeira": true,
+      "explicacao": "g = G·M/R²."
     }
   ],
   "sequencias": [
@@ -10009,6 +12210,31 @@
         "Subir sem pressa"
       ],
       "explicacao": "Pressão muda com a profundidade."
+    },
+    {
+      "id": "fis-gravitacao-seq-01",
+      "tema": "Gravitação, planetas e satélites",
+      "titulo": "Do mais rápido ao mais lento em volta do Sol",
+      "itens": [
+        "Mercúrio",
+        "Vênus",
+        "Terra",
+        "Marte",
+        "Júpiter"
+      ],
+      "explicacao": "Mais perto, ano mais curto."
+    },
+    {
+      "id": "fis-revisao-energia-seq-01",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "titulo": "Resolver por conservação",
+      "itens": [
+        "Escolher o sistema",
+        "Escrever o início",
+        "Escrever o fim",
+        "Igualar ou achar a perda"
+      ],
+      "explicacao": "O que se conserva guia a conta."
     }
   ],
   "adivinhas": [
@@ -10136,6 +12362,34 @@
         "Empuxo",
         "Eureca",
         "Banheira"
+      ]
+    },
+    {
+      "id": "fis-gravitacao-adv-01",
+      "tema": "Gravitação, planetas e satélites",
+      "dificuldade": "medio",
+      "resposta": "Kepler",
+      "aceitas": [
+        "kepler"
+      ],
+      "dicas": [
+        "Elipse",
+        "Áreas iguais",
+        "Planetas"
+      ]
+    },
+    {
+      "id": "fis-revisao-energia-adv-01",
+      "tema": "Revisão do módulo: energia, fluidos e gravitação",
+      "dificuldade": "dificil",
+      "resposta": "Stevin",
+      "aceitas": [
+        "stevin, lei de stevin"
+      ],
+      "dicas": [
+        "Profundidade",
+        "Atmosfera a cada 10 m",
+        "Pressão"
       ]
     }
   ],
@@ -10355,6 +12609,54 @@
       "tema": "Física",
       "palavra": "Boia",
       "dica": "Objeto pouco denso que flutua"
+    },
+    {
+      "id": "fis-gravitacao-pal-01",
+      "tema": "Física",
+      "palavra": "Órbita",
+      "dica": "Caminho de um corpo em volta de outro"
+    },
+    {
+      "id": "fis-gravitacao-pal-02",
+      "tema": "Física",
+      "palavra": "Maré",
+      "dica": "Subida e descida do oceano causada pela Lua"
+    },
+    {
+      "id": "fis-gravitacao-pal-03",
+      "tema": "Física",
+      "palavra": "Elipse",
+      "dica": "Forma da órbita com dois focos"
+    },
+    {
+      "id": "fis-gravitacao-pal-04",
+      "tema": "Física",
+      "palavra": "Cometa",
+      "dica": "Corpo de órbita alongada que passa rápido pelo Sol"
+    },
+    {
+      "id": "fis-revisao-energia-pal-01",
+      "tema": "Física",
+      "palavra": "Dínamo",
+      "dica": "Gera eletricidade com o pedal"
+    },
+    {
+      "id": "fis-revisao-energia-pal-02",
+      "tema": "Física",
+      "palavra": "Rolha",
+      "dica": "Tampa que boia por ser pouco densa"
+    },
+    {
+      "id": "fis-revisao-energia-pal-03",
+      "tema": "Física",
+      "palavra": "Canudo",
+      "dica": "Funciona pela pressão do ar"
+    },
+    {
+      "id": "fis-revisao-energia-pal-04",
+      "tema": "Física",
+      "palavra": "Quique",
+      "dica": "Choque da bola no chão que perde energia"
     }
   ],
   "fichas": {
@@ -10705,6 +13007,62 @@
       "pegadinhas": [
         "Usar a densidade do corpo no cálculo do empuxo.",
         "Achar que o empuxo é sempre igual ao peso do corpo."
+      ]
+    },
+    "As leis de Kepler": {
+      "texto": [
+        "Órbitas elípticas com o Sol num foco; áreas iguais em tempos iguais (mais rápido no periélio); T² ∝ R³.",
+        "Estações do ano vêm da inclinação do eixo, não da distância ao Sol."
+      ],
+      "pontos": [
+        "Mais longe, ano mais longo.",
+        "Raio ao cubo, depois raiz."
+      ],
+      "pegadinhas": [
+        "Pôr o Sol no centro da elipse.",
+        "Explicar as estações pela distância ao Sol."
+      ]
+    },
+    "Gravitação universal": {
+      "texto": [
+        "F = G·M·m/d². Massa em dobro, força em dobro; distância em dobro, força em um quarto.",
+        "g = G·M/R². Marés pela Lua, mais altas nas luas nova e cheia."
+      ],
+      "pontos": [
+        "Distância entra ao quadrado.",
+        "Multiplique os fatores de cada mudança."
+      ],
+      "pegadinhas": [
+        "Dividir só por 2 quando a distância dobra.",
+        "Dizer que na Lua não há gravidade."
+      ]
+    },
+    "Satélites e órbitas": {
+      "texto": [
+        "Gravidade é a centrípeta; órbita é queda contínua. Órbita baixa: mais rápida, período menor.",
+        "Geoestacionário: período de 24 h sobre o equador. Astronautas flutuam em queda livre com a nave."
+      ],
+      "pontos": [
+        "Flutuar é cair junto.",
+        "Girando junto, parece parado."
+      ],
+      "pegadinhas": [
+        "Dizer que não há gravidade na estação espacial.",
+        "Achar que o geoestacionário fica parado no espaço."
+      ]
+    },
+    "Revisão: energia, fluidos e gravitação": {
+      "texto": [
+        "Energia: trabalho F·d·cos θ, Ec = m·v²/2, Ep = m·g·h, potência τ/Δt, rendimento útil ÷ total, consumo P × t. Colisões conservam m·v.",
+        "Fluidos: p = F/A, Stevin, Pascal, Arquimedes. Gravitação: F = G·M·m/d², Kepler, satélites em queda livre."
+      ],
+      "pontos": [
+        "Antes da conta, pergunte o que se conserva.",
+        "Massa entra simples; distância, ao quadrado."
+      ],
+      "pegadinhas": [
+        "Esquecer de converter minutos em segundos na potência.",
+        "Achar que a energia cinética se conserva quando os corpos grudam."
       ]
     }
   }
