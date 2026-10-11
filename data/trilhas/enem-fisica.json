@@ -15,7 +15,7 @@
       "id": "fis-grandezas",
       "nome": "Aula 1 · Grandezas, unidades e vetores",
       "modulo": "Módulo 1 · Movimento e forças",
-      "descricao": "Módulo 1 · aula 1 de 3 · 35 min · treina as habilidades H17 e H20",
+      "descricao": "Módulo 1 · aula 1 de 6 · 35 min · treina as habilidades H17 e H20",
       "habilidades": [
         "H17",
         "H20"
@@ -127,7 +127,7 @@
       "id": "fis-cinematica-mu",
       "nome": "Aula 2 · Movimento uniforme e velocidade média",
       "modulo": "Módulo 1 · Movimento e forças",
-      "descricao": "Módulo 1 · aula 2 de 3 · 35 min · treina as habilidades H17 e H20",
+      "descricao": "Módulo 1 · aula 2 de 6 · 35 min · treina as habilidades H17 e H20",
       "habilidades": [
         "H17",
         "H20"
@@ -244,7 +244,7 @@
       "id": "fis-muv-queda",
       "nome": "Aula 3 · Movimento variado e queda livre",
       "modulo": "Módulo 1 · Movimento e forças",
-      "descricao": "Módulo 1 · aula 3 de 3 · 35 min · treina as habilidades H17 e H20",
+      "descricao": "Módulo 1 · aula 3 de 6 · 35 min · treina as habilidades H17 e H20",
       "habilidades": [
         "H17",
         "H20"
@@ -348,6 +348,340 @@
           "aceleracao",
           "queda livre",
           "distancia de frenagem"
+        ]
+      }
+    },
+    {
+      "id": "fis-leis-newton",
+      "nome": "Aula 4 · Leis de Newton",
+      "modulo": "Módulo 1 · Movimento e forças",
+      "descricao": "Módulo 1 · aula 4 de 6 · 35 min · treina as habilidades H17 e H20",
+      "habilidades": [
+        "H17",
+        "H20"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Primeira lei: inércia",
+            "texto": [
+              "Um corpo tende a manter o estado em que está: parado continua parado, e em movimento retilíneo uniforme continua assim, até que uma força resultante diferente de zero o obrigue a mudar. Essa tendência é a **inércia**, e quanto maior a massa, maior ela é. No ônibus que freia de repente, o passageiro segue para a frente porque o corpo tende a manter a velocidade; no ônibus que arranca, ele é jogado para trás porque tende a ficar parado. Puxar a toalha da mesa bem rápido sem derrubar os pratos também é inércia. Um corpo em equilíbrio tem resultante nula: pode estar em repouso ou em MRU."
+            ]
+          },
+          {
+            "titulo": "Segunda lei: força e massa",
+            "texto": [
+              "A **força resultante** é a soma vetorial de todas as forças sobre o corpo, e a segunda lei diz que ela é igual à massa vezes a aceleração: F = m·a. Uma força de 10 N sobre 2 kg produz 5 m/s². Com a mesma força, quem tem o dobro da massa acelera a metade. O peso é a força com que a Terra puxa o corpo: P = m·g. Uma pessoa de 60 kg pesa 600 N na Terra, com g = 10 m/s², e só 96 N na Lua, onde g ≈ 1,6 m/s²: a massa continua 60 kg, o peso é que muda. Balança de banheiro marca a massa, mas, na verdade, mede a força de apoio."
+            ]
+          },
+          {
+            "titulo": "Terceira lei: ação e reação",
+            "texto": [
+              "Toda força vem em par: se A empurra B, B empurra A com força de mesmo módulo, mesma direção e sentido oposto. É o princípio da **ação e reação**. As duas forças agem em corpos diferentes, por isso não se anulam. O remador empurra a água para trás e a água empurra o barco para a frente; o foguete expele gases para baixo e os gases empurram o foguete para cima; ao andar, o pé empurra o chão para trás e o chão empurra a pessoa para a frente. Numa colisão entre carro e caminhão, a força que um faz no outro é igual; o estrago é diferente porque as massas e as estruturas são diferentes."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Desenhe o corpo isolado, com todas as forças que agem nele, antes de escrever F = m·a. Pergunte sempre quem faz cada força e em quem ela age."
+            ]
+          }
+        ],
+        "introducao": "Por que o corpo vai para a frente quando o ônibus freia? Por que um caminhão demora mais para arrancar que uma bicicleta? E como um foguete sobe sem ter onde se apoiar? As três leis de Newton respondem a tudo isso e são a base de toda a mecânica.",
+        "mapaMental": {
+          "centro": "Leis de Newton",
+          "ramos": [
+            {
+              "titulo": "Primeira lei",
+              "itens": [
+                "tende a manter o estado",
+                "equilíbrio com repouso ou MRU",
+                "massa maior, mais difícil de mudar"
+              ]
+            },
+            {
+              "titulo": "Segunda lei",
+              "itens": [
+                "F = m·a",
+                "mesma força, mais massa, menos aceleração"
+              ]
+            },
+            {
+              "titulo": "Peso",
+              "itens": [
+                "P = m·g",
+                "massa não muda na Lua",
+                "balança mede o apoio"
+              ]
+            },
+            {
+              "titulo": "Terceira lei",
+              "itens": [
+                "corpos diferentes",
+                "não se anulam",
+                "foguete e remador"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🚌",
+            "conceito": "Passageiro vai para a frente na freada",
+            "liga": "inercia",
+            "porque": "O corpo tende a manter a velocidade."
+          },
+          {
+            "icone": "🛒",
+            "conceito": "Carrinho cheio custa a arrancar",
+            "liga": "forca resultante",
+            "porque": "F = m·a: mais massa, menos aceleração."
+          },
+          {
+            "icone": "🚀",
+            "conceito": "Foguete empurra o gás, o gás empurra o foguete",
+            "liga": "acao e reacao",
+            "porque": "Par de forças em corpos diferentes."
+          }
+        ],
+        "pontos": [
+          "**Inércia**: sem força resultante, o corpo mantém repouso ou MRU.",
+          "**Força resultante** = m·a.",
+          "Peso P = m·g; na Lua, a massa continua a mesma.",
+          "**Ação e reação**: mesmo módulo, sentidos opostos, corpos diferentes.",
+          "O par de ação e reação nunca se anula."
+        ],
+        "perolas": [
+          "Massa é quanto de matéria; peso é quanto a Terra puxa."
+        ],
+        "reforcar": [
+          "inercia",
+          "forca resultante",
+          "acao e reacao"
+        ]
+      }
+    },
+    {
+      "id": "fis-forcas-aplicacoes",
+      "nome": "Aula 5 · Atrito, molas e movimento circular",
+      "modulo": "Módulo 1 · Movimento e forças",
+      "descricao": "Módulo 1 · aula 5 de 6 · 35 min · treina as habilidades H17 e H20",
+      "habilidades": [
+        "H17",
+        "H20"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Atrito e força normal",
+            "texto": [
+              "A força normal é a reação da superfície que sustenta um corpo, sempre perpendicular a ela; num piso horizontal, sem outras forças verticais, é igual ao peso. O **atrito** é a força que se opõe ao deslizamento entre superfícies e vale μ·N, em que μ é o coeficiente de atrito. O atrito estático impede o início do movimento e costuma ser maior que o cinético, que age durante o deslizamento: por isso custa mais tirar um armário do lugar do que mantê-lo andando. Sem atrito não seria possível andar nem frear. O freio ABS evita o travamento das rodas para manter o atrito estático, que segura melhor que o pneu derrapando. Pneu careca e pista molhada reduzem μ."
+            ]
+          },
+          {
+            "titulo": "Força elástica e tração",
+            "texto": [
+              "Uma mola deformada faz força para voltar ao tamanho normal. Pela **lei de Hooke**, essa força é proporcional à deformação: F = k·x, em que k é a constante elástica, em N/m. Uma mola com k = 200 N/m esticada 0,1 m faz 20 N. Dinamômetros, balanças de mola e amortecedores usam essa ideia. A tração é a força que um fio ou cabo esticado faz; num fio ideal ela é a mesma em toda a extensão. Polias fixas mudam só a direção da força; polias móveis dividem o esforço por dois a cada polia."
+            ]
+          },
+          {
+            "titulo": "Movimento circular",
+            "texto": [
+              "No movimento circular uniforme, o módulo da velocidade é constante, mas a direção muda o tempo todo; por isso existe aceleração, apontando para o centro. A **força centrípeta** é a resultante que mantém o corpo na curva: F = m·v²/R. Na curva plana, quem faz esse papel é o atrito dos pneus; num satélite, a gravidade. O período T é o tempo de uma volta e a frequência f = 1/T é o número de voltas por segundo (em hertz) ou por minuto (rpm). A velocidade é v = 2πR/T. Em engrenagens ou polias ligadas por correia, como coroa e catraca da bicicleta, a velocidade da borda é a mesma, e a menor gira mais rápido."
+            ]
+          },
+          {
+            "titulo": "Como estudar",
+            "texto": [
+              "Nas questões de curva, procure quem faz a força para o centro. Nas de atrito, calcule primeiro a normal."
+            ]
+          }
+        ],
+        "introducao": "As leis de Newton ganham vida quando entram as forças do cotidiano: o atrito que deixa o carro frear, a mola do amortecedor, o cabo que puxa o elevador e a força que segura o carro na curva. Esta aula aplica F = m·a a cada uma delas.",
+        "mapaMental": {
+          "centro": "Forças do cotidiano",
+          "ramos": [
+            {
+              "titulo": "Normal",
+              "itens": [
+                "perpendicular à superfície",
+                "igual ao peso no piso",
+                "estático maior que cinético"
+              ]
+            },
+            {
+              "titulo": "Molas",
+              "itens": [
+                "F = k·x",
+                "dinamômetro",
+                "amortecedor"
+              ]
+            },
+            {
+              "titulo": "Fios e polias",
+              "itens": [
+                "tração igual no fio",
+                "polia fixa muda a direção",
+                "polia móvel divide o esforço"
+              ]
+            },
+            {
+              "titulo": "Curvas",
+              "itens": [
+                "período e frequência",
+                "v = 2πR/T",
+                "coroa e catraca"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧊",
+            "conceito": "Armário que custa a sair do lugar",
+            "liga": "atrito",
+            "porque": "Estático maior que cinético."
+          },
+          {
+            "icone": "🪀",
+            "conceito": "Mola que devolve o puxão",
+            "liga": "lei de hooke",
+            "porque": "F = k·x."
+          },
+          {
+            "icone": "🎢",
+            "conceito": "Carro preso na curva",
+            "liga": "forca centripeta",
+            "porque": "Resultante para o centro, m·v²/R."
+          }
+        ],
+        "pontos": [
+          "**Atrito** = μ·N; estático maior que cinético.",
+          "Normal é perpendicular à superfície.",
+          "**Lei de Hooke**: F = k·x.",
+          "Polia móvel divide o esforço por dois.",
+          "**Força centrípeta** = m·v²/R, apontando para o centro.",
+          "Correia: mesma velocidade da borda; a polia menor gira mais."
+        ],
+        "perolas": [
+          "Sem aderência, ninguém anda nem freia."
+        ],
+        "reforcar": [
+          "atrito",
+          "lei de hooke",
+          "forca centripeta"
+        ]
+      }
+    },
+    {
+      "id": "fis-revisao-movimento",
+      "nome": "Aula 6 · Revisão do módulo: movimento e forças",
+      "modulo": "Módulo 1 · Movimento e forças",
+      "descricao": "Módulo 1 · aula 6 de 6 · 35 min · treina as habilidades H17 e H20",
+      "habilidades": [
+        "H17",
+        "H20"
+      ],
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Medir e descrever o movimento",
+            "texto": [
+              "Toda questão começa pelas unidades: converter km/h em m/s (divide por 3,6), minutos em horas e escrever números grandes em notação científica. Depois, decide-se o tipo de movimento. No uniforme, s = s₀ + v·t, e a velocidade média é sempre o deslocamento total sobre o tempo total, incluindo paradas. No uniformemente variado, a aceleração é constante e valem v = v₀ + a·t, s = s₀ + v₀·t + a·t²/2 e a **equação de Torricelli**, v² = v₀² + 2·a·Δs, que dispensa o tempo. Na queda livre, a aceleração é g ≈ 10 m/s² para qualquer massa."
+            ]
+          },
+          {
+            "titulo": "Explicar o movimento com forças",
+            "texto": [
+              "As três leis de Newton explicam por que o movimento muda. Sem força resultante, vale a inércia: repouso ou MRU. Com resultante, F = m·a. Toda força tem um par de **ação e reação**, de mesmo módulo e sentido oposto, agindo em corpos diferentes. O peso é m·g e a normal é a reação da superfície. O atrito vale μ·N e se opõe ao deslizamento; a mola segue F = k·x; e na curva a resultante aponta para o centro, F = m·v²/R."
+            ]
+          },
+          {
+            "titulo": "Trânsito, a física de todo dia",
+            "texto": [
+              "O Enem adora o trânsito porque ele reúne tudo: o tempo de reação (movimento uniforme), a frenagem (variado, d = v²/2a), o atrito dos pneus (que segura o carro na curva e na freada), a inércia (que justifica o cinto) e a **segunda lei de Newton**, que liga o airbag à força: aumentando o tempo de parada, a desaceleração e a força diminuem. Dobrar a velocidade quadruplica a frenagem e também a força necessária para fazer a mesma curva."
+            ]
+          },
+          {
+            "titulo": "Como estudar esta revisão",
+            "texto": [
+              "Para cada questão, diga primeiro qual é o tipo de movimento e quais forças agem. Depois escolha a equação. Errou? Volte à aula do tema, releia o resumo e refaça as questões dela."
+            ]
+          }
+        ],
+        "introducao": "Unidades, movimento uniforme e variado, queda, leis de Newton, atrito, molas e curvas: esta revisão junta o módulo inteiro em questões novas que misturam os assuntos, como o Enem faz com situações de trânsito, esporte e máquinas simples.",
+        "mapaMental": {
+          "centro": "Revisão do módulo",
+          "ramos": [
+            {
+              "titulo": "Descrever",
+              "itens": [
+                "unidades e conversões",
+                "velocidade média",
+                "queda livre"
+              ]
+            },
+            {
+              "titulo": "Explicar",
+              "itens": [
+                "inércia",
+                "F = m·a",
+                "peso e normal"
+              ]
+            },
+            {
+              "titulo": "Forças do dia a dia",
+              "itens": [
+                "atrito",
+                "mola",
+                "curva para o centro"
+              ]
+            },
+            {
+              "titulo": "Trânsito",
+              "itens": [
+                "tempo de reação",
+                "frenagem",
+                "cinto e airbag"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "📐",
+            "conceito": "Fórmula sem relógio",
+            "liga": "equacao de torricelli",
+            "porque": "Liga velocidades e distância sem o tempo."
+          },
+          {
+            "icone": "🥊",
+            "conceito": "Soco na parede, a parede devolve",
+            "liga": "acao e reacao",
+            "porque": "Par de forças em corpos diferentes."
+          },
+          {
+            "icone": "🎈",
+            "conceito": "Airbag que alonga a parada",
+            "liga": "segunda lei de newton",
+            "porque": "Menos desaceleração, menos força."
+          }
+        ],
+        "pontos": [
+          "Converta as unidades antes de calcular.",
+          "MU: s = s₀ + v·t; MUV e **equação de Torricelli** quando falta o tempo.",
+          "Inércia: sem resultante, nada muda.",
+          "**Segunda lei de Newton**: F = m·a, com a força resultante.",
+          "**Ação e reação** agem em corpos diferentes.",
+          "Atrito μ·N; mola k·x; curva m·v²/R."
+        ],
+        "perolas": [
+          "Primeiro o tipo de movimento, depois a fórmula."
+        ],
+        "reforcar": [
+          "equacao de torricelli",
+          "acao e reacao",
+          "segunda lei de newton"
         ]
       }
     }
@@ -1731,6 +2065,1386 @@
         "Não.",
         "São grandezas diferentes.",
         ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q01",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Quando um ônibus freia de repente, os passageiros são lançados para a frente por causa da:",
+      "alternativas": [
+        "Gravidade",
+        "Ação e reação",
+        "Força do motor",
+        "Inércia",
+        "Pressão do ar"
+      ],
+      "correta": 3,
+      "explicacao": "O corpo tende a manter a velocidade. Dica de mergulhador: freou o ônibus, não freou você.",
+      "comentarios": [
+        "Puxa para baixo.",
+        "Não explica a freada.",
+        "O motor não empurra os passageiros.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q02",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Pela primeira lei de Newton, um corpo sem força resultante sobre ele:",
+      "alternativas": [
+        "Sempre acelera",
+        "Cai",
+        "Faz curva",
+        "Fica em repouso ou em movimento retilíneo uniforme",
+        "Sempre para"
+      ],
+      "correta": 3,
+      "explicacao": "Resultante nula, estado mantido. Dica de mergulhador: nada empurrando, nada muda.",
+      "comentarios": [
+        "Não.",
+        "Não necessariamente.",
+        "Curva exige força.",
+        "",
+        "Pode continuar em MRU."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q03",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "A inércia de um corpo é maior quanto maior for a sua:",
+      "alternativas": [
+        "Velocidade",
+        "Altura",
+        "Temperatura",
+        "Massa",
+        "Cor"
+      ],
+      "correta": 3,
+      "explicacao": "Mais massa, mais difícil mudar o movimento. Dica de mergulhador: caminhão tem mais inércia que bicicleta.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q04",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Puxar rapidamente a toalha de uma mesa sem derrubar os pratos é possível graças:",
+      "alternativas": [
+        "Ao magnetismo",
+        "À pressão atmosférica",
+        "À inércia dos pratos",
+        "À força peso",
+        "À ação e reação"
+      ],
+      "correta": 2,
+      "explicacao": "Os pratos tendem a ficar parados. Dica de mergulhador: puxão rápido, prato quieto.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não explica.",
+        "Não é o caso."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q05",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um carro sobe uma rua com velocidade constante em linha reta. A força resultante sobre ele é:",
+      "alternativas": [
+        "Igual à força do motor",
+        "Para baixo da ladeira",
+        "Nula",
+        "Para cima da ladeira",
+        "Igual ao peso"
+      ],
+      "correta": 2,
+      "explicacao": "Velocidade constante em reta é equilíbrio. Dica de mergulhador: MRU, resultante zero.",
+      "comentarios": [
+        "Não.",
+        "Não há aceleração.",
+        "",
+        "Não há aceleração.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q06",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Uma pedra presa a um barbante gira em círculo. Se o barbante se rompe, a pedra:",
+      "alternativas": [
+        "Vai em direção ao centro",
+        "Sai pelo raio, para fora",
+        "Para no ar",
+        "Continua em círculo",
+        "Sai em linha reta, tangente ao círculo"
+      ],
+      "correta": 4,
+      "explicacao": "Sem força, segue em reta pela inércia. Dica de mergulhador: sem barbante, vai pela tangente.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Sem o barbante, não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q07",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Uma força resultante de 10 N age sobre um corpo de 2 kg. A aceleração é:",
+      "alternativas": [
+        "8 m/s²",
+        "12 m/s²",
+        "5 m/s²",
+        "0,2 m/s²",
+        "20 m/s²"
+      ],
+      "correta": 2,
+      "explicacao": "a = F/m = 10 ÷ 2. Dica de mergulhador: aceleração é força sobre massa.",
+      "comentarios": [
+        "Subtraiu.",
+        "Somou.",
+        "",
+        "Inverteu.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q08",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Uma pessoa de 60 kg, onde g = 10 m/s², tem peso de:",
+      "alternativas": [
+        "60 N",
+        "60 kg",
+        "6 N",
+        "70 N",
+        "600 N"
+      ],
+      "correta": 4,
+      "explicacao": "P = 60 × 10. Dica de mergulhador: peso em newton, massa em quilo.",
+      "comentarios": [
+        "É a massa em número.",
+        "É a massa.",
+        "Dividiu.",
+        "Somou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q09",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um astronauta de 60 kg vai à Lua, onde g ≈ 1,6 m/s². Lá, sua massa e seu peso são:",
+      "alternativas": [
+        "60 kg e cerca de 96 N",
+        "0 kg e 0 N",
+        "60 kg e 600 N",
+        "96 kg e 60 N",
+        "10 kg e 96 N"
+      ],
+      "correta": 0,
+      "explicacao": "A massa é a mesma; P = 60 × 1,6. Dica de mergulhador: na Lua, mesma massa, menos peso.",
+      "comentarios": [
+        "",
+        "Não.",
+        "O peso muda.",
+        "Inverteu.",
+        "A massa não muda."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q10",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Com a mesma força, um carrinho de 10 kg e outro de 20 kg são empurrados. A aceleração do mais pesado é:",
+      "alternativas": [
+        "A metade da do mais leve",
+        "Quatro vezes menor",
+        "O dobro",
+        "Igual",
+        "Zero"
+      ],
+      "correta": 0,
+      "explicacao": "a = F/m: o dobro da massa dá metade da aceleração. Dica de mergulhador: carrinho cheio arranca devagar.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Ao contrário.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q11",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Duas forças de 30 N e 10 N, em sentidos opostos, agem sobre um bloco de 5 kg. A aceleração é:",
+      "alternativas": [
+        "20 m/s²",
+        "4 m/s²",
+        "8 m/s²",
+        "6 m/s²",
+        "2 m/s²"
+      ],
+      "correta": 1,
+      "explicacao": "Resultante 20 N; 20 ÷ 5 = 4. Dica de mergulhador: primeiro a resultante, depois a divisão.",
+      "comentarios": [
+        "Esqueceu a massa.",
+        "",
+        "Somou as forças.",
+        "Usou só 30 N.",
+        "Usou só 10 N."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q12",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um carro de 1.000 kg vai de 0 a 20 m/s em 10 s. A força resultante média sobre ele é:",
+      "alternativas": [
+        "2.000 N",
+        "20.000 N",
+        "500 N",
+        "10.000 N",
+        "200 N"
+      ],
+      "correta": 0,
+      "explicacao": "a = 2 m/s²; F = 1.000 × 2. Dica de mergulhador: ache a aceleração, depois multiplique.",
+      "comentarios": [
+        "",
+        "Errou a casa.",
+        "Errou.",
+        "Usou g.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q13",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Uma pessoa de 70 kg está numa balança dentro de um elevador parado. A balança marca, na verdade:",
+      "alternativas": [
+        "A aceleração",
+        "A força do cabo",
+        "Só a massa, sem força",
+        "A gravidade da Terra",
+        "A força de apoio, que aqui é igual ao peso"
+      ],
+      "correta": 4,
+      "explicacao": "A balança mede a força normal e converte em kg. Dica de mergulhador: balança sente o empurrão do pé.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Ela mede força.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q14",
+      "tema": "Ação e reação",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Ao remar, o barco avança porque:",
+      "alternativas": [
+        "O remo puxa o fundo do rio",
+        "O barco perde massa",
+        "O vento empurra sempre",
+        "A água some",
+        "A água devolve o empurrão do remo"
+      ],
+      "correta": 4,
+      "explicacao": "É a terceira lei. Dica de mergulhador: empurra para trás, vai para frente.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não é isso.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q15",
+      "tema": "Ação e reação",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "O par de forças de ação e reação tem:",
+      "alternativas": [
+        "O mesmo sentido",
+        "Mesmo módulo e sentidos opostos, em corpos diferentes",
+        "O mesmo corpo",
+        "Módulos diferentes",
+        "Sempre resultante zero no mesmo corpo"
+      ],
+      "correta": 1,
+      "explicacao": "Terceira lei de Newton. Dica de mergulhador: um empurra, o outro devolve.",
+      "comentarios": [
+        "São opostos.",
+        "",
+        "Agem em corpos diferentes.",
+        "São iguais.",
+        "Estão em corpos diferentes."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q16",
+      "tema": "Ação e reação",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um foguete sobe no espaço, sem ar para empurrar, porque:",
+      "alternativas": [
+        "Expele gases para trás e os gases o empurram para frente",
+        "Ele flutua",
+        "O vácuo o puxa",
+        "O ar do espaço o empurra",
+        "A gravidade some"
+      ],
+      "correta": 0,
+      "explicacao": "Ação e reação entre foguete e gases. Dica de mergulhador: foguete empurra o próprio combustível.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não há ar.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q17",
+      "tema": "Ação e reação",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um livro está parado sobre a mesa. A reação ao peso do livro, que é a Terra puxando o livro, é:",
+      "alternativas": [
+        "O ar empurrando o livro",
+        "O livro puxando a Terra para cima",
+        "Não existe reação",
+        "O livro empurrando a mesa",
+        "A mesa empurrando o livro"
+      ],
+      "correta": 1,
+      "explicacao": "O par do peso está na Terra. Dica de mergulhador: quem puxa o livro é a Terra; o livro puxa de volta.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Toda força tem par.",
+        "Outro par.",
+        "Essa é a normal, em outro par."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q18",
+      "tema": "Ação e reação",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Numa colisão entre um carro pequeno e um caminhão, a força que o caminhão faz no carro é:",
+      "alternativas": [
+        "Igual em módulo à que o carro faz no caminhão",
+        "Menor",
+        "Zero",
+        "Depende da cor",
+        "Maior, porque o caminhão é maior"
+      ],
+      "correta": 0,
+      "explicacao": "O estrago difere pelas massas, não pelas forças. Dica de mergulhador: força igual, efeito diferente.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Pela terceira lei, é igual."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q19",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Uma pessoa sacode um tapete para tirar a poeira. A poeira se solta porque:",
+      "alternativas": [
+        "Fica mais pesada",
+        "Some com o calor",
+        "É empurrada pelo ar",
+        "É atraída pelo chão",
+        "Tende a ficar parada enquanto o tapete se move"
+      ],
+      "correta": 4,
+      "explicacao": "O tapete muda de movimento e a poeira, por inércia, não acompanha. Dica de mergulhador: sacudida rápida, poeira para trás.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não é o principal.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q20",
+      "tema": "Ação e reação",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Dois patinadores parados no gelo, um de 50 kg e outro de 100 kg, se empurram. O de 50 kg sai com 2 m/s. O outro sai com:",
+      "alternativas": [
+        "1 m/s, no sentido oposto",
+        "2 m/s, no mesmo sentido",
+        "0,5 m/s",
+        "0 m/s",
+        "4 m/s"
+      ],
+      "correta": 0,
+      "explicacao": "Forças iguais e mesmo tempo: o dobro da massa ganha a metade da velocidade. Dica de mergulhador: quem pesa o dobro sai com a metade.",
+      "comentarios": [
+        "",
+        "Os sentidos são opostos.",
+        "Errou.",
+        "Ele também recebe força.",
+        "Inverteu a proporção."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q01",
+      "tema": "Atrito e força normal",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "O atrito entre os pneus e o asfalto é o que permite ao carro:",
+      "alternativas": [
+        "Andar sem motor",
+        "Ficar mais leve",
+        "Flutuar",
+        "Ganhar massa",
+        "Frear e fazer curvas"
+      ],
+      "correta": 4,
+      "explicacao": "Sem atrito, as rodas patinam. Dica de mergulhador: pista de sabão não freia ninguém.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q02",
+      "tema": "Atrito e força normal",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "A força normal sobre um corpo apoiado é sempre:",
+      "alternativas": [
+        "Para baixo",
+        "Na direção do movimento",
+        "Perpendicular à superfície de apoio",
+        "Igual a zero",
+        "Paralela à superfície"
+      ],
+      "correta": 2,
+      "explicacao": "É a reação da superfície. Dica de mergulhador: normal é a força em ângulo reto com o piso.",
+      "comentarios": [
+        "Ela empurra para fora da superfície.",
+        "Não.",
+        "",
+        "Não.",
+        "Essa é o atrito."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q03",
+      "tema": "Atrito e força normal",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "É mais difícil tirar um armário do lugar do que mantê-lo deslizando porque:",
+      "alternativas": [
+        "A gravidade some no movimento",
+        "O armário fica mais leve andando",
+        "O atrito estático máximo é maior que o cinético",
+        "O piso muda",
+        "O cinético é sempre zero"
+      ],
+      "correta": 2,
+      "explicacao": "Começar exige vencer o estático. Dica de mergulhador: o primeiro empurrão é o mais pesado.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q04",
+      "tema": "Atrito e força normal",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma caixa de 20 kg desliza num piso com coeficiente de atrito cinético 0,3 (g = 10 m/s²). O atrito vale:",
+      "alternativas": [
+        "600 N",
+        "200 N",
+        "20,3 N",
+        "6 N",
+        "60 N"
+      ],
+      "correta": 4,
+      "explicacao": "N = 200 N; atrito = 0,3 × 200. Dica de mergulhador: atrito é μ vezes a normal.",
+      "comentarios": [
+        "Errou a casa.",
+        "É o peso.",
+        "Somou.",
+        "Usou a massa.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q05",
+      "tema": "Atrito e força normal",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "O freio ABS evita o travamento das rodas porque:",
+      "alternativas": [
+        "Aumenta a massa do carro",
+        "Faz o carro acelerar",
+        "Roda girando usa o atrito estático, maior",
+        "Esfria o motor",
+        "Elimina o atrito"
+      ],
+      "correta": 2,
+      "explicacao": "Roda travada desliza com atrito cinético, menor. Dica de mergulhador: roda girando segura mais que roda arrastando.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "Precisa dele."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q06",
+      "tema": "Atrito e força normal",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma caixa de 10 kg é empurrada com 50 N num piso com μ = 0,2 (g = 10 m/s²). Sua aceleração é:",
+      "alternativas": [
+        "7 m/s²",
+        "30 m/s²",
+        "3 m/s²",
+        "5 m/s²",
+        "2 m/s²"
+      ],
+      "correta": 2,
+      "explicacao": "Atrito 20 N; resultante 30 N; 30 ÷ 10 = 3. Dica de mergulhador: força menos atrito, depois divida.",
+      "comentarios": [
+        "Somou o atrito.",
+        "Esqueceu a massa.",
+        "",
+        "Esqueceu o atrito.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q07",
+      "tema": "Força elástica e tração",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Pela lei de Hooke, se a deformação de uma mola dobra, a força elástica:",
+      "alternativas": [
+        "Cai pela metade",
+        "Zera",
+        "Dobra",
+        "Fica igual",
+        "Quadruplica"
+      ],
+      "correta": 2,
+      "explicacao": "F = k·x: proporcional. Dica de mergulhador: estica o dobro, puxa o dobro.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "É proporcional, não ao quadrado."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q08",
+      "tema": "Força elástica e tração",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Um peso de 30 N estica uma mola em 0,05 m. A constante elástica é:",
+      "alternativas": [
+        "60 N/m",
+        "30 N/m",
+        "6 N/m",
+        "600 N/m",
+        "1,5 N/m"
+      ],
+      "correta": 3,
+      "explicacao": "k = 30 ÷ 0,05. Dica de mergulhador: k = F/x.",
+      "comentarios": [
+        "Errou a casa.",
+        "Esqueceu a deformação.",
+        "Errou a casa.",
+        "",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q09",
+      "tema": "Força elástica e tração",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Um elevador de 500 kg sobe com velocidade constante (g = 10 m/s²). A tração no cabo é:",
+      "alternativas": [
+        "50 N",
+        "500 N",
+        "10.000 N",
+        "5.000 N",
+        "0 N"
+      ],
+      "correta": 3,
+      "explicacao": "Velocidade constante: tração igual ao peso. Dica de mergulhador: subida constante, cabo segura só o peso.",
+      "comentarios": [
+        "Errou.",
+        "É a massa.",
+        "Errou.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q10",
+      "tema": "Força elástica e tração",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma polia fixa serve para:",
+      "alternativas": [
+        "Criar energia",
+        "Diminuir a força pela metade",
+        "Eliminar o peso",
+        "Mudar a direção da força, sem diminuí-la",
+        "Aumentar a massa"
+      ],
+      "correta": 3,
+      "explicacao": "Puxar para baixo para subir a carga. Dica de mergulhador: polia fixa só troca o rumo.",
+      "comentarios": [
+        "Não.",
+        "Isso é a polia móvel.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q11",
+      "tema": "Força elástica e tração",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma carga de 800 N é erguida com duas polias móveis ideais. A força necessária é:",
+      "alternativas": [
+        "400 N",
+        "800 N",
+        "1.600 N",
+        "200 N",
+        "100 N"
+      ],
+      "correta": 3,
+      "explicacao": "Cada polia móvel divide por 2: 800 ÷ 4. Dica de mergulhador: duas móveis, um quarto da força.",
+      "comentarios": [
+        "Uma polia só.",
+        "Sem ganho.",
+        "Multiplicou.",
+        "",
+        "Dividiu demais."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q12",
+      "tema": "Movimento circular",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "No movimento circular uniforme, o que muda o tempo todo é:",
+      "alternativas": [
+        "O período",
+        "O módulo da velocidade",
+        "O raio",
+        "A direção da velocidade",
+        "A massa"
+      ],
+      "correta": 3,
+      "explicacao": "O valor é o mesmo, o rumo não. Dica de mergulhador: velocímetro parado, volante virando.",
+      "comentarios": [
+        "Não.",
+        "É constante.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q13",
+      "tema": "Movimento circular",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Numa curva plana, a força que mantém o carro na trajetória circular é:",
+      "alternativas": [
+        "A resistência do ar",
+        "A força do motor para frente",
+        "A normal",
+        "O atrito entre os pneus e o asfalto",
+        "O peso do carro"
+      ],
+      "correta": 3,
+      "explicacao": "O atrito lateral aponta para o centro e faz o papel de centrípeta. Dica de mergulhador: na curva, o pneu agarra para dentro.",
+      "comentarios": [
+        "Não.",
+        "Não aponta para o centro.",
+        "É vertical.",
+        "",
+        "É vertical."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q14",
+      "tema": "Movimento circular",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Um carro de 1.000 kg faz uma curva de raio 50 m a 10 m/s. A força centrípeta é:",
+      "alternativas": [
+        "20.000 N",
+        "200 N",
+        "500 N",
+        "100.000 N",
+        "2.000 N"
+      ],
+      "correta": 4,
+      "explicacao": "F = 1.000 × 100 ÷ 50. Dica de mergulhador: m vezes v² sobre R.",
+      "comentarios": [
+        "Esqueceu o raio.",
+        "Errou a casa.",
+        "Usou v em vez de v².",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q15",
+      "tema": "Movimento circular",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Numa bicicleta, a coroa (pedal) tem raio de 10 cm e a catraca (roda) tem 5 cm, ligadas pela corrente. Se a coroa dá 1 volta, a catraca dá:",
+      "alternativas": [
+        "2 voltas",
+        "1 volta",
+        "0,5 volta",
+        "4 voltas",
+        "10 voltas"
+      ],
+      "correta": 0,
+      "explicacao": "Mesma velocidade da borda; raio pela metade, o dobro de voltas. Dica de mergulhador: a menor gira mais.",
+      "comentarios": [
+        "",
+        "A corrente iguala a velocidade da borda, não as voltas.",
+        "Inverteu.",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q16",
+      "tema": "Atrito e força normal",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "A força de atrito entre duas superfícies age:",
+      "alternativas": [
+        "Sempre a favor do movimento",
+        "Contra o deslizamento entre elas",
+        "Sempre para cima",
+        "Só em corpos parados no ar",
+        "Só no vácuo"
+      ],
+      "correta": 1,
+      "explicacao": "O atrito resiste ao escorregar. Dica de mergulhador: atrito é o \"segura\" das superfícies.",
+      "comentarios": [
+        "Ela se opõe ao deslizamento.",
+        "",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q17",
+      "tema": "Força elástica e tração",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "A constante elástica k de uma mola indica:",
+      "alternativas": [
+        "Quanto a mola é dura: a força por metro de deformação",
+        "A massa da mola",
+        "A temperatura da mola",
+        "A cor da mola",
+        "O comprimento da mola"
+      ],
+      "correta": 0,
+      "explicacao": "Mola dura, k grande. Dica de mergulhador: k alto, mola difícil de esticar.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q18",
+      "tema": "Força elástica e tração",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Duas pessoas puxam as pontas de uma corda, cada uma com 100 N, e a corda fica parada. A tração na corda é:",
+      "alternativas": [
+        "400 N",
+        "100 N",
+        "0 N",
+        "50 N",
+        "200 N"
+      ],
+      "correta": 1,
+      "explicacao": "Cada ponta puxa 100 N; a tensão em todo o fio é 100 N. Dica de mergulhador: cabo de guerra empatado tem a força de um lado.",
+      "comentarios": [
+        "Não.",
+        "",
+        "A corda está esticada.",
+        "Não.",
+        "Não se somam as pontas."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q19",
+      "tema": "Movimento circular",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Um ventilador gira a 600 rpm. O período de cada volta é:",
+      "alternativas": [
+        "0,01 s",
+        "10 s",
+        "600 s",
+        "1 s",
+        "0,1 s"
+      ],
+      "correta": 4,
+      "explicacao": "f = 600 ÷ 60 = 10 Hz; T = 1/10. Dica de mergulhador: período é o inverso da frequência.",
+      "comentarios": [
+        "Errou a casa.",
+        "Inverteu.",
+        "Não.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q20",
+      "tema": "Movimento circular",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Num globo da morte, a moto passa pelo ponto mais alto sem cair porque:",
+      "alternativas": [
+        "O ar segura a moto",
+        "A força centrípeta empurra para fora",
+        "O peso e a normal juntos fazem a força para o centro do círculo",
+        "O peso some no topo",
+        "A moto fica sem massa"
+      ],
+      "correta": 2,
+      "explicacao": "No topo, o centro está para baixo, e as forças para baixo fazem a curva. Dica de mergulhador: no topo, o peso ajuda a fazer a curva.",
+      "comentarios": [
+        "Não.",
+        "Ela aponta para o centro.",
+        "",
+        "Não some.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q01",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um carro está a 90 km/h. Em m/s, isso equivale a:",
+      "alternativas": [
+        "324 m/s",
+        "90 m/s",
+        "2,5 m/s",
+        "25 m/s",
+        "9 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "90 ÷ 3,6 = 25. Dica de mergulhador: km/h para m/s, divide por 3,6.",
+      "comentarios": [
+        "Multiplicou.",
+        "Não converteu.",
+        "Errou a casa.",
+        "",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q02",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Qual das leis de Newton explica por que é preciso usar o cinto de segurança?",
+      "alternativas": [
+        "A segunda, F = m·a",
+        "A lei da gravitação",
+        "A lei de Hooke",
+        "A primeira, a da inércia",
+        "A terceira, ação e reação"
+      ],
+      "correta": 3,
+      "explicacao": "Na batida, o corpo tende a seguir em frente. Dica de mergulhador: cinto contra a inércia.",
+      "comentarios": [
+        "Explica a força, não a tendência.",
+        "Não.",
+        "É das molas.",
+        "",
+        "Não é o centro do problema."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q03",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um corpo em queda livre, solto do repouso, tem após 2 s velocidade de (g = 10 m/s²):",
+      "alternativas": [
+        "5 m/s",
+        "12 m/s",
+        "40 m/s",
+        "20 m/s",
+        "10 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "v = 10 × 2. Dica de mergulhador: 10 m/s a cada segundo.",
+      "comentarios": [
+        "Dividiu.",
+        "Somou.",
+        "Errou.",
+        "",
+        "Só um segundo."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q04",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Massa e peso diferem porque:",
+      "alternativas": [
+        "Peso é medido em quilograma",
+        "Peso não muda com o planeta",
+        "Massa é matéria; peso é força da gravidade",
+        "São a mesma coisa",
+        "Massa é medida em newton"
+      ],
+      "correta": 2,
+      "explicacao": "P = m·g. Dica de mergulhador: na Lua, mesma massa, menos peso.",
+      "comentarios": [
+        "É em newton.",
+        "Muda.",
+        "",
+        "Não.",
+        "É em quilograma."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q05",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma moto anda 150 km em 3 h. Sua velocidade média é:",
+      "alternativas": [
+        "5 km/h",
+        "147 km/h",
+        "50 km/h",
+        "450 km/h",
+        "153 km/h"
+      ],
+      "correta": 2,
+      "explicacao": "150 ÷ 3. Dica de mergulhador: distância sobre tempo.",
+      "comentarios": [
+        "Errou a casa.",
+        "Subtraiu.",
+        "",
+        "Multiplicou.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q06",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Ao pular de um barco para a margem, o barco se afasta da margem. Isso ilustra:",
+      "alternativas": [
+        "O atrito",
+        "A gravidade",
+        "A ação e reação",
+        "A lei de Hooke",
+        "A inércia"
+      ],
+      "correta": 2,
+      "explicacao": "A pessoa empurra o barco para trás. Dica de mergulhador: pulou para frente, barco para trás.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "Não é o principal."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q07",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Em uma curva plana, se a pista estiver coberta de óleo, o carro tende a:",
+      "alternativas": [
+        "Parar na hora",
+        "Subir",
+        "Andar de ré",
+        "Fazer a curva mais fechada",
+        "Seguir reto, saindo da curva"
+      ],
+      "correta": 4,
+      "explicacao": "Sem atrito, falta força para o centro e vale a inércia. Dica de mergulhador: sem aderência, a curva vira reta.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Falta atrito.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q08",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um carro a 72 km/h freia com desaceleração de 4 m/s². A distância de frenagem é:",
+      "alternativas": [
+        "50 m",
+        "5 m",
+        "100 m",
+        "648 m",
+        "25 m"
+      ],
+      "correta": 0,
+      "explicacao": "72 km/h = 20 m/s; 400 ÷ 8 = 50 m. Dica de mergulhador: converta antes de Torricelli.",
+      "comentarios": [
+        "",
+        "Errou.",
+        "Esqueceu o 2.",
+        "Não converteu.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q09",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um bloco de 2 kg desce verticalmente preso a um fio, com aceleração de 2 m/s² para baixo (g = 10 m/s²). A tração no fio é:",
+      "alternativas": [
+        "20 N",
+        "0 N",
+        "24 N",
+        "4 N",
+        "16 N"
+      ],
+      "correta": 4,
+      "explicacao": "P − T = m·a; T = 20 − 4. Dica de mergulhador: descendo acelerado, o fio segura menos que o peso.",
+      "comentarios": [
+        "É o peso.",
+        "Não.",
+        "Somou.",
+        "Só a parte da aceleração.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q10",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma bola é lançada para cima e volta. Qual afirmação está correta?",
+      "alternativas": [
+        "A aceleração é g, para baixo, durante todo o voo",
+        "A aceleração muda de sentido no topo",
+        "A aceleração é zero no ponto mais alto",
+        "A subida é mais demorada que a descida",
+        "A velocidade é constante"
+      ],
+      "correta": 0,
+      "explicacao": "A gravidade age o tempo todo. Dica de mergulhador: topo é velocidade zero, não aceleração zero.",
+      "comentarios": [
+        "",
+        "Não muda.",
+        "Só a velocidade zera.",
+        "Sem ar, são iguais.",
+        "Varia."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q11",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um caixote de 40 kg é empurrado com velocidade constante num piso com μ = 0,25 (g = 10 m/s²). A força aplicada é:",
+      "alternativas": [
+        "160 N",
+        "100 N",
+        "400 N",
+        "10 N",
+        "0 N"
+      ],
+      "correta": 1,
+      "explicacao": "Velocidade constante: força igual ao atrito, 0,25 × 400. Dica de mergulhador: constante, força empata com o atrito.",
+      "comentarios": [
+        "Errou.",
+        "",
+        "É o peso.",
+        "Usou a massa.",
+        "O atrito existe."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q12",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um carro vai de 0 a 30 m/s em 6 s. A distância percorrida nesse tempo é:",
+      "alternativas": [
+        "36 m",
+        "30 m",
+        "180 m",
+        "5 m",
+        "90 m"
+      ],
+      "correta": 4,
+      "explicacao": "a = 5 m/s²; s = 5 × 36 ÷ 2 = 90. Dica de mergulhador: a·t²/2 a partir do repouso.",
+      "comentarios": [
+        "Somou.",
+        "É a velocidade.",
+        "Esqueceu o meio.",
+        "É a aceleração.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q13",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um elástico de estilingue é esticado 0,2 m e faz 40 N. A constante elástica é:",
+      "alternativas": [
+        "40 N/m",
+        "200 N/m",
+        "2.000 N/m",
+        "20 N/m",
+        "8 N/m"
+      ],
+      "correta": 1,
+      "explicacao": "k = 40 ÷ 0,2. Dica de mergulhador: k é força por metro.",
+      "comentarios": [
+        "Esqueceu a deformação.",
+        "",
+        "Errou a casa.",
+        "Errou.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q14",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "O airbag reduz a força sobre o motorista numa batida porque:",
+      "alternativas": [
+        "Aumenta o tempo de parada e diminui a desaceleração",
+        "Faz o carro parar antes",
+        "Diminui a massa do motorista",
+        "Aumenta a velocidade final",
+        "Elimina a inércia"
+      ],
+      "correta": 0,
+      "explicacao": "F = m·a: menos desaceleração, menos força. Dica de mergulhador: parada longa, força pequena.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q15",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma roda-gigante dá uma volta a cada 60 s e tem raio de 15 m. A velocidade de uma cabine é cerca de (π ≈ 3):",
+      "alternativas": [
+        "90 m/s",
+        "1,5 m/s",
+        "15 m/s",
+        "4 m/s",
+        "0,25 m/s"
+      ],
+      "correta": 1,
+      "explicacao": "v = 2 × 3 × 15 ÷ 60 = 1,5. Dica de mergulhador: v = 2πR/T.",
+      "comentarios": [
+        "Esqueceu o tempo.",
+        "",
+        "Errou.",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q16",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um motorista a 108 km/h vê um obstáculo. Seu tempo de reação é 0,5 s e a desaceleração é 6 m/s². A distância total até parar é:",
+      "alternativas": [
+        "90 m",
+        "15 m",
+        "75 m",
+        "105 m",
+        "150 m"
+      ],
+      "correta": 0,
+      "explicacao": "30 m/s × 0,5 = 15 m; 900 ÷ 12 = 75 m; total 90 m. Dica de mergulhador: reação + frenagem.",
+      "comentarios": [
+        "",
+        "Só a reação.",
+        "Esqueceu a reação.",
+        "Errou a reação.",
+        "Esqueceu o 2."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q17",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Dois blocos encostados, de 3 kg e 2 kg, são empurrados juntos por 20 N num piso sem atrito. A força que o primeiro faz no segundo é:",
+      "alternativas": [
+        "20 N",
+        "10 N",
+        "12 N",
+        "4 N",
+        "8 N"
+      ],
+      "correta": 4,
+      "explicacao": "a = 20 ÷ 5 = 4 m/s²; no bloco de 2 kg, F = 2 × 4. Dica de mergulhador: ache a aceleração do conjunto, depois isole o bloco.",
+      "comentarios": [
+        "É a força total.",
+        "Dividiu ao meio.",
+        "É a parte do primeiro bloco.",
+        "É a aceleração.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q18",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma pedra é solta de uma altura de 80 m (g = 10 m/s²). Ela chega ao solo com velocidade de:",
+      "alternativas": [
+        "4 m/s",
+        "1.600 m/s",
+        "20 m/s",
+        "80 m/s",
+        "40 m/s"
+      ],
+      "correta": 4,
+      "explicacao": "v² = 2 × 10 × 80 = 1.600; v = 40. Dica de mergulhador: Torricelli com g.",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu a raiz.",
+        "Errou.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q19",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um carro faz uma curva plana de raio 40 m. O atrito máximo vale 0,5 do peso (g = 10 m/s²). A maior velocidade sem derrapar é:",
+      "alternativas": [
+        "200 m/s",
+        "Cerca de 14 m/s",
+        "5 m/s",
+        "40 m/s",
+        "20 m/s"
+      ],
+      "correta": 1,
+      "explicacao": "m·v²/R = 0,5·m·g; v² = 0,5 × 10 × 40 = 200; v ≈ 14. Dica de mergulhador: a massa se cancela.",
+      "comentarios": [
+        "Esqueceu a raiz.",
+        "",
+        "Errou.",
+        "Usou o raio.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q20",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Duas forças perpendiculares de 6 N e 8 N agem sobre um corpo de 2 kg. A aceleração é:",
+      "alternativas": [
+        "24 m/s²",
+        "7 m/s²",
+        "10 m/s²",
+        "5 m/s²",
+        "1 m/s²"
+      ],
+      "correta": 3,
+      "explicacao": "Resultante √(36 + 64) = 10 N; 10 ÷ 2 = 5. Dica de mergulhador: Pitágoras e depois Newton.",
+      "comentarios": [
+        "Multiplicou.",
+        "Somou e dividiu.",
+        "Esqueceu a massa.",
+        "",
+        "Subtraiu."
       ]
     }
   ],
@@ -3174,6 +4888,1446 @@
         "Não.",
         ""
       ]
+    },
+    {
+      "id": "fis-leis-newton-q01-v1",
+      "varianteDe": "fis-leis-newton-q01",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Quando um ônibus arranca de repente, os passageiros em pé vão para trás porque:",
+      "alternativas": [
+        "São empurrados pelo motorista",
+        "O ar os empurra",
+        "O ônibus os atrai",
+        "Tendem a continuar parados, por inércia",
+        "A gravidade aumenta"
+      ],
+      "correta": 3,
+      "explicacao": "O ônibus avança e o corpo tende a ficar onde estava. Dica de mergulhador: arrancou, você ficou para trás.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q02-v1",
+      "varianteDe": "fis-leis-newton-q02",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um disco desliza sobre gelo quase sem atrito. Sem forças horizontais, ele:",
+      "alternativas": [
+        "Acelera sozinho",
+        "Volta ao ponto inicial",
+        "Faz curvas",
+        "Para logo",
+        "Segue em linha reta com velocidade constante"
+      ],
+      "correta": 4,
+      "explicacao": "É o MRU da primeira lei. Dica de mergulhador: sem atrito, o movimento continua.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Sem atrito, não para.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q03-v1",
+      "varianteDe": "fis-leis-newton-q03",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Por que um caminhão carregado leva mais tempo para parar que uma moto na mesma velocidade?",
+      "alternativas": [
+        "Porque tem mais massa e, portanto, mais inércia",
+        "Porque a gravidade age menos nele",
+        "Porque a moto não tem inércia",
+        "Porque é mais alto",
+        "Porque tem menos pneus"
+      ],
+      "correta": 0,
+      "explicacao": "A inércia cresce com a massa. Dica de mergulhador: mais carga, freada mais longa.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Tem, mas menor.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q04-v1",
+      "varianteDe": "fis-leis-newton-q04",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "O cinto de segurança é necessário principalmente por causa da:",
+      "alternativas": [
+        "Ação e reação do motor",
+        "Força peso",
+        "Eletricidade estática",
+        "Inércia do corpo do passageiro",
+        "Gravidade da Lua"
+      ],
+      "correta": 3,
+      "explicacao": "Numa batida, o corpo tende a continuar em frente. Dica de mergulhador: o cinto vence a inércia.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q05-v1",
+      "varianteDe": "fis-leis-newton-q05",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um paraquedista desce com velocidade constante. Nesse trecho, a resistência do ar é:",
+      "alternativas": [
+        "Menor que o peso",
+        "Igual ao peso dele",
+        "Maior que o peso",
+        "O dobro do peso",
+        "Nula"
+      ],
+      "correta": 1,
+      "explicacao": "Velocidade constante, resultante zero. Dica de mergulhador: descendo constante, forças empatadas.",
+      "comentarios": [
+        "Ele aceleraria.",
+        "",
+        "Ele desaceleraria.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q06-v1",
+      "varianteDe": "fis-leis-newton-q06",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Num carro que faz uma curva rápida, o passageiro sente-se jogado para fora da curva porque:",
+      "alternativas": [
+        "O banco o empurra para fora",
+        "Tende a seguir em linha reta, por inércia",
+        "A gravidade muda",
+        "Uma força o puxa para fora",
+        "O motor o empurra"
+      ],
+      "correta": 1,
+      "explicacao": "O carro curva e o corpo tende a ir reto. Dica de mergulhador: na curva, o corpo quer seguir em frente.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "É a tendência de seguir reto.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q07-v1",
+      "varianteDe": "fis-leis-newton-q07",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Para dar 3 m/s² a um corpo de 4 kg, a força resultante deve ser:",
+      "alternativas": [
+        "1,33 N",
+        "1 N",
+        "12 N",
+        "0,75 N",
+        "7 N"
+      ],
+      "correta": 2,
+      "explicacao": "F = 4 × 3. Dica de mergulhador: força é massa vezes aceleração.",
+      "comentarios": [
+        "Dividiu.",
+        "Subtraiu.",
+        "",
+        "Dividiu.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q08-v1",
+      "varianteDe": "fis-leis-newton-q08",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Uma mochila de 5 kg, com g = 10 m/s², tem peso de:",
+      "alternativas": [
+        "5 N",
+        "50 N",
+        "0,5 N",
+        "15 N",
+        "500 N"
+      ],
+      "correta": 1,
+      "explicacao": "P = 5 × 10. Dica de mergulhador: multiplique a massa por g.",
+      "comentarios": [
+        "É a massa.",
+        "",
+        "Dividiu.",
+        "Somou.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q09-v1",
+      "varianteDe": "fis-leis-newton-q09",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um objeto tem peso de 200 N na Terra (g = 10 m/s²). Sua massa é:",
+      "alternativas": [
+        "2.000 kg",
+        "2 kg",
+        "20 kg",
+        "210 kg",
+        "200 kg"
+      ],
+      "correta": 2,
+      "explicacao": "m = 200 ÷ 10. Dica de mergulhador: massa é peso dividido por g.",
+      "comentarios": [
+        "Multiplicou.",
+        "Errou a casa.",
+        "",
+        "Somou.",
+        "É o peso em número."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q10-v1",
+      "varianteDe": "fis-leis-newton-q10",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Para dar a mesma aceleração a um carrinho com o triplo da massa, é preciso uma força:",
+      "alternativas": [
+        "Três vezes maior",
+        "Nove vezes maior",
+        "Igual",
+        "Nula",
+        "Três vezes menor"
+      ],
+      "correta": 0,
+      "explicacao": "F = m·a: massa triplicada, força triplicada. Dica de mergulhador: força acompanha a massa.",
+      "comentarios": [
+        "",
+        "Não é ao quadrado.",
+        "Não.",
+        "Não.",
+        "Ao contrário."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q11-v1",
+      "varianteDe": "fis-leis-newton-q11",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Duas pessoas empurram um armário de 50 kg no mesmo sentido, com 60 N e 40 N, sem atrito. A aceleração é:",
+      "alternativas": [
+        "100 m/s²",
+        "5.000 m/s²",
+        "1,2 m/s²",
+        "0,4 m/s²",
+        "2 m/s²"
+      ],
+      "correta": 4,
+      "explicacao": "Resultante 100 N; 100 ÷ 50 = 2. Dica de mergulhador: mesmo sentido, some antes.",
+      "comentarios": [
+        "Esqueceu a massa.",
+        "Multiplicou.",
+        "Usou só 60 N.",
+        "Subtraiu.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q12-v1",
+      "varianteDe": "fis-leis-newton-q12",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um caminhão de 5.000 kg freia de 10 m/s até parar em 5 s. A força resultante média é de:",
+      "alternativas": [
+        "2.000 N",
+        "50.000 N",
+        "250.000 N",
+        "10.000 N, contra o movimento",
+        "1.000 N"
+      ],
+      "correta": 3,
+      "explicacao": "a = −2 m/s²; F = 5.000 × 2. Dica de mergulhador: na freada, a força aponta para trás.",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu o tempo.",
+        "Multiplicou tudo.",
+        "",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q13-v1",
+      "varianteDe": "fis-leis-newton-q13",
+      "tema": "Segunda lei e peso",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Se o elevador começar a subir acelerando, a balança marcará:",
+      "alternativas": [
+        "O mesmo",
+        "Mais do que no elevador parado",
+        "A metade",
+        "Menos",
+        "Zero"
+      ],
+      "correta": 1,
+      "explicacao": "A força de apoio precisa vencer o peso e ainda acelerar. Dica de mergulhador: subindo acelerado, você se sente mais pesado.",
+      "comentarios": [
+        "A normal aumenta.",
+        "",
+        "Não.",
+        "Isso ocorre ao descer acelerando.",
+        "Só em queda livre."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q14-v1",
+      "varianteDe": "fis-leis-newton-q14",
+      "tema": "Ação e reação",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Ao andar, uma pessoa vai para a frente porque:",
+      "alternativas": [
+        "O chão a atrai",
+        "A gravidade a puxa para frente",
+        "O ar a empurra",
+        "A inércia a empurra",
+        "O pé empurra o chão para trás e o chão a empurra para frente"
+      ],
+      "correta": 4,
+      "explicacao": "O chão reage ao empurrão do pé. Dica de mergulhador: no gelo, sem atrito, ninguém anda.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Inércia não é força.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q15-v1",
+      "varianteDe": "fis-leis-newton-q15",
+      "tema": "Ação e reação",
+      "dificuldade": "facil",
+      "fase": "fis-leis-newton",
+      "enunciado": "As forças de ação e reação não se anulam porque:",
+      "alternativas": [
+        "Uma é maior",
+        "Agem em corpos diferentes",
+        "Têm o mesmo sentido",
+        "Têm módulos diferentes",
+        "Uma delas é imaginária"
+      ],
+      "correta": 1,
+      "explicacao": "Só se anulam forças no mesmo corpo. Dica de mergulhador: corpo diferente, conta diferente.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Não.",
+        "São iguais.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q16-v1",
+      "varianteDe": "fis-leis-newton-q16",
+      "tema": "Ação e reação",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Uma arma dá um \"coice\" no ombro ao disparar porque:",
+      "alternativas": [
+        "O ar entra no cano",
+        "A gravidade aumenta",
+        "Empurra a bala para frente e a bala a empurra para trás",
+        "O som empurra",
+        "A pólvora pesa"
+      ],
+      "correta": 2,
+      "explicacao": "Par de ação e reação. Dica de mergulhador: disparo para frente, coice para trás.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q17-v1",
+      "varianteDe": "fis-leis-newton-q17",
+      "tema": "Ação e reação",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "O livro sobre a mesa empurra a mesa para baixo. A reação a essa força é:",
+      "alternativas": [
+        "Não há reação",
+        "O chão empurrando a mesa",
+        "A mesa empurrando o livro para cima",
+        "O peso do livro",
+        "A Terra puxando a mesa"
+      ],
+      "correta": 2,
+      "explicacao": "Livro e mesa formam o par. Dica de mergulhador: o par sempre troca os nomes de lugar.",
+      "comentarios": [
+        "Sempre há.",
+        "Outro par.",
+        "",
+        "É outro par.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q18-v1",
+      "varianteDe": "fis-leis-newton-q18",
+      "tema": "Ação e reação",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Na mesma colisão, quem sofre maior aceleração é:",
+      "alternativas": [
+        "Nenhum",
+        "Os dois iguais",
+        "O caminhão",
+        "O carro pequeno, por ter menos massa",
+        "Depende só da velocidade"
+      ],
+      "correta": 3,
+      "explicacao": "a = F/m: mesma força, menor massa, maior aceleração. Dica de mergulhador: o leve leva o tranco.",
+      "comentarios": [
+        "Não.",
+        "As massas são diferentes.",
+        "Tem mais massa.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q19-v1",
+      "varianteDe": "fis-leis-newton-q19",
+      "tema": "Inércia e primeira lei",
+      "dificuldade": "medio",
+      "fase": "fis-leis-newton",
+      "enunciado": "Bater o cabo de um martelo no chão encaixa a cabeça de ferro porque:",
+      "alternativas": [
+        "A cabeça tende a continuar descendo quando o cabo para",
+        "O ferro esquenta",
+        "O cabo encolhe",
+        "A cabeça fica mais leve",
+        "O chão puxa a cabeça"
+      ],
+      "correta": 0,
+      "explicacao": "O cabo para no chão e a cabeça segue por inércia. Dica de mergulhador: o pesado continua o caminho.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-leis-newton-q20-v1",
+      "varianteDe": "fis-leis-newton-q20",
+      "tema": "Ação e reação",
+      "dificuldade": "dificil",
+      "fase": "fis-leis-newton",
+      "enunciado": "Um patinador de 60 kg e outro de 30 kg, parados, se empurram. O de 60 kg sai com 1 m/s. O de 30 kg sai com:",
+      "alternativas": [
+        "0 m/s",
+        "0,5 m/s",
+        "3 m/s",
+        "2 m/s, no sentido oposto",
+        "1 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "Metade da massa, o dobro da velocidade. Dica de mergulhador: o leve dispara mais.",
+      "comentarios": [
+        "Não.",
+        "Inverteu.",
+        "Errou.",
+        "",
+        "As massas são diferentes."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q01-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q01",
+      "tema": "Atrito e força normal",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Por que é difícil caminhar sobre gelo liso?",
+      "alternativas": [
+        "A gravidade é maior no gelo",
+        "O frio paralisa as pernas",
+        "O gelo empurra para cima",
+        "O atrito entre o sapato e o gelo é muito pequeno",
+        "Não há força normal"
+      ],
+      "correta": 3,
+      "explicacao": "Pouco atrito, pouco apoio para empurrar o chão. Dica de mergulhador: pouco atrito, muito escorregão.",
+      "comentarios": [
+        "Não.",
+        "Não é a física aqui.",
+        "Não.",
+        "",
+        "Há."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q02-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q02",
+      "tema": "Atrito e força normal",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma caixa de 10 kg está parada num piso horizontal (g = 10 m/s²). A normal sobre ela é:",
+      "alternativas": [
+        "0 N",
+        "100 N",
+        "10 N",
+        "1 N",
+        "1.000 N"
+      ],
+      "correta": 1,
+      "explicacao": "No piso horizontal, a normal equilibra o peso. Dica de mergulhador: piso reto, normal igual ao peso.",
+      "comentarios": [
+        "Não.",
+        "",
+        "É a massa.",
+        "Dividiu.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q03-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q03",
+      "tema": "Atrito e força normal",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma vez que uma caixa começa a deslizar, para mantê-la com velocidade constante é preciso uma força:",
+      "alternativas": [
+        "Igual ao peso",
+        "Igual ao atrito cinético",
+        "Zero, sem atrito no piso real",
+        "Que aumente sempre",
+        "Maior que no início"
+      ],
+      "correta": 1,
+      "explicacao": "Velocidade constante: resultante nula. Dica de mergulhador: andando, empurre só o atrito.",
+      "comentarios": [
+        "Não.",
+        "",
+        "Há atrito.",
+        "Não.",
+        "É menor."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q04-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q04",
+      "tema": "Atrito e força normal",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Um bloco de 5 kg num piso com μ = 0,4 (g = 10 m/s²) sofre atrito de:",
+      "alternativas": [
+        "5,4 N",
+        "20 N",
+        "2 N",
+        "50 N",
+        "12,5 N"
+      ],
+      "correta": 1,
+      "explicacao": "0,4 × 50 = 20. Dica de mergulhador: normal primeiro, atrito depois.",
+      "comentarios": [
+        "Somou.",
+        "",
+        "Usou a massa.",
+        "É o peso.",
+        "Dividiu."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q05-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q05",
+      "tema": "Atrito e força normal",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Pneus carecas são perigosos na chuva porque:",
+      "alternativas": [
+        "Fazem o atrito crescer demais",
+        "Aumentam a força normal",
+        "Reduzem o coeficiente de atrito com a pista",
+        "Aumentam a massa do carro",
+        "Deixam o carro mais lento"
+      ],
+      "correta": 2,
+      "explicacao": "Os sulcos escoam a água; sem eles, o pneu desliza. Dica de mergulhador: sulco é a calha do pneu.",
+      "comentarios": [
+        "Ao contrário.",
+        "Não.",
+        "",
+        "Não.",
+        "Não é o risco."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q06-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q06",
+      "tema": "Atrito e força normal",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Um bloco de 4 kg é puxado com 30 N num piso com μ = 0,5 (g = 10 m/s²). Sua aceleração é:",
+      "alternativas": [
+        "10 m/s²",
+        "12,5 m/s²",
+        "2,5 m/s²",
+        "5 m/s²",
+        "7,5 m/s²"
+      ],
+      "correta": 2,
+      "explicacao": "Atrito 20 N; resultante 10 N; 10 ÷ 4 = 2,5. Dica de mergulhador: o atrito come parte da força.",
+      "comentarios": [
+        "Errou.",
+        "Somou.",
+        "",
+        "Errou.",
+        "Esqueceu o atrito."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q07-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q07",
+      "tema": "Força elástica e tração",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma mola com k = 200 N/m é esticada 0,1 m. A força elástica é:",
+      "alternativas": [
+        "0,1 N",
+        "2 N",
+        "2.000 N",
+        "20 N",
+        "200 N"
+      ],
+      "correta": 3,
+      "explicacao": "F = 200 × 0,1. Dica de mergulhador: k vezes x.",
+      "comentarios": [
+        "Esqueceu o k.",
+        "Errou a casa.",
+        "Dividiu.",
+        "",
+        "Esqueceu a deformação."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q08-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q08",
+      "tema": "Força elástica e tração",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma mola com k = 500 N/m segura um peso de 50 N. Ela se estica:",
+      "alternativas": [
+        "25.000 m",
+        "1 m",
+        "0,01 m",
+        "0,1 m",
+        "10 m"
+      ],
+      "correta": 3,
+      "explicacao": "x = 50 ÷ 500. Dica de mergulhador: x = F/k.",
+      "comentarios": [
+        "Multiplicou.",
+        "Errou a casa.",
+        "Errou a casa.",
+        "",
+        "Inverteu."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q09-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q09",
+      "tema": "Força elástica e tração",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "O mesmo elevador de 500 kg sobe acelerando a 2 m/s² (g = 10 m/s²). A tração no cabo é:",
+      "alternativas": [
+        "5.000 N",
+        "1.000 N",
+        "6.000 N",
+        "500 N",
+        "4.000 N"
+      ],
+      "correta": 2,
+      "explicacao": "T − P = m·a; T = 5.000 + 1.000. Dica de mergulhador: subindo acelerado, cabo puxa mais que o peso.",
+      "comentarios": [
+        "Esqueceu a aceleração.",
+        "Só a parte da aceleração.",
+        "",
+        "Errou.",
+        "Subtraiu."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q10-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q10",
+      "tema": "Força elástica e tração",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Com uma polia móvel ideal, para erguer uma carga de 400 N basta uma força de:",
+      "alternativas": [
+        "800 N",
+        "200 N",
+        "400 N",
+        "0 N",
+        "100 N"
+      ],
+      "correta": 1,
+      "explicacao": "Cada polia móvel divide o esforço por dois. Dica de mergulhador: polia móvel, metade da força.",
+      "comentarios": [
+        "Dobrou.",
+        "",
+        "Seria polia fixa.",
+        "Não.",
+        "Seriam duas polias móveis."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q11-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q11",
+      "tema": "Força elástica e tração",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Com três polias móveis ideais, uma carga de 1.600 N exige uma força de:",
+      "alternativas": [
+        "200 N",
+        "533 N",
+        "800 N",
+        "400 N",
+        "100 N"
+      ],
+      "correta": 0,
+      "explicacao": "1.600 ÷ 2³ = 200. Dica de mergulhador: cada polia móvel, mais uma divisão por 2.",
+      "comentarios": [
+        "",
+        "Dividiu por 3.",
+        "Uma polia.",
+        "Duas polias.",
+        "Quatro polias."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q12-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q12",
+      "tema": "Movimento circular",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma roda gira 120 vezes por minuto. Sua frequência em hertz é:",
+      "alternativas": [
+        "0,5 Hz",
+        "2 Hz",
+        "7.200 Hz",
+        "60 Hz",
+        "120 Hz"
+      ],
+      "correta": 1,
+      "explicacao": "120 ÷ 60 = 2 voltas por segundo. Dica de mergulhador: rpm dividido por 60 dá hertz.",
+      "comentarios": [
+        "Inverteu.",
+        "",
+        "Multiplicou.",
+        "Errou.",
+        "Não converteu."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q13-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q13",
+      "tema": "Movimento circular",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Um satélite gira em órbita circular em torno da Terra. A força centrípeta sobre ele é feita:",
+      "alternativas": [
+        "Pela gravidade da Terra",
+        "Pela tração de um cabo",
+        "Pelo atrito com o ar",
+        "Pelos motores ligados o tempo todo",
+        "Pela luz do Sol"
+      ],
+      "correta": 0,
+      "explicacao": "A gravidade puxa para o centro da órbita. Dica de mergulhador: em órbita, a gravidade é a centrípeta.",
+      "comentarios": [
+        "",
+        "Não há cabo.",
+        "No espaço quase não há.",
+        "Não precisa.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q14-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q14",
+      "tema": "Movimento circular",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Se o mesmo carro fizer a curva com o dobro da velocidade, a força centrípeta necessária fica:",
+      "alternativas": [
+        "Oito vezes maior",
+        "Pela metade",
+        "Duas vezes maior",
+        "Igual",
+        "Quatro vezes maior"
+      ],
+      "correta": 4,
+      "explicacao": "F depende do quadrado da velocidade. Dica de mergulhador: curva rápida exige o quádruplo de aderência.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Depende de v².",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q15-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q15",
+      "tema": "Movimento circular",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Duas polias ligadas por correia têm raios de 30 cm e 10 cm. Se a maior gira a 60 rpm, a menor gira a:",
+      "alternativas": [
+        "60 rpm",
+        "1.800 rpm",
+        "20 rpm",
+        "90 rpm",
+        "180 rpm"
+      ],
+      "correta": 4,
+      "explicacao": "f₁·R₁ = f₂·R₂: 60 × 30 = f × 10. Dica de mergulhador: correia iguala a borda; a pequena corre mais.",
+      "comentarios": [
+        "Não são coaxiais.",
+        "Multiplicou.",
+        "Inverteu.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q16-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q16",
+      "tema": "Atrito e força normal",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "O coeficiente de atrito μ depende principalmente:",
+      "alternativas": [
+        "Da hora do dia",
+        "Só da velocidade da luz",
+        "Da cor dos objetos",
+        "Dos materiais e do estado das superfícies em contato",
+        "Do nome do objeto"
+      ],
+      "correta": 3,
+      "explicacao": "Borracha no asfalto seco tem μ alto; no gelo, baixo. Dica de mergulhador: material e estado mandam no μ.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q17-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q17",
+      "tema": "Força elástica e tração",
+      "dificuldade": "facil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Um dinamômetro mede forças usando:",
+      "alternativas": [
+        "A corrente elétrica",
+        "A luz",
+        "O som",
+        "A deformação de uma mola",
+        "A temperatura"
+      ],
+      "correta": 3,
+      "explicacao": "A deformação é proporcional à força. Dica de mergulhador: dinamômetro é mola com régua.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q18-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q18",
+      "tema": "Força elástica e tração",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma lâmpada de 20 N está pendurada parada por um fio vertical. A tração no fio é:",
+      "alternativas": [
+        "2 N",
+        "10 N",
+        "0 N",
+        "20 N",
+        "40 N"
+      ],
+      "correta": 3,
+      "explicacao": "Equilíbrio: tração igual ao peso. Dica de mergulhador: pendurado parado, fio segura o peso.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "O fio sustenta a lâmpada.",
+        "",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q19-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q19",
+      "tema": "Movimento circular",
+      "dificuldade": "medio",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma roda dá uma volta a cada 0,5 s. Sua frequência é:",
+      "alternativas": [
+        "30 Hz",
+        "1 Hz",
+        "2 Hz",
+        "0,5 Hz",
+        "5 Hz"
+      ],
+      "correta": 2,
+      "explicacao": "f = 1/T = 1/0,5. Dica de mergulhador: inverta o período.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "",
+        "É o período.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-q20-v1",
+      "varianteDe": "fis-forcas-aplicacoes-q20",
+      "tema": "Movimento circular",
+      "dificuldade": "dificil",
+      "fase": "fis-forcas-aplicacoes",
+      "enunciado": "Uma criança de 30 kg gira num carrossel de raio 4 m a 2 m/s. A força centrípeta sobre ela é:",
+      "alternativas": [
+        "60 N",
+        "240 N",
+        "30 N",
+        "120 N",
+        "15 N"
+      ],
+      "correta": 2,
+      "explicacao": "F = 30 × 4 ÷ 4. Dica de mergulhador: m·v²/R, com v ao quadrado.",
+      "comentarios": [
+        "Errou.",
+        "Errou.",
+        "",
+        "Esqueceu o raio.",
+        "Usou v em vez de v²."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q01-v1",
+      "varianteDe": "fis-revisao-movimento-q01",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um trem está a 54 km/h. Em m/s, isso equivale a:",
+      "alternativas": [
+        "1,5 m/s",
+        "15 m/s",
+        "5,4 m/s",
+        "54 m/s",
+        "194,4 m/s"
+      ],
+      "correta": 1,
+      "explicacao": "54 ÷ 3,6 = 15. Dica de mergulhador: divida por 3,6.",
+      "comentarios": [
+        "Errou a casa.",
+        "",
+        "Errou a casa.",
+        "Não converteu.",
+        "Multiplicou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q02-v1",
+      "varianteDe": "fis-revisao-movimento-q02",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Qual lei de Newton explica o recuo de um canhão ao disparar?",
+      "alternativas": [
+        "A primeira",
+        "A de Hooke",
+        "A segunda",
+        "A de Ohm",
+        "A terceira, ação e reação"
+      ],
+      "correta": 4,
+      "explicacao": "O canhão empurra a bala e a bala empurra o canhão. Dica de mergulhador: disparou, recuou.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não é a ideia central.",
+        "É de eletricidade.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q03-v1",
+      "varianteDe": "fis-revisao-movimento-q03",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um corpo em queda livre leva 5 s para atingir 50 m/s. Isso confirma g igual a:",
+      "alternativas": [
+        "50 m/s²",
+        "55 m/s²",
+        "250 m/s²",
+        "5 m/s²",
+        "10 m/s²"
+      ],
+      "correta": 4,
+      "explicacao": "50 ÷ 5 = 10. Dica de mergulhador: g é ganho de velocidade por segundo.",
+      "comentarios": [
+        "Esqueceu o tempo.",
+        "Somou.",
+        "Multiplicou.",
+        "Errou.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q04-v1",
+      "varianteDe": "fis-revisao-movimento-q04",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "A unidade de peso no SI é:",
+      "alternativas": [
+        "Newton",
+        "Quilograma",
+        "Grama",
+        "Metro",
+        "Joule"
+      ],
+      "correta": 0,
+      "explicacao": "Peso é força. Dica de mergulhador: força em newton.",
+      "comentarios": [
+        "",
+        "É de massa.",
+        "É de massa.",
+        "É de comprimento.",
+        "É de energia."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q05-v1",
+      "varianteDe": "fis-revisao-movimento-q05",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma lancha anda a 40 km/h constantes por 2,5 h. Ela percorre:",
+      "alternativas": [
+        "80 km",
+        "1.000 km",
+        "100 km",
+        "16 km",
+        "42,5 km"
+      ],
+      "correta": 2,
+      "explicacao": "40 × 2,5. Dica de mergulhador: velocidade vezes tempo.",
+      "comentarios": [
+        "Só duas horas.",
+        "Errou a casa.",
+        "",
+        "Dividiu.",
+        "Somou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q06-v1",
+      "varianteDe": "fis-revisao-movimento-q06",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um nadador empurra a parede da piscina com os pés para começar a nadar. Ele avança porque:",
+      "alternativas": [
+        "A parede o empurra de volta",
+        "A parede o atrai",
+        "A gravidade o empurra",
+        "Ele perde massa",
+        "A água o puxa"
+      ],
+      "correta": 0,
+      "explicacao": "Par de ação e reação. Dica de mergulhador: empurra a parede, a parede devolve.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q07-v1",
+      "varianteDe": "fis-revisao-movimento-q07",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "facil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Numa curva com areia na pista, o risco de derrapar aumenta porque:",
+      "alternativas": [
+        "O atrito entre pneu e pista diminui",
+        "A velocidade some",
+        "A curva fica maior",
+        "O peso do carro aumenta",
+        "A normal aumenta"
+      ],
+      "correta": 0,
+      "explicacao": "Atrito faz a centrípeta. Dica de mergulhador: areia rouba aderência.",
+      "comentarios": [
+        "",
+        "Não.",
+        "Não.",
+        "Não.",
+        "Não."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q08-v1",
+      "varianteDe": "fis-revisao-movimento-q08",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um carro a 36 km/h freia com desaceleração de 5 m/s². A distância de frenagem é:",
+      "alternativas": [
+        "10 m",
+        "5 m",
+        "129,6 m",
+        "1 m",
+        "20 m"
+      ],
+      "correta": 0,
+      "explicacao": "36 km/h = 10 m/s; 100 ÷ 10 = 10 m. Dica de mergulhador: v ao quadrado sobre 2a.",
+      "comentarios": [
+        "",
+        "Errou.",
+        "Não converteu.",
+        "Errou.",
+        "Esqueceu o 2."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q09-v1",
+      "varianteDe": "fis-revisao-movimento-q09",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um bloco de 3 kg sobe preso a um fio com aceleração de 1 m/s² (g = 10 m/s²). A tração é:",
+      "alternativas": [
+        "30 N",
+        "27 N",
+        "33 N",
+        "3 N",
+        "13 N"
+      ],
+      "correta": 2,
+      "explicacao": "T − P = m·a; T = 30 + 3. Dica de mergulhador: subindo acelerado, o fio puxa mais.",
+      "comentarios": [
+        "Esqueceu a aceleração.",
+        "Subtraiu.",
+        "",
+        "Só a parte da aceleração.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q10-v1",
+      "varianteDe": "fis-revisao-movimento-q10",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma bola lançada para cima a 15 m/s (g = 10 m/s²) leva para subir:",
+      "alternativas": [
+        "0,15 s",
+        "150 s",
+        "3 s",
+        "15 s",
+        "1,5 s"
+      ],
+      "correta": 4,
+      "explicacao": "15 ÷ 10. Dica de mergulhador: perde 10 m/s por segundo.",
+      "comentarios": [
+        "Errou a casa.",
+        "Multiplicou.",
+        "É ida e volta.",
+        "Esqueceu o g.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q11-v1",
+      "varianteDe": "fis-revisao-movimento-q11",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma caixa de 8 kg é arrastada com velocidade constante num piso com μ = 0,5 (g = 10 m/s²). A força aplicada é:",
+      "alternativas": [
+        "80 N",
+        "4 N",
+        "16 N",
+        "0 N",
+        "40 N"
+      ],
+      "correta": 4,
+      "explicacao": "0,5 × 80 = 40. Dica de mergulhador: atrito é μ vezes a normal.",
+      "comentarios": [
+        "É o peso.",
+        "Usou a massa.",
+        "Errou.",
+        "Não.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q12-v1",
+      "varianteDe": "fis-revisao-movimento-q12",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um carro vai de 0 a 20 m/s em 4 s. A distância percorrida é:",
+      "alternativas": [
+        "80 m",
+        "20 m",
+        "24 m",
+        "40 m",
+        "5 m"
+      ],
+      "correta": 3,
+      "explicacao": "a = 5 m/s²; s = 5 × 16 ÷ 2 = 40. Dica de mergulhador: ou velocidade média vezes tempo: 10 × 4.",
+      "comentarios": [
+        "Esqueceu o meio.",
+        "É a velocidade.",
+        "Somou.",
+        "",
+        "É a aceleração."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q13-v1",
+      "varianteDe": "fis-revisao-movimento-q13",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "O mesmo elástico, com k = 200 N/m, esticado 0,3 m, faz:",
+      "alternativas": [
+        "40 N",
+        "60 N",
+        "600 N",
+        "200 N",
+        "6 N"
+      ],
+      "correta": 1,
+      "explicacao": "F = 200 × 0,3. Dica de mergulhador: k vezes x.",
+      "comentarios": [
+        "É a força anterior.",
+        "",
+        "Errou a casa.",
+        "Esqueceu a deformação.",
+        "Errou a casa."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q14-v1",
+      "varianteDe": "fis-revisao-movimento-q14",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Saltadores dobram os joelhos ao tocar o chão porque isso:",
+      "alternativas": [
+        "Faz cair mais rápido",
+        "Diminui a massa",
+        "Elimina a gravidade",
+        "Aumenta a força do impacto",
+        "Aumenta o tempo de parada e reduz a força nas pernas"
+      ],
+      "correta": 4,
+      "explicacao": "Mais tempo para parar, menos desaceleração. Dica de mergulhador: aterrissagem macia, joelho dobrado.",
+      "comentarios": [
+        "Não.",
+        "Não.",
+        "Não.",
+        "Diminui.",
+        ""
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q15-v1",
+      "varianteDe": "fis-revisao-movimento-q15",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "medio",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma roda de raio 0,5 m gira com período de 1 s. A velocidade da borda é cerca de (π ≈ 3):",
+      "alternativas": [
+        "1,5 m/s",
+        "0,33 m/s",
+        "3 m/s",
+        "0,5 m/s",
+        "6 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "2 × 3 × 0,5 ÷ 1 = 3. Dica de mergulhador: uma volta é 2πR.",
+      "comentarios": [
+        "Esqueceu o 2.",
+        "Inverteu.",
+        "",
+        "É o raio.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q16-v1",
+      "varianteDe": "fis-revisao-movimento-q16",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Um motorista a 72 km/h, com 1 s de reação e desaceleração de 5 m/s², para em:",
+      "alternativas": [
+        "72 m",
+        "40 m",
+        "20 m",
+        "60 m",
+        "100 m"
+      ],
+      "correta": 3,
+      "explicacao": "20 m + 400 ÷ 10 = 60 m. Dica de mergulhador: some os dois trechos.",
+      "comentarios": [
+        "Não converteu.",
+        "Esqueceu a reação.",
+        "Só a reação.",
+        "",
+        "Esqueceu o 2."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q17-v1",
+      "varianteDe": "fis-revisao-movimento-q17",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Dois carrinhos ligados por um fio, de 4 kg e 6 kg, são puxados por 30 N aplicados no de 6 kg, sem atrito. A tração no fio é:",
+      "alternativas": [
+        "30 N",
+        "12 N",
+        "15 N",
+        "18 N",
+        "3 N"
+      ],
+      "correta": 1,
+      "explicacao": "a = 3 m/s²; o fio puxa o de 4 kg: 4 × 3. Dica de mergulhador: o fio puxa só quem vem atrás.",
+      "comentarios": [
+        "É a força total.",
+        "",
+        "Dividiu ao meio.",
+        "É a parte do de 6 kg.",
+        "É a aceleração."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q18-v1",
+      "varianteDe": "fis-revisao-movimento-q18",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Uma pedra solta de 45 m de altura chega ao solo com velocidade de (g = 10 m/s²):",
+      "alternativas": [
+        "3 m/s",
+        "900 m/s",
+        "15 m/s",
+        "30 m/s",
+        "45 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "v² = 900; v = 30. Dica de mergulhador: v = √(2gh).",
+      "comentarios": [
+        "Errou.",
+        "Esqueceu a raiz.",
+        "Errou.",
+        "",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q19-v1",
+      "varianteDe": "fis-revisao-movimento-q19",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Numa curva plana de raio 90 m, com atrito máximo igual a 0,4 do peso (g = 10 m/s²), a maior velocidade sem derrapar é:",
+      "alternativas": [
+        "90 m/s",
+        "360 m/s",
+        "Cerca de 19 m/s",
+        "36 m/s",
+        "9 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "v² = 0,4 × 10 × 90 = 360; v ≈ 19. Dica de mergulhador: v = √(μ·g·R).",
+      "comentarios": [
+        "Usou o raio.",
+        "Esqueceu a raiz.",
+        "",
+        "Errou.",
+        "Errou."
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-q20-v1",
+      "varianteDe": "fis-revisao-movimento-q20",
+      "tema": "Revisão: movimento e forças",
+      "dificuldade": "dificil",
+      "fase": "fis-revisao-movimento",
+      "enunciado": "Duas forças perpendiculares de 9 N e 12 N agem sobre um corpo de 3 kg. A aceleração é:",
+      "alternativas": [
+        "1 m/s²",
+        "7 m/s²",
+        "15 m/s²",
+        "36 m/s²",
+        "5 m/s²"
+      ],
+      "correta": 4,
+      "explicacao": "Resultante 15 N; 15 ÷ 3 = 5. Dica de mergulhador: 9, 12, 15 é o 3, 4, 5 vezes três.",
+      "comentarios": [
+        "Subtraiu.",
+        "Somou e dividiu.",
+        "Esqueceu a massa.",
+        "Multiplicou.",
+        ""
+      ]
     }
   ],
   "pares": [
@@ -3248,6 +6402,78 @@
       "tema": "Movimento variado e queda livre",
       "termo": "Tempo de reação",
       "definicao": "Carro anda sem frear"
+    },
+    {
+      "id": "fis-leis-newton-par-01",
+      "tema": "Leis de Newton",
+      "termo": "Primeira lei",
+      "definicao": "Inércia"
+    },
+    {
+      "id": "fis-leis-newton-par-02",
+      "tema": "Leis de Newton",
+      "termo": "Segunda lei",
+      "definicao": "F = m·a"
+    },
+    {
+      "id": "fis-leis-newton-par-03",
+      "tema": "Leis de Newton",
+      "termo": "Terceira lei",
+      "definicao": "Ação e reação"
+    },
+    {
+      "id": "fis-leis-newton-par-04",
+      "tema": "Leis de Newton",
+      "termo": "Peso",
+      "definicao": "m·g"
+    },
+    {
+      "id": "fis-forcas-aplicacoes-par-01",
+      "tema": "Atrito, molas e movimento circular",
+      "termo": "Atrito",
+      "definicao": "μ·N"
+    },
+    {
+      "id": "fis-forcas-aplicacoes-par-02",
+      "tema": "Atrito, molas e movimento circular",
+      "termo": "Lei de Hooke",
+      "definicao": "F = k·x"
+    },
+    {
+      "id": "fis-forcas-aplicacoes-par-03",
+      "tema": "Atrito, molas e movimento circular",
+      "termo": "Polia móvel",
+      "definicao": "Divide o esforço por dois"
+    },
+    {
+      "id": "fis-forcas-aplicacoes-par-04",
+      "tema": "Atrito, molas e movimento circular",
+      "termo": "Curva plana",
+      "definicao": "Atrito faz a centrípeta"
+    },
+    {
+      "id": "fis-revisao-movimento-par-01",
+      "tema": "Revisão do módulo: movimento e forças",
+      "termo": "Torricelli",
+      "definicao": "v² = v₀² + 2aΔs"
+    },
+    {
+      "id": "fis-revisao-movimento-par-02",
+      "tema": "Revisão do módulo: movimento e forças",
+      "termo": "Cinto",
+      "definicao": "Inércia"
+    },
+    {
+      "id": "fis-revisao-movimento-par-03",
+      "tema": "Revisão do módulo: movimento e forças",
+      "termo": "Coice do canhão",
+      "definicao": "Ação e reação"
+    },
+    {
+      "id": "fis-revisao-movimento-par-04",
+      "tema": "Revisão do módulo: movimento e forças",
+      "termo": "Curva sem derrapar",
+      "definicao": "Atrito como centrípeta"
     }
   ],
   "verdadeiroFalso": [
@@ -3313,6 +6539,69 @@
       "afirmacao": "Dobrar a velocidade quadruplica a distância de frenagem.",
       "verdadeira": true,
       "explicacao": "Depende de v²."
+    },
+    {
+      "id": "fis-leis-newton-vf-01",
+      "tema": "Leis de Newton",
+      "afirmacao": "Massa e peso são grandezas diferentes.",
+      "verdadeira": true,
+      "explicacao": "Massa em kg, peso em N."
+    },
+    {
+      "id": "fis-leis-newton-vf-02",
+      "tema": "Leis de Newton",
+      "afirmacao": "Ação e reação se anulam.",
+      "verdadeira": false,
+      "explicacao": "Agem em corpos diferentes."
+    },
+    {
+      "id": "fis-leis-newton-vf-03",
+      "tema": "Leis de Newton",
+      "afirmacao": "Um corpo em MRU tem resultante nula.",
+      "verdadeira": true,
+      "explicacao": "Primeira lei."
+    },
+    {
+      "id": "fis-forcas-aplicacoes-vf-01",
+      "tema": "Atrito, molas e movimento circular",
+      "afirmacao": "O atrito estático máximo costuma ser maior que o cinético.",
+      "verdadeira": true,
+      "explicacao": "Por isso o primeiro empurrão custa mais."
+    },
+    {
+      "id": "fis-forcas-aplicacoes-vf-02",
+      "tema": "Atrito, molas e movimento circular",
+      "afirmacao": "Polia fixa reduz a força pela metade.",
+      "verdadeira": false,
+      "explicacao": "Só muda a direção."
+    },
+    {
+      "id": "fis-forcas-aplicacoes-vf-03",
+      "tema": "Atrito, molas e movimento circular",
+      "afirmacao": "No MCU existe aceleração.",
+      "verdadeira": true,
+      "explicacao": "A direção da velocidade muda."
+    },
+    {
+      "id": "fis-revisao-movimento-vf-01",
+      "tema": "Revisão do módulo: movimento e forças",
+      "afirmacao": "A massa se cancela na velocidade máxima de uma curva plana.",
+      "verdadeira": true,
+      "explicacao": "v = √(μgR)."
+    },
+    {
+      "id": "fis-revisao-movimento-vf-02",
+      "tema": "Revisão do módulo: movimento e forças",
+      "afirmacao": "Na velocidade constante, a força aplicada é maior que o atrito.",
+      "verdadeira": false,
+      "explicacao": "São iguais."
+    },
+    {
+      "id": "fis-revisao-movimento-vf-03",
+      "tema": "Revisão do módulo: movimento e forças",
+      "afirmacao": "Airbag reduz a força aumentando o tempo de parada.",
+      "verdadeira": true,
+      "explicacao": "Segunda lei."
     }
   ],
   "sequencias": [
@@ -3351,6 +6640,43 @@
         "Pé no freio",
         "Frenagem",
         "Carro parado"
+      ],
+      "explicacao": "Reação + frenagem."
+    },
+    {
+      "id": "fis-leis-newton-seq-01",
+      "tema": "Leis de Newton",
+      "titulo": "Resolver com Newton",
+      "itens": [
+        "Isolar o corpo",
+        "Desenhar as forças",
+        "Achar a resultante",
+        "Aplicar F = m·a"
+      ],
+      "explicacao": "Desenho antes da conta."
+    },
+    {
+      "id": "fis-forcas-aplicacoes-seq-01",
+      "tema": "Atrito, molas e movimento circular",
+      "titulo": "Atrito em problema",
+      "itens": [
+        "Calcular o peso",
+        "Achar a normal",
+        "Multiplicar por μ",
+        "Subtrair da força",
+        "Dividir pela massa"
+      ],
+      "explicacao": "A normal vem antes."
+    },
+    {
+      "id": "fis-revisao-movimento-seq-01",
+      "tema": "Revisão do módulo: movimento e forças",
+      "titulo": "Do perigo à parada",
+      "itens": [
+        "Converter a velocidade",
+        "Calcular a reação",
+        "Calcular a frenagem",
+        "Somar"
       ],
       "explicacao": "Reação + frenagem."
     }
@@ -3396,6 +6722,48 @@
         "Queda",
         "10 m/s²",
         "Puxa para baixo"
+      ]
+    },
+    {
+      "id": "fis-leis-newton-adv-01",
+      "tema": "Leis de Newton",
+      "dificuldade": "medio",
+      "resposta": "Inércia",
+      "aceitas": [
+        "inercia, inércia"
+      ],
+      "dicas": [
+        "Ônibus",
+        "Freada",
+        "Massa"
+      ]
+    },
+    {
+      "id": "fis-forcas-aplicacoes-adv-01",
+      "tema": "Atrito, molas e movimento circular",
+      "dificuldade": "medio",
+      "resposta": "Mola",
+      "aceitas": [
+        "mola, molas"
+      ],
+      "dicas": [
+        "Hooke",
+        "Deformação",
+        "Amortecedor"
+      ]
+    },
+    {
+      "id": "fis-revisao-movimento-adv-01",
+      "tema": "Revisão do módulo: movimento e forças",
+      "dificuldade": "dificil",
+      "resposta": "Torricelli",
+      "aceitas": [
+        "torricelli, equacao de torricelli"
+      ],
+      "dicas": [
+        "Sem tempo",
+        "v ao quadrado",
+        "Frenagem"
       ]
     }
   ],
@@ -3471,6 +6839,78 @@
       "tema": "Física",
       "palavra": "Airbag",
       "dica": "Bolsa que infla e aumenta o tempo de parada"
+    },
+    {
+      "id": "fis-leis-newton-pal-01",
+      "tema": "Física",
+      "palavra": "Massa",
+      "dica": "Medida em quilograma, igual na Lua"
+    },
+    {
+      "id": "fis-leis-newton-pal-02",
+      "tema": "Física",
+      "palavra": "Peso",
+      "dica": "Força com que a Terra puxa um corpo"
+    },
+    {
+      "id": "fis-leis-newton-pal-03",
+      "tema": "Física",
+      "palavra": "Foguete",
+      "dica": "Sobe empurrando gases para baixo"
+    },
+    {
+      "id": "fis-leis-newton-pal-04",
+      "tema": "Física",
+      "palavra": "Remo",
+      "dica": "Empurra a água para trás"
+    },
+    {
+      "id": "fis-forcas-aplicacoes-pal-01",
+      "tema": "Física",
+      "palavra": "Polia",
+      "dica": "Roda com sulco que guia o fio"
+    },
+    {
+      "id": "fis-forcas-aplicacoes-pal-02",
+      "tema": "Física",
+      "palavra": "Curva",
+      "dica": "Trecho em que o atrito segura o carro"
+    },
+    {
+      "id": "fis-forcas-aplicacoes-pal-03",
+      "tema": "Física",
+      "palavra": "Catraca",
+      "dica": "Engrenagem pequena da roda traseira"
+    },
+    {
+      "id": "fis-forcas-aplicacoes-pal-04",
+      "tema": "Física",
+      "palavra": "Atrito",
+      "dica": "Força que se opõe ao deslizamento"
+    },
+    {
+      "id": "fis-revisao-movimento-pal-01",
+      "tema": "Física",
+      "palavra": "Ladeira",
+      "dica": "Rua inclinada onde o carro pede mais força"
+    },
+    {
+      "id": "fis-revisao-movimento-pal-02",
+      "tema": "Física",
+      "palavra": "Elástico",
+      "dica": "Faixa que estica e volta ao tamanho"
+    },
+    {
+      "id": "fis-revisao-movimento-pal-03",
+      "tema": "Física",
+      "palavra": "Roda",
+      "dica": "Gira com período e frequência"
+    },
+    {
+      "id": "fis-revisao-movimento-pal-04",
+      "tema": "Física",
+      "palavra": "Bloco",
+      "dica": "Corpo isolado no desenho de forças"
     }
   ],
   "fichas": {
@@ -3597,6 +7037,104 @@
       "pegadinhas": [
         "Achar que a frenagem só dobra.",
         "Esquecer o trecho percorrido na reação."
+      ]
+    },
+    "Inércia e primeira lei": {
+      "texto": [
+        "Sem força resultante, o corpo mantém repouso ou MRU. A inércia cresce com a massa.",
+        "Exemplos: passageiro na freada e na arrancada, toalha puxada, pedra que sai pela tangente, paraquedista em velocidade constante."
+      ],
+      "pontos": [
+        "Freou o ônibus, não freou você.",
+        "Velocidade constante em reta, resultante zero."
+      ],
+      "pegadinhas": [
+        "Achar que movimento exige força.",
+        "Dizer que a pedra sai pelo raio."
+      ]
+    },
+    "Segunda lei e peso": {
+      "texto": [
+        "F = m·a, com F a força resultante. Peso P = m·g; massa não muda com o lugar.",
+        "Balança mede a força de apoio; num elevador subindo acelerado, marca mais."
+      ],
+      "pontos": [
+        "Primeiro a resultante, depois a divisão.",
+        "Na Lua, mesma massa, menos peso."
+      ],
+      "pegadinhas": [
+        "Confundir quilograma com newton.",
+        "Usar uma força só quando há várias."
+      ]
+    },
+    "Ação e reação": {
+      "texto": [
+        "Toda força tem par: mesmo módulo, mesma direção, sentidos opostos, corpos diferentes; por isso não se anulam.",
+        "Remo, andar, foguete e coice da arma. Peso e normal não são par de ação e reação."
+      ],
+      "pontos": [
+        "Empurra para trás, vai para frente.",
+        "Força igual, efeito diferente conforme a massa."
+      ],
+      "pegadinhas": [
+        "Dizer que peso e normal formam o par.",
+        "Achar que o caminhão faz força maior na batida."
+      ]
+    },
+    "Atrito e força normal": {
+      "texto": [
+        "Normal: reação perpendicular à superfície. Atrito = μ·N, contra o deslizamento; o estático máximo é maior que o cinético.",
+        "Freio ABS mantém o atrito estático; pneu careca e pista molhada reduzem μ. Com força e atrito, a resultante é a diferença."
+      ],
+      "pontos": [
+        "Normal primeiro, atrito depois.",
+        "O primeiro empurrão é o mais pesado."
+      ],
+      "pegadinhas": [
+        "Esquecer o atrito na resultante.",
+        "Usar a massa em vez do peso na normal."
+      ]
+    },
+    "Força elástica e tração": {
+      "texto": [
+        "Lei de Hooke F = k·x. Tração igual em todo o fio ideal; elevador acelerando para cima: T = P + m·a.",
+        "Polia fixa muda a direção; cada polia móvel divide o esforço por dois."
+      ],
+      "pontos": [
+        "k vezes x.",
+        "Polia móvel, metade da força."
+      ],
+      "pegadinhas": [
+        "Achar que a polia fixa reduz a força.",
+        "Esquecer a aceleração na tração."
+      ]
+    },
+    "Movimento circular": {
+      "texto": [
+        "No MCU a velocidade muda de direção; a resultante aponta para o centro: F = m·v²/R. Período, frequência (Hz, rpm) e v = 2πR/T.",
+        "Na curva plana, o atrito é a centrípeta; na órbita, a gravidade. Correia e corrente igualam a velocidade da borda."
+      ],
+      "pontos": [
+        "Rpm dividido por 60 dá hertz.",
+        "Na correia, a menor gira mais."
+      ],
+      "pegadinhas": [
+        "Achar que no MCU não há aceleração.",
+        "Dar o mesmo número de voltas para polias de raios diferentes."
+      ]
+    },
+    "Revisão: movimento e forças": {
+      "texto": [
+        "Descrever: unidades, MU (s = s₀ + v·t), MUV (v = v₀ + a·t, s = s₀ + v₀·t + a·t²/2, Torricelli) e queda livre com g ≈ 10 m/s².",
+        "Explicar: inércia, F = m·a com a resultante, ação e reação, peso, normal, atrito μ·N, mola k·x e centrípeta m·v²/R."
+      ],
+      "pontos": [
+        "Converta as unidades antes de calcular.",
+        "Em sistemas de blocos, aceleração do conjunto e depois isole cada um."
+      ],
+      "pegadinhas": [
+        "Esquecer o tempo de reação na parada.",
+        "Dizer que a aceleração é zero no topo do lançamento."
       ]
     }
   }
