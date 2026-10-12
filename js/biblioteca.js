@@ -36,17 +36,37 @@ const Biblioteca = (() => {
       lista,
       App.podeGerenciar() ? formCriar(secao) : null].filter(Boolean));
 
-    App.trilhas().forEach((t) => {
+    // Mesma organização do Início: Mergulho no Enem (por área da prova), Radiologia e os outros cursos
+    Grupos.secoes(App.trilhas()).forEach((sec) => {
+      if (sec.titulo) {
+        lista.append(h('h2', { class: `cursos-grupo cursos-grupo--${sec.cor}` },
+          h('span', { class: 'cursos-grupo__icone', 'aria-hidden': 'true' }, icone(sec.icone)), sec.titulo));
+      }
+      sec.partes.forEach((parte) => {
+        const temArea = parte.area && parte.area.nome && sec.grupo && (sec.grupo.areas.length > 1 || parte.area.icone === 'i-estrela');
+        if (temArea) {
+          lista.append(h('h3', { class: `grupo-area__titulo cursos-area grupo-area--${parte.area.cor}` },
+            parte.area.icone ? h('span', { class: 'grupo-area__icone', 'aria-hidden': 'true' }, icone(parte.area.icone)) : null,
+            h('span', { text: parte.area.nome })));
+        }
+        parte.trilhas.forEach(({ trilha, nome }) => lista.append(cartaoCurso(secao, trilha, nome, temArea ? parte.area.nome : null)));
+      });
+    });
+    if (!App.trilhas().length) lista.append(UI.vazio('Nenhuma trilha ainda. Importe um arquivo .json ou crie uma colando texto.'));
+  }
+
+  /** Cartão de um curso na Biblioteca (nome curto e área quando ele está num grupo). */
+  function cartaoCurso(secao, t, nome = t.nome, area = null) {
       const prog = Progresso.carregar(t.id);
       const nivel = Progresso.nivel(prog.xp);
       const concluidas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
       const importada = Trilhas.ehImportada(t.id);
       const extras = ['pares', 'verdadeiroFalso', 'adivinhas', 'sequencias', 'palavras'].filter((b) => (Array.isArray(t[b]) && t[b].length) || (t._parcial && t.contagem && t.contagem[b])).length;
-      lista.append(h('article', { class: 'cartao curso' },
+      return h('article', { class: 'cartao curso' },
         h('div', { class: 'curso__cabeca' },
-          h('span', { class: 'rotulo', text: t.categoria || 'Trilha' }),
+          h('span', { class: 'rotulo', text: area || t.categoria || 'Trilha' }),
           importada ? h('span', { class: 'chip', text: 'Importada' }) : h('span', { class: 'chip', text: 'Do projeto' })),
-        h('h2', { class: 'curso__nome', text: t.nome }),
+        h('h2', { class: 'curso__nome', text: nome }),
         h('p', { class: 'curso__descricao', text: t.descricao }),
         h('ul', { class: 'curso__numeros' },
           h('li', {}, h('strong', { text: String(Trilhas.totalQuestoes(t)) }), 'questões'),
@@ -62,9 +82,7 @@ const Biblioteca = (() => {
             Trilhas.removerImportada(t.id);
             await App.recarregarTrilhas();
             renderCursos(secao);
-          } }, icone('i-lixo'), 'Remover') : null)));
-    });
-    if (!App.trilhas().length) lista.append(UI.vazio('Nenhuma trilha ainda. Importe um arquivo .json ou crie uma colando texto.'));
+          } }, icone('i-lixo'), 'Remover') : null));
   }
 
   /** Criar trilha colando linhas "pergunta | certa | errada | errada..." (D23, versão simples). */
@@ -200,7 +218,7 @@ const Biblioteca = (() => {
     const busca = h('input', { class: 'campo', type: 'search', placeholder: 'Buscar pelo nome…', value: estadoPdf.busca, 'aria-label': 'Buscar PDFs pelo nome',
       oninput: (e) => { estadoPdf.busca = e.target.value; desenhar(); } });
     const filtro = h('select', { 'aria-label': 'Filtrar por trilha', onchange: (e) => { estadoPdf.trilha = e.target.value; desenhar(); } },
-      h('option', { value: '', text: 'Todas as trilhas' }), App.trilhas().map((t) => h('option', { value: t.id, selected: estadoPdf.trilha === t.id, text: t.nome })));
+      Grupos.opcoesSelect(App.trilhas(), estadoPdf.trilha, h('option', { value: '', text: 'Todas as trilhas' })));
 
     secao.append(
       UI.cabecalho('Biblioteca', 'PDFs', `Guarde apostilas e resumos (até ${LIMITE_MB} MB cada). Ficam salvos só neste navegador.`),
@@ -251,7 +269,7 @@ const Biblioteca = (() => {
             h('span', { class: 'texto-suave', text: `${tamanho(p.tamanho)} · ${new Date(p.criadoEm).toLocaleDateString('pt-BR')}${p.notas ? ' · com anotações' : ''}` }),
             h('label', { class: 'pdf__trilha' }, h('span', { class: 'visualmente-oculto', text: `Trilha de ${p.nome}` }),
               h('select', { onchange: async (e) => { p.trilhaId = e.target.value; await gravarPdf(p); } },
-                h('option', { value: '', text: 'Sem trilha' }), App.trilhas().map((t) => h('option', { value: t.id, selected: p.trilhaId === t.id, text: t.nome }))))),
+                Grupos.opcoesSelect(App.trilhas(), p.trilhaId, h('option', { value: '', text: 'Sem trilha' }))))),
           h('div', { class: 'pdf__acoes' },
             h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => abrir(p.id) }, 'Abrir'),
             h('button', { type: 'button', class: 'botao-icone', 'aria-label': `Excluir ${p.nome}`, onclick: async () => {

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-10-12 · Grupos em todo o app (seletor, Biblioteca, Admin e menus)
+- **Feito:** a organização do Início foi para o resto do app, a pedido do usuário ("continua tudo bagunçado"): ordem única dos cursos (`Grupos.ordenar`: Mergulho no Enem com o Comece por aqui e as áreas da prova, Radiologia e "Outros cursos"); seletor "Trilha atual" com título de grupo e de área e nomes curtos; Biblioteca com seções por grupo e área; Admin com os cursos agrupados e o pacote renomeado para "Mergulho no Enem e Vestibular"; menus de escolha (PDFs, tarefas, provas) com `<optgroup>`.
+- **Testes:** celular e computador; teclado no seletor (setas, Enter) e no Início; Mergulho do Enem e da Radiologia sem erros.
+
+---
+
 ## 2026-10-12 · Início organizado em grupos: "Mergulho no Enem e Vestibular" e "Radiologia"
 - **Feito:** `js/grupos.js` e um novo desenho da lista do Início. O grupo do Enem é um cartão largo (ícone, matérias, aulas, questões e progresso somado) que abre com um toque e mostra o "Comece por aqui" em destaque (selo "Recomendado para começar") e as matérias pelas áreas da prova, cada área com a sua cor e ícone. Radiologia virou grupo com os 4 cursos. ISO e Cibersegurança seguem avulsos. Os cursos do Enem passaram a se chamar "Mergulho no Enem · <matéria>" (o "Comece por aqui" virou "Mergulho no Enem · Comece por aqui"); ids e progresso iguais. O grupo lembra se estava aberto (localStorage com try/catch); o tutorial do Início subiu para a versão 3.
 - **Também:** as marcas `revisar` dos cursos de Radiologia CP e GU saíram, com a aprovação da Georgia registrada nos cadernos e pareceres.

@@ -169,6 +169,24 @@ label.botao:focus-within {
   flex-wrap: wrap;
   gap: 8px;
 }
+/* Admin: cursos agrupados como no Início (js/grupos.js) */
+.checks-grupo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-basis: 100%;
+}
+.checks-grupo__titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-basis: 100%;
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--texto-suave);
+}
+.checks-grupo__titulo .icone { width: 16px; height: 16px; color: var(--turquesa-claro); }
 .check {
   display: inline-flex;
   align-items: center;
@@ -1222,6 +1240,32 @@ body.qd-travado { overflow: hidden; }
 
 /* ---------- Cursos ---------- */
 .cursos { display: grid; gap: 12px; }
+/* Biblioteca agrupada (js/grupos.js): título do grupo e da área ocupam a linha inteira */
+.cursos-grupo,
+.cursos-area { grid-column: 1 / -1; }
+.cursos-grupo {
+  --grupo-cor: var(--turquesa-claro);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 2px;
+  font-size: clamp(1.15rem, 3.4vw, 1.4rem);
+  font-weight: 800;
+}
+.cursos-grupo:first-child { margin-top: 4px; }
+.cursos-grupo--amarelo { --grupo-cor: var(--amarelo); }
+.cursos-grupo__icone {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: var(--grupo-cor);
+  background: color-mix(in srgb, var(--grupo-cor) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--grupo-cor) 35%, transparent);
+}
+.cursos-grupo__icone .icone { width: 22px; height: 22px; }
+.cursos-area { margin: 8px 0 0; }
 .curso { display: grid; gap: 10px; margin: 0 !important; }
 .curso__cabeca { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .curso__nome { font-size: 1.15rem; font-weight: 800; }

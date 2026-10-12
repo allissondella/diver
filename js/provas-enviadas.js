@@ -244,7 +244,7 @@ const ProvasEnviadas = (() => {
     const botao = h('button', { type: 'submit', class: 'botao botao--primario' }, icone('i-upload'), 'Confirmar e subir a prova');
     const titulo = h('input', { class: 'campo', id: 'upload-titulo', maxlength: '120', placeholder: 'Ex.: Residência 2019, Radiologia', value: r.titulo, oninput: (e) => (r.titulo = e.target.value) });
     const curso = h('select', { class: 'campo', id: 'upload-curso', onchange: (e) => (r.trilhaId = e.target.value) },
-      App.trilhas().map((t) => h('option', { value: t.id, selected: t.id === r.trilhaId, text: t.nome })));
+      Grupos.opcoesSelect(App.trilhas(), r.trilhaId));
     const arquivo = h('input', { type: 'file', class: 'campo campo--arquivo', id: 'upload-arquivo', accept: '.pdf,.txt,application/pdf,text/plain',
       onchange: (e) => {
         r.arquivo = e.target.files[0] || null;

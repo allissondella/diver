@@ -80,10 +80,52 @@ const Grupos = (() => {
     return itens;
   }
 
+  /** Todas as trilhas na ordem da vitrine: grupos primeiro (destaque e áreas na ordem certa), depois os cursos avulsos. */
+  function ordenar(trilhas) {
+    return organizar(trilhas).flatMap((item) => (item.tipo === 'grupo'
+      ? [item.destaque, ...item.areas.flatMap((a) => a.trilhas)].filter(Boolean)
+      : [item.trilha]));
+  }
+
+  /**
+   * Seções para listas simples (seletor, Biblioteca, Admin, menus de escolha):
+   * [{ id, titulo, icone, cor, partes: [{ area, trilhas: [{ trilha, nome }] }] }].
+   * Os cursos avulsos formam a seção "Outros cursos" (só ganha título quando também há grupos).
+   */
+  function secoes(trilhas) {
+    const itens = organizar(trilhas);
+    const grupos = itens.filter((i) => i.tipo === 'grupo');
+    const avulsos = itens.filter((i) => i.tipo === 'curso').map((i) => i.trilha);
+    const lista = grupos.map(({ grupo, destaque, areas }) => ({
+      id: grupo.id, titulo: grupo.nome, icone: grupo.icone, cor: grupo.id === 'enem' ? 'amarelo' : 'turquesa', grupo,
+      partes: [
+        ...(destaque ? [{ area: { nome: grupo.destaqueSelo, cor: 'amarelo', icone: 'i-estrela' }, trilhas: [{ trilha: destaque, nome: nomeCurto(grupo, destaque) }] }] : []),
+        ...areas.map(({ area, trilhas: ts }) => ({ area, trilhas: ts.map((t) => ({ trilha: t, nome: nomeCurto(grupo, t) })) })),
+      ],
+    }));
+    if (avulsos.length) {
+      lista.push({ id: 'outros', titulo: grupos.length ? 'Outros cursos' : null, icone: 'i-livro', cor: 'turquesa', grupo: null,
+        partes: [{ area: null, trilhas: avulsos.map((t) => ({ trilha: t, nome: t.nome })) }] });
+    }
+    return lista;
+  }
+
+  /** Opções de um <select> separadas por grupo (<optgroup>); `primeira` é a opção do topo (ex.: "Todas as trilhas"). */
+  function opcoesSelect(trilhas, selecionada, primeira = null) {
+    const { h } = UI;
+    const grupos = secoes(trilhas).map((sec) => {
+      const opcoes = sec.partes.flatMap((p) => p.trilhas.map(({ trilha, nome }) => h('option', {
+        value: trilha.id, selected: trilha.id === selecionada, text: sec.grupo ? nome : trilha.nome,
+      })));
+      return sec.titulo ? h('optgroup', { label: sec.titulo }, opcoes) : opcoes;
+    });
+    return [primeira, ...grupos.flat()].filter(Boolean);
+  }
+
   /** Em que grupo está o curso (ou null). */
   function doCurso(id) {
     return LISTA.find((g) => g.pertence({ id })) || null;
   }
 
-  return { LISTA, organizar, nomeCurto, doCurso };
+  return { LISTA, organizar, ordenar, secoes, opcoesSelect, nomeCurto, doCurso };
 })();
