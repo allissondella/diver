@@ -169,24 +169,13 @@ label.botao:focus-within {
   flex-wrap: wrap;
   gap: 8px;
 }
-/* Admin: cursos agrupados como no Início (js/grupos.js) */
-.checks-grupo {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  flex-basis: 100%;
-}
-.checks-grupo__titulo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-basis: 100%;
-  margin: 8px 0 0;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--texto-suave);
-}
-.checks-grupo__titulo .icone { width: 16px; height: 16px; color: var(--turquesa-claro); }
+/* Admin: as salas na matrícula (js/admin.js, checksCursos) */
+.checks--salas { flex-direction: column; align-items: stretch; }
+.check.check-sala { border-radius: var(--raio-pequeno); min-height: 48px; padding: 8px 14px; }
+.check.check-sala:has(input:checked) { border-color: var(--sala-cor, var(--turquesa)); background: var(--superficie-turquesa); }
+.check-sala__icone { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; color: var(--sala-cor, var(--turquesa-claro)); background: color-mix(in srgb, var(--sala-cor, var(--turquesa-claro)) 15%, transparent); }
+.check-sala__icone .icone { width: 16px; height: 16px; }
+.check-sala__nota { font-size: 0.8rem; }
 .check {
   display: inline-flex;
   align-items: center;

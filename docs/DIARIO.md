@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-10-12 · Admin: matrícula pelas 4 salas
+- **Feito:** pedido do usuário ("aqui também, os mesmos nomes das 4 salas"). Em Admin → Pessoas e cursos (cadastro e cartão de cada pessoa) só aparecem as salas Mergulho no Enem e Vestibular, Radiologia, ISO 27001 e Cibersegurança, com ícone e cor. Marcar a sala grava todos os cursos dela e o marcador `pacote:<sala>` (o `pacote:enem` antigo continua valendo); o cartão "Salas completas" com "Atualizar salas" dá os cursos publicados depois. Matrícula antiga com parte da sala aparece pela metade ("3 de 4 cursos") e não muda até o admin marcar. Os chips da pessoa e a lista do professor mostram as salas.
+- **Testes:** celular e computador com a nuvem simulada: estados marcado, pela metade e vazio; marcar, desmarcar e cadastrar gravam a lista certa (curso fora das salas fica como estava).
+
+---
+
 ## 2026-10-12 · Sala do Enem indica o Cronograma de estudos
 - **Feito:** pedido do usuário. Na sala Mergulho no Enem e Vestibular, um atalho logo abaixo do topo: "Monte seu cronograma de estudos" com o botão "Montar meu cronograma" (com plano pronto: "Ver meu cronograma"). Na primeira visita de quem ainda não tem plano, a caixa do Diver convida a montar o cronograma, depois do tutorial da sala e uma vez só (`diver:v1:aviso-cronograma`). O tutorial da sala ganhou o passo do cronograma (versão 2). `Cronograma.temPlano()` diz se já existe plano.
 - **Testes:** celular e computador; aviso só na 1ª visita, nunca com plano pronto e nunca na Radiologia; "Montar meu cronograma" abre a aba Cronograma.
