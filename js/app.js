@@ -663,6 +663,18 @@ const App = (() => {
       : null;
 
     const umaArea = sala.areas.length === 1 && !sala.areas[0].area.nome;
+    const temPlano = Cronograma.temPlano();
+    const cronograma = sala.cronograma
+      ? h('section', { class: 'sala-cronograma', id: 'sala-cronograma', 'aria-labelledby': 'sala-cronograma-titulo' },
+        h('span', { class: 'sala-cronograma__icone', 'aria-hidden': 'true' }, icone('i-calendario')),
+        h('div', { class: 'sala-cronograma__textos' },
+          h('h2', { class: 'sala-cronograma__titulo', id: 'sala-cronograma-titulo', text: temPlano ? 'Seu cronograma de estudos' : 'Monte seu cronograma de estudos' }),
+          h('p', { class: 'sala-cronograma__texto', text: temPlano
+            ? 'Seu plano até a prova já está pronto. Confira o que estudar hoje e marque o que fez.'
+            : 'O Diver monta um plano até a sua prova: matéria por matéria, com revisão, simulados e redação toda semana.' })),
+        h('button', { type: 'button', class: 'botao botao--primario sala-cronograma__botao', onclick: () => irPara('cronograma') },
+          icone('i-alvo'), temPlano ? 'Ver meu cronograma' : 'Montar meu cronograma'))
+      : null;
     tela.append(...[
       h('button', { type: 'button', class: 'botao botao--link sala-voltar', onclick: () => irPara('inicio') }, icone('i-voltar'), 'Todas as salas'),
       h('header', { class: 'sala-hero' },
@@ -675,6 +687,7 @@ const App = (() => {
           h('div', { class: 'sala-hero__progresso' },
             h('span', { class: 'trilha__progresso sala-porta__barra', role: 'progressbar', 'aria-label': 'Progresso na sala', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(r.pct) }, h('span', { style: `width:${r.pct}%` })),
             h('span', { class: 'sala-porta__pct', text: `${r.feitas}/${r.total} · ${r.pct}% feito` })))),
+      cronograma,
       continuar,
       h('div', { class: 'sala-conteudo', id: 'sala-conteudo' },
         sala.destaque ? cartaoCurso(sala.destaque, { estilo: 'destaque', nome: Grupos.nomeCurto(sala, sala.destaque), selo: sala.destaqueSelo, rotuloAula: 'fases' }) : null,
@@ -687,6 +700,32 @@ const App = (() => {
               h('span', { class: 'grupo-area__conta', text: plural(lista.length, ...sala.unidade) })) : null,
             h('div', { class: 'grupo-area__lista' },
               lista.map((t) => cartaoCurso(t, { estilo: 'compacto', nome: Grupos.nomeCurto(sala, t), rotuloAula: rotuloAula(t) }))))))].filter(Boolean));
+    avisarCronograma(sala);
+  }
+
+  /**
+   * Primeira vez na sala que indica o Cronograma (Mergulho no Enem) e ainda sem plano: a caixa do Diver convida.
+   * Espera o tutorial da sala terminar, para não aparecer uma janela por cima da outra; só aparece uma vez.
+   */
+  const CHAVE_AVISO_CRONOGRAMA = 'diver:v1:aviso-cronograma';
+  function avisarCronograma(sala) {
+    if (!sala.cronograma || Cronograma.temPlano()) return;
+    const vistos = Dados.ler(CHAVE_AVISO_CRONOGRAMA, {}) || {};
+    if (vistos[sala.id]) return;
+    const nestaSala = () => estado.secao === 'sala' && estado.salaId === sala.id && !$('tela-sala').hidden;
+    const tentar = (espera) => setTimeout(async () => {
+      if (!nestaSala()) return; // saiu da sala antes: o aviso fica para a próxima visita
+      if (Tutorial.aberto() || document.querySelector('dialog[open]')) return tentar(600);
+      Dados.gravar(CHAVE_AVISO_CRONOGRAMA, { ...(Dados.ler(CHAVE_AVISO_CRONOGRAMA, {}) || {}), [sala.id]: new Date().toISOString() });
+      const ok = await UI.confirmar({
+        titulo: 'Que tal montar o seu cronograma?',
+        texto: 'Diga a data da prova e quanto tempo você tem por dia: o Diver monta um plano semana a semana, com todas as matérias, revisão e simulados. '
+          + 'Leva uns 5 minutos e dá para ajustar quando quiser. Ele também fica aqui no topo da sala, no botão "Montar meu cronograma".',
+        sim: 'Montar meu cronograma', nao: 'Agora não', humor: 'feliz', foco: 'sim',
+      });
+      if (ok) irPara('cronograma');
+    }, espera);
+    tentar(1500); // depois do tutorial da sala, que abre em ~1 s na primeira visita
   }
 
   /** Botão Voltar do mapa do curso: volta para a sala dele (ou para o Início, se a sala tem um curso só). */

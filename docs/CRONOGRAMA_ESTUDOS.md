@@ -12,6 +12,8 @@ Um assistente que monta um plano de estudos até a prova. **V1, 2026-10-05.** Se
 | `js/quadros.js` | Tarefas. Ganhou o campo `origem` (quadros e cartões) e `sincronizarOrigem`, `removerOrigem`, `estadoOrigem`, `marcarSubtarefa`. |
 | `css/areas.css` | Estilos com prefixo `cr-` (seção "CRONOGRAMA"). |
 
+**Porta de entrada (2026-10-12):** a sala Mergulho no Enem e Vestibular (`#sala-enem`) tem um atalho no topo ("Montar meu cronograma" / "Ver meu cronograma", conforme `Cronograma.temPlano()`) e, na primeira visita de quem ainda não tem plano, a caixa do Diver convida a montar (uma vez só, `diver:v1:aviso-cronograma`; código em `app.js`, `avisarCronograma`).
+
 ## 2. O assistente (5 passos)
 
 1. **Objetivo:** Enem, vestibular ou outra prova, o nome e a data (pelo menos 7 dias à frente).

@@ -765,5 +765,5 @@ const Cronograma = (() => {
     App.irPara('cronograma');
   }
 
-  return { render, concluirBloco, abrirComDiagnostico };
+  return { render, concluirBloco, abrirComDiagnostico, temPlano: () => !!ler() };
 })();
