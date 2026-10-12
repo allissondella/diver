@@ -800,6 +800,127 @@
           "desvio quimico"
         ]
       }
+    },
+    {
+      "id": "gu-prostata",
+      "nome": "Câncer de próstata",
+      "profundidade": "60–70 m",
+      "descricao": "Anatomia zonal, RM multiparamétrica e biparamétrica, PI-RADS v2.1 por zona, hiperplasia e prostatite, biópsia por fusão e estadiamento local",
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Anatomia e técnica",
+            "texto": [
+              "A **zona periférica** é a porção posterior e lateral, com cerca de 70% do tecido da glândula jovem e a maioria dos cânceres; em T2, tem hipersinal homogêneo. A **zona de transição** envolve a uretra, cresce com a hiperplasia e tem sinal heterogêneo, com nódulos. A zona central fica na base, em volta dos ductos ejaculatórios, e o estroma fibromuscular anterior tem hipossinal. O exame combina T2 de alta resolução em três planos, difusão com valor de b alto, de 1400 ou mais, com o mapa ADC, e o estudo dinâmico com contraste de alta resolução temporal. A RM biparamétrica, sem contraste, detecta tumores significativos quase tão bem e é mais rápida e barata, mas perde o desempate do contraste. Depois de biópsia, a hemorragia, com hipersinal em T1, pode atrapalhar; o ideal é esperar algumas semanas."
+            ]
+          },
+          {
+            "titulo": "PI-RADS v2.1",
+            "texto": [
+              "A escala vai de 1, muito baixa, a 5, muito alta probabilidade de câncer clinicamente significativo, e cada zona tem a sua sequência dominante. Na zona periférica manda a **difusão**: o foco com hipossinal no ADC e hipersinal no b alto, com menos de 1,5 cm, é 4; com 1,5 cm ou mais, ou extensão extraprostática, é 5. Se a difusão dá 3, o realce focal e precoce sobe a lesão para 4. Na zona de transição manda o **T2**: o nódulo completamente encapsulado é 1; o parcialmente encapsulado ou homogêneo circunscrito é 2; a área homogênea de hipossinal, de margens indistintas e forma lenticular, o aspecto de carvão borrado, é 4 ou 5. Ali, T2 de 2 com difusão de 4 ou mais sobe para 3, e T2 de 3 com difusão de 5 sobe para 4. A prostatite costuma ter hipossinal linear, em cunha ou difuso, sem nódulo definido, e fica em 2."
+            ]
+          },
+          {
+            "titulo": "Biópsia e estadiamento",
+            "texto": [
+              "A conduta segue a categoria: PI-RADS 1 e 2 em geral não são biopsiados; o 3 é individualizado com densidade do PSA, idade e histórico; 4 e 5 vão para biópsia dirigida. A biópsia por fusão pode ser por software, que sobrepõe RM e ultrassom, ou cognitiva, guiada pela memória do mapa. Ensaios randomizados mostraram que fazer a RM antes evita parte das biópsias, aumenta a detecção de tumor significativo e reduz o achado de tumor insignificante; muitos serviços somam a biópsia sistemática à dirigida. No estadiamento local, a **extensão extraprostática** aparece como abaulamento ou irregularidade do contorno, contato largo com a cápsula, obliteração do ângulo retoprostático e envolvimento do feixe neurovascular; a invasão das vesículas seminais mostra hipossinal em T2 e restrição dentro delas. Os linfonodos pélvicos e o osso completam o laudo."
+            ]
+          }
+        ],
+        "introducao": "Durante décadas, o urologista furou a próstata às cegas, em doze pontos, e torcia para acertar o tumor. A RM multiparamétrica mudou a ordem: primeiro a imagem encontra a lesão, depois a agulha vai até ela. O laudo virou um mapa, e o PI-RADS é a legenda.",
+        "mapaMental": {
+          "centro": "RM da próstata",
+          "ramos": [
+            {
+              "titulo": "Zonas",
+              "itens": [
+                "zona periférica com hipersinal em T2 e mais câncer",
+                "transição com nódulos da hiperplasia"
+              ]
+            },
+            {
+              "titulo": "Técnica",
+              "itens": [
+                "T2 em três planos",
+                "b alto com mapa ADC",
+                "contraste dinâmico só desempata"
+              ]
+            },
+            {
+              "titulo": "Escala",
+              "itens": [
+                "1 e 2 sem biópsia",
+                "3 individualizado",
+                "4 e 5 com biópsia dirigida"
+              ]
+            },
+            {
+              "titulo": "Estadiamento",
+              "itens": [
+                "extensão extraprostática com contorno abaulado",
+                "vesículas seminais com hipossinal"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🧱",
+            "conceito": "Carvão borrado",
+            "liga": "câncer da zona de transição",
+            "porque": "Hipossinal homogêneo de margens indistintas, sem cápsula."
+          },
+          {
+            "icone": "🥚",
+            "conceito": "Ovo com casca",
+            "liga": "nódulo encapsulado da hiperplasia",
+            "porque": "Cápsula completa no T2 vale PI-RADS 1."
+          },
+          {
+            "icone": "🗺️",
+            "conceito": "Mapa antes da agulha",
+            "liga": "biópsia por fusão",
+            "porque": "A imagem encontra a lesão e a agulha vai até ela."
+          }
+        ],
+        "tabela": {
+          "titulo": "Zona",
+          "colunas": [
+            "Sequência dominante",
+            "Desempate"
+          ],
+          "linhas": [
+            [
+              "Periférica",
+              "Difusão",
+              "Realce precoce leva o 3 para 4"
+            ],
+            [
+              "Transição",
+              "T2",
+              "Difusão de 4 ou mais leva o 2 para 3; difusão de 5 leva o 3 para 4"
+            ]
+          ]
+        },
+        "pontos": [
+          "Zona periférica: a difusão é dominante.",
+          "Zona de transição: o T2 é dominante.",
+          "Menos de 1,5 cm é PI-RADS 4; 1,5 cm ou mais ou extensão extraprostática é 5.",
+          "Na zona periférica, difusão 3 com realce focal e precoce sobe para 4.",
+          "Nódulo completamente encapsulado na zona de transição: PI-RADS 1.",
+          "PI-RADS 4 e 5 vão para biópsia dirigida; o 3 é individualizado.",
+          "Extensão extraprostática: contorno abaulado, ângulo retoprostático obliterado, feixe neurovascular."
+        ],
+        "perolas": [
+          "Hipossinal linear ou em cunha na periférica: pense em prostatite.",
+          "Hemorragia pós-biópsia atrapalha: espere algumas semanas."
+        ],
+        "reforcar": [
+          "zona periferica",
+          "zona de transicao",
+          "extensao extraprostatica"
+        ]
+      }
     }
   ],
   "questoes": [
@@ -3578,6 +3699,468 @@
         "Sugere carcinoma.",
         "Sugere Addison crônico."
       ]
+    },
+    {
+      "id": "gu-prostata-q01",
+      "tema": "Anatomia e técnica",
+      "dificuldade": "facil",
+      "fase": "gu-prostata",
+      "enunciado": "Em qual zona da próstata nasce a maioria dos cânceres?",
+      "alternativas": [
+        "Vesículas seminais",
+        "Zona central",
+        "Estroma fibromuscular anterior",
+        "Zona periférica",
+        "Zona de transição"
+      ],
+      "correta": 3,
+      "explicacao": "A zona periférica é a maior da glândula jovem e concentra a maioria dos tumores. Dica de mergulhador: câncer de próstata mora na periferia.",
+      "comentarios": [
+        "Não fazem parte da glândula.",
+        "Tem poucos tumores.",
+        "Não tem glândulas.",
+        "",
+        "É a zona da hiperplasia; tem menos cânceres."
+      ]
+    },
+    {
+      "id": "gu-prostata-q02",
+      "tema": "Anatomia e técnica",
+      "dificuldade": "facil",
+      "fase": "gu-prostata",
+      "enunciado": "Qual é o aspecto normal da zona periférica em T2?",
+      "alternativas": [
+        "Nódulos encapsulados e heterogêneos",
+        "Hipossinal homogêneo e difuso",
+        "Sinal de gordura com queda na supressão",
+        "Hipersinal homogêneo",
+        "Ausência de sinal por calcificação"
+      ],
+      "correta": 3,
+      "explicacao": "A zona periférica tem muitas glândulas cheias de líquido e hipersinal em T2. Dica de mergulhador: periférica normal é clara em T2.",
+      "comentarios": [
+        "É a zona de transição.",
+        "Sugere tumor ou inflamação.",
+        "Não é gordura.",
+        "",
+        "Não é o padrão."
+      ]
+    },
+    {
+      "id": "gu-prostata-q03",
+      "tema": "Anatomia e técnica",
+      "dificuldade": "medio",
+      "fase": "gu-prostata",
+      "enunciado": "O que caracteriza a RM biparamétrica da próstata?",
+      "alternativas": [
+        "Apenas T1 antes e depois do contraste",
+        "Difusão e contraste sem T2",
+        "Ultrassom com contraste e elastografia",
+        "T2 e difusão sem o estudo dinâmico com contraste",
+        "Espectroscopia isolada"
+      ],
+      "correta": 3,
+      "explicacao": "Sem contraste, o exame é mais rápido e barato, mas perde o desempate da zona periférica. Dica de mergulhador: biparamétrica, sem gadolínio.",
+      "comentarios": [
+        "Faltam T2 e difusão.",
+        "O T2 é indispensável.",
+        "Não é RM.",
+        "",
+        "Não é o protocolo."
+      ]
+    },
+    {
+      "id": "gu-prostata-q04",
+      "tema": "Anatomia e técnica",
+      "dificuldade": "medio",
+      "fase": "gu-prostata",
+      "enunciado": "Por que se recomenda esperar algumas semanas após a biópsia para fazer a RM?",
+      "alternativas": [
+        "Porque a próstata desaparece logo após a biópsia",
+        "Porque a hemorragia pós-biópsia altera T2 e difusão e pode esconder ou simular tumor",
+        "Porque o gadolínio é proibido após biópsia",
+        "Porque a RM só funciona com PSA zerado",
+        "Porque a biópsia cura o tumor na maioria dos casos"
+      ],
+      "correta": 1,
+      "explicacao": "O sangue tem hipersinal em T1 e mexe no sinal das outras sequências. Dica de mergulhador: sangue fresco embaralha o mapa.",
+      "comentarios": [
+        "Não desaparece.",
+        "",
+        "Não é proibido.",
+        "Não é exigência.",
+        "Não cura."
+      ]
+    },
+    {
+      "id": "gu-prostata-q05",
+      "tema": "Anatomia e técnica",
+      "dificuldade": "dificil",
+      "fase": "gu-prostata",
+      "enunciado": "Qual valor de b o PI-RADS v2.1 recomenda para a imagem de b alto?",
+      "alternativas": [
+        "1400 s/mm² ou mais",
+        "50 s/mm², o mais baixo possível",
+        "O valor de b não importa",
+        "800 s/mm², suficiente para o câncer",
+        "400 s/mm², para reduzir ruído"
+      ],
+      "correta": 0,
+      "explicacao": "O b alto aumenta o contraste entre o tumor que restringe e o tecido normal. Dica de mergulhador: b alto é de 1400 para cima.",
+      "comentarios": [
+        "",
+        "É b baixo.",
+        "Importa.",
+        "Ainda é baixo para b alto.",
+        "É baixo demais."
+      ],
+      "revisar": "valor de b alto recomendado no PI-RADS v2.1 (1400 s/mm² ou mais)"
+    },
+    {
+      "id": "gu-prostata-q06",
+      "tema": "Anatomia e técnica",
+      "dificuldade": "dificil",
+      "fase": "gu-prostata",
+      "enunciado": "Por que o contraste dinâmico tem papel limitado no PI-RADS?",
+      "alternativas": [
+        "Porque é a sequência dominante da zona periférica",
+        "Porque é a sequência dominante da zona de transição",
+        "Porque substitui a difusão em todos os casos",
+        "Porque define o PI-RADS 1 em todas as zonas",
+        "Porque só serve de desempate do PI-RADS 3 na zona periférica"
+      ],
+      "correta": 4,
+      "explicacao": "Realce focal e precoce leva o 3 da zona periférica para 4; no resto, pouco muda. Dica de mergulhador: contraste é o voto de minerva da periferia.",
+      "comentarios": [
+        "Lá manda a difusão.",
+        "Lá manda o T2.",
+        "Não substitui.",
+        "Não é o papel dele.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-prostata-q07",
+      "tema": "PI-RADS v2.1",
+      "dificuldade": "facil",
+      "fase": "gu-prostata",
+      "enunciado": "Qual é a sequência dominante para a zona periférica?",
+      "alternativas": [
+        "Difusão com mapa ADC",
+        "T2 de alta resolução",
+        "Estudo dinâmico com contraste",
+        "T1 sem contraste",
+        "Espectroscopia"
+      ],
+      "correta": 0,
+      "explicacao": "Na zona periférica, a pontuação vem da difusão. Dica de mergulhador: periférica, difusão.",
+      "comentarios": [
+        "",
+        "É a dominante da zona de transição.",
+        "Só desempata.",
+        "Serve para hemorragia.",
+        "Não entra no PI-RADS."
+      ]
+    },
+    {
+      "id": "gu-prostata-q08",
+      "tema": "PI-RADS v2.1",
+      "dificuldade": "facil",
+      "fase": "gu-prostata",
+      "enunciado": "Qual é a sequência dominante para a zona de transição?",
+      "alternativas": [
+        "T1 com supressão de gordura",
+        "Difusão",
+        "Espectroscopia",
+        "Estudo dinâmico com contraste",
+        "T2"
+      ],
+      "correta": 4,
+      "explicacao": "Na zona de transição, a forma e o sinal em T2 separam hiperplasia de câncer. Dica de mergulhador: transição, T2.",
+      "comentarios": [
+        "Não é a dominante.",
+        "Desempata na zona de transição.",
+        "Não entra no PI-RADS.",
+        "Não entra na pontuação da zona de transição.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-prostata-q09",
+      "tema": "PI-RADS v2.1",
+      "dificuldade": "medio",
+      "fase": "gu-prostata",
+      "enunciado": "Lesão na zona periférica com 1,2 cm, hipossinal acentuado no ADC e hipersinal no b alto, sem extensão extraprostática. Qual é a categoria?",
+      "alternativas": [
+        "PI-RADS 5",
+        "PI-RADS 3",
+        "PI-RADS 4",
+        "PI-RADS 2",
+        "PI-RADS 1"
+      ],
+      "correta": 2,
+      "explicacao": "Restrição focal e acentuada com menos de 1,5 cm é 4. Dica de mergulhador: menos de 1,5 cm, 4.",
+      "comentarios": [
+        "Tem menos de 1,5 cm e não tem extensão.",
+        "A restrição é acentuada e focal.",
+        "",
+        "A restrição é acentuada e focal.",
+        "Há lesão."
+      ]
+    },
+    {
+      "id": "gu-prostata-q10",
+      "tema": "PI-RADS v2.1",
+      "dificuldade": "medio",
+      "fase": "gu-prostata",
+      "enunciado": "Lesão da zona periférica tem difusão categoria 3 e realce focal e precoce no estudo dinâmico. Qual é a categoria final?",
+      "alternativas": [
+        "PI-RADS 2",
+        "PI-RADS 4",
+        "PI-RADS 1",
+        "PI-RADS 5",
+        "PI-RADS 3"
+      ],
+      "correta": 1,
+      "explicacao": "Na zona periférica, o contraste positivo transforma o 3 em 4. Dica de mergulhador: 3 com realce precoce vira 4.",
+      "comentarios": [
+        "O realce não reduz.",
+        "",
+        "Há lesão.",
+        "O realce não leva a 5.",
+        "O realce positivo sobe a categoria."
+      ]
+    },
+    {
+      "id": "gu-prostata-q11",
+      "tema": "PI-RADS v2.1",
+      "dificuldade": "medio",
+      "fase": "gu-prostata",
+      "enunciado": "Nódulo completamente encapsulado na zona de transição. Qual é a categoria no PI-RADS v2.1?",
+      "alternativas": [
+        "PI-RADS 1",
+        "PI-RADS 4",
+        "PI-RADS 2",
+        "PI-RADS 5",
+        "PI-RADS 3"
+      ],
+      "correta": 0,
+      "explicacao": "A versão 2.1 trouxe o nódulo de hiperplasia totalmente encapsulado para 1. Dica de mergulhador: casca completa, nota 1.",
+      "comentarios": [
+        "",
+        "Exige hipossinal homogêneo lenticular.",
+        "É para nódulos parcialmente encapsulados ou homogêneos circunscritos.",
+        "Exige 1,5 cm ou mais com padrão suspeito.",
+        "Exige margens obscurecidas ou heterogêneas."
+      ]
+    },
+    {
+      "id": "gu-prostata-q12",
+      "tema": "PI-RADS v2.1",
+      "dificuldade": "medio",
+      "fase": "gu-prostata",
+      "enunciado": "Qual é o aspecto do câncer na zona de transição em T2?",
+      "alternativas": [
+        "Hipersinal homogêneo como água",
+        "Área homogênea de hipossinal, lenticular, de margens indistintas",
+        "Hipossinal linear em cunha na periferia",
+        "Nódulo encapsulado com sinal heterogêneo",
+        "Calcificação grosseira com sombra"
+      ],
+      "correta": 1,
+      "explicacao": "O tumor da zona de transição perde a organização dos nódulos e fica como carvão borrado. Dica de mergulhador: carvão borrado na transição, câncer.",
+      "comentarios": [
+        "Sugere cisto.",
+        "",
+        "Sugere prostatite.",
+        "É hiperplasia.",
+        "Não define câncer."
+      ]
+    },
+    {
+      "id": "gu-prostata-q13",
+      "tema": "PI-RADS v2.1",
+      "dificuldade": "dificil",
+      "fase": "gu-prostata",
+      "enunciado": "Na zona de transição, lesão com T2 categoria 2 e difusão categoria 4. Qual é a categoria final?",
+      "alternativas": [
+        "PI-RADS 1",
+        "PI-RADS 5",
+        "PI-RADS 2",
+        "PI-RADS 4",
+        "PI-RADS 3"
+      ],
+      "correta": 4,
+      "explicacao": "T2 de 2 com difusão de 4 ou mais vira 3; T2 de 3 com difusão de 5 vira 4. Dica de mergulhador: na transição, a difusão empurra um degrau.",
+      "comentarios": [
+        "O nódulo não é completamente encapsulado.",
+        "Não há critérios de 5.",
+        "A difusão de 4 ou mais sobe a categoria.",
+        "Para chegar a 4, o T2 precisaria ser 3 com difusão 5.",
+        ""
+      ],
+      "revisar": "regras de ajuste pela difusão na zona de transição (PI-RADS v2.1)"
+    },
+    {
+      "id": "gu-prostata-q14",
+      "tema": "PI-RADS v2.1",
+      "dificuldade": "dificil",
+      "fase": "gu-prostata",
+      "enunciado": "Zona periférica com hipossinal linear e em cunha em T2, restrição leve e sem nódulo. Qual é a interpretação mais provável?",
+      "alternativas": [
+        "Câncer PI-RADS 4",
+        "Invasão das vesículas seminais",
+        "Câncer PI-RADS 5",
+        "Hiperplasia encapsulada PI-RADS 1",
+        "Prostatite, em geral PI-RADS 2"
+      ],
+      "correta": 4,
+      "explicacao": "Alterações lineares, em cunha ou difusas sem nódulo sugerem inflamação. Dica de mergulhador: linha e cunha na periferia, prostatite.",
+      "comentarios": [
+        "Não há lesão focal com restrição acentuada.",
+        "Não é o local.",
+        "Não há lesão focal.",
+        "Fica na zona de transição.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-prostata-q15",
+      "tema": "Biópsia e estadiamento",
+      "dificuldade": "facil",
+      "fase": "gu-prostata",
+      "enunciado": "Qual é a conduta habitual para PI-RADS 4 e 5?",
+      "alternativas": [
+        "Biópsia dirigida pela RM, por fusão",
+        "Repetir a RM em 5 anos",
+        "Apenas dosar o PSA de novo",
+        "Prostatectomia sem biópsia",
+        "Alta sem seguimento"
+      ],
+      "correta": 0,
+      "explicacao": "Alta probabilidade de câncer significativo pede amostra da lesão. Dica de mergulhador: 4 e 5, agulha no alvo.",
+      "comentarios": [
+        "",
+        "A demora não se justifica.",
+        "Não basta.",
+        "É preciso confirmar.",
+        "A chance de câncer é alta."
+      ]
+    },
+    {
+      "id": "gu-prostata-q16",
+      "tema": "Biópsia e estadiamento",
+      "dificuldade": "facil",
+      "fase": "gu-prostata",
+      "enunciado": "O que é a biópsia por fusão cognitiva?",
+      "alternativas": [
+        "Um software que sobrepõe RM e ultrassom",
+        "O operador guia a agulha pelo ultrassom usando o mapa da RM que memorizou",
+        "Uma biópsia feita só dentro da máquina de RM",
+        "Uma biópsia aleatória em doze pontos",
+        "Uma biópsia guiada por TC com contraste"
+      ],
+      "correta": 1,
+      "explicacao": "Na cognitiva, a fusão acontece na cabeça de quem faz a biópsia. Dica de mergulhador: fusão cognitiva, mapa na memória.",
+      "comentarios": [
+        "É a fusão por software.",
+        "",
+        "É a biópsia in-bore.",
+        "É a sistemática.",
+        "Não é a técnica."
+      ]
+    },
+    {
+      "id": "gu-prostata-q17",
+      "tema": "Biópsia e estadiamento",
+      "dificuldade": "medio",
+      "fase": "gu-prostata",
+      "enunciado": "Qual achado sugere extensão extraprostática na RM?",
+      "alternativas": [
+        "Abaulamento do contorno com obliteração do ângulo retoprostático",
+        "Cápsula fina e contínua",
+        "Nódulo encapsulado na zona de transição",
+        "Hipersinal homogêneo da zona periférica",
+        "Vesículas seminais com hipersinal em T2"
+      ],
+      "correta": 0,
+      "explicacao": "Contorno irregular, contato largo com a cápsula e gordura periprostática acometida sugerem T3a. Dica de mergulhador: passou do contorno, T3.",
+      "comentarios": [
+        "",
+        "Indica doença confinada.",
+        "É hiperplasia.",
+        "É normal.",
+        "É normal."
+      ]
+    },
+    {
+      "id": "gu-prostata-q18",
+      "tema": "Biópsia e estadiamento",
+      "dificuldade": "medio",
+      "fase": "gu-prostata",
+      "enunciado": "Qual achado sugere invasão das vesículas seminais?",
+      "alternativas": [
+        "Vesículas simétricas e preenchidas por líquido",
+        "Hipossinal em T2 e restrição dentro da vesícula, em continuidade com o tumor",
+        "Hipersinal homogêneo em T2 dentro das vesículas",
+        "Hipersinal em T1 isolado após biópsia",
+        "Ausência de vesículas por agenesia"
+      ],
+      "correta": 1,
+      "explicacao": "O tumor substitui o líquido claro da vesícula por tecido de hipossinal. Dica de mergulhador: vesícula com hipossinal que restringe, T3b.",
+      "comentarios": [
+        "É normal.",
+        "",
+        "É normal.",
+        "Sugere hemorragia.",
+        "É anomalia."
+      ]
+    },
+    {
+      "id": "gu-prostata-q19",
+      "tema": "Biópsia e estadiamento",
+      "dificuldade": "dificil",
+      "fase": "gu-prostata",
+      "enunciado": "O que mostraram os grandes ensaios que compararam RM antes da biópsia com a biópsia sistemática?",
+      "alternativas": [
+        "A biópsia sistemática isolada é sempre superior",
+        "A RM aumenta o diagnóstico de tumores insignificantes",
+        "A RM não muda nada e pode ser abandonada",
+        "A RM só serve para pacientes já operados",
+        "A RM evita parte das biópsias, detecta mais tumor significativo e menos tumor insignificante"
+      ],
+      "correta": 4,
+      "explicacao": "Fazer a imagem primeiro direciona a agulha e poupa biópsias em parte dos homens. Dica de mergulhador: imagem primeiro, agulha depois.",
+      "comentarios": [
+        "Não foi o resultado.",
+        "Reduz.",
+        "Muda a detecção.",
+        "Serve antes da biópsia.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-prostata-q20",
+      "tema": "Biópsia e estadiamento",
+      "dificuldade": "dificil",
+      "fase": "gu-prostata",
+      "enunciado": "Paciente com PI-RADS 3 na zona periférica. O que ajuda a decidir se biopsia?",
+      "alternativas": [
+        "A cor da urina no dia do exame",
+        "Densidade do PSA, idade, histórico familiar e biópsias anteriores",
+        "A presença de nódulo encapsulado na transição",
+        "O tamanho da próstata isolado, sem o PSA",
+        "O valor de b usado no exame"
+      ],
+      "correta": 1,
+      "explicacao": "O PI-RADS 3 é zona cinzenta; dados clínicos, como a densidade do PSA, pesam. Dica de mergulhador: 3 é cinza, o PSA pinta de uma cor.",
+      "comentarios": [
+        "Não se relaciona.",
+        "",
+        "Não decide a conduta da periférica.",
+        "O que pesa é a densidade do PSA.",
+        "Não decide a conduta."
+      ]
     }
   ],
   "pares": [
@@ -3760,6 +4343,36 @@
       "tema": "Adrenais",
       "termo": "50 a 90 UH sem realce",
       "definicao": "Hemorragia adrenal aguda"
+    },
+    {
+      "id": "gu-prostata-par-01",
+      "tema": "Câncer de próstata",
+      "termo": "Zona periférica",
+      "definicao": "Difusão dominante"
+    },
+    {
+      "id": "gu-prostata-par-02",
+      "tema": "Câncer de próstata",
+      "termo": "Zona de transição",
+      "definicao": "T2 dominante"
+    },
+    {
+      "id": "gu-prostata-par-03",
+      "tema": "Câncer de próstata",
+      "termo": "Nódulo totalmente encapsulado",
+      "definicao": "PI-RADS 1"
+    },
+    {
+      "id": "gu-prostata-par-04",
+      "tema": "Câncer de próstata",
+      "termo": "1,5 cm ou mais",
+      "definicao": "PI-RADS 5"
+    },
+    {
+      "id": "gu-prostata-par-05",
+      "tema": "Câncer de próstata",
+      "termo": "Vesícula com hipossinal em T2",
+      "definicao": "Invasão das vesículas seminais"
     }
   ],
   "verdadeiroFalso": [
@@ -3930,6 +4543,34 @@
       "afirmacao": "A regra dos 10% do feocromocitoma continua válida para a proporção hereditária.",
       "verdadeira": false,
       "explicacao": "A proporção hereditária é maior."
+    },
+    {
+      "id": "gu-prostata-vf-01",
+      "tema": "Câncer de próstata",
+      "afirmacao": "Na zona periférica, difusão 3 com realce precoce vira PI-RADS 4.",
+      "verdadeira": true,
+      "explicacao": "O contraste desempata."
+    },
+    {
+      "id": "gu-prostata-vf-02",
+      "tema": "Câncer de próstata",
+      "afirmacao": "Na zona de transição, o contraste é a sequência dominante.",
+      "verdadeira": false,
+      "explicacao": "O T2 é a dominante."
+    },
+    {
+      "id": "gu-prostata-vf-03",
+      "tema": "Câncer de próstata",
+      "afirmacao": "A RM biparamétrica não usa contraste.",
+      "verdadeira": true,
+      "explicacao": "Usa T2 e difusão."
+    },
+    {
+      "id": "gu-prostata-vf-04",
+      "tema": "Câncer de próstata",
+      "afirmacao": "PI-RADS 1 e 2 sempre vão para biópsia.",
+      "verdadeira": false,
+      "explicacao": "Em geral não são biopsiados."
     }
   ],
   "adivinhas": [
@@ -4021,6 +4662,21 @@
         "Camaleão",
         "Metanefrinas"
       ]
+    },
+    {
+      "id": "gu-prostata-adv-01",
+      "tema": "Câncer de próstata",
+      "dificuldade": "medio",
+      "resposta": "PI-RADS",
+      "aceitas": [
+        "pi-rads",
+        "pirads"
+      ],
+      "dicas": [
+        "Próstata",
+        "De 1 a 5",
+        "Versão 2.1"
+      ]
     }
   ],
   "sequencias": [
@@ -4093,6 +4749,18 @@
         "Triagem hormonal e conduta"
       ],
       "explicacao": "Do mais simples ao mais complexo."
+    },
+    {
+      "id": "gu-prostata-seq-01",
+      "tema": "Câncer de próstata",
+      "titulo": "Do PSA ao alvo",
+      "itens": [
+        "PSA alterado",
+        "RM multiparamétrica",
+        "Categoria PI-RADS",
+        "Biópsia dirigida dos 4 e 5"
+      ],
+      "explicacao": "A imagem vem antes da agulha."
     }
   ],
   "palavras": [
@@ -4239,6 +4907,30 @@
       "tema": "Radiologia: Geniturinário",
       "palavra": "Lâmpada",
       "dica": "Nome do sinal em T2 do feocromocitoma"
+    },
+    {
+      "id": "gu-prostata-pal-01",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Próstata",
+      "dica": "Glândula da RM multiparamétrica"
+    },
+    {
+      "id": "gu-prostata-pal-02",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Fusão",
+      "dica": "Biópsia que une RM e ultrassom"
+    },
+    {
+      "id": "gu-prostata-pal-03",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Cápsula",
+      "dica": "Contorno que o tumor rompe na extensão"
+    },
+    {
+      "id": "gu-prostata-pal-04",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Gleason",
+      "dica": "Escore patológico do câncer de próstata"
     }
   ],
   "fichas": {
@@ -4492,6 +5184,48 @@
       "pegadinhas": [
         "Operar o lado do nódulo no Conn sem coleta venosa.",
         "Chamar o divertículo gástrico de nódulo adrenal."
+      ]
+    },
+    "Anatomia e técnica": {
+      "texto": [
+        "Zona periférica: posterior e lateral, hipersinal em T2, a maioria dos cânceres. Zona de transição: em volta da uretra, nódulos da hiperplasia. Zona central na base; estroma fibromuscular anterior com hipossinal.",
+        "Protocolo: T2 em três planos, difusão com b alto de 1400 ou mais e ADC, contraste dinâmico. Biparamétrica: sem contraste, quase o mesmo desempenho. Hemorragia pós-biópsia atrapalha: esperar algumas semanas."
+      ],
+      "pontos": [
+        "Câncer de próstata mora na periferia.",
+        "Contraste é o voto de minerva da periferia."
+      ],
+      "pegadinhas": [
+        "Chamar de tumor o hipossinal normal do estroma anterior.",
+        "Fazer a RM logo após a biópsia."
+      ]
+    },
+    "PI-RADS v2.1": {
+      "texto": [
+        "Periférica: difusão dominante; menos de 1,5 cm é 4; 1,5 cm ou mais ou extensão é 5; difusão 3 com realce precoce vira 4. Transição: T2 dominante; nódulo totalmente encapsulado é 1; parcialmente encapsulado ou homogêneo circunscrito é 2; hipossinal homogêneo lenticular de margens indistintas é 4 ou 5.",
+        "Ajustes na transição: T2 2 com difusão 4 ou mais vira 3; T2 3 com difusão 5 vira 4. Prostatite: hipossinal linear, em cunha ou difuso, sem nódulo, em geral 2."
+      ],
+      "pontos": [
+        "Periférica difusão; transição T2.",
+        "Casca completa, nota 1."
+      ],
+      "pegadinhas": [
+        "Usar o contraste para pontuar a zona de transição.",
+        "Chamar de 5 uma lesão de 1,2 cm sem extensão."
+      ]
+    },
+    "Biópsia e estadiamento": {
+      "texto": [
+        "PI-RADS 1 e 2: em geral sem biópsia; 3: individualizar (densidade do PSA, idade, histórico); 4 e 5: biópsia dirigida. Fusão por software ou cognitiva; muitos serviços somam a sistemática. RM antes evita biópsias, acha mais tumor significativo e menos insignificante.",
+        "Extensão extraprostática: abaulamento, irregularidade, contato largo com a cápsula, ângulo retoprostático obliterado, feixe neurovascular. Vesículas seminais invadidas: hipossinal em T2 e restrição. Avaliar linfonodos e osso."
+      ],
+      "pontos": [
+        "Passou do contorno, T3.",
+        "Imagem primeiro, agulha depois."
+      ],
+      "pegadinhas": [
+        "Confundir hemorragia pós-biópsia nas vesículas com invasão.",
+        "Biopsiar sempre o PI-RADS 2."
       ]
     }
   }
