@@ -38,6 +38,6 @@ Residentes e radiologistas em formação, no padrão dos outros cursos de Radiol
 
 ## Próximos passos e pendências
 - Parecer de validação 2026-10-12: Aprovada com ressalvas (`docs/validacoes/radiologia-geniturinario-2026-10-12.md`).
-- Revisão humana da Georgia: 21 questões marcadas `revisar`.
+- 2026-10-12 · **Revisão humana da Georgia feita e aprovada**: as 21 marcas `revisar` foram retiradas.
 - Fila de Validação (12 lotes de 20 questões).
 - Fases futuras: trauma renal e vesical, transplante renal, pelve feminina, uretra masculina adulta.

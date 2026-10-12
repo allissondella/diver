@@ -54,7 +54,7 @@ const Tutorial = (() => {
       { desenho: 'diver', titulo: 'Bem-vindo ao Diver!', texto: 'Aqui você estuda em mergulhos curtos, ganha XP e pérolas e sobe de nível. Em poucos passos eu te mostro onde fica cada coisa.' },
       { desenho: 'livro', titulo: 'Primeiro ler, depois mergulhar', texto: 'Cada fase tem um artigo curto, o "Antes de mergulhar". O Mergulho da fase só abre depois que você der uma olhada nele: basta abrir uma vez.' },
       { alvo: '#continuar', desenho: 'ancora', titulo: 'Continuar de onde parou', texto: 'Seu último curso e a fase onde você estava. Um toque e você volta a mergulhar. Quer outro curso? "Ver todos os cursos".' },
-      { alvo: '#lista-trilhas', desenho: 'livro', titulo: 'Escolha seu curso', texto: 'Cada card é um curso. A barrinha embaixo mostra quanto você já desceu nele.' },
+      { alvo: '#lista-trilhas', desenho: 'livro', titulo: 'Escolha seu curso', texto: 'Cada card é um curso. Os grupos, como o Mergulho no Enem e Vestibular, abrem com um toque e mostram as matérias por área da prova. A barrinha mostra quanto você já desceu.' },
       { alvo: '#inicio-cta', desenho: 'ancora', titulo: 'Bora mergulhar!', texto: 'Escolheu? É só tocar aqui. Essa barra fica sempre à vista, mesmo quando você rola a página.' },
       { alvo: '#hoje', desenho: 'alvo', titulo: 'Seu dia', texto: 'O Desafio do Dia vale XP em dobro. Aqui também aparecem a meta de questões e o que tem na sua agenda.' },
       { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Trilha atual', texto: 'Quer trocar de curso sem voltar ao Início? É por aqui, na barra lateral.' },
@@ -125,7 +125,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { inicio: 3, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

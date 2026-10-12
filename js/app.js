@@ -566,6 +566,113 @@ const App = (() => {
     } else abrirListaCursos(true);
   }
 
+  /** Progresso de um curso para os cartões do Início. */
+  function resumoCurso(t) {
+    const prog = Progresso.carregar(t.id);
+    const concluidas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
+    return { prog, concluidas, pct: t.fases.length ? Math.round((concluidas / t.fases.length) * 100) : 0 };
+  }
+
+  /**
+   * Cartão de um curso (botão com papel de "radio" no grupo de escolha).
+   * estilo: 'normal' (cartão completo), 'destaque' (o "Comece por aqui" do grupo) ou 'compacto' (matéria dentro do grupo).
+   */
+  function cartaoCurso(t, { estilo = 'normal', nome = t.nome, selo = null, rotuloAula = 'fases' } = {}) {
+    const { prog, concluidas, pct } = resumoCurso(t);
+    const nivel = Progresso.nivel(prog.xp);
+    const marcada = t.id === estado.selecionada;
+    const compacto = estilo === 'compacto';
+    return h('button', {
+      class: `trilha${compacto ? ' trilha--compacta' : ''}${estilo === 'destaque' ? ' trilha--destaque' : ''}`,
+      type: 'button',
+      role: 'radio',
+      'aria-checked': String(marcada),
+      tabindex: marcada ? '0' : '-1',
+      'data-id': t.id,
+      onclick: () => selecionarTrilha(t.id, true),
+      ondblclick: () => abrirTrilha(t.id),
+    },
+    h('span', { class: 'trilha__check', 'aria-hidden': 'true' }, icone('i-check')),
+    selo ? h('span', { class: 'trilha__selo' }, icone('i-estrela'), selo) : (!compacto && t.categoria ? h('span', { class: 'rotulo', text: t.categoria }) : null),
+    h('span', { class: 'trilha__nome', text: nome }),
+    compacto ? null : h('span', { class: 'trilha__descricao', text: t.descricao }),
+    h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
+    h('span', { class: 'trilha__meta' },
+      h('span', {}, icone('i-seta-baixo'), `${concluidas}/${t.fases.length} ${rotuloAula}`),
+      compacto ? null : h('span', {}, plural(Trilhas.totalQuestoes(t), 'questão', 'questões')),
+      prog.xp > 0 ? h('span', {}, icone('i-estrela'), `Nível ${nivel.numero}`) : null,
+      !compacto && Progresso.streakVigente(prog) > 0 ? h('span', {}, icone('i-onda'), plural(Progresso.streakVigente(prog), 'dia', 'dias')) : null,
+    ));
+  }
+
+  /** Grupos abertos ou fechados no Início (lembrado neste navegador). */
+  const CHAVE_GRUPOS = 'diver:v1:grupos-abertos';
+  function grupoAberto(item) {
+    const salvos = Dados.ler(CHAVE_GRUPOS, {}) || {};
+    if (typeof salvos[item.grupo.id] === 'boolean') return salvos[item.grupo.id];
+    return item.trilhas.some((t) => t.id === estado.selecionada);
+  }
+  function lembrarGrupo(id, aberto) {
+    const salvos = Dados.ler(CHAVE_GRUPOS, {}) || {};
+    salvos[id] = aberto;
+    Dados.gravar(CHAVE_GRUPOS, salvos);
+  }
+
+  /** Cartão de grupo: cabeçalho que abre e fecha, com o destaque e as áreas por dentro. */
+  function cartaoGrupo(item) {
+    const { grupo, destaque, areas, trilhas } = item;
+    const corpoId = `grupo-${grupo.id}-corpo`;
+    let total = 0;
+    let feitas = 0;
+    let questoes = 0;
+    trilhas.forEach((t) => {
+      const r = resumoCurso(t);
+      total += t.fases.length;
+      feitas += r.concluidas;
+      questoes += Trilhas.totalQuestoes(t);
+    });
+    const pct = total ? Math.round((feitas / total) * 100) : 0;
+    const materias = trilhas.length - (destaque ? 1 : 0);
+    const aberto = grupoAberto(item);
+
+    const corpo = h('div', { class: 'grupo-cursos__corpo', id: corpoId, hidden: !aberto },
+      destaque ? cartaoCurso(destaque, { estilo: 'destaque', nome: Grupos.nomeCurto(grupo, destaque), selo: grupo.destaqueSelo, rotuloAula: 'fases' }) : null,
+      areas.map(({ area, trilhas: lista }) => h('div', { class: `grupo-area grupo-area--${area.cor}` },
+        area.nome ? h('h3', { class: 'grupo-area__titulo' },
+          area.icone ? h('span', { class: 'grupo-area__icone', 'aria-hidden': 'true' }, icone(area.icone)) : null,
+          h('span', { text: area.nome }),
+          h('span', { class: 'grupo-area__conta', text: plural(lista.length, ...grupo.unidade) })) : null,
+        h('div', { class: 'grupo-area__lista' },
+          lista.map((t) => cartaoCurso(t, { estilo: 'compacto', nome: Grupos.nomeCurto(grupo, t), rotuloAula: t.rotuloAula ? `${t.rotuloAula.toLowerCase()}s` : grupo.rotuloAula }))))));
+
+    const cabeca = h('button', {
+      type: 'button', class: 'grupo-cursos__cabeca', 'aria-expanded': String(aberto), 'aria-controls': corpoId,
+      onclick: () => {
+        const abrir = corpo.hidden;
+        corpo.hidden = !abrir;
+        cabeca.setAttribute('aria-expanded', String(abrir));
+        secao.classList.toggle('grupo-cursos--aberto', abrir);
+        lembrarGrupo(grupo.id, abrir);
+      },
+    },
+    h('span', { class: 'grupo-cursos__icone', 'aria-hidden': 'true' }, icone(grupo.icone)),
+    h('span', { class: 'grupo-cursos__textos' },
+      h('span', { class: 'rotulo', text: grupo.rotulo }),
+      h('span', { class: 'grupo-cursos__nome', text: grupo.nome }),
+      h('span', { class: 'grupo-cursos__descricao', text: grupo.descricao }),
+      h('span', { class: 'grupo-cursos__numeros' },
+        h('span', {}, h('strong', { text: String(materias) }), ` ${materias === 1 ? grupo.unidade[0] : grupo.unidade[1]}`),
+        h('span', {}, h('strong', { text: total.toLocaleString('pt-BR') }), ` ${grupo.rotuloAula}`),
+        h('span', {}, h('strong', { text: questoes.toLocaleString('pt-BR') }), ' questões')),
+      h('span', { class: 'grupo-cursos__progresso' },
+        h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
+        h('span', { class: 'grupo-cursos__pct', text: `${pct}% feito` }))),
+    h('span', { class: 'grupo-cursos__seta', 'aria-hidden': 'true' }, icone('i-seta-dir')));
+
+    const secao = h('section', { class: `grupo-cursos grupo-cursos--${grupo.id}${aberto ? ' grupo-cursos--aberto' : ''}`, 'aria-label': grupo.nome }, cabeca, corpo);
+    return secao;
+  }
+
   function renderizarTrilhas() {
     const lista = limpar($('lista-trilhas'));
     if (!estado.trilhas.length) {
@@ -573,36 +680,17 @@ const App = (() => {
         ? UI.vazio('Seu acesso está pronto, mas nenhum curso foi atribuído a você ainda. Fale com quem te convidou para o Diver.')
         : h('p', { class: 'carregando', text: 'Nenhuma trilha por aqui ainda.' }));
     }
-    estado.trilhas.forEach((t) => {
-      const prog = Progresso.carregar(t.id);
-      const nivel = Progresso.nivel(prog.xp);
-      const concluidas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
-      const pct = t.fases.length ? Math.round((concluidas / t.fases.length) * 100) : 0;
-      const marcada = t.id === estado.selecionada;
-      const card = h('button', {
-        class: 'trilha',
-        type: 'button',
-        role: 'radio',
-        'aria-checked': String(marcada),
-        tabindex: marcada ? '0' : '-1',
-        'data-id': t.id,
-        onclick: () => selecionarTrilha(t.id, true),
-        ondblclick: () => abrirTrilha(t.id),
-      },
-      h('span', { class: 'trilha__check', 'aria-hidden': 'true' }, icone('i-check')),
-      t.categoria ? h('span', { class: 'rotulo', text: t.categoria }) : null,
-      h('span', { class: 'trilha__nome', text: t.nome }),
-      h('span', { class: 'trilha__descricao', text: t.descricao }),
-      h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
-      h('span', { class: 'trilha__meta' },
-        h('span', {}, icone('i-seta-baixo'), `${concluidas}/${t.fases.length} fases`),
-        h('span', {}, plural(Trilhas.totalQuestoes(t), 'questão', 'questões')),
-        prog.xp > 0 ? h('span', {}, icone('i-estrela'), `Nível ${nivel.numero}`) : null,
-        Progresso.streakVigente(prog) > 0 ? h('span', {}, icone('i-onda'), plural(Progresso.streakVigente(prog), 'dia', 'dias')) : null,
-      ));
-      lista.append(card);
+    Grupos.organizar(estado.trilhas).forEach((item) => {
+      lista.append(item.tipo === 'grupo' ? cartaoGrupo(item) : cartaoCurso(item.trilha));
     });
+    garantirFocoNaLista();
     atualizarCtaInicio();
+  }
+
+  /** Se o curso marcado ficou dentro de um grupo fechado, o primeiro cartão visível recebe o Tab (radiogroup acessível). */
+  function garantirFocoNaLista() {
+    const visiveis = [...document.querySelectorAll('#lista-trilhas .trilha')].filter((c) => !c.closest('[hidden]'));
+    if (visiveis.length && !visiveis.some((c) => c.tabIndex === 0)) visiveis[0].tabIndex = 0;
   }
 
   /** Barra fixa do Início: mostra o curso escolhido e liga o "Bora mergulhar!". */
@@ -626,7 +714,7 @@ const App = (() => {
 
   /** Setas do teclado navegam entre as trilhas (padrão de radiogroup). */
   function teclasTrilhas(e) {
-    const cards = [...document.querySelectorAll('.trilha')];
+    const cards = [...document.querySelectorAll('#lista-trilhas .trilha')].filter((c) => !c.closest('[hidden]'));
     const i = cards.findIndex((c) => c.dataset.id === estado.selecionada);
     let novo = null;
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') novo = (i + 1) % cards.length;
