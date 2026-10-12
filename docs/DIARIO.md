@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-10-12 · Enem por matéria, Onda 8: Enem · Redação completo
+- **Feito:** `enem-redacao` com 40 oficinas em 6 módulos (a prova e as competências; Competência I a V), 800 questões autorais, 800 variantes, 120 fichas, blocos para todos os jogos e prova de 45 questões. As duas oficinas que faltavam entraram no módulo da Competência V: "Propostas por eixo temático" e a revisão do módulo; "A conclusão completa" foi corrigida e chegou a 20 questões. Caderno novo `docs/cadernos/enem-redacao.md`; parecer das fontes de 2026-10-11.
+- **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos; teste no navegador (celular e computador).
+- **Decisões:** a Redação volta ao `indice.json` e ao catálogo; 149 itens com `revisar` (temas de 2021 a 2024, ministérios, leis e níveis da C5) ficam com o usuário até haver professor de Redação.
+- **Próximo passo:** Onda 9 (Filosofia, Sociologia, Artes e EF, Inglês e Espanhol), quando o usuário liberar.
+
 ## 2026-10-12 · Radiologia: Cabeça e Pescoço e Radiologia: Geniturinário
 - **Feito:** dois cursos novos no padrão Georgia, a partir das anotações da professora Georgia (zips do Drive): **Cabeça e Pescoço** (12 fases, 240 questões, 34 fichas) e **Geniturinário** (12 fases, 240 questões, 36 fichas), cada um com "Antes de mergulhar" completo (Aprender, mapa mental, associações, tabela, pontos e pérolas), comentário em todas as alternativas, Dica de mergulhador, blocos para todos os jogos e prova de 50 questões. Script novo `scripts/montar-radiologia.mjs` monta curso de Radiologia a partir do formato compacto `.aula`.
 - **Fontes:** `validar-fontes` com pareceres "Aprovada com ressalvas" (`docs/validacoes/radiologia-cabeca-pescoco-2026-10-12.md` e `radiologia-geniturinario-2026-10-12.md`): 9 achados no CP e 13 no GU (erros, contradições e versões velhas), todos ensinados na versão correta (Bosniak 2019, OMS 2022, ACR 2017, PI-RADS v2.1, AJCC da laringe, Keros). Cadernos novos em `docs/cadernos/`.
