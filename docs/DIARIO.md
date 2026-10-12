@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-12 · Radiologia: Cabeça e Pescoço e Radiologia: Geniturinário
+- **Feito:** dois cursos novos no padrão Georgia, a partir das anotações da professora Georgia (zips do Drive): **Cabeça e Pescoço** (12 fases, 240 questões, 34 fichas) e **Geniturinário** (12 fases, 240 questões, 36 fichas), cada um com "Antes de mergulhar" completo (Aprender, mapa mental, associações, tabela, pontos e pérolas), comentário em todas as alternativas, Dica de mergulhador, blocos para todos os jogos e prova de 50 questões. Script novo `scripts/montar-radiologia.mjs` monta curso de Radiologia a partir do formato compacto `.aula`.
+- **Fontes:** `validar-fontes` com pareceres "Aprovada com ressalvas" (`docs/validacoes/radiologia-cabeca-pescoco-2026-10-12.md` e `radiologia-geniturinario-2026-10-12.md`): 9 achados no CP e 13 no GU (erros, contradições e versões velhas), todos ensinados na versão correta (Bosniak 2019, OMS 2022, ACR 2017, PI-RADS v2.1, AJCC da laringe, Keros). Cadernos novos em `docs/cadernos/`.
+- **Conferências:** `conferir-trilha.mjs` sem erro nem aviso nos dois; autocheck de originalidade com 12 frases reescritas; teste no navegador (celular e computador).
+- **Decisões:** GU com 17 aulas agrupadas em 12 fases; tumores pediátricos renais e retroperitoneais numa fase só; sem variantes por enquanto. A Redação (Onda 8, 38 de 40 oficinas) segue pausada a pedido do usuário e saiu do `indice.json` até ficar pronta (o arquivo continua no repositório, invisível no app).
+- **Pendências:** revisão da Georgia (15 + 21 questões `revisar`); Fila de Validação quando o admin aprovar; terminar a Redação quando o usuário liberar.
+
 ## 2026-10-11 · Enem por matéria, Onda 7: Enem · Física completo + comentários explicativos em todos os cursos
 - **Feito:** `enem-fisica` com 22 aulas em 4 módulos (movimento e forças; energia, fluidos e gravitação; calor e ondas; óptica, eletricidade e magnetismo), 440 questões originais (7 fáceis, 8 médias e 5 difíceis por aula), 440 variantes, 58 fichas, artigo completo e blocos para todos os jogos. Parecer das fontes: o de Ciências da Natureza (`docs/validacoes/enem-natureza-2026-10-10.md`). Caderno novo do curso.
 - **Correção em todos os cursos Enem:** no teste do navegador apareceram muitas alternativas erradas com comentário vazio ("Não.", "Errou."), sobretudo em Física, Geografia e História (e em menor número em Química, Matemática, Biologia, Literatura e Português). Todas foram reescritas com o motivo do erro (a conta certa ou o conceito trocado), sem mudar enunciados, alternativas, gabaritos nem ids. O `conferir-trilha.mjs` ganhou um aviso para comentário vazio, para isso não voltar.
