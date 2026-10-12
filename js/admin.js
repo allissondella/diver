@@ -28,7 +28,7 @@ const Admin = (() => {
    * recebe todos os cursos da categoria; "Atualizar pacotes" acrescenta os cursos publicados depois.
    * Não muda o banco: a coluna trilha_id aceita texto, e Nuvem.matriculas() ignora os marcadores.
    */
-  const PACOTES = { 'pacote:enem': { nome: 'Enem completo', categoria: 'Enem e vestibular' } };
+  const PACOTES = { 'pacote:enem': { nome: 'Mergulho no Enem e Vestibular', categoria: 'Enem e vestibular' } };
   const ehPacote = (id) => !!PACOTES[id];
   const cursosDoPacote = (id) => App.trilhas().filter((t) => t.categoria === PACOTES[id].categoria && !Trilhas.ehImportada(t.id)).map((t) => t.id);
 
@@ -66,8 +66,13 @@ const Admin = (() => {
     const pacotes = Object.entries(PACOTES).filter(([id]) => cursosDoPacote(id).length).map(([id, pac]) => h('label', { class: 'check check--pacote' },
       h('input', { type: 'checkbox', value: id, name: nomeGrupo, checked: selecionados.includes(id) }),
       h('span', {}, h('strong', { text: `Pacote ${pac.nome}` }), h('span', { class: 'texto-suave', text: ` · todos os cursos de "${pac.categoria}", inclusive os que forem publicados depois` }))));
-    const caixa = h('div', { class: 'checks' }, ...pacotes, App.trilhas().map((t) => h('label', { class: 'check' },
-      h('input', { type: 'checkbox', value: t.id, name: nomeGrupo, checked: selecionados.includes(t.id) }), t.nome)));
+    // cursos na mesma organização do Início: Mergulho no Enem (por área), Radiologia e os outros
+    const check = (t, nome) => h('label', { class: 'check' },
+      h('input', { type: 'checkbox', value: t.id, name: nomeGrupo, checked: selecionados.includes(t.id) }), nome);
+    const blocos = Grupos.secoes(App.trilhas()).map((sec) => h('div', { class: 'checks-grupo' },
+      sec.titulo ? h('p', { class: 'checks-grupo__titulo' }, icone(sec.icone), sec.titulo) : null,
+      sec.partes.flatMap((p) => p.trilhas.map(({ trilha, nome }) => check(trilha, sec.grupo ? nome : trilha.nome)))));
+    const caixa = h('div', { class: 'checks' }, ...pacotes, ...blocos);
     // marcar o pacote marca os cursos dele; desmarcar um curso do pacote tira o pacote (ele não está mais completo)
     caixa.addEventListener('change', (e) => {
       const alvo = e.target;

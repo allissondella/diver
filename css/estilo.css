@@ -2267,7 +2267,7 @@ html,
   left: 0;
   right: 0;
   z-index: 70;
-  max-height: min(60vh, 360px);
+  max-height: min(70vh, 480px);
   overflow-y: auto;
   margin: 0;
   padding: 6px;
@@ -2301,6 +2301,29 @@ html,
 .seletor-trilha__opcao-meta { font-family: var(--fonte-mono); font-size: 0.68rem; color: var(--texto-suave); }
 .seletor-trilha__opcao .trilha__progresso { height: 4px; }
 .seletor-trilha__marca { width: 18px; height: 18px; color: var(--turquesa-claro); }
+/* Seletor agrupado (js/grupos.js): título do grupo e nome da área entre as opções */
+.seletor-trilha__grupo { --grupo-cor: var(--turquesa-claro); }
+.seletor-trilha__grupo--amarelo { --grupo-cor: var(--amarelo); }
+.seletor-trilha__grupo + .seletor-trilha__grupo { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--borda); }
+.seletor-trilha__grupo-titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px 4px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--grupo-cor);
+}
+.seletor-trilha__grupo-titulo .icone { width: 16px; height: 16px; }
+.seletor-trilha__area {
+  padding: 8px 10px 2px;
+  font-family: var(--fonte-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
 
 /* ---------- Cortina de transição (bolhas + Diver) ---------- */
 .transicao {

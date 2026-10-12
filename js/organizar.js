@@ -60,10 +60,7 @@ const Organizar = (() => {
   }
 
   function opcoesTrilha(selecionada, comVazio = true) {
-    return [
-      comVazio ? h('option', { value: '', text: 'Sem trilha' }) : null,
-      ...App.trilhas().map((t) => h('option', { value: t.id, selected: t.id === selecionada, text: t.nome })),
-    ];
+    return Grupos.opcoesSelect(App.trilhas(), selecionada, comVazio ? h('option', { value: '', text: 'Sem trilha' }) : null);
   }
 
   /* =========================================================

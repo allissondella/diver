@@ -206,25 +206,34 @@ const App = (() => {
       atual && atual.categoria ? h('span', { class: 'seletor-trilha__cat', text: atual.categoria }) : null),
     icone('i-seta-dir', 'seletor-trilha__seta'));
 
-    const lista = h('ul', {
-      class: 'seletor-trilha__lista', id: 'seletor-trilha-lista', role: 'listbox', tabindex: '-1',
-      'aria-label': 'Escolha a trilha atual', hidden: true,
-      onkeydown: teclasSeletorTrilha,
-    }, estado.trilhas.map((t) => {
+    const opcao = (t, nome, meta) => {
       const prog = Progresso.carregar(t.id);
       const feitas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
       const pct = t.fases.length ? Math.round((feitas / t.fases.length) * 100) : 0;
       const sel = !!atual && t.id === atual.id;
-      return h('li', {
+      return h('div', {
         role: 'option', id: `opcao-trilha-${t.id}`, class: 'seletor-trilha__opcao', 'data-id': t.id,
         'aria-selected': String(sel),
         onclick: () => escolherTrilhaAtual(t.id),
       },
       h('span', { class: 'seletor-trilha__opcao-textos' },
-        h('span', { class: 'seletor-trilha__opcao-nome', text: t.nome }),
-        h('span', { class: 'seletor-trilha__opcao-meta', text: `${t.categoria || 'Curso'} · ${feitas}/${t.fases.length} fases` }),
+        h('span', { class: 'seletor-trilha__opcao-nome', text: nome }),
+        h('span', { class: 'seletor-trilha__opcao-meta', text: `${meta} · ${feitas}/${t.fases.length}` }),
         h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` }))),
       sel ? icone('i-check', 'seletor-trilha__marca') : null);
+    };
+    const lista = h('div', {
+      class: 'seletor-trilha__lista', id: 'seletor-trilha-lista', role: 'listbox', tabindex: '-1',
+      'aria-label': 'Escolha a trilha atual', hidden: true,
+      onkeydown: teclasSeletorTrilha,
+    }, Grupos.secoes(estado.trilhas).map((sec) => {
+      const tituloId = `seletor-grupo-${sec.id}`;
+      return h('div', { role: 'group', class: `seletor-trilha__grupo seletor-trilha__grupo--${sec.cor}`, 'aria-labelledby': sec.titulo ? tituloId : null },
+        sec.titulo ? h('div', { class: 'seletor-trilha__grupo-titulo', id: tituloId, role: 'presentation' }, icone(sec.icone), sec.titulo) : null,
+        sec.partes.flatMap((p) => [
+          p.area && p.area.nome && sec.grupo && sec.grupo.areas.length > 1 ? h('div', { class: 'seletor-trilha__area', role: 'presentation', text: p.area.nome }) : null,
+          ...p.trilhas.map(({ trilha, nome }) => opcao(trilha, nome, sec.grupo ? (p.area && p.area.nome && sec.grupo.areas.length > 1 ? p.area.nome : sec.grupo.nome) : (trilha.categoria || 'Curso'))),
+        ]));
     }));
     box.replaceChildren(botao, lista);
     if (estavaAberto) abrirSeletorTrilha(true);
@@ -239,7 +248,7 @@ const App = (() => {
     lista.hidden = !abrir;
     botao.setAttribute('aria-expanded', String(abrir));
     if (abrir) {
-      const opcoes = [...lista.children];
+      const opcoes = [...lista.querySelectorAll('[role="option"]')];
       const ativa = opcoes.find((o) => o.getAttribute('aria-selected') === 'true') || opcoes[0];
       marcarOpcaoAtiva(ativa);
       lista.focus({ preventScroll: true });
@@ -248,7 +257,7 @@ const App = (() => {
 
   function marcarOpcaoAtiva(opcao) {
     const lista = $('seletor-trilha-lista');
-    [...lista.children].forEach((o) => o.classList.toggle('seletor-trilha__opcao--ativa', o === opcao));
+    lista.querySelectorAll('[role="option"]').forEach((o) => o.classList.toggle('seletor-trilha__opcao--ativa', o === opcao));
     if (opcao) {
       lista.setAttribute('aria-activedescendant', opcao.id);
       opcao.scrollIntoView({ block: 'nearest' });
@@ -257,7 +266,7 @@ const App = (() => {
 
   function teclasSeletorTrilha(e) {
     const lista = $('seletor-trilha-lista');
-    const opcoes = [...lista.children];
+    const opcoes = [...lista.querySelectorAll('[role="option"]')];
     const i = opcoes.findIndex((o) => o.classList.contains('seletor-trilha__opcao--ativa'));
     const ir = (k) => marcarOpcaoAtiva(opcoes[Math.max(0, Math.min(opcoes.length - 1, k))]);
     if (e.key === 'ArrowDown') ir(i + 1);
@@ -376,7 +385,7 @@ const App = (() => {
     const trilhas = Nuvem.ativa && !Nuvem.ehAdmin()
       ? resultado.trilhas.filter((t) => Nuvem.matriculas().includes(t.id))
       : resultado.trilhas;
-    estado.trilhas = trilhas;
+    estado.trilhas = Grupos.ordenar(trilhas); // mesma ordem em todo o app: Mergulho no Enem, Radiologia, depois os avulsos
     // Nome de todos os cursos (até os que a pessoa não faz): o ranking global mostra o curso de cada um
     estado.nomesCursos = new Map(resultado.trilhas.map((t) => [t.id, t.nome]));
     estado.cartasCache = {};
