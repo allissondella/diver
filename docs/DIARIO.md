@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-12 · Nomes das salas de ISO e Cibersegurança
+- **Feito:** a pedido do usuário, as duas salas de um curso só voltaram a ter o nome do curso: **ISO/IEC 27001:2022 Foundation** e **Cibersegurança Essencial** (Início, Sala atual, Biblioteca e Admin). Ids e marcadores (`pacote:iso`, `pacote:ciber`) iguais.
+
+---
+
 ## 2026-10-12 · Admin: matrícula pelas 4 salas
 - **Feito:** pedido do usuário ("aqui também, os mesmos nomes das 4 salas"). Em Admin → Pessoas e cursos (cadastro e cartão de cada pessoa) só aparecem as salas Mergulho no Enem e Vestibular, Radiologia, ISO 27001 e Cibersegurança, com ícone e cor. Marcar a sala grava todos os cursos dela e o marcador `pacote:<sala>` (o `pacote:enem` antigo continua valendo); o cartão "Salas completas" com "Atualizar salas" dá os cursos publicados depois. Matrícula antiga com parte da sala aparece pela metade ("3 de 4 cursos") e não muda até o admin marcar. Os chips da pessoa e a lista do professor mostram as salas.
 - **Testes:** celular e computador com a nuvem simulada: estados marcado, pela metade e vazio; marcar, desmarcar e cadastrar gravam a lista certa (curso fora das salas fica como estava).
