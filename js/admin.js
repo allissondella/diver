@@ -18,19 +18,25 @@ const Admin = (() => {
   const papelDe = (p) => p.papel || (p.admin ? 'admin' : 'aluno');
 
   function nomeTrilha(id) {
-    if (PACOTES[id]) return `Pacote ${PACOTES[id].nome}`;
+    if (ehPacote(id)) { const sala = salaDoPacote(id); return sala ? sala.nome : id.replace('pacote:', ''); }
     const t = App.trilhas().find((x) => x.id === id);
     return t ? t.nome : `${id} (não encontrado)`;
   }
 
   /*
-   * Pacotes (2026-10-09): um marcador na matrícula ("pacote:enem") que não é curso. Quem tem o marcador
-   * recebe todos os cursos da categoria; "Atualizar pacotes" acrescenta os cursos publicados depois.
-   * Não muda o banco: a coluna trilha_id aceita texto, e Nuvem.matriculas() ignora os marcadores.
+   * Salas na matrícula (2026-10-12): o admin marca a sala inteira (Mergulho no Enem e Vestibular, Radiologia,
+   * ISO 27001, Cibersegurança), igual ao que o aluno vê. A matrícula guarda os cursos da sala e um marcador
+   * "pacote:<id da sala>" (o "pacote:enem" de 2026-10-09 continua valendo); "Atualizar pacotes" acrescenta os
+   * cursos publicados depois. Não muda o banco: a coluna trilha_id aceita texto, e Nuvem.matriculas() ignora os marcadores.
    */
-  const PACOTES = { 'pacote:enem': { nome: 'Mergulho no Enem e Vestibular', categoria: 'Enem e vestibular' } };
-  const ehPacote = (id) => !!PACOTES[id];
-  const cursosDoPacote = (id) => App.trilhas().filter((t) => t.categoria === PACOTES[id].categoria && !Trilhas.ehImportada(t.id)).map((t) => t.id);
+  const ehPacote = (id) => typeof id === 'string' && id.startsWith('pacote:');
+  const salasDoCatalogo = () => Grupos.salas(App.trilhas().filter((t) => !Trilhas.ehImportada(t.id)));
+  const salaDoPacote = (id) => salasDoCatalogo().find((s) => `pacote:${s.id}` === id) || null;
+  const cursosDoPacote = (id) => { const sala = salaDoPacote(id); return sala ? sala.trilhas.map((t) => t.id) : []; };
+  /** As salas de uma lista de matrículas (para os chips): pela sala de cada curso e pelos marcadores. */
+  function salasDe(cursos) {
+    return salasDoCatalogo().filter((s) => cursos.includes(`pacote:${s.id}`) || s.trilhas.some((t) => cursos.includes(t.id)));
+  }
 
   /** Mensagem pronta para mandar à pessoa (WhatsApp, e-mail...). */
   function mensagemAcesso(nome, email, senha, papel = 'aluno') {
@@ -62,30 +68,34 @@ const Admin = (() => {
       botao);
   }
 
+  /**
+   * As salas para marcar na matrícula, uma por linha. Sala com parte dos cursos (matrícula antiga) aparece
+   * "pela metade" (indeterminate) e fica como está até o admin mexer nela.
+   * O elemento devolvido tem .escolhidos(): a lista de matrículas a gravar (cursos + marcadores).
+   */
   function checksCursos(selecionados = [], nomeGrupo) {
-    const pacotes = Object.entries(PACOTES).filter(([id]) => cursosDoPacote(id).length).map(([id, pac]) => h('label', { class: 'check check--pacote' },
-      h('input', { type: 'checkbox', value: id, name: nomeGrupo, checked: selecionados.includes(id) }),
-      h('span', {}, h('strong', { text: `Pacote ${pac.nome}` }), h('span', { class: 'texto-suave', text: ` · todos os cursos de "${pac.categoria}", inclusive os que forem publicados depois` }))));
-    // cursos na mesma organização do Início: Mergulho no Enem (por área), Radiologia e os outros
-    const check = (t, nome) => h('label', { class: 'check' },
-      h('input', { type: 'checkbox', value: t.id, name: nomeGrupo, checked: selecionados.includes(t.id) }), nome);
-    const blocos = Grupos.secoes(App.trilhas()).map((sec) => h('div', { class: 'checks-grupo' },
-      sec.titulo ? h('p', { class: 'checks-grupo__titulo' }, icone(sec.icone), sec.titulo) : null,
-      sec.partes.flatMap((p) => p.trilhas.map(({ trilha, nome }) => check(trilha, sec.grupo ? nome : trilha.nome)))));
-    const caixa = h('div', { class: 'checks' }, ...pacotes, ...blocos);
-    // marcar o pacote marca os cursos dele; desmarcar um curso do pacote tira o pacote (ele não está mais completo)
-    caixa.addEventListener('change', (e) => {
-      const alvo = e.target;
-      if (ehPacote(alvo.value)) {
-        cursosDoPacote(alvo.value).forEach((id) => { const c = caixa.querySelector(`input[value="${CSS.escape(id)}"]`); if (c) c.checked = alvo.checked; });
-      } else if (!alvo.checked) {
-        Object.keys(PACOTES).forEach((pid) => {
-          if (!cursosDoPacote(pid).includes(alvo.value)) return;
-          const pac = caixa.querySelector(`input[value="${CSS.escape(pid)}"]`);
-          if (pac) pac.checked = false;
-        });
-      }
+    const salas = salasDoCatalogo();
+    const conhecidos = new Set(salas.flatMap((s) => [`pacote:${s.id}`, ...s.trilhas.map((t) => t.id)]));
+    const linhas = salas.map((sala) => {
+      const ids = sala.trilhas.map((t) => t.id);
+      const tem = ids.filter((id) => selecionados.includes(id));
+      const inteira = selecionados.includes(`pacote:${sala.id}`) || (tem.length === ids.length && ids.length > 0);
+      const parte = !inteira && tem.length > 0;
+      const entrada = h('input', { type: 'checkbox', value: `pacote:${sala.id}`, name: nomeGrupo, checked: inteira });
+      entrada.indeterminate = parte;
+      const nota = h('span', { class: 'texto-suave check-sala__nota', text: parte
+        ? ` · ${tem.length} de ${ids.length} ${ids.length === 1 ? sala.unidade[0] : sala.unidade[1]} (marque para dar a sala inteira)`
+        : sala.unica ? '' : ` · ${ids.length} ${sala.unidade[1]}` });
+      entrada.addEventListener('change', () => { nota.textContent = sala.unica ? '' : ` · ${ids.length} ${sala.unidade[1]}`; });
+      return { sala, ids, tem, entrada, label: h('label', { class: `check check-sala sala--${sala.cor}` },
+        entrada, h('span', { class: 'check-sala__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
+        h('span', {}, h('strong', { text: sala.nome }), nota)) };
     });
+    const caixa = h('div', { class: 'checks checks--salas' }, linhas.map((l) => l.label));
+    caixa.escolhidos = () => [...new Set([
+      ...selecionados.filter((c) => !conhecidos.has(c)), // matrícula de curso que não está em nenhuma sala: fica como está
+      ...linhas.flatMap((l) => (l.entrada.indeterminate ? l.tem : l.entrada.checked ? [`pacote:${l.sala.id}`, ...l.ids] : [])),
+    ])];
     return caixa;
   }
 
@@ -168,7 +178,7 @@ const Admin = (() => {
       const pend = pendentesDosPacotes();
       const novos = pend.reduce((n, x) => n + x.faltam.length, 0);
       const botao = h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', id: 'admin-atualizar-pacotes', disabled: !pend.length, onclick: async () => {
-        if (!(await UI.confirmar({ titulo: 'Atualizar os pacotes?', texto: `${UI.plural(pend.length, 'pessoa ganha', 'pessoas ganham')} ${UI.plural(novos, 'curso novo', 'cursos novos')} do pacote. O que cada uma já tem continua igual.`, sim: 'Atualizar pacotes', humor: 'feliz' }))) return;
+        if (!(await UI.confirmar({ titulo: 'Atualizar os pacotes?', texto: `${UI.plural(pend.length, 'pessoa ganha', 'pessoas ganham')} ${UI.plural(novos, 'curso novo', 'cursos novos')} das salas. O que cada uma já tem continua igual.`, sim: 'Atualizar salas', humor: 'feliz' }))) return;
         botao.disabled = true;
         let falhas = 0;
         for (const x of pend) {
@@ -180,12 +190,12 @@ const Admin = (() => {
             falhas++;
           }
         }
-        UI.toast(falhas ? 'Pacotes atualizados em parte' : 'Pacotes atualizados', falhas ? `${falhas} não deram certo; tente de novo.` : `${UI.plural(novos, 'matrícula nova', 'matrículas novas')}.`, 'i-livro');
+        UI.toast(falhas ? 'Salas atualizadas em parte' : 'Salas atualizadas', falhas ? `${falhas} não deram certo; tente de novo.` : `${UI.plural(novos, 'matrícula nova', 'matrículas novas')}.`, 'i-livro');
         carregar();
-      } }, icone('i-revisao'), 'Atualizar pacotes');
+      } }, icone('i-revisao'), 'Atualizar salas');
       cartaoPacotes.replaceChildren(
-        h('h2', { class: 'cartao__titulo', text: 'Pacote Enem completo' }),
-        h('p', { class: 'texto-suave', text: `${UI.plural(com, 'pessoa tem', 'pessoas têm')} o pacote. ${pend.length ? `${UI.plural(novos, 'curso publicado depois falta', 'cursos publicados depois faltam')} para ${UI.plural(pend.length, 'pessoa', 'pessoas')}.` : 'Todo mundo do pacote já tem todos os cursos dele.'}` }),
+        h('h2', { class: 'cartao__titulo', text: 'Salas completas' }),
+        h('p', { class: 'texto-suave', text: `${UI.plural(com, 'pessoa tem', 'pessoas têm')} alguma sala inteira. ${pend.length ? `${UI.plural(novos, 'curso publicado depois falta', 'cursos publicados depois faltam')} para ${UI.plural(pend.length, 'pessoa', 'pessoas')}.` : 'Todo mundo já tem todos os cursos das salas dele.'}` }),
         h('div', { class: 'acoes-linha' }, botao));
     }
 
@@ -205,7 +215,7 @@ const Admin = (() => {
       const nome = h('input', { class: 'campo', id: 'admin-nome', required: true, maxlength: '120', autocomplete: 'off', placeholder: 'Ex.: Maria da Silva Souza' });
       const email = h('input', { class: 'campo', id: 'admin-email', type: 'email', required: true, autocomplete: 'off', placeholder: 'maria@empresa.com' });
       const cursos = checksCursos([], 'novo-cursos');
-      const grupoCursos = h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Cursos' }), cursos);
+      const grupoCursos = h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Salas' }), cursos);
       const dicaPapel = h('p', { class: 'texto-suave form-admin__dica', text: PAPEIS.aluno.dica });
       let papel = 'aluno';
       const seletorPapel = h('div', { class: 'segmentado', role: 'radiogroup', 'aria-label': 'Tipo de conta' },
@@ -225,7 +235,7 @@ const Admin = (() => {
       const botao = h('button', { type: 'submit', class: 'botao botao--primario' }, icone('i-mais'), 'Cadastrar e gerar senha');
       return h('form', { class: 'cartao form-admin', onsubmit: async (e) => {
         e.preventDefault();
-        const escolhidos = papel === 'admin' ? [] : [...cursos.querySelectorAll('input:checked')].map((i) => i.value);
+        const escolhidos = papel === 'admin' ? [] : cursos.escolhidos();
         if (!nome.value.trim() || !email.value.trim()) {
           resultado.replaceChildren(h('p', { class: 'texto-erro', text: 'Preencha nome completo e e-mail.' }));
           return;
@@ -282,7 +292,7 @@ const Admin = (() => {
             h('span', { class: 'texto-suave pessoa__email', text: p.email })),
           h('div', { class: 'pessoa__chips' },
             !p.ativo ? h('span', { class: 'chip chip--atrasada', text: 'Acesso desativado' }) : p.trocar_senha ? h('span', { class: 'chip', text: 'Aguardando primeiro acesso' }) : null)),
-        h('div', { class: 'pessoa__chips' }, meus.map((c) => h('span', { class: 'chip', text: nomeTrilha(c) }))),
+        h('div', { class: 'pessoa__chips' }, salasDe(meus).map((s) => h('span', { class: 'chip', text: s.nome }))),
         h('div', { class: 'pessoa__acoes' },
           h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', 'aria-expanded': String(estado.abertos.has(p.id)), onclick: (e) => {
             const abrir = areaProgresso.hidden;
@@ -322,11 +332,13 @@ const Admin = (() => {
       if (estado.abertos.has(p.id)) progressoDe(p, areaProgresso);
 
       cursos.addEventListener('change', async () => {
-        const escolhidos = [...cursos.querySelectorAll('input:checked')].map((i) => i.value);
+        const escolhidos = cursos.escolhidos();
         try {
           await Nuvem.rpc('admin_definir_matriculas', { p_usuario: p.id, p_trilhas: escolhidos });
           p.cursos = escolhidos;
-          UI.toast('Cursos atualizados', `${p.nome}: ${escolhidos.length ? escolhidos.map(nomeTrilha).join(', ') : 'nenhum curso'}`, 'i-livro');
+          desenharPacotes();
+          const nomes = salasDe(escolhidos).map((s) => s.nome);
+          UI.toast('Salas atualizadas', `${p.nome}: ${nomes.length ? nomes.join(', ') : 'nenhuma sala'}`, 'i-livro');
         } catch (erro) {
           UI.toast('Não deu certo', erro.message, 'i-x');
           carregar();
@@ -341,12 +353,12 @@ const Admin = (() => {
             h('span', { class: 'texto-suave pessoa__email', text: p.email })),
           h('div', { class: 'pessoa__chips' },
             p.papel === 'admin' ? h('span', { class: 'chip chip--aviso', text: 'Admin' }) : p.papel === 'professor' ? h('span', { class: 'chip chip--papel', text: 'Professor' }) : null,
-            p.papel !== 'admin' ? p.cursos.filter(ehPacote).map((id) => h('span', { class: 'chip chip--ativo', text: nomeTrilha(id) })) : null,
+            p.papel !== 'admin' ? salasDe(p.cursos).map((s) => h('span', { class: 'chip chip--ativo', text: s.nome })) : null,
             !p.ativo ? h('span', { class: 'chip chip--atrasada', text: 'Acesso desativado' }) : p.trocar_senha ? h('span', { class: 'chip', text: 'Aguardando primeiro acesso' }) : h('span', { class: 'chip chip--ativo', text: 'Ativo' }))),
         h('label', { class: 'pessoa__linha-papel' }, h('span', { class: 'rotulo-campo', text: 'Tipo de conta' }), seletorPapel),
         p.papel === 'admin'
           ? h('p', { class: 'texto-suave', text: 'Admin vê todos os cursos.' })
-          : h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Cursos atribuídos (salva ao marcar)' }), cursos),
+          : h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Salas (salva ao marcar)' }), cursos),
         h('div', { class: 'pessoa__acoes' },
           h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', 'aria-expanded': String(estado.abertos.has(p.id)), onclick: (e) => {
             const abrir = areaProgresso.hidden;
