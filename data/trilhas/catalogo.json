@@ -4428,6 +4428,62 @@
         "sequencias": 38,
         "palavras": 114
       }
+    },
+    {
+      "arquivo": "radiologia-cabeca-pescoco.json",
+      "id": "radiologia-cabeca-pescoco",
+      "nome": "Radiologia: Cabeça e Pescoço",
+      "descricao": "Diagnóstico por imagem de cabeça e pescoço: base do crânio, órbitas, ossos temporais, seios da face, espaços cervicais, rinofaringe, laringe, glândulas salivares, linfonodos, lesões congênitas, ATM e tireoide, com casos clínicos, diagnóstico diferencial e as pegadinhas das provas de título.",
+      "categoria": "Medicina",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 50,
+        "minutos": 75,
+        "aprovacao": 70,
+        "exigeFases": true
+      },
+      "fases": [
+        {
+          "id": "cp-base-cranio",
+          "nome": "Anatomia da base do crânio",
+          "descricao": "Base anterior, central e posterior, Keros, forames, fossa pterigopalatina, seio cavernoso e clivo",
+          "profundidade": "0–10 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "cp-orbitas",
+          "nome": "Órbitas",
+          "descricao": "Compartimentos, globo ocular, nervo óptico, orbitopatia de Graves, tumores orbitários e celulites",
+          "profundidade": "10–20 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "cp-ossos-temporais",
+          "nome": "Ossos temporais",
+          "descricao": "Orelha média e interna, nervo facial, malformações, otites, colesteatoma, fraturas, otosclerose e tumores",
+          "profundidade": "20–30 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "cp-seios-face",
+          "nome": "Seios da face",
+          "descricao": "Desenvolvimento, unidade ostiomeatal, CLOSE, rinossinusites, fungos, pólipos, malformações e tumores nasossinusais",
+          "profundidade": "30–40 m",
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 80,
+        "pares": 20,
+        "verdadeiroFalso": 16,
+        "adivinhas": 4,
+        "sequencias": 4,
+        "palavras": 16
+      }
     }
   ]
 }
