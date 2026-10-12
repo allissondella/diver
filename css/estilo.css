@@ -643,7 +643,7 @@ select {
   display: block;
   width: 100%;
   text-align: left;
-  padding: 16px 18px 16px 58px;
+  padding: 16px 18px;
   border: 2px solid var(--borda);
   border-radius: var(--raio);
   background: rgba(18, 50, 90, 0.72);
@@ -652,27 +652,6 @@ select {
 }
 .trilha:hover {
   border-color: rgba(20, 184, 166, 0.55);
-}
-.trilha::before {
-  /* "bolinha" do radio */
-  content: "";
-  position: absolute;
-  left: 18px;
-  top: 20px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 2px solid var(--texto-suave);
-  transition: var(--transicao);
-}
-.trilha[aria-checked="true"] {
-  border-color: var(--turquesa);
-  background: rgba(20, 184, 166, 0.14);
-}
-.trilha[aria-checked="true"]::before {
-  border-color: var(--turquesa);
-  background: var(--turquesa);
-  box-shadow: inset 0 0 0 4px var(--superficie);
 }
 .trilha__nome {
   display: block;
@@ -1873,34 +1852,27 @@ html,
   background: linear-gradient(160deg, rgba(26, 65, 111, 0.75), rgba(18, 50, 90, 0.6));
   transition: border-color var(--transicao), background var(--transicao), transform 220ms ease, box-shadow 220ms ease;
 }
-.trilha::before { display: none; } /* a antiga "bolinha" deu lugar ao selo de check */
-.trilha:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
-.trilha[aria-checked="true"] {
-  border-color: var(--turquesa);
-  background: linear-gradient(160deg, rgba(20, 184, 166, 0.2), rgba(12, 53, 76, 0.75));
-  box-shadow: var(--brilho-turquesa);
-}
-.trilha__check {
+.trilha:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.trilha__nome { margin: 0; padding-right: 92px; line-height: 1.3; }
+/* "Começar" / "Abrir" no canto do cartão do curso (dentro da sala) */
+.trilha__ir {
   position: absolute;
   top: 14px;
   right: 14px;
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 2px solid var(--borda);
-  color: transparent;
-  transition: var(--transicao);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px 4px 12px;
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.16);
+  color: var(--turquesa-claro);
+  font-size: 0.75rem;
+  font-weight: 800;
+  transition: background var(--transicao), color var(--transicao);
 }
-.trilha__check .icone { width: 16px; height: 16px; }
-.trilha[aria-checked="true"] .trilha__check {
-  border-color: var(--turquesa);
-  background: var(--turquesa);
-  color: var(--texto-escuro);
-}
-.trilha .rotulo { padding-right: 34px; }
-.trilha__nome { margin: 0; padding-right: 30px; line-height: 1.3; }
+.trilha__ir .icone { width: 14px; height: 14px; }
+.trilha:hover .trilha__ir,
+.trilha:focus-visible .trilha__ir { background: var(--turquesa); color: var(--texto-escuro); }
 .trilha__descricao {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1929,117 +1901,6 @@ html,
 }
 .trilha__meta { margin-top: 8px; font-size: 0.75rem; }
 
-/* ---------- Início: grupos de cursos (Mergulho no Enem e Vestibular, Radiologia; js/grupos.js) ---------- */
-.grupo-cursos {
-  --grupo-cor: var(--turquesa-claro);
-  grid-column: 1 / -1;
-  border: 2px solid var(--borda);
-  border-radius: var(--raio);
-  background: linear-gradient(160deg, rgba(26, 65, 111, 0.82), rgba(12, 53, 76, 0.7));
-  overflow: hidden;
-  transition: border-color var(--transicao), box-shadow 220ms ease;
-}
-.grupo-cursos--enem { --grupo-cor: var(--amarelo); }
-.grupo-cursos:hover,
-.grupo-cursos--aberto {
-  border-color: color-mix(in srgb, var(--grupo-cor) 45%, transparent);
-  box-shadow: var(--sombra);
-}
-.grupo-cursos__cabeca {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  width: 100%;
-  padding: 20px 22px;
-  border: 0;
-  background: none;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-.grupo-cursos__cabeca:focus-visible {
-  outline: 3px solid var(--turquesa-claro);
-  outline-offset: -5px;
-  border-radius: var(--raio);
-}
-.grupo-cursos__icone {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  color: var(--grupo-cor);
-  background: color-mix(in srgb, var(--grupo-cor) 16%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--grupo-cor) 35%, transparent);
-}
-.grupo-cursos__icone .icone { width: 26px; height: 26px; }
-.grupo-cursos__textos {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.grupo-cursos .grupo-cursos__textos .rotulo { color: var(--grupo-cor); }
-.grupo-cursos__nome {
-  font-size: clamp(1.15rem, 3.6vw, 1.45rem);
-  font-weight: 800;
-  line-height: 1.25;
-}
-.grupo-cursos__descricao {
-  max-width: 62ch;
-  color: var(--texto-suave);
-  font-size: 0.9rem;
-}
-.grupo-cursos__numeros {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-  margin-top: 6px;
-  font-size: 0.82rem;
-  color: var(--texto-suave);
-}
-.grupo-cursos__numeros strong { color: var(--texto); font-weight: 800; }
-.grupo-cursos__progresso {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-.grupo-cursos__progresso .trilha__progresso { flex: 1; margin: 0; }
-.grupo-cursos__progresso .trilha__progresso > span { background: linear-gradient(90deg, var(--turquesa), var(--grupo-cor)); }
-.grupo-cursos__pct {
-  font-family: var(--fonte-mono);
-  font-size: 0.72rem;
-  color: var(--texto-suave);
-  white-space: nowrap;
-}
-.grupo-cursos__seta {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--borda);
-  color: var(--texto-suave);
-  transform: rotate(90deg);
-  transition: transform 220ms ease, background var(--transicao), color var(--transicao);
-}
-.grupo-cursos__cabeca:hover .grupo-cursos__seta { color: var(--texto); background: rgba(230, 241, 255, 0.06); }
-.grupo-cursos--aberto .grupo-cursos__seta { transform: rotate(-90deg); color: var(--grupo-cor); }
-.grupo-cursos__corpo {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 18px 22px 22px;
-  border-top: 1px solid var(--borda);
-  background: rgba(6, 23, 45, 0.28);
-}
-.grupo-cursos__corpo[hidden] { display: none; }
-
 /* O "Comece por aqui": cartão largo, com selo amarelo */
 .trilha--destaque {
   border-color: color-mix(in srgb, var(--amarelo) 45%, transparent);
@@ -2060,6 +1921,7 @@ html,
   letter-spacing: 0.02em;
 }
 .trilha__selo .icone { width: 14px; height: 14px; }
+.trilha--destaque .trilha__selo { max-width: calc(100% - 100px); } /* não encosta no "Começar" do canto */
 
 /* As áreas da prova, cada uma com a sua cor */
 .grupo-area { --area-cor: var(--turquesa-claro); }
@@ -2118,25 +1980,207 @@ html,
   border-radius: 0 4px 4px 0;
   background: var(--area-cor, var(--turquesa));
 }
-.trilha--compacta .trilha__nome { align-self: stretch; box-sizing: border-box; font-size: 1rem; padding-right: 28px; overflow-wrap: anywhere; hyphens: auto; }
-.trilha--compacta .trilha__check { top: 10px; right: 10px; width: 22px; height: 22px; }
-.trilha--compacta .trilha__check .icone { width: 14px; height: 14px; }
+.trilha--compacta .trilha__nome { align-self: stretch; box-sizing: border-box; font-size: 1rem; padding-right: 30px; overflow-wrap: anywhere; hyphens: auto; }
+.trilha--compacta .trilha__ir { top: 10px; right: 10px; width: 26px; height: 26px; padding: 0; justify-content: center; font-size: 0; }
 .trilha--compacta .trilha__progresso { margin-top: 8px; height: 5px; }
 .trilha--compacta .trilha__progresso > span { background: linear-gradient(90deg, var(--turquesa), var(--area-cor, var(--turquesa-claro))); }
 .trilha--compacta .trilha__meta { margin-top: 6px; }
-@media (max-width: 520px) {
-  .grupo-cursos__cabeca { gap: 12px; padding: 16px; }
-  .grupo-cursos__icone { width: 44px; height: 44px; border-radius: 12px; }
-  .grupo-cursos__corpo { padding: 16px; }
+
+/* ---------- Salas (js/grupos.js): Mergulho no Enem e Vestibular, Radiologia, ISO 27001, Cibersegurança ---------- */
+.sala--turquesa { --sala-cor: var(--turquesa-claro); }
+.sala--amarelo { --sala-cor: var(--amarelo); }
+.sala--lilas { --sala-cor: var(--lilas); }
+.sala--azul { --sala-cor: var(--azul); }
+.sala--laranja { --sala-cor: var(--laranja); }
+.sala--verde { --sala-cor: var(--verde); }
+
+.salas {
+  display: grid;
+  gap: var(--esp-4);
+  grid-template-columns: minmax(0, 1fr);
 }
+@media (min-width: 680px) {
+  .salas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* A "porta" da sala: escotilha com o ícone, nome, números e o botão Entrar */
+:where(.sala-porta, .sala-tela) { --sala-cor: var(--turquesa-claro); }
+.sala-porta {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: space-between;
+  gap: 16px 18px;
+  width: 100%;
+  min-height: 100%;
+  padding: 22px;
+  border: 2px solid color-mix(in srgb, var(--sala-cor) 30%, var(--borda));
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--sala-cor) 20%, transparent), transparent 62%),
+    linear-gradient(165deg, rgba(26, 65, 111, 0.92), rgba(9, 33, 62, 0.95));
+  box-shadow: var(--sombra);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 220ms ease, border-color var(--transicao), box-shadow 220ms ease;
+}
+/* bolhas subindo no canto da porta (só enfeite) */
+.sala-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 8px;
+  top: 8px;
+  width: 200px;
+  height: 200px;
+  background:
+    radial-gradient(circle at 70% 70%, color-mix(in srgb, var(--sala-cor) 22%, transparent) 0 18px, transparent 19px),
+    radial-gradient(circle at 38% 52%, color-mix(in srgb, var(--sala-cor) 16%, transparent) 0 10px, transparent 11px),
+    radial-gradient(circle at 60% 24%, color-mix(in srgb, var(--sala-cor) 14%, transparent) 0 6px, transparent 7px),
+    radial-gradient(circle at 22% 80%, color-mix(in srgb, var(--sala-cor) 12%, transparent) 0 5px, transparent 6px);
+  pointer-events: none;
+}
+.sala-porta:hover {
+  transform: translateY(-3px);
+  border-color: var(--sala-cor);
+  box-shadow: var(--sombra), 0 16px 40px color-mix(in srgb, var(--sala-cor) 16%, transparent);
+}
+.sala-porta:focus-visible { outline: 3px solid var(--sala-cor); outline-offset: 3px; }
+
+.sala-porta__escotilha {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 4px solid color-mix(in srgb, var(--sala-cor) 70%, var(--superficie));
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--sala-cor) 34%, var(--superficie-turquesa)), var(--fundo-fundo) 78%);
+  box-shadow: inset 0 0 0 3px rgba(6, 23, 45, 0.55), 0 0 0 4px color-mix(in srgb, var(--sala-cor) 16%, transparent);
+  color: var(--sala-cor);
+}
+.sala-porta__escotilha .icone { width: 30px; height: 30px; }
+.sala-porta__textos { display: grid; align-content: start; gap: 4px; min-width: 0; }
+.sala-porta__rotulo { color: var(--sala-cor); }
+.sala-porta__nome {
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.sala-porta__descricao {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+.sala-porta__numeros { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.sala-porta__numeros span {
+  padding: 3px 9px;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: rgba(230, 241, 255, 0.05);
+  font: 600 0.72rem var(--fonte-mono);
+  color: var(--texto);
+}
+.sala-porta__pe { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; }
+.sala-porta__barra { flex: 1; margin: 0; }
+.sala-porta__barra > span { background: linear-gradient(90deg, var(--turquesa), var(--sala-cor)); }
+.sala-porta__pct { font: 600 0.75rem var(--fonte-mono); color: var(--texto-suave); white-space: nowrap; }
+.sala-porta__entrar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px 8px 16px;
+  border-radius: 999px;
+  background: var(--sala-cor);
+  color: var(--texto-escuro);
+  font-weight: 800;
+  font-size: 0.875rem;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--sala-cor) 55%, #000);
+}
+.sala-porta__entrar .icone { width: 16px; height: 16px; transition: transform var(--transicao); }
+.sala-porta:hover .sala-porta__entrar .icone { transform: translateX(3px); }
+@media (max-width: 520px) {
+  .sala-porta { padding: 18px; gap: 14px; }
+  .sala-porta__escotilha { width: 52px; height: 52px; border-width: 3px; }
+  .sala-porta__escotilha .icone { width: 24px; height: 24px; }
+}
+
+/* A tela da sala: o "lado de dentro" */
+.sala-voltar { margin-bottom: var(--esp-3); }
+.sala-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  border: 2px solid color-mix(in srgb, var(--sala-cor) 35%, var(--borda));
+  border-radius: 24px;
+  background:
+    radial-gradient(90% 120% at 100% 0%, color-mix(in srgb, var(--sala-cor) 24%, transparent), transparent 60%),
+    linear-gradient(165deg, rgba(26, 65, 111, 0.92), rgba(9, 33, 62, 0.95));
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+.sala-hero__escotilha { width: 104px; height: 104px; border-width: 6px; }
+.sala-hero__escotilha .icone { width: 48px; height: 48px; }
+.sala-hero__textos { min-width: 0; }
+.sala-hero__nome {
+  margin: 2px 0 6px;
+  font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+}
+.sala-hero__nome:focus { outline: none; }
+.sala-hero__descricao { max-width: 62ch; margin: 0; color: var(--texto-suave); }
+.sala-hero__progresso { display: flex; align-items: center; gap: 12px; max-width: 560px; margin-top: 14px; }
+@media (max-width: 600px) {
+  .sala-hero { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 20px; }
+  .sala-hero__escotilha { width: 76px; height: 76px; border-width: 5px; }
+  .sala-hero__escotilha .icone { width: 36px; height: 36px; }
+}
+
+.sala-continuar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: var(--esp-4);
+  padding: 14px 16px 14px 20px;
+  border: 1px solid rgba(20, 184, 166, 0.55);
+  border-radius: var(--raio);
+  background: linear-gradient(135deg, var(--superficie-2), var(--superficie-turquesa));
+  box-shadow: var(--brilho-turquesa);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.sala-continuar:hover .continuar__play { transform: scale(1.06); }
+.sala-continuar:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 3px; }
+.sala-continuar__textos { display: grid; gap: 3px; flex: 1; min-width: 0; }
+.sala-continuar__nome { font-size: 1.1rem; font-weight: 800; overflow-wrap: anywhere; }
+.sala-continuar__fase { font-size: 0.9rem; font-weight: 700; color: var(--turquesa-claro); }
+.sala-continuar .continuar__play { width: 52px; height: 52px; }
+
+.sala-conteudo { display: flex; flex-direction: column; gap: var(--esp-5); margin-top: var(--esp-5); }
+.sala-conteudo .grupo-area__titulo { font-size: 1.05rem; }
 @media (prefers-reduced-motion: reduce) {
-  .grupo-cursos__seta { transition: none; }
+  .sala-porta, .sala-porta__entrar .icone { transition: none; }
+  .sala-porta:hover { transform: none; }
 }
 
 /* O botão "Carregar trilha" (só admin/modo local) fica discreto, abaixo dos cursos */
 .inicio-acoes { margin-top: 14px; }
 
-/* ---------- Início: barra fixa com o "Bora mergulhar!" ---------- */
 /* Início: "Continuar de onde parou" (primeira coisa da tela para quem já estudou) */
 .continuar-area { margin-bottom: 26px; }
 .continuar {
@@ -2193,41 +2237,9 @@ html,
 @media (prefers-reduced-motion: reduce) {
   .continuar__play { transition: none; }
 }
-.inicio-cta {
-  position: sticky;
-  bottom: 12px;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 24px;
-  padding: 10px 10px 10px 18px;
-  border-radius: 999px;
-  border: 1px solid var(--borda);
-  background: var(--vidro);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--sombra);
-  transition: border-color var(--transicao), box-shadow var(--transicao);
-}
-.inicio-cta--pronto { border-color: rgba(20, 184, 166, 0.55); box-shadow: var(--sombra), var(--brilho-turquesa); }
-.inicio-cta__info { display: grid; min-width: 0; flex: 1; line-height: 1.25; }
-.inicio-cta__info .rotulo { font-size: 0.62rem; }
-.inicio-cta__nome {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 0.95rem;
-}
-.inicio-cta .botao { flex-shrink: 0; border-radius: 999px; }
-@media (max-width: 480px) {
-  .inicio-cta { border-radius: var(--raio); padding: 8px 8px 8px 14px; gap: 8px; }
-  .inicio-cta__nome { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 0.82rem; line-height: 1.25; }
-  .inicio-cta .botao { padding-inline: 14px; font-size: 0.95rem; }
-  .inicio-cta .botao .icone { display: none; }
-}
 .rodape { margin-bottom: 8px; }
 
-/* ---------- Barra lateral: seletor "Trilha atual" ---------- */
+/* ---------- Barra lateral: seletor "Sala atual" ---------- */
 .seletor-trilha { position: relative; }
 .seletor-trilha__botao {
   display: flex;
@@ -2251,7 +2263,7 @@ html,
 .seletor-trilha__textos .rotulo { font-size: 0.62rem; }
 .seletor-trilha__nome {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-weight: 800;
@@ -2301,30 +2313,23 @@ html,
 .seletor-trilha__opcao-meta { font-family: var(--fonte-mono); font-size: 0.68rem; color: var(--texto-suave); }
 .seletor-trilha__opcao .trilha__progresso { height: 4px; }
 .seletor-trilha__marca { width: 18px; height: 18px; color: var(--turquesa-claro); }
-/* Seletor agrupado (js/grupos.js): título do grupo e nome da área entre as opções */
-.seletor-trilha__grupo { --grupo-cor: var(--turquesa-claro); }
-.seletor-trilha__grupo--amarelo { --grupo-cor: var(--amarelo); }
-.seletor-trilha__grupo + .seletor-trilha__grupo { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--borda); }
-.seletor-trilha__grupo-titulo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px 4px;
-  font-size: 0.78rem;
-  font-weight: 800;
-  color: var(--grupo-cor);
+/* Ícone da sala (escotilha pequena) no botão e em cada opção */
+.seletor-trilha__icone,
+.seletor-trilha__opcao-icone {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--sala-cor, var(--turquesa-claro));
+  background: color-mix(in srgb, var(--sala-cor, var(--turquesa-claro)) 15%, transparent);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--sala-cor, var(--turquesa-claro)) 45%, transparent);
 }
-.seletor-trilha__grupo-titulo .icone { width: 16px; height: 16px; }
-.seletor-trilha__area {
-  padding: 8px 10px 2px;
-  font-family: var(--fonte-mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--texto-suave);
-}
-
+.seletor-trilha__opcao-icone { width: 32px; height: 32px; }
+.seletor-trilha__icone .icone,
+.seletor-trilha__opcao-icone .icone { width: 17px; height: 17px; }
+.seletor-trilha__opcao .trilha__progresso > span { background: linear-gradient(90deg, var(--turquesa), var(--sala-cor, var(--turquesa-claro))); }
 /* ---------- Cortina de transição (bolhas + Diver) ---------- */
 .transicao {
   position: fixed;

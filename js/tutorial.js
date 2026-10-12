@@ -53,11 +53,16 @@ const Tutorial = (() => {
     inicio: [
       { desenho: 'diver', titulo: 'Bem-vindo ao Diver!', texto: 'Aqui você estuda em mergulhos curtos, ganha XP e pérolas e sobe de nível. Em poucos passos eu te mostro onde fica cada coisa.' },
       { desenho: 'livro', titulo: 'Primeiro ler, depois mergulhar', texto: 'Cada fase tem um artigo curto, o "Antes de mergulhar". O Mergulho da fase só abre depois que você der uma olhada nele: basta abrir uma vez.' },
-      { alvo: '#continuar', desenho: 'ancora', titulo: 'Continuar de onde parou', texto: 'Seu último curso e a fase onde você estava. Um toque e você volta a mergulhar. Quer outro curso? "Ver todos os cursos".' },
-      { alvo: '#lista-trilhas', desenho: 'livro', titulo: 'Escolha seu curso', texto: 'Cada card é um curso. Os grupos, como o Mergulho no Enem e Vestibular, abrem com um toque e mostram as matérias por área da prova. A barrinha mostra quanto você já desceu.' },
-      { alvo: '#inicio-cta', desenho: 'ancora', titulo: 'Bora mergulhar!', texto: 'Escolheu? É só tocar aqui. Essa barra fica sempre à vista, mesmo quando você rola a página.' },
+      { alvo: '#continuar', desenho: 'ancora', titulo: 'Continuar de onde parou', texto: 'Seu último curso e a fase onde você estava. Um toque e você volta a mergulhar.' },
+      { alvo: '#lista-salas', desenho: 'livro', titulo: 'Escolha sua sala', texto: 'Cada porta é uma sala: Mergulho no Enem, Radiologia e as outras. Entre numa sala para ver os cursos dela. A barrinha mostra quanto você já desceu.' },
       { alvo: '#hoje', desenho: 'alvo', titulo: 'Seu dia', texto: 'O Desafio do Dia vale XP em dobro. Aqui também aparecem a meta de questões e o que tem na sua agenda.' },
-      { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Trilha atual', texto: 'Quer trocar de curso sem voltar ao Início? É por aqui, na barra lateral.' },
+      { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Quer trocar de sala sem voltar ao Início? É por aqui, na barra lateral.' },
+    ],
+    sala: [
+      { alvo: '.sala-hero', desenho: 'diver', titulo: 'Você entrou na sala', texto: 'Aqui ficam todos os cursos desta sala, com o quanto você já fez de cada um.' },
+      { alvo: '#sala-continuar', desenho: 'ancora', titulo: 'Continuar de onde parou', texto: 'O último curso que você estudou nesta sala, direto na fase onde você parou.' },
+      { alvo: '#sala-conteudo', desenho: 'livro', titulo: 'Escolha o curso', texto: 'Comece pelo recomendado ou vá direto na matéria que quiser. Um toque abre o mapa do curso.' },
+      { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Para trocar de sala, use a barra lateral. O botão Voltar do curso traz você de volta para esta sala.' },
     ],
     mergulho: [
       { alvo: '#mapa-fases', desenho: 'mapa', titulo: 'Mapa do mergulho', texto: 'Cada fase é uma profundidade. Uma rodada tem 8 questões, com a explicação logo depois de cada resposta.' },
@@ -125,7 +130,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 3, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { inicio: 4, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};
@@ -162,7 +167,7 @@ const Tutorial = (() => {
     setTimeout(() => {
       const tela = document.querySelector('.tela:not([hidden])');
       if (atual || !tela || document.body.classList.contains('modo-foco') || jaViu(secao)) return;
-      if ((location.hash.replace('#', '') || 'inicio') !== secao) return; // a pessoa já saiu da página
+      if ((location.hash.replace('#', '').replace(/^sala-.+/, 'sala') || 'inicio') !== secao) return; // a pessoa já saiu da página (#sala-<id> é a página "sala")
       iniciar(secao);
     }, UI.movimentoReduzido ? 150 : 900);
   }

@@ -10,7 +10,7 @@ const App = (() => {
   /* ---------- Estado da aplicação ---------- */
   const estado = {
     trilhas: [],
-    selecionada: null, // id da trilha marcada na tela inicial
+    salaId: null, // sala aberta na tela "Sala" (js/grupos.js)
     trilha: null, // trilha atual (escolhida na tela inicial ou na barra lateral)
     prog: null, // progresso da trilha atual
     secao: 'inicio', // área aberta na barra lateral
@@ -40,6 +40,7 @@ const App = (() => {
      ========================================================= */
   const ROTAS = {
     inicio: { tela: 'tela-inicio', render: renderizarInicio },
+    sala: { tela: 'tela-sala', lateral: 'inicio', render: renderizarSalaEstudo }, // endereço #sala-<id> (js/grupos.js)
     mergulho: { tela: 'tela-painel', precisaTrilha: true, render: renderizarPainel },
     simulado: { tela: 'tela-simulado', precisaTrilha: true, render: renderizarSimulado },
     revisao: { tela: 'tela-revisao', precisaTrilha: true, render: renderizarRevisao },
@@ -67,9 +68,20 @@ const App = (() => {
     else location.hash = secao;
   }
 
+  /** O endereço existe? (#secao ou #sala-<id>) */
+  function rotaExiste(secao) {
+    return !!ROTAS[secao] || /^sala-./.test(secao || '');
+  }
+
   let saidaConfirmada = false; // a pessoa já disse "Sair agora" na caixa: a próxima navegação passa direto
 
   function navegar(secao) {
+    const alvoOriginal = secao;
+    let salaId = null;
+    if (/^sala-./.test(secao)) { // #sala-enem → tela "Sala" com a sala enem
+      salaId = secao.slice(5);
+      secao = 'sala';
+    }
     const rota = ROTAS[secao];
     if (!rota) return;
     // Saindo no meio de um quiz ou jogo pelo botão Voltar do navegador: volta o endereço e pergunta
@@ -81,12 +93,23 @@ const App = (() => {
       }).then((ok) => {
         if (!ok) return;
         saidaConfirmada = true;
-        irPara(secao);
+        irPara(alvoOriginal);
       });
       return;
     }
     saidaConfirmada = false;
     abandonarAndamento();
+    if (secao === 'sala') {
+      const sala = Grupos.salas(estado.trilhas).find((s) => s.id === salaId);
+      if (!sala) { // sala que não existe (ou sem curso para esta pessoa): volta ao Início
+        secao = 'inicio';
+        history.replaceState(null, '', '#inicio');
+      } else if (sala.unica) { // sala de um curso só: abre o curso direto
+        definirTrilha(sala.unica.id);
+        secao = 'mergulho';
+        history.replaceState(null, '', '#mergulho');
+      }
+    }
     if ((rota.soEquipe && !Nuvem.ehAdmin() && !Nuvem.ehProfessor()) || (rota.soAdmin && !Nuvem.ehAdmin())) {
       secao = 'inicio';
       history.replaceState(null, '', '#inicio');
@@ -104,6 +127,7 @@ const App = (() => {
     }
     Tutorial.fechar(false);
     estado.secao = secao;
+    if (secao === 'sala') estado.salaId = salaId;
     ROTAS[secao].render();
     mostrarTela(ROTAS[secao].tela);
     Tutorial.aoEntrar(secao); // primeira visita? o Diver mostra a página
@@ -135,8 +159,9 @@ const App = (() => {
   function mostrarTela(id) {
     document.querySelectorAll('.tela').forEach((t) => (t.hidden = t.id !== id));
     document.body.classList.toggle('modo-foco', TELAS_FOCO.includes(id));
+    const naLateral = (ROTAS[estado.secao] && ROTAS[estado.secao].lateral) || estado.secao; // a Sala fica sob "Início"
     document.querySelectorAll('.lateral__nav a').forEach((a) => {
-      if (a.dataset.secao === estado.secao) a.setAttribute('aria-current', 'page');
+      if (a.dataset.secao === naLateral) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
     fecharMenu();
@@ -189,51 +214,48 @@ const App = (() => {
     $('badge-foco').hidden = !Organizar.focoAtivo();
   }
 
-  /* ---------- "Trilha atual": botão que abre uma lista (padrão listbox, funciona no teclado) ---------- */
+  /* ---------- "Sala atual": botão que abre a lista das salas (padrão listbox, funciona no teclado) ---------- */
+  /** A sala do curso atual (ou null). */
+  function salaAtual() {
+    return estado.trilha ? Grupos.salaDoCurso(estado.trilhas, estado.trilha.id) : null;
+  }
+
   function desenharSeletorTrilha() {
     const box = $('seletor-trilha');
     const estavaAberto = box.classList.contains('seletor-trilha--aberto');
-    const atual = estado.trilha;
+    const atual = salaAtual();
+    const curso = atual && !atual.unica && estado.trilha ? Grupos.nomeCurto(atual, estado.trilha) : null;
     const botao = h('button', {
-      type: 'button', class: 'seletor-trilha__botao', id: 'seletor-trilha-botao',
+      type: 'button', class: `seletor-trilha__botao${atual ? ` sala--${atual.cor}` : ''}`, id: 'seletor-trilha-botao',
       'aria-haspopup': 'listbox', 'aria-expanded': 'false', 'aria-controls': 'seletor-trilha-lista',
       disabled: !estado.trilhas.length,
       onclick: () => abrirSeletorTrilha(!box.classList.contains('seletor-trilha--aberto')),
     },
+    atual ? h('span', { class: 'seletor-trilha__icone', 'aria-hidden': 'true' }, icone(atual.icone)) : null,
     h('span', { class: 'seletor-trilha__textos' },
-      h('span', { class: 'rotulo', text: 'Trilha atual' }),
-      h('span', { class: 'seletor-trilha__nome', text: atual ? atual.nome : 'Nenhuma trilha' }),
-      atual && atual.categoria ? h('span', { class: 'seletor-trilha__cat', text: atual.categoria }) : null),
+      h('span', { class: 'rotulo', text: 'Sala atual' }),
+      h('span', { class: 'seletor-trilha__nome', text: atual ? atual.nome : 'Nenhuma sala' }),
+      curso ? h('span', { class: 'seletor-trilha__cat', text: curso }) : null),
     icone('i-seta-dir', 'seletor-trilha__seta'));
 
-    const opcao = (t, nome, meta) => {
-      const prog = Progresso.carregar(t.id);
-      const feitas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
-      const pct = t.fases.length ? Math.round((feitas / t.fases.length) * 100) : 0;
-      const sel = !!atual && t.id === atual.id;
-      return h('div', {
-        role: 'option', id: `opcao-trilha-${t.id}`, class: 'seletor-trilha__opcao', 'data-id': t.id,
-        'aria-selected': String(sel),
-        onclick: () => escolherTrilhaAtual(t.id),
-      },
-      h('span', { class: 'seletor-trilha__opcao-textos' },
-        h('span', { class: 'seletor-trilha__opcao-nome', text: nome }),
-        h('span', { class: 'seletor-trilha__opcao-meta', text: `${meta} · ${feitas}/${t.fases.length}` }),
-        h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` }))),
-      sel ? icone('i-check', 'seletor-trilha__marca') : null);
-    };
     const lista = h('div', {
       class: 'seletor-trilha__lista', id: 'seletor-trilha-lista', role: 'listbox', tabindex: '-1',
-      'aria-label': 'Escolha a trilha atual', hidden: true,
+      'aria-label': 'Escolha a sala', hidden: true,
       onkeydown: teclasSeletorTrilha,
-    }, Grupos.secoes(estado.trilhas).map((sec) => {
-      const tituloId = `seletor-grupo-${sec.id}`;
-      return h('div', { role: 'group', class: `seletor-trilha__grupo seletor-trilha__grupo--${sec.cor}`, 'aria-labelledby': sec.titulo ? tituloId : null },
-        sec.titulo ? h('div', { class: 'seletor-trilha__grupo-titulo', id: tituloId, role: 'presentation' }, icone(sec.icone), sec.titulo) : null,
-        sec.partes.flatMap((p) => [
-          p.area && p.area.nome && sec.grupo && sec.grupo.areas.length > 1 ? h('div', { class: 'seletor-trilha__area', role: 'presentation', text: p.area.nome }) : null,
-          ...p.trilhas.map(({ trilha, nome }) => opcao(trilha, nome, sec.grupo ? (p.area && p.area.nome && sec.grupo.areas.length > 1 ? p.area.nome : sec.grupo.nome) : (trilha.categoria || 'Curso'))),
-        ]));
+    }, Grupos.salas(estado.trilhas).map((sala) => {
+      const r = Grupos.resumo(sala);
+      const sel = !!atual && sala.id === atual.id;
+      return h('div', {
+        role: 'option', id: `opcao-sala-${sala.id}`, class: `seletor-trilha__opcao sala--${sala.cor}`, 'data-id': sala.id,
+        'aria-selected': String(sel),
+        onclick: () => escolherSala(sala.id),
+      },
+      h('span', { class: 'seletor-trilha__opcao-icone', 'aria-hidden': 'true' }, icone(sala.icone)),
+      h('span', { class: 'seletor-trilha__opcao-textos' },
+        h('span', { class: 'seletor-trilha__opcao-nome', text: sala.nome }),
+        h('span', { class: 'seletor-trilha__opcao-meta', text: `${Grupos.numeros(sala, r)[0]} · ${r.pct}% feito` }),
+        h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${r.pct}%` }))),
+      sel ? icone('i-check', 'seletor-trilha__marca') : null);
     }));
     box.replaceChildren(botao, lista);
     if (estavaAberto) abrirSeletorTrilha(true);
@@ -273,7 +295,7 @@ const App = (() => {
     else if (e.key === 'ArrowUp') ir(i - 1);
     else if (e.key === 'Home') ir(0);
     else if (e.key === 'End') ir(opcoes.length - 1);
-    else if (e.key === 'Enter' || e.key === ' ') { if (opcoes[i]) escolherTrilhaAtual(opcoes[i].dataset.id); }
+    else if (e.key === 'Enter' || e.key === ' ') { if (opcoes[i]) escolherSala(opcoes[i].dataset.id); }
     else if (e.key === 'Escape') {
       e.stopPropagation(); // não fecha a gaveta do celular junto
       abrirSeletorTrilha(false);
@@ -283,9 +305,23 @@ const App = (() => {
     if (e.key !== 'Tab') e.preventDefault();
   }
 
-  function escolherTrilhaAtual(id) {
+  /**
+   * Escolheu uma sala na barra lateral: a sala com vários cursos abre a tela da sala;
+   * a de um curso só troca o curso atual (nas telas do curso, como Simulado e Sala de Jogos, fica na mesma tela) ou abre o curso.
+   */
+  function escolherSala(salaId) {
     abrirSeletorTrilha(false);
     $('seletor-trilha-botao').focus();
+    const sala = Grupos.salas(estado.trilhas).find((s) => s.id === salaId);
+    if (!sala) return;
+    fecharMenu();
+    if (!sala.unica) return irPara(`sala-${sala.id}`);
+    const rota = ROTAS[estado.secao];
+    if (rota && rota.precisaTrilha) return escolherTrilhaAtual(sala.unica.id);
+    abrirTrilha(sala.unica.id);
+  }
+
+  function escolherTrilhaAtual(id) {
     if (!id || (estado.trilha && estado.trilha.id === id)) return;
     definirTrilha(id);
     const rota = ROTAS[estado.secao];
@@ -297,8 +333,7 @@ const App = (() => {
         atualizarLateral();
       });
     }
-    $('seletor-trilha-botao').focus();
-    toast('Trilha atual', estado.trilha.nome, 'i-livro');
+    toast('Sala atual', estado.trilha.nome, 'i-livro');
   }
 
   /** Cartão da pessoa logada (nome, tipo de conta, status da nuvem, Sair). No modo local, some. */
@@ -397,8 +432,7 @@ const App = (() => {
       estado.trilha = null;
       estado.prog = null;
     }
-    estado.selecionada = escolhida || null;
-    renderizarTrilhas();
+    renderizarSalas();
     renderizarAvisos(problemas, semServidor && trilhas.length === 0);
   }
 
@@ -409,7 +443,6 @@ const App = (() => {
     estado.trilha = trilha;
     estado.prog = Progresso.carregar(id);
     if (Progresso.conhecerFasesNovas(estado.prog, trilha)) Progresso.salvar(id, estado.prog);
-    estado.selecionada = id;
     if (lembrar) Progresso.definirUltimaTrilha(id);
     atualizarLateral();
     // catálogo leve: o curso escolhido já começa a baixar (quando a pessoa entrar, provavelmente já chegou)
@@ -430,7 +463,7 @@ const App = (() => {
      ========================================================= */
   function renderizarInicio() {
     renderizarContinuar();
-    renderizarTrilhas();
+    renderizarSalas();
     renderizarHoje();
   }
 
@@ -445,8 +478,8 @@ const App = (() => {
    * A fase é a da última vez; se ela já foi concluída (ou está trancada), a próxima liberada que falta.
    * Devolve null na primeira visita (sem histórico) e { concluido: true } quando todas as fases acabaram.
    */
-  function cursoParaContinuar() {
-    const comHistorico = estado.trilhas.map((t) => ({ trilha: t, prog: Progresso.carregar(t.id) })).filter((c) => temHistorico(c.prog));
+  function cursoParaContinuar(trilhas = estado.trilhas) {
+    const comHistorico = trilhas.map((t) => ({ trilha: t, prog: Progresso.carregar(t.id) })).filter((c) => temHistorico(c.prog));
     if (!comHistorico.length) return null;
     const quando = (c) => Math.max(Date.parse(c.prog.ultimaFase && c.prog.ultimaFase.quando) || 0, Date.parse(c.prog.streak.ultimoDia) || 0);
     const c = comHistorico.find((x) => x.trilha.id === Progresso.ultimaTrilha()) || comHistorico.sort((a, b) => quando(b) - quando(a))[0];
@@ -502,14 +535,14 @@ const App = (() => {
     const area = limpar($('continuar'));
     const c = cursoParaContinuar();
     area.hidden = !c;
-    if (estado.listaCursosAberta === undefined || !c) estado.listaCursosAberta = !c;
-    aplicarListaCursos();
     if (!c) return;
     const { trilha, prog, concluidas } = c;
     const total = trilha.fases.length;
     const pct = total ? Math.round((concluidas / total) * 100) : 0;
-    const verTodos = h('button', { type: 'button', class: 'botao botao--fantasma', id: 'btn-ver-cursos', 'aria-controls': 'inicio-cursos', onclick: alternarListaCursos },
-      icone('i-livro'), h('span', { class: 'btn-ver-cursos__texto' }));
+    const sala = Grupos.salaDoCurso(estado.trilhas, trilha.id);
+    const verSala = sala && !sala.unica
+      ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => irPara(`sala-${sala.id}`) }, icone(sala.icone), `Entrar na sala ${sala.nome}`)
+      : null;
     const verMapa = h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => abrirTrilha(trilha.id) }, icone('i-ancora'), 'Ver mapa do curso');
 
     if (c.concluido) {
@@ -525,8 +558,8 @@ const App = (() => {
         h('div', { class: 'continuar__acoes' },
           aprovado ? null : h('button', { type: 'button', class: 'botao botao--primario', onclick: () => { definirTrilha(trilha.id); irPara('prova'); } }, icone('i-trofeu'), 'Fazer a Prova final'),
           !aprovado && temDetetive(trilha) ? h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => { definirTrilha(trilha.id); abrirDetetive(); } }, icone('i-lupa'), 'Relaxar no detetive') : null,
-          h('button', { type: 'button', class: aprovado ? 'botao botao--primario' : 'botao botao--secundario', onclick: () => abrirListaCursos(true) }, icone('i-livro'), 'Escolher o próximo curso'),
-          verMapa)));
+          h('button', { type: 'button', class: aprovado ? 'botao botao--primario' : 'botao botao--secundario', onclick: () => mostrarSalas(true) }, icone('i-livro'), 'Escolher o próximo curso'),
+          verSala, verMapa)));
     } else {
       area.append(h('section', { class: 'continuar', 'aria-labelledby': 'continuar-titulo' },
         h('button', { type: 'button', class: 'continuar__principal', id: 'btn-continuar-curso', onclick: () => continuarCurso(c), 'aria-describedby': 'continuar-fase' },
@@ -537,9 +570,8 @@ const App = (() => {
             h('span', { class: 'trilha__progresso continuar__barra', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
             h('span', { class: 'continuar__meta', text: `${concluidas}/${total} fases concluídas · Nível ${Progresso.nivel(prog.xp).numero}` })),
           h('span', { class: 'continuar__play', 'aria-hidden': 'true' }, icone('i-seta-dir'))),
-        h('div', { class: 'continuar__acoes' }, verMapa, verTodos)));
+        h('div', { class: 'continuar__acoes' }, verMapa, verSala)));
     }
-    aplicarListaCursos();
   }
 
   /** Toque no card: entra no curso e começa a rodada naquela fase (como o "play"). */
@@ -548,61 +580,57 @@ const App = (() => {
     iniciarSessao('mergulho', { faseId: c.fase.id });
   }
 
-  /** Com "Continuar" na tela, a lista de cursos (e a barra "Bora mergulhar!") fica recolhida até a pessoa pedir. */
-  function aplicarListaCursos() {
-    const aberta = !!estado.listaCursosAberta;
-    $('inicio-cursos').hidden = !aberta;
-    $('inicio-cta').hidden = !aberta;
-    const botao = $('btn-ver-cursos');
-    if (botao) {
-      botao.setAttribute('aria-expanded', String(aberta));
-      botao.querySelector('.btn-ver-cursos__texto').textContent = aberta ? 'Esconder a lista de cursos' : 'Ver todos os cursos';
-    }
-  }
-  function abrirListaCursos(focar) {
-    estado.listaCursosAberta = true;
-    aplicarListaCursos();
-    if (focar) {
-      $('inicio-cursos').scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
-      const marcada = document.querySelector('.trilha[tabindex="0"]') || document.querySelector('.trilha');
-      if (marcada) marcada.focus({ preventScroll: true });
-    }
-  }
-  function alternarListaCursos() {
-    if (estado.listaCursosAberta) {
-      estado.listaCursosAberta = false;
-      aplicarListaCursos();
-    } else abrirListaCursos(true);
+  /** Rola até as salas do Início e põe o foco na primeira. */
+  function mostrarSalas(focar) {
+    $('inicio-cursos').scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth', block: 'start' });
+    const primeira = document.querySelector('#lista-salas .sala-porta');
+    if (focar && primeira) primeira.focus({ preventScroll: true });
   }
 
-  /** Progresso de um curso para os cartões do Início. */
+  /** Progresso de um curso para os cartões da sala. */
   function resumoCurso(t) {
     const prog = Progresso.carregar(t.id);
     const concluidas = t.fases.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
     return { prog, concluidas, pct: t.fases.length ? Math.round((concluidas / t.fases.length) * 100) : 0 };
   }
 
+  /** Entra numa sala: a de vários cursos abre a tela da sala; a de um curso só abre o curso. */
+  function entrarNaSala(sala) {
+    if (sala.unica) abrirTrilha(sala.unica.id);
+    else irPara(`sala-${sala.id}`);
+  }
+
+  /* ---------- Início: as salas ---------- */
+  function renderizarSalas() {
+    const lista = limpar($('lista-salas'));
+    if (!estado.trilhas.length) {
+      lista.append(Nuvem.ativa && !Nuvem.ehAdmin()
+        ? UI.vazio('Seu acesso está pronto, mas nenhum curso foi atribuído a você ainda. Fale com quem te convidou para o Diver.')
+        : h('p', { class: 'carregando', text: 'Nenhuma sala por aqui ainda.' }));
+      return;
+    }
+    Grupos.salas(estado.trilhas).forEach((sala) => lista.append(Grupos.cartao(sala, entrarNaSala)));
+  }
+
+  /* =========================================================
+     SALA (o conteúdo de uma sala: o "Comece por aqui" e os cursos por área)
+     ========================================================= */
   /**
-   * Cartão de um curso (botão com papel de "radio" no grupo de escolha).
-   * estilo: 'normal' (cartão completo), 'destaque' (o "Comece por aqui" do grupo) ou 'compacto' (matéria dentro do grupo).
+   * Cartão de um curso dentro da sala: um toque abre o mapa do curso.
+   * estilo: 'normal' (com descrição), 'destaque' (o "Comece por aqui") ou 'compacto' (matéria dentro de uma área).
    */
   function cartaoCurso(t, { estilo = 'normal', nome = t.nome, selo = null, rotuloAula = 'fases' } = {}) {
     const { prog, concluidas, pct } = resumoCurso(t);
     const nivel = Progresso.nivel(prog.xp);
-    const marcada = t.id === estado.selecionada;
     const compacto = estilo === 'compacto';
+    const comeco = concluidas === 0 && !temHistorico(prog);
     return h('button', {
       class: `trilha${compacto ? ' trilha--compacta' : ''}${estilo === 'destaque' ? ' trilha--destaque' : ''}`,
       type: 'button',
-      role: 'radio',
-      'aria-checked': String(marcada),
-      tabindex: marcada ? '0' : '-1',
       'data-id': t.id,
-      onclick: () => selecionarTrilha(t.id, true),
-      ondblclick: () => abrirTrilha(t.id),
+      onclick: () => abrirTrilha(t.id),
     },
-    h('span', { class: 'trilha__check', 'aria-hidden': 'true' }, icone('i-check')),
-    selo ? h('span', { class: 'trilha__selo' }, icone('i-estrela'), selo) : (!compacto && t.categoria ? h('span', { class: 'rotulo', text: t.categoria }) : null),
+    selo ? h('span', { class: 'trilha__selo' }, icone('i-estrela'), selo) : null,
     h('span', { class: 'trilha__nome', text: nome }),
     compacto ? null : h('span', { class: 'trilha__descricao', text: t.descricao }),
     h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
@@ -610,128 +638,61 @@ const App = (() => {
       h('span', {}, icone('i-seta-baixo'), `${concluidas}/${t.fases.length} ${rotuloAula}`),
       compacto ? null : h('span', {}, plural(Trilhas.totalQuestoes(t), 'questão', 'questões')),
       prog.xp > 0 ? h('span', {}, icone('i-estrela'), `Nível ${nivel.numero}`) : null,
-      !compacto && Progresso.streakVigente(prog) > 0 ? h('span', {}, icone('i-onda'), plural(Progresso.streakVigente(prog), 'dia', 'dias')) : null,
-    ));
+      !compacto && Progresso.streakVigente(prog) > 0 ? h('span', {}, icone('i-onda'), plural(Progresso.streakVigente(prog), 'dia', 'dias')) : null),
+    h('span', { class: 'trilha__ir', 'aria-hidden': 'true' }, comeco ? 'Começar' : 'Abrir', icone('i-seta-dir')));
   }
 
-  /** Grupos abertos ou fechados no Início (lembrado neste navegador). */
-  const CHAVE_GRUPOS = 'diver:v1:grupos-abertos';
-  function grupoAberto(item) {
-    const salvos = Dados.ler(CHAVE_GRUPOS, {}) || {};
-    if (typeof salvos[item.grupo.id] === 'boolean') return salvos[item.grupo.id];
-    return item.trilhas.some((t) => t.id === estado.selecionada);
-  }
-  function lembrarGrupo(id, aberto) {
-    const salvos = Dados.ler(CHAVE_GRUPOS, {}) || {};
-    salvos[id] = aberto;
-    Dados.gravar(CHAVE_GRUPOS, salvos);
-  }
+  function renderizarSalaEstudo() {
+    const sala = Grupos.salas(estado.trilhas).find((s) => s.id === estado.salaId);
+    const tela = limpar($('tela-sala'));
+    if (!sala) return;
+    // o curso atual passa a ser desta sala (a "Sala atual" da barra lateral acompanha)
+    const c = cursoParaContinuar(sala.trilhas);
+    if (!estado.trilha || !sala.trilhas.includes(estado.trilha)) definirTrilha((c ? c.trilha : sala.destaque || sala.trilhas[0]).id, false);
+    const r = Grupos.resumo(sala);
+    tela.className = `tela tela--larga sala-tela sala--${sala.cor}`;
+    const rotuloAula = (t) => (t.rotuloAula ? `${t.rotuloAula.toLowerCase()}s` : sala.rotuloAula);
 
-  /** Cartão de grupo: cabeçalho que abre e fecha, com o destaque e as áreas por dentro. */
-  function cartaoGrupo(item) {
-    const { grupo, destaque, areas, trilhas } = item;
-    const corpoId = `grupo-${grupo.id}-corpo`;
-    let total = 0;
-    let feitas = 0;
-    let questoes = 0;
-    trilhas.forEach((t) => {
-      const r = resumoCurso(t);
-      total += t.fases.length;
-      feitas += r.concluidas;
-      questoes += Trilhas.totalQuestoes(t);
-    });
-    const pct = total ? Math.round((feitas / total) * 100) : 0;
-    const materias = trilhas.length - (destaque ? 1 : 0);
-    const aberto = grupoAberto(item);
+    const continuar = c && !c.concluido
+      ? h('button', { type: 'button', class: 'sala-continuar', id: 'sala-continuar', onclick: () => continuarCurso(c) },
+        h('span', { class: 'sala-continuar__textos' },
+          h('span', { class: 'rotulo', text: 'Continuar de onde parou' }),
+          h('span', { class: 'sala-continuar__nome', text: Grupos.nomeCurto(sala, c.trilha) }),
+          h('span', { class: 'sala-continuar__fase', text: /^(aula|oficina|fase)\s+\d/i.test(c.fase.nome) ? c.fase.nome : `Fase ${c.indice + 1} · ${c.fase.nome}` })),
+        h('span', { class: 'continuar__play', 'aria-hidden': 'true' }, icone('i-seta-dir')))
+      : null;
 
-    const corpo = h('div', { class: 'grupo-cursos__corpo', id: corpoId, hidden: !aberto },
-      destaque ? cartaoCurso(destaque, { estilo: 'destaque', nome: Grupos.nomeCurto(grupo, destaque), selo: grupo.destaqueSelo, rotuloAula: 'fases' }) : null,
-      areas.map(({ area, trilhas: lista }) => h('div', { class: `grupo-area grupo-area--${area.cor}` },
-        area.nome ? h('h3', { class: 'grupo-area__titulo' },
-          area.icone ? h('span', { class: 'grupo-area__icone', 'aria-hidden': 'true' }, icone(area.icone)) : null,
-          h('span', { text: area.nome }),
-          h('span', { class: 'grupo-area__conta', text: plural(lista.length, ...grupo.unidade) })) : null,
-        h('div', { class: 'grupo-area__lista' },
-          lista.map((t) => cartaoCurso(t, { estilo: 'compacto', nome: Grupos.nomeCurto(grupo, t), rotuloAula: t.rotuloAula ? `${t.rotuloAula.toLowerCase()}s` : grupo.rotuloAula }))))));
-
-    const cabeca = h('button', {
-      type: 'button', class: 'grupo-cursos__cabeca', 'aria-expanded': String(aberto), 'aria-controls': corpoId,
-      onclick: () => {
-        const abrir = corpo.hidden;
-        corpo.hidden = !abrir;
-        cabeca.setAttribute('aria-expanded', String(abrir));
-        secao.classList.toggle('grupo-cursos--aberto', abrir);
-        lembrarGrupo(grupo.id, abrir);
-      },
-    },
-    h('span', { class: 'grupo-cursos__icone', 'aria-hidden': 'true' }, icone(grupo.icone)),
-    h('span', { class: 'grupo-cursos__textos' },
-      h('span', { class: 'rotulo', text: grupo.rotulo }),
-      h('span', { class: 'grupo-cursos__nome', text: grupo.nome }),
-      h('span', { class: 'grupo-cursos__descricao', text: grupo.descricao }),
-      h('span', { class: 'grupo-cursos__numeros' },
-        h('span', {}, h('strong', { text: String(materias) }), ` ${materias === 1 ? grupo.unidade[0] : grupo.unidade[1]}`),
-        h('span', {}, h('strong', { text: total.toLocaleString('pt-BR') }), ` ${grupo.rotuloAula}`),
-        h('span', {}, h('strong', { text: questoes.toLocaleString('pt-BR') }), ' questões')),
-      h('span', { class: 'grupo-cursos__progresso' },
-        h('span', { class: 'trilha__progresso', 'aria-hidden': 'true' }, h('span', { style: `width:${pct}%` })),
-        h('span', { class: 'grupo-cursos__pct', text: `${pct}% feito` }))),
-    h('span', { class: 'grupo-cursos__seta', 'aria-hidden': 'true' }, icone('i-seta-dir')));
-
-    const secao = h('section', { class: `grupo-cursos grupo-cursos--${grupo.id}${aberto ? ' grupo-cursos--aberto' : ''}`, 'aria-label': grupo.nome }, cabeca, corpo);
-    return secao;
+    const umaArea = sala.areas.length === 1 && !sala.areas[0].area.nome;
+    tela.append(...[
+      h('button', { type: 'button', class: 'botao botao--link sala-voltar', onclick: () => irPara('inicio') }, icone('i-voltar'), 'Todas as salas'),
+      h('header', { class: 'sala-hero' },
+        h('span', { class: 'sala-porta__escotilha sala-hero__escotilha', 'aria-hidden': 'true' }, icone(sala.icone)),
+        h('div', { class: 'sala-hero__textos' },
+          h('span', { class: 'rotulo sala-porta__rotulo', text: `Sala · ${sala.rotulo}` }),
+          h('h1', { class: 'sala-hero__nome', id: 'sala-titulo', tabindex: '-1', text: sala.nome }),
+          h('p', { class: 'sala-hero__descricao', text: sala.descricao }),
+          h('div', { class: 'sala-porta__numeros' }, Grupos.numeros(sala, r).map((n) => h('span', { text: n }))),
+          h('div', { class: 'sala-hero__progresso' },
+            h('span', { class: 'trilha__progresso sala-porta__barra', role: 'progressbar', 'aria-label': 'Progresso na sala', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(r.pct) }, h('span', { style: `width:${r.pct}%` })),
+            h('span', { class: 'sala-porta__pct', text: `${r.feitas}/${r.total} · ${r.pct}% feito` })))),
+      continuar,
+      h('div', { class: 'sala-conteudo', id: 'sala-conteudo' },
+        sala.destaque ? cartaoCurso(sala.destaque, { estilo: 'destaque', nome: Grupos.nomeCurto(sala, sala.destaque), selo: sala.destaqueSelo, rotuloAula: 'fases' }) : null,
+        umaArea
+          ? h('div', { class: 'lista-trilhas' }, sala.areas[0].trilhas.map((t) => cartaoCurso(t, { nome: Grupos.nomeCurto(sala, t), rotuloAula: rotuloAula(t) })))
+          : sala.areas.map(({ area, trilhas: lista }) => h('section', { class: `grupo-area grupo-area--${area.cor}`, 'aria-label': area.nome || sala.nome },
+            area.nome ? h('h2', { class: 'grupo-area__titulo' },
+              area.icone ? h('span', { class: 'grupo-area__icone', 'aria-hidden': 'true' }, icone(area.icone)) : null,
+              h('span', { text: area.nome }),
+              h('span', { class: 'grupo-area__conta', text: plural(lista.length, ...sala.unidade) })) : null,
+            h('div', { class: 'grupo-area__lista' },
+              lista.map((t) => cartaoCurso(t, { estilo: 'compacto', nome: Grupos.nomeCurto(sala, t), rotuloAula: rotuloAula(t) }))))))].filter(Boolean));
   }
 
-  function renderizarTrilhas() {
-    const lista = limpar($('lista-trilhas'));
-    if (!estado.trilhas.length) {
-      lista.append(Nuvem.ativa && !Nuvem.ehAdmin()
-        ? UI.vazio('Seu acesso está pronto, mas nenhum curso foi atribuído a você ainda. Fale com quem te convidou para o Diver.')
-        : h('p', { class: 'carregando', text: 'Nenhuma trilha por aqui ainda.' }));
-    }
-    Grupos.organizar(estado.trilhas).forEach((item) => {
-      lista.append(item.tipo === 'grupo' ? cartaoGrupo(item) : cartaoCurso(item.trilha));
-    });
-    garantirFocoNaLista();
-    atualizarCtaInicio();
-  }
-
-  /** Se o curso marcado ficou dentro de um grupo fechado, o primeiro cartão visível recebe o Tab (radiogroup acessível). */
-  function garantirFocoNaLista() {
-    const visiveis = [...document.querySelectorAll('#lista-trilhas .trilha')].filter((c) => !c.closest('[hidden]'));
-    if (visiveis.length && !visiveis.some((c) => c.tabIndex === 0)) visiveis[0].tabIndex = 0;
-  }
-
-  /** Barra fixa do Início: mostra o curso escolhido e liga o "Bora mergulhar!". */
-  function atualizarCtaInicio() {
-    const t = estado.trilhas.find((x) => x.id === estado.selecionada);
-    $('btn-bora').disabled = !t;
-    $('inicio-cta-nome').textContent = t ? t.nome : 'Escolha um curso acima';
-    $('inicio-cta').classList.toggle('inicio-cta--pronto', !!t);
-  }
-
-  function selecionarTrilha(id, focar) {
-    estado.selecionada = id;
-    document.querySelectorAll('.trilha').forEach((c) => {
-      const sel = c.dataset.id === id;
-      c.setAttribute('aria-checked', String(sel));
-      c.tabIndex = sel ? 0 : -1;
-      if (sel && focar) c.focus();
-    });
-    atualizarCtaInicio();
-  }
-
-  /** Setas do teclado navegam entre as trilhas (padrão de radiogroup). */
-  function teclasTrilhas(e) {
-    const cards = [...document.querySelectorAll('#lista-trilhas .trilha')].filter((c) => !c.closest('[hidden]'));
-    const i = cards.findIndex((c) => c.dataset.id === estado.selecionada);
-    let novo = null;
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') novo = (i + 1) % cards.length;
-    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') novo = (i - 1 + cards.length) % cards.length;
-    if (novo !== null && cards.length) {
-      e.preventDefault();
-      selecionarTrilha(cards[novo].dataset.id, true);
-    }
+  /** Botão Voltar do mapa do curso: volta para a sala dele (ou para o Início, se a sala tem um curso só). */
+  function voltarDoCurso() {
+    const sala = salaAtual();
+    irPara(sala && !sala.unica ? `sala-${sala.id}` : 'inicio');
   }
 
   function renderizarAvisos(problemas, semServidor) {
@@ -865,8 +826,11 @@ const App = (() => {
 
   function renderizarPainel() {
     const { trilha } = estado;
-    $('painel-titulo').textContent = trilha.nome;
-    $('painel-categoria').textContent = trilha.categoria || 'Trilha';
+    const sala = salaAtual();
+    const naSala = !!sala && !sala.unica; // curso dentro de uma sala com vários cursos: a sala em cima, o nome curto embaixo
+    $('painel-titulo').textContent = naSala ? Grupos.nomeCurto(sala, trilha) : trilha.nome;
+    $('painel-categoria').textContent = naSala ? sala.nome : trilha.categoria || 'Trilha';
+    $('btn-trocar-trilha').setAttribute('aria-label', naSala ? `Voltar para a sala ${sala.nome}` : 'Voltar para o Início');
     renderizarStatus();
     renderizarMapa();
     renderizarConquistas();
@@ -2056,11 +2020,9 @@ const App = (() => {
       if (box.classList.contains('seletor-trilha--aberto') && !box.contains(e.target)) abrirSeletorTrilha(false);
     });
 
-    $('lista-trilhas').addEventListener('keydown', teclasTrilhas);
-    $('btn-bora').addEventListener('click', () => estado.selecionada && abrirTrilha(estado.selecionada));
     $('input-importar').addEventListener('change', importarTrilhas);
 
-    $('btn-trocar-trilha').addEventListener('click', () => irPara('inicio'));
+    $('btn-trocar-trilha').addEventListener('click', voltarDoCurso);
     $('select-meta').addEventListener('change', (e) => {
       estado.prog.metaDiaria = Number(e.target.value);
       avisarConquistas(Conquistas.verificar(estado.prog, estado.trilha));
@@ -2124,7 +2086,7 @@ const App = (() => {
     Atividade.iniciar(); // log de atividade: envia em lotes (com login) ou guarda no navegador
     await carregarTrilhas();
     const secao = location.hash.slice(1);
-    navegar(ROTAS[secao] ? secao : 'inicio');
+    navegar(rotaExiste(secao) ? secao : 'inicio');
   }
 
   // Deixa o resto do código carregar antes de começar (outros scripts usam App.*)
@@ -2136,6 +2098,7 @@ const App = (() => {
     trilhaAtual: () => estado.trilha,
     definirTrilha,
     abrirTrilha,
+    entrarNaSala,
     irPara,
     iniciarProvaEnviada: (opcoes) => iniciarSessao('enviada', opcoes),
     concederXP,
