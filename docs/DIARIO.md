@@ -5,6 +5,14 @@
 
 ---
 
+## 2026-10-12 · Salas: Mergulho no Enem, Radiologia, ISO 27001 e Cibersegurança
+- **Feito:** pedido do usuário ("na trilha só vão aparecer esses nomes; os alunos entram numa sala e só depois veem o conteúdo"). O Início, a "Sala atual" da barra lateral (era "Trilha atual") e a Biblioteca mostram só as **4 salas**, cada uma como uma "porta" com escotilha, cor própria, números e progresso somado. Tocar abre a **tela da Sala** (`#sala-<id>`): o "Continuar de onde parou" daquela sala, o "Comece por aqui" e os cursos por área. Sala de um curso só (ISO 27001, Cibersegurança) abre o curso direto. O Voltar do mapa do curso volta para a sala; o topo do curso mostra a sala em cima e o nome curto da matéria embaixo. Saíram o radiogroup do Início, os grupos que abriam e fechavam e a barra "Bora mergulhar!". Admin e menus de escolha continuam com a lista detalhada, separada por sala.
+- **Progresso dos alunos:** nada de id mudou (cursos, fases e questões); a sala é só a vitrine.
+- **Tutorial:** Início na versão 4 (reaparece para todos) e roteiro novo da Sala.
+- **Testes:** celular e computador; teclado (porta com Enter, seletor com setas e Enter); sala inexistente volta ao Início; quiz e saída com a caixa do Diver; sem erros no console.
+
+---
+
 ## 2026-10-12 · Grupos em todo o app (seletor, Biblioteca, Admin e menus)
 - **Feito:** a organização do Início foi para o resto do app, a pedido do usuário ("continua tudo bagunçado"): ordem única dos cursos (`Grupos.ordenar`: Mergulho no Enem com o Comece por aqui e as áreas da prova, Radiologia e "Outros cursos"); seletor "Trilha atual" com título de grupo e de área e nomes curtos; Biblioteca com seções por grupo e área; Admin com os cursos agrupados e o pacote renomeado para "Mergulho no Enem e Vestibular"; menus de escolha (PDFs, tarefas, provas) com `<optgroup>`.
 - **Testes:** celular e computador; teclado no seletor (setas, Enter) e no Início; Mergulho do Enem e da Radiologia sem erros.

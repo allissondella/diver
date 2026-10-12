@@ -196,7 +196,7 @@
       <!-- Pessoa logada (só aparece com login) -->
       <div class="lateral__conta" id="lateral-conta" hidden></div>
 
-      <!-- Trilha atual: seletor próprio (botão + lista), montado pelo app.js -->
+      <!-- Sala atual: seletor próprio (botão + lista das salas), montado pelo app.js -->
       <div class="seletor-trilha" id="seletor-trilha"></div>
 
       <nav class="lateral__nav" aria-label="Áreas do Diver">
@@ -246,17 +246,18 @@
           <div class="hero__mascote mascote" data-mascote role="img" aria-label="Diver, o mascote: um pinguim de rosto branco, bico laranja e penacho amarelo saindo pelos lados da máscara, com roupa de mergulho, máscara amarela e snorkel"></div>
           <h1 id="titulo-inicio" class="hero__logo" tabindex="-1">Diver</h1>
           <p class="hero__slogan">Mergulhe. Acerte. Suba de nível.</p>
-          <p class="hero__texto">Estudar dá um frio na barriga, mas a água está ótima. Escolha uma trilha e vá fundo: aqui, aprender é a parte divertida.</p>
+          <p class="hero__texto">Estudar dá um frio na barriga, mas a água está ótima. Escolha uma sala e vá fundo: aqui, aprender é a parte divertida.</p>
         </header>
 
         <!-- "Continuar de onde parou": o curso e a fase da última vez (ou o "parabéns" de quem terminou). Sem histórico, fica escondido. -->
         <div id="continuar" class="continuar-area" hidden></div>
 
-        <!-- Lista completa de cursos: principal na primeira visita; depois, recolhida atrás do "Ver todos os cursos" -->
+        <!-- As salas (js/grupos.js): só os nomes aqui; o conteúdo aparece quando a pessoa entra na sala -->
         <div id="inicio-cursos">
-          <h2 class="secao-titulo" id="titulo-trilhas">Escolha sua trilha</h2>
-          <div id="lista-trilhas" class="lista-trilhas" role="radiogroup" aria-labelledby="titulo-trilhas">
-            <p class="carregando">Procurando trilhas no fundo do mar…</p>
+          <h2 class="secao-titulo" id="titulo-salas">Escolha sua sala</h2>
+          <p class="secao-sub">Cada sala guarda os seus cursos. Entre e escolha por onde começar.</p>
+          <div id="lista-salas" class="salas" aria-labelledby="titulo-salas">
+            <p class="carregando">Procurando as salas no fundo do mar…</p>
           </div>
 
           <div id="aviso-trilhas" class="aviso" hidden></div>
@@ -274,24 +275,15 @@
         <div id="hoje" class="hoje"></div>
 
         <footer class="rodape">Diver: aprender é a parte divertida.</footer>
-
-        <!-- Barra fixa no pé do Início: o curso escolhido e o "Bora mergulhar!" sempre à vista -->
-        <div class="inicio-cta" id="inicio-cta">
-          <div class="inicio-cta__info">
-            <span class="rotulo">Curso escolhido</span>
-            <strong id="inicio-cta-nome" class="inicio-cta__nome">Escolha um curso acima</strong>
-          </div>
-          <button id="btn-bora" class="botao botao--primario" type="button" disabled>
-            Bora mergulhar!
-            <svg class="icone" aria-hidden="true"><use href="#i-seta-dir"/></svg>
-          </button>
-        </div>
       </section>
+
+      <!-- ============ SALA: o conteúdo de uma sala (Mergulho no Enem, Radiologia...; montada pelo app.js) ============ -->
+      <section id="tela-sala" class="tela tela--larga" hidden aria-labelledby="sala-titulo"></section>
 
       <!-- ============ MERGULHO: PAINEL DA TRILHA (mapa de profundidades) ============ -->
       <section id="tela-painel" class="tela" hidden aria-labelledby="painel-titulo">
         <div class="barra-topo">
-          <button id="btn-trocar-trilha" class="botao-icone" type="button" aria-label="Voltar para a escolha de trilhas">
+          <button id="btn-trocar-trilha" class="botao-icone" type="button" aria-label="Voltar para a sala">
             <svg class="icone" aria-hidden="true"><use href="#i-voltar"/></svg>
           </button>
           <div class="barra-topo__titulo">

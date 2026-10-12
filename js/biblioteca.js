@@ -23,27 +23,22 @@ const Biblioteca = (() => {
       renderCursos(secao);
     } });
 
+    // As salas, iguais às do Início: o conteúdo aparece quando a pessoa entra na sala
+    const salas = h('div', { class: 'salas' }, Grupos.salas(App.trilhas()).map((sala) => Grupos.cartao(sala, App.entrarNaSala)));
     secao.append(...[
-      UI.cabecalho('Biblioteca', 'Cursos e trilhas', 'Todo o seu conteúdo de estudo. Cada trilha vira jogo na Sala de Jogos.'),
-      App.podeGerenciar() ? h('div', { class: 'acoes-linha' },
-        h('label', { class: 'botao botao--secundario' }, icone('i-upload'), 'Importar trilha (.json)', inputImportar),
-        h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => {
-          const painel = document.getElementById('criar-trilha');
-          painel.open = true;
-          painel.scrollIntoView({ block: 'start', behavior: UI.movimentoReduzido ? 'auto' : 'smooth' });
-          painel.querySelector('input').focus({ preventScroll: true });
-        } }, icone('i-mais'), 'Criar trilha colando texto')) : null,
-      lista,
+      UI.cabecalho('Biblioteca', 'Cursos e trilhas', 'Suas salas de estudo. Entre numa sala para ver os cursos dela; cada curso vira jogo na Sala de Jogos.'),
+      App.trilhas().length ? salas : UI.vazio('Nenhuma trilha ainda. Importe um arquivo .json ou crie uma colando texto.'),
+      App.podeGerenciar() ? gerenciar(secao, lista, inputImportar) : null,
       App.podeGerenciar() ? formCriar(secao) : null].filter(Boolean));
+  }
 
-    // Mesma organização do Início: Mergulho no Enem (por área da prova), Radiologia e os outros cursos
+  /** Só admin (ou modo local): a lista detalhada por sala, com exportar, importar e remover. */
+  function gerenciar(secao, lista, inputImportar) {
     Grupos.secoes(App.trilhas()).forEach((sec) => {
-      if (sec.titulo) {
-        lista.append(h('h2', { class: `cursos-grupo cursos-grupo--${sec.cor}` },
-          h('span', { class: 'cursos-grupo__icone', 'aria-hidden': 'true' }, icone(sec.icone)), sec.titulo));
-      }
+      lista.append(h('h2', { class: `cursos-grupo cursos-grupo--${sec.cor}` },
+        h('span', { class: 'cursos-grupo__icone', 'aria-hidden': 'true' }, icone(sec.icone)), sec.titulo));
       sec.partes.forEach((parte) => {
-        const temArea = parte.area && parte.area.nome && sec.grupo && (sec.grupo.areas.length > 1 || parte.area.icone === 'i-estrela');
+        const temArea = parte.area && parte.area.nome && (sec.grupo.areas.length > 1 || parte.area.icone === 'i-estrela');
         if (temArea) {
           lista.append(h('h3', { class: `grupo-area__titulo cursos-area grupo-area--${parte.area.cor}` },
             parte.area.icone ? h('span', { class: 'grupo-area__icone', 'aria-hidden': 'true' }, icone(parte.area.icone)) : null,
@@ -52,7 +47,17 @@ const Biblioteca = (() => {
         parte.trilhas.forEach(({ trilha, nome }) => lista.append(cartaoCurso(secao, trilha, nome, temArea ? parte.area.nome : null)));
       });
     });
-    if (!App.trilhas().length) lista.append(UI.vazio('Nenhuma trilha ainda. Importe um arquivo .json ou crie uma colando texto.'));
+    return h('details', { class: 'cartao gerenciar-cursos' },
+      h('summary', {}, icone('i-engrenagem'), 'Gerenciar cursos (exportar, importar e remover)'),
+      h('div', { class: 'acoes-linha' },
+        h('label', { class: 'botao botao--secundario' }, icone('i-upload'), 'Importar trilha (.json)', inputImportar),
+        h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => {
+          const painel = document.getElementById('criar-trilha');
+          painel.open = true;
+          painel.scrollIntoView({ block: 'start', behavior: UI.movimentoReduzido ? 'auto' : 'smooth' });
+          painel.querySelector('input').focus({ preventScroll: true });
+        } }, icone('i-mais'), 'Criar trilha colando texto')),
+      lista);
   }
 
   /** Cartão de um curso na Biblioteca (nome curto e área quando ele está num grupo). */

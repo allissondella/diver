@@ -1290,8 +1290,11 @@ body.qd-travado { overflow: hidden; }
 }
 .curso__numeros strong { font-size: 1rem; color: var(--texto); }
 .curso__acoes { display: flex; flex-wrap: wrap; gap: 8px; }
-.criar-trilha { margin-top: 16px; }
-.criar-trilha summary .icone { color: var(--turquesa-claro); }
+.criar-trilha,
+.gerenciar-cursos { margin-top: 16px; }
+.criar-trilha summary .icone,
+.gerenciar-cursos summary .icone { color: var(--turquesa-claro); }
+.gerenciar-cursos > .acoes-linha { margin: 12px 0; }
 .criar-trilha__form { display: grid; gap: 12px; margin-top: 12px; }
 .criar-trilha code { font-size: 0.85em; background: rgba(0, 0, 0, 0.25); padding: 1px 5px; border-radius: 4px; }
 
