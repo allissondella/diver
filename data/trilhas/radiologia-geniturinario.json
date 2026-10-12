@@ -10,12 +10,1462 @@
     "aprovacao": 70,
     "exigeFases": true
   },
-  "fases": [],
-  "questoes": [],
-  "pares": [],
-  "verdadeiroFalso": [],
-  "adivinhas": [],
-  "sequencias": [],
-  "palavras": [],
-  "fichas": {}
+  "fases": [
+    {
+      "id": "gu-fundamentos",
+      "nome": "Fundamentos, anomalias e litíase",
+      "profundidade": "0–10 m",
+      "descricao": "Fases da TC e sequências da RM renal, anatomia e espaços retroperitoneais, anomalias congênitas e litíase",
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "Protocolo de TC e RM",
+            "texto": [
+              "A TC renal completa tem quatro fases. A **fase sem contraste** mostra cálculos, calcificações, gordura macroscópica e cistos hiperdensos. A corticomedular, por volta de 30 a 40 segundos, separa córtex de medula e mostra as artérias e as lesões hipervasculares. A **fase nefrográfica**, de 80 a 120 segundos, deixa o parênquima homogêneo e é a mais sensível para detectar lesões e trombo venoso. A excretora, de 5 a 10 minutos, opacifica cálices, pelve e ureteres. Na RM, o chemical shift mostra gordura microscópica (queda de sinal na fase oposta) e gordura macroscópica (artefato em tinta nanquim na interface); o T2 tem hipersinal no carcinoma de células claras e no oncocitoma e hipossinal no carcinoma papilífero, no linfoma e no angiomiolipoma pobre em gordura; a subtração confirma realce em lesões que já têm hipersinal em T1."
+            ]
+          },
+          {
+            "titulo": "Anatomia e espaços",
+            "texto": [
+              "Os rins ficam entre T12 e L3, no espaço perirrenal, junto com as adrenais; o direito é um pouco mais baixo. No hilo, de anterior para posterior: veia, artéria e pelve. O espaço pararenal anterior contém pâncreas, duodeno e cólons ascendente e descendente; o pararenal posterior só tem gordura. Artérias renais múltiplas são a variante vascular mais comum; a veia renal esquerda pode ser circum-aórtica ou retroaórtica. No ureter retrocaval, o ureter direito passa por trás da veia cava inferior, por erro no desenvolvimento da cava."
+            ]
+          },
+          {
+            "titulo": "Anomalias congênitas",
+            "texto": [
+              "Lobulação fetal, coluna de Bertin hipertrófica e corcova de dromedário são **pseudotumores**: têm o mesmo realce do córtex em todas as fases. O rim em ferradura une os polos inferiores à frente dos grandes vasos, com o istmo preso abaixo da artéria mesentérica inferior; tem mais estenose da junção ureteropélvica, cálculos, infecção e lesão em trauma. Na ectopia cruzada, o rim fica do lado oposto à inserção do seu ureter. Agenesia renal unilateral no homem pode fazer parte da síndrome de Zinner (com cisto de vesícula seminal); na mulher, associa-se a anomalias müllerianas. Na **duplicação completa**, vale a regra de Weigert-Meyer: o ureter do polo superior se insere mais abaixo e medialmente, obstrui e pode ter ureterocele ectópica; o do polo inferior se insere no lugar e reflui. A ureterocele intravesical forma a \"cabeça de cobra\" na urografia. O divertículo calicinal enche de contraste na fase excretora e pode ter cálculos em leite de cálcio."
+            ]
+          },
+          {
+            "titulo": "Litíase",
+            "texto": [
+              "A TC sem contraste é o padrão-ouro para cálculo urinário; a ultrassonografia tem o artefato de cintilação ao Doppler, e a radiografia serve para seguir cálculos grandes. Quase todos os cálculos aparecem na TC; a exceção clássica são os cálculos de indinavir. O ácido úrico é radiotransparente na radiografia, aparece na TC e pode ser dissolvido com alcalinização; a TC de dupla energia ajuda a identificá-lo. Fragmentam pior na litotripsia extracorpórea os cálculos com mais de cerca de 1.000 UH (medidos na janela óssea), maiores que 1 cm, distantes mais de 10 cm da pele ou no cálice inferior."
+            ]
+          }
+        ],
+        "introducao": "Antes de falar de tumores, a radiologia geniturinária pede três ferramentas: escolher a fase certa do contraste, saber onde fica cada espaço do retroperitônio e reconhecer as variantes e anomalias que simulam doença. A litíase, a doença mais comum do rim no pronto-socorro, fecha esta fase.",
+        "mapaMental": {
+          "centro": "Rim: ferramentas básicas",
+          "ramos": [
+            {
+              "titulo": "Fases",
+              "itens": [
+                "sem contraste",
+                "corticomedular",
+                "fase nefrográfica detecta mais",
+                "excretora"
+              ]
+            },
+            {
+              "titulo": "Anatomia",
+              "itens": [
+                "hilo com veia, artéria e pelve",
+                "espaço perirrenal com rins e adrenais"
+              ]
+            },
+            {
+              "titulo": "Anomalias",
+              "itens": [
+                "ferradura sob a mesentérica inferior",
+                "pseudotumores com realce do córtex"
+              ]
+            },
+            {
+              "titulo": "Cálculos",
+              "itens": [
+                "TC sem contraste",
+                "indinavir não aparece",
+                "ácido úrico aparece na TC"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "🪷",
+            "conceito": "Lírio caído",
+            "liga": "duplicação completa",
+            "porque": "Polo superior obstruído empurra o inferior para baixo e para fora."
+          },
+          {
+            "icone": "🐍",
+            "conceito": "Cabeça de cobra",
+            "liga": "ureterocele intravesical",
+            "porque": "Ureter terminal dilatado dentro da bexiga."
+          },
+          {
+            "icone": "🐴",
+            "conceito": "Ferradura presa no gancho",
+            "liga": "rim em ferradura",
+            "porque": "O istmo para sob a mesentérica inferior."
+          }
+        ],
+        "pontos": [
+          "Fase sem contraste: cálculos, gordura e cistos hiperdensos.",
+          "Fase nefrográfica: a mais sensível para detectar lesões renais.",
+          "Pseudotumores renais realçam como o córtex em todas as fases.",
+          "Duplicação completa: polo superior obstrui; polo inferior reflui.",
+          "Rim em ferradura: istmo sob a artéria mesentérica inferior.",
+          "TC sem contraste é o padrão-ouro da litíase; indinavir não aparece."
+        ],
+        "perolas": [
+          "Rim com \"tumor\" que realça igual ao córtex: pense em coluna de Bertin.",
+          "Cálculo duro, longe da pele e grande: litotripsia extracorpórea vai sofrer."
+        ],
+        "reforcar": [
+          "fase nefrografica",
+          "pseudotumores",
+          "duplicacao completa"
+        ]
+      }
+    },
+    {
+      "id": "gu-cistos-renais",
+      "nome": "Lesões císticas renais",
+      "profundidade": "10–20 m",
+      "descricao": "Bosniak 2019: regras, definições e categorias, armadilhas de TC e RM, simuladores e doenças policísticas",
+      "resumo": {
+        "secoes": [
+          {
+            "titulo": "As regras do jogo",
+            "texto": [
+              "A versão de 2019 vale para lesões com pelo menos 75% de componente cístico e não se aplica a cistos infectados, a anomalias vasculares nem a lesões sólido-císticas. As definições ficaram objetivas: poucos septos são de 1 a 3 e muitos, 4 ou mais; parede ou septo **fino** mede até 2 mm, minimamente espesso, 3 mm, e espesso, 4 mm ou mais. Não existe mais \"realce perceptível\" e \"realce mensurável\": realce é realce. A lesão recebe a categoria do seu pior componente. A RM, por ter mais resolução de contraste, pode mostrar septos e realces que a TC não mostra; cuidado com a mudança de categoria entre métodos."
+            ]
+          },
+          {
+            "titulo": "As categorias",
+            "texto": [
+              "O **Bosniak 1** é o cisto simples: parede fina e lisa, sem septos nem calcificações, densidade de água (−9 a 20 UH) e sem realce. O **Bosniak 2** reúne alterações mínimas: 1 a 3 septos finos que realçam, qualquer número de septos que não realçam, calcificações de qualquer tipo e cistos homogêneos hiperdensos (70 UH ou mais na fase sem contraste) ou com hipersinal homogêneo em T1 com supressão de gordura; um cisto de aspecto simples visto só sem contraste também fica como 2. O **Bosniak 2F** inclui parede ou septos minimamente espessos (3 mm) e lisos, 4 ou mais septos finos que realçam e, na RM, cistos heterogêneos com hipersinal em T1; ele segue por 5 anos. O **Bosniak 3** tem parede ou septo espesso (4 mm ou mais) que realça, ou espessamento irregular com protrusão de ângulo obtuso de até 3 mm. O **Bosniak 4** tem nódulo: protrusão de ângulo obtuso com 4 mm ou mais, ou qualquer protrusão de ângulo agudo. Os 1 e 2 recebem alta; o 2F faz seguimento; o 3 e o 4 vão para tratamento, de cirurgia a vigilância ativa ou ablação."
+            ]
+          },
+          {
+            "titulo": "Armadilhas",
+            "texto": [
+              "Calcificação grosseira na TC pode esconder parede espessa: nesse caso, a RM avalia melhor. Cisto hemorrágico heterogêneo pede RM com subtração para afastar componente sólido. Lesões endofíticas pequenas podem ter pseudorrealce na TC, e a RM resolve. O carcinoma papilífero é hipovascular e pode parecer um cisto denso, mas tem hipossinal em T2, restringe a difusão e realça pouco, mas realça. O divertículo calicinal enche na fase excretora; a fístula arteriovenosa e o pseudoaneurisma realçam como vaso na fase arterial; o angiomiolipoma tem gordura."
+            ]
+          },
+          {
+            "titulo": "Doenças policísticas",
+            "texto": [
+              "Na **doença renal policística autossômica dominante**, os rins ficam grandes, cheios de cistos de tamanhos variados, alguns hemorrágicos; há cistos hepáticos e aneurismas cerebrais, e o volume renal total acompanha a perda de função. A autossômica recessiva é da criança: rins grandes e hiperecogênicos, com microcistos, e fibrose hepática congênita. Na doença de Von Hippel-Lindau, cistos e carcinomas de células claras multifocais convivem com hemangioblastomas e feocromocitomas; na esclerose tuberosa, cistos e angiomiolipomas múltiplos. A doença cística adquirida da diálise traz rins pequenos com cistos e risco de carcinoma; o lítio causa microcistos bilaterais."
+            ]
+          }
+        ],
+        "introducao": "Cisto renal é achado de quase todo dia depois dos 50 anos. A classificação de Bosniak não tenta dar o diagnóstico histológico: ela estratifica o risco de malignidade para dizer se o cisto vai embora, se vai para seguimento ou se vai para o cirurgião.",
+        "mapaMental": {
+          "centro": "Bosniak 2019",
+          "ramos": [
+            {
+              "titulo": "Regras",
+              "itens": [
+                "75% cístico",
+                "fino até 2 mm",
+                "espesso 4 mm ou mais",
+                "pior componente define a categoria"
+              ]
+            },
+            {
+              "titulo": "Alta",
+              "itens": [
+                "Bosniak 1 com densidade de água",
+                "Bosniak 2 com calcificação ou cisto hiperdenso homogêneo"
+              ]
+            },
+            {
+              "titulo": "Seguimento",
+              "itens": [
+                "Bosniak 2F com 3 mm ou 4 septos finos que realçam"
+              ]
+            },
+            {
+              "titulo": "Tratamento",
+              "itens": [
+                "Bosniak 3 com parede espessa",
+                "Bosniak 4 com nódulo"
+              ]
+            }
+          ]
+        },
+        "associacoes": [
+          {
+            "icone": "📏",
+            "conceito": "Régua de 2, 3 e 4 mm",
+            "liga": "espessura da parede",
+            "porque": "Fino, minimamente espesso, espesso."
+          },
+          {
+            "icone": "📐",
+            "conceito": "Ângulo agudo",
+            "liga": "nódulo de qualquer tamanho",
+            "porque": "Protrusão aguda de qualquer tamanho já é nódulo."
+          },
+          {
+            "icone": "🫘",
+            "conceito": "Feijões estufados",
+            "liga": "doença renal policística autossômica dominante",
+            "porque": "Rins grandes com cistos, fígado com cistos e aneurismas cerebrais."
+          }
+        ],
+        "pontos": [
+          "Bosniak vale para lesões com pelo menos 75% de componente cístico.",
+          "Bosniak 1: cisto simples com densidade de água e sem realce.",
+          "Fino até 2 mm; minimamente espesso 3 mm; espesso 4 mm ou mais.",
+          "Bosniak 2: calcificação de qualquer tipo e cisto hiperdenso homogêneo de 70 UH ou mais.",
+          "Bosniak 2F: 3 mm ou 4 ou mais septos finos que realçam; seguir por 5 anos.",
+          "Bosniak 3: parede ou septo espesso que realça; Bosniak 4: nódulo.",
+          "Carcinoma papilífero pode simular cisto denso: hipossinal em T2 e restrição."
+        ],
+        "perolas": [
+          "O pior pedaço do cisto define a categoria.",
+          "Calcificação grosseira na TC: confirme na RM."
+        ],
+        "reforcar": [
+          "bosniak 1",
+          "bosniak 2f",
+          "bosniak 4"
+        ]
+      }
+    }
+  ],
+  "questoes": [
+    {
+      "id": "gu-fundamentos-q01",
+      "tema": "Protocolo e anatomia",
+      "dificuldade": "facil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual fase da TC é a mais sensível para detectar lesões do parênquima renal?",
+      "alternativas": [
+        "Fase sem contraste",
+        "Fase nefrográfica",
+        "Fase de equilíbrio hepática",
+        "Fase corticomedular",
+        "Fase excretora"
+      ],
+      "correta": 1,
+      "explicacao": "Com o parênquima homogêneo, as lesões hipodensas aparecem melhor. Dica de mergulhador: para achar lesão no rim, nefrográfica.",
+      "comentarios": [
+        "Mostra cálculos e gordura, mas detecta menos lesões.",
+        "",
+        "Não é fase do protocolo renal.",
+        "Lesões medulares podem se esconder pela diferença córtex-medula.",
+        "Avalia o sistema coletor."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q02",
+      "tema": "Protocolo e anatomia",
+      "dificuldade": "facil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual é a ordem das estruturas no hilo renal, de anterior para posterior?",
+      "alternativas": [
+        "Veia, artéria e pelve",
+        "Artéria, pelve e veia",
+        "Pelve, artéria e veia",
+        "Veia, pelve e artéria",
+        "Artéria, veia e pelve"
+      ],
+      "correta": 0,
+      "explicacao": "Da frente para trás: veia, artéria e pelve. Dica de mergulhador: VAP, de frente para trás.",
+      "comentarios": [
+        "",
+        "A ordem é veia, artéria e pelve.",
+        "A pelve é a mais posterior.",
+        "A artéria fica no meio.",
+        "A veia é a mais anterior."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q03",
+      "tema": "Protocolo e anatomia",
+      "dificuldade": "medio",
+      "fase": "gu-fundamentos",
+      "enunciado": "Na RM, qual achado indica gordura macroscópica numa lesão renal?",
+      "alternativas": [
+        "Queda de sinal difusa dentro da lesão só na fase oposta",
+        "Realce intenso na fase arterial",
+        "Hipersinal em T2 homogêneo",
+        "Restrição à difusão",
+        "Artefato em tinta nanquim na interface com o parênquima e queda de sinal com supressão de gordura"
+      ],
+      "correta": 4,
+      "explicacao": "A gordura macroscópica cria o artefato de interface e cai na supressão; é a assinatura do angiomiolipoma clássico. Dica de mergulhador: borda de nanquim, gordura de verdade.",
+      "comentarios": [
+        "Indica gordura microscópica.",
+        "Não indica gordura.",
+        "Não é específico de gordura.",
+        "Não indica gordura.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q04",
+      "tema": "Protocolo e anatomia",
+      "dificuldade": "medio",
+      "fase": "gu-fundamentos",
+      "enunciado": "Para que serve a subtração na RM renal?",
+      "alternativas": [
+        "Para confirmar realce em lesões que já têm hipersinal em T1 antes do contraste",
+        "Para medir o volume do rim",
+        "Para mostrar cálculos",
+        "Para avaliar gordura microscópica dentro da lesão",
+        "Para substituir a difusão"
+      ],
+      "correta": 0,
+      "explicacao": "Sangue e proteína dão hipersinal em T1; a subtração retira esse sinal e mostra só o realce verdadeiro. Dica de mergulhador: T1 já claro antes, subtraia.",
+      "comentarios": [
+        "",
+        "Não é o objetivo.",
+        "A TC é o método para cálculos.",
+        "Isso é o chemical shift.",
+        "Não substitui."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q05",
+      "tema": "Protocolo e anatomia",
+      "dificuldade": "medio",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual estrutura fica no espaço pararenal anterior?",
+      "alternativas": [
+        "Rim",
+        "Pâncreas",
+        "Nenhuma, só gordura",
+        "Músculo psoas",
+        "Adrenal"
+      ],
+      "correta": 1,
+      "explicacao": "O pararenal anterior contém pâncreas, duodeno e cólons ascendente e descendente. Dica de mergulhador: na frente, pâncreas e alças; atrás, só gordura.",
+      "comentarios": [
+        "Fica no perirrenal.",
+        "",
+        "Isso é o pararenal posterior.",
+        "Fica atrás do retroperitônio, no compartimento muscular.",
+        "Fica no perirrenal."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q06",
+      "tema": "Protocolo e anatomia",
+      "dificuldade": "dificil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Na TC, o ureter direito passa por trás da veia cava inferior e depois volta para fora, com dilatação acima. Qual é o diagnóstico?",
+      "alternativas": [
+        "Fibrose retroperitoneal",
+        "Duplicação completa",
+        "Estenose da junção ureteropélvica",
+        "Tumor urotelial do ureter",
+        "Ureter retrocaval, por anomalia do desenvolvimento da cava"
+      ],
+      "correta": 4,
+      "explicacao": "O ureter retrocaval contorna a cava por trás e pode causar obstrução parcial. Dica de mergulhador: ureter atrás da cava, cava que se formou errado.",
+      "comentarios": [
+        "Desvia os ureteres para medial, mas envolve a aorta em placa.",
+        "Haveria dois ureteres.",
+        "O estreitamento seria na junção, sem passar atrás da cava.",
+        "Teria lesão com realce na parede.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q07",
+      "tema": "Protocolo e anatomia",
+      "dificuldade": "dificil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual variante da veia renal esquerda passa com um ramo à frente e outro atrás da aorta?",
+      "alternativas": [
+        "Veia renal esquerda retroaórtica",
+        "Veia renal esquerda circum-aórtica",
+        "Veia cava inferior dupla",
+        "Veia renal direita dupla",
+        "Persistência da veia cardinal anterior"
+      ],
+      "correta": 1,
+      "explicacao": "A veia circum-aórtica forma um anel em volta da aorta; importa no planejamento cirúrgico e em procedimentos venosos. Dica de mergulhador: abraça a aorta, circum-aórtica.",
+      "comentarios": [
+        "Passa só por trás.",
+        "",
+        "É outra variante.",
+        "É do lado direito.",
+        "Não é a variante descrita."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q08",
+      "tema": "Anomalias congênitas",
+      "dificuldade": "facil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual achado sugere coluna de Bertin hipertrófica, e não tumor?",
+      "alternativas": [
+        "Tecido com o mesmo realce do córtex em todas as fases",
+        "Lesão cística com septos",
+        "Lesão que lava rápido o contraste",
+        "Lesão com restrição à difusão marcada",
+        "Lesão com gordura macroscópica"
+      ],
+      "correta": 0,
+      "explicacao": "A coluna de Bertin é córtex que se projeta no seio renal e realça igual a ele. Dica de mergulhador: realça como o córtex porque é córtex.",
+      "comentarios": [
+        "",
+        "Não é o padrão.",
+        "Sugere neoplasia.",
+        "Sugere neoplasia ou infecção.",
+        "Sugere angiomiolipoma."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q09",
+      "tema": "Anomalias congênitas",
+      "dificuldade": "facil",
+      "fase": "gu-fundamentos",
+      "enunciado": "No rim em ferradura, onde o istmo costuma ficar preso durante a ascensão?",
+      "alternativas": [
+        "No forame de Winslow",
+        "No canal inguinal",
+        "No hilo hepático",
+        "Sob a artéria mesentérica superior",
+        "Sob a artéria mesentérica inferior"
+      ],
+      "correta": 4,
+      "explicacao": "O istmo, geralmente entre os polos inferiores, para quando encontra a mesentérica inferior. Dica de mergulhador: ferradura presa no gancho da mesentérica inferior.",
+      "comentarios": [
+        "Não se relaciona.",
+        "Não se relaciona.",
+        "Não se relaciona.",
+        "É mais alta.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q10",
+      "tema": "Anomalias congênitas",
+      "dificuldade": "medio",
+      "fase": "gu-fundamentos",
+      "enunciado": "Na duplicação ureteral completa, o que a regra de Weigert-Meyer diz sobre o polo superior?",
+      "alternativas": [
+        "Seu ureter se insere no trígono e tende a refluir",
+        "Seu ureter se insere mais abaixo e medialmente e tende a obstruir, às vezes com ureterocele",
+        "Os dois polos sempre refluem igualmente",
+        "O polo superior nunca se dilata",
+        "O polo superior não tem ureter"
+      ],
+      "correta": 1,
+      "explicacao": "Polo superior: ectópico e obstrutivo; polo inferior: ortotópico e com refluxo. Dica de mergulhador: em cima obstrui, embaixo reflui.",
+      "comentarios": [
+        "Esse é o comportamento do polo inferior.",
+        "",
+        "A regra separa os comportamentos.",
+        "Ele é o que obstrui.",
+        "Na duplicação completa ele tem."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q11",
+      "tema": "Anomalias congênitas",
+      "dificuldade": "medio",
+      "fase": "gu-fundamentos",
+      "enunciado": "Homem com agenesia renal unilateral e cisto na vesícula seminal do mesmo lado. Qual é o diagnóstico?",
+      "alternativas": [
+        "Síndrome de Potter",
+        "Síndrome de Mayer-Rokitansky",
+        "Síndrome de Von Hippel-Lindau",
+        "Síndrome de Prune-belly",
+        "Síndrome de Zinner"
+      ],
+      "correta": 4,
+      "explicacao": "Agenesia renal, cisto de vesícula seminal e obstrução do ducto ejaculatório formam a síndrome de Zinner. Dica de mergulhador: rim que falta e vesícula seminal com cisto, Zinner.",
+      "comentarios": [
+        "É a agenesia bilateral com oligoidrâmnio.",
+        "É anomalia mülleriana feminina.",
+        "Liga-se a tumores e cistos renais.",
+        "Liga-se a parede abdominal flácida e criptorquidia.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q12",
+      "tema": "Anomalias congênitas",
+      "dificuldade": "medio",
+      "fase": "gu-fundamentos",
+      "enunciado": "Lesão cística junto a um cálice, com cálculos que formam nível e que enche de contraste na fase excretora. Qual é o diagnóstico?",
+      "alternativas": [
+        "Cisto simples Bosniak 1",
+        "Divertículo calicinal",
+        "Angiomiolipoma",
+        "Abscesso renal",
+        "Carcinoma de células renais cístico"
+      ],
+      "correta": 1,
+      "explicacao": "O divertículo comunica com o sistema coletor; a urina parada favorece cálculos em leite de cálcio. Dica de mergulhador: cisto que enche na excretora, divertículo.",
+      "comentarios": [
+        "Não enche de contraste.",
+        "",
+        "Tem gordura.",
+        "Não enche na fase excretora.",
+        "Teria componente que realça."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q13",
+      "tema": "Anomalias congênitas",
+      "dificuldade": "dificil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Na urografia, o sistema coletor inferior está deslocado para baixo e para fora por uma massa no polo superior que não opacifica. Qual é a interpretação?",
+      "alternativas": [
+        "Sinal do lírio caído de duplicação completa, com polo superior obstruído",
+        "Rim em ferradura",
+        "Coluna de Bertin hipertrófica no terço médio do rim",
+        "Corcova de dromedário",
+        "Ureter retrocaval"
+      ],
+      "correta": 0,
+      "explicacao": "O polo superior hidronefrótico e sem contraste empurra o inferior. Dica de mergulhador: lírio caído, procure o polo superior que não aparece.",
+      "comentarios": [
+        "",
+        "Teria fusão dos polos inferiores.",
+        "Não desloca o sistema coletor assim.",
+        "É contorno lateral normal.",
+        "Desvia o ureter atrás da cava."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q14",
+      "tema": "Anomalias congênitas",
+      "dificuldade": "dificil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Por que o rim em ferradura merece atenção no laudo de trauma abdominal?",
+      "alternativas": [
+        "Porque ele nunca se lesiona",
+        "Porque ele fica dentro da pelve sempre, protegido pelos ossos",
+        "Porque ele tem gordura macroscópica",
+        "Porque ele sempre tem uma artéria só",
+        "Porque o istmo à frente da coluna fica mais exposto a lesão por compressão"
+      ],
+      "correta": 4,
+      "explicacao": "O istmo cruza a frente da coluna e é comprimido contra ela no trauma. Dica de mergulhador: ferradura cruzando a coluna, rim vulnerável.",
+      "comentarios": [
+        "É o contrário.",
+        "Fica mais baixo, mas não sempre na pelve.",
+        "Não tem.",
+        "Costuma ter várias artérias.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q15",
+      "tema": "Litíase",
+      "dificuldade": "facil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual é o exame padrão-ouro para pesquisar cálculo urinário?",
+      "alternativas": [
+        "TC sem contraste",
+        "RM com contraste",
+        "Ultrassonografia sem Doppler",
+        "Urografia excretora",
+        "Radiografia simples de abdome"
+      ],
+      "correta": 0,
+      "explicacao": "A TC sem contraste vê praticamente todos os cálculos, com exceção do indinavir. Dica de mergulhador: cólica renal, TC sem contraste.",
+      "comentarios": [
+        "",
+        "Não é o método para cálculo.",
+        "Tem limitações no ureter e em cálculos pequenos.",
+        "Foi substituída pela TC.",
+        "É menos sensível."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q16",
+      "tema": "Litíase",
+      "dificuldade": "facil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual artefato da ultrassonografia com Doppler ajuda a identificar cálculo urinário?",
+      "alternativas": [
+        "Artefato em cauda de cometa",
+        "Artefato de cintilação (twinkling)",
+        "Artefato de lóbulo lateral",
+        "Artefato de reverberação em espelho",
+        "Reforço acústico posterior"
+      ],
+      "correta": 1,
+      "explicacao": "Atrás do cálculo, o Doppler mostra um mosaico de cores que ajuda a confirmar a pedra. Dica de mergulhador: pisca no Doppler, pedra.",
+      "comentarios": [
+        "Lembra cristais de colesterol, como na adenomiomatose.",
+        "",
+        "Não é o sinal do cálculo.",
+        "Não é o sinal do cálculo.",
+        "É típico de cisto."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q17",
+      "tema": "Litíase",
+      "dificuldade": "medio",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual cálculo não aparece na radiografia, mas aparece na TC?",
+      "alternativas": [
+        "Ácido úrico",
+        "Oxalato de cálcio",
+        "Estruvita",
+        "Fosfato de cálcio",
+        "Indinavir"
+      ],
+      "correta": 0,
+      "explicacao": "O ácido úrico é radiotransparente na radiografia, mas tem densidade suficiente para a TC; dissolve com alcalinização. Dica de mergulhador: invisível no raio X e visível na TC, ácido úrico.",
+      "comentarios": [
+        "",
+        "Aparece na radiografia.",
+        "Aparece na radiografia, muitas vezes coraliforme.",
+        "Aparece na radiografia.",
+        "Não aparece nem na TC."
+      ]
+    },
+    {
+      "id": "gu-fundamentos-q18",
+      "tema": "Litíase",
+      "dificuldade": "medio",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual cálculo pode não ser visto nem na TC?",
+      "alternativas": [
+        "Cálculo de oxalato de cálcio",
+        "Cálculo de estruvita",
+        "Cálculo de indinavir",
+        "Cálculo de cistina",
+        "Cálculo de ácido úrico"
+      ],
+      "correta": 2,
+      "explicacao": "Os cálculos do antirretroviral indinavir são a exceção clássica: pouco densos até na TC. Dica de mergulhador: único que some na TC, indinavir.",
+      "comentarios": [
+        "É visto na TC.",
+        "É visto na TC.",
+        "",
+        "É visto na TC.",
+        "É visto na TC."
+      ],
+      "revisar": "visibilidade dos cálculos de cistina e de indinavir na TC"
+    },
+    {
+      "id": "gu-fundamentos-q19",
+      "tema": "Litíase",
+      "dificuldade": "dificil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Qual conjunto prediz pior resultado da litotripsia extracorpórea por ondas de choque?",
+      "alternativas": [
+        "Qualquer cálculo visível na radiografia",
+        "Cálculo de ácido úrico pequeno no rim direito, perto da pele",
+        "Densidade acima de cerca de 1.000 UH, mais de 1 cm e distância pele-cálculo acima de 10 cm",
+        "Densidade baixa, 5 mm e distância de 6 cm",
+        "Cálculo no cálice superior de 4 mm"
+      ],
+      "correta": 2,
+      "explicacao": "Cálculo duro, grande e longe da pele fragmenta mal; o cálice inferior também atrapalha a eliminação. Dica de mergulhador: duro, grande e fundo, a onda de choque perde.",
+      "comentarios": [
+        "Não é critério.",
+        "Não é o conjunto desfavorável.",
+        "",
+        "São fatores favoráveis.",
+        "Não é desfavorável."
+      ],
+      "revisar": "limiares de densidade, tamanho e distância pele-cálculo para litotripsia"
+    },
+    {
+      "id": "gu-fundamentos-q20",
+      "tema": "Litíase",
+      "dificuldade": "dificil",
+      "fase": "gu-fundamentos",
+      "enunciado": "Por que a densidade do cálculo deve ser medida na janela óssea?",
+      "alternativas": [
+        "Porque é exigência legal",
+        "Porque a janela de partes moles satura e distorce a leitura da densidade",
+        "Porque a janela óssea mostra o ureter melhor",
+        "Porque a janela de partes moles não mostra cálculos",
+        "Porque a janela óssea aumenta a dose de radiação"
+      ],
+      "correta": 1,
+      "explicacao": "Na janela óssea o cálculo não \"estoura\" e o tamanho e a densidade ficam mais fiéis. Dica de mergulhador: mediu cálculo, use a janela óssea.",
+      "comentarios": [
+        "Não é o motivo.",
+        "",
+        "Não é o objetivo.",
+        "Mostra, mas mede mal.",
+        "A janela não muda a dose."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q01",
+      "tema": "Regras e definições",
+      "dificuldade": "facil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Qual é o objetivo da classificação de Bosniak?",
+      "alternativas": [
+        "Medir a função renal",
+        "Classificar cálculos urinários",
+        "Estadiar o carcinoma de células renais sólido",
+        "Dar o diagnóstico histológico exato de cada cisto",
+        "Estratificar o risco de malignidade das lesões císticas renais e orientar a conduta"
+      ],
+      "correta": 4,
+      "explicacao": "Bosniak separa o que recebe alta, o que segue e o que vai para tratamento. Dica de mergulhador: Bosniak responde \"o que eu faço com este cisto?\".",
+      "comentarios": [
+        "Não avalia função.",
+        "Não se relaciona.",
+        "Não é estadiamento.",
+        "O foco é o risco, não a histologia.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q02",
+      "tema": "Regras e definições",
+      "dificuldade": "facil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "No Bosniak 2019, qual é a espessura de uma parede ou septo fino?",
+      "alternativas": [
+        "Até 10 mm",
+        "Exatamente 3 mm",
+        "Até 2 mm",
+        "Até 5 mm",
+        "4 mm ou mais"
+      ],
+      "correta": 2,
+      "explicacao": "Fino até 2 mm; minimamente espesso 3 mm; espesso 4 mm ou mais. Dica de mergulhador: 2, 3 e 4, a régua do Bosniak.",
+      "comentarios": [
+        "É grosso demais.",
+        "É minimamente espesso.",
+        "",
+        "É grosso demais.",
+        "É espesso."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q03",
+      "tema": "Regras e definições",
+      "dificuldade": "medio",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Qual lesão não deve ser classificada pelo Bosniak?",
+      "alternativas": [
+        "Cisto com nódulo que realça",
+        "Cisto com 4 septos finos que realçam",
+        "Cisto infectado ou abscesso",
+        "Cisto simples de 2 cm",
+        "Cisto com calcificação fina"
+      ],
+      "correta": 2,
+      "explicacao": "Infecção, anomalias vasculares e lesões sólido-císticas ficam fora do sistema. Dica de mergulhador: cisto infectado não entra no Bosniak.",
+      "comentarios": [
+        "É Bosniak 4.",
+        "É Bosniak 2F.",
+        "",
+        "É Bosniak 1.",
+        "É Bosniak 2."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q04",
+      "tema": "Regras e definições",
+      "dificuldade": "medio",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Qual proporção mínima de componente cístico a lesão precisa ter para usar o Bosniak 2019?",
+      "alternativas": [
+        "Pelo menos 10%",
+        "100% obrigatoriamente",
+        "Exatamente 50%",
+        "Pelo menos 75%",
+        "Pelo menos 25%"
+      ],
+      "correta": 3,
+      "explicacao": "Abaixo de 75% de componente cístico, a lesão é tratada como massa sólida. Dica de mergulhador: três quartos de cisto para entrar no Bosniak.",
+      "comentarios": [
+        "É muito pouco.",
+        "Não precisa ser 100%.",
+        "Lesões com 50% de sólido são excluídas.",
+        "",
+        "É pouco."
+      ],
+      "revisar": "limiar de 75% de componente cístico (Bosniak 2019)"
+    },
+    {
+      "id": "gu-cistos-renais-q05",
+      "tema": "Regras e definições",
+      "dificuldade": "medio",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Um cisto tem a maior parte com aspecto de Bosniak 2 e um septo espesso de 5 mm que realça. Qual é a categoria?",
+      "alternativas": [
+        "Bosniak 1",
+        "Não classificável",
+        "Bosniak 2F",
+        "Bosniak 3",
+        "Bosniak 2, porque a maior parte é benigna"
+      ],
+      "correta": 3,
+      "explicacao": "A lesão recebe a categoria do seu pior componente. Dica de mergulhador: o pior pedaço manda.",
+      "comentarios": [
+        "Há septo e realce.",
+        "É classificável.",
+        "Septo espesso que realça é 3.",
+        "",
+        "Vale o pior componente."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q06",
+      "tema": "Regras e definições",
+      "dificuldade": "dificil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Por que comparar Bosniak entre TC e RM exige cuidado?",
+      "alternativas": [
+        "Porque a TC não vê cistos",
+        "Porque a RM sempre baixa a categoria",
+        "Porque o Bosniak só vale para ultrassonografia",
+        "Porque a RM mostra mais septos e realces e pode subir a categoria sem mudança real",
+        "Porque a RM não usa contraste"
+      ],
+      "correta": 3,
+      "explicacao": "Maior resolução de contraste revela detalhes que a TC não mostra; a diferença pode ser do método. Dica de mergulhador: subiu de categoria só porque trocou de exame? Desconfie.",
+      "comentarios": [
+        "A TC vê bem os cistos.",
+        "Tende a subir.",
+        "Vale para TC e RM.",
+        "",
+        "Usa contraste."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q07",
+      "tema": "Regras e definições",
+      "dificuldade": "dificil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "No Bosniak 2019, qual é a diferença entre realce \"perceptível\" e \"mensurável\"?",
+      "alternativas": [
+        "Só o realce perceptível conta",
+        "Só o realce mensurável conta",
+        "O mensurável é sempre Bosniak 1",
+        "Não há mais diferença: qualquer realce conta como realce",
+        "O perceptível é sempre Bosniak 4"
+      ],
+      "correta": 3,
+      "explicacao": "A versão de 2019 simplificou: viu realce, é realce. Dica de mergulhador: realce é realce.",
+      "comentarios": [
+        "A distinção foi abolida.",
+        "A distinção foi abolida.",
+        "Bosniak 1 não realça.",
+        "",
+        "Não é a regra."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q08",
+      "tema": "Categorias",
+      "dificuldade": "facil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Cisto de parede fina e lisa, sem septos, com 8 UH e sem realce. Qual é a categoria?",
+      "alternativas": [
+        "Bosniak 2",
+        "Bosniak 3",
+        "Bosniak 1",
+        "Bosniak 2F",
+        "Bosniak 4"
+      ],
+      "correta": 2,
+      "explicacao": "Densidade de água, parede fina e ausência de realce definem o cisto simples. Dica de mergulhador: água limpa e lisa, Bosniak 1.",
+      "comentarios": [
+        "Não há alteração mínima.",
+        "Não há parede espessa.",
+        "",
+        "Não há critério de seguimento.",
+        "Não há nódulo."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q09",
+      "tema": "Categorias",
+      "dificuldade": "facil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Cisto com uma calcificação grosseira na parede, sem outros achados, bem avaliado. Em que categoria fica no Bosniak 2019?",
+      "alternativas": [
+        "Bosniak 1",
+        "Bosniak 2F, como na versão antiga",
+        "Bosniak 2",
+        "Bosniak 3",
+        "Bosniak 4"
+      ],
+      "correta": 2,
+      "explicacao": "Em 2019, calcificação de qualquer tipo ficou no Bosniak 2, desde que não esconda outro achado. Dica de mergulhador: cálcio sozinho não assusta mais.",
+      "comentarios": [
+        "Tem calcificação.",
+        "Na versão de 2019, calcificação é 2.",
+        "",
+        "Calcificação sozinha não leva a 3.",
+        "Não há nódulo."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q10",
+      "tema": "Categorias",
+      "dificuldade": "medio",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Cisto homogêneo com 75 UH na TC sem contraste, sem realce. Qual é a categoria?",
+      "alternativas": [
+        "Bosniak 4",
+        "Bosniak 2F",
+        "Bosniak 1",
+        "Bosniak 3",
+        "Bosniak 2"
+      ],
+      "correta": 4,
+      "explicacao": "Cisto homogêneo de 70 UH ou mais sem contraste é hemorrágico ou proteico benigno, de qualquer tamanho. Dica de mergulhador: denso e homogêneo, Bosniak 2.",
+      "comentarios": [
+        "Não há nódulo.",
+        "Homogêneo e hiperdenso fica em 2.",
+        "Não tem densidade de água.",
+        "Não há parede espessa.",
+        ""
+      ],
+      "revisar": "limiar de 70 UH para cisto hiperdenso (Bosniak 2019)"
+    },
+    {
+      "id": "gu-cistos-renais-q11",
+      "tema": "Categorias",
+      "dificuldade": "medio",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Cisto com quatro septos finos que realçam. Qual é a categoria e a conduta?",
+      "alternativas": [
+        "Bosniak 3, com cirurgia",
+        "Bosniak 2F, com seguimento por imagem",
+        "Bosniak 1, com alta",
+        "Bosniak 4, com cirurgia",
+        "Bosniak 2, com alta"
+      ],
+      "correta": 1,
+      "explicacao": "Muitos septos finos que realçam, ou parede de 3 mm, levam ao 2F, seguido por 5 anos. Dica de mergulhador: quatro septos finos, seguimento.",
+      "comentarios": [
+        "Não há septo espesso.",
+        "",
+        "Há septos.",
+        "Não há nódulo.",
+        "Até 3 septos finos é 2."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q12",
+      "tema": "Categorias",
+      "dificuldade": "medio",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Cisto com parede lisa de exatamente 3 mm que realça. Qual é a categoria?",
+      "alternativas": [
+        "Bosniak 2F",
+        "Bosniak 4",
+        "Bosniak 1",
+        "Bosniak 2",
+        "Bosniak 3"
+      ],
+      "correta": 0,
+      "explicacao": "Três milímetros é \"minimamente espesso\", critério de 2F. Dica de mergulhador: 3 mm, 2F.",
+      "comentarios": [
+        "",
+        "Não há nódulo.",
+        "A parede não é fina.",
+        "Parede de 3 mm não é fina.",
+        "Espesso começa em 4 mm."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q13",
+      "tema": "Categorias",
+      "dificuldade": "dificil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Cisto com protrusão de ângulo obtuso de 5 mm na parede, que realça. Qual é a categoria?",
+      "alternativas": [
+        "Bosniak 2",
+        "Bosniak 4",
+        "Bosniak 3",
+        "Bosniak 2F",
+        "Não classificável"
+      ],
+      "correta": 1,
+      "explicacao": "Protrusão obtusa de 4 mm ou mais, ou qualquer protrusão de ângulo agudo, é nódulo: Bosniak 4. Dica de mergulhador: nódulo é Bosniak 4.",
+      "comentarios": [
+        "O achado é mais grave.",
+        "",
+        "A protrusão obtusa de até 3 mm é 3; a de 4 mm ou mais é nódulo.",
+        "O achado é mais grave.",
+        "É classificável."
+      ],
+      "revisar": "definição de nódulo no Bosniak 2019 (obtusa ≥ 4 mm ou aguda de qualquer tamanho)"
+    },
+    {
+      "id": "gu-cistos-renais-q14",
+      "tema": "Categorias",
+      "dificuldade": "dificil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Cisto com uma pequena protrusão de 2 mm, de ângulo agudo com a parede, que realça. Qual é a categoria?",
+      "alternativas": [
+        "Bosniak 4",
+        "Bosniak 2F",
+        "Bosniak 2",
+        "Bosniak 3",
+        "Bosniak 1"
+      ],
+      "correta": 0,
+      "explicacao": "Qualquer protrusão de ângulo agudo é nódulo. Dica de mergulhador: ângulo agudo, Bosniak 4.",
+      "comentarios": [
+        "",
+        "É mais grave.",
+        "Não é alteração mínima.",
+        "Ângulo agudo já define nódulo, de qualquer tamanho.",
+        "Há realce e protrusão."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q15",
+      "tema": "Simuladores e policística",
+      "dificuldade": "facil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Qual é a característica da doença renal policística autossômica dominante?",
+      "alternativas": [
+        "Rins pequenos de paciente em diálise com cistos",
+        "Microcistos bilaterais por medicamento",
+        "Rins grandes e hiperecogênicos com microcistos no recém-nascido",
+        "Rim único substituído por cistos que não se comunicam",
+        "Rins aumentados com múltiplos cistos, cistos hepáticos e risco de aneurisma cerebral"
+      ],
+      "correta": 4,
+      "explicacao": "A forma dominante do adulto aumenta os rins, compromete a função e tem cistos hepáticos e aneurismas. Dica de mergulhador: rins enormes e cistos no fígado, policística dominante.",
+      "comentarios": [
+        "É a doença cística adquirida.",
+        "É o lítio.",
+        "É a recessiva.",
+        "É o rim multicístico displásico.",
+        ""
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q16",
+      "tema": "Simuladores e policística",
+      "dificuldade": "facil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Lesão que parece cisto renal, mas enche de contraste na fase excretora. Qual é o diagnóstico?",
+      "alternativas": [
+        "Divertículo calicinal",
+        "Angiomiolipoma",
+        "Cisto simples",
+        "Carcinoma papilífero",
+        "Abscesso renal"
+      ],
+      "correta": 0,
+      "explicacao": "O divertículo se comunica com o sistema coletor. Dica de mergulhador: enche na excretora, divertículo.",
+      "comentarios": [
+        "",
+        "Tem gordura.",
+        "Não enche.",
+        "Não enche.",
+        "Não enche."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q17",
+      "tema": "Simuladores e policística",
+      "dificuldade": "medio",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Qual achado sugere carcinoma papilífero simulando cisto hiperdenso?",
+      "alternativas": [
+        "Gordura macroscópica",
+        "Hipossinal em T2, restrição à difusão e realce discreto, mas presente",
+        "Hipersinal em T2 como água e nenhum realce",
+        "Realce arterial como vaso",
+        "Enchimento na fase excretora"
+      ],
+      "correta": 1,
+      "explicacao": "O papilífero é hipovascular e pode passar por cisto na TC; a RM revela o tecido sólido. Dica de mergulhador: \"cisto\" com T2 baixo que restringe, papilífero.",
+      "comentarios": [
+        "Sugere angiomiolipoma.",
+        "",
+        "Sugere cisto.",
+        "Sugere anomalia vascular.",
+        "Sugere divertículo."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q18",
+      "tema": "Simuladores e policística",
+      "dificuldade": "medio",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Paciente com Von Hippel-Lindau. O que procurar nos rins?",
+      "alternativas": [
+        "Cálculos de indinavir",
+        "Angiomiolipomas múltiplos",
+        "Rins pequenos de diálise",
+        "Cistos e carcinomas de células claras múltiplos e bilaterais",
+        "Rim multicístico displásico"
+      ],
+      "correta": 3,
+      "explicacao": "No Von Hippel-Lindau, os carcinomas de células claras são multifocais e podem nascer nas paredes dos cistos. Dica de mergulhador: VHL, cistos com tumores.",
+      "comentarios": [
+        "Não se relaciona.",
+        "São da esclerose tuberosa.",
+        "É a doença adquirida.",
+        "",
+        "É anomalia congênita."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q19",
+      "tema": "Simuladores e policística",
+      "dificuldade": "dificil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Cisto renal com calcificação grosseira na TC que impede ver a parede. Qual é a conduta?",
+      "alternativas": [
+        "Classificar como Bosniak 1",
+        "Dar alta sem classificar",
+        "Classificar direto como Bosniak 4",
+        "Complementar com RM antes de classificar",
+        "Repetir a TC em 10 anos"
+      ],
+      "correta": 3,
+      "explicacao": "A RM é pouco sensível ao cálcio e mostra a parede e o realce escondidos. Dica de mergulhador: cálcio que esconde, RM que revela.",
+      "comentarios": [
+        "Há calcificação.",
+        "Pode haver parede espessa escondida.",
+        "Não há nódulo demonstrado.",
+        "",
+        "Não resolve a dúvida."
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-q20",
+      "tema": "Simuladores e policística",
+      "dificuldade": "dificil",
+      "fase": "gu-cistos-renais",
+      "enunciado": "Paciente em diálise há anos com rins pequenos e muitos cistos. Por que segui-lo?",
+      "alternativas": [
+        "Porque os rins voltam a crescer e funcionar",
+        "Porque os cistos sempre infectam",
+        "Porque a doença cística adquirida aumenta o risco de carcinoma de células renais",
+        "Porque é sinal de policística dominante",
+        "Porque os cistos viram cálculos"
+      ],
+      "correta": 2,
+      "explicacao": "O rim de diálise cria cistos e tem risco maior de tumor; a lesão sólida deve ser procurada. Dica de mergulhador: rim de diálise com cistos, procure o tumor.",
+      "comentarios": [
+        "Não ocorre.",
+        "Não é o principal motivo.",
+        "",
+        "Na dominante os rins são grandes.",
+        "Não é o motivo."
+      ]
+    }
+  ],
+  "pares": [
+    {
+      "id": "gu-fundamentos-par-01",
+      "tema": "Fundamentos, anomalias e litíase",
+      "termo": "Fase nefrográfica",
+      "definicao": "A mais sensível para lesões renais"
+    },
+    {
+      "id": "gu-fundamentos-par-02",
+      "tema": "Fundamentos, anomalias e litíase",
+      "termo": "VAP",
+      "definicao": "Veia, artéria e pelve no hilo"
+    },
+    {
+      "id": "gu-fundamentos-par-03",
+      "tema": "Fundamentos, anomalias e litíase",
+      "termo": "Weigert-Meyer",
+      "definicao": "Polo superior obstrui, inferior reflui"
+    },
+    {
+      "id": "gu-fundamentos-par-04",
+      "tema": "Fundamentos, anomalias e litíase",
+      "termo": "Zinner",
+      "definicao": "Agenesia renal e cisto de vesícula seminal"
+    },
+    {
+      "id": "gu-fundamentos-par-05",
+      "tema": "Fundamentos, anomalias e litíase",
+      "termo": "Indinavir",
+      "definicao": "Cálculo que pode sumir na TC"
+    },
+    {
+      "id": "gu-cistos-renais-par-01",
+      "tema": "Lesões císticas renais",
+      "termo": "Bosniak 1",
+      "definicao": "Cisto simples, densidade de água"
+    },
+    {
+      "id": "gu-cistos-renais-par-02",
+      "tema": "Lesões císticas renais",
+      "termo": "Bosniak 2F",
+      "definicao": "Seguimento por 5 anos"
+    },
+    {
+      "id": "gu-cistos-renais-par-03",
+      "tema": "Lesões císticas renais",
+      "termo": "Bosniak 4",
+      "definicao": "Nódulo que realça"
+    },
+    {
+      "id": "gu-cistos-renais-par-04",
+      "tema": "Lesões císticas renais",
+      "termo": "VHL",
+      "definicao": "Cistos e carcinoma de células claras"
+    },
+    {
+      "id": "gu-cistos-renais-par-05",
+      "tema": "Lesões císticas renais",
+      "termo": "Esclerose tuberosa",
+      "definicao": "Angiomiolipomas múltiplos"
+    }
+  ],
+  "verdadeiroFalso": [
+    {
+      "id": "gu-fundamentos-vf-01",
+      "tema": "Fundamentos, anomalias e litíase",
+      "afirmacao": "A coluna de Bertin realça como o córtex em todas as fases.",
+      "verdadeira": true,
+      "explicacao": "É pseudotumor."
+    },
+    {
+      "id": "gu-fundamentos-vf-02",
+      "tema": "Fundamentos, anomalias e litíase",
+      "afirmacao": "Na duplicação completa, o polo inferior é o que obstrui.",
+      "verdadeira": false,
+      "explicacao": "O inferior reflui; o superior obstrui."
+    },
+    {
+      "id": "gu-fundamentos-vf-03",
+      "tema": "Fundamentos, anomalias e litíase",
+      "afirmacao": "O cálculo de ácido úrico aparece na TC.",
+      "verdadeira": true,
+      "explicacao": "Mesmo sem aparecer no raio X."
+    },
+    {
+      "id": "gu-fundamentos-vf-04",
+      "tema": "Fundamentos, anomalias e litíase",
+      "afirmacao": "O espaço pararenal posterior contém o pâncreas.",
+      "verdadeira": false,
+      "explicacao": "O pâncreas fica no anterior."
+    },
+    {
+      "id": "gu-cistos-renais-vf-01",
+      "tema": "Lesões císticas renais",
+      "afirmacao": "No Bosniak 2019, calcificação de qualquer tipo é Bosniak 2.",
+      "verdadeira": true,
+      "explicacao": "Se não esconder outro achado."
+    },
+    {
+      "id": "gu-cistos-renais-vf-02",
+      "tema": "Lesões císticas renais",
+      "afirmacao": "Septo de 3 mm é considerado fino.",
+      "verdadeira": false,
+      "explicacao": "Fino é até 2 mm."
+    },
+    {
+      "id": "gu-cistos-renais-vf-03",
+      "tema": "Lesões císticas renais",
+      "afirmacao": "Qualquer protrusão de ângulo agudo é nódulo.",
+      "verdadeira": true,
+      "explicacao": "Bosniak 4."
+    },
+    {
+      "id": "gu-cistos-renais-vf-04",
+      "tema": "Lesões císticas renais",
+      "afirmacao": "Cisto infectado deve ser classificado pelo Bosniak.",
+      "verdadeira": false,
+      "explicacao": "Ele fica fora do sistema."
+    }
+  ],
+  "adivinhas": [
+    {
+      "id": "gu-fundamentos-adv-01",
+      "tema": "Fundamentos, anomalias e litíase",
+      "dificuldade": "medio",
+      "resposta": "Ferradura",
+      "aceitas": [
+        "ferradura",
+        "rim em ferradura"
+      ],
+      "dicas": [
+        "Anomalia de fusão",
+        "Polos inferiores unidos",
+        "Istmo sob a mesentérica inferior"
+      ]
+    },
+    {
+      "id": "gu-cistos-renais-adv-01",
+      "tema": "Lesões císticas renais",
+      "dificuldade": "medio",
+      "resposta": "Bosniak",
+      "aceitas": [
+        "bosniak",
+        "classificacao de bosniak",
+        "classificação de bosniak"
+      ],
+      "dicas": [
+        "Classificação de cistos",
+        "Versão de 2019",
+        "Vai de 1 a 4"
+      ]
+    }
+  ],
+  "sequencias": [
+    {
+      "id": "gu-fundamentos-seq-01",
+      "tema": "Fundamentos, anomalias e litíase",
+      "titulo": "Fases da TC renal",
+      "itens": [
+        "Sem contraste",
+        "Corticomedular",
+        "Nefrográfica",
+        "Excretora"
+      ],
+      "explicacao": "Cada fase responde a uma pergunta."
+    },
+    {
+      "id": "gu-cistos-renais-seq-01",
+      "tema": "Lesões císticas renais",
+      "titulo": "Conduta pelo Bosniak",
+      "itens": [
+        "Bosniak 1 e 2 com alta",
+        "Bosniak 2F com seguimento",
+        "Bosniak 3 e 4 com tratamento"
+      ],
+      "explicacao": "Risco crescente."
+    }
+  ],
+  "palavras": [
+    {
+      "id": "gu-fundamentos-pal-01",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Hilo",
+      "dica": "Entrada de veia, artéria e pelve"
+    },
+    {
+      "id": "gu-fundamentos-pal-02",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Ureter",
+      "dica": "Leva a urina do rim à bexiga"
+    },
+    {
+      "id": "gu-fundamentos-pal-03",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Bertin",
+      "dica": "Coluna que simula tumor renal"
+    },
+    {
+      "id": "gu-fundamentos-pal-04",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Litíase",
+      "dica": "Doença dos cálculos urinários"
+    },
+    {
+      "id": "gu-cistos-renais-pal-01",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Cisto",
+      "dica": "Lesão com conteúdo líquido"
+    },
+    {
+      "id": "gu-cistos-renais-pal-02",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Septo",
+      "dica": "Parede interna de um cisto"
+    },
+    {
+      "id": "gu-cistos-renais-pal-03",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Nódulo",
+      "dica": "Achado que define o Bosniak 4"
+    },
+    {
+      "id": "gu-cistos-renais-pal-04",
+      "tema": "Radiologia: Geniturinário",
+      "palavra": "Lítio",
+      "dica": "Medicamento que causa microcistos renais"
+    }
+  ],
+  "fichas": {
+    "Protocolo e anatomia": {
+      "texto": [
+        "Sem contraste: cálculos, gordura, cistos hiperdensos. Corticomedular (30 a 40 s): artérias e lesões hipervasculares. Nefrográfica (80 a 120 s): a mais sensível para lesões e trombo. Excretora (5 a 10 min): sistema coletor. RM: chemical shift, T2, difusão e subtração.",
+        "Hilo: veia, artéria, pelve. Perirrenal: rins e adrenais; pararenal anterior: pâncreas, duodeno, cólons; posterior: só gordura. Variantes: artérias múltiplas, veia esquerda circum-aórtica ou retroaórtica, ureter retrocaval."
+      ],
+      "pontos": [
+        "Para achar lesão no rim, nefrográfica.",
+        "T1 já claro antes, subtraia."
+      ],
+      "pegadinhas": [
+        "Procurar lesão só na corticomedular.",
+        "Confundir gordura microscópica com macroscópica."
+      ]
+    },
+    "Anomalias congênitas": {
+      "texto": [
+        "Pseudotumores (lobulação fetal, coluna de Bertin, corcova de dromedário) realçam como o córtex. Ferradura: polos inferiores fundidos sob a mesentérica inferior. Zinner: agenesia renal e cisto de vesícula seminal.",
+        "Weigert-Meyer: polo superior ectópico obstrui (ureterocele ectópica), polo inferior reflui; lírio caído. Ureterocele intravesical: cabeça de cobra. Divertículo calicinal enche na excretora."
+      ],
+      "pontos": [
+        "Em cima obstrui, embaixo reflui.",
+        "Realça como o córtex porque é córtex."
+      ],
+      "pegadinhas": [
+        "Biopsiar coluna de Bertin.",
+        "Trocar o comportamento dos polos na duplicação."
+      ]
+    },
+    "Litíase": {
+      "texto": [
+        "TC sem contraste é o padrão-ouro; ultrassonografia com artefato de cintilação; radiografia para seguir cálculos grandes. Ácido úrico: radiotransparente no raio X, visível na TC, dissolve com alcalinização. Indinavir: pode não aparecer na TC.",
+        "Pior resposta à litotripsia: densidade acima de cerca de 1.000 UH, mais de 1 cm, distância pele-cálculo acima de 10 cm e cálice inferior. Medir na janela óssea."
+      ],
+      "pontos": [
+        "Cólica renal, TC sem contraste.",
+        "Duro, grande e fundo, a onda de choque perde."
+      ],
+      "pegadinhas": [
+        "Dizer que cálculo de cistina não aparece na TC.",
+        "Medir a densidade na janela de partes moles."
+      ]
+    },
+    "Regras e definições": {
+      "texto": [
+        "Bosniak 2019: lesões com pelo menos 75% de componente cístico; não se aplica a infecção, anomalia vascular e lesão sólido-cística. Poucos septos 1 a 3; muitos 4 ou mais. Fino até 2 mm; minimamente espesso 3 mm; espesso 4 mm ou mais.",
+        "Realce é realce. O pior componente define a categoria. A RM pode subir a categoria por mostrar mais detalhes."
+      ],
+      "pontos": [
+        "O pior pedaço manda.",
+        "Realce é realce."
+      ],
+      "pegadinhas": [
+        "Classificar cisto infectado pelo Bosniak.",
+        "Subir a categoria só porque trocou de método."
+      ]
+    },
+    "Categorias": {
+      "texto": [
+        "1: cisto simples, água, sem realce. 2: 1 a 3 septos finos que realçam, septos sem realce em qualquer número, calcificação de qualquer tipo, cisto homogêneo hiperdenso (70 UH ou mais). 2F: 3 mm liso ou 4 ou mais septos finos que realçam; seguimento por 5 anos.",
+        "3: parede ou septo espesso (4 mm ou mais) ou irregular (protrusão obtusa até 3 mm) que realça. 4: nódulo, isto é, protrusão obtusa de 4 mm ou mais ou aguda de qualquer tamanho."
+      ],
+      "pontos": [
+        "2, 3 e 4: a régua do Bosniak.",
+        "Ângulo agudo, Bosniak 4."
+      ],
+      "pegadinhas": [
+        "Pôr calcificação no 2F como na versão antiga.",
+        "Chamar de 3 a protrusão aguda pequena."
+      ]
+    },
+    "Simuladores e policística": {
+      "texto": [
+        "Simuladores: divertículo calicinal (enche na excretora), anomalia vascular (realce arterial), angiomiolipoma (gordura), carcinoma papilífero (T2 baixo, restrição, realce discreto). Calcificação grosseira e cisto hemorrágico heterogêneo pedem RM.",
+        "Policística dominante: rins grandes, cistos hepáticos, aneurismas. Recessiva: criança, rins hiperecogênicos, fibrose hepática. VHL: cistos e carcinomas de células claras. Esclerose tuberosa: angiomiolipomas. Diálise: rins pequenos com cistos e risco de tumor. Lítio: microcistos."
+      ],
+      "pontos": [
+        "VHL, cistos com tumores.",
+        "Cálcio que esconde, RM que revela."
+      ],
+      "pegadinhas": [
+        "Dar alta ao \"cisto\" com T2 baixo que restringe.",
+        "Esquecer o risco de tumor no rim de diálise."
+      ]
+    }
+  }
 }

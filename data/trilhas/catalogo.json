@@ -4548,6 +4548,46 @@
         "sequencias": 12,
         "palavras": 48
       }
+    },
+    {
+      "arquivo": "radiologia-geniturinario.json",
+      "id": "radiologia-geniturinario",
+      "nome": "Radiologia: Geniturinário",
+      "descricao": "Diagnóstico por imagem do aparelho geniturinário: lesões císticas e tumores renais, doenças inflamatórias dos rins, tumores uroteliais, adrenais, próstata, testículos, retroperitônio, exames contrastados e pediatria, com casos clínicos, diagnóstico diferencial e as pegadinhas das provas de título.",
+      "categoria": "Medicina",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 50,
+        "minutos": 75,
+        "aprovacao": 70,
+        "exigeFases": true
+      },
+      "fases": [
+        {
+          "id": "gu-fundamentos",
+          "nome": "Fundamentos, anomalias e litíase",
+          "descricao": "Fases da TC e sequências da RM renal, anatomia e espaços retroperitoneais, anomalias congênitas e litíase",
+          "profundidade": "0–10 m",
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "gu-cistos-renais",
+          "nome": "Lesões císticas renais",
+          "descricao": "Bosniak 2019: regras, definições e categorias, armadilhas de TC e RM, simuladores e doenças policísticas",
+          "profundidade": "10–20 m",
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 40,
+        "pares": 10,
+        "verdadeiroFalso": 8,
+        "adivinhas": 2,
+        "sequencias": 2,
+        "palavras": 8
+      }
     }
   ]
 }
