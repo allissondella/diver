@@ -219,7 +219,7 @@ export function aplicarAulas(trilha, { aulas, fichas }, origem = 'texto') {
   trilha.variantes ||= [];
   for (const k of ['pares', 'verdadeiroFalso', 'sequencias', 'adivinhas', 'palavras']) trilha[k] ||= [];
   trilha.fichas ||= {};
-  const temaCurso = trilha.nome.replace(/^Enem · /, '');
+  const temaCurso = trilha.nome.replace(/^(Mergulho no Enem|Enem)\s*·\s*/, '');
   for (const a of aulas) {
     if (!a.nome || !a.modulo) throw new Error(`${origem}:${a.linha}: aula ${a.id} sem nome ou módulo`);
     const fase = { id: a.id, nome: a.nome, modulo: a.modulo, descricao: '' };

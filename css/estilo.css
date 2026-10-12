@@ -1929,6 +1929,210 @@ html,
 }
 .trilha__meta { margin-top: 8px; font-size: 0.75rem; }
 
+/* ---------- Início: grupos de cursos (Mergulho no Enem e Vestibular, Radiologia; js/grupos.js) ---------- */
+.grupo-cursos {
+  --grupo-cor: var(--turquesa-claro);
+  grid-column: 1 / -1;
+  border: 2px solid var(--borda);
+  border-radius: var(--raio);
+  background: linear-gradient(160deg, rgba(26, 65, 111, 0.82), rgba(12, 53, 76, 0.7));
+  overflow: hidden;
+  transition: border-color var(--transicao), box-shadow 220ms ease;
+}
+.grupo-cursos--enem { --grupo-cor: var(--amarelo); }
+.grupo-cursos:hover,
+.grupo-cursos--aberto {
+  border-color: color-mix(in srgb, var(--grupo-cor) 45%, transparent);
+  box-shadow: var(--sombra);
+}
+.grupo-cursos__cabeca {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 22px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.grupo-cursos__cabeca:focus-visible {
+  outline: 3px solid var(--turquesa-claro);
+  outline-offset: -5px;
+  border-radius: var(--raio);
+}
+.grupo-cursos__icone {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  color: var(--grupo-cor);
+  background: color-mix(in srgb, var(--grupo-cor) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--grupo-cor) 35%, transparent);
+}
+.grupo-cursos__icone .icone { width: 26px; height: 26px; }
+.grupo-cursos__textos {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.grupo-cursos .grupo-cursos__textos .rotulo { color: var(--grupo-cor); }
+.grupo-cursos__nome {
+  font-size: clamp(1.15rem, 3.6vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+.grupo-cursos__descricao {
+  max-width: 62ch;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+.grupo-cursos__numeros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+.grupo-cursos__numeros strong { color: var(--texto); font-weight: 800; }
+.grupo-cursos__progresso {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.grupo-cursos__progresso .trilha__progresso { flex: 1; margin: 0; }
+.grupo-cursos__progresso .trilha__progresso > span { background: linear-gradient(90deg, var(--turquesa), var(--grupo-cor)); }
+.grupo-cursos__pct {
+  font-family: var(--fonte-mono);
+  font-size: 0.72rem;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+.grupo-cursos__seta {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--borda);
+  color: var(--texto-suave);
+  transform: rotate(90deg);
+  transition: transform 220ms ease, background var(--transicao), color var(--transicao);
+}
+.grupo-cursos__cabeca:hover .grupo-cursos__seta { color: var(--texto); background: rgba(230, 241, 255, 0.06); }
+.grupo-cursos--aberto .grupo-cursos__seta { transform: rotate(-90deg); color: var(--grupo-cor); }
+.grupo-cursos__corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 18px 22px 22px;
+  border-top: 1px solid var(--borda);
+  background: rgba(6, 23, 45, 0.28);
+}
+.grupo-cursos__corpo[hidden] { display: none; }
+
+/* O "Comece por aqui": cartão largo, com selo amarelo */
+.trilha--destaque {
+  border-color: color-mix(in srgb, var(--amarelo) 45%, transparent);
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.14), rgba(18, 50, 90, 0.72) 55%);
+}
+.trilha--destaque:hover { border-color: var(--amarelo); }
+.trilha--destaque .trilha__nome { font-size: 1.15rem; }
+.trilha__selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--amarelo);
+  color: var(--texto-escuro);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.trilha__selo .icone { width: 14px; height: 14px; }
+
+/* As áreas da prova, cada uma com a sua cor */
+.grupo-area { --area-cor: var(--turquesa-claro); }
+.grupo-area--lilas { --area-cor: var(--lilas); }
+.grupo-area--laranja { --area-cor: var(--laranja); }
+.grupo-area--verde { --area-cor: var(--verde); }
+.grupo-area--azul { --area-cor: var(--azul); }
+.grupo-area--amarelo { --area-cor: var(--amarelo); }
+.grupo-area__titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.grupo-area__titulo::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--area-cor) 45%, transparent), transparent);
+}
+.grupo-area__icone {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  color: var(--area-cor);
+  background: color-mix(in srgb, var(--area-cor) 16%, transparent);
+}
+.grupo-area__icone .icone { width: 17px; height: 17px; }
+.grupo-area__conta {
+  font-family: var(--fonte-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+.grupo-area__lista {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr));
+}
+.trilha--compacta {
+  gap: 2px;
+  min-height: 0;
+  padding: 12px 14px 12px 18px;
+}
+.trilha--compacta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--area-cor, var(--turquesa));
+}
+.trilha--compacta .trilha__nome { align-self: stretch; box-sizing: border-box; font-size: 1rem; padding-right: 28px; overflow-wrap: anywhere; hyphens: auto; }
+.trilha--compacta .trilha__check { top: 10px; right: 10px; width: 22px; height: 22px; }
+.trilha--compacta .trilha__check .icone { width: 14px; height: 14px; }
+.trilha--compacta .trilha__progresso { margin-top: 8px; height: 5px; }
+.trilha--compacta .trilha__progresso > span { background: linear-gradient(90deg, var(--turquesa), var(--area-cor, var(--turquesa-claro))); }
+.trilha--compacta .trilha__meta { margin-top: 6px; }
+@media (max-width: 520px) {
+  .grupo-cursos__cabeca { gap: 12px; padding: 16px; }
+  .grupo-cursos__icone { width: 44px; height: 44px; border-radius: 12px; }
+  .grupo-cursos__corpo { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .grupo-cursos__seta { transition: none; }
+}
+
 /* O botão "Carregar trilha" (só admin/modo local) fica discreto, abaixo dos cursos */
 .inicio-acoes { margin-top: 14px; }
 

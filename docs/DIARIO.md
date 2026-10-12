@@ -5,6 +5,14 @@
 
 ---
 
+## 2026-10-12 · Início organizado em grupos: "Mergulho no Enem e Vestibular" e "Radiologia"
+- **Feito:** `js/grupos.js` e um novo desenho da lista do Início. O grupo do Enem é um cartão largo (ícone, matérias, aulas, questões e progresso somado) que abre com um toque e mostra o "Comece por aqui" em destaque (selo "Recomendado para começar") e as matérias pelas áreas da prova, cada área com a sua cor e ícone. Radiologia virou grupo com os 4 cursos. ISO e Cibersegurança seguem avulsos. Os cursos do Enem passaram a se chamar "Mergulho no Enem · <matéria>" (o "Comece por aqui" virou "Mergulho no Enem · Comece por aqui"); ids e progresso iguais. O grupo lembra se estava aberto (localStorage com try/catch); o tutorial do Início subiu para a versão 3.
+- **Também:** as marcas `revisar` dos cursos de Radiologia CP e GU saíram, com a aprovação da Georgia registrada nos cadernos e pareceres.
+- **Testes:** celular e computador; teclado (setas pulam grupos fechados, Enter abre o grupo, escolha da matéria atualiza o "Bora mergulhar!"); grupo continua aberto depois de recarregar; sem erros no console.
+- **Decisões do usuário:** áreas da prova; "Comece por aqui" recomendado, não obrigatório; Radiologia também agrupada; mudança só no Início.
+
+---
+
 ## 2026-10-12 · Enem por matéria, Onda 8: Enem · Redação completo
 - **Feito:** `enem-redacao` com 40 oficinas em 6 módulos (a prova e as competências; Competência I a V), 800 questões autorais, 800 variantes, 120 fichas, blocos para todos os jogos e prova de 45 questões. As duas oficinas que faltavam entraram no módulo da Competência V: "Propostas por eixo temático" e a revisão do módulo; "A conclusão completa" foi corrigida e chegou a 20 questões. Caderno novo `docs/cadernos/enem-redacao.md`; parecer das fontes de 2026-10-11.
 - **Conferências:** `conferir-trilha.mjs` com 0 erros e 0 avisos; teste no navegador (celular e computador).
