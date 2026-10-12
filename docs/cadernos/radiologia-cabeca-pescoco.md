@@ -37,6 +37,6 @@ Residentes e radiologistas em formação (provas de título e laudo do dia a dia
 
 ## Próximos passos e pendências
 - Parecer de validação 2026-10-12: Aprovada com ressalvas (`docs/validacoes/radiologia-cabeca-pescoco-2026-10-12.md`).
-- Revisão humana da Georgia: 15 questões marcadas `revisar`.
+- 2026-10-12 · **Revisão humana da Georgia feita e aprovada**: as 15 marcas `revisar` foram retiradas.
 - Fila de Validação (12 lotes de 20 questões), quando o admin aprovar.
 - Fases futuras: trauma de face, pescoço pós-tratamento (NI-RADS), paratireoides.

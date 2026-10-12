@@ -57,3 +57,5 @@ Professora Georgia: as 21 questões marcadas `revisar` (limiares de Bosniak, rea
 ## 8. Decisão
 
 A `criar-trilha` usou só o material limpo, com as correções acima, e escreveu tudo do zero. Os trechos dos achados não foram usados como estavam.
+
+**2026-10-12:** a professora Georgia revisou o curso e aprovou; as 21 marcas `revisar` foram retiradas.
