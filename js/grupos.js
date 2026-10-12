@@ -23,6 +23,7 @@ const Grupos = (() => {
       rotuloAula: 'aulas',
       destaque: 'enem-vestibular',
       destaqueSelo: 'Recomendado para começar',
+      cronograma: true, // a sala indica o Cronograma de estudos (atalho no topo e aviso na primeira visita)
       unidade: ['matéria', 'matérias'],
       prefixo: /^(Mergulho no Enem|Enem e Vestibular|Enem)\s*·\s*/i,
       pertence: (t) => /^enem-/.test(t.id),

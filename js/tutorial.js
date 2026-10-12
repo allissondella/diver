@@ -60,6 +60,7 @@ const Tutorial = (() => {
     ],
     sala: [
       { alvo: '.sala-hero', desenho: 'diver', titulo: 'Você entrou na sala', texto: 'Aqui ficam todos os cursos desta sala, com o quanto você já fez de cada um.' },
+      { alvo: '#sala-cronograma', desenho: 'calendario', titulo: 'Cronograma de estudos', texto: 'Diga a data da prova e o tempo que você tem: o Diver monta o seu plano até lá, matéria por matéria. O atalho fica sempre aqui, no topo da sala.' },
       { alvo: '#sala-continuar', desenho: 'ancora', titulo: 'Continuar de onde parou', texto: 'O último curso que você estudou nesta sala, direto na fase onde você parou.' },
       { alvo: '#sala-conteudo', desenho: 'livro', titulo: 'Escolha o curso', texto: 'Comece pelo recomendado ou vá direto na matéria que quiser. Um toque abre o mapa do curso.' },
       { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Para trocar de sala, use a barra lateral. O botão Voltar do curso traz você de volta para esta sala.' },
@@ -130,7 +131,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 4, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { inicio: 4, sala: 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

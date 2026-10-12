@@ -2171,6 +2171,37 @@ html,
 .sala-continuar__fase { font-size: 0.9rem; font-weight: 700; color: var(--turquesa-claro); }
 .sala-continuar .continuar__play { width: 52px; height: 52px; }
 
+/* Atalho do Cronograma de estudos (sala Mergulho no Enem) */
+.sala-cronograma {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px 18px;
+  margin-top: var(--esp-4);
+  padding: 16px 18px;
+  border: 1px solid color-mix(in srgb, var(--sala-cor) 45%, var(--borda));
+  border-radius: var(--raio);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--sala-cor) 14%, var(--superficie)), var(--superficie) 70%);
+}
+.sala-cronograma__icone {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  color: var(--sala-cor);
+  background: color-mix(in srgb, var(--sala-cor) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sala-cor) 40%, transparent);
+}
+.sala-cronograma__icone .icone { width: 24px; height: 24px; }
+.sala-cronograma__titulo { margin: 0 0 2px; font-size: 1.05rem; }
+.sala-cronograma__texto { margin: 0; color: var(--texto-suave); font-size: 0.9rem; }
+.sala-cronograma__botao { white-space: nowrap; }
+@media (max-width: 640px) {
+  .sala-cronograma { grid-template-columns: auto minmax(0, 1fr); }
+  .sala-cronograma__botao { grid-column: 1 / -1; justify-content: center; }
+}
+
 .sala-conteudo { display: flex; flex-direction: column; gap: var(--esp-5); margin-top: var(--esp-5); }
 .sala-conteudo .grupo-area__titulo { font-size: 1.05rem; }
 @media (prefers-reduced-motion: reduce) {
