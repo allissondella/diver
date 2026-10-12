@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-12 · Onda 9: Enem · Filosofia
+- **Feito:** curso `enem-filosofia` ("Mergulho no Enem · Filosofia"), 10 aulas em 2 módulos (da Grécia à Idade Média; moderna e contemporânea), 200 questões com comentário em todas as alternativas e Dica, 200 variantes, 26 fichas, blocos para todos os jogos e prova de 45. Entra sozinho na sala do Enem, área Ciências Humanas. Caderno `docs/cadernos/enem-filosofia.md`; parecer de Humanas (2026-10-10) já cobria a Filosofia.
+- **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1), ao Caderno Marista de Humanas ou ao estudo do Inep; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 7,40 questões + ~US$ 7,40 variantes; nada enviado.
+- **Próximo:** Sociologia, quando o usuário der o OK.
+
+---
+
 ## 2026-10-12 · Nomes das salas de ISO e Cibersegurança
 - **Feito:** a pedido do usuário, as duas salas de um curso só voltaram a ter o nome do curso: **ISO/IEC 27001:2022 Foundation** e **Cibersegurança Essencial** (Início, Sala atual, Biblioteca e Admin). Ids e marcadores (`pacote:iso`, `pacote:ciber`) iguais.
 
