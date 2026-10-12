@@ -4,7 +4,7 @@
  * Em todo o app (Início, "Sala atual" da barra lateral e Biblioteca) o aluno vê só as salas:
  *  - Mergulho no Enem e Vestibular: o "Comece por aqui" em destaque e as matérias pelas áreas da prova;
  *  - Radiologia: os cursos de diagnóstico por imagem;
- *  - ISO 27001 e Cibersegurança.
+ *  - ISO/IEC 27001:2022 Foundation e Cibersegurança Essencial (salas de um curso só, com o nome do curso).
  * O conteúdo aparece só depois que ele entra na sala (tela "Sala", js/app.js). Sala com um curso só abre o curso direto.
  * Cada matéria continua sendo um curso de verdade (mesmo id, mesmo progresso): a sala só muda a vitrine.
  * Curso novo da sala (por exemplo, as matérias da Onda 9) entra sozinho na área certa quando aparece no catálogo.
@@ -52,7 +52,7 @@ const Grupos = (() => {
     },
     {
       id: 'iso',
-      nome: 'ISO 27001',
+      nome: 'ISO/IEC 27001:2022 Foundation',
       rotulo: 'Certificação',
       descricao: 'A norma de segurança da informação explicada fase a fase, pronta para a prova Foundation.',
       icone: 'i-lista-check',
@@ -65,7 +65,7 @@ const Grupos = (() => {
     },
     {
       id: 'ciber',
-      nome: 'Cibersegurança',
+      nome: 'Cibersegurança Essencial',
       rotulo: 'Segurança digital',
       descricao: 'Aprender a se cuidar na vida digital: golpes, senhas, redes sociais e o detetive da Operação Recife Sombrio.',
       icone: 'i-cadeado',

@@ -25,7 +25,7 @@ const Admin = (() => {
 
   /*
    * Salas na matrícula (2026-10-12): o admin marca a sala inteira (Mergulho no Enem e Vestibular, Radiologia,
-   * ISO 27001, Cibersegurança), igual ao que o aluno vê. A matrícula guarda os cursos da sala e um marcador
+   * ISO/IEC 27001:2022 Foundation, Cibersegurança Essencial), igual ao que o aluno vê. A matrícula guarda os cursos da sala e um marcador
    * "pacote:<id da sala>" (o "pacote:enem" de 2026-10-09 continua valendo); "Atualizar pacotes" acrescenta os
    * cursos publicados depois. Não muda o banco: a coluna trilha_id aceita texto, e Nuvem.matriculas() ignora os marcadores.
    */
