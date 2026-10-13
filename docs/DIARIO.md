@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-13 · Onda 9: Enem · Espanhol (Onda 9 completa)
+- **Feito:** curso `enem-espanhol` ("Mergulho no Enem · Espanhol"), 10 aulas em 2 módulos (estratégias de leitura: falsos amigos, contexto e gêneros; intenção, cultura e uso da língua), 200 questões com comentário em todas as alternativas e Dica, 200 variantes, 26 fichas, blocos para todos os jogos e prova de 45. Enunciados em português e textos curtos em espanhol escritos por nós. Entra sozinho na sala do Enem, área Linguagens. Caderno `docs/cadernos/enem-espanhol.md`.
+- **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1) ou ao Caderno Marista de Linguagens; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 7,44 questões + ~US$ 7,44 variantes; nada enviado.
+- **Marco:** com Espanhol, a Onda 9 terminou e os 13 cursos por matéria mais a Redação (353 aulas) estão publicados.
+
+---
+
 ## 2026-10-13 · Onda 9: Enem · Inglês
 - **Feito:** curso `enem-ingles` ("Mergulho no Enem · Inglês"), 10 aulas em 2 módulos (estratégias de leitura: cognatos, contexto e gêneros; intenção, cultura e uso da língua), 200 questões com comentário em todas as alternativas e Dica, 200 variantes, 26 fichas, blocos para todos os jogos e prova de 45. Enunciados em português e textos curtos em inglês escritos por nós. Entra sozinho na sala do Enem, área Linguagens. Caderno `docs/cadernos/enem-ingles.md`.
 - **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1) ou ao Caderno Marista de Linguagens; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 7,44 questões + ~US$ 7,44 variantes; nada enviado.
