@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-13 · Onda 9: Enem · Inglês
+- **Feito:** curso `enem-ingles` ("Mergulho no Enem · Inglês"), 10 aulas em 2 módulos (estratégias de leitura: cognatos, contexto e gêneros; intenção, cultura e uso da língua), 200 questões com comentário em todas as alternativas e Dica, 200 variantes, 26 fichas, blocos para todos os jogos e prova de 45. Enunciados em português e textos curtos em inglês escritos por nós. Entra sozinho na sala do Enem, área Linguagens. Caderno `docs/cadernos/enem-ingles.md`.
+- **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1) ou ao Caderno Marista de Linguagens; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 7,44 questões + ~US$ 7,44 variantes; nada enviado.
+- **Correção junto:** a Palavrinha de Sociologia tinha duas palavras repetidas entre aulas (Greve e Classe); a segunda de cada uma virou Boicote e Marshall (mesmos ids, só a palavra e a dica mudaram).
+
+---
+
 ## 2026-10-13 · Onda 9: Enem · Artes e Educação Física
 - **Feito:** parecer `docs/validacoes/enem-linguagens-onda9-2026-10-13.md` (Aprovada com ressalvas; vale para Artes e EF, Inglês e Espanhol; só a Matriz e as observações do Caderno Marista de Linguagens; fatos da OMS, do frevo e da capoeira conferidos em fonte oficial). Curso `enem-artes-ef` ("Mergulho no Enem · Artes e Educação Física"), 12 aulas em 2 módulos (Artes: linguagens, obras e patrimônio; Práticas corporais, saúde e sociedade), 240 questões com comentário em todas as alternativas e Dica, 240 variantes, 32 fichas, blocos para todos os jogos e prova de 45. Entra sozinho na sala do Enem, área Linguagens. Caderno `docs/cadernos/enem-artes-ef.md`.
 - **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1) ou ao Caderno Marista de Linguagens; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 8,93 questões + ~US$ 8,93 variantes; nada enviado.
