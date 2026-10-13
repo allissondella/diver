@@ -126,7 +126,7 @@ Variante = a mesma habilidade de uma questão **nossa**, com outra situação e 
 - **Padrão de qualidade (revisão da Georgia, `docs/cadernos/professor-diver.md` seção 7, vale para todos os cursos):** linguagem técnica da área (em Radiologia: hiperintenso/hipersinal, hiperdenso, hiperecogênico, realce, supressão de gordura, cisto subcondral; nunca "brilha", "acende", "apagado", "geodo"); **~20 questões por fase** cobrindo a aula toda e temas correlatos, sem várias questões sobre o mesmo ponto; proporção que permita começar fácil e terminar nas avançadas (as que fixam o difícil e mais caem em prova).
 - **Fichas da "Revisar a fundo":** para cada `tema` com 3 ou mais questões, um item no bloco `fichas` (chave = o texto exato do `tema`): `{ "texto": ["parágrafo aprofundado", "..."], "pontos": ["..."], "pegadinhas": ["..."] }`. Aparece na Revisão para quem errou aquele tema, antes de uma rodada só com ele.
 - Distribua as questões pelas fases seguindo a dificuldade real mapeada na etapa 1, não uma progressão arbitrária.
-- Dentro de cada fase, garanta questões fáceis e médias suficientes para a primeira rodada (pelo menos 8 entre as duas): o Mergulho monta a rodada em rampa (fácil → médio → difícil) e só libera as difíceis a partir da segunda rodada da fase.
+- Dentro de cada fase, garanta questões fáceis e médias suficientes para a primeira rodada (pelo menos 10 entre as duas: a rodada do Mergulho tem 10 questões): o Mergulho monta a rodada em rampa (fácil → médio → difícil) e só libera as difíceis a partir da segunda rodada da fase.
 - Gere, quando fizer sentido para o tema, blocos para os outros tipos de carta já suportados pelo motor (pares, verdadeiro/falso, sequências, adivinhas, palavras, casos) — consulte `docs/JOGOS.md` para o formato de cada um.
 - Marque explicitamente qualquer questão que dependa de um fato muito específico (data exata, fórmula, valor numérico, nome próprio) com um comentário `"revisar": "fato específico — conferir com especialista"` no JSON, para facilitar a etapa de revisão humana. Remova essa marca só depois da revisão confirmada.
 
@@ -138,7 +138,7 @@ Toda fase segue o caminho **📚 Aprender → 🧠 Associar → 🃏 Praticar �
 |---|---|---|
 | 📚 Aprender | `introducao` + **artigo** em `secoes`: **resumo detalhado e completo da aula** (3 a 6 seções, 350+ palavras na fase, com os achados, critérios e números que caem; claro, mas com o termo técnico da área), exemplo antes da regra + `linhaDoTempo` e `mapa` quando fizerem sentido | `fases[].resumo` |
 | 🧠 Associar | `mapaMental` (3 a 5 ramos, 2 a 4 itens cada, só o essencial) + `associacoes` (4 a 6 "imagens de associação" **para os pontos de difícil memorização**: emoji + conceito → ligação + o porquê) + `tabela` | `fases[].resumo` e blocos `pares`/`sequencias` |
-| 🃏 Praticar | questões da fase (pelo menos 8 fáceis e médias) | `questoes` |
+| 🃏 Praticar | questões da fase (pelo menos 10 fáceis e médias) | `questoes` |
 | ⚔️ Desafio | questões difíceis, adivinhas e prova do curso | `questoes`, `adivinhas`, `prova` |
 | 🔄 Revisar | `pontos` (até 8: **repetem o mais importante e difícil** do Aprender) e `perolas` (até 6), enxutos, e variantes das questões nossas; `fichas` por tema para a "Revisar a fundo" | `fases[].resumo`, `variantes`, `fichas` |
 

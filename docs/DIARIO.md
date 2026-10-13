@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-13 · Rodada do Mergulho com 10 questões
+- **Pedido do usuário:** as aulas mostravam "1 de 8"; agora toda rodada do Mergulho, em todos os cursos, tem 10 questões (`TAMANHO_RODADA` em `js/quiz.js`). A Revisão já tinha 10; Simulado e Prova não mudaram.
+- **Junto:** o `conferir-trilha.mjs` passou a exigir pelo menos 10 fáceis+médias por fase (a 1ª rodada não mostra difíceis); todas as 21 trilhas já cumprem. Texto do tutorial do Mergulho, skill `criar-trilha` e `professor-diver.md` atualizados. O tutorial não reaparece para todos (`VERSOES` igual): foi só o número.
+- **Conferências:** navegador, PC e celular, em enem-historia, enem-vestibular e radiologia-musculoesqueletico: "1 de 10" e 10 questões respondidas, sem erro na página. Rodada que já estava aberta termina com o tamanho antigo; as novas têm 10.
+
+---
+
 ## 2026-10-13 · Onda 9: Enem · Espanhol (Onda 9 completa)
 - **Feito:** curso `enem-espanhol` ("Mergulho no Enem · Espanhol"), 10 aulas em 2 módulos (estratégias de leitura: falsos amigos, contexto e gêneros; intenção, cultura e uso da língua), 200 questões com comentário em todas as alternativas e Dica, 200 variantes, 26 fichas, blocos para todos os jogos e prova de 45. Enunciados em português e textos curtos em espanhol escritos por nós. Entra sozinho na sala do Enem, área Linguagens. Caderno `docs/cadernos/enem-espanhol.md`.
 - **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1) ou ao Caderno Marista de Linguagens; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 7,44 questões + ~US$ 7,44 variantes; nada enviado.

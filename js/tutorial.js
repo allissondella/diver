@@ -66,7 +66,7 @@ const Tutorial = (() => {
       { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Para trocar de sala, use a barra lateral. O botão Voltar do curso traz você de volta para esta sala.' },
     ],
     mergulho: [
-      { alvo: '#mapa-fases', desenho: 'mapa', titulo: 'Mapa do mergulho', texto: 'Cada fase é uma profundidade. Uma rodada tem 8 questões, com a explicação logo depois de cada resposta.' },
+      { alvo: '#mapa-fases', desenho: 'mapa', titulo: 'Mapa do mergulho', texto: 'Cada fase é uma profundidade. Uma rodada tem 10 questões, com a explicação logo depois de cada resposta.' },
       { alvo: '#mapa-fases .fase__estudo', desenho: 'livro', titulo: 'Antes de mergulhar: leitura obrigatória', texto: 'O artigo da fase, com mapa mental e os pontos-chave. O Mergulho só libera depois que você abrir este botão uma vez. Enquanto isso, a fase mostra "Ler primeiro".' },
       { desenho: 'oxigenio', titulo: 'Oxigênio', texto: 'Você desce com 3 tubos. Cada erro gasta um, e a questão errada volta no fim da rodada para você tentar de novo.' },
       { desenho: 'livro', titulo: 'Depois do Mergulho: flashcards', texto: 'No fim da rodada, o Diver sugere umas cartas rápidas da mesma fase para fixar a matéria. Quando acabar, o botão "Voltar para a trilha" traz você de volta para cá.' },

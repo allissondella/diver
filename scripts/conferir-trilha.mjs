@@ -74,7 +74,7 @@ for (const f of t.fases) {
   const r = f.resumo || {};
   const aprender = palavras(textoDe(r.introducao)) + palavras(textoDe(r.secoes));
   console.log(`${f.id}: ${qs.length} questões (${c.facil} fáceis, ${c.medio} médias, ${c.dificil} difíceis) · Aprender ${aprender} palavras · ${(r.pontos || []).length} pontos · ${(r.perolas || []).length} pérolas`);
-  if (c.facil + c.medio < 8) erros.push(`${f.id}: menos de 8 fáceis+médias`);
+  if (c.facil + c.medio < 10) erros.push(`${f.id}: menos de 10 fáceis+médias (a 1ª rodada do Mergulho tem 10 questões, sem difíceis)`);
   if (!f.resumo || !r.introducao || !(r.pontos || []).length) erros.push(`${f.id}: sem "Antes de mergulhar"`);
   if (qs.length < 20) avisos.push(`${f.id}: ${qs.length} questões (o padrão é ~20 por fase, cobrindo a aula toda)`);
   if (f.resumo && aprender < 350) avisos.push(`${f.id}: Aprender com ${aprender} palavras (o padrão pede um resumo completo da aula, 350+)`);

@@ -64,7 +64,7 @@
 | Data | De onde veio | Lição |
 |---|---|---|
 | 2026-10-01 | Travessia, Fase 1 | Classificar dificuldade pelo raciocínio, não pelo tamanho da conta: densidade (uma divisão) é fácil; aumento seguido de desconto é difícil. |
-| 2026-10-01 | Mergulho | Cada fase precisa de pelo menos 8 questões fáceis e médias: a 1ª rodada não mostra difíceis. |
+| 2026-10-01 | Mergulho | Cada fase precisa de pelo menos 10 questões fáceis e médias (a rodada tem 10 desde 2026-10-13): a 1ª rodada não mostra difíceis. |
 | 2026-10-02 | Palavrinha | Palavra do jogo só se estiver no dicionário brasileiro do projeto; nada de palavrão nem ofensa pesada. |
 | 2026-10-03 | Travessia e Radiologia MSK | A resposta certa não pode ser de longe a alternativa mais longa: alongue as erradas (o script de conferência avisa). |
 | 2026-10-03 | Radiologia MSK | Anotações de aula podem trazer erro (ex.: "AR é proliferação neoplásica da sinóvia"); o professor confere o fato antes de usar. |
