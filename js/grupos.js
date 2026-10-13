@@ -4,7 +4,8 @@
  * Em todo o app (Início, "Sala atual" da barra lateral e Biblioteca) o aluno vê só as salas:
  *  - Mergulho no Enem e Vestibular: o "Comece por aqui" em destaque e as matérias pelas áreas da prova;
  *  - Radiologia: os cursos de diagnóstico por imagem;
- *  - ISO/IEC 27001:2022 Foundation e Cibersegurança Essencial (salas de um curso só, com o nome do curso).
+ *  - Tecnologia (2026-10-13): o Explora Tech (Fundamentos e, depois, as outras fases) e a área "Segurança da informação"
+ *    (Cibersegurança Essencial e ISO/IEC 27001:2022 Foundation, que até então eram salas de um curso só).
  * O conteúdo aparece só depois que ele entra na sala (tela "Sala", js/app.js). Sala com um curso só abre o curso direto.
  * Cada matéria continua sendo um curso de verdade (mesmo id, mesmo progresso): a sala só muda a vitrine.
  * Curso novo da sala (por exemplo, as matérias da Onda 9) entra sozinho na área certa quando aparece no catálogo.
@@ -51,30 +52,21 @@ const Grupos = (() => {
       ],
     },
     {
-      id: 'iso',
-      nome: 'ISO/IEC 27001:2022 Foundation',
-      rotulo: 'Certificação',
-      descricao: 'A norma de segurança da informação explicada fase a fase, pronta para a prova Foundation.',
-      icone: 'i-lista-check',
-      cor: 'lilas',
-      rotuloAula: 'fases',
-      unidade: ['curso', 'cursos'],
-      prefixo: null,
-      pertence: (t) => /^iso-27001/.test(t.id),
-      areas: [],
-    },
-    {
-      id: 'ciber',
-      nome: 'Cibersegurança Essencial',
-      rotulo: 'Segurança digital',
-      descricao: 'Aprender a se cuidar na vida digital: golpes, senhas, redes sociais e o detetive da Operação Recife Sombrio.',
-      icone: 'i-cadeado',
+      id: 'tecnologia',
+      nome: 'Tecnologia',
+      rotulo: 'Tecnologia',
+      descricao: 'Comece do zero na área com o Explora Tech e aprenda a se proteger e a se certificar em segurança da informação.',
+      icone: 'i-codigo',
       cor: 'azul',
-      rotuloAula: 'fases',
+      rotuloAula: 'aulas',
       unidade: ['curso', 'cursos'],
-      prefixo: null,
-      pertence: (t) => /^ciberseguranca/.test(t.id),
-      areas: [],
+      prefixo: /^Explora Tech\s*·\s*/i,
+      porCurso: true, // no Admin, cada curso da sala tem o seu quadradinho: são produtos diferentes (2026-10-13)
+      pertence: (t) => /^(explora-tech-|iso-27001|ciberseguranca)/.test(t.id),
+      areas: [
+        { nome: 'Explora Tech', cor: 'turquesa', icone: 'i-codigo', cursos: ['explora-tech-fundamentos', 'explora-tech-exploracao', 'explora-tech-especializacao', 'explora-tech-portfolio'] },
+        { nome: 'Segurança da informação', cor: 'lilas', icone: 'i-cadeado', cursos: ['ciberseguranca-essencial', 'iso-27001-foundation'] },
+      ],
     },
   ];
 
