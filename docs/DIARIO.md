@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-10-13 · Mapa: a Prova final marca o fim do curso (pedido do usuário)
+- **Pedido:** "deixa claro onde termina o curso, coloca aqui embaixo a prova final" e "tira ela ali de baixo e alinha o que sobrou".
+- **Feito:** a Prova final virou o último item do mapa de todos os cursos (mesmo desenho das aulas, em amarelo, com o selo "Fim do curso", regras e "Libera quando você concluir as N aulas (x de N)" ou "Aprovado · nota"); saiu dos "Outros jeitos de mergulhar", que ficaram com 3 atalhos alinhados (Simulado, Revisão, Sala de Jogos). A Prova final continua na barra lateral. Passo novo no tutorial do Mergulho (sem subir a versão: só quem ainda não viu).
+
 ## 2026-10-13 · Laboratórios: tela redistribuída (pedido do usuário)
 - **Pedido:** "a distribuição aqui dentro ficou horrível, formate e deixe bem feito e lindo".
 - **Feito:**

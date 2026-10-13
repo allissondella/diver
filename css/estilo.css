@@ -958,6 +958,15 @@ select {
   color: var(--texto);
 }
 
+/* A chegada do mapa: Prova final, o fim do curso (amarelo de destaque) */
+.fase--final { border-color: color-mix(in srgb, var(--amarelo) 55%, transparent); }
+.fase--final:hover:not(:disabled) { border-color: var(--amarelo); }
+.fase--final .fase__no { border-color: var(--amarelo); color: var(--amarelo); }
+.fase--final .fase__no .icone { width: 22px; height: 22px; }
+.fase--final .fase__prof { color: var(--amarelo); }
+.fase--final .fase__cta { background: var(--amarelo); color: var(--texto-escuro); }
+.fase--final.fase--concluida .fase__no { background: var(--amarelo); color: var(--texto-escuro); }
+
 /* "Antes de mergulhar": link de leitura embaixo de cada fase */
 .fase__estudo {
   display: inline-flex;

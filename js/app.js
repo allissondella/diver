@@ -919,6 +919,7 @@ const App = (() => {
     mapa.classList.toggle('mapa--modulos', porModulo);
     if (porModulo) renderizarMapaModulos(mapa);
     else trilha.fases.forEach((fase, i) => mapa.append(itemFase(fase, i)));
+    if (trilha.questoes.length) mapa.append(itemProva()); // a chegada: deixa claro onde o curso termina
     if (estado.focarNoMapa) {
       const alvo = estado.focarNoMapa === 'proxima' ? proximaAula() : { id: estado.focarNoMapa };
       estado.focarNoMapa = null;
@@ -975,6 +976,32 @@ const App = (() => {
     const maos = labs.map((def) => h('button', { type: 'button', class: 'fase__estudo fase__lab', onclick: () => iniciarJogo(def.id, { fase: fase.id }),
       'aria-label': `Mão na massa: laboratório ${def.nome}, da ${fase.nome}` }, icone('i-codigo'), `Mão na massa: ${def.nome}`));
     return h('li', { 'data-fase': fase.id }, botao, estudo, ...maos);
+  }
+
+  /** O fim do mapa: a Prova final, no mesmo desenho das aulas (pedido do usuário, 2026-10-13). */
+  function itemProva() {
+    const { trilha, prog } = estado;
+    const cfg = configProva(trilha);
+    const exigidas = Progresso.fasesExigidas(prog, trilha);
+    const feitas = exigidas.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
+    const pronta = !cfg.exigeFases || feitas === exigidas.length;
+    const aprovacao = (prog.provas || []).find((p) => p.aprovado);
+    const rotulo = trilha.rotuloAula === 'Oficina' ? 'oficinas' : trilha.fases.some((f) => f.modulo) ? 'aulas' : 'fases';
+    const estadoTxt = aprovacao ? `Aprovado · nota ${aprovacao.nota.toLocaleString('pt-BR')}`
+      : pronta ? 'Pronta para você'
+        : `Libera quando você concluir as ${exigidas.length} ${rotulo} (${feitas} de ${exigidas.length})`;
+    return h('li', { class: 'mapa__fim', 'data-prova': '' },
+      h('button', {
+        type: 'button', class: `fase fase--final ${aprovacao ? 'fase--concluida' : ''}`.trim(), style: '--prof:1',
+        'aria-label': `Fim do curso: Prova final. ${cfg.quantidade} questões, ${cfg.minutos} minutos, ${cfg.aprovacao}% para aprovar. ${estadoTxt}`,
+        onclick: () => irPara('prova'),
+      },
+      h('span', { class: 'fase__no', 'aria-hidden': 'true' }, icone(aprovacao ? 'i-check' : 'i-trofeu')),
+      h('span', { class: 'fase__info' },
+        h('span', { class: 'fase__nome' }, 'Prova final', h('span', { class: 'fase__prof', text: 'Fim do curso' })),
+        h('span', { class: 'fase__descricao', text: `${cfg.quantidade} questões · ${cfg.minutos} min · ${cfg.aprovacao}% para aprovar` }),
+        h('span', { class: 'fase__estado' }, estadoTxt)),
+      h('span', { class: 'fase__cta', 'aria-hidden': 'true', text: aprovacao ? 'Ver a prova' : pronta ? 'Fazer a prova' : 'Ver a prova' })));
   }
 
   /**
