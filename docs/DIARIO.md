@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-13 · Onda 9: Enem · Sociologia
+- **Feito:** curso `enem-sociologia` ("Mergulho no Enem · Sociologia"), 10 aulas em 2 módulos (os clássicos e os conceitos; Brasil hoje: desigualdade, cidadania, movimentos sociais, cidade, violência e mídia), 200 questões com comentário em todas as alternativas e Dica, 200 variantes, 26 fichas, blocos para todos os jogos e prova de 45. Entra sozinho na sala do Enem, área Ciências Humanas. Caderno `docs/cadernos/enem-sociologia.md`; o parecer de Humanas (2026-10-10) já cobria a Sociologia.
+- **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1) ou ao Caderno Marista de Humanas; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 7,44 questões + ~US$ 7,44 variantes; nada enviado.
+- **Decisão do usuário:** "manda bala em tudo, só para quando terminar": Artes e EF, Inglês e Espanhol seguem na sequência, com o parecer novo de Linguagens (`docs/validacoes/enem-linguagens-onda9-2026-10-13.md`).
+
+---
+
 ## 2026-10-12 · Onda 9: Enem · Filosofia
 - **Feito:** curso `enem-filosofia` ("Mergulho no Enem · Filosofia"), 10 aulas em 2 módulos (da Grécia à Idade Média; moderna e contemporânea), 200 questões com comentário em todas as alternativas e Dica, 200 variantes, 26 fichas, blocos para todos os jogos e prova de 45. Entra sozinho na sala do Enem, área Ciências Humanas. Caderno `docs/cadernos/enem-filosofia.md`; parecer de Humanas (2026-10-10) já cobria a Filosofia.
 - **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1), ao Caderno Marista de Humanas ou ao estudo do Inep; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 7,40 questões + ~US$ 7,40 variantes; nada enviado.
