@@ -146,40 +146,6 @@
   .robo-bloco:active { transform: none; }
 }
 
-/* Caminho da aula com laboratório (mapa): Ler → Questões → Mão na massa */
-.caminho-aula {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--esp-2);
-  margin: var(--esp-2) 0 0; padding: 0; list-style: none; counter-reset: none;
-}
-.caminho-aula__passo { position: relative; min-width: 0; }
-.caminho-aula__passo + .caminho-aula__passo::before {
-  content: '›'; position: absolute; left: calc(-1 * var(--esp-2)); top: 50%; transform: translate(-25%, -50%);
-  color: var(--texto-suave); font-weight: 800; pointer-events: none;
-}
-.caminho-aula__botao {
-  display: flex; align-items: center; gap: var(--esp-2); width: 100%; min-height: 56px; height: 100%;
-  padding: var(--esp-2) var(--esp-3); font: inherit; text-align: left; cursor: pointer;
-  color: var(--texto); background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio-pequeno);
-}
-.caminho-aula__botao:hover:not(:disabled) { border-color: var(--turquesa); }
-.caminho-aula__botao:disabled { opacity: 0.5; cursor: not-allowed; }
-.caminho-aula__n {
-  display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%;
-  font-weight: 800; font-size: 0.85rem; color: var(--texto-suave); border: 2px solid var(--borda);
-}
-.caminho-aula__n .icone { width: 14px; height: 14px; }
-.caminho-aula__textos { display: grid; min-width: 0; }
-.caminho-aula__nome { display: flex; align-items: center; gap: var(--esp-1); font-weight: 800; font-size: 0.9rem; }
-.caminho-aula__nome .icone { width: 16px; height: 16px; flex: none; }
-.caminho-aula__detalhe { overflow: hidden; font-size: 0.75rem; color: var(--texto-suave); text-overflow: ellipsis; white-space: nowrap; }
-.caminho-aula__passo--feito .caminho-aula__n { color: var(--texto-escuro); background: var(--turquesa); border-color: var(--turquesa); }
-.caminho-aula__passo--agora .caminho-aula__botao { border-color: var(--amarelo); background: color-mix(in srgb, var(--amarelo) 10%, var(--superficie)); }
-.caminho-aula__passo--agora .caminho-aula__n { color: var(--texto-escuro); background: var(--amarelo); border-color: var(--amarelo); }
-@media (max-width: 560px) {
-  .caminho-aula { grid-template-columns: minmax(0, 1fr); }
-  .caminho-aula__passo + .caminho-aula__passo::before { content: none; }
-}
-
 /* Laboratórios de Python (lab-python.js): objetivo, lacunas e testes */
 .lab-alvo { display: grid; gap: var(--esp-2); }
 .lab-alvo__saida { margin: 0; border-left-color: var(--amarelo); }

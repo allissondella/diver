@@ -12,7 +12,7 @@
   - os comandos devem ficar sempre à vista.
   - Tudo isso no Módulo 1, para ele pegar o jeito.
 - **Feito:**
-  - **Mapa:** passos numerados 1 Ler → 2 Questões → 3 Mão na massa em cada aula com laboratório.
+  - **Mapa:** fica o desenho de sempre. Cheguei a fazer passos numerados (1 Ler → 2 Questões → 3 Mão na massa), mas o usuário não gostou, e eles saíram.
   - **Fluxo:** caixa do Diver e botão "Próximo passo" depois das questões; "Concluir e seguir para a próxima aula" no fim do laboratório (abre o artigo da aula seguinte).
   - **Tela do robô:** editor que cresce com o código, Rodar e Recomeçar numa barra só, console só quando há saída, comandos num cartão fixo embaixo da grade.
   - **Laboratório Primeiros Programas** (11 missões, aulas 2 a 5), com objetivo e "cola" sempre à vista, comparação Esperado × Saiu e lacunas no celular.

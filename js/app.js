@@ -969,30 +969,12 @@ const App = (() => {
         icone('i-livro'), fase.modulo ? 'Antes de mergulhar' : `Antes de mergulhar: ${fase.nome}`,
         ler ? h('span', { class: 'fase__selo', text: 'Leia para liberar' }) : null)
       : null;
-    // Aula com laboratório (Explora Tech): o caminho numerado Ler → Questões → Mão na massa, no lugar dos botões soltos
+    // "Mão na massa": o laboratório da aula (fases[].laboratorio, Explora Tech), sempre aberto, como o artigo
     const labs = (Array.isArray(fase.laboratorio) ? fase.laboratorio : fase.laboratorio ? [fase.laboratorio] : [])
       .map((id) => Jogos.obter(id)).filter(Boolean);
-    if (labs.length && fase.resumo) return h('li', { 'data-fase': fase.id }, botao, caminhoDaAula(fase, liberada, concluida, ler, labs));
-    return h('li', { 'data-fase': fase.id }, botao, estudo);
-  }
-
-  /** Os três passos da aula com laboratório, cada um com o seu estado (feito, a fazer agora, depois). */
-  function caminhoDaAula(fase, liberada, questoesFeitas, ler, labs) {
-    const labFeito = Laboratorios.aulaFeita(estado.trilha.id, fase);
-    const passos = [
-      { n: 1, nome: 'Ler', detalhe: 'Antes de mergulhar', icone: 'i-livro', feito: !ler, acao: () => abrirResumo(fase, liberada) },
-      { n: 2, nome: 'Questões', detalhe: 'Mergulho da aula', icone: 'i-ancora', feito: questoesFeitas, acao: () => iniciarSessao('mergulho', { faseId: fase.id }) },
-      { n: 3, nome: 'Mão na massa', detalhe: labs.map((d) => d.nome).join(' + '), icone: 'i-codigo', feito: labFeito, acao: () => abrirLaboratorio(fase) },
-    ];
-    const atual = passos.find((p) => !p.feito);
-    return h('ol', { class: 'caminho-aula', 'aria-label': `Caminho da ${fase.nome}` },
-      passos.map((p) => h('li', { class: `caminho-aula__passo ${p.feito ? 'caminho-aula__passo--feito' : ''} ${p === atual ? 'caminho-aula__passo--agora' : ''}`.trim() },
-        h('button', { type: 'button', class: 'caminho-aula__botao', onclick: p.acao, disabled: p.n > 1 && !liberada,
-          'aria-label': `Passo ${p.n}: ${p.nome} (${p.detalhe})${p.feito ? ', feito' : p === atual ? ', é o próximo' : ''}` },
-        h('span', { class: 'caminho-aula__n', 'aria-hidden': 'true' }, p.feito ? icone('i-check') : String(p.n)),
-        h('span', { class: 'caminho-aula__textos', 'aria-hidden': 'true' },
-          h('span', { class: 'caminho-aula__nome' }, icone(p.icone), p.nome),
-          h('span', { class: 'caminho-aula__detalhe', text: p.detalhe }))))));
+    const maos = labs.map((def) => h('button', { type: 'button', class: 'fase__estudo fase__lab', onclick: () => iniciarJogo(def.id, { fase: fase.id }),
+      'aria-label': `Mão na massa: laboratório ${def.nome}, da ${fase.nome}` }, icone('i-codigo'), `Mão na massa: ${def.nome}`));
+    return h('li', { 'data-fase': fase.id }, botao, estudo, ...maos);
   }
 
   /**

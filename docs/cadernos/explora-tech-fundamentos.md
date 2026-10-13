@@ -11,7 +11,7 @@
 - **Diferencial:** os **laboratórios "Mão na massa"**. O aluno escreve código e vê algo acontecer, simulado no navegador e sem rede real.
 
 ## Seu gosto (preferências do usuário)
-- 2026-10-13 · Depois das questões, a tarefa prática; depois dela, a próxima aula. Comandos sempre à vista no laboratório. No Módulo 1, toda aula tem a sua tarefa, para o aluno pegar o jeito.
+- 2026-10-13 · O mapa fica com o desenho de sempre (nada de passos numerados). Depois das questões, a tarefa prática; depois dela, a próxima aula. Comandos sempre à vista no laboratório. No Módulo 1, toda aula tem a sua tarefa, para o aluno pegar o jeito.
 - 2026-10-13 · Curso "Explora Tech", só a Fase 1 agora; trabalhar em ondas, com plano antes do código.
 - 2026-10-13 · **Sala "Tecnologia"** com o Explora Tech, o ISO/IEC 27001 e a Cibersegurança (pedido da conversa; o prompt falava em sala "Explora Tech").
 - 2026-10-13 · Nada de nomes do mar em curso, módulo, aula ou descrição; módulo e aula sempre numerados.
