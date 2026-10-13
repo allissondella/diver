@@ -964,18 +964,31 @@ const App = (() => {
     liberada ? h('span', { class: `fase__cta ${ler ? 'fase__cta--ler' : ''}`, 'aria-hidden': 'true', text: ler ? 'Ler primeiro' : concluida ? 'Refazer' : 'Mergulhar' }) : null);
 
     // "Antes de mergulhar": leitura curta da fase (opcional no JSON). Fica aberta mesmo com a fase bloqueada.
+    // Fica no pé do cartão da aula, em linhas iguais: ícone, nome e, à direita, o estado (2026-10-13).
+    const fim = (estadoEl) => h('span', { class: 'fase__estudo-fim' }, estadoEl, icone('i-seta-dir', 'fase__estudo-seta'));
     const estudo = fase.resumo
       ? h('button', { type: 'button', class: `fase__estudo ${ler ? 'fase__estudo--pendente' : ''}`, onclick: () => abrirResumo(fase, liberada),
         'aria-label': fase.modulo ? `Antes de mergulhar: ${fase.nome}${ler ? '. Leia para liberar' : ''}` : null },
-        icone('i-livro'), fase.modulo ? 'Antes de mergulhar' : `Antes de mergulhar: ${fase.nome}`,
-        ler ? h('span', { class: 'fase__selo', text: 'Leia para liberar' }) : null)
+        icone('i-livro'), h('span', { class: 'fase__estudo-nome', text: fase.modulo ? 'Antes de mergulhar' : `Antes de mergulhar: ${fase.nome}` }),
+        fim(ler ? h('span', { class: 'fase__selo', text: 'Leia para liberar' }) : null))
       : null;
     // "Mão na massa": o laboratório da aula (fases[].laboratorio, Explora Tech), sempre aberto, como o artigo
     const labs = (Array.isArray(fase.laboratorio) ? fase.laboratorio : fase.laboratorio ? [fase.laboratorio] : [])
       .map((id) => Jogos.obter(id)).filter(Boolean);
-    const maos = labs.map((def) => h('button', { type: 'button', class: 'fase__estudo fase__lab', onclick: () => iniciarJogo(def.id, { fase: fase.id }),
-      'aria-label': `Mão na massa: laboratório ${def.nome}, da ${fase.nome}` }, icone('i-codigo'), `Mão na massa: ${def.nome}`));
-    return h('li', { 'data-fase': fase.id }, botao, estudo, ...maos);
+    const maos = labs.map((def) => {
+      const feito = typeof Laboratorios !== 'undefined' && Laboratorios.labDaAulaFeito(trilha.id, def.id, fase.id);
+      return h('button', { type: 'button', class: 'fase__estudo fase__lab', onclick: () => iniciarJogo(def.id, { fase: fase.id }),
+        'aria-label': `Mão na massa: laboratório ${def.nome}, da ${fase.nome}${feito ? '. Feito' : ''}` },
+        icone('i-codigo'), h('span', { class: 'fase__estudo-nome', text: `Mão na massa: ${def.nome}` }),
+        fim(feito ? h('span', { class: 'fase__feito' }, icone('i-check'), 'Feito') : null));
+    });
+    if (!estudo && !maos.length) return h('li', { 'data-fase': fase.id }, botao);
+    // A aula é um cartão só (2026-10-13, pedido do usuário): a leitura e os laboratórios ficam no pé do cartão,
+    // alinhados embaixo do título, para não ficar em dúvida de qual aula eles são.
+    const classeGrupo = `fase-grupo ${concluida ? 'fase-grupo--concluida' : ''} ${liberada ? '' : 'fase-grupo--bloqueada'}`.replace(/\s+/g, ' ').trim();
+    return h('li', { 'data-fase': fase.id, class: classeGrupo, style: `--prof:${n > 1 ? i / (n - 1) : 0}` },
+      botao,
+      h('div', { class: 'fase-grupo__extras', role: 'group', 'aria-label': `Estudo e prática da ${fase.nome}` }, estudo, ...maos));
   }
 
   /** O fim do mapa: a Prova final, no mesmo desenho das aulas (pedido do usuário, 2026-10-13). */
