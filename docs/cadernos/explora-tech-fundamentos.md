@@ -1,7 +1,7 @@
 # Caderno do curso: Explora Tech · Fundamentos
 
 > Trilha: `data/trilhas/explora-tech-fundamentos.json` (ainda não existe) · Plano: `docs/cadernos/explora-tech-mapa-curricular.md` · Regras gerais: `docs/cadernos/LEIA-ME.md` · Jeito de ensinar: `docs/cadernos/professor-diver.md`
-> **Etapa 1 (2026-10-13): só o plano, aguardando o OK do Allisson.** Nenhum código, curso, dado ou biblioteca entrou no repositório.
+> **Plano aprovado em 2026-10-13 ("ok manda bala"). Onda 0 feita:** sala Tecnologia, bloco de código, Python no navegador, Módulo 1 e Robô Entregador.
 
 ## Público e objetivo
 - **Quem estuda:** quem começa do zero em tecnologia e ainda não sabe que área seguir. Jovens e adultos, sem nada infantil.
@@ -18,7 +18,10 @@
 - 2026-10-13 · Livros e cursos são **leitura recomendada** ("Para ir além"); o Diver é todo autoral.
 
 ## Decisões
-- 2026-10-13 · Proposta (aguarda OK): 60 aulas em 12 módulos de 5 aulas, prova de 40 questões (80 min, 70%, `exigeFases: true`), Pyodide no sandbox, replay no `input()`, "modo toque" sem Pyodide no celular. Detalhes no mapa.
+- 2026-10-13 · Aprovado: 60 aulas em 12 módulos de 5 aulas, prova de 40 questões (80 min, 70%, `exigeFases: true`), Pyodide no sandbox, replay no `input()`, "modo toque" sem Pyodide no celular. Detalhes no mapa.
+- 2026-10-13 · Questões com 4 alternativas (A a D), como é comum em tecnologia; os cursos do Enem seguem com 5.
+- 2026-10-13 · Toda questão de código traz "! saida", "! erro" ou "! confere-py" no `.aula`: o `montar-aulas.mjs` roda no Pyodide e só grava se bater.
+- 2026-10-13 · O worker do sandbox nasce de um endereço `data:` (de blob ele não abre numa origem opaca); sem CORS, cai para o worker comum trancado.
 
 ## 1. Inventário: o que já existe no Diver e serve
 
@@ -118,6 +121,7 @@ Licenças conferidas na web em **2026-10-13**:
 |---|---|---|---|
 
 ## Já feito
+- 2026-10-13 · **Onda 0:** Módulo 1 · Lógica: pensar como o computador (aulas 1 a 5: algoritmo; primeiro programa; variáveis e tipos; operadores, porcentagem e arredondamento; revisão). 100 questões, 100 variantes, 16 fichas, 22 pares, 19 V/F, 10 adivinhas, 6 sequências, 42 palavras (todas no dicionário). Laboratório Robô Entregador com 6 missões de sequência (aulas 1, 2 e 5). Curadoria registrada em `docs/FONTES_CATALOGADAS.md` e no parecer `docs/validacoes/explora-tech-fundamentos-2026-10-13.md`.
 - 2026-10-13 · Etapa 1: este caderno e o mapa curricular.
   - Curadoria da pasta do Drive: 5 PDFs WeLib reprovados, só bibliografia.
   - Licenças das leituras grátis conferidas.
@@ -132,6 +136,7 @@ Licenças conferidas na web em **2026-10-13**:
   - Pyodide com sandbox;
   - prova com `exigeFases: true`;
   - campo `paraIrAlem`.
-- Depois do OK: registrar a curadoria em `docs/FONTES_CATALOGADAS.md` e no parecer.
+- Onda 1: Módulos 2 a 7 (aulas 6 a 35) + Robô (laços, condições, funções), Lupa do Código, Caça-Bugs, Oficina de Funções, Organizador de Pasta.
+- Antes de validar o curso na Fila: colar `supabase/painel/mergulho-triplo.ts` (agora manda o código da questão às IAs) na Edge Function.
 - Especialista de revisão humana: **Allisson (a confirmar)**. Itens `revisar`: comandos de terminal e Git, portas, versões, valores de configuração.
 - Conferir antes de publicar: licença da tradução *Pense em Python*; links oficiais de todos os "Para ir além".

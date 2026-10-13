@@ -56,6 +56,15 @@ _Já pensados, mas ficam para depois da versão 1.0._
 | **Cruzadinha Submarina** (`cruzadinha`) | Mini palavras cruzadas montadas com as palavras-chave e dicas da trilha. | Palavras-chave com dica | Bolhas com letras | v2 |
 | **Batalha de Turmas ao vivo** (`batalha`) | Turmas competem ao mesmo tempo, coordenadas pelo professor, em esquadras. | Trilha da turma | Esquadras em alto-mar | v2 |
 
+### Mão na massa (laboratórios do Explora Tech, 2026-10-13)
+_O aluno escreve código de verdade e vê acontecer. Plano completo: `docs/cadernos/explora-tech-mapa-curricular.md`, seção 7._
+
+| Jogo | Como funciona | Conteúdo usado | Semana |
+| --- | --- | --- | --- |
+| **Robô Entregador** (`robo-entregador`) | Comandos em Python (`andar()`, `virar_esquerda()`, `virar_direita()`, `pegar()`, `soltar()`) levam as caixas ao destino numa grade; a linha da vez acende, com velocidade e passo a passo. Estrelas: 1 entregou, 2 sem a última dica, 3 dentro da meta de linhas e passos. Modo toque (blocos) no celular, sem baixar o Python. Missões de sequência prontas; laços, condições, variáveis e funções na Onda 1. | `data/laboratorios/<curso>/robo-entregador.json` (missões ligadas às aulas por `aulas`) | Pronto (v1, Onda 0) |
+
+**Contrato de laboratório:** um arquivo em `js/jogos/`, grupo `laboratorios`, `requer: { laboratorios: 1 }` e `temConteudo` olhando `cartas.laboratorios` (os ids de `fases[].laboratorio`). Abre pela aula ("Mão na massa", com `opcoes.fase`: só as missões daquela aula) ou pela Sala de Jogos (todas). Devolve o Resultado padrão com `soBonus: true`: cada missão tentada é um detalhe (resolvida = acerto) e o XP vem só do bônus, de 10 XP e 1 pérola por **estrela nova** (a melhor marca paga uma vez só, mesmo saindo no meio), dentro do teto da economia. Estrelas em `diver:v1:lab:<curso>` (nuvem); rascunho só no aparelho. Tutorial (`Tutorial.guiar`), 3 dicas, "Agora faça de verdade", teclado e `prefers-reduced-motion`. Conferência: `node scripts/conferir-laboratorios.mjs` (solução passa, código inicial falha, determinístico, metas possíveis, mundo JS = Python).
+
 ## 2. Tipos de carta
 
 O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos abaixo são **opcionais** e ficam no mesmo arquivo da trilha. Confirme os nomes reais dos campos olhando os JSON que já existem em `data/trilhas/` e siga exatamente aqueles nomes.

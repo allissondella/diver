@@ -5,6 +5,28 @@
 
 ---
 
+## 2026-10-13 · Explora Tech · Onda 0 (sala Tecnologia, Python no navegador, Módulo 1 e Robô Entregador)
+- **Feito:**
+  - **Sala Tecnologia** (pedido do usuário): áreas "Explora Tech" e "Segurança da informação" (Cibersegurança e ISO 27001, que eram salas de um curso só). No Admin, matrícula curso a curso; `pacote:iso`/`pacote:ciber` antigos valem como "só aquele curso".
+  - **Bloco de código** nas questões (`codigo`, `alternativasCodigo`) e no artigo, só no desenho.
+  - **Python no navegador:** Pyodide 314.0.7 (Python 3.14) em `lib/pyodide/` (13,4 MB no repositório, ~6 MB baixados só quando um laboratório abre), num iframe sandbox de origem opaca, com tempo limite, `input()` por replay, testes e erro traduzido.
+  - **Curso `explora-tech-fundamentos`**, Módulo 1 (5 aulas, 100 questões, 100 variantes, 16 fichas, prova de 40). As 119 questões de código foram conferidas rodando no Python.
+  - **Laboratório Robô Entregador**: 6 missões, modo toque no celular, estrelas e XP por estrela nova.
+- **Conferências:**
+  - `conferir-trilha` 0 erros e 0 avisos nos 22 cursos; `conferir-laboratorios` 0 erros.
+  - Navegador (PC e celular): sala, mapa, artigo, Mergulho com código, laboratório (código, erro, laço infinito parado, isolamento) e Admin com cursos simulados.
+  - `fila.mjs simular`: ~US$ 3,72 questões + ~US$ 3,72 variantes; nada enviado.
+- **Decisões por conta própria:**
+  - O worker do sandbox nasce de um endereço `data:`: de blob ele não abre numa origem opaca.
+  - A Fila passou a mandar o código da questão às IAs, sem mudar a assinatura das questões sem código.
+  - O verificador e o app aceitam variante com o mesmo enunciado se o código for outro.
+  - `_headers` com CORS para o Cloudflare (o GitHub Pages já manda).
+  - O laboratório paga XP só por estrela nova (`soBonus` na economia).
+- **Fontes:** os cinco PDFs "WeLib" da pasta do Explora Tech foram reprovados (só bibliografia); parecer `docs/validacoes/explora-tech-fundamentos-2026-10-13.md`.
+- **Pendências:** colar `supabase/painel/mergulho-triplo.ts` na Edge Function antes de validar o Explora Tech; merge para produção é do usuário.
+
+---
+
 ## 2026-10-13 · Rodada do Mergulho com 10 questões
 - **Pedido do usuário:** as aulas mostravam "1 de 8"; agora toda rodada do Mergulho, em todos os cursos, tem 10 questões (`TAMANHO_RODADA` em `js/quiz.js`). A Revisão já tinha 10; Simulado e Prova não mudaram.
 - **Junto:** o `conferir-trilha.mjs` passou a exigir pelo menos 10 fáceis+médias por fase (a 1ª rodada não mostra difíceis); todas as 21 trilhas já cumprem. Texto do tutorial do Mergulho, skill `criar-trilha` e `professor-diver.md` atualizados. O tutorial não reaparece para todos (`VERSOES` igual): foi só o número.

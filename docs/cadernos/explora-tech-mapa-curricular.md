@@ -1,6 +1,6 @@
 # Mapa curricular: Explora Tech · Fundamentos (Fase 1 de 4)
 
-> **Rascunho da Etapa 1 (2026-10-13), aguardando o OK do Allisson.** Nada aqui virou curso, código ou dado ainda.
+> **Aprovado em 2026-10-13. Onda 0 feita** (sala Tecnologia, bloco de código, Python no navegador, Módulo 1 e Robô Entregador). As próximas ondas seguem a seção 10.
 > Só conclusões nossas: nomes de módulos, aulas e laboratórios escritos por nós, organizados pela grade de seis matérias que o usuário passou. Nenhum trecho de terceiro.
 > O inventário do que já existe, a curadoria da pasta do Drive e a bibliografia estão no caderno do curso: `docs/cadernos/explora-tech-fundamentos.md`.
 
