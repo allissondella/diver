@@ -212,6 +212,23 @@ const UI = (() => {
     });
   }
 
+  /**
+   * Bloco de código (Explora Tech, 2026-10-13): texto monoespaçado que não quebra o recuo, sempre como texto.
+   * Rola na horizontal só dentro do bloco (tabindex para dar para rolar pelo teclado).
+   */
+  function codigo(texto, { rotulo = 'Código' } = {}) {
+    return h('pre', { class: 'codigo', tabindex: '0', 'aria-label': rotulo }, h('code', { text: String(texto).replace(/\n+$/, '') }));
+  }
+
+  /** Texto com **negrito** e `código em linha` vira nós (sempre como texto). */
+  function marcado(texto) {
+    return String(texto).split(/(\*\*[^*]+\*\*|`[^`]+`)/).filter(Boolean).map((p) => {
+      if (p.startsWith('**') && p.endsWith('**') && p.length > 4) return h('strong', { text: p.slice(2, -2) });
+      if (p.startsWith('`') && p.endsWith('`') && p.length > 2) return h('code', { class: 'codigo-linha', text: p.slice(1, -1) });
+      return p;
+    });
+  }
+
   /** Atalho para pedir um texto (no lugar do prompt do navegador): devolve o texto ou null. */
   const perguntar = (opcoes) => confirmar({ sim: 'Salvar', ...opcoes, campo: opcoes.campo || {} });
 
@@ -219,7 +236,7 @@ const UI = (() => {
     confirmar, perguntar,
     $, h, icone, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
     dataLocal, paraData, formatarData, id, baixarArquivo, toast, avisarConquistas,
-    montarMascotes, humorMascote, mascote, cabecalho, vazio, movimentoReduzido,
+    montarMascotes, humorMascote, mascote, cabecalho, vazio, movimentoReduzido, codigo, marcado,
   };
 })();
 

@@ -969,7 +969,12 @@ const App = (() => {
         icone('i-livro'), fase.modulo ? 'Antes de mergulhar' : `Antes de mergulhar: ${fase.nome}`,
         ler ? h('span', { class: 'fase__selo', text: 'Leia para liberar' }) : null)
       : null;
-    return h('li', { 'data-fase': fase.id }, botao, estudo);
+    // "Mão na massa": o laboratório da aula (fases[].laboratorio, Explora Tech), sempre aberto, como o artigo
+    const labs = (Array.isArray(fase.laboratorio) ? fase.laboratorio : fase.laboratorio ? [fase.laboratorio] : [])
+      .map((id) => Jogos.obter(id)).filter(Boolean);
+    const maos = labs.map((def) => h('button', { type: 'button', class: 'fase__estudo fase__lab', onclick: () => iniciarJogo(def.id, { fase: fase.id }),
+      'aria-label': `Mão na massa: laboratório ${def.nome}, da ${fase.nome}` }, icone('i-codigo'), `Mão na massa: ${def.nome}`));
+    return h('li', { 'data-fase': fase.id }, botao, estudo, ...maos);
   }
 
   /**
@@ -1634,6 +1639,9 @@ const App = (() => {
     $('quiz-volta').hidden = s.indice < Quiz.totalPlanejado(s);
 
     $('quiz-enunciado').textContent = q.enunciado;
+    // Questão com código (campo opcional "codigo", Explora Tech): bloco monoespaçado abaixo do enunciado
+    $('quiz-codigo').hidden = !q.codigo;
+    $('quiz-codigo').firstElementChild.textContent = q.codigo ? String(q.codigo).replace(/\n+$/, '') : '';
     // As alternativas aparecem embaralhadas: a resposta certa não fica sempre na mesma letra.
     // estado.ordem[posição na tela] = índice original no JSON
     estado.ordem = embaralhar(q.alternativas.map((_, i) => i));
@@ -1641,7 +1649,7 @@ const App = (() => {
     estado.ordem.forEach((original, pos) => {
       alts.append(h('button', {
         type: 'button',
-        class: 'alternativa',
+        class: q.alternativasCodigo ? 'alternativa alternativa--codigo' : 'alternativa',
         'data-indice': original,
         'aria-keyshortcuts': `${pos + 1} ${LETRAS[pos]}`,
         onclick: () => responder(original),

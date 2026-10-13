@@ -38,7 +38,7 @@ const Cartas = (() => {
   /** Flashcards: frente = enunciado; verso = alternativa correta + explicação. */
   function derivarFlash(trilha) {
     return trilha.questoes.map((q) => ({
-      id: q.id, frente: q.enunciado, verso: correta(q), explicacao: q.explicacao, tema: q.tema, dificuldade: q.dificuldade, fase: q.fase,
+      id: q.id, frente: q.enunciado, codigo: q.codigo || '', verso: correta(q), explicacao: q.explicacao, tema: q.tema, dificuldade: q.dificuldade, fase: q.fase,
     }));
   }
 
@@ -111,16 +111,21 @@ const Cartas = (() => {
 
   /** Todas as cartas de uma trilha, já prontas para os jogos. */
   function derivar(trilha) {
-    const palavras = derivarPalavras(trilha);
+    // Questão com código (Explora Tech) só vira carta onde o código aparece (múltipla escolha e flashcards):
+    // V/F, pares e palavras derivados mostram só texto, então ficam com as outras.
+    const soTexto = { ...trilha, questoes: trilha.questoes.filter((q) => !q.codigo && !q.alternativasCodigo) };
+    const palavras = derivarPalavras(soTexto);
     return {
       multipla: trilha.questoes,
-      vf: derivarVF(trilha),
+      vf: derivarVF(soTexto),
       flash: derivarFlash(trilha),
-      pares: derivarPares(trilha),
+      pares: derivarPares(soTexto),
       adivinhas: derivarAdivinhas(trilha),
       sequencias: derivarSequencias(trilha),
       palavras,
       palavrinha: derivarPalavrinha(palavras),
+      // Laboratórios "Mão na massa" (Explora Tech): os das aulas (fases[].laboratorio) e o bloco "laboratorios"
+      laboratorios: typeof Laboratorios === 'undefined' ? [] : Laboratorios.daTrilha(trilha),
       // Caso Resolvido: só o bloco próprio "casos" (conferido, porque vem de JSON)
       casos: (Array.isArray(trilha.casos) ? trilha.casos : []).filter((c) => typeof CasoResolvido === 'undefined' || CasoResolvido.valido(c)),
     };

@@ -2512,3 +2512,35 @@ html,
 }
 .lateral__ajuda:hover { color: var(--turquesa-claro); border-color: rgba(94, 234, 212, 0.5); }
 .lateral__ajuda .icone { width: 20px; height: 20px; }
+
+/* ---------- Código (Explora Tech, 2026-10-13): bloco monoespaçado, sem quebrar o recuo ---------- */
+.codigo {
+  display: block;
+  margin: var(--esp-3) 0;
+  padding: var(--esp-3) var(--esp-4);
+  overflow-x: auto;
+  font-family: var(--fonte-mono);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  white-space: pre;
+  tab-size: 4;
+  text-align: left;
+  color: var(--texto);
+  background: var(--fundo-fundo);
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--turquesa);
+  border-radius: var(--raio-pequeno);
+}
+.codigo code { font: inherit; white-space: inherit; }
+.codigo:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.codigo[hidden] { display: none; }
+.codigo-linha {
+  padding: 0.1em 0.35em;
+  font-family: var(--fonte-mono);
+  font-size: 0.9em;
+  color: var(--turquesa-claro);
+  background: var(--fundo-fundo);
+  border-radius: 6px;
+}
+.alternativa--codigo span:last-child { font-family: var(--fonte-mono); font-size: 0.92rem; white-space: pre-wrap; text-align: left; }
+.flash .codigo { margin: var(--esp-2) auto; max-width: 100%; font-size: 0.85rem; }
