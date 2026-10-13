@@ -38,6 +38,17 @@
  * seq: título :: item > item > item :: explicação
  * adv: <dificuldade> | resposta | aceita; aceita | dica; dica; dica :: explicação
  * pal: palavra :: dica
+ *
+ * ---------- Tecnologia (Explora Tech, 2026-10-13) ----------
+ * lab: <id>                    a aula aponta para um laboratório "Mão na massa" (fases[].laboratorio)
+ * ```python … ```              dentro do enunciado: o código da questão (campo "codigo", recuo preservado);
+ *                              dentro de uma seção do artigo: um bloco de código
+ * ! alternativas-codigo        as alternativas são código ou saída (monoespaçadas; "\n" vira quebra de linha)
+ * ! entradas: a; b             o que o input() recebe quando o script roda o código da questão
+ * ! saida                      roda o código no Python do curso e compara a saída com a alternativa certa
+ * ! saida: <texto>             idem, comparando com o texto dado ("\n" vira quebra de linha)
+ * ! confere-py: <expressão>    roda o código e a expressão Python (sobre as variáveis dele) tem de dar True
+ * ! erro: <TipoDeErro>         roda o código e ele tem de parar com esse erro (ex.: NameError)
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname, basename, join } from 'node:path';
@@ -62,6 +73,7 @@ export function lerAulas(texto, origem = 'texto') {
   let secao = null;
   let ficha = null;
   let enunciadoAberto = false;
+  let cerca = null; // bloco ``` aberto: { onde: 'questao' | 'secao', linhas: [], linguagem }
   const erro = (n, msg) => { throw new Error(`${origem}:${n}: ${msg}`); };
 
   const fecharQuestao = () => {
@@ -71,12 +83,28 @@ export function lerAulas(texto, origem = 'texto') {
     q = null;
     enunciadoAberto = false;
   };
-  const novaQuestao = (n, base) => ({ linha: n, enunciado: [], alternativas: [], comentarios: [], certa: -1, explicacao: '', confere: [], ...base });
+  const novaQuestao = (n, base) => ({ linha: n, enunciado: [], alternativas: [], comentarios: [], certa: -1, explicacao: '', confere: [], python: [], entradas: null, codigo: '', altCodigo: false, ...base });
 
   texto.split(/\r?\n/).forEach((bruta, i) => {
     const n = i + 1;
     const linha = bruta.trimEnd();
     const t = linha.trim();
+    // bloco de código (``` ... ```): as linhas entram como estão, com o recuo
+    if (cerca) {
+      if (t === '```') {
+        const texto = cerca.linhas.join('\n');
+        if (cerca.onde === 'questao') q.codigo = texto;
+        else secao.texto.push(`\`\`\`${cerca.linguagem}\n${texto}\n\`\`\``);
+        cerca = null;
+      } else cerca.linhas.push(linha);
+      return;
+    }
+    if (/^```[a-z]*$/.test(t)) {
+      if (q && enunciadoAberto) cerca = { onde: 'questao', linhas: [], linguagem: t.slice(3) };
+      else if (secao && !q) cerca = { onde: 'secao', linhas: [], linguagem: t.slice(3) };
+      else erro(n, 'bloco de código fora de um enunciado ou de uma seção do artigo');
+      return;
+    }
     if (t.startsWith('@@ aula ')) {
       fecharQuestao();
       aula = { id: t.slice(8).trim(), resumo: { secoes: [] }, questoes: [], blocos: { pares: [], verdadeiroFalso: [], sequencias: [], adivinhas: [], palavras: [] }, linha: n };
@@ -116,6 +144,12 @@ export function lerAulas(texto, origem = 'texto') {
       if (t.startsWith('= ')) { q.explicacao = (q.explicacao ? q.explicacao + ' ' : '') + t.slice(2).trim(); enunciadoAberto = false; return; }
       if (t.startsWith('! confere:')) { q.confere.push([t.slice(10).trim(), n]); return; }
       if (t.startsWith('! revisar:')) { q.revisar = t.slice(10).trim(); return; }
+      if (t === '! alternativas-codigo') { q.altCodigo = true; return; }
+      if (t.startsWith('! entradas:')) { q.entradas = t.slice(11).split(';').map((x) => x.trim()); return; }
+      if (t === '! saida') { q.python.push({ tipo: 'saida', linha: n }); return; }
+      if (t.startsWith('! saida:')) { q.python.push({ tipo: 'saida', esperada: t.slice(8).trim().replace(/\\n/g, '\n'), linha: n }); return; }
+      if (t.startsWith('! confere-py:')) { q.python.push({ tipo: 'expr', expr: t.slice(13).trim(), linha: n }); return; }
+      if (t.startsWith('! erro:')) { q.python.push({ tipo: 'erro', erro: t.slice(7).trim(), linha: n }); return; }
       if (enunciadoAberto) { q.enunciado.push(t); return; }
       if (!t) return;
       fecharQuestao();
@@ -139,6 +173,7 @@ export function lerAulas(texto, origem = 'texto') {
       case 'habilidades': aula.habilidades = valor.split(',').map((x) => x.trim()).filter(Boolean); return;
       case 'minutos': aula.minutos = Number(valor); return;
       case 'novaEm': aula.novaEm = valor; return;
+      case 'lab': aula.laboratorio = valor; return;
       case 'intro': r.introducao = valor; secao = null; lista = null; return;
       case 'mapa': r.mapaMental = { centro: valor, ramos: [] }; lista = 'ramos'; secao = null; return;
       case 'assoc': {
@@ -201,14 +236,62 @@ function conferirContas(q, origem) {
   }
 }
 
+/** Conferências no Python (questões de código) juntadas durante a montagem; rodadas por conferirPython(). */
+const CONFERIR_PYTHON = [];
+
+/**
+ * Roda cada código de questão no MESMO Python dos laboratórios (Pyodide de lib/pyodide, no Node):
+ * a saída tem de bater com a alternativa certa (ou com o texto dado), a expressão tem de dar True,
+ * ou o programa tem de parar com o erro indicado. Devolve a lista de problemas (vazia = tudo certo).
+ */
+export async function conferirPython(lista = CONFERIR_PYTHON) {
+  if (!lista.length) return [];
+  const raiz = resolve(dirname(new URL(import.meta.url).pathname), '..');
+  const { loadPyodide } = await import(join(raiz, 'lib/pyodide/pyodide.mjs'));
+  const py = await loadPyodide({ indexURL: join(raiz, 'lib/pyodide') + '/', stdout: () => {}, stderr: () => {} });
+  py.FS.mkdirTree('/home/pyodide');
+  py.FS.writeFile('/home/pyodide/diver_lab.py', readFileSync(join(raiz, 'laboratorio/diver_lab.py'), 'utf8'));
+  py.runPython('import sys\nsys.path.insert(0, "/home/pyodide")\nimport diver_lab\ndiver_lab.travar()');
+  const executar = py.globals.get('diver_lab').executar;
+  const problemas = [];
+  for (const c of lista) {
+    const ref = `${c.origem}:${c.linha} (${c.id})`;
+    const pedido = { codigo: c.codigo, entradas: c.entradas || [] };
+    if (c.tipo === 'expr') pedido.testes = [{ nome: 'confere', codigo: `assert (${c.expr}), "deu False"` }];
+    const r = JSON.parse(executar(JSON.stringify(pedido)));
+    if (r.precisaEntrada) { problemas.push(`${ref}: o código pede input() e faltou "! entradas:"`); continue; }
+    if (c.tipo === 'erro') {
+      if (!r.erro || r.erro.tipo !== c.erro) problemas.push(`${ref}: era para parar com ${c.erro}, mas ${r.erro ? `parou com ${r.erro.tipo}` : 'rodou sem erro'}`);
+      continue;
+    }
+    if (r.erro && !(c.tipo === 'saida' && c.comErro)) { problemas.push(`${ref}: o código parou com ${r.erro.tipo}: ${r.erro.mensagem}`); continue; }
+    if (c.tipo === 'saida') {
+      const esperada = (c.esperada !== undefined ? c.esperada : c.certa).replace(/\s+$/, '');
+      const obtida = r.saida.replace(/\s+$/, '');
+      if (obtida !== esperada) problemas.push(`${ref}: a saída não bate.\n    esperada: ${JSON.stringify(esperada)}\n    obtida:   ${JSON.stringify(obtida)}`);
+    } else if (c.tipo === 'expr' && !(r.testes[0] && r.testes[0].passou)) {
+      problemas.push(`${ref}: "${c.expr}" não deu True (${r.testes[0] ? r.testes[0].mensagem : 'sem teste'})`);
+    }
+  }
+  return problemas;
+}
+
 function questaoJSON(q, id, fase, origem, base = {}) {
   if (q.certa < 0) throw new Error(`${origem}:${q.linha}: questão sem alternativa certa (+)`);
   q.alternativas.forEach((a, i) => { if (i !== q.certa && !q.comentarios[i]) throw new Error(`${origem}:${q.linha}: alternativa errada sem comentário: "${a}"`); });
   if (new Set(q.alternativas.map(semAcento)).size !== q.alternativas.length) throw new Error(`${origem}:${q.linha}: alternativas repetidas`);
   if (!/Dica de mergulhador:/.test(q.explicacao)) throw new Error(`${origem}:${q.linha}: explicação sem "Dica de mergulhador:"`);
   conferirContas(q, origem);
+  if (q.altCodigo) q.alternativas = q.alternativas.map((a) => a.replace(/\\n/g, '\n'));
+  if (q.python.some((c) => c.tipo !== 'expr') && !q.codigo) throw new Error(`${origem}:${q.linha}: "! saida" ou "! erro" sem bloco de código na questão`); // "! confere-py" pode vir sem código
+  const comErro = q.python.some((c) => c.tipo === 'erro'); // "! saida" + "! erro": o que aparece antes de o programa parar
+  q.python.forEach((c) => CONFERIR_PYTHON.push({ ...c, id, origem, codigo: q.codigo, entradas: q.entradas, certa: q.alternativas[q.certa], comErro }));
   const { alternativas, comentarios, correta } = embaralhar(q, id);
-  const out = { id, ...base, tema: q.tema, dificuldade: q.dificuldade, fase, enunciado: q.enunciado, alternativas, correta, explicacao: q.explicacao, comentarios };
+  const out = { id, ...base, tema: q.tema, dificuldade: q.dificuldade, fase, enunciado: q.enunciado };
+  if (q.codigo) out.codigo = q.codigo;
+  Object.assign(out, { alternativas, correta });
+  if (q.altCodigo) out.alternativasCodigo = true;
+  Object.assign(out, { explicacao: q.explicacao, comentarios });
   if (q.revisar) out.revisar = q.revisar;
   return out;
 }
@@ -226,6 +309,7 @@ export function aplicarAulas(trilha, { aulas, fichas }, origem = 'texto') {
     if (a.habilidades) fase.habilidades = a.habilidades;
     if (a.minutos) fase.minutos = a.minutos;
     if (a.novaEm) fase.novaEm = a.novaEm;
+    if (a.laboratorio) fase.laboratorio = a.laboratorio;
     fase.resumo = a.resumo;
     const i = trilha.fases.findIndex((f) => f.id === a.id);
     if (i >= 0) trilha.fases[i] = fase; else trilha.fases.push(fase);
@@ -266,6 +350,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   try {
     for (const arq of arquivos) aplicarAulas(trilha, lerAulas(readFileSync(arq, 'utf8'), basename(arq)), basename(arq));
   } catch (e) { console.error('ERRO', e.message); process.exit(1); }
+  if (CONFERIR_PYTHON.length) {
+    const problemas = await conferirPython();
+    if (problemas.length) { problemas.forEach((p) => console.error('ERRO (Python)', p)); process.exit(1); }
+    console.log(`Python: ${CONFERIR_PYTHON.length} conferência(s) de código, todas certas.`);
+  }
   const { avisos } = numerar(trilha);
   avisos.forEach((a) => console.log('AVISO (numeração):', a));
   writeFileSync(caminho, `${JSON.stringify(trilha, null, 2)}\n`);

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/jogos.css">
   <link rel="stylesheet" href="css/descompressao.css">
   <link rel="stylesheet" href="css/artigo.css">
+  <link rel="stylesheet" href="css/laboratorio.css">
   <link rel="stylesheet" href="css/ritmo.css">
   <!-- Configuração do Supabase (login), escolhida pelo endereço: produção ou testes (docs/AMBIENTES.md).
        Vazio = modo local, sem login. Carrega antes de tudo: com login ligado, a primeira coisa na tela é a página de entrar. -->
@@ -57,6 +58,12 @@
   <script src="js/jogos/palavrinha.js" defer></script>
   <script src="js/jogos/corrente-do-tempo.js" defer></script>
   <script src="js/jogos/caso-resolvido.js" defer></script>
+  <!-- Laboratórios "Mão na massa" (Explora Tech): o Python (lib/pyodide) só baixa quando um laboratório abre -->
+  <script src="js/laboratorio/executor.js" defer></script>
+  <script src="js/laboratorio/editor.js" defer></script>
+  <script src="js/laboratorio/mundo-robo.js" defer></script>
+  <script src="js/laboratorio/laboratorio.js" defer></script>
+  <script src="js/jogos/robo-entregador.js" defer></script>
   <!-- Áreas -->
   <script src="js/quadros.js" defer></script>
   <script src="js/organizar.js" defer></script>
@@ -142,6 +149,7 @@
       <symbol id="i-nota" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></g></symbol>
       <symbol id="i-etiqueta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3.5 12.5V4h8.5l8.5 8.5-8 8z"/><circle cx="8" cy="8.5" r="1.6" fill="currentColor"/></g></symbol>
       <symbol id="i-lista-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6.5l2 2 3.5-4M3.5 15.5l2 2 3.5-4M12.5 7h8M12.5 16h8"/></g></symbol>
+      <symbol id="i-codigo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></g></symbol>
       <symbol id="i-lupa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></g></symbol>
       <symbol id="i-concha" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 20c-5 0-9-4-9-9 0-3 3-6 9-6s9 3 9 6c0 5-4 9-9 9z"/><path d="M12 20V6M12 20L7 7M12 20l5-13M12 20L4 10M12 20l8-10"/></g></symbol>
       <symbol id="i-garrafa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M10 2h4v4l2 3v11a2 2 0 01-2 2h-4a2 2 0 01-2-2V9l2-3z"/><path d="M8.5 13h7"/></g></symbol>
@@ -446,6 +454,7 @@
             <span id="quiz-volta" class="tag tag--volta" hidden>Voltou pra revisão</span>
           </div>
           <h2 id="quiz-enunciado" class="questao__enunciado" tabindex="-1"></h2>
+          <pre id="quiz-codigo" class="codigo" tabindex="0" aria-label="Código da questão" hidden><code></code></pre>
           <div id="quiz-alternativas" class="alternativas" role="group" aria-labelledby="quiz-enunciado"></div>
           <button id="btn-marcar" class="botao botao--link botao--marcar" type="button" aria-pressed="false">
             <svg class="icone" aria-hidden="true"><use href="#i-marcador"/></svg>

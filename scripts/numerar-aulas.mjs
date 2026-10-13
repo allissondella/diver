@@ -6,6 +6,7 @@
  *   fases[].modulo     → "Módulo 3 · Geometria plana"
  *   fases[].nome       → "Aula 14 · Áreas de figuras planas"   (ou "Oficina 7 · …" na Redação)
  *   fases[].descricao  → "Módulo 3 · aula 2 de 6 · 35 min · treina as habilidades H8 e H9"
+ *                        (aula com laboratório, Explora Tech: "… · 35 min · laboratório: Robô Entregador")
  * O id da fase não muda (ele não leva número): dá para reordenar as fases sem perder o histórico.
  *
  * Só mexe em fases que têm "modulo". Curso sem módulos (ex.: "Comece por aqui") fica como está.
@@ -16,7 +17,20 @@
  *   node scripts/numerar-aulas.mjs data/trilhas/enem-matematica.json            grava
  *   node scripts/numerar-aulas.mjs data/trilhas/enem-matematica.json --conferir  só confere (sai com 1 se faltar numerar)
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
+/** Nome do laboratório da aula (data/laboratorios/<curso>/<id>.json), para a descrição: "laboratório: Robô Entregador". */
+function nomeLaboratorio(trilha, id) {
+  const arq = join(RAIZ, 'data/laboratorios', trilha.id || '', `${id}.json`);
+  try { return existsSync(arq) ? JSON.parse(readFileSync(arq, 'utf8')).nome || id : id; } catch (e) { return id; }
+}
+function fraseLaboratorio(trilha, lab) {
+  const ids = Array.isArray(lab) ? lab : lab ? [lab] : [];
+  return ids.length ? `${ids.length > 1 ? 'laboratórios' : 'laboratório'}: ${listar(ids.map((id) => nomeLaboratorio(trilha, id)))}` : '';
+}
 
 const tirarNumero = (texto, rotulo) => String(texto || '').replace(new RegExp(`^${rotulo}\\s+\\d+\\s*·\\s*`, 'i'), '').trim();
 
@@ -66,7 +80,7 @@ export function numerar(trilha) {
     const novo = {
       modulo: `Módulo ${m} · ${t}`,
       nome: `${rotulo} ${numero} · ${tirarNumero(f.nome, rotulo)}`,
-      descricao: [`Módulo ${m}`, `${rotulo.toLowerCase()} ${posicao[t]} de ${tamanho[t]}`, `${f.minutos || 35} min`, frasesHabilidades(f.habilidades, oficina)].filter(Boolean).join(' · '),
+      descricao: [`Módulo ${m}`, `${rotulo.toLowerCase()} ${posicao[t]} de ${tamanho[t]}`, `${f.minutos || 35} min`, frasesHabilidades(f.habilidades, oficina), fraseLaboratorio(trilha, f.laboratorio)].filter(Boolean).join(' · '),
     };
     if (novo.modulo !== f.modulo || novo.nome !== f.nome || novo.descricao !== f.descricao) mudou += 1;
     Object.assign(f, novo);

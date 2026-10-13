@@ -18,6 +18,7 @@ const Jogos = (() => {
     { id: 'rapidos', nome: 'Jogos rápidos', descricao: 'Partidas de 2 a 5 minutos para revisar um pouquinho a cada dia.' },
     { id: 'aventuras', nome: 'Aventuras', descricao: 'Mapa, chefão e sobrevivência.' },
     { id: 'estrategia', nome: 'Estratégia e duelos', descricao: 'Jogos maiores, sozinho ou contra alguém no mesmo aparelho.' },
+    { id: 'laboratorios', nome: 'Mão na massa', descricao: 'Laboratórios: escreva código de verdade e veja acontecer.' },
     { id: 'v2', nome: 'Depois do lançamento', descricao: 'Já pensados, ficam para a versão 2.' },
   ];
 
