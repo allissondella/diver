@@ -53,6 +53,8 @@
 | Enem · Redação (`enem-redacao`) | 40 oficinas | 6 | 5 competências da redação | ~metade da nota de muitos cursos |
 | **A produzir (as duas línguas)** | **353** | | | |
 
+Situação em 2026-10-13: **todos os cursos da tabela estão publicados** (353 aulas, Onda 9 concluída).
+
 Língua estrangeira: **2 módulos de 5 aulas (10 por língua)**, para seguir a regra de 5 a 7 aulas por módulo (decisão do usuário, 2026-10-09).
 
 O curso atual `enem-vestibular` continua como **"Enem e Vestibular · Comece por aqui"**: as 5 fases, as questões e os ids ficam, como porta de entrada de todas as áreas.
