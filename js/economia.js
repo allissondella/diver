@@ -41,6 +41,7 @@ const Economia = (() => {
       if (questao && !d.neutro) Progresso.registrarResposta(prog, questao, d.acertou, resultado.jogoId);
       else Progresso.registrarAvulsa(prog, d.acertou, d.neutro);
 
+      if (resultado.soBonus) return; // laboratórios: a missão conta como estudo, mas o XP vem só do bônus (estrelas novas)
       if (d.acertou && !d.neutro) {
         combo++;
         comboMaximo = Math.max(comboMaximo, combo);

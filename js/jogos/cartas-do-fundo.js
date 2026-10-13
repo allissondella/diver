@@ -43,6 +43,7 @@ Jogos.registrar({
         h('span', { class: 'flash__lado flash__frente' },
           h('span', { class: 'rotulo', text: c.tema }),
           h('span', { class: 'flash__texto', text: c.frente }),
+          c.codigo ? h('span', { class: 'codigo', text: String(c.codigo).replace(/\n+$/, '') }) : null, // dentro do botão: sem foco próprio
           h('span', { class: 'flash__dica', text: 'Toque para virar' })),
         h('span', { class: 'flash__lado flash__verso' },
           h('span', { class: 'rotulo', text: 'Resposta' }),

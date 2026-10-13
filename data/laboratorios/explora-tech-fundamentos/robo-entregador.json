@@ -1,0 +1,205 @@
+{
+  "id": "robo-entregador",
+  "nome": "Robô Entregador",
+  "versao": 1,
+  "tipo": "robo",
+  "descricao": "Escreva comandos em Python para o robô levar as caixas até o destino. Cada linha é uma ordem, e o computador faz exatamente o que você mandar: nem mais, nem menos.",
+  "comandos": [
+    {
+      "nome": "andar()",
+      "faz": "anda uma casa para a frente"
+    },
+    {
+      "nome": "virar_esquerda()",
+      "faz": "gira 90° para a esquerda, sem sair do lugar"
+    },
+    {
+      "nome": "virar_direita()",
+      "faz": "gira 90° para a direita, sem sair do lugar"
+    },
+    {
+      "nome": "pegar()",
+      "faz": "pega a caixa da casa onde o robô está"
+    },
+    {
+      "nome": "soltar()",
+      "faz": "solta a caixa que o robô carrega"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "O robô é de mentira, mas o Python é o de verdade. Dá para escrever o mesmo tipo de programa no seu computador.",
+    "passos": [
+      "Instale o Python (python.org) ou o Thonny, um editor feito para quem está começando (thonny.org).",
+      "Abra o Thonny, escreva print(\"andar\") três vezes, uma por linha, e aperte Run (F5).",
+      "Repare: as linhas rodam de cima para baixo, uma de cada vez, igual aos comandos do robô."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "re-sequencia-1",
+      "grupo": "Sequência",
+      "aulas": [
+        "log-o-que-e-algoritmo"
+      ],
+      "titulo": "Primeira entrega",
+      "enunciado": "O robô está virado para a direita. Leve a caixa até o destino: ande até a caixa, pegue, ande até o destino e solte.",
+      "mapa": [
+        "#######",
+        "#R.C.D#",
+        "#######"
+      ],
+      "direcao": "leste",
+      "codigoInicial": "andar()\nandar()\n# agora pegue a caixa e continue\n",
+      "solucao": "andar()\nandar()\npegar()\nandar()\nandar()\nsoltar()\n",
+      "metas": {
+        "linhas": 6,
+        "passos": 6
+      },
+      "dicas": [
+        "Conte as casas: a caixa está 2 casas à frente do robô, e o destino, mais 2 depois dela.",
+        "Depois dos dois andar(), o robô está em cima da caixa. Use pegar().",
+        "A ordem é: andar(), andar(), pegar(), andar(), andar(), soltar()."
+      ]
+    },
+    {
+      "id": "re-sequencia-2",
+      "grupo": "Sequência",
+      "aulas": [
+        "log-o-que-e-algoritmo"
+      ],
+      "titulo": "Virando a esquina",
+      "enunciado": "Agora o destino fica embaixo. Pegue a caixa, ande até a curva, vire e desça até o destino.",
+      "mapa": [
+        "######",
+        "#R.C.#",
+        "####.#",
+        "####D#",
+        "######"
+      ],
+      "direcao": "leste",
+      "codigoInicial": "andar()\nandar()\npegar()\n",
+      "solucao": "andar()\nandar()\npegar()\nandar()\nvirar_direita()\nandar()\nandar()\nsoltar()\n",
+      "metas": {
+        "linhas": 8,
+        "passos": 8
+      },
+      "dicas": [
+        "Virar não sai do lugar: o robô gira e fica olhando para outro lado.",
+        "Depois de pegar a caixa, ande mais uma casa. Para descer, o robô precisa virar para a direita.",
+        "Depois de virar_direita(), são dois andar() e o soltar()."
+      ]
+    },
+    {
+      "id": "re-sequencia-3",
+      "grupo": "Sequência",
+      "aulas": [
+        "log-o-que-e-algoritmo"
+      ],
+      "titulo": "Meia-volta",
+      "enunciado": "A caixa está à direita, mas o destino fica do outro lado. Pegue a caixa e dê meia-volta.",
+      "mapa": [
+        "#######",
+        "#D.R.C#",
+        "#######"
+      ],
+      "direcao": "leste",
+      "codigoInicial": "",
+      "solucao": "andar()\nandar()\npegar()\nvirar_esquerda()\nvirar_esquerda()\nandar()\nandar()\nandar()\nandar()\nsoltar()\n",
+      "metas": {
+        "linhas": 10,
+        "passos": 10
+      },
+      "dicas": [
+        "Não existe um comando de meia-volta. Que combinação de giros faz o robô olhar para trás?",
+        "Duas viradas para o mesmo lado (duas para a esquerda, por exemplo) deixam o robô virado para trás.",
+        "Ande 2, pegue, vire 2 vezes, ande 4 e solte."
+      ]
+    },
+    {
+      "id": "re-sequencia-4",
+      "grupo": "Sequência",
+      "aulas": [
+        "log-revisao-pensar"
+      ],
+      "titulo": "Zigue-zague",
+      "enunciado": "O caminho tem curvas para os dois lados. Leve a caixa até o destino sem bater em nenhuma parede.",
+      "mapa": [
+        "#######",
+        "#R..###",
+        "###.###",
+        "###C..#",
+        "#####D#",
+        "#######"
+      ],
+      "direcao": "leste",
+      "codigoInicial": "andar()\nandar()\nvirar_direita()\n",
+      "solucao": "andar()\nandar()\nvirar_direita()\nandar()\nandar()\npegar()\nvirar_esquerda()\nandar()\nandar()\nvirar_direita()\nandar()\nsoltar()\n",
+      "metas": {
+        "linhas": 12,
+        "passos": 12
+      },
+      "dicas": [
+        "Vá por partes: primeiro chegue até a caixa, rode e veja onde o robô parou.",
+        "Na caixa, o robô está virado para baixo. Para seguir para a direita, ele vira para a esquerda (a esquerda de quem olha para baixo).",
+        "Depois de pegar: virar_esquerda(), andar(), andar(), virar_direita(), andar(), soltar()."
+      ]
+    },
+    {
+      "id": "re-sequencia-5",
+      "grupo": "Sequência",
+      "aulas": [
+        "log-revisao-pensar"
+      ],
+      "titulo": "Duas entregas",
+      "enunciado": "São duas caixas e dois destinos. O robô carrega uma caixa por vez.",
+      "mapa": [
+        "########",
+        "#R.C.D.#",
+        "#....C.#",
+        "#....D.#",
+        "########"
+      ],
+      "direcao": "leste",
+      "codigoInicial": "",
+      "solucao": "andar()\nandar()\npegar()\nandar()\nandar()\nsoltar()\nvirar_direita()\nandar()\npegar()\nandar()\nsoltar()\n",
+      "metas": {
+        "linhas": 11,
+        "passos": 11
+      },
+      "dicas": [
+        "Termine a primeira entrega antes de começar a segunda.",
+        "Depois de soltar a primeira caixa, a segunda está bem embaixo do robô.",
+        "Segunda parte: virar_direita(), andar(), pegar(), andar(), soltar()."
+      ]
+    },
+    {
+      "id": "re-sequencia-6",
+      "grupo": "Sequência",
+      "aulas": [
+        "log-revisao-pensar"
+      ],
+      "titulo": "O caminho mais curto",
+      "enunciado": "Existem dois caminhos até o destino. Os dois funcionam, mas só o mais curto ganha as 3 estrelas.",
+      "mapa": [
+        "#######",
+        "#R...C#",
+        "#.###.#",
+        "#D....#",
+        "#######"
+      ],
+      "direcao": "leste",
+      "codigoInicial": "",
+      "solucao": "andar()\nandar()\nandar()\nandar()\npegar()\nvirar_direita()\nandar()\nandar()\nvirar_direita()\nandar()\nandar()\nandar()\nandar()\nsoltar()\n",
+      "metas": {
+        "linhas": 14,
+        "passos": 14
+      },
+      "dicas": [
+        "Conte as ações dos dois caminhos antes de escrever: voltar pelo mesmo corredor custa giros a mais.",
+        "Depois de pegar a caixa, desça pela direita em vez de voltar pela linha de cima.",
+        "Depois de pegar: virar_direita(), andar() duas vezes, virar_direita(), andar() quatro vezes e soltar()."
+      ]
+    }
+  ]
+}

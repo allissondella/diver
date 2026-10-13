@@ -79,7 +79,8 @@ const Trilhas = (() => {
       else if (!original) motivo = `"varianteDe" não aponta para uma questão da trilha`;
       else if (original.origem === 'enem' || v.origem === 'enem') motivo = 'questão do Enem não pode ter variante (licença Sem Derivações)';
       else if (v.fase !== original.fase) motivo = 'fase diferente da questão original';
-      else if (!v.enunciado || v.enunciado === original.enunciado) motivo = 'enunciado ausente ou igual ao da original';
+      // a variante pode repetir a pergunta ("O que este programa mostra?") se o código for outro (Explora Tech)
+      else if (!v.enunciado || (v.enunciado === original.enunciado && (v.codigo || '') === (original.codigo || ''))) motivo = 'enunciado ausente ou igual ao da original';
       else if (!v.tema || !DIFICULDADES.includes(v.dificuldade) || !v.explicacao) motivo = 'falta tema, dificuldade ou explicação';
       else if (!Array.isArray(v.alternativas) || v.alternativas.length < 2 || v.alternativas.length > 6
         || !Number.isInteger(v.correta) || v.correta < 0 || v.correta >= v.alternativas.length) motivo = 'alternativas ou "correta" inválidas';

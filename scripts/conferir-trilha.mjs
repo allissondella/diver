@@ -51,7 +51,8 @@ for (const q of [...t.questoes, ...(t.variantes || [])]) {
   if (!q.explicacao || q.explicacao.length < 40) erros.push(`${q.id}: explicação curta`);
   if (!q.enunciado || !q.tema) erros.push(`${q.id}: sem enunciado/tema`);
   if (q.varianteDe && !qids.has(q.varianteDe)) erros.push(`${q.id}: varianteDe inexistente`);
-  if (q.varianteDe && qids.has(q.varianteDe) && semAcento(q.enunciado) === semAcento(t.questoes.find((o) => o.id === q.varianteDe).enunciado)) erros.push(`${q.id}: igual à original`);
+  // a variante pode repetir a pergunta ("O que este programa mostra?") desde que o código seja outro (Explora Tech)
+  if (q.varianteDe && qids.has(q.varianteDe)) { const o = t.questoes.find((x) => x.id === q.varianteDe); if (semAcento(q.enunciado + (q.codigo || '')) === semAcento(o.enunciado + (o.codigo || ''))) erros.push(`${q.id}: igual à original`); }
   // a certa não pode ser de longe a mais longa (entrega a resposta)
   const tam = q.alternativas.map((a) => a.length);
   const outras = tam.filter((_, i) => i !== q.correta);

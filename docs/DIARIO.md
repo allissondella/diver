@@ -5,6 +5,70 @@
 
 ---
 
+## 2026-10-13 · Mapa: cada aula é um cartão só (pedido do usuário)
+- **Pedido:** os botões embaixo das aulas estavam "horríveis": ora lado a lado e longe, ora um embaixo do outro, e sem deixar claro de qual aula eram.
+- **Causa:** cada botão tinha a sua própria margem de 64 px; dois numa linha ficavam separados por um buraco.
+- **Feito (vale para todos os cursos):**
+  - a aula virou um cartão: o botão da aula em cima e, no pé, separado por uma linha fina e alinhado embaixo do título, uma linha para cada ação;
+  - todas as linhas com o mesmo tamanho: ícone, nome, o estado à direita ("Leia para liberar" ou "✓ Feito" no laboratório feito) e uma setinha;
+  - no celular, o estado vai para baixo do nome e nada quebra no meio;
+  - a descrição das aulas do Explora Tech não repete mais o nome do laboratório (o botão já mostra): `numerar-aulas.mjs` deixou de escrever "laboratório: …" (só o texto mudou; ids iguais).
+
+## 2026-10-13 · Mapa: a Prova final marca o fim do curso (pedido do usuário)
+- **Pedido:** "deixa claro onde termina o curso, coloca aqui embaixo a prova final" e "tira ela ali de baixo e alinha o que sobrou".
+- **Feito:** a Prova final virou o último item do mapa de todos os cursos (mesmo desenho das aulas, em amarelo, com o selo "Fim do curso", regras e "Libera quando você concluir as N aulas (x de N)" ou "Aprovado · nota"); saiu dos "Outros jeitos de mergulhar", que ficaram com 3 atalhos alinhados (Simulado, Revisão, Sala de Jogos). A Prova final continua na barra lateral. Passo novo no tutorial do Mergulho (sem subir a versão: só quem ainda não viu).
+
+## 2026-10-13 · Laboratórios: tela redistribuída (pedido do usuário)
+- **Pedido:** "a distribuição aqui dentro ficou horrível, formate e deixe bem feito e lindo".
+- **Feito:**
+  - duas colunas no computador: apoio à esquerda (objetivo ou mundo, comandos, dicas; fica parada ao rolar) e a janela do código à direita (arquivo, editor, Rodar/Recomeçar e a Saída num cartão só);
+  - todos os cartões com o mesmo desenho (ícone + título); a cola em tabela alinhada, sem quebrar o código no meio;
+  - testes num cartão; a saída diz quando o programa não mostrou nada;
+  - no celular: objetivo, janela do código e depois a cola;
+  - vale para o Robô Entregador e para o Primeiros Programas (peças `Laboratorios.janela` e `Laboratorios.cartao`).
+- **Mapa:** voltou ao desenho de antes (o usuário não gostou dos passos numerados); o fluxo questões → laboratório → próxima aula ficou.
+
+## 2026-10-13 · Explora Tech: caminho da aula e Primeiros Programas (pedido do usuário)
+- **Pedido:**
+  - a tela do laboratório estava bagunçada embaixo do editor;
+  - depois das questões, o aluno deve seguir para a tarefa e só então para a próxima aula;
+  - os comandos devem ficar sempre à vista.
+  - Tudo isso no Módulo 1, para ele pegar o jeito.
+- **Feito:**
+  - **Mapa:** fica o desenho de sempre. Cheguei a fazer passos numerados (1 Ler → 2 Questões → 3 Mão na massa), mas o usuário não gostou, e eles saíram.
+  - **Fluxo:** caixa do Diver e botão "Próximo passo" depois das questões; "Concluir e seguir para a próxima aula" no fim do laboratório (abre o artigo da aula seguinte).
+  - **Tela do robô:** editor que cresce com o código, Rodar e Recomeçar numa barra só, console só quando há saída, comandos num cartão fixo embaixo da grade.
+  - **Laboratório Primeiros Programas** (11 missões, aulas 2 a 5), com objetivo e "cola" sempre à vista, comparação Esperado × Saiu e lacunas no celular.
+  - **Robô redistribuído:** missões 1 a 3 na aula 1, 4 a 6 na revisão.
+  - Modelo `lab-python.js`, que vai servir para a Oficina de Funções e o Caça-Bugs.
+- **Conferências:**
+  - `conferir-trilha` e `conferir-laboratorios` sem erros (as lacunas certas de cada missão passam nos testes).
+  - Navegador, PC e celular: caminho completo da aula 1 até abrir a aula 2, falha e acerto no Primeiros Programas, lacunas no celular sem baixar o Python.
+
+---
+
+## 2026-10-13 · Explora Tech · Onda 0 (sala Tecnologia, Python no navegador, Módulo 1 e Robô Entregador)
+- **Feito:**
+  - **Sala Tecnologia** (pedido do usuário): áreas "Explora Tech" e "Segurança da informação" (Cibersegurança e ISO 27001, que eram salas de um curso só). No Admin, matrícula curso a curso; `pacote:iso`/`pacote:ciber` antigos valem como "só aquele curso".
+  - **Bloco de código** nas questões (`codigo`, `alternativasCodigo`) e no artigo, só no desenho.
+  - **Python no navegador:** Pyodide 314.0.7 (Python 3.14) em `lib/pyodide/` (13,4 MB no repositório, ~6 MB baixados só quando um laboratório abre), num iframe sandbox de origem opaca, com tempo limite, `input()` por replay, testes e erro traduzido.
+  - **Curso `explora-tech-fundamentos`**, Módulo 1 (5 aulas, 100 questões, 100 variantes, 16 fichas, prova de 40). As 119 questões de código foram conferidas rodando no Python.
+  - **Laboratório Robô Entregador**: 6 missões, modo toque no celular, estrelas e XP por estrela nova.
+- **Conferências:**
+  - `conferir-trilha` 0 erros e 0 avisos nos 22 cursos; `conferir-laboratorios` 0 erros.
+  - Navegador (PC e celular): sala, mapa, artigo, Mergulho com código, laboratório (código, erro, laço infinito parado, isolamento) e Admin com cursos simulados.
+  - `fila.mjs simular`: ~US$ 3,72 questões + ~US$ 3,72 variantes; nada enviado.
+- **Decisões por conta própria:**
+  - O worker do sandbox nasce de um endereço `data:`: de blob ele não abre numa origem opaca.
+  - A Fila passou a mandar o código da questão às IAs, sem mudar a assinatura das questões sem código.
+  - O verificador e o app aceitam variante com o mesmo enunciado se o código for outro.
+  - `_headers` com CORS para o Cloudflare (o GitHub Pages já manda).
+  - O laboratório paga XP só por estrela nova (`soBonus` na economia).
+- **Fontes:** os cinco PDFs "WeLib" da pasta do Explora Tech foram reprovados (só bibliografia); parecer `docs/validacoes/explora-tech-fundamentos-2026-10-13.md`.
+- **Pendências:** colar `supabase/painel/mergulho-triplo.ts` na Edge Function antes de validar o Explora Tech; merge para produção é do usuário.
+
+---
+
 ## 2026-10-13 · Rodada do Mergulho com 10 questões
 - **Pedido do usuário:** as aulas mostravam "1 de 8"; agora toda rodada do Mergulho, em todos os cursos, tem 10 questões (`TAMANHO_RODADA` em `js/quiz.js`). A Revisão já tinha 10; Simulado e Prova não mudaram.
 - **Junto:** o `conferir-trilha.mjs` passou a exigir pelo menos 10 fáceis+médias por fase (a 1ª rodada não mostra difíceis); todas as 21 trilhas já cumprem. Texto do tutorial do Mergulho, skill `criar-trilha` e `professor-diver.md` atualizados. O tutorial não reaparece para todos (`VERSOES` igual): foi só o número.

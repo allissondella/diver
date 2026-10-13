@@ -53,6 +53,7 @@ const JogoComum = (() => {
         h('span', { class: 'tag', text: q.tema }),
         h('span', { class: `tag tag--${q.dificuldade}`, text: { facil: 'Fácil', medio: 'Médio', dificil: 'Difícil' }[q.dificuldade] || '' })),
       h('h2', { class: 'questao__enunciado', tabindex: '-1', text: q.enunciado }),
+      q.codigo ? UI.codigo(q.codigo, { rotulo: 'Código da questão' }) : null,
       alts, feedback);
 
     function responder(original) {
@@ -88,7 +89,7 @@ const JogoComum = (() => {
 
     ordem.forEach((original, pos) => {
       alts.append(h('button', {
-        type: 'button', class: 'alternativa', 'data-indice': original, 'aria-keyshortcuts': `${pos + 1} ${LETRAS[pos]}`,
+        type: 'button', class: q.alternativasCodigo ? 'alternativa alternativa--codigo' : 'alternativa', 'data-indice': original, 'aria-keyshortcuts': `${pos + 1} ${LETRAS[pos]}`,
         onclick: () => responder(original),
       }, h('span', { class: 'alternativa__letra', 'aria-hidden': 'true', text: LETRAS[pos] }), h('span', { text: q.alternativas[original] })));
     });

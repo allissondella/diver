@@ -1897,3 +1897,8 @@ body.qd-travado { overflow: hidden; }
 .dg-rev__alt--sua { box-shadow: inset 3px 0 0 var(--coral); }
 .dg-rev__coment { display: block; color: var(--texto-suave); margin-top: 2px; }
 .dg-rev__explica { margin: 0; color: var(--texto-suave); }
+
+/* Matrícula curso a curso dentro da sala (Tecnologia, 2026-10-13) */
+.check-sala-grupo { display: grid; gap: var(--esp-2, 8px); }
+.check-sala__cursos { display: grid; gap: var(--esp-2, 8px); padding-left: var(--esp-6, 28px); }
+.check.check-sala--curso { min-height: 44px; font-size: 0.92rem; }

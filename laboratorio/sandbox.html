@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Laboratório do Diver (Python)</title>
+<!--
+  sandbox.html — a "caixa fechada" dos laboratórios (Explora Tech, 2026-10-13).
+  O app abre esta página num iframe com sandbox="allow-scripts" (sem allow-same-origin): a origem fica opaca,
+  então nada daqui enxerga o login, o progresso ou o armazenamento do Diver. Ela só cria o worker do Python
+  e repassa mensagens. O tempo limite também mora aqui: passou do tempo, o worker é encerrado e recriado.
+-->
+</head>
+<body>
+<script>
+(function () {
+  var base = null;
+  var worker = null;
+  var pronto = false;
+  var fila = [];          // pedidos que chegaram antes de o worker ficar pronto
+  var atual = null;       // { id, timer }
+  var fonteWorker = null;
+
+  function avisar(msg) { parent.postMessage(msg, '*'); }
+
+  function criar() {
+    pronto = false;
+    // worker de módulo (o Pyodide exige); numa origem opaca ele abre a partir de um endereço data:
+    worker = new Worker('data:text/javascript;charset=utf-8,' + encodeURIComponent(fonteWorker), { type: 'module' });
+    worker.onmessage = function (e) {
+      var m = e.data || {};
+      if (m.tipo === 'pronto') { pronto = true; avisar(m); proximo(); return; }
+      if (m.tipo === 'resultado' && atual && atual.id === m.id) { clearTimeout(atual.timer); atual = null; avisar(m); proximo(); return; }
+      avisar(m);
+    };
+    worker.onerror = function (e) { avisar({ tipo: 'falhou', mensagem: (e && e.message) || 'erro no worker' }); };
+    worker.postMessage({ tipo: 'iniciar', base: base });
+  }
+
+  function proximo() {
+    if (!pronto || atual || !fila.length) return;
+    var m = fila.shift();
+    atual = {
+      id: m.id,
+      timer: setTimeout(function () {
+        // laço infinito (ou programa lento demais): encerra e começa um Python novo
+        worker.terminate();
+        var id = atual.id;
+        atual = null;
+        avisar({ tipo: 'resultado', id: id, resultado: { ok: false, tempoEsgotado: true, erro: { tipo: 'TempoEsgotado', mensagem: 'o programa passou do tempo limite', linha: null, traceback: '' }, saida: '', testes: [] } });
+        criar();
+      }, m.tempoMs || 5000),
+    };
+    worker.postMessage({ tipo: 'rodar', id: m.id, pedido: m.pedido });
+  }
+
+  addEventListener('message', function (ev) {
+    if (ev.source !== parent) return;
+    var m = ev.data || {};
+    if (m.tipo === 'iniciar' && !base) {
+      base = m.base;
+      fetch(base + 'laboratorio/python-worker.js')
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(function (t) { fonteWorker = t; criar(); })
+        .catch(function (e) { avisar({ tipo: 'falhou', mensagem: String((e && e.message) || e) }); });
+    } else if (m.tipo === 'rodar') {
+      fila.push(m);
+      proximo();
+    }
+  });
+  avisar({ tipo: 'carregou' });
+})();
+</script>
+</body>
+</html>

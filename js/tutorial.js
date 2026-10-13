@@ -54,7 +54,7 @@ const Tutorial = (() => {
       { desenho: 'diver', titulo: 'Bem-vindo ao Diver!', texto: 'Aqui você estuda em mergulhos curtos, ganha XP e pérolas e sobe de nível. Em poucos passos eu te mostro onde fica cada coisa.' },
       { desenho: 'livro', titulo: 'Primeiro ler, depois mergulhar', texto: 'Cada fase tem um artigo curto, o "Antes de mergulhar". O Mergulho da fase só abre depois que você der uma olhada nele: basta abrir uma vez.' },
       { alvo: '#continuar', desenho: 'ancora', titulo: 'Continuar de onde parou', texto: 'Seu último curso e a fase onde você estava. Um toque e você volta a mergulhar.' },
-      { alvo: '#lista-salas', desenho: 'livro', titulo: 'Escolha sua sala', texto: 'Cada porta é uma sala: Mergulho no Enem, Radiologia e as outras. Entre numa sala para ver os cursos dela. A barrinha mostra quanto você já desceu.' },
+      { alvo: '#lista-salas', desenho: 'livro', titulo: 'Escolha sua sala', texto: 'Cada porta é uma sala: Mergulho no Enem, Radiologia e Tecnologia. Entre numa sala para ver os cursos dela. A barrinha mostra quanto você já desceu.' },
       { alvo: '#hoje', desenho: 'alvo', titulo: 'Seu dia', texto: 'O Desafio do Dia vale XP em dobro. Aqui também aparecem a meta de questões e o que tem na sua agenda.' },
       { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Quer trocar de sala sem voltar ao Início? É por aqui, na barra lateral.' },
     ],
@@ -68,6 +68,7 @@ const Tutorial = (() => {
     mergulho: [
       { alvo: '#mapa-fases', desenho: 'mapa', titulo: 'Mapa do mergulho', texto: 'Cada fase é uma profundidade. Uma rodada tem 10 questões, com a explicação logo depois de cada resposta.' },
       { alvo: '#mapa-fases .fase__estudo', desenho: 'livro', titulo: 'Antes de mergulhar: leitura obrigatória', texto: 'O artigo da fase, com mapa mental e os pontos-chave. O Mergulho só libera depois que você abrir este botão uma vez. Enquanto isso, a fase mostra "Ler primeiro".' },
+      { alvo: '#mapa-fases .mapa__fim', desenho: 'trofeu', titulo: 'O fim do curso', texto: 'No fim do mapa fica a Prova final: ela libera quando você conclui as aulas do curso.' },
       { desenho: 'oxigenio', titulo: 'Oxigênio', texto: 'Você desce com 3 tubos. Cada erro gasta um, e a questão errada volta no fim da rodada para você tentar de novo.' },
       { desenho: 'livro', titulo: 'Depois do Mergulho: flashcards', texto: 'No fim da rodada, o Diver sugere umas cartas rápidas da mesma fase para fixar a matéria. Quando acabar, o botão "Voltar para a trilha" traz você de volta para cá.' },
       { alvo: '#tela-painel .status', desenho: 'perola', titulo: 'XP, pérolas e sequência', texto: 'Acertos dão XP (para subir de nível) e pérolas (para dicas nos jogos). Estudar todo dia mantém sua sequência.' },
@@ -131,7 +132,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 4, sala: 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { inicio: 5, sala: 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

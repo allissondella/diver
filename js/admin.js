@@ -18,17 +18,20 @@ const Admin = (() => {
   const papelDe = (p) => p.papel || (p.admin ? 'admin' : 'aluno');
 
   function nomeTrilha(id) {
-    if (ehPacote(id)) { const sala = salaDoPacote(id); return sala ? sala.nome : id.replace('pacote:', ''); }
+    if (ehPacote(id)) { const sala = salaDoPacote(id); return sala ? sala.nome : PACOTES_ANTIGOS[id] || id.replace('pacote:', ''); }
     const t = App.trilhas().find((x) => x.id === id);
     return t ? t.nome : `${id} (não encontrado)`;
   }
 
   /*
-   * Salas na matrícula (2026-10-12): o admin marca a sala inteira (Mergulho no Enem e Vestibular, Radiologia,
-   * ISO/IEC 27001:2022 Foundation, Cibersegurança Essencial), igual ao que o aluno vê. A matrícula guarda os cursos da sala e um marcador
+   * Salas na matrícula (2026-10-12): o admin marca a sala inteira (Mergulho no Enem e Vestibular, Radiologia, Tecnologia;
+   * na Tecnologia também curso a curso, porque são produtos diferentes), igual ao que o aluno vê. A matrícula guarda os cursos da sala e um marcador
    * "pacote:<id da sala>" (o "pacote:enem" de 2026-10-09 continua valendo); "Atualizar pacotes" acrescenta os
    * cursos publicados depois. Não muda o banco: a coluna trilha_id aceita texto, e Nuvem.matriculas() ignora os marcadores.
    */
+  // Marcadores das salas de um curso só que viraram a sala Tecnologia (2026-10-13): continuam valendo como "só aquele curso"
+  // e o "Atualizar salas" não dá a eles os cursos novos da sala (só quem tem pacote:tecnologia recebe).
+  const PACOTES_ANTIGOS = { 'pacote:iso': 'ISO/IEC 27001:2022 Foundation', 'pacote:ciber': 'Cibersegurança Essencial' };
   const ehPacote = (id) => typeof id === 'string' && id.startsWith('pacote:');
   const salasDoCatalogo = () => Grupos.salas(App.trilhas().filter((t) => !Trilhas.ehImportada(t.id)));
   const salaDoPacote = (id) => salasDoCatalogo().find((s) => `pacote:${s.id}` === id) || null;
@@ -79,22 +82,37 @@ const Admin = (() => {
     const linhas = salas.map((sala) => {
       const ids = sala.trilhas.map((t) => t.id);
       const tem = ids.filter((id) => selecionados.includes(id));
-      const inteira = selecionados.includes(`pacote:${sala.id}`) || (tem.length === ids.length && ids.length > 0);
+      const inteira = selecionados.includes(`pacote:${sala.id}`) || (!sala.porCurso && tem.length === ids.length && ids.length > 0);
       const parte = !inteira && tem.length > 0;
       const entrada = h('input', { type: 'checkbox', value: `pacote:${sala.id}`, name: nomeGrupo, checked: inteira });
-      entrada.indeterminate = parte;
-      const nota = h('span', { class: 'texto-suave check-sala__nota', text: parte
+      entrada.indeterminate = parte && !sala.porCurso;
+      const nota = h('span', { class: 'texto-suave check-sala__nota', text: parte && !sala.porCurso
         ? ` · ${tem.length} de ${ids.length} ${ids.length === 1 ? sala.unidade[0] : sala.unidade[1]} (marque para dar a sala inteira)`
-        : sala.unica ? '' : ` · ${ids.length} ${sala.unidade[1]}` });
+        : sala.unica ? '' : ` · ${ids.length} ${sala.unidade[1]}${sala.porCurso ? ' (a sala inteira, com os cursos publicados depois)' : ''}` });
       entrada.addEventListener('change', () => { nota.textContent = sala.unica ? '' : ` · ${ids.length} ${sala.unidade[1]}`; });
-      return { sala, ids, tem, entrada, label: h('label', { class: `check check-sala sala--${sala.cor}` },
+      // Sala de cursos que são produtos diferentes (Tecnologia): um quadradinho por curso, além da sala inteira.
+      const cursos = sala.porCurso && ids.length > 1 ? sala.trilhas.map((t) => ({ id: t.id, entrada: h('input', { type: 'checkbox', value: t.id, name: `${nomeGrupo}-${sala.id}`, checked: inteira || tem.includes(t.id) }), nome: t.nome })) : [];
+      cursos.forEach((c) => c.entrada.addEventListener('change', () => {
+        if (!c.entrada.checked && entrada.checked) entrada.checked = false; // tirou um curso: deixa de ser a sala inteira
+      }));
+      entrada.addEventListener('change', () => { if (cursos.length) cursos.forEach((c) => { c.entrada.checked = entrada.checked; }); });
+      const label = h('label', { class: `check check-sala sala--${sala.cor}` },
         entrada, h('span', { class: 'check-sala__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
-        h('span', {}, h('strong', { text: sala.nome }), nota)) };
+        h('span', {}, h('strong', { text: sala.porCurso && cursos.length ? `${sala.nome} (sala inteira)` : sala.nome }), nota));
+      const bloco = cursos.length
+        ? h('div', { class: 'check-sala-grupo' }, label, h('div', { class: 'check-sala__cursos', role: 'group', 'aria-label': `Cursos da sala ${sala.nome}` },
+          cursos.map((c) => h('label', { class: `check check-sala check-sala--curso sala--${sala.cor}` }, c.entrada, h('span', { text: c.nome })))))
+        : label;
+      return { sala, ids, tem, entrada, cursos, label: bloco };
     });
     const caixa = h('div', { class: 'checks checks--salas' }, linhas.map((l) => l.label));
     caixa.escolhidos = () => [...new Set([
-      ...selecionados.filter((c) => !conhecidos.has(c)), // matrícula de curso que não está em nenhuma sala: fica como está
-      ...linhas.flatMap((l) => (l.entrada.indeterminate ? l.tem : l.entrada.checked ? [`pacote:${l.sala.id}`, ...l.ids] : [])),
+      ...selecionados.filter((c) => !conhecidos.has(c)), // matrícula de curso que não está em nenhuma sala (ou marcador antigo, como pacote:iso): fica como está
+      ...linhas.flatMap((l) => {
+        if (l.entrada.checked) return [`pacote:${l.sala.id}`, ...l.ids];
+        if (l.cursos.length) return l.cursos.filter((c) => c.entrada.checked).map((c) => c.id);
+        return l.entrada.indeterminate ? l.tem : [];
+      }),
     ])];
     return caixa;
   }

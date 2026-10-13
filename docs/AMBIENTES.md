@@ -60,6 +60,7 @@ Enquanto o bloco `testes` do `config.js` estiver vazio, o ambiente de testes rod
 - **Nunca** cadastre alunos reais nem copie dados da produção para os testes.
 
 ## Bom saber
+- **Laboratórios do Explora Tech (2026-10-13):** o Python roda num iframe sandbox que baixa `lib/pyodide/` e `laboratorio/` por `fetch`, então esses caminhos precisam do cabeçalho `Access-Control-Allow-Origin: *`. O GitHub Pages já manda; no Cloudflare, o arquivo `_headers` (na raiz) cuida disso. Sem o cabeçalho, o laboratório ainda funciona (worker comum trancado), só sem a caixa de areia.
 - **Mudou o banco?** O `setup.sql` roda **primeiro no Supabase de testes**, testamos lá, e só depois na produção.
 - **Projeto pausado:** no plano gratuito, um projeto Supabase parado por 7 dias pausa. É só clicar em **Restore** no painel; nada se perde. O de testes vai pausar mais (é menos usado): normal.
 - **No computador (localhost)** o Diver também usa o ambiente de testes: desenvolver nunca mexe na produção.

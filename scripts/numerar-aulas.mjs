@@ -6,6 +6,7 @@
  *   fases[].modulo     → "Módulo 3 · Geometria plana"
  *   fases[].nome       → "Aula 14 · Áreas de figuras planas"   (ou "Oficina 7 · …" na Redação)
  *   fases[].descricao  → "Módulo 3 · aula 2 de 6 · 35 min · treina as habilidades H8 e H9"
+ *                        (o laboratório da aula, no Explora Tech, não entra aqui: o mapa já mostra o botão "Mão na massa")
  * O id da fase não muda (ele não leva número): dá para reordenar as fases sem perder o histórico.
  *
  * Só mexe em fases que têm "modulo". Curso sem módulos (ex.: "Comece por aqui") fica como está.
@@ -17,7 +18,6 @@
  *   node scripts/numerar-aulas.mjs data/trilhas/enem-matematica.json --conferir  só confere (sai com 1 se faltar numerar)
  */
 import { readFileSync, writeFileSync } from 'node:fs';
-
 const tirarNumero = (texto, rotulo) => String(texto || '').replace(new RegExp(`^${rotulo}\\s+\\d+\\s*·\\s*`, 'i'), '').trim();
 
 /** "H8" · "H8 e H9" · "H1, H2 e H3" (o texto de cada item fica como veio, ex.: "H1–H5"). */

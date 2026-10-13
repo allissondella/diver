@@ -47,18 +47,22 @@ export function explicacaoEmTexto(explicacao) {
 }
 
 /** Camada 1 recebe a questão + a explicação completa (as três camadas, quando houver). */
+/** Código da questão (Explora Tech): vai junto do enunciado, como bloco, para as duas camadas verem o mesmo que o aluno. */
+const blocoCodigo = (q) => (q.codigo ? `Código (Python):\n${q.codigo}` : null);
+
 export function textoFato(q) {
   return [
     `Enunciado: ${q.enunciado}`,
+    blocoCodigo(q),
     `Alternativas:\n${alternativasEmTexto(q.alternativas)}`,
     `Resposta correta: ${letra(q.correta)}) ${q.alternativas[q.correta]}`,
     `Explicação:\n${explicacaoEmTexto(q.explicacao)}`,
-  ].join('\n\n');
+  ].filter(Boolean).join('\n\n');
 }
 
 /** Camada 2 recebe enunciado + alternativas + tema + dificuldade — NUNCA o gabarito. */
 export function textoLogica(q) {
-  return [`Tema: ${q.tema}`, `Dificuldade: ${q.dificuldade}`, `Enunciado: ${q.enunciado}`, `Alternativas:\n${alternativasEmTexto(q.alternativas)}`].join('\n\n');
+  return [`Tema: ${q.tema}`, `Dificuldade: ${q.dificuldade}`, `Enunciado: ${q.enunciado}`, blocoCodigo(q), `Alternativas:\n${alternativasEmTexto(q.alternativas)}`].filter(Boolean).join('\n\n');
 }
 
 export const promptFato = (q) => PROMPT_FATO + textoFato(q);
@@ -78,7 +82,7 @@ export function classificar(resposta, palavra) {
  * conteúdo nosso ou questão literal do Enem com a fonte. Qualquer outro campo (anotação,
  * trecho de apostila, "referencia"...) é descartado aqui, antes de sair do computador.
  */
-export const CAMPOS_DA_QUESTAO = ['id', 'tema', 'dificuldade', 'fase', 'enunciado', 'alternativas', 'correta', 'explicacao', 'origem', 'fonte', 'varianteDe', 'validacao'];
+export const CAMPOS_DA_QUESTAO = ['id', 'tema', 'dificuldade', 'fase', 'enunciado', 'codigo', 'alternativasCodigo', 'alternativas', 'correta', 'explicacao', 'origem', 'fonte', 'varianteDe', 'validacao'];
 export function questaoLimpa(q) {
   const limpa = {};
   CAMPOS_DA_QUESTAO.forEach((c) => { if (q[c] !== undefined) limpa[c] = q[c]; });
@@ -108,7 +112,8 @@ export function variantesProibidas(conteudo) {
 
 /** Impressão digital do conteúdo (se não mudou desde a reprovação, não adianta validar de novo). */
 export async function assinatura(q) {
-  const dados = new TextEncoder().encode(JSON.stringify([q.enunciado, q.alternativas, q.correta, q.explicacao]));
+  // o código entra só quando existe: a assinatura das questões sem código fica igual à de antes
+  const dados = new TextEncoder().encode(JSON.stringify(q.codigo ? [q.enunciado, q.codigo, q.alternativas, q.correta, q.explicacao] : [q.enunciado, q.alternativas, q.correta, q.explicacao]));
   const hash = new Uint8Array(await globalThis.crypto.subtle.digest('SHA-1', dados));
   return [...hash].map((b) => b.toString(16).padStart(2, '0')).join('').slice(0, 12);
 }
@@ -193,6 +198,7 @@ export function itemDoAcervo(q, { trilhaId, materia, validacao }) {
     ...(q.fonte ? { fonte: q.fonte } : {}),
     ...(q.varianteDe ? { varianteDe: q.varianteDe } : {}),
     enunciado: q.enunciado,
+    ...(q.codigo ? { codigo: q.codigo } : {}),
     alternativas: q.alternativas,
     correta: q.correta,
     explicacao: q.explicacao,
@@ -203,7 +209,7 @@ export function itemDoAcervo(q, { trilhaId, materia, validacao }) {
 
 /** O texto que vira vetor (igual na hora de guardar e na hora de buscar). */
 export function textoParaEmbedding(item) {
-  return [`Tema: ${item.tema || ''}`, `Dificuldade: ${item.dificuldade || ''}`, item.enunciado || '', alternativasEmTexto(item.alternativas), explicacaoEmTexto(item.explicacao)]
+  return [`Tema: ${item.tema || ''}`, `Dificuldade: ${item.dificuldade || ''}`, item.enunciado || '', item.codigo || '', alternativasEmTexto(item.alternativas), explicacaoEmTexto(item.explicacao)]
     .filter(Boolean).join('\n');
 }
 
@@ -290,7 +296,7 @@ export async function montarLotes(trilha, { materia, arquivo, fase = null, ids =
       const original = questoes.get(q.varianteDe);
       if (!original) throw new Error(`variante ${q.id}: "varianteDe" (${q.varianteDe}) não existe nas questões da trilha`);
       if (original.origem === 'enem' || q.origem === 'enem') throw new Error(`variante ${q.id}: ${q.varianteDe} é questão do Enem e NUNCA pode ter variante (licença Sem Derivações, docs/CONTEUDO_CURSINHO.md 1.1). Apague essa variante.`);
-      if (q.enunciado === original.enunciado) throw new Error(`variante ${q.id}: o enunciado é igual ao da original`);
+      if (q.enunciado === original.enunciado && (q.codigo || '') === (original.codigo || '')) throw new Error(`variante ${q.id}: o enunciado é igual ao da original`); // com código diferente, vale (Explora Tech)
       originais[q.varianteDe] = { origem: original.origem || 'diver', tema: original.tema, dificuldade: original.dificuldade };
     }
     const v = q.validacao;

@@ -1,6 +1,6 @@
 /*
  * Artigo da fase ("Antes de mergulhar") — monta as partes visuais opcionais de fases[].resumo:
- *   secoes        [{ titulo, texto | [parágrafos] }]          artigo curto, com **negrito**
+ *   secoes        [{ titulo, texto | [parágrafos] }]          artigo curto, com **negrito**, `código` e blocos ```
  *   linhaDoTempo  [{ quando, fato }]                          linha do tempo (quando fizer sentido)
  *   mapaMental    { centro, ramos: [{ titulo, itens: [] }] }  mapa mental
  *   associacoes   [{ icone, conceito, liga, porque }]         imagens de associação (emoji + gancho)
@@ -19,10 +19,13 @@ const Artigo = (() => {
     return el;
   }
 
-  /** Texto com **negrito** vira nós. */
-  function negrito(texto) {
-    return String(texto).split(/(\*\*[^*]+\*\*)/).filter(Boolean)
-      .map((p) => (p.startsWith('**') && p.endsWith('**') ? h('strong', { text: p.slice(2, -2) }) : p));
+  /** Texto com **negrito** (e `código em linha`, 2026-10-13) vira nós. */
+  const negrito = (texto) => UI.marcado(texto);
+
+  /** Parágrafo do artigo: o que começa com ``` é um bloco de código (a 1ª linha pode dizer a linguagem). */
+  function paragrafo(p) {
+    const m = /^```[^\n]*\n([\s\S]*?)\n?```\s*$/.exec(String(p));
+    return m ? UI.codigo(m[1]) : h('p', {}, negrito(p));
   }
 
   const lista = (x) => (Array.isArray(x) ? x : []);
@@ -53,7 +56,7 @@ const Artigo = (() => {
     if (!s.length) return null;
     return h('div', { class: 'artigo' }, s.map((sec) => h('section', { class: 'artigo__secao' },
       h('h3', { class: 'artigo__titulo', text: sec.titulo }),
-      (Array.isArray(sec.texto) ? sec.texto : [sec.texto]).filter(Boolean).map((p) => h('p', {}, negrito(p))))));
+      (Array.isArray(sec.texto) ? sec.texto : [sec.texto]).filter(Boolean).map(paragrafo))));
   }
 
   function linhaDoTempo(itens) {

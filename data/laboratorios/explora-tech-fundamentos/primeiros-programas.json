@@ -1,0 +1,575 @@
+{
+  "id": "primeiros-programas",
+  "nome": "Primeiros Programas",
+  "versao": 1,
+  "tipo": "python",
+  "descricao": "Programas de verdade em Python: mostrar na tela, guardar valores em variáveis e fazer contas.",
+  "tituloReferencia": "Comandos que você já conhece",
+  "referencia": [
+    {
+      "nome": "print(\"texto\")",
+      "faz": "mostra o texto na tela, sem as aspas"
+    },
+    {
+      "nome": "print(a, b)",
+      "faz": "mostra as partes separadas por um espaço"
+    },
+    {
+      "nome": "# comentário",
+      "faz": "o Python ignora: serve para quem lê"
+    },
+    {
+      "nome": "nome = valor",
+      "faz": "guarda o valor na variável (atribuição)"
+    },
+    {
+      "nome": "+  -  *  /",
+      "faz": "soma, subtração, multiplicação e divisão"
+    },
+    {
+      "nome": "//  %",
+      "faz": "divisão inteira e resto da divisão"
+    },
+    {
+      "nome": "round(x, 2)",
+      "faz": "arredonda para 2 casas"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "Os mesmos programas rodam no seu computador, com o Python instalado.",
+    "passos": [
+      "Instale o Thonny (thonny.org): ele já vem com o Python.",
+      "Cole um dos programas desta missão, aperte Run (F5) e veja a saída embaixo.",
+      "Mude um número ou um texto e rode de novo: programar é testar e ajustar."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "pp-print-1",
+      "aulas": [
+        "log-primeiro-programa"
+      ],
+      "grupo": "Mostrar na tela",
+      "titulo": "Olá, Diver!",
+      "enunciado": "Escreva um programa que mostre na tela exatamente `Olá, Diver!`.",
+      "codigoInicial": "# escreva a sua primeira linha aqui\n",
+      "solucao": "print(\"Olá, Diver!\")\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra a saudação",
+          "esperada": "Olá, Diver!\n"
+        }
+      ],
+      "metas": {
+        "linhas": 1
+      },
+      "dicas": [
+        "A instrução que mostra coisas na tela é o print().",
+        "O texto vai entre aspas, dentro dos parênteses do print.",
+        "Escreva: print(\"Olá, Diver!\")"
+      ],
+      "toque": {
+        "modelo": "print(___)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "\"Olá, Diver!\"",
+              "Olá, Diver!",
+              "\"print\""
+            ],
+            "certa": 0,
+            "dica": "Texto para mostrar vai entre aspas."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-print-2",
+      "aulas": [
+        "log-primeiro-programa"
+      ],
+      "grupo": "Mostrar na tela",
+      "titulo": "Três linhas, na ordem",
+      "enunciado": "O programa abaixo mostra as linhas fora de ordem. Arrume para que apareça `Bom dia`, depois `Bora estudar` e por último `Até já`.",
+      "codigoInicial": "print(\"Até já\")\nprint(\"Bom dia\")\nprint(\"Bora estudar\")\n",
+      "solucao": "print(\"Bom dia\")\nprint(\"Bora estudar\")\nprint(\"Até já\")\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra as três linhas na ordem",
+          "esperada": "Bom dia\nBora estudar\nAté já\n"
+        }
+      ],
+      "metas": {
+        "linhas": 3
+      },
+      "dicas": [
+        "O Python roda de cima para baixo: a ordem das linhas é a ordem da tela.",
+        "A linha do \"Até já\" precisa ir para o fim.",
+        "A ordem certa é: print(\"Bom dia\"), print(\"Bora estudar\"), print(\"Até já\")."
+      ],
+      "toque": {
+        "modelo": "print(___)\nprint(___)\nprint(___)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "\"Bom dia\"",
+              "\"Bora estudar\"",
+              "\"Até já\""
+            ],
+            "certa": 0,
+            "dica": "A primeira linha da tela é o \"Bom dia\"."
+          },
+          {
+            "opcoes": [
+              "\"Bom dia\"",
+              "\"Bora estudar\"",
+              "\"Até já\""
+            ],
+            "certa": 1,
+            "dica": "No meio vem o \"Bora estudar\"."
+          },
+          {
+            "opcoes": [
+              "\"Bom dia\"",
+              "\"Bora estudar\"",
+              "\"Até já\""
+            ],
+            "certa": 2,
+            "dica": "O \"Até já\" é a despedida: vai por último."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-print-3",
+      "aulas": [
+        "log-primeiro-programa"
+      ],
+      "grupo": "Mostrar na tela",
+      "titulo": "Conserte os dois erros",
+      "enunciado": "Este programa tem dois erros. Conserte para que ele mostre `Nota: 10` e, na linha de baixo, `Fim`.",
+      "codigoInicial": "Print(\"Nota:\", 10)\nprint(\"Fim)\n",
+      "solucao": "print(\"Nota:\", 10)\nprint(\"Fim\")\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra a nota e o fim",
+          "esperada": "Nota: 10\nFim\n"
+        }
+      ],
+      "metas": {
+        "linhas": 2
+      },
+      "dicas": [
+        "Rode e leia a mensagem de erro: ela diz a linha e o tipo do erro.",
+        "O Python diferencia maiúsculas de minúsculas, e toda aspa aberta precisa ser fechada.",
+        "Troque Print por print e feche a aspa em \"Fim\"."
+      ],
+      "toque": {
+        "modelo": "___(\"Nota:\", 10)\nprint(___)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "print",
+              "Print",
+              "PRINT"
+            ],
+            "certa": 0,
+            "dica": "Os comandos do Python são em minúsculas."
+          },
+          {
+            "opcoes": [
+              "\"Fim\"",
+              "\"Fim",
+              "Fim"
+            ],
+            "certa": 0,
+            "dica": "Aspa aberta pede aspa fechada."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-var-1",
+      "aulas": [
+        "log-variaveis-tipos"
+      ],
+      "grupo": "Variáveis",
+      "titulo": "Cartão de apresentação",
+      "enunciado": "Crie a variável `idade` com o número 15 para o programa mostrar `Ana tem 15 anos`.",
+      "codigoInicial": "nome = \"Ana\"\n# crie a variável idade aqui\nprint(nome, \"tem\", idade, \"anos\")\n",
+      "solucao": "nome = \"Ana\"\nidade = 15\nprint(nome, \"tem\", idade, \"anos\")\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra a apresentação",
+          "esperada": "Ana tem 15 anos\n"
+        },
+        {
+          "nome": "idade guarda um número inteiro",
+          "codigo": "assert type(idade) is int and idade == 15, \"idade precisa ser o número 15, sem aspas\""
+        }
+      ],
+      "metas": {
+        "linhas": 3
+      },
+      "dicas": [
+        "Para criar uma variável: nome, sinal de igual e o valor.",
+        "A idade é um número: sem aspas.",
+        "Escreva idade = 15 antes do print."
+      ],
+      "toque": {
+        "modelo": "nome = \"Ana\"\nidade = ___\nprint(nome, \"tem\", idade, \"anos\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "15",
+              "\"quinze\"",
+              "idade"
+            ],
+            "certa": 0,
+            "dica": "Idade é número: sem aspas."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-var-2",
+      "aulas": [
+        "log-variaveis-tipos"
+      ],
+      "grupo": "Variáveis",
+      "titulo": "Placar do jogo",
+      "enunciado": "A variável `pontos` começa com 10. Some 5 a ela (sem apagar a primeira linha) para o programa mostrar `Pontos: 15`.",
+      "codigoInicial": "pontos = 10\n# some 5 aos pontos\nprint(\"Pontos:\", pontos)\n",
+      "solucao": "pontos = 10\npontos = pontos + 5\nprint(\"Pontos:\", pontos)\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra o placar",
+          "esperada": "Pontos: 15\n"
+        },
+        {
+          "nome": "pontos termina com 15",
+          "codigo": "assert pontos == 15, \"pontos precisa terminar com 15\""
+        }
+      ],
+      "metas": {
+        "linhas": 3
+      },
+      "dicas": [
+        "A variável pode receber uma conta que usa ela mesma.",
+        "Leia \"pontos = pontos + 5\" como \"pontos recebe pontos mais 5\".",
+        "Escreva pontos = pontos + 5 entre as duas linhas."
+      ],
+      "toque": {
+        "modelo": "pontos = 10\npontos = ___\nprint(\"Pontos:\", pontos)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "pontos + 5",
+              "5",
+              "\"pontos + 5\""
+            ],
+            "certa": 0,
+            "dica": "Some 5 ao valor que já está guardado."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-var-3",
+      "aulas": [
+        "log-variaveis-tipos"
+      ],
+      "grupo": "Variáveis",
+      "titulo": "Troca de lugar",
+      "enunciado": "Troque os valores de `a` e `b` para o programa mostrar `chá café`. Use uma terceira variável, `aux`, para não perder nenhum valor.",
+      "codigoInicial": "a = \"café\"\nb = \"chá\"\n# troque os valores de a e b\nprint(a, b)\n",
+      "solucao": "a = \"café\"\nb = \"chá\"\naux = a\na = b\nb = aux\nprint(a, b)\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra a troca",
+          "esperada": "chá café\n"
+        },
+        {
+          "nome": "a e b trocaram",
+          "codigo": "assert a == \"chá\" and b == \"café\", \"a precisa terminar com chá e b com café\""
+        }
+      ],
+      "metas": {
+        "linhas": 6
+      },
+      "dicas": [
+        "Se você fizer a = b direto, o \"café\" se perde.",
+        "Guarde o valor de a em aux antes de mudar a.",
+        "aux = a, depois a = b, depois b = aux."
+      ],
+      "toque": {
+        "modelo": "a = \"café\"\nb = \"chá\"\naux = ___\na = ___\nb = ___\nprint(a, b)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "a",
+              "b",
+              "aux"
+            ],
+            "certa": 0,
+            "dica": "Primeiro guarde o valor de a."
+          },
+          {
+            "opcoes": [
+              "a",
+              "b",
+              "aux"
+            ],
+            "certa": 1,
+            "dica": "Agora a recebe o valor de b."
+          },
+          {
+            "opcoes": [
+              "a",
+              "b",
+              "aux"
+            ],
+            "certa": 2,
+            "dica": "b recebe o valor guardado em aux."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-op-1",
+      "aulas": [
+        "log-operadores"
+      ],
+      "grupo": "Contas",
+      "titulo": "Balas para todos",
+      "enunciado": "São 17 balas para 5 amigos. Mostre quantas cada um ganha e quantas sobram, assim: `Cada um: 3` e, embaixo, `Sobram: 2`.",
+      "codigoInicial": "balas = 17\namigos = 5\n# use // e %\n",
+      "solucao": "balas = 17\namigos = 5\nprint(\"Cada um:\", balas // amigos)\nprint(\"Sobram:\", balas % amigos)\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra a divisão e a sobra",
+          "esperada": "Cada um: 3\nSobram: 2\n"
+        }
+      ],
+      "metas": {
+        "linhas": 4
+      },
+      "dicas": [
+        "Quanto cada um ganha é a divisão inteira; o que sobra é o resto.",
+        "A divisão inteira é //; o resto é %.",
+        "print(\"Cada um:\", balas // amigos) e print(\"Sobram:\", balas % amigos)."
+      ],
+      "toque": {
+        "modelo": "balas = 17\namigos = 5\nprint(\"Cada um:\", balas ___ amigos)\nprint(\"Sobram:\", balas ___ amigos)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "//",
+              "/",
+              "%"
+            ],
+            "certa": 0,
+            "dica": "Quanto cada um ganha: divisão inteira, sem decimal."
+          },
+          {
+            "opcoes": [
+              "%",
+              "//",
+              "*"
+            ],
+            "certa": 0,
+            "dica": "O que sobra é o resto."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-op-2",
+      "aulas": [
+        "log-operadores"
+      ],
+      "grupo": "Contas",
+      "titulo": "Preço com desconto",
+      "enunciado": "Um tênis custa 250 reais e está com 20% de desconto. Mostre `Preço final: 200.0`.",
+      "codigoInicial": "preco = 250\n# calcule o preço com 20% de desconto\n",
+      "solucao": "preco = 250\nprint(\"Preço final:\", preco - preco * 20 / 100)\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra o preço final",
+          "esperada": "Preço final: 200.0\n"
+        }
+      ],
+      "metas": {
+        "linhas": 2
+      },
+      "dicas": [
+        "O desconto é 20% do preço: preço vezes 20 dividido por 100.",
+        "O preço final é o preço menos o desconto.",
+        "print(\"Preço final:\", preco - preco * 20 / 100)"
+      ],
+      "toque": {
+        "modelo": "preco = 250\nprint(\"Preço final:\", preco - preco * ___ / 100)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "20",
+              "0.20",
+              "100"
+            ],
+            "certa": 0,
+            "dica": "Porcentagem: vezes o número e dividido por 100."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-op-3",
+      "aulas": [
+        "log-operadores"
+      ],
+      "grupo": "Contas",
+      "titulo": "Horas de filme",
+      "enunciado": "Um filme tem 130 minutos. Mostre `2 h e 10 min`, usando a variável `minutos`.",
+      "codigoInicial": "minutos = 130\n# mostre em horas e minutos\n",
+      "solucao": "minutos = 130\nprint(minutos // 60, \"h e\", minutos % 60, \"min\")\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra horas e minutos",
+          "esperada": "2 h e 10 min\n"
+        }
+      ],
+      "metas": {
+        "linhas": 2
+      },
+      "dicas": [
+        "Uma hora tem 60 minutos.",
+        "As horas inteiras saem com // 60; os minutos que sobram, com % 60.",
+        "print(minutos // 60, \"h e\", minutos % 60, \"min\")"
+      ],
+      "toque": {
+        "modelo": "minutos = 130\nprint(minutos ___ 60, \"h e\", minutos ___ 60, \"min\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "//",
+              "/",
+              "*"
+            ],
+            "certa": 0,
+            "dica": "Horas inteiras: divisão inteira."
+          },
+          {
+            "opcoes": [
+              "%",
+              "//",
+              "-"
+            ],
+            "certa": 0,
+            "dica": "Os minutos que sobram são o resto."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-cantina-1",
+      "aulas": [
+        "log-revisao-pensar"
+      ],
+      "grupo": "Cantina",
+      "titulo": "Total da cantina",
+      "enunciado": "Um salgado custa 6 reais e um suco, 4.5. Calcule o total de 2 salgados e 1 suco e mostre `Total: 16.5`.",
+      "codigoInicial": "salgado = 6\nsuco = 4.5\n# calcule o total de 2 salgados e 1 suco\n",
+      "solucao": "salgado = 6\nsuco = 4.5\ntotal = salgado * 2 + suco\nprint(\"Total:\", total)\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra o total",
+          "esperada": "Total: 16.5\n"
+        },
+        {
+          "nome": "total guarda 16.5",
+          "codigo": "assert total == 16.5, \"total precisa valer 16.5\""
+        }
+      ],
+      "metas": {
+        "linhas": 4
+      },
+      "dicas": [
+        "Guarde o resultado numa variável chamada total.",
+        "A multiplicação vem antes da soma: salgado * 2 + suco.",
+        "total = salgado * 2 + suco e depois print(\"Total:\", total)."
+      ],
+      "toque": {
+        "modelo": "salgado = 6\nsuco = 4.5\ntotal = salgado * ___ + suco\nprint(\"Total:\", total)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "2",
+              "1",
+              "suco"
+            ],
+            "certa": 0,
+            "dica": "São dois salgados."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-cantina-2",
+      "aulas": [
+        "log-revisao-pensar"
+      ],
+      "grupo": "Cantina",
+      "titulo": "Troco com duas casas",
+      "enunciado": "O aluno pagou 20 reais e o total deu 16.5. Mostre `Troco: 3.5`, arredondando para duas casas.",
+      "codigoInicial": "pago = 20\ntotal = 16.5\n# mostre o troco arredondado\n",
+      "solucao": "pago = 20\ntotal = 16.5\nprint(\"Troco:\", round(pago - total, 2))\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Mostra o troco",
+          "esperada": "Troco: 3.5\n"
+        }
+      ],
+      "metas": {
+        "linhas": 3
+      },
+      "dicas": [
+        "O troco é o valor pago menos o total.",
+        "Para dinheiro, use round(valor, 2).",
+        "print(\"Troco:\", round(pago - total, 2))"
+      ],
+      "toque": {
+        "modelo": "pago = 20\ntotal = 16.5\nprint(\"Troco:\", round(___ - ___, 2))",
+        "lacunas": [
+          {
+            "opcoes": [
+              "pago",
+              "total"
+            ],
+            "certa": 0,
+            "dica": "Primeiro o valor pago..."
+          },
+          {
+            "opcoes": [
+              "total",
+              "pago"
+            ],
+            "certa": 0,
+            "dica": "...menos o total."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -130,6 +130,14 @@ Variante = a mesma habilidade de uma questão **nossa**, com outra situação e 
 - Gere, quando fizer sentido para o tema, blocos para os outros tipos de carta já suportados pelo motor (pares, verdadeiro/falso, sequências, adivinhas, palavras, casos) — consulte `docs/JOGOS.md` para o formato de cada um.
 - Marque explicitamente qualquer questão que dependa de um fato muito específico (data exata, fórmula, valor numérico, nome próprio) com um comentário `"revisar": "fato específico — conferir com especialista"` no JSON, para facilitar a etapa de revisão humana. Remova essa marca só depois da revisão confirmada.
 
+## 3.0 Cursos de tecnologia (Explora Tech, 2026-10-13)
+
+- **Código na questão:** no `.aula`, um bloco ```` ```python … ``` ```` dentro do enunciado vira o campo `codigo` (recuo preservado); `! alternativas-codigo` deixa as alternativas monoespaçadas (`\n` vira quebra de linha). No artigo, o mesmo bloco dentro de uma seção vira bloco de código.
+- **Toda questão de código é conferida rodando no Python do curso** (Pyodide de `lib/pyodide/`): `! saida` (a saída bate com a alternativa certa), `! saida: <texto>`, `! erro: NameError` (o programa para com esse erro), `! confere-py: <expressão>` (dá True) e `! entradas: a; b` (o que o `input()` recebe). O `montar-aulas.mjs` só grava se todas baterem.
+- **Comando de terminal, de Git, porta, versão ou valor de configuração** leva `revisar`.
+- **Laboratório da aula:** `lab: <id>` (missões em `data/laboratorios/<curso>/<id>.json`; confira com `node scripts/conferir-laboratorios.mjs`).
+- **Inglês técnico** (3 a 5 termos por aula) e **matemática básica** entram dentro da aula, nunca como aula separada. Palavrinha só com palavras do dicionário brasileiro (termos em inglês ficam para Forca e Adivinha Aí).
+
 ## 3.1 O caminho da fase e o artigo "Antes de mergulhar" (obrigatório em toda fase)
 
 Toda fase segue o caminho **📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar**, que aparece no topo do "Antes de mergulhar" (`js/artigo.js`). **Leitura obrigatória (2026-10-03):** o Mergulho de uma fase com `resumo` só libera depois que o aluno abre o "Antes de mergulhar" dela uma vez; por isso o artigo é a porta de entrada e precisa ser bom de ler. Cada passo precisa ter conteúdo:

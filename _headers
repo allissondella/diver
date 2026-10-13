@@ -1,0 +1,7 @@
+# Cabeçalhos do site no Cloudflare (ambiente de testes; docs/AMBIENTES.md).
+# Os laboratórios rodam o Python num iframe sandbox (origem opaca), que baixa o Pyodide e o worker
+# por fetch: precisa de CORS. O GitHub Pages (produção) já manda Access-Control-Allow-Origin: *.
+/lib/pyodide/*
+  Access-Control-Allow-Origin: *
+/laboratorio/*
+  Access-Control-Allow-Origin: *
