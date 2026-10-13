@@ -17,7 +17,7 @@
  */
 const Quiz = (() => {
   const OXIGENIO_MAX = 3;
-  const TAMANHO_RODADA = { mergulho: 8, revisao: 10 };
+  const TAMANHO_RODADA = { mergulho: 10, revisao: 10 }; // 10 no Mergulho desde 2026-10-13 (pedido do usuário; antes, 8)
   const SEGUNDOS_POR_QUESTAO_SIMULADO = 60;
 
   function embaralhar(lista) {
