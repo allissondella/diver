@@ -5,6 +5,16 @@
 
 ---
 
+## 2026-10-13 · Laboratórios: tela redistribuída (pedido do usuário)
+- **Pedido:** "a distribuição aqui dentro ficou horrível, formate e deixe bem feito e lindo".
+- **Feito:**
+  - duas colunas no computador: apoio à esquerda (objetivo ou mundo, comandos, dicas; fica parada ao rolar) e a janela do código à direita (arquivo, editor, Rodar/Recomeçar e a Saída num cartão só);
+  - todos os cartões com o mesmo desenho (ícone + título); a cola em tabela alinhada, sem quebrar o código no meio;
+  - testes num cartão; a saída diz quando o programa não mostrou nada;
+  - no celular: objetivo, janela do código e depois a cola;
+  - vale para o Robô Entregador e para o Primeiros Programas (peças `Laboratorios.janela` e `Laboratorios.cartao`).
+- **Mapa:** voltou ao desenho de antes (o usuário não gostou dos passos numerados); o fluxo questões → laboratório → próxima aula ficou.
+
 ## 2026-10-13 · Explora Tech: caminho da aula e Primeiros Programas (pedido do usuário)
 - **Pedido:**
   - a tela do laboratório estava bagunçada embaixo do editor;

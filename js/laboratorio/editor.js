@@ -96,13 +96,21 @@ const EditorCodigo = (() => {
 const ConsoleLab = (() => {
   const { h } = UI;
 
-  function criar({ rotulo = 'Console' } = {}) {
+  /**
+   * vazio: com texto, a área de saída fica sempre à vista e mostra esse aviso enquanto não há nada
+   * (dentro da janela do código); sem texto, o console só aparece quando tem algo para mostrar.
+   */
+  function criar({ rotulo = 'Console', vazio = '' } = {}) {
     const log = h('div', { class: 'console__log', role: 'log', 'aria-live': 'polite', 'aria-label': rotulo, tabindex: '0' });
-    const el = h('div', { class: 'console', hidden: true }, h('div', { class: 'console__titulo', 'aria-hidden': 'true', text: rotulo }), log);
+    const aviso = vazio ? h('span', { class: 'console__vazio', text: vazio }) : null;
+    const el = h('div', { class: 'console', hidden: !vazio }, h('div', { class: 'console__titulo', 'aria-hidden': 'true', text: rotulo }), log);
+    const zerar = () => { log.replaceChildren(...(aviso ? [aviso] : [])); el.hidden = !vazio; };
+    zerar();
 
     function escrever(texto, tipo = 'saida') {
       if (!texto) return;
-      el.hidden = false; // o console só aparece quando tem algo para mostrar
+      el.hidden = false;
+      if (aviso && aviso.parentNode) aviso.remove();
       log.append(h('span', { class: `console__linha console__linha--${tipo}`, text: texto }));
       log.scrollTop = log.scrollHeight;
     }
@@ -116,6 +124,7 @@ const ConsoleLab = (() => {
           h('button', { type: 'submit', class: 'botao botao--secundario botao--pequeno', text: 'Enviar' }),
           h('button', { type: 'button', class: 'botao botao--link botao--pequeno', text: 'Parar', onclick: () => { form.remove(); resolve(null); } }));
         el.hidden = false;
+        if (aviso && aviso.parentNode) aviso.remove();
         el.append(form);
         campo.focus();
       });
@@ -125,8 +134,8 @@ const ConsoleLab = (() => {
       el,
       escrever,
       pedirEntrada,
-      limpar: () => { log.replaceChildren(); el.querySelectorAll('.console__form').forEach((f) => f.remove()); el.hidden = true; },
-      texto: () => log.textContent,
+      limpar: () => { el.querySelectorAll('.console__form').forEach((f) => f.remove()); zerar(); },
+      texto: () => (aviso && aviso.parentNode ? '' : log.textContent),
     };
   }
 

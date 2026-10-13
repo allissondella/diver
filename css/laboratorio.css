@@ -4,15 +4,72 @@
  */
 .lab-sandbox { position: absolute; width: 1px; height: 1px; border: 0; opacity: 0; pointer-events: none; }
 
-.lab { display: grid; gap: var(--esp-4); }
+.lab { display: grid; gap: var(--esp-5); width: 100%; max-width: 1200px; margin-inline: auto; }
+
+/* Cabeçalho: rótulo + ajuda, título, enunciado e as missões */
 .lab__cabeca { display: grid; gap: var(--esp-2); }
-.lab__barra { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2); }
-.lab__titulo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-3); margin: 0; font-size: 1.35rem; }
-.lab__enunciado { margin: 0; color: var(--texto-suave); max-width: 70ch; }
+.lab__topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2); }
+.lab__topo .rotulo { margin: 0; }
+.lab__titulo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-3); margin: 0; font-size: 1.4rem; line-height: 1.25; }
+.lab__enunciado { margin: 0; max-width: 72ch; line-height: 1.65; color: var(--texto-suave); }
+.lab__enunciado .codigo-linha { white-space: nowrap; }
+.lab__barra { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2) var(--esp-3); margin-top: var(--esp-2); }
+.lab__barra-rotulo { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.02em; color: var(--texto-suave); }
+
+/* Corpo: coluna de apoio (sempre à vista) + bancada com a janela do código */
 .lab__corpo { display: grid; gap: var(--esp-4); grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 900px) { .lab__corpo { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: start; } }
-.lab__palco, .lab__bancada { display: grid; gap: var(--esp-3); min-width: 0; }
-.lab__pe { display: grid; gap: var(--esp-3); }
+.lab__apoio, .lab__bancada { display: grid; gap: var(--esp-3); align-content: start; min-width: 0; }
+/* No celular, uma coluna só na ordem de uso: objetivo (ou o mundo), a janela do código e depois a cola */
+@media (max-width: 959px) {
+  .lab__corpo { gap: var(--esp-3); }
+  .lab__apoio { display: contents; }
+  .lab__apoio > :first-child { order: -1; }
+  .lab__apoio > :not(:first-child) { order: 1; }
+}
+@media (min-width: 960px) {
+  .lab__corpo { grid-template-columns: minmax(300px, 5fr) minmax(0, 7fr); align-items: start; }
+  .lab__apoio { position: sticky; top: var(--esp-4); }
+}
+.lab__pe { display: grid; gap: var(--esp-3); padding-top: var(--esp-4); border-top: 1px solid var(--borda); }
+.lab__pe-acoes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--esp-2); }
+
+/* Cartões da coluna de apoio: mesmo desenho para objetivo, comandos e dicas */
+.lab-apoio { display: grid; gap: var(--esp-3); padding: var(--esp-4); background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); }
+.lab-apoio__titulo { display: flex; align-items: center; gap: var(--esp-2); margin: 0; font-size: 0.95rem; line-height: 1.3; }
+.lab-apoio__titulo .icone { flex: none; width: 18px; height: 18px; color: var(--amarelo); }
+.lab-apoio__texto { margin: 0; font-size: 0.88rem; line-height: 1.5; color: var(--texto-suave); }
+
+/* Janela do código: barra do arquivo, editor, ações e saída num cartão só */
+.lab-janela { display: grid; min-width: 0; background: var(--fundo-fundo); border: 1px solid var(--borda); border-radius: var(--raio); overflow: hidden; }
+.lab-janela:focus-within { border-color: var(--turquesa); }
+.lab-janela__barra {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2);
+  min-height: 52px; padding: var(--esp-1) var(--esp-2) var(--esp-1) var(--esp-4);
+  background: var(--superficie); border-bottom: 1px solid var(--borda);
+}
+.lab-janela__arquivo { display: inline-flex; align-items: center; gap: var(--esp-2); font-family: var(--fonte-mono); font-size: 0.85rem; color: var(--texto-suave); }
+.lab-janela__arquivo .icone { width: 16px; height: 16px; color: var(--turquesa-claro); }
+.lab-janela__modo {
+  display: inline-flex; align-items: center; gap: var(--esp-2); min-height: 44px; padding: 0 var(--esp-3);
+  font: inherit; font-size: 0.85rem; font-weight: 700; color: var(--turquesa-claro);
+  background: transparent; border: 1px solid var(--borda); border-radius: 999px; cursor: pointer;
+}
+.lab-janela__modo { margin-left: auto; }
+.lab-janela__modo:hover { background: var(--superficie-turquesa); border-color: var(--turquesa); }
+.lab-janela__modo .icone { width: 16px; height: 16px; }
+.lab-janela__corpo { min-width: 0; }
+.lab-janela__corpo > .editor { border: 0; border-radius: 0; background: transparent; }
+.lab-janela__corpo > .editor:focus-within { box-shadow: none; }
+.lab-janela__corpo > .lab-lacunas { border: 0; border-radius: 0; background: transparent; padding: var(--esp-4); }
+.lab-janela__corpo > .lab-toque, .lab-janela__corpo > .lab-aviso { padding: var(--esp-4); }
+.lab-janela__acoes {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2);
+  padding: var(--esp-3) var(--esp-4); background: var(--superficie); border-top: 1px solid var(--borda);
+}
+.lab-janela__atalho { margin-left: auto; font-size: 0.78rem; color: var(--texto-suave); }
+@media (pointer: coarse) { .lab-janela__atalho { display: none; } }
+.lab-janela > .console { padding: var(--esp-3) var(--esp-4) var(--esp-4); border-top: 1px solid var(--borda); }
+.lab-janela > .console .console__log { min-height: 72px; max-height: 30vh; padding: 0; background: transparent; border: 0; border-radius: 0; }
 .lab-carregando { display: grid; justify-items: center; gap: var(--esp-3); padding: var(--esp-7) var(--esp-4); text-align: center; }
 .lab-carregando .mascote { width: 96px; height: 96px; }
 
@@ -57,10 +114,6 @@
   font: inherit; line-height: inherit; color: var(--texto); background: transparent; border: 0; outline: none;
   caret-color: var(--turquesa-claro);
 }
-.lab-codigo { display: grid; gap: var(--esp-3); }
-.lab-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2) var(--esp-3); }
-.lab-acoes__atalho { margin-left: auto; font-size: 0.8rem; }
-@media (pointer: coarse) { .lab-acoes__atalho { display: none; } }
 
 /* Console */
 .console { display: grid; gap: var(--esp-2); }
@@ -74,6 +127,7 @@
 .console__linha { display: block; }
 .console__linha--erro { color: var(--coral); }
 .console__linha--info { color: var(--texto-suave); font-style: italic; }
+.console__vazio { font-family: var(--fonte); font-size: 0.88rem; font-style: italic; color: var(--texto-suave); }
 .console__form { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); }
 .console__prompt { font-family: var(--fonte-mono); }
 .console__entrada { flex: 1 1 160px; min-height: 44px; padding: 0 var(--esp-3); font-family: var(--fonte-mono); color: var(--texto); background: var(--fundo-fundo); border: 1px solid var(--turquesa); border-radius: var(--raio-pequeno); }
@@ -88,15 +142,21 @@
 .lab-sucesso { background: color-mix(in srgb, var(--turquesa) 14%, transparent); border: 1px solid color-mix(in srgb, var(--turquesa) 45%, transparent); }
 .lab-sucesso__titulo .icone { color: var(--turquesa-claro); }
 .lab-sucesso p { margin: 0; }
-.lab-dicas { display: grid; gap: var(--esp-2); justify-items: start; }
-.lab-dicas__lista { display: grid; gap: var(--esp-2); margin: 0; padding-left: var(--esp-5); }
+.lab-dicas { display: grid; gap: var(--esp-3); justify-items: start; }
+.lab-dicas__lista { display: grid; gap: var(--esp-2); margin: 0; padding-left: var(--esp-5); font-size: 0.9rem; line-height: 1.5; }
 .lab-dicas__lista:empty { display: none; }
 .lab-dicas__item--ultima { color: var(--amarelo); }
-.lab-equivalente, .lab-verdade { padding: var(--esp-2) var(--esp-3); background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio-pequeno); }
-.lab-comandos { display: grid; gap: var(--esp-2); padding: var(--esp-3) var(--esp-4); background: var(--superficie); border: 1px solid var(--borda); border-left: 3px solid var(--amarelo); border-radius: var(--raio-pequeno); }
-.lab-comandos__titulo { margin: 0; font-size: 0.95rem; }
-.lab-comandos__lista { display: grid; gap: var(--esp-2); margin: 0; padding: 0; list-style: none; }
-.lab-comandos__lista li { display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); align-items: baseline; gap: var(--esp-2); font-size: 0.9rem; }
+.lab-equivalente { padding: var(--esp-2) var(--esp-3); background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio-pequeno); }
+.lab-verdade.cartao { padding: var(--esp-2) var(--esp-4); }
+.lab-verdade summary > .icone { display: none; } /* o + do cartão já mostra que abre */
+.lab-comandos__lista { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--esp-3); margin: 0; padding: 0; list-style: none; }
+.lab-comandos__lista li {
+  display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline;
+  padding: var(--esp-2) 0; font-size: 0.88rem; line-height: 1.45; border-top: 1px solid var(--borda);
+}
+.lab-comandos__lista li:first-child { border-top: 0; padding-top: 0; }
+.lab-comandos__lista li:last-child { padding-bottom: 0; }
+.lab-comandos__lista code { justify-self: start; white-space: nowrap; }
 .lab-comandos__lista li span { color: var(--texto-suave); }
 .lab-equivalente summary, .lab-verdade summary { display: flex; align-items: center; gap: var(--esp-2); min-height: 40px; font-weight: 700; cursor: pointer; }
 .lab-verdade ol { margin: var(--esp-2) 0 0; padding-left: var(--esp-5); display: grid; gap: var(--esp-1); }
@@ -123,7 +183,8 @@
 .robo-robo__olho { position: absolute; top: 28%; width: 22%; height: 22%; border-radius: 50%; background: var(--fundo-fundo); }
 .robo-robo__seta { position: absolute; bottom: 4%; font-size: clamp(0.8rem, 3vw, 1.1rem); font-weight: 800; line-height: 1; color: var(--texto-escuro); }
 @keyframes robo-tremer { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
-.robo-status { margin: 0; min-height: 2.6em; font-size: 0.92rem; }
+.robo-status { margin: 0; min-height: 1.5em; font-size: 0.92rem; }
+.robo-contador:empty { display: none; }
 .robo-contador { margin: 0; min-height: 1.4em; font-family: var(--fonte-mono); font-size: 0.85rem; }
 .lab-toque { display: grid; gap: var(--esp-3); }
 .lab-toque > p { margin: 0; }
@@ -147,15 +208,16 @@
 }
 
 /* Laboratórios de Python (lab-python.js): objetivo, lacunas e testes */
-.lab-alvo { display: grid; gap: var(--esp-2); }
-.lab-alvo__saida { margin: 0; border-left-color: var(--amarelo); }
-.lab-testes { display: grid; gap: var(--esp-2); margin: 0; padding: 0; list-style: none; }
+.lab-alvo__saida { margin: 0; }
+.lab-testes { display: grid; gap: var(--esp-3); margin: 0; padding: var(--esp-3) var(--esp-4); list-style: none; background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); }
 .lab-testes[hidden] { display: none; }
 .lab-teste { display: flex; align-items: flex-start; gap: var(--esp-2); font-size: 0.92rem; }
 .lab-teste > .icone { flex: none; width: 18px; height: 18px; margin-top: 2px; }
 .lab-teste--ok > .icone { color: var(--turquesa-claro); }
 .lab-teste--falhou > .icone { color: var(--coral); }
-.lab-teste__compara { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--esp-1) var(--esp-2); margin-top: var(--esp-1); }
+.lab-teste > span { min-width: 0; flex: 1; }
+.lab-teste__compara { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; gap: var(--esp-1) var(--esp-2); margin-top: var(--esp-2); }
+.lab-teste__compara code { justify-self: start; }
 .lab-teste__compara code { white-space: pre-wrap; }
 .lab-lacunas { display: grid; gap: var(--esp-2); padding: var(--esp-3); font-family: var(--fonte-mono); background: var(--fundo-fundo); border: 1px solid var(--borda); border-radius: var(--raio-pequeno); overflow-x: auto; }
 .lab-lacunas__linha { display: flex; align-items: center; gap: var(--esp-3); min-height: 44px; }

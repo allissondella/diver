@@ -124,7 +124,35 @@ const Laboratorios = (() => {
       aoUsar(usadas);
     });
     atualizar();
-    return { el: h('div', { class: 'lab-dicas' }, botao, caixa), usadas: () => usadas };
+    return { el: h('div', { class: 'lab-dicas' }, botao, caixa), botao, lista: caixa, usadas: () => usadas };
+  }
+
+  /**
+   * A "janela" do código (2026-10-13, tela arrumada): barra com o nome do arquivo e a troca de modo,
+   * o editor (ou as lacunas/blocos), a barra de ações (Rodar, Recomeçar, Dica) e a saída, tudo num cartão só.
+   */
+  function janela({ arquivo = 'programa.py', ferramenta = null, corpo, acoes = [], atalho = '', saida = null }) {
+    return h('div', { class: 'lab-janela' },
+      h('div', { class: 'lab-janela__barra' },
+        h('span', { class: 'lab-janela__arquivo' }, icone('i-codigo'), arquivo),
+        ferramenta),
+      h('div', { class: 'lab-janela__corpo' }, corpo),
+      acoes.length ? h('div', { class: 'lab-janela__acoes' }, ...acoes,
+        atalho ? h('span', { class: 'lab-janela__atalho', 'aria-hidden': 'true', text: atalho }) : null) : null,
+      saida);
+  }
+
+  /** Cartão da coluna de apoio (objetivo, comandos, dicas): mesmo desenho para todos. */
+  function cartao({ id, icone: ic, titulo, conteudo, classe = '' }) {
+    const tid = `${id}-titulo`;
+    return h('section', { class: `lab-apoio ${classe}`.trim(), id, 'aria-labelledby': tid },
+      h('h3', { class: 'lab-apoio__titulo', id: tid }, icone(ic), titulo),
+      ...[].concat(conteudo).filter(Boolean));
+  }
+
+  /** A lista de comandos que o aluno já conhece (a "cola"). */
+  function listaComandos(lista) {
+    return h('ul', { class: 'lab-comandos__lista' }, (lista || []).map((c) => h('li', {}, h('code', { class: 'codigo-linha', text: c.nome }), h('span', { text: c.faz }))));
   }
 
   /** "Agora faça de verdade": a ferramenta real, com um mini passo a passo. */
@@ -190,6 +218,6 @@ const Laboratorios = (() => {
 
   return {
     carregar, daTrilha, progresso, registrar, aPagar, marcarAula, labDaAulaFeito, daAula, pendenteDaAula, aulaFeita, lerRascunho, gravarRascunho, modoInicial, guardarModo,
-    estrelas, dicas, fazerDeVerdade, blocoErro, resultado, TRADUCAO,
+    estrelas, dicas, janela, cartao, listaComandos, fazerDeVerdade, blocoErro, resultado, TRADUCAO,
   };
 })();

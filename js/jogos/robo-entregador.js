@@ -93,34 +93,38 @@ Jogos.registrar({
           h('input', { type: 'checkbox', checked: passoAPasso, onchange: (e) => { passoAPasso = e.target.checked; } }),
           h('span', { text: 'Passo a passo' })));
 
-      // Os comandos ficam sempre à vista (pedido do usuário, 2026-10-13): é a "cola" que o aluno consulta enquanto programa
-      const comandos = h('section', { class: 'lab-comandos', id: 'robo-comandos', 'aria-labelledby': 'robo-comandos-titulo' },
-        h('h3', { class: 'lab-comandos__titulo', id: 'robo-comandos-titulo', text: 'Comandos do robô' }),
-        h('ul', { class: 'lab-comandos__lista' }, lab.comandos.map((c) => h('li', {}, h('code', { class: 'codigo-linha', text: c.nome }), h('span', { text: c.faz })))));
-
       dicasMissao = Laboratorios.dicas(m.dicas || []);
 
       const trocaModo = h('button', {
-        type: 'button', class: 'botao botao--link botao--pequeno', id: 'robo-modo',
+        type: 'button', class: 'lab-janela__modo', id: 'robo-modo',
         onclick: () => { modo = modo === 'toque' ? 'codigo' : 'toque'; Laboratorios.guardarModo(modo); montar(); },
-      }, icone(modo === 'toque' ? 'i-codigo' : 'i-controle'), modo === 'toque' ? 'Escrever o código' : 'Usar blocos (modo toque)');
+      }, icone(modo === 'toque' ? 'i-codigo' : 'i-controle'), modo === 'toque' ? 'Escrever o código' : 'Modo toque (blocos)');
 
-      const area = modo === 'toque' ? montarToque(m) : montarCodigo(m);
+      const area = modo === 'toque' ? montarToque(m, trocaModo) : montarCodigo(m, trocaModo);
+
+      // Coluna de apoio: o mundo e os comandos ficam sempre à vista (pedido do usuário, 2026-10-13: a "cola" que o aluno consulta)
+      const apoio = h('aside', { class: 'lab__apoio', 'aria-label': 'O mundo do robô e os comandos' },
+        Laboratorios.cartao({ id: 'robo-palco', icone: 'i-alvo', titulo: 'O mundo do robô', conteudo: [telas.mundo, telas.status, telas.contador, velocidadeSel] }),
+        Laboratorios.cartao({ id: 'robo-comandos', icone: 'i-livro', titulo: 'Comandos do robô', conteudo: Laboratorios.listaComandos(lab.comandos) }));
 
       limpar(ctx.container).append(h('div', { class: 'lab robo' },
         h('header', { class: 'lab__cabeca' },
-          h('p', { class: 'rotulo', text: `${lab.nome} · ${m.grupo || 'Missão'} · missão ${idx + 1} de ${missoes.length}` }),
+          h('div', { class: 'lab__topo' },
+            h('p', { class: 'rotulo', text: m.grupo || 'Missão' }),
+            h('button', { type: 'button', class: 'botao botao--link botao--pequeno', id: 'lab-como', onclick: () => tutorial(true) }, icone('i-bolha'), 'Como funciona?')),
           h('h2', { class: 'lab__titulo' }, m.titulo, melhor ? Laboratorios.estrelas(melhor) : null),
           h('p', { class: 'lab__enunciado', text: m.enunciado }),
-          h('div', { class: 'lab__barra' }, missaoNav, trocaModo)),
+          h('div', { class: 'lab__barra' }, h('span', { class: 'lab__barra-rotulo', text: `Missão ${idx + 1} de ${missoes.length}` }), missaoNav)),
         h('div', { class: 'lab__corpo' },
-          h('section', { class: 'lab__palco', 'aria-label': 'O mundo do robô' }, telas.mundo, telas.status, telas.contador, velocidadeSel, comandos),
+          apoio,
           h('section', { class: 'lab__bancada', 'aria-label': modo === 'toque' ? 'Blocos de comando' : 'Seu código' },
-            area, dicasMissao.el, telas.resultado)),
+            area,
+            Laboratorios.cartao({ id: 'lab-ajuda', icone: 'i-bolha', titulo: 'Travou?',
+              conteudo: [h('p', { class: 'lab-apoio__texto', text: 'Três dicas, cada uma mais perto da resposta. A última vale só 1 estrela.' }), dicasMissao.el] }),
+            telas.resultado)),
         h('footer', { class: 'lab__pe' },
           Laboratorios.fazerDeVerdade(lab.fazDeVerdade),
-          h('div', { class: 'acoes-linha' },
-            h('button', { type: 'button', class: 'botao botao--link', id: 'lab-como', onclick: () => tutorial(true) }, icone('i-bolha'), 'Como funciona?'),
+          h('div', { class: 'lab__pe-acoes' },
             h('button', { type: 'button', class: 'botao botao--secundario', id: 'lab-concluir', onclick: concluir }, icone('i-check'), 'Concluir laboratório')))));
 
       desenhar(MundoRobo.ler(m), m);
@@ -128,7 +132,7 @@ Jogos.registrar({
       tutorial(false);
     }
 
-    function montarCodigo(m) {
+    function montarCodigo(m, trocaModo) {
       const salvo = Laboratorios.lerRascunho(trilha.id, lab.id, m.id);
       let espera = null;
       telas.editor = EditorCodigo.criar({
@@ -137,25 +141,22 @@ Jogos.registrar({
         aoMudar: (v) => { clearTimeout(espera); espera = setTimeout(() => Laboratorios.gravarRascunho(trilha.id, lab.id, m.id, v), 400); },
         aoRodar: () => rodarCodigo(m),
       });
-      telas.console = ConsoleLab.criar({ rotulo: 'Console do Python' });
-      telas.rodar = h('button', { type: 'button', class: 'botao botao--primario', id: 'robo-rodar', onclick: () => rodarCodigo(m) }, icone('i-seta-dir'), 'Rodar');
+      telas.console = ConsoleLab.criar({ rotulo: 'Saída', vazio: 'Aperte Rodar: o robô anda no mundo e as mensagens aparecem aqui.' });
+      telas.rodar = h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', id: 'robo-rodar', onclick: () => rodarCodigo(m) }, icone('i-seta-dir'), 'Rodar');
       telas.rodar.setAttribute('title', 'Rodar o programa (Ctrl+Enter)');
       telas.rodar.setAttribute('aria-keyshortcuts', 'Control+Enter');
-      return h('div', { class: 'lab-codigo' },
-        telas.editor.el,
-        h('div', { class: 'lab-acoes' }, telas.rodar,
-          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: async () => {
-            if (!(await UI.confirmar({ titulo: 'Voltar ao código inicial?', texto: 'O que você escreveu nesta missão vai ser trocado pelo código do começo.', sim: 'Voltar ao início', humor: 'triste' }))) return;
-            telas.editor.definir(m.codigoInicial || '');
-          } }, icone('i-revisao'), 'Recomeçar'),
-          h('span', { class: 'lab-acoes__atalho texto-suave', 'aria-hidden': 'true', text: 'Ctrl+Enter roda' })),
-        telas.console.el);
+      const recomecar = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: async () => {
+        if (!(await UI.confirmar({ titulo: 'Voltar ao código inicial?', texto: 'O que você escreveu nesta missão vai ser trocado pelo código do começo.', sim: 'Voltar ao início', humor: 'triste' }))) return;
+        telas.editor.definir(m.codigoInicial || '');
+      } }, icone('i-revisao'), 'Recomeçar');
+      return Laboratorios.janela({ arquivo: 'robo.py', ferramenta: trocaModo, corpo: telas.editor.el, acoes: [telas.rodar, recomecar], atalho: 'Ctrl+Enter roda', saida: telas.console.el });
     }
 
-    function montarToque(m) {
+    function montarToque(m, trocaModo) {
       const cmdsSolucao = MundoRobo.comandosDoCodigo(m.solucao);
       if (!cmdsSolucao) {
-        return h('div', { class: 'lab-aviso cartao' }, h('p', { text: 'Esta missão usa laço ou condição e precisa do modo código. No computador fica mais fácil de escrever.' }));
+        return Laboratorios.janela({ arquivo: 'robo.py · blocos', ferramenta: trocaModo,
+          corpo: h('div', { class: 'lab-aviso' }, h('p', { text: 'Esta missão usa laço ou condição e precisa do modo código. No computador fica mais fácil de escrever.' })) });
       }
       const salvo = Laboratorios.lerRascunho(trilha.id, lab.id, `${m.id}:toque`);
       let programa = Array.isArray(salvo) ? salvo.filter((c) => MundoRobo.COMANDOS.includes(c)) : [];
@@ -170,16 +171,18 @@ Jogos.registrar({
         equivalente.firstChild.textContent = programa.map((c) => `${c}()`).join('\n') || '# (vazio)';
       };
       atualizar();
-      telas.rodar = h('button', { type: 'button', class: 'botao botao--primario', id: 'robo-rodar', onclick: () => rodarToque(m, programa) }, icone('i-seta-dir'), 'Rodar');
-      return h('div', { class: 'lab-toque' },
-        h('p', { class: 'texto-suave', text: 'Modo toque: monte o programa com os blocos. No computador, dá para escrever o código de verdade.' }),
-        lista,
-        h('div', { class: 'robo-blocos', role: 'group', 'aria-label': 'Comandos' },
-          MundoRobo.COMANDOS.map((c) => h('button', { type: 'button', class: 'robo-bloco', onclick: () => { programa.push(c); salvar(); atualizar(); } }, h('code', { text: `${c}()` })))),
-        h('div', { class: 'acoes-linha' }, telas.rodar,
-          h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: () => { programa.pop(); salvar(); atualizar(); } }, icone('i-voltar'), 'Desfazer'),
-          h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: () => { programa = []; salvar(); atualizar(); } }, icone('i-lixo'), 'Limpar')),
-        h('details', { class: 'lab-equivalente' }, h('summary', { text: 'Ver em Python' }), equivalente));
+      telas.rodar = h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', id: 'robo-rodar', onclick: () => rodarToque(m, programa) }, icone('i-seta-dir'), 'Rodar');
+      return Laboratorios.janela({
+        arquivo: 'robo.py · blocos', ferramenta: trocaModo,
+        corpo: h('div', { class: 'lab-toque' },
+          lista,
+          h('div', { class: 'robo-blocos', role: 'group', 'aria-label': 'Toque num comando para pôr no programa' },
+            MundoRobo.COMANDOS.map((c) => h('button', { type: 'button', class: 'robo-bloco', onclick: () => { programa.push(c); salvar(); atualizar(); } }, h('code', { text: `${c}()` })))),
+          h('details', { class: 'lab-equivalente' }, h('summary', { text: 'Ver em Python' }), equivalente)),
+        acoes: [telas.rodar,
+          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => { programa.pop(); salvar(); atualizar(); } }, icone('i-voltar'), 'Desfazer'),
+          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => { programa = []; salvar(); atualizar(); } }, icone('i-lixo'), 'Limpar')],
+      });
     }
 
     /* ---------- Mundo ---------- */

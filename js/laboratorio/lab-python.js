@@ -6,8 +6,9 @@
  *   { id, aulas: [faseId], grupo, titulo, enunciado, codigoInicial, solucao, testes: [{ tipo: 'saida', nome, esperada }
  *     | { nome, codigo: 'assert ...', oculto }], entradas, metas: { linhas }, dicas: [3],
  *     toque: { modelo: 'print(___)', lacunas: [{ opcoes: [...], certa, dica }] } }
- * Tela: o que deve aparecer na tela (a saída esperada) e os comandos que o aluno já conhece, sempre à vista;
- * o editor com Rodar; o console (input() vira linha de entrada); os testes. No celular, o modo toque completa
+ * Tela (arrumada em 2026-10-13): à esquerda, a coluna de apoio sempre à vista (o que deve aparecer na tela,
+ * os comandos que o aluno já conhece e as dicas); à direita, a janela do código (editor, Rodar e a saída num
+ * cartão só; input() vira linha de entrada na saída), os testes e o resultado. No celular, o modo toque completa
  * lacunas escolhendo opções, sem baixar o Python (o conferir-laboratorios garante que as certas passam nos testes).
  * Estrelas e XP como no Robô Entregador (Laboratorios.resultado).
  */
@@ -80,69 +81,68 @@ const LabPython = (() => {
           }, h('span', { class: 'lab-missao__n', text: String(i + 1) }), Laboratorios.estrelas(e, false));
         }));
       const temToque = !!(m.toque && m.toque.lacunas && m.toque.lacunas.length);
-      const trocaModo = temToque ? h('button', {
-        type: 'button', class: 'botao botao--link botao--pequeno', id: 'lab-modo',
-        onclick: () => { modo = modo === 'toque' ? 'codigo' : 'toque'; Laboratorios.guardarModo(modo); montar(); },
-      }, icone(modo === 'toque' ? 'i-codigo' : 'i-controle'), modo === 'toque' ? 'Escrever o código' : 'Completar lacunas (modo toque)') : null;
-
-      // Sempre à vista: o que o programa deve mostrar e os comandos que o aluno já conhece
-      const alvo = h('section', { class: 'lab-alvo', 'aria-labelledby': 'lab-alvo-titulo' },
-        h('h3', { class: 'lab-comandos__titulo', id: 'lab-alvo-titulo', text: 'O que deve aparecer na tela' }),
-        h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: esperadaDe(m) || '(confira os testes abaixo)' })));
-      const referencia = h('section', { class: 'lab-comandos', id: 'lab-comandos', 'aria-labelledby': 'lab-comandos-titulo' },
-        h('h3', { class: 'lab-comandos__titulo', id: 'lab-comandos-titulo', text: lab.tituloReferencia || 'Comandos que você já conhece' }),
-        h('ul', { class: 'lab-comandos__lista' }, (lab.referencia || []).map((c) => h('li', {}, h('code', { class: 'codigo-linha', text: c.nome }), h('span', { text: c.faz })))));
-
-      dicasMissao = Laboratorios.dicas(m.dicas || []);
       const usarToque = modo === 'toque' && temToque;
-      const area = usarToque ? montarToque(m) : montarCodigo(m);
+      const trocaModo = temToque ? h('button', {
+        type: 'button', class: 'lab-janela__modo', id: 'lab-modo',
+        onclick: () => { modo = modo === 'toque' ? 'codigo' : 'toque'; Laboratorios.guardarModo(modo); montar(); },
+      }, icone(usarToque ? 'i-codigo' : 'i-controle'), usarToque ? 'Escrever o código' : 'Modo toque') : null;
+
+      // Coluna de apoio, sempre à vista: o que o programa deve mostrar, os comandos que o aluno já conhece e as dicas
+      dicasMissao = Laboratorios.dicas(m.dicas || []);
+      const apoio = h('aside', { class: 'lab__apoio', 'aria-label': 'O objetivo, os comandos e as dicas' },
+        Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: 'O que deve aparecer na tela',
+          conteudo: h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: esperadaDe(m) || '(confira os testes)' })) }),
+        Laboratorios.cartao({ id: 'lab-comandos', icone: 'i-livro', titulo: lab.tituloReferencia || 'Comandos que você já conhece',
+          conteudo: Laboratorios.listaComandos(lab.referencia) }),
+        Laboratorios.cartao({ id: 'lab-ajuda', icone: 'i-bolha', titulo: 'Travou?',
+          conteudo: [h('p', { class: 'lab-apoio__texto', text: 'Três dicas, cada uma mais perto da resposta. A última vale só 1 estrela.' }), dicasMissao.el] }));
+
+      const area = usarToque ? montarToque(m, trocaModo) : montarCodigo(m, trocaModo);
 
       limpar(ctx.container).append(h('div', { class: 'lab lab-py' },
         h('header', { class: 'lab__cabeca' },
-          h('p', { class: 'rotulo', text: `${lab.nome} · ${m.grupo || 'Missão'} · missão ${idx + 1} de ${missoes.length}` }),
+          h('div', { class: 'lab__topo' },
+            h('p', { class: 'rotulo', text: m.grupo || 'Missão' }),
+            h('button', { type: 'button', class: 'botao botao--link botao--pequeno', id: 'lab-como', onclick: () => tutorial(true) }, icone('i-bolha'), 'Como funciona?')),
           h('h2', { class: 'lab__titulo' }, m.titulo, melhor ? Laboratorios.estrelas(melhor) : null),
           h('p', { class: 'lab__enunciado' }, UI.marcado(m.enunciado)),
-          h('div', { class: 'lab__barra' }, missaoNav, trocaModo)),
+          h('div', { class: 'lab__barra' }, h('span', { class: 'lab__barra-rotulo', text: `Missão ${idx + 1} de ${missoes.length}` }), missaoNav)),
         h('div', { class: 'lab__corpo' },
-          h('section', { class: 'lab__palco', 'aria-label': 'O objetivo e os comandos' }, alvo, referencia),
+          apoio,
           h('section', { class: 'lab__bancada', 'aria-label': usarToque ? 'Complete as lacunas' : 'Seu código' },
-            area, telas.testes, dicasMissao.el, telas.resultado)),
+            area, telas.testes, telas.resultado)),
         h('footer', { class: 'lab__pe' },
           Laboratorios.fazerDeVerdade(lab.fazDeVerdade),
-          h('div', { class: 'acoes-linha' },
-            h('button', { type: 'button', class: 'botao botao--link', onclick: () => tutorial(true) }, icone('i-bolha'), 'Como funciona?'),
+          h('div', { class: 'lab__pe-acoes' },
             h('button', { type: 'button', class: 'botao botao--secundario', id: 'lab-concluir', onclick: concluir }, icone('i-check'), 'Concluir laboratório')))));
       tutorial(false);
     }
 
-    function montarCodigo(m) {
+    function montarCodigo(m, trocaModo) {
       const salvo = Laboratorios.lerRascunho(trilha.id, lab.id, m.id);
       let espera = null;
       telas.editor = EditorCodigo.criar({
         valor: typeof salvo === 'string' ? salvo : m.codigoInicial || '',
         rotulo: 'Seu código em Python',
+        minLinhas: 8,
         aoMudar: (v) => { clearTimeout(espera); espera = setTimeout(() => Laboratorios.gravarRascunho(trilha.id, lab.id, m.id, v), 400); },
         aoRodar: () => rodar(m),
       });
-      telas.console = ConsoleLab.criar({ rotulo: 'Console do Python' });
-      telas.rodar = h('button', { type: 'button', class: 'botao botao--primario', id: 'lab-rodar', title: 'Rodar o programa (Ctrl+Enter)', 'aria-keyshortcuts': 'Control+Enter', onclick: () => rodar(m) }, icone('i-seta-dir'), 'Rodar');
-      return h('div', { class: 'lab-codigo' },
-        telas.editor.el,
-        h('div', { class: 'lab-acoes' }, telas.rodar,
-          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: async () => {
-            if (!(await UI.confirmar({ titulo: 'Voltar ao código inicial?', texto: 'O que você escreveu nesta missão vai ser trocado pelo código do começo.', sim: 'Voltar ao início', humor: 'triste' }))) return;
-            telas.editor.definir(m.codigoInicial || '');
-          } }, icone('i-revisao'), 'Recomeçar'),
-          h('span', { class: 'lab-acoes__atalho texto-suave', 'aria-hidden': 'true', text: 'Ctrl+Enter roda' })),
-        telas.console.el);
+      telas.console = ConsoleLab.criar({ rotulo: 'Saída', vazio: 'Aperte Rodar para ver aqui o que o programa mostra.' });
+      telas.rodar = h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', id: 'lab-rodar', title: 'Rodar o programa (Ctrl+Enter)', 'aria-keyshortcuts': 'Control+Enter', onclick: () => rodar(m) }, icone('i-seta-dir'), 'Rodar');
+      const recomecar = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: async () => {
+        if (!(await UI.confirmar({ titulo: 'Voltar ao código inicial?', texto: 'O que você escreveu nesta missão vai ser trocado pelo código do começo.', sim: 'Voltar ao início', humor: 'triste' }))) return;
+        telas.editor.definir(m.codigoInicial || '');
+      } }, icone('i-revisao'), 'Recomeçar');
+      return Laboratorios.janela({ arquivo: 'programa.py', ferramenta: trocaModo, corpo: telas.editor.el, acoes: [telas.rodar, recomecar], atalho: 'Ctrl+Enter roda', saida: telas.console.el });
     }
 
-    function montarToque(m) {
+    function montarToque(m, trocaModo) {
       const t = m.toque;
       const salvo = Laboratorios.lerRascunho(trilha.id, lab.id, `${m.id}:toque`);
       const escolhas = Array.isArray(salvo) && salvo.length === t.lacunas.length ? salvo : t.lacunas.map(() => null);
       telas.editor = null;
-      telas.console = ConsoleLab.criar({ rotulo: 'O que apareceu na tela' });
+      telas.console = ConsoleLab.criar({ rotulo: 'Saída', vazio: 'Escolha as lacunas e aperte Rodar.' });
       // o modelo vira linhas de código; cada ___ vira um menu de escolha (grande, bom para o dedo)
       let n = 0;
       const linhas = t.modelo.split('\n').map((linha, li) => h('div', { class: 'lab-lacunas__linha' },
@@ -155,12 +155,12 @@ const LabPython = (() => {
             t.lacunas[i].opcoes.map((o, j) => h('option', { value: String(j), selected: escolhas[i] === j, text: o })));
           return [parte, sel];
         }))));
-      telas.rodar = h('button', { type: 'button', class: 'botao botao--primario', id: 'lab-rodar', onclick: () => rodarToque(m, escolhas) }, icone('i-seta-dir'), 'Rodar');
-      return h('div', { class: 'lab-toque' },
-        h('p', { class: 'texto-suave', text: 'Modo toque: escolha o que vai em cada lacuna. No computador, dá para escrever o código inteiro.' }),
-        h('div', { class: 'lab-lacunas', role: 'group', 'aria-label': 'Código com lacunas' }, linhas),
-        h('div', { class: 'lab-acoes' }, telas.rodar),
-        telas.console.el);
+      telas.rodar = h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', id: 'lab-rodar', onclick: () => rodarToque(m, escolhas) }, icone('i-seta-dir'), 'Rodar');
+      return Laboratorios.janela({
+        arquivo: 'programa.py · lacunas', ferramenta: trocaModo,
+        corpo: h('div', { class: 'lab-lacunas', role: 'group', 'aria-label': 'Código com lacunas: escolha o que vai em cada uma' }, linhas),
+        acoes: [telas.rodar], saida: telas.console.el,
+      });
     }
 
     /* ---------- Rodar ---------- */
@@ -196,6 +196,7 @@ const LabPython = (() => {
       telas.rodar.disabled = false;
       telas.console.limpar();
       if (r.saida) telas.console.escrever(r.saida);
+      else if (!r.erro) telas.console.escrever('(o programa rodou, mas não mostrou nada na tela)', 'info');
       if (r.erro) {
         telas.resultado.replaceChildren(Laboratorios.blocoErro(r.erro));
         if (r.erro.linha) telas.editor.marcarLinha(r.erro.linha);
@@ -285,10 +286,10 @@ const LabPython = (() => {
       if (typeof Tutorial === 'undefined' || !Tutorial.guiar) return;
       Tutorial.guiar('lab-python', [
         { desenho: 'diver', titulo: 'Mão na massa!', texto: 'Aqui você escreve programas de verdade em Python. Cada missão pede uma saída na tela, e os testes conferem se o seu programa chegou lá.' },
-        { alvo: '.lab-alvo', desenho: 'alvo', titulo: 'O objetivo', texto: 'É isto que o seu programa precisa mostrar, letra por letra.' },
+        { alvo: '#lab-alvo', desenho: 'alvo', titulo: 'O objetivo', texto: 'É isto que o seu programa precisa mostrar, letra por letra.' },
         { alvo: '#lab-comandos', desenho: 'livro', titulo: 'Sua cola', texto: 'Os comandos que você já aprendeu ficam sempre aqui. Consulte à vontade.' },
         { alvo: '#lab-rodar', desenho: 'onda', titulo: 'Rode e confira', texto: 'Rode quantas vezes quiser. Errou? O Python mostra a linha e nós traduzimos a mensagem.' },
-        { alvo: '#lab-dica', desenho: 'lupa', titulo: 'Dicas', texto: 'Travou? São três dicas, cada uma mais perto da resposta. A última vale só 1 estrela.' },
+        { alvo: '#lab-ajuda', desenho: 'lupa', titulo: 'Dicas', texto: 'Travou? São três dicas, cada uma mais perto da resposta. A última vale só 1 estrela.' },
       ], { forcar });
     }
 
