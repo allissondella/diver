@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-13 · Onda 9: Enem · Artes e Educação Física
+- **Feito:** parecer `docs/validacoes/enem-linguagens-onda9-2026-10-13.md` (Aprovada com ressalvas; vale para Artes e EF, Inglês e Espanhol; só a Matriz e as observações do Caderno Marista de Linguagens; fatos da OMS, do frevo e da capoeira conferidos em fonte oficial). Curso `enem-artes-ef` ("Mergulho no Enem · Artes e Educação Física"), 12 aulas em 2 módulos (Artes: linguagens, obras e patrimônio; Práticas corporais, saúde e sociedade), 240 questões com comentário em todas as alternativas e Dica, 240 variantes, 32 fichas, blocos para todos os jogos e prova de 45. Entra sozinho na sala do Enem, área Linguagens. Caderno `docs/cadernos/enem-artes-ef.md`.
+- **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1) ou ao Caderno Marista de Linguagens; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 8,93 questões + ~US$ 8,93 variantes; nada enviado.
+- **Decisão por conta própria:** a partir da aula 8, um verificador local de comentários curtos (uma ou duas palavras); as aulas 8 a 12 saíram com frases inteiras. As aulas 1 a 7 (e Filosofia e Sociologia) ainda têm comentários curtos que passam no verificador oficial: ficam como melhoria.
+
+---
+
 ## 2026-10-13 · Onda 9: Enem · Sociologia
 - **Feito:** curso `enem-sociologia` ("Mergulho no Enem · Sociologia"), 10 aulas em 2 módulos (os clássicos e os conceitos; Brasil hoje: desigualdade, cidadania, movimentos sociais, cidade, violência e mídia), 200 questões com comentário em todas as alternativas e Dica, 200 variantes, 26 fichas, blocos para todos os jogos e prova de 45. Entra sozinho na sala do Enem, área Ciências Humanas. Caderno `docs/cadernos/enem-sociologia.md`; o parecer de Humanas (2026-10-10) já cobria a Sociologia.
 - **Conferências:** `conferir-trilha.mjs` 0 erros e 0 avisos; autocheck de originalidade sem nenhuma sequência de 8 palavras igual às provas de 2019–2025 (dia 1) ou ao Caderno Marista de Humanas; navegador (PC e celular): sala, mapa, artigo e Mergulho. `fila.mjs simular`: ~US$ 7,44 questões + ~US$ 7,44 variantes; nada enviado.
