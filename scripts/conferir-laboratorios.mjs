@@ -91,6 +91,17 @@ for (const arq of arquivos) {
         aviso(`${ref}: a solução usa laço ou condição; o modo toque precisa de blocos próprios`);
       }
     }
+    // modo toque com lacunas: o modelo preenchido com as certas tem de passar nos testes
+    if (m.toque && m.toque.modelo) {
+      let i = 0;
+      const preenchido = m.toque.modelo.replace(/___/g, () => { const l = m.toque.lacunas[i++]; return l ? l.opcoes[l.certa] : '___'; });
+      if (i !== m.toque.lacunas.length) erro(`${ref}: o modelo do modo toque tem ${i} lacunas e a lista tem ${m.toque.lacunas.length}`);
+      m.toque.lacunas.forEach((l, k) => { if (!(l.certa >= 0 && l.certa < l.opcoes.length) || new Set(l.opcoes).size !== l.opcoes.length) erro(`${ref}: lacuna ${k + 1} com opções repetidas ou "certa" fora`); });
+      const rt = rodar(pedidoDe(preenchido));
+      if (!passa(rt)) erro(`${ref}: no modo toque, as lacunas certas não passam: ${rt.erro ? rt.erro.mensagem : rt.testes.filter((t) => !t.passou).map((t) => t.nome).join('; ')}`);
+      const saida = (m.testes || []).find((t) => t.tipo === 'saida' && !t.oculto);
+      if (lab.tipo === 'python' && !saida) erro(`${ref}: falta um teste de saída visível (é o que o aluno vê como objetivo)`);
+    }
     console.log(`  ok    ${ref} · ${m.titulo} · ${linhas} linhas${lab.tipo === 'robo' ? ` · ${(r1.eventos || []).length} passos` : ''}`);
   }
 }

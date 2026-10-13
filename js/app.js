@@ -969,12 +969,30 @@ const App = (() => {
         icone('i-livro'), fase.modulo ? 'Antes de mergulhar' : `Antes de mergulhar: ${fase.nome}`,
         ler ? h('span', { class: 'fase__selo', text: 'Leia para liberar' }) : null)
       : null;
-    // "Mão na massa": o laboratório da aula (fases[].laboratorio, Explora Tech), sempre aberto, como o artigo
+    // Aula com laboratório (Explora Tech): o caminho numerado Ler → Questões → Mão na massa, no lugar dos botões soltos
     const labs = (Array.isArray(fase.laboratorio) ? fase.laboratorio : fase.laboratorio ? [fase.laboratorio] : [])
       .map((id) => Jogos.obter(id)).filter(Boolean);
-    const maos = labs.map((def) => h('button', { type: 'button', class: 'fase__estudo fase__lab', onclick: () => iniciarJogo(def.id, { fase: fase.id }),
-      'aria-label': `Mão na massa: laboratório ${def.nome}, da ${fase.nome}` }, icone('i-codigo'), `Mão na massa: ${def.nome}`));
-    return h('li', { 'data-fase': fase.id }, botao, estudo, ...maos);
+    if (labs.length && fase.resumo) return h('li', { 'data-fase': fase.id }, botao, caminhoDaAula(fase, liberada, concluida, ler, labs));
+    return h('li', { 'data-fase': fase.id }, botao, estudo);
+  }
+
+  /** Os três passos da aula com laboratório, cada um com o seu estado (feito, a fazer agora, depois). */
+  function caminhoDaAula(fase, liberada, questoesFeitas, ler, labs) {
+    const labFeito = Laboratorios.aulaFeita(estado.trilha.id, fase);
+    const passos = [
+      { n: 1, nome: 'Ler', detalhe: 'Antes de mergulhar', icone: 'i-livro', feito: !ler, acao: () => abrirResumo(fase, liberada) },
+      { n: 2, nome: 'Questões', detalhe: 'Mergulho da aula', icone: 'i-ancora', feito: questoesFeitas, acao: () => iniciarSessao('mergulho', { faseId: fase.id }) },
+      { n: 3, nome: 'Mão na massa', detalhe: labs.map((d) => d.nome).join(' + '), icone: 'i-codigo', feito: labFeito, acao: () => abrirLaboratorio(fase) },
+    ];
+    const atual = passos.find((p) => !p.feito);
+    return h('ol', { class: 'caminho-aula', 'aria-label': `Caminho da ${fase.nome}` },
+      passos.map((p) => h('li', { class: `caminho-aula__passo ${p.feito ? 'caminho-aula__passo--feito' : ''} ${p === atual ? 'caminho-aula__passo--agora' : ''}`.trim() },
+        h('button', { type: 'button', class: 'caminho-aula__botao', onclick: p.acao, disabled: p.n > 1 && !liberada,
+          'aria-label': `Passo ${p.n}: ${p.nome} (${p.detalhe})${p.feito ? ', feito' : p === atual ? ', é o próximo' : ''}` },
+        h('span', { class: 'caminho-aula__n', 'aria-hidden': 'true' }, p.feito ? icone('i-check') : String(p.n)),
+        h('span', { class: 'caminho-aula__textos', 'aria-hidden': 'true' },
+          h('span', { class: 'caminho-aula__nome' }, icone(p.icone), p.nome),
+          h('span', { class: 'caminho-aula__detalhe', text: p.detalhe }))))));
   }
 
   /**
@@ -1810,7 +1828,49 @@ const App = (() => {
     renderizarResumo(resumo, novas);
     mostrarTela('tela-resumo');
     if (s.modo === 'mergulho' && resumo.faseConcluida && resumo.bonus && resumo.bonus.primeiraVez && detetiveAntesDaProva(estado.trilha, estado.prog)) sugerirDetetive();
+    else if (s.modo === 'mergulho' && resumo.faseConcluida && labPendente(s.fase)) sugerirLaboratorio(s.fase);
     else if (s.modo === 'mergulho' && motivo !== 'saiu' && flashcardsDaFase(s.fase) >= 4) sugerirFlashcards(s.fase);
+  }
+
+  /* ---------- Caminho da aula com laboratório (Explora Tech): Ler → Questões → Mão na massa → próxima aula ---------- */
+  /** O laboratório ainda não feito da aula (id), ou null. */
+  function labPendente(fase) {
+    if (!fase || typeof Laboratorios === 'undefined' || !estado.trilha) return null;
+    const id = Laboratorios.pendenteDaAula(estado.trilha.id, fase);
+    return id && Jogos.obter(id) ? id : null;
+  }
+  function abrirLaboratorio(fase, id = labPendente(fase) || Laboratorios.daAula(fase)[0]) {
+    if (id && Jogos.obter(id)) iniciarJogo(id, { fase: fase.id });
+  }
+  /** A aula seguinte do curso (ou null no fim). */
+  function aulaSeguinte(fase) {
+    const fases = estado.trilha.fases;
+    const i = fases.findIndex((f) => f.id === fase.id);
+    return i >= 0 ? fases[i + 1] || null : null;
+  }
+  /** Vai para a próxima aula: abre o mapa nela e o "Antes de mergulhar" (o passo 1 do caminho). */
+  function irParaAula(fase) {
+    irPara('mergulho');
+    setTimeout(() => {
+      focarAula(fase.id);
+      const i = estado.trilha.fases.findIndex((f) => f.id === fase.id);
+      if (fase.resumo) abrirResumo(fase, Progresso.faseDesbloqueada(estado.prog, estado.trilha, i));
+    }, movimentoReduzido ? 50 : 400);
+  }
+  /** Caixa do Diver logo depois das questões: o próximo passo é pôr a mão na massa. */
+  function sugerirLaboratorio(fase) {
+    const id = labPendente(fase);
+    const def = id && Jogos.obter(id);
+    if (!def) return;
+    setTimeout(async () => {
+      if ($('tela-resumo').hidden || document.querySelector('dialog[open]')) return;
+      const ok = await UI.confirmar({
+        titulo: 'Agora, mão na massa!',
+        texto: `Você terminou as questões de ${fase.nome}. O próximo passo é o laboratório ${def.nome}: é ali que você escreve o código e vê acontecer. Depois dele, vem a próxima aula.`,
+        sim: `Abrir o ${def.nome}`, nao: 'Agora não', humor: 'feliz', foco: 'sim',
+      });
+      if (ok && !$('tela-resumo').hidden) abrirLaboratorio(fase, id);
+    }, movimentoReduzido ? 300 : 900);
   }
 
   /* =========================================================
@@ -1950,7 +2010,24 @@ const App = (() => {
     const detetive = $('btn-resumo-detetive');
     detetive.hidden = true;
     detetive.onclick = abrirDetetive;
-    if (r.modo === 'jogo' && faseFlash) {
+    const ehLab = r.modo === 'jogo' && r.jogo && r.jogo.grupo === 'laboratorios';
+    if (ehLab && faseFlash) {
+      // Laboratório aberto pela aula: o caminho segue para o próximo laboratório da aula ou para a próxima aula
+      const outro = labPendente(faseFlash);
+      const seguinte = aulaSeguinte(faseFlash);
+      if (outro && outro !== r.jogo.id) {
+        principal.textContent = `Próximo passo: ${Jogos.obter(outro).nome}`;
+        principal.onclick = () => abrirLaboratorio(faseFlash, outro);
+      } else if (!outro && seguinte) {
+        principal.textContent = `Próxima aula: ${seguinte.nome}`;
+        principal.onclick = () => irParaAula(seguinte);
+      } else {
+        principal.textContent = outro ? 'Continuar o laboratório' : 'Voltar ao mapa';
+        principal.onclick = () => (outro ? abrirLaboratorio(faseFlash, outro) : irPara('mergulho'));
+      }
+      voltar.textContent = 'Voltar ao laboratório';
+      voltar.onclick = () => iniciarJogo(r.jogo.id, { fase: faseFlash.id });
+    } else if (r.modo === 'jogo' && faseFlash) {
       // Flashcards que vieram do fim do Mergulho: o caminho principal é voltar para a trilha
       principal.textContent = 'Voltar para a trilha';
       principal.onclick = () => irPara('mergulho');
@@ -1966,9 +2043,14 @@ const App = (() => {
     } else if (r.modo === 'mergulho') {
       const i = trilha.fases.findIndex((f) => f.id === r.fase.id);
       const proxima = trilha.fases[i + 1];
-      if (r.faseConcluida && proxima) {
+      const lab = r.faseConcluida && labPendente(r.fase);
+      if (lab) {
+        // Aula com laboratório (Explora Tech): depois das questões, o próximo passo é a mão na massa
+        principal.textContent = `Próximo passo: ${Jogos.obter(lab).nome}`;
+        principal.onclick = () => abrirLaboratorio(r.fase, lab);
+      } else if (r.faseConcluida && proxima) {
         principal.textContent = `Descer para ${proxima.nome}`;
-        principal.onclick = () => iniciarSessao('mergulho', { faseId: proxima.id });
+        principal.onclick = () => (typeof Laboratorios !== 'undefined' && Laboratorios.daAula(r.fase).length ? irParaAula(proxima) : iniciarSessao('mergulho', { faseId: proxima.id }));
       } else {
         principal.textContent = r.faseConcluida ? 'Refazer fase' : 'Tentar de novo';
         principal.onclick = () => iniciarSessao('mergulho', { faseId: r.fase.id });

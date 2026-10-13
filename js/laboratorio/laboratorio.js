@@ -38,7 +38,7 @@ const Laboratorios = (() => {
   const chaveProg = (trilhaId) => `diver:v1:lab:${trilhaId}`;
   function progresso(trilhaId, labId) {
     const tudo = Dados.ler(chaveProg(trilhaId), {});
-    return (tudo && tudo[labId]) || {};
+    return (tudo && labId !== '_aulas' && tudo[labId]) || {};
   }
   /** Guarda a melhor marca da missão. Devolve { antes, agora } (estrelas). */
   function registrar(trilhaId, labId, missaoId, estrelas) {
@@ -61,6 +61,26 @@ const Laboratorios = (() => {
     Object.values(tudo[labId] || {}).forEach((m) => { m.pagas = m.estrelas; });
     Dados.gravar(chaveProg(trilhaId), tudo);
   }
+
+  /*
+   * Caminho da aula (Ler → Questões → Mão na massa → próxima aula): o laboratório da aula fica "feito" quando
+   * todas as missões dele ligadas àquela aula têm pelo menos 1 estrela. Guardado junto das estrelas (sobe para a nuvem).
+   */
+  function marcarAula(trilhaId, labId, faseId) {
+    const tudo = Dados.ler(chaveProg(trilhaId), {}) || {};
+    tudo._aulas = tudo._aulas || {};
+    tudo._aulas[faseId] = { ...(tudo._aulas[faseId] || {}), [labId]: UI.dataLocal() };
+    Dados.gravar(chaveProg(trilhaId), tudo);
+  }
+  const labDaAulaFeito = (trilhaId, labId, faseId) => {
+    const tudo = Dados.ler(chaveProg(trilhaId), {}) || {};
+    return !!(tudo._aulas && tudo._aulas[faseId] && tudo._aulas[faseId][labId]);
+  };
+  /** Os laboratórios da aula (fases[].laboratorio, texto ou lista). */
+  const daAula = (fase) => (Array.isArray(fase.laboratorio) ? fase.laboratorio : fase.laboratorio ? [fase.laboratorio] : []);
+  /** O primeiro laboratório da aula ainda não feito (ou null quando todos foram feitos). */
+  const pendenteDaAula = (trilhaId, fase) => daAula(fase).find((id) => !labDaAulaFeito(trilhaId, id, fase.id)) || null;
+  const aulaFeita = (trilhaId, fase) => daAula(fase).length > 0 && !pendenteDaAula(trilhaId, fase);
 
   /* ---------- Rascunho (só neste aparelho) ---------- */
   const chaveRascunho = (t, l, m) => `diver-local:v1:lab:${t}:${l}:${m}`;
@@ -169,7 +189,7 @@ const Laboratorios = (() => {
   }
 
   return {
-    carregar, daTrilha, progresso, registrar, aPagar, lerRascunho, gravarRascunho, modoInicial, guardarModo,
+    carregar, daTrilha, progresso, registrar, aPagar, marcarAula, labDaAulaFeito, daAula, pendenteDaAula, aulaFeita, lerRascunho, gravarRascunho, modoInicial, guardarModo,
     estrelas, dicas, fazerDeVerdade, blocoErro, resultado, TRADUCAO,
   };
 })();

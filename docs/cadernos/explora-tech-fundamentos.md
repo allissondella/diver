@@ -11,6 +11,7 @@
 - **Diferencial:** os **laboratórios "Mão na massa"**. O aluno escreve código e vê algo acontecer, simulado no navegador e sem rede real.
 
 ## Seu gosto (preferências do usuário)
+- 2026-10-13 · Depois das questões, a tarefa prática; depois dela, a próxima aula. Comandos sempre à vista no laboratório. No Módulo 1, toda aula tem a sua tarefa, para o aluno pegar o jeito.
 - 2026-10-13 · Curso "Explora Tech", só a Fase 1 agora; trabalhar em ondas, com plano antes do código.
 - 2026-10-13 · **Sala "Tecnologia"** com o Explora Tech, o ISO/IEC 27001 e a Cibersegurança (pedido da conversa; o prompt falava em sala "Explora Tech").
 - 2026-10-13 · Nada de nomes do mar em curso, módulo, aula ou descrição; módulo e aula sempre numerados.
@@ -121,6 +122,7 @@ Licenças conferidas na web em **2026-10-13**:
 |---|---|---|---|
 
 ## Já feito
+- 2026-10-13 · Caminho da aula (Ler → Questões → Mão na massa → próxima aula), comandos sempre à vista e laboratório Primeiros Programas (aulas 2 a 5), a pedido do usuário. Robô: missões 1 a 3 na aula 1 e 4 a 6 na revisão.
 - 2026-10-13 · **Onda 0:** Módulo 1 · Lógica: pensar como o computador (aulas 1 a 5: algoritmo; primeiro programa; variáveis e tipos; operadores, porcentagem e arredondamento; revisão). 100 questões, 100 variantes, 16 fichas, 22 pares, 19 V/F, 10 adivinhas, 6 sequências, 42 palavras (todas no dicionário). Laboratório Robô Entregador com 6 missões de sequência (aulas 1, 2 e 5). Curadoria registrada em `docs/FONTES_CATALOGADAS.md` e no parecer `docs/validacoes/explora-tech-fundamentos-2026-10-13.md`.
 - 2026-10-13 · Etapa 1: este caderno e o mapa curricular.
   - Curadoria da pasta do Drive: 5 PDFs WeLib reprovados, só bibliografia.

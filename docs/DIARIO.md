@@ -5,6 +5,25 @@
 
 ---
 
+## 2026-10-13 · Explora Tech: caminho da aula e Primeiros Programas (pedido do usuário)
+- **Pedido:**
+  - a tela do laboratório estava bagunçada embaixo do editor;
+  - depois das questões, o aluno deve seguir para a tarefa e só então para a próxima aula;
+  - os comandos devem ficar sempre à vista.
+  - Tudo isso no Módulo 1, para ele pegar o jeito.
+- **Feito:**
+  - **Mapa:** passos numerados 1 Ler → 2 Questões → 3 Mão na massa em cada aula com laboratório.
+  - **Fluxo:** caixa do Diver e botão "Próximo passo" depois das questões; "Concluir e seguir para a próxima aula" no fim do laboratório (abre o artigo da aula seguinte).
+  - **Tela do robô:** editor que cresce com o código, Rodar e Recomeçar numa barra só, console só quando há saída, comandos num cartão fixo embaixo da grade.
+  - **Laboratório Primeiros Programas** (11 missões, aulas 2 a 5), com objetivo e "cola" sempre à vista, comparação Esperado × Saiu e lacunas no celular.
+  - **Robô redistribuído:** missões 1 a 3 na aula 1, 4 a 6 na revisão.
+  - Modelo `lab-python.js`, que vai servir para a Oficina de Funções e o Caça-Bugs.
+- **Conferências:**
+  - `conferir-trilha` e `conferir-laboratorios` sem erros (as lacunas certas de cada missão passam nos testes).
+  - Navegador, PC e celular: caminho completo da aula 1 até abrir a aula 2, falha e acerto no Primeiros Programas, lacunas no celular sem baixar o Python.
+
+---
+
 ## 2026-10-13 · Explora Tech · Onda 0 (sala Tecnologia, Python no navegador, Módulo 1 e Robô Entregador)
 - **Feito:**
   - **Sala Tecnologia** (pedido do usuário): áreas "Explora Tech" e "Segurança da informação" (Cibersegurança e ISO 27001, que eram salas de um curso só). No Admin, matrícula curso a curso; `pacote:iso`/`pacote:ciber` antigos valem como "só aquele curso".

@@ -40,7 +40,7 @@
  * pal: palavra :: dica
  *
  * ---------- Tecnologia (Explora Tech, 2026-10-13) ----------
- * lab: <id>                    a aula aponta para um laboratório "Mão na massa" (fases[].laboratorio)
+ * lab: <id>[, <id>]            a aula aponta para um ou mais laboratórios "Mão na massa" (fases[].laboratorio), na ordem
  * ```python … ```              dentro do enunciado: o código da questão (campo "codigo", recuo preservado);
  *                              dentro de uma seção do artigo: um bloco de código
  * ! alternativas-codigo        as alternativas são código ou saída (monoespaçadas; "\n" vira quebra de linha)
@@ -173,7 +173,7 @@ export function lerAulas(texto, origem = 'texto') {
       case 'habilidades': aula.habilidades = valor.split(',').map((x) => x.trim()).filter(Boolean); return;
       case 'minutos': aula.minutos = Number(valor); return;
       case 'novaEm': aula.novaEm = valor; return;
-      case 'lab': aula.laboratorio = valor; return;
+      case 'lab': { const ids = valor.split(',').map((x) => x.trim()).filter(Boolean); aula.laboratorio = ids.length > 1 ? ids : ids[0]; return; }
       case 'intro': r.introducao = valor; secao = null; lista = null; return;
       case 'mapa': r.mapaMental = { centro: valor, ramos: [] }; lista = 'ramos'; secao = null; return;
       case 'assoc': {

@@ -8,7 +8,7 @@ const EditorCodigo = (() => {
   const { h } = UI;
   const RECUO = '    ';
 
-  function criar({ valor = '', rotulo = 'Seu código', aoMudar = () => {}, aoRodar = () => {}, somenteLeitura = false } = {}) {
+  function criar({ valor = '', rotulo = 'Seu código', aoMudar = () => {}, aoRodar = () => {}, somenteLeitura = false, minLinhas = 6 } = {}) {
     const numeros = h('div', { class: 'editor__numeros', 'aria-hidden': 'true' });
     const marca = h('div', { class: 'editor__marca', 'aria-hidden': 'true', hidden: true });
     const area = h('textarea', {
@@ -22,6 +22,7 @@ const EditorCodigo = (() => {
 
     function atualizarNumeros() {
       const n = area.value.split('\n').length;
+      area.rows = Math.max(minLinhas, n + 1); // o editor cresce com o código: nenhuma linha fica cortada
       if (numeros.childElementCount !== n) numeros.replaceChildren(...Array.from({ length: n }, (_, i) => h('span', { text: String(i + 1) })));
     }
     function rolar() {
@@ -97,10 +98,11 @@ const ConsoleLab = (() => {
 
   function criar({ rotulo = 'Console' } = {}) {
     const log = h('div', { class: 'console__log', role: 'log', 'aria-live': 'polite', 'aria-label': rotulo, tabindex: '0' });
-    const el = h('div', { class: 'console' }, h('div', { class: 'console__titulo', 'aria-hidden': 'true', text: rotulo }), log);
+    const el = h('div', { class: 'console', hidden: true }, h('div', { class: 'console__titulo', 'aria-hidden': 'true', text: rotulo }), log);
 
     function escrever(texto, tipo = 'saida') {
       if (!texto) return;
+      el.hidden = false; // o console só aparece quando tem algo para mostrar
       log.append(h('span', { class: `console__linha console__linha--${tipo}`, text: texto }));
       log.scrollTop = log.scrollHeight;
     }
@@ -113,6 +115,7 @@ const ConsoleLab = (() => {
           prompt ? h('span', { class: 'console__prompt', text: prompt }) : null, campo,
           h('button', { type: 'submit', class: 'botao botao--secundario botao--pequeno', text: 'Enviar' }),
           h('button', { type: 'button', class: 'botao botao--link botao--pequeno', text: 'Parar', onclick: () => { form.remove(); resolve(null); } }));
+        el.hidden = false;
         el.append(form);
         campo.focus();
       });
@@ -122,7 +125,7 @@ const ConsoleLab = (() => {
       el,
       escrever,
       pedirEntrada,
-      limpar: () => { log.replaceChildren(); el.querySelectorAll('.console__form').forEach((f) => f.remove()); },
+      limpar: () => { log.replaceChildren(); el.querySelectorAll('.console__form').forEach((f) => f.remove()); el.hidden = true; },
       texto: () => log.textContent,
     };
   }

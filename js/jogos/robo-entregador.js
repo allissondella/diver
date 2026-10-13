@@ -93,9 +93,10 @@ Jogos.registrar({
           h('input', { type: 'checkbox', checked: passoAPasso, onchange: (e) => { passoAPasso = e.target.checked; } }),
           h('span', { text: 'Passo a passo' })));
 
-      const comandos = h('details', { class: 'lab-comandos' },
-        h('summary', { text: 'Comandos do robô' }),
-        h('ul', {}, lab.comandos.map((c) => h('li', {}, h('code', { class: 'codigo-linha', text: c.nome }), ` ${c.faz}`))));
+      // Os comandos ficam sempre à vista (pedido do usuário, 2026-10-13): é a "cola" que o aluno consulta enquanto programa
+      const comandos = h('section', { class: 'lab-comandos', id: 'robo-comandos', 'aria-labelledby': 'robo-comandos-titulo' },
+        h('h3', { class: 'lab-comandos__titulo', id: 'robo-comandos-titulo', text: 'Comandos do robô' }),
+        h('ul', { class: 'lab-comandos__lista' }, lab.comandos.map((c) => h('li', {}, h('code', { class: 'codigo-linha', text: c.nome }), h('span', { text: c.faz })))));
 
       dicasMissao = Laboratorios.dicas(m.dicas || []);
 
@@ -111,11 +112,11 @@ Jogos.registrar({
           h('p', { class: 'rotulo', text: `${lab.nome} · ${m.grupo || 'Missão'} · missão ${idx + 1} de ${missoes.length}` }),
           h('h2', { class: 'lab__titulo' }, m.titulo, melhor ? Laboratorios.estrelas(melhor) : null),
           h('p', { class: 'lab__enunciado', text: m.enunciado }),
-          missaoNav),
+          h('div', { class: 'lab__barra' }, missaoNav, trocaModo)),
         h('div', { class: 'lab__corpo' },
-          h('section', { class: 'lab__palco', 'aria-label': 'O mundo do robô' }, telas.mundo, telas.status, telas.contador, velocidadeSel),
+          h('section', { class: 'lab__palco', 'aria-label': 'O mundo do robô' }, telas.mundo, telas.status, telas.contador, velocidadeSel, comandos),
           h('section', { class: 'lab__bancada', 'aria-label': modo === 'toque' ? 'Blocos de comando' : 'Seu código' },
-            area, telas.resultado, dicasMissao.el, comandos, trocaModo)),
+            area, dicasMissao.el, telas.resultado)),
         h('footer', { class: 'lab__pe' },
           Laboratorios.fazerDeVerdade(lab.fazDeVerdade),
           h('div', { class: 'acoes-linha' },
@@ -138,14 +139,16 @@ Jogos.registrar({
       });
       telas.console = ConsoleLab.criar({ rotulo: 'Console do Python' });
       telas.rodar = h('button', { type: 'button', class: 'botao botao--primario', id: 'robo-rodar', onclick: () => rodarCodigo(m) }, icone('i-seta-dir'), 'Rodar');
+      telas.rodar.setAttribute('title', 'Rodar o programa (Ctrl+Enter)');
+      telas.rodar.setAttribute('aria-keyshortcuts', 'Control+Enter');
       return h('div', { class: 'lab-codigo' },
         telas.editor.el,
-        h('div', { class: 'acoes-linha' }, telas.rodar,
-          h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: async () => {
+        h('div', { class: 'lab-acoes' }, telas.rodar,
+          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: async () => {
             if (!(await UI.confirmar({ titulo: 'Voltar ao código inicial?', texto: 'O que você escreveu nesta missão vai ser trocado pelo código do começo.', sim: 'Voltar ao início', humor: 'triste' }))) return;
             telas.editor.definir(m.codigoInicial || '');
-          } }, icone('i-revisao'), 'Recomeçar o código')),
-        h('p', { class: 'texto-suave lab-atalho', text: 'Atalho: Ctrl+Enter roda o programa.' }),
+          } }, icone('i-revisao'), 'Recomeçar'),
+          h('span', { class: 'lab-acoes__atalho texto-suave', 'aria-hidden': 'true', text: 'Ctrl+Enter roda' })),
         telas.console.el);
     }
 
@@ -311,13 +314,16 @@ Jogos.registrar({
         ? (estrelas === 1 ? 'Sem a última dica, a missão vale até 3 estrelas.' : `Para a 3ª estrela: até ${m.metas.linhas} linhas e ${m.metas.passos || m.metas.linhas} passos (você usou ${linhas} e ${passos}).`)
         : 'Programa enxuto: dentro da meta de linhas e passos.';
       const proxima = idx < missoes.length - 1;
+      const progAgora = Laboratorios.progresso(trilha.id, lab.id);
+      const todasDaAula = ctx.opcoes.fase && missoes.every((mm) => progAgora[mm.id] && progAgora[mm.id].estrelas >= 1);
+      if (todasDaAula) Laboratorios.marcarAula(trilha.id, lab.id, ctx.opcoes.fase);
       telas.resultado.replaceChildren(h('div', { class: 'lab-sucesso', role: 'status' },
         h('p', { class: 'lab-sucesso__titulo' }, icone('i-check'), 'Mandou bem, Diver! Caixa entregue.'),
         Laboratorios.estrelas(estrelas),
         h('p', { class: 'texto-suave', text: agora > antes ? `${falta} Nova marca: ${agora} de 3.` : falta }),
         h('div', { class: 'acoes-linha' },
           proxima ? h('button', { type: 'button', class: 'botao botao--primario', id: 'robo-proxima', onclick: () => { idx++; montar(); } }, 'Próxima missão', icone('i-seta-dir'))
-            : h('button', { type: 'button', class: 'botao botao--primario', onclick: concluir }, icone('i-check'), 'Concluir laboratório'))));
+            : h('button', { type: 'button', class: 'botao botao--primario', id: 'robo-fim', onclick: concluir }, icone('i-check'), todasDaAula ? 'Concluir e seguir para a próxima aula' : 'Concluir laboratório'))));
       const botao = telas.resultado.querySelector('button');
       if (botao) botao.focus({ preventScroll: true });
     }
@@ -333,6 +339,7 @@ Jogos.registrar({
         { desenho: 'diver', titulo: 'Mão na massa!', texto: 'Aqui você programa de verdade. Cada linha é uma ordem para o robô, e ele faz exatamente o que você mandar: nem mais, nem menos.' },
         { alvo: '#robo-mundo', desenho: 'alvo', titulo: 'O mundo do robô', texto: 'O robô é o círculo com a seta (ela mostra para onde ele está virado). Os quadrados amarelos são as caixas, e os pontilhados, os destinos.' },
         { alvo: modo === 'toque' ? '#robo-programa' : '.editor', desenho: 'livro', titulo: modo === 'toque' ? 'Monte o programa' : 'Escreva o programa', texto: modo === 'toque' ? 'Toque nos blocos para montar a lista de comandos. No computador, dá para escrever o código em Python.' : 'Uma ordem por linha, como andar() ou pegar(). Os parênteses no fim são obrigatórios.' },
+        { alvo: '#robo-comandos', desenho: 'livro', titulo: 'Sua cola', texto: 'Os comandos do robô ficam sempre aqui, à vista. Consulte à vontade enquanto programa.' },
         { alvo: '#robo-rodar', desenho: 'onda', titulo: 'Rode e veja', texto: 'O robô executa linha por linha, e a linha da vez acende. Errou? Sem problema: ajuste e rode de novo.' },
         { alvo: '#lab-dica', desenho: 'lupa', titulo: 'Dicas', texto: 'Travou? Peça uma dica. São três, cada uma mais perto da resposta. A última vale só 1 estrela.' },
       ], { forcar });
