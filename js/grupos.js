@@ -61,7 +61,7 @@ const Grupos = (() => {
       rotuloAula: 'aulas',
       unidade: ['curso', 'cursos'],
       prefixo: /^Explora Tech\s*·\s*/i,
-      porCurso: true, // no Admin, cada curso da sala tem o seu quadradinho: são produtos diferentes (2026-10-13)
+      porCurso: true, // produtos diferentes: ter todos os cursos sem o marcador não vira "sala inteira" no Admin (desde 2026-10-14 todas as salas têm curso a curso)
       pertence: (t) => /^(explora-tech-|iso-27001|ciberseguranca)/.test(t.id),
       areas: [
         { nome: 'Explora Tech', cor: 'turquesa', icone: 'i-codigo', cursos: ['explora-tech-fundamentos', 'explora-tech-exploracao', 'explora-tech-especializacao', 'explora-tech-portfolio'] },

@@ -5,15 +5,15 @@
 
 ---
 
-## 2026-10-14 · Admin: escolha de salas e cursos por cartões (pedido do usuário)
-- **Pedido:** organizar a escolha dos cursos no Admin como foi feito no mapa, "linda, dinâmica e limpa, pode ser abrindo uma caixinha".
-- **Feito (`js/admin.js`, `checksCursos`; estilos em `css/areas.css`):**
-  - um cartão por sala em grade (3 lado a lado no computador, um embaixo do outro no celular): ícone na cor da sala, nome, quantos cursos e o estado ("Sala inteira", "1 de 3 cursos", "2 de 15 matérias (matrícula antiga)", "Sem acesso"), com o quadradinho no canto (cheio, pela metade ou vazio);
-  - clicar no cartão dá ou tira a sala inteira;
-  - Tecnologia: "Escolher cursos" abre uma caixa com "Sala inteira" no topo e os cursos por área; grava uma vez só, no "Pronto" ("Cancelar" não muda nada);
-  - Enem e Radiologia: "Ver as N matérias/cursos" abre a mesma caixa só para ver o que entra (com o "Comece por aqui");
-  - embaixo, o resumo "Vai estudar" com chips.
-- **Não mudou:** o que é gravado (cursos + marcadores `pacote:`), os marcadores antigos (`pacote:iso`, `pacote:ciber`) e a matrícula antiga pela metade. Testado com dados simulados (nada no banco).
+## 2026-10-14 · Admin repaginado (pedido do usuário)
+- **Pedido:** a escolha de cursos estava grande e feia (cada pessoa carregava o seletor inteiro: 2.700 px com 3 pessoas); "abrir uma tela para achar as salas, uma seta ou + para escolher os cursos separados, ou marcar a sala e liberar tudo, tudo guardadinho"; "repaginada completa na página de admin". Plano aprovado ("manda bala").
+- **Feito (`js/admin.js`, estilos em `css/areas.css`):**
+  - topo: busca + "+ Cadastrar pessoa"; embaixo, o filtro por tipo com a contagem em cada botão;
+  - faixa "Cursos novos nas salas" só quando falta curso publicado depois (com "Atualizar salas");
+  - lista compacta: uma linha por pessoa (nome, e-mail, tipo, salas em etiquetas como "Tecnologia · 1 de 3", situação) e "Gerenciar", que abre o painel (tipo de conta, "Editar salas e cursos", Progresso, Nova senha, Editar nome, Desativar);
+  - cadastro numa janela (tipo, nome, e-mail, salas e cursos); depois, a senha e "Cadastrar outra pessoa";
+  - janela "Salas e cursos": busca por sala ou curso; uma linha por sala com o quadradinho da sala inteira (inclui os publicados depois) e a setinha que abre os cursos por área para liberar separado, **em todas as salas** (antes só a Tecnologia); grava só no "Salvar".
+- **Não mudou:** o que é gravado (cursos + `pacote:<sala>` na sala inteira), os marcadores antigos (`pacote:iso`, `pacote:ciber`) e o banco. Os cartões grandes da rodada anterior saíram. Testado com login e dados simulados no computador e no celular (nada no banco): cancelar não grava, só Matemática do Enem, sala inteira, busca, cadastro e a visão do professor.
 
 ## 2026-10-13 · Mapa: cada aula é um cartão só (pedido do usuário)
 - **Pedido:** os botões embaixo das aulas estavam "horríveis": ora lado a lado e longe, ora um embaixo do outro, e sem deixar claro de qual aula eram.

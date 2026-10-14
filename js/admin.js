@@ -36,11 +36,6 @@ const Admin = (() => {
   const salasDoCatalogo = () => Grupos.salas(App.trilhas().filter((t) => !Trilhas.ehImportada(t.id)));
   const salaDoPacote = (id) => salasDoCatalogo().find((s) => `pacote:${s.id}` === id) || null;
   const cursosDoPacote = (id) => { const sala = salaDoPacote(id); return sala ? sala.trilhas.map((t) => t.id) : []; };
-  /** As salas de uma lista de matrículas (para os chips): pela sala de cada curso e pelos marcadores. */
-  function salasDe(cursos) {
-    return salasDoCatalogo().filter((s) => cursos.includes(`pacote:${s.id}`) || s.trilhas.some((t) => cursos.includes(t.id)));
-  }
-
   /** Mensagem pronta para mandar à pessoa (WhatsApp, e-mail...). */
   function mensagemAcesso(nome, email, senha, papel = 'aluno') {
     const site = location.href.split('#')[0];
@@ -71,163 +66,175 @@ const Admin = (() => {
       botao);
   }
 
+  /** O acesso de uma pessoa em etiquetas, uma por sala: "Radiologia" (sala inteira) ou "Tecnologia · 1 de 3". */
+  function etiquetasAcesso(cursos) {
+    return salasDoCatalogo().map((sala) => {
+      const ids = sala.trilhas.map((t) => t.id);
+      const n = ids.filter((id) => cursos.includes(id)).length;
+      const inteira = cursos.includes(`pacote:${sala.id}`) || (!sala.porCurso && n > 0 && n === ids.length);
+      if (!inteira && !n) return null;
+      return { sala, inteira, texto: inteira || sala.unica ? sala.nome : `${sala.nome} · ${n} de ${ids.length}` };
+    }).filter(Boolean);
+  }
+  const chipSala = (e) => h('span', { class: `chip chip--sala sala--${e.sala.cor}`, title: e.inteira ? 'Sala inteira' : 'Cursos separados' }, icone(e.sala.icone), e.texto);
+
+  /** "2 salas inteiras e 1 curso separado" (o rodapé da escolha). */
+  function textoContagem({ inteiras, avulsos }) {
+    const partes = [inteiras ? UI.plural(inteiras, 'sala inteira', 'salas inteiras') : '', avulsos ? UI.plural(avulsos, 'curso separado', 'cursos separados') : ''].filter(Boolean);
+    return partes.length ? partes.join(' e ') : 'Nenhum curso marcado';
+  }
+
   /**
-   * As salas para marcar na matrícula (redesenhado em 2026-10-14, pedido do usuário): um cartão por sala, em grade,
-   * com ícone, nome, quantos cursos e o estado ("Sala inteira", "1 de 3 cursos", "Sem acesso"). Clicar no cartão
-   * marca ou tira a sala inteira. Na sala de produtos diferentes (Tecnologia, porCurso) o botão "Escolher cursos"
-   * abre uma caixa com a sala inteira no topo e os cursos por área; nas outras, "Ver as matérias" mostra o que entra.
-   * Embaixo, o resumo do que a pessoa vai estudar. Sala com parte dos cursos (matrícula antiga) aparece "pela metade"
-   * e fica como está até o admin mexer nela.
-   * O elemento devolvido tem .escolhidos() (a lista de matrículas a gravar: cursos + marcadores), .limpar() e
-   * dispara "change" a cada mudança (o cartão da pessoa salva ao mudar).
+   * Janela do Admin (dialog nativo, 2026-10-14): cabeçalho com título e X, corpo que rola e pé com os botões.
+   * Com aoEnviar, a caixa é um formulário (Enter envia; clicar fora não fecha, para não perder o que foi digitado).
    */
-  function checksCursos(selecionados = [], nomeGrupo) {
+  function janela({ titulo, sub = '', corpo, pe = null, classe = '', aoEnviar = null, aoFechar = () => {} }) {
+    const antes = document.activeElement;
+    const tid = `janela-${Math.random().toString(36).slice(2, 8)}`;
+    const conteudo = [
+      h('header', { class: 'janela__cabeca' },
+        h('div', {}, h('h2', { class: 'janela__titulo', id: tid, text: titulo }), sub ? h('p', { class: 'texto-suave janela__sub', text: sub }) : null),
+        h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'))),
+      h('div', { class: 'janela__corpo' }, corpo),
+      pe ? h('footer', { class: 'janela__pe' }, pe) : null];
+    const caixa = aoEnviar
+      ? h('form', { class: 'janela__caixa', onsubmit: (e) => { e.preventDefault(); aoEnviar(); } }, conteudo)
+      : h('div', { class: 'janela__caixa' }, conteudo);
+    const dialogo = h('dialog', { class: `dialogo janela ${classe}`.trim(), 'aria-labelledby': tid }, caixa);
+    dialogo.addEventListener('keydown', (e) => e.stopPropagation()); // os atalhos da tela de trás não disparam
+    if (!aoEnviar) dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close(); });
+    dialogo.addEventListener('close', () => {
+      aoFechar(dialogo.returnValue);
+      dialogo.remove();
+      if (antes && antes.isConnected && typeof antes.focus === 'function') antes.focus({ preventScroll: true });
+    }, { once: true });
+    document.body.append(dialogo);
+    dialogo.showModal();
+    return dialogo;
+  }
+
+  /**
+   * Escolher salas e cursos (repaginada do Admin, 2026-10-14, pedido do usuário): uma linha por sala, com o
+   * quadradinho da sala inteira, o ícone, o nome e o estado ("4 cursos · sala inteira", "15 matérias · 2 de 15"),
+   * e a setinha que abre os cursos da sala, por área, para liberar separado (vale para todas as salas).
+   * Marcar a sala = todos os cursos + o marcador "pacote:<sala>" (recebe também os publicados depois).
+   * Busca por sala ou curso. Devolve o elemento com .escolhidos() (cursos + marcadores a gravar), .contagem(),
+   * .limpar() e o evento "change" a cada mudança. Matrícula fora das salas e marcadores antigos (pacote:iso) ficam como estão.
+   */
+  function escolhaDeAcesso(selecionados = []) {
     const salas = salasDoCatalogo();
     const conhecidos = new Set(salas.flatMap((s) => [`pacote:${s.id}`, ...s.trilhas.map((t) => t.id)]));
-    const caixa = h('div', { class: 'salas-escolha' });
-    const avisar = () => caixa.dispatchEvent(new Event('change', { bubbles: true }));
-    const resumo = h('div', { class: 'salas-escolha__resumo', 'aria-live': 'polite' });
+    const raiz = h('div', { class: 'acesso' });
+    const avisar = () => raiz.dispatchEvent(new Event('change', { bubbles: true }));
+    const sufixo = Math.random().toString(36).slice(2, 7);
 
     const linhas = salas.map((sala) => {
       const ids = sala.trilhas.map((t) => t.id);
       const tem = ids.filter((id) => selecionados.includes(id));
-      const st = {
-        inteira: selecionados.includes(`pacote:${sala.id}`) || (!sala.porCurso && tem.length === ids.length && ids.length > 0),
-        cursos: new Set(tem), // só na sala porCurso
-        legado: false, // matrícula antiga com parte da sala (salas inteiras): fica como está até mexer
-      };
-      st.legado = !st.inteira && !sala.porCurso && tem.length > 0;
-      const porCurso = sala.porCurso && ids.length > 1;
+      const inteira = selecionados.includes(`pacote:${sala.id}`) || (!sala.porCurso && ids.length > 0 && tem.length === ids.length);
+      const st = { inteira, cursos: new Set(inteira ? ids : tem), aberto: false };
       const unidade = (n) => (n === 1 ? sala.unidade[0] : sala.unidade[1]);
-      const nomeCurto = (t) => Grupos.nomeCurto(sala, t);
+      const marcaSala = h('input', { type: 'checkbox' });
+      const estadoTxt = h('span', { class: 'acesso__estado' });
+      const idPainel = `acesso-${sala.id}-${sufixo}`;
+      const abrir = ids.length > 1 ? h('button', { type: 'button', class: 'acesso__abrir', 'aria-expanded': 'false', 'aria-controls': idPainel,
+        'aria-label': `Escolher os cursos da sala ${sala.nome} separados`, title: 'Escolher os cursos separados' }, icone('i-seta-dir')) : null;
 
-      const entrada = h('input', { type: 'checkbox', class: 'visualmente-oculto', value: `pacote:${sala.id}`, name: nomeGrupo });
-      const estadoTxt = h('span', { class: 'sala-escolha__estado' });
-      const escolhidosTxt = h('span', { class: 'sala-escolha__cursos' });
-      const cartao = h('div', { class: `sala-escolha sala--${sala.cor}` },
-        h('label', { class: 'sala-escolha__alvo' },
-          entrada,
-          h('span', { class: 'sala-escolha__topo' },
-            h('span', { class: 'sala-escolha__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
-            h('span', { class: 'sala-escolha__marca', 'aria-hidden': 'true' }, icone('i-check', 'sala-escolha__v'), h('span', { class: 'sala-escolha__traco' }))),
-          h('strong', { class: 'sala-escolha__nome', text: sala.nome }),
-          h('span', { class: 'sala-escolha__conta', text: sala.unica ? sala.unica.nome : `${ids.length} ${unidade(ids.length)}` }),
-          estadoTxt, escolhidosTxt),
-        sala.unica ? null : h('button', { type: 'button', class: 'sala-escolha__abrir', onclick: () => abrirCaixa() },
-          porCurso ? 'Escolher cursos' : `Ver ${ids.length === 1 ? `a ${sala.unidade[0]}` : `as ${ids.length} ${sala.unidade[1]}`}`, icone('i-seta-dir')));
+      // os cursos da sala, por área (o "Comece por aqui" do Enem no topo)
+      const marcas = new Map();
+      const areas = [...(sala.destaque ? [{ area: { nome: sala.destaqueSelo || 'Comece por aqui', cor: 'amarelo', icone: 'i-estrela' }, trilhas: [sala.destaque] }] : []), ...sala.areas];
+      const blocos = areas.map(({ area, trilhas }) => h('div', { class: `acesso__area sala--${area.cor || sala.cor}` },
+        area.nome ? h('p', { class: 'acesso__area-nome' }, area.icone ? icone(area.icone) : null, area.nome) : null,
+        h('div', { class: 'acesso__cursos' }, trilhas.map((t) => {
+          const c = h('input', { type: 'checkbox' });
+          c.addEventListener('change', () => {
+            if (c.checked) st.cursos.add(t.id); else { st.cursos.delete(t.id); st.inteira = false; } // tirou um curso: deixa de ser a sala inteira
+            desenhar();
+            avisar();
+          });
+          const item = h('label', { class: 'acesso__curso', 'data-busca': UI.normalizar(t.nome) }, c, h('span', { text: Grupos.nomeCurto(sala, t) }));
+          marcas.set(t.id, { c, item });
+          return item;
+        }))));
+      const painel = h('div', { class: 'acesso__painel', id: idPainel, hidden: true },
+        h('p', { class: 'texto-suave acesso__dica', text: `Marque só ${sala.unidade[1] === 'matérias' ? 'as matérias' : 'os cursos'} que a pessoa vai estudar. Para liberar tudo, inclusive o que for publicado depois, marque a sala.` }),
+        blocos);
+      const linha = h('div', { class: `acesso__sala sala--${sala.cor}` },
+        h('div', { class: 'acesso__topo' },
+          h('label', { class: 'acesso__rotulo' }, marcaSala,
+            h('span', { class: 'acesso__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
+            h('span', { class: 'acesso__textos' }, h('strong', { class: 'acesso__nome', text: sala.nome }), estadoTxt)),
+          abrir),
+        painel);
 
-      function desenhar() {
-        const n = porCurso ? st.cursos.size : 0;
-        const estado = st.inteira ? 'inteira' : (porCurso ? n > 0 : st.legado) ? 'parte' : 'nada';
-        cartao.dataset.estado = estado;
-        entrada.checked = st.inteira;
-        entrada.indeterminate = estado === 'parte';
-        estadoTxt.textContent = st.inteira
-          ? (porCurso ? 'Sala inteira, com os cursos novos' : 'Sala inteira')
-          : estado === 'parte'
-            ? (porCurso ? `${n} de ${ids.length} ${unidade(ids.length)}` : `${tem.length} de ${ids.length} ${unidade(ids.length)} (matrícula antiga)`)
-            : 'Sem acesso';
-        const nomes = porCurso && !st.inteira ? sala.trilhas.filter((t) => st.cursos.has(t.id)).map((t) => t.nome) : [];
-        escolhidosTxt.textContent = nomes.join(' · ');
-        escolhidosTxt.hidden = !nomes.length;
-        cartao.querySelector('.sala-escolha__alvo').title = st.inteira ? 'Clique para tirar a sala' : 'Clique para dar a sala inteira';
-      }
-
-      entrada.addEventListener('change', () => {
-        st.inteira = entrada.checked;
-        st.legado = false;
+      marcaSala.addEventListener('change', () => {
+        st.inteira = marcaSala.checked;
         st.cursos = new Set(st.inteira ? ids : []);
         desenhar();
-        desenharResumo();
-        // o "change" do quadradinho sobe sozinho até a caixa (o cartão da pessoa salva)
+        avisar();
       });
-
-      /** A caixinha: escolher os cursos (Tecnologia) ou só ver o que entra na sala. */
-      function abrirCaixa() {
-        const antes = document.activeElement;
-        const marcarTudo = porCurso ? h('input', { type: 'checkbox', checked: st.inteira }) : null;
-        const marcas = new Map();
-        const areas = [...(sala.destaque ? [{ area: { nome: sala.destaqueSelo || 'Comece por aqui', cor: 'amarelo', icone: 'i-estrela' }, trilhas: [sala.destaque] }] : []), ...sala.areas];
-        const grupos = areas.map(({ area, trilhas }) => h('section', { class: `caixa-cursos__area sala--${area.cor || sala.cor}` },
-          area.nome ? h('h3', { class: 'caixa-cursos__area-nome' }, area.icone ? icone(area.icone) : null, area.nome) : null,
-          h('ul', { class: 'caixa-cursos__lista' }, trilhas.map((t) => {
-            if (!porCurso) return h('li', { class: 'caixa-cursos__item caixa-cursos__item--leitura' }, icone('i-livro'), h('span', { text: nomeCurto(t) }));
-            const c = h('input', { type: 'checkbox', checked: st.inteira || st.cursos.has(t.id) });
-            c.addEventListener('change', () => { if (!c.checked) marcarTudo.checked = false; });
-            marcas.set(t.id, c);
-            return h('li', {}, h('label', { class: 'caixa-cursos__item' }, c, h('span', { text: nomeCurto(t) })));
-          }))));
-        if (marcarTudo) marcarTudo.addEventListener('change', () => marcas.forEach((c) => { c.checked = marcarTudo.checked; }));
-        const titulo = porCurso ? `Cursos da sala ${sala.nome}` : `O que entra na sala ${sala.nome}`;
-        const dialogo = h('dialog', { class: 'dialogo dialogo--cursos', 'aria-labelledby': 'caixa-cursos-titulo' },
-          h('form', { method: 'dialog', class: 'caixa-cursos' },
-            h('header', { class: `caixa-cursos__cabeca sala--${sala.cor}` },
-              h('span', { class: 'sala-escolha__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
-              h('div', {},
-                h('h2', { class: 'caixa-cursos__titulo', id: 'caixa-cursos-titulo', text: titulo }),
-                h('p', { class: 'texto-suave caixa-cursos__sub', text: porCurso
-                  ? 'Marque a sala inteira ou só os cursos que a pessoa vai estudar.'
-                  : `Esta sala é dada inteira: a pessoa recebe ${ids.length === 1 ? `a ${sala.unidade[0]}` : `as ${ids.length} ${sala.unidade[1]}`} e as que forem publicadas depois.` })),
-              h('button', { type: 'submit', value: 'fechar', class: 'botao-icone', 'aria-label': 'Fechar' }, icone('i-x'))),
-            h('div', { class: 'caixa-cursos__corpo' },
-              marcarTudo ? h('label', { class: 'caixa-cursos__tudo' }, marcarTudo,
-                h('span', {}, h('strong', { text: 'Sala inteira' }), h('span', { class: 'texto-suave', text: 'Todos os cursos, inclusive os publicados depois' }))) : null,
-              grupos),
-            h('div', { class: 'caixa-cursos__pe' },
-              porCurso
-                ? [h('button', { type: 'submit', value: 'cancelar', class: 'botao botao--fantasma', text: 'Cancelar' }),
-                  h('button', { type: 'submit', value: 'pronto', class: 'botao botao--primario' }, icone('i-check'), 'Pronto')]
-                : h('button', { type: 'submit', value: 'fechar', class: 'botao botao--primario', text: 'Fechar' }))));
-        dialogo.addEventListener('keydown', (e) => e.stopPropagation());
-        dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close('cancelar'); });
-        dialogo.addEventListener('close', () => {
-          if (dialogo.returnValue === 'pronto') {
-            st.inteira = marcarTudo.checked;
-            st.legado = false;
-            st.cursos = new Set(st.inteira ? ids : [...marcas].filter(([, c]) => c.checked).map(([id]) => id));
-            desenhar();
-            desenharResumo();
-            avisar();
-          }
-          dialogo.remove();
-          if (antes && antes.isConnected) antes.focus({ preventScroll: true });
-        }, { once: true });
-        document.body.append(dialogo);
-        dialogo.showModal();
-        (marcarTudo || dialogo.querySelector('.botao--primario')).focus({ preventScroll: true });
+      if (abrir) abrir.addEventListener('click', () => { st.aberto = !st.aberto; mostrar(st.aberto); });
+      function mostrar(aberto) {
+        painel.hidden = !aberto;
+        if (abrir) abrir.setAttribute('aria-expanded', String(aberto));
+        linha.classList.toggle('acesso__sala--aberta', aberto);
       }
-
+      function desenhar() {
+        const n = st.inteira ? ids.length : st.cursos.size;
+        marcaSala.checked = st.inteira;
+        marcaSala.indeterminate = !st.inteira && n > 0;
+        linha.dataset.estado = st.inteira ? 'inteira' : n ? 'parte' : 'nada';
+        estadoTxt.textContent = `${sala.unica ? sala.unica.nome : `${ids.length} ${unidade(ids.length)}`} · ${st.inteira ? 'sala inteira' : n ? `${n} de ${ids.length}` : 'sem acesso'}`;
+        marcas.forEach(({ c }, id) => { c.checked = st.inteira || st.cursos.has(id); });
+      }
+      function filtrar(termo) {
+        if (!termo) {
+          linha.hidden = false;
+          marcas.forEach(({ item }) => { item.hidden = false; });
+          blocos.forEach((b) => { b.hidden = false; });
+          mostrar(st.aberto);
+          return;
+        }
+        const salaBate = UI.normalizar(sala.nome).includes(termo);
+        let algum = false;
+        marcas.forEach(({ item }) => { const bate = salaBate || item.dataset.busca.includes(termo); item.hidden = !bate; algum = algum || bate; });
+        blocos.forEach((b) => { b.hidden = ![...b.querySelectorAll('.acesso__curso')].some((i) => !i.hidden); });
+        linha.hidden = !salaBate && !algum;
+        mostrar(salaBate ? st.aberto : algum); // achou pelo curso: abre a sala para mostrar onde ele está
+      }
       desenhar();
       return {
-        sala, ids, tem, st, porCurso, cartao, desenhar,
-        escolhidos() {
-          if (st.inteira) return [`pacote:${sala.id}`, ...ids];
-          if (porCurso) return [...st.cursos];
-          return st.legado ? tem : [];
-        },
-        limpar() { st.inteira = false; st.legado = false; st.cursos = new Set(); desenhar(); },
+        sala, st, linha, filtrar,
+        escolhidos: () => (st.inteira ? [`pacote:${sala.id}`, ...ids] : [...st.cursos]),
+        limpar() { st.inteira = false; st.cursos = new Set(); st.aberto = false; desenhar(); mostrar(false); },
       };
     });
 
-    function desenharResumo() {
-      const itens = linhas.flatMap((l) => {
-        if (l.st.inteira) return [`${l.sala.nome}${l.sala.unica ? '' : ' (sala inteira)'}`];
-        if (l.porCurso) return l.sala.trilhas.filter((t) => l.st.cursos.has(t.id)).map((t) => t.nome);
-        return l.st.legado ? [`${l.sala.nome} (${l.tem.length} de ${l.ids.length})`] : [];
-      });
-      resumo.replaceChildren(itens.length
-        ? h('p', {}, h('span', { class: 'salas-escolha__resumo-rotulo', text: 'Vai estudar:' }), ...itens.map((t) => h('span', { class: 'chip chip--ativo', text: t })))
-        : h('p', { class: 'texto-suave', text: 'Nenhuma sala marcada ainda.' }));
-    }
-    desenharResumo();
+    const vazio = h('p', { class: 'texto-suave acesso__vazio', hidden: true, text: 'Nenhuma sala ou curso com esse nome.' });
+    const campoBusca = h('input', { class: 'campo acesso__busca', type: 'search', placeholder: 'Buscar sala ou curso…', 'aria-label': 'Buscar sala ou curso', autocomplete: 'off',
+      oninput: (e) => {
+        const termo = UI.normalizar(e.target.value.trim());
+        linhas.forEach((l) => l.filtrar(termo));
+        vazio.hidden = linhas.some((l) => !l.linha.hidden);
+      },
+      onkeydown: (e) => { if (e.key === 'Enter') e.preventDefault(); } }); // Enter na busca não envia o formulário
+    raiz.append(campoBusca, h('div', { class: 'acesso__lista', role: 'group', 'aria-label': 'Salas e cursos' }, linhas.map((l) => l.linha)), vazio);
 
-    caixa.append(h('div', { class: 'salas-escolha__grade', role: 'group', 'aria-label': 'Salas' }, linhas.map((l) => l.cartao)), resumo);
-    caixa.escolhidos = () => [...new Set([
-      ...selecionados.filter((c) => !conhecidos.has(c)), // matrícula de curso que não está em nenhuma sala (ou marcador antigo, como pacote:iso): fica como está
+    raiz.escolhidos = () => [...new Set([
+      ...selecionados.filter((c) => !conhecidos.has(c)), // matrícula de curso fora das salas (ou marcador antigo, como pacote:iso): fica como está
       ...linhas.flatMap((l) => l.escolhidos()),
     ])];
-    caixa.limpar = () => { linhas.forEach((l) => l.limpar()); desenharResumo(); };
-    return caixa;
+    raiz.contagem = () => ({
+      inteiras: linhas.filter((l) => l.st.inteira).length,
+      avulsos: linhas.filter((l) => !l.st.inteira).reduce((n, l) => n + l.st.cursos.size, 0),
+    });
+    raiz.limpar = () => {
+      linhas.forEach((l) => l.limpar());
+      campoBusca.value = '';
+      linhas.forEach((l) => l.filtrar(''));
+      vazio.hidden = true;
+    };
+    return raiz;
   }
 
   /* ---------- Resumo do progresso de uma pessoa (a partir da tabela "estado") ---------- */
@@ -268,32 +275,41 @@ const Admin = (() => {
     }
   }
 
-  /* ---------- Tela ---------- */
+  /* ---------- Tela (repaginada em 2026-10-14) ----------
+   * Topo: busca, filtro por tipo (com a contagem) e "+ Cadastrar pessoa" (abre a janela do cadastro).
+   * Faixa "Salas completas" só quando falta curso novo para alguém. Lista compacta: uma linha por pessoa
+   * (nome, tipo, acesso em etiquetas, situação) e "Gerenciar", que abre o painel da pessoa. O acesso
+   * é mudado na janela "Salas e cursos" e só grava no "Salvar".
+   */
   async function render(secao) {
     limpar(secao);
     const ehAdmin = Nuvem.ehAdmin();
+    if (!estado.gerenciando) estado.gerenciando = new Set();
     const lista = h('div', { class: 'pessoas', 'aria-live': 'polite' }, h('p', { class: 'texto-suave', text: 'Carregando pessoas…' }));
-    const cartaoPacotes = h('section', { class: 'cartao admin-pacotes', 'aria-live': 'polite' });
-    const busca = h('input', { class: 'campo', type: 'search', placeholder: 'Buscar por nome ou e-mail…', value: estado.busca, 'aria-label': 'Buscar pessoas',
+    const faixaPacotes = h('div', { class: 'admin-faixa', 'aria-live': 'polite', hidden: true });
+    const contagemTxt = h('p', { class: 'texto-suave admin-contagem' });
+    const busca = h('input', { class: 'campo admin-busca', type: 'search', placeholder: 'Buscar por nome ou e-mail…', value: estado.busca, 'aria-label': 'Buscar pessoas',
       oninput: (e) => { estado.busca = e.target.value; desenharLista(); } });
-    const filtros = h('div', { class: 'segmentado', role: 'group', 'aria-label': 'Filtrar por tipo de conta' },
-      [['', 'Todos'], ...Object.entries(PAPEIS).map(([k, v]) => [k, v.plural])].map(([k, nome]) => h('button', {
-        type: 'button', 'aria-pressed': String(estado.filtroPapel === k), text: nome,
-        onclick: (e) => {
-          estado.filtroPapel = k;
-          filtros.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === e.currentTarget)));
-          desenharLista();
-        },
-      })));
+    const botoesFiltro = [['', 'Todos'], ...Object.entries(PAPEIS).map(([k, v]) => [k, v.plural])].map(([k, nome]) => {
+      const conta = h('span', { class: 'admin-filtro__conta' });
+      const b = h('button', { type: 'button', 'aria-pressed': String(estado.filtroPapel === k), onclick: () => {
+        estado.filtroPapel = k;
+        botoesFiltro.forEach((x) => x.b.setAttribute('aria-pressed', String(x.b === b)));
+        desenharLista();
+      } }, nome, conta);
+      return { k, b, conta };
+    });
+    const filtros = h('div', { class: 'segmentado admin-filtros', role: 'group', 'aria-label': 'Filtrar por tipo de conta' }, botoesFiltro.map((x) => x.b));
 
     secao.append(...[
       ehAdmin
-        ? UI.cabecalho('Admin', 'Pessoas e cursos', 'Cadastre alunos, professores e admins, escolha os cursos de cada pessoa e acompanhe o progresso.')
+        ? UI.cabecalho('Admin', 'Pessoas e cursos', 'Cadastre alunos, professores e admins, libere salas e cursos e acompanhe o progresso.')
         : UI.cabecalho('Professor', 'Meus alunos', 'Os alunos dos seus cursos e o progresso de cada um. Para cadastrar ou mudar cursos, fale com o admin.'),
-      ehAdmin ? formCadastro() : null,
-      ehAdmin ? cartaoPacotes : null,
-      h('div', { class: 'acoes-linha' }, h('h2', { class: 'secao-titulo secao-titulo--linha', text: ehAdmin ? 'Pessoas' : 'Alunos' }), busca),
-      ehAdmin ? filtros : null,
+      ehAdmin ? faixaPacotes : null,
+      h('div', { class: 'admin-topo' },
+        busca,
+        ehAdmin ? h('button', { type: 'button', class: 'botao botao--primario admin-topo__novo', id: 'admin-cadastrar', onclick: () => abrirCadastro() }, icone('i-mais'), 'Cadastrar pessoa') : null),
+      h('div', { class: 'admin-filtros-linha' }, ehAdmin ? filtros : null, contagemTxt),
       lista].filter(Boolean));
 
     /** Quem tem o marcador do pacote e ainda não tem algum curso dele (ex.: curso publicado depois). */
@@ -303,13 +319,15 @@ const Admin = (() => {
       }))).filter((x) => x.faltam.length);
     }
 
+    /** "Salas completas": só aparece quando há curso publicado depois faltando para quem tem a sala inteira. */
     function desenharPacotes() {
       if (!ehAdmin) return;
-      const com = estado.pessoas.filter((p) => p.cursos.some(ehPacote)).length;
       const pend = pendentesDosPacotes();
       const novos = pend.reduce((n, x) => n + x.faltam.length, 0);
-      const botao = h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', id: 'admin-atualizar-pacotes', disabled: !pend.length, onclick: async () => {
-        if (!(await UI.confirmar({ titulo: 'Atualizar os pacotes?', texto: `${UI.plural(pend.length, 'pessoa ganha', 'pessoas ganham')} ${UI.plural(novos, 'curso novo', 'cursos novos')} das salas. O que cada uma já tem continua igual.`, sim: 'Atualizar salas', humor: 'feliz' }))) return;
+      faixaPacotes.hidden = !pend.length;
+      if (!pend.length) return faixaPacotes.replaceChildren();
+      const botao = h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', id: 'admin-atualizar-pacotes', onclick: async () => {
+        if (!(await UI.confirmar({ titulo: 'Atualizar as salas?', texto: `${UI.plural(pend.length, 'pessoa ganha', 'pessoas ganham')} ${UI.plural(novos, 'curso novo', 'cursos novos')} das salas. O que cada uma já tem continua igual.`, sim: 'Atualizar salas', humor: 'feliz' }))) return;
         botao.disabled = true;
         let falhas = 0;
         for (const x of pend) {
@@ -324,10 +342,10 @@ const Admin = (() => {
         UI.toast(falhas ? 'Salas atualizadas em parte' : 'Salas atualizadas', falhas ? `${falhas} não deram certo; tente de novo.` : `${UI.plural(novos, 'matrícula nova', 'matrículas novas')}.`, 'i-livro');
         carregar();
       } }, icone('i-revisao'), 'Atualizar salas');
-      cartaoPacotes.replaceChildren(
-        h('h2', { class: 'cartao__titulo', text: 'Salas completas' }),
-        h('p', { class: 'texto-suave', text: `${UI.plural(com, 'pessoa tem', 'pessoas têm')} alguma sala inteira. ${pend.length ? `${UI.plural(novos, 'curso publicado depois falta', 'cursos publicados depois faltam')} para ${UI.plural(pend.length, 'pessoa', 'pessoas')}.` : 'Todo mundo já tem todos os cursos das salas dele.'}` }),
-        h('div', { class: 'acoes-linha' }, botao));
+      faixaPacotes.replaceChildren(icone('i-alerta', 'admin-faixa__icone'),
+        h('p', {}, h('strong', { text: 'Cursos novos nas salas. ' }),
+          `${UI.plural(novos, 'curso publicado depois falta', 'cursos publicados depois faltam')} para ${UI.plural(pend.length, 'pessoa', 'pessoas')} com sala inteira.`),
+        botao);
     }
 
     async function carregar() {
@@ -342,11 +360,12 @@ const Admin = (() => {
       }
     }
 
-    function formCadastro() {
+    /* ---------- Cadastro (janela) ---------- */
+    function abrirCadastro() {
       const nome = h('input', { class: 'campo', id: 'admin-nome', required: true, maxlength: '120', autocomplete: 'off', placeholder: 'Ex.: Maria da Silva Souza' });
       const email = h('input', { class: 'campo', id: 'admin-email', type: 'email', required: true, autocomplete: 'off', placeholder: 'maria@empresa.com' });
-      const cursos = checksCursos([], 'novo-cursos');
-      const grupoCursos = h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Salas e cursos' }), cursos);
+      const escolha = escolhaDeAcesso([]);
+      const blocoAcesso = h('fieldset', { class: 'grupo-campos janela__grupo' }, h('legend', { text: 'Salas e cursos' }), escolha);
       const dicaPapel = h('p', { class: 'texto-suave form-admin__dica', text: PAPEIS.aluno.dica });
       let papel = 'aluno';
       const seletorPapel = h('div', { class: 'segmentado', role: 'radiogroup', 'aria-label': 'Tipo de conta' },
@@ -359,88 +378,145 @@ const Admin = (() => {
               b.setAttribute('aria-pressed', String(b === e.currentTarget));
             });
             dicaPapel.textContent = v.dica;
-            grupoCursos.hidden = k === 'admin'; // admin já vê todos os cursos
+            blocoAcesso.hidden = k === 'admin'; // admin já vê todos os cursos
+            contar();
           },
         })));
-      const resultado = h('div', { 'aria-live': 'polite' });
-      const botao = h('button', { type: 'submit', class: 'botao botao--primario' }, icone('i-mais'), 'Cadastrar e gerar senha');
-      return h('form', { class: 'cartao form-admin', onsubmit: async (e) => {
-        e.preventDefault();
-        const escolhidos = papel === 'admin' ? [] : cursos.escolhidos();
-        if (!nome.value.trim() || !email.value.trim()) {
-          resultado.replaceChildren(h('p', { class: 'texto-erro', text: 'Preencha nome completo e e-mail.' }));
-          return;
-        }
-        if (papel === 'admin' && !(await UI.confirmar({ titulo: 'Criar uma conta de admin?', texto: `${nome.value.trim()} vai poder cadastrar pessoas, mudar cursos e gerar senhas.`, sim: 'Criar conta de admin' }))) return;
-        botao.disabled = true;
-        resultado.replaceChildren(h('p', { class: 'texto-suave', text: 'Cadastrando…' }));
-        try {
-          const senha = await Nuvem.rpc('admin_criar_usuario', { p_email: email.value.trim(), p_nome: nome.value.trim(), p_trilhas: escolhidos, p_papel: papel });
-          resultado.replaceChildren(cartaoSenha(nome.value.trim(), email.value.trim().toLowerCase(), senha, `${PAPEIS[papel].nome} cadastrado!`, papel));
-          nome.value = '';
-          email.value = '';
-          cursos.limpar();
-          carregar();
-        } catch (erro) {
-          resultado.replaceChildren(h('p', { class: 'texto-erro', text: erro.message }));
-        } finally {
-          botao.disabled = false;
-        }
-      } },
-      h('h2', { class: 'cartao__titulo', text: 'Cadastrar pessoa' }),
-      h('div', { class: 'form-admin__papel' }, h('span', { class: 'rotulo-campo', text: 'Tipo de conta' }), seletorPapel, dicaPapel),
-      h('div', { class: 'form-evento__linha' },
-        h('div', { class: 'form-linha__grande' }, h('label', { for: 'admin-nome', class: 'rotulo-campo', text: 'Nome completo' }), nome),
-        h('div', {}, h('label', { for: 'admin-email', class: 'rotulo-campo', text: 'E-mail' }), email)),
-      grupoCursos,
-      botao, resultado);
+      const conta = h('span', { class: 'janela__conta', 'aria-live': 'polite' });
+      const contar = () => { conta.textContent = papel === 'admin' ? 'Admin vê todos os cursos' : textoContagem(escolha.contagem()); };
+      escolha.addEventListener('change', contar);
+      contar();
+      const erro = h('div', { 'aria-live': 'polite' });
+      const enviar = h('button', { type: 'submit', class: 'botao botao--primario', id: 'admin-enviar' }, icone('i-mais'), 'Cadastrar e gerar senha');
+      const corpo = h('div', { class: 'form-admin' },
+        h('div', { class: 'form-admin__papel' }, h('span', { class: 'rotulo-campo', text: 'Tipo de conta' }), seletorPapel, dicaPapel),
+        h('div', { class: 'form-admin__linha' },
+          h('div', {}, h('label', { for: 'admin-nome', class: 'rotulo-campo', text: 'Nome completo' }), nome),
+          h('div', {}, h('label', { for: 'admin-email', class: 'rotulo-campo', text: 'E-mail' }), email)),
+        blocoAcesso, erro);
+      const dlg = janela({
+        titulo: 'Cadastrar pessoa', sub: 'A pessoa recebe uma senha temporária e cria a dela no primeiro acesso.', corpo, classe: 'janela--cadastro',
+        pe: [conta, h('div', { class: 'janela__botoes' }, h('button', { type: 'button', class: 'botao botao--fantasma janela__cancelar', text: 'Cancelar', onclick: () => dlg.close() }), enviar)],
+        aoEnviar: async () => {
+          const escolhidos = papel === 'admin' ? [] : escolha.escolhidos();
+          if (!nome.value.trim() || !email.value.trim()) {
+            erro.replaceChildren(h('p', { class: 'texto-erro', text: 'Preencha nome completo e e-mail.' }));
+            return;
+          }
+          if (papel === 'admin' && !(await UI.confirmar({ titulo: 'Criar uma conta de admin?', texto: `${nome.value.trim()} vai poder cadastrar pessoas, mudar cursos e gerar senhas.`, sim: 'Criar conta de admin' }))) return;
+          enviar.disabled = true;
+          erro.replaceChildren(h('p', { class: 'texto-suave', text: 'Cadastrando…' }));
+          try {
+            const senha = await Nuvem.rpc('admin_criar_usuario', { p_email: email.value.trim(), p_nome: nome.value.trim(), p_trilhas: escolhidos, p_papel: papel });
+            corpo.replaceChildren(cartaoSenha(nome.value.trim(), email.value.trim().toLowerCase(), senha, `${PAPEIS[papel].nome} cadastrado!`, papel));
+            dlg.querySelector('.janela__pe').replaceChildren(h('div', { class: 'janela__botoes' },
+              h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => { dlg.close(); abrirCadastro(); } }, icone('i-mais'), 'Cadastrar outra pessoa'),
+              h('button', { type: 'button', class: 'botao botao--primario', id: 'admin-concluir', text: 'Concluir', onclick: () => dlg.close() })));
+            dlg.querySelector('#admin-concluir').focus({ preventScroll: true });
+            carregar();
+          } catch (e) {
+            enviar.disabled = false;
+            erro.replaceChildren(h('p', { class: 'texto-erro', text: e.message }));
+          }
+        },
+      });
+      nome.focus();
     }
 
+    /* ---------- Acesso de uma pessoa (janela) ---------- */
+    function editarAcesso(p) {
+      const escolha = escolhaDeAcesso(p.cursos);
+      const conta = h('span', { class: 'janela__conta', 'aria-live': 'polite' });
+      const contar = () => { conta.textContent = textoContagem(escolha.contagem()); };
+      escolha.addEventListener('change', contar);
+      contar();
+      const salvar = h('button', { type: 'submit', class: 'botao botao--primario', id: 'acesso-salvar' }, icone('i-check'), 'Salvar');
+      const dlg = janela({
+        titulo: `Salas e cursos de ${p.nome}`,
+        sub: 'Marque a sala para liberar tudo, inclusive o que for publicado depois. Para liberar só alguns cursos, abra a setinha da sala.',
+        corpo: escolha, classe: 'janela--acesso',
+        pe: [conta, h('div', { class: 'janela__botoes' }, h('button', { type: 'button', class: 'botao botao--fantasma janela__cancelar', text: 'Cancelar', onclick: () => dlg.close() }), salvar)],
+        aoEnviar: async () => {
+          const escolhidos = escolha.escolhidos();
+          salvar.disabled = true;
+          try {
+            await Nuvem.rpc('admin_definir_matriculas', { p_usuario: p.id, p_trilhas: escolhidos });
+            p.cursos = escolhidos;
+            dlg.close();
+            desenharLista();
+            desenharPacotes();
+            const nomes = etiquetasAcesso(escolhidos).map((e) => e.texto);
+            UI.toast('Acesso atualizado', `${p.nome}: ${nomes.length ? nomes.join(', ') : 'nenhum curso'}`, 'i-livro');
+          } catch (erro) {
+            salvar.disabled = false;
+            UI.toast('Não deu certo', erro.message, 'i-x');
+          }
+        },
+      });
+      escolha.querySelector('.acesso__busca').focus({ preventScroll: true });
+    }
+
+    /* ---------- Lista ---------- */
     function desenharLista() {
       const termo = UI.normalizar(estado.busca);
       const filtradas = estado.pessoas.filter((p) => (!termo || UI.normalizar(`${p.nome} ${p.email}`).includes(termo)) && (!ehAdmin || !estado.filtroPapel || p.papel === estado.filtroPapel));
+      botoesFiltro.forEach((x) => { x.conta.textContent = String(x.k ? estado.pessoas.filter((p) => p.papel === x.k).length : estado.pessoas.length); });
       limpar(lista);
       if (!estado.pessoas.length) {
-        return lista.append(UI.vazio(ehAdmin ? 'Ninguém cadastrado ainda. Use o formulário acima.' : 'Nenhum aluno nos seus cursos ainda. Quando o admin matricular alguém, aparece aqui.'));
+        contagemTxt.textContent = '';
+        return lista.append(UI.vazio(ehAdmin ? 'Ninguém cadastrado ainda. Use "Cadastrar pessoa", aqui em cima.' : 'Nenhum aluno nos seus cursos ainda. Quando o admin matricular alguém, aparece aqui.'));
       }
-      const contagem = ehAdmin
-        ? Object.entries(PAPEIS).map(([k, v]) => `${estado.pessoas.filter((p) => p.papel === k).length} ${v.plural.toLowerCase()}`).join(' · ')
-        : `${estado.pessoas.filter((p) => p.ativo).length} com acesso ativo`;
-      lista.append(h('p', { class: 'texto-suave', text: `${UI.plural(filtradas.length, ehAdmin ? 'pessoa' : 'aluno', ehAdmin ? 'pessoas' : 'alunos')}${termo || estado.filtroPapel ? ' neste filtro' : ''} · ${contagem}` }));
-      filtradas.forEach((p) => lista.append(cartaoPessoa(p)));
+      contagemTxt.textContent = ehAdmin
+        ? `${UI.plural(filtradas.length, 'pessoa', 'pessoas')}${termo || estado.filtroPapel ? ' neste filtro' : ''}`
+        : `${UI.plural(filtradas.length, 'aluno', 'alunos')} · ${estado.pessoas.filter((p) => p.ativo).length} com acesso ativo`;
+      if (!filtradas.length) return lista.append(h('p', { class: 'texto-suave', text: 'Ninguém com esse nome ou e-mail neste filtro.' }));
+      filtradas.forEach((p) => lista.append(linhaPessoa(p)));
     }
 
-    /** Professor: cartão só de leitura (cursos em comum + progresso). */
-    function cartaoAluno(p) {
-      const areaProgresso = h('div', { class: 'pessoa__progresso', hidden: !estado.abertos.has(p.id) });
-      if (estado.abertos.has(p.id)) progressoDe(p, areaProgresso);
-      const meus = p.cursos.filter((c) => !ehPacote(c) && Nuvem.matriculas().includes(c));
-      return h('article', { class: `cartao pessoa ${p.ativo ? '' : 'pessoa--inativa'}` },
-        h('div', { class: 'pessoa__cabeca' },
+    /** Uma linha por pessoa; "Gerenciar" (admin) ou "Progresso" (professor) abre o painel embaixo. */
+    function linhaPessoa(p) {
+      const aberto = estado.gerenciando.has(p.id);
+      const painel = h('div', { class: 'pessoa__painel', id: `pessoa-painel-${p.id}`, hidden: !aberto });
+      const meus = ehAdmin ? p.cursos : p.cursos.filter((c) => !ehPacote(c) && Nuvem.matriculas().includes(c));
+      const etiquetas = p.papel === 'admin' ? [h('span', { class: 'chip', text: 'Todos os cursos' })] : etiquetasAcesso(meus).map(chipSala);
+      const situacao = !p.ativo ? h('span', { class: 'chip chip--atrasada', text: 'Desativado' })
+        : p.trocar_senha ? h('span', { class: 'chip chip--aviso', text: '1º acesso pendente' }) : h('span', { class: 'chip chip--ativo', text: 'Ativo' });
+      const preencher = () => (ehAdmin ? painelAdmin(p, painel) : painelProfessor(p, painel));
+      const botao = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno pessoa__gerenciar', 'aria-expanded': String(aberto), 'aria-controls': painel.id,
+        onclick: () => {
+          const abrir = painel.hidden;
+          painel.hidden = !abrir;
+          botao.setAttribute('aria-expanded', String(abrir));
+          linha.classList.toggle('pessoa--aberta', abrir);
+          if (abrir) { estado.gerenciando.add(p.id); preencher(); } else estado.gerenciando.delete(p.id);
+        } }, ehAdmin ? 'Gerenciar' : 'Progresso', icone('i-seta-dir', 'pessoa__seta'));
+      const linha = h('article', { class: `pessoa ${p.ativo ? '' : 'pessoa--inativa'} ${aberto ? 'pessoa--aberta' : ''}`.replace(/\s+/g, ' ').trim() },
+        h('div', { class: 'pessoa__linha' },
           h('span', { class: 'pessoa__avatar', 'aria-hidden': 'true', text: p.nome.trim().split(/\s+/).map((x) => x[0]).slice(0, 2).join('').toUpperCase() }),
           h('div', { class: 'pessoa__info' },
             h('h3', { class: 'pessoa__nome', text: p.nome }),
             h('span', { class: 'texto-suave pessoa__email', text: p.email })),
-          h('div', { class: 'pessoa__chips' },
-            !p.ativo ? h('span', { class: 'chip chip--atrasada', text: 'Acesso desativado' }) : p.trocar_senha ? h('span', { class: 'chip', text: 'Aguardando primeiro acesso' }) : null)),
-        h('div', { class: 'pessoa__chips' }, salasDe(meus).map((s) => h('span', { class: 'chip', text: s.nome }))),
-        h('div', { class: 'pessoa__acoes' },
-          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', 'aria-expanded': String(estado.abertos.has(p.id)), onclick: (e) => {
-            const abrir = areaProgresso.hidden;
-            areaProgresso.hidden = !abrir;
-            e.currentTarget.setAttribute('aria-expanded', String(abrir));
-            if (abrir) {
-              estado.abertos.add(p.id);
-              progressoDe(p, areaProgresso);
-            } else estado.abertos.delete(p.id);
-          } }, icone('i-estrela'), 'Progresso')),
-        areaProgresso);
+          h('div', { class: 'pessoa__etiquetas' },
+            ehAdmin ? h('span', { class: `chip pessoa__papel-chip pessoa__papel-chip--${p.papel}`, text: PAPEIS[p.papel].nome }) : null,
+            ...etiquetas,
+            !etiquetas.length ? h('span', { class: 'chip', text: 'Sem curso' }) : null,
+            situacao),
+          botao),
+        painel);
+      if (aberto) preencher();
+      return linha;
     }
 
-    function cartaoPessoa(p) {
-      if (!ehAdmin) return cartaoAluno(p);
+    /** Professor: só o progresso nos cursos em comum. */
+    function painelProfessor(p, painel) {
+      painel.replaceChildren(h('div', { class: 'pessoa__progresso' }));
+      progressoDe(p, painel.firstChild);
+    }
+
+    /** Admin: tipo de conta, acesso e ações da pessoa. */
+    function painelAdmin(p, painel) {
       const eu = p.id === Nuvem.usuario().id;
-      const seletorPapel = h('select', { class: 'pessoa__papel', 'aria-label': `Tipo de conta de ${p.nome}`, disabled: eu, title: eu ? 'Você não pode mudar o seu próprio tipo de conta' : null,
+      const seletorPapel = h('select', { class: 'campo pessoa__papel', 'aria-label': `Tipo de conta de ${p.nome}`, disabled: eu, title: eu ? 'Você não pode mudar o seu próprio tipo de conta' : null,
         onchange: async (e) => {
           const novo = e.target.value;
           if (novo === 'admin' && !(await UI.confirmar({ titulo: 'Dar acesso de admin?', texto: `${p.nome} vai poder cadastrar pessoas, mudar cursos e gerar senhas.`, sim: 'Dar acesso de admin' }))) {
@@ -457,39 +533,20 @@ const Admin = (() => {
           }
         } },
       Object.entries(PAPEIS).map(([k, v]) => h('option', { value: k, selected: k === p.papel, text: v.nome })));
-      const cursos = checksCursos(p.cursos, `cursos-${p.id}`);
       const areaProgresso = h('div', { class: 'pessoa__progresso', hidden: !estado.abertos.has(p.id) });
       const areaSenha = h('div', { 'aria-live': 'polite' });
       if (estado.abertos.has(p.id)) progressoDe(p, areaProgresso);
+      const etiquetas = etiquetasAcesso(p.cursos);
 
-      cursos.addEventListener('change', async () => {
-        const escolhidos = cursos.escolhidos();
-        try {
-          await Nuvem.rpc('admin_definir_matriculas', { p_usuario: p.id, p_trilhas: escolhidos });
-          p.cursos = escolhidos;
-          desenharPacotes();
-          const nomes = salasDe(escolhidos).map((s) => s.nome);
-          UI.toast('Salas atualizadas', `${p.nome}: ${nomes.length ? nomes.join(', ') : 'nenhuma sala'}`, 'i-livro');
-        } catch (erro) {
-          UI.toast('Não deu certo', erro.message, 'i-x');
-          carregar();
-        }
-      });
-
-      return h('article', { class: `cartao pessoa ${p.ativo ? '' : 'pessoa--inativa'}` },
-        h('div', { class: 'pessoa__cabeca' },
-          h('span', { class: 'pessoa__avatar', 'aria-hidden': 'true', text: p.nome.trim().split(/\s+/).map((x) => x[0]).slice(0, 2).join('').toUpperCase() }),
-          h('div', { class: 'pessoa__info' },
-            h('h3', { class: 'pessoa__nome', text: p.nome }),
-            h('span', { class: 'texto-suave pessoa__email', text: p.email })),
-          h('div', { class: 'pessoa__chips' },
-            p.papel === 'admin' ? h('span', { class: 'chip chip--aviso', text: 'Admin' }) : p.papel === 'professor' ? h('span', { class: 'chip chip--papel', text: 'Professor' }) : null,
-            p.papel !== 'admin' ? salasDe(p.cursos).map((s) => h('span', { class: 'chip chip--ativo', text: s.nome })) : null,
-            !p.ativo ? h('span', { class: 'chip chip--atrasada', text: 'Acesso desativado' }) : p.trocar_senha ? h('span', { class: 'chip', text: 'Aguardando primeiro acesso' }) : h('span', { class: 'chip chip--ativo', text: 'Ativo' }))),
-        h('label', { class: 'pessoa__linha-papel' }, h('span', { class: 'rotulo-campo', text: 'Tipo de conta' }), seletorPapel),
-        p.papel === 'admin'
-          ? h('p', { class: 'texto-suave', text: 'Admin vê todos os cursos.' })
-          : h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Salas e cursos (salva ao marcar)' }), cursos),
+      painel.replaceChildren(
+        h('div', { class: 'pessoa__grade' },
+          h('div', { class: 'pessoa__campo' }, h('span', { class: 'rotulo-campo', text: 'Tipo de conta' }), seletorPapel),
+          h('div', { class: 'pessoa__campo' }, h('span', { class: 'rotulo-campo', text: 'Salas e cursos' }),
+            p.papel === 'admin'
+              ? h('p', { class: 'texto-suave', text: 'Admin vê todos os cursos.' })
+              : h('div', { class: 'pessoa__acesso' },
+                h('span', { class: 'texto-suave', text: etiquetas.length ? etiquetas.map((e) => (e.inteira ? `${e.sala.nome} (sala inteira)` : e.texto)).join(' · ') : 'Nenhum curso ainda' }),
+                h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno pessoa__editar-acesso', onclick: () => editarAcesso(p) }, icone('i-livro'), 'Editar salas e cursos')))),
         h('div', { class: 'pessoa__acoes' },
           h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', 'aria-expanded': String(estado.abertos.has(p.id)), onclick: (e) => {
             const abrir = areaProgresso.hidden;
@@ -510,7 +567,7 @@ const Admin = (() => {
               UI.toast('Não deu certo', erro.message, 'i-x');
             }
           } }, icone('i-revisao'), 'Nova senha temporária'),
-          h('button', { type: 'button', class: 'botao botao--link botao--pequeno', onclick: async () => {
+          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: async () => {
             const novo = await UI.perguntar({ titulo: 'Editar nome', campo: { rotulo: 'Nome completo', valor: p.nome }, humor: null });
             if (novo === null || !novo.trim() || novo.trim() === p.nome) return;
             try {
@@ -519,9 +576,8 @@ const Admin = (() => {
             } catch (erro) {
               UI.toast('Não deu certo', erro.message, 'i-x');
             }
-          } }, 'Editar nome'),
-          eu ? null : h('button', { type: 'button', class: `botao botao--pequeno ${p.ativo ? 'botao--erro' : 'botao--secundario'}`, onclick: async () => {
-            const acao = p.ativo ? 'desativar' : 'reativar';
+          } }, icone('i-nota'), 'Editar nome'),
+          eu ? null : h('button', { type: 'button', class: `botao botao--pequeno pessoa__ativar ${p.ativo ? 'botao--erro' : 'botao--secundario'}`, onclick: async () => {
             if (!(await UI.confirmar({ titulo: `${p.ativo ? 'Desativar' : 'Reativar'} o acesso de ${p.nome}?`, texto: p.ativo ? 'A pessoa não entra mais, mas o progresso fica guardado.' : 'A pessoa volta a entrar com a senha dela.', sim: p.ativo ? 'Desativar acesso' : 'Reativar acesso', perigo: p.ativo, humor: p.ativo ? 'triste' : 'feliz' }))) return;
             try {
               await Nuvem.rpc('admin_atualizar_usuario', { p_usuario: p.id, p_nome: p.nome, p_ativo: !p.ativo });
