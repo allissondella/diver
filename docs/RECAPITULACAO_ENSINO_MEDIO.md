@@ -1,12 +1,14 @@
 # Diver — Recapitulação do Ensino Médio
 
+> **2026-10-14:** este plano virou a **sala Ensino Médio ("Sempre dá tempo")**: `docs/cadernos/ensino-medio-mapa-curricular.md` e `docs/cadernos/ensino-medio-retomada.md`. O diagnóstico de 2 perguntas por tema deu lugar ao **Mapa de partida** e ao **Teste rápido do módulo** (aprovado pelo usuário).
+
 > Público: quem vai prestar vestibular/Enem mas terminou o ensino médio há algum tempo (o gatilho original: **2 anos ou mais**). Diferente do restante do cursinho, aqui o objetivo não é treinar para a prova — é **relembrar a base** antes de avançar para o nível de vestibular. Este documento segue a mesma disciplina de fontes de `docs/CONTEUDO_CURSINHO.md`; leia aquele primeiro se ainda não leu.
 
 ## 1. Fontes de referência
 
 | Fonte | Link | Status de uso |
 |---|---|---|
-| **BNCC — Ensino Médio** (matriz oficial) | [basenacionalcomum.mec.gov.br](http://basenacionalcomum.mec.gov.br/) ([PDF](http://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf)) | Documento oficial do MEC — pode usar e citar diretamente (art. 8º da Lei de Direitos Autorais), é a nossa matriz de temas. |
+| **BNCC — Ensino Médio** (matriz oficial) | [basenacionalcomum.mec.gov.br](http://basenacionalcomum.mec.gov.br/) (use a **versão integral de dez/2018**, com o Ensino Médio; o PDF "EI_EF" só tem a Educação Infantil e o Fundamental; corrigido em 2026-10-14) | Documento oficial do MEC — pode usar e citar diretamente (art. 8º da Lei de Direitos Autorais), é a nossa matriz de temas. |
 | **Khan Academy Brasil** | [khanacademy.org.br](https://www.khanacademy.org.br) | Gratuito, alinhado à BNCC. Referência de estrutura e sequência de dificuldade — não copiar exercícios. |
 | **Telecurso** | [telecurso.org.br](https://www.telecurso.org.br) + YouTube | Feito especificamente para quem está voltando a estudar depois de anos — nosso público exato. Conteúdo protegido (Fundação Roberto Marinho) — só referência de abordagem/didática. |
 | **Centro de Mídias SP** | [repositório oficial](https://repositorio.educacao.sp.gov.br) · YouTube: [1ª série](https://www.youtube.com/c/1as%C3%A9rieEMCMSP/playlists) · [2ª série](https://www.youtube.com/c/2as%C3%A9rieEMCMSP/playlists) · [3ª série](https://www.youtube.com/c/3as%C3%A9rieEMCMSP/playlists) | Produzido por governo estadual, mas termos de uso específicos não confirmados — tratar como referência de estrutura, não copiar, até confirmar. |

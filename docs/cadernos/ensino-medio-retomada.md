@@ -1,7 +1,7 @@
 # Caderno da sala: Ensino Médio · "Sempre dá tempo"
 
 > Cursos: `data/trilhas/em-<matéria>.json` (ainda não existem) · Plano: `docs/cadernos/ensino-medio-mapa-curricular.md` · Regras gerais: `docs/cadernos/LEIA-ME.md` · Jeito de ensinar: `docs/cadernos/professor-diver.md` · Direitos autorais: `docs/CONTEUDO_CURSINHO.md`
-> **Etapa 1 (plano), 2026-10-14, aguardando o OK do Allisson.** Nada de código, curso ou dado entrou no repositório. Só estes dois documentos.
+> **Plano aprovado em 2026-10-14 ("manda bala"), com as recomendações deste caderno.** Onda 0 em andamento.
 
 ## Público e objetivo
 
@@ -36,7 +36,15 @@
 
 ## Decisões
 
-- (todas pendentes do OK; ver "Decisões técnicas" abaixo)
+- 2026-10-14 · **Plano aprovado** ("manda bala"), com as recomendações das decisões técnicas (a) a (i):
+  - opção **C** (cursos curtos + "Aprofundar na Travessia");
+  - nome **"Retomada"** e os 11 cursos do mapa;
+  - Mapa de partida no motor da `diagnostica.js`, log sem SQL;
+  - `moduloId` e `prog.modulos`;
+  - prova com atalho e reforço;
+  - bônus de retorno de +20 XP e +2 pérolas;
+  - o Mapa e o Teste rápido substituem o diagnóstico de 2 perguntas por tema.
+  - O Cronograma "sem prova marcada" fica para depois, como proposto.
 
 ## Inventário: o que já existe no Diver e serve
 
@@ -105,7 +113,7 @@ O mapa curricular segue essa ordem, com nomes e exemplos nossos.
 
 **Resultado da curadoria:** **Aprovada com ressalvas** para usar como mapa de cobertura (BNCC e cadernos do MEC aprovados; cadernos do CESU e comerciais só para cobertura e sequência). **Reprovados:** os 5 WeLib. **Fora até você dizer a origem:** 2 arquivos. **Descartados:** a duplicata e os 2 documentos de gestão.
 
-**Registro em `docs/FONTES_CATALOGADAS.md` e o parecer em `docs/validacoes/`:** você pediu só estes dois documentos nesta etapa. Por isso as 10 linhas do catálogo e o parecer `docs/validacoes/ensino-medio-2026-10-14.md` ficam prontos para eu gravar logo depois do seu OK, com o mesmo conteúdo desta seção.
+**Registro:** as linhas em `docs/FONTES_CATALOGADAS.md` e o parecer `docs/validacoes/ensino-medio-2026-10-14.md` foram gravados depois do OK (2026-10-14).
 
 ## O que as referências ensinaram (conclusões nossas, nunca trechos)
 

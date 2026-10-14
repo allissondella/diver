@@ -1,6 +1,6 @@
 # Mapa curricular: sala Ensino Médio · "Sempre dá tempo"
 
-> **Rascunho da Etapa 1 (2026-10-14), aguardando o OK do Allisson.** Nada aqui virou curso, código ou dado ainda.
+> **Aprovado em 2026-10-14 ("manda bala").** Onda 0 em andamento.
 > Só conclusões nossas: nomes de cursos, módulos e aulas escritos por nós, organizados pela BNCC do Ensino Médio (MEC, 2018) e medidos contra o que a Travessia já tem. Nenhum trecho de terceiro.
 > O inventário, a curadoria da pasta do Drive e as decisões técnicas estão no caderno da sala: `docs/cadernos/ensino-medio-retomada.md`.
 
