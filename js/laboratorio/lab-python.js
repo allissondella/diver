@@ -6,6 +6,8 @@
  *   { id, aulas: [faseId], grupo, titulo, enunciado, codigoInicial, solucao, testes: [{ tipo: 'saida', nome, esperada }
  *     | { nome, codigo: 'assert ...', oculto }], entradas, metas: { linhas }, dicas: [3],
  *     toque: { modelo: 'print(___)', lacunas: [{ opcoes: [...], certa, dica }] } }
+ * Os mesmos peças servem ao Caça-Bugs ("defeitos": o código inicial vem com 1 a 3 defeitos) e à Oficina de Funções
+ * ("exemplos": o uso da função à vista; testes "oculto" conferem os casos de borda), Módulo 2, 2026-10-14.
  * Tela (arrumada em 2026-10-13): à esquerda, a coluna de apoio sempre à vista (o que deve aparecer na tela,
  * os comandos que o aluno já conhece e as dicas); à direita, a janela do código (editor, Rodar e a saída num
  * cartão só; input() vira linha de entrada na saída), os testes e o resultado. No celular, o modo toque completa
@@ -22,15 +24,7 @@ const LabPython = (() => {
     });
   }
 
-  /** O código da lacuna preenchido com as escolhas (índices das opções). */
-  function preencher(toque, escolhas) {
-    let i = 0;
-    return toque.modelo.replace(/___/g, () => {
-      const l = toque.lacunas[i];
-      const e = escolhas[i++];
-      return l && e !== undefined && e !== null ? l.opcoes[e] : '___';
-    });
-  }
+  const preencher = (toque, escolhas) => Laboratorios.preencher(toque, escolhas);
 
   function iniciar(ctx, labId) {
     const { h, icone, limpar } = UI;
@@ -63,6 +57,27 @@ const LabPython = (() => {
 
     const esperadaDe = (m) => { const t = (m.testes || []).find((x) => x.tipo === 'saida' && !x.oculto); return t ? t.esperada : ''; };
 
+    /**
+     * O objetivo, sempre à vista: a saída esperada (um teste), a lista "com tal entrada, aparece tal coisa"
+     * (vários testes de saída, Caça-Bugs) ou os exemplos de uso da função (Oficina de Funções).
+     */
+    function alvoDe(m) {
+      const visiveis = (m.testes || []).filter((x) => x.tipo === 'saida' && !x.oculto);
+      const ocultos = (m.testes || []).filter((x) => x.oculto).length;
+      const nota = ocultos ? h('p', { class: 'lab-apoio__texto', text: `E ${UI.plural(ocultos, 'teste escondido confere', 'testes escondidos conferem')} os casos de borda: ele${ocultos > 1 ? 's' : ''} aparece${ocultos > 1 ? 'm' : ''} se não passar${ocultos > 1 ? 'em' : ''}.` }) : null;
+      if (Array.isArray(m.exemplos) && m.exemplos.length) {
+        return Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: 'O que a função precisa fazer',
+          conteudo: [h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: m.exemplos.join('\n') })), nota] });
+      }
+      if (visiveis.length > 1) {
+        return Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: 'O que deve aparecer na tela',
+          conteudo: [h('ul', { class: 'lab-alvo__casos' }, visiveis.map((t) => h('li', {}, h('span', { class: 'lab-alvo__caso', text: t.nome }),
+            h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: t.esperada.replace(/\n$/, '') }))))), nota] });
+      }
+      return Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: 'O que deve aparecer na tela',
+        conteudo: [h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: esperadaDe(m) || '(confira os testes)' })), nota] });
+    }
+
     function montar() {
       const m = missoes[idx];
       const prog = Laboratorios.progresso(trilha.id, lab.id);
@@ -90,8 +105,7 @@ const LabPython = (() => {
       // Coluna de apoio, sempre à vista: o que o programa deve mostrar, os comandos que o aluno já conhece e as dicas
       dicasMissao = Laboratorios.dicas(m.dicas || []);
       const apoio = h('aside', { class: 'lab__apoio', 'aria-label': 'O objetivo, os comandos e as dicas' },
-        Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: 'O que deve aparecer na tela',
-          conteudo: h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: esperadaDe(m) || '(confira os testes)' })) }),
+        alvoDe(m),
         Laboratorios.cartao({ id: 'lab-comandos', icone: 'i-livro', titulo: lab.tituloReferencia || 'Comandos que você já conhece',
           conteudo: Laboratorios.listaComandos(lab.referencia) }),
         Laboratorios.cartao({ id: 'lab-ajuda', icone: 'i-bolha', titulo: 'Travou?',
@@ -104,7 +118,8 @@ const LabPython = (() => {
           h('div', { class: 'lab__topo' },
             h('p', { class: 'rotulo', text: m.grupo || 'Missão' }),
             h('button', { type: 'button', class: 'botao botao--link botao--pequeno', id: 'lab-como', onclick: () => tutorial(true) }, icone('i-bolha'), 'Como funciona?')),
-          h('h2', { class: 'lab__titulo' }, m.titulo, melhor ? Laboratorios.estrelas(melhor) : null),
+          h('h2', { class: 'lab__titulo' }, m.titulo, melhor ? Laboratorios.estrelas(melhor) : null,
+            m.defeitos ? h('span', { class: 'chip chip--atrasada lab__defeitos' }, icone('i-alerta'), `${UI.plural(m.defeitos, 'defeito', 'defeitos')} para achar`) : null),
           h('p', { class: 'lab__enunciado' }, UI.marcado(m.enunciado)),
           h('div', { class: 'lab__barra' }, h('span', { class: 'lab__barra-rotulo', text: `Missão ${idx + 1} de ${missoes.length}` }), missaoNav)),
         h('div', { class: 'lab__corpo' },
@@ -143,22 +158,11 @@ const LabPython = (() => {
       const escolhas = Array.isArray(salvo) && salvo.length === t.lacunas.length ? salvo : t.lacunas.map(() => null);
       telas.editor = null;
       telas.console = ConsoleLab.criar({ rotulo: 'Saída', vazio: 'Escolha as lacunas e aperte Rodar.' });
-      // o modelo vira linhas de código; cada ___ vira um menu de escolha (grande, bom para o dedo)
-      let n = 0;
-      const linhas = t.modelo.split('\n').map((linha, li) => h('div', { class: 'lab-lacunas__linha' },
-        h('span', { class: 'lab-lacunas__n', 'aria-hidden': 'true', text: String(li + 1) }),
-        h('code', { class: 'lab-lacunas__codigo' }, linha.split('___').flatMap((parte, k, arr) => {
-          if (k === arr.length - 1) return [parte];
-          const i = n++;
-          const sel = h('select', { class: 'lab-lacuna', 'aria-label': `Lacuna ${i + 1}, linha ${li + 1}`, onchange: (e) => { escolhas[i] = e.target.value === '' ? null : Number(e.target.value); Laboratorios.gravarRascunho(trilha.id, lab.id, `${m.id}:toque`, escolhas); } },
-            h('option', { value: '', text: '___' }),
-            t.lacunas[i].opcoes.map((o, j) => h('option', { value: String(j), selected: escolhas[i] === j, text: o })));
-          return [parte, sel];
-        }))));
+      const lacunas = Laboratorios.campoLacunas({ toque: t, escolhas, aoMudar: () => Laboratorios.gravarRascunho(trilha.id, lab.id, `${m.id}:toque`, escolhas) });
       telas.rodar = h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', id: 'lab-rodar', onclick: () => rodarToque(m, escolhas) }, icone('i-seta-dir'), 'Rodar');
       return Laboratorios.janela({
         arquivo: 'programa.py · lacunas', ferramenta: trocaModo,
-        corpo: h('div', { class: 'lab-lacunas', role: 'group', 'aria-label': 'Código com lacunas: escolha o que vai em cada uma' }, linhas),
+        corpo: lacunas,
         acoes: [telas.rodar], saida: telas.console.el,
       });
     }
@@ -223,7 +227,7 @@ const LabPython = (() => {
         return;
       }
       // tudo certo: o programa completo (conferido pelo script) mostra a saída esperada
-      telas.console.escrever(esperadaDe(m));
+      telas.console.escrever(esperadaDe(m) || 'Todos os testes passaram.');
       finalizar(m, true, { linhas: 0 });
     }
 
@@ -286,7 +290,7 @@ const LabPython = (() => {
       if (typeof Tutorial === 'undefined' || !Tutorial.guiar) return;
       Tutorial.guiar('lab-python', [
         { desenho: 'diver', titulo: 'Mão na massa!', texto: 'Aqui você escreve programas de verdade em Python. Cada missão pede uma saída na tela, e os testes conferem se o seu programa chegou lá.' },
-        { alvo: '#lab-alvo', desenho: 'alvo', titulo: 'O objetivo', texto: 'É isto que o seu programa precisa mostrar, letra por letra.' },
+        { alvo: '#lab-alvo', desenho: 'alvo', titulo: 'O objetivo', texto: 'É isto que o seu programa precisa fazer: a saída na tela, letra por letra, ou os exemplos de uso da função.' },
         { alvo: '#lab-comandos', desenho: 'livro', titulo: 'Sua cola', texto: 'Os comandos que você já aprendeu ficam sempre aqui. Consulte à vontade.' },
         { alvo: '#lab-rodar', desenho: 'onda', titulo: 'Rode e confira', texto: 'Rode quantas vezes quiser. Errou? O Python mostra a linha e nós traduzimos a mensagem.' },
         { alvo: '#lab-ajuda', desenho: 'lupa', titulo: 'Dicas', texto: 'Travou? São três dicas, cada uma mais perto da resposta. A última vale só 1 estrela.' },

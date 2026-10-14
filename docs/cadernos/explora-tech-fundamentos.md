@@ -1,7 +1,7 @@
 # Caderno do curso: Explora Tech · Fundamentos
 
 > Trilha: `data/trilhas/explora-tech-fundamentos.json` (ainda não existe) · Plano: `docs/cadernos/explora-tech-mapa-curricular.md` · Regras gerais: `docs/cadernos/LEIA-ME.md` · Jeito de ensinar: `docs/cadernos/professor-diver.md`
-> **Plano aprovado em 2026-10-13 ("ok manda bala"). Onda 0 feita:** sala Tecnologia, bloco de código, Python no navegador, Módulo 1 e Robô Entregador.
+> **Plano aprovado em 2026-10-13 ("ok manda bala"). Onda 0 feita:** sala Tecnologia, bloco de código, Python no navegador, Módulo 1 e Robô Entregador. **Onda 1 em andamento:** Módulo 2 feito (2026-10-14).
 
 ## Público e objetivo
 - **Quem estuda:** quem começa do zero em tecnologia e ainda não sabe que área seguir. Jovens e adultos, sem nada infantil.
@@ -122,6 +122,8 @@ Licenças conferidas na web em **2026-10-13**:
 |---|---|---|---|
 
 ## Já feito
+- 2026-10-14 · **Módulo 2 · Lógica: decisões** (aulas 6 a 10: if/elif/else; booleanos; comparações e condições compostas; entrada do usuário e validação; revisão com o programa do cinema). 101 questões, 101 variantes, 20 fichas, 24 pares, 19 V/F, 10 adivinhas, 5 sequências, 32 palavras (todas no dicionário). Cada "o que este código mostra?" conferida rodando no Python. Laboratórios: Robô Entregador com 4 missões de decisão (sensores, vários mundos, lacunas no celular), **Lupa do Código** (4 missões), **Caça-Bugs** (5) e **Oficina de Funções** (3). Plano aprovado pelo usuário ("manda bala e já pode ir subindo para produção").
+  - Decisões de ensino: no Módulo 2 o `input()` entra só na aula 9, depois de o aluno dominar a decisão com valores fixos; validar antes de converter (`isdigit()` antes do `int()`), porque laços ainda não existem; "a partir de" e "até" levam o igual, e o erro por um se pega com três valores (limite, um abaixo, um acima); a revisão junta tudo num programa só (meia-entrada do cinema) e apresenta o teste de mesa, que a Lupa do Código faz na tela.
 - 2026-10-13 · Caminho da aula (Ler → Questões → Mão na massa → próxima aula), comandos sempre à vista e laboratório Primeiros Programas (aulas 2 a 5), a pedido do usuário. Robô: missões 1 a 3 na aula 1 e 4 a 6 na revisão.
 - 2026-10-13 · **Onda 0:** Módulo 1 · Lógica: pensar como o computador (aulas 1 a 5: algoritmo; primeiro programa; variáveis e tipos; operadores, porcentagem e arredondamento; revisão). 100 questões, 100 variantes, 16 fichas, 22 pares, 19 V/F, 10 adivinhas, 6 sequências, 42 palavras (todas no dicionário). Laboratório Robô Entregador com 6 missões de sequência (aulas 1, 2 e 5). Curadoria registrada em `docs/FONTES_CATALOGADAS.md` e no parecer `docs/validacoes/explora-tech-fundamentos-2026-10-13.md`.
 - 2026-10-13 · Etapa 1: este caderno e o mapa curricular.
@@ -138,7 +140,8 @@ Licenças conferidas na web em **2026-10-13**:
   - Pyodide com sandbox;
   - prova com `exigeFases: true`;
   - campo `paraIrAlem`.
-- Onda 1: Módulos 2 a 7 (aulas 6 a 35) + Robô (laços, condições, funções), Lupa do Código, Caça-Bugs, Oficina de Funções, Organizador de Pasta.
+- Onda 1, o que falta: Módulos 3 a 7 (aulas 11 a 35), um de cada vez com o OK do usuário; Robô com laços e funções; Organizador de Pasta; Fábrica de Portas Lógicas (prioridade B). Mais missões na Lupa, no Caça-Bugs e na Oficina a cada módulo.
+- Fila do Módulo 2 (só estimativa, `fila.mjs simular`): ~US$ 3,76 para as 101 questões, e o mesmo para as variantes. Nada enviado.
 - Antes de validar o curso na Fila: colar `supabase/painel/mergulho-triplo.ts` (agora manda o código da questão às IAs) na Edge Function.
 - Especialista de revisão humana: **Allisson (a confirmar)**. Itens `revisar`: comandos de terminal e Git, portas, versões, valores de configuração.
 - Conferir antes de publicar: licença da tradução *Pense em Python*; links oficiais de todos os "Para ir além".

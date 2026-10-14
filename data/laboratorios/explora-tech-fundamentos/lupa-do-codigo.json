@@ -1,0 +1,586 @@
+{
+  "id": "lupa-do-codigo",
+  "nome": "Lupa do Código",
+  "versao": 1,
+  "tipo": "lupa",
+  "descricao": "O programa roda em câmera lenta, uma linha por vez. Antes de algumas linhas, você adivinha o que vai acontecer: o valor de uma variável ou a próxima linha.",
+  "missoes": [
+    {
+      "id": "lc-elif-1",
+      "grupo": "Decisões",
+      "aulas": [
+        "log-if-else"
+      ],
+      "titulo": "Qual roupa hoje?",
+      "enunciado": "Um if com elif e else escolhe a roupa pela temperatura. Siga o programa e adivinhe por qual caminho ele vai.",
+      "codigo": "temperatura = 24\nif temperatura >= 30:\n    roupa = \"bermuda\"\nelif temperatura >= 20:\n    roupa = \"camiseta\"\nelse:\n    roupa = \"casaco\"\nprint(\"Hoje:\", roupa)\n",
+      "perguntas": [
+        {
+          "linha": 2,
+          "tipo": "linha",
+          "opcoes": [
+            "3",
+            "4",
+            "6"
+          ],
+          "porque": "24 >= 30 é falso: o if é pulado e o Python testa o elif, na linha 4."
+        },
+        {
+          "linha": 4,
+          "tipo": "linha",
+          "opcoes": [
+            "5",
+            "6",
+            "8"
+          ],
+          "porque": "24 >= 20 é verdade: entra no bloco do elif, na linha 5."
+        },
+        {
+          "linha": 5,
+          "variavel": "roupa",
+          "opcoes": [
+            "'camiseta'",
+            "'casaco'",
+            "'bermuda'"
+          ],
+          "porque": "roupa recebe o texto \"camiseta\". Depois disso, o else é pulado: só um ramo roda."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "temperatura": {
+              "tipo": "int",
+              "valor": "24"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "temperatura": {
+              "tipo": "int",
+              "valor": "24"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "temperatura": {
+              "tipo": "int",
+              "valor": "24"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 8,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "temperatura": {
+              "tipo": "int",
+              "valor": "24"
+            },
+            "roupa": {
+              "tipo": "str",
+              "valor": "'camiseta'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "temperatura": {
+              "tipo": "int",
+              "valor": "24"
+            },
+            "roupa": {
+              "tipo": "str",
+              "valor": "'camiseta'"
+            }
+          },
+          "saida": 15
+        }
+      ],
+      "saidaFinal": "Hoje: camiseta\n"
+    },
+    {
+      "id": "lc-bool-1",
+      "grupo": "Verdadeiro ou falso",
+      "aulas": [
+        "log-booleanos"
+      ],
+      "titulo": "Pode entrar?",
+      "enunciado": "Uma comparação vira **True** ou **False**, e o resultado pode ser guardado numa variável. Adivinhe o valor de cada uma.",
+      "codigo": "idade = 16\nmaior = idade >= 18\nautorizado = True\npode_entrar = maior or autorizado\nprint(\"Pode entrar?\", pode_entrar)\n",
+      "perguntas": [
+        {
+          "linha": 2,
+          "variavel": "maior",
+          "opcoes": [
+            "False",
+            "True",
+            "16"
+          ],
+          "porque": "16 >= 18 é falso: a comparação vira False, um valor do tipo bool."
+        },
+        {
+          "linha": 4,
+          "variavel": "pode_entrar",
+          "opcoes": [
+            "True",
+            "False"
+          ],
+          "porque": "or precisa de um lado verdadeiro só: maior é False, mas autorizado é True."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "idade": {
+              "tipo": "int",
+              "valor": "16"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "idade": {
+              "tipo": "int",
+              "valor": "16"
+            },
+            "maior": {
+              "tipo": "bool",
+              "valor": "False"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "idade": {
+              "tipo": "int",
+              "valor": "16"
+            },
+            "maior": {
+              "tipo": "bool",
+              "valor": "False"
+            },
+            "autorizado": {
+              "tipo": "bool",
+              "valor": "True"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "idade": {
+              "tipo": "int",
+              "valor": "16"
+            },
+            "maior": {
+              "tipo": "bool",
+              "valor": "False"
+            },
+            "autorizado": {
+              "tipo": "bool",
+              "valor": "True"
+            },
+            "pode_entrar": {
+              "tipo": "bool",
+              "valor": "True"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "idade": {
+              "tipo": "int",
+              "valor": "16"
+            },
+            "maior": {
+              "tipo": "bool",
+              "valor": "False"
+            },
+            "autorizado": {
+              "tipo": "bool",
+              "valor": "True"
+            },
+            "pode_entrar": {
+              "tipo": "bool",
+              "valor": "True"
+            }
+          },
+          "saida": 18
+        }
+      ],
+      "saidaFinal": "Pode entrar? True\n"
+    },
+    {
+      "id": "lc-bool-2",
+      "grupo": "Verdadeiro ou falso",
+      "aulas": [
+        "log-booleanos"
+      ],
+      "titulo": "Chuva e guarda-chuva",
+      "enunciado": "**and**, **or** e **not** combinam valores verdadeiros e falsos. Faça a conta de cada linha antes de rodar.",
+      "codigo": "chovendo = True\nguarda_chuva = False\nmolha = chovendo and not guarda_chuva\nsai = not chovendo or guarda_chuva\nprint(molha, sai)\n",
+      "perguntas": [
+        {
+          "linha": 3,
+          "variavel": "molha",
+          "opcoes": [
+            "True",
+            "False"
+          ],
+          "porque": "not guarda_chuva é True; True and True dá True."
+        },
+        {
+          "linha": 4,
+          "variavel": "sai",
+          "opcoes": [
+            "False",
+            "True"
+          ],
+          "porque": "not chovendo é False, e guarda_chuva também é False: False or False dá False."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "chovendo": {
+              "tipo": "bool",
+              "valor": "True"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "chovendo": {
+              "tipo": "bool",
+              "valor": "True"
+            },
+            "guarda_chuva": {
+              "tipo": "bool",
+              "valor": "False"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "chovendo": {
+              "tipo": "bool",
+              "valor": "True"
+            },
+            "guarda_chuva": {
+              "tipo": "bool",
+              "valor": "False"
+            },
+            "molha": {
+              "tipo": "bool",
+              "valor": "True"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "chovendo": {
+              "tipo": "bool",
+              "valor": "True"
+            },
+            "guarda_chuva": {
+              "tipo": "bool",
+              "valor": "False"
+            },
+            "molha": {
+              "tipo": "bool",
+              "valor": "True"
+            },
+            "sai": {
+              "tipo": "bool",
+              "valor": "False"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "chovendo": {
+              "tipo": "bool",
+              "valor": "True"
+            },
+            "guarda_chuva": {
+              "tipo": "bool",
+              "valor": "False"
+            },
+            "molha": {
+              "tipo": "bool",
+              "valor": "True"
+            },
+            "sai": {
+              "tipo": "bool",
+              "valor": "False"
+            }
+          },
+          "saida": 11
+        }
+      ],
+      "saidaFinal": "True False\n"
+    },
+    {
+      "id": "lc-bool-3",
+      "grupo": "Verdadeiro ou falso",
+      "aulas": [
+        "log-booleanos"
+      ],
+      "titulo": "Aprovado ou não?",
+      "enunciado": "O resultado de uma condição composta decide o caminho do if. Adivinhe o valor e a próxima linha.",
+      "codigo": "nota = 6.5\nfrequencia = 70\naprovado = nota >= 6 and frequencia >= 75\nif aprovado:\n    situacao = \"aprovado\"\nelse:\n    situacao = \"recuperação\"\nprint(situacao)\n",
+      "perguntas": [
+        {
+          "linha": 3,
+          "variavel": "aprovado",
+          "opcoes": [
+            "False",
+            "True"
+          ],
+          "porque": "nota >= 6 é True, mas frequencia >= 75 é False; com and, basta um lado falso para dar False."
+        },
+        {
+          "linha": 4,
+          "tipo": "linha",
+          "opcoes": [
+            "7",
+            "5",
+            "8"
+          ],
+          "porque": "aprovado é False: o bloco do if é pulado e entra o else, cuja linha de dentro é a 7."
+        },
+        {
+          "linha": 7,
+          "variavel": "situacao",
+          "opcoes": [
+            "'recuperação'",
+            "'aprovado'",
+            "False"
+          ],
+          "porque": "situacao recebe o texto \"recuperação\", dentro do else."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nota": {
+              "tipo": "float",
+              "valor": "6.5"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nota": {
+              "tipo": "float",
+              "valor": "6.5"
+            },
+            "frequencia": {
+              "tipo": "int",
+              "valor": "70"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nota": {
+              "tipo": "float",
+              "valor": "6.5"
+            },
+            "frequencia": {
+              "tipo": "int",
+              "valor": "70"
+            },
+            "aprovado": {
+              "tipo": "bool",
+              "valor": "False"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 7,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nota": {
+              "tipo": "float",
+              "valor": "6.5"
+            },
+            "frequencia": {
+              "tipo": "int",
+              "valor": "70"
+            },
+            "aprovado": {
+              "tipo": "bool",
+              "valor": "False"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 8,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nota": {
+              "tipo": "float",
+              "valor": "6.5"
+            },
+            "frequencia": {
+              "tipo": "int",
+              "valor": "70"
+            },
+            "aprovado": {
+              "tipo": "bool",
+              "valor": "False"
+            },
+            "situacao": {
+              "tipo": "str",
+              "valor": "'recuperação'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "nota": {
+              "tipo": "float",
+              "valor": "6.5"
+            },
+            "frequencia": {
+              "tipo": "int",
+              "valor": "70"
+            },
+            "aprovado": {
+              "tipo": "bool",
+              "valor": "False"
+            },
+            "situacao": {
+              "tipo": "str",
+              "valor": "'recuperação'"
+            }
+          },
+          "saida": 12
+        }
+      ],
+      "saidaFinal": "recuperação\n"
+    }
+  ]
+}

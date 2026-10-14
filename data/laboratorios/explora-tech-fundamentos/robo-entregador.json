@@ -3,7 +3,7 @@
   "nome": "Robô Entregador",
   "versao": 1,
   "tipo": "robo",
-  "descricao": "Escreva comandos em Python para o robô levar as caixas até o destino. Cada linha é uma ordem, e o computador faz exatamente o que você mandar: nem mais, nem menos.",
+  "descricao": "Escreva comandos em Python para o robô levar as caixas até o destino. Cada linha é uma ordem, e o computador faz exatamente o que você mandar: nem mais, nem menos. Nas missões de decisão, o mesmo programa precisa funcionar em mais de um mundo: os sensores dizem o que o robô encontrou.",
   "comandos": [
     {
       "nome": "andar()",
@@ -24,6 +24,22 @@
     {
       "nome": "soltar()",
       "faz": "solta a caixa que o robô carrega"
+    },
+    {
+      "nome": "parede_a_frente()",
+      "faz": "True se tem parede logo à frente"
+    },
+    {
+      "nome": "parede_a_direita()",
+      "faz": "True se tem parede à direita do robô"
+    },
+    {
+      "nome": "parede_a_esquerda()",
+      "faz": "True se tem parede à esquerda do robô"
+    },
+    {
+      "nome": "caixa_aqui()",
+      "faz": "True se tem caixa na casa do robô"
     }
   ],
   "fazDeVerdade": {
@@ -200,6 +216,257 @@
         "Depois de pegar a caixa, desça pela direita em vez de voltar pela linha de cima.",
         "Depois de pegar: virar_direita(), andar() duas vezes, virar_direita(), andar() quatro vezes e soltar()."
       ]
+    },
+    {
+      "id": "re-condicao-1",
+      "grupo": "Decisões",
+      "aulas": [
+        "log-if-else"
+      ],
+      "titulo": "Tem caixa ou não tem?",
+      "enunciado": "Em um mundo a caixa está na segunda casa; no outro, não tem caixa nenhuma. Escreva um programa só que funcione nos dois: o robô anda uma casa e, só se tiver caixa ali, pega, anda mais uma e solta.",
+      "cenarios": [
+        {
+          "nome": "Mundo 1",
+          "mapa": [
+            "#####",
+            "#RCD#",
+            "#####"
+          ],
+          "direcao": "leste"
+        },
+        {
+          "nome": "Mundo 2",
+          "mapa": [
+            "#####",
+            "#R..#",
+            "#####"
+          ],
+          "direcao": "leste"
+        }
+      ],
+      "codigoInicial": "andar()\npegar()\nandar()\nsoltar()\n",
+      "solucao": "andar()\nif caixa_aqui():\n    pegar()\n    andar()\n    soltar()\n",
+      "metas": {
+        "linhas": 5,
+        "passos": 4
+      },
+      "dicas": [
+        "No Mundo 2 não tem caixa: pegar() ali dá erro. Só pegue se caixa_aqui() for verdade.",
+        "Depois do andar(), escreva if caixa_aqui(): e coloque as ordens de dentro com 4 espaços de recuo.",
+        "andar(), depois if caixa_aqui(): e, recuados, pegar(), andar() e soltar()."
+      ],
+      "toque": {
+        "modelo": "andar()\nif ___:\n    pegar()\n    andar()\n    soltar()",
+        "lacunas": [
+          {
+            "opcoes": [
+              "caixa_aqui()",
+              "parede_a_frente()",
+              "no_destino()"
+            ],
+            "certa": 0,
+            "dica": "A pergunta é: tem caixa na casa onde o robô está?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "re-condicao-2",
+      "grupo": "Decisões",
+      "aulas": [
+        "log-if-else"
+      ],
+      "titulo": "Desvio se tiver parede",
+      "enunciado": "O robô pega a caixa e segue. Em um mundo o caminho é reto; no outro, uma parede bloqueia a frente e o destino fica para baixo. Um programa só para os dois: se tiver parede à frente, vire à direita antes de andar.",
+      "cenarios": [
+        {
+          "nome": "Mundo 1",
+          "mapa": [
+            "######",
+            "#RC.D#",
+            "######"
+          ],
+          "direcao": "leste"
+        },
+        {
+          "nome": "Mundo 2",
+          "mapa": [
+            "######",
+            "#RC###",
+            "##.###",
+            "##D###",
+            "######"
+          ],
+          "direcao": "leste"
+        }
+      ],
+      "codigoInicial": "andar()\npegar()\nandar()\nandar()\nsoltar()\n",
+      "solucao": "andar()\npegar()\nif parede_a_frente():\n    virar_direita()\nandar()\nandar()\nsoltar()\n",
+      "metas": {
+        "linhas": 7,
+        "passos": 6
+      },
+      "dicas": [
+        "Depois de pegar, o robô precisa perguntar se tem parede à frente.",
+        "if parede_a_frente(): com virar_direita() recuado embaixo. O resto do caminho é igual nos dois mundos.",
+        "andar(), pegar(), if parede_a_frente(): virar_direita() (recuado), andar(), andar(), soltar()."
+      ],
+      "toque": {
+        "modelo": "andar()\npegar()\nif ___:\n    ___\nandar()\nandar()\nsoltar()",
+        "lacunas": [
+          {
+            "opcoes": [
+              "parede_a_frente()",
+              "caixa_aqui()",
+              "parede_a_direita()"
+            ],
+            "certa": 0,
+            "dica": "O que bloqueia o caminho no Mundo 2 está na frente do robô."
+          },
+          {
+            "opcoes": [
+              "virar_direita()",
+              "virar_esquerda()",
+              "andar()"
+            ],
+            "certa": 0,
+            "dica": "No Mundo 2, o destino fica para baixo: o robô, virado para a direita, gira para a direita."
+          }
+        ]
+      }
+    },
+    {
+      "id": "re-condicao-3",
+      "grupo": "Decisões",
+      "aulas": [
+        "log-if-else"
+      ],
+      "titulo": "Frente, direita ou esquerda",
+      "enunciado": "No cruzamento, o destino pode estar em frente, embaixo ou em cima, conforme o mundo. Use if, elif e else: se a frente estiver livre, siga; se não, e a direita estiver livre, vire à direita; senão, vire à esquerda. Depois ande e solte.",
+      "cenarios": [
+        {
+          "nome": "Mundo 1",
+          "mapa": [
+            "#####",
+            "#####",
+            "#RCD#",
+            "#####",
+            "#####"
+          ],
+          "direcao": "leste"
+        },
+        {
+          "nome": "Mundo 2",
+          "mapa": [
+            "#####",
+            "#####",
+            "#RC##",
+            "##D##",
+            "#####"
+          ],
+          "direcao": "leste"
+        },
+        {
+          "nome": "Mundo 3",
+          "mapa": [
+            "#####",
+            "##D##",
+            "#RC##",
+            "#####",
+            "#####"
+          ],
+          "direcao": "leste"
+        }
+      ],
+      "codigoInicial": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nsoltar()\n",
+      "solucao": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nelif not parede_a_direita():\n    virar_direita()\n    andar()\nelse:\n    virar_esquerda()\n    andar()\nsoltar()\n",
+      "metas": {
+        "linhas": 11,
+        "passos": 5
+      },
+      "dicas": [
+        "São três caminhos, então são três ramos: if, elif e else. Cada um termina com o robô em cima do destino.",
+        "No elif, pergunte se a direita está livre: elif not parede_a_direita():. No else, sobra a esquerda.",
+        "if not parede_a_frente(): andar() / elif not parede_a_direita(): virar_direita() e andar() / else: virar_esquerda() e andar(); depois soltar()."
+      ],
+      "toque": {
+        "modelo": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nelif not ___:\n    virar_direita()\n    andar()\n___:\n    virar_esquerda()\n    andar()\nsoltar()",
+        "lacunas": [
+          {
+            "opcoes": [
+              "parede_a_direita()",
+              "parede_a_esquerda()",
+              "parede_a_frente()"
+            ],
+            "certa": 0,
+            "dica": "Esse ramo vira à direita: pergunte se a direita está livre."
+          },
+          {
+            "opcoes": [
+              "else",
+              "elif",
+              "if"
+            ],
+            "certa": 0,
+            "dica": "Quando nenhuma condição anterior deu certo, entra o ramo sem condição."
+          }
+        ]
+      }
+    },
+    {
+      "id": "re-condicao-4",
+      "grupo": "Decisões",
+      "aulas": [
+        "log-revisao-decisoes"
+      ],
+      "titulo": "Uma casa ou duas?",
+      "enunciado": "A caixa pode estar logo na primeira casa ou na segunda, e o destino vem logo depois dela. Faça um programa só que funcione nos dois mundos: se não tiver caixa onde o robô parou, ele anda mais uma.",
+      "cenarios": [
+        {
+          "nome": "Mundo 1",
+          "mapa": [
+            "######",
+            "#RCD.#",
+            "######"
+          ],
+          "direcao": "leste"
+        },
+        {
+          "nome": "Mundo 2",
+          "mapa": [
+            "######",
+            "#R.CD#",
+            "######"
+          ],
+          "direcao": "leste"
+        }
+      ],
+      "codigoInicial": "andar()\npegar()\nandar()\nsoltar()\n",
+      "solucao": "andar()\nif not caixa_aqui():\n    andar()\npegar()\nandar()\nsoltar()\n",
+      "metas": {
+        "linhas": 6,
+        "passos": 5
+      },
+      "dicas": [
+        "No Mundo 2, a primeira casa está vazia. O robô só anda mais uma se não tiver caixa ali.",
+        "Use not para inverter o sensor: if not caixa_aqui():",
+        "andar(), if not caixa_aqui(): andar() (recuado), depois pegar(), andar() e soltar()."
+      ],
+      "toque": {
+        "modelo": "andar()\nif ___ caixa_aqui():\n    andar()\npegar()\nandar()\nsoltar()",
+        "lacunas": [
+          {
+            "opcoes": [
+              "not",
+              "or",
+              "True and"
+            ],
+            "certa": 0,
+            "dica": "O robô anda mais quando NÃO tem caixa."
+          }
+        ]
+      }
     }
   ]
 }

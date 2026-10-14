@@ -5,6 +5,16 @@
 
 ---
 
+## 2026-10-14 · Explora Tech: Módulo 2 · Lógica: decisões (aulas 6 a 10)
+- **Pedido:** "vamos continuar subindo o próximo módulo de tecnologia"; plano aprovado com "manda bala e já pode ir subindo para produção".
+- **Feito:**
+  - 5 aulas no formato `.aula` (if/elif/else; verdadeiro ou falso; comparações e condições compostas; entrada do usuário e validação; revisão com o programa da meia-entrada do cinema): 101 questões, 101 variantes, 20 fichas, 24 pares, 19 V/F, 10 adivinhas, 5 sequências e 32 palavras (todas no dicionário). 270 conferências de código rodadas no Python pelo `montar-aulas.mjs`; `conferir-trilha.mjs` sem erros e sem avisos.
+  - Robô Entregador: sensores, vários mundos por missão e lacunas no celular (4 missões novas).
+  - Laboratórios novos: Lupa do Código (4 missões), Caça-Bugs (5) e Oficina de Funções (3). `conferir-laboratorios.mjs` com 0 erro e 0 aviso.
+- **Testes:** no navegador (PC e celular): as 3 missões do Robô, as 3 da Lupa (todas as previsões certas = 3 estrelas), as 3 do Caça-Bugs e as 3 da Oficina resolvidas no PC escrevendo o código; no celular, as mesmas pelas lacunas, com a dica certa quando a lacuna está errada; "✓ Feito" aparece no mapa; sem erros no console e sem rolagem lateral.
+- **Fila:** só a estimativa (`fila.mjs simular`): ~US$ 3,76 para as questões do módulo e o mesmo para as variantes. Nada foi enviado.
+- **Próximo passo:** Módulo 3 (laços), com plano e OK antes.
+
 ## 2026-10-14 · Admin repaginado (pedido do usuário)
 - **Pedido:** a escolha de cursos estava grande e feia (cada pessoa carregava o seletor inteiro: 2.700 px com 3 pessoas); "abrir uma tela para achar as salas, uma seta ou + para escolher os cursos separados, ou marcar a sala e liberar tudo, tudo guardadinho"; "repaginada completa na página de admin". Plano aprovado ("manda bala").
 - **Feito (`js/admin.js`, estilos em `css/areas.css`):**
