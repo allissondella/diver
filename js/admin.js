@@ -72,48 +72,161 @@ const Admin = (() => {
   }
 
   /**
-   * As salas para marcar na matrícula, uma por linha. Sala com parte dos cursos (matrícula antiga) aparece
-   * "pela metade" (indeterminate) e fica como está até o admin mexer nela.
-   * O elemento devolvido tem .escolhidos(): a lista de matrículas a gravar (cursos + marcadores).
+   * As salas para marcar na matrícula (redesenhado em 2026-10-14, pedido do usuário): um cartão por sala, em grade,
+   * com ícone, nome, quantos cursos e o estado ("Sala inteira", "1 de 3 cursos", "Sem acesso"). Clicar no cartão
+   * marca ou tira a sala inteira. Na sala de produtos diferentes (Tecnologia, porCurso) o botão "Escolher cursos"
+   * abre uma caixa com a sala inteira no topo e os cursos por área; nas outras, "Ver as matérias" mostra o que entra.
+   * Embaixo, o resumo do que a pessoa vai estudar. Sala com parte dos cursos (matrícula antiga) aparece "pela metade"
+   * e fica como está até o admin mexer nela.
+   * O elemento devolvido tem .escolhidos() (a lista de matrículas a gravar: cursos + marcadores), .limpar() e
+   * dispara "change" a cada mudança (o cartão da pessoa salva ao mudar).
    */
   function checksCursos(selecionados = [], nomeGrupo) {
     const salas = salasDoCatalogo();
     const conhecidos = new Set(salas.flatMap((s) => [`pacote:${s.id}`, ...s.trilhas.map((t) => t.id)]));
+    const caixa = h('div', { class: 'salas-escolha' });
+    const avisar = () => caixa.dispatchEvent(new Event('change', { bubbles: true }));
+    const resumo = h('div', { class: 'salas-escolha__resumo', 'aria-live': 'polite' });
+
     const linhas = salas.map((sala) => {
       const ids = sala.trilhas.map((t) => t.id);
       const tem = ids.filter((id) => selecionados.includes(id));
-      const inteira = selecionados.includes(`pacote:${sala.id}`) || (!sala.porCurso && tem.length === ids.length && ids.length > 0);
-      const parte = !inteira && tem.length > 0;
-      const entrada = h('input', { type: 'checkbox', value: `pacote:${sala.id}`, name: nomeGrupo, checked: inteira });
-      entrada.indeterminate = parte && !sala.porCurso;
-      const nota = h('span', { class: 'texto-suave check-sala__nota', text: parte && !sala.porCurso
-        ? ` · ${tem.length} de ${ids.length} ${ids.length === 1 ? sala.unidade[0] : sala.unidade[1]} (marque para dar a sala inteira)`
-        : sala.unica ? '' : ` · ${ids.length} ${sala.unidade[1]}${sala.porCurso ? ' (a sala inteira, com os cursos publicados depois)' : ''}` });
-      entrada.addEventListener('change', () => { nota.textContent = sala.unica ? '' : ` · ${ids.length} ${sala.unidade[1]}`; });
-      // Sala de cursos que são produtos diferentes (Tecnologia): um quadradinho por curso, além da sala inteira.
-      const cursos = sala.porCurso && ids.length > 1 ? sala.trilhas.map((t) => ({ id: t.id, entrada: h('input', { type: 'checkbox', value: t.id, name: `${nomeGrupo}-${sala.id}`, checked: inteira || tem.includes(t.id) }), nome: t.nome })) : [];
-      cursos.forEach((c) => c.entrada.addEventListener('change', () => {
-        if (!c.entrada.checked && entrada.checked) entrada.checked = false; // tirou um curso: deixa de ser a sala inteira
-      }));
-      entrada.addEventListener('change', () => { if (cursos.length) cursos.forEach((c) => { c.entrada.checked = entrada.checked; }); });
-      const label = h('label', { class: `check check-sala sala--${sala.cor}` },
-        entrada, h('span', { class: 'check-sala__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
-        h('span', {}, h('strong', { text: sala.porCurso && cursos.length ? `${sala.nome} (sala inteira)` : sala.nome }), nota));
-      const bloco = cursos.length
-        ? h('div', { class: 'check-sala-grupo' }, label, h('div', { class: 'check-sala__cursos', role: 'group', 'aria-label': `Cursos da sala ${sala.nome}` },
-          cursos.map((c) => h('label', { class: `check check-sala check-sala--curso sala--${sala.cor}` }, c.entrada, h('span', { text: c.nome })))))
-        : label;
-      return { sala, ids, tem, entrada, cursos, label: bloco };
+      const st = {
+        inteira: selecionados.includes(`pacote:${sala.id}`) || (!sala.porCurso && tem.length === ids.length && ids.length > 0),
+        cursos: new Set(tem), // só na sala porCurso
+        legado: false, // matrícula antiga com parte da sala (salas inteiras): fica como está até mexer
+      };
+      st.legado = !st.inteira && !sala.porCurso && tem.length > 0;
+      const porCurso = sala.porCurso && ids.length > 1;
+      const unidade = (n) => (n === 1 ? sala.unidade[0] : sala.unidade[1]);
+      const nomeCurto = (t) => Grupos.nomeCurto(sala, t);
+
+      const entrada = h('input', { type: 'checkbox', class: 'visualmente-oculto', value: `pacote:${sala.id}`, name: nomeGrupo });
+      const estadoTxt = h('span', { class: 'sala-escolha__estado' });
+      const escolhidosTxt = h('span', { class: 'sala-escolha__cursos' });
+      const cartao = h('div', { class: `sala-escolha sala--${sala.cor}` },
+        h('label', { class: 'sala-escolha__alvo' },
+          entrada,
+          h('span', { class: 'sala-escolha__topo' },
+            h('span', { class: 'sala-escolha__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
+            h('span', { class: 'sala-escolha__marca', 'aria-hidden': 'true' }, icone('i-check', 'sala-escolha__v'), h('span', { class: 'sala-escolha__traco' }))),
+          h('strong', { class: 'sala-escolha__nome', text: sala.nome }),
+          h('span', { class: 'sala-escolha__conta', text: sala.unica ? sala.unica.nome : `${ids.length} ${unidade(ids.length)}` }),
+          estadoTxt, escolhidosTxt),
+        sala.unica ? null : h('button', { type: 'button', class: 'sala-escolha__abrir', onclick: () => abrirCaixa() },
+          porCurso ? 'Escolher cursos' : `Ver ${ids.length === 1 ? `a ${sala.unidade[0]}` : `as ${ids.length} ${sala.unidade[1]}`}`, icone('i-seta-dir')));
+
+      function desenhar() {
+        const n = porCurso ? st.cursos.size : 0;
+        const estado = st.inteira ? 'inteira' : (porCurso ? n > 0 : st.legado) ? 'parte' : 'nada';
+        cartao.dataset.estado = estado;
+        entrada.checked = st.inteira;
+        entrada.indeterminate = estado === 'parte';
+        estadoTxt.textContent = st.inteira
+          ? (porCurso ? 'Sala inteira, com os cursos novos' : 'Sala inteira')
+          : estado === 'parte'
+            ? (porCurso ? `${n} de ${ids.length} ${unidade(ids.length)}` : `${tem.length} de ${ids.length} ${unidade(ids.length)} (matrícula antiga)`)
+            : 'Sem acesso';
+        const nomes = porCurso && !st.inteira ? sala.trilhas.filter((t) => st.cursos.has(t.id)).map((t) => t.nome) : [];
+        escolhidosTxt.textContent = nomes.join(' · ');
+        escolhidosTxt.hidden = !nomes.length;
+        cartao.querySelector('.sala-escolha__alvo').title = st.inteira ? 'Clique para tirar a sala' : 'Clique para dar a sala inteira';
+      }
+
+      entrada.addEventListener('change', () => {
+        st.inteira = entrada.checked;
+        st.legado = false;
+        st.cursos = new Set(st.inteira ? ids : []);
+        desenhar();
+        desenharResumo();
+        // o "change" do quadradinho sobe sozinho até a caixa (o cartão da pessoa salva)
+      });
+
+      /** A caixinha: escolher os cursos (Tecnologia) ou só ver o que entra na sala. */
+      function abrirCaixa() {
+        const antes = document.activeElement;
+        const marcarTudo = porCurso ? h('input', { type: 'checkbox', checked: st.inteira }) : null;
+        const marcas = new Map();
+        const areas = [...(sala.destaque ? [{ area: { nome: sala.destaqueSelo || 'Comece por aqui', cor: 'amarelo', icone: 'i-estrela' }, trilhas: [sala.destaque] }] : []), ...sala.areas];
+        const grupos = areas.map(({ area, trilhas }) => h('section', { class: `caixa-cursos__area sala--${area.cor || sala.cor}` },
+          area.nome ? h('h3', { class: 'caixa-cursos__area-nome' }, area.icone ? icone(area.icone) : null, area.nome) : null,
+          h('ul', { class: 'caixa-cursos__lista' }, trilhas.map((t) => {
+            if (!porCurso) return h('li', { class: 'caixa-cursos__item caixa-cursos__item--leitura' }, icone('i-livro'), h('span', { text: nomeCurto(t) }));
+            const c = h('input', { type: 'checkbox', checked: st.inteira || st.cursos.has(t.id) });
+            c.addEventListener('change', () => { if (!c.checked) marcarTudo.checked = false; });
+            marcas.set(t.id, c);
+            return h('li', {}, h('label', { class: 'caixa-cursos__item' }, c, h('span', { text: nomeCurto(t) })));
+          }))));
+        if (marcarTudo) marcarTudo.addEventListener('change', () => marcas.forEach((c) => { c.checked = marcarTudo.checked; }));
+        const titulo = porCurso ? `Cursos da sala ${sala.nome}` : `O que entra na sala ${sala.nome}`;
+        const dialogo = h('dialog', { class: 'dialogo dialogo--cursos', 'aria-labelledby': 'caixa-cursos-titulo' },
+          h('form', { method: 'dialog', class: 'caixa-cursos' },
+            h('header', { class: `caixa-cursos__cabeca sala--${sala.cor}` },
+              h('span', { class: 'sala-escolha__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
+              h('div', {},
+                h('h2', { class: 'caixa-cursos__titulo', id: 'caixa-cursos-titulo', text: titulo }),
+                h('p', { class: 'texto-suave caixa-cursos__sub', text: porCurso
+                  ? 'Marque a sala inteira ou só os cursos que a pessoa vai estudar.'
+                  : `Esta sala é dada inteira: a pessoa recebe ${ids.length === 1 ? `a ${sala.unidade[0]}` : `as ${ids.length} ${sala.unidade[1]}`} e as que forem publicadas depois.` })),
+              h('button', { type: 'submit', value: 'fechar', class: 'botao-icone', 'aria-label': 'Fechar' }, icone('i-x'))),
+            h('div', { class: 'caixa-cursos__corpo' },
+              marcarTudo ? h('label', { class: 'caixa-cursos__tudo' }, marcarTudo,
+                h('span', {}, h('strong', { text: 'Sala inteira' }), h('span', { class: 'texto-suave', text: 'Todos os cursos, inclusive os publicados depois' }))) : null,
+              grupos),
+            h('div', { class: 'caixa-cursos__pe' },
+              porCurso
+                ? [h('button', { type: 'submit', value: 'cancelar', class: 'botao botao--fantasma', text: 'Cancelar' }),
+                  h('button', { type: 'submit', value: 'pronto', class: 'botao botao--primario' }, icone('i-check'), 'Pronto')]
+                : h('button', { type: 'submit', value: 'fechar', class: 'botao botao--primario', text: 'Fechar' }))));
+        dialogo.addEventListener('keydown', (e) => e.stopPropagation());
+        dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close('cancelar'); });
+        dialogo.addEventListener('close', () => {
+          if (dialogo.returnValue === 'pronto') {
+            st.inteira = marcarTudo.checked;
+            st.legado = false;
+            st.cursos = new Set(st.inteira ? ids : [...marcas].filter(([, c]) => c.checked).map(([id]) => id));
+            desenhar();
+            desenharResumo();
+            avisar();
+          }
+          dialogo.remove();
+          if (antes && antes.isConnected) antes.focus({ preventScroll: true });
+        }, { once: true });
+        document.body.append(dialogo);
+        dialogo.showModal();
+        (marcarTudo || dialogo.querySelector('.botao--primario')).focus({ preventScroll: true });
+      }
+
+      desenhar();
+      return {
+        sala, ids, tem, st, porCurso, cartao, desenhar,
+        escolhidos() {
+          if (st.inteira) return [`pacote:${sala.id}`, ...ids];
+          if (porCurso) return [...st.cursos];
+          return st.legado ? tem : [];
+        },
+        limpar() { st.inteira = false; st.legado = false; st.cursos = new Set(); desenhar(); },
+      };
     });
-    const caixa = h('div', { class: 'checks checks--salas' }, linhas.map((l) => l.label));
+
+    function desenharResumo() {
+      const itens = linhas.flatMap((l) => {
+        if (l.st.inteira) return [`${l.sala.nome}${l.sala.unica ? '' : ' (sala inteira)'}`];
+        if (l.porCurso) return l.sala.trilhas.filter((t) => l.st.cursos.has(t.id)).map((t) => t.nome);
+        return l.st.legado ? [`${l.sala.nome} (${l.tem.length} de ${l.ids.length})`] : [];
+      });
+      resumo.replaceChildren(itens.length
+        ? h('p', {}, h('span', { class: 'salas-escolha__resumo-rotulo', text: 'Vai estudar:' }), ...itens.map((t) => h('span', { class: 'chip chip--ativo', text: t })))
+        : h('p', { class: 'texto-suave', text: 'Nenhuma sala marcada ainda.' }));
+    }
+    desenharResumo();
+
+    caixa.append(h('div', { class: 'salas-escolha__grade', role: 'group', 'aria-label': 'Salas' }, linhas.map((l) => l.cartao)), resumo);
     caixa.escolhidos = () => [...new Set([
       ...selecionados.filter((c) => !conhecidos.has(c)), // matrícula de curso que não está em nenhuma sala (ou marcador antigo, como pacote:iso): fica como está
-      ...linhas.flatMap((l) => {
-        if (l.entrada.checked) return [`pacote:${l.sala.id}`, ...l.ids];
-        if (l.cursos.length) return l.cursos.filter((c) => c.entrada.checked).map((c) => c.id);
-        return l.entrada.indeterminate ? l.tem : [];
-      }),
+      ...linhas.flatMap((l) => l.escolhidos()),
     ])];
+    caixa.limpar = () => { linhas.forEach((l) => l.limpar()); desenharResumo(); };
     return caixa;
   }
 
@@ -233,7 +346,7 @@ const Admin = (() => {
       const nome = h('input', { class: 'campo', id: 'admin-nome', required: true, maxlength: '120', autocomplete: 'off', placeholder: 'Ex.: Maria da Silva Souza' });
       const email = h('input', { class: 'campo', id: 'admin-email', type: 'email', required: true, autocomplete: 'off', placeholder: 'maria@empresa.com' });
       const cursos = checksCursos([], 'novo-cursos');
-      const grupoCursos = h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Salas' }), cursos);
+      const grupoCursos = h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Salas e cursos' }), cursos);
       const dicaPapel = h('p', { class: 'texto-suave form-admin__dica', text: PAPEIS.aluno.dica });
       let papel = 'aluno';
       const seletorPapel = h('div', { class: 'segmentado', role: 'radiogroup', 'aria-label': 'Tipo de conta' },
@@ -266,7 +379,7 @@ const Admin = (() => {
           resultado.replaceChildren(cartaoSenha(nome.value.trim(), email.value.trim().toLowerCase(), senha, `${PAPEIS[papel].nome} cadastrado!`, papel));
           nome.value = '';
           email.value = '';
-          cursos.querySelectorAll('input').forEach((i) => (i.checked = false));
+          cursos.limpar();
           carregar();
         } catch (erro) {
           resultado.replaceChildren(h('p', { class: 'texto-erro', text: erro.message }));
@@ -376,7 +489,7 @@ const Admin = (() => {
         h('label', { class: 'pessoa__linha-papel' }, h('span', { class: 'rotulo-campo', text: 'Tipo de conta' }), seletorPapel),
         p.papel === 'admin'
           ? h('p', { class: 'texto-suave', text: 'Admin vê todos os cursos.' })
-          : h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Salas (salva ao marcar)' }), cursos),
+          : h('fieldset', { class: 'grupo-campos' }, h('legend', { text: 'Salas e cursos (salva ao marcar)' }), cursos),
         h('div', { class: 'pessoa__acoes' },
           h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', 'aria-expanded': String(estado.abertos.has(p.id)), onclick: (e) => {
             const abrir = areaProgresso.hidden;

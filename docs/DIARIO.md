@@ -5,6 +5,16 @@
 
 ---
 
+## 2026-10-14 · Admin: escolha de salas e cursos por cartões (pedido do usuário)
+- **Pedido:** organizar a escolha dos cursos no Admin como foi feito no mapa, "linda, dinâmica e limpa, pode ser abrindo uma caixinha".
+- **Feito (`js/admin.js`, `checksCursos`; estilos em `css/areas.css`):**
+  - um cartão por sala em grade (3 lado a lado no computador, um embaixo do outro no celular): ícone na cor da sala, nome, quantos cursos e o estado ("Sala inteira", "1 de 3 cursos", "2 de 15 matérias (matrícula antiga)", "Sem acesso"), com o quadradinho no canto (cheio, pela metade ou vazio);
+  - clicar no cartão dá ou tira a sala inteira;
+  - Tecnologia: "Escolher cursos" abre uma caixa com "Sala inteira" no topo e os cursos por área; grava uma vez só, no "Pronto" ("Cancelar" não muda nada);
+  - Enem e Radiologia: "Ver as N matérias/cursos" abre a mesma caixa só para ver o que entra (com o "Comece por aqui");
+  - embaixo, o resumo "Vai estudar" com chips.
+- **Não mudou:** o que é gravado (cursos + marcadores `pacote:`), os marcadores antigos (`pacote:iso`, `pacote:ciber`) e a matrícula antiga pela metade. Testado com dados simulados (nada no banco).
+
 ## 2026-10-13 · Mapa: cada aula é um cartão só (pedido do usuário)
 - **Pedido:** os botões embaixo das aulas estavam "horríveis": ora lado a lado e longe, ora um embaixo do outro, e sem deixar claro de qual aula eram.
 - **Causa:** cada botão tinha a sua própria margem de 64 px; dois numa linha ficavam separados por um buraco.

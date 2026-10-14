@@ -169,13 +169,83 @@ label.botao:focus-within {
   flex-wrap: wrap;
   gap: 8px;
 }
-/* Admin: as salas na matrícula (js/admin.js, checksCursos) */
-.checks--salas { flex-direction: column; align-items: stretch; }
-.check.check-sala { border-radius: var(--raio-pequeno); min-height: 48px; padding: 8px 14px; }
-.check.check-sala:has(input:checked) { border-color: var(--sala-cor, var(--turquesa)); background: var(--superficie-turquesa); }
-.check-sala__icone { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; color: var(--sala-cor, var(--turquesa-claro)); background: color-mix(in srgb, var(--sala-cor, var(--turquesa-claro)) 15%, transparent); }
-.check-sala__icone .icone { width: 16px; height: 16px; }
-.check-sala__nota { font-size: 0.8rem; }
+/* Admin: as salas na matrícula (js/admin.js, checksCursos), redesenhado em 2026-10-14:
+   um cartão por sala em grade; o estado vem de data-estado (inteira, parte, nada) */
+.salas-escolha { display: grid; gap: var(--esp-3); }
+.salas-escolha__grade { display: grid; gap: var(--esp-3); grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.sala-escolha {
+  position: relative; display: grid; grid-template-rows: 1fr auto;
+  border: 2px solid var(--borda); border-radius: var(--raio); background: var(--superficie);
+  transition: border-color var(--transicao), background var(--transicao);
+}
+.sala-escolha:hover { border-color: color-mix(in srgb, var(--sala-cor) 60%, var(--borda)); }
+.sala-escolha:has(input:focus-visible) { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
+.sala-escolha[data-estado="inteira"] { border-color: var(--sala-cor); background: color-mix(in srgb, var(--sala-cor) 12%, var(--superficie)); }
+.sala-escolha[data-estado="parte"] { border-color: color-mix(in srgb, var(--sala-cor) 55%, var(--borda)); }
+.sala-escolha__alvo { display: grid; align-content: start; gap: var(--esp-1); padding: var(--esp-4); cursor: pointer; }
+.sala-escolha__topo { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--esp-2); }
+.sala-escolha__icone {
+  display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%;
+  color: var(--sala-cor, var(--turquesa-claro)); background: color-mix(in srgb, var(--sala-cor, var(--turquesa-claro)) 16%, transparent);
+}
+.sala-escolha__icone .icone { width: 20px; height: 20px; }
+.sala-escolha__marca {
+  display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px;
+  border: 2px solid var(--borda); background: var(--fundo-fundo);
+}
+.sala-escolha__v { width: 16px; height: 16px; color: var(--texto-escuro); display: none; }
+.sala-escolha__traco { display: none; width: 12px; height: 3px; border-radius: 2px; background: var(--sala-cor); }
+.sala-escolha[data-estado="inteira"] .sala-escolha__marca { border-color: var(--sala-cor); background: var(--sala-cor); }
+.sala-escolha[data-estado="inteira"] .sala-escolha__v { display: block; }
+.sala-escolha[data-estado="parte"] .sala-escolha__marca { border-color: var(--sala-cor); }
+.sala-escolha[data-estado="parte"] .sala-escolha__traco { display: block; }
+.sala-escolha__nome { font-size: 1rem; line-height: 1.3; }
+.sala-escolha__conta { font-size: 0.85rem; color: var(--texto-suave); }
+.sala-escolha__estado { margin-top: var(--esp-2); font-size: 0.82rem; font-weight: 800; color: var(--texto-suave); }
+.sala-escolha[data-estado="inteira"] .sala-escolha__estado,
+.sala-escolha[data-estado="parte"] .sala-escolha__estado { color: var(--sala-cor); }
+.sala-escolha__cursos { font-size: 0.82rem; line-height: 1.4; color: var(--texto); }
+.sala-escolha__abrir {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--esp-2);
+  min-height: 44px; padding: var(--esp-2) var(--esp-4); font: inherit; font-size: 0.85rem; font-weight: 700;
+  color: var(--turquesa-claro); background: transparent; border: 0; border-top: 1px solid var(--borda);
+  border-radius: 0 0 calc(var(--raio) - 2px) calc(var(--raio) - 2px); cursor: pointer; text-align: left;
+}
+.sala-escolha__abrir:hover { background: rgba(230, 241, 255, 0.06); }
+.sala-escolha__abrir .icone { width: 16px; height: 16px; flex: none; }
+.salas-escolha__resumo p { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); margin: 0; }
+.salas-escolha__resumo-rotulo { font-size: 0.85rem; font-weight: 700; color: var(--texto-suave); }
+
+/* A caixinha dos cursos da sala (Escolher cursos / Ver as matérias) */
+.dialogo--cursos { width: min(560px, calc(100vw - 24px)); }
+.caixa-cursos { display: flex; flex-direction: column; width: 100%; max-height: calc(100vh - 26px); }
+@supports (height: 100dvh) { .caixa-cursos { max-height: calc(100dvh - 26px); } }
+.caixa-cursos__cabeca { display: flex; align-items: flex-start; gap: var(--esp-3); padding: var(--esp-4) var(--esp-3) var(--esp-3) var(--esp-5); border-bottom: 1px solid var(--borda); }
+.caixa-cursos__cabeca > div { flex: 1; min-width: 0; }
+.caixa-cursos__titulo { margin: var(--esp-1) 0 0; font-size: 1.1rem; line-height: 1.3; }
+.caixa-cursos__sub { margin: var(--esp-1) 0 0; font-size: 0.88rem; }
+.caixa-cursos__corpo { flex: 1 1 auto; min-height: 0; overflow: auto; display: grid; gap: var(--esp-4); padding: var(--esp-4) var(--esp-5); }
+.caixa-cursos__tudo {
+  display: flex; align-items: center; gap: var(--esp-3); padding: var(--esp-3) var(--esp-4);
+  border: 1px solid var(--borda); border-radius: var(--raio-pequeno); background: var(--superficie-turquesa); cursor: pointer;
+}
+.caixa-cursos__tudo > span { display: grid; gap: 2px; }
+.caixa-cursos__tudo .texto-suave { font-size: 0.82rem; }
+.caixa-cursos__area { display: grid; gap: var(--esp-2); }
+.caixa-cursos__area-nome { display: flex; align-items: center; gap: var(--esp-2); margin: 0; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--sala-cor, var(--texto-suave)); }
+.caixa-cursos__area-nome .icone { width: 16px; height: 16px; }
+.caixa-cursos__lista { display: grid; gap: var(--esp-2); margin: 0; padding: 0; list-style: none; }
+.caixa-cursos__item {
+  display: flex; align-items: center; gap: var(--esp-3); min-height: 48px; padding: var(--esp-2) var(--esp-4);
+  border: 1px solid var(--borda); border-radius: var(--raio-pequeno); background: var(--superficie); cursor: pointer;
+}
+.caixa-cursos__item:has(input:checked) { border-color: var(--turquesa); background: var(--superficie-turquesa); }
+.caixa-cursos__item--leitura { min-height: 36px; padding: var(--esp-1) var(--esp-2); border: 0; background: transparent; cursor: default; }
+.caixa-cursos__area:has(.caixa-cursos__item--leitura) .caixa-cursos__lista { gap: 0; }
+.caixa-cursos__item--leitura .icone { width: 16px; height: 16px; color: var(--sala-cor, var(--turquesa-claro)); }
+.caixa-cursos input[type="checkbox"] { flex: none; width: 20px; height: 20px; accent-color: var(--turquesa); }
+.caixa-cursos__pe { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--esp-2); padding: var(--esp-3) var(--esp-5) var(--esp-4); border-top: 1px solid var(--borda); }
+
 .check {
   display: inline-flex;
   align-items: center;
@@ -1899,6 +1969,3 @@ body.qd-travado { overflow: hidden; }
 .dg-rev__explica { margin: 0; color: var(--texto-suave); }
 
 /* Matrícula curso a curso dentro da sala (Tecnologia, 2026-10-13) */
-.check-sala-grupo { display: grid; gap: var(--esp-2, 8px); }
-.check-sala__cursos { display: grid; gap: var(--esp-2, 8px); padding-left: var(--esp-6, 28px); }
-.check.check-sala--curso { min-height: 44px; font-size: 0.92rem; }
