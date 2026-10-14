@@ -1,6 +1,7 @@
 # robo.py — o mundo do Robô Entregador (laboratório do Explora Tech, 2026-10-13).
 # Roda antes do programa do aluno (prelude): define andar(), virar_esquerda(), virar_direita(),
-# pegar(), soltar(), parede_a_frente(), caixa_aqui() e no_destino(), e anota cada ação em
+# pegar(), soltar(), parede_a_frente(), parede_a_direita(), parede_a_esquerda(), caixa_aqui() e
+# no_destino() (os sensores entraram com as decisões, Módulo 2, 2026-10-14), e anota cada ação em
 # _diver_eventos (o laboratório anima o robô a partir dela). O mesmo mundo existe em JavaScript
 # (js/jogos/robo-entregador.js, MundoRobo) para o modo toque; o conferir-laboratorios confere os dois.
 import json as _json, sys as _sys
@@ -96,6 +97,16 @@ def soltar():
 
 def parede_a_frente():
     dx, dy = _PASSO[_r.dir]
+    return _r.bloqueado(_r.x + dx, _r.y + dy)
+
+
+def parede_a_direita():
+    dx, dy = _PASSO[_DIRS[(_DIRS.index(_r.dir) + 1) % 4]]
+    return _r.bloqueado(_r.x + dx, _r.y + dy)
+
+
+def parede_a_esquerda():
+    dx, dy = _PASSO[_DIRS[(_DIRS.index(_r.dir) - 1) % 4]]
     return _r.bloqueado(_r.x + dx, _r.y + dy)
 
 

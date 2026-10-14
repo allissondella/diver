@@ -163,6 +163,7 @@
 .lab-aviso p { margin: 0; }
 
 /* Robô Entregador */
+.robo-mundos { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
 .robo-mundo {
   --colunas: 7;
   display: grid; grid-template-columns: repeat(var(--colunas), minmax(0, 1fr)); gap: 3px;
@@ -227,3 +228,59 @@
   min-height: 44px; padding: 0 var(--esp-2); font-family: var(--fonte-mono); font-size: 0.95rem;
   color: var(--amarelo); background: var(--superficie); border: 2px dashed var(--amarelo); border-radius: 8px;
 }
+
+/* Lupa do Código (Módulo 2, 2026-10-14): o programa em câmera lenta, variáveis como caixinhas por tipo */
+@media (min-width: 960px) {
+  .lab__corpo--inverso { grid-template-columns: minmax(0, 7fr) minmax(280px, 5fr); }
+}
+@media (max-width: 959px) {
+  .lab__corpo--inverso .lab__apoio > * { order: 1; }
+}
+.lupa-janela { padding: var(--esp-3) 0; }
+.lupa-codigo { display: grid; margin: 0; padding: 0; list-style: none; font-family: var(--fonte-mono); font-size: 0.95rem; line-height: 1.6; }
+.lupa-codigo__linha { display: grid; grid-template-columns: 3ch minmax(0, 1fr); gap: var(--esp-3); padding: 2px var(--esp-4); border-left: 3px solid transparent; }
+.lupa-codigo__n { color: var(--texto-suave); text-align: right; }
+.lupa-codigo__texto { white-space: pre; overflow-x: auto; color: var(--texto); }
+.lupa-codigo__linha--atual { background: color-mix(in srgb, var(--amarelo) 14%, transparent); border-left-color: var(--amarelo); }
+.lupa-codigo__linha--atual .lupa-codigo__n { color: var(--amarelo); font-weight: 800; }
+.lupa-vars { display: grid; gap: var(--esp-2); grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+.lupa-var {
+  --tipo-cor: var(--texto-suave);
+  display: grid; gap: 2px; padding: var(--esp-2) var(--esp-3);
+  border: 1px solid color-mix(in srgb, var(--tipo-cor) 55%, var(--borda)); border-radius: var(--raio-pequeno);
+  background: color-mix(in srgb, var(--tipo-cor) 10%, var(--fundo-fundo));
+}
+.lupa-var__nome { font-size: 0.78rem; font-weight: 800; color: var(--texto-suave); }
+.lupa-var__valor { font-family: var(--fonte-mono); font-size: 1rem; color: var(--texto); overflow-wrap: anywhere; }
+.lupa-var__tipo { justify-self: start; padding: 0 6px; border-radius: 999px; font-family: var(--fonte-mono); font-size: 0.7rem; color: var(--texto-escuro); background: var(--tipo-cor); }
+.lupa-var--mudou { animation: lupa-pisca 0.9s ease-out; }
+@keyframes lupa-pisca { 0% { box-shadow: 0 0 0 3px var(--amarelo); } 100% { box-shadow: 0 0 0 0 transparent; } }
+.lupa-tipo--int { --tipo-cor: var(--azul); }
+.lupa-tipo--float { --tipo-cor: var(--lilas); }
+.lupa-tipo--str { --tipo-cor: var(--laranja); }
+.lupa-tipo--bool { --tipo-cor: var(--verde); }
+.lupa-tipo--outro { --tipo-cor: var(--texto-suave); }
+.lupa-legenda { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.lupa-tipo { padding: 0 6px; border-radius: 999px; font-family: var(--fonte-mono); font-size: 0.72rem; color: var(--texto-escuro); background: var(--tipo-cor); }
+.lupa-saida { margin: 0; min-height: 48px; padding: var(--esp-3); font-family: var(--fonte-mono); font-size: 0.9rem; white-space: pre-wrap; background: var(--fundo-fundo); border: 1px solid var(--borda); border-radius: var(--raio-pequeno); }
+.lupa-pergunta:empty { display: none; }
+.lupa-pergunta__caixa { display: grid; gap: var(--esp-3); padding: var(--esp-4); border: 2px solid var(--amarelo); border-radius: var(--raio); background: color-mix(in srgb, var(--amarelo) 8%, var(--superficie)); }
+.lupa-pergunta__titulo { display: flex; align-items: center; gap: var(--esp-2); margin: 0; font-weight: 800; color: var(--amarelo); }
+.lupa-pergunta__texto { margin: 0; font-size: 1rem; }
+.lupa-opcoes { display: grid; gap: var(--esp-2); grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.lupa-opcao {
+  min-height: 48px; padding: var(--esp-2) var(--esp-3); font: inherit; font-weight: 700; color: var(--texto);
+  background: var(--superficie); border: 2px solid var(--borda); border-radius: var(--raio-pequeno); cursor: pointer;
+}
+.lupa-opcao code { font-family: var(--fonte-mono); }
+.lupa-opcao:hover:not(:disabled) { border-color: var(--turquesa); }
+.lupa-opcao:disabled { cursor: default; }
+.lupa-opcao--certa { border-color: var(--turquesa); background: var(--superficie-turquesa); }
+.lupa-opcao--errada { border-color: var(--coral); background: color-mix(in srgb, var(--coral) 14%, transparent); }
+.lupa-pergunta__certo, .lupa-pergunta__errado { margin: 0; }
+.lupa-pergunta__certo strong { color: var(--turquesa-claro); }
+.lupa-pergunta__errado strong { color: var(--coral); }
+@media (prefers-reduced-motion: reduce) { .lupa-var--mudou { animation: none; outline: 2px solid var(--amarelo); } }
+.lab-alvo__casos { display: grid; gap: var(--esp-2); margin: 0; padding: 0; list-style: none; }
+.lab-alvo__caso { display: block; margin-bottom: 4px; font-size: 0.82rem; font-weight: 700; color: var(--texto-suave); }
+.lab__defeitos { font-size: 0.8rem; }

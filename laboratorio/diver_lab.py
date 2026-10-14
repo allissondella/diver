@@ -113,6 +113,11 @@ def _valor(v):
     return {'tipo': type(v).__name__, 'valor': r}
 
 
+def _variaveis(loc):
+    return {k: _valor(v) for k, v in list(loc.items())
+            if not k.startswith('_') and k not in ('input',) and not callable(v) and type(v).__name__ != 'module'}
+
+
 def _rodar(codigo, entradas, prelude, semente, rastrear, ns):
     fila = list(entradas or [])
     usadas = []
@@ -144,9 +149,7 @@ def _rodar(codigo, entradas, prelude, semente, rastrear, ns):
                 pilha.append(f.f_code.co_name if f.f_code.co_name != '<module>' else 'programa')
                 f = f.f_back
             loc = frame.f_locals if frame.f_code.co_name != '<module>' else ns
-            variaveis = {k: _valor(v) for k, v in list(loc.items())
-                         if not k.startswith('_') and k not in ('input',) and not callable(v) and type(v).__name__ != 'module'}
-            passos.append({'linha': frame.f_lineno, 'pilha': list(reversed(pilha)), 'variaveis': variaveis, 'saida': len(saida.texto())})
+            passos.append({'linha': frame.f_lineno, 'pilha': list(reversed(pilha)), 'variaveis': _variaveis(loc), 'saida': len(saida.texto())})
         return _rastro
 
     resultado = {'ok': True, 'erro': None, 'precisaEntrada': False, 'prompt': None}
@@ -160,6 +163,8 @@ def _rodar(codigo, entradas, prelude, semente, rastrear, ns):
             exec(objeto, ns)
         finally:
             sys.settrace(None)
+        if rastrear:  # o estado depois da última linha (a Lupa mostra o "depois" de cada linha)
+            passos.append({'linha': None, 'pilha': [], 'variaveis': _variaveis(ns), 'saida': len(saida.texto())})
     except _PedeEntrada as e:
         resultado.update(ok=False, precisaEntrada=True, prompt=str(e))
     except _SaidaGrande:

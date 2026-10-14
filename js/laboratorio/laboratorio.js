@@ -155,6 +155,36 @@ const Laboratorios = (() => {
     return h('ul', { class: 'lab-comandos__lista' }, (lista || []).map((c) => h('li', {}, h('code', { class: 'codigo-linha', text: c.nome }), h('span', { text: c.faz }))));
   }
 
+  /** O código do modo toque com as lacunas preenchidas (índices das opções escolhidas; null = vazia). */
+  function preencher(toque, escolhas) {
+    let i = 0;
+    return toque.modelo.replace(/___/g, () => {
+      const l = toque.lacunas[i];
+      const e = escolhas[i++];
+      return l && e !== undefined && e !== null ? l.opcoes[e] : '___';
+    });
+  }
+
+  /**
+   * Modo toque com lacunas (celular): o modelo vira linhas de código numeradas e cada ___ vira um menu de
+   * opções (grande, bom para o dedo). aoMudar(escolhas) a cada escolha.
+   */
+  function campoLacunas({ toque, escolhas, aoMudar = () => {} }) {
+    let n = 0;
+    const linhas = toque.modelo.split('\n').map((linha, li) => h('div', { class: 'lab-lacunas__linha' },
+      h('span', { class: 'lab-lacunas__n', 'aria-hidden': 'true', text: String(li + 1) }),
+      h('code', { class: 'lab-lacunas__codigo' }, linha.split('___').flatMap((parte, k, arr) => {
+        if (k === arr.length - 1) return [parte];
+        const i = n++;
+        const sel = h('select', { class: 'lab-lacuna', 'aria-label': `Lacuna ${i + 1}, linha ${li + 1}`,
+          onchange: (e) => { escolhas[i] = e.target.value === '' ? null : Number(e.target.value); aoMudar(escolhas); } },
+        h('option', { value: '', text: '___' }),
+        toque.lacunas[i].opcoes.map((o, j) => h('option', { value: String(j), selected: escolhas[i] === j, text: o })));
+        return [parte, sel];
+      }))));
+    return h('div', { class: 'lab-lacunas', role: 'group', 'aria-label': 'Código com lacunas: escolha o que vai em cada uma' }, linhas);
+  }
+
   /** "Agora faça de verdade": a ferramenta real, com um mini passo a passo. */
   function fazerDeVerdade(info) {
     if (!info) return null;
@@ -218,6 +248,6 @@ const Laboratorios = (() => {
 
   return {
     carregar, daTrilha, progresso, registrar, aPagar, marcarAula, labDaAulaFeito, daAula, pendenteDaAula, aulaFeita, lerRascunho, gravarRascunho, modoInicial, guardarModo,
-    estrelas, dicas, janela, cartao, listaComandos, fazerDeVerdade, blocoErro, resultado, TRADUCAO,
+    estrelas, dicas, janela, cartao, listaComandos, preencher, campoLacunas, fazerDeVerdade, blocoErro, resultado, TRADUCAO,
   };
 })();
