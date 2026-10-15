@@ -12,7 +12,8 @@
  */
 (() => {
   const { h, icone, plural } = UI;
-  const COR = { turquesa: '#14B8A6', claro: '#5EEAD4', amarelo: '#FACC15', coral: '#FB7185', texto: '#E6F1FF', suave: '#A9BCD6', fundo: '#06172D', marinho: '#0B2545', sup: '#12325A', sup2: '#1A416F', escuro: '#0B2545' };
+  // Cores do canvas vêm dos tokens do css/tokens.css (UI.cor)
+  const COR = { turquesa: UI.cor('primaria'), claro: UI.cor('primaria-clara'), amarelo: UI.cor('destaque'), coral: UI.cor('erro'), texto: UI.cor('texto-1'), suave: UI.cor('texto-2'), fundo: UI.cor('fundo-0'), marinho: UI.cor('fundo-1'), sup: UI.cor('superficie-1'), sup2: UI.cor('superficie-2'), escuro: UI.cor('texto-inverso') };
   const TANQUE = 12;
   const RECARGA = 0.22; // segundos por jato
 

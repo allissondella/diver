@@ -1,0 +1,180 @@
+/*
+ * tokens.css — a única fonte de valores visuais do Diver.
+ * Cor, tipografia, espaço, raio, sombra, movimento e camadas moram aqui; os outros CSS só consomem var(--token).
+ * Carregado antes de todos os outros arquivos CSS (index.html). Regras em docs/DESIGN.md; conferência em
+ * scripts/auditar-design.mjs (falha com hex solto, font-size fora da escala, z-index numérico e @media fora dos cortes).
+ *
+ * Breakpoints (o CSS não interpola variáveis em @media; use sempre estes números, nunca outros):
+ *   sm 480 · md 768 · lg 1024 · xl 1280
+ *   (max-width: 479px) celular estreito · (min-width: 480px) sm · (max-width: 767px) celular · (min-width: 768px) md
+ *   (max-width: 1023px) sem barra lateral · (min-width: 1024px) lg, barra lateral fixa · (min-width: 1280px) xl
+ */
+:root {
+  color-scheme: dark;
+
+  /* ---------- Cor: fundos (do mais fundo para a superfície) ---------- */
+  --fundo-0: #06172D;          /* o mais fundo: base do degradê, cortina, menus escuros */
+  --fundo-1: #0B2545;          /* base do app */
+  --fundo-2: #0E2B4F;          /* barra lateral e painéis fixos (feedback do quiz) */
+  --fundo-meio: #0A2140;       /* ponto do meio do degradê do body */
+
+  /* ---------- Cor: superfícies (um nível por nível de aninhamento) ---------- */
+  --superficie-1: #12325A;     /* cartão padrão */
+  --superficie-2: #1A416F;     /* cartão sobre cartão, hover */
+  --superficie-3: #1F4B7E;     /* campo de formulário, menu aberto */
+  --superficie-turquesa: #0C354C; /* cartão selecionado (com borda turquesa) */
+
+  /* ---------- Cor: bordas ---------- */
+  --borda-sutil: rgba(230, 241, 255, 0.12);
+  --borda-forte: rgba(230, 241, 255, 0.24);
+  --borda-foco: #FACC15;
+
+  /* ---------- Cor: marca e semântica ---------- */
+  --primaria: #14B8A6;         /* turquesa Recife: a cor principal */
+  --primaria-clara: #5EEAD4;   /* turquesa clara: texto turquesa sobre fundo escuro */
+  --primaria-hover: #2CCBB9;
+  --primaria-pressionada: #0EA597;
+  --primaria-sombra: #0C8276;  /* borda inferior do botão 3D */
+  --primaria-escura: #0C7A6E;  /* texto turquesa sobre fundo claro */
+  --primaria-brilho: #29C6B3;  /* títulos e destaques (nome antigo: --turquesa-brilho) */
+  --destaque: #FACC15;         /* amarelo Sol: XP, conquistas, selo "Recomendado" */
+  --destaque-escuro: #EAB308;
+  --sucesso: #86EFAC;          /* acertou, barra completa */
+  --erro: #FB7185;             /* coral: erro gentil e alertas */
+  --erro-clara: #FDA4AF;
+  --erro-hover: #FC8A9B;
+  --erro-sombra: #C2415A;
+  --erro-palida: #FFE4E8;
+  --aviso: #FDBA74;
+  --info: #60A5FA;
+  --lilas: #C4B5FD;
+  --perola: #F5F0E6;           /* a pérola */
+  --claro: #F8FAFC;            /* fundo de peça clara (palavra de honra) */
+
+  /* ---------- Cor: texto ---------- */
+  --texto-1: #E6F1FF;          /* gelo */
+  --texto-2: #A9BCD6;          /* névoa */
+  --texto-3: rgba(169, 188, 214, 0.7); /* névoa a 70 %: só metadados */
+  --texto-inverso: #0B2545;    /* texto sobre turquesa, amarelo ou fundo claro */
+
+  /* ---------- Cor: salas (só o ícone e o filete do cartão da sala; nunca o botão) ---------- */
+  --sala-enem: #FACC15;
+  --sala-radiologia: #14B8A6;
+  --sala-tecnologia: #60A5FA;
+  --sala-ensino-medio: #86EFAC;
+
+  /* ---------- Cor: profundidade das fases no mapa do curso (raso → abismo) ---------- */
+  --prof-raso-a: #1B7F8C;
+  --prof-raso-b: #14507A;
+  --prof-abismo-a: #0A1B38;
+  --prof-abismo-b: #07142B;
+
+  /* ---------- Cor: pintura dos personagens do Caso Resolvido ---------- */
+  --pele-padrao: #F2B28C;
+  --cabelo-padrao: #7A4630;
+  --sardas: #C9754B;
+  --amarelo-sombra: #C99A0B;
+
+  /* ---------- Nomes antigos (apelidos; o código os usa em todo lugar, não os renomeie) ---------- */
+  --turquesa: var(--primaria);
+  --turquesa-claro: var(--primaria-clara);
+  --turquesa-sombra: var(--primaria-pressionada);
+  --turquesa-brilho: var(--primaria-brilho);
+  --amarelo: var(--destaque);
+  --coral: var(--erro);
+  --marinho: var(--fundo-1);
+  --fundo-fundo: var(--fundo-0);
+  --superficie: var(--superficie-1);
+  --borda: var(--borda-sutil);
+  --texto: var(--texto-1);
+  --texto-suave: var(--texto-2);
+  --texto-escuro: var(--texto-inverso);
+  --azul: var(--info);
+  --laranja: var(--aviso);
+  --verde: var(--sucesso);
+
+  /* ---------- Tipografia ---------- */
+  --fonte: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; /* números, cronômetros e rótulos */
+  /* Escala de 8 tamanhos. --t-xs (12 px) é o mínimo absoluto: nenhum texto abaixo disso. */
+  --t-xs: 0.75rem;
+  --t-sm: 0.875rem;
+  --t-md: 1rem;
+  --t-lg: 1.125rem;
+  --t-xl: 1.375rem;
+  --t-2xl: 1.75rem;
+  --t-3xl: clamp(2rem, 1.5rem + 2vw, 2.5rem);
+  --t-display: clamp(2.5rem, 2rem + 3vw, 3.5rem); /* só o logo do Início e o cronômetro do Foco */
+  --lh-apertada: 1.15;  /* títulos */
+  --lh-normal: 1.5;
+  --lh-leitura: 1.6;    /* artigos e explicações */
+  --medida-leitura: 65ch; /* largura máxima de um texto corrido */
+
+  /* ---------- Espaço: régua de 4/8 px ---------- */
+  --esp-1: 4px;
+  --esp-2: 8px;
+  --esp-3: 12px;
+  --esp-4: 16px;
+  --esp-5: 24px;
+  --esp-6: 32px;
+  --esp-7: 40px;
+  --esp-8: 48px;
+  --esp-9: 64px;
+  /* Papéis (é o que as regras usam; mudam com a largura da tela, abaixo) */
+  --ritmo-secao: var(--esp-7);       /* entre uma seção e a próxima */
+  --ritmo-cartoes: var(--esp-4);     /* entre cartões de uma lista ou grade */
+  --ritmo-cartao-pad: 20px;          /* respiro dentro do cartão */
+  --ritmo-pagina-x: var(--esp-4);    /* margem lateral da página */
+  --ritmo-pagina-topo: var(--esp-5);
+
+  /* ---------- Raios ---------- */
+  --raio-sm: 8px;
+  --raio-md: 12px;      /* campos */
+  --raio-lg: 16px;      /* cartões */
+  --raio-xl: 24px;      /* cartão grande (herói da sala) */
+  --raio-pilula: 999px; /* botões e tags */
+  --raio: var(--raio-lg);          /* nome antigo */
+  --raio-pequeno: var(--raio-md);  /* nome antigo */
+
+  /* ---------- Sombras (4 níveis) ---------- */
+  --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.18), 0 4px 14px rgba(0, 0, 0, 0.16);  /* repouso dos cartões */
+  --sombra-2: 0 8px 24px rgba(0, 0, 0, 0.26);                                  /* hover, elevado */
+  --sombra-3: 0 12px 32px rgba(0, 0, 0, 0.32);                                 /* menus, toast */
+  --sombra-4: 0 20px 56px rgba(0, 0, 0, 0.42);                                 /* dialog */
+  --sombra: var(--sombra-1); /* nome antigo */
+  --sombra-botao: 0 4px 0 var(--primaria-sombra);  /* o 3D do botão primário, sem brilho */
+  --anel-foco: 0 0 0 3px rgba(250, 204, 21, 0.25);
+  --anel-primaria: 0 0 0 3px rgba(20, 184, 166, 0.28); /* cartão selecionado, menu aberto */
+  --vidro: color-mix(in srgb, var(--fundo-0) 94%, transparent);
+
+  /* ---------- Movimento ---------- */
+  --dur-rapida: 120ms;
+  --dur-normal: 200ms;
+  --dur-lenta: 320ms;
+  --ease-saida: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-elastica: cubic-bezier(0.34, 1.56, 0.64, 1); /* o pulinho do mascote */
+  --transicao: var(--dur-normal) var(--ease-saida);  /* nome antigo */
+
+  /* ---------- Camadas (z-index): nunca um número solto ---------- */
+  --z-abaixo: -1;      /* enfeite atrás do próprio cartão */
+  --z-base: 0;
+  --z-acima: 1;        /* empilhamento local */
+  --z-acima-2: 2;
+  --z-sticky: 10;      /* topo do celular, rodapés grudados */
+  --z-lateral: 20;     /* barra lateral (gaveta) */
+  --z-flutuante: 30;   /* feedback do quiz, menus, arrastar */
+  --z-dialogo: 40;     /* caixas de diálogo, tutorial, gavetas de edição */
+  --z-toast: 50;       /* toasts e a faixa de ambiente de testes */
+  --z-transicao: 60;   /* cortina de transição e o link "pular para o conteúdo" */
+}
+
+/* No computador (lg), a página respira mais */
+@media (min-width: 1024px) {
+  :root {
+    --ritmo-secao: var(--esp-8);
+    --ritmo-cartoes: 20px;
+    --ritmo-cartao-pad: var(--esp-5);
+    --ritmo-pagina-x: var(--esp-7);
+    --ritmo-pagina-topo: var(--esp-7);
+  }
+}

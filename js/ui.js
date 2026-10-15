@@ -25,6 +25,15 @@ const UI = (() => {
     return el;
   }
 
+  /** Valor de um token de cor do css/tokens.css (ex.: UI.cor('primaria') → '#14B8A6'), para canvas e SVG montado no JS. */
+  const coresLidas = {};
+  function cor(nome) {
+    if (!(nome in coresLidas)) {
+      try { coresLidas[nome] = getComputedStyle(document.documentElement).getPropertyValue('--' + nome).trim(); } catch { coresLidas[nome] = ''; }
+    }
+    return coresLidas[nome];
+  }
+
   /** Ícone do sprite SVG do index.html. */
   function icone(nome, classe = '') {
     const ns = 'http://www.w3.org/2000/svg';
@@ -234,7 +243,7 @@ const UI = (() => {
 
   return {
     confirmar, perguntar,
-    $, h, icone, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
+    $, h, icone, cor, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
     dataLocal, paraData, formatarData, id, baixarArquivo, toast, avisarConquistas,
     montarMascotes, humorMascote, mascote, cabecalho, vazio, movimentoReduzido, codigo, marcado,
   };

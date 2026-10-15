@@ -2,49 +2,57 @@
 
 Cores medidas diretamente da tela do protótipo. **Não invente cores novas**: se precisar de uma variação, derive das existentes e registre aqui.
 
-## Paleta
-| Nome | Hex | Uso |
+## Sistema de tokens (`css/tokens.css`, Onda 1 da revisão de design, 2026-10-15)
+Todo valor visual mora em **um arquivo só**, `css/tokens.css`, carregado antes de todos os outros CSS. Os outros arquivos **só consomem** `var(--token)`: nada de hex, `font-size` em rem solto, `z-index` numérico nem largura de `@media` fora dos 4 cortes. O que garante isso é o auditor: `node scripts/auditar-design.mjs` (seção "Como auditar"). Os nomes abaixo são **exatamente os do código**.
+
+### Cor
+| Token | Hex | Uso |
 | --- | --- | --- |
-| Azul-marinho | `#0B2545` | Fundo do app (topo do degradê) |
-| Marinho profundo | `#06172D` | Fundo do app (base do degradê) |
-| Superfície | `#102D52` | Cards e painéis |
-| Superfície turquesa | `#0C354C` | Card selecionado (com borda turquesa) |
-| Turquesa Recife | `#14B8A6` | Cor principal: botões, seleção, progresso, marca |
-| Turquesa brilho | `#29C6B3` | Títulos e destaques sobre fundo escuro |
-| Turquesa sombra | `#0EA597` | Borda inferior do botão 3D |
-| Amarelo Sol | `#FACC15` | XP e destaques |
-| Coral | `#FB7185` | Erro gentil e alertas |
-| Gelo | `#E6F1FF` | Texto principal |
-| Névoa | `#A9BCD6` | Texto secundário |
+| `--fundo-0` | `#06172D` | O mais fundo: base do degradê, cortina |
+| `--fundo-1` | `#0B2545` | Base do app (nome antigo `--marinho`) |
+| `--fundo-2` | `#0E2B4F` | Barra lateral e painéis fixos (feedback do quiz) |
+| `--superficie-1` | `#12325A` | Cartão padrão (nome antigo `--superficie`) |
+| `--superficie-2` | `#1A416F` | Cartão sobre cartão, hover |
+| `--superficie-3` | `#1F4B7E` | Campo de formulário, menu aberto |
+| `--superficie-turquesa` | `#0C354C` | Cartão selecionado (com borda turquesa) |
+| `--borda-sutil` / `--borda-forte` | gelo a 12 % / 24 % | Bordas (nome antigo `--borda` = sutil) |
+| `--borda-foco` | `#FACC15` | Anel de foco |
+| `--primaria` | `#14B8A6` | Turquesa Recife: botões, seleção, progresso, marca (nome antigo `--turquesa`) |
+| `--primaria-clara` | `#5EEAD4` | Texto turquesa sobre fundo escuro (`--turquesa-claro`) |
+| `--primaria-hover` / `--primaria-pressionada` / `--primaria-sombra` | `#2CCBB9` / `#0EA597` / `#0C8276` | Estados do botão primário; a sombra é a borda inferior 3D |
+| `--primaria-escura` | `#0C7A6E` | Texto turquesa sobre fundo claro |
+| `--destaque` | `#FACC15` | Amarelo Sol: XP, conquistas, selo "Recomendado" (`--amarelo`) |
+| `--sucesso` | `#86EFAC` | Acertou, barra completa (`--verde`) |
+| `--erro` | `#FB7185` | Coral: erro gentil e alertas (`--coral`); `--erro-clara`, `--erro-hover`, `--erro-sombra` |
+| `--aviso` / `--info` / `--lilas` | `#FDBA74` / `#60A5FA` / `#C4B5FD` | Etiquetas e áreas (`--laranja`, `--azul`) |
+| `--perola` / `--claro` | `#F5F0E6` / `#F8FAFC` | A pérola; fundo de peça clara |
+| `--texto-1` / `--texto-2` / `--texto-3` | `#E6F1FF` / `#A9BCD6` / névoa a 70 % | Gelo, névoa, metadados (`--texto`, `--texto-suave`) |
+| `--texto-inverso` | `#0B2545` | Texto sobre turquesa, amarelo ou fundo claro (`--texto-escuro`) |
+| `--sala-enem` · `--sala-radiologia` · `--sala-tecnologia` · `--sala-ensino-medio` | amarelo · turquesa · azul · verde | **Só** o ícone e o filete do cartão da sala, nunca o botão |
 
-> Turquesa sobre branco tem contraste baixo. Use turquesa como **texto** apenas sobre fundos escuros; sobre fundos claros, use o azul-marinho.
+Os nomes antigos continuam valendo como apelidos (`--turquesa: var(--primaria)` etc.), para nada quebrar. **Sem cores soltas:** turquesa sobre branco tem contraste baixo; use turquesa como texto só sobre fundo escuro (sobre claro, `--primaria-escura`).
 
-## Tokens CSS
-O protótipo já tem variáveis; **reaproveite os nomes existentes** e apenas confira os valores. Se faltar algum token, crie com estes nomes:
+- **Canvas e SVG montado no JS** (`js/tutorial.js`, `js/jogos/caso-resolvido.js`, `js/descompressao/tiro.js`) leem os tokens com `UI.cor('primaria')`. Exceções registradas: `js/descompressao/cardume.js` e `js/mascotes.js` são pinturas com paleta própria (gelatinas, tons de pele) e ficam como estão; os jogos que já usam `var(--token)` em estilos inline também.
 
-```css
-:root {
-  --diver-marinho: #0B2545;
-  --diver-marinho-fundo: #06172D;
-  --diver-superficie: #102D52;
-  --diver-superficie-turquesa: #0C354C;
-  --diver-turquesa: #14B8A6;
-  --diver-turquesa-brilho: #29C6B3;
-  --diver-turquesa-sombra: #0EA597;
-  --diver-amarelo: #FACC15;
-  --diver-coral: #FB7185;
-  --diver-texto: #E6F1FF;
-  --diver-texto-suave: #A9BCD6;
-  --diver-raio-card: 16px;
-  --diver-raio-botao: 999px;
-}
-body { background: linear-gradient(180deg, var(--diver-marinho), var(--diver-marinho-fundo)); color: var(--diver-texto); }
-```
+### Tipografia
+- **Escala de 8 tamanhos**, e só ela: `--t-xs` 0,75rem (12 px, **mínimo absoluto**, inclusive rótulos em caixa alta) · `--t-sm` 0,875 · `--t-md` 1 · `--t-lg` 1,125 · `--t-xl` 1,375 · `--t-2xl` 1,75 · `--t-3xl` clamp(2–2,5rem) · `--t-display` clamp(2,5–3,5rem) (só o logo do Início e o cronômetro do Foco).
+- Entrelinhas: `--lh-apertada` 1,15 (títulos), `--lh-normal` 1,5, `--lh-leitura` 1,6 (artigos e explicações, em `max-width: var(--medida-leitura)` = 65ch).
+- Pesos: 500 corpo, 600 ênfase, 700 títulos de cartão, 800 só títulos de página e números grandes. O Google Fonts carrega Plus Jakarta Sans 500–800 e JetBrains Mono 500/600/700 (o 400 saiu).
+- `.rotulo` e `.lateral__grupo` (mono, caixa alta): `--t-xs`, espaçamento 0,08em, cor `--texto-2`.
+
+### Raio, sombra, movimento e camadas
+- Raios: `--raio-sm` 8 · `--raio-md` 12 (campos) · `--raio-lg` 16 (cartões) · `--raio-xl` 24 (herói) · `--raio-pilula` 999 (botões e tags). Apelidos: `--raio` = lg, `--raio-pequeno` = md.
+- Sombras: `--sombra-1` (repouso dos cartões) · `--sombra-2` (hover, elevado) · `--sombra-3` (menus, toast) · `--sombra-4` (dialog). **O brilho turquesa saiu** dos botões primários: só a borda inferior 3D (`--sombra-botao`). Selecionado/aberto usa `--anel-primaria`; foco, `--anel-foco`.
+- Movimento: `--dur-rapida` 120ms · `--dur-normal` 200ms · `--dur-lenta` 320ms; `--ease-saida` e `--ease-elastica` (pulinho do mascote). A entrada de tela (`surgir`) é só opacidade + 8 px, **sem blur**.
+- Camadas (`z-index`): `--z-abaixo` −1 · `--z-base` 0 · `--z-acima` 1 · `--z-acima-2` 2 · `--z-sticky` 10 (topo do celular) · `--z-lateral` 20 · `--z-flutuante` 30 (feedback, menus) · `--z-dialogo` 40 (caixas, tutorial, gavetas) · `--z-toast` 50 (toasts e faixa de testes) · `--z-transicao` 60 (cortina e "pular para o conteúdo").
+
+### Breakpoints: só 4
+`sm` 480 · `md` 768 · `lg` 1024 · `xl` 1280. Em `@media` só entram `479/480`, `767/768`, `1023/1024` e `1279/1280` px (o CSS não interpola variáveis em media query, então os números são escritos à mão, sempre estes). A barra lateral fixa aparece em **1024** (`lg`). `color-scheme: dark` está no `:root` e na meta do `<head>`: controles nativos nascem escuros.
 
 ## Espaçamento (régua de 4/8 px, `css/ritmo.css`)
 Inspirada nos sistemas de design dos apps mais caprichados: poucos tamanhos de espaço, sempre os mesmos, para a página "respirar" com ritmo.
 - **Tokens:** `--esp-1` 4 · `--esp-2` 8 · `--esp-3` 12 · `--esp-4` 16 · `--esp-5` 24 · `--esp-6` 32 · `--esp-7` 40 · `--esp-8` 48 · `--esp-9` 64 px. Nada de espaço "solto" (13 px, 22 px…).
-- **Papéis** (mudam no computador, ≥ 960 px): `--ritmo-secao` 40 → 48 (antes de cada título de seção), `--ritmo-cartoes` 16 → 20 (entre cartões), `--ritmo-cartao-pad` 20 → 24 (dentro do cartão), `--ritmo-pagina-x` 16 → 40 (margem da página).
+- **Papéis** (mudam no computador, ≥ 1024 px, `lg`): `--ritmo-secao` 40 → 48 (antes de cada título de seção), `--ritmo-cartoes` 16 → 20 (entre cartões), `--ritmo-cartao-pad` 20 → 24 (dentro do cartão), `--ritmo-pagina-x` 16 → 40 (margem da página).
 - **Regra de proximidade:** o título fica perto do que ele apresenta (8 px até a descrição, 12–16 px até o conteúdo) e longe do bloco anterior (40–48 px). Rótulo de campo a 6 px do campo; campos a 12–16 px entre si; botões lado a lado a 12 px.
 - **Fluxo padrão:** dois blocos seguidos numa tela nunca encostam (16/20 px), por uma regra de peso zero (`:where`) que qualquer peça específica pode sobrepor.
 - **Leitura:** parágrafos com no máximo ~62 caracteres por linha e entrelinha 1,55–1,6; títulos com quebra equilibrada (`text-wrap: balance`).
@@ -56,13 +64,13 @@ Inspirada nos sistemas de design dos apps mais caprichados: poucos tamanhos de e
 Raso (0–10 m) claro e luminoso → Recife (10–40 m) turquesa → Caverna (40–200 m) azul profundo → Abismo (200 m+) quase preto. Quanto mais fundo, mais escuro o cenário do jogo.
 
 ## Tipografia e formas
-- **Plus Jakarta Sans** (Google Fonts), pesos 400 a 800, sempre com fallback de sistema.
+- **Plus Jakarta Sans** (Google Fonts), pesos 500 a 800 (corpo em 500), sempre com fallback de sistema. Tamanhos só pela escala `--t-*` (acima).
 - **JetBrains Mono** (token `--fonte-mono`) só para "dados": rótulos pequenos em caixa alta (`.rotulo`), cronômetros, contadores, números do resumo e da barra lateral. Texto corrido continua em Plus Jakarta Sans.
-- **Movimento:** as telas entram com fade, deslize curto e um leve desfoque (`surgir`); ao começar uma sessão ou um jogo, a **cortina** (`#transicao`: fundo do mar, bolhas subindo e o Diver) cobre a tela por ~1 s. Com "reduzir movimento", nada disso aparece.
+- **Movimento:** as telas entram com fade e deslize curto de 8 px (`surgir`, sem desfoque: é caro no celular); ao começar uma sessão ou um jogo, a **cortina** (`#transicao`: fundo do mar, bolhas subindo e o Diver) cobre a tela por ~1 s. Com "reduzir movimento", nada disso aparece.
 - **Barras de rolagem** finas, no tom `--superficie-2` (turquesa ao passar o mouse); na barra lateral, a alça só aparece com o mouse em cima.
 - Cards com canto de 16 px; botões em formato de pílula.
-- **Botão 3D**: borda inferior de 4 px em `--diver-turquesa-sombra`; ao pressionar, o botão "afunda" (translateY de 3–4 px e sombra menor).
-- Card selecionado: fundo `--diver-superficie-turquesa` + borda turquesa + marcador de rádio turquesa.
+- **Botão 3D**: borda inferior de 4 px em `--primaria-sombra` (`--sombra-botao`), sem brilho; ao pressionar, o botão "afunda" (translateY de 3–4 px e sombra menor).
+- Card selecionado: fundo `--superficie-turquesa` + borda turquesa (`--anel-primaria`) + marcador de rádio turquesa.
 - Ícones de traço fino (estilo Lucide), sempre com texto nas ações principais.
 - Fundo: degradê marinho + **bolhas suaves** animadas (desligam com `prefers-reduced-motion`).
 
@@ -104,3 +112,8 @@ Frases curtas, humor discreto, sem jargão e sem sermão. Um trocadilho de mar d
 
 ## Acessibilidade
 Contraste mínimo AA; foco visível em tudo que é clicável; botões grandes para toque (mín. 44 px); atalhos de teclado (1–6 ou A–F para responder); `prefers-reduced-motion` respeitado; nunca comunicar algo só por cor.
+
+## Como auditar (rode antes de todo commit que mexe no visual)
+- `node scripts/auditar-design.mjs`: falha se achar hex fora de `css/tokens.css` (nos CSS e nos 3 JS que desenham), `font-size` fora da escala, `z-index` numérico ou `@media` fora dos 4 cortes.
+- `node scripts/fotos-design.mjs --onda <nome> --fase antes|depois --porta 8765`: fotografa 18 telas no celular (390×844) e no computador (1440×900) em `docs/fotos/design/<onda>/<fase>/`, com um servidor local rodando (`python3 -m http.server 8765`) e o Playwright instalado (`NODE_PATH=$(npm root -g)`). Compare o antes e o depois antes de dar a onda por pronta.
+- A revisão completa, onda por onda, está em `docs/REVISAO_DESIGN.md`. **Onda 1 (fundação) feita em 2026-10-15**; as próximas (componentes, layout, responsividade, movimento, carregamento, documentação) esperam o OK do usuário.

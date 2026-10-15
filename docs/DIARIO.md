@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-15 · Revisão de design, Onda 1 (fundação de tokens)
+- **Pedido:** `docs/REVISAO_DESIGN.md`, só a Onda 1; parar antes da Onda 2.
+- **Feito:** `css/tokens.css` (cor em camadas, 8 tamanhos de fonte, entrelinhas, espaços, 5 raios, 4 sombras, 3 durações, 10 camadas, `color-scheme: dark`); os 23 hex soltos do `estilo.css` e os 107 dos JS (tutorial, Caso Resolvido, Tiro ao Alvo) viraram tokens (`UI.cor`); 40 tamanhos de fonte viraram 8; 20 larguras de `@media` viraram 4 (barra lateral em 1024); z-index por camada; brilho turquesa e o `blur()` da entrada de tela saíram; corpo em peso 500 (o 400 saiu do Google Fonts).
+- **Ferramentas:** `scripts/auditar-design.mjs` (passa) e `scripts/fotos-design.mjs` (36 fotos antes/depois em `docs/fotos/design/onda-1/`).
+- **Testes:** PC e celular sem erro de página nem rolagem lateral; comportamento intocado.
+- **Próximo:** Onda 2 (componentes), com o OK do usuário.
+
 ## 2026-10-15 · Sala Ensino Médio: os 12 cursos escritos
 - **Feito:** as 167 aulas novas da grade, um commit por módulo: Matemática (24 aulas), Português (17), Biologia (16), Química (17), Física (15), História (21), Geografia (15), Filosofia (10), Sociologia (10), Redação (11), Literatura (10) e Inglês (12). No total são 178 aulas, 3.560 questões, 3.560 variantes e 552 fichas, com 0 erro e 0 aviso no `conferir-trilha.mjs`.
 - **Nivelamento:** 50 questões, sendo 29 copiadas da Diagnóstica do Enem e 21 novas, em todas as disciplinas. A letra da certa foi espalhada nas novas; as 9 que já estavam em produção ficaram iguais.

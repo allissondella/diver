@@ -17,26 +17,26 @@
 }
 .caminho__passo:hover { border-color: var(--turquesa); background: var(--superficie-2); }
 .caminho__passo:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
-.caminho__emoji { font-size: 1.35rem; line-height: 1; }
-.caminho__nome { font-weight: 800; font-size: 0.85rem; }
-.caminho__dica { font-size: 0.7rem; color: var(--texto-suave); text-align: center; line-height: 1.2; }
+.caminho__emoji { font-size: var(--t-xl); line-height: 1; }
+.caminho__nome { font-weight: 800; font-size: var(--t-sm); }
+.caminho__dica { font-size: var(--t-xs); color: var(--texto-suave); text-align: center; line-height: var(--lh-apertada); }
 .caminho__seta { align-self: center; color: var(--turquesa-claro); font-weight: 800; }
-@media (max-width: 599px) {
+@media (max-width: 767px) {
   .caminho__lista { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .caminho__seta, .caminho__dica { display: none; }
   .caminho__passo { min-height: 56px; }
-  .caminho__nome { font-size: 0.72rem; }
+  .caminho__nome { font-size: var(--t-xs); }
 }
 
 /* ---------- Etapas e seções ---------- */
 .artigo__etapa-rotulo {
   margin: var(--esp-5) 0 var(--esp-3); font-weight: 800; letter-spacing: 0.02em;
-  color: var(--amarelo); text-transform: uppercase; font-size: 0.8rem;
+  color: var(--amarelo); text-transform: uppercase; font-size: var(--t-xs);
 }
 .artigo__etapa-rotulo:first-of-type { margin-top: 0; }
 .artigo { display: grid; gap: var(--esp-4); margin: var(--esp-4) 0; }
-.artigo__secao p, .artigo__bloco p { margin: 0 0 var(--esp-2); line-height: 1.6; }
-.artigo__titulo { margin: 0 0 var(--esp-2); font-size: 1.05rem; color: var(--turquesa-claro); }
+.artigo__secao p, .artigo__bloco p { margin: 0 0 var(--esp-2); line-height: var(--lh-leitura); }
+.artigo__titulo { margin: 0 0 var(--esp-2); font-size: var(--t-md); color: var(--turquesa-claro); }
 .artigo__bloco { margin: var(--esp-5) 0; }
 
 /* ---------- Linha do tempo ---------- */
@@ -46,14 +46,14 @@
   content: ''; position: absolute; left: calc(-1 * var(--esp-4) - 7px); top: 0.35em;
   width: 12px; height: 12px; border-radius: 50%; background: var(--amarelo); border: 2px solid var(--marinho);
 }
-.tempo__quando { font: 800 0.9rem var(--fonte-mono); color: var(--amarelo); }
-.tempo__fato { line-height: 1.5; }
+.tempo__quando { font: 800 var(--t-sm) var(--fonte-mono); color: var(--amarelo); }
+.tempo__fato { line-height: var(--lh-normal); }
 
 /* ---------- Mapa mental ---------- */
 .mm { display: grid; justify-items: center; gap: var(--esp-4); }
 .mm__centro {
-  padding: var(--esp-3) var(--esp-5); border-radius: 999px; text-align: center;
-  background: var(--turquesa); color: var(--texto-escuro); font-weight: 800; box-shadow: var(--brilho-turquesa);
+  padding: var(--esp-3) var(--esp-5); border-radius: var(--raio-pilula); text-align: center;
+  background: var(--turquesa); color: var(--texto-escuro); font-weight: 800; box-shadow: var(--anel-primaria);
 }
 .mm__ramos {
   list-style: none; margin: 0; padding: 0; width: 100%;
@@ -71,7 +71,7 @@
 .mm__ramo--3 { --cor: var(--lilas); }
 .mm__ramo--4 { --cor: var(--laranja); }
 .mm__ramo-titulo { display: block; font-weight: 800; color: var(--cor); margin-bottom: var(--esp-2); }
-.mm__itens { margin: 0; padding-left: var(--esp-4); display: grid; gap: var(--esp-1); font-size: 0.92rem; line-height: 1.45; }
+.mm__itens { margin: 0; padding-left: var(--esp-4); display: grid; gap: var(--esp-1); font-size: var(--t-sm); line-height: var(--lh-normal); }
 
 /* ---------- Associações (imagem + gancho) ---------- */
 .assoc { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3); grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
@@ -79,10 +79,10 @@
   display: grid; grid-template-columns: auto 1fr; gap: var(--esp-3); align-items: start;
   padding: var(--esp-3); border-radius: var(--raio-pequeno); background: var(--superficie-turquesa); border: 1px solid var(--borda);
 }
-.assoc__icone { font-size: 2rem; line-height: 1; }
+.assoc__icone { font-size: var(--t-2xl); line-height: 1; }
 .assoc__par { margin: 0 0 var(--esp-1); }
 .assoc__seta { color: var(--amarelo); font-weight: 800; }
-.assoc__porque { margin: 0; font-size: 0.9rem; color: var(--texto-suave); }
+.assoc__porque { margin: 0; font-size: var(--t-sm); color: var(--texto-suave); }
 
 /* ---------- Mapas (Brasil e corpo) ---------- */
 .geo { margin: 0; display: grid; gap: var(--esp-2); }
@@ -97,14 +97,17 @@
   position: absolute; transform: translate(-50%, -50%);
   width: 28px; height: 28px; border-radius: 50%; padding: 0;
   border: 2px solid var(--marinho); background: var(--amarelo); color: var(--texto-escuro);
-  font: 800 0.85rem var(--fonte); cursor: pointer; box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.25);
+  font: 800 var(--t-sm) var(--fonte); cursor: pointer; box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.25);
 }
 .geo__ponto:hover, .geo__ponto[aria-pressed='true'] { background: var(--coral); }
 .geo__ponto:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
-.geo__legenda { text-align: center; font-size: 0.8rem; }
+.geo__legenda { text-align: center; font-size: var(--t-xs); }
 .geo__detalhe { padding: var(--esp-3); border-radius: var(--raio-pequeno); background: var(--superficie); border-left: 4px solid var(--amarelo); }
 .geo__detalhe p { margin: 0 0 var(--esp-1); }
 
 @media (prefers-reduced-motion: reduce) {
   .caminho__passo { transition: none; }
 }
+
+/* Texto corrido do artigo numa largura confortável de leitura */
+.artigo__secao p, .artigo__secao li { max-width: var(--medida-leitura); line-height: var(--lh-leitura); }

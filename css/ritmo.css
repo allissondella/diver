@@ -3,40 +3,12 @@
    Régua de espaços em múltiplos de 4/8 px aplicada a todas as telas, para nada ficar colado:
    o mesmo espaço entre cartões, um espaço maior entre seções e um respiro claro entre
    o título de uma seção e o que vem depois. Carregado por ÚLTIMO (depois de jogos.css).
-   Só usa variáveis (tokens). Guia: docs/DESIGN.md, "Espaçamento".
+   Só usa variáveis (tokens, em css/tokens.css). Guia: docs/DESIGN.md, "Espaçamento".
    ========================================================= */
-
-:root {
-  --esp-1: 4px;
-  --esp-2: 8px;
-  --esp-3: 12px;
-  --esp-4: 16px;
-  --esp-5: 24px;
-  --esp-6: 32px;
-  --esp-7: 40px;
-  --esp-8: 48px;
-  --esp-9: 64px;
-
-  /* Papéis (é o que as regras abaixo usam; muda com a largura da tela) */
-  --ritmo-secao: var(--esp-7);       /* entre uma seção e a próxima */
-  --ritmo-cartoes: var(--esp-4);     /* entre cartões de uma lista ou grade */
-  --ritmo-cartao-pad: 20px;          /* respiro dentro do cartão */
-  --ritmo-pagina-x: var(--esp-4);    /* margem lateral da página */
-  --ritmo-pagina-topo: var(--esp-5);
-}
-@media (min-width: 960px) {
-  :root {
-    --ritmo-secao: var(--esp-8);
-    --ritmo-cartoes: 20px;
-    --ritmo-cartao-pad: var(--esp-5);
-    --ritmo-pagina-x: var(--esp-7);
-    --ritmo-pagina-topo: var(--esp-7);
-  }
-}
 
 /* ---------- Página ---------- */
 .app { padding: var(--ritmo-pagina-topo) var(--ritmo-pagina-x) var(--esp-9); }
-body { line-height: 1.55; }
+body { line-height: var(--lh-leitura); }
 p { text-wrap: pretty; }
 h1, h2, h3 { text-wrap: balance; }
 
@@ -47,10 +19,10 @@ h1, h2, h3 { text-wrap: balance; }
 /* Cabeçalho da área: rótulo, título e uma linha de apoio com medida confortável de leitura */
 .area-cabeca { padding: 0 0 var(--esp-6); }
 .area-cabeca h1 { margin-top: var(--esp-1); letter-spacing: -0.02em; }
-.area-cabeca__sub { margin-top: var(--esp-2); max-width: 62ch; line-height: 1.6; }
+.area-cabeca__sub { margin-top: var(--esp-2); max-width: 62ch; line-height: var(--lh-leitura); }
 
 /* Seções: espaço grande ANTES (separa da anterior) e pequeno depois (o título "pertence" ao conteúdo) */
-.secao-titulo { margin: var(--ritmo-secao) 0 var(--esp-2); font-size: 1.2rem; letter-spacing: -0.01em; }
+.secao-titulo { margin: var(--ritmo-secao) 0 var(--esp-2); font-size: var(--t-lg); letter-spacing: -0.01em; }
 .secao-sub { margin: 0 0 var(--esp-4); max-width: 62ch; }
 .secao-titulo + :not(.secao-sub) { margin-top: var(--esp-3); }
 .secao-titulo.secao-titulo--linha { margin: 0; }   /* título dentro de uma linha com botões */
@@ -81,7 +53,7 @@ h1, h2, h3 { text-wrap: balance; }
 .lateral__nav { gap: 2px; }
 .lateral__grupo { margin: var(--esp-4) 12px var(--esp-1); }
 .lateral__grupo:first-child { margin-top: var(--esp-1); }
-@media (min-width: 960px) {
+@media (min-width: 1280px) {
   .lateral { gap: var(--esp-2); overflow: hidden; padding-block: var(--esp-3); }
   .lateral__nav { gap: 1px; }
   .lateral__nav { flex: 1 1 auto; min-height: 0; overflow-y: auto; align-content: start; margin-inline: -4px; padding-inline: 4px; }
@@ -96,7 +68,7 @@ h1, h2, h3 { text-wrap: balance; }
 /* ---------- Início ---------- */
 .hero { padding-bottom: var(--esp-6); }
 .hero__slogan { margin-top: var(--esp-2); }
-.hero__texto { margin-top: var(--esp-2); max-width: 52ch; margin-inline: auto; line-height: 1.6; }
+.hero__texto { margin-top: var(--esp-2); max-width: 52ch; margin-inline: auto; line-height: var(--lh-leitura); }
 .continuar-area { margin: 0; }
 #hoje .secao-titulo { margin-top: var(--ritmo-secao); }
 .hoje__grade { gap: var(--ritmo-cartoes); }
@@ -114,7 +86,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* No celular, o texto da fase usa a largura toda: o "Mergulhar" vira uma seta discreta
    (o cartão inteiro já é o botão, e o nome completo continua no aria-label). */
-@media (max-width: 599px) {
+@media (max-width: 767px) {
   .mapa::before { left: 27px; }
   .fase { gap: var(--esp-3); padding: var(--esp-4) var(--esp-3) var(--esp-4) var(--esp-2); }
   .fase__no { width: 40px; height: 40px; }
@@ -124,7 +96,7 @@ h1, h2, h3 { text-wrap: balance; }
     border-radius: 50%;
     font-size: 0;
   }
-  .fase__cta::before { content: "›"; font-size: 1.45rem; line-height: 1; font-weight: 800; transform: translateY(-1px); }
+  .fase__cta::before { content: "›"; font-size: var(--t-xl); line-height: 1; font-weight: 800; transform: translateY(-1px); }
   .fase__descricao { margin-top: 2px; }
 }
 
@@ -136,7 +108,7 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* Celular: cartão compacto. Nome à esquerda e o botão na mesma linha; a descrição embaixo.
    Jogo com opção (tempo, pares) leva a opção e o botão para uma linha própria. */
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .jogo-card {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -158,9 +130,9 @@ h1, h2, h3 { text-wrap: balance; }
 .item-revisao + .item-revisao { margin-top: var(--esp-3); }
 .item-revisao { padding: var(--esp-4); gap: var(--esp-4); }
 .item-revisao__texto { gap: var(--esp-1); }
-.item-revisao__texto strong { font-weight: 700; line-height: 1.45; }
+.item-revisao__texto strong { font-weight: 700; line-height: var(--lh-normal); }
 /* Celular: a pergunta usa a largura toda e o "Tirar da fila" fica embaixo, à esquerda */
-@media (max-width: 599px) {
+@media (max-width: 767px) {
   .item-revisao { flex-direction: column; align-items: stretch; gap: var(--esp-2); }
   .item-revisao .botao { align-self: flex-start; margin-left: calc(-1 * var(--esp-2)); }
 }
@@ -172,10 +144,10 @@ h1, h2, h3 { text-wrap: balance; }
 .perfil-opcoes { list-style: none; margin: 0; padding: 0 var(--ritmo-cartao-pad); }
 .perfil-opcao { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--esp-4); padding-block: var(--esp-5); }
 .perfil-opcao + .perfil-opcao { border-top: 1px solid var(--borda); }
-.perfil-opcao__texto h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: var(--esp-1); }
-.perfil-opcao__texto p { font-size: 0.9rem; color: var(--texto-suave); max-width: 60ch; }
+.perfil-opcao__texto h3 { font-size: var(--t-md); font-weight: 800; margin-bottom: var(--esp-1); }
+.perfil-opcao__texto p { font-size: var(--t-sm); color: var(--texto-suave); max-width: 60ch; }
 .perfil-opcao__acoes { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--esp-2); }
-@media (max-width: 699px) { /* tela estreita: o botão desce para baixo do texto, alinhado com ele */
+@media (max-width: 767px) { /* tela estreita: o botão desce para baixo do texto, alinhado com ele */
   .perfil-opcao { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
   .perfil-opcao__acoes { grid-column: 2; justify-content: flex-start; }
 }
@@ -185,7 +157,7 @@ h1, h2, h3 { text-wrap: balance; }
   .perfil-troca { gap: 0; }
   .perfil-troca__seta { width: 24px; }
   .perfil-topo__info { min-width: 0; }
-  .perfil-topo__nome { font-size: 1.25rem; }
+  .perfil-topo__nome { font-size: var(--t-lg); }
 }
 .resumo-numeros { margin: 0; gap: var(--esp-3); }
 .tela .resumo-numeros li { padding: var(--esp-4) var(--esp-3); }
@@ -194,13 +166,13 @@ h1, h2, h3 { text-wrap: balance; }
 .tabela--perfil td:nth-child(n+3) { text-align: center; }
 .tabela--perfil thead th:nth-child(n+3) { text-align: center; }
 /* Celular: cada curso vira um cartãozinho com rótulos (a tabela não precisa rolar de lado) */
-@media (max-width: 639px) {
+@media (max-width: 767px) {
   .tabela--perfil thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .tabela--perfil tr { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--esp-2); padding: var(--esp-3) 0; border-bottom: 1px solid var(--borda); }
   .tabela--perfil tr:last-child { border-bottom: 0; }
   .tabela--perfil th[scope="row"] { grid-column: 1 / -1; padding: 0; border: 0; }
   .tabela--perfil td { display: grid; gap: 2px; padding: 0; border: 0; text-align: left !important; font-weight: 800; }
-  .tabela--perfil td::before { content: attr(data-rotulo); font: 600 0.68rem var(--fonte-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--texto-suave); }
+  .tabela--perfil td::before { content: attr(data-rotulo); font: 600 var(--t-xs) var(--fonte-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--texto-suave); }
   .tabela--perfil td:first-of-type { grid-column: 1 / -1; }
   .tabela--perfil .link-tabela { min-height: 40px; padding: 4px 0; }
 }
@@ -218,7 +190,7 @@ h1, h2, h3 { text-wrap: balance; }
 .pessoas, .pessoa { grid-template-columns: minmax(0, 1fr); }
 /* Filtros e escolhas em "pílula": nunca passam da largura da tela; no celular quebram em duas linhas */
 .segmentado { max-width: 100%; flex-wrap: wrap; }
-@media (max-width: 599px) {
+@media (max-width: 767px) {
   .segmentado { border-radius: var(--raio); }
   .acoes-linha > .campo[type="search"] { min-width: 0; flex-basis: 100%; }
 }
@@ -237,12 +209,12 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .modulo__cabeca::-webkit-details-marker { display: none; }
 .modulo__caixa > .modulo__cabeca::after { content: none; }
-.modulo__cabeca::before { content: "›"; font-size: 1.4rem; font-weight: 800; color: var(--turquesa-claro); transition: transform var(--transicao); }
+.modulo__cabeca::before { content: "›"; font-size: var(--t-xl); font-weight: 800; color: var(--turquesa-claro); transition: transform var(--transicao); }
 .modulo__caixa[open] > .modulo__cabeca::before { transform: rotate(90deg); }
 .modulo__cabeca:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 2px; }
-.modulo__nome { flex: 1 1 220px; font-weight: 800; font-size: 1.05rem; }
-.modulo__progresso { display: inline-flex; align-items: center; gap: var(--esp-2); font-size: 0.85rem; color: var(--texto-suave); white-space: nowrap; }
-.modulo__barra { display: inline-block; width: 90px; height: 6px; border-radius: 999px; background: var(--borda); overflow: hidden; }
+.modulo__nome { flex: 1 1 220px; font-weight: 800; font-size: var(--t-md); }
+.modulo__progresso { display: inline-flex; align-items: center; gap: var(--esp-2); font-size: var(--t-sm); color: var(--texto-suave); white-space: nowrap; }
+.modulo__barra { display: inline-block; width: 90px; height: 6px; border-radius: var(--raio-pilula); background: var(--borda); overflow: hidden; }
 .modulo__barra > span { display: block; height: 100%; background: var(--turquesa); }
 .modulo__aulas { padding: 0 var(--esp-3) var(--esp-4); }
 @media (prefers-reduced-motion: reduce) { .modulo__cabeca::before { transition: none; } }
@@ -258,9 +230,9 @@ h1, h2, h3 { text-wrap: balance; }
 .fila-onda__linha { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); }
 .fila-onda__teto { display: grid; gap: var(--esp-2); }
 .fila-onda__teto strong, .fila-onda__custo { color: var(--amarelo); }
-.fila-onda__barra { height: 8px; border-radius: 999px; background: var(--borda); overflow: hidden; }
-.fila-onda__barra > span { display: block; height: 100%; min-width: 4px; border-radius: inherit; background: linear-gradient(90deg, var(--turquesa), var(--amarelo)); transition: width 400ms ease; }
+.fila-onda__barra { height: 8px; border-radius: var(--raio-pilula); background: var(--borda); overflow: hidden; }
+.fila-onda__barra > span { display: block; height: 100%; min-width: 4px; border-radius: inherit; background: linear-gradient(90deg, var(--turquesa), var(--amarelo)); transition: width var(--dur-lenta) var(--ease-saida); }
 .fila-onda__progresso { display: flex; align-items: center; gap: var(--esp-2); font-weight: 700; color: var(--turquesa-claro); }
 .fila-onda__progresso .icone { flex: none; width: 20px; height: 20px; }
-.fila-envio__dica { font-size: 0.8rem; }
+.fila-envio__dica { font-size: var(--t-xs); }
 @media (prefers-reduced-motion: reduce) { .fila-onda__barra > span { transition: none; } }
