@@ -4,12 +4,13 @@
  * para comparar o antes e o depois de uma onda da revisão de design (docs/REVISAO_DESIGN.md).
  *
  * Uso:
- *   node scripts/fotos-design.mjs --onda onda-1 --fase antes [--porta 8765] [--telas inicio,quiz]
+ *   node scripts/fotos-design.mjs --onda onda-1 --fase antes [--porta 8765] [--telas inicio,quiz] [--png]
  *
  * Precisa de um servidor local servindo a raiz do repositório (ex.: python3 -m http.server 8765)
  * e do Playwright instalado (global: NODE_PATH=$(npm root -g)). Roda no modo local: o js/config.js
  * é trocado por um vazio, então nada de login nem de dados de aluno. As fotos vão para
- * docs/fotos/design/<onda>/<fase>/<tela>-<celular|computador>.png.
+ * docs/fotos/design/<onda>/<fase>/<tela>-<celular|computador>.jpg (JPEG 1×, leve para o repositório;
+ * com --png, PNG em alta resolução).
  */
 import { mkdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -26,12 +27,13 @@ const onda = arg('onda', 'onda-1');
 const fase = arg('fase', 'antes');
 const porta = arg('porta', '8765');
 const soTelas = arg('telas', '') ? arg('telas', '').split(',') : null;
+const png = process.argv.includes('--png');
 const base = `http://127.0.0.1:${porta}/`;
 const pasta = `docs/fotos/design/${onda}/${fase}`;
 mkdirSync(pasta, { recursive: true });
 
 const APARELHOS = [
-  { nome: 'celular', viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
+  { nome: 'celular', viewport: { width: 390, height: 844 }, deviceScaleFactor: png ? 2 : 1, isMobile: true, hasTouch: true },
   { nome: 'computador', viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 },
 ];
 
@@ -129,8 +131,8 @@ async function telaLogin(ctx, foto) {
     });
     const p = await ctx.newPage();
     const foto = async (nome, pagina = p) => {
-      const arquivo = `${pasta}/${nome}-${ap.nome}.png`;
-      await pagina.screenshot({ path: arquivo, fullPage: true });
+      const arquivo = `${pasta}/${nome}-${ap.nome}.${png ? 'png' : 'jpg'}`;
+      await pagina.screenshot(png ? { path: arquivo, fullPage: true } : { path: arquivo, fullPage: true, type: 'jpeg', quality: 72 });
       console.log('  foto:', arquivo);
     };
     console.log(`\n== ${ap.nome} (${ap.viewport.width}×${ap.viewport.height})`);

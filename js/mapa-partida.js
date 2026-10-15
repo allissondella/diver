@@ -336,7 +336,7 @@ const MapaPartida = (() => {
         const ok = resp === q.correta;
         return h('li', { class: `dg-rev ${ok ? 'dg-rev--certa' : 'dg-rev--errada'}` },
           h('details', {},
-            h('summary', {}, h('span', { class: 'dg-rev__marca', text: ok ? '✓' : naoRespondida(resp) ? '?' : '✗', 'aria-hidden': 'true' }),
+            h('summary', {}, (naoRespondida(resp) && !ok ? h('span', { class: 'dg-rev__marca', text: '?', 'aria-hidden': 'true' }) : h('span', { class: 'dg-rev__marca', 'aria-hidden': 'true' }, UI.icone(ok ? 'i-check' : 'i-x'))),
               h('span', { text: `${n + 1}. ${q.tema}` }), h('span', { class: 'visualmente-oculto', text: ok ? ' (acertou)' : naoRespondida(resp) ? ' (ainda não sabia)' : ' (para revisar)' })),
             q.texto ? h('div', { class: 'dg-texto' }, String(q.texto).split('\n').map((linha) => h('p', { text: linha }))) : null,
             h('p', { class: 'dg-enunciado', text: q.enunciado }),

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-15 · Revisão de design, Onda 2 (componentes)
+- **Feito:** botões numa família só (primário, secundário, fantasma, perigo, link; 36/44/52 px; foco, ativo, desabilitado e carregando com `UI.carregando` no login, simulado, PDF e cronograma); "Entrar" das salas turquesa; campos e `select` com aparência própria; cartões sem desfoque e com aninhamento sem borda (linhas da aula no mapa); `.tag` única; sprite com traço 2 e ícones novos no lugar de todos os emojis e glifos da interface; `.barra` + `UI.progresso` com brilho ao subir; toasts no canto (computador) e fora do oxigênio (celular); esqueleto nas salas e no curso enquanto baixa.
+- **Testes:** PC, celular, jogos com ícones trocados (Investigação, Tiro, Cardume, Caso Resolvido, Caça ao Tesouro, Cronograma) sem erro de página; auditor OK. Fotos em `docs/fotos/design/onda-2/depois/` (JPEG 1×; o "antes" é o "depois" da Onda 1).
+- **Próximo:** produção (pedido do usuário); Onda 3 (layout por tela) com OK.
+
 ## 2026-10-15 · Revisão de design, Onda 1 (fundação de tokens)
 - **Pedido:** `docs/REVISAO_DESIGN.md`, só a Onda 1; parar antes da Onda 2.
 - **Feito:** `css/tokens.css` (cor em camadas, 8 tamanhos de fonte, entrelinhas, espaços, 5 raios, 4 sombras, 3 durações, 10 camadas, `color-scheme: dark`); os 23 hex soltos do `estilo.css` e os 107 dos JS (tutorial, Caso Resolvido, Tiro ao Alvo) viraram tokens (`UI.cor`); 40 tamanhos de fonte viraram 8; 20 larguras de `@media` viraram 4 (barra lateral em 1024); z-index por camada; brilho turquesa e o `blur()` da entrada de tela saíram; corpo em peso 500 (o 400 saiu do Google Fonts).

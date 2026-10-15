@@ -994,7 +994,7 @@ const Quadros = (() => {
         });
         d.quadroAtual = primeiro;
       }, { foco: '[data-foco="titulo-quadro"]' });
-      UI.toast('Tarefas importadas', `${UI.plural(dados.quadros.length, 'quadro novo', 'quadros novos')}. Troque pelo menu ☰.`, 'i-upload');
+      UI.toast('Tarefas importadas', `${UI.plural(dados.quadros.length, 'quadro novo', 'quadros novos')}. Troque no menu de quadros.`, 'i-upload');
     });
     document.body.append(input);
     input.click();

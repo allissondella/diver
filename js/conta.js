@@ -48,7 +48,9 @@ const Conta = (() => {
     return new Promise((pronto) => {
       const email = h('input', { class: 'campo', type: 'email', id: 'login-email', required: true, autocomplete: 'username', inputmode: 'email' });
       const senha = campoSenha('Senha', 'current-password', 'login-senha');
-      const aviso = h('p', { class: 'conta__aviso', role: 'alert' }, mensagem || '');
+      const aviso = h('p', { class: 'conta__aviso', id: 'login-aviso', role: 'alert' }, mensagem || '');
+      email.setAttribute('aria-describedby', 'login-aviso');
+      senha.input.setAttribute('aria-describedby', 'login-aviso');
       const botao = h('button', { type: 'submit', class: 'botao botao--primario botao--largo botao--grande' }, 'Bora mergulhar!');
       const secao = limpar($('tela-login'));
       secao.append(h('div', { class: 'conta' },
@@ -61,16 +63,14 @@ const Conta = (() => {
             aviso.textContent = 'Preencha o e-mail e a senha.';
             return;
           }
-          botao.disabled = true;
-          botao.textContent = 'Entrando…';
+          UI.carregando(botao, true, 'Entrando…');
           aviso.textContent = '';
           try {
             await Nuvem.entrar(email.value, senha.input.value);
             pronto();
           } catch (erro) {
             aviso.textContent = erro.message;
-            botao.disabled = false;
-            botao.textContent = 'Bora mergulhar!';
+            UI.carregando(botao, false);
             senha.input.select();
           }
         } },

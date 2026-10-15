@@ -123,7 +123,11 @@ const App = (() => {
     // Curso que veio só do catálogo: baixa o curso inteiro antes de abrir a área
     if (ROTAS[secao].precisaTrilha && estado.trilha._parcial) {
       const alvo = secao;
-      comCursoCompleto(() => { if (location.hash === '#' + alvo || estado.secao === alvo) navegar(alvo); });
+      if (alvo === 'mergulho') mostrarEsqueletoDoCurso();
+      comCursoCompleto(() => {
+        tirarEsqueletoDoCurso();
+        if (location.hash === '#' + alvo || estado.secao === alvo) navegar(alvo);
+      });
       return;
     }
     Tutorial.fechar(false);
@@ -390,6 +394,21 @@ const App = (() => {
    * Curso inteiro sob demanda (catálogo leve, Trilhas.completar): roda fn quando o curso atual estiver
    * completo. Se ainda não está, mostra a cortina enquanto baixa. Sem internet: avisa e não abre nada.
    */
+  /** Tela do curso com o esqueleto das aulas enquanto o curso inteiro baixa (catálogo leve → curso completo). */
+  function mostrarEsqueletoDoCurso() {
+    const tela = $('tela-painel');
+    tirarEsqueletoDoCurso();
+    const n = Math.min(6, (estado.trilha.fases || []).length || 4);
+    tela.prepend(UI.esqueleto('fase', n, `Abrindo ${estado.trilha.nome}…`));
+    tela.classList.add('tela--carregando');
+    document.querySelectorAll('.tela').forEach((t) => (t.hidden = t !== tela));
+  }
+  function tirarEsqueletoDoCurso() {
+    const tela = $('tela-painel');
+    tela.classList.remove('tela--carregando');
+    tela.querySelectorAll(':scope > .esqueleto-area').forEach((el) => el.remove());
+  }
+
   function comCursoCompleto(fn, texto = 'Abrindo o curso…') {
     const t = estado.trilha;
     if (!t || !t._parcial) return fn();
@@ -400,7 +419,7 @@ const App = (() => {
       estado.cartasCache = {};
       atualizarLateral();
       fn();
-    }, () => toast('Não consegui abrir o curso', 'Confira a internet e tente de novo.', 'i-alerta'));
+    }, () => { tirarEsqueletoDoCurso(); toast('Não consegui abrir o curso', 'Confira a internet e tente de novo.', 'i-alerta'); });
   }
 
   /* ---------- Bolhas do fundo ---------- */
@@ -891,7 +910,7 @@ const App = (() => {
     const nivel = Progresso.nivel(prog.xp);
     $('st-nivel-num').textContent = `Nível ${nivel.numero}`;
     $('st-nivel-nome').textContent = nivel.nome;
-    $('st-xp-preenchimento').style.width = nivel.pct + '%';
+    UI.progresso($('st-xp-barra'), nivel.pct);
     $('st-xp-barra').setAttribute('aria-valuenow', nivel.pct);
     $('st-xp-texto').textContent = nivel.max
       ? `${prog.xp} XP. Nível máximo: você é Mestre Diver.`
@@ -905,7 +924,7 @@ const App = (() => {
     const hoje = Progresso.respondidasHoje(prog);
     $('st-meta').textContent = `${Math.min(hoje, prog.metaDiaria)}/${prog.metaDiaria}`;
     const pctMeta = Math.min(100, Math.round((hoje / prog.metaDiaria) * 100));
-    $('st-meta-preenchimento').style.width = pctMeta + '%';
+    UI.progresso($('st-meta-barra'), pctMeta);
     $('st-meta-barra').setAttribute('aria-valuemax', prog.metaDiaria);
     $('st-meta-barra').setAttribute('aria-valuenow', Math.min(hoje, prog.metaDiaria));
 
@@ -1101,11 +1120,11 @@ const App = (() => {
       document.body.append(dialogo);
     }
     const tabela = r.tabela && Array.isArray(r.tabela.colunas) && Array.isArray(r.tabela.linhas) ? r.tabela : null;
-    // Artigo da fase (js/artigo.js): 📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar
+    // Artigo da fase (js/artigo.js): Aprender → Associar → Praticar → Desafio → Revisar (ícones do sprite)
     const blocoAprender = Artigo.aprender(r);
     const blocoAssociar = Artigo.associar(r);
     const ancoraAssociar = blocoAssociar.length ? h('div', { class: 'artigo__etapa', id: 'artigo-associar' },
-      h('p', { class: 'artigo__etapa-rotulo', text: '🧠 Associar' }), blocoAssociar) : null;
+      h('p', { class: 'artigo__etapa-rotulo' }, icone('i-cerebro'), 'Associar'), blocoAssociar) : null;
     const rolarPara = (alvo) => {
       const corpo = dialogo.querySelector('.dialogo__corpo');
       if (!alvo) { corpo.scrollTop = 0; return; }
@@ -1136,11 +1155,11 @@ const App = (() => {
         h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'))),
       h('div', { class: 'dialogo__corpo' },
         passos,
-        h('p', { class: 'artigo__etapa-rotulo', text: '📚 Aprender' }),
+        h('p', { class: 'artigo__etapa-rotulo' }, icone('i-livro'), 'Aprender'),
         r.introducao ? h('p', { class: 'resumo__intro' }, comNegrito(r.introducao)) : null,
         blocoAprender,
         ancoraAssociar,
-        h('p', { class: 'artigo__etapa-rotulo', text: '🔄 Para revisar' }),
+        h('p', { class: 'artigo__etapa-rotulo' }, icone('i-revisao'), 'Para revisar'),
         Array.isArray(r.pontos) && r.pontos.length
           ? h('section', {}, h('h3', { class: 'resumo__titulo' }, icone('i-alvo'), 'Pontos-chave'),
             h('ul', { class: 'resumo__lista' }, r.pontos.map((p) => h('li', {}, comNegrito(p)))))
@@ -1700,7 +1719,7 @@ const App = (() => {
     renderizarOxigenio(false);
 
     const pct = Math.round((s.indice / s.fila.length) * 100);
-    $('quiz-barra-preenchimento').style.width = pct + '%';
+    UI.progresso($('quiz-barra'), pct);
     $('quiz-barra').setAttribute('aria-valuemax', s.fila.length);
     $('quiz-barra').setAttribute('aria-valuenow', s.indice);
     $('quiz-contador').textContent = `${s.indice + 1} de ${s.fila.length}`;
@@ -2229,7 +2248,9 @@ const App = (() => {
       atualizarLateral();
     });
     $('btn-simulado').addEventListener('click', () => {
-      iniciarSessao('simulado', { quantidade: Number($('select-simulado').value) });
+      const b = $('btn-simulado');
+      UI.carregando(b, true);
+      Promise.resolve().then(() => iniciarSessao('simulado', { quantidade: Number($('select-simulado').value) })).finally(() => UI.carregando(b, false));
     });
     $('btn-revisao').addEventListener('click', () => iniciarSessao('revisao'));
     $('btn-zerar').addEventListener('click', async () => {

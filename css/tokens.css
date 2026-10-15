@@ -146,6 +146,10 @@
   --anel-foco: 0 0 0 3px rgba(250, 204, 21, 0.25);
   --anel-primaria: 0 0 0 3px rgba(20, 184, 166, 0.28); /* cartão selecionado, menu aberto */
   --vidro: color-mix(in srgb, var(--fundo-0) 94%, transparent);
+  /* Ícone de "certo" para ::after (máscara; a cor vem do background) */
+  --mascara-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  /* Setinha do <select> (cor névoa, --texto-2; data-URI não aceita var()) */
+  --seta-select: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%23A9BCD6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   /* ---------- Movimento ---------- */
   --dur-rapida: 120ms;

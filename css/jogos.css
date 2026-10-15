@@ -1006,7 +1006,11 @@
 .op-item--riscado .op-item__escolher { opacity: 0.45; }
 .op-item--riscado .op-item__nome { text-decoration: line-through; text-decoration-color: var(--coral); text-decoration-thickness: 2px; }
 .op-item--certo .op-item__escolher { border-color: var(--verde); }
-.op-item--certo .op-item__nome::after { content: " ✓"; color: var(--verde); }
+.op-item--certo .op-item__nome::after { content: ""; display: inline-block; width: 1em; height: 1em; margin-left: 4px; vertical-align: -0.15em; background: var(--sucesso); -webkit-mask: var(--mascara-check) center / contain no-repeat; mask: var(--mascara-check) center / contain no-repeat; }
+.estrelas { display: inline-flex; gap: 1px; vertical-align: -0.2em; }
+.estrelas .icone { width: 1em; height: 1em; }
+.estrelas__cheia { color: var(--destaque); }
+.estrelas__vazia { color: var(--texto-3); }
 
 /* Resultado da acusação */
 .op-revelado { display: flex; flex-wrap: wrap; gap: var(--esp-4); align-items: center; padding: var(--esp-4); border: 1px solid var(--coral); border-radius: var(--raio); background: var(--op-fundo); }

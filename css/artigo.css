@@ -17,7 +17,11 @@
 }
 .caminho__passo:hover { border-color: var(--turquesa); background: var(--superficie-2); }
 .caminho__passo:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
-.caminho__emoji { font-size: var(--t-xl); line-height: 1; }
+.caminho__emoji { display: inline-grid; place-items: center; line-height: 1; color: var(--primaria-clara); }
+.caminho__emoji .icone { width: 24px; height: 24px; }
+.artigo__etapa-rotulo { display: flex; align-items: center; gap: 6px; }
+.artigo__etapa-rotulo .icone { width: 18px; height: 18px; }
+.assoc__icone .icone { width: 1.2em; height: 1.2em; color: var(--destaque); }
 .caminho__nome { font-weight: 800; font-size: var(--t-sm); }
 .caminho__dica { font-size: var(--t-xs); color: var(--texto-suave); text-align: center; line-height: var(--lh-apertada); }
 .caminho__seta { align-self: center; color: var(--turquesa-claro); font-weight: 800; }

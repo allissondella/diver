@@ -391,3 +391,11 @@
   .ps-carro, .ps-pneu, .ps-braco, .ps-ok, .ps-combo__barra, .ps-cena--saindo .ps-carro, .ps-cena--saindo .ps-pneu, .ps-cena--saindo .ps-ok { transition: none; }
   .ps-roda--trocando .ps-pistola, .ps-roda--erro .ps-porca, .ps-roda--erro .ps-mec--pistola { animation: none; }
 }
+
+/* Medalhas do ranking (ícone do sprite no lugar dos emojis) */
+.pal-ranking__pos--ouro { color: var(--destaque); }
+.pal-ranking__pos--prata { color: var(--texto-1); }
+.pal-ranking__pos--bronze { color: var(--aviso); }
+.pal-ranking__pos .icone { width: 22px; height: 22px; }
+.sd-inv__marca .icone { width: 14px; height: 14px; }
+.sd-inv__comodo-info .icone, .sd-atv__procurar--ok .icone { width: 14px; height: 14px; vertical-align: -0.15em; }

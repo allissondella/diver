@@ -25,6 +25,62 @@ const UI = (() => {
     return el;
   }
 
+  /**
+   * Botão "carregando": spinner no lugar do ícone (CSS de .botao[aria-busy]), sem aceitar outro clique.
+   * texto (opcional) troca o rótulo enquanto carrega; ao desligar, o rótulo original volta.
+   */
+  function carregando(botao, ligado, texto) {
+    if (!botao) return;
+    if (ligado) {
+      botao.setAttribute('aria-busy', 'true');
+      if ('disabled' in botao && botao.tagName === 'BUTTON') botao.disabled = true;
+      if (texto) {
+        const rotulo = [...botao.childNodes].find((n) => n.nodeType === 3 && n.textContent.trim());
+        if (rotulo) { botao.dataset.rotuloOriginal = rotulo.textContent; rotulo.textContent = texto; }
+      }
+    } else {
+      botao.removeAttribute('aria-busy');
+      if (botao.tagName === 'BUTTON') botao.disabled = false;
+      if (botao.dataset.rotuloOriginal) {
+        const rotulo = [...botao.childNodes].find((n) => n.nodeType === 3 && n.textContent.trim());
+        if (rotulo) rotulo.textContent = botao.dataset.rotuloOriginal;
+        delete botao.dataset.rotuloOriginal;
+      }
+    }
+  }
+
+  /**
+   * Barra de progresso (role="progressbar"): põe a largura do preenchimento, o aria-valuenow e,
+   * quando o valor sobe, o brilho rápido (.barra--subiu, 600 ms). pct de 0 a 100; valor = o número para o leitor de tela.
+   */
+  function progresso(barra, pct, valor = pct) {
+    if (!barra) return;
+    const p = Math.max(0, Math.min(100, Number(pct) || 0));
+    const antes = Number(barra.dataset.pct || 0);
+    const cheio = barra.firstElementChild;
+    if (cheio) cheio.style.width = p + '%';
+    barra.setAttribute('aria-valuenow', String(Math.round(valor)));
+    barra.dataset.pct = String(p);
+    if (p > antes && !movimentoReduzido) {
+      barra.classList.remove('barra--subiu');
+      void barra.offsetWidth; // reinicia a animação
+      barra.classList.add('barra--subiu');
+      setTimeout(() => barra.classList.remove('barra--subiu'), 650);
+    }
+  }
+
+  /**
+   * Esqueleto de carregamento: blocos no formato do que vai chegar ('sala', 'curso' ou 'fase'), com brilho
+   * passando (estático com "reduzir movimento"). O aviso em texto vai para um aria-live oculto.
+   */
+  function esqueleto(forma, quantos = 3, aviso = 'Carregando…') {
+    const caixa = h('div', { class: `esqueletos esqueletos--${forma}`, 'aria-hidden': 'true' },
+      Array.from({ length: quantos }, () => h('div', { class: `esqueleto esqueleto--${forma}` },
+        h('span', { class: 'esqueleto__circulo' }),
+        h('span', { class: 'esqueleto__linhas' }, h('span', { class: 'esqueleto__linha esqueleto__linha--titulo' }), h('span', { class: 'esqueleto__linha' }), h('span', { class: 'esqueleto__linha esqueleto__linha--curta' })))));
+    return h('div', { class: 'esqueleto-area' }, caixa, h('p', { class: 'visualmente-oculto', role: 'status', 'aria-live': 'polite', text: aviso }));
+  }
+
   /** Valor de um token de cor do css/tokens.css (ex.: UI.cor('primaria') → '#14B8A6'), para canvas e SVG montado no JS. */
   const coresLidas = {};
   function cor(nome) {
@@ -123,12 +179,12 @@ const UI = (() => {
     );
     const area = $('toasts');
     area.append(el);
-    // No máximo 2 avisos por vez, para não cobrir o conteúdo
-    while (area.children.length > 2) area.firstElementChild.remove();
+    // No máximo 3 avisos por vez, para não cobrir o conteúdo; cada um some em 4 s
+    while (area.children.length > 3) area.firstElementChild.remove();
     setTimeout(() => {
       el.classList.add('saindo');
       setTimeout(() => el.remove(), 320);
-    }, 3000);
+    }, 4000);
   }
 
   function avisarConquistas(lista) {
@@ -243,7 +299,7 @@ const UI = (() => {
 
   return {
     confirmar, perguntar,
-    $, h, icone, cor, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
+    $, h, icone, cor, carregando, progresso, esqueleto, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
     dataLocal, paraData, formatarData, id, baixarArquivo, toast, avisarConquistas,
     montarMascotes, humorMascote, mascote, cabecalho, vazio, movimentoReduzido, codigo, marcado,
   };

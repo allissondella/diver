@@ -32,11 +32,11 @@ const Artigo = (() => {
 
   /* ---------- Caminho da fase ---------- */
   const PASSOS = [
-    { id: 'aprender', emoji: '📚', nome: 'Aprender', dica: 'Ler o artigo' },
-    { id: 'associar', emoji: '🧠', nome: 'Associar', dica: 'Mapa mental e associações' },
-    { id: 'praticar', emoji: '🃏', nome: 'Praticar', dica: 'Mergulho da fase' },
-    { id: 'desafio', emoji: '⚔️', nome: 'Desafio', dica: 'Chefão ou prova' },
-    { id: 'revisar', emoji: '🔄', nome: 'Revisar', dica: 'Revisão espaçada' }
+    { id: 'aprender', icone: 'i-livro', nome: 'Aprender', dica: 'Ler o artigo' },
+    { id: 'associar', icone: 'i-cerebro', nome: 'Associar', dica: 'Mapa mental e associações' },
+    { id: 'praticar', icone: 'i-cartas', nome: 'Praticar', dica: 'Mergulho da fase' },
+    { id: 'desafio', icone: 'i-espadas', nome: 'Desafio', dica: 'Chefão ou prova' },
+    { id: 'revisar', icone: 'i-revisao', nome: 'Revisar', dica: 'Revisão espaçada' }
   ];
 
   /** acoes = { aprender(), associar(), praticar(), desafio(), revisar() } */
@@ -44,7 +44,7 @@ const Artigo = (() => {
     return h('nav', { class: 'caminho', 'aria-label': 'Caminho da fase' },
       h('ol', { class: 'caminho__lista' }, PASSOS.map((p, i) => h('li', { class: 'caminho__item' },
         h('button', { type: 'button', class: 'caminho__passo', 'data-passo': p.id, onclick: () => acoes[p.id] && acoes[p.id]() },
-          h('span', { class: 'caminho__emoji', 'aria-hidden': 'true', text: p.emoji }),
+          h('span', { class: 'caminho__emoji', 'aria-hidden': 'true' }, UI.icone(p.icone)),
           h('span', { class: 'caminho__nome', text: p.nome }),
           h('span', { class: 'caminho__dica', text: p.dica })),
         i < PASSOS.length - 1 ? h('span', { class: 'caminho__seta', 'aria-hidden': 'true', text: '→' }) : null))));
@@ -86,7 +86,7 @@ const Artigo = (() => {
     return h('section', { class: 'artigo__bloco' },
       h('h3', { class: 'artigo__titulo', text: 'Associe para lembrar' }),
       h('ul', { class: 'assoc' }, l.map((a) => h('li', { class: 'assoc__item' },
-        h('span', { class: 'assoc__icone', 'aria-hidden': 'true', text: a.icone || '💡' }),
+        a.icone ? h('span', { class: 'assoc__icone', 'aria-hidden': 'true', text: a.icone }) : h('span', { class: 'assoc__icone', 'aria-hidden': 'true' }, UI.icone('i-lampada')),
         h('div', { class: 'assoc__texto' },
           h('p', { class: 'assoc__par' }, h('strong', { text: a.conceito }), h('span', { class: 'assoc__seta', 'aria-hidden': 'true', text: ' → ' }), h('span', { class: 'visualmente-oculto', text: ' liga-se a ' }), a.liga || ''),
           a.porque ? h('p', { class: 'assoc__porque' }, negrito(a.porque)) : null)))));

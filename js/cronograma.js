@@ -135,7 +135,7 @@ const Cronograma = (() => {
           h('li', { text: 'Descanso incluído. Perdeu um dia? Um toque redistribui.' }),
           h('li', { text: 'Nada vai para as suas Tarefas ou Calendário sem você marcar.' })),
         h('div', { class: 'acoes-linha' },
-          h('button', { type: 'button', class: 'botao botao--primario', id: 'cr-comecar', onclick: () => { novoRascunho(null); redesenhar(); } }, icone('i-alvo'), 'Montar meu cronograma'))));
+          h('button', { type: 'button', class: 'botao botao--primario', id: 'cr-comecar', onclick: (e) => { UI.carregando(e.currentTarget, true); novoRascunho(null); redesenhar(); } }, icone('i-alvo'), 'Montar meu cronograma'))));
   }
 
   /* ---------- Assistente de 5 passos ---------- */
@@ -167,7 +167,7 @@ const Cronograma = (() => {
       h('ol', { class: 'cr-passos', 'aria-label': 'Passos' }, PASSOS.map((nome, i) => h('li', {
         class: `cr-passos__item ${i === r.passo ? 'cr-passos__item--atual' : ''} ${i < r.passo ? 'cr-passos__item--feito' : ''}`.trim(),
         'aria-current': i === r.passo ? 'step' : null,
-      }, h('span', { class: 'cr-passos__num', text: i < r.passo ? '✓' : String(i + 1) }), h('span', { class: 'cr-passos__nome', text: nome })))),
+      }, (i < r.passo ? h('span', { class: 'cr-passos__num' }, icone('i-check')) : h('span', { class: 'cr-passos__num', text: String(i + 1) })), h('span', { class: 'cr-passos__nome', text: nome })))),
       h('section', { class: 'cartao cr-passo', 'aria-labelledby': 'cr-passo-titulo' },
         h('h2', { class: 'cartao__titulo', id: 'cr-passo-titulo', tabindex: '-1', text: `${r.passo + 1}. ${PASSOS[r.passo]}` }),
         passo.el,
@@ -495,7 +495,7 @@ const Cronograma = (() => {
           h('strong', { text: `${DIAS[d]} ${dataCurta(iso)}` }),
           h('span', { class: 'texto-suave', text: ehProva ? 'Dia da prova' : vespera ? 'Véspera: descanso' : doDia.length ? `${horas(usados)}${min ? ` de ${horas(min)}` : ''}` : min ? 'Livre' : 'Descanso' })),
         doDia.length ? h('ol', { class: 'cr-blocos' }, doDia.map((b) => cartaoBloco(b, { blocos, params, modo, mover, mudou, dias: dias.concat(Array.from({ length: 7 }, (_, k) => G.somarDias(ini, 7 + k))).filter((x) => x >= hoje() && x <= ultimoDiaPlano) })))
-          : h('p', { class: 'cr-dia__vazio', text: ehProva ? '🏁 Boa prova, Diver!' : vespera ? 'Dorme cedo e separa os documentos.' : min ? 'Nada marcado.' : 'Descanso também é parte do plano. 🌊' }));
+          : (ehProva ? h('p', { class: 'cr-dia__vazio' }, icone('i-bandeira'), 'Boa prova, Diver!') : h('p', { class: 'cr-dia__vazio', text: vespera ? 'Dorme cedo e separa os documentos.' : min ? 'Nada marcado.' : 'Descanso também é parte do plano.' })));
       // arrastar e soltar (computador)
       el.addEventListener('dragover', (e) => { if (iso >= hoje() && iso <= ultimoDiaPlano) { e.preventDefault(); el.classList.add('cr-dia--alvo'); } });
       el.addEventListener('dragleave', () => el.classList.remove('cr-dia--alvo'));
@@ -581,7 +581,7 @@ const Cronograma = (() => {
         h('h2', { class: 'cartao__titulo', id: 'cr-objetivo', text: p.objetivo.nome })),
       h('p', { class: 'cr-topo__faltam' }, faltam > 0
         ? [h('strong', { text: plural(faltam, 'dia', 'dias') }), ` até ${UI.formatarData(p.objetivo.data, { day: '2-digit', month: 'long' })}`]
-        : faltam === 0 ? h('strong', { text: 'É hoje! Boa prova, Diver! 🏁' }) : 'A prova já passou. Que tal montar o próximo plano?'),
+        : faltam === 0 ? h('strong', {}, 'É hoje! Boa prova, Diver! ', icone('i-bandeira')) : 'A prova já passou. Que tal montar o próximo plano?'),
       h('div', { class: 'cr-progresso' },
         h('div', { class: 'barra-progresso', role: 'progressbar', 'aria-valuemin': '0', 'aria-valuemax': String(total), 'aria-valuenow': String(feitos), 'aria-label': 'Blocos feitos' },
           h('div', { class: 'barra-progresso__preenchimento', style: `width: ${total ? Math.round((feitos / total) * 100) : 0}%` })),
@@ -612,7 +612,7 @@ const Cronograma = (() => {
             b.feito ? null : h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => Organizar.focarBloco({ id: b.id, titulo, minutos: Math.min(50, b.dur) }) }, icone('i-ampulheta'), 'Modo Foco'),
             curso ? h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => abrirCurso(b, curso) }, icone('i-livro'), b.tipo === 'revisao' ? 'Revisar no curso' : b.tipo === 'simulado' ? 'Simulado no curso' : 'Estudar no curso') : null));
       }))
-        : h('p', { class: 'texto-suave', text: faltam <= 0 ? 'Sem blocos hoje.' : minutosDoDia(p, dia) ? 'Nada marcado para hoje. Que tal adiantar uma revisão?' : 'Hoje é dia de descanso. O cérebro também guarda o que aprendeu enquanto você descansa. 🌊' }),
+        : h('p', { class: 'texto-suave', text: faltam <= 0 ? 'Sem blocos hoje.' : minutosDoDia(p, dia) ? 'Nada marcado para hoje. Que tal adiantar uma revisão?' : 'Hoje é dia de descanso. O cérebro também guarda o que aprendeu enquanto você descansa.' }),
       doDia.some((b) => !b.feito) ? h('p', { class: 'cr-foco-dica' }, icone('i-ampulheta'), h('span', { text: 'Use o Modo Foco: ele abre no tempo do bloco e marca como feito quando o tempo acaba.' })) : null);
 
     const vista = h('section', { class: 'cartao cr-plano', 'aria-labelledby': 'cr-plano-titulo' });

@@ -1168,7 +1168,7 @@
 
       function desenharBotaoSom() {
         botaoSom.setAttribute('aria-pressed', String(som.ligado));
-        botaoSom.replaceChildren(h('span', { 'aria-hidden': 'true', text: som.ligado ? '🔊' : '🔇' }), h('span', { class: 'visualmente-oculto', text: som.ligado ? 'Desligar o som' : 'Ligar o som' }));
+        botaoSom.replaceChildren(UI.icone(som.ligado ? 'i-som' : 'i-mudo'), h('span', { class: 'visualmente-oculto', text: som.ligado ? 'Desligar o som' : 'Ligar o som' }));
       }
       function alternarSom() {
         som.ligado = !som.ligado;

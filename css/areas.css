@@ -33,16 +33,8 @@
 .texto-sucesso .icone,
 .texto-erro .icone { margin-right: 6px; }
 
-.campo {
-  min-height: 44px;
-  padding: 10px 12px;
-  border-radius: var(--raio-pequeno);
-  border: 1px solid var(--borda);
-  background: var(--superficie-2);
-  color: var(--texto);
-  width: 100%;
-}
-.campo::placeholder { color: var(--texto-suave); opacity: 0.85; }
+.campo { width: 100%; } /* aparência em css/estilo.css, "Campos" */
+.campo::placeholder { color: var(--texto-3); opacity: 1; }
 .campo--area {
   min-height: 120px;
   resize: vertical;
@@ -54,16 +46,20 @@ input[type="time"].campo {
 }
 .rotulo-campo {
   display: block;
-  margin-bottom: 4px;
-  font-size: var(--t-xs);
-  font-weight: 700;
-  color: var(--texto-suave);
+  margin-bottom: 6px;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--texto-1);
 }
+/* Campo obrigatório: marcado no texto do rótulo, não só por cor */
+.rotulo-campo__obrigatorio { margin-left: 4px; font-weight: 500; color: var(--texto-2); }
 
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  min-height: 24px;
+  line-height: var(--lh-apertada);
   padding: 3px 10px;
   border-radius: var(--raio-pilula);
   font-size: var(--t-xs);
@@ -113,12 +109,13 @@ input[type="time"].campo {
 }
 .segmentado button:disabled { opacity: 0.5; cursor: not-allowed; }
 
+/* Ação destrutiva discreta (sem fundo cheio): contorno coral */
 .botao--erro {
-  background: rgba(251, 113, 133, 0.14);
-  border-color: var(--coral);
-  color: var(--coral);
+  background: color-mix(in srgb, var(--erro) 12%, transparent);
+  border-color: var(--erro);
+  color: var(--erro);
 }
-.botao--erro:hover { background: rgba(251, 113, 133, 0.24); }
+.botao--erro:hover { background: color-mix(in srgb, var(--erro) 22%, transparent); }
 .botao kbd {
   font: inherit;
   font-size: var(--t-xs);
@@ -131,6 +128,7 @@ input[type="time"].campo {
   width: 36px;
   height: 36px;
 }
+@media (pointer: coarse) { .botao-icone--mini { width: 44px; height: 44px; } }
 .botao-icone--mini .icone { width: 16px; height: 16px; }
 .botao-icone:disabled { opacity: 0.35; cursor: not-allowed; }
 label.botao:focus-within {
@@ -384,7 +382,7 @@ details[open] > summary::after { content: "−"; }
 }
 .jogo-card__rodape .botao { margin-left: auto; }
 .jogo-card__hist { font-size: var(--t-xs); font-weight: 700; color: var(--amarelo); }
-.jogo-card__opcao select { min-height: 40px; padding: 6px 10px; font-size: var(--t-sm); }
+.jogo-card__opcao select { min-height: 40px; padding: 6px 36px 6px 12px; background-position: right 10px center; font-size: var(--t-sm); }
 
 /* ---------- Formulários em linha ---------- */
 .form-linha {
@@ -1304,7 +1302,7 @@ body.qd-travado { overflow: hidden; }
 }
 .pdf__info { flex: 1; min-width: 0; display: grid; gap: 4px; font-size: var(--t-sm); }
 .pdf__nome { font-size: var(--t-md); overflow-wrap: anywhere; }
-.pdf__trilha select { min-height: 36px; padding: 4px 8px; font-size: var(--t-xs); max-width: 100%; }
+.pdf__trilha select { min-height: 36px; padding: 4px 32px 4px 10px; background-position: right 8px center; background-size: 16px 16px; font-size: var(--t-xs); max-width: 100%; }
 .pdf__acoes { display: flex; gap: 6px; align-items: center; }
 .leitor {
   margin-bottom: 16px;
@@ -1997,3 +1995,8 @@ body.qd-travado { overflow: hidden; }
 .dg-rev__explica { margin: 0; color: var(--texto-suave); }
 
 /* Matrícula curso a curso dentro da sala (Tecnologia, 2026-10-13) */
+
+/* Marcas de certo e errado na revisão da avaliação (ícones do sprite) */
+.dg-rev__marca .icone { width: 16px; height: 16px; }
+.cr-passos__num .icone { width: 14px; height: 14px; }
+.cr-dia__vazio .icone, .cr-topo__faltam .icone { width: 16px; height: 16px; vertical-align: -0.2em; margin-right: 4px; }

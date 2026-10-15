@@ -103,6 +103,10 @@ const CasoResolvido = (() => {
 
   // Cores dos desenhos vêm dos tokens do css/tokens.css (UI.cor); o JSON do caso pode trazer as suas em hex
   const P = { primaria: UI.cor('primaria'), clara: UI.cor('primaria-clara'), pressionada: UI.cor('primaria-pressionada'), destaque: UI.cor('destaque'), erro: UI.cor('erro'), texto: UI.cor('texto-1'), suave: UI.cor('texto-2'), sup1: UI.cor('superficie-1'), sup2: UI.cor('superficie-2'), supT: UI.cor('superficie-turquesa'), perola: UI.cor('perola'), fundo: UI.cor('fundo-0'), claro: UI.cor('claro'), marinho: UI.cor('fundo-1'), lilas: UI.cor('lilas'), erroPalida: UI.cor('erro-palida'), pele: UI.cor('pele-padrao'), cabelo: UI.cor('cabelo-padrao'), sardas: UI.cor('sardas'), amareloSombra: UI.cor('amarelo-sombra') };
+  /** De 0 a 3 estrelas (ícones do sprite), com o número para o leitor de tela. */
+  const estrelas = (n) => UI.h('span', { class: 'estrelas', role: 'img', 'aria-label': `${n} de 3 estrelas` },
+    [0, 1, 2].map((i) => UI.icone(i < n ? 'i-estrela' : 'i-estrela-vazia', i < n ? 'estrelas__cheia' : 'estrelas__vazia')));
+
   /** A Sombra: polvo sombrio, vilão do caso (SVG fixo deste arquivo). */
   const SOMBRA = `<svg viewBox="0 0 100 100" aria-hidden="true">
     <path d="M50 8 C25 8 17 29 19 49 C20 59 23 65 27 69 Q21 81 12 85 Q25 89 34 76 Q36 86 31 95 Q42 91 44 78 Q47 90 50 97 Q53 90 56 78 Q58 91 69 95 Q64 86 66 76 Q75 89 88 85 Q79 81 73 69 C77 65 80 59 81 49 C83 29 75 8 50 8 Z"
@@ -1442,7 +1446,7 @@ Jogos.registrar({
         const pontos = acertos * 50 + (acertos === 3 ? 100 : 0);
         c.acusacao = { escolha: { ...escolha }, acertos, pontos, quando: Date.now() };
         est.historico.push({ n: c.n, acertos, pontos: pontosDoCaso(c), quem: c.solucao.quem, quando: Date.now() });
-        registrar('i-estrela', `Acusação do caso nº ${c.n}: ${acertos} de 3 (${'★'.repeat(acertos) || 'nenhuma estrela'}).`, pontos);
+        registrar('i-estrela', `Acusação do caso nº ${c.n}: ${acertos} de 3 (${acertos ? UI.plural(acertos, 'estrela', 'estrelas') : 'nenhuma estrela'}).`, pontos);
         revelar();
       }
 
@@ -1452,7 +1456,7 @@ Jogos.registrar({
         { alvo: '#op-acusar', desenho: 'estrela', titulo: 'Uma acusação por caso', texto: 'Cada item certo vale uma estrela. As três certas fecham o caso com tudo.' },
       ]);
       mostrar(h('section', { class: 'op-missao-tela' },
-        cabecalho('Mural do caso', `Caso nº ${c.n}`, h('span', { class: `op-tentativa ${feita ? '' : 'op-tentativa--aberta'}`, text: feita ? `acusação feita · ${'★'.repeat(feita.acertos)}${'☆'.repeat(3 - feita.acertos)}` : '1 acusação · aberta' }), comoBotao),
+        cabecalho('Mural do caso', `Caso nº ${c.n}`, (feita ? h('span', { class: 'op-tentativa' }, 'acusação feita · ', estrelas(feita.acertos)) : h('span', { class: 'op-tentativa op-tentativa--aberta', text: '1 acusação · aberta' })), comoBotao),
         comoJogar(['Leia as pérolas e **risque** com o X quem foi inocentado.', 'Escolha **quem**, **com o quê** e **como**.',
           'Acuse uma vez: **50** por item certo e **+100** pelas três certas.']),
         feita ? h('p', { class: 'op-caixa op-nota' }, h('strong', { text: 'Caso encerrado. ' }), comoFoi(c)) : null,
@@ -1485,7 +1489,7 @@ Jogos.registrar({
       });
       const resultado = Jogos.resultado({
         jogoId: 'caso', trilha: ctx.trilha, detalhes, inicio: a.quando - 1000, concluido: true,
-        bonus: { xp: Math.round(a.pontos / 4), perolas: a.acertos * 3, motivo: `Acusação · ${'★'.repeat(a.acertos)}` },
+        bonus: { xp: Math.round(a.pontos / 4), perolas: a.acertos * 3, motivo: `Acusação · ${UI.plural(a.acertos, 'estrela', 'estrelas')}` },
         pontuacao: a.pontos,
         titulo: pega ? 'Caso resolvido!' : 'Caso encerrado',
         subtitulo: pega ? `${caso.titulo}: a Sombra foi pega.` : `Você acertou ${a.acertos} de 3. A Sombra era ${quem.nome}.`,
@@ -1496,7 +1500,7 @@ Jogos.registrar({
       carregarRanking();
       mostrar(h('section', { class: 'op-missao-tela' },
         cabecalho(pega ? 'Mandou bem, Diver! A Sombra foi pega.' : 'A Sombra quase escapou', `Caso nº ${c.n}`,
-          h('span', { class: 'op-titulo__pts', text: `${'★'.repeat(a.acertos)}${'☆'.repeat(3 - a.acertos)} · +${a.pontos} pts` })),
+          h('span', { class: 'op-titulo__pts' }, estrelas(a.acertos), ` · +${a.pontos} pts`)),
         h('article', { class: `op-revelado ${pega ? 'op-revelado--pega' : ''}` },
           ret,
           h('div', {},
