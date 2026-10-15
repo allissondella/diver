@@ -65,6 +65,19 @@ const Tutorial = (() => {
       { alvo: '#sala-conteudo', desenho: 'livro', titulo: 'Escolha o curso', texto: 'Comece pelo recomendado ou vá direto na matéria que quiser. Um toque abre o mapa do curso.' },
       { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Para trocar de sala, use a barra lateral. O botão Voltar do curso traz você de volta para esta sala.' },
     ],
+    // Sala Ensino Médio (2026-10-14): roteiro próprio, no lugar do "sala" (js/caminho.js)
+    'sala-ensino-medio': [
+      { alvo: '.sala-hero', desenho: 'diver', titulo: 'Sempre dá tempo', texto: 'Esta sala é para quem quer voltar a estudar: aulas curtas, de uns 15 minutos, do básico ao Ensino Médio. Sem pressa e sem prova marcada.' },
+      { alvo: '#meu-caminho', desenho: 'mapa', titulo: 'Meu caminho', texto: 'Os seus próximos passos, um módulo de cada vez. Um toque no cartão abre a próxima aula.' },
+      { alvo: '#btn-mapa-partida', desenho: 'alvo', titulo: 'Por onde começar?', texto: 'O Mapa de partida é um teste leve, por blocos, que mostra se vale começar do básico, revisar ou se você já manda bem. Sem nota de prova.' },
+      { alvo: '#btn-escolher-materias', desenho: 'livro', titulo: 'Ou escolha as matérias', texto: 'Prefere ir direto? Escolha a matéria. Os módulos que ficaram "Para depois" abrem com o botão "Liberar quando quiser": nada fica trancado.' },
+      { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Para trocar de sala, use a barra lateral. O botão Voltar do curso traz você de volta para esta sala.' },
+    ],
+    'mapa-partida': [
+      { desenho: 'alvo', titulo: 'Mapa de partida', texto: 'Um bloco por área. Faça um por dia, se quiser: as respostas ficam salvas.' },
+      { desenho: 'livro', titulo: '"Ainda não sei" vale', texto: 'Não sabe? Marque "Ainda não sei". É uma resposta honesta e ajuda o Mapa a acertar o seu caminho. Chutar atrapalha.' },
+      { desenho: 'mapa', titulo: 'Um mapa, não uma nota', texto: 'No fim, cada matéria mostra uma frase: vale começar por aqui, vale uma revisão ou você já manda bem. Os módulos se arrumam sozinhos.' },
+    ],
     mergulho: [
       { alvo: '#mapa-fases', desenho: 'mapa', titulo: 'Mapa do mergulho', texto: 'Cada fase é uma profundidade. Uma rodada tem 10 questões, com a explicação logo depois de cada resposta.' },
       { alvo: '#mapa-fases .fase__estudo', desenho: 'livro', titulo: 'Antes de mergulhar: leitura obrigatória', texto: 'O artigo da fase, com mapa mental e os pontos-chave. O Mergulho só libera depois que você abrir este botão uma vez. Enquanto isso, a fase mostra "Ler primeiro".' },
@@ -169,7 +182,8 @@ const Tutorial = (() => {
     setTimeout(() => {
       const tela = document.querySelector('.tela:not([hidden])');
       if (atual || !tela || document.body.classList.contains('modo-foco') || jaViu(secao)) return;
-      if ((location.hash.replace('#', '').replace(/^sala-.+/, 'sala') || 'inicio') !== secao) return; // a pessoa já saiu da página (#sala-<id> é a página "sala")
+      const pagina = location.hash.replace('#', '') || 'inicio';
+      if (pagina !== secao && pagina.replace(/^sala-.+/, 'sala') !== secao) return; // a pessoa já saiu da página (#sala-<id> é a página "sala", ou a sala-<id> com roteiro próprio)
       iniciar(secao);
     }, UI.movimentoReduzido ? 150 : 900);
   }

@@ -357,5 +357,6 @@ const Diagnostica = (() => {
     relogio = null;
   }
 
-  return { render, abrir, notas, situacao };
+  // avaliar e nota: a mesma conta vale para o Mapa de partida da sala Ensino Médio (js/mapa-partida.js)
+  return { render, abrir, notas, situacao, avaliar, nota, NIVEIS };
 })();

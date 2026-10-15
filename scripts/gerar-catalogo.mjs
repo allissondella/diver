@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 export const PASTA = 'data/trilhas';
-const CAMPOS_FASE = ['id', 'nome', 'modulo', 'descricao', 'profundidade', 'novaEm', 'habilidades', 'minutos'];
+const CAMPOS_FASE = ['id', 'nome', 'modulo', 'moduloId', 'descricao', 'profundidade', 'novaEm', 'habilidades', 'minutos'];
 const BLOCOS = ['variantes', 'pares', 'verdadeiroFalso', 'adivinhas', 'sequencias', 'palavras', 'casos'];
 
 /** O cabeçalho de uma trilha (o que o app precisa antes de abrir o curso). */
@@ -24,7 +24,7 @@ export function metaDe(t, arquivo) {
   const porFase = {};
   (t.questoes || []).forEach((q) => { porFase[q.fase] = (porFase[q.fase] || 0) + 1; });
   const meta = { arquivo, id: t.id, nome: t.nome, descricao: t.descricao };
-  ['categoria', 'fasesLivres', 'prova', 'rotuloAula'].forEach((k) => { if (t[k] !== undefined) meta[k] = t[k]; });
+  ['categoria', 'fasesLivres', 'prova', 'rotuloAula', 'metaPadrao'].forEach((k) => { if (t[k] !== undefined) meta[k] = t[k]; });
   meta.fases = (t.fases || []).map((f) => {
     const m = {};
     CAMPOS_FASE.forEach((k) => { if (f[k] !== undefined) m[k] = f[k]; });

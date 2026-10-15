@@ -1,0 +1,268 @@
+{
+ "id": "mapa-partida-ensino-medio",
+ "nome": "Mapa de partida",
+ "versao": 1,
+ "descricao": "Teste leve por blocos da sala Ensino Médio (\"Sempre dá tempo\"): mostra, matéria por matéria, se vale começar do básico, fazer uma revisão ou se a pessoa já manda bem. Cada questão aponta para um módulo (moduloId). Só aparecem as matérias com curso publicado.",
+ "blocos": [
+  {
+   "id": "linguagens",
+   "nome": "Linguagens",
+   "icone": "i-letras",
+   "minutosPorQuestao": 1.5
+  },
+  {
+   "id": "matematica",
+   "nome": "Matemática",
+   "icone": "i-grafico",
+   "minutosPorQuestao": 2
+  },
+  {
+   "id": "natureza",
+   "nome": "Ciências da Natureza",
+   "icone": "i-bolha",
+   "minutosPorQuestao": 1.5
+  },
+  {
+   "id": "humanas",
+   "nome": "Ciências Humanas",
+   "icone": "i-livro",
+   "minutosPorQuestao": 1.5
+  }
+ ],
+ "questoes": [
+  {
+   "id": "mp-por-01",
+   "tema": "Gêneros e finalidade",
+   "dificuldade": "facil",
+   "texto": "ATENÇÃO, MORADORES!\nNa segunda-feira (12), a água será interrompida das 8h às 14h para a limpeza da caixa-d'água. Armazenem água para esse período.\nA Administração",
+   "enunciado": "A principal finalidade desse texto é",
+   "alternativas": [
+    "informar uma interrupção no fornecimento de água e orientar os moradores a se prepararem.",
+    "convencer os moradores a votar na próxima assembleia do condomínio.",
+    "narrar um acontecimento que já terminou no prédio.",
+    "denunciar uma falha da administração na limpeza da caixa-d'água.",
+    "anunciar a venda de um serviço de limpeza para os moradores."
+   ],
+   "correta": 0,
+   "explicacao": "É um aviso: informa o que vai acontecer (corte de água, dia e horário) e orienta o leitor (armazenar água). Informar e orientar é a função típica do gênero. Dica de mergulhador: pergunte ao texto quem fala, para quem e para quê; o gênero responde junto.",
+   "comentarios": [
+    "",
+    "Não há votação nem assembleia no texto.",
+    "O fato ainda vai acontecer (\"a partir de segunda-feira\").",
+    "A administração é quem assina o aviso; não há denúncia.",
+    "Nada é vendido: a limpeza é do próprio condomínio."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-portugues",
+   "moduloId": "em-por-m1",
+   "copiaDe": "dg-lin-01"
+  },
+  {
+   "id": "mp-por-02",
+   "bloco": "linguagens",
+   "curso": "em-portugues",
+   "moduloId": "em-por-m1",
+   "tema": "Inferência",
+   "dificuldade": "facil",
+   "texto": "Ao sair de casa, Vera pegou o guarda-chuva, olhou para o céu escuro e decidiu levar também uma blusa.",
+   "enunciado": "O que se pode concluir com segurança a partir do texto?",
+   "alternativas": [
+    "Vera achou que podia chover e esfriar.",
+    "Vera estava atrasada para o trabalho.",
+    "Vera não gosta de dias de sol.",
+    "Vera vai viajar para outra cidade.",
+    "Vera perdeu o guarda-chuva no caminho."
+   ],
+   "correta": 0,
+   "explicacao": "O céu escuro, o guarda-chuva e a blusa são pistas de que ela esperava chuva e frio. É uma inferência apoiada no texto. Dica de mergulhador: conclua só o que as pistas sustentam juntas; o resto é suposição.",
+   "comentarios": [
+    "",
+    "O texto não fala de horário nem de pressa.",
+    "Nada indica o que ela sente pelo sol.",
+    "Não há nenhuma pista de viagem.",
+    "Ela pegou o guarda-chuva; não há perda no texto."
+   ]
+  },
+  {
+   "id": "mp-por-03",
+   "bloco": "linguagens",
+   "curso": "em-portugues",
+   "moduloId": "em-por-m2",
+   "tema": "Concordância",
+   "dificuldade": "medio",
+   "texto": "Recado na geladeira do escritório: \"Pessoal, ___ dois potes de comida sem nome. Quem for o dono, por favor, retire até sexta.\"",
+   "enunciado": "Qual forma completa o recado de acordo com a norma-padrão?",
+   "alternativas": [
+    "sobraram",
+    "sobrou",
+    "sobrava",
+    "sobra",
+    "sobre"
+   ],
+   "correta": 0,
+   "explicacao": "O sujeito é \"dois potes de comida\", no plural, mesmo vindo depois do verbo: o verbo vai para o plural, \"sobraram\". Dica de mergulhador: pergunte \"o que sobrou?\" — a resposta (dois potes) é o sujeito, e o verbo concorda com ele.",
+   "comentarios": [
+    "",
+    "No singular, o verbo não concorda com \"dois potes\".",
+    "Além do singular, muda o tempo e fica estranho no recado.",
+    "No singular e no presente, não combina com \"dois potes\".",
+    "\"Sobre\" é preposição ou outra forma do verbo, e não concorda aqui."
+   ]
+  },
+  {
+   "id": "mp-por-04",
+   "tema": "Linguagem que convence",
+   "dificuldade": "medio",
+   "texto": "Você merece acordar descansado. Troque seu colchão hoje e pague em 10 vezes sem juros.",
+   "enunciado": "Nesse anúncio, predomina a função da linguagem",
+   "alternativas": [
+    "referencial, porque descreve o colchão de forma neutra e objetiva.",
+    "emotiva, porque o anunciante expressa os próprios sentimentos.",
+    "metalinguística, porque explica o significado das palavras usadas.",
+    "fática, porque apenas testa se o canal de comunicação funciona.",
+    "conativa (apelativa), porque se dirige ao leitor para convencê-lo a comprar."
+   ],
+   "correta": 4,
+   "explicacao": "O texto fala com o leitor (\"você\") e usa verbos no imperativo (\"troque\", \"pague\") para levá-lo a agir: é a função conativa, a marca da publicidade. Dica de mergulhador: \"você\" + imperativo = alguém quer te convencer de alguma coisa.",
+   "comentarios": [
+    "Há apelo ao leitor, não uma descrição neutra.",
+    "O foco não é o sentimento de quem fala, e sim a ação de quem lê.",
+    "Nenhuma palavra é explicada no texto.",
+    "O texto não serve para testar o contato; ele quer vender.",
+    ""
+   ],
+   "bloco": "linguagens",
+   "curso": "em-portugues",
+   "moduloId": "em-por-m3",
+   "copiaDe": "dg-lin-02"
+  },
+  {
+   "id": "mp-mat-01",
+   "tema": "Porcentagem",
+   "dificuldade": "facil",
+   "enunciado": "Uma camiseta de R$ 80,00 está com 25% de desconto. O preço final é",
+   "alternativas": [
+    "R$ 55,00",
+    "R$ 60,00",
+    "R$ 65,00",
+    "R$ 70,00",
+    "R$ 75,00"
+   ],
+   "correta": 1,
+   "explicacao": "25% de 80 = 20; 80 − 20 = 60. Ou direto: pagar 75% = 0,75 × 80 = 60. Dica de mergulhador: desconto de x% = multiplicar por (1 − x/100).",
+   "comentarios": [
+    "Esse valor desconta R$ 25,00, confundindo 25% com 25 reais.",
+    "",
+    "Esse valor desconta só R$ 15,00.",
+    "Esse valor desconta só R$ 10,00.",
+    "Esse valor desconta só R$ 5,00."
+   ],
+   "bloco": "matematica",
+   "curso": "em-matematica",
+   "moduloId": "em-mat-m1",
+   "copiaDe": "dg-mat-01"
+  },
+  {
+   "id": "mp-mat-02",
+   "tema": "Razão e proporção",
+   "dificuldade": "facil",
+   "enunciado": "Uma receita usa 3 xícaras de farinha para fazer 12 biscoitos. Mantendo a proporção, para fazer 30 biscoitos são necessárias",
+   "alternativas": [
+    "6 xícaras",
+    "7 xícaras",
+    "7,5 xícaras",
+    "8 xícaras",
+    "10 xícaras"
+   ],
+   "correta": 2,
+   "explicacao": "3 xícaras para 12 biscoitos = 1 xícara para cada 4 biscoitos. 30 ÷ 4 = 7,5 xícaras. Dica de mergulhador: ache quanto vale \"1\" (aqui, 1 xícara = 4 biscoitos) e depois multiplique.",
+   "comentarios": [
+    "6 xícaras dariam só 24 biscoitos.",
+    "Arredondou para baixo; a conta exata é 7,5.",
+    "",
+    "8 xícaras dariam 32 biscoitos.",
+    "10 xícaras dariam 40 biscoitos."
+   ],
+   "bloco": "matematica",
+   "curso": "em-matematica",
+   "moduloId": "em-mat-m1",
+   "copiaDe": "dg-mat-02"
+  },
+  {
+   "id": "mp-mat-03",
+   "bloco": "matematica",
+   "curso": "em-matematica",
+   "moduloId": "em-mat-m2",
+   "tema": "Equações no dia a dia",
+   "dificuldade": "medio",
+   "enunciado": "Um plano de celular cobra R$ 30,00 por mês mais R$ 5,00 por pacote extra de internet. Num mês, a conta veio de R$ 55,00. Quantos pacotes extras foram usados?",
+   "alternativas": [
+    "5",
+    "11",
+    "6",
+    "25",
+    "17"
+   ],
+   "correta": 0,
+   "explicacao": "A conta é 30 + 5x = 55. Então 5x = 25 e x = 5 pacotes. Dica de mergulhador: tire primeiro o valor fixo e só depois divida pelo preço de cada pacote.",
+   "comentarios": [
+    "",
+    "Dividiu 55 por 5 sem tirar os R$ 30,00 fixos.",
+    "Tirou o fixo, mas dividiu 30 por 5.",
+    "Esse é o valor gasto com pacotes, e não a quantidade.",
+    "Somou 30 e 5 e dividiu errado."
+   ]
+  },
+  {
+   "id": "mp-mat-04",
+   "bloco": "matematica",
+   "curso": "em-matematica",
+   "moduloId": "em-mat-m3",
+   "tema": "Área",
+   "dificuldade": "medio",
+   "enunciado": "Um quarto retangular mede 4 m por 3 m. Quantos metros quadrados de piso são necessários para cobrir o chão, sem contar perdas?",
+   "alternativas": [
+    "12 m²",
+    "7 m²",
+    "14 m²",
+    "24 m²",
+    "16 m²"
+   ],
+   "correta": 0,
+   "explicacao": "Área do retângulo = comprimento × largura = 4 × 3 = 12 m². Dica de mergulhador: piso e pintura pedem área (multiplicar); rodapé e cerca pedem perímetro (somar os lados).",
+   "comentarios": [
+    "",
+    "Somou os dois lados: isso não é área.",
+    "Calculou o perímetro (4 + 3 + 4 + 3), que mede a volta do quarto.",
+    "Multiplicou por 2 a mais.",
+    "Usou 4 × 4, como se o quarto fosse quadrado."
+   ]
+  },
+  {
+   "id": "mp-mat-05",
+   "tema": "Média",
+   "dificuldade": "medio",
+   "enunciado": "Nos últimos cinco meses, a conta de água de uma casa foi de R$ 60, R$ 80, R$ 70, R$ 90 e R$ 50. Qual foi o valor médio da conta nesse período?",
+   "alternativas": [
+    "R$ 60",
+    "R$ 65",
+    "R$ 70",
+    "R$ 75",
+    "R$ 80"
+   ],
+   "correta": 2,
+   "explicacao": "Soma: 60 + 80 + 70 + 90 + 50 = 350. Média: 350 ÷ 5 = 70. Dica de mergulhador: média = soma de tudo ÷ quantidade de valores.",
+   "comentarios": [
+    "Fica abaixo da soma dividida por 5.",
+    "Fica abaixo da soma dividida por 5.",
+    "",
+    "Fica acima: a soma é 350, não 375.",
+    "R$ 80 é uma das contas, não a média."
+   ],
+   "bloco": "matematica",
+   "curso": "em-matematica",
+   "moduloId": "em-mat-m4",
+   "copiaDe": "dg-mat-03"
+  }
+ ]
+}
