@@ -449,8 +449,7 @@ const App = (() => {
     if (!trilha) return;
     estado.trilha = trilha;
     estado.prog = Progresso.carregar(id);
-    const mudou = Progresso.conhecerFasesNovas(estado.prog, trilha);
-    if (Caminho.ajustarProgresso(trilha, estado.prog) || mudou) Progresso.salvar(id, estado.prog); // metaPadrao (Retomada)
+    if (Progresso.conhecerFasesNovas(estado.prog, trilha)) Progresso.salvar(id, estado.prog);
     if (lembrar) Progresso.definirUltimaTrilha(id);
     atualizarLateral();
     // catálogo leve: o curso escolhido já começa a baixar (quando a pessoa entrar, provavelmente já chegou)
@@ -471,7 +470,7 @@ const App = (() => {
      ========================================================= */
   function renderizarInicio() {
     renderizarContinuar();
-    Caminho.cardInicio($('inicio-retomada')); // "Descubra por onde começar" (sala Ensino Médio)
+    Caminho.cardInicio($('inicio-retomada')); // "Avaliação de nivelamento" (sala Ensino Médio)
     renderizarSalas();
     renderizarHoje();
   }
@@ -691,14 +690,13 @@ const App = (() => {
         h('div', { class: 'sala-hero__textos' },
           h('span', { class: 'rotulo sala-porta__rotulo', text: `Sala · ${sala.rotulo}` }),
           h('h1', { class: 'sala-hero__nome', id: 'sala-titulo', tabindex: '-1', text: sala.nome }),
-          sala.subtexto ? h('p', { class: 'sala-hero__subtexto', text: sala.subtexto }) : null,
           h('p', { class: 'sala-hero__descricao', text: sala.descricao }),
           h('div', { class: 'sala-porta__numeros' }, Grupos.numeros(sala, r).map((n) => h('span', { text: n }))),
           h('div', { class: 'sala-hero__progresso' },
             h('span', { class: 'trilha__progresso sala-porta__barra', role: 'progressbar', 'aria-label': 'Progresso na sala', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(r.pct) }, h('span', { style: `width:${r.pct}%` })),
             h('span', { class: 'sala-porta__pct', text: `${r.feitas}/${r.total} · ${r.pct}% feito` })))),
       cronograma,
-      sala.caminho ? Caminho.secaoSala(sala) : continuar, // Ensino Médio: "Meu caminho" e as duas portas no lugar do "Continuar"
+      sala.caminho ? Caminho.secaoSala(sala) : continuar, // Ensino Médio: "Plano de estudos" e as duas portas no lugar do "Continuar"
       h('div', { class: 'sala-conteudo', id: 'sala-conteudo' },
         sala.destaque ? cartaoCurso(sala.destaque, { estilo: 'destaque', nome: Grupos.nomeCurto(sala, sala.destaque), selo: sala.destaqueSelo, rotuloAula: 'fases' }) : null,
         umaArea
@@ -1008,12 +1006,12 @@ const App = (() => {
     const cfg = configProva(trilha);
     const exigidas = Progresso.fasesExigidas(prog, trilha);
     const feitas = exigidas.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
-    const atalho = Caminho.provaPorAtalho(trilha, prog) && feitas < exigidas.length; // "Já domino" (Retomada)
+    const atalho = Caminho.provaPorAtalho(trilha, prog) && feitas < exigidas.length; // dispensa por nivelamento (Ensino Médio)
     const pronta = !cfg.exigeFases || feitas === exigidas.length || atalho;
     const aprovacao = (prog.provas || []).find((p) => p.aprovado);
     const rotulo = trilha.rotuloAula === 'Oficina' ? 'oficinas' : trilha.fases.some((f) => f.modulo) ? 'aulas' : 'fases';
     const estadoTxt = aprovacao ? `Aprovado · nota ${aprovacao.nota.toLocaleString('pt-BR')}`
-      : atalho ? 'Já domino: a prova está liberada' : pronta ? 'Pronta para você'
+      : atalho ? 'Liberada pelo nivelamento' : pronta ? 'Pronta para você'
         : `Libera quando você concluir as ${exigidas.length} ${rotulo} (${feitas} de ${exigidas.length})`;
     return h('li', { class: 'mapa__fim', 'data-prova': '' },
       h('button', {
@@ -1036,7 +1034,7 @@ const App = (() => {
   function renderizarMapaModulos(mapa) {
     const { trilha, prog } = estado;
     const feita = (f) => !!(prog.fases[f.id] && prog.fases[f.id].concluida);
-    // Retomada (sala Ensino Médio): cada módulo tem um estado (js/caminho.js) e a próxima aula segue "Meu caminho"
+    // Sala Ensino Médio: cada módulo tem um estado (js/caminho.js) e a próxima aula segue o plano de estudos
     const caminho = Caminho.ehRetomada(trilha) ? Caminho.estados(trilha, prog) : null;
     const proxima = (caminho && Caminho.proximaAula(trilha, prog)) || proximaAula();
     const modulos = [];
@@ -1340,7 +1338,7 @@ const App = (() => {
       minutos: c.minutos || Math.ceil(quantidade * 1.5),
       aprovacao: c.aprovacao || 70,
       exigeFases: c.exigeFases !== false,
-      reforco: !!c.reforco, // sorteio com reforço dos módulos mais errados (Retomada, js/caminho.js)
+      reforco: !!c.reforco, // sorteio com reforço dos módulos mais errados (Ensino Médio, js/caminho.js)
     };
   }
 
@@ -1351,7 +1349,7 @@ const App = (() => {
     const concluidas = exigidas.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
     const fasesOk = concluidas.length === exigidas.length;
     const retomada = Caminho.ehRetomada(trilha);
-    const atalho = !fasesOk && Caminho.provaPorAtalho(trilha, prog); // "Já domino: fazer a prova agora" (Retomada)
+    const atalho = !fasesOk && Caminho.provaPorAtalho(trilha, prog); // dispensa por nivelamento (Ensino Médio)
     const liberada = !cfg.exigeFases || fasesOk || atalho || Nuvem.ehAdmin() || Nuvem.ehProfessor();
     const provas = prog.provas || [];
     const aprovacao = provas.find((p) => p.aprovado);
@@ -1360,7 +1358,7 @@ const App = (() => {
 
     area.append(...[
       UI.cabecalho(trilha.nome, 'Prova final', 'O último mergulho da trilha: sem dicas no meio do caminho, com cronômetro e nota mínima para aprovação.'),
-      aprovacao ? retorno : null, // "Meu retorno" (Retomada): com a prova aprovada, vem primeiro
+      aprovacao ? retorno : null, // "Boletim da disciplina" (Ensino Médio): com a prova aprovada, vem primeiro
       aprovacao ? h('div', { class: 'selo selo--grande' }, icone('i-trofeu'), h('span', {}, h('strong', { text: 'Aprovado! ' }), `Nota ${aprovacao.nota.toLocaleString('pt-BR')} em ${new Date(aprovacao.data).toLocaleDateString('pt-BR')}.`)) : null,
       h('div', { class: 'cartao prova' },
         h('h2', { class: 'cartao__titulo', text: 'Como funciona' }),
@@ -1375,11 +1373,11 @@ const App = (() => {
             : `Pré-requisito: completar as ${exigidas.length} ${retomada ? 'aulas' : 'fases do Mergulho'} (${concluidas.length}/${exigidas.length})` }),
           h('ul', { class: 'prova__lista-fases' }, trilha.fases.map((f) => {
             const ok = prog.fases[f.id] && prog.fases[f.id].concluida;
-            const dominada = !ok && retomada && !exigidas.includes(f); // Retomada: aula de módulo dominado (js/caminho.js)
+            const dominada = !ok && retomada && !exigidas.includes(f); // Ensino Médio: aula de módulo dominado (js/caminho.js)
             const recomendada = !ok && !dominada && !exigidas.includes(f);
             return h('li', { class: ok ? 'texto-sucesso' : 'texto-suave' }, icone(ok ? 'i-check' : dominada ? 'i-trofeu' : recomendada ? 'i-estrela' : 'i-cadeado'), f.nome, dominada ? ' (módulo dominado)' : recomendada ? ' (nova, recomendada)' : '');
           }))) : null,
-        atalho ? h('p', { class: 'prova__atalho' }, icone('i-trofeu'), h('span', {}, h('strong', { text: 'Já domino: ' }), 'o Mapa de partida mostrou que você manda bem nesta matéria, então a prova já está liberada. Se preferir, estude as aulas antes.')) : null,
+        atalho ? h('p', { class: 'prova__atalho' }, icone('i-trofeu'), h('span', {}, h('strong', { text: 'Dispensa por nivelamento: ' }), 'a avaliação de nivelamento indicou nível avançado nesta disciplina, e a prova final já está liberada. As aulas continuam disponíveis para revisão.')) : null,
         !fasesOk && !atalho && cfg.exigeFases && (Nuvem.ehAdmin() || Nuvem.ehProfessor()) ? h('p', { class: 'jogo-card__dica', text: `Como ${Nuvem.ehAdmin() ? 'admin' : 'professor'}, você pode fazer a prova sem completar as fases (para conferir).` }) : null,
         liberada
           ? h('button', { type: 'button', class: 'botao botao--primario botao--grande', onclick: iniciarProva }, icone('i-trofeu'), provas.length ? 'Fazer a prova de novo' : 'Começar a prova')
@@ -1620,7 +1618,7 @@ const App = (() => {
       if (precisaLer(fase)) { avisarLeitura(fase); return; }
     }
     const s = Quiz.criar(modo, estado.trilha, estado.prog, opcoes);
-    Caminho.antesDaSessao(s); // Retomada: há quantos dias não estudava (bônus "De volta à água")
+    Caminho.antesDaSessao(s); // Ensino Médio: há quantos dias não estudava (bônus "Retorno aos estudos")
     if (modo === 'enviada') s.provaRef = estado.ultimaProvaEnviada = opcoes.ref;
     if (!s.fila.length) {
       toast('Ops', modo === 'revisao' ? 'Não há questões para revisar.' : 'Essa fase ainda não tem questões.', 'i-bolha');
@@ -1881,7 +1879,7 @@ const App = (() => {
     const resumo = Quiz.finalizar(s, estado.prog, motivo);
     registrarSessao(s, resumo, motivo);
     if (s.modo === 'enviada' && motivo !== 'saiu') ProvasEnviadas.registrarTentativa(s.provaRef, resumo);
-    Caminho.depoisDaSessao(s, resumo, estado.prog); // Retomada: "Voltei a estudar" e "De volta à água"
+    Caminho.depoisDaSessao(s, resumo, estado.prog); // Ensino Médio: bônus "Primeira aula concluída" e "Retorno aos estudos"
     estado.respostasProva = s.modo === 'prova' ? s.respostas : null;
     checarNivel();
     const novas = Conquistas.verificar(estado.prog, estado.trilha);
@@ -2033,7 +2031,7 @@ const App = (() => {
     if (r.maiorCombo >= 3) selo('i-raio', `Maior sequência: ${r.maiorCombo} acertos seguidos`);
     if (r.emBranco) selo('i-relogio', `${plural(r.emBranco, 'questão ficou', 'questões ficaram')} em branco`);
     const blocoProva = r.modo === 'prova' && estado.respostasProva ? Caminho.blocoResumoProva(trilha, r, estado.respostasProva) : null;
-    if (blocoProva) extras.append(blocoProva); // Retomada: "Quase! Vale rever estes módulos" ou "Matéria retomada!"
+    if (blocoProva) extras.append(blocoProva); // Ensino Médio: "Módulos para revisar" ou "Disciplina concluída"
 
     // Desempenho por tema
     const temas = limpar($('resumo-temas'));

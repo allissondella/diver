@@ -1,6 +1,6 @@
 # Diver — Recapitulação do Ensino Médio
 
-> **2026-10-14:** este plano virou a **sala Ensino Médio ("Sempre dá tempo")**: `docs/cadernos/ensino-medio-mapa-curricular.md` e `docs/cadernos/ensino-medio-retomada.md`. O diagnóstico de 2 perguntas por tema deu lugar ao **Mapa de partida** e ao **Teste rápido do módulo** (aprovado pelo usuário).
+> **2026-10-14:** este plano virou a **sala Ensino Médio** (em 2026-10-15 o tom foi revisto: disciplinas como no colégio, ligadas ao Enem; sem "Sempre dá tempo"): `docs/cadernos/ensino-medio-mapa-curricular.md` e `docs/cadernos/ensino-medio-retomada.md`. O diagnóstico de 2 perguntas por tema deu lugar à **Avaliação de nivelamento** (antes "Mapa de partida") e à **Prova de suficiência do módulo** (antes "Teste rápido") (aprovado pelo usuário).
 
 > Público: quem vai prestar vestibular/Enem mas terminou o ensino médio há algum tempo (o gatilho original: **2 anos ou mais**). Diferente do restante do cursinho, aqui o objetivo não é treinar para a prova — é **relembrar a base** antes de avançar para o nível de vestibular. Este documento segue a mesma disciplina de fontes de `docs/CONTEUDO_CURSINHO.md`; leia aquele primeiro se ainda não leu.
 

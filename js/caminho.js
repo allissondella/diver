@@ -1,16 +1,19 @@
 /*
- * caminho.js — a sala Ensino Médio ("Sempre dá tempo"), cursos "<Matéria> · Retomada" (ids em-*).
+ * caminho.js — a sala Ensino Médio (base para o Enem e os vestibulares), cursos "Ensino Médio · <disciplina>" (ids em-*).
  * Plano: docs/cadernos/ensino-medio-mapa-curricular.md e docs/cadernos/ensino-medio-retomada.md (decisões c, d, e, g).
  *
  *  - Estados dos módulos, guardados no progresso do próprio curso (prog.modulos, sincroniza como o resto):
  *      { "<moduloId>": { estado: 'recomendado' | 'liberado' | 'depois' | 'dominado', por: 'mapa' | 'escolha' | 'teste', em } }
  *    Nada fica trancado (fasesLivres): o estado só organiza a vitrine. Sem nada escolhido, o primeiro módulo
- *    em aberto é o recomendado e os de depois ficam "Para depois", com o botão "Liberar quando quiser".
- *  - "Meu caminho" no topo da sala: os próximos 3 módulos e as duas portas (Mapa de partida e Escolher matérias).
- *  - Retorno sem culpa: depois de 7 dias sem estudar na sala, "Que bom te ver de volta!" (nunca fala de sequência perdida).
- *  - Bônus pequenos, uma vez só e pela Economia: "Voltei a estudar" e "De volta à água" (+20 XP e +2 pérolas).
- *  - Prova final da matéria: "Já domino" (prog.atalhoProva, com prova.atalhoDominio), reforço dos módulos mais
- *    errados no sorteio (prova.reforco), "Quase! Vale rever estes módulos" e o "Meu retorno".
+ *    em aberto é o recomendado e os seguintes ficam "Mais adiante", com o botão "Liberar módulo".
+ *    Na tela: Recomendado, Disponível, Mais adiante e Dominado (texto e ícone, nunca só cor).
+ *  - "Plano de estudos" no topo da sala: os próximos 3 módulos e as duas portas (Avaliação de nivelamento e Escolher disciplina).
+ *  - Volta depois de 7 dias sem estudar na sala: "Bem-vindo de volta", com a próxima aula do plano (nunca fala de sequência perdida).
+ *  - Bônus pequenos, uma vez só e pela Economia: "Primeira aula concluída" e "Retorno aos estudos" (+20 XP e +2 pérolas).
+ *  - Prova final da disciplina: dispensa por nivelamento (prog.atalhoProva, com prova.atalhoDominio), reforço dos módulos
+ *    mais errados no sorteio (prova.reforco), "Módulos para revisar" e o "Boletim da disciplina".
+ * Tom (pedido do usuário, 2026-10-15): sério, de colégio, sempre ligado ao Enem e aos vestibulares; nada infantil.
+ * Os nomes internos (ehRetomada, prog.retomada, diver:v1:retomada, diver:v1:mapa-partida) ficam: já há progresso gravado com eles.
  * Conteúdo de JSON entra sempre como texto (h(..., { text })), nunca como HTML.
  */
 const Caminho = (() => {
@@ -18,13 +21,13 @@ const Caminho = (() => {
   const CHAVE = 'diver:v1:retomada'; // { bonus: { voltei, volta }, avisos: { [salaId]: 'AAAA-MM-DD' } }
   const BONUS = { xp: 20, perolas: 2 };
   const DIAS_RETORNO = 7; // "Que bom te ver de volta!"
-  const DIAS_PAUSA = 14; // conquista "De volta à água"
-  const PRIMEIROS = ['em-portugues', 'em-matematica']; // sem nada escolhido, "Meu caminho" começa por eles (decisão de 2026-10-01)
+  const DIAS_PAUSA = 14; // conquista "Retorno aos estudos" (id de-volta-a-agua)
+  const PRIMEIROS = ['em-portugues', 'em-matematica']; // sem nada escolhido, o plano de estudos começa por eles (decisão de 2026-10-01)
 
   const ESTADOS = {
     recomendado: { texto: 'Recomendado', icone: 'i-alvo' },
-    liberado: { texto: 'Liberado', icone: 'i-bandeira' },
-    depois: { texto: 'Para depois', icone: 'i-relogio' },
+    liberado: { texto: 'Disponível', icone: 'i-bandeira' },
+    depois: { texto: 'Mais adiante', icone: 'i-relogio' },
     dominado: { texto: 'Dominado', icone: 'i-trofeu' },
     feito: { texto: 'Concluído', icone: 'i-check' },
   };
@@ -50,8 +53,8 @@ const Caminho = (() => {
 
   /**
    * O estado de cada módulo: Map(moduloId → { estado, por, feitas, total, completo }).
-   * Regras: o salvo vale; "Para depois" com aula feita vira "Liberado"; sem recomendado em aberto, o primeiro
-   * módulo em aberto ainda sem escolha (ou "Para depois") vira o recomendado; o resto sem escolha fica "Para depois".
+   * Regras: o salvo vale; "Mais adiante" (depois) com aula feita vira "Disponível" (liberado); sem recomendado em aberto, o primeiro
+   * módulo em aberto ainda sem escolha (ou "Mais adiante") vira o recomendado; o resto sem escolha fica "Mais adiante".
    */
   function estados(trilha, prog, mods = modulos(trilha)) {
     const out = new Map();
@@ -89,7 +92,7 @@ const Caminho = (() => {
     });
   }
 
-  /** Grava o resultado do Mapa de partida num curso (chamado por js/mapa-partida.js). */
+  /** Grava o resultado da avaliação de nivelamento num curso (chamado por js/mapa-partida.js). */
   function aplicarMapa(trilha, { faixa, certos = [], errados = [] }) {
     const mods = modulos(trilha);
     const ids = new Set(mods.map((m) => m.id));
@@ -129,7 +132,7 @@ const Caminho = (() => {
   }
 
   /* =========================================================
-     NO MAPA DO CURSO: selo do módulo e ações ("Liberar quando quiser", Teste rápido)
+     NO MAPA DO CURSO: selo do módulo e ações ("Liberar módulo", prova de suficiência)
      ========================================================= */
   /** O selo do módulo (texto + ícone, nunca só cor). */
   function selo(x) {
@@ -142,18 +145,18 @@ const Caminho = (() => {
   function acoesModulo(trilha, m, x, aoMudar) {
     const partes = [];
     if (x.estado === 'dominado') {
-      partes.push(h('p', { class: 'modulo__nota' }, h('strong', { text: 'Você já manda bem aqui. ' }),
-        x.por === 'teste' ? 'Passou no Teste rápido.' : 'O Mapa de partida mostrou.', ' Pode estudar as aulas mesmo assim, quando quiser.'));
+      partes.push(h('p', { class: 'modulo__nota' }, h('strong', { text: 'Módulo dominado. ' }),
+        x.por === 'teste' ? 'Aprovado na prova de suficiência.' : 'A avaliação de nivelamento indicou nível avançado.', ' As aulas continuam disponíveis para revisão.'));
     } else if (x.estado === 'depois' && !x.completo) {
-      partes.push(h('p', { class: 'modulo__nota', text: 'Este módulo ficou para depois. Nada está trancado: abra quando quiser.' }),
+      partes.push(h('p', { class: 'modulo__nota', text: 'Módulo previsto para mais adiante no seu plano de estudos. As aulas já estão disponíveis.' }),
         h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', 'data-liberar': m.id,
-          onclick: () => { definir(trilha.id, m.id, 'liberado'); UI.toast('Módulo liberado', `${m.nome} já está no seu caminho.`, 'i-bandeira'); aoMudar(m.id); } },
-        icone('i-bandeira'), 'Liberar quando quiser'));
+          onclick: () => { definir(trilha.id, m.id, 'liberado'); UI.toast('Módulo liberado', `${m.nome} entrou no seu plano de estudos.`, 'i-bandeira'); aoMudar(m.id); } },
+        icone('i-bandeira'), 'Liberar módulo'));
     }
     const forte = faixaDo(trilha.id) === 'manda-bem' || x.estado === 'liberado';
     if (x.estado !== 'dominado' && !x.completo && x.feitas === 0 && forte && mapa() && Trilhas.totalQuestoes(trilha)) {
       partes.push(h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', 'data-teste-rapido': m.id,
-        onclick: () => mapa().abrirTeste(trilha.id, m.id) }, icone('i-raio'), 'Já sei isso? Faça um teste rápido'));
+        onclick: () => mapa().abrirTeste(trilha.id, m.id) }, icone('i-raio'), 'Prova de suficiência do módulo'));
     }
     return partes.length ? h('div', { class: 'modulo__acoes' }, partes) : null;
   }
@@ -213,30 +216,30 @@ const Caminho = (() => {
       h('span', { class: 'continuar__play', 'aria-hidden': 'true' }, icone('i-seta-dir'))));
   }
 
-  /** A seção "Meu caminho" da sala (no lugar do "Continuar de onde parou"). */
+  /** A seção "Plano de estudos" da sala (no lugar do "Continuar de onde parou"). */
   function secaoSala(s) {
     const lista = proximos(s);
     const m = mapa();
     const sit = m ? m.situacao() : { feito: false, comecado: false };
-    const rotuloMapa = sit.feito ? 'Ver meu mapa' : sit.comecado ? 'Continuar o Mapa de partida' : 'Fazer o Mapa de partida';
+    const rotuloMapa = sit.feito ? 'Resultado do nivelamento' : sit.comecado ? 'Continuar o nivelamento' : 'Avaliação de nivelamento';
     return h('section', { class: 'caminho', id: 'meu-caminho', 'aria-labelledby': 'caminho-titulo' },
       h('div', { class: 'caminho__topo' },
-        h('h2', { class: 'caminho__titulo', id: 'caminho-titulo', text: 'Meu caminho' }),
+        h('h2', { class: 'caminho__titulo', id: 'caminho-titulo', text: 'Plano de estudos' }),
         h('p', { class: 'caminho__sub', text: lista.length
-          ? 'Os seus próximos passos, um módulo de cada vez. Aulas de 15 minutos: dá para encaixar em qualquer dia.'
-          : 'Escolha as matérias que quer retomar ou descubra por onde começar. Tudo está aberto: você decide o ritmo.' })),
+          ? 'Os próximos módulos de cada disciplina, na ordem do currículo do Ensino Médio.'
+          : 'Escolha uma disciplina ou faça a avaliação de nivelamento para montar o seu plano de estudos.' })),
       lista.length ? h('ol', { class: 'caminho__lista' }, lista.map((it) => cartaoProximo(s, it))) : null,
-      h('div', { class: 'caminho__portas', role: 'group', 'aria-label': 'Por onde começar' },
+      h('div', { class: 'caminho__portas', role: 'group', 'aria-label': 'Como começar' },
         h('button', { type: 'button', class: 'caminho-porta', id: 'btn-mapa-partida', onclick: () => m && m.abrir() },
           h('span', { class: 'caminho-porta__icone', 'aria-hidden': 'true' }, icone('i-alvo')),
           h('span', { class: 'caminho-porta__textos' },
             h('span', { class: 'caminho-porta__nome', text: rotuloMapa }),
-            h('span', { class: 'caminho-porta__texto', text: sit.feito ? 'O que você já sabe e por onde seguir, matéria por matéria.' : 'Um teste leve, por blocos, para descobrir por onde começar. Sem nota de prova.' }))),
+            h('span', { class: 'caminho-porta__texto', text: sit.feito ? 'O seu nível em cada disciplina e os módulos indicados.' : 'Questões por área do conhecimento para identificar o seu nível em cada disciplina e indicar por onde começar.' }))),
         h('button', { type: 'button', class: 'caminho-porta', id: 'btn-escolher-materias', onclick: escolherMaterias },
           h('span', { class: 'caminho-porta__icone', 'aria-hidden': 'true' }, icone('i-livro')),
           h('span', { class: 'caminho-porta__textos' },
-            h('span', { class: 'caminho-porta__nome', text: 'Escolher matérias' }),
-            h('span', { class: 'caminho-porta__texto', text: 'Vá direto à matéria que quer retomar. Todas as aulas estão abertas.' })))));
+            h('span', { class: 'caminho-porta__nome', text: 'Escolher disciplina' }),
+            h('span', { class: 'caminho-porta__texto', text: 'Acesse diretamente qualquer disciplina. Todas as aulas estão disponíveis.' })))));
   }
 
   function escolherMaterias() {
@@ -284,10 +287,10 @@ const Caminho = (() => {
       gravar({ ...ler(), avisos: { ...ler().avisos, [s.id]: hoje() } });
       const prox = proximos(s, 1)[0];
       const ok = await UI.confirmar({
-        titulo: 'Que bom te ver de volta!',
-        texto: `${prox ? `Que tal uma aula de 15 minutos para retomar? A próxima do seu caminho é "${prox.fase.nome}", em ${Grupos.nomeCurto(s, prox.t)}.` : 'Escolha uma matéria e retome no seu ritmo.'}`
+        titulo: 'Bem-vindo de volta',
+        texto: `${prox ? `A próxima aula do seu plano de estudos é "${prox.fase.nome}", em ${Grupos.nomeCurto(s, prox.t)}.` : 'Escolha uma disciplina para continuar os estudos.'}`
           + (recorde > 1 ? `\n\nSeu recorde de ${recorde} dias seguidos continua guardado.` : ''),
-        sim: prox ? 'Uma aula de 15 minutos' : 'Escolher matérias', nao: 'Agora não', humor: 'feliz', foco: 'sim',
+        sim: prox ? 'Abrir a aula' : 'Escolher disciplina', nao: 'Agora não', humor: 'feliz', foco: 'sim',
       });
       if (!ok) return;
       if (prox) App.abrirTrilha(prox.t.id, { fase: prox.fase.id }); else escolherMaterias();
@@ -311,8 +314,8 @@ const Caminho = (() => {
     if (s.diasParado !== null && s.diasParado !== undefined && s.diasParado >= DIAS_PAUSA) prog.retomada.voltouDaPausa = new Date().toISOString();
     const d = ler();
     const dar = [];
-    if (!d.bonus.voltei) { d.bonus.voltei = new Date().toISOString(); dar.push('Voltei a estudar'); }
-    if (prog.retomada.voltouDaPausa && !d.bonus.volta && s.diasParado >= DIAS_PAUSA) { d.bonus.volta = new Date().toISOString(); dar.push('De volta à água'); }
+    if (!d.bonus.voltei) { d.bonus.voltei = new Date().toISOString(); dar.push('Primeira aula concluída'); }
+    if (prog.retomada.voltouDaPausa && !d.bonus.volta && s.diasParado >= DIAS_PAUSA) { d.bonus.volta = new Date().toISOString(); dar.push('Retorno aos estudos'); }
     if (!dar.length) return;
     gravar(d);
     // depois do resumo aparecer: o bônus vem pela Economia, com o aviso dele
@@ -388,25 +391,25 @@ const Caminho = (() => {
     return [...conta.values()].filter((c) => c.erros).sort((a, b) => b.erros / b.total - a.erros / a.total || b.erros - a.erros);
   }
 
-  /** Bloco do resumo da prova: reprovou → "Quase! Vale rever estes módulos"; aprovou → convite ao "Meu retorno". */
+  /** Bloco do resumo da prova: reprovou → "Módulos para revisar"; aprovou → convite ao "Boletim da disciplina". */
   function blocoResumoProva(trilha, r, respostas) {
     if (!ehRetomada(trilha) || r.modo !== 'prova' || r.motivo === 'saiu') return null;
     if (r.aprovado) {
       return h('div', { class: 'caminho-prova caminho-prova--ok' },
-        h('p', { class: 'caminho-prova__titulo' }, icone('i-trofeu'), h('strong', { text: 'Matéria retomada!' })),
-        h('p', { text: 'Veja tudo o que você recuperou nesta matéria e o próximo passo.' }),
-        h('button', { type: 'button', class: 'botao botao--secundario', id: 'btn-meu-retorno', onclick: () => App.irPara('prova') }, icone('i-grafico'), 'Ver meu retorno'));
+        h('p', { class: 'caminho-prova__titulo' }, icone('i-trofeu'), h('strong', { text: 'Disciplina concluída' })),
+        h('p', { text: 'Veja o boletim da disciplina, módulo por módulo, e os próximos passos.' }),
+        h('button', { type: 'button', class: 'botao botao--secundario', id: 'btn-meu-retorno', onclick: () => App.irPara('prova') }, icone('i-grafico'), 'Ver o boletim'));
     }
     const piores = errosPorModulo(trilha, respostas).slice(0, 3);
     return h('div', { class: 'caminho-prova' },
-      h('p', { class: 'caminho-prova__titulo' }, icone('i-revisao'), h('strong', { text: 'Quase! Vale rever estes módulos' })),
-      h('p', { text: 'Uma passada rápida por eles e a próxima tentativa fica mais leve. Pode tentar de novo quando quiser, sem espera.' }),
+      h('p', { class: 'caminho-prova__titulo' }, icone('i-revisao'), h('strong', { text: 'Módulos para revisar' })),
+      h('p', { text: 'Os módulos com mais erros nesta prova. Revise-os antes da próxima tentativa; a prova pode ser refeita quando você quiser.' }),
       piores.length ? h('ul', { class: 'caminho-prova__lista' }, piores.map(({ m, erros, total }) => h('li', {},
         h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', onclick: () => App.abrirTrilha(trilha.id, { fase: m.fases[0].id }) },
           icone('i-seta-dir'), `${m.nome} (${erros} de ${total} para rever)`)))) : null);
   }
 
-  /** "Meu retorno": o que a pessoa recuperou na matéria (prova aprovada ou todos os módulos feitos ou dominados). */
+  /** "Boletim da disciplina": o resultado da pessoa na disciplina (prova aprovada ou todos os módulos feitos ou dominados). */
   function cartaoRetorno(trilha, prog) {
     if (!ehRetomada(trilha)) return null;
     const mods = modulos(trilha);
@@ -415,7 +418,7 @@ const Caminho = (() => {
     const tudo = mods.every((m) => est.get(m.id).completo || est.get(m.id).estado === 'dominado');
     const aulas = trilha.fases.filter((f) => feita(prog, f)).length;
     const testes = mods.some((m) => est.get(m.id).por === 'teste');
-    // sem prova aprovada, só aparece depois de a pessoa ter feito alguma coisa (aula ou Teste rápido), não só pelo Mapa
+    // sem prova aprovada, só aparece depois de a pessoa ter feito alguma coisa (aula ou prova de suficiência), não só pelo nivelamento
     if (!aprovacao && !(tudo && (aulas || testes))) return null;
     const s = sala();
     const linhas = mods.map((m) => {
@@ -427,36 +430,28 @@ const Caminho = (() => {
       return h('li', { class: 'retorno__modulo' },
         h('span', { class: 'retorno__nome', text: m.nome }),
         selo(x),
-        h('span', { class: 'texto-suave', text: t ? `${Math.round((a / t) * 100)}% de acertos` : x.estado === 'dominado' ? 'pelo Mapa ou pelo teste' : 'sem respostas ainda' }));
+        h('span', { class: 'texto-suave', text: t ? `${Math.round((a / t) * 100)}% de acertos` : x.estado === 'dominado' ? 'dominado pelo nivelamento ou pela prova de suficiência' : 'sem respostas ainda' }));
     });
     const r = mapa() && mapa().resultado(trilha.id);
-    const antes = r ? { comecar: 'Vale começar por aqui', revisao: 'Vale uma revisão', 'manda-bem': 'Você já manda bem aqui' }[r.faixa] : null;
+    const antes = r ? { comecar: 'nível básico', revisao: 'nível intermediário', 'manda-bem': 'nível avançado' }[r.faixa] : null;
     const outras = s ? s.trilhas.filter((t) => t.id !== trilha.id && !(Progresso.carregar(t.id).provas || []).some((p) => p.aprovado)) : [];
     return h('section', { class: 'cartao retorno', id: 'meu-retorno', 'aria-labelledby': 'retorno-titulo' },
-      h('h2', { class: 'cartao__titulo', id: 'retorno-titulo', text: 'Meu retorno' }),
-      h('p', {}, h('strong', { text: aprovacao ? 'Matéria retomada. ' : 'Todos os módulos em dia. ' }),
-        aulas ? `${plural(aulas, 'aula concluída', 'aulas concluídas')} de ${trilha.fases.length}` : 'Os módulos ficaram em dia pelo Mapa de partida e pelo Teste rápido',
-        aprovacao ? `, prova aprovada com ${aprovacao.pct}%` : '', '. Sempre dá tempo, e você provou isso.'),
-      antes ? h('p', { class: 'texto-suave', text: `No Mapa de partida: "${antes}". Agora: ${aprovacao ? 'aprovado na Prova final' : 'módulos em dia'}.` }) : null,
+      h('h2', { class: 'cartao__titulo', id: 'retorno-titulo', text: 'Boletim da disciplina' }),
+      h('p', {}, h('strong', { text: aprovacao ? 'Disciplina concluída. ' : 'Todos os módulos em dia. ' }),
+        aulas ? `${plural(aulas, 'aula concluída', 'aulas concluídas')} de ${trilha.fases.length}` : 'Módulos dominados pela avaliação de nivelamento e pela prova de suficiência',
+        aprovacao ? `, prova final aprovada com ${aprovacao.pct}%` : '', '.'),
+      antes ? h('p', { class: 'texto-suave', text: `Na avaliação de nivelamento: ${antes}. Agora: ${aprovacao ? 'aprovado na prova final' : 'módulos em dia'}.` }) : null,
       h('ul', { class: 'retorno__lista' }, linhas),
       h('div', { class: 'acoes-linha' },
-        outras.length && s ? h('button', { type: 'button', class: 'botao botao--primario', onclick: () => App.irPara(`sala-${s.id}`) }, icone('i-livro'), 'Escolher outra matéria') : null,
+        outras.length && s ? h('button', { type: 'button', class: 'botao botao--primario', onclick: () => App.irPara(`sala-${s.id}`) }, icone('i-livro'), 'Próxima disciplina') : null,
         h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => App.irPara('cronograma') }, icone('i-calendario'), 'Montar um cronograma'),
-        App.trilhas().some((t) => t.id === 'enem-vestibular') ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => App.irPara('sala-enem') }, icone('i-seta-cima'), 'Aprofundar no Enem e Vestibular') : null));
+        App.trilhas().some((t) => t.id === 'enem-vestibular') ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => App.irPara('sala-enem') }, icone('i-seta-cima'), 'Preparação para o Enem e vestibulares') : null));
   }
 
   /* =========================================================
      PROGRESSO NOVO E INÍCIO
      ========================================================= */
-  /** Curso com metaPadrao (5 nos em-*): progresso que nunca respondeu nada começa com essa meta. */
-  function ajustarProgresso(trilha, prog) {
-    if (!trilha.metaPadrao || prog.metaDiaria === trilha.metaPadrao || prog.stats.respondidas > 0 || prog.metaAjustada) return false;
-    prog.metaDiaria = trilha.metaPadrao;
-    prog.metaAjustada = true;
-    return true;
-  }
-
-  /** Card do Início "Descubra por onde começar": tem a sala, ainda não estudou nela e não fez o Mapa. */
+  /** Card do Início "Avaliação de nivelamento": tem a sala, ainda não estudou nela e não fez o nivelamento. */
   function cardInicio(area) {
     area.replaceChildren();
     const s = sala();
@@ -467,17 +462,17 @@ const Caminho = (() => {
     area.append(h('section', { class: 'retomada-inicio', 'aria-labelledby': 'retomada-inicio-titulo' },
       h('span', { class: 'retomada-inicio__icone', 'aria-hidden': 'true' }, icone('i-alvo')),
       h('div', { class: 'retomada-inicio__textos' },
-        h('span', { class: 'rotulo', text: `${s.nome} · ${s.subtexto}` }),
-        h('h2', { class: 'retomada-inicio__titulo', id: 'retomada-inicio-titulo', text: 'Descubra por onde começar' }),
-        h('p', { class: 'retomada-inicio__texto', text: 'Voltar a estudar fica mais fácil com um mapa. Um teste leve, por blocos, mostra o que você já sabe e por onde seguir.' })),
+        h('span', { class: 'rotulo', text: `Sala ${s.nome}` }),
+        h('h2', { class: 'retomada-inicio__titulo', id: 'retomada-inicio-titulo', text: 'Avaliação de nivelamento' }),
+        h('p', { class: 'retomada-inicio__texto', text: 'Identifique o seu nível em cada disciplina do Ensino Médio e receba um plano de estudos com os módulos indicados.' })),
       h('div', { class: 'retomada-inicio__acoes' },
-        h('button', { type: 'button', class: 'botao botao--primario', id: 'btn-inicio-mapa', onclick: () => m.abrir() }, icone('i-alvo'), 'Fazer o Mapa de partida'),
+        h('button', { type: 'button', class: 'botao botao--primario', id: 'btn-inicio-mapa', onclick: () => m.abrir() }, icone('i-alvo'), 'Fazer o nivelamento'),
         h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => App.irPara(`sala-${s.id}`) }, icone(s.icone), 'Entrar na sala'))));
   }
 
   return {
     BONUS, ehRetomada, modulos, estados, definir, aplicarMapa, proximaAula, selo, acoesModulo,
     secaoSala, aoEntrarNaSala, antesDaSessao, depoisDaSessao, diasParado,
-    provaPorAtalho, questoesDaProva, blocoResumoProva, cartaoRetorno, ajustarProgresso, cardInicio,
+    provaPorAtalho, questoesDaProva, blocoResumoProva, cartaoRetorno, cardInicio,
   };
 })();

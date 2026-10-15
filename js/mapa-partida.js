@@ -1,14 +1,15 @@
 /*
- * mapa-partida.js — sala Ensino Médio ("Sempre dá tempo"): o Mapa de partida (rota #mapa-partida) e o Teste rápido do módulo.
+ * mapa-partida.js — sala Ensino Médio: a Avaliação de nivelamento (rota #mapa-partida; antes chamada "Mapa de partida")
+ * e a Prova de suficiência do módulo (antes "Teste rápido"). Tom sério, de colégio (pedido do usuário, 2026-10-15).
  * Plano: docs/cadernos/ensino-medio-mapa-curricular.md (seção 5) e docs/cadernos/ensino-medio-retomada.md (decisões b e c).
  *
- *  - Mapa de partida: um teste leve por blocos (Linguagens, Matemática, Natureza, Humanas), em data/diagnostica/ensino-medio.json.
+ *  - Avaliação de nivelamento: questões por blocos (Linguagens, Matemática, Natureza, Humanas), em data/diagnostica/ensino-medio.json.
  *    Cada bloco mostra só as questões das matérias com curso publicado e liberado para a pessoa: o Mapa cresce com os cursos.
  *    Sem cronômetro na tela; "Ainda não sei" no lugar do chute; dá para pausar (diver:v1:mapa-partida, sincroniza como o resto).
  *  - A conta é a mesma da Avaliação Diagnóstica (Diagnostica.avaliar: peso por dificuldade e puxão para o bloco).
- *    Nota 1–2 → "Vale começar por aqui"; 3 → "Vale uma revisão"; 4–5 → "Você já manda bem aqui".
+ *    Nota 1–2 → "Nível básico"; 3 → "Nível intermediário"; 4–5 → "Nível avançado".
  *    O resultado vai para os módulos de cada curso (Caminho.aplicarMapa). O que aparece é um mapa, não uma nota.
- *  - Teste rápido: 5 questões do próprio módulo (uma média ou difícil por aula, sem a Revisão); 4 de 5 → módulo Dominado.
+ *  - Prova de suficiência: 5 questões do próprio módulo (uma média ou difícil por aula, sem a Revisão); 4 de 5 → módulo Dominado.
  *    Usa as questões do curso já aberto (nada novo para baixar nem para validar) e não mexe no quiz.js.
  *  - Pontos: 25 XP e 2 pérolas por bloco, na primeira vez, pela Economia (App.concederXP). Log: diagnostica_concluida
  *    com detalhes.teste = "mapa-partida" ou "teste-rapido" (tipo que já existe: o banco não muda).
@@ -21,16 +22,16 @@ const MapaPartida = (() => {
   const LETRAS = 'ABCDE';
   const PONTOS_BLOCO = { xp: 25, perolas: 2 };
   const FAIXAS = {
-    comecar: { nome: 'Vale começar por aqui', icone: 'i-bandeira', frase: 'O Módulo 1 é o seu ponto de partida. Aulas curtas, do básico, no seu ritmo.' },
-    revisao: { nome: 'Vale uma revisão', icone: 'i-revisao', frase: 'Você lembra de bastante coisa. Os módulos do que ficou para trás estão recomendados.' },
-    'manda-bem': { nome: 'Você já manda bem aqui', icone: 'i-trofeu', frase: 'O que você acertou já conta como dominado. Dá até para fazer a Prova final direto.' },
+    comecar: { nome: 'Nível básico', icone: 'i-bandeira', frase: 'Comece pelo Módulo 1: ele traz os fundamentos de que os módulos seguintes dependem.' },
+    revisao: { nome: 'Nível intermediário', icone: 'i-revisao', frase: 'Os módulos em que houve erro estão recomendados; os demais ficam disponíveis.' },
+    'manda-bem': { nome: 'Nível avançado', icone: 'i-trofeu', frase: 'Os módulos em que você acertou foram dominados, e a prova final da disciplina já está liberada.' },
   };
   const TESTE = { questoes: 5, passa: 4 };
 
   let banco = null;
   let tela = null;
   let vista = { tela: 'painel' };
-  let teste = null; // Teste rápido em andamento (só na memória: são 5 questões)
+  let teste = null; // Prova de suficiência em andamento (só na memória: são 5 questões)
 
   const ler = () => { const d = Dados.ler(CHAVE, null); return d && typeof d === 'object' ? { versao: 1, blocos: {}, resultados: {}, ...d } : { versao: 1, blocos: {}, resultados: {} }; };
   const gravar = (d) => Dados.gravar(CHAVE, { ...d, versao: 1, atualizadoEm: Date.now() });
@@ -44,7 +45,7 @@ const MapaPartida = (() => {
   function carregar() {
     if (!banco) {
       banco = fetch(ARQUIVO, { cache: 'no-cache' })
-        .then((r) => { if (!r.ok) throw new Error('Não consegui abrir o Mapa de partida agora.'); return r.json(); })
+        .then((r) => { if (!r.ok) throw new Error('Não foi possível abrir a avaliação de nivelamento agora.'); return r.json(); })
         .catch((e) => { banco = null; throw e; });
     }
     return banco;
@@ -95,12 +96,12 @@ const MapaPartida = (() => {
     tela = secao;
     limpar(secao);
     const s = sala();
-    secao.append(UI.cabecalho(s ? `${s.nome} · ${s.subtexto}` : 'Ensino Médio', vista.tela === 'teste' ? 'Teste rápido' : 'Mapa de partida',
-      vista.tela === 'teste' ? 'Cinco questões do módulo. Acertou 4? O módulo conta como dominado.' : 'Descubra por onde começar. É um mapa, não uma prova.'));
-    const corpo = h('div', { class: 'dg mp', 'aria-live': 'polite' }, h('p', { class: 'texto-suave', text: 'Preparando o mapa…' }));
+    secao.append(UI.cabecalho(s ? `Sala ${s.nome}` : 'Ensino Médio', vista.tela === 'teste' ? 'Prova de suficiência' : 'Avaliação de nivelamento',
+      vista.tela === 'teste' ? 'Cinco questões do módulo. Com 4 acertos, o módulo é considerado dominado.' : 'Identifique o seu nível em cada disciplina e receba os módulos indicados.'));
+    const corpo = h('div', { class: 'dg mp', 'aria-live': 'polite' }, h('p', { class: 'texto-suave', text: 'Preparando a avaliação…' }));
     secao.append(corpo);
     if (vista.tela === 'teste') {
-      corpo.replaceChildren(...(teste ? telaTeste() : [h('p', { class: 'texto-suave', text: 'Este teste já terminou.' }), botaoVoltarSala()]));
+      corpo.replaceChildren(...(teste ? telaTeste() : [h('p', { class: 'texto-suave', text: 'Esta prova já foi encerrada.' }), botaoVoltarSala()]));
       focarTitulo(corpo);
       return;
     }
@@ -110,7 +111,7 @@ const MapaPartida = (() => {
       const d = ler();
       const vis = blocosVisiveis(b);
       const bl = vis.find((x) => x.id === vista.bloco);
-      if (!vis.length) corpo.replaceChildren(h('p', { class: 'texto-suave', text: 'O Mapa aparece quando você tiver uma matéria da sala Ensino Médio.' }), botaoVoltarSala());
+      if (!vis.length) corpo.replaceChildren(h('p', { class: 'texto-suave', text: 'A avaliação aparece quando você tiver uma disciplina da sala Ensino Médio.' }), botaoVoltarSala());
       else if (vista.tela === 'questao' && bl) corpo.replaceChildren(...telaQuestao(bl, d));
       else if (vista.tela === 'bloco' && bl) corpo.replaceChildren(...telaFimBloco(bl, d, vis));
       else corpo.replaceChildren(...painel(vis, d));
@@ -139,13 +140,13 @@ const MapaPartida = (() => {
     const proximo = vis.find((bl) => estadoBloco(d, bl) !== 'feito');
     return [
       h('section', { class: 'cartao dg-intro', 'aria-labelledby': 'mp-titulo' },
-        h('h2', { class: 'cartao__titulo', id: 'mp-titulo', tabindex: '-1', text: algum ? 'Seu Mapa de partida' : 'Descubra por onde começar' }),
-        h('p', { class: 'dg-intro__destaque', text: 'Voltar a estudar fica mais fácil quando você sabe onde está. O Mapa mostra, matéria por matéria, se vale começar do básico, fazer uma revisão ou se você já manda bem.' }),
+        h('h2', { class: 'cartao__titulo', id: 'mp-titulo', tabindex: '-1', text: algum ? 'Sua avaliação de nivelamento' : 'Avaliação de nivelamento' }),
+        h('p', { class: 'dg-intro__destaque', text: 'A avaliação indica o seu nível em cada disciplina (básico, intermediário ou avançado) e organiza o plano de estudos: os módulos recomendados, os disponíveis e os que você já domina.' }),
         h('ul', { class: 'cr-lista-check' },
-          h('li', { text: `${plural(total, 'questão', 'questões')} em ${plural(vis.length, 'bloco', 'blocos')}. Leva uns ${minutos} minutos no total, e dá para fazer um bloco por dia.` }),
-          h('li', { text: 'Não sabe? Marque "Ainda não sei". É uma resposta honesta e ajuda o Mapa a acertar.' }),
-          h('li', { text: 'Sem cronômetro e sem nota de prova. Precisa parar? Toque em "Pausar": as respostas ficam salvas.' }),
-          h('li', { text: 'Nada fica trancado: o Mapa só organiza o seu caminho. Você pode estudar qualquer aula quando quiser.' }))),
+          h('li', { text: `${plural(total, 'questão', 'questões')} em ${plural(vis.length, 'bloco', 'blocos')}, um por área do conhecimento. Duração estimada: ${minutos} minutos. Os blocos podem ser feitos em dias diferentes.` }),
+          h('li', { text: 'Se não souber a resposta, marque "Ainda não sei": o chute distorce o resultado.' }),
+          h('li', { text: 'Não há cronômetro. Para interromper, use "Pausar": as respostas ficam salvas.' }),
+          h('li', { text: 'O resultado organiza o plano de estudos, mas não bloqueia nada: todas as aulas continuam disponíveis.' }))),
       h('section', { class: 'cartao mp-blocos', 'aria-labelledby': 'mp-blocos-titulo' },
         h('h2', { class: 'cartao__titulo', id: 'mp-blocos-titulo', text: 'Os blocos' }),
         h('ol', { class: 'mp-lista' }, vis.map((bl) => {
@@ -170,7 +171,7 @@ const MapaPartida = (() => {
   }
 
   async function refazer(bl) {
-    if (!(await UI.confirmar({ titulo: `Refazer o bloco ${bl.nome}?`, texto: 'As respostas deste bloco saem e você responde de novo. O seu caminho muda só quando você terminar.', sim: 'Refazer', nao: 'Manter', humor: 'pensando' }))) return;
+    if (!(await UI.confirmar({ titulo: `Refazer o bloco ${bl.nome}?`, texto: 'As respostas deste bloco serão apagadas. O plano de estudos só muda quando você terminar o bloco de novo.', sim: 'Refazer', nao: 'Manter', humor: 'pensando' }))) return;
     const d = ler();
     d.blocos[bl.id] = { ...(d.blocos[bl.id] || {}), respostas: {}, idx: 0, concluidoEm: null };
     gravar(d);
@@ -182,7 +183,7 @@ const MapaPartida = (() => {
     const ids = Object.keys(d.resultados).filter((id) => trilha(id));
     if (!ids.length) return null;
     return h('section', { class: 'cartao mp-mapa', 'aria-labelledby': 'mp-mapa-titulo' },
-      h('h2', { class: 'cartao__titulo', id: 'mp-mapa-titulo', text: 'Seu mapa' }),
+      h('h2', { class: 'cartao__titulo', id: 'mp-mapa-titulo', text: 'Resultado por disciplina' }),
       h('ul', { class: 'mp-materias' }, ids.map((id) => {
         const r = d.resultados[id];
         const f = FAIXAS[r.faixa];
@@ -192,7 +193,7 @@ const MapaPartida = (() => {
             h('span', { class: 'mp-materia__nome', text: nomeCurso(id) }),
             h('strong', { class: 'mp-materia__faixa', text: f.nome }),
             h('span', { class: 'texto-suave', text: f.frase })),
-          h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', 'aria-label': `Ir para ${nomeCurso(id)}`, onclick: () => App.abrirTrilha(id, { proximaAula: true }) }, 'Ir para a matéria', icone('i-seta-dir')));
+          h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', 'aria-label': `Ir para ${nomeCurso(id)}`, onclick: () => App.abrirTrilha(id, { proximaAula: true }) }, 'Ir para a disciplina', icone('i-seta-dir')));
       })),
       h('details', { class: 'mp-detalhes' },
         h('summary', { text: 'Ver detalhes' }),
@@ -200,7 +201,7 @@ const MapaPartida = (() => {
           const r = d.resultados[id];
           return h('li', { text: `${nomeCurso(id)}: ${r.acertos} de ${r.total} certas${r.naoSei ? `, ${r.naoSei} "Ainda não sei"` : ''} · ${Math.round(r.pct * 100)}% (nível ${r.nota} de 5)` });
         })),
-        h('p', { class: 'texto-suave', text: 'Com poucas questões por matéria, o Mapa é uma boa estimativa, não um veredito. Se discordar, libere qualquer módulo no mapa do curso.' })),
+        h('p', { class: 'texto-suave', text: 'Com poucas questões por disciplina, o resultado é uma estimativa. Qualquer módulo pode ser liberado no mapa da disciplina.' })),
       h('div', { class: 'acoes-linha' },
         h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => App.irPara('cronograma') }, icone('i-calendario'), 'Montar um cronograma')));
   }
@@ -244,10 +245,10 @@ const MapaPartida = (() => {
         h('span', { class: 'chip chip--ativo dg-questao__area', text: nomeCurso(q.curso) }), ` ${bl.nome} · questão ${idx + 1} de ${qs.length}`)),
     h('div', { class: 'barra-progresso', role: 'progressbar', 'aria-label': `Progresso do bloco ${bl.nome}`, 'aria-valuemin': '0', 'aria-valuemax': String(qs.length), 'aria-valuenow': String(idx) },
       h('div', { class: 'barra-progresso__preenchimento', style: `width: ${Math.round((idx / qs.length) * 100)}%` })),
-    novaMateria ? h('p', { class: 'dg-nova-area', role: 'status' }, h('strong', { text: `Agora: ${nomeCurso(q.curso)}.` }), ' Bora mergulhar!') : null,
+    novaMateria ? h('p', { class: 'dg-nova-area', role: 'status' }, h('strong', { text: `Agora: ${nomeCurso(q.curso)}.` }), '') : null,
     ...corpoQuestao(q, escolhida, 'mp-resp', () => { proximo.disabled = false; }),
     h('div', { class: 'dg-questao__acoes' },
-      h('button', { type: 'button', class: 'botao botao--fantasma', id: 'mp-pausar', onclick: () => { guardar({ idx }); ir({ tela: 'painel' }); UI.toast('Mapa pausado', 'Suas respostas ficaram salvas. Continue quando quiser.', 'i-relogio'); } }, 'Pausar'),
+      h('button', { type: 'button', class: 'botao botao--fantasma', id: 'mp-pausar', onclick: () => { guardar({ idx }); ir({ tela: 'painel' }); UI.toast('Avaliação pausada', 'Suas respostas ficaram salvas.', 'i-relogio'); } }, 'Pausar'),
       idx > 0 ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => { guardar({ idx: idx - 1 }); render(tela); } }, icone('i-voltar'), 'Anterior') : null,
       proximo));
     return [form];
@@ -294,8 +295,8 @@ const MapaPartida = (() => {
       teste: 'mapa-partida', bloco: bl.id, acertos: res.acertos, total: res.total, nao_sei: res.naoSei, nota: res.nota, segundos: s.segundos || 0,
       ...Object.fromEntries(Object.entries(res.disciplinas).map(([curso, r]) => [`nota_${curso}`, r.nota])),
     });
-    if (primeiraVez) App.concederXP(bl.questoes[0].curso, PONTOS_BLOCO, `Mapa de partida: bloco ${bl.nome}`);
-    else UI.toast('Mandou bem, Diver!', `Bloco ${bl.nome} feito. O seu caminho foi atualizado.`, 'i-check');
+    if (primeiraVez) App.concederXP(bl.questoes[0].curso, PONTOS_BLOCO, `Nivelamento: bloco ${bl.nome}`);
+    else UI.toast('Bloco concluído', `Bloco ${bl.nome} concluído. O plano de estudos foi atualizado.`, 'i-check');
     ir({ tela: 'bloco', bloco: bl.id });
   }
 
@@ -306,7 +307,7 @@ const MapaPartida = (() => {
     const s = sala();
     return [
       h('section', { class: 'cartao dg-resultado', 'aria-labelledby': 'mp-fim-titulo' },
-        h('h2', { class: 'cartao__titulo', id: 'mp-fim-titulo', tabindex: '-1', text: `Bloco ${bl.nome}: feito!` }),
+        h('h2', { class: 'cartao__titulo', id: 'mp-fim-titulo', tabindex: '-1', text: `Bloco ${bl.nome}: concluído` }),
         h('ul', { class: 'mp-materias' }, cursos.filter((id) => d.resultados[id]).map((id) => {
           const f = FAIXAS[d.resultados[id].faixa];
           return h('li', { class: `mp-materia mp-materia--${d.resultados[id].faixa}` },
@@ -316,17 +317,17 @@ const MapaPartida = (() => {
               h('strong', { class: 'mp-materia__faixa', text: f.nome }),
               h('span', { class: 'texto-suave', text: f.frase })));
         })),
-        h('p', { class: 'texto-suave', text: 'O seu caminho na sala já mudou: veja em "Meu caminho".' }),
+        h('p', { class: 'texto-suave', text: 'O plano de estudos da sala foi atualizado com estes resultados.' }),
         h('div', { class: 'acoes-linha' },
           proximo ? h('button', { type: 'button', class: 'botao botao--primario', id: 'mp-proximo-bloco', onclick: () => ir({ tela: 'questao', bloco: proximo.id }) }, icone('i-seta-dir'), `Próximo bloco: ${proximo.nome}`) : null,
-          s ? h('button', { type: 'button', class: proximo ? 'botao botao--secundario' : 'botao botao--primario', onclick: () => App.irPara(`sala-${s.id}`) }, icone('i-alvo'), 'Ver meu caminho') : null,
-          h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => ir({ tela: 'painel' }) }, 'Ver meu mapa'))),
+          s ? h('button', { type: 'button', class: proximo ? 'botao botao--secundario' : 'botao botao--primario', onclick: () => App.irPara(`sala-${s.id}`) }, icone('i-alvo'), 'Ver o plano de estudos') : null,
+          h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => ir({ tela: 'painel' }) }, 'Ver o resultado'))),
       rever(bl, d.blocos[bl.id].respostas),
     ];
   }
 
   /** As questões com a resposta certa e a explicação (abre uma por vez). */
-  function rever(lista, respostas, titulo = 'Rever as questões') {
+  function rever(lista, respostas, titulo = 'Correção das questões') {
     const qs = Array.isArray(lista) ? lista : lista.questoes;
     return h('section', { class: 'cartao dg-rever', 'aria-labelledby': 'mp-rever-titulo' },
       h('h2', { class: 'cartao__titulo', id: 'mp-rever-titulo', text: titulo }),
@@ -343,7 +344,7 @@ const MapaPartida = (() => {
               h('strong', { text: `${LETRAS[j]}) ` }), alt,
               j === q.correta ? h('span', { class: 'visualmente-oculto', text: ' (resposta certa)' }) : null,
               j === resp && !ok && q.comentarios && q.comentarios[j] ? h('span', { class: 'dg-rev__coment', text: ` Sua resposta: ${q.comentarios[j]}` }) : null))),
-            naoRespondida(resp) ? h('p', { class: 'texto-suave', text: 'Você marcou "Ainda não sei". Sem problema: era isso que o Mapa precisava saber.' }) : null,
+            naoRespondida(resp) ? h('p', { class: 'texto-suave', text: 'Você marcou "Ainda não sei".' }) : null,
             h('p', { class: 'dg-rev__explica', text: q.explicacao })));
       })));
   }
@@ -364,19 +365,19 @@ const MapaPartida = (() => {
     return escolhidas.sort((a, b) => ordem.get(a.fase) - ordem.get(b.fase));
   }
 
-  /** Abre o Teste rápido de um módulo (do mapa do curso). */
+  /** Abre a Prova de suficiência de um módulo (do mapa do curso). */
   function abrirTeste(trilhaId, moduloId) {
     const t = trilha(trilhaId);
     if (!t) return;
     const comecar = () => {
       const questoes = sortearTeste(t, moduloId);
-      if (!questoes.length) { UI.toast('Ops', 'Este módulo ainda não tem questões para o teste.', 'i-bolha'); return; }
+      if (!questoes.length) { UI.toast('Prova indisponível', 'Este módulo ainda não tem questões para a prova de suficiência.', 'i-alerta'); return; }
       const mod = Caminho.modulos(t).find((m) => m.id === moduloId);
       teste = { trilhaId, moduloId, nomeModulo: mod ? mod.nome : moduloId, questoes, respostas: {}, idx: 0, inicio: Date.now(), fim: null };
       vista = { tela: 'teste' };
       App.irPara('mapa-partida');
     };
-    if (t._parcial) App.comCursoCompleto(comecar, 'Preparando o teste…'); else comecar();
+    if (t._parcial) App.comCursoCompleto(comecar, 'Preparando a prova…'); else comecar();
   }
 
   function telaTeste() {
@@ -399,11 +400,11 @@ const MapaPartida = (() => {
     h('div', { class: 'dg-questao__topo' },
       h('h2', { class: 'cartao__titulo', tabindex: '-1', id: 'tr-q-titulo' },
         h('span', { class: 'chip chip--ativo dg-questao__area', text: teste.nomeModulo.replace(/^Módulo\s+\d+\s*·\s*/i, '') }), ` Questão ${idx + 1} de ${qs.length}`)),
-    h('div', { class: 'barra-progresso', role: 'progressbar', 'aria-label': 'Progresso do teste rápido', 'aria-valuemin': '0', 'aria-valuemax': String(qs.length), 'aria-valuenow': String(idx) },
+    h('div', { class: 'barra-progresso', role: 'progressbar', 'aria-label': 'Progresso da prova de suficiência', 'aria-valuemin': '0', 'aria-valuemax': String(qs.length), 'aria-valuenow': String(idx) },
       h('div', { class: 'barra-progresso__preenchimento', style: `width: ${Math.round((idx / qs.length) * 100)}%` })),
     ...corpoQuestao(q, escolhida, 'tr-resp', () => { proximo.disabled = false; }),
     h('div', { class: 'dg-questao__acoes' },
-      h('button', { type: 'button', class: 'botao botao--fantasma', id: 'tr-sair', onclick: () => { const id = teste.trilhaId; teste = null; App.abrirTrilha(id); } }, 'Sair do teste'),
+      h('button', { type: 'button', class: 'botao botao--fantasma', id: 'tr-sair', onclick: () => { const id = teste.trilhaId; teste = null; App.abrirTrilha(id); } }, 'Sair da prova'),
       idx > 0 ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: () => { teste.idx -= 1; render(tela); } }, icone('i-voltar'), 'Anterior') : null,
       proximo));
     return [form];
@@ -437,15 +438,15 @@ const MapaPartida = (() => {
     return [
       h('section', { class: `cartao dg-resultado tr-resultado ${teste.passou ? 'tr-resultado--ok' : ''}`, 'aria-labelledby': 'tr-fim-titulo' },
         UI.mascote(`tr-resultado__mascote ${teste.passou ? 'mascote--feliz' : 'mascote--pensando'}`),
-        h('h2', { class: 'cartao__titulo', id: 'tr-fim-titulo', tabindex: '-1', text: teste.passou ? 'Mandou bem, Diver!' : 'Sem problema!' }),
+        h('h2', { class: 'cartao__titulo', id: 'tr-fim-titulo', tabindex: '-1', text: teste.passou ? 'Módulo dominado' : 'Resultado da prova de suficiência' }),
         h('p', {}, h('strong', { text: `${teste.acertos} de ${teste.questoes.length} certas. ` }), teste.passou
-          ? `${mod.nome} agora conta como dominado: não precisa fazer as aulas para a Prova final (mas pode, quando quiser).`
-          : `Precisava de ${teste.precisa}. O módulo fica liberado, e a ${mod.fases[0].nome.replace(/\s*·.*$/, '')} é um ótimo começo. Dá para tentar de novo quando quiser, sem espera.`),
+          ? `${mod.nome} foi considerado dominado: as aulas dele deixam de ser exigidas para a prova final e continuam disponíveis para revisão.`
+          : `Eram necessários ${teste.precisa} acertos. O módulo fica disponível no seu plano de estudos, a partir da ${mod.fases[0].nome.replace(/\s*·.*$/, '')}. A prova pode ser refeita a qualquer momento.`),
         h('div', { class: 'acoes-linha' },
           teste.passou && seguinte ? h('button', { type: 'button', class: 'botao botao--primario', id: 'tr-seguinte', onclick: () => abrirAula(seguinte.fases.find((f) => !(Progresso.carregar(t.id).fases[f.id] || {}).concluida) || seguinte.fases[0]) }, icone('i-seta-dir'), `Seguir para: ${seguinte.nome}`) : null,
           !teste.passou ? h('button', { type: 'button', class: 'botao botao--primario', id: 'tr-aula1', onclick: () => abrirAula(mod.fases[0]) }, icone('i-livro'), `Começar: ${mod.fases[0].nome}`) : null,
-          h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => { const id = t.id; teste = null; App.abrirTrilha(id); } }, icone('i-voltar'), 'Voltar ao mapa do curso'))),
-      rever(teste.questoes, teste.respostas, 'As questões do teste'),
+          h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => { const id = t.id; teste = null; App.abrirTrilha(id); } }, icone('i-voltar'), 'Voltar ao mapa da disciplina'))),
+      rever(teste.questoes, teste.respostas, 'Correção da prova'),
     ];
   }
 

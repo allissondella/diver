@@ -357,6 +357,6 @@ const Diagnostica = (() => {
     relogio = null;
   }
 
-  // avaliar e nota: a mesma conta vale para o Mapa de partida da sala Ensino Médio (js/mapa-partida.js)
+  // avaliar e nota: a mesma conta vale para a avaliação de nivelamento da sala Ensino Médio (js/mapa-partida.js)
   return { render, abrir, notas, situacao, avaliar, nota, NIVEIS };
 })();

@@ -1,11 +1,11 @@
 {
   "id": "em-portugues",
-  "nome": "Português · Retomada",
-  "descricao": "Para quem quer voltar a estudar Português: ler e entender textos do dia a dia, gramática no uso e a língua viva, do básico ao Ensino Médio, em aulas de 15 minutos.",
+  "nome": "Ensino Médio · Português",
+  "descricao": "Língua Portuguesa do Ensino Médio em três módulos: leitura e interpretação de textos, gramática, e linguagem, variação e argumentação. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
   "categoria": "Ensino Médio",
   "fasesLivres": true,
   "rotuloAula": "Aula",
-  "metaPadrao": 5,
+  "habilidadesDe": "do Enem",
   "prova": {
     "questoes": 30,
     "minutos": 45,
@@ -17,21 +17,25 @@
   "fases": [
     {
       "id": "em-por-tema-ideia-principal",
-      "nome": "Aula 1 · Assunto, tema e ideia principal",
-      "modulo": "Módulo 1 · Ler e entender",
-      "descricao": "Módulo 1 · aula 1 de 5 · 15 min",
+      "nome": "Aula 1 · Tema, ideia principal, fato e opinião",
+      "modulo": "Módulo 1 · Leitura e interpretação de textos",
+      "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H18 e H22 do Enem",
       "moduloId": "em-por-m1",
+      "habilidades": [
+        "H18",
+        "H22"
+      ],
       "bncc": [
         "EM13LP01",
         "EF69LP29"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "A mensagem comprida no grupo da família, o aviso colado no elevador do condomínio, a notícia que alguém compartilhou, o comunicado da empresa sobre a mudança no horário. Quem acha rápido o que importa num texto economiza tempo, evita mal-entendidos e não cai em manchete que promete uma coisa e entrega outra."
+              "No Enem, quase todas as questões de Linguagens começam pela leitura de um texto, e muitas perguntam diretamente pelo tema, pela ideia central ou pela opinião do autor. Os textos são variados: notícias, crônicas, artigos de opinião, avisos e textos de divulgação científica. As alternativas erradas costumam ser amplas demais (o assunto, e não o tema), generalizar o que o texto diz ou atribuir ao autor uma opinião que ele não deu."
             ]
           },
           {
@@ -60,9 +64,9 @@
             ]
           }
         ],
-        "introducao": "Ler bem começa por uma pergunta simples: do que esse texto fala e o que ele quer dizer? Nesta aula você retoma a diferença entre assunto e tema, aprende a achar a ideia principal e a separar fato de opinião, e treina contar um texto com as suas palavras sem mudar o sentido.",
+        "introducao": "A interpretação de texto é a habilidade mais cobrada da prova de Linguagens do Enem. Nesta aula: assunto e tema, ideia principal e tópico frasal, distinção entre fato e opinião, paráfrase e resumo.",
         "mapaMental": {
-          "centro": "Ler e entender",
+          "centro": "Leitura e interpretação",
           "ramos": [
             {
               "titulo": "Assunto e tema",
@@ -172,22 +176,26 @@
     },
     {
       "id": "em-por-inferencia",
-      "nome": "Aula 2 · Ler nas entrelinhas: inferência",
-      "modulo": "Módulo 1 · Ler e entender",
-      "descricao": "Módulo 1 · aula 2 de 5 · 15 min",
+      "nome": "Aula 2 · Inferência: pressupostos e subentendidos",
+      "modulo": "Módulo 1 · Leitura e interpretação de textos",
+      "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H18 e H21 do Enem",
       "moduloId": "em-por-m1",
+      "habilidades": [
+        "H18",
+        "H21"
+      ],
       "bncc": [
         "EM13LP02",
         "EM13LP06",
         "EF69LP05"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "A oferta com letra miúda, o contrato com \"após esse período, valor vigente\", o comentário irônico do colega, a mensagem curta de alguém chateado, a propaganda que sugere muito e promete pouco. Quem lê as entrelinhas percebe o que está sendo insinuado e faz as perguntas certas antes de aceitar."
+              "O Enem cobra a leitura do que está implícito em tirinhas, charges, anúncios, crônicas e textos opinativos. As questões pedem o que se pode concluir com segurança a partir do texto, e as alternativas erradas costumam trazer conclusões que exigem informações que o texto não dá. A distinção entre inferência (apoiada em pistas do texto) e suposição é o centro desta aula."
             ]
           },
           {
@@ -217,9 +225,9 @@
             ]
           }
         ],
-        "introducao": "Nem tudo o que um texto quer dizer está escrito com todas as letras. Uma palavrinha como \"finalmente\" ou \"também\", um asterisco no anúncio, uma frase irônica num post: tudo isso comunica sem dizer. Nesta aula você treina ler o que está nas entrelinhas, com segurança, sem inventar o que o texto não diz.",
+        "introducao": "Parte do sentido de um texto não está escrita de forma explícita. Nesta aula: informação explícita e implícita, pressupostos, subentendidos, inferência, ironia e a leitura de textos publicitários e contratuais.",
         "mapaMental": {
-          "centro": "Entrelinhas",
+          "centro": "Inferência e implícitos",
           "ramos": [
             {
               "titulo": "Explícito",
@@ -283,7 +291,7 @@
           "titulo": "Palavras que dizem mais do que parece",
           "colunas": [
             "Palavra",
-            "O que ela deixa implícito"
+            "O que ela sugere sem dizer"
           ],
           "linhas": [
             [
@@ -330,28 +338,38 @@
     },
     {
       "id": "em-por-generos-dia-a-dia",
-      "nome": "Aula 3 · Gêneros do dia a dia: aviso, bula, contrato e notícia",
-      "modulo": "Módulo 1 · Ler e entender",
-      "descricao": "Módulo 1 · aula 3 de 5 · 20 min",
+      "nome": "Aula 3 · Gêneros e tipos textuais",
+      "modulo": "Módulo 1 · Leitura e interpretação de textos",
+      "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H18 e H20 do Enem",
       "moduloId": "em-por-m1",
+      "habilidades": [
+        "H18",
+        "H20"
+      ],
       "bncc": [
         "EM13LP01",
         "EM13LP26",
         "EF69LP01"
       ],
-      "minutos": 20,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "A bula do remédio do seu filho, o contrato do aluguel, o boleto da escola, o aviso colado no portão, a notícia que chegou pelo celular, o manual da máquina de lavar. Quem conhece o gênero sabe o que esperar dele: onde está a dose, onde está a multa, onde está o fato e onde começa a opinião. E percebe quando uma mensagem finge ser de um gênero para enganar."
+              "O Enem cobra o reconhecimento do gênero e da sua finalidade, a identificação do tipo textual predominante e a relação entre a forma do texto e o seu objetivo. Os textos da prova vêm de esferas variadas: jornalística, publicitária, jurídica, científica e digital. Reconhecer o gênero orienta a leitura: indica o que procurar no texto e o que esperar dele."
             ]
           },
           {
             "titulo": "Gênero e finalidade",
             "texto": [
               "**Gênero textual** é a forma que um texto assume para cumprir uma função na vida social: receita, aviso, carta, notícia, bula, contrato, boleto. Cada gênero tem uma **finalidade** principal. O aviso informa e orienta (\"a água será cortada das 8h às 14h; armazene água\"). A receita e o manual ensinam a fazer, com verbos de ordem: \"misture\", \"ligue\", \"aperte\". O anúncio quer convencer. O artigo de opinião defende uma ideia."
+            ]
+          },
+          {
+            "titulo": "Tipos textuais",
+            "texto": [
+              "Gênero e tipo textual são coisas diferentes. O gênero é a forma social do texto (notícia, bula, crônica); o **tipo textual** é o modo de organizar a linguagem dentro dele. São cinco tipos: a **narração** conta fatos em sequência, com personagens, tempo e espaço; a **descrição** caracteriza seres, objetos e lugares; a **exposição** explica um conceito ou um fenômeno, em geral no presente; a **argumentação** defende uma tese com argumentos; a **injunção** orienta o leitor a agir, com verbos no imperativo, como numa receita ou num manual. Um mesmo gênero pode combinar vários tipos: um artigo de opinião pode narrar um caso para sustentar a sua tese."
             ]
           },
           {
@@ -374,16 +392,17 @@
             ]
           }
         ],
-        "introducao": "Todo texto tem um jeito e uma finalidade. A bula quer que você use o remédio com segurança, o contrato quer deixar claros os direitos e deveres, a notícia quer informar o que aconteceu. Nesta aula você aprende a reconhecer esses gêneros do dia a dia e a saber onde procurar a informação que importa em cada um.",
+        "introducao": "Todo texto pertence a um gênero, com finalidade, estrutura e linguagem próprias. Nesta aula: gênero e tipo textual, finalidade dos gêneros, os gêneros da esfera pública (aviso, bula, contrato, notícia), as marcas de cada um e os textos que imitam um gênero para enganar.",
         "mapaMental": {
-          "centro": "Gêneros do dia a dia",
+          "centro": "Gêneros e tipos textuais",
           "ramos": [
             {
-              "titulo": "Finalidade",
+              "titulo": "Finalidade e tipo",
               "itens": [
                 "aviso informa e orienta",
                 "manual ensina",
-                "anúncio convence"
+                "anúncio convence",
+                "narrar, descrever, expor, argumentar, instruir"
               ]
             },
             {
@@ -490,22 +509,26 @@
     },
     {
       "id": "em-por-texto-imagem-grafico",
-      "nome": "Aula 4 · Texto, imagem e gráfico juntos",
-      "modulo": "Módulo 1 · Ler e entender",
-      "descricao": "Módulo 1 · aula 4 de 5 · 15 min",
+      "nome": "Aula 4 · Linguagem verbal e não verbal",
+      "modulo": "Módulo 1 · Leitura e interpretação de textos",
+      "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H18 e H21 do Enem",
       "moduloId": "em-por-m1",
+      "habilidades": [
+        "H18",
+        "H21"
+      ],
       "bncc": [
         "EM13LGG103",
         "EM13LP14",
         "EF69LP17"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "O meme que chega no grupo, o anúncio na parada de ônibus, o cartaz do posto de saúde, a charge que alguém compartilhou, o gráfico da conta de luz, o infográfico da notícia sobre preços. Ler bem esses textos é entender o que a imagem acrescenta à frase e o que os números estão de fato mostrando."
+              "Charges, tirinhas, cartazes, anúncios e infográficos estão entre os textos mais frequentes da prova de Linguagens do Enem. As questões pedem a relação entre imagem e texto verbal, o efeito de humor ou de crítica e a leitura dos dados de um gráfico ou infográfico. O erro mais comum é interpretar apenas uma das linguagens e ignorar o que a outra acrescenta."
             ]
           },
           {
@@ -534,7 +557,7 @@
             ]
           }
         ],
-        "introducao": "Meme, cartaz de campanha, tirinha, infográfico, a conta de luz com o gráfico do consumo: hoje quase todo texto mistura palavras, imagens e números. Nesta aula você aprende a ler essas linguagens juntas, a achar o humor e a crítica de uma charge e a desconfiar de gráfico que exagera.",
+        "introducao": "Boa parte dos textos atuais combina palavras, imagens e números. Nesta aula: linguagem verbal e não verbal, textos multimodais, tirinha, charge e meme, infográfico e leitura crítica de gráficos.",
         "mapaMental": {
           "centro": "Texto, imagem e números",
           "ramos": [
@@ -642,23 +665,29 @@
     },
     {
       "id": "em-por-revisao-leitura",
-      "nome": "Aula 5 · Revisão do módulo: ler e entender",
-      "modulo": "Módulo 1 · Ler e entender",
-      "descricao": "Módulo 1 · aula 5 de 5 · 15 min",
+      "nome": "Aula 5 · Revisão: leitura e interpretação de textos",
+      "modulo": "Módulo 1 · Leitura e interpretação de textos",
+      "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H18, H19, H21 e H22 do Enem",
       "moduloId": "em-por-m1",
+      "habilidades": [
+        "H18",
+        "H19",
+        "H21",
+        "H22"
+      ],
       "bncc": [
         "EM13LP01",
         "EM13LP02",
         "EM13LP06",
         "EM13LGG103"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "Num só dia, você lê a mensagem do grupo da família, o aviso do condomínio, a bula do remédio, a notícia compartilhada e o gráfico da conta de luz. A leitura de verdade é assim: misturada, rápida e cheia de entrelinhas. O desafio é perceber, em cada texto, qual pergunta fazer primeiro."
+              "Na prova, cada texto exige uma estratégia diferente de leitura, e a questão não indica qual. Por isso a revisão traz os textos e as perguntas misturados, como no Enem. O treino é identificar rapidamente o gênero, a finalidade e o que a questão pede antes de examinar as alternativas."
             ]
           },
           {
@@ -676,13 +705,13 @@
           {
             "titulo": "Como usar esta revisão",
             "texto": [
-              "Faça a rodada com calma e leia o comentário de cada alternativa errada: ele diz exatamente onde estava a pegadinha. O que você errar volta na Revisão, com uma ficha para ler antes. Depois disso, a Prova final de Português está esperando no fim do mapa."
+              "Leia o comentário de cada alternativa errada: ele indica exatamente onde está a falha de leitura. Os temas errados voltam no modo Revisão, acompanhados de uma ficha de estudo. A prova final de Português fica no fim do mapa: 30 questões de todo o curso, 45 minutos e 60% de acertos para aprovação."
             ]
           }
         ],
-        "introducao": "Fechamento do módulo: agora os textos vêm misturados, como no dia a dia. Um aviso, uma bula, um post irônico, um gráfico, uma notícia: cada um pede uma das ferramentas que você treinou. É o melhor aquecimento para a Prova final de Português.",
+        "introducao": "Revisão do Módulo 1, com questões que misturam os conteúdos: tema e ideia principal, inferência, gêneros e tipos textuais e linguagem verbal e não verbal. É a preparação para a prova final da disciplina.",
         "mapaMental": {
-          "centro": "Revisão do módulo",
+          "centro": "Leitura e interpretação",
           "ramos": [
             {
               "titulo": "Gênero",
@@ -5554,181 +5583,181 @@
   "pares": [
     {
       "id": "em-por-tema-ideia-principal-par-01",
-      "tema": "Assunto, tema e ideia principal",
+      "tema": "Tema, ideia principal, fato e opinião",
       "termo": "Assunto",
       "definicao": "Do que o texto fala"
     },
     {
       "id": "em-por-tema-ideia-principal-par-02",
-      "tema": "Assunto, tema e ideia principal",
+      "tema": "Tema, ideia principal, fato e opinião",
       "termo": "Tema",
       "definicao": "O recorte do assunto"
     },
     {
       "id": "em-por-tema-ideia-principal-par-03",
-      "tema": "Assunto, tema e ideia principal",
+      "tema": "Tema, ideia principal, fato e opinião",
       "termo": "Tópico frasal",
       "definicao": "Frase que anuncia a ideia do parágrafo"
     },
     {
       "id": "em-por-tema-ideia-principal-par-04",
-      "tema": "Assunto, tema e ideia principal",
+      "tema": "Tema, ideia principal, fato e opinião",
       "termo": "Paráfrase",
       "definicao": "Mesmo sentido, outras palavras"
     },
     {
       "id": "em-por-inferencia-par-01",
-      "tema": "Ler nas entrelinhas: inferência",
+      "tema": "Inferência: pressupostos e subentendidos",
       "termo": "Explícito",
       "definicao": "Está escrito"
     },
     {
       "id": "em-por-inferencia-par-02",
-      "tema": "Ler nas entrelinhas: inferência",
+      "tema": "Inferência: pressupostos e subentendidos",
       "termo": "Implícito",
       "definicao": "Deduz-se pelas pistas"
     },
     {
       "id": "em-por-inferencia-par-03",
-      "tema": "Ler nas entrelinhas: inferência",
+      "tema": "Inferência: pressupostos e subentendidos",
       "termo": "Pressuposto",
       "definicao": "O que a frase dá como certo"
     },
     {
       "id": "em-por-inferencia-par-04",
-      "tema": "Ler nas entrelinhas: inferência",
+      "tema": "Inferência: pressupostos e subentendidos",
       "termo": "Inferência",
       "definicao": "Conclusão apoiada no texto"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-01",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Receita",
       "definicao": "Ensinar a fazer"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-02",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Notícia",
       "definicao": "Informar um fato"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-03",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Suporte",
       "definicao": "Onde o texto circula"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-04",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Intergenericidade",
       "definicao": "Um gênero com a forma de outro"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-05",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Narrar",
       "definicao": "Encadear ações no tempo"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-06",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Descrever",
       "definicao": "Mostrar como algo é"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-07",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Expor",
       "definicao": "Explicar um conceito"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-08",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Texto injuntivo",
       "definicao": "Orientar o leitor a fazer"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-09",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Posologia",
       "definicao": "Quanto tomar e de quanto em quanto tempo"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-10",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Contraindicação",
       "definicao": "Situação em que o remédio não deve ser usado"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-11",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Locatário",
       "definicao": "Quem paga o aluguel para morar"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-12",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Locador",
       "definicao": "Dono que aluga o imóvel"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-13",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Lide",
       "definicao": "Primeiro parágrafo da notícia"
     },
     {
       "id": "em-por-generos-dia-a-dia-par-14",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "termo": "Vencimento",
       "definicao": "Último dia para pagar sem multa"
     },
     {
       "id": "em-por-texto-imagem-grafico-par-01",
-      "tema": "Texto, imagem e gráfico juntos",
+      "tema": "Linguagem verbal e não verbal",
       "termo": "Linguagem não verbal",
       "definicao": "Imagens, cores e gestos"
     },
     {
       "id": "em-por-texto-imagem-grafico-par-02",
-      "tema": "Texto, imagem e gráfico juntos",
+      "tema": "Linguagem verbal e não verbal",
       "termo": "Texto multimodal",
       "definicao": "Palavra e imagem juntas"
     },
     {
       "id": "em-por-texto-imagem-grafico-par-03",
-      "tema": "Texto, imagem e gráfico juntos",
+      "tema": "Linguagem verbal e não verbal",
       "termo": "Charge",
       "definicao": "Humor crítico sobre fato atual"
     },
     {
       "id": "em-por-texto-imagem-grafico-par-04",
-      "tema": "Texto, imagem e gráfico juntos",
+      "tema": "Linguagem verbal e não verbal",
       "termo": "Gráfico de setores",
       "definicao": "Partes de um todo"
     },
     {
       "id": "em-por-revisao-leitura-par-01",
-      "tema": "Revisão do módulo: ler e entender",
+      "tema": "Revisão: leitura e interpretação de textos",
       "termo": "Tema",
       "definicao": "Recorte do assunto"
     },
     {
       "id": "em-por-revisao-leitura-par-02",
-      "tema": "Revisão do módulo: ler e entender",
+      "tema": "Revisão: leitura e interpretação de textos",
       "termo": "Inferência",
       "definicao": "Conclusão com apoio no texto"
     },
     {
       "id": "em-por-revisao-leitura-par-03",
-      "tema": "Revisão do módulo: ler e entender",
+      "tema": "Revisão: leitura e interpretação de textos",
       "termo": "Finalidade",
       "definicao": "Para que o gênero serve"
     },
     {
       "id": "em-por-revisao-leitura-par-04",
-      "tema": "Revisão do módulo: ler e entender",
+      "tema": "Revisão: leitura e interpretação de textos",
       "termo": "Injuntivo",
       "definicao": "Orienta o leitor"
     }
@@ -5736,147 +5765,147 @@
   "verdadeiroFalso": [
     {
       "id": "em-por-tema-ideia-principal-vf-01",
-      "tema": "Assunto, tema e ideia principal",
+      "tema": "Tema, ideia principal, fato e opinião",
       "afirmacao": "Dois textos podem ter o mesmo assunto e temas diferentes.",
       "verdadeira": true,
       "explicacao": "O recorte muda."
     },
     {
       "id": "em-por-tema-ideia-principal-vf-02",
-      "tema": "Assunto, tema e ideia principal",
+      "tema": "Tema, ideia principal, fato e opinião",
       "afirmacao": "Trocar \"muitos\" por \"todos\" mantém o sentido.",
       "verdadeira": false,
       "explicacao": "Isso generaliza."
     },
     {
       "id": "em-por-tema-ideia-principal-vf-03",
-      "tema": "Assunto, tema e ideia principal",
+      "tema": "Tema, ideia principal, fato e opinião",
       "afirmacao": "\"Embora\" e \"apesar de\" têm valor parecido.",
       "verdadeira": true,
       "explicacao": "Os dois indicam concessão."
     },
     {
       "id": "em-por-inferencia-vf-01",
-      "tema": "Ler nas entrelinhas: inferência",
+      "tema": "Inferência: pressupostos e subentendidos",
       "afirmacao": "\"Deixou de fumar\" pressupõe que a pessoa fumava.",
       "verdadeira": true,
       "explicacao": "A mudança revela o antes."
     },
     {
       "id": "em-por-inferencia-vf-02",
-      "tema": "Ler nas entrelinhas: inferência",
+      "tema": "Inferência: pressupostos e subentendidos",
       "afirmacao": "Inferir é inventar algo que o texto não sugere.",
       "verdadeira": false,
       "explicacao": "Isso é extrapolar."
     },
     {
       "id": "em-por-inferencia-vf-03",
-      "tema": "Ler nas entrelinhas: inferência",
+      "tema": "Inferência: pressupostos e subentendidos",
       "afirmacao": "O humor de muitas tiras está na quebra de expectativa.",
       "verdadeira": true,
       "explicacao": "O implícito faz rir."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-01",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "O mesmo assunto pode aparecer em gêneros diferentes.",
       "verdadeira": true,
       "explicacao": "Gênero depende da finalidade."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-02",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "Rubricas são marcas típicas da notícia.",
       "verdadeira": false,
       "explicacao": "São do texto teatral."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-03",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "Um poema pode ter a forma de uma receita.",
       "verdadeira": true,
       "explicacao": "É intergenericidade."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-04",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "Um conto pode narrar e descrever.",
       "verdadeira": true,
       "explicacao": "Gêneros misturam tipos."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-05",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "O imperativo é típico da descrição.",
       "verdadeira": false,
       "explicacao": "É típico da injunção."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-06",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "\"Portanto\" costuma introduzir a conclusão de um argumento.",
       "verdadeira": true,
       "explicacao": "É conectivo conclusivo."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-07",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "Na notícia, a opinião de quem escreve não aparece; a de entrevistados vem entre aspas.",
       "verdadeira": true,
       "explicacao": "A notícia relata o fato em linguagem impessoal."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-08",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "Banco pede senha por mensagem quando a conta vai ser bloqueada.",
       "verdadeira": false,
       "explicacao": "Banco não pede senha por mensagem: esse é um sinal de golpe."
     },
     {
       "id": "em-por-generos-dia-a-dia-vf-09",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "afirmacao": "\"A cada 8 horas\" quer dizer 3 doses por dia.",
       "verdadeira": true,
       "explicacao": "24 ÷ 8 = 3."
     },
     {
       "id": "em-por-texto-imagem-grafico-vf-01",
-      "tema": "Texto, imagem e gráfico juntos",
+      "tema": "Linguagem verbal e não verbal",
       "afirmacao": "O humor da tirinha costuma vir da quebra de expectativa.",
       "verdadeira": true,
       "explicacao": "A virada surpreende."
     },
     {
       "id": "em-por-texto-imagem-grafico-vf-02",
-      "tema": "Texto, imagem e gráfico juntos",
+      "tema": "Linguagem verbal e não verbal",
       "afirmacao": "Num texto multimodal, a imagem é só enfeite.",
       "verdadeira": false,
       "explicacao": "Ela constrói o sentido."
     },
     {
       "id": "em-por-texto-imagem-grafico-vf-03",
-      "tema": "Texto, imagem e gráfico juntos",
+      "tema": "Linguagem verbal e não verbal",
       "afirmacao": "O gráfico de linhas mostra evolução no tempo.",
       "verdadeira": true,
       "explicacao": "A linha acompanha o tempo."
     },
     {
       "id": "em-por-revisao-leitura-vf-01",
-      "tema": "Revisão do módulo: ler e entender",
+      "tema": "Revisão: leitura e interpretação de textos",
       "afirmacao": "\"Continua morando\" pressupõe que já morava.",
       "verdadeira": true,
       "explicacao": "Verbo de permanência."
     },
     {
       "id": "em-por-revisao-leitura-vf-02",
-      "tema": "Revisão do módulo: ler e entender",
+      "tema": "Revisão: leitura e interpretação de textos",
       "afirmacao": "Uma charge pode ser entendida sem conhecer o fato atual.",
       "verdadeira": false,
       "explicacao": "Ela depende do contexto."
     },
     {
       "id": "em-por-revisao-leitura-vf-03",
-      "tema": "Revisão do módulo: ler e entender",
+      "tema": "Revisão: leitura e interpretação de textos",
       "afirmacao": "Ironia diz o contrário do que quer dizer.",
       "verdadeira": true,
       "explicacao": "É crítica disfarçada."
@@ -5885,7 +5914,7 @@
   "sequencias": [
     {
       "id": "em-por-tema-ideia-principal-seq-01",
-      "tema": "Assunto, tema e ideia principal",
+      "tema": "Tema, ideia principal, fato e opinião",
       "titulo": "Responder a uma questão de leitura",
       "itens": [
         "Ler o comando",
@@ -5897,7 +5926,7 @@
     },
     {
       "id": "em-por-inferencia-seq-01",
-      "tema": "Ler nas entrelinhas: inferência",
+      "tema": "Inferência: pressupostos e subentendidos",
       "titulo": "Fazer uma inferência segura",
       "itens": [
         "Ler o trecho com atenção",
@@ -5909,7 +5938,7 @@
     },
     {
       "id": "em-por-generos-dia-a-dia-seq-01",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "titulo": "Identificar um gênero",
       "itens": [
         "Perguntar para que o texto serve",
@@ -5921,7 +5950,7 @@
     },
     {
       "id": "em-por-generos-dia-a-dia-seq-02",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "titulo": "Descobrir o tipo predominante",
       "itens": [
         "Ler o trecho inteiro",
@@ -5933,7 +5962,7 @@
     },
     {
       "id": "em-por-texto-imagem-grafico-seq-01",
-      "tema": "Texto, imagem e gráfico juntos",
+      "tema": "Linguagem verbal e não verbal",
       "titulo": "Ler um infográfico",
       "itens": [
         "Ler o título",
@@ -5945,7 +5974,7 @@
     },
     {
       "id": "em-por-revisao-leitura-seq-01",
-      "tema": "Revisão do módulo: ler e entender",
+      "tema": "Revisão: leitura e interpretação de textos",
       "titulo": "Resolver uma questão de leitura",
       "itens": [
         "Ler o comando",
@@ -5959,7 +5988,7 @@
   "adivinhas": [
     {
       "id": "em-por-generos-dia-a-dia-adv-01",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "dificuldade": "facil",
       "resposta": "Bula",
       "aceitas": [
@@ -5974,7 +6003,7 @@
     },
     {
       "id": "em-por-generos-dia-a-dia-adv-02",
-      "tema": "Gêneros do dia a dia: aviso, bula, contrato e notícia",
+      "tema": "Gêneros e tipos textuais",
       "dificuldade": "medio",
       "resposta": "Cláusula",
       "aceitas": [

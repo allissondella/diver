@@ -5,7 +5,13 @@
 
 ---
 
-## 2026-10-14 · Sala Ensino Médio, "Sempre dá tempo": Onda 0
+## 2026-10-15 · Sala Ensino Médio: revisão de tom e grade completa
+- **Pedido:** "da a impressão que estamos tratando crianças"; disciplinas sérias (Português, Matemática...), sem o "Sempre dá tempo", nomes iguais aos do colégio, ligação clara com o Enem e o vestibular; "pode mandar bala e criar as aulas".
+- **Feito (tom):** sala "Ensino Médio · Base para o Enem"; cursos "Ensino Médio · <Disciplina>"; aulas com nome de conteúdo, 30 min e habilidades do Enem na descrição; "Como o conteúdo é cobrado" no artigo; Plano de estudos, Avaliação de nivelamento (Nível básico, intermediário, avançado), Prova de suficiência, Boletim da disciplina; conquistas e tutoriais reescritos; `metaPadrao` saiu. Ids e chaves internas mantidos.
+- **Grade nova:** 178 aulas em 12 disciplinas (Filosofia e Sociologia separadas), `docs/cadernos/ensino-medio-mapa-curricular.md`.
+- **Próximo:** escrever os módulos, um commit por módulo; testes; `simular`; PR com prévia.
+
+## 2026-10-14 · Sala Ensino Médio: Onda 0 (tom revisto em 2026-10-15)
 - **Pedido:** "Hoje vamos subir outra sala/curso" (prompt da sala Ensino Médio); Etapa 1 (plano) aprovada com "manda bala".
 - **Feito:**
   - sala `ensino-medio` com subtexto, "Meu caminho", as duas portas, estados dos módulos e "Liberar quando quiser" (`js/caminho.js`, `css/caminho.css`);

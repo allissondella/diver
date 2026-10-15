@@ -10,7 +10,8 @@
  * O id da fase não muda (ele não leva número): dá para reordenar as fases sem perder o histórico.
  *
  * Só mexe em fases que têm "modulo". Curso sem módulos (ex.: "Comece por aqui") fica como está.
- * Campos da trilha (opcionais): "rotuloAula" ("Aula" ou "Oficina"; padrão "Aula").
+ * Campos da trilha (opcionais): "rotuloAula" ("Aula" ou "Oficina"; padrão "Aula") e "habilidadesDe" (ex.: "do Enem":
+ * "treina as habilidades H1 e H3 do Enem", na sala Ensino Médio, para ligar a aula à prova).
  * Campos da fase (opcionais): "minutos" (padrão 35) e "habilidades" (ex.: ["H8", "H9"]).
  *
  * Uso:
@@ -26,11 +27,13 @@ function listar(itens) {
   return `${itens.slice(0, -1).join(', ')} e ${itens[itens.length - 1]}`;
 }
 
-function frasesHabilidades(hab, oficina) {
+function frasesHabilidades(hab, oficina, de = '') {
   if (!Array.isArray(hab) || !hab.length) return '';
   const varias = hab.length > 1 || /[–-]/.test(hab[0]);
-  if (oficina) return `treina ${varias ? 'as competências' : 'a competência'} ${listar(hab)}`;
-  return `treina ${varias ? 'as habilidades' : 'a habilidade'} ${listar(hab)}`;
+  const fim = de ? ` ${de}` : '';
+  // "C1", "C2"... são competências (Redação do Enem), mesmo fora das oficinas
+  if (oficina || hab.every((x) => /^C\d/.test(x))) return `treina ${varias ? 'as competências' : 'a competência'} ${listar(hab)}${fim}`;
+  return `treina ${varias ? 'as habilidades' : 'a habilidade'} ${listar(hab)}${fim}`;
 }
 
 export function numerar(trilha) {
@@ -66,7 +69,7 @@ export function numerar(trilha) {
     const novo = {
       modulo: `Módulo ${m} · ${t}`,
       nome: `${rotulo} ${numero} · ${tirarNumero(f.nome, rotulo)}`,
-      descricao: [`Módulo ${m}`, `${rotulo.toLowerCase()} ${posicao[t]} de ${tamanho[t]}`, `${f.minutos || 35} min`, frasesHabilidades(f.habilidades, oficina)].filter(Boolean).join(' · '),
+      descricao: [`Módulo ${m}`, `${rotulo.toLowerCase()} ${posicao[t]} de ${tamanho[t]}`, `${f.minutos || 35} min`, frasesHabilidades(f.habilidades, oficina, trilha.habilidadesDe)].filter(Boolean).join(' · '),
     };
     if (novo.modulo !== f.modulo || novo.nome !== f.nome || novo.descricao !== f.descricao) mudou += 1;
     Object.assign(f, novo);

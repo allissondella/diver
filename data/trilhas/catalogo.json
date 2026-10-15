@@ -5625,8 +5625,8 @@
     {
       "arquivo": "em-matematica.json",
       "id": "em-matematica",
-      "nome": "Matemática · Retomada",
-      "descricao": "Para quem quer voltar a estudar Matemática: contas do dia a dia, porcentagem, juros, álgebra, geometria e dados, do básico ao Ensino Médio, em aulas de 15 minutos.",
+      "nome": "Ensino Médio · Matemática",
+      "descricao": "Matemática do Ensino Médio em quatro módulos: números e operações, álgebra e funções, geometria e medidas, estatística e probabilidade. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
       "categoria": "Ensino Médio",
       "fasesLivres": true,
       "prova": {
@@ -5638,65 +5638,96 @@
         "reforco": true
       },
       "rotuloAula": "Aula",
-      "metaPadrao": 5,
       "fases": [
         {
           "id": "em-mat-contas-sem-medo",
-          "nome": "Aula 1 · Contas sem medo: operações, negativos e estimativa",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 1 · Números inteiros: operações, propriedades e estimativa",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 1 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 1 de 6 · 30 min · treina as habilidades H1, H3, H4 e H5 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H4",
+            "H5"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-fracoes-decimais",
-          "nome": "Aula 2 · Frações e decimais na prática",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 2 · Frações e números decimais",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 2 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 2 de 6 · 30 min · treina as habilidades H1 e H3 do Enem",
+          "habilidades": [
+            "H1",
+            "H3"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-porcentagem",
-          "nome": "Aula 3 · Porcentagem: aumento e desconto",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 3 · Porcentagem e variação percentual",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 3 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 3 de 6 · 30 min · treina as habilidades H1, H3 e H4 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H4"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-razao-regra-de-tres",
           "nome": "Aula 4 · Razão, proporção e regra de três",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 4 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 4 de 6 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-juros-parcelas",
-          "nome": "Aula 5 · Juros, parcelas e o preço à vista",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 5 · Matemática financeira: juros simples e compostos",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 5 de 6 · 20 min",
-          "minutos": 20,
+          "descricao": "Módulo 1 · aula 5 de 6 · 30 min · treina as habilidades H3, H5 e H18 do Enem",
+          "habilidades": [
+            "H3",
+            "H5",
+            "H18"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-revisao-numeros",
-          "nome": "Aula 6 · Revisão do módulo: contas do dia a dia",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 6 · Revisão: números e operações",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 6 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 6 de 6 · 30 min · treina as habilidades H1, H3, H4, H16 e H18 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H4",
+            "H16",
+            "H18"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         }
@@ -5714,8 +5745,8 @@
     {
       "arquivo": "em-portugues.json",
       "id": "em-portugues",
-      "nome": "Português · Retomada",
-      "descricao": "Para quem quer voltar a estudar Português: ler e entender textos do dia a dia, gramática no uso e a língua viva, do básico ao Ensino Médio, em aulas de 15 minutos.",
+      "nome": "Ensino Médio · Português",
+      "descricao": "Língua Portuguesa do Ensino Médio em três módulos: leitura e interpretação de textos, gramática, e linguagem, variação e argumentação. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
       "categoria": "Ensino Médio",
       "fasesLivres": true,
       "prova": {
@@ -5727,55 +5758,76 @@
         "reforco": true
       },
       "rotuloAula": "Aula",
-      "metaPadrao": 5,
       "fases": [
         {
           "id": "em-por-tema-ideia-principal",
-          "nome": "Aula 1 · Assunto, tema e ideia principal",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 1 · Tema, ideia principal, fato e opinião",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 1 de 5 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H18 e H22 do Enem",
+          "habilidades": [
+            "H18",
+            "H22"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-por-inferencia",
-          "nome": "Aula 2 · Ler nas entrelinhas: inferência",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 2 · Inferência: pressupostos e subentendidos",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 2 de 5 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H18 e H21 do Enem",
+          "habilidades": [
+            "H18",
+            "H21"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-por-generos-dia-a-dia",
-          "nome": "Aula 3 · Gêneros do dia a dia: aviso, bula, contrato e notícia",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 3 · Gêneros e tipos textuais",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 3 de 5 · 20 min",
-          "minutos": 20,
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H18 e H20 do Enem",
+          "habilidades": [
+            "H18",
+            "H20"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-por-texto-imagem-grafico",
-          "nome": "Aula 4 · Texto, imagem e gráfico juntos",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 4 · Linguagem verbal e não verbal",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 4 de 5 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H18 e H21 do Enem",
+          "habilidades": [
+            "H18",
+            "H21"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-por-revisao-leitura",
-          "nome": "Aula 5 · Revisão do módulo: ler e entender",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 5 · Revisão: leitura e interpretação de textos",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 5 de 5 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H18, H19, H21 e H22 do Enem",
+          "habilidades": [
+            "H18",
+            "H19",
+            "H21",
+            "H22"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         }

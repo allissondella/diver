@@ -1,7 +1,15 @@
-# Caderno da sala: Ensino Médio · "Sempre dá tempo"
+# Caderno da sala: Ensino Médio
 
-> Cursos: `data/trilhas/em-<matéria>.json` (ainda não existem) · Plano: `docs/cadernos/ensino-medio-mapa-curricular.md` · Regras gerais: `docs/cadernos/LEIA-ME.md` · Jeito de ensinar: `docs/cadernos/professor-diver.md` · Direitos autorais: `docs/CONTEUDO_CURSINHO.md`
-> **Plano aprovado em 2026-10-14 ("manda bala"), com as recomendações deste caderno.** Onda 0 em andamento.
+> Cursos: `data/trilhas/em-<disciplina>.json` · Plano: `docs/cadernos/ensino-medio-mapa-curricular.md` · Regras gerais: `docs/cadernos/LEIA-ME.md` · Jeito de ensinar: `docs/cadernos/professor-diver.md` · Direitos autorais: `docs/CONTEUDO_CURSINHO.md`
+> **Plano aprovado em 2026-10-14 ("manda bala"), com as recomendações deste caderno.** Onda 0 publicada em 2026-10-14. **Tom revisto em 2026-10-15** (seção abaixo): o que este caderno diz sobre "retomada", "Sempre dá tempo", "Mapa de partida", "Teste rápido", "Meu caminho" e "Meu retorno" vale como histórico; os nomes atuais estão no mapa curricular, seção 2.
+
+## Revisão de tom (pedido do usuário, 2026-10-15)
+
+- **O pedido:** "da a impressão que estamos tratando crianças". Disciplinas sérias, com o devido peso (Português, Matemática...), sem o "Sempre dá tempo", com nomes iguais aos do colégio, "para a pessoa ver que disso ela vai para uma prova de Enem, de vestibular". E criar as aulas sem esperar novo OK ("pode mandar bala").
+- **O que mudou na tela:** sala "Ensino Médio" com o rótulo "Base para o Enem" e uma descrição que liga o conteúdo à prova; cursos "Ensino Médio · <Disciplina>" (na sala, só "Matemática", "Física"); aulas com nome de conteúdo; descrição com as habilidades do Enem; "Plano de estudos", "Avaliação de nivelamento" (Nível básico, intermediário e avançado), "Prova de suficiência", "Boletim da disciplina", "Módulos para revisar", "Bem-vindo de volta"; estados Recomendado, Disponível, Mais adiante ("Liberar módulo") e Dominado; conquistas Primeira aula, Nivelamento concluído, Retorno aos estudos e Disciplina concluída; tutoriais da sala e do nivelamento reescritos (versão 2, reaparecem para todos).
+- **O que mudou no conteúdo:** "Onde isso aparece na sua vida" virou **"Como o conteúdo é cobrado"** (Enem e vestibulares); aulas de 30 minutos; meta diária volta ao padrão do app (o `metaPadrao: 5` saiu); a grade cresceu para 178 aulas em 12 disciplinas (Filosofia e Sociologia separadas; História com Idade Moderna e século XIX; Química com orgânica; Redação só com o texto dissertativo-argumentativo; Literatura com todas as escolas).
+- **O que não mudou:** ids de cursos, aulas, questões, conquistas e módulos da Onda 0; as chaves internas (`prog.modulos`, `prog.retomada`, `diver:v1:retomada`, `diver:v1:mapa-partida`, rota `#mapa-partida`); o comportamento de Mergulho, Simulado, Revisão e Prova. O progresso de quem já começou continua.
+- **Decidido por mim (contar ao usuário):** separar Filosofia e Sociologia (no colégio são duas disciplinas); tirar da Redação as aulas de currículo, carta e e-mail (não caem no Enem) e de Português "Texto no trabalho" e "Classes de palavras" (trocadas por ortografia, coesão, funções e figuras de linguagem, que caem); acrescentar Idade Moderna e século XIX em História, orgânica e polaridade em Química, divisão celular e herança em Biologia; usar a Travessia por inteiro nas aulas que antes só a "adaptavam".
 
 ## Público e objetivo
 
@@ -340,4 +348,4 @@ O comportamento de Mergulho, Simulado, Revisão e Prova **não muda** em nenhum 
 - **Especialista de revisão humana: a definir** (a Travessia também não tem). Fato específico (data, lei, valor, fórmula, nome) leva `revisar`.
 - `fila.mjs simular` já lê `data/diagnostica/ensino-medio.json` (9 questões, US$ 0,33); conferir o `baixar` para esse arquivo quando o lote voltar.
 - **Decisões tomadas por mim na Onda 0 (contar ao usuário):** o Mapa é um módulo próprio (`js/mapa-partida.js`) que usa a conta da Diagnóstica, em vez de tornar a tela do Enem configurável (menos risco para um fluxo aprovado); as notas do Mapa ainda não entram no Cronograma (passo do Enem; fica com a decisão f); campo `bncc` separado das `habilidades`; o sorteio da prova com reforço entra no `quiz.js` por uma opção (`questoesProva`), sem mudar a prova dos outros cursos; o Teste rápido não dá XP (o prêmio é o módulo dominado) e não entra na repetição espaçada; "Meu retorno" aparece com a prova aprovada ou com os módulos em dia depois de alguma aula ou Teste rápido (só o Mapa não basta).
-- Onda 1: o resto de Matemática (18 aulas) e de Português (10 aulas), com o OK.
+- Onda 1: o resto de Matemática (18 aulas) e de Português (10 aulas), com o OK. **2026-10-15:** substituída pela grade completa da revisão de tom (167 aulas novas, sem esperar OK, a pedido do usuário).

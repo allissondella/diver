@@ -1,11 +1,11 @@
 {
   "id": "em-matematica",
-  "nome": "Matemática · Retomada",
-  "descricao": "Para quem quer voltar a estudar Matemática: contas do dia a dia, porcentagem, juros, álgebra, geometria e dados, do básico ao Ensino Médio, em aulas de 15 minutos.",
+  "nome": "Ensino Médio · Matemática",
+  "descricao": "Matemática do Ensino Médio em quatro módulos: números e operações, álgebra e funções, geometria e medidas, estatística e probabilidade. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
   "categoria": "Ensino Médio",
   "fasesLivres": true,
   "rotuloAula": "Aula",
-  "metaPadrao": 5,
+  "habilidadesDe": "do Enem",
   "prova": {
     "questoes": 30,
     "minutos": 45,
@@ -17,21 +17,27 @@
   "fases": [
     {
       "id": "em-mat-contas-sem-medo",
-      "nome": "Aula 1 · Contas sem medo: operações, negativos e estimativa",
-      "modulo": "Módulo 1 · Números e contas do dia a dia",
-      "descricao": "Módulo 1 · aula 1 de 6 · 15 min",
+      "nome": "Aula 1 · Números inteiros: operações, propriedades e estimativa",
+      "modulo": "Módulo 1 · Números e operações",
+      "descricao": "Módulo 1 · aula 1 de 6 · 30 min · treina as habilidades H1, H3, H4 e H5 do Enem",
       "moduloId": "em-mat-m1",
+      "habilidades": [
+        "H1",
+        "H3",
+        "H4",
+        "H5"
+      ],
       "bncc": [
         "EF07MA04",
         "EF06MA03"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "O extrato do banco que fica no vermelho, o troco do mercado, a temperatura que cai abaixo de zero numa madrugada fria, a divisão da conta do bar entre os amigos. Em todas essas situações você soma, subtrai, multiplica e divide, muitas vezes de cabeça e com pressa. O objetivo aqui é fazer essas contas com segurança e perceber na hora quando um resultado não faz sentido."
+              "No Enem, as operações com inteiros raramente aparecem isoladas: estão dentro de situações-problema com saldo bancário, variação de temperatura, altitude, balanço de uma empresa ou cálculo de troco. A Matriz de Referência cobra a leitura dessas situações e a avaliação da razoabilidade de um resultado numérico. Nos vestibulares, as mesmas ideias aparecem em expressões numéricas e em problemas de várias etapas, em que um erro de sinal ou de ordem das operações compromete todo o cálculo."
             ]
           },
           {
@@ -62,9 +68,9 @@
             ]
           }
         ],
-        "introducao": "Faz tempo que você não pega numa conta? Tudo bem: a matemática do dia a dia continua a mesma. Nesta aula você retoma as quatro operações, os números negativos, a ordem certa das contas e o hábito que mais evita erro: estimar antes de calcular.",
+        "introducao": "Os números inteiros e as quatro operações são a base de toda a Matemática do Ensino Médio. Nesta aula: operações com números positivos e negativos, regra de sinais, ordem das operações em expressões numéricas e a estimativa como ferramenta para verificar resultados.",
         "mapaMental": {
-          "centro": "Contas sem medo",
+          "centro": "Números inteiros",
           "ramos": [
             {
               "titulo": "Negativos",
@@ -166,7 +172,7 @@
         "perolas": [
           "Dívida mais depósito: o maior manda no sinal.",
           "Na dúvida, desenhe a reta numérica.",
-          "Resultado impossível é pista de erro, não de genialidade."
+          "Resultado impossível indica erro de cálculo."
         ],
         "reforcar": [
           "regra de sinais",
@@ -177,22 +183,26 @@
     },
     {
       "id": "em-mat-fracoes-decimais",
-      "nome": "Aula 2 · Frações e decimais na prática",
-      "modulo": "Módulo 1 · Números e contas do dia a dia",
-      "descricao": "Módulo 1 · aula 2 de 6 · 15 min",
+      "nome": "Aula 2 · Frações e números decimais",
+      "modulo": "Módulo 1 · Números e operações",
+      "descricao": "Módulo 1 · aula 2 de 6 · 30 min · treina as habilidades H1 e H3 do Enem",
       "moduloId": "em-mat-m1",
+      "habilidades": [
+        "H1",
+        "H3"
+      ],
       "bncc": [
         "EF06MA07",
         "EF06MA08",
         "EF06MA09"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "Dividir a pizza, fazer uma receita pela metade, entender \"1/3 de desconto\", conferir o preço do quilo no açougue, saber se 600 mL de suco saem mais caros que a garrafa de 2 L. A fração e o número decimal são dois jeitos de escrever a mesma ideia: uma parte de um inteiro."
+              "No Enem, frações e decimais aparecem em receitas, medidas, preços por unidade, tanques e reservatórios, divisão de valores e leitura de dados. As questões costumam exigir duas operações encadeadas, como calcular uma fração \"do que sobrou\" ou comparar o preço por litro de embalagens diferentes. Dominar as operações e a conversão entre fração, decimal e porcentagem é pré-requisito para os conteúdos seguintes."
             ]
           },
           {
@@ -223,7 +233,7 @@
             ]
           }
         ],
-        "introducao": "Meia xícara, litro e meio, um terço de desconto, R$ 4,80 o quilo: frações e decimais estão em toda receita, etiqueta e nota fiscal. Nesta aula você retoma o que cada um quer dizer e como fazer contas com eles sem tropeçar na vírgula.",
+        "introducao": "Frações e números decimais representam partes de um inteiro e aparecem em toda a Matemática do Ensino Médio, da porcentagem à probabilidade. Nesta aula: significado da fração, frações equivalentes, comparação, operações, fração de uma quantidade, números decimais e conversão entre as duas formas.",
         "mapaMental": {
           "centro": "Frações e decimais",
           "ramos": [
@@ -344,22 +354,27 @@
     },
     {
       "id": "em-mat-porcentagem",
-      "nome": "Aula 3 · Porcentagem: aumento e desconto",
-      "modulo": "Módulo 1 · Números e contas do dia a dia",
-      "descricao": "Módulo 1 · aula 3 de 6 · 15 min",
+      "nome": "Aula 3 · Porcentagem e variação percentual",
+      "modulo": "Módulo 1 · Números e operações",
+      "descricao": "Módulo 1 · aula 3 de 6 · 30 min · treina as habilidades H1, H3 e H4 do Enem",
       "moduloId": "em-mat-m1",
+      "habilidades": [
+        "H1",
+        "H3",
+        "H4"
+      ],
       "bncc": [
         "EF07MA02",
         "EF09MA05",
         "EM13MAT104"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "Promoção de loja, reajuste do aluguel e do salário, imposto destacado na nota fiscal, juros do cartão, pesquisa de intenção de voto. Quem entende porcentagem percebe quando o \"desconto de 50%\" veio depois de um aumento e consegue comparar ofertas sem calculadora."
+              "As questões de porcentagem aparecem em contextos de preços, reajustes salariais, impostos, juros, pesquisas eleitorais e indicadores econômicos. As armadilhas mais frequentes são somar porcentagens sucessivas, calcular o valor original subtraindo a porcentagem do valor final e confundir pontos percentuais com variação percentual. O fator multiplicativo resolve a maioria desses casos com uma única conta."
             ]
           },
           {
@@ -395,7 +410,7 @@
             ]
           }
         ],
-        "introducao": "\"20% off\", \"reajuste de 6%\", \"tributos aproximados: 30%\": a porcentagem é a conta que mais aparece na vida adulta. Nesta aula você retoma como calcular uma porcentagem de cabeça, como somar aumentos e descontos sem cair em armadilha e como descobrir o preço antes da promoção.",
+        "introducao": "Porcentagem é um dos conteúdos mais cobrados no Enem e nos vestibulares. Nesta aula: cálculo de porcentagem, porcentagem de uma parte em relação ao todo, fator multiplicativo, aumentos e descontos sucessivos, cálculo do valor original e diferença entre ponto percentual e variação percentual.",
         "mapaMental": {
           "centro": "Porcentagem",
           "ramos": [
@@ -497,7 +512,7 @@
         "perolas": [
           "Desconto de 15%: você paga 85%.",
           "Sobe 20% e desce 20%: fica 4% mais barato.",
-          "\"Metade do dobro\" não é promoção."
+          "Desconto sobre um preço já aumentado pode não ser desconto."
         ],
         "reforcar": [
           "fator multiplicativo",
@@ -509,21 +524,26 @@
     {
       "id": "em-mat-razao-regra-de-tres",
       "nome": "Aula 4 · Razão, proporção e regra de três",
-      "modulo": "Módulo 1 · Números e contas do dia a dia",
-      "descricao": "Módulo 1 · aula 4 de 6 · 15 min",
+      "modulo": "Módulo 1 · Números e operações",
+      "descricao": "Módulo 1 · aula 4 de 6 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
       "moduloId": "em-mat-m1",
+      "habilidades": [
+        "H15",
+        "H16",
+        "H17"
+      ],
       "bncc": [
         "EF08MA12",
         "EF08MA13",
         "EF07MA17"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "Receita para mais gente, consumo de combustível, preço por quilo, velocidade de uma viagem, a planta de um apartamento, a divisão do lucro entre sócios. Sempre que duas quantidades andam juntas, uma razão ou uma regra de três resolve."
+              "A Matriz de Referência do Enem dedica uma competência inteira à variação de grandezas: identificar a relação de dependência, resolver problemas com grandezas direta ou inversamente proporcionais e usar essas relações para argumentar. Aparecem com frequência consumo de combustível, escala de mapas e plantas, receitas, produção industrial e divisão de lucros. O passo decisivo é identificar se a relação é direta ou inversa antes de montar a conta."
             ]
           },
           {
@@ -553,9 +573,9 @@
             ]
           }
         ],
-        "introducao": "Dobrar uma receita, calcular quantos quilômetros o carro faz por litro, ler a escala de um mapa, dividir um lucro de forma justa: tudo isso é proporção. Nesta aula você retoma a razão, a proporção e a regra de três, inclusive o caso em que uma grandeza sobe e a outra desce.",
+        "introducao": "Razão e proporção comparam grandezas e estão na base da regra de três, da escala, da velocidade e da densidade. Nesta aula: razão, proporção e propriedade fundamental, escala, grandezas diretamente e inversamente proporcionais, regra de três simples e composta e divisão em partes proporcionais.",
         "mapaMental": {
-          "centro": "Proporção no dia a dia",
+          "centro": "Razão e proporção",
           "ramos": [
             {
               "titulo": "Razão",
@@ -668,21 +688,26 @@
     },
     {
       "id": "em-mat-juros-parcelas",
-      "nome": "Aula 5 · Juros, parcelas e o preço à vista",
-      "modulo": "Módulo 1 · Números e contas do dia a dia",
-      "descricao": "Módulo 1 · aula 5 de 6 · 20 min",
+      "nome": "Aula 5 · Matemática financeira: juros simples e compostos",
+      "modulo": "Módulo 1 · Números e operações",
+      "descricao": "Módulo 1 · aula 5 de 6 · 30 min · treina as habilidades H3, H5 e H18 do Enem",
       "moduloId": "em-mat-m1",
+      "habilidades": [
+        "H3",
+        "H5",
+        "H18"
+      ],
       "bncc": [
         "EM13MAT303",
         "EM13MAT104"
       ],
-      "minutos": 20,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "Crediário de loja, fatura do cartão, empréstimo, conta paga com atraso, financiamento de moto ou de casa, poupança. Em todos esses casos, o dinheiro tem um preço no tempo: quem paga depois quase sempre paga mais, e quem guarda recebe um pouco a mais."
+              "O Enem cobra matemática financeira em situações de compra parcelada, cartão de crédito, financiamento, empréstimo e investimento, muitas vezes pedindo a melhor decisão entre duas propostas. Os vestibulares acrescentam o cálculo do montante em juros compostos e a comparação com juros simples. Em todas as questões, a base do cálculo (o capital, o saldo devedor ou o preço à vista) precisa estar clara."
             ]
           },
           {
@@ -713,9 +738,9 @@
             ]
           }
         ],
-        "introducao": "\"Em 12 vezes sem juros\", \"só o mínimo da fatura\", \"entrada mais parcelas\": decidir como pagar uma compra é uma conta de juros. Nesta aula você retoma juros simples e compostos e aprende a comparar o preço à vista com o parcelado antes de assinar.",
+        "introducao": "A matemática financeira aplica porcentagem a situações que dependem do tempo. Nesta aula: capital, taxa, juros e montante; juros simples; juros compostos; multa e juros de mora; comparação entre pagamento à vista e parcelado; e custo total de um empréstimo.",
         "mapaMental": {
-          "centro": "Juros e parcelas",
+          "centro": "Matemática financeira",
           "ramos": [
             {
               "titulo": "Palavras",
@@ -825,10 +850,17 @@
     },
     {
       "id": "em-mat-revisao-numeros",
-      "nome": "Aula 6 · Revisão do módulo: contas do dia a dia",
-      "modulo": "Módulo 1 · Números e contas do dia a dia",
-      "descricao": "Módulo 1 · aula 6 de 6 · 15 min",
+      "nome": "Aula 6 · Revisão: números e operações",
+      "modulo": "Módulo 1 · Números e operações",
+      "descricao": "Módulo 1 · aula 6 de 6 · 30 min · treina as habilidades H1, H3, H4, H16 e H18 do Enem",
       "moduloId": "em-mat-m1",
+      "habilidades": [
+        "H1",
+        "H3",
+        "H4",
+        "H16",
+        "H18"
+      ],
       "bncc": [
         "EF07MA04",
         "EF06MA07",
@@ -836,13 +868,13 @@
         "EF08MA12",
         "EM13MAT303"
       ],
-      "minutos": 15,
+      "minutos": 30,
       "resumo": {
         "secoes": [
           {
-            "titulo": "Onde isso aparece na sua vida",
+            "titulo": "Como o conteúdo é cobrado",
             "texto": [
-              "Pense num mês comum: o salário entra, o aluguel e as contas saem, o mercado tem promoção, a receita do almoço de domingo precisa render para mais gente e a loja oferece um parcelado \"sem juros\". Cada situação usa uma ferramenta do módulo, e o desafio é escolher a ferramenta certa sem ninguém avisar qual é."
+              "Nas provas, os conteúdos deste módulo aparecem combinados: uma mesma questão pode exigir porcentagem e fração, ou proporção e juros. Por isso a revisão traz as questões misturadas, sem indicar qual ferramenta usar. O treino é reconhecer, pelo enunciado, o conteúdo envolvido e montar a estratégia antes de calcular."
             ]
           },
           {
@@ -854,19 +886,19 @@
           {
             "titulo": "Os erros que mais aparecem",
             "texto": [
-              "Os mesmos tropeços se repetem em todo o módulo. Somar porcentagens seguidas (20% e 10% de desconto não dão 30%). Achar o preço original subtraindo a porcentagem do preço novo, em vez de dividir pelo fator. Tratar como direta uma relação inversa (mais gente na obra, menos dias). Comparar totais de embalagens de tamanhos diferentes, em vez do preço por unidade (por quilo ou por litro). E errar a vírgula, que a estimativa pega na hora."
+              "Os mesmos tropeços se repetem em todo o módulo. Somar porcentagens seguidas (20% e 10% de desconto não dão 30%). Achar o preço original subtraindo a porcentagem do preço novo, em vez de dividir pelo fator. Tratar como direta uma relação inversa (mais gente na obra, menos dias). Comparar totais de embalagens de tamanhos diferentes, em vez do preço por unidade (por quilo ou por litro). E errar a vírgula, que a estimativa pega na hora. Na matemática financeira, os tropeços são aplicar a taxa sempre sobre o capital inicial quando o regime é composto e usar uma taxa anual num prazo contado em meses, sem converter a taxa para o mesmo período do prazo."
             ]
           },
           {
             "titulo": "Como usar esta revisão",
             "texto": [
-              "Faça a rodada sem pressa e, a cada erro, leia o comentário da alternativa: ele diz exatamente qual foi o tropeço. Os temas que você errou voltam na Revisão, com uma ficha para ler antes. Se tudo correr bem, a Prova final da matéria já está esperando por você no fim do mapa: 30 questões de todo o curso, 45 minutos e 60% para passar. E, se você já domina o assunto, não precisa esperar: a prova está lá desde o primeiro dia para quem quiser testar o que sabe."
+              "A cada erro, leia o comentário da alternativa: ele indica exatamente onde está a falha de raciocínio. Os temas errados voltam no modo Revisão, acompanhados de uma ficha de estudo. A prova final da disciplina fica no fim do mapa: 30 questões de todo o curso, 45 minutos e 60% de acertos para aprovação. Quem já domina o conteúdo pode fazê-la a qualquer momento."
             ]
           }
         ],
-        "introducao": "Fechamento do módulo: as contas do mês inteiro numa aula só. Aqui as questões vêm misturadas, como na vida: num mesmo dia aparecem saldo, desconto, receita e parcela. É o melhor treino para a Prova final da matéria.",
+        "introducao": "Revisão do Módulo 1, com questões que misturam os conteúdos: números inteiros, frações e decimais, porcentagem, razão e proporção e matemática financeira. É a preparação para a prova final da disciplina.",
         "mapaMental": {
-          "centro": "Revisão do módulo",
+          "centro": "Números e operações",
           "ramos": [
             {
               "titulo": "Sinais e ordem",
@@ -6687,121 +6719,121 @@
   "pares": [
     {
       "id": "em-mat-contas-sem-medo-par-01",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "termo": "Número inteiro",
       "definicao": "Inclui os negativos, o zero e os positivos"
     },
     {
       "id": "em-mat-contas-sem-medo-par-02",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "termo": "Módulo",
       "definicao": "Distância de um número até o zero"
     },
     {
       "id": "em-mat-contas-sem-medo-par-03",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "termo": "Variação",
       "definicao": "Valor final menos valor inicial"
     },
     {
       "id": "em-mat-contas-sem-medo-par-04",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "termo": "Distributiva",
       "definicao": "7 × 98 = 700 − 14"
     },
     {
       "id": "em-mat-contas-sem-medo-par-05",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "termo": "Ordem de grandeza",
       "definicao": "Potência de 10 mais próxima do valor"
     },
     {
       "id": "em-mat-contas-sem-medo-par-06",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "termo": "Arredondar para cima",
       "definicao": "Quando o vizinho da direita vai de 5 a 9"
     },
     {
       "id": "em-mat-contas-sem-medo-par-07",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "termo": "Compensação",
       "definicao": "Um fator sobe, o outro desce"
     },
     {
       "id": "em-mat-contas-sem-medo-par-08",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "termo": "Razoabilidade",
       "definicao": "O resultado é possível na vida real?"
     },
     {
       "id": "em-mat-fracoes-decimais-par-01",
-      "tema": "Frações e decimais na prática",
+      "tema": "Frações e números decimais",
       "termo": "Denominador",
       "definicao": "Em quantas partes iguais o todo foi dividido"
     },
     {
       "id": "em-mat-fracoes-decimais-par-02",
-      "tema": "Frações e decimais na prática",
+      "tema": "Frações e números decimais",
       "termo": "Numerador",
       "definicao": "Quantas partes foram tomadas"
     },
     {
       "id": "em-mat-fracoes-decimais-par-03",
-      "tema": "Frações e decimais na prática",
+      "tema": "Frações e números decimais",
       "termo": "Dízima periódica",
       "definicao": "0,333... = 1/3"
     },
     {
       "id": "em-mat-fracoes-decimais-par-04",
-      "tema": "Frações e decimais na prática",
+      "tema": "Frações e números decimais",
       "termo": "Frações equivalentes",
       "definicao": "1/2 = 2/4 = 50/100"
     },
     {
       "id": "em-mat-porcentagem-par-01",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "termo": "Parte sobre o todo",
       "definicao": "Que porcentagem uma parte representa"
     },
     {
       "id": "em-mat-porcentagem-par-02",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "termo": "Pontos percentuais",
       "definicao": "Diferença entre duas taxas"
     },
     {
       "id": "em-mat-porcentagem-par-03",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "termo": "25%",
       "definicao": "Um quarto"
     },
     {
       "id": "em-mat-porcentagem-par-04",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "termo": "Todo",
       "definicao": "Parte dividida pela taxa"
     },
     {
       "id": "em-mat-porcentagem-par-05",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "termo": "Fator multiplicativo",
       "definicao": "Número que aplica a variação em um passo"
     },
     {
       "id": "em-mat-porcentagem-par-06",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "termo": "Descontos sucessivos",
       "definicao": "Multiplicam os fatores"
     },
     {
       "id": "em-mat-porcentagem-par-07",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "termo": "Variação percentual",
       "definicao": "Diferença dividida pelo valor inicial"
     },
     {
       "id": "em-mat-porcentagem-par-08",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "termo": "Desfazer 20% de desconto",
       "definicao": "Aumento de 25%"
     },
@@ -6855,145 +6887,145 @@
     },
     {
       "id": "em-mat-juros-parcelas-par-01",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Capital",
       "definicao": "Valor aplicado ou emprestado"
     },
     {
       "id": "em-mat-juros-parcelas-par-02",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Montante",
       "definicao": "Capital mais juros"
     },
     {
       "id": "em-mat-juros-parcelas-par-03",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Juros simples",
       "definicao": "Mesmo valor a cada período"
     },
     {
       "id": "em-mat-juros-parcelas-par-04",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Mesma base de tempo",
       "definicao": "Taxa e tempo na mesma unidade"
     },
     {
       "id": "em-mat-juros-parcelas-par-05",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Juro sobre juro",
       "definicao": "Juros compostos"
     },
     {
       "id": "em-mat-juros-parcelas-par-06",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Progressão geométrica",
       "definicao": "Montante que se multiplica pelo mesmo fator"
     },
     {
       "id": "em-mat-juros-parcelas-par-07",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Taxas equivalentes",
       "definicao": "Mesmo montante no mesmo prazo"
     },
     {
       "id": "em-mat-juros-parcelas-par-08",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Gráfico dos juros compostos",
       "definicao": "Curva que sobe cada vez mais rápido"
     },
     {
       "id": "em-mat-juros-parcelas-par-09",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Valor presente",
       "definicao": "Valor futuro trazido para hoje"
     },
     {
       "id": "em-mat-juros-parcelas-par-10",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Amortização",
       "definicao": "Parte da parcela que reduz a dívida"
     },
     {
       "id": "em-mat-juros-parcelas-par-11",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "SAC",
       "definicao": "Amortização constante e parcelas decrescentes"
     },
     {
       "id": "em-mat-juros-parcelas-par-12",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "termo": "Price",
       "definicao": "Parcelas iguais"
     },
     {
       "id": "em-mat-revisao-numeros-par-01",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Crescimento por fator",
       "definicao": "Inicial × fator elevado ao número de períodos"
     },
     {
       "id": "em-mat-revisao-numeros-par-02",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Saldo líquido",
       "definicao": "Entradas menos saídas no mesmo período"
     },
     {
       "id": "em-mat-revisao-numeros-par-03",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Excesso de 100%",
       "definicao": "Quem está nas duas listas"
     },
     {
       "id": "em-mat-revisao-numeros-par-04",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Prazo de entrega",
       "definicao": "Arredonde para cima"
     },
     {
       "id": "em-mat-revisao-numeros-par-05",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Direta ou inversa",
       "definicao": "A primeira decisão antes da conta"
     },
     {
       "id": "em-mat-revisao-numeros-par-06",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Tempo total",
       "definicao": "Inclui as paradas"
     },
     {
       "id": "em-mat-revisao-numeros-par-07",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Taxa unitária",
       "definicao": "Quanto vale uma unidade"
     },
     {
       "id": "em-mat-revisao-numeros-par-08",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Parte fixa",
       "definicao": "Desconte antes de dividir"
     },
     {
       "id": "em-mat-revisao-numeros-par-09",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Fator multiplicativo",
       "definicao": "1 + taxa ou 1 − taxa"
     },
     {
       "id": "em-mat-revisao-numeros-par-10",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Ganho real",
       "definicao": "Fator do reajuste ÷ fator da inflação"
     },
     {
       "id": "em-mat-revisao-numeros-par-11",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Juro sobre juro",
       "definicao": "Juros compostos"
     },
     {
       "id": "em-mat-revisao-numeros-par-12",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "termo": "Valor presente",
       "definicao": "Futuro dividido pelo fator"
     }
@@ -7001,105 +7033,105 @@
   "verdadeiroFalso": [
     {
       "id": "em-mat-contas-sem-medo-vf-01",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "afirmacao": "Entre −2 e −10, o maior é −2.",
       "verdadeira": true,
       "explicacao": "Está mais perto do zero, à direita na reta."
     },
     {
       "id": "em-mat-contas-sem-medo-vf-02",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "afirmacao": "Na soma, −3 − 5 dá +8 porque menos com menos dá mais.",
       "verdadeira": false,
       "explicacao": "Na soma os negativos se juntam: −8. A regra de sinais é da multiplicação e da divisão."
     },
     {
       "id": "em-mat-contas-sem-medo-vf-03",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "afirmacao": "20 − 2 × 5 vale 10.",
       "verdadeira": true,
       "explicacao": "A multiplicação vem antes da subtração."
     },
     {
       "id": "em-mat-contas-sem-medo-vf-04",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "afirmacao": "A ordem de grandeza de 230.000 é 10⁵.",
       "verdadeira": true,
       "explicacao": "2,3 × 10⁵, com 2,3 abaixo de 3,16."
     },
     {
       "id": "em-mat-contas-sem-medo-vf-05",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "afirmacao": "Uma média de notas de 0 a 10 pode dar 12.",
       "verdadeira": false,
       "explicacao": "A média fica entre a menor e a maior nota."
     },
     {
       "id": "em-mat-contas-sem-medo-vf-06",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "afirmacao": "49 × 21 é aproximadamente 1.000.",
       "verdadeira": true,
       "explicacao": "50 × 20 = 1.000; o exato é 1.029."
     },
     {
       "id": "em-mat-fracoes-decimais-vf-01",
-      "tema": "Frações e decimais na prática",
+      "tema": "Frações e números decimais",
       "afirmacao": "1/4 + 1/6 = 2/10.",
       "verdadeira": false,
       "explicacao": "É preciso denominador comum: 3/12 + 2/12 = 5/12."
     },
     {
       "id": "em-mat-fracoes-decimais-vf-02",
-      "tema": "Frações e decimais na prática",
+      "tema": "Frações e números decimais",
       "afirmacao": "Dividir por 1/8 é o mesmo que multiplicar por 8.",
       "verdadeira": true,
       "explicacao": "Dividir por uma fração é multiplicar pelo inverso."
     },
     {
       "id": "em-mat-fracoes-decimais-vf-03",
-      "tema": "Frações e decimais na prática",
+      "tema": "Frações e números decimais",
       "afirmacao": "0,4 × 0,25 = 0,1.",
       "verdadeira": true,
       "explicacao": "4 × 25 = 100, com três casas decimais: 0,100."
     },
     {
       "id": "em-mat-porcentagem-vf-01",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "afirmacao": "20% de 50% de um valor é 10% desse valor.",
       "verdadeira": true,
       "explicacao": "0,2 × 0,5 = 0,1."
     },
     {
       "id": "em-mat-porcentagem-vf-02",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "afirmacao": "Uma taxa que passa de 10% para 12% aumenta 2%.",
       "verdadeira": false,
       "explicacao": "Aumenta 2 pontos percentuais, ou 20%."
     },
     {
       "id": "em-mat-porcentagem-vf-03",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "afirmacao": "Se 40% de um número é 120, o número é 300.",
       "verdadeira": true,
       "explicacao": "120 ÷ 0,4."
     },
     {
       "id": "em-mat-porcentagem-vf-04",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "afirmacao": "Dois aumentos seguidos de 10% somam 21%.",
       "verdadeira": true,
       "explicacao": "1,1 × 1,1 = 1,21."
     },
     {
       "id": "em-mat-porcentagem-vf-05",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "afirmacao": "Subir 20% e depois cair 20% volta ao preço inicial.",
       "verdadeira": false,
       "explicacao": "1,2 × 0,8 = 0,96."
     },
     {
       "id": "em-mat-porcentagem-vf-06",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "afirmacao": "Para achar o preço antes de um aumento, divide-se pelo fator.",
       "verdadeira": true,
       "explicacao": "150 ÷ 1,25 = 120."
@@ -7148,112 +7180,112 @@
     },
     {
       "id": "em-mat-juros-parcelas-vf-01",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "A juros simples de 5% ao mês, um capital dobra em 20 meses.",
       "verdadeira": true,
       "explicacao": "Juros de 100% em 20 meses."
     },
     {
       "id": "em-mat-juros-parcelas-vf-02",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "2% ao mês por 1 ano rendem 2% de juros simples.",
       "verdadeira": false,
       "explicacao": "São 12 meses: 24%."
     },
     {
       "id": "em-mat-juros-parcelas-vf-03",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "O gráfico do montante a juros simples é uma reta.",
       "verdadeira": true,
       "explicacao": "Os acréscimos são iguais."
     },
     {
       "id": "em-mat-juros-parcelas-vf-04",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "No primeiro período, juros simples e compostos rendem o mesmo.",
       "verdadeira": true,
       "explicacao": "Ainda não há juros acumulados."
     },
     {
       "id": "em-mat-juros-parcelas-vf-05",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "1% ao mês em juros compostos equivale a 12% ao ano.",
       "verdadeira": false,
       "explicacao": "Equivale a cerca de 12,7%."
     },
     {
       "id": "em-mat-juros-parcelas-vf-06",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "R$ 1.000 a 10% ao mês viram R$ 1.331 em 3 meses.",
       "verdadeira": true,
       "explicacao": "1,1³ = 1,331."
     },
     {
       "id": "em-mat-juros-parcelas-vf-07",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "R$ 1.100 daqui a um mês valem R$ 1.000 hoje, a 10% ao mês.",
       "verdadeira": true,
       "explicacao": "1.100 ÷ 1,1."
     },
     {
       "id": "em-mat-juros-parcelas-vf-08",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "No sistema Price, a amortização é igual em todas as parcelas.",
       "verdadeira": false,
       "explicacao": "As parcelas é que são iguais."
     },
     {
       "id": "em-mat-juros-parcelas-vf-09",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "afirmacao": "O custo efetivo total inclui tarifas e seguros.",
       "verdadeira": true,
       "explicacao": "Vai além dos juros."
     },
     {
       "id": "em-mat-revisao-numeros-vf-01",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "afirmacao": "2⁴ × 3² × 5 tem 30 divisores.",
       "verdadeira": true,
       "explicacao": "(4 + 1)(2 + 1)(1 + 1) = 30."
     },
     {
       "id": "em-mat-revisao-numeros-vf-02",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "afirmacao": "Se 70% usam celular e 50% computador, então 35% usam os dois.",
       "verdadeira": false,
       "explicacao": "Se todos usam pelo menos um, 20% usam os dois."
     },
     {
       "id": "em-mat-revisao-numeros-vf-03",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "afirmacao": "1 h 30 min equivalem a 1,5 h.",
       "verdadeira": true,
       "explicacao": "30 minutos são meia hora."
     },
     {
       "id": "em-mat-revisao-numeros-vf-04",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "afirmacao": "125 minutos são 1,25 hora.",
       "verdadeira": false,
       "explicacao": "São 2 h 5 min."
     },
     {
       "id": "em-mat-revisao-numeros-vf-05",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "afirmacao": "Dois descontos seguidos de 20% valem 36%.",
       "verdadeira": true,
       "explicacao": "0,8 × 0,8 = 0,64."
     },
     {
       "id": "em-mat-revisao-numeros-vf-06",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "afirmacao": "Reajuste de 10% com inflação de 10% dá ganho real.",
       "verdadeira": false,
       "explicacao": "O poder de compra fica igual."
     },
     {
       "id": "em-mat-revisao-numeros-vf-07",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "afirmacao": "R$ 1.331 em 3 meses, a 10% ao mês, valem hoje R$ 1.000.",
       "verdadeira": true,
       "explicacao": "1.331 ÷ 1,1³."
@@ -7262,7 +7294,7 @@
   "sequencias": [
     {
       "id": "em-mat-contas-sem-medo-seq-01",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "titulo": "Ordem das operações",
       "itens": [
         "Parênteses",
@@ -7274,7 +7306,7 @@
     },
     {
       "id": "em-mat-contas-sem-medo-seq-02",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "titulo": "Estimar o número de latas de tinta",
       "itens": [
         "Arredondar as medidas da parede",
@@ -7286,7 +7318,7 @@
     },
     {
       "id": "em-mat-fracoes-decimais-seq-01",
-      "tema": "Frações e decimais na prática",
+      "tema": "Frações e números decimais",
       "titulo": "Somar duas frações",
       "itens": [
         "Achar o MMC dos denominadores",
@@ -7298,7 +7330,7 @@
     },
     {
       "id": "em-mat-porcentagem-seq-01",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "titulo": "Descobrir que porcentagem uma parte representa",
       "itens": [
         "Ler de que todo a pergunta fala",
@@ -7310,7 +7342,7 @@
     },
     {
       "id": "em-mat-porcentagem-seq-02",
-      "tema": "Porcentagem: aumento e desconto",
+      "tema": "Porcentagem e variação percentual",
       "titulo": "Calcular o preço depois de várias variações",
       "itens": [
         "Escrever o fator de cada variação",
@@ -7346,7 +7378,7 @@
     },
     {
       "id": "em-mat-juros-parcelas-seq-01",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "titulo": "Calcular os juros simples de uma aplicação",
       "itens": [
         "Identificar capital, taxa e tempo",
@@ -7358,7 +7390,7 @@
     },
     {
       "id": "em-mat-juros-parcelas-seq-02",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "titulo": "Calcular o montante a juros compostos",
       "itens": [
         "Escrever o fator 1 + taxa",
@@ -7370,7 +7402,7 @@
     },
     {
       "id": "em-mat-juros-parcelas-seq-03",
-      "tema": "Juros, parcelas e o preço à vista",
+      "tema": "Matemática financeira: juros simples e compostos",
       "titulo": "Comparar à vista e a prazo",
       "itens": [
         "Anotar a taxa que o dinheiro rende",
@@ -7382,7 +7414,7 @@
     },
     {
       "id": "em-mat-revisao-numeros-seq-01",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "titulo": "Resolver um problema de números",
       "itens": [
         "Ler a pergunta e escolher a ferramenta",
@@ -7394,7 +7426,7 @@
     },
     {
       "id": "em-mat-revisao-numeros-seq-02",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "titulo": "Escolher a ferramenta certa",
       "itens": [
         "Ler a pergunta até o fim",
@@ -7407,7 +7439,7 @@
     },
     {
       "id": "em-mat-revisao-numeros-seq-03",
-      "tema": "Revisão do módulo: contas do dia a dia",
+      "tema": "Revisão: números e operações",
       "titulo": "Resolver uma questão de finanças",
       "itens": [
         "Identificar valores, taxa e prazo",
@@ -7421,7 +7453,7 @@
   "adivinhas": [
     {
       "id": "em-mat-contas-sem-medo-adv-01",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "dificuldade": "facil",
       "resposta": "Módulo",
       "aceitas": [
@@ -7437,7 +7469,7 @@
     },
     {
       "id": "em-mat-contas-sem-medo-adv-02",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "dificuldade": "facil",
       "resposta": "Estimativa",
       "aceitas": [
@@ -7453,7 +7485,7 @@
     },
     {
       "id": "em-mat-contas-sem-medo-adv-03",
-      "tema": "Contas sem medo: operações, negativos e estimativa",
+      "tema": "Números inteiros: operações, propriedades e estimativa",
       "dificuldade": "medio",
       "resposta": "Variação",
       "aceitas": [
