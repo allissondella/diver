@@ -269,6 +269,7 @@
 
       <!-- ============ INÍCIO ============ -->
       <section id="tela-inicio" class="tela" aria-labelledby="titulo-inicio">
+        <div class="inicio-cabeca">
         <header class="hero">
           <div class="hero__mascote mascote" data-mascote role="img" aria-label="Diver, o mascote: um pinguim de rosto branco, bico laranja e penacho amarelo saindo pelos lados da máscara, com roupa de mergulho, máscara amarela e snorkel"></div>
           <h1 id="titulo-inicio" class="hero__logo" tabindex="-1">Diver</h1>
@@ -276,11 +277,14 @@
           <p class="hero__texto">Estudar dá um frio na barriga, mas a água está ótima. Escolha uma sala e vá fundo: aqui, aprender é a parte divertida.</p>
         </header>
 
-        <!-- "Continuar de onde parou": o curso e a fase da última vez (ou o "parabéns" de quem terminou). Sem histórico, fica escondido. -->
-        <div id="continuar" class="continuar-area" hidden></div>
+        <div class="inicio-topo">
+          <!-- "Continuar de onde parou": o curso e a fase da última vez (ou o "parabéns" de quem terminou). Sem histórico, fica escondido. -->
+          <div id="continuar" class="continuar-area" hidden></div>
 
-        <!-- Sala Ensino Médio: "Avaliação de nivelamento" (js/caminho.js), só para quem ainda não estudou nela -->
-        <div id="inicio-retomada" class="retomada-area" hidden></div>
+          <!-- Sala Ensino Médio: "Avaliação de nivelamento" (js/caminho.js), só para quem ainda não estudou nela -->
+          <div id="inicio-retomada" class="retomada-area" hidden></div>
+        </div>
+        </div>
 
         <!-- As salas (js/grupos.js): só os nomes aqui; o conteúdo aparece quando a pessoa entra na sala -->
         <div id="inicio-cursos">
@@ -325,6 +329,8 @@
           </div>
         </div>
 
+        <!-- Onda 3: no computador, o mapa à esquerda e o status e as conquistas à direita; no celular, status → mapa → conquistas -->
+        <div class="painel-grade">
         <!-- Status do Diver nesta trilha -->
         <div class="cartao status">
           <div class="status__nivel">
@@ -353,6 +359,7 @@
           </div>
         </div>
 
+        <div class="painel-grade__mapa">
         <h2 class="secao-titulo">Mapa do mergulho</h2>
         <p id="mapa-sub" class="secao-sub">Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.</p>
         <ol id="mapa-fases" class="mapa"></ol>
@@ -363,12 +370,18 @@
           <a class="atalho" href="#revisao"><svg class="icone" aria-hidden="true"><use href="#i-revisao"/></svg><span><strong>Revisão</strong><span id="atalho-revisao">O que ficou pra trás</span></span></a>
           <a class="atalho" href="#jogos"><svg class="icone" aria-hidden="true"><use href="#i-controle"/></svg><span><strong>Sala de Jogos</strong><span>Mesmo conteúdo, outros jogos</span></span></a>
         </div>
+        </div>
 
+        <div class="painel-grade__conquistas">
         <h2 class="secao-titulo">Conquistas <span id="conquistas-contagem" class="contagem"></span></h2>
         <ul id="lista-conquistas" class="conquistas"></ul>
 
-        <div class="zona-perigo">
-          <button id="btn-zerar" class="botao botao--link" type="button">Zerar progresso desta trilha</button>
+        <details class="zona-perigo">
+          <summary>Zona de perigo</summary>
+          <p>Apaga o XP, as pérolas, as estrelas e as conquistas deste curso. Não dá para desfazer.</p>
+          <button id="btn-zerar" class="botao botao--perigo botao--pequeno" type="button">Zerar progresso desta trilha</button>
+        </details>
+        </div>
         </div>
       </section>
 
@@ -379,7 +392,10 @@
           <h1 id="simulado-titulo" tabindex="-1">Simulado</h1>
           <p class="area-cabeca__sub">Sem oxigênio, com cronômetro (1 minuto por questão) e nota de 0 a 10 no final. Treino de prova de verdade.</p>
         </header>
-        <div class="cartao modo">
+        <!-- Onda 3: no computador, montar e subir prova à esquerda; suas provas e o histórico numa coluna à direita -->
+        <div class="simulado-grade">
+        <div class="simulado-grade__principal">
+        <div class="cartao cartao--heroi modo modo--heroi">
           <div class="modo__cabeca">
             <span class="modo__icone modo__icone--simulado"><svg class="icone" aria-hidden="true"><use href="#i-relogio"/></svg></span>
             <div>
@@ -394,18 +410,24 @@
             <button id="btn-simulado" class="botao botao--primario" type="button">Começar simulado</button>
           </div>
         </div>
-        <div id="provas-enviadas" class="provas-enviadas"></div>
+        <div id="provas-antigas" class="provas-enviadas"></div>
+        </div>
+        <div class="simulado-grade__lado">
+        <div id="provas-enviadas" class="provas-enviadas" data-cabeca="provas-antigas"></div>
         <div class="cartao">
           <h2 class="cartao__titulo">Histórico de notas</h2>
           <div id="historico-simulados" class="historico"></div>
         </div>
+        </div>
+        </div>
       </section>
 
       <!-- ============ UPLOAD DE PROVA (montado pelo provas-enviadas.js) ============ -->
-      <section id="tela-upload-prova" class="tela" hidden aria-labelledby="upload-prova-titulo"></section>
+      <section id="tela-upload-prova" class="tela tela--estreita" hidden aria-labelledby="upload-prova-titulo"></section>
 
       <!-- ============ REVISÃO ============ -->
       <section id="tela-revisao" class="tela" hidden aria-labelledby="revisao-titulo">
+        <div class="cabeca-acao">
         <header class="area-cabeca">
           <span class="rotulo" id="revisao-trilha"></span>
           <h1 id="revisao-titulo" tabindex="-1">Revisão</h1>
@@ -416,6 +438,7 @@
             <svg class="icone" aria-hidden="true"><use href="#i-revisao"/></svg>
             Revisar agora
           </button>
+        </div>
         </div>
         <div class="cartao" id="revisao-fundo" hidden>
           <h2 class="cartao__titulo">Revisar a fundo</h2>
@@ -463,11 +486,11 @@
           </div>
           <div id="quiz-oxigenio" class="oxigenio" aria-live="polite"></div>
           <div id="quiz-timer" class="timer" hidden><svg class="icone" aria-hidden="true"><use href="#i-relogio"/></svg><span></span></div>
+          <span id="quiz-contador" class="quiz-contador"></span>
         </div>
 
         <div class="quiz-info">
           <span id="quiz-modo" class="rotulo"></span>
-          <span id="quiz-contador" class="quiz-contador"></span>
         </div>
 
         <article class="cartao questao">
@@ -497,13 +520,15 @@
               </div>
             </div>
             <div id="feedback-explicacao" class="feedback__explicacao"></div>
-            <button id="btn-continuar" class="botao botao--primario botao--largo" type="button">Continuar</button>
+            <div class="feedback__rodape">
+              <button id="btn-continuar" class="botao botao--primario botao--largo botao--grande" type="button">Continuar</button>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ============ RESUMO DA SESSÃO (quiz e jogos) ============ -->
-      <section id="tela-resumo" class="tela" hidden aria-labelledby="resumo-titulo">
+      <section id="tela-resumo" class="tela tela--estreita" hidden aria-labelledby="resumo-titulo">
         <header class="resumo-cabeca">
           <div class="resumo-cabeca__mascote mascote" data-mascote></div>
           <p id="resumo-rotulo" class="rotulo"></p>
@@ -533,7 +558,7 @@
 
         <div class="resumo-acoes">
           <button id="btn-resumo-principal" class="botao botao--primario botao--largo" type="button"></button>
-          <button id="btn-resumo-flash" class="botao botao--secundario botao--largo" type="button" hidden>🃏 Fixar com flashcards</button>
+          <button id="btn-resumo-flash" class="botao botao--secundario botao--largo" type="button" hidden><svg class="icone" aria-hidden="true"><use href="#i-cartas"/></svg>Fixar com flashcards</button>
           <button id="btn-resumo-detetive" class="botao botao--secundario botao--largo" type="button" hidden><svg class="icone" aria-hidden="true"><use href="#i-lupa"/></svg>Relaxar no detetive antes da prova</button>
           <button id="btn-resumo-revisar" class="botao botao--secundario botao--largo" type="button">Revisar erros</button>
           <button id="btn-resumo-mapa" class="botao botao--fantasma botao--largo" type="button">Voltar ao mapa</button>
@@ -545,7 +570,7 @@
       <section id="tela-senha" class="tela tela--conta" hidden aria-label="Criar sua senha"></section>
 
       <!-- ============ PROVA FINAL (app.js) E ADMIN (admin.js) ============ -->
-      <section id="tela-prova" class="tela" hidden aria-label="Prova final"></section>
+      <section id="tela-prova" class="tela tela--estreita" hidden aria-label="Prova final"></section>
       <section id="tela-admin" class="tela tela--larga" hidden aria-label="Pessoas e cursos"></section>
       <section id="tela-fila" class="tela tela--larga" hidden aria-label="Fila de Validação"></section>
 
@@ -555,7 +580,7 @@
       <section id="tela-cronograma" class="tela tela--larga" hidden aria-label="Cronograma"></section>
       <section id="tela-diagnostica" class="tela tela--larga" hidden aria-label="Avaliação Diagnóstica"></section>
       <section id="tela-mapa-partida" class="tela tela--larga" hidden aria-label="Avaliação de nivelamento"></section>
-      <section id="tela-foco" class="tela" hidden aria-label="Modo Foco"></section>
+      <section id="tela-foco" class="tela tela--estreita" hidden aria-label="Modo Foco"></section>
       <section id="tela-cursos" class="tela tela--larga" hidden aria-label="Cursos e trilhas"></section>
       <section id="tela-pdfs" class="tela tela--larga" hidden aria-label="PDFs"></section>
       <section id="tela-perfil" class="tela" hidden aria-label="Perfil"></section>

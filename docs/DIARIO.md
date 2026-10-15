@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-15 · Revisão de design, Onda 3 (layout por tela)
+- **Feito:** largura de 1120 px (720 na leitura); quiz com topo numa linha, feedback no fluxo e "Continuar" fixo no rodapé; resumo com 4 números; Início e Sala reorganizados; mapa do curso em 2 colunas no computador, status em fichas no celular, "Você está aqui", cabo contínuo até a aula atual, conquistas bloqueadas discretas e "Zona de perigo" fechada; "Antes de mergulhar" com barra de passos e leitura em 65ch; Simulado com coluna lateral; Revisão com o botão no cabeçalho; cartões de jogo iguais (duração em mono, 3 linhas, "Novo hoje" no canto); Tarefas com bordas que esmaecem e pontinhos; Calendário numa linha (duas no celular); Cronograma com botões no pé do cartão; Foco com anel de progresso; Perfil com tabela de verdade; barra lateral de 264 px e gaveta que trava o fundo; login no meio da tela.
+- **Correções no caminho:** o rodapé fixo do quiz não ficava fixo (a animação da tela deixava um `transform`), e o estilo do Plano de estudos quebrava a barra de passos do artigo no computador.
+- **Testes:** PC (1440), tablet (800) e celular (390) sem rolagem lateral e sem erro de página; testes de regressão do quiz, prova, nivelamento, laboratórios e jogos passaram; auditor OK. Fotos em `docs/fotos/design/onda-3/depois/`.
+- **Ficou de fora:** "Ler mais" nos comentários longos do quiz no celular (opcional no plano).
+- **Próximo:** o merge para produção é do usuário; depois, a Onda 4 (responsividade) com OK.
+
 ## 2026-10-15 · Revisão de design, Onda 2 (componentes)
 - **Feito:** botões numa família só (primário, secundário, fantasma, perigo, link; 36/44/52 px; foco, ativo, desabilitado e carregando com `UI.carregando` no login, simulado, PDF e cronograma); "Entrar" das salas turquesa; campos e `select` com aparência própria; cartões sem desfoque e com aninhamento sem borda (linhas da aula no mapa); `.tag` única; sprite com traço 2 e ícones novos no lugar de todos os emojis e glifos da interface; `.barra` + `UI.progresso` com brilho ao subir; toasts no canto (computador) e fora do oxigênio (celular); esqueleto nas salas e no curso enquanto baixa.
 - **Testes:** PC, celular, jogos com ícones trocados (Investigação, Tiro, Cardume, Caso Resolvido, Caça ao Tesouro, Cronograma) sem erro de página; auditor OK. Fotos em `docs/fotos/design/onda-2/depois/` (JPEG 1×; o "antes" é o "depois" da Onda 1).

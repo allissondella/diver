@@ -82,7 +82,7 @@ const Organizar = (() => {
 
     secao.append(
       UI.cabecalho('Organizar', 'Calendário', 'Provas, aulas, sessões de estudo e dias de descanso. Tarefas com prazo aparecem aqui também.'),
-      cabecaCal, filtros, h('div', { class: 'cal-layout' }, grade, painelDia),
+      h('div', { class: 'cal-topo' }, cabecaCal, filtros), h('div', { class: 'cal-layout' }, grade, painelDia), // Onda 3: uma linha no computador, duas no celular
       h('a', { class: 'cartao cal-atalho', href: '#cronograma' },
         icone('i-alvo'),
         h('span', {}, h('strong', { text: 'Montar meu cronograma' }), h('span', { class: 'texto-suave', text: ' · a data da prova, o seu tempo e as suas matérias viram um plano semana a semana' })),
@@ -273,6 +273,9 @@ const Organizar = (() => {
       const seg = Math.max(0, Math.round((foco.fase === 'rodando' ? foco.fim - Date.now() : foco.restante * 1000) / 1000));
       relogio.textContent = UI.formatarTempo(seg);
       relogio.classList.toggle('foco-relogio--pausa', foco.faseAtiva === 'pausa');
+      // Onda 3: o anel mostra quanto do bloco ainda falta (só desenho)
+      const total = (foco.faseAtiva === 'foco' ? foco.presetFoco : foco.presetPausa) * 60;
+      relogio.style.setProperty('--resta', total ? String(Math.min(1, seg / total)) : '1');
       relogio.setAttribute('aria-label', `${foco.faseAtiva === 'foco' ? 'Foco' : 'Pausa'}: ${UI.formatarTempo(seg)} restantes`);
       estadoTxt.textContent = foco.faseAtiva === 'pausa'
         ? `Pausa. ${UI.sortear(DICAS_PAUSA)}`

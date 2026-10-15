@@ -115,3 +115,57 @@
 
 /* Texto corrido do artigo numa largura confortável de leitura */
 .artigo__secao p, .artigo__secao li { max-width: var(--medida-leitura); line-height: var(--lh-leitura); }
+
+/* ---------- Onda 3: barra de passos do artigo e tipografia de leitura ---------- */
+/* .caminho e .caminho__lista também existem no "Plano de estudos" (caminho.css): aqui vale o artigo */
+.caminho.caminho--artigo { display: block; margin: 0 0 var(--esp-2); padding: 0; border: 0; background: none; box-shadow: none; }
+.caminho--artigo .caminho__lista { display: flex; flex-wrap: nowrap; gap: 0; grid-template-columns: none; }
+.caminho--artigo .caminho__item { align-items: center; gap: 0; }
+.caminho--artigo .caminho__passo { border-color: transparent; background: transparent; }
+.caminho--artigo .caminho__passo:hover { border-color: var(--borda-forte); background: var(--superficie-1); }
+.caminho--artigo .caminho__emoji {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--primaria) 40%, transparent);
+  background: var(--fundo-1);
+}
+.caminho--artigo .caminho__emoji .icone { width: 20px; height: 20px; }
+/* o "→" vira o fio que liga um passo ao outro */
+.caminho--artigo .caminho__seta {
+  flex: 0 0 var(--esp-4); height: 2px; font-size: 0; overflow: hidden;
+  background: color-mix(in srgb, var(--primaria) 40%, transparent);
+  align-self: center; margin-bottom: var(--esp-6);
+}
+.caminho--artigo .caminho__item--atual .caminho__passo { border-color: var(--primaria); background: var(--superficie-turquesa); }
+.caminho--artigo .caminho__item--atual .caminho__emoji { background: var(--primaria); border-color: var(--primaria); color: var(--texto-inverso); }
+.caminho--artigo .caminho__item--atual .caminho__nome { color: var(--primaria-clara); }
+@media (max-width: 767px) {
+  .caminho--artigo .caminho__lista {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin: 0 calc(-1 * var(--esp-4)); padding: 0 var(--esp-4);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black var(--esp-4), black calc(100% - var(--esp-6)), transparent);
+    mask-image: linear-gradient(90deg, transparent, black var(--esp-4), black calc(100% - var(--esp-6)), transparent);
+  }
+  .caminho--artigo .caminho__lista::-webkit-scrollbar { display: none; }
+  .caminho--artigo .caminho__item { flex: 0 0 auto; scroll-snap-align: start; }
+  .caminho--artigo .caminho__passo { min-width: 84px; padding: var(--esp-2); }
+  .caminho--artigo .caminho__nome { font-size: var(--t-sm); }
+  .caminho--artigo .caminho__seta { display: block; flex-basis: var(--esp-3); margin-bottom: var(--esp-5); }
+}
+
+/* Leitura: corpo em --t-md com entrelinha de leitura e no máximo 65 caracteres por linha */
+#dialogo-resumo .dialogo__corpo { font-size: var(--t-md); }
+#dialogo-resumo .resumo__intro,
+#dialogo-resumo .resumo__lista,
+.artigo__secao p,
+.artigo__secao li { max-width: var(--medida-leitura); line-height: var(--lh-leitura); }
+.artigo__secao .artigo__titulo { font-size: var(--t-xl); line-height: var(--lh-apertada); margin-bottom: var(--esp-3); }
+.artigo__dica,
+.artigo__citacao {
+  margin: var(--esp-3) 0;
+  padding: var(--esp-3) var(--esp-4);
+  border-left: 4px solid var(--destaque);
+  border-radius: 0 var(--raio-sm) var(--raio-sm) 0;
+  background: color-mix(in srgb, var(--destaque) 10%, transparent);
+  max-width: var(--medida-leitura);
+}
+.artigo__citacao { font-style: italic; color: var(--texto-2); }

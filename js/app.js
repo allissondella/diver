@@ -187,6 +187,7 @@ const App = (() => {
   function abrirMenu() {
     $('barra-lateral').classList.add('lateral--aberta');
     $('lateral-fundo').hidden = false;
+    document.body.classList.add('gaveta-aberta'); // Onda 3: o fundo não rola com a gaveta aberta
     $('btn-menu').setAttribute('aria-expanded', 'true');
     $('barra-lateral').querySelector('.lateral__nav a[aria-current]') ? $('barra-lateral').querySelector('.lateral__nav a[aria-current]').focus() : $('btn-fechar-menu').focus();
   }
@@ -195,6 +196,7 @@ const App = (() => {
     const aberta = $('barra-lateral').classList.contains('lateral--aberta');
     $('barra-lateral').classList.remove('lateral--aberta');
     $('lateral-fundo').hidden = true;
+    document.body.classList.remove('gaveta-aberta');
     $('btn-menu').setAttribute('aria-expanded', 'false');
     if (aberta && document.activeElement && $('barra-lateral').contains(document.activeElement)) $('btn-menu').focus();
   }
@@ -699,7 +701,7 @@ const App = (() => {
           h('p', { class: 'sala-cronograma__texto', text: temPlano
             ? 'Seu plano até a prova já está pronto. Confira o que estudar hoje e marque o que fez.'
             : 'O Diver monta um plano até a sua prova: matéria por matéria, com revisão, simulados e redação toda semana.' })),
-        h('button', { type: 'button', class: 'botao botao--primario sala-cronograma__botao', onclick: () => irPara('cronograma') },
+        h('button', { type: 'button', class: 'botao botao--link sala-cronograma__botao', onclick: () => irPara('cronograma') },
           icone('i-alvo'), temPlano ? 'Ver meu cronograma' : 'Montar meu cronograma'))
       : null;
     tela.append(...[
@@ -951,6 +953,9 @@ const App = (() => {
         ? 'Todas as fases estão abertas: escolha o tema que quer estudar. A ordem do mapa é só uma sugestão.'
         : 'Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.';
     mapa.classList.toggle('mapa--modulos', porModulo);
+    // "Você está aqui": a próxima aula (no Ensino Médio, a do plano de estudos), com borda turquesa no mapa
+    const atual = (Caminho.ehRetomada(trilha) && Caminho.proximaAula(trilha, prog)) || proximaAula();
+    estado.aulaAtual = atual ? atual.id : null;
     if (porModulo) renderizarMapaModulos(mapa, abertos);
     else trilha.fases.forEach((fase, i) => mapa.append(itemFase(fase, i)));
     if (trilha.questoes.length) mapa.append(itemProva()); // a chegada: deixa claro onde o curso termina
@@ -970,6 +975,7 @@ const App = (() => {
     const concluida = !!(info && info.concluida);
     const qtd = Trilhas.questoesDaFase(trilha, fase.id).length;
     const ler = liberada && precisaLer(fase);
+    const atual = liberada && !concluida && estado.aulaAtual === fase.id;
 
     let estadoTxt;
     if (!liberada) estadoTxt = `Bloqueada: complete ${trilha.fases.slice(0, i).reverse().find((f) => !f.novaEm).nome} para descer`;
@@ -981,21 +987,23 @@ const App = (() => {
 
     const botao = h('button', {
       type: 'button',
-      class: `fase ${concluida ? 'fase--concluida' : ''} ${liberada ? '' : 'fase--bloqueada'}`,
+      class: `fase ${concluida ? 'fase--concluida' : ''} ${liberada ? '' : 'fase--bloqueada'} ${atual ? 'fase--atual' : ''}`.replace(/\s+/g, ' ').trim(),
       style: `--prof:${n > 1 ? i / (n - 1) : 0}`,
       disabled: !liberada,
-      'aria-label': `${fase.nome}${fase.profundidade ? ', ' + fase.profundidade : ''}. ${estadoTxt}` +
+      'aria-label': `${fase.nome}${fase.profundidade ? ', ' + fase.profundidade : ''}. ${atual ? 'Você está aqui. ' : ''}${estadoTxt}` +
         (concluida ? `, ${info.estrelas} de 3 estrelas` : '') + (ler ? '. Abra o "Antes de mergulhar" para liberar o Mergulho' : ''),
       onclick: () => iniciarSessao('mergulho', { faseId: fase.id }),
     },
     h('span', { class: 'fase__no', 'aria-hidden': 'true' },
       !liberada ? icone('i-cadeado') : concluida ? icone('i-check') : String(i + 1)),
     h('span', { class: 'fase__info' },
+      atual ? h('span', { class: 'fase__aqui', text: 'Você está aqui' }) : null,
       h('span', { class: 'fase__nome' }, fase.nome, fase.profundidade ? h('span', { class: 'fase__prof', text: fase.profundidade }) : null),
       fase.descricao ? h('span', { class: 'fase__descricao', text: fase.descricao }) : null,
       h('span', { class: 'fase__estado' }, concluida ? estrelas : null, estadoTxt),
     ),
-    liberada ? h('span', { class: `fase__cta ${ler ? 'fase__cta--ler' : ''}`, 'aria-hidden': 'true', text: ler ? 'Ler primeiro' : concluida ? 'Refazer' : 'Mergulhar' }) : null);
+    liberada ? h('span', { class: `fase__cta ${ler ? 'fase__cta--ler' : ''}`, 'aria-hidden': 'true' },
+      ler ? icone('i-livro') : null, ler ? 'Ler primeiro' : concluida ? 'Refazer' : 'Mergulhar') : null);
 
     // "Antes de mergulhar": leitura curta da fase (opcional no JSON). Fica aberta mesmo com a fase bloqueada.
     // Fica no pé do cartão da aula, em linhas iguais: ícone, nome e, à direita, o estado (2026-10-13).
@@ -1016,10 +1024,11 @@ const App = (() => {
         icone('i-codigo'), h('span', { class: 'fase__estudo-nome', text: `Mão na massa: ${def.nome}` }),
         fim(feito ? h('span', { class: 'fase__feito' }, icone('i-check'), 'Feito') : null));
     });
-    if (!estudo && !maos.length) return h('li', { 'data-fase': fase.id }, botao);
+    const classeLi = `${concluida ? 'mapa__feito' : ''} ${atual ? 'mapa__atual' : ''}`.trim() || null;
+    if (!estudo && !maos.length) return h('li', { 'data-fase': fase.id, class: classeLi }, botao);
     // A aula é um cartão só (2026-10-13, pedido do usuário): a leitura e os laboratórios ficam no pé do cartão,
     // alinhados embaixo do título, para não ficar em dúvida de qual aula eles são.
-    const classeGrupo = `fase-grupo ${concluida ? 'fase-grupo--concluida' : ''} ${liberada ? '' : 'fase-grupo--bloqueada'}`.replace(/\s+/g, ' ').trim();
+    const classeGrupo = `fase-grupo ${concluida ? 'fase-grupo--concluida' : ''} ${liberada ? '' : 'fase-grupo--bloqueada'} ${classeLi || ''}`.replace(/\s+/g, ' ').trim();
     return h('li', { 'data-fase': fase.id, class: classeGrupo, style: `--prof:${n > 1 ? i / (n - 1) : 0}` },
       botao,
       h('div', { class: 'fase-grupo__extras', role: 'group', 'aria-label': `Estudo e prática da ${fase.nome}` }, estudo, ...maos));
@@ -1194,7 +1203,8 @@ const App = (() => {
       if (ok) feitas++;
       lista.append(h('li', {},
         h('div', { class: `conquista ${ok ? '' : 'conquista--bloqueada'}` },
-          h('span', { class: 'conquista__icone' }, icone(ok ? c.icone : 'i-cadeado')),
+          // Bloqueada: o ícone da própria conquista, apagado; o cadeado só aparece ao passar o mouse (Onda 3)
+          h('span', { class: 'conquista__icone' }, icone(c.icone), ok ? null : h('span', { class: 'conquista__cadeado', 'aria-hidden': 'true' }, icone('i-cadeado'))),
           h('span', { class: 'conquista__nome', text: c.nome }),
           h('span', { class: 'conquista__desc', text: c.descricao }),
           h('span', { class: 'visualmente-oculto', text: ok ? 'Desbloqueada' : 'Bloqueada' }))));
@@ -1471,7 +1481,7 @@ const App = (() => {
     return h('article', { class: 'jogo-card jogo-card--disponivel' },
       h('div', { class: 'jogo-card__topo' },
         h('span', { class: 'jogo-card__icone', 'aria-hidden': 'true' }, icone(j.icone || 'i-controle')),
-        h('div', {}, h('h3', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave', text: j.duracao }))),
+        h('div', {}, h('h3', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave jogo-card__duracao', text: j.duracao }))),
       h('p', { class: 'jogo-card__descricao', text: j.descricao }),
       h('div', { class: 'jogo-card__rodape' },
         hist ? h('span', { class: 'jogo-card__hist', text: hist.melhor ? `Recorde: ${hist.melhor}` : plural(hist.partidas, 'partida', 'partidas') }) : null,
@@ -1666,6 +1676,7 @@ const App = (() => {
     $('quiz-oxigenio').hidden = s.oxigenio === null;
     $('quiz-timer').hidden = s.limiteSeg === null;
     $('quiz-modo').textContent = s.fase ? `${NOMES_MODO[modo]} · ${s.fase.nome}` : s.titulo ? `${NOMES_MODO[modo]} · ${s.titulo}` : NOMES_MODO[modo];
+    $('quiz-contador').title = $('quiz-modo').textContent; // no celular o rótulo some; o nome da sessão fica na dica do contador
 
     pararTimer();
     if (s.limiteSeg !== null) {
@@ -1722,7 +1733,8 @@ const App = (() => {
     UI.progresso($('quiz-barra'), pct);
     $('quiz-barra').setAttribute('aria-valuemax', s.fila.length);
     $('quiz-barra').setAttribute('aria-valuenow', s.indice);
-    $('quiz-contador').textContent = `${s.indice + 1} de ${s.fila.length}`;
+    $('quiz-contador').textContent = `${s.indice + 1}/${s.fila.length}`;
+    $('quiz-contador').setAttribute('aria-label', `Questão ${s.indice + 1} de ${s.fila.length}`);
 
     $('quiz-tema').textContent = q.tema;
     const dif = $('quiz-dificuldade');
@@ -1822,6 +1834,8 @@ const App = (() => {
     const ultima = r.semOxigenio || s.indice === s.fila.length - 1;
     $('btn-continuar').textContent = ultima ? 'Ver resumo' : 'Continuar';
     painel.hidden = false;
+    // O painel entra logo abaixo das alternativas (não cobre a questão); a página rola só o necessário
+    requestAnimationFrame(() => painel.scrollIntoView({ block: 'nearest', behavior: movimentoReduzido ? 'auto' : 'smooth' }));
     $('btn-continuar').focus({ preventScroll: true });
   }
 

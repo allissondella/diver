@@ -138,13 +138,20 @@ textarea {
   outline: none;
 }
 
+/* Grade da página (Onda 3): 1120 px para todas as telas; 720 px só onde a leitura manda
+   (quiz, artigo, resumo, prova, login). Texto corrido continua limitado a 65ch. */
 .tela {
-  max-width: 720px;
+  max-width: 1120px;
   margin: 0 auto;
-  animation: surgir var(--dur-normal) var(--ease-saida) both;
+  animation: surgir var(--dur-normal) var(--ease-saida) backwards; /* backwards: depois de entrar, nenhum transform fica preso (senão o rodapé fixo do quiz deixaria de ser fixo) */
 }
 .tela--larga {
   max-width: 1120px;
+}
+.tela--estreita,
+.tela--quiz,
+.tela--conta {
+  max-width: 720px;
 }
 
 /* Topo com o botão de menu (só no celular) */
@@ -317,7 +324,7 @@ textarea {
   }
   .casca {
     display: grid;
-    grid-template-columns: 272px minmax(0, 1fr);
+    grid-template-columns: 264px minmax(0, 1fr);
     min-height: 100vh;
   }
   .modo-foco .casca {
@@ -1407,13 +1414,16 @@ input[type="radio"] { accent-color: var(--primaria); }
 
 /* ---------- Quiz ---------- */
 .tela--quiz {
-  padding-bottom: 260px; /* espaço para o painel de feedback */
+  padding-bottom: calc(var(--esp-9) + var(--esp-6) + env(safe-area-inset-bottom)); /* espaço do rodapé fixo com o "Continuar" */
 }
+/* Topo do quiz numa linha que nunca quebra: sair · barra · oxigênio/cronômetro · contador */
 .quiz-topo {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: nowrap;
 }
+.quiz-topo .quiz-contador { flex: none; white-space: nowrap; font-family: var(--fonte-mono); }
 .quiz-topo .barra-progresso {
   flex: 1;
 }
@@ -1459,6 +1469,10 @@ input[type="radio"] { accent-color: var(--primaria); }
   justify-content: space-between;
   align-items: center;
   margin: 18px 0 10px;
+}
+@media (max-width: 767px) {
+  .quiz-info { display: none; } /* no celular, o nome da sessão fica na dica (title) do contador */
+  .tela--quiz .questao { margin-top: var(--esp-4); }
 }
 .quiz-contador {
   font-size: var(--t-sm);
@@ -1567,8 +1581,21 @@ input[type="radio"] { accent-color: var(--primaria); }
   color: var(--texto-escuro);
 }
 .alternativa--apagada {
-  opacity: 0.55;
+  opacity: 0.5;
 }
+/* A certa sempre ganha o ícone de "certo" à direita (além da cor): nunca só cor */
+.alternativa--correta::after {
+  content: "";
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  background: var(--primaria-clara);
+  -webkit-mask: var(--mascara-check) center / contain no-repeat;
+  mask: var(--mascara-check) center / contain no-repeat;
+}
+.alternativa:active:not(:disabled) { transform: translateY(1px); }
+.alternativa:focus-visible { outline: 3px solid var(--borda-foco); outline-offset: 2px; }
 
 .botao--marcar {
   margin-top: 12px;
@@ -1578,30 +1605,45 @@ input[type="radio"] { accent-color: var(--primaria); }
   color: var(--amarelo);
 }
 
-/* Painel de feedback (sobe do rodapé) */
+/* Painel de feedback (Onda 3): entra abaixo das alternativas, dentro do fluxo, e não cobre a questão.
+   O "Continuar" fica fixo no rodapé, ao alcance do polegar. */
 .feedback {
+  margin-top: var(--esp-4);
+  padding: 18px;
+  border-radius: var(--raio-lg);
+  background: var(--superficie-1);
+  border: 1px solid var(--borda-sutil);
+  border-left: 4px solid var(--primaria);
+  box-shadow: var(--sombra-1);
+  animation: feedback-entra var(--dur-lenta) var(--ease-saida) both;
+}
+.feedback--erro {
+  border-left-color: var(--erro);
+}
+/* só opacidade: um transform aqui faria o rodapé fixo (filho) andar junto */
+@keyframes feedback-entra {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .feedback { animation: none; } }
+.feedback__conteudo {
+  max-width: 688px;
+  margin: 0 auto;
+}
+.feedback__rodape {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: var(--z-flutuante);
-  padding: 18px 16px calc(18px + env(safe-area-inset-bottom));
-  background: var(--fundo-2);
-  border-top: 4px solid var(--turquesa);
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35);
-  animation: subir-painel 260ms ease both;
+  display: flex;
+  justify-content: center;
+  padding: var(--esp-3) var(--esp-4) calc(var(--esp-3) + env(safe-area-inset-bottom));
+  background: var(--vidro);
+  border-top: 1px solid var(--borda-sutil);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.3);
 }
-.feedback--erro {
-  border-top-color: var(--coral);
-}
-@keyframes subir-painel {
-  from { transform: translateY(100%); }
-  to { transform: none; }
-}
-.feedback__conteudo {
-  max-width: 688px;
-  margin: 0 auto;
-}
+.feedback__rodape .botao { max-width: 688px; }
 .feedback__cabeca {
   display: flex;
   align-items: center;
@@ -1627,11 +1669,10 @@ input[type="radio"] { accent-color: var(--primaria); }
 .feedback__explicacao,
 .feedback__outras { max-width: var(--medida-leitura); }
 .feedback__explicacao {
-  margin: 12px 0 16px;
+  margin: 12px 0 0;
   font-size: var(--t-md);
+  line-height: var(--lh-leitura);
   color: var(--texto);
-  max-height: 46vh;
-  overflow-y: auto;
   display: grid;
   gap: var(--esp-3, 12px);
 }
@@ -1647,11 +1688,25 @@ input[type="radio"] { accent-color: var(--primaria); }
 .feedback__outras ul { display: grid; gap: var(--esp-2, 8px); padding: 0; list-style: none; }
 .feedback__outras li { color: var(--texto-suave); line-height: var(--lh-normal); }
 .feedback__outras li > strong:first-child { color: var(--texto); }
+.feedback__outras li > strong:first-child { font-family: var(--fonte-mono); }
 .feedback__dica {
-  padding: var(--esp-2, 8px) var(--esp-3, 12px);
+  position: relative;
+  padding: var(--esp-3) var(--esp-3) var(--esp-3) calc(var(--esp-3) + 26px);
   border-left: 3px solid var(--amarelo);
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 var(--raio-sm) var(--raio-sm) 0;
   background: rgba(250, 204, 21, 0.08);
+}
+/* lâmpada da Dica de mergulhador (máscara do ícone) */
+.feedback__dica::before {
+  content: "";
+  position: absolute;
+  left: var(--esp-3);
+  top: calc(var(--esp-3) + 2px);
+  width: 18px;
+  height: 18px;
+  background: var(--destaque);
+  -webkit-mask: var(--mascara-lampada) center / contain no-repeat;
+  mask: var(--mascara-lampada) center / contain no-repeat;
 }
 .feedback__dica > strong:first-child { color: var(--amarelo); }
 
@@ -1683,14 +1738,16 @@ input[type="radio"] { accent-color: var(--primaria); }
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
+@media (min-width: 768px) { .resumo-numeros { grid-template-columns: repeat(4, 1fr); } }
 .resumo-numeros li {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 14px 8px;
-  border-radius: var(--raio);
-  background: rgba(18, 50, 90, 0.72);
-  border: 1px solid var(--borda);
+  border-radius: var(--raio-lg);
+  background: var(--superficie-1);
+  border: 1px solid var(--borda-sutil);
+  box-shadow: var(--sombra-1);
 }
 .resumo-numeros strong {
   font-size: var(--t-xl);
@@ -1881,24 +1938,6 @@ input[type="radio"] { accent-color: var(--primaria); }
   .questao {
     padding: 26px;
   }
-  .feedback {
-    left: 50%;
-    right: auto;
-    bottom: 20px;
-    width: min(688px, calc(100vw - 48px));
-    transform: translateX(-50%);
-    border-radius: var(--raio);
-    border: 1px solid var(--borda);
-    border-top: 4px solid var(--turquesa);
-    animation-name: subir-painel-desktop;
-  }
-  .feedback--erro {
-    border-top-color: var(--coral);
-  }
-  @keyframes subir-painel-desktop {
-    from { transform: translate(-50%, 30px); opacity: 0; }
-    to { transform: translate(-50%, 0); opacity: 1; }
-  }
   .resumo-acoes {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1993,7 +2032,9 @@ html,
 
 /* ---------- Início: topo mais enxuto ---------- */
 .hero { padding: 12px 0 0; }
-.hero__mascote { width: 140px; margin-top: 18px; }
+.hero__mascote { width: 112px; margin-top: var(--esp-2); }
+@media (min-width: 1024px) { .hero__mascote { width: 160px; } }
+.hero .hero__logo { font-size: var(--t-3xl); }
 .hero__texto { font-size: var(--t-md); }
 .secao-titulo#titulo-trilhas { margin-top: 24px; }
 
@@ -2742,3 +2783,196 @@ html,
 /* Tela do curso enquanto as aulas baixam: só o esqueleto aparece */
 .tela--carregando > :not(.esqueleto-area) { display: none !important; }
 .tela--carregando > .esqueleto-area { padding-top: var(--esp-5); }
+
+/* ---------- Início (Onda 3): herói e "Continuar de onde parou" lado a lado no computador ---------- */
+.inicio-topo { display: grid; gap: var(--ritmo-cartoes); }
+.inicio-topo:not(:has(> :not([hidden]))) { display: none; }
+@media (min-width: 1024px) {
+  .inicio-cabeca:has(> .inicio-topo > :not([hidden])) {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+    gap: var(--esp-6);
+    align-items: center;
+    margin-bottom: var(--ritmo-secao);
+  }
+  .inicio-cabeca:has(> .inicio-topo > :not([hidden])) .hero { padding: 0; }
+  .inicio-cabeca:has(> .inicio-topo > :not([hidden])) .hero__texto { display: none; } /* uma linha de apoio basta: o slogan */
+}
+/* As salas: 1 coluna no celular, 2 no meio, 4 nas telas largas (cartão empilhado) */
+@media (min-width: 1280px) {
+  .salas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .salas .sala-porta { grid-template-columns: minmax(0, 1fr); padding: 20px; }
+  .salas .sala-porta__escotilha { width: 52px; height: 52px; }
+  .salas .sala-porta__pe { flex-wrap: wrap; }
+  .salas .sala-porta__barra { flex: 1 1 100%; }
+  .salas .sala-porta__entrar { margin-left: auto; }
+}
+.inicio-acoes { display: flex; justify-content: center; }
+#tela-inicio > #hoje { max-width: 100%; }
+
+/* ---------- Sala (Onda 3): o convite ao Cronograma vira uma faixa fina; matérias em cartões de altura igual ---------- */
+.sala-cronograma {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding: var(--esp-2) var(--esp-4);
+  border-radius: var(--raio-pilula);
+  background: var(--superficie-1);
+  border-color: var(--borda-sutil);
+}
+.sala-cronograma__icone { width: 32px; height: 32px; border-radius: 50%; box-shadow: none; }
+.sala-cronograma__icone .icone { width: 18px; height: 18px; }
+.sala-cronograma__titulo { font-size: var(--t-sm); }
+.sala-cronograma__texto { display: none; }
+@media (min-width: 768px) { .sala-cronograma__texto { display: block; font-size: var(--t-xs); } }
+.grupo-area__lista { grid-auto-rows: 1fr; }
+.trilha--compacta .trilha__ir { display: none; } /* o cartão inteiro já é o botão */
+.trilha--compacta .trilha__nome { padding-right: 0; }
+
+/* ---------- Mapa do curso (Onda 3) ----------
+   Celular: status → mapa → conquistas, uma coluna. Computador (lg): o mapa à esquerda (2/3) e, à direita,
+   o status em cima e as conquistas embaixo. A aula atual ganha borda turquesa e o selo "Você está aqui";
+   o cabo entre as aulas é tracejado e fica contínuo depois de cada aula concluída. */
+.painel-grade { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 var(--esp-6); align-items: start; }
+.painel-grade > .status { margin-top: var(--esp-2); }
+@media (min-width: 1024px) {
+  .painel-grade {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "mapa status" "mapa conquistas";
+  }
+  .painel-grade > .status { grid-area: status; margin-top: var(--esp-6); }
+  .painel-grade__mapa { grid-area: mapa; }
+  .painel-grade__conquistas { grid-area: conquistas; }
+  .painel-grade__mapa > .secao-titulo:first-child { margin-top: var(--esp-6); }
+  .painel-grade__conquistas > .secao-titulo:first-child { margin-top: var(--ritmo-cartoes); }
+  .painel-grade__conquistas .conquistas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .painel-grade .status__meta { flex-wrap: wrap; }
+}
+
+/* Status no celular: os três números viram fichas numa linha */
+@media (max-width: 767px) {
+  .status { gap: var(--esp-3); }
+  .status__numeros { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
+  .status__numeros li {
+    flex-direction: row;
+    gap: var(--esp-1);
+    padding: var(--esp-1) var(--esp-3);
+    border-radius: var(--raio-pilula);
+    background: var(--superficie-2);
+  }
+  .status__numeros strong { font-size: var(--t-sm); }
+  .status__numeros .icone { width: 16px; height: 16px; }
+}
+
+/* O cabo entre as aulas: um trecho por aula, no vão até a próxima (centro do círculo = 34 px) */
+.mapa::before { content: none; }
+.mapa:not(.mapa--modulos) > li { position: relative; }
+.mapa:not(.mapa--modulos) > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 33px;
+  top: 100%;
+  width: 2px;
+  height: 14px;
+  background: repeating-linear-gradient(180deg, color-mix(in srgb, var(--primaria) 40%, transparent) 0 4px, transparent 4px 7px);
+}
+.mapa:not(.mapa--modulos) > li.mapa__feito:not(:last-child)::after { background: var(--primaria); }
+
+/* "Você está aqui" */
+.fase--atual,
+.fase-grupo.mapa__atual { border-color: var(--primaria); }
+.fase-grupo.mapa__atual > .fase { border: 0; }
+.fase--atual .fase__no { background: var(--superficie-turquesa); }
+.fase__aqui {
+  display: inline-block;
+  margin-bottom: var(--esp-1);
+  padding: 2px var(--esp-2);
+  border-radius: var(--raio-pilula);
+  background: var(--primaria);
+  color: var(--texto-inverso);
+  font-family: var(--fonte-mono);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Conquistas bloqueadas: o próprio ícone a 50 %; o cadeado só aparece ao passar o mouse */
+.conquista--bloqueada { opacity: 0.5; transition: opacity var(--transicao); }
+.conquista--bloqueada .conquista__icone { position: relative; }
+.conquista__cadeado {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--superficie-2);
+  color: var(--texto-2);
+  opacity: 0;
+  transition: opacity var(--transicao);
+}
+.conquista--bloqueada:hover { opacity: 0.8; }
+.conquista--bloqueada:hover .conquista__cadeado { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .conquista--bloqueada, .conquista__cadeado { transition: none; }
+}
+
+/* Zona de perigo: fechada por padrão, discreta no fim */
+details.zona-perigo {
+  margin-top: var(--esp-6);
+  text-align: left;
+  border-top: 1px solid var(--borda-sutil);
+  padding-top: var(--esp-3);
+}
+details.zona-perigo > summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: 44px;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--texto-2);
+}
+details.zona-perigo > summary::-webkit-details-marker { display: none; }
+details.zona-perigo > summary::before { content: "›"; font-size: var(--t-lg); transition: transform var(--transicao); }
+details.zona-perigo[open] > summary::before { transform: rotate(90deg); }
+details.zona-perigo > summary:focus-visible { outline: 3px solid var(--borda-foco); outline-offset: 2px; border-radius: var(--raio-sm); }
+details.zona-perigo > p { margin: 0 0 var(--esp-3); font-size: var(--t-sm); color: var(--texto-2); max-width: var(--medida-leitura); }
+@media (prefers-reduced-motion: reduce) { details.zona-perigo > summary::before { transition: none; } }
+details.zona-perigo > summary::after { content: none; }
+/* Meta do dia: a barra numa linha inteira e a escolha da meta embaixo, à direita */
+.painel-grade .status__meta { flex-wrap: wrap; justify-content: flex-end; gap: var(--esp-2) var(--esp-3); }
+.painel-grade .status__meta .barra-meta { flex: 1 1 100%; }
+/* "Ler primeiro" é secundário (contorno turquesa + livro); "Mergulhar" segue primário */
+.fase__cta { display: inline-flex; align-items: center; gap: var(--esp-1); }
+.fase__cta .icone { width: 14px; height: 14px; }
+.fase__cta.fase__cta--ler { background: transparent; color: var(--primaria-clara); box-shadow: inset 0 0 0 2px var(--primaria); }
+/* No celular, as fichas do status ficam numa linha que rola de lado */
+@media (max-width: 767px) {
+  .status__numeros { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .status__numeros::-webkit-scrollbar { display: none; }
+  .status__numeros li { flex: 0 0 auto; white-space: nowrap; }
+}
+
+/* ---------- Simulado (Onda 3): "Montar simulado" como herói; no computador, suas provas e o histórico à direita ---------- */
+.simulado-grade { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ritmo-cartoes); align-items: start; }
+.simulado-grade__principal,
+.simulado-grade__lado { display: grid; gap: var(--ritmo-cartoes); align-content: start; min-width: 0; }
+.simulado-grade .cartao + .cartao,
+.simulado-grade .provas-enviadas { margin: 0; }
+.modo--heroi { --sala-cor: var(--destaque); padding: var(--esp-5); }
+.modo--heroi .cartao__titulo { font-size: var(--t-xl); margin-bottom: var(--esp-1); }
+.modo--heroi .modo__icone { width: 56px; height: 56px; }
+.modo--heroi .modo__icone .icone { width: 28px; height: 28px; }
+.modo--heroi .modo__acoes .botao { flex: 1 1 200px; }
+@media (min-width: 1024px) {
+  .simulado-grade { grid-template-columns: minmax(0, 3fr) minmax(300px, 2fr); }
+}
+
+/* ---------- Revisão (Onda 3): "Revisar agora" no cabeçalho, à direita no computador ---------- */
+.cabeca-acao > .acoes-linha { margin-top: var(--esp-4); }
+@media (min-width: 768px) {
+  .cabeca-acao { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--esp-5); margin-bottom: var(--ritmo-secao); }
+  .cabeca-acao > .area-cabeca { margin-bottom: 0; }
+  .cabeca-acao > .acoes-linha { margin: 0; flex-shrink: 0; }
+}

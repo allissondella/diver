@@ -127,6 +127,7 @@ async function telaLogin(ctx, foto) {
         const vistos = {};
         ['inicio', 'sala', 'sala-enem', 'sala-ensino-medio', 'mergulho', 'trilha', 'quiz', 'artigo', 'resumo', 'simulado', 'revisao', 'jogos', 'tarefas', 'quadros', 'calendario', 'cronograma', 'foco', 'perfil', 'estatisticas', 'descompressao', 'diagnostica', 'mapa-partida', 'prova', 'pdfs', 'cursos'].forEach((k) => { vistos[k] = 99; });
         localStorage.setItem('diver:v1:tutorial', JSON.stringify({ vistos }));
+        localStorage.setItem('diver:v1:aviso-cronograma', JSON.stringify({ enem: '2026-01-01', 'ensino-medio': '2026-01-01' })); // o convite da sala do Enem não cobre a foto
       } catch {}
     });
     const p = await ctx.newPage();

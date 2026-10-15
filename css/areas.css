@@ -2000,3 +2000,105 @@ body.qd-travado { overflow: hidden; }
 .dg-rev__marca .icone { width: 16px; height: 16px; }
 .cr-passos__num .icone { width: 14px; height: 14px; }
 .cr-dia__vazio .icone, .cr-topo__faltam .icone { width: 16px; height: 16px; vertical-align: -0.2em; margin-right: 4px; }
+
+/* ---------- Calendário (Onda 3): topo numa linha no computador e em duas linhas alinhadas no celular ----------
+   .cal-barra vira "contents": as setas, o mês, o Hoje e o Mês/Semana entram direto na grade de .cal-topo. */
+.cal-topo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  grid-template-areas: "ant titulo prox hoje" "filtros filtros filtros modo";
+  align-items: center;
+  gap: var(--esp-2);
+  margin-bottom: var(--esp-4);
+}
+.cal-topo > .cal-barra { display: contents; }
+.cal-topo .cal-barra > :nth-child(1) { grid-area: ant; }
+.cal-topo .cal-barra__titulo { grid-area: titulo; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal-topo .cal-barra > :nth-child(3) { grid-area: prox; }
+.cal-topo .cal-barra > :nth-child(4) { grid-area: hoje; }
+.cal-topo .cal-barra > .segmentado { grid-area: modo; margin: 0; }
+.cal-topo > .cal-filtros {
+  grid-area: filtros; margin: 0; min-width: 0;
+  flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, black calc(100% - var(--esp-5)), transparent);
+  mask-image: linear-gradient(90deg, black calc(100% - var(--esp-5)), transparent);
+}
+.cal-topo > .cal-filtros::-webkit-scrollbar { display: none; }
+.cal-topo .cal-filtro { flex: 0 0 auto; white-space: nowrap; }
+@media (max-width: 767px) {
+  .cal-topo .cal-filtros__rotulo { display: none; }
+  .cal-topo .segmentado button { padding-inline: var(--esp-3); }
+}
+@media (min-width: 1024px) {
+  .cal-topo {
+    grid-template-columns: auto auto auto auto minmax(0, 1fr) auto;
+    grid-template-areas: "ant titulo prox hoje filtros modo";
+    gap: var(--esp-3);
+  }
+  .cal-topo .cal-barra__titulo { min-width: 9ch; }
+  .cal-topo > .cal-filtros { justify-content: flex-end; -webkit-mask-image: none; mask-image: none; }
+}
+
+/* ---------- Tarefas (Onda 3): listas encaixam ao rolar, as bordas esmaecem quando tem mais e, no celular, pontinhos de página ---------- */
+.qd {
+  -webkit-mask-image: linear-gradient(90deg, black calc(100% - var(--esp-6)), transparent);
+  mask-image: linear-gradient(90deg, black calc(100% - var(--esp-6)), transparent);
+  padding-right: var(--esp-6);
+}
+.qd-pontos { display: none; }
+@media (max-width: 767px) {
+  /* o encaixe continua "proximity": com "mandatory" a rolagem automática ao arrastar um cartão (14 px por vez) voltaria ao lugar */
+  .qd-pontos { display: flex; justify-content: center; gap: var(--esp-2); margin: calc(-1 * var(--esp-2)) 0 var(--esp-3); }
+  .qd-pontos__ponto { width: 8px; height: 8px; border-radius: 50%; background: var(--borda-forte); transition: background var(--transicao), transform var(--transicao); }
+  .qd-pontos__ponto--atual { background: var(--primaria); transform: scale(1.25); }
+  .qd-cabeca__titulo { font-size: var(--t-xl); }
+}
+@media (prefers-reduced-motion: reduce) { .qd-pontos__ponto { transition: none; } }
+
+/* ---------- Modo Foco (Onda 3): anel de progresso de 240 px (200 no celular), tempo em mono --t-display ---------- */
+.foco-relogio {
+  --resta: 1;
+  --anel: var(--primaria);
+  width: 240px; max-width: 70vw;
+  border: 0;
+  padding: 10px;
+  background:
+    radial-gradient(circle closest-side, var(--fundo-0) calc(100% - 10px), transparent calc(100% - 9px)),
+    conic-gradient(var(--anel) calc(var(--resta) * 360deg), var(--superficie-2) 0);
+  font-family: var(--fonte-mono);
+  font-size: var(--t-display);
+  letter-spacing: -0.02em;
+}
+.foco-relogio--pausa { --anel: var(--destaque); }
+.foco-botoes .botao--grande { min-width: 200px; }
+@media (max-width: 767px) {
+  .foco-relogio { width: 200px; }
+  .foco-relogio { font-size: var(--t-3xl); }
+}
+
+/* ---------- Cronograma (Onda 3): "Voltar"/"Continuar" grudados no pé do cartão enquanto se rola o passo ---------- */
+.cr-passo__acoes {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  margin: 0 calc(-1 * var(--ritmo-cartao-pad)) calc(-1 * var(--ritmo-cartao-pad));
+  padding: var(--esp-3) var(--ritmo-cartao-pad) calc(var(--esp-3) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--borda-sutil);
+  border-radius: 0 0 var(--raio-lg) var(--raio-lg);
+  background: var(--superficie-1);
+}
+/* Calendário sem a barra lateral: em flex com quebra, para o Mês/Semana não alargar a coluna do "Hoje" */
+@media (max-width: 1023px) {
+  .cal-topo { display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--esp-2); row-gap: 0; }
+  .cal-topo .cal-barra > :nth-child(1) { order: 1; }
+  .cal-topo .cal-barra__titulo { order: 2; flex: 1 1 0; }
+  .cal-topo .cal-barra > :nth-child(3) { order: 3; }
+  .cal-topo .cal-barra > :nth-child(4) { order: 4; }
+  .cal-topo::after { content: ""; order: 5; flex-basis: 100%; height: var(--esp-2); }
+  .cal-topo > .cal-filtros { order: 6; flex: 1 1 0; }
+  .cal-topo .cal-barra > .segmentado { order: 7; }
+}
+@media (max-width: 767px) {
+  .qd-titulo { white-space: normal; overflow-wrap: anywhere; }
+  .foco-botoes .botao--grande { min-width: 0; }
+}

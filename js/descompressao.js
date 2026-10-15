@@ -92,12 +92,12 @@ const Descompressao = (() => {
       return h('article', { class: `jogo-card jogo-card--disponivel sd-card sd-card--${j.id}` },
         h('div', { class: 'jogo-card__topo' },
           h('span', { class: 'jogo-card__icone', 'aria-hidden': 'true' }, icone(j.icone)),
-          h('div', {}, h('h2', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave', text: j.duracao }))),
+          h('div', {}, h('h2', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave jogo-card__duracao', text: j.duracao }))),
         h('p', { class: 'jogo-card__descricao', text: j.descricao }),
         h('div', { class: 'jogo-card__rodape' },
           feito ? h('span', { class: 'chip chip--ativo' }, icone('i-check'), `Hoje: ${plural(d.hoje[j.id].pontos, 'ponto', 'pontos')}`)
             : recorde ? h('span', { class: 'jogo-card__hist', text: `Recorde: ${recorde}` })
-              : j.diario ? h('span', { class: 'chip chip--hoje', text: 'Novo hoje' }) : null,
+              : j.diario ? h('span', { class: 'chip chip--hoje jogo-card__selo', text: 'Novo hoje' }) : null,
           h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => abrir(j.id), 'aria-label': `${feito && !j.treino ? 'Ver' : 'Jogar'} ${j.nome}` }, feito && !j.treino ? 'Ver' : 'Jogar')));
     }));
     const verRanking = h('div', { class: 'sd-ver-ranking' },
