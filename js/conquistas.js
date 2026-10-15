@@ -6,8 +6,10 @@
  *   ctx   -> contexto do momento (combo atual, fase concluída, nota do simulado...)
  *   trilha -> a trilha atual
  * Para criar uma nova, basta adicionar um item na lista.
+ * "so" (opcional): a conquista só existe nos cursos em que so(trilha) é verdadeiro (ex.: os "· Retomada").
  */
 const Conquistas = (() => {
+  const retomada = (t) => /^em-/.test(t.id);
   const LISTA = [
     {
       id: 'primeiro-mergulho',
@@ -110,7 +112,45 @@ const Conquistas = (() => {
       icone: 'i-trofeu',
       testar: (prog) => Progresso.nivel(prog.xp).max,
     },
+    // Sala Ensino Médio ("Sempre dá tempo", cursos em-*; docs/cadernos/ensino-medio-retomada.md, decisão g)
+    {
+      id: 'voltei-a-estudar',
+      nome: 'Voltei a estudar',
+      descricao: 'Concluiu a primeira aula da retomada. O primeiro passo é o mais difícil, e já foi.',
+      icone: 'i-bandeira',
+      so: retomada,
+      testar: (prog) => !!(prog.retomada && prog.retomada.primeiraAula),
+    },
+    {
+      id: 'mapa-na-mao',
+      nome: 'Mapa na mão',
+      descricao: 'Completou o Mapa de partida. Agora você sabe por onde seguir.',
+      icone: 'i-alvo',
+      so: retomada,
+      testar: () => typeof MapaPartida !== 'undefined' && MapaPartida.situacao().feito,
+    },
+    {
+      id: 'de-volta-a-agua',
+      nome: 'De volta à água',
+      descricao: 'Concluiu uma aula depois de duas semanas ou mais longe dos estudos. Sempre dá tempo.',
+      icone: 'i-boia',
+      so: retomada,
+      testar: (prog) => !!(prog.retomada && prog.retomada.voltouDaPausa),
+    },
+    {
+      id: 'materia-retomada',
+      nome: 'Matéria retomada',
+      descricao: 'Passou na Prova final de uma matéria da retomada.',
+      icone: 'i-trofeu',
+      so: retomada,
+      testar: (prog) => (prog.provas || []).some((p) => p.aprovado),
+    },
   ];
+
+  /** As conquistas que existem num curso (sem as que são de outros cursos). */
+  function daTrilha(trilha) {
+    return LISTA.filter((c) => !c.so || (trilha && c.so(trilha)));
+  }
 
   /**
    * Verifica todas as conquistas ainda bloqueadas.
@@ -118,7 +158,7 @@ const Conquistas = (() => {
    */
   function verificar(prog, trilha, ctx = {}) {
     const novas = [];
-    LISTA.forEach((c) => {
+    daTrilha(trilha).forEach((c) => {
       if (prog.conquistas[c.id]) return;
       if (c.testar(prog, ctx, trilha)) {
         prog.conquistas[c.id] = Date.now();
@@ -128,5 +168,5 @@ const Conquistas = (() => {
     return novas;
   }
 
-  return { LISTA, verificar };
+  return { LISTA, daTrilha, verificar };
 })();

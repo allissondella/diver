@@ -49,6 +49,7 @@ const App = (() => {
     calendario: { tela: 'tela-calendario', render: () => Organizar.renderCalendario($('tela-calendario')) },
     cronograma: { tela: 'tela-cronograma', render: () => Cronograma.render($('tela-cronograma')) },
     diagnostica: { tela: 'tela-diagnostica', render: () => Diagnostica.render($('tela-diagnostica')) },
+    'mapa-partida': { tela: 'tela-mapa-partida', render: () => MapaPartida.render($('tela-mapa-partida')) }, // sala Ensino Médio (js/mapa-partida.js)
     foco: { tela: 'tela-foco', render: () => Organizar.renderFoco($('tela-foco')) },
     cursos: { tela: 'tela-cursos', render: () => Biblioteca.renderCursos($('tela-cursos')) },
     pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
@@ -130,7 +131,13 @@ const App = (() => {
     if (secao === 'sala') estado.salaId = salaId;
     ROTAS[secao].render();
     mostrarTela(ROTAS[secao].tela);
-    Tutorial.aoEntrar(secao); // primeira visita? o Diver mostra a página
+    Tutorial.aoEntrar(secaoTutorial()); // primeira visita? o Diver mostra a página
+  }
+
+  /** O roteiro do tutorial desta página (uma sala pode ter o seu, como a Ensino Médio: "sala-ensino-medio"). */
+  function secaoTutorial() {
+    const propria = estado.secao === 'sala' && `sala-${estado.salaId}`;
+    return propria && Tutorial.tem(propria) ? propria : estado.secao;
   }
 
   function emAndamento() {
@@ -442,7 +449,8 @@ const App = (() => {
     if (!trilha) return;
     estado.trilha = trilha;
     estado.prog = Progresso.carregar(id);
-    if (Progresso.conhecerFasesNovas(estado.prog, trilha)) Progresso.salvar(id, estado.prog);
+    const mudou = Progresso.conhecerFasesNovas(estado.prog, trilha);
+    if (Caminho.ajustarProgresso(trilha, estado.prog) || mudou) Progresso.salvar(id, estado.prog); // metaPadrao (Retomada)
     if (lembrar) Progresso.definirUltimaTrilha(id);
     atualizarLateral();
     // catálogo leve: o curso escolhido já começa a baixar (quando a pessoa entrar, provavelmente já chegou)
@@ -463,6 +471,7 @@ const App = (() => {
      ========================================================= */
   function renderizarInicio() {
     renderizarContinuar();
+    Caminho.cardInicio($('inicio-retomada')); // "Descubra por onde começar" (sala Ensino Médio)
     renderizarSalas();
     renderizarHoje();
   }
@@ -682,13 +691,14 @@ const App = (() => {
         h('div', { class: 'sala-hero__textos' },
           h('span', { class: 'rotulo sala-porta__rotulo', text: `Sala · ${sala.rotulo}` }),
           h('h1', { class: 'sala-hero__nome', id: 'sala-titulo', tabindex: '-1', text: sala.nome }),
+          sala.subtexto ? h('p', { class: 'sala-hero__subtexto', text: sala.subtexto }) : null,
           h('p', { class: 'sala-hero__descricao', text: sala.descricao }),
           h('div', { class: 'sala-porta__numeros' }, Grupos.numeros(sala, r).map((n) => h('span', { text: n }))),
           h('div', { class: 'sala-hero__progresso' },
             h('span', { class: 'trilha__progresso sala-porta__barra', role: 'progressbar', 'aria-label': 'Progresso na sala', 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-valuenow': String(r.pct) }, h('span', { style: `width:${r.pct}%` })),
             h('span', { class: 'sala-porta__pct', text: `${r.feitas}/${r.total} · ${r.pct}% feito` })))),
       cronograma,
-      continuar,
+      sala.caminho ? Caminho.secaoSala(sala) : continuar, // Ensino Médio: "Meu caminho" e as duas portas no lugar do "Continuar"
       h('div', { class: 'sala-conteudo', id: 'sala-conteudo' },
         sala.destaque ? cartaoCurso(sala.destaque, { estilo: 'destaque', nome: Grupos.nomeCurto(sala, sala.destaque), selo: sala.destaqueSelo, rotuloAula: 'fases' }) : null,
         umaArea
@@ -701,6 +711,7 @@ const App = (() => {
             h('div', { class: 'grupo-area__lista' },
               lista.map((t) => cartaoCurso(t, { estilo: 'compacto', nome: Grupos.nomeCurto(sala, t), rotuloAula: rotuloAula(t) }))))))].filter(Boolean));
     avisarCronograma(sala);
+    if (sala.caminho) Caminho.aoEntrarNaSala(sala);
   }
 
   /**
@@ -997,11 +1008,12 @@ const App = (() => {
     const cfg = configProva(trilha);
     const exigidas = Progresso.fasesExigidas(prog, trilha);
     const feitas = exigidas.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida).length;
-    const pronta = !cfg.exigeFases || feitas === exigidas.length;
+    const atalho = Caminho.provaPorAtalho(trilha, prog) && feitas < exigidas.length; // "Já domino" (Retomada)
+    const pronta = !cfg.exigeFases || feitas === exigidas.length || atalho;
     const aprovacao = (prog.provas || []).find((p) => p.aprovado);
     const rotulo = trilha.rotuloAula === 'Oficina' ? 'oficinas' : trilha.fases.some((f) => f.modulo) ? 'aulas' : 'fases';
     const estadoTxt = aprovacao ? `Aprovado · nota ${aprovacao.nota.toLocaleString('pt-BR')}`
-      : pronta ? 'Pronta para você'
+      : atalho ? 'Já domino: a prova está liberada' : pronta ? 'Pronta para você'
         : `Libera quando você concluir as ${exigidas.length} ${rotulo} (${feitas} de ${exigidas.length})`;
     return h('li', { class: 'mapa__fim', 'data-prova': '' },
       h('button', {
@@ -1024,13 +1036,21 @@ const App = (() => {
   function renderizarMapaModulos(mapa) {
     const { trilha, prog } = estado;
     const feita = (f) => !!(prog.fases[f.id] && prog.fases[f.id].concluida);
-    const proxima = proximaAula();
+    // Retomada (sala Ensino Médio): cada módulo tem um estado (js/caminho.js) e a próxima aula segue "Meu caminho"
+    const caminho = Caminho.ehRetomada(trilha) ? Caminho.estados(trilha, prog) : null;
+    const proxima = (caminho && Caminho.proximaAula(trilha, prog)) || proximaAula();
     const modulos = [];
     trilha.fases.forEach((f, i) => {
       const ultimo = modulos[modulos.length - 1];
       if (ultimo && ultimo.nome === f.modulo) ultimo.fases.push([f, i]);
-      else modulos.push({ nome: f.modulo || 'Outras aulas', fases: [[f, i]] });
+      else modulos.push({ id: f.moduloId || f.modulo || 'outras', nome: f.modulo || 'Outras aulas', fases: [[f, i]] });
     });
+    const redesenhar = (moduloId) => {
+      renderizarMapa();
+      const li = $('mapa-fases').querySelector(`li[data-modulo="${CSS.escape(moduloId)}"]`);
+      const det = li && li.querySelector('details');
+      if (det) { det.open = true; det.querySelector('summary').focus(); }
+    };
     if (proxima) {
       mapa.append(h('li', { class: 'mapa__atalho' },
         h('button', { type: 'button', class: 'botao botao--secundario botao--pequeno', id: 'btn-proxima-aula', onclick: () => focarAula(proxima.id) },
@@ -1039,15 +1059,18 @@ const App = (() => {
     modulos.forEach((m) => {
       const total = m.fases.length;
       const feitas = m.fases.filter(([f]) => feita(f)).length;
+      const x = caminho && caminho.get(m.id);
       const aberto = proxima ? m.fases.some(([f]) => f === proxima) : false;
-      mapa.append(h('li', { class: `modulo ${feitas === total ? 'modulo--feito' : ''}`.trim() },
+      mapa.append(h('li', { class: `modulo ${feitas === total ? 'modulo--feito' : ''} ${x ? `modulo--${x.estado}` : ''}`.replace(/\s+/g, ' ').trim(), 'data-modulo': m.id },
         h('details', { class: 'modulo__caixa', open: aberto },
           h('summary', { class: 'modulo__cabeca' },
             h('span', { class: 'modulo__nome', text: m.nome }),
+            x ? Caminho.selo(x) : null,
             h('span', { class: 'modulo__progresso' },
               h('span', { class: 'modulo__barra', 'aria-hidden': 'true' }, h('span', { style: `width:${Math.round((feitas / total) * 100)}%` })),
               h('span', { class: 'modulo__conta', text: `${feitas} de ${total} ${trilha.rotuloAula === 'Oficina' ? (total === 1 ? 'oficina' : 'oficinas') : (total === 1 ? 'aula' : 'aulas')}` }))),
-          h('ol', { class: 'mapa modulo__aulas' }, m.fases.map(([f, i]) => itemFase(f, i))))));
+          h('ol', { class: 'mapa modulo__aulas' }, m.fases.map(([f, i]) => itemFase(f, i)))),
+        x ? Caminho.acoesModulo(trilha, { id: m.id, nome: m.nome, fases: m.fases.map(([f]) => f) }, x, redesenhar) : null));
     });
   }
 
@@ -1142,7 +1165,8 @@ const App = (() => {
     const prog = estado.prog;
     const lista = limpar($('lista-conquistas'));
     let feitas = 0;
-    Conquistas.LISTA.forEach((c) => {
+    const todas = Conquistas.daTrilha(estado.trilha);
+    todas.forEach((c) => {
       const ok = !!prog.conquistas[c.id];
       if (ok) feitas++;
       lista.append(h('li', {},
@@ -1152,7 +1176,7 @@ const App = (() => {
           h('span', { class: 'conquista__desc', text: c.descricao }),
           h('span', { class: 'visualmente-oculto', text: ok ? 'Desbloqueada' : 'Bloqueada' }))));
     });
-    $('conquistas-contagem').textContent = `${feitas}/${Conquistas.LISTA.length}`;
+    $('conquistas-contagem').textContent = `${feitas}/${todas.length}`;
   }
 
   /* =========================================================
@@ -1316,6 +1340,7 @@ const App = (() => {
       minutos: c.minutos || Math.ceil(quantidade * 1.5),
       aprovacao: c.aprovacao || 70,
       exigeFases: c.exigeFases !== false,
+      reforco: !!c.reforco, // sorteio com reforço dos módulos mais errados (Retomada, js/caminho.js)
     };
   }
 
@@ -1325,32 +1350,41 @@ const App = (() => {
     const exigidas = Progresso.fasesExigidas(prog, trilha);
     const concluidas = exigidas.filter((f) => prog.fases[f.id] && prog.fases[f.id].concluida);
     const fasesOk = concluidas.length === exigidas.length;
-    const liberada = !cfg.exigeFases || fasesOk || Nuvem.ehAdmin() || Nuvem.ehProfessor();
+    const retomada = Caminho.ehRetomada(trilha);
+    const atalho = !fasesOk && Caminho.provaPorAtalho(trilha, prog); // "Já domino: fazer a prova agora" (Retomada)
+    const liberada = !cfg.exigeFases || fasesOk || atalho || Nuvem.ehAdmin() || Nuvem.ehProfessor();
     const provas = prog.provas || [];
     const aprovacao = provas.find((p) => p.aprovado);
     const area = limpar($('tela-prova'));
+    const retorno = Caminho.cartaoRetorno(trilha, prog);
 
     area.append(...[
       UI.cabecalho(trilha.nome, 'Prova final', 'O último mergulho da trilha: sem dicas no meio do caminho, com cronômetro e nota mínima para aprovação.'),
+      aprovacao ? retorno : null, // "Meu retorno" (Retomada): com a prova aprovada, vem primeiro
       aprovacao ? h('div', { class: 'selo selo--grande' }, icone('i-trofeu'), h('span', {}, h('strong', { text: 'Aprovado! ' }), `Nota ${aprovacao.nota.toLocaleString('pt-BR')} em ${new Date(aprovacao.data).toLocaleDateString('pt-BR')}.`)) : null,
       h('div', { class: 'cartao prova' },
         h('h2', { class: 'cartao__titulo', text: 'Como funciona' }),
         h('ul', { class: 'prova__regras' },
-          h('li', {}, icone('i-livro'), h('span', {}, h('strong', { text: `${cfg.quantidade} questões` }), ' sorteadas da trilha inteira')),
+          h('li', {}, icone('i-livro'), h('span', {}, h('strong', { text: `${cfg.quantidade} questões` }), cfg.reforco ? ' de todos os módulos, com mais questões dos que você mais errou' : ' sorteadas da trilha inteira')),
           h('li', {}, icone('i-relogio'), h('span', {}, h('strong', { text: `${cfg.minutos} minutos` }), ' no total; o que ficar em branco conta como erro')),
           h('li', {}, icone('i-alvo'), h('span', {}, h('strong', { text: `${cfg.aprovacao}% de acertos` }), ` para ser aprovado (${Math.ceil((cfg.aprovacao / 100) * cfg.quantidade)} de ${cfg.quantidade})`)),
           h('li', {}, icone('i-check'), h('span', { text: 'Correção só no final, com a explicação de cada erro' }))),
         cfg.exigeFases ? h('div', { class: 'prova__fases' },
-          h('p', { class: 'rotulo-campo', text: `Pré-requisito: completar as ${exigidas.length} fases do Mergulho (${concluidas.length}/${exigidas.length})` }),
+          h('p', { class: 'rotulo-campo', text: retomada && !exigidas.length
+            ? 'Sem pré-requisito: os módulos que você já domina contam como feitos'
+            : `Pré-requisito: completar as ${exigidas.length} ${retomada ? 'aulas' : 'fases do Mergulho'} (${concluidas.length}/${exigidas.length})` }),
           h('ul', { class: 'prova__lista-fases' }, trilha.fases.map((f) => {
             const ok = prog.fases[f.id] && prog.fases[f.id].concluida;
-            const recomendada = !ok && !exigidas.includes(f);
-            return h('li', { class: ok ? 'texto-sucesso' : 'texto-suave' }, icone(ok ? 'i-check' : recomendada ? 'i-estrela' : 'i-cadeado'), f.nome, recomendada ? ' (nova, recomendada)' : '');
+            const dominada = !ok && retomada && !exigidas.includes(f); // Retomada: aula de módulo dominado (js/caminho.js)
+            const recomendada = !ok && !dominada && !exigidas.includes(f);
+            return h('li', { class: ok ? 'texto-sucesso' : 'texto-suave' }, icone(ok ? 'i-check' : dominada ? 'i-trofeu' : recomendada ? 'i-estrela' : 'i-cadeado'), f.nome, dominada ? ' (módulo dominado)' : recomendada ? ' (nova, recomendada)' : '');
           }))) : null,
-        !fasesOk && cfg.exigeFases && (Nuvem.ehAdmin() || Nuvem.ehProfessor()) ? h('p', { class: 'jogo-card__dica', text: `Como ${Nuvem.ehAdmin() ? 'admin' : 'professor'}, você pode fazer a prova sem completar as fases (para conferir).` }) : null,
+        atalho ? h('p', { class: 'prova__atalho' }, icone('i-trofeu'), h('span', {}, h('strong', { text: 'Já domino: ' }), 'o Mapa de partida mostrou que você manda bem nesta matéria, então a prova já está liberada. Se preferir, estude as aulas antes.')) : null,
+        !fasesOk && !atalho && cfg.exigeFases && (Nuvem.ehAdmin() || Nuvem.ehProfessor()) ? h('p', { class: 'jogo-card__dica', text: `Como ${Nuvem.ehAdmin() ? 'admin' : 'professor'}, você pode fazer a prova sem completar as fases (para conferir).` }) : null,
         liberada
           ? h('button', { type: 'button', class: 'botao botao--primario botao--grande', onclick: iniciarProva }, icone('i-trofeu'), provas.length ? 'Fazer a prova de novo' : 'Começar a prova')
           : h('a', { class: 'botao botao--secundario', href: '#mergulho' }, 'Voltar ao mapa e completar as fases')),
+      aprovacao ? null : retorno, // com os módulos em dia e a prova por fazer, depois do "Como funciona"
       fasesOk && !aprovacao && temDetetive(trilha) ? h('div', { class: 'cartao prova-detetive' },
         h('h2', { class: 'cartao__titulo', text: 'Antes da prova, relaxe' }),
         h('p', { class: 'texto-suave', text: 'Que tal um caso da Operação Recife Sombrio antes de começar? A Diver foi invadida, e você investiga com o que aprendeu. Ajuda a chegar na prova de cabeça leve.' }),
@@ -1365,12 +1399,15 @@ const App = (() => {
   }
 
   async function iniciarProva() {
+    if (estado.trilha._parcial) return comCursoCompleto(iniciarProva); // o sorteio com reforço precisa das questões
     const cfg = configProva(estado.trilha);
     if (!(await UI.confirmar({
       titulo: 'Começar a prova final?', texto: `A prova tem ${cfg.quantidade} questões e ${cfg.minutos} minutos. O cronômetro começa assim que você confirmar.`,
       sim: 'Bora!', nao: 'Agora não', foco: 'sim',
     }))) return;
-    iniciarSessao('prova', { quantidade: cfg.quantidade, minutos: cfg.minutos, aprovacao: cfg.aprovacao });
+    const trilha = estado.trilha;
+    const questoesProva = cfg.reforco ? Caminho.questoesDaProva(trilha, estado.prog, cfg.quantidade) : undefined;
+    iniciarSessao('prova', { quantidade: cfg.quantidade, minutos: cfg.minutos, aprovacao: cfg.aprovacao, questoesProva });
   }
 
   /* =========================================================
@@ -1583,6 +1620,7 @@ const App = (() => {
       if (precisaLer(fase)) { avisarLeitura(fase); return; }
     }
     const s = Quiz.criar(modo, estado.trilha, estado.prog, opcoes);
+    Caminho.antesDaSessao(s); // Retomada: há quantos dias não estudava (bônus "De volta à água")
     if (modo === 'enviada') s.provaRef = estado.ultimaProvaEnviada = opcoes.ref;
     if (!s.fila.length) {
       toast('Ops', modo === 'revisao' ? 'Não há questões para revisar.' : 'Essa fase ainda não tem questões.', 'i-bolha');
@@ -1843,6 +1881,8 @@ const App = (() => {
     const resumo = Quiz.finalizar(s, estado.prog, motivo);
     registrarSessao(s, resumo, motivo);
     if (s.modo === 'enviada' && motivo !== 'saiu') ProvasEnviadas.registrarTentativa(s.provaRef, resumo);
+    Caminho.depoisDaSessao(s, resumo, estado.prog); // Retomada: "Voltei a estudar" e "De volta à água"
+    estado.respostasProva = s.modo === 'prova' ? s.respostas : null;
     checarNivel();
     const novas = Conquistas.verificar(estado.prog, estado.trilha);
     salvar();
@@ -1992,6 +2032,8 @@ const App = (() => {
     if (r.modo === 'enviada' && r.nota !== null && r.pontos && r.pontos.motivo) selo('i-alvo', r.pontos.motivo);
     if (r.maiorCombo >= 3) selo('i-raio', `Maior sequência: ${r.maiorCombo} acertos seguidos`);
     if (r.emBranco) selo('i-relogio', `${plural(r.emBranco, 'questão ficou', 'questões ficaram')} em branco`);
+    const blocoProva = r.modo === 'prova' && estado.respostasProva ? Caminho.blocoResumoProva(trilha, r, estado.respostasProva) : null;
+    if (blocoProva) extras.append(blocoProva); // Retomada: "Quase! Vale rever estes módulos" ou "Matéria retomada!"
 
     // Desempenho por tema
     const temas = limpar($('resumo-temas'));
@@ -2161,7 +2203,7 @@ const App = (() => {
     });
     $('btn-tutorial').addEventListener('click', () => {
       fecharMenu();
-      if (Tutorial.tem(estado.secao)) Tutorial.iniciar(estado.secao);
+      if (Tutorial.tem(secaoTutorial())) Tutorial.iniciar(secaoTutorial());
       else toast('Sem tutorial por aqui', 'Esta página é tranquila: é só explorar.', 'i-bolha');
     });
 
@@ -2247,6 +2289,9 @@ const App = (() => {
     trilhas: () => estado.trilhas,
     nomeCurso: (id) => (estado.nomesCursos && estado.nomesCursos.get(id)) || id,
     trilhaAtual: () => estado.trilha,
+    progAtual: () => estado.prog,
+    salvarAtual: () => { if (estado.trilha && estado.prog) salvar(); },
+    comCursoCompleto,
     definirTrilha,
     abrirTrilha,
     entrarNaSala,

@@ -252,9 +252,13 @@ const Progresso = (() => {
     return mudou;
   }
 
-  /** Fases que a Prova final exige deste aluno (todas, menos as novas de que ele foi dispensado). */
+  /**
+   * Fases que a Prova final exige deste aluno: todas, menos as novas de que ele foi dispensado e (Retomada)
+   * as aulas dos módulos que ele já domina (prog.modulos, js/caminho.js).
+   */
   function fasesExigidas(prog, trilha) {
-    return trilha.fases.filter((f) => !(prog.fasesNovas && prog.fasesNovas[f.id] === 'dispensada'));
+    const dominado = (f) => !!(f.moduloId && prog.modulos && prog.modulos[f.moduloId] && prog.modulos[f.moduloId].estado === 'dominado');
+    return trilha.fases.filter((f) => !(prog.fasesNovas && prog.fasesNovas[f.id] === 'dispensada') && !dominado(f));
   }
 
   /** Registra o fim de uma fase. Retorna os bônus concedidos. */
@@ -281,7 +285,7 @@ const Progresso = (() => {
   return {
     NIVEIS, METAS_DIARIAS, RECOMPENSA, BONUS_COMBO,
     carregar, salvar, zerar, ultimaTrilha, definirUltimaTrilha,
-    nivel, streakVigente, respondidasHoje,
+    nivel, streakVigente, respondidasHoje, dataLocal,
     registrarResposta, registrarAvulsa, registrarEstudo, registrarVista, alternarMarcada, paraRevisar,
     faseDesbloqueada, conhecerFasesNovas, fasesExigidas, concluirFase, registrarTentativaFase,
   };

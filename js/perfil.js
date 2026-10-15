@@ -95,7 +95,7 @@ const Perfil = (() => {
               h('td', { 'data-rotulo': 'XP', text: String(x.prog.xp) }),
               h('td', { 'data-rotulo': 'Pérolas', text: String(x.prog.perolas) }),
               h('td', { 'data-rotulo': 'Fases', text: `${x.fases}/${x.trilha.fases.length}` }),
-              h('td', { 'data-rotulo': 'Conquistas', text: `${x.conquistas}/${Conquistas.LISTA.length}` }))))))),
+              h('td', { 'data-rotulo': 'Conquistas', text: `${x.conquistas}/${Conquistas.daTrilha(x.trilha).length}` }))))))),
       h('h2', { class: 'secao-titulo', text: 'Mais opções' }),
       // Uma lista só, cada opção numa linha: ícone · o que é · botão (no celular, o botão desce)
       h('ul', { class: 'cartao perfil-opcoes' },

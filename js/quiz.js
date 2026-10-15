@@ -171,7 +171,8 @@ const Quiz = (() => {
       fila = opcoes.tema ? montarRevisaoTema(trilha, prog, opcoes.tema) : montarRevisao(trilha, prog);
     } else if (modo === 'prova') {
       // Prova final: sorteio simples da trilha toda (sem priorizar os erros, como numa prova de verdade)
-      fila = embaralhar(trilha.questoes).slice(0, Math.min(opcoes.quantidade, trilha.questoes.length));
+      // (Retomada, com prova.reforco: a lista já vem sorteada por js/caminho.js, com reforço dos módulos mais errados)
+      fila = opcoes.questoesProva ? embaralhar(opcoes.questoesProva) : embaralhar(trilha.questoes).slice(0, Math.min(opcoes.quantidade, trilha.questoes.length));
     } else if (modo === 'enviada') {
       fila = [...opcoes.questoes]; // na ordem da prova original
     }

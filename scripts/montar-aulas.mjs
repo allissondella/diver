@@ -17,7 +17,8 @@
  *
  * ---------- O formato .aula (uma linha por item; linhas em branco separam parágrafos) ----------
  * @@ aula <id>                 começa uma aula
- * nome: / modulo: / habilidades: H1, H3 / minutos: 35 / novaEm: AAAA-MM-DD
+ * nome: / modulo: / moduloId: em-mat-m1 / habilidades: H1, H3 / bncc: EM13MAT104, EF07MA02 / minutos: 35 / novaEm: AAAA-MM-DD
+ *                              (bncc: códigos da BNCC para a equipe, sem ir para a descrição; habilidades: Matriz do Enem, vai para a descrição)
  * intro: <texto>               introdução do "Antes de mergulhar"
  * ## <título>                  seção do artigo; os parágrafos vêm nas linhas seguintes
  * mapa: <centro>               mapa mental; ramos nas linhas "- Ramo: item; item; item"
@@ -31,6 +32,7 @@
  *   - alternativa errada >> por que está errada
  *   = explicação (termina com "Dica de mergulhador: ...")
  *   ! confere: <expressão JS que dá true>     ! revisar: <motivo>
+ *   ! copia: <id>     a questão veio de outro curso (campo copiaDe; ex.: a Retomada copiando da Travessia, com id novo)
  * ~~                           variante da questão anterior (mesmo formato, sem a linha ??)
  * ficha: <tema>   e depois "texto: ...", "ponto: ...", "pegadinha: ..."
  * par: termo :: definição
@@ -144,6 +146,7 @@ export function lerAulas(texto, origem = 'texto') {
       if (t.startsWith('= ')) { q.explicacao = (q.explicacao ? q.explicacao + ' ' : '') + t.slice(2).trim(); enunciadoAberto = false; return; }
       if (t.startsWith('! confere:')) { q.confere.push([t.slice(10).trim(), n]); return; }
       if (t.startsWith('! revisar:')) { q.revisar = t.slice(10).trim(); return; }
+      if (t.startsWith('! copia:')) { q.copiaDe = t.slice(8).trim(); return; }
       if (t === '! alternativas-codigo') { q.altCodigo = true; return; }
       if (t.startsWith('! entradas:')) { q.entradas = t.slice(11).split(';').map((x) => x.trim()); return; }
       if (t === '! saida') { q.python.push({ tipo: 'saida', linha: n }); return; }
@@ -170,6 +173,8 @@ export function lerAulas(texto, origem = 'texto') {
     switch (chave) {
       case 'nome': aula.nome = valor; return;
       case 'modulo': aula.modulo = valor; return;
+      case 'moduloId': aula.moduloId = valor; return;
+      case 'bncc': aula.bncc = valor.split(',').map((x) => x.trim()).filter(Boolean); return;
       case 'habilidades': aula.habilidades = valor.split(',').map((x) => x.trim()).filter(Boolean); return;
       case 'minutos': aula.minutos = Number(valor); return;
       case 'novaEm': aula.novaEm = valor; return;
@@ -293,6 +298,7 @@ function questaoJSON(q, id, fase, origem, base = {}) {
   if (q.altCodigo) out.alternativasCodigo = true;
   Object.assign(out, { explicacao: q.explicacao, comentarios });
   if (q.revisar) out.revisar = q.revisar;
+  if (q.copiaDe) out.copiaDe = q.copiaDe;
   return out;
 }
 
@@ -302,11 +308,13 @@ export function aplicarAulas(trilha, { aulas, fichas }, origem = 'texto') {
   trilha.variantes ||= [];
   for (const k of ['pares', 'verdadeiroFalso', 'sequencias', 'adivinhas', 'palavras']) trilha[k] ||= [];
   trilha.fichas ||= {};
-  const temaCurso = trilha.nome.replace(/^(Mergulho no Enem|Enem)\s*·\s*/, '');
+  const temaCurso = trilha.nome.replace(/^(Mergulho no Enem|Enem)\s*·\s*/, '').replace(/\s*·\s*Retomada$/, '');
   for (const a of aulas) {
     if (!a.nome || !a.modulo) throw new Error(`${origem}:${a.linha}: aula ${a.id} sem nome ou módulo`);
     const fase = { id: a.id, nome: a.nome, modulo: a.modulo, descricao: '' };
+    if (a.moduloId) fase.moduloId = a.moduloId;
     if (a.habilidades) fase.habilidades = a.habilidades;
+    if (a.bncc) fase.bncc = a.bncc;
     if (a.minutos) fase.minutos = a.minutos;
     if (a.novaEm) fase.novaEm = a.novaEm;
     if (a.laboratorio) fase.laboratorio = a.laboratorio;

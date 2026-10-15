@@ -1,0 +1,162 @@
+/* =========================================================
+   SALA ENSINO MÉDIO ("Sempre dá tempo"): Meu caminho, estados dos módulos,
+   Mapa de partida e Teste rápido (js/caminho.js e js/mapa-partida.js)
+   Estados sempre com texto e ícone, nunca só cor.
+   ========================================================= */
+
+/* ---------- Subtexto da sala ---------- */
+.sala-porta__subtexto { color: var(--sala-cor); font-weight: 700; font-size: 0.95rem; font-style: italic; }
+.sala-hero__subtexto { margin: 0 0 var(--esp-2); color: var(--sala-cor); font-weight: 800; font-size: clamp(1.05rem, 1rem + 0.5vw, 1.25rem); font-style: italic; }
+.acesso__subtexto { color: var(--texto-suave); font-weight: 500; }
+
+/* ---------- Meu caminho ---------- */
+.caminho {
+  display: grid;
+  gap: var(--esp-4);
+  margin-top: var(--esp-4);
+  padding: var(--esp-5);
+  border: 1px solid color-mix(in srgb, var(--sala-cor) 40%, var(--borda));
+  border-radius: var(--raio);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--sala-cor) 10%, var(--superficie)), var(--superficie) 65%);
+}
+.caminho__topo { display: grid; gap: var(--esp-1); }
+.caminho__titulo { margin: 0; font-size: 1.25rem; }
+.caminho__sub { margin: 0; color: var(--texto-suave); max-width: 66ch; }
+.caminho__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--esp-3); }
+.caminho-card {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  width: 100%;
+  height: 100%;
+  min-height: 44px;
+  padding: var(--esp-4);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie-2);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transicao), transform var(--transicao);
+}
+.caminho-card:hover { border-color: var(--sala-cor); }
+.caminho-card:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 3px; }
+.caminho-card .continuar__play { width: 44px; height: 44px; flex: none; }
+.caminho-card__textos { display: grid; gap: 4px; flex: 1; min-width: 0; }
+.caminho-card__topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2); }
+.caminho-card__topo .rotulo { color: var(--sala-cor); }
+.caminho-card__modulo { font-weight: 800; font-size: 1.05rem; line-height: 1.25; overflow-wrap: anywhere; }
+.caminho-card__aula { font-size: 0.9rem; font-weight: 700; color: var(--turquesa-claro); overflow-wrap: anywhere; }
+.caminho-card__conta { display: inline-flex; align-items: center; gap: var(--esp-2); font-size: 0.85rem; color: var(--texto-suave); }
+.caminho__portas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--esp-3); }
+.caminho-porta {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  min-height: 64px;
+  padding: var(--esp-3) var(--esp-4);
+  border: 2px solid color-mix(in srgb, var(--sala-cor) 55%, var(--borda));
+  border-bottom-width: 4px;
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.caminho-porta:hover { border-color: var(--sala-cor); }
+.caminho-porta:focus-visible { outline: 3px solid var(--turquesa-claro); outline-offset: 3px; }
+.caminho-porta__icone {
+  display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 12px;
+  color: var(--sala-cor); background: color-mix(in srgb, var(--sala-cor) 16%, transparent);
+}
+.caminho-porta__icone .icone { width: 22px; height: 22px; }
+.caminho-porta__textos { display: grid; gap: 2px; min-width: 0; }
+.caminho-porta__nome { font-weight: 800; }
+.caminho-porta__texto { font-size: 0.88rem; color: var(--texto-suave); }
+
+/* ---------- Estados dos módulos (no mapa do curso e nos cartões) ---------- */
+.modulo__selo {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px;
+  border: 1px solid var(--borda); font-size: 0.8rem; font-weight: 800; white-space: nowrap; color: var(--texto);
+}
+.modulo__selo .icone { width: 14px; height: 14px; }
+.modulo__selo--recomendado { border-color: var(--turquesa); background: var(--superficie-turquesa); }
+.modulo__selo--recomendado .icone { color: var(--turquesa-claro); }
+.modulo__selo--liberado .icone { color: var(--azul); }
+.modulo__selo--depois { border-style: dashed; color: var(--texto-suave); }
+.modulo__selo--dominado { border-color: var(--amarelo); background: color-mix(in srgb, var(--amarelo) 12%, transparent); }
+.modulo__selo--dominado .icone { color: var(--amarelo); }
+.modulo__selo--feito .icone { color: var(--turquesa-claro); }
+.modulo--depois .modulo__caixa { border-style: dashed; }
+.modulo--dominado .modulo__caixa { border-color: color-mix(in srgb, var(--amarelo) 60%, var(--borda)); }
+.modulo--recomendado:not(.modulo--feito) .modulo__caixa { border-color: var(--turquesa); }
+.modulo__acoes { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2) var(--esp-3); padding: var(--esp-2) var(--esp-3) 0; }
+.modulo__nota { margin: 0; flex: 1 1 260px; font-size: 0.9rem; color: var(--texto-suave); }
+.modulo__nota strong { color: var(--texto); }
+
+/* ---------- Prova da matéria ---------- */
+.prova__atalho { display: flex; gap: var(--esp-2); align-items: flex-start; margin: 0; padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-pequeno); background: color-mix(in srgb, var(--amarelo) 10%, transparent); }
+.prova__atalho .icone { flex: none; color: var(--amarelo); margin-top: 2px; }
+.caminho-prova { display: grid; gap: var(--esp-2); width: 100%; padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-pequeno); background: var(--superficie); border-left: 4px solid var(--amarelo); text-align: left; }
+.caminho-prova--ok { border-left-color: var(--turquesa); }
+.caminho-prova p { margin: 0; }
+.caminho-prova__titulo { display: flex; align-items: center; gap: var(--esp-2); }
+.caminho-prova__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-2); }
+.caminho-prova__lista .botao { text-align: left; white-space: normal; }
+.retorno { display: grid; gap: var(--esp-3); border-color: var(--turquesa); }
+.retorno p { margin: 0; }
+.retorno__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-2); }
+.retorno__modulo { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--esp-1) var(--esp-3); padding: var(--esp-2) var(--esp-3); border-radius: var(--raio-pequeno); background: var(--superficie-2); }
+.retorno__modulo .texto-suave { grid-column: 1 / -1; font-size: 0.85rem; }
+.retorno__nome { font-weight: 700; }
+
+/* ---------- Início: "Descubra por onde começar" ---------- */
+.retomada-area { margin-top: var(--esp-4); }
+.retomada-inicio {
+  --sala-cor: var(--verde);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--esp-3) var(--esp-4);
+  padding: var(--esp-4) var(--esp-5);
+  border: 1px solid color-mix(in srgb, var(--sala-cor) 45%, var(--borda));
+  border-radius: var(--raio);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--sala-cor) 12%, var(--superficie)), var(--superficie) 70%);
+}
+.retomada-inicio__icone { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 14px; color: var(--sala-cor); background: color-mix(in srgb, var(--sala-cor) 16%, transparent); }
+.retomada-inicio__icone .icone { width: 26px; height: 26px; }
+.retomada-inicio__textos { display: grid; gap: 2px; }
+.retomada-inicio__textos .rotulo { color: var(--sala-cor); }
+.retomada-inicio__titulo { margin: 0; font-size: 1.15rem; }
+.retomada-inicio__texto { margin: 0; color: var(--texto-suave); }
+.retomada-inicio__acoes { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--esp-3); }
+
+/* ---------- Mapa de partida ---------- */
+.mp-blocos, .mp-mapa { display: grid; gap: var(--esp-3); }
+.mp-lista, .mp-materias { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-2); }
+.mp-bloco, .mp-materia {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--esp-3);
+  padding: var(--esp-3); border: 1px solid var(--borda); border-radius: var(--raio-pequeno); background: var(--superficie);
+}
+.mp-bloco--feito { border-color: color-mix(in srgb, var(--turquesa) 55%, var(--borda)); }
+.mp-bloco__icone, .mp-materia__icone { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--superficie-turquesa); color: var(--turquesa-claro); }
+.mp-bloco__textos, .mp-materia__textos { display: grid; gap: 2px; min-width: 0; }
+.mp-bloco__nome, .mp-materia__nome { font-weight: 800; }
+.mp-bloco__estado { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; }
+.mp-bloco__estado .icone { width: 14px; height: 14px; }
+.mp-materia__faixa { color: var(--texto); }
+.mp-materia--comecar .mp-materia__icone { color: var(--azul); background: color-mix(in srgb, var(--azul) 14%, transparent); }
+.mp-materia--revisao .mp-materia__icone { color: var(--laranja); background: color-mix(in srgb, var(--laranja) 14%, transparent); }
+.mp-materia--manda-bem .mp-materia__icone { color: var(--amarelo); background: color-mix(in srgb, var(--amarelo) 14%, transparent); }
+.mp-detalhes summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+.mp-detalhes__lista { margin: var(--esp-2) 0; padding-left: var(--esp-5); display: grid; gap: var(--esp-1); font-size: 0.92rem; }
+.tr-resultado { justify-items: start; }
+.tr-resultado__mascote { width: 96px; height: 96px; }
+@media (max-width: 600px) {
+  .caminho { padding: var(--esp-4); }
+  .mp-bloco, .mp-materia { grid-template-columns: auto minmax(0, 1fr); }
+  .mp-bloco > .botao, .mp-materia > .botao { grid-column: 1 / -1; justify-self: stretch; }
+  .retomada-inicio { padding: var(--esp-4); }
+}

@@ -163,7 +163,7 @@ const Admin = (() => {
         h('div', { class: 'acesso__topo' },
           h('label', { class: 'acesso__rotulo' }, marcaSala,
             h('span', { class: 'acesso__icone', 'aria-hidden': 'true' }, icone(sala.icone)),
-            h('span', { class: 'acesso__textos' }, h('strong', { class: 'acesso__nome', text: sala.nome }), estadoTxt)),
+            h('span', { class: 'acesso__textos' }, h('strong', { class: 'acesso__nome' }, sala.nome, sala.subtexto ? h('span', { class: 'acesso__subtexto', text: ` · ${sala.subtexto}` }) : null), estadoTxt)),
           abrir),
         painel);
 
