@@ -142,9 +142,19 @@ Contraste mínimo AA; foco visível em tudo que é clicável; botões grandes pa
 - **Áreas seguras**: o `viewport` tem `viewport-fit=cover`; o topo, a página (`.app`), a gaveta, o rodapé fixo do quiz, o Cronograma e os toasts somam `env(safe-area-inset-*)`.
 - **Celular deitado** (`orientation: landscape` e altura até 500 px): topo do quiz grudado com 48 px, enunciado em `--t-md`, "Continuar" no rodapé mais baixo.
 
+## Movimento (Onda 5, 2026-10-15)
+Tudo some com "reduzir movimento" (regra global em `estilo.css`).
+- **Telas**: entram com opacidade + 8 px de subida (`surgir`, `--dur-normal`, sem blur). **Cortina** (`#transicao`): no máximo 700 ms.
+- **Barra lateral**: um filete só (`.lateral__filete`) que desliza até o item atual (`moverFilete` em `app.js`).
+- **Quiz**: a certa pulsa uma vez (1 → 1,02 → 1); a marcada errada balança 3 × 4 px; XP e pérolas do feedback e do resumo **contam** de 0 até o valor (`UI.contar(el, de, para, ms)`).
+- **Conquista**: o ícone do aviso gira uma vez (`toast(..., { conquista: true })`) e sai um **confete discreto** (`UI.confete()`: 12 partículas, 800 ms) só em conquista e em fim de fase novo, nunca num acerto comum.
+- **Botões**: sobem 1 px no hover (só com mouse) e afundam no clique; cartões interativos sobem 2 px com sombra-2.
+- **Bolhas do fundo**: 12, só `transform`/`opacity`, paradas no quiz e nos jogos (`.modo-foco`) e com a aba escondida (`.aba-oculta`).
+- **Teclado**: "?" abre a lista de atalhos da tela e gerais (`UI.atalhos()`; atalhos de cada tela em `ATALHOS_TELA`, `js/ui.js`). Esc fecha janela, gaveta e tutorial. No quiz, o Esc não foi mudado (comportamento das perguntas).
+
 ## Como auditar (rode antes de todo commit que mexe no visual)
 - `node scripts/auditar-design.mjs`: falha se achar hex fora de `css/tokens.css` (nos CSS e nos 3 JS que desenham), `font-size` fora da escala, `z-index` numérico ou `@media` fora dos 4 cortes.
 - `node scripts/fotos-design.mjs --onda <nome> --fase antes|depois --porta 8765`: fotografa 18 telas no celular (390×844) e no computador (1440×900) em `docs/fotos/design/<onda>/<fase>/`, com um servidor local rodando (`python3 -m http.server 8765`) e o Playwright instalado (`NODE_PATH=$(npm root -g)`). Compare o antes e o depois antes de dar a onda por pronta.
 - `node scripts/auditar-design.mjs --navegador [--porta 8124] [--larguras 390,1440] [--telas inicio,perfil]` (Onda 4): abre o app no Chromium em 26 telas (rotas `#...`, o artigo, o quiz antes e depois de responder e o login) nas larguras 360, 390, 430, 768, 1024, 1280 e 1440, e falha com **transbordo horizontal**, **alvo de toque < 44 × 44 px** (até 768 px, com toque; links no meio do texto e caixas dentro de rótulo ficam de fora) ou **texto < 12 px**. Leva uns 5 minutos.
 - As fotos novas saem em JPEG 1× (leves); `--png` para alta resolução.
-- A revisão completa, onda por onda, está em `docs/REVISAO_DESIGN.md`. **Ondas 1 a 4 feitas em 2026-10-15** (fundação, componentes, layout por tela, responsividade).
+- A revisão completa, onda por onda, está em `docs/REVISAO_DESIGN.md`. **Ondas 1 a 5 feitas em 2026-10-15** (fundação, componentes, layout por tela, responsividade, movimento).

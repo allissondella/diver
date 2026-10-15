@@ -361,3 +361,61 @@ h1, h2, h3 { text-wrap: balance; }
   .feedback__rodape { padding-block: var(--esp-2) calc(var(--esp-2) + env(safe-area-inset-bottom)); }
   .tela--quiz { padding-bottom: calc(var(--esp-9) + env(safe-area-inset-bottom)); }
 }
+
+/* ---------- Movimento (Onda 5); "reduzir movimento" desliga tudo (regra global em estilo.css) ---------- */
+/* Filete da barra lateral: um só, que desliza até o item atual */
+.lateral__nav { position: relative; }
+.lateral__filete {
+  position: absolute; left: 0; top: 0; width: 3px; height: 40px;
+  border-radius: var(--raio-pilula); background: var(--primaria);
+  transition: transform var(--dur-normal) var(--ease-saida), height var(--dur-normal) var(--ease-saida);
+  pointer-events: none; z-index: var(--z-acima);
+}
+.lateral__nav a[aria-current="page"] { box-shadow: none; }
+
+/* Acerto: a certa pulsa uma vez; erro: a marcada balança de leve */
+.alternativa--correta { animation: acerto-pulso 320ms var(--ease-saida); }
+.alternativa--errada { animation: erro-balanco 280ms ease-in-out; }
+@keyframes acerto-pulso { 50% { transform: scale(1.02); } }
+@keyframes erro-balanco { 25% { transform: translateX(-4px); } 50% { transform: translateX(4px); } 75% { transform: translateX(-4px); } }
+
+/* Conquista: o ícone do aviso gira uma vez */
+.toast--conquista .toast__icone .icone { animation: giro-conquista 700ms var(--ease-saida) 150ms both; }
+@keyframes giro-conquista { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+/* Confete discreto (UI.confete): 12 partículas que estouram do meio-alto da tela */
+.confete { position: fixed; left: 50%; top: 35%; width: 0; height: 0; z-index: var(--z-toast); pointer-events: none; }
+.confete i {
+  position: absolute; width: 8px; height: 12px; border-radius: 2px; opacity: 0;
+  animation: confete-voa 800ms var(--ease-saida) var(--atraso) forwards;
+}
+@keyframes confete-voa {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0); }
+  45% { opacity: 1; transform: translate(calc(var(--x) * 0.6), var(--y)) rotate(calc(var(--giro) * 0.5)); }
+  100% { opacity: 0; transform: translate(var(--x), calc(var(--y) * -0.3 + 80px)) rotate(var(--giro)); }
+}
+
+/* Botões sobem 1 px no hover (só onde há mouse); o "afundar" do clique continua */
+@media (hover: hover) {
+  .botao:hover:not(:active):not(:disabled):not([aria-busy="true"]) { transform: translateY(-1px); }
+}
+
+/* Bolhas: só transform/opacity, e paradas no quiz, nos jogos e com a aba escondida (o celular não esquenta) */
+.bolha { will-change: transform, opacity; }
+.modo-foco .bolha,
+.aba-oculta .bolha { animation-play-state: paused; }
+
+/* Cortina de transição mais curta (no total, até 700 ms) */
+.transicao--on { animation-duration: 150ms; }
+.transicao--saindo { animation-duration: 300ms; }
+
+/* Lista de atalhos ("?") */
+.dialogo--atalhos { width: min(480px, calc(100vw - 32px)); height: fit-content; }
+.atalhos-lista { display: grid; gap: var(--esp-2); margin: 0; }
+.atalhos-lista > div { display: grid; grid-template-columns: minmax(120px, auto) 1fr; gap: var(--esp-3); align-items: baseline; }
+.atalhos-lista dd { margin: 0; color: var(--texto-2); font-size: var(--t-sm); }
+kbd {
+  display: inline-block; padding: 2px var(--esp-2); border-radius: var(--raio-sm);
+  border: 1px solid var(--borda-forte); border-bottom-width: 2px; background: var(--superficie-2);
+  font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--texto-1);
+}

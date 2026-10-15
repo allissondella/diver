@@ -167,6 +167,24 @@ const App = (() => {
     Descompressao.parar(); // jogo da Sala de Descompressão aberto? fecha (a partida online avisa o outro lado)
   }
 
+  /** O filete turquesa da barra lateral desliza até o item atual (Onda 5; só desenho). */
+  function moverFilete() {
+    const nav = document.querySelector('.lateral__nav');
+    if (!nav) return;
+    let filete = nav.querySelector('.lateral__filete');
+    if (!filete) {
+      filete = h('span', { class: 'lateral__filete', 'aria-hidden': 'true' });
+      nav.prepend(filete);
+      window.addEventListener('resize', moverFilete); // a altura dos itens muda entre o celular e o computador
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(moverFilete);
+    }
+    const atual = nav.querySelector('a[aria-current="page"]');
+    if (!atual) { filete.hidden = true; return; }
+    filete.hidden = false;
+    filete.style.transform = `translateY(${atual.offsetTop}px)`;
+    filete.style.height = `${atual.offsetHeight}px`;
+  }
+
   function mostrarTela(id) {
     document.querySelectorAll('.tela').forEach((t) => (t.hidden = t.id !== id));
     document.body.classList.toggle('modo-foco', TELAS_FOCO.includes(id));
@@ -175,6 +193,7 @@ const App = (() => {
       if (a.dataset.secao === naLateral) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
+    moverFilete();
     fecharMenu();
     atualizarLateral();
     window.scrollTo(0, 0);
@@ -378,7 +397,7 @@ const App = (() => {
     return !Nuvem.ativa || Nuvem.ehAdmin();
   }
 
-  /* ---------- Cortina de transição (bolhas + Diver, ~1 s) ---------- */
+  /* ---------- Cortina de transição (bolhas + Diver, até 700 ms) ---------- */
   function cortina(texto) {
     if (movimentoReduzido) return;
     const el = $('transicao');
@@ -386,10 +405,11 @@ const App = (() => {
     clearTimeout(estado.cortinaTimer);
     el.classList.remove('transicao--saindo');
     el.classList.add('transicao--on');
+    // Onda 5: no máximo 700 ms no total (entra 150, fica até 400, sai em 300)
     estado.cortinaTimer = setTimeout(() => {
       el.classList.add('transicao--saindo');
-      estado.cortinaTimer = setTimeout(() => el.classList.remove('transicao--on', 'transicao--saindo'), 450);
-    }, 650);
+      estado.cortinaTimer = setTimeout(() => el.classList.remove('transicao--on', 'transicao--saindo'), 300);
+    }, 400);
   }
 
   /**
@@ -428,7 +448,9 @@ const App = (() => {
   function criarBolhas() {
     if (movimentoReduzido) return;
     const area = document.querySelector('.bolhas');
-    for (let i = 0; i < 16; i++) {
+    // Onda 5: no máximo 12 bolhas, e paradas com a aba escondida (e no quiz e nos jogos, pelo CSS: .modo-foco)
+    document.addEventListener('visibilitychange', () => document.body.classList.toggle('aba-oculta', document.hidden));
+    for (let i = 0; i < 12; i++) {
       const tam = 6 + Math.random() * 22;
       area.append(h('span', {
         class: 'bolha',
@@ -1823,9 +1845,13 @@ const App = (() => {
     painel.classList.toggle('feedback--erro', !r.acertou);
     if (r.acertou) {
       $('feedback-titulo').textContent = 'Mandou bem, Diver!';
-      const partes = [`+${r.xp} XP`, `+${r.perolas} ${r.perolas === 1 ? 'pérola' : 'pérolas'}`];
-      if (r.combo >= 3) partes.push(`sequência de ${r.combo}`);
-      $('feedback-ganho').textContent = partes.join(' · ');
+      // Os números contam de 0 até o ganho (Onda 5); o texto final é o mesmo de antes
+      const xpEl = h('span', { text: '0' });
+      const perolasEl = h('span', { text: '0' });
+      limpar($('feedback-ganho')).append('+', xpEl, ' XP · +', perolasEl, ` ${r.perolas === 1 ? 'pérola' : 'pérolas'}`,
+        r.combo >= 3 ? ` · sequência de ${r.combo}` : '');
+      UI.contar(xpEl, 0, r.xp);
+      UI.contar(perolasEl, 0, r.perolas);
     } else {
       $('feedback-titulo').textContent = r.semOxigenio ? 'Acabou o oxigênio!' : sortear(MSGS_ERRO);
       $('feedback-ganho').textContent = `Resposta certa: ${LETRAS[estado.ordem.indexOf(q.correta)]}) ${q.alternativas[q.correta]}`;
@@ -2050,8 +2076,13 @@ const App = (() => {
 
     $('rs-acertos').textContent = `${r.acertos}/${r.total}`;
     $('rs-tempo').textContent = formatarTempo(r.tempoSeg);
-    $('rs-xp').textContent = `+${r.xp}`;
-    $('rs-perolas').textContent = `+${r.perolas}`;
+    const rsXp = h('span', { text: '0' });
+    const rsPerolas = h('span', { text: '0' });
+    limpar($('rs-xp')).append('+', rsXp);
+    limpar($('rs-perolas')).append('+', rsPerolas);
+    UI.contar(rsXp, 0, r.xp, 600);
+    UI.contar(rsPerolas, 0, r.perolas, 600);
+    if (r.faseConcluida && r.bonus && r.bonus.primeiraVez) UI.confete(); // fim de fase: comemoração discreta
 
     // Selos: nível novo, conquistas, bônus
     const extras = limpar($('resumo-extras'));

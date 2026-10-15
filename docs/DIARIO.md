@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-15 · Revisão de design, Onda 5 (movimento)
+- **Feito:** XP e pérolas que contam no feedback e no resumo (`UI.contar`); a certa pulsa e a errada balança; conquista com ícone girando e confete discreto (`UI.confete`, também no fim de fase novo); botões sobem 1 px no hover; filete da barra lateral que desliza; 12 bolhas, paradas no quiz, nos jogos e com a aba escondida; cortina em até 700 ms; "?" abre a lista de atalhos (`UI.atalhos`).
+- **Testes:** contagem, filete, atalhos (geral e do quiz), confete e bolhas paradas conferidos no navegador; regressão sem erro; auditor OK.
+- **Próximo:** Onda 6 (carregamento e PWA).
+
 ## 2026-10-15 · Revisão de design, Onda 4 (celular e responsividade)
 - **Pedido:** "manda bala em todas até terminar" (Ondas 4 a 7).
 - **Feito:** o auditor ganhou `--navegador` (26 telas × 7 larguras: transbordo, alvo de toque < 44 px, texto < 12 px). Achou 51 problemas no começo (selects dos jogos, etiquetas e listas do Tarefas, Mês/Semana, filtros do Calendário, 25/5 do Foco, setinhas do mascote, links do Perfil, `summary`, dias do mês em 360 px, PDFs e Perfil passando da borda em 360 px); todos corrigidos. Token `--vh-tela` (100dvh) no lugar de `100vh`; `viewport-fit=cover` + áreas seguras no topo, na página e na gaveta; quiz com o celular deitado (topo grudado de 48 px).
