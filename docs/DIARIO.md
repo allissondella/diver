@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-10-15 · Revisão de design, Onda 4 (celular e responsividade)
+- **Pedido:** "manda bala em todas até terminar" (Ondas 4 a 7).
+- **Feito:** o auditor ganhou `--navegador` (26 telas × 7 larguras: transbordo, alvo de toque < 44 px, texto < 12 px). Achou 51 problemas no começo (selects dos jogos, etiquetas e listas do Tarefas, Mês/Semana, filtros do Calendário, 25/5 do Foco, setinhas do mascote, links do Perfil, `summary`, dias do mês em 360 px, PDFs e Perfil passando da borda em 360 px); todos corrigidos. Token `--vh-tela` (100dvh) no lugar de `100vh`; `viewport-fit=cover` + áreas seguras no topo, na página e na gaveta; quiz com o celular deitado (topo grudado de 48 px).
+- **Testes:** auditor completo OK; regressão (prova, nivelamento, laboratórios, jogos, quiz) sem erro. Fotos em `docs/fotos/design/onda-4/depois/` (inclui o quiz deitado).
+- **Próximo:** Onda 5 (movimento).
+
 ## 2026-10-15 · Revisão de design, Onda 3 (layout por tela)
 - **Feito:** largura de 1120 px (720 na leitura); quiz com topo numa linha, feedback no fluxo e "Continuar" fixo no rodapé; resumo com 4 números; Início e Sala reorganizados; mapa do curso em 2 colunas no computador, status em fichas no celular, "Você está aqui", cabo contínuo até a aula atual, conquistas bloqueadas discretas e "Zona de perigo" fechada; "Antes de mergulhar" com barra de passos e leitura em 65ch; Simulado com coluna lateral; Revisão com o botão no cabeçalho; cartões de jogo iguais (duração em mono, 3 linhas, "Novo hoje" no canto); Tarefas com bordas que esmaecem e pontinhos; Calendário numa linha (duas no celular); Cronograma com botões no pé do cartão; Foco com anel de progresso; Perfil com tabela de verdade; barra lateral de 264 px e gaveta que trava o fundo; login no meio da tela.
 - **Correções no caminho:** o rodapé fixo do quiz não ficava fixo (a animação da tela deixava um `transform`), e o estilo do Plano de estudos quebrava a barra de passos do artigo no computador.

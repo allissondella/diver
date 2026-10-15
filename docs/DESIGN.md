@@ -136,8 +136,15 @@ Contraste mínimo AA; foco visível em tudo que é clicável; botões grandes pa
 - **Barra lateral**: 264 px; item atual com superfície-2, filete turquesa de 3 px e texto gelo; grupos em mono `--t-xs` texto-3. No xl os itens seguem com 34 px para caber numa tela de 900 px. **Gaveta** (abaixo de 1024): até 86 vw, fundo `--fundo-2` opaco, `--sombra-4`, fecha com Esc e trava a rolagem do fundo (`body.gaveta-aberta`).
 - **Login**: no meio da tela (`100dvh` menos a faixa de testes), cartão de 400 px, mascote 120 px.
 
+## Celular e responsividade (Onda 4, 2026-10-15)
+- **Toque**: com `pointer: coarse`, todo alvo tem pelo menos 44 × 44 px (`select` dos jogos, etiquetas e nomes de lista do Tarefas, Mês/Semana, filtros do Calendário, 25/5 do Foco, setinhas do mascote, links da tabela do Perfil, todo `summary`). Em 360 px os dias do mês têm 44 px (vão de 2 px).
+- **Altura da tela**: use `var(--vh-tela)` (100dvh onde existe, 100vh nos outros), nunca `100vh` direto.
+- **Áreas seguras**: o `viewport` tem `viewport-fit=cover`; o topo, a página (`.app`), a gaveta, o rodapé fixo do quiz, o Cronograma e os toasts somam `env(safe-area-inset-*)`.
+- **Celular deitado** (`orientation: landscape` e altura até 500 px): topo do quiz grudado com 48 px, enunciado em `--t-md`, "Continuar" no rodapé mais baixo.
+
 ## Como auditar (rode antes de todo commit que mexe no visual)
 - `node scripts/auditar-design.mjs`: falha se achar hex fora de `css/tokens.css` (nos CSS e nos 3 JS que desenham), `font-size` fora da escala, `z-index` numérico ou `@media` fora dos 4 cortes.
 - `node scripts/fotos-design.mjs --onda <nome> --fase antes|depois --porta 8765`: fotografa 18 telas no celular (390×844) e no computador (1440×900) em `docs/fotos/design/<onda>/<fase>/`, com um servidor local rodando (`python3 -m http.server 8765`) e o Playwright instalado (`NODE_PATH=$(npm root -g)`). Compare o antes e o depois antes de dar a onda por pronta.
+- `node scripts/auditar-design.mjs --navegador [--porta 8124] [--larguras 390,1440] [--telas inicio,perfil]` (Onda 4): abre o app no Chromium em 26 telas (rotas `#...`, o artigo, o quiz antes e depois de responder e o login) nas larguras 360, 390, 430, 768, 1024, 1280 e 1440, e falha com **transbordo horizontal**, **alvo de toque < 44 × 44 px** (até 768 px, com toque; links no meio do texto e caixas dentro de rótulo ficam de fora) ou **texto < 12 px**. Leva uns 5 minutos.
 - As fotos novas saem em JPEG 1× (leves); `--png` para alta resolução.
-- A revisão completa, onda por onda, está em `docs/REVISAO_DESIGN.md`. **Onda 1 (fundação) e Onda 2 (componentes) feitas em 2026-10-15**; as próximas (layout, responsividade, movimento, carregamento, documentação) esperam o OK do usuário.
+- A revisão completa, onda por onda, está em `docs/REVISAO_DESIGN.md`. **Ondas 1 a 4 feitas em 2026-10-15** (fundação, componentes, layout por tela, responsividade).

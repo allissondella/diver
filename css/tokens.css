@@ -160,6 +160,9 @@
   --ease-elastica: cubic-bezier(0.34, 1.56, 0.64, 1); /* o pulinho do mascote */
   --transicao: var(--dur-normal) var(--ease-saida);  /* nome antigo */
 
+  /* ---------- Altura da tela (Onda 4): 100dvh onde o navegador entende (a barra do celular não corta), senão 100vh ---------- */
+  --vh-tela: 100vh;
+
   /* ---------- Camadas (z-index): nunca um número solto ---------- */
   --z-abaixo: -1;      /* enfeite atrás do próprio cartão */
   --z-base: 0;
@@ -171,6 +174,10 @@
   --z-dialogo: 40;     /* caixas de diálogo, tutorial, gavetas de edição */
   --z-toast: 50;       /* toasts e a faixa de ambiente de testes */
   --z-transicao: 60;   /* cortina de transição e o link "pular para o conteúdo" */
+}
+
+@supports (height: 100dvh) {
+  :root { --vh-tela: 100dvh; }
 }
 
 /* No computador (lg), a página respira mais */

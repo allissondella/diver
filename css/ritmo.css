@@ -297,7 +297,7 @@ h1, h2, h3 { text-wrap: balance; }
 /* ---------- Login (Onda 3): no meio da tela, mascote de 120 px e cartão de 400 px ---------- */
 .modo-conta .app { padding-top: 0; }
 .modo-conta .tela--conta:not([hidden]) {
-  min-height: calc(100vh - var(--faixa, 0px));
+  min-height: calc(var(--vh-tela) - var(--faixa, 0px));
   min-height: calc(100dvh - var(--faixa, 0px));
   display: grid;
   align-content: center;
@@ -306,3 +306,58 @@ h1, h2, h3 { text-wrap: balance; }
 .conta { max-width: 400px; }
 .conta__mascote { width: 120px; }
 .conta__logo { font-size: var(--t-3xl); }
+
+/* ---------- Toque (Onda 4): nenhum alvo menor que 44 × 44 px quando o ponteiro é o dedo ---------- */
+@media (pointer: coarse) {
+  .jogo-card__opcao select,
+  button.qd-etiqueta,
+  .qd-lista__nome,
+  details > summary,
+  .segmentado button,
+  .cal-filtro,
+  .tabela--perfil .link-tabela { min-height: 44px; }
+  .perfil-troca__seta { width: 44px; min-width: 44px; }
+}
+@media (pointer: coarse) {
+  .qd-atalhos summary,
+  .qd-titulo { min-height: 44px; }
+}
+/* Celular estreito (360 px): o mês cabe com dias de 44 px; o seletor dos PDFs e o topo do Perfil não passam da borda */
+@media (max-width: 479px) {
+  .cal__grade, .cal__semana { gap: 2px; }
+  #tela-pdfs .acoes-linha select { min-width: 0; max-width: 100%; flex: 1 1 100%; }
+  .perfil-topo { flex-wrap: wrap; justify-content: center; }
+  .perfil-topo__info { min-width: 0; flex: 1 1 100%; }
+}
+
+/* ---------- Áreas seguras (Onda 4, com viewport-fit=cover): o entalhe e a barra de gestos não cobrem nada ---------- */
+.topo {
+  padding-top: calc(10px + env(safe-area-inset-top));
+  padding-left: calc(var(--esp-4) + env(safe-area-inset-left));
+  padding-right: calc(var(--esp-4) + env(safe-area-inset-right));
+}
+.app {
+  padding-left: calc(var(--ritmo-pagina-x) + env(safe-area-inset-left));
+  padding-right: calc(var(--ritmo-pagina-x) + env(safe-area-inset-right));
+  padding-bottom: calc(var(--esp-9) + env(safe-area-inset-bottom));
+}
+@media (max-width: 1023px) {
+  .lateral { padding-top: calc(var(--esp-4) + env(safe-area-inset-top)); padding-bottom: calc(var(--esp-4) + env(safe-area-inset-bottom)); }
+}
+
+/* ---------- Celular deitado (Onda 4): o quiz continua usável ----------
+   Topo grudado de 48 px, enunciado menor, alternativas rolam com a página e o "Continuar" segue no rodapé, mais baixo. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .tela--quiz { padding-top: 0; }
+  .tela--quiz .quiz-topo {
+    position: sticky; top: 0; z-index: var(--z-sticky);
+    min-height: 48px; margin: 0 calc(-1 * var(--ritmo-pagina-x)); padding: 0 var(--ritmo-pagina-x);
+    background: var(--fundo-1); border-bottom: 1px solid var(--borda-sutil);
+  }
+  .tela--quiz .quiz-info { display: none; }
+  .tela--quiz .questao { padding: var(--esp-4); }
+  .tela--quiz .questao__enunciado { font-size: var(--t-md); }
+  .tela--quiz .alternativa { min-height: 44px; }
+  .feedback__rodape { padding-block: var(--esp-2) calc(var(--esp-2) + env(safe-area-inset-bottom)); }
+  .tela--quiz { padding-bottom: calc(var(--esp-9) + env(safe-area-inset-bottom)); }
+}
