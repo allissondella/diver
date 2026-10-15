@@ -917,7 +917,13 @@ const App = (() => {
 
   function renderizarMapa() {
     const { trilha, prog } = estado;
-    const mapa = limpar($('mapa-fases'));
+    // Módulos que a pessoa abriu continuam abertos quando o mapa é redesenhado (ex.: ao fechar o artigo)
+    const antes = $('mapa-fases');
+    const abertos = antes.dataset.trilha === trilha.id
+      ? new Set([...antes.querySelectorAll('li[data-modulo] > details[open]')].map((d) => d.parentElement.dataset.modulo))
+      : new Set();
+    const mapa = limpar(antes);
+    mapa.dataset.trilha = trilha.id;
     const n = trilha.fases.length;
     const porModulo = trilha.fases.some((f) => f.modulo);
     $('mapa-sub').textContent = porModulo
@@ -926,7 +932,7 @@ const App = (() => {
         ? 'Todas as fases estão abertas: escolha o tema que quer estudar. A ordem do mapa é só uma sugestão.'
         : 'Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.';
     mapa.classList.toggle('mapa--modulos', porModulo);
-    if (porModulo) renderizarMapaModulos(mapa);
+    if (porModulo) renderizarMapaModulos(mapa, abertos);
     else trilha.fases.forEach((fase, i) => mapa.append(itemFase(fase, i)));
     if (trilha.questoes.length) mapa.append(itemProva()); // a chegada: deixa claro onde o curso termina
     if (estado.focarNoMapa) {
@@ -1031,7 +1037,7 @@ const App = (() => {
    * Curso por matéria (fases com "modulo"): um bloco recolhível por módulo, com "x de y aulas" e barra
    * de progresso; o módulo da próxima aula fica aberto. No topo, "Ir para a próxima aula".
    */
-  function renderizarMapaModulos(mapa) {
+  function renderizarMapaModulos(mapa, abertos = new Set()) {
     const { trilha, prog } = estado;
     const feita = (f) => !!(prog.fases[f.id] && prog.fases[f.id].concluida);
     // Sala Ensino Médio: cada módulo tem um estado (js/caminho.js) e a próxima aula segue o plano de estudos
@@ -1058,7 +1064,7 @@ const App = (() => {
       const total = m.fases.length;
       const feitas = m.fases.filter(([f]) => feita(f)).length;
       const x = caminho && caminho.get(m.id);
-      const aberto = proxima ? m.fases.some(([f]) => f === proxima) : false;
+      const aberto = (proxima ? m.fases.some(([f]) => f === proxima) : false) || abertos.has(m.id);
       mapa.append(h('li', { class: `modulo ${feitas === total ? 'modulo--feito' : ''} ${x ? `modulo--${x.estado}` : ''}`.replace(/\s+/g, ' ').trim(), 'data-modulo': m.id },
         h('details', { class: 'modulo__caixa', open: aberto },
           h('summary', { class: 'modulo__cabeca' },
