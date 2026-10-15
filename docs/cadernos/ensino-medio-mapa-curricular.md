@@ -249,7 +249,7 @@ Contado em 2026-10-15 sobre as trilhas da Travessia (script de conferência fora
 | 6 | Sistemas digestório e respiratório (`em-bio-digestorio-respiratorio`) | R · `bio-digestao-respiracao` | hab | EM13CNT207 |
 | 7 | Sistemas circulatório e excretor (`em-bio-circulatorio-excretor`) | R · `bio-circulacao-excrecao` | hab | EM13CNT207 |
 | 8 | Imunologia, vacinas e doenças infecciosas (`em-bio-imunologia`) | R · `bio-imunidade-saude`, `bio-microrganismos` | hab | EM13CNT207, EM13CNT306 |
-| 9 | Sistemas endócrino e reprodutor (`em-bio-endocrino-reprodutor`) | R · `bio-controle-reproducao` | hab | EM13CNT207 |
+| 9 | Sistemas nervoso, endócrino e reprodutor (`em-bio-endocrino-reprodutor`) | R · `bio-controle-reproducao` | hab | EM13CNT207 |
 | 10 | Revisão: fisiologia humana e saúde (`em-bio-revisao-fisiologia`) | V · `bio-revisao-corpo` | hab | EM13CNT207 |
 
 **Módulo 3 · Genética, evolução e ecologia** (`em-bio-m3`)
