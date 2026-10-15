@@ -5,6 +5,17 @@
 
 ---
 
+## 2026-10-14 · Sala Ensino Médio, "Sempre dá tempo": Onda 0
+- **Pedido:** "Hoje vamos subir outra sala/curso" (prompt da sala Ensino Médio); Etapa 1 (plano) aprovada com "manda bala".
+- **Feito:**
+  - sala `ensino-medio` com subtexto, "Meu caminho", as duas portas, estados dos módulos e "Liberar quando quiser" (`js/caminho.js`, `css/caminho.css`);
+  - Mapa de partida e Teste rápido (`js/mapa-partida.js`, `data/diagnostica/ensino-medio.json`);
+  - prova por matéria com "Já domino", reforço e "Meu retorno"; conquistas só dos `em-*`; retorno sem culpa; meta 5; card do Início; tutoriais;
+  - Matemática · Retomada (Módulo 1, 6 aulas) e Português · Retomada (Módulo 1, 5 aulas): 220 questões (120 da Travessia, 100 novas), 220 variantes, 35 fichas.
+  - Testes no Playwright, computador e celular (375 px): sem rolagem lateral, fluxo completo, salas antigas intactas.
+- **Fila:** só `simular` (~US$ 16,71). Nada enviado.
+- **Próximo:** o usuário confere a prévia e faz o merge; depois, Onda 1 com OK.
+
 ## 2026-10-14 · Explora Tech: Módulo 2 · Lógica: decisões (aulas 6 a 10)
 - **Pedido:** "vamos continuar subindo o próximo módulo de tecnologia"; plano aprovado com "manda bala e já pode ir subindo para produção".
 - **Feito:**

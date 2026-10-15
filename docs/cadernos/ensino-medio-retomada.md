@@ -315,9 +315,15 @@ O comportamento de Mergulho, Simulado, Revisão e Prova **não muda** em nenhum 
   - estimativa da Fila (`simular`, nada enviado);
   - este caderno.
 
+- 2026-10-14 · **Onda 0** (depois do "manda bala"):
+  - infraestrutura: sala e subtexto, "Meu caminho" e as duas portas, estados dos módulos e "Liberar quando quiser", Mapa de partida (blocos de Linguagens e Matemática, 9 questões), Teste rápido, prova com atalho e reforço, "Quase! Vale rever estes módulos", "Meu retorno", conquistas, retorno sem culpa, meta 5, card do Início, tutoriais `sala-ensino-medio` e `mapa-partida`;
+  - **Matemática Módulo 1** (6 aulas) e **Português Módulo 1** (5 aulas): 220 questões (120 copiadas da Travessia com `copiaDe`, 100 novas), 220 variantes, 35 fichas; `conferir-trilha.mjs` sem erros nem avisos;
+  - a 1ª aula de cada módulo tem 10 fáceis (a 1ª rodada sai só com fáceis, sem mexer no `quiz.js`); as outras, 8 fáceis, 8 médias e 4 difíceis;
+  - Fila: só `simular` (Matemática US$ 8,92, Português US$ 7,46, Mapa US$ 0,33; ~US$ 16,71). Nada enviado.
+
 ## Próximos passos e pendências
 
-- **O seu OK** no plano. Em especial:
+- ~~O seu OK no plano~~: dado em 2026-10-14 ("manda bala"), com todas as recomendações.
   - (a) opção C;
   - (b) reaproveitar o `diagnostica.js` e o log sem SQL;
   - (c) `moduloId` e `prog.modulos`;
@@ -332,4 +338,6 @@ O comportamento de Mergulho, Simulado, Revisão e Prova **não muda** em nenhum 
 - Dizer a origem de `portugues (5).pdf` e `Apostila-Inglês-EM.pdf`, ou deixá-los de fora.
 - Matriz atual do Encceja: conferir no edital do Encceja quando sair (hoje não foi encontrada).
 - **Especialista de revisão humana: a definir** (a Travessia também não tem). Fato específico (data, lei, valor, fórmula, nome) leva `revisar`.
-- Adaptador do `fila.mjs` para as questões de `data/diagnostica/` (serve ao Mapa e à Avaliação do Enem).
+- `fila.mjs simular` já lê `data/diagnostica/ensino-medio.json` (9 questões, US$ 0,33); conferir o `baixar` para esse arquivo quando o lote voltar.
+- **Decisões tomadas por mim na Onda 0 (contar ao usuário):** o Mapa é um módulo próprio (`js/mapa-partida.js`) que usa a conta da Diagnóstica, em vez de tornar a tela do Enem configurável (menos risco para um fluxo aprovado); as notas do Mapa ainda não entram no Cronograma (passo do Enem; fica com a decisão f); campo `bncc` separado das `habilidades`; o sorteio da prova com reforço entra no `quiz.js` por uma opção (`questoesProva`), sem mudar a prova dos outros cursos; o Teste rápido não dá XP (o prêmio é o módulo dominado) e não entra na repetição espaçada; "Meu retorno" aparece com a prova aprovada ou com os módulos em dia depois de alguma aula ou Teste rápido (só o Mapa não basta).
+- Onda 1: o resto de Matemática (18 aulas) e de Português (10 aulas), com o OK.

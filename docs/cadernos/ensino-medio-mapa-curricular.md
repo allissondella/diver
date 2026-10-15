@@ -1,6 +1,6 @@
 # Mapa curricular: sala Ensino Médio · "Sempre dá tempo"
 
-> **Aprovado em 2026-10-14 ("manda bala").** Onda 0 em andamento.
+> **Aprovado em 2026-10-14 ("manda bala").** **Onda 0 feita** (infraestrutura + Matemática Módulo 1 e Português Módulo 1). Ids das aulas: `em-mat-contas-sem-medo`, `em-mat-fracoes-decimais`, `em-mat-porcentagem`, `em-mat-razao-regra-de-tres`, `em-mat-juros-parcelas`, `em-mat-revisao-numeros`; `em-por-tema-ideia-principal`, `em-por-inferencia`, `em-por-generos-dia-a-dia`, `em-por-texto-imagem-grafico`, `em-por-revisao-leitura`. Módulos: `em-mat-m1`…`m4`, `em-por-m1`…`m3`.
 > Só conclusões nossas: nomes de cursos, módulos e aulas escritos por nós, organizados pela BNCC do Ensino Médio (MEC, 2018) e medidos contra o que a Travessia já tem. Nenhum trecho de terceiro.
 > O inventário, a curadoria da pasta do Drive e as decisões técnicas estão no caderno da sala: `docs/cadernos/ensino-medio-retomada.md`.
 
