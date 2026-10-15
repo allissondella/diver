@@ -1,15 +1,10 @@
 /* =========================================================
-   SALA ENSINO MÉDIO ("Sempre dá tempo"): Meu caminho, estados dos módulos,
-   Mapa de partida e Teste rápido (js/caminho.js e js/mapa-partida.js)
+   SALA ENSINO MÉDIO: plano de estudos, estados dos módulos, avaliação de
+   nivelamento e prova de suficiência (js/caminho.js e js/mapa-partida.js)
    Estados sempre com texto e ícone, nunca só cor.
    ========================================================= */
 
-/* ---------- Subtexto da sala ---------- */
-.sala-porta__subtexto { color: var(--sala-cor); font-weight: 700; font-size: 0.95rem; font-style: italic; }
-.sala-hero__subtexto { margin: 0 0 var(--esp-2); color: var(--sala-cor); font-weight: 800; font-size: clamp(1.05rem, 1rem + 0.5vw, 1.25rem); font-style: italic; }
-.acesso__subtexto { color: var(--texto-suave); font-weight: 500; }
-
-/* ---------- Meu caminho ---------- */
+/* ---------- Plano de estudos ---------- */
 .caminho {
   display: grid;
   gap: var(--esp-4);
@@ -133,7 +128,7 @@
 .retomada-inicio__texto { margin: 0; color: var(--texto-suave); }
 .retomada-inicio__acoes { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--esp-3); }
 
-/* ---------- Mapa de partida ---------- */
+/* ---------- Avaliação de nivelamento ---------- */
 .mp-blocos, .mp-mapa { display: grid; gap: var(--esp-3); }
 .mp-lista, .mp-materias { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-2); }
 .mp-bloco, .mp-materia {

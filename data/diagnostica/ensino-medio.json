@@ -1,8 +1,8 @@
 {
  "id": "mapa-partida-ensino-medio",
- "nome": "Mapa de partida",
+ "nome": "Avaliação de nivelamento",
  "versao": 1,
- "descricao": "Teste leve por blocos da sala Ensino Médio (\"Sempre dá tempo\"): mostra, matéria por matéria, se vale começar do básico, fazer uma revisão ou se a pessoa já manda bem. Cada questão aponta para um módulo (moduloId). Só aparecem as matérias com curso publicado.",
+ "descricao": "Avaliação de nivelamento da sala Ensino Médio, por área do conhecimento: indica, disciplina por disciplina, o nível (básico, intermediário ou avançado) e por onde começar. Cada questão aponta para um módulo (moduloId). Só aparecem as disciplinas com curso publicado.",
  "blocos": [
   {
    "id": "linguagens",
@@ -263,6 +263,1064 @@
    "curso": "em-matematica",
    "moduloId": "em-mat-m4",
    "copiaDe": "dg-mat-03"
+  },
+  {
+   "id": "mp-bio-01",
+   "tema": "Ecologia",
+   "dificuldade": "facil",
+   "enunciado": "Na cadeia alimentar capim → gafanhoto → sapo → cobra, o sapo ocupa a posição de",
+   "alternativas": [
+    "consumidor secundário",
+    "produtor",
+    "consumidor primário",
+    "consumidor terciário",
+    "decompositor"
+   ],
+   "correta": 0,
+   "explicacao": "O capim é o produtor; o gafanhoto, que come o capim, é consumidor primário; o sapo, que come o gafanhoto, é consumidor secundário; a cobra, terciário. Dica de mergulhador: conte as setas a partir do produtor: 1 seta = primário, 2 = secundário, 3 = terciário.",
+   "comentarios": [
+    "",
+    "Produtor é quem faz fotossíntese: o capim.",
+    "Consumidor primário é o gafanhoto, que come a planta.",
+    "Terciária é a cobra, que come o sapo.",
+    "Decompositores (fungos e bactérias) não aparecem na cadeia."
+   ],
+   "bloco": "natureza",
+   "curso": "em-biologia",
+   "moduloId": "em-bio-m3",
+   "copiaDe": "dg-nat-07"
+  },
+  {
+   "id": "mp-bio-02",
+   "tema": "Saúde e imunidade",
+   "dificuldade": "medio",
+   "enunciado": "As vacinas protegem contra doenças porque",
+   "alternativas": [
+    "contêm anticorpos prontos que agem na hora.",
+    "matam os vírus e bactérias que já estão no corpo.",
+    "funcionam como antibióticos de efeito prolongado.",
+    "deixam o corpo sem nenhum micro-organismo.",
+    "estimulam o sistema imunológico a criar memória contra o agente, sem causar a doença grave."
+   ],
+   "correta": 4,
+   "explicacao": "A vacina apresenta ao corpo o agente enfraquecido, inativado ou só uma parte dele; o sistema imunológico produz anticorpos e células de memória, que reagem rápido num contato futuro. Dica de mergulhador: vacina previne (ensina o corpo); soro trata (traz anticorpos prontos).",
+   "comentarios": [
+    "Anticorpos prontos são o soro, que age na hora e não deixa memória.",
+    "A vacina previne; não é tratamento de uma infecção que já existe.",
+    "Antibiótico age contra bactérias e não é vacina.",
+    "Vivemos com muitos micro-organismos úteis; a vacina não elimina todos.",
+    ""
+   ],
+   "bloco": "natureza",
+   "curso": "em-biologia",
+   "moduloId": "em-bio-m2",
+   "copiaDe": "dg-nat-08"
+  },
+  {
+   "id": "mp-bio-03",
+   "tema": "Genética",
+   "dificuldade": "medio",
+   "enunciado": "Em ervilhas, a cor amarela (A) é dominante sobre a verde (a). No cruzamento entre duas plantas Aa × Aa, a proporção esperada de sementes verdes é",
+   "alternativas": [
+    "0",
+    "1/4",
+    "1/2",
+    "3/4",
+    "1"
+   ],
+   "correta": 1,
+   "explicacao": "O cruzamento Aa × Aa dá 1 AA : 2 Aa : 1 aa. Só aa é verde (o recessivo precisa vir em dose dupla): 1 em 4, ou 25%. Dica de mergulhador: monte o quadro com os gametas (A, a) × (A, a) e conte; não confie na intuição.",
+   "comentarios": [
+    "Os dois pais carregam o alelo a, então aa é possível.",
+    "",
+    "1/2 é a proporção de heterozigotos (Aa).",
+    "3/4 é a proporção de amarelas (AA + Aa).",
+    "Para serem todas verdes, os dois pais teriam de ser aa."
+   ],
+   "bloco": "natureza",
+   "curso": "em-biologia",
+   "moduloId": "em-bio-m3",
+   "copiaDe": "dg-nat-09"
+  },
+  {
+   "id": "mp-bio-04",
+   "tema": "Citologia",
+   "dificuldade": "dificil",
+   "enunciado": "Um paciente desidratado recebe soro na veia. Se, em vez de soro isotônico, recebesse água pura, as suas hemácias tenderiam a",
+   "alternativas": [
+    "perder água por osmose e murchar.",
+    "permanecer iguais, porque a água pura não atravessa a membrana.",
+    "ganhar água por osmose, inchar e poder se romper.",
+    "produzir mais hemoglobina para compensar.",
+    "expulsar a água por transporte ativo, sem alteração."
+   ],
+   "correta": 2,
+   "explicacao": "A água pura é menos concentrada que o interior da hemácia; a água entra por osmose, e a célula, sem parede, pode estourar. Dica de mergulhador: a água vai para onde há mais soluto.",
+   "comentarios": [
+    "Isso ocorreria num meio mais concentrado que a hemácia.",
+    "A água atravessa a membrana livremente.",
+    "",
+    "A osmose não muda a produção de hemoglobina.",
+    "O efeito imediato é a entrada passiva de água."
+   ],
+   "bloco": "natureza",
+   "curso": "em-biologia",
+   "moduloId": "em-bio-m1"
+  },
+  {
+   "id": "mp-qui-01",
+   "tema": "Misturas e separação",
+   "dificuldade": "facil",
+   "enunciado": "Para obter água sem areia a partir de uma mistura das duas, de forma simples e sem aquecer, o processo mais adequado é a",
+   "alternativas": [
+    "destilação simples",
+    "fusão",
+    "filtração",
+    "sublimação",
+    "cristalização"
+   ],
+   "correta": 2,
+   "explicacao": "Areia e água formam uma mistura heterogênea com um sólido que não se dissolve: um filtro (até um pano ou papel) retém a areia e deixa a água passar. Dica de mergulhador: sólido que não dissolve + líquido = filtração ou decantação.",
+   "comentarios": [
+    "A destilação exige aquecimento e serve para separar o que está dissolvido.",
+    "Fusão é mudança de estado (sólido para líquido), não separação.",
+    "",
+    "Sublimação é passar de sólido para gás; não se aplica aqui.",
+    "Cristalização recupera um sólido dissolvido, e a areia não se dissolve."
+   ],
+   "bloco": "natureza",
+   "curso": "em-quimica",
+   "moduloId": "em-qui-m1",
+   "copiaDe": "dg-nat-04"
+  },
+  {
+   "id": "mp-qui-02",
+   "tema": "Ácidos e bases",
+   "dificuldade": "medio",
+   "enunciado": "O suco gástrico tem pH próximo de 2. Um antiácido alivia a azia porque",
+   "alternativas": [
+    "é um ácido mais forte e diminui o pH do estômago.",
+    "estimula o estômago a produzir mais ácido.",
+    "é uma base que neutraliza parte do ácido e eleva o pH.",
+    "é um sal neutro que não reage com o ácido.",
+    "transforma o ácido do estômago em gás oxigênio."
+   ],
+   "correta": 2,
+   "explicacao": "pH 2 é bem ácido. O antiácido (como o hidróxido de magnésio ou o bicarbonato de sódio) tem caráter básico: reage com o ácido (neutralização) e o pH sobe, aliviando a queimação. Dica de mergulhador: na escala de pH, abaixo de 7 é ácido, acima de 7 é básico; neutralizar é aproximar do 7.",
+   "comentarios": [
+    "Mais ácido pioraria a azia.",
+    "O efeito é reduzir a acidez, não aumentar.",
+    "",
+    "Se não reagisse, não aliviaria nada.",
+    "A neutralização forma sal e água; no caso do bicarbonato, gás carbônico, nunca oxigênio."
+   ],
+   "bloco": "natureza",
+   "curso": "em-quimica",
+   "moduloId": "em-qui-m3",
+   "copiaDe": "dg-nat-05"
+  },
+  {
+   "id": "mp-qui-03",
+   "tema": "Reações e estequiometria",
+   "dificuldade": "dificil",
+   "enunciado": "Na queima completa do metano: CH₄ + 2 O₂ → CO₂ + 2 H₂O. Use as massas molares C = 12 g/mol, H = 1 g/mol e O = 16 g/mol. A massa de CO₂ formada na queima completa de 32 g de metano é",
+   "alternativas": [
+    "32 g",
+    "44 g",
+    "64 g",
+    "88 g",
+    "176 g"
+   ],
+   "correta": 3,
+   "explicacao": "Massa molar do CH₄ = 12 + 4 = 16 g/mol; 32 g = 2 mol. A proporção é 1 CH₄ : 1 CO₂, então se formam 2 mol de CO₂. Massa molar do CO₂ = 12 + 32 = 44 g/mol; 2 × 44 = 88 g. Dica de mergulhador: em estequiometria, transforme tudo em mol, use a proporção da equação e só no fim volte para gramas.",
+   "comentarios": [
+    "Repete a massa do metano; a massa muda porque entram átomos de oxigênio.",
+    "É a massa de 1 mol de CO₂, mas 32 g de metano são 2 mol.",
+    "É a massa de 2 mol de O₂ (que reagem com só 1 mol de CH₄), não a de CO₂.",
+    "",
+    "Dobra a conta duas vezes: seriam 4 mol de CO₂."
+   ],
+   "bloco": "natureza",
+   "curso": "em-quimica",
+   "moduloId": "em-qui-m1",
+   "copiaDe": "dg-nat-06"
+  },
+  {
+   "id": "mp-qui-04",
+   "tema": "Ligações químicas",
+   "dificuldade": "medio",
+   "enunciado": "Uma substância sólida funde acima de 700 °C, não conduz eletricidade no estado sólido, mas conduz quando fundida ou dissolvida em água. Ela tem, provavelmente, ligação",
+   "alternativas": [
+    "metálica.",
+    "covalente, formando moléculas pequenas.",
+    "covalente apolar, como a parafina.",
+    "de hidrogênio, como o gelo.",
+    "iônica."
+   ],
+   "correta": 4,
+   "explicacao": "No sólido, os íons estão presos no retículo; fundidos ou dissolvidos, ficam livres e conduzem. O ponto de fusão alto confirma. Dica de mergulhador: conduz só fundido ou dissolvido? É iônico.",
+   "comentarios": [
+    "Metais conduzem também no estado sólido.",
+    "Substâncias moleculares pequenas têm pontos de fusão baixos.",
+    "A parafina funde a baixa temperatura e não conduz.",
+    "O gelo funde a 0 °C.",
+    ""
+   ],
+   "bloco": "natureza",
+   "curso": "em-quimica",
+   "moduloId": "em-qui-m2"
+  },
+  {
+   "id": "mp-fis-01",
+   "tema": "Mecânica e energia",
+   "dificuldade": "dificil",
+   "enunciado": "Um carro passa de 40 km/h para 80 km/h. Mantida a mesma força de frenagem, a energia cinética do carro e, com ela, a distância necessária para parar ficam",
+   "alternativas": [
+    "iguais",
+    "duas vezes maiores",
+    "três vezes maiores",
+    "reduzidas à metade",
+    "quatro vezes maiores"
+   ],
+   "correta": 4,
+   "explicacao": "Energia cinética = m·v²/2: dobrando a velocidade, ela fica 2² = 4 vezes maior. Com a mesma força de freio, a distância de frenagem cresce na mesma proporção da energia (trabalho = força × distância). Dica de mergulhador: a velocidade entra ao quadrado; em dobro, o estrago quadruplica.",
+   "comentarios": [
+    "A energia depende da velocidade, que mudou.",
+    "Esse seria o efeito se a energia dependesse da velocidade de forma linear, não ao quadrado.",
+    "Não há fator 3 na relação.",
+    "A velocidade aumentou; a energia não pode diminuir.",
+    ""
+   ],
+   "bloco": "natureza",
+   "curso": "em-fisica",
+   "moduloId": "em-fis-m1",
+   "copiaDe": "dg-nat-03"
+  },
+  {
+   "id": "mp-fis-02",
+   "tema": "Calor e temperatura",
+   "dificuldade": "medio",
+   "enunciado": "À sombra, um banco de metal e um banco de madeira estão à mesma temperatura. Ao tocar os dois, a pessoa sente o metal mais frio porque",
+   "alternativas": [
+    "o metal conduz calor melhor e retira calor da mão mais depressa.",
+    "o metal está, na verdade, a uma temperatura menor que a madeira.",
+    "a madeira produz calor próprio por ser um material natural.",
+    "o metal transmite o \"frio\" para a mão da pessoa.",
+    "a madeira reflete mais a luz do sol."
+   ],
+   "correta": 0,
+   "explicacao": "Os dois estão à mesma temperatura, mas o metal é bom condutor térmico: o calor sai da mão para ele mais rápido, e é essa perda rápida que a pele sente como \"frio\". A madeira é isolante e tira calor devagar. Dica de mergulhador: a pele sente o fluxo de calor, não a temperatura do objeto.",
+   "comentarios": [
+    "",
+    "O enunciado diz que estão à mesma temperatura.",
+    "A madeira não gera calor.",
+    "O que flui é o calor, da mão para o metal; não existe \"frio\" sendo transmitido.",
+    "Os bancos estão à sombra; o motivo é a condução térmica."
+   ],
+   "bloco": "natureza",
+   "curso": "em-fisica",
+   "moduloId": "em-fis-m2",
+   "copiaDe": "dg-nat-02"
+  },
+  {
+   "id": "mp-fis-03",
+   "tema": "Eletricidade e consumo",
+   "dificuldade": "facil",
+   "enunciado": "Um chuveiro elétrico de 5 000 W fica ligado 20 minutos por dia. Em 30 dias, a energia elétrica consumida por ele é de",
+   "alternativas": [
+    "3 kWh",
+    "50 kWh",
+    "100 kWh",
+    "150 kWh",
+    "3 000 kWh"
+   ],
+   "correta": 1,
+   "explicacao": "Energia = potência × tempo. 5 000 W = 5 kW; 20 min = 1/3 h. Por dia: 5 × 1/3 ≈ 1,67 kWh. Em 30 dias: 1,67 × 30 = 50 kWh. Dica de mergulhador: conta de luz em 3 passos: watts ÷ 1 000, vezes horas por dia, vezes dias.",
+   "comentarios": [
+    "Esse valor mistura as unidades (5 × 20 × 30 ÷ 1 000): 20 é minutos, não horas.",
+    "",
+    "Esse valor usa 40 minutos por dia, o dobro do tempo.",
+    "Esse valor usa 1 hora por dia em vez de 20 minutos.",
+    "Esse valor usa minutos no lugar de horas (5 × 20 × 30)."
+   ],
+   "bloco": "natureza",
+   "curso": "em-fisica",
+   "moduloId": "em-fis-m3",
+   "copiaDe": "dg-nat-01"
+  },
+  {
+   "id": "mp-fis-04",
+   "tema": "Ondas",
+   "dificuldade": "medio",
+   "enunciado": "Uma rádio FM transmite na frequência de 100 MHz. Sabendo que as ondas de rádio viajam a 3 × 10⁸ m/s, o comprimento de onda dessa transmissão é",
+   "alternativas": [
+    "0,3 m.",
+    "3 m.",
+    "30 m.",
+    "300 m.",
+    "3 × 10¹⁶ m."
+   ],
+   "correta": 1,
+   "explicacao": "λ = v ÷ f = 3 × 10⁸ ÷ 10⁸ = 3 m (100 MHz = 10⁸ Hz). Dica de mergulhador: mega é 10⁶; confira as potências antes de dividir.",
+   "comentarios": [
+    "Confira: 3 × 10⁸ ÷ 10⁸.",
+    "",
+    "Confira as potências de 10.",
+    "300 m seria para 1 MHz.",
+    "A conta é de divisão, não de multiplicação."
+   ],
+   "bloco": "natureza",
+   "curso": "em-fisica",
+   "moduloId": "em-fis-m2"
+  },
+  {
+   "id": "mp-his-01",
+   "tema": "Brasil Colônia",
+   "dificuldade": "facil",
+   "enunciado": "Nos séculos XVI e XVII, a economia açucareira do Nordeste colonial se apoiava em",
+   "alternativas": [
+    "grandes propriedades, monocultura para exportação e trabalho de pessoas escravizadas.",
+    "pequenas propriedades familiares voltadas ao mercado interno.",
+    "trabalho assalariado de imigrantes europeus.",
+    "fábricas de açúcar refinado instaladas nas cidades.",
+    "mineração de ouro e diamantes."
+   ],
+   "correta": 0,
+   "explicacao": "O engenho combinava latifúndio, um único produto voltado à exportação e mão de obra escravizada, africana e indígena. Esse tripé marcou a sociedade colonial. Dica de mergulhador: Colônia exportadora = terra grande + um produto + trabalho escravizado.",
+   "comentarios": [
+    "",
+    "A produção era em grandes propriedades, para fora.",
+    "A imigração europeia assalariada é do fim do século XIX.",
+    "A produção era rural, nos engenhos.",
+    "A mineração é do século XVIII, em Minas Gerais."
+   ],
+   "bloco": "humanas",
+   "curso": "em-historia",
+   "moduloId": "em-his-m2",
+   "copiaDe": "dg-hum-01"
+  },
+  {
+   "id": "mp-his-02",
+   "tema": "Independência e Império",
+   "dificuldade": "medio",
+   "enunciado": "A Independência do Brasil (1822) manteve várias estruturas do período colonial. Um exemplo dessa continuidade foi",
+   "alternativas": [
+    "a abolição imediata da escravidão.",
+    "a proclamação da República.",
+    "a reforma agrária nas terras da Coroa.",
+    "o voto universal para homens e mulheres.",
+    "a manutenção da escravidão e da grande propriedade rural."
+   ],
+   "correta": 4,
+   "explicacao": "A Independência mudou a política (o Brasil deixou de ser colônia), mas manteve a estrutura social: escravidão, latifúndio e uma elite agrária no poder, agora com a monarquia de D. Pedro I. Dica de mergulhador: no Enem, Independência costuma ser lida como \"mudança política com continuidade social\".",
+   "comentarios": [
+    "A abolição só veio em 1888.",
+    "O país virou Império; a República é de 1889.",
+    "Não houve reforma agrária.",
+    "O voto era censitário, restrito aos homens com renda.",
+    ""
+   ],
+   "bloco": "humanas",
+   "curso": "em-historia",
+   "moduloId": "em-his-m3",
+   "copiaDe": "dg-hum-02"
+  },
+  {
+   "id": "mp-his-03",
+   "tema": "Abolição e pós-abolição",
+   "dificuldade": "dificil",
+   "enunciado": "A Lei Áurea (1888) libertou as pessoas escravizadas, mas não veio acompanhada de políticas de acesso à terra, à educação e ao trabalho. Uma consequência histórica dessa forma de abolição foi",
+   "alternativas": [
+    "a integração imediata da população negra ao mercado de trabalho formal.",
+    "a indenização dos libertos pelo Estado brasileiro.",
+    "a distribuição de terras devolutas aos ex-escravizados.",
+    "a marginalização da população negra e desigualdades que se reproduzem até hoje.",
+    "o fim das desigualdades raciais no início da República."
+   ],
+   "correta": 3,
+   "explicacao": "Sem terra, escola ou trabalho garantidos, a população liberta foi empurrada para a informalidade e para as periferias, e a desigualdade racial passou a se reproduzir nas instituições: é a raiz do que hoje se chama racismo estrutural. Dica de mergulhador: desconfie da alternativa que diz que um problema histórico \"acabou\" de uma vez.",
+   "comentarios": [
+    "Os libertos foram preteridos, inclusive em favor de imigrantes.",
+    "Ninguém indenizou os libertos; houve até pedidos de indenização aos ex-senhores.",
+    "A Lei de Terras (1850) dificultava o acesso à terra para quem não podia comprar.",
+    "",
+    "As desigualdades raciais continuam até hoje."
+   ],
+   "bloco": "humanas",
+   "curso": "em-historia",
+   "moduloId": "em-his-m3",
+   "copiaDe": "dg-hum-03"
+  },
+  {
+   "id": "mp-his-04",
+   "tema": "Era Vargas",
+   "dificuldade": "medio",
+   "enunciado": "A Consolidação das Leis do Trabalho (CLT), que reuniu direitos como férias e salário mínimo, foi criada em 1943, durante",
+   "alternativas": [
+    "o Segundo Reinado de D. Pedro II.",
+    "a ditadura militar, depois de 1964.",
+    "a Primeira República, na política do café com leite.",
+    "a Era Vargas, no Estado Novo.",
+    "o governo de Juscelino Kubitschek."
+   ],
+   "correta": 3,
+   "explicacao": "Vargas ampliou a legislação trabalhista e controlou os sindicatos: direitos vieram junto com a tutela do Estado. Dica de mergulhador: CLT, 1943, Estado Novo.",
+   "comentarios": [
+    "No Império ainda havia escravidão e quase nenhuma lei trabalhista.",
+    "A CLT é anterior ao golpe de 1964.",
+    "Na Primeira República, a questão social era tratada como caso de polícia.",
+    "",
+    "JK governou de 1956 a 1961, depois da CLT."
+   ],
+   "bloco": "humanas",
+   "curso": "em-historia",
+   "moduloId": "em-his-m4"
+  },
+  {
+   "id": "mp-his-05",
+   "tema": "Antiguidade",
+   "dificuldade": "facil",
+   "enunciado": "Na democracia de Atenas, no século V a.C., podiam participar das decisões da assembleia",
+   "alternativas": [
+    "os homens adultos nascidos em Atenas, filhos de atenienses.",
+    "todos os moradores, inclusive mulheres e escravizados.",
+    "apenas o rei e a sua família.",
+    "os estrangeiros ricos que pagavam impostos.",
+    "somente os sacerdotes dos templos."
+   ],
+   "correta": 0,
+   "explicacao": "A democracia ateniense era direta, mas restrita: mulheres, escravizados e estrangeiros (metecos) ficavam de fora. Dica de mergulhador: democracia grega era direta e excludente.",
+   "comentarios": [
+    "",
+    "Mulheres e escravizados não eram cidadãos.",
+    "Atenas democrática não era governada por um rei.",
+    "Os metecos, estrangeiros, não votavam.",
+    "A assembleia reunia os cidadãos, não só sacerdotes."
+   ],
+   "bloco": "humanas",
+   "curso": "em-historia",
+   "moduloId": "em-his-m1"
+  },
+  {
+   "id": "mp-geo-01",
+   "tema": "Espaço urbano",
+   "dificuldade": "facil",
+   "enunciado": "Um dos principais fatores do crescimento rápido e sem planejamento de muitas cidades brasileiras a partir de 1950 foi",
+   "alternativas": [
+    "a queda da população rural causada pela imigração europeia.",
+    "a mudança da capital federal para o Rio de Janeiro.",
+    "o êxodo rural, impulsionado pela industrialização das cidades e pela mecanização do campo.",
+    "o fim da atividade industrial nas metrópoles.",
+    "a redução da natalidade nas áreas urbanas."
+   ],
+   "correta": 2,
+   "explicacao": "Com a industrialização concentrada nas cidades e a mecanização e a concentração de terras no campo, milhões de pessoas migraram para as cidades, que cresceram mais rápido do que a oferta de moradia e serviços. Dica de mergulhador: urbanização acelerada no Brasil = êxodo rural + industrialização.",
+   "comentarios": [
+    "A imigração europeia é de antes e não esvaziou o campo.",
+    "A capital foi do Rio para Brasília (1960), e isso não explica o fenômeno.",
+    "",
+    "A indústria cresceu, não acabou.",
+    "Menos nascimentos não fazem as cidades crescerem."
+   ],
+   "bloco": "humanas",
+   "curso": "em-geografia",
+   "moduloId": "em-geo-m2",
+   "copiaDe": "dg-hum-04"
+  },
+  {
+   "id": "mp-geo-02",
+   "tema": "Natureza e ambiente",
+   "dificuldade": "medio",
+   "enunciado": "Em bairros com muito asfalto e concreto e com rios canalizados, chuvas fortes costumam causar enchentes porque",
+   "alternativas": [
+    "o asfalto absorve a água da chuva mais rápido que a terra.",
+    "a água infiltra menos no solo e escorre depressa para rios e galerias, que transbordam.",
+    "o calor das cidades faz a chuva evaporar antes de chegar ao chão.",
+    "a vegetação urbana em excesso impede o escoamento da água.",
+    "os rios canalizados guardam mais água do que os rios naturais."
+   ],
+   "correta": 1,
+   "explicacao": "Superfícies impermeáveis impedem a infiltração; a água escorre rápido, em grande volume, e chega de uma vez aos rios e galerias, que não dão conta. Áreas verdes e várzeas ajudariam a segurar a água. Dica de mergulhador: em enchente urbana, pense em impermeabilização e no tempo que a água leva para escoar.",
+   "comentarios": [
+    "O asfalto é impermeável: ele não absorve a água.",
+    "",
+    "A chuva forte chega ao chão; o calor não a evapora no caminho.",
+    "A vegetação ajuda a água a infiltrar; o problema é a falta dela.",
+    "Canalizar acelera a água e tira a várzea onde ela se espalharia."
+   ],
+   "bloco": "humanas",
+   "curso": "em-geografia",
+   "moduloId": "em-geo-m3",
+   "copiaDe": "dg-hum-05"
+  },
+  {
+   "id": "mp-geo-03",
+   "tema": "Espaço agrário",
+   "dificuldade": "facil",
+   "enunciado": "A expansão das lavouras de soja sobre o Cerrado e a Amazônia aumenta as exportações brasileiras, mas também é associada a",
+   "alternativas": [
+    "desmatamento, conflitos por terra e concentração fundiária.",
+    "reforma agrária e distribuição de terras.",
+    "recuperação da vegetação nativa.",
+    "fim da dependência de produtos primários.",
+    "aumento da agricultura de subsistência como principal atividade."
+   ],
+   "correta": 0,
+   "explicacao": "A fronteira agrícola avança derrubando vegetação nativa, em grandes propriedades mecanizadas, o que gera conflitos com povos indígenas, quilombolas e pequenos agricultores. Dica de mergulhador: agronegócio exportador = grande propriedade, mecanização e pressão sobre a vegetação.",
+   "comentarios": [
+    "",
+    "A soja avança em grandes propriedades, o contrário de reforma agrária.",
+    "A expansão retira vegetação, não a recupera.",
+    "A soja é um produto primário: a dependência continua.",
+    "A soja é monocultura comercial, não subsistência."
+   ],
+   "bloco": "humanas",
+   "curso": "em-geografia",
+   "moduloId": "em-geo-m2",
+   "copiaDe": "dg-hum-06"
+  },
+  {
+   "id": "mp-geo-04",
+   "tema": "Escala",
+   "dificuldade": "medio",
+   "enunciado": "Num mapa de escala 1 : 500.000, duas cidades estão a 4 cm uma da outra. A distância real entre elas é de",
+   "alternativas": [
+    "2 km",
+    "200 km",
+    "20 km",
+    "125 km",
+    "4 km"
+   ],
+   "correta": 2,
+   "explicacao": "4 cm × 500.000 = 2.000.000 cm; como 1 km tem 100.000 cm, são 20 km. Dica de mergulhador: multiplique pela escala e corte cinco zeros.",
+   "comentarios": [
+    "Faltou um zero na conversão.",
+    "Há um zero a mais.",
+    "",
+    "O valor da escala foi dividido em vez de multiplicado.",
+    "Faltou aplicar a escala."
+   ],
+   "bloco": "humanas",
+   "curso": "em-geografia",
+   "moduloId": "em-geo-m1"
+  },
+  {
+   "id": "mp-fil-01",
+   "tema": "Filosofia antiga",
+   "dificuldade": "medio",
+   "enunciado": "Na tradição atribuída a Sócrates, a ideia de \"só sei que nada sei\" expressa",
+   "alternativas": [
+    "a certeza de que nenhum conhecimento é possível.",
+    "o desprezo pela filosofia e pelo diálogo.",
+    "a defesa de que cada pessoa é a medida de todas as coisas.",
+    "a obediência cega às verdades da tradição.",
+    "o reconhecimento da própria ignorância como ponto de partida para buscar o conhecimento."
+   ],
+   "correta": 4,
+   "explicacao": "Para Sócrates, admitir que não sabe abre caminho para investigar: pelo diálogo e pelas perguntas, o interlocutor percebe as próprias contradições e busca definições melhores. Dica de mergulhador: Sócrates = perguntar para descobrir que não se sabe, e então procurar.",
+   "comentarios": [
+    "Ele não nega o conhecimento: ele o procura.",
+    "O diálogo era o método dele.",
+    "Essa frase é de Protágoras, um sofista.",
+    "Ele questionava a tradição, não a seguia cegamente.",
+    ""
+   ],
+   "bloco": "humanas",
+   "curso": "em-filosofia",
+   "moduloId": "em-fil-m1",
+   "copiaDe": "dg-hum-07"
+  },
+  {
+   "id": "mp-fil-02",
+   "tema": "Filosofia política",
+   "dificuldade": "dificil",
+   "enunciado": "Para Thomas Hobbes, sem um poder comum que a todos imponha respeito, a vida humana no estado de natureza seria marcada",
+   "alternativas": [
+    "pela bondade natural, depois corrompida pela sociedade.",
+    "pela harmonia, já que todos respeitariam os direitos naturais à propriedade.",
+    "pela separação dos poderes em Executivo, Legislativo e Judiciário.",
+    "pela guerra de todos contra todos, o que justifica um Estado forte.",
+    "pelo desaparecimento do Estado e das classes sociais."
+   ],
+   "correta": 3,
+   "explicacao": "Hobbes descreve o estado de natureza como insegurança permanente; para escapar dela, as pessoas fazem um contrato e entregam o poder a um soberano forte (o Leviatã). Dica de mergulhador: entre os contratualistas, Hobbes = medo e Estado forte; Locke = propriedade e direitos; Rousseau = bondade natural e vontade geral.",
+   "comentarios": [
+    "Bondade natural corrompida é a tese de Rousseau.",
+    "Direitos naturais à propriedade são o centro de Locke, e mesmo para ele não há harmonia garantida.",
+    "Separação dos poderes é de Montesquieu.",
+    "",
+    "O fim do Estado é ideia de Marx e dos anarquistas."
+   ],
+   "bloco": "humanas",
+   "curso": "em-filosofia",
+   "moduloId": "em-fil-m2",
+   "copiaDe": "dg-hum-08"
+  },
+  {
+   "id": "mp-fil-03",
+   "tema": "Mito e logos",
+   "dificuldade": "facil",
+   "enunciado": "Na Grécia antiga, a passagem do mito ao logos significou",
+   "alternativas": [
+    "abandonar de uma vez toda a religião grega.",
+    "proibir a leitura de Homero e Hesíodo.",
+    "aceitar as explicações tradicionais sem questionar.",
+    "trocar a observação da natureza pela fé.",
+    "explicar o mundo por argumentos racionais, que podiam ser discutidos."
+   ],
+   "correta": 4,
+   "explicacao": "O logos apresenta razões que podem ser criticadas e corrigidas, ao contrário do mito, transmitido pela tradição. Dica de mergulhador: logos é razão que se discute.",
+   "comentarios": [
+    "Mito e razão conviveram por muito tempo.",
+    "Os poemas continuaram centrais na educação grega.",
+    "Isso é próprio do mito, não do logos.",
+    "Os primeiros filósofos observavam a natureza.",
+    ""
+   ],
+   "bloco": "humanas",
+   "curso": "em-filosofia",
+   "moduloId": "em-fil-m1"
+  },
+  {
+   "id": "mp-fil-04",
+   "tema": "Ética",
+   "dificuldade": "dificil",
+   "enunciado": "Para Kant, mentir para conseguir um empréstimo é moralmente errado porque",
+   "alternativas": [
+    "a mentira sempre traz consequências ruins para a maioria.",
+    "a regra \"posso mentir quando me convém\" não pode valer para todos.",
+    "a lei do país proíbe mentir em contratos.",
+    "quem mente será castigado depois da morte.",
+    "a maioria das pessoas desaprova a mentira."
+   ],
+   "correta": 1,
+   "explicacao": "Pelo imperativo categórico, só é moral a regra que pode valer como lei universal; se todos mentissem, ninguém confiaria em promessas. Dica de mergulhador: para Kant, pergunte \"e se todos fizessem isso?\".",
+   "comentarios": [
+    "Avaliar pelas consequências é o raciocínio utilitarista.",
+    "",
+    "Obedecer à lei de fora é heteronomia, não autonomia.",
+    "Kant não fundamenta a moral no medo do castigo.",
+    "A opinião da maioria não define o dever."
+   ],
+   "bloco": "humanas",
+   "curso": "em-filosofia",
+   "moduloId": "em-fil-m2"
+  },
+  {
+   "id": "mp-soc-01",
+   "tema": "Conceitos clássicos",
+   "dificuldade": "medio",
+   "enunciado": "Quando dizemos que a língua, as regras de etiqueta e as leis já existiam antes de nós e nos influenciam mesmo sem querermos, estamos descrevendo o conceito de",
+   "alternativas": [
+    "ação social, de Max Weber.",
+    "luta de classes, de Karl Marx.",
+    "fato social, de Émile Durkheim.",
+    "indústria cultural, de Adorno e Horkheimer.",
+    "mais-valia, de Karl Marx."
+   ],
+   "correta": 2,
+   "explicacao": "Para Durkheim, o fato social é exterior (existe fora de cada pessoa), coercitivo (pressiona a seguir) e geral (vale para o grupo). Língua, leis e costumes são exemplos clássicos. Dica de mergulhador: Durkheim = fato social; Weber = ação social com sentido; Marx = classes e trabalho.",
+   "comentarios": [
+    "Ação social é a conduta orientada pelo sentido que a pessoa dá a ela.",
+    "Luta de classes trata do conflito entre classes sociais.",
+    "",
+    "Indústria cultural trata da cultura como mercadoria de massa.",
+    "Mais-valia é o valor do trabalho apropriado pelo patrão."
+   ],
+   "bloco": "humanas",
+   "curso": "em-sociologia",
+   "moduloId": "em-soc-m1",
+   "copiaDe": "dg-hum-09"
+  },
+  {
+   "id": "mp-soc-02",
+   "tema": "Desigualdade e racismo",
+   "dificuldade": "dificil",
+   "enunciado": "Uma pesquisa enviou currículos iguais a várias empresas, mudando só o nome dos candidatos. Nomes associados a pessoas negras receberam bem menos chamadas para entrevista. A Sociologia explica esse resultado principalmente pelo conceito de",
+   "alternativas": [
+    "meritocracia, já que os currículos eram iguais.",
+    "racismo estrutural, presente em práticas e instituições mesmo sem intenção declarada.",
+    "democracia racial, que garante oportunidades iguais.",
+    "anomia, porque as empresas estavam sem regras.",
+    "mobilidade social ascendente."
+   ],
+   "correta": 1,
+   "explicacao": "Com currículos iguais, a única diferença era o nome: a desvantagem vem de práticas e critérios enraizados nas instituições, mesmo quando ninguém se declara racista. É o racismo estrutural. Dica de mergulhador: quando a desigualdade aparece com \"tudo o mais igual\", a explicação é estrutural, não de mérito.",
+   "comentarios": [
+    "Se fosse mérito, currículos iguais teriam o mesmo resultado.",
+    "",
+    "\"Democracia racial\" é um mito que a própria pesquisa desmente.",
+    "Anomia é a falta de normas na sociedade; as empresas tinham regras.",
+    "O resultado mostra uma barreira, não ascensão."
+   ],
+   "bloco": "humanas",
+   "curso": "em-sociologia",
+   "moduloId": "em-soc-m1",
+   "copiaDe": "dg-hum-10"
+  },
+  {
+   "id": "mp-soc-03",
+   "tema": "Cidadania",
+   "dificuldade": "facil",
+   "enunciado": "Segundo T. H. Marshall, saúde, educação e previdência são direitos",
+   "alternativas": [
+    "civis.",
+    "políticos.",
+    "naturais de propriedade.",
+    "sociais.",
+    "exclusivos dos trabalhadores formais."
+   ],
+   "correta": 3,
+   "explicacao": "Marshall divide a cidadania em direitos civis (liberdades), políticos (votar e ser votado) e sociais (bem-estar). Dica de mergulhador: social é o que o Estado presta.",
+   "comentarios": [
+    "Civis são as liberdades, como a de expressão.",
+    "Políticos são votar e ser votado.",
+    "Não é a classificação de Marshall.",
+    "",
+    "São direitos de todos os cidadãos."
+   ],
+   "bloco": "humanas",
+   "curso": "em-sociologia",
+   "moduloId": "em-soc-m2"
+  },
+  {
+   "id": "mp-soc-04",
+   "tema": "Cidade e segregação",
+   "dificuldade": "medio",
+   "enunciado": "Um bairro popular recebe metrô, restaurantes caros e prédios novos; os aluguéis sobem, e os antigos moradores se mudam para longe. Esse processo é chamado de",
+   "alternativas": [
+    "conurbação.",
+    "êxodo rural.",
+    "gentrificação.",
+    "mobilidade social ascendente.",
+    "solidariedade orgânica."
+   ],
+   "correta": 2,
+   "explicacao": "A valorização do bairro expulsa quem não consegue pagar o novo custo de vida. Dica de mergulhador: bairro valorizado, morador antigo expulso.",
+   "comentarios": [
+    "Conurbação é a união de cidades vizinhas.",
+    "Êxodo rural é a saída do campo para a cidade.",
+    "",
+    "Os moradores perderam, e não ganharam, posição.",
+    "É conceito de Durkheim sobre a divisão do trabalho."
+   ],
+   "bloco": "humanas",
+   "curso": "em-sociologia",
+   "moduloId": "em-soc-m2"
+  },
+  {
+   "id": "mp-red-01",
+   "tema": "Argumentação",
+   "dificuldade": "dificil",
+   "texto": "Fala de um vereador numa audiência pública:\n\"Ou a cidade proíbe todos os carros no centro, ou vamos continuar com o trânsito parado para sempre. Não existe meio-termo.\"",
+   "enunciado": "O principal problema de argumentação dessa fala é",
+   "alternativas": [
+    "apresentar apenas duas saídas extremas, como se não houvesse outras possibilidades.",
+    "usar dados estatísticos de fonte desconhecida.",
+    "atacar a pessoa do adversário em vez de discutir a ideia.",
+    "recorrer à autoridade de um especialista sem citá-lo.",
+    "generalizar a partir de um único caso isolado."
+   ],
+   "correta": 0,
+   "explicacao": "A fala oferece só dois caminhos (proibir todos os carros ou trânsito parado para sempre) e ignora outros: ônibus melhores, ciclovias, horários escalonados. É o falso dilema. Dica de mergulhador: quando um texto diz \"ou isso ou aquilo\", pergunte se não existe um terceiro caminho.",
+   "comentarios": [
+    "",
+    "Não há números na fala.",
+    "Ninguém é atacado pessoalmente.",
+    "Não há especialista citado.",
+    "Não há um caso isolado sendo generalizado."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-redacao",
+   "moduloId": "em-red-m2",
+   "copiaDe": "dg-lin-06"
+  },
+  {
+   "id": "mp-red-02",
+   "tema": "Coesão e conectivos",
+   "dificuldade": "dificil",
+   "texto": "\"O projeto foi aprovado pela maioria dos vereadores; ______, ainda precisa da sanção do prefeito para entrar em vigor.\"",
+   "enunciado": "O conectivo que completa a frase mantendo o sentido de oposição é",
+   "alternativas": [
+    "portanto",
+    "porque",
+    "assim",
+    "por exemplo",
+    "contudo"
+   ],
+   "correta": 4,
+   "explicacao": "A segunda parte contraria a expectativa criada pela primeira (aprovado, mas ainda não vale): relação de oposição, expressa por \"contudo\" (como \"mas\", \"porém\", \"no entanto\"). Dica de mergulhador: descubra a relação entre as duas partes antes de olhar as alternativas.",
+   "comentarios": [
+    "\"Portanto\" indica conclusão, e a segunda parte não conclui a primeira.",
+    "\"Porque\" indica causa, e a sanção não é causa da aprovação.",
+    "\"Assim\" indica consequência ou modo.",
+    "\"Por exemplo\" introduz um exemplo, que não existe aqui.",
+    ""
+   ],
+   "bloco": "linguagens",
+   "curso": "em-redacao",
+   "moduloId": "em-red-m2",
+   "copiaDe": "dg-lin-07"
+  },
+  {
+   "id": "mp-red-03",
+   "tema": "O texto dissertativo-argumentativo",
+   "dificuldade": "facil",
+   "enunciado": "Na redação do Enem, o participante deve escrever um texto",
+   "alternativas": [
+    "narrativo, contando uma história sobre o tema.",
+    "em versos, com rimas e métrica livre.",
+    "em forma de carta pessoal endereçada a um amigo.",
+    "dissertativo-argumentativo, em prosa, sobre o tema proposto.",
+    "de opinião em primeira pessoa, sem precisar de argumentos."
+   ],
+   "correta": 3,
+   "explicacao": "A prova pede um texto dissertativo-argumentativo em prosa, com tese, argumentos e proposta de intervenção. Fugir do tipo textual zera a redação. Dica de mergulhador: no Enem, a redação discute e defende; não conta nem rima.",
+   "comentarios": [
+    "Texto narrativo foge do tipo pedido e zera a redação.",
+    "Texto em versos não atende ao tipo dissertativo-argumentativo.",
+    "A carta é outro gênero; o Enem pede dissertação.",
+    "",
+    "Defender um ponto de vista exige argumentos, não só opinião."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-redacao",
+   "moduloId": "em-red-m1"
+  },
+  {
+   "id": "mp-red-04",
+   "tema": "Proposta de intervenção",
+   "dificuldade": "medio",
+   "texto": "Trecho de conclusão: \"Portanto, o Ministério da Educação deve ampliar os programas de leitura nas escolas públicas, a fim de reduzir a evasão escolar.\"",
+   "enunciado": "Para que essa proposta de intervenção fique mais completa, falta indicar principalmente",
+   "alternativas": [
+    "o agente responsável pela ação.",
+    "a ação que deve ser feita.",
+    "a finalidade da ação.",
+    "o meio ou modo pelo qual a ação será realizada.",
+    "uma tese nova, diferente da introdução."
+   ],
+   "correta": 3,
+   "explicacao": "A proposta tem agente (Ministério da Educação), ação (ampliar programas de leitura) e finalidade (reduzir a evasão), mas não diz por meio de quê a ação será feita, nem a detalha. Dica de mergulhador: confira os cinco elementos: agente, ação, meio ou modo, finalidade e detalhamento.",
+   "comentarios": [
+    "O Ministério da Educação já é o agente.",
+    "\"Ampliar os programas de leitura\" é a ação.",
+    "\"A fim de reduzir a evasão\" é a finalidade.",
+    "",
+    "A conclusão retoma a tese; não cria outra."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-redacao",
+   "moduloId": "em-red-m2"
+  },
+  {
+   "id": "mp-lit-01",
+   "tema": "Literatura brasileira",
+   "dificuldade": "dificil",
+   "texto": "Um romance acompanha uma família de retirantes castigada pela seca no sertão nordestino. A linguagem é seca e direta, com poucas palavras, e a obra denuncia a miséria e as desigualdades sociais da região.",
+   "enunciado": "Essas características aproximam o romance descrito do",
+   "alternativas": [
+    "Arcadismo, que idealiza a vida simples no campo.",
+    "Romantismo indianista, que exalta o indígena como herói nacional.",
+    "Parnasianismo, preocupado com a forma perfeita e a arte pela arte.",
+    "romance de 1930, regionalista e de denúncia social.",
+    "Concretismo, que explora o espaço visual da página."
+   ],
+   "correta": 3,
+   "explicacao": "Seca, retirantes, linguagem seca e direta e denúncia das desigualdades do Nordeste são marcas do romance regionalista de 1930 (segunda geração modernista). Dica de mergulhador: ligue cada período a uma palavra-chave: Arcadismo = campo ideal; Parnasianismo = forma; Romance de 30 = denúncia social.",
+   "comentarios": [
+    "O sertão aparece duro e real, não idealizado.",
+    "Não há herói indígena nem exaltação nacionalista.",
+    "A preocupação é social, não a forma perfeita.",
+    "",
+    "É um romance em prosa, não poesia visual."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-literatura",
+   "moduloId": "em-lit-m2",
+   "copiaDe": "dg-lin-08"
+  },
+  {
+   "id": "mp-lit-02",
+   "tema": "Romantismo",
+   "dificuldade": "facil",
+   "enunciado": "Um poema que exalta a natureza brasileira, idealiza o indígena como herói e valoriza o sentimento e a pátria pertence ao",
+   "alternativas": [
+    "Arcadismo.",
+    "Romantismo.",
+    "Barroco.",
+    "Realismo.",
+    "Parnasianismo."
+   ],
+   "correta": 1,
+   "explicacao": "Nacionalismo, natureza exaltada, indígena idealizado e subjetividade marcam a primeira geração romântica. Dica de mergulhador: índio herói e pátria exaltada apontam para o Romantismo.",
+   "comentarios": [
+    "O Arcadismo idealiza o campo com pastores e equilíbrio racional, sem herói indígena.",
+    "",
+    "O Barroco é marcado por conflito espiritual e contrastes.",
+    "O Realismo critica a sociedade e rejeita a idealização.",
+    "O Parnasianismo busca a forma perfeita, sem nacionalismo sentimental."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-literatura",
+   "moduloId": "em-lit-m1"
+  },
+  {
+   "id": "mp-lit-03",
+   "tema": "Versificação",
+   "dificuldade": "medio",
+   "enunciado": "Um soneto cujos versos têm dez sílabas poéticas é composto de versos",
+   "alternativas": [
+    "em redondilha maior.",
+    "em redondilha menor.",
+    "alexandrinos.",
+    "livres.",
+    "decassílabos."
+   ],
+   "correta": 4,
+   "explicacao": "Dez sílabas poéticas formam o decassílabo, contadas até a última tônica do verso. Dica de mergulhador: redondilha menor tem 5, maior tem 7, decassílabo 10 e alexandrino 12.",
+   "comentarios": [
+    "Redondilha maior tem sete sílabas poéticas.",
+    "Redondilha menor tem cinco sílabas poéticas.",
+    "Alexandrino tem doze sílabas poéticas.",
+    "Verso livre não segue medida fixa.",
+    ""
+   ],
+   "bloco": "linguagens",
+   "curso": "em-literatura",
+   "moduloId": "em-lit-m1"
+  },
+  {
+   "id": "mp-lit-04",
+   "tema": "Realismo",
+   "dificuldade": "medio",
+   "texto": "Um romance do fim do século XIX tem narrador irônico, analisa a mente das personagens e expõe a hipocrisia e o interesse por trás dos casamentos da elite carioca.",
+   "enunciado": "Essas características indicam que o romance pertence ao",
+   "alternativas": [
+    "Romantismo.",
+    "Arcadismo.",
+    "Simbolismo.",
+    "Realismo.",
+    "Concretismo."
+   ],
+   "correta": 3,
+   "explicacao": "Ironia, análise psicológica e crítica à sociedade burguesa marcam o Realismo, como nos romances de Machado de Assis. Dica de mergulhador: casamento por interesse e ironia apontam para o Realismo.",
+   "comentarios": [
+    "O Romantismo idealiza o amor; aqui ele é exposto como interesse.",
+    "O Arcadismo é do século XVIII e idealiza o campo.",
+    "O Simbolismo é poesia de musicalidade e mistério, não crítica social.",
+    "",
+    "O Concretismo é poesia visual do século XX."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-literatura",
+   "moduloId": "em-lit-m2"
+  },
+  {
+   "id": "mp-ing-01",
+   "tema": "Leitura em inglês",
+   "dificuldade": "facil",
+   "texto": "PARK RULES\n• Dogs must be on a leash.\n• Please take your trash with you.\n• No swimming in the lake.",
+   "enunciado": "De acordo com a placa, os visitantes do parque podem",
+   "alternativas": [
+    "nadar no lago.",
+    "deixar o lixo na grama.",
+    "passear com o cachorro na coleira.",
+    "soltar o cachorro para correr.",
+    "acampar durante a noite."
+   ],
+   "correta": 2,
+   "explicacao": "\"Dogs must be on a leash\" (cães devem estar na coleira) permite passear com o cachorro, desde que na coleira. Dica de mergulhador: em placas, \"must\" indica obrigação e \"no + ação\" indica proibição.",
+   "comentarios": [
+    "\"No swimming in the lake\" proíbe nadar.",
+    "\"Please take your trash with you\" pede para levar o lixo.",
+    "",
+    "A placa exige a coleira.",
+    "A placa não fala de acampar."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-ingles",
+   "moduloId": "em-ing-m1",
+   "copiaDe": "dg-lin-09"
+  },
+  {
+   "id": "mp-ing-02",
+   "tema": "Leitura em inglês",
+   "dificuldade": "medio",
+   "texto": "Sleep is not a luxury. Teenagers who sleep less than seven hours a night tend to have lower grades and more difficulty concentrating. Experts recommend turning off screens one hour before bed.",
+   "enunciado": "O objetivo principal do texto é",
+   "alternativas": [
+    "vender um aplicativo que bloqueia telas à noite.",
+    "mostrar que o sono influencia o desempenho escolar e dar uma recomendação.",
+    "narrar o sonho de um adolescente.",
+    "criticar os especialistas por exagerarem.",
+    "explicar como funcionam as telas de celular."
+   ],
+   "correta": 1,
+   "explicacao": "O texto afirma que dormir pouco se relaciona a notas mais baixas e menos concentração (\"lower grades\", \"difficulty concentrating\") e termina com uma recomendação (desligar as telas uma hora antes de dormir). Dica de mergulhador: leia a primeira e a última frase: muitas vezes elas mostram a ideia central e o objetivo.",
+   "comentarios": [
+    "Nenhum produto é oferecido.",
+    "",
+    "\"Sleep\" é sono, não sonho (\"dream\").",
+    "Os especialistas são citados como apoio, não criticados.",
+    "As telas aparecem só na recomendação."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-ingles",
+   "moduloId": "em-ing-m1",
+   "copiaDe": "dg-lin-10"
+  },
+  {
+   "id": "mp-ing-03",
+   "tema": "Leitura em inglês",
+   "dificuldade": "medio",
+   "texto": "Last year, our town opened a community garden. Volunteers planted vegetables, and now 40 families receive free food every week.",
+   "enunciado": "Segundo o texto, a horta comunitária",
+   "alternativas": [
+    "vai ser inaugurada no ano que vem.",
+    "foi aberta no ano passado e hoje doa alimentos.",
+    "fechou porque faltaram voluntários.",
+    "vende verduras para 40 famílias.",
+    "é cuidada apenas pelas 40 famílias."
+   ],
+   "correta": 1,
+   "explicacao": "\"Opened\" e \"planted\" estão no passado, e \"now... every week\" mostra a situação atual. Dica de mergulhador: os tempos verbais separam o que já aconteceu do que acontece hoje.",
+   "comentarios": [
+    "\"Last year\" e \"opened\" indicam passado, não futuro.",
+    "",
+    "O texto não fala em fechamento.",
+    "\"Free food\" é comida gratuita: nada é vendido.",
+    "Quem planta são os voluntários."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-ingles",
+   "moduloId": "em-ing-m2"
+  },
+  {
+   "id": "mp-ing-04",
+   "tema": "Leitura em inglês",
+   "dificuldade": "dificil",
+   "texto": "The company is going to launch an electric bus next year. Engineers say the batteries may last ten years, but tests are still running.",
+   "enunciado": "De acordo com o texto, é correto afirmar que",
+   "alternativas": [
+    "o ônibus elétrico já circula pela cidade.",
+    "as baterias certamente vão durar dez anos.",
+    "os testes das baterias já terminaram.",
+    "o lançamento é um plano, e a bateria ainda está em teste.",
+    "a empresa desistiu do ônibus elétrico."
+   ],
+   "correta": 3,
+   "explicacao": "\"Is going to launch\" indica plano, e \"may last\" indica possibilidade, reforçada por \"tests are still running\". Dica de mergulhador: going to não é fato consumado, e may não é certeza.",
+   "comentarios": [
+    "\"Is going to launch next year\" é plano para o futuro.",
+    "\"May\" indica possibilidade, não certeza.",
+    "\"Still running\" diz que os testes continuam.",
+    "",
+    "O texto anuncia o lançamento; não há desistência."
+   ],
+   "bloco": "linguagens",
+   "curso": "em-ingles",
+   "moduloId": "em-ing-m2"
   }
  ]
 }

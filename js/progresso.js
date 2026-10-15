@@ -253,7 +253,7 @@ const Progresso = (() => {
   }
 
   /**
-   * Fases que a Prova final exige deste aluno: todas, menos as novas de que ele foi dispensado e (Retomada)
+   * Fases que a Prova final exige deste aluno: todas, menos as novas de que ele foi dispensado e (sala Ensino Médio)
    * as aulas dos módulos que ele já domina (prog.modulos, js/caminho.js).
    */
   function fasesExigidas(prog, trilha) {

@@ -6,7 +6,8 @@
  *  - Radiologia: os cursos de diagnóstico por imagem;
  *  - Tecnologia (2026-10-13): o Explora Tech (Fundamentos e, depois, as outras fases) e a área "Segurança da informação"
  *    (Cibersegurança Essencial e ISO/IEC 27001:2022 Foundation, que até então eram salas de um curso só);
- *  - Ensino Médio (2026-10-14), "Sempre dá tempo": os cursos "<Matéria> · Retomada" (ids em-*), com "Meu caminho" (js/caminho.js).
+ *  - Ensino Médio (2026-10-14; tom revisto em 2026-10-15): os cursos "Ensino Médio · <disciplina>" (ids em-*), com o
+ *    plano de estudos e a avaliação de nivelamento (js/caminho.js, js/mapa-partida.js).
  * O conteúdo aparece só depois que ele entra na sala (tela "Sala", js/app.js). Sala com um curso só abre o curso direto.
  * Cada matéria continua sendo um curso de verdade (mesmo id, mesmo progresso): a sala só muda a vitrine.
  * Curso novo da sala (por exemplo, as matérias da Onda 9) entra sozinho na área certa quando aparece no catálogo.
@@ -70,26 +71,24 @@ const Grupos = (() => {
       ],
     },
     {
-      // Sala Ensino Médio (2026-10-14; plano em docs/cadernos/ensino-medio-mapa-curricular.md): para quem terminou
-      // o Ensino Médio há anos e quer voltar. "Meu caminho" e o Mapa de partida moram em js/caminho.js.
+      // Sala Ensino Médio (2026-10-14; plano em docs/cadernos/ensino-medio-mapa-curricular.md): o conteúdo do Ensino Médio
+      // por disciplina, como no colégio, alinhado à BNCC e às habilidades do Enem. Tom sério (pedido do usuário, 2026-10-15).
       id: 'ensino-medio',
       nome: 'Ensino Médio',
-      subtexto: 'Sempre dá tempo',
-      rotulo: 'Retomada',
-      descricao: 'Para quem quer voltar a estudar: aulas curtas, do básico ao Ensino Médio, no seu ritmo. Escolha as matérias ou descubra por onde começar.',
+      rotulo: 'Base para o Enem',
+      descricao: 'O conteúdo do Ensino Médio organizado por disciplina, como no colégio, e alinhado à BNCC. É a base do que se cobra no Enem e nos vestibulares: cada aula indica as habilidades da prova que ela treina.',
       icone: 'i-livro',
       cor: 'verde',
       rotuloAula: 'aulas',
-      caminho: true, // "Meu caminho", as duas portas e os estados dos módulos (js/caminho.js)
-      unidade: ['matéria', 'matérias'],
-      prefixo: null,
-      sufixo: /\s*·\s*Retomada$/i,
+      caminho: true, // plano de estudos, as duas portas e os estados dos módulos (js/caminho.js)
+      unidade: ['disciplina', 'disciplinas'],
+      prefixo: /^Ensino Médio\s*·\s*/,
       pertence: (t) => /^em-/.test(t.id),
       areas: [
         { nome: 'Linguagens', cor: 'lilas', icone: 'i-letras', cursos: ['em-portugues', 'em-redacao', 'em-literatura', 'em-ingles'] },
         { nome: 'Matemática', cor: 'azul', icone: 'i-grafico', cursos: ['em-matematica'] },
         { nome: 'Ciências da Natureza', cor: 'verde', icone: 'i-bolha', cursos: ['em-biologia', 'em-quimica', 'em-fisica'] },
-        { nome: 'Ciências Humanas', cor: 'laranja', icone: 'i-livro', cursos: ['em-historia', 'em-geografia', 'em-filosofia-sociologia'] },
+        { nome: 'Ciências Humanas', cor: 'laranja', icone: 'i-livro', cursos: ['em-historia', 'em-geografia', 'em-filosofia', 'em-sociologia'] },
       ],
     },
   ];
@@ -104,9 +103,7 @@ const Grupos = (() => {
 
   /** Nome curto do curso dentro da sala ("Mergulho no Enem · Matemática" → "Matemática"). */
   function nomeCurto(sala, t) {
-    let curto = sala && sala.prefixo ? t.nome.replace(sala.prefixo, '').trim() : t.nome;
-    if (sala && sala.sufixo) curto = curto.replace(sala.sufixo, '').trim(); // "Matemática · Retomada" → "Matemática"
-    curto = curto || t.nome;
+    const curto = (sala && sala.prefixo ? t.nome.replace(sala.prefixo, '').trim() : t.nome) || t.nome;
     // palavra comprida em cartão estreito: hífen opcional (­) só aparece se precisar quebrar a linha
     return curto.replace(/Musculoesquelético/g, 'Musculo­esquelético');
   }
@@ -183,13 +180,12 @@ const Grupos = (() => {
     const r = resumo(sala);
     return h('button', {
       type: 'button', class: `sala-porta sala--${sala.cor}`, 'data-sala': sala.id, onclick: () => aoEntrar(sala),
-      'aria-label': `${sala.nome}${sala.subtexto ? `: ${sala.subtexto}` : ''}. ${numeros(sala, r).join(', ')}. ${r.pct}% feito. Entrar na sala`,
+      'aria-label': `${sala.nome}. ${numeros(sala, r).join(', ')}. ${r.pct}% feito. Entrar na sala`,
     },
     h('span', { class: 'sala-porta__escotilha', 'aria-hidden': 'true' }, icone(sala.icone)),
     h('span', { class: 'sala-porta__textos', 'aria-hidden': 'true' },
       h('span', { class: 'rotulo sala-porta__rotulo', text: sala.rotulo }),
       h('span', { class: 'sala-porta__nome', text: sala.nome }),
-      sala.subtexto ? h('span', { class: 'sala-porta__subtexto', text: sala.subtexto }) : null,
       sala.descricao ? h('span', { class: 'sala-porta__descricao', text: sala.descricao }) : null,
       h('span', { class: 'sala-porta__numeros' }, numeros(sala, r).map((n) => h('span', { text: n })))),
     h('span', { class: 'sala-porta__pe', 'aria-hidden': 'true' },

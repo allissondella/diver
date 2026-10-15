@@ -27,7 +27,7 @@ dos alunos dele **só nos cursos em comum** (a mesma regra do progresso na tabel
 | `certificado_emitido` | **reservado**: o app ainda não emite certificado | — |
 | `cronograma_criado` | `cronograma.js` → salvar o plano (também ao refazer) | `objetivo`, `semanas`, `blocos`, `materias`, `refeito`, `tarefas`, `calendario` |
 | `diagnostica_concluida` | `diagnostica.js` → fim da Avaliação Diagnóstica (um teste só, 40 questões) | `acertos`, `total`, `nao_sei`, `nota`, `segundos`, `lingua`, `acertos_<area>`, `nota_<area>` |
-| `diagnostica_concluida` (com `teste`) | `mapa-partida.js` → fim de um bloco do Mapa de partida (`teste: "mapa-partida"`, `bloco`, `nota_<curso>`) ou de um Teste rápido (`teste: "teste-rapido"`, `modulo`, `passou`); `curso_id` = o curso | `acertos`, `total`, `nao_sei`, `segundos` e os campos ao lado |
+| `diagnostica_concluida` (com `teste`) | `mapa-partida.js` → fim de um bloco da Avaliação de nivelamento (`teste: "mapa-partida"`, `bloco`, `nota_<curso>`) ou de uma Prova de suficiência (`teste: "teste-rapido"`, `modulo`, `passou`); `curso_id` = o curso | `acertos`, `total`, `nao_sei`, `segundos` e os campos ao lado |
 | `bloco_concluido` | `cronograma.js` → bloco feito (checkbox, fim do Modo Foco ou subtarefa nas Tarefas); `curso_id` = trilha do bloco, se houver | `materia`, `tipo`, `minutos`, `via` (`manual`, `foco`, `tarefas`), `data` |
 
 A Palavrinha manda em `registro`: `jogo: 'palavrinha'`, `variante` (`x1`, `x2`, `x4`), `diaria` (palavra do dia ou treino), `data` (dia local), `venceu`, `tentativas`, `letras`, `palavras` (ids).

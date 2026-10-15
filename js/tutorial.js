@@ -67,16 +67,16 @@ const Tutorial = (() => {
     ],
     // Sala Ensino Médio (2026-10-14): roteiro próprio, no lugar do "sala" (js/caminho.js)
     'sala-ensino-medio': [
-      { alvo: '.sala-hero', desenho: 'diver', titulo: 'Sempre dá tempo', texto: 'Esta sala é para quem quer voltar a estudar: aulas curtas, de uns 15 minutos, do básico ao Ensino Médio. Sem pressa e sem prova marcada.' },
-      { alvo: '#meu-caminho', desenho: 'mapa', titulo: 'Meu caminho', texto: 'Os seus próximos passos, um módulo de cada vez. Um toque no cartão abre a próxima aula.' },
-      { alvo: '#btn-mapa-partida', desenho: 'alvo', titulo: 'Por onde começar?', texto: 'O Mapa de partida é um teste leve, por blocos, que mostra se vale começar do básico, revisar ou se você já manda bem. Sem nota de prova.' },
-      { alvo: '#btn-escolher-materias', desenho: 'livro', titulo: 'Ou escolha as matérias', texto: 'Prefere ir direto? Escolha a matéria. Os módulos que ficaram "Para depois" abrem com o botão "Liberar quando quiser": nada fica trancado.' },
-      { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Para trocar de sala, use a barra lateral. O botão Voltar do curso traz você de volta para esta sala.' },
+      { alvo: '.sala-hero', desenho: 'livro', titulo: 'Sala Ensino Médio', texto: 'O conteúdo do Ensino Médio por disciplina, como no colégio, alinhado à BNCC. Cada aula mostra as habilidades do Enem que ela treina.' },
+      { alvo: '#meu-caminho', desenho: 'mapa', titulo: 'Plano de estudos', texto: 'Os próximos módulos de cada disciplina, na ordem do currículo. O cartão abre a próxima aula.' },
+      { alvo: '#btn-mapa-partida', desenho: 'alvo', titulo: 'Avaliação de nivelamento', texto: 'Questões por área do conhecimento que indicam o seu nível em cada disciplina (básico, intermediário ou avançado) e os módulos por onde começar.' },
+      { alvo: '#btn-escolher-materias', desenho: 'livro', titulo: 'Escolher disciplina', texto: 'Acesse qualquer disciplina diretamente. Módulos marcados como "Mais adiante" podem ser liberados no mapa da disciplina: nenhuma aula fica bloqueada.' },
+      { alvo: '#seletor-trilha', desenho: 'onda', titulo: 'Sala atual', texto: 'Para trocar de sala, use a barra lateral. O botão Voltar da disciplina traz você de volta para esta sala.' },
     ],
     'mapa-partida': [
-      { desenho: 'alvo', titulo: 'Mapa de partida', texto: 'Um bloco por área. Faça um por dia, se quiser: as respostas ficam salvas.' },
-      { desenho: 'livro', titulo: '"Ainda não sei" vale', texto: 'Não sabe? Marque "Ainda não sei". É uma resposta honesta e ajuda o Mapa a acertar o seu caminho. Chutar atrapalha.' },
-      { desenho: 'mapa', titulo: 'Um mapa, não uma nota', texto: 'No fim, cada matéria mostra uma frase: vale começar por aqui, vale uma revisão ou você já manda bem. Os módulos se arrumam sozinhos.' },
+      { desenho: 'alvo', titulo: 'Avaliação de nivelamento', texto: 'Um bloco por área do conhecimento. Os blocos podem ser feitos em dias diferentes: as respostas ficam salvas.' },
+      { desenho: 'livro', titulo: '"Ainda não sei"', texto: 'Se não souber a resposta, marque "Ainda não sei". O chute distorce o resultado do nivelamento.' },
+      { desenho: 'mapa', titulo: 'O resultado', texto: 'Cada disciplina recebe um nível (básico, intermediário ou avançado), e o plano de estudos se organiza a partir dele.' },
     ],
     mergulho: [
       { alvo: '#mapa-fases', desenho: 'mapa', titulo: 'Mapa do mergulho', texto: 'Cada fase é uma profundidade. Uma rodada tem 10 questões, com a explicação logo depois de cada resposta.' },
@@ -145,7 +145,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 5, sala: 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { inicio: 5, sala: 2, 'sala-ensino-medio': 2, 'mapa-partida': 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

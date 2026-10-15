@@ -6,7 +6,7 @@
  *   ctx   -> contexto do momento (combo atual, fase concluída, nota do simulado...)
  *   trilha -> a trilha atual
  * Para criar uma nova, basta adicionar um item na lista.
- * "so" (opcional): a conquista só existe nos cursos em que so(trilha) é verdadeiro (ex.: os "· Retomada").
+ * "so" (opcional): a conquista só existe nos cursos em que so(trilha) é verdadeiro (ex.: os da sala Ensino Médio).
  */
 const Conquistas = (() => {
   const retomada = (t) => /^em-/.test(t.id);
@@ -112,35 +112,35 @@ const Conquistas = (() => {
       icone: 'i-trofeu',
       testar: (prog) => Progresso.nivel(prog.xp).max,
     },
-    // Sala Ensino Médio ("Sempre dá tempo", cursos em-*; docs/cadernos/ensino-medio-retomada.md, decisão g)
+    // Sala Ensino Médio (cursos em-*; docs/cadernos/ensino-medio-retomada.md, decisão g). Os ids ficam: já há progresso gravado.
     {
       id: 'voltei-a-estudar',
-      nome: 'Voltei a estudar',
-      descricao: 'Concluiu a primeira aula da retomada. O primeiro passo é o mais difícil, e já foi.',
+      nome: 'Primeira aula',
+      descricao: 'Concluiu a primeira aula da sala Ensino Médio.',
       icone: 'i-bandeira',
       so: retomada,
       testar: (prog) => !!(prog.retomada && prog.retomada.primeiraAula),
     },
     {
       id: 'mapa-na-mao',
-      nome: 'Mapa na mão',
-      descricao: 'Completou o Mapa de partida. Agora você sabe por onde seguir.',
+      nome: 'Nivelamento concluído',
+      descricao: 'Fez a avaliação de nivelamento de todas as áreas disponíveis.',
       icone: 'i-alvo',
       so: retomada,
       testar: () => typeof MapaPartida !== 'undefined' && MapaPartida.situacao().feito,
     },
     {
       id: 'de-volta-a-agua',
-      nome: 'De volta à água',
-      descricao: 'Concluiu uma aula depois de duas semanas ou mais longe dos estudos. Sempre dá tempo.',
+      nome: 'Retorno aos estudos',
+      descricao: 'Concluiu uma aula depois de duas semanas ou mais sem estudar.',
       icone: 'i-boia',
       so: retomada,
       testar: (prog) => !!(prog.retomada && prog.retomada.voltouDaPausa),
     },
     {
       id: 'materia-retomada',
-      nome: 'Matéria retomada',
-      descricao: 'Passou na Prova final de uma matéria da retomada.',
+      nome: 'Disciplina concluída',
+      descricao: 'Foi aprovado na prova final de uma disciplina do Ensino Médio.',
       icone: 'i-trofeu',
       so: retomada,
       testar: (prog) => (prog.provas || []).some((p) => p.aprovado),

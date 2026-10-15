@@ -5625,8 +5625,8 @@
     {
       "arquivo": "em-matematica.json",
       "id": "em-matematica",
-      "nome": "Matemática · Retomada",
-      "descricao": "Para quem quer voltar a estudar Matemática: contas do dia a dia, porcentagem, juros, álgebra, geometria e dados, do básico ao Ensino Médio, em aulas de 15 minutos.",
+      "nome": "Ensino Médio · Matemática",
+      "descricao": "Matemática do Ensino Médio em quatro módulos: números e operações, álgebra e funções, geometria e medidas, estatística e probabilidade. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
       "categoria": "Ensino Médio",
       "fasesLivres": true,
       "prova": {
@@ -5638,84 +5638,386 @@
         "reforco": true
       },
       "rotuloAula": "Aula",
-      "metaPadrao": 5,
       "fases": [
         {
           "id": "em-mat-contas-sem-medo",
-          "nome": "Aula 1 · Contas sem medo: operações, negativos e estimativa",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 1 · Números inteiros: operações, propriedades e estimativa",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 1 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 1 de 6 · 30 min · treina as habilidades H1, H3, H4 e H5 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H4",
+            "H5"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-fracoes-decimais",
-          "nome": "Aula 2 · Frações e decimais na prática",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 2 · Frações e números decimais",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 2 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 2 de 6 · 30 min · treina as habilidades H1 e H3 do Enem",
+          "habilidades": [
+            "H1",
+            "H3"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-porcentagem",
-          "nome": "Aula 3 · Porcentagem: aumento e desconto",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 3 · Porcentagem e variação percentual",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 3 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 3 de 6 · 30 min · treina as habilidades H1, H3 e H4 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H4"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-razao-regra-de-tres",
           "nome": "Aula 4 · Razão, proporção e regra de três",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 4 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 4 de 6 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-juros-parcelas",
-          "nome": "Aula 5 · Juros, parcelas e o preço à vista",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 5 · Matemática financeira: juros simples e compostos",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 5 de 6 · 20 min",
-          "minutos": 20,
+          "descricao": "Módulo 1 · aula 5 de 6 · 30 min · treina as habilidades H3, H5 e H18 do Enem",
+          "habilidades": [
+            "H3",
+            "H5",
+            "H18"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-mat-revisao-numeros",
-          "nome": "Aula 6 · Revisão do módulo: contas do dia a dia",
-          "modulo": "Módulo 1 · Números e contas do dia a dia",
+          "nome": "Aula 6 · Revisão: números e operações",
+          "modulo": "Módulo 1 · Números e operações",
           "moduloId": "em-mat-m1",
-          "descricao": "Módulo 1 · aula 6 de 6 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 6 de 6 · 30 min · treina as habilidades H1, H3, H4, H16 e H18 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H4",
+            "H16",
+            "H18"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-equacoes-1grau",
+          "nome": "Aula 7 · Equações do 1º grau",
+          "modulo": "Módulo 2 · Álgebra e funções",
+          "moduloId": "em-mat-m2",
+          "descricao": "Módulo 2 · aula 1 de 6 · 30 min · treina as habilidades H19 e H21 do Enem",
+          "habilidades": [
+            "H19",
+            "H21"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-sistemas",
+          "nome": "Aula 8 · Sistemas de equações do 1º grau",
+          "modulo": "Módulo 2 · Álgebra e funções",
+          "moduloId": "em-mat-m2",
+          "descricao": "Módulo 2 · aula 2 de 6 · 30 min · treina as habilidades H21 e H22 do Enem",
+          "habilidades": [
+            "H21",
+            "H22"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-funcao-afim",
+          "nome": "Aula 9 · Funções: conceito e função afim",
+          "modulo": "Módulo 2 · Álgebra e funções",
+          "moduloId": "em-mat-m2",
+          "descricao": "Módulo 2 · aula 3 de 6 · 30 min · treina as habilidades H19, H20 e H21 do Enem",
+          "habilidades": [
+            "H19",
+            "H20",
+            "H21"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-funcao-quadratica",
+          "nome": "Aula 10 · Função quadrática e equações do 2º grau",
+          "modulo": "Módulo 2 · Álgebra e funções",
+          "moduloId": "em-mat-m2",
+          "descricao": "Módulo 2 · aula 4 de 6 · 30 min · treina as habilidades H21 e H22 do Enem",
+          "habilidades": [
+            "H21",
+            "H22"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-progressoes",
+          "nome": "Aula 11 · Progressões aritméticas e geométricas",
+          "modulo": "Módulo 2 · Álgebra e funções",
+          "moduloId": "em-mat-m2",
+          "descricao": "Módulo 2 · aula 5 de 6 · 30 min · treina as habilidades H2 e H15 do Enem",
+          "habilidades": [
+            "H2",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-revisao-algebra",
+          "nome": "Aula 12 · Revisão: álgebra e funções",
+          "modulo": "Módulo 2 · Álgebra e funções",
+          "moduloId": "em-mat-m2",
+          "descricao": "Módulo 2 · aula 6 de 6 · 30 min · treina as habilidades H15, H19, H20, H21, H22 e H23 do Enem",
+          "habilidades": [
+            "H15",
+            "H19",
+            "H20",
+            "H21",
+            "H22",
+            "H23"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-unidades-medida",
+          "nome": "Aula 13 · Unidades de medida e conversões",
+          "modulo": "Módulo 3 · Geometria e medidas",
+          "moduloId": "em-mat-m3",
+          "descricao": "Módulo 3 · aula 1 de 6 · 30 min · treina as habilidades H10 e H12 do Enem",
+          "habilidades": [
+            "H10",
+            "H12"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-areas-planas",
+          "nome": "Aula 14 · Geometria plana: perímetros e áreas",
+          "modulo": "Módulo 3 · Geometria e medidas",
+          "moduloId": "em-mat-m3",
+          "descricao": "Módulo 3 · aula 2 de 6 · 30 min · treina as habilidades H8 e H12 do Enem",
+          "habilidades": [
+            "H8",
+            "H12"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-pitagoras",
+          "nome": "Aula 15 · Teorema de Pitágoras",
+          "modulo": "Módulo 3 · Geometria e medidas",
+          "moduloId": "em-mat-m3",
+          "descricao": "Módulo 3 · aula 3 de 6 · 30 min · treina as habilidades H8 e H9 do Enem",
+          "habilidades": [
+            "H8",
+            "H9"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-volumes",
+          "nome": "Aula 16 · Geometria espacial: volume e capacidade",
+          "modulo": "Módulo 3 · Geometria e medidas",
+          "moduloId": "em-mat-m3",
+          "descricao": "Módulo 3 · aula 4 de 6 · 30 min · treina as habilidades H8, H9, H12 e H14 do Enem",
+          "habilidades": [
+            "H8",
+            "H9",
+            "H12",
+            "H14"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-trigonometria",
+          "nome": "Aula 17 · Trigonometria no triângulo retângulo",
+          "modulo": "Módulo 3 · Geometria e medidas",
+          "moduloId": "em-mat-m3",
+          "descricao": "Módulo 3 · aula 5 de 6 · 30 min · treina as habilidades H8 e H9 do Enem",
+          "habilidades": [
+            "H8",
+            "H9"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-revisao-geometria",
+          "nome": "Aula 18 · Revisão: geometria e medidas",
+          "modulo": "Módulo 3 · Geometria e medidas",
+          "moduloId": "em-mat-m3",
+          "descricao": "Módulo 3 · aula 6 de 6 · 30 min · treina as habilidades H6, H7, H8, H9, H10, H11, H12, H13 e H14 do Enem",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H14"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-graficos",
+          "nome": "Aula 19 · Leitura de tabelas e gráficos",
+          "modulo": "Módulo 4 · Estatística e probabilidade",
+          "moduloId": "em-mat-m4",
+          "descricao": "Módulo 4 · aula 1 de 6 · 30 min · treina as habilidades H24, H25 e H26 do Enem",
+          "habilidades": [
+            "H24",
+            "H25",
+            "H26"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-medidas-centrais",
+          "nome": "Aula 20 · Média, mediana e moda",
+          "modulo": "Módulo 4 · Estatística e probabilidade",
+          "moduloId": "em-mat-m4",
+          "descricao": "Módulo 4 · aula 2 de 6 · 30 min · treina a habilidade H27 do Enem",
+          "habilidades": [
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-contagem",
+          "nome": "Aula 21 · Análise combinatória: princípio fundamental da contagem",
+          "modulo": "Módulo 4 · Estatística e probabilidade",
+          "moduloId": "em-mat-m4",
+          "descricao": "Módulo 4 · aula 3 de 6 · 30 min · treina a habilidade H2 do Enem",
+          "habilidades": [
+            "H2"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-probabilidade",
+          "nome": "Aula 22 · Probabilidade",
+          "modulo": "Módulo 4 · Estatística e probabilidade",
+          "moduloId": "em-mat-m4",
+          "descricao": "Módulo 4 · aula 4 de 6 · 30 min · treina a habilidade H28 do Enem",
+          "habilidades": [
+            "H28"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-probabilidade-condicional",
+          "nome": "Aula 23 · Probabilidade condicional e análise de dados",
+          "modulo": "Módulo 4 · Estatística e probabilidade",
+          "moduloId": "em-mat-m4",
+          "descricao": "Módulo 4 · aula 5 de 6 · 30 min · treina as habilidades H28, H29 e H30 do Enem",
+          "habilidades": [
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-mat-revisao-estatistica",
+          "nome": "Aula 24 · Revisão: estatística e probabilidade",
+          "modulo": "Módulo 4 · Estatística e probabilidade",
+          "moduloId": "em-mat-m4",
+          "descricao": "Módulo 4 · aula 6 de 6 · 30 min · treina as habilidades H2, H24, H25, H26, H27, H28, H29 e H30 do Enem",
+          "habilidades": [
+            "H2",
+            "H24",
+            "H25",
+            "H26",
+            "H27",
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         }
       ],
       "contagem": {
-        "questoes": 120,
-        "variantes": 120,
-        "pares": 52,
-        "verdadeiroFalso": 37,
-        "adivinhas": 3,
-        "sequencias": 13,
-        "palavras": 49
+        "questoes": 480,
+        "variantes": 480,
+        "pares": 180,
+        "verdadeiroFalso": 133,
+        "adivinhas": 35,
+        "sequencias": 45,
+        "palavras": 177
       }
     },
     {
       "arquivo": "em-portugues.json",
       "id": "em-portugues",
-      "nome": "Português · Retomada",
-      "descricao": "Para quem quer voltar a estudar Português: ler e entender textos do dia a dia, gramática no uso e a língua viva, do básico ao Ensino Médio, em aulas de 15 minutos.",
+      "nome": "Ensino Médio · Português",
+      "descricao": "Língua Portuguesa do Ensino Médio em três módulos: leitura e interpretação de textos, gramática, e linguagem, variação e argumentação. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
       "categoria": "Ensino Médio",
       "fasesLivres": true,
       "prova": {
@@ -5727,67 +6029,2701 @@
         "reforco": true
       },
       "rotuloAula": "Aula",
-      "metaPadrao": 5,
       "fases": [
         {
           "id": "em-por-tema-ideia-principal",
-          "nome": "Aula 1 · Assunto, tema e ideia principal",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 1 · Tema, ideia principal, fato e opinião",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 1 de 5 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H18 e H22 do Enem",
+          "habilidades": [
+            "H18",
+            "H22"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-por-inferencia",
-          "nome": "Aula 2 · Ler nas entrelinhas: inferência",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 2 · Inferência: pressupostos e subentendidos",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 2 de 5 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H18 e H21 do Enem",
+          "habilidades": [
+            "H18",
+            "H21"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-por-generos-dia-a-dia",
-          "nome": "Aula 3 · Gêneros do dia a dia: aviso, bula, contrato e notícia",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 3 · Gêneros e tipos textuais",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 3 de 5 · 20 min",
-          "minutos": 20,
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H18 e H20 do Enem",
+          "habilidades": [
+            "H18",
+            "H20"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-por-texto-imagem-grafico",
-          "nome": "Aula 4 · Texto, imagem e gráfico juntos",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 4 · Linguagem verbal e não verbal",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 4 de 5 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H18 e H21 do Enem",
+          "habilidades": [
+            "H18",
+            "H21"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         },
         {
           "id": "em-por-revisao-leitura",
-          "nome": "Aula 5 · Revisão do módulo: ler e entender",
-          "modulo": "Módulo 1 · Ler e entender",
+          "nome": "Aula 5 · Revisão: leitura e interpretação de textos",
+          "modulo": "Módulo 1 · Leitura e interpretação de textos",
           "moduloId": "em-por-m1",
-          "descricao": "Módulo 1 · aula 5 de 5 · 15 min",
-          "minutos": 15,
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H18, H19, H21 e H22 do Enem",
+          "habilidades": [
+            "H18",
+            "H19",
+            "H21",
+            "H22"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-ortografia",
+          "nome": "Aula 6 · Ortografia e acentuação gráfica",
+          "modulo": "Módulo 2 · Gramática e norma-padrão",
+          "moduloId": "em-por-m2",
+          "descricao": "Módulo 2 · aula 1 de 6 · 30 min · treina a habilidade H27 do Enem",
+          "habilidades": [
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-concordancia",
+          "nome": "Aula 7 · Concordância verbal e nominal",
+          "modulo": "Módulo 2 · Gramática e norma-padrão",
+          "moduloId": "em-por-m2",
+          "descricao": "Módulo 2 · aula 2 de 6 · 30 min · treina a habilidade H27 do Enem",
+          "habilidades": [
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-regencia-crase",
+          "nome": "Aula 8 · Regência e crase",
+          "modulo": "Módulo 2 · Gramática e norma-padrão",
+          "moduloId": "em-por-m2",
+          "descricao": "Módulo 2 · aula 3 de 6 · 30 min · treina a habilidade H27 do Enem",
+          "habilidades": [
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-pontuacao",
+          "nome": "Aula 9 · Pontuação",
+          "modulo": "Módulo 2 · Gramática e norma-padrão",
+          "moduloId": "em-por-m2",
+          "descricao": "Módulo 2 · aula 4 de 6 · 30 min · treina as habilidades H18 e H27 do Enem",
+          "habilidades": [
+            "H18",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-coesao",
+          "nome": "Aula 10 · Coesão textual: referenciação e conectivos",
+          "modulo": "Módulo 2 · Gramática e norma-padrão",
+          "moduloId": "em-por-m2",
+          "descricao": "Módulo 2 · aula 5 de 6 · 30 min · treina as habilidades H18 e H27 do Enem",
+          "habilidades": [
+            "H18",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-revisao-gramatica",
+          "nome": "Aula 11 · Revisão: gramática e norma-padrão",
+          "modulo": "Módulo 2 · Gramática e norma-padrão",
+          "moduloId": "em-por-m2",
+          "descricao": "Módulo 2 · aula 6 de 6 · 30 min · treina as habilidades H18 e H27 do Enem",
+          "habilidades": [
+            "H18",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-funcoes-linguagem",
+          "nome": "Aula 12 · Elementos da comunicação e funções da linguagem",
+          "modulo": "Módulo 3 · Linguagem, variação e argumentação",
+          "moduloId": "em-por-m3",
+          "descricao": "Módulo 3 · aula 1 de 6 · 30 min · treina as habilidades H1, H19 e H23 do Enem",
+          "habilidades": [
+            "H1",
+            "H19",
+            "H23"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-figuras-linguagem",
+          "nome": "Aula 13 · Figuras de linguagem e sentido das palavras",
+          "modulo": "Módulo 3 · Linguagem, variação e argumentação",
+          "moduloId": "em-por-m3",
+          "descricao": "Módulo 3 · aula 2 de 6 · 30 min · treina as habilidades H16, H18 e H22 do Enem",
+          "habilidades": [
+            "H16",
+            "H18",
+            "H22"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-variacao",
+          "nome": "Aula 14 · Variação linguística e preconceito linguístico",
+          "modulo": "Módulo 3 · Linguagem, variação e argumentação",
+          "moduloId": "em-por-m3",
+          "descricao": "Módulo 3 · aula 3 de 6 · 30 min · treina as habilidades H25, H26 e H27 do Enem",
+          "habilidades": [
+            "H25",
+            "H26",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-argumentacao",
+          "nome": "Aula 15 · Argumentação: tese e tipos de argumento",
+          "modulo": "Módulo 3 · Linguagem, variação e argumentação",
+          "moduloId": "em-por-m3",
+          "descricao": "Módulo 3 · aula 4 de 6 · 30 min · treina as habilidades H22, H23 e H24 do Enem",
+          "habilidades": [
+            "H22",
+            "H23",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-leitura-critica",
+          "nome": "Aula 16 · Intertextualidade, publicidade e desinformação",
+          "modulo": "Módulo 3 · Linguagem, variação e argumentação",
+          "moduloId": "em-por-m3",
+          "descricao": "Módulo 3 · aula 5 de 6 · 30 min · treina as habilidades H3, H4, H21, H22, H24 e H28 do Enem",
+          "habilidades": [
+            "H3",
+            "H4",
+            "H21",
+            "H22",
+            "H24",
+            "H28"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-por-revisao-linguagem",
+          "nome": "Aula 17 · Revisão: linguagem, variação e argumentação",
+          "modulo": "Módulo 3 · Linguagem, variação e argumentação",
+          "moduloId": "em-por-m3",
+          "descricao": "Módulo 3 · aula 6 de 6 · 30 min · treina as habilidades H1, H16, H18, H21, H22, H24, H25, H26 e H27 do Enem",
+          "habilidades": [
+            "H1",
+            "H16",
+            "H18",
+            "H21",
+            "H22",
+            "H24",
+            "H25",
+            "H26",
+            "H27"
+          ],
+          "minutos": 30,
           "temResumo": true,
           "questoes": 20
         }
       ],
       "contagem": {
-        "questoes": 100,
-        "variantes": 100,
-        "pares": 30,
-        "verdadeiroFalso": 21,
-        "adivinhas": 2,
-        "sequencias": 6,
-        "palavras": 44
+        "questoes": 340,
+        "variantes": 340,
+        "pares": 146,
+        "verdadeiroFalso": 108,
+        "adivinhas": 31,
+        "sequencias": 35,
+        "palavras": 155
+      }
+    },
+    {
+      "arquivo": "em-biologia.json",
+      "id": "em-biologia",
+      "nome": "Ensino Médio · Biologia",
+      "descricao": "Biologia do Ensino Médio em três módulos: citologia e bioquímica; fisiologia humana e saúde; genética, evolução e ecologia. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-bio-citologia",
+          "nome": "Aula 1 · Citologia: membrana, citoplasma e organelas",
+          "modulo": "Módulo 1 · Citologia e bioquímica",
+          "moduloId": "em-bio-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H14, H15 e H16 do Enem",
+          "habilidades": [
+            "H14",
+            "H15",
+            "H16"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-bioquimica",
+          "nome": "Aula 2 · Bioquímica: as moléculas da vida",
+          "modulo": "Módulo 1 · Citologia e bioquímica",
+          "moduloId": "em-bio-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H14, H15 e H30 do Enem",
+          "habilidades": [
+            "H14",
+            "H15",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-metabolismo",
+          "nome": "Aula 3 · Metabolismo energético: fotossíntese e respiração celular",
+          "modulo": "Módulo 1 · Citologia e bioquímica",
+          "moduloId": "em-bio-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H9, H14 e H15 do Enem",
+          "habilidades": [
+            "H9",
+            "H14",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-divisao-celular",
+          "nome": "Aula 4 · Divisão celular: mitose e meiose",
+          "modulo": "Módulo 1 · Citologia e bioquímica",
+          "moduloId": "em-bio-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H13, H14 e H15 do Enem",
+          "habilidades": [
+            "H13",
+            "H14",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-revisao-citologia",
+          "nome": "Aula 5 · Revisão: citologia e bioquímica",
+          "modulo": "Módulo 1 · Citologia e bioquímica",
+          "moduloId": "em-bio-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H9, H14 e H15 do Enem",
+          "habilidades": [
+            "H9",
+            "H14",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-digestorio-respiratorio",
+          "nome": "Aula 6 · Sistemas digestório e respiratório",
+          "modulo": "Módulo 2 · Fisiologia humana e saúde",
+          "moduloId": "em-bio-m2",
+          "descricao": "Módulo 2 · aula 1 de 5 · 30 min · treina as habilidades H14 e H30 do Enem",
+          "habilidades": [
+            "H14",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-circulatorio-excretor",
+          "nome": "Aula 7 · Sistemas circulatório e excretor",
+          "modulo": "Módulo 2 · Fisiologia humana e saúde",
+          "moduloId": "em-bio-m2",
+          "descricao": "Módulo 2 · aula 2 de 5 · 30 min · treina as habilidades H14 e H30 do Enem",
+          "habilidades": [
+            "H14",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-imunologia",
+          "nome": "Aula 8 · Imunologia, vacinas e doenças infecciosas",
+          "modulo": "Módulo 2 · Fisiologia humana e saúde",
+          "moduloId": "em-bio-m2",
+          "descricao": "Módulo 2 · aula 3 de 5 · 30 min · treina as habilidades H14, H16 e H30 do Enem",
+          "habilidades": [
+            "H14",
+            "H16",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-endocrino-reprodutor",
+          "nome": "Aula 9 · Sistemas nervoso, endócrino e reprodutor",
+          "modulo": "Módulo 2 · Fisiologia humana e saúde",
+          "moduloId": "em-bio-m2",
+          "descricao": "Módulo 2 · aula 4 de 5 · 30 min · treina as habilidades H14 e H30 do Enem",
+          "habilidades": [
+            "H14",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-revisao-fisiologia",
+          "nome": "Aula 10 · Revisão: fisiologia humana e saúde",
+          "modulo": "Módulo 2 · Fisiologia humana e saúde",
+          "moduloId": "em-bio-m2",
+          "descricao": "Módulo 2 · aula 5 de 5 · 30 min · treina as habilidades H14 e H30 do Enem",
+          "habilidades": [
+            "H14",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-genetica",
+          "nome": "Aula 11 · Genética: DNA, genes e biotecnologia",
+          "modulo": "Módulo 3 · Genética, evolução e ecologia",
+          "moduloId": "em-bio-m3",
+          "descricao": "Módulo 3 · aula 1 de 6 · 30 min · treina as habilidades H11, H13, H15 e H29 do Enem",
+          "habilidades": [
+            "H11",
+            "H13",
+            "H15",
+            "H29"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-heranca",
+          "nome": "Aula 12 · Leis de Mendel e herança",
+          "modulo": "Módulo 3 · Genética, evolução e ecologia",
+          "moduloId": "em-bio-m3",
+          "descricao": "Módulo 3 · aula 2 de 6 · 30 min · treina as habilidades H13, H15 e H30 do Enem",
+          "habilidades": [
+            "H13",
+            "H15",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-evolucao",
+          "nome": "Aula 13 · Evolução biológica",
+          "modulo": "Módulo 3 · Genética, evolução e ecologia",
+          "moduloId": "em-bio-m3",
+          "descricao": "Módulo 3 · aula 3 de 6 · 30 min · treina as habilidades H13 e H16 do Enem",
+          "habilidades": [
+            "H13",
+            "H16"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-ecologia",
+          "nome": "Aula 14 · Ecologia: cadeias alimentares, ciclos e populações",
+          "modulo": "Módulo 3 · Genética, evolução e ecologia",
+          "moduloId": "em-bio-m3",
+          "descricao": "Módulo 3 · aula 4 de 6 · 30 min · treina as habilidades H9, H10, H12 e H28 do Enem",
+          "habilidades": [
+            "H9",
+            "H10",
+            "H12",
+            "H28"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-biomas",
+          "nome": "Aula 15 · Biomas brasileiros e impactos ambientais",
+          "modulo": "Módulo 3 · Genética, evolução e ecologia",
+          "moduloId": "em-bio-m3",
+          "descricao": "Módulo 3 · aula 5 de 6 · 30 min · treina as habilidades H8, H10, H12 e H28 do Enem",
+          "habilidades": [
+            "H8",
+            "H10",
+            "H12",
+            "H28"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-bio-revisao-genetica-ecologia",
+          "nome": "Aula 16 · Revisão: genética, evolução e ecologia",
+          "modulo": "Módulo 3 · Genética, evolução e ecologia",
+          "moduloId": "em-bio-m3",
+          "descricao": "Módulo 3 · aula 6 de 6 · 30 min · treina as habilidades H9, H10, H11, H12, H13, H15, H16, H28 e H30 do Enem",
+          "habilidades": [
+            "H9",
+            "H10",
+            "H11",
+            "H12",
+            "H13",
+            "H15",
+            "H16",
+            "H28",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 320,
+        "variantes": 320,
+        "pares": 100,
+        "verdadeiroFalso": 75,
+        "adivinhas": 25,
+        "sequencias": 25,
+        "palavras": 100
+      }
+    },
+    {
+      "arquivo": "em-quimica.json",
+      "id": "em-quimica",
+      "nome": "Ensino Médio · Química",
+      "descricao": "Química do Ensino Médio em três módulos: matéria e transformações; estrutura atômica e ligações químicas; físico-química e química orgânica. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-qui-materia",
+          "nome": "Aula 1 · Matéria: propriedades e estados físicos",
+          "modulo": "Módulo 1 · Matéria e transformações",
+          "moduloId": "em-qui-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H17 e H24 do Enem",
+          "habilidades": [
+            "H17",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-separacao",
+          "nome": "Aula 2 · Misturas e métodos de separação",
+          "modulo": "Módulo 1 · Matéria e transformações",
+          "moduloId": "em-qui-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H24, H25 e H27 do Enem",
+          "habilidades": [
+            "H24",
+            "H25",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-reacoes",
+          "nome": "Aula 3 · Reações químicas",
+          "modulo": "Módulo 1 · Matéria e transformações",
+          "moduloId": "em-qui-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H17, H24 e H25 do Enem",
+          "habilidades": [
+            "H17",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-estequiometria",
+          "nome": "Aula 4 · Leis ponderais, mol e estequiometria",
+          "modulo": "Módulo 1 · Matéria e transformações",
+          "moduloId": "em-qui-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H17, H24 e H25 do Enem",
+          "habilidades": [
+            "H17",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-revisao-materia",
+          "nome": "Aula 5 · Revisão: matéria e transformações",
+          "modulo": "Módulo 1 · Matéria e transformações",
+          "moduloId": "em-qui-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H17, H24 e H25 do Enem",
+          "habilidades": [
+            "H17",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-modelos-atomicos",
+          "nome": "Aula 6 · Modelos atômicos",
+          "modulo": "Módulo 2 · Estrutura atômica e ligações químicas",
+          "moduloId": "em-qui-m2",
+          "descricao": "Módulo 2 · aula 1 de 6 · 30 min · treina as habilidades H17, H24 e H26 do Enem",
+          "habilidades": [
+            "H17",
+            "H24",
+            "H26"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-tabela",
+          "nome": "Aula 7 · Tabela periódica",
+          "modulo": "Módulo 2 · Estrutura atômica e ligações químicas",
+          "moduloId": "em-qui-m2",
+          "descricao": "Módulo 2 · aula 2 de 6 · 30 min · treina as habilidades H17 e H24 do Enem",
+          "habilidades": [
+            "H17",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-ligacoes",
+          "nome": "Aula 8 · Ligações químicas",
+          "modulo": "Módulo 2 · Estrutura atômica e ligações químicas",
+          "moduloId": "em-qui-m2",
+          "descricao": "Módulo 2 · aula 3 de 6 · 30 min · treina as habilidades H17, H24 e H25 do Enem",
+          "habilidades": [
+            "H17",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-polaridade",
+          "nome": "Aula 9 · Polaridade e forças intermoleculares",
+          "modulo": "Módulo 2 · Estrutura atômica e ligações químicas",
+          "moduloId": "em-qui-m2",
+          "descricao": "Módulo 2 · aula 4 de 6 · 30 min · treina as habilidades H17 e H24 do Enem",
+          "habilidades": [
+            "H17",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-radioatividade",
+          "nome": "Aula 10 · Radioatividade",
+          "modulo": "Módulo 2 · Estrutura atômica e ligações químicas",
+          "moduloId": "em-qui-m2",
+          "descricao": "Módulo 2 · aula 5 de 6 · 30 min · treina as habilidades H17, H24 e H26 do Enem",
+          "habilidades": [
+            "H17",
+            "H24",
+            "H26"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-revisao-atomistica",
+          "nome": "Aula 11 · Revisão: estrutura atômica e ligações químicas",
+          "modulo": "Módulo 2 · Estrutura atômica e ligações químicas",
+          "moduloId": "em-qui-m2",
+          "descricao": "Módulo 2 · aula 6 de 6 · 30 min · treina as habilidades H10, H17, H24 e H25 do Enem",
+          "habilidades": [
+            "H10",
+            "H17",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-solucoes",
+          "nome": "Aula 12 · Soluções e concentração",
+          "modulo": "Módulo 3 · Físico-química e química orgânica",
+          "moduloId": "em-qui-m3",
+          "descricao": "Módulo 3 · aula 1 de 6 · 30 min · treina as habilidades H17, H24, H25 e H30 do Enem",
+          "habilidades": [
+            "H17",
+            "H24",
+            "H25",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-acidos-bases",
+          "nome": "Aula 13 · Funções inorgânicas e pH",
+          "modulo": "Módulo 3 · Físico-química e química orgânica",
+          "moduloId": "em-qui-m3",
+          "descricao": "Módulo 3 · aula 2 de 6 · 30 min · treina as habilidades H10, H12, H17, H24, H25 e H30 do Enem",
+          "habilidades": [
+            "H10",
+            "H12",
+            "H17",
+            "H24",
+            "H25",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-termoquimica",
+          "nome": "Aula 14 · Termoquímica e cinética química",
+          "modulo": "Módulo 3 · Físico-química e química orgânica",
+          "moduloId": "em-qui-m3",
+          "descricao": "Módulo 3 · aula 3 de 6 · 30 min · treina as habilidades H17, H21, H24, H25 e H26 do Enem",
+          "habilidades": [
+            "H17",
+            "H21",
+            "H24",
+            "H25",
+            "H26"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-organica",
+          "nome": "Aula 15 · Química orgânica: cadeias e funções orgânicas",
+          "modulo": "Módulo 3 · Físico-química e química orgânica",
+          "moduloId": "em-qui-m3",
+          "descricao": "Módulo 3 · aula 4 de 6 · 30 min · treina as habilidades H17, H24, H25, H26 e H27 do Enem",
+          "habilidades": [
+            "H17",
+            "H24",
+            "H25",
+            "H26",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-polimeros-ambiente",
+          "nome": "Aula 16 · Polímeros e química ambiental",
+          "modulo": "Módulo 3 · Físico-química e química orgânica",
+          "moduloId": "em-qui-m3",
+          "descricao": "Módulo 3 · aula 5 de 6 · 30 min · treina as habilidades H8, H9, H10, H12, H17, H24, H25, H26 e H27 do Enem",
+          "habilidades": [
+            "H8",
+            "H9",
+            "H10",
+            "H12",
+            "H17",
+            "H24",
+            "H25",
+            "H26",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-qui-revisao-fisico-organica",
+          "nome": "Aula 17 · Revisão: físico-química e química orgânica",
+          "modulo": "Módulo 3 · Físico-química e química orgânica",
+          "moduloId": "em-qui-m3",
+          "descricao": "Módulo 3 · aula 6 de 6 · 30 min · treina as habilidades H8, H17, H21, H24, H25, H26 e H30 do Enem",
+          "habilidades": [
+            "H8",
+            "H17",
+            "H21",
+            "H24",
+            "H25",
+            "H26",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 340,
+        "variantes": 340,
+        "pares": 96,
+        "verdadeiroFalso": 72,
+        "adivinhas": 24,
+        "sequencias": 24,
+        "palavras": 96
+      }
+    },
+    {
+      "arquivo": "em-fisica.json",
+      "id": "em-fisica",
+      "nome": "Ensino Médio · Física",
+      "descricao": "Física do Ensino Médio em três módulos: mecânica; energia, termologia, ondulatória e óptica; eletricidade e magnetismo. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-fis-grandezas",
+          "nome": "Aula 1 · Grandezas físicas e unidades de medida",
+          "modulo": "Módulo 1 · Mecânica",
+          "moduloId": "em-fis-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H17 e H20 do Enem",
+          "habilidades": [
+            "H17",
+            "H20"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-movimento-uniforme",
+          "nome": "Aula 2 · Cinemática: movimento uniforme",
+          "modulo": "Módulo 1 · Mecânica",
+          "moduloId": "em-fis-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H17 e H20 do Enem",
+          "habilidades": [
+            "H17",
+            "H20"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-muv",
+          "nome": "Aula 3 · Movimento uniformemente variado e queda livre",
+          "modulo": "Módulo 1 · Mecânica",
+          "moduloId": "em-fis-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H17 e H20 do Enem",
+          "habilidades": [
+            "H17",
+            "H20"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-newton",
+          "nome": "Aula 4 · Leis de Newton e aplicações",
+          "modulo": "Módulo 1 · Mecânica",
+          "moduloId": "em-fis-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H17 e H20 do Enem",
+          "habilidades": [
+            "H17",
+            "H20"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-revisao-mecanica",
+          "nome": "Aula 5 · Revisão: mecânica",
+          "modulo": "Módulo 1 · Mecânica",
+          "moduloId": "em-fis-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H17 e H20 do Enem",
+          "habilidades": [
+            "H17",
+            "H20"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-energia",
+          "nome": "Aula 6 · Trabalho, energia e conservação",
+          "modulo": "Módulo 2 · Energia, termologia, ondulatória e óptica",
+          "moduloId": "em-fis-m2",
+          "descricao": "Módulo 2 · aula 1 de 5 · 30 min · treina as habilidades H17, H20, H21, H22 e H23 do Enem",
+          "habilidades": [
+            "H17",
+            "H20",
+            "H21",
+            "H22",
+            "H23"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-termologia",
+          "nome": "Aula 7 · Termologia: temperatura e calor",
+          "modulo": "Módulo 2 · Energia, termologia, ondulatória e óptica",
+          "moduloId": "em-fis-m2",
+          "descricao": "Módulo 2 · aula 2 de 5 · 30 min · treina as habilidades H21, H22 e H23 do Enem",
+          "habilidades": [
+            "H21",
+            "H22",
+            "H23"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-ondulatoria",
+          "nome": "Aula 8 · Ondulatória e acústica",
+          "modulo": "Módulo 2 · Energia, termologia, ondulatória e óptica",
+          "moduloId": "em-fis-m2",
+          "descricao": "Módulo 2 · aula 3 de 5 · 30 min · treina as habilidades H1, H21 e H22 do Enem",
+          "habilidades": [
+            "H1",
+            "H21",
+            "H22"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-optica",
+          "nome": "Aula 9 · Óptica geométrica",
+          "modulo": "Módulo 2 · Energia, termologia, ondulatória e óptica",
+          "moduloId": "em-fis-m2",
+          "descricao": "Módulo 2 · aula 4 de 5 · 30 min · treina as habilidades H1, H5 e H21 do Enem",
+          "habilidades": [
+            "H1",
+            "H5",
+            "H21"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-revisao-energia",
+          "nome": "Aula 10 · Revisão: energia, termologia, ondulatória e óptica",
+          "modulo": "Módulo 2 · Energia, termologia, ondulatória e óptica",
+          "moduloId": "em-fis-m2",
+          "descricao": "Módulo 2 · aula 5 de 5 · 30 min · treina as habilidades H1, H17, H20, H21, H22 e H23 do Enem",
+          "habilidades": [
+            "H1",
+            "H17",
+            "H20",
+            "H21",
+            "H22",
+            "H23"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-eletrostatica",
+          "nome": "Aula 11 · Eletrostática",
+          "modulo": "Módulo 3 · Eletricidade e magnetismo",
+          "moduloId": "em-fis-m3",
+          "descricao": "Módulo 3 · aula 1 de 5 · 30 min · treina as habilidades H5, H6 e H21 do Enem",
+          "habilidades": [
+            "H5",
+            "H6",
+            "H21"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-corrente-potencia",
+          "nome": "Aula 12 · Corrente elétrica, potência e consumo de energia",
+          "modulo": "Módulo 3 · Eletricidade e magnetismo",
+          "moduloId": "em-fis-m3",
+          "descricao": "Módulo 3 · aula 2 de 5 · 30 min · treina as habilidades H5, H6 e H7 do Enem",
+          "habilidades": [
+            "H5",
+            "H6",
+            "H7"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-circuitos",
+          "nome": "Aula 13 · Circuitos elétricos",
+          "modulo": "Módulo 3 · Eletricidade e magnetismo",
+          "moduloId": "em-fis-m3",
+          "descricao": "Módulo 3 · aula 3 de 5 · 30 min · treina as habilidades H5, H6 e H7 do Enem",
+          "habilidades": [
+            "H5",
+            "H6",
+            "H7"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-magnetismo",
+          "nome": "Aula 14 · Magnetismo e indução eletromagnética",
+          "modulo": "Módulo 3 · Eletricidade e magnetismo",
+          "moduloId": "em-fis-m3",
+          "descricao": "Módulo 3 · aula 4 de 5 · 30 min · treina as habilidades H5, H6 e H21 do Enem",
+          "habilidades": [
+            "H5",
+            "H6",
+            "H21"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fis-revisao-eletricidade",
+          "nome": "Aula 15 · Revisão: eletricidade e magnetismo",
+          "modulo": "Módulo 3 · Eletricidade e magnetismo",
+          "moduloId": "em-fis-m3",
+          "descricao": "Módulo 3 · aula 5 de 5 · 30 min · treina as habilidades H1, H5, H6, H7 e H21 do Enem",
+          "habilidades": [
+            "H1",
+            "H5",
+            "H6",
+            "H7",
+            "H21"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 300,
+        "variantes": 300,
+        "pares": 76,
+        "verdadeiroFalso": 57,
+        "adivinhas": 19,
+        "sequencias": 19,
+        "palavras": 76
+      }
+    },
+    {
+      "arquivo": "em-historia.json",
+      "id": "em-historia",
+      "nome": "Ensino Médio · História",
+      "descricao": "História do Ensino Médio em quatro módulos: Antiguidade e Idade Média; Idade Moderna e Brasil Colônia; século XIX e Brasil Império; século XX no Brasil e no mundo. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-his-fontes-tempo",
+          "nome": "Aula 1 · Fontes históricas e tempo histórico",
+          "modulo": "Módulo 1 · Antiguidade e Idade Média",
+          "moduloId": "em-his-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H1, H2, H3, H4 e H5 do Enem",
+          "habilidades": [
+            "H1",
+            "H2",
+            "H3",
+            "H4",
+            "H5"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-antiguidade",
+          "nome": "Aula 2 · Antiguidade: Oriente, Grécia e Roma",
+          "modulo": "Módulo 1 · Antiguidade e Idade Média",
+          "moduloId": "em-his-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H1, H11, H13 e H15 do Enem",
+          "habilidades": [
+            "H1",
+            "H11",
+            "H13",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-medieval",
+          "nome": "Aula 3 · Idade Média: feudalismo, Bizâncio e mundo islâmico",
+          "modulo": "Módulo 1 · Antiguidade e Idade Média",
+          "moduloId": "em-his-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H1, H11, H13 e H15 do Enem",
+          "habilidades": [
+            "H1",
+            "H11",
+            "H13",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-africa-america",
+          "nome": "Aula 4 · África e América antes da colonização europeia",
+          "modulo": "Módulo 1 · Antiguidade e Idade Média",
+          "moduloId": "em-his-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H1, H2, H11 e H15 do Enem",
+          "habilidades": [
+            "H1",
+            "H2",
+            "H11",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-revisao-antiga-medieval",
+          "nome": "Aula 5 · Revisão: Antiguidade e Idade Média",
+          "modulo": "Módulo 1 · Antiguidade e Idade Média",
+          "moduloId": "em-his-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H1, H2, H3, H11 e H15 do Enem",
+          "habilidades": [
+            "H1",
+            "H2",
+            "H3",
+            "H11",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-renascimento-reformas",
+          "nome": "Aula 6 · Renascimento e Reformas religiosas",
+          "modulo": "Módulo 2 · Idade Moderna e Brasil Colônia",
+          "moduloId": "em-his-m2",
+          "descricao": "Módulo 2 · aula 1 de 5 · 30 min · treina as habilidades H1, H11, H13 e H15 do Enem",
+          "habilidades": [
+            "H1",
+            "H11",
+            "H13",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-expansao-indigenas",
+          "nome": "Aula 7 · Expansão marítima e povos indígenas",
+          "modulo": "Módulo 2 · Idade Moderna e Brasil Colônia",
+          "moduloId": "em-his-m2",
+          "descricao": "Módulo 2 · aula 2 de 5 · 30 min · treina as habilidades H1, H3, H13 e H16 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H13",
+            "H16"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-economia-colonial",
+          "nome": "Aula 8 · Economia colonial: açúcar, mineração e escravidão",
+          "modulo": "Módulo 2 · Idade Moderna e Brasil Colônia",
+          "moduloId": "em-his-m2",
+          "descricao": "Módulo 2 · aula 3 de 5 · 30 min · treina as habilidades H1, H3, H13, H16 e H22 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H13",
+            "H16",
+            "H22"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-iluminismo-revolucoes",
+          "nome": "Aula 9 · Iluminismo, Revolução Francesa e Revolução Industrial",
+          "modulo": "Módulo 2 · Idade Moderna e Brasil Colônia",
+          "moduloId": "em-his-m2",
+          "descricao": "Módulo 2 · aula 4 de 5 · 30 min · treina as habilidades H11, H12, H13, H14, H15, H16, H17 e H18 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H13",
+            "H14",
+            "H15",
+            "H16",
+            "H17",
+            "H18"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-revisao-moderna-colonia",
+          "nome": "Aula 10 · Revisão: Idade Moderna e Brasil Colônia",
+          "modulo": "Módulo 2 · Idade Moderna e Brasil Colônia",
+          "moduloId": "em-his-m2",
+          "descricao": "Módulo 2 · aula 5 de 5 · 30 min · treina as habilidades H1, H3, H11, H13, H15, H16, H17 e H22 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H11",
+            "H13",
+            "H15",
+            "H16",
+            "H17",
+            "H22"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-independencias-imperialismo",
+          "nome": "Aula 11 · Independências na América e imperialismo",
+          "modulo": "Módulo 3 · Século XIX e Brasil Império",
+          "moduloId": "em-his-m3",
+          "descricao": "Módulo 3 · aula 1 de 6 · 30 min · treina as habilidades H11, H13, H15 e H16 do Enem",
+          "habilidades": [
+            "H11",
+            "H13",
+            "H15",
+            "H16"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-independencia-regencias",
+          "nome": "Aula 12 · Independência do Brasil e Período Regencial",
+          "modulo": "Módulo 3 · Século XIX e Brasil Império",
+          "moduloId": "em-his-m3",
+          "descricao": "Módulo 3 · aula 2 de 6 · 30 min · treina as habilidades H11, H13, H14 e H21 do Enem",
+          "habilidades": [
+            "H11",
+            "H13",
+            "H14",
+            "H21"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-segundo-reinado",
+          "nome": "Aula 13 · Segundo Reinado",
+          "modulo": "Módulo 3 · Século XIX e Brasil Império",
+          "moduloId": "em-his-m3",
+          "descricao": "Módulo 3 · aula 3 de 6 · 30 min · treina as habilidades H11, H13, H17 e H21 do Enem",
+          "habilidades": [
+            "H11",
+            "H13",
+            "H17",
+            "H21"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-abolicao",
+          "nome": "Aula 14 · Abolição e pós-abolição",
+          "modulo": "Módulo 3 · Século XIX e Brasil Império",
+          "moduloId": "em-his-m3",
+          "descricao": "Módulo 3 · aula 4 de 6 · 30 min · treina as habilidades H13, H14, H22 e H24 do Enem",
+          "habilidades": [
+            "H13",
+            "H14",
+            "H22",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-primeira-republica",
+          "nome": "Aula 15 · Primeira República",
+          "modulo": "Módulo 3 · Século XIX e Brasil Império",
+          "moduloId": "em-his-m3",
+          "descricao": "Módulo 3 · aula 5 de 6 · 30 min · treina as habilidades H11, H14, H21, H22 e H24 do Enem",
+          "habilidades": [
+            "H11",
+            "H14",
+            "H21",
+            "H22",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-revisao-imperio-republica",
+          "nome": "Aula 16 · Revisão: século XIX e Brasil Império",
+          "modulo": "Módulo 3 · Século XIX e Brasil Império",
+          "moduloId": "em-his-m3",
+          "descricao": "Módulo 3 · aula 6 de 6 · 30 min · treina as habilidades H11, H13, H14, H21 e H22 do Enem",
+          "habilidades": [
+            "H11",
+            "H13",
+            "H14",
+            "H21",
+            "H22"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-guerras-totalitarismos",
+          "nome": "Aula 17 · Guerras mundiais e totalitarismos",
+          "modulo": "Módulo 4 · Século XX: Brasil e mundo",
+          "moduloId": "em-his-m4",
+          "descricao": "Módulo 4 · aula 1 de 5 · 30 min · treina as habilidades H11, H12, H13 e H15 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H13",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-era-vargas",
+          "nome": "Aula 18 · Era Vargas e período democrático",
+          "modulo": "Módulo 4 · Século XX: Brasil e mundo",
+          "moduloId": "em-his-m4",
+          "descricao": "Módulo 4 · aula 2 de 5 · 30 min · treina as habilidades H12, H14, H21 e H24 do Enem",
+          "habilidades": [
+            "H12",
+            "H14",
+            "H21",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-guerra-fria",
+          "nome": "Aula 19 · Guerra Fria",
+          "modulo": "Módulo 4 · Século XX: Brasil e mundo",
+          "moduloId": "em-his-m4",
+          "descricao": "Módulo 4 · aula 3 de 5 · 30 min · treina as habilidades H11, H12, H13 e H15 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H13",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-ditadura",
+          "nome": "Aula 20 · Ditadura militar e redemocratização",
+          "modulo": "Módulo 4 · Século XX: Brasil e mundo",
+          "moduloId": "em-his-m4",
+          "descricao": "Módulo 4 · aula 4 de 5 · 30 min · treina as habilidades H12, H14, H21, H24 e H25 do Enem",
+          "habilidades": [
+            "H12",
+            "H14",
+            "H21",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-his-revisao-seculo-xx",
+          "nome": "Aula 21 · Revisão: século XX no Brasil e no mundo",
+          "modulo": "Módulo 4 · Século XX: Brasil e mundo",
+          "moduloId": "em-his-m4",
+          "descricao": "Módulo 4 · aula 5 de 5 · 30 min · treina as habilidades H11, H12, H14, H21 e H24 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H14",
+            "H21",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 420,
+        "variantes": 420,
+        "pares": 100,
+        "verdadeiroFalso": 75,
+        "adivinhas": 25,
+        "sequencias": 25,
+        "palavras": 100
+      }
+    },
+    {
+      "arquivo": "em-geografia.json",
+      "id": "em-geografia",
+      "nome": "Ensino Médio · Geografia",
+      "descricao": "Geografia do Ensino Médio em três módulos: cartografia e geografia física; geografia do Brasil; questões ambientais e globalização. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-geo-orientacao",
+          "nome": "Aula 1 · Orientação, coordenadas geográficas e fusos horários",
+          "modulo": "Módulo 1 · Cartografia e geografia física",
+          "moduloId": "em-geo-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H6 e H8 do Enem",
+          "habilidades": [
+            "H6",
+            "H8"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-escala",
+          "nome": "Aula 2 · Escala e cartografia temática",
+          "modulo": "Módulo 1 · Cartografia e geografia física",
+          "moduloId": "em-geo-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H6, H7 e H8 do Enem",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H8"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-relevo-solos",
+          "nome": "Aula 3 · Estrutura geológica, relevo e solos",
+          "modulo": "Módulo 1 · Cartografia e geografia física",
+          "moduloId": "em-geo-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H26, H27, H28 e H29 do Enem",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-clima",
+          "nome": "Aula 4 · Climatologia",
+          "modulo": "Módulo 1 · Cartografia e geografia física",
+          "moduloId": "em-geo-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H26, H27 e H29 do Enem",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H29"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-revisao-fisica",
+          "nome": "Aula 5 · Revisão: cartografia e geografia física",
+          "modulo": "Módulo 1 · Cartografia e geografia física",
+          "moduloId": "em-geo-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H6, H7, H8, H26, H27, H28 e H29 do Enem",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H8",
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-territorio",
+          "nome": "Aula 6 · Território e regionalização do Brasil",
+          "modulo": "Módulo 2 · Geografia do Brasil: território, população e economia",
+          "moduloId": "em-geo-m2",
+          "descricao": "Módulo 2 · aula 1 de 5 · 30 min · treina as habilidades H6, H7 e H8 do Enem",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H8"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-populacao",
+          "nome": "Aula 7 · População e migrações",
+          "modulo": "Módulo 2 · Geografia do Brasil: território, população e economia",
+          "moduloId": "em-geo-m2",
+          "descricao": "Módulo 2 · aula 2 de 5 · 30 min · treina as habilidades H6, H7, H16, H17 e H18 do Enem",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H16",
+            "H17",
+            "H18"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-urbanizacao",
+          "nome": "Aula 8 · Urbanização e espaço urbano",
+          "modulo": "Módulo 2 · Geografia do Brasil: território, população e economia",
+          "moduloId": "em-geo-m2",
+          "descricao": "Módulo 2 · aula 3 de 5 · 30 min · treina as habilidades H6, H7, H8, H9, H16 e H17 do Enem",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H8",
+            "H9",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-economia",
+          "nome": "Aula 9 · Espaço agrário, indústria e energia",
+          "modulo": "Módulo 2 · Geografia do Brasil: território, população e economia",
+          "moduloId": "em-geo-m2",
+          "descricao": "Módulo 2 · aula 4 de 5 · 30 min · treina as habilidades H17, H18, H19, H20, H26, H27, H28 e H29 do Enem",
+          "habilidades": [
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-revisao-brasil",
+          "nome": "Aula 10 · Revisão: geografia do Brasil",
+          "modulo": "Módulo 2 · Geografia do Brasil: território, população e economia",
+          "moduloId": "em-geo-m2",
+          "descricao": "Módulo 2 · aula 5 de 5 · 30 min · treina as habilidades H6, H7, H16, H17, H18, H19, H20 e H27 do Enem",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H16",
+            "H17",
+            "H18",
+            "H19",
+            "H20",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-biomas-hidrografia",
+          "nome": "Aula 11 · Biomas e hidrografia do Brasil",
+          "modulo": "Módulo 3 · Questões ambientais e globalização",
+          "moduloId": "em-geo-m3",
+          "descricao": "Módulo 3 · aula 1 de 5 · 30 min · treina as habilidades H26, H27, H28, H29 e H30 do Enem",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-mudancas-climaticas",
+          "nome": "Aula 12 · Mudanças climáticas, desmatamento e sustentabilidade",
+          "modulo": "Módulo 3 · Questões ambientais e globalização",
+          "moduloId": "em-geo-m3",
+          "descricao": "Módulo 3 · aula 2 de 5 · 30 min · treina as habilidades H26, H27, H28, H29 e H30 do Enem",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-ambiente-urbano",
+          "nome": "Aula 13 · Problemas ambientais urbanos",
+          "modulo": "Módulo 3 · Questões ambientais e globalização",
+          "moduloId": "em-geo-m3",
+          "descricao": "Módulo 3 · aula 3 de 5 · 30 min · treina as habilidades H26, H27, H28 e H29 do Enem",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-globalizacao",
+          "nome": "Aula 14 · Globalização e blocos econômicos",
+          "modulo": "Módulo 3 · Questões ambientais e globalização",
+          "moduloId": "em-geo-m3",
+          "descricao": "Módulo 3 · aula 4 de 5 · 30 min · treina as habilidades H6, H7, H17 e H20 do Enem",
+          "habilidades": [
+            "H6",
+            "H7",
+            "H17",
+            "H20"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-geo-revisao-ambiente",
+          "nome": "Aula 15 · Revisão: questões ambientais e globalização",
+          "modulo": "Módulo 3 · Questões ambientais e globalização",
+          "moduloId": "em-geo-m3",
+          "descricao": "Módulo 3 · aula 5 de 5 · 30 min · treina as habilidades H26, H27, H28, H29 e H30 do Enem",
+          "habilidades": [
+            "H26",
+            "H27",
+            "H28",
+            "H29",
+            "H30"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 300,
+        "variantes": 300,
+        "pares": 112,
+        "verdadeiroFalso": 84,
+        "adivinhas": 28,
+        "sequencias": 28,
+        "palavras": 112
+      }
+    },
+    {
+      "arquivo": "em-filosofia.json",
+      "id": "em-filosofia",
+      "nome": "Ensino Médio · Filosofia",
+      "descricao": "Filosofia do Ensino Médio em dois módulos: filosofia antiga e medieval; filosofia moderna e contemporânea. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-fil-mito-logos",
+          "nome": "Aula 1 · Do mito ao logos: o nascimento da filosofia",
+          "modulo": "Módulo 1 · Filosofia antiga e medieval",
+          "moduloId": "em-fil-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H1, H11 e H15 do Enem",
+          "habilidades": [
+            "H1",
+            "H11",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-socrates-platao",
+          "nome": "Aula 2 · Sócrates e Platão",
+          "modulo": "Módulo 1 · Filosofia antiga e medieval",
+          "moduloId": "em-fil-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H1, H11, H12 e H13 do Enem",
+          "habilidades": [
+            "H1",
+            "H11",
+            "H12",
+            "H13"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-aristoteles",
+          "nome": "Aula 3 · Aristóteles e o pensamento helenístico",
+          "modulo": "Módulo 1 · Filosofia antiga e medieval",
+          "moduloId": "em-fil-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H1, H11, H12 e H23 do Enem",
+          "habilidades": [
+            "H1",
+            "H11",
+            "H12",
+            "H23"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-medieval",
+          "nome": "Aula 4 · Filosofia medieval: fé e razão",
+          "modulo": "Módulo 1 · Filosofia antiga e medieval",
+          "moduloId": "em-fil-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H1, H3, H11 e H15 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H11",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-revisao-antiga-medieval",
+          "nome": "Aula 5 · Revisão: filosofia antiga e medieval",
+          "modulo": "Módulo 1 · Filosofia antiga e medieval",
+          "moduloId": "em-fil-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H1, H11, H12, H13 e H15 do Enem",
+          "habilidades": [
+            "H1",
+            "H11",
+            "H12",
+            "H13",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-conhecimento",
+          "nome": "Aula 6 · Teoria do conhecimento: racionalismo e empirismo",
+          "modulo": "Módulo 2 · Filosofia moderna e contemporânea",
+          "moduloId": "em-fil-m2",
+          "descricao": "Módulo 2 · aula 1 de 5 · 30 min · treina as habilidades H11, H12, H13 e H15 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H13",
+            "H15"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-politica",
+          "nome": "Aula 7 · Filosofia política: Estado e contrato social",
+          "modulo": "Módulo 2 · Filosofia moderna e contemporânea",
+          "moduloId": "em-fil-m2",
+          "descricao": "Módulo 2 · aula 2 de 5 · 30 min · treina as habilidades H11, H12, H21, H22 e H24 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H21",
+            "H22",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-etica",
+          "nome": "Aula 8 · Ética",
+          "modulo": "Módulo 2 · Filosofia moderna e contemporânea",
+          "moduloId": "em-fil-m2",
+          "descricao": "Módulo 2 · aula 3 de 5 · 30 min · treina as habilidades H11, H12, H23, H24 e H25 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H23",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-contemporanea",
+          "nome": "Aula 9 · Filosofia contemporânea",
+          "modulo": "Módulo 2 · Filosofia moderna e contemporânea",
+          "moduloId": "em-fil-m2",
+          "descricao": "Módulo 2 · aula 4 de 5 · 30 min · treina as habilidades H11, H12, H21, H22 e H25 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H21",
+            "H22",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-fil-revisao-moderna",
+          "nome": "Aula 10 · Revisão: filosofia moderna e contemporânea",
+          "modulo": "Módulo 2 · Filosofia moderna e contemporânea",
+          "moduloId": "em-fil-m2",
+          "descricao": "Módulo 2 · aula 5 de 5 · 30 min · treina as habilidades H11, H12, H21, H22, H24 e H25 do Enem",
+          "habilidades": [
+            "H11",
+            "H12",
+            "H21",
+            "H22",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 200,
+        "variantes": 200,
+        "pares": 40,
+        "verdadeiroFalso": 30,
+        "adivinhas": 10,
+        "sequencias": 10,
+        "palavras": 40
+      }
+    },
+    {
+      "arquivo": "em-sociologia.json",
+      "id": "em-sociologia",
+      "nome": "Ensino Médio · Sociologia",
+      "descricao": "Sociologia do Ensino Médio em dois módulos: os clássicos e a vida social; sociedade brasileira contemporânea. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-soc-durkheim",
+          "nome": "Aula 1 · Durkheim e o fato social",
+          "modulo": "Módulo 1 · Os clássicos e a vida social",
+          "moduloId": "em-soc-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H1, H2, H3 e H16 do Enem",
+          "habilidades": [
+            "H1",
+            "H2",
+            "H3",
+            "H16"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-weber-marx",
+          "nome": "Aula 2 · Weber e Marx",
+          "modulo": "Módulo 1 · Os clássicos e a vida social",
+          "moduloId": "em-soc-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as habilidades H1, H3, H11, H16 e H18 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H11",
+            "H16",
+            "H18"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-cultura",
+          "nome": "Aula 3 · Cultura, identidade e diversidade",
+          "modulo": "Módulo 1 · Os clássicos e a vida social",
+          "moduloId": "em-soc-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H1, H3, H4, H5 e H16 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H4",
+            "H5",
+            "H16"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-trabalho",
+          "nome": "Aula 4 · Trabalho e sociedade",
+          "modulo": "Módulo 1 · Os clássicos e a vida social",
+          "moduloId": "em-soc-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H16, H17, H18 e H24 do Enem",
+          "habilidades": [
+            "H16",
+            "H17",
+            "H18",
+            "H24"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-revisao-classicos",
+          "nome": "Aula 5 · Revisão: os clássicos e a vida social",
+          "modulo": "Módulo 1 · Os clássicos e a vida social",
+          "moduloId": "em-soc-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H1, H3, H5, H16 e H18 do Enem",
+          "habilidades": [
+            "H1",
+            "H3",
+            "H5",
+            "H16",
+            "H18"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-desigualdade",
+          "nome": "Aula 6 · Desigualdade social",
+          "modulo": "Módulo 2 · Sociedade brasileira contemporânea",
+          "moduloId": "em-soc-m2",
+          "descricao": "Módulo 2 · aula 1 de 5 · 30 min · treina as habilidades H21, H22, H24 e H25 do Enem",
+          "habilidades": [
+            "H21",
+            "H22",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-cidadania",
+          "nome": "Aula 7 · Cidadania e democracia",
+          "modulo": "Módulo 2 · Sociedade brasileira contemporânea",
+          "moduloId": "em-soc-m2",
+          "descricao": "Módulo 2 · aula 2 de 5 · 30 min · treina as habilidades H11, H22, H23 e H25 do Enem",
+          "habilidades": [
+            "H11",
+            "H22",
+            "H23",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-movimentos-sociais",
+          "nome": "Aula 8 · Movimentos sociais",
+          "modulo": "Módulo 2 · Sociedade brasileira contemporânea",
+          "moduloId": "em-soc-m2",
+          "descricao": "Módulo 2 · aula 3 de 5 · 30 min · treina as habilidades H11, H22, H24 e H25 do Enem",
+          "habilidades": [
+            "H11",
+            "H22",
+            "H24",
+            "H25"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-violencia-midia",
+          "nome": "Aula 9 · Violência, cidade e meios de comunicação",
+          "modulo": "Módulo 2 · Sociedade brasileira contemporânea",
+          "moduloId": "em-soc-m2",
+          "descricao": "Módulo 2 · aula 4 de 5 · 30 min · treina as habilidades H5, H11, H24 e H27 do Enem",
+          "habilidades": [
+            "H5",
+            "H11",
+            "H24",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-soc-revisao-brasil",
+          "nome": "Aula 10 · Revisão: sociedade brasileira contemporânea",
+          "modulo": "Módulo 2 · Sociedade brasileira contemporânea",
+          "moduloId": "em-soc-m2",
+          "descricao": "Módulo 2 · aula 5 de 5 · 30 min · treina as habilidades H11, H22, H24, H25 e H27 do Enem",
+          "habilidades": [
+            "H11",
+            "H22",
+            "H24",
+            "H25",
+            "H27"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 200,
+        "variantes": 200,
+        "pares": 40,
+        "verdadeiroFalso": 30,
+        "adivinhas": 10,
+        "sequencias": 10,
+        "palavras": 40
+      }
+    },
+    {
+      "arquivo": "em-redacao.json",
+      "id": "em-redacao",
+      "nome": "Ensino Médio · Redação",
+      "descricao": "A redação do Enem e dos vestibulares em dois módulos: a estrutura do texto dissertativo-argumentativo e as cinco competências da correção, da norma-padrão à proposta de intervenção. Conteúdo alinhado à BNCC, com as competências do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-red-prova-enem",
+          "nome": "Aula 1 · A redação do Enem: regras e competências",
+          "modulo": "Módulo 1 · O texto dissertativo-argumentativo",
+          "moduloId": "em-red-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as competências C1, C2, C3, C4 e C5 do Enem",
+          "habilidades": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-estrutura",
+          "nome": "Aula 2 · Estrutura do texto dissertativo-argumentativo",
+          "modulo": "Módulo 1 · O texto dissertativo-argumentativo",
+          "moduloId": "em-red-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina as competências C2 e C3 do Enem",
+          "habilidades": [
+            "C2",
+            "C3"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-tema-recorte",
+          "nome": "Aula 3 · Tema, recorte e textos motivadores",
+          "modulo": "Módulo 1 · O texto dissertativo-argumentativo",
+          "moduloId": "em-red-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina a competência C2 do Enem",
+          "habilidades": [
+            "C2"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-introducao",
+          "nome": "Aula 4 · Introdução e tese",
+          "modulo": "Módulo 1 · O texto dissertativo-argumentativo",
+          "moduloId": "em-red-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as competências C2 e C3 do Enem",
+          "habilidades": [
+            "C2",
+            "C3"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-revisao-estrutura",
+          "nome": "Aula 5 · Revisão: o texto dissertativo-argumentativo",
+          "modulo": "Módulo 1 · O texto dissertativo-argumentativo",
+          "moduloId": "em-red-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as competências C1, C2, C3, C4 e C5 do Enem",
+          "habilidades": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-repertorio",
+          "nome": "Aula 6 · Repertório sociocultural e argumentação",
+          "modulo": "Módulo 2 · Argumentação, coesão e proposta de intervenção",
+          "moduloId": "em-red-m2",
+          "descricao": "Módulo 2 · aula 1 de 6 · 30 min · treina as competências C2 e C3 do Enem",
+          "habilidades": [
+            "C2",
+            "C3"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-desenvolvimento",
+          "nome": "Aula 7 · Parágrafo de desenvolvimento e projeto de texto",
+          "modulo": "Módulo 2 · Argumentação, coesão e proposta de intervenção",
+          "moduloId": "em-red-m2",
+          "descricao": "Módulo 2 · aula 2 de 6 · 30 min · treina as competências C3 e C4 do Enem",
+          "habilidades": [
+            "C3",
+            "C4"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-coesao",
+          "nome": "Aula 8 · Coesão: conectivos e referenciação",
+          "modulo": "Módulo 2 · Argumentação, coesão e proposta de intervenção",
+          "moduloId": "em-red-m2",
+          "descricao": "Módulo 2 · aula 3 de 6 · 30 min · treina as competências C4 e C1 do Enem",
+          "habilidades": [
+            "C4",
+            "C1"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-norma-padrao",
+          "nome": "Aula 9 · Norma-padrão e registro formal na redação",
+          "modulo": "Módulo 2 · Argumentação, coesão e proposta de intervenção",
+          "moduloId": "em-red-m2",
+          "descricao": "Módulo 2 · aula 4 de 6 · 30 min · treina a competência C1 do Enem",
+          "habilidades": [
+            "C1"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-proposta",
+          "nome": "Aula 10 · Proposta de intervenção e conclusão",
+          "modulo": "Módulo 2 · Argumentação, coesão e proposta de intervenção",
+          "moduloId": "em-red-m2",
+          "descricao": "Módulo 2 · aula 5 de 6 · 30 min · treina as competências C5, C2, C3 e C4 do Enem",
+          "habilidades": [
+            "C5",
+            "C2",
+            "C3",
+            "C4"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-red-revisao-competencias",
+          "nome": "Aula 11 · Revisão: argumentação, coesão e proposta de intervenção",
+          "modulo": "Módulo 2 · Argumentação, coesão e proposta de intervenção",
+          "moduloId": "em-red-m2",
+          "descricao": "Módulo 2 · aula 6 de 6 · 30 min · treina as competências C3, C4 e C5 do Enem",
+          "habilidades": [
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 220,
+        "variantes": 220,
+        "pares": 142,
+        "verdadeiroFalso": 107,
+        "adivinhas": 35,
+        "sequencias": 35,
+        "palavras": 105
+      }
+    },
+    {
+      "arquivo": "em-literatura.json",
+      "id": "em-literatura",
+      "nome": "Ensino Médio · Literatura",
+      "descricao": "Literatura do Ensino Médio em dois módulos: teoria literária e as escolas do Quinhentismo ao Romantismo; do Realismo à literatura contemporânea. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-lit-texto-literario",
+          "nome": "Aula 1 · Texto literário e gêneros literários",
+          "modulo": "Módulo 1 · Teoria literária e as primeiras escolas",
+          "moduloId": "em-lit-m1",
+          "descricao": "Módulo 1 · aula 1 de 5 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-versificacao-narrativa",
+          "nome": "Aula 2 · Versificação e elementos da narrativa",
+          "modulo": "Módulo 1 · Teoria literária e as primeiras escolas",
+          "moduloId": "em-lit-m1",
+          "descricao": "Módulo 1 · aula 2 de 5 · 30 min · treina a habilidade H16 do Enem",
+          "habilidades": [
+            "H16"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-colonial",
+          "nome": "Aula 3 · Quinhentismo, Barroco e Arcadismo",
+          "modulo": "Módulo 1 · Teoria literária e as primeiras escolas",
+          "moduloId": "em-lit-m1",
+          "descricao": "Módulo 1 · aula 3 de 5 · 30 min · treina as habilidades H15 e H16 do Enem",
+          "habilidades": [
+            "H15",
+            "H16"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-romantismo",
+          "nome": "Aula 4 · Romantismo: poesia e prosa",
+          "modulo": "Módulo 1 · Teoria literária e as primeiras escolas",
+          "moduloId": "em-lit-m1",
+          "descricao": "Módulo 1 · aula 4 de 5 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-revisao-origens",
+          "nome": "Aula 5 · Revisão: teoria literária e as primeiras escolas",
+          "modulo": "Módulo 1 · Teoria literária e as primeiras escolas",
+          "moduloId": "em-lit-m1",
+          "descricao": "Módulo 1 · aula 5 de 5 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-realismo",
+          "nome": "Aula 6 · Realismo e Naturalismo",
+          "modulo": "Módulo 2 · Do Realismo à literatura contemporânea",
+          "moduloId": "em-lit-m2",
+          "descricao": "Módulo 2 · aula 1 de 5 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-parnasianismo-simbolismo",
+          "nome": "Aula 7 · Parnasianismo, Simbolismo e Pré-Modernismo",
+          "modulo": "Módulo 2 · Do Realismo à literatura contemporânea",
+          "moduloId": "em-lit-m2",
+          "descricao": "Módulo 2 · aula 2 de 5 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-modernismo",
+          "nome": "Aula 8 · Modernismo: a Semana de 1922 e a geração de 1930",
+          "modulo": "Módulo 2 · Do Realismo à literatura contemporânea",
+          "moduloId": "em-lit-m2",
+          "descricao": "Módulo 2 · aula 3 de 5 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-contemporanea",
+          "nome": "Aula 9 · Literatura contemporânea",
+          "modulo": "Módulo 2 · Do Realismo à literatura contemporânea",
+          "moduloId": "em-lit-m2",
+          "descricao": "Módulo 2 · aula 4 de 5 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-lit-revisao-modernismo",
+          "nome": "Aula 10 · Revisão: do Realismo à literatura contemporânea",
+          "modulo": "Módulo 2 · Do Realismo à literatura contemporânea",
+          "moduloId": "em-lit-m2",
+          "descricao": "Módulo 2 · aula 5 de 5 · 30 min · treina as habilidades H15, H16 e H17 do Enem",
+          "habilidades": [
+            "H15",
+            "H16",
+            "H17"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 200,
+        "variantes": 200,
+        "pares": 80,
+        "verdadeiroFalso": 60,
+        "adivinhas": 20,
+        "sequencias": 20,
+        "palavras": 80
+      }
+    },
+    {
+      "arquivo": "em-ingles.json",
+      "id": "em-ingles",
+      "nome": "Ensino Médio · Inglês",
+      "descricao": "Inglês do Ensino Médio em dois módulos: leitura e compreensão de textos, como na prova do Enem, e a gramática básica da língua. Conteúdo alinhado à BNCC, com as habilidades do Enem indicadas em cada aula.",
+      "categoria": "Ensino Médio",
+      "fasesLivres": true,
+      "prova": {
+        "questoes": 30,
+        "minutos": 45,
+        "aprovacao": 60,
+        "exigeFases": true,
+        "atalhoDominio": true,
+        "reforco": true
+      },
+      "rotuloAula": "Aula",
+      "fases": [
+        {
+          "id": "em-ing-estrategias",
+          "nome": "Aula 1 · Estratégias de leitura: skimming e scanning",
+          "modulo": "Módulo 1 · Leitura e compreensão de textos em inglês",
+          "moduloId": "em-ing-m1",
+          "descricao": "Módulo 1 · aula 1 de 6 · 30 min · treina as habilidades H5 e H6 do Enem",
+          "habilidades": [
+            "H5",
+            "H6"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-cognatos",
+          "nome": "Aula 2 · Cognatos, falsos cognatos e afixos",
+          "modulo": "Módulo 1 · Leitura e compreensão de textos em inglês",
+          "moduloId": "em-ing-m1",
+          "descricao": "Módulo 1 · aula 2 de 6 · 30 min · treina as habilidades H5 e H6 do Enem",
+          "habilidades": [
+            "H5",
+            "H6"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-referencia",
+          "nome": "Aula 3 · Referência pronominal e conectivos",
+          "modulo": "Módulo 1 · Leitura e compreensão de textos em inglês",
+          "moduloId": "em-ing-m1",
+          "descricao": "Módulo 1 · aula 3 de 6 · 30 min · treina as habilidades H5 e H6 do Enem",
+          "habilidades": [
+            "H5",
+            "H6"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-generos",
+          "nome": "Aula 4 · Gêneros textuais em língua inglesa",
+          "modulo": "Módulo 1 · Leitura e compreensão de textos em inglês",
+          "moduloId": "em-ing-m1",
+          "descricao": "Módulo 1 · aula 4 de 6 · 30 min · treina as habilidades H5 e H6 do Enem",
+          "habilidades": [
+            "H5",
+            "H6"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-cultura-midia",
+          "nome": "Aula 5 · Intenção, cultura e mídia em textos em inglês",
+          "modulo": "Módulo 1 · Leitura e compreensão de textos em inglês",
+          "moduloId": "em-ing-m1",
+          "descricao": "Módulo 1 · aula 5 de 6 · 30 min · treina as habilidades H7 e H8 do Enem",
+          "habilidades": [
+            "H7",
+            "H8"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-revisao-leitura",
+          "nome": "Aula 6 · Revisão: leitura e compreensão de textos em inglês",
+          "modulo": "Módulo 1 · Leitura e compreensão de textos em inglês",
+          "moduloId": "em-ing-m1",
+          "descricao": "Módulo 1 · aula 6 de 6 · 30 min · treina as habilidades H5, H6, H7 e H8 do Enem",
+          "habilidades": [
+            "H5",
+            "H6",
+            "H7",
+            "H8"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-to-be",
+          "nome": "Aula 7 · Verbo to be, pronomes e artigos",
+          "modulo": "Módulo 2 · Gramática da língua inglesa",
+          "moduloId": "em-ing-m2",
+          "descricao": "Módulo 2 · aula 1 de 6 · 30 min · treina as habilidades H6 e H7 do Enem",
+          "habilidades": [
+            "H6",
+            "H7"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-simple-present",
+          "nome": "Aula 8 · Simple present e advérbios de frequência",
+          "modulo": "Módulo 2 · Gramática da língua inglesa",
+          "moduloId": "em-ing-m2",
+          "descricao": "Módulo 2 · aula 2 de 6 · 30 min · treina as habilidades H6 e H7 do Enem",
+          "habilidades": [
+            "H6",
+            "H7"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-simple-past",
+          "nome": "Aula 9 · Simple past",
+          "modulo": "Módulo 2 · Gramática da língua inglesa",
+          "moduloId": "em-ing-m2",
+          "descricao": "Módulo 2 · aula 3 de 6 · 30 min · treina as habilidades H6 e H7 do Enem",
+          "habilidades": [
+            "H6",
+            "H7"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-futuro",
+          "nome": "Aula 10 · Futuro: will e going to",
+          "modulo": "Módulo 2 · Gramática da língua inglesa",
+          "moduloId": "em-ing-m2",
+          "descricao": "Módulo 2 · aula 4 de 6 · 30 min · treina as habilidades H6 e H7 do Enem",
+          "habilidades": [
+            "H6",
+            "H7"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-perguntas",
+          "nome": "Aula 11 · Question words e frases interrogativas",
+          "modulo": "Módulo 2 · Gramática da língua inglesa",
+          "moduloId": "em-ing-m2",
+          "descricao": "Módulo 2 · aula 5 de 6 · 30 min · treina as habilidades H6 e H7 do Enem",
+          "habilidades": [
+            "H6",
+            "H7"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        },
+        {
+          "id": "em-ing-revisao-gramatica",
+          "nome": "Aula 12 · Revisão: gramática da língua inglesa",
+          "modulo": "Módulo 2 · Gramática da língua inglesa",
+          "moduloId": "em-ing-m2",
+          "descricao": "Módulo 2 · aula 6 de 6 · 30 min · treina as habilidades H5, H6 e H7 do Enem",
+          "habilidades": [
+            "H5",
+            "H6",
+            "H7"
+          ],
+          "minutos": 30,
+          "temResumo": true,
+          "questoes": 20
+        }
+      ],
+      "contagem": {
+        "questoes": 240,
+        "variantes": 240,
+        "pares": 64,
+        "verdadeiroFalso": 48,
+        "adivinhas": 10,
+        "sequencias": 16,
+        "palavras": 64
       }
     }
   ]
