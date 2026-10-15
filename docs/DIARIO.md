@@ -5,6 +5,14 @@
 
 ---
 
+## 2026-10-15 · Sala Ensino Médio: os 12 cursos escritos
+- **Feito:** as 167 aulas novas da grade, um commit por módulo: Matemática (24 aulas), Português (17), Biologia (16), Química (17), Física (15), História (21), Geografia (15), Filosofia (10), Sociologia (10), Redação (11), Literatura (10) e Inglês (12). No total são 178 aulas, 3.560 questões, 3.560 variantes e 552 fichas, com 0 erro e 0 aviso no `conferir-trilha.mjs`.
+- **Nivelamento:** 50 questões, sendo 29 copiadas da Diagnóstica do Enem e 21 novas, em todas as disciplinas. A letra da certa foi espalhada nas novas; as 9 que já estavam em produção ficaram iguais.
+- **Correção no app:** um módulo aberto no mapa continua aberto depois de fechar o "Antes de mergulhar". Antes, o mapa redesenhado fechava o módulo.
+- **Testes:** PC (nivelamento, prova, Teste rápido, aula, retorno) e celular (375 px, sem rolagem lateral), sem erros de página.
+- **Fila:** só `simular`, ~US$ 267 no total, nada enviado.
+- **Próximo:** o merge é do usuário. Depois vêm a Fila (com a aprovação do admin) e a revisão por professores.
+
 ## 2026-10-15 · Sala Ensino Médio: revisão de tom e grade completa
 - **Pedido:** "da a impressão que estamos tratando crianças"; disciplinas sérias (Português, Matemática...), sem o "Sempre dá tempo", nomes iguais aos do colégio, ligação clara com o Enem e o vestibular; "pode mandar bala e criar as aulas".
 - **Feito (tom):** sala "Ensino Médio · Base para o Enem"; cursos "Ensino Médio · <Disciplina>"; aulas com nome de conteúdo, 30 min e habilidades do Enem na descrição; "Como o conteúdo é cobrado" no artigo; Plano de estudos, Avaliação de nivelamento (Nível básico, intermediário, avançado), Prova de suficiência, Boletim da disciplina; conquistas e tutoriais reescritos; `metaPadrao` saiu. Ids e chaves internas mantidos.

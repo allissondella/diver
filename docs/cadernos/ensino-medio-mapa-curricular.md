@@ -454,7 +454,8 @@ Contado em 2026-10-15 sobre as trilhas da Travessia (script de conferência fora
 ### 5.1 Avaliação de nivelamento (`data/diagnostica/ensino-medio.json`)
 
 - **Blocos por área:** Linguagens (Português, Redação, Literatura, Inglês), Matemática, Ciências da Natureza (Biologia, Química, Física) e Ciências Humanas (História, Geografia, Filosofia, Sociologia). Cada questão aponta para um curso e um módulo (`moduloId`).
-- **Tamanho:** 4 questões por disciplina (2 fáceis e 2 médias), e 5 em Matemática: 49 questões no total. Só aparecem as disciplinas com curso publicado.
+- **Tamanho:** 4 questões por disciplina, 5 em Matemática e 5 em História: 50 questões no total (16 fáceis, 23 médias, 11 difíceis; 29 copiadas da Avaliação Diagnóstica do Enem com `copiaDe`, 21 novas). Só aparecem as disciplinas com curso publicado.
+- **Letra da certa:** as alternativas aparecem na ordem do arquivo, então as questões novas têm a certa espalhada (A 11, B 10, C 10, D 10, E 9). As 9 questões que já estavam em produção (`mp-por-*`, `mp-mat-*`) ficaram na ordem original, porque as respostas guardadas são pelo número da alternativa.
 - **"Ainda não sei"** conta como "começar por este módulo", nunca como erro.
 - **Faixas** (mesma conta da Avaliação Diagnóstica do Enem; a nota de 1 a 5 vai para o Cronograma):
 
@@ -474,9 +475,12 @@ US$ 0,037 por item (`node scripts/fila.mjs simular`, fórmula da seção 11.4 do
 
 | Lote | Itens | Custo estimado |
 |---|---|---|
-| Onda 0 (Matemática e Português, Módulo 1) | 220 + 220 + 9 do nivelamento | ~US$ 17 |
-| Grade completa (167 aulas novas) | 3.340 + 3.340 + 40 do nivelamento | ~US$ 249 |
-| **Total** | **7.169** | **~US$ 265** |
+| 12 cursos (178 aulas), questões | 3.560 | US$ 132,38 |
+| 12 cursos, variantes | 3.560 | US$ 132,34 |
+| Nivelamento | 50 | ~US$ 1,85 |
+| **Total** | **7.170** | **~US$ 267** |
+
+Valores do `simular` de 2026-10-15, curso a curso (lotes de 20; o teto já tem 30% de folga).
 
 Nenhuma IA paga roda sem a aprovação do admin na tela, com senha e teto. A Fila recebe só o `simular` desta entrega.
 
@@ -485,10 +489,12 @@ Nenhuma IA paga roda sem a aprovação do admin na tela, com senha e teto. A Fil
 | Onda | O que entra | Situação |
 |---|---|---|
 | 0 | Infraestrutura da sala + Matemática Módulo 1 + Português Módulo 1 | Publicada (2026-10-14) |
-| Tom | Revisão de tom e nomes (2026-10-15) | Nesta entrega |
-| 1 | Matemática Módulos 2 a 4 e Português Módulos 2 e 3 | Nesta entrega, um módulo por commit |
-| 2 | Biologia, Química e Física + bloco Ciências da Natureza do nivelamento | Nesta entrega |
-| 3 | História, Geografia, Filosofia e Sociologia + bloco Ciências Humanas | Nesta entrega |
-| 4 | Redação, Literatura e Inglês + o resto do bloco Linguagens | Nesta entrega |
+| Tom | Revisão de tom e nomes (2026-10-15) | Feita (2026-10-15) |
+| 1 | Matemática Módulos 2 a 4 e Português Módulos 2 e 3 | Feita (2026-10-15), um módulo por commit |
+| 2 | Biologia, Química e Física + bloco Ciências da Natureza do nivelamento | Feita (2026-10-15) |
+| 3 | História, Geografia, Filosofia e Sociologia + bloco Ciências Humanas | Feita (2026-10-15) |
+| 4 | Redação, Literatura e Inglês + o resto do bloco Linguagens | Feita (2026-10-15) |
+
+**Situação em 2026-10-15:** os 12 cursos estão escritos, com 178 aulas, 3.560 questões, 3.560 variantes e 552 fichas; `conferir-trilha.mjs` dá 0 erro e 0 aviso em todos. Falta a validação (Fila, só com aprovação do admin) e a revisão humana por professores de cada disciplina.
 
 Antes do merge: `conferir-trilha.mjs` sem erro e sem aviso em cada curso, testes no PC e no celular, `simular` da Fila e o PR com prévia no ambiente de testes. O merge para a produção é do usuário.

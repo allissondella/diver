@@ -349,3 +349,12 @@ O comportamento de Mergulho, Simulado, Revisão e Prova **não muda** em nenhum 
 - `fila.mjs simular` já lê `data/diagnostica/ensino-medio.json` (9 questões, US$ 0,33); conferir o `baixar` para esse arquivo quando o lote voltar.
 - **Decisões tomadas por mim na Onda 0 (contar ao usuário):** o Mapa é um módulo próprio (`js/mapa-partida.js`) que usa a conta da Diagnóstica, em vez de tornar a tela do Enem configurável (menos risco para um fluxo aprovado); as notas do Mapa ainda não entram no Cronograma (passo do Enem; fica com a decisão f); campo `bncc` separado das `habilidades`; o sorteio da prova com reforço entra no `quiz.js` por uma opção (`questoesProva`), sem mudar a prova dos outros cursos; o Teste rápido não dá XP (o prêmio é o módulo dominado) e não entra na repetição espaçada; "Meu retorno" aparece com a prova aprovada ou com os módulos em dia depois de alguma aula ou Teste rápido (só o Mapa não basta).
 - Onda 1: o resto de Matemática (18 aulas) e de Português (10 aulas), com o OK. **2026-10-15:** substituída pela grade completa da revisão de tom (167 aulas novas, sem esperar OK, a pedido do usuário).
+- **2026-10-15, grade completa escrita:**
+  - 12 cursos, 178 aulas, 3.560 questões e 3.560 variantes;
+  - o nivelamento tem 50 questões.
+- **Decisões minhas (contadas ao usuário):**
+  - Inglês Módulo 2 (gramática) é todo novo, com a gramática a serviço da leitura;
+  - em Literatura, autor moderno aparece só com títulos e fatos, sem citação;
+  - no nivelamento, a letra da certa foi espalhada nas questões novas, e as de produção ficaram iguais;
+  - o mapa mantém aberto o módulo que a pessoa abriu.
+- **Revisão humana pendente:** um professor por disciplina, uma disciplina por vez.
