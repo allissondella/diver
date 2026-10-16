@@ -143,6 +143,8 @@ const Tutorial = (() => {
       { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque uma profissão pelo nome ou filtre pela área. Toque numa ficha para abrir; "Pôr na mira" guarda as que você quer acompanhar, e elas aparecem no topo do mapa.' },
       { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'A ficha se conta enquanto você rola: as partes acendem, os números se montam e a barra no topo mostra quanto falta (toque numa seção para pular). O salário fica escondido até o seu chute, e cada bolinha numerada abre a fonte daquela informação.' },
       { desenho: 'estrela', titulo: 'Maré de cartas', texto: 'Sem ideia por onde começar? A Maré mostra uma profissão por vez: "Me interessa" ou "Não é pra mim". No fim, o seu rastro e uma sugestão que talvez você não tenha considerado.' },
+      // Panorama da Tecnologia (2026-10-16): enquanto for rascunho, o aluno vê "Em breve"; ao publicar, suba "profissoes" em VERSOES
+      { desenho: 'mapa', titulo: 'Panoramas de área', texto: 'Algumas áreas são grandes demais para uma ficha só e ganham um panorama, como o da Tecnologia: dez áreas, o dia típico de cada uma e um jogo para descobrir com qual você combina. Com o selo "Em breve", o panorama ainda está em revisão.' },
     ],
     perfil: [
       { alvo: '.perfil-topo__info', desenho: 'trofeu', titulo: 'Seu nível geral', texto: 'O XP de todos os cursos somado. Cada mergulho, jogo e revisão empurra a barra.' },

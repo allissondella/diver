@@ -282,7 +282,8 @@ const Admin = (() => {
    * é mudado na janela "Salas e cursos" e só grava no "Salvar".
    */
   /* ---------- Mapa das Profissões: números derivados do log (eventos_atividade), sem tabela nova ---------- */
-  const TIPOS_PROFISSOES = ['profissao_vista', 'profissao_pedido', 'profissao_carta', 'profissao_dia_inicio', 'profissao_dia_concluido'];
+  const TIPOS_PROFISSOES = ['profissao_vista', 'profissao_pedido', 'profissao_carta', 'profissao_dia_inicio', 'profissao_dia_concluido',
+    'tecnologia_area_vista', 'tecnologia_jogo_inicio', 'tecnologia_jogo_concluido'];
   function blocoProfissoes() {
     const corpo = h('div', { class: 'admin-profissoes', 'aria-live': 'polite' });
     let carregado = false;
@@ -302,8 +303,9 @@ const Admin = (() => {
   }
 
   async function carregarProfissoes() {
-    const [ix, eventos] = await Promise.all([
+    const [ix, tec, eventos] = await Promise.all([
       fetch('data/profissoes/indice.json').then((r) => r.json()).catch(() => ({ profissoes: [] })),
+      fetch('data/profissoes/tecnologia.json').then((r) => r.json()).catch(() => ({ areas: [] })),
       (async () => {
         const linhas = [];
         for (let de = 0; de < 50000; de += 1000) {
@@ -314,13 +316,17 @@ const Admin = (() => {
         return linhas;
       })(),
     ]);
-    const nome = (id) => (id === 'outra' ? 'Outra (busca livre)' : ((ix.profissoes || []).find((p) => p.id === id) || {}).nome || id);
+    const panoramas = { tecnologia: 'Panorama da Tecnologia' };
+    const nome = (id) => (id === 'outra' ? 'Outra (busca livre)' : panoramas[id] || ((ix.profissoes || []).find((p) => p.id === id) || {}).nome || id);
+    const nomeArea = (id) => ((tec.areas || []).find((a) => a.id === id) || {}).nome || id;
     const prof = (e) => (e.detalhes && typeof e.detalhes.profissao === 'string' ? e.detalhes.profissao : null);
-    // conta por profissão: total de eventos e pessoas diferentes
-    const contar = (filtro) => {
+    const area = (e) => (e.detalhes && typeof e.detalhes.area === 'string' ? e.detalhes.area : null);
+    const primeiraArea = (e) => (e.detalhes && Array.isArray(e.detalhes.top) && typeof e.detalhes.top[0] === 'string' ? e.detalhes.top[0] : null);
+    // conta por profissão (ou pela chave que se pedir): total de eventos e pessoas diferentes
+    const contar = (filtro, chave = prof) => {
       const m = new Map();
       eventos.filter(filtro).forEach((e) => {
-        const id = prof(e);
+        const id = chave(e);
         if (!id) return;
         const x = m.get(id) || { vezes: 0, pessoas: new Set() };
         x.vezes++; x.pessoas.add(e.aluno_id);
@@ -343,6 +349,12 @@ const Admin = (() => {
     const fins = new Map(contar((e) => e.tipo === 'profissao_dia_concluido').map((x) => [x.id, x.pessoas]));
     const dia = inicios.map((x) => ({ ...x, concluiram: fins.get(x.id) || 0 }));
     const alunos = new Set(eventos.map((e) => e.aluno_id)).size;
+    // Panorama da Tecnologia: áreas abertas e o resultado do jogo (a área em 1º lugar de cada partida)
+    const areasVistas = contar((e) => e.tipo === 'tecnologia_area_vista', area);
+    const pessoasDe = (tipo) => new Set(eventos.filter((e) => e.tipo === tipo).map((e) => e.aluno_id)).size;
+    const jogoComecou = pessoasDe('tecnologia_jogo_inicio');
+    const jogoTerminou = pessoasDe('tecnologia_jogo_concluido');
+    const primeiras = contar((e) => e.tipo === 'tecnologia_jogo_concluido', primeiraArea);
 
     return [
       h('p', { class: 'texto-suave', text: `${UI.plural(alunos, 'pessoa já usou', 'pessoas já usaram')} o Mapa (fichas, Maré de cartas ou "Um dia como"). Os números vêm do log de atividade; cada linha mostra as 10 primeiras.` }),
@@ -350,6 +362,9 @@ const Admin = (() => {
       tabela('Fichas pedidas ("Em breve")', pedidos, [['Profissão', (l) => nome(l.id)], ['Pedidos', (l) => String(l.pessoas)]], 'Nenhum pedido ainda.'),
       tabela('"Me interessa" na Maré de cartas', interesse, [['Profissão', (l) => nome(l.id)], ['Pessoas', (l) => String(l.pessoas)]], 'Ninguém passou pela Maré ainda.'),
       tabela('"Um dia como": quem começa e quem termina', dia, [['Profissão', (l) => nome(l.id)], ['Começaram', (l) => String(l.pessoas)], ['Terminaram', (l) => String(l.concluiram)], ['Conclusão', (l) => `${Math.round((100 * l.concluiram) / Math.max(1, l.pessoas))}%`]], 'Ninguém viveu um dia ainda.'),
+      tabela('Panorama da Tecnologia: áreas mais vistas', areasVistas, [['Área', (l) => nomeArea(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Aberturas', (l) => String(l.vezes)]], 'Nenhuma área aberta ainda.'),
+      h('p', { class: 'texto-suave', text: jogoComecou ? `Jogo "Que área da tecnologia é a sua?": ${UI.plural(jogoComecou, 'pessoa começou', 'pessoas começaram')} e ${UI.plural(jogoTerminou, 'terminou', 'terminaram')} (${Math.round((100 * jogoTerminou) / Math.max(1, jogoComecou))}%).` : 'Ninguém jogou "Que área da tecnologia é a sua?" ainda.' }),
+      tabela('Jogo da Tecnologia: área em 1º lugar', primeiras, [['Área', (l) => nomeArea(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Partidas', (l) => String(l.vezes)]], 'Nenhuma partida terminada ainda.'),
     ];
   }
 

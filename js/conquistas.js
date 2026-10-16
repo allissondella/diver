@@ -176,6 +176,14 @@ const Conquistas = (() => {
       icone: 'i-cartas',
       testar: (publicadas) => publicadas.length > 0 && publicadas.every((id) => (mapa().cartasGeradas || []).includes(id)),
     },
+    {
+      // Panorama da Tecnologia (js/profissoes-tecnologia.js): as dez áreas ficam em mapa().tec.areasVistas
+      id: 'dez-em-dez',
+      nome: 'Dez em dez',
+      descricao: 'Abriu as dez áreas do Panorama da Tecnologia.',
+      icone: 'i-codigo',
+      testar: () => Object.keys((mapa().tec && mapa().tec.areasVistas) || {}).length >= 10,
+    },
   ];
   const lerGerais = () => { const g = Dados.ler(CHAVE_GERAIS, null); return g && typeof g === 'object' ? g : {}; };
 

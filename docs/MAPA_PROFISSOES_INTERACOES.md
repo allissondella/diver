@@ -110,3 +110,6 @@ Pedido do usuário: a ficha mais moderna e interativa, "como a página da Apple,
   - "O que ninguém te conta" vira cartas para revelar uma a uma (ou "Revelar todos");
   - no celular, a tabela de valores vira cartões e o gráfico do chute rola dentro da caixa.
 - **Reduzir movimento:** nada se mexe e tudo aparece pronto. O tutorial da área subiu para a versão 2.
+
+**Panorama da Tecnologia (2026-10-16):** o panorama, as dez áreas e o jogo usam as mesmas peças da ficha (`abrirHistoria`, `fecharHistoria`, `fontesGuardadas`, via `Profissoes._util`). Há também uma aposta antes das barras de salário, o chute em cada área, a linha do dia que marca "agora", a carreira em escada e a duração dos cursos que cresce. Detalhes em `docs/MAPA_PROFISSOES_TECNOLOGIA.md`, "Como ficou no app".
+

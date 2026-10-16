@@ -5,6 +5,41 @@
 
 ---
 
+## 2026-10-16 · Mapa das Profissões: Panorama da Tecnologia (kit v1.2)
+- **Pedido do usuário:** "Vamos subir esse mapa de profissão de tecnologia" (zip `diver-mapa-profissoes-v3`). Plano aprovado com "Sim pra tudo, manda bala", incluindo a ponte com o Explora Tech.
+- **O que entrou:**
+  - `data/profissoes/tecnologia.json`: 10 áreas, 18 fontes e 12 situações, como veio no kit;
+  - `scripts/conferir-panorama.mjs`;
+  - o panorama no `indice.json` (com `status` e `busca`);
+  - `js/profissoes-tecnologia.js`, reescrito no desenho da ficha nova.
+- **O que não entrou:** os `js/profissoes.js` e `css/profissoes.css` do kit (eram anteriores à ficha nova e a apagariam). Do kit vieram só os três ganchos, levados ao nosso módulo: `registrarExtensao`, `_util` e o cartão do panorama no mapa. A ficha de Enfermagem não mudou.
+- **Desenho** (detalhes em `docs/MAPA_PROFISSOES_TECNOLOGIA.md`, "Como ficou no app"):
+  - **Panorama:** aposta "qual área paga mais?" antes das barras; dez áreas com "R$ ?" até a aposta e quantas já foram exploradas; duração dos cursos em barras que crescem.
+  - **Área:** chute de salário na régua; dia típico com "agora"; chave "Combina com quem / Pense duas vezes se"; carreira em escada; cartas para virar; vizinhas clicáveis; anterior e próxima.
+  - **Jogo:** um atalho de teclado por vez (corrige o "Voltar" do kit) e um resultado que conta e cresce.
+  - **Ponte com os cursos:** "Estudar tecnologia" abre o Explora Tech, e a área de Segurança mostra também Ciber e ISO. O aviso de curso fora das salas agora diz a sala certa.
+- **Quem vê:** o panorama segue `rascunho` (rotinas a revisar com profissionais). A equipe e o modo local veem; o aluno vê "Em breve" e pode pedir.
+- **App:**
+  - rotas na tela Profissões e o módulo no pacote `profissoes`;
+  - 30 XP e 3 pérolas no jogo, uma vez, pela economia;
+  - 4 tipos de evento `tecnologia_*`;
+  - conquista geral **Dez em dez**;
+  - no Admin, áreas mais vistas, quem começa e quem termina o jogo, e a área em 1º lugar;
+  - tutorial com o passo "Panoramas de área" (a versão sobe quando publicar).
+- **Banco:** regra de tipos da `eventos_atividade` atualizada no `setup.sql` e aplicada nos bancos de testes e de produção (só acrescenta tipos).
+- **Correção:** a repaginada da ficha (PR #87) usava `.prof-cena` para as partes que acendem, e o cartão do "Um dia como" ficou invisível. As partes passaram a usar `.prof-surge`. Na mesma conferência, `prof-barra` e `prof-oculto` também já existiam e foram evitados (as barras de salário usam `prof-paga`; o "R$ ?" usa `prof-sigilo`).
+- **Conferido:**
+  - `conferir-panorama` e `conferir-ficha` ok;
+  - auditoria de design ok, também no navegador (o auditor ganhou as 3 telas novas);
+  - testes no celular e no computador: mapa, panorama, aposta, área, chute, jogo com "Voltar", conquista, "Em breve" do aluno;
+  - "reduzir movimento" mostra tudo, e todos os textos do JSON aparecem;
+  - a ficha de Enfermagem segue igual.
+- **Pendências:**
+  - revisão das rotinas das dez áreas por 1 ou 2 profissionais de cada uma (kit, "Limites conhecidos");
+  - ao publicar: `status: "publicada"` no `tecnologia.json` e no `indice.json`, e subir `profissoes` em `VERSOES` do tutorial;
+  - as fontes de salário vencem 180 dias depois da data dos dados (o verificador avisa);
+  - merge para produção: o usuário.
+
 ## 2026-10-16 · Mapa das Profissões: a ficha que se conta ao rolar
 - **Pedido do usuário:** repaginar Profissões "sem mudar nenhuma vírgula, só o design":
   - mais moderna e interativa;

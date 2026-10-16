@@ -31,6 +31,8 @@
   };
   /* A ficha abre para esta conta? Rascunho e validada só para quem o app deixar ver (equipe). */
   const temFicha = p => !!(p && p.arquivo && (p.status === 'publicada' || ganchos.verRascunho()));
+  /* O panorama de uma área (ex.: Tecnologia) segue a mesma regra: rascunho só para a equipe. */
+  const temPanorama = pn => !!(pn && (pn.status === 'publicada' || ganchos.verRascunho()));
 
   /* =========================================================
      Dados
@@ -174,6 +176,7 @@
      Roteador
      ========================================================= */
   const limpezas = []; /* listeners de teclado da tela anterior */
+  const extensoes = []; /* módulos extras (ex.: js/profissoes-tecnologia.js) registram { aceita(rota), montar(raiz, rota, ix) } */
   async function montar(raiz, rota) {
     carregarEstado();
     fecharFonte();
@@ -186,6 +189,7 @@
       if (r === 'profissoes' || r === '') return telaMapa(raiz, ix);
       if (r === 'profissoes-cartas') return telaCartas(raiz, ix);
       if (r === 'profissoes-metodo') return telaMetodo(raiz, ix);
+      for (const ext of extensoes) if (ext.aceita(r)) return await ext.montar(raiz, r, ix);
       let m = r.match(/^profissao-(.+)-(dia|mitos)$/);
       if (m) { const f = await ficha(m[1]); if (!f) return naoEncontrada(raiz); return m[2] === 'dia' ? telaDia(raiz, f, ix) : telaMitos(raiz, f, ix); }
       m = r.match(/^profissao-(.+)$/);
@@ -267,11 +271,13 @@
       ix.areas.forEach(a => {
         if (filtroArea !== 'todas' && filtroArea !== a.id) return;
         const lista = ix.profissoes.filter(p => p.area === a.id && (!soProntas || temFicha(p)) && (!termo || normalizar(p.nome + ' ' + (p.busca || '')).includes(termo)));
-        if (!lista.length) return;
-        total += lista.length;
+        const pn = a.panorama ? (ix.panoramas || []).find(x => x.rota === a.panorama.rota) : null;
+        const panorama = pn && (!soProntas || temPanorama(pn)) && (!termo || normalizar(`${a.nome} ${a.panorama.titulo} ${a.panorama.frase} ${pn.busca || ''}`).includes(termo)) ? ilhaPanorama(a, pn) : null;
+        if (!lista.length && !panorama) return;
+        total += lista.length + (panorama ? 1 : 0);
         const sec = el('section', { class: 'prof-regiao', style: { '--cor-area': `var(${a.cor})` } },
           el('div', { class: 'prof-regiao-cab' }, el('h2', null, el('span', { 'aria-hidden': 'true' }), a.nome), el('span', { class: 'prof-min', text: `${lista.length} ${lista.length === 1 ? 'profissão' : 'profissões'}` })),
-          el('div', { class: 'prof-grade' }, lista.map(p => ilha(p, ix))));
+          el('div', { class: 'prof-grade' }, panorama, lista.map(p => ilha(p, ix))));
         grade.appendChild(sec);
       });
       if (!total) grade.appendChild(el('div', { class: 'prof-vazio' }, el('p', { text: 'Nenhuma profissão com esse nome por aqui ainda.' }), el('div', { style: { marginTop: '10px' } }, botao('Pedir esta profissão', { classe: 'prof-btn--linha prof-btn--pequeno', onclick: () => pedir(normalizar(busca.value).replace(/\s+/g, '-'), busca.value || 'essa profissão') }))));
@@ -281,6 +287,13 @@
     raiz.appendChild(el('p', { class: 'prof-fonte-nota', style: { marginTop: '28px' } }, 'Fatos das cartas: Censo da Educação Superior 2024 (Inep), Decreto nº 12.456/2025, Sisu 2026 e Google Trends 2021–2026. Cada ficha traz a lista completa de fontes, com data de consulta. ', link('Veja como fazemos as fichas', 'profissoes-metodo')));
 
     function tile(rotulo, valor, cor, sub) { return el('div', { class: 'prof-tile' + (cor ? ' prof-tile--' + cor : '') }, el('div', { class: 'prof-min', text: rotulo }), el('div', { class: 'prof-tile-v prof-num', text: String(valor) }), sub ? el('div', { class: 'prof-micro', text: sub }) : null); }
+  }
+  /* Panorama de uma área: um cartão largo no topo da região (aberto para a equipe; "Em breve" para o aluno enquanto é rascunho) */
+  function ilhaPanorama(a, pn) {
+    const corpo = [el('span', { class: 'prof-selo prof-selo--pronta', text: pn.status === 'publicada' ? 'Panorama' : 'Panorama em revisão' }), el('h3', { text: a.panorama.titulo }), el('p', { text: a.panorama.frase })];
+    if (temPanorama(pn)) return el('a', { href: '#' + a.panorama.rota, class: 'prof-ilha prof-ilha--panorama', style: { '--cor-area': `var(${a.cor})` } }, ...corpo, el('span', { class: 'prof-ilha-seta', 'aria-hidden': 'true' }, icone('direita')));
+    corpo[0] = el('span', { class: 'prof-selo', text: 'Em breve' });
+    return el('button', { type: 'button', class: 'prof-ilha prof-ilha--panorama prof-ilha--breve', style: { '--cor-area': `var(${a.cor})`, textAlign: 'left', font: 'inherit' }, onclick: () => pedir(pn.id, a.panorama.titulo) }, ...corpo);
   }
   function ilha(p, ix) {
     const naMira = estado.mira.includes(p.id), vista = !!estado.vistas[p.id];
@@ -337,23 +350,9 @@
     raiz.appendChild(el('div', { class: 'prof-topo' }, link('Mapa das Profissões', 'profissoes', { classe: 'prof-voltar', icone: 'esquerda' }),
       f.status !== 'publicada' ? el('span', { class: 'prof-selo prof-selo--rascunho', text: f.revisao && f.revisao.profissional === 'ok' ? 'Validada' : 'Em revisão por profissional' }) : null));
 
-    // Abertura: o nome entra palavra por palavra e um convite chama para rolar
-    const descer = el('button', { type: 'button', class: 'prof-mergulhe', onclick: () => { const alvo = raiz.querySelector('.prof-surge'); if (alvo) alvo.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: 'start' }); } }, 'Role para mergulhar', icone('baixo'));
-    const palco = el('header', { class: 'prof-palco' },
-      el('span', { class: 'prof-rotulo', text: nomeArea(ix, f.area), style: { color: cor } }),
-      el('h1', { class: 'prof-palco-titulo', 'aria-label': f.nome }, palavras(f.nome)),
-      el('p', { class: 'prof-lead prof-palco-frase' }, palavras(f.frase)),
-      descer);
-    raiz.appendChild(palco);
-
-    // Guia fixo: barra de progresso e as seções (montado no fim, só com as seções que existem)
-    const barra = el('i');
-    const nav = el('nav', { class: 'prof-nav', 'aria-label': 'Seções da ficha' });
-    const guia = el('div', { class: 'prof-guia' }, el('div', { class: 'prof-guia-barra', 'aria-hidden': 'true' }, barra), nav);
-    raiz.appendChild(guia);
-    const corpo = el('div', { class: 'prof-corpo' });
-    raiz.appendChild(corpo);
-    const raizSecoes = raiz; raiz = corpo;
+    // Abertura em tela cheia e o guia fixo (as seções entram no guia no fim, só as que existem)
+    const historia = abrirHistoria(raiz, { rotulo: nomeArea(ix, f.area), cor, titulo: f.nome, frase: f.frase, rotuloNav: 'Seções da ficha' });
+    const raizSecoes = raiz; raiz = historia.corpo;
 
     // Agora mesmo: o relógio gira até a hora de agora
     if (f.agora && f.agora.length && IG()) {
@@ -509,26 +508,47 @@
     }))));
 
     // 12. Fontes: guardadas; a lista abre no botão
-    const listaFontes = el('ol', { class: 'prof-fontes', id: 'prof-lista-fontes', hidden: true }, (f.fontes || []).map((fo, i) => el('li', { id: 'fonte-' + fo.id, style: { '--i': i } },
-      el('div', null, el('b', { text: `${i + 1}. ` }), fo.url ? el('a', { href: fo.url, target: '_blank', rel: 'noopener' }, fo.titulo, ' ', icone('link')) : fo.titulo),
-      el('div', { class: 'prof-fontes-meta', text: metaFonte(fo) }),
-      fo.nota ? el('div', { class: 'prof-fontes-nota', text: 'Pendência: ' + fo.nota }) : null)));
-    const total = (f.fontes || []).length;
-    const abrirLista = botao(`Ver as ${total} fontes desta ficha`, { classe: 'prof-btn--linha', icone: 'livro', onclick: () => {
-      const aberta = listaFontes.hidden; listaFontes.hidden = !aberta; abrirLista.setAttribute('aria-expanded', String(aberta));
-      abrirLista.lastChild.textContent = aberta ? 'Guardar as fontes' : `Ver as ${total} fontes desta ficha`;
-      if (aberta) listaFontes.classList.add('prof-fontes--abrindo');
-    } });
-    abrirLista.setAttribute('aria-expanded', 'false'); abrirLista.setAttribute('aria-controls', 'prof-lista-fontes');
     raiz.appendChild(secao('fontes', 'Fontes', `Conferidas em ${dataBR(f.conferido_em)}. Toque num número ao longo da ficha para ver de onde ele vem.`,
-      abrirLista, listaFontes,
+      ...fontesGuardadas(f, f.fontes || [], `Ver as ${(f.fontes || []).length} fontes desta ficha`),
       el('div', { class: 'prof-revisao' },
         el('span', { class: f.revisao && f.revisao.fontes === 'conferidas' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.fontes === 'conferidas' ? 'certo' : 'relogio'), 'Fontes: ' + (f.revisao ? f.revisao.fontes : 'pendente')),
         el('span', { class: f.revisao && f.revisao.ia === 'ok' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.ia === 'ok' ? 'certo' : 'relogio'), 'Validação por IA (Mergulho Triplo): ' + (f.revisao ? f.revisao.ia : 'pendente')),
         el('span', { class: f.revisao && f.revisao.profissional === 'ok' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.profissional === 'ok' ? 'certo' : 'relogio'), f.revisao && f.revisao.profissional === 'ok' ? `Revisada por ${f.revisao.revisor} em ${dataBR(f.revisao.data)}` : 'Revisão por profissional da área: pendente')),
       el('p', { class: 'prof-fonte-nota' }, 'Achou um erro? Conte para a equipe do Diver: a correção entra na fila de revisão. ', link('Como fazemos as fichas', 'profissoes-metodo'))));
 
-    // Guia: um chip por seção, o "Próximo" no pé de cada uma e a seção atual acesa
+    // Doca com as ações no rodapé: aparece depois da abertura
+    const btnMira = botao(estado.mira.includes(f.id) ? 'Na mira' : 'Pôr na mira', { classe: 'prof-btn--linha prof-btn--mira', icone: estado.mira.includes(f.id) ? 'certo' : 'alvo', pressed: String(estado.mira.includes(f.id)), onclick: () => alternarMira(f, btnMira) });
+    const doca = el('div', { class: 'prof-doca', role: 'region', 'aria-label': 'Ações da ficha' }, btnMira,
+      f.dia ? link('Viver um dia', 'profissao-' + f.id + '-dia', { classe: 'prof-btn prof-btn--primario', icone: 'play' }) : null,
+      f.mitos && f.mitos.length ? link('Mito ou verdade', 'profissao-' + f.id + '-mitos', { classe: 'prof-btn prof-btn--linha', icone: 'dado' }) : null);
+
+    aplicarSalario(false);
+    fecharHistoria(raizSecoes, historia, doca);
+    raiz = raizSecoes;
+  }
+
+  /* ---------- A história que se conta ao rolar: peças da ficha, usadas também pelos panoramas (js/profissoes-tecnologia.js) ---------- */
+  /** Abertura em tela cheia (o título entra palavra por palavra e um convite chama para rolar) e o guia fixo vazio.
+      o = { rotulo, cor, titulo, frase, rotuloNav }. Devolve { palco, barra, nav, corpo }: as seções vão no corpo. */
+  function abrirHistoria(raiz, o) {
+    const descer = el('button', { type: 'button', class: 'prof-mergulhe', onclick: () => { const alvo = raiz.querySelector('.prof-surge'); if (alvo) alvo.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: 'start' }); } }, 'Role para mergulhar', icone('baixo'));
+    const palco = el('header', { class: 'prof-palco' },
+      el('span', { class: 'prof-rotulo', text: o.rotulo, style: { color: o.cor } }),
+      el('h1', { class: 'prof-palco-titulo', 'aria-label': o.titulo }, palavras(o.titulo)),
+      o.frase ? el('p', { class: 'prof-lead prof-palco-frase' }, palavras(o.frase)) : null,
+      descer);
+    raiz.appendChild(palco);
+    const barra = el('i');
+    const nav = el('nav', { class: 'prof-nav', 'aria-label': o.rotuloNav || 'Seções' });
+    raiz.appendChild(el('div', { class: 'prof-guia' }, el('div', { class: 'prof-guia-barra', 'aria-hidden': 'true' }, barra), nav));
+    const corpo = el('div', { class: 'prof-corpo' });
+    raiz.appendChild(corpo);
+    return { palco, barra, nav, corpo };
+  }
+  /** Fecha a história: um chip por seção no guia, o "Próximo" no pé de cada uma, a seção atual acesa,
+      a doca (opcional) depois da abertura, a barra de progresso e as cenas que acendem. */
+  function fecharHistoria(raiz, h, doca) {
+    const { palco, barra, nav, corpo } = h;
     const secoes = [...corpo.querySelectorAll('.prof-secao')];
     const chips = secoes.map(sec => {
       const titulo = sec.querySelector('h2').firstChild.textContent;
@@ -550,32 +570,38 @@
       secoes.forEach(s => io.observe(s));
       limpezas.push(() => io.disconnect());
     }
-
-    // Doca com as ações no rodapé: aparece depois da abertura
-    const btnMira = botao(estado.mira.includes(f.id) ? 'Na mira' : 'Pôr na mira', { classe: 'prof-btn--linha prof-btn--mira', icone: estado.mira.includes(f.id) ? 'certo' : 'alvo', pressed: String(estado.mira.includes(f.id)), onclick: () => alternarMira(f, btnMira) });
-    const doca = el('div', { class: 'prof-doca', role: 'region', 'aria-label': 'Ações da ficha' }, btnMira,
-      f.dia ? link('Viver um dia', 'profissao-' + f.id + '-dia', { classe: 'prof-btn prof-btn--primario', icone: 'play' }) : null,
-      f.mitos && f.mitos.length ? link('Mito ou verdade', 'profissao-' + f.id + '-mitos', { classe: 'prof-btn prof-btn--linha', icone: 'dado' }) : null);
-    raizSecoes.appendChild(doca);
+    if (doca) raiz.appendChild(doca);
 
     // Progresso da leitura e a doca (um só ouvinte de rolagem, em qualquer contêiner)
     let pendente = false;
     const medir = () => {
       pendente = false;
-      if (!raizSecoes.isConnected) return;
+      if (!raiz.isConnected) return;
       const r = corpo.getBoundingClientRect(), alto = Math.max(1, r.height - innerHeight * 0.6);
       barra.style.transform = `scaleX(${Math.min(1, Math.max(0, -r.top / alto))})`;
-      doca.classList.toggle('prof-doca--visivel', palco.getBoundingClientRect().bottom < innerHeight * 0.55);
+      if (doca) doca.classList.toggle('prof-doca--visivel', palco.getBoundingClientRect().bottom < innerHeight * 0.55);
     };
     const aoRolar = () => { if (!pendente) { pendente = true; requestAnimationFrame(medir); } };
     document.addEventListener('scroll', aoRolar, { passive: true, capture: true });
     addEventListener('resize', aoRolar, { passive: true });
     limpezas.push(() => { document.removeEventListener('scroll', aoRolar, { capture: true }); removeEventListener('resize', aoRolar); });
 
-    aplicarSalario(false);
     observarCenas(corpo);
     requestAnimationFrame(medir);
-    raiz = raizSecoes;
+  }
+  /** Fontes guardadas: o botão abre e fecha a lista (numerada como em f.fontes). Devolve [botão, lista]. */
+  function fontesGuardadas(f, lista, rotulo) {
+    const ol = el('ol', { class: 'prof-fontes', id: 'prof-lista-fontes', hidden: true }, lista.map((fo, i) => el('li', { id: 'fonte-' + fo.id, style: { '--i': i } },
+      el('div', null, el('b', { text: `${numeroFonte(f, fo.id)}. ` }), fo.url ? el('a', { href: fo.url, target: '_blank', rel: 'noopener' }, fo.titulo, ' ', icone('link')) : fo.titulo),
+      el('div', { class: 'prof-fontes-meta', text: metaFonte(fo) }),
+      fo.nota ? el('div', { class: 'prof-fontes-nota', text: 'Pendência: ' + fo.nota }) : null)));
+    const b = botao(rotulo, { classe: 'prof-btn--linha', icone: 'livro', onclick: () => {
+      const aberta = ol.hidden; ol.hidden = !aberta; b.setAttribute('aria-expanded', String(aberta));
+      b.lastChild.textContent = aberta ? 'Guardar as fontes' : rotulo;
+      if (aberta) ol.classList.add('prof-fontes--abrindo');
+    } });
+    b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'prof-lista-fontes');
+    return [b, ol];
   }
   function alternarMira(f, btn) {
     const i = estado.mira.indexOf(f.id);
@@ -995,5 +1021,11 @@
 
   /* No app: ao sair da área, solta os atalhos de teclado da tela (Maré de cartas, Um dia como). */
   function desmontar() { fecharFonte(); while (limpezas.length) { try { limpezas.pop()(); } catch (e) { /* ignora */ } } }
-  window.Profissoes = { montar, desmontar, iniciar, ganchos, estado: () => estado, indice, ficha, BASE };
+  window.Profissoes = {
+    montar, desmontar, iniciar, ganchos, estado: () => estado, indice, ficha, BASE,
+    registrarExtensao: ext => extensoes.push(ext),
+    /* Peças para as extensões (js/profissoes-tecnologia.js): as mesmas da ficha, para o desenho ficar igual */
+    _util: { el, icone, aviso, botao, link, citar, prosa, brl, dataBR, normalizar, nomeArea, corArea, salvarEstado, lerJson, limpezas, IG, EIXOS,
+      temFicha, temPanorama, pedir, semMovimento, palavras, contar, abrirHistoria, fecharHistoria, fontesGuardadas, abrirFonte, numeroFonte }
+  };
 })();

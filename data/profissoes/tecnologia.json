@@ -1,0 +1,449 @@
+{
+  "id": "tecnologia",
+  "versao": 1,
+  "titulo": "Panorama da Tecnologia",
+  "frase": "Tecnologia não é uma profissão. São dez áreas com rotinas, pessoas e ritmos muito diferentes.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": { "fontes": "conferidas", "ia": "pendente", "profissional": "pendente", "revisor": null, "data": null },
+  "intro": "Quem diz \"quero trabalhar com tecnologia\" ainda não escolheu nada: há quem passe o dia escrevendo código, quem passe o dia em reunião com usuários, quem cuide de servidores de madrugada e quem cace falhas de segurança. Este panorama existe para você descobrir em qual dessas rotinas se enxerga, antes de escolher um curso.",
+  "numeros": [
+    { "rotulo": "Profissionais com carteira no setor", "valor": "2,13 milhões", "detalhe": "dez/2025; projeção de 2,16 milhões em dez/2026", "fontes": ["brasscom-2026"] },
+    { "rotulo": "Formados em cursos de TIC por ano", "valor": "111 mil", "detalhe": "em 2024, quase o dobro de 2022; cerca de 40% em Análise e Desenvolvimento de Sistemas", "fontes": ["brasscom-2026"] },
+    { "rotulo": "Habilidades mais pedidas", "valor": "Nuvem, segurança, IA e inglês", "detalhe": "segundo empregadores e jovens ouvidos pela Brasscom", "fontes": ["brasscom-2026"] },
+    { "rotulo": "Vão ao escritório todo dia", "valor": "18%", "detalhe": "dos desenvolvedores, em pesquisa global com mais de 30 mil respostas", "fontes": ["so-2026"] }
+  ],
+  "contexto": [
+    { "texto": "O gargalo do mercado não é falta de gente formada nem falta de vaga: é a passagem da formação para o primeiro emprego formal. Entre set/2024 e dez/2025 o setor ganhou 125 mil profissionais, mas só 24 mil com carteira; a maioria entrou como MEI, PJ ou informal.", "fontes": ["brasscom-2026"] },
+    { "texto": "Entre desenvolvedores, JavaScript (62%), SQL (58%), HTML/CSS (58%) e Python (58%) são as linguagens mais usadas. 73% dos que usam assistentes de IA usam todos os dias, e 93% dizem que só confiam no resultado quando há fonte.", "fontes": ["so-2026"] },
+    { "texto": "Sistemas de Informação é o 5º curso com mais matrículas do país (420 mil em 2024), e 63% delas são a distância. Cursos de computação não estão na lista de proibição do EAD.", "fontes": ["censo-2024", "decreto-12456"] }
+  ],
+  "formacao_geral": {
+    "nota": "Em tecnologia, o diploma abre portas, mas o portfólio (projetos que você pode mostrar) pesa tanto quanto. Durações mínimas pelas normas nacionais; cada instituição pode pedir mais.",
+    "cursos": [
+      { "nome": "Técnico em Desenvolvimento de Sistemas", "nivel": "técnico", "duracao": "1 a 2 anos", "horas": 1000, "texto": "Nível médio, pode ser integrado ao ensino médio. Porta de entrada mais rápida.", "fontes": ["cnct"] },
+      { "nome": "Tecnólogo em Análise e Desenvolvimento de Sistemas (ADS)", "nivel": "superior", "duracao": "2 a 3 anos", "horas": 2000, "texto": "Curso superior curto, focado em programar. É onde se forma cerca de 40% dos profissionais de TIC.", "fontes": ["cncst", "brasscom-2026"] },
+      { "nome": "Bacharelado em Ciência da Computação", "nivel": "superior", "duracao": "4 anos", "horas": 3000, "texto": "Base teórica forte: algoritmos, matemática, sistemas. Preferido para IA, pesquisa e áreas mais técnicas.", "fontes": ["cne-2-2007", "cne-5-2016"] },
+      { "nome": "Bacharelado em Sistemas de Informação", "nivel": "superior", "duracao": "4 anos", "horas": 3000, "texto": "Computação aplicada a empresas: sistemas, dados, gestão. Caminho comum para dados, produto e desenvolvimento corporativo.", "fontes": ["cne-2-2007", "cne-5-2016"] },
+      { "nome": "Bacharelado em Engenharia de Software", "nivel": "superior", "duracao": "4 anos", "horas": 3000, "texto": "Como construir software grande e confiável: arquitetura, processos, qualidade.", "fontes": ["cne-5-2016"] },
+      { "nome": "Bacharelado em Engenharia de Computação", "nivel": "superior", "duracao": "5 anos", "horas": 3600, "texto": "Hardware e software juntos. Caminho natural para sistemas embarcados, robótica e IoT.", "fontes": ["cne-2-2007", "cne-5-2016"] }
+    ]
+  },
+  "areas": [
+    {
+      "id": "desenvolvimento",
+      "nome": "Desenvolvimento de software",
+      "apelido": "Quem constrói",
+      "resumo": "Escreve, testa e mantém o código de sites, aplicativos e sistemas. É a maior área e a porta de entrada mais comum.",
+      "o_que_faz": "Transforma uma necessidade em software que funciona: entende o problema, escreve o código, testa, corrige e publica. Divide-se em front-end (o que o usuário vê), back-end (regras, banco de dados, servidores), mobile e full stack. Trabalha em equipe, com revisão de código e entregas curtas.",
+      "dia": [
+        { "hora": "09:00", "texto": "Reunião rápida de 15 minutos com o time: o que cada um fez ontem, o que vai fazer hoje, o que está travado." },
+        { "hora": "09:30", "texto": "Bloco longo de código em uma tarefa do quadro: uma tela nova, uma correção, uma integração." },
+        { "hora": "11:30", "texto": "Revisar o código de um colega e responder aos comentários no seu." },
+        { "hora": "14:00", "texto": "Um bug em produção aparece. Reproduzir, achar a causa, corrigir, testar, publicar." },
+        { "hora": "16:30", "texto": "Conversa com produto ou design para entender a próxima funcionalidade antes de estimar." },
+        { "hora": "18:00", "texto": "Última leitura do que foi feito, atualização do quadro e, às vezes, um pouco de estudo." }
+      ],
+      "ferramentas": ["JavaScript e TypeScript", "Python", "Java ou C#", "SQL", "Git e GitHub", "React, Node ou Spring", "Assistentes de IA para código"],
+      "ferramentas_fontes": ["so-2026"],
+      "gosta_de": ["Resolver quebra-cabeças lógicos", "Ver algo funcionando que você fez", "Trabalho concentrado por horas", "Aprender ferramenta nova toda hora"],
+      "nao_gosta_se": ["Prefere variedade de pessoas a variedade de problemas", "Se frustra fácil quando algo não funciona de primeira"],
+      "dna": { "pessoas": 40, "pressao": 55, "corpo": 10, "rotina": 35, "numeros": 65, "criatividade": 65 },
+      "salarios": [
+        { "cargo": "Programador de sistemas", "cbo": "3171-10", "media": 6061, "p25": 2800, "p75": 8255, "fontes": ["caged-programador"] },
+        { "cargo": "Analista de desenvolvimento de sistemas", "cbo": "2124-05", "media": 8458, "p25": 4497, "p75": 11280, "fontes": ["caged-dev-analista"] }
+      ],
+      "formacao": "ADS, Ciência da Computação, Sistemas de Informação ou Engenharia de Software. Muita gente entra por curso técnico ou bootcamp e forma depois. O portfólio no GitHub conta na primeira vaga.",
+      "formacao_fontes": ["cncst", "cne-5-2016"],
+      "caminhos": ["Júnior (0 a 2 anos)", "Pleno (2 a 5 anos)", "Sênior", "Especialista ou líder técnico", "Arquiteto de software ou gestão de engenharia"],
+      "ninguem_conta": [
+        { "texto": "A rotatividade é alta: entre programadores, quase metade das vagas gira em um ano, e o ritmo de contratação caiu no último ano.", "fontes": ["caged-programador"] },
+        { "texto": "A IA mudou o trabalho: 73% dos que usam assistentes usam todo dia. Escrever código do zero é cada vez menos o centro; entender, revisar e decidir é cada vez mais.", "fontes": ["so-2026"] },
+        { "texto": "Só 13,5% das contratações de programador são de mulheres.", "fontes": ["caged-programador"] }
+      ],
+      "vizinhas": ["qualidade", "dados", "jogos"]
+    },
+    {
+      "id": "dados",
+      "nome": "Dados e análise",
+      "apelido": "Quem faz os números falarem",
+      "resumo": "Coleta, organiza e interpreta dados para a empresa decidir. Vai do analista que monta painéis ao engenheiro que constrói a tubulação de dados.",
+      "o_que_faz": "O analista de dados responde perguntas com dados: por que as vendas caíram, qual cliente vai cancelar. O engenheiro de dados constrói os sistemas que coletam, limpam e guardam esses dados em escala. O cientista de dados cria modelos estatísticos e de aprendizado de máquina. As três funções passam o dia em SQL, Python e ferramentas de visualização.",
+      "dia": [
+        { "hora": "09:00", "texto": "Checar se as cargas de dados da noite rodaram. Uma falhou: investigar antes de qualquer coisa." },
+        { "hora": "10:00", "texto": "Reunião com a área de negócio para entender uma pergunta: \"quais clientes estão prestes a sair?\"" },
+        { "hora": "11:00", "texto": "Escrever consultas SQL, limpar dados com Python, montar a primeira tabela." },
+        { "hora": "14:00", "texto": "Construir ou ajustar um painel. Metade do tempo é conferir se o número está certo." },
+        { "hora": "16:00", "texto": "Apresentar o achado para quem decide, em linguagem simples, com um gráfico só." },
+        { "hora": "17:30", "texto": "Documentar a análise para que outra pessoa consiga repetir." }
+      ],
+      "ferramentas": ["SQL", "Python (pandas)", "Excel ou Google Sheets", "Power BI, Looker ou Metabase", "Spark, Airflow e nuvem", "Estatística"],
+      "ferramentas_fontes": ["so-2026"],
+      "gosta_de": ["Achar o padrão escondido numa planilha", "Explicar algo complexo de forma simples", "Precisão: conferir até bater", "Perguntar \"por quê?\" até cansar"],
+      "nao_gosta_se": ["Não tem paciência para dados sujos e incompletos", "Prefere construir coisas visíveis a construir conhecimento"],
+      "dna": { "pessoas": 45, "pressao": 45, "corpo": 10, "rotina": 45, "numeros": 90, "criatividade": 45 },
+      "salarios": [
+        { "cargo": "Cientista de dados", "cbo": "2112-20", "media": 10356, "p25": 5237, "p75": 13480, "fontes": ["caged-cientista"] },
+        { "cargo": "Engenheiro de dados", "cbo": "2122-05", "media": 14488, "p25": 8000, "p75": 17645, "fontes": ["caged-eng-dados"] }
+      ],
+      "formacao": "Sistemas de Informação, Ciência da Computação, Estatística, Matemática ou Economia. Muita gente migra de outras áreas aprendendo SQL e Python. O que diferencia é saber contar a história que o dado conta.",
+      "formacao_fontes": ["cne-5-2016"],
+      "caminhos": ["Analista de dados júnior", "Analista pleno ou engenheiro de dados", "Cientista de dados", "Especialista em analytics ou arquiteto de dados", "Liderança de dados"],
+      "ninguem_conta": [
+        { "texto": "A parte glamourosa (modelos, IA) é pequena. A maior parte do tempo é limpar, organizar e conferir dados.", "fontes": [] },
+        { "texto": "Os salários mais altos (engenheiro de dados) exigem base forte de programação e infraestrutura, não só análise.", "fontes": ["caged-eng-dados"] },
+        { "texto": "Um número errado numa apresentação pode levar a uma decisão errada. A responsabilidade é silenciosa, mas real.", "fontes": [] }
+      ],
+      "vizinhas": ["ia", "desenvolvimento", "produto"]
+    },
+    {
+      "id": "ia",
+      "nome": "Inteligência artificial e aprendizado de máquina",
+      "apelido": "Quem ensina a máquina",
+      "resumo": "Cria e aplica modelos que aprendem com dados: recomendação, visão, linguagem. Área nova, disputada e muito matemática.",
+      "o_que_faz": "Treina, avalia e coloca em produção modelos de aprendizado de máquina. Hoje inclui também adaptar modelos de linguagem grandes a produtos (agentes, assistentes, busca). Exige estatística, programação e a capacidade de medir se o modelo está mesmo acertando. Boa parte do trabalho é experimento: testar, medir, ajustar.",
+      "dia": [
+        { "hora": "09:00", "texto": "Olhar os resultados do experimento que rodou de madrugada. Melhorou 0,8%. Vale?" },
+        { "hora": "10:00", "texto": "Preparar dados para a próxima rodada: a qualidade do dado decide a qualidade do modelo." },
+        { "hora": "11:30", "texto": "Ler um artigo ou nota técnica nova. Nesta área, o que valia há seis meses pode estar velho." },
+        { "hora": "14:00", "texto": "Reunião com produto: o modelo acerta, mas erra de um jeito que irrita o usuário. Como medir isso?" },
+        { "hora": "15:30", "texto": "Escrever o código de avaliação e os testes de segurança (o modelo pode responder algo indevido?)." },
+        { "hora": "17:30", "texto": "Documentar o experimento: o que foi tentado, o que funcionou, o que não." }
+      ],
+      "ferramentas": ["Python", "PyTorch ou TensorFlow", "Estatística e álgebra linear", "SQL", "Nuvem e GPUs", "APIs de modelos de linguagem"],
+      "ferramentas_fontes": ["so-2026"],
+      "gosta_de": ["Matemática aplicada a problemas reais", "Experimentar e medir", "Ler e estudar o tempo todo", "Conviver com incerteza"],
+      "nao_gosta_se": ["Quer resultado rápido e certo", "Não curte estatística"],
+      "dna": { "pessoas": 30, "pressao": 55, "corpo": 10, "rotina": 25, "numeros": 95, "criatividade": 70 },
+      "salarios": [
+        { "cargo": "Cientista de dados (ocupação mais próxima no Caged)", "cbo": "2112-20", "media": 10356, "p25": 5237, "p75": 13480, "fontes": ["caged-cientista"], "nota": "Não há CBO específico para IA; engenheiros de IA costumam ser registrados como cientista de dados ou analista de desenvolvimento." }
+      ],
+      "formacao": "Ciência da Computação, Engenharia de Computação, Estatística ou Matemática, quase sempre com pós-graduação. É a área em que a base teórica mais pesa. Os cursos de graduação em IA são novos e disputados: o da UFG teve a segunda maior nota de corte do Sisu 2026.",
+      "formacao_fontes": ["cne-5-2016", "sisu-2026"],
+      "caminhos": ["Analista ou engenheiro de dados", "Engenheiro de machine learning", "Cientista de dados sênior", "Pesquisador ou especialista em IA", "Liderança técnica de IA"],
+      "ninguem_conta": [
+        { "texto": "Quase ninguém começa em IA. O caminho comum é entrar por dados ou desenvolvimento e migrar depois.", "fontes": [] },
+        { "texto": "É a área que mais exige estudo contínuo: a pesquisa global de desenvolvedores mostra 79% querendo aprender habilidades de IA, ou seja, muita concorrência.", "fontes": ["so-2026"] },
+        { "texto": "A maioria dos projetos de IA numa empresa comum é mais engenharia de dados e avaliação do que modelo novo.", "fontes": [] }
+      ],
+      "vizinhas": ["dados", "desenvolvimento", "seguranca"]
+    },
+    {
+      "id": "seguranca",
+      "nome": "Segurança da informação",
+      "apelido": "Quem protege",
+      "resumo": "Previne, detecta e responde a ataques. Mistura técnica, investigação e regras. Uma das habilidades mais pedidas pelo mercado.",
+      "o_que_faz": "Protege sistemas, dados e pessoas contra invasões, fraudes e vazamentos. Há o lado defensivo (monitorar, configurar, responder a incidentes), o ofensivo (testar a própria empresa como um atacante faria, com autorização) e o de governança (políticas, LGPD, auditorias). Trabalha com plantões em centros de operações e com muita documentação.",
+      "dia": [
+        { "hora": "08:30", "texto": "Revisar os alertas da noite no centro de monitoramento. Três falsos positivos, um suspeito." },
+        { "hora": "09:30", "texto": "Investigar o suspeito: de onde veio, o que tocou, precisa isolar alguma máquina?" },
+        { "hora": "11:00", "texto": "Reunião com desenvolvimento sobre uma vulnerabilidade encontrada no sistema novo." },
+        { "hora": "14:00", "texto": "Teste de invasão autorizado em um sistema interno. Anotar cada passo." },
+        { "hora": "16:00", "texto": "Treinamento curto para funcionários: como reconhecer um e-mail de golpe." },
+        { "hora": "17:30", "texto": "Relatório do dia e atualização do plano de resposta a incidentes." }
+      ],
+      "ferramentas": ["Redes e sistemas operacionais", "Linux e linha de comando", "Ferramentas de monitoramento (SIEM)", "Testes de invasão", "Normas (ISO 27001, LGPD)", "Python para automação"],
+      "ferramentas_fontes": [],
+      "gosta_de": ["Pensar como o adversário", "Investigar até achar a causa", "Regras, processos e detalhe", "Ficar calmo quando todo mundo está em pânico"],
+      "nao_gosta_se": ["Não gosta de plantão e de pressão em incidente", "Se entedia com documentação e normas"],
+      "dna": { "pessoas": 45, "pressao": 80, "corpo": 15, "rotina": 40, "numeros": 55, "criatividade": 55 },
+      "salarios": [
+        { "cargo": "Analista em segurança da informação", "cbo": "2123-20", "media": 9120, "p25": 4500, "p75": 12001, "fontes": ["caged-seguranca"] }
+      ],
+      "formacao": "Ciência da Computação, Sistemas de Informação, Redes ou tecnólogo em Segurança da Informação. Certificações pesam muito nesta área. O Diver já tem os cursos de Cibersegurança Essencial e ISO/IEC 27001 Foundation.",
+      "formacao_fontes": ["cne-5-2016"],
+      "caminhos": ["Analista de suporte ou redes", "Analista de segurança júnior (SOC)", "Analista pleno ou pentester", "Especialista (resposta a incidentes, nuvem, governança)", "Gestão de segurança (CISO)"],
+      "ninguem_conta": [
+        { "texto": "Incidente não escolhe hora. Em muitas empresas, o monitoramento é 24 horas e há plantão de madrugada.", "fontes": [] },
+        { "texto": "Entrar direto em segurança é difícil: a maioria passa antes por suporte, redes ou desenvolvimento.", "fontes": [] },
+        { "texto": "Boa parte do trabalho é convencer pessoas a seguir regras que elas acham chatas.", "fontes": [] }
+      ],
+      "vizinhas": ["infraestrutura", "desenvolvimento", "suporte"]
+    },
+    {
+      "id": "infraestrutura",
+      "nome": "Infraestrutura, nuvem e DevOps",
+      "apelido": "Quem mantém tudo no ar",
+      "resumo": "Cuida dos servidores, redes e da nuvem onde os sistemas rodam, e automatiza como o software chega até lá.",
+      "o_que_faz": "Garante que os sistemas estejam disponíveis, rápidos e seguros: configura servidores e nuvem, monitora, automatiza publicações, responde quando algo cai. O DevOps e o SRE ficam entre infraestrutura e desenvolvimento, escrevendo código para operar sistemas. Computação em nuvem é uma das habilidades mais pedidas pelo mercado.",
+      "dia": [
+        { "hora": "08:00", "texto": "Painel de monitoramento: tudo verde? Um serviço está lento desde as 6h." },
+        { "hora": "09:00", "texto": "Investigar a lentidão: banco, rede ou um deploy de ontem? Corrigir e registrar." },
+        { "hora": "10:30", "texto": "Escrever um script para automatizar algo que hoje é feito à mão." },
+        { "hora": "14:00", "texto": "Revisar custos da nuvem: uma máquina esquecida ligada custa dinheiro de verdade." },
+        { "hora": "15:30", "texto": "Preparar a publicação de uma versão nova com o time de desenvolvimento." },
+        { "hora": "17:00", "texto": "Atualizar a documentação e o plano de contingência. Hoje é dia de sobreaviso." }
+      ],
+      "ferramentas": ["Linux", "Redes (TCP/IP, DNS)", "AWS, Azure ou Google Cloud", "Docker e Kubernetes", "Terraform e scripts", "Monitoramento"],
+      "ferramentas_fontes": ["brasscom-2026"],
+      "gosta_de": ["Sistemas funcionando sem ninguém perceber", "Automatizar o que é repetitivo", "Entender como as coisas se conectam", "Responsabilidade por algo grande"],
+      "nao_gosta_se": ["Não quer sobreaviso nem acordar de madrugada", "Prefere criar coisas novas a manter as que existem"],
+      "dna": { "pessoas": 35, "pressao": 75, "corpo": 20, "rotina": 50, "numeros": 55, "criatividade": 45 },
+      "salarios": [
+        { "cargo": "Administrador de redes e sistemas", "cbo": "2123-10", "media": 6379, "p25": 2724, "p75": 8067, "fontes": ["caged-redes"] }
+      ],
+      "formacao": "Redes de Computadores (tecnólogo), Sistemas de Informação, Ciência da Computação ou Engenharia de Computação. Certificações de nuvem (AWS, Azure, Google) pesam mais que em outras áreas.",
+      "formacao_fontes": ["brasscom-2026"],
+      "caminhos": ["Suporte ou técnico de redes", "Analista de infraestrutura", "Engenheiro de nuvem ou DevOps", "SRE ou arquiteto de infraestrutura", "Gestão de operações"],
+      "ninguem_conta": [
+        { "texto": "Quando tudo funciona, ninguém lembra de você. Quando cai, todo mundo liga.", "fontes": [] },
+        { "texto": "Sobreaviso e janelas de manutenção de madrugada são comuns.", "fontes": [] },
+        { "texto": "A mediana de contratação (R$ 4.500) é bem menor que a média: os salários altos ficam com quem domina nuvem e automação.", "fontes": ["caged-redes"] }
+      ],
+      "vizinhas": ["seguranca", "suporte", "desenvolvimento"]
+    },
+    {
+      "id": "suporte",
+      "nome": "Suporte e atendimento técnico",
+      "apelido": "Quem resolve o problema das pessoas",
+      "resumo": "Ajuda usuários e empresas a usar a tecnologia: instala, configura, diagnostica e explica. A porta de entrada mais aberta da área.",
+      "o_que_faz": "Atende quem está com problema: computador que não liga, sistema que trava, senha perdida, rede fora. Diagnostica, resolve ou encaminha, e registra tudo. Em níveis mais altos, cuida de sistemas inteiros para clientes. É onde muita gente começa e de onde muita gente migra para redes, segurança ou desenvolvimento.",
+      "dia": [
+        { "hora": "08:00", "texto": "Fila de chamados: 14 abertos. Priorizar pelo impacto: um setor inteiro sem acesso vem primeiro." },
+        { "hora": "08:30", "texto": "Atender por telefone, chat e presencialmente. Explicar sem fazer a pessoa se sentir burra." },
+        { "hora": "11:00", "texto": "Trocar um equipamento, configurar um computador novo, instalar atualizações." },
+        { "hora": "14:00", "texto": "Um problema que se repete: investigar a causa e escrever um procedimento para ninguém mais sofrer com ele." },
+        { "hora": "16:00", "texto": "Treinar um usuário no sistema novo." },
+        { "hora": "17:30", "texto": "Fechar chamados, atualizar o inventário e deixar a fila limpa para o próximo turno." }
+      ],
+      "ferramentas": ["Windows e Linux", "Redes básicas", "Sistemas de chamados", "Hardware e periféricos", "Pacote de escritório e nuvem", "Comunicação clara"],
+      "ferramentas_fontes": [],
+      "gosta_de": ["Ajudar pessoas na hora", "Variedade: cada chamado é um", "Ver o problema resolvido no mesmo dia", "Explicar com paciência"],
+      "nao_gosta_se": ["Não suporta gente impaciente", "Quer trabalho longo e concentrado, sem interrupção"],
+      "dna": { "pessoas": 85, "pressao": 55, "corpo": 40, "rotina": 55, "numeros": 30, "criatividade": 35 },
+      "salarios": [
+        { "cargo": "Analista de suporte técnico", "cbo": "2124-20", "media": 4093, "p25": 2352, "p75": 4500, "fontes": ["caged-suporte"] }
+      ],
+      "formacao": "Curso técnico em Informática ou Redes, tecnólogo em Redes ou Gestão de TI. É a área em que dá para começar com ensino médio e curso técnico, e estudar a graduação trabalhando.",
+      "formacao_fontes": ["cnct"],
+      "caminhos": ["Suporte nível 1 (atendimento)", "Suporte nível 2 (diagnóstico)", "Analista de infraestrutura ou redes", "Segurança, nuvem ou desenvolvimento", "Coordenação de suporte"],
+      "ninguem_conta": [
+        { "texto": "É a área de tecnologia com salário mais baixo na contratação, e também a com mais vagas abertas no último ano (saldo positivo de 2 mil).", "fontes": ["caged-suporte"] },
+        { "texto": "Você vai ouvir \"o computador não funciona\" sem nenhuma outra informação, muitas vezes por dia.", "fontes": [] },
+        { "texto": "Quem fica parado em suporte fica. Quem usa o suporte para aprender migra em dois ou três anos.", "fontes": [] }
+      ],
+      "vizinhas": ["infraestrutura", "seguranca", "qualidade"]
+    },
+    {
+      "id": "qualidade",
+      "nome": "Qualidade e testes (QA)",
+      "apelido": "Quem desconfia",
+      "resumo": "Testa o software antes do usuário, encontra falhas e garante que o que foi prometido funciona. Cada vez mais automatizado.",
+      "o_que_faz": "Planeja e executa testes: manuais, automatizados, de desempenho, de acessibilidade. Escreve casos de teste a partir do que o produto deveria fazer, reproduz bugs com precisão e conversa com desenvolvedores para corrigir. Em times maduros, escreve código de teste que roda sozinho a cada publicação.",
+      "dia": [
+        { "hora": "09:00", "texto": "Reunião do time. Uma funcionalidade nova entra para teste hoje." },
+        { "hora": "09:30", "texto": "Ler a especificação e escrever os casos de teste: o caminho feliz e todos os jeitos de dar errado." },
+        { "hora": "11:00", "texto": "Testar. Achou um bug: descrever passo a passo, com print, para o desenvolvedor reproduzir." },
+        { "hora": "14:00", "texto": "Escrever testes automatizados para o que foi testado à mão, para não precisar repetir." },
+        { "hora": "16:00", "texto": "Rodar a bateria de testes da versão que vai ao ar amanhã. Dois falharam. Avisar." },
+        { "hora": "17:30", "texto": "Relatório de qualidade da semana: quantos bugs, onde, quão graves." }
+      ],
+      "ferramentas": ["Casos de teste e Gherkin", "Selenium, Cypress ou Playwright", "Postman e APIs", "SQL básico", "Ferramentas de rastreio (Jira)", "Lógica de programação"],
+      "ferramentas_fontes": [],
+      "gosta_de": ["Achar o erro que ninguém viu", "Método e organização", "Pensar em tudo que pode dar errado", "Dizer \"ainda não está pronto\" com elegância"],
+      "nao_gosta_se": ["Quer ser quem cria, não quem confere", "Se incomoda em apontar erro dos outros"],
+      "dna": { "pessoas": 50, "pressao": 50, "corpo": 10, "rotina": 60, "numeros": 50, "criatividade": 45 },
+      "salarios": [
+        { "cargo": "Analista de testes de TI", "cbo": "2124-30", "media": 6311, "p25": 3903, "p75": 8074, "fontes": ["caged-testes"] }
+      ],
+      "formacao": "ADS, Sistemas de Informação ou Engenharia de Software. Muita gente entra em QA vindo de suporte ou de outra área, por curso de testes e automação.",
+      "formacao_fontes": ["cncst"],
+      "caminhos": ["Testador júnior", "Analista de testes", "Engenheiro de automação de testes", "Especialista em qualidade", "Liderança de qualidade ou engenharia"],
+      "ninguem_conta": [
+        { "texto": "Testar à mão a mesma tela pela décima vez cansa. Quem não automatiza fica preso nisso.", "fontes": [] },
+        { "texto": "Você vai ser o portador de más notícias na véspera de todo lançamento.", "fontes": [] },
+        { "texto": "A média de contratação (R$ 6.311) fica acima de programador iniciante, o que surpreende muita gente.", "fontes": ["caged-testes", "caged-programador"] }
+      ],
+      "vizinhas": ["desenvolvimento", "suporte", "produto"]
+    },
+    {
+      "id": "produto",
+      "nome": "Produto, UX e design",
+      "apelido": "Quem decide o quê e o como",
+      "resumo": "Define o que o software deve fazer e como deve ser usado. Pesquisa com usuários, desenha telas e prioriza o que o time constrói.",
+      "o_que_faz": "O gerente de produto decide o que entra e o que fica de fora, com base em dados, conversas com usuários e metas do negócio. O designer de UX pesquisa como as pessoas usam o produto e desenha fluxos e telas que façam sentido. Os dois passam o dia entre usuários, desenvolvedores e quem decide. Pouco código, muita conversa, muita decisão.",
+      "dia": [
+        { "hora": "09:00", "texto": "Olhar os números do produto: onde as pessoas desistem? Uma tela está perdendo 30%." },
+        { "hora": "10:00", "texto": "Entrevista com dois usuários. Ouvir mais do que falar." },
+        { "hora": "11:30", "texto": "Esboçar uma solução no Figma e testar com três pessoas antes de qualquer código." },
+        { "hora": "14:00", "texto": "Reunião com o time de desenvolvimento: o que é possível fazer em duas semanas?" },
+        { "hora": "15:30", "texto": "Escrever a especificação: o que, para quem, por quê, como saber se deu certo." },
+        { "hora": "17:00", "texto": "Apresentar a decisão para a diretoria e defender por que a funcionalidade pedida não entra agora." }
+      ],
+      "ferramentas": ["Figma", "Pesquisa com usuários", "Métricas e análise de dados", "Escrita clara", "Priorização e roadmap", "Noções de programação"],
+      "ferramentas_fontes": [],
+      "gosta_de": ["Entender pessoas e por que elas fazem o que fazem", "Decidir com informação incompleta", "Desenhar, escrever, apresentar", "Dizer não com argumento"],
+      "nao_gosta_se": ["Quer passar o dia construindo, não negociando", "Se incomoda com reunião e conflito de prioridades"],
+      "dna": { "pessoas": 85, "pressao": 60, "corpo": 10, "rotina": 25, "numeros": 50, "criatividade": 85 },
+      "salarios": [
+        { "cargo": "Designer de UX", "cbo": "2624-10", "media": 3846, "p25": 2009, "p75": 4317, "fontes": ["caged-ux"], "nota": "Gerente de produto não tem CBO próprio; costuma ser registrado como analista de sistemas ou gerente de projetos, com salários bem mais altos que os de designer." }
+      ],
+      "formacao": "Design, Sistemas de Informação, Administração ou Comunicação. Produto raramente é a primeira função: a maioria chega vindo de desenvolvimento, design, dados ou negócios.",
+      "formacao_fontes": [],
+      "caminhos": ["Designer de UX ou analista de produto júnior", "Designer pleno ou product owner", "Gerente de produto", "Líder de produto ou de design", "Direção de produto"],
+      "ninguem_conta": [
+        { "texto": "Designer de UX tem a menor média de contratação do panorama (R$ 3.846), e o mercado encolheu no último ano. O salário sobe muito com experiência e com a migração para produto.", "fontes": ["caged-ux"] },
+        { "texto": "Você vai tomar decisões que desagradam alguém todo dia: usuário, time ou chefia.", "fontes": [] },
+        { "texto": "Sem noção de tecnologia, o designer e o gerente de produto perdem a confiança do time técnico.", "fontes": [] }
+      ],
+      "vizinhas": ["dados", "desenvolvimento", "qualidade"]
+    },
+    {
+      "id": "jogos",
+      "nome": "Jogos e computação gráfica",
+      "apelido": "Quem faz a diversão funcionar",
+      "resumo": "Programa, desenha e equilibra jogos. Mistura arte, matemática e muita otimização. Paixão grande, mercado pequeno.",
+      "o_que_faz": "O programador de jogos escreve a lógica, a física e os gráficos; o game designer define regras, fases e equilíbrio; o artista técnico liga arte e código. É software em tempo real: cada quadro tem milissegundos para ser desenhado. Trabalha em estúdios pequenos, grandes ou por conta própria, quase sempre com prazos apertados perto do lançamento.",
+      "dia": [
+        { "hora": "09:30", "texto": "Testar a build da noite. O pulo do personagem está estranho desde o ajuste de física." },
+        { "hora": "10:30", "texto": "Programar: ajustar a física, otimizar uma cena que caiu abaixo de 60 quadros por segundo." },
+        { "hora": "13:30", "texto": "Reunião de design: a fase 3 está difícil demais segundo os testes. Rebalancear." },
+        { "hora": "15:00", "texto": "Integrar as animações novas do artista e corrigir o que quebrou." },
+        { "hora": "17:00", "texto": "Sessão de teste com jogadores e anotar onde eles travam." },
+        { "hora": "18:30", "texto": "Perto do lançamento, o dia costuma esticar. É o lado difícil da indústria." }
+      ],
+      "ferramentas": ["C# e Unity ou C++ e Unreal", "Godot", "Matemática (vetores, física)", "Blender", "Git", "Noções de design de jogos"],
+      "ferramentas_fontes": [],
+      "gosta_de": ["Jogos como obra, não só como passatempo", "Matemática e física aplicadas ao visual", "Otimizar até ficar fluido", "Arte e código no mesmo dia"],
+      "nao_gosta_se": ["Precisa de estabilidade e horário fixo", "Acha que trabalhar com jogos é jogar"],
+      "dna": { "pessoas": 40, "pressao": 65, "corpo": 10, "rotina": 20, "numeros": 70, "criatividade": 90 },
+      "salarios": [
+        { "cargo": "Programador de sistemas (ocupação usada no registro)", "cbo": "3171-10", "media": 6061, "p25": 2800, "p75": 8255, "fontes": ["caged-programador"], "nota": "Não há CBO próprio para desenvolvedor de jogos; o registro mais comum é o de programador. Estúdios pequenos pagam abaixo da média do cargo." }
+      ],
+      "formacao": "Ciência da Computação, Engenharia de Computação, tecnólogo em Jogos Digitais ou Design. O portfólio (jogos publicados, mesmo pequenos) vale mais que o diploma nesta área.",
+      "formacao_fontes": ["cne-5-2016"],
+      "caminhos": ["Programador ou designer júnior em estúdio", "Programador de gameplay, gráficos ou ferramentas", "Líder técnico ou de design", "Diretor técnico", "Estúdio próprio"],
+      "ninguem_conta": [
+        { "texto": "O mercado brasileiro de jogos é pequeno e concentrado. Muita gente trabalha para estúdios de fora, em inglês.", "fontes": [] },
+        { "texto": "Horas extras perto do lançamento (o \"crunch\") ainda são um problema conhecido da indústria.", "fontes": [] },
+        { "texto": "Programação de jogos é uma das mais difíceis da computação: tempo real, memória, matemática. Quem entra por paixão sem gostar de matemática sofre.", "fontes": [] }
+      ],
+      "vizinhas": ["desenvolvimento", "produto", "embarcados"]
+    },
+    {
+      "id": "embarcados",
+      "nome": "Sistemas embarcados, IoT e hardware",
+      "apelido": "Quem faz o código tocar o mundo físico",
+      "resumo": "Programa dispositivos: carros, máquinas, sensores, aparelhos médicos. Onde computação e engenharia se encontram.",
+      "o_que_faz": "Escreve software que roda dentro de equipamentos, com pouca memória e sem margem para erro: o freio de um carro, uma bomba de infusão, um sensor agrícola. Projeta e testa placas, lê sinais, conversa com fabricantes. Precisa entender eletrônica e programação de baixo nível. Trabalha em indústria, automotivo, agro, saúde e energia.",
+      "dia": [
+        { "hora": "08:00", "texto": "Bancada: osciloscópio, placa de desenvolvimento, café. O sensor lê valores errados a cada 40 segundos." },
+        { "hora": "09:30", "texto": "Depurar o firmware em C. É o temporizador? É ruído elétrico? Medir, não chutar." },
+        { "hora": "11:30", "texto": "Reunião com a engenharia mecânica: a caixa do equipamento esquenta demais e afeta a eletrônica." },
+        { "hora": "14:00", "texto": "Escrever os testes de segurança: o dispositivo precisa falhar de forma segura, sempre." },
+        { "hora": "16:00", "texto": "Visita à fábrica para ver o produto rodando na linha de produção." },
+        { "hora": "17:30", "texto": "Documentar a versão do firmware para a certificação. Em hardware, nada sobe sem papel." }
+      ],
+      "ferramentas": ["C e C++", "Eletrônica e circuitos", "Microcontroladores (Arduino, ESP32, ARM)", "Linux embarcado", "Osciloscópio e bancada", "Normas de segurança"],
+      "ferramentas_fontes": [],
+      "gosta_de": ["Ver código mexer em algo físico", "Precisão e economia de recursos", "Eletrônica e matemática", "Problemas que exigem medir, não só pensar"],
+      "nao_gosta_se": ["Quer resultado visual rápido", "Prefere trabalhar só com software"],
+      "dna": { "pessoas": 30, "pressao": 60, "corpo": 45, "rotina": 45, "numeros": 85, "criatividade": 55 },
+      "salarios": [
+        { "cargo": "Analista de desenvolvimento de sistemas (ocupação usada no registro)", "cbo": "2124-05", "media": 8458, "p25": 4497, "p75": 11280, "fontes": ["caged-dev-analista"], "nota": "Não há CBO próprio para embarcados; engenheiros são registrados como analista de desenvolvimento ou como engenheiro eletrônico." }
+      ],
+      "formacao": "Engenharia de Computação (5 anos), Engenharia Elétrica ou Eletrônica, ou técnico em Eletrônica com Ciência da Computação. É a área que mais exige formação longa.",
+      "formacao_fontes": ["cne-2-2007", "cne-5-2016"],
+      "caminhos": ["Estágio em laboratório ou indústria", "Engenheiro de firmware júnior", "Engenheiro de sistemas embarcados", "Especialista (automotivo, médico, aeroespacial)", "Liderança de engenharia"],
+      "ninguem_conta": [
+        { "texto": "Um erro aqui pode machucar alguém. As certificações e os testes são longos por isso.", "fontes": [] },
+        { "texto": "Menos vagas que em software puro, e concentradas em polos industriais.", "fontes": [] },
+        { "texto": "O ciclo é lento: um produto pode levar dois anos da bancada à loja.", "fontes": [] }
+      ],
+      "vizinhas": ["infraestrutura", "desenvolvimento", "jogos"]
+    }
+  ],
+  "jogo": {
+    "titulo": "Que área da tecnologia é a sua?",
+    "subtitulo": "Doze situações reais. Escolha o que você faria de verdade, não o que parece bonito. No fim, as três áreas mais parecidas com você e por quê.",
+    "aviso": "Afinidade é informação, não veredito. O resultado aponta onde vale a pena ler mais; a decisão é sua.",
+    "cenas": [
+      { "id": "app-travou", "texto": "Um aplicativo que você usa todo dia travou na hora de pagar.", "opcoes": [
+        { "texto": "Abro as ferramentas do navegador para ver qual erro apareceu.", "pontos": { "desenvolvimento": 3, "qualidade": 1 } },
+        { "texto": "Tento reproduzir passo a passo e anoto exatamente quando trava.", "pontos": { "qualidade": 3, "suporte": 1 } },
+        { "texto": "Penso: \"a tela de pagamento é confusa, por isso as pessoas erram\".", "pontos": { "produto": 3 } },
+        { "texto": "Desconfio que o servidor caiu ou que é golpe.", "pontos": { "infraestrutura": 2, "seguranca": 2 } } ] },
+      { "id": "trabalho-grupo", "texto": "Trabalho em grupo na escola. O que você assume sem ninguém pedir?", "opcoes": [
+        { "texto": "A planilha: organizo os dados e descubro o que eles mostram.", "pontos": { "dados": 3, "ia": 1 } },
+        { "texto": "A parte que precisa funcionar: o código, a montagem, o experimento.", "pontos": { "desenvolvimento": 2, "embarcados": 2 } },
+        { "texto": "O roteiro: o que vamos entregar, em que ordem, quem faz o quê.", "pontos": { "produto": 3 } },
+        { "texto": "A revisão: leio tudo no fim procurando erro.", "pontos": { "qualidade": 3 } } ] },
+      { "id": "vazamento", "texto": "Sai a notícia de que uma empresa grande vazou dados de milhões de clientes.", "opcoes": [
+        { "texto": "Quero saber como o ataque aconteceu, passo a passo.", "pontos": { "seguranca": 3 } },
+        { "texto": "Penso em quantas pessoas vão ter que ser atendidas e acalmadas.", "pontos": { "suporte": 2, "produto": 1 } },
+        { "texto": "Penso no sistema por trás: onde os dados ficavam, como estavam guardados.", "pontos": { "infraestrutura": 2, "dados": 1 } },
+        { "texto": "Penso no que dava para ter testado antes para evitar.", "pontos": { "qualidade": 2, "seguranca": 1 } } ] },
+      { "id": "fim-de-semana", "texto": "Fim de semana livre e um computador. O que te prende por horas?", "opcoes": [
+        { "texto": "Montar um site, um bot ou um app pequeno só para ver funcionar.", "pontos": { "desenvolvimento": 3 } },
+        { "texto": "Fazer um jogo ou mexer num motor de jogos.", "pontos": { "jogos": 3 } },
+        { "texto": "Montar um circuito, uma placa, um sensor que acende uma luz.", "pontos": { "embarcados": 3 } },
+        { "texto": "Explorar uma base de dados pública e fazer gráficos.", "pontos": { "dados": 2, "ia": 1 } } ] },
+      { "id": "pessoas", "texto": "Quanto você quer lidar com pessoas durante o dia de trabalho?", "opcoes": [
+        { "texto": "O dia todo: atender, explicar, ensinar.", "pontos": { "suporte": 3, "produto": 1 } },
+        { "texto": "Bastante: entrevistar, negociar, apresentar.", "pontos": { "produto": 3, "dados": 1 } },
+        { "texto": "O necessário: reuniões curtas e o resto concentrado.", "pontos": { "desenvolvimento": 2, "qualidade": 1, "seguranca": 1 } },
+        { "texto": "O mínimo: me deixa com o problema e eu volto com a solução.", "pontos": { "ia": 2, "embarcados": 1, "infraestrutura": 1 } } ] },
+      { "id": "matematica", "texto": "Matemática, para você, é:", "opcoes": [
+        { "texto": "Minha parte favorita. Quanto mais, melhor.", "pontos": { "ia": 3, "embarcados": 1, "jogos": 1 } },
+        { "texto": "Uma ferramenta útil quando tem um propósito claro.", "pontos": { "dados": 2, "desenvolvimento": 1 } },
+        { "texto": "Dá para fazer, mas prefiro lógica a cálculo.", "pontos": { "desenvolvimento": 1, "qualidade": 1, "infraestrutura": 1, "seguranca": 1 } },
+        { "texto": "Evito sempre que posso.", "pontos": { "suporte": 2, "produto": 2 } } ] },
+      { "id": "madrugada", "texto": "Três da manhã, seu telefone toca: o sistema da empresa caiu.", "opcoes": [
+        { "texto": "Levanto na hora. Gosto de ser quem resolve a crise.", "pontos": { "infraestrutura": 3, "seguranca": 2 } },
+        { "texto": "Resolvo, mas quero um processo para isso não acontecer de novo.", "pontos": { "qualidade": 2, "infraestrutura": 1 } },
+        { "texto": "Não é para mim. Quero um trabalho com horário.", "pontos": { "produto": 1, "dados": 1, "desenvolvimento": 1 } },
+        { "texto": "Preferia que fosse o meu código que caiu, para eu consertar.", "pontos": { "desenvolvimento": 2 } } ] },
+      { "id": "aprender", "texto": "Como você prefere aprender algo novo?", "opcoes": [
+        { "texto": "Fazendo: abro o editor e tento até funcionar.", "pontos": { "desenvolvimento": 2, "jogos": 1, "infraestrutura": 1 } },
+        { "texto": "Lendo o artigo, a teoria, o porquê.", "pontos": { "ia": 3, "dados": 1 } },
+        { "texto": "Perguntando para alguém e ouvindo histórias.", "pontos": { "suporte": 2, "produto": 2 } },
+        { "texto": "Desmontando algo que existe para ver como foi feito.", "pontos": { "seguranca": 2, "embarcados": 2 } } ] },
+      { "id": "orgulho", "texto": "O que te daria mais orgulho ao fim de um projeto?", "opcoes": [
+        { "texto": "Ver pessoas usando algo que eu construí.", "pontos": { "desenvolvimento": 2, "produto": 2 } },
+        { "texto": "Uma descoberta que mudou uma decisão importante.", "pontos": { "dados": 3, "ia": 1 } },
+        { "texto": "Um sistema que rodou um ano inteiro sem cair.", "pontos": { "infraestrutura": 3, "qualidade": 1 } },
+        { "texto": "Um aparelho físico funcionando, ou um jogo que alguém jogou até o fim.", "pontos": { "embarcados": 2, "jogos": 2 } } ] },
+      { "id": "critica", "texto": "Seu colega apresentou um trabalho com um erro grave. Você:", "opcoes": [
+        { "texto": "Aponto na hora, com cuidado. Erro não pode passar.", "pontos": { "qualidade": 3, "seguranca": 1 } },
+        { "texto": "Chamo depois e explico como corrigir.", "pontos": { "suporte": 2, "produto": 1 } },
+        { "texto": "Mostro os dados que provam o erro.", "pontos": { "dados": 2, "ia": 1 } },
+        { "texto": "Fico quieto; prefiro não me meter.", "pontos": { "desenvolvimento": 1, "embarcados": 1 } } ] },
+      { "id": "rotina", "texto": "Que tipo de rotina você aguenta por anos?", "opcoes": [
+        { "texto": "Cada dia um problema diferente, mesmo que menor.", "pontos": { "suporte": 3, "infraestrutura": 1 } },
+        { "texto": "Projetos longos, com começo, meio e fim.", "pontos": { "desenvolvimento": 2, "embarcados": 2, "jogos": 1 } },
+        { "texto": "Experimentos: a maioria falha, um dá certo.", "pontos": { "ia": 3, "dados": 1 } },
+        { "texto": "Ciclos curtos de decidir, medir, ajustar.", "pontos": { "produto": 3 } } ] },
+      { "id": "frase", "texto": "Qual frase mais parece com você?", "opcoes": [
+        { "texto": "\"Deixa que eu monto.\"", "pontos": { "desenvolvimento": 2, "embarcados": 1, "jogos": 1 } },
+        { "texto": "\"Mostra os números.\"", "pontos": { "dados": 2, "ia": 1 } },
+        { "texto": "\"E se alguém tentar quebrar isso?\"", "pontos": { "seguranca": 2, "qualidade": 2 } },
+        { "texto": "\"Para quem é isso, afinal?\"", "pontos": { "produto": 2, "suporte": 1 } } ] }
+    ],
+    "resultado": {
+      "texto_alto": "é bem parecida com o seu jeito de resolver as coisas.",
+      "texto_medio": "combina com parte do que você escolheu. Vale ler o dia a dia.",
+      "texto_baixo": "está longe das suas escolhas hoje. Nada impede de explorar.",
+      "recompensa": { "xp": 30, "perolas": 3 }
+    }
+  },
+  "fontes": [
+    { "id": "brasscom-2026", "titulo": "Relatório Perspectivas do Mercado de Trabalho do Macrossetor TIC (set/2024 a dez/2026)", "orgao": "Brasscom, maio de 2026", "url": "https://brasscom.org.br/wp-content/uploads/2026/07/Relatorio-Pespectivas-do-Mercado-de-Trabalho-Apresentacao-v9.pdf", "consultado_em": "2026-10-16", "tipo": "primaria" },
+    { "id": "so-2026", "titulo": "Stack Overflow Developer Survey 2026 (mais de 30 mil respostas, global)", "orgao": "Stack Overflow, 06/10/2026", "url": "https://stackoverflow.blog/2026/10/06/the-results-of-the-2026-developer-survey-are-here/", "consultado_em": "2026-10-16", "tipo": "primaria", "nota": "Pesquisa global, não brasileira; usar só para ferramentas e hábitos, nunca para salário." },
+    { "id": "caged-programador", "titulo": "Programador de sistemas de informação (CBO 3171-10): média R$ 6.061, P25 R$ 2.800, P75 R$ 8.255, 42 h", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://www.salario.com.br/profissao/programador-de-sistemas-de-informacao-cbo-317110", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-10-08", "tipo": "secundaria" },
+    { "id": "caged-dev-analista", "titulo": "Analista de desenvolvimento de sistemas (CBO 2124-05): média R$ 8.458, P25 R$ 4.497, P75 R$ 11.280, 42 h, amostra 135 mil", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://salario.com.br/profissao/analista-de-desenvolvimento-de-sistemas-cbo-212405/", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-10-08", "tipo": "secundaria" },
+    { "id": "caged-cientista", "titulo": "Cientista de dados (CBO 2112-20): média R$ 10.356, P25 R$ 5.237, P75 R$ 13.480, 42 h", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://salario.com.br/profissao/cientista-de-dados-data-scientist/", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-10-08", "tipo": "secundaria" },
+    { "id": "caged-eng-dados", "titulo": "Engenheiro de dados (CBO 2122-05): média R$ 14.488, P25 R$ 8.000, P75 R$ 17.645, 42 h", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://www.salario.com.br/profissao/engenheiro-de-dados-cbo-212205", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-10-08", "tipo": "secundaria" },
+    { "id": "caged-seguranca", "titulo": "Analista em segurança da informação (CBO 2123-20): média R$ 9.120, P25 R$ 4.500, P75 R$ 12.001, 41 h", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://www.salario.com.br/profissao/analista-em-seguranca-da-informacao-cbo-212320", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-10-08", "tipo": "secundaria" },
+    { "id": "caged-redes", "titulo": "Administrador de rede e de sistemas computacionais (CBO 2123-10): média R$ 6.379, mediana R$ 4.500, P25 R$ 2.724, P75 R$ 8.067, 42 h", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://www.salario.com.br/profissao/administrador-de-rede-e-de-sistemas-computacionais-cbo-212310/", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-09-03", "tipo": "secundaria" },
+    { "id": "caged-suporte", "titulo": "Analista de suporte técnico (CBO 2124-20): média R$ 4.093, P25 R$ 2.352, P75 R$ 4.500, saldo de +2.062 vagas em 12 meses", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://www.salario.com.br/profissao/analista-de-suporte-tecnico-cbo-212420/", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-10-08", "tipo": "secundaria" },
+    { "id": "caged-testes", "titulo": "Analista de testes de TI (CBO 2124-30): média R$ 6.311, P25 R$ 3.903, P75 R$ 8.074, 41 h", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://www.salario.com.br/profissao/analista-de-testes-de-tecnologia-da-informacao-cbo-212430", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-10-08", "tipo": "secundaria" },
+    { "id": "caged-ux", "titulo": "Designer de UX (CBO 2624-10): média R$ 3.846, P25 R$ 2.009, P75 R$ 4.317, saldo de -671 vagas em 12 meses", "orgao": "Portal Salário, com dados do Novo Caged (MTE)", "url": "https://www.salario.com.br/profissao/designer-ux-cbo-262410", "consultado_em": "2026-10-16", "dados_atualizados_em": "2026-10-08", "tipo": "secundaria" },
+    { "id": "cne-2-2007", "titulo": "Resolução CNE/CES nº 2/2007: carga mínima de 3.000 h para Ciência da Computação e Sistemas de Informação (4 anos) e 3.600 h para Engenharia de Computação (5 anos)", "orgao": "Conselho Nacional de Educação (MEC)", "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf", "consultado_em": "2026-10-16", "tipo": "primaria", "nota": "Confirmar se há atualização posterior das cargas na página do CNE." },
+    { "id": "cne-5-2016", "titulo": "Resolução CNE/CES nº 5/2016: Diretrizes Curriculares Nacionais dos cursos de Computação (Ciência da Computação, Sistemas de Informação, Engenharia de Computação, Engenharia de Software e Licenciatura)", "orgao": "Conselho Nacional de Educação (MEC), via ABMES", "url": "https://abmes.org.br/legislacoes/detalhe/1996/resolucao-cne-ces-n-5", "consultado_em": "2026-10-16", "tipo": "primaria" },
+    { "id": "cncst", "titulo": "Catálogo Nacional de Cursos Superiores de Tecnologia: Análise e Desenvolvimento de Sistemas, carga mínima de 2.000 h (exemplo real: UTFPR, 3 anos e 2.385 h)", "orgao": "MEC e UTFPR", "url": "https://www.utfpr.edu.br/cursos/coordenacoes/graduacao/ponta-grossa/pg-tecnologia-em-analise-e-desenvolvimento-de-sistemas/apresentacao", "consultado_em": "2026-10-16", "tipo": "secundaria", "nota": "Trocar pela página oficial do catálogo no portal do MEC." },
+    { "id": "cnct", "titulo": "Catálogo Nacional de Cursos Técnicos: Técnico em Desenvolvimento de Sistemas, eixo Informação e Comunicação, 1.000 h", "orgao": "MEC", "url": "http://cnct.mec.gov.br/", "consultado_em": "2026-10-16", "tipo": "primaria", "nota": "Confirmar a carga na versão vigente do catálogo." },
+    { "id": "censo-2024", "titulo": "Censo da Educação Superior 2024: Sistemas de Informação com 420.479 matrículas (5º lugar), 262.903 a distância", "orgao": "Inep, via CNN Brasil", "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/", "consultado_em": "2026-10-16", "tipo": "secundaria", "nota": "Trocar pela planilha oficial do Inep." },
+    { "id": "decreto-12456", "titulo": "Decreto nº 12.456/2025: cursos proibidos em EAD são Medicina, Direito, Enfermagem, Odontologia e Psicologia; computação não está na lista", "orgao": "Presidência da República e MEC, via Quero Bolsa", "url": "https://querobolsa.com.br/revista/proibicao-ead-quais-cursos-mec-proibiu-a-distancia", "consultado_em": "2026-10-16", "tipo": "secundaria", "nota": "Trocar pela URL do decreto no Planalto." },
+    { "id": "sisu-2026", "titulo": "Sisu 2026: curso de Inteligência Artificial da UFG com a segunda maior nota de corte (846,72)", "orgao": "VestibulandoWeb, 01/06/2026", "url": "https://www.vestibulandoweb.com.br/sisu/sisu-2026-medicina-lidera-disputa-e-curso-de-ia-chama-atencao-no-ranking/amp/", "consultado_em": "2026-10-16", "tipo": "secundaria", "nota": "Confirmar nos dados do MEC." }
+  ]
+}
