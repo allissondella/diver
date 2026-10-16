@@ -428,34 +428,34 @@ a.prof-btn { text-decoration: none; }
 .prof-nav a[aria-current="true"] { color: var(--marinho); background: var(--turquesa-claro); font-weight: 700; }
 
 /* ---------- Cenas que acendem ---------- */
-.prof-cena { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease-saida), transform .8s var(--ease-saida); }
-.prof-cena--viva { opacity: 1; transform: none; }
-.prof-cena :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena > * {
+.prof-surge { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease-saida), transform .8s var(--ease-saida); }
+.prof-surge--viva { opacity: 1; transform: none; }
+.prof-surge :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-surge > * {
   opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease-saida), transform .5s var(--ease-saida);
   transition-delay: calc(.15s + var(--i, 0) * 80ms);
 }
-.prof-cena--viva :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena--viva > * { opacity: 1; transform: none; }
+.prof-surge--viva :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-surge--viva > * { opacity: 1; transform: none; }
 .prof-secao { scroll-margin-top: 96px; }
 .prof-secao h2 { font-size: var(--t-2xl); }
 
 /* O relógio gira até a hora de agora */
 .prof-agora { border: 1px solid color-mix(in srgb, var(--amarelo) 30%, transparent); }
-.prof-cena .prof-agora-relogio { transform: rotate(-200deg) scale(.6); opacity: 0; transition: transform 1.2s var(--ease-saida), opacity .6s; }
-.prof-cena--viva .prof-agora-relogio { transform: none; opacity: 1; }
+.prof-surge .prof-agora-relogio { transform: rotate(-200deg) scale(.6); opacity: 0; transition: transform 1.2s var(--ease-saida), opacity .6s; }
+.prof-surge--viva .prof-agora-relogio { transform: none; opacity: 1; }
 
 /* A linha da formação cresce ano a ano */
 .prof-formacao .prof-info rect { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); transition: transform 1s var(--ease-saida); }
-.prof-cena--viva .prof-formacao .prof-info rect { transform: scaleX(1); }
+.prof-surge--viva .prof-formacao .prof-info rect { transform: scaleX(1); }
 .prof-formacao .prof-info g circle, .prof-formacao .prof-info g text + text + rect ~ text { opacity: 0; transition: opacity .4s; }
-.prof-cena--viva .prof-formacao .prof-info g circle, .prof-cena--viva .prof-formacao .prof-info g text + text + rect ~ text { opacity: 1; transition-delay: 1.2s; }
+.prof-surge--viva .prof-formacao .prof-info g circle, .prof-surge--viva .prof-formacao .prof-info g text + text + rect ~ text { opacity: 1; transition-delay: 1.2s; }
 .prof-formacao .prof-info g:nth-of-type(2) rect { transition-delay: .35s; }
 .prof-formacao .prof-info g:nth-of-type(3) rect { transition-delay: .7s; }
 .prof-formacao .prof-info g:nth-of-type(4) rect { transition-delay: 1.05s; }
 .prof-formacao .prof-info g:nth-of-type(5) rect { transition-delay: 1.4s; }
 
 /* O DNA se monta */
-.prof-cena .prof-dna-grafico { transform: scale(.35) rotate(-120deg); opacity: 0; transition: transform 1.1s var(--ease-saida), opacity .6s; }
-.prof-cena--viva .prof-dna-grafico { transform: none; opacity: 1; }
+.prof-surge .prof-dna-grafico { transform: scale(.35) rotate(-120deg); opacity: 0; transition: transform 1.1s var(--ease-saida), opacity .6s; }
+.prof-surge--viva .prof-dna-grafico { transform: none; opacity: 1; }
 
 /* "Próximo" no pé de cada seção */
 .prof-proximo {
@@ -574,15 +574,173 @@ a.prof-btn { text-decoration: none; }
   .prof-doca .prof-btn svg { display: none; }
 }
 
+/* =========================================================
+   Panorama da Tecnologia (2026-10-16; js/profissoes-tecnologia.js)
+   Mesmo desenho da ficha: as peças abaixo são só as que o panorama, as dez áreas e o jogo acrescentam.
+   ========================================================= */
+/* Cartão largo no topo da região Tecnologia do mapa */
+.prof-ilha--panorama { grid-column: 1 / -1; min-height: 0; padding-right: calc(var(--esp-7) + var(--esp-2)); background: linear-gradient(120deg, color-mix(in srgb, var(--cor-area) 24%, var(--superficie)), var(--superficie)); }
+.prof-ilha--panorama h3 { font-size: var(--t-xl); }
+.prof-ilha-seta { position: absolute; right: var(--esp-4); top: 50%; display: grid; place-items: center; width: 44px; height: 44px; margin-top: -22px; border-radius: 50%; color: var(--marinho); background: var(--turquesa-claro); transition: transform var(--transicao); }
+.prof-ilha-seta .prof-ico { width: 20px; height: 20px; }
+.prof-ilha--panorama:hover .prof-ilha-seta { transform: translateX(4px); }
+
+/* Números e textos */
+.prof-numero .prof-numero-v--texto { font-size: var(--t-lg); line-height: 1.25; }
+.prof-raiz .prof-prosa--grande { font-size: var(--t-lg); max-width: var(--medida-leitura); }
+.prof-cards--contexto { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.prof-sigilo { color: var(--amarelo); letter-spacing: .04em; }
+.prof-chute .prof-veredito { font-size: var(--t-md); margin-top: var(--esp-3); }
+.prof-chute .prof-veredito b { color: var(--amarelo); }
+
+/* A aposta e as barras do "Quanto paga cada área" */
+.prof-aposta { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
+.prof-aposta .prof-chip { min-height: 44px; }
+.prof-pagas { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-1); }
+.prof-paga {
+  display: grid; grid-template-columns: minmax(150px, 15em) 1fr auto; align-items: center; gap: var(--esp-3);
+  min-height: 52px; padding: var(--esp-1) var(--esp-2); border-radius: var(--raio-md); color: var(--texto); text-decoration: none;
+  transition: background var(--transicao);
+}
+.prof-raiz a.prof-paga { color: var(--texto); }
+.prof-paga:hover { background: var(--superficie-turquesa); }
+.prof-paga-rotulo { display: grid; min-width: 0; }
+.prof-paga-rotulo b { font-size: var(--t-sm); }
+.prof-paga-rotulo small { font-size: var(--t-xs); color: var(--texto-suave); }
+.prof-paga-trilho { position: relative; height: 12px; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--texto-suave) 14%, transparent); overflow: hidden; }
+.prof-paga-trilho i, .prof-curso-trilho i, .prof-dez-barra i {
+  position: absolute; inset: 0 auto 0 0; width: calc(var(--fracao, 0) * 100%); border-radius: inherit; background: var(--turquesa);
+  transform: scaleX(0); transform-origin: left center; transition: transform .9s var(--ease-saida); transition-delay: calc(var(--i, 0) * 70ms);
+}
+.prof-pagas--crescer .prof-paga-trilho i { transform: none; }
+.prof-paga-valor { font-weight: 800; font-size: var(--t-sm); min-width: 6.5em; text-align: right; }
+.prof-paga--aposta .prof-paga { outline: 2px solid var(--amarelo); outline-offset: -2px; }
+.prof-paga--aposta .prof-paga-trilho i { background: var(--amarelo); }
+.prof-paga-tag { justify-self: start; margin-top: 2px; padding: 0 var(--esp-2); border-radius: var(--raio-pilula); font-size: var(--t-xs); font-weight: 800; color: var(--marinho); background: var(--amarelo); }
+
+/* As dez áreas */
+.prof-cards--areas { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.prof-area { min-height: 190px; }
+.prof-area-cab { display: flex; justify-content: space-between; align-items: center; gap: var(--esp-2); }
+.prof-area-afin { font-size: var(--t-sm); font-weight: 800; color: var(--amarelo); }
+.prof-area-rodape { margin-top: auto; padding-top: var(--esp-2); display: flex; justify-content: space-between; align-items: center; gap: var(--esp-2); flex-wrap: wrap; font-size: var(--t-sm); color: var(--texto-suave); }
+.prof-area-rodape b { color: var(--amarelo); }
+.prof-dez { display: flex; align-items: center; gap: var(--esp-3); margin-top: var(--esp-2); }
+.prof-dez-barra { position: relative; flex: 1; max-width: 240px; height: 8px; border-radius: var(--raio-pilula); overflow: hidden; background: color-mix(in srgb, var(--texto-suave) 14%, transparent); }
+.prof-dez-barra i { background: linear-gradient(90deg, var(--turquesa), var(--amarelo)); transition-delay: .3s; }
+.prof-surge--viva .prof-dez-barra i { transform: none; }
+
+/* Que curso fazer: a duração cresce como barra */
+.prof-cursos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3); }
+.prof-curso { padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-md); background: var(--superficie); }
+.prof-curso-cab { display: flex; justify-content: space-between; align-items: center; gap: var(--esp-2); flex-wrap: wrap; }
+.prof-curso-linha { display: flex; align-items: center; gap: var(--esp-3); margin: var(--esp-2) 0; }
+.prof-curso-trilho { position: relative; flex: 1; height: 10px; border-radius: var(--raio-pilula); overflow: hidden; background: color-mix(in srgb, var(--texto-suave) 14%, transparent); }
+.prof-curso-trilho i { background: linear-gradient(90deg, var(--turquesa), var(--turquesa-claro)); transition-delay: calc(.2s + var(--i, 0) * 120ms); }
+.prof-surge--viva .prof-curso-trilho i { transform: none; }
+.prof-curso-duracao { min-width: 6.5em; text-align: right; font-weight: 800; font-size: var(--t-sm); color: var(--turquesa-claro); }
+
+/* Convite do jogo */
+.prof-jogo-convite { display: grid; gap: var(--esp-3); justify-items: start; }
+.prof-jogo-fatos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--esp-2); }
+.prof-jogo-fatos li { display: grid; min-width: 110px; padding: var(--esp-2) var(--esp-3); border-radius: var(--raio-md); background: var(--superficie); font-size: var(--t-sm); color: var(--texto-suave); }
+.prof-jogo-fatos b { font-size: var(--t-2xl); color: var(--amarelo); line-height: 1.1; }
+
+/* Um dia típico: linha do tempo que entra momento a momento */
+.prof-dia { list-style: none; margin: 0; padding: 0; display: grid; position: relative; }
+.prof-dia li { display: grid; grid-template-columns: 64px 1fr; gap: var(--esp-3); padding: var(--esp-2) 0; position: relative; font-size: var(--t-md); }
+.prof-dia li::before { content: ""; position: absolute; left: 70px; top: 0; bottom: 0; width: 2px; background: color-mix(in srgb, var(--texto-suave) 25%, transparent); }
+.prof-dia li::after { content: ""; position: absolute; left: 65px; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: var(--turquesa); border: 2px solid var(--marinho); }
+.prof-dia li:first-child::before { top: 18px; }
+.prof-dia li:last-child::before { bottom: calc(100% - 18px); }
+.prof-dia-hora { color: var(--amarelo); font-weight: 800; font-size: var(--t-sm); letter-spacing: .04em; padding-top: 2px; }
+.prof-dia li > span:last-child { padding-left: var(--esp-5); }
+.prof-dia--agora::after { background: var(--amarelo); box-shadow: 0 0 0 4px color-mix(in srgb, var(--amarelo) 25%, transparent); }
+.prof-dia-tag { display: inline-block; margin-left: var(--esp-2); padding: 0 var(--esp-2); border-radius: var(--raio-pilula); font-size: var(--t-xs); font-weight: 800; color: var(--marinho); background: var(--amarelo); vertical-align: middle; }
+.prof-surge .prof-dia li { opacity: 0; transform: translateX(-12px); transition: opacity .5s var(--ease-saida), transform .5s var(--ease-saida); transition-delay: calc(.2s + var(--i, 0) * 140ms); }
+.prof-surge--viva .prof-dia li { opacity: 1; transform: none; }
+
+/* Carreira: uma escada que sobe */
+.prof-escada { list-style: none; counter-reset: degrau; margin: 0; padding: 0; display: grid; gap: var(--esp-2); }
+.prof-escada li {
+  position: relative; counter-increment: degrau; min-height: 60px; padding: var(--esp-3) var(--esp-3) var(--esp-3) calc(var(--esp-7) + var(--esp-1));
+  border-radius: var(--raio-sm); background: var(--superficie); font-size: var(--t-sm);
+  border-bottom: 3px solid color-mix(in srgb, var(--turquesa) calc(30% + var(--i, 0) * 15%), transparent);
+}
+.prof-escada li::before { content: counter(degrau); position: absolute; left: var(--esp-3); top: var(--esp-3); width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--turquesa); color: var(--marinho); font-weight: 800; font-size: var(--t-xs); }
+.prof-surge .prof-escada li { opacity: 0; transform: translateY(16px); transition: opacity .5s var(--ease-saida), transform .5s var(--ease-saida); transition-delay: calc(.2s + var(--i, 0) * 160ms); }
+.prof-surge--viva .prof-escada li { opacity: 1; transform: none; }
+@media (min-width: 768px) {
+  .prof-escada { grid-template-columns: repeat(var(--degraus, 5), 1fr); align-items: end; }
+  .prof-escada li { margin-top: calc((var(--n, 5) - 1 - var(--i, 0)) * 16px); }
+}
+
+/* Áreas vizinhas: o cartão inteiro é o link */
+.prof-raiz a.prof-vizinha { display: block; color: var(--texto); text-decoration: none; border: 1px solid transparent; transition: border-color var(--transicao), transform var(--transicao); }
+.prof-raiz a.prof-vizinha:hover { border-color: var(--turquesa-claro); transform: translateY(-2px); }
+.prof-vizinha h3 { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-2); color: var(--turquesa-claro); }
+.prof-vizinha h3 .prof-ico { width: 18px; height: 18px; flex: none; }
+
+/* Anterior e próxima área */
+.prof-areas-nav { display: flex; justify-content: space-between; align-items: center; gap: var(--esp-2); flex-wrap: wrap; margin-top: var(--esp-6); padding-top: var(--esp-4); border-top: 1px solid color-mix(in srgb, var(--texto-suave) 18%, transparent); }
+
+/* Jogo */
+.prof-jogo-cab { display: grid; gap: var(--esp-1); margin-bottom: var(--esp-4); scroll-margin-top: 96px; }
+.prof-jogo-cab h1 { font-size: var(--t-3xl); font-weight: 800; letter-spacing: -.02em; }
+.prof-jogo-cab .prof-lead { max-width: 60ch; font-size: var(--t-md); }
+.prof-opcoes { display: grid; gap: var(--esp-2); }
+.prof-opcoes .prof-opcao { animation: prof-sobe .4s var(--ease-saida) both; animation-delay: calc(.1s + var(--i, 0) * 60ms); }
+.prof-jogo-pe { display: flex; justify-content: space-between; align-items: center; gap: var(--esp-2); margin-top: var(--esp-3); }
+.prof-jogo-fim { font-size: var(--t-2xl); font-weight: 800; margin: var(--esp-2) 0 var(--esp-1); }
+.prof-jogo-aviso { margin-bottom: var(--esp-4); }
+.prof-cards--resultado { grid-template-columns: repeat(3, 1fr); }
+.prof-resultado { display: flex; flex-direction: column; gap: var(--esp-1); animation: prof-sobe .5s var(--ease-saida) both; animation-delay: calc(var(--i, 0) * 120ms); }
+.prof-resultado h3 { font-size: var(--t-lg); overflow-wrap: anywhere; hyphens: auto; }
+.prof-resultado-cab { display: flex; justify-content: space-between; align-items: baseline; }
+.prof-resultado-cab .prof-rotulo { color: var(--turquesa-claro); }
+.prof-resultado-pct { font-size: var(--t-2xl); color: var(--turquesa-claro); }
+.prof-resultado--topo { border: 2px solid var(--amarelo); }
+.prof-resultado--topo .prof-rotulo, .prof-resultado--topo .prof-resultado-pct { color: var(--amarelo); }
+.prof-mini-barras { display: grid; gap: var(--esp-1); margin-top: var(--esp-2); }
+.prof-mini-barra { display: grid; grid-template-columns: 1fr 2fr 48px; gap: var(--esp-3); align-items: center; min-height: 44px; font-size: var(--t-sm); color: var(--texto); text-decoration: none; }
+.prof-mini-barra i { position: relative; height: 8px; border-radius: var(--raio-pilula); background: var(--superficie-turquesa); display: block; overflow: hidden; }
+.prof-mini-barra b { position: absolute; inset: 0 auto 0 0; width: calc(var(--fracao, 0) * 100%); border-radius: inherit; background: var(--turquesa); transform: scaleX(0); transform-origin: left center; transition: transform .8s var(--ease-saida); transition-delay: calc(.4s + var(--i, 0) * 80ms); }
+.prof-jogo-palco--fim .prof-mini-barra b { transform: none; }
+.prof-mini-barra:hover span:first-child { color: var(--turquesa-claro); }
+.prof-jogo-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); margin-top: var(--esp-4); }
+.prof-jogo-acoes .prof-recompensa { margin: 0 var(--esp-2) 0 0; }
+.prof-raiz .prof-espaco-p { margin-top: var(--esp-1); }
+@media (hover: none) { .prof-so-teclado { display: none; } }
+@media (max-width: 767px) {
+  .prof-cards--resultado { grid-template-columns: 1fr; }
+  .prof-mini-barra { grid-template-columns: 1fr 1fr 44px; }
+}
+@media (max-width: 479px) {
+  .prof-paga { grid-template-columns: 1fr auto; grid-template-areas: "rotulo valor" "trilho trilho"; gap: var(--esp-1) var(--esp-2); }
+  .prof-paga-rotulo { grid-area: rotulo; }
+  .prof-paga-valor { grid-area: valor; min-width: 0; }
+  .prof-paga-trilho { grid-area: trilho; }
+  .prof-faixa-rolagem .prof-info { min-width: 540px; }
+  .prof-ilha--panorama { padding-right: var(--esp-4); }
+  .prof-ilha-seta { display: none; }
+  .prof-dia li { grid-template-columns: 52px 1fr; }
+  .prof-dia li::before { left: 58px; }
+  .prof-dia li::after { left: 53px; }
+}
+
 /* ---------- Reduzir movimento: tudo já aparece pronto ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .prof-cena, .prof-cena *, .prof-palavra, .prof-mergulhe, .prof-palco::before, .prof-palco::after,
+  .prof-surge, .prof-surge *, .prof-palavra, .prof-mergulhe, .prof-palco::before, .prof-palco::after,
   .prof-revelado, .prof-pop, .prof-doca, .prof-lado--entra, .prof-virar-verso, .prof-fontes--abrindo li,
   .prof-chute-resultado .prof-info g, .prof-proximo .prof-ico, .prof-mergulhe .prof-ico, .prof-segredo-conteudo {
     animation: none !important; transition: none !important;
   }
-  .prof-cena, .prof-cena :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena > *,
-  .prof-cena .prof-agora-relogio, .prof-cena .prof-dna-grafico, .prof-formacao .prof-info rect,
+  .prof-paga-trilho i, .prof-curso-trilho i, .prof-dez-barra i, .prof-mini-barra b, .prof-opcoes .prof-opcao, .prof-resultado, .prof-ilha-seta {
+    animation: none !important; transition: none !important; transform: none;
+  }
+  .prof-surge .prof-dia li, .prof-surge .prof-escada li { opacity: 1; transform: none; }
+  .prof-surge, .prof-surge :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-surge > *,
+  .prof-surge .prof-agora-relogio, .prof-surge .prof-dna-grafico, .prof-formacao .prof-info rect,
   .prof-formacao .prof-info g circle, .prof-formacao .prof-info g text + text + rect ~ text { opacity: 1; transform: none; }
   .prof-pop { transform: translateX(-50%); }
 }

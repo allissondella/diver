@@ -757,6 +757,7 @@ create table if not exists public.eventos_atividade (
 -- 2026-10-05: tipos do Cronograma (plano criado e bloco de estudo feito) e da Avaliação Diagnóstica (área concluída). O "create table" acima só vale para
 -- banco novo; aqui a regra é refeita para quem já tinha a tabela (reexecutável, não apaga nada).
 -- 2026-10-16: tipos do Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md, 3.4), sempre com curso_id nulo.
+-- 2026-10-16 (2): tipos do Panorama da Tecnologia (docs/MAPA_PROFISSOES_TECNOLOGIA.md), também com curso_id nulo.
 alter table public.eventos_atividade drop constraint if exists eventos_atividade_tipo_check;
 alter table public.eventos_atividade add constraint eventos_atividade_tipo_check
   check (tipo in ('questao_respondida', 'jogo_concluido', 'mergulho_sessao', 'revisao_sessao', 'simulado_concluido',
@@ -764,7 +765,8 @@ alter table public.eventos_atividade add constraint eventos_atividade_tipo_check
                   'profissoes_mapa', 'profissao_vista', 'profissao_mira', 'profissao_pedido',
                   'profissao_carta', 'profissoes_cartas_inicio', 'profissoes_cartas_fim', 'profissao_chute_salario',
                   'profissao_carta_gerada', 'profissao_dilema_voto', 'profissao_materias_chave', 'profissao_dia_inicio',
-                  'profissao_dia_concluido', 'profissao_mitos_inicio', 'profissao_mitos_concluido'));
+                  'profissao_dia_concluido', 'profissao_mitos_inicio', 'profissao_mitos_concluido',
+                  'tecnologia_panorama', 'tecnologia_area_vista', 'tecnologia_jogo_inicio', 'tecnologia_jogo_concluido'));
 create index if not exists eventos_atividade_aluno on public.eventos_atividade (aluno_id, criado_em desc);
 create index if not exists eventos_atividade_curso on public.eventos_atividade (curso_id, tipo, criado_em desc);
 

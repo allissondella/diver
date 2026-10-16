@@ -10,6 +10,11 @@
 > - Ganchos novos no módulo: `nomeCurso` (nome do curso no catálogo), `verRascunho` (o aluno não vê ficha em rascunho ou validada: ela aparece como "Em breve"; admin, professor e o modo local veem) e `Profissoes.desmontar()` (solta os atalhos de teclado ao sair da área).
 > - Conquistas: são "gerais" (`Conquistas.gerais()`, chave `diver:v1:conquistas-gerais`), fora da contagem de cada curso; aparecem no Perfil.
 > - Os 15 tipos de evento foram acrescentados à regra da tabela `eventos_atividade` (`supabase/setup.sql`), já aplicada nos bancos de testes e de produção em 2026-10-16.
+>
+> **Kit v1.2 (Panorama da Tecnologia), integrado em 2026-10-16.** Detalhes em `docs/MAPA_PROFISSOES_TECNOLOGIA.md`, seção "Como ficou no app":
+> - Do kit entraram só `js/profissoes-tecnologia.js` (reescrito no desenho da ficha nova), `data/profissoes/tecnologia.json`, `scripts/conferir-panorama.mjs` e o panorama no `indice.json`. Os `js/profissoes.js` e `css/profissoes.css` do kit **não** foram copiados (apagariam a ficha que se conta ao rolar): os três ganchos novos (`registrarExtensao`, `_util` e o cartão do panorama no mapa) foram levados para o nosso módulo.
+> - O panorama em `rascunho` (`indice.json`, `panoramas[].status`) segue a regra das fichas: a equipe e o modo local veem; o aluno vê "Em breve".
+> - Os 4 tipos `tecnologia_*` entraram na regra da tabela, aplicada nos bancos de testes e de produção em 2026-10-16.
 
 ## 1. O que vem no kit
 
@@ -25,6 +30,9 @@
 | `data/profissoes/trends/trends.json` | Buscas por estado e sazonalidade (Google Trends, 7 cursos) | `data/profissoes/trends/trends.json` |
 | `data/profissoes/trends/*.csv` | Dados brutos do Trends, com LEIA-ME | `data/profissoes/trends/` (ou `docs/`), para reprocessar no futuro |
 | `scripts/conferir-ficha.mjs` | Confere estrutura, fontes, cenas, mitos, prazo das fontes de salário | `scripts/conferir-ficha.mjs` |
+| `js/profissoes-tecnologia.js` | Panorama da Tecnologia, páginas das dez áreas e o jogo de afinidade (extensão) | `js/profissoes-tecnologia.js` (depois de `profissoes.js`, no mesmo pacote) |
+| `data/profissoes/tecnologia.json` | Panorama: números, dez áreas, formação, jogo e 18 fontes | `data/profissoes/tecnologia.json` |
+| `scripts/conferir-panorama.mjs` | Confere um panorama (áreas, jogo, fontes, prazo de salário) | `scripts/conferir-panorama.mjs` |
 | `.claude/skills/criar-ficha-profissao/SKILL.md` | Skill para escrever as próximas fichas | `.claude/skills/criar-ficha-profissao/` |
 | `docs/MAPA_PROFISSOES*.md` | Especificação, interações e este guia | `docs/` |
 
@@ -51,6 +59,9 @@ Rotas que `montar` entende (sem o `#`):
 | `profissao-<id>` | Ficha completa, com os infográficos |
 | `profissao-<id>-dia` | "Um dia como…" |
 | `profissao-<id>-mitos` | "Mito ou verdade" |
+| `profissoes-tecnologia` | Panorama da Tecnologia (números, salários por área, dez áreas, cursos) |
+| `tecnologia-<id>` | Uma área da tecnologia: dia típico, salário, DNA, carreira, fontes |
+| `profissoes-tecnologia-jogo` | "Que área da tecnologia é a sua?" |
 
 Tudo é construído com `createElement` e `textContent`. Nenhum conteúdo de JSON passa por `innerHTML`. O estado fica em `localStorage` na chave `diver:v1:profissoes` (dentro de `try/catch`), então o espelho na nuvem já o sincroniza pelo mecanismo existente (`estado`, chaves `diver:v1:*`).
 
@@ -102,6 +113,8 @@ Todos vão para `eventos_atividade` pelo gancho `registrar`:
 | `profissao_materias_chave` | `{ profissao, curso }` |
 | `profissao_dia_inicio`, `profissao_dia_concluido` | `{ profissao, indicadores }` |
 | `profissao_mitos_inicio`, `profissao_mitos_concluido` | `{ profissao, acertos, total }` |
+| `tecnologia_panorama`, `tecnologia_area_vista` | `{ area }` |
+| `tecnologia_jogo_inicio`, `tecnologia_jogo_concluido` | `{ top[], pct[] }` |
 
 Derivados para o Admin (bloco "Profissões"): fichas mais vistas, cartas com mais "me interessa", pedidos de fichas, taxa de conclusão do "Um dia como", distribuição de votos por dilema (só mostrar na ficha com 50 ou mais votos).
 

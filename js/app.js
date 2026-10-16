@@ -57,7 +57,7 @@ const App = (() => {
     estatisticas: ['js/estatisticas.js'],
     admin: ['js/estatisticas.js', 'js/admin.js'],
     fila: ['js/fila-validacao.js'],
-    profissoes: ['js/profissoes-infograficos.js', 'js/profissoes.js'], // Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md)
+    profissoes: ['js/profissoes-infograficos.js', 'js/profissoes.js', 'js/profissoes-tecnologia.js'], // Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md); a Tecnologia é extensão e vem depois
     descompressao: ['js/dicionario.js', 'js/descompressao.js', 'js/descompressao/investigacao.js', 'js/descompressao/palavrinha-dia.js',
       'js/descompressao/tiro.js', 'js/descompressao/batata.js', 'js/descompressao/pitstop.js', 'js/descompressao/cardume.js'],
   };
@@ -91,7 +91,7 @@ const App = (() => {
     perfil: { tela: 'tela-perfil', pacotes: ['perfil'], render: () => Perfil.render($('tela-perfil')) },
     estatisticas: { tela: 'tela-estatisticas', pacotes: ['estatisticas'], render: () => Estatisticas.render($('tela-estatisticas')) },
     descompressao: { tela: 'tela-descompressao', pacotes: ['descompressao'], render: () => Descompressao.render($('tela-descompressao')) },
-    profissoes: { tela: 'tela-profissoes', pacotes: ['profissoes'], render: renderizarProfissoes }, // endereços #profissoes, #profissoes-cartas, #profissoes-metodo e #profissao-<id>[-dia|-mitos]
+    profissoes: { tela: 'tela-profissoes', pacotes: ['profissoes'], render: renderizarProfissoes }, // endereços #profissoes, #profissoes-cartas, #profissoes-metodo, #profissao-<id>[-dia|-mitos] e da Tecnologia (#profissoes-tecnologia[-jogo], #tecnologia-<área>)
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
     'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, pacotes: ['provas'], render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
     admin: { tela: 'tela-admin', soEquipe: true, pacotes: ['admin'], render: () => Admin.render($('tela-admin')) },
@@ -106,7 +106,7 @@ const App = (() => {
   }
 
   /** Endereços do Mapa das Profissões que caem na tela "profissoes" (o módulo desenha a rota certa). */
-  const ehRotaProfissoes = (secao) => /^profissoes(-cartas|-metodo)?$|^profissao-[a-z0-9-]+$/.test(secao || '');
+  const ehRotaProfissoes = (secao) => /^profissoes(-cartas|-metodo|-tecnologia|-tecnologia-jogo)?$|^profissao-[a-z0-9-]+$|^tecnologia-[a-z-]+$/.test(secao || '');
 
   /** O endereço existe? (#secao, #sala-<id> ou uma rota do Mapa das Profissões) */
   function rotaExiste(secao) {
@@ -1318,19 +1318,20 @@ const App = (() => {
       if (!trilha || !ev) return;
       const teto = Economia.CONFIG.bonusMaximo;
       const valores = { xp: Math.min(Math.max(0, ev.xp || 0), teto.xp), perolas: Math.min(Math.max(0, ev.perolas || 0), teto.perolas) };
-      concederXP(trilha.id, valores, ev.tipo === 'profissao_dia' ? 'Um dia completo!' : 'Mito ou verdade concluído');
+      const motivo = { profissao_dia: 'Um dia completo!', tecnologia_jogo: 'Descobriu as suas áreas!' }[ev.tipo] || 'Mito ou verdade concluído';
+      concederXP(trilha.id, valores, motivo);
     };
     // Log de atividade (sem tabela nova). Nada digitado vai para o log: um pedido feito pela busca livre vira "outra".
     g.registrar = (evento, dados) => {
       Profissoes.indice().then((ix) => {
         const d = { ...(dados || {}) };
-        if (d.profissao && !ix.profissoes.some((p) => p.id === d.profissao)) d.profissao = 'outra';
+        if (d.profissao && !ix.profissoes.some((p) => p.id === d.profissao) && !(ix.panoramas || []).some((p) => p.id === d.profissao)) d.profissao = 'outra';
         if (d.indicadores && typeof d.indicadores === 'object' && !Array.isArray(d.indicadores)) {
           Object.entries(d.indicadores).forEach(([k, v]) => { if (typeof v === 'number') d[`ind_${k}`] = v; });
           delete d.indicadores;
         }
         Atividade.registrar(evento, null, d);
-        if (['profissao_vista', 'profissao_dia_concluido', 'profissao_carta_gerada'].includes(evento)) {
+        if (['profissao_vista', 'profissao_dia_concluido', 'profissao_carta_gerada', 'tecnologia_area_vista'].includes(evento)) {
           avisarConquistas(Conquistas.verificarGerais(ix.profissoes.filter((p) => p.arquivo && p.status === 'publicada').map((p) => p.id)));
         }
       }).catch(() => { /* sem o índice, o evento não vale a pena */ });
@@ -1339,7 +1340,10 @@ const App = (() => {
     // Matéria-chave → o curso dela na sala do Enem, na próxima aula
     g.abrirCurso = (idCurso) => {
       if (estado.trilhas.some((t) => t.id === idCurso)) abrirTrilha(idCurso, { proximaAula: true });
-      else toast('Curso fora das suas salas', 'Esta matéria fica na sala Mergulho no Enem e Vestibular. Peça acesso ao admin.', 'i-livro');
+      else {
+        const sala = Grupos.LISTA.find((s) => s.pertence && s.pertence({ id: idCurso }));
+        toast('Curso fora das suas salas', `${sala ? `Este curso fica na sala ${sala.nome}.` : 'Este curso fica em outra sala.'} Peça acesso ao admin.`, 'i-livro');
+      }
     };
     g.nomeCurso = (idCurso) => {
       const t = estado.trilhas.find((x) => x.id === idCurso);
