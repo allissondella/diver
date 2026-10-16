@@ -83,3 +83,30 @@
 ```
 
 A ficha `enfermagem.json` já traz `carta`, `agora`, `dna` e um `dilema` preenchidos como exemplo.
+
+## A ficha que se conta ao rolar (2026-10-16)
+
+Pedido do usuário: a ficha mais moderna e interativa, "como a página da Apple, que vai carregando ao descer", **sem mudar uma vírgula do conteúdo**. O código fica em `js/profissoes.js` (`telaFicha`, `blocoSalario`, `citar`, `abrirFonte`) e `css/profissoes.css` (bloco "Ficha que se conta enquanto rola").
+
+- **Abertura em tela cheia:** área, nome e frase entram palavra por palavra; "Role para mergulhar" leva à primeira parte.
+- **Cenas:** cada parte (`.prof-cena`) acende uma vez ao entrar na tela (IntersectionObserver); algumas se montam:
+  - o relógio do "Agora mesmo" gira até a hora atual;
+  - os números contam do zero até o valor exato do JSON;
+  - a linha "Quanto tempo até trabalhar" cresce etapa por etapa;
+  - o gráfico do DNA se monta.
+- **Guia fixo:** barra de progresso da leitura, um chip por seção (o da seção atual fica aceso) e o botão "Próximo" no pé de cada parte.
+- **Doca no rodapé:** "Pôr na mira", "Viver um dia" e "Mito ou verdade" aparecem depois da abertura.
+- **Salário escondido:**
+  - O cartão "Média de contratação" mostra "R$ ?" e "Chutar primeiro".
+  - A tabela de pisos e médias fica coberta (`inert`), sem ninguém ler ou focar os valores.
+  - O 1º chute revela a média do topo; o fim do chute revela tudo. "Prefiro só ver os números" pula o jogo.
+  - Fica guardado em `estado.salarioRevelado`.
+- **Fontes guardadas:**
+  - Cada citação vira uma bolinha numerada, com alvo de 44 px.
+  - O toque abre a fonte num cartão: perto da bolinha no computador; subindo do rodapé no celular. Fecha no X, no Esc, tocando fora ou rolando.
+  - A lista completa só abre no botão "Ver as N fontes desta ficha".
+- **Mais toque:**
+  - "O que faz / O que não faz" vira uma chave;
+  - "O que ninguém te conta" vira cartas para revelar uma a uma (ou "Revelar todos");
+  - no celular, a tabela de valores vira cartões e o gráfico do chute rola dentro da caixa.
+- **Reduzir movimento:** nada se mexe e tudo aparece pronto. O tutorial da área subiu para a versão 2.

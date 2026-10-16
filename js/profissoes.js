@@ -84,6 +84,7 @@
     baixar: ['M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4', 'm7 10 5 5 5-5', 'M12 15V3'],
     embaralhar: ['M16 3h5v5', 'M4 20 21 3', 'M21 16v5h-5', 'm15 15 6 6', 'm4 4 5 5'],
     info: ['M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z', 'M12 16v-4', 'M12 8h.01'],
+    x: ['M18 6 6 18', 'm6 6 12 12'], baixo: ['M12 5v14', 'm19 12-7 7-7-7'], cadeado: ['M5 11h14v10H5z', 'M8 11V7a4 4 0 0 1 8 0v4'],
     dado: ['M3 3h18v18H3z', 'M8 8h.01', 'M16 8h.01', 'M12 12h.01', 'M8 16h.01', 'M16 16h.01']
   };
   function icone(nome) {
@@ -119,16 +120,53 @@
      Citações: marcação numerada que leva à lista de fontes
      ========================================================= */
   function numeroFonte(f, id) { const i = (f.fontes || []).findIndex(x => x.id === id); return i >= 0 ? i + 1 : null; }
+  /* Cada fonte citada vira uma bolinha com o número; o toque abre a fonte num cartão (as fontes ficam guardadas até alguém pedir). */
   function citar(f, ids) {
     const lista = (ids || []).filter(id => numeroFonte(f, id));
     if (!lista.length) return null;
     const sup = el('sup', { class: 'prof-cit' });
-    lista.forEach((id, i) => {
-      const fonte = f.fontes.find(x => x.id === id);
-      if (i) sup.appendChild(document.createTextNode(','));
-      sup.appendChild(el('a', { href: '#fonte-' + id, title: fonte.titulo, text: String(numeroFonte(f, id)), onclick: e => { e.preventDefault(); const alvo = document.getElementById('fonte-' + id); if (alvo) { alvo.scrollIntoView({ behavior: 'smooth', block: 'center' }); alvo.classList.add('prof-fonte--realce'); setTimeout(() => alvo.classList.remove('prof-fonte--realce'), 1600); } } }));
+    lista.forEach(id => {
+      const fonte = f.fontes.find(x => x.id === id), n = numeroFonte(f, id);
+      sup.appendChild(el('button', { type: 'button', class: 'prof-cit-b', 'aria-label': `Fonte ${n}: ${fonte.titulo}`, title: 'Ver a fonte', text: String(n), onclick: e => { e.stopPropagation(); abrirFonte(f, id, e.currentTarget); } }));
     });
     return sup;
+  }
+  const metaFonte = fo => `${fo.orgao}. Consultado em ${dataBR(fo.consultado_em)}${fo.dados_atualizados_em ? ', dados atualizados em ' + dataBR(fo.dados_atualizados_em) : ''}. Fonte ${fo.tipo === 'primaria' ? 'primária' : 'secundária'}.`;
+  let popFonte = null;
+  function fecharFonte() {
+    if (!popFonte) return;
+    const { caixa, origem, sair } = popFonte; popFonte = null;
+    sair(); caixa.remove();
+    if (origem && origem.isConnected) origem.focus({ preventScroll: true });
+  }
+  function abrirFonte(f, id, origem) {
+    const fo = (f.fontes || []).find(x => x.id === id); if (!fo) return;
+    fecharFonte();
+    const n = numeroFonte(f, id);
+    const fechar = el('button', { type: 'button', class: 'prof-pop-fechar', 'aria-label': 'Fechar a fonte', onclick: fecharFonte }, icone('x'));
+    const caixa = el('div', { class: 'prof-pop', role: 'dialog', 'aria-label': `Fonte ${n}` },
+      el('div', { class: 'prof-pop-cab' }, el('span', { class: 'prof-pop-n', text: String(n) }), el('span', { class: 'prof-rotulo', text: `Fonte ${n} de ${f.fontes.length}` }), fechar),
+      el('p', { class: 'prof-pop-titulo' }, fo.url ? el('a', { href: fo.url, target: '_blank', rel: 'noopener' }, fo.titulo, ' ', icone('link')) : fo.titulo),
+      el('p', { class: 'prof-micro', text: metaFonte(fo) }),
+      fo.nota ? el('p', { class: 'prof-fontes-nota', text: 'Pendência: ' + fo.nota }) : null);
+    const tecla = e => { if (e.key === 'Escape') fecharFonte(); };
+    const fora = e => { if (!caixa.contains(e.target)) fecharFonte(); };
+    document.addEventListener('keydown', tecla);
+    setTimeout(() => document.addEventListener('click', fora), 0);
+    popFonte = { caixa, origem, sair: () => { document.removeEventListener('keydown', tecla); document.removeEventListener('click', fora); } };
+    document.body.appendChild(caixa);
+    // No computador, o cartão abre junto da bolinha tocada; no celular, sobe do rodapé
+    if (origem && innerWidth >= 768) {
+      const r = origem.getBoundingClientRect(), w = caixa.offsetWidth, h = caixa.offsetHeight;
+      const x = Math.min(Math.max(r.left + r.width / 2 - w / 2, 16), innerWidth - w - 16);
+      const y = r.bottom + 10 + h < innerHeight - 16 ? r.bottom + 10 : Math.max(16, r.top - h - 10);
+      caixa.classList.add('prof-pop--ancorado'); caixa.style.left = x + 'px'; caixa.style.top = y + 'px';
+      const topo0 = r.top;
+      const rolou = () => { if (Math.abs(origem.getBoundingClientRect().top - topo0) > 40) fecharFonte(); };
+      document.addEventListener('scroll', rolou, { passive: true, capture: true });
+      const sair = popFonte.sair; popFonte.sair = () => { sair(); document.removeEventListener('scroll', rolou, { capture: true }); };
+    }
+    fechar.focus({ preventScroll: true });
   }
   function prosa(f, textoProsa, ids, classe) { return el('p', { class: classe || 'prof-prosa' }, textoProsa, citar(f, ids)); }
 
@@ -138,6 +176,7 @@
   const limpezas = []; /* listeners de teclado da tela anterior */
   async function montar(raiz, rota) {
     carregarEstado();
+    fecharFonte();
     while (limpezas.length) { try { limpezas.pop()(); } catch (e) { /* ignora */ } }
     raiz.textContent = '';
     raiz.classList.add('prof-raiz');
@@ -254,74 +293,162 @@
   }
 
   /* =========================================================
-     Tela: Ficha
+     Tela: Ficha (2026-10-16: a ficha se conta enquanto o aluno rola)
+     Abertura em tela cheia; cada parte é uma "cena" que acende ao entrar na tela e, em algumas, o desenho se monta
+     (relógio, números, linha da formação, DNA); guia fixo com progresso e as seções; doca com as ações no rodapé;
+     salário escondido até o chute; fontes guardadas, abertas no toque. O conteúdo é o mesmo do JSON, sem mudança.
      ========================================================= */
+  const semMovimento = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } };
+  /** Palavras em <span> para entrarem uma a uma (o texto continua o mesmo). */
+  function palavras(texto) {
+    const out = [];
+    String(texto).split(' ').forEach((p, i) => { if (i) out.push(' '); out.push(el('span', { class: 'prof-palavra', style: { '--i': i }, text: p })); });
+    return out;
+  }
+  /** Conta do zero até o número que abre o texto ("5 anos", "R$ 4.503") e termina no texto exato. */
+  function contar(alvo, texto) {
+    const m = /^(\D*?)(\d[\d.]*)(.*)$/.exec(texto);
+    if (!m || semMovimento()) { alvo.textContent = texto; return; }
+    const fim = Number(m[2].replace(/\./g, '')), ms = 900, t0 = performance.now();
+    const passo = t => {
+      const k = Math.min(1, (t - t0) / ms), v = Math.round(fim * (1 - Math.pow(1 - k, 3)));
+      alvo.textContent = k < 1 ? m[1] + (m[2].includes('.') ? v.toLocaleString('pt-BR') : String(v)) + m[3] : texto;
+      if (k < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  }
+  /** Cenas: acendem uma vez ao entrar na tela e chamam o "aoAparecer" de cada uma. */
+  function observarCenas(raiz) {
+    const cenas = [...raiz.querySelectorAll('.prof-cena')];
+    const acender = c => { if (c.classList.contains('prof-cena--viva')) return; c.classList.add('prof-cena--viva'); if (c._aoAparecer) c._aoAparecer(); };
+    if (!('IntersectionObserver' in window) || semMovimento()) { cenas.forEach(acender); return; }
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { acender(e.target); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    cenas.forEach(c => io.observe(c));
+    limpezas.push(() => io.disconnect());
+  }
+
   function telaFicha(raiz, f, ix) {
     estado.vistas[f.id] = (estado.vistas[f.id] || 0) + 1; salvarEstado();
     ganchos.registrar('profissao_vista', { profissao: f.id });
+    if (!estado.salarioRevelado) estado.salarioRevelado = {};
+    const cor = corArea(ix, f.area);
+    raiz.style.setProperty('--cor-area', cor);
 
     raiz.appendChild(el('div', { class: 'prof-topo' }, link('Mapa das Profissões', 'profissoes', { classe: 'prof-voltar', icone: 'esquerda' }),
       f.status !== 'publicada' ? el('span', { class: 'prof-selo prof-selo--rascunho', text: f.revisao && f.revisao.profissional === 'ok' ? 'Validada' : 'Em revisão por profissional' }) : null));
 
-    // Cabeçalho
-    const btnMira = botao(estado.mira.includes(f.id) ? 'Na mira' : 'Pôr na mira', { classe: 'prof-btn--linha prof-btn--mira', icone: estado.mira.includes(f.id) ? 'certo' : 'alvo', pressed: String(estado.mira.includes(f.id)), onclick: () => alternarMira(f, btnMira) });
-    raiz.appendChild(el('header', { class: 'prof-ficha-cab' },
-      el('div', null, el('span', { class: 'prof-rotulo', text: nomeArea(ix, f.area), style: { color: corArea(ix, f.area) } }), el('h1', { text: f.nome }), el('p', { class: 'prof-lead', text: f.frase })),
-      el('div', { class: 'prof-ficha-cab-acoes' }, btnMira,
-        f.dia ? link('Viver um dia', 'profissao-' + f.id + '-dia', { classe: 'prof-btn prof-btn--primario', icone: 'play' }) : null,
-        f.mitos && f.mitos.length ? link('Mito ou verdade', 'profissao-' + f.id + '-mitos', { classe: 'prof-btn prof-btn--linha', icone: 'dado' }) : null)));
+    // Abertura: o nome entra palavra por palavra e um convite chama para rolar
+    const descer = el('button', { type: 'button', class: 'prof-mergulhe', onclick: () => { const alvo = raiz.querySelector('.prof-cena'); if (alvo) alvo.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: 'start' }); } }, 'Role para mergulhar', icone('baixo'));
+    const palco = el('header', { class: 'prof-palco' },
+      el('span', { class: 'prof-rotulo', text: nomeArea(ix, f.area), style: { color: cor } }),
+      el('h1', { class: 'prof-palco-titulo', 'aria-label': f.nome }, palavras(f.nome)),
+      el('p', { class: 'prof-lead prof-palco-frase' }, palavras(f.frase)),
+      descer);
+    raiz.appendChild(palco);
 
-    // Agora mesmo
+    // Guia fixo: barra de progresso e as seções (montado no fim, só com as seções que existem)
+    const barra = el('i');
+    const nav = el('nav', { class: 'prof-nav', 'aria-label': 'Seções da ficha' });
+    const guia = el('div', { class: 'prof-guia' }, el('div', { class: 'prof-guia-barra', 'aria-hidden': 'true' }, barra), nav);
+    raiz.appendChild(guia);
+    const corpo = el('div', { class: 'prof-corpo' });
+    raiz.appendChild(corpo);
+    const raizSecoes = raiz; raiz = corpo;
+
+    // Agora mesmo: o relógio gira até a hora de agora
     if (f.agora && f.agora.length && IG()) {
       const d = new Date(), h = d.getHours(), mi = d.getMinutes();
       const faixa = f.agora.find(x => h >= x.de && h < x.ate) || f.agora[0];
-      raiz.appendChild(el('section', { class: 'prof-agora', 'aria-label': 'Agora mesmo' },
-        IG().relogio({ faixas: f.agora, hora: h, minuto: mi }),
+      raiz.appendChild(el('section', { class: 'prof-agora prof-cena', 'aria-label': 'Agora mesmo' },
+        el('div', { class: 'prof-agora-relogio' }, IG().relogio({ faixas: f.agora, hora: h, minuto: mi })),
         el('div', null,
           el('div', { class: 'prof-agora-hora' }, 'Agora, às ', el('span', { text: `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}` }), ', um profissional de ', f.nome.toLowerCase(), ' provavelmente está em:'),
           el('p', { class: 'prof-agora-texto' }, el('b', { text: faixa.texto })),
           f.agora_nota ? el('p', { class: 'prof-micro', text: f.agora_nota, style: { marginTop: '6px' } }) : null)));
     }
 
-    // Quatro números
+    // Quatro números: contam do zero ao aparecer; o salário fica escondido até o chute
     const nums = f.numeros || {};
     const ordem = [['duracao', 'Duração'], ['formato', 'Formato'], ['salario', 'Média de contratação', 'amarelo'], ['registro', 'Registro profissional']];
-    raiz.appendChild(el('section', { class: 'prof-numeros', 'aria-label': 'Números principais' }, ordem.filter(([k]) => nums[k]).map(([k, rotulo, cor]) => {
+    const contaveis = [];
+    let cartaoSalario = null;
+    const secNumeros = el('section', { class: 'prof-numeros prof-cena', 'aria-label': 'Números principais' }, ordem.filter(([k]) => nums[k]).map(([k, rotulo, corN], i) => {
       const n = nums[k];
-      const fontes = (n.fontes || []).map(id => f.fontes.find(x => x.id === id)).filter(Boolean);
-      return el('div', { class: 'prof-numero' + (cor ? ' prof-numero--' + cor : '') },
+      const valor = el('span', { class: 'prof-numero-txt', text: n.valor });
+      const fontes = (n.fontes || []).filter(id => numeroFonte(f, id));
+      const cartao = el('div', { class: 'prof-numero' + (corN ? ' prof-numero--' + corN : ''), style: { '--i': i } },
         el('div', { class: 'prof-min', text: rotulo }),
-        el('div', { class: 'prof-numero-v prof-num' }, n.valor, citar(f, n.fontes)),
+        el('div', { class: 'prof-numero-v prof-num' }, valor),
         el('div', { class: 'prof-micro', text: n.detalhe }),
-        fontes.length ? el('details', null, el('summary', null, icone('info'), 'Fonte'), fontes.map(fo => el('p', null, `${fo.titulo}. ${fo.orgao}. Consultado em ${dataBR(fo.consultado_em)}.`))) : null);
-    })));
+        fontes.length ? el('div', { class: 'prof-numero-fontes' }, fontes.map(id => el('button', { type: 'button', class: 'prof-fonte-mini', onclick: e => { e.stopPropagation(); abrirFonte(f, id, e.currentTarget); } }, icone('info'), `Fonte ${numeroFonte(f, id)}`))) : null);
+      if (k === 'salario') cartaoSalario = { cartao, valor, texto: n.valor };
+      else contaveis.push([valor, n.valor]);
+      return cartao;
+    }));
+    secNumeros._aoAparecer = () => contaveis.forEach(([alvo, texto]) => contar(alvo, texto));
+    raiz.appendChild(secNumeros);
 
-    // Navegação fixa (montada no fim, só com as seções que existem)
-    const nav = el('nav', { class: 'prof-nav', 'aria-label': 'Seções da ficha' });
-    const corpo = el('div');
-    raiz.append(nav, corpo);
-    const raizSecoes = raiz; raiz = corpo;
+    // O salário só aparece depois do chute (ou de "Prefiro só ver os números"): 1 = a média do topo; 2 = tudo
+    const segredos = [];
+    const nivelSalario = () => estado.salarioRevelado[f.id] || 0;
+    function revelarSalario(nivel) {
+      if (nivel <= nivelSalario()) return;
+      estado.salarioRevelado[f.id] = nivel; salvarEstado();
+      aplicarSalario(true);
+    }
+    function aplicarSalario(animar) {
+      const nivel = nivelSalario();
+      if (cartaoSalario) {
+        const { cartao, valor, texto } = cartaoSalario;
+        const tampa = cartao.querySelector('.prof-numero-tampa');
+        if (nivel >= 1) {
+          cartao.classList.remove('prof-numero--segredo');
+          if (tampa) tampa.remove();
+          valor.hidden = false;
+          if (animar) { cartao.classList.add('prof-revelado'); contar(valor, texto); } else valor.textContent = texto;
+        } else if (!tampa) {
+          cartao.classList.add('prof-numero--segredo');
+          valor.hidden = true;
+          cartao.querySelector('.prof-numero-v').append(el('span', { class: 'prof-numero-tampa' }, el('span', { class: 'prof-numero-oculto', 'aria-hidden': 'true', text: 'R$ ?' }),
+            el('button', { type: 'button', class: 'prof-btn prof-btn--linha prof-btn--pequeno', onclick: irParaChute }, icone('alvo'), 'Chutar primeiro')));
+        }
+      }
+      segredos.forEach(sg => sg(nivel >= 2, animar));
+    }
+    function irParaChute() {
+      const sec = document.getElementById('sec-quanto-ganha'); if (!sec) return;
+      sec.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: 'start' });
+      const r = sec.querySelector('input[type="range"]'); if (r) setTimeout(() => r.focus({ preventScroll: true }), semMovimento() ? 0 : 600);
+    }
 
     const S = f.secoes || {};
-    const secao = (id, titulo, sub, ...conteudo) => el('section', { class: 'prof-secao', id: 'sec-' + id }, el('h2', null, titulo, sub ? el('small', { text: sub }) : null), ...conteudo);
+    const secao = (id, titulo, sub, ...conteudo) => el('section', { class: 'prof-secao prof-cena', id: 'sec-' + id }, el('h2', null, titulo, sub ? el('small', { text: sub }) : null), ...conteudo);
 
-    // 1. O que faz
-    if (S.o_que_faz) raiz.appendChild(secao('o-que-faz', 'O que faz', null,
-      el('div', { class: 'prof-duas' },
-        prosa(f, S.o_que_faz.texto, S.o_que_faz.fontes),
-        S.o_que_faz.nao_faz ? el('div', { class: 'prof-caixa prof-caixa--turquesa' }, el('h3', { text: 'O que não faz' }), prosa(f, S.o_que_faz.nao_faz, S.o_que_faz.fontes, 'prof-prosa')) : null)));
+    // 1. O que faz: chave entre "o que faz" e "o que não faz"
+    if (S.o_que_faz) {
+      const faz = el('div', { class: 'prof-lado', role: 'tabpanel' }, prosa(f, S.o_que_faz.texto, S.o_que_faz.fontes));
+      const conteudo = [];
+      if (S.o_que_faz.nao_faz) {
+        const naoFaz = el('div', { class: 'prof-lado prof-caixa prof-caixa--turquesa', role: 'tabpanel', hidden: true }, el('h3', { text: 'O que não faz' }), prosa(f, S.o_que_faz.nao_faz, S.o_que_faz.fontes, 'prof-prosa'));
+        const b1 = el('button', { type: 'button', role: 'tab', 'aria-selected': 'true', text: 'O que faz', onclick: () => trocar(true) });
+        const b2 = el('button', { type: 'button', role: 'tab', 'aria-selected': 'false', text: 'O que não faz', onclick: () => trocar(false) });
+        function trocar(lado) { b1.setAttribute('aria-selected', String(lado)); b2.setAttribute('aria-selected', String(!lado)); faz.hidden = !lado; naoFaz.hidden = lado; (lado ? faz : naoFaz).classList.add('prof-lado--entra'); }
+        conteudo.push(el('div', { class: 'prof-chave', role: 'tablist', 'aria-label': 'O que faz e o que não faz' }, b1, b2), faz, naoFaz);
+      } else conteudo.push(faz);
+      raiz.appendChild(secao('o-que-faz', 'O que faz', null, ...conteudo));
+    }
 
     // 2. Dia a dia
     if (S.dia_a_dia) raiz.appendChild(secao('dia-a-dia', 'Um dia de trabalho', S.dia_a_dia.revisar_com_profissional ? 'Descrição típica, em revisão com profissionais da área.' : null,
       prosa(f, S.dia_a_dia.texto, S.dia_a_dia.fontes),
       f.dia ? el('div', { style: { marginTop: '14px' } }, link('Viver um dia como ' + f.nome.toLowerCase(), 'profissao-' + f.id + '-dia', { classe: 'prof-btn prof-btn--primario', icone: 'play' })) : null));
 
-    // 3. O que estuda
+    // 3. O que estuda: a linha da formação cresce ano a ano ao aparecer
     if (S.o_que_estuda) {
       const conteudo = [prosa(f, S.o_que_estuda.texto, S.o_que_estuda.fontes)];
-      if (S.o_que_estuda.disciplinas) conteudo.push(el('div', { class: 'prof-chips-lista' }, S.o_que_estuda.disciplinas.map(d => el('span', { text: d }))));
+      if (S.o_que_estuda.disciplinas) conteudo.push(el('div', { class: 'prof-chips-lista' }, S.o_que_estuda.disciplinas.map((d, i) => el('span', { text: d, style: { '--i': i } }))));
       if (f.formacao && IG()) {
-        conteudo.push(el('div', { class: 'prof-caixa', style: { marginTop: '16px' } },
+        conteudo.push(el('div', { class: 'prof-caixa prof-formacao', style: { marginTop: '16px' } },
           el('div', { class: 'prof-grafico-cab' }, el('h3', { text: 'Quanto tempo até trabalhar' }), el('span', { class: 'prof-min', text: f.formacao.nota })),
           IG().linhaFormacao({ etapas: f.formacao.etapas, maxAnos: 8 }),
           el('div', { class: 'prof-legenda' }, el('span', null, el('i', { style: { '--cor': 'var(--amarelo)' } }), 'caminho técnico'), el('span', null, el('i', { style: { '--cor': 'var(--turquesa)' } }), 'graduação'), el('span', null, el('i', { style: { '--cor': 'color-mix(in srgb, var(--turquesa) 35%, transparent)' } }), 'depois da graduação')),
@@ -334,23 +461,41 @@
     if (S.como_entrar) raiz.appendChild(secao('como-entrar', 'Como entrar', null,
       prosa(f, S.como_entrar.texto, S.como_entrar.fontes),
       S.como_entrar.materias_chave ? el('div', null, el('p', { class: 'prof-min', style: { marginTop: '12px' }, text: 'Matérias que mais pesam. Toque para estudar na Sala Enem e Vestibular:' }),
-        el('div', { class: 'prof-chips-lista' }, S.como_entrar.materias_chave.map(m => el('a', { href: '#', onclick: e => { e.preventDefault(); ganchos.registrar('profissao_materias_chave', { profissao: f.id, curso: m }); ganchos.abrirCurso(m); } }, icone('livro'), ganchos.nomeCurso(m))))) : null));
+        el('div', { class: 'prof-chips-lista' }, S.como_entrar.materias_chave.map((m, i) => el('a', { href: '#', style: { '--i': i }, onclick: e => { e.preventDefault(); ganchos.registrar('profissao_materias_chave', { profissao: f.id, curso: m }); ganchos.abrirCurso(m); } }, icone('livro'), ganchos.nomeCurso(m))))) : null));
 
-    // 5. Quanto ganha
-    if (S.quanto_ganha) raiz.appendChild(secao('quanto-ganha', 'Quanto ganha', 'Salário-base de quem foi contratado com carteira. Adicionais não entram.', blocoSalario(f, S.quanto_ganha)));
+    // 5. Quanto ganha: o chute vem primeiro; os valores ficam cobertos até o fim do chute
+    if (S.quanto_ganha) raiz.appendChild(secao('quanto-ganha', 'Quanto ganha', 'Salário-base de quem foi contratado com carteira. Adicionais não entram.',
+      blocoSalario(f, S.quanto_ganha, { aoRevelar: revelarSalario, segredo: sg => segredos.push(sg), semChute: () => revelarSalario(2) })));
 
     // 6. Caminhos
-    if (S.caminhos) raiz.appendChild(secao('caminhos', 'Outros caminhos', null, el('div', { class: 'prof-cards' }, S.caminhos.itens.map(c => el('div', { class: 'prof-caixa' }, el('h3', { text: c.titulo }), el('p', null, c.texto, citar(f, c.fontes)))))));
+    if (S.caminhos) raiz.appendChild(secao('caminhos', 'Outros caminhos', null, el('div', { class: 'prof-cards' }, S.caminhos.itens.map((c, i) => el('div', { class: 'prof-caixa', style: { '--i': i } }, el('h3', { text: c.titulo }), el('p', null, c.texto, citar(f, c.fontes)))))));
 
-    // 7. DNA e carta
+    // 7. DNA e carta: o gráfico se monta ao aparecer
     if (f.dna && IG()) raiz.appendChild(secao('dna', 'DNA da profissão', f.dna_calibrado ? 'Calibrado com profissionais da área.' : 'Estimativa inicial, a calibrar com profissionais da área.', blocoDna(f, ix)));
 
     // 8. Dilema
     if (f.dilemas && f.dilemas.length) raiz.appendChild(secao('dilema', 'O que você faria?', 'Um dilema real da profissão. Vote e veja o que a lei diz.', blocoDilema(f, f.dilemas[0])));
 
-    // 9. Ninguém conta
-    if (S.ninguem_conta) raiz.appendChild(secao('ninguem-conta', 'O que ninguém te conta', null,
-      el('div', { class: 'prof-caixa prof-caixa--coral' }, el('h3', null, icone('olho'), 'Os pontos difíceis, sem rodeio'), el('ul', { class: 'prof-lista prof-lista--coral' }, S.ninguem_conta.itens.map(i => el('li', null, i.texto, citar(f, i.fontes)))))));
+    // 9. Ninguém conta: cartas viradas, uma por vez
+    if (S.ninguem_conta) {
+      const itens = S.ninguem_conta.itens;
+      const viradas = new Set();
+      const cartas = itens.map((it, i) => {
+        const verso = el('div', { class: 'prof-virar-verso', hidden: true }, el('p', null, it.texto, citar(f, it.fontes)));
+        const frente = el('button', { type: 'button', class: 'prof-virar-frente', 'aria-expanded': 'false', onclick: () => virar(i) },
+          el('span', { class: 'prof-virar-n', text: String(i + 1) }), el('span', { text: 'Toque para revelar' }), icone('olho'));
+        return { caixa: el('li', { class: 'prof-virar', style: { '--i': i } }, frente, verso), frente, verso };
+      });
+      const todas = botao('Revelar todos', { classe: 'prof-btn--linha prof-btn--pequeno', icone: 'olho', onclick: () => itens.forEach((_, i) => virar(i)) });
+      function virar(i) {
+        const c = cartas[i]; if (viradas.has(i)) return;
+        viradas.add(i); c.frente.hidden = true; c.verso.hidden = false; c.caixa.classList.add('prof-virar--aberta');
+        if (viradas.size === itens.length) todas.hidden = true;
+      }
+      raiz.appendChild(secao('ninguem-conta', 'O que ninguém te conta', null,
+        el('div', { class: 'prof-caixa prof-caixa--coral' }, el('h3', null, icone('olho'), 'Os pontos difíceis, sem rodeio'),
+          el('ol', { class: 'prof-virar-lista' }, cartas.map(c => c.caixa)), el('div', { style: { marginTop: '12px' } }, todas))));
+    }
 
     // 10. Buscas (assíncrono)
     const secBuscas = secao('buscas', 'Onde e quando se busca', 'Google Trends, Brasil, 2021 a 2026. Índices relativos, não volumes.', el('p', { class: 'prof-min', text: 'Carregando dados…' }));
@@ -358,27 +503,78 @@
     trends().then(t => blocoBuscas(secBuscas, f, ix, t));
 
     // 11. Vizinhas
-    if (S.vizinhas) raiz.appendChild(secao('vizinhas', 'Profissões vizinhas', 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, S.vizinhas.map(v => {
+    if (S.vizinhas) raiz.appendChild(secao('vizinhas', 'Profissões vizinhas', 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, S.vizinhas.map((v, i) => {
       const p = ix.profissoes.find(x => x.id === v.id);
-      return el('div', { class: 'prof-caixa' }, el('h3', null, temFicha(p) ? link(p.nome, 'profissao-' + p.id) : (p ? p.nome : v.id)), el('p', { text: v.diferenca }), p && !temFicha(p) ? el('p', { class: 'prof-micro', style: { marginTop: '6px' }, text: 'Ficha em breve' }) : null);
+      return el('div', { class: 'prof-caixa', style: { '--i': i } }, el('h3', null, temFicha(p) ? link(p.nome, 'profissao-' + p.id) : (p ? p.nome : v.id)), el('p', { text: v.diferenca }), p && !temFicha(p) ? el('p', { class: 'prof-micro', style: { marginTop: '6px' }, text: 'Ficha em breve' }) : null);
     }))));
 
-    // 12. Fontes
-    raiz.appendChild(secao('fontes', 'Fontes', `Conferidas em ${dataBR(f.conferido_em)}. Os números entre colchetes ao longo da ficha levam a esta lista.`,
-      el('ol', { class: 'prof-fontes' }, (f.fontes || []).map((fo, i) => el('li', { id: 'fonte-' + fo.id },
-        el('div', null, el('b', { text: `${i + 1}. ` }), fo.url ? el('a', { href: fo.url, target: '_blank', rel: 'noopener' }, fo.titulo, ' ', icone('link')) : fo.titulo),
-        el('div', { class: 'prof-fontes-meta', text: `${fo.orgao}. Consultado em ${dataBR(fo.consultado_em)}${fo.dados_atualizados_em ? ', dados atualizados em ' + dataBR(fo.dados_atualizados_em) : ''}. Fonte ${fo.tipo === 'primaria' ? 'primária' : 'secundária'}.` }),
-        fo.nota ? el('div', { class: 'prof-fontes-nota', text: 'Pendência: ' + fo.nota }) : null))),
+    // 12. Fontes: guardadas; a lista abre no botão
+    const listaFontes = el('ol', { class: 'prof-fontes', id: 'prof-lista-fontes', hidden: true }, (f.fontes || []).map((fo, i) => el('li', { id: 'fonte-' + fo.id, style: { '--i': i } },
+      el('div', null, el('b', { text: `${i + 1}. ` }), fo.url ? el('a', { href: fo.url, target: '_blank', rel: 'noopener' }, fo.titulo, ' ', icone('link')) : fo.titulo),
+      el('div', { class: 'prof-fontes-meta', text: metaFonte(fo) }),
+      fo.nota ? el('div', { class: 'prof-fontes-nota', text: 'Pendência: ' + fo.nota }) : null)));
+    const total = (f.fontes || []).length;
+    const abrirLista = botao(`Ver as ${total} fontes desta ficha`, { classe: 'prof-btn--linha', icone: 'livro', onclick: () => {
+      const aberta = listaFontes.hidden; listaFontes.hidden = !aberta; abrirLista.setAttribute('aria-expanded', String(aberta));
+      abrirLista.lastChild.textContent = aberta ? 'Guardar as fontes' : `Ver as ${total} fontes desta ficha`;
+      if (aberta) listaFontes.classList.add('prof-fontes--abrindo');
+    } });
+    abrirLista.setAttribute('aria-expanded', 'false'); abrirLista.setAttribute('aria-controls', 'prof-lista-fontes');
+    raiz.appendChild(secao('fontes', 'Fontes', `Conferidas em ${dataBR(f.conferido_em)}. Toque num número ao longo da ficha para ver de onde ele vem.`,
+      abrirLista, listaFontes,
       el('div', { class: 'prof-revisao' },
         el('span', { class: f.revisao && f.revisao.fontes === 'conferidas' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.fontes === 'conferidas' ? 'certo' : 'relogio'), 'Fontes: ' + (f.revisao ? f.revisao.fontes : 'pendente')),
         el('span', { class: f.revisao && f.revisao.ia === 'ok' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.ia === 'ok' ? 'certo' : 'relogio'), 'Validação por IA (Mergulho Triplo): ' + (f.revisao ? f.revisao.ia : 'pendente')),
         el('span', { class: f.revisao && f.revisao.profissional === 'ok' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.profissional === 'ok' ? 'certo' : 'relogio'), f.revisao && f.revisao.profissional === 'ok' ? `Revisada por ${f.revisao.revisor} em ${dataBR(f.revisao.data)}` : 'Revisão por profissional da área: pendente')),
       el('p', { class: 'prof-fonte-nota' }, 'Achou um erro? Conte para a equipe do Diver: a correção entra na fila de revisão. ', link('Como fazemos as fichas', 'profissoes-metodo'))));
 
-    corpo.querySelectorAll('.prof-secao').forEach(sec => {
-      const id = sec.id.replace(/^sec-/, ''); const titulo = sec.querySelector('h2').firstChild.textContent;
-      nav.appendChild(el('a', { href: '#' + id, text: titulo, onclick: e => { e.preventDefault(); sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }));
+    // Guia: um chip por seção, o "Próximo" no pé de cada uma e a seção atual acesa
+    const secoes = [...corpo.querySelectorAll('.prof-secao')];
+    const chips = secoes.map(sec => {
+      const titulo = sec.querySelector('h2').firstChild.textContent;
+      const a = el('a', { href: '#' + sec.id.replace(/^sec-/, ''), text: titulo, onclick: e => { e.preventDefault(); sec.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: 'start' }); } });
+      nav.appendChild(a);
+      return a;
     });
+    secoes.forEach((sec, i) => {
+      const prox = secoes[i + 1]; if (!prox) return;
+      sec.appendChild(el('button', { type: 'button', class: 'prof-proximo', onclick: () => prox.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: 'start' }) },
+        el('span', { class: 'prof-micro', text: 'Próximo' }), el('b', { text: prox.querySelector('h2').firstChild.textContent }), icone('baixo')));
+    });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        const i = secoes.indexOf(e.target);
+        chips.forEach((c, k) => { if (k === i) { c.setAttribute('aria-current', 'true'); c.scrollIntoView({ block: 'nearest', inline: 'center' }); } else c.removeAttribute('aria-current'); });
+      }), { rootMargin: '-40% 0px -55% 0px' });
+      secoes.forEach(s => io.observe(s));
+      limpezas.push(() => io.disconnect());
+    }
+
+    // Doca com as ações no rodapé: aparece depois da abertura
+    const btnMira = botao(estado.mira.includes(f.id) ? 'Na mira' : 'Pôr na mira', { classe: 'prof-btn--linha prof-btn--mira', icone: estado.mira.includes(f.id) ? 'certo' : 'alvo', pressed: String(estado.mira.includes(f.id)), onclick: () => alternarMira(f, btnMira) });
+    const doca = el('div', { class: 'prof-doca', role: 'region', 'aria-label': 'Ações da ficha' }, btnMira,
+      f.dia ? link('Viver um dia', 'profissao-' + f.id + '-dia', { classe: 'prof-btn prof-btn--primario', icone: 'play' }) : null,
+      f.mitos && f.mitos.length ? link('Mito ou verdade', 'profissao-' + f.id + '-mitos', { classe: 'prof-btn prof-btn--linha', icone: 'dado' }) : null);
+    raizSecoes.appendChild(doca);
+
+    // Progresso da leitura e a doca (um só ouvinte de rolagem, em qualquer contêiner)
+    let pendente = false;
+    const medir = () => {
+      pendente = false;
+      if (!raizSecoes.isConnected) return;
+      const r = corpo.getBoundingClientRect(), alto = Math.max(1, r.height - innerHeight * 0.6);
+      barra.style.transform = `scaleX(${Math.min(1, Math.max(0, -r.top / alto))})`;
+      doca.classList.toggle('prof-doca--visivel', palco.getBoundingClientRect().bottom < innerHeight * 0.55);
+    };
+    const aoRolar = () => { if (!pendente) { pendente = true; requestAnimationFrame(medir); } };
+    document.addEventListener('scroll', aoRolar, { passive: true, capture: true });
+    addEventListener('resize', aoRolar, { passive: true });
+    limpezas.push(() => { document.removeEventListener('scroll', aoRolar, { capture: true }); removeEventListener('resize', aoRolar); });
+
+    aplicarSalario(false);
+    observarCenas(corpo);
+    requestAnimationFrame(medir);
     raiz = raizSecoes;
   }
   function alternarMira(f, btn) {
@@ -389,7 +585,11 @@
   }
 
   /* ---------- Bloco: Quanto ganha (chute + faixa + tabela) ---------- */
-  function blocoSalario(f, q) {
+  /* opcoes: aoRevelar(nivel) avisa a ficha (1 = média do topo, 2 = tudo); segredo(fn) registra a tampa da tabela;
+     semChute() revela tudo sem jogar. */
+  function blocoSalario(f, q, opcoes) {
+    const op = opcoes || {};
+    const avisar = n => { if (op.aoRevelar) op.aoRevelar(n); };
     const raiz = el('div');
     const medias = q.medias || [];
     const pisos = q.pisos || [];
@@ -415,6 +615,7 @@
         resultado.appendChild(el('p', { class: 'prof-veredito' }, 'Você chutou ', el('b', { text: `${Math.abs(dif)}% ${dif >= 0 ? 'acima' : 'abaixo'}` }), ` da média de contratação de ${m.cargo.toLowerCase()}, que é ${brl(m.valor)}`, citar(f, m.fontes), m.faixa ? `. A faixa turquesa é onde fica a maior parte dos contratos: ${brl(m.faixa.de)} a ${brl(m.faixa.ate)}.` : '.'));
         if (piso) resultado.appendChild(el('p', { class: 'prof-min', style: { marginTop: '8px' } }, `Piso por lei para ${piso.cargo.toLowerCase()}: ${brl(piso.valor)}`, citar(f, piso.fontes), '. A regra de aplicação do piso está logo abaixo, na tabela.'));
         faixa.disabled = true; btn.disabled = true;
+        avisar(rodada === 0 && medias[1] && ch.segunda ? 1 : 2);
         if (rodada === 0 && medias[1] && ch.segunda) {
           resultado.appendChild(el('div', { style: { marginTop: '12px' } }, botao(ch.segunda.pergunta, { classe: 'prof-btn--linha', iconeDepois: 'direita', onclick: () => { rodada = 1; pergunta.textContent = ch.segunda.pergunta; faixa.disabled = false; btn.disabled = false; faixa.value = ch.segunda.inicial; valor.textContent = brl(ch.segunda.inicial); resultado.textContent = ''; } })));
         }
@@ -426,10 +627,22 @@
         el('thead', null, el('tr', null, el('th', { text: 'Cargo' }), el('th', { text: 'Piso por lei (44 h)' }), el('th', { text: 'Média de contratação' }), el('th', { text: 'Período' }))),
         el('tbody', null, pisos.map((p, i) => {
           const m = medias.find(x => x.cargo === p.cargo) || medias[i];
-          return el('tr', null, el('td', { text: p.cargo }), el('td', { class: 'prof-num' }, brl(p.valor), citar(f, p.fontes)), el('td', { class: 'prof-num' }, m ? [brl(m.valor), citar(f, m.fontes)] : '—'), el('td', { class: 'prof-min', text: m ? m.periodo : '' }));
+          return el('tr', null, el('td', { text: p.cargo }), el('td', { class: 'prof-num', 'data-rotulo': 'Piso por lei (44 h)' }, brl(p.valor), citar(f, p.fontes)), el('td', { class: 'prof-num', 'data-rotulo': 'Média de contratação' }, m ? [brl(m.valor), citar(f, m.fontes)] : '—'), el('td', { class: 'prof-min', 'data-rotulo': 'Período', text: m ? m.periodo : '' }));
         })));
-      raiz.appendChild(el('div', { class: 'prof-rolagem' }, tabela));
-      if (q.piso_regra) raiz.appendChild(el('p', { class: 'prof-fonte-nota' }, q.piso_regra, citar(f, q.piso_regra_fontes)));
+      const valores = el('div', { class: 'prof-segredo-conteudo' }, el('div', { class: 'prof-rolagem' }, tabela),
+        q.piso_regra ? el('p', { class: 'prof-fonte-nota' }, q.piso_regra, citar(f, q.piso_regra_fontes)) : null);
+      const tampa = el('div', { class: 'prof-segredo-tampa' }, icone('cadeado'),
+        el('p', { text: ch ? 'Os valores aparecem depois do seu chute.' : 'Toque para ver os valores.' }),
+        botao('Prefiro só ver os números', { classe: 'prof-btn--linha prof-btn--pequeno', onclick: () => (op.semChute ? op.semChute() : abrir(true, true)) }));
+      const caixaSegredo = el('div', { class: 'prof-segredo' }, valores, tampa);
+      function abrir(aberto, animar) {
+        caixaSegredo.classList.toggle('prof-segredo--aberto', aberto);
+        if (aberto) { valores.removeAttribute('inert'); valores.removeAttribute('aria-hidden'); tampa.hidden = true; if (animar) caixaSegredo.classList.add('prof-revelado'); }
+        else { valores.setAttribute('inert', ''); valores.setAttribute('aria-hidden', 'true'); tampa.hidden = false; }
+      }
+      abrir(false, false);
+      if (op.segredo) op.segredo(abrir); else abrir(true, false);
+      raiz.appendChild(caixaSegredo);
     }
     return raiz;
   }
@@ -441,7 +654,7 @@
     if (!estado.dna) estado.dna = EIXOS.map(() => 50);
     const raiz = el('div');
     const area = el('div', { class: 'prof-dna' });
-    const graficoWrap = el('div');
+    const graficoWrap = el('div', { class: 'prof-dna-grafico' });
     const afin = el('div', { class: 'prof-afinidade' }, el('span', { class: 'prof-min', text: `Sua afinidade com ${f.nome}` }), el('b', { class: 'prof-num' }));
     const controles = el('div', { class: 'prof-dna-controles' });
     EIXOS.forEach(([k, nome], i) => {
@@ -781,6 +994,6 @@
   }
 
   /* No app: ao sair da área, solta os atalhos de teclado da tela (Maré de cartas, Um dia como). */
-  function desmontar() { while (limpezas.length) { try { limpezas.pop()(); } catch (e) { /* ignora */ } } }
+  function desmontar() { fecharFonte(); while (limpezas.length) { try { limpezas.pop()(); } catch (e) { /* ignora */ } } }
   window.Profissoes = { montar, desmontar, iniciar, ganchos, estado: () => estado, indice, ficha, BASE };
 })();
