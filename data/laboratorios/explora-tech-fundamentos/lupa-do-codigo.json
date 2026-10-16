@@ -1838,6 +1838,542 @@
         }
       ],
       "saidaFinal": "bia! BIA\n"
+    },
+    {
+      "id": "lc-lista-1",
+      "grupo": "Coleções",
+      "aulas": [
+        "py-listas"
+      ],
+      "titulo": "Prateleiras",
+      "enunciado": "Uma lista é uma prateleira com posições. Siga o programa e veja a lista crescer, encolher e mudar.",
+      "codigo": "compras = [\"arroz\", \"feijão\"]\ncompras.append(\"café\")\ncompras[0] = \"macarrão\"\nfora = compras.pop()\nprint(compras, fora)\n",
+      "perguntas": [
+        {
+          "linha": 2,
+          "variavel": "compras",
+          "opcoes": [
+            "['arroz', 'feijão', 'café']",
+            "['café', 'arroz', 'feijão']",
+            "['arroz', 'feijão']"
+          ],
+          "porque": "append põe o café no fim."
+        },
+        {
+          "linha": 3,
+          "variavel": "compras",
+          "opcoes": [
+            "['macarrão', 'feijão', 'café']",
+            "['arroz', 'feijão', 'café']",
+            "['macarrão', 'arroz', 'feijão', 'café']"
+          ],
+          "porque": "compras[0] = \"macarrão\" troca o item da posição 0; não acrescenta."
+        },
+        {
+          "linha": 4,
+          "variavel": "fora",
+          "opcoes": [
+            "'café'",
+            "'macarrão'",
+            "None"
+          ],
+          "porque": "pop() tira e devolve o último item."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['arroz', 'feijão']"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['arroz', 'feijão', 'café']"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['macarrão', 'feijão', 'café']"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['macarrão', 'feijão']"
+            },
+            "fora": {
+              "tipo": "str",
+              "valor": "'café'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['macarrão', 'feijão']"
+            },
+            "fora": {
+              "tipo": "str",
+              "valor": "'café'"
+            }
+          },
+          "saida": 28
+        }
+      ],
+      "saidaFinal": "['macarrão', 'feijão'] café\n"
+    },
+    {
+      "id": "lc-lista-2",
+      "grupo": "Coleções",
+      "aulas": [
+        "py-listas"
+      ],
+      "titulo": "Dois nomes, uma lista",
+      "enunciado": "b = a não copia a lista. Siga o programa e veja o que acontece com a quando b muda.",
+      "codigo": "a = [1, 2]\nb = a\nb.append(3)\nc = a.copy()\nc.append(4)\nprint(a, b, c)\n",
+      "perguntas": [
+        {
+          "linha": 4,
+          "variavel": "a",
+          "opcoes": [
+            "[1, 2, 3]",
+            "[1, 2]",
+            "[3]"
+          ],
+          "porque": "b e a são a mesma lista: o append feito por b aparece em a."
+        },
+        {
+          "linha": 6,
+          "variavel": "c",
+          "opcoes": [
+            "[1, 2, 3, 4]",
+            "[1, 2, 4]",
+            "[4]"
+          ],
+          "porque": "c é uma cópia de a com [1, 2, 3], e recebe o 4."
+        },
+        {
+          "linha": 6,
+          "variavel": "a",
+          "opcoes": [
+            "[1, 2, 3]",
+            "[1, 2, 3, 4]",
+            "[1, 2]"
+          ],
+          "porque": "A cópia é outra lista: mudar c não mexe em a."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "c": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 6,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "c": {
+              "tipo": "list",
+              "valor": "[1, 2, 3, 4]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "c": {
+              "tipo": "list",
+              "valor": "[1, 2, 3, 4]"
+            }
+          },
+          "saida": 33
+        }
+      ],
+      "saidaFinal": "[1, 2, 3] [1, 2, 3] [1, 2, 3, 4]\n"
+    },
+    {
+      "id": "lc-dic-1",
+      "grupo": "Coleções",
+      "aulas": [
+        "py-dicionarios"
+      ],
+      "titulo": "Armários com etiqueta",
+      "enunciado": "Um dicionário é um armário com gavetas etiquetadas. Siga a contagem de votos gaveta por gaveta.",
+      "codigo": "votos = [\"sim\", \"não\", \"sim\"]\ncontagem = {}\nfor v in votos:\n    contagem[v] = contagem.get(v, 0) + 1\nprint(contagem)\n",
+      "perguntas": [
+        {
+          "linha": 4,
+          "vez": 1,
+          "tipo": "linha",
+          "opcoes": [
+            "3",
+            "5",
+            "2"
+          ],
+          "porque": "Depois da contagem, o for volta para pegar o próximo voto (linha 3)."
+        },
+        {
+          "linha": 3,
+          "vez": 2,
+          "variavel": "contagem",
+          "opcoes": [
+            "{'sim': 1}",
+            "{}",
+            "{'sim': 2}"
+          ],
+          "porque": "Na primeira volta, o get devolveu 0 e a gaveta \"sim\" nasceu com 1."
+        },
+        {
+          "linha": 5,
+          "variavel": "contagem",
+          "opcoes": [
+            "{'sim': 2, 'não': 1}",
+            "{'sim': 1, 'não': 1}",
+            "{'não': 1, 'sim': 2}"
+          ],
+          "porque": "O segundo \"sim\" soma 1 ao que já havia; a ordem é a de chegada das chaves."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{}"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'não'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 1, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'não'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 1, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 2, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 2, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 2, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 21
+        }
+      ],
+      "saidaFinal": "{'sim': 2, 'não': 1}\n"
     }
   ]
 }

@@ -688,6 +688,179 @@
      }
     ]
    }
+  },
+  {
+   "id": "cb-append-none",
+   "aulas": [
+    "py-tuplas-conjuntos"
+   ],
+   "grupo": "Coleções",
+   "defeitos": 1,
+   "titulo": "A lista que sumiu",
+   "enunciado": "O programa deveria mostrar `[7, 9, 10]`. Ele mostra None. Ache o defeito.",
+   "codigoInicial": "notas = [7, 9]\nnotas = notas.append(10)\nprint(notas)\n",
+   "solucao": "notas = [7, 9]\nnotas.append(10)\nprint(notas)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra a lista",
+     "esperada": "[7, 9, 10]\n"
+    }
+   ],
+   "metas": {
+    "linhas": 3
+   },
+   "dicas": [
+    "O que o append devolve?",
+    "append muda a lista e devolve None. Guardar esse retorno troca a lista por None.",
+    "Escreva só notas.append(10), sem notas = na frente."
+   ],
+   "toque": {
+    "modelo": "notas = [7, 9]\n___\nprint(notas)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "notas.append(10)",
+       "notas = notas.append(10)",
+       "notas = notas + 10"
+      ],
+      "certa": 0,
+      "dica": "O append trabalha calado: não se atribui."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-conjunto-vazio",
+   "aulas": [
+    "py-tuplas-conjuntos"
+   ],
+   "grupo": "Coleções",
+   "defeitos": 1,
+   "titulo": "Vazio errado",
+   "enunciado": "O programa deveria mostrar quantas cidades diferentes aparecem na lista (3). Ele quebra com AttributeError. Ache o defeito.",
+   "codigoInicial": "cidades = [\"Recife\", \"Natal\", \"Recife\", \"Belém\"]\nvistas = {}\nfor c in cidades:\n    vistas.add(c)\nprint(len(vistas))\n",
+   "solucao": "cidades = [\"Recife\", \"Natal\", \"Recife\", \"Belém\"]\nvistas = set()\nfor c in cidades:\n    vistas.add(c)\nprint(len(vistas))\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 3",
+     "esperada": "3\n"
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "A mensagem diz que o objeto não tem add. Que tipo é {}?",
+    "{} vazio é um dicionário. O conjunto vazio se escreve de outro jeito.",
+    "Troque vistas = {} por vistas = set()."
+   ],
+   "toque": {
+    "modelo": "cidades = [\"Recife\", \"Natal\", \"Recife\", \"Belém\"]\nvistas = ___\nfor c in cidades:\n    vistas.add(c)\nprint(len(vistas))",
+    "lacunas": [
+     {
+      "opcoes": [
+       "set()",
+       "{}",
+       "[]"
+      ],
+      "certa": 0,
+      "dica": "Conjunto vazio é set()."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-tupla-troca",
+   "aulas": [
+    "py-tuplas-conjuntos"
+   ],
+   "grupo": "Coleções",
+   "defeitos": 1,
+   "titulo": "Preço que não muda",
+   "enunciado": "O programa deveria corrigir o preço da primeira venda para 6.0 e mostrar `[('coxinha', 6.0), ('suco', 4.0)]`. Ele quebra com TypeError. Ache o defeito.",
+   "codigoInicial": "vendas = [(\"coxinha\", 5.0), (\"suco\", 4.0)]\nvendas[0][1] = 6.0\nprint(vendas)\n",
+   "solucao": "vendas = [(\"coxinha\", 5.0), (\"suco\", 4.0)]\nvendas[0] = (\"coxinha\", 6.0)\nprint(vendas)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Preço corrigido",
+     "esperada": "[('coxinha', 6.0), ('suco', 4.0)]\n"
+    }
+   ],
+   "metas": {
+    "linhas": 3
+   },
+   "dicas": [
+    "Cada venda é uma tupla. Tupla aceita troca de item?",
+    "A lista aceita trocar a tupla inteira, mesmo que a tupla não mude por dentro.",
+    "vendas[0] = (\"coxinha\", 6.0)"
+   ],
+   "toque": {
+    "modelo": "vendas = [(\"coxinha\", 5.0), (\"suco\", 4.0)]\nvendas[___] = (\"coxinha\", 6.0)\nprint(vendas)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "0",
+       "0][1",
+       "1"
+      ],
+      "certa": 0,
+      "dica": "Troque a venda inteira da posição 0."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-estoque-negativo",
+   "aulas": [
+    "py-revisao-colecoes"
+   ],
+   "grupo": "Projeto: cantina",
+   "defeitos": 2,
+   "titulo": "Estoque no vermelho",
+   "enunciado": "Para cada pedido, o programa deveria mostrar `vendido` e baixar o estoque, ou `esgotado` se não houver (ou se o produto não existir). Com os pedidos do exemplo: vendido, esgotado, esgotado. Há dois defeitos.",
+   "codigoInicial": "estoque = {\"coxinha\": 1}\npedidos = [\"coxinha\", \"coxinha\", \"pastel\"]\nfor p in pedidos:\n    estoque[p] = estoque[p] - 1\n    print(\"vendido\")\n",
+   "solucao": "estoque = {\"coxinha\": 1}\npedidos = [\"coxinha\", \"coxinha\", \"pastel\"]\nfor p in pedidos:\n    if estoque.get(p, 0) > 0:\n        estoque[p] = estoque[p] - 1\n        print(\"vendido\")\n    else:\n        print(\"esgotado\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Vende só o que tem",
+     "esperada": "vendido\nesgotado\nesgotado\n"
+    }
+   ],
+   "metas": {
+    "linhas": 8
+   },
+   "dicas": [
+    "Rode: o pastel dá KeyError, e a segunda coxinha deixa o estoque em -1.",
+    "Antes de baixar, confira com estoque.get(p, 0) > 0. O get resolve o pastel que não existe.",
+    "if estoque.get(p, 0) > 0: baixa e mostra vendido / else: mostra esgotado"
+   ],
+   "toque": {
+    "modelo": "estoque = {\"coxinha\": 1}\npedidos = [\"coxinha\", \"coxinha\", \"pastel\"]\nfor p in pedidos:\n    if estoque.___(p, 0) > 0:\n        estoque[p] = estoque[p] - 1\n        print(\"vendido\")\n    else:\n        print(\"___\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "get",
+       "pop",
+       "items"
+      ],
+      "certa": 0,
+      "dica": "Busca sem erro, com padrão."
+     },
+     {
+      "opcoes": [
+       "esgotado",
+       "vendido",
+       "erro"
+      ],
+      "certa": 0,
+      "dica": "O que mostrar quando não há estoque."
+     }
+    ]
+   }
   }
  ]
 }

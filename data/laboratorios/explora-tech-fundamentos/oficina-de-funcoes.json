@@ -603,6 +603,228 @@
      }
     ]
    }
+  },
+  {
+   "id": "of-media",
+   "aulas": [
+    "py-percorrer-listas"
+   ],
+   "grupo": "Com listas",
+   "titulo": "Média da turma",
+   "enunciado": "A função `media(notas)` devolve a média da lista. Se a lista estiver vazia, devolva 0 (sem dividir por zero).",
+   "codigoInicial": "def media(notas):\n    return sum(notas) / len(notas)\n",
+   "solucao": "def media(notas):\n    if len(notas) == 0:\n        return 0\n    return sum(notas) / len(notas)\n",
+   "exemplos": [
+    "media([6, 8, 10])   # dá 8.0",
+    "media([])           # dá 0"
+   ],
+   "testes": [
+    {
+     "nome": "media([6, 8, 10]) dá 8.0",
+     "codigo": "assert media([6, 8, 10]) == 8.0, 'media([6, 8, 10]) deveria dar 8.0'"
+    },
+    {
+     "nome": "Lista vazia dá 0",
+     "codigo": "assert media([]) == 0, 'Com a lista vazia, devolva 0 em vez de dividir por zero'"
+    },
+    {
+     "nome": "Um aluno só",
+     "codigo": "assert media([7]) == 7, 'media([7]) deveria dar 7'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Rode com uma lista vazia: len([]) é 0, e dividir por 0 dá ZeroDivisionError.",
+    "Antes da conta, um if confere se a lista está vazia e devolve 0.",
+    "if len(notas) == 0: return 0"
+   ],
+   "toque": {
+    "modelo": "def media(notas):\n    if len(notas) == ___:\n        return 0\n    return sum(notas) / len(notas)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "0",
+       "1",
+       "None"
+      ],
+      "certa": 0,
+      "dica": "Lista vazia tem tamanho zero."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-mediana",
+   "aulas": [
+    "py-percorrer-listas"
+   ],
+   "grupo": "Com listas",
+   "titulo": "Mediana",
+   "enunciado": "A função `mediana(valores)` devolve o valor do meio da lista ordenada; com quantidade par, a média dos dois do meio. Não use o módulo statistics.",
+   "codigoInicial": "def mediana(valores):\n    ordem = sorted(valores)\n    meio = len(ordem) // 2\n    return ordem[meio]\n",
+   "solucao": "def mediana(valores):\n    ordem = sorted(valores)\n    meio = len(ordem) // 2\n    if len(ordem) % 2 == 0:\n        return (ordem[meio - 1] + ordem[meio]) / 2\n    return ordem[meio]\n",
+   "exemplos": [
+    "mediana([8, 3, 5])       # dá 5",
+    "mediana([5, 7, 9, 10])   # dá 8.0"
+   ],
+   "testes": [
+    {
+     "nome": "Quantidade ímpar",
+     "codigo": "assert mediana([8, 3, 5]) == 5, 'mediana([8, 3, 5]) deveria dar 5'"
+    },
+    {
+     "nome": "Quantidade par",
+     "codigo": "assert mediana([5, 7, 9, 10]) == 8.0, 'Com quantidade par, é a média dos dois do meio: 8.0'"
+    },
+    {
+     "nome": "Não muda a lista original",
+     "codigo": "v = [3, 1, 2]\nmediana(v)\nassert v == [3, 1, 2], 'Use sorted, que não mexe na lista original'",
+     "oculto": true
+    },
+    {
+     "nome": "Valor extremo",
+     "codigo": "assert mediana([2, 2, 3, 50]) == 2.5, 'mediana([2, 2, 3, 50]) deveria dar 2.5'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 6
+   },
+   "dicas": [
+    "O código inicial já funciona com quantidade ímpar. Teste com [5, 7, 9, 10].",
+    "Com quantidade par (len % 2 == 0), os do meio são ordem[meio - 1] e ordem[meio].",
+    "if len(ordem) % 2 == 0: return (ordem[meio - 1] + ordem[meio]) / 2"
+   ],
+   "toque": {
+    "modelo": "def mediana(valores):\n    ordem = sorted(valores)\n    meio = len(ordem) // 2\n    if len(ordem) % 2 == 0:\n        return (ordem[___] + ordem[meio]) / 2\n    return ordem[meio]",
+    "lacunas": [
+     {
+      "opcoes": [
+       "meio - 1",
+       "meio + 1",
+       "0"
+      ],
+      "certa": 0,
+      "dica": "O outro do meio fica logo antes."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-contar-palavras",
+   "aulas": [
+    "py-dicionarios"
+   ],
+   "grupo": "Com dicionários",
+   "titulo": "Contar palavras",
+   "enunciado": "A função `contar_palavras(texto)` devolve um dicionário com quantas vezes cada palavra aparece. Ignore maiúsculas: \"Mar\" e \"mar\" são a mesma.",
+   "codigoInicial": "def contar_palavras(texto):\n    freq = {}\n    # corte o texto e conte cada palavra\n    return freq\n",
+   "solucao": "def contar_palavras(texto):\n    freq = {}\n    for p in texto.lower().split():\n        freq[p] = freq.get(p, 0) + 1\n    return freq\n",
+   "exemplos": [
+    "contar_palavras(\"o mar e o sol\")   # dá {\"o\": 2, \"mar\": 1, \"e\": 1, \"sol\": 1}",
+    "contar_palavras(\"Mar mar\")         # dá {\"mar\": 2}"
+   ],
+   "testes": [
+    {
+     "nome": "Frase simples",
+     "codigo": "assert contar_palavras('o mar e o sol') == {'o': 2, 'mar': 1, 'e': 1, 'sol': 1}, 'Confira a contagem de \"o mar e o sol\"'"
+    },
+    {
+     "nome": "Ignora maiúsculas",
+     "codigo": "assert contar_palavras('Mar mar MAR') == {'mar': 3}, 'Mar, mar e MAR contam como a mesma palavra'"
+    },
+    {
+     "nome": "Texto vazio",
+     "codigo": "assert contar_palavras('') == {}, 'Texto vazio dá dicionário vazio'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "split() corta o texto em palavras; lower() deixa tudo minúsculo.",
+    "Para cada palavra: freq[p] = freq.get(p, 0) + 1.",
+    "for p in texto.lower().split(): freq[p] = freq.get(p, 0) + 1"
+   ],
+   "toque": {
+    "modelo": "def contar_palavras(texto):\n    freq = {}\n    for p in texto.___().split():\n        freq[p] = freq.get(p, ___) + 1\n    return freq",
+    "lacunas": [
+     {
+      "opcoes": [
+       "lower",
+       "upper",
+       "strip"
+      ],
+      "certa": 0,
+      "dica": "Deixe tudo minúsculo antes de contar."
+     },
+     {
+      "opcoes": [
+       "0",
+       "1",
+       "p"
+      ],
+      "certa": 0,
+      "dica": "Na primeira vez, a contagem começa em 0."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-mais-vendido",
+   "aulas": [
+    "py-revisao-colecoes"
+   ],
+   "grupo": "Projeto: cantina",
+   "titulo": "O mais vendido",
+   "enunciado": "A função `mais_vendido(vendas)` recebe uma lista de tuplas (produto, preço) e devolve o produto que mais saiu. Com a lista vazia, devolva None.",
+   "codigoInicial": "def mais_vendido(vendas):\n    qtd = {}\n    # conte cada produto e devolva o que mais saiu\n    return None\n",
+   "solucao": "def mais_vendido(vendas):\n    qtd = {}\n    for produto, preco in vendas:\n        qtd[produto] = qtd.get(produto, 0) + 1\n    if not qtd:\n        return None\n    return max(qtd, key=qtd.get)\n",
+   "exemplos": [
+    "mais_vendido([(\"suco\", 4.0), (\"bolo\", 6.0), (\"suco\", 4.0)])   # dá \"suco\"",
+    "mais_vendido([])   # dá None"
+   ],
+   "testes": [
+    {
+     "nome": "Suco ganha",
+     "codigo": "assert mais_vendido([('suco', 4.0), ('bolo', 6.0), ('suco', 4.0)]) == 'suco', 'O suco saiu duas vezes'"
+    },
+    {
+     "nome": "Lista vazia",
+     "codigo": "assert mais_vendido([]) is None, 'Sem vendas, devolva None'"
+    },
+    {
+     "nome": "Conta vendas, não preço",
+     "codigo": "assert mais_vendido([('bolo', 30.0), ('coxinha', 5.0), ('coxinha', 5.0)]) == 'coxinha', 'O mais vendido é o que saiu mais vezes, não o mais caro'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 7
+   },
+   "dicas": [
+    "Monte um dicionário de contagem: produto → quantas vezes saiu.",
+    "Desempacote cada venda no for: for produto, preco in vendas. Depois, max(qtd, key=qtd.get).",
+    "qtd[produto] = qtd.get(produto, 0) + 1 / if not qtd: return None / return max(qtd, key=qtd.get)"
+   ],
+   "toque": {
+    "modelo": "def mais_vendido(vendas):\n    qtd = {}\n    for produto, preco in vendas:\n        qtd[produto] = qtd.get(produto, 0) + 1\n    if not qtd:\n        return None\n    return max(qtd, key=___)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "qtd.get",
+       "len",
+       "qtd"
+      ],
+      "certa": 0,
+      "dica": "Compare pelos valores do dicionário."
+     }
+    ]
+   }
   }
  ]
 }
