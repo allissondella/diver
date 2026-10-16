@@ -1,7 +1,7 @@
 # Caderno do curso: Explora Tech · Fundamentos
 
-> Trilha: `data/trilhas/explora-tech-fundamentos.json` (ainda não existe) · Plano: `docs/cadernos/explora-tech-mapa-curricular.md` · Regras gerais: `docs/cadernos/LEIA-ME.md` · Jeito de ensinar: `docs/cadernos/professor-diver.md`
-> **Plano aprovado em 2026-10-13 ("ok manda bala"). Onda 0 feita:** sala Tecnologia, bloco de código, Python no navegador, Módulo 1 e Robô Entregador. **Onda 1 em andamento:** Módulo 2 feito (2026-10-14).
+> Trilha: `data/trilhas/explora-tech-fundamentos.json` · Plano: `docs/cadernos/explora-tech-mapa-curricular.md` · Regras gerais: `docs/cadernos/LEIA-ME.md` · Jeito de ensinar: `docs/cadernos/professor-diver.md`
+> **Plano aprovado em 2026-10-13 ("ok manda bala"). Fase 1 completa em 2026-10-16:** 60 aulas em 12 módulos, 1.201 questões, 1.201 variantes, 243 fichas, prova final de 40 e 18 laboratórios "Mão na massa" com 181 missões. Falta a revisão humana (Allisson) e a Fila de Validação (só com o OK do admin).
 
 ## Público e objetivo
 - **Quem estuda:** quem começa do zero em tecnologia e ainda não sabe que área seguir. Jovens e adultos, sem nada infantil.
@@ -112,6 +112,11 @@ Licenças conferidas na web em **2026-10-13**:
 - Só quando necessária: uma ou duas frases, entre aspas, com autor, obra e capítulo ou página (Lei 9.610/1998, art. 46, III).
 - O normal é indicar a leitura ("Leitura: Menezes, capítulo sobre listas") em vez de citar.
 
+- 2026-10-16 · **Sem sqlite3** no Banco ao Vivo: o banco é CSV e JSON, para não baixar nada além do Python do curso. SQL de verdade fica para a Fase 2.
+- 2026-10-16 · Laboratórios sem Python ficam **só em JavaScript**, com a regra num "motor" sem tela (`js/laboratorio/motor-*.js`) que o `conferir-laboratorios.mjs` também roda: Fábrica de Portas, Sala de Controle, Jornada do Pacote, Laboratório de Rede, Missões no Terminal e Linha do Tempo do Código. Modelo de tela: `js/laboratorio/lab-js.js`.
+- 2026-10-16 · Terminal e Git são **de mentirinha**: um shell com sistema de arquivos virtual (`motor-shell.js`) e um Git próprio como plugin dele (`motor-git.js`: índice, commits com hash calculado, branches, merge de três vias com marcas de conflito, revert, push, pull e clone num GitHub de faz de conta). Nada toca o computador do aluno. As mensagens do Git ficam em inglês, como no Git de verdade e como as aulas ensinam.
+- 2026-10-16 · Mini-Masmorra (aulas 29 e 59) e Arena de Robôs (aula 60) são laboratórios de Python com as peças prontas no "prelude"; a Arena não tem sorteio na hora (o Titã usa semente fixa) e mostra a luta turno a turno na saída. Ranking da Arena só com o OK do usuário (mapa, 8g).
+
 ## O que as referências ensinaram (conclusões nossas, nunca trechos)
 | Data | Referência (título · autor/canal) | Conclusão |
 |---|---|---|
@@ -122,6 +127,14 @@ Licenças conferidas na web em **2026-10-13**:
 |---|---|---|---|
 
 ## Já feito
+- 2026-10-16 · **Módulos 3 a 12** (aulas 11 a 60), a pedido do usuário ("manda bala em tudo, laboratórios e as 4 etapas sem parar"), cada módulo com 100 questões, 100 variantes e fichas, todos com 0 aviso no `conferir-trilha`:
+  - Módulo 3 · Lógica: repetição e funções (while, for e range, funções, depurar, busca binária) + **Caça ao Número**.
+  - Módulos 4 a 7 · Python (primeiros passos; listas e dicionários; funções de verdade com o projeto da calculadora; arquivos, CSV, JSON e try/except) + **Organizador de Pasta**, **Banco ao Vivo** e **O Caso do Servidor Sumido**, e missões novas na Lupa, no Caça-Bugs e na Oficina.
+  - Módulo 8 · Como o computador funciona (bits e binário, hardware, sistema operacional, arquivos) + **Fábrica de Portas Lógicas** e **Sala de Controle**.
+  - Módulos 9 e 10 · Redes (IP e máscara, DNS, pacotes e camadas, portas TCP e UDP, HTTP, HTTPS, diagnóstico) + **Jornada do Pacote**, **Mini-servidor** e **Laboratório de Rede**.
+  - Módulo 11 · Linux e terminal + **Missões no Terminal** (13 missões).
+  - Módulo 12 · Git e GitHub (o projeto da fase é publicar no GitHub) + **Linha do Tempo do Código** (16 missões), **Mini-Masmorra** (6) e **Arena de Robôs** (5).
+  - Decisões de ensino: comandos de terminal e de Git, portas e versões levam `! revisar` para o especialista; as revisões de módulo reaproveitam os temas das aulas (as fichas já existem) e só criam o tema novo da revisão; a revisão da aula 60 mistura o ciclo do Git com perguntas da fase inteira.
 - 2026-10-14 · **Módulo 2 · Lógica: decisões** (aulas 6 a 10: if/elif/else; booleanos; comparações e condições compostas; entrada do usuário e validação; revisão com o programa do cinema). 101 questões, 101 variantes, 20 fichas, 24 pares, 19 V/F, 10 adivinhas, 5 sequências, 32 palavras (todas no dicionário). Cada "o que este código mostra?" conferida rodando no Python. Laboratórios: Robô Entregador com 4 missões de decisão (sensores, vários mundos, lacunas no celular), **Lupa do Código** (4 missões), **Caça-Bugs** (5) e **Oficina de Funções** (3). Plano aprovado pelo usuário ("manda bala e já pode ir subindo para produção").
   - Decisões de ensino: no Módulo 2 o `input()` entra só na aula 9, depois de o aluno dominar a decisão com valores fixos; validar antes de converter (`isdigit()` antes do `int()`), porque laços ainda não existem; "a partir de" e "até" levam o igual, e o erro por um se pega com três valores (limite, um abaixo, um acima); a revisão junta tudo num programa só (meia-entrada do cinema) e apresenta o teste de mesa, que a Lupa do Código faz na tela.
 - 2026-10-13 · Caminho da aula (Ler → Questões → Mão na massa → próxima aula), comandos sempre à vista e laboratório Primeiros Programas (aulas 2 a 5), a pedido do usuário. Robô: missões 1 a 3 na aula 1 e 4 a 6 na revisão.
@@ -134,14 +147,10 @@ Licenças conferidas na web em **2026-10-13**:
   - Custo estimado da Fila: ~US$ 90 a 108 com variantes.
 
 ## Próximos passos e pendências
-- **Aguardando o OK do Allisson** no plano (mapa curricular), em especial:
-  - sala Tecnologia;
-  - bloco de código no `quiz.js` (toca no motor das perguntas);
-  - Pyodide com sandbox;
-  - prova com `exigeFases: true`;
-  - campo `paraIrAlem`.
-- Onda 1, o que falta: Módulos 3 a 7 (aulas 11 a 35), um de cada vez com o OK do usuário; Robô com laços e funções; Organizador de Pasta; Fábrica de Portas Lógicas (prioridade B). Mais missões na Lupa, no Caça-Bugs e na Oficina a cada módulo.
-- Fila do Módulo 2 (só estimativa, `fila.mjs simular`): ~US$ 3,76 para as 101 questões, e o mesmo para as variantes. Nada enviado.
+- Revisão humana do curso inteiro (Allisson): começar pelos itens `revisar` (74 no curso), que são comandos, portas, versões e datas.
+- Fila de Validação do curso inteiro (2026-10-16, só `fila.mjs simular`, nada enviado): ~US$ 44,69 para as 1.201 questões (61 lotes) e ~US$ 44,67 para as variantes, cerca de US$ 89 no total. O envio e a aprovação são do admin.
+- Merge para produção: o usuário.
+- Fases 2 a 4 do Explora Tech: planejar com o usuário, depois do retorno dos alunos na Fase 1.
 - Antes de validar o curso na Fila: colar `supabase/painel/mergulho-triplo.ts` (agora manda o código da questão às IAs) na Edge Function.
 - Especialista de revisão humana: **Allisson (a confirmar)**. Itens `revisar`: comandos de terminal e Git, portas, versões, valores de configuração.
 - Conferir antes de publicar: licença da tradução *Pense em Python*; links oficiais de todos os "Para ir além".

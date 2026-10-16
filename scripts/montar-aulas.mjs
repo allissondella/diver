@@ -284,7 +284,8 @@ export async function conferirPython(lista = CONFERIR_PYTHON) {
 function questaoJSON(q, id, fase, origem, base = {}) {
   if (q.certa < 0) throw new Error(`${origem}:${q.linha}: questão sem alternativa certa (+)`);
   q.alternativas.forEach((a, i) => { if (i !== q.certa && !q.comentarios[i]) throw new Error(`${origem}:${q.linha}: alternativa errada sem comentário: "${a}"`); });
-  if (new Set(q.alternativas.map(semAcento)).size !== q.alternativas.length) throw new Error(`${origem}:${q.linha}: alternativas repetidas`);
+  // Alternativas de código ou de saída comparam exatas: "ANA" e "ana" são respostas diferentes (upper/lower, Explora Tech)
+  if (new Set(q.alternativas.map(q.altCodigo ? (a) => a : semAcento)).size !== q.alternativas.length) throw new Error(`${origem}:${q.linha}: alternativas repetidas`);
   if (!/Dica de mergulhador:/.test(q.explicacao)) throw new Error(`${origem}:${q.linha}: explicação sem "Dica de mergulhador:"`);
   conferirContas(q, origem);
   if (q.altCodigo) q.alternativas = q.alternativas.map((a) => a.replace(/\\n/g, '\n'));

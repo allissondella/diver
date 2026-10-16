@@ -1,376 +1,1074 @@
 {
-  "id": "caca-bugs",
-  "nome": "Caça-Bugs",
-  "versao": 1,
-  "tipo": "python",
-  "descricao": "Programas que quase funcionam: cada um tem defeitos escondidos. Rode, leia o erro, conserte e deixe todos os testes verdes.",
-  "tituloReferencia": "Comandos que você já conhece",
-  "referencia": [
-    {
-      "nome": "== != > < >= <=",
-      "faz": "comparações: dão True ou False"
-    },
-    {
-      "nome": "and  or  not",
-      "faz": "juntam ou invertem condições"
-    },
-    {
-      "nome": "if condição:",
-      "faz": "roda o bloco recuado só se for True"
-    },
-    {
-      "nome": "elif / else:",
-      "faz": "outro teste / o caso que sobrou"
-    },
-    {
-      "nome": "(4 espaços)",
-      "faz": "o recuo diz o que está dentro do bloco"
-    },
-    {
-      "nome": "int(input(\"…\"))",
-      "faz": "lê o que a pessoa digita e vira número"
-    }
-  ],
-  "fazDeVerdade": {
-    "titulo": "Agora faça de verdade",
-    "texto": "Achar e consertar defeitos é metade do trabalho de quem programa. Treine com o Python do seu computador.",
-    "passos": [
-      "Abra o Thonny, cole o programa de uma missão com o defeito e aperte Run (F5).",
-      "Leia a última linha do erro: ela diz o tipo (SyntaxError, NameError…) e a linha.",
-      "Conserte, rode de novo e teste com valores diferentes, inclusive os da beirada (como exatamente 18)."
-    ]
+ "id": "caca-bugs",
+ "nome": "Caça-Bugs",
+ "versao": 1,
+ "tipo": "python",
+ "descricao": "Programas que quase funcionam: cada um tem defeitos escondidos. Rode, leia o erro, conserte e deixe todos os testes verdes.",
+ "tituloReferencia": "Comandos que você já conhece",
+ "referencia": [
+  {
+   "nome": "== != > < >= <=",
+   "faz": "comparações: dão True ou False"
   },
-  "missoes": [
-    {
-      "id": "cb-carteira",
-      "aulas": [
-        "log-comparacoes"
-      ],
-      "grupo": "Comparações",
-      "defeitos": 1,
-      "titulo": "Carteira aos 18",
-      "enunciado": "Quem tem 18 anos ou mais pode tirar a carteira. Este programa erra justamente com quem tem 18. Ache o defeito.",
-      "codigoInicial": "idade = int(input(\"Idade: \"))\nif idade > 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")\n",
-      "solucao": "idade = int(input(\"Idade: \"))\nif idade >= 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Com 18 anos",
-          "entradas": [
-            "18"
-          ],
-          "esperada": "Idade: 18\nPode tirar a carteira\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com 17 anos",
-          "entradas": [
-            "17"
-          ],
-          "esperada": "Idade: 17\nAinda não pode\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com 40 anos",
-          "entradas": [
-            "40"
-          ],
-          "esperada": "Idade: 40\nPode tirar a carteira\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 5
-      },
-      "dicas": [
-        "Teste de cabeça com 18: a condição da linha 2 dá True ou False?",
-        "\"18 ou mais\" inclui o 18. Qual comparação inclui o próprio número?",
-        "Troque > por >= na linha 2."
-      ],
-      "toque": {
-        "modelo": "idade = int(input(\"Idade: \"))\nif idade ___ 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              ">=",
-              ">",
-              "=="
-            ],
-            "certa": 0,
-            "dica": "\"18 ou mais\" inclui o 18."
-          }
-        ]
-      }
-    },
-    {
-      "id": "cb-senha",
-      "aulas": [
-        "log-comparacoes"
-      ],
-      "grupo": "Comparações",
-      "defeitos": 2,
-      "titulo": "Senha que não entra",
-      "enunciado": "O programa compara a senha digitada com a guardada, mas nem chega a rodar. São dois defeitos na mesma linha.",
-      "codigoInicial": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada = senha\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")\n",
-      "solucao": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada == senha:\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Senha certa",
-          "entradas": [
-            "peixe123"
-          ],
-          "esperada": "Senha: peixe123\nBem-vindo, Diver!\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Senha errada",
-          "entradas": [
-            "peixe"
-          ],
-          "esperada": "Senha: peixe\nSenha errada\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Maiúscula conta",
-          "entradas": [
-            "PEIXE123"
-          ],
-          "esperada": "Senha: PEIXE123\nSenha errada\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 6
-      },
-      "dicas": [
-        "Rode e leia o erro: SyntaxError aponta a linha 3. O que falta e o que sobra nela?",
-        "Um = guarda valor; para comparar, são dois. E toda linha de if termina com dois-pontos.",
-        "A linha 3 fica: if digitada == senha:"
-      ],
-      "toque": {
-        "modelo": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada ___ senha___\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              "==",
-              "=",
-              "!="
-            ],
-            "certa": 0,
-            "dica": "Para comparar, são dois sinais de igual."
-          },
-          {
-            "opcoes": [
-              ":",
-              ";",
-              "."
-            ],
-            "certa": 0,
-            "dica": "A linha do if termina com dois-pontos."
-          }
-        ]
-      }
-    },
-    {
-      "id": "cb-praia",
-      "aulas": [
-        "log-comparacoes"
-      ],
-      "grupo": "Condições compostas",
-      "defeitos": 1,
-      "titulo": "Dia de praia",
-      "enunciado": "É dia de praia quando a temperatura está entre 25 e 35 graus. O programa diz \"praia\" até com 40 graus. Ache o conector errado.",
-      "codigoInicial": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 or graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")\n",
-      "solucao": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 and graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Com 30 graus",
-          "entradas": [
-            "30"
-          ],
-          "esperada": "Temperatura: 30\nDia de praia\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com 40 graus",
-          "entradas": [
-            "40"
-          ],
-          "esperada": "Temperatura: 40\nMelhor ficar na sombra\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com 20 graus",
-          "entradas": [
-            "20"
-          ],
-          "esperada": "Temperatura: 20\nMelhor ficar na sombra\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 5
-      },
-      "dicas": [
-        "Com 40 graus: 40 >= 25 é True. Com or, basta um lado verdadeiro…",
-        "\"Entre 25 e 35\" pede as duas coisas ao mesmo tempo.",
-        "Troque or por and na linha 2."
-      ],
-      "toque": {
-        "modelo": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 ___ graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              "and",
-              "or",
-              "not"
-            ],
-            "certa": 0,
-            "dica": "As duas condições precisam ser verdade ao mesmo tempo."
-          }
-        ]
-      }
-    },
-    {
-      "id": "cb-boletim",
-      "aulas": [
-        "log-revisao-decisoes"
-      ],
-      "grupo": "Revisão",
-      "defeitos": 1,
-      "titulo": "Boletim trocado",
-      "enunciado": "Nota 7 ou mais: aprovado. De 5 a 7: recuperação. Abaixo de 5: reprovado. O programa manda todo mundo com nota alta para a recuperação.",
-      "codigoInicial": "nota = float(input(\"Nota: \"))\nif nota >= 5:\n    print(\"Recuperação\")\nelif nota >= 7:\n    print(\"Aprovado\")\nelse:\n    print(\"Reprovado\")\n",
-      "solucao": "nota = float(input(\"Nota: \"))\nif nota >= 7:\n    print(\"Aprovado\")\nelif nota >= 5:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Com nota 8",
-          "entradas": [
-            "8"
-          ],
-          "esperada": "Nota: 8\nAprovado\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com nota 6",
-          "entradas": [
-            "6"
-          ],
-          "esperada": "Nota: 6\nRecuperação\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com nota 3",
-          "entradas": [
-            "3"
-          ],
-          "esperada": "Nota: 3\nReprovado\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com nota 7",
-          "entradas": [
-            "7"
-          ],
-          "esperada": "Nota: 7\nAprovado\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 7
-      },
-      "dicas": [
-        "Com nota 8, a primeira condição (8 >= 5) já é True. O elif nem chega a ser testado.",
-        "No if/elif, vale o primeiro teste verdadeiro. A condição mais exigente vem primeiro.",
-        "Comece com if nota >= 7: print(\"Aprovado\") e depois elif nota >= 5: print(\"Recuperação\")."
-      ],
-      "toque": {
-        "modelo": "nota = float(input(\"Nota: \"))\nif nota >= ___:\n    print(\"Aprovado\")\nelif nota >= ___:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              "7",
-              "5",
-              "0"
-            ],
-            "certa": 0,
-            "dica": "Aprovado é com 7 ou mais."
-          },
-          {
-            "opcoes": [
-              "5",
-              "7",
-              "10"
-            ],
-            "certa": 0,
-            "dica": "Recuperação começa no 5."
-          }
-        ]
-      }
-    },
-    {
-      "id": "cb-aniversario",
-      "aulas": [
-        "log-revisao-decisoes"
-      ],
-      "grupo": "Revisão",
-      "defeitos": 2,
-      "titulo": "Desconto de aniversário",
-      "enunciado": "Quem faz aniversário em outubro (mês 10) ganha desconto. O programa nem roda: dois defeitos, um na comparação e outro no recuo.",
-      "codigoInicial": "mes = int(input(\"Mês do aniversário: \"))\nif mes = 10:\nprint(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")\n",
-      "solucao": "mes = int(input(\"Mês do aniversário: \"))\nif mes == 10:\n    print(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Em outubro",
-          "entradas": [
-            "10"
-          ],
-          "esperada": "Mês do aniversário: 10\nGanhou 10% de desconto!\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Em março",
-          "entradas": [
-            "3"
-          ],
-          "esperada": "Mês do aniversário: 3\nAinda não é o seu mês\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Em novembro",
-          "entradas": [
-            "11"
-          ],
-          "esperada": "Mês do aniversário: 11\nAinda não é o seu mês\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 5
-      },
-      "dicas": [
-        "Rode: o primeiro erro aponta a linha 2. Depois de consertá-lo, rode de novo, porque aparece o segundo.",
-        "Comparar é ==. E o que fica dentro do if precisa de 4 espaços de recuo.",
-        "Linha 2: if mes == 10:  Linha 3: quatro espaços antes do print."
-      ],
-      "toque": {
-        "modelo": "mes = int(input(\"Mês do aniversário: \"))\nif mes ___ 10:\n    print(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              "==",
-              "=",
-              ">="
-            ],
-            "certa": 0,
-            "dica": "Comparar é com dois sinais de igual."
-          }
-        ]
-      }
-    }
+  {
+   "nome": "and  or  not",
+   "faz": "juntam ou invertem condições"
+  },
+  {
+   "nome": "if condição:",
+   "faz": "roda o bloco recuado só se for True"
+  },
+  {
+   "nome": "elif / else:",
+   "faz": "outro teste / o caso que sobrou"
+  },
+  {
+   "nome": "(4 espaços)",
+   "faz": "o recuo diz o que está dentro do bloco"
+  },
+  {
+   "nome": "int(input(\"…\"))",
+   "faz": "lê o que a pessoa digita e vira número"
+  }
+ ],
+ "fazDeVerdade": {
+  "titulo": "Agora faça de verdade",
+  "texto": "Achar e consertar defeitos é metade do trabalho de quem programa. Treine com o Python do seu computador.",
+  "passos": [
+   "Abra o Thonny, cole o programa de uma missão com o defeito e aperte Run (F5).",
+   "Leia a última linha do erro: ela diz o tipo (SyntaxError, NameError…) e a linha.",
+   "Conserte, rode de novo e teste com valores diferentes, inclusive os da beirada (como exatamente 18)."
   ]
+ },
+ "missoes": [
+  {
+   "id": "cb-carteira",
+   "aulas": [
+    "log-comparacoes"
+   ],
+   "grupo": "Comparações",
+   "defeitos": 1,
+   "titulo": "Carteira aos 18",
+   "enunciado": "Quem tem 18 anos ou mais pode tirar a carteira. Este programa erra justamente com quem tem 18. Ache o defeito.",
+   "codigoInicial": "idade = int(input(\"Idade: \"))\nif idade > 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")\n",
+   "solucao": "idade = int(input(\"Idade: \"))\nif idade >= 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com 18 anos",
+     "entradas": [
+      "18"
+     ],
+     "esperada": "Idade: 18\nPode tirar a carteira\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 17 anos",
+     "entradas": [
+      "17"
+     ],
+     "esperada": "Idade: 17\nAinda não pode\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 40 anos",
+     "entradas": [
+      "40"
+     ],
+     "esperada": "Idade: 40\nPode tirar a carteira\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "Teste de cabeça com 18: a condição da linha 2 dá True ou False?",
+    "\"18 ou mais\" inclui o 18. Qual comparação inclui o próprio número?",
+    "Troque > por >= na linha 2."
+   ],
+   "toque": {
+    "modelo": "idade = int(input(\"Idade: \"))\nif idade ___ 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       ">=",
+       ">",
+       "=="
+      ],
+      "certa": 0,
+      "dica": "\"18 ou mais\" inclui o 18."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-senha",
+   "aulas": [
+    "log-comparacoes"
+   ],
+   "grupo": "Comparações",
+   "defeitos": 2,
+   "titulo": "Senha que não entra",
+   "enunciado": "O programa compara a senha digitada com a guardada, mas nem chega a rodar. São dois defeitos na mesma linha.",
+   "codigoInicial": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada = senha\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")\n",
+   "solucao": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada == senha:\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Senha certa",
+     "entradas": [
+      "peixe123"
+     ],
+     "esperada": "Senha: peixe123\nBem-vindo, Diver!\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Senha errada",
+     "entradas": [
+      "peixe"
+     ],
+     "esperada": "Senha: peixe\nSenha errada\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Maiúscula conta",
+     "entradas": [
+      "PEIXE123"
+     ],
+     "esperada": "Senha: PEIXE123\nSenha errada\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 6
+   },
+   "dicas": [
+    "Rode e leia o erro: SyntaxError aponta a linha 3. O que falta e o que sobra nela?",
+    "Um = guarda valor; para comparar, são dois. E toda linha de if termina com dois-pontos.",
+    "A linha 3 fica: if digitada == senha:"
+   ],
+   "toque": {
+    "modelo": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada ___ senha___\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "==",
+       "=",
+       "!="
+      ],
+      "certa": 0,
+      "dica": "Para comparar, são dois sinais de igual."
+     },
+     {
+      "opcoes": [
+       ":",
+       ";",
+       "."
+      ],
+      "certa": 0,
+      "dica": "A linha do if termina com dois-pontos."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-praia",
+   "aulas": [
+    "log-comparacoes"
+   ],
+   "grupo": "Condições compostas",
+   "defeitos": 1,
+   "titulo": "Dia de praia",
+   "enunciado": "É dia de praia quando a temperatura está entre 25 e 35 graus. O programa diz \"praia\" até com 40 graus. Ache o conector errado.",
+   "codigoInicial": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 or graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")\n",
+   "solucao": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 and graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com 30 graus",
+     "entradas": [
+      "30"
+     ],
+     "esperada": "Temperatura: 30\nDia de praia\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 40 graus",
+     "entradas": [
+      "40"
+     ],
+     "esperada": "Temperatura: 40\nMelhor ficar na sombra\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 20 graus",
+     "entradas": [
+      "20"
+     ],
+     "esperada": "Temperatura: 20\nMelhor ficar na sombra\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "Com 40 graus: 40 >= 25 é True. Com or, basta um lado verdadeiro…",
+    "\"Entre 25 e 35\" pede as duas coisas ao mesmo tempo.",
+    "Troque or por and na linha 2."
+   ],
+   "toque": {
+    "modelo": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 ___ graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "and",
+       "or",
+       "not"
+      ],
+      "certa": 0,
+      "dica": "As duas condições precisam ser verdade ao mesmo tempo."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-boletim",
+   "aulas": [
+    "log-revisao-decisoes"
+   ],
+   "grupo": "Revisão",
+   "defeitos": 1,
+   "titulo": "Boletim trocado",
+   "enunciado": "Nota 7 ou mais: aprovado. De 5 a 7: recuperação. Abaixo de 5: reprovado. O programa manda todo mundo com nota alta para a recuperação.",
+   "codigoInicial": "nota = float(input(\"Nota: \"))\nif nota >= 5:\n    print(\"Recuperação\")\nelif nota >= 7:\n    print(\"Aprovado\")\nelse:\n    print(\"Reprovado\")\n",
+   "solucao": "nota = float(input(\"Nota: \"))\nif nota >= 7:\n    print(\"Aprovado\")\nelif nota >= 5:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com nota 8",
+     "entradas": [
+      "8"
+     ],
+     "esperada": "Nota: 8\nAprovado\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com nota 6",
+     "entradas": [
+      "6"
+     ],
+     "esperada": "Nota: 6\nRecuperação\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com nota 3",
+     "entradas": [
+      "3"
+     ],
+     "esperada": "Nota: 3\nReprovado\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com nota 7",
+     "entradas": [
+      "7"
+     ],
+     "esperada": "Nota: 7\nAprovado\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 7
+   },
+   "dicas": [
+    "Com nota 8, a primeira condição (8 >= 5) já é True. O elif nem chega a ser testado.",
+    "No if/elif, vale o primeiro teste verdadeiro. A condição mais exigente vem primeiro.",
+    "Comece com if nota >= 7: print(\"Aprovado\") e depois elif nota >= 5: print(\"Recuperação\")."
+   ],
+   "toque": {
+    "modelo": "nota = float(input(\"Nota: \"))\nif nota >= ___:\n    print(\"Aprovado\")\nelif nota >= ___:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "7",
+       "5",
+       "0"
+      ],
+      "certa": 0,
+      "dica": "Aprovado é com 7 ou mais."
+     },
+     {
+      "opcoes": [
+       "5",
+       "7",
+       "10"
+      ],
+      "certa": 0,
+      "dica": "Recuperação começa no 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-aniversario",
+   "aulas": [
+    "log-revisao-decisoes"
+   ],
+   "grupo": "Revisão",
+   "defeitos": 2,
+   "titulo": "Desconto de aniversário",
+   "enunciado": "Quem faz aniversário em outubro (mês 10) ganha desconto. O programa nem roda: dois defeitos, um na comparação e outro no recuo.",
+   "codigoInicial": "mes = int(input(\"Mês do aniversário: \"))\nif mes = 10:\nprint(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")\n",
+   "solucao": "mes = int(input(\"Mês do aniversário: \"))\nif mes == 10:\n    print(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Em outubro",
+     "entradas": [
+      "10"
+     ],
+     "esperada": "Mês do aniversário: 10\nGanhou 10% de desconto!\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Em março",
+     "entradas": [
+      "3"
+     ],
+     "esperada": "Mês do aniversário: 3\nAinda não é o seu mês\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Em novembro",
+     "entradas": [
+      "11"
+     ],
+     "esperada": "Mês do aniversário: 11\nAinda não é o seu mês\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "Rode: o primeiro erro aponta a linha 2. Depois de consertá-lo, rode de novo, porque aparece o segundo.",
+    "Comparar é ==. E o que fica dentro do if precisa de 4 espaços de recuo.",
+    "Linha 2: if mes == 10:  Linha 3: quatro espaços antes do print."
+   ],
+   "toque": {
+    "modelo": "mes = int(input(\"Mês do aniversário: \"))\nif mes ___ 10:\n    print(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "==",
+       "=",
+       ">="
+      ],
+      "certa": 0,
+      "dica": "Comparar é com dois sinais de igual."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-contagem",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Laços",
+   "defeitos": 1,
+   "titulo": "Contagem que não chega",
+   "enunciado": "O programa deveria mostrar os números de 1 a 5, um por linha. Ele para antes. Ache o defeito.",
+   "codigoInicial": "for n in range(1, 5):\n    print(n)\n",
+   "solucao": "for n in range(1, 6):\n    print(n)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "De 1 a 5",
+     "esperada": "1\n2\n3\n4\n5\n"
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "Qual é o último número que aparece? E qual deveria ser?",
+    "O fim do range nunca entra: para incluir o 5, o fim precisa ser maior.",
+    "Troque range(1, 5) por range(1, 6)."
+   ],
+   "toque": {
+    "modelo": "for n in range(1, ___):\n    print(n)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "6",
+       "5",
+       "4"
+      ],
+      "certa": 0,
+      "dica": "O fim do range fica de fora."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-soma-zerada",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Laços",
+   "defeitos": 1,
+   "titulo": "Soma que esquece",
+   "enunciado": "O programa deveria somar 10 + 20 + 30 e mostrar 60. Ele mostra 30. Ache o defeito.",
+   "codigoInicial": "for valor in range(10, 40, 10):\n    total = 0\n    total = total + valor\nprint(total)\n",
+   "solucao": "total = 0\nfor valor in range(10, 40, 10):\n    total = total + valor\nprint(total)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 60",
+     "esperada": "60\n"
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Faça o teste de mesa: o que acontece com total no começo de cada volta?",
+    "O acumulador volta a zero a cada volta, porque nasce dentro do laço.",
+    "Mova total = 0 para antes do for."
+   ],
+   "toque": {
+    "modelo": "___\nfor valor in range(10, 40, 10):\n    total = total + valor\nprint(total)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "total = 0",
+       "total = 10",
+       "print(total)"
+      ],
+      "certa": 0,
+      "dica": "O acumulador nasce antes do laço, em zero."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-infinito",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Laços",
+   "defeitos": 1,
+   "titulo": "Laço sem fim",
+   "enunciado": "Este programa deveria mostrar 3, 2, 1 e \"Fogo!\", mas nunca termina. Ache o defeito e conserte.",
+   "codigoInicial": "n = 3\nwhile n > 0:\n    print(n)\nprint(\"Fogo!\")\n",
+   "solucao": "n = 3\nwhile n > 0:\n    print(n)\n    n = n - 1\nprint(\"Fogo!\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Contagem regressiva",
+     "esperada": "3\n2\n1\nFogo!\n"
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "O teste do while depende de n. Alguma linha do bloco muda o n?",
+    "Falta o passo: a cada volta, n precisa diminuir 1.",
+    "Acrescente n = n - 1 dentro do while, depois do print."
+   ],
+   "toque": {
+    "modelo": "n = 3\nwhile n > 0:\n    print(n)\n    ___\nprint(\"Fogo!\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "n = n - 1",
+       "n = n + 1",
+       "n = 0"
+      ],
+      "certa": 0,
+      "dica": "Para o laço acabar, n precisa diminuir até 0."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-funcao-print",
+   "aulas": [
+    "log-revisao-repeticao"
+   ],
+   "grupo": "Funções",
+   "defeitos": 1,
+   "titulo": "Função que só fala",
+   "enunciado": "O programa deveria mostrar o total de 3 parcelas de 40 (120). Ele quebra com erro. Ache o defeito na função.",
+   "codigoInicial": "def parcela(valor):\n    print(valor)\n\ntotal = parcela(40) + parcela(40) + parcela(40)\nprint(total)\n",
+   "solucao": "def parcela(valor):\n    return valor\n\ntotal = parcela(40) + parcela(40) + parcela(40)\nprint(total)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 120",
+     "esperada": "120\n"
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Leia a mensagem de erro: ela fala de None. De onde vem esse None?",
+    "Uma função sem return devolve None. Para entrar na soma, a função precisa devolver o valor.",
+    "Troque print(valor) por return valor."
+   ],
+   "toque": {
+    "modelo": "def parcela(valor):\n    ___ valor\n\ntotal = parcela(40) + parcela(40) + parcela(40)\nprint(total)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "return",
+       "print",
+       "pass"
+      ],
+      "certa": 0,
+      "dica": "Para entrar numa conta, o valor precisa ser devolvido."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-texto-numero",
+   "aulas": [
+    "py-mensagens-erro"
+   ],
+   "grupo": "Mensagens de erro",
+   "defeitos": 1,
+   "titulo": "Idade que não soma",
+   "enunciado": "O programa deveria mostrar a idade do ano que vem. Rode, leia a última linha do Traceback e conserte.",
+   "codigoInicial": "idade = input(\"Idade: \")\nprint(\"Ano que vem:\", idade + 1)\n",
+   "solucao": "idade = int(input(\"Idade: \"))\nprint(\"Ano que vem:\", idade + 1)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com 15",
+     "entradas": [
+      "15"
+     ],
+     "esperada": "Idade: 15\nAno que vem: 16\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 40",
+     "entradas": [
+      "40"
+     ],
+     "esperada": "Idade: 40\nAno que vem: 41\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "A última linha fala em TypeError: can only concatenate str (not \"int\") to str. Qual variável é texto?",
+    "input() sempre devolve texto. Converta antes da conta.",
+    "idade = int(input(\"Idade: \"))"
+   ],
+   "toque": {
+    "modelo": "idade = ___(input(\"Idade: \"))\nprint(\"Ano que vem:\", idade + 1)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "int",
+       "str",
+       "print"
+      ],
+      "certa": 0,
+      "dica": "Para somar, o texto vira número inteiro."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-sintaxe",
+   "aulas": [
+    "py-mensagens-erro"
+   ],
+   "grupo": "Mensagens de erro",
+   "defeitos": 2,
+   "titulo": "Nada roda",
+   "enunciado": "Nenhuma linha deste programa roda: é erro de sintaxe. Há dois defeitos. Leia o recado, conserte um, rode de novo e conserte o outro. Com nota 7, deve mostrar `Aprovado`.",
+   "codigoInicial": "nota = 7\nif nota >= 6\n    print(\"Aprovado\"\nelse:\n    print(\"Recuperação\")\n",
+   "solucao": "nota = 7\nif nota >= 6:\n    print(\"Aprovado\")\nelse:\n    print(\"Recuperação\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra Aprovado",
+     "esperada": "Aprovado\n"
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "O primeiro recado diz expected ':'. Em que linha falta?",
+    "Depois dos dois-pontos, rode de novo: o recado agora fala de um parêntese que nunca fechou.",
+    "if nota >= 6:  e  print(\"Aprovado\")"
+   ],
+   "toque": {
+    "modelo": "nota = 7\nif nota >= 6___\n    print(\"Aprovado\"___\nelse:\n    print(\"Recuperação\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       ":",
+       ";",
+       "."
+      ],
+      "certa": 0,
+      "dica": "if termina com dois-pontos."
+     },
+     {
+      "opcoes": [
+       ")",
+       "]",
+       "\""
+      ],
+      "certa": 0,
+      "dica": "Feche o parêntese do print."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-nome-errado",
+   "aulas": [
+    "py-mensagens-erro"
+   ],
+   "grupo": "Mensagens de erro",
+   "defeitos": 2,
+   "titulo": "Nomes trocados",
+   "enunciado": "O programa deveria mostrar `Total: 30`. Ele para com NameError. Leia o Did you mean e conserte os dois nomes.",
+   "codigoInicial": "preco = 10\nquantidade = 3\ntotal = preco * quantidad\nprint(\"Total:\", totl)\n",
+   "solucao": "preco = 10\nquantidade = 3\ntotal = preco * quantidade\nprint(\"Total:\", total)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra o total",
+     "esperada": "Total: 30\n"
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "A última linha diz qual nome não existe e sugere o certo.",
+    "Corrigido o primeiro, rode de novo: aparece outro NameError, na linha do print.",
+    "quantidade na linha 3 e total na linha 4."
+   ],
+   "toque": {
+    "modelo": "preco = 10\nquantidade = 3\ntotal = preco * ___\nprint(\"Total:\", ___)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "quantidade",
+       "quantidad",
+       "qtd"
+      ],
+      "certa": 0,
+      "dica": "Use o nome exatamente como foi criado."
+     },
+     {
+      "opcoes": [
+       "total",
+       "totl",
+       "preco"
+      ],
+      "certa": 0,
+      "dica": "A variável criada na linha 3."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-append-none",
+   "aulas": [
+    "py-tuplas-conjuntos"
+   ],
+   "grupo": "Coleções",
+   "defeitos": 1,
+   "titulo": "A lista que sumiu",
+   "enunciado": "O programa deveria mostrar `[7, 9, 10]`. Ele mostra None. Ache o defeito.",
+   "codigoInicial": "notas = [7, 9]\nnotas = notas.append(10)\nprint(notas)\n",
+   "solucao": "notas = [7, 9]\nnotas.append(10)\nprint(notas)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra a lista",
+     "esperada": "[7, 9, 10]\n"
+    }
+   ],
+   "metas": {
+    "linhas": 3
+   },
+   "dicas": [
+    "O que o append devolve?",
+    "append muda a lista e devolve None. Guardar esse retorno troca a lista por None.",
+    "Escreva só notas.append(10), sem notas = na frente."
+   ],
+   "toque": {
+    "modelo": "notas = [7, 9]\n___\nprint(notas)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "notas.append(10)",
+       "notas = notas.append(10)",
+       "notas = notas + 10"
+      ],
+      "certa": 0,
+      "dica": "O append trabalha calado: não se atribui."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-conjunto-vazio",
+   "aulas": [
+    "py-tuplas-conjuntos"
+   ],
+   "grupo": "Coleções",
+   "defeitos": 1,
+   "titulo": "Vazio errado",
+   "enunciado": "O programa deveria mostrar quantas cidades diferentes aparecem na lista (3). Ele quebra com AttributeError. Ache o defeito.",
+   "codigoInicial": "cidades = [\"Recife\", \"Natal\", \"Recife\", \"Belém\"]\nvistas = {}\nfor c in cidades:\n    vistas.add(c)\nprint(len(vistas))\n",
+   "solucao": "cidades = [\"Recife\", \"Natal\", \"Recife\", \"Belém\"]\nvistas = set()\nfor c in cidades:\n    vistas.add(c)\nprint(len(vistas))\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 3",
+     "esperada": "3\n"
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "A mensagem diz que o objeto não tem add. Que tipo é {}?",
+    "{} vazio é um dicionário. O conjunto vazio se escreve de outro jeito.",
+    "Troque vistas = {} por vistas = set()."
+   ],
+   "toque": {
+    "modelo": "cidades = [\"Recife\", \"Natal\", \"Recife\", \"Belém\"]\nvistas = ___\nfor c in cidades:\n    vistas.add(c)\nprint(len(vistas))",
+    "lacunas": [
+     {
+      "opcoes": [
+       "set()",
+       "{}",
+       "[]"
+      ],
+      "certa": 0,
+      "dica": "Conjunto vazio é set()."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-tupla-troca",
+   "aulas": [
+    "py-tuplas-conjuntos"
+   ],
+   "grupo": "Coleções",
+   "defeitos": 1,
+   "titulo": "Preço que não muda",
+   "enunciado": "O programa deveria corrigir o preço da primeira venda para 6.0 e mostrar `[('coxinha', 6.0), ('suco', 4.0)]`. Ele quebra com TypeError. Ache o defeito.",
+   "codigoInicial": "vendas = [(\"coxinha\", 5.0), (\"suco\", 4.0)]\nvendas[0][1] = 6.0\nprint(vendas)\n",
+   "solucao": "vendas = [(\"coxinha\", 5.0), (\"suco\", 4.0)]\nvendas[0] = (\"coxinha\", 6.0)\nprint(vendas)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Preço corrigido",
+     "esperada": "[('coxinha', 6.0), ('suco', 4.0)]\n"
+    }
+   ],
+   "metas": {
+    "linhas": 3
+   },
+   "dicas": [
+    "Cada venda é uma tupla. Tupla aceita troca de item?",
+    "A lista aceita trocar a tupla inteira, mesmo que a tupla não mude por dentro.",
+    "vendas[0] = (\"coxinha\", 6.0)"
+   ],
+   "toque": {
+    "modelo": "vendas = [(\"coxinha\", 5.0), (\"suco\", 4.0)]\nvendas[___] = (\"coxinha\", 6.0)\nprint(vendas)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "0",
+       "0][1",
+       "1"
+      ],
+      "certa": 0,
+      "dica": "Troque a venda inteira da posição 0."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-estoque-negativo",
+   "aulas": [
+    "py-revisao-colecoes"
+   ],
+   "grupo": "Projeto: cantina",
+   "defeitos": 2,
+   "titulo": "Estoque no vermelho",
+   "enunciado": "Para cada pedido, o programa deveria mostrar `vendido` e baixar o estoque, ou `esgotado` se não houver (ou se o produto não existir). Com os pedidos do exemplo: vendido, esgotado, esgotado. Há dois defeitos.",
+   "codigoInicial": "estoque = {\"coxinha\": 1}\npedidos = [\"coxinha\", \"coxinha\", \"pastel\"]\nfor p in pedidos:\n    estoque[p] = estoque[p] - 1\n    print(\"vendido\")\n",
+   "solucao": "estoque = {\"coxinha\": 1}\npedidos = [\"coxinha\", \"coxinha\", \"pastel\"]\nfor p in pedidos:\n    if estoque.get(p, 0) > 0:\n        estoque[p] = estoque[p] - 1\n        print(\"vendido\")\n    else:\n        print(\"esgotado\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Vende só o que tem",
+     "esperada": "vendido\nesgotado\nesgotado\n"
+    }
+   ],
+   "metas": {
+    "linhas": 8
+   },
+   "dicas": [
+    "Rode: o pastel dá KeyError, e a segunda coxinha deixa o estoque em -1.",
+    "Antes de baixar, confira com estoque.get(p, 0) > 0. O get resolve o pastel que não existe.",
+    "if estoque.get(p, 0) > 0: baixa e mostra vendido / else: mostra esgotado"
+   ],
+   "toque": {
+    "modelo": "estoque = {\"coxinha\": 1}\npedidos = [\"coxinha\", \"coxinha\", \"pastel\"]\nfor p in pedidos:\n    if estoque.___(p, 0) > 0:\n        estoque[p] = estoque[p] - 1\n        print(\"vendido\")\n    else:\n        print(\"___\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "get",
+       "pop",
+       "items"
+      ],
+      "certa": 0,
+      "dica": "Busca sem erro, com padrão."
+     },
+     {
+      "opcoes": [
+       "esgotado",
+       "vendido",
+       "erro"
+      ],
+      "certa": 0,
+      "dica": "O que mostrar quando não há estoque."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-contador-global",
+   "aulas": [
+    "py-revisao-funcoes"
+   ],
+   "grupo": "Funções de verdade",
+   "defeitos": 1,
+   "titulo": "Contador que não conta",
+   "enunciado": "O programa deveria mostrar quantos alunos foram aprovados (2). Ele quebra com UnboundLocalError. Conserte sem usar global: a função deve contar e devolver.",
+   "codigoInicial": "aprovados = 0\n\ndef contar(notas):\n    for n in notas:\n        if n >= 6:\n            aprovados = aprovados + 1\n\ncontar([7, 4, 9])\nprint(aprovados)\n",
+   "solucao": "def contar(notas):\n    aprovados = 0\n    for n in notas:\n        if n >= 6:\n            aprovados = aprovados + 1\n    return aprovados\n\naprovados = contar([7, 4, 9])\nprint(aprovados)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 2",
+     "esperada": "2\n"
+    },
+    {
+     "nome": "A função devolve a contagem",
+     "codigo": "assert contar([6, 6, 1]) == 2, 'contar([6, 6, 1]) deveria devolver 2'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 8
+   },
+   "dicas": [
+    "A atribuição dentro da função faz aprovados ser local, e a conta lê a local antes de ela ter valor.",
+    "Crie o contador dentro da função e devolva com return. Fora, guarde: aprovados = contar(...).",
+    "def contar(notas): aprovados = 0 / for ... / return aprovados — e aprovados = contar([7, 4, 9])"
+   ],
+   "toque": {
+    "modelo": "def contar(notas):\n    aprovados = 0\n    for n in notas:\n        if n >= 6:\n            aprovados = aprovados + 1\n    ___ aprovados\n\naprovados = ___([7, 4, 9])\nprint(aprovados)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "return",
+       "print",
+       "global"
+      ],
+      "certa": 0,
+      "dica": "A contagem sai pela porta."
+     },
+     {
+      "opcoes": [
+       "contar",
+       "print",
+       "len"
+      ],
+      "certa": 0,
+      "dica": "Guarde o que a função devolve."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-apelido",
+   "aulas": [
+    "py-revisao-primeiros-passos"
+   ],
+   "grupo": "Projeto: apelidos",
+   "defeitos": 2,
+   "titulo": "Apelido quebrado",
+   "enunciado": "O gerador deveria mostrar `Apelido: MAR42` para o nome digitado \"  mariana\". Ele quebra com TypeError e, depois de consertado, ainda mostra o apelido errado. Há dois defeitos.",
+   "codigoInicial": "nome = input(\"Seu nome: \")\nnumero = 42\napelido = nome[:3].upper() + numero\nprint(\"Apelido:\", apelido)\n",
+   "solucao": "nome = input(\"Seu nome: \").strip()\nnumero = 42\napelido = nome[:3].upper() + str(numero)\nprint(\"Apelido:\", apelido)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com espaços antes",
+     "entradas": [
+      "  mariana"
+     ],
+     "esperada": "Seu nome:   mariana\nApelido: MAR42\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Sem espaços",
+     "entradas": [
+      "lucas"
+     ],
+     "esperada": "Seu nome: lucas\nApelido: LUC42\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "A primeira mensagem é TypeError: texto + número. Converta o número.",
+    "Consertado o tipo, o apelido sai \"  M42\": os espaços da frente entraram na fatia.",
+    "str(numero) no apelido e .strip() logo depois do input."
+   ],
+   "toque": {
+    "modelo": "nome = input(\"Seu nome: \").___()\nnumero = 42\napelido = nome[:3].upper() + ___(numero)\nprint(\"Apelido:\", apelido)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "strip",
+       "upper",
+       "lower"
+      ],
+      "certa": 0,
+      "dica": "Limpe antes de recortar."
+     },
+     {
+      "opcoes": [
+       "str",
+       "int",
+       "len"
+      ],
+      "certa": 0,
+      "dica": "Texto + texto."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-except-vazio",
+   "aulas": [
+    "py-try-except"
+   ],
+   "grupo": "try e except",
+   "defeitos": 2,
+   "titulo": "O except que escondia",
+   "enunciado": "O programa deveria mostrar `Total: 90` somando as notas válidas e pulando a inválida. Ele mostra só a mensagem de erro, porque o except vazio esconde um defeito. Troque pelo except certo e conserte o defeito escondido.",
+   "codigoInicial": "total = 0\nfor texto in [\"50\", \"abc\", \"40\"]:\n    try:\n        total = total + int(textos)\n    except:\n        print(\"valor inválido:\", texto)\nprint(\"Total:\", total)\n",
+   "solucao": "total = 0\nfor texto in [\"50\", \"abc\", \"40\"]:\n    try:\n        total = total + int(texto)\n    except ValueError:\n        print(\"valor inválido:\", texto)\nprint(\"Total:\", total)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Soma e avisa",
+     "esperada": "valor inválido: abc\nTotal: 90\n"
+    }
+   ],
+   "metas": {
+    "linhas": 7
+   },
+   "dicas": [
+    "Todas as linhas viram \"valor inválido\". Troque o except vazio por except ValueError e rode de novo.",
+    "Agora aparece um NameError: o nome da variável no int está errado.",
+    "int(texto), e except ValueError."
+   ],
+   "toque": {
+    "modelo": "total = 0\nfor texto in [\"50\", \"abc\", \"40\"]:\n    try:\n        total = total + int(___)\n    except ___:\n        print(\"valor inválido:\", texto)\nprint(\"Total:\", total)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "texto",
+       "textos",
+       "total"
+      ],
+      "certa": 0,
+      "dica": "A variável do for."
+     },
+     {
+      "opcoes": [
+       "ValueError",
+       "Exception",
+       "NameError"
+      ],
+      "certa": 0,
+      "dica": "O erro do int(\"abc\")."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-plano-b",
+   "aulas": [
+    "py-try-except"
+   ],
+   "grupo": "try e except",
+   "defeitos": 1,
+   "titulo": "Plano B sem saída",
+   "enunciado": "Na primeira vez, o arquivo `recorde.txt` não existe. O programa deveria mostrar `Recorde: 0`, mas quebra com NameError depois do aviso. Conserte o plano B.",
+   "codigoInicial": "try:\n    with open(\"recorde.txt\", encoding=\"utf-8\") as f:\n        recorde = int(f.read())\nexcept FileNotFoundError:\n    print(\"Primeira partida!\")\nprint(\"Recorde:\", recorde)\n",
+   "solucao": "try:\n    with open(\"recorde.txt\", encoding=\"utf-8\") as f:\n        recorde = int(f.read())\nexcept FileNotFoundError:\n    print(\"Primeira partida!\")\n    recorde = 0\nprint(\"Recorde:\", recorde)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Primeira partida",
+     "esperada": "Primeira partida!\nRecorde: 0\n"
+    }
+   ],
+   "metas": {
+    "linhas": 7
+   },
+   "dicas": [
+    "O except avisa, mas a variável recorde nunca ganha valor.",
+    "O plano B precisa deixar o programa num estado em que dá para seguir.",
+    "Dentro do except, acrescente recorde = 0."
+   ],
+   "toque": {
+    "modelo": "try:\n    with open(\"recorde.txt\", encoding=\"utf-8\") as f:\n        recorde = int(f.read())\nexcept FileNotFoundError:\n    print(\"Primeira partida!\")\n    ___\nprint(\"Recorde:\", recorde)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "recorde = 0",
+       "recorde = None + 1",
+       "pass"
+      ],
+      "certa": 0,
+      "dica": "Dê um valor inicial."
+     }
+    ]
+   }
+  }
+ ]
 }

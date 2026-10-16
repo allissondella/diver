@@ -581,6 +581,2309 @@
         }
       ],
       "saidaFinal": "recuperação\n"
+    },
+    {
+      "id": "lc-while-1",
+      "grupo": "Laços",
+      "aulas": [
+        "log-while"
+      ],
+      "titulo": "O cofrinho",
+      "enunciado": "Um while junta 5 reais por dia até passar de 12. Siga as voltas e preveja o valor do cofrinho e a linha seguinte.",
+      "codigo": "cofre = 0\ndias = 0\nwhile cofre < 12:\n    cofre = cofre + 5\n    dias = dias + 1\nprint(dias, \"dias:\", cofre)\n",
+      "perguntas": [
+        {
+          "linha": 4,
+          "variavel": "cofre",
+          "opcoes": [
+            "5",
+            "0",
+            "10"
+          ],
+          "porque": "Na primeira volta, 0 + 5 = 5."
+        },
+        {
+          "linha": 4,
+          "vez": 3,
+          "variavel": "cofre",
+          "opcoes": [
+            "15",
+            "10",
+            "12"
+          ],
+          "porque": "Na terceira volta, 10 + 5 = 15: o laço pode passar da meta."
+        },
+        {
+          "linha": 3,
+          "vez": 4,
+          "tipo": "linha",
+          "opcoes": [
+            "6",
+            "4",
+            "5"
+          ],
+          "porque": "Com cofre = 15, o teste 15 < 12 dá falso: o Python pula para a linha depois do laço."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "5"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "5"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "5"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "15"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "15"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 6,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "15"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "15"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 11
+        }
+      ],
+      "saidaFinal": "3 dias: 15\n"
+    },
+    {
+      "id": "lc-for-1",
+      "grupo": "Laços",
+      "aulas": [
+        "log-for-range"
+      ],
+      "titulo": "Soma de 1 a 4",
+      "enunciado": "O for percorre range(1, 5) somando cada número. Preveja o valor de n e do total nas voltas.",
+      "codigo": "total = 0\nfor n in range(1, 5):\n    total = total + n\nprint(total)\n",
+      "perguntas": [
+        {
+          "linha": 2,
+          "variavel": "n",
+          "opcoes": [
+            "1",
+            "0",
+            "5"
+          ],
+          "porque": "range(1, 5) começa no 1."
+        },
+        {
+          "linha": 3,
+          "vez": 2,
+          "variavel": "total",
+          "opcoes": [
+            "3",
+            "2",
+            "4"
+          ],
+          "porque": "Na segunda volta, n vale 2: 1 + 2 = 3."
+        },
+        {
+          "linha": 3,
+          "vez": 4,
+          "variavel": "total",
+          "opcoes": [
+            "10",
+            "15",
+            "6"
+          ],
+          "porque": "A última volta soma o 4: 6 + 4 = 10. O 5 fica de fora."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "6"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "6"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "4"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "4"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "4"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "4"
+            }
+          },
+          "saida": 3
+        }
+      ],
+      "saidaFinal": "10\n"
+    },
+    {
+      "id": "lc-for-2",
+      "grupo": "Laços",
+      "aulas": [
+        "log-for-range"
+      ],
+      "titulo": "Contando os a",
+      "enunciado": "O for anda pelas letras de uma palavra e conta os \"a\". Siga as voltas.",
+      "codigo": "qtd = 0\nfor letra in \"banana\":\n    if letra == \"a\":\n        qtd = qtd + 1\nprint(qtd)\n",
+      "perguntas": [
+        {
+          "linha": 2,
+          "variavel": "letra",
+          "opcoes": [
+            "'b'",
+            "'a'",
+            "'banana'"
+          ],
+          "porque": "Na primeira volta, letra recebe a primeira letra: b."
+        },
+        {
+          "linha": 3,
+          "tipo": "linha",
+          "opcoes": [
+            "2",
+            "4",
+            "5"
+          ],
+          "porque": "\"b\" == \"a\" é falso: o bloco do if é pulado e o for vai para a próxima letra (linha 2)."
+        },
+        {
+          "linha": 4,
+          "vez": 3,
+          "variavel": "qtd",
+          "opcoes": [
+            "3",
+            "2",
+            "6"
+          ],
+          "porque": "banana tem três letras a: na terceira vez que a linha 4 roda, qtd chega a 3."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'b'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'b'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'n'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'n'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'n'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'n'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 2
+        }
+      ],
+      "saidaFinal": "3\n"
+    },
+    {
+      "id": "lc-funcao-1",
+      "grupo": "Funções",
+      "aulas": [
+        "log-funcoes"
+      ],
+      "titulo": "Quem chamou quem",
+      "enunciado": "Uma função recebe um parâmetro e devolve um valor. Siga a chamada: veja para onde o programa pula e o que volta.",
+      "codigo": "def dobro(n):\n    resultado = n * 2\n    return resultado\n\nx = dobro(7)\nprint(x + 1)\n",
+      "perguntas": [
+        {
+          "linha": 5,
+          "tipo": "linha",
+          "opcoes": [
+            "2",
+            "6",
+            "1"
+          ],
+          "porque": "A chamada dobro(7) pula para dentro da função, na linha 2."
+        },
+        {
+          "linha": 2,
+          "variavel": "resultado",
+          "opcoes": [
+            "14",
+            "7",
+            "15"
+          ],
+          "porque": "n vale 7 nesta chamada: 7 * 2 = 14."
+        },
+        {
+          "linha": 6,
+          "variavel": "x",
+          "opcoes": [
+            "14",
+            "7",
+            "None"
+          ],
+          "porque": "O return devolveu 14, e a chamada dobro(7) passou a valer 14: é o que x guarda."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa",
+            "dobro"
+          ],
+          "variaveis": {
+            "n": {
+              "tipo": "int",
+              "valor": "7"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa",
+            "dobro"
+          ],
+          "variaveis": {
+            "n": {
+              "tipo": "int",
+              "valor": "7"
+            },
+            "resultado": {
+              "tipo": "int",
+              "valor": "14"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 6,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "14"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "14"
+            }
+          },
+          "saida": 3
+        }
+      ],
+      "saidaFinal": "15\n"
+    },
+    {
+      "id": "lc-texto-1",
+      "grupo": "Textos",
+      "aulas": [
+        "py-strings"
+      ],
+      "titulo": "Recortando o CEP",
+      "enunciado": "O programa recorta e limpa um texto em vários passos. Preveja o valor de cada variável.",
+      "codigo": "cep = \" 01310-100 \"\nlimpo = cep.strip()\ninicio = limpo[:5]\nfim = limpo[-3:]\nprint(inicio + fim)\n",
+      "perguntas": [
+        {
+          "linha": 3,
+          "variavel": "limpo",
+          "opcoes": [
+            "'01310-100'",
+            "' 01310-100 '",
+            "'01310100'"
+          ],
+          "porque": "strip() tira só os espaços das pontas; o traço fica."
+        },
+        {
+          "linha": 4,
+          "variavel": "inicio",
+          "opcoes": [
+            "'01310'",
+            "'0131'",
+            "'01310-'"
+          ],
+          "porque": "[:5] vai do índice 0 até antes do 5: cinco caracteres."
+        },
+        {
+          "linha": 5,
+          "variavel": "fim",
+          "opcoes": [
+            "'100'",
+            "'-100'",
+            "'10'"
+          ],
+          "porque": "[-3:] pega os três últimos caracteres."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            },
+            "limpo": {
+              "tipo": "str",
+              "valor": "'01310-100'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            },
+            "limpo": {
+              "tipo": "str",
+              "valor": "'01310-100'"
+            },
+            "inicio": {
+              "tipo": "str",
+              "valor": "'01310'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            },
+            "limpo": {
+              "tipo": "str",
+              "valor": "'01310-100'"
+            },
+            "inicio": {
+              "tipo": "str",
+              "valor": "'01310'"
+            },
+            "fim": {
+              "tipo": "str",
+              "valor": "'100'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            },
+            "limpo": {
+              "tipo": "str",
+              "valor": "'01310-100'"
+            },
+            "inicio": {
+              "tipo": "str",
+              "valor": "'01310'"
+            },
+            "fim": {
+              "tipo": "str",
+              "valor": "'100'"
+            }
+          },
+          "saida": 9
+        }
+      ],
+      "saidaFinal": "01310100\n"
+    },
+    {
+      "id": "lc-texto-2",
+      "grupo": "Textos",
+      "aulas": [
+        "py-strings"
+      ],
+      "titulo": "Texto não muda",
+      "enunciado": "Métodos de texto devolvem um texto novo. Siga o programa e veja quando a variável muda de verdade.",
+      "codigo": "nome = \"bia\"\nnome.upper()\ngrande = nome.upper()\nnome = nome + \"!\"\nprint(nome, grande)\n",
+      "perguntas": [
+        {
+          "linha": 3,
+          "variavel": "nome",
+          "opcoes": [
+            "'bia'",
+            "'BIA'",
+            "None"
+          ],
+          "porque": "nome.upper() sozinho devolve \"BIA\", mas ninguém guardou: nome continua \"bia\"."
+        },
+        {
+          "linha": 4,
+          "variavel": "grande",
+          "opcoes": [
+            "'BIA'",
+            "'bia'",
+            "'BIA!'"
+          ],
+          "porque": "Agora o resultado de upper() foi guardado em grande."
+        },
+        {
+          "linha": 5,
+          "variavel": "nome",
+          "opcoes": [
+            "'bia!'",
+            "'BIA!'",
+            "'bia'"
+          ],
+          "porque": "A atribuição troca o valor: \"bia\" + \"!\" é \"bia!\"."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia'"
+            },
+            "grande": {
+              "tipo": "str",
+              "valor": "'BIA'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia!'"
+            },
+            "grande": {
+              "tipo": "str",
+              "valor": "'BIA'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia!'"
+            },
+            "grande": {
+              "tipo": "str",
+              "valor": "'BIA'"
+            }
+          },
+          "saida": 9
+        }
+      ],
+      "saidaFinal": "bia! BIA\n"
+    },
+    {
+      "id": "lc-lista-1",
+      "grupo": "Coleções",
+      "aulas": [
+        "py-listas"
+      ],
+      "titulo": "Prateleiras",
+      "enunciado": "Uma lista é uma prateleira com posições. Siga o programa e veja a lista crescer, encolher e mudar.",
+      "codigo": "compras = [\"arroz\", \"feijão\"]\ncompras.append(\"café\")\ncompras[0] = \"macarrão\"\nfora = compras.pop()\nprint(compras, fora)\n",
+      "perguntas": [
+        {
+          "linha": 2,
+          "variavel": "compras",
+          "opcoes": [
+            "['arroz', 'feijão', 'café']",
+            "['café', 'arroz', 'feijão']",
+            "['arroz', 'feijão']"
+          ],
+          "porque": "append põe o café no fim."
+        },
+        {
+          "linha": 3,
+          "variavel": "compras",
+          "opcoes": [
+            "['macarrão', 'feijão', 'café']",
+            "['arroz', 'feijão', 'café']",
+            "['macarrão', 'arroz', 'feijão', 'café']"
+          ],
+          "porque": "compras[0] = \"macarrão\" troca o item da posição 0; não acrescenta."
+        },
+        {
+          "linha": 4,
+          "variavel": "fora",
+          "opcoes": [
+            "'café'",
+            "'macarrão'",
+            "None"
+          ],
+          "porque": "pop() tira e devolve o último item."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['arroz', 'feijão']"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['arroz', 'feijão', 'café']"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['macarrão', 'feijão', 'café']"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['macarrão', 'feijão']"
+            },
+            "fora": {
+              "tipo": "str",
+              "valor": "'café'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "compras": {
+              "tipo": "list",
+              "valor": "['macarrão', 'feijão']"
+            },
+            "fora": {
+              "tipo": "str",
+              "valor": "'café'"
+            }
+          },
+          "saida": 28
+        }
+      ],
+      "saidaFinal": "['macarrão', 'feijão'] café\n"
+    },
+    {
+      "id": "lc-lista-2",
+      "grupo": "Coleções",
+      "aulas": [
+        "py-listas"
+      ],
+      "titulo": "Dois nomes, uma lista",
+      "enunciado": "b = a não copia a lista. Siga o programa e veja o que acontece com a quando b muda.",
+      "codigo": "a = [1, 2]\nb = a\nb.append(3)\nc = a.copy()\nc.append(4)\nprint(a, b, c)\n",
+      "perguntas": [
+        {
+          "linha": 4,
+          "variavel": "a",
+          "opcoes": [
+            "[1, 2, 3]",
+            "[1, 2]",
+            "[3]"
+          ],
+          "porque": "b e a são a mesma lista: o append feito por b aparece em a."
+        },
+        {
+          "linha": 6,
+          "variavel": "c",
+          "opcoes": [
+            "[1, 2, 3, 4]",
+            "[1, 2, 4]",
+            "[4]"
+          ],
+          "porque": "c é uma cópia de a com [1, 2, 3], e recebe o 4."
+        },
+        {
+          "linha": 6,
+          "variavel": "a",
+          "opcoes": [
+            "[1, 2, 3]",
+            "[1, 2, 3, 4]",
+            "[1, 2]"
+          ],
+          "porque": "A cópia é outra lista: mudar c não mexe em a."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "c": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 6,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "c": {
+              "tipo": "list",
+              "valor": "[1, 2, 3, 4]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "a": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "b": {
+              "tipo": "list",
+              "valor": "[1, 2, 3]"
+            },
+            "c": {
+              "tipo": "list",
+              "valor": "[1, 2, 3, 4]"
+            }
+          },
+          "saida": 33
+        }
+      ],
+      "saidaFinal": "[1, 2, 3] [1, 2, 3] [1, 2, 3, 4]\n"
+    },
+    {
+      "id": "lc-dic-1",
+      "grupo": "Coleções",
+      "aulas": [
+        "py-dicionarios"
+      ],
+      "titulo": "Armários com etiqueta",
+      "enunciado": "Um dicionário é um armário com gavetas etiquetadas. Siga a contagem de votos gaveta por gaveta.",
+      "codigo": "votos = [\"sim\", \"não\", \"sim\"]\ncontagem = {}\nfor v in votos:\n    contagem[v] = contagem.get(v, 0) + 1\nprint(contagem)\n",
+      "perguntas": [
+        {
+          "linha": 4,
+          "vez": 1,
+          "tipo": "linha",
+          "opcoes": [
+            "3",
+            "5",
+            "2"
+          ],
+          "porque": "Depois da contagem, o for volta para pegar o próximo voto (linha 3)."
+        },
+        {
+          "linha": 3,
+          "vez": 2,
+          "variavel": "contagem",
+          "opcoes": [
+            "{'sim': 1}",
+            "{}",
+            "{'sim': 2}"
+          ],
+          "porque": "Na primeira volta, o get devolveu 0 e a gaveta \"sim\" nasceu com 1."
+        },
+        {
+          "linha": 5,
+          "variavel": "contagem",
+          "opcoes": [
+            "{'sim': 2, 'não': 1}",
+            "{'sim': 1, 'não': 1}",
+            "{'não': 1, 'sim': 2}"
+          ],
+          "porque": "O segundo \"sim\" soma 1 ao que já havia; a ordem é a de chegada das chaves."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{}"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'não'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 1, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'não'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 1, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 2, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 2, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "votos": {
+              "tipo": "list",
+              "valor": "['sim', 'não', 'sim']"
+            },
+            "contagem": {
+              "tipo": "dict",
+              "valor": "{'sim': 2, 'não': 1}"
+            },
+            "v": {
+              "tipo": "str",
+              "valor": "'sim'"
+            }
+          },
+          "saida": 21
+        }
+      ],
+      "saidaFinal": "{'sim': 2, 'não': 1}\n"
+    },
+    {
+      "id": "lc-pilha-1",
+      "grupo": "Funções de verdade",
+      "aulas": [
+        "py-escopo"
+      ],
+      "titulo": "A pilha de chamadas",
+      "enunciado": "linha chama media. Siga a pilha: para onde o programa pula, o que volta e qual variável existe em cada momento.",
+      "codigo": "def media(notas):\n    total = sum(notas)\n    return total / len(notas)\n\ndef linha(nome, notas):\n    m = media(notas)\n    texto = f\"{nome}: {m}\"\n    return texto\n\nsaida = linha(\"Ana\", [7, 8])\nprint(saida)\n",
+      "perguntas": [
+        {
+          "linha": 10,
+          "tipo": "linha",
+          "opcoes": [
+            "6",
+            "2",
+            "11"
+          ],
+          "porque": "A chamada linha(...) pula para dentro de linha, na primeira linha do corpo: a 6."
+        },
+        {
+          "linha": 6,
+          "tipo": "linha",
+          "opcoes": [
+            "2",
+            "7",
+            "10"
+          ],
+          "porque": "Na linha 6, linha chama media e fica esperando: o programa pula para a linha 2."
+        },
+        {
+          "linha": 7,
+          "variavel": "m",
+          "opcoes": [
+            "7.5",
+            "15",
+            "None"
+          ],
+          "porque": "media devolveu 15 / 2 = 7.5, e linha guardou em m. O total de media já sumiu."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 10,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 6,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa",
+            "linha",
+            "media"
+          ],
+          "variaveis": {
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa",
+            "linha",
+            "media"
+          ],
+          "variaveis": {
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "total": {
+              "tipo": "int",
+              "valor": "15"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 7,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 8,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            },
+            "texto": {
+              "tipo": "str",
+              "valor": "'Ana: 7.5'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 11,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "saida": {
+              "tipo": "str",
+              "valor": "'Ana: 7.5'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "saida": {
+              "tipo": "str",
+              "valor": "'Ana: 7.5'"
+            }
+          },
+          "saida": 9
+        }
+      ],
+      "saidaFinal": "Ana: 7.5\n"
+    },
+    {
+      "id": "lc-escopo-1",
+      "grupo": "Funções de verdade",
+      "aulas": [
+        "py-escopo"
+      ],
+      "titulo": "Mesmo nome, casas diferentes",
+      "enunciado": "Há um x fora e outro dentro da função. Siga os dois e veja qual muda.",
+      "codigo": "x = 10\n\ndef f():\n    x = 99\n    return x\n\ny = f()\nprint(x, y)\n",
+      "perguntas": [
+        {
+          "linha": 4,
+          "variavel": "x",
+          "opcoes": [
+            "99",
+            "10",
+            "None"
+          ],
+          "porque": "Dentro de f, x = 99 cria uma variável local nova."
+        },
+        {
+          "linha": 8,
+          "variavel": "y",
+          "opcoes": [
+            "99",
+            "10",
+            "None"
+          ],
+          "porque": "f devolveu o x local, 99, que ficou guardado em y."
+        },
+        {
+          "linha": 8,
+          "variavel": "x",
+          "opcoes": [
+            "10",
+            "99",
+            "None"
+          ],
+          "porque": "O x de fora nunca foi trocado: continua 10."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "10"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 7,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "10"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa",
+            "f"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa",
+            "f"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "99"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 8,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "y": {
+              "tipo": "int",
+              "valor": "99"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "y": {
+              "tipo": "int",
+              "valor": "99"
+            }
+          },
+          "saida": 6
+        }
+      ],
+      "saidaFinal": "10 99\n"
+    },
+    {
+      "id": "lc-boletim",
+      "grupo": "Funções de verdade",
+      "aulas": [
+        "py-revisao-funcoes"
+      ],
+      "titulo": "O boletim em câmera lenta",
+      "enunciado": "linha chama media e depois situacao. Siga as chamadas e os valores que voltam.",
+      "codigo": "def media(notas):\n    return sum(notas) / len(notas)\n\ndef situacao(m, corte=6):\n    return \"aprovado\" if m >= corte else \"reprovado\"\n\ndef linha(nome, notas):\n    m = media(notas)\n    s = situacao(m)\n    return f\"{nome}: {s}\"\n\nprint(linha(\"Ana\", [7, 8]))\n",
+      "perguntas": [
+        {
+          "linha": 8,
+          "tipo": "linha",
+          "opcoes": [
+            "2",
+            "5",
+            "9"
+          ],
+          "porque": "A linha 8 chama media: o programa pula para dentro dela, na linha 2."
+        },
+        {
+          "linha": 9,
+          "variavel": "m",
+          "opcoes": [
+            "7.5",
+            "15",
+            "\"aprovado\""
+          ],
+          "porque": "media devolveu 15 / 2 = 7.5, que ficou guardado em m."
+        },
+        {
+          "linha": 9,
+          "tipo": "linha",
+          "opcoes": [
+            "5",
+            "10",
+            "2"
+          ],
+          "porque": "A linha 9 chama situacao(7.5): o programa pula para dentro dela, na linha 5. O corte padrão 6 aprova."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 7,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 12,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 8,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa",
+            "linha",
+            "media"
+          ],
+          "variaveis": {
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 9,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa",
+            "linha",
+            "situacao"
+          ],
+          "variaveis": {
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            },
+            "corte": {
+              "tipo": "int",
+              "valor": "6"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 10,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            },
+            "s": {
+              "tipo": "str",
+              "valor": "'aprovado'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {},
+          "saida": 14
+        }
+      ],
+      "saidaFinal": "Ana: aprovado\n"
     }
   ]
 }

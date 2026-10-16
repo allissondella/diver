@@ -1,0 +1,277 @@
+{
+ "id": "banco-ao-vivo",
+ "nome": "Banco ao Vivo",
+ "versao": 1,
+ "tipo": "python",
+ "descricao": "Um pequeno banco de dados em CSV e JSON: consultar, inserir, alterar e resumir registros, vendo o arquivo mudar a cada execução.",
+ "tituloReferencia": "Comandos do banco",
+ "referencia": [
+  {
+   "nome": "csv.DictReader(f)",
+   "faz": "cada linha vira um dicionário com as chaves do cabeçalho"
+  },
+  {
+   "nome": "csv.writer(f).writerow(lista)",
+   "faz": "grava uma linha"
+  },
+  {
+   "nome": "csv.DictWriter(f, fieldnames=[...])",
+   "faz": "grava dicionários; writeheader() grava o cabeçalho"
+  },
+  {
+   "nome": "open(nome, encoding=\"utf-8\", newline=\"\")",
+   "faz": "o jeito de abrir um CSV"
+  },
+  {
+   "nome": "json.dumps(dados, ensure_ascii=False, indent=2)",
+   "faz": "dados viram texto JSON"
+  },
+  {
+   "nome": "float(texto)",
+   "faz": "texto vira número decimal"
+  }
+ ],
+ "fazDeVerdade": {
+  "titulo": "Agora faça de verdade",
+  "texto": "Exporte uma planilha sua (gastos, notas, treinos) em CSV e use os mesmos programas para consultar e resumir.",
+  "passos": [
+   "No Excel, Google Planilhas ou LibreOffice, salve a planilha como CSV (UTF-8).",
+   "Confira o separador: vírgula ou ponto e vírgula (use delimiter=\";\").",
+   "Rode o programa de consulta e compare o resultado com a soma da própria planilha."
+  ]
+ },
+ "missoes": [
+  {
+   "id": "bv-consultar",
+   "aulas": [
+    "py-csv-json"
+   ],
+   "grupo": "Consultar",
+   "titulo": "Média da turma 2A",
+   "enunciado": "O banco `alunos.csv` tem nome, turma e nota. Mostre a média da turma 2A com uma casa: `Média 2A: 6.5`.",
+   "arquivos": {
+    "alunos.csv": "nome,turma,nota\nAna,2A,7.5\nBia,2B,9.0\nCaio,2A,5.5\nDavi,2B,6.0\n"
+   },
+   "codigoInicial": "import csv\n\nwith open(\"alunos.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    for linha in csv.DictReader(f):\n        print(linha)\n",
+   "solucao": "import csv\n\nwith open(\"alunos.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    notas = [float(l[\"nota\"]) for l in csv.DictReader(f) if l[\"turma\"] == \"2A\"]\nprint(f\"Média 2A: {sum(notas) / len(notas):.1f}\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Média da 2A",
+     "esperada": "Média 2A: 6.5\n"
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "Rode o código inicial: cada linha é um dicionário, e a nota é texto.",
+    "Filtre a turma e converta: [float(l[\"nota\"]) for l in csv.DictReader(f) if l[\"turma\"] == \"2A\"].",
+    "print(f\"Média 2A: {sum(notas) / len(notas):.1f}\")"
+   ],
+   "toque": {
+    "modelo": "import csv\n\nwith open(\"alunos.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    notas = [___(l[\"nota\"]) for l in csv.DictReader(f) if l[\"turma\"] == \"2A\"]\nprint(f\"Média 2A: {sum(notas) / len(notas):___}\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "float",
+       "str",
+       "len"
+      ],
+      "certa": 0,
+      "dica": "A nota vem como texto."
+     },
+     {
+      "opcoes": [
+       ".1f",
+       ".2f",
+       "d"
+      ],
+      "certa": 0,
+      "dica": "Uma casa decimal."
+     }
+    ]
+   }
+  },
+  {
+   "id": "bv-inserir",
+   "tituloExemplos": "Como o banco deve ficar",
+   "exemplos": [
+    "# última linha de alunos.csv",
+    "Eva,2A,8.0",
+    "# e os 4 alunos de antes continuam lá"
+   ],
+   "aulas": [
+    "py-csv-json"
+   ],
+   "grupo": "Inserir",
+   "titulo": "Aluna nova",
+   "enunciado": "Acrescente a aluna Eva, da turma 2A, com nota 8.0, no fim do `alunos.csv`, sem apagar os outros registros.",
+   "arquivos": {
+    "alunos.csv": "nome,turma,nota\nAna,2A,7.5\nBia,2B,9.0\nCaio,2A,5.5\nDavi,2B,6.0\n"
+   },
+   "codigoInicial": "import csv\n\n# acrescente Eva, 2A, 8.0\n",
+   "solucao": "import csv\n\nwith open(\"alunos.csv\", \"a\", encoding=\"utf-8\", newline=\"\") as f:\n    csv.writer(f).writerow([\"Eva\", \"2A\", \"8.0\"])\n",
+   "testes": [
+    {
+     "nome": "Eva no fim",
+     "codigo": "import csv\nlinhas = list(csv.DictReader(open('alunos.csv', encoding='utf-8', newline='')))\nassert linhas[-1] == {'nome': 'Eva', 'turma': '2A', 'nota': '8.0'}, 'A última linha deveria ser Eva, 2A, 8.0'"
+    },
+    {
+     "nome": "Ninguém sumiu",
+     "codigo": "import csv\nassert len(list(csv.DictReader(open('alunos.csv', encoding='utf-8', newline='')))) == 5, 'Deveriam ser 5 alunos'"
+    }
+   ],
+   "metas": {
+    "linhas": 3
+   },
+   "dicas": [
+    "Para acrescentar sem apagar, o modo é \"a\".",
+    "csv.writer(f).writerow([...]) grava uma linha com as vírgulas certas.",
+    "with open(\"alunos.csv\", \"a\", encoding=\"utf-8\", newline=\"\") as f: csv.writer(f).writerow([\"Eva\", \"2A\", \"8.0\"])"
+   ],
+   "toque": {
+    "modelo": "import csv\n\nwith open(\"alunos.csv\", \"___\", encoding=\"utf-8\", newline=\"\") as f:\n    csv.writer(f).___([\"Eva\", \"2A\", \"8.0\"])",
+    "lacunas": [
+     {
+      "opcoes": [
+       "a",
+       "w",
+       "r"
+      ],
+      "certa": 0,
+      "dica": "Acrescentar sem apagar."
+     },
+     {
+      "opcoes": [
+       "writerow",
+       "write",
+       "append"
+      ],
+      "certa": 0,
+      "dica": "O método do writer que grava uma linha."
+     }
+    ]
+   }
+  },
+  {
+   "id": "bv-alterar",
+   "tituloExemplos": "Como o banco deve ficar",
+   "exemplos": [
+    "nome,turma,nota",
+    "Ana,2A,7.5",
+    "Bia,2B,9.0",
+    "Caio,2A,6.5   # revisada",
+    "Davi,2B,6.0"
+   ],
+   "aulas": [
+    "py-revisao-arquivos"
+   ],
+   "grupo": "Alterar",
+   "titulo": "Nota revisada",
+   "enunciado": "A nota do Caio foi revisada para 6.5. Leia o banco, troque a nota dele e grave o arquivo de novo, com cabeçalho e todos os alunos.",
+   "arquivos": {
+    "alunos.csv": "nome,turma,nota\nAna,2A,7.5\nBia,2B,9.0\nCaio,2A,5.5\nDavi,2B,6.0\n"
+   },
+   "codigoInicial": "import csv\n\nwith open(\"alunos.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    alunos = list(csv.DictReader(f))\n# troque a nota do Caio e grave tudo de novo\n",
+   "solucao": "import csv\n\nwith open(\"alunos.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    alunos = list(csv.DictReader(f))\nfor a in alunos:\n    if a[\"nome\"] == \"Caio\":\n        a[\"nota\"] = \"6.5\"\nwith open(\"alunos.csv\", \"w\", encoding=\"utf-8\", newline=\"\") as f:\n    w = csv.DictWriter(f, fieldnames=[\"nome\", \"turma\", \"nota\"])\n    w.writeheader()\n    w.writerows(alunos)\n",
+   "testes": [
+    {
+     "nome": "Caio com 6.5",
+     "codigo": "import csv\nd = {l['nome']: l['nota'] for l in csv.DictReader(open('alunos.csv', encoding='utf-8', newline=''))}\nassert d.get('Caio') == '6.5', 'A nota do Caio deveria ser 6.5'"
+    },
+    {
+     "nome": "Todos continuam",
+     "codigo": "import csv\nd = {l['nome']: l['nota'] for l in csv.DictReader(open('alunos.csv', encoding='utf-8', newline=''))}\nassert d == {'Ana': '7.5', 'Bia': '9.0', 'Caio': '6.5', 'Davi': '6.0'}, 'Os outros alunos deveriam continuar iguais'"
+    }
+   ],
+   "metas": {
+    "linhas": 11
+   },
+   "dicas": [
+    "Leia tudo para uma lista, mude na memória e depois regrave o arquivo inteiro.",
+    "No for, if a[\"nome\"] == \"Caio\": a[\"nota\"] = \"6.5\". Para gravar, abra com \"w\".",
+    "csv.DictWriter(f, fieldnames=[\"nome\", \"turma\", \"nota\"]), writeheader() e writerows(alunos)."
+   ],
+   "toque": {
+    "modelo": "import csv\n\nwith open(\"alunos.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    alunos = list(csv.DictReader(f))\nfor a in alunos:\n    if a[\"nome\"] == \"Caio\":\n        a[\"nota\"] = \"6.5\"\nwith open(\"alunos.csv\", \"___\", encoding=\"utf-8\", newline=\"\") as f:\n    w = csv.DictWriter(f, fieldnames=[\"nome\", \"turma\", \"nota\"])\n    w.___()\n    w.writerows(alunos)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "w",
+       "a",
+       "r"
+      ],
+      "certa": 0,
+      "dica": "Regravar o arquivo inteiro."
+     },
+     {
+      "opcoes": [
+       "writeheader",
+       "writerow",
+       "close"
+      ],
+      "certa": 0,
+      "dica": "Primeiro o cabeçalho."
+     }
+    ]
+   }
+  },
+  {
+   "id": "bv-resumo",
+   "tituloExemplos": "Como o resumo deve ficar",
+   "exemplos": [
+    "# resumo.json",
+    "{\"2A\": 6.5, \"2B\": 7.5}"
+   ],
+   "aulas": [
+    "py-revisao-arquivos"
+   ],
+   "grupo": "Resumir",
+   "titulo": "Resumo em JSON",
+   "enunciado": "Grave em `resumo.json` a média de cada turma, com uma casa: `{\"2A\": 6.5, \"2B\": 7.5}`.",
+   "arquivos": {
+    "alunos.csv": "nome,turma,nota\nAna,2A,7.5\nBia,2B,9.0\nCaio,2A,5.5\nDavi,2B,6.0\n"
+   },
+   "codigoInicial": "import csv, json\n\nnotas = {}\n# junte as notas por turma e grave a média de cada uma\n",
+   "solucao": "import csv, json\n\nnotas = {}\nwith open(\"alunos.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    for l in csv.DictReader(f):\n        notas.setdefault(l[\"turma\"], []).append(float(l[\"nota\"]))\nresumo = {t: round(sum(v) / len(v), 1) for t, v in notas.items()}\nwith open(\"resumo.json\", \"w\", encoding=\"utf-8\") as f:\n    json.dump(resumo, f, ensure_ascii=False)\n",
+   "testes": [
+    {
+     "nome": "Médias certas",
+     "codigo": "import json\nassert json.load(open('resumo.json', encoding='utf-8')) == {'2A': 6.5, '2B': 7.5}, 'O resumo deveria ser {\"2A\": 6.5, \"2B\": 7.5}'"
+    }
+   ],
+   "metas": {
+    "linhas": 9
+   },
+   "dicas": [
+    "Monte um dicionário turma → lista de notas: notas.get(turma, []) ou notas.setdefault(turma, []).",
+    "A média de cada turma: {t: round(sum(v) / len(v), 1) for t, v in notas.items()}.",
+    "Grave com json.dump(resumo, f, ensure_ascii=False) num arquivo aberto com \"w\"."
+   ],
+   "toque": {
+    "modelo": "import csv, json\n\nnotas = {}\nwith open(\"alunos.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    for l in csv.DictReader(f):\n        notas.setdefault(l[\"turma\"], []).append(float(l[\"nota\"]))\nresumo = {t: round(sum(v) / len(v), 1) for t, v in notas.___()}\nwith open(\"resumo.json\", \"w\", encoding=\"utf-8\") as f:\n    json.___(resumo, f, ensure_ascii=False)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "items",
+       "keys",
+       "values"
+      ],
+      "certa": 0,
+      "dica": "A turma e a lista juntas."
+     },
+     {
+      "opcoes": [
+       "dump",
+       "dumps",
+       "load"
+      ],
+      "certa": 0,
+      "dica": "Gravar no arquivo aberto."
+     }
+    ]
+   }
+  }
+ ]
+}

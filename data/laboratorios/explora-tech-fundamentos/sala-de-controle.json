@@ -1,0 +1,488 @@
+{
+  "id": "sala-de-controle",
+  "nome": "Sala de Controle",
+  "versao": 1,
+  "tipo": "sala",
+  "descricao": "Um computador simulado para consertar: processador, memória e disco no painel, processos para encerrar e arquivos para apagar, sem perder nada importante.",
+  "tituloReferencia": "O que olhar no painel",
+  "rotuloBancada": "Painel do computador",
+  "referencia": [
+    {
+      "nome": "Processador",
+      "faz": "perto de 100%: algum processo está trabalhando demais (ou travou)"
+    },
+    {
+      "nome": "Memória",
+      "faz": "acima de 90%: o disco vira memória virtual e tudo fica lento"
+    },
+    {
+      "nome": "Disco",
+      "faz": "cheio: apague o que é grande e tem cópia ou não faz falta"
+    },
+    {
+      "nome": "Encerrar",
+      "faz": "libera memória e processador; o que não foi salvo se perde"
+    },
+    {
+      "nome": "Detalhes",
+      "faz": "o local do arquivo do processo; os do sistema moram na pasta do sistema"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "O seu computador tem o mesmo painel.",
+    "passos": [
+      "Abra o Gerenciador de Tarefas (Ctrl+Shift+Esc no Windows), o Monitor de Atividade (macOS) ou o comando `top` no Linux.",
+      "Ordene os processos por memória e depois por processador. Quem está no topo?",
+      "Antes de encerrar qualquer coisa de verdade, salve o seu trabalho e não mexa em processos do sistema."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "sc-memoria",
+      "aulas": [
+        "comp-hardware"
+      ],
+      "grupo": "Hardware",
+      "titulo": "A mesa cheia",
+      "enunciado": "A Bia diz que o notebook está \"arrastando\". A memória está quase no limite. Libere memória **sem derrubar a chamada de vídeo** da aula e **sem perder a redação** que ela ainda não salvou.",
+      "maquina": {
+        "ram": 8000,
+        "disco": 256000,
+        "discoSistema": 90000
+      },
+      "processos": [
+        {
+          "id": "sistema",
+          "nome": "Sistema",
+          "cpu": 3,
+          "memoria": 1200,
+          "sistema": true,
+          "local": "C:\\Windows\\System32\\ntoskrnl.exe"
+        },
+        {
+          "id": "navegador",
+          "nome": "Navegador (6 abas)",
+          "cpu": 6,
+          "memoria": 1100,
+          "local": "C:\\Program Files\\Navegador\\navegador.exe"
+        },
+        {
+          "id": "jogo",
+          "nome": "Jogo de corrida (minimizado)",
+          "cpu": 9,
+          "memoria": 3200,
+          "local": "C:\\Jogos\\Corrida\\corrida.exe"
+        },
+        {
+          "id": "editor",
+          "nome": "Editor de texto: redação (não salvo)",
+          "cpu": 2,
+          "memoria": 400,
+          "naoSalvo": true,
+          "local": "C:\\Program Files\\Editor\\editor.exe"
+        },
+        {
+          "id": "musica",
+          "nome": "Música",
+          "cpu": 1,
+          "memoria": 300,
+          "local": "C:\\Program Files\\Musica\\musica.exe"
+        },
+        {
+          "id": "chamada",
+          "nome": "Chamada de vídeo da aula",
+          "cpu": 12,
+          "memoria": 1500,
+          "local": "C:\\Program Files\\Chamadas\\chamada.exe"
+        }
+      ],
+      "objetivos": [
+        {
+          "tipo": "ram",
+          "max": 70
+        },
+        {
+          "tipo": "manter",
+          "id": "chamada",
+          "texto": "Sem derrubar a chamada de vídeo da aula"
+        },
+        {
+          "tipo": "manter",
+          "id": "editor",
+          "texto": "Sem perder a redação não salva"
+        }
+      ],
+      "solucao": [
+        {
+          "acao": "encerrar",
+          "id": "jogo"
+        }
+      ],
+      "metas": {
+        "acoes": 1
+      },
+      "dicas": [
+        "Ordene os processos por memória e olhe quem está no topo.",
+        "Um programa minimizado continua na memória, mesmo sem ninguém usar.",
+        "Encerre o jogo de corrida: são 3,2 GB de volta."
+      ]
+    },
+    {
+      "id": "sc-disco",
+      "aulas": [
+        "comp-hardware"
+      ],
+      "grupo": "Hardware",
+      "titulo": "O armário lotado",
+      "enunciado": "O disco do computador da família está quase cheio. Libere pelo menos **60 GB** sem apagar o que **não tem cópia** nem o que **ainda vai ser usado**.",
+      "maquina": {
+        "ram": 8000,
+        "disco": 128000,
+        "discoSistema": 40000
+      },
+      "processos": [
+        {
+          "id": "sistema",
+          "nome": "Sistema",
+          "cpu": 4,
+          "memoria": 1300,
+          "sistema": true,
+          "local": "C:\\Windows\\System32\\ntoskrnl.exe"
+        }
+      ],
+      "arquivos": [
+        {
+          "id": "filme",
+          "nome": "filme_ja_assistido.mp4",
+          "pasta": "Downloads",
+          "tamanho": 8000
+        },
+        {
+          "id": "instalador",
+          "nome": "instalador_antigo.exe",
+          "pasta": "Downloads",
+          "tamanho": 6000
+        },
+        {
+          "id": "fotos",
+          "nome": "fotos_da_formatura (única cópia)",
+          "pasta": "Imagens",
+          "tamanho": 9000
+        },
+        {
+          "id": "copia",
+          "nome": "copia_do_celular_2019.zip (já está no HD externo e na nuvem)",
+          "pasta": "Documentos",
+          "tamanho": 30000
+        },
+        {
+          "id": "aulas",
+          "nome": "aulas_gravadas_para_assistir",
+          "pasta": "Vídeos",
+          "tamanho": 12000
+        }
+      ],
+      "objetivos": [
+        {
+          "tipo": "disco",
+          "livreMin": 60000
+        },
+        {
+          "tipo": "manterArquivo",
+          "id": "fotos",
+          "texto": "Sem apagar as fotos da formatura (única cópia)"
+        },
+        {
+          "tipo": "manterArquivo",
+          "id": "aulas",
+          "texto": "Sem apagar as aulas que ainda vão ser assistidas"
+        }
+      ],
+      "solucao": [
+        {
+          "acao": "apagar",
+          "id": "copia"
+        },
+        {
+          "acao": "apagar",
+          "id": "filme"
+        }
+      ],
+      "metas": {
+        "acoes": 2
+      },
+      "dicas": [
+        "Comece pelo maior arquivo que tem cópia em outro lugar.",
+        "A cópia do celular já está no HD externo e na nuvem: são 30 GB. Falta mais um pouco.",
+        "Apague a cópia do celular e o filme já assistido."
+      ]
+    },
+    {
+      "id": "sc-travado",
+      "aulas": [
+        "comp-sistema-operacional"
+      ],
+      "grupo": "Sistema operacional",
+      "titulo": "Não respondendo",
+      "enunciado": "O processador está no talo e a planilha parou de responder. Resolva **sem fechar o trabalho não salvo** e sem mexer no que é do sistema.",
+      "maquina": {
+        "ram": 8000,
+        "disco": 256000,
+        "discoSistema": 90000
+      },
+      "processos": [
+        {
+          "id": "sistema",
+          "nome": "Sistema",
+          "cpu": 4,
+          "memoria": 1300,
+          "sistema": true,
+          "local": "C:\\Windows\\System32\\ntoskrnl.exe"
+        },
+        {
+          "id": "planilha",
+          "nome": "Planilha de notas",
+          "cpu": 78,
+          "memoria": 900,
+          "estado": "travado",
+          "local": "C:\\Program Files\\Planilha\\planilha.exe"
+        },
+        {
+          "id": "navegador",
+          "nome": "Navegador",
+          "cpu": 6,
+          "memoria": 1500,
+          "local": "C:\\Program Files\\Navegador\\navegador.exe"
+        },
+        {
+          "id": "atualizacao",
+          "nome": "Atualização do sistema",
+          "cpu": 12,
+          "memoria": 300,
+          "sistema": true,
+          "local": "C:\\Windows\\System32\\atualizador.exe"
+        },
+        {
+          "id": "editor",
+          "nome": "Editor: trabalho de História (não salvo)",
+          "cpu": 1,
+          "memoria": 400,
+          "naoSalvo": true,
+          "local": "C:\\Program Files\\Editor\\editor.exe"
+        }
+      ],
+      "objetivos": [
+        {
+          "tipo": "encerrado",
+          "id": "planilha",
+          "texto": "Encerrar o programa que não responde"
+        },
+        {
+          "tipo": "cpu",
+          "max": 50
+        },
+        {
+          "tipo": "manter",
+          "id": "editor",
+          "texto": "Sem perder o trabalho de História"
+        }
+      ],
+      "solucao": [
+        {
+          "acao": "encerrar",
+          "id": "planilha"
+        }
+      ],
+      "metas": {
+        "acoes": 1
+      },
+      "dicas": [
+        "Ordene por processador.",
+        "O selo \"Não respondendo\" aponta o culpado.",
+        "Encerre a planilha de notas."
+      ]
+    },
+    {
+      "id": "sc-impostor",
+      "aulas": [
+        "comp-sistema-operacional"
+      ],
+      "grupo": "Sistema operacional",
+      "titulo": "O impostor",
+      "enunciado": "Dois processos têm **o mesmo nome**, e um deles come o processador. Um é do sistema; o outro só finge. Encerre o impostor (dica: abra os **Detalhes**).",
+      "maquina": {
+        "ram": 8000,
+        "disco": 256000,
+        "discoSistema": 90000
+      },
+      "processos": [
+        {
+          "id": "sistema",
+          "nome": "Sistema",
+          "cpu": 3,
+          "memoria": 1200,
+          "sistema": true,
+          "local": "C:\\Windows\\System32\\ntoskrnl.exe"
+        },
+        {
+          "id": "host",
+          "nome": "Host de serviços",
+          "cpu": 2,
+          "memoria": 200,
+          "sistema": true,
+          "local": "C:\\Windows\\System32\\svchost.exe"
+        },
+        {
+          "id": "falso",
+          "nome": "Host de serviços",
+          "cpu": 82,
+          "memoria": 600,
+          "local": "C:\\Users\\Bia\\Downloads\\svchost.exe"
+        },
+        {
+          "id": "navegador",
+          "nome": "Navegador",
+          "cpu": 5,
+          "memoria": 1400,
+          "local": "C:\\Program Files\\Navegador\\navegador.exe"
+        }
+      ],
+      "objetivos": [
+        {
+          "tipo": "encerrado",
+          "id": "falso",
+          "texto": "Encerrar o processo que finge ser do sistema"
+        },
+        {
+          "tipo": "cpu",
+          "max": 40
+        }
+      ],
+      "solucao": [
+        {
+          "acao": "encerrar",
+          "id": "falso"
+        }
+      ],
+      "metas": {
+        "acoes": 1
+      },
+      "dicas": [
+        "Abra os Detalhes dos dois \"Host de serviços\" e compare o local do arquivo.",
+        "Programa do sistema mora na pasta do sistema, não em Downloads.",
+        "Encerre o Host de serviços que roda de C:\\Users\\Bia\\Downloads."
+      ]
+    },
+    {
+      "id": "sc-diagnostico",
+      "aulas": [
+        "comp-revisao"
+      ],
+      "grupo": "Revisão",
+      "titulo": "O diagnóstico completo",
+      "enunciado": "Tudo ao mesmo tempo: memória no limite, processador no talo e disco quase cheio. Deixe o computador tranquilo **sem perder o texto não salvo** nem as **fotos sem cópia**.",
+      "maquina": {
+        "ram": 8000,
+        "disco": 128000,
+        "discoSistema": 70000
+      },
+      "processos": [
+        {
+          "id": "sistema",
+          "nome": "Sistema",
+          "cpu": 3,
+          "memoria": 1300,
+          "sistema": true,
+          "local": "C:\\Windows\\System32\\ntoskrnl.exe"
+        },
+        {
+          "id": "navegador",
+          "nome": "Navegador",
+          "cpu": 10,
+          "memoria": 2500,
+          "local": "C:\\Program Files\\Navegador\\navegador.exe"
+        },
+        {
+          "id": "jogo",
+          "nome": "Jogo",
+          "cpu": 70,
+          "memoria": 2900,
+          "estado": "travado",
+          "local": "C:\\Jogos\\jogo.exe"
+        },
+        {
+          "id": "editor",
+          "nome": "Editor: relatório (não salvo)",
+          "cpu": 1,
+          "memoria": 400,
+          "naoSalvo": true,
+          "local": "C:\\Program Files\\Editor\\editor.exe"
+        },
+        {
+          "id": "sincronizador",
+          "nome": "Sincronizador de fotos",
+          "cpu": 20,
+          "memoria": 600,
+          "local": "C:\\Program Files\\Fotos\\sincronizar.exe"
+        }
+      ],
+      "arquivos": [
+        {
+          "id": "gravacao",
+          "nome": "gravacao_de_tela_esquecida.mp4",
+          "pasta": "Vídeos",
+          "tamanho": 45000
+        },
+        {
+          "id": "fotos",
+          "nome": "fotos_da_viagem (única cópia)",
+          "pasta": "Imagens",
+          "tamanho": 10000
+        }
+      ],
+      "objetivos": [
+        {
+          "tipo": "ram",
+          "max": 75
+        },
+        {
+          "tipo": "cpu",
+          "max": 50
+        },
+        {
+          "tipo": "disco",
+          "livreMin": 20000
+        },
+        {
+          "tipo": "manter",
+          "id": "editor",
+          "texto": "Sem perder o relatório não salvo"
+        },
+        {
+          "tipo": "manterArquivo",
+          "id": "fotos",
+          "texto": "Sem apagar as fotos sem cópia"
+        }
+      ],
+      "solucao": [
+        {
+          "acao": "encerrar",
+          "id": "jogo"
+        },
+        {
+          "acao": "apagar",
+          "id": "gravacao"
+        }
+      ],
+      "metas": {
+        "acoes": 2
+      },
+      "dicas": [
+        "Uma ação pode resolver dois problemas: procure quem gasta muita memória e muito processador ao mesmo tempo.",
+        "O jogo travado pesa na memória e no processador. Para o disco, procure o arquivo grande esquecido.",
+        "Encerre o jogo e apague a gravação de tela esquecida."
+      ]
+    }
+  ]
+}

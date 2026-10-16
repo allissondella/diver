@@ -1,472 +1,797 @@
 {
-  "id": "robo-entregador",
-  "nome": "Robô Entregador",
-  "versao": 1,
-  "tipo": "robo",
-  "descricao": "Escreva comandos em Python para o robô levar as caixas até o destino. Cada linha é uma ordem, e o computador faz exatamente o que você mandar: nem mais, nem menos. Nas missões de decisão, o mesmo programa precisa funcionar em mais de um mundo: os sensores dizem o que o robô encontrou.",
-  "comandos": [
-    {
-      "nome": "andar()",
-      "faz": "anda uma casa para a frente"
-    },
-    {
-      "nome": "virar_esquerda()",
-      "faz": "gira 90° para a esquerda, sem sair do lugar"
-    },
-    {
-      "nome": "virar_direita()",
-      "faz": "gira 90° para a direita, sem sair do lugar"
-    },
-    {
-      "nome": "pegar()",
-      "faz": "pega a caixa da casa onde o robô está"
-    },
-    {
-      "nome": "soltar()",
-      "faz": "solta a caixa que o robô carrega"
-    },
-    {
-      "nome": "parede_a_frente()",
-      "faz": "True se tem parede logo à frente"
-    },
-    {
-      "nome": "parede_a_direita()",
-      "faz": "True se tem parede à direita do robô"
-    },
-    {
-      "nome": "parede_a_esquerda()",
-      "faz": "True se tem parede à esquerda do robô"
-    },
-    {
-      "nome": "caixa_aqui()",
-      "faz": "True se tem caixa na casa do robô"
-    }
-  ],
-  "fazDeVerdade": {
-    "titulo": "Agora faça de verdade",
-    "texto": "O robô é de mentira, mas o Python é o de verdade. Dá para escrever o mesmo tipo de programa no seu computador.",
-    "passos": [
-      "Instale o Python (python.org) ou o Thonny, um editor feito para quem está começando (thonny.org).",
-      "Abra o Thonny, escreva print(\"andar\") três vezes, uma por linha, e aperte Run (F5).",
-      "Repare: as linhas rodam de cima para baixo, uma de cada vez, igual aos comandos do robô."
-    ]
+ "id": "robo-entregador",
+ "nome": "Robô Entregador",
+ "versao": 1,
+ "tipo": "robo",
+ "descricao": "Escreva comandos em Python para o robô levar as caixas até o destino. Cada linha é uma ordem, e o computador faz exatamente o que você mandar: nem mais, nem menos. Nas missões de decisão, o mesmo programa precisa funcionar em mais de um mundo: os sensores dizem o que o robô encontrou.",
+ "comandos": [
+  {
+   "nome": "andar()",
+   "faz": "anda uma casa para a frente"
   },
-  "missoes": [
-    {
-      "id": "re-sequencia-1",
-      "grupo": "Sequência",
-      "aulas": [
-        "log-o-que-e-algoritmo"
-      ],
-      "titulo": "Primeira entrega",
-      "enunciado": "O robô está virado para a direita. Leve a caixa até o destino: ande até a caixa, pegue, ande até o destino e solte.",
-      "mapa": [
-        "#######",
-        "#R.C.D#",
-        "#######"
-      ],
-      "direcao": "leste",
-      "codigoInicial": "andar()\nandar()\n# agora pegue a caixa e continue\n",
-      "solucao": "andar()\nandar()\npegar()\nandar()\nandar()\nsoltar()\n",
-      "metas": {
-        "linhas": 6,
-        "passos": 6
-      },
-      "dicas": [
-        "Conte as casas: a caixa está 2 casas à frente do robô, e o destino, mais 2 depois dela.",
-        "Depois dos dois andar(), o robô está em cima da caixa. Use pegar().",
-        "A ordem é: andar(), andar(), pegar(), andar(), andar(), soltar()."
-      ]
-    },
-    {
-      "id": "re-sequencia-2",
-      "grupo": "Sequência",
-      "aulas": [
-        "log-o-que-e-algoritmo"
-      ],
-      "titulo": "Virando a esquina",
-      "enunciado": "Agora o destino fica embaixo. Pegue a caixa, ande até a curva, vire e desça até o destino.",
-      "mapa": [
-        "######",
-        "#R.C.#",
-        "####.#",
-        "####D#",
-        "######"
-      ],
-      "direcao": "leste",
-      "codigoInicial": "andar()\nandar()\npegar()\n",
-      "solucao": "andar()\nandar()\npegar()\nandar()\nvirar_direita()\nandar()\nandar()\nsoltar()\n",
-      "metas": {
-        "linhas": 8,
-        "passos": 8
-      },
-      "dicas": [
-        "Virar não sai do lugar: o robô gira e fica olhando para outro lado.",
-        "Depois de pegar a caixa, ande mais uma casa. Para descer, o robô precisa virar para a direita.",
-        "Depois de virar_direita(), são dois andar() e o soltar()."
-      ]
-    },
-    {
-      "id": "re-sequencia-3",
-      "grupo": "Sequência",
-      "aulas": [
-        "log-o-que-e-algoritmo"
-      ],
-      "titulo": "Meia-volta",
-      "enunciado": "A caixa está à direita, mas o destino fica do outro lado. Pegue a caixa e dê meia-volta.",
-      "mapa": [
-        "#######",
-        "#D.R.C#",
-        "#######"
-      ],
-      "direcao": "leste",
-      "codigoInicial": "",
-      "solucao": "andar()\nandar()\npegar()\nvirar_esquerda()\nvirar_esquerda()\nandar()\nandar()\nandar()\nandar()\nsoltar()\n",
-      "metas": {
-        "linhas": 10,
-        "passos": 10
-      },
-      "dicas": [
-        "Não existe um comando de meia-volta. Que combinação de giros faz o robô olhar para trás?",
-        "Duas viradas para o mesmo lado (duas para a esquerda, por exemplo) deixam o robô virado para trás.",
-        "Ande 2, pegue, vire 2 vezes, ande 4 e solte."
-      ]
-    },
-    {
-      "id": "re-sequencia-4",
-      "grupo": "Sequência",
-      "aulas": [
-        "log-revisao-pensar"
-      ],
-      "titulo": "Zigue-zague",
-      "enunciado": "O caminho tem curvas para os dois lados. Leve a caixa até o destino sem bater em nenhuma parede.",
-      "mapa": [
-        "#######",
-        "#R..###",
-        "###.###",
-        "###C..#",
-        "#####D#",
-        "#######"
-      ],
-      "direcao": "leste",
-      "codigoInicial": "andar()\nandar()\nvirar_direita()\n",
-      "solucao": "andar()\nandar()\nvirar_direita()\nandar()\nandar()\npegar()\nvirar_esquerda()\nandar()\nandar()\nvirar_direita()\nandar()\nsoltar()\n",
-      "metas": {
-        "linhas": 12,
-        "passos": 12
-      },
-      "dicas": [
-        "Vá por partes: primeiro chegue até a caixa, rode e veja onde o robô parou.",
-        "Na caixa, o robô está virado para baixo. Para seguir para a direita, ele vira para a esquerda (a esquerda de quem olha para baixo).",
-        "Depois de pegar: virar_esquerda(), andar(), andar(), virar_direita(), andar(), soltar()."
-      ]
-    },
-    {
-      "id": "re-sequencia-5",
-      "grupo": "Sequência",
-      "aulas": [
-        "log-revisao-pensar"
-      ],
-      "titulo": "Duas entregas",
-      "enunciado": "São duas caixas e dois destinos. O robô carrega uma caixa por vez.",
-      "mapa": [
-        "########",
-        "#R.C.D.#",
-        "#....C.#",
-        "#....D.#",
-        "########"
-      ],
-      "direcao": "leste",
-      "codigoInicial": "",
-      "solucao": "andar()\nandar()\npegar()\nandar()\nandar()\nsoltar()\nvirar_direita()\nandar()\npegar()\nandar()\nsoltar()\n",
-      "metas": {
-        "linhas": 11,
-        "passos": 11
-      },
-      "dicas": [
-        "Termine a primeira entrega antes de começar a segunda.",
-        "Depois de soltar a primeira caixa, a segunda está bem embaixo do robô.",
-        "Segunda parte: virar_direita(), andar(), pegar(), andar(), soltar()."
-      ]
-    },
-    {
-      "id": "re-sequencia-6",
-      "grupo": "Sequência",
-      "aulas": [
-        "log-revisao-pensar"
-      ],
-      "titulo": "O caminho mais curto",
-      "enunciado": "Existem dois caminhos até o destino. Os dois funcionam, mas só o mais curto ganha as 3 estrelas.",
-      "mapa": [
-        "#######",
-        "#R...C#",
-        "#.###.#",
-        "#D....#",
-        "#######"
-      ],
-      "direcao": "leste",
-      "codigoInicial": "",
-      "solucao": "andar()\nandar()\nandar()\nandar()\npegar()\nvirar_direita()\nandar()\nandar()\nvirar_direita()\nandar()\nandar()\nandar()\nandar()\nsoltar()\n",
-      "metas": {
-        "linhas": 14,
-        "passos": 14
-      },
-      "dicas": [
-        "Conte as ações dos dois caminhos antes de escrever: voltar pelo mesmo corredor custa giros a mais.",
-        "Depois de pegar a caixa, desça pela direita em vez de voltar pela linha de cima.",
-        "Depois de pegar: virar_direita(), andar() duas vezes, virar_direita(), andar() quatro vezes e soltar()."
-      ]
-    },
-    {
-      "id": "re-condicao-1",
-      "grupo": "Decisões",
-      "aulas": [
-        "log-if-else"
-      ],
-      "titulo": "Tem caixa ou não tem?",
-      "enunciado": "Em um mundo a caixa está na segunda casa; no outro, não tem caixa nenhuma. Escreva um programa só que funcione nos dois: o robô anda uma casa e, só se tiver caixa ali, pega, anda mais uma e solta.",
-      "cenarios": [
-        {
-          "nome": "Mundo 1",
-          "mapa": [
-            "#####",
-            "#RCD#",
-            "#####"
-          ],
-          "direcao": "leste"
-        },
-        {
-          "nome": "Mundo 2",
-          "mapa": [
-            "#####",
-            "#R..#",
-            "#####"
-          ],
-          "direcao": "leste"
-        }
-      ],
-      "codigoInicial": "andar()\npegar()\nandar()\nsoltar()\n",
-      "solucao": "andar()\nif caixa_aqui():\n    pegar()\n    andar()\n    soltar()\n",
-      "metas": {
-        "linhas": 5,
-        "passos": 4
-      },
-      "dicas": [
-        "No Mundo 2 não tem caixa: pegar() ali dá erro. Só pegue se caixa_aqui() for verdade.",
-        "Depois do andar(), escreva if caixa_aqui(): e coloque as ordens de dentro com 4 espaços de recuo.",
-        "andar(), depois if caixa_aqui(): e, recuados, pegar(), andar() e soltar()."
-      ],
-      "toque": {
-        "modelo": "andar()\nif ___:\n    pegar()\n    andar()\n    soltar()",
-        "lacunas": [
-          {
-            "opcoes": [
-              "caixa_aqui()",
-              "parede_a_frente()",
-              "no_destino()"
-            ],
-            "certa": 0,
-            "dica": "A pergunta é: tem caixa na casa onde o robô está?"
-          }
-        ]
-      }
-    },
-    {
-      "id": "re-condicao-2",
-      "grupo": "Decisões",
-      "aulas": [
-        "log-if-else"
-      ],
-      "titulo": "Desvio se tiver parede",
-      "enunciado": "O robô pega a caixa e segue. Em um mundo o caminho é reto; no outro, uma parede bloqueia a frente e o destino fica para baixo. Um programa só para os dois: se tiver parede à frente, vire à direita antes de andar.",
-      "cenarios": [
-        {
-          "nome": "Mundo 1",
-          "mapa": [
-            "######",
-            "#RC.D#",
-            "######"
-          ],
-          "direcao": "leste"
-        },
-        {
-          "nome": "Mundo 2",
-          "mapa": [
-            "######",
-            "#RC###",
-            "##.###",
-            "##D###",
-            "######"
-          ],
-          "direcao": "leste"
-        }
-      ],
-      "codigoInicial": "andar()\npegar()\nandar()\nandar()\nsoltar()\n",
-      "solucao": "andar()\npegar()\nif parede_a_frente():\n    virar_direita()\nandar()\nandar()\nsoltar()\n",
-      "metas": {
-        "linhas": 7,
-        "passos": 6
-      },
-      "dicas": [
-        "Depois de pegar, o robô precisa perguntar se tem parede à frente.",
-        "if parede_a_frente(): com virar_direita() recuado embaixo. O resto do caminho é igual nos dois mundos.",
-        "andar(), pegar(), if parede_a_frente(): virar_direita() (recuado), andar(), andar(), soltar()."
-      ],
-      "toque": {
-        "modelo": "andar()\npegar()\nif ___:\n    ___\nandar()\nandar()\nsoltar()",
-        "lacunas": [
-          {
-            "opcoes": [
-              "parede_a_frente()",
-              "caixa_aqui()",
-              "parede_a_direita()"
-            ],
-            "certa": 0,
-            "dica": "O que bloqueia o caminho no Mundo 2 está na frente do robô."
-          },
-          {
-            "opcoes": [
-              "virar_direita()",
-              "virar_esquerda()",
-              "andar()"
-            ],
-            "certa": 0,
-            "dica": "No Mundo 2, o destino fica para baixo: o robô, virado para a direita, gira para a direita."
-          }
-        ]
-      }
-    },
-    {
-      "id": "re-condicao-3",
-      "grupo": "Decisões",
-      "aulas": [
-        "log-if-else"
-      ],
-      "titulo": "Frente, direita ou esquerda",
-      "enunciado": "No cruzamento, o destino pode estar em frente, embaixo ou em cima, conforme o mundo. Use if, elif e else: se a frente estiver livre, siga; se não, e a direita estiver livre, vire à direita; senão, vire à esquerda. Depois ande e solte.",
-      "cenarios": [
-        {
-          "nome": "Mundo 1",
-          "mapa": [
-            "#####",
-            "#####",
-            "#RCD#",
-            "#####",
-            "#####"
-          ],
-          "direcao": "leste"
-        },
-        {
-          "nome": "Mundo 2",
-          "mapa": [
-            "#####",
-            "#####",
-            "#RC##",
-            "##D##",
-            "#####"
-          ],
-          "direcao": "leste"
-        },
-        {
-          "nome": "Mundo 3",
-          "mapa": [
-            "#####",
-            "##D##",
-            "#RC##",
-            "#####",
-            "#####"
-          ],
-          "direcao": "leste"
-        }
-      ],
-      "codigoInicial": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nsoltar()\n",
-      "solucao": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nelif not parede_a_direita():\n    virar_direita()\n    andar()\nelse:\n    virar_esquerda()\n    andar()\nsoltar()\n",
-      "metas": {
-        "linhas": 11,
-        "passos": 5
-      },
-      "dicas": [
-        "São três caminhos, então são três ramos: if, elif e else. Cada um termina com o robô em cima do destino.",
-        "No elif, pergunte se a direita está livre: elif not parede_a_direita():. No else, sobra a esquerda.",
-        "if not parede_a_frente(): andar() / elif not parede_a_direita(): virar_direita() e andar() / else: virar_esquerda() e andar(); depois soltar()."
-      ],
-      "toque": {
-        "modelo": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nelif not ___:\n    virar_direita()\n    andar()\n___:\n    virar_esquerda()\n    andar()\nsoltar()",
-        "lacunas": [
-          {
-            "opcoes": [
-              "parede_a_direita()",
-              "parede_a_esquerda()",
-              "parede_a_frente()"
-            ],
-            "certa": 0,
-            "dica": "Esse ramo vira à direita: pergunte se a direita está livre."
-          },
-          {
-            "opcoes": [
-              "else",
-              "elif",
-              "if"
-            ],
-            "certa": 0,
-            "dica": "Quando nenhuma condição anterior deu certo, entra o ramo sem condição."
-          }
-        ]
-      }
-    },
-    {
-      "id": "re-condicao-4",
-      "grupo": "Decisões",
-      "aulas": [
-        "log-revisao-decisoes"
-      ],
-      "titulo": "Uma casa ou duas?",
-      "enunciado": "A caixa pode estar logo na primeira casa ou na segunda, e o destino vem logo depois dela. Faça um programa só que funcione nos dois mundos: se não tiver caixa onde o robô parou, ele anda mais uma.",
-      "cenarios": [
-        {
-          "nome": "Mundo 1",
-          "mapa": [
-            "######",
-            "#RCD.#",
-            "######"
-          ],
-          "direcao": "leste"
-        },
-        {
-          "nome": "Mundo 2",
-          "mapa": [
-            "######",
-            "#R.CD#",
-            "######"
-          ],
-          "direcao": "leste"
-        }
-      ],
-      "codigoInicial": "andar()\npegar()\nandar()\nsoltar()\n",
-      "solucao": "andar()\nif not caixa_aqui():\n    andar()\npegar()\nandar()\nsoltar()\n",
-      "metas": {
-        "linhas": 6,
-        "passos": 5
-      },
-      "dicas": [
-        "No Mundo 2, a primeira casa está vazia. O robô só anda mais uma se não tiver caixa ali.",
-        "Use not para inverter o sensor: if not caixa_aqui():",
-        "andar(), if not caixa_aqui(): andar() (recuado), depois pegar(), andar() e soltar()."
-      ],
-      "toque": {
-        "modelo": "andar()\nif ___ caixa_aqui():\n    andar()\npegar()\nandar()\nsoltar()",
-        "lacunas": [
-          {
-            "opcoes": [
-              "not",
-              "or",
-              "True and"
-            ],
-            "certa": 0,
-            "dica": "O robô anda mais quando NÃO tem caixa."
-          }
-        ]
-      }
-    }
+  {
+   "nome": "virar_esquerda()",
+   "faz": "gira 90° para a esquerda, sem sair do lugar"
+  },
+  {
+   "nome": "virar_direita()",
+   "faz": "gira 90° para a direita, sem sair do lugar"
+  },
+  {
+   "nome": "pegar()",
+   "faz": "pega a caixa da casa onde o robô está"
+  },
+  {
+   "nome": "soltar()",
+   "faz": "solta a caixa que o robô carrega"
+  },
+  {
+   "nome": "parede_a_frente()",
+   "faz": "True se tem parede logo à frente"
+  },
+  {
+   "nome": "parede_a_direita()",
+   "faz": "True se tem parede à direita do robô"
+  },
+  {
+   "nome": "parede_a_esquerda()",
+   "faz": "True se tem parede à esquerda do robô"
+  },
+  {
+   "nome": "caixa_aqui()",
+   "faz": "True se tem caixa na casa do robô"
+  },
+  {
+   "nome": "no_destino()",
+   "faz": "True se o robô está em cima de um destino"
+  }
+ ],
+ "fazDeVerdade": {
+  "titulo": "Agora faça de verdade",
+  "texto": "O robô é de mentira, mas o Python é o de verdade. Dá para escrever o mesmo tipo de programa no seu computador.",
+  "passos": [
+   "Instale o Python (python.org) ou o Thonny, um editor feito para quem está começando (thonny.org).",
+   "Abra o Thonny, escreva print(\"andar\") três vezes, uma por linha, e aperte Run (F5).",
+   "Repare: as linhas rodam de cima para baixo, uma de cada vez, igual aos comandos do robô."
   ]
+ },
+ "missoes": [
+  {
+   "id": "re-sequencia-1",
+   "grupo": "Sequência",
+   "aulas": [
+    "log-o-que-e-algoritmo"
+   ],
+   "titulo": "Primeira entrega",
+   "enunciado": "O robô está virado para a direita. Leve a caixa até o destino: ande até a caixa, pegue, ande até o destino e solte.",
+   "mapa": [
+    "#######",
+    "#R.C.D#",
+    "#######"
+   ],
+   "direcao": "leste",
+   "codigoInicial": "andar()\nandar()\n# agora pegue a caixa e continue\n",
+   "solucao": "andar()\nandar()\npegar()\nandar()\nandar()\nsoltar()\n",
+   "metas": {
+    "linhas": 6,
+    "passos": 6
+   },
+   "dicas": [
+    "Conte as casas: a caixa está 2 casas à frente do robô, e o destino, mais 2 depois dela.",
+    "Depois dos dois andar(), o robô está em cima da caixa. Use pegar().",
+    "A ordem é: andar(), andar(), pegar(), andar(), andar(), soltar()."
+   ]
+  },
+  {
+   "id": "re-sequencia-2",
+   "grupo": "Sequência",
+   "aulas": [
+    "log-o-que-e-algoritmo"
+   ],
+   "titulo": "Virando a esquina",
+   "enunciado": "Agora o destino fica embaixo. Pegue a caixa, ande até a curva, vire e desça até o destino.",
+   "mapa": [
+    "######",
+    "#R.C.#",
+    "####.#",
+    "####D#",
+    "######"
+   ],
+   "direcao": "leste",
+   "codigoInicial": "andar()\nandar()\npegar()\n",
+   "solucao": "andar()\nandar()\npegar()\nandar()\nvirar_direita()\nandar()\nandar()\nsoltar()\n",
+   "metas": {
+    "linhas": 8,
+    "passos": 8
+   },
+   "dicas": [
+    "Virar não sai do lugar: o robô gira e fica olhando para outro lado.",
+    "Depois de pegar a caixa, ande mais uma casa. Para descer, o robô precisa virar para a direita.",
+    "Depois de virar_direita(), são dois andar() e o soltar()."
+   ]
+  },
+  {
+   "id": "re-sequencia-3",
+   "grupo": "Sequência",
+   "aulas": [
+    "log-o-que-e-algoritmo"
+   ],
+   "titulo": "Meia-volta",
+   "enunciado": "A caixa está à direita, mas o destino fica do outro lado. Pegue a caixa e dê meia-volta.",
+   "mapa": [
+    "#######",
+    "#D.R.C#",
+    "#######"
+   ],
+   "direcao": "leste",
+   "codigoInicial": "",
+   "solucao": "andar()\nandar()\npegar()\nvirar_esquerda()\nvirar_esquerda()\nandar()\nandar()\nandar()\nandar()\nsoltar()\n",
+   "metas": {
+    "linhas": 10,
+    "passos": 10
+   },
+   "dicas": [
+    "Não existe um comando de meia-volta. Que combinação de giros faz o robô olhar para trás?",
+    "Duas viradas para o mesmo lado (duas para a esquerda, por exemplo) deixam o robô virado para trás.",
+    "Ande 2, pegue, vire 2 vezes, ande 4 e solte."
+   ]
+  },
+  {
+   "id": "re-sequencia-4",
+   "grupo": "Sequência",
+   "aulas": [
+    "log-revisao-pensar"
+   ],
+   "titulo": "Zigue-zague",
+   "enunciado": "O caminho tem curvas para os dois lados. Leve a caixa até o destino sem bater em nenhuma parede.",
+   "mapa": [
+    "#######",
+    "#R..###",
+    "###.###",
+    "###C..#",
+    "#####D#",
+    "#######"
+   ],
+   "direcao": "leste",
+   "codigoInicial": "andar()\nandar()\nvirar_direita()\n",
+   "solucao": "andar()\nandar()\nvirar_direita()\nandar()\nandar()\npegar()\nvirar_esquerda()\nandar()\nandar()\nvirar_direita()\nandar()\nsoltar()\n",
+   "metas": {
+    "linhas": 12,
+    "passos": 12
+   },
+   "dicas": [
+    "Vá por partes: primeiro chegue até a caixa, rode e veja onde o robô parou.",
+    "Na caixa, o robô está virado para baixo. Para seguir para a direita, ele vira para a esquerda (a esquerda de quem olha para baixo).",
+    "Depois de pegar: virar_esquerda(), andar(), andar(), virar_direita(), andar(), soltar()."
+   ]
+  },
+  {
+   "id": "re-sequencia-5",
+   "grupo": "Sequência",
+   "aulas": [
+    "log-revisao-pensar"
+   ],
+   "titulo": "Duas entregas",
+   "enunciado": "São duas caixas e dois destinos. O robô carrega uma caixa por vez.",
+   "mapa": [
+    "########",
+    "#R.C.D.#",
+    "#....C.#",
+    "#....D.#",
+    "########"
+   ],
+   "direcao": "leste",
+   "codigoInicial": "",
+   "solucao": "andar()\nandar()\npegar()\nandar()\nandar()\nsoltar()\nvirar_direita()\nandar()\npegar()\nandar()\nsoltar()\n",
+   "metas": {
+    "linhas": 11,
+    "passos": 11
+   },
+   "dicas": [
+    "Termine a primeira entrega antes de começar a segunda.",
+    "Depois de soltar a primeira caixa, a segunda está bem embaixo do robô.",
+    "Segunda parte: virar_direita(), andar(), pegar(), andar(), soltar()."
+   ]
+  },
+  {
+   "id": "re-sequencia-6",
+   "grupo": "Sequência",
+   "aulas": [
+    "log-revisao-pensar"
+   ],
+   "titulo": "O caminho mais curto",
+   "enunciado": "Existem dois caminhos até o destino. Os dois funcionam, mas só o mais curto ganha as 3 estrelas.",
+   "mapa": [
+    "#######",
+    "#R...C#",
+    "#.###.#",
+    "#D....#",
+    "#######"
+   ],
+   "direcao": "leste",
+   "codigoInicial": "",
+   "solucao": "andar()\nandar()\nandar()\nandar()\npegar()\nvirar_direita()\nandar()\nandar()\nvirar_direita()\nandar()\nandar()\nandar()\nandar()\nsoltar()\n",
+   "metas": {
+    "linhas": 14,
+    "passos": 14
+   },
+   "dicas": [
+    "Conte as ações dos dois caminhos antes de escrever: voltar pelo mesmo corredor custa giros a mais.",
+    "Depois de pegar a caixa, desça pela direita em vez de voltar pela linha de cima.",
+    "Depois de pegar: virar_direita(), andar() duas vezes, virar_direita(), andar() quatro vezes e soltar()."
+   ]
+  },
+  {
+   "id": "re-condicao-1",
+   "grupo": "Decisões",
+   "aulas": [
+    "log-if-else"
+   ],
+   "titulo": "Tem caixa ou não tem?",
+   "enunciado": "Em um mundo a caixa está na segunda casa; no outro, não tem caixa nenhuma. Escreva um programa só que funcione nos dois: o robô anda uma casa e, só se tiver caixa ali, pega, anda mais uma e solta.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "#####",
+      "#RCD#",
+      "#####"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "#####",
+      "#R..#",
+      "#####"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "andar()\npegar()\nandar()\nsoltar()\n",
+   "solucao": "andar()\nif caixa_aqui():\n    pegar()\n    andar()\n    soltar()\n",
+   "metas": {
+    "linhas": 5,
+    "passos": 4
+   },
+   "dicas": [
+    "No Mundo 2 não tem caixa: pegar() ali dá erro. Só pegue se caixa_aqui() for verdade.",
+    "Depois do andar(), escreva if caixa_aqui(): e coloque as ordens de dentro com 4 espaços de recuo.",
+    "andar(), depois if caixa_aqui(): e, recuados, pegar(), andar() e soltar()."
+   ],
+   "toque": {
+    "modelo": "andar()\nif ___:\n    pegar()\n    andar()\n    soltar()",
+    "lacunas": [
+     {
+      "opcoes": [
+       "caixa_aqui()",
+       "parede_a_frente()",
+       "no_destino()"
+      ],
+      "certa": 0,
+      "dica": "A pergunta é: tem caixa na casa onde o robô está?"
+     }
+    ]
+   }
+  },
+  {
+   "id": "re-condicao-2",
+   "grupo": "Decisões",
+   "aulas": [
+    "log-if-else"
+   ],
+   "titulo": "Desvio se tiver parede",
+   "enunciado": "O robô pega a caixa e segue. Em um mundo o caminho é reto; no outro, uma parede bloqueia a frente e o destino fica para baixo. Um programa só para os dois: se tiver parede à frente, vire à direita antes de andar.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "######",
+      "#RC.D#",
+      "######"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "######",
+      "#RC###",
+      "##.###",
+      "##D###",
+      "######"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "andar()\npegar()\nandar()\nandar()\nsoltar()\n",
+   "solucao": "andar()\npegar()\nif parede_a_frente():\n    virar_direita()\nandar()\nandar()\nsoltar()\n",
+   "metas": {
+    "linhas": 7,
+    "passos": 6
+   },
+   "dicas": [
+    "Depois de pegar, o robô precisa perguntar se tem parede à frente.",
+    "if parede_a_frente(): com virar_direita() recuado embaixo. O resto do caminho é igual nos dois mundos.",
+    "andar(), pegar(), if parede_a_frente(): virar_direita() (recuado), andar(), andar(), soltar()."
+   ],
+   "toque": {
+    "modelo": "andar()\npegar()\nif ___:\n    ___\nandar()\nandar()\nsoltar()",
+    "lacunas": [
+     {
+      "opcoes": [
+       "parede_a_frente()",
+       "caixa_aqui()",
+       "parede_a_direita()"
+      ],
+      "certa": 0,
+      "dica": "O que bloqueia o caminho no Mundo 2 está na frente do robô."
+     },
+     {
+      "opcoes": [
+       "virar_direita()",
+       "virar_esquerda()",
+       "andar()"
+      ],
+      "certa": 0,
+      "dica": "No Mundo 2, o destino fica para baixo: o robô, virado para a direita, gira para a direita."
+     }
+    ]
+   }
+  },
+  {
+   "id": "re-condicao-3",
+   "grupo": "Decisões",
+   "aulas": [
+    "log-if-else"
+   ],
+   "titulo": "Frente, direita ou esquerda",
+   "enunciado": "No cruzamento, o destino pode estar em frente, embaixo ou em cima, conforme o mundo. Use if, elif e else: se a frente estiver livre, siga; se não, e a direita estiver livre, vire à direita; senão, vire à esquerda. Depois ande e solte.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "#####",
+      "#####",
+      "#RCD#",
+      "#####",
+      "#####"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "#####",
+      "#####",
+      "#RC##",
+      "##D##",
+      "#####"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 3",
+     "mapa": [
+      "#####",
+      "##D##",
+      "#RC##",
+      "#####",
+      "#####"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nsoltar()\n",
+   "solucao": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nelif not parede_a_direita():\n    virar_direita()\n    andar()\nelse:\n    virar_esquerda()\n    andar()\nsoltar()\n",
+   "metas": {
+    "linhas": 11,
+    "passos": 5
+   },
+   "dicas": [
+    "São três caminhos, então são três ramos: if, elif e else. Cada um termina com o robô em cima do destino.",
+    "No elif, pergunte se a direita está livre: elif not parede_a_direita():. No else, sobra a esquerda.",
+    "if not parede_a_frente(): andar() / elif not parede_a_direita(): virar_direita() e andar() / else: virar_esquerda() e andar(); depois soltar()."
+   ],
+   "toque": {
+    "modelo": "andar()\npegar()\nif not parede_a_frente():\n    andar()\nelif not ___:\n    virar_direita()\n    andar()\n___:\n    virar_esquerda()\n    andar()\nsoltar()",
+    "lacunas": [
+     {
+      "opcoes": [
+       "parede_a_direita()",
+       "parede_a_esquerda()",
+       "parede_a_frente()"
+      ],
+      "certa": 0,
+      "dica": "Esse ramo vira à direita: pergunte se a direita está livre."
+     },
+     {
+      "opcoes": [
+       "else",
+       "elif",
+       "if"
+      ],
+      "certa": 0,
+      "dica": "Quando nenhuma condição anterior deu certo, entra o ramo sem condição."
+     }
+    ]
+   }
+  },
+  {
+   "id": "re-condicao-4",
+   "grupo": "Decisões",
+   "aulas": [
+    "log-revisao-decisoes"
+   ],
+   "titulo": "Uma casa ou duas?",
+   "enunciado": "A caixa pode estar logo na primeira casa ou na segunda, e o destino vem logo depois dela. Faça um programa só que funcione nos dois mundos: se não tiver caixa onde o robô parou, ele anda mais uma.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "######",
+      "#RCD.#",
+      "######"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "######",
+      "#R.CD#",
+      "######"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "andar()\npegar()\nandar()\nsoltar()\n",
+   "solucao": "andar()\nif not caixa_aqui():\n    andar()\npegar()\nandar()\nsoltar()\n",
+   "metas": {
+    "linhas": 6,
+    "passos": 5
+   },
+   "dicas": [
+    "No Mundo 2, a primeira casa está vazia. O robô só anda mais uma se não tiver caixa ali.",
+    "Use not para inverter o sensor: if not caixa_aqui():",
+    "andar(), if not caixa_aqui(): andar() (recuado), depois pegar(), andar() e soltar()."
+   ],
+   "toque": {
+    "modelo": "andar()\nif ___ caixa_aqui():\n    andar()\npegar()\nandar()\nsoltar()",
+    "lacunas": [
+     {
+      "opcoes": [
+       "not",
+       "or",
+       "True and"
+      ],
+      "certa": 0,
+      "dica": "O robô anda mais quando NÃO tem caixa."
+     }
+    ]
+   }
+  },
+  {
+   "id": "re-laco-1",
+   "grupo": "Laços",
+   "aulas": [
+    "log-while"
+   ],
+   "titulo": "Corredor comprido",
+   "enunciado": "A caixa e o destino estão no mesmo corredor, mas a distância muda de um mundo para outro. Use while: ande enquanto não tiver caixa aqui, pegue, ande enquanto não estiver no destino e solte. O mesmo programa precisa servir para os dois mundos.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "#########",
+      "#R..C..D#",
+      "#########"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "############",
+      "#R.....C..D#",
+      "############"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "andar()\nandar()\nandar()\npegar()\n# use while para servir em qualquer corredor\n",
+   "solucao": "while not caixa_aqui():\n    andar()\npegar()\nwhile not no_destino():\n    andar()\nsoltar()\n",
+   "metas": {
+    "linhas": 6,
+    "passos": 12
+   },
+   "dicas": [
+    "Contar as casas não funciona: em cada mundo a distância é outra. Deixe o sensor decidir quando parar.",
+    "while not caixa_aqui(): repete andar() até chegar na caixa. Depois, faça o mesmo com no_destino().",
+    "while not caixa_aqui(): andar() / pegar() / while not no_destino(): andar() / soltar()"
+   ],
+   "toque": {
+    "modelo": "while not ___:\n    andar()\npegar()\nwhile not ___:\n    andar()\nsoltar()",
+    "lacunas": [
+     {
+      "opcoes": [
+       "caixa_aqui()",
+       "no_destino()",
+       "parede_a_frente()"
+      ],
+      "certa": 0,
+      "dica": "O primeiro laço anda até achar a caixa."
+     },
+     {
+      "opcoes": [
+       "no_destino()",
+       "caixa_aqui()",
+       "parede_a_frente()"
+      ],
+      "certa": 0,
+      "dica": "O segundo laço anda até chegar no destino."
+     }
+    ]
+   }
+  },
+  {
+   "id": "re-laco-2",
+   "grupo": "Laços",
+   "aulas": [
+    "log-while"
+   ],
+   "titulo": "Até a parede",
+   "enunciado": "O robô anda até a parede, onde está a caixa. Lá, pega a caixa, vira à direita e desce até a próxima parede, onde fica o destino. Os corredores têm tamanhos diferentes em cada mundo.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "#######",
+      "#R...C#",
+      "#####.#",
+      "#####D#",
+      "#######"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "#####",
+      "#R.C#",
+      "###.#",
+      "###.#",
+      "###.#",
+      "###D#",
+      "#####"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "while not parede_a_frente():\n    andar()\npegar()\n# agora vire e desça até a parede\n",
+   "solucao": "while not parede_a_frente():\n    andar()\npegar()\nvirar_direita()\nwhile not parede_a_frente():\n    andar()\nsoltar()\n",
+   "metas": {
+    "linhas": 7,
+    "passos": 12
+   },
+   "dicas": [
+    "O mesmo laço serve duas vezes: andar enquanto não houver parede à frente.",
+    "Depois de pegar, vire à direita: o corredor desce. Repita o while com parede_a_frente().",
+    "while not parede_a_frente(): andar() / pegar() / virar_direita() / while not parede_a_frente(): andar() / soltar()"
+   ],
+   "toque": {
+    "modelo": "while not parede_a_frente():\n    andar()\npegar()\n___\nwhile not ___:\n    andar()\nsoltar()",
+    "lacunas": [
+     {
+      "opcoes": [
+       "virar_direita()",
+       "virar_esquerda()",
+       "andar()"
+      ],
+      "certa": 0,
+      "dica": "O corredor desce: o robô, virado para a direita da tela, precisa girar para o sul."
+     },
+     {
+      "opcoes": [
+       "parede_a_frente()",
+       "caixa_aqui()",
+       "parede_a_direita()"
+      ],
+      "certa": 0,
+      "dica": "Desça até a parede."
+     }
+    ]
+   }
+  },
+  {
+   "id": "re-funcao-1",
+   "grupo": "Funções",
+   "aulas": [
+    "log-funcoes"
+   ],
+   "titulo": "Meia-volta",
+   "enunciado": "A caixa está logo à frente, mas o destino ficou para trás. Crie uma função meia_volta() que vira o robô duas vezes à esquerda e use-a: ande, pegue, dê meia-volta, ande até o destino e solte.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "#######",
+      "#D..RC#",
+      "#######"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "#########",
+      "#D....RC#",
+      "#########"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "def meia_volta():\n    # vire duas vezes à esquerda\n    pass\n\nandar()\npegar()\n",
+   "solucao": "def meia_volta():\n    virar_esquerda()\n    virar_esquerda()\n\nandar()\npegar()\nmeia_volta()\nwhile not no_destino():\n    andar()\nsoltar()\n",
+   "metas": {
+    "linhas": 9,
+    "passos": 14
+   },
+   "dicas": [
+    "Duas viradas à esquerda deixam o robô de costas para onde estava.",
+    "O corpo da função tem duas linhas recuadas: virar_esquerda() e virar_esquerda(). Depois, chame meia_volta() no programa.",
+    "def meia_volta(): (duas viradas à esquerda) / andar() / pegar() / meia_volta() / while not no_destino(): andar() / soltar()"
+   ],
+   "toque": {
+    "modelo": "def meia_volta():\n    virar_esquerda()\n    ___\n\nandar()\npegar()\n___\nwhile not no_destino():\n    andar()\nsoltar()",
+    "lacunas": [
+     {
+      "opcoes": [
+       "virar_esquerda()",
+       "virar_direita()",
+       "andar()"
+      ],
+      "certa": 0,
+      "dica": "Meia-volta são duas viradas para o mesmo lado."
+     },
+     {
+      "opcoes": [
+       "meia_volta()",
+       "meia_volta",
+       "def meia_volta()"
+      ],
+      "certa": 0,
+      "dica": "Para usar a função, chame o nome com os parênteses."
+     }
+    ]
+   }
+  },
+  {
+   "id": "re-funcao-2",
+   "grupo": "Funções",
+   "aulas": [
+    "log-funcoes"
+   ],
+   "titulo": "Duas entregas",
+   "enunciado": "No corredor há duas caixas, cada uma com o seu destino mais adiante. Escreva uma função entrega() que anda uma casa, procura a próxima caixa, pega, anda uma casa e procura o destino, e solta. Depois, chame a função duas vezes.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "############",
+      "#R.C..D.C.D#",
+      "############"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "##############",
+      "#RC...D..C..D#",
+      "##############"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "def entrega():\n    andar()\n    # procure a caixa, pegue e leve até o destino\n\nentrega()\nentrega()\n",
+   "solucao": "def entrega():\n    andar()\n    while not caixa_aqui():\n        andar()\n    pegar()\n    andar()\n    while not no_destino():\n        andar()\n    soltar()\n\nentrega()\nentrega()\n",
+   "metas": {
+    "linhas": 11,
+    "passos": 26
+   },
+   "dicas": [
+    "A função faz uma entrega inteira; chamar duas vezes faz as duas. O andar() do começo tira o robô de cima do destino anterior.",
+    "Dentro da função: while not caixa_aqui(): andar() e, depois de pegar e andar uma casa, while not no_destino(): andar().",
+    "def entrega(): andar() / while not caixa_aqui(): andar() / pegar() / andar() / while not no_destino(): andar() / soltar(). Depois, entrega() duas vezes."
+   ],
+   "toque": {
+    "modelo": "def entrega():\n    andar()\n    while not caixa_aqui():\n        andar()\n    ___\n    andar()\n    while not no_destino():\n        andar()\n    soltar()\n\nentrega()\n___",
+    "lacunas": [
+     {
+      "opcoes": [
+       "pegar()",
+       "soltar()",
+       "andar()"
+      ],
+      "certa": 0,
+      "dica": "Achou a caixa: pegue."
+     },
+     {
+      "opcoes": [
+       "entrega()",
+       "def entrega()",
+       "entrega"
+      ],
+      "certa": 0,
+      "dica": "São duas entregas: chame a função de novo."
+     }
+    ]
+   }
+  },
+  {
+   "id": "re-revisao-laco",
+   "grupo": "Laços e funções",
+   "aulas": [
+    "log-revisao-repeticao"
+   ],
+   "titulo": "Três entregas com for",
+   "enunciado": "Agora são três caixas, cada uma com o seu destino. Escreva a função entrega() e chame-a três vezes com um for e range. O mesmo programa precisa servir aos dois mundos.",
+   "cenarios": [
+    {
+     "nome": "Mundo 1",
+     "mapa": [
+      "###########",
+      "#RCD.CD.CD#",
+      "###########"
+     ],
+     "direcao": "leste"
+    },
+    {
+     "nome": "Mundo 2",
+     "mapa": [
+      "##############",
+      "#R.C.D.C.DC..D#",
+      "##############"
+     ],
+     "direcao": "leste"
+    }
+   ],
+   "codigoInicial": "def entrega():\n    andar()\n    while not caixa_aqui():\n        andar()\n    pegar()\n    andar()\n    while not no_destino():\n        andar()\n    soltar()\n\n# chame entrega() três vezes, com for\n",
+   "solucao": "def entrega():\n    andar()\n    while not caixa_aqui():\n        andar()\n    pegar()\n    andar()\n    while not no_destino():\n        andar()\n    soltar()\n\nfor i in range(3):\n    entrega()\n",
+   "metas": {
+    "linhas": 11,
+    "passos": 30
+   },
+   "dicas": [
+    "A função já está pronta. Falta repetir a chamada três vezes.",
+    "for i in range(3): repete o bloco três vezes. Dentro dele, chame entrega().",
+    "for i in range(3): e, recuado, entrega()"
+   ],
+   "toque": {
+    "modelo": "def entrega():\n    andar()\n    while not caixa_aqui():\n        andar()\n    pegar()\n    andar()\n    while not no_destino():\n        andar()\n    soltar()\n\nfor i in ___:\n    ___",
+    "lacunas": [
+     {
+      "opcoes": [
+       "range(3)",
+       "range(2)",
+       "range(1, 3)"
+      ],
+      "certa": 0,
+      "dica": "São três entregas: range(3) dá três voltas."
+     },
+     {
+      "opcoes": [
+       "entrega()",
+       "pegar()",
+       "def entrega()"
+      ],
+      "certa": 0,
+      "dica": "Cada volta faz uma entrega inteira."
+     }
+    ]
+   }
+  }
+ ]
 }

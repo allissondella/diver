@@ -1,0 +1,527 @@
+{
+  "id": "fabrica-de-portas",
+  "nome": "Fábrica de Portas Lógicas",
+  "versao": 1,
+  "tipo": "portas",
+  "descricao": "Fios, interruptores e portas lógicas: acenda as lâmpadas certas em todas as linhas da tabela-verdade e monte números em binário.",
+  "tituloReferencia": "As portas e as casas",
+  "rotuloBancada": "Bancada da fábrica",
+  "referencia": [
+    {
+      "nome": "AND (E)",
+      "faz": "dá 1 só se as duas entradas forem 1"
+    },
+    {
+      "nome": "OR (OU)",
+      "faz": "dá 1 se pelo menos uma entrada for 1"
+    },
+    {
+      "nome": "NOT (NÃO)",
+      "faz": "inverte: 0 vira 1 e 1 vira 0"
+    },
+    {
+      "nome": "XOR (OU exclusivo)",
+      "faz": "dá 1 quando as entradas são diferentes"
+    },
+    {
+      "nome": "Casas de 8 bits",
+      "faz": "128 64 32 16 8 4 2 1: some as casas com 1"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "As mesmas portas existem no Python, com outros nomes.",
+    "passos": [
+      "No Python, `a and b`, `a or b` e `not a` são as portas AND, OR e NOT; `a ^ b` é a XOR com 0 e 1.",
+      "Escreva um `for` que imprime a tabela-verdade de `(a or b) and not (a and b)` para a e b valendo 0 e 1.",
+      "Confira com `bin(13)` e `int(\"1101\", 2)` as conversões que você fez nos interruptores."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "fp-garagem",
+      "aulas": [
+        "log-booleanos"
+      ],
+      "grupo": "Lógica em fios",
+      "tipo": "circuito",
+      "titulo": "O portão da garagem",
+      "enunciado": "O portão só abre com o **controle** (A) **e** a **senha certa** (B) ao mesmo tempo. Monte o circuito da lâmpada S, que acende quando o portão abre.",
+      "pedido": "A = controle apertado; B = senha certa. S acende só quando as duas condições valem.",
+      "entradas": [
+        "A",
+        "B"
+      ],
+      "saidas": [
+        {
+          "nome": "S",
+          "alvo": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "permitidas": [
+        "AND",
+        "OR",
+        "NOT"
+      ],
+      "solucao": {
+        "portas": [
+          [
+            "AND",
+            "A",
+            "B"
+          ]
+        ],
+        "saidas": {
+          "S": "p1"
+        }
+      },
+      "metas": {
+        "portas": 1
+      },
+      "dicas": [
+        "As duas condições precisam valer juntas: qual porta só dá 1 quando as duas entradas são 1?",
+        "Acrescente uma porta AND com as entradas A e B.",
+        "Porta 1 = AND(A, B) e a lâmpada S liga em \"porta 1\"."
+      ]
+    },
+    {
+      "id": "fp-alarme",
+      "aulas": [
+        "log-booleanos"
+      ],
+      "grupo": "Lógica em fios",
+      "tipo": "circuito",
+      "titulo": "O alarme da loja",
+      "enunciado": "O alarme (S) dispara se a **porta** (A) **ou** a **janela** (B) abrir. E a luz de \"tudo fechado\" (F) acende quando o alarme está quieto.",
+      "pedido": "A = porta aberta; B = janela aberta. S = alarme; F = o contrário de S.",
+      "entradas": [
+        "A",
+        "B"
+      ],
+      "saidas": [
+        {
+          "nome": "S",
+          "alvo": [
+            0,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "nome": "F",
+          "alvo": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "permitidas": [
+        "AND",
+        "OR",
+        "NOT"
+      ],
+      "solucao": {
+        "portas": [
+          [
+            "OR",
+            "A",
+            "B"
+          ],
+          [
+            "NOT",
+            "p1"
+          ]
+        ],
+        "saidas": {
+          "S": "p1",
+          "F": "p2"
+        }
+      },
+      "metas": {
+        "portas": 2
+      },
+      "dicas": [
+        "Basta uma das duas abrir para o alarme disparar. E F é sempre o contrário de S.",
+        "Porta 1 = OR(A, B) para S. Para F, inverta a saída da porta 1.",
+        "Porta 1 = OR(A, B), porta 2 = NOT(porta 1); S liga na porta 1 e F na porta 2."
+      ]
+    },
+    {
+      "id": "fp-monte-13",
+      "aulas": [
+        "comp-bits-binario"
+      ],
+      "grupo": "Binário",
+      "tipo": "bits",
+      "titulo": "Monte o 13",
+      "enunciado": "Cada interruptor é um bit, e cada casa vale o dobro da casa da direita. Ligue os interruptores certos para o painel formar **13**.",
+      "metas": {
+        "alvo": 13,
+        "bits": 8,
+        "toques": 4
+      },
+      "dicas": [
+        "Comece pela maior casa que cabe em 13.",
+        "8 cabe em 13 e sobram 5; 4 cabe em 5 e sobra 1.",
+        "Ligue as casas 8, 4 e 1: 00001101."
+      ]
+    },
+    {
+      "id": "fp-leia-o-painel",
+      "aulas": [
+        "comp-bits-binario"
+      ],
+      "grupo": "Binário",
+      "tipo": "ler",
+      "titulo": "Leia o painel",
+      "enunciado": "O painel acendeu um byte. Quanto ele vale em **decimal**?",
+      "bits": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "metas": {},
+      "dicas": [
+        "Olhe só as casas com 1 e o valor escrito em cima de cada uma.",
+        "As casas com 1 são a do 16, a do 4 e a do 2.",
+        "16 + 4 + 2 = 22."
+      ]
+    },
+    {
+      "id": "fp-no-escuro",
+      "aulas": [
+        "comp-bits-binario"
+      ],
+      "grupo": "Binário",
+      "tipo": "bits",
+      "titulo": "No escuro: o 100",
+      "enunciado": "Agora o painel **não mostra o decimal** enquanto você mexe: só no Conferir. Forme **100** só com a conta de cabeça.",
+      "mostrarDecimal": false,
+      "metas": {
+        "alvo": 100,
+        "bits": 8,
+        "toques": 4
+      },
+      "dicas": [
+        "Procure a maior potência de 2 que cabe em 100.",
+        "64 cabe; sobram 36. 32 cabe; sobram 4.",
+        "Ligue as casas 64, 32 e 4: 01100100."
+      ]
+    },
+    {
+      "id": "fp-escada",
+      "aulas": [
+        "comp-bits-binario"
+      ],
+      "grupo": "Somar com portas",
+      "tipo": "circuito",
+      "titulo": "A luz da escada",
+      "enunciado": "A luz da escada tem um interruptor embaixo (A) e outro em cima (B): mexer em **qualquer um** troca a luz. Com os dois iguais, ela fica apagada.",
+      "pedido": "S acende quando A e B são diferentes.",
+      "entradas": [
+        "A",
+        "B"
+      ],
+      "saidas": [
+        {
+          "nome": "S",
+          "alvo": [
+            0,
+            1,
+            1,
+            0
+          ]
+        }
+      ],
+      "permitidas": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "solucao": {
+        "portas": [
+          [
+            "XOR",
+            "A",
+            "B"
+          ]
+        ],
+        "saidas": {
+          "S": "p1"
+        }
+      },
+      "metas": {
+        "portas": 1
+      },
+      "dicas": [
+        "Uma porta só faz isso: dá 1 quando as entradas são diferentes.",
+        "É o \"ou exclusivo\".",
+        "Porta 1 = XOR(A, B) e S liga na porta 1."
+      ]
+    },
+    {
+      "id": "fp-meio-somador",
+      "aulas": [
+        "comp-bits-binario"
+      ],
+      "grupo": "Somar com portas",
+      "tipo": "circuito",
+      "titulo": "O meio somador",
+      "enunciado": "Some dois bits, A + B. A lâmpada **Soma** mostra o algarismo da direita e a lâmpada **Vai** mostra o \"vai um\" (1 + 1 = 10 em binário).",
+      "pedido": "0+0 = 00; 0+1 = 01; 1+0 = 01; 1+1 = 10. Soma é o algarismo da direita; Vai é o da esquerda.",
+      "entradas": [
+        "A",
+        "B"
+      ],
+      "saidas": [
+        {
+          "nome": "Soma",
+          "alvo": [
+            0,
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "nome": "Vai",
+          "alvo": [
+            0,
+            0,
+            0,
+            1
+          ]
+        }
+      ],
+      "permitidas": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "solucao": {
+        "portas": [
+          [
+            "XOR",
+            "A",
+            "B"
+          ],
+          [
+            "AND",
+            "A",
+            "B"
+          ]
+        ],
+        "saidas": {
+          "Soma": "p1",
+          "Vai": "p2"
+        }
+      },
+      "metas": {
+        "portas": 2
+      },
+      "dicas": [
+        "Olhe cada lâmpada sozinha: a coluna da Soma é igual à de qual porta? E a do Vai?",
+        "A Soma é 1 quando as entradas são diferentes; o Vai é 1 só com as duas em 1.",
+        "Porta 1 = XOR(A, B) para a Soma; porta 2 = AND(A, B) para o Vai."
+      ]
+    },
+    {
+      "id": "fp-ascii",
+      "aulas": [
+        "comp-revisao"
+      ],
+      "grupo": "Revisão",
+      "tipo": "ler",
+      "titulo": "Uma letra no byte",
+      "enunciado": "Este byte guarda uma letra no padrão ASCII. Qual é o número dela em **decimal**? (Bônus: que letra é?)",
+      "bits": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "metas": {},
+      "pergunta": "Quanto vale em decimal?",
+      "dicas": [
+        "Só duas casas estão com 1.",
+        "São a casa do 64 e a casa do 1.",
+        "64 + 1 = 65, o código da letra A."
+      ]
+    },
+    {
+      "id": "fp-xor-sem-xor",
+      "aulas": [
+        "comp-revisao"
+      ],
+      "grupo": "Revisão",
+      "tipo": "circuito",
+      "titulo": "A XOR sem XOR",
+      "enunciado": "A fábrica ficou sem portas XOR. Monte a luz da escada (A diferente de B) só com **AND**, **OR** e **NOT**.",
+      "pedido": "S = 1 quando A e B são diferentes. Pense: \"pelo menos um\" e \"não os dois\".",
+      "entradas": [
+        "A",
+        "B"
+      ],
+      "saidas": [
+        {
+          "nome": "S",
+          "alvo": [
+            0,
+            1,
+            1,
+            0
+          ]
+        }
+      ],
+      "permitidas": [
+        "AND",
+        "OR",
+        "NOT"
+      ],
+      "solucao": {
+        "portas": [
+          [
+            "OR",
+            "A",
+            "B"
+          ],
+          [
+            "AND",
+            "A",
+            "B"
+          ],
+          [
+            "NOT",
+            "p2"
+          ],
+          [
+            "AND",
+            "p1",
+            "p3"
+          ]
+        ],
+        "saidas": {
+          "S": "p4"
+        }
+      },
+      "metas": {
+        "portas": 4
+      },
+      "dicas": [
+        "XOR é \"pelo menos um\" E \"não os dois ao mesmo tempo\".",
+        "\"Pelo menos um\" é OR(A, B); \"os dois\" é AND(A, B), e o NOT inverte.",
+        "Porta 1 = OR(A, B); porta 2 = AND(A, B); porta 3 = NOT(porta 2); porta 4 = AND(porta 1, porta 3)."
+      ]
+    },
+    {
+      "id": "fp-somador-completo",
+      "aulas": [
+        "comp-revisao"
+      ],
+      "grupo": "Revisão",
+      "tipo": "circuito",
+      "titulo": "O somador completo",
+      "enunciado": "Para somar números de vários bits, cada casa soma **três** bits: A, B e o \"vem um\" (C) da casa de baixo. Faça a Soma e o Vai dessa casa.",
+      "pedido": "Soma = algarismo da direita de A + B + C; Vai = 1 quando pelo menos dois dos três são 1.",
+      "entradas": [
+        "A",
+        "B",
+        "C"
+      ],
+      "saidas": [
+        {
+          "nome": "Soma",
+          "alvo": [
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "nome": "Vai",
+          "alvo": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "permitidas": [
+        "AND",
+        "OR",
+        "NOT",
+        "XOR"
+      ],
+      "solucao": {
+        "portas": [
+          [
+            "XOR",
+            "A",
+            "B"
+          ],
+          [
+            "XOR",
+            "p1",
+            "C"
+          ],
+          [
+            "AND",
+            "A",
+            "B"
+          ],
+          [
+            "AND",
+            "p1",
+            "C"
+          ],
+          [
+            "OR",
+            "p3",
+            "p4"
+          ]
+        ],
+        "saidas": {
+          "Soma": "p2",
+          "Vai": "p5"
+        }
+      },
+      "metas": {
+        "portas": 5
+      },
+      "dicas": [
+        "São dois meios somadores em fila: primeiro A + B, depois o resultado + C.",
+        "Soma = XOR(XOR(A, B), C). O Vai acontece se A e B forem 1, ou se XOR(A, B) e C forem 1.",
+        "p1 = XOR(A, B); p2 = XOR(p1, C) → Soma; p3 = AND(A, B); p4 = AND(p1, C); p5 = OR(p3, p4) → Vai."
+      ]
+    }
+  ]
+}

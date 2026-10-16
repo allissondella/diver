@@ -1,0 +1,288 @@
+{
+  "id": "mini-servidor",
+  "nome": "Mini-servidor",
+  "versao": 1,
+  "tipo": "python",
+  "descricao": "Escreva em Python a função que responde aos pedidos de um navegador: página inicial, 404, cardápio em JSON e pedidos por POST.",
+  "tituloReferencia": "Peças do servidor",
+  "referencia": [
+    {
+      "nome": "def responder(metodo, caminho, corpo=\"\"):",
+      "faz": "recebe o pedido; a primeira linha já vem pronta"
+    },
+    {
+      "nome": "return 200, \"texto\"",
+      "faz": "devolve o código de status e o corpo (uma tupla)"
+    },
+    {
+      "nome": "if metodo == \"GET\" and caminho == \"/\":",
+      "faz": "confere o verbo e o caminho"
+    },
+    {
+      "nome": "404 · 201 · 405",
+      "faz": "não encontrado · criado · método não permitido"
+    },
+    {
+      "nome": "json.dumps(lista, ensure_ascii=False)",
+      "faz": "transforma a lista em texto JSON, com acentos"
+    },
+    {
+      "nome": "lista.append(item)",
+      "faz": "guarda mais um item na lista"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "O Python já vem com um servidor de testes.",
+    "passos": [
+      "Numa pasta com um arquivo index.html, abra o terminal e rode `python -m http.server 8000`.",
+      "No navegador, abra http://localhost:8000 e veja a página; no terminal, cada pedido aparece com o método, o caminho e o código.",
+      "Peça um caminho que não existe, como http://localhost:8000/nada, e confira o 404 no terminal."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "ms-inicio",
+      "aulas": [
+        "rede-http"
+      ],
+      "grupo": "O servidor da cantina",
+      "titulo": "A página inicial",
+      "enunciado": "O navegador pede `GET /`. Faça `responder` devolver o código **200** e o texto **\"Bem-vindo à cantina!\"**.",
+      "tituloExemplos": "O que o servidor precisa responder",
+      "exemplos": [
+        "responder(\"GET\", \"/\")  →  (200, \"Bem-vindo à cantina!\")"
+      ],
+      "codigoInicial": "def responder(metodo, caminho, corpo=\"\"):\n    return 500, \"ainda não sei responder\"\n",
+      "solucao": "def responder(metodo, caminho, corpo=\"\"):\n    return 200, \"Bem-vindo à cantina!\"\n",
+      "testes": [
+        {
+          "nome": "Página inicial",
+          "codigo": "assert responder(\"GET\", \"/\") == (200, \"Bem-vindo à cantina!\"), f'GET / devolveu {responder(\"GET\", \"/\")}'"
+        }
+      ],
+      "metas": {
+        "linhas": 2
+      },
+      "dicas": [
+        "A função devolve dois valores separados por vírgula: o código e o texto.",
+        "O código de sucesso é 200.",
+        "return 200, \"Bem-vindo à cantina!\""
+      ],
+      "toque": {
+        "modelo": "def responder(metodo, caminho, corpo=\"\"):\n    return ___, ___",
+        "lacunas": [
+          {
+            "opcoes": [
+              "404",
+              "200",
+              "500"
+            ],
+            "certa": 1,
+            "dica": "Sucesso é a família 2xx."
+          },
+          {
+            "opcoes": [
+              "\"Bem-vindo à cantina!\"",
+              "\"Página não encontrada\"",
+              "caminho"
+            ],
+            "certa": 0,
+            "dica": "O corpo é o texto da página inicial."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ms-404",
+      "aulas": [
+        "rede-http"
+      ],
+      "grupo": "O servidor da cantina",
+      "titulo": "Caminho que não existe",
+      "enunciado": "Agora só `/` existe. Qualquer outro caminho deve receber **404** e **\"Página não encontrada\"**.",
+      "tituloExemplos": "O que o servidor precisa responder",
+      "exemplos": [
+        "responder(\"GET\", \"/\")       →  (200, \"Bem-vindo à cantina!\")",
+        "responder(\"GET\", \"/promo\")  →  (404, \"Página não encontrada\")"
+      ],
+      "codigoInicial": "def responder(metodo, caminho, corpo=\"\"):\n    return 200, \"Bem-vindo à cantina!\"\n",
+      "solucao": "def responder(metodo, caminho, corpo=\"\"):\n    if caminho == \"/\":\n        return 200, \"Bem-vindo à cantina!\"\n    return 404, \"Página não encontrada\"\n",
+      "testes": [
+        {
+          "nome": "Página inicial",
+          "codigo": "assert responder(\"GET\", \"/\") == (200, \"Bem-vindo à cantina!\"), \"GET / deve dar 200\""
+        },
+        {
+          "nome": "Caminho inexistente",
+          "codigo": "assert responder(\"GET\", \"/promo\") == (404, \"Página não encontrada\"), f'GET /promo devolveu {responder(\"GET\", \"/promo\")}'"
+        },
+        {
+          "nome": "Outro caminho",
+          "oculto": true,
+          "codigo": "assert responder(\"GET\", \"/cardapio/velho\")[0] == 404, \"Todo caminho diferente de / deve dar 404\""
+        }
+      ],
+      "metas": {
+        "linhas": 4
+      },
+      "dicas": [
+        "Primeiro confira se o caminho é \"/\"; o resto cai no 404.",
+        "Use if caminho == \"/\": com o return de 200 dentro.",
+        "Depois do if, fora dele: return 404, \"Página não encontrada\"."
+      ],
+      "toque": {
+        "modelo": "def responder(metodo, caminho, corpo=\"\"):\n    if caminho == ___:\n        return 200, \"Bem-vindo à cantina!\"\n    return ___, \"Página não encontrada\"",
+        "lacunas": [
+          {
+            "opcoes": [
+              "\"/\"",
+              "\"/promo\"",
+              "metodo"
+            ],
+            "certa": 0,
+            "dica": "A página inicial é a barra sozinha."
+          },
+          {
+            "opcoes": [
+              "500",
+              "404",
+              "200"
+            ],
+            "certa": 1,
+            "dica": "Não encontrado é 404."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ms-cardapio",
+      "aulas": [
+        "rede-http"
+      ],
+      "grupo": "O servidor da cantina",
+      "titulo": "Uma API de cardápio",
+      "enunciado": "Um aplicativo vai pedir `GET /cardapio` e quer **dados**, não página: responda **200** com a lista `cardapio` em **JSON** (com os acentos). O resto continua como antes.",
+      "tituloExemplos": "O que o servidor precisa responder",
+      "exemplos": [
+        "responder(\"GET\", \"/cardapio\")  →  (200, '[\"pão de queijo\", \"suco\", \"bolo\"]')",
+        "responder(\"GET\", \"/\")          →  (200, \"Bem-vindo à cantina!\")"
+      ],
+      "codigoInicial": "import json\n\ncardapio = [\"pão de queijo\", \"suco\", \"bolo\"]\n\ndef responder(metodo, caminho, corpo=\"\"):\n    if caminho == \"/\":\n        return 200, \"Bem-vindo à cantina!\"\n    return 404, \"Página não encontrada\"\n",
+      "solucao": "import json\n\ncardapio = [\"pão de queijo\", \"suco\", \"bolo\"]\n\ndef responder(metodo, caminho, corpo=\"\"):\n    if caminho == \"/\":\n        return 200, \"Bem-vindo à cantina!\"\n    if caminho == \"/cardapio\":\n        return 200, json.dumps(cardapio, ensure_ascii=False)\n    return 404, \"Página não encontrada\"\n",
+      "testes": [
+        {
+          "nome": "Cardápio em JSON",
+          "codigo": "import json\nst, corpo = responder(\"GET\", \"/cardapio\")\nassert st == 200, f\"GET /cardapio devolveu {st}\"\nassert json.loads(corpo) == [\"pão de queijo\", \"suco\", \"bolo\"], \"O corpo deve ser a lista em JSON\""
+        },
+        {
+          "nome": "Acentos legíveis",
+          "codigo": "assert \"pão\" in responder(\"GET\", \"/cardapio\")[1], \"Use ensure_ascii=False para manter o ã\""
+        },
+        {
+          "nome": "O resto continua",
+          "oculto": true,
+          "codigo": "assert responder(\"GET\", \"/\")[0] == 200 and responder(\"GET\", \"/x\")[0] == 404, \"A página inicial e o 404 devem continuar\""
+        }
+      ],
+      "metas": {
+        "linhas": 9
+      },
+      "dicas": [
+        "Acrescente mais um if para o caminho \"/cardapio\", antes do 404.",
+        "json.dumps transforma a lista em texto JSON; ensure_ascii=False mantém o \"ã\".",
+        "if caminho == \"/cardapio\": return 200, json.dumps(cardapio, ensure_ascii=False)"
+      ],
+      "toque": {
+        "modelo": "import json\n\ncardapio = [\"pão de queijo\", \"suco\", \"bolo\"]\n\ndef responder(metodo, caminho, corpo=\"\"):\n    if caminho == \"/\":\n        return 200, \"Bem-vindo à cantina!\"\n    if caminho == \"/cardapio\":\n        return 200, ___\n    return 404, \"Página não encontrada\"",
+        "lacunas": [
+          {
+            "opcoes": [
+              "cardapio",
+              "json.dumps(cardapio, ensure_ascii=False)",
+              "str(cardapio)"
+            ],
+            "certa": 1,
+            "dica": "O corpo de uma API é texto JSON."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ms-pedido",
+      "aulas": [
+        "rede-http"
+      ],
+      "grupo": "O servidor da cantina",
+      "titulo": "Fazendo pedidos com POST",
+      "enunciado": "`POST /pedido` traz no **corpo** o item pedido: guarde na lista `pedidos` e responda **201** e **\"Pedido recebido: <item>\"**. `GET /pedidos` devolve a lista em JSON. Outro método em `/pedido` recebe **405**.",
+      "tituloExemplos": "O que o servidor precisa responder",
+      "exemplos": [
+        "responder(\"POST\", \"/pedido\", \"suco\")  →  (201, \"Pedido recebido: suco\")",
+        "responder(\"GET\", \"/pedidos\")         →  (200, '[\"suco\"]')",
+        "responder(\"GET\", \"/pedido\")          →  (405, \"Método não permitido\")"
+      ],
+      "codigoInicial": "import json\n\npedidos = []\n\ndef responder(metodo, caminho, corpo=\"\"):\n    if caminho == \"/\":\n        return 200, \"Bem-vindo à cantina!\"\n    return 404, \"Página não encontrada\"\n",
+      "solucao": "import json\n\npedidos = []\n\ndef responder(metodo, caminho, corpo=\"\"):\n    if caminho == \"/\":\n        return 200, \"Bem-vindo à cantina!\"\n    if caminho == \"/pedido\":\n        if metodo != \"POST\":\n            return 405, \"Método não permitido\"\n        pedidos.append(corpo)\n        return 201, \"Pedido recebido: \" + corpo\n    if caminho == \"/pedidos\":\n        return 200, json.dumps(pedidos, ensure_ascii=False)\n    return 404, \"Página não encontrada\"\n",
+      "testes": [
+        {
+          "nome": "POST cria o pedido",
+          "codigo": "assert responder(\"POST\", \"/pedido\", \"suco\") == (201, \"Pedido recebido: suco\"), f'POST /pedido devolveu {responder(\"POST\", \"/pedido\", \"bolo\")}'"
+        },
+        {
+          "nome": "GET lista os pedidos",
+          "codigo": "import json\npedidos.clear()\nresponder(\"POST\", \"/pedido\", \"suco\")\nresponder(\"POST\", \"/pedido\", \"pão de queijo\")\nst, corpo = responder(\"GET\", \"/pedidos\")\nassert st == 200 and json.loads(corpo) == [\"suco\", \"pão de queijo\"], f\"GET /pedidos devolveu {st}, {corpo}\""
+        },
+        {
+          "nome": "Método errado",
+          "codigo": "assert responder(\"GET\", \"/pedido\")[0] == 405, \"GET em /pedido deve dar 405\""
+        },
+        {
+          "nome": "O resto continua",
+          "oculto": true,
+          "codigo": "assert responder(\"GET\", \"/\")[0] == 200 and responder(\"DELETE\", \"/x\")[0] == 404, \"A página inicial e o 404 devem continuar\""
+        }
+      ],
+      "metas": {
+        "linhas": 14
+      },
+      "dicas": [
+        "Separe por caminho: \"/pedido\" (POST guarda) e \"/pedidos\" (GET lista).",
+        "Dentro de \"/pedido\", se o método não for POST, devolva 405; se for, append(corpo) e 201.",
+        "if metodo != \"POST\": return 405, ... ; pedidos.append(corpo); return 201, \"Pedido recebido: \" + corpo"
+      ],
+      "toque": {
+        "modelo": "import json\n\npedidos = []\n\ndef responder(metodo, caminho, corpo=\"\"):\n    if caminho == \"/\":\n        return 200, \"Bem-vindo à cantina!\"\n    if caminho == \"/pedido\":\n        if metodo != ___:\n            return 405, \"Método não permitido\"\n        pedidos.append(___)\n        return ___, \"Pedido recebido: \" + corpo\n    if caminho == \"/pedidos\":\n        return 200, json.dumps(pedidos, ensure_ascii=False)\n    return 404, \"Página não encontrada\"",
+        "lacunas": [
+          {
+            "opcoes": [
+              "\"GET\"",
+              "\"POST\"",
+              "\"DELETE\""
+            ],
+            "certa": 1,
+            "dica": "Pedido novo chega por POST."
+          },
+          {
+            "opcoes": [
+              "caminho",
+              "corpo",
+              "metodo"
+            ],
+            "certa": 1,
+            "dica": "O item pedido vem no corpo."
+          },
+          {
+            "opcoes": [
+              "200",
+              "201",
+              "404"
+            ],
+            "certa": 1,
+            "dica": "Criado é 201."
+          }
+        ]
+      }
+    }
+  ]
+}

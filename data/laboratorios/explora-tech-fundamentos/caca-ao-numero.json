@@ -1,0 +1,218 @@
+{
+ "id": "caca-ao-numero",
+ "nome": "Caça ao Número",
+ "versao": 1,
+ "tipo": "python",
+ "descricao": "Um número escondido, e a única pista é \"maior\" ou \"menor\". Primeiro você acha no laço; depois escreve a busca binária, que acha qualquer número de 1 a 1.000 em até 10 palpites.",
+ "tituloReferencia": "Comandos da caçada",
+ "referencia": [
+  {
+   "nome": "tentar(n)",
+   "faz": "chuta o número n e devolve \"maior\", \"menor\" ou \"acertou\""
+  },
+  {
+   "nome": "while True: ... break",
+   "faz": "repete até um break mandar parar"
+  },
+  {
+   "nome": "(baixo + alto) // 2",
+   "faz": "o meio do trecho, como número inteiro"
+  },
+  {
+   "nome": "return",
+   "faz": "devolve o resultado da função"
+  }
+ ],
+ "fazDeVerdade": {
+  "titulo": "Agora faça de verdade",
+  "texto": "Jogue com alguém: a pessoa pensa num número de 1 a 1.000 e você só pode perguntar \"é maior ou menor que...?\". Chutando o meio, você acerta em até 10 perguntas.",
+  "passos": [
+   "Peça para alguém pensar num número de 1 a 1.000.",
+   "Chute sempre o meio do trecho que sobrou e anote a resposta.",
+   "Conte os chutes: passou de 10? Algum meio foi calculado errado."
+  ]
+ },
+ "missoes": [
+  {
+   "id": "cn-laco",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Caçada",
+   "titulo": "Um por um",
+   "enunciado": "O número escondido está entre 1 e 100. Escreva um laço que chute 1, 2, 3... usando tentar(n) até a resposta ser \"acertou\". Depois, mostre o número encontrado.",
+   "prelude": "_segredo = 37\n_baixo, _alto = 1, 100\n_palpites = 0\n_acertou = False\ndef tentar(n):\n    global _palpites, _acertou\n    _palpites = _palpites + 1\n    if n == _segredo:\n        _acertou = True\n        return \"acertou\"\n    return \"maior\" if _segredo > n else \"menor\"\ndef _novo_jogo(segredo, baixo=1, alto=100):\n    global _segredo, _baixo, _alto, _palpites, _acertou\n    _segredo, _baixo, _alto, _palpites, _acertou = segredo, baixo, alto, 0, False\n",
+   "codigoInicial": "n = 1\n# chute n com tentar(n) até acertar\n",
+   "solucao": "n = 1\nwhile tentar(n) != \"acertou\":\n    n = n + 1\nprint(n)\n",
+   "testes": [
+    {
+     "nome": "Achou o número escondido",
+     "codigo": "assert _acertou, 'O laço precisa chamar tentar(n) até a resposta ser \"acertou\"'"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Mostra o número",
+     "esperada": "37\n"
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Um while que chama tentar(n) e soma 1 em n enquanto a resposta não for \"acertou\".",
+    "while tentar(n) != \"acertou\": n = n + 1 — o próprio teste do while faz o chute.",
+    "while tentar(n) != \"acertou\": / n = n + 1 / print(n)"
+   ],
+   "toque": {
+    "modelo": "n = 1\nwhile tentar(n) != ___:\n    n = n + 1\nprint(n)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "\"acertou\"",
+       "\"maior\"",
+       "\"menor\""
+      ],
+      "certa": 0,
+      "dica": "Repita enquanto não acertar."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cn-binaria",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Caçada",
+   "titulo": "Corte ao meio",
+   "enunciado": "Agora com no máximo 7 palpites. Escreva a função `descobrir(baixo, alto)`: chute o meio com tentar(); se a resposta for \"maior\", o trecho passa a começar em meio + 1; se for \"menor\", termina em meio − 1. Devolva o número quando acertar.",
+   "prelude": "_segredo = 37\n_baixo, _alto = 1, 100\n_palpites = 0\n_acertou = False\ndef tentar(n):\n    global _palpites, _acertou\n    _palpites = _palpites + 1\n    if n == _segredo:\n        _acertou = True\n        return \"acertou\"\n    return \"maior\" if _segredo > n else \"menor\"\ndef _novo_jogo(segredo, baixo=1, alto=100):\n    global _segredo, _baixo, _alto, _palpites, _acertou\n    _segredo, _baixo, _alto, _palpites, _acertou = segredo, baixo, alto, 0, False\n",
+   "codigoInicial": "def descobrir(baixo, alto):\n    meio = (baixo + alto) // 2\n    resposta = tentar(meio)\n    # repita com while True e decida o que fazer com a resposta\n    return meio\n",
+   "solucao": "def descobrir(baixo, alto):\n    while True:\n        meio = (baixo + alto) // 2\n        resposta = tentar(meio)\n        if resposta == \"acertou\":\n            return meio\n        elif resposta == \"maior\":\n            baixo = meio + 1\n        else:\n            alto = meio - 1\n",
+   "exemplos": [
+    "descobrir(1, 100)   # devolve o número escondido",
+    "# e usa no máximo 7 palpites"
+   ],
+   "testes": [
+    {
+     "nome": "Acha o 37 em até 7 palpites",
+     "codigo": "_novo_jogo(37)\nassert descobrir(1, 100) == 37, 'descobrir(1, 100) deveria devolver 37'\nassert _palpites <= 7, 'Usou palpites demais: chute sempre o meio'"
+    },
+    {
+     "nome": "Acha o 1",
+     "codigo": "_novo_jogo(1)\nassert descobrir(1, 100) == 1, 'descobrir(1, 100) deveria devolver 1'\nassert _palpites <= 7, 'Usou palpites demais'",
+     "oculto": true
+    },
+    {
+     "nome": "Acha o 100",
+     "codigo": "_novo_jogo(100)\nassert descobrir(1, 100) == 100, 'descobrir(1, 100) deveria devolver 100'\nassert _palpites <= 7, 'Usou palpites demais'",
+     "oculto": true
+    },
+    {
+     "nome": "Acha o 64",
+     "codigo": "_novo_jogo(64)\nassert descobrir(1, 100) == 64, 'descobrir(1, 100) deveria devolver 64'\nassert _palpites <= 7, 'Usou palpites demais'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 10
+   },
+   "dicas": [
+    "Três respostas, três caminhos: if, elif e else.",
+    "Se acertou, return meio. Se o segredo é maior, o meio já foi descartado: baixo = meio + 1. Se é menor: alto = meio - 1.",
+    "if resposta == \"acertou\": return meio / elif resposta == \"maior\": baixo = meio + 1 / else: alto = meio - 1"
+   ],
+   "toque": {
+    "modelo": "def descobrir(baixo, alto):\n    while True:\n        meio = (baixo + alto) // 2\n        resposta = tentar(meio)\n        if resposta == \"acertou\":\n            ___ meio\n        elif resposta == \"maior\":\n            baixo = ___\n        else:\n            alto = meio - 1",
+    "lacunas": [
+     {
+      "opcoes": [
+       "return",
+       "print",
+       "break"
+      ],
+      "certa": 0,
+      "dica": "A função precisa devolver o número."
+     },
+     {
+      "opcoes": [
+       "meio + 1",
+       "meio",
+       "meio - 1"
+      ],
+      "certa": 0,
+      "dica": "O meio já foi testado: o trecho novo começa logo depois dele."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cn-mil",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Caçada",
+   "titulo": "Mil números, dez palpites",
+   "enunciado": "A mesma ideia vale para 1 a 1.000, com no máximo 10 palpites. Escreva `descobrir(baixo, alto)` de novo (sem copiar: tente de memória) e confira nos testes.",
+   "prelude": "_segredo = 37\n_baixo, _alto = 1, 100\n_palpites = 0\n_acertou = False\ndef tentar(n):\n    global _palpites, _acertou\n    _palpites = _palpites + 1\n    if n == _segredo:\n        _acertou = True\n        return \"acertou\"\n    return \"maior\" if _segredo > n else \"menor\"\ndef _novo_jogo(segredo, baixo=1, alto=100):\n    global _segredo, _baixo, _alto, _palpites, _acertou\n    _segredo, _baixo, _alto, _palpites, _acertou = segredo, baixo, alto, 0, False\n",
+   "codigoInicial": "def descobrir(baixo, alto):\n    # chute o meio até acertar\n    pass\n",
+   "solucao": "def descobrir(baixo, alto):\n    while True:\n        meio = (baixo + alto) // 2\n        resposta = tentar(meio)\n        if resposta == \"acertou\":\n            return meio\n        elif resposta == \"maior\":\n            baixo = meio + 1\n        else:\n            alto = meio - 1\n",
+   "exemplos": [
+    "descobrir(1, 1000)   # devolve o número escondido",
+    "# e usa no máximo 10 palpites"
+   ],
+   "testes": [
+    {
+     "nome": "Acha o 733 em até 10 palpites",
+     "codigo": "_novo_jogo(733, 1, 1000)\nassert descobrir(1, 1000) == 733, 'descobrir(1, 1000) deveria devolver 733'\nassert _palpites <= 10, 'Usou palpites demais: chute sempre o meio'"
+    },
+    {
+     "nome": "Acha o 1",
+     "codigo": "_novo_jogo(1, 1, 1000)\nassert descobrir(1, 1000) == 1, 'descobrir(1, 1000) deveria devolver 1'\nassert _palpites <= 10, 'Usou palpites demais'",
+     "oculto": true
+    },
+    {
+     "nome": "Acha o 1000",
+     "codigo": "_novo_jogo(1000, 1, 1000)\nassert descobrir(1, 1000) == 1000, 'descobrir(1, 1000) deveria devolver 1000'\nassert _palpites <= 10, 'Usou palpites demais'",
+     "oculto": true
+    },
+    {
+     "nome": "Acha o 500",
+     "codigo": "_novo_jogo(500, 1, 1000)\nassert descobrir(1, 1000) == 500, 'descobrir(1, 1000) deveria devolver 500'\nassert _palpites <= 10, 'Usou palpites demais'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 10
+   },
+   "dicas": [
+    "É o mesmo laço da missão anterior: só mudam os limites.",
+    "while True: meio = (baixo + alto) // 2 e resposta = tentar(meio); depois os três caminhos.",
+    "Igual à missão \"Corte ao meio\": if acertou → return meio; elif maior → baixo = meio + 1; else → alto = meio - 1."
+   ],
+   "toque": {
+    "modelo": "def descobrir(baixo, alto):\n    while True:\n        meio = ___\n        resposta = tentar(meio)\n        if resposta == \"acertou\":\n            return meio\n        elif resposta == \"maior\":\n            baixo = meio + 1\n        else:\n            alto = ___",
+    "lacunas": [
+     {
+      "opcoes": [
+       "(baixo + alto) // 2",
+       "(baixo + alto) / 2",
+       "baixo + 1"
+      ],
+      "certa": 0,
+      "dica": "O meio precisa ser um número inteiro: use //."
+     },
+     {
+      "opcoes": [
+       "meio - 1",
+       "meio + 1",
+       "meio"
+      ],
+      "certa": 0,
+      "dica": "Se o segredo é menor, o trecho termina antes do meio."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -12,6 +12,8 @@
  *     mundo da missão ("cenarios"); com mais de um mundo, uma sequência simples não pode resolver todos;
  *   - modo toque com lacunas: as opções certas passam (no robô, também no interpretador do celular);
  *   - Lupa do Código: o rastreio guardado é igual ao do Python e cada pergunta tem uma só opção certa;
+ *   - laboratórios só em JavaScript (Fábrica de Portas, Sala de Controle...): o motor de regras do tipo
+ *     (js/laboratorio/motor-*.js) confere a solução, o começo e a meta de cada missão;
  *   - 3 dicas, ids únicos, aulas que existem no curso.
  *
  * Uso: node scripts/conferir-laboratorios.mjs [--gravar] [data/laboratorios/<curso>/<lab>.json ...]
@@ -25,6 +27,15 @@ import { fileURLToPath } from 'node:url';
 const raiz = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ler = (p) => readFileSync(join(raiz, p), 'utf8');
 const MundoRobo = new Function(`${ler('js/laboratorio/mundo-robo.js')}\nreturn MundoRobo;`)();
+// laboratórios só em JavaScript (Módulo 8 em diante): cada tipo tem um motor de regras sem tela, que se confere sozinho
+const MOTORES = {
+  portas: new Function(`${ler('js/laboratorio/motor-portas.js')}\nreturn MotorPortas;`)(),
+  sala: new Function(`${ler('js/laboratorio/motor-sala.js')}\nreturn MotorSala;`)(),
+  rede: new Function(`${ler('js/laboratorio/motor-rede.js')}\nreturn MotorRede;`)(),
+  shell: new Function(`${ler('js/laboratorio/motor-shell.js')}\nreturn MotorShell;`)(),
+  git: new Function(`${ler('js/laboratorio/motor-shell.js')}\n${ler('js/laboratorio/motor-git.js')}\nreturn MotorGit;`)(), // Linha do Tempo do Código
+};
+MOTORES['rede-terminal'] = { verificar: (m) => MOTORES.rede.verificarTerminal(m) }; // Laboratório de Rede (terminal)
 
 const GRAVAR = process.argv.includes('--gravar');
 let mudou = false;
@@ -111,6 +122,12 @@ for (const arq of arquivos) {
       continue;
     }
     if (!Array.isArray(m.dicas) || m.dicas.length !== 3) erro(`${ref}: precisa de 3 dicas (direção, trecho, quase a resposta)`);
+    if (MOTORES[lab.tipo]) {
+      // a solução cumpre, o começo não cumpre, a meta das 3 estrelas é alcançável (cada motor confere as suas regras)
+      MOTORES[lab.tipo].verificar(m).forEach((p) => erro(`${ref}: ${p}`));
+      console.log(`  ok    ${ref} · ${m.titulo} · ${m.tipo || lab.tipo}`);
+      continue;
+    }
     if (!m.metas || !m.metas.linhas) erro(`${ref}: falta metas.linhas`);
 
     if (lab.tipo === 'robo') {
