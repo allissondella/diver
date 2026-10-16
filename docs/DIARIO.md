@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-16 · Revisão de design, Onda 7 (documentação viva) — revisão completa
+- **Feito:** `docs/componentes.html`, o catálogo vivo (47 cores com contraste calculado, escala de texto, espaços, raios, sombras, camadas, movimento, botões em todos os estados, campos, cartões, tags, barras, avisos, esqueleto, 61 ícones e o mascote nas 4 expressões), gerado por `scripts/gerar-componentes.mjs` a partir do `tokens.css` e do `index.html` (abre com file://); o auditor falha se ele ficar desatualizado. `docs/DESIGN.md` reorganizado pelo sistema de verdade, com "O que é proibido" e "Checklist de revisão visual"; `CLAUDE.md` (Visual) resumido; `ARQUITETURA.md` corrigido (barra lateral em 1024 px).
+- **Critérios de aceite:** auditor (estático e no navegador) OK; fotos antes/depois; feedback do quiz não cobre a questão; nenhum emoji de interface; Lighthouse celular 95 (desaceleração real; 76 na estimativa simulada) e acessibilidade 100; testes de regressão sem erro; um commit por onda.
+- **Próximo:** merge para produção pelo usuário (PR #85).
+
 ## 2026-10-15 · Revisão de design, Onda 6 (carregamento, app instalável e metadados)
 - **Feito:** o Início abre com 20 scripts (eram 61); o resto vem em pacotes na primeira vez que a área abre (`PACOTES` em `js/app.js`, `UI.carregarScript`), e os jogos baixam sozinhos com o navegador ocioso; `artigo.js` só ao abrir o primeiro artigo; `mapa-partida.js` ficou no núcleo (o Plano de estudos lê o nivelamento). CSS das áreas sem travar, na mesma ordem. Início aparece antes dos scripts (só o herói, sem nada pular). `manifest.webmanifest`, ícones, `og:image`, `canonical`, fontes com `preload`.
 - **Decisões:** sem service worker (cache velho); sem `catalogo-min.json` (o catálogo viaja com ~31 KB comprimido; ganharia ~1,5 KB).

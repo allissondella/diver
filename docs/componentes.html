@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Diver · catálogo de componentes</title>
+  <!-- Gerado por scripts/gerar-componentes.mjs: não edite à mão (rode o script de novo). -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/estilo.css">
+  <link rel="stylesheet" href="../css/areas.css">
+  <link rel="stylesheet" href="../css/ritmo.css">
+  <style>
+    .vc { max-width: 1120px; margin: 0 auto; padding: var(--esp-7) var(--esp-4) var(--esp-9); }
+    .vc-topo { display: grid; gap: var(--esp-2); margin-bottom: var(--esp-6); }
+    .vc-indice { display: flex; flex-wrap: wrap; gap: var(--esp-2); margin: var(--esp-4) 0 0; padding: 0; list-style: none; }
+    .vc-indice a { color: var(--primaria-clara); font-weight: 700; font-size: var(--t-sm); }
+    .vc-secao { margin-top: var(--esp-8); }
+    .vc-sub { margin: var(--esp-5) 0 var(--esp-2); font-size: var(--t-sm); color: var(--texto-2); text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--fonte-mono); }
+    .vc-nota { margin-top: var(--esp-3); font-size: var(--t-sm); color: var(--texto-2); max-width: var(--medida-leitura); }
+    .vc-rotulo { display: block; font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--texto-3); }
+    .vc-cores { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3); grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+    .vc-cor { display: grid; gap: 2px; padding: var(--esp-3); border-radius: var(--raio-md); background: var(--superficie-1); border: 1px solid var(--borda-sutil); }
+    .vc-cor__amostra { height: 48px; border-radius: var(--raio-sm); border: 1px solid var(--borda-sutil); margin-bottom: var(--esp-2); }
+    .vc-cor__nome { font-family: var(--fonte-mono); font-size: var(--t-sm); font-weight: 700; }
+    .vc-cor__valor, .vc-cor__contraste, .vc-cor__nota { font-size: var(--t-xs); color: var(--texto-2); }
+    .vc-cor__contraste { font-family: var(--fonte-mono); }
+    .vc-tipos, .vc-esps, .vc-caixas { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3); }
+    .vc-tipo { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: var(--esp-4); align-items: baseline; }
+    .vc-tipo > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+    @media (max-width: 479px) { .vc-tipo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-1); } .vc-linha .vc-rotulo { flex-basis: 100%; } }
+    .vc-tipo__nome, .vc-esp__nome { font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--texto-2); }
+    .vc-esp { display: grid; grid-template-columns: 140px 1fr; align-items: center; gap: var(--esp-3); }
+    .vc-esp__barra { display: block; height: 16px; border-radius: var(--raio-sm); background: var(--primaria); }
+    .vc-caixas { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .vc-caixa { display: grid; gap: 2px; place-content: center; min-height: 96px; padding: var(--esp-3); text-align: center; background: var(--superficie-1); border: 1px solid var(--borda-sutil); border-radius: var(--raio-md); font-family: var(--fonte-mono); font-size: var(--t-sm); }
+    .vc-caixa small { font-size: var(--t-xs); color: var(--texto-2); font-family: var(--fonte); }
+    .vc-tabela { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
+    .vc-tabela th, .vc-tabela td { padding: var(--esp-2); border-bottom: 1px solid var(--borda-sutil); text-align: left; }
+    .vc-num { font-family: var(--fonte-mono); }
+    .vc-grade-botoes { display: grid; gap: var(--esp-4); }
+    .vc-linha { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-3); }
+    .vc-linha .vc-rotulo { flex: 0 0 140px; }
+    .vc-foco { outline: 3px solid var(--borda-foco); outline-offset: 3px; }
+    .vc-campos { display: grid; gap: var(--esp-5); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .vc-campo { display: grid; gap: var(--esp-1); }
+    .vc-cartoes { display: grid; gap: var(--ritmo-cartoes); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .vc-cartoes .cartao + .cartao { margin-top: 0; }
+    .vc-aninhado { margin-top: var(--esp-3); }
+    .vc-cartao-botao { text-align: left; font: inherit; color: inherit; }
+    .vc-barras { display: grid; gap: var(--esp-4); max-width: 520px; }
+    .vc-toasts { display: grid; gap: var(--esp-3); max-width: 420px; }
+    .vc-toasts .toast { position: static; animation: none; }
+    .vc-icones { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-2); grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+    .vc-icone { display: flex; align-items: center; gap: var(--esp-2); padding: var(--esp-2); border-radius: var(--raio-sm); background: var(--superficie-1); }
+    .vc-icone .icone { width: 24px; height: 24px; color: var(--primaria-clara); flex: none; }
+    .vc-icone code { font-size: var(--t-xs); }
+    .vc-mascotes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-4); grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); text-align: center; }
+    .vc-mascotes li { display: grid; justify-items: center; align-content: start; gap: var(--esp-2); }
+    .vc-mascote { width: 120px; }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-perola" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="currentColor"/><circle cx="9.5" cy="9.5" r="2.2" fill="#fff" opacity=".75"/></symbol>
+      <symbol id="i-oxigenio" viewBox="0 0 24 24"><rect x="7" y="5" width="10" height="16" rx="5" fill="currentColor"/><rect x="10" y="2" width="4" height="3" rx="1" fill="currentColor"/><rect x="9.5" y="8" width="2" height="8" rx="1" fill="#fff" opacity=".5"/></symbol>
+      <symbol id="i-onda" viewBox="0 0 24 24"><path d="M2 9c2.5-2.5 5-2.5 7.5 0s5 2.5 7.5 0 3.5-2 5-1M2 15c2.5-2.5 5-2.5 7.5 0s5 2.5 7.5 0 3.5-2 5-1" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-estrela" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8z" fill="currentColor"/></symbol>
+      <symbol id="i-alvo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/></g><circle cx="12" cy="12" r="1.8" fill="currentColor"/></symbol>
+      <symbol id="i-relogio" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></g></symbol>
+      <symbol id="i-trofeu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M7 4h10v5a5 5 0 01-10 0z"/><path d="M7 6H4a3 3 0 003 4M17 6h3a3 3 0 01-3 4M12 14v4M8 21h8"/></g></symbol>
+      <symbol id="i-cadeado" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"><rect x="5" y="10" width="14" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></g></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-alerta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/></g><circle cx="12" cy="17.2" r="1.2" fill="currentColor"/></symbol>
+      <symbol id="i-link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></g></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-voltar" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-seta-dir" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-seta-cima" viewBox="0 0 24 24"><path d="M12 20V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-marcador" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-marcador-cheio" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-bolha" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"><circle cx="10" cy="14" r="6"/><circle cx="18" cy="6" r="3"/></g><path d="M7.5 12a3 3 0 012.5-2" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+      <symbol id="i-ancora" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V21M8 11h8M4 13a8 8 0 0016 0"/></g></symbol>
+      <symbol id="i-revisao" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 01-14.3 5M4 12a8 8 0 0114.3-5"/><path d="M18.5 3v4h-4M5.5 21v-4h4"/></g></symbol>
+      <symbol id="i-seta-baixo" viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-grafico" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V6M17 16v-8" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-letras" viewBox="0 0 24 24"><rect x="3" y="8" width="5" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"/><rect x="9.5" y="8" width="5" height="8" rx="1.5" fill="currentColor" opacity=".35" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"/><rect x="16" y="8" width="5" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 9.5V20h5v-6h4v6h5V9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-controle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10a5 5 0 015 5v1.5a3.5 3.5 0 01-6.3 2.1L14.5 14h-5l-1.2 1.6A3.5 3.5 0 012 13.5V12a5 5 0 015-5z"/><path d="M7 10v3M5.5 11.5h3"/></g><circle cx="16" cy="10.5" r="1.2" fill="currentColor"/><circle cx="18" cy="12.5" r="1.2" fill="currentColor"/></symbol>
+      <symbol id="i-colunas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></g></symbol>
+      <symbol id="i-calendario" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></g></symbol>
+      <symbol id="i-ampulheta" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9s10 4 10 9" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-livro" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 016.5 3H20v15H6.5A2.5 2.5 0 004 20.5zM4 20.5A2.5 2.5 0 006.5 23H20v-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-arquivo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"><path d="M14 3H6.5A1.5 1.5 0 005 4.5v15A1.5 1.5 0 006.5 21h11a1.5 1.5 0 001.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 17h5"/></g></symbol>
+      <symbol id="i-usuario" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-lixo" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-filtro" viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-pontos" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="5.5" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="12" cy="18.5" r="1.9"/></g></symbol>
+      <symbol id="i-engrenagem" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2L5.5 5.5"/><circle cx="12" cy="12" r="6.6"/></g></symbol>
+      <symbol id="i-nota" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v16H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></g></symbol>
+      <symbol id="i-etiqueta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"><path d="M3.5 12.5V4h8.5l8.5 8.5-8 8z"/><circle cx="8" cy="8.5" r="1.6" fill="currentColor"/></g></symbol>
+      <symbol id="i-lista-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6.5l2 2 3.5-4M3.5 15.5l2 2 3.5-4M12.5 7h8M12.5 16h8"/></g></symbol>
+      <symbol id="i-codigo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></g></symbol>
+      <symbol id="i-lupa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></g></symbol>
+      <symbol id="i-concha" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 20c-5 0-9-4-9-9 0-3 3-6 9-6s9 3 9 6c0 5-4 9-9 9z"/><path d="M12 20V6M12 20L7 7M12 20l5-13M12 20L4 10M12 20l8-10"/></g></symbol>
+      <symbol id="i-garrafa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"><path d="M10 2h4v4l2 3v11a2 2 0 01-2 2h-4a2 2 0 01-2-2V9l2-3z"/><path d="M8.5 13h7"/></g></symbol>
+      <symbol id="i-kraken" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"><path d="M5 12a7 7 0 0114 0"/><path d="M6 12c-1 4-3 5-3 8M10 12c0 4-2 6-1 9M14 12c0 4 2 6 1 9M18 12c1 4 3 5 3 8"/></g><circle cx="9.5" cy="9" r="1.3" fill="currentColor"/><circle cx="14.5" cy="9" r="1.3" fill="currentColor"/></symbol>
+      <symbol id="i-jangada" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18M5 17v3h14v-3M12 17V4l6 9h-6"/></g></symbol>
+      <symbol id="i-corrente" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 4v16M2 18l2 2 2-2"/></g></symbol>
+      <symbol id="i-bandeira" viewBox="0 0 24 24"><path d="M5 21V3" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"/><path d="M5 4h14v10H5z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"/><path d="M5 4h3.5v3.3H5zM12 4h3.5v3.3H12zM8.5 7.3H12v3.4H8.5zM15.5 7.3H19v3.4h-3.5zM5 10.7h3.5V14H5zM12 10.7h3.5V14H12z" fill="currentColor"/></symbol>
+      <symbol id="i-boia" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/></g><g stroke="currentColor" stroke-linejoin="round" stroke-width="2" stroke-linecap="round"><path d="M12 3.5V8M12 16v4.5M3.5 12H8M16 12h4.5"/></g></symbol>
+      <symbol id="i-bau" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" stroke-linejoin="round"><path d="M3 10a4 4 0 014-4h10a4 4 0 014 4v9H3z"/><path d="M3 12h18M11 11h2v3h-2z"/></g></symbol>
+          <!-- Onda 2 da revisão de design: ícones que substituem emojis da interface -->
+      <symbol id="i-cartas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="11" height="15" rx="2" transform="rotate(-8 8.5 12.5)"/><rect x="10" y="4" width="11" height="15" rx="2" transform="rotate(8 15.5 11.5)"/></g></symbol>
+      <symbol id="i-cerebro" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 00-5.6-1.5A3 3 0 003.5 8 3 3 0 004 13a3 3 0 002.5 5A3 3 0 0012 19z"/><path d="M12 5a3 3 0 015.6-1.5A3 3 0 0120.5 8 3 3 0 0120 13a3 3 0 01-2.5 5A3 3 0 0112 19z"/><path d="M12 5v14M8 9.5a2 2 0 012 2M16 9.5a2 2 0 00-2 2"/></g></symbol>
+      <symbol id="i-espadas" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l10 10M4 4h4M4 4v4M12 16l4 4M16 12l4 4M14.5 17.5l3-3"/><path d="M20 4L10 14M20 4h-4M20 4v4M8 12l-4 4M12 16l-4 4M6.5 14.5l3 3"/></g></symbol>
+      <symbol id="i-medalha" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l3 6M16 3l-3 6"/><circle cx="12" cy="15" r="6"/></g><path d="M12 12l1 2 2.2.3-1.6 1.5.4 2.2-2-1-2 1 .4-2.2-1.6-1.5 2.2-.3z" fill="currentColor"/></symbol>
+      <symbol id="i-lampada" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></g></symbol>
+      <symbol id="i-som" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M16.5 9a4 4 0 010 6M19 6.5a7.5 7.5 0 010 11"/></g></symbol>
+      <symbol id="i-mudo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h4l5 4V6L8 10z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></g></symbol>
+      <symbol id="i-estrela-vazia" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.2.8-4.6 4.3 1.2 6.1L12 16.8l-5.5 3 1.2-6.1-4.6-4.3 6.2-.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs>
+  </svg>
+  <main class="vc">
+    <header class="vc-topo">
+      <span class="rotulo">Diver · sistema de design</span>
+      <h1>Catálogo de componentes</h1>
+      <p class="texto-suave">Tudo o que o app usa, com os CSS de verdade (<code>css/tokens.css</code>, <code>estilo.css</code>, <code>areas.css</code>, <code>ritmo.css</code>). Peça nova entra aqui primeiro. Gerado por <code>node scripts/gerar-componentes.mjs</code>; as regras estão em <code>docs/DESIGN.md</code>.</p>
+      <ul class="vc-indice">
+        <li><a href="#cores">Cores</a></li><li><a href="#texto">Texto</a></li><li><a href="#espacos">Espaços</a></li><li><a href="#raios">Raios e sombras</a></li><li><a href="#camadas">Camadas e movimento</a></li><li><a href="#botoes">Botões</a></li><li><a href="#campos">Campos</a></li><li><a href="#cartoes">Cartões</a></li><li><a href="#tags">Tags</a></li><li><a href="#barras">Barras</a></li><li><a href="#avisos">Avisos</a></li><li><a href="#esqueleto">Esqueleto</a></li><li><a href="#icones">Ícones</a></li><li><a href="#mascote">Mascote</a></li>
+      </ul>
+    </header>
+    
+    <section class="vc-secao" id="cores" aria-labelledby="cores-t">
+      <h2 class="secao-titulo" id="cores-t">Cores</h2>
+      <p class="secao-sub">O contraste é calculado contra o fundo do app (<code>--fundo-1</code>; cores com transparência, misturadas sobre ele). AA pede 4,5:1 para texto comum e 3:1 para texto grande e ícones.</p>
+      <h3 class="vc-sub">Cor</h3><ul class="vc-cores"><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--fundo-0)"></span>
+      <span class="vc-cor__nome">--fundo-0</span><span class="vc-cor__valor">#06172D</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.17:1 · decorativo</span>
+      <span class="vc-cor__nota">o mais fundo: base do degradê, cortina, menus escuros</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--fundo-1)"></span>
+      <span class="vc-cor__nome">--fundo-1</span><span class="vc-cor__valor">#0B2545</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.00:1 · decorativo</span>
+      <span class="vc-cor__nota">base do app</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--fundo-2)"></span>
+      <span class="vc-cor__nome">--fundo-2</span><span class="vc-cor__valor">#0E2B4F</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.08:1 · decorativo</span>
+      <span class="vc-cor__nota">barra lateral e painéis fixos (feedback do quiz)</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--fundo-meio)"></span>
+      <span class="vc-cor__nome">--fundo-meio</span><span class="vc-cor__valor">#0A2140</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.05:1 · decorativo</span>
+      <span class="vc-cor__nota">ponto do meio do degradê do body</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--superficie-1)"></span>
+      <span class="vc-cor__nome">--superficie-1</span><span class="vc-cor__valor">#12325A</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.19:1 · decorativo</span>
+      <span class="vc-cor__nota">cartão padrão</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--superficie-2)"></span>
+      <span class="vc-cor__nome">--superficie-2</span><span class="vc-cor__valor">#1A416F</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.49:1 · decorativo</span>
+      <span class="vc-cor__nota">cartão sobre cartão, hover</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--superficie-3)"></span>
+      <span class="vc-cor__nome">--superficie-3</span><span class="vc-cor__valor">#1F4B7E</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.73:1 · decorativo</span>
+      <span class="vc-cor__nota">campo de formulário, menu aberto</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--superficie-turquesa)"></span>
+      <span class="vc-cor__nome">--superficie-turquesa</span><span class="vc-cor__valor">#0C354C</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.19:1 · decorativo</span>
+      <span class="vc-cor__nota">cartão selecionado (com borda turquesa)</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--borda-sutil)"></span>
+      <span class="vc-cor__nome">--borda-sutil</span><span class="vc-cor__valor">rgba(230, 241, 255, 0.12)</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.39:1 · decorativo</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--borda-forte)"></span>
+      <span class="vc-cor__nome">--borda-forte</span><span class="vc-cor__valor">rgba(230, 241, 255, 0.24)</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">2.05:1 · decorativo</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--borda-foco)"></span>
+      <span class="vc-cor__nome">--borda-foco</span><span class="vc-cor__valor">#FACC15</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">10.05:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--primaria)"></span>
+      <span class="vc-cor__nome">--primaria</span><span class="vc-cor__valor">#14B8A6</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">6.18:1 · AA</span>
+      <span class="vc-cor__nota">turquesa Recife: a cor principal</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--primaria-clara)"></span>
+      <span class="vc-cor__nome">--primaria-clara</span><span class="vc-cor__valor">#5EEAD4</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">10.40:1 · AAA</span>
+      <span class="vc-cor__nota">turquesa clara: texto turquesa sobre fundo escuro</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--primaria-hover)"></span>
+      <span class="vc-cor__nome">--primaria-hover</span><span class="vc-cor__valor">#2CCBB9</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">7.58:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--primaria-pressionada)"></span>
+      <span class="vc-cor__nome">--primaria-pressionada</span><span class="vc-cor__valor">#0EA597</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">5.02:1 · AA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--primaria-sombra)"></span>
+      <span class="vc-cor__nome">--primaria-sombra</span><span class="vc-cor__valor">#0C8276</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">3.28:1 · AA grande</span>
+      <span class="vc-cor__nota">borda inferior do botão 3D</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--primaria-escura)"></span>
+      <span class="vc-cor__nome">--primaria-escura</span><span class="vc-cor__valor">#0C7A6E</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">2.95:1 · decorativo</span>
+      <span class="vc-cor__nota">texto turquesa sobre fundo claro</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--primaria-brilho)"></span>
+      <span class="vc-cor__nome">--primaria-brilho</span><span class="vc-cor__valor">#29C6B3</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">7.20:1 · AAA</span>
+      <span class="vc-cor__nota">títulos e destaques (nome antigo: --turquesa-brilho)</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--destaque)"></span>
+      <span class="vc-cor__nome">--destaque</span><span class="vc-cor__valor">#FACC15</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">10.05:1 · AAA</span>
+      <span class="vc-cor__nota">amarelo Sol: XP, conquistas, selo &quot;Recomendado&quot;</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--destaque-escuro)"></span>
+      <span class="vc-cor__nome">--destaque-escuro</span><span class="vc-cor__valor">#EAB308</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">8.02:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--sucesso)"></span>
+      <span class="vc-cor__nome">--sucesso</span><span class="vc-cor__valor">#86EFAC</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">10.96:1 · AAA</span>
+      <span class="vc-cor__nota">acertou, barra completa</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--erro)"></span>
+      <span class="vc-cor__nome">--erro</span><span class="vc-cor__valor">#FB7185</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">5.72:1 · AA</span>
+      <span class="vc-cor__nota">coral: erro gentil e alertas</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--erro-clara)"></span>
+      <span class="vc-cor__nome">--erro-clara</span><span class="vc-cor__valor">#FDA4AF</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">8.14:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--erro-hover)"></span>
+      <span class="vc-cor__nome">--erro-hover</span><span class="vc-cor__valor">#FC8A9B</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">6.78:1 · AA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--erro-sombra)"></span>
+      <span class="vc-cor__nome">--erro-sombra</span><span class="vc-cor__valor">#C2415A</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">3.08:1 · AA grande</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--erro-palida)"></span>
+      <span class="vc-cor__nome">--erro-palida</span><span class="vc-cor__valor">#FFE4E8</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">12.83:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--aviso)"></span>
+      <span class="vc-cor__nome">--aviso</span><span class="vc-cor__valor">#FDBA74</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">9.12:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--info)"></span>
+      <span class="vc-cor__nome">--info</span><span class="vc-cor__valor">#60A5FA</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">6.05:1 · AA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--lilas)"></span>
+      <span class="vc-cor__nome">--lilas</span><span class="vc-cor__valor">#C4B5FD</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">8.33:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--perola)"></span>
+      <span class="vc-cor__nome">--perola</span><span class="vc-cor__valor">#F5F0E6</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">13.55:1 · AAA</span>
+      <span class="vc-cor__nota">a pérola</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--claro)"></span>
+      <span class="vc-cor__nome">--claro</span><span class="vc-cor__valor">#F8FAFC</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">14.71:1 · AAA</span>
+      <span class="vc-cor__nota">fundo de peça clara (palavra de honra)</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--texto-1)"></span>
+      <span class="vc-cor__nome">--texto-1</span><span class="vc-cor__valor">#E6F1FF</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">13.48:1 · AAA</span>
+      <span class="vc-cor__nota">gelo</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--texto-2)"></span>
+      <span class="vc-cor__nome">--texto-2</span><span class="vc-cor__valor">#A9BCD6</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">7.95:1 · AAA</span>
+      <span class="vc-cor__nota">névoa</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--texto-3)"></span>
+      <span class="vc-cor__nome">--texto-3</span><span class="vc-cor__valor">rgba(169, 188, 214, 0.7)</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">4.65:1 · AA</span>
+      <span class="vc-cor__nota">névoa a 70 %: só metadados</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--texto-inverso)"></span>
+      <span class="vc-cor__nome">--texto-inverso</span><span class="vc-cor__valor">#0B2545</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.00:1 · decorativo</span>
+      <span class="vc-cor__nota">texto sobre turquesa, amarelo ou fundo claro</span></li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--sala-enem)"></span>
+      <span class="vc-cor__nome">--sala-enem</span><span class="vc-cor__valor">#FACC15</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">10.05:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--sala-radiologia)"></span>
+      <span class="vc-cor__nome">--sala-radiologia</span><span class="vc-cor__valor">#14B8A6</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">6.18:1 · AA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--sala-tecnologia)"></span>
+      <span class="vc-cor__nome">--sala-tecnologia</span><span class="vc-cor__valor">#60A5FA</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">6.05:1 · AA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--sala-ensino-medio)"></span>
+      <span class="vc-cor__nome">--sala-ensino-medio</span><span class="vc-cor__valor">#86EFAC</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">10.96:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--prof-raso-a)"></span>
+      <span class="vc-cor__nome">--prof-raso-a</span><span class="vc-cor__valor">#1B7F8C</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">3.27:1 · AA grande</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--prof-raso-b)"></span>
+      <span class="vc-cor__nome">--prof-raso-b</span><span class="vc-cor__valor">#14507A</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.80:1 · decorativo</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--prof-abismo-a)"></span>
+      <span class="vc-cor__nome">--prof-abismo-a</span><span class="vc-cor__valor">#0A1B38</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.11:1 · decorativo</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--prof-abismo-b)"></span>
+      <span class="vc-cor__nome">--prof-abismo-b</span><span class="vc-cor__valor">#07142B</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">1.19:1 · decorativo</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--pele-padrao)"></span>
+      <span class="vc-cor__nome">--pele-padrao</span><span class="vc-cor__valor">#F2B28C</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">8.44:1 · AAA</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--cabelo-padrao)"></span>
+      <span class="vc-cor__nome">--cabelo-padrao</span><span class="vc-cor__valor">#7A4630</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">2.01:1 · decorativo</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--sardas)"></span>
+      <span class="vc-cor__nome">--sardas</span><span class="vc-cor__valor">#C9754B</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">4.49:1 · AA grande</span>
+      </li><li class="vc-cor"><span class="vc-cor__amostra" style="background:var(--amarelo-sombra)"></span>
+      <span class="vc-cor__nome">--amarelo-sombra</span><span class="vc-cor__valor">#C99A0B</span>
+      <span class="vc-cor__contraste" title="Contraste contra --fundo-1">5.94:1 · AA</span>
+      </li></ul>
+    </section>
+    
+    <section class="vc-secao" id="texto" aria-labelledby="texto-t">
+      <h2 class="secao-titulo" id="texto-t">Escala de texto</h2>
+      <p class="secao-sub">8 tamanhos; <code>--t-xs</code> (12 px) é o mínimo. Entrelinhas: <code>--lh-apertada</code> 1.15, <code>--lh-normal</code> 1.5, <code>--lh-leitura</code> 1.6; leitura em até <code>--medida-leitura</code> (65ch). Fontes: Plus Jakarta Sans e, para números e rótulos, JetBrains Mono.</p>
+      <ul class="vc-tipos"><li class="vc-tipo"><span class="vc-tipo__nome">--t-xs<br><small>0.75rem</small></span><span style="font-size:var(--t-xs);font-weight:800;line-height:var(--lh-apertada)">Mergulhe. Acerte.</span></li><li class="vc-tipo"><span class="vc-tipo__nome">--t-sm<br><small>0.875rem</small></span><span style="font-size:var(--t-sm);font-weight:800;line-height:var(--lh-apertada)">Mergulhe. Acerte.</span></li><li class="vc-tipo"><span class="vc-tipo__nome">--t-md<br><small>1rem</small></span><span style="font-size:var(--t-md);font-weight:800;line-height:var(--lh-apertada)">Mergulhe. Acerte.</span></li><li class="vc-tipo"><span class="vc-tipo__nome">--t-lg<br><small>1.125rem</small></span><span style="font-size:var(--t-lg);font-weight:800;line-height:var(--lh-apertada)">Mergulhe. Acerte.</span></li><li class="vc-tipo"><span class="vc-tipo__nome">--t-xl<br><small>1.375rem</small></span><span style="font-size:var(--t-xl);font-weight:800;line-height:var(--lh-apertada)">Mergulhe. Acerte.</span></li><li class="vc-tipo"><span class="vc-tipo__nome">--t-2xl<br><small>1.75rem</small></span><span style="font-size:var(--t-2xl);font-weight:800;line-height:var(--lh-apertada)">Mergulhe. Acerte.</span></li><li class="vc-tipo"><span class="vc-tipo__nome">--t-3xl<br><small>clamp(2rem, 1.5rem + 2vw, 2.5rem)</small></span><span style="font-size:var(--t-3xl);font-weight:800;line-height:var(--lh-apertada)">Mergulhe. Acerte.</span></li><li class="vc-tipo"><span class="vc-tipo__nome">--t-display<br><small>clamp(2.5rem, 2rem + 3vw, 3.5rem)</small></span><span style="font-size:var(--t-display);font-weight:800;line-height:var(--lh-apertada)">Mergulhe. Acerte.</span></li></ul>
+    </section>
+    
+    <section class="vc-secao" id="espacos" aria-labelledby="espacos-t">
+      <h2 class="secao-titulo" id="espacos-t">Espaços</h2>
+      <p class="secao-sub">Régua de 4/8 px. As regras usam os papéis (<code>--ritmo-secao</code>, <code>--ritmo-cartoes</code>, <code>--ritmo-cartao-pad</code>, <code>--ritmo-pagina-x</code>), que crescem no computador.</p>
+      <ul class="vc-esps"><li class="vc-esp"><span class="vc-esp__nome">--esp-1 · 4px</span><span class="vc-esp__barra" style="width:var(--esp-1)"></span></li><li class="vc-esp"><span class="vc-esp__nome">--esp-2 · 8px</span><span class="vc-esp__barra" style="width:var(--esp-2)"></span></li><li class="vc-esp"><span class="vc-esp__nome">--esp-3 · 12px</span><span class="vc-esp__barra" style="width:var(--esp-3)"></span></li><li class="vc-esp"><span class="vc-esp__nome">--esp-4 · 16px</span><span class="vc-esp__barra" style="width:var(--esp-4)"></span></li><li class="vc-esp"><span class="vc-esp__nome">--esp-5 · 24px</span><span class="vc-esp__barra" style="width:var(--esp-5)"></span></li><li class="vc-esp"><span class="vc-esp__nome">--esp-6 · 32px</span><span class="vc-esp__barra" style="width:var(--esp-6)"></span></li><li class="vc-esp"><span class="vc-esp__nome">--esp-7 · 40px</span><span class="vc-esp__barra" style="width:var(--esp-7)"></span></li><li class="vc-esp"><span class="vc-esp__nome">--esp-8 · 48px</span><span class="vc-esp__barra" style="width:var(--esp-8)"></span></li><li class="vc-esp"><span class="vc-esp__nome">--esp-9 · 64px</span><span class="vc-esp__barra" style="width:var(--esp-9)"></span></li></ul>
+    </section>
+    
+    <section class="vc-secao" id="raios" aria-labelledby="raios-t">
+      <h2 class="secao-titulo" id="raios-t">Raios e sombras</h2>
+      <p class="secao-sub">Sombras sem brilho turquesa.</p>
+      <ul class="vc-caixas"><li class="vc-caixa" style="border-radius:var(--raio-sm)"><span>--raio-sm</span><small>8px</small></li><li class="vc-caixa" style="border-radius:var(--raio-md)"><span>--raio-md</span><small>12px</small></li><li class="vc-caixa" style="border-radius:var(--raio-lg)"><span>--raio-lg</span><small>16px</small></li><li class="vc-caixa" style="border-radius:var(--raio-xl)"><span>--raio-xl</span><small>24px</small></li><li class="vc-caixa" style="border-radius:var(--raio-pilula)"><span>--raio-pilula</span><small>999px</small></li></ul><h3 class="vc-sub">Sombras</h3><ul class="vc-caixas"><li class="vc-caixa" style="box-shadow:var(--sombra-1)"><span>--sombra-1</span><small>repouso dos cartões</small></li><li class="vc-caixa" style="box-shadow:var(--sombra-2)"><span>--sombra-2</span><small>hover, elevado</small></li><li class="vc-caixa" style="box-shadow:var(--sombra-3)"><span>--sombra-3</span><small>menus, toast</small></li><li class="vc-caixa" style="box-shadow:var(--sombra-4)"><span>--sombra-4</span><small>dialog</small></li></ul>
+    </section>
+    
+    <section class="vc-secao" id="camadas" aria-labelledby="camadas-t">
+      <h2 class="secao-titulo" id="camadas-t">Camadas e movimento</h2>
+      <p class="secao-sub">Nunca um <code>z-index</code> numérico. Toda animação some com "reduzir movimento".</p>
+      <table class="vc-tabela"><tbody><tr><th scope="row"><code>--z-abaixo</code></th><td class="vc-num">-1</td><td>enfeite atrás do próprio cartão</td></tr><tr><th scope="row"><code>--z-base</code></th><td class="vc-num">0</td><td></td></tr><tr><th scope="row"><code>--z-acima</code></th><td class="vc-num">1</td><td>empilhamento local</td></tr><tr><th scope="row"><code>--z-acima-2</code></th><td class="vc-num">2</td><td></td></tr><tr><th scope="row"><code>--z-sticky</code></th><td class="vc-num">10</td><td>topo do celular, rodapés grudados</td></tr><tr><th scope="row"><code>--z-lateral</code></th><td class="vc-num">20</td><td>barra lateral (gaveta)</td></tr><tr><th scope="row"><code>--z-flutuante</code></th><td class="vc-num">30</td><td>feedback do quiz, menus, arrastar</td></tr><tr><th scope="row"><code>--z-dialogo</code></th><td class="vc-num">40</td><td>caixas de diálogo, tutorial, gavetas de edição</td></tr><tr><th scope="row"><code>--z-toast</code></th><td class="vc-num">50</td><td>toasts e a faixa de ambiente de testes</td></tr><tr><th scope="row"><code>--z-transicao</code></th><td class="vc-num">60</td><td>cortina de transição e o link &quot;pular para o conteúdo&quot;</td></tr></tbody></table><h3 class="vc-sub">Movimento</h3><table class="vc-tabela"><tbody><tr><th scope="row"><code>--dur-rapida</code></th><td><code>120ms</code></td><td></td></tr><tr><th scope="row"><code>--dur-normal</code></th><td><code>200ms</code></td><td></td></tr><tr><th scope="row"><code>--dur-lenta</code></th><td><code>320ms</code></td><td></td></tr><tr><th scope="row"><code>--ease-saida</code></th><td><code>cubic-bezier(0.2, 0.8, 0.2, 1)</code></td><td></td></tr><tr><th scope="row"><code>--ease-elastica</code></th><td><code>cubic-bezier(0.34, 1.56, 0.64, 1)</code></td><td>o pulinho do mascote</td></tr></tbody></table>
+    </section>
+    
+    <section class="vc-secao" id="botoes" aria-labelledby="botoes-t">
+      <h2 class="secao-titulo" id="botoes-t">Botões</h2>
+      
+      
+      <div class="vc-grade-botoes">
+        <div class="vc-linha">
+          <span class="vc-rotulo">.botao--primario</span>
+          <button type="button" class="botao botao--primario botao--pequeno">Primário 36</button>
+          <button type="button" class="botao botao--primario"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Primário 44</button>
+          <button type="button" class="botao botao--primario botao--grande">Primário 52</button>
+          <button type="button" class="botao botao--primario vc-foco">Foco</button>
+          <button type="button" class="botao botao--primario" disabled>Desabilitado</button>
+          <button type="button" class="botao botao--primario" aria-busy="true"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Carregando…</button>
+        </div><div class="vc-linha">
+          <span class="vc-rotulo">.botao--secundario</span>
+          <button type="button" class="botao botao--secundario botao--pequeno">Secundário 36</button>
+          <button type="button" class="botao botao--secundario"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Secundário 44</button>
+          <button type="button" class="botao botao--secundario botao--grande">Secundário 52</button>
+          <button type="button" class="botao botao--secundario vc-foco">Foco</button>
+          <button type="button" class="botao botao--secundario" disabled>Desabilitado</button>
+          <button type="button" class="botao botao--secundario" aria-busy="true"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Carregando…</button>
+        </div><div class="vc-linha">
+          <span class="vc-rotulo">.botao--fantasma</span>
+          <button type="button" class="botao botao--fantasma botao--pequeno">Fantasma 36</button>
+          <button type="button" class="botao botao--fantasma"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Fantasma 44</button>
+          <button type="button" class="botao botao--fantasma botao--grande">Fantasma 52</button>
+          <button type="button" class="botao botao--fantasma vc-foco">Foco</button>
+          <button type="button" class="botao botao--fantasma" disabled>Desabilitado</button>
+          <button type="button" class="botao botao--fantasma" aria-busy="true"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Carregando…</button>
+        </div><div class="vc-linha">
+          <span class="vc-rotulo">.botao--perigo</span>
+          <button type="button" class="botao botao--perigo botao--pequeno">Perigo 36</button>
+          <button type="button" class="botao botao--perigo"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Perigo 44</button>
+          <button type="button" class="botao botao--perigo botao--grande">Perigo 52</button>
+          <button type="button" class="botao botao--perigo vc-foco">Foco</button>
+          <button type="button" class="botao botao--perigo" disabled>Desabilitado</button>
+          <button type="button" class="botao botao--perigo" aria-busy="true"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Carregando…</button>
+        </div><div class="vc-linha">
+          <span class="vc-rotulo">.botao--link</span>
+          <button type="button" class="botao botao--link botao--pequeno">Link 36</button>
+          <button type="button" class="botao botao--link"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Link 44</button>
+          <button type="button" class="botao botao--link botao--grande">Link 52</button>
+          <button type="button" class="botao botao--link vc-foco">Foco</button>
+          <button type="button" class="botao botao--link" disabled>Desabilitado</button>
+          <button type="button" class="botao botao--link" aria-busy="true"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg>Carregando…</button>
+        </div>
+        <div class="vc-linha"><span class="vc-rotulo">.botao-icone</span>
+          <button type="button" class="botao-icone" aria-label="Voltar"><svg class="icone" aria-hidden="true"><use href="#i-voltar"/></svg></button>
+          <button type="button" class="botao-icone" aria-label="Fechar"><svg class="icone" aria-hidden="true"><use href="#i-x"/></svg></button>
+          <button type="button" class="botao-icone" aria-label="Menu"><svg class="icone" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
+      </div>
+      <p class="vc-nota">Passe o mouse para ver o hover (sobe 1 px) e clique para ver o "afundar" (3 px). Uma ação primária por tela. Carregando: <code>UI.carregando(botao, true, 'Entrando…')</code>.</p>
+    </section>
+    
+    <section class="vc-secao" id="campos" aria-labelledby="campos-t">
+      <h2 class="secao-titulo" id="campos-t">Campos</h2>
+      <p class="secao-sub">Rótulo acima, ajuda e erro abaixo, ligados por <code>aria-describedby</code>.</p>
+      
+      <div class="vc-campos">
+        <label class="vc-campo"><span class="rotulo-campo">E-mail <span class="rotulo-campo__obrigatorio">(obrigatório)</span></span>
+          <input class="campo" type="email" placeholder="voce@exemplo.com" aria-describedby="vc-ajuda"><span class="campo-ajuda" id="vc-ajuda">Ajuda abaixo do campo, em --t-xs.</span></label>
+        <label class="vc-campo"><span class="rotulo-campo">Com erro</span>
+          <input class="campo" value="nao-e-email" aria-invalid="true" aria-describedby="vc-erro"><span class="campo-erro" id="vc-erro"><svg class="icone" aria-hidden="true"><use href="#i-alerta"/></svg>Confira o e-mail.</span></label>
+        <label class="vc-campo"><span class="rotulo-campo">Lista de opções</span>
+          <select><option>10 questões</option><option>20 questões</option></select></label>
+        <label class="vc-campo"><span class="rotulo-campo">Desabilitado</span><input class="campo" value="Não dá para mudar" disabled></label>
+        <label class="vc-campo"><span class="rotulo-campo">Texto longo</span><textarea class="campo" rows="3">Campo de várias linhas.</textarea></label>
+        <div class="vc-campo"><span class="rotulo-campo">Escolhas</span>
+          <label class="check"><input type="checkbox" checked> Caixa marcada</label>
+          <label class="check check--radio"><input type="radio" name="vc-r" checked> Rádio</label></div>
+      </div>
+    </section>
+    
+    <section class="vc-secao" id="cartoes" aria-labelledby="cartoes-t">
+      <h2 class="secao-titulo" id="cartoes-t">Cartões</h2>
+      
+      
+      <div class="vc-cartoes">
+        <div class="cartao"><h3 class="cartao__titulo">.cartao</h3><p class="texto-suave">Superfície-1, borda sutil e sombra-1. Sem desfoque.</p>
+          <div class="cartao vc-aninhado"><strong>Cartão dentro de cartão</strong><p class="texto-suave">Superfície-2, sem borda e sem sombra.</p></div></div>
+        <button type="button" class="cartao cartao--interativo vc-cartao-botao"><h3 class="cartao__titulo">.cartao--interativo</h3><p class="texto-suave">Sobe 2 px com sombra-2 no hover e no foco. É um botão de verdade.</p></button>
+        <div class="cartao cartao--destaque" style="--cartao-filete:var(--destaque)"><h3 class="cartao__titulo">.cartao--destaque</h3><p class="texto-suave">Filete de 4 px à esquerda (<code>--cartao-filete</code>).</p></div>
+        <div class="cartao cartao--heroi" style="--sala-cor:var(--sala-enem)"><h3 class="cartao__titulo">.cartao--heroi</h3><p class="texto-suave">Canto de 24 px e degradê leve da cor da sala.</p></div>
+      </div>
+    </section>
+    
+    <section class="vc-secao" id="tags" aria-labelledby="tags-t">
+      <h2 class="secao-titulo" id="tags-t">Tags</h2>
+      <p class="secao-sub">Pílula de 24 px. <code>--destaque</code> só para "Recomendado" e "Novo hoje".</p>
+      <p class="vc-linha"><span class="tag tag--neutra">.tag--neutra</span> <span class="tag tag--primaria">.tag--primaria</span> <span class="tag tag--destaque">.tag--destaque</span> <span class="tag tag--sucesso">.tag--sucesso</span> <span class="tag tag--erro">.tag--erro</span> <span class="tag tag--mono">7.170 questões</span> <span class="tag tag--facil">.tag--facil</span> <span class="tag tag--medio">.tag--medio</span> <span class="tag tag--dificil">.tag--dificil</span> <span class="tag tag--volta">.tag--volta</span> <span class="tag tag--versao">.tag--versao</span></p>
+    </section>
+    
+    <section class="vc-secao" id="barras" aria-labelledby="barras-t">
+      <h2 class="secao-titulo" id="barras-t">Barras de progresso</h2>
+      <p class="secao-sub">Sempre com <code>role="progressbar"</code>; <code>UI.progresso(barra, pct)</code> põe a largura e o brilho rápido ao subir.</p>
+      
+      <div class="vc-barras">
+        <div><span class="vc-rotulo">.barra (8 px) · 35 %</span><div class="barra" role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" aria-label="Exemplo"><span style="width:35%"></span></div></div>
+        <div><span class="vc-rotulo">.barra--fina (6 px) · 70 %</span><div class="barra barra--fina" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Exemplo"><span style="width:70%"></span></div></div>
+        <div><span class="vc-rotulo">.barra--grossa (12 px) · 100 %</span><div class="barra barra--grossa" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Exemplo"><span style="width:100%"></span></div></div>
+        <div><span class="vc-rotulo">.barra-xp (amarela) · 55 %</span><div class="barra-xp" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" aria-label="Exemplo"><div class="barra-xp__preenchimento" style="width:55%"></div></div></div>
+      </div>
+    </section>
+    
+    <section class="vc-secao" id="avisos" aria-labelledby="avisos-t">
+      <h2 class="secao-titulo" id="avisos-t">Avisos (toasts)</h2>
+      
+      
+      <div class="vc-toasts">
+        <div class="toast" role="status"><span class="toast__icone"><svg class="icone" aria-hidden="true"><use href="#i-check"/></svg></span><div><p class="toast__titulo">Mergulho liberado</p><p class="toast__texto">Pode mergulhar na Aula 1 quando quiser.</p></div></div>
+        <div class="toast toast--conquista" role="status"><span class="toast__icone"><svg class="icone" aria-hidden="true"><use href="#i-trofeu"/></svg></span><div><p class="toast__titulo">Conquista desbloqueada</p><p class="toast__texto">Primeiro mergulho</p></div></div>
+      </div>
+      <p class="vc-nota"><code>UI.toast(titulo, texto, icone, { conquista })</code>: no máximo 3 por vez, somem em 4 s; no computador, no canto superior direito.</p>
+    </section>
+    
+    <section class="vc-secao" id="esqueleto" aria-labelledby="esqueleto-t">
+      <h2 class="secao-titulo" id="esqueleto-t">Esqueleto de carregamento</h2>
+      
+      
+      <div class="esqueleto-area"><div class="esqueletos esqueletos--sala" aria-hidden="true"><div class="esqueleto esqueleto--sala"><span class="esqueleto__circulo"></span><span class="esqueleto__linhas"><span class="esqueleto__linha esqueleto__linha--titulo"></span><span class="esqueleto__linha"></span><span class="esqueleto__linha esqueleto__linha--curta"></span></span></div><div class="esqueleto esqueleto--sala"><span class="esqueleto__circulo"></span><span class="esqueleto__linhas"><span class="esqueleto__linha esqueleto__linha--titulo"></span><span class="esqueleto__linha"></span><span class="esqueleto__linha esqueleto__linha--curta"></span></span></div></div></div>
+      <p class="vc-nota"><code>UI.esqueleto('sala' | 'curso' | 'fase', n, aviso)</code>: blocos com brilho; estáticos com "reduzir movimento".</p>
+    </section>
+    
+    <section class="vc-secao" id="icones" aria-labelledby="icones-t">
+      <h2 class="secao-titulo" id="icones-t">Ícones</h2>
+      
+      <ul class="vc-icones"><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-perola"/></svg><code>i-perola</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-oxigenio"/></svg><code>i-oxigenio</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-onda"/></svg><code>i-onda</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-estrela"/></svg><code>i-estrela</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-alvo"/></svg><code>i-alvo</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-relogio"/></svg><code>i-relogio</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-trofeu"/></svg><code>i-trofeu</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-cadeado"/></svg><code>i-cadeado</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-check"/></svg><code>i-check</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-alerta"/></svg><code>i-alerta</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-link"/></svg><code>i-link</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-x"/></svg><code>i-x</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-voltar"/></svg><code>i-voltar</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-seta-dir"/></svg><code>i-seta-dir</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-seta-cima"/></svg><code>i-seta-cima</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-marcador"/></svg><code>i-marcador</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-marcador-cheio"/></svg><code>i-marcador-cheio</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-bolha"/></svg><code>i-bolha</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-raio"/></svg><code>i-raio</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-ancora"/></svg><code>i-ancora</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-revisao"/></svg><code>i-revisao</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-seta-baixo"/></svg><code>i-seta-baixo</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-upload"/></svg><code>i-upload</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-grafico"/></svg><code>i-grafico</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-letras"/></svg><code>i-letras</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-download"/></svg><code>i-download</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-casa"/></svg><code>i-casa</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-controle"/></svg><code>i-controle</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-colunas"/></svg><code>i-colunas</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-calendario"/></svg><code>i-calendario</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-ampulheta"/></svg><code>i-ampulheta</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-livro"/></svg><code>i-livro</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-arquivo"/></svg><code>i-arquivo</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-usuario"/></svg><code>i-usuario</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-menu"/></svg><code>i-menu</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-mais"/></svg><code>i-mais</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-lixo"/></svg><code>i-lixo</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-filtro"/></svg><code>i-filtro</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-pontos"/></svg><code>i-pontos</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-engrenagem"/></svg><code>i-engrenagem</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-nota"/></svg><code>i-nota</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-etiqueta"/></svg><code>i-etiqueta</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-lista-check"/></svg><code>i-lista-check</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-codigo"/></svg><code>i-codigo</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-lupa"/></svg><code>i-lupa</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-concha"/></svg><code>i-concha</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-garrafa"/></svg><code>i-garrafa</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-kraken"/></svg><code>i-kraken</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-jangada"/></svg><code>i-jangada</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-corrente"/></svg><code>i-corrente</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-bandeira"/></svg><code>i-bandeira</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-boia"/></svg><code>i-boia</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-bau"/></svg><code>i-bau</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-cartas"/></svg><code>i-cartas</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-cerebro"/></svg><code>i-cerebro</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-espadas"/></svg><code>i-espadas</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-medalha"/></svg><code>i-medalha</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-lampada"/></svg><code>i-lampada</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-som"/></svg><code>i-som</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-mudo"/></svg><code>i-mudo</code></li><li class="vc-icone"><svg class="icone" aria-hidden="true"><use href="#i-estrela-vazia"/></svg><code>i-estrela-vazia</code></li></ul>
+      <p class="vc-nota">61 ícones no sprite do <code>index.html</code>, todos com traço 2 e pontas redondas. Use <code>UI.icone('i-nome')</code>. Nada de emoji na interface.</p>
+    </section>
+    
+    <section class="vc-secao" id="mascote" aria-labelledby="mascote-t">
+      <h2 class="secao-titulo" id="mascote-t">Mascote</h2>
+      
+      <ul class="vc-mascotes"><li><div class="mascote vc-mascote " data-mascote><svg viewBox="0 0 240 270" class="mascote__svg" aria-hidden="true" focusable="false">
+      <!-- bolhas saindo do snorkel -->
+      <g class="d-bolhas" fill="none" stroke="#5EEAD4" stroke-width="3">
+        <circle cx="206" cy="18" r="6"/><circle cx="216" cy="-2" r="4"/><circle cx="200" cy="-16" r="3"/>
+      </g>
+      <!-- nadadeiras -->
+      <g class="d-pes" stroke="#06172D" stroke-width="5" stroke-linejoin="round">
+        <path d="M86,212 L62,252 Q58,264 72,264 L100,264 Q112,264 108,252 L106,212 Z" fill="#FACC15"/>
+        <path d="M154,212 L178,252 Q182,264 168,264 L140,264 Q128,264 132,252 L134,212 Z" fill="#FACC15"/>
+        <path d="M76,246 L100,246 M140,246 L164,246" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/>
+      </g>
+      <!-- braços -->
+      <g class="d-bracos" fill="#15406B" stroke="#5EEAD4" stroke-width="7" stroke-linejoin="round">
+        <path class="d-braco-esq" d="M50,150 Q20,170 26,200 Q36,208 46,198 Q46,178 58,168 Z"/>
+        <path class="d-braco-dir" d="M190,150 Q220,170 214,200 Q204,208 194,198 Q194,178 182,168 Z"/>
+      </g>
+      <!-- corpo + capuz da roupa de mergulho (uma peça só, como o fantasma) -->
+      <path d="M120,30 C68,30 44,70 42,118 L40,176 C40,202 60,222 88,222 L152,222 C180,222 200,202 200,176 L198,118 C196,70 172,30 120,30 Z" fill="#15406B" stroke="#5EEAD4" stroke-width="8" stroke-linejoin="round"/>
+      <!-- faixa turquesa no peito -->
+      <path d="M60,196 Q120,214 180,196" fill="none" stroke="#14B8A6" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+      <!-- rosto (abertura do capuz). Pele, "atrás", cílios e "frente" mudam com o mascote escolhido (js/mascotes.js);
+           o que está aqui é o padrão: pinguim de penacho -->
+      <path class="d-pele" d="M70,104 Q70,74 120,74 Q170,74 170,104 L170,150 Q170,194 120,196 Q70,194 70,150 Z" fill="#F4F8FF"/>
+      <g class="d-rosto-atras"><g fill="#FCD34D" stroke="#06172D" stroke-width="3" stroke-linejoin="round"><path d="M62,98 Q44,90 34,74 Q52,82 58,80 Q46,70 44,58 Q60,72 72,90 Z"/><path d="M178,98 Q196,90 206,74 Q188,82 182,80 Q194,70 196,58 Q180,72 168,90 Z"/></g></g>
+      <!-- bochechas (só no "feliz") -->
+      <g class="d-bochechas" fill="#FB7185" opacity=".55"><circle cx="80" cy="152" r="7"/><circle cx="160" cy="152" r="7"/></g>
+      <!-- tira da máscara atravessando o capuz -->
+      <path d="M46,112 L194,112" stroke="#06172D" stroke-width="10"/>
+      <!-- máscara de mergulho -->
+      <rect x="56" y="84" width="128" height="58" rx="27" fill="#0C354C" stroke="#FACC15" stroke-width="8"/>
+      <path d="M72,98 L86,92" stroke="#E6F1FF" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+      <!-- olhos: normal -->
+      <g class="d-olhos d-olhos--normal">
+        <g class="d-olho"><circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle class="d-pupila" cx="94" cy="117" r="7.5" fill="#0B2545"/></g>
+        <g class="d-olho"><circle cx="144" cy="114" r="15" fill="#E6F1FF"/><circle class="d-pupila" cx="142" cy="117" r="7.5" fill="#0B2545"/></g>
+      </g>
+      <!-- olhos: feliz (^ ^) -->
+      <g class="d-olhos d-olhos--feliz" fill="none" stroke="#E6F1FF" stroke-width="6" stroke-linecap="round">
+        <path d="M84,120 Q96,102 108,120"/><path d="M132,120 Q144,102 156,120"/>
+      </g>
+      <!-- olhos: triste (pálpebras caídas) -->
+      <g class="d-olhos d-olhos--triste">
+        <circle cx="96" cy="116" r="14" fill="#E6F1FF"/><circle cx="144" cy="116" r="14" fill="#E6F1FF"/>
+        <circle cx="95" cy="121" r="7" fill="#0B2545"/><circle cx="143" cy="121" r="7" fill="#0B2545"/>
+        <path d="M80,116 L112,106 L112,98 L80,98 Z" fill="#0C354C"/><path d="M160,116 L128,106 L128,98 L160,98 Z" fill="#0C354C"/>
+      </g>
+      <!-- olhos: pensando (olhando para cima) -->
+      <g class="d-olhos d-olhos--pensando">
+        <circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle cx="144" cy="114" r="15" fill="#E6F1FF"/>
+        <circle cx="101" cy="108" r="7.5" fill="#0B2545"/><circle cx="149" cy="108" r="7.5" fill="#0B2545"/>
+      </g>
+      <!-- cílios (mergulhadoras; somem no feliz e no triste) -->
+      <g class="d-cilios"></g>
+      <!-- snorkel: tubo coral saindo da boca e subindo pelo lado -->
+      <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#06172D" stroke-width="18" stroke-linecap="round"/>
+      <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#FB7185" stroke-width="11" stroke-linecap="round"/>
+      <rect x="186" y="24" width="20" height="16" rx="5" fill="#FACC15" stroke="#06172D" stroke-width="4"/>
+      <!-- frente do rosto: bigode ou bico, e o bocal do snorkel na boca -->
+      <g class="d-rosto-frente"><path d="M103,170 Q121,168 139,170 Q134,184 121,185 Q108,184 103,170 Z" fill="#EA7A1F" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M97,157 Q98,141 121,139 Q144,141 145,157 Q121,163 97,157 Z" fill="#FB923C" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M108,147 Q114,143 121,143" fill="none" stroke="#FED7AA" stroke-width="3" stroke-linecap="round"/><rect x="106" y="156" width="30" height="16" rx="8" fill="#FACC15" stroke="#06172D" stroke-width="4"/><path d="M112,164 L130,164" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/></g>
+    </svg></div><span>Normal</span></li><li><div class="mascote vc-mascote mascote--feliz" data-mascote><svg viewBox="0 0 240 270" class="mascote__svg" aria-hidden="true" focusable="false">
+      <!-- bolhas saindo do snorkel -->
+      <g class="d-bolhas" fill="none" stroke="#5EEAD4" stroke-width="3">
+        <circle cx="206" cy="18" r="6"/><circle cx="216" cy="-2" r="4"/><circle cx="200" cy="-16" r="3"/>
+      </g>
+      <!-- nadadeiras -->
+      <g class="d-pes" stroke="#06172D" stroke-width="5" stroke-linejoin="round">
+        <path d="M86,212 L62,252 Q58,264 72,264 L100,264 Q112,264 108,252 L106,212 Z" fill="#FACC15"/>
+        <path d="M154,212 L178,252 Q182,264 168,264 L140,264 Q128,264 132,252 L134,212 Z" fill="#FACC15"/>
+        <path d="M76,246 L100,246 M140,246 L164,246" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/>
+      </g>
+      <!-- braços -->
+      <g class="d-bracos" fill="#15406B" stroke="#5EEAD4" stroke-width="7" stroke-linejoin="round">
+        <path class="d-braco-esq" d="M50,150 Q20,170 26,200 Q36,208 46,198 Q46,178 58,168 Z"/>
+        <path class="d-braco-dir" d="M190,150 Q220,170 214,200 Q204,208 194,198 Q194,178 182,168 Z"/>
+      </g>
+      <!-- corpo + capuz da roupa de mergulho (uma peça só, como o fantasma) -->
+      <path d="M120,30 C68,30 44,70 42,118 L40,176 C40,202 60,222 88,222 L152,222 C180,222 200,202 200,176 L198,118 C196,70 172,30 120,30 Z" fill="#15406B" stroke="#5EEAD4" stroke-width="8" stroke-linejoin="round"/>
+      <!-- faixa turquesa no peito -->
+      <path d="M60,196 Q120,214 180,196" fill="none" stroke="#14B8A6" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+      <!-- rosto (abertura do capuz). Pele, "atrás", cílios e "frente" mudam com o mascote escolhido (js/mascotes.js);
+           o que está aqui é o padrão: pinguim de penacho -->
+      <path class="d-pele" d="M70,104 Q70,74 120,74 Q170,74 170,104 L170,150 Q170,194 120,196 Q70,194 70,150 Z" fill="#F4F8FF"/>
+      <g class="d-rosto-atras"><g fill="#FCD34D" stroke="#06172D" stroke-width="3" stroke-linejoin="round"><path d="M62,98 Q44,90 34,74 Q52,82 58,80 Q46,70 44,58 Q60,72 72,90 Z"/><path d="M178,98 Q196,90 206,74 Q188,82 182,80 Q194,70 196,58 Q180,72 168,90 Z"/></g></g>
+      <!-- bochechas (só no "feliz") -->
+      <g class="d-bochechas" fill="#FB7185" opacity=".55"><circle cx="80" cy="152" r="7"/><circle cx="160" cy="152" r="7"/></g>
+      <!-- tira da máscara atravessando o capuz -->
+      <path d="M46,112 L194,112" stroke="#06172D" stroke-width="10"/>
+      <!-- máscara de mergulho -->
+      <rect x="56" y="84" width="128" height="58" rx="27" fill="#0C354C" stroke="#FACC15" stroke-width="8"/>
+      <path d="M72,98 L86,92" stroke="#E6F1FF" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+      <!-- olhos: normal -->
+      <g class="d-olhos d-olhos--normal">
+        <g class="d-olho"><circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle class="d-pupila" cx="94" cy="117" r="7.5" fill="#0B2545"/></g>
+        <g class="d-olho"><circle cx="144" cy="114" r="15" fill="#E6F1FF"/><circle class="d-pupila" cx="142" cy="117" r="7.5" fill="#0B2545"/></g>
+      </g>
+      <!-- olhos: feliz (^ ^) -->
+      <g class="d-olhos d-olhos--feliz" fill="none" stroke="#E6F1FF" stroke-width="6" stroke-linecap="round">
+        <path d="M84,120 Q96,102 108,120"/><path d="M132,120 Q144,102 156,120"/>
+      </g>
+      <!-- olhos: triste (pálpebras caídas) -->
+      <g class="d-olhos d-olhos--triste">
+        <circle cx="96" cy="116" r="14" fill="#E6F1FF"/><circle cx="144" cy="116" r="14" fill="#E6F1FF"/>
+        <circle cx="95" cy="121" r="7" fill="#0B2545"/><circle cx="143" cy="121" r="7" fill="#0B2545"/>
+        <path d="M80,116 L112,106 L112,98 L80,98 Z" fill="#0C354C"/><path d="M160,116 L128,106 L128,98 L160,98 Z" fill="#0C354C"/>
+      </g>
+      <!-- olhos: pensando (olhando para cima) -->
+      <g class="d-olhos d-olhos--pensando">
+        <circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle cx="144" cy="114" r="15" fill="#E6F1FF"/>
+        <circle cx="101" cy="108" r="7.5" fill="#0B2545"/><circle cx="149" cy="108" r="7.5" fill="#0B2545"/>
+      </g>
+      <!-- cílios (mergulhadoras; somem no feliz e no triste) -->
+      <g class="d-cilios"></g>
+      <!-- snorkel: tubo coral saindo da boca e subindo pelo lado -->
+      <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#06172D" stroke-width="18" stroke-linecap="round"/>
+      <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#FB7185" stroke-width="11" stroke-linecap="round"/>
+      <rect x="186" y="24" width="20" height="16" rx="5" fill="#FACC15" stroke="#06172D" stroke-width="4"/>
+      <!-- frente do rosto: bigode ou bico, e o bocal do snorkel na boca -->
+      <g class="d-rosto-frente"><path d="M103,170 Q121,168 139,170 Q134,184 121,185 Q108,184 103,170 Z" fill="#EA7A1F" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M97,157 Q98,141 121,139 Q144,141 145,157 Q121,163 97,157 Z" fill="#FB923C" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M108,147 Q114,143 121,143" fill="none" stroke="#FED7AA" stroke-width="3" stroke-linecap="round"/><rect x="106" y="156" width="30" height="16" rx="8" fill="#FACC15" stroke="#06172D" stroke-width="4"/><path d="M112,164 L130,164" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/></g>
+    </svg></div><span>Feliz <code>.mascote--feliz</code></span></li><li><div class="mascote vc-mascote mascote--triste" data-mascote><svg viewBox="0 0 240 270" class="mascote__svg" aria-hidden="true" focusable="false">
+      <!-- bolhas saindo do snorkel -->
+      <g class="d-bolhas" fill="none" stroke="#5EEAD4" stroke-width="3">
+        <circle cx="206" cy="18" r="6"/><circle cx="216" cy="-2" r="4"/><circle cx="200" cy="-16" r="3"/>
+      </g>
+      <!-- nadadeiras -->
+      <g class="d-pes" stroke="#06172D" stroke-width="5" stroke-linejoin="round">
+        <path d="M86,212 L62,252 Q58,264 72,264 L100,264 Q112,264 108,252 L106,212 Z" fill="#FACC15"/>
+        <path d="M154,212 L178,252 Q182,264 168,264 L140,264 Q128,264 132,252 L134,212 Z" fill="#FACC15"/>
+        <path d="M76,246 L100,246 M140,246 L164,246" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/>
+      </g>
+      <!-- braços -->
+      <g class="d-bracos" fill="#15406B" stroke="#5EEAD4" stroke-width="7" stroke-linejoin="round">
+        <path class="d-braco-esq" d="M50,150 Q20,170 26,200 Q36,208 46,198 Q46,178 58,168 Z"/>
+        <path class="d-braco-dir" d="M190,150 Q220,170 214,200 Q204,208 194,198 Q194,178 182,168 Z"/>
+      </g>
+      <!-- corpo + capuz da roupa de mergulho (uma peça só, como o fantasma) -->
+      <path d="M120,30 C68,30 44,70 42,118 L40,176 C40,202 60,222 88,222 L152,222 C180,222 200,202 200,176 L198,118 C196,70 172,30 120,30 Z" fill="#15406B" stroke="#5EEAD4" stroke-width="8" stroke-linejoin="round"/>
+      <!-- faixa turquesa no peito -->
+      <path d="M60,196 Q120,214 180,196" fill="none" stroke="#14B8A6" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+      <!-- rosto (abertura do capuz). Pele, "atrás", cílios e "frente" mudam com o mascote escolhido (js/mascotes.js);
+           o que está aqui é o padrão: pinguim de penacho -->
+      <path class="d-pele" d="M70,104 Q70,74 120,74 Q170,74 170,104 L170,150 Q170,194 120,196 Q70,194 70,150 Z" fill="#F4F8FF"/>
+      <g class="d-rosto-atras"><g fill="#FCD34D" stroke="#06172D" stroke-width="3" stroke-linejoin="round"><path d="M62,98 Q44,90 34,74 Q52,82 58,80 Q46,70 44,58 Q60,72 72,90 Z"/><path d="M178,98 Q196,90 206,74 Q188,82 182,80 Q194,70 196,58 Q180,72 168,90 Z"/></g></g>
+      <!-- bochechas (só no "feliz") -->
+      <g class="d-bochechas" fill="#FB7185" opacity=".55"><circle cx="80" cy="152" r="7"/><circle cx="160" cy="152" r="7"/></g>
+      <!-- tira da máscara atravessando o capuz -->
+      <path d="M46,112 L194,112" stroke="#06172D" stroke-width="10"/>
+      <!-- máscara de mergulho -->
+      <rect x="56" y="84" width="128" height="58" rx="27" fill="#0C354C" stroke="#FACC15" stroke-width="8"/>
+      <path d="M72,98 L86,92" stroke="#E6F1FF" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+      <!-- olhos: normal -->
+      <g class="d-olhos d-olhos--normal">
+        <g class="d-olho"><circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle class="d-pupila" cx="94" cy="117" r="7.5" fill="#0B2545"/></g>
+        <g class="d-olho"><circle cx="144" cy="114" r="15" fill="#E6F1FF"/><circle class="d-pupila" cx="142" cy="117" r="7.5" fill="#0B2545"/></g>
+      </g>
+      <!-- olhos: feliz (^ ^) -->
+      <g class="d-olhos d-olhos--feliz" fill="none" stroke="#E6F1FF" stroke-width="6" stroke-linecap="round">
+        <path d="M84,120 Q96,102 108,120"/><path d="M132,120 Q144,102 156,120"/>
+      </g>
+      <!-- olhos: triste (pálpebras caídas) -->
+      <g class="d-olhos d-olhos--triste">
+        <circle cx="96" cy="116" r="14" fill="#E6F1FF"/><circle cx="144" cy="116" r="14" fill="#E6F1FF"/>
+        <circle cx="95" cy="121" r="7" fill="#0B2545"/><circle cx="143" cy="121" r="7" fill="#0B2545"/>
+        <path d="M80,116 L112,106 L112,98 L80,98 Z" fill="#0C354C"/><path d="M160,116 L128,106 L128,98 L160,98 Z" fill="#0C354C"/>
+      </g>
+      <!-- olhos: pensando (olhando para cima) -->
+      <g class="d-olhos d-olhos--pensando">
+        <circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle cx="144" cy="114" r="15" fill="#E6F1FF"/>
+        <circle cx="101" cy="108" r="7.5" fill="#0B2545"/><circle cx="149" cy="108" r="7.5" fill="#0B2545"/>
+      </g>
+      <!-- cílios (mergulhadoras; somem no feliz e no triste) -->
+      <g class="d-cilios"></g>
+      <!-- snorkel: tubo coral saindo da boca e subindo pelo lado -->
+      <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#06172D" stroke-width="18" stroke-linecap="round"/>
+      <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#FB7185" stroke-width="11" stroke-linecap="round"/>
+      <rect x="186" y="24" width="20" height="16" rx="5" fill="#FACC15" stroke="#06172D" stroke-width="4"/>
+      <!-- frente do rosto: bigode ou bico, e o bocal do snorkel na boca -->
+      <g class="d-rosto-frente"><path d="M103,170 Q121,168 139,170 Q134,184 121,185 Q108,184 103,170 Z" fill="#EA7A1F" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M97,157 Q98,141 121,139 Q144,141 145,157 Q121,163 97,157 Z" fill="#FB923C" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M108,147 Q114,143 121,143" fill="none" stroke="#FED7AA" stroke-width="3" stroke-linecap="round"/><rect x="106" y="156" width="30" height="16" rx="8" fill="#FACC15" stroke="#06172D" stroke-width="4"/><path d="M112,164 L130,164" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/></g>
+    </svg></div><span>Triste <code>.mascote--triste</code></span></li><li><div class="mascote vc-mascote mascote--pensando" data-mascote><svg viewBox="0 0 240 270" class="mascote__svg" aria-hidden="true" focusable="false">
+      <!-- bolhas saindo do snorkel -->
+      <g class="d-bolhas" fill="none" stroke="#5EEAD4" stroke-width="3">
+        <circle cx="206" cy="18" r="6"/><circle cx="216" cy="-2" r="4"/><circle cx="200" cy="-16" r="3"/>
+      </g>
+      <!-- nadadeiras -->
+      <g class="d-pes" stroke="#06172D" stroke-width="5" stroke-linejoin="round">
+        <path d="M86,212 L62,252 Q58,264 72,264 L100,264 Q112,264 108,252 L106,212 Z" fill="#FACC15"/>
+        <path d="M154,212 L178,252 Q182,264 168,264 L140,264 Q128,264 132,252 L134,212 Z" fill="#FACC15"/>
+        <path d="M76,246 L100,246 M140,246 L164,246" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/>
+      </g>
+      <!-- braços -->
+      <g class="d-bracos" fill="#15406B" stroke="#5EEAD4" stroke-width="7" stroke-linejoin="round">
+        <path class="d-braco-esq" d="M50,150 Q20,170 26,200 Q36,208 46,198 Q46,178 58,168 Z"/>
+        <path class="d-braco-dir" d="M190,150 Q220,170 214,200 Q204,208 194,198 Q194,178 182,168 Z"/>
+      </g>
+      <!-- corpo + capuz da roupa de mergulho (uma peça só, como o fantasma) -->
+      <path d="M120,30 C68,30 44,70 42,118 L40,176 C40,202 60,222 88,222 L152,222 C180,222 200,202 200,176 L198,118 C196,70 172,30 120,30 Z" fill="#15406B" stroke="#5EEAD4" stroke-width="8" stroke-linejoin="round"/>
+      <!-- faixa turquesa no peito -->
+      <path d="M60,196 Q120,214 180,196" fill="none" stroke="#14B8A6" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+      <!-- rosto (abertura do capuz). Pele, "atrás", cílios e "frente" mudam com o mascote escolhido (js/mascotes.js);
+           o que está aqui é o padrão: pinguim de penacho -->
+      <path class="d-pele" d="M70,104 Q70,74 120,74 Q170,74 170,104 L170,150 Q170,194 120,196 Q70,194 70,150 Z" fill="#F4F8FF"/>
+      <g class="d-rosto-atras"><g fill="#FCD34D" stroke="#06172D" stroke-width="3" stroke-linejoin="round"><path d="M62,98 Q44,90 34,74 Q52,82 58,80 Q46,70 44,58 Q60,72 72,90 Z"/><path d="M178,98 Q196,90 206,74 Q188,82 182,80 Q194,70 196,58 Q180,72 168,90 Z"/></g></g>
+      <!-- bochechas (só no "feliz") -->
+      <g class="d-bochechas" fill="#FB7185" opacity=".55"><circle cx="80" cy="152" r="7"/><circle cx="160" cy="152" r="7"/></g>
+      <!-- tira da máscara atravessando o capuz -->
+      <path d="M46,112 L194,112" stroke="#06172D" stroke-width="10"/>
+      <!-- máscara de mergulho -->
+      <rect x="56" y="84" width="128" height="58" rx="27" fill="#0C354C" stroke="#FACC15" stroke-width="8"/>
+      <path d="M72,98 L86,92" stroke="#E6F1FF" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+      <!-- olhos: normal -->
+      <g class="d-olhos d-olhos--normal">
+        <g class="d-olho"><circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle class="d-pupila" cx="94" cy="117" r="7.5" fill="#0B2545"/></g>
+        <g class="d-olho"><circle cx="144" cy="114" r="15" fill="#E6F1FF"/><circle class="d-pupila" cx="142" cy="117" r="7.5" fill="#0B2545"/></g>
+      </g>
+      <!-- olhos: feliz (^ ^) -->
+      <g class="d-olhos d-olhos--feliz" fill="none" stroke="#E6F1FF" stroke-width="6" stroke-linecap="round">
+        <path d="M84,120 Q96,102 108,120"/><path d="M132,120 Q144,102 156,120"/>
+      </g>
+      <!-- olhos: triste (pálpebras caídas) -->
+      <g class="d-olhos d-olhos--triste">
+        <circle cx="96" cy="116" r="14" fill="#E6F1FF"/><circle cx="144" cy="116" r="14" fill="#E6F1FF"/>
+        <circle cx="95" cy="121" r="7" fill="#0B2545"/><circle cx="143" cy="121" r="7" fill="#0B2545"/>
+        <path d="M80,116 L112,106 L112,98 L80,98 Z" fill="#0C354C"/><path d="M160,116 L128,106 L128,98 L160,98 Z" fill="#0C354C"/>
+      </g>
+      <!-- olhos: pensando (olhando para cima) -->
+      <g class="d-olhos d-olhos--pensando">
+        <circle cx="96" cy="114" r="15" fill="#E6F1FF"/><circle cx="144" cy="114" r="15" fill="#E6F1FF"/>
+        <circle cx="101" cy="108" r="7.5" fill="#0B2545"/><circle cx="149" cy="108" r="7.5" fill="#0B2545"/>
+      </g>
+      <!-- cílios (mergulhadoras; somem no feliz e no triste) -->
+      <g class="d-cilios"></g>
+      <!-- snorkel: tubo coral saindo da boca e subindo pelo lado -->
+      <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#06172D" stroke-width="18" stroke-linecap="round"/>
+      <path d="M136,166 Q172,168 186,150 Q196,136 196,110 L196,36" fill="none" stroke="#FB7185" stroke-width="11" stroke-linecap="round"/>
+      <rect x="186" y="24" width="20" height="16" rx="5" fill="#FACC15" stroke="#06172D" stroke-width="4"/>
+      <!-- frente do rosto: bigode ou bico, e o bocal do snorkel na boca -->
+      <g class="d-rosto-frente"><path d="M103,170 Q121,168 139,170 Q134,184 121,185 Q108,184 103,170 Z" fill="#EA7A1F" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M97,157 Q98,141 121,139 Q144,141 145,157 Q121,163 97,157 Z" fill="#FB923C" stroke="#06172D" stroke-width="4" stroke-linejoin="round"/><path d="M108,147 Q114,143 121,143" fill="none" stroke="#FED7AA" stroke-width="3" stroke-linecap="round"/><rect x="106" y="156" width="30" height="16" rx="8" fill="#FACC15" stroke="#06172D" stroke-width="4"/><path d="M112,164 L130,164" stroke="#C99A0B" stroke-width="4" stroke-linecap="round"/></g>
+    </svg></div><span>Pensando <code>.mascote--pensando</code></span></li></ul>
+      <p class="vc-nota"><code>UI.humorMascote(container, 'feliz' | 'triste' | 'pensando' | null)</code>. O rosto padrão é o pinguim de penacho; os outros rostos ficam no Perfil (<code>js/mascotes.js</code>).</p>
+    </section>
+  </main>
+</body>
+</html>

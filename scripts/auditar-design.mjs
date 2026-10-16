@@ -5,7 +5,8 @@
  *   - cor em hexadecimal fora de css/tokens.css (nos CSS e nos JS que desenham com cores: tutorial, Caso Resolvido, Tiro ao Alvo);
  *   - font-size que não seja um token da escala (--t-xs … --t-display), 0 ou inherit; font: com tamanho numérico;
  *   - z-index numérico (só var(--z-*) ou calc com ele);
- *   - @media com largura fora dos 4 cortes (sm 480 · md 768 · lg 1024 · xl 1280).
+ *   - @media com largura fora dos 4 cortes (sm 480 · md 768 · lg 1024 · xl 1280);
+ *   - docs/componentes.html desatualizado (scripts/gerar-componentes.mjs --conferir).
  * Uso: node scripts/auditar-design.mjs          (regras em docs/DESIGN.md, "Como auditar")
  *
  * Com --navegador (Onda 4), também abre o app no Chromium (Playwright) num servidor local e, em cada tela,
@@ -61,6 +62,13 @@ for (const f of JS_COM_COR) {
   linhas(txt).forEach((l, i) => {
     for (const m of l.matchAll(/#[0-9a-fA-F]{6}\b/g)) erro(f, i + 1, `cor solta ${m[0]} (use UI.cor('token'))`);
   });
+}
+
+// O catálogo vivo (docs/componentes.html) acompanha os tokens, o sprite e o mascote (Onda 7)
+try {
+  execSync('node scripts/gerar-componentes.mjs --conferir', { stdio: 'pipe' });
+} catch {
+  erros.push('docs/componentes.html desatualizado: rode node scripts/gerar-componentes.mjs');
 }
 
 if (process.argv.includes('--navegador')) await auditarNoNavegador();
