@@ -5,6 +5,30 @@
 
 ---
 
+## 2026-10-16 · Mapa das Profissões: a ficha que se conta ao rolar
+- **Pedido do usuário:** repaginar Profissões "sem mudar nenhuma vírgula, só o design":
+  - mais moderna e interativa;
+  - salário escondido para a pessoa chutar antes;
+  - fontes só no clique;
+  - a tela carregando e guiando conforme rola, "tipo a página da Apple", com a nossa cara.
+- **Feito:**
+  - abertura em tela cheia;
+  - cenas que acendem e se montam (relógio, números, formação, DNA);
+  - guia fixo com progresso e "Próximo";
+  - doca de ações;
+  - salário escondido até o chute;
+  - fontes em cartão no toque e lista guardada;
+  - chave "faz / não faz";
+  - cartas do "ninguém te conta";
+  - tabela em cartões no celular.
+- **Conferido:**
+  - todos os textos do JSON da Enfermagem aparecem na tela;
+  - com "reduzir movimento", tudo aparece pronto;
+  - o `auditar-design --navegador` passou, com alvos de 44 px;
+  - as outras telas de Profissões abrem sem erro;
+  - testado no PC e no celular.
+- **Correção de passagem:** botão primário que é link ("Viver um dia") estava com texto turquesa sobre turquesa.
+
 ## 2026-10-16 · Explora Tech · Fundamentos completo (Módulos 8 a 12 e fechamento da fase)
 - **Pedido do usuário:** "terminar de subir o curso completo de tech", com os laboratórios e as 4 etapas sem parar.
 - **Feito:**

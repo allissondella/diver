@@ -141,7 +141,7 @@ const Tutorial = (() => {
     // Mapa das Profissões (2026-10-16): a tela é desenhada depois de baixar o índice, então os passos não dependem de alvo
     profissoes: [
       { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque uma profissão pelo nome ou filtre pela área. Toque numa ficha para abrir; "Pôr na mira" guarda as que você quer acompanhar, e elas aparecem no topo do mapa.' },
-      { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'Cada ficha começa com quatro números (duração, formato, salário e registro), cada um com o botão "Fonte". Depois vêm o dia a dia, o que estuda, como entrar, quanto ganha e o que ninguém conta. Os números entre colchetes levam à lista de fontes.' },
+      { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'A ficha se conta enquanto você rola: as partes acendem, os números se montam e a barra no topo mostra quanto falta (toque numa seção para pular). O salário fica escondido até o seu chute, e cada bolinha numerada abre a fonte daquela informação.' },
       { desenho: 'estrela', titulo: 'Maré de cartas', texto: 'Sem ideia por onde começar? A Maré mostra uma profissão por vez: "Me interessa" ou "Não é pra mim". No fim, o seu rastro e uma sugestão que talvez você não tenha considerado.' },
     ],
     perfil: [
@@ -153,7 +153,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { inicio: 5, sala: 2, 'sala-ensino-medio': 2, 'mapa-partida': 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { profissoes: 2, inicio: 5, sala: 2, 'sala-ensino-medio': 2, 'mapa-partida': 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

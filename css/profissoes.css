@@ -247,11 +247,21 @@ button.prof-ilha { cursor: pointer; width: 100%; font: inherit; text-align: left
 .prof-resposta h3 svg { width: 18px; height: 18px; }
 
 /* ---------- Citações numeradas, como em artigo ---------- */
-.prof-cit { font-size: var(--t-xs); line-height: 0; margin-left: 3px; vertical-align: super; white-space: nowrap; color: var(--texto-suave); }
-.prof-cit::before { content: "["; }
-.prof-cit::after { content: "]"; }
-.prof-cit a { color: var(--turquesa-claro); text-decoration: none; padding: 0 1px; border-radius: 3px; }
-.prof-cit a:hover { color: var(--marinho); background: var(--turquesa-claro); }
+.prof-cit { line-height: 0; margin-left: 3px; vertical-align: super; white-space: nowrap; display: inline-flex; gap: 2px; }
+.prof-cit-b {
+  /* alvo de toque de 44 px, invisível; a bolinha que aparece é o ::before (margem negativa: a linha não cresce) */
+  position: relative; isolation: isolate; display: inline-grid; place-items: center; width: 44px; height: 44px; margin: -13px -11px;
+  padding: 0; border: 0; border-radius: var(--raio-pilula); cursor: pointer; background: none;
+  font: inherit; font-size: var(--t-xs); font-weight: 800; line-height: 1; color: var(--turquesa-claro);
+  transition: color var(--transicao), transform var(--transicao);
+}
+.prof-cit-b::before {
+  content: ""; position: absolute; inset: 13px 11px; z-index: var(--z-abaixo); border-radius: var(--raio-pilula);
+  background: color-mix(in srgb, var(--turquesa) 18%, transparent); transition: background var(--transicao);
+}
+.prof-cit-b:hover, .prof-cit-b:focus-visible { color: var(--marinho); transform: translateY(-1px); }
+.prof-cit-b:hover::before, .prof-cit-b:focus-visible::before { background: var(--turquesa-claro); }
+.prof-raiz .prof-cit-b:focus-visible { outline-offset: -11px; }
 .prof-fonte--realce { outline: 2px solid var(--amarelo); outline-offset: 2px; }
 .prof-raiz .prof-espaco { margin-top: 16px; }
 
@@ -363,7 +373,216 @@ a.prof-btn { text-decoration: none; }
   .prof-chip, .prof-btn--pequeno, .prof-selecao, .prof-nav a, .prof-chips-lista a, .prof-numero summary { min-height: 44px; }
   .prof-nav a, .prof-chips-lista a { display: inline-flex; align-items: center; }
   .prof-raiz input[type="range"] { height: 44px; }
-  /* As notinhas [1] seguem no meio do texto (exceção da WCAG para link em linha), com uma área de toque maior em volta */
-  .prof-cit a { position: relative; }
-  .prof-cit a::after { content: ""; position: absolute; inset: -14px -10px; }
+  .prof-fonte-mini, .prof-proximo, .prof-chave button { min-height: 44px; }
+}
+
+/* =========================================================
+   Ficha que se conta enquanto rola (2026-10-16)
+   A abertura em tela cheia, as cenas que acendem, o guia com progresso, a doca de ações, o salário escondido
+   até o chute e as fontes guardadas num cartão. Tudo respeita "reduzir movimento" (ver o fim deste bloco).
+   ========================================================= */
+@keyframes prof-sobe { from { opacity: 0; transform: translateY(0.6em); } to { opacity: 1; transform: none; } }
+@keyframes prof-quica { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+@keyframes prof-revela { 0% { transform: scale(.94); outline-color: var(--amarelo); } 60% { transform: scale(1.03); } 100% { transform: none; outline-color: transparent; } }
+@keyframes prof-vira { from { opacity: 0; transform: perspective(600px) rotateX(-70deg); } to { opacity: 1; transform: none; } }
+@keyframes prof-pop-entra { from { opacity: 0; transform: translate(-50%, 24px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes prof-desenha { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Abertura ---------- */
+.prof-palco {
+  position: relative; display: grid; align-content: center; justify-items: center; gap: var(--esp-4);
+  min-height: calc(var(--vh-tela) * 0.72); padding: var(--esp-7) var(--esp-2); margin-bottom: var(--esp-4);
+  text-align: center; border-radius: var(--raio-xl); isolation: isolate; overflow: hidden;
+  background:
+    radial-gradient(60% 55% at 50% 30%, color-mix(in srgb, var(--cor-area, var(--turquesa)) 26%, transparent), transparent 70%),
+    radial-gradient(40% 40% at 85% 85%, color-mix(in srgb, var(--amarelo) 10%, transparent), transparent 70%);
+}
+.prof-palco::before, .prof-palco::after {
+  content: ""; position: absolute; z-index: var(--z-abaixo); border-radius: 50%; pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--texto) 14%, transparent); background: color-mix(in srgb, var(--texto) 4%, transparent);
+  animation: prof-quica 6s ease-in-out infinite;
+}
+.prof-palco::before { width: 64px; height: 64px; left: 10%; top: 18%; }
+.prof-palco::after { width: 28px; height: 28px; right: 14%; top: 34%; animation-delay: -2s; }
+.prof-palco-titulo { font-size: var(--t-display); font-weight: 800; letter-spacing: -.035em; line-height: 1.02; max-width: 12em; }
+.prof-palco-frase { font-size: var(--t-lg); color: var(--texto-suave); max-width: 30em; }
+.prof-palavra { display: inline-block; animation: prof-sobe .7s var(--ease-saida) both; animation-delay: calc(var(--i, 0) * 90ms); }
+.prof-palco-frase .prof-palavra { animation-duration: .5s; animation-delay: calc(.45s + var(--i, 0) * 22ms); }
+.prof-mergulhe {
+  display: inline-flex; flex-direction: column; align-items: center; gap: var(--esp-1); margin-top: var(--esp-3);
+  min-height: 44px; padding: var(--esp-2) var(--esp-4); border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: var(--t-sm); font-weight: 700; color: var(--turquesa-claro);
+  animation: prof-sobe .6s 1.2s both;
+}
+.prof-mergulhe .prof-ico { width: 22px; height: 22px; animation: prof-quica 1.6s ease-in-out infinite; }
+
+/* ---------- Guia fixo: progresso + seções ---------- */
+.prof-guia {
+  position: sticky; top: var(--prof-topo-fixo, env(safe-area-inset-top, 0px)); z-index: var(--z-sticky);
+  margin: 0 calc(var(--esp-2) * -1) var(--esp-2); padding: 0 var(--esp-2);
+  background: var(--fundo-fundo); box-shadow: var(--sombra-1); border-radius: 0 0 var(--raio-md) var(--raio-md);
+}
+.prof-guia-barra { height: 3px; overflow: hidden; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--texto-suave) 16%, transparent); }
+.prof-guia-barra i { display: block; height: 100%; transform: scaleX(0); transform-origin: left center; background: linear-gradient(90deg, var(--turquesa), var(--amarelo)); transition: transform .12s linear; }
+.prof-guia .prof-nav { position: static; box-shadow: none; background: none; margin: 0; padding: var(--esp-2) 0; }
+.prof-nav a[aria-current="true"] { color: var(--marinho); background: var(--turquesa-claro); font-weight: 700; }
+
+/* ---------- Cenas que acendem ---------- */
+.prof-cena { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease-saida), transform .8s var(--ease-saida); }
+.prof-cena--viva { opacity: 1; transform: none; }
+.prof-cena :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena > * {
+  opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease-saida), transform .5s var(--ease-saida);
+  transition-delay: calc(.15s + var(--i, 0) * 80ms);
+}
+.prof-cena--viva :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena--viva > * { opacity: 1; transform: none; }
+.prof-secao { scroll-margin-top: 96px; }
+.prof-secao h2 { font-size: var(--t-2xl); }
+
+/* O relógio gira até a hora de agora */
+.prof-agora { border: 1px solid color-mix(in srgb, var(--amarelo) 30%, transparent); }
+.prof-cena .prof-agora-relogio { transform: rotate(-200deg) scale(.6); opacity: 0; transition: transform 1.2s var(--ease-saida), opacity .6s; }
+.prof-cena--viva .prof-agora-relogio { transform: none; opacity: 1; }
+
+/* A linha da formação cresce ano a ano */
+.prof-formacao .prof-info rect { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); transition: transform 1s var(--ease-saida); }
+.prof-cena--viva .prof-formacao .prof-info rect { transform: scaleX(1); }
+.prof-formacao .prof-info g circle, .prof-formacao .prof-info g text + text + rect ~ text { opacity: 0; transition: opacity .4s; }
+.prof-cena--viva .prof-formacao .prof-info g circle, .prof-cena--viva .prof-formacao .prof-info g text + text + rect ~ text { opacity: 1; transition-delay: 1.2s; }
+.prof-formacao .prof-info g:nth-of-type(2) rect { transition-delay: .35s; }
+.prof-formacao .prof-info g:nth-of-type(3) rect { transition-delay: .7s; }
+.prof-formacao .prof-info g:nth-of-type(4) rect { transition-delay: 1.05s; }
+.prof-formacao .prof-info g:nth-of-type(5) rect { transition-delay: 1.4s; }
+
+/* O DNA se monta */
+.prof-cena .prof-dna-grafico { transform: scale(.35) rotate(-120deg); opacity: 0; transition: transform 1.1s var(--ease-saida), opacity .6s; }
+.prof-cena--viva .prof-dna-grafico { transform: none; opacity: 1; }
+
+/* "Próximo" no pé de cada seção */
+.prof-proximo {
+  display: flex; align-items: center; justify-content: center; gap: var(--esp-2); width: 100%;
+  margin-top: var(--esp-5); padding: var(--esp-2); border: 0; border-radius: var(--raio-md); cursor: pointer;
+  font: inherit; color: var(--texto-suave); background: none; transition: color var(--transicao), background var(--transicao);
+}
+.prof-proximo b { color: var(--texto); font-size: var(--t-sm); }
+.prof-proximo .prof-ico { width: 18px; height: 18px; color: var(--turquesa-claro); animation: prof-quica 1.8s ease-in-out infinite; }
+.prof-proximo:hover { background: var(--superficie-turquesa); color: var(--texto); }
+
+/* ---------- Números: fonte no toque e salário escondido ---------- */
+.prof-numero { position: relative; border: 1px solid transparent; outline: 2px solid transparent; outline-offset: 2px; }
+.prof-numero-fontes { display: flex; flex-wrap: wrap; gap: var(--esp-1); margin-top: var(--esp-2); }
+.prof-fonte-mini {
+  display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 var(--esp-3);
+  border: 0; border-radius: var(--raio-pilula); cursor: pointer; font: inherit; font-size: var(--t-xs); font-weight: 700;
+  color: var(--turquesa-claro); background: color-mix(in srgb, var(--turquesa) 14%, transparent);
+}
+.prof-fonte-mini:hover { color: var(--marinho); background: var(--turquesa-claro); }
+.prof-numero--segredo { border-color: color-mix(in srgb, var(--amarelo) 45%, transparent); border-style: dashed; }
+.prof-numero-tampa { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); }
+.prof-numero-oculto { color: var(--amarelo); letter-spacing: .04em; }
+.prof-revelado { animation: prof-revela .9s var(--ease-saida); }
+
+/* A tabela de valores fica coberta até o fim do chute */
+.prof-segredo { position: relative; margin-top: var(--esp-4); border-radius: var(--raio-md); }
+.prof-segredo:not(.prof-segredo--aberto) .prof-segredo-conteudo { filter: blur(7px); opacity: .45; user-select: none; pointer-events: none; }
+.prof-segredo-conteudo { transition: filter .8s var(--ease-saida), opacity .8s; }
+.prof-segredo-tampa {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--esp-2);
+  padding: var(--esp-3); text-align: center; border-radius: var(--raio-md);
+  border: 1px dashed color-mix(in srgb, var(--amarelo) 45%, transparent);
+  background: color-mix(in srgb, var(--fundo-fundo) 40%, transparent);
+}
+.prof-segredo-tampa > .prof-ico { width: 26px; height: 26px; color: var(--amarelo); }
+.prof-segredo-tampa p { font-weight: 700; }
+.prof-chute { border: 1px solid color-mix(in srgb, var(--amarelo) 30%, transparent); }
+.prof-chute-resultado .prof-info g { animation: prof-desenha .6s var(--ease-saida) both; }
+.prof-chute-resultado .prof-info g:nth-of-type(2) { animation-delay: .25s; }
+.prof-chute-resultado .prof-info g:nth-of-type(3) { animation-delay: .5s; }
+
+/* ---------- O que faz / o que não faz: chave ---------- */
+.prof-chave { display: inline-flex; gap: 4px; padding: 4px; margin-bottom: var(--esp-3); border-radius: var(--raio-pilula); background: var(--superficie); }
+.prof-chave button {
+  min-height: 44px; padding: 0 var(--esp-4); border: 0; border-radius: var(--raio-pilula); cursor: pointer;
+  font: inherit; font-size: var(--t-sm); font-weight: 700; color: var(--texto-suave); background: none;
+  transition: background var(--transicao), color var(--transicao);
+}
+.prof-chave button[aria-selected="true"] { color: var(--marinho); background: var(--turquesa-claro); }
+.prof-lado--entra { animation: prof-sobe .45s var(--ease-saida); }
+
+/* ---------- O que ninguém te conta: cartas para virar ---------- */
+.prof-virar-lista { list-style: none; margin: var(--esp-3) 0 0; padding: 0; display: grid; gap: var(--esp-2); }
+.prof-virar-frente {
+  display: flex; align-items: center; gap: var(--esp-3); width: 100%; min-height: 56px; padding: var(--esp-2) var(--esp-3);
+  border: 1px dashed color-mix(in srgb, var(--coral) 55%, transparent); border-radius: var(--raio-md); cursor: pointer;
+  font: inherit; font-size: var(--t-sm); font-weight: 700; color: var(--texto-suave); text-align: left; background: var(--superficie-turquesa);
+  transition: border-color var(--transicao), color var(--transicao), transform var(--transicao);
+}
+.prof-virar-frente:hover { border-color: var(--coral); color: var(--texto); transform: translateY(-1px); }
+.prof-virar-frente > .prof-ico { width: 18px; height: 18px; margin-left: auto; color: var(--coral); }
+.prof-virar-n { display: grid; place-items: center; width: 28px; height: 28px; flex: none; border-radius: 50%; background: var(--coral); color: var(--marinho); font-weight: 800; }
+.prof-virar-verso { padding: var(--esp-3); border-radius: var(--raio-md); background: color-mix(in srgb, var(--coral) 10%, transparent); border-left: 3px solid var(--coral); }
+.prof-virar--aberta .prof-virar-verso { animation: prof-vira .55s var(--ease-saida); }
+
+/* ---------- Fontes: guardadas ---------- */
+.prof-fontes--abrindo li { animation: prof-desenha .4s var(--ease-saida) both; animation-delay: calc(var(--i, 0) * 50ms); }
+#sec-fontes > .prof-btn { margin-top: var(--esp-2); }
+
+/* Cartão da fonte (abre no toque, fecha no X, no Esc ou tocando fora) */
+.prof-pop {
+  position: fixed; left: 50%; bottom: calc(var(--esp-4) + env(safe-area-inset-bottom, 0px)); z-index: var(--z-dialogo);
+  width: min(520px, calc(100vw - 32px)); display: grid; gap: var(--esp-2); padding: var(--esp-4);
+  border-radius: var(--raio-lg); border: 1px solid color-mix(in srgb, var(--turquesa) 35%, transparent);
+  background: var(--superficie-2); color: var(--texto); box-shadow: var(--sombra-4);
+  transform: translateX(-50%); animation: prof-pop-entra .3s var(--ease-saida);
+}
+.prof-pop-cab { display: flex; align-items: center; gap: var(--esp-2); }
+.prof-pop-n { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--turquesa-claro); color: var(--marinho); font-weight: 800; font-size: var(--t-sm); }
+.prof-pop-fechar { margin-left: auto; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; cursor: pointer; color: var(--texto-suave); background: none; }
+.prof-pop-fechar:hover { color: var(--texto); background: var(--superficie-turquesa); }
+.prof-pop-fechar .prof-ico { width: 20px; height: 20px; }
+.prof-pop-titulo { font-weight: 700; }
+.prof-pop a { color: var(--turquesa-claro); }
+.prof-pop .prof-fontes-nota { font-size: var(--t-xs); color: var(--laranja); }
+.prof-pop--ancorado { bottom: auto; transform: none; animation: prof-desenha .25s var(--ease-saida); }
+
+/* Botão primário que é link: a cor do texto vem do botão, não do link */
+.prof-raiz a.prof-btn--primario, .prof-raiz a.prof-btn--primario:hover { color: var(--marinho); }
+.prof-raiz a.prof-btn--linha { color: var(--texto); }
+
+/* ---------- Doca de ações no rodapé ---------- */
+.prof-doca {
+  position: sticky; bottom: calc(var(--esp-3) + env(safe-area-inset-bottom, 0px)); z-index: var(--z-sticky);
+  display: flex; justify-content: center; gap: var(--esp-2); width: fit-content; max-width: 100%; margin: var(--esp-6) auto 0;
+  padding: var(--esp-2); border-radius: var(--raio-pilula); background: var(--superficie-2); box-shadow: var(--sombra-3);
+  border: 1px solid color-mix(in srgb, var(--texto-suave) 22%, transparent);
+  opacity: 0; transform: translateY(24px); pointer-events: none; transition: opacity .35s var(--ease-saida), transform .35s var(--ease-saida);
+}
+.prof-doca--visivel { opacity: 1; transform: none; pointer-events: auto; }
+@media (max-width: 479px) {
+  /* Tabela de valores em cartões empilhados */
+  .prof-segredo .prof-tabela thead { display: none; }
+  .prof-segredo .prof-tabela tr { display: grid; grid-template-columns: 1fr 1fr; gap: var(--esp-1) var(--esp-3); padding: var(--esp-3) 0; border-bottom: 1px solid color-mix(in srgb, var(--texto-suave) 18%, transparent); }
+  .prof-segredo .prof-tabela td { display: block; padding: 0; border: 0; }
+  .prof-segredo .prof-tabela td:first-child { grid-column: 1 / -1; font-weight: 800; font-size: var(--t-md); }
+  .prof-segredo .prof-tabela td[data-rotulo]::before { content: attr(data-rotulo); display: block; font-size: var(--t-xs); font-weight: 600; color: var(--texto-suave); }
+  /* O gráfico do chute ganha largura e rola dentro da caixa */
+  .prof-chute-resultado { overflow-x: auto; }
+  .prof-chute-resultado .prof-info { min-width: 540px; }
+  .prof-palco { min-height: calc(var(--vh-tela) * 0.66); padding-inline: var(--esp-1); }
+  .prof-palco-titulo { font-size: var(--t-3xl); }
+  .prof-doca { width: 100%; gap: var(--esp-1); padding: var(--esp-1); }
+  .prof-doca .prof-btn { flex: 1; justify-content: center; padding: 0 var(--esp-2); font-size: var(--t-sm); }
+  .prof-doca .prof-btn svg { display: none; }
+}
+
+/* ---------- Reduzir movimento: tudo já aparece pronto ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .prof-cena, .prof-cena *, .prof-palavra, .prof-mergulhe, .prof-palco::before, .prof-palco::after,
+  .prof-revelado, .prof-pop, .prof-doca, .prof-lado--entra, .prof-virar-verso, .prof-fontes--abrindo li,
+  .prof-chute-resultado .prof-info g, .prof-proximo .prof-ico, .prof-mergulhe .prof-ico, .prof-segredo-conteudo {
+    animation: none !important; transition: none !important;
+  }
+  .prof-cena, .prof-cena :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena > *,
+  .prof-cena .prof-agora-relogio, .prof-cena .prof-dna-grafico, .prof-formacao .prof-info rect,
+  .prof-formacao .prof-info g circle, .prof-formacao .prof-info g text + text + rect ~ text { opacity: 1; transform: none; }
+  .prof-pop { transform: translateX(-50%); }
 }
