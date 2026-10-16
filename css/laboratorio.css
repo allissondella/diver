@@ -464,7 +464,7 @@
 .term__linha--info { color: var(--texto-suave); }
 .term__linha--erro { color: var(--coral); }
 .term__form { display: flex; align-items: center; gap: var(--esp-2); padding: var(--esp-2) var(--esp-3); border-top: 1px solid var(--borda); }
-.term__prompt { flex: none; font-family: var(--fonte-mono); font-size: var(--t-sm); color: var(--amarelo); max-width: 40%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.term__prompt { flex: none; font-family: var(--fonte-mono); font-size: var(--t-sm); color: var(--amarelo); max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .term__entrada { flex: 1; min-width: 0; min-height: 44px; padding: 0 var(--esp-2); font-family: var(--fonte-mono); font-size: var(--t-md); color: var(--texto); background: transparent; border: 0; }
 .term__entrada:focus { outline: none; }
 .term__atalhos { display: flex; flex-wrap: wrap; gap: var(--esp-2); padding: 0 var(--esp-3) var(--esp-3); }
@@ -485,3 +485,35 @@
 .mt-editor { display: grid; gap: var(--esp-2); }
 .mt-editor__area { width: 100%; min-height: 160px; padding: var(--esp-3); font-family: var(--fonte-mono); font-size: var(--t-md); line-height: var(--lh-normal); color: var(--texto); background: var(--fundo-fundo); border: 1px solid var(--borda); border-radius: var(--raio); resize: vertical; }
 .mt-editor__area:focus-visible { border-color: var(--turquesa); }
+/* Linha do Tempo do Código (js/jogos/linha-do-tempo-do-codigo.js, 2026-10-16): as três áreas, o grafo e o GitHub */
+.lt-areas__grade { display: grid; gap: var(--esp-3); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 768px) { .lt-areas__grade { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.lt-area { display: grid; align-content: start; gap: var(--esp-1); min-width: 0; padding: var(--esp-3); background: var(--fundo-fundo); border-radius: var(--raio-sm); }
+.lt-area__titulo { margin: 0; font-size: var(--t-sm); font-weight: 800; }
+.lt-area__sub { margin: 0; font-size: var(--t-xs); color: var(--texto-suave); overflow-wrap: anywhere; }
+.lt-area__lista { list-style: none; margin: var(--esp-1) 0 0; padding: 0; display: grid; gap: var(--esp-1); min-width: 0; }
+.lt-area__vazio { margin: var(--esp-1) 0 0; font-size: var(--t-sm); color: var(--texto-suave); }
+.lt-arquivo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-1) var(--esp-2); min-width: 0; font-family: var(--fonte-mono); font-size: var(--t-sm); }
+.lt-arquivo .icone { width: 16px; height: 16px; flex: none; color: var(--turquesa-claro); }
+.lt-arquivo__nome { overflow-wrap: anywhere; }
+.lt-tempo__corpo { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: var(--esp-2); overflow: hidden; }
+.lt-tempo__grafo { display: block; }
+.lt-linha { fill: none; stroke-width: 2; }
+.lt-no { stroke: var(--fundo-fundo); stroke-width: 2; }
+.lt-no--head { stroke: var(--amarelo); stroke-width: 3; }
+.lt-faixa-0 { stroke: var(--turquesa); } circle.lt-faixa-0 { fill: var(--turquesa); }
+.lt-faixa-1 { stroke: var(--lilas); } circle.lt-faixa-1 { fill: var(--lilas); }
+.lt-faixa-2 { stroke: var(--coral); } circle.lt-faixa-2 { fill: var(--coral); }
+.lt-faixa-3 { stroke: var(--azul); } circle.lt-faixa-3 { fill: var(--azul); }
+circle.lt-no--head { stroke: var(--amarelo); }
+.lt-tempo__lista { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-rows: 44px; min-width: 0; }
+.lt-remoto__lista { grid-auto-rows: auto; gap: var(--esp-2); margin-top: var(--esp-2); }
+.lt-commit { display: flex; align-items: center; gap: var(--esp-2); min-width: 0; overflow: hidden; font-size: var(--t-sm); }
+.lt-commit .tag { flex: none; }
+.lt-commit__hash { flex: none; font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--amarelo); }
+.lt-commit__msg { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lt-commit--head .lt-commit__msg { font-weight: 700; }
+.lt-remoto__url { font-family: var(--fonte-mono); }
+@media (max-width: 479px) { .lt-commit { flex-wrap: nowrap; } .lt-commit .tag:not(.tag--destaque) { display: none; } }
+.lt .jp-bloco__titulo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); }
+.lt .jp-bloco__titulo .icone { width: 18px; height: 18px; color: var(--turquesa-claro); }

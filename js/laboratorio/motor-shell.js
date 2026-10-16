@@ -52,7 +52,7 @@ const MotorShell = (() => {
   function tokens(linha) {
     const out = []; let atual = ''; let aspa = null; let tem = false;
     for (const ch of linha) {
-      if (aspa) { if (ch === aspa) aspa = null; else atual += ch; continue; }
+      if (aspa) { if (ch === aspa) aspa = null; else atual += ch === '*' ? '\u0001' : ch === '?' ? '\u0002' : ch; continue; } // curinga entre aspas não expande
       if (ch === '"' || ch === "'") { aspa = ch; tem = true; continue; }
       if (/\s/.test(ch)) { if (atual || tem) out.push(atual); atual = ''; tem = false; continue; }
       atual += ch;
@@ -72,6 +72,7 @@ const MotorShell = (() => {
     partes.push(atual);
     return partes;
   }
+  const des = (x) => x.replace(/\u0001/g, '*').replace(/\u0002/g, '?');
   const casaCuringa = (padrao, nome) => new RegExp(`^${padrao.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.')}$`).test(nome);
   function expandir(e, args) {
     return args.flatMap((a) => {
@@ -99,9 +100,14 @@ const MotorShell = (() => {
   const juntar = (ls) => (ls.length ? `${ls.join('\n')}\n` : '');
   const letras = (modo, tipo) => (tipo === 'd' ? 'd' : '-') + [...modo].map((d) => { const n = Number(d); return `${n & 4 ? 'r' : '-'}${n & 2 ? 'w' : '-'}${n & 1 ? 'x' : '-'}`; }).join('');
 
+  /* ---------- Plugins: outro motor ensina um comando novo ao shell (o Git da Linha do Tempo do Código) ---------- */
+  const PLUGINS = {};
+  function plugin(nome, fn) { PLUGINS[nome] = fn; }
+
   function rodarUm(e, args, entrada) {
-    const cmd = args[0];
-    const a = expandir(e, args.slice(1));
+    const cmd = des(args[0]);
+    if (PLUGINS[cmd]) return PLUGINS[cmd](e, args.slice(1).map(des), { resolver: (x) => resolver(e, x), normal, mae, nomeDe, filhos: (p) => filhos(e, p), entrada });
+    const a = expandir(e, args.slice(1)).map(des);
     const { flags, resto } = opcoes(a);
     const N = () => { const i = a.indexOf('-n'); return i >= 0 ? Number(a[i + 1]) : 10; };
     const semN = () => { const i = a.indexOf('-n'); return i >= 0 ? a.filter((_, k) => k !== i && k !== i + 1) : a; };
@@ -111,7 +117,7 @@ const MotorShell = (() => {
       return r;
     };
     switch (cmd) {
-      case 'ajuda': case 'help': return { texto: `${AJUDA}\n` };
+      case 'ajuda': case 'help': return { texto: `${e.ajuda || AJUDA}\n` };
       case 'pwd': return { texto: `${e.cwd}\n` };
       case 'history': return { texto: juntar(e.historico.map((h, i) => `${String(i + 1).padStart(4)}  ${h}`)) };
       case 'echo': return { texto: `${a.join(' ')}\n` };
@@ -353,5 +359,5 @@ const MotorShell = (() => {
     return erros;
   }
 
-  return { AJUDA, estado, clonar, rodar, gravar, objetivos, conferir, verificar, normal, letras };
+  return { AJUDA, estado, clonar, rodar, gravar, objetivos, conferir, verificar, normal, letras, plugin };
 })();

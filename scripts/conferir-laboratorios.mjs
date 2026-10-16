@@ -33,6 +33,7 @@ const MOTORES = {
   sala: new Function(`${ler('js/laboratorio/motor-sala.js')}\nreturn MotorSala;`)(),
   rede: new Function(`${ler('js/laboratorio/motor-rede.js')}\nreturn MotorRede;`)(),
   shell: new Function(`${ler('js/laboratorio/motor-shell.js')}\nreturn MotorShell;`)(),
+  git: new Function(`${ler('js/laboratorio/motor-shell.js')}\n${ler('js/laboratorio/motor-git.js')}\nreturn MotorGit;`)(), // Linha do Tempo do Código
 };
 MOTORES['rede-terminal'] = { verificar: (m) => MOTORES.rede.verificarTerminal(m) }; // Laboratório de Rede (terminal)
 

@@ -1,0 +1,1250 @@
+{
+  "id": "linha-do-tempo-do-codigo",
+  "nome": "Linha do Tempo do Código",
+  "versao": 1,
+  "tipo": "git",
+  "descricao": "Um Git de mentirinha com as três áreas à vista e o grafo de commits crescendo: init, add, commit, log, branch, merge, conflito, revert e GitHub.",
+  "tituloReferencia": "Comandos do Git",
+  "rotuloBancada": "Terminal, as três áreas e a linha do tempo",
+  "referencia": [
+    {
+      "nome": "git init · git status",
+      "faz": "cria o repositório · mostra o painel"
+    },
+    {
+      "nome": "git add arquivo · git add .",
+      "faz": "prepara um arquivo · prepara tudo daqui"
+    },
+    {
+      "nome": "git commit -m \"mensagem\"",
+      "faz": "tira a foto do que está preparado"
+    },
+    {
+      "nome": "git log --oneline · git show HEAD~1 · git diff",
+      "faz": "o álbum · uma foto ampliada · o que mudou"
+    },
+    {
+      "nome": "git restore [--staged] · git revert HEAD",
+      "faz": "descarta a edição [tira do preparo] · desfaz um commit com outro"
+    },
+    {
+      "nome": "git switch -c nome · git switch main · git merge nome",
+      "faz": "cria e entra no branch · volta ao main · junta"
+    },
+    {
+      "nome": "git remote add origin endereço · git push -u origin main · git pull · git clone",
+      "faz": "liga ao GitHub · envia · traz · baixa tudo"
+    },
+    {
+      "nome": "echo \"texto\" > arquivo · cat · nano",
+      "faz": "escreve por cima · mostra · edita (Ctrl+O grava, Ctrl+X sai)"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "O projeto da fase: os seus programas num repositório de verdade, no GitHub.",
+    "passos": [
+      "Instale o Git (git-scm.com) e confira com `git --version`. Configure: `git config --global user.name \"Seu Nome\"` e `git config --global user.email \"voce@exemplo.com\"`.",
+      "Crie a pasta `projeto-da-fase`, copie para ela a calculadora, o organizador e a Mini-Masmorra, e escreva um `README.md` dizendo o que cada um faz e como rodar.",
+      "Antes do primeiro commit, crie o `.gitignore` com `.env`, `__pycache__/` e `*.log`. Depois: `git init`, `git add .`, `git diff --staged` para conferir e `git commit -m \"Primeira versão do projeto da fase\"`.",
+      "Crie uma conta no GitHub e um repositório novo vazio chamado `projeto-da-fase`. Copie o endereço e rode `git remote add origin <endereço>` e `git push -u origin main`.",
+      "Para enviar, o GitHub pede um token de acesso pessoal (Configurações → Developer settings) ou uma chave SSH: nunca cole o token no código nem no README.",
+      "Abra a página do repositório, confira o README e mande o link para quem quiser ver o seu trabalho."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "lt-primeira-foto",
+      "aulas": [
+        "git-init-add-commit"
+      ],
+      "grupo": "Primeiras fotos",
+      "titulo": "A primeira foto",
+      "enunciado": "A pasta **calculadora** já tem o **calc.py**, mas ainda sem histórico. Entre nela, crie o repositório e guarde a primeira versão num commit.",
+      "atalhos": [
+        "ls",
+        "git status"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/calculadora/calc.py": "def soma(a, b):\n    return a - b\n",
+          "/home/bia/notas.txt": "comprar pão\n"
+        }
+      },
+      "repo": "/home/bia/calculadora",
+      "objetivos": [
+        {
+          "texto": "Repositório criado na pasta calculadora",
+          "tipo": "repo",
+          "caminho": "/home/bia/calculadora"
+        },
+        {
+          "texto": "calc.py guardado num commit",
+          "tipo": "noCommit",
+          "caminho": "/home/bia/calculadora",
+          "arquivo": "calc.py"
+        },
+        {
+          "texto": "Um commit no histórico",
+          "tipo": "commits",
+          "caminho": "/home/bia/calculadora",
+          "valor": 1
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "cd calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\""
+        ]
+      },
+      "metas": {
+        "comandos": 5
+      },
+      "dicas": [
+        "Primeiro cd calculadora; o git init age na pasta em que você está.",
+        "Depois do init: git add calc.py prepara, git commit -m \"mensagem\" guarda.",
+        "cd calculadora, git init, git add calc.py, git commit -m \"Cria a calculadora\"."
+      ],
+      "sucesso": "Primeira foto no álbum. A pasta .git nasceu (veja com ls -a)."
+    },
+    {
+      "id": "lt-escolher",
+      "aulas": [
+        "git-init-add-commit"
+      ],
+      "grupo": "Primeiras fotos",
+      "titulo": "Só o que está pronto",
+      "enunciado": "Você corrigiu a soma no **calc.py** e começou umas anotações em **notas.txt**, que ainda não estão prontas. Guarde num commit **só** a correção.",
+      "atalhos": [
+        "git status",
+        "git diff"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/notas.txt",
+            "texto": "ideias para o menu\n"
+          },
+          "git add notas.txt",
+          "git commit -m \"Começa as notas\"",
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a + b\n"
+          },
+          {
+            "arquivo": "/home/bia/calculadora/notas.txt",
+            "texto": "ideias para o menu\n- opção de sair (pela metade\n"
+          }
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "A correção da soma num commit novo",
+          "tipo": "noCommit",
+          "arquivo": "calc.py",
+          "valor": "a + b"
+        },
+        {
+          "texto": "notas.txt continua modificado, fora do commit",
+          "tipo": "modificado",
+          "arquivo": "notas.txt"
+        },
+        {
+          "texto": "Três commits no histórico",
+          "tipo": "commits",
+          "valor": 3
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git add calc.py",
+          "git commit -m \"Corrige a soma\""
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "O git status mostra os dois arquivos modificados. Qual deles está pronto?",
+        "git add com o nome de um arquivo prepara só ele; o git add . levaria os dois.",
+        "git add calc.py e git commit -m \"Corrige a soma\"."
+      ],
+      "sucesso": "Só sobe ao palco quem vai aparecer na foto."
+    },
+    {
+      "id": "lt-ignorar",
+      "aulas": [
+        "git-init-add-commit"
+      ],
+      "grupo": "Primeiras fotos",
+      "titulo": "Senha não sobe ao palco",
+      "enunciado": "Apareceram o **menu.py** (pronto), o **.env** com a senha do banco e o **erros.log**. Crie um **.gitignore** que deixe de fora o .env e todos os .log e faça um commit com o menu e o .gitignore.",
+      "atalhos": [
+        "git status",
+        "cat .gitignore"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/menu.py",
+            "texto": "print(\"1 - Somar\")\n"
+          },
+          {
+            "arquivo": "/home/bia/calculadora/.env",
+            "texto": "SENHA_BANCO=troque-me\n"
+          },
+          {
+            "arquivo": "/home/bia/calculadora/erros.log",
+            "texto": "erro às 08:10\n"
+          }
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": ".gitignore com o .env e os *.log",
+          "tipo": "contem",
+          "caminho": "/home/bia/calculadora/.gitignore",
+          "valor": ".env"
+        },
+        {
+          "texto": "menu.py e .gitignore no commit",
+          "tipo": "noCommit",
+          "arquivo": "menu.py"
+        },
+        {
+          "texto": ".gitignore também no commit",
+          "tipo": "noCommit",
+          "arquivo": ".gitignore",
+          "valor": "*.log"
+        },
+        {
+          "texto": ".env fora do Git",
+          "tipo": "naoRastreado",
+          "arquivo": ".env"
+        },
+        {
+          "texto": "Painel limpo (git status sem pendências)",
+          "tipo": "limpo"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "echo \".env\" > .gitignore",
+          "echo \"*.log\" >> .gitignore",
+          "git add .",
+          "git commit -m \"Adiciona o menu e o .gitignore\""
+        ]
+      },
+      "metas": {
+        "comandos": 5
+      },
+      "dicas": [
+        "Um padrão por linha: echo \".env\" > .gitignore cria o arquivo; >> acrescenta outra linha.",
+        "Com o .gitignore pronto, o git status para de mostrar o .env e o erros.log; aí o git add . é seguro.",
+        "echo \".env\" > .gitignore, echo \"*.log\" >> .gitignore, git add ., git commit -m \"Adiciona o menu e o .gitignore\"."
+      ],
+      "sucesso": "O código vai; o segredo fica."
+    },
+    {
+      "id": "lt-album",
+      "aulas": [
+        "git-historico-desfazer"
+      ],
+      "grupo": "Olhar e desfazer",
+      "titulo": "Quem mexeu no desconto?",
+      "enunciado": "O desconto da cantina mudou e ninguém lembra quem foi. Leia o histórico e responda: **quem fez o commit do desconto** e **quantos commits** o projeto tem?",
+      "atalhos": [
+        "git log --oneline",
+        "git log"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/desconto.py",
+            "texto": "DESCONTO = 5\n"
+          },
+          "git add desconto.py",
+          "git commit -m \"Cria o desconto\"",
+          "git config user.name \"Caio\"",
+          "git config user.email \"caio@exemplo.com\"",
+          {
+            "arquivo": "/home/bia/calculadora/desconto.py",
+            "texto": "DESCONTO = 10\n"
+          },
+          "git add desconto.py",
+          "git commit -m \"Aumenta o desconto para 10%\"",
+          "git config user.name \"Duda\"",
+          "git config user.email \"duda@exemplo.com\"",
+          {
+            "arquivo": "/home/bia/calculadora/menu.py",
+            "texto": "print(\"1 - Somar\")\n"
+          },
+          "git add menu.py",
+          "git commit -m \"Cria o menu\"",
+          "git config user.name \"Bia\"",
+          "git config user.email \"bia@exemplo.com\""
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Ler o histórico com git log",
+          "tipo": "usou",
+          "valor": "git log"
+        }
+      ],
+      "campos": [
+        {
+          "id": "autor",
+          "rotulo": "Quem aumentou o desconto para 10%?",
+          "opcoes": [
+            "Bia",
+            "Caio",
+            "Duda"
+          ],
+          "certo": "Caio",
+          "erro": "Confira a linha Author do commit \"Aumenta o desconto para 10%\" no git log."
+        },
+        {
+          "id": "total",
+          "rotulo": "Quantos commits o projeto tem?",
+          "opcoes": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "certo": "4",
+          "erro": "Conte os commits no git log --oneline: um por linha."
+        }
+      ],
+      "textoResposta": "Responder às duas perguntas",
+      "solucao": {
+        "comandos": [
+          "git log"
+        ],
+        "resposta": {
+          "autor": "Caio",
+          "total": "4"
+        }
+      },
+      "metas": {
+        "comandos": 2
+      },
+      "dicas": [
+        "git log mostra autor, data e mensagem de cada commit, do mais novo ao mais antigo.",
+        "git log --oneline mostra um commit por linha: fácil de contar.",
+        "O commit \"Aumenta o desconto para 10%\" é do Caio; são 4 commits."
+      ],
+      "sucesso": "O álbum conta quem, quando e por quê."
+    },
+    {
+      "id": "lt-diff",
+      "aulas": [
+        "git-historico-desfazer"
+      ],
+      "grupo": "Olhar e desfazer",
+      "titulo": "O que mudou mesmo?",
+      "enunciado": "Alguém editou o **calc.py** e saiu sem contar o quê. Descubra com **git diff** a linha nova e, se estiver certa, guarde num commit.",
+      "atalhos": [
+        "git status",
+        "git diff"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n\ndef dobro(x):\n    return x * 2\n"
+          }
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Olhar a diferença com git diff",
+          "tipo": "usou",
+          "valor": "git diff"
+        },
+        {
+          "texto": "A mudança guardada num commit",
+          "tipo": "noCommit",
+          "arquivo": "calc.py",
+          "valor": "dobro"
+        }
+      ],
+      "campos": [
+        {
+          "id": "linha",
+          "rotulo": "Qual função entrou no calc.py?",
+          "opcoes": [
+            "soma",
+            "dobro",
+            "metade",
+            "triplo"
+          ],
+          "certo": "dobro",
+          "erro": "No git diff, as linhas com + são as que entraram."
+        }
+      ],
+      "textoResposta": "Dizer qual função entrou",
+      "solucao": {
+        "comandos": [
+          "git diff",
+          "git add calc.py",
+          "git commit -m \"Adiciona a função dobro\""
+        ],
+        "resposta": {
+          "linha": "dobro"
+        }
+      },
+      "metas": {
+        "comandos": 4
+      },
+      "dicas": [
+        "git diff mostra o que mudou e ainda não foi preparado: + entrou, - saiu.",
+        "Depois de ver, prepare com git add e guarde com git commit.",
+        "git diff, git add calc.py, git commit -m \"Adiciona a função dobro\"."
+      ],
+      "sucesso": "Menos saiu, mais entrou."
+    },
+    {
+      "id": "lt-desfazer",
+      "aulas": [
+        "git-historico-desfazer"
+      ],
+      "grupo": "Olhar e desfazer",
+      "titulo": "Dois sustos, duas voltas",
+      "enunciado": "Dois sustos: o **calc.py** foi estragado por uma edição sem querer, e o **senha.txt** foi preparado por engano. Volte o calc.py à versão do último commit e tire o senha.txt do preparo **sem apagar o arquivo**.",
+      "atalhos": [
+        "git status",
+        "git diff"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return ???\n"
+          },
+          {
+            "arquivo": "/home/bia/calculadora/senha.txt",
+            "texto": "wifi: (anotada aqui)\n"
+          },
+          "git add senha.txt"
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "calc.py de volta à versão do commit",
+          "tipo": "conteudo",
+          "caminho": "/home/bia/calculadora/calc.py",
+          "valor": "def soma(a, b):\n    return a - b\n"
+        },
+        {
+          "texto": "Nada preparado",
+          "tipo": "semPreparo"
+        },
+        {
+          "texto": "senha.txt continua na pasta",
+          "tipo": "existe",
+          "caminho": "/home/bia/calculadora/senha.txt"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git restore calc.py",
+          "git restore --staged senha.txt"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "git status mostra os dois: calc.py modificado e senha.txt em \"to be committed\".",
+        "git restore arquivo descarta a edição; git restore --staged arquivo só tira do preparo.",
+        "git restore calc.py e git restore --staged senha.txt."
+      ],
+      "sucesso": "Cada erro tem a sua volta. (E o senha.txt merece um .gitignore.)"
+    },
+    {
+      "id": "lt-revert",
+      "aulas": [
+        "git-historico-desfazer"
+      ],
+      "grupo": "Olhar e desfazer",
+      "titulo": "O curativo por cima",
+      "enunciado": "O último commit mudou o desconto para **50%** por engano, e a equipe já tem esse histórico. Desfaça esse commit **sem apagar o passado**.",
+      "atalhos": [
+        "git log --oneline",
+        "git show"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/desconto.py",
+            "texto": "DESCONTO = 10\n"
+          },
+          "git add desconto.py",
+          "git commit -m \"Cria o desconto\"",
+          {
+            "arquivo": "/home/bia/calculadora/desconto.py",
+            "texto": "DESCONTO = 50\n"
+          },
+          "git add desconto.py",
+          "git commit -m \"Muda o desconto para 50%\""
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "desconto.py de volta a 10%",
+          "tipo": "conteudo",
+          "caminho": "/home/bia/calculadora/desconto.py",
+          "valor": "DESCONTO = 10\n"
+        },
+        {
+          "texto": "Um commit novo de Revert no topo",
+          "tipo": "mensagem",
+          "valor": "Revert"
+        },
+        {
+          "texto": "O commit do engano continua no histórico",
+          "tipo": "contemMensagem",
+          "valor": "Muda o desconto para 50%"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git log --oneline",
+          "git revert HEAD"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "O commit do engano é o último, o HEAD. git show HEAD mostra o que ele mudou.",
+        "git revert cria um commit novo com a mudança ao contrário.",
+        "git revert HEAD."
+      ],
+      "sucesso": "O machucado e o curativo ficam na história."
+    },
+    {
+      "id": "lt-galho",
+      "aulas": [
+        "git-branch-merge"
+      ],
+      "grupo": "Branches",
+      "titulo": "Um galho para a ideia",
+      "enunciado": "Quer testar um **menu** sem arriscar o main. Crie o branch **menu**, entre nele e guarde ali um **menu.py** novo. O main não pode ganhar o menu ainda.",
+      "atalhos": [
+        "git branch",
+        "git status"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\""
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Branch menu criado",
+          "tipo": "branch",
+          "valor": "menu"
+        },
+        {
+          "texto": "Você está no menu",
+          "tipo": "atual",
+          "valor": "menu"
+        },
+        {
+          "texto": "Um commit com o menu.py no branch menu",
+          "tipo": "noCommit",
+          "arquivo": "menu.py"
+        },
+        {
+          "texto": "O main continua sem o menu",
+          "tipo": "foraDaBranch",
+          "branch": "main",
+          "valor": "menu"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git switch -c menu",
+          "echo \"print('1 - Somar')\" > menu.py",
+          "git add menu.py",
+          "git commit -m \"Cria o menu\""
+        ]
+      },
+      "metas": {
+        "comandos": 5
+      },
+      "dicas": [
+        "git switch -c menu cria o branch e já entra nele (veja o nome no prompt).",
+        "Crie o arquivo com echo \"texto\" > menu.py, depois add e commit.",
+        "git switch -c menu, echo \"print('1 - Somar')\" > menu.py, git add menu.py, git commit -m \"Cria o menu\"."
+      ],
+      "sucesso": "Cresce separado e pode voltar ao tronco."
+    },
+    {
+      "id": "lt-avanco",
+      "aulas": [
+        "git-branch-merge"
+      ],
+      "grupo": "Branches",
+      "titulo": "Estrada livre",
+      "enunciado": "O branch **menu** está pronto e testado, e o main não mudou desde então. Junte o menu no **main** e apague o branch da tarefa.",
+      "atalhos": [
+        "git branch",
+        "git log --oneline --graph --all"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          "git switch -c menu",
+          {
+            "arquivo": "/home/bia/calculadora/menu.py",
+            "texto": "print('1 - Somar')\n"
+          },
+          "git add menu.py",
+          "git commit -m \"Cria o menu\"",
+          {
+            "arquivo": "/home/bia/calculadora/menu.py",
+            "texto": "print('1 - Somar')\nprint('2 - Sair')\n"
+          },
+          "git add menu.py",
+          "git commit -m \"Adiciona a opção sair\""
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Estar no main",
+          "tipo": "atual",
+          "valor": "main"
+        },
+        {
+          "texto": "O main com os commits do menu",
+          "tipo": "contemMensagem",
+          "valor": "Adiciona a opção sair"
+        },
+        {
+          "texto": "Branch menu apagado",
+          "tipo": "semBranch",
+          "valor": "menu"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git switch main",
+          "git merge menu",
+          "git branch -d menu"
+        ]
+      },
+      "metas": {
+        "comandos": 4
+      },
+      "dicas": [
+        "Quem recebe é quem está: primeiro git switch main.",
+        "Como o main ficou parado, o git merge menu é um avanço rápido (Fast-forward).",
+        "git switch main, git merge menu, git branch -d menu."
+      ],
+      "sucesso": "Galho que voltou ao tronco pode ser podado."
+    },
+    {
+      "id": "lt-juncao",
+      "aulas": [
+        "git-branch-merge"
+      ],
+      "grupo": "Branches",
+      "titulo": "Duas pistas viram uma",
+      "enunciado": "Enquanto o branch **cores** mudava o visual, o main ganhou uma correção. Junte o **cores** no main: desta vez o Git cria um commit de junção.",
+      "atalhos": [
+        "git log --oneline --graph --all",
+        "git branch"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          "git switch -c cores",
+          {
+            "arquivo": "/home/bia/calculadora/cores.py",
+            "texto": "COR = 'turquesa'\n"
+          },
+          "git add cores.py",
+          "git commit -m \"Cria as cores\"",
+          "git switch main",
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a + b\n"
+          },
+          "git add calc.py",
+          "git commit -m \"Corrige a soma\""
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Um commit de junção (dois pais) no main",
+          "tipo": "juncao"
+        },
+        {
+          "texto": "O main com as cores",
+          "tipo": "noCommit",
+          "arquivo": "cores.py"
+        },
+        {
+          "texto": "E com a correção da soma",
+          "tipo": "noCommit",
+          "arquivo": "calc.py",
+          "valor": "a + b"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git merge cores"
+        ]
+      },
+      "metas": {
+        "comandos": 2
+      },
+      "dicas": [
+        "Você já está no main (veja o prompt). Os dois branches andaram: é um merge de verdade.",
+        "Arquivos diferentes não dão conflito: o Git junta sozinho.",
+        "git merge cores."
+      ],
+      "sucesso": "Duas pistas que viram uma: o commit de junção tem dois pais."
+    },
+    {
+      "id": "lt-conflito",
+      "aulas": [
+        "git-branch-merge"
+      ],
+      "grupo": "Branches",
+      "titulo": "Duas mãos na mesma linha",
+      "enunciado": "O main pôs o preço em **10** e o branch **promocao** pôs em **12**, na mesma linha. Junte a promoção, resolva o conflito deixando **preco = 12** (sem as marcas) e feche o merge.",
+      "atalhos": [
+        "git status",
+        "cat preco.py"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/preco.py",
+            "texto": "preco = 8\n"
+          },
+          "git add preco.py",
+          "git commit -m \"Cria o preço\"",
+          "git switch -c promocao",
+          {
+            "arquivo": "/home/bia/calculadora/preco.py",
+            "texto": "preco = 12\n"
+          },
+          "git add preco.py",
+          "git commit -m \"Preço da promoção\"",
+          "git switch main",
+          {
+            "arquivo": "/home/bia/calculadora/preco.py",
+            "texto": "preco = 10\n"
+          },
+          "git add preco.py",
+          "git commit -m \"Reajusta o preço\""
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "preco.py só com preco = 12",
+          "tipo": "conteudo",
+          "caminho": "/home/bia/calculadora/preco.py",
+          "valor": "preco = 12\n"
+        },
+        {
+          "texto": "Sem marcas de conflito",
+          "tipo": "semMarcas",
+          "arquivo": "preco.py"
+        },
+        {
+          "texto": "Merge fechado com um commit de junção",
+          "tipo": "juncao"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git merge promocao",
+          "nano preco.py",
+          {
+            "editar": "/home/bia/calculadora/preco.py",
+            "texto": "preco = 12\n"
+          },
+          "git add preco.py",
+          "git commit -m \"Junta a promoção\""
+        ]
+      },
+      "metas": {
+        "comandos": 6
+      },
+      "dicas": [
+        "Depois do git merge promocao, cat preco.py mostra as marcas: em cima é o main (HEAD), embaixo é a promoção.",
+        "nano preco.py: deixe só a linha preco = 12, grave (Ctrl+O) e saia (Ctrl+X).",
+        "git merge promocao, nano preco.py (só preco = 12), git add preco.py, git commit -m \"Junta a promoção\"."
+      ],
+      "sucesso": "Quem decide o texto final é você."
+    },
+    {
+      "id": "lt-abortar",
+      "aulas": [
+        "git-branch-merge"
+      ],
+      "grupo": "Branches",
+      "titulo": "Melhor voltar atrás",
+      "enunciado": "Um merge deu conflito no meio de uma tarde corrida. A equipe prefere resolver amanhã: **cancele o merge** e deixe o main como estava.",
+      "atalhos": [
+        "git status",
+        "cat preco.py"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/preco.py",
+            "texto": "preco = 8\n"
+          },
+          "git add preco.py",
+          "git commit -m \"Cria o preço\"",
+          "git switch -c promocao",
+          {
+            "arquivo": "/home/bia/calculadora/preco.py",
+            "texto": "preco = 12\n"
+          },
+          "git add preco.py",
+          "git commit -m \"Preço da promoção\"",
+          "git switch main",
+          {
+            "arquivo": "/home/bia/calculadora/preco.py",
+            "texto": "preco = 10\n"
+          },
+          "git add preco.py",
+          "git commit -m \"Reajusta o preço\"",
+          "git merge promocao"
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Nenhum merge pela metade",
+          "tipo": "semConflito"
+        },
+        {
+          "texto": "preco.py como estava no main",
+          "tipo": "conteudo",
+          "caminho": "/home/bia/calculadora/preco.py",
+          "valor": "preco = 10\n"
+        },
+        {
+          "texto": "Painel limpo",
+          "tipo": "limpo"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git merge --abort"
+        ]
+      },
+      "metas": {
+        "comandos": 2
+      },
+      "dicas": [
+        "O git status avisa: You have unmerged paths, e sugere um comando para desistir.",
+        "No meio do merge, dá para voltar atrás com uma opção do próprio merge.",
+        "git merge --abort."
+      ],
+      "sucesso": "No meio da briga, dá para voltar atrás."
+    },
+    {
+      "id": "lt-publicar",
+      "aulas": [
+        "git-projeto-da-fase"
+      ],
+      "grupo": "GitHub",
+      "titulo": "No ar!",
+      "enunciado": "Você já criou no GitHub o repositório vazio **https://github.com/bia/projeto-da-fase.git**. Ligue o seu projeto a ele com o nome **origin** e envie o main.",
+      "atalhos": [
+        "git remote -v",
+        "git status"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          {
+            "arquivo": "/home/bia/calculadora/README.md",
+            "texto": "# Calculadora\nRode com: python calc.py\n"
+          },
+          "git add README.md",
+          "git commit -m \"Adiciona o README\""
+        ],
+        "servidores": [
+          "https://github.com/bia/projeto-da-fase.git"
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Remoto origin ligado ao endereço",
+          "tipo": "remoto",
+          "valor": "https://github.com/bia/projeto-da-fase.git"
+        },
+        {
+          "texto": "O main enviado ao GitHub",
+          "tipo": "enviado",
+          "valor": "main"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git remote add origin https://github.com/bia/projeto-da-fase.git",
+          "git push -u origin main"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "Primeiro liga: git remote add origin seguido do endereço.",
+        "Na primeira vez, o push leva -u para ligar o main ao do GitHub.",
+        "git remote add origin https://github.com/bia/projeto-da-fase.git e git push -u origin main."
+      ],
+      "sucesso": "Está no ar: o link agora fala por você."
+    },
+    {
+      "id": "lt-colega",
+      "aulas": [
+        "git-projeto-da-fase"
+      ],
+      "grupo": "GitHub",
+      "titulo": "O colega chegou antes",
+      "enunciado": "Você fez um commit com a função **dobro**, mas o Caio enviou antes uma melhoria no **README**. Envie o seu trabalho sem perder o dele.",
+      "atalhos": [
+        "git status",
+        "git log --oneline --graph --all"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          "git remote add origin https://github.com/bia/projeto-da-fase.git",
+          "git push -u origin main",
+          {
+            "colega": {
+              "url": "https://github.com/bia/projeto-da-fase.git",
+              "msg": "Melhora o README",
+              "autor": "Caio",
+              "arquivos": {
+                "README.md": "# Calculadora\nFeita pela turma.\n"
+              }
+            }
+          },
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\ndef dobro(x):\n    return x * 2\n"
+          },
+          "git add calc.py",
+          "git commit -m \"Adiciona a função dobro\""
+        ],
+        "servidores": [
+          "https://github.com/bia/projeto-da-fase.git"
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "O README do Caio no seu main",
+          "tipo": "contemMensagem",
+          "valor": "Melhora o README"
+        },
+        {
+          "texto": "O seu commit enviado ao GitHub",
+          "tipo": "enviado",
+          "valor": "main"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git pull",
+          "git push"
+        ]
+      },
+      "metas": {
+        "comandos": 4
+      },
+      "dicas": [
+        "Tente o git push: ele é recusado porque o GitHub tem um commit que você não tem.",
+        "git pull traz o commit do Caio e junta com o seu.",
+        "git pull e depois git push."
+      ],
+      "sucesso": "À frente, empurre; atrás, puxe."
+    },
+    {
+      "id": "lt-clonar",
+      "aulas": [
+        "git-projeto-da-fase"
+      ],
+      "grupo": "GitHub",
+      "titulo": "Baixar a Mini-Masmorra",
+      "enunciado": "O código-base da Mini-Masmorra está em **https://github.com/diver/mini-masmorra.git**. Baixe o repositório inteiro, entre na pasta dele e leia o README.",
+      "atalhos": [
+        "ls",
+        "git log --oneline"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia",
+        "servidores": [
+          "https://github.com/diver/mini-masmorra.git"
+        ],
+        "preparo": [
+          {
+            "colega": {
+              "url": "https://github.com/diver/mini-masmorra.git",
+              "msg": "Cria a masmorra",
+              "autor": "Equipe Diver",
+              "arquivos": {
+                "masmorra.py": "salas = {\"entrada\": \"Uma porta range.\"}\n",
+                "README.md": "# Mini-Masmorra\nRode com: python masmorra.py\n"
+              }
+            }
+          },
+          {
+            "colega": {
+              "url": "https://github.com/diver/mini-masmorra.git",
+              "msg": "Adiciona o inventário",
+              "autor": "Equipe Diver",
+              "arquivos": {
+                "masmorra.py": "salas = {\"entrada\": \"Uma porta range.\"}\ninventario = []\n"
+              }
+            }
+          }
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Repositório clonado em mini-masmorra",
+          "tipo": "repo",
+          "caminho": "/home/bia/mini-masmorra"
+        },
+        {
+          "texto": "Estar na pasta mini-masmorra",
+          "tipo": "cwd",
+          "valor": "/home/bia/mini-masmorra"
+        },
+        {
+          "texto": "Ler o README",
+          "tipo": "usou",
+          "valor": "cat"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git clone https://github.com/diver/mini-masmorra.git",
+          "cd mini-masmorra",
+          "cat README.md"
+        ]
+      },
+      "metas": {
+        "comandos": 4
+      },
+      "dicas": [
+        "git clone seguido do endereço baixa tudo, com o histórico.",
+        "A pasta criada tem o nome do repositório, sem o .git do fim.",
+        "git clone https://github.com/diver/mini-masmorra.git, cd mini-masmorra, cat README.md."
+      ],
+      "sucesso": "Clone é a cópia com o álbum inteiro (confira com git log)."
+    },
+    {
+      "id": "lt-ciclo",
+      "aulas": [
+        "git-revisao-fase"
+      ],
+      "grupo": "O ciclo completo",
+      "titulo": "Do galho ao GitHub",
+      "enunciado": "O ciclo inteiro: abra o branch **salvar**, crie nele o **salvar.py**, guarde num commit, junte no **main** e envie o main ao GitHub.",
+      "atalhos": [
+        "git status",
+        "git log --oneline --graph --all"
+      ],
+      "inicio": {
+        "casa": "/home/bia",
+        "cwd": "/home/bia/calculadora",
+        "preparo": [
+          {
+            "arquivo": "/home/bia/calculadora/calc.py",
+            "texto": "def soma(a, b):\n    return a - b\n"
+          },
+          "cd /home/bia/calculadora",
+          "git init",
+          "git add calc.py",
+          "git commit -m \"Cria a calculadora\"",
+          "git remote add origin https://github.com/bia/projeto-da-fase.git",
+          "git push -u origin main"
+        ],
+        "servidores": [
+          "https://github.com/bia/projeto-da-fase.git"
+        ]
+      },
+      "objetivos": [
+        {
+          "texto": "Um commit com o salvar.py no main",
+          "tipo": "noCommit",
+          "arquivo": "salvar.py"
+        },
+        {
+          "texto": "Estar no main",
+          "tipo": "atual",
+          "valor": "main"
+        },
+        {
+          "texto": "O main enviado ao GitHub",
+          "tipo": "enviado",
+          "valor": "main"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "git switch -c salvar",
+          "echo \"import json\" > salvar.py",
+          "git add salvar.py",
+          "git commit -m \"Cria o salvar\"",
+          "git switch main",
+          "git merge salvar",
+          "git push"
+        ]
+      },
+      "metas": {
+        "comandos": 8
+      },
+      "dicas": [
+        "Galho: git switch -c salvar. Arquivo: echo \"import json\" > salvar.py.",
+        "Foto: git add e git commit. Depois volte ao main e junte com git merge salvar.",
+        "git switch -c salvar, echo \"import json\" > salvar.py, git add salvar.py, git commit -m \"Cria o salvar\", git switch main, git merge salvar, git push."
+      ],
+      "sucesso": "Em dia, galho, foto, junção e envio: o ciclo do Git inteiro."
+    }
+  ]
+}
