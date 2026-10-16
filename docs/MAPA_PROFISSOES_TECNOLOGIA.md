@@ -17,7 +17,7 @@ O mesmo formato serve depois para Saúde (medicina tem dezenas de especialidades
 | Quanto paga cada área | barras com a média de contratação (Caged) da ocupação mais próxima de cada área | Portal Salário / Novo Caged, por CBO |
 | As dez áreas | cartões com apelido ("Quem constrói", "Quem protege"), resumo, média e um gosto típico | — |
 | Que curso fazer | tabela com técnico, ADS, CC, SI, Eng. de Software e Eng. de Computação, durações e horas mínimas | CNE/CES 2/2007 e 5/2016, catálogos do MEC |
-| Jogo | "Que área da tecnologia é a sua?", 12 situações | — |
+| Jogo | "Que área da tecnologia é a sua praia?", 12 situações | — |
 | Fontes | 18 fontes numeradas, citadas ao longo da página | — |
 
 ## Cada área (`#tecnologia-<id>`)

@@ -6,6 +6,7 @@
 ---
 
 ## 2026-10-16 · Mapa das Profissões: Panorama da Tecnologia (kit v1.2)
+- **Depois da publicação (pedido do usuário, "para ficar descolado"):** o jogo passou a se chamar **"Que área da tecnologia é a sua praia?"** (`jogo.titulo` no `tecnologia.json` e nas menções nos docs e no Admin).
 - **Pedido do usuário:** "Vamos subir esse mapa de profissão de tecnologia" (zip `diver-mapa-profissoes-v3`). Plano aprovado com "Sim pra tudo, manda bala", incluindo a ponte com o Explora Tech.
 - **O que entrou:**
   - `data/profissoes/tecnologia.json`: 10 áreas, 18 fontes e 12 situações, como veio no kit;
