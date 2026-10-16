@@ -30,7 +30,8 @@
 | `data/profissoes/trends/trends.json` | Buscas por estado e sazonalidade (Google Trends, 7 cursos) | `data/profissoes/trends/trends.json` |
 | `data/profissoes/trends/*.csv` | Dados brutos do Trends, com LEIA-ME | `data/profissoes/trends/` (ou `docs/`), para reprocessar no futuro |
 | `scripts/conferir-ficha.mjs` | Confere estrutura, fontes, cenas, mitos, prazo das fontes de salário | `scripts/conferir-ficha.mjs` |
-| `js/profissoes-tecnologia.js` | Panorama da Tecnologia, páginas das dez áreas e o jogo de afinidade (extensão) | `js/profissoes-tecnologia.js` (depois de `profissoes.js`, no mesmo pacote) |
+| `js/profissoes-panorama.js` | Panoramas de área (Tecnologia e Medicina): panorama, páginas das áreas e o jogo de afinidade (extensão; até 16/10/2026 se chamava `profissoes-tecnologia.js`) | `js/profissoes-panorama.js` (depois de `profissoes.js`, no mesmo pacote) |
+| `data/profissoes/panorama-medicina.json` | Panorama da Medicina: números, doze especialidades, formação, jogo e 15 fontes (no kit v4 chamava `medicina.json`, nome que já era da ficha) | `data/profissoes/panorama-medicina.json` |
 | `data/profissoes/tecnologia.json` | Panorama: números, dez áreas, formação, jogo e 18 fontes | `data/profissoes/tecnologia.json` |
 | `scripts/conferir-panorama.mjs` | Confere um panorama (áreas, jogo, fontes, prazo de salário) | `scripts/conferir-panorama.mjs` |
 | `.claude/skills/criar-ficha-profissao/SKILL.md` | Skill para escrever as próximas fichas | `.claude/skills/criar-ficha-profissao/` |

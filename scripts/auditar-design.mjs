@@ -95,7 +95,7 @@ async function auditarNoNavegador() {
     'simulado', 'revisao', 'jogos', 'prova', 'upload-prova', 'tarefas', 'calendario', 'cronograma', 'diagnostica', 'mapa-partida', 'foco',
     'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao',
     'profissoes', 'profissoes-cartas', 'profissoes-metodo', 'profissao-enfermagem', 'profissao-enfermagem-dia', 'profissao-enfermagem-mitos', 'profissao-pedagogia', 'profissao-sistemas', 'profissao-medicina', 'profissao-direito-dia', 'profissoes-comparar',
-    'profissoes-tecnologia', 'tecnologia-seguranca', 'profissoes-tecnologia-jogo', 'login'].filter((t) => !soTelas || soTelas.includes(t));
+    'profissoes-tecnologia', 'tecnologia-seguranca', 'profissoes-tecnologia-jogo', 'profissoes-medicina', 'medicina-psiquiatria', 'profissoes-medicina-jogo', 'login'].filter((t) => !soTelas || soTelas.includes(t));
   const vistos = {};
   ['inicio', 'sala', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'trilha', 'quiz', 'artigo', 'resumo', 'simulado', 'revisao', 'jogos', 'tarefas', 'quadros',
     'calendario', 'cronograma', 'foco', 'perfil', 'estatisticas', 'descompressao', 'diagnostica', 'mapa-partida', 'prova', 'pdfs', 'cursos', 'upload-prova', 'profissoes'].forEach((k) => { vistos[k] = 99; });

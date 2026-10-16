@@ -146,7 +146,7 @@ const Tutorial = (() => {
       // Panorama da Tecnologia (2026-10-16): enquanto for rascunho, o aluno vê "Em breve"; ao publicar, suba "profissoes" em VERSOES
       // Fase 2 (2026-10-16): características, comparador e mais "Um dia como". Ao publicar as fichas, suba "profissoes" em VERSOES (uma vez só, junto com o Panorama)
       { desenho: 'lupa', titulo: 'Comparar duas profissões', texto: 'Em dúvida entre duas? "Comparar profissões" põe as duas lado a lado: duração, formato, salário, registro, matérias que pesam para entrar, caminhos e o DNA de cada uma.' },
-      { desenho: 'mapa', titulo: 'Panoramas de área', texto: 'Algumas áreas são grandes demais para uma ficha só e ganham um panorama, como o da Tecnologia: dez áreas, o dia típico de cada uma e um jogo para descobrir com qual você combina. Com o selo "Em breve", o panorama ainda está em revisão.' },
+      { desenho: 'mapa', titulo: 'Panoramas de área', texto: 'Algumas áreas são grandes demais para uma ficha só e ganham um panorama: o da Tecnologia, com dez áreas, e o da Medicina, com doze especialidades. Cada um traz o dia típico de cada área e um jogo para descobrir com qual você combina. Com o selo "Em breve", o panorama ainda está em revisão.' },
     ],
     perfil: [
       { alvo: '.perfil-topo__info', desenho: 'trofeu', titulo: 'Seu nível geral', texto: 'O XP de todos os cursos somado. Cada mergulho, jogo e revisão empurra a barra.' },

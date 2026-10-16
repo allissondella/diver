@@ -177,7 +177,7 @@
      Roteador
      ========================================================= */
   const limpezas = []; /* listeners de teclado da tela anterior */
-  const extensoes = []; /* módulos extras (ex.: js/profissoes-tecnologia.js) registram { aceita(rota), montar(raiz, rota, ix) } */
+  const extensoes = []; /* módulos extras (ex.: js/profissoes-panorama.js) registram { aceita(rota, ix), montar(raiz, rota, ix) } */
   async function montar(raiz, rota) {
     carregarEstado();
     fecharFonte();
@@ -191,7 +191,7 @@
       if (r === 'profissoes-cartas') return telaCartas(raiz, ix);
       if (r === 'profissoes-metodo') return telaMetodo(raiz, ix);
       if (r === 'profissoes-comparar' || r.startsWith('profissoes-comparar-')) return await telaComparar(raiz, ix, r.slice('profissoes-comparar-'.length));
-      for (const ext of extensoes) if (ext.aceita(r)) return await ext.montar(raiz, r, ix);
+      for (const ext of extensoes) if (ext.aceita(r, ix)) return await ext.montar(raiz, r, ix);
       let m = r.match(/^profissao-(.+)-(dia|mitos)$/);
       if (m) { const f = await ficha(m[1]); if (!f) return naoEncontrada(raiz, m[1], ix); return m[2] === 'dia' ? telaDia(raiz, f, ix) : telaMitos(raiz, f, ix); }
       m = r.match(/^profissao-(.+)$/);
@@ -200,6 +200,13 @@
     } catch (e) {
       raiz.appendChild(el('div', { class: 'prof-vazio' }, el('p', { text: 'Não deu para carregar o Mapa das Profissões agora. Tente de novo em instantes.' }), el('p', { class: 'prof-micro', text: String(e.message || e) })));
     }
+  }
+  /* A ficha que tem um panorama com o mesmo id (Medicina) leva até ele: as especialidades ficam lá */
+  function linkPanorama(f, ix) {
+    const pn = (ix.panoramas || []).find(x => x.id === f.id);
+    const area = pn && ix.areas.find(a => a.panorama && a.panorama.rota === pn.rota);
+    if (!pn || !area || !temPanorama(pn)) return null;
+    return el('a', { href: '#' + pn.rota, class: 'prof-caixa prof-vizinha', style: { marginTop: '14px' } }, el('h3', null, area.panorama.titulo, icone('direita')), el('p', { text: area.panorama.frase }));
   }
   function naoEncontrada(raiz, id, ix) {
     const p = ix && ix.profissoes.find(x => x.id === id);
@@ -487,7 +494,7 @@
       blocoSalario(f, S.quanto_ganha, { aoRevelar: revelarSalario, segredo: sg => segredos.push(sg), semChute: () => revelarSalario(2) })));
 
     // 6. Caminhos
-    if (S.caminhos) raiz.appendChild(secao('caminhos', 'Outros caminhos', null, el('div', { class: 'prof-cards' }, S.caminhos.itens.map((c, i) => el('div', { class: 'prof-caixa', style: { '--i': i } }, el('h3', { text: c.titulo }), el('p', null, c.texto, citar(f, c.fontes)))))));
+    if (S.caminhos) raiz.appendChild(secao('caminhos', 'Outros caminhos', null, el('div', { class: 'prof-cards' }, S.caminhos.itens.map((c, i) => el('div', { class: 'prof-caixa', style: { '--i': i } }, el('h3', { text: c.titulo }), el('p', null, c.texto, citar(f, c.fontes))))), linkPanorama(f, ix)));
 
     // 7. DNA e carta: o gráfico se monta ao aparecer
     if (f.dna && IG()) raiz.appendChild(secao('dna', 'DNA da profissão', f.dna_calibrado ? 'Calibrado com profissionais da área.' : 'Estimativa inicial, a calibrar com profissionais da área.', blocoDna(f, ix)));
@@ -553,7 +560,7 @@
     raiz = raizSecoes;
   }
 
-  /* ---------- A história que se conta ao rolar: peças da ficha, usadas também pelos panoramas (js/profissoes-tecnologia.js) ---------- */
+  /* ---------- A história que se conta ao rolar: peças da ficha, usadas também pelos panoramas (js/profissoes-panorama.js) ---------- */
   /** Abertura em tela cheia (o título entra palavra por palavra e um convite chama para rolar) e o guia fixo vazio.
       o = { rotulo, cor, titulo, frase, rotuloNav }. Devolve { palco, barra, nav, corpo }: as seções vão no corpo. */
   function abrirHistoria(raiz, o) {
@@ -1159,7 +1166,7 @@
   window.Profissoes = {
     montar, desmontar, iniciar, ganchos, estado: () => estado, indice, ficha, BASE,
     registrarExtensao: ext => extensoes.push(ext),
-    /* Peças para as extensões (js/profissoes-tecnologia.js): as mesmas da ficha, para o desenho ficar igual */
+    /* Peças para as extensões (js/profissoes-panorama.js): as mesmas da ficha, para o desenho ficar igual */
     _util: { el, icone, aviso, botao, link, citar, prosa, brl, dataBR, normalizar, nomeArea, corArea, salvarEstado, lerJson, limpezas, IG, EIXOS,
       temFicha, temPanorama, pedir, semMovimento, palavras, contar, abrirHistoria, fecharHistoria, fontesGuardadas, abrirFonte, numeroFonte }
   };

@@ -1,8 +1,11 @@
-/* Mapa das Profissões · Panorama da Tecnologia (js/profissoes-tecnologia.js)
+/* Mapa das Profissões · Panoramas de área (js/profissoes-panorama.js)
    Extensão de js/profissoes.js: carrega depois dele (pacote "profissoes" em js/app.js) e se registra sozinha.
-   Rotas: #profissoes-tecnologia (panorama) · #tecnologia-<área> (uma das dez áreas) · #profissoes-tecnologia-jogo (jogo de afinidade).
+   Serve todos os panoramas de indice.json → panoramas[] (hoje: Tecnologia e Medicina). Para cada <id>:
+   rotas #profissoes-<id> (panorama) · #<id>-<área> (uma área) · #profissoes-<id>-jogo (jogo de afinidade);
+   eventos <id>_panorama, <id>_area_vista, <id>_jogo_inicio e <id>_jogo_concluido; recompensa do jogo <id>_jogo.
+   Os rótulos ("área" ou "especialidade", cor, títulos) vêm do JSON de cada panorama.
    Mesmo desenho da ficha (2026-10-16): abertura em tela cheia, partes que acendem ao rolar, guia com progresso,
-   salário escondido até o chute e fontes guardadas, abertas no toque. Os textos vêm de data/profissoes/tecnologia.json, sem mudança.
+   salário escondido até o chute e fontes guardadas, abertas no toque. Os textos vêm do JSON de cada panorama, sem mudança.
    Enquanto o panorama for rascunho (data/profissoes/indice.json, panoramas[].status), só a equipe vê; o aluno vê "Em breve". */
 (function () {
   'use strict';
@@ -10,44 +13,73 @@
   const { el, icone, botao, link, citar, brl, dataBR, salvarEstado, lerJson, limpezas, IG, EIXOS, temFicha, temPanorama, pedir,
     semMovimento, contar, abrirHistoria, fecharHistoria, fontesGuardadas, abrirFonte, numeroFonte, corArea } = P._util;
 
-  const ID = 'tecnologia';
-  /* Onde estudar no Diver (sala Tecnologia): o app abre o curso pelo gancho abrirCurso */
-  const CURSO_ENTRADA = 'explora-tech-fundamentos';
-  const CURSOS_DA_AREA = { seguranca: ['ciberseguranca-essencial', 'iso-27001-foundation'] };
-  const cursosDe = a => [CURSO_ENTRADA, ...(CURSOS_DA_AREA[a.id] || [])];
+  /* O panorama da tela atual: montar() define antes de desenhar (as telas são desenhadas uma de cada vez) */
+  let ID = 'tecnologia', T = null;
+  /* Onde estudar no Diver: o app abre o curso pelo gancho abrirCurso */
+  const PONTES = {
+    tecnologia: {
+      entrada: 'explora-tech-fundamentos', nomeEntrada: 'Explora Tech · Fundamentos', botao: 'Estudar tecnologia', abrir: 'Abrir o Explora Tech', onde: 'na sala Tecnologia', lugar: 'Cada empresa é diferente.',
+      texto: 'A sala Tecnologia do Diver começa pelo Explora Tech · Fundamentos: lógica, Python, como o computador e a internet funcionam, Linux e Git, com laboratórios para pôr a mão no código. Serve de base para qualquer uma das dez áreas.',
+      porArea: { seguranca: ['ciberseguranca-essencial', 'iso-27001-foundation'] }
+    },
+    medicina: {
+      entrada: 'enem-biologia', nomeEntrada: 'Mergulho no Enem · Biologia', botao: 'Estudar para entrar', abrir: 'Abrir Enem · Biologia', onde: 'para entrar em Medicina', lugar: 'Cada serviço de saúde é diferente.',
+      texto: 'Antes da especialidade vem a aprovação. Biologia, Química e Física costumam pesar no Enem, junto com a redação, e estão na sala Mergulho no Enem e Vestibular, uma matéria por curso. Quem já está na Medicina encontra na sala Radiologia os cursos de diagnóstico por imagem.',
+      porArea: { radiologia: ['radiologia-musculoesqueletico', 'radiologia-aparelho-digestivo', 'radiologia-cabeca-pescoco', 'radiologia-geniturinario'] }
+    }
+  };
+  const ponte = () => PONTES[ID] || null;
+  const cursosDe = a => { const pt = ponte(); return pt ? [pt.entrada, ...(pt.porArea[a.id] || [])] : []; };
+  const evento = nome => ID + '_' + nome;
+  const rot = (campo, padrao) => (T && T[campo]) || padrao;
+  const umaArea = () => rot('rotulo_area', 'área'); // "área" ou "especialidade" (as duas pedem "da", "desta", "nesta")
+  const maiuscula = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const corPan = ix => (T && T.cor ? `var(${T.cor})` : corArea(ix, ID));
+  const NUMERAIS = { 1: 'uma', 2: 'duas', 3: 'três', 4: 'quatro', 5: 'cinco', 6: 'seis', 7: 'sete', 8: 'oito', 9: 'nove', 10: 'dez', 11: 'onze', 12: 'doze' }; // femininos: "áreas", "especialidades"
+  const extenso = n => NUMERAIS[n] || String(n);
 
-  let cache = null;
-  async function dados() { if (!cache) cache = await lerJson(P.BASE + 'tecnologia.json'); return cache; }
-  /* Estado do aluno, dentro do estado do Mapa (diver:v1:profissoes → vai para a nuvem):
+  const cache = {};
+  async function dados(pn) { if (!cache[pn.id]) cache[pn.id] = await lerJson(P.BASE + pn.arquivo); return cache[pn.id]; }
+  /* Estado do aluno, dentro do estado do Mapa (diver:v1:profissoes → vai para a nuvem), um por panorama
+     (Tecnologia em "tec", como sempre foi; Medicina em "med"):
      areasVistas { id: vezes } · jogo { pontos, data } · jogoConcluido · salario { panorama: {aposta}, <área>: true } */
+  const CHAVE_ESTADO = { tecnologia: 'tec', medicina: 'med' };
   const est = () => {
-    const e = P.estado();
-    e.tec = e.tec || {};
-    e.tec.areasVistas = e.tec.areasVistas || {};
-    e.tec.salario = e.tec.salario || {};
-    if (!('jogo' in e.tec)) e.tec.jogo = null;
-    return e.tec;
+    const e = P.estado(), k = CHAVE_ESTADO[ID] || 'pan_' + ID;
+    e[k] = e[k] || {};
+    e[k].areasVistas = e[k].areasVistas || {};
+    e[k].salario = e[k].salario || {};
+    if (!('jogo' in e[k])) e[k].jogo = null;
+    return e[k];
   };
   const salarioAberto = idArea => !!(est().salario.panorama || (idArea && est().salario[idArea]));
   const ir = (alvo, bloco) => { if (alvo) alvo.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: bloco || 'start' }); };
 
   P.registrarExtensao({
-    aceita: r => r === 'profissoes-tecnologia' || r === 'profissoes-tecnologia-jogo' || /^tecnologia-[a-z-]+$/.test(r),
+    aceita: (r, ix) => !!panoramaDa(r, ix),
     montar: async (raiz, r, ix) => {
-      const pn = (ix.panoramas || []).find(x => x.id === ID);
-      if (!temPanorama(pn)) return emBreve(raiz, pn);
-      const t = await dados();
-      if (r === 'profissoes-tecnologia') return telaPanorama(raiz, t, ix);
-      if (r === 'profissoes-tecnologia-jogo') return telaJogo(raiz, t, ix);
-      const a = t.areas.find(x => 'tecnologia-' + x.id === r);
+      const pn = panoramaDa(r, ix);
+      if (!temPanorama(pn)) { ID = pn.id; T = null; return emBreve(raiz, pn, ix); }
+      const t = await dados(pn);
+      ID = pn.id; T = t;
+      if (r === 'profissoes-' + ID) return telaPanorama(raiz, t, ix);
+      if (r === 'profissoes-' + ID + '-jogo') return telaJogo(raiz, t, ix);
+      const a = t.areas.find(x => ID + '-' + x.id === r);
       return a ? telaArea(raiz, t, a, ix) : telaPanorama(raiz, t, ix);
     }
   });
 
+  /* De qual panorama é esta rota? (#profissoes-<id>, #profissoes-<id>-jogo ou #<id>-<área>) */
+  function panoramaDa(r, ix) {
+    return ((ix && ix.panoramas) || []).find(pn => r === 'profissoes-' + pn.id || r === 'profissoes-' + pn.id + '-jogo' || r.startsWith(pn.id + '-')) || null;
+  }
+
   /* ---------------- Peças ---------------- */
   const secao = (id, titulo, sub, ...conteudo) => el('section', { class: 'prof-secao prof-surge', id: 'sec-' + id }, el('h2', null, titulo, sub ? el('small', { text: sub }) : null), ...conteudo);
   const salarioPrincipal = a => a.salarios && a.salarios[0];
-  const nomeCurto = a => a.nome.replace('Inteligência artificial e aprendizado de máquina', 'Inteligência artificial');
+  const nomeCurto = a => a.nome_curto || a.nome.replace('Inteligência artificial e aprendizado de máquina', 'Inteligência artificial');
+  /* Área sem ocupação própria no Caged (usa a de outra como referência): fica fora da aposta e das barras */
+  const ehReferencia = a => { const s = salarioPrincipal(a); return !s || /referência/i.test(s.cargo); };
   const uniq = l => [...new Set(l)];
   function topo(texto, rota, selo) {
     return el('div', { class: 'prof-topo' }, link(texto, rota, { classe: 'prof-voltar', icone: 'esquerda' }), selo ? el('span', { class: 'prof-selo prof-selo--rascunho', text: selo }) : null);
@@ -63,30 +95,32 @@
     return el('div', { class: 'prof-revisao' },
       item(rv.fontes === 'conferidas', 'Fontes: ' + (rv.fontes || 'pendente')),
       item(rv.ia === 'ok', 'Validação por IA: ' + (rv.ia || 'pendente')),
-      item(rv.profissional === 'ok', rv.profissional === 'ok' ? `Revisado por ${rv.revisor} em ${dataBR(rv.data)}` : 'Revisão por profissionais de cada área: pendente'));
+      item(rv.profissional === 'ok', rv.profissional === 'ok' ? `Revisado por ${rv.revisor} em ${dataBR(rv.data)}` : `Revisão por profissionais de cada ${umaArea()}: pendente`));
   }
-  function estudar(curso) { P.ganchos.registrar('profissao_materias_chave', { profissao: ID, curso }); P.ganchos.abrirCurso(curso); }
-  const botaoEstudar = (classe) => botao('Estudar tecnologia', { classe, icone: 'livro', onclick: () => estudar(CURSO_ENTRADA) });
+  function estudar(curso) { P.ganchos.registrar('profissao_materias_chave', { profissao: ID, panorama: ID, curso }); P.ganchos.abrirCurso(curso); }
+  const botaoEstudar = (classe) => ponte() ? botao(ponte().botao, { classe, icone: 'livro', onclick: () => estudar(ponte().entrada) }) : null;
   /* Número que conta do zero ao aparecer: só inteiros ("111 mil", "18%"); "2,13 milhões" fica como está */
   const contavel = v => /^\d[\d.]*(?![\d,])/.test(String(v));
 
-  function emBreve(raiz, pn) {
+  function emBreve(raiz, pn, ix) {
+    const area = ((ix && ix.areas) || []).find(a => a.panorama && a.panorama.rota === pn.rota);
+    const titulo = area ? area.panorama.titulo : 'Panorama';
     raiz.appendChild(topo('Mapa das Profissões', 'profissoes'));
     raiz.appendChild(el('div', { class: 'prof-vazio' },
-      el('h1', { text: 'Panorama da Tecnologia', style: { fontSize: 'var(--t-2xl)', marginBottom: '8px' } }),
+      el('h1', { text: titulo, style: { fontSize: 'var(--t-2xl)', marginBottom: '8px' } }),
       el('p', { text: 'Este panorama ainda está em revisão com profissionais de cada área. Ele abre para todos assim que a revisão terminar.' }),
-      el('div', { style: { marginTop: '14px' } }, botao('Quero ver este panorama', { classe: 'prof-btn--primario', icone: 'estrela', onclick: () => pedir(pn ? pn.id : ID, 'O Panorama da Tecnologia') }))));
+      el('div', { style: { marginTop: '14px' } }, botao('Quero ver este panorama', { classe: 'prof-btn--primario', icone: 'estrela', onclick: () => pedir(pn.id, 'O ' + titulo) }))));
   }
 
   /* =====================================================================
      Panorama
      ===================================================================== */
   function telaPanorama(raiz, t, ix) {
-    P.ganchos.registrar('tecnologia_panorama', {});
-    const cor = corArea(ix, ID);
+    P.ganchos.registrar(evento('panorama'), {});
+    const cor = corPan(ix);
     raiz.style.setProperty('--cor-area', cor);
     raiz.appendChild(topo('Mapa das Profissões', 'profissoes', t.status !== 'publicada' ? 'Em revisão por profissionais' : null));
-    const h = abrirHistoria(raiz, { rotulo: 'Tecnologia', cor, titulo: t.titulo, frase: t.frase, rotuloNav: 'Seções do panorama' });
+    const h = abrirHistoria(raiz, { rotulo: rot('rotulo', 'Panorama'), cor, titulo: t.titulo, frase: t.frase, rotuloNav: 'Seções do panorama' });
     const corpo = h.corpo;
     const j = est().jogo;
     const rank = j ? ranking(t, j.pontos) : null;
@@ -111,19 +145,19 @@
       el('div', { class: 'prof-cards prof-cards--contexto' }, t.contexto.map((c, i) => el('div', { class: 'prof-caixa', style: { '--i': i } }, el('p', null, c.texto, citar(t, c.fontes)))))));
 
     // Resultado do jogo, se houver
-    if (rank) corpo.appendChild(secao('suas-areas', 'Suas áreas, pelo jogo', null,
-      el('div', { class: 'prof-chips' }, rank.slice(0, 3).map(x => link(`${nomeCurto(x.area)} · ${x.pct}%`, 'tecnologia-' + x.area.id, { classe: 'prof-chip' }))),
-      el('div', { style: { marginTop: '10px' } }, link('Refazer o jogo', 'profissoes-tecnologia-jogo', { classe: 'prof-btn prof-btn--linha prof-btn--pequeno', icone: 'embaralhar' }))));
+    if (rank) corpo.appendChild(secao('suas-areas', `Suas ${rot('rotulo_areas', 'áreas')}, pelo jogo`, null,
+      el('div', { class: 'prof-chips' }, rank.slice(0, 3).map(x => link(`${nomeCurto(x.area)} · ${x.pct}%`, ID + '-' + x.area.id, { classe: 'prof-chip' }))),
+      el('div', { style: { marginTop: '10px' } }, link('Refazer o jogo', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--linha prof-btn--pequeno', icone: 'embaralhar' }))));
 
     // Quanto paga cada área: a aposta vem antes das barras
-    // (depois da aposta, os cartões das dez áreas também mostram a média)
+    // (depois da aposta, os cartões das áreas também mostram a média)
     const mostrarMedias = () => corpo.querySelectorAll('.prof-area b.prof-sigilo').forEach(b => { b.textContent = b.dataset.media; b.classList.remove('prof-sigilo'); });
-    corpo.appendChild(secao('salarios', 'Quanto paga cada área', 'Média de contratação com carteira (salário-base) da ocupação mais próxima de cada área. Novo Caged, 12 meses.', blocoApostaSalarios(t, mostrarMedias)));
+    corpo.appendChild(secao('salarios', 'Quanto paga cada ' + rot('rotulo_area', 'área'), `Média de contratação com carteira (salário-base) da ocupação mais próxima de cada ${rot('rotulo_area', 'área')}. Novo Caged, 12 meses.`, blocoApostaSalarios(t, mostrarMedias)));
 
-    // As dez áreas
+    // As áreas (ou especialidades)
     const vistas = t.areas.filter(a => est().areasVistas[a.id]).length;
-    corpo.appendChild(secao('areas', 'As dez áreas', 'Toque em uma para ver o dia a dia, a formação, o salário e o que ninguém te conta.',
-      el('div', { class: 'prof-dez', role: 'img', 'aria-label': `${vistas} de ${t.areas.length} áreas exploradas` },
+    corpo.appendChild(secao('areas', rot('titulo_areas', 'As áreas'), 'Toque em uma para ver o dia a dia, a formação, o salário e o que ninguém te conta.',
+      el('div', { class: 'prof-dez', role: 'img', 'aria-label': `${vistas} de ${t.areas.length} ${rot('rotulo_areas', 'áreas')} exploradas` },
         el('div', { class: 'prof-dez-barra', 'aria-hidden': 'true' }, el('i', { style: { '--fracao': vistas / t.areas.length } })),
         el('span', { class: 'prof-micro', 'aria-hidden': 'true', text: `${vistas} de ${t.areas.length} exploradas` })),
       el('div', { class: 'prof-cards prof-cards--areas' }, t.areas.map((a, i) => cartaoArea(t, a, rank, i)))));
@@ -137,41 +171,44 @@
         el('ul', { class: 'prof-jogo-fatos', 'aria-label': 'Como é o jogo' },
           el('li', null, el('b', { class: 'prof-num', text: String(t.jogo.cenas.length) }), 'situações'),
           el('li', null, el('b', { class: 'prof-num', text: String(Math.max(...t.jogo.cenas.map(c => c.opcoes.length))) }), 'escolhas em cada'),
-          el('li', null, el('b', { class: 'prof-num', text: '3' }), 'áreas no fim')),
+          el('li', null, el('b', { class: 'prof-num', text: '3' }), rot('rotulo_areas', 'áreas') + ' no fim')),
         rank ? el('p', { class: 'prof-min', text: 'Seu último resultado: ' + rank.slice(0, 3).map(x => `${nomeCurto(x.area)} (${x.pct}%)`).join(', ') + '.' }) : null,
-        link(rank ? 'Jogar de novo' : 'Começar o jogo', 'profissoes-tecnologia-jogo', { classe: 'prof-btn prof-btn--linha', icone: rank ? 'embaralhar' : 'play' }))));
+        link(rank ? 'Jogar de novo' : 'Começar o jogo', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--linha', icone: rank ? 'embaralhar' : 'play' }))));
 
-    // Comece a estudar: a ponte com a sala Tecnologia
-    corpo.appendChild(secao('estudar', 'Comece a estudar', null,
-      el('p', { class: 'prof-prosa', text: 'A sala Tecnologia do Diver começa pelo Explora Tech · Fundamentos: lógica, Python, como o computador e a internet funcionam, Linux e Git, com laboratórios para pôr a mão no código. Serve de base para qualquer uma das dez áreas.' }),
-      el('div', { style: { marginTop: '12px' } }, botao('Abrir o Explora Tech', { classe: 'prof-btn--linha', icone: 'livro', iconeDepois: 'direita', onclick: () => estudar(CURSO_ENTRADA) }))));
+    // Comece a estudar: a ponte com as salas do Diver
+    if (ponte()) corpo.appendChild(secao('estudar', 'Comece a estudar', null,
+      el('p', { class: 'prof-prosa', text: ponte().texto }),
+      el('div', { style: { marginTop: '12px' } }, botao(ponte().abrir, { classe: 'prof-btn--linha', icone: 'livro', iconeDepois: 'direita', onclick: () => estudar(ponte().entrada) }))));
 
     // Fontes guardadas
     corpo.appendChild(secao('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Toque num número ao longo da página para ver de onde ele vem.`,
       ...fontesGuardadas(t, t.fontes, `Ver as ${t.fontes.length} fontes deste panorama`), linhaRevisao(t)));
 
     const doca = el('div', { class: 'prof-doca', role: 'region', 'aria-label': 'Ações do panorama' },
-      link(rank ? 'Refazer o jogo' : 'Descobrir a minha área', 'profissoes-tecnologia-jogo', { classe: 'prof-btn prof-btn--primario', icone: 'play' }),
+      link(rank ? 'Refazer o jogo' : ((t.jogo && t.jogo.chamada) || 'Descobrir a minha área'), 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--primario', icone: 'play' }),
       botaoEstudar('prof-btn--linha'));
     fecharHistoria(raiz, h, doca);
   }
 
   /* A aposta: "qual paga mais?"; as barras ficam cobertas até a escolha (ou até "Prefiro só ver os números") */
   function blocoApostaSalarios(t, aoAbrir) {
-    const itens = t.areas.map(a => { const s = salarioPrincipal(a); return { area: a, valor: s.media, cargo: s.cargo.split(' (')[0], fontes: s.fontes }; }).sort((x, y) => y.valor - x.valor);
+    const proprias = t.areas.filter(a => !ehReferencia(a)), refs = t.areas.filter(ehReferencia);
+    const itens = proprias.map(a => { const s = salarioPrincipal(a); return { area: a, valor: s.media, cargo: s.cargo.split(' (')[0], fontes: s.fontes }; }).sort((x, y) => y.valor - x.valor);
     const raiz = el('div');
     const pergunta = el('div', { class: 'prof-chute prof-caixa' },
-      el('p', { class: 'prof-chute-pergunta', text: 'Antes de ver: qual destas áreas você acha que paga mais na contratação?' }),
-      el('div', { class: 'prof-aposta', role: 'group', 'aria-label': 'Sua aposta' }, t.areas.map(a => el('button', { type: 'button', class: 'prof-chip', text: nomeCurto(a), onclick: () => apostar(a.id) }))));
+      el('p', { class: 'prof-chute-pergunta', text: `Antes de ver: qual destas ${rot('rotulo_areas', 'áreas')} você acha que paga mais na contratação?` }),
+      el('div', { class: 'prof-aposta', role: 'group', 'aria-label': 'Sua aposta' }, proprias.map(a => el('button', { type: 'button', class: 'prof-chip', text: nomeCurto(a), onclick: () => apostar(a.id) }))));
     const resultado = el('div', { class: 'prof-chute-resultado', 'aria-live': 'polite' });
-    const barras = el('ol', { class: 'prof-pagas', 'aria-label': 'Média de contratação por área, da maior para a menor' });
-    const max = 16000;
+    const barras = el('ol', { class: 'prof-pagas', 'aria-label': `Média de contratação por ${rot('rotulo_area', 'área')}, da maior para a menor` });
+    const max = Math.ceil(Math.max(...itens.map(i => i.valor)) * 1.1 / 1000) * 1000; // a maior barra fica perto do fim do trilho
     itens.forEach((it, i) => barras.appendChild(el('li', { style: { '--i': i } },
-      el('a', { href: '#tecnologia-' + it.area.id, class: 'prof-paga' },
+      el('a', { href: '#' + ID + '-' + it.area.id, class: 'prof-paga' },
         el('span', { class: 'prof-paga-rotulo' }, el('b', { text: nomeCurto(it.area) }), el('small', { text: it.cargo })),
         el('span', { class: 'prof-paga-trilho', 'aria-hidden': 'true' }, el('i', { style: { '--fracao': Math.min(1, it.valor / max) } })),
         el('span', { class: 'prof-paga-valor prof-num', text: brl(it.valor) })))));
-    const nota = el('p', { class: 'prof-fonte-nota' }, 'Uma ocupação por área, como aproximação. Quatro áreas não têm CBO próprio (IA, jogos, embarcados e produto) e usam a ocupação em que costumam ser registradas; veja a nota em cada área. Fontes: ',
+    const nota = el('p', { class: 'prof-fonte-nota' }, rot('nota_salarios', 'Uma ocupação por área, como aproximação; veja a nota em cada área.') + ' ',
+      refs.length ? `Sem valor próprio no Caged, ${refs.map(nomeCurto).join(', ')} ${refs.length > 1 ? 'ficam' : 'fica'} fora das barras (a nota de cada uma explica). ` : '',
+      'Fontes: ',
       ...uniq(itens.flatMap(i => i.fontes)).map(id => citar(t, [id])));
     const valores = el('div', { class: 'prof-segredo-conteudo' }, barras, nota);
     const tampa = el('div', { class: 'prof-segredo-tampa' }, icone('cadeado'), el('p', { text: 'As barras aparecem depois da sua aposta.' }),
@@ -194,7 +231,7 @@
         barras.children[pos].querySelector('.prof-paga-rotulo').appendChild(el('span', { class: 'prof-paga-tag', text: 'sua aposta' }));
         resultado.appendChild(el('p', { class: 'prof-veredito' }, pos === 0
           ? ['Mandou bem, Diver! ', el('b', { text: nomeCurto(it.area) }), ` é a que mais paga na contratação: ${brl(it.valor)} de média.`]
-          : ['Você apostou em ', el('b', { text: nomeCurto(it.area) }), `: ${pos + 1}º lugar entre as dez, com ${brl(it.valor)} de média. A que mais paga é `, el('b', { text: nomeCurto(topo1.area) }), `, com ${brl(topo1.valor)}.`]));
+          : ['Você apostou em ', el('b', { text: nomeCurto(it.area) }), `: ${pos + 1}º lugar entre as ${extenso(itens.length)}, com ${brl(it.valor)} de média. A que mais paga é `, el('b', { text: nomeCurto(topo1.area) }), `, com ${brl(topo1.valor)}.`]));
       }
     }
     const feita = est().salario.panorama;
@@ -206,7 +243,7 @@
   function cartaoArea(t, a, rank, i) {
     const s = salarioPrincipal(a); const vista = est().areasVistas[a.id]; const afin = rank ? rank.find(r => r.area.id === a.id) : null;
     const salario = salarioAberto(a.id) ? [el('b', { text: brl(s.media) }), ' média'] : [el('b', { class: 'prof-sigilo', text: 'R$ ?', dataset: { media: brl(s.media) } }), ' média'];
-    return el('a', { href: '#tecnologia-' + a.id, class: 'prof-ilha prof-area', style: { '--cor-area': 'var(--azul)', '--i': i } },
+    return el('a', { href: '#' + ID + '-' + a.id, class: 'prof-ilha prof-area', style: { '--cor-area': rot('cor', null) ? `var(${T.cor})` : 'var(--azul)', '--i': i } },
       el('div', { class: 'prof-area-cab' }, vista ? el('span', { class: 'prof-selo prof-selo--vista' }, icone('certo'), 'Explorada') : el('span', { class: 'prof-selo', text: a.apelido }),
         afin ? el('span', { class: 'prof-area-afin prof-num', text: afin.pct + '%', title: 'Sua afinidade pelo jogo' }) : null),
       el('h3', { text: a.nome }), el('p', { text: a.resumo }),
@@ -229,11 +266,11 @@
      ===================================================================== */
   function telaArea(raiz, t, a, ix) {
     est().areasVistas[a.id] = (est().areasVistas[a.id] || 0) + 1; salvarEstado();
-    P.ganchos.registrar('tecnologia_area_vista', { area: a.id });
-    const cor = corArea(ix, ID);
+    P.ganchos.registrar(evento('area_vista'), { area: a.id });
+    const cor = corPan(ix);
     raiz.style.setProperty('--cor-area', cor);
-    raiz.appendChild(topo('Panorama da Tecnologia', 'profissoes-tecnologia', 'Rotina típica, em revisão com profissionais'));
-    const h = abrirHistoria(raiz, { rotulo: a.apelido, cor, titulo: a.nome, frase: a.resumo, rotuloNav: 'Seções da área' });
+    raiz.appendChild(topo(t.titulo, 'profissoes-' + ID, 'Rotina típica, em revisão com profissionais'));
+    const h = abrirHistoria(raiz, { rotulo: a.apelido, cor, titulo: a.nome, frase: a.resumo, rotuloNav: 'Seções da ' + umaArea() });
     const corpo = h.corpo;
     const s = salarioPrincipal(a);
     const j = est().jogo; const afin = j ? ranking(t, j.pontos).find(r => r.area.id === a.id) : null;
@@ -253,7 +290,7 @@
     const secNumeros = el('section', { class: 'prof-numeros prof-surge', 'aria-label': 'Números principais' },
       numero('Média de contratação', brl(s.media), `${s.cargo}, CBO ${s.cbo}`, { cor: 'amarelo', fontes: s.fontes, segredo: true, chamar: true, i: 0 }),
       numero('Faixa comum', `${brl(s.p25)} a ${brl(s.p75)}`, 'percentis 25 e 75', { segredo: true, menor: true, i: 1 }),
-      numero('Lida com pessoas', a.dna.pessoas + '/100', 'no DNA da área', { i: 2 }),
+      numero('Lida com pessoas', a.dna.pessoas + '/100', 'no DNA da ' + umaArea(), { i: 2 }),
       numero('Sua afinidade', afin ? afin.pct + '%' : '—', afin ? 'pelo jogo' : 'jogue para descobrir', { i: 3 }));
     secNumeros._aoAparecer = () => contaveis.forEach(([alvo, texto]) => contar(alvo, texto));
     corpo.appendChild(secNumeros);
@@ -281,7 +318,7 @@
     const emMin = hh => { const [x, y] = String(hh).split(':').map(Number); return x * 60 + (y || 0); };
     let atual = -1; a.dia.forEach((d, i) => { if (emMin(d.hora) <= minutos) atual = i; });
     if (atual === a.dia.length - 1 && minutos > emMin(a.dia[atual].hora) + 120) atual = -1;
-    corpo.appendChild(secao('dia', 'Um dia típico', 'Rotina ilustrativa de um dia comum, a revisar com profissionais da área. Cada empresa é diferente.',
+    corpo.appendChild(secao('dia', 'Um dia típico', 'Rotina ilustrativa de um dia comum, a revisar com profissionais da ' + umaArea() + '. ' + ((ponte() && ponte().lugar) || 'Cada lugar de trabalho é diferente.'),
       el('ol', { class: 'prof-dia' }, a.dia.map((d, i) => el('li', { class: i === atual ? 'prof-dia--agora' : null, style: { '--i': i } },
         el('span', { class: 'prof-dia-hora prof-num', text: d.hora }),
         el('span', null, d.texto, i === atual ? el('span', { class: 'prof-dia-tag', text: 'agora' }) : null))))));
@@ -307,7 +344,7 @@
     const prof = EIXOS.map(([k]) => a.dna[k] ?? 50); const e = P.estado(); if (!e.dna) e.dna = EIXOS.map(() => 50);
     const afDna = Math.round(100 - prof.reduce((tt, p, i) => tt + Math.abs(p - e.dna[i]), 0) / prof.length);
     const fichaDna = ix.profissoes.find(p => temFicha(p) && p.arquivo);
-    corpo.appendChild(secao('dna', 'DNA da área', 'Turquesa: a área. Amarelo tracejado: o seu DNA, ajustado em qualquer ficha. Estimativa inicial, a calibrar com profissionais.',
+    corpo.appendChild(secao('dna', 'DNA da ' + umaArea(), `Turquesa: a ${umaArea()}. Amarelo tracejado: o seu DNA, ajustado em qualquer ficha. Estimativa inicial, a calibrar com profissionais.`,
       el('div', { class: 'prof-dna' },
         el('div', null, el('div', { class: 'prof-dna-grafico' }, IG().radar({ eixos: EIXOS.map(x => x[1]), series: [{ nome: a.nome, valores: prof, classe: 'profissao' }, { nome: 'Você', valores: e.dna, classe: 'voce' }] })),
           el('div', { class: 'prof-legenda' }, el('span', null, el('i', { style: { '--cor': 'var(--turquesa)' } }), a.nome), el('span', null, el('i', { class: 'prof-legenda--tracejado', style: { '--cor': 'var(--amarelo)' } }), 'Você'))),
@@ -318,9 +355,9 @@
 
     // Formação, com os cursos do Diver que servem a esta área
     corpo.appendChild(secao('formacao', 'Formação', null, el('p', { class: 'prof-prosa' }, a.formacao, citar(t, a.formacao_fontes)),
-      el('p', { class: 'prof-min', style: { marginTop: '12px' }, text: 'Para começar no Diver, na sala Tecnologia:' }),
-      el('div', { class: 'prof-chips-lista' }, cursosDe(a).map((c, i) => el('a', { href: '#', style: { '--i': i }, onclick: ev => { ev.preventDefault(); estudar(c); } }, icone('livro'), c === CURSO_ENTRADA ? 'Explora Tech · Fundamentos' : P.ganchos.nomeCurso(c)))),
-      el('p', { class: 'prof-min', style: { marginTop: '10px' } }, 'As durações e cargas dos cursos estão no ', link('panorama', 'profissoes-tecnologia'), '.')));
+      ponte() ? el('p', { class: 'prof-min', style: { marginTop: '12px' }, text: `Para começar no Diver, ${ponte().onde}:` }) : null,
+      ponte() ? el('div', { class: 'prof-chips-lista' }, cursosDe(a).map((c, i) => el('a', { href: '#', style: { '--i': i }, onclick: ev => { ev.preventDefault(); estudar(c); } }, icone('livro'), c === ponte().entrada ? ponte().nomeEntrada : P.ganchos.nomeCurso(c)))) : null,
+      el('p', { class: 'prof-min', style: { marginTop: '10px' } }, 'As durações e cargas dos cursos estão no ', link('panorama', 'profissoes-' + ID), '.')));
 
     // Carreira: uma escada que sobe degrau por degrau
     corpo.appendChild(secao('caminhos', 'Como a carreira costuma andar', 'Nomes e prazos variam por empresa.',
@@ -343,27 +380,27 @@
       el('ol', { class: 'prof-virar-lista' }, cartas.map(c => c.caixa)), el('div', { style: { marginTop: '12px' } }, todas))));
 
     // Áreas vizinhas
-    corpo.appendChild(secao('vizinhas', 'Áreas vizinhas', 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, a.vizinhas.map((id, i) => {
+    corpo.appendChild(secao('vizinhas', rot('rotulo_vizinhas', 'Áreas vizinhas'), 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, a.vizinhas.map((id, i) => {
       const v = t.areas.find(x => x.id === id);
-      return v ? el('a', { href: '#tecnologia-' + v.id, class: 'prof-caixa prof-vizinha', style: { '--i': i } }, el('h3', null, v.nome, icone('direita')), el('p', { text: v.resumo })) : null;
+      return v ? el('a', { href: '#' + ID + '-' + v.id, class: 'prof-caixa prof-vizinha', style: { '--i': i } }, el('h3', null, v.nome, icone('direita')), el('p', { text: v.resumo })) : null;
     }))));
 
     // Fontes: só as citadas nesta área (a numeração é a do panorama)
     const ids = new Set(); JSON.stringify(a, (k, v) => { if ((k === 'fontes' || k.endsWith('_fontes')) && Array.isArray(v)) v.forEach(x => ids.add(x)); return v; });
     const lista = t.fontes.filter(fo => ids.has(fo.id));
-    corpo.appendChild(secao('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Só as fontes citadas nesta área; a numeração é a do panorama.`,
-      ...fontesGuardadas(t, lista, lista.length === 1 ? 'Ver a fonte desta área' : `Ver as ${lista.length} fontes desta área`), linhaRevisao(t)));
+    corpo.appendChild(secao('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Só as fontes citadas nesta ${umaArea()}; a numeração é a do panorama.`,
+      ...fontesGuardadas(t, lista, lista.length === 1 ? 'Ver a fonte desta ' + umaArea() : `Ver as ${lista.length} fontes desta ${umaArea()}`), linhaRevisao(t)));
 
-    // Anterior e próxima: as dez áreas em sequência
+    // Anterior e próxima: as áreas em sequência
     const k = t.areas.indexOf(a), ant = t.areas[(k + t.areas.length - 1) % t.areas.length], prox = t.areas[(k + 1) % t.areas.length];
-    corpo.appendChild(el('nav', { class: 'prof-areas-nav', 'aria-label': 'Outras áreas' },
-      link(nomeCurto(ant), 'tecnologia-' + ant.id, { classe: 'prof-btn prof-btn--linha prof-btn--pequeno', icone: 'esquerda' }),
-      el('span', { class: 'prof-micro prof-num', text: `Área ${k + 1} de ${t.areas.length}` }),
-      link(nomeCurto(prox), 'tecnologia-' + prox.id, { classe: 'prof-btn prof-btn--linha prof-btn--pequeno', iconeDepois: 'direita' })));
+    corpo.appendChild(el('nav', { class: 'prof-areas-nav', 'aria-label': 'Outras ' + rot('rotulo_areas', 'áreas') },
+      link(nomeCurto(ant), ID + '-' + ant.id, { classe: 'prof-btn prof-btn--linha prof-btn--pequeno', icone: 'esquerda' }),
+      el('span', { class: 'prof-micro prof-num', text: `${maiuscula(umaArea())} ${k + 1} de ${t.areas.length}` }),
+      link(nomeCurto(prox), ID + '-' + prox.id, { classe: 'prof-btn prof-btn--linha prof-btn--pequeno', iconeDepois: 'direita' })));
 
-    const doca = el('div', { class: 'prof-doca', role: 'region', 'aria-label': 'Ações da área' },
-      j ? botaoEstudar('prof-btn--primario') : link('Que área é a minha?', 'profissoes-tecnologia-jogo', { classe: 'prof-btn prof-btn--primario', icone: 'play' }),
-      j ? link('Refazer o jogo', 'profissoes-tecnologia-jogo', { classe: 'prof-btn prof-btn--linha', icone: 'embaralhar' }) : botaoEstudar('prof-btn--linha'));
+    const doca = el('div', { class: 'prof-doca', role: 'region', 'aria-label': 'Ações da ' + umaArea() },
+      j ? botaoEstudar('prof-btn--primario') : link((t.jogo && t.jogo.chamada_curta) || 'Que área é a minha?', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--primario', icone: 'play' }),
+      j ? link('Refazer o jogo', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--linha', icone: 'embaralhar' }) : botaoEstudar('prof-btn--linha'));
     aplicarSegredos(false);
     fecharHistoria(raiz, h, doca);
   }
@@ -398,7 +435,7 @@
     function revelar(meuChute, agora) {
       if (meuChute != null) {
         const dif = Math.round((meuChute - s.media) / s.media * 100);
-        if (agora) { P.estado().chutes[chave] = meuChute; P.ganchos.registrar('profissao_chute_salario', { profissao: ID, cargo: s.cargo, chute: meuChute, media: s.media }); }
+        if (agora) { P.estado().chutes[chave] = meuChute; P.ganchos.registrar('profissao_chute_salario', { profissao: ID, panorama: ID, area: a.id, cargo: s.cargo, chute: meuChute, media: s.media }); }
         faixa.value = meuChute; valor.textContent = brl(meuChute);
         veredito.textContent = '';
         veredito.appendChild(el('p', { class: 'prof-veredito' }, 'Você chutou ', el('b', { text: `${Math.abs(dif)}% ${dif >= 0 ? 'acima' : 'abaixo'}` }), ` da média de contratação de ${s.cargo.toLowerCase()}, que é ${brl(s.media)}`, citar(t, s.fontes), `. A faixa turquesa é onde fica a maior parte dos contratos: ${brl(s.p25)} a ${brl(s.p75)}.`));
@@ -416,7 +453,7 @@
   }
 
   /* =====================================================================
-     Jogo: "Que área da tecnologia é a sua praia?"
+     Jogo de afinidade ("Que área da tecnologia é a sua praia?", "Que especialidade médica é a sua?")
      ===================================================================== */
   function maximos(t) { const m = {}; t.areas.forEach(a => m[a.id] = 0); t.jogo.cenas.forEach(c => { const best = {}; c.opcoes.forEach(o => Object.entries(o.pontos).forEach(([k, v]) => best[k] = Math.max(best[k] || 0, v))); Object.entries(best).forEach(([k, v]) => m[k] += v); }); return m; }
   function ranking(t, pontos) { const m = maximos(t); return t.areas.map(a => ({ area: a, pts: pontos[a.id] || 0, pct: Math.round((pontos[a.id] || 0) / (m[a.id] || 1) * 100) })).sort((x, y) => y.pct - x.pct); }
@@ -426,11 +463,11 @@
     let tecla = null;
     const soltarTecla = () => { if (tecla) { document.removeEventListener('keydown', tecla); tecla = null; } };
     limpezas.push(soltarTecla);
-    P.ganchos.registrar('tecnologia_jogo_inicio', {});
-    raiz.style.setProperty('--cor-area', corArea(ix, ID));
-    raiz.appendChild(topo('Panorama da Tecnologia', 'profissoes-tecnologia'));
+    P.ganchos.registrar(evento('jogo_inicio'), {});
+    raiz.style.setProperty('--cor-area', corPan(ix));
+    raiz.appendChild(topo(t.titulo, 'profissoes-' + ID));
     raiz.appendChild(el('header', { class: 'prof-jogo-cab' },
-      el('span', { class: 'prof-rotulo', text: 'Tecnologia', style: { color: 'var(--cor-area)' } }),
+      el('span', { class: 'prof-rotulo', text: rot('rotulo', 'Panorama'), style: { color: 'var(--cor-area)' } }),
       el('h1', { text: J.titulo }),
       el('p', { class: 'prof-lead prof-suave', text: J.subtitulo })));
     const progresso = el('div', { class: 'prof-progresso', 'aria-hidden': 'true' }, J.cenas.map(() => el('i')));
@@ -468,10 +505,10 @@
       const r = ranking(t, pontos); const top = r.slice(0, 3); const resto = r.slice(3);
       const e = est(); e.jogo = { pontos: { ...pontos }, data: new Date().toISOString().slice(0, 10) };
       const primeira = !e.jogoConcluido;
-      if (primeira) { e.jogoConcluido = true; P.ganchos.recompensar({ tipo: 'tecnologia_jogo', xp: J.resultado.recompensa.xp, perolas: J.resultado.recompensa.perolas, profissao: ID }); }
-      salvarEstado(); P.ganchos.registrar('tecnologia_jogo_concluido', { top: top.map(x => x.area.id), pct: top.map(x => x.pct) });
+      if (primeira) { e.jogoConcluido = true; P.ganchos.recompensar({ tipo: evento('jogo'), xp: J.resultado.recompensa.xp, perolas: J.resultado.recompensa.perolas, profissao: ID }); }
+      salvarEstado(); P.ganchos.registrar(evento('jogo_concluido'), { top: top.map(x => x.area.id), pct: top.map(x => x.pct) });
       palco.textContent = '';
-      const titulo = el('h2', { class: 'prof-jogo-fim', text: 'Suas três áreas', tabindex: '-1' });
+      const titulo = el('h2', { class: 'prof-jogo-fim', text: J.titulo_resultado || `Suas três ${rot('rotulo_areas', 'áreas')}`, tabindex: '-1' });
       palco.appendChild(titulo);
       palco.appendChild(el('p', { class: 'prof-min prof-jogo-aviso', text: J.aviso }));
       const contas = [];
@@ -484,13 +521,13 @@
           el('p', { text: `${x.area.nome} ${x.pct >= 60 ? J.resultado.texto_alto : x.pct >= 35 ? J.resultado.texto_medio : J.resultado.texto_baixo}` }),
           el('p', { class: 'prof-min prof-espaco-p', text: 'Combina com quem gosta de: ' + x.area.gosta_de.slice(0, 2).join('; ').toLowerCase() + '.' }),
           el('div', { class: 'prof-area-rodape' }, el('span', { class: 'prof-num' }, salarioAberto(x.area.id) ? el('b', { text: brl(s.media) }) : el('b', { class: 'prof-sigilo', text: 'R$ ?' }), ' média'),
-            link('Ver o dia a dia', 'tecnologia-' + x.area.id, { classe: 'prof-btn prof-btn--pequeno ' + (k === 0 ? 'prof-btn--primario' : 'prof-btn--linha'), iconeDepois: 'direita' })));
+            link('Ver o dia a dia', ID + '-' + x.area.id, { classe: 'prof-btn prof-btn--pequeno ' + (k === 0 ? 'prof-btn--primario' : 'prof-btn--linha'), iconeDepois: 'direita' })));
       })));
-      palco.appendChild(el('div', { class: 'prof-caixa prof-espaco' }, el('h3', { text: 'As outras sete' }), el('div', { class: 'prof-mini-barras' }, resto.map((x, k) => el('a', { href: '#tecnologia-' + x.area.id, class: 'prof-mini-barra', style: { '--i': k } }, el('span', { text: x.area.nome }), el('i', { 'aria-hidden': 'true' }, el('b', { style: { '--fracao': x.pct / 100 } })), el('span', { class: 'prof-num', text: x.pct + '%' }))))));
+      palco.appendChild(el('div', { class: 'prof-caixa prof-espaco' }, el('h3', { text: 'As outras ' + extenso(resto.length) }), el('div', { class: 'prof-mini-barras' }, resto.map((x, k) => el('a', { href: '#' + ID + '-' + x.area.id, class: 'prof-mini-barra', style: { '--i': k } }, el('span', { text: x.area.nome }), el('i', { 'aria-hidden': 'true' }, el('b', { style: { '--fracao': x.pct / 100 } })), el('span', { class: 'prof-num', text: x.pct + '%' }))))));
       palco.appendChild(el('div', { class: 'prof-jogo-acoes' },
         primeira ? el('p', { class: 'prof-recompensa', text: `+${J.resultado.recompensa.xp} XP · +${J.resultado.recompensa.perolas} pérolas` }) : null,
         botao('Jogar de novo', { classe: 'prof-btn--linha', icone: 'embaralhar', onclick: () => { i = 0; Object.keys(pontos).forEach(k => delete pontos[k]); escolhas.length = 0; palco.classList.remove('prof-jogo-palco--fim'); cena(true); } }),
-        link('Ver o panorama', 'profissoes-tecnologia', { classe: 'prof-btn prof-btn--linha' }),
+        link('Ver o panorama', 'profissoes-' + ID, { classe: 'prof-btn prof-btn--linha' }),
         botaoEstudar('prof-btn--linha')));
       requestAnimationFrame(() => { palco.classList.add('prof-jogo-palco--fim'); contas.forEach(([alvo, texto]) => contar(alvo, texto)); });
       titulo.focus({ preventScroll: true });
