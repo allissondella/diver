@@ -284,7 +284,7 @@
     }
     render();
 
-    raiz.appendChild(el('p', { class: 'prof-fonte-nota', style: { marginTop: '28px' } }, 'Fatos das cartas: Censo da Educação Superior 2024 (Inep), Decreto nº 12.456/2025, Sisu 2026 e Google Trends 2021–2026. Cada ficha traz a lista completa de fontes, com data de consulta. ', link('Veja como fazemos as fichas', 'profissoes-metodo')));
+    raiz.appendChild(el('p', { class: 'prof-fonte-nota', style: { marginTop: '28px' } }, 'Fatos das cartas: Censo da Educação Superior 2024 (Inep), leis e decretos federais, Sisu 2026, Google Trends 2021–2026, Novo Caged e Brasscom. Cada ficha traz a lista completa de fontes, com data de consulta. ', link('Veja como fazemos as fichas', 'profissoes-metodo')));
 
     function tile(rotulo, valor, cor, sub) { return el('div', { class: 'prof-tile' + (cor ? ' prof-tile--' + cor : '') }, el('div', { class: 'prof-min', text: rotulo }), el('div', { class: 'prof-tile-v prof-num', text: String(valor) }), sub ? el('div', { class: 'prof-micro', text: sub }) : null); }
   }
@@ -373,15 +373,16 @@
     let cartaoSalario = null;
     const secNumeros = el('section', { class: 'prof-numeros prof-surge', 'aria-label': 'Números principais' }, ordem.filter(([k]) => nums[k]).map(([k, rotulo, corN], i) => {
       const n = nums[k];
-      const valor = el('span', { class: 'prof-numero-txt', text: n.valor });
+      const txt = n.valor.replace(/semipresencial/g, 'semi\u00ADpresencial'); // hífen opcional: quebra como "semi-presencial" no celular
+      const valor = el('span', { class: 'prof-numero-txt', text: txt });
       const fontes = (n.fontes || []).filter(id => numeroFonte(f, id));
       const cartao = el('div', { class: 'prof-numero' + (corN ? ' prof-numero--' + corN : ''), style: { '--i': i } },
         el('div', { class: 'prof-min', text: rotulo }),
-        el('div', { class: 'prof-numero-v prof-num' }, valor),
+        el('div', { class: 'prof-numero-v prof-num' + (n.valor.length > 12 ? ' prof-numero-v--texto' : '') }, valor),
         el('div', { class: 'prof-micro', text: n.detalhe }),
         fontes.length ? el('div', { class: 'prof-numero-fontes' }, fontes.map(id => el('button', { type: 'button', class: 'prof-fonte-mini', onclick: e => { e.stopPropagation(); abrirFonte(f, id, e.currentTarget); } }, icone('info'), `Fonte ${numeroFonte(f, id)}`))) : null);
       if (k === 'salario') cartaoSalario = { cartao, valor, texto: n.valor };
-      else contaveis.push([valor, n.valor]);
+      else contaveis.push([valor, txt]);
       return cartao;
     }));
     secNumeros._aoAparecer = () => contaveis.forEach(([alvo, texto]) => contar(alvo, texto));
@@ -449,7 +450,7 @@
       if (f.formacao && IG()) {
         conteudo.push(el('div', { class: 'prof-caixa prof-formacao', style: { marginTop: '16px' } },
           el('div', { class: 'prof-grafico-cab' }, el('h3', { text: 'Quanto tempo até trabalhar' }), el('span', { class: 'prof-min', text: f.formacao.nota })),
-          IG().linhaFormacao({ etapas: f.formacao.etapas, maxAnos: 8 }),
+          IG().linhaFormacao({ etapas: f.formacao.etapas, maxAnos: anosFormacao(f.formacao.etapas) }),
           el('div', { class: 'prof-legenda' }, el('span', null, el('i', { style: { '--cor': 'var(--amarelo)' } }), 'caminho técnico'), el('span', null, el('i', { style: { '--cor': 'var(--turquesa)' } }), 'graduação'), el('span', null, el('i', { style: { '--cor': 'color-mix(in srgb, var(--turquesa) 35%, transparent)' } }), 'depois da graduação')),
           el('ul', { class: 'prof-lista', style: { marginTop: '12px' } }, f.formacao.etapas.map(e => el('li', null, el('b', { text: e.nome + ': ' }), e.texto, citar(f, e.fontes))))));
       }
@@ -504,7 +505,9 @@
     // 11. Vizinhas
     if (S.vizinhas) raiz.appendChild(secao('vizinhas', 'Profissões vizinhas', 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, S.vizinhas.map((v, i) => {
       const p = ix.profissoes.find(x => x.id === v.id);
-      return el('div', { class: 'prof-caixa', style: { '--i': i } }, el('h3', null, temFicha(p) ? link(p.nome, 'profissao-' + p.id) : (p ? p.nome : v.id)), el('p', { text: v.diferenca }), p && !temFicha(p) ? el('p', { class: 'prof-micro', style: { marginTop: '6px' }, text: 'Ficha em breve' }) : null);
+      // Com ficha aberta, o cartão inteiro é o link (alvo de toque grande), como nas áreas vizinhas do Panorama
+      if (temFicha(p)) return el('a', { href: '#profissao-' + p.id, class: 'prof-caixa prof-vizinha', style: { '--i': i } }, el('h3', null, p.nome, icone('direita')), el('p', { text: v.diferenca }));
+      return el('div', { class: 'prof-caixa', style: { '--i': i } }, el('h3', { text: p ? p.nome : v.id }), el('p', { text: v.diferenca }), p ? el('p', { class: 'prof-micro', style: { marginTop: '6px' }, text: 'Ficha em breve' }) : null);
     }))));
 
     // 12. Fontes: guardadas; a lista abre no botão
@@ -603,6 +606,12 @@
     b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'prof-lista-fontes');
     return [b, ol];
   }
+  /* Escala da linha da formação: 8 anos ou mais, se a graduação somada ao que vem depois (residência, mestrado) passar disso */
+  function anosFormacao(etapas) {
+    let cursor = 0, fim = 0;
+    etapas.forEach(e => { const inicio = e.tipo === 'depois' ? cursor : 0; fim = Math.max(fim, inicio + e.anos_ate); if (e.tipo === 'principal') cursor = e.anos_ate; });
+    return Math.max(8, Math.ceil(fim));
+  }
   function alternarMira(f, btn) {
     const i = estado.mira.indexOf(f.id);
     if (i >= 0) { estado.mira.splice(i, 1); aviso(`${f.nome} saiu da sua mira.`); } else { estado.mira.push(f.id); aviso(`${f.nome} está na sua mira.`); }
@@ -649,11 +658,18 @@
     }
     if (q.texto) raiz.appendChild(prosa(f, q.texto, q.fontes, 'prof-prosa' + (ch ? ' prof-espaco' : '')));
     if (pisos.length || medias.length) {
+      // Uma linha por cargo (dos pisos e das médias). Sem piso por lei, a coluna do piso dá lugar à faixa comum.
+      const rotuloPiso = q.piso_rotulo || 'Piso por lei (44 h)';
+      const cargos = [...new Set([...pisos.map(p => p.cargo), ...medias.map(m => m.cargo)])];
+      const colunas = pisos.length ? ['Cargo', rotuloPiso, 'Média de contratação', 'Período'] : ['Cargo', 'Média de contratação', 'Faixa comum', 'Período'];
       const tabela = el('table', { class: 'prof-tabela' },
-        el('thead', null, el('tr', null, el('th', { text: 'Cargo' }), el('th', { text: 'Piso por lei (44 h)' }), el('th', { text: 'Média de contratação' }), el('th', { text: 'Período' }))),
-        el('tbody', null, pisos.map((p, i) => {
-          const m = medias.find(x => x.cargo === p.cargo) || medias[i];
-          return el('tr', null, el('td', { text: p.cargo }), el('td', { class: 'prof-num', 'data-rotulo': 'Piso por lei (44 h)' }, brl(p.valor), citar(f, p.fontes)), el('td', { class: 'prof-num', 'data-rotulo': 'Média de contratação' }, m ? [brl(m.valor), citar(f, m.fontes)] : '—'), el('td', { class: 'prof-min', 'data-rotulo': 'Período', text: m ? m.periodo : '' }));
+        el('thead', null, el('tr', null, colunas.map(c => el('th', { text: c })))),
+        el('tbody', null, cargos.map(cargo => {
+          const p = pisos.find(x => x.cargo === cargo), m = medias.find(x => x.cargo === cargo);
+          const celMedia = el('td', { class: 'prof-num', 'data-rotulo': 'Média de contratação' }, m ? [brl(m.valor), citar(f, m.fontes)] : '—');
+          const celPeriodo = el('td', { class: 'prof-min', 'data-rotulo': 'Período', text: m ? m.periodo : '' });
+          if (pisos.length) return el('tr', null, el('td', { text: cargo }), el('td', { class: 'prof-num', 'data-rotulo': rotuloPiso }, p ? [brl(p.valor), citar(f, p.fontes)] : '—'), celMedia, celPeriodo);
+          return el('tr', null, el('td', { text: cargo }), celMedia, el('td', { class: 'prof-num', 'data-rotulo': 'Faixa comum', text: m && m.faixa ? `${brl(m.faixa.de)} a ${brl(m.faixa.ate)}` : '—' }), celPeriodo);
         })));
       const valores = el('div', { class: 'prof-segredo-conteudo' }, el('div', { class: 'prof-rolagem' }, tabela),
         q.piso_regra ? el('p', { class: 'prof-fonte-nota' }, q.piso_regra, citar(f, q.piso_regra_fontes)) : null);

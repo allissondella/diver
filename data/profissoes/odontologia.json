@@ -1,0 +1,391 @@
+{
+  "id": "odontologia",
+  "versao": 1,
+  "nome": "Odontologia",
+  "area": "saude",
+  "frase": "Previne e trata problemas da boca e dos dentes, do consultório ao hospital.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "presencial-obrigatorio",
+    "conselho-profissional",
+    "trabalho-manual"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "5 anos",
+      "detalhe": "4.000 horas, bacharelado",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial",
+      "detalhe": "EAD proibido; pelo menos 70% da carga em atividades presenciais",
+      "fontes": [
+        "decreto-12456",
+        "portaria-378"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 5.760",
+      "detalhe": "média de contratação de cirurgião-dentista clínico geral com carteira, 12 meses até ago/2026",
+      "fontes": [
+        "caged-dentista"
+      ]
+    },
+    "registro": {
+      "valor": "CRO",
+      "detalhe": "inscrição obrigatória no Conselho Regional de Odontologia",
+      "fontes": [
+        "lei-5081"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 162750,
+    "texto": "Em 2024, Odontologia teve cerca de 163 mil matrículas no presencial, a 6ª maior do país nesse formato.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Por lei, o cirurgião-dentista pratica todos os atos da Odontologia, prescreve medicamentos indicados na área, aplica anestesia local, atesta estados de saúde no seu campo de atuação e faz perícia odontolegal. Previne e trata cáries, doenças da gengiva, problemas de mordida e perdas de dentes, no consultório, no hospital e na rede pública.",
+      "nao_faz": "A lei proíbe, por exemplo, anunciar cura de doenças sem tratamento eficaz, fazer consulta por rádio ou televisão e prestar serviço gratuito em consultório particular.",
+      "fontes": [
+        "lei-5081"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "A maior parte do tempo é no consultório, com pacientes marcados ao longo do dia, procedimentos de minutos a horas e muita precisão manual. Quem tem consultório próprio também cuida da gestão: agenda, equipe, materiais e cobranças.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Ciências básicas, anatomia de cabeça e pescoço, materiais odontológicos e as especialidades, com muitas aulas práticas em laboratório e em clínica-escola.",
+      "disciplinas": [
+        "Anatomia",
+        "Histologia",
+        "Microbiologia",
+        "Farmacologia",
+        "Materiais dentários",
+        "Dentística",
+        "Periodontia",
+        "Endodontia",
+        "Prótese",
+        "Cirurgia bucal",
+        "Odontopediatria",
+        "Saúde coletiva"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Biologia e Química costumam pesar.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-quimica"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "As médias consideram só quem foi contratado com carteira. Muitos dentistas trabalham em consultório próprio ou como autônomos em clínicas, e essa renda fica fora da conta. A jornada média desses contratos é de 33 horas por semana.",
+      "fontes": [
+        "caged-dentista"
+      ],
+      "medias": [
+        {
+          "cargo": "Cirurgião-dentista clínico geral",
+          "valor": 5760.35,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-dentista"
+          ],
+          "faixa": {
+            "de": 3620,
+            "ate": 7792,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um cirurgião-dentista clínico geral contratado com carteira?",
+        "min": 1000,
+        "max": 14000,
+        "passo": 100,
+        "inicial": 8500
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Especializações",
+          "texto": "Ortodontia, endodontia, implantodontia, periodontia, odontopediatria e outras. A lei limita o exercício a duas especialidades.",
+          "fontes": [
+            "lei-5081"
+          ]
+        },
+        {
+          "titulo": "Consultório próprio",
+          "texto": "O caminho clássico, que exige investimento em equipamento e gestão.",
+          "fontes": []
+        },
+        {
+          "titulo": "Saúde pública",
+          "texto": "Equipes de saúde bucal na rede pública, por concurso.",
+          "fontes": []
+        },
+        {
+          "titulo": "Hospital, ensino e pesquisa",
+          "texto": "Odontologia hospitalar, docência e pós-graduação.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "Montar consultório custa caro: cadeira, equipamentos e materiais pesam no começo da carreira.",
+          "fontes": []
+        },
+        {
+          "texto": "A lei não deixa o dentista exercer mais de duas especialidades.",
+          "fontes": [
+            "lei-5081"
+          ]
+        },
+        {
+          "texto": "Horas inclinado sobre o paciente cobram da coluna e dos ombros.",
+          "fontes": []
+        },
+        {
+          "texto": "O curso não pode mais ser feito a distância.",
+          "fontes": [
+            "decreto-12456"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "medicina",
+        "diferenca": "Diagnostica e trata doenças do corpo todo, com cirurgia e prescrição."
+      },
+      {
+        "id": "enfermagem",
+        "diferenca": "Planeja e executa o cuidado contínuo do paciente."
+      },
+      {
+        "id": "biomedicina",
+        "diferenca": "Laboratório, análises clínicas e exames."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "receita",
+      "afirmacao": "Dentista pode receitar remédio.",
+      "verdade": true,
+      "explicacao": "Pode prescrever medicamentos indicados em Odontologia.",
+      "fontes": [
+        "lei-5081"
+      ]
+    },
+    {
+      "id": "atestado",
+      "afirmacao": "Dentista pode dar atestado para justificar falta ao trabalho.",
+      "verdade": true,
+      "explicacao": "A lei permite, no setor de atuação dele.",
+      "fontes": [
+        "lei-5081"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Dá para fazer Odontologia a distância.",
+      "verdade": false,
+      "explicacao": "Odontologia está entre os cinco cursos que só podem ser presenciais.",
+      "fontes": [
+        "decreto-12456",
+        "portaria-378"
+      ]
+    },
+    {
+      "id": "especialidades",
+      "afirmacao": "Um dentista pode exercer quantas especialidades quiser.",
+      "verdade": false,
+      "explicacao": "A lei veda o exercício de mais de duas especialidades.",
+      "fontes": [
+        "lei-5081"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "O curso dura no mínimo 5 anos.",
+      "verdade": true,
+      "explicacao": "A carga mínima é de 4.000 horas, com integralização em pelo menos 5 anos.",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-5081",
+      "titulo": "Lei nº 5.081/1966: exercício da Odontologia; competências e vedações do cirurgião-dentista (arts. 2º, 6º e 7º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l5081.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
+      "orgao": "Conselho Nacional de Educação (MEC)",
+      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-dentista",
+      "titulo": "Cirurgião-dentista clínico geral (CBO 2232-08): média de R$ 5.760,35, P25 de R$ 3.620,00 e P75 de R$ 7.792,00, jornada média de 33 h semanais, saldo de +586 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/cirurgiao-dentista-clinico-geral-cbo-223208",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    }
+  ],
+  "carta": {
+    "fato": "Por lei, o dentista pode dar atestado para justificar falta ao trabalho, no seu campo de atuação.",
+    "fontes": [
+      "lei-5081"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 8,
+      "texto": "Fora do expediente, salvo urgências odontológicas e hospitais."
+    },
+    {
+      "de": 8,
+      "ate": 12,
+      "texto": "Consultas e procedimentos marcados: limpeza, restaurações, tratamento de canal."
+    },
+    {
+      "de": 12,
+      "ate": 13,
+      "texto": "Almoço, quando a agenda deixa."
+    },
+    {
+      "de": 13,
+      "ate": 18,
+      "texto": "Mais pacientes; casos longos, como cirurgias e próteses, costumam ficar para a tarde."
+    },
+    {
+      "de": 18,
+      "ate": 21,
+      "texto": "Muitos consultórios atendem depois do horário comercial."
+    },
+    {
+      "de": 21,
+      "ate": 24,
+      "texto": "Gestão do consultório: agenda, laboratório de prótese e pagamentos."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
+  "dna": {
+    "pessoas": 75,
+    "pressao": 55,
+    "corpo": 60,
+    "rotina": 60,
+    "numeros": 35,
+    "criatividade": 45
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "promocao-clareamento",
+      "situacao": "A clínica quer divulgar nas redes um \"clareamento com preço imperdível, só hoje\".",
+      "opcoes": [
+        {
+          "texto": "Topar, é só marketing",
+          "recomendada": false
+        },
+        {
+          "texto": "Explicar que a lei veda anunciar preços como competição desleal e propor uma divulgação informativa",
+          "recomendada": true
+        },
+        {
+          "texto": "Deixar a decisão para o dono",
+          "recomendada": false
+        }
+      ],
+      "resposta": "A lei veda ao cirurgião-dentista anunciar preços, formas de pagamento e outras formas de comercialização que signifiquem competição desleal. Informar sobre o tratamento é diferente de fazer promoção de preço.",
+      "fontes": [
+        "lei-5081"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Duração mínima pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 5,
+        "anos_ate": 5,
+        "texto": "4.000 horas em 5 anos, presencial, com clínica-escola.",
+        "fontes": [
+          "cne-2-2007",
+          "decreto-12456"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização",
+        "anos_de": 1,
+        "anos_ate": 3,
+        "texto": "Em áreas como ortodontia, endodontia e implantodontia.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  }
+}

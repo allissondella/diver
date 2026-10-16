@@ -177,6 +177,16 @@ Fonte `secundaria` com `nota` é pendência: antes de publicar, troque pela prim
 
 **Onda 3.** Carreiras técnicas como fichas próprias, carreiras públicas e profissões novas.
 
+**Situação em 16/10/2026.** As 22 fichas das Ondas 1 e 2 estão escritas, a pedido do usuário ("sobe todas as outras profissões"):
+
+- todas passam no `conferir-ficha` sem erro e sem aviso;
+- todas estão como `rascunho`: a equipe vê, e o aluno vê "Em breve";
+- nenhuma das 21 novas tem "Um dia como" (fica para a Fase 2);
+- a pesquisa de normas, leis e salários foi feita uma vez para todas, e cada ficha foi escrita e conferida em separado;
+- parecer das fontes: `docs/validacoes/profissoes-fichas-2026-10-16.md`.
+
+Para publicar, cada ficha precisa da revisão de um profissional da área e do OK do usuário.
+
 ## 9. Fases e critério de pronto
 
 ### Fase 1, até a primeira semana de janeiro de 2027

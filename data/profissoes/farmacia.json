@@ -1,0 +1,393 @@
+{
+  "id": "farmacia",
+  "versao": 1,
+  "nome": "Farmácia",
+  "area": "saude",
+  "frase": "Cuida do medicamento do começo ao fim: produção, qualidade e orientação de quem vai usar.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "laboratorio",
+    "conselho-profissional"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "5 anos",
+      "detalhe": "4.000 horas, bacharelado",
+      "fontes": [
+        "cne-4-2009"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial ou semipresencial",
+      "detalhe": "sem EAD; no semipresencial, pelo menos 40% de atividades presenciais",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 4.617",
+      "detalhe": "média de contratação de farmacêutico com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-farma"
+      ]
+    },
+    "registro": {
+      "valor": "CRF",
+      "detalhe": "só inscritos no Conselho Regional de Farmácia exercem",
+      "fontes": [
+        "lei-3820"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 104562,
+    "texto": "Em 2024, Farmácia teve cerca de 105 mil matrículas a distância, a 8ª maior do país nesse formato. Com o novo marco da EAD, os cursos da saúde passam a ser presenciais ou semipresenciais.",
+    "fontes": [
+      "censo-2024",
+      "portaria-378"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Na farmácia, é o responsável técnico e precisa estar presente durante todo o horário de funcionamento, orientando sobre o uso dos medicamentos. A lei trata a farmácia como unidade de assistência à saúde, não só como comércio. Fora dela, o farmacêutico atua na indústria, no controle de qualidade, em laboratórios de análises clínicas, em farmácias de manipulação e hospitalares e na vigilância sanitária.",
+      "fontes": [
+        "lei-13021"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Na farmácia, o dia é de dispensação de receitas, orientação ao paciente, controle de estoque e de medicamentos controlados. Na indústria, a rotina é de laboratório, protocolos e documentação. No hospital, o farmacêutico confere prescrições e prepara doses com a equipe.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Química, biologia e o caminho do medicamento: descoberta, produção, controle de qualidade e uso seguro, com estágios em farmácia, hospital, indústria e laboratório.",
+      "disciplinas": [
+        "Química orgânica",
+        "Bioquímica",
+        "Farmacologia",
+        "Farmacotécnica",
+        "Tecnologia farmacêutica",
+        "Controle de qualidade",
+        "Análises clínicas",
+        "Farmácia clínica",
+        "Toxicologia"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Química e Biologia costumam pesar.",
+      "materias_chave": [
+        "enem-quimica",
+        "enem-biologia"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira, para uma jornada média de 41 horas semanais.",
+      "fontes": [
+        "caged-farma"
+      ],
+      "medias": [
+        {
+          "cargo": "Farmacêutico",
+          "valor": 4616.94,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-farma"
+          ],
+          "faixa": {
+            "de": 3845,
+            "ate": 5113,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um farmacêutico contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 10000,
+        "passo": 100,
+        "inicial": 6500
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Farmácia e drogaria",
+          "texto": "Responsabilidade técnica, orientação ao paciente e gestão da loja.",
+          "fontes": [
+            "lei-13021"
+          ]
+        },
+        {
+          "titulo": "Indústria",
+          "texto": "Pesquisa, produção, controle de qualidade e assuntos regulatórios.",
+          "fontes": []
+        },
+        {
+          "titulo": "Análises clínicas",
+          "texto": "Laboratórios de exames, ao lado de biomédicos e outros profissionais.",
+          "fontes": []
+        },
+        {
+          "titulo": "Hospital e saúde pública",
+          "texto": "Farmácia hospitalar, farmácia clínica e vigilância sanitária.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "A farmácia precisa de farmacêutico durante todo o horário aberto, o que inclui noites, fins de semana e feriados nas lojas 24 horas.",
+          "fontes": [
+            "lei-13021"
+          ]
+        },
+        {
+          "texto": "Boa parte do trabalho no balcão é administrativa: estoque, receitas controladas e registros.",
+          "fontes": []
+        },
+        {
+          "texto": "A média de contratação com carteira fica em cerca de R$ 4,6 mil.",
+          "fontes": [
+            "caged-farma"
+          ]
+        },
+        {
+          "texto": "Dizer não a quem quer remédio sem receita faz parte da rotina, e nem sempre é fácil.",
+          "fontes": []
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "biomedicina",
+        "diferenca": "Análises clínicas, imagem e pesquisa em laboratório."
+      },
+      {
+        "id": "medicina",
+        "diferenca": "Diagnostica e prescreve; o farmacêutico orienta o uso do que foi prescrito."
+      },
+      {
+        "id": "enfermagem",
+        "diferenca": "Administra os medicamentos e cuida do paciente no dia a dia."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "sem-farmaceutico",
+      "afirmacao": "Uma farmácia pode funcionar sem farmacêutico em parte do dia.",
+      "verdade": false,
+      "explicacao": "A lei exige farmacêutico presente durante todo o horário de funcionamento.",
+      "fontes": [
+        "lei-13021"
+      ]
+    },
+    {
+      "id": "saude",
+      "afirmacao": "Pela lei, farmácia é unidade de assistência à saúde, não só comércio.",
+      "verdade": true,
+      "explicacao": "A lei a define como unidade de prestação de serviços de assistência farmacêutica, assistência à saúde e orientação sanitária.",
+      "fontes": [
+        "lei-13021"
+      ]
+    },
+    {
+      "id": "crf",
+      "afirmacao": "Precisa de registro no conselho para trabalhar como farmacêutico.",
+      "verdade": true,
+      "explicacao": "Só inscritos no Conselho Regional de Farmácia exercem a profissão.",
+      "fontes": [
+        "lei-3820"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Farmácia pode ser cursada totalmente a distância.",
+      "verdade": false,
+      "explicacao": "Cursos da saúde só podem ser presenciais ou semipresenciais, com pelo menos 40% de atividades presenciais.",
+      "fontes": [
+        "portaria-378"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "O curso dura no mínimo 5 anos.",
+      "verdade": true,
+      "explicacao": "A carga mínima é de 4.000 horas, com integralização em pelo menos 5 anos.",
+      "fontes": [
+        "cne-4-2009"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-13021",
+      "titulo": "Lei nº 13.021/2014: farmácia como unidade de assistência à saúde; farmacêutico presente em todo o horário (arts. 3º, 5º e 6º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l13021.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-farma",
+      "titulo": "Farmacêutico (CBO 2234-05): média de R$ 4.616,94, P25 de R$ 3.845,00 e P75 de R$ 5.113,00, jornada média de 41 h semanais, saldo de +2.320 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/farmaceutico-cbo-223405",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "cne-4-2009",
+      "titulo": "Resolução CNE/CES nº 4/2009: carga horária mínima de Biomedicina, Educação Física, Farmácia, Fisioterapia, Nutrição e outros cursos da saúde",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/public/arquivos/legislacoes/Resolucao-cne-ces-004-2009-04-06.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-3820",
+      "titulo": "Lei nº 3.820/1960: Conselhos de Farmácia; exercício só para inscritos no CRF (art. 13)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l3820.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    }
+  ],
+  "carta": {
+    "fato": "Por lei, toda farmácia precisa de farmacêutico presente durante todo o horário em que está aberta.",
+    "fontes": [
+      "lei-13021"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 7,
+      "texto": "Drogarias 24 horas e hospitais têm farmacêutico de plantão também de madrugada."
+    },
+    {
+      "de": 7,
+      "ate": 10,
+      "texto": "Abertura: conferência de estoque, entregas e receitas controladas."
+    },
+    {
+      "de": 10,
+      "ate": 13,
+      "texto": "Pico de atendimento no balcão e orientação sobre o uso dos remédios."
+    },
+    {
+      "de": 13,
+      "ate": 14,
+      "texto": "Almoço em revezamento: a farmácia não pode ficar sem farmacêutico."
+    },
+    {
+      "de": 14,
+      "ate": 18,
+      "texto": "Na indústria e no laboratório, análises e controle de qualidade; no hospital, conferência de prescrições."
+    },
+    {
+      "de": 18,
+      "ate": 24,
+      "texto": "Movimento de fim de dia e fechamento dos registros."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
+  "dna": {
+    "pessoas": 60,
+    "pressao": 50,
+    "corpo": 30,
+    "rotina": 70,
+    "numeros": 55,
+    "criatividade": 30
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "abrir-sem",
+      "situacao": "A loja quer abrir uma hora mais cedo, mas o farmacêutico só chega às 8h.",
+      "opcoes": [
+        {
+          "texto": "Abrir assim mesmo, é só uma hora",
+          "recomendada": false
+        },
+        {
+          "texto": "Explicar que a farmácia só funciona com farmacêutico presente e ajustar a escala",
+          "recomendada": true
+        },
+        {
+          "texto": "Deixar o balconista atender e orientar",
+          "recomendada": false
+        }
+      ],
+      "resposta": "A lei exige farmacêutico presente durante todo o horário de funcionamento. Abrir sem ele não é opção, nem por uma hora.",
+      "fontes": [
+        "lei-13021"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Duração mínima pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 5,
+        "anos_ate": 5,
+        "texto": "4.000 horas em 5 anos, com estágios em farmácia, hospital e indústria.",
+        "fontes": [
+          "cne-4-2009"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Em farmácia clínica, hospitalar, análises clínicas ou indústria.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  }
+}

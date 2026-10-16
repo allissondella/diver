@@ -1,0 +1,439 @@
+{
+  "id": "educacao-fisica",
+  "versao": 1,
+  "nome": "Educação Física",
+  "area": "saude",
+  "frase": "Planeja e orienta atividade física e esporte, da academia à escola e ao alto rendimento.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "trabalho-com-o-corpo",
+    "conselho-profissional"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "4 anos",
+      "detalhe": "3.200 horas, com bacharelado ou licenciatura",
+      "fontes": [
+        "cne-6-2018",
+        "cne-4-2009"
+      ]
+    },
+    "formato": {
+      "valor": "Sem EAD na licenciatura",
+      "detalhe": "licenciatura presencial ou semipresencial; o formato do bacharelado segue a área em que o MEC classifica o curso",
+      "fontes": [
+        "portaria-378"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 3.321",
+      "detalhe": "média de contratação de professor de educação física do ensino fundamental com carteira, 12 meses até ago/2026",
+      "fontes": [
+        "caged-prof-ef"
+      ]
+    },
+    "registro": {
+      "valor": "Cref",
+      "detalhe": "registro obrigatório para atuar e usar o título",
+      "fontes": [
+        "lei-9696"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 303939,
+    "posicao_ranking_matriculas": 8,
+    "texto": "Em 2024, Educação Física foi o 8º curso com mais matrículas no Brasil, com cerca de 304 mil estudantes, cerca de 226 mil deles a distância.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Planeja, orienta, supervisiona e avalia programas de atividade física e esporte. O bacharel atua em academias, clubes, treino personalizado, esporte de rendimento e programas de saúde; o licenciado dá aulas na educação básica. Por lei, a atividade e o título de profissional de Educação Física exigem registro no Cref.",
+      "nao_faz": "Não monta dieta: planejar e prescrever dietas são atividades privativas do nutricionista. Também não aplica técnicas de fisioterapia, que são privativas do fisioterapeuta.",
+      "fontes": [
+        "lei-9696",
+        "lei-8234",
+        "dl-938"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Na academia e no treino personalizado, os horários de pico são cedo e à noite, e o meio do dia costuma ficar vazio. Na escola, a rotina segue o calendário de aulas. No esporte, inclui viagens, competições e fins de semana.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "O curso tem ingresso único: uma etapa comum de 1.600 horas e, depois, a escolha entre bacharelado e licenciatura, com mais 1.600 horas na etapa específica.",
+      "disciplinas": [
+        "Anatomia",
+        "Fisiologia do exercício",
+        "Biomecânica",
+        "Treinamento esportivo",
+        "Medidas e avaliação",
+        "Esportes coletivos e individuais",
+        "Ginástica e dança",
+        "Educação física escolar",
+        "Atividade física e saúde"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "cne-6-2018"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Biologia costuma pesar, e as práticas corporais também caem na prova de Linguagens do Enem.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-artes-ef"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "Muita gente trabalha por conta própria, com treino personalizado e assessorias, e essa renda fica fora das médias de contratação com carteira. Os números são de dois cargos comuns: professor de educação física no ensino fundamental e preparador físico.",
+      "fontes": [
+        "caged-prof-ef",
+        "caged-preparador"
+      ],
+      "medias": [
+        {
+          "cargo": "Professor de educação física",
+          "valor": 3320.8,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-prof-ef"
+          ],
+          "faixa": {
+            "de": 2035,
+            "ate": 3960,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        },
+        {
+          "cargo": "Preparador físico",
+          "valor": 2978.71,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-preparador"
+          ],
+          "faixa": {
+            "de": 1900,
+            "ate": 3245,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um professor de educação física do ensino fundamental contratado com carteira?",
+        "min": 1000,
+        "max": 8000,
+        "passo": 100,
+        "inicial": 5000,
+        "segunda": {
+          "pergunta": "E um preparador físico?",
+          "inicial": 5000
+        }
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Licenciatura",
+          "texto": "Aulas na educação básica, em escolas públicas, por concurso, e privadas.",
+          "fontes": []
+        },
+        {
+          "titulo": "Academias e treino personalizado",
+          "texto": "Musculação, ginástica, corrida e treino individual, muitas vezes como autônomo.",
+          "fontes": []
+        },
+        {
+          "titulo": "Esporte de rendimento",
+          "texto": "Preparação física, comissões técnicas, clubes e federações.",
+          "fontes": []
+        },
+        {
+          "titulo": "Saúde e qualidade de vida",
+          "texto": "Programas em empresas, unidades de saúde e grupos de idosos.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "Os horários são os dos alunos: começar às 6h e terminar às 22h é comum na academia, com um buraco no meio do dia.",
+          "fontes": []
+        },
+        {
+          "texto": "A média de contratação com carteira fica entre R$ 3 mil e R$ 3,3 mil nos cargos mais comuns; renda maior costuma vir do trabalho autônomo.",
+          "fontes": [
+            "caged-prof-ef",
+            "caged-preparador"
+          ]
+        },
+        {
+          "texto": "A licenciatura não pode mais ser feita a distância.",
+          "fontes": [
+            "portaria-378"
+          ]
+        },
+        {
+          "texto": "O corpo é a ferramenta de trabalho: lesão e cansaço afetam a renda de quem é autônomo.",
+          "fontes": []
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "fisioterapia",
+        "diferenca": "Reabilita depois de lesões, cirurgias e doenças."
+      },
+      {
+        "id": "nutricao",
+        "diferenca": "Planeja a alimentação; a dieta é do nutricionista, o treino é seu."
+      },
+      {
+        "id": "pedagogia",
+        "diferenca": "Forma para dar aula na educação infantil e nos anos iniciais."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "personal",
+      "afirmacao": "Qualquer pessoa em boa forma pode trabalhar como personal.",
+      "verdade": false,
+      "explicacao": "Atuar e se apresentar como profissional de Educação Física exige diploma e registro no Cref.",
+      "fontes": [
+        "lei-9696"
+      ]
+    },
+    {
+      "id": "ingresso",
+      "afirmacao": "Bacharelado e licenciatura começam juntos.",
+      "verdade": true,
+      "explicacao": "O ingresso é único, com uma etapa comum de 1.600 horas antes da escolha.",
+      "fontes": [
+        "cne-6-2018"
+      ]
+    },
+    {
+      "id": "dieta",
+      "afirmacao": "O personal pode montar a dieta do aluno.",
+      "verdade": false,
+      "explicacao": "Planejar e prescrever dietas são atividades privativas do nutricionista.",
+      "fontes": [
+        "lei-8234"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Dá para fazer a licenciatura em Educação Física totalmente a distância.",
+      "verdade": false,
+      "explicacao": "Licenciaturas só podem ser presenciais ou semipresenciais, com pelo menos 30% de atividades presenciais.",
+      "fontes": [
+        "portaria-378"
+      ]
+    },
+    {
+      "id": "horas",
+      "afirmacao": "O curso tem carga de referência de 3.200 horas.",
+      "verdade": true,
+      "explicacao": "É o que dizem as diretrizes nacionais da área.",
+      "fontes": [
+        "cne-6-2018"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "cne-6-2018",
+      "titulo": "Resolução CNE/CES nº 6/2018: Diretrizes de Educação Física, 3.200 horas, ingresso único e escolha entre bacharelado e licenciatura",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/public/arquivos/legislacoes/Res-CES-CNE-006-2018-12-18.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-prof-ef",
+      "titulo": "Professor de educação física do ensino fundamental (CBO 2313-15): média de R$ 3.320,80, P25 de R$ 2.035,00 e P75 de R$ 3.960,00, jornada média de 29 h semanais, saldo de +191 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/professor-de-educacao-fisica-do-ensino-fundamental-cbo-231315",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "lei-9696",
+      "titulo": "Lei nº 9.696/1998: profissão de Educação Física e registro no Cref (arts. 1º a 3º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9696.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-8234",
+      "titulo": "Lei nº 8.234/1991: profissão de nutricionista; atividades privativas (arts. 3º e 4º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/1989_1994/L8234.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-preparador",
+      "titulo": "Preparador físico (CBO 2241-20): média de R$ 2.978,71, P25 de R$ 1.900,00 e P75 de R$ 3.245,00, jornada média de 36 h semanais, saldo de +2.832 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/preparador-fisico-cbo-224120",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "cne-4-2009",
+      "titulo": "Resolução CNE/CES nº 4/2009: carga horária mínima de Biomedicina, Educação Física, Farmácia, Fisioterapia, Nutrição e outros cursos da saúde",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/public/arquivos/legislacoes/Resolucao-cne-ces-004-2009-04-06.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    },
+    {
+      "id": "dl-938",
+      "titulo": "Decreto-Lei nº 938/1969: atividade privativa do fisioterapeuta (art. 3º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/1965-1988/Del0938.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    }
+  ],
+  "carta": {
+    "fato": "Desde 2018, bacharelado e licenciatura em Educação Física começam juntos: a escolha vem depois de uma etapa comum de 1.600 horas.",
+    "fontes": [
+      "cne-6-2018"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 6,
+      "texto": "Hora de dormir: quem dá treino às 6h acorda cedo."
+    },
+    {
+      "de": 6,
+      "ate": 9,
+      "texto": "Pico da academia e dos treinos antes do trabalho dos alunos."
+    },
+    {
+      "de": 9,
+      "ate": 12,
+      "texto": "Aulas na escola ou treinos de atletas."
+    },
+    {
+      "de": 12,
+      "ate": 15,
+      "texto": "Intervalo longo para muitos: almoço, deslocamento e planejamento dos treinos."
+    },
+    {
+      "de": 15,
+      "ate": 18,
+      "texto": "Escolinhas esportivas, clubes e aulas da tarde."
+    },
+    {
+      "de": 18,
+      "ate": 22,
+      "texto": "Segundo pico da academia e dos treinos personalizados."
+    },
+    {
+      "de": 22,
+      "ate": 24,
+      "texto": "Fim do expediente e organização da agenda do dia seguinte."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
+  "dna": {
+    "pessoas": 85,
+    "pressao": 40,
+    "corpo": 90,
+    "rotina": 45,
+    "numeros": 30,
+    "criatividade": 50
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "dieta-aluno",
+      "situacao": "Um aluno quer emagrecer rápido e pede que você monte a dieta dele junto com o treino.",
+      "opcoes": [
+        {
+          "texto": "Montar uma dieta simples, ele confia em você",
+          "recomendada": false
+        },
+        {
+          "texto": "Cuidar do treino e indicar um nutricionista para a dieta",
+          "recomendada": true
+        },
+        {
+          "texto": "Dizer que dieta não importa e só aumentar o treino",
+          "recomendada": false
+        }
+      ],
+      "resposta": "Planejar dietas é atividade privativa do nutricionista. O treino é seu; a dieta, de outro profissional. Trabalhar em conjunto dá mais resultado e protege o aluno.",
+      "fontes": [
+        "lei-8234",
+        "lei-9696"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Duração mínima pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado ou licenciatura)",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "3.200 horas: etapa comum e etapa específica, de bacharelado ou de licenciatura.",
+        "fontes": [
+          "cne-6-2018",
+          "cne-4-2009"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Em treinamento, fisiologia do exercício, esporte ou educação física escolar.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  }
+}

@@ -31,6 +31,8 @@ A **Fase 0 está feita**: protótipo em HTML/CSS/JS puros com os modos Mergulho,
   - escritas **uma por vez** com a skill `criar-ficha-profissao` e conferidas por `node scripts/conferir-ficha.mjs <ficha>`, que também confere os `materias_chave` no catálogo;
   - ficha `rascunho`/`validada` aparece para o aluno como "Em breve" (equipe e modo local veem);
   - **Enfermagem segue rascunho até a revisão de um(a) enfermeiro(a)**: não publique nem mude o conteúdo sem o OK do usuário.
+  - **As 22 fichas estão escritas (2026-10-16, pedido do usuário: "sobe todas as outras profissões"):** as 21 novas seguem `rascunho`, sem "Um dia como", e o aluno vê "Em breve". Cada uma só vira `publicada` depois da revisão de um profissional da área (`revisao.profissional: ok`, com nome e data) e do OK do usuário. Parecer das fontes: `docs/validacoes/profissoes-fichas-2026-10-16.md`. Salário do Caged vence em 180 dias (abril de 2027).
+  - Ficha sem piso em lei mostra a faixa comum na tabela de salário; `quanto_ganha.piso_rotulo` troca o rótulo do piso (Pedagogia: magistério público, até 40 h).
 - **Recompensas e log:** "Um dia como" 30 XP/3 pérolas e "Mito ou verdade" 20 XP/2 pérolas, uma vez por profissão, pela economia. Eventos `profissao_*`/`profissoes_*` no log, sem tabela nova; nada digitado entra no log.
 - **Conquistas e Admin:** conquistas gerais (Explorador de carreiras, Um dia na pele, Baralho completo) no Perfil; bloco "Mapa das Profissões" no Admin, tirado do log.
 - **Prévia do kit:** em `docs/prototipos/profissoes/` (não é do app).

@@ -5,6 +5,43 @@
 
 ---
 
+## 2026-10-16 · Mapa das Profissões: as 21 fichas que faltavam
+- **Pedido do usuário:** "manda bala e sobe todas as outras profissões" e "Podem ir até subir tudo para prd".
+- **O que entrou:**
+  - 21 fichas novas em `data/profissoes/<id>.json`:
+    - Saúde: Medicina, Psicologia, Fisioterapia, Educação Física, Odontologia, Medicina Veterinária, Nutrição, Farmácia e Biomedicina;
+    - Negócios: Administração, Ciências Contábeis e Gestão de Pessoas;
+    - Direito, Pedagogia e Comunicação: Direito, Pedagogia e Jornalismo e Publicidade;
+    - Tecnologia: Sistemas, Ciência da Computação e IA;
+    - Engenharia: Engenharia Civil, Arquitetura e Engenharia de Produção.
+  - Cada ficha traz 4 números, 8 seções, 5 ou 6 mitos, um dilema com base em lei, "Agora mesmo" de 24 h, formação, DNA estimado e vizinhas.
+  - Todas passam no `conferir-ficha` sem erro e sem aviso.
+  - No `indice.json`: `status: rascunho`, `arquivo`, `frase` e carta para quem não tinha. A carta de Medicina deixou de nomear a universidade. `fontes_cartas` tem os rótulos novos.
+- **Fontes:**
+  - as regras vêm do texto oficial: leis no Planalto, Decreto 12.456 e Portaria MEC 378, resoluções do CNE e da CNRM, decisão do STF e projeto arquivado no Senado;
+  - salários: 25 cargos do Novo Caged, via Portal Salário, nos 12 meses até ago/2026;
+  - parecer em `docs/validacoes/profissoes-fichas-2026-10-16.md` (Aprovada com ressalvas).
+- **Ficou de fora** por falta de confirmação:
+  - "diagnóstico" como ato privativo do médico (o inciso foi vetado);
+  - o valor em reais do piso dos engenheiros (depende da ADPF 171);
+  - a posição exata de Gestão de Pessoas no ranking da EAD;
+  - nomes de instituição em curso específico.
+- **Desenho** (só a tela; o conteúdo da Enfermagem não mudou):
+  - tabela de salário sem piso em lei mostra a faixa comum;
+  - `piso_rotulo` opcional (Pedagogia: "Piso do magistério público (até 40 h)");
+  - a régua da formação se estica para formações longas (Medicina + residência);
+  - texto longo no cartão de número fica menor e quebra "semi-presencial" com hífen (antes vazava 8 px no celular);
+  - os cartões de "Profissões vizinhas" viraram link inteiro (antes o link era só o nome, com 19 px de altura, e o auditor acusou);
+  - a nota da Maré de cartas lista as fontes novas.
+  - `auditar-design` passou, também no navegador, com três fichas novas na lista.
+- **Quem vê:** a equipe e o modo local veem as 22 fichas "em revisão". O aluno vê "Em breve", inclusive no link direto, e as cartas na Maré.
+- **Pendências:**
+  - revisão de 1 profissional por ficha antes de publicar (Sistemas, Computação e IA podem ir para o Allisson);
+  - trocar as fontes secundárias pelas oficiais: planilha do Inep, dados do Sisu, Catálogo de Tecnólogos e Resolução CNE/CES nº 1/2013 (achados 1 a 6 do parecer);
+  - atualizar os salários até abril de 2027;
+  - calibrar o DNA com profissionais;
+  - "Um dia como" da Fase 2.
+
 ## 2026-10-16 · Mapa das Profissões: Panorama da Tecnologia (kit v1.2)
 - **Depois da publicação (pedido do usuário, "para ficar descolado"):** o jogo passou a se chamar **"Que área da tecnologia é a sua praia?"** (`jogo.titulo` no `tecnologia.json` e nas menções nos docs e no Admin).
 - **Pedido do usuário:** "Vamos subir esse mapa de profissão de tecnologia" (zip `diver-mapa-profissoes-v3`). Plano aprovado com "Sim pra tudo, manda bala", incluindo a ponte com o Explora Tech.

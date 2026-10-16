@@ -1,0 +1,384 @@
+{
+  "id": "nutricao",
+  "versao": 1,
+  "nome": "Nutrição",
+  "area": "saude",
+  "frase": "Planeja a alimentação de pessoas e grupos, do consultório ao hospital e à cozinha industrial.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "conselho-profissional"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "4 anos",
+      "detalhe": "3.200 horas, bacharelado",
+      "fontes": [
+        "cne-4-2009"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial ou semipresencial",
+      "detalhe": "sem EAD; no semipresencial, pelo menos 40% de atividades presenciais",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 3.971",
+      "detalhe": "média de contratação de nutricionista com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-nutri"
+      ]
+    },
+    "registro": {
+      "valor": "CRN",
+      "detalhe": "carteira do Conselho Regional de Nutricionistas",
+      "fontes": [
+        "lei-8234"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 102454,
+    "texto": "Em 2024, Nutrição teve cerca de 102 mil matrículas a distância, a 9ª maior do país nesse formato. Com o novo marco da EAD, os cursos da saúde passam a ser presenciais ou semipresenciais.",
+    "fontes": [
+      "censo-2024",
+      "portaria-378"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Por lei, são privativos do nutricionista o planejamento e a supervisão de serviços de alimentação e nutrição, os estudos dietéticos, a assistência nutricional a pessoas e grupos e a prescrição de dietas para quem está doente, no hospital ou no consultório. Também pode prescrever suplementos e pedir exames de laboratório para acompanhar a dieta.",
+      "fontes": [
+        "lei-8234"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "No consultório, são consultas com avaliação, plano alimentar e retornos. No hospital, visitas aos pacientes e ajustes de dieta com a equipe. Em restaurantes industriais e na alimentação escolar, o trabalho é de cardápio, compras, controle de qualidade e gestão de equipe.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Bioquímica e fisiologia, ciência dos alimentos, avaliação nutricional e dietoterapia, com estágios em clínica, saúde pública e alimentação coletiva.",
+      "disciplinas": [
+        "Bioquímica",
+        "Fisiologia",
+        "Composição dos alimentos",
+        "Técnica dietética",
+        "Avaliação nutricional",
+        "Dietoterapia",
+        "Nutrição materno-infantil",
+        "Alimentação coletiva",
+        "Saúde pública"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Biologia e Química costumam pesar.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-quimica"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira; consultório próprio e atendimento online ficam fora da conta.",
+      "fontes": [
+        "caged-nutri"
+      ],
+      "medias": [
+        {
+          "cargo": "Nutricionista",
+          "valor": 3970.52,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-nutri"
+          ],
+          "faixa": {
+            "de": 3083,
+            "ate": 4537,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um nutricionista contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 10000,
+        "passo": 100,
+        "inicial": 6000
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Nutrição clínica",
+          "texto": "Hospitais, clínicas e consultório próprio.",
+          "fontes": []
+        },
+        {
+          "titulo": "Alimentação coletiva",
+          "texto": "Restaurantes industriais, alimentação escolar e hospitais, com gestão de cardápio e equipe.",
+          "fontes": [
+            "lei-8234"
+          ]
+        },
+        {
+          "titulo": "Esporte",
+          "texto": "Atletas, clubes e academias, junto com o profissional de educação física.",
+          "fontes": []
+        },
+        {
+          "titulo": "Saúde pública e indústria",
+          "texto": "Programas de alimentação, vigilância e desenvolvimento de produtos alimentícios.",
+          "fontes": [
+            "lei-8234"
+          ]
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "A concorrência com quem dá \"dica de dieta\" nas redes sem formação é grande, e explicar o que é ciência faz parte do trabalho.",
+          "fontes": []
+        },
+        {
+          "texto": "No restaurante industrial, o trabalho é mais gestão de cozinha e equipe do que consulta.",
+          "fontes": []
+        },
+        {
+          "texto": "A média de contratação com carteira fica em cerca de R$ 4 mil.",
+          "fontes": [
+            "caged-nutri"
+          ]
+        },
+        {
+          "texto": "Mudar hábito é lento: muita gente abandona o plano no meio, e isso faz parte.",
+          "fontes": []
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "educacao-fisica",
+        "diferenca": "Treino e atividade física; a dieta fica com o nutricionista."
+      },
+      {
+        "id": "medicina",
+        "diferenca": "Diagnostica e trata doenças; a dieta do paciente é do nutricionista."
+      },
+      {
+        "id": "enfermagem",
+        "diferenca": "Cuidado contínuo do paciente, do posto de saúde à UTI."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "suplemento",
+      "afirmacao": "Nutricionista pode prescrever suplementos.",
+      "verdade": true,
+      "explicacao": "A lei inclui a prescrição de suplementos nutricionais necessários à dieta.",
+      "fontes": [
+        "lei-8234"
+      ]
+    },
+    {
+      "id": "dieta-doente",
+      "afirmacao": "Qualquer profissional de saúde pode prescrever dieta para quem está doente.",
+      "verdade": false,
+      "explicacao": "Assistência dietoterápica, com prescrição de dietas para enfermos, é privativa do nutricionista.",
+      "fontes": [
+        "lei-8234"
+      ]
+    },
+    {
+      "id": "exames",
+      "afirmacao": "Nutricionista pode pedir exames de laboratório.",
+      "verdade": true,
+      "explicacao": "Pode solicitar os exames necessários para acompanhar a dieta.",
+      "fontes": [
+        "lei-8234"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Nutrição pode ser cursada totalmente a distância.",
+      "verdade": false,
+      "explicacao": "Cursos da saúde só podem ser presenciais ou semipresenciais, com pelo menos 40% de atividades presenciais.",
+      "fontes": [
+        "portaria-378"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "O curso dura no mínimo 4 anos.",
+      "verdade": true,
+      "explicacao": "A carga mínima é de 3.200 horas, com integralização em pelo menos 4 anos.",
+      "fontes": [
+        "cne-4-2009"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-8234",
+      "titulo": "Lei nº 8.234/1991: profissão de nutricionista; atividades privativas (arts. 3º e 4º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/1989_1994/L8234.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-nutri",
+      "titulo": "Nutricionista (CBO 2237-10): média de R$ 3.970,52, P25 de R$ 3.083,00 e P75 de R$ 4.537,00, jornada média de 40 h semanais, saldo de +2.426 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/nutricionista-cbo-223710",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "cne-4-2009",
+      "titulo": "Resolução CNE/CES nº 4/2009: carga horária mínima de Biomedicina, Educação Física, Farmácia, Fisioterapia, Nutrição e outros cursos da saúde",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/public/arquivos/legislacoes/Resolucao-cne-ces-004-2009-04-06.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    }
+  ],
+  "carta": {
+    "fato": "Nutricionista pode pedir exames de laboratório para acompanhar a dieta: a lei garante isso desde 1991.",
+    "fontes": [
+      "lei-8234"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 6,
+      "texto": "Fora do expediente para a maioria."
+    },
+    {
+      "de": 6,
+      "ate": 9,
+      "texto": "Cozinhas industriais e hospitalares a todo vapor: conferência de cardápio e recebimento de alimentos."
+    },
+    {
+      "de": 9,
+      "ate": 12,
+      "texto": "Consultas no consultório ou visitas aos pacientes internados."
+    },
+    {
+      "de": 12,
+      "ate": 14,
+      "texto": "Hora do almoço servido: controle de qualidade na distribuição das refeições."
+    },
+    {
+      "de": 14,
+      "ate": 18,
+      "texto": "Planos alimentares, retornos e reuniões com a equipe."
+    },
+    {
+      "de": 18,
+      "ate": 24,
+      "texto": "Atendimentos noturnos e online; depois, cardápios da semana."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
+  "dna": {
+    "pessoas": 75,
+    "pressao": 45,
+    "corpo": 30,
+    "rotina": 60,
+    "numeros": 50,
+    "criatividade": 50
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "assinar-dieta",
+      "situacao": "Uma academia quer que você assine planos alimentares montados pelos instrutores, sem ver os alunos.",
+      "opcoes": [
+        {
+          "texto": "Assinar, é só formalidade",
+          "recomendada": false
+        },
+        {
+          "texto": "Recusar e propor atender os alunos você mesmo",
+          "recomendada": true
+        },
+        {
+          "texto": "Assinar só os que parecerem bons",
+          "recomendada": false
+        }
+      ],
+      "resposta": "Assistência nutricional e prescrição de dieta são atividades privativas do nutricionista. Assinar o que não fez é assumir a responsabilidade por um trabalho que não é seu. O caminho é avaliar cada aluno.",
+      "fontes": [
+        "lei-8234"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Duração mínima pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "3.200 horas em 4 anos, com estágios em clínica, saúde coletiva e alimentação coletiva.",
+        "fontes": [
+          "cne-4-2009"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Em nutrição clínica, esportiva ou saúde pública.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  }
+}

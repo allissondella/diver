@@ -1,0 +1,418 @@
+{
+  "id": "inteligencia-artificial",
+  "versao": 1,
+  "nome": "Inteligência Artificial",
+  "area": "tecnologia",
+  "frase": "Treina e coloca em uso sistemas que aprendem com dados: previsões, recomendações, visão e linguagem.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "computador",
+    "trabalho-com-numeros",
+    "trabalho-remoto-possivel"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "4 anos",
+      "detalhe": "bacharelados de Computação e de Estatística, com carga mínima de 3.000 horas",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    "formato": {
+      "valor": "Depende do curso",
+      "detalhe": "Computação pode ser presencial, semipresencial ou EAD; Estatística, só presencial ou semipresencial",
+      "fontes": [
+        "portaria-378"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 10.356",
+      "detalhe": "média de contratação de cientista de dados com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-cientista"
+      ]
+    },
+    "registro": {
+      "valor": "Sem conselho próprio",
+      "detalhe": "não há conselho de informática: o projeto que criaria um foi arquivado em 2014",
+      "fontes": [
+        "pls-607"
+      ]
+    }
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Coleta e prepara dados, escolhe e treina modelos de aprendizado de máquina, mede se eles acertam e os coloca para funcionar em produtos: previsão de demanda, detecção de fraude, recomendação, reconhecimento de imagem e assistentes de linguagem. Também acompanha os modelos depois de prontos, porque eles erram e ficam desatualizados.",
+      "nao_faz": "Não é só usar ferramentas prontas de conversa: o trabalho exige estatística, programação e cuidado com os dados das pessoas, que a LGPD protege.",
+      "fontes": [
+        "lei-13709"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Boa parte do tempo vai para entender e limpar dados, não para treinar modelos. Há experimentos, comparação de resultados, programação, reuniões com as áreas de negócio para entender o problema e explicações sobre o que o modelo faz e o que não faz.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Matemática e estatística (álgebra linear, cálculo e probabilidade), programação, bancos de dados, aprendizado de máquina, redes neurais, processamento de linguagem, visão computacional e ética no uso de dados. Poucos cursos levam o nome de Inteligência Artificial; muita gente chega pela Computação ou pela Estatística.",
+      "disciplinas": [
+        "Cálculo",
+        "Álgebra linear",
+        "Probabilidade e estatística",
+        "Programação",
+        "Algoritmos e estruturas de dados",
+        "Banco de dados",
+        "Aprendizado de máquina",
+        "Redes neurais",
+        "Processamento de linguagem natural",
+        "Visão computacional",
+        "Ética e proteção de dados"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Matemática pesa muito. No Sisu 2026, um curso de Inteligência Artificial de universidade federal teve a segunda maior nota de corte do país: 846,72 pontos.",
+      "materias_chave": [
+        "enem-matematica",
+        "enem-fisica",
+        "enem-ingles",
+        "enem-redacao"
+      ],
+      "fontes": [
+        "sisu-2026"
+      ]
+    },
+    "quanto_ganha": {
+      "texto": "Os cargos mais próximos no registro de emprego são cientista de dados e engenheiro de dados. As médias consideram só o salário-base de quem foi contratado com carteira; trabalho como PJ ou para empresas de fora fica fora da conta.",
+      "fontes": [
+        "caged-cientista",
+        "caged-eng-dados"
+      ],
+      "medias": [
+        {
+          "cargo": "Cientista de dados",
+          "valor": 10356.19,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-cientista"
+          ],
+          "faixa": {
+            "de": 5237,
+            "ate": 13480,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        },
+        {
+          "cargo": "Engenheiro de dados",
+          "valor": 14487.78,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-eng-dados"
+          ],
+          "faixa": {
+            "de": 8000,
+            "ate": 17645,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um cientista de dados contratado com carteira?",
+        "min": 2000,
+        "max": 25000,
+        "passo": 250,
+        "inicial": 15000,
+        "segunda": {
+          "pergunta": "E um engenheiro de dados?",
+          "inicial": 12000
+        }
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Ciência de dados",
+          "texto": "Análises, previsões e modelos para decisões de negócio.",
+          "fontes": []
+        },
+        {
+          "titulo": "Engenharia de aprendizado de máquina",
+          "texto": "Colocar modelos em produção e mantê-los funcionando.",
+          "fontes": []
+        },
+        {
+          "titulo": "Engenharia de dados",
+          "texto": "Organizar o caminho dos dados, da coleta ao uso.",
+          "fontes": []
+        },
+        {
+          "titulo": "Pesquisa",
+          "texto": "Universidades e laboratórios que criam métodos novos.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "Limpar e organizar dados toma mais tempo do que treinar modelos.",
+          "fontes": []
+        },
+        {
+          "texto": "A nota de corte pode ser altíssima: no Sisu 2026, um curso de IA ficou com a segunda maior do país.",
+          "fontes": [
+            "sisu-2026"
+          ]
+        },
+        {
+          "texto": "Dados de saúde, genéticos e biométricos são sensíveis na LGPD, com regras mais rígidas de uso.",
+          "fontes": [
+            "lei-13709"
+          ]
+        },
+        {
+          "texto": "Modelo também erra: explicar os limites dele para quem vai usar faz parte do trabalho.",
+          "fontes": []
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "ciencia-da-computacao",
+        "diferenca": "Base mais ampla: algoritmos, sistemas, redes e IA."
+      },
+      {
+        "id": "sistemas",
+        "diferenca": "Construir e manter sistemas, com caminho mais curto possível."
+      },
+      {
+        "id": "engenharia-de-producao",
+        "diferenca": "Dados e otimização aplicados a processos."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "nota",
+      "afirmacao": "Curso de Inteligência Artificial é fácil de entrar porque é novo.",
+      "verdade": false,
+      "explicacao": "No Sisu 2026, um curso de IA teve a segunda maior nota de corte do país, 846,72 pontos.",
+      "fontes": [
+        "sisu-2026"
+      ]
+    },
+    {
+      "id": "conselho",
+      "afirmacao": "Para trabalhar com IA, é preciso registro em conselho.",
+      "verdade": false,
+      "explicacao": "Não há conselho de informática: o projeto de 2007 que criaria um foi arquivado em 2014.",
+      "fontes": [
+        "pls-607"
+      ]
+    },
+    {
+      "id": "sensivel",
+      "afirmacao": "Dados de saúde e de biometria são dados pessoais comuns.",
+      "verdade": false,
+      "explicacao": "A LGPD classifica dados de saúde, genéticos e biométricos como sensíveis, com hipóteses de uso mais restritas.",
+      "fontes": [
+        "lei-13709"
+      ]
+    },
+    {
+      "id": "salario",
+      "afirmacao": "A média de contratação de cientista de dados com carteira passa de R$ 10 mil.",
+      "verdade": true,
+      "explicacao": "Foi de cerca de R$ 10,4 mil nos 12 meses até ago/2026.",
+      "fontes": [
+        "caged-cientista"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "Um bacharelado de Computação tem pelo menos 3.000 horas.",
+      "verdade": true,
+      "explicacao": "Com integralização em pelo menos 4 anos.",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "caged-cientista",
+      "titulo": "Cientista de dados (CBO 2112-20): média de R$ 10.356,19, P25 de R$ 5.237,00 e P75 de R$ 13.480,00, jornada média de 42 h semanais, saldo de +208 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/cientista-de-dados-data-scientist",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "lei-13709",
+      "titulo": "Lei nº 13.709/2018 (LGPD): dado pessoal sensível, hipóteses de tratamento e segurança dos dados (arts. 5º, 7º, 11 e 46)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "sisu-2026",
+      "titulo": "Sisu 2026: maiores notas de corte e cursos com mais candidatos por vaga",
+      "orgao": "VestibulandoWeb, 01/06/2026",
+      "url": "https://www.vestibulandoweb.com.br/sisu/sisu-2026-medicina-lidera-disputa-e-curso-de-ia-chama-atencao-no-ranking/amp/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Confirmar nos dados do MEC."
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
+      "orgao": "Conselho Nacional de Educação (MEC)",
+      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "pls-607",
+      "titulo": "PLS nº 607/2007: regulamentaria a profissão de analista de sistemas e criaria conselhos de informática; arquivado ao final da legislatura, em 2014",
+      "orgao": "Senado Federal",
+      "url": "https://www25.senado.leg.br/web/atividade/materias/-/materia/82918",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-eng-dados",
+      "titulo": "Engenheiro de dados (CBO 2122-05): média de R$ 14.487,78, P25 de R$ 8.000,00 e P75 de R$ 17.645,00, jornada média de 42 h semanais, saldo de +549 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/engenheiro-de-dados-cbo-212205",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    }
+  ],
+  "carta": {
+    "fato": "No Sisu 2026, um curso de Inteligência Artificial teve a segunda maior nota de corte do país: 846,72 pontos.",
+    "fontes": [
+      "sisu-2026"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 8,
+      "texto": "Hora de dormir, enquanto um modelo treina sozinho no servidor."
+    },
+    {
+      "de": 8,
+      "ate": 10,
+      "texto": "Resultados do treino da noite e ajustes."
+    },
+    {
+      "de": 10,
+      "ate": 12,
+      "texto": "Limpeza e organização dos dados."
+    },
+    {
+      "de": 12,
+      "ate": 13,
+      "texto": "Almoço."
+    },
+    {
+      "de": 13,
+      "ate": 15,
+      "texto": "Experimentos e comparação de modelos."
+    },
+    {
+      "de": 15,
+      "ate": 17,
+      "texto": "Reunião com a área de negócio: resultados e limites do modelo."
+    },
+    {
+      "de": 17,
+      "ate": 19,
+      "texto": "Acompanhamento dos modelos em uso e documentação."
+    },
+    {
+      "de": 19,
+      "ate": 24,
+      "texto": "Fim do expediente; muita gente lê artigos e testa ferramentas novas."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada lugar de trabalho é diferente.",
+  "dna": {
+    "pessoas": 35,
+    "pressao": 55,
+    "corpo": 5,
+    "rotina": 45,
+    "numeros": 95,
+    "criatividade": 70
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "dados-saude",
+      "situacao": "Seu modelo melhoraria muito com os dados de saúde dos clientes que a empresa tem, mas eles foram coletados para outra finalidade e ninguém consentiu com esse uso.",
+      "opcoes": [
+        {
+          "texto": "Usar: os dados já estão aqui",
+          "recomendada": false
+        },
+        {
+          "texto": "Levar a questão ao encarregado de dados e só usar com base legal ou com dados anonimizados",
+          "recomendada": true
+        },
+        {
+          "texto": "Usar escondido e apagar depois",
+          "recomendada": false
+        }
+      ],
+      "resposta": "Dado de saúde é dado pessoal sensível: a LGPD só permite tratá-lo em hipóteses específicas, como o consentimento específico e destacado para aquela finalidade. Anonimizar ou achar a base legal certa vem antes do modelo.",
+      "fontes": [
+        "lei-13709"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Cargas mínimas pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "Computação, Estatística ou Inteligência Artificial: 3.000 horas em 4 anos.",
+        "fontes": [
+          "cne-2-2007"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "pos",
+        "nome": "Mestrado ou especialização",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Em aprendizado de máquina, ciência de dados ou IA aplicada.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  }
+}

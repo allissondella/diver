@@ -586,7 +586,7 @@ a.prof-btn { text-decoration: none; }
 .prof-ilha--panorama:hover .prof-ilha-seta { transform: translateX(4px); }
 
 /* Números e textos */
-.prof-numero .prof-numero-v--texto { font-size: var(--t-lg); line-height: 1.25; }
+.prof-numero .prof-numero-v--texto { font-size: var(--t-lg); line-height: 1.25; overflow-wrap: break-word; }
 .prof-raiz .prof-prosa--grande { font-size: var(--t-lg); max-width: var(--medida-leitura); }
 .prof-cards--contexto { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .prof-sigilo { color: var(--amarelo); letter-spacing: .04em; }
