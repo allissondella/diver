@@ -70,7 +70,7 @@ const LabPython = (() => {
       const nota = ocultos ? h('p', { class: 'lab-apoio__texto', text: `E ${UI.plural(ocultos, 'teste escondido confere', 'testes escondidos conferem')} os casos de borda: ele${ocultos > 1 ? 's' : ''} aparece${ocultos > 1 ? 'm' : ''} se não passar${ocultos > 1 ? 'em' : ''}.` }) : null;
       if (Array.isArray(m.exemplos) && m.exemplos.length) {
         return Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: m.tituloExemplos || 'O que a função precisa fazer',
-          conteudo: [h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: m.exemplos.join('\n') })), nota] });
+          conteudo: [h('pre', { class: 'codigo lab-alvo__saida lab-alvo__exemplos', tabindex: '0' }, h('code', { text: m.exemplos.join('\n') })), nota] });
       }
       if (visiveis.length > 1) {
         return Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: 'O que deve aparecer na tela',

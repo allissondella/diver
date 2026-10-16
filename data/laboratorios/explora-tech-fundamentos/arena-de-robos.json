@@ -1,0 +1,330 @@
+{
+  "id": "arena-de-robos",
+  "nome": "Arena de Robôs",
+  "versao": 1,
+  "tipo": "python",
+  "descricao": "Escreva em Python a função que decide cada jogada do seu robô e vença 5 robôs da equipe Diver, do mais bobo ao chefe. A luta aparece turno a turno.",
+  "tituloReferencia": "Peças da estratégia",
+  "referencia": [
+    {
+      "nome": "def decidir(situacao):",
+      "faz": "chamada a cada turno; devolve a sua jogada"
+    },
+    {
+      "nome": "situacao[\"distancia\"]",
+      "faz": "quantos passos até o robô (1 = colado)"
+    },
+    {
+      "nome": "situacao[\"ultima_do_robo\"]",
+      "faz": "o que o robô fez no turno anterior: lê o padrão dele"
+    },
+    {
+      "nome": "situacao[\"minha_ultima\"]",
+      "faz": "a sua jogada anterior (o escudo cansa)"
+    },
+    {
+      "nome": "situacao[\"robo_carregando\"]",
+      "faz": "True quando o próximo golpe dele é o forte"
+    },
+    {
+      "nome": "if ... elif ... else: return",
+      "faz": "a primeira regra que vale decide a jogada"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "Uma arena para jogar com os amigos.",
+    "passos": [
+      "Copie as regras da luta (a função lutar) e a sua decidir num arquivo `arena.py` e rode com `python arena.py`.",
+      "Troque estratégias com um colega: cada um escreve a sua decidir, e vocês fazem uma contra a outra trocando o robô por uma segunda decidir.",
+      "Guarde no repositório do projeto da fase, com um README explicando as regras."
+    ]
+  },
+  "missoes": [
+    {
+      "aulas": [
+        "git-revisao-fase"
+      ],
+      "grupo": "Arena",
+      "tituloExemplos": "As regras da arena",
+      "exemplos": [
+        "• decidir(situacao) devolve \"andar\", \"atacar\" ou \"defender\" a cada turno (até 20 turnos).",
+        "• situacao tem: distancia, minha_vida, vida_robo, turno, minha_ultima, ultima_do_robo e robo_carregando.",
+        "• Atacar colado tira 3. Atacar quem defende: ele perde 1 e você perde 2 no contragolpe.",
+        "• Defender contra um ataque: você perde só 1 e o robô perde 2. O escudo cansa: não funciona dois turnos seguidos.",
+        "• Colado no robô (distância 1), andar é ficar parado. Golpe carregado tira 6 (com escudo, 1). Empate é derrota."
+      ],
+      "prelude": "# Arena de Robôs (laboratório do Diver): as regras da luta. Colado no robô (distância 1), \"andar\" é ficar parado. Nada aqui é sorteado na hora: os robôs seguem padrões\n# fixos (o Titã usa um sorteio com semente fixa), então a mesma estratégia dá sempre a mesma luta.\nimport random as _random\n\nROBOS = {\n    \"Parafuso\": {\"vida\": 10, \"descricao\": \"só sabe andar\"},\n    \"Ferrugem\": {\"vida\": 10, \"descricao\": \"anda até você e ataca sem parar\"},\n    \"Pistão\": {\"vida\": 10, \"descricao\": \"colado em você, alterna entre defender e atacar\"},\n    \"Faísca\": {\"vida\": 13, \"descricao\": \"carrega um golpe forte, solta, e ataca uma vez\"},\n    \"Titã\": {\"vida\": 14, \"descricao\": \"o chefe: mistura tudo, com um sorteio de semente fixa\"},\n}\n\ndef _robo(nome, s, n, sorteio):\n    if s[\"distancia\"] > 1:\n        return \"andar\"\n    if nome == \"Parafuso\":\n        return \"andar\"\n    if nome == \"Ferrugem\":\n        return \"atacar\"\n    if nome == \"Pistão\":\n        return \"defender\" if n % 2 == 0 else \"atacar\"\n    if nome == \"Faísca\":\n        return [\"carregar\", \"atacar\", \"atacar\"][n % 3]\n    if s[\"robo_carregando\"]:\n        return \"atacar\"\n    return sorteio.choice([\"atacar\", \"atacar\", \"defender\", \"carregar\"])\n\ndef lutar(decidir, nome=\"Parafuso\", mostrar=True):\n    sorteio = _random.Random(2026)\n    voce, robo = 10, ROBOS[nome][\"vida\"]\n    total = robo\n    s = {\"distancia\": 4, \"minha_vida\": voce, \"vida_robo\": robo, \"turno\": 1,\n         \"minha_ultima\": \"\", \"ultima_do_robo\": \"\", \"robo_carregando\": False}\n    colado = 0\n    if mostrar:\n        print(f\"Arena: você (10) contra {nome} ({robo}), {ROBOS[nome]['descricao']}.\")\n    for turno in range(1, 21):\n        s[\"turno\"], s[\"minha_vida\"], s[\"vida_robo\"] = turno, voce, robo\n        minha = decidir(dict(s))\n        if minha not in (\"andar\", \"atacar\", \"defender\"):\n            raise ValueError(f'decidir devolveu {minha!r}; use \"andar\", \"atacar\" ou \"defender\"')\n        dele = _robo(nome, s, colado, sorteio)\n        if s[\"distancia\"] == 1:\n            colado += 1\n        escudo = minha == \"defender\" and s[\"minha_ultima\"] != \"defender\"\n        escudo_dele = dele == \"defender\" and s[\"ultima_do_robo\"] != \"defender\"\n        forte = s[\"robo_carregando\"]\n        perto = s[\"distancia\"] == 1\n        dano_voce = dano_robo = 0\n        if perto and minha == \"atacar\":\n            if escudo_dele:\n                dano_robo, dano_voce = dano_robo + 1, dano_voce + 2\n            else:\n                dano_robo += 3\n        if perto and dele == \"atacar\":\n            golpe = 6 if forte else 3\n            if escudo:\n                dano_voce, dano_robo = dano_voce + 1, dano_robo + 2\n            else:\n                dano_voce += golpe\n        for quem in (minha, dele):\n            if quem == \"andar\" and s[\"distancia\"] > 1:\n                s[\"distancia\"] -= 1\n        voce, robo = voce - dano_voce, robo - dano_robo\n        s[\"minha_ultima\"], s[\"ultima_do_robo\"] = minha, dele\n        s[\"robo_carregando\"] = dele == \"carregar\"\n        if mostrar:\n            barra = lambda v, t: \"#\" * -(-max(v, 0) * 5 // t) + \".\" * (5 - -(-max(v, 0) * 5 // t))\n            print(f\"T{turno:02d} você: {minha:<8} robô: {dele}\")\n            print(f\"    você {max(voce, 0):>2} {barra(voce, 10)} | robô {max(robo, 0):>2} {barra(robo, total)}\")\n        if voce <= 0 or robo <= 0:\n            break\n    venceu = robo <= 0 and voce > 0\n    if mostrar:\n        print(\"Vitória! Você venceu o \" + nome + \".\" if venceu else (\"Empate: os dois caíram juntos.\" if voce <= 0 and robo <= 0 else (\"Derrota: o \" + nome + \" venceu.\" if voce <= 0 else \"Tempo esgotado: 20 turnos sem vencedor.\")))\n    return {\"venceu\": venceu, \"vida\": max(voce, 0), \"turnos\": turno}\n",
+      "id": "ar-parafuso",
+      "titulo": "Parafuso, o aquecimento",
+      "enunciado": "O **Parafuso** só sabe andar. Faça `decidir` andar enquanto o robô estiver longe (distância maior que 1) e **atacar** quando estiver colado.",
+      "codigoInicial": "def decidir(situacao):\n    return \"defender\"\n\nlutar(decidir, \"Parafuso\")\n",
+      "solucao": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    return \"atacar\"\n\nlutar(decidir, \"Parafuso\")\n",
+      "testes": [
+        {
+          "nome": "Vencer o Parafuso",
+          "codigo": "r = lutar(decidir, \"Parafuso\", mostrar=False)\nassert r[\"venceu\"], f\"o Parafuso venceu: você terminou com vida {r['vida']} no turno {r['turnos']}\""
+        }
+      ],
+      "metas": {
+        "linhas": 5
+      },
+      "dicas": [
+        "Só defender nunca tira vida do robô: o tempo acaba.",
+        "situacao[\"distancia\"] > 1 quer dizer que o robô está longe.",
+        "if situacao[\"distancia\"] > 1: return \"andar\"; depois, return \"atacar\"."
+      ],
+      "toque": {
+        "modelo": "def decidir(situacao):\n    if situacao[\"distancia\"] ___ 1:\n        return \"andar\"\n    return ___\n\nlutar(decidir, \"Parafuso\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              ">",
+              "<",
+              "=="
+            ],
+            "certa": 0,
+            "dica": "Longe é distância maior que 1."
+          },
+          {
+            "opcoes": [
+              "\"defender\"",
+              "\"atacar\"",
+              "\"andar\""
+            ],
+            "certa": 1,
+            "dica": "Colado, é hora de tirar vida."
+          }
+        ]
+      }
+    },
+    {
+      "aulas": [
+        "git-revisao-fase"
+      ],
+      "grupo": "Arena",
+      "tituloExemplos": "As regras da arena",
+      "exemplos": [
+        "• decidir(situacao) devolve \"andar\", \"atacar\" ou \"defender\" a cada turno (até 20 turnos).",
+        "• situacao tem: distancia, minha_vida, vida_robo, turno, minha_ultima, ultima_do_robo e robo_carregando.",
+        "• Atacar colado tira 3. Atacar quem defende: ele perde 1 e você perde 2 no contragolpe.",
+        "• Defender contra um ataque: você perde só 1 e o robô perde 2. O escudo cansa: não funciona dois turnos seguidos.",
+        "• Colado no robô (distância 1), andar é ficar parado. Golpe carregado tira 6 (com escudo, 1). Empate é derrota."
+      ],
+      "prelude": "# Arena de Robôs (laboratório do Diver): as regras da luta. Colado no robô (distância 1), \"andar\" é ficar parado. Nada aqui é sorteado na hora: os robôs seguem padrões\n# fixos (o Titã usa um sorteio com semente fixa), então a mesma estratégia dá sempre a mesma luta.\nimport random as _random\n\nROBOS = {\n    \"Parafuso\": {\"vida\": 10, \"descricao\": \"só sabe andar\"},\n    \"Ferrugem\": {\"vida\": 10, \"descricao\": \"anda até você e ataca sem parar\"},\n    \"Pistão\": {\"vida\": 10, \"descricao\": \"colado em você, alterna entre defender e atacar\"},\n    \"Faísca\": {\"vida\": 13, \"descricao\": \"carrega um golpe forte, solta, e ataca uma vez\"},\n    \"Titã\": {\"vida\": 14, \"descricao\": \"o chefe: mistura tudo, com um sorteio de semente fixa\"},\n}\n\ndef _robo(nome, s, n, sorteio):\n    if s[\"distancia\"] > 1:\n        return \"andar\"\n    if nome == \"Parafuso\":\n        return \"andar\"\n    if nome == \"Ferrugem\":\n        return \"atacar\"\n    if nome == \"Pistão\":\n        return \"defender\" if n % 2 == 0 else \"atacar\"\n    if nome == \"Faísca\":\n        return [\"carregar\", \"atacar\", \"atacar\"][n % 3]\n    if s[\"robo_carregando\"]:\n        return \"atacar\"\n    return sorteio.choice([\"atacar\", \"atacar\", \"defender\", \"carregar\"])\n\ndef lutar(decidir, nome=\"Parafuso\", mostrar=True):\n    sorteio = _random.Random(2026)\n    voce, robo = 10, ROBOS[nome][\"vida\"]\n    total = robo\n    s = {\"distancia\": 4, \"minha_vida\": voce, \"vida_robo\": robo, \"turno\": 1,\n         \"minha_ultima\": \"\", \"ultima_do_robo\": \"\", \"robo_carregando\": False}\n    colado = 0\n    if mostrar:\n        print(f\"Arena: você (10) contra {nome} ({robo}), {ROBOS[nome]['descricao']}.\")\n    for turno in range(1, 21):\n        s[\"turno\"], s[\"minha_vida\"], s[\"vida_robo\"] = turno, voce, robo\n        minha = decidir(dict(s))\n        if minha not in (\"andar\", \"atacar\", \"defender\"):\n            raise ValueError(f'decidir devolveu {minha!r}; use \"andar\", \"atacar\" ou \"defender\"')\n        dele = _robo(nome, s, colado, sorteio)\n        if s[\"distancia\"] == 1:\n            colado += 1\n        escudo = minha == \"defender\" and s[\"minha_ultima\"] != \"defender\"\n        escudo_dele = dele == \"defender\" and s[\"ultima_do_robo\"] != \"defender\"\n        forte = s[\"robo_carregando\"]\n        perto = s[\"distancia\"] == 1\n        dano_voce = dano_robo = 0\n        if perto and minha == \"atacar\":\n            if escudo_dele:\n                dano_robo, dano_voce = dano_robo + 1, dano_voce + 2\n            else:\n                dano_robo += 3\n        if perto and dele == \"atacar\":\n            golpe = 6 if forte else 3\n            if escudo:\n                dano_voce, dano_robo = dano_voce + 1, dano_robo + 2\n            else:\n                dano_voce += golpe\n        for quem in (minha, dele):\n            if quem == \"andar\" and s[\"distancia\"] > 1:\n                s[\"distancia\"] -= 1\n        voce, robo = voce - dano_voce, robo - dano_robo\n        s[\"minha_ultima\"], s[\"ultima_do_robo\"] = minha, dele\n        s[\"robo_carregando\"] = dele == \"carregar\"\n        if mostrar:\n            barra = lambda v, t: \"#\" * -(-max(v, 0) * 5 // t) + \".\" * (5 - -(-max(v, 0) * 5 // t))\n            print(f\"T{turno:02d} você: {minha:<8} robô: {dele}\")\n            print(f\"    você {max(voce, 0):>2} {barra(voce, 10)} | robô {max(robo, 0):>2} {barra(robo, total)}\")\n        if voce <= 0 or robo <= 0:\n            break\n    venceu = robo <= 0 and voce > 0\n    if mostrar:\n        print(\"Vitória! Você venceu o \" + nome + \".\" if venceu else (\"Empate: os dois caíram juntos.\" if voce <= 0 and robo <= 0 else (\"Derrota: o \" + nome + \" venceu.\" if voce <= 0 else \"Tempo esgotado: 20 turnos sem vencedor.\")))\n    return {\"venceu\": venceu, \"vida\": max(voce, 0), \"turnos\": turno}\n",
+      "id": "ar-ferrugem",
+      "titulo": "Ferrugem não para",
+      "enunciado": "O **Ferrugem** ataca sem parar. Só atacar dá **empate** (os dois caem juntos). Colado, **alterne**: defenda quando a sua última jogada não foi defender e ataque quando foi.",
+      "codigoInicial": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    return \"atacar\"\n\nlutar(decidir, \"Ferrugem\")\n",
+      "solucao": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    if situacao[\"minha_ultima\"] == \"defender\":\n        return \"atacar\"\n    return \"defender\"\n\nlutar(decidir, \"Ferrugem\")\n",
+      "testes": [
+        {
+          "nome": "Vencer o Ferrugem",
+          "codigo": "r = lutar(decidir, \"Ferrugem\", mostrar=False)\nassert r[\"venceu\"], f\"o Ferrugem venceu: você terminou com vida {r['vida']} no turno {r['turnos']}\""
+        }
+      ],
+      "metas": {
+        "linhas": 7
+      },
+      "dicas": [
+        "Defender contra um ataque tira 2 do robô e só 1 de você. Mas o escudo cansa.",
+        "situacao[\"minha_ultima\"] diz o que você fez no turno anterior.",
+        "Se a última foi \"defender\", ataque; senão, defenda."
+      ],
+      "toque": {
+        "modelo": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    if situacao[___] == \"defender\":\n        return \"atacar\"\n    return ___\n\nlutar(decidir, \"Ferrugem\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "\"minha_ultima\"",
+              "\"ultima_do_robo\"",
+              "\"turno\""
+            ],
+            "certa": 0,
+            "dica": "O escudo cansa: olhe a sua jogada anterior."
+          },
+          {
+            "opcoes": [
+              "\"atacar\"",
+              "\"defender\"",
+              "\"andar\""
+            ],
+            "certa": 1,
+            "dica": "Contra quem só ataca, o escudo devolve dano."
+          }
+        ]
+      }
+    },
+    {
+      "aulas": [
+        "git-revisao-fase"
+      ],
+      "grupo": "Arena",
+      "tituloExemplos": "As regras da arena",
+      "exemplos": [
+        "• decidir(situacao) devolve \"andar\", \"atacar\" ou \"defender\" a cada turno (até 20 turnos).",
+        "• situacao tem: distancia, minha_vida, vida_robo, turno, minha_ultima, ultima_do_robo e robo_carregando.",
+        "• Atacar colado tira 3. Atacar quem defende: ele perde 1 e você perde 2 no contragolpe.",
+        "• Defender contra um ataque: você perde só 1 e o robô perde 2. O escudo cansa: não funciona dois turnos seguidos.",
+        "• Colado no robô (distância 1), andar é ficar parado. Golpe carregado tira 6 (com escudo, 1). Empate é derrota."
+      ],
+      "prelude": "# Arena de Robôs (laboratório do Diver): as regras da luta. Colado no robô (distância 1), \"andar\" é ficar parado. Nada aqui é sorteado na hora: os robôs seguem padrões\n# fixos (o Titã usa um sorteio com semente fixa), então a mesma estratégia dá sempre a mesma luta.\nimport random as _random\n\nROBOS = {\n    \"Parafuso\": {\"vida\": 10, \"descricao\": \"só sabe andar\"},\n    \"Ferrugem\": {\"vida\": 10, \"descricao\": \"anda até você e ataca sem parar\"},\n    \"Pistão\": {\"vida\": 10, \"descricao\": \"colado em você, alterna entre defender e atacar\"},\n    \"Faísca\": {\"vida\": 13, \"descricao\": \"carrega um golpe forte, solta, e ataca uma vez\"},\n    \"Titã\": {\"vida\": 14, \"descricao\": \"o chefe: mistura tudo, com um sorteio de semente fixa\"},\n}\n\ndef _robo(nome, s, n, sorteio):\n    if s[\"distancia\"] > 1:\n        return \"andar\"\n    if nome == \"Parafuso\":\n        return \"andar\"\n    if nome == \"Ferrugem\":\n        return \"atacar\"\n    if nome == \"Pistão\":\n        return \"defender\" if n % 2 == 0 else \"atacar\"\n    if nome == \"Faísca\":\n        return [\"carregar\", \"atacar\", \"atacar\"][n % 3]\n    if s[\"robo_carregando\"]:\n        return \"atacar\"\n    return sorteio.choice([\"atacar\", \"atacar\", \"defender\", \"carregar\"])\n\ndef lutar(decidir, nome=\"Parafuso\", mostrar=True):\n    sorteio = _random.Random(2026)\n    voce, robo = 10, ROBOS[nome][\"vida\"]\n    total = robo\n    s = {\"distancia\": 4, \"minha_vida\": voce, \"vida_robo\": robo, \"turno\": 1,\n         \"minha_ultima\": \"\", \"ultima_do_robo\": \"\", \"robo_carregando\": False}\n    colado = 0\n    if mostrar:\n        print(f\"Arena: você (10) contra {nome} ({robo}), {ROBOS[nome]['descricao']}.\")\n    for turno in range(1, 21):\n        s[\"turno\"], s[\"minha_vida\"], s[\"vida_robo\"] = turno, voce, robo\n        minha = decidir(dict(s))\n        if minha not in (\"andar\", \"atacar\", \"defender\"):\n            raise ValueError(f'decidir devolveu {minha!r}; use \"andar\", \"atacar\" ou \"defender\"')\n        dele = _robo(nome, s, colado, sorteio)\n        if s[\"distancia\"] == 1:\n            colado += 1\n        escudo = minha == \"defender\" and s[\"minha_ultima\"] != \"defender\"\n        escudo_dele = dele == \"defender\" and s[\"ultima_do_robo\"] != \"defender\"\n        forte = s[\"robo_carregando\"]\n        perto = s[\"distancia\"] == 1\n        dano_voce = dano_robo = 0\n        if perto and minha == \"atacar\":\n            if escudo_dele:\n                dano_robo, dano_voce = dano_robo + 1, dano_voce + 2\n            else:\n                dano_robo += 3\n        if perto and dele == \"atacar\":\n            golpe = 6 if forte else 3\n            if escudo:\n                dano_voce, dano_robo = dano_voce + 1, dano_robo + 2\n            else:\n                dano_voce += golpe\n        for quem in (minha, dele):\n            if quem == \"andar\" and s[\"distancia\"] > 1:\n                s[\"distancia\"] -= 1\n        voce, robo = voce - dano_voce, robo - dano_robo\n        s[\"minha_ultima\"], s[\"ultima_do_robo\"] = minha, dele\n        s[\"robo_carregando\"] = dele == \"carregar\"\n        if mostrar:\n            barra = lambda v, t: \"#\" * -(-max(v, 0) * 5 // t) + \".\" * (5 - -(-max(v, 0) * 5 // t))\n            print(f\"T{turno:02d} você: {minha:<8} robô: {dele}\")\n            print(f\"    você {max(voce, 0):>2} {barra(voce, 10)} | robô {max(robo, 0):>2} {barra(robo, total)}\")\n        if voce <= 0 or robo <= 0:\n            break\n    venceu = robo <= 0 and voce > 0\n    if mostrar:\n        print(\"Vitória! Você venceu o \" + nome + \".\" if venceu else (\"Empate: os dois caíram juntos.\" if voce <= 0 and robo <= 0 else (\"Derrota: o \" + nome + \" venceu.\" if voce <= 0 else \"Tempo esgotado: 20 turnos sem vencedor.\")))\n    return {\"venceu\": venceu, \"vida\": max(voce, 0), \"turnos\": turno}\n",
+      "id": "ar-pistao",
+      "titulo": "O ritmo do Pistão",
+      "enunciado": "O **Pistão**, colado, alterna: defende, ataca, defende, ataca. Atacar quem defende machuca você. Leia `ultima_do_robo`: se ele **defendeu**, o próximo é ataque, então **defenda**; senão, espere (**andar**, colado, é ficar parado).",
+      "codigoInicial": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    return \"atacar\"\n\nlutar(decidir, \"Pistão\")\n",
+      "solucao": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    if situacao[\"ultima_do_robo\"] == \"defender\":\n        return \"defender\"\n    return \"andar\"\n\nlutar(decidir, \"Pistão\")\n",
+      "testes": [
+        {
+          "nome": "Vencer o Pistão",
+          "codigo": "r = lutar(decidir, \"Pistão\", mostrar=False)\nassert r[\"venceu\"], f\"o Pistão venceu: você terminou com vida {r['vida']} no turno {r['turnos']}\""
+        }
+      ],
+      "metas": {
+        "linhas": 7
+      },
+      "dicas": [
+        "Rode e leia a luta: o Pistão nunca defende dois turnos seguidos.",
+        "Depois de um \"defender\" dele, vem um \"atacar\": é a hora do seu escudo.",
+        "if situacao[\"ultima_do_robo\"] == \"defender\": return \"defender\"; senão, return \"andar\"."
+      ],
+      "toque": {
+        "modelo": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    if situacao[\"ultima_do_robo\"] == ___:\n        return \"defender\"\n    return ___\n\nlutar(decidir, \"Pistão\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "\"atacar\"",
+              "\"defender\"",
+              "\"andar\""
+            ],
+            "certa": 1,
+            "dica": "Depois que ele defende, ele ataca."
+          },
+          {
+            "opcoes": [
+              "\"atacar\"",
+              "\"andar\"",
+              "\"defender\""
+            ],
+            "certa": 1,
+            "dica": "Quando ele vai defender, não ataque: espere."
+          }
+        ]
+      }
+    },
+    {
+      "aulas": [
+        "git-revisao-fase"
+      ],
+      "grupo": "Arena",
+      "tituloExemplos": "As regras da arena",
+      "exemplos": [
+        "• decidir(situacao) devolve \"andar\", \"atacar\" ou \"defender\" a cada turno (até 20 turnos).",
+        "• situacao tem: distancia, minha_vida, vida_robo, turno, minha_ultima, ultima_do_robo e robo_carregando.",
+        "• Atacar colado tira 3. Atacar quem defende: ele perde 1 e você perde 2 no contragolpe.",
+        "• Defender contra um ataque: você perde só 1 e o robô perde 2. O escudo cansa: não funciona dois turnos seguidos.",
+        "• Colado no robô (distância 1), andar é ficar parado. Golpe carregado tira 6 (com escudo, 1). Empate é derrota."
+      ],
+      "prelude": "# Arena de Robôs (laboratório do Diver): as regras da luta. Colado no robô (distância 1), \"andar\" é ficar parado. Nada aqui é sorteado na hora: os robôs seguem padrões\n# fixos (o Titã usa um sorteio com semente fixa), então a mesma estratégia dá sempre a mesma luta.\nimport random as _random\n\nROBOS = {\n    \"Parafuso\": {\"vida\": 10, \"descricao\": \"só sabe andar\"},\n    \"Ferrugem\": {\"vida\": 10, \"descricao\": \"anda até você e ataca sem parar\"},\n    \"Pistão\": {\"vida\": 10, \"descricao\": \"colado em você, alterna entre defender e atacar\"},\n    \"Faísca\": {\"vida\": 13, \"descricao\": \"carrega um golpe forte, solta, e ataca uma vez\"},\n    \"Titã\": {\"vida\": 14, \"descricao\": \"o chefe: mistura tudo, com um sorteio de semente fixa\"},\n}\n\ndef _robo(nome, s, n, sorteio):\n    if s[\"distancia\"] > 1:\n        return \"andar\"\n    if nome == \"Parafuso\":\n        return \"andar\"\n    if nome == \"Ferrugem\":\n        return \"atacar\"\n    if nome == \"Pistão\":\n        return \"defender\" if n % 2 == 0 else \"atacar\"\n    if nome == \"Faísca\":\n        return [\"carregar\", \"atacar\", \"atacar\"][n % 3]\n    if s[\"robo_carregando\"]:\n        return \"atacar\"\n    return sorteio.choice([\"atacar\", \"atacar\", \"defender\", \"carregar\"])\n\ndef lutar(decidir, nome=\"Parafuso\", mostrar=True):\n    sorteio = _random.Random(2026)\n    voce, robo = 10, ROBOS[nome][\"vida\"]\n    total = robo\n    s = {\"distancia\": 4, \"minha_vida\": voce, \"vida_robo\": robo, \"turno\": 1,\n         \"minha_ultima\": \"\", \"ultima_do_robo\": \"\", \"robo_carregando\": False}\n    colado = 0\n    if mostrar:\n        print(f\"Arena: você (10) contra {nome} ({robo}), {ROBOS[nome]['descricao']}.\")\n    for turno in range(1, 21):\n        s[\"turno\"], s[\"minha_vida\"], s[\"vida_robo\"] = turno, voce, robo\n        minha = decidir(dict(s))\n        if minha not in (\"andar\", \"atacar\", \"defender\"):\n            raise ValueError(f'decidir devolveu {minha!r}; use \"andar\", \"atacar\" ou \"defender\"')\n        dele = _robo(nome, s, colado, sorteio)\n        if s[\"distancia\"] == 1:\n            colado += 1\n        escudo = minha == \"defender\" and s[\"minha_ultima\"] != \"defender\"\n        escudo_dele = dele == \"defender\" and s[\"ultima_do_robo\"] != \"defender\"\n        forte = s[\"robo_carregando\"]\n        perto = s[\"distancia\"] == 1\n        dano_voce = dano_robo = 0\n        if perto and minha == \"atacar\":\n            if escudo_dele:\n                dano_robo, dano_voce = dano_robo + 1, dano_voce + 2\n            else:\n                dano_robo += 3\n        if perto and dele == \"atacar\":\n            golpe = 6 if forte else 3\n            if escudo:\n                dano_voce, dano_robo = dano_voce + 1, dano_robo + 2\n            else:\n                dano_voce += golpe\n        for quem in (minha, dele):\n            if quem == \"andar\" and s[\"distancia\"] > 1:\n                s[\"distancia\"] -= 1\n        voce, robo = voce - dano_voce, robo - dano_robo\n        s[\"minha_ultima\"], s[\"ultima_do_robo\"] = minha, dele\n        s[\"robo_carregando\"] = dele == \"carregar\"\n        if mostrar:\n            barra = lambda v, t: \"#\" * -(-max(v, 0) * 5 // t) + \".\" * (5 - -(-max(v, 0) * 5 // t))\n            print(f\"T{turno:02d} você: {minha:<8} robô: {dele}\")\n            print(f\"    você {max(voce, 0):>2} {barra(voce, 10)} | robô {max(robo, 0):>2} {barra(robo, total)}\")\n        if voce <= 0 or robo <= 0:\n            break\n    venceu = robo <= 0 and voce > 0\n    if mostrar:\n        print(\"Vitória! Você venceu o \" + nome + \".\" if venceu else (\"Empate: os dois caíram juntos.\" if voce <= 0 and robo <= 0 else (\"Derrota: o \" + nome + \" venceu.\" if voce <= 0 else \"Tempo esgotado: 20 turnos sem vencedor.\")))\n    return {\"venceu\": venceu, \"vida\": max(voce, 0), \"turnos\": turno}\n",
+      "id": "ar-faisca",
+      "titulo": "Cuidado com a Faísca",
+      "enunciado": "A **Faísca** carrega um golpe forte (tira 6!) e depois ataca. Quando `robo_carregando` for `True`, **defenda**; no resto do tempo, colado, **ataque**: carregando, ela fica aberta.",
+      "codigoInicial": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    return \"atacar\"\n\nlutar(decidir, \"Faísca\")\n",
+      "solucao": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    if situacao[\"robo_carregando\"]:\n        return \"defender\"\n    return \"atacar\"\n\nlutar(decidir, \"Faísca\")\n",
+      "testes": [
+        {
+          "nome": "Vencer o Faísca",
+          "codigo": "r = lutar(decidir, \"Faísca\", mostrar=False)\nassert r[\"venceu\"], f\"o Faísca venceu: você terminou com vida {r['vida']} no turno {r['turnos']}\""
+        }
+      ],
+      "metas": {
+        "linhas": 7
+      },
+      "dicas": [
+        "O golpe forte vem logo depois do \"carregar\".",
+        "situacao[\"robo_carregando\"] já é True ou False: dá para usar direto no if.",
+        "if situacao[\"robo_carregando\"]: return \"defender\"; senão, return \"atacar\"."
+      ],
+      "toque": {
+        "modelo": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    if situacao[___]:\n        return \"defender\"\n    return ___\n\nlutar(decidir, \"Faísca\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "\"robo_carregando\"",
+              "\"minha_vida\"",
+              "\"turno\""
+            ],
+            "certa": 0,
+            "dica": "O sinal do golpe forte."
+          },
+          {
+            "opcoes": [
+              "\"andar\"",
+              "\"atacar\"",
+              "\"defender\""
+            ],
+            "certa": 1,
+            "dica": "Fora do golpe forte, pressione."
+          }
+        ]
+      }
+    },
+    {
+      "aulas": [
+        "git-revisao-fase"
+      ],
+      "grupo": "Arena",
+      "tituloExemplos": "As regras da arena",
+      "exemplos": [
+        "• decidir(situacao) devolve \"andar\", \"atacar\" ou \"defender\" a cada turno (até 20 turnos).",
+        "• situacao tem: distancia, minha_vida, vida_robo, turno, minha_ultima, ultima_do_robo e robo_carregando.",
+        "• Atacar colado tira 3. Atacar quem defende: ele perde 1 e você perde 2 no contragolpe.",
+        "• Defender contra um ataque: você perde só 1 e o robô perde 2. O escudo cansa: não funciona dois turnos seguidos.",
+        "• Colado no robô (distância 1), andar é ficar parado. Golpe carregado tira 6 (com escudo, 1). Empate é derrota."
+      ],
+      "prelude": "# Arena de Robôs (laboratório do Diver): as regras da luta. Colado no robô (distância 1), \"andar\" é ficar parado. Nada aqui é sorteado na hora: os robôs seguem padrões\n# fixos (o Titã usa um sorteio com semente fixa), então a mesma estratégia dá sempre a mesma luta.\nimport random as _random\n\nROBOS = {\n    \"Parafuso\": {\"vida\": 10, \"descricao\": \"só sabe andar\"},\n    \"Ferrugem\": {\"vida\": 10, \"descricao\": \"anda até você e ataca sem parar\"},\n    \"Pistão\": {\"vida\": 10, \"descricao\": \"colado em você, alterna entre defender e atacar\"},\n    \"Faísca\": {\"vida\": 13, \"descricao\": \"carrega um golpe forte, solta, e ataca uma vez\"},\n    \"Titã\": {\"vida\": 14, \"descricao\": \"o chefe: mistura tudo, com um sorteio de semente fixa\"},\n}\n\ndef _robo(nome, s, n, sorteio):\n    if s[\"distancia\"] > 1:\n        return \"andar\"\n    if nome == \"Parafuso\":\n        return \"andar\"\n    if nome == \"Ferrugem\":\n        return \"atacar\"\n    if nome == \"Pistão\":\n        return \"defender\" if n % 2 == 0 else \"atacar\"\n    if nome == \"Faísca\":\n        return [\"carregar\", \"atacar\", \"atacar\"][n % 3]\n    if s[\"robo_carregando\"]:\n        return \"atacar\"\n    return sorteio.choice([\"atacar\", \"atacar\", \"defender\", \"carregar\"])\n\ndef lutar(decidir, nome=\"Parafuso\", mostrar=True):\n    sorteio = _random.Random(2026)\n    voce, robo = 10, ROBOS[nome][\"vida\"]\n    total = robo\n    s = {\"distancia\": 4, \"minha_vida\": voce, \"vida_robo\": robo, \"turno\": 1,\n         \"minha_ultima\": \"\", \"ultima_do_robo\": \"\", \"robo_carregando\": False}\n    colado = 0\n    if mostrar:\n        print(f\"Arena: você (10) contra {nome} ({robo}), {ROBOS[nome]['descricao']}.\")\n    for turno in range(1, 21):\n        s[\"turno\"], s[\"minha_vida\"], s[\"vida_robo\"] = turno, voce, robo\n        minha = decidir(dict(s))\n        if minha not in (\"andar\", \"atacar\", \"defender\"):\n            raise ValueError(f'decidir devolveu {minha!r}; use \"andar\", \"atacar\" ou \"defender\"')\n        dele = _robo(nome, s, colado, sorteio)\n        if s[\"distancia\"] == 1:\n            colado += 1\n        escudo = minha == \"defender\" and s[\"minha_ultima\"] != \"defender\"\n        escudo_dele = dele == \"defender\" and s[\"ultima_do_robo\"] != \"defender\"\n        forte = s[\"robo_carregando\"]\n        perto = s[\"distancia\"] == 1\n        dano_voce = dano_robo = 0\n        if perto and minha == \"atacar\":\n            if escudo_dele:\n                dano_robo, dano_voce = dano_robo + 1, dano_voce + 2\n            else:\n                dano_robo += 3\n        if perto and dele == \"atacar\":\n            golpe = 6 if forte else 3\n            if escudo:\n                dano_voce, dano_robo = dano_voce + 1, dano_robo + 2\n            else:\n                dano_voce += golpe\n        for quem in (minha, dele):\n            if quem == \"andar\" and s[\"distancia\"] > 1:\n                s[\"distancia\"] -= 1\n        voce, robo = voce - dano_voce, robo - dano_robo\n        s[\"minha_ultima\"], s[\"ultima_do_robo\"] = minha, dele\n        s[\"robo_carregando\"] = dele == \"carregar\"\n        if mostrar:\n            barra = lambda v, t: \"#\" * -(-max(v, 0) * 5 // t) + \".\" * (5 - -(-max(v, 0) * 5 // t))\n            print(f\"T{turno:02d} você: {minha:<8} robô: {dele}\")\n            print(f\"    você {max(voce, 0):>2} {barra(voce, 10)} | robô {max(robo, 0):>2} {barra(robo, total)}\")\n        if voce <= 0 or robo <= 0:\n            break\n    venceu = robo <= 0 and voce > 0\n    if mostrar:\n        print(\"Vitória! Você venceu o \" + nome + \".\" if venceu else (\"Empate: os dois caíram juntos.\" if voce <= 0 and robo <= 0 else (\"Derrota: o \" + nome + \" venceu.\" if voce <= 0 else \"Tempo esgotado: 20 turnos sem vencedor.\")))\n    return {\"venceu\": venceu, \"vida\": max(voce, 0), \"turnos\": turno}\n",
+      "id": "ar-tita",
+      "titulo": "O Titã, o chefe",
+      "enunciado": "O **Titã** tem 14 de vida e mistura tudo. Junte as regras: longe, **ande**; se ele estiver carregando **ou** tiver atacado, **defenda** (se o escudo não estiver cansado); no resto, **ataque**.",
+      "codigoInicial": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    return \"atacar\"\n\nlutar(decidir, \"Titã\")\n",
+      "solucao": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    perigo = situacao[\"robo_carregando\"] or situacao[\"ultima_do_robo\"] == \"atacar\"\n    if perigo and situacao[\"minha_ultima\"] != \"defender\":\n        return \"defender\"\n    return \"atacar\"\n\nlutar(decidir, \"Titã\")\n",
+      "testes": [
+        {
+          "nome": "Vencer o Titã",
+          "codigo": "r = lutar(decidir, \"Titã\", mostrar=False)\nassert r[\"venceu\"], f\"o Titã venceu: você terminou com vida {r['vida']} no turno {r['turnos']}\""
+        }
+      ],
+      "metas": {
+        "linhas": 8
+      },
+      "dicas": [
+        "Duas situações pedem escudo: golpe carregado e robô que acabou de atacar.",
+        "Junte as duas com or; e só defenda se a sua última não foi \"defender\".",
+        "perigo = situacao[\"robo_carregando\"] or situacao[\"ultima_do_robo\"] == \"atacar\"; if perigo and situacao[\"minha_ultima\"] != \"defender\": return \"defender\"."
+      ],
+      "toque": {
+        "modelo": "def decidir(situacao):\n    if situacao[\"distancia\"] > 1:\n        return \"andar\"\n    perigo = situacao[\"robo_carregando\"] ___ situacao[\"ultima_do_robo\"] == \"atacar\"\n    if perigo ___ situacao[\"minha_ultima\"] != \"defender\":\n        return \"defender\"\n    return \"atacar\"\n\nlutar(decidir, \"Titã\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "and",
+              "or",
+              "not"
+            ],
+            "certa": 1,
+            "dica": "Qualquer um dos dois perigos pede escudo."
+          },
+          {
+            "opcoes": [
+              "and",
+              "or",
+              "not"
+            ],
+            "certa": 0,
+            "dica": "Precisa de perigo e de escudo descansado, os dois."
+          }
+        ]
+      }
+    }
+  ]
+}
