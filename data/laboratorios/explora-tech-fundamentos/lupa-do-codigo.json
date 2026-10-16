@@ -2742,7 +2742,148 @@
           ],
           "porque": "A linha 9 chama situacao(7.5): o programa pula para dentro dela, na linha 5. O corte padrão 6 aprova."
         }
-      ]
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 7,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 12,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 8,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa",
+            "linha",
+            "media"
+          ],
+          "variaveis": {
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 9,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa",
+            "linha",
+            "situacao"
+          ],
+          "variaveis": {
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            },
+            "corte": {
+              "tipo": "int",
+              "valor": "6"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 10,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            },
+            "s": {
+              "tipo": "str",
+              "valor": "'aprovado'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {},
+          "saida": 14
+        }
+      ],
+      "saidaFinal": "Ana: aprovado\n"
     }
   ]
 }
