@@ -12,6 +12,9 @@
  * os comandos que o aluno já conhece e as dicas); à direita, a janela do código (editor, Rodar e a saída num
  * cartão só; input() vira linha de entrada na saída), os testes e o resultado. No celular, o modo toque completa
  * lacunas escolhendo opções, sem baixar o Python (o conferir-laboratorios garante que as certas passam nos testes).
+ * Missão com "arquivos" (Organizador de Pasta, Módulo 7): a pasta aparece em árvore antes de rodar (coluna de apoio) e
+ * depois de rodar (embaixo do código), com o que é novo, o que mudou e o que saiu.
+ * "exemplos" com "tituloExemplos" mostram o objetivo de missões sem saída na tela (como deve ficar o arquivo ou a pasta).
  * Estrelas e XP como no Robô Entregador (Laboratorios.resultado).
  */
 const LabPython = (() => {
@@ -66,7 +69,7 @@ const LabPython = (() => {
       const ocultos = (m.testes || []).filter((x) => x.oculto).length;
       const nota = ocultos ? h('p', { class: 'lab-apoio__texto', text: `E ${UI.plural(ocultos, 'teste escondido confere', 'testes escondidos conferem')} os casos de borda: ele${ocultos > 1 ? 's' : ''} aparece${ocultos > 1 ? 'm' : ''} se não passar${ocultos > 1 ? 'em' : ''}.` }) : null;
       if (Array.isArray(m.exemplos) && m.exemplos.length) {
-        return Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: 'O que a função precisa fazer',
+        return Laboratorios.cartao({ id: 'lab-alvo', classe: 'lab-alvo', icone: 'i-alvo', titulo: m.tituloExemplos || 'O que a função precisa fazer',
           conteudo: [h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: m.exemplos.join('\n') })), nota] });
       }
       if (visiveis.length > 1) {
@@ -78,6 +81,71 @@ const LabPython = (() => {
         conteudo: [h('pre', { class: 'codigo lab-alvo__saida', tabindex: '0' }, h('code', { text: esperadaDe(m) || '(confira os testes)' })), nota] });
     }
 
+
+    /**
+     * A pasta da missão (Organizador de Pasta, Módulo 7): a foto { "caminho": conteúdo, "pasta/": null } vira uma árvore
+     * com pastas primeiro. Com "antes", marca o que é novo ou mudou e lista o que saiu da pasta.
+     */
+    function arvorePasta(foto, antes = null) {
+      const raiz = { pastas: new Map(), arquivos: [] };
+      const no = (caminho) => {
+        let atual = raiz;
+        for (const parte of caminho) {
+          if (!atual.pastas.has(parte)) atual.pastas.set(parte, { pastas: new Map(), arquivos: [] });
+          atual = atual.pastas.get(parte);
+        }
+        return atual;
+      };
+      for (const [caminho, conteudo] of Object.entries(foto || {})) {
+        const partes = caminho.replace(/\/$/, '').split('/');
+        if (caminho.endsWith('/')) { no(partes); continue; }
+        no(partes.slice(0, -1)).arquivos.push({ nome: partes[partes.length - 1], caminho, conteudo: conteudo || '' });
+      }
+      const pastasAntes = new Set(Object.keys(antes || {}).flatMap((c) => c.split('/').slice(0, -1).map((_, i, partes) => `${partes.slice(0, i + 1).join('/')}/`)));
+      const estado = (caminho, conteudo) => {
+        if (!antes) return '';
+        if (caminho.endsWith('/')) return caminho in antes || pastasAntes.has(caminho) ? '' : 'novo';
+        if (!(caminho in antes)) return 'novo';
+        return conteudo !== null && antes[caminho] !== conteudo ? 'mudou' : '';
+      };
+      const lista = (n, prefixo) => h('ul', { class: 'lab-pasta__lista' },
+        [...n.pastas.keys()].sort().map((nome) => {
+          const e = estado(`${prefixo}${nome}/`, null);
+          return h('li', { class: `lab-pasta__item lab-pasta__item--pasta ${e ? `lab-pasta__item--${e}` : ''}`.trim() },
+            h('span', { class: 'lab-pasta__nome' }, icone('i-pasta'), `${nome}/`, e === 'novo' ? h('span', { class: 'tag tag--sucesso', text: 'nova' }) : null),
+            lista(n.pastas.get(nome), `${prefixo}${nome}/`));
+        }),
+        n.arquivos.sort((a, b) => a.nome.localeCompare(b.nome)).map((a) => {
+          const e = estado(a.caminho, a.conteudo);
+          return h('li', { class: `lab-pasta__item ${e ? `lab-pasta__item--${e}` : ''}`.trim() },
+            h('details', { class: 'lab-pasta__arquivo' },
+              h('summary', { class: 'lab-pasta__nome' }, icone('i-arquivo'), a.nome,
+                e ? h('span', { class: `tag ${e === 'novo' ? 'tag--sucesso' : 'tag--destaque'}`, text: e === 'novo' ? 'novo' : 'mudou' }) : null),
+              h('pre', { class: 'codigo lab-pasta__conteudo', tabindex: '0' }, h('code', { text: a.conteudo ? a.conteudo.replace(/\n$/, '') : '(arquivo vazio)' }))));
+        }));
+      const arvore = lista(raiz, '');
+      const sairam = antes ? Object.keys(antes).filter((c) => !(c in (foto || {}))) : [];
+      const vazia = !Object.keys(foto || {}).length;
+      return [
+        vazia ? h('p', { class: 'lab-apoio__texto', text: '(pasta vazia)' }) : arvore,
+        sairam.length ? h('p', { class: 'lab-pasta__sairam' }, h('strong', { text: `Saíram deste lugar (${sairam.length}): ` }),
+          sairam.length > 5 ? `${sairam.slice(0, 5).join(', ')} e mais ${sairam.length - 5}` : sairam.join(', ')) : null,
+      ];
+    }
+
+    function cartaoPasta(m) {
+      return Laboratorios.cartao({ id: 'lab-pasta', classe: 'lab-pasta', icone: 'i-pasta', titulo: 'A pasta antes de rodar',
+        conteudo: [h('p', { class: 'lab-apoio__texto', text: 'Toque num arquivo para ver o que tem dentro. Cada vez que você roda, a pasta volta a ficar assim.' }), ...arvorePasta(m.arquivos)] });
+    }
+
+    function mostrarPastaDepois(m, foto) {
+      if (!telas.pasta) return;
+      if (!foto) { telas.pasta.hidden = true; return; }
+      telas.pasta.replaceChildren(...[].concat(Laboratorios.cartao({ id: 'lab-pasta-depois', classe: 'lab-pasta', icone: 'i-pasta', titulo: 'A pasta depois de rodar',
+        conteudo: arvorePasta(foto, m.arquivos) })));
+      telas.pasta.hidden = false;
+    }
+
     function montar() {
       const m = missoes[idx];
       const prog = Laboratorios.progresso(trilha.id, lab.id);
@@ -85,6 +153,7 @@ const LabPython = (() => {
       inicioMissao = Date.now();
       telas.resultado = h('div', { class: 'lab-resultado', 'aria-live': 'polite' });
       telas.testes = h('ul', { class: 'lab-testes', 'aria-label': 'Testes da missão', hidden: true });
+      telas.pasta = m.arquivos ? h('div', { class: 'lab-pasta-depois', 'aria-live': 'polite', hidden: true }) : null;
 
       const missaoNav = h('nav', { class: 'lab-missoes', 'aria-label': 'Missões do laboratório' },
         missoes.map((mm, i) => {
@@ -106,6 +175,7 @@ const LabPython = (() => {
       dicasMissao = Laboratorios.dicas(m.dicas || []);
       const apoio = h('aside', { class: 'lab__apoio', 'aria-label': 'O objetivo, os comandos e as dicas' },
         alvoDe(m),
+        m.arquivos ? cartaoPasta(m) : null,
         Laboratorios.cartao({ id: 'lab-comandos', icone: 'i-livro', titulo: lab.tituloReferencia || 'Comandos que você já conhece',
           conteudo: Laboratorios.listaComandos(lab.referencia) }),
         Laboratorios.cartao({ id: 'lab-ajuda', icone: 'i-bolha', titulo: 'Travou?',
@@ -125,7 +195,7 @@ const LabPython = (() => {
         h('div', { class: 'lab__corpo' },
           apoio,
           h('section', { class: 'lab__bancada', 'aria-label': usarToque ? 'Complete as lacunas' : 'Seu código' },
-            area, telas.testes, telas.resultado)),
+            area, telas.pasta, telas.testes, telas.resultado)),
         h('footer', { class: 'lab__pe' },
           Laboratorios.fazerDeVerdade(lab.fazDeVerdade),
           h('div', { class: 'lab__pe-acoes' },
@@ -176,6 +246,7 @@ const LabPython = (() => {
       telas.console.limpar();
       telas.resultado.replaceChildren();
       telas.testes.hidden = true;
+      if (telas.pasta) telas.pasta.hidden = true;
       telas.editor.marcarLinha(null);
       if (!Executor.info().pronto) telas.console.escrever('Preparando o Python (só na primeira vez: uns 6 MB)…', 'info');
       const entradas = [];
@@ -201,6 +272,7 @@ const LabPython = (() => {
       }
       telas.rodar.disabled = false;
       telas.console.limpar();
+      mostrarPastaDepois(m, r.arquivos);
       if (r.saida) telas.console.escrever(r.saida);
       else if (!r.erro) telas.console.escrever('(o programa rodou, mas não mostrou nada na tela)', 'info');
       if (r.erro) {

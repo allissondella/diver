@@ -25,6 +25,7 @@
   .lab__apoio { display: contents; }
   .lab__apoio > :first-child { order: -1; }
   .lab__apoio > :not(:first-child) { order: 1; }
+  .lab__apoio > .lab-pasta { order: -1; } /* a pasta de antes vem antes do código (Organizador de Pasta) */
 }
 @media (min-width: 1280px) {
   .lab__corpo { grid-template-columns: minmax(300px, 5fr) minmax(0, 7fr); align-items: start; }
@@ -149,14 +150,14 @@
 .lab-equivalente { padding: var(--esp-2) var(--esp-3); background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio-pequeno); }
 .lab-verdade.cartao { padding: var(--esp-2) var(--esp-4); }
 .lab-verdade summary > .icone { display: none; } /* o + do cartão já mostra que abre */
-.lab-comandos__lista { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--esp-3); margin: 0; padding: 0; list-style: none; }
+.lab-comandos__lista { display: grid; grid-template-columns: fit-content(55%) minmax(0, 1fr); column-gap: var(--esp-3); margin: 0; padding: 0; list-style: none; }
 .lab-comandos__lista li {
   display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: baseline;
   padding: var(--esp-2) 0; font-size: var(--t-sm); line-height: var(--lh-normal); border-top: 1px solid var(--borda);
 }
 .lab-comandos__lista li:first-child { border-top: 0; padding-top: 0; }
 .lab-comandos__lista li:last-child { padding-bottom: 0; }
-.lab-comandos__lista code { justify-self: start; white-space: nowrap; }
+.lab-comandos__lista code { justify-self: start; white-space: pre-wrap; overflow-wrap: anywhere; } /* comando longo quebra em vez de alargar a tela (Organizador de Pasta) */
 .lab-comandos__lista li span { color: var(--texto-suave); }
 .lab-equivalente summary, .lab-verdade summary { display: flex; align-items: center; gap: var(--esp-2); min-height: 44px; font-weight: 700; cursor: pointer; }
 .lab-verdade ol { margin: var(--esp-2) 0 0; padding-left: var(--esp-5); display: grid; gap: var(--esp-1); }
@@ -284,3 +285,25 @@
 .lab-alvo__casos { display: grid; gap: var(--esp-2); margin: 0; padding: 0; list-style: none; }
 .lab-alvo__caso { display: block; margin-bottom: 4px; font-size: var(--t-sm); font-weight: 700; color: var(--texto-suave); }
 .lab__defeitos { font-size: var(--t-xs); }
+
+/* Organizador de Pasta (lab-python.js, Módulo 7): a pasta em árvore, antes e depois de rodar */
+.lab-pasta__lista { display: grid; gap: var(--esp-1); margin: 0; padding: 0; list-style: none; font-family: var(--fonte-mono); font-size: var(--t-sm); }
+.lab-pasta__lista .lab-pasta__lista { margin-top: var(--esp-1); padding-left: var(--esp-4); border-left: 1px dashed var(--borda); }
+.lab-pasta__nome { display: inline-flex; align-items: center; gap: var(--esp-2); min-height: 32px; overflow-wrap: anywhere; }
+.lab-pasta__nome > .icone { flex: none; width: 18px; height: 18px; color: var(--texto-suave); }
+.lab-pasta__item--pasta > .lab-pasta__nome > .icone { color: var(--amarelo); }
+.lab-pasta__arquivo > summary { cursor: pointer; list-style: none; border-radius: var(--raio-sm); }
+.lab-pasta__arquivo > summary::-webkit-details-marker { display: none; }
+.lab-pasta__arquivo > summary::after { content: none; } /* sem o "+" dos cartões que abrem: aqui o arquivo inteiro é o botão */
+.lab-pasta__arquivo > summary:focus-visible { outline: 2px solid var(--turquesa); outline-offset: 2px; }
+.lab-pasta__conteudo { margin: var(--esp-1) 0 var(--esp-2); max-height: 12rem; overflow: auto; white-space: pre-wrap; }
+.lab-pasta__item--novo > .lab-pasta__nome, .lab-pasta__item--novo > details > summary { color: var(--turquesa-claro); }
+.lab-pasta__item--mudou > details > summary { color: var(--amarelo); }
+.lab-pasta__sairam { margin: var(--esp-2) 0 0; font-size: var(--t-sm); color: var(--texto-suave); }
+.lab-pasta-depois[hidden] { display: none; }
+@media (max-width: 479px) {
+  /* No celular, comando em cima e explicação embaixo: comandos longos não alargam a tela */
+  .lab-comandos__lista { grid-template-columns: minmax(0, 1fr); }
+  .lab-comandos__lista li { grid-template-columns: minmax(0, 1fr); row-gap: 2px; }
+}
+@media (pointer: coarse) { .lab-pasta__arquivo > summary { min-height: 44px; } } /* alvo de toque de 44 px para abrir o arquivo */

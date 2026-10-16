@@ -2701,6 +2701,48 @@
         }
       ],
       "saidaFinal": "10 99\n"
+    },
+    {
+      "id": "lc-boletim",
+      "grupo": "Funções de verdade",
+      "aulas": [
+        "py-revisao-funcoes"
+      ],
+      "titulo": "O boletim em câmera lenta",
+      "enunciado": "linha chama media e depois situacao. Siga as chamadas e os valores que voltam.",
+      "codigo": "def media(notas):\n    return sum(notas) / len(notas)\n\ndef situacao(m, corte=6):\n    return \"aprovado\" if m >= corte else \"reprovado\"\n\ndef linha(nome, notas):\n    m = media(notas)\n    s = situacao(m)\n    return f\"{nome}: {s}\"\n\nprint(linha(\"Ana\", [7, 8]))\n",
+      "perguntas": [
+        {
+          "linha": 8,
+          "tipo": "linha",
+          "opcoes": [
+            "2",
+            "5",
+            "9"
+          ],
+          "porque": "A linha 8 chama media: o programa pula para dentro dela, na linha 2."
+        },
+        {
+          "linha": 9,
+          "variavel": "m",
+          "opcoes": [
+            "7.5",
+            "15",
+            "\"aprovado\""
+          ],
+          "porque": "media devolveu 15 / 2 = 7.5, que ficou guardado em m."
+        },
+        {
+          "linha": 9,
+          "tipo": "linha",
+          "opcoes": [
+            "5",
+            "10",
+            "2"
+          ],
+          "porque": "A linha 9 chama situacao(7.5): o programa pula para dentro dela, na linha 5. O corte padrão 6 aprova."
+        }
+      ]
     }
   ]
 }

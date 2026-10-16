@@ -916,6 +916,159 @@
      }
     ]
    }
+  },
+  {
+   "id": "cb-apelido",
+   "aulas": [
+    "py-revisao-primeiros-passos"
+   ],
+   "grupo": "Projeto: apelidos",
+   "defeitos": 2,
+   "titulo": "Apelido quebrado",
+   "enunciado": "O gerador deveria mostrar `Apelido: MAR42` para o nome digitado \"  mariana\". Ele quebra com TypeError e, depois de consertado, ainda mostra o apelido errado. Há dois defeitos.",
+   "codigoInicial": "nome = input(\"Seu nome: \")\nnumero = 42\napelido = nome[:3].upper() + numero\nprint(\"Apelido:\", apelido)\n",
+   "solucao": "nome = input(\"Seu nome: \").strip()\nnumero = 42\napelido = nome[:3].upper() + str(numero)\nprint(\"Apelido:\", apelido)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com espaços antes",
+     "entradas": [
+      "  mariana"
+     ],
+     "esperada": "Seu nome:   mariana\nApelido: MAR42\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Sem espaços",
+     "entradas": [
+      "lucas"
+     ],
+     "esperada": "Seu nome: lucas\nApelido: LUC42\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "A primeira mensagem é TypeError: texto + número. Converta o número.",
+    "Consertado o tipo, o apelido sai \"  M42\": os espaços da frente entraram na fatia.",
+    "str(numero) no apelido e .strip() logo depois do input."
+   ],
+   "toque": {
+    "modelo": "nome = input(\"Seu nome: \").___()\nnumero = 42\napelido = nome[:3].upper() + ___(numero)\nprint(\"Apelido:\", apelido)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "strip",
+       "upper",
+       "lower"
+      ],
+      "certa": 0,
+      "dica": "Limpe antes de recortar."
+     },
+     {
+      "opcoes": [
+       "str",
+       "int",
+       "len"
+      ],
+      "certa": 0,
+      "dica": "Texto + texto."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-except-vazio",
+   "aulas": [
+    "py-try-except"
+   ],
+   "grupo": "try e except",
+   "defeitos": 2,
+   "titulo": "O except que escondia",
+   "enunciado": "O programa deveria mostrar `Total: 90` somando as notas válidas e pulando a inválida. Ele mostra só a mensagem de erro, porque o except vazio esconde um defeito. Troque pelo except certo e conserte o defeito escondido.",
+   "codigoInicial": "total = 0\nfor texto in [\"50\", \"abc\", \"40\"]:\n    try:\n        total = total + int(textos)\n    except:\n        print(\"valor inválido:\", texto)\nprint(\"Total:\", total)\n",
+   "solucao": "total = 0\nfor texto in [\"50\", \"abc\", \"40\"]:\n    try:\n        total = total + int(texto)\n    except ValueError:\n        print(\"valor inválido:\", texto)\nprint(\"Total:\", total)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Soma e avisa",
+     "esperada": "valor inválido: abc\nTotal: 90\n"
+    }
+   ],
+   "metas": {
+    "linhas": 7
+   },
+   "dicas": [
+    "Todas as linhas viram \"valor inválido\". Troque o except vazio por except ValueError e rode de novo.",
+    "Agora aparece um NameError: o nome da variável no int está errado.",
+    "int(texto), e except ValueError."
+   ],
+   "toque": {
+    "modelo": "total = 0\nfor texto in [\"50\", \"abc\", \"40\"]:\n    try:\n        total = total + int(___)\n    except ___:\n        print(\"valor inválido:\", texto)\nprint(\"Total:\", total)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "texto",
+       "textos",
+       "total"
+      ],
+      "certa": 0,
+      "dica": "A variável do for."
+     },
+     {
+      "opcoes": [
+       "ValueError",
+       "Exception",
+       "NameError"
+      ],
+      "certa": 0,
+      "dica": "O erro do int(\"abc\")."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-plano-b",
+   "aulas": [
+    "py-try-except"
+   ],
+   "grupo": "try e except",
+   "defeitos": 1,
+   "titulo": "Plano B sem saída",
+   "enunciado": "Na primeira vez, o arquivo `recorde.txt` não existe. O programa deveria mostrar `Recorde: 0`, mas quebra com NameError depois do aviso. Conserte o plano B.",
+   "codigoInicial": "try:\n    with open(\"recorde.txt\", encoding=\"utf-8\") as f:\n        recorde = int(f.read())\nexcept FileNotFoundError:\n    print(\"Primeira partida!\")\nprint(\"Recorde:\", recorde)\n",
+   "solucao": "try:\n    with open(\"recorde.txt\", encoding=\"utf-8\") as f:\n        recorde = int(f.read())\nexcept FileNotFoundError:\n    print(\"Primeira partida!\")\n    recorde = 0\nprint(\"Recorde:\", recorde)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Primeira partida",
+     "esperada": "Primeira partida!\nRecorde: 0\n"
+    }
+   ],
+   "metas": {
+    "linhas": 7
+   },
+   "dicas": [
+    "O except avisa, mas a variável recorde nunca ganha valor.",
+    "O plano B precisa deixar o programa num estado em que dá para seguir.",
+    "Dentro do except, acrescente recorde = 0."
+   ],
+   "toque": {
+    "modelo": "try:\n    with open(\"recorde.txt\", encoding=\"utf-8\") as f:\n        recorde = int(f.read())\nexcept FileNotFoundError:\n    print(\"Primeira partida!\")\n    ___\nprint(\"Recorde:\", recorde)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "recorde = 0",
+       "recorde = None + 1",
+       "pass"
+      ],
+      "certa": 0,
+      "dica": "Dê um valor inicial."
+     }
+    ]
+   }
   }
  ]
 }

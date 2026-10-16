@@ -1,0 +1,261 @@
+{
+ "id": "servidor-sumido",
+ "nome": "O Caso do Servidor Sumido",
+ "versao": 1,
+ "tipo": "python",
+ "descricao": "O servidor aurora sumiu da sala de máquinas da Diver durante a madrugada. Cruze crachás, câmeras e chamados em CSV e JSON, uma pista por missão, até chegar a um nome.",
+ "tituloReferencia": "Ferramentas do detetive",
+ "referencia": [
+  {
+   "nome": "csv.DictReader(f)",
+   "faz": "cada linha do CSV vira um dicionário"
+  },
+  {
+   "nome": "json.load(f)",
+   "faz": "lê o JSON do arquivo: listas e dicionários"
+  },
+  {
+   "nome": "{x for x in ... if ...}",
+   "faz": "monta um conjunto com filtro"
+  },
+  {
+   "nome": "a - b",
+   "faz": "o que está em a e não está em b"
+  },
+  {
+   "nome": "\"01:00\" <= hora <= \"03:00\"",
+   "faz": "horas no formato HH:MM se comparam como texto"
+  }
+ ],
+ "fazDeVerdade": {
+  "titulo": "Agora faça de verdade",
+  "texto": "Investigação de incidentes de verdade cruza registros assim: quem entrou, de onde, quando. É o trabalho de quem cuida de segurança.",
+  "passos": [
+   "Abra os arquivos do caso na pasta e leia as colunas antes de programar.",
+   "Escreva cada filtro num passo separado e mostre o resultado com print.",
+   "Compare com a sua dedução no papel: o programa e você chegaram ao mesmo nome?"
+  ]
+ },
+ "missoes": [
+  {
+   "id": "ss-crachas",
+   "tituloExemplos": "O que a investigação precisa achar",
+   "exemplos": [
+    "suspeitos   # conjunto com os ids",
+    "# porta: sala-servidores",
+    "# entre 01:00 e 03:00"
+   ],
+   "aulas": [
+    "py-csv-json"
+   ],
+   "grupo": "Investigação",
+   "titulo": "Pista 1: os crachás",
+   "enunciado": "O servidor sumiu entre 01:00 e 03:00. Monte o conjunto `suspeitos` com os ids de quem passou o crachá na porta `sala-servidores` nesse intervalo.",
+   "arquivos": {
+    "funcionarios.csv": "id,nome,setor\nF01,Lara Menezes,Infraestrutura\nF02,Otávio Reis,Financeiro\nF03,Joana Prado,Infraestrutura\nF04,Caio Batista,Suporte\nF05,Marta Leal,Segurança\nF06,Rui Fontes,Suporte\n",
+    "crachas.csv": "hora,id,porta\n22:10,F02,entrada\n23:40,F01,sala-servidores\n00:15,F05,ronda\n01:05,F03,sala-servidores\n01:20,F04,sala-servidores\n01:45,F06,copa\n02:10,F01,sala-servidores\n02:30,F06,sala-servidores\n03:15,F05,ronda\n",
+    "cameras.json": "[\n  {\"hora\": \"02:15\", \"sala\": \"copa\", \"vistos\": [\"F04\"]},\n  {\"hora\": \"02:15\", \"sala\": \"estacionamento\", \"vistos\": [\"F03\"]}\n]\n",
+    "chamados.json": "[\n  {\"hora\": \"23:50\", \"id\": \"F01\", \"assunto\": \"crachá perdido no estacionamento\"},\n  {\"hora\": \"08:00\", \"id\": \"F05\", \"assunto\": \"servidor aurora sumiu da sala\"}\n]\n"
+   },
+   "codigoInicial": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    for l in csv.DictReader(f):\n        print(l)\n\nsuspeitos = set()\n",
+   "solucao": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nprint(sorted(suspeitos))\n",
+   "testes": [
+    {
+     "nome": "Quatro suspeitos",
+     "codigo": "assert suspeitos == {'F01', 'F03', 'F04', 'F06'}, f'Confira o filtro da porta e do horário: {sorted(suspeitos)}'"
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "Rode e leia: cada registro tem hora, id e porta.",
+    "Filtre as duas condições juntas: porta == \"sala-servidores\" e \"01:00\" <= hora <= \"03:00\".",
+    "suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}"
+   ],
+   "toque": {
+    "modelo": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"___\" and \"01:00\" <= l[\"hora\"] <= \"___\"}\nprint(sorted(suspeitos))",
+    "lacunas": [
+     {
+      "opcoes": [
+       "sala-servidores",
+       "copa",
+       "entrada"
+      ],
+      "certa": 0,
+      "dica": "A porta da sala do servidor."
+     },
+     {
+      "opcoes": [
+       "03:00",
+       "23:59",
+       "01:00"
+      ],
+      "certa": 0,
+      "dica": "O fim do intervalo."
+     }
+    ]
+   }
+  },
+  {
+   "id": "ss-cameras",
+   "tituloExemplos": "O que a investigação precisa achar",
+   "exemplos": [
+    "restam = suspeitos - vistos_fora",
+    "# vistos_fora: quem as câmeras viram em outra sala"
+   ],
+   "aulas": [
+    "py-csv-json"
+   ],
+   "grupo": "Investigação",
+   "titulo": "Pista 2: as câmeras",
+   "enunciado": "Às 02:15, quando o servidor sumiu, as câmeras viram algumas pessoas fora da sala. Monte `restam`: os suspeitos menos quem foi visto em outra sala.",
+   "arquivos": {
+    "funcionarios.csv": "id,nome,setor\nF01,Lara Menezes,Infraestrutura\nF02,Otávio Reis,Financeiro\nF03,Joana Prado,Infraestrutura\nF04,Caio Batista,Suporte\nF05,Marta Leal,Segurança\nF06,Rui Fontes,Suporte\n",
+    "crachas.csv": "hora,id,porta\n22:10,F02,entrada\n23:40,F01,sala-servidores\n00:15,F05,ronda\n01:05,F03,sala-servidores\n01:20,F04,sala-servidores\n01:45,F06,copa\n02:10,F01,sala-servidores\n02:30,F06,sala-servidores\n03:15,F05,ronda\n",
+    "cameras.json": "[\n  {\"hora\": \"02:15\", \"sala\": \"copa\", \"vistos\": [\"F04\"]},\n  {\"hora\": \"02:15\", \"sala\": \"estacionamento\", \"vistos\": [\"F03\"]}\n]\n",
+    "chamados.json": "[\n  {\"hora\": \"23:50\", \"id\": \"F01\", \"assunto\": \"crachá perdido no estacionamento\"},\n  {\"hora\": \"08:00\", \"id\": \"F05\", \"assunto\": \"servidor aurora sumiu da sala\"}\n]\n"
+   },
+   "codigoInicial": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\n\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nprint(cameras)\n\nrestam = suspeitos\n",
+   "solucao": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nvistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"vistos\"]}\nrestam = suspeitos - vistos_fora\nprint(sorted(restam))\n",
+   "testes": [
+    {
+     "nome": "Dois restam",
+     "codigo": "assert restam == {'F01', 'F06'}, f'Tire de suspeitos quem as câmeras viram fora: {sorted(restam)}'"
+    }
+   ],
+   "metas": {
+    "linhas": 10
+   },
+   "dicas": [
+    "cameras é uma lista de dicionários; cada um tem a sala e a lista vistos.",
+    "Junte num conjunto todos os vistos em salas diferentes de sala-servidores.",
+    "vistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"vistos\"]} / restam = suspeitos - vistos_fora"
+   ],
+   "toque": {
+    "modelo": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nvistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"___\"]}\nrestam = suspeitos ___ vistos_fora\nprint(sorted(restam))",
+    "lacunas": [
+     {
+      "opcoes": [
+       "vistos",
+       "sala",
+       "hora"
+      ],
+      "certa": 0,
+      "dica": "A lista de ids de cada câmera."
+     },
+     {
+      "opcoes": [
+       "-",
+       "|",
+       "&"
+      ],
+      "certa": 0,
+      "dica": "Tirar de um conjunto o que está no outro."
+     }
+    ]
+   }
+  },
+  {
+   "id": "ss-chamados",
+   "tituloExemplos": "O que a investigação precisa achar",
+   "exemplos": [
+    "restam = restam - perderam",
+    "# perderam: quem abriu chamado de crachá perdido"
+   ],
+   "aulas": [
+    "py-csv-json"
+   ],
+   "grupo": "Investigação",
+   "titulo": "Pista 3: os chamados",
+   "enunciado": "Alguém avisou que perdeu o crachá antes do sumiço: o crachá dela pode ter sido usado por outra pessoa. Tire de `restam` quem abriu chamado de \"crachá perdido\".",
+   "arquivos": {
+    "funcionarios.csv": "id,nome,setor\nF01,Lara Menezes,Infraestrutura\nF02,Otávio Reis,Financeiro\nF03,Joana Prado,Infraestrutura\nF04,Caio Batista,Suporte\nF05,Marta Leal,Segurança\nF06,Rui Fontes,Suporte\n",
+    "crachas.csv": "hora,id,porta\n22:10,F02,entrada\n23:40,F01,sala-servidores\n00:15,F05,ronda\n01:05,F03,sala-servidores\n01:20,F04,sala-servidores\n01:45,F06,copa\n02:10,F01,sala-servidores\n02:30,F06,sala-servidores\n03:15,F05,ronda\n",
+    "cameras.json": "[\n  {\"hora\": \"02:15\", \"sala\": \"copa\", \"vistos\": [\"F04\"]},\n  {\"hora\": \"02:15\", \"sala\": \"estacionamento\", \"vistos\": [\"F03\"]}\n]\n",
+    "chamados.json": "[\n  {\"hora\": \"23:50\", \"id\": \"F01\", \"assunto\": \"crachá perdido no estacionamento\"},\n  {\"hora\": \"08:00\", \"id\": \"F05\", \"assunto\": \"servidor aurora sumiu da sala\"}\n]\n"
+   },
+   "codigoInicial": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nvistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"vistos\"]}\nrestam = suspeitos - vistos_fora\n\nwith open(\"chamados.json\", encoding=\"utf-8\") as f:\n    chamados = json.load(f)\nprint(chamados)\n",
+   "solucao": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nvistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"vistos\"]}\nrestam = suspeitos - vistos_fora\nwith open(\"chamados.json\", encoding=\"utf-8\") as f:\n    chamados = json.load(f)\nperderam = {c[\"id\"] for c in chamados if \"crachá perdido\" in c[\"assunto\"]}\nrestam = restam - perderam\nprint(restam)\n",
+   "testes": [
+    {
+     "nome": "Resta um",
+     "codigo": "assert restam == {'F06'}, f'Tire de restam quem perdeu o crachá: {sorted(restam)}'"
+    }
+   ],
+   "metas": {
+    "linhas": 14
+   },
+   "dicas": [
+    "Procure nos chamados o texto \"crachá perdido\" dentro do assunto.",
+    "perderam = {c[\"id\"] for c in chamados if \"crachá perdido\" in c[\"assunto\"]}",
+    "restam = restam - perderam"
+   ],
+   "toque": {
+    "modelo": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nvistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"vistos\"]}\nrestam = suspeitos - vistos_fora\nwith open(\"chamados.json\", encoding=\"utf-8\") as f:\n    chamados = json.load(f)\nperderam = {c[\"id\"] for c in chamados if \"crachá perdido\" ___ c[\"assunto\"]}\nrestam = restam - perderam\nprint(restam)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "in",
+       "==",
+       "not in"
+      ],
+      "certa": 0,
+      "dica": "O texto aparece dentro do assunto."
+     }
+    ]
+   }
+  },
+  {
+   "id": "ss-nome",
+   "aulas": [
+    "py-csv-json"
+   ],
+   "grupo": "Investigação",
+   "titulo": "Pista 4: o nome",
+   "enunciado": "Só resta um id. Use `funcionarios.csv` para descobrir o nome dessa pessoa e guarde em `culpado`. Mostre `Culpado: <nome>`.",
+   "arquivos": {
+    "funcionarios.csv": "id,nome,setor\nF01,Lara Menezes,Infraestrutura\nF02,Otávio Reis,Financeiro\nF03,Joana Prado,Infraestrutura\nF04,Caio Batista,Suporte\nF05,Marta Leal,Segurança\nF06,Rui Fontes,Suporte\n",
+    "crachas.csv": "hora,id,porta\n22:10,F02,entrada\n23:40,F01,sala-servidores\n00:15,F05,ronda\n01:05,F03,sala-servidores\n01:20,F04,sala-servidores\n01:45,F06,copa\n02:10,F01,sala-servidores\n02:30,F06,sala-servidores\n03:15,F05,ronda\n",
+    "cameras.json": "[\n  {\"hora\": \"02:15\", \"sala\": \"copa\", \"vistos\": [\"F04\"]},\n  {\"hora\": \"02:15\", \"sala\": \"estacionamento\", \"vistos\": [\"F03\"]}\n]\n",
+    "chamados.json": "[\n  {\"hora\": \"23:50\", \"id\": \"F01\", \"assunto\": \"crachá perdido no estacionamento\"},\n  {\"hora\": \"08:00\", \"id\": \"F05\", \"assunto\": \"servidor aurora sumiu da sala\"}\n]\n"
+   },
+   "codigoInicial": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nvistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"vistos\"]}\nrestam = suspeitos - vistos_fora\nwith open(\"chamados.json\", encoding=\"utf-8\") as f:\n    chamados = json.load(f)\nperderam = {c[\"id\"] for c in chamados if \"crachá perdido\" in c[\"assunto\"]}\nrestam = restam - perderam\n\nculpado = \"\"\n",
+   "solucao": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nvistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"vistos\"]}\nrestam = suspeitos - vistos_fora\nwith open(\"chamados.json\", encoding=\"utf-8\") as f:\n    chamados = json.load(f)\nperderam = {c[\"id\"] for c in chamados if \"crachá perdido\" in c[\"assunto\"]}\nrestam = restam - perderam\nwith open(\"funcionarios.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    nomes = {l[\"id\"]: l[\"nome\"] for l in csv.DictReader(f)}\nculpado = nomes[restam.pop()]\nprint(\"Culpado:\", culpado)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "O nome do culpado",
+     "esperada": "Culpado: Rui Fontes\n"
+    },
+    {
+     "nome": "Guardado em culpado",
+     "codigo": "assert culpado == 'Rui Fontes', 'Guarde o nome na variável culpado'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 17
+   },
+   "dicas": [
+    "Monte um dicionário id → nome a partir de funcionarios.csv.",
+    "restam tem um id só: restam.pop() tira esse id do conjunto.",
+    "nomes = {l[\"id\"]: l[\"nome\"] for l in csv.DictReader(f)} / culpado = nomes[restam.pop()]"
+   ],
+   "toque": {
+    "modelo": "import csv, json\n\nwith open(\"crachas.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    suspeitos = {l[\"id\"] for l in csv.DictReader(f) if l[\"porta\"] == \"sala-servidores\" and \"01:00\" <= l[\"hora\"] <= \"03:00\"}\nwith open(\"cameras.json\", encoding=\"utf-8\") as f:\n    cameras = json.load(f)\nvistos_fora = {i for c in cameras if c[\"sala\"] != \"sala-servidores\" for i in c[\"vistos\"]}\nrestam = suspeitos - vistos_fora\nwith open(\"chamados.json\", encoding=\"utf-8\") as f:\n    chamados = json.load(f)\nperderam = {c[\"id\"] for c in chamados if \"crachá perdido\" in c[\"assunto\"]}\nrestam = restam - perderam\nwith open(\"funcionarios.csv\", encoding=\"utf-8\", newline=\"\") as f:\n    nomes = {l[\"id\"]: l[\"___\"] for l in csv.DictReader(f)}\nculpado = nomes[restam.pop()]\nprint(\"Culpado:\", culpado)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "nome",
+       "setor",
+       "id"
+      ],
+      "certa": 0,
+      "dica": "O dicionário guarda o nome de cada id."
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,389 @@
+{
+ "id": "organizador-de-pasta",
+ "nome": "Organizador de Pasta",
+ "versao": 1,
+ "tipo": "python",
+ "descricao": "Uma pasta de downloads bagunçada e um programa seu para arrumar: ler e escrever arquivos, criar pastas e mover cada arquivo para o lugar certo, sem perder nada.",
+ "tituloReferencia": "Comandos de arquivos e pastas",
+ "referencia": [
+  {
+   "nome": "open(nome, \"a\")",
+   "faz": "abre para acrescentar; \"r\" lê e \"w\" apaga e escreve (sempre com encoding=\"utf-8\")"
+  },
+  {
+   "nome": "Path(\"pasta\") / \"nome\"",
+   "faz": "junta caminhos"
+  },
+  {
+   "nome": "pasta.iterdir()",
+   "faz": "cada item de dentro da pasta (use sorted)"
+  },
+  {
+   "nome": "item.is_file()",
+   "faz": "True se for arquivo, False se for pasta"
+  },
+  {
+   "nome": "item.suffix.lower()",
+   "faz": "a extensão, em minúsculas: \".jpg\""
+  },
+  {
+   "nome": "pasta.mkdir(exist_ok=True)",
+   "faz": "cria a pasta, sem erro se já existir"
+  },
+  {
+   "nome": "shutil.move(origem, destino)",
+   "faz": "muda o arquivo de lugar"
+  },
+  {
+   "nome": "caminho.exists()",
+   "faz": "True se o caminho existe"
+  }
+ ],
+ "fazDeVerdade": {
+  "titulo": "Agora faça de verdade",
+  "texto": "Rode o organizador numa pasta de teste no seu computador, nunca direto na pasta de verdade.",
+  "passos": [
+   "Crie uma pasta teste-downloads e copie para ela alguns arquivos (cópias, não os originais).",
+   "Rode o programa com a pasta de teste no lugar de \"downloads\" e confira o resultado.",
+   "Só depois de conferir, pense em usar na pasta real. Esse é o seu segundo projeto do portfólio."
+  ]
+ },
+ "missoes": [
+  {
+   "id": "op-limpar-lista",
+   "aulas": [
+    "py-arquivos-texto"
+   ],
+   "grupo": "Arquivos de texto",
+   "titulo": "Lista limpa",
+   "enunciado": "O arquivo `compras.txt` tem espaços sobrando e linhas em branco. Leia o arquivo, grave em `limpa.txt` um item por linha, sem espaços e sem linhas vazias, e mostre `4 itens`.",
+   "arquivos": {
+    "compras.txt": "  arroz\nfeijão \n\ncafé\n   \nleite\n"
+   },
+   "codigoInicial": "with open(\"compras.txt\", encoding=\"utf-8\") as f:\n    linhas = f.readlines()\n# limpe as linhas e grave em limpa.txt\n",
+   "solucao": "with open(\"compras.txt\", encoding=\"utf-8\") as f:\n    itens = [l.strip() for l in f if l.strip()]\nwith open(\"limpa.txt\", \"w\", encoding=\"utf-8\") as f:\n    for item in itens:\n        f.write(item + \"\\n\")\nprint(len(itens), \"itens\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 4 itens",
+     "esperada": "4 itens\n"
+    },
+    {
+     "nome": "limpa.txt certinho",
+     "codigo": "assert open('limpa.txt', encoding='utf-8').read() == 'arroz\\nfeijão\\ncafé\\nleite\\n', 'limpa.txt deveria ter arroz, feijão, café e leite, um por linha'"
+    }
+   ],
+   "metas": {
+    "linhas": 6
+   },
+   "dicas": [
+    "Para cada linha, linha.strip() tira os espaços e o \\n. Linha que fica vazia é falsa num if.",
+    "Uma compreensão monta a lista: [l.strip() for l in f if l.strip()]. Depois, abra limpa.txt com \"w\".",
+    "Escreva cada item com f.write(item + \"\\n\") e, no fim, print(len(itens), \"itens\")."
+   ],
+   "toque": {
+    "modelo": "with open(\"compras.txt\", encoding=\"utf-8\") as f:\n    itens = [l.strip() for l in f if l.___()]\nwith open(\"limpa.txt\", \"___\", encoding=\"utf-8\") as f:\n    for item in itens:\n        f.write(item + \"\\n\")\nprint(len(itens), \"itens\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "strip",
+       "upper",
+       "split"
+      ],
+      "certa": 0,
+      "dica": "Linha só com espaços vira vazia depois do strip."
+     },
+     {
+      "opcoes": [
+       "w",
+       "r",
+       "x"
+      ],
+      "certa": 0,
+      "dica": "Para criar e escrever o arquivo novo."
+     }
+    ]
+   }
+  },
+  {
+   "id": "op-diario",
+   "tituloExemplos": "Como o arquivo deve ficar",
+   "exemplos": [
+    "# diario.txt depois de rodar",
+    "seg: lógica",
+    "ter: Python",
+    "qua: arquivos"
+   ],
+   "aulas": [
+    "py-arquivos-texto"
+   ],
+   "grupo": "Arquivos de texto",
+   "titulo": "Diário que não esquece",
+   "enunciado": "O programa deveria acrescentar `qua: arquivos` no fim do `diario.txt`, mas está apagando o que já havia. Conserte para guardar as três linhas.",
+   "arquivos": {
+    "diario.txt": "seg: lógica\nter: Python\n"
+   },
+   "codigoInicial": "with open(\"diario.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"qua: arquivos\\n\")\n",
+   "solucao": "with open(\"diario.txt\", \"a\", encoding=\"utf-8\") as f:\n    f.write(\"qua: arquivos\\n\")\n",
+   "testes": [
+    {
+     "nome": "As três linhas",
+     "codigo": "assert open('diario.txt', encoding='utf-8').read() == 'seg: lógica\\nter: Python\\nqua: arquivos\\n', 'O diário deveria guardar seg, ter e qua, nessa ordem'"
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "Rode e olhe a pasta depois: o que sobrou no diário?",
+    "O modo \"w\" apaga tudo ao abrir. Qual modo acrescenta no fim?",
+    "Troque \"w\" por \"a\"."
+   ],
+   "toque": {
+    "modelo": "with open(\"diario.txt\", \"___\", encoding=\"utf-8\") as f:\n    f.write(\"qua: arquivos\\n\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "a",
+       "w",
+       "r"
+      ],
+      "certa": 0,
+      "dica": "\"a\" de append: acrescenta no fim."
+     }
+    ]
+   }
+  },
+  {
+   "id": "op-por-tipo",
+   "tituloExemplos": "Como a pasta deve ficar",
+   "exemplos": [
+    "downloads/Imagens/     .jpg .jpeg .png .svg",
+    "downloads/Documentos/  .pdf .docx .txt .md",
+    "downloads/Planilhas/   .xlsx .csv .ods",
+    "downloads/Midia/       .mp3 .mp4 .mov",
+    "downloads/Outros/      o resto",
+    "# 24 arquivos, nenhum solto em downloads"
+   ],
+   "aulas": [
+    "py-pastas-pathlib"
+   ],
+   "grupo": "O organizador",
+   "titulo": "Cada um no seu cesto",
+   "enunciado": "A pasta `downloads` tem 24 arquivos misturados. Mova cada um para uma subpasta pelo tipo, usando o dicionário `destinos`; o que não estiver nele vai para `Outros`. No fim, nada solto e nada perdido.",
+   "arquivos": {
+    "downloads/praia.jpg": "conteúdo de praia.jpg\n",
+    "downloads/Aniversario.JPG": "conteúdo de Aniversario.JPG\n",
+    "downloads/mapa.png": "conteúdo de mapa.png\n",
+    "downloads/logo.svg": "conteúdo de logo.svg\n",
+    "downloads/print_tela.png": "conteúdo de print_tela.png\n",
+    "downloads/selfie.jpeg": "conteúdo de selfie.jpeg\n",
+    "downloads/boleto_luz.pdf": "conteúdo de boleto_luz.pdf\n",
+    "downloads/Contrato.PDF": "conteúdo de Contrato.PDF\n",
+    "downloads/curriculo.docx": "conteúdo de curriculo.docx\n",
+    "downloads/anotacoes.txt": "conteúdo de anotacoes.txt\n",
+    "downloads/leia-me.md": "conteúdo de leia-me.md\n",
+    "downloads/redacao.docx": "conteúdo de redacao.docx\n",
+    "downloads/gastos.xlsx": "conteúdo de gastos.xlsx\n",
+    "downloads/notas.csv": "conteúdo de notas.csv\n",
+    "downloads/orcamento.ods": "conteúdo de orcamento.ods\n",
+    "downloads/musica.mp3": "conteúdo de musica.mp3\n",
+    "downloads/podcast.MP3": "conteúdo de podcast.MP3\n",
+    "downloads/aula.mp4": "conteúdo de aula.mp4\n",
+    "downloads/instalador.exe": "conteúdo de instalador.exe\n",
+    "downloads/fotos.zip": "conteúdo de fotos.zip\n",
+    "downloads/backup.tar.gz": "conteúdo de backup.tar.gz\n",
+    "downloads/LICENCA": "conteúdo de LICENCA\n",
+    "downloads/video_curto.mov": "conteúdo de video_curto.mov\n",
+    "downloads/planilha_final.CSV": "conteúdo de planilha_final.CSV\n"
+   },
+   "codigoInicial": "from pathlib import Path\nimport shutil\n\ndestinos = {\n    \".jpg\": \"Imagens\", \".jpeg\": \"Imagens\", \".png\": \"Imagens\", \".svg\": \"Imagens\",\n    \".pdf\": \"Documentos\", \".docx\": \"Documentos\", \".txt\": \"Documentos\", \".md\": \"Documentos\",\n    \".xlsx\": \"Planilhas\", \".csv\": \"Planilhas\", \".ods\": \"Planilhas\",\n    \".mp3\": \"Midia\", \".mp4\": \"Midia\", \".mov\": \"Midia\",\n}\n\nfor item in sorted(Path(\"downloads\").iterdir()):\n    print(item.name)\n",
+   "solucao": "from pathlib import Path\nimport shutil\n\ndestinos = {\n    \".jpg\": \"Imagens\", \".jpeg\": \"Imagens\", \".png\": \"Imagens\", \".svg\": \"Imagens\",\n    \".pdf\": \"Documentos\", \".docx\": \"Documentos\", \".txt\": \"Documentos\", \".md\": \"Documentos\",\n    \".xlsx\": \"Planilhas\", \".csv\": \"Planilhas\", \".ods\": \"Planilhas\",\n    \".mp3\": \"Midia\", \".mp4\": \"Midia\", \".mov\": \"Midia\",\n}\n\nfor item in sorted(Path(\"downloads\").iterdir()):\n    if item.is_file():\n        pasta = Path(\"downloads\") / destinos.get(item.suffix.lower(), \"Outros\")\n        pasta.mkdir(exist_ok=True)\n        shutil.move(item, pasta / item.name)\n",
+   "testes": [
+    {
+     "nome": "Nada solto na pasta",
+     "codigo": "from pathlib import Path\nsoltos = [p.name for p in Path('downloads').iterdir() if p.is_file()]\nassert not soltos, f'Ainda há arquivos soltos em downloads: {soltos[:3]}'"
+    },
+    {
+     "nome": "Nenhum arquivo se perdeu",
+     "codigo": "from pathlib import Path\nn = sum(1 for p in Path('downloads').rglob('*') if p.is_file())\nassert n == 24, f'Eram 24 arquivos; agora há {n}'"
+    },
+    {
+     "nome": "Imagens no lugar",
+     "codigo": "from pathlib import Path\nassert Path('downloads/Imagens/Aniversario.JPG').exists(), 'Aniversario.JPG deveria estar em Imagens (compare a extensão em minúsculas)'"
+    },
+    {
+     "nome": "Todos no cesto certo",
+     "oculto": true,
+     "codigo": "from pathlib import Path\nerrados = [str(p) for p in Path('downloads').rglob('*') if p.is_file() and p.parent.name != destinos.get(p.suffix.lower(), 'Outros')]\nassert not errados, f'Fora do lugar: {errados[:3]}'"
+    },
+    {
+     "nome": "Desconhecidos em Outros",
+     "oculto": true,
+     "codigo": "from pathlib import Path\nassert Path('downloads/Outros/LICENCA').exists() and Path('downloads/Outros/instalador.exe').exists(), 'Arquivos sem destino no dicionário vão para Outros'"
+    }
+   ],
+   "metas": {
+    "linhas": 15
+   },
+   "dicas": [
+    "Para cada item: só arquivos (is_file), a extensão em minúsculas (suffix.lower()) e o destino no dicionário com get(..., \"Outros\").",
+    "Crie a pasta de destino com mkdir(exist_ok=True) antes de mover: ela pode ainda não existir.",
+    "pasta = Path(\"downloads\") / destinos.get(item.suffix.lower(), \"Outros\") / pasta.mkdir(exist_ok=True) / shutil.move(item, pasta / item.name)"
+   ],
+   "toque": {
+    "modelo": "from pathlib import Path\nimport shutil\n\ndestinos = {\n    \".jpg\": \"Imagens\", \".jpeg\": \"Imagens\", \".png\": \"Imagens\", \".svg\": \"Imagens\",\n    \".pdf\": \"Documentos\", \".docx\": \"Documentos\", \".txt\": \"Documentos\", \".md\": \"Documentos\",\n    \".xlsx\": \"Planilhas\", \".csv\": \"Planilhas\", \".ods\": \"Planilhas\",\n    \".mp3\": \"Midia\", \".mp4\": \"Midia\", \".mov\": \"Midia\",\n}\n\nfor item in sorted(Path(\"downloads\").iterdir()):\n    if item.is_file():\n        pasta = Path(\"downloads\") / destinos.get(item.suffix.___(), \"Outros\")\n        pasta.mkdir(___=True)\n        shutil.___(item, pasta / item.name)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "lower",
+       "upper",
+       "strip"
+      ],
+      "certa": 0,
+      "dica": "As chaves do dicionário estão em minúsculas."
+     },
+     {
+      "opcoes": [
+       "exist_ok",
+       "parents",
+       "novo"
+      ],
+      "certa": 0,
+      "dica": "A segunda imagem encontra a pasta já criada."
+     },
+     {
+      "opcoes": [
+       "move",
+       "copy",
+       "rename"
+      ],
+      "certa": 0,
+      "dica": "Tirar de um lugar e pôr no outro."
+     }
+    ]
+   }
+  },
+  {
+   "id": "op-sem-sobrescrever",
+   "tituloExemplos": "Como a pasta deve ficar",
+   "exemplos": [
+    "downloads/Imagens/foto.jpg       # a antiga",
+    "downloads/Imagens/foto (2).jpg   # a nova"
+   ],
+   "aulas": [
+    "py-pastas-pathlib"
+   ],
+   "grupo": "O organizador",
+   "titulo": "Sem perder a foto antiga",
+   "enunciado": "Já existe uma `Imagens/foto.jpg`, e chegou outra `foto.jpg` em downloads. Mova a nova para Imagens sem apagar a antiga: se o nome já existir, use `foto (2).jpg`.",
+   "arquivos": {
+    "downloads/foto.jpg": "foto nova\n",
+    "downloads/Imagens/foto.jpg": "foto antiga\n"
+   },
+   "codigoInicial": "from pathlib import Path\nimport shutil\n\norigem = Path(\"downloads\") / \"foto.jpg\"\ndestino = Path(\"downloads\") / \"Imagens\" / origem.name\nshutil.move(origem, destino)\n",
+   "solucao": "from pathlib import Path\nimport shutil\n\norigem = Path(\"downloads\") / \"foto.jpg\"\ndestino = Path(\"downloads\") / \"Imagens\" / origem.name\nif destino.exists():\n    destino = destino.parent / f\"{origem.stem} (2){origem.suffix}\"\nshutil.move(origem, destino)\n",
+   "testes": [
+    {
+     "nome": "A antiga continua",
+     "codigo": "assert open('downloads/Imagens/foto.jpg', encoding='utf-8').read() == 'foto antiga\\n', 'A foto antiga foi sobrescrita'"
+    },
+    {
+     "nome": "A nova com outro nome",
+     "codigo": "assert open('downloads/Imagens/foto (2).jpg', encoding='utf-8').read() == 'foto nova\\n', 'A foto nova deveria se chamar foto (2).jpg'"
+    },
+    {
+     "nome": "Nada solto",
+     "codigo": "from pathlib import Path\nassert not Path('downloads/foto.jpg').exists(), 'A foto nova ainda está solta em downloads'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 8
+   },
+   "dicas": [
+    "Rode e abra Imagens/foto.jpg na pasta depois: qual foto ficou?",
+    "Antes de mover, pergunte destino.exists(). Se existir, monte outro nome com o stem e o suffix.",
+    "if destino.exists(): destino = destino.parent / f\"{origem.stem} (2){origem.suffix}\""
+   ],
+   "toque": {
+    "modelo": "from pathlib import Path\nimport shutil\n\norigem = Path(\"downloads\") / \"foto.jpg\"\ndestino = Path(\"downloads\") / \"Imagens\" / origem.name\nif destino.___():\n    destino = destino.parent / f\"{origem.___} (2){origem.suffix}\"\nshutil.move(origem, destino)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "exists",
+       "is_dir",
+       "mkdir"
+      ],
+      "certa": 0,
+      "dica": "Pergunte se já existe."
+     },
+     {
+      "opcoes": [
+       "stem",
+       "name",
+       "suffix"
+      ],
+      "certa": 0,
+      "dica": "O nome sem a extensão."
+     }
+    ]
+   }
+  },
+  {
+   "id": "op-por-mes",
+   "tituloExemplos": "Como a pasta deve ficar",
+   "exemplos": [
+    "diarios/2026-09/   2 diários",
+    "diarios/2026-10/   3 diários"
+   ],
+   "aulas": [
+    "py-revisao-arquivos"
+   ],
+   "grupo": "O organizador",
+   "titulo": "Diários por mês",
+   "enunciado": "A pasta `diarios` tem um CSV por dia, com o nome no formato AAAA-MM-DD.csv. Mova cada um para uma pasta com o ano e o mês (`2026-10`, por exemplo).",
+   "arquivos": {
+    "diarios/2026-09-28.csv": "x\n",
+    "diarios/2026-09-30.csv": "x\n",
+    "diarios/2026-10-01.csv": "x\n",
+    "diarios/2026-10-15.csv": "x\n",
+    "diarios/2026-10-16.csv": "x\n"
+   },
+   "codigoInicial": "from pathlib import Path\nimport shutil\n\nfor item in sorted(Path(\"diarios\").iterdir()):\n    print(item.stem)\n",
+   "solucao": "from pathlib import Path\nimport shutil\n\nfor item in sorted(Path(\"diarios\").iterdir()):\n    if item.is_file():\n        pasta = Path(\"diarios\") / item.stem[:7]\n        pasta.mkdir(exist_ok=True)\n        shutil.move(item, pasta / item.name)\n",
+   "testes": [
+    {
+     "nome": "Duas pastas de mês",
+     "codigo": "from pathlib import Path\nassert sorted(p.name for p in Path('diarios').iterdir()) == ['2026-09', '2026-10'], 'Deveriam sobrar só as pastas 2026-09 e 2026-10'"
+    },
+    {
+     "nome": "Outubro com três",
+     "codigo": "from pathlib import Path\nassert len(list(Path('diarios/2026-10').iterdir())) == 3, 'Outubro tem três diários'"
+    }
+   ],
+   "metas": {
+    "linhas": 8
+   },
+   "dicas": [
+    "O nome sem extensão (stem) começa com o ano e o mês: os 7 primeiros caracteres.",
+    "É a mesma receita do organizador por tipo, só que a pasta vem de item.stem[:7].",
+    "pasta = Path(\"diarios\") / item.stem[:7] / pasta.mkdir(exist_ok=True) / shutil.move(item, pasta / item.name)"
+   ],
+   "toque": {
+    "modelo": "from pathlib import Path\nimport shutil\n\nfor item in sorted(Path(\"diarios\").iterdir()):\n    if item.is_file():\n        pasta = Path(\"diarios\") / item.stem[___]\n        pasta.mkdir(exist_ok=True)\n        shutil.move(item, pasta / item.name)",
+    "lacunas": [
+     {
+      "opcoes": [
+       ":7",
+       ":4",
+       "5:7"
+      ],
+      "certa": 0,
+      "dica": "Ano, traço e mês: 7 caracteres."
+     }
+    ]
+   }
+  }
+ ]
+}
