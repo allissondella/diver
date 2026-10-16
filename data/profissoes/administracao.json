@@ -200,6 +200,241 @@
       }
     ]
   },
+  "dia": {
+    "titulo": "Um dia como administrador(a)",
+    "subtitulo": "Gestão de uma área numa empresa de médio porte",
+    "aviso": "Cenas simplificadas, para orientação profissional. Não ensinam procedimentos e precisam de revisão por administrador(a) antes de publicar.",
+    "revisar_com_profissional": true,
+    "indicadores": [
+      {
+        "id": "resultados",
+        "nome": "Resultados",
+        "inicial": 60
+      },
+      {
+        "id": "equipe",
+        "nome": "Equipe",
+        "inicial": 60
+      },
+      {
+        "id": "energia",
+        "nome": "Energia",
+        "inicial": 80
+      }
+    ],
+    "cenas": [
+      {
+        "id": "numero",
+        "hora": "08:00",
+        "titulo": "Um número que não fecha",
+        "situacao": "O relatório mostra queda nas vendas do mês, e a diretoria quer uma explicação até o meio-dia.",
+        "opcoes": [
+          {
+            "texto": "Apontar o time de vendas como responsável no relatório",
+            "efeitos": {
+              "equipe": -15
+            },
+            "melhor": false,
+            "retorno": "Apontar culpados antes de entender afasta a equipe e não explica nada."
+          },
+          {
+            "texto": "Cruzar os dados com o time antes de escrever e levar causas e propostas",
+            "efeitos": {
+              "resultados": 15,
+              "equipe": 10,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "Analisar com quem conhece o problema chega mais perto da causa, e a diretoria recebe um plano, não só um número."
+          },
+          {
+            "texto": "Mandar o número sem comentário",
+            "efeitos": {
+              "resultados": -10
+            },
+            "melhor": false,
+            "retorno": "O dado sozinho não ajuda ninguém a decidir. Interpretar é o trabalho."
+          }
+        ]
+      },
+      {
+        "id": "fornecedor",
+        "hora": "10:30",
+        "titulo": "Fornecedor atrasado",
+        "situacao": "Um fornecedor avisa que uma entrega importante vai atrasar uma semana.",
+        "opcoes": [
+          {
+            "texto": "Avisar os clientes afetados e buscar uma alternativa",
+            "efeitos": {
+              "resultados": 10,
+              "equipe": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Antecipar o problema dá tempo para todos se planejarem. Cliente avisado reclama menos que cliente surpreendido."
+          },
+          {
+            "texto": "Esperar e torcer para dar tempo",
+            "efeitos": {
+              "resultados": -15
+            },
+            "melhor": false,
+            "retorno": "Quando o atraso chega ao cliente, as alternativas já acabaram."
+          },
+          {
+            "texto": "Cancelar o contrato com o fornecedor na hora",
+            "efeitos": {
+              "resultados": -5,
+              "energia": -5
+            },
+            "melhor": false,
+            "retorno": "Pode ser necessário um dia, mas decidir no calor do problema troca um risco por outro."
+          }
+        ]
+      },
+      {
+        "id": "conflito",
+        "hora": "13:00",
+        "titulo": "Clima pesado",
+        "situacao": "Duas pessoas da equipe discutiram feio na reunião, e o clima ficou pesado.",
+        "opcoes": [
+          {
+            "texto": "Fingir que nada aconteceu",
+            "efeitos": {
+              "equipe": -15
+            },
+            "melhor": false,
+            "retorno": "O conflito não some: só muda de lugar."
+          },
+          {
+            "texto": "Chamar a atenção dos dois na frente de todos",
+            "efeitos": {
+              "equipe": -10
+            },
+            "melhor": false,
+            "retorno": "Expor em público costuma piorar. O assunto é com eles."
+          },
+          {
+            "texto": "Conversar com cada um em particular e depois mediar uma conversa entre os dois",
+            "efeitos": {
+              "equipe": 15,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "Ouvir os dois lados antes de decidir é parte da gestão de pessoas."
+          }
+        ]
+      },
+      {
+        "id": "presente",
+        "hora": "15:00",
+        "titulo": "Uma oferta tentadora",
+        "situacao": "Um fornecedor oferece um presente caro para que você escolha a empresa dele numa compra que você conduz.",
+        "opcoes": [
+          {
+            "texto": "Aceitar: todo mundo faz",
+            "efeitos": {
+              "resultados": -15,
+              "equipe": -10
+            },
+            "melhor": false,
+            "retorno": "Presente para influenciar uma compra é conflito de interesses, e as regras das empresas costumam proibir."
+          },
+          {
+            "texto": "Recusar, seguir o processo de compra e registrar a oferta como a empresa orienta",
+            "efeitos": {
+              "resultados": 10,
+              "equipe": 5
+            },
+            "melhor": true,
+            "retorno": "O fornecedor deve ser escolhido por preço, prazo e qualidade. Transparência protege você e a empresa."
+          },
+          {
+            "texto": "Recusar o presente, mas escolher o fornecedor por simpatia",
+            "efeitos": {
+              "resultados": -5
+            },
+            "melhor": false,
+            "retorno": "Recusar foi certo, mas a decisão precisa de critério: preço, prazo e qualidade."
+          }
+        ]
+      },
+      {
+        "id": "custos",
+        "hora": "17:00",
+        "titulo": "Corte de custos",
+        "situacao": "A diretoria pede para reduzir os custos da sua área até o fim do trimestre.",
+        "opcoes": [
+          {
+            "texto": "Levantar onde estão os gastos, ouvir a equipe e propor cortes com o impacto de cada um",
+            "efeitos": {
+              "resultados": 15,
+              "equipe": 5,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "Decidir com dados e com quem faz o trabalho tende a cortar desperdício, não capacidade."
+          },
+          {
+            "texto": "Cortar o treinamento da equipe, que é o mais fácil",
+            "efeitos": {
+              "resultados": 5,
+              "equipe": -15
+            },
+            "melhor": false,
+            "retorno": "Fácil agora, caro depois: equipe sem treinamento erra mais e perde gente."
+          },
+          {
+            "texto": "Dizer que é impossível",
+            "efeitos": {
+              "resultados": -10
+            },
+            "melhor": false,
+            "retorno": "Às vezes a meta é mesmo difícil, mas a resposta esperada é um plano, ainda que com ressalvas."
+          }
+        ]
+      },
+      {
+        "id": "caixa",
+        "hora": "19:00",
+        "titulo": "Fim do dia",
+        "situacao": "A caixa de e-mails tem 40 mensagens não lidas, e amanhã há reunião cedo.",
+        "opcoes": [
+          {
+            "texto": "Responder todas até tarde",
+            "efeitos": {
+              "energia": -20
+            },
+            "melhor": false,
+            "retorno": "A caixa zera, e você também. Amanhã cedo isso pesa."
+          },
+          {
+            "texto": "Deixar tudo para amanhã",
+            "efeitos": {
+              "resultados": -10
+            },
+            "melhor": false,
+            "retorno": "Algo urgente pode ficar esperando a noite inteira."
+          },
+          {
+            "texto": "Separar o urgente, responder o essencial e deixar a agenda de amanhã pronta",
+            "efeitos": {
+              "resultados": 10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Organizar a prioridade hoje economiza o dia seguinte."
+          }
+        ]
+      }
+    ],
+    "fechamento": "Administração é transformar números em decisões e decisões em trabalho de equipe, com prazos e recursos que quase nunca sobram. Se organizar o caos te parece interessante, vale explorar mais.",
+    "recompensa": {
+      "xp": 30,
+      "perolas": 3,
+      "uma_vez_por_profissao": true
+    }
+  },
   "mitos": [
     {
       "id": "ead",

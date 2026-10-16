@@ -1,6 +1,6 @@
 # Panorama da Tecnologia (adendo v1.2)
 
-> Complementa `docs/MAPA_PROFISSOES.md`. Primeiro "panorama de área" do Mapa: uma área grande demais para uma ficha só, apresentada como dez áreas com rotinas distintas e um jogo de afinidade. Implementado em `js/profissoes-tecnologia.js` (extensão de `js/profissoes.js`) com dados em `data/profissoes/tecnologia.json`.
+> Complementa `docs/MAPA_PROFISSOES.md`. Primeiro "panorama de área" do Mapa: uma área grande demais para uma ficha só, apresentada como dez áreas com rotinas distintas e um jogo de afinidade. Implementado em `js/profissoes-panorama.js` (até 16/10/2026, `profissoes-tecnologia.js`; extensão de `js/profissoes.js`) com dados em `data/profissoes/tecnologia.json`.
 
 ## Por que um panorama, e não uma ficha
 
@@ -46,7 +46,7 @@ As rotinas são ilustrativas e estão marcadas "a revisar com profissionais". El
 
 ## Para o Code
 
-- Carregar `js/profissoes-tecnologia.js` depois de `js/profissoes.js`. Ele se registra sozinho via `Profissoes.registrarExtensao`.
+- Carregar `js/profissoes-panorama.js` depois de `js/profissoes.js` (até 16/10/2026 o arquivo se chamava `profissoes-tecnologia.js`; virou genérico com o Panorama da Medicina). Ele se registra sozinho via `Profissoes.registrarExtensao`.
 - Rotas novas: `#profissoes-tecnologia`, `#profissoes-tecnologia-jogo`, `#tecnologia-<id>`. O roteador do app só precisa repassar para `Profissoes.montar`, como já faz com as outras.
 - Eventos novos no log: `tecnologia_panorama`, `tecnologia_area_vista`, `tecnologia_jogo_inicio`, `tecnologia_jogo_concluido` (com `top` e `pct`).
 - Recompensa nova via gancho: `{ tipo: 'tecnologia_jogo', xp: 30, perolas: 3 }`.

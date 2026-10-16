@@ -23,7 +23,8 @@ const Atividade = (() => {
   const TIPOS = ['questao_respondida', 'jogo_concluido', 'mergulho_sessao', 'revisao_sessao', 'simulado_concluido', 'prova_concluida', 'certificado_emitido', 'cronograma_criado', 'bloco_concluido', 'diagnostica_concluida',
     // Mapa das Profissões (2026-10-16; docs/MAPA_PROFISSOES_INTEGRACAO.md, 3.4): curso_id fica nulo
     'profissoes_mapa', 'profissao_vista', 'profissao_mira', 'profissao_pedido', 'profissao_carta', 'profissoes_cartas_inicio', 'profissoes_cartas_fim', 'profissao_chute_salario', 'profissao_carta_gerada', 'profissao_dilema_voto', 'profissao_materias_chave', 'profissao_dia_inicio', 'profissao_dia_concluido', 'profissao_mitos_inicio', 'profissao_mitos_concluido',
-    'tecnologia_panorama', 'tecnologia_area_vista', 'tecnologia_jogo_inicio', 'tecnologia_jogo_concluido'];
+    'tecnologia_panorama', 'tecnologia_area_vista', 'tecnologia_jogo_inicio', 'tecnologia_jogo_concluido',
+    'medicina_panorama', 'medicina_area_vista', 'medicina_jogo_inicio', 'medicina_jogo_concluido'];
 
   let timer = null;
   let enviando = null;

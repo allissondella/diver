@@ -189,6 +189,242 @@
       }
     ]
   },
+  "dia": {
+    "titulo": "Um dia como psicólogo(a)",
+    "subtitulo": "Consultório, atendimentos ao longo do dia",
+    "aviso": "Cenas simplificadas, para orientação profissional. Não ensinam procedimentos e precisam de revisão por psicólogo(a) antes de publicar.",
+    "revisar_com_profissional": true,
+    "indicadores": [
+      {
+        "id": "vinculo",
+        "nome": "Vínculo com quem é atendido",
+        "inicial": 60
+      },
+      {
+        "id": "etica",
+        "nome": "Ética e sigilo",
+        "inicial": 60
+      },
+      {
+        "id": "energia",
+        "nome": "Energia",
+        "inicial": 80
+      }
+    ],
+    "cenas": [
+      {
+        "id": "primeira",
+        "hora": "08:00",
+        "titulo": "Primeira sessão",
+        "situacao": "Um adolescente chega para a primeira sessão com a mãe, que quer entrar junto e saber tudo o que ele disser.",
+        "opcoes": [
+          {
+            "texto": "Deixar a mãe participar de todas as sessões",
+            "efeitos": {
+              "vinculo": -15
+            },
+            "melhor": false,
+            "retorno": "A família tem lugar no atendimento, mas o adolescente precisa de um espaço próprio para confiar."
+          },
+          {
+            "texto": "Combinar as regras com os dois: o que fica entre vocês e quando a família será chamada",
+            "efeitos": {
+              "vinculo": 15,
+              "etica": 10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Combinar o sigilo e os limites logo no começo dá segurança ao adolescente e à família."
+          },
+          {
+            "texto": "Pedir que a mãe espere lá fora, sem explicar",
+            "efeitos": {
+              "vinculo": -5
+            },
+            "melhor": false,
+            "retorno": "A ideia de um espaço próprio está certa, mas sem explicação a mãe fica desconfiada e o atendimento começa tenso."
+          }
+        ]
+      },
+      {
+        "id": "relatorio",
+        "hora": "10:00",
+        "titulo": "Um pedido da escola",
+        "situacao": "A escola de um paciente pede, por e-mail, um relatório completo \"para conhecer melhor o caso\".",
+        "opcoes": [
+          {
+            "texto": "Conversar com o paciente e a família e só enviar o que for necessário e autorizado",
+            "efeitos": {
+              "etica": 15,
+              "vinculo": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Documento psicológico tem finalidade e destinatário. Mandar só o necessário, com autorização, protege quem é atendido."
+          },
+          {
+            "texto": "Mandar o relatório completo: a escola quer ajudar",
+            "efeitos": {
+              "etica": -15,
+              "vinculo": -10
+            },
+            "melhor": false,
+            "retorno": "A intenção pode ser boa, mas os detalhes do atendimento não precisam circular na escola."
+          },
+          {
+            "texto": "Responder que não pode dizer nada, nunca",
+            "efeitos": {
+              "vinculo": -5
+            },
+            "melhor": false,
+            "retorno": "Sigilo não é muro: às vezes, compartilhar o essencial ajuda a pessoa. O cuidado está no quê e no como."
+          }
+        ]
+      },
+      {
+        "id": "mercado",
+        "hora": "12:00",
+        "titulo": "Encontro no mercado",
+        "situacao": "Na fila do mercado, você encontra um paciente acompanhado de um amigo. Ele parece constrangido.",
+        "opcoes": [
+          {
+            "texto": "Ir até lá e perguntar como ele está desde a última sessão",
+            "efeitos": {
+              "etica": -15,
+              "vinculo": -10
+            },
+            "melhor": false,
+            "retorno": "Na frente do amigo, a pergunta revela que ele faz terapia. Isso é ele quem decide contar, não você."
+          },
+          {
+            "texto": "Cumprimentar de longe, com discrição, e deixar que ele decida se quer conversar",
+            "efeitos": {
+              "etica": 10,
+              "vinculo": 10
+            },
+            "melhor": true,
+            "retorno": "Discrição protege o sigilo até de um \"de onde vocês se conhecem?\". Quem decide se apresentar é o paciente."
+          },
+          {
+            "texto": "Fingir que não viu e sair da fila",
+            "efeitos": {
+              "vinculo": -5
+            },
+            "melhor": false,
+            "retorno": "Evita o constrangimento, mas um cumprimento discreto costuma ser mais acolhedor."
+          }
+        ]
+      },
+      {
+        "id": "redes",
+        "hora": "14:00",
+        "titulo": "Um convite nas redes",
+        "situacao": "Um paciente pede para seguir você nas redes sociais e diz que vocês \"já são quase amigos\".",
+        "opcoes": [
+          {
+            "texto": "Aceitar: criar vínculo é bom",
+            "efeitos": {
+              "etica": -15,
+              "vinculo": -5
+            },
+            "melhor": false,
+            "retorno": "O vínculo da terapia é profissional. Misturar com amizade atrapalha o atendimento."
+          },
+          {
+            "texto": "Recusar sem falar nada",
+            "efeitos": {
+              "vinculo": -15
+            },
+            "melhor": false,
+            "retorno": "O limite está certo, mas, sem conversa, o paciente se sente rejeitado."
+          },
+          {
+            "texto": "Explicar com cuidado por que a relação fica no atendimento e conversar sobre o pedido na sessão",
+            "efeitos": {
+              "etica": 15,
+              "vinculo": 10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "O pedido diz algo sobre o paciente, e conversar sobre ele faz parte do trabalho. O limite, explicado com cuidado, protege os dois."
+          }
+        ]
+      },
+      {
+        "id": "atraso",
+        "hora": "16:00",
+        "titulo": "Agenda apertada",
+        "situacao": "Um paciente chega 25 minutos atrasado, e há outra pessoa marcada logo depois.",
+        "opcoes": [
+          {
+            "texto": "Atender a sessão inteira e atrasar o próximo",
+            "efeitos": {
+              "vinculo": -10,
+              "energia": -5
+            },
+            "melhor": false,
+            "retorno": "Resolve para um e prejudica o outro, que chegou na hora."
+          },
+          {
+            "texto": "Remarcar sem atender",
+            "efeitos": {
+              "vinculo": -10
+            },
+            "melhor": false,
+            "retorno": "Pode até ser o combinado, mas sem conversa o paciente sai sentindo que perdeu a viagem."
+          },
+          {
+            "texto": "Atender no tempo que sobra, como foi combinado, e conversar sobre o atraso",
+            "efeitos": {
+              "vinculo": 10,
+              "etica": 5
+            },
+            "melhor": true,
+            "retorno": "Regras combinadas no começo evitam decisões no improviso. E o próprio atraso pode ser assunto da sessão."
+          }
+        ]
+      },
+      {
+        "id": "fim",
+        "hora": "19:00",
+        "titulo": "Fim do dia",
+        "situacao": "Você atendeu seis pessoas, uma delas com uma história muito pesada, e se sente esgotado.",
+        "opcoes": [
+          {
+            "texto": "Fazer os registros, desligar e levar o caso para a sua supervisão ou terapia",
+            "efeitos": {
+              "energia": 10,
+              "etica": 5
+            },
+            "melhor": true,
+            "retorno": "Cuidar da própria saúde mental faz parte do trabalho de quem cuida da saúde mental dos outros."
+          },
+          {
+            "texto": "Ficar revendo os casos na cabeça até tarde",
+            "efeitos": {
+              "energia": -15
+            },
+            "melhor": false,
+            "retorno": "É comum, mas, sem pausa, o cansaço vira desgaste, e o atendimento de amanhã sente."
+          },
+          {
+            "texto": "Desabafar com amigos contando o caso pesado",
+            "efeitos": {
+              "etica": -15
+            },
+            "melhor": false,
+            "retorno": "Desabafar é necessário, mas não com detalhes de quem você atende. Para isso existem supervisão e terapia."
+          }
+        ]
+      }
+    ],
+    "fechamento": "Psicologia é escutar com atenção, guardar o que foi confiado e cuidar dos limites da relação, inclusive dos seus. Se esse tipo de cuidado te interessou, vale explorar mais.",
+    "recompensa": {
+      "xp": 30,
+      "perolas": 3,
+      "uma_vez_por_profissao": true
+    }
+  },
   "mitos": [
     {
       "id": "remedio",

@@ -5,6 +5,65 @@
 
 ---
 
+## 2026-10-16 · Mapa das Profissões: Panorama da Medicina (kit v4)
+- **Pedido do usuário:** "Deixa na fila para quando terminar a Fase 2, sobe esse mapa das profissões para Medicina, aqui vamos ter todas as áreas, no estilo da de Tecnologia" (zip `diver-mapa-profissoes-v4`).
+- **Do kit veio só o conteúdo novo:**
+  - os dados das 12 especialidades, gravados em `data/profissoes/panorama-medicina.json`. No kit, o arquivo se chamava `medicina.json` e teria apagado a ficha de Medicina;
+  - o `MAPA_PROFISSOES_MEDICINA.md`;
+  - os rótulos genéricos do `tecnologia.json`. O título do jogo continua "praia".
+  - O resto do kit era a versão anterior do que o app já tem (sem as correções e sem o desenho novo) e ficou de fora.
+- **Módulo genérico:**
+  - `js/profissoes-tecnologia.js` virou `js/profissoes-panorama.js`, com o mesmo desenho. Serve qualquer panorama de `panoramas[]`;
+  - rótulos do JSON e eventos `<id>_*`;
+  - o estado fica em `tec` (Tecnologia, como antes) e `med` (Medicina);
+  - a ponte com os cursos fica em `PONTES`;
+  - o núcleo passa o índice para `aceita(rota, ix)`.
+- **Medicina:**
+  - a aposta e as barras de salário levam só as 8 especialidades com CBO próprio; as 4 com o clínico "(referência)" são explicadas na nota;
+  - "Estudar para entrar" abre o Enem · Biologia, e Radiologia indica os 4 cursos da sala Radiologia;
+  - a ficha de Medicina leva ao panorama;
+  - entraram a conquista "Doze em doze", as linhas no Admin e o passo do tutorial atualizado.
+- **Id repetido:** o panorama e a ficha se chamam `medicina`. No Admin, o nome da ficha vem primeiro, e os eventos que saem do panorama levam `detalhes.panorama`.
+- **Banco:** os tipos `medicina_*` entraram no `setup.sql` e foram aplicados no banco de testes e, antes do merge, no de produção.
+- **Testes:**
+  - panorama, especialidade, jogo inteiro e a Tecnologia de novo, em 390 e 1280 px, sem erro nem transbordo;
+  - visão de aluno ("Em breve");
+  - "Doze em doze" sai ao abrir as 12 especialidades;
+  - `conferir-panorama` passa nos dois, e `auditar-design` passa, também `--navegador`, com as 3 rotas da Medicina.
+- **Pendências:**
+  - revisão das 12 especialidades por médicos (Georgia pode começar por Radiologia);
+  - conferir as durações de residência na Resolução CFM 2.380/2024;
+  - CBO próprio de Cardiologia quando a amostra pública existir.
+
+## 2026-10-16 · Mapa das Profissões: Fase 2 (Um dia como, características e comparador)
+- **Pedido do usuário:** "Pode fazer" a Fase 2, depois de saber que ela era a próxima.
+- **"Um dia como"** para Medicina, Direito, Psicologia, Administração e Engenharia Civil:
+  - cada um tem 6 cenas e 3 indicadores (um deles é sempre Energia);
+  - a opção recomendada muda de posição entre as cenas;
+  - os temas são prioridade, ética, comunicação e rotina. Exemplos: classificação de risco, sigilo, conflito de interesses, assinatura que não é sua, passagem de plantão;
+  - não há procedimento técnico. Tudo está marcado `revisar_com_profissional`.
+- **Características no mapa:**
+  - o botão "Características" abre 9 filtros por tag; vale a profissão que tem todas as marcadas;
+  - as tags foram harmonizadas: plantão em Fisioterapia e Veterinária, números em Sistemas, criatividade em Pedagogia;
+  - as tags estão copiadas no `indice.json`, e o `conferir-ficha` acusa se o índice e a ficha divergirem.
+- **Comparador** (`#profissoes-comparar[-<a>--<b>]`):
+  - mostra duas fichas com duração, formato, salário, registro, matérias que pesam, caminhos e o DNA no mesmo radar, com uma frase sobre a maior diferença;
+  - o salário escondido só aparece com "Mostrar os dois salários";
+  - entradas: no topo do mapa e em "Comparar com <vizinha>" na ficha;
+  - o aluno sem duas fichas publicadas vê a explicação.
+- **Ajustes:**
+  - quem não pode ver um "Um dia como" pelo link direto passa a ler "em produção", não "não encontrada";
+  - o tutorial ganhou o passo "Comparar duas profissões" (a versão sobe quando as fichas forem publicadas).
+- **Testes:**
+  - os 5 dias jogados até o fim no celular e no computador, com as teclas 1, 2 e 3;
+  - filtros e comparador conferidos no navegador, e a visão de aluno também;
+  - `auditar-design` e `--navegador` passam, agora também com `profissao-direito-dia` e `profissoes-comparar`;
+  - 22 fichas ok no `conferir-ficha`.
+- **Pendências:**
+  - revisão das cenas por profissionais;
+  - log do comparador (pediria um tipo novo no banco: ficou para quando houver necessidade).
+- **Na fila (pedido do usuário):** subir o Panorama da Medicina (kit v4) depois da Fase 2, no estilo do Panorama da Tecnologia.
+
 ## 2026-10-16 · Mapa das Profissões: as 21 fichas que faltavam
 - **Pedido do usuário:** "manda bala e sobe todas as outras profissões" e "Podem ir até subir tudo para prd".
 - **O que entrou:**

@@ -1,0 +1,2009 @@
+{
+  "id": "medicina",
+  "versao": 1,
+  "titulo": "Panorama da Medicina",
+  "rotulo": "Saúde",
+  "cor": "--verde",
+  "rotulo_areas": "especialidades",
+  "rotulo_area": "especialidade",
+  "titulo_areas": "Doze especialidades para começar",
+  "rotulo_vizinhas": "Especialidades vizinhas",
+  "nota_salarios": "Atenção ao ler: médico raramente tem um só emprego. O Caged registra contratos com carteira de 19 a 25 horas semanais (plantões e ambulatórios); o resto da renda vem de PJ, consultório e outros vínculos, que não aparecem aqui. Os valores servem para comparar especialidades entre si, não para estimar a renda total.",
+  "frase": "Passar em Medicina é o começo. A decisão que muda a sua vida vem depois: entre 55 especialidades, em qual rotina você se enxerga?",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "intro": "Quem sonha com Medicina costuma imaginar uma única profissão. São dezenas. O cirurgião que passa oito horas em pé numa sala fria, a psiquiatra que escuta por 50 minutos, o radiologista que quase não vê paciente, a médica de família que conhece três gerações da mesma casa e o anestesista que vive de vigiar monitores têm o mesmo diploma e dias completamente diferentes. Este panorama mostra doze das 55 especialidades reconhecidas no Brasil, escolhidas por tamanho e por contraste, para você sentir essas diferenças antes de entrar na faculdade.",
+  "numeros": [
+    {
+      "rotulo": "Médicos registrados no Brasil",
+      "valor": "597 mil",
+      "detalhe": "em dez/2024; 59,1% com título de especialista",
+      "fontes": [
+        "dmb-2025"
+      ]
+    },
+    {
+      "rotulo": "Especialidades reconhecidas",
+      "valor": "55",
+      "detalhe": "e 61 áreas de atuação, pelo CFM, AMB e CNRM",
+      "fontes": [
+        "cfm-2330"
+      ]
+    },
+    {
+      "rotulo": "Esperam mais de um ano pela residência",
+      "valor": "48%",
+      "detalhe": "dos formados; as vagas de residência não acompanharam as de graduação",
+      "fontes": [
+        "dmb-2025"
+      ]
+    },
+    {
+      "rotulo": "Bolsa de residência",
+      "valor": "R$ 4.106",
+      "detalhe": "por até 60 horas semanais; sem reajuste desde 2022",
+      "fontes": [
+        "bolsa-residencia"
+      ]
+    }
+  ],
+  "contexto": [
+    {
+      "texto": "Sete especialidades concentram metade dos títulos de especialista do país: Clínica Médica, Pediatria, Cirurgia Geral, Ginecologia e Obstetrícia, Anestesiologia, Cardiologia e Ortopedia. Clínica Médica sozinha tem 59 mil especialistas.",
+      "fontes": [
+        "dmb-2025"
+      ]
+    },
+    {
+      "texto": "O número de médicos sem especialização cresceu 59% em seis anos, de 154 mil para 244 mil. Em 2024, havia 287 mil estudantes de Medicina e 48 mil residentes. A conta não fecha: muita gente se forma e não consegue vaga de residência.",
+      "fontes": [
+        "dmb-2025"
+      ]
+    },
+    {
+      "texto": "Mulheres são 50,9% dos médicos e 61,8% dos estudantes. Já são maioria em 20 especialidades; em Dermatologia, 80,6%. Em Ortopedia, Cirurgia Geral, Neurocirurgia e Urologia ainda são poucas.",
+      "fontes": [
+        "dmb-2025"
+      ]
+    },
+    {
+      "texto": "Desde 2025, quem termina Medicina faz o Enamed, prova nacional obrigatória para o diploma. A mesma nota vale como prova objetiva do Enare, a seleção unificada de residência.",
+      "fontes": [
+        "enamed"
+      ]
+    },
+    {
+      "texto": "Medicina não pode ser cursada a distância. O curso tem seis anos, e os dois últimos são de internato, com o estudante dentro do hospital e da atenção básica.",
+      "fontes": [
+        "decreto-12456",
+        "dcn-medicina"
+      ]
+    }
+  ],
+  "formacao_geral": {
+    "nota": "O caminho é o mesmo para todas as especialidades: graduação, Enamed, residência (ou título por prova da sociedade da especialidade). O que muda é a duração e a concorrência da residência.",
+    "cursos": [
+      {
+        "nome": "Graduação em Medicina",
+        "nivel": "superior",
+        "duracao": "6 anos",
+        "horas": 7200,
+        "texto": "Presencial, com internato nos dois últimos anos. É o curso mais disputado do Sisu: 17 mil candidatos para 160 vagas na UFMG em 2026.",
+        "fontes": [
+          "dcn-medicina",
+          "sisu-2026"
+        ]
+      },
+      {
+        "nome": "Enamed",
+        "nivel": "exame",
+        "duracao": "ao fim do curso",
+        "horas": 0,
+        "texto": "Obrigatório para o diploma desde 2025. A nota serve para a residência de acesso direto (Enare).",
+        "fontes": [
+          "enamed"
+        ]
+      },
+      {
+        "nome": "Residência médica",
+        "nivel": "especialização",
+        "duracao": "2 a 5 anos",
+        "horas": 0,
+        "texto": "Até 60 horas por semana, com bolsa de R$ 4.106. Clínica Médica e Medicina de Família levam 2 anos; a maioria, 3; cirurgias especializadas, 5 ou mais.",
+        "fontes": [
+          "cfm-2330",
+          "bolsa-residencia"
+        ]
+      },
+      {
+        "nome": "Título de especialista",
+        "nivel": "título",
+        "duracao": "prova",
+        "horas": 0,
+        "texto": "Alternativa à residência: prova da sociedade da especialidade, reconhecida pela AMB. Exige experiência comprovada.",
+        "fontes": [
+          "cfm-2330"
+        ]
+      }
+    ]
+  },
+  "areas": [
+    {
+      "id": "clinica-medica",
+      "nome": "Clínica Médica",
+      "apelido": "Quem olha o todo",
+      "resumo": "O médico do raciocínio: recebe o paciente com sintomas vagos, investiga, diagnostica e coordena o tratamento. A maior especialidade do país.",
+      "o_que_faz": "Atende adultos com os problemas mais variados, do diabetes descompensado à febre sem causa aparente. Interna, acompanha a evolução no leito, pede e interpreta exames, ajusta medicações e decide quando chamar outro especialista. É a base de várias outras especialidades (cardiologia, nefrologia, endocrinologia pedem clínica antes). Trabalha em enfermaria, pronto-socorro, ambulatório e consultório.",
+      "dia": [
+        {
+          "hora": "07:00",
+          "texto": "Passagem de plantão da enfermaria: 18 pacientes, dois pioraram durante a noite."
+        },
+        {
+          "hora": "07:30",
+          "texto": "Visita leito a leito: examinar, ler os exames, conversar, decidir condutas. Leva a manhã inteira."
+        },
+        {
+          "hora": "11:30",
+          "texto": "Conversa difícil com a família de um paciente que não está respondendo ao tratamento."
+        },
+        {
+          "hora": "13:00",
+          "texto": "Ambulatório: oito consultas de retorno. Pressão, diabetes, tireoide, um caso que não fecha."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Discussão do caso que não fecha com os residentes. A pista estava num exame antigo."
+        },
+        {
+          "hora": "18:00",
+          "texto": "Evoluções no prontuário. Em muitos hospitais, o plantão noturno de 12 horas vem depois."
+        }
+      ],
+      "ferramentas": [
+        "Anamnese e exame físico",
+        "Interpretação de exames",
+        "Farmacologia",
+        "Prontuário eletrônico",
+        "Protocolos clínicos",
+        "Comunicação de más notícias"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Resolver o diagnóstico difícil",
+        "Ver o paciente inteiro, não um órgão",
+        "Acompanhar casos por semanas",
+        "Ensinar e discutir casos"
+      ],
+      "nao_gosta_se": [
+        "Quer resultado imediato e visível, como numa cirurgia",
+        "Se cansa de doença crônica que não cura, só controla"
+      ],
+      "dna": {
+        "pessoas": 80,
+        "pressao": 65,
+        "corpo": 40,
+        "rotina": 40,
+        "numeros": 55,
+        "criatividade": 55
+      },
+      "salarios": [
+        {
+          "cargo": "Médico clínico",
+          "cbo": "2251-25",
+          "media": 10303,
+          "p25": 5564,
+          "p75": 13282,
+          "fontes": [
+            "caged-clinico"
+          ],
+          "nota": "Jornada média de 25 horas no contrato CLT. A maioria soma outros vínculos."
+        }
+      ],
+      "formacao": "Residência de 2 anos, acesso direto, com o maior número de vagas do país (13,6% dos residentes). É também pré-requisito para Cardiologia, Endocrinologia, Nefrologia, Gastroenterologia e outras.",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em Clínica Médica (2 anos)",
+        "Plantões de enfermaria e pronto-socorro",
+        "Segunda residência em subespecialidade ou consultório",
+        "Preceptoria e ensino",
+        "Coordenação de enfermaria ou hospitalista"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Você vai cuidar de muita gente que não melhora, porque doença crônica se controla, não se cura. Isso pede outra definição de vitória.",
+          "fontes": []
+        },
+        {
+          "texto": "A rotina mistura enfermaria de dia e plantão de noite. A média de contratação CLT (R$ 10.303) é por 25 horas semanais; a vida real tem 60.",
+          "fontes": [
+            "caged-clinico"
+          ]
+        },
+        {
+          "texto": "É a porta de entrada mais larga, e por isso a que mais gente usa como passagem para outra especialidade.",
+          "fontes": [
+            "dmb-2025"
+          ]
+        }
+      ],
+      "vizinhas": [
+        "medicina-familia",
+        "cardiologia",
+        "emergencia-intensiva"
+      ]
+    },
+    {
+      "id": "cirurgia-geral",
+      "nome": "Cirurgia Geral",
+      "apelido": "Quem resolve com as mãos",
+      "resumo": "Opera o abdome e muito mais: apendicite, hérnia, vesícula, trauma. Horas em pé, decisão rápida e resultado visível.",
+      "o_que_faz": "Diagnostica e trata cirurgicamente doenças do aparelho digestivo, da parede abdominal e trauma. Avalia se o paciente precisa operar, opera e acompanha a recuperação. É a base de todas as cirurgias especializadas (vascular, plástica, do aparelho digestivo, oncológica). Divide a semana entre centro cirúrgico, enfermaria, ambulatório e plantão de pronto-socorro.",
+      "dia": [
+        {
+          "hora": "06:30",
+          "texto": "Visita rápida aos operados de ontem: ferida, dor, se já comeu, se já andou."
+        },
+        {
+          "hora": "07:30",
+          "texto": "Centro cirúrgico: primeira cirurgia do mapa, uma vesícula por vídeo. Duas horas."
+        },
+        {
+          "hora": "10:00",
+          "texto": "Segunda cirurgia, hérnia. Entre uma e outra, café em pé e um telefonema da enfermaria."
+        },
+        {
+          "hora": "13:00",
+          "texto": "Ambulatório: avaliar quem vai operar nas próximas semanas e explicar riscos, cicatriz, recuperação."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Chamado do pronto-socorro: abdome agudo. Examinar, pedir tomografia, decidir se opera hoje."
+        },
+        {
+          "hora": "19:00",
+          "texto": "Operar o abdome agudo. Em plantão, a noite pode trazer um trauma às 3 da manhã."
+        }
+      ],
+      "ferramentas": [
+        "Técnica cirúrgica aberta e por vídeo",
+        "Anatomia",
+        "Tomografia e ultrassom",
+        "Suturas e instrumental",
+        "Protocolos de trauma",
+        "Resistência física"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Resolver o problema no mesmo dia",
+        "Trabalho manual de precisão",
+        "Decidir rápido sob pressão",
+        "Ver o resultado do que fez"
+      ],
+      "nao_gosta_se": [
+        "Não aguenta ficar horas em pé e sem comer",
+        "Precisa de previsibilidade de horário",
+        "Lida mal com complicações que são culpa sua"
+      ],
+      "dna": {
+        "pessoas": 60,
+        "pressao": 90,
+        "corpo": 90,
+        "rotina": 35,
+        "numeros": 40,
+        "criatividade": 50
+      },
+      "salarios": [
+        {
+          "cargo": "Médico cirurgião geral",
+          "cbo": "2252-25",
+          "media": 9001,
+          "p25": 5455,
+          "p75": 11464,
+          "fontes": [
+            "caged-cirurgiao"
+          ],
+          "nota": "Jornada de 20 horas no contrato CLT; a maior parte da renda vem de outros vínculos e procedimentos."
+        }
+      ],
+      "formacao": "Residência de 3 anos, acesso direto, a terceira com mais residentes (9%). É pré-requisito para Cirurgia Vascular, Plástica, do Aparelho Digestivo, Oncológica, Torácica e outras, que somam 2 a 3 anos a mais.",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em Cirurgia Geral (3 anos)",
+        "Plantões de cirurgia e trauma",
+        "Subespecialidade cirúrgica (mais 2 a 3 anos)",
+        "Equipe cirúrgica própria e consultório",
+        "Chefia de serviço"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "A formação é a mais longa e a mais dura: residência de 3 anos com plantões de 24 horas, e depois mais 2 ou 3 para a subespecialidade.",
+          "fontes": [
+            "cfm-2330"
+          ]
+        },
+        {
+          "texto": "Toda complicação tem nome e sobrenome: o seu. Cirurgião convive com a culpa de um jeito que outras especialidades não conhecem.",
+          "fontes": []
+        },
+        {
+          "texto": "Ainda é uma das especialidades com menos mulheres, o que muda devagar.",
+          "fontes": [
+            "dmb-2025"
+          ]
+        }
+      ],
+      "vizinhas": [
+        "ortopedia",
+        "anestesiologia",
+        "emergencia-intensiva"
+      ]
+    },
+    {
+      "id": "pediatria",
+      "nome": "Pediatria",
+      "apelido": "Quem cuida de quem está crescendo",
+      "resumo": "Do recém-nascido ao adolescente: crescimento, vacinas, febre, e os pais aflitos junto. A segunda maior especialidade.",
+      "o_que_faz": "Acompanha a saúde de crianças e adolescentes: puericultura (consultas de rotina para ver se está crescendo bem), vacinação, doenças agudas e crônicas, e a sala de parto, onde o pediatra recebe o recém-nascido. Atende sempre em dupla: a criança e a família. Trabalha em consultório, pronto-socorro infantil, maternidade e UTI neonatal.",
+      "dia": [
+        {
+          "hora": "07:00",
+          "texto": "Maternidade: examinar os recém-nascidos da noite e conversar com as mães sobre amamentação."
+        },
+        {
+          "hora": "09:00",
+          "texto": "Consultório: puericultura. Pesar, medir, olhar a carteirinha de vacina, responder a vinte perguntas dos pais."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Uma criança com febre há três dias. Decidir se é vírus comum ou algo que precisa de exame."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Pronto-socorro infantil: criança chiando, outra com dor de barriga, outra que caiu. Tudo ao mesmo tempo."
+        },
+        {
+          "hora": "17:00",
+          "texto": "Chamado para a sala de parto: nascimento de risco. Reanimação neonatal, se precisar."
+        },
+        {
+          "hora": "19:00",
+          "texto": "Mensagens de pais no celular. Pediatra que atende consultório raramente desliga de verdade."
+        }
+      ],
+      "ferramentas": [
+        "Curvas de crescimento",
+        "Calendário vacinal",
+        "Reanimação neonatal",
+        "Exame físico adaptado à idade",
+        "Comunicação com crianças e pais",
+        "Doses por peso"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Crianças, de verdade, inclusive chorando",
+        "Prevenir mais do que tratar",
+        "Acompanhar uma família por anos",
+        "Explicar com paciência"
+      ],
+      "nao_gosta_se": [
+        "Perde a paciência com pais ansiosos",
+        "Sofre demais com criança grave",
+        "Quer procedimentos e alta tecnologia"
+      ],
+      "dna": {
+        "pessoas": 95,
+        "pressao": 60,
+        "corpo": 50,
+        "rotina": 50,
+        "numeros": 40,
+        "criatividade": 50
+      },
+      "salarios": [
+        {
+          "cargo": "Médico pediatra",
+          "cbo": "2251-24",
+          "media": 10017,
+          "p25": 6109,
+          "p75": 11971,
+          "fontes": [
+            "caged-pediatra"
+          ],
+          "nota": "Jornada de 21 horas no contrato CLT."
+        }
+      ],
+      "formacao": "Residência de 3 anos, acesso direto, com 10,5% dos residentes do país. Depois, subespecialidades como Neonatologia, Terapia Intensiva Pediátrica, Cardiologia Pediátrica e Endocrinologia Pediátrica.",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em Pediatria (3 anos)",
+        "Plantões de pronto-socorro e maternidade",
+        "Consultório e puericultura",
+        "Subespecialidade pediátrica (mais 2 anos)",
+        "UTI neonatal ou pediátrica"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Você atende dois pacientes por consulta: a criança e a ansiedade dos pais. A segunda cansa mais.",
+          "fontes": []
+        },
+        {
+          "texto": "Plantão de pronto-socorro infantil no inverno é uma fila sem fim de vírus respiratórios.",
+          "fontes": []
+        },
+        {
+          "texto": "Criança grave e morte de criança acontecem. Quem não tem como processar isso adoece junto.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "medicina-familia",
+        "ginecologia-obstetricia",
+        "clinica-medica"
+      ]
+    },
+    {
+      "id": "ginecologia-obstetricia",
+      "nome": "Ginecologia e Obstetrícia",
+      "apelido": "Quem acompanha a vida da mulher",
+      "resumo": "Consultório de rotina, pré-natal, parto e cirurgia. Uma das poucas especialidades que une clínica, procedimento e madrugada.",
+      "o_que_faz": "Cuida da saúde da mulher em todas as fases: prevenção (exame preventivo, mamas), anticoncepção, menopausa, infertilidade, doenças ginecológicas e cirurgias. Na obstetrícia, acompanha a gestação e faz o parto, normal ou cesárea. Mistura consultório previsível com plantão de maternidade imprevisível.",
+      "dia": [
+        {
+          "hora": "07:00",
+          "texto": "Maternidade: visita às puérperas, uma cesárea marcada para as 8h."
+        },
+        {
+          "hora": "08:00",
+          "texto": "Cesárea. Quarenta minutos e um choro na sala."
+        },
+        {
+          "hora": "10:00",
+          "texto": "Consultório: pré-natal, preventivo, uma paciente com sangramento irregular, uma conversa sobre menopausa."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Ultrassom obstétrico e orientação sobre o parto para um casal de primeira viagem."
+        },
+        {
+          "hora": "17:00",
+          "texto": "Cirurgia ginecológica por vídeo, um cisto de ovário."
+        },
+        {
+          "hora": "22:00",
+          "texto": "Telefone: paciente em trabalho de parto. Obstetra não escolhe a hora em que o bebê nasce."
+        }
+      ],
+      "ferramentas": [
+        "Exame ginecológico",
+        "Ultrassom",
+        "Pré-natal e partograma",
+        "Técnica cirúrgica",
+        "Cardiotocografia",
+        "Conversa sobre temas íntimos"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Consultório e cirurgia na mesma semana",
+        "Momentos de alegria no trabalho",
+        "Vínculo longo com as pacientes",
+        "Decidir rápido numa emergência obstétrica"
+      ],
+      "nao_gosta_se": [
+        "Quer dormir toda noite",
+        "Não lida bem com sangue e urgência",
+        "Prefere um só tipo de atividade"
+      ],
+      "dna": {
+        "pessoas": 85,
+        "pressao": 75,
+        "corpo": 70,
+        "rotina": 35,
+        "numeros": 40,
+        "criatividade": 50
+      },
+      "salarios": [
+        {
+          "cargo": "Médico ginecologista e obstetra",
+          "cbo": "2252-50",
+          "media": 8419,
+          "p25": 5612,
+          "p75": 11464,
+          "fontes": [
+            "caged-gineco"
+          ],
+          "nota": "Jornada de 20 horas no contrato CLT."
+        }
+      ],
+      "formacao": "Residência de 3 anos, acesso direto, a quarta com mais residentes (8,6%). Depois, Medicina Fetal, Reprodução Humana, Oncologia Ginecológica, entre outras.",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em GO (3 anos)",
+        "Plantões de maternidade",
+        "Consultório e pré-natal",
+        "Subespecialidade (mais 2 anos)",
+        "Equipe de parto própria"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "O parto não tem hora. Quem faz obstetrícia de consultório vive com o telefone ligado, inclusive em férias.",
+          "fontes": []
+        },
+        {
+          "texto": "É uma das especialidades mais processadas judicialmente, porque qualquer problema com um bebê é devastador.",
+          "fontes": []
+        },
+        {
+          "texto": "Muitos obstetras param de fazer parto depois dos 50 por causa das madrugadas, e ficam só com a ginecologia.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "pediatria",
+        "cirurgia-geral",
+        "medicina-familia"
+      ]
+    },
+    {
+      "id": "anestesiologia",
+      "nome": "Anestesiologia",
+      "apelido": "Quem vigia enquanto o outro opera",
+      "resumo": "Apaga a dor, mantém o paciente vivo e estável durante a cirurgia e acorda ele no fim. Fisiologia aplicada em tempo real.",
+      "o_que_faz": "Avalia o paciente antes da cirurgia, escolhe e aplica a anestesia (geral, raquidiana, bloqueios), monitora pressão, oxigênio e coração a cada segundo e corrige o que sai da linha. Cuida também da dor fora do centro cirúrgico (dor crônica, parto) e atua em UTI e emergência. Trabalha quase sempre em equipe fixa com cirurgiões.",
+      "dia": [
+        {
+          "hora": "06:45",
+          "texto": "Centro cirúrgico: conferir o aparelho de anestesia, as drogas, o paciente da primeira cirurgia."
+        },
+        {
+          "hora": "07:30",
+          "texto": "Indução anestésica. Os três minutos mais tensos do dia: o paciente dorme e passa a depender de você."
+        },
+        {
+          "hora": "08:00",
+          "texto": "Cirurgia em andamento. Monitorar, ajustar, antecipar. Parece calmo; não é."
+        },
+        {
+          "hora": "10:30",
+          "texto": "Despertar. Extubar, avaliar a dor, levar para a recuperação. Próximo paciente."
+        },
+        {
+          "hora": "13:00",
+          "texto": "Avaliação pré-anestésica de amanhã: um cardíaco, um asmático, uma criança."
+        },
+        {
+          "hora": "15:00",
+          "texto": "Mais duas cirurgias. Plantão de obstetrícia à noite: analgesia de parto às 2 da manhã."
+        }
+      ],
+      "ferramentas": [
+        "Fisiologia e farmacologia",
+        "Via aérea e intubação",
+        "Monitores e ventilação",
+        "Bloqueios guiados por ultrassom",
+        "Ultrassom",
+        "Calma sob pressão"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Fisiologia e cálculo de dose",
+        "Controle total do ambiente",
+        "Atenção contínua, não conversa contínua",
+        "Equipe fixa"
+      ],
+      "nao_gosta_se": [
+        "Quer vínculo longo com pacientes",
+        "Se entedia em cirurgia longa e calma",
+        "Não aguenta responsabilidade silenciosa"
+      ],
+      "dna": {
+        "pessoas": 40,
+        "pressao": 90,
+        "corpo": 55,
+        "rotina": 50,
+        "numeros": 75,
+        "criatividade": 35
+      },
+      "salarios": [
+        {
+          "cargo": "Médico anestesiologista",
+          "cbo": "2251-51",
+          "media": 9523,
+          "p25": 5160,
+          "p75": 11464,
+          "fontes": [
+            "caged-anestesista"
+          ],
+          "nota": "Jornada de 24 horas no contrato CLT. Anestesia é majoritariamente paga por procedimento, via cooperativas, o que o Caged não vê."
+        }
+      ],
+      "formacao": "Residência de 3 anos, acesso direto, a quinta com mais residentes (6,6%). Depois, Dor, Anestesia Cardiovascular, Pediátrica, entre outras áreas de atuação.",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em Anestesiologia (3 anos)",
+        "Cooperativa de anestesia e plantões",
+        "Área de atuação (dor, cardíaca, pediátrica)",
+        "Chefia de serviço de anestesia",
+        "Clínica de dor"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "O paciente quase nunca lembra do seu nome. Quem busca reconhecimento sofre aqui.",
+          "fontes": []
+        },
+        {
+          "texto": "Horas de tédio vigilante interrompidas por minutos de terror. A profissão exige tolerar as duas coisas.",
+          "fontes": []
+        },
+        {
+          "texto": "A renda depende de cooperativas e escalas; o salário CLT mostrado é só uma fração.",
+          "fontes": [
+            "caged-anestesista"
+          ]
+        }
+      ],
+      "vizinhas": [
+        "cirurgia-geral",
+        "emergencia-intensiva",
+        "cardiologia"
+      ]
+    },
+    {
+      "id": "cardiologia",
+      "nome": "Cardiologia",
+      "apelido": "Quem cuida do motor",
+      "resumo": "Pressão, infarto, insuficiência cardíaca. Consultório cheio, exames próprios e a emergência mais famosa da medicina.",
+      "o_que_faz": "Previne, diagnostica e trata doenças do coração e da circulação: hipertensão, infarto, arritmias, insuficiência cardíaca. Lê eletrocardiogramas, faz ecocardiogramas e testes de esforço, e na hemodinâmica desobstrui artérias por cateter. Alterna consultório de doença crônica com emergência de alta pressão.",
+      "dia": [
+        {
+          "hora": "07:00",
+          "texto": "Unidade coronariana: visita aos infartados de ontem. Um vai para a hemodinâmica agora."
+        },
+        {
+          "hora": "08:30",
+          "texto": "Ecocardiogramas: cinco exames, cada um com um laudo."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Consultório: hipertensos, um paciente que parou de tomar remédio, uma arritmia nova."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Teste de esforço. O paciente sente dor no peito no quarto minuto: parar, avaliar, encaminhar."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Reunião da equipe: discutir um caso para cirurgia cardíaca."
+        },
+        {
+          "hora": "18:00",
+          "texto": "Plantão de emergência cardiológica: um infarto chega. Cada minuto de atraso é músculo perdido."
+        }
+      ],
+      "ferramentas": [
+        "Eletrocardiograma",
+        "Ecocardiograma",
+        "Teste ergométrico e Holter",
+        "Cateterismo (hemodinâmica)",
+        "Farmacologia cardiovascular",
+        "Prevenção e mudança de hábitos"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Fisiologia e exames que você mesmo faz",
+        "Emergência com protocolo claro",
+        "Convencer pacientes a mudar hábitos",
+        "Tecnologia e procedimento"
+      ],
+      "nao_gosta_se": [
+        "Quer uma só residência: cardiologia pede clínica antes",
+        "Se frustra com paciente que não segue o tratamento"
+      ],
+      "dna": {
+        "pessoas": 70,
+        "pressao": 75,
+        "corpo": 45,
+        "rotina": 45,
+        "numeros": 70,
+        "criatividade": 45
+      },
+      "salarios": [
+        {
+          "cargo": "Médico clínico (referência)",
+          "cbo": "2251-25",
+          "media": 10303,
+          "p25": 5564,
+          "p75": 13282,
+          "fontes": [
+            "caged-clinico"
+          ],
+          "nota": "O Caged tem CBO próprio para cardiologista (2251-20), mas a amostra pública não estava disponível na consulta; usa-se o clínico como referência até a próxima atualização."
+        }
+      ],
+      "formacao": "Residência de 2 anos, mas só depois de 2 anos de Clínica Médica: 4 anos no total. Depois, Hemodinâmica, Arritmia, Ecocardiografia, entre outras.",
+      "formacao_fontes": [
+        "cfm-2330"
+      ],
+      "caminhos": [
+        "Residência em Clínica Médica (2 anos)",
+        "Residência em Cardiologia (2 anos)",
+        "Consultório e exames",
+        "Área de atuação (hemodinâmica, arritmia, eco)",
+        "Unidade coronariana e chefia"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "São quatro anos de residência, não dois. Muita gente descobre isso tarde.",
+          "fontes": [
+            "cfm-2330"
+          ]
+        },
+        {
+          "texto": "A maior parte do consultório é doença crônica que não cura: pressão alta, colesterol, hábitos. O infarto heroico é a exceção.",
+          "fontes": []
+        },
+        {
+          "texto": "Exames são a renda; a consulta, muitas vezes, não paga o tempo.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "clinica-medica",
+        "emergencia-intensiva",
+        "anestesiologia"
+      ]
+    },
+    {
+      "id": "ortopedia",
+      "nome": "Ortopedia e Traumatologia",
+      "apelido": "Quem conserta ossos",
+      "resumo": "Fraturas, próteses, joelho, coluna. Procedimento, força física e pacientes que voltam a andar.",
+      "o_que_faz": "Trata doenças e lesões de ossos, músculos, articulações e ligamentos: fraturas, lesões esportivas, artrose, dor na coluna. Opera (placas, parafusos, próteses, artroscopia) e trata sem cirurgia (gesso, fisioterapia, infiltrações). Plantão de trauma é parte da formação e da rotina de muitos.",
+      "dia": [
+        {
+          "hora": "07:00",
+          "texto": "Centro cirúrgico: uma fratura de fêmur de uma senhora de 80 anos. Operar cedo muda o prognóstico."
+        },
+        {
+          "hora": "10:00",
+          "texto": "Segunda cirurgia: artroscopia de joelho de um jogador amador."
+        },
+        {
+          "hora": "13:00",
+          "texto": "Ambulatório: retirar gesso, ver radiografias de controle, decidir quem já pode apoiar o pé."
+        },
+        {
+          "hora": "15:30",
+          "texto": "Consultório: dor na coluna, ombro, joelho. Explicar que nem tudo precisa de cirurgia."
+        },
+        {
+          "hora": "18:00",
+          "texto": "Plantão de trauma: acidente de moto chega. Avaliar, reduzir, imobilizar, programar a cirurgia."
+        },
+        {
+          "hora": "23:00",
+          "texto": "Mais um acidente. Ortopedia de plantão vive de moto e de queda."
+        }
+      ],
+      "ferramentas": [
+        "Radiografia e tomografia",
+        "Técnica cirúrgica com implantes",
+        "Artroscopia",
+        "Imobilização e gesso",
+        "Biomecânica",
+        "Força e resistência física"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Trabalho manual e ferramenta",
+        "Problema com solução concreta",
+        "Esporte e movimento",
+        "Ver o paciente voltar a andar"
+      ],
+      "nao_gosta_se": [
+        "Não tem físico para cirurgias longas e pesadas",
+        "Prefere raciocínio clínico a procedimento",
+        "Quer evitar plantões de trauma"
+      ],
+      "dna": {
+        "pessoas": 55,
+        "pressao": 70,
+        "corpo": 95,
+        "rotina": 40,
+        "numeros": 40,
+        "criatividade": 45
+      },
+      "salarios": [
+        {
+          "cargo": "Médico ortopedista e traumatologista",
+          "cbo": "2252-70",
+          "media": 8048,
+          "p25": 4500,
+          "p75": 11464,
+          "fontes": [
+            "caged-ortopedista"
+          ],
+          "nota": "Jornada de 20 horas no contrato CLT; a renda principal costuma vir de cirurgias e convênios."
+        }
+      ],
+      "formacao": "Residência de 3 anos, acesso direto, entre as sete maiores especialidades. Depois, Cirurgia da Mão, da Coluna, do Joelho, Ortopedia Pediátrica e Medicina Esportiva.",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em Ortopedia (3 anos)",
+        "Plantões de trauma",
+        "Subespecialidade (joelho, coluna, mão, ombro)",
+        "Consultório e equipe cirúrgica",
+        "Medicina esportiva e clubes"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "É fisicamente exaustivo: martelo, serra, tração, horas com avental de chumbo. O corpo do ortopedista também envelhece.",
+          "fontes": []
+        },
+        {
+          "texto": "Trauma de plantão é moto, bebida e madrugada. É a parte da ortopedia que ninguém mostra na propaganda.",
+          "fontes": []
+        },
+        {
+          "texto": "Tem poucas mulheres, e o ambiente ainda reflete isso.",
+          "fontes": [
+            "dmb-2025"
+          ]
+        }
+      ],
+      "vizinhas": [
+        "cirurgia-geral",
+        "emergencia-intensiva",
+        "radiologia"
+      ]
+    },
+    {
+      "id": "psiquiatria",
+      "nome": "Psiquiatria",
+      "apelido": "Quem escuta",
+      "resumo": "Depressão, ansiedade, esquizofrenia, dependência. A consulta é a conversa; o remédio é parte dela. Em alta demanda.",
+      "o_que_faz": "Diagnostica e trata transtornos mentais: depressão, ansiedade, bipolaridade, esquizofrenia, dependência química, transtornos alimentares. A consulta é longa e baseada na escuta; o tratamento combina medicação, psicoterapia (feita pelo psiquiatra ou por psicólogo) e, em casos graves, internação. Trabalha em consultório, CAPS, hospital-dia, enfermaria psiquiátrica e emergência.",
+      "dia": [
+        {
+          "hora": "08:00",
+          "texto": "Enfermaria psiquiátrica: visita a pacientes internados. Um surto está melhorando; outro recusa a medicação."
+        },
+        {
+          "hora": "10:00",
+          "texto": "Consultório: quatro consultas de 50 minutos. Depressão, pânico, uma primeira consulta que leva mais de uma hora."
+        },
+        {
+          "hora": "14:00",
+          "texto": "CAPS: reunião de equipe com psicólogos, terapeutas ocupacionais e assistentes sociais sobre um caso difícil."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Avaliar risco de suicídio em uma paciente. Decidir entre acompanhar de perto ou internar."
+        },
+        {
+          "hora": "17:30",
+          "texto": "Laudo para a Justiça e receita controlada para renovar."
+        },
+        {
+          "hora": "19:00",
+          "texto": "Supervisão com um colega mais experiente: psiquiatra também precisa cuidar da própria cabeça."
+        }
+      ],
+      "ferramentas": [
+        "Entrevista psiquiátrica",
+        "Psicofarmacologia",
+        "Avaliação de risco",
+        "Escalas e critérios diagnósticos",
+        "Psicoterapia",
+        "Trabalho em equipe multiprofissional"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Ouvir por muito tempo sem interromper",
+        "A mente, a história, o contexto",
+        "Melhoras lentas e profundas",
+        "Horário previsível e sem sangue"
+      ],
+      "nao_gosta_se": [
+        "Precisa de exame e número para se sentir seguro",
+        "Leva o sofrimento dos pacientes para casa",
+        "Quer resultado rápido"
+      ],
+      "dna": {
+        "pessoas": 95,
+        "pressao": 50,
+        "corpo": 10,
+        "rotina": 55,
+        "numeros": 30,
+        "criatividade": 65
+      },
+      "salarios": [
+        {
+          "cargo": "Médico psiquiatra",
+          "cbo": "2251-33",
+          "media": 9572,
+          "p25": 6252,
+          "p75": 12381,
+          "fontes": [
+            "caged-psiquiatra"
+          ],
+          "nota": "Jornada de 19 horas no contrato CLT, a menor do panorama; consultório particular é a principal fonte de renda."
+        }
+      ],
+      "formacao": "Residência de 3 anos, acesso direto. É uma das especialidades mais procuradas em cursos de pós-graduação. Depois, Psiquiatria da Infância e Adolescência, Psicogeriatria e Psiquiatria Forense.",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em Psiquiatria (3 anos)",
+        "CAPS, enfermaria e emergência",
+        "Consultório particular",
+        "Área de atuação (infância, forense, dependência)",
+        "Pesquisa e ensino"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "A demanda explodiu e falta psiquiatra, o que significa agenda lotada e pressão para encurtar consultas que precisam ser longas.",
+          "fontes": [
+            "dmb-2025"
+          ]
+        },
+        {
+          "texto": "Você vai perder pacientes para o suicídio. Isso não tem preparo que baste; tem supervisão e rede de apoio.",
+          "fontes": []
+        },
+        {
+          "texto": "Parte do trabalho é burocrático: receitas controladas, laudos, perícias, atestados.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "medicina-familia",
+        "clinica-medica",
+        "pediatria"
+      ]
+    },
+    {
+      "id": "radiologia",
+      "nome": "Radiologia e Diagnóstico por Imagem",
+      "apelido": "Quem enxerga por dentro",
+      "resumo": "Raio-X, tomografia, ressonância, ultrassom. Quase não toca o paciente, mas decide o diagnóstico de todos os outros.",
+      "o_que_faz": "Interpreta exames de imagem e escreve o laudo que orienta o tratamento de outros médicos. Faz ultrassons com o paciente ao lado e procedimentos guiados por imagem (biópsias, drenagens, e, na radiologia intervencionista, tratamentos por cateter). Trabalha em salas escuras, com dezenas de monitores, muitas vezes a distância (telerradiologia). O Diver já tem quatro cursos de Radiologia, com revisão da professora Georgia.",
+      "dia": [
+        {
+          "hora": "08:00",
+          "texto": "Sala de laudos: 40 tomografias na fila. Uma delas tem um tumor que ninguém suspeitava."
+        },
+        {
+          "hora": "10:00",
+          "texto": "Ultrassom de abdome: aqui o paciente está na sua frente, e você conversa enquanto examina."
+        },
+        {
+          "hora": "11:30",
+          "texto": "Telefonema para o cirurgião: achado urgente numa tomografia. Mudou a conduta."
+        },
+        {
+          "hora": "13:30",
+          "texto": "Biópsia guiada por tomografia. Precisão milimétrica."
+        },
+        {
+          "hora": "15:00",
+          "texto": "Ressonâncias de joelho e coluna. Laudos descritivos, longos, exatos."
+        },
+        {
+          "hora": "19:00",
+          "texto": "Plantão de telerradiologia à noite, de casa: tomografias de pronto-socorro de três hospitais."
+        }
+      ],
+      "ferramentas": [
+        "Anatomia por imagem",
+        "Tomografia e ressonância",
+        "Ultrassom",
+        "Física das radiações e proteção",
+        "Sistemas de laudo (PACS)",
+        "Escrita precisa"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Anatomia e padrões visuais",
+        "Concentração solitária",
+        "Ser o detetive que os outros consultam",
+        "Horário controlável e trabalho remoto"
+      ],
+      "nao_gosta_se": [
+        "Precisa do contato com o paciente para se sentir médico",
+        "Se cansa de laudar por horas",
+        "Quer ver o resultado do tratamento"
+      ],
+      "dna": {
+        "pessoas": 30,
+        "pressao": 50,
+        "corpo": 20,
+        "rotina": 60,
+        "numeros": 70,
+        "criatividade": 45
+      },
+      "salarios": [
+        {
+          "cargo": "Médico radiologista",
+          "cbo": "2253-20",
+          "media": 8768,
+          "p25": 4760,
+          "p75": 11464,
+          "fontes": [
+            "caged-radiologista"
+          ],
+          "nota": "Jornada de 22 horas no contrato CLT; a maior parte dos laudos é paga por produção, via clínicas."
+        }
+      ],
+      "formacao": "Residência de 3 anos, acesso direto, entre as mais oferecidas em cursos de pós-graduação. Depois, Neurorradiologia, Radiologia Intervencionista, Mamografia, Medicina Fetal.",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em Radiologia (3 anos)",
+        "Clínicas de imagem e plantões de laudo",
+        "Subespecialidade (neuro, intervencionista, mama)",
+        "Telerradiologia e laudos remotos",
+        "Chefia de serviço de imagem"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Você pode passar o dia inteiro sem falar com um paciente. Para alguns é o sonho; para outros, a perda do sentido.",
+          "fontes": []
+        },
+        {
+          "texto": "Volume é renda: a pressão para laudar mais e mais rápido é real, e a inteligência artificial já ajuda e já pressiona.",
+          "fontes": []
+        },
+        {
+          "texto": "Radiologista erra sozinho e em silêncio: o achado que passou despercebido aparece meses depois.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "clinica-medica",
+        "ortopedia",
+        "cardiologia"
+      ]
+    },
+    {
+      "id": "medicina-familia",
+      "nome": "Medicina de Família e Comunidade",
+      "apelido": "Quem conhece a casa inteira",
+      "resumo": "O médico do posto de saúde: acompanha pessoas, famílias e o bairro ao longo de anos. Base do SUS e com salários surpreendentes.",
+      "o_que_faz": "Atende todas as idades e quase todos os problemas na atenção primária: a criança, a gestante, o avô diabético e a adolescente ansiosa, muitas vezes da mesma família. Resolve 80% dos casos sem encaminhar, faz visitas domiciliares, coordena a equipe de saúde da família (enfermagem, agentes comunitários) e cuida da saúde do território, não só do indivíduo.",
+      "dia": [
+        {
+          "hora": "07:30",
+          "texto": "Reunião de equipe da unidade: agentes comunitários trazem o que viram nas casas durante a semana."
+        },
+        {
+          "hora": "08:00",
+          "texto": "Agenda: 16 consultas de manhã. Pré-natal, pressão, uma criança com tosse, um idoso que caiu."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Procedimento simples: retirar um cisto, suturar um corte. Resolver no posto evita o hospital."
+        },
+        {
+          "hora": "13:00",
+          "texto": "Visita domiciliar a um paciente acamado e à família que cuida dele."
+        },
+        {
+          "hora": "15:00",
+          "texto": "Grupo de hipertensos: conversa coletiva sobre sal, remédio e caminhada."
+        },
+        {
+          "hora": "17:00",
+          "texto": "Encaminhar dois casos para especialistas e discutir um terceiro por telemedicina. Fim do expediente, sem plantão."
+        }
+      ],
+      "ferramentas": [
+        "Clínica ampliada (todas as idades)",
+        "Abordagem familiar e comunitária",
+        "Procedimentos de atenção primária",
+        "Prontuário e indicadores do território",
+        "Telemedicina",
+        "Coordenação de equipe"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Vínculo longo com as mesmas pessoas",
+        "Variedade de problemas num só dia",
+        "Prevenção e saúde pública",
+        "Horário comercial e fim de semana livre"
+      ],
+      "nao_gosta_se": [
+        "Quer alta tecnologia e procedimento",
+        "Não suporta limitações do serviço público",
+        "Prefere um só tipo de paciente"
+      ],
+      "dna": {
+        "pessoas": 100,
+        "pressao": 45,
+        "corpo": 35,
+        "rotina": 55,
+        "numeros": 35,
+        "criatividade": 60
+      },
+      "salarios": [
+        {
+          "cargo": "Médico clínico (referência)",
+          "cbo": "2251-25",
+          "media": 10303,
+          "p25": 5564,
+          "p75": 13282,
+          "fontes": [
+            "caged-clinico"
+          ],
+          "nota": "Dentro desse CBO, a função 'médico da estratégia de saúde da família' tem média de R$ 18.219, a maior entre as funções listadas: cidades do interior pagam mais para atrair médicos. Programas como o Mais Médicos pagam bolsa própria."
+        }
+      ],
+      "formacao": "Residência de 2 anos, acesso direto, com muitas vagas e pouca concorrência. É a especialidade que o SUS mais precisa e a que mais cresce em programas de residência.",
+      "formacao_fontes": [
+        "cfm-2330"
+      ],
+      "caminhos": [
+        "Residência em MFC (2 anos)",
+        "Equipe de saúde da família",
+        "Preceptoria e gestão da atenção primária",
+        "Saúde digital e telemedicina",
+        "Gestão municipal de saúde"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Os salários mais altos vêm de cidades pequenas e distantes, onde falta médico. Carreira no SUS pede mobilidade ou negociação.",
+          "fontes": [
+            "caged-clinico"
+          ]
+        },
+        {
+          "texto": "Você vai sentir na pele a falta de exame, de remédio e de vaga de especialista. Resolver com o que tem é parte da especialidade.",
+          "fontes": []
+        },
+        {
+          "texto": "Ainda tem menos prestígio entre colegas do que merece. Isso está mudando, mas devagar.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "clinica-medica",
+        "pediatria",
+        "psiquiatria"
+      ]
+    },
+    {
+      "id": "dermatologia",
+      "nome": "Dermatologia",
+      "apelido": "Quem lê a pele",
+      "resumo": "Da acne ao câncer de pele, mais estética. Consultório, horário fixo, sem plantão e a residência mais disputada do país.",
+      "o_que_faz": "Diagnostica e trata doenças da pele, cabelos e unhas: acne, dermatites, psoríase, infecções, câncer de pele. Faz pequenas cirurgias, biópsias e procedimentos estéticos (laser, toxina, preenchimento). A pele é o maior órgão do corpo e também o espelho de doenças internas, então o dermatologista também investiga o que vem de dentro.",
+      "dia": [
+        {
+          "hora": "08:00",
+          "texto": "Consultório: 20 consultas no dia. Acne, manchas, uma pinta que mudou de cor."
+        },
+        {
+          "hora": "09:30",
+          "texto": "Dermatoscopia da pinta suspeita. Decidir: acompanhar ou biopsiar hoje."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Pequena cirurgia: retirar um carcinoma do nariz com margem."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Ambulatório do hospital: psoríase grave, uma reação a medicamento, hanseníase."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Procedimentos estéticos: laser e toxina. É a parte que paga a clínica."
+        },
+        {
+          "hora": "18:00",
+          "texto": "Fim do expediente. Dermatologista raramente é acordado de madrugada."
+        }
+      ],
+      "ferramentas": [
+        "Dermatoscopia",
+        "Pequena cirurgia e biópsia",
+        "Laser e tecnologias estéticas",
+        "Farmacologia tópica e sistêmica",
+        "Fotografia clínica",
+        "Comunicação sobre aparência"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Diagnóstico visual, de olhar e reconhecer",
+        "Horário previsível e qualidade de vida",
+        "Procedimento fino e estética",
+        "Ver melhora que o paciente vê no espelho"
+      ],
+      "nao_gosta_se": [
+        "Quer adrenalina e emergência",
+        "Se incomoda com a pressão estética do mercado",
+        "Não quer disputar a residência mais concorrida"
+      ],
+      "dna": {
+        "pessoas": 70,
+        "pressao": 30,
+        "corpo": 35,
+        "rotina": 70,
+        "numeros": 30,
+        "criatividade": 55
+      },
+      "salarios": [
+        {
+          "cargo": "Médico clínico (referência)",
+          "cbo": "2251-25",
+          "media": 10303,
+          "p25": 5564,
+          "p75": 13282,
+          "fontes": [
+            "caged-clinico"
+          ],
+          "nota": "Dermatologista raramente é contratado CLT: a renda vem do consultório e de procedimentos estéticos, que o Caged não registra. A referência de clínico subestima a renda típica da especialidade."
+        }
+      ],
+      "formacao": "Residência de 3 anos, acesso direto, e uma das mais concorridas do país. É também uma das pós-graduações mais oferecidas, o que gera debate sobre quem é dermatologista de verdade (só quem tem residência ou título).",
+      "formacao_fontes": [
+        "cfm-2330",
+        "dmb-2025"
+      ],
+      "caminhos": [
+        "Residência em Dermatologia (3 anos)",
+        "Ambulatório e consultório",
+        "Cirurgia dermatológica e oncologia cutânea",
+        "Estética e laser",
+        "Clínica própria"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "A residência é a mais disputada do Brasil. Muita gente faz dois ou três anos de cursinho para residência só para tentar.",
+          "fontes": []
+        },
+        {
+          "texto": "A estética paga as contas, e isso cria uma tensão: você estudou câncer de pele e passa a tarde aplicando toxina.",
+          "fontes": []
+        },
+        {
+          "texto": "Tem 80,6% de mulheres: a especialidade com maior presença feminina, o que dá uma pista do porquê (horário, previsibilidade) e do problema que isso aponta nas outras.",
+          "fontes": [
+            "dmb-2025"
+          ]
+        }
+      ],
+      "vizinhas": [
+        "clinica-medica",
+        "cirurgia-geral",
+        "medicina-familia"
+      ]
+    },
+    {
+      "id": "emergencia-intensiva",
+      "nome": "Medicina de Emergência e Intensiva",
+      "apelido": "Quem segura a linha",
+      "resumo": "Pronto-socorro e UTI: o paciente mais grave do hospital, decisões em minutos, plantões de 12 ou 24 horas.",
+      "o_que_faz": "O emergencista recebe quem chega ao pronto-socorro, estabiliza, decide e encaminha: parada cardíaca, AVC, trauma, intoxicação. O intensivista cuida dos pacientes da UTI: ventilação mecânica, drogas vasoativas, diálise, sedação, e a conversa com famílias sobre limites do tratamento. Os dois vivem de plantão e de protocolo. São especialidades novas no Brasil (Medicina de Emergência foi reconhecida em 2015) e em expansão.",
+      "dia": [
+        {
+          "hora": "07:00",
+          "texto": "UTI: passagem de plantão dos 10 leitos. Dois instáveis, um para extubar, um em fim de vida."
+        },
+        {
+          "hora": "08:00",
+          "texto": "Visita multiprofissional: ajustar ventilador, antibióticos, sedação, dieta. Cada leito, 20 minutos."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Conversa com a família do paciente em fim de vida sobre conforto e limites. A conversa mais importante do dia."
+        },
+        {
+          "hora": "13:00",
+          "texto": "Intercorrência: parada cardíaca no leito 4. Protocolo, equipe, 20 minutos, retorno."
+        },
+        {
+          "hora": "15:00",
+          "texto": "Procedimentos: acesso venoso central guiado por ultrassom, intubação de um novo paciente."
+        },
+        {
+          "hora": "19:00",
+          "texto": "Plantão de 12 horas termina (ou começa). No pronto-socorro, a noite de sexta é a mais pesada da semana."
+        }
+      ],
+      "ferramentas": [
+        "Suporte avançado de vida",
+        "Ventilação mecânica",
+        "Ultrassom à beira do leito",
+        "Drogas vasoativas e sedação",
+        "Protocolos de sepse, AVC e trauma",
+        "Comunicação em crise"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Adrenalina com método",
+        "Fisiologia aplicada a decisões rápidas",
+        "Trabalho em equipe intenso",
+        "Escala de plantão com dias livres"
+      ],
+      "nao_gosta_se": [
+        "Precisa de vínculo longo com pacientes",
+        "Lida mal com a morte frequente",
+        "Quer rotina de horário comercial"
+      ],
+      "dna": {
+        "pessoas": 65,
+        "pressao": 100,
+        "corpo": 70,
+        "rotina": 25,
+        "numeros": 65,
+        "criatividade": 50
+      },
+      "salarios": [
+        {
+          "cargo": "Médico clínico (referência)",
+          "cbo": "2251-25",
+          "media": 10303,
+          "p25": 5564,
+          "p75": 13282,
+          "fontes": [
+            "caged-clinico"
+          ],
+          "nota": "Plantonistas de emergência e UTI são contratados sob vários CBOs (clínico, emergencista, intensivista). O valor do clínico é a referência mais ampla disponível."
+        }
+      ],
+      "formacao": "Medicina de Emergência: residência de 3 anos, acesso direto. Medicina Intensiva: 3 anos, após Clínica Médica, Cirurgia, Anestesia ou outras (ou 2 anos como área de atuação). Muitos plantonistas atuam sem residência específica, o que as sociedades tentam mudar.",
+      "formacao_fontes": [
+        "cfm-2330"
+      ],
+      "caminhos": [
+        "Residência em Medicina de Emergência (3 anos) ou pré-requisito + Intensiva",
+        "Plantões de pronto-socorro e UTI",
+        "Coordenação de UTI ou de emergência",
+        "Transporte aeromédico e resgate",
+        "Gestão de serviços de urgência"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Você vai ver mais mortes em um ano do que a maioria dos médicos em dez. O esgotamento é o risco profissional número um.",
+          "fontes": []
+        },
+        {
+          "texto": "Plantão de 24 horas ainda existe, e o corpo cobra: sono, alimentação e vida social saem da escala.",
+          "fontes": []
+        },
+        {
+          "texto": "Pronto-socorro público lotado é a realidade: decidir quem atende primeiro quando não dá para atender todos.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "clinica-medica",
+        "anestesiologia",
+        "cirurgia-geral"
+      ]
+    }
+  ],
+  "jogo": {
+    "titulo": "Que especialidade médica é a sua?",
+    "chamada": "Descobrir a minha especialidade",
+    "chamada_curta": "Que especialidade é a minha?",
+    "titulo_resultado": "Suas três especialidades",
+    "subtitulo": "Doze situações de dentro do hospital e da vida. Escolha o que você faria de verdade. No fim, as três especialidades mais parecidas com você, entre as doze do panorama.",
+    "aviso": "Afinidade é informação, não veredito. O resultado aponta onde vale a pena ler mais; a decisão é sua, e ela pode mudar durante a faculdade.",
+    "cenas": [
+      {
+        "id": "primeiro-dia",
+        "texto": "Primeiro dia de internato. Qual setor te dá mais vontade de ficar?",
+        "opcoes": [
+          {
+            "texto": "A enfermaria, onde cada paciente é um caso para desvendar.",
+            "pontos": {
+              "clinica-medica": 3,
+              "medicina-familia": 1
+            }
+          },
+          {
+            "texto": "O centro cirúrgico, onde o problema se resolve na hora.",
+            "pontos": {
+              "cirurgia-geral": 3,
+              "ortopedia": 2,
+              "anestesiologia": 1
+            }
+          },
+          {
+            "texto": "O pronto-socorro, onde tudo acontece ao mesmo tempo.",
+            "pontos": {
+              "emergencia-intensiva": 3,
+              "ortopedia": 1
+            }
+          },
+          {
+            "texto": "A sala de laudos, longe do barulho, lendo imagens.",
+            "pontos": {
+              "radiologia": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "paciente-fala",
+        "texto": "Um paciente começa a contar a história da vida dele na consulta. Você:",
+        "opcoes": [
+          {
+            "texto": "Escuta até o fim. A história é o diagnóstico.",
+            "pontos": {
+              "psiquiatria": 3,
+              "medicina-familia": 2
+            }
+          },
+          {
+            "texto": "Escuta um pouco e conduz de volta ao sintoma. Tem fila.",
+            "pontos": {
+              "clinica-medica": 2,
+              "cardiologia": 1,
+              "dermatologia": 1
+            }
+          },
+          {
+            "texto": "Prefere pacientes que já chegam com o exame na mão.",
+            "pontos": {
+              "radiologia": 2,
+              "anestesiologia": 2
+            }
+          },
+          {
+            "texto": "Gosta, mas o que te move é resolver, não ouvir.",
+            "pontos": {
+              "cirurgia-geral": 2,
+              "ortopedia": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "madrugada",
+        "texto": "Três da manhã, o telefone toca: paciente seu está piorando.",
+        "opcoes": [
+          {
+            "texto": "Levanto sem pensar. Emergência é onde eu sou melhor.",
+            "pontos": {
+              "emergencia-intensiva": 3,
+              "cirurgia-geral": 2,
+              "ginecologia-obstetricia": 1
+            }
+          },
+          {
+            "texto": "Vou, mas quero uma especialidade em que isso seja raro.",
+            "pontos": {
+              "dermatologia": 3,
+              "radiologia": 2,
+              "psiquiatria": 1
+            }
+          },
+          {
+            "texto": "Vou, e aceito que faz parte: bebê não escolhe hora.",
+            "pontos": {
+              "ginecologia-obstetricia": 3,
+              "pediatria": 2
+            }
+          },
+          {
+            "texto": "Prefiro um sistema em que o plantonista resolve e eu vejo de manhã.",
+            "pontos": {
+              "medicina-familia": 2,
+              "cardiologia": 1,
+              "clinica-medica": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "crianca",
+        "texto": "Uma criança de 4 anos chorando, com a mãe aflita e o pai filmando. Você:",
+        "opcoes": [
+          {
+            "texto": "Agacho, brinco, examino enquanto distraio. Adoro isso.",
+            "pontos": {
+              "pediatria": 3,
+              "medicina-familia": 2
+            }
+          },
+          {
+            "texto": "Atendo bem, mas prefiro adultos que explicam o que sentem.",
+            "pontos": {
+              "clinica-medica": 2,
+              "psiquiatria": 1,
+              "cardiologia": 1
+            }
+          },
+          {
+            "texto": "Peço que a enfermagem acalme todo mundo e vou direto ao exame.",
+            "pontos": {
+              "cirurgia-geral": 2,
+              "ortopedia": 1,
+              "emergencia-intensiva": 1
+            }
+          },
+          {
+            "texto": "Quanto menos interação, melhor: me dá a imagem que eu laudo.",
+            "pontos": {
+              "radiologia": 3,
+              "anestesiologia": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "sangue",
+        "texto": "Sangue, feridas e cheiros fortes:",
+        "opcoes": [
+          {
+            "texto": "Não me afetam. Até acho interessante.",
+            "pontos": {
+              "cirurgia-geral": 3,
+              "ortopedia": 3,
+              "emergencia-intensiva": 2,
+              "ginecologia-obstetricia": 1
+            }
+          },
+          {
+            "texto": "Tolero quando preciso, mas não procuro.",
+            "pontos": {
+              "clinica-medica": 2,
+              "pediatria": 1,
+              "cardiologia": 1
+            }
+          },
+          {
+            "texto": "Prefiro evitar. Existe medicina sem isso.",
+            "pontos": {
+              "psiquiatria": 3,
+              "radiologia": 2,
+              "dermatologia": 1
+            }
+          },
+          {
+            "texto": "O que me afeta não é o sangue, é o paciente acordado sentindo dor.",
+            "pontos": {
+              "anestesiologia": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "orgulho",
+        "texto": "O que te daria mais orgulho?",
+        "opcoes": [
+          {
+            "texto": "Uma família que te acompanha há 15 anos e confia em você.",
+            "pontos": {
+              "medicina-familia": 3,
+              "pediatria": 2,
+              "ginecologia-obstetricia": 1
+            }
+          },
+          {
+            "texto": "Um diagnóstico que ninguém tinha visto.",
+            "pontos": {
+              "clinica-medica": 3,
+              "radiologia": 2
+            }
+          },
+          {
+            "texto": "Uma cirurgia difícil que saiu perfeita.",
+            "pontos": {
+              "cirurgia-geral": 3,
+              "ortopedia": 2
+            }
+          },
+          {
+            "texto": "Uma pessoa que voltou a viver depois de anos de depressão.",
+            "pontos": {
+              "psiquiatria": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "ma-noticia",
+        "texto": "Precisa dizer a uma família que o tratamento não vai funcionar. Você:",
+        "opcoes": [
+          {
+            "texto": "Sento, explico com calma e fico até as perguntas acabarem.",
+            "pontos": {
+              "psiquiatria": 2,
+              "medicina-familia": 2,
+              "emergencia-intensiva": 2,
+              "clinica-medica": 1
+            }
+          },
+          {
+            "texto": "Faço, mas é a parte que mais me custa. Prefiro trazer boas notícias.",
+            "pontos": {
+              "pediatria": 2,
+              "ginecologia-obstetricia": 2,
+              "dermatologia": 1
+            }
+          },
+          {
+            "texto": "Prefiro que o médico assistente faça; meu papel é técnico.",
+            "pontos": {
+              "radiologia": 3,
+              "anestesiologia": 2
+            }
+          },
+          {
+            "texto": "Digo direto e objetivamente. Rodeio não ajuda ninguém.",
+            "pontos": {
+              "cirurgia-geral": 2,
+              "ortopedia": 2,
+              "cardiologia": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "rotina",
+        "texto": "A rotina ideal para os próximos 30 anos:",
+        "opcoes": [
+          {
+            "texto": "Consultório com horário fixo e fim de semana livre.",
+            "pontos": {
+              "dermatologia": 3,
+              "psiquiatria": 2,
+              "medicina-familia": 1
+            }
+          },
+          {
+            "texto": "Escala de plantão: dias intensos, dias livres.",
+            "pontos": {
+              "emergencia-intensiva": 3,
+              "anestesiologia": 2
+            }
+          },
+          {
+            "texto": "Mistura de consultório, hospital e cirurgia na mesma semana.",
+            "pontos": {
+              "ginecologia-obstetricia": 3,
+              "cirurgia-geral": 1,
+              "ortopedia": 1,
+              "cardiologia": 1
+            }
+          },
+          {
+            "texto": "Enfermaria e ambulatório, com ensino no meio.",
+            "pontos": {
+              "clinica-medica": 3,
+              "pediatria": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "tecnologia",
+        "texto": "Em relação a aparelhos, monitores e exames sofisticados:",
+        "opcoes": [
+          {
+            "texto": "Quero operá-los eu mesmo. Tecnologia é a parte boa.",
+            "pontos": {
+              "radiologia": 3,
+              "cardiologia": 2,
+              "anestesiologia": 2
+            }
+          },
+          {
+            "texto": "Uso o que precisar, mas o exame físico e a conversa vêm primeiro.",
+            "pontos": {
+              "clinica-medica": 2,
+              "medicina-familia": 2,
+              "pediatria": 1
+            }
+          },
+          {
+            "texto": "Minha ferramenta é a mão e o instrumento.",
+            "pontos": {
+              "cirurgia-geral": 2,
+              "ortopedia": 2,
+              "ginecologia-obstetricia": 1
+            }
+          },
+          {
+            "texto": "Minha ferramenta é a escuta. Quase não preciso de aparelho.",
+            "pontos": {
+              "psiquiatria": 3,
+              "dermatologia": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "estudo",
+        "texto": "Como você estuda melhor?",
+        "opcoes": [
+          {
+            "texto": "Entendendo o mecanismo: fisiologia, por que o remédio funciona.",
+            "pontos": {
+              "anestesiologia": 2,
+              "cardiologia": 2,
+              "clinica-medica": 2,
+              "emergencia-intensiva": 1
+            }
+          },
+          {
+            "texto": "Vendo e reconhecendo padrões: imagens, lesões, atlas.",
+            "pontos": {
+              "radiologia": 3,
+              "dermatologia": 3
+            }
+          },
+          {
+            "texto": "Praticando com as mãos até sair automático.",
+            "pontos": {
+              "cirurgia-geral": 3,
+              "ortopedia": 2,
+              "ginecologia-obstetricia": 1
+            }
+          },
+          {
+            "texto": "Lendo casos e histórias de pessoas.",
+            "pontos": {
+              "psiquiatria": 3,
+              "medicina-familia": 2,
+              "pediatria": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "tempo-formacao",
+        "texto": "Quanto tempo de residência você aceitaria depois dos 6 anos de faculdade?",
+        "opcoes": [
+          {
+            "texto": "O mínimo: 2 anos e começar a trabalhar.",
+            "pontos": {
+              "medicina-familia": 3,
+              "clinica-medica": 2
+            }
+          },
+          {
+            "texto": "3 anos está bom.",
+            "pontos": {
+              "pediatria": 2,
+              "psiquiatria": 2,
+              "radiologia": 2,
+              "dermatologia": 1,
+              "anestesiologia": 1,
+              "ginecologia-obstetricia": 1
+            }
+          },
+          {
+            "texto": "4 anos, se for para fazer o que eu quero.",
+            "pontos": {
+              "cardiologia": 3,
+              "emergencia-intensiva": 2
+            }
+          },
+          {
+            "texto": "5 ou 6 anos. Cirurgião se faz devagar.",
+            "pontos": {
+              "cirurgia-geral": 3,
+              "ortopedia": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "frase",
+        "texto": "Qual frase mais parece com você?",
+        "opcoes": [
+          {
+            "texto": "\"Deixa comigo, eu resolvo agora.\"",
+            "pontos": {
+              "cirurgia-geral": 2,
+              "emergencia-intensiva": 2,
+              "ortopedia": 1
+            }
+          },
+          {
+            "texto": "\"Me conta desde o começo.\"",
+            "pontos": {
+              "psiquiatria": 2,
+              "clinica-medica": 2,
+              "medicina-familia": 1
+            }
+          },
+          {
+            "texto": "\"Olha isso aqui na imagem.\"",
+            "pontos": {
+              "radiologia": 2,
+              "dermatologia": 2,
+              "cardiologia": 1
+            }
+          },
+          {
+            "texto": "\"Fica tranquilo, eu estou aqui o tempo todo.\"",
+            "pontos": {
+              "anestesiologia": 2,
+              "pediatria": 2,
+              "ginecologia-obstetricia": 1
+            }
+          }
+        ]
+      }
+    ],
+    "resultado": {
+      "texto_alto": "é bem parecida com o seu jeito de lidar com pessoas, pressão e tempo.",
+      "texto_medio": "combina com parte do que você escolheu. Vale ler o dia típico.",
+      "texto_baixo": "está longe das suas escolhas hoje. Nada impede de explorar.",
+      "recompensa": {
+        "xp": 30,
+        "perolas": 3
+      }
+    }
+  },
+  "fontes": [
+    {
+      "id": "dmb-2025",
+      "titulo": "Demografia Médica no Brasil 2025: 597.428 médicos em dez/2024; 59,1% especialistas; sete especialidades com 50,6% dos títulos; 287 mil estudantes e 48 mil residentes; 50,9% mulheres",
+      "orgao": "Ministério da Saúde, FMUSP e AMB, via CNN Brasil (30/04/2025), Band (16/12/2025), Medicina S/A (02/05/2025) e Medway",
+      "url": "https://www.cnnbrasil.com.br/saude/numero-de-medicos-sem-especializacao-cresce-quase-60-em-6-anos/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pelo PDF do relatório no site da FMUSP (demografiamedica.org.br) e conferir cada número na tabela original."
+    },
+    {
+      "id": "cfm-2330",
+      "titulo": "Resolução CFM nº 2.330/2023 (revogada pela nº 2.380/2024, que mantém a lista): 55 especialidades e 61 áreas de atuação; duração da formação por especialidade",
+      "orgao": "Conselho Federal de Medicina",
+      "url": "https://sistemas.cfm.org.br/normas/arquivos/resolucoes/BR/2023/2330_2023.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria",
+      "nota": "Conferir as durações na Resolução CFM nº 2.380/2024, que é a vigente."
+    },
+    {
+      "id": "bolsa-residencia",
+      "titulo": "Bolsa de residência médica: R$ 4.106,09 brutos por até 60 horas semanais (Portaria Interministerial nº 9/2021), sem reajuste desde jan/2022",
+      "orgao": "MEC e Ministério da Saúde, via Medway",
+      "url": "https://www.medway.com.br/conteudos/valor-da-bolsa-de-residencia-medica/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela portaria no DOU. Há projetos de lei de reajuste em tramitação."
+    },
+    {
+      "id": "enamed",
+      "titulo": "Enamed: exame nacional obrigatório para concluintes de Medicina desde 2025; a nota vale como prova objetiva do Enare (Portaria MEC nº 330/2025)",
+      "orgao": "MEC e Inep, via Sanar",
+      "url": "https://sanarmed.com/enamed-o-novo-exame-nacional-de-avaliacao-da-formacao-medica-e-sua-relacao-com-o-enare/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pelo edital do Inep (Edital nº 71/2026)."
+    },
+    {
+      "id": "dcn-medicina",
+      "titulo": "Diretrizes Curriculares Nacionais do curso de Medicina (Resolução CNE/CES nº 3/2014): 7.200 horas, 6 anos, internato de 35% da carga nos dois últimos anos",
+      "orgao": "Conselho Nacional de Educação (MEC)",
+      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/Med.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria",
+      "nota": "Confirmar a URL atual no portal do MEC e se há atualização das DCN."
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: Medicina entre os cursos proibidos em EAD",
+      "orgao": "Presidência da República e MEC, via Quero Bolsa",
+      "url": "https://querobolsa.com.br/revista/proibicao-ead-quais-cursos-mec-proibiu-a-distancia",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela URL do decreto no Planalto."
+    },
+    {
+      "id": "sisu-2026",
+      "titulo": "Sisu 2026: Medicina da UFMG com 17.010 candidatos para 160 vagas",
+      "orgao": "VestibulandoWeb, 01/06/2026",
+      "url": "https://www.vestibulandoweb.com.br/sisu/sisu-2026-medicina-lidera-disputa-e-curso-de-ia-chama-atencao-no-ranking/amp/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Confirmar nos dados do MEC."
+    },
+    {
+      "id": "caged-clinico",
+      "titulo": "Médico clínico (CBO 2251-25): média R$ 10.303, P25 R$ 5.564, P75 R$ 13.282, jornada de 25 h, amostra 16.185; função 'médico da estratégia de saúde da família' com média R$ 18.219",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-clinico-cbo-225125",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-psiquiatra",
+      "titulo": "Médico psiquiatra (CBO 2251-33): média R$ 9.572, P25 R$ 6.252, P75 R$ 12.381, jornada de 19 h",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-psiquiatra-cbo-225133",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-pediatra",
+      "titulo": "Médico pediatra (CBO 2251-24): média R$ 10.017, P25 R$ 6.109, P75 R$ 11.971, jornada de 21 h",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-pediatra-cbo-225124",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-anestesista",
+      "titulo": "Médico anestesiologista (CBO 2251-51): média R$ 9.523, P25 R$ 5.160, P75 R$ 11.464, jornada de 24 h",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-anestesiologista-cbo-225151",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-radiologista",
+      "titulo": "Médico radiologista (CBO 2253-20): média R$ 8.768, P25 R$ 4.760, P75 R$ 11.464, jornada de 22 h",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-radiologista-cbo-225320",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-cirurgiao",
+      "titulo": "Médico cirurgião geral (CBO 2252-25): média R$ 9.001, P25 R$ 5.455, P75 R$ 11.464, jornada de 20 h",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-cirurgiao-geral-cbo-225225",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-gineco",
+      "titulo": "Médico ginecologista e obstetra (CBO 2252-50): média R$ 8.419, P25 R$ 5.612, P75 R$ 11.464, jornada de 20 h",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-ginecologista-e-obstetra-cbo-225250",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-ortopedista",
+      "titulo": "Médico ortopedista e traumatologista (CBO 2252-70): média R$ 8.048, P25 R$ 4.500, P75 R$ 11.464, jornada de 20 h",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-ortopedista-e-traumatologista-cbo-225270",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    }
+  ]
+}

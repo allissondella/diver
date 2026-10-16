@@ -283,7 +283,8 @@ const Admin = (() => {
    */
   /* ---------- Mapa das Profissões: números derivados do log (eventos_atividade), sem tabela nova ---------- */
   const TIPOS_PROFISSOES = ['profissao_vista', 'profissao_pedido', 'profissao_carta', 'profissao_dia_inicio', 'profissao_dia_concluido',
-    'tecnologia_area_vista', 'tecnologia_jogo_inicio', 'tecnologia_jogo_concluido'];
+    'tecnologia_area_vista', 'tecnologia_jogo_inicio', 'tecnologia_jogo_concluido',
+    'medicina_area_vista', 'medicina_jogo_inicio', 'medicina_jogo_concluido'];
   function blocoProfissoes() {
     const corpo = h('div', { class: 'admin-profissoes', 'aria-live': 'polite' });
     let carregado = false;
@@ -303,9 +304,10 @@ const Admin = (() => {
   }
 
   async function carregarProfissoes() {
-    const [ix, tec, eventos] = await Promise.all([
+    const [ix, tec, med, eventos] = await Promise.all([
       fetch('data/profissoes/indice.json').then((r) => r.json()).catch(() => ({ profissoes: [] })),
       fetch('data/profissoes/tecnologia.json').then((r) => r.json()).catch(() => ({ areas: [] })),
+      fetch('data/profissoes/panorama-medicina.json').then((r) => r.json()).catch(() => ({ areas: [] })),
       (async () => {
         const linhas = [];
         for (let de = 0; de < 50000; de += 1000) {
@@ -316,9 +318,11 @@ const Admin = (() => {
         return linhas;
       })(),
     ]);
-    const panoramas = { tecnologia: 'Panorama da Tecnologia' };
-    const nome = (id) => (id === 'outra' ? 'Outra (busca livre)' : panoramas[id] || ((ix.profissoes || []).find((p) => p.id === id) || {}).nome || id);
+    const panoramas = { tecnologia: 'Panorama da Tecnologia', medicina: 'Panorama da Medicina' };
+    // A ficha vem antes do panorama: "medicina" é as duas coisas (os eventos do panorama trazem detalhes.panorama)
+    const nome = (id) => (id === 'outra' ? 'Outra (busca livre)' : ((ix.profissoes || []).find((p) => p.id === id) || {}).nome || panoramas[id] || id);
     const nomeArea = (id) => ((tec.areas || []).find((a) => a.id === id) || {}).nome || id;
+    const nomeEspecialidade = (id) => ((med.areas || []).find((a) => a.id === id) || {}).nome || id;
     const prof = (e) => (e.detalhes && typeof e.detalhes.profissao === 'string' ? e.detalhes.profissao : null);
     const area = (e) => (e.detalhes && typeof e.detalhes.area === 'string' ? e.detalhes.area : null);
     const primeiraArea = (e) => (e.detalhes && Array.isArray(e.detalhes.top) && typeof e.detalhes.top[0] === 'string' ? e.detalhes.top[0] : null);
@@ -355,6 +359,11 @@ const Admin = (() => {
     const jogoComecou = pessoasDe('tecnologia_jogo_inicio');
     const jogoTerminou = pessoasDe('tecnologia_jogo_concluido');
     const primeiras = contar((e) => e.tipo === 'tecnologia_jogo_concluido', primeiraArea);
+    // Panorama da Medicina: as mesmas três leituras, por especialidade
+    const especialidadesVistas = contar((e) => e.tipo === 'medicina_area_vista', area);
+    const jogoMedComecou = pessoasDe('medicina_jogo_inicio');
+    const jogoMedTerminou = pessoasDe('medicina_jogo_concluido');
+    const primeirasMed = contar((e) => e.tipo === 'medicina_jogo_concluido', primeiraArea);
 
     return [
       h('p', { class: 'texto-suave', text: `${UI.plural(alunos, 'pessoa já usou', 'pessoas já usaram')} o Mapa (fichas, Maré de cartas ou "Um dia como"). Os números vêm do log de atividade; cada linha mostra as 10 primeiras.` }),
@@ -365,6 +374,9 @@ const Admin = (() => {
       tabela('Panorama da Tecnologia: áreas mais vistas', areasVistas, [['Área', (l) => nomeArea(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Aberturas', (l) => String(l.vezes)]], 'Nenhuma área aberta ainda.'),
       h('p', { class: 'texto-suave', text: jogoComecou ? `Jogo "Que área da tecnologia é a sua praia?": ${UI.plural(jogoComecou, 'pessoa começou', 'pessoas começaram')} e ${UI.plural(jogoTerminou, 'terminou', 'terminaram')} (${Math.round((100 * jogoTerminou) / Math.max(1, jogoComecou))}%).` : 'Ninguém jogou "Que área da tecnologia é a sua praia?" ainda.' }),
       tabela('Jogo da Tecnologia: área em 1º lugar', primeiras, [['Área', (l) => nomeArea(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Partidas', (l) => String(l.vezes)]], 'Nenhuma partida terminada ainda.'),
+      tabela('Panorama da Medicina: especialidades mais vistas', especialidadesVistas, [['Especialidade', (l) => nomeEspecialidade(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Aberturas', (l) => String(l.vezes)]], 'Nenhuma especialidade aberta ainda.'),
+      h('p', { class: 'texto-suave', text: jogoMedComecou ? `Jogo "Que especialidade médica é a sua?": ${UI.plural(jogoMedComecou, 'pessoa começou', 'pessoas começaram')} e ${UI.plural(jogoMedTerminou, 'terminou', 'terminaram')} (${Math.round((100 * jogoMedTerminou) / Math.max(1, jogoMedComecou))}%).` : 'Ninguém começou o jogo da Medicina ainda.' }),
+      tabela('Jogo da Medicina: especialidade em 1º lugar', primeirasMed, [['Especialidade', (l) => nomeEspecialidade(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Partidas', (l) => String(l.vezes)]], 'Nenhuma partida terminada ainda.'),
     ];
   }
 

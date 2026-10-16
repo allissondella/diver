@@ -177,12 +177,20 @@ const Conquistas = (() => {
       testar: (publicadas) => publicadas.length > 0 && publicadas.every((id) => (mapa().cartasGeradas || []).includes(id)),
     },
     {
-      // Panorama da Tecnologia (js/profissoes-tecnologia.js): as dez áreas ficam em mapa().tec.areasVistas
+      // Panorama da Tecnologia (js/profissoes-panorama.js): as dez áreas ficam em mapa().tec.areasVistas
       id: 'dez-em-dez',
       nome: 'Dez em dez',
       descricao: 'Abriu as dez áreas do Panorama da Tecnologia.',
       icone: 'i-codigo',
       testar: () => Object.keys((mapa().tec && mapa().tec.areasVistas) || {}).length >= 10,
+    },
+    {
+      // Panorama da Medicina (mesmo módulo): as doze especialidades ficam em mapa().med.areasVistas
+      id: 'doze-em-doze',
+      nome: 'Doze em doze',
+      descricao: 'Abriu as doze especialidades do Panorama da Medicina.',
+      icone: 'i-estrela',
+      testar: () => Object.keys((mapa().med && mapa().med.areasVistas) || {}).length >= 12,
     },
   ];
   const lerGerais = () => { const g = Dados.ler(CHAVE_GERAIS, null); return g && typeof g === 'object' ? g : {}; };
