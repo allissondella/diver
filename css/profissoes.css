@@ -428,34 +428,34 @@ a.prof-btn { text-decoration: none; }
 .prof-nav a[aria-current="true"] { color: var(--marinho); background: var(--turquesa-claro); font-weight: 700; }
 
 /* ---------- Cenas que acendem ---------- */
-.prof-cena { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease-saida), transform .8s var(--ease-saida); }
-.prof-cena--viva { opacity: 1; transform: none; }
-.prof-cena :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena > * {
+.prof-surge { opacity: 0; transform: translateY(32px); transition: opacity .7s var(--ease-saida), transform .8s var(--ease-saida); }
+.prof-surge--viva { opacity: 1; transform: none; }
+.prof-surge :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-surge > * {
   opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease-saida), transform .5s var(--ease-saida);
   transition-delay: calc(.15s + var(--i, 0) * 80ms);
 }
-.prof-cena--viva :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena--viva > * { opacity: 1; transform: none; }
+.prof-surge--viva :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-surge--viva > * { opacity: 1; transform: none; }
 .prof-secao { scroll-margin-top: 96px; }
 .prof-secao h2 { font-size: var(--t-2xl); }
 
 /* O relógio gira até a hora de agora */
 .prof-agora { border: 1px solid color-mix(in srgb, var(--amarelo) 30%, transparent); }
-.prof-cena .prof-agora-relogio { transform: rotate(-200deg) scale(.6); opacity: 0; transition: transform 1.2s var(--ease-saida), opacity .6s; }
-.prof-cena--viva .prof-agora-relogio { transform: none; opacity: 1; }
+.prof-surge .prof-agora-relogio { transform: rotate(-200deg) scale(.6); opacity: 0; transition: transform 1.2s var(--ease-saida), opacity .6s; }
+.prof-surge--viva .prof-agora-relogio { transform: none; opacity: 1; }
 
 /* A linha da formação cresce ano a ano */
 .prof-formacao .prof-info rect { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); transition: transform 1s var(--ease-saida); }
-.prof-cena--viva .prof-formacao .prof-info rect { transform: scaleX(1); }
+.prof-surge--viva .prof-formacao .prof-info rect { transform: scaleX(1); }
 .prof-formacao .prof-info g circle, .prof-formacao .prof-info g text + text + rect ~ text { opacity: 0; transition: opacity .4s; }
-.prof-cena--viva .prof-formacao .prof-info g circle, .prof-cena--viva .prof-formacao .prof-info g text + text + rect ~ text { opacity: 1; transition-delay: 1.2s; }
+.prof-surge--viva .prof-formacao .prof-info g circle, .prof-surge--viva .prof-formacao .prof-info g text + text + rect ~ text { opacity: 1; transition-delay: 1.2s; }
 .prof-formacao .prof-info g:nth-of-type(2) rect { transition-delay: .35s; }
 .prof-formacao .prof-info g:nth-of-type(3) rect { transition-delay: .7s; }
 .prof-formacao .prof-info g:nth-of-type(4) rect { transition-delay: 1.05s; }
 .prof-formacao .prof-info g:nth-of-type(5) rect { transition-delay: 1.4s; }
 
 /* O DNA se monta */
-.prof-cena .prof-dna-grafico { transform: scale(.35) rotate(-120deg); opacity: 0; transition: transform 1.1s var(--ease-saida), opacity .6s; }
-.prof-cena--viva .prof-dna-grafico { transform: none; opacity: 1; }
+.prof-surge .prof-dna-grafico { transform: scale(.35) rotate(-120deg); opacity: 0; transition: transform 1.1s var(--ease-saida), opacity .6s; }
+.prof-surge--viva .prof-dna-grafico { transform: none; opacity: 1; }
 
 /* "Próximo" no pé de cada seção */
 .prof-proximo {
@@ -576,13 +576,13 @@ a.prof-btn { text-decoration: none; }
 
 /* ---------- Reduzir movimento: tudo já aparece pronto ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .prof-cena, .prof-cena *, .prof-palavra, .prof-mergulhe, .prof-palco::before, .prof-palco::after,
+  .prof-surge, .prof-surge *, .prof-palavra, .prof-mergulhe, .prof-palco::before, .prof-palco::after,
   .prof-revelado, .prof-pop, .prof-doca, .prof-lado--entra, .prof-virar-verso, .prof-fontes--abrindo li,
   .prof-chute-resultado .prof-info g, .prof-proximo .prof-ico, .prof-mergulhe .prof-ico, .prof-segredo-conteudo {
     animation: none !important; transition: none !important;
   }
-  .prof-cena, .prof-cena :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-cena > *,
-  .prof-cena .prof-agora-relogio, .prof-cena .prof-dna-grafico, .prof-formacao .prof-info rect,
+  .prof-surge, .prof-surge :is(.prof-cards, .prof-chips-lista, .prof-numeros) > *, .prof-numeros.prof-surge > *,
+  .prof-surge .prof-agora-relogio, .prof-surge .prof-dna-grafico, .prof-formacao .prof-info rect,
   .prof-formacao .prof-info g circle, .prof-formacao .prof-info g text + text + rect ~ text { opacity: 1; transform: none; }
   .prof-pop { transform: translateX(-50%); }
 }

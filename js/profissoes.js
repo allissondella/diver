@@ -319,8 +319,8 @@
   }
   /** Cenas: acendem uma vez ao entrar na tela e chamam o "aoAparecer" de cada uma. */
   function observarCenas(raiz) {
-    const cenas = [...raiz.querySelectorAll('.prof-cena')];
-    const acender = c => { if (c.classList.contains('prof-cena--viva')) return; c.classList.add('prof-cena--viva'); if (c._aoAparecer) c._aoAparecer(); };
+    const cenas = [...raiz.querySelectorAll('.prof-surge')];
+    const acender = c => { if (c.classList.contains('prof-surge--viva')) return; c.classList.add('prof-surge--viva'); if (c._aoAparecer) c._aoAparecer(); };
     if (!('IntersectionObserver' in window) || semMovimento()) { cenas.forEach(acender); return; }
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { acender(e.target); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
     cenas.forEach(c => io.observe(c));
@@ -338,7 +338,7 @@
       f.status !== 'publicada' ? el('span', { class: 'prof-selo prof-selo--rascunho', text: f.revisao && f.revisao.profissional === 'ok' ? 'Validada' : 'Em revisão por profissional' }) : null));
 
     // Abertura: o nome entra palavra por palavra e um convite chama para rolar
-    const descer = el('button', { type: 'button', class: 'prof-mergulhe', onclick: () => { const alvo = raiz.querySelector('.prof-cena'); if (alvo) alvo.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: 'start' }); } }, 'Role para mergulhar', icone('baixo'));
+    const descer = el('button', { type: 'button', class: 'prof-mergulhe', onclick: () => { const alvo = raiz.querySelector('.prof-surge'); if (alvo) alvo.scrollIntoView({ behavior: semMovimento() ? 'auto' : 'smooth', block: 'start' }); } }, 'Role para mergulhar', icone('baixo'));
     const palco = el('header', { class: 'prof-palco' },
       el('span', { class: 'prof-rotulo', text: nomeArea(ix, f.area), style: { color: cor } }),
       el('h1', { class: 'prof-palco-titulo', 'aria-label': f.nome }, palavras(f.nome)),
@@ -359,7 +359,7 @@
     if (f.agora && f.agora.length && IG()) {
       const d = new Date(), h = d.getHours(), mi = d.getMinutes();
       const faixa = f.agora.find(x => h >= x.de && h < x.ate) || f.agora[0];
-      raiz.appendChild(el('section', { class: 'prof-agora prof-cena', 'aria-label': 'Agora mesmo' },
+      raiz.appendChild(el('section', { class: 'prof-agora prof-surge', 'aria-label': 'Agora mesmo' },
         el('div', { class: 'prof-agora-relogio' }, IG().relogio({ faixas: f.agora, hora: h, minuto: mi })),
         el('div', null,
           el('div', { class: 'prof-agora-hora' }, 'Agora, às ', el('span', { text: `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}` }), ', um profissional de ', f.nome.toLowerCase(), ' provavelmente está em:'),
@@ -372,7 +372,7 @@
     const ordem = [['duracao', 'Duração'], ['formato', 'Formato'], ['salario', 'Média de contratação', 'amarelo'], ['registro', 'Registro profissional']];
     const contaveis = [];
     let cartaoSalario = null;
-    const secNumeros = el('section', { class: 'prof-numeros prof-cena', 'aria-label': 'Números principais' }, ordem.filter(([k]) => nums[k]).map(([k, rotulo, corN], i) => {
+    const secNumeros = el('section', { class: 'prof-numeros prof-surge', 'aria-label': 'Números principais' }, ordem.filter(([k]) => nums[k]).map(([k, rotulo, corN], i) => {
       const n = nums[k];
       const valor = el('span', { class: 'prof-numero-txt', text: n.valor });
       const fontes = (n.fontes || []).filter(id => numeroFonte(f, id));
@@ -422,7 +422,7 @@
     }
 
     const S = f.secoes || {};
-    const secao = (id, titulo, sub, ...conteudo) => el('section', { class: 'prof-secao prof-cena', id: 'sec-' + id }, el('h2', null, titulo, sub ? el('small', { text: sub }) : null), ...conteudo);
+    const secao = (id, titulo, sub, ...conteudo) => el('section', { class: 'prof-secao prof-surge', id: 'sec-' + id }, el('h2', null, titulo, sub ? el('small', { text: sub }) : null), ...conteudo);
 
     // 1. O que faz: chave entre "o que faz" e "o que não faz"
     if (S.o_que_faz) {

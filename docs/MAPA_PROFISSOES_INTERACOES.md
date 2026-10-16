@@ -89,7 +89,7 @@ A ficha `enfermagem.json` já traz `carta`, `agora`, `dna` e um `dilema` preench
 Pedido do usuário: a ficha mais moderna e interativa, "como a página da Apple, que vai carregando ao descer", **sem mudar uma vírgula do conteúdo**. O código fica em `js/profissoes.js` (`telaFicha`, `blocoSalario`, `citar`, `abrirFonte`) e `css/profissoes.css` (bloco "Ficha que se conta enquanto rola").
 
 - **Abertura em tela cheia:** área, nome e frase entram palavra por palavra; "Role para mergulhar" leva à primeira parte.
-- **Cenas:** cada parte (`.prof-cena`) acende uma vez ao entrar na tela (IntersectionObserver); algumas se montam:
+- **Cenas:** cada parte (`.prof-surge`; o nome `.prof-cena` é do cartão dos jogos "Um dia como" e da Tecnologia) acende uma vez ao entrar na tela (IntersectionObserver); algumas se montam:
   - o relógio do "Agora mesmo" gira até a hora atual;
   - os números contam do zero até o valor exato do JSON;
   - a linha "Quanto tempo até trabalhar" cresce etapa por etapa;
