@@ -384,6 +384,87 @@
      }
     ]
    }
+  },
+  {
+   "id": "op-quarentena",
+   "aulas": [
+    "comp-sistema-arquivos"
+   ],
+   "grupo": "Sistema de arquivos",
+   "titulo": "Etiquetas mentirosas",
+   "enunciado": "A pasta `anexos` tem arquivos com **extensão disfarçada**: o nome parece documento, mas o último ponto diz programa. Mova para `anexos/quarentena` todo arquivo cuja extensão real (em minúsculas) esteja em `perigosas` e mostre o relatório.",
+   "arquivos": {
+    "anexos/fatura.pdf.exe": "conteúdo de fatura.pdf.exe\n",
+    "anexos/boleto.pdf": "conteúdo de boleto.pdf\n",
+    "anexos/foto_praia.jpg.scr": "conteúdo de foto_praia.jpg.scr\n",
+    "anexos/Contrato.PDF": "conteúdo de Contrato.PDF\n",
+    "anexos/premio.docx.BAT": "conteúdo de premio.docx.BAT\n",
+    "anexos/curriculo.docx": "conteúdo de curriculo.docx\n",
+    "anexos/planilha.xlsx": "conteúdo de planilha.xlsx\n",
+    "anexos/jpg.pdf": "conteúdo de jpg.pdf\n"
+   },
+   "codigoInicial": "from pathlib import Path\nimport shutil\n\nperigosas = {\".exe\", \".bat\", \".scr\"}\npasta = Path(\"anexos\")\n\nfor item in sorted(pasta.iterdir()):\n    print(item.name, item.suffix)\n",
+   "solucao": "from pathlib import Path\nimport shutil\n\nperigosas = {\".exe\", \".bat\", \".scr\"}\npasta = Path(\"anexos\")\nquarentena = pasta / \"quarentena\"\nquarentena.mkdir(exist_ok=True)\n\nsuspeitos = []\nfor item in sorted(pasta.iterdir()):\n    if item.is_file() and item.suffix.lower() in perigosas:\n        shutil.move(item, quarentena / item.name)\n        suspeitos.append(item.name)\n\nprint(f\"Quarentena: {len(suspeitos)} arquivo(s)\")\nfor nome in suspeitos:\n    print(nome)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "O relatório",
+     "esperada": "Quarentena: 3 arquivo(s)\nfatura.pdf.exe\nfoto_praia.jpg.scr\npremio.docx.BAT\n"
+    },
+    {
+     "nome": "Nada perigoso solto",
+     "codigo": "from pathlib import Path\nperigo = [p.name for p in Path('anexos').iterdir() if p.is_file() and p.suffix.lower() in {'.exe', '.bat', '.scr'}]\nassert not perigo, f'Ainda está solto em anexos: {perigo}'"
+    },
+    {
+     "nome": "Nenhum arquivo se perdeu",
+     "codigo": "from pathlib import Path\nn = sum(1 for p in Path('anexos').rglob('*') if p.is_file())\nassert n == 8, f'Eram 8 arquivos; agora há {n}'"
+    },
+    {
+     "nome": "Documento de verdade fica",
+     "oculto": true,
+     "codigo": "from pathlib import Path\nassert Path('anexos/Contrato.PDF').exists() and Path('anexos/jpg.pdf').exists(), 'Contrato.PDF e jpg.pdf são documentos: devem ficar em anexos'"
+    }
+   ],
+   "metas": {
+    "linhas": 16
+   },
+   "dicas": [
+    "A extensão real é item.suffix, e ela precisa estar em minúsculas para comparar com o conjunto.",
+    "Crie a pasta quarentena antes do laço; dentro do for, teste item.suffix.lower() in perigosas e use shutil.move.",
+    "if item.is_file() and item.suffix.lower() in perigosas: mova para quarentena / item.name e guarde item.name numa lista; no fim, imprima o total e cada nome."
+   ],
+   "toque": {
+    "modelo": "from pathlib import Path\nimport shutil\n\nperigosas = {\".exe\", \".bat\", \".scr\"}\npasta = Path(\"anexos\")\nquarentena = pasta / \"quarentena\"\nquarentena.mkdir(exist_ok=True)\n\nsuspeitos = []\nfor item in sorted(pasta.iterdir()):\n    if item.is_file() and ___ in perigosas:\n        shutil.move(item, ___)\n        suspeitos.append(item.name)\n\nprint(f\"Quarentena: {___} arquivo(s)\")\nfor nome in suspeitos:\n    print(nome)\n",
+    "lacunas": [
+     {
+      "opcoes": [
+       "item.suffix",
+       "item.suffix.lower()",
+       "item.name"
+      ],
+      "certa": 1,
+      "dica": "A comparação precisa da extensão em minúsculas: .BAT tem de virar .bat."
+     },
+     {
+      "opcoes": [
+       "quarentena / item.name",
+       "quarentena",
+       "pasta / item.name"
+      ],
+      "certa": 0,
+      "dica": "O destino é o arquivo dentro da pasta quarentena."
+     },
+     {
+      "opcoes": [
+       "suspeitos",
+       "len(suspeitos)",
+       "len(perigosas)"
+      ],
+      "certa": 1,
+      "dica": "O total é o tamanho da lista de suspeitos."
+     }
+    ]
+   }
   }
  ]
 }
