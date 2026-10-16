@@ -61,7 +61,7 @@ Rotas que `montar` entende (sem o `#`):
 | `profissao-<id>-mitos` | "Mito ou verdade" |
 | `profissoes-tecnologia` | Panorama da Tecnologia (números, salários por área, dez áreas, cursos) |
 | `tecnologia-<id>` | Uma área da tecnologia: dia típico, salário, DNA, carreira, fontes |
-| `profissoes-tecnologia-jogo` | "Que área da tecnologia é a sua?" |
+| `profissoes-tecnologia-jogo` | "Que área da tecnologia é a sua praia?" |
 
 Tudo é construído com `createElement` e `textContent`. Nenhum conteúdo de JSON passa por `innerHTML`. O estado fica em `localStorage` na chave `diver:v1:profissoes` (dentro de `try/catch`), então o espelho na nuvem já o sincroniza pelo mecanismo existente (`estado`, chaves `diver:v1:*`).
 

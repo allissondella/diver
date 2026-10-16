@@ -43,7 +43,7 @@ A **Fase 0 está feita**: protótipo em HTML/CSS/JS puros com os modos Mergulho,
   - **fontes guardadas**: cada bolinha numerada abre a fonte num cartão, e a lista inteira só abre no botão.
   - Tudo respeita "reduzir movimento". Detalhes em `docs/MAPA_PROFISSOES_INTERACOES.md`.
 - **Panorama da Tecnologia (2026-10-16, kit v1.2; `docs/MAPA_PROFISSOES_TECNOLOGIA.md`):**
-  - Cartão largo no topo da região Tecnologia do mapa. As rotas são `#profissoes-tecnologia`, `#tecnologia-<área>` (as dez áreas) e `#profissoes-tecnologia-jogo` ("Que área da tecnologia é a sua?", 12 situações; 30 XP e 3 pérolas uma vez).
+  - Cartão largo no topo da região Tecnologia do mapa. As rotas são `#profissoes-tecnologia`, `#tecnologia-<área>` (as dez áreas) e `#profissoes-tecnologia-jogo` ("Que área da tecnologia é a sua praia?", 12 situações; 30 XP e 3 pérolas uma vez).
   - O código é `js/profissoes-tecnologia.js`, uma extensão do mesmo pacote. Ela usa `Profissoes.registrarExtensao` e as peças da ficha via `Profissoes._util`, com o **mesmo desenho da ficha**.
   - Nas telas:
     - no panorama, a aposta "qual área paga mais?" vem antes das barras;

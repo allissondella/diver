@@ -416,7 +416,7 @@
   }
 
   /* =====================================================================
-     Jogo: "Que área da tecnologia é a sua?"
+     Jogo: "Que área da tecnologia é a sua praia?"
      ===================================================================== */
   function maximos(t) { const m = {}; t.areas.forEach(a => m[a.id] = 0); t.jogo.cenas.forEach(c => { const best = {}; c.opcoes.forEach(o => Object.entries(o.pontos).forEach(([k, v]) => best[k] = Math.max(best[k] || 0, v))); Object.entries(best).forEach(([k, v]) => m[k] += v); }); return m; }
   function ranking(t, pontos) { const m = maximos(t); return t.areas.map(a => ({ area: a, pts: pontos[a.id] || 0, pct: Math.round((pontos[a.id] || 0) / (m[a.id] || 1) * 100) })).sort((x, y) => y.pct - x.pct); }

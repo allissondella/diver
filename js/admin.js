@@ -363,7 +363,7 @@ const Admin = (() => {
       tabela('"Me interessa" na Maré de cartas', interesse, [['Profissão', (l) => nome(l.id)], ['Pessoas', (l) => String(l.pessoas)]], 'Ninguém passou pela Maré ainda.'),
       tabela('"Um dia como": quem começa e quem termina', dia, [['Profissão', (l) => nome(l.id)], ['Começaram', (l) => String(l.pessoas)], ['Terminaram', (l) => String(l.concluiram)], ['Conclusão', (l) => `${Math.round((100 * l.concluiram) / Math.max(1, l.pessoas))}%`]], 'Ninguém viveu um dia ainda.'),
       tabela('Panorama da Tecnologia: áreas mais vistas', areasVistas, [['Área', (l) => nomeArea(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Aberturas', (l) => String(l.vezes)]], 'Nenhuma área aberta ainda.'),
-      h('p', { class: 'texto-suave', text: jogoComecou ? `Jogo "Que área da tecnologia é a sua?": ${UI.plural(jogoComecou, 'pessoa começou', 'pessoas começaram')} e ${UI.plural(jogoTerminou, 'terminou', 'terminaram')} (${Math.round((100 * jogoTerminou) / Math.max(1, jogoComecou))}%).` : 'Ninguém jogou "Que área da tecnologia é a sua?" ainda.' }),
+      h('p', { class: 'texto-suave', text: jogoComecou ? `Jogo "Que área da tecnologia é a sua praia?": ${UI.plural(jogoComecou, 'pessoa começou', 'pessoas começaram')} e ${UI.plural(jogoTerminou, 'terminou', 'terminaram')} (${Math.round((100 * jogoTerminou) / Math.max(1, jogoComecou))}%).` : 'Ninguém jogou "Que área da tecnologia é a sua praia?" ainda.' }),
       tabela('Jogo da Tecnologia: área em 1º lugar', primeiras, [['Área', (l) => nomeArea(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Partidas', (l) => String(l.vezes)]], 'Nenhuma partida terminada ainda.'),
     ];
   }
