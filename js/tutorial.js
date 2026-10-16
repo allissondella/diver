@@ -140,10 +140,12 @@ const Tutorial = (() => {
     ],
     // Mapa das Profissões (2026-10-16): a tela é desenhada depois de baixar o índice, então os passos não dependem de alvo
     profissoes: [
-      { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque uma profissão pelo nome ou filtre pela área. Toque numa ficha para abrir; "Pôr na mira" guarda as que você quer acompanhar, e elas aparecem no topo do mapa.' },
+      { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque uma profissão pelo nome ou filtre pela área. Em "Características", marque o que importa para você, como "Lida com pessoas" ou "Só presencial". Toque numa ficha para abrir; "Pôr na mira" guarda as que você quer acompanhar, e elas aparecem no topo do mapa.' },
       { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'A ficha se conta enquanto você rola: as partes acendem, os números se montam e a barra no topo mostra quanto falta (toque numa seção para pular). O salário fica escondido até o seu chute, e cada bolinha numerada abre a fonte daquela informação.' },
       { desenho: 'estrela', titulo: 'Maré de cartas', texto: 'Sem ideia por onde começar? A Maré mostra uma profissão por vez: "Me interessa" ou "Não é pra mim". No fim, o seu rastro e uma sugestão que talvez você não tenha considerado.' },
       // Panorama da Tecnologia (2026-10-16): enquanto for rascunho, o aluno vê "Em breve"; ao publicar, suba "profissoes" em VERSOES
+      // Fase 2 (2026-10-16): características, comparador e mais "Um dia como". Ao publicar as fichas, suba "profissoes" em VERSOES (uma vez só, junto com o Panorama)
+      { desenho: 'lupa', titulo: 'Comparar duas profissões', texto: 'Em dúvida entre duas? "Comparar profissões" põe as duas lado a lado: duração, formato, salário, registro, matérias que pesam para entrar, caminhos e o DNA de cada uma.' },
       { desenho: 'mapa', titulo: 'Panoramas de área', texto: 'Algumas áreas são grandes demais para uma ficha só e ganham um panorama, como o da Tecnologia: dez áreas, o dia típico de cada uma e um jogo para descobrir com qual você combina. Com o selo "Em breve", o panorama ainda está em revisão.' },
     ],
     perfil: [

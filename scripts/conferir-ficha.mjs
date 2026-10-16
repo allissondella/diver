@@ -24,6 +24,9 @@ if (indice) {
   const p = indice.profissoes.find(x => x.id === f.id);
   if (!p) erro(`id "${f.id}" não está em indice.json`);
   else if (!indice.areas.some(a => a.id === f.area)) erro(`area "${f.area}" não existe em indice.json`);
+  // Os filtros do mapa leem as tags do índice (leve): elas precisam ser as mesmas da ficha
+  if (p && p.tags && JSON.stringify(p.tags) !== JSON.stringify(f.tags)) erro(`tags do indice.json (${p.tags.join(', ')}) diferentes das da ficha (${(f.tags || []).join(', ')})`);
+  if (p && p.arquivo && !p.tags) aviso('indice.json sem as tags desta ficha: os filtros do mapa não vão encontrá-la');
 }
 
 // 2. Fontes

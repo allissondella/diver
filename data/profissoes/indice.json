@@ -50,6 +50,44 @@
       "icone": "speakerphone"
     }
   ],
+  "filtros": [
+    {
+      "id": "lida-com-pessoas",
+      "nome": "Lida com pessoas"
+    },
+    {
+      "id": "trabalho-com-numeros",
+      "nome": "Muitos números"
+    },
+    {
+      "id": "criatividade",
+      "nome": "Criatividade"
+    },
+    {
+      "id": "trabalho-de-campo",
+      "nome": "Trabalho de campo"
+    },
+    {
+      "id": "plantao",
+      "nome": "Tem plantão"
+    },
+    {
+      "id": "presencial-obrigatorio",
+      "nome": "Só presencial"
+    },
+    {
+      "id": "curso-curto",
+      "nome": "Curso de até 3 anos"
+    },
+    {
+      "id": "trabalho-remoto-possivel",
+      "nome": "Dá para trabalhar remoto"
+    },
+    {
+      "id": "conselho-profissional",
+      "nome": "Exige registro em conselho"
+    }
+  ],
   "profissoes": [
     {
       "id": "enfermagem",
@@ -60,6 +98,13 @@
       "arquivo": "enfermagem.json",
       "frase": "Planeja e executa o cuidado do paciente, do posto de saúde à UTI.",
       "busca": "enfermagem enfermeiro enfermeira tecnico de enfermagem",
+      "tags": [
+        "lida-com-pessoas",
+        "plantao",
+        "presencial-obrigatorio",
+        "tem-caminho-tecnico",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Desde 2025, a graduação não pode mais ser feita a distância. Quem busca \"enfermagem EAD\" encontra uma porta fechada.",
         "fonte": "decreto-12456"
@@ -74,6 +119,13 @@
       "arquivo": "medicina.json",
       "frase": "Previne, diagnostica e trata doenças, da consulta à cirurgia.",
       "busca": "medicina medico medica",
+      "tags": [
+        "lida-com-pessoas",
+        "plantao",
+        "presencial-obrigatorio",
+        "conselho-profissional",
+        "formacao-longa"
+      ],
       "carta": {
         "fato": "No Sisu 2026, um único curso de Medicina reuniu 17.010 candidatos para 160 vagas.",
         "fonte": "sisu-2026"
@@ -89,6 +141,11 @@
       "arquivo": "psicologia.json",
       "frase": "Avalia e cuida da saúde mental e do comportamento, do consultório à escola e à empresa.",
       "busca": "psicologia psicologo psicologa",
+      "tags": [
+        "lida-com-pessoas",
+        "presencial-obrigatorio",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "375 mil matriculados, quase todos presenciais. Psicólogo não prescreve remédio; isso é do psiquiatra.",
         "fonte": "censo-2024"
@@ -104,6 +161,12 @@
       "arquivo": "fisioterapia.json",
       "frase": "Avalia e trata o movimento do corpo: reabilita depois de lesões, cirurgias e doenças.",
       "busca": "fisioterapia fisioterapeuta",
+      "tags": [
+        "lida-com-pessoas",
+        "trabalho-com-o-corpo",
+        "plantao",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Em 2024, Fisioterapia foi o 10º curso com mais matrículas do país, com cerca de 227 mil estudantes.",
         "fonte": "censo-2024"
@@ -118,6 +181,11 @@
       "arquivo": "educacao-fisica.json",
       "frase": "Planeja e orienta atividade física e esporte, da academia à escola e ao alto rendimento.",
       "busca": "educacao fisica personal professor de educacao fisica",
+      "tags": [
+        "lida-com-pessoas",
+        "trabalho-com-o-corpo",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "8º curso com mais matrículas em 2024, com cerca de 304 mil estudantes; três em cada quatro estavam na EAD.",
         "fonte": "censo-2024"
@@ -132,6 +200,12 @@
       "arquivo": "administracao.json",
       "frase": "Planeja, organiza e controla os recursos de uma organização: pessoas, dinheiro, processos e produção.",
       "busca": "administracao administrador gestao",
+      "tags": [
+        "lida-com-pessoas",
+        "escritorio",
+        "trabalho-com-numeros",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "2º curso com mais matrículas do país, com cerca de 653 mil estudantes em 2024, dois terços a distância.",
         "fonte": "censo-2024"
@@ -147,6 +221,12 @@
       "arquivo": "ciencias-contabeis.json",
       "frase": "Registra, analisa e explica os números de empresas e pessoas: balanços, impostos, custos e auditoria.",
       "busca": "contabilidade ciencias contabeis contador",
+      "tags": [
+        "escritorio",
+        "trabalho-com-numeros",
+        "prazos",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Diploma não basta: para assinar como contador, é preciso passar no Exame de Suficiência e se registrar no CRC.",
         "fonte": "dl-9295"
@@ -162,6 +242,11 @@
       "arquivo": "gestao-de-pessoas.json",
       "frase": "Recruta, desenvolve e cuida das pessoas de uma organização, da contratação à carreira.",
       "busca": "gestao de pessoas recursos humanos rh",
+      "tags": [
+        "lida-com-pessoas",
+        "escritorio",
+        "curso-curto"
+      ],
       "carta": {
         "fato": "Cerca de 198 mil estudantes faziam Gestão de Pessoas a distância em 2024, entre os 10 cursos com mais alunos na EAD.",
         "fonte": "censo-2024"
@@ -176,6 +261,12 @@
       "arquivo": "direito.json",
       "frase": "Interpreta e aplica as leis para defender pessoas, empresas e o interesse público.",
       "busca": "direito advogado advogada advocacia",
+      "tags": [
+        "lida-com-pessoas",
+        "muita-leitura",
+        "presencial-obrigatorio",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Quase 653 mil matriculados, e praticamente todos em curso presencial. EAD também está proibido aqui.",
         "fonte": "censo-2024"
@@ -190,6 +281,12 @@
       "arquivo": "pedagogia.json",
       "frase": "Ensina na educação infantil e nos anos iniciais e organiza o trabalho pedagógico das escolas.",
       "busca": "pedagogia pedagogo pedagoga professor",
+      "tags": [
+        "lida-com-pessoas",
+        "trabalho-com-criancas",
+        "criatividade",
+        "licenciatura"
+      ],
       "carta": {
         "fato": "É o curso com mais matrículas do país: cerca de 888 mil estudantes em 2024, e 83% deles a distância.",
         "fonte": "censo-2024"
@@ -205,6 +302,12 @@
       "arquivo": "sistemas.json",
       "frase": "Cria, mantém e conecta os sistemas e aplicativos que empresas e pessoas usam todos os dias.",
       "busca": "sistemas de informacao analise e desenvolvimento de sistemas ads ti programador software",
+      "tags": [
+        "computador",
+        "trabalho-com-numeros",
+        "trabalho-remoto-possivel",
+        "curso-curto"
+      ],
       "carta": {
         "fato": "Quinto curso com mais matrículas, 63% delas a distância. Formato oposto ao da saúde.",
         "fonte": "censo-2024"
@@ -219,6 +322,11 @@
       "arquivo": "engenharia-civil.json",
       "frase": "Projeta, calcula e acompanha obras: prédios, pontes, estradas, saneamento e infraestrutura.",
       "busca": "engenharia civil engenheiro civil construcao",
+      "tags": [
+        "trabalho-de-campo",
+        "trabalho-com-numeros",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "A busca por \"engenharia civil salário\" cresceu 250% em cinco anos. Quem pesquisa esse curso pesquisa carreira.",
         "fonte": "trends"
@@ -234,6 +342,12 @@
       "arquivo": "odontologia.json",
       "frase": "Previne e trata problemas da boca e dos dentes, do consultório ao hospital.",
       "busca": "odontologia dentista",
+      "tags": [
+        "lida-com-pessoas",
+        "presencial-obrigatorio",
+        "conselho-profissional",
+        "trabalho-manual"
+      ],
       "carta": {
         "fato": "Cerca de 163 mil matrículas presenciais em 2024: o 6º curso com mais alunos no presencial.",
         "fonte": "censo-2024"
@@ -248,6 +362,12 @@
       "arquivo": "medicina-veterinaria.json",
       "frase": "Cuida da saúde dos animais e da segurança dos alimentos de origem animal.",
       "busca": "medicina veterinaria veterinario",
+      "tags": [
+        "lida-com-animais",
+        "trabalho-de-campo",
+        "plantao",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Cerca de 157 mil matrículas presenciais em 2024: o 8º curso com mais alunos no presencial.",
         "fonte": "censo-2024"
@@ -262,6 +382,10 @@
       "arquivo": "nutricao.json",
       "frase": "Planeja a alimentação de pessoas e grupos, do consultório ao hospital e à cozinha industrial.",
       "busca": "nutricao nutricionista",
+      "tags": [
+        "lida-com-pessoas",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Cerca de 102 mil estudantes faziam Nutrição a distância em 2024, entre os 10 cursos com mais alunos na EAD.",
         "fonte": "censo-2024"
@@ -276,6 +400,11 @@
       "arquivo": "farmacia.json",
       "frase": "Cuida do medicamento do começo ao fim: produção, qualidade e orientação de quem vai usar.",
       "busca": "farmacia farmaceutico",
+      "tags": [
+        "lida-com-pessoas",
+        "laboratorio",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Cerca de 105 mil estudantes faziam Farmácia a distância em 2024, entre os 10 cursos com mais alunos na EAD.",
         "fonte": "censo-2024"
@@ -290,6 +419,10 @@
       "arquivo": "biomedicina.json",
       "frase": "Trabalha no laboratório e nos exames que ajudam a descobrir e acompanhar doenças.",
       "busca": "biomedicina biomedico",
+      "tags": [
+        "laboratorio",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "O biomédico pode fazer radiografias, mas a interpretação do exame não é dele.",
         "fonte": "lei-6684"
@@ -304,6 +437,11 @@
       "arquivo": "arquitetura.json",
       "frase": "Projeta casas, prédios, interiores, paisagens e cidades, do desenho à obra.",
       "busca": "arquitetura arquiteto urbanismo",
+      "tags": [
+        "criatividade",
+        "trabalho-de-campo",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Desde 2010, arquitetos têm conselho próprio, o CAU. Antes, o registro era no Crea, junto com os engenheiros.",
         "fonte": "lei-12378"
@@ -318,6 +456,11 @@
       "arquivo": "engenharia-de-producao.json",
       "frase": "Organiza fábricas, processos e cadeias de suprimento para produzir mais, melhor e com menos desperdício.",
       "busca": "engenharia de producao",
+      "tags": [
+        "trabalho-com-numeros",
+        "industria",
+        "conselho-profissional"
+      ],
       "carta": {
         "fato": "Metade dos contratos de engenheiro de produção com carteira paga entre R$ 8 mil e R$ 14 mil de salário-base.",
         "fonte": "caged"
@@ -332,6 +475,11 @@
       "arquivo": "ciencia-da-computacao.json",
       "frase": "Estuda a fundo como os computadores funcionam e cria algoritmos, sistemas e tecnologias novas.",
       "busca": "ciencia da computacao computacao",
+      "tags": [
+        "computador",
+        "trabalho-com-numeros",
+        "trabalho-remoto-possivel"
+      ],
       "carta": {
         "fato": "Entre set/2024 e dez/2025, o setor de tecnologia ganhou 125 mil profissionais, mas só 24 mil com carteira.",
         "fonte": "brasscom-2026"
@@ -346,6 +494,11 @@
       "arquivo": "inteligencia-artificial.json",
       "frase": "Treina e coloca em uso sistemas que aprendem com dados: previsões, recomendações, visão e linguagem.",
       "busca": "inteligencia artificial ia",
+      "tags": [
+        "computador",
+        "trabalho-com-numeros",
+        "trabalho-remoto-possivel"
+      ],
       "carta": {
         "fato": "No Sisu 2026, um curso de Inteligência Artificial teve a segunda maior nota de corte do país: 846,72 pontos.",
         "fonte": "sisu-2026"
@@ -360,6 +513,11 @@
       "arquivo": "comunicacao.json",
       "frase": "Apura e conta histórias para informar, e cria campanhas e conteúdos para marcas e causas.",
       "busca": "jornalismo publicidade comunicacao marketing",
+      "tags": [
+        "lida-com-pessoas",
+        "criatividade",
+        "prazos"
+      ],
       "carta": {
         "fato": "Desde 2009, não é preciso diploma para trabalhar como jornalista: o STF derrubou a exigência.",
         "fonte": "stf-jornalismo"

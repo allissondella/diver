@@ -22,7 +22,7 @@ Antes de começar, leia `docs/MAPA_PROFISSOES.md` (seções 2, 5 e 7) e use `dat
 6. **"O que ninguém te conta"** com pelo menos 3 pontos difíceis e reais.
 7. **"Um dia como"** só quando o usuário pedir: 5 ou 6 cenas sobre prioridades, ética, comunicação e rotina; nunca procedimento técnico; exatamente uma opção `melhor: true` por cena; `revisar_com_profissional: true`.
 8. **Confira:** `node scripts/conferir-ficha.mjs data/profissoes/<id>.json`. Corrija até passar sem erros; trate cada aviso.
-9. **Atualize o índice:** `status: rascunho`, `arquivo`, `frase` e `carta`.
+9. **Atualize o índice:** `status: rascunho`, `arquivo`, `frase`, `carta` e `tags` (cópia exata das da ficha: os filtros do mapa leem o índice, e o `conferir-ficha` acusa diferença).
 10. **Peça o parecer** com a skill `validar-fontes` e registre no DIARIO o que ficou pendente.
 
 ## Tom

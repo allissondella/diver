@@ -204,6 +204,244 @@
       }
     ]
   },
+  "dia": {
+    "titulo": "Um dia como médico(a)",
+    "subtitulo": "Plantão num pronto-atendimento",
+    "aviso": "Cenas simplificadas, para orientação profissional. Não ensinam procedimentos e precisam de revisão por médico(a) antes de publicar.",
+    "revisar_com_profissional": true,
+    "indicadores": [
+      {
+        "id": "seguranca",
+        "nome": "Segurança do paciente",
+        "inicial": 60
+      },
+      {
+        "id": "relacoes",
+        "nome": "Pacientes, famílias e equipe",
+        "inicial": 60
+      },
+      {
+        "id": "energia",
+        "nome": "Energia",
+        "inicial": 80
+      }
+    ],
+    "cenas": [
+      {
+        "id": "fila",
+        "hora": "07:00",
+        "titulo": "Sala de espera cheia",
+        "situacao": "Há 15 pessoas esperando. Um conhecido da equipe pede para ser atendido antes \"porque é rapidinho\".",
+        "opcoes": [
+          {
+            "texto": "Atender quem pediu, já que é rápido",
+            "efeitos": {
+              "seguranca": -10,
+              "relacoes": -5
+            },
+            "melhor": false,
+            "retorno": "Passar alguém na frente da classificação de risco deixa para trás quem pode estar mais grave. Rápido para um, demorado para quem precisava antes."
+          },
+          {
+            "texto": "Seguir a ordem da classificação de risco e explicar com educação",
+            "efeitos": {
+              "seguranca": 15,
+              "relacoes": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "A ordem é pela gravidade, não pela chegada nem pela amizade. Explicar com calma evita conflito e mantém a confiança."
+          },
+          {
+            "texto": "Atender por ordem de chegada",
+            "efeitos": {
+              "seguranca": -10
+            },
+            "melhor": false,
+            "retorno": "Parece justo, mas ignora a gravidade: alguém com sinal de alerta pode esperar demais."
+          }
+        ]
+      },
+      {
+        "id": "alta",
+        "hora": "09:30",
+        "titulo": "Pressa para ir embora",
+        "situacao": "Um paciente estável quer ir trabalhar antes de sair o resultado de um exame que você pediu.",
+        "opcoes": [
+          {
+            "texto": "Explicar por que o resultado importa, combinar a espera e, se ele insistir, registrar a orientação",
+            "efeitos": {
+              "seguranca": 10,
+              "relacoes": 10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Informar com clareza e registrar respeita a autonomia do paciente e protege os dois."
+          },
+          {
+            "texto": "Liberar: ele é adulto e sabe o que faz",
+            "efeitos": {
+              "seguranca": -15
+            },
+            "melhor": false,
+            "retorno": "A decisão pode ser dele, mas, sem entender o risco, ele decide no escuro."
+          },
+          {
+            "texto": "Proibir que ele saia, sem muita conversa",
+            "efeitos": {
+              "relacoes": -15
+            },
+            "melhor": false,
+            "retorno": "Proibir sem explicar costuma virar conflito. Na maioria das vezes, o caminho é informar, convencer e registrar."
+          }
+        ]
+      },
+      {
+        "id": "noticia",
+        "hora": "11:30",
+        "titulo": "Uma notícia difícil",
+        "situacao": "Você precisa contar a uma família que o paciente vai ser transferido para a UTI.",
+        "opcoes": [
+          {
+            "texto": "Explicar rápido no corredor, porque há outros pacientes",
+            "efeitos": {
+              "relacoes": -15
+            },
+            "melhor": false,
+            "retorno": "A pressa é real, mas uma notícia difícil no corredor deixa a família sem espaço para perguntar."
+          },
+          {
+            "texto": "Chamar a família para um lugar reservado, explicar em palavras simples e abrir espaço para perguntas",
+            "efeitos": {
+              "relacoes": 15,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "Comunicar bem faz parte do tratamento. Leva alguns minutos e evita muitos desencontros depois."
+          },
+          {
+            "texto": "Pedir que a enfermagem avise a família",
+            "efeitos": {
+              "relacoes": -10
+            },
+            "melhor": false,
+            "retorno": "A equipe ajuda a acolher, mas explicar o quadro e o que vem pela frente é papel de quem tomou a decisão."
+          }
+        ]
+      },
+      {
+        "id": "antibiotico",
+        "hora": "14:00",
+        "titulo": "Pressão por um remédio",
+        "situacao": "Um paciente com sintomas de gripe exige um antibiótico \"porque sempre resolve\" e ameaça reclamar na ouvidoria.",
+        "opcoes": [
+          {
+            "texto": "Receitar para evitar a reclamação",
+            "efeitos": {
+              "seguranca": -15
+            },
+            "melhor": false,
+            "retorno": "Remédio sem indicação não resolve o problema e traz riscos, inclusive o de deixar bactérias mais resistentes."
+          },
+          {
+            "texto": "Encerrar a consulta sem discutir",
+            "efeitos": {
+              "relacoes": -15
+            },
+            "melhor": false,
+            "retorno": "Evita o atrito agora, mas o paciente sai sem entender e provavelmente procura o remédio em outro lugar."
+          },
+          {
+            "texto": "Explicar por que não há indicação, orientar o cuidado em casa e dizer quando voltar",
+            "efeitos": {
+              "seguranca": 15,
+              "relacoes": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Dizer não com explicação também é medicina. Saber quando voltar é o que dá segurança ao paciente."
+          }
+        ]
+      },
+      {
+        "id": "assinatura",
+        "hora": "16:30",
+        "titulo": "Um favor de um colega",
+        "situacao": "Um colega de outro setor pede que você assine a evolução de um paciente que você não atendeu, para fechar a papelada.",
+        "opcoes": [
+          {
+            "texto": "Assinar: vocês confiam um no outro",
+            "efeitos": {
+              "seguranca": -10,
+              "relacoes": 5
+            },
+            "melhor": false,
+            "retorno": "Assinar o que não fez põe o seu nome em algo que você não viu. Se houver erro, a responsabilidade também é sua."
+          },
+          {
+            "texto": "Recusar e reclamar dele com a chefia na hora",
+            "efeitos": {
+              "relacoes": -10
+            },
+            "melhor": false,
+            "retorno": "A recusa está certa, mas começar pela bronca estraga a relação. Primeiro, ajude a resolver."
+          },
+          {
+            "texto": "Recusar com gentileza e ajudar a resolver o registro do jeito certo",
+            "efeitos": {
+              "seguranca": 10,
+              "relacoes": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Cada um registra o que fez. Ajudar a achar o caminho certo mantém a equipe unida e o prontuário confiável."
+          }
+        ]
+      },
+      {
+        "id": "passagem",
+        "hora": "18:45",
+        "titulo": "Passagem de plantão",
+        "situacao": "O plantão acaba às 19h e o colega da noite chegou. Você está cansado e ainda há três pacientes em observação.",
+        "opcoes": [
+          {
+            "texto": "Passar cada caso com o que está pendente e o que observar",
+            "efeitos": {
+              "seguranca": 15,
+              "relacoes": 5,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "A passagem bem feita é a última decisão importante do plantão. Quem chega precisa saber o que você sabe."
+          },
+          {
+            "texto": "Dizer que está tudo no prontuário e ir embora",
+            "efeitos": {
+              "seguranca": -15,
+              "energia": 5
+            },
+            "melhor": false,
+            "retorno": "O prontuário é essencial, mas uma conversa rápida evita que o detalhe mais importante se perca."
+          },
+          {
+            "texto": "Ficar mais duas horas para resolver tudo sozinho",
+            "efeitos": {
+              "seguranca": -5,
+              "energia": -20
+            },
+            "melhor": false,
+            "retorno": "A vontade de ajudar é boa, mas plantão esticado no cansaço aumenta a chance de erro. Passar o cuidado é confiar na equipe."
+          }
+        ]
+      }
+    ],
+    "fechamento": "Medicina é decidir com informação incompleta, explicar decisões difíceis e assumir a responsabilidade por elas, muitas vezes cansado. Se isso te desafiou de um jeito bom, vale explorar mais.",
+    "recompensa": {
+      "xp": 30,
+      "perolas": 3,
+      "uma_vez_por_profissao": true
+    }
+  },
   "mitos": [
     {
       "id": "ead",

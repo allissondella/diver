@@ -5,6 +5,35 @@
 
 ---
 
+## 2026-10-16 · Mapa das Profissões: Fase 2 (Um dia como, características e comparador)
+- **Pedido do usuário:** "Pode fazer" a Fase 2, depois de saber que ela era a próxima.
+- **"Um dia como"** para Medicina, Direito, Psicologia, Administração e Engenharia Civil:
+  - cada um tem 6 cenas e 3 indicadores (um deles é sempre Energia);
+  - a opção recomendada muda de posição entre as cenas;
+  - os temas são prioridade, ética, comunicação e rotina. Exemplos: classificação de risco, sigilo, conflito de interesses, assinatura que não é sua, passagem de plantão;
+  - não há procedimento técnico. Tudo está marcado `revisar_com_profissional`.
+- **Características no mapa:**
+  - o botão "Características" abre 9 filtros por tag; vale a profissão que tem todas as marcadas;
+  - as tags foram harmonizadas: plantão em Fisioterapia e Veterinária, números em Sistemas, criatividade em Pedagogia;
+  - as tags estão copiadas no `indice.json`, e o `conferir-ficha` acusa se o índice e a ficha divergirem.
+- **Comparador** (`#profissoes-comparar[-<a>--<b>]`):
+  - mostra duas fichas com duração, formato, salário, registro, matérias que pesam, caminhos e o DNA no mesmo radar, com uma frase sobre a maior diferença;
+  - o salário escondido só aparece com "Mostrar os dois salários";
+  - entradas: no topo do mapa e em "Comparar com <vizinha>" na ficha;
+  - o aluno sem duas fichas publicadas vê a explicação.
+- **Ajustes:**
+  - quem não pode ver um "Um dia como" pelo link direto passa a ler "em produção", não "não encontrada";
+  - o tutorial ganhou o passo "Comparar duas profissões" (a versão sobe quando as fichas forem publicadas).
+- **Testes:**
+  - os 5 dias jogados até o fim no celular e no computador, com as teclas 1, 2 e 3;
+  - filtros e comparador conferidos no navegador, e a visão de aluno também;
+  - `auditar-design` e `--navegador` passam, agora também com `profissao-direito-dia` e `profissoes-comparar`;
+  - 22 fichas ok no `conferir-ficha`.
+- **Pendências:**
+  - revisão das cenas por profissionais;
+  - log do comparador (pediria um tipo novo no banco: ficou para quando houver necessidade).
+- **Na fila (pedido do usuário):** subir o Panorama da Medicina (kit v4) depois da Fase 2, no estilo do Panorama da Tecnologia.
+
 ## 2026-10-16 · Mapa das Profissões: as 21 fichas que faltavam
 - **Pedido do usuário:** "manda bala e sobe todas as outras profissões" e "Podem ir até subir tudo para prd".
 - **O que entrou:**

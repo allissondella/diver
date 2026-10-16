@@ -203,6 +203,244 @@
       }
     ]
   },
+  "dia": {
+    "titulo": "Um dia como engenheiro(a) civil",
+    "subtitulo": "Obra de um prédio residencial",
+    "aviso": "Cenas simplificadas, para orientação profissional. Não ensinam procedimentos e precisam de revisão por engenheiro(a) civil antes de publicar.",
+    "revisar_com_profissional": true,
+    "indicadores": [
+      {
+        "id": "seguranca",
+        "nome": "Segurança da obra",
+        "inicial": 60
+      },
+      {
+        "id": "prazo",
+        "nome": "Prazo e custo",
+        "inicial": 60
+      },
+      {
+        "id": "energia",
+        "nome": "Energia",
+        "inicial": 80
+      }
+    ],
+    "cenas": [
+      {
+        "id": "cinto",
+        "hora": "07:00",
+        "titulo": "Começo do dia na obra",
+        "situacao": "Um operário vai trabalhar em altura sem o cinto de segurança. Ele diz que esqueceu e que \"é só hoje\".",
+        "opcoes": [
+          {
+            "texto": "Deixar trabalhar só hoje, com cuidado",
+            "efeitos": {
+              "seguranca": -20,
+              "prazo": 5
+            },
+            "melhor": false,
+            "retorno": "Queda de altura é um acidente grave na construção. \"Só hoje\" é justamente quando ele acontece."
+          },
+          {
+            "texto": "Não liberar o trabalho em altura até ele estar com o equipamento",
+            "efeitos": {
+              "seguranca": 15,
+              "prazo": -5
+            },
+            "melhor": true,
+            "retorno": "Atrasa alguns minutos e evita o pior. Segurança na obra não se negocia."
+          },
+          {
+            "texto": "Dar uma bronca e mandar ele para casa",
+            "efeitos": {
+              "seguranca": 5,
+              "prazo": -10
+            },
+            "melhor": false,
+            "retorno": "O cuidado está certo, mas mandar embora atrasa o serviço. Dá para providenciar o equipamento e remanejar a tarefa enquanto isso."
+          }
+        ]
+      },
+      {
+        "id": "concreto",
+        "hora": "09:30",
+        "titulo": "O concreto chegou antes",
+        "situacao": "O caminhão de concreto chegou, mas a armação da laje ainda não foi conferida.",
+        "opcoes": [
+          {
+            "texto": "Conferir antes de concretar, mesmo com o caminhão esperando",
+            "efeitos": {
+              "seguranca": 15,
+              "prazo": -10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Depois de concretar, não dá para voltar atrás. Alguns minutos de espera custam menos que um erro na estrutura."
+          },
+          {
+            "texto": "Concretar logo para não perder o concreto",
+            "efeitos": {
+              "seguranca": -20,
+              "prazo": 5
+            },
+            "melhor": false,
+            "retorno": "Concretar sem conferir é apostar a estrutura no \"deve estar certo\"."
+          },
+          {
+            "texto": "Mandar o caminhão embora sem conversar",
+            "efeitos": {
+              "prazo": -15
+            },
+            "melhor": false,
+            "retorno": "Conferir está certo, mas dá para conversar com o fornecedor e combinar a espera antes de desperdiçar a carga."
+          }
+        ]
+      },
+      {
+        "id": "parede",
+        "hora": "11:30",
+        "titulo": "O cliente quer mudar",
+        "situacao": "O cliente quer tirar uma parede de um apartamento que já está em obra.",
+        "opcoes": [
+          {
+            "texto": "Mandar tirar: é só uma parede",
+            "efeitos": {
+              "seguranca": -15,
+              "prazo": -5
+            },
+            "melhor": false,
+            "retorno": "Algumas paredes fazem parte da estrutura. Sem análise, a mudança pode virar risco."
+          },
+          {
+            "texto": "Dizer que não dá, sem analisar",
+            "efeitos": {
+              "prazo": -5
+            },
+            "melhor": false,
+            "retorno": "O cliente fica sem resposta. Às vezes a mudança é possível, com o projeto certo."
+          },
+          {
+            "texto": "Analisar com o projeto estrutural, explicar custo e prazo e registrar a mudança",
+            "efeitos": {
+              "seguranca": 10,
+              "prazo": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Mudança bem documentada evita surpresa na obra, no bolso do cliente e na responsabilidade técnica."
+          }
+        ]
+      },
+      {
+        "id": "chuva",
+        "hora": "14:00",
+        "titulo": "Chuva e prazo",
+        "situacao": "A previsão é de chuva forte à tarde, e o cronograma pede um serviço externo hoje.",
+        "opcoes": [
+          {
+            "texto": "Manter o serviço externo: o prazo está apertado",
+            "efeitos": {
+              "seguranca": -10,
+              "prazo": 5
+            },
+            "melhor": false,
+            "retorno": "Chuva forte aumenta o risco de acidente e pode estragar o serviço feito."
+          },
+          {
+            "texto": "Remanejar a equipe para serviços internos e ajustar o cronograma",
+            "efeitos": {
+              "seguranca": 10,
+              "prazo": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Plano B faz parte do planejamento da obra. O cronograma se ajusta; um acidente não se desfaz."
+          },
+          {
+            "texto": "Liberar a equipe mais cedo",
+            "efeitos": {
+              "prazo": -10
+            },
+            "melhor": false,
+            "retorno": "Evita o risco, mas desperdiça um dia que podia ser aproveitado dentro da obra."
+          }
+        ]
+      },
+      {
+        "id": "art",
+        "hora": "16:00",
+        "titulo": "Um pedido de assinatura",
+        "situacao": "O mestre de obras de outra construtora pede que você assine a responsabilidade técnica de uma reforma que você nunca viu.",
+        "opcoes": [
+          {
+            "texto": "Recusar e explicar que só assina o que acompanha",
+            "efeitos": {
+              "seguranca": 10
+            },
+            "melhor": true,
+            "retorno": "Emprestar o nome a uma obra sem participar dela é exercício ilegal da profissão. Sua assinatura vale porque você responde por ela."
+          },
+          {
+            "texto": "Assinar: ele é de confiança",
+            "efeitos": {
+              "seguranca": -20
+            },
+            "melhor": false,
+            "retorno": "Se algo der errado numa obra que você nunca viu, a responsabilidade é sua."
+          },
+          {
+            "texto": "Assinar e passar lá uma vez por mês",
+            "efeitos": {
+              "seguranca": -10
+            },
+            "melhor": false,
+            "retorno": "Visita de vez em quando não é acompanhamento. A responsabilidade técnica pede participação de verdade."
+          }
+        ]
+      },
+      {
+        "id": "diario",
+        "hora": "18:00",
+        "titulo": "O registro do dia",
+        "situacao": "O dia foi corrido, e o diário de obra ainda não foi preenchido.",
+        "opcoes": [
+          {
+            "texto": "Preencher amanhã, de memória",
+            "efeitos": {
+              "seguranca": -5,
+              "prazo": -5
+            },
+            "melhor": false,
+            "retorno": "No dia seguinte, os detalhes já se perderam. O diário é o que conta a história da obra."
+          },
+          {
+            "texto": "Preencher hoje: serviços feitos, problemas, decisões e clima",
+            "efeitos": {
+              "seguranca": 10,
+              "prazo": 10,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "O registro diário protege a obra, o cliente e você quando surge uma dúvida meses depois."
+          },
+          {
+            "texto": "Pedir ao estagiário que preencha sozinho",
+            "efeitos": {
+              "prazo": -5
+            },
+            "melhor": false,
+            "retorno": "O estagiário pode ajudar, mas quem responde pela obra precisa conferir o que foi registrado."
+          }
+        ]
+      }
+    ],
+    "fechamento": "Engenharia civil é planejar, conferir e decidir com segurança, no escritório e no canteiro, sabendo que a assinatura vale por anos. Se essa responsabilidade te parece um bom desafio, vale explorar mais.",
+    "recompensa": {
+      "xp": 30,
+      "perolas": 3,
+      "uma_vez_por_profissao": true
+    }
+  },
   "mitos": [
     {
       "id": "ead",

@@ -55,7 +55,7 @@ O Mapa responde a essas perguntas, sempre na mesma ordem, com fonte em cada núm
 
 - Cabeçalho: título, uma linha de explicação e o contador "Explorado: X de N".
 - Busca sem acento e sem diferenciar maiúsculas, usando o campo `busca` do índice (sinônimos como "enfermeiro" e "técnico de enfermagem").
-- Filtros (Fase 1): área e "ficha pronta". Fase 2: tags como "presencial obrigatório", "tem caminho técnico" e "lida com pessoas".
+- Filtros (Fase 1): área e "ficha pronta". Fase 2 (feito em 16/10/2026): o botão "Características" abre uma segunda fileira com as tags de `indice.json` → `filtros[]` (nome de cada uma). Vale a profissão que tem **todas** as marcadas, e o panorama de área some enquanto há característica marcada. As tags de cada profissão ficam também no índice, iguais às da ficha (o `conferir-ficha` confere).
 - Regiões por área, cada uma com suas profissões. Estados de cada profissão: **em breve** (status `planejada` ou `rascunho`), **pronta** (`publicada`), **explorada** (o aluno já abriu) e **na mira** (o aluno marcou).
 - Quando houver profissões na mira, elas aparecem numa faixa no topo.
 - Admin e professor veem também as fichas em `rascunho`, com uma etiqueta, para revisar.
@@ -91,9 +91,21 @@ Jogo de decisões sobre a rotina real da profissão.
 - Retorno com a resposta certa, uma explicação curta e a fonte.
 - Se já existir um jogo de verdadeiro ou falso no motor, reaproveite a mecânica e converta `mitos` para o formato dele. Adapte o conversor, não o conteúdo.
 
-### 4.5 Comparador (Fase 2)
+### 4.5 Comparador (Fase 2, feito em 16/10/2026)
 
 Duas profissões lado a lado com os 4 números, a seção "Como entrar" resumida e os caminhos.
+
+- **Rotas:** `#profissoes-comparar` (escolhe duas: as da mira primeiro) e `#profissoes-comparar-<a>--<b>` (dois hífens separam os ids).
+- **Entradas:** "Comparar profissões" no topo do mapa (só com 2 ou mais fichas abertas para a conta) e "Comparar com <vizinha>" no pé de "Profissões vizinhas" da ficha.
+- **Blocos:**
+  - duração, formato, média de contratação e registro, cada um com as fontes da própria ficha;
+  - matérias que mais pesam para entrar;
+  - caminhos depois de formado;
+  - DNA das duas no mesmo radar, com uma frase sobre a maior diferença;
+  - links para as fichas e para os "Um dia como".
+- **Salário:** segue a regra da ficha. Se ainda estiver escondido, "Mostrar os dois salários" revela os dois de uma vez, como o "Prefiro só ver os números".
+- **Aluno:** enquanto não houver duas fichas publicadas, a tela explica que elas estão em revisão.
+- **Log:** sem evento novo (não exigiu mudança no banco).
 
 ## 5. Modelo de dados
 
@@ -202,6 +214,8 @@ Para publicar, cada ficha precisa da revisão de um profissional da área e do O
 ### Fase 2, até o fim de fevereiro de 2027
 
 "Um dia como" para Medicina, Direito, Psicologia, Administração e Engenharia Civil, o comparador, os filtros por tag e a Onda 2.
+
+**Situação em 16/10/2026:** tudo escrito e testado. São 6 fichas com "Um dia como" (Enfermagem e as cinco acima), todas `rascunho`, com as cenas marcadas `revisar_com_profissional`; o comparador e os filtros ficam em `#profissoes`. Falta a revisão de profissionais das cenas antes de publicar.
 
 ### Fase 3
 

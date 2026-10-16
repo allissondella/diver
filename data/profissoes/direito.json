@@ -198,6 +198,240 @@
       }
     ]
   },
+  "dia": {
+    "titulo": "Um dia como advogado(a)",
+    "subtitulo": "Escritório de advocacia",
+    "aviso": "Cenas simplificadas, para orientação profissional. Não ensinam procedimentos e precisam de revisão por advogado(a) antes de publicar.",
+    "revisar_com_profissional": true,
+    "indicadores": [
+      {
+        "id": "prazos",
+        "nome": "Prazos e processos",
+        "inicial": 60
+      },
+      {
+        "id": "clientes",
+        "nome": "Confiança dos clientes",
+        "inicial": 60
+      },
+      {
+        "id": "energia",
+        "nome": "Energia",
+        "inicial": 80
+      }
+    ],
+    "cenas": [
+      {
+        "id": "prazo",
+        "hora": "08:00",
+        "titulo": "Prazo que vence hoje",
+        "situacao": "Na agenda, um recurso vence hoje e ainda não foi escrito. Às 10h, há reunião com um cliente novo.",
+        "opcoes": [
+          {
+            "texto": "Reorganizar o dia: avisar o cliente, propor outro horário e fazer o recurso",
+            "efeitos": {
+              "prazos": 15,
+              "clientes": 5,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "Prazo perdido raramente tem volta. Remarcar com antecedência é melhor que chegar atrasado ou perder o prazo."
+          },
+          {
+            "texto": "Fazer a reunião e escrever o recurso correndo no fim do dia",
+            "efeitos": {
+              "prazos": -10,
+              "energia": -10
+            },
+            "melhor": false,
+            "retorno": "Pode dar certo, mas peça feita às pressas costuma sair pior, e qualquer imprevisto vira prazo perdido."
+          },
+          {
+            "texto": "Pedir ao estagiário que escreva sozinho",
+            "efeitos": {
+              "prazos": -10,
+              "clientes": -5
+            },
+            "melhor": false,
+            "retorno": "O estagiário pode ajudar, mas atua junto com o advogado e sob a responsabilidade dele."
+          }
+        ]
+      },
+      {
+        "id": "promessa",
+        "hora": "10:30",
+        "titulo": "\"Eu vou ganhar, né?\"",
+        "situacao": "Um cliente novo quer ouvir que vai ganhar a causa antes de assinar o contrato.",
+        "opcoes": [
+          {
+            "texto": "Garantir a vitória para fechar o contrato",
+            "efeitos": {
+              "clientes": -15
+            },
+            "melhor": false,
+            "retorno": "Promessa de resultado vira decepção, e conflito, se o processo não sair como o esperado."
+          },
+          {
+            "texto": "Explicar os pontos fortes e fracos do caso, os riscos e os custos",
+            "efeitos": {
+              "clientes": 15,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Clareza sobre riscos é o que constrói confiança. O cliente decide melhor quando sabe o que pode acontecer."
+          },
+          {
+            "texto": "Dizer que não dá para falar nada agora",
+            "efeitos": {
+              "clientes": -10
+            },
+            "melhor": false,
+            "retorno": "Ninguém pode garantir resultado, mas dá para explicar o caminho. Silêncio total deixa o cliente inseguro."
+          }
+        ]
+      },
+      {
+        "id": "sigilo",
+        "hora": "13:00",
+        "titulo": "Conversa no grupo da família",
+        "situacao": "Um parente pergunta, no grupo de mensagens da família, detalhes do processo de um cliente conhecido na cidade.",
+        "opcoes": [
+          {
+            "texto": "Contar só um pouquinho: é família",
+            "efeitos": {
+              "clientes": -20
+            },
+            "melhor": false,
+            "retorno": "O que o cliente conta ao advogado é sigiloso. Nem um pouquinho."
+          },
+          {
+            "texto": "Ignorar a mensagem",
+            "efeitos": {},
+            "melhor": false,
+            "retorno": "Não expõe ninguém, mas uma resposta curta evita a insistência."
+          },
+          {
+            "texto": "Responder que não fala de processos de clientes, nem em família",
+            "efeitos": {
+              "clientes": 10
+            },
+            "melhor": true,
+            "retorno": "Sigilo profissional vale em qualquer lugar. Dizer isso uma vez, com tranquilidade, encerra o assunto."
+          }
+        ]
+      },
+      {
+        "id": "audiencia",
+        "hora": "15:00",
+        "titulo": "Surpresa na audiência",
+        "situacao": "Na audiência, a outra parte apresenta um documento que você não conhecia.",
+        "opcoes": [
+          {
+            "texto": "Pedir tempo para analisar o documento antes de se manifestar",
+            "efeitos": {
+              "prazos": 10,
+              "clientes": 10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Quando o andamento permite, analisar com calma evita uma resposta improvisada sobre algo que pode mudar o caso."
+          },
+          {
+            "texto": "Responder na hora, de improviso",
+            "efeitos": {
+              "prazos": -10
+            },
+            "melhor": false,
+            "retorno": "Às vezes não há outra saída, mas improvisar sobre um documento desconhecido é arriscado."
+          },
+          {
+            "texto": "Discutir em tom alto com o advogado da outra parte",
+            "efeitos": {
+              "clientes": -10,
+              "energia": -10
+            },
+            "melhor": false,
+            "retorno": "Firmeza não precisa de grito. Na audiência, quem perde a calma perde força."
+          }
+        ]
+      },
+      {
+        "id": "verdade",
+        "hora": "17:00",
+        "titulo": "Um pedido do cliente",
+        "situacao": "O cliente pede que você afirme no processo algo que você sabe que não é verdade, \"só para garantir\".",
+        "opcoes": [
+          {
+            "texto": "Escrever: é o que o cliente quer",
+            "efeitos": {
+              "clientes": 5,
+              "prazos": -20
+            },
+            "melhor": false,
+            "retorno": "Defender o cliente não inclui mentir no processo. Isso pode prejudicar o caso e traz consequências para o próprio advogado."
+          },
+          {
+            "texto": "Recusar e explicar que a defesa vai usar só o que for verdadeiro",
+            "efeitos": {
+              "prazos": 10,
+              "clientes": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "A defesa pode ser firme e criativa, mas dentro da verdade. Explicar isso protege o cliente de um problema maior."
+          },
+          {
+            "texto": "Abandonar o caso na hora",
+            "efeitos": {
+              "clientes": -15
+            },
+            "melhor": false,
+            "retorno": "Dá para recusar o pedido sem largar o cliente. Deixar uma causa tem regras e não se faz de uma hora para outra."
+          }
+        ]
+      },
+      {
+        "id": "emails",
+        "hora": "19:00",
+        "titulo": "Fim do expediente",
+        "situacao": "Ainda há e-mails de clientes sem resposta, e você está esgotado.",
+        "opcoes": [
+          {
+            "texto": "Responder todos agora, nem que vá até de madrugada",
+            "efeitos": {
+              "clientes": 5,
+              "energia": -20
+            },
+            "melhor": false,
+            "retorno": "Parece responsável, mas o cansaço também gera erro em peça e em prazo."
+          },
+          {
+            "texto": "Deixar para quando der",
+            "efeitos": {
+              "clientes": -10
+            },
+            "melhor": false,
+            "retorno": "Sem previsão, o cliente fica no escuro, e a ansiedade dele vira cobrança."
+          },
+          {
+            "texto": "Responder o que é urgente e avisar os outros quando terão retorno",
+            "efeitos": {
+              "clientes": 10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Prioridade e previsibilidade: o cliente sabe quando terá resposta, e você descansa para o dia seguinte."
+          }
+        ]
+      }
+    ],
+    "fechamento": "Advocacia é ler, escrever e decidir sob prazo, defendendo alguém com firmeza e dentro da lei. Se essa mistura de argumento, responsabilidade e gente te animou, vale explorar mais.",
+    "recompensa": {
+      "xp": 30,
+      "perolas": 3,
+      "uma_vez_por_profissao": true
+    }
+  },
   "mitos": [
     {
       "id": "ead",
