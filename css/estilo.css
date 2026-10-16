@@ -138,10 +138,10 @@ textarea {
   outline: none;
 }
 
-/* Grade da página (Onda 3): 1120 px para todas as telas; 720 px só onde a leitura manda
-   (quiz, artigo, resumo, prova, login). Texto corrido continua limitado a 65ch. */
+/* Grade da página: coluna centralizada de 720 px (como sempre foi; o usuário prefere tudo centralizado,
+   nada lado a lado, 2026-10-16); 1120 px só nas telas marcadas .tela--larga (salas, jogos, organizar...). */
 .tela {
-  max-width: 1120px;
+  max-width: 720px;
   margin: 0 auto;
   animation: surgir var(--dur-normal) var(--ease-saida) backwards; /* backwards: depois de entrar, nenhum transform fica preso (senão o rodapé fixo do quiz deixaria de ser fixo) */
 }
@@ -2032,8 +2032,7 @@ html,
 
 /* ---------- Início: topo mais enxuto ---------- */
 .hero { padding: 12px 0 0; }
-.hero__mascote { width: 112px; margin-top: var(--esp-2); }
-@media (min-width: 1024px) { .hero__mascote { width: 160px; } }
+.hero__mascote { width: 140px; margin-top: var(--esp-4); }
 .hero .hero__logo { font-size: var(--t-3xl); }
 .hero__texto { font-size: var(--t-md); }
 .secao-titulo#titulo-trilhas { margin-top: 24px; }
@@ -2784,29 +2783,9 @@ html,
 .tela--carregando > :not(.esqueleto-area) { display: none !important; }
 .tela--carregando > .esqueleto-area { padding-top: var(--esp-5); }
 
-/* ---------- Início (Onda 3): herói e "Continuar de onde parou" lado a lado no computador ---------- */
+/* ---------- Início: herói em cima e, embaixo, "Continuar de onde parou", tudo centralizado numa coluna ---------- */
 .inicio-topo { display: grid; gap: var(--ritmo-cartoes); }
 .inicio-topo:not(:has(> :not([hidden]))) { display: none; }
-@media (min-width: 1024px) {
-  .inicio-cabeca:has(> .inicio-topo > :not([hidden])) {
-    display: grid;
-    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
-    gap: var(--esp-6);
-    align-items: center;
-    margin-bottom: var(--ritmo-secao);
-  }
-  .inicio-cabeca:has(> .inicio-topo > :not([hidden])) .hero { padding: 0; }
-  .inicio-cabeca:has(> .inicio-topo > :not([hidden])) .hero__texto { display: none; } /* uma linha de apoio basta: o slogan */
-}
-/* As salas: 1 coluna no celular, 2 no meio, 4 nas telas largas (cartão empilhado) */
-@media (min-width: 1280px) {
-  .salas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .salas .sala-porta { grid-template-columns: minmax(0, 1fr); padding: 20px; }
-  .salas .sala-porta__escotilha { width: 52px; height: 52px; }
-  .salas .sala-porta__pe { flex-wrap: wrap; }
-  .salas .sala-porta__barra { flex: 1 1 100%; }
-  .salas .sala-porta__entrar { margin-left: auto; }
-}
 .inicio-acoes { display: flex; justify-content: center; }
 #tela-inicio > #hoje { max-width: 100%; }
 
@@ -2828,25 +2807,10 @@ html,
 .trilha--compacta .trilha__nome { padding-right: 0; }
 
 /* ---------- Mapa do curso (Onda 3) ----------
-   Celular: status → mapa → conquistas, uma coluna. Computador (lg): o mapa à esquerda (2/3) e, à direita,
-   o status em cima e as conquistas embaixo. A aula atual ganha borda turquesa e o selo "Você está aqui";
+   Uma coluna centralizada em todas as larguras: status → mapa → outros jeitos → conquistas (nada lado a lado). A aula atual ganha borda turquesa e o selo "Você está aqui";
    o cabo entre as aulas é tracejado e fica contínuo depois de cada aula concluída. */
 .painel-grade { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 var(--esp-6); align-items: start; }
 .painel-grade > .status { margin-top: var(--esp-2); }
-@media (min-width: 1024px) {
-  .painel-grade {
-    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
-    grid-template-rows: auto 1fr;
-    grid-template-areas: "mapa status" "mapa conquistas";
-  }
-  .painel-grade > .status { grid-area: status; margin-top: var(--esp-6); }
-  .painel-grade__mapa { grid-area: mapa; }
-  .painel-grade__conquistas { grid-area: conquistas; }
-  .painel-grade__mapa > .secao-titulo:first-child { margin-top: var(--esp-6); }
-  .painel-grade__conquistas > .secao-titulo:first-child { margin-top: var(--ritmo-cartoes); }
-  .painel-grade__conquistas .conquistas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .painel-grade .status__meta { flex-wrap: wrap; }
-}
 
 /* Status no celular: os três números viram fichas numa linha */
 @media (max-width: 767px) {
@@ -2940,9 +2904,11 @@ details.zona-perigo > summary:focus-visible { outline: 3px solid var(--borda-foc
 details.zona-perigo > p { margin: 0 0 var(--esp-3); font-size: var(--t-sm); color: var(--texto-2); max-width: var(--medida-leitura); }
 @media (prefers-reduced-motion: reduce) { details.zona-perigo > summary::before { transition: none; } }
 details.zona-perigo > summary::after { content: none; }
-/* Meta do dia: a barra numa linha inteira e a escolha da meta embaixo, à direita */
-.painel-grade .status__meta { flex-wrap: wrap; justify-content: flex-end; gap: var(--esp-2) var(--esp-3); }
-.painel-grade .status__meta .barra-meta { flex: 1 1 100%; }
+/* Meta do dia no celular: a barra numa linha inteira e a escolha da meta embaixo, à direita (no computador, uma linha só, como antes) */
+@media (max-width: 479px) {
+  .painel-grade .status__meta { flex-wrap: wrap; justify-content: flex-end; gap: var(--esp-2) var(--esp-3); }
+  .painel-grade .status__meta .barra-meta { flex: 1 1 100%; }
+}
 /* "Ler primeiro" é secundário (contorno turquesa + livro); "Mergulhar" segue primário */
 .fase__cta { display: inline-flex; align-items: center; gap: var(--esp-1); }
 .fase__cta .icone { width: 14px; height: 14px; }
@@ -2954,7 +2920,7 @@ details.zona-perigo > summary::after { content: none; }
   .status__numeros li { flex: 0 0 auto; white-space: nowrap; }
 }
 
-/* ---------- Simulado (Onda 3): "Montar simulado" como herói; no computador, suas provas e o histórico à direita ---------- */
+/* ---------- Simulado (Onda 3): "Montar simulado" como herói; numa coluna só: montar, provas antigas, as provas e o histórico ---------- */
 .simulado-grade { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ritmo-cartoes); align-items: start; }
 .simulado-grade__principal,
 .simulado-grade__lado { display: grid; gap: var(--ritmo-cartoes); align-content: start; min-width: 0; }
@@ -2965,14 +2931,6 @@ details.zona-perigo > summary::after { content: none; }
 .modo--heroi .modo__icone { width: 56px; height: 56px; }
 .modo--heroi .modo__icone .icone { width: 28px; height: 28px; }
 .modo--heroi .modo__acoes .botao { flex: 1 1 200px; }
-@media (min-width: 1024px) {
-  .simulado-grade { grid-template-columns: minmax(0, 3fr) minmax(300px, 2fr); }
-}
 
-/* ---------- Revisão (Onda 3): "Revisar agora" no cabeçalho, à direita no computador ---------- */
+/* ---------- Revisão: "Revisar agora" logo abaixo do cabeçalho ---------- */
 .cabeca-acao > .acoes-linha { margin-top: var(--esp-4); }
-@media (min-width: 768px) {
-  .cabeca-acao { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--esp-5); margin-bottom: var(--ritmo-secao); }
-  .cabeca-acao > .area-cabeca { margin-bottom: 0; }
-  .cabeca-acao > .acoes-linha { margin: 0; flex-shrink: 0; }
-}

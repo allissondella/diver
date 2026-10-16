@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-10-16 · Ajuste: tudo centralizado, nada lado a lado
+- **Pedido do usuário:** "não gosto de nada disso lado a lado, eu prefiro centralizado, igual era"; as funcionalidades novas ficam.
+- **Feito:** `.tela` voltou a 720 px centralizada (Início, mapa, Simulado, Revisão, Perfil, Estatísticas); Início sem o herói ao lado do "Continuar" e salas em 2 colunas; mapa do curso, Simulado e Revisão numa coluna só, na ordem de antes. Regra registrada em `docs/DESIGN.md`.
+
 ## 2026-10-16 · Revisão de design, Onda 7 (documentação viva) — revisão completa
 - **Feito:** `docs/componentes.html`, o catálogo vivo (47 cores com contraste calculado, escala de texto, espaços, raios, sombras, camadas, movimento, botões em todos os estados, campos, cartões, tags, barras, avisos, esqueleto, 61 ícones e o mascote nas 4 expressões), gerado por `scripts/gerar-componentes.mjs` a partir do `tokens.css` e do `index.html` (abre com file://); o auditor falha se ele ficar desatualizado. `docs/DESIGN.md` reorganizado pelo sistema de verdade, com "O que é proibido" e "Checklist de revisão visual"; `CLAUDE.md` (Visual) resumido; `ARQUITETURA.md` corrigido (barra lateral em 1024 px).
 - **Critérios de aceite:** auditor (estático e no navegador) OK; fotos antes/depois; feedback do quiz não cobre a questão; nenhum emoji de interface; Lighthouse celular 95 (desaceleração real; 76 na estimativa simulada) e acessibilidade 100; testes de regressão sem erro; um commit por onda.
