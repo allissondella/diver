@@ -241,6 +241,7 @@ const Quadros = (() => {
   let cabeca = null;
   let filtros = null;
   let area = null;
+  let pontos = null;
   let aviso = null;
 
   /** Avisa leitores de tela sobre o que mudou (mover, concluir...). */
@@ -271,7 +272,10 @@ const Quadros = (() => {
     filtros = h('div', { class: 'qd-filtros' });
     area = h('div', { class: 'qd', role: 'region', 'aria-label': 'Listas do quadro', onkeydown: teclasQuadro });
     aviso = h('p', { class: 'visualmente-oculto', 'aria-live': 'polite' });
-    secao.append(cabeca, filtros, area, ajudaTeclado(), aviso);
+    // Onda 3: pontinhos de página (só no celular, pelo CSS) mostram em qual lista você está
+    pontos = h('div', { class: 'qd-pontos', 'aria-hidden': 'true' });
+    area.addEventListener('scroll', marcarPonto, { passive: true });
+    secao.append(cabeca, filtros, area, pontos, ajudaTeclado(), aviso);
     estado.adicionando = null;
     estado.novaLista = false;
 
@@ -417,10 +421,19 @@ const Quadros = (() => {
     q.listas.forEach((lid, i) => area.append(coluna(d, q, d.listas[lid], i)));
     area.append(colunaNovaLista());
     area.scrollLeft = rolagem;
+    if (pontos) { limpar(pontos).append(...[...area.children].map(() => h('span', { class: 'qd-pontos__ponto' }))); marcarPonto(); }
     if (guardado) {
       const el = document.querySelector(guardado);
       if (el) el.focus({ preventScroll: false });
     }
+  }
+
+  function marcarPonto() {
+    if (!pontos || !area) return;
+    const col = area.firstElementChild;
+    const passo = col ? col.getBoundingClientRect().width + 12 : 1;
+    const atual = Math.round(area.scrollLeft / passo);
+    [...pontos.children].forEach((p, i) => p.classList.toggle('qd-pontos__ponto--atual', i === atual));
   }
 
   function coluna(d, q, lista, indice) {
@@ -994,7 +1007,7 @@ const Quadros = (() => {
         });
         d.quadroAtual = primeiro;
       }, { foco: '[data-foco="titulo-quadro"]' });
-      UI.toast('Tarefas importadas', `${UI.plural(dados.quadros.length, 'quadro novo', 'quadros novos')}. Troque pelo menu ☰.`, 'i-upload');
+      UI.toast('Tarefas importadas', `${UI.plural(dados.quadros.length, 'quadro novo', 'quadros novos')}. Troque no menu de quadros.`, 'i-upload');
     });
     document.body.append(input);
     input.click();

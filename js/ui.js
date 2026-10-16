@@ -25,6 +25,71 @@ const UI = (() => {
     return el;
   }
 
+  /**
+   * Botão "carregando": spinner no lugar do ícone (CSS de .botao[aria-busy]), sem aceitar outro clique.
+   * texto (opcional) troca o rótulo enquanto carrega; ao desligar, o rótulo original volta.
+   */
+  function carregando(botao, ligado, texto) {
+    if (!botao) return;
+    if (ligado) {
+      botao.setAttribute('aria-busy', 'true');
+      if ('disabled' in botao && botao.tagName === 'BUTTON') botao.disabled = true;
+      if (texto) {
+        const rotulo = [...botao.childNodes].find((n) => n.nodeType === 3 && n.textContent.trim());
+        if (rotulo) { botao.dataset.rotuloOriginal = rotulo.textContent; rotulo.textContent = texto; }
+      }
+    } else {
+      botao.removeAttribute('aria-busy');
+      if (botao.tagName === 'BUTTON') botao.disabled = false;
+      if (botao.dataset.rotuloOriginal) {
+        const rotulo = [...botao.childNodes].find((n) => n.nodeType === 3 && n.textContent.trim());
+        if (rotulo) rotulo.textContent = botao.dataset.rotuloOriginal;
+        delete botao.dataset.rotuloOriginal;
+      }
+    }
+  }
+
+  /**
+   * Barra de progresso (role="progressbar"): põe a largura do preenchimento, o aria-valuenow e,
+   * quando o valor sobe, o brilho rápido (.barra--subiu, 600 ms). pct de 0 a 100; valor = o número para o leitor de tela.
+   */
+  function progresso(barra, pct, valor = pct) {
+    if (!barra) return;
+    const p = Math.max(0, Math.min(100, Number(pct) || 0));
+    const antes = Number(barra.dataset.pct || 0);
+    const cheio = barra.firstElementChild;
+    if (cheio) cheio.style.width = p + '%';
+    barra.setAttribute('aria-valuenow', String(Math.round(valor)));
+    barra.dataset.pct = String(p);
+    if (p > antes && !movimentoReduzido) {
+      barra.classList.remove('barra--subiu');
+      void barra.offsetWidth; // reinicia a animação
+      barra.classList.add('barra--subiu');
+      setTimeout(() => barra.classList.remove('barra--subiu'), 650);
+    }
+  }
+
+  /**
+   * Esqueleto de carregamento: blocos no formato do que vai chegar ('sala', 'curso' ou 'fase'), com brilho
+   * passando (estático com "reduzir movimento"). O aviso em texto vai para um aria-live oculto.
+   */
+  function esqueleto(forma, quantos = 3, aviso = 'Carregando…') {
+    const caixa = h('div', { class: `esqueletos esqueletos--${forma}`, 'aria-hidden': 'true' },
+      Array.from({ length: quantos }, () => h('div', { class: `esqueleto esqueleto--${forma}` },
+        h('span', { class: 'esqueleto__circulo' }),
+        h('span', { class: 'esqueleto__linhas' }, h('span', { class: 'esqueleto__linha esqueleto__linha--titulo' }), h('span', { class: 'esqueleto__linha' }), h('span', { class: 'esqueleto__linha esqueleto__linha--curta' })))));
+    return h('div', { class: 'esqueleto-area' }, caixa, h('p', { class: 'visualmente-oculto', role: 'status', 'aria-live': 'polite', text: aviso }));
+  }
+
+  /** Valor de um token de cor do css/tokens.css (ex.: UI.cor('primaria') → '#14B8A6'), para canvas e SVG montado no JS. */
+  const coresLidas = {};
+  function cor(nome) {
+    if (!(nome in coresLidas)) {
+      try { coresLidas[nome] = getComputedStyle(document.documentElement).getPropertyValue('--' + nome).trim(); } catch { coresLidas[nome] = ''; }
+    }
+    return coresLidas[nome];
+  }
+
   /** Ícone do sprite SVG do index.html. */
   function icone(nome, classe = '') {
     const ns = 'http://www.w3.org/2000/svg';
@@ -107,24 +172,110 @@ const UI = (() => {
   }
 
   /* ---------- Avisos rápidos (toasts) ---------- */
-  function toast(titulo, texto, nomeIcone = 'i-trofeu') {
-    const el = h('div', { class: 'toast', role: 'status' },
+  function toast(titulo, texto, nomeIcone = 'i-trofeu', { conquista = false } = {}) {
+    const el = h('div', { class: `toast ${conquista ? 'toast--conquista' : ''}`.trim(), role: 'status' },
       h('span', { class: 'toast__icone' }, icone(nomeIcone)),
       h('div', {}, h('p', { class: 'toast__titulo', text: titulo }), h('p', { class: 'toast__texto', text: texto })),
     );
     const area = $('toasts');
     area.append(el);
-    // No máximo 2 avisos por vez, para não cobrir o conteúdo
-    while (area.children.length > 2) area.firstElementChild.remove();
+    // No máximo 3 avisos por vez, para não cobrir o conteúdo; cada um some em 4 s
+    while (area.children.length > 3) area.firstElementChild.remove();
     setTimeout(() => {
       el.classList.add('saindo');
       setTimeout(() => el.remove(), 320);
-    }, 3000);
+    }, 4000);
   }
 
   function avisarConquistas(lista) {
-    lista.forEach((c, i) => setTimeout(() => toast('Conquista desbloqueada', c.nome, c.icone), i * 600));
+    lista.forEach((c, i) => setTimeout(() => toast('Conquista desbloqueada', c.nome, c.icone, { conquista: true }), i * 600));
+    if (lista.length) confete(); // comemoração discreta: só em conquista e em fim de fase, nunca num acerto comum
   }
+
+  /* ---------- Carregamento sob demanda (Onda 6) ---------- */
+  const scriptsCarregados = new Map(); // url -> Promise
+  /** Carrega um script uma vez só (cache em memória); devolve uma Promise. */
+  function carregarScript(url) {
+    if (scriptsCarregados.has(url)) return scriptsCarregados.get(url);
+    const p = new Promise((ok, falha) => {
+      const s = document.createElement('script');
+      s.src = url;
+      s.async = false; // vários de uma vez rodam na ordem em que foram pedidos
+      s.onload = () => ok();
+      s.onerror = () => { scriptsCarregados.delete(url); falha(new Error('Não deu para carregar ' + url)); };
+      document.head.append(s);
+    });
+    scriptsCarregados.set(url, p);
+    return p;
+  }
+  /** Vários scripts, na ordem. */
+  function carregarScripts(urls) {
+    return Promise.all(urls.map(carregarScript));
+  }
+
+  /* ---------- Movimento (Onda 5); com "reduzir movimento" tudo vira instantâneo ---------- */
+  /** Conta o número de um elemento de "de" até "para" em ~400 ms (XP e pérolas no feedback e no resumo). */
+  function contar(el, de, para, ms = 400) {
+    if (!el) return;
+    const fim = Number(para) || 0;
+    if (movimentoReduzido || fim === Number(de)) { el.textContent = String(fim); return; }
+    const t0 = performance.now();
+    const passo = (t) => {
+      const k = Math.min(1, (t - t0) / ms);
+      el.textContent = String(Math.round(Number(de) + (fim - Number(de)) * (1 - (1 - k) * (1 - k))));
+      if (k < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  }
+
+  /** Confete discreto: 12 partículas, 800 ms, nas cores da marca; nada com "reduzir movimento". */
+  function confete() {
+    if (movimentoReduzido) return;
+    const cores = ['primaria', 'destaque', 'primaria-clara', 'perola', 'erro-clara', 'lilas'];
+    const camada = h('div', { class: 'confete', 'aria-hidden': 'true' },
+      Array.from({ length: 12 }, (_, i) => h('i', {
+        style: `--x:${Math.round((Math.random() - 0.5) * 360)}px;--y:${Math.round(-120 - Math.random() * 160)}px;--giro:${Math.round(Math.random() * 540)}deg;` +
+          `--atraso:${Math.round(Math.random() * 120)}ms;background:var(--${cores[i % cores.length]})`,
+      })));
+    document.body.append(camada);
+    setTimeout(() => camada.remove(), 1000);
+  }
+
+  /* ---------- Atalhos do teclado: "?" abre a lista (UI.atalhos) ---------- */
+  const ATALHOS_GERAIS = [
+    ['?', 'Abre esta lista'],
+    ['Esc', 'Fecha a janela, a gaveta do menu ou o tutorial'],
+    ['Tab / Shift+Tab', 'Anda entre botões e campos'],
+  ];
+  const ATALHOS_TELA = {
+    'tela-quiz': [['1 a 6 ou A a F', 'Escolhe a alternativa'], ['Enter ou Espaço', 'Continua depois de responder']],
+    'tela-tarefas': [['Enter', 'Salva a tarefa'], ['Shift+Enter', 'Salva e abre outra'], ['Alt+Enter', 'Salva e abre os detalhes'], ['Esc', 'Desiste da edição']],
+  };
+  function atalhos() {
+    const tela = [...document.querySelectorAll('.tela')].find((t) => !t.hidden);
+    const daTela = (tela && ATALHOS_TELA[tela.id]) || [];
+    const linhas = (lista) => h('dl', { class: 'atalhos-lista' }, lista.map(([k, v]) => h('div', {}, h('dt', {}, h('kbd', { text: k })), h('dd', { text: v }))));
+    const dialogo = h('dialog', { class: 'dialogo dialogo--atalhos', 'aria-labelledby': 'atalhos-titulo' },
+      h('div', { class: 'dialogo__caixa' },
+        h('header', { class: 'dialogo__topo' },
+          h('h2', { class: 'dialogo__titulo', id: 'atalhos-titulo', text: 'Atalhos do teclado' }),
+          h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'))),
+        h('div', { class: 'dialogo__corpo' },
+          daTela.length ? h('section', {}, h('h3', { class: 'resumo__titulo', text: 'Nesta tela' }), linhas(daTela)) : null,
+          h('section', {}, h('h3', { class: 'resumo__titulo', text: 'Em qualquer tela' }), linhas(ATALHOS_GERAIS)))));
+    dialogo.addEventListener('close', () => dialogo.remove());
+    dialogo.addEventListener('click', (e) => { if (e.target === dialogo) dialogo.close(); });
+    document.body.append(dialogo);
+    dialogo.showModal();
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== '?' || e.ctrlKey || e.metaKey || e.altKey) return;
+    const alvo = e.target;
+    if (alvo && (alvo.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(alvo.tagName))) return;
+    if (document.querySelector('dialog[open]')) return;
+    e.preventDefault();
+    atalhos();
+  });
 
   /* ---------- Mascote ---------- */
   function montarMascotes(raiz = document) {
@@ -234,9 +385,10 @@ const UI = (() => {
 
   return {
     confirmar, perguntar,
-    $, h, icone, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
+    $, h, icone, cor, carregando, progresso, esqueleto, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
     dataLocal, paraData, formatarData, id, baixarArquivo, toast, avisarConquistas,
     montarMascotes, humorMascote, mascote, cabecalho, vazio, movimentoReduzido, codigo, marcado,
+    contar, confete, atalhos, carregarScript, carregarScripts,
   };
 })();
 

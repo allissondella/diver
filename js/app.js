@@ -38,28 +38,60 @@ const App = (() => {
   /* =========================================================
      NAVEGAÇÃO (barra lateral + endereço #secao)
      ========================================================= */
+  /* Pacotes de scripts que chegam na primeira vez que a área abre (Onda 6). A ordem dentro de cada pacote importa. */
+  const PACOTES = {
+    jogos: ['js/jogos/comum.js', 'js/jogos/cartas-do-fundo.js', 'js/jogos/quiz-relampago.js', 'js/jogos/memoria.js', 'js/jogos/adivinha-ai.js',
+      'js/jogos/caca-ao-tesouro.js', 'js/jogos/chefao.js', 'js/jogos/mare-alta.js', 'js/jogos/forca.js', 'js/jogos/palavrinha.js',
+      'js/jogos/corrente-do-tempo.js', 'js/jogos/caso-resolvido.js',
+      'js/laboratorio/executor.js', 'js/laboratorio/editor.js', 'js/laboratorio/mundo-robo.js', 'js/laboratorio/laboratorio.js', 'js/laboratorio/lab-python.js',
+      'js/jogos/robo-entregador.js', 'js/jogos/primeiros-programas.js', 'js/jogos/lupa-do-codigo.js', 'js/jogos/caca-bugs.js', 'js/jogos/oficina-de-funcoes.js'],
+    cronograma: ['js/cronograma-gerador.js', 'js/diagnostica.js', 'js/cronograma.js'],
+    nivelamento: ['js/cronograma-gerador.js', 'js/diagnostica.js'], // o js/mapa-partida.js já vem no núcleo (o Plano de estudos usa)
+    provas: ['js/leitor-prova.js', 'js/provas-enviadas.js'],
+    biblioteca: ['js/biblioteca.js'],
+    perfil: ['js/perfil.js'],
+    estatisticas: ['js/estatisticas.js'],
+    admin: ['js/estatisticas.js', 'js/admin.js'],
+    fila: ['js/fila-validacao.js'],
+    profissoes: ['js/profissoes-infograficos.js', 'js/profissoes.js'], // Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md)
+    descompressao: ['js/dicionario.js', 'js/descompressao.js', 'js/descompressao/investigacao.js', 'js/descompressao/palavrinha-dia.js',
+      'js/descompressao/tiro.js', 'js/descompressao/batata.js', 'js/descompressao/pitstop.js', 'js/descompressao/cardume.js'],
+  };
+  const pacotesProntos = new Set();
+  /** Garante os pacotes; depois dos jogos, as cartas são refeitas (os laboratórios entram nelas). */
+  function carregarPacotes(nomes = []) {
+    const faltam = nomes.filter((n) => !pacotesProntos.has(n));
+    if (!faltam.length) return Promise.resolve();
+    return UI.carregarScripts(faltam.flatMap((n) => PACOTES[n])).then(() => {
+      faltam.forEach((n) => pacotesProntos.add(n));
+      if (faltam.includes('jogos')) estado.cartasCache = {};
+    });
+  }
+  const pacotesProntosPara = (nomes = []) => nomes.every((n) => pacotesProntos.has(n));
+
   const ROTAS = {
     inicio: { tela: 'tela-inicio', render: renderizarInicio },
-    sala: { tela: 'tela-sala', lateral: 'inicio', render: renderizarSalaEstudo }, // endereço #sala-<id> (js/grupos.js)
-    mergulho: { tela: 'tela-painel', precisaTrilha: true, render: renderizarPainel },
-    simulado: { tela: 'tela-simulado', precisaTrilha: true, render: renderizarSimulado },
+    sala: { tela: 'tela-sala', lateral: 'inicio', pacotes: ['cronograma'], render: renderizarSalaEstudo }, // endereço #sala-<id> (js/grupos.js)
+    mergulho: { tela: 'tela-painel', precisaTrilha: true, pacotes: ['jogos'], render: renderizarPainel },
+    simulado: { tela: 'tela-simulado', precisaTrilha: true, pacotes: ['provas'], render: renderizarSimulado },
     revisao: { tela: 'tela-revisao', precisaTrilha: true, render: renderizarRevisao },
-    jogos: { tela: 'tela-jogos', precisaTrilha: true, render: renderizarSala },
+    jogos: { tela: 'tela-jogos', precisaTrilha: true, pacotes: ['jogos'], render: renderizarSala },
     tarefas: { tela: 'tela-tarefas', render: () => Quadros.render($('tela-tarefas')) },
     calendario: { tela: 'tela-calendario', render: () => Organizar.renderCalendario($('tela-calendario')) },
-    cronograma: { tela: 'tela-cronograma', render: () => Cronograma.render($('tela-cronograma')) },
-    diagnostica: { tela: 'tela-diagnostica', render: () => Diagnostica.render($('tela-diagnostica')) },
-    'mapa-partida': { tela: 'tela-mapa-partida', render: () => MapaPartida.render($('tela-mapa-partida')) }, // sala Ensino Médio (js/mapa-partida.js)
+    cronograma: { tela: 'tela-cronograma', pacotes: ['cronograma'], render: () => Cronograma.render($('tela-cronograma')) },
+    diagnostica: { tela: 'tela-diagnostica', pacotes: ['cronograma'], render: () => Diagnostica.render($('tela-diagnostica')) },
+    'mapa-partida': { tela: 'tela-mapa-partida', pacotes: ['nivelamento'], render: () => MapaPartida.render($('tela-mapa-partida')) }, // sala Ensino Médio (js/mapa-partida.js)
     foco: { tela: 'tela-foco', render: () => Organizar.renderFoco($('tela-foco')) },
-    cursos: { tela: 'tela-cursos', render: () => Biblioteca.renderCursos($('tela-cursos')) },
-    pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
-    perfil: { tela: 'tela-perfil', render: () => Perfil.render($('tela-perfil')) },
-    estatisticas: { tela: 'tela-estatisticas', render: () => Estatisticas.render($('tela-estatisticas')) },
-    descompressao: { tela: 'tela-descompressao', render: () => Descompressao.render($('tela-descompressao')) },
+    cursos: { tela: 'tela-cursos', pacotes: ['biblioteca'], render: () => Biblioteca.renderCursos($('tela-cursos')) },
+    pdfs: { tela: 'tela-pdfs', pacotes: ['biblioteca'], render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
+    perfil: { tela: 'tela-perfil', pacotes: ['perfil'], render: () => Perfil.render($('tela-perfil')) },
+    estatisticas: { tela: 'tela-estatisticas', pacotes: ['estatisticas'], render: () => Estatisticas.render($('tela-estatisticas')) },
+    descompressao: { tela: 'tela-descompressao', pacotes: ['descompressao'], render: () => Descompressao.render($('tela-descompressao')) },
+    profissoes: { tela: 'tela-profissoes', pacotes: ['profissoes'], render: renderizarProfissoes }, // endereços #profissoes, #profissoes-cartas, #profissoes-metodo e #profissao-<id>[-dia|-mitos]
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
-    'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
-    admin: { tela: 'tela-admin', soEquipe: true, render: () => Admin.render($('tela-admin')) },
-    fila: { tela: 'tela-fila', soAdmin: true, render: () => FilaValidacao.render($('tela-fila')) },
+    'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, pacotes: ['provas'], render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
+    admin: { tela: 'tela-admin', soEquipe: true, pacotes: ['admin'], render: () => Admin.render($('tela-admin')) },
+    fila: { tela: 'tela-fila', soAdmin: true, pacotes: ['fila'], render: () => FilaValidacao.render($('tela-fila')) },
   };
   const TELAS_FOCO = ['tela-quiz', 'tela-jogo']; // sem barra lateral: uma ação principal por tela
 
@@ -69,9 +101,12 @@ const App = (() => {
     else location.hash = secao;
   }
 
-  /** O endereço existe? (#secao ou #sala-<id>) */
+  /** Endereços do Mapa das Profissões que caem na tela "profissoes" (o módulo desenha a rota certa). */
+  const ehRotaProfissoes = (secao) => /^profissoes(-cartas|-metodo)?$|^profissao-[a-z0-9-]+$/.test(secao || '');
+
+  /** O endereço existe? (#secao, #sala-<id> ou uma rota do Mapa das Profissões) */
   function rotaExiste(secao) {
-    return !!ROTAS[secao] || /^sala-./.test(secao || '');
+    return !!ROTAS[secao] || /^sala-./.test(secao || '') || ehRotaProfissoes(secao);
   }
 
   let saidaConfirmada = false; // a pessoa já disse "Sair agora" na caixa: a próxima navegação passa direto
@@ -82,6 +117,11 @@ const App = (() => {
     if (/^sala-./.test(secao)) { // #sala-enem → tela "Sala" com a sala enem
       salaId = secao.slice(5);
       secao = 'sala';
+    }
+    let rotaProfissoes = null;
+    if (ehRotaProfissoes(secao)) { // #profissao-enfermagem → tela "Profissões" com a ficha
+      rotaProfissoes = secao;
+      secao = 'profissoes';
     }
     const rota = ROTAS[secao];
     if (!rota) return;
@@ -123,12 +163,28 @@ const App = (() => {
     // Curso que veio só do catálogo: baixa o curso inteiro antes de abrir a área
     if (ROTAS[secao].precisaTrilha && estado.trilha._parcial) {
       const alvo = secao;
-      comCursoCompleto(() => { if (location.hash === '#' + alvo || estado.secao === alvo) navegar(alvo); });
+      if (alvo === 'mergulho') mostrarEsqueletoDoCurso();
+      comCursoCompleto(() => {
+        tirarEsqueletoDoCurso();
+        if (location.hash === '#' + alvo || estado.secao === alvo) navegar(alvo);
+      });
+      return;
+    }
+    // Área que precisa de um pacote ainda não baixado: baixa e volta aqui (Onda 6)
+    if (!pacotesProntosPara(ROTAS[secao].pacotes)) {
+      const alvo = location.hash.slice(1) || secao;
+      if (secao === 'mergulho') mostrarEsqueletoDoCurso();
+      carregarPacotes(ROTAS[secao].pacotes).then(() => {
+        tirarEsqueletoDoCurso();
+        if (location.hash.slice(1) === alvo) navegar(alvo);
+      }, () => toast('Sem conexão', 'Não deu para abrir esta área agora. Confira a internet e tente de novo.', 'i-x'));
       return;
     }
     Tutorial.fechar(false);
+    if (estado.secao === 'profissoes' && secao !== 'profissoes' && typeof Profissoes !== 'undefined') Profissoes.desmontar();
     estado.secao = secao;
     if (secao === 'sala') estado.salaId = salaId;
+    if (secao === 'profissoes') estado.rotaProfissoes = rotaProfissoes;
     ROTAS[secao].render();
     mostrarTela(ROTAS[secao].tela);
     Tutorial.aoEntrar(secaoTutorial()); // primeira visita? o Diver mostra a página
@@ -143,7 +199,7 @@ const App = (() => {
   function emAndamento() {
     const quiz = estado.sessao && !estado.sessao.encerrada && !$('tela-quiz').hidden;
     const jogo = estado.jogo && !estado.jogo.fim && !$('tela-jogo').hidden;
-    return quiz || jogo || Descompressao.emAndamento();
+    return quiz || jogo || (typeof Descompressao !== 'undefined' && Descompressao.emAndamento());
   }
 
   function abandonarAndamento() {
@@ -160,7 +216,25 @@ const App = (() => {
       if (c && c.destruir) c.destruir();
     }
     estado.jogo = null;
-    Descompressao.parar(); // jogo da Sala de Descompressão aberto? fecha (a partida online avisa o outro lado)
+    if (typeof Descompressao !== 'undefined') Descompressao.parar(); // jogo da Sala de Descompressão aberto? fecha (a partida online avisa o outro lado)
+  }
+
+  /** O filete turquesa da barra lateral desliza até o item atual (Onda 5; só desenho). */
+  function moverFilete() {
+    const nav = document.querySelector('.lateral__nav');
+    if (!nav) return;
+    let filete = nav.querySelector('.lateral__filete');
+    if (!filete) {
+      filete = h('span', { class: 'lateral__filete', 'aria-hidden': 'true' });
+      nav.prepend(filete);
+      window.addEventListener('resize', moverFilete); // a altura dos itens muda entre o celular e o computador
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(moverFilete);
+    }
+    const atual = nav.querySelector('a[aria-current="page"]');
+    if (!atual) { filete.hidden = true; return; }
+    filete.hidden = false;
+    filete.style.transform = `translateY(${atual.offsetTop}px)`;
+    filete.style.height = `${atual.offsetHeight}px`;
   }
 
   function mostrarTela(id) {
@@ -171,6 +245,7 @@ const App = (() => {
       if (a.dataset.secao === naLateral) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
+    moverFilete();
     fecharMenu();
     atualizarLateral();
     window.scrollTo(0, 0);
@@ -183,6 +258,7 @@ const App = (() => {
   function abrirMenu() {
     $('barra-lateral').classList.add('lateral--aberta');
     $('lateral-fundo').hidden = false;
+    document.body.classList.add('gaveta-aberta'); // Onda 3: o fundo não rola com a gaveta aberta
     $('btn-menu').setAttribute('aria-expanded', 'true');
     $('barra-lateral').querySelector('.lateral__nav a[aria-current]') ? $('barra-lateral').querySelector('.lateral__nav a[aria-current]').focus() : $('btn-fechar-menu').focus();
   }
@@ -191,6 +267,7 @@ const App = (() => {
     const aberta = $('barra-lateral').classList.contains('lateral--aberta');
     $('barra-lateral').classList.remove('lateral--aberta');
     $('lateral-fundo').hidden = true;
+    document.body.classList.remove('gaveta-aberta');
     $('btn-menu').setAttribute('aria-expanded', 'false');
     if (aberta && document.activeElement && $('barra-lateral').contains(document.activeElement)) $('btn-menu').focus();
   }
@@ -372,7 +449,7 @@ const App = (() => {
     return !Nuvem.ativa || Nuvem.ehAdmin();
   }
 
-  /* ---------- Cortina de transição (bolhas + Diver, ~1 s) ---------- */
+  /* ---------- Cortina de transição (bolhas + Diver, até 700 ms) ---------- */
   function cortina(texto) {
     if (movimentoReduzido) return;
     const el = $('transicao');
@@ -380,16 +457,32 @@ const App = (() => {
     clearTimeout(estado.cortinaTimer);
     el.classList.remove('transicao--saindo');
     el.classList.add('transicao--on');
+    // Onda 5: no máximo 700 ms no total (entra 150, fica até 400, sai em 300)
     estado.cortinaTimer = setTimeout(() => {
       el.classList.add('transicao--saindo');
-      estado.cortinaTimer = setTimeout(() => el.classList.remove('transicao--on', 'transicao--saindo'), 450);
-    }, 650);
+      estado.cortinaTimer = setTimeout(() => el.classList.remove('transicao--on', 'transicao--saindo'), 300);
+    }, 400);
   }
 
   /**
    * Curso inteiro sob demanda (catálogo leve, Trilhas.completar): roda fn quando o curso atual estiver
    * completo. Se ainda não está, mostra a cortina enquanto baixa. Sem internet: avisa e não abre nada.
    */
+  /** Tela do curso com o esqueleto das aulas enquanto o curso inteiro baixa (catálogo leve → curso completo). */
+  function mostrarEsqueletoDoCurso() {
+    const tela = $('tela-painel');
+    tirarEsqueletoDoCurso();
+    const n = Math.min(6, (estado.trilha.fases || []).length || 4);
+    tela.prepend(UI.esqueleto('fase', n, `Abrindo ${estado.trilha.nome}…`));
+    tela.classList.add('tela--carregando');
+    document.querySelectorAll('.tela').forEach((t) => (t.hidden = t !== tela));
+  }
+  function tirarEsqueletoDoCurso() {
+    const tela = $('tela-painel');
+    tela.classList.remove('tela--carregando');
+    tela.querySelectorAll(':scope > .esqueleto-area').forEach((el) => el.remove());
+  }
+
   function comCursoCompleto(fn, texto = 'Abrindo o curso…') {
     const t = estado.trilha;
     if (!t || !t._parcial) return fn();
@@ -400,14 +493,16 @@ const App = (() => {
       estado.cartasCache = {};
       atualizarLateral();
       fn();
-    }, () => toast('Não consegui abrir o curso', 'Confira a internet e tente de novo.', 'i-alerta'));
+    }, () => { tirarEsqueletoDoCurso(); toast('Não consegui abrir o curso', 'Confira a internet e tente de novo.', 'i-alerta'); });
   }
 
   /* ---------- Bolhas do fundo ---------- */
   function criarBolhas() {
     if (movimentoReduzido) return;
     const area = document.querySelector('.bolhas');
-    for (let i = 0; i < 16; i++) {
+    // Onda 5: no máximo 12 bolhas, e paradas com a aba escondida (e no quiz e nos jogos, pelo CSS: .modo-foco)
+    document.addEventListener('visibilitychange', () => document.body.classList.toggle('aba-oculta', document.hidden));
+    for (let i = 0; i < 12; i++) {
       const tam = 6 + Math.random() * 22;
       area.append(h('span', {
         class: 'bolha',
@@ -469,6 +564,7 @@ const App = (() => {
      INÍCIO (escolha de trilha + Seu dia)
      ========================================================= */
   function renderizarInicio() {
+    $('tela-inicio').classList.remove('tela-inicio--cedo'); // a abertura antecipada (index.html) mostrava só o herói
     renderizarContinuar();
     Caminho.cardInicio($('inicio-retomada')); // "Avaliação de nivelamento" (sala Ensino Médio)
     renderizarSalas();
@@ -680,7 +776,7 @@ const App = (() => {
           h('p', { class: 'sala-cronograma__texto', text: temPlano
             ? 'Seu plano até a prova já está pronto. Confira o que estudar hoje e marque o que fez.'
             : 'O Diver monta um plano até a sua prova: matéria por matéria, com revisão, simulados e redação toda semana.' })),
-        h('button', { type: 'button', class: 'botao botao--primario sala-cronograma__botao', onclick: () => irPara('cronograma') },
+        h('button', { type: 'button', class: 'botao botao--link sala-cronograma__botao', onclick: () => irPara('cronograma') },
           icone('i-alvo'), temPlano ? 'Ver meu cronograma' : 'Montar meu cronograma'))
       : null;
     tela.append(...[
@@ -798,7 +894,13 @@ const App = (() => {
   function renderizarHoje() {
     const area = limpar($('hoje'));
     if (!estado.trilhas.length) return;
-    let desafio = desafioDoDia();
+    // Os jogos chegam em pacote (Onda 6): o Início aparece primeiro e o "Seu dia" se redesenha quando eles chegam
+    if (!pacotesProntos.has('jogos')) {
+      // só quando o navegador estiver ocioso: o Início aparece antes, com os 20 scripts do núcleo
+      const quandoOcioso = window.requestIdleCallback || ((fn) => setTimeout(fn, 600));
+      quandoOcioso(() => carregarPacotes(['jogos']).then(() => { if (estado.secao === 'inicio') renderizarHoje(); }, () => {}), { timeout: 2500 });
+    }
+    let desafio = pacotesProntos.has('jogos') ? desafioDoDia() : null;
     if (desafio && desafio.pendente) {
       // baixa só o curso sorteado e desenha "Seu dia" de novo (se a pessoa ainda estiver no Início)
       const t = desafio.trilha;
@@ -891,7 +993,7 @@ const App = (() => {
     const nivel = Progresso.nivel(prog.xp);
     $('st-nivel-num').textContent = `Nível ${nivel.numero}`;
     $('st-nivel-nome').textContent = nivel.nome;
-    $('st-xp-preenchimento').style.width = nivel.pct + '%';
+    UI.progresso($('st-xp-barra'), nivel.pct);
     $('st-xp-barra').setAttribute('aria-valuenow', nivel.pct);
     $('st-xp-texto').textContent = nivel.max
       ? `${prog.xp} XP. Nível máximo: você é Mestre Diver.`
@@ -905,7 +1007,7 @@ const App = (() => {
     const hoje = Progresso.respondidasHoje(prog);
     $('st-meta').textContent = `${Math.min(hoje, prog.metaDiaria)}/${prog.metaDiaria}`;
     const pctMeta = Math.min(100, Math.round((hoje / prog.metaDiaria) * 100));
-    $('st-meta-preenchimento').style.width = pctMeta + '%';
+    UI.progresso($('st-meta-barra'), pctMeta);
     $('st-meta-barra').setAttribute('aria-valuemax', prog.metaDiaria);
     $('st-meta-barra').setAttribute('aria-valuenow', Math.min(hoje, prog.metaDiaria));
 
@@ -932,6 +1034,9 @@ const App = (() => {
         ? 'Todas as fases estão abertas: escolha o tema que quer estudar. A ordem do mapa é só uma sugestão.'
         : 'Complete uma profundidade para liberar a próxima. Quanto mais fundo, mais pérolas.';
     mapa.classList.toggle('mapa--modulos', porModulo);
+    // "Você está aqui": a próxima aula (no Ensino Médio, a do plano de estudos), com borda turquesa no mapa
+    const atual = (Caminho.ehRetomada(trilha) && Caminho.proximaAula(trilha, prog)) || proximaAula();
+    estado.aulaAtual = atual ? atual.id : null;
     if (porModulo) renderizarMapaModulos(mapa, abertos);
     else trilha.fases.forEach((fase, i) => mapa.append(itemFase(fase, i)));
     if (trilha.questoes.length) mapa.append(itemProva()); // a chegada: deixa claro onde o curso termina
@@ -951,6 +1056,7 @@ const App = (() => {
     const concluida = !!(info && info.concluida);
     const qtd = Trilhas.questoesDaFase(trilha, fase.id).length;
     const ler = liberada && precisaLer(fase);
+    const atual = liberada && !concluida && estado.aulaAtual === fase.id;
 
     let estadoTxt;
     if (!liberada) estadoTxt = `Bloqueada: complete ${trilha.fases.slice(0, i).reverse().find((f) => !f.novaEm).nome} para descer`;
@@ -962,21 +1068,23 @@ const App = (() => {
 
     const botao = h('button', {
       type: 'button',
-      class: `fase ${concluida ? 'fase--concluida' : ''} ${liberada ? '' : 'fase--bloqueada'}`,
+      class: `fase ${concluida ? 'fase--concluida' : ''} ${liberada ? '' : 'fase--bloqueada'} ${atual ? 'fase--atual' : ''}`.replace(/\s+/g, ' ').trim(),
       style: `--prof:${n > 1 ? i / (n - 1) : 0}`,
       disabled: !liberada,
-      'aria-label': `${fase.nome}${fase.profundidade ? ', ' + fase.profundidade : ''}. ${estadoTxt}` +
+      'aria-label': `${fase.nome}${fase.profundidade ? ', ' + fase.profundidade : ''}. ${atual ? 'Você está aqui. ' : ''}${estadoTxt}` +
         (concluida ? `, ${info.estrelas} de 3 estrelas` : '') + (ler ? '. Abra o "Antes de mergulhar" para liberar o Mergulho' : ''),
       onclick: () => iniciarSessao('mergulho', { faseId: fase.id }),
     },
     h('span', { class: 'fase__no', 'aria-hidden': 'true' },
       !liberada ? icone('i-cadeado') : concluida ? icone('i-check') : String(i + 1)),
     h('span', { class: 'fase__info' },
+      atual ? h('span', { class: 'fase__aqui', text: 'Você está aqui' }) : null,
       h('span', { class: 'fase__nome' }, fase.nome, fase.profundidade ? h('span', { class: 'fase__prof', text: fase.profundidade }) : null),
       fase.descricao ? h('span', { class: 'fase__descricao', text: fase.descricao }) : null,
       h('span', { class: 'fase__estado' }, concluida ? estrelas : null, estadoTxt),
     ),
-    liberada ? h('span', { class: `fase__cta ${ler ? 'fase__cta--ler' : ''}`, 'aria-hidden': 'true', text: ler ? 'Ler primeiro' : concluida ? 'Refazer' : 'Mergulhar' }) : null);
+    liberada ? h('span', { class: `fase__cta ${ler ? 'fase__cta--ler' : ''}`, 'aria-hidden': 'true' },
+      ler ? icone('i-livro') : null, ler ? 'Ler primeiro' : concluida ? 'Refazer' : 'Mergulhar') : null);
 
     // "Antes de mergulhar": leitura curta da fase (opcional no JSON). Fica aberta mesmo com a fase bloqueada.
     // Fica no pé do cartão da aula, em linhas iguais: ícone, nome e, à direita, o estado (2026-10-13).
@@ -997,10 +1105,11 @@ const App = (() => {
         icone('i-codigo'), h('span', { class: 'fase__estudo-nome', text: `Mão na massa: ${def.nome}` }),
         fim(feito ? h('span', { class: 'fase__feito' }, icone('i-check'), 'Feito') : null));
     });
-    if (!estudo && !maos.length) return h('li', { 'data-fase': fase.id }, botao);
+    const classeLi = `${concluida ? 'mapa__feito' : ''} ${atual ? 'mapa__atual' : ''}`.trim() || null;
+    if (!estudo && !maos.length) return h('li', { 'data-fase': fase.id, class: classeLi }, botao);
     // A aula é um cartão só (2026-10-13, pedido do usuário): a leitura e os laboratórios ficam no pé do cartão,
     // alinhados embaixo do título, para não ficar em dúvida de qual aula eles são.
-    const classeGrupo = `fase-grupo ${concluida ? 'fase-grupo--concluida' : ''} ${liberada ? '' : 'fase-grupo--bloqueada'}`.replace(/\s+/g, ' ').trim();
+    const classeGrupo = `fase-grupo ${concluida ? 'fase-grupo--concluida' : ''} ${liberada ? '' : 'fase-grupo--bloqueada'} ${classeLi || ''}`.replace(/\s+/g, ' ').trim();
     return h('li', { 'data-fase': fase.id, class: classeGrupo, style: `--prof:${n > 1 ? i / (n - 1) : 0}` },
       botao,
       h('div', { class: 'fase-grupo__extras', role: 'group', 'aria-label': `Estudo e prática da ${fase.nome}` }, estudo, ...maos));
@@ -1086,6 +1195,10 @@ const App = (() => {
   }
 
   function abrirResumo(fase, liberada) {
+    if (typeof Artigo === 'undefined') { // o artigo chega na primeira vez que um "Antes de mergulhar" abre (Onda 6)
+      UI.carregarScript('js/artigo.js').then(() => abrirResumo(fase, liberada), () => toast('Sem conexão', 'Não deu para abrir o artigo agora.', 'i-x'));
+      return;
+    }
     const r = fase.resumo || {};
     const eraNovo = precisaLer(fase);
     lembrarFase(fase.id);
@@ -1101,11 +1214,11 @@ const App = (() => {
       document.body.append(dialogo);
     }
     const tabela = r.tabela && Array.isArray(r.tabela.colunas) && Array.isArray(r.tabela.linhas) ? r.tabela : null;
-    // Artigo da fase (js/artigo.js): 📚 Aprender → 🧠 Associar → 🃏 Praticar → ⚔️ Desafio → 🔄 Revisar
+    // Artigo da fase (js/artigo.js): Aprender → Associar → Praticar → Desafio → Revisar (ícones do sprite)
     const blocoAprender = Artigo.aprender(r);
     const blocoAssociar = Artigo.associar(r);
     const ancoraAssociar = blocoAssociar.length ? h('div', { class: 'artigo__etapa', id: 'artigo-associar' },
-      h('p', { class: 'artigo__etapa-rotulo', text: '🧠 Associar' }), blocoAssociar) : null;
+      h('p', { class: 'artigo__etapa-rotulo' }, icone('i-cerebro'), 'Associar'), blocoAssociar) : null;
     const rolarPara = (alvo) => {
       const corpo = dialogo.querySelector('.dialogo__corpo');
       if (!alvo) { corpo.scrollTop = 0; return; }
@@ -1136,11 +1249,11 @@ const App = (() => {
         h('button', { type: 'button', class: 'botao-icone', 'aria-label': 'Fechar', onclick: () => dialogo.close() }, icone('i-x'))),
       h('div', { class: 'dialogo__corpo' },
         passos,
-        h('p', { class: 'artigo__etapa-rotulo', text: '📚 Aprender' }),
+        h('p', { class: 'artigo__etapa-rotulo' }, icone('i-livro'), 'Aprender'),
         r.introducao ? h('p', { class: 'resumo__intro' }, comNegrito(r.introducao)) : null,
         blocoAprender,
         ancoraAssociar,
-        h('p', { class: 'artigo__etapa-rotulo', text: '🔄 Para revisar' }),
+        h('p', { class: 'artigo__etapa-rotulo' }, icone('i-revisao'), 'Para revisar'),
         Array.isArray(r.pontos) && r.pontos.length
           ? h('section', {}, h('h3', { class: 'resumo__titulo' }, icone('i-alvo'), 'Pontos-chave'),
             h('ul', { class: 'resumo__lista' }, r.pontos.map((p) => h('li', {}, comNegrito(p)))))
@@ -1175,12 +1288,81 @@ const App = (() => {
       if (ok) feitas++;
       lista.append(h('li', {},
         h('div', { class: `conquista ${ok ? '' : 'conquista--bloqueada'}` },
-          h('span', { class: 'conquista__icone' }, icone(ok ? c.icone : 'i-cadeado')),
+          // Bloqueada: o ícone da própria conquista, apagado; o cadeado só aparece ao passar o mouse (Onda 3)
+          h('span', { class: 'conquista__icone' }, icone(c.icone), ok ? null : h('span', { class: 'conquista__cadeado', 'aria-hidden': 'true' }, icone('i-cadeado'))),
           h('span', { class: 'conquista__nome', text: c.nome }),
           h('span', { class: 'conquista__desc', text: c.descricao }),
           h('span', { class: 'visualmente-oculto', text: ok ? 'Desbloqueada' : 'Bloqueada' }))));
     });
     $('conquistas-contagem').textContent = `${feitas}/${todas.length}`;
+  }
+
+  /* =========================================================
+     MAPA DAS PROFISSÕES (js/profissoes.js, pacote "profissoes")
+     O módulo desenha as seis telas; aqui ele é ligado ao app pelos ganchos
+     (docs/MAPA_PROFISSOES_INTEGRACAO.md, seção 3.3).
+     ========================================================= */
+  let profissoesLigadas = false;
+  function ligarProfissoes() {
+    if (profissoesLigadas) return;
+    profissoesLigadas = true;
+    const g = Profissoes.ganchos;
+    // XP e pérolas pela economia central, no curso atual (como o Modo Foco), dentro do teto de bônus.
+    // "Uma vez por profissão" o próprio módulo garante (diaConcluido / mitosConcluido).
+    g.recompensar = (ev) => {
+      const trilha = estado.trilha || estado.trilhas[0];
+      if (!trilha || !ev) return;
+      const teto = Economia.CONFIG.bonusMaximo;
+      const valores = { xp: Math.min(Math.max(0, ev.xp || 0), teto.xp), perolas: Math.min(Math.max(0, ev.perolas || 0), teto.perolas) };
+      concederXP(trilha.id, valores, ev.tipo === 'profissao_dia' ? 'Um dia completo!' : 'Mito ou verdade concluído');
+    };
+    // Log de atividade (sem tabela nova). Nada digitado vai para o log: um pedido feito pela busca livre vira "outra".
+    g.registrar = (evento, dados) => {
+      Profissoes.indice().then((ix) => {
+        const d = { ...(dados || {}) };
+        if (d.profissao && !ix.profissoes.some((p) => p.id === d.profissao)) d.profissao = 'outra';
+        if (d.indicadores && typeof d.indicadores === 'object' && !Array.isArray(d.indicadores)) {
+          Object.entries(d.indicadores).forEach(([k, v]) => { if (typeof v === 'number') d[`ind_${k}`] = v; });
+          delete d.indicadores;
+        }
+        Atividade.registrar(evento, null, d);
+        if (['profissao_vista', 'profissao_dia_concluido', 'profissao_carta_gerada'].includes(evento)) {
+          avisarConquistas(Conquistas.verificarGerais(ix.profissoes.filter((p) => p.arquivo && p.status === 'publicada').map((p) => p.id)));
+        }
+      }).catch(() => { /* sem o índice, o evento não vale a pena */ });
+    };
+    g.confirmar = (texto) => UI.confirmar(typeof texto === 'string' ? { titulo: texto, sim: 'Sim', nao: 'Agora não' } : texto);
+    // Matéria-chave → o curso dela na sala do Enem, na próxima aula
+    g.abrirCurso = (idCurso) => {
+      if (estado.trilhas.some((t) => t.id === idCurso)) abrirTrilha(idCurso, { proximaAula: true });
+      else toast('Curso fora das suas salas', 'Esta matéria fica na sala Mergulho no Enem e Vestibular. Peça acesso ao admin.', 'i-livro');
+    };
+    g.nomeCurso = (idCurso) => {
+      const t = estado.trilhas.find((x) => x.id === idCurso);
+      const nome = (t && t.nome) || (estado.nomesCursos && estado.nomesCursos.get(idCurso)) || idCurso;
+      return nome.split('·').pop().trim(); // "Mergulho no Enem · Biologia" → "Biologia"
+    };
+    // Ficha em rascunho ou validada: só a equipe (admin e professor) e o modo local veem; para o aluno ela é "Em breve"
+    g.verRascunho = () => !Nuvem.ativa || Nuvem.ehAdmin() || Nuvem.ehProfessor();
+    // A navegação das seções da ficha gruda logo abaixo do topo do celular (e da faixa do ambiente de testes)
+    const ajustarTopo = () => {
+      const topo = document.querySelector('.topo');
+      const faixa = document.querySelector('.faixa-testes');
+      const alto = Math.max(topo && getComputedStyle(topo).display !== 'none' ? topo.getBoundingClientRect().bottom : 0,
+        faixa ? faixa.getBoundingClientRect().bottom : 0);
+      $('tela-profissoes').style.setProperty('--prof-topo-fixo', `${Math.max(0, Math.round(alto))}px`);
+    };
+    window.addEventListener('resize', ajustarTopo);
+    ajustarTopo();
+  }
+
+  function renderizarProfissoes() {
+    ligarProfissoes();
+    const tela = $('tela-profissoes');
+    Profissoes.montar(tela, estado.rotaProfissoes || 'profissoes').then(() => {
+      const titulo = tela.querySelector('h1');
+      if (titulo && !tela.hidden) { titulo.tabIndex = -1; titulo.focus({ preventScroll: true }); }
+    });
   }
 
   /* =========================================================
@@ -1452,7 +1634,7 @@ const App = (() => {
     return h('article', { class: 'jogo-card jogo-card--disponivel' },
       h('div', { class: 'jogo-card__topo' },
         h('span', { class: 'jogo-card__icone', 'aria-hidden': 'true' }, icone(j.icone || 'i-controle')),
-        h('div', {}, h('h3', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave', text: j.duracao }))),
+        h('div', {}, h('h3', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave jogo-card__duracao', text: j.duracao }))),
       h('p', { class: 'jogo-card__descricao', text: j.descricao }),
       h('div', { class: 'jogo-card__rodape' },
         hist ? h('span', { class: 'jogo-card__hist', text: hist.melhor ? `Recorde: ${hist.melhor}` : plural(hist.partidas, 'partida', 'partidas') }) : null,
@@ -1461,6 +1643,7 @@ const App = (() => {
   }
 
   function iniciarJogo(id, opcoes = {}, { desafio = false } = {}) {
+    if (!pacotesProntos.has('jogos')) return carregarPacotes(['jogos']).then(() => iniciarJogo(id, opcoes, { desafio }));
     if (estado.trilha && estado.trilha._parcial) return comCursoCompleto(() => iniciarJogo(id, opcoes, { desafio }));
     const def = Jogos.obter(id);
     if (!def || !estado.trilha) return;
@@ -1647,6 +1830,7 @@ const App = (() => {
     $('quiz-oxigenio').hidden = s.oxigenio === null;
     $('quiz-timer').hidden = s.limiteSeg === null;
     $('quiz-modo').textContent = s.fase ? `${NOMES_MODO[modo]} · ${s.fase.nome}` : s.titulo ? `${NOMES_MODO[modo]} · ${s.titulo}` : NOMES_MODO[modo];
+    $('quiz-contador').title = $('quiz-modo').textContent; // no celular o rótulo some; o nome da sessão fica na dica do contador
 
     pararTimer();
     if (s.limiteSeg !== null) {
@@ -1700,10 +1884,11 @@ const App = (() => {
     renderizarOxigenio(false);
 
     const pct = Math.round((s.indice / s.fila.length) * 100);
-    $('quiz-barra-preenchimento').style.width = pct + '%';
+    UI.progresso($('quiz-barra'), pct);
     $('quiz-barra').setAttribute('aria-valuemax', s.fila.length);
     $('quiz-barra').setAttribute('aria-valuenow', s.indice);
-    $('quiz-contador').textContent = `${s.indice + 1} de ${s.fila.length}`;
+    $('quiz-contador').textContent = `${s.indice + 1}/${s.fila.length}`;
+    $('quiz-contador').setAttribute('aria-label', `Questão ${s.indice + 1} de ${s.fila.length}`);
 
     $('quiz-tema').textContent = q.tema;
     const dif = $('quiz-dificuldade');
@@ -1792,9 +1977,13 @@ const App = (() => {
     painel.classList.toggle('feedback--erro', !r.acertou);
     if (r.acertou) {
       $('feedback-titulo').textContent = 'Mandou bem, Diver!';
-      const partes = [`+${r.xp} XP`, `+${r.perolas} ${r.perolas === 1 ? 'pérola' : 'pérolas'}`];
-      if (r.combo >= 3) partes.push(`sequência de ${r.combo}`);
-      $('feedback-ganho').textContent = partes.join(' · ');
+      // Os números contam de 0 até o ganho (Onda 5); o texto final é o mesmo de antes
+      const xpEl = h('span', { text: '0' });
+      const perolasEl = h('span', { text: '0' });
+      limpar($('feedback-ganho')).append('+', xpEl, ' XP · +', perolasEl, ` ${r.perolas === 1 ? 'pérola' : 'pérolas'}`,
+        r.combo >= 3 ? ` · sequência de ${r.combo}` : '');
+      UI.contar(xpEl, 0, r.xp);
+      UI.contar(perolasEl, 0, r.perolas);
     } else {
       $('feedback-titulo').textContent = r.semOxigenio ? 'Acabou o oxigênio!' : sortear(MSGS_ERRO);
       $('feedback-ganho').textContent = `Resposta certa: ${LETRAS[estado.ordem.indexOf(q.correta)]}) ${q.alternativas[q.correta]}`;
@@ -1803,6 +1992,8 @@ const App = (() => {
     const ultima = r.semOxigenio || s.indice === s.fila.length - 1;
     $('btn-continuar').textContent = ultima ? 'Ver resumo' : 'Continuar';
     painel.hidden = false;
+    // O painel entra logo abaixo das alternativas (não cobre a questão); a página rola só o necessário
+    requestAnimationFrame(() => painel.scrollIntoView({ block: 'nearest', behavior: movimentoReduzido ? 'auto' : 'smooth' }));
     $('btn-continuar').focus({ preventScroll: true });
   }
 
@@ -2017,8 +2208,13 @@ const App = (() => {
 
     $('rs-acertos').textContent = `${r.acertos}/${r.total}`;
     $('rs-tempo').textContent = formatarTempo(r.tempoSeg);
-    $('rs-xp').textContent = `+${r.xp}`;
-    $('rs-perolas').textContent = `+${r.perolas}`;
+    const rsXp = h('span', { text: '0' });
+    const rsPerolas = h('span', { text: '0' });
+    limpar($('rs-xp')).append('+', rsXp);
+    limpar($('rs-perolas')).append('+', rsPerolas);
+    UI.contar(rsXp, 0, r.xp, 600);
+    UI.contar(rsPerolas, 0, r.perolas, 600);
+    if (r.faseConcluida && r.bonus && r.bonus.primeiraVez) UI.confete(); // fim de fase: comemoração discreta
 
     // Selos: nível novo, conquistas, bônus
     const extras = limpar($('resumo-extras'));
@@ -2229,7 +2425,9 @@ const App = (() => {
       atualizarLateral();
     });
     $('btn-simulado').addEventListener('click', () => {
-      iniciarSessao('simulado', { quantidade: Number($('select-simulado').value) });
+      const b = $('btn-simulado');
+      UI.carregando(b, true);
+      Promise.resolve().then(() => iniciarSessao('simulado', { quantidade: Number($('select-simulado').value) })).finally(() => UI.carregando(b, false));
     });
     $('btn-revisao').addEventListener('click', () => iniciarSessao('revisao'));
     $('btn-zerar').addEventListener('click', async () => {

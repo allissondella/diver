@@ -6,9 +6,10 @@
 ## Visão geral
 - HTML, CSS e JavaScript puros, sem build. Abre em qualquer servidor estático (Live Server, `python3 -m http.server`, GitHub Pages).
 - Uma página só (`index.html`) com várias telas (`<section class="tela">`); só uma fica visível por vez.
-- **Barra lateral** com as áreas (fixa no computador a partir de 960 px; gaveta aberta pelo botão ☰ no celular). O endereço muda para `#secao` (ex.: `#jogos`), então o botão Voltar do navegador funciona.
+- **Barra lateral** com as áreas (fixa no computador a partir de 1024 px; gaveta aberta pelo botão ☰ no celular). O endereço muda para `#secao` (ex.: `#jogos`), então o botão Voltar do navegador funciona.
 - Durante um quiz ou um jogo a barra lateral some (classe `modo-foco` no `<body>`): uma ação principal por tela.
-- Scripts **clássicos** com `defer` (sem módulos ES), cada um expondo um objeto global. Ordem de carregamento:
+- **Carregamento sob demanda (Onda 6 da revisão de design, 2026-10-15):** o `index.html` traz só os **20 scripts do núcleo** (config, trilhas, progresso, conquistas, economia, quiz, ui, mascotes, nuvem, atividade, conta, cartas, `jogos/registro.js`, quadros, organizar, mapa-partida, tutorial, grupos, caminho, app). O resto chega em **pacotes** (`PACOTES` em `js/app.js`) na primeira vez que a área abre: cada rota de `ROTAS` diz os seus (`pacotes: ['jogos']`), o `navegar` baixa e volta, e `UI.carregarScript(s)` guarda em memória o que já veio (`async = false`: roda na ordem). Pacotes: `jogos` (todos os jogos e laboratórios; também baixa sozinho, com o navegador ocioso, depois do Início), `cronograma`, `nivelamento`, `provas`, `biblioteca`, `perfil`, `estatisticas`, `admin`, `fila`, `descompressao`; o `js/artigo.js` baixa ao abrir o primeiro "Antes de mergulhar". **Arquivo novo de uma área:** entra no pacote dela, não no `index.html`. Código do núcleo que usa um global de pacote confere antes (`typeof Descompressao !== 'undefined'`). O `js/mapa-partida.js` fica no núcleo porque o `caminho.js` lê o resultado do nivelamento para os estados dos módulos.
+- Scripts **clássicos** com `defer` (sem módulos ES), cada um expondo um objeto global. Ordem de carregamento (os de pacote, na ordem em que o pacote os baixa):
 
 | Ordem | Arquivo | Global | Responsabilidade |
 | --- | --- | --- | --- |
@@ -46,7 +47,7 @@
 | 13f | `js/laboratorio/executor.js`, `editor.js`, `mundo-robo.js`, `laboratorio.js` | `Executor`, `EditorCodigo`, `ConsoleLab`, `MundoRobo`, `Laboratorios` | **Laboratórios "Mão na massa"** (Explora Tech, 2026-10-13). `Executor` roda o Python (Pyodide de `lib/pyodide/`, só quando um laboratório abre) dentro de `laboratorio/sandbox.html` (iframe `sandbox="allow-scripts"`, origem opaca; o worker de módulo nasce de um endereço `data:`), com tempo limite (o worker é encerrado e recriado), `input()` por replay e testes (`laboratorio/diver_lab.py`); sem CORS, cai para um worker comum trancado (sem rede nem armazenamento). `EditorCodigo`/`ConsoleLab`: editor e console próprios. `MundoRobo`: o mundo do Robô Entregador em JS (modo toque e animação), espelho de `laboratorio/labs/robo.py`. `MundoRobo.executar` (2026-10-14) é um mini-interpretador do subconjunto do Python do robô (comandos, sensores, if/elif/else, not/and/or, while, for range, def, break) para as lacunas do celular e os vários mundos (`cenarios`); `conferir-laboratorios.mjs` garante que ele dá os mesmos eventos que o Python. Laboratórios em `js/jogos/`: `robo-entregador.js`, `primeiros-programas.js`, `caca-bugs.js` e `oficina-de-funcoes.js` (os três últimos sobre `js/laboratorio/lab-python.js`) e `lupa-do-codigo.js` (rastreio pré-gravado; `laboratorio/diver_lab.py` grava as variáveis de cada linha). `Laboratorios`: dados (`data/laboratorios/<curso>/<id>.json`), estrelas (`diver:v1:lab:<curso>`, sobe para a nuvem), rascunho só local (`diver-local:v1:lab:*`), dicas, "Agora faça de verdade", erro do Python traduzido e o Resultado padrão (`soBonus`: XP só por estrela nova). |
 | 14 | `js/app.js` | `App` | Navegação, barra lateral, Início (Seu dia + Desafio do Dia), painel da trilha, Sala de Jogos, quiz, resumo. Começa no `DOMContentLoaded`. |
 
-CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos), `css/descompressao.css` (Sala de Descompressão, prefixo `sd-`) e `css/ritmo.css` (régua de espaços e organização das telas; carregado por último, ver `docs/DESIGN.md`, "Espaçamento"). Só variáveis de cor (tokens), nada de cor solta.
+CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.css` (áreas novas), `css/jogos.css` (jogos), `css/descompressao.css` (Sala de Descompressão, prefixo `sd-`), `css/profissoes.css` (Mapa das Profissões, prefixo `prof-`) e `css/ritmo.css` (régua de espaços e organização das telas; carregado por último, ver `docs/DESIGN.md`, "Espaçamento"). Só variáveis de cor (tokens), nada de cor solta.
 
 ## Áreas (barra lateral) e telas
 | Endereço | Tela | Quem desenha |
@@ -72,6 +73,7 @@ CSS: `css/estilo.css` (base, tokens, barra lateral, quiz, resumo), `css/areas.cs
 | `#admin` | `tela-admin` (admin e professor; conteúdo muda conforme o tipo de conta) | `admin.js` |
 | `#fila` | `tela-fila`: Fila de Validação do Mergulho Triplo (só admin) | `fila-validacao.js` |
 | `#descompressao` | `tela-descompressao`: Sala de Descompressão (4 jogos, placar da sala, horários de foco para admin/professor; o jogo abre na mesma tela, em modo foco) | `descompressao.js` + `descompressao/*.js` |
+| `#profissoes`, `#profissoes-cartas`, `#profissoes-metodo`, `#profissao-<id>[-dia\|-mitos]` | `tela-profissoes`: Mapa das Profissões (mapa, Maré de cartas, método, ficha, "Um dia como", "Mito ou verdade"); o roteador manda as seis rotas para a mesma tela e o módulo desenha a certa | `profissoes.js` + `profissoes-infograficos.js` (pacote `profissoes`; ganchos em `app.js`, `ligarProfissoes`) |
 | (sem endereço) | `tela-login`, `tela-senha` (antes do app, com login ativo) | `conta.js` |
 
 - A **trilha atual** é escolhida no Início (cards + barra fixa `#inicio-cta` com o curso escolhido e o "Bora mergulhar!") ou no seletor da barra lateral (`#seletor-trilha`: botão + lista no padrão listbox, setas/Home/End/Enter/Esc, fecha ao clicar fora; `desenharSeletorTrilha` no `app.js`). A cortina de transição é `cortina(texto)` no `app.js`. Áreas que dependem dela: Mergulho, Simulado, Revisão e Sala de Jogos.
@@ -163,6 +165,8 @@ Jogos.registrar({
 | `diver:v1:mascote` | Mascote escolhido: `{ rosto, tom }` (ids de `Mascotes.ROSTOS` e `Mascotes.TONS`). Sincroniza com a nuvem. |
 | `diver:v1:operacao` | Caso Resolvido ("Operação Recife Sombrio" v2): número do caso atual (`rodada`), o caso sorteado (solução, pérolas, interrogados, mergulhos feitos, chaves, riscados, acusação), o histórico dos casos fechados, um resultado ainda não recebido (`pendente`) e o diário de bordo (até 80). Sincroniza com a nuvem. |
 | `diver:v1:descompressao` | Sala de Descompressão: `recordes` por jogo, `hoje` (pontos do dia por jogo, para o card) e `jogos` (estado de cada jogo: caso do dia da Investigação, partida e histórico da Palavrinha do Dia, preferências da Batata Quente). Sincroniza com a nuvem. |
+| `diver:v1:profissoes` | Mapa das Profissões: `vistas`, `mira`, cartas da Maré (`cartasSim`/`cartasNao`), `pedidos`, `dna`, `diaConcluido`, `mitosConcluido`, `chutes`, `votos`, `cartasGeradas`. Sincroniza com a nuvem. |
+| `diver:v1:conquistas-gerais` | Conquistas fora dos cursos (Mapa das Profissões): id → data. Sincroniza com a nuvem. |
 | `diver:v1:tutorial` | Tutoriais já vistos: `{ vistos: { inicio: true, mergulho: true, ... } }`. Sincroniza com a nuvem. |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |
 

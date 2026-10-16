@@ -23,9 +23,22 @@ const Perfil = (() => {
       acertos: porTrilha.reduce((n, x) => n + x.prog.stats.acertos, 0),
       melhorStreak: porTrilha.reduce((n, x) => Math.max(n, x.prog.streak.melhor), 0),
       streakAtual: porTrilha.reduce((n, x) => Math.max(n, x.streak), 0),
-      conquistas: porTrilha.reduce((n, x) => n + x.conquistas, 0),
+      conquistas: porTrilha.reduce((n, x) => n + x.conquistas, 0) + Conquistas.gerais().filter((c) => c.feita).length, // + as gerais (Mapa das Profissões)
       nivel: Progresso.nivel(xp),
     };
+  }
+
+  /* ---------- Conquistas gerais (fora dos cursos: Mapa das Profissões) ---------- */
+  function cartaoConquistasGerais() {
+    const lista = Conquistas.gerais();
+    return h('div', { class: 'cartao' },
+      h('h3', { class: 'cartao__titulo', text: `Conquistas do Mapa das Profissões · ${lista.filter((c) => c.feita).length}/${lista.length}` }),
+      h('ul', { class: 'conquistas' }, lista.map((c) => h('li', {},
+        h('div', { class: `conquista ${c.feita ? '' : 'conquista--bloqueada'}` },
+          h('span', { class: 'conquista__icone' }, icone(c.icone), c.feita ? null : h('span', { class: 'conquista__cadeado', 'aria-hidden': 'true' }, icone('i-cadeado'))),
+          h('span', { class: 'conquista__nome', text: c.nome }),
+          h('span', { class: 'conquista__desc', text: c.descricao }),
+          h('span', { class: 'visualmente-oculto', text: c.feita ? 'Desbloqueada' : 'Bloqueada' }))))));
   }
 
   /* ---------- Mascote do topo ---------- */
@@ -96,6 +109,7 @@ const Perfil = (() => {
               h('td', { 'data-rotulo': 'Pérolas', text: String(x.prog.perolas) }),
               h('td', { 'data-rotulo': 'Fases', text: `${x.fases}/${x.trilha.fases.length}` }),
               h('td', { 'data-rotulo': 'Conquistas', text: `${x.conquistas}/${Conquistas.daTrilha(x.trilha).length}` }))))))),
+      cartaoConquistasGerais(),
       h('h2', { class: 'secao-titulo', text: 'Mais opções' }),
       // Uma lista só, cada opção numa linha: ícone · o que é · botão (no celular, o botão desce)
       h('ul', { class: 'cartao perfil-opcoes' },

@@ -277,7 +277,7 @@
         h('ul', { class: 'sd-atv__resumo' }, emails.map((e) => {
           const acertou = (marcado[e.id] === 'golpe') === e.golpe;
           return h('li', { class: acertou ? 'sd-atv__resumo--ok' : 'sd-atv__resumo--erro' },
-            h('strong', { text: `${acertou ? '✓' : '✗'} ${e.golpe ? 'Golpe' : 'Legítimo'}: ${e.email}` }),
+            h('strong', {}, UI.icone(acertou ? 'i-check' : 'i-x'), ` ${e.golpe ? 'Golpe' : 'Legítimo'}: ${e.email}`),
             h('span', { text: e.explicacao || '' }),
             h('span', { class: 'texto-suave', text: `Pesquise na internet: "${e.pesquisa || 'como identificar phishing'}"` }));
         })),
@@ -489,7 +489,7 @@
       tab.replaceChildren(...grade.map((linha, l) => h('div', { role: 'row', class: 'sd-atv__caca-linha' }, linha.map((c, col) => h('button', {
         type: 'button', role: 'gridcell', class: `sd-atv__celula ${marcadas.has(`${l}-${col}`) ? 'sd-atv__celula--achada' : ''} ${inicio && inicio[0] === l && inicio[1] === col ? 'sd-atv__celula--inicio' : ''}`,
         'aria-label': `Linha ${l + 1}, coluna ${col + 1}: ${c}`, onclick: () => tocar(l, col) }, c)))));
-      listaEl.replaceChildren(...escondidas.map((e) => h('li', { class: achadas.has(e.p) ? 'sd-atv__procurar--ok' : '', text: achadas.has(e.p) ? `✓ ${e.p}` : `${e.p.length} letras` })));
+      listaEl.replaceChildren(...escondidas.map((e) => (achadas.has(e.p) ? h('li', { class: 'sd-atv__procurar--ok' }, UI.icone('i-check'), ` ${e.p}`) : h('li', { text: `${e.p.length} letras` }))));
     }
     function tocar(l, c) {
       if (!inicio) {
@@ -636,7 +636,7 @@
           h('section', { class: 'cartao' }, h('h2', { class: 'cartao__titulo', text: 'Pistas encontradas' }), diario)),
         h('div', { class: 'sd-inv__col' },
           h('section', { class: 'cartao' }, h('h2', { class: 'cartao__titulo', text: 'Seu caderno' }),
-            h('p', { class: 'texto-suave sd-inv__nota', text: 'Toque para marcar: ✕ descartado, ? suspeito.' }), caderno),
+            h('p', { class: 'texto-suave sd-inv__nota', text: 'Toque para marcar: um toque descarta (X), outro marca como suspeito (?).' }), caderno),
           h('section', { class: 'cartao' }, h('h2', { class: 'cartao__titulo', text: 'Acusação' }), acusar))));
 
       function desenhar() {
@@ -651,7 +651,7 @@
             'aria-label': d ? `${c.nome}: ${d.sucesso ? 'desafio vencido' : 'desafio tentado'}` : `${c.nome}: desafio ${info.nome}` },
           h('span', { class: 'sd-inv__comodo-nome', text: c.nome }),
           h('span', { class: 'sd-inv__comodo-desafio' }, icone(info.icone), info.nome),
-          h('span', { class: 'sd-inv__comodo-info', text: d ? (d.sucesso ? `✓ ${plural(caso.porComodo[c.id].length, 'pista', 'pistas')}` : '½ 1 pista') : `+${PONTOS_DESAFIO}` }));
+          (d && d.sucesso ? h('span', { class: 'sd-inv__comodo-info' }, UI.icone('i-check'), ` ${plural(caso.porComodo[c.id].length, 'pista', 'pistas')}`) : h('span', { class: 'sd-inv__comodo-info', text: d ? '½ 1 pista' : `+${PONTOS_DESAFIO}` })));
         }));
         const pistas = Object.keys(p.desafios).flatMap((c) => pistasDe(c).map((x) => ({ ...x, comodo: c })));
         diario.replaceChildren(...(pistas.length ? pistas.map((x) => h('li', { class: 'sd-inv__pista' },
@@ -664,7 +664,7 @@
             const m = p.marcas[k] || '';
             return h('li', {}, h('button', { type: 'button', class: `sd-inv__item ${m === 'x' ? 'sd-inv__item--x' : m === '?' ? 'sd-inv__item--talvez' : ''}`.trim(),
               'data-k': k, 'aria-label': `${it.nome}${m === 'x' ? ', descartado' : m === '?' ? ', suspeito' : ''}`, onclick: () => marcar(k) },
-            h('span', { class: 'sd-inv__marca', 'aria-hidden': 'true', text: m === 'x' ? '✕' : m === '?' ? '?' : '' }),
+            (m === 'x' ? h('span', { class: 'sd-inv__marca', 'aria-hidden': 'true' }, UI.icone('i-x')) : h('span', { class: 'sd-inv__marca', 'aria-hidden': 'true', text: m === '?' ? '?' : '' })),
             h('span', { class: 'sd-inv__item-nome', text: it.nome }),
             it.papel ? h('span', { class: 'sd-inv__item-papel', text: it.papel }) : null));
           })))));
@@ -787,7 +787,7 @@
         ctx.guia([
           { desenho: 'lupa', titulo: 'Um mistério por dia', texto: 'Todo mundo investiga o mesmo caso hoje. Descubra quem foi, com qual arma e em qual cômodo do Navio Aurora.' },
           { alvo: '#sd-inv-mapa', desenho: 'mapa', titulo: 'Um desafio em cada cômodo', texto: `Cofre com senha, e-mails suspeitos, mensagem cifrada, câmeras, fios, receita embaralhada, caça-palavras e um mentiroso. Venceu? +${PONTOS_DESAFIO} pontos e todas as pistas do cômodo. Não deu? Uma pista só.` },
-          { alvo: '#sd-inv-caderno', desenho: 'livro', titulo: 'Seu caderno', texto: 'Cada pista descarta alguém, uma arma ou um cômodo. Anote: um toque marca ✕ (descartado), outro marca ? (suspeito).' },
+          { alvo: '#sd-inv-caderno', desenho: 'livro', titulo: 'Seu caderno', texto: 'Cada pista descarta alguém, uma arma ou um cômodo. Anote: um toque marca X (descartado), outro marca ? (suspeito).' },
           { alvo: '#sd-inv-acusar', desenho: 'alvo', titulo: 'Acusação', texto: `Duas chances: acertar na 1ª vale ${ACUSACAO[0]}; na 2ª, ${ACUSACAO[1]}. Errou? Eu conto quantas das três escolhas estavam certas.` },
         ], forcar);
       }

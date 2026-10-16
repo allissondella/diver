@@ -52,7 +52,9 @@ Jogos.registrar({
         const feita = k < feitas;
         const agora = k === feitas;
         svg += `<circle cx="${p.x}" cy="${p.y}" r="${agora ? 11 : 9}" class="${agora ? 'parada-atual' : ''}" style="fill:${feita ? 'var(--turquesa)' : agora ? 'var(--amarelo)' : 'var(--superficie)'};stroke:var(--fundo-fundo);stroke-width:3"/>`;
-        svg += `<text x="${p.x}" y="${p.y + 4}" text-anchor="middle" font-size="10" font-weight="800" style="fill:var(--texto-escuro)">${feita ? '✓' : k + 1}</text>`;
+        svg += feita
+          ? `<path d="M${p.x - 4} ${p.y} l3 3 l5 -6" fill="none" style="stroke:var(--texto-escuro)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`
+          : `<text x="${p.x}" y="${p.y + 4}" text-anchor="middle" font-size="10" font-weight="800" style="fill:var(--texto-escuro)">${k + 1}</text>`;
       });
       const aberto = feitas >= paradas;
       svg += `<g transform="translate(${bau.x - 14} ${bau.y - 22})"><rect width="28" height="20" rx="4" style="fill:var(--amarelo);stroke:var(--fundo-fundo);stroke-width:3"/><rect y="${aberto ? -8 : 0}" width="28" height="8" rx="3" style="fill:var(--coral);stroke:var(--fundo-fundo);stroke-width:3"/><circle cx="14" cy="11" r="3" style="fill:var(--fundo-fundo)"/></g>`;

@@ -5,6 +5,95 @@
 
 ---
 
+## 2026-10-16 · Mapa das Profissões, Fase 1 (aba "Profissões")
+- **Pedido do usuário:** integrar o kit do Mapa das Profissões (`docs/MAPA_PROFISSOES_INTEGRACAO.md`), no mesmo PR da revisão de design, para um merge só.
+- **Feito:** item **Profissões** (ícone de bússola, grupo "Futuro", entre Estudar e Organizar) com as seis rotas (`#profissoes`, `#profissoes-cartas`, `#profissoes-metodo`, `#profissao-<id>`, `-dia`, `-mitos`) na tela `#tela-profissoes`. Ganchos ligados:
+  - **economia:** "Um dia como" dá 30 XP e 3 pérolas e "Mito ou verdade" 20 XP e 2 pérolas, uma vez por profissão, no curso atual (como o Modo Foco), dentro do teto de bônus;
+  - **log:** 15 tipos novos em `eventos_atividade`, com `curso_id` nulo;
+  - **confirmações:** pela caixa do Diver (`UI.confirmar`);
+  - **matéria-chave:** abre o curso `enem-<matéria>` na próxima aula (sem matrícula, o aviso pede acesso ao admin).
+- **Também entrou:**
+  - três conquistas gerais no Perfil: Explorador de carreiras, Um dia na pele e Baralho completo;
+  - tutorial de 3 passos;
+  - bloco "Mapa das Profissões" no Admin, tirado do log: fichas mais vistas, pedidos, "Me interessa" e quem começa e quem termina o "Um dia como".
+- **Adaptações no módulo (o mínimo; o comportamento das telas é o do kit):**
+  - os scripts viraram o pacote `profissoes` (o Início continua com 20 scripts), e o CSS entra sem travar;
+  - o CSS foi para os tokens: escala de texto, `--z-*`, cortes 767/479 e alvos de 44 px no toque;
+  - tudo numa coluna de 720 px, sem nada lado a lado (preferência do usuário);
+  - ganchos novos `nomeCurso` e `verRascunho`, e `Profissoes.desmontar()` para soltar o teclado da Maré ao sair;
+  - os textos que prometiam "No app, o ranking…" e "botão Reportar" foram trocados pelo que existe hoje;
+  - pedido feito pela busca livre vai ao log como `outra`: nada digitado entra no log;
+  - indicadores do "Um dia como" vão como `ind_<id>`.
+- **Ficha de Enfermagem:** só `materias_chave` mudou (`biologia`/`quimica` → `enem-biologia`/`enem-quimica`). O status continua **rascunho**. O `conferir-ficha.mjs` passou a conferir esses ids no `catalogo.json` (antes só avisava) e passa sem avisos.
+- **Rascunho e aluno:** ficha em rascunho ou validada aparece para o aluno como "Em breve", com "Quero esta ficha"; admin, professor e o modo local veem a ficha com o selo "Em revisão". Assim nada fica público antes da revisão por enfermeiro(a).
+- **Banco:** regra de tipos atualizada no `setup.sql` e aplicada nos bancos de testes e de produção (só acrescenta tipos; sem ela, o primeiro evento de Profissões travaria o envio do log em lote).
+- **Prévia do kit:** `profissoes.html` e o CSS de tokens do preview estão em `docs/prototipos/profissoes/` (fora do app e do auditor). O auditor (`--navegador`) ganhou as seis rotas; notinha de fonte `[1]` dentro de `sup` conta como link no meio do texto.
+- **Testes:**
+  - seis rotas sem erro em 390 e 1280 px, e o auditor completo OK;
+  - recompensa só na primeira vez, com 30/3 e depois 20/2;
+  - log local com os eventos;
+  - conquista com aviso;
+  - matéria-chave abre `enem-biologia`;
+  - visão de aluno com "Em breve";
+  - bloco do Admin com dados simulados;
+  - setas fora da Maré não mexem nas cartas.
+- **Pendências:**
+  1. Revisão da ficha de Enfermagem e das cenas do "Um dia como" por enfermeiro(a); depois, publicar (`status`, `revisao.profissional`).
+  2. Trocar as fontes secundárias pelas primárias (Planalto, planilha do Inep), como anotado na ficha.
+  3. Calibrar o DNA de Enfermagem com 3 a 5 profissionais.
+  4. Refazer a extração do Trends para Direito (o termo veio zerado).
+  5. "Mais exploradas" mostra só este aparelho: o ranking de todos precisa de uma função no banco (a regra de leitura do log só deixa cada aluno ver os próprios eventos).
+  6. Votos reais no dilema (com 50+), coleção de cartas no Perfil e botão "Reportar" na ficha (hoje o texto pede para avisar a equipe).
+  7. Conferir no ambiente de testes, com login, que os eventos chegam ao `eventos_atividade` e que "Na mira" sincroniza entre dois navegadores.
+  8. Próximas fichas: uma por vez, com a skill `criar-ficha-profissao`.
+- **Próximo:** prévia aprovada pelo usuário → merge do PR #85 (design + Profissões).
+
+## 2026-10-16 · Ajuste: tudo centralizado, nada lado a lado
+- **Pedido do usuário:** "não gosto de nada disso lado a lado, eu prefiro centralizado, igual era"; as funcionalidades novas ficam.
+- **Feito:** `.tela` voltou a 720 px centralizada (Início, mapa, Simulado, Revisão, Perfil, Estatísticas); Início sem o herói ao lado do "Continuar" e salas em 2 colunas; mapa do curso, Simulado e Revisão numa coluna só, na ordem de antes. Regra registrada em `docs/DESIGN.md`.
+
+## 2026-10-16 · Revisão de design, Onda 7 (documentação viva) — revisão completa
+- **Feito:** `docs/componentes.html`, o catálogo vivo (47 cores com contraste calculado, escala de texto, espaços, raios, sombras, camadas, movimento, botões em todos os estados, campos, cartões, tags, barras, avisos, esqueleto, 61 ícones e o mascote nas 4 expressões), gerado por `scripts/gerar-componentes.mjs` a partir do `tokens.css` e do `index.html` (abre com file://); o auditor falha se ele ficar desatualizado. `docs/DESIGN.md` reorganizado pelo sistema de verdade, com "O que é proibido" e "Checklist de revisão visual"; `CLAUDE.md` (Visual) resumido; `ARQUITETURA.md` corrigido (barra lateral em 1024 px).
+- **Critérios de aceite:** auditor (estático e no navegador) OK; fotos antes/depois; feedback do quiz não cobre a questão; nenhum emoji de interface; Lighthouse celular 95 (desaceleração real; 76 na estimativa simulada) e acessibilidade 100; testes de regressão sem erro; um commit por onda.
+- **Próximo:** merge para produção pelo usuário (PR #85).
+
+## 2026-10-15 · Revisão de design, Onda 6 (carregamento, app instalável e metadados)
+- **Feito:** o Início abre com 20 scripts (eram 61); o resto vem em pacotes na primeira vez que a área abre (`PACOTES` em `js/app.js`, `UI.carregarScript`), e os jogos baixam sozinhos com o navegador ocioso; `artigo.js` só ao abrir o primeiro artigo; `mapa-partida.js` ficou no núcleo (o Plano de estudos lê o nivelamento). CSS das áreas sem travar, na mesma ordem. Início aparece antes dos scripts (só o herói, sem nada pular). `manifest.webmanifest`, ícones, `og:image`, `canonical`, fontes com `preload`.
+- **Decisões:** sem service worker (cache velho); sem `catalogo-min.json` (o catálogo viaja com ~31 KB comprimido; ganharia ~1,5 KB).
+- **Lighthouse (Início):** celular 82 → 95 (desaceleração real), computador 97 → 99, acessibilidade 100, boas práticas 96 (só a fonte bloqueada no ambiente de medição).
+- **Testes:** todas as áreas abrem com os pacotes; regressão (nivelamento, prova, laboratórios, jogos, quiz) sem erro; auditor completo OK.
+- **Próximo:** Onda 7 (documentação viva).
+
+## 2026-10-15 · Revisão de design, Onda 5 (movimento)
+- **Feito:** XP e pérolas que contam no feedback e no resumo (`UI.contar`); a certa pulsa e a errada balança; conquista com ícone girando e confete discreto (`UI.confete`, também no fim de fase novo); botões sobem 1 px no hover; filete da barra lateral que desliza; 12 bolhas, paradas no quiz, nos jogos e com a aba escondida; cortina em até 700 ms; "?" abre a lista de atalhos (`UI.atalhos`).
+- **Testes:** contagem, filete, atalhos (geral e do quiz), confete e bolhas paradas conferidos no navegador; regressão sem erro; auditor OK.
+- **Próximo:** Onda 6 (carregamento e PWA).
+
+## 2026-10-15 · Revisão de design, Onda 4 (celular e responsividade)
+- **Pedido:** "manda bala em todas até terminar" (Ondas 4 a 7).
+- **Feito:** o auditor ganhou `--navegador` (26 telas × 7 larguras: transbordo, alvo de toque < 44 px, texto < 12 px). Achou 51 problemas no começo (selects dos jogos, etiquetas e listas do Tarefas, Mês/Semana, filtros do Calendário, 25/5 do Foco, setinhas do mascote, links do Perfil, `summary`, dias do mês em 360 px, PDFs e Perfil passando da borda em 360 px); todos corrigidos. Token `--vh-tela` (100dvh) no lugar de `100vh`; `viewport-fit=cover` + áreas seguras no topo, na página e na gaveta; quiz com o celular deitado (topo grudado de 48 px).
+- **Testes:** auditor completo OK; regressão (prova, nivelamento, laboratórios, jogos, quiz) sem erro. Fotos em `docs/fotos/design/onda-4/depois/` (inclui o quiz deitado).
+- **Próximo:** Onda 5 (movimento).
+
+## 2026-10-15 · Revisão de design, Onda 3 (layout por tela)
+- **Feito:** largura de 1120 px (720 na leitura); quiz com topo numa linha, feedback no fluxo e "Continuar" fixo no rodapé; resumo com 4 números; Início e Sala reorganizados; mapa do curso em 2 colunas no computador, status em fichas no celular, "Você está aqui", cabo contínuo até a aula atual, conquistas bloqueadas discretas e "Zona de perigo" fechada; "Antes de mergulhar" com barra de passos e leitura em 65ch; Simulado com coluna lateral; Revisão com o botão no cabeçalho; cartões de jogo iguais (duração em mono, 3 linhas, "Novo hoje" no canto); Tarefas com bordas que esmaecem e pontinhos; Calendário numa linha (duas no celular); Cronograma com botões no pé do cartão; Foco com anel de progresso; Perfil com tabela de verdade; barra lateral de 264 px e gaveta que trava o fundo; login no meio da tela.
+- **Correções no caminho:** o rodapé fixo do quiz não ficava fixo (a animação da tela deixava um `transform`), e o estilo do Plano de estudos quebrava a barra de passos do artigo no computador.
+- **Testes:** PC (1440), tablet (800) e celular (390) sem rolagem lateral e sem erro de página; testes de regressão do quiz, prova, nivelamento, laboratórios e jogos passaram; auditor OK. Fotos em `docs/fotos/design/onda-3/depois/`.
+- **Ficou de fora:** "Ler mais" nos comentários longos do quiz no celular (opcional no plano).
+- **Próximo:** o merge para produção é do usuário; depois, a Onda 4 (responsividade) com OK.
+
+## 2026-10-15 · Revisão de design, Onda 2 (componentes)
+- **Feito:** botões numa família só (primário, secundário, fantasma, perigo, link; 36/44/52 px; foco, ativo, desabilitado e carregando com `UI.carregando` no login, simulado, PDF e cronograma); "Entrar" das salas turquesa; campos e `select` com aparência própria; cartões sem desfoque e com aninhamento sem borda (linhas da aula no mapa); `.tag` única; sprite com traço 2 e ícones novos no lugar de todos os emojis e glifos da interface; `.barra` + `UI.progresso` com brilho ao subir; toasts no canto (computador) e fora do oxigênio (celular); esqueleto nas salas e no curso enquanto baixa.
+- **Testes:** PC, celular, jogos com ícones trocados (Investigação, Tiro, Cardume, Caso Resolvido, Caça ao Tesouro, Cronograma) sem erro de página; auditor OK. Fotos em `docs/fotos/design/onda-2/depois/` (JPEG 1×; o "antes" é o "depois" da Onda 1).
+- **Próximo:** produção (pedido do usuário); Onda 3 (layout por tela) com OK.
+
+## 2026-10-15 · Revisão de design, Onda 1 (fundação de tokens)
+- **Pedido:** `docs/REVISAO_DESIGN.md`, só a Onda 1; parar antes da Onda 2.
+- **Feito:** `css/tokens.css` (cor em camadas, 8 tamanhos de fonte, entrelinhas, espaços, 5 raios, 4 sombras, 3 durações, 10 camadas, `color-scheme: dark`); os 23 hex soltos do `estilo.css` e os 107 dos JS (tutorial, Caso Resolvido, Tiro ao Alvo) viraram tokens (`UI.cor`); 40 tamanhos de fonte viraram 8; 20 larguras de `@media` viraram 4 (barra lateral em 1024); z-index por camada; brilho turquesa e o `blur()` da entrada de tela saíram; corpo em peso 500 (o 400 saiu do Google Fonts).
+- **Ferramentas:** `scripts/auditar-design.mjs` (passa) e `scripts/fotos-design.mjs` (36 fotos antes/depois em `docs/fotos/design/onda-1/`).
+- **Testes:** PC e celular sem erro de página nem rolagem lateral; comportamento intocado.
+- **Próximo:** Onda 2 (componentes), com o OK do usuário.
+
 ## 2026-10-15 · Sala Ensino Médio: os 12 cursos escritos
 - **Feito:** as 167 aulas novas da grade, um commit por módulo: Matemática (24 aulas), Português (17), Biologia (16), Química (17), Física (15), História (21), Geografia (15), Filosofia (10), Sociologia (10), Redação (11), Literatura (10) e Inglês (12). No total são 178 aulas, 3.560 questões, 3.560 variantes e 552 fichas, com 0 erro e 0 aviso no `conferir-trilha.mjs`.
 - **Nivelamento:** 50 questões, sendo 29 copiadas da Diagnóstica do Enem e 21 novas, em todas as disciplinas. A letra da certa foi espalhada nas novas; as 9 que já estavam em produção ficaram iguais.

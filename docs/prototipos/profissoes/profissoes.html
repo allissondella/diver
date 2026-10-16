@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<!-- Protótipo de referência do kit (não entra no app). Abre a partir da raiz do projeto: os caminhos abaixo são relativos à raiz. -->
+<base href="../../../">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mapa das Profissões · Diver</title>
+<meta name="description" content="O que cada profissão faz, estuda e vive no dia a dia, com fonte e data em cada número. Protótipo de referência do Diver.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<!-- SÓ NO PREVIEW: no app, os tokens vêm de css/estilo.css -->
+<link rel="stylesheet" href="docs/prototipos/profissoes/profissoes-preview-tokens.css">
+<link rel="stylesheet" href="css/profissoes.css">
+</head>
+<body>
+<div class="bolhas" aria-hidden="true">
+  <span style="left:8%;width:18px;height:18px;animation-duration:26s"></span>
+  <span style="left:22%;width:10px;height:10px;animation-duration:34s;animation-delay:-9s"></span>
+  <span style="left:41%;width:26px;height:26px;animation-duration:40s;animation-delay:-20s"></span>
+  <span style="left:63%;width:14px;height:14px;animation-duration:30s;animation-delay:-4s"></span>
+  <span style="left:78%;width:20px;height:20px;animation-duration:36s;animation-delay:-15s"></span>
+  <span style="left:91%;width:9px;height:9px;animation-duration:28s;animation-delay:-11s"></span>
+</div>
+<header class="preview-topo" style="position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:1040px;margin:0 auto;padding:14px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));font-size:13px;color:var(--texto-suave)">
+  <a href="#profissoes" style="display:inline-flex;align-items:center;gap:10px;color:var(--texto);text-decoration:none;font-weight:800;font-size:16px">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--turquesa-claro)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/></svg>
+    Diver <span style="font-weight:500;color:var(--texto-suave)">· Mapa das Profissões</span>
+  </a>
+  <span>Protótipo de referência · outubro de 2026 · <a href="#profissoes-metodo" style="color:var(--turquesa-claro)">como fazemos as fichas</a></span>
+</header>
+<main id="app" aria-live="polite"></main>
+<script src="js/profissoes-infograficos.js" defer></script>
+<script src="js/profissoes.js" defer></script>
+<script defer>
+  window.addEventListener('DOMContentLoaded', function () {
+    /* No app, estes ganchos são ligados por app.js (ver docs/MAPA_PROFISSOES_INTEGRACAO.md).
+       Aqui só mostram no console o que seria enviado. */
+    Profissoes.ganchos.recompensar = function (ev) { console.info('[Diver] economia.js receberia:', ev); };
+    Profissoes.ganchos.registrar = function (evento, dados) { console.info('[Diver] atividade.js registraria:', evento, dados); };
+    Profissoes.iniciar(document.getElementById('app'));
+  });
+</script>
+</body>
+</html>

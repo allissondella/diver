@@ -281,6 +281,78 @@ const Admin = (() => {
    * (nome, tipo, acesso em etiquetas, situação) e "Gerenciar", que abre o painel da pessoa. O acesso
    * é mudado na janela "Salas e cursos" e só grava no "Salvar".
    */
+  /* ---------- Mapa das Profissões: números derivados do log (eventos_atividade), sem tabela nova ---------- */
+  const TIPOS_PROFISSOES = ['profissao_vista', 'profissao_pedido', 'profissao_carta', 'profissao_dia_inicio', 'profissao_dia_concluido'];
+  function blocoProfissoes() {
+    const corpo = h('div', { class: 'admin-profissoes', 'aria-live': 'polite' });
+    let carregado = false;
+    const caixa = h('details', { class: 'cartao admin-profissoes-caixa', id: 'admin-profissoes' },
+      h('summary', {}, icone('i-bussola'), 'Mapa das Profissões: o que os alunos exploram'),
+      corpo);
+    caixa.addEventListener('toggle', () => {
+      if (!caixa.open || carregado) return;
+      carregado = true;
+      corpo.replaceChildren(h('p', { class: 'texto-suave', text: 'Lendo o log de atividade…' }));
+      carregarProfissoes().then((partes) => corpo.replaceChildren(...partes), () => {
+        carregado = false;
+        corpo.replaceChildren(h('p', { class: 'texto-suave', text: 'Não deu para ler o log agora. Feche e abra de novo para tentar outra vez.' }));
+      });
+    });
+    return caixa;
+  }
+
+  async function carregarProfissoes() {
+    const [ix, eventos] = await Promise.all([
+      fetch('data/profissoes/indice.json').then((r) => r.json()).catch(() => ({ profissoes: [] })),
+      (async () => {
+        const linhas = [];
+        for (let de = 0; de < 50000; de += 1000) {
+          const pagina = await Nuvem.rest('GET', `eventos_atividade?tipo=in.(${TIPOS_PROFISSOES.join(',')})&select=aluno_id,tipo,detalhes&order=criado_em.desc&offset=${de}&limit=1000`);
+          linhas.push(...(pagina || []));
+          if (!pagina || pagina.length < 1000) break;
+        }
+        return linhas;
+      })(),
+    ]);
+    const nome = (id) => (id === 'outra' ? 'Outra (busca livre)' : ((ix.profissoes || []).find((p) => p.id === id) || {}).nome || id);
+    const prof = (e) => (e.detalhes && typeof e.detalhes.profissao === 'string' ? e.detalhes.profissao : null);
+    // conta por profissão: total de eventos e pessoas diferentes
+    const contar = (filtro) => {
+      const m = new Map();
+      eventos.filter(filtro).forEach((e) => {
+        const id = prof(e);
+        if (!id) return;
+        const x = m.get(id) || { vezes: 0, pessoas: new Set() };
+        x.vezes++; x.pessoas.add(e.aluno_id);
+        m.set(id, x);
+      });
+      return [...m.entries()].map(([id, x]) => ({ id, vezes: x.vezes, pessoas: x.pessoas.size })).sort((a, b) => b.pessoas - a.pessoas || b.vezes - a.vezes);
+    };
+    const tabela = (titulo, linhas, colunas, vazio) => h('div', { class: 'admin-profissoes__bloco' },
+      h('h3', { class: 'cartao__titulo', text: titulo }),
+      linhas.length
+        ? h('div', { class: 'tabela-rolagem' }, h('table', { class: 'tabela' },
+          h('thead', {}, h('tr', {}, colunas.map(([c]) => h('th', { scope: 'col', text: c })))),
+          h('tbody', {}, linhas.slice(0, 10).map((l) => h('tr', {}, colunas.map(([c, f], i) => (i === 0 ? h('th', { scope: 'row', text: f(l) }) : h('td', { 'data-rotulo': c, text: f(l) }))))))))
+        : h('p', { class: 'texto-suave', text: vazio }));
+
+    const vistas = contar((e) => e.tipo === 'profissao_vista');
+    const pedidos = contar((e) => e.tipo === 'profissao_pedido');
+    const interesse = contar((e) => e.tipo === 'profissao_carta' && e.detalhes && e.detalhes.interesse === true);
+    const inicios = contar((e) => e.tipo === 'profissao_dia_inicio');
+    const fins = new Map(contar((e) => e.tipo === 'profissao_dia_concluido').map((x) => [x.id, x.pessoas]));
+    const dia = inicios.map((x) => ({ ...x, concluiram: fins.get(x.id) || 0 }));
+    const alunos = new Set(eventos.map((e) => e.aluno_id)).size;
+
+    return [
+      h('p', { class: 'texto-suave', text: `${UI.plural(alunos, 'pessoa já usou', 'pessoas já usaram')} o Mapa (fichas, Maré de cartas ou "Um dia como"). Os números vêm do log de atividade; cada linha mostra as 10 primeiras.` }),
+      tabela('Fichas mais vistas', vistas, [['Profissão', (l) => nome(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Aberturas', (l) => String(l.vezes)]], 'Nenhuma ficha aberta ainda.'),
+      tabela('Fichas pedidas ("Em breve")', pedidos, [['Profissão', (l) => nome(l.id)], ['Pedidos', (l) => String(l.pessoas)]], 'Nenhum pedido ainda.'),
+      tabela('"Me interessa" na Maré de cartas', interesse, [['Profissão', (l) => nome(l.id)], ['Pessoas', (l) => String(l.pessoas)]], 'Ninguém passou pela Maré ainda.'),
+      tabela('"Um dia como": quem começa e quem termina', dia, [['Profissão', (l) => nome(l.id)], ['Começaram', (l) => String(l.pessoas)], ['Terminaram', (l) => String(l.concluiram)], ['Conclusão', (l) => `${Math.round((100 * l.concluiram) / Math.max(1, l.pessoas))}%`]], 'Ninguém viveu um dia ainda.'),
+    ];
+  }
+
   async function render(secao) {
     limpar(secao);
     const ehAdmin = Nuvem.ehAdmin();
@@ -310,7 +382,8 @@ const Admin = (() => {
         busca,
         ehAdmin ? h('button', { type: 'button', class: 'botao botao--primario admin-topo__novo', id: 'admin-cadastrar', onclick: () => abrirCadastro() }, icone('i-mais'), 'Cadastrar pessoa') : null),
       h('div', { class: 'admin-filtros-linha' }, ehAdmin ? filtros : null, contagemTxt),
-      lista].filter(Boolean));
+      lista,
+      ehAdmin ? blocoProfissoes() : null].filter(Boolean));
 
     /** Quem tem o marcador do pacote e ainda não tem algum curso dele (ex.: curso publicado depois). */
     function pendentesDosPacotes() {

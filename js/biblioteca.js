@@ -239,6 +239,14 @@ const Biblioteca = (() => {
 
     async function enviar(e) {
       const arquivos = [...e.target.files];
+      const rotulo = e.target.closest('label');
+      UI.carregando(rotulo, true);
+      try { await enviarArquivos(arquivos); } finally { UI.carregando(rotulo, false); }
+      e.target.value = '';
+      desenhar();
+    }
+
+    async function enviarArquivos(arquivos) {
       for (const arq of arquivos) {
         if (arq.type !== 'application/pdf' && !arq.name.toLowerCase().endsWith('.pdf')) {
           UI.toast('Não é PDF', arq.name, 'i-x');
@@ -255,8 +263,6 @@ const Biblioteca = (() => {
           UI.toast('Não deu para guardar', 'O navegador recusou (espaço cheio?).', 'i-x');
         }
       }
-      e.target.value = '';
-      desenhar();
     }
 
     async function desenhar() {

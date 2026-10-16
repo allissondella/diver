@@ -1,0 +1,268 @@
+{
+  "versao": 2,
+  "atualizado_em": "2026-10-14",
+  "areas": [
+    {
+      "id": "saude",
+      "nome": "Saúde",
+      "cor": "--verde",
+      "icone": "heartbeat"
+    },
+    {
+      "id": "negocios",
+      "nome": "Negócios",
+      "cor": "--laranja",
+      "icone": "briefcase"
+    },
+    {
+      "id": "direito-sociedade",
+      "nome": "Direito e sociedade",
+      "cor": "--lilas",
+      "icone": "scale"
+    },
+    {
+      "id": "educacao",
+      "nome": "Educação",
+      "cor": "--amarelo",
+      "icone": "school"
+    },
+    {
+      "id": "tecnologia",
+      "nome": "Tecnologia",
+      "cor": "--azul",
+      "icone": "code"
+    },
+    {
+      "id": "engenharia",
+      "nome": "Engenharia e construção",
+      "cor": "--turquesa-claro",
+      "icone": "building"
+    },
+    {
+      "id": "comunicacao",
+      "nome": "Comunicação e artes",
+      "cor": "--coral",
+      "icone": "speakerphone"
+    }
+  ],
+  "profissoes": [
+    {
+      "id": "enfermagem",
+      "nome": "Enfermagem",
+      "area": "saude",
+      "onda": 1,
+      "status": "rascunho",
+      "arquivo": "enfermagem.json",
+      "frase": "Planeja e executa o cuidado do paciente, do posto de saúde à UTI.",
+      "busca": "enfermagem enfermeiro enfermeira tecnico de enfermagem",
+      "carta": {
+        "fato": "Desde 2025, a graduação não pode mais ser feita a distância. Quem busca \"enfermagem EAD\" encontra uma porta fechada.",
+        "fonte": "decreto-12456"
+      }
+    },
+    {
+      "id": "medicina",
+      "nome": "Medicina",
+      "area": "saude",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "medicina medico medica",
+      "carta": {
+        "fato": "No Sisu 2026, 17 mil candidatos disputaram 160 vagas na UFMG. A procura dispara em janeiro e fevereiro.",
+        "fonte": "sisu-2026"
+      },
+      "trends_id": "medicina"
+    },
+    {
+      "id": "psicologia",
+      "nome": "Psicologia",
+      "area": "saude",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "psicologia psicologo psicologa",
+      "carta": {
+        "fato": "375 mil matriculados, quase todos presenciais. Psicólogo não prescreve remédio; isso é do psiquiatra.",
+        "fonte": "censo-2024"
+      },
+      "trends_id": "psicologia"
+    },
+    {
+      "id": "fisioterapia",
+      "nome": "Fisioterapia",
+      "area": "saude",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "fisioterapia fisioterapeuta"
+    },
+    {
+      "id": "educacao-fisica",
+      "nome": "Educação Física",
+      "area": "saude",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "educacao fisica personal professor de educacao fisica"
+    },
+    {
+      "id": "administracao",
+      "nome": "Administração",
+      "area": "negocios",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "administracao administrador gestao",
+      "trends_id": "administracao"
+    },
+    {
+      "id": "ciencias-contabeis",
+      "nome": "Ciências Contábeis",
+      "area": "negocios",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "contabilidade ciencias contabeis contador",
+      "trends_id": "ciencias-contabeis"
+    },
+    {
+      "id": "gestao-de-pessoas",
+      "nome": "Gestão de Pessoas",
+      "area": "negocios",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "gestao de pessoas recursos humanos rh"
+    },
+    {
+      "id": "direito",
+      "nome": "Direito",
+      "area": "direito-sociedade",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "direito advogado advogada advocacia",
+      "carta": {
+        "fato": "Quase 653 mil matriculados, e praticamente todos em curso presencial. EAD também está proibido aqui.",
+        "fonte": "censo-2024"
+      }
+    },
+    {
+      "id": "pedagogia",
+      "nome": "Pedagogia",
+      "area": "educacao",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "pedagogia pedagogo pedagoga professor",
+      "carta": {
+        "fato": "É o curso com mais matrículas do país: cerca de 888 mil estudantes em 2024, e 83% deles a distância.",
+        "fonte": "censo-2024"
+      },
+      "trends_id": "pedagogia"
+    },
+    {
+      "id": "sistemas",
+      "nome": "Sistemas e desenvolvimento",
+      "area": "tecnologia",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "sistemas de informacao analise e desenvolvimento de sistemas ads ti programador software",
+      "carta": {
+        "fato": "Quinto curso com mais matrículas, 63% delas a distância. Formato oposto ao da saúde.",
+        "fonte": "censo-2024"
+      }
+    },
+    {
+      "id": "engenharia-civil",
+      "nome": "Engenharia Civil",
+      "area": "engenharia",
+      "onda": 1,
+      "status": "planejada",
+      "busca": "engenharia civil engenheiro civil construcao",
+      "carta": {
+        "fato": "A busca por \"engenharia civil salário\" cresceu 250% em cinco anos. Quem pesquisa esse curso pesquisa carreira.",
+        "fonte": "trends"
+      },
+      "trends_id": "engenharia-civil"
+    },
+    {
+      "id": "odontologia",
+      "nome": "Odontologia",
+      "area": "saude",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "odontologia dentista"
+    },
+    {
+      "id": "medicina-veterinaria",
+      "nome": "Medicina Veterinária",
+      "area": "saude",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "medicina veterinaria veterinario"
+    },
+    {
+      "id": "nutricao",
+      "nome": "Nutrição",
+      "area": "saude",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "nutricao nutricionista"
+    },
+    {
+      "id": "farmacia",
+      "nome": "Farmácia",
+      "area": "saude",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "farmacia farmaceutico"
+    },
+    {
+      "id": "biomedicina",
+      "nome": "Biomedicina",
+      "area": "saude",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "biomedicina biomedico"
+    },
+    {
+      "id": "arquitetura",
+      "nome": "Arquitetura e Urbanismo",
+      "area": "engenharia",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "arquitetura arquiteto urbanismo"
+    },
+    {
+      "id": "engenharia-de-producao",
+      "nome": "Engenharia de Produção",
+      "area": "engenharia",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "engenharia de producao"
+    },
+    {
+      "id": "ciencia-da-computacao",
+      "nome": "Ciência da Computação",
+      "area": "tecnologia",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "ciencia da computacao computacao"
+    },
+    {
+      "id": "inteligencia-artificial",
+      "nome": "Inteligência Artificial",
+      "area": "tecnologia",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "inteligencia artificial ia"
+    },
+    {
+      "id": "comunicacao",
+      "nome": "Jornalismo e Publicidade",
+      "area": "comunicacao",
+      "onda": 2,
+      "status": "planejada",
+      "busca": "jornalismo publicidade comunicacao marketing"
+    }
+  ],
+  "fontes_cartas": {
+    "censo-2024": "Inep, Censo da Educação Superior 2024, via CNN Brasil (23/09/2025)",
+    "sisu-2026": "VestibulandoWeb, Sisu 2026 (01/06/2026); confirmar nos dados do MEC",
+    "trends": "Google Trends, Brasil, 2021–2026, extraído em 14/10/2026",
+    "decreto-12456": "Decreto nº 12.456/2025"
+  }
+}

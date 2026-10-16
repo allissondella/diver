@@ -208,8 +208,11 @@ const ProvasEnviadas = (() => {
           h('h2', { class: 'cartao__titulo', text: 'Provas antigas' }),
           h('p', { text: 'Suba uma prova antiga (PDF ou texto) com o gabarito: o Diver separa as questões e ela vira um simulado com correção no final.' }))),
       h('div', { class: 'modo__acoes' },
-        h('button', { type: 'button', class: 'botao botao--primario', onclick: () => App.irPara('upload-prova') }, icone('i-upload'), 'Upload de prova')));
-    el.replaceChildren(...[cabeca, nuvemLigada() ? blocoCurso(trilha) : null, blocoMinhas(trilha)].filter(Boolean));
+        h('button', { type: 'button', class: 'botao botao--secundario', onclick: () => App.irPara('upload-prova') }, icone('i-upload'), 'Upload de prova')));
+    const listas = [nuvemLigada() ? blocoCurso(trilha) : null, blocoMinhas(trilha)].filter(Boolean);
+    // Onda 3: o convite "Provas antigas" pode morar em outro lugar da tela (data-cabeca), longe das listas
+    const outro = el.dataset.cabeca && document.getElementById(el.dataset.cabeca);
+    if (outro) { outro.replaceChildren(cabeca); el.replaceChildren(...listas); } else el.replaceChildren(cabeca, ...listas);
   }
 
   /* ---------- Upload: etapa 1 (arquivo, tempo e palavra de honra) ---------- */

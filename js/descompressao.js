@@ -92,12 +92,12 @@ const Descompressao = (() => {
       return h('article', { class: `jogo-card jogo-card--disponivel sd-card sd-card--${j.id}` },
         h('div', { class: 'jogo-card__topo' },
           h('span', { class: 'jogo-card__icone', 'aria-hidden': 'true' }, icone(j.icone)),
-          h('div', {}, h('h2', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave', text: j.duracao }))),
+          h('div', {}, h('h2', { class: 'jogo-card__nome', text: j.nome }), h('span', { class: 'texto-suave jogo-card__duracao', text: j.duracao }))),
         h('p', { class: 'jogo-card__descricao', text: j.descricao }),
         h('div', { class: 'jogo-card__rodape' },
           feito ? h('span', { class: 'chip chip--ativo' }, icone('i-check'), `Hoje: ${plural(d.hoje[j.id].pontos, 'ponto', 'pontos')}`)
             : recorde ? h('span', { class: 'jogo-card__hist', text: `Recorde: ${recorde}` })
-              : j.diario ? h('span', { class: 'chip chip--hoje', text: 'Novo hoje' }) : null,
+              : j.diario ? h('span', { class: 'chip chip--hoje jogo-card__selo', text: 'Novo hoje' }) : null,
           h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => abrir(j.id), 'aria-label': `${feito && !j.treino ? 'Ver' : 'Jogar'} ${j.nome}` }, feito && !j.treino ? 'Ver' : 'Jogar')));
     }));
     const verRanking = h('div', { class: 'sd-ver-ranking' },
@@ -125,7 +125,7 @@ const Descompressao = (() => {
     cardume: 'Vale o seu recorde.',
   };
   const PERIODOS = [['mes', 'Este mês'], ['geral', 'Total']];
-  const MEDALHA = ['🥇', '🥈', '🥉'];
+  const MEDALHA = ['ouro', 'prata', 'bronze'];
 
   function segmentado(rotulo, opcoes, atual, aoMudar) {
     const grupo = h('div', { class: 'segmentado', role: 'group', 'aria-label': rotulo });
@@ -163,7 +163,9 @@ const Descompressao = (() => {
           ? `Você está em ${eu.posicao}º de ${linhas.length} ${quando}, com ${plural(eu.pontos, 'ponto', 'pontos')}.`
           : `${plural(linhas.length, 'pessoa', 'pessoas')} no ranking ${quando}. Jogue para entrar!` }) : null,
         top.length ? h('ol', { class: 'pal-ranking__itens' }, top.map((l) => h('li', { class: `pal-ranking__item ${l.sou_eu ? 'pal-ranking__item--eu' : ''}`.trim() },
-          h('span', { class: 'pal-ranking__pos', text: l.posicao <= 3 ? MEDALHA[l.posicao - 1] : `${l.posicao}º`, 'aria-label': `${l.posicao}º lugar` }),
+          (l.posicao <= 3
+            ? h('span', { class: `pal-ranking__pos pal-ranking__pos--${MEDALHA[l.posicao - 1]}`, role: 'img', 'aria-label': `${l.posicao}º lugar` }, icone('i-medalha'))
+            : h('span', { class: 'pal-ranking__pos', text: `${l.posicao}º`, 'aria-label': `${l.posicao}º lugar` })),
           h('span', { class: 'pal-ranking__quem' }, h('span', { class: 'pal-ranking__nome', text: l.sou_eu ? `${l.nome} (você)` : l.nome })),
           h('span', { class: 'pal-ranking__pontos', text: `${l.pontos} pts` }))))
           : h('p', { class: 'texto-suave', text: 'Ninguém pontuou ainda. A primeira posição está esperando você.' }),

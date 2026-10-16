@@ -101,25 +101,31 @@ const CasoResolvido = (() => {
     Dados.gravar(CHAVE, tudo);
   }
 
+  // Cores dos desenhos vêm dos tokens do css/tokens.css (UI.cor); o JSON do caso pode trazer as suas em hex
+  const P = { primaria: UI.cor('primaria'), clara: UI.cor('primaria-clara'), pressionada: UI.cor('primaria-pressionada'), destaque: UI.cor('destaque'), erro: UI.cor('erro'), texto: UI.cor('texto-1'), suave: UI.cor('texto-2'), sup1: UI.cor('superficie-1'), sup2: UI.cor('superficie-2'), supT: UI.cor('superficie-turquesa'), perola: UI.cor('perola'), fundo: UI.cor('fundo-0'), claro: UI.cor('claro'), marinho: UI.cor('fundo-1'), lilas: UI.cor('lilas'), erroPalida: UI.cor('erro-palida'), pele: UI.cor('pele-padrao'), cabelo: UI.cor('cabelo-padrao'), sardas: UI.cor('sardas'), amareloSombra: UI.cor('amarelo-sombra') };
+  /** De 0 a 3 estrelas (ícones do sprite), com o número para o leitor de tela. */
+  const estrelas = (n) => UI.h('span', { class: 'estrelas', role: 'img', 'aria-label': `${n} de 3 estrelas` },
+    [0, 1, 2].map((i) => UI.icone(i < n ? 'i-estrela' : 'i-estrela-vazia', i < n ? 'estrelas__cheia' : 'estrelas__vazia')));
+
   /** A Sombra: polvo sombrio, vilão do caso (SVG fixo deste arquivo). */
   const SOMBRA = `<svg viewBox="0 0 100 100" aria-hidden="true">
     <path d="M50 8 C25 8 17 29 19 49 C20 59 23 65 27 69 Q21 81 12 85 Q25 89 34 76 Q36 86 31 95 Q42 91 44 78 Q47 90 50 97 Q53 90 56 78 Q58 91 69 95 Q64 86 66 76 Q75 89 88 85 Q79 81 73 69 C77 65 80 59 81 49 C83 29 75 8 50 8 Z"
-      fill="#0A1A33" stroke="#C4B5FD" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M30 26 Q50 14 70 26" fill="none" stroke="#C4B5FD" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
-    <path d="M32 42 L46 47 L44 54 L33 51 Z" fill="#FB7185"/><path d="M68 42 L54 47 L56 54 L67 51 Z" fill="#FB7185"/>
-    <circle cx="41" cy="50" r="1.6" fill="#FFE4E8"/><circle cx="59" cy="50" r="1.6" fill="#FFE4E8"/>
-    <path d="M39 63 L43 60 L47 63 L51 60 L55 63 L59 60 L62 62" fill="none" stroke="#5EEAD4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      fill="${P.fundo}" stroke="${P.lilas}" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M30 26 Q50 14 70 26" fill="none" stroke="${P.lilas}" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+    <path d="M32 42 L46 47 L44 54 L33 51 Z" fill="${P.erro}"/><path d="M68 42 L54 47 L56 54 L67 51 Z" fill="${P.erro}"/>
+    <circle cx="41" cy="50" r="1.6" fill="${P.erroPalida}"/><circle cx="59" cy="50" r="1.6" fill="${P.erroPalida}"/>
+    <path d="M39 63 L43 60 L47 63 L51 60 L55 63 L59 60 L62 62" fill="none" stroke="${P.clara}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`;
 
   /* ---------- Retratos dos personagens (SVG fixo; cores do JSON só em hexadecimal) ---------- */
-  const CONTORNO = 'stroke="#06172D" stroke-width="3" stroke-linejoin="round"';
+  const CONTORNO = `stroke="${P.fundo}" stroke-width="3" stroke-linejoin="round"`;
   const cor = (c, padrao) => (/^#[0-9a-f]{3,8}$/i.test(c || '') ? c : padrao); // só aceita cor em hex (o caso vem de JSON)
 
   /** Retrato de suspeito no estilo figurinha, a partir de { pele, cabelo, penteado, roupa, acessorio }. */
   function retrato(v = {}) {
-    const pele = cor(v.pele, '#F2B28C');
-    const cabelo = cor(v.cabelo, '#7A4630');
-    const roupa = cor(v.roupa, '#14B8A6');
+    const pele = cor(v.pele, P.pele);
+    const cabelo = cor(v.cabelo, P.cabelo);
+    const roupa = cor(v.roupa, P.primaria);
     const cab = {
       curto: `<path d="M30 44 Q28 22 50 21 Q72 22 70 44 Q64 32 50 31 Q36 32 30 44 Z" fill="${cabelo}" ${CONTORNO}/>`,
       coque: `<circle cx="50" cy="17" r="9" fill="${cabelo}" ${CONTORNO}/><path d="M30 44 Q28 22 50 21 Q72 22 70 44 Q64 30 50 29 Q36 30 30 44 Z" fill="${cabelo}" ${CONTORNO}/>`,
@@ -128,24 +134,24 @@ const CasoResolvido = (() => {
       bigode: `<path d="M32 38 Q34 24 50 24 Q66 24 68 38 Q60 32 50 32 Q40 32 32 38 Z" fill="${cabelo}" ${CONTORNO}/>`,
     }[v.penteado] || '';
     const bigode = v.penteado === 'bigode' ? `<path d="M40 53 Q50 47 60 53 Q50 57 40 53 Z" fill="${cabelo}" ${CONTORNO}/>` : '';
-    const boca = v.penteado === 'bigode' ? '<path d="M45 58 Q50 61 55 58" fill="none" stroke="#06172D" stroke-width="2.5" stroke-linecap="round"/>' : '<path d="M44 53 Q50 58 56 53" fill="none" stroke="#06172D" stroke-width="2.5" stroke-linecap="round"/>';
+    const boca = v.penteado === 'bigode' ? `<path d="M45 58 Q50 61 55 58" fill="none" stroke="${P.fundo}" stroke-width="2.5" stroke-linecap="round"/>` : `<path d="M44 53 Q50 58 56 53" fill="none" stroke="${P.fundo}" stroke-width="2.5" stroke-linecap="round"/>`;
     const acessorio = {
-      oculos: '<g fill="rgba(230,241,255,.25)" stroke="#06172D" stroke-width="2.5"><circle cx="43" cy="44" r="6.5"/><circle cx="57" cy="44" r="6.5"/><path d="M49.5 44 H50.5"/></g>',
-      fone: '<path d="M28 44 Q28 16 50 16 Q72 16 72 44" fill="none" stroke="#06172D" stroke-width="4"/><rect x="23" y="38" width="9" height="14" rx="4" fill="#14B8A6" stroke="#06172D" stroke-width="2.5"/><rect x="68" y="38" width="9" height="14" rx="4" fill="#14B8A6" stroke="#06172D" stroke-width="2.5"/>',
-      quepe: `<path d="M28 32 Q30 12 50 12 Q70 12 72 32 Z" fill="#0B2545" ${CONTORNO}/><path d="M26 32 H74 L70 37 H30 Z" fill="#12325A" ${CONTORNO}/><circle cx="50" cy="22" r="4" fill="#FACC15"/>`,
-      bone: `<path d="M30 34 Q30 16 50 16 Q70 16 70 34 Z" fill="#FACC15" ${CONTORNO}/><path d="M62 32 L86 35 L70 38 Z" fill="#FACC15" ${CONTORNO}/>`,
-      capacete: `<path d="M27 36 Q27 14 50 14 Q73 14 73 36 Z" fill="#FACC15" ${CONTORNO}/><rect x="22" y="34" width="56" height="6" rx="3" fill="#FACC15" ${CONTORNO}/><path d="M50 14 V34" stroke="#C99A0B" stroke-width="3"/>`,
-      brincos: '<circle cx="29" cy="52" r="3.5" fill="#F5F0E6" stroke="#06172D" stroke-width="1.5"/><circle cx="71" cy="52" r="3.5" fill="#F5F0E6" stroke="#06172D" stroke-width="1.5"/>',
+      oculos: `<g fill="rgba(230,241,255,.25)" stroke="${P.fundo}" stroke-width="2.5"><circle cx="43" cy="44" r="6.5"/><circle cx="57" cy="44" r="6.5"/><path d="M49.5 44 H50.5"/></g>`,
+      fone: `<path d="M28 44 Q28 16 50 16 Q72 16 72 44" fill="none" stroke="${P.fundo}" stroke-width="4"/><rect x="23" y="38" width="9" height="14" rx="4" fill="${P.primaria}" stroke="${P.fundo}" stroke-width="2.5"/><rect x="68" y="38" width="9" height="14" rx="4" fill="${P.primaria}" stroke="${P.fundo}" stroke-width="2.5"/>`,
+      quepe: `<path d="M28 32 Q30 12 50 12 Q70 12 72 32 Z" fill="${P.marinho}" ${CONTORNO}/><path d="M26 32 H74 L70 37 H30 Z" fill="${P.sup1}" ${CONTORNO}/><circle cx="50" cy="22" r="4" fill="${P.destaque}"/>`,
+      bone: `<path d="M30 34 Q30 16 50 16 Q70 16 70 34 Z" fill="${P.destaque}" ${CONTORNO}/><path d="M62 32 L86 35 L70 38 Z" fill="${P.destaque}" ${CONTORNO}/>`,
+      capacete: `<path d="M27 36 Q27 14 50 14 Q73 14 73 36 Z" fill="${P.destaque}" ${CONTORNO}/><rect x="22" y="34" width="56" height="6" rx="3" fill="${P.destaque}" ${CONTORNO}/><path d="M50 14 V34" stroke="${P.amareloSombra}" stroke-width="3"/>`,
+      brincos: `<circle cx="29" cy="52" r="3.5" fill="${P.perola}" stroke="${P.fundo}" stroke-width="1.5"/><circle cx="71" cy="52" r="3.5" fill="${P.perola}" stroke="${P.fundo}" stroke-width="1.5"/>`,
     }[v.acessorio] || '';
-    const sardas = v.acessorio === 'bone' ? '<g fill="#C9754B" opacity=".7"><circle cx="40" cy="50" r="1.2"/><circle cx="43" cy="52" r="1.2"/><circle cx="60" cy="50" r="1.2"/><circle cx="57" cy="52" r="1.2"/></g>' : '';
+    const sardas = v.acessorio === 'bone' ? `<g fill="${P.sardas}" opacity=".7"><circle cx="40" cy="50" r="1.2"/><circle cx="43" cy="52" r="1.2"/><circle cx="60" cy="50" r="1.2"/><circle cx="57" cy="52" r="1.2"/></g>` : '';
     return `<svg viewBox="0 0 100 100" aria-hidden="true">
-      <circle cx="50" cy="50" r="47" fill="#0C354C" stroke="#5EEAD4" stroke-width="3"/>
+      <circle cx="50" cy="50" r="47" fill="${P.supT}" stroke="${P.clara}" stroke-width="3"/>
       <path d="M16 100 Q18 72 50 70 Q82 72 84 100 Z" fill="${roupa}" ${CONTORNO}/>
       <rect x="44" y="58" width="12" height="14" fill="${pele}"/>
       ${v.penteado === 'cacheado' ? cab : ''}
       <circle cx="50" cy="44" r="20" fill="${pele}" ${CONTORNO}/>
       ${v.penteado !== 'cacheado' ? cab : ''}
-      <circle cx="43" cy="45" r="2.6" fill="#06172D"/><circle cx="57" cy="45" r="2.6" fill="#06172D"/>
+      <circle cx="43" cy="45" r="2.6" fill="${P.fundo}"/><circle cx="57" cy="45" r="2.6" fill="${P.fundo}"/>
       ${sardas}${bigode}${boca}${acessorio}
     </svg>`;
   }
@@ -277,7 +283,7 @@ Jogos.registrar({
         listaRanking));
     const principal = h('div', { class: 'op-principal' });
     raiz.replaceChildren(h('div', { class: 'op-raiz' }, h('div', { class: 'op' }, principal, lateral)));
-    if (window.matchMedia && window.matchMedia('(max-width: 699px)').matches) lateral.querySelector('details').open = false;
+    if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) lateral.querySelector('details').open = false;
     desenharLog();
 
     function mostrar(...filhos) {
@@ -628,7 +634,7 @@ Jogos.registrar({
         area.replaceChildren();
         desenharLista();
         desenharLeitor();
-        if (rolar && window.matchMedia && window.matchMedia('(max-width: 759px)').matches) leitor.scrollIntoView({ block: 'start', behavior: UI.movimentoReduzido ? 'auto' : 'smooth' });
+        if (rolar && window.matchMedia && window.matchMedia('(max-width: 767px)').matches) leitor.scrollIntoView({ block: 'start', behavior: UI.movimentoReduzido ? 'auto' : 'smooth' });
       }
 
       function armadilha(e, chave, msg) {
@@ -1440,7 +1446,7 @@ Jogos.registrar({
         const pontos = acertos * 50 + (acertos === 3 ? 100 : 0);
         c.acusacao = { escolha: { ...escolha }, acertos, pontos, quando: Date.now() };
         est.historico.push({ n: c.n, acertos, pontos: pontosDoCaso(c), quem: c.solucao.quem, quando: Date.now() });
-        registrar('i-estrela', `Acusação do caso nº ${c.n}: ${acertos} de 3 (${'★'.repeat(acertos) || 'nenhuma estrela'}).`, pontos);
+        registrar('i-estrela', `Acusação do caso nº ${c.n}: ${acertos} de 3 (${acertos ? UI.plural(acertos, 'estrela', 'estrelas') : 'nenhuma estrela'}).`, pontos);
         revelar();
       }
 
@@ -1450,7 +1456,7 @@ Jogos.registrar({
         { alvo: '#op-acusar', desenho: 'estrela', titulo: 'Uma acusação por caso', texto: 'Cada item certo vale uma estrela. As três certas fecham o caso com tudo.' },
       ]);
       mostrar(h('section', { class: 'op-missao-tela' },
-        cabecalho('Mural do caso', `Caso nº ${c.n}`, h('span', { class: `op-tentativa ${feita ? '' : 'op-tentativa--aberta'}`, text: feita ? `acusação feita · ${'★'.repeat(feita.acertos)}${'☆'.repeat(3 - feita.acertos)}` : '1 acusação · aberta' }), comoBotao),
+        cabecalho('Mural do caso', `Caso nº ${c.n}`, (feita ? h('span', { class: 'op-tentativa' }, 'acusação feita · ', estrelas(feita.acertos)) : h('span', { class: 'op-tentativa op-tentativa--aberta', text: '1 acusação · aberta' })), comoBotao),
         comoJogar(['Leia as pérolas e **risque** com o X quem foi inocentado.', 'Escolha **quem**, **com o quê** e **como**.',
           'Acuse uma vez: **50** por item certo e **+100** pelas três certas.']),
         feita ? h('p', { class: 'op-caixa op-nota' }, h('strong', { text: 'Caso encerrado. ' }), comoFoi(c)) : null,
@@ -1483,7 +1489,7 @@ Jogos.registrar({
       });
       const resultado = Jogos.resultado({
         jogoId: 'caso', trilha: ctx.trilha, detalhes, inicio: a.quando - 1000, concluido: true,
-        bonus: { xp: Math.round(a.pontos / 4), perolas: a.acertos * 3, motivo: `Acusação · ${'★'.repeat(a.acertos)}` },
+        bonus: { xp: Math.round(a.pontos / 4), perolas: a.acertos * 3, motivo: `Acusação · ${UI.plural(a.acertos, 'estrela', 'estrelas')}` },
         pontuacao: a.pontos,
         titulo: pega ? 'Caso resolvido!' : 'Caso encerrado',
         subtitulo: pega ? `${caso.titulo}: a Sombra foi pega.` : `Você acertou ${a.acertos} de 3. A Sombra era ${quem.nome}.`,
@@ -1494,7 +1500,7 @@ Jogos.registrar({
       carregarRanking();
       mostrar(h('section', { class: 'op-missao-tela' },
         cabecalho(pega ? 'Mandou bem, Diver! A Sombra foi pega.' : 'A Sombra quase escapou', `Caso nº ${c.n}`,
-          h('span', { class: 'op-titulo__pts', text: `${'★'.repeat(a.acertos)}${'☆'.repeat(3 - a.acertos)} · +${a.pontos} pts` })),
+          h('span', { class: 'op-titulo__pts' }, estrelas(a.acertos), ` · +${a.pontos} pts`)),
         h('article', { class: `op-revelado ${pega ? 'op-revelado--pega' : ''}` },
           ret,
           h('div', {},
