@@ -33,6 +33,7 @@ const MOTORES = {
   sala: new Function(`${ler('js/laboratorio/motor-sala.js')}\nreturn MotorSala;`)(),
   rede: new Function(`${ler('js/laboratorio/motor-rede.js')}\nreturn MotorRede;`)(),
 };
+MOTORES['rede-terminal'] = { verificar: (m) => MOTORES.rede.verificarTerminal(m) }; // Laboratório de Rede (terminal)
 
 const GRAVAR = process.argv.includes('--gravar');
 let mudou = false;

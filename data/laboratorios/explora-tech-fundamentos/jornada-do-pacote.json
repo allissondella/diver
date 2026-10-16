@@ -1268,6 +1268,775 @@
         "Escolha um IP livre em 192.168.0; o gateway e o DNS podem ser o roteador.",
         "IP 192.168.0.30, gateway 192.168.0.1 e DNS 192.168.0.1."
       ]
+    },
+    {
+      "id": "jp-porta-certa",
+      "aulas": [
+        "rede-portas-tcp-udp"
+      ],
+      "grupo": "Portas e transporte",
+      "titulo": "O apartamento certo",
+      "enunciado": "O pedido chega ao IP da escola, mas na **porta** errada. O servidor tem HTTP na 80 e HTTPS na 443. Escolha a porta do pedido HTTPS.",
+      "objetivo": "O pedido HTTPS chegar ao programa certo do servidor.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "8080",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "mostrar": [
+        {
+          "rotulo": "Servidor da escola",
+          "valor": "198.51.100.7"
+        },
+        {
+          "rotulo": "HTTP",
+          "valor": "porta 80"
+        },
+        {
+          "rotulo": "HTTPS",
+          "valor": "porta 443"
+        }
+      ],
+      "campos": [
+        {
+          "id": "porta",
+          "rotulo": "Porta de destino",
+          "caminho": "pedido.porta",
+          "tipo": "escolha",
+          "opcoes": [
+            "8080",
+            "80",
+            "22",
+            "443"
+          ]
+        }
+      ],
+      "solucao": {
+        "porta": "443"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "O pedido é HTTPS: qual porta fala HTTPS nesse servidor?",
+        "A 80 fala HTTP; a 22 é do SSH; a 8080 está fechada.",
+        "Escolha a 443."
+      ]
+    },
+    {
+      "id": "jp-aperto-de-mao",
+      "aulas": [
+        "rede-portas-tcp-udp"
+      ],
+      "grupo": "Portas e transporte",
+      "titulo": "O aperto de mão",
+      "enunciado": "Antes do pedido, o TCP combina a conversa em três tempos. Ponha as mensagens na ordem e mande o pacote para ver o aperto de mão no painel.",
+      "objetivo": "Abrir a conexão TCP e ver o boletim chegar.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "mostrarHandshake": true,
+      "tituloCampos": "O aperto de mão",
+      "campos": [
+        {
+          "id": "t1",
+          "rotulo": "1º: o cliente manda",
+          "tipo": "escolha",
+          "opcoes": [
+            "ACK",
+            "SYN-ACK",
+            "SYN"
+          ],
+          "certo": "SYN",
+          "erro": "Quem começa é o cliente, pedindo para conversar: SYN.",
+          "camada": "transporte"
+        },
+        {
+          "id": "t2",
+          "rotulo": "2º: o servidor responde",
+          "tipo": "escolha",
+          "opcoes": [
+            "SYN",
+            "ACK",
+            "SYN-ACK"
+          ],
+          "certo": "SYN-ACK",
+          "erro": "O servidor aceita e também pede: SYN-ACK.",
+          "camada": "transporte"
+        },
+        {
+          "id": "t3",
+          "rotulo": "3º: o cliente confirma",
+          "tipo": "escolha",
+          "opcoes": [
+            "SYN-ACK",
+            "ACK",
+            "SYN"
+          ],
+          "certo": "ACK",
+          "erro": "O cliente fecha o combinado: ACK.",
+          "camada": "transporte"
+        }
+      ],
+      "solucao": {
+        "t1": "SYN",
+        "t2": "SYN-ACK",
+        "t3": "ACK"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "Pedir, aceitar, confirmar.",
+        "SYN quer dizer \"vamos sincronizar\"; ACK quer dizer \"confirmado\".",
+        "SYN, SYN-ACK, ACK."
+      ]
+    },
+    {
+      "id": "jp-firewall",
+      "aulas": [
+        "rede-portas-tcp-udp"
+      ],
+      "grupo": "Portas e transporte",
+      "titulo": "As regras do firewall",
+      "enunciado": "O firewall do roteador está ao contrário: bloqueia o HTTPS e deixa passar o Telnet, que manda senha às claras. Acerte as duas regras.",
+      "objetivo": "Liberar a 443 e bloquear a 23, e ver o boletim chegar.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8",
+          "firewall": {
+            "regras": [
+              {
+                "porta": "443",
+                "acao": "bloquear"
+              },
+              {
+                "porta": "23",
+                "acao": "permitir"
+              }
+            ],
+            "padrao": "bloquear"
+          }
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "tituloCampos": "Regras do firewall (o padrão é bloquear)",
+      "campos": [
+        {
+          "id": "r443",
+          "rotulo": "Porta 443 (HTTPS)",
+          "caminho": "roteador.firewall.regras.0.acao",
+          "tipo": "escolha",
+          "opcoes": [
+            "bloquear",
+            "permitir"
+          ]
+        },
+        {
+          "id": "r23",
+          "rotulo": "Porta 23 (Telnet)",
+          "caminho": "roteador.firewall.regras.1.acao",
+          "tipo": "escolha",
+          "opcoes": [
+            "permitir",
+            "bloquear"
+          ],
+          "certo": "bloquear",
+          "erro": "A porta 23 (Telnet) manda até a senha às claras: bloqueie.",
+          "camada": "transporte"
+        }
+      ],
+      "solucao": {
+        "r443": "permitir",
+        "r23": "bloquear"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "Uma porta precisa passar (a do HTTPS) e a outra não (a do Telnet).",
+        "O boletim usa HTTPS, na 443.",
+        "Porta 443: permitir. Porta 23: bloquear."
+      ]
+    },
+    {
+      "id": "jp-cadeado",
+      "aulas": [
+        "rede-https"
+      ],
+      "grupo": "HTTPS",
+      "titulo": "Senha só com cadeado",
+      "enunciado": "A Bia vai entrar no portal da escola com a senha, no Wi-Fi da biblioteca. Escolha o endereço que protege a senha no caminho.",
+      "objetivo": "A senha chegar ao servidor sem ninguém no caminho conseguir ler.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "80",
+          "protocolo": "HTTP",
+          "mensagem": "POST /login (usuário e senha)",
+          "senha": true
+        }
+      },
+      "campos": [
+        {
+          "id": "endereco",
+          "rotulo": "Endereço do login",
+          "tipo": "escolha",
+          "opcoes": [
+            "http://escola.edu.br/login",
+            "https://escola.edu.br/login"
+          ],
+          "valor": "http://escola.edu.br/login",
+          "efeitos": {
+            "http://escola.edu.br/login": {
+              "pedido.protocolo": "HTTP",
+              "pedido.porta": "80"
+            },
+            "https://escola.edu.br/login": {
+              "pedido.protocolo": "HTTPS",
+              "pedido.porta": "443"
+            }
+          }
+        }
+      ],
+      "solucao": {
+        "endereco": "https://escola.edu.br/login"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "Qual dos dois tem o cadeado?",
+        "O s de https é de seguro: a conversa vai cifrada.",
+        "Escolha https://escola.edu.br/login."
+      ]
+    },
+    {
+      "id": "jp-certificado",
+      "aulas": [
+        "rede-https"
+      ],
+      "grupo": "HTTPS",
+      "titulo": "O certificado não confere",
+      "enunciado": "Três endereços prometem o portal da escola. O navegador confere o **certificado** de cada um. Escolha o que leva ao servidor com certificado válido **e** do domínio certo.",
+      "objetivo": "Chegar ao portal verdadeiro, com certificado conferido.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20",
+            "portal.escola.edu.br": "198.51.100.9",
+            "escola-portal.com": "203.0.113.70",
+            "intranet.escola.edu.br": "198.51.100.11"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Portal da escola",
+            "rotulo": "Portal",
+            "ip": "198.51.100.9",
+            "portas": {
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "portal.escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: bem-vinda, Bia."
+          },
+          {
+            "nome": "Servidor de escola-portal.com",
+            "rotulo": "Portal",
+            "ip": "203.0.113.70",
+            "portas": {
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "portal.escola.edu.br",
+              "confiavel": false
+            }
+          },
+          {
+            "nome": "Servidor antigo da intranet",
+            "rotulo": "Portal",
+            "ip": "198.51.100.11",
+            "portas": {
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "intranet.escola.edu.br",
+              "confiavel": false
+            }
+          }
+        ],
+        "pedido": {
+          "nome": "portal.escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "POST /login (usuário e senha)",
+          "senha": true
+        }
+      },
+      "campos": [
+        {
+          "id": "nome",
+          "rotulo": "Endereço",
+          "caminho": "pedido.nome",
+          "tipo": "escolha",
+          "opcoes": [
+            "escola-portal.com",
+            "intranet.escola.edu.br",
+            "portal.escola.edu.br"
+          ],
+          "valor": "escola-portal.com"
+        }
+      ],
+      "solucao": {
+        "nome": "portal.escola.edu.br"
+      },
+      "metas": {
+        "envios": 2
+      },
+      "dicas": [
+        "O certificado precisa ter o mesmo nome do endereço e ser assinado por uma autoridade confiável.",
+        "escola-portal.com mostra um certificado falsificado; a intranet antiga tem certificado sem autoridade confiável.",
+        "Escolha portal.escola.edu.br."
+      ]
+    },
+    {
+      "id": "jp-revisao-portas",
+      "aulas": [
+        "rede-revisao-portas"
+      ],
+      "grupo": "Revisão",
+      "titulo": "Tudo no lugar",
+      "enunciado": "O login da cantina está saindo em **http** e o firewall bloqueia a **443**. Conserte as duas coisas e mande a senha com segurança.",
+      "objetivo": "A senha chegar cifrada ao servidor, passando pelo firewall.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8",
+          "firewall": {
+            "regras": [
+              {
+                "porta": "443",
+                "acao": "bloquear"
+              },
+              {
+                "porta": "80",
+                "acao": "permitir"
+              }
+            ],
+            "padrao": "bloquear"
+          }
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "80",
+          "protocolo": "HTTP",
+          "mensagem": "POST /login (usuário e senha)",
+          "senha": true
+        }
+      },
+      "campos": [
+        {
+          "id": "endereco",
+          "rotulo": "Endereço do login",
+          "tipo": "escolha",
+          "opcoes": [
+            "http://escola.edu.br/login",
+            "https://escola.edu.br/login"
+          ],
+          "valor": "http://escola.edu.br/login",
+          "efeitos": {
+            "http://escola.edu.br/login": {
+              "pedido.protocolo": "HTTP",
+              "pedido.porta": "80"
+            },
+            "https://escola.edu.br/login": {
+              "pedido.protocolo": "HTTPS",
+              "pedido.porta": "443"
+            }
+          }
+        },
+        {
+          "id": "r443",
+          "rotulo": "Firewall: porta 443",
+          "caminho": "roteador.firewall.regras.0.acao",
+          "tipo": "escolha",
+          "opcoes": [
+            "bloquear",
+            "permitir"
+          ]
+        }
+      ],
+      "solucao": {
+        "endereco": "https://escola.edu.br/login",
+        "r443": "permitir"
+      },
+      "metas": {
+        "envios": 2
+      },
+      "dicas": [
+        "Senha só vai com cadeado; e o cadeado usa uma porta que o firewall está bloqueando.",
+        "Troque para https e libere a porta 443.",
+        "Endereço https://escola.edu.br/login e porta 443: permitir."
+      ]
     }
   ]
 }

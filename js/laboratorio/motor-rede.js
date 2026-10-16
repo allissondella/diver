@@ -12,7 +12,8 @@
  *     servidores: [{ nome, ip, portas: { "443": "HTTPS" }, certificado?: { nome, confiavel }, falso? }],
  *     pedido: { nome?, ip?, porta, protocolo, senha?, mensagem }
  *   }
- *   campos: [{ id, rotulo, caminho: "aparelho.gateway", tipo: "texto" | "escolha", opcoes?, certo?, erro? }]
+ *   campos: [{ id, rotulo, caminho: "aparelho.gateway", tipo: "texto" | "escolha", opcoes?, certo?, erro?,
+ *             efeitos?: { opção: { caminho: valor } } }]
  *   solucao: { idDoCampo: valor }, metas: { envios }
  * simular(m, valores) devolve { passos: [{ de, para, camada, texto, ok }], entregue, motivo, onde }.
  * Campos com "certo" (perguntas da missão, como a ordem das camadas) são conferidos antes da viagem.
@@ -75,7 +76,11 @@ const MotorRede = (() => {
       if (!certos.includes(normal(valores[c.id]))) return falha('aparelho', c.erro || `${c.rotulo}: ainda não está certo.`, 'aparelho', 'aparelho', c.camada || 'aplicação');
     }
     const cen = clonar(m.cenario || {});
-    (m.campos || []).forEach((c) => { if (c.caminho) por(cen, c.caminho, valores[c.id]); });
+    (m.campos || []).forEach((c) => {
+      if (c.caminho) por(cen, c.caminho, valores[c.id]);
+      // "efeitos": uma escolha que muda várias coisas (ex.: http:// muda o protocolo e a porta)
+      Object.entries((c.efeitos || {})[valores[c.id]] || {}).forEach(([caminho, v]) => por(cen, caminho, v));
+    });
     if (m.semViagem) { (m.passosFinais || []).forEach((p) => passo(p.de, p.para, p.camada, p.texto)); return { passos, entregue: true, motivo: '', onde: 'servidor' }; }
 
     const ap = cen.aparelho || {};
@@ -158,6 +163,9 @@ const MotorRede = (() => {
     passo(s.direto || srv.interno ? 'roteador' : 'internet', 'servidor', 'internet', `O pacote chega a ${srv.nome} (${srv.ip}).`);
     const servico = (srv.portas || {})[String(ped.porta)];
     if (!servico) return falha('servidor', `A porta ${ped.porta} está fechada em ${srv.nome}: nenhum programa escuta ali. O servidor recusa a conexão.`, 'servidor', 'servidor', 'transporte');
+    if (ped.protocolo && servico !== ped.protocolo && ['HTTP', 'HTTPS'].includes(servico) && ['HTTP', 'HTTPS'].includes(ped.protocolo)) {
+      return falha('servidor', `Na porta ${ped.porta}, ${srv.nome} fala ${servico}, e o pedido chegou em ${ped.protocolo}: os dois não se entendem.`, 'servidor', 'servidor', 'transporte');
+    }
     if (m.mostrarHandshake) {
       passo('aparelho', 'servidor', 'transporte', 'TCP: SYN (quero conversar).');
       passo('servidor', 'aparelho', 'transporte', 'TCP: SYN-ACK (pode falar).');
@@ -201,5 +209,127 @@ const MotorRede = (() => {
     return erros;
   }
 
-  return { ipNum, numIp, mascaraBits, naRede, privado, iniciais, simular, conferir, verificar, pegar };
+  /* ---------- Terminal do Laboratório de Rede: ipconfig, ping, traceroute, nslookup, nc ---------- */
+  /*
+   * O cenário pode trazer "falhas": { provedorFora, dnsFora, saltoLento: n (o salto onde o tempo dispara),
+   * portaFechada: 443 }, "saltos" (IPs do caminho na internet) e "latencia" (ms até o servidor).
+   */
+  const AJUDA = 'Comandos: ipconfig · ping <destino> · traceroute <destino> (ou tracert) · nslookup <nome> [servidor] · nc -zv <destino> <porta> · limpar';
+  function terminal(cen, linha) {
+    const t = String(linha || '').trim().split(/\s+/).filter(Boolean);
+    if (!t.length) return { texto: '', comando: '' };
+    const cmd = t[0].toLowerCase();
+    const ap = cen.aparelho || {};
+    const falhas = cen.falhas || {};
+    const tabela = (ip) => (cen.resolvedores || {})[ip];
+    const vizinhoIp = (ip) => ip === (cen.roteador || {}).interno || (cen.vizinhos || []).some((v) => v.ip === ip);
+    const servidor = (ip) => (cen.servidores || []).find((x) => x.ip === ip);
+    function resolver(alvo) {
+      if (ipNum(alvo) !== null) return { ip: alvo };
+      if (falhas.dnsFora || !tabela(ap.dns)) return { erro: 'dns' };
+      const ip = tabela(ap.dns)[alvo];
+      return ip ? { ip } : { erro: 'nx' };
+    }
+    const latencia = (ip) => (servidor(ip) && servidor(ip).latencia) || cen.latencia || 18;
+    const alcanca = (ip) => (vizinhoIp(ip) ? 'local' : falhas.provedorFora ? 'fora' : servidor(ip) ? 'ok' : 'ninguem');
+
+    if (cmd === 'ajuda' || cmd === 'help') return { texto: AJUDA, comando: 'ajuda' };
+    if (['ipconfig', 'ifconfig', 'ip'].includes(cmd)) {
+      return { comando: 'ipconfig', texto: [`${ap.nome || 'Este computador'}`, `  Endereço IP . . . . : ${ap.ip}`, `  Máscara . . . . . . : ${ap.mascara}`, `  Gateway padrão . . : ${ap.gateway}`, `  Servidor DNS . . . : ${ap.dns}`].join('\n') };
+    }
+    if (cmd === 'ping') {
+      const alvo = t.filter((x) => !x.startsWith('-') && !/^\d+$/.test(x)).slice(1)[0] || t[t.length - 1];
+      if (t.length < 2) return { comando: 'ping', texto: 'Uso: ping <destino>' };
+      const r = resolver(alvo);
+      if (r.erro) return { comando: 'ping', texto: `ping: ${alvo}: Nome ou serviço desconhecido` };
+      const onde = alcanca(r.ip);
+      const linhas = [`PING ${alvo}${alvo !== r.ip ? ` (${r.ip})` : ''}: 4 pacotes`];
+      let recebidos = 0; let soma = 0;
+      [0, 2, 1, 3].forEach((d, i) => {
+        const srv = servidor(r.ip);
+        const responde = onde === 'local' || (onde === 'ok' && !(srv && srv.semPing));
+        if (!responde) { linhas.push(`Tempo esgotado (eco ${i + 1})`); return; }
+        const ms = onde === 'local' ? [2, 1, 3, 2][i] : latencia(r.ip) + d + (falhas.saltoLento ? 200 : 0);
+        recebidos++; soma += ms;
+        linhas.push(`Resposta de ${r.ip}: eco ${i + 1}, tempo=${ms} ms`);
+      });
+      linhas.push(`--- ${alvo}: 4 enviados, ${recebidos} recebidos, ${Math.round((1 - recebidos / 4) * 100)}% de perda${recebidos ? `, tempo médio ${(soma / recebidos).toFixed(1)} ms` : ''}`);
+      return { comando: 'ping', texto: linhas.join('\n') };
+    }
+    if (cmd === 'traceroute' || cmd === 'tracert') {
+      const alvo = t[1];
+      if (!alvo) return { comando: 'traceroute', texto: `Uso: ${cmd} <destino>` };
+      const r = resolver(alvo);
+      if (r.erro) return { comando: 'traceroute', texto: `${cmd}: ${alvo}: Nome ou serviço desconhecido` };
+      if (vizinhoIp(r.ip)) return { comando: 'traceroute', texto: ` 1  ${r.ip}  1 ms` };
+      const saltos = [(cen.roteador || {}).interno, ...(cen.saltos || ['100.64.0.1', '200.160.0.1', '200.160.1.9']), r.ip];
+      const base = [1, 8, 12, 15];
+      const linhas = [`Rota até ${alvo}${alvo !== r.ip ? ` (${r.ip})` : ''}, no máximo 30 saltos:`];
+      for (let i = 0; i < saltos.length; i++) {
+        const n = i + 1;
+        if (falhas.provedorFora && i >= 1) { linhas.push(` ${n}  * * *`); if (i >= 3) { linhas.push('(o caminho para de responder depois do salto 1)'); break; } continue; }
+        if ((cen.calados || []).includes(n)) { linhas.push(` ${n}  * * *`); continue; }
+        if (i === saltos.length - 1 && !servidor(r.ip)) { linhas.push(` ${n}  * * *`); continue; }
+        let ms = i < saltos.length - 1 ? base[Math.min(i, base.length - 1)] + i : latencia(r.ip);
+        if (falhas.saltoLento && n >= falhas.saltoLento) ms += 200;
+        linhas.push(` ${n}  ${saltos[i]}  ${ms} ms`);
+      }
+      return { comando: 'traceroute', texto: linhas.join('\n') };
+    }
+    if (cmd === 'nslookup') {
+      const nome = t[1];
+      if (!nome) return { comando: 'nslookup', texto: 'Uso: nslookup <nome> [servidor]' };
+      const srvDns = t[2] || ap.dns;
+      const cab = `Servidor: ${srvDns}`;
+      if ((falhas.dnsFora && srvDns === ap.dns) || !tabela(srvDns)) return { comando: 'nslookup', texto: `${cab}\n;; tempo esgotado: nenhum servidor DNS respondeu` };
+      const ip = tabela(srvDns)[nome];
+      return { comando: 'nslookup', texto: ip ? `${cab}\nNome: ${nome}\nEndereço: ${ip}` : `${cab}\n** ${srvDns} não encontrou ${nome}: NXDOMAIN` };
+    }
+    if (cmd === 'nc') {
+      const args = t.slice(1).filter((x) => !x.startsWith('-'));
+      if (args.length < 2) return { comando: 'nc', texto: 'Uso: nc -zv <destino> <porta>' };
+      const [alvo, porta] = args;
+      const r = resolver(alvo);
+      if (r.erro) return { comando: 'nc', texto: `nc: ${alvo}: Nome ou serviço desconhecido` };
+      const onde = alcanca(r.ip);
+      if (onde === 'fora' || onde === 'ninguem') return { comando: 'nc', texto: `nc: conexão com ${alvo} porta ${porta}: tempo esgotado` };
+      const srv = servidor(r.ip);
+      const aberta = srv && srv.portas && srv.portas[porta] && String(falhas.portaFechada) !== String(porta);
+      return { comando: 'nc', texto: aberta ? `Conexão com ${alvo} porta ${porta} [tcp] bem-sucedida!` : `nc: conexão com ${alvo} porta ${porta} recusada` };
+    }
+    return { comando: '', texto: `${t[0]}: comando não encontrado. Digite ajuda.` };
+  }
+
+  /** Laboratório de Rede: confere as conclusões e os comandos exigidos. { ok, mensagem, falta } */
+  function conferirTerminal(m, usados, valores) {
+    const faltam = (m.exigir || []).filter((c) => !usados.includes(c));
+    if (faltam.length) return { ok: false, mensagem: `Antes de responder, investigue com: ${faltam.join(', ')}.` };
+    for (const c of m.campos || []) {
+      const certos = [].concat(c.certo).map(normal);
+      if (!certos.includes(normal(valores[c.id]))) return { ok: false, mensagem: valores[c.id] ? c.erro || 'Ainda não é essa a conclusão.' : `Responda: ${c.rotulo}` };
+    }
+    return { ok: true, mensagem: m.sucesso || 'Diagnóstico certo.' };
+  }
+
+  function verificarTerminal(m) {
+    const erros = [];
+    if (!m.cenario) return ['falta o cenário'];
+    if (!Array.isArray(m.campos) || !m.campos.length) erros.push('falta a pergunta da conclusão');
+    (m.campos || []).forEach((c) => { if (c.certo === undefined) erros.push(`campo ${c.id} sem "certo"`); if (c.opcoes && !c.opcoes.includes(c.certo)) erros.push(`campo ${c.id}: a certa não está entre as opções`); });
+    const sol = m.solucao || {};
+    const usados = [];
+    (sol.comandos || []).forEach((l) => {
+      const r = terminal(m.cenario, l);
+      if (!r.comando || /^Uso:/.test(r.texto)) erros.push(`o comando "${l}" não é reconhecido`);
+      usados.push(r.comando);
+    });
+    (m.exigir || []).forEach((c) => { if (!usados.includes(c)) erros.push(`a solução não usa ${c}, que a missão exige`); });
+    if (!conferirTerminal(m, usados, sol.resposta || {}).ok) erros.push('a resposta da solução não confere');
+    if (conferirTerminal(m, [], {}).ok) erros.push('a missão já começa resolvida');
+    if (!m.metas || !m.metas.comandos) erros.push('falta metas.comandos');
+    else if ((sol.comandos || []).length > m.metas.comandos) erros.push(`a solução usa ${sol.comandos.length} comandos e a meta é ${m.metas.comandos}`);
+    return erros;
+  }
+
+  return { ipNum, numIp, mascaraBits, naRede, privado, iniciais, simular, conferir, verificar, pegar, terminal, conferirTerminal, verificarTerminal, AJUDA };
 })();

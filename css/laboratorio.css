@@ -429,7 +429,8 @@
 .jp-fixo__rotulo { color: var(--texto-suave); }
 .jp-campo { display: grid; gap: var(--esp-1); }
 .jp-campo__rotulo { font-weight: 700; font-size: var(--t-sm); }
-.jp-campo__entrada { min-height: 44px; font-family: var(--fonte-mono); max-width: 22em; }
+.jp-campo__entrada { min-height: 44px; font-family: var(--fonte-mono); width: 100%; max-width: min(28em, 100%); min-width: 0; }
+.jp-campo { min-width: 0; }
 .jp-campo__ajuda { font-size: var(--t-xs); color: var(--texto-suave); }
 .jp-passos { display: grid; gap: var(--esp-2); margin: 0; padding: 0; list-style: none; }
 .jp-passo {
@@ -450,3 +451,24 @@
   .jp-no__icone { width: 36px; height: 36px; }
   .jp-no + .jp-no::before { top: 18px; right: calc(50% + 18px); width: calc(100% - 36px + var(--esp-2)); }
 }
+
+/* Terminal simulado (js/laboratorio/terminal.js, 2026-10-16): Laboratório de Rede e, depois, Linux e Git */
+.term { display: grid; min-width: 0; background: var(--fundo-fundo); border: 1px solid var(--borda); border-radius: var(--raio); overflow: hidden; }
+.term:focus-within { border-color: var(--turquesa); }
+.term__barra { display: flex; align-items: center; min-height: 44px; padding: 0 var(--esp-4); background: var(--superficie); border-bottom: 1px solid var(--borda); }
+.term__titulo { display: inline-flex; align-items: center; gap: var(--esp-2); font-family: var(--fonte-mono); font-size: var(--t-sm); color: var(--texto-suave); }
+.term__titulo .icone { width: 16px; height: 16px; color: var(--turquesa-claro); }
+.term__saida { display: grid; align-content: start; gap: var(--esp-1); min-height: 180px; max-height: 360px; overflow: auto; padding: var(--esp-3) var(--esp-4); }
+.term__linha { margin: 0; font-family: var(--fonte-mono); font-size: var(--t-sm); line-height: var(--lh-normal); white-space: pre-wrap; overflow-wrap: anywhere; color: var(--texto); }
+.term__linha--cmd { color: var(--turquesa-claro); }
+.term__linha--info { color: var(--texto-suave); }
+.term__linha--erro { color: var(--coral); }
+.term__form { display: flex; align-items: center; gap: var(--esp-2); padding: var(--esp-2) var(--esp-3); border-top: 1px solid var(--borda); }
+.term__prompt { flex: none; font-family: var(--fonte-mono); font-size: var(--t-sm); color: var(--amarelo); max-width: 40%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.term__entrada { flex: 1; min-width: 0; min-height: 44px; padding: 0 var(--esp-2); font-family: var(--fonte-mono); font-size: var(--t-md); color: var(--texto); background: transparent; border: 0; }
+.term__entrada:focus { outline: none; }
+.term__atalhos { display: flex; flex-wrap: wrap; gap: var(--esp-2); padding: 0 var(--esp-3) var(--esp-3); }
+.term__atalho { min-height: 44px; cursor: pointer; }
+.term__atalho code { font-family: var(--fonte-mono); font-size: var(--t-xs); overflow-wrap: anywhere; }
+.lr { display: grid; gap: var(--esp-3); min-width: 0; }
+@media (max-width: 479px) { .term__prompt { display: none; } .term__saida { padding: var(--esp-2) var(--esp-3); } }

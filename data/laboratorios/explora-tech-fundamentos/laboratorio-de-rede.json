@@ -1,0 +1,524 @@
+{
+  "id": "laboratorio-de-rede",
+  "nome": "Laboratório de Rede",
+  "versao": 1,
+  "tipo": "rede-terminal",
+  "descricao": "Uma rede com defeito e um terminal simulado: investigue com ipconfig, ping, traceroute, nslookup e nc e diga onde está o problema.",
+  "tituloReferencia": "Comandos do terminal",
+  "rotuloBancada": "Terminal e conclusão",
+  "referencia": [
+    {
+      "nome": "ipconfig",
+      "faz": "mostra o IP, a máscara, o gateway e o DNS deste computador"
+    },
+    {
+      "nome": "ping <destino>",
+      "faz": "manda 4 ecos e mede a volta (ms) e a perda"
+    },
+    {
+      "nome": "traceroute <destino>",
+      "faz": "lista cada salto do caminho (tracert no Windows)"
+    },
+    {
+      "nome": "nslookup <nome> [servidor]",
+      "faz": "pergunta o IP ao DNS (ou a outro servidor DNS)"
+    },
+    {
+      "nome": "nc -zv <destino> <porta>",
+      "faz": "testa se a porta aceita conexão"
+    },
+    {
+      "nome": "limpar",
+      "faz": "limpa a tela"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "Os mesmos comandos estão no seu computador.",
+    "passos": [
+      "Abra o terminal (Prompt de Comando no Windows) e rode `ping` no seu roteador e num site conhecido. Compare os tempos.",
+      "Rode `tracert` (Windows) ou `traceroute` (Linux e macOS) até o mesmo site e conte os saltos.",
+      "Rode `nslookup` com o nome de um site e depois com o mesmo nome e o servidor 1.1.1.1 no fim."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "lr-provedor",
+      "aulas": [
+        "rede-diagnostico"
+      ],
+      "grupo": "Diagnóstico",
+      "titulo": "A internet sumiu",
+      "enunciado": "A Bia diz que \"a internet caiu\". Use o **ping** no roteador e num IP da internet e descubra em que parte da rede está o problema.",
+      "objetivo": "Dizer onde está o problema",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "latencia": 18
+          }
+        ],
+        "saltos": [
+          "100.64.0.1",
+          "200.160.0.1",
+          "200.160.1.9"
+        ],
+        "falhas": {
+          "provedorFora": true
+        }
+      },
+      "atalhos": [
+        "ipconfig",
+        "ping 192.168.0.1",
+        "ping 198.51.100.7"
+      ],
+      "exigir": [
+        "ping"
+      ],
+      "campos": [
+        {
+          "id": "onde",
+          "rotulo": "Onde está o problema?",
+          "opcoes": [
+            "No Wi-Fi da casa",
+            "Do roteador para fora (provedor)",
+            "No DNS",
+            "A porta 443 está fechada no servidor"
+          ],
+          "certo": "Do roteador para fora (provedor)",
+          "erro": "Compare: o roteador responde ao ping? E o IP da internet?"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "ping 192.168.0.1",
+          "ping 198.51.100.7"
+        ],
+        "resposta": {
+          "onde": "Do roteador para fora (provedor)"
+        }
+      },
+      "metas": {
+        "comandos": 4
+      },
+      "dicas": [
+        "Comece pelo chão: o gateway responde?",
+        "O roteador responde em poucos ms; o IP da escola dá tempo esgotado.",
+        "A rede da casa funciona; o problema é do roteador para fora: o provedor."
+      ]
+    },
+    {
+      "id": "lr-dns",
+      "aulas": [
+        "rede-diagnostico"
+      ],
+      "grupo": "Diagnóstico",
+      "titulo": "Número sim, nome não",
+      "enunciado": "Pelo nome, nada abre. Use **ping** e **nslookup** para descobrir se o problema é a rede ou o catálogo de nomes.",
+      "objetivo": "Dizer onde está o problema",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "latencia": 18
+          }
+        ],
+        "saltos": [
+          "100.64.0.1",
+          "200.160.0.1",
+          "200.160.1.9"
+        ],
+        "falhas": {
+          "dnsFora": true
+        }
+      },
+      "atalhos": [
+        "ping escola.edu.br",
+        "ping 198.51.100.7",
+        "nslookup escola.edu.br",
+        "nslookup escola.edu.br 1.1.1.1"
+      ],
+      "exigir": [
+        "ping",
+        "nslookup"
+      ],
+      "campos": [
+        {
+          "id": "onde",
+          "rotulo": "Onde está o problema?",
+          "opcoes": [
+            "No Wi-Fi da casa",
+            "Do roteador para fora (provedor)",
+            "No DNS",
+            "A porta 443 está fechada no servidor"
+          ],
+          "certo": "No DNS",
+          "erro": "Pelo IP, o ping responde? E o nslookup com o seu DNS?"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "ping 198.51.100.7",
+          "nslookup escola.edu.br",
+          "nslookup escola.edu.br 1.1.1.1"
+        ],
+        "resposta": {
+          "onde": "No DNS"
+        }
+      },
+      "metas": {
+        "comandos": 4
+      },
+      "dicas": [
+        "Teste a rede sem depender de nomes: ping no IP.",
+        "O ping no IP responde; o nslookup com o DNS da casa dá tempo esgotado, mas com 1.1.1.1 funciona.",
+        "O problema está no DNS."
+      ]
+    },
+    {
+      "id": "lr-lento",
+      "aulas": [
+        "rede-diagnostico"
+      ],
+      "grupo": "Diagnóstico",
+      "titulo": "Onde o tempo dispara",
+      "enunciado": "O site abre, mas devagar. Use o **traceroute** até a escola e descubra em que trecho do caminho o tempo dispara.",
+      "objetivo": "Dizer em que trecho o tempo dispara",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "latencia": 18
+          }
+        ],
+        "saltos": [
+          "100.64.0.1",
+          "200.160.0.1",
+          "200.160.1.9"
+        ],
+        "falhas": {
+          "saltoLento": 3
+        }
+      },
+      "atalhos": [
+        "traceroute escola.edu.br",
+        "ping escola.edu.br"
+      ],
+      "exigir": [
+        "traceroute"
+      ],
+      "campos": [
+        {
+          "id": "trecho",
+          "rotulo": "Em que trecho o tempo dispara?",
+          "opcoes": [
+            "Entre o notebook e o roteador (salto 1)",
+            "Entre os saltos 2 e 3",
+            "Só no servidor da escola, no fim"
+          ],
+          "certo": "Entre os saltos 2 e 3",
+          "erro": "Compare o tempo de cada salto com o anterior: onde ele pula?"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "traceroute escola.edu.br"
+        ],
+        "resposta": {
+          "trecho": "Entre os saltos 2 e 3"
+        }
+      },
+      "metas": {
+        "comandos": 2
+      },
+      "dicas": [
+        "Cada linha do traceroute é um salto, com o tempo até ele.",
+        "Os saltos 1 e 2 respondem rápido; do 3 em diante passa de 200 ms.",
+        "O tempo dispara entre os saltos 2 e 3."
+      ]
+    },
+    {
+      "id": "lr-porta",
+      "aulas": [
+        "rede-revisao-portas"
+      ],
+      "grupo": "Revisão",
+      "titulo": "Conexão recusada",
+      "enunciado": "O navegador diz \"conexão recusada\" ao abrir https://escola.edu.br. Use **ping** e **nc** para achar o defeito.",
+      "objetivo": "Dizer onde está o problema",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "latencia": 18
+          }
+        ],
+        "saltos": [
+          "100.64.0.1",
+          "200.160.0.1",
+          "200.160.1.9"
+        ],
+        "falhas": {
+          "portaFechada": 443
+        }
+      },
+      "atalhos": [
+        "ping escola.edu.br",
+        "nslookup escola.edu.br",
+        "nc -zv escola.edu.br 443",
+        "nc -zv escola.edu.br 80"
+      ],
+      "exigir": [
+        "ping",
+        "nc"
+      ],
+      "campos": [
+        {
+          "id": "onde",
+          "rotulo": "Onde está o problema?",
+          "opcoes": [
+            "No Wi-Fi da casa",
+            "Do roteador para fora (provedor)",
+            "No DNS",
+            "A porta 443 está fechada no servidor"
+          ],
+          "certo": "A porta 443 está fechada no servidor",
+          "erro": "O ping e o nome funcionam? Então teste a porta do HTTPS com nc."
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "ping escola.edu.br",
+          "nc -zv escola.edu.br 443"
+        ],
+        "resposta": {
+          "onde": "A porta 443 está fechada no servidor"
+        }
+      },
+      "metas": {
+        "comandos": 4
+      },
+      "dicas": [
+        "Primeiro confirme que o caminho e o nome funcionam.",
+        "O ping pelo nome responde; agora teste a porta 443 com nc -zv.",
+        "A 443 recusa a conexão: a porta está fechada no servidor."
+      ]
+    },
+    {
+      "id": "lr-nome",
+      "aulas": [
+        "rede-revisao-portas"
+      ],
+      "grupo": "Revisão",
+      "titulo": "O nome que não existe",
+      "enunciado": "Um colega mandou o endereço **escola.edu.bt** e nada abre. Use o **nslookup** e descubra o que aconteceu.",
+      "objetivo": "Dizer o que aconteceu",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "latencia": 18
+          }
+        ],
+        "saltos": [
+          "100.64.0.1",
+          "200.160.0.1",
+          "200.160.1.9"
+        ],
+        "falhas": {}
+      },
+      "atalhos": [
+        "nslookup escola.edu.bt",
+        "nslookup escola.edu.br"
+      ],
+      "exigir": [
+        "nslookup"
+      ],
+      "campos": [
+        {
+          "id": "causa",
+          "rotulo": "O que aconteceu?",
+          "opcoes": [
+            "O DNS está fora do ar",
+            "O nome foi digitado errado",
+            "O servidor da escola caiu"
+          ],
+          "certo": "O nome foi digitado errado",
+          "erro": "Compare o nslookup do nome recebido com o do nome certo."
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "nslookup escola.edu.bt",
+          "nslookup escola.edu.br"
+        ],
+        "resposta": {
+          "causa": "O nome foi digitado errado"
+        }
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "NXDOMAIN quer dizer que o nome não existe.",
+        "escola.edu.bt não existe; escola.edu.br responde normalmente.",
+        "O DNS funciona: o nome foi digitado errado (bt no lugar de br)."
+      ]
+    }
+  ]
+}
