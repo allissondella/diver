@@ -1,0 +1,413 @@
+{
+  "id": "direito",
+  "versao": 1,
+  "nome": "Direito",
+  "area": "direito-sociedade",
+  "frase": "Interpreta e aplica as leis para defender pessoas, empresas e o interesse público.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "muita-leitura",
+    "presencial-obrigatorio",
+    "conselho-profissional"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "5 anos",
+      "detalhe": "3.700 horas, bacharelado",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial",
+      "detalhe": "EAD proibido; pelo menos 70% da carga em atividades presenciais",
+      "fontes": [
+        "decreto-12456",
+        "portaria-378"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 5.710",
+      "detalhe": "média de contratação de advogado com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-advogado"
+      ]
+    },
+    "registro": {
+      "valor": "OAB",
+      "detalhe": "inscrição na Ordem, com aprovação no Exame de Ordem, para advogar",
+      "fontes": [
+        "lei-8906"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 652996,
+    "posicao_ranking_matriculas": 3,
+    "texto": "Em 2024, Direito foi o 3º curso com mais matrículas no Brasil, com cerca de 653 mil estudantes, praticamente todos no presencial.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "O bacharel em Direito tem vários caminhos. Na advocacia, representa clientes na Justiça e faz consultoria, assessoria e direção jurídicas, atividades privativas do advogado inscrito na OAB. Atos e contratos de criação de empresas só são registrados com o visto de um advogado.",
+      "nao_faz": "Pedir habeas corpus não é privativo da advocacia: qualquer pessoa pode. E o bacharel sem inscrição na OAB não pode se apresentar como advogado.",
+      "fontes": [
+        "lei-8906"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Leitura e escrita o tempo todo: petições, contratos, pareceres e e-mails. Há prazos processuais, audiências, atendimento a clientes e reuniões. Boa parte do processo hoje é eletrônica, mas audiências e fóruns seguem no roteiro.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Teoria do direito, Constituição e os grandes ramos (civil, penal, do trabalho, empresarial, tributário e administrativo), com processo e prática jurídica, muitas vezes em núcleos que atendem a comunidade.",
+      "disciplinas": [
+        "Teoria geral do direito",
+        "Direito constitucional",
+        "Direito civil",
+        "Direito penal",
+        "Direito do trabalho",
+        "Direito empresarial",
+        "Direito tributário",
+        "Direito administrativo",
+        "Processo civil",
+        "Processo penal",
+        "Ética profissional",
+        "Prática jurídica"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. A redação e as Ciências Humanas costumam pesar, e a concorrência é alta: no Sisu 2026, um curso de Direito de universidade federal teve 9.986 candidatos para 24 vagas.",
+      "materias_chave": [
+        "enem-redacao",
+        "enem-portugues",
+        "enem-historia",
+        "enem-filosofia",
+        "enem-sociologia"
+      ],
+      "fontes": [
+        "sisu-2026"
+      ]
+    },
+    "quanto_ganha": {
+      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira como advogado. Muita gente advoga por conta própria ou como sócia de escritório, e as carreiras públicas por concurso têm tabelas próprias; tudo isso fica fora da conta. A jornada média desses contratos é de 41 horas por semana.",
+      "fontes": [
+        "caged-advogado"
+      ],
+      "medias": [
+        {
+          "cargo": "Advogado",
+          "valor": 5710.12,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-advogado"
+          ],
+          "faixa": {
+            "de": 2849,
+            "ate": 6699,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um advogado contratado com carteira no Brasil?",
+        "min": 1500,
+        "max": 15000,
+        "passo": 100,
+        "inicial": 9000
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Advocacia",
+          "texto": "Escritório próprio, sociedade de advogados ou departamento jurídico de empresa. Exige inscrição na OAB.",
+          "fontes": [
+            "lei-8906"
+          ]
+        },
+        {
+          "titulo": "Carreiras públicas",
+          "texto": "Magistratura, Ministério Público, Defensoria, delegacias e procuradorias, por concurso.",
+          "fontes": []
+        },
+        {
+          "titulo": "Jurídico de empresas",
+          "texto": "Contratos, trabalhista, tributário e programas de integridade.",
+          "fontes": []
+        },
+        {
+          "titulo": "Ensino e pesquisa",
+          "texto": "Docência, mestrado e doutorado.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "O diploma não dá a carteira: para advogar, é preciso passar no Exame de Ordem e se inscrever na OAB.",
+          "fontes": [
+            "lei-8906"
+          ]
+        },
+        {
+          "texto": "Direito é o 3º curso com mais matrículas do país: o mercado é disputado, principalmente no começo.",
+          "fontes": [
+            "censo-2024"
+          ]
+        },
+        {
+          "texto": "A rotina é de muita leitura e escrita, com prazos que não esperam.",
+          "fontes": []
+        },
+        {
+          "texto": "Algumas atividades são incompatíveis com a advocacia, mesmo em causa própria, como a de policial e a de militar na ativa.",
+          "fontes": [
+            "lei-8906"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "ciencias-contabeis",
+        "diferenca": "Tributos e perícia contábil: o contador faz a conta, o advogado discute a lei."
+      },
+      {
+        "id": "administracao",
+        "diferenca": "Gestão de empresas, que o jurídico assessora."
+      },
+      {
+        "id": "psicologia",
+        "diferenca": "Na psicologia jurídica, avalia pessoas em varas de família e na Justiça."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "ead",
+      "afirmacao": "Dá para fazer Direito a distância.",
+      "verdade": false,
+      "explicacao": "Direito está entre os cursos que não podem ser oferecidos a distância: o presencial é obrigatório.",
+      "fontes": [
+        "decreto-12456",
+        "portaria-378"
+      ]
+    },
+    {
+      "id": "exame",
+      "afirmacao": "Quem se forma em Direito já é advogado.",
+      "verdade": false,
+      "explicacao": "Para se inscrever na OAB e usar o título, é preciso aprovação no Exame de Ordem.",
+      "fontes": [
+        "lei-8906"
+      ]
+    },
+    {
+      "id": "habeas",
+      "afirmacao": "Só advogado pode pedir habeas corpus.",
+      "verdade": false,
+      "explicacao": "A lei deixa o habeas corpus fora das atividades privativas da advocacia.",
+      "fontes": [
+        "lei-8906"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "O curso tem carga mínima de 3.700 horas.",
+      "verdade": true,
+      "explicacao": "Com integralização em pelo menos 5 anos.",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    {
+      "id": "policial",
+      "afirmacao": "Um policial na ativa pode advogar nas horas vagas.",
+      "verdade": false,
+      "explicacao": "A advocacia é incompatível com atividades policiais, mesmo em causa própria.",
+      "fontes": [
+        "lei-8906"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-8906",
+      "titulo": "Lei nº 8.906/1994 (Estatuto da Advocacia e da OAB): atividades privativas e Exame de Ordem (arts. 1º, 3º e 8º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8906.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
+      "orgao": "Conselho Nacional de Educação (MEC)",
+      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-advogado",
+      "titulo": "Advogado (CBO 2410-05): média de R$ 5.710,12, P25 de R$ 2.849,00 e P75 de R$ 6.699,00, jornada média de 41 h semanais, saldo de −712 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/advogado-cbo-241005",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    },
+    {
+      "id": "sisu-2026",
+      "titulo": "Sisu 2026: maiores notas de corte e cursos com mais candidatos por vaga",
+      "orgao": "VestibulandoWeb, 01/06/2026",
+      "url": "https://www.vestibulandoweb.com.br/sisu/sisu-2026-medicina-lidera-disputa-e-curso-de-ia-chama-atencao-no-ranking/amp/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Confirmar nos dados do MEC."
+    }
+  ],
+  "carta": {
+    "fato": "Pedir habeas corpus não é privativo de advogado: a lei permite que qualquer pessoa faça o pedido.",
+    "fontes": [
+      "lei-8906"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 7,
+      "texto": "Hora de dormir, ou de terminar aquela peça com prazo para hoje."
+    },
+    {
+      "de": 7,
+      "ate": 9,
+      "texto": "Conferência de prazos e intimações do dia."
+    },
+    {
+      "de": 9,
+      "ate": 12,
+      "texto": "Audiências no fórum ou reuniões com clientes."
+    },
+    {
+      "de": 12,
+      "ate": 13,
+      "texto": "Almoço."
+    },
+    {
+      "de": 13,
+      "ate": 18,
+      "texto": "Redação de petições, contratos e pareceres."
+    },
+    {
+      "de": 18,
+      "ate": 20,
+      "texto": "Atendimentos de fim de tarde e retorno aos clientes."
+    },
+    {
+      "de": 20,
+      "ate": 24,
+      "texto": "Para muita gente, estudo para concurso ou para o Exame de Ordem."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada lugar de trabalho é diferente.",
+  "dna": {
+    "pessoas": 70,
+    "pressao": 75,
+    "corpo": 10,
+    "rotina": 60,
+    "numeros": 25,
+    "criatividade": 55
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "amigo-sem-oab",
+      "situacao": "Um amigo formado em Direito, mas sem inscrição na OAB, oferece fazer a defesa de um vizinho seu \"como advogado\", para sair mais barato.",
+      "opcoes": [
+        {
+          "texto": "Topar: ele estudou cinco anos",
+          "recomendada": false
+        },
+        {
+          "texto": "Explicar que só quem é inscrito na OAB pode advogar e indicar a Defensoria Pública ou um advogado",
+          "recomendada": true
+        },
+        {
+          "texto": "Deixar o vizinho decidir sozinho",
+          "recomendada": false
+        }
+      ],
+      "resposta": "O exercício da advocacia e o título de advogado são privativos dos inscritos na OAB. Para quem não pode pagar, a Defensoria Pública existe justamente para isso.",
+      "fontes": [
+        "lei-8906"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Duração mínima pelas normas nacionais. O Exame de Ordem pode ser feito a partir do fim do curso.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 5,
+        "anos_ate": 5,
+        "texto": "3.700 horas em 5 anos, presencial, com prática jurídica.",
+        "fontes": [
+          "cne-2-2007",
+          "decreto-12456"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "pos",
+        "nome": "Pós-graduação ou preparação para concursos",
+        "anos_de": 1,
+        "anos_ate": 3,
+        "texto": "Especialização, mestrado ou estudo para carreiras públicas.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  }
+}

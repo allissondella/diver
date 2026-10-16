@@ -1,0 +1,443 @@
+{
+  "id": "medicina",
+  "versao": 1,
+  "nome": "Medicina",
+  "area": "saude",
+  "frase": "Previne, diagnostica e trata doenças, da consulta à cirurgia.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "plantao",
+    "presencial-obrigatorio",
+    "conselho-profissional",
+    "formacao-longa"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "6 anos",
+      "detalhe": "7.200 horas, bacharelado",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial",
+      "detalhe": "100% presencial, sem nenhuma carga a distância",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 10.303",
+      "detalhe": "média de contratação de médico clínico com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-medico"
+      ]
+    },
+    "registro": {
+      "valor": "CRM",
+      "detalhe": "inscrição obrigatória no conselho regional para exercer",
+      "fontes": [
+        "lei-3268"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 283594,
+    "posicao_ranking_matriculas": 9,
+    "texto": "Em 2024, Medicina foi o 9º curso com mais matrículas no Brasil, com cerca de 284 mil estudantes, todos no presencial.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Examina, diagnostica, trata e acompanha pessoas na consulta, no pronto-socorro, na enfermaria e no centro cirúrgico. Por lei, só o médico indica e faz cirurgias e procedimentos invasivos, faz intubação e anestesia geral, emite o laudo de exames de imagem e de endoscopias, indica internação e alta hospitalar e atesta condições de saúde e óbito.",
+      "nao_faz": "A direção administrativa de um serviço de saúde não é exclusiva do médico. E a mesma lei protege as competências de outras profissões, como enfermeiro, farmacêutico, fisioterapeuta, nutricionista e psicólogo: muito do cuidado é feito em equipe.",
+      "fontes": [
+        "lei-12842"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Depende muito do lugar. No hospital, há plantões longos, visitas aos pacientes internados e muita conversa com a equipe e as famílias. No consultório e na unidade básica de saúde, a rotina é de consultas marcadas, com retornos, pedidos de exame e prescrições. É comum somar vínculos: plantão em um lugar, consultório em outro.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Seis anos que começam pelas ciências básicas do corpo humano, passam pelas doenças e seus tratamentos e terminam no internato, a fase em que o estudante trabalha em hospitais e unidades de saúde sob supervisão.",
+      "disciplinas": [
+        "Anatomia",
+        "Fisiologia",
+        "Bioquímica",
+        "Farmacologia",
+        "Patologia",
+        "Semiologia",
+        "Clínica médica",
+        "Cirurgia",
+        "Pediatria",
+        "Ginecologia e obstetrícia",
+        "Saúde coletiva",
+        "Internato"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Medicina tem as notas de corte mais altas do Sisu. Biologia, Química e Física costumam pesar, junto com a redação.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-quimica",
+        "enem-fisica",
+        "enem-redacao"
+      ],
+      "fontes": [
+        "sisu-2026"
+      ]
+    },
+    "quanto_ganha": {
+      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira. Na Medicina, boa parte do trabalho é por plantão, como pessoa jurídica ou em consultório próprio, e isso fica fora da conta. A jornada média desses contratos é de 25 horas por semana, o que ajuda a entender por que tanta gente soma mais de um vínculo.",
+      "fontes": [
+        "caged-medico"
+      ],
+      "medias": [
+        {
+          "cargo": "Médico clínico",
+          "valor": 10302.5,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-medico"
+          ],
+          "faixa": {
+            "de": 5564,
+            "ate": 13282,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um médico clínico contratado com carteira no Brasil?",
+        "min": 2000,
+        "max": 25000,
+        "passo": 250,
+        "inicial": 14000
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Residência médica",
+          "texto": "É o caminho mais comum para virar especialista. Clínica médica, pediatria e cirurgia geral duram 2 anos; ortopedia, dermatologia e anestesiologia, 3. Algumas especialidades exigem outra residência antes.",
+          "fontes": [
+            "cnrm-2006"
+          ]
+        },
+        {
+          "titulo": "Saúde pública",
+          "texto": "Unidades básicas, pronto-atendimentos e hospitais da rede pública, com contratação por concurso ou programas de governo.",
+          "fontes": []
+        },
+        {
+          "titulo": "Consultório e clínica",
+          "texto": "Atendimento próprio ou em clínicas, muitas vezes junto com plantões no começo da carreira.",
+          "fontes": []
+        },
+        {
+          "titulo": "Ensino e pesquisa",
+          "texto": "Docência, mestrado, doutorado e pesquisa clínica.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "A graduação é só o começo: a residência soma mais 2 a 5 anos, e algumas especialidades exigem outra residência antes.",
+          "fontes": [
+            "cnrm-2006"
+          ]
+        },
+        {
+          "texto": "A disputa começa antes do curso. No Sisu 2026, um único curso de Medicina reuniu 17.010 candidatos para 160 vagas.",
+          "fontes": [
+            "sisu-2026"
+          ]
+        },
+        {
+          "texto": "Noites, fins de semana e feriados em plantão fazem parte da rotina, principalmente no começo.",
+          "fontes": []
+        },
+        {
+          "texto": "Atestar, laudar e indicar internação são atos com responsabilidade pessoal: o erro tem peso ético e jurídico.",
+          "fontes": [
+            "lei-12842"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "enfermagem",
+        "diferenca": "Planeja e executa o cuidado contínuo do paciente; não faz cirurgias."
+      },
+      {
+        "id": "odontologia",
+        "diferenca": "Cuida da boca e dos dentes, com cirurgia e prescrição na sua área."
+      },
+      {
+        "id": "biomedicina",
+        "diferenca": "Mais laboratório que consultório: análises clínicas e exames."
+      },
+      {
+        "id": "fisioterapia",
+        "diferenca": "Reabilita o movimento depois de lesões, cirurgias e doenças."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "ead",
+      "afirmacao": "Dá para cursar Medicina a distância.",
+      "verdade": false,
+      "explicacao": "Medicina é 100% presencial: o MEC proíbe até uma parte da carga a distância.",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "O curso de Medicina dura no mínimo 6 anos.",
+      "verdade": true,
+      "explicacao": "A carga mínima é de 7.200 horas, com integralização em pelo menos 6 anos.",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    {
+      "id": "crm",
+      "afirmacao": "Com o diploma na mão, o médico já pode atender.",
+      "verdade": false,
+      "explicacao": "Antes, precisa se inscrever no Conselho Regional de Medicina do estado onde vai trabalhar.",
+      "fontes": [
+        "lei-3268"
+      ]
+    },
+    {
+      "id": "especialista",
+      "afirmacao": "Todo médico formado já é especialista.",
+      "verdade": false,
+      "explicacao": "A especialização costuma vir com a residência médica, que dura de 2 a 5 anos nas especialidades de acesso direto.",
+      "fontes": [
+        "cnrm-2006"
+      ]
+    },
+    {
+      "id": "direcao",
+      "afirmacao": "Só médico pode ser diretor de hospital.",
+      "verdade": false,
+      "explicacao": "A direção administrativa de serviços de saúde não é função privativa do médico.",
+      "fontes": [
+        "lei-12842"
+      ]
+    },
+    {
+      "id": "alta",
+      "afirmacao": "Indicar internação e dar alta hospitalar é atividade privativa do médico.",
+      "verdade": true,
+      "explicacao": "Está na lista de atividades privativas da Lei do Ato Médico.",
+      "fontes": [
+        "lei-12842"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-12842",
+      "titulo": "Lei nº 12.842/2013 (Lei do Ato Médico): atividades privativas do médico (arts. 4º e 5º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12842.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
+      "orgao": "Conselho Nacional de Educação (MEC)",
+      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cnrm-2006",
+      "titulo": "Resolução CNRM nº 2/2006: duração dos programas de residência médica (acesso direto e com pré-requisito)",
+      "orgao": "Comissão Nacional de Residência Médica (MEC)",
+      "url": "https://www.gov.br/mec/pt-br/residencia-medica/pdf/ResoluoCNRMn2de17demaiode2006.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria",
+      "nota": "Conferir se há resolução posterior que mude a duração de alguma especialidade."
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-medico",
+      "titulo": "Médico clínico (CBO 2251-25): média de R$ 10.302,50, P25 de R$ 5.564,00 e P75 de R$ 13.282,00, jornada média de 25 h semanais, saldo de +188 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/medico-clinico-cbo-225125",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "sisu-2026",
+      "titulo": "Sisu 2026: maiores notas de corte e cursos com mais candidatos por vaga",
+      "orgao": "VestibulandoWeb, 01/06/2026",
+      "url": "https://www.vestibulandoweb.com.br/sisu/sisu-2026-medicina-lidera-disputa-e-curso-de-ia-chama-atencao-no-ranking/amp/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Confirmar nos dados do MEC."
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-3268",
+      "titulo": "Lei nº 3.268/1957: inscrição no Conselho Regional de Medicina para exercer (art. 17)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l3268.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    }
+  ],
+  "carta": {
+    "fato": "No Sisu 2026, um único curso de Medicina reuniu 17.010 candidatos para 160 vagas.",
+    "fontes": [
+      "sisu-2026"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 7,
+      "texto": "Plantão noturno no pronto-socorro: quem chega de madrugada costuma estar grave ou assustado."
+    },
+    {
+      "de": 7,
+      "ate": 8,
+      "texto": "Passagem de plantão: quem passou a noite conta os casos para quem chega."
+    },
+    {
+      "de": 8,
+      "ate": 12,
+      "texto": "Visita aos pacientes internados ou consultas no ambulatório."
+    },
+    {
+      "de": 12,
+      "ate": 14,
+      "texto": "Almoço rápido entre um paciente e outro, quando dá."
+    },
+    {
+      "de": 14,
+      "ate": 18,
+      "texto": "Consultório, cirurgias marcadas, resultados de exames e reuniões de caso."
+    },
+    {
+      "de": 18,
+      "ate": 24,
+      "texto": "Para muitos, começa o segundo vínculo: outro plantão, outro consultório ou estudo para a residência."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais. A rotina muda muito entre plantão, consultório e saúde pública.",
+  "dna": {
+    "pessoas": 85,
+    "pressao": 90,
+    "corpo": 55,
+    "rotina": 45,
+    "numeros": 45,
+    "criatividade": 40
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "atestado-amigo",
+      "situacao": "Um amigo pede um atestado para faltar ao trabalho amanhã. Ele está bem e você nem o examinou.",
+      "opcoes": [
+        {
+          "texto": "Fazer o atestado: é só um dia",
+          "recomendada": false
+        },
+        {
+          "texto": "Explicar que atestado é ato médico e só sai depois de avaliar a pessoa",
+          "recomendada": true
+        },
+        {
+          "texto": "Mandar ele pedir para outro médico",
+          "recomendada": false
+        }
+      ],
+      "resposta": "Atestar condições de saúde é atividade privativa do médico e um ato com responsabilidade pessoal. Sem avaliação, não há o que atestar. Indicar outro colega não resolve: o problema é o atestado sem consulta.",
+      "fontes": [
+        "lei-12842"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Durações mínimas pelas normas nacionais. A residência muda conforme a especialidade.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 6,
+        "anos_ate": 6,
+        "texto": "7.200 horas em 6 anos, todas presenciais, com o internato no fim.",
+        "fontes": [
+          "cne-2-2007",
+          "portaria-378"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "residencia",
+        "nome": "Residência médica",
+        "anos_de": 2,
+        "anos_ate": 5,
+        "texto": "De 2 a 5 anos nas especialidades de acesso direto; algumas exigem outra residência antes.",
+        "fontes": [
+          "cnrm-2006"
+        ],
+        "tipo": "depois"
+      }
+    ]
+  },
+  "trends_id": "medicina"
+}

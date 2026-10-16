@@ -1,0 +1,384 @@
+{
+  "id": "biomedicina",
+  "versao": 1,
+  "nome": "Biomedicina",
+  "area": "saude",
+  "frase": "Trabalha no laboratório e nos exames que ajudam a descobrir e acompanhar doenças.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "laboratorio",
+    "conselho-profissional"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "4 anos",
+      "detalhe": "3.200 horas, bacharelado",
+      "fontes": [
+        "cne-4-2009"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial ou semipresencial",
+      "detalhe": "sem EAD; no semipresencial, pelo menos 40% de atividades presenciais",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 3.337",
+      "detalhe": "média de contratação de biomédico com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-biomed"
+      ]
+    },
+    "registro": {
+      "valor": "CRBM",
+      "detalhe": "carteira profissional do conselho para exercer",
+      "fontes": [
+        "lei-6684"
+      ]
+    }
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Atua em análises clínicas, bancos de sangue, diagnóstico por imagem e pesquisa. Pela lei da profissão, o biomédico pode fazer análises para o saneamento do meio ambiente, realizar radiografias, atuar sob supervisão médica em hemoterapia e radiodiagnóstico e planejar pesquisas científicas na sua área.",
+      "nao_faz": "Pode fazer a radiografia, mas não interpretá-la: a lei exclui a interpretação, e o laudo de exames de imagem é atividade privativa do médico.",
+      "fontes": [
+        "lei-6684",
+        "lei-12842"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "No laboratório de análises clínicas, a rotina é de coleta, processamento de amostras, controle de qualidade e liberação de resultados, muitas vezes em turnos. Na imagem e no banco de sangue, o trabalho é junto da equipe médica.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Bioquímica, microbiologia, imunologia, genética e técnicas de laboratório, com estágios em análises clínicas e nas outras áreas de atuação.",
+      "disciplinas": [
+        "Bioquímica",
+        "Microbiologia",
+        "Imunologia",
+        "Parasitologia",
+        "Hematologia",
+        "Genética",
+        "Citologia",
+        "Análises clínicas",
+        "Imagenologia"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Biologia e Química costumam pesar.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-quimica"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira, para uma jornada média de 41 horas semanais.",
+      "fontes": [
+        "caged-biomed"
+      ],
+      "medias": [
+        {
+          "cargo": "Biomédico",
+          "valor": 3336.82,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-biomed"
+          ],
+          "faixa": {
+            "de": 2525,
+            "ate": 3653,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um biomédico contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 9000,
+        "passo": 100,
+        "inicial": 5500
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Análises clínicas",
+          "texto": "Laboratórios de exames de sangue, urina e outros materiais.",
+          "fontes": []
+        },
+        {
+          "titulo": "Imagem e banco de sangue",
+          "texto": "Radiografia e radiodiagnóstico e hemoterapia, sob supervisão médica.",
+          "fontes": [
+            "lei-6684"
+          ]
+        },
+        {
+          "titulo": "Meio ambiente",
+          "texto": "Análises físico-químicas e microbiológicas para o saneamento.",
+          "fontes": [
+            "lei-6684"
+          ]
+        },
+        {
+          "titulo": "Pesquisa e indústria",
+          "texto": "Genética, biotecnologia e laboratórios de pesquisa.",
+          "fontes": [
+            "lei-6684"
+          ]
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "Muita gente confunde com Medicina. O trabalho é de bastidor: o paciente quase nunca sabe quem fez o exame dele.",
+          "fontes": []
+        },
+        {
+          "texto": "Laboratórios funcionam em turnos, inclusive à noite e nos fins de semana.",
+          "fontes": []
+        },
+        {
+          "texto": "A média de contratação com carteira fica em cerca de R$ 3,3 mil.",
+          "fontes": [
+            "caged-biomed"
+          ]
+        },
+        {
+          "texto": "Em imagem e banco de sangue, o trabalho é sob supervisão médica.",
+          "fontes": [
+            "lei-6684"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "farmacia",
+        "diferenca": "Medicamentos: produção, qualidade e orientação de uso."
+      },
+      {
+        "id": "medicina",
+        "diferenca": "Diagnostica, prescreve e faz o laudo dos exames de imagem."
+      },
+      {
+        "id": "enfermagem",
+        "diferenca": "Cuidado direto ao paciente, no leito."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "radiografia",
+      "afirmacao": "Biomédico pode fazer radiografia.",
+      "verdade": true,
+      "explicacao": "A lei permite realizar o exame, excluída a interpretação.",
+      "fontes": [
+        "lei-6684"
+      ]
+    },
+    {
+      "id": "laudo",
+      "afirmacao": "Biomédico pode dar o laudo de uma radiografia.",
+      "verdade": false,
+      "explicacao": "A interpretação fica de fora das atribuições, e o laudo de exames de imagem é privativo do médico.",
+      "fontes": [
+        "lei-6684",
+        "lei-12842"
+      ]
+    },
+    {
+      "id": "mesma-coisa",
+      "afirmacao": "Biomedicina e Medicina são a mesma profissão com nomes diferentes.",
+      "verdade": false,
+      "explicacao": "Cada uma tem a sua lei e as suas atribuições.",
+      "fontes": [
+        "lei-6684",
+        "lei-12842"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "O curso pode ser totalmente a distância.",
+      "verdade": false,
+      "explicacao": "Cursos da saúde só podem ser presenciais ou semipresenciais, com pelo menos 40% de atividades presenciais.",
+      "fontes": [
+        "portaria-378"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "O curso dura no mínimo 4 anos.",
+      "verdade": true,
+      "explicacao": "A carga mínima é de 3.200 horas, com integralização em pelo menos 4 anos.",
+      "fontes": [
+        "cne-4-2009"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-6684",
+      "titulo": "Lei nº 6.684/1979: profissões de biólogo e biomédico; atividades do biomédico (art. 5º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/1970-1979/l6684.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-biomed",
+      "titulo": "Biomédico (CBO 2212-05): média de R$ 3.336,82, P25 de R$ 2.525,00 e P75 de R$ 3.653,00, jornada média de 41 h semanais, saldo de +741 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/biomedico-cbo-221205",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "lei-12842",
+      "titulo": "Lei nº 12.842/2013 (Lei do Ato Médico): atividades privativas do médico (arts. 4º e 5º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12842.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-4-2009",
+      "titulo": "Resolução CNE/CES nº 4/2009: carga horária mínima de Biomedicina, Educação Física, Farmácia, Fisioterapia, Nutrição e outros cursos da saúde",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/public/arquivos/legislacoes/Resolucao-cne-ces-004-2009-04-06.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    }
+  ],
+  "carta": {
+    "fato": "O biomédico pode fazer a radiografia, mas a lei não deixa que ele a interprete.",
+    "fontes": [
+      "lei-6684"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 7,
+      "texto": "Laboratórios de hospital funcionam de madrugada, com exames de urgência."
+    },
+    {
+      "de": 7,
+      "ate": 10,
+      "texto": "Coleta de amostras e chegada dos exames do dia."
+    },
+    {
+      "de": 10,
+      "ate": 13,
+      "texto": "Processamento nas máquinas e controle de qualidade."
+    },
+    {
+      "de": 13,
+      "ate": 14,
+      "texto": "Almoço em revezamento."
+    },
+    {
+      "de": 14,
+      "ate": 18,
+      "texto": "Análise, conferência e liberação dos resultados."
+    },
+    {
+      "de": 18,
+      "ate": 24,
+      "texto": "Turno da noite em hospitais e bancos de sangue."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
+  "dna": {
+    "pessoas": 40,
+    "pressao": 50,
+    "corpo": 30,
+    "rotina": 70,
+    "numeros": 60,
+    "criatividade": 35
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "quebrou",
+      "situacao": "Um paciente vê você fazendo a radiografia e pergunta: \"E aí, quebrou ou não?\"",
+      "opcoes": [
+        {
+          "texto": "Dizer o que você viu na imagem",
+          "recomendada": false
+        },
+        {
+          "texto": "Explicar que o laudo vem do médico e como o resultado chega até ele",
+          "recomendada": true
+        },
+        {
+          "texto": "Dizer que não pode falar e sair rápido",
+          "recomendada": false
+        }
+      ],
+      "resposta": "A lei permite ao biomédico fazer a radiografia, mas exclui a interpretação, e o laudo de exames de imagem é privativo do médico. Explicar o caminho do resultado acolhe o paciente sem passar do limite.",
+      "fontes": [
+        "lei-6684",
+        "lei-12842"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Duração mínima pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "3.200 horas em 4 anos, com estágios em laboratório.",
+        "fontes": [
+          "cne-4-2009"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Em análises clínicas, imagem ou genética.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  }
+}

@@ -94,7 +94,7 @@ async function auditarNoNavegador() {
   const TELAS = ['inicio', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'artigo', 'quiz', 'quiz-feedback',
     'simulado', 'revisao', 'jogos', 'prova', 'upload-prova', 'tarefas', 'calendario', 'cronograma', 'diagnostica', 'mapa-partida', 'foco',
     'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao',
-    'profissoes', 'profissoes-cartas', 'profissoes-metodo', 'profissao-enfermagem', 'profissao-enfermagem-dia', 'profissao-enfermagem-mitos',
+    'profissoes', 'profissoes-cartas', 'profissoes-metodo', 'profissao-enfermagem', 'profissao-enfermagem-dia', 'profissao-enfermagem-mitos', 'profissao-pedagogia', 'profissao-sistemas', 'profissao-medicina',
     'profissoes-tecnologia', 'tecnologia-seguranca', 'profissoes-tecnologia-jogo', 'login'].filter((t) => !soTelas || soTelas.includes(t));
   const vistos = {};
   ['inicio', 'sala', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'trilha', 'quiz', 'artigo', 'resumo', 'simulado', 'revisao', 'jogos', 'tarefas', 'quadros',

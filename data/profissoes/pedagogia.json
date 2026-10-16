@@ -1,0 +1,455 @@
+{
+  "id": "pedagogia",
+  "versao": 1,
+  "nome": "Pedagogia",
+  "area": "educacao",
+  "frase": "Ensina na educação infantil e nos anos iniciais e organiza o trabalho pedagógico das escolas.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "trabalho-com-criancas",
+    "licenciatura"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "4 anos",
+      "detalhe": "3.200 horas, licenciatura",
+      "fontes": [
+        "cne-cp-4-2024"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial ou semipresencial",
+      "detalhe": "sem EAD; no semipresencial, pelo menos 30% de atividades presenciais",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 3.426",
+      "detalhe": "média de contratação de professor dos anos iniciais com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-prof-iniciais"
+      ]
+    },
+    "registro": {
+      "valor": "Sem conselho",
+      "detalhe": "não há conselho profissional; a licenciatura é a formação para dar aula",
+      "fontes": [
+        "cne-cp-4-2024"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 887695,
+    "posicao_ranking_matriculas": 1,
+    "texto": "Em 2024, Pedagogia foi o curso com mais matrículas no Brasil: cerca de 888 mil estudantes, 83% deles a distância.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Dá aulas na educação infantil e nos anos iniciais do ensino fundamental e atua no suporte pedagógico das escolas: direção, planejamento, inspeção, supervisão, orientação e coordenação. Fora da escola, trabalha em projetos de educação de ONGs, empresas, hospitais e museus.",
+      "fontes": [
+        "lei-11738"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Na escola, o dia é da turma: aulas, intervalo, atividades e atenção a cada criança, além de planejamento, correção e reuniões com famílias e coordenação. Muitos professores trabalham dois turnos, às vezes em escolas diferentes.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "3.200 horas em pelo menos 4 anos, com 400 horas de estágio supervisionado em escolas. O curso junta fundamentos da educação, didática, alfabetização e o ensino de cada área para crianças.",
+      "disciplinas": [
+        "Fundamentos da educação",
+        "Psicologia do desenvolvimento",
+        "Didática",
+        "Alfabetização e letramento",
+        "Ensino de matemática",
+        "Ensino de ciências",
+        "Ensino de história e geografia",
+        "Educação infantil",
+        "Educação especial e inclusiva",
+        "Libras",
+        "Gestão escolar",
+        "Estágio supervisionado"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "cne-cp-4-2024"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. A redação e Linguagens costumam pesar.",
+      "materias_chave": [
+        "enem-redacao",
+        "enem-portugues",
+        "enem-sociologia",
+        "enem-historia"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "A lei fixa o piso do magistério público: nenhuma rede pública pode pagar menos que isso como vencimento inicial, para até 40 horas semanais. As médias de contratação são de contratos com carteira, que não incluem os professores concursados das redes públicas. A jornada média é de 30 horas por semana para professores dos anos iniciais e de 39 para pedagogos.",
+      "fontes": [
+        "lei-11738",
+        "caged-prof-iniciais",
+        "caged-pedagogo"
+      ],
+      "pisos": [
+        {
+          "cargo": "Professor dos anos iniciais",
+          "valor": 5130.63,
+          "fontes": [
+            "lei-11738"
+          ]
+        }
+      ],
+      "piso_rotulo": "Piso do magistério público (até 40 h)",
+      "piso_regra": "O piso vale para o vencimento inicial das carreiras do magistério público da educação básica, em jornada de até 40 horas semanais, e é atualizado todo ano, em janeiro. Não vale para escolas privadas.",
+      "piso_regra_fontes": [
+        "lei-11738"
+      ],
+      "medias": [
+        {
+          "cargo": "Professor dos anos iniciais",
+          "valor": 3426.29,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-prof-iniciais"
+          ],
+          "faixa": {
+            "de": 2142,
+            "ate": 3980,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        },
+        {
+          "cargo": "Pedagogo",
+          "valor": 3148.82,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-pedagogo"
+          ],
+          "faixa": {
+            "de": 1926,
+            "ate": 3798,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um professor dos anos iniciais contratado com carteira?",
+        "min": 1000,
+        "max": 10000,
+        "passo": 100,
+        "inicial": 5000,
+        "segunda": {
+          "pergunta": "E um pedagogo?",
+          "inicial": 5000
+        }
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Sala de aula",
+          "texto": "Educação infantil e anos iniciais, em redes públicas, por concurso, e em escolas privadas.",
+          "fontes": []
+        },
+        {
+          "titulo": "Gestão escolar",
+          "texto": "Coordenação, orientação, supervisão e direção de escolas.",
+          "fontes": [
+            "lei-11738"
+          ]
+        },
+        {
+          "titulo": "Educação fora da escola",
+          "texto": "ONGs, empresas, hospitais, museus e projetos sociais.",
+          "fontes": []
+        },
+        {
+          "titulo": "Educação especial e inclusiva",
+          "texto": "Atendimento educacional especializado e apoio à inclusão.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "Pedagogia é o curso com mais matrículas do país, e 83% dos estudantes estão na EAD.",
+          "fontes": [
+            "censo-2024"
+          ]
+        },
+        {
+          "texto": "Pelas regras de 2025, licenciatura não pode mais ser só a distância: é presencial ou semipresencial, com pelo menos 30% de atividades presenciais.",
+          "fontes": [
+            "portaria-378",
+            "decreto-12456"
+          ]
+        },
+        {
+          "texto": "O piso de R$ 5.130,63 é da rede pública; nas escolas privadas, a média de contratação com carteira fica bem abaixo.",
+          "fontes": [
+            "lei-11738",
+            "caged-prof-iniciais"
+          ]
+        },
+        {
+          "texto": "Suspeitar de maus-tratos contra um aluno obriga a comunicar o Conselho Tutelar: é dever legal, não escolha.",
+          "fontes": [
+            "lei-8069"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "psicologia",
+        "diferenca": "Avaliação e acompanhamento psicológico de crianças e famílias."
+      },
+      {
+        "id": "educacao-fisica",
+        "diferenca": "Na licenciatura, dá aula de educação física na escola."
+      },
+      {
+        "id": "gestao-de-pessoas",
+        "diferenca": "Treinamento e desenvolvimento de adultos nas empresas."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "piso",
+      "afirmacao": "Existe um piso nacional para professores da rede pública.",
+      "verdade": true,
+      "explicacao": "Em 2026, é de R$ 5.130,63 para até 40 horas semanais.",
+      "fontes": [
+        "lei-11738"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Ainda dá para começar Pedagogia totalmente a distância.",
+      "verdade": false,
+      "explicacao": "Pelas regras de 2025, licenciaturas só podem ser presenciais ou semipresenciais, com pelo menos 30% de atividades presenciais.",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    {
+      "id": "estagio",
+      "afirmacao": "O estágio na escola é opcional.",
+      "verdade": false,
+      "explicacao": "São 400 horas de estágio curricular supervisionado.",
+      "fontes": [
+        "cne-cp-4-2024"
+      ]
+    },
+    {
+      "id": "privada",
+      "afirmacao": "O piso do magistério vale também para escola particular.",
+      "verdade": false,
+      "explicacao": "A lei trata do magistério público da educação básica.",
+      "fontes": [
+        "lei-11738"
+      ]
+    },
+    {
+      "id": "maus-tratos",
+      "afirmacao": "O professor que suspeita de maus-tratos contra um aluno é obrigado a comunicar.",
+      "verdade": true,
+      "explicacao": "A suspeita deve ser comunicada ao Conselho Tutelar, e o professor que se omite pode ser multado.",
+      "fontes": [
+        "lei-8069"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-11738",
+      "titulo": "Lei nº 11.738/2008 (redação da Lei nº 15.437/2026): piso do magistério público de R$ 5.130,63 para até 40 horas semanais",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11738.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-cp-4-2024",
+      "titulo": "Resolução CNE/CP nº 4/2024: formação inicial de professores (licenciaturas), 3.200 horas em no mínimo 4 anos",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Resolucao-cne-cp-004-2024-05-29.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-prof-iniciais",
+      "titulo": "Professor dos anos iniciais do ensino fundamental (CBO 2312-10): média de R$ 3.426,29, P25 de R$ 2.142,00 e P75 de R$ 3.980,00, jornada média de 30 h semanais, saldo de −331 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/professor-dos-ciclos-iniciais-ensino-fundamental-cbo-231210",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    },
+    {
+      "id": "lei-8069",
+      "titulo": "Lei nº 8.069/1990 (ECA): comunicação obrigatória de suspeita de maus-tratos (arts. 13 e 245)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8069.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-pedagogo",
+      "titulo": "Pedagogo (CBO 2394-15): média de R$ 3.148,82, P25 de R$ 1.926,00 e P75 de R$ 3.798,00, jornada média de 39 h semanais, saldo de +457 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/pedagogo-cbo-239415",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    }
+  ],
+  "carta": {
+    "fato": "Pedagogia é o curso com mais matrículas do Brasil: cerca de 888 mil estudantes em 2024, 83% deles a distância.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 6,
+      "texto": "Hora de dormir."
+    },
+    {
+      "de": 6,
+      "ate": 7,
+      "texto": "Café, trânsito e a cabeça já no planejamento do dia."
+    },
+    {
+      "de": 7,
+      "ate": 12,
+      "texto": "Turno da manhã: aulas, intervalo e atenção a cada criança."
+    },
+    {
+      "de": 12,
+      "ate": 13,
+      "texto": "Almoço corrido, às vezes entre uma escola e outra."
+    },
+    {
+      "de": 13,
+      "ate": 18,
+      "texto": "Para muita gente, turno da tarde, em outra turma ou outra escola."
+    },
+    {
+      "de": 18,
+      "ate": 21,
+      "texto": "Planejamento, correção de atividades e mensagens das famílias."
+    },
+    {
+      "de": 21,
+      "ate": 24,
+      "texto": "Descanso, ou estudo para concursos e pós-graduação."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada lugar de trabalho é diferente.",
+  "dna": {
+    "pessoas": 95,
+    "pressao": 60,
+    "corpo": 45,
+    "rotina": 65,
+    "numeros": 25,
+    "criatividade": 75
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "marcas-aluna",
+      "situacao": "Uma aluna aparece com marcas no braço pela terceira vez e diz que \"caiu\". A família pede que a escola não se meta.",
+      "opcoes": [
+        {
+          "texto": "Respeitar a família e não fazer nada",
+          "recomendada": false
+        },
+        {
+          "texto": "Registrar e comunicar a suspeita à direção e ao Conselho Tutelar, como manda a lei",
+          "recomendada": true
+        },
+        {
+          "texto": "Comentar no grupo de pais para alertar todo mundo",
+          "recomendada": false
+        }
+      ],
+      "resposta": "Suspeita de maus-tratos contra criança deve ser comunicada ao Conselho Tutelar, e o professor que se omite pode ser multado. Expor o caso no grupo de pais é o oposto do cuidado: a comunicação vai para quem pode proteger.",
+      "fontes": [
+        "lei-8069"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Duração mínima pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (licenciatura)",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "3.200 horas em 4 anos, com 400 horas de estágio em escolas.",
+        "fontes": [
+          "cne-cp-4-2024"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "pos",
+        "nome": "Especialização",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Em psicopedagogia, gestão escolar, alfabetização ou educação especial.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  },
+  "trends_id": "pedagogia"
+}

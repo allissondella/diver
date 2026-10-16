@@ -1,0 +1,457 @@
+{
+  "id": "ciencia-da-computacao",
+  "versao": 1,
+  "nome": "Ciência da Computação",
+  "area": "tecnologia",
+  "frase": "Estuda a fundo como os computadores funcionam e cria algoritmos, sistemas e tecnologias novas.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "computador",
+    "trabalho-com-numeros",
+    "trabalho-remoto-possivel"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "4 anos",
+      "detalhe": "3.000 horas, bacharelado",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial, semipresencial ou EAD",
+      "detalhe": "a área do curso pode ser oferecida nos três formatos",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 8.458",
+      "detalhe": "média de contratação de analista de desenvolvimento de sistemas com carteira, cargo comum para quem se forma, 12 meses até ago/2026",
+      "fontes": [
+        "caged-dev-analista"
+      ]
+    },
+    "registro": {
+      "valor": "Sem conselho próprio",
+      "detalhe": "não há conselho de informática: o projeto que criaria um foi arquivado em 2014",
+      "fontes": [
+        "pls-607"
+      ]
+    }
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Cria e analisa algoritmos, linguagens de programação, sistemas operacionais, bancos de dados, redes, inteligência artificial e software em geral. No mercado, trabalha principalmente com desenvolvimento de sistemas, dados, infraestrutura e pesquisa.",
+      "nao_faz": "Não é um curso de usar programas de escritório nem de consertar computador: o foco é a ciência por trás do software.",
+      "fontes": [
+        "cne-5-2016"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Programar é só uma parte: há reuniões de time, leitura do código dos colegas, testes, documentação e muito estudo de ferramentas novas. Muitas empresas trabalham em modelo remoto ou híbrido. Na pesquisa, o dia é de experimentos, artigos e orientação.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Muita matemática (cálculo, álgebra, matemática discreta e probabilidade), programação, algoritmos e estruturas de dados, arquitetura de computadores, sistemas operacionais, redes, bancos de dados, compiladores, engenharia de software e inteligência artificial.",
+      "disciplinas": [
+        "Cálculo",
+        "Matemática discreta",
+        "Álgebra linear",
+        "Probabilidade e estatística",
+        "Algoritmos e estruturas de dados",
+        "Arquitetura de computadores",
+        "Sistemas operacionais",
+        "Redes de computadores",
+        "Banco de dados",
+        "Compiladores",
+        "Engenharia de software",
+        "Inteligência artificial"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "cne-5-2016"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Matemática costuma pesar bastante, junto com Física.",
+      "materias_chave": [
+        "enem-matematica",
+        "enem-fisica",
+        "enem-ingles",
+        "enem-redacao"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "Não existe o cargo de \"cientista da computação\" no registro de emprego: quem se forma costuma ser contratado como analista de desenvolvimento de sistemas ou como engenheiro de dados. As médias consideram só o salário-base de quem foi contratado com carteira, com jornada média de 42 horas; trabalho como PJ ou para empresas de fora fica fora da conta.",
+      "fontes": [
+        "caged-dev-analista",
+        "caged-eng-dados"
+      ],
+      "medias": [
+        {
+          "cargo": "Analista de desenvolvimento de sistemas",
+          "valor": 8458.3,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-dev-analista"
+          ],
+          "faixa": {
+            "de": 4497,
+            "ate": 11280,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        },
+        {
+          "cargo": "Engenheiro de dados",
+          "valor": 14487.78,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-eng-dados"
+          ],
+          "faixa": {
+            "de": 8000,
+            "ate": 17645,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um analista de desenvolvimento de sistemas contratado com carteira?",
+        "min": 2000,
+        "max": 25000,
+        "passo": 250,
+        "inicial": 12000,
+        "segunda": {
+          "pergunta": "E um engenheiro de dados?",
+          "inicial": 12000
+        }
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Desenvolvimento de software",
+          "texto": "Sistemas, aplicativos e plataformas de grande escala.",
+          "fontes": []
+        },
+        {
+          "titulo": "Dados e inteligência artificial",
+          "texto": "Engenharia de dados, ciência de dados e modelos de aprendizado de máquina.",
+          "fontes": []
+        },
+        {
+          "titulo": "Infraestrutura, nuvem e segurança",
+          "texto": "Servidores, redes e proteção dos sistemas.",
+          "fontes": []
+        },
+        {
+          "titulo": "Pesquisa e pós-graduação",
+          "texto": "Universidades, centros de pesquisa e laboratórios de empresas.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "Os primeiros semestres têm muita matemática: cálculo, álgebra e matemática discreta.",
+          "fontes": [
+            "cne-5-2016"
+          ]
+        },
+        {
+          "texto": "O mercado formal absorve poucos iniciantes com carteira: entre set/2024 e dez/2025, o setor de TIC ganhou 125 mil profissionais, mas só 24 mil com carteira.",
+          "fontes": [
+            "brasscom-2026"
+          ]
+        },
+        {
+          "texto": "A tecnologia muda rápido: estudar ferramentas novas é parte do emprego, não um extra.",
+          "fontes": []
+        },
+        {
+          "texto": "Nuvem, segurança, IA e inglês estão entre as habilidades mais pedidas pelos empregadores.",
+          "fontes": [
+            "brasscom-2026"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "sistemas",
+        "diferenca": "Mais aplicado, e pode ser mais curto: foco em construir e manter sistemas."
+      },
+      {
+        "id": "inteligencia-artificial",
+        "diferenca": "Especialização em dados e em modelos que aprendem."
+      },
+      {
+        "id": "engenharia-de-producao",
+        "diferenca": "Usa dados e otimização para melhorar processos."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "conserto",
+      "afirmacao": "Ciência da Computação é um curso para aprender a consertar computadores.",
+      "verdade": false,
+      "explicacao": "O foco é a ciência do software: algoritmos, sistemas, redes e inteligência artificial.",
+      "fontes": [
+        "cne-5-2016"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "O curso pode ser feito a distância.",
+      "verdade": true,
+      "explicacao": "A área de computação pode ser oferecida nos três formatos.",
+      "fontes": [
+        "portaria-378"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "O bacharelado tem carga mínima de 3.000 horas.",
+      "verdade": true,
+      "explicacao": "Com integralização em pelo menos 4 anos.",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    {
+      "id": "conselho",
+      "afirmacao": "Para programar, é preciso registro em conselho.",
+      "verdade": false,
+      "explicacao": "Não há conselho de informática: o projeto de 2007 que criaria um foi arquivado em 2014.",
+      "fontes": [
+        "pls-607"
+      ]
+    },
+    {
+      "id": "carteira",
+      "afirmacao": "A maioria de quem entrou no setor de TIC recentemente foi contratada com carteira.",
+      "verdade": false,
+      "explicacao": "Entre set/2024 e dez/2025, só 24 mil dos 125 mil novos profissionais entraram com carteira.",
+      "fontes": [
+        "brasscom-2026"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "cne-5-2016",
+      "titulo": "Resolução CNE/CES nº 5/2016: Diretrizes Curriculares Nacionais dos cursos de Computação",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/legislacoes/detalhe/1996/resolucao-cne-ces-n-5",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "brasscom-2026",
+      "titulo": "Relatório Perspectivas do Mercado de Trabalho do Macrossetor TIC (set/2024 a dez/2026): 111 mil formados em TIC em 2024, cerca de 40% em ADS; 125 mil novos profissionais entre set/2024 e dez/2025, 24 mil com carteira",
+      "orgao": "Brasscom, maio de 2026",
+      "url": "https://brasscom.org.br/wp-content/uploads/2026/07/Relatorio-Pespectivas-do-Mercado-de-Trabalho-Apresentacao-v9.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
+      "orgao": "Conselho Nacional de Educação (MEC)",
+      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-dev-analista",
+      "titulo": "Analista de desenvolvimento de sistemas (CBO 2124-05): média de R$ 8.458,30, P25 de R$ 4.497,00 e P75 de R$ 11.280,00, jornada média de 42 h semanais, saldo de +3.737 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/analista-de-desenvolvimento-de-sistemas-cbo-212405",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "pls-607",
+      "titulo": "PLS nº 607/2007: regulamentaria a profissão de analista de sistemas e criaria conselhos de informática; arquivado ao final da legislatura, em 2014",
+      "orgao": "Senado Federal",
+      "url": "https://www25.senado.leg.br/web/atividade/materias/-/materia/82918",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-eng-dados",
+      "titulo": "Engenheiro de dados (CBO 2122-05): média de R$ 14.487,78, P25 de R$ 8.000,00 e P75 de R$ 17.645,00, jornada média de 42 h semanais, saldo de +549 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/engenheiro-de-dados-cbo-212205",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-13709",
+      "titulo": "Lei nº 13.709/2018 (LGPD): dado pessoal sensível, hipóteses de tratamento e segurança dos dados (arts. 5º, 7º, 11 e 46)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cncst",
+      "titulo": "Catálogo Nacional de Cursos Superiores de Tecnologia: Análise e Desenvolvimento de Sistemas, carga mínima de 2.000 h (conferida na página de um curso de universidade federal)",
+      "orgao": "MEC, via universidade federal",
+      "url": "https://www.utfpr.edu.br/cursos/coordenacoes/graduacao/ponta-grossa/pg-tecnologia-em-analise-e-desenvolvimento-de-sistemas/apresentacao",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela página oficial do catálogo no portal do MEC."
+    }
+  ],
+  "carta": {
+    "fato": "Entre set/2024 e dez/2025, o setor de tecnologia ganhou 125 mil profissionais, mas só 24 mil com carteira assinada.",
+    "fontes": [
+      "brasscom-2026"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 8,
+      "texto": "Hora de dormir. Quem trabalha para fora do país às vezes encara outro fuso."
+    },
+    {
+      "de": 8,
+      "ate": 9,
+      "texto": "Leitura das mensagens e do que mudou no código durante a noite."
+    },
+    {
+      "de": 9,
+      "ate": 10,
+      "texto": "Reunião rápida do time."
+    },
+    {
+      "de": 10,
+      "ate": 12,
+      "texto": "Programação concentrada."
+    },
+    {
+      "de": 12,
+      "ate": 13,
+      "texto": "Almoço."
+    },
+    {
+      "de": 13,
+      "ate": 16,
+      "texto": "Revisão do código dos colegas, testes e correção de falhas."
+    },
+    {
+      "de": 16,
+      "ate": 18,
+      "texto": "Planejamento e documentação."
+    },
+    {
+      "de": 18,
+      "ate": 24,
+      "texto": "Fim do expediente; muita gente estuda tecnologias novas à noite ou mantém projetos pessoais."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada lugar de trabalho é diferente.",
+  "dna": {
+    "pessoas": 35,
+    "pressao": 55,
+    "corpo": 5,
+    "rotina": 50,
+    "numeros": 90,
+    "criatividade": 70
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "dados-teste",
+      "situacao": "No banco de dados de testes, você encontra CPFs e endereços reais de milhares de clientes. Um colega sugere copiar tudo para o computador pessoal para trabalhar de casa.",
+      "opcoes": [
+        {
+          "texto": "Copiar: é mais prático",
+          "recomendada": false
+        },
+        {
+          "texto": "Avisar o time e trocar por dados fictícios ou anonimizados nos testes",
+          "recomendada": true
+        },
+        {
+          "texto": "Copiar só uma parte",
+          "recomendada": false
+        }
+      ],
+      "resposta": "CPF e endereço são dados pessoais, e a LGPD só permite tratá-los em hipóteses previstas, com medidas de segurança contra acesso não autorizado. Para testar sistema, dados fictícios ou anonimizados resolvem e não expõem ninguém.",
+      "fontes": [
+        "lei-13709"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Cargas mínimas pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "3.000 horas em 4 anos.",
+        "fontes": [
+          "cne-2-2007"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "pos",
+        "nome": "Pós-graduação",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Especialização, mestrado ou doutorado, para pesquisa ou áreas como dados e segurança.",
+        "fontes": [],
+        "tipo": "depois"
+      },
+      {
+        "id": "tecnologo",
+        "nome": "Tecnólogo em ADS",
+        "anos_de": 2,
+        "anos_ate": 3,
+        "texto": "Caminho mais curto e aplicado: mínimo de 2.000 horas.",
+        "fontes": [
+          "cncst"
+        ],
+        "tipo": "alternativa"
+      }
+    ]
+  }
+}

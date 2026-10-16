@@ -1,6 +1,6 @@
 {
   "versao": 2,
-  "atualizado_em": "2026-10-14",
+  "atualizado_em": "2026-10-16",
   "areas": [
     {
       "id": "saude",
@@ -70,10 +70,12 @@
       "nome": "Medicina",
       "area": "saude",
       "onda": 1,
-      "status": "planejada",
+      "status": "rascunho",
+      "arquivo": "medicina.json",
+      "frase": "Previne, diagnostica e trata doenças, da consulta à cirurgia.",
       "busca": "medicina medico medica",
       "carta": {
-        "fato": "No Sisu 2026, 17 mil candidatos disputaram 160 vagas na UFMG. A procura dispara em janeiro e fevereiro.",
+        "fato": "No Sisu 2026, um único curso de Medicina reuniu 17.010 candidatos para 160 vagas.",
         "fonte": "sisu-2026"
       },
       "trends_id": "medicina"
@@ -83,7 +85,9 @@
       "nome": "Psicologia",
       "area": "saude",
       "onda": 1,
-      "status": "planejada",
+      "status": "rascunho",
+      "arquivo": "psicologia.json",
+      "frase": "Avalia e cuida da saúde mental e do comportamento, do consultório à escola e à empresa.",
       "busca": "psicologia psicologo psicologa",
       "carta": {
         "fato": "375 mil matriculados, quase todos presenciais. Psicólogo não prescreve remédio; isso é do psiquiatra.",
@@ -96,24 +100,42 @@
       "nome": "Fisioterapia",
       "area": "saude",
       "onda": 1,
-      "status": "planejada",
-      "busca": "fisioterapia fisioterapeuta"
+      "status": "rascunho",
+      "arquivo": "fisioterapia.json",
+      "frase": "Avalia e trata o movimento do corpo: reabilita depois de lesões, cirurgias e doenças.",
+      "busca": "fisioterapia fisioterapeuta",
+      "carta": {
+        "fato": "Em 2024, Fisioterapia foi o 10º curso com mais matrículas do país, com cerca de 227 mil estudantes.",
+        "fonte": "censo-2024"
+      }
     },
     {
       "id": "educacao-fisica",
       "nome": "Educação Física",
       "area": "saude",
       "onda": 1,
-      "status": "planejada",
-      "busca": "educacao fisica personal professor de educacao fisica"
+      "status": "rascunho",
+      "arquivo": "educacao-fisica.json",
+      "frase": "Planeja e orienta atividade física e esporte, da academia à escola e ao alto rendimento.",
+      "busca": "educacao fisica personal professor de educacao fisica",
+      "carta": {
+        "fato": "8º curso com mais matrículas em 2024, com cerca de 304 mil estudantes; três em cada quatro estavam na EAD.",
+        "fonte": "censo-2024"
+      }
     },
     {
       "id": "administracao",
       "nome": "Administração",
       "area": "negocios",
       "onda": 1,
-      "status": "planejada",
+      "status": "rascunho",
+      "arquivo": "administracao.json",
+      "frase": "Planeja, organiza e controla os recursos de uma organização: pessoas, dinheiro, processos e produção.",
       "busca": "administracao administrador gestao",
+      "carta": {
+        "fato": "2º curso com mais matrículas do país, com cerca de 653 mil estudantes em 2024, dois terços a distância.",
+        "fonte": "censo-2024"
+      },
       "trends_id": "administracao"
     },
     {
@@ -121,8 +143,14 @@
       "nome": "Ciências Contábeis",
       "area": "negocios",
       "onda": 1,
-      "status": "planejada",
+      "status": "rascunho",
+      "arquivo": "ciencias-contabeis.json",
+      "frase": "Registra, analisa e explica os números de empresas e pessoas: balanços, impostos, custos e auditoria.",
       "busca": "contabilidade ciencias contabeis contador",
+      "carta": {
+        "fato": "Diploma não basta: para assinar como contador, é preciso passar no Exame de Suficiência e se registrar no CRC.",
+        "fonte": "dl-9295"
+      },
       "trends_id": "ciencias-contabeis"
     },
     {
@@ -130,15 +158,23 @@
       "nome": "Gestão de Pessoas",
       "area": "negocios",
       "onda": 1,
-      "status": "planejada",
-      "busca": "gestao de pessoas recursos humanos rh"
+      "status": "rascunho",
+      "arquivo": "gestao-de-pessoas.json",
+      "frase": "Recruta, desenvolve e cuida das pessoas de uma organização, da contratação à carreira.",
+      "busca": "gestao de pessoas recursos humanos rh",
+      "carta": {
+        "fato": "Cerca de 198 mil estudantes faziam Gestão de Pessoas a distância em 2024, entre os 10 cursos com mais alunos na EAD.",
+        "fonte": "censo-2024"
+      }
     },
     {
       "id": "direito",
       "nome": "Direito",
       "area": "direito-sociedade",
       "onda": 1,
-      "status": "planejada",
+      "status": "rascunho",
+      "arquivo": "direito.json",
+      "frase": "Interpreta e aplica as leis para defender pessoas, empresas e o interesse público.",
       "busca": "direito advogado advogada advocacia",
       "carta": {
         "fato": "Quase 653 mil matriculados, e praticamente todos em curso presencial. EAD também está proibido aqui.",
@@ -150,7 +186,9 @@
       "nome": "Pedagogia",
       "area": "educacao",
       "onda": 1,
-      "status": "planejada",
+      "status": "rascunho",
+      "arquivo": "pedagogia.json",
+      "frase": "Ensina na educação infantil e nos anos iniciais e organiza o trabalho pedagógico das escolas.",
       "busca": "pedagogia pedagogo pedagoga professor",
       "carta": {
         "fato": "É o curso com mais matrículas do país: cerca de 888 mil estudantes em 2024, e 83% deles a distância.",
@@ -163,7 +201,9 @@
       "nome": "Sistemas e desenvolvimento",
       "area": "tecnologia",
       "onda": 1,
-      "status": "planejada",
+      "status": "rascunho",
+      "arquivo": "sistemas.json",
+      "frase": "Cria, mantém e conecta os sistemas e aplicativos que empresas e pessoas usam todos os dias.",
       "busca": "sistemas de informacao analise e desenvolvimento de sistemas ads ti programador software",
       "carta": {
         "fato": "Quinto curso com mais matrículas, 63% delas a distância. Formato oposto ao da saúde.",
@@ -175,7 +215,9 @@
       "nome": "Engenharia Civil",
       "area": "engenharia",
       "onda": 1,
-      "status": "planejada",
+      "status": "rascunho",
+      "arquivo": "engenharia-civil.json",
+      "frase": "Projeta, calcula e acompanha obras: prédios, pontes, estradas, saneamento e infraestrutura.",
       "busca": "engenharia civil engenheiro civil construcao",
       "carta": {
         "fato": "A busca por \"engenharia civil salário\" cresceu 250% em cinco anos. Quem pesquisa esse curso pesquisa carreira.",
@@ -188,87 +230,153 @@
       "nome": "Odontologia",
       "area": "saude",
       "onda": 2,
-      "status": "planejada",
-      "busca": "odontologia dentista"
+      "status": "rascunho",
+      "arquivo": "odontologia.json",
+      "frase": "Previne e trata problemas da boca e dos dentes, do consultório ao hospital.",
+      "busca": "odontologia dentista",
+      "carta": {
+        "fato": "Cerca de 163 mil matrículas presenciais em 2024: o 6º curso com mais alunos no presencial.",
+        "fonte": "censo-2024"
+      }
     },
     {
       "id": "medicina-veterinaria",
       "nome": "Medicina Veterinária",
       "area": "saude",
       "onda": 2,
-      "status": "planejada",
-      "busca": "medicina veterinaria veterinario"
+      "status": "rascunho",
+      "arquivo": "medicina-veterinaria.json",
+      "frase": "Cuida da saúde dos animais e da segurança dos alimentos de origem animal.",
+      "busca": "medicina veterinaria veterinario",
+      "carta": {
+        "fato": "Cerca de 157 mil matrículas presenciais em 2024: o 8º curso com mais alunos no presencial.",
+        "fonte": "censo-2024"
+      }
     },
     {
       "id": "nutricao",
       "nome": "Nutrição",
       "area": "saude",
       "onda": 2,
-      "status": "planejada",
-      "busca": "nutricao nutricionista"
+      "status": "rascunho",
+      "arquivo": "nutricao.json",
+      "frase": "Planeja a alimentação de pessoas e grupos, do consultório ao hospital e à cozinha industrial.",
+      "busca": "nutricao nutricionista",
+      "carta": {
+        "fato": "Cerca de 102 mil estudantes faziam Nutrição a distância em 2024, entre os 10 cursos com mais alunos na EAD.",
+        "fonte": "censo-2024"
+      }
     },
     {
       "id": "farmacia",
       "nome": "Farmácia",
       "area": "saude",
       "onda": 2,
-      "status": "planejada",
-      "busca": "farmacia farmaceutico"
+      "status": "rascunho",
+      "arquivo": "farmacia.json",
+      "frase": "Cuida do medicamento do começo ao fim: produção, qualidade e orientação de quem vai usar.",
+      "busca": "farmacia farmaceutico",
+      "carta": {
+        "fato": "Cerca de 105 mil estudantes faziam Farmácia a distância em 2024, entre os 10 cursos com mais alunos na EAD.",
+        "fonte": "censo-2024"
+      }
     },
     {
       "id": "biomedicina",
       "nome": "Biomedicina",
       "area": "saude",
       "onda": 2,
-      "status": "planejada",
-      "busca": "biomedicina biomedico"
+      "status": "rascunho",
+      "arquivo": "biomedicina.json",
+      "frase": "Trabalha no laboratório e nos exames que ajudam a descobrir e acompanhar doenças.",
+      "busca": "biomedicina biomedico",
+      "carta": {
+        "fato": "O biomédico pode fazer radiografias, mas a interpretação do exame não é dele.",
+        "fonte": "lei-6684"
+      }
     },
     {
       "id": "arquitetura",
       "nome": "Arquitetura e Urbanismo",
       "area": "engenharia",
       "onda": 2,
-      "status": "planejada",
-      "busca": "arquitetura arquiteto urbanismo"
+      "status": "rascunho",
+      "arquivo": "arquitetura.json",
+      "frase": "Projeta casas, prédios, interiores, paisagens e cidades, do desenho à obra.",
+      "busca": "arquitetura arquiteto urbanismo",
+      "carta": {
+        "fato": "Desde 2010, arquitetos têm conselho próprio, o CAU. Antes, o registro era no Crea, junto com os engenheiros.",
+        "fonte": "lei-12378"
+      }
     },
     {
       "id": "engenharia-de-producao",
       "nome": "Engenharia de Produção",
       "area": "engenharia",
       "onda": 2,
-      "status": "planejada",
-      "busca": "engenharia de producao"
+      "status": "rascunho",
+      "arquivo": "engenharia-de-producao.json",
+      "frase": "Organiza fábricas, processos e cadeias de suprimento para produzir mais, melhor e com menos desperdício.",
+      "busca": "engenharia de producao",
+      "carta": {
+        "fato": "Metade dos contratos de engenheiro de produção com carteira paga entre R$ 8 mil e R$ 14 mil de salário-base.",
+        "fonte": "caged"
+      }
     },
     {
       "id": "ciencia-da-computacao",
       "nome": "Ciência da Computação",
       "area": "tecnologia",
       "onda": 2,
-      "status": "planejada",
-      "busca": "ciencia da computacao computacao"
+      "status": "rascunho",
+      "arquivo": "ciencia-da-computacao.json",
+      "frase": "Estuda a fundo como os computadores funcionam e cria algoritmos, sistemas e tecnologias novas.",
+      "busca": "ciencia da computacao computacao",
+      "carta": {
+        "fato": "Entre set/2024 e dez/2025, o setor de tecnologia ganhou 125 mil profissionais, mas só 24 mil com carteira.",
+        "fonte": "brasscom-2026"
+      }
     },
     {
       "id": "inteligencia-artificial",
       "nome": "Inteligência Artificial",
       "area": "tecnologia",
       "onda": 2,
-      "status": "planejada",
-      "busca": "inteligencia artificial ia"
+      "status": "rascunho",
+      "arquivo": "inteligencia-artificial.json",
+      "frase": "Treina e coloca em uso sistemas que aprendem com dados: previsões, recomendações, visão e linguagem.",
+      "busca": "inteligencia artificial ia",
+      "carta": {
+        "fato": "No Sisu 2026, um curso de Inteligência Artificial teve a segunda maior nota de corte do país: 846,72 pontos.",
+        "fonte": "sisu-2026"
+      }
     },
     {
       "id": "comunicacao",
       "nome": "Jornalismo e Publicidade",
       "area": "comunicacao",
       "onda": 2,
-      "status": "planejada",
-      "busca": "jornalismo publicidade comunicacao marketing"
+      "status": "rascunho",
+      "arquivo": "comunicacao.json",
+      "frase": "Apura e conta histórias para informar, e cria campanhas e conteúdos para marcas e causas.",
+      "busca": "jornalismo publicidade comunicacao marketing",
+      "carta": {
+        "fato": "Desde 2009, não é preciso diploma para trabalhar como jornalista: o STF derrubou a exigência.",
+        "fonte": "stf-jornalismo"
+      }
     }
   ],
   "fontes_cartas": {
     "censo-2024": "Inep, Censo da Educação Superior 2024, via CNN Brasil (23/09/2025)",
     "sisu-2026": "VestibulandoWeb, Sisu 2026 (01/06/2026); confirmar nos dados do MEC",
     "trends": "Google Trends, Brasil, 2021–2026, extraído em 14/10/2026",
-    "decreto-12456": "Decreto nº 12.456/2025"
+    "decreto-12456": "Decreto nº 12.456/2025",
+    "dl-9295": "Decreto-Lei nº 9.295/1946, art. 12 (redação da Lei nº 12.249/2010)",
+    "lei-6684": "Lei nº 6.684/1979, art. 5º",
+    "lei-12378": "Lei nº 12.378/2010, arts. 5º e 55",
+    "caged": "Portal Salário, com dados do Novo Caged (MTE), 12 meses até ago/2026",
+    "brasscom-2026": "Brasscom, Perspectivas do Mercado de Trabalho do Macrossetor TIC (maio de 2026)",
+    "stf-jornalismo": "STF, RE 511.961 (2009)"
   },
   "panoramas": [
     {

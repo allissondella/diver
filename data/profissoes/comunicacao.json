@@ -1,0 +1,413 @@
+{
+  "id": "comunicacao",
+  "versao": 1,
+  "nome": "Jornalismo e Publicidade",
+  "area": "comunicacao",
+  "frase": "Apura e conta histórias para informar, e cria campanhas e conteúdos para marcas e causas.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "criatividade",
+    "prazos"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "4 anos",
+      "detalhe": "Jornalismo: 3.000 horas em 8 semestres",
+      "fontes": [
+        "ufms-jornalismo"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial, semipresencial ou EAD",
+      "detalhe": "a área do curso pode ser oferecida nos três formatos",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 5.041",
+      "detalhe": "média de contratação de jornalista com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-jornalista"
+      ]
+    },
+    "registro": {
+      "valor": "Não exigido no jornalismo",
+      "detalhe": "o STF derrubou a exigência de diploma e de registro para exercer o jornalismo",
+      "fontes": [
+        "stf-jornalismo"
+      ]
+    }
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "No jornalismo, apura fatos, entrevista, checa informações e produz reportagens em texto, áudio e vídeo. Na publicidade, cria e planeja campanhas, conteúdos e mídia para marcas, governos e causas. Os dois caminhos trabalham com redes sociais, dados de audiência e prazos curtos.",
+      "nao_faz": "Publicidade não pode se disfarçar de notícia ou de opinião espontânea: a lei exige que o público a reconheça como propaganda, fácil e imediatamente.",
+      "fontes": [
+        "lei-8078"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Na redação, o dia gira em torno da pauta: apurar, entrevistar, escrever, editar e publicar, muitas vezes com a notícia mudando no meio do caminho. Na agência ou no marketing, é briefing, criação, reunião com cliente, aprovação e ajustes. Plantões em fins de semana e eventos aparecem nos dois.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Teoria da comunicação, ética, técnicas de texto, fotografia, áudio, vídeo e mídias digitais, com laboratórios e projetos práticos. No Jornalismo, apuração e reportagem; na Publicidade, criação, planejamento e mídia.",
+      "disciplinas": [
+        "Teorias da comunicação",
+        "Ética e legislação",
+        "Redação jornalística",
+        "Apuração e entrevista",
+        "Fotografia",
+        "Rádio e podcast",
+        "Telejornalismo e vídeo",
+        "Jornalismo digital e dados",
+        "Criação publicitária",
+        "Planejamento de campanha",
+        "Mídia e redes sociais",
+        "Projeto experimental"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. A redação e Linguagens costumam pesar, junto com as Ciências Humanas.",
+      "materias_chave": [
+        "enem-redacao",
+        "enem-portugues",
+        "enem-sociologia",
+        "enem-ingles"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira como jornalista, com jornada média de 37 horas, e como agente publicitário, com 42 horas. Muita gente trabalha como freelancer ou pessoa jurídica, e essa renda fica fora da conta.",
+      "fontes": [
+        "caged-jornalista",
+        "caged-publicitario"
+      ],
+      "medias": [
+        {
+          "cargo": "Jornalista",
+          "valor": 5041.45,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-jornalista"
+          ],
+          "faixa": {
+            "de": 2889,
+            "ate": 6217,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        },
+        {
+          "cargo": "Agente publicitário",
+          "valor": 4237.63,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-publicitario"
+          ],
+          "faixa": {
+            "de": 2052,
+            "ate": 5000,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um jornalista contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 15000,
+        "passo": 100,
+        "inicial": 7000,
+        "segunda": {
+          "pergunta": "E um agente publicitário?",
+          "inicial": 6500
+        }
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Redações",
+          "texto": "Jornais, sites, rádio, TV e podcasts.",
+          "fontes": []
+        },
+        {
+          "titulo": "Assessoria de imprensa e comunicação",
+          "texto": "Comunicação de empresas, governos e organizações.",
+          "fontes": []
+        },
+        {
+          "titulo": "Agências de publicidade",
+          "texto": "Criação, planejamento, mídia e atendimento.",
+          "fontes": []
+        },
+        {
+          "titulo": "Marketing digital e conteúdo",
+          "texto": "Redes sociais, conteúdo de marca e análise de audiência.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "Desde 2009, não é preciso diploma para trabalhar como jornalista: o diploma ajuda, mas o portfólio conta muito.",
+          "fontes": [
+            "stf-jornalismo"
+          ]
+        },
+        {
+          "texto": "Publicidade disfarçada de conteúdo espontâneo contraria a lei: o público precisa saber que é propaganda.",
+          "fontes": [
+            "lei-8078"
+          ]
+        },
+        {
+          "texto": "Os prazos são curtos e mudam: a notícia não espera, e o cliente pede ajuste até o último minuto.",
+          "fontes": []
+        },
+        {
+          "texto": "Muitos começam como freelancers, com renda que varia de mês a mês.",
+          "fontes": []
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "administracao",
+        "diferenca": "O marketing também é campo da administração, com mais foco em gestão."
+      },
+      {
+        "id": "sistemas",
+        "diferenca": "Constrói os produtos digitais que a comunicação usa."
+      },
+      {
+        "id": "gestao-de-pessoas",
+        "diferenca": "A comunicação interna é ponto de encontro com o RH."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "diploma",
+      "afirmacao": "Só quem tem diploma de Jornalismo pode trabalhar como jornalista.",
+      "verdade": false,
+      "explicacao": "O STF decidiu, em 2009, que exigir diploma e registro para exercer o jornalismo é inconstitucional.",
+      "fontes": [
+        "stf-jornalismo"
+      ]
+    },
+    {
+      "id": "publi",
+      "afirmacao": "Post pago de influenciador pode parecer espontâneo.",
+      "verdade": false,
+      "explicacao": "A publicidade deve ser identificada como tal, de forma fácil e imediata.",
+      "fontes": [
+        "lei-8078"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Jornalismo pode ser feito a distância.",
+      "verdade": true,
+      "explicacao": "A área pode ser oferecida nos três formatos.",
+      "fontes": [
+        "portaria-378"
+      ]
+    },
+    {
+      "id": "duracao",
+      "afirmacao": "O curso de Jornalismo tem pelo menos 3.000 horas.",
+      "verdade": true,
+      "explicacao": "Em no mínimo 8 semestres.",
+      "fontes": [
+        "ufms-jornalismo"
+      ]
+    },
+    {
+      "id": "provas",
+      "afirmacao": "O anunciante precisa ter como provar o que diz na propaganda.",
+      "verdade": true,
+      "explicacao": "Ele deve manter os dados técnicos e científicos que sustentam a mensagem.",
+      "fontes": [
+        "lei-8078"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-8078",
+      "titulo": "Lei nº 8.078/1990 (Código de Defesa do Consumidor): a publicidade deve ser identificada como tal (art. 36)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "stf-jornalismo",
+      "titulo": "STF, RE 511.961 (2009): é inconstitucional exigir diploma de jornalismo e registro no Ministério do Trabalho para exercer a profissão",
+      "orgao": "Supremo Tribunal Federal",
+      "url": "https://noticias.stf.jus.br/postsnoticias/supremo-decide-que-e-inconstitucional-a-exigencia-de-diploma-para-o-exercicio-do-jornalismo/",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "ufms-jornalismo",
+      "titulo": "Jornalismo: carga mínima de 3.000 horas e 8 semestres (mínimo do CNE, Resolução CNE/CES nº 1/2013, citado em projeto pedagógico público)",
+      "orgao": "Universidade federal, projeto pedagógico do curso (2026)",
+      "url": "https://jornalismo-faalc.ufms.br/wp-content/uploads/2026/02/Completo_PPC.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pelo texto da Resolução CNE/CES nº 1/2013 no portal do MEC."
+    },
+    {
+      "id": "caged-jornalista",
+      "titulo": "Jornalista (CBO 2611-25): média de R$ 5.041,45, P25 de R$ 2.889,00 e P75 de R$ 6.217,00, jornada média de 37 h semanais, saldo de +23 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/jornalista-cbo-261125",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-publicitario",
+      "titulo": "Agente publicitário (CBO 2531-15): média de R$ 4.237,63, P25 de R$ 2.052,00 e P75 de R$ 5.000,00, jornada média de 42 h semanais, saldo de −337 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/agente-publicitario-cbo-253115",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    }
+  ],
+  "carta": {
+    "fato": "Desde 2009, não é preciso diploma para trabalhar como jornalista: o STF derrubou a exigência.",
+    "fontes": [
+      "stf-jornalismo"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 7,
+      "texto": "Plantão de madrugada no site, ou noite de sono."
+    },
+    {
+      "de": 7,
+      "ate": 9,
+      "texto": "Leitura das notícias e reunião de pauta."
+    },
+    {
+      "de": 9,
+      "ate": 12,
+      "texto": "Apuração, entrevistas e ligações; na agência, briefing e criação."
+    },
+    {
+      "de": 12,
+      "ate": 13,
+      "texto": "Almoço."
+    },
+    {
+      "de": 13,
+      "ate": 17,
+      "texto": "Escrita, edição e gravação; na agência, apresentação ao cliente e ajustes."
+    },
+    {
+      "de": 17,
+      "ate": 20,
+      "texto": "Fechamento: o texto, o vídeo ou a campanha precisa sair hoje."
+    },
+    {
+      "de": 20,
+      "ate": 24,
+      "texto": "A notícia que estoura à noite muda tudo, e as redes não dormem."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada lugar de trabalho é diferente.",
+  "dna": {
+    "pessoas": 80,
+    "pressao": 75,
+    "corpo": 20,
+    "rotina": 35,
+    "numeros": 30,
+    "criatividade": 90
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "post-pago",
+      "situacao": "Uma marca oferece pagar para você publicar um elogio ao produto no seu perfil, desde que não apareça que é publicidade.",
+      "opcoes": [
+        {
+          "texto": "Aceitar: todo mundo faz",
+          "recomendada": false
+        },
+        {
+          "texto": "Aceitar só se puder identificar o post como publicidade",
+          "recomendada": true
+        },
+        {
+          "texto": "Postar e apagar depois",
+          "recomendada": false
+        }
+      ],
+      "resposta": "A publicidade deve ser feita de modo que o público a identifique fácil e imediatamente. Identificar a parceria protege você e quem segue você.",
+      "fontes": [
+        "lei-8078"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Duração mínima de referência para o Jornalismo.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (Jornalismo ou Publicidade)",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "No Jornalismo, 3.000 horas em 8 semestres.",
+        "fontes": [
+          "ufms-jornalismo"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "pos",
+        "nome": "Especialização",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Em jornalismo de dados, marketing digital, audiovisual ou comunicação corporativa.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  }
+}

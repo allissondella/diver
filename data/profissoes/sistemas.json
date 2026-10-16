@@ -1,0 +1,481 @@
+{
+  "id": "sistemas",
+  "versao": 1,
+  "nome": "Sistemas e desenvolvimento",
+  "area": "tecnologia",
+  "frase": "Cria, mantém e conecta os sistemas e aplicativos que empresas e pessoas usam todos os dias.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-16",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "computador",
+    "trabalho-remoto-possivel",
+    "curso-curto"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "2 a 4 anos",
+      "detalhe": "tecnólogo em ADS (mínimo de 2.000 horas) ou bacharelado em Sistemas de Informação (3.000 horas)",
+      "fontes": [
+        "cncst",
+        "cne-2-2007"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial, semipresencial ou EAD",
+      "detalhe": "a área do curso pode ser oferecida nos três formatos",
+      "fontes": [
+        "portaria-378",
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 8.458",
+      "detalhe": "média de contratação de analista de desenvolvimento de sistemas com carteira, salário-base, 12 meses até ago/2026",
+      "fontes": [
+        "caged-dev-analista"
+      ]
+    },
+    "registro": {
+      "valor": "Sem conselho próprio",
+      "detalhe": "não há conselho de informática: o projeto que criaria um foi arquivado em 2014",
+      "fontes": [
+        "pls-607"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 420479,
+    "posicao_ranking_matriculas": 5,
+    "texto": "Em 2024, Sistemas de Informação foi o 5º curso com mais matrículas no Brasil, com cerca de 420 mil estudantes, 63% deles a distância.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Entende o que empresas e pessoas precisam e transforma isso em sistemas: aplicativos, sites, sistemas internos e integrações entre eles. Programa, testa, coloca no ar e mantém tudo funcionando, junto com os times de produto e de infraestrutura.",
+      "fontes": []
+    },
+    "dia_a_dia": {
+      "texto": "Reunião rápida com o time no começo do dia, depois programação, testes e revisão do código dos colegas. Parte do tempo vai para entender o que o usuário precisa, e parte para corrigir problemas que aparecem no sistema em uso. Muitas vagas são remotas ou híbridas.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "No tecnólogo em Análise e Desenvolvimento de Sistemas (ADS), o foco é programar e construir sistemas, num curso mais curto. No bacharelado em Sistemas de Informação, entram também gestão, processos de negócio e mais base teórica.",
+      "disciplinas": [
+        "Lógica de programação",
+        "Algoritmos e estruturas de dados",
+        "Programação orientada a objetos",
+        "Banco de dados",
+        "Desenvolvimento web",
+        "Desenvolvimento mobile",
+        "Engenharia de software",
+        "Redes de computadores",
+        "Segurança da informação",
+        "Análise de sistemas",
+        "Gestão de projetos"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "cncst",
+        "cne-2-2007"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Matemática costuma pesar. Em institutos federais, a procura pode ser enorme: no Sisu 2026, um curso de ADS teve 12.944 candidatos para 40 vagas.",
+      "materias_chave": [
+        "enem-matematica",
+        "enem-ingles",
+        "enem-portugues",
+        "enem-redacao"
+      ],
+      "fontes": [
+        "sisu-2026"
+      ]
+    },
+    "quanto_ganha": {
+      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira, com jornada média de 42 horas por semana. No setor, muita gente trabalha como PJ, MEI ou para empresas de fora do país, e isso fica fora da conta.",
+      "fontes": [
+        "caged-dev-analista",
+        "caged-programador"
+      ],
+      "medias": [
+        {
+          "cargo": "Analista de desenvolvimento de sistemas",
+          "valor": 8458.3,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-dev-analista"
+          ],
+          "faixa": {
+            "de": 4497,
+            "ate": 11280,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        },
+        {
+          "cargo": "Programador de sistemas de informação",
+          "valor": 6061.3,
+          "periodo": "12 meses até ago/2026",
+          "fontes": [
+            "caged-programador"
+          ],
+          "faixa": {
+            "de": 2800,
+            "ate": 8255,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um analista de desenvolvimento de sistemas contratado com carteira?",
+        "min": 2000,
+        "max": 20000,
+        "passo": 250,
+        "inicial": 11000,
+        "segunda": {
+          "pergunta": "E um programador de sistemas de informação?",
+          "inicial": 9000
+        }
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Desenvolvimento web e mobile",
+          "texto": "Sites, aplicativos e as partes do sistema que o usuário não vê.",
+          "fontes": []
+        },
+        {
+          "titulo": "Sistemas de empresas",
+          "texto": "Sistemas de gestão, integrações e automação de processos.",
+          "fontes": []
+        },
+        {
+          "titulo": "Testes e qualidade",
+          "texto": "Planejar e automatizar testes para o sistema não quebrar.",
+          "fontes": []
+        },
+        {
+          "titulo": "Infraestrutura e nuvem",
+          "texto": "Servidores, publicação e monitoramento dos sistemas.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "Cerca de 40% de quem se forma em cursos de TIC por ano sai de ADS: a concorrência pelo primeiro emprego é grande.",
+          "fontes": [
+            "brasscom-2026"
+          ]
+        },
+        {
+          "texto": "O gargalo é o primeiro emprego formal: entre set/2024 e dez/2025, só 24 mil dos 125 mil novos profissionais do setor entraram com carteira.",
+          "fontes": [
+            "brasscom-2026"
+          ]
+        },
+        {
+          "texto": "Sistema no ar quebra fora do horário: plantão e correção urgente acontecem.",
+          "fontes": []
+        },
+        {
+          "texto": "Nuvem, segurança, IA e inglês estão entre as habilidades mais pedidas pelos empregadores.",
+          "fontes": [
+            "brasscom-2026"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "ciencia-da-computacao",
+        "diferenca": "Mais teoria e matemática: algoritmos, sistemas e pesquisa."
+      },
+      {
+        "id": "inteligencia-artificial",
+        "diferenca": "Foco em dados e em modelos que aprendem."
+      },
+      {
+        "id": "administracao",
+        "diferenca": "A gestão do negócio que o sistema atende."
+      }
+    ]
+  },
+  "mitos": [
+    {
+      "id": "curto",
+      "afirmacao": "Existe graduação em tecnologia com cerca de 2 anos.",
+      "verdade": true,
+      "explicacao": "O tecnólogo em Análise e Desenvolvimento de Sistemas tem carga mínima de 2.000 horas.",
+      "fontes": [
+        "cncst"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Dá para fazer o curso a distância.",
+      "verdade": true,
+      "explicacao": "A área pode ser oferecida nos três formatos; em 2024, cerca de 263 mil estudantes de Sistemas de Informação estudavam a distância.",
+      "fontes": [
+        "portaria-378",
+        "censo-2024"
+      ]
+    },
+    {
+      "id": "conselho",
+      "afirmacao": "Programador precisa de registro em conselho.",
+      "verdade": false,
+      "explicacao": "Não há conselho de informática: o projeto de 2007 que criaria um foi arquivado em 2014.",
+      "fontes": [
+        "pls-607"
+      ]
+    },
+    {
+      "id": "carteira",
+      "afirmacao": "Quase todo mundo que entra em tecnologia é contratado com carteira.",
+      "verdade": false,
+      "explicacao": "Entre set/2024 e dez/2025, só 24 mil dos 125 mil novos profissionais do setor entraram com carteira.",
+      "fontes": [
+        "brasscom-2026"
+      ]
+    },
+    {
+      "id": "formados",
+      "afirmacao": "Em 2024, o Brasil formou mais de 100 mil pessoas em cursos de TIC.",
+      "verdade": true,
+      "explicacao": "Foram 111 mil, quase o dobro de 2022.",
+      "fontes": [
+        "brasscom-2026"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "brasscom-2026",
+      "titulo": "Relatório Perspectivas do Mercado de Trabalho do Macrossetor TIC (set/2024 a dez/2026): 111 mil formados em TIC em 2024, cerca de 40% em ADS; 125 mil novos profissionais entre set/2024 e dez/2025, 24 mil com carteira",
+      "orgao": "Brasscom, maio de 2026",
+      "url": "https://brasscom.org.br/wp-content/uploads/2026/07/Relatorio-Pespectivas-do-Mercado-de-Trabalho-Apresentacao-v9.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cncst",
+      "titulo": "Catálogo Nacional de Cursos Superiores de Tecnologia: Análise e Desenvolvimento de Sistemas, carga mínima de 2.000 h (conferida na página de um curso de universidade federal)",
+      "orgao": "MEC, via universidade federal",
+      "url": "https://www.utfpr.edu.br/cursos/coordenacoes/graduacao/ponta-grossa/pg-tecnologia-em-analise-e-desenvolvimento-de-sistemas/apresentacao",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela página oficial do catálogo no portal do MEC."
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
+      "orgao": "Conselho Nacional de Educação (MEC)",
+      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-dev-analista",
+      "titulo": "Analista de desenvolvimento de sistemas (CBO 2124-05): média de R$ 8.458,30, P25 de R$ 4.497,00 e P75 de R$ 11.280,00, jornada média de 42 h semanais, saldo de +3.737 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/analista-de-desenvolvimento-de-sistemas-cbo-212405",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    },
+    {
+      "id": "portaria-378",
+      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
+      "orgao": "Ministério da Educação, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "pls-607",
+      "titulo": "PLS nº 607/2007: regulamentaria a profissão de analista de sistemas e criaria conselhos de informática; arquivado ao final da legislatura, em 2014",
+      "orgao": "Senado Federal",
+      "url": "https://www25.senado.leg.br/web/atividade/materias/-/materia/82918",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "caged-programador",
+      "titulo": "Programador de sistemas de informação (CBO 3171-10): média de R$ 6.061,30, P25 de R$ 2.800,00 e P75 de R$ 8.255,00, jornada média de 42 h semanais, saldo de −989 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/programador-de-sistemas-de-informacao-cbo-317110",
+      "consultado_em": "2026-10-16",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    },
+    {
+      "id": "sisu-2026",
+      "titulo": "Sisu 2026: maiores notas de corte e cursos com mais candidatos por vaga",
+      "orgao": "VestibulandoWeb, 01/06/2026",
+      "url": "https://www.vestibulandoweb.com.br/sisu/sisu-2026-medicina-lidera-disputa-e-curso-de-ia-chama-atencao-no-ranking/amp/",
+      "consultado_em": "2026-10-16",
+      "tipo": "secundaria",
+      "nota": "Confirmar nos dados do MEC."
+    },
+    {
+      "id": "lei-13709",
+      "titulo": "Lei nº 13.709/2018 (LGPD): dado pessoal sensível, hipóteses de tratamento e segurança dos dados (arts. 5º, 7º, 11 e 46)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "consultado_em": "2026-10-16",
+      "tipo": "primaria"
+    }
+  ],
+  "carta": {
+    "fato": "Sistemas de Informação é o 5º curso com mais matrículas do país, e 63% dos estudantes estão na EAD: o formato oposto ao da saúde.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 8,
+      "texto": "Hora de dormir, menos para quem está de plantão no sistema."
+    },
+    {
+      "de": 8,
+      "ate": 9,
+      "texto": "Mensagens, alertas do sistema e o que ficou pendente."
+    },
+    {
+      "de": 9,
+      "ate": 10,
+      "texto": "Reunião rápida do time: o que cada um fez e o que vai fazer."
+    },
+    {
+      "de": 10,
+      "ate": 12,
+      "texto": "Programação de uma funcionalidade nova."
+    },
+    {
+      "de": 12,
+      "ate": 13,
+      "texto": "Almoço."
+    },
+    {
+      "de": 13,
+      "ate": 15,
+      "texto": "Testes e revisão do código dos colegas."
+    },
+    {
+      "de": 15,
+      "ate": 17,
+      "texto": "Conversa com usuários ou com o time de produto sobre a próxima entrega."
+    },
+    {
+      "de": 17,
+      "ate": 18,
+      "texto": "Publicação de ajustes e documentação."
+    },
+    {
+      "de": 18,
+      "ate": 24,
+      "texto": "Fim do expediente; se o sistema cair, o plantão é acionado."
+    }
+  ],
+  "agora_nota": "Cenas típicas, a revisar com profissionais; cada lugar de trabalho é diferente.",
+  "dna": {
+    "pessoas": 45,
+    "pressao": 60,
+    "corpo": 5,
+    "rotina": 55,
+    "numeros": 75,
+    "criatividade": 65
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "senhas-abertas",
+      "situacao": "Para facilitar o suporte, seu chefe pede que o sistema guarde as senhas dos clientes de um jeito que a equipe consiga ler.",
+      "opcoes": [
+        {
+          "texto": "Fazer como pedido",
+          "recomendada": false
+        },
+        {
+          "texto": "Propor guardar as senhas protegidas, sem que ninguém da equipe consiga lê-las, e explicar o risco",
+          "recomendada": true
+        },
+        {
+          "texto": "Guardar numa planilha à parte",
+          "recomendada": false
+        }
+      ],
+      "resposta": "A LGPD exige medidas de segurança para proteger os dados pessoais de acessos não autorizados, desde a concepção do sistema. Senha legível pela equipe é porta aberta para vazamento; o suporte resolve com troca de senha, não lendo a antiga.",
+      "fontes": [
+        "lei-13709"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Cargas mínimas pelas normas nacionais.",
+    "etapas": [
+      {
+        "id": "bacharelado",
+        "nome": "Bacharelado em Sistemas de Informação",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "3.000 horas em 4 anos.",
+        "fontes": [
+          "cne-2-2007"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "pos",
+        "nome": "Especialização ou certificações",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Em nuvem, segurança, dados ou arquitetura de software.",
+        "fontes": [],
+        "tipo": "depois"
+      },
+      {
+        "id": "tecnologo",
+        "nome": "Tecnólogo em ADS",
+        "anos_de": 2,
+        "anos_ate": 3,
+        "texto": "Mínimo de 2.000 horas, focado em programar.",
+        "fontes": [
+          "cncst"
+        ],
+        "tipo": "alternativa"
+      }
+    ]
+  }
+}
