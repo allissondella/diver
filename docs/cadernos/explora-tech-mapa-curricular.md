@@ -1,6 +1,6 @@
 # Mapa curricular: Explora Tech · Fundamentos (Fase 1 de 4)
 
-> **Aprovado em 2026-10-13. Onda 0 feita** (sala Tecnologia, bloco de código, Python no navegador, Módulo 1 e Robô Entregador). **Onda 1:** Módulo 2 feito em 2026-10-14 (aulas 6–10, com Robô de decisões, Lupa do Código, Caça-Bugs e Oficina de Funções); os Módulos 3 a 7 seguem um de cada vez. As próximas ondas seguem a seção 10.
+> **Aprovado em 2026-10-13. Fase 1 completa em 2026-10-16:** as 60 aulas dos 12 módulos, a prova final de 40 questões e os 18 laboratórios (seção 6), inclusive os de prioridade B (Caça ao Número, Banco ao Vivo, Caso do Servidor Sumido, Fábrica de Portas, Sala de Controle, Mini-servidor, Laboratório de Rede, Mini-Masmorra e Arena de Robôs). Falta a revisão humana e a Fila de Validação (só com o OK do admin).
 > Só conclusões nossas: nomes de módulos, aulas e laboratórios escritos por nós, organizados pela grade de seis matérias que o usuário passou. Nenhum trecho de terceiro.
 > O inventário do que já existe, a curadoria da pasta do Drive e a bibliografia estão no caderno do curso: `docs/cadernos/explora-tech-fundamentos.md`.
 

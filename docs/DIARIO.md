@@ -5,6 +5,19 @@
 
 ---
 
+## 2026-10-16 · Explora Tech · Fundamentos completo (Módulos 8 a 12 e fechamento da fase)
+- **Pedido do usuário:** "terminar de subir o curso completo de tech", com os laboratórios e as 4 etapas sem parar.
+- **Feito:**
+  - Módulos 8 a 12 (aulas 36 a 60): como o computador funciona, redes (duas partes), Linux e terminal, Git e GitHub; 100 questões por módulo, variantes e fichas, 0 aviso no `conferir-trilha`. O curso fechou com 60 aulas, 1.201 questões, 1.201 variantes e 243 fichas.
+  - Laboratórios novos: Fábrica de Portas, Sala de Controle, Jornada do Pacote, Mini-servidor, Laboratório de Rede, Missões no Terminal, Linha do Tempo do Código, Mini-Masmorra e Arena de Robôs (18 no curso, 181 missões, todos com 0 erro no `conferir-laboratorios`).
+  - Motores só de lógica, sem tela, que rodam no navegador e no conferidor: `motor-portas`, `motor-sala`, `motor-rede`, `motor-shell` e `motor-git` (Git de mentirinha como plugin do shell).
+  - Prova final conferida (40 questões, 80 min, 70%, libera com as 60 aulas).
+- **Decisões:** sem sqlite3 no Banco ao Vivo; terminal e Git de mentirinha (nada toca o computador do aluno); saída do Git em inglês, como no Git de verdade; Arena sem sorteio na hora (semente fixa) e sem ranking até o OK do usuário.
+- **Consertos de passagem:** curinga entre aspas não expande mais no shell (`echo "*.log"`); exemplos longos dos laboratórios de Python quebram a linha no celular; o prompt do terminal mostra o branch.
+- **Testes:** todas as missões resolvidas no navegador, no PC e no celular, com 3 estrelas e sem rolagem lateral; `auditar-design --navegador` OK.
+- **Fila:** só `simular` (~US$ 89 com as variantes), nada enviado.
+- **Pendências:** revisão humana do Allisson (74 itens `revisar`), Fila com o OK do admin e o merge para produção (do usuário).
+
 ## 2026-10-16 · Mapa das Profissões, Fase 1 (aba "Profissões")
 - **Pedido do usuário:** integrar o kit do Mapa das Profissões (`docs/MAPA_PROFISSOES_INTEGRACAO.md`), no mesmo PR da revisão de design, para um merge só.
 - **Feito:** item **Profissões** (ícone de bússola, grupo "Futuro", entre Estudar e Organizar) com as seis rotas (`#profissoes`, `#profissoes-cartas`, `#profissoes-metodo`, `#profissao-<id>`, `-dia`, `-mitos`) na tela `#tela-profissoes`. Ganchos ligados:
