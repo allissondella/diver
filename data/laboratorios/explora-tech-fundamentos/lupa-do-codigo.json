@@ -2374,6 +2374,333 @@
         }
       ],
       "saidaFinal": "{'sim': 2, 'não': 1}\n"
+    },
+    {
+      "id": "lc-pilha-1",
+      "grupo": "Funções de verdade",
+      "aulas": [
+        "py-escopo"
+      ],
+      "titulo": "A pilha de chamadas",
+      "enunciado": "linha chama media. Siga a pilha: para onde o programa pula, o que volta e qual variável existe em cada momento.",
+      "codigo": "def media(notas):\n    total = sum(notas)\n    return total / len(notas)\n\ndef linha(nome, notas):\n    m = media(notas)\n    texto = f\"{nome}: {m}\"\n    return texto\n\nsaida = linha(\"Ana\", [7, 8])\nprint(saida)\n",
+      "perguntas": [
+        {
+          "linha": 10,
+          "tipo": "linha",
+          "opcoes": [
+            "6",
+            "2",
+            "11"
+          ],
+          "porque": "A chamada linha(...) pula para dentro de linha, na primeira linha do corpo: a 6."
+        },
+        {
+          "linha": 6,
+          "tipo": "linha",
+          "opcoes": [
+            "2",
+            "7",
+            "10"
+          ],
+          "porque": "Na linha 6, linha chama media e fica esperando: o programa pula para a linha 2."
+        },
+        {
+          "linha": 7,
+          "variavel": "m",
+          "opcoes": [
+            "7.5",
+            "15",
+            "None"
+          ],
+          "porque": "media devolveu 15 / 2 = 7.5, e linha guardou em m. O total de media já sumiu."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 10,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 6,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa",
+            "linha",
+            "media"
+          ],
+          "variaveis": {
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa",
+            "linha",
+            "media"
+          ],
+          "variaveis": {
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "total": {
+              "tipo": "int",
+              "valor": "15"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 7,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 8,
+          "pilha": [
+            "programa",
+            "linha"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'Ana'"
+            },
+            "notas": {
+              "tipo": "list",
+              "valor": "[7, 8]"
+            },
+            "m": {
+              "tipo": "float",
+              "valor": "7.5"
+            },
+            "texto": {
+              "tipo": "str",
+              "valor": "'Ana: 7.5'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 11,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "saida": {
+              "tipo": "str",
+              "valor": "'Ana: 7.5'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "saida": {
+              "tipo": "str",
+              "valor": "'Ana: 7.5'"
+            }
+          },
+          "saida": 9
+        }
+      ],
+      "saidaFinal": "Ana: 7.5\n"
+    },
+    {
+      "id": "lc-escopo-1",
+      "grupo": "Funções de verdade",
+      "aulas": [
+        "py-escopo"
+      ],
+      "titulo": "Mesmo nome, casas diferentes",
+      "enunciado": "Há um x fora e outro dentro da função. Siga os dois e veja qual muda.",
+      "codigo": "x = 10\n\ndef f():\n    x = 99\n    return x\n\ny = f()\nprint(x, y)\n",
+      "perguntas": [
+        {
+          "linha": 4,
+          "variavel": "x",
+          "opcoes": [
+            "99",
+            "10",
+            "None"
+          ],
+          "porque": "Dentro de f, x = 99 cria uma variável local nova."
+        },
+        {
+          "linha": 8,
+          "variavel": "y",
+          "opcoes": [
+            "99",
+            "10",
+            "None"
+          ],
+          "porque": "f devolveu o x local, 99, que ficou guardado em y."
+        },
+        {
+          "linha": 8,
+          "variavel": "x",
+          "opcoes": [
+            "10",
+            "99",
+            "None"
+          ],
+          "porque": "O x de fora nunca foi trocado: continua 10."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "10"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 7,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "10"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa",
+            "f"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa",
+            "f"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "99"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 8,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "y": {
+              "tipo": "int",
+              "valor": "99"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "y": {
+              "tipo": "int",
+              "valor": "99"
+            }
+          },
+          "saida": 6
+        }
+      ],
+      "saidaFinal": "10 99\n"
     }
   ]
 }

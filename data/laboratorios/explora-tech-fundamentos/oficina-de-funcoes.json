@@ -825,6 +825,379 @@
      }
     ]
    }
+  },
+  {
+   "id": "of-saudar-padrao",
+   "aulas": [
+    "py-parametros-retorno"
+   ],
+   "grupo": "Funções de verdade",
+   "titulo": "Saudação com padrão",
+   "enunciado": "A função `saudar(nome, saudacao=\"Olá\")` devolve o texto `\"<saudacao>, <nome>!\"`. Sem a saudação, vale \"Olá\".",
+   "codigoInicial": "def saudar(nome, saudacao):\n    return f\"{saudacao}, {nome}!\"\n",
+   "solucao": "def saudar(nome, saudacao=\"Olá\"):\n    return f\"{saudacao}, {nome}!\"\n",
+   "exemplos": [
+    "saudar(\"Bia\")              # dá \"Olá, Bia!\"",
+    "saudar(\"Bia\", \"Bom dia\")   # dá \"Bom dia, Bia!\""
+   ],
+   "testes": [
+    {
+     "nome": "Sem saudação",
+     "codigo": "assert saudar('Bia') == 'Olá, Bia!', 'Sem a saudação, deveria usar Olá'"
+    },
+    {
+     "nome": "Com saudação",
+     "codigo": "assert saudar('Bia', 'Bom dia') == 'Bom dia, Bia!', 'Com saudação, deveria usar a recebida'"
+    },
+    {
+     "nome": "Por nome",
+     "codigo": "assert saudar(saudacao='Oi', nome='Caio') == 'Oi, Caio!', 'Por nome, a ordem não importa'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "Rode saudar(\"Bia\"): falta um argumento. Como deixar a saudação opcional?",
+    "Um parâmetro com valor padrão se escreve com igual: saudacao=\"Olá\".",
+    "def saudar(nome, saudacao=\"Olá\"):"
+   ],
+   "toque": {
+    "modelo": "def saudar(nome, saudacao___):\n    return f\"{saudacao}, {nome}!\"",
+    "lacunas": [
+     {
+      "opcoes": [
+       "=\"Olá\"",
+       ": \"Olá\"",
+       "== \"Olá\""
+      ],
+      "certa": 0,
+      "dica": "O padrão vem com um igual só."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-dividir-seguro",
+   "aulas": [
+    "py-parametros-retorno"
+   ],
+   "grupo": "Funções de verdade",
+   "titulo": "Divisão segura",
+   "enunciado": "A função `dividir(a, b)` devolve a divisão, mas, se b for zero, devolve None em vez de quebrar. Use um return antecipado.",
+   "codigoInicial": "def dividir(a, b):\n    return a / b\n",
+   "solucao": "def dividir(a, b):\n    if b == 0:\n        return None\n    return a / b\n",
+   "exemplos": [
+    "dividir(10, 4)   # dá 2.5",
+    "dividir(10, 0)   # dá None"
+   ],
+   "testes": [
+    {
+     "nome": "Divisão normal",
+     "codigo": "assert dividir(10, 4) == 2.5, 'dividir(10, 4) deveria dar 2.5'"
+    },
+    {
+     "nome": "Divisor zero",
+     "codigo": "assert dividir(10, 0) is None, 'Com divisor zero, devolva None'"
+    },
+    {
+     "nome": "Zero dividido",
+     "codigo": "assert dividir(0, 5) == 0, 'Zero dividido por 5 é 0'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Rode dividir(10, 0): ZeroDivisionError. Trate o zero antes da conta.",
+    "No começo da função: if b == 0: return None.",
+    "if b == 0: return None / return a / b"
+   ],
+   "toque": {
+    "modelo": "def dividir(a, b):\n    if b == ___:\n        return ___\n    return a / b",
+    "lacunas": [
+     {
+      "opcoes": [
+       "0",
+       "None",
+       "a"
+      ],
+      "certa": 0,
+      "dica": "O divisor que não pode."
+     },
+     {
+      "opcoes": [
+       "None",
+       "0",
+       "a"
+      ],
+      "certa": 0,
+      "dica": "O aviso de que não dá."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-aprovado-borda",
+   "aulas": [
+    "py-assert-testes"
+   ],
+   "grupo": "Testes",
+   "titulo": "O teste da borda",
+   "enunciado": "A função `aprovado(nota)` deveria aprovar com nota 6 ou mais. Os testes ocultos conferem a borda. Ache e conserte o defeito.",
+   "codigoInicial": "def aprovado(nota):\n    return nota > 6\n",
+   "solucao": "def aprovado(nota):\n    return nota >= 6\n",
+   "exemplos": [
+    "aprovado(8)    # dá True",
+    "aprovado(5)    # dá False"
+   ],
+   "testes": [
+    {
+     "nome": "Nota 8",
+     "codigo": "assert aprovado(8) is True, 'Nota 8 deveria aprovar'"
+    },
+    {
+     "nome": "Nota 5",
+     "codigo": "assert aprovado(5) is False, 'Nota 5 não aprova'"
+    },
+    {
+     "nome": "Borda: nota 6",
+     "codigo": "assert aprovado(6) is True, 'Nota 6 deveria aprovar: é o limite'",
+     "oculto": true
+    },
+    {
+     "nome": "Quase: 5.9",
+     "codigo": "assert aprovado(5.9) is False, '5.9 ainda não aprova'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "Os dois testes visíveis passam. Pense no caso de borda: e a nota 6?",
+    "nota > 6 é falso para 6. A regra é \"6 ou mais\".",
+    "return nota >= 6"
+   ],
+   "toque": {
+    "modelo": "def aprovado(nota):\n    return nota ___ 6",
+    "lacunas": [
+     {
+      "opcoes": [
+       ">=",
+       ">",
+       "=="
+      ],
+      "certa": 0,
+      "dica": "6 ou mais inclui o próprio 6."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-calculadora",
+   "aulas": [
+    "py-projeto-calculadora"
+   ],
+   "grupo": "Projeto: calculadora",
+   "titulo": "O motor da calculadora",
+   "enunciado": "A função `calcular(a, b, op)` faz a conta indicada por op (\"+\", \"-\", \"*\" ou \"/\"). Para divisão por zero ou operação desconhecida, devolva None.",
+   "codigoInicial": "def calcular(a, b, op):\n    if op == \"+\":\n        return a + b\n    # faça as outras operações\n    return None\n",
+   "solucao": "def calcular(a, b, op):\n    if op == \"+\":\n        return a + b\n    if op == \"-\":\n        return a - b\n    if op == \"*\":\n        return a * b\n    if op == \"/\":\n        if b == 0:\n            return None\n        return a / b\n    return None\n",
+   "exemplos": [
+    "calcular(8, 2, \"*\")   # dá 16",
+    "calcular(8, 0, \"/\")   # dá None",
+    "calcular(8, 2, \"x\")   # dá None"
+   ],
+   "testes": [
+    {
+     "nome": "Soma",
+     "codigo": "assert calcular(8, 2, '+') == 10, '8 + 2 deveria dar 10'"
+    },
+    {
+     "nome": "Multiplicação",
+     "codigo": "assert calcular(8, 2, '*') == 16, '8 * 2 deveria dar 16'"
+    },
+    {
+     "nome": "Divisão",
+     "codigo": "assert calcular(9, 2, '/') == 4.5, '9 / 2 deveria dar 4.5'"
+    },
+    {
+     "nome": "Divisão por zero",
+     "codigo": "assert calcular(8, 0, '/') is None, 'Divisão por zero devolve None'",
+     "oculto": true
+    },
+    {
+     "nome": "Subtração",
+     "codigo": "assert calcular(3, 8, '-') == -5, '3 - 8 deveria dar -5'",
+     "oculto": true
+    },
+    {
+     "nome": "Operação desconhecida",
+     "codigo": "assert calcular(8, 2, 'x') is None, 'Operação desconhecida devolve None'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 12
+   },
+   "dicas": [
+    "Um if para cada operação, cada um com o seu return.",
+    "Na divisão, trate o zero antes: if b == 0: return None.",
+    "if op == \"-\": return a - b / if op == \"*\": return a * b / if op == \"/\": (if b == 0: return None) return a / b"
+   ],
+   "toque": {
+    "modelo": "def calcular(a, b, op):\n    if op == \"+\":\n        return a + b\n    if op == \"-\":\n        return a - b\n    if op == \"*\":\n        return a ___ b\n    if op == \"/\":\n        if b == ___:\n            return None\n        return a / b\n    return None",
+    "lacunas": [
+     {
+      "opcoes": [
+       "*",
+       "+",
+       "/"
+      ],
+      "certa": 0,
+      "dica": "A multiplicação."
+     },
+     {
+      "opcoes": [
+       "0",
+       "1",
+       "None"
+      ],
+      "certa": 0,
+      "dica": "O divisor que não pode."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-porcentagem",
+   "aulas": [
+    "py-projeto-calculadora"
+   ],
+   "grupo": "Projeto: calculadora",
+   "titulo": "Variação percentual",
+   "enunciado": "A função `variacao(antigo, novo)` devolve a variação percentual, arredondada para 1 casa. Se antigo for zero, devolva None.",
+   "codigoInicial": "def variacao(antigo, novo):\n    return (novo - antigo) / novo * 100\n",
+   "solucao": "def variacao(antigo, novo):\n    if antigo == 0:\n        return None\n    return round((novo - antigo) / antigo * 100, 1)\n",
+   "exemplos": [
+    "variacao(120, 150)   # dá 25.0",
+    "variacao(100, 80)    # dá -20.0"
+   ],
+   "testes": [
+    {
+     "nome": "Subiu",
+     "codigo": "assert variacao(120, 150) == 25.0, 'De 120 para 150 subiu 25%'"
+    },
+    {
+     "nome": "Caiu",
+     "codigo": "assert variacao(100, 80) == -20.0, 'De 100 para 80 caiu 20%'"
+    },
+    {
+     "nome": "Uma casa",
+     "codigo": "assert variacao(3, 4) == 33.3, 'De 3 para 4: 33.3%, com uma casa'",
+     "oculto": true
+    },
+    {
+     "nome": "Base zero",
+     "codigo": "assert variacao(0, 10) is None, 'Sem base, devolva None'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "De 120 para 150, a resposta é 25%. O código inicial divide pelo valor novo: a base é o antigo.",
+    "Troque a base para antigo, arredonde com round(..., 1) e trate o antigo zero antes.",
+    "if antigo == 0: return None / return round((novo - antigo) / antigo * 100, 1)"
+   ],
+   "toque": {
+    "modelo": "def variacao(antigo, novo):\n    if antigo == 0:\n        return None\n    return round((novo - antigo) / ___ * 100, 1)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "antigo",
+       "novo",
+       "100"
+      ],
+      "certa": 0,
+      "dica": "A base é sempre o \"de antes\"."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-situacao",
+   "aulas": [
+    "py-revisao-funcoes"
+   ],
+   "grupo": "Projeto: boletim",
+   "titulo": "Situação do aluno",
+   "enunciado": "A função `situacao(m, corte=6, recuperacao=4)` devolve \"aprovado\", \"recuperação\" ou \"reprovado\". Use return antecipado, da faixa mais alta para a mais baixa.",
+   "codigoInicial": "def situacao(m, corte=6, recuperacao=4):\n    if m >= recuperacao:\n        return \"recuperação\"\n    if m >= corte:\n        return \"aprovado\"\n    return \"reprovado\"\n",
+   "solucao": "def situacao(m, corte=6, recuperacao=4):\n    if m >= corte:\n        return \"aprovado\"\n    if m >= recuperacao:\n        return \"recuperação\"\n    return \"reprovado\"\n",
+   "exemplos": [
+    "situacao(7)            # dá \"aprovado\"",
+    "situacao(6.5, corte=7) # dá \"recuperação\""
+   ],
+   "testes": [
+    {
+     "nome": "Aprovado",
+     "codigo": "assert situacao(7) == 'aprovado', 'Nota 7 deveria aprovar'"
+    },
+    {
+     "nome": "Recuperação",
+     "codigo": "assert situacao(5) == 'recuperação', 'Nota 5 vai para recuperação'"
+    },
+    {
+     "nome": "Reprovado",
+     "codigo": "assert situacao(2) == 'reprovado', 'Nota 2 reprova'"
+    },
+    {
+     "nome": "Borda do corte",
+     "codigo": "assert situacao(6) == 'aprovado', 'Nota 6 aprova'",
+     "oculto": true
+    },
+    {
+     "nome": "Corte por nome",
+     "codigo": "assert situacao(6.5, corte=7) == 'recuperação', 'Com corte 7, 6.5 vai para recuperação'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 6
+   },
+   "dicas": [
+    "Teste situacao(7): o primeiro if já captura, e a resposta sai errada.",
+    "O primeiro return que roda encerra a função. Comece pela faixa mais exigente.",
+    "Troque a ordem: primeiro if m >= corte, depois if m >= recuperacao."
+   ],
+   "toque": {
+    "modelo": "def situacao(m, corte=6, recuperacao=4):\n    if m >= ___:\n        return \"aprovado\"\n    if m >= ___:\n        return \"recuperação\"\n    return \"reprovado\"",
+    "lacunas": [
+     {
+      "opcoes": [
+       "corte",
+       "recuperacao",
+       "0"
+      ],
+      "certa": 0,
+      "dica": "A faixa mais alta vem primeiro."
+     },
+     {
+      "opcoes": [
+       "recuperacao",
+       "corte",
+       "6"
+      ],
+      "certa": 0,
+      "dica": "Depois, a recuperação."
+     }
+    ]
+   }
   }
  ]
 }

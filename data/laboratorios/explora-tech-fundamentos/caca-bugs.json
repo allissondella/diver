@@ -861,6 +861,61 @@
      }
     ]
    }
+  },
+  {
+   "id": "cb-contador-global",
+   "aulas": [
+    "py-revisao-funcoes"
+   ],
+   "grupo": "Funções de verdade",
+   "defeitos": 1,
+   "titulo": "Contador que não conta",
+   "enunciado": "O programa deveria mostrar quantos alunos foram aprovados (2). Ele quebra com UnboundLocalError. Conserte sem usar global: a função deve contar e devolver.",
+   "codigoInicial": "aprovados = 0\n\ndef contar(notas):\n    for n in notas:\n        if n >= 6:\n            aprovados = aprovados + 1\n\ncontar([7, 4, 9])\nprint(aprovados)\n",
+   "solucao": "def contar(notas):\n    aprovados = 0\n    for n in notas:\n        if n >= 6:\n            aprovados = aprovados + 1\n    return aprovados\n\naprovados = contar([7, 4, 9])\nprint(aprovados)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 2",
+     "esperada": "2\n"
+    },
+    {
+     "nome": "A função devolve a contagem",
+     "codigo": "assert contar([6, 6, 1]) == 2, 'contar([6, 6, 1]) deveria devolver 2'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 8
+   },
+   "dicas": [
+    "A atribuição dentro da função faz aprovados ser local, e a conta lê a local antes de ela ter valor.",
+    "Crie o contador dentro da função e devolva com return. Fora, guarde: aprovados = contar(...).",
+    "def contar(notas): aprovados = 0 / for ... / return aprovados — e aprovados = contar([7, 4, 9])"
+   ],
+   "toque": {
+    "modelo": "def contar(notas):\n    aprovados = 0\n    for n in notas:\n        if n >= 6:\n            aprovados = aprovados + 1\n    ___ aprovados\n\naprovados = ___([7, 4, 9])\nprint(aprovados)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "return",
+       "print",
+       "global"
+      ],
+      "certa": 0,
+      "dica": "A contagem sai pela porta."
+     },
+     {
+      "opcoes": [
+       "contar",
+       "print",
+       "len"
+      ],
+      "certa": 0,
+      "dica": "Guarde o que a função devolve."
+     }
+    ]
+   }
   }
  ]
 }
