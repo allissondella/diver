@@ -93,10 +93,11 @@ async function auditarNoNavegador() {
   const soTelas = arg('telas', '') ? arg('telas', '').split(',') : null;
   const TELAS = ['inicio', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'artigo', 'quiz', 'quiz-feedback',
     'simulado', 'revisao', 'jogos', 'prova', 'upload-prova', 'tarefas', 'calendario', 'cronograma', 'diagnostica', 'mapa-partida', 'foco',
-    'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao', 'login'].filter((t) => !soTelas || soTelas.includes(t));
+    'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao',
+    'profissoes', 'profissoes-cartas', 'profissoes-metodo', 'profissao-enfermagem', 'profissao-enfermagem-dia', 'profissao-enfermagem-mitos', 'login'].filter((t) => !soTelas || soTelas.includes(t));
   const vistos = {};
   ['inicio', 'sala', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'trilha', 'quiz', 'artigo', 'resumo', 'simulado', 'revisao', 'jogos', 'tarefas', 'quadros',
-    'calendario', 'cronograma', 'foco', 'perfil', 'estatisticas', 'descompressao', 'diagnostica', 'mapa-partida', 'prova', 'pdfs', 'cursos', 'upload-prova'].forEach((k) => { vistos[k] = 99; });
+    'calendario', 'cronograma', 'foco', 'perfil', 'estatisticas', 'descompressao', 'diagnostica', 'mapa-partida', 'prova', 'pdfs', 'cursos', 'upload-prova', 'profissoes'].forEach((k) => { vistos[k] = 99; });
 
   /* O que medir numa tela (roda dentro da página) */
   const medir = ({ toque }) => {
@@ -129,6 +130,7 @@ async function auditarNoNavegador() {
         if (!visivel(el)) continue;
         if (el.matches('input[type="checkbox"], input[type="radio"]') && el.closest('label')) continue; // o alvo é o rótulo inteiro
         if (el.tagName === 'A' && el.closest('p, li') && getComputedStyle(el).display === 'inline') continue; // link no meio do texto (exceção da WCAG)
+        if (el.tagName === 'A' && el.closest('sup') && getComputedStyle(el).display === 'inline') continue; // notinha de fonte [1] no meio do texto (Mapa das Profissões)
         if (el.closest('.lateral') && !document.querySelector('.lateral--aberta')) continue; // gaveta fechada
         const r = el.getBoundingClientRect();
         if (r.width < 43.5 || r.height < 43.5) achados.push(`alvo pequeno ${Math.round(r.width)}×${Math.round(r.height)}: ${nome(el)}`);
@@ -210,8 +212,8 @@ async function auditarNoNavegador() {
         }
         // cada tela abre do zero (sem sobra de quiz, caixa ou gaveta da tela anterior)
         await p.goto(`${base}?a=${Date.now()}#${tela}`); await p.waitForSelector('.app', { state: 'attached' });
-        await esperar(tela.startsWith('sala') || tela === 'descompressao' ? 1000 : 700); await limpar();
-        const id = tela.startsWith('sala-') ? 'tela-sala' : tela === 'mergulho' ? 'tela-painel' : 'tela-' + tela;
+        await esperar(tela.startsWith('sala') || tela === 'descompressao' || tela.startsWith('profiss') ? 1000 : 700); await limpar();
+        const id = tela.startsWith('sala-') ? 'tela-sala' : tela === 'mergulho' ? 'tela-painel' : tela.startsWith('profiss') ? 'tela-profissoes' : 'tela-' + tela;
         if (await p.locator(`#${id}[hidden]`).count()) {
           await p.evaluate(() => App.abrirTrilha('enem-matematica')); await esperar(500);
           await p.evaluate((h) => { location.hash = h; }, tela); await esperar(700); await limpar();

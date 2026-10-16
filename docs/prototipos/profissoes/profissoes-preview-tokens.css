@@ -1,0 +1,45 @@
+/* SÓ PARA O PREVIEW (profissoes.html).
+   No app, estes tokens já existem em css/estilo.css: não copie este arquivo para o Diver.
+   Valores conforme docs/DESIGN.md e a documentação oficial (13/10/2026). */
+:root {
+  color-scheme: dark;
+  --marinho: #0B2545;
+  --fundo-fundo: #06172D;
+  --superficie: #12325A;
+  --superficie-turquesa: #0C354C;
+  --turquesa: #14B8A6;
+  --turquesa-claro: #5EEAD4;
+  --turquesa-sombra: #0EA597;
+  --turquesa-brilho: #29C6B3;
+  --amarelo: #FACC15;
+  --coral: #FB7185;
+  --texto: #E6F1FF;
+  --texto-suave: #A9BCD6;
+  --azul: #60A5FA;
+  --lilas: #C4B5FD;
+  --laranja: #FDBA74;
+  --verde: #86EFAC;
+  --fonte: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fonte-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --raio: 16px;
+  --raio-p: 10px;
+  --sombra: 0 10px 30px rgba(0, 0, 0, .25);
+  --transicao: 180ms;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--fonte);
+  color: var(--texto);
+  background: linear-gradient(180deg, var(--marinho) 0, var(--fundo-fundo) 900px) no-repeat var(--fundo-fundo);
+  -webkit-font-smoothing: antialiased;
+}
+/* Bolhas suaves do fundo (desligam com prefers-reduced-motion) */
+.bolhas { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.bolhas span {
+  position: absolute; bottom: -40px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(94, 234, 212, .18), rgba(94, 234, 212, .03) 70%);
+  animation: subir linear infinite;
+}
+@keyframes subir { to { transform: translateY(-115vh); } }
+@media (prefers-reduced-motion: reduce) { .bolhas { display: none; } }

@@ -138,6 +138,12 @@ const Tutorial = (() => {
       { alvo: '#sd-ver-ranking', desenho: 'trofeu', titulo: 'Ranking', texto: 'Cada jogo tem o seu ranking com todo mundo, deste mês e o total (e tem o geral). Os pontos daqui valem só o ranking da sala: nada de XP ou pérolas dos cursos.' },
       { alvo: '#sd-horarios', desenho: 'relogio', titulo: 'Horários de foco', texto: 'Você pode fechar a sala para os alunos em horários de estudo. Admin e professores continuam entrando.' },
     ],
+    // Mapa das Profissões (2026-10-16): a tela é desenhada depois de baixar o índice, então os passos não dependem de alvo
+    profissoes: [
+      { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque uma profissão pelo nome ou filtre pela área. Toque numa ficha para abrir; "Pôr na mira" guarda as que você quer acompanhar, e elas aparecem no topo do mapa.' },
+      { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'Cada ficha começa com quatro números (duração, formato, salário e registro), cada um com o botão "Fonte". Depois vêm o dia a dia, o que estuda, como entrar, quanto ganha e o que ninguém conta. Os números entre colchetes levam à lista de fontes.' },
+      { desenho: 'estrela', titulo: 'Maré de cartas', texto: 'Sem ideia por onde começar? A Maré mostra uma profissão por vez: "Me interessa" ou "Não é pra mim". No fim, o seu rastro e uma sugestão que talvez você não tenha considerado.' },
+    ],
     perfil: [
       { alvo: '.perfil-topo__info', desenho: 'trofeu', titulo: 'Seu nível geral', texto: 'O XP de todos os cursos somado. Cada mergulho, jogo e revisão empurra a barra.' },
     ],

@@ -1,0 +1,724 @@
+{
+  "id": "enfermagem",
+  "versao": 2,
+  "nome": "Enfermagem",
+  "area": "saude",
+  "frase": "Planeja e executa o cuidado do paciente, do posto de saúde à UTI.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-14",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "tags": [
+    "lida-com-pessoas",
+    "plantao",
+    "presencial-obrigatorio",
+    "tem-caminho-tecnico",
+    "conselho-profissional"
+  ],
+  "numeros": {
+    "duracao": {
+      "valor": "5 anos",
+      "detalhe": "4.000 horas, bacharelado",
+      "fontes": [
+        "dcn-enfermagem-2026"
+      ]
+    },
+    "formato": {
+      "valor": "Presencial",
+      "detalhe": "EAD proibido para novos alunos desde 2025",
+      "fontes": [
+        "decreto-12456"
+      ]
+    },
+    "salario": {
+      "valor": "R$ 4.503",
+      "detalhe": "média de contratação de enfermeiro com carteira, salário-base, 12 meses até out/2026",
+      "fontes": [
+        "caged-enfermeiro"
+      ]
+    },
+    "registro": {
+      "valor": "Coren",
+      "detalhe": "inscrição obrigatória para atuar",
+      "fontes": [
+        "lei-7498"
+      ]
+    }
+  },
+  "contexto": {
+    "matriculas_2024": 478008,
+    "posicao_ranking_matriculas": 4,
+    "texto": "Em 2024, Enfermagem foi o 4º curso com mais matrículas no Brasil, com cerca de 478 mil estudantes.",
+    "fontes": [
+      "censo-2024"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Avalia o paciente, planeja e executa os cuidados de enfermagem, administra os medicamentos prescritos, faz procedimentos como curativos e sondagens e coordena o trabalho de técnicos e auxiliares, que atuam sob orientação e supervisão do enfermeiro. Atua do posto de saúde à UTI, passando por empresas, atendimento domiciliar, ensino e pesquisa.",
+      "nao_faz": "Não faz diagnóstico médico nem cirurgias. Só prescreve medicamentos previstos em programas de saúde pública e em rotinas aprovadas pela instituição.",
+      "fontes": [
+        "lei-7498"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "No hospital, o comum é trabalhar em plantões por escala, como 12 horas de trabalho por 36 de descanso. O plantão começa com a passagem de plantão, segue com ronda, medicação, procedimentos e intercorrências, e termina com o registro de tudo o que foi feito. Na unidade básica de saúde, a rotina costuma ser diurna, com vacinação, pré-natal, curativos e consultas de enfermagem.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "O curso combina ciências básicas, cuidado ao paciente em todas as fases da vida, saúde coletiva e gestão. Os estágios acontecem na atenção primária e no hospital.",
+      "disciplinas": [
+        "Anatomia e fisiologia",
+        "Microbiologia e imunologia",
+        "Farmacologia",
+        "Semiologia e semiotécnica",
+        "Saúde coletiva",
+        "Saúde da mulher, da criança e do idoso",
+        "Urgência e emergência",
+        "Gestão em enfermagem",
+        "Ética e legislação profissional"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "dcn-enfermagem-2026"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Biologia e Química costumam pesar mais em cursos de saúde, mas o peso muda de universidade para universidade.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-quimica"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "A lei fixa um piso nacional para jornada de 44 horas semanais. Na prática, a média de contratação com carteira fica abaixo do piso, porque o valor é proporcional à jornada e, no setor privado, passa por negociação coletiva. As médias consideram só o salário-base, sem adicionais como insalubridade e adicional noturno.",
+      "pisos": [
+        {
+          "cargo": "Enfermeiro",
+          "valor": 4750.0,
+          "fontes": [
+            "lei-14434"
+          ]
+        },
+        {
+          "cargo": "Técnico de enfermagem",
+          "valor": 3325.0,
+          "fontes": [
+            "lei-14434"
+          ]
+        },
+        {
+          "cargo": "Auxiliar de enfermagem e parteira",
+          "valor": 2375.0,
+          "fontes": [
+            "lei-14434"
+          ]
+        }
+      ],
+      "piso_regra": "Proporcional a 8 horas por dia e 44 horas por semana. No setor privado, a negociação coletiva vem primeiro; sem acordo, vale o piso da lei. No setor público de estados e municípios, o pagamento acompanha os repasses federais.",
+      "piso_regra_fontes": [
+        "stf-piso-2023"
+      ],
+      "medias": [
+        {
+          "cargo": "Enfermeiro",
+          "valor": 4503.16,
+          "periodo": "12 meses até out/2026",
+          "fontes": [
+            "caged-enfermeiro"
+          ],
+          "faixa": {
+            "de": 3679.9,
+            "ate": 6717.58,
+            "rotulo": "faixa comum de contratação"
+          }
+        },
+        {
+          "cargo": "Técnico de enfermagem",
+          "valor": 2552.26,
+          "periodo": "12 meses até out/2026",
+          "fontes": [
+            "caged-tecnico"
+          ],
+          "faixa": {
+            "de": 1882,
+            "ate": 3033,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          }
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um enfermeiro contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 12000,
+        "passo": 100,
+        "inicial": 6000,
+        "segunda": {
+          "pergunta": "E um técnico de enfermagem?",
+          "inicial": 4000
+        }
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Técnico em enfermagem",
+          "texto": "Curso técnico de nível médio, com 1.200 horas no catálogo nacional e estágio supervisionado (o Cofen recomenda pelo menos 400 horas). É a porta de entrada mais rápida no mercado, e muita gente faz o técnico antes da graduação.",
+          "fontes": [
+            "cofen-parecer-2019"
+          ]
+        },
+        {
+          "titulo": "Especializações",
+          "texto": "UTI, urgência e emergência, centro cirúrgico, obstetrícia, saúde da família, enfermagem do trabalho e atendimento domiciliar, entre outras.",
+          "fontes": []
+        },
+        {
+          "titulo": "Concursos",
+          "texto": "Hospitais públicos, redes municipais e estaduais de saúde e Forças Armadas abrem vagas para enfermeiros e técnicos.",
+          "fontes": []
+        },
+        {
+          "titulo": "Gestão, ensino e pesquisa",
+          "texto": "Coordenação de equipes e serviços, docência em cursos técnicos e superiores, mestrado e doutorado.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "A média de contratação fica abaixo do piso. O piso existe, mas é proporcional à jornada e, no setor privado, depende de negociação coletiva.",
+          "fontes": [
+            "stf-piso-2023",
+            "caged-enfermeiro"
+          ]
+        },
+        {
+          "texto": "Plantão inclui noites, fins de semana e feriados.",
+          "fontes": []
+        },
+        {
+          "texto": "Lidar com dor, luto e morte faz parte do trabalho, e isso cansa de um jeito que não aparece no contracheque.",
+          "fontes": []
+        },
+        {
+          "texto": "A graduação em Enfermagem não pode mais ser feita a distância. Quem já estava matriculado em EAD pode concluir.",
+          "fontes": [
+            "decreto-12456"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "medicina",
+        "diferenca": "Diagnostica doenças, prescreve tratamentos e faz cirurgias."
+      },
+      {
+        "id": "fisioterapia",
+        "diferenca": "Trata movimento e função do corpo, como reabilitação depois de lesões e cirurgias."
+      },
+      {
+        "id": "biomedicina",
+        "diferenca": "Mais laboratório que leito: análises clínicas, diagnóstico por imagem e pesquisa."
+      },
+      {
+        "id": "farmacia",
+        "diferenca": "Medicamentos do começo ao fim: produção, controle de qualidade e orientação ao paciente."
+      }
+    ]
+  },
+  "dia": {
+    "titulo": "Um dia como enfermeiro(a)",
+    "subtitulo": "Plantão diurno em hospital",
+    "aviso": "Cenas simplificadas, para orientação profissional. Não ensinam procedimentos e precisam de revisão por enfermeiro(a) antes de publicar.",
+    "revisar_com_profissional": true,
+    "indicadores": [
+      {
+        "id": "seguranca",
+        "nome": "Segurança do paciente",
+        "inicial": 60
+      },
+      {
+        "id": "relacoes",
+        "nome": "Equipe e famílias",
+        "inicial": 60
+      },
+      {
+        "id": "energia",
+        "nome": "Energia",
+        "inicial": 80
+      }
+    ],
+    "cenas": [
+      {
+        "id": "passagem",
+        "hora": "07:00",
+        "titulo": "Passagem de plantão",
+        "situacao": "A colega da noite está atrasada para ir embora e resume: \"tudo tranquilo por aqui\".",
+        "opcoes": [
+          {
+            "texto": "Aceitar e começar a ronda logo",
+            "efeitos": {
+              "seguranca": -15,
+              "energia": 5
+            },
+            "melhor": false,
+            "retorno": "Passagem rápida demais é uma das portas de entrada para erros. O \"tudo tranquilo\" de um plantão pode esconder um detalhe importante para o próximo."
+          },
+          {
+            "texto": "Pedir os pontos críticos de cada paciente e conferir os registros",
+            "efeitos": {
+              "seguranca": 15,
+              "relacoes": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "É o esperado. Leva alguns minutos a mais e protege o paciente, você e a colega."
+          },
+          {
+            "texto": "Começar a ronda e ler o prontuário depois",
+            "efeitos": {
+              "seguranca": -5
+            },
+            "melhor": false,
+            "retorno": "Melhor que nada, mas você passa as primeiras horas sem saber o que mudou durante a noite."
+          }
+        ]
+      },
+      {
+        "id": "dois-chamados",
+        "hora": "09:30",
+        "titulo": "Dois chamados ao mesmo tempo",
+        "situacao": "Um paciente operado ontem chama com dor forte. No corredor, um familiar quer saber por que a visita ainda não foi liberada.",
+        "opcoes": [
+          {
+            "texto": "Atender o familiar primeiro, porque é rápido",
+            "efeitos": {
+              "seguranca": -15
+            },
+            "melhor": false,
+            "retorno": "A dor forte de um paciente recém-operado vem antes. A conversa com o familiar pode esperar alguns minutos."
+          },
+          {
+            "texto": "Ir ao paciente e pedir a um colega ou à recepção que oriente o familiar",
+            "efeitos": {
+              "seguranca": 15,
+              "relacoes": 10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Priorizar e delegar é boa parte do trabalho. Ninguém fica sem resposta."
+          },
+          {
+            "texto": "Ir ao paciente sem avisar ninguém",
+            "efeitos": {
+              "seguranca": 5,
+              "relacoes": -10
+            },
+            "melhor": false,
+            "retorno": "A prioridade está certa, mas o familiar fica sem retorno e a tensão no corredor só aumenta."
+          }
+        ]
+      },
+      {
+        "id": "tecnico-novo",
+        "hora": "11:00",
+        "titulo": "Um técnico novo na equipe",
+        "situacao": "Um técnico contratado nesta semana diz que nunca fez um procedimento que está na escala dele hoje.",
+        "opcoes": [
+          {
+            "texto": "Fazer o procedimento por ele para não atrasar",
+            "efeitos": {
+              "relacoes": -5,
+              "energia": -10
+            },
+            "melhor": false,
+            "retorno": "Resolve hoje, mas amanhã a dúvida continua. E o seu tempo some."
+          },
+          {
+            "texto": "Orientar e acompanhar enquanto ele faz",
+            "efeitos": {
+              "seguranca": 10,
+              "relacoes": 10,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "Orientar e supervisionar técnicos e auxiliares é parte do papel do enfermeiro. A equipe inteira fica mais segura."
+          },
+          {
+            "texto": "Pedir que ele procure no manual da instituição",
+            "efeitos": {
+              "seguranca": -10,
+              "relacoes": -5
+            },
+            "melhor": false,
+            "retorno": "O manual ajuda, mas um primeiro procedimento sem acompanhamento é risco para o paciente."
+          }
+        ]
+      },
+      {
+        "id": "prescricao",
+        "hora": "14:00",
+        "titulo": "Uma prescrição que não parece certa",
+        "situacao": "A dose prescrita de um medicamento está bem acima da que o paciente vinha recebendo.",
+        "opcoes": [
+          {
+            "texto": "Administrar, porque a responsabilidade é de quem prescreveu",
+            "efeitos": {
+              "seguranca": -20
+            },
+            "melhor": false,
+            "retorno": "Quem administra também responde pelo que faz. Na dúvida, a enfermagem confere antes."
+          },
+          {
+            "texto": "Confirmar com quem prescreveu antes de administrar e registrar",
+            "efeitos": {
+              "seguranca": 15,
+              "relacoes": 5,
+              "energia": -5
+            },
+            "melhor": true,
+            "retorno": "É o que se espera. Erro de medicação é um dos riscos mais conhecidos da segurança do paciente."
+          },
+          {
+            "texto": "Pular a dose e seguir a rotina",
+            "efeitos": {
+              "seguranca": -10,
+              "relacoes": -5
+            },
+            "melhor": false,
+            "retorno": "Deixar de administrar sem avisar também é erro: o paciente fica sem tratamento e ninguém fica sabendo."
+          }
+        ]
+      },
+      {
+        "id": "noticia-dificil",
+        "hora": "16:00",
+        "titulo": "Uma notícia difícil",
+        "situacao": "Depois de conversar com o médico, a filha de um paciente começa a chorar no corredor.",
+        "opcoes": [
+          {
+            "texto": "Dizer que vai ficar tudo bem e voltar ao posto",
+            "efeitos": {
+              "relacoes": -5
+            },
+            "melhor": false,
+            "retorno": "A intenção é boa, mas prometer o que ninguém pode garantir costuma pesar depois."
+          },
+          {
+            "texto": "Acolher, ouvir e oferecer um lugar reservado, chamando a equipe se precisar",
+            "efeitos": {
+              "relacoes": 15,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "Acolher sem prometer é parte do cuidado. Custa energia, e é por isso que pausa e apoio da equipe importam."
+          },
+          {
+            "texto": "Seguir com as tarefas, porque isso não é função da enfermagem",
+            "efeitos": {
+              "relacoes": -15
+            },
+            "melhor": false,
+            "retorno": "Cuidar da família também é cuidar do paciente. Nem sempre dá para parar muito tempo, mas dá para não passar direto."
+          }
+        ]
+      },
+      {
+        "id": "registros",
+        "hora": "18:45",
+        "titulo": "Fim de plantão, registros pendentes",
+        "situacao": "Faltam 15 minutos para o fim do plantão e ainda há evoluções de enfermagem para registrar.",
+        "opcoes": [
+          {
+            "texto": "Registrar com cuidado, mesmo saindo um pouco mais tarde",
+            "efeitos": {
+              "seguranca": 10,
+              "energia": -10
+            },
+            "melhor": true,
+            "retorno": "Na enfermagem, o que não está registrado é como se não tivesse sido feito. O registro protege o paciente e você."
+          },
+          {
+            "texto": "Deixar para o plantão seguinte completar",
+            "efeitos": {
+              "seguranca": -15,
+              "relacoes": -10
+            },
+            "melhor": false,
+            "retorno": "Quem chega não viu o que aconteceu. Registro de terceira mão é registro com falhas."
+          },
+          {
+            "texto": "Escrever só \"sem intercorrências\" em todos",
+            "efeitos": {
+              "seguranca": -10
+            },
+            "melhor": false,
+            "retorno": "Registro genérico esconde informação e pode virar problema para o paciente e para você."
+          }
+        ]
+      }
+    ],
+    "fechamento": "Enfermagem é decidir prioridades o tempo todo, com responsabilidade sobre o que acontece com outras pessoas. Se isso te deu energia em vez de te assustar, vale explorar mais.",
+    "recompensa": {
+      "xp": 30,
+      "perolas": 3,
+      "uma_vez_por_profissao": true
+    }
+  },
+  "mitos": [
+    {
+      "id": "ead",
+      "afirmacao": "Dá para fazer a faculdade de Enfermagem a distância.",
+      "verdade": false,
+      "explicacao": "Desde o Decreto nº 12.456/2025, Enfermagem não pode ser oferecida em EAD. Quem já estava matriculado pode concluir.",
+      "fontes": [
+        "decreto-12456"
+      ]
+    },
+    {
+      "id": "coren-tecnico",
+      "afirmacao": "Técnico de enfermagem precisa de registro no Coren para trabalhar.",
+      "verdade": true,
+      "explicacao": "Enfermeiros, técnicos, auxiliares e parteiras só exercem a profissão com inscrição no Conselho Regional de Enfermagem.",
+      "fontes": [
+        "lei-7498"
+      ]
+    },
+    {
+      "id": "piso-jornada",
+      "afirmacao": "O piso salarial vale igual para qualquer jornada.",
+      "verdade": false,
+      "explicacao": "Pela decisão do STF de 2023, o piso é proporcional a 44 horas semanais. Jornada menor, valor menor.",
+      "fontes": [
+        "stf-piso-2023"
+      ]
+    },
+    {
+      "id": "prescricao",
+      "afirmacao": "Enfermeiro pode prescrever qualquer medicamento.",
+      "verdade": false,
+      "explicacao": "Só os previstos em programas de saúde pública e em rotinas aprovadas pela instituição.",
+      "fontes": [
+        "lei-7498"
+      ]
+    },
+    {
+      "id": "so-hospital",
+      "afirmacao": "Enfermagem só trabalha em hospital.",
+      "verdade": false,
+      "explicacao": "Também atua em unidades básicas de saúde, empresas, atendimento domiciliar, ensino e pesquisa. A lei do exercício profissional prevê a participação da enfermagem em programas de saúde pública e em todas as etapas da assistência.",
+      "fontes": [
+        "lei-7498"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "lei-7498",
+      "titulo": "Lei nº 7.498/1986, exercício da enfermagem (arts. 2º, 11, 12, 13 e 15)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l7498.htm",
+      "consultado_em": "2026-10-14",
+      "tipo": "primaria"
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456, de 19 de maio de 2025 (novo marco da EAD)",
+      "orgao": "Presidência da República e MEC, via Quero Bolsa",
+      "url": "https://querobolsa.com.br/revista/proibicao-ead-quais-cursos-mec-proibiu-a-distancia",
+      "consultado_em": "2026-10-14",
+      "tipo": "secundaria",
+      "nota": "Trocar pela URL do decreto no Planalto. Conferir se há decisão do STF sobre a ação da ABE-EAD (jul/2025)."
+    },
+    {
+      "id": "dcn-enfermagem-2026",
+      "titulo": "Novas Diretrizes Curriculares Nacionais de Enfermagem, homologadas pelo MEC em 15/05/2026 (4.000 horas em 5 anos)",
+      "orgao": "MEC e CNE, via Quero Bolsa",
+      "url": "https://querobolsa.com.br/revista/mec-aprova-novas-diretrizes-para-graduacao-em-enfermagem-veja-o-que-muda-nos-cursos",
+      "consultado_em": "2026-10-14",
+      "tipo": "secundaria",
+      "nota": "Confirmar o número da resolução CNE/CES no DOU e o prazo de implantação."
+    },
+    {
+      "id": "lei-14434",
+      "titulo": "Lei nº 14.434/2022, piso salarial da enfermagem",
+      "orgao": "Presidência da República, via Portal de Prefeitura",
+      "url": "https://portaldeprefeitura.com.br/bastidores-da-politica/piso-salarial-enfermagem-veja-situacao-pec-30-horas-semanais/610446/",
+      "consultado_em": "2026-10-14",
+      "tipo": "secundaria",
+      "nota": "Trocar pela URL da lei no Planalto. Lei sem regra de reajuste automático."
+    },
+    {
+      "id": "stf-piso-2023",
+      "titulo": "STF, ADI 7222: piso proporcional a 44 h semanais; no privado, negociação coletiva primeiro",
+      "orgao": "STF, via Lex",
+      "url": "https://www.lex.com.br/por-voto-medio-stf-define-que-piso-de-enfermagem-no-setor-privado-deve-ser-pago-se-nao-houver-acordo-coletivo/",
+      "consultado_em": "2026-10-14",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-enfermeiro",
+      "titulo": "Enfermeiro (CBO 2235-05): média de R$ 4.503,16, salário-base, Novo Caged, 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/enfermeiro-cbo-223505",
+      "consultado_em": "2026-10-14",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-tecnico",
+      "titulo": "Técnico de enfermagem (CBO 3222-05): média de R$ 2.552,26, salário-base, Novo Caged, 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/tecnico-de-enfermagem-cbo-322205",
+      "consultado_em": "2026-10-14",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "cofen-parecer-2019",
+      "titulo": "Parecer Normativo Cofen nº 001/2019: técnico com 1.200 h (CNCT) e estágio recomendado de 400 h",
+      "orgao": "Cofen",
+      "url": "https://www.cofen.gov.br/parecer-normativo-no-001-2019/",
+      "consultado_em": "2026-10-14",
+      "tipo": "primaria"
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: Enfermagem com 478.008 matrículas, 4º lugar",
+      "orgao": "Inep, via CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-14",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    }
+  ],
+  "carta": {
+    "fato": "Desde 2025, a graduação não pode mais ser feita a distância. Quem busca \"enfermagem EAD\" encontra uma porta fechada.",
+    "fontes": [
+      "decreto-12456"
+    ]
+  },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 6,
+      "texto": "Madrugada no plantão noturno: rondas silenciosas, monitoramento e as intercorrências que não escolhem hora."
+    },
+    {
+      "de": 6,
+      "ate": 7,
+      "texto": "Troca de plantão: quem passou a noite conta tudo para quem chega. É o momento mais importante do dia."
+    },
+    {
+      "de": 7,
+      "ate": 10,
+      "texto": "Manhã cheia: sinais vitais, banhos, medicação das 8h e as primeiras conversas com famílias."
+    },
+    {
+      "de": 10,
+      "ate": 12,
+      "texto": "Procedimentos, curativos, coleta de exames e a visita da equipe médica."
+    },
+    {
+      "de": 12,
+      "ate": 14,
+      "texto": "Almoço em turnos. Alguém sempre fica no posto."
+    },
+    {
+      "de": 14,
+      "ate": 17,
+      "texto": "Medicações da tarde, altas e admissões. Muita coordenação com técnicos e auxiliares."
+    },
+    {
+      "de": 17,
+      "ate": 19,
+      "texto": "Fechamento do dia: registros, checagem e preparo da passagem para a noite."
+    },
+    {
+      "de": 19,
+      "ate": 24,
+      "texto": "Começo do noturno: medicação das 22h, pacientes se preparando para dormir, luz baixa no corredor."
+    }
+  ],
+  "agora_nota": "Na escala 12 por 36, metade dos dias são de folga. Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
+  "dna": {
+    "pessoas": 90,
+    "pressao": 80,
+    "corpo": 70,
+    "rotina": 45,
+    "numeros": 30,
+    "criatividade": 35
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "diagnostico-corredor",
+      "situacao": "Um paciente te para no corredor: \"você que é da enfermagem, dá uma olhada aqui e me diz o que eu tenho?\"",
+      "opcoes": [
+        {
+          "texto": "Dar uma olhada e dizer o que acha que é",
+          "recomendada": false
+        },
+        {
+          "texto": "Explicar que isso é diagnóstico médico, avaliar os sinais e encaminhar",
+          "recomendada": true
+        },
+        {
+          "texto": "Dizer que não pode ajudar e seguir",
+          "recomendada": false
+        }
+      ],
+      "resposta": "Diagnóstico médico não é da enfermagem. O enfermeiro faz a consulta de enfermagem, avalia sinais e sintomas e encaminha. Ignorar o paciente também não é a resposta: acolher é parte do trabalho.",
+      "fontes": [
+        "lei-7498"
+      ]
+    }
+  ],
+  "formacao": {
+    "nota": "Durações típicas. A do técnico varia por escola; a da graduação segue as diretrizes nacionais.",
+    "etapas": [
+      {
+        "id": "tecnico",
+        "nome": "Técnico em enfermagem",
+        "anos_de": 1.5,
+        "anos_ate": 2,
+        "texto": "1.200 horas de curso mais estágio. Já dá acesso ao mercado, com registro no Coren.",
+        "fontes": [
+          "cofen-parecer-2019"
+        ],
+        "tipo": "alternativa"
+      },
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 5,
+        "anos_ate": 5,
+        "texto": "4.000 horas em 5 anos, presencial, com estágios na atenção primária e no hospital.",
+        "fontes": [
+          "dcn-enfermagem-2026"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização ou residência",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "UTI, urgência, obstetrícia, saúde da família e outras. Residência em enfermagem costuma durar 2 anos.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  },
+  "trends_id": "enfermagem"
+}

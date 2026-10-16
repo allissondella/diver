@@ -5,6 +5,49 @@
 
 ---
 
+## 2026-10-16 · Mapa das Profissões, Fase 1 (aba "Profissões")
+- **Pedido do usuário:** integrar o kit do Mapa das Profissões (`docs/MAPA_PROFISSOES_INTEGRACAO.md`), no mesmo PR da revisão de design, para um merge só.
+- **Feito:** item **Profissões** (ícone de bússola, grupo "Futuro", entre Estudar e Organizar) com as seis rotas (`#profissoes`, `#profissoes-cartas`, `#profissoes-metodo`, `#profissao-<id>`, `-dia`, `-mitos`) na tela `#tela-profissoes`. Ganchos ligados:
+  - **economia:** "Um dia como" dá 30 XP e 3 pérolas e "Mito ou verdade" 20 XP e 2 pérolas, uma vez por profissão, no curso atual (como o Modo Foco), dentro do teto de bônus;
+  - **log:** 15 tipos novos em `eventos_atividade`, com `curso_id` nulo;
+  - **confirmações:** pela caixa do Diver (`UI.confirmar`);
+  - **matéria-chave:** abre o curso `enem-<matéria>` na próxima aula (sem matrícula, o aviso pede acesso ao admin).
+- **Também entrou:**
+  - três conquistas gerais no Perfil: Explorador de carreiras, Um dia na pele e Baralho completo;
+  - tutorial de 3 passos;
+  - bloco "Mapa das Profissões" no Admin, tirado do log: fichas mais vistas, pedidos, "Me interessa" e quem começa e quem termina o "Um dia como".
+- **Adaptações no módulo (o mínimo; o comportamento das telas é o do kit):**
+  - os scripts viraram o pacote `profissoes` (o Início continua com 20 scripts), e o CSS entra sem travar;
+  - o CSS foi para os tokens: escala de texto, `--z-*`, cortes 767/479 e alvos de 44 px no toque;
+  - tudo numa coluna de 720 px, sem nada lado a lado (preferência do usuário);
+  - ganchos novos `nomeCurso` e `verRascunho`, e `Profissoes.desmontar()` para soltar o teclado da Maré ao sair;
+  - os textos que prometiam "No app, o ranking…" e "botão Reportar" foram trocados pelo que existe hoje;
+  - pedido feito pela busca livre vai ao log como `outra`: nada digitado entra no log;
+  - indicadores do "Um dia como" vão como `ind_<id>`.
+- **Ficha de Enfermagem:** só `materias_chave` mudou (`biologia`/`quimica` → `enem-biologia`/`enem-quimica`). O status continua **rascunho**. O `conferir-ficha.mjs` passou a conferir esses ids no `catalogo.json` (antes só avisava) e passa sem avisos.
+- **Rascunho e aluno:** ficha em rascunho ou validada aparece para o aluno como "Em breve", com "Quero esta ficha"; admin, professor e o modo local veem a ficha com o selo "Em revisão". Assim nada fica público antes da revisão por enfermeiro(a).
+- **Banco:** regra de tipos atualizada no `setup.sql` e aplicada nos bancos de testes e de produção (só acrescenta tipos; sem ela, o primeiro evento de Profissões travaria o envio do log em lote).
+- **Prévia do kit:** `profissoes.html` e o CSS de tokens do preview estão em `docs/prototipos/profissoes/` (fora do app e do auditor). O auditor (`--navegador`) ganhou as seis rotas; notinha de fonte `[1]` dentro de `sup` conta como link no meio do texto.
+- **Testes:**
+  - seis rotas sem erro em 390 e 1280 px, e o auditor completo OK;
+  - recompensa só na primeira vez, com 30/3 e depois 20/2;
+  - log local com os eventos;
+  - conquista com aviso;
+  - matéria-chave abre `enem-biologia`;
+  - visão de aluno com "Em breve";
+  - bloco do Admin com dados simulados;
+  - setas fora da Maré não mexem nas cartas.
+- **Pendências:**
+  1. Revisão da ficha de Enfermagem e das cenas do "Um dia como" por enfermeiro(a); depois, publicar (`status`, `revisao.profissional`).
+  2. Trocar as fontes secundárias pelas primárias (Planalto, planilha do Inep), como anotado na ficha.
+  3. Calibrar o DNA de Enfermagem com 3 a 5 profissionais.
+  4. Refazer a extração do Trends para Direito (o termo veio zerado).
+  5. "Mais exploradas" mostra só este aparelho: o ranking de todos precisa de uma função no banco (a regra de leitura do log só deixa cada aluno ver os próprios eventos).
+  6. Votos reais no dilema (com 50+), coleção de cartas no Perfil e botão "Reportar" na ficha (hoje o texto pede para avisar a equipe).
+  7. Conferir no ambiente de testes, com login, que os eventos chegam ao `eventos_atividade` e que "Na mira" sincroniza entre dois navegadores.
+  8. Próximas fichas: uma por vez, com a skill `criar-ficha-profissao`.
+- **Próximo:** prévia aprovada pelo usuário → merge do PR #85 (design + Profissões).
+
 ## 2026-10-16 · Ajuste: tudo centralizado, nada lado a lado
 - **Pedido do usuário:** "não gosto de nada disso lado a lado, eu prefiro centralizado, igual era"; as funcionalidades novas ficam.
 - **Feito:** `.tela` voltou a 720 px centralizada (Início, mapa, Simulado, Revisão, Perfil, Estatísticas); Início sem o herói ao lado do "Continuar" e salas em 2 colunas; mapa do curso, Simulado e Revisão numa coluna só, na ordem de antes. Regra registrada em `docs/DESIGN.md`.

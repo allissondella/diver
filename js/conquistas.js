@@ -147,6 +147,54 @@ const Conquistas = (() => {
     },
   ];
 
+  /*
+   * Conquistas gerais: valem para a pessoa, fora de qualquer curso (Mapa das Profissões, 2026-10-16).
+   * Ficam em "diver:v1:conquistas-gerais" (vão para a nuvem como o resto) e não entram na contagem por curso.
+   * Os números vêm do estado do Mapa (diver:v1:profissoes), lido direto do armazenamento: o módulo pode nem estar carregado.
+   */
+  const CHAVE_GERAIS = 'diver:v1:conquistas-gerais';
+  const mapa = () => { const e = Dados.ler('diver:v1:profissoes', null); return e && typeof e === 'object' ? e : {}; };
+  const GERAIS = [
+    {
+      id: 'explorador-de-carreiras',
+      nome: 'Explorador de carreiras',
+      descricao: 'Abriu 5 fichas do Mapa das Profissões.',
+      icone: 'i-bussola',
+      testar: () => Object.keys(mapa().vistas || {}).length >= 5,
+    },
+    {
+      id: 'um-dia-na-pele',
+      nome: 'Um dia na pele',
+      descricao: 'Viveu 3 dias de trabalho no "Um dia como".',
+      icone: 'i-relogio',
+      testar: () => (mapa().diaConcluido || []).length >= 3,
+    },
+    {
+      id: 'baralho-completo',
+      nome: 'Baralho completo',
+      descricao: 'Gerou a sua Carta Diver em todas as fichas publicadas.',
+      icone: 'i-cartas',
+      testar: (publicadas) => publicadas.length > 0 && publicadas.every((id) => (mapa().cartasGeradas || []).includes(id)),
+    },
+  ];
+  const lerGerais = () => { const g = Dados.ler(CHAVE_GERAIS, null); return g && typeof g === 'object' ? g : {}; };
+
+  /** As conquistas gerais, cada uma com "feita" (data em ms) ou null. */
+  function gerais() {
+    const feitas = lerGerais();
+    return GERAIS.map((c) => ({ ...c, feita: feitas[c.id] || null }));
+  }
+
+  /** Confere as gerais ainda bloqueadas; publicadas = ids das fichas publicadas (para o Baralho completo). Devolve as novas. */
+  function verificarGerais(publicadas = []) {
+    const feitas = lerGerais();
+    const novas = GERAIS.filter((c) => !feitas[c.id] && c.testar(publicadas));
+    if (!novas.length) return [];
+    novas.forEach((c) => { feitas[c.id] = Date.now(); });
+    Dados.gravar(CHAVE_GERAIS, feitas);
+    return novas;
+  }
+
   /** As conquistas que existem num curso (sem as que são de outros cursos). */
   function daTrilha(trilha) {
     return LISTA.filter((c) => !c.so || (trilha && c.so(trilha)));
@@ -168,5 +216,5 @@ const Conquistas = (() => {
     return novas;
   }
 
-  return { LISTA, daTrilha, verificar };
+  return { LISTA, daTrilha, verificar, gerais, verificarGerais };
 })();

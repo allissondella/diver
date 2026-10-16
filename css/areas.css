@@ -2102,3 +2102,8 @@ body.qd-travado { overflow: hidden; }
   .qd-titulo { white-space: normal; overflow-wrap: anywhere; }
   .foco-botoes .botao--grande { min-width: 0; }
 }
+
+/* Admin: bloco do Mapa das Profissões (derivado do log de atividade) */
+.admin-profissoes-caixa { margin-top: var(--esp-5); }
+.admin-profissoes { display: grid; gap: var(--esp-5); margin-top: var(--esp-3); }
+.admin-profissoes__bloco .cartao__titulo { margin-bottom: var(--esp-2); }
