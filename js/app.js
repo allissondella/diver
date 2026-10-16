@@ -48,7 +48,7 @@ const App = (() => {
       'js/jogos/robo-entregador.js', 'js/jogos/primeiros-programas.js', 'js/jogos/lupa-do-codigo.js', 'js/jogos/caca-bugs.js', 'js/jogos/oficina-de-funcoes.js',
       'js/jogos/caca-ao-numero.js', 'js/jogos/organizador-de-pasta.js', 'js/jogos/banco-ao-vivo.js', 'js/jogos/servidor-sumido.js',
       'js/jogos/fabrica-de-portas.js', 'js/jogos/sala-de-controle.js', 'js/jogos/jornada-do-pacote.js',
-      'js/jogos/mini-servidor.js', 'js/jogos/laboratorio-de-rede.js', 'js/jogos/missoes-no-terminal.js', 'js/jogos/linha-do-tempo-do-codigo.js'],
+      'js/jogos/mini-servidor.js', 'js/jogos/laboratorio-de-rede.js', 'js/jogos/missoes-no-terminal.js', 'js/jogos/linha-do-tempo-do-codigo.js', 'js/jogos/mini-masmorra.js'],
     cronograma: ['js/cronograma-gerador.js', 'js/diagnostica.js', 'js/cronograma.js'],
     nivelamento: ['js/cronograma-gerador.js', 'js/diagnostica.js'], // o js/mapa-partida.js já vem no núcleo (o Plano de estudos usa)
     provas: ['js/leitor-prova.js', 'js/provas-enviadas.js'],

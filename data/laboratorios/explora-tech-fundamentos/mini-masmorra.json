@@ -1,0 +1,486 @@
+{
+  "id": "mini-masmorra",
+  "nome": "Mini-Masmorra",
+  "versao": 1,
+  "tipo": "python",
+  "descricao": "Um jogo de aventura em texto, peça por peça: salas num dicionário, andar entre elas, inventário numa lista, comandos, salvar em JSON e o laço do jogo.",
+  "tituloReferencia": "Peças da masmorra",
+  "referencia": [
+    {
+      "nome": "salas[\"entrada\"][\"saidas\"]",
+      "faz": "o dicionário de saídas da sala: {\"norte\": \"corredor\"}"
+    },
+    {
+      "nome": "dicionario.get(chave, padrao)",
+      "faz": "o valor da chave, ou o padrão se ela não existir"
+    },
+    {
+      "nome": "\", \".join(sorted(lista))",
+      "faz": "junta os itens em ordem, separados por vírgula"
+    },
+    {
+      "nome": "lista.remove(item) · lista.append(item)",
+      "faz": "tira da sala · guarda no inventário"
+    },
+    {
+      "nome": "comando.split()",
+      "faz": "\"ir norte\" vira [\"ir\", \"norte\"]"
+    },
+    {
+      "nome": "json.dump(dados, f) · json.load(f)",
+      "faz": "grava o jogo no arquivo · lê de volta"
+    },
+    {
+      "nome": "while True: ... break",
+      "faz": "repete até o jogador digitar sair"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "A Mini-Masmorra é um dos programas do projeto da fase.",
+    "passos": [
+      "Junte as peças das missões num arquivo `masmorra.py` (o mundo, descrever, mover, pegar, processar, salvar, carregar e jogar) e rode com `python masmorra.py`.",
+      "Invente mais salas, um item que abre o baú da cripta e um comando `salvar` que chama a sua função salvar.",
+      "Guarde no repositório do projeto da fase: `git add masmorra.py`, `git commit -m \"Adiciona a Mini-Masmorra\"` e `git push`. Explique no README como jogar."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "mm-descrever",
+      "aulas": [
+        "py-projeto-calculadora"
+      ],
+      "grupo": "O mundo",
+      "titulo": "A sala fala",
+      "enunciado": "A masmorra é um **dicionário de salas** (já está pronto, no `salas`). Escreva `descrever(nome)` que devolve a descrição da sala e as saídas **em ordem alfabética**, separadas por vírgula.",
+      "tituloExemplos": "O mundo e o que descrever devolve",
+      "exemplos": [
+        "salas[\"corredor\"] = {\"descricao\": \"Um corredor úmido e escuro.\", \"saidas\": {\"sul\": \"entrada\", \"leste\": \"cripta\"}, \"itens\": []}",
+        "descrever(\"corredor\")  →  \"Um corredor úmido e escuro. Saídas: leste, sul.\"",
+        "descrever(\"entrada\")  →  \"Uma porta range atrás de você. Saídas: norte.\""
+      ],
+      "prelude": "salas = {\n    \"entrada\": {\"descricao\": \"Uma porta range atrás de você.\", \"saidas\": {\"norte\": \"corredor\"}, \"itens\": [\"tocha\"]},\n    \"corredor\": {\"descricao\": \"Um corredor úmido e escuro.\", \"saidas\": {\"sul\": \"entrada\", \"leste\": \"cripta\"}, \"itens\": []},\n    \"cripta\": {\"descricao\": \"Uma cripta silenciosa, com um baú trancado.\", \"saidas\": {\"oeste\": \"corredor\"}, \"itens\": [\"chave\"]},\n}\n",
+      "codigoInicial": "def descrever(nome):\n    sala = salas[nome]\n    return \"...\"\n",
+      "solucao": "def descrever(nome):\n    sala = salas[nome]\n    saidas = \", \".join(sorted(sala[\"saidas\"]))\n    return f\"{sala['descricao']} Saídas: {saidas}.\"\n",
+      "testes": [
+        {
+          "nome": "O corredor",
+          "codigo": "assert descrever(\"corredor\") == \"Um corredor úmido e escuro. Saídas: leste, sul.\", f'devolveu {descrever(\"corredor\")!r}'"
+        },
+        {
+          "nome": "A entrada",
+          "codigo": "assert descrever(\"entrada\") == \"Uma porta range atrás de você. Saídas: norte.\", f'devolveu {descrever(\"entrada\")!r}'"
+        },
+        {
+          "nome": "A cripta",
+          "oculto": true,
+          "codigo": "assert descrever(\"cripta\") == \"Uma cripta silenciosa, com um baú trancado. Saídas: oeste.\", f'devolveu {descrever(\"cripta\")!r}'"
+        }
+      ],
+      "metas": {
+        "linhas": 4
+      },
+      "dicas": [
+        "sala[\"descricao\"] é o texto; sala[\"saidas\"] é um dicionário cujas chaves são as direções.",
+        "sorted(sala[\"saidas\"]) dá as direções em ordem; \", \".join(...) junta com vírgula.",
+        "saidas = \", \".join(sorted(sala[\"saidas\"])) e return f\"{sala['descricao']} Saídas: {saidas}.\""
+      ],
+      "toque": {
+        "modelo": "def descrever(nome):\n    sala = salas[nome]\n    saidas = \", \".join(sorted(sala[___]))\n    return f\"{sala[___]} Saídas: {saidas}.\"",
+        "lacunas": [
+          {
+            "opcoes": [
+              "\"itens\"",
+              "\"saidas\"",
+              "nome"
+            ],
+            "certa": 1,
+            "dica": "As direções são as chaves do dicionário de saídas."
+          },
+          {
+            "opcoes": [
+              "'descricao'",
+              "'saidas'",
+              "'nome'"
+            ],
+            "certa": 0,
+            "dica": "O texto da sala fica na chave descricao."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mm-mover",
+      "aulas": [
+        "py-projeto-calculadora"
+      ],
+      "grupo": "O mundo",
+      "titulo": "Andar pela masmorra",
+      "enunciado": "Escreva `mover(atual, direcao)`: se a sala atual tem saída nessa direção, devolve a sala de destino; se não tem, devolve a **própria sala atual** (o jogador fica parado).",
+      "tituloExemplos": "O que mover devolve",
+      "exemplos": [
+        "mover(\"entrada\", \"norte\")  →  \"corredor\"",
+        "mover(\"entrada\", \"sul\")  →  \"entrada\"",
+        "mover(\"corredor\", \"leste\")  →  \"cripta\""
+      ],
+      "prelude": "salas = {\n    \"entrada\": {\"descricao\": \"Uma porta range atrás de você.\", \"saidas\": {\"norte\": \"corredor\"}, \"itens\": [\"tocha\"]},\n    \"corredor\": {\"descricao\": \"Um corredor úmido e escuro.\", \"saidas\": {\"sul\": \"entrada\", \"leste\": \"cripta\"}, \"itens\": []},\n    \"cripta\": {\"descricao\": \"Uma cripta silenciosa, com um baú trancado.\", \"saidas\": {\"oeste\": \"corredor\"}, \"itens\": [\"chave\"]},\n}\n",
+      "codigoInicial": "def mover(atual, direcao):\n    return atual\n",
+      "solucao": "def mover(atual, direcao):\n    return salas[atual][\"saidas\"].get(direcao, atual)\n",
+      "testes": [
+        {
+          "nome": "Para o norte",
+          "codigo": "assert mover(\"entrada\", \"norte\") == \"corredor\", f'devolveu {mover(\"entrada\", \"norte\")!r}'"
+        },
+        {
+          "nome": "Parede",
+          "codigo": "assert mover(\"entrada\", \"sul\") == \"entrada\", f'devolveu {mover(\"entrada\", \"sul\")!r}'"
+        },
+        {
+          "nome": "Para a cripta",
+          "oculto": true,
+          "codigo": "assert mover(\"corredor\", \"leste\") == \"cripta\" and mover(\"cripta\", \"norte\") == \"cripta\", \"confira as outras salas\""
+        }
+      ],
+      "metas": {
+        "linhas": 2
+      },
+      "dicas": [
+        "salas[atual][\"saidas\"] é um dicionário: direção → sala.",
+        "O .get(chave, padrao) devolve o padrão quando a chave não existe.",
+        "return salas[atual][\"saidas\"].get(direcao, atual)"
+      ],
+      "toque": {
+        "modelo": "def mover(atual, direcao):\n    return salas[atual][\"saidas\"].___(direcao, ___)",
+        "lacunas": [
+          {
+            "opcoes": [
+              "get",
+              "append",
+              "remove"
+            ],
+            "certa": 0,
+            "dica": "Para ler um dicionário com valor padrão."
+          },
+          {
+            "opcoes": [
+              "direcao",
+              "atual",
+              "\"norte\""
+            ],
+            "certa": 1,
+            "dica": "Sem saída, o jogador fica onde está."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mm-pegar",
+      "aulas": [
+        "py-projeto-calculadora"
+      ],
+      "grupo": "O inventário",
+      "titulo": "Guardar na mochila",
+      "enunciado": "Escreva `pegar(item, sala, inventario)`: se o item está na sala, **tira da sala**, **guarda no inventário** e devolve `True`; se não está, não muda nada e devolve `False`.",
+      "tituloExemplos": "O que pegar faz",
+      "exemplos": [
+        "inv = []; pegar(\"tocha\", \"entrada\", inv)  →  True, e inv fica [\"tocha\"]",
+        "pegar(\"espada\", \"entrada\", inv)  →  False",
+        "depois, salas[\"entrada\"][\"itens\"] fica []"
+      ],
+      "prelude": "salas = {\n    \"entrada\": {\"descricao\": \"Uma porta range atrás de você.\", \"saidas\": {\"norte\": \"corredor\"}, \"itens\": [\"tocha\"]},\n    \"corredor\": {\"descricao\": \"Um corredor úmido e escuro.\", \"saidas\": {\"sul\": \"entrada\", \"leste\": \"cripta\"}, \"itens\": []},\n    \"cripta\": {\"descricao\": \"Uma cripta silenciosa, com um baú trancado.\", \"saidas\": {\"oeste\": \"corredor\"}, \"itens\": [\"chave\"]},\n}\n",
+      "codigoInicial": "def pegar(item, sala, inventario):\n    return False\n",
+      "solucao": "def pegar(item, sala, inventario):\n    if item in salas[sala][\"itens\"]:\n        salas[sala][\"itens\"].remove(item)\n        inventario.append(item)\n        return True\n    return False\n",
+      "testes": [
+        {
+          "nome": "Pega a tocha",
+          "codigo": "inv = []\nassert pegar(\"tocha\", \"entrada\", inv) is True and inv == [\"tocha\"], f\"inventário: {inv}\""
+        },
+        {
+          "nome": "Sai da sala",
+          "codigo": "assert \"tocha\" not in salas[\"entrada\"][\"itens\"], \"a tocha continua na sala\""
+        },
+        {
+          "nome": "Item que não existe",
+          "codigo": "inv2 = []\nassert pegar(\"espada\", \"entrada\", inv2) is False and inv2 == [], f\"inventário: {inv2}\""
+        },
+        {
+          "nome": "Não pega duas vezes",
+          "oculto": true,
+          "codigo": "inv3 = [\"tocha\"]\nassert pegar(\"tocha\", \"entrada\", inv3) is False and inv3 == [\"tocha\"], \"a tocha já foi pega\""
+        }
+      ],
+      "metas": {
+        "linhas": 6
+      },
+      "dicas": [
+        "item in salas[sala][\"itens\"] diz se o item está ali.",
+        "remove tira da lista da sala; append põe no inventário.",
+        "if item in salas[sala][\"itens\"]: remove, append e return True; senão, return False."
+      ],
+      "toque": {
+        "modelo": "def pegar(item, sala, inventario):\n    if item ___ salas[sala][\"itens\"]:\n        salas[sala][\"itens\"].___(item)\n        inventario.___(item)\n        return True\n    return False",
+        "lacunas": [
+          {
+            "opcoes": [
+              "in",
+              "not in",
+              "=="
+            ],
+            "certa": 0,
+            "dica": "O item precisa estar na sala."
+          },
+          {
+            "opcoes": [
+              "append",
+              "remove",
+              "get"
+            ],
+            "certa": 1,
+            "dica": "Da sala, o item sai."
+          },
+          {
+            "opcoes": [
+              "append",
+              "remove",
+              "pop"
+            ],
+            "certa": 0,
+            "dica": "No inventário, o item entra."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mm-comandos",
+      "aulas": [
+        "py-projeto-calculadora"
+      ],
+      "grupo": "Os comandos",
+      "titulo": "O jogador manda",
+      "enunciado": "Junte as peças em `processar(comando, estado)`. O `estado` é `{\"sala\": ..., \"inventario\": [...]}`. Comandos: **ir direção**, **pegar item**, **inventario**; qualquer outro devolve \"Não entendi.\". `descrever`, `mover` e `pegar` já estão prontos.",
+      "tituloExemplos": "O que processar devolve (começando na entrada)",
+      "exemplos": [
+        "processar(\"ir norte\", estado)  →  \"Um corredor úmido e escuro. Saídas: leste, sul.\"  (e estado[\"sala\"] vira \"corredor\")",
+        "processar(\"ir oeste\", estado)  →  \"Não dá para ir por aí.\"",
+        "processar(\"pegar tocha\", estado)  →  \"Você pegou: tocha.\"   ·   \"pegar espada\"  →  \"Não tem isso aqui.\"",
+        "processar(\"inventario\", estado)  →  \"Você leva: tocha.\"  ou  \"Você não leva nada.\"",
+        "processar(\"dançar\", estado)  →  \"Não entendi.\""
+      ],
+      "prelude": "salas = {\n    \"entrada\": {\"descricao\": \"Uma porta range atrás de você.\", \"saidas\": {\"norte\": \"corredor\"}, \"itens\": [\"tocha\"]},\n    \"corredor\": {\"descricao\": \"Um corredor úmido e escuro.\", \"saidas\": {\"sul\": \"entrada\", \"leste\": \"cripta\"}, \"itens\": []},\n    \"cripta\": {\"descricao\": \"Uma cripta silenciosa, com um baú trancado.\", \"saidas\": {\"oeste\": \"corredor\"}, \"itens\": [\"chave\"]},\n}\ndef descrever(nome):\n    sala = salas[nome]\n    saidas = \", \".join(sorted(sala[\"saidas\"]))\n    return f\"{sala['descricao']} Saídas: {saidas}.\"\ndef mover(atual, direcao):\n    return salas[atual][\"saidas\"].get(direcao, atual)\ndef pegar(item, sala, inventario):\n    if item in salas[sala][\"itens\"]:\n        salas[sala][\"itens\"].remove(item)\n        inventario.append(item)\n        return True\n    return False\n",
+      "codigoInicial": "def processar(comando, estado):\n    partes = comando.split()\n    return \"Não entendi.\"\n",
+      "solucao": "def processar(comando, estado):\n    partes = comando.split()\n    if len(partes) == 2 and partes[0] == \"ir\":\n        nova = mover(estado[\"sala\"], partes[1])\n        if nova == estado[\"sala\"]:\n            return \"Não dá para ir por aí.\"\n        estado[\"sala\"] = nova\n        return descrever(nova)\n    if len(partes) == 2 and partes[0] == \"pegar\":\n        if pegar(partes[1], estado[\"sala\"], estado[\"inventario\"]):\n            return f\"Você pegou: {partes[1]}.\"\n        return \"Não tem isso aqui.\"\n    if comando == \"inventario\":\n        if not estado[\"inventario\"]:\n            return \"Você não leva nada.\"\n        return \"Você leva: \" + \", \".join(estado[\"inventario\"]) + \".\"\n    return \"Não entendi.\"\n",
+      "testes": [
+        {
+          "nome": "Andar",
+          "codigo": "e = {\"sala\": \"entrada\", \"inventario\": []}\nr = processar(\"ir norte\", e)\nassert r == \"Um corredor úmido e escuro. Saídas: leste, sul.\" and e[\"sala\"] == \"corredor\", f\"devolveu {r!r}, sala {e['sala']!r}\""
+        },
+        {
+          "nome": "Parede",
+          "codigo": "e = {\"sala\": \"entrada\", \"inventario\": []}\nassert processar(\"ir oeste\", e) == \"Não dá para ir por aí.\" and e[\"sala\"] == \"entrada\", \"confira o ir sem saída\""
+        },
+        {
+          "nome": "Pegar e inventário",
+          "codigo": "e = {\"sala\": \"entrada\", \"inventario\": []}\nassert processar(\"inventario\", e) == \"Você não leva nada.\", \"inventário vazio\"\nassert processar(\"pegar tocha\", e) == \"Você pegou: tocha.\", \"pegar tocha\"\nassert processar(\"inventario\", e) == \"Você leva: tocha.\", f\"inventário: {processar('inventario', e)!r}\""
+        },
+        {
+          "nome": "Item que não está ali",
+          "codigo": "e = {\"sala\": \"corredor\", \"inventario\": []}\nassert processar(\"pegar chave\", e) == \"Não tem isso aqui.\", \"a chave está na cripta\""
+        },
+        {
+          "nome": "Comando estranho",
+          "oculto": true,
+          "codigo": "e = {\"sala\": \"entrada\", \"inventario\": []}\nassert processar(\"dançar\", e) == \"Não entendi.\" and processar(\"ir\", e) == \"Não entendi.\", \"comandos que o jogo não conhece\""
+        }
+      ],
+      "metas": {
+        "linhas": 17
+      },
+      "dicas": [
+        "comando.split() separa \"ir norte\" em [\"ir\", \"norte\"]; confira len(partes) == 2 e partes[0].",
+        "Para andar: nova = mover(estado[\"sala\"], partes[1]); se nova for igual à sala atual, não deu para ir.",
+        "Três blocos if (ir, pegar, inventario) e, no fim, return \"Não entendi.\"."
+      ],
+      "toque": {
+        "modelo": "def processar(comando, estado):\n    partes = comando.split()\n    if len(partes) == 2 and partes[0] == \"ir\":\n        nova = ___(estado[\"sala\"], partes[1])\n        if nova == estado[\"sala\"]:\n            return \"Não dá para ir por aí.\"\n        estado[\"sala\"] = nova\n        return descrever(nova)\n    if len(partes) == 2 and partes[0] == \"pegar\":\n        if ___(partes[1], estado[\"sala\"], estado[\"inventario\"]):\n            return f\"Você pegou: {partes[1]}.\"\n        return \"Não tem isso aqui.\"\n    if comando == \"inventario\":\n        if not estado[\"inventario\"]:\n            return \"Você não leva nada.\"\n        return \"Você leva: \" + \", \".___(estado[\"inventario\"]) + \".\"\n    return \"Não entendi.\"",
+        "lacunas": [
+          {
+            "opcoes": [
+              "mover",
+              "descrever",
+              "pegar"
+            ],
+            "certa": 0,
+            "dica": "Qual função diz para onde a direção leva?"
+          },
+          {
+            "opcoes": [
+              "mover",
+              "pegar",
+              "print"
+            ],
+            "certa": 1,
+            "dica": "Ela devolve True quando o item foi guardado."
+          },
+          {
+            "opcoes": [
+              "split",
+              "join",
+              "append"
+            ],
+            "certa": 1,
+            "dica": "Juntar a lista num texto só."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mm-salvar",
+      "aulas": [
+        "git-projeto-da-fase"
+      ],
+      "grupo": "Salvar o jogo",
+      "titulo": "Salvar e continuar depois",
+      "enunciado": "Escreva `salvar(estado, caminho=\"save.json\")`, que grava o estado em **JSON**, e `carregar(caminho=\"save.json\")`, que lê de volta. Sem arquivo salvo, `carregar` começa um jogo novo: `{\"sala\": \"entrada\", \"inventario\": []}`.",
+      "tituloExemplos": "O que deve acontecer",
+      "exemplos": [
+        "salvar({\"sala\": \"cripta\", \"inventario\": [\"tocha\"]})  →  cria save.json",
+        "carregar()  →  {\"sala\": \"cripta\", \"inventario\": [\"tocha\"]}",
+        "sem save.json: carregar()  →  {\"sala\": \"entrada\", \"inventario\": []}"
+      ],
+      "codigoInicial": "import json\n\ndef salvar(estado, caminho=\"save.json\"):\n    pass\n\ndef carregar(caminho=\"save.json\"):\n    return {}\n",
+      "solucao": "import json\n\ndef salvar(estado, caminho=\"save.json\"):\n    with open(caminho, \"w\", encoding=\"utf-8\") as f:\n        json.dump(estado, f, ensure_ascii=False)\n\ndef carregar(caminho=\"save.json\"):\n    try:\n        with open(caminho, encoding=\"utf-8\") as f:\n            return json.load(f)\n    except FileNotFoundError:\n        return {\"sala\": \"entrada\", \"inventario\": []}\n",
+      "testes": [
+        {
+          "nome": "Sem save, jogo novo",
+          "codigo": "import os\nif os.path.exists(\"save.json\"): os.remove(\"save.json\")\nassert carregar() == {\"sala\": \"entrada\", \"inventario\": []}, f\"devolveu {carregar()!r}\""
+        },
+        {
+          "nome": "Salva e lê de volta",
+          "codigo": "salvar({\"sala\": \"cripta\", \"inventario\": [\"tocha\"]})\nassert carregar() == {\"sala\": \"cripta\", \"inventario\": [\"tocha\"]}, f\"devolveu {carregar()!r}\""
+        },
+        {
+          "nome": "É JSON de verdade",
+          "oculto": true,
+          "codigo": "import json as _j\nsalvar({\"sala\": \"corredor\", \"inventario\": [\"chave\", \"tocha\"]}, \"outro.json\")\nwith open(\"outro.json\", encoding=\"utf-8\") as _f:\n    assert _j.load(_f)[\"inventario\"] == [\"chave\", \"tocha\"], \"o arquivo não tem o JSON do estado\""
+        }
+      ],
+      "metas": {
+        "linhas": 10
+      },
+      "dicas": [
+        "Para gravar: with open(caminho, \"w\", encoding=\"utf-8\") as f: json.dump(estado, f).",
+        "Para ler: json.load(f) dentro de um with open(caminho).",
+        "Ponha o open do carregar num try e devolva o jogo novo no except FileNotFoundError."
+      ],
+      "toque": {
+        "modelo": "import json\n\ndef salvar(estado, caminho=\"save.json\"):\n    with open(caminho, \"w\", encoding=\"utf-8\") as f:\n        json.___(estado, f, ensure_ascii=False)\n\ndef carregar(caminho=\"save.json\"):\n    try:\n        with open(caminho, encoding=\"utf-8\") as f:\n            return json.___(f)\n    except ___:\n        return {\"sala\": \"entrada\", \"inventario\": []}",
+        "lacunas": [
+          {
+            "opcoes": [
+              "dump",
+              "load",
+              "dumps"
+            ],
+            "certa": 0,
+            "dica": "Gravar no arquivo aberto."
+          },
+          {
+            "opcoes": [
+              "dump",
+              "load",
+              "loads"
+            ],
+            "certa": 1,
+            "dica": "Ler do arquivo aberto."
+          },
+          {
+            "opcoes": [
+              "ValueError",
+              "FileNotFoundError",
+              "KeyError"
+            ],
+            "certa": 1,
+            "dica": "O erro de quando o arquivo não existe."
+          }
+        ]
+      }
+    },
+    {
+      "id": "mm-jogo",
+      "aulas": [
+        "git-projeto-da-fase"
+      ],
+      "grupo": "O jogo inteiro",
+      "titulo": "Bora jogar",
+      "enunciado": "A última peça: `jogar()` mostra a sala inicial e repete: lê um comando com `input(\"> \")`, para quando for **sair** (dizendo \"Até a próxima, aventureiro!\") e, senão, mostra o que `processar` devolver. Todas as outras peças já estão prontas.",
+      "prelude": "salas = {\n    \"entrada\": {\"descricao\": \"Uma porta range atrás de você.\", \"saidas\": {\"norte\": \"corredor\"}, \"itens\": [\"tocha\"]},\n    \"corredor\": {\"descricao\": \"Um corredor úmido e escuro.\", \"saidas\": {\"sul\": \"entrada\", \"leste\": \"cripta\"}, \"itens\": []},\n    \"cripta\": {\"descricao\": \"Uma cripta silenciosa, com um baú trancado.\", \"saidas\": {\"oeste\": \"corredor\"}, \"itens\": [\"chave\"]},\n}\ndef descrever(nome):\n    sala = salas[nome]\n    saidas = \", \".join(sorted(sala[\"saidas\"]))\n    return f\"{sala['descricao']} Saídas: {saidas}.\"\ndef mover(atual, direcao):\n    return salas[atual][\"saidas\"].get(direcao, atual)\ndef pegar(item, sala, inventario):\n    if item in salas[sala][\"itens\"]:\n        salas[sala][\"itens\"].remove(item)\n        inventario.append(item)\n        return True\n    return False\ndef processar(comando, estado):\n    partes = comando.split()\n    if len(partes) == 2 and partes[0] == \"ir\":\n        nova = mover(estado[\"sala\"], partes[1])\n        if nova == estado[\"sala\"]:\n            return \"Não dá para ir por aí.\"\n        estado[\"sala\"] = nova\n        return descrever(nova)\n    if len(partes) == 2 and partes[0] == \"pegar\":\n        if pegar(partes[1], estado[\"sala\"], estado[\"inventario\"]):\n            return f\"Você pegou: {partes[1]}.\"\n        return \"Não tem isso aqui.\"\n    if comando == \"inventario\":\n        if not estado[\"inventario\"]:\n            return \"Você não leva nada.\"\n        return \"Você leva: \" + \", \".join(estado[\"inventario\"]) + \".\"\n    return \"Não entendi.\"\n",
+      "codigoInicial": "def jogar():\n    estado = {\"sala\": \"entrada\", \"inventario\": []}\n    print(descrever(estado[\"sala\"]))\n\njogar()\n",
+      "solucao": "def jogar():\n    estado = {\"sala\": \"entrada\", \"inventario\": []}\n    print(descrever(estado[\"sala\"]))\n    while True:\n        comando = input(\"> \")\n        if comando == \"sair\":\n            print(\"Até a próxima, aventureiro!\")\n            break\n        print(processar(comando, estado))\n\njogar()\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Uma partida",
+          "entradas": [
+            "pegar tocha",
+            "ir oeste",
+            "ir norte",
+            "ir leste",
+            "pegar chave",
+            "inventario",
+            "sair"
+          ],
+          "esperada": "Uma porta range atrás de você. Saídas: norte.\n> pegar tocha\nVocê pegou: tocha.\n> ir oeste\nNão dá para ir por aí.\n> ir norte\nUm corredor úmido e escuro. Saídas: leste, sul.\n> ir leste\nUma cripta silenciosa, com um baú trancado. Saídas: oeste.\n> pegar chave\nVocê pegou: chave.\n> inventario\nVocê leva: tocha, chave.\n> sair\nAté a próxima, aventureiro!\n"
+        },
+        {
+          "tipo": "saida",
+          "nome": "Sair logo",
+          "oculto": true,
+          "entradas": [
+            "sair"
+          ],
+          "esperada": "Uma porta range atrás de você. Saídas: norte.\n> sair\nAté a próxima, aventureiro!\n"
+        }
+      ],
+      "metas": {
+        "linhas": 10
+      },
+      "dicas": [
+        "Um laço while True: com comando = input(\"> \") dentro.",
+        "if comando == \"sair\": print a despedida e break.",
+        "Fora do if: print(processar(comando, estado))."
+      ],
+      "toque": {
+        "modelo": "def jogar():\n    estado = {\"sala\": \"entrada\", \"inventario\": []}\n    print(descrever(estado[\"sala\"]))\n    while True:\n        comando = ___(\"> \")\n        if comando == \"sair\":\n            print(\"Até a próxima, aventureiro!\")\n            ___\n        print(___(comando, estado))\n\njogar()",
+        "lacunas": [
+          {
+            "opcoes": [
+              "print",
+              "input",
+              "int"
+            ],
+            "certa": 1,
+            "dica": "Ler o que o jogador digita."
+          },
+          {
+            "opcoes": [
+              "break",
+              "continue",
+              "return estado"
+            ],
+            "certa": 0,
+            "dica": "Sair do laço."
+          },
+          {
+            "opcoes": [
+              "descrever",
+              "processar",
+              "mover"
+            ],
+            "certa": 1,
+            "dica": "A função que entende o comando."
+          }
+        ]
+      }
+    }
+  ]
+}
