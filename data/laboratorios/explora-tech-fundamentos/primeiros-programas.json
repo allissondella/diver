@@ -33,6 +33,22 @@
     {
       "nome": "round(x, 2)",
       "faz": "arredonda para 2 casas"
+    },
+    {
+      "nome": "texto.strip()",
+      "faz": "tira os espaços das pontas"
+    },
+    {
+      "nome": "texto[:3]",
+      "faz": "as três primeiras letras (fatia)"
+    },
+    {
+      "nome": "texto.upper()",
+      "faz": "o texto em maiúsculas"
+    },
+    {
+      "nome": "f\"{valor}\"",
+      "faz": "f-string: o que está entre chaves vira texto"
     }
   ],
   "fazDeVerdade": {
@@ -567,6 +583,194 @@
             ],
             "certa": 0,
             "dica": "...menos o total."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-script-1",
+      "aulas": [
+        "py-instalar-rodar"
+      ],
+      "grupo": "Script",
+      "titulo": "Cartão de apresentação",
+      "enunciado": "Escreva um script que mostra três linhas: `Nome: Diver`, `Curso: Explora Tech` e `Meta: programar todo dia`. Ponha um comentário com # explicando o que o programa faz.",
+      "codigoInicial": "# \nprint(\"Nome: Diver\")\n",
+      "solucao": "# cartão de apresentação do aluno\nprint(\"Nome: Diver\")\nprint(\"Curso: Explora Tech\")\nprint(\"Meta: programar todo dia\")\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "As três linhas",
+          "esperada": "Nome: Diver\nCurso: Explora Tech\nMeta: programar todo dia\n"
+        }
+      ],
+      "metas": {
+        "linhas": 3
+      },
+      "dicas": [
+        "Cada print mostra uma linha. Você precisa de três.",
+        "O comentário começa com # e o Python ignora o resto da linha.",
+        "# cartão / print(\"Nome: Diver\") / print(\"Curso: Explora Tech\") / print(\"Meta: programar todo dia\")"
+      ],
+      "toque": {
+        "modelo": "# cartão de apresentação\nprint(\"Nome: Diver\")\n___(\"Curso: Explora Tech\")\nprint(\"Meta: ___\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "print",
+              "input",
+              "len"
+            ],
+            "certa": 0,
+            "dica": "Quem mostra na tela é o print."
+          },
+          {
+            "opcoes": [
+              "programar todo dia",
+              "Programar todo dia",
+              "programar todo dia!"
+            ],
+            "certa": 0,
+            "dica": "Copie o texto exatamente como no enunciado."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-apelido",
+      "aulas": [
+        "py-revisao-primeiros-passos"
+      ],
+      "grupo": "Projeto",
+      "titulo": "Gerador de apelidos",
+      "enunciado": "Leia o nome com input(\"Seu nome: \"), limpe os espaços, pegue as três primeiras letras em maiúsculas e junte o número 42. Mostre `Apelido: MAR42` (para o nome mariana).",
+      "codigoInicial": "nome = input(\"Seu nome: \")\nnumero = 42\n# monte o apelido e mostre\n",
+      "solucao": "nome = input(\"Seu nome: \").strip()\nnumero = 42\napelido = nome[:3].upper() + str(numero)\nprint(f\"Apelido: {apelido}\")\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Com mariana",
+          "entradas": [
+            "mariana"
+          ],
+          "esperada": "Seu nome: mariana\nApelido: MAR42\n"
+        },
+        {
+          "tipo": "saida",
+          "nome": "Com espaços antes",
+          "entradas": [
+            "  lucas"
+          ],
+          "esperada": "Seu nome:   lucas\nApelido: LUC42\n",
+          "oculto": true
+        },
+        {
+          "tipo": "saida",
+          "nome": "Nome curto",
+          "entradas": [
+            "Al"
+          ],
+          "esperada": "Seu nome: Al\nApelido: AL42\n",
+          "oculto": true
+        }
+      ],
+      "metas": {
+        "linhas": 4
+      },
+      "dicas": [
+        "Limpe com strip(), recorte com [:3] e aumente com upper().",
+        "O número precisa virar texto antes do +: str(numero). Ou use uma f-string.",
+        "apelido = nome.strip()[:3].upper() + str(numero) / print(f\"Apelido: {apelido}\")"
+      ],
+      "toque": {
+        "modelo": "nome = input(\"Seu nome: \").___()\nnumero = 42\napelido = nome[___].upper() + str(numero)\nprint(f\"Apelido: {apelido}\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "strip",
+              "upper",
+              "lower"
+            ],
+            "certa": 0,
+            "dica": "Primeiro, limpe os espaços das pontas."
+          },
+          {
+            "opcoes": [
+              ":3",
+              "3:",
+              "3"
+            ],
+            "certa": 0,
+            "dica": "As três primeiras letras: do começo até antes do 3."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pp-idade",
+      "aulas": [
+        "py-revisao-primeiros-passos"
+      ],
+      "grupo": "Projeto",
+      "titulo": "Idade sem susto",
+      "enunciado": "Leia o ano com input(\"Ano: \"). Se só tiver algarismos, mostre `Você faz N anos em 2026`; se não, mostre `Digite só números`, sem deixar o programa parar com erro.",
+      "codigoInicial": "ano = input(\"Ano: \")\nprint(2026 - int(ano))\n",
+      "solucao": "ano = input(\"Ano: \")\nif ano.isdigit():\n    print(f\"Você faz {2026 - int(ano)} anos em 2026\")\nelse:\n    print(\"Digite só números\")\n",
+      "testes": [
+        {
+          "tipo": "saida",
+          "nome": "Ano 2008",
+          "entradas": [
+            "2008"
+          ],
+          "esperada": "Ano: 2008\nVocê faz 18 anos em 2026\n"
+        },
+        {
+          "tipo": "saida",
+          "nome": "Texto no lugar do ano",
+          "entradas": [
+            "dois mil"
+          ],
+          "esperada": "Ano: dois mil\nDigite só números\n"
+        },
+        {
+          "tipo": "saida",
+          "nome": "Ano 1990",
+          "entradas": [
+            "1990"
+          ],
+          "esperada": "Ano: 1990\nVocê faz 36 anos em 2026\n",
+          "oculto": true
+        }
+      ],
+      "metas": {
+        "linhas": 5
+      },
+      "dicas": [
+        "int(\"dois mil\") dá ValueError. Confira o texto antes de converter.",
+        "ano.isdigit() devolve True se o texto só tem algarismos. Use num if.",
+        "if ano.isdigit(): print(f\"Você faz {2026 - int(ano)} anos em 2026\") / else: print(\"Digite só números\")"
+      ],
+      "toque": {
+        "modelo": "ano = input(\"Ano: \")\nif ano.___():\n    print(f\"Você faz {2026 - ___(ano)} anos em 2026\")\nelse:\n    print(\"Digite só números\")",
+        "lacunas": [
+          {
+            "opcoes": [
+              "isdigit",
+              "upper",
+              "strip"
+            ],
+            "certa": 0,
+            "dica": "Confira se só há algarismos."
+          },
+          {
+            "opcoes": [
+              "int",
+              "str",
+              "len"
+            ],
+            "certa": 0,
+            "dica": "Para fazer a conta, o texto vira inteiro."
           }
         ]
       }

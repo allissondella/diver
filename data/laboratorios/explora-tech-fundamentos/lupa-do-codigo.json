@@ -1558,6 +1558,286 @@
         }
       ],
       "saidaFinal": "15\n"
+    },
+    {
+      "id": "lc-texto-1",
+      "grupo": "Textos",
+      "aulas": [
+        "py-strings"
+      ],
+      "titulo": "Recortando o CEP",
+      "enunciado": "O programa recorta e limpa um texto em vários passos. Preveja o valor de cada variável.",
+      "codigo": "cep = \" 01310-100 \"\nlimpo = cep.strip()\ninicio = limpo[:5]\nfim = limpo[-3:]\nprint(inicio + fim)\n",
+      "perguntas": [
+        {
+          "linha": 3,
+          "variavel": "limpo",
+          "opcoes": [
+            "'01310-100'",
+            "' 01310-100 '",
+            "'01310100'"
+          ],
+          "porque": "strip() tira só os espaços das pontas; o traço fica."
+        },
+        {
+          "linha": 4,
+          "variavel": "inicio",
+          "opcoes": [
+            "'01310'",
+            "'0131'",
+            "'01310-'"
+          ],
+          "porque": "[:5] vai do índice 0 até antes do 5: cinco caracteres."
+        },
+        {
+          "linha": 5,
+          "variavel": "fim",
+          "opcoes": [
+            "'100'",
+            "'-100'",
+            "'10'"
+          ],
+          "porque": "[-3:] pega os três últimos caracteres."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            },
+            "limpo": {
+              "tipo": "str",
+              "valor": "'01310-100'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            },
+            "limpo": {
+              "tipo": "str",
+              "valor": "'01310-100'"
+            },
+            "inicio": {
+              "tipo": "str",
+              "valor": "'01310'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            },
+            "limpo": {
+              "tipo": "str",
+              "valor": "'01310-100'"
+            },
+            "inicio": {
+              "tipo": "str",
+              "valor": "'01310'"
+            },
+            "fim": {
+              "tipo": "str",
+              "valor": "'100'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "cep": {
+              "tipo": "str",
+              "valor": "' 01310-100 '"
+            },
+            "limpo": {
+              "tipo": "str",
+              "valor": "'01310-100'"
+            },
+            "inicio": {
+              "tipo": "str",
+              "valor": "'01310'"
+            },
+            "fim": {
+              "tipo": "str",
+              "valor": "'100'"
+            }
+          },
+          "saida": 9
+        }
+      ],
+      "saidaFinal": "01310100\n"
+    },
+    {
+      "id": "lc-texto-2",
+      "grupo": "Textos",
+      "aulas": [
+        "py-strings"
+      ],
+      "titulo": "Texto não muda",
+      "enunciado": "Métodos de texto devolvem um texto novo. Siga o programa e veja quando a variável muda de verdade.",
+      "codigo": "nome = \"bia\"\nnome.upper()\ngrande = nome.upper()\nnome = nome + \"!\"\nprint(nome, grande)\n",
+      "perguntas": [
+        {
+          "linha": 3,
+          "variavel": "nome",
+          "opcoes": [
+            "'bia'",
+            "'BIA'",
+            "None"
+          ],
+          "porque": "nome.upper() sozinho devolve \"BIA\", mas ninguém guardou: nome continua \"bia\"."
+        },
+        {
+          "linha": 4,
+          "variavel": "grande",
+          "opcoes": [
+            "'BIA'",
+            "'bia'",
+            "'BIA!'"
+          ],
+          "porque": "Agora o resultado de upper() foi guardado em grande."
+        },
+        {
+          "linha": 5,
+          "variavel": "nome",
+          "opcoes": [
+            "'bia!'",
+            "'BIA!'",
+            "'bia'"
+          ],
+          "porque": "A atribuição troca o valor: \"bia\" + \"!\" é \"bia!\"."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia'"
+            },
+            "grande": {
+              "tipo": "str",
+              "valor": "'BIA'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia!'"
+            },
+            "grande": {
+              "tipo": "str",
+              "valor": "'BIA'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "nome": {
+              "tipo": "str",
+              "valor": "'bia!'"
+            },
+            "grande": {
+              "tipo": "str",
+              "valor": "'BIA'"
+            }
+          },
+          "saida": 9
+        }
+      ],
+      "saidaFinal": "bia! BIA\n"
     }
   ]
 }

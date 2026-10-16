@@ -47,7 +47,8 @@ for (const q of [...t.questoes, ...(t.variantes || [])]) {
   if (!['facil', 'medio', 'dificil'].includes(q.dificuldade)) erros.push(`${q.id}: dificuldade ${q.dificuldade}`);
   if (!Array.isArray(q.alternativas) || q.alternativas.length < 4) erros.push(`${q.id}: poucas alternativas`);
   if (!(q.correta >= 0 && q.correta < q.alternativas.length)) erros.push(`${q.id}: correta fora`);
-  if (new Set(q.alternativas.map(semAcento)).size !== q.alternativas.length) erros.push(`${q.id}: alternativas repetidas`);
+  // alternativas de código ou de saída comparam exatas ("ANA" e "ana" são respostas diferentes)
+  if (new Set(q.alternativas.map(q.alternativasCodigo ? (a) => a : semAcento)).size !== q.alternativas.length) erros.push(`${q.id}: alternativas repetidas`);
   if (!q.explicacao || q.explicacao.length < 40) erros.push(`${q.id}: explicação curta`);
   if (!q.enunciado || !q.tema) erros.push(`${q.id}: sem enunciado/tema`);
   if (q.varianteDe && !qids.has(q.varianteDe)) erros.push(`${q.id}: varianteDe inexistente`);

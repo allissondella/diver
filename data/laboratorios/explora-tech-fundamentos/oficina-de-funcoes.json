@@ -442,6 +442,167 @@
      }
     ]
    }
+  },
+  {
+   "id": "of-hipotenusa",
+   "aulas": [
+    "py-math-random"
+   ],
+   "grupo": "Com módulos",
+   "titulo": "Hipotenusa",
+   "enunciado": "A função `hipotenusa(a, b)` devolve a raiz de a × a + b × b (o lado maior do triângulo retângulo). Use math.sqrt.",
+   "codigoInicial": "import math\n\ndef hipotenusa(a, b):\n    # devolva a raiz de a*a + b*b\n    pass\n",
+   "solucao": "import math\n\ndef hipotenusa(a, b):\n    return math.sqrt(a * a + b * b)\n",
+   "exemplos": [
+    "hipotenusa(3, 4)    # dá 5.0",
+    "hipotenusa(6, 8)    # dá 10.0"
+   ],
+   "testes": [
+    {
+     "nome": "hipotenusa(3, 4) dá 5.0",
+     "codigo": "assert hipotenusa(3, 4) == 5.0, 'hipotenusa(3, 4) deveria dar 5.0'"
+    },
+    {
+     "nome": "hipotenusa(6, 8) dá 10.0",
+     "codigo": "assert hipotenusa(6, 8) == 10.0, 'hipotenusa(6, 8) deveria dar 10.0'"
+    },
+    {
+     "nome": "Decimal",
+     "codigo": "assert round(hipotenusa(1, 1), 3) == 1.414, 'hipotenusa(1, 1) deveria dar cerca de 1.414'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "A conta dentro da raiz é a * a + b * b.",
+    "math.sqrt(x) devolve a raiz quadrada de x. Lembre do return.",
+    "return math.sqrt(a * a + b * b)"
+   ],
+   "toque": {
+    "modelo": "import math\n\ndef hipotenusa(a, b):\n    return math.___(a * a + b * b)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "sqrt",
+       "pi",
+       "ceil"
+      ],
+      "certa": 0,
+      "dica": "Raiz quadrada é square root."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-vans",
+   "aulas": [
+    "py-math-random"
+   ],
+   "grupo": "Com módulos",
+   "titulo": "Quantas vans?",
+   "enunciado": "A função `vans(pessoas, lugares)` devolve quantas vans são necessárias para levar todo mundo. Use math.ceil.",
+   "codigoInicial": "import math\n\ndef vans(pessoas, lugares):\n    return pessoas // lugares\n",
+   "solucao": "import math\n\ndef vans(pessoas, lugares):\n    return math.ceil(pessoas / lugares)\n",
+   "exemplos": [
+    "vans(47, 15)   # dá 4",
+    "vans(30, 15)   # dá 2"
+   ],
+   "testes": [
+    {
+     "nome": "vans(47, 15) dá 4",
+     "codigo": "assert vans(47, 15) == 4, 'vans(47, 15) deveria dar 4: ninguém fica de fora'"
+    },
+    {
+     "nome": "vans(30, 15) dá 2",
+     "codigo": "assert vans(30, 15) == 2, 'vans(30, 15) deveria dar 2'"
+    },
+    {
+     "nome": "Uma pessoa a mais",
+     "codigo": "assert vans(16, 15) == 2, 'Com 16 pessoas, são 2 vans'",
+     "oculto": true
+    },
+    {
+     "nome": "Ninguém",
+     "codigo": "assert vans(0, 15) == 0, 'Sem pessoas, nenhuma van'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "47 // 15 dá 3, e duas pessoas ficam de fora. Precisa arredondar para cima.",
+    "math.ceil sobe para o inteiro de cima. Divida com / e arredonde.",
+    "return math.ceil(pessoas / lugares)"
+   ],
+   "toque": {
+    "modelo": "import math\n\ndef vans(pessoas, lugares):\n    return math.___(pessoas / lugares)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "ceil",
+       "floor",
+       "sqrt"
+      ],
+      "certa": 0,
+      "dica": "Para caber todo mundo, arredonde para cima."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-dado",
+   "aulas": [
+    "py-math-random"
+   ],
+   "grupo": "Com módulos",
+   "titulo": "Dado de jogo",
+   "enunciado": "A função `dado(faces)` sorteia um número de 1 até faces. Com faces = 6, é o dado comum; com 20, o dado de RPG.",
+   "codigoInicial": "import random\n\ndef dado(faces):\n    return random.randint(0, faces)\n",
+   "solucao": "import random\n\ndef dado(faces):\n    return random.randint(1, faces)\n",
+   "exemplos": [
+    "dado(6)    # de 1 a 6",
+    "dado(20)   # de 1 a 20"
+   ],
+   "testes": [
+    {
+     "nome": "Nunca dá 0",
+     "codigo": "assert all(dado(6) >= 1 for _ in range(500)), 'O dado começa no 1, não no 0'"
+    },
+    {
+     "nome": "Dá todas as faces",
+     "codigo": "assert {dado(6) for _ in range(2000)} == {1, 2, 3, 4, 5, 6}, 'dado(6) deveria sortear de 1 a 6, com as duas pontas'"
+    },
+    {
+     "nome": "Dado de 20",
+     "codigo": "assert {dado(20) for _ in range(4000)} == set(range(1, 21)), 'dado(20) deveria sortear de 1 a 20'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Rode várias vezes: às vezes sai 0? Um dado não tem face 0.",
+    "randint inclui as duas pontas. O começo é 1, e o fim é faces.",
+    "return random.randint(1, faces)"
+   ],
+   "toque": {
+    "modelo": "import random\n\ndef dado(faces):\n    return random.randint(___, faces)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "1",
+       "0",
+       "faces"
+      ],
+      "certa": 0,
+      "dica": "A primeira face do dado é a 1."
+     }
+    ]
+   }
   }
  ]
 }

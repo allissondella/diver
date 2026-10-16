@@ -535,6 +535,159 @@
      }
     ]
    }
+  },
+  {
+   "id": "cb-texto-numero",
+   "aulas": [
+    "py-mensagens-erro"
+   ],
+   "grupo": "Mensagens de erro",
+   "defeitos": 1,
+   "titulo": "Idade que não soma",
+   "enunciado": "O programa deveria mostrar a idade do ano que vem. Rode, leia a última linha do Traceback e conserte.",
+   "codigoInicial": "idade = input(\"Idade: \")\nprint(\"Ano que vem:\", idade + 1)\n",
+   "solucao": "idade = int(input(\"Idade: \"))\nprint(\"Ano que vem:\", idade + 1)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com 15",
+     "entradas": [
+      "15"
+     ],
+     "esperada": "Idade: 15\nAno que vem: 16\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 40",
+     "entradas": [
+      "40"
+     ],
+     "esperada": "Idade: 40\nAno que vem: 41\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "A última linha fala em TypeError: can only concatenate str (not \"int\") to str. Qual variável é texto?",
+    "input() sempre devolve texto. Converta antes da conta.",
+    "idade = int(input(\"Idade: \"))"
+   ],
+   "toque": {
+    "modelo": "idade = ___(input(\"Idade: \"))\nprint(\"Ano que vem:\", idade + 1)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "int",
+       "str",
+       "print"
+      ],
+      "certa": 0,
+      "dica": "Para somar, o texto vira número inteiro."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-sintaxe",
+   "aulas": [
+    "py-mensagens-erro"
+   ],
+   "grupo": "Mensagens de erro",
+   "defeitos": 2,
+   "titulo": "Nada roda",
+   "enunciado": "Nenhuma linha deste programa roda: é erro de sintaxe. Há dois defeitos. Leia o recado, conserte um, rode de novo e conserte o outro. Com nota 7, deve mostrar `Aprovado`.",
+   "codigoInicial": "nota = 7\nif nota >= 6\n    print(\"Aprovado\"\nelse:\n    print(\"Recuperação\")\n",
+   "solucao": "nota = 7\nif nota >= 6:\n    print(\"Aprovado\")\nelse:\n    print(\"Recuperação\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra Aprovado",
+     "esperada": "Aprovado\n"
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "O primeiro recado diz expected ':'. Em que linha falta?",
+    "Depois dos dois-pontos, rode de novo: o recado agora fala de um parêntese que nunca fechou.",
+    "if nota >= 6:  e  print(\"Aprovado\")"
+   ],
+   "toque": {
+    "modelo": "nota = 7\nif nota >= 6___\n    print(\"Aprovado\"___\nelse:\n    print(\"Recuperação\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       ":",
+       ";",
+       "."
+      ],
+      "certa": 0,
+      "dica": "if termina com dois-pontos."
+     },
+     {
+      "opcoes": [
+       ")",
+       "]",
+       "\""
+      ],
+      "certa": 0,
+      "dica": "Feche o parêntese do print."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-nome-errado",
+   "aulas": [
+    "py-mensagens-erro"
+   ],
+   "grupo": "Mensagens de erro",
+   "defeitos": 2,
+   "titulo": "Nomes trocados",
+   "enunciado": "O programa deveria mostrar `Total: 30`. Ele para com NameError. Leia o Did you mean e conserte os dois nomes.",
+   "codigoInicial": "preco = 10\nquantidade = 3\ntotal = preco * quantidad\nprint(\"Total:\", totl)\n",
+   "solucao": "preco = 10\nquantidade = 3\ntotal = preco * quantidade\nprint(\"Total:\", total)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra o total",
+     "esperada": "Total: 30\n"
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "A última linha diz qual nome não existe e sugere o certo.",
+    "Corrigido o primeiro, rode de novo: aparece outro NameError, na linha do print.",
+    "quantidade na linha 3 e total na linha 4."
+   ],
+   "toque": {
+    "modelo": "preco = 10\nquantidade = 3\ntotal = preco * ___\nprint(\"Total:\", ___)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "quantidade",
+       "quantidad",
+       "qtd"
+      ],
+      "certa": 0,
+      "dica": "Use o nome exatamente como foi criado."
+     },
+     {
+      "opcoes": [
+       "total",
+       "totl",
+       "preco"
+      ],
+      "certa": 0,
+      "dica": "A variável criada na linha 3."
+     }
+    ]
+   }
   }
  ]
 }
