@@ -407,3 +407,46 @@
 .sc-registro__lista li { display: flex; align-items: flex-start; gap: var(--esp-2); }
 .sc-registro__lista .icone { flex: none; width: 16px; height: 16px; margin-top: 2px; color: var(--turquesa-claro); }
 .sc-registro--recusa .icone { color: var(--coral); }
+
+/* Jornada do Pacote (Módulos 9 e 10, 2026-10-16): o caminho, a configuração e o Painel de Pacotes */
+.jp { display: grid; gap: var(--esp-3); min-width: 0; }
+.jp-bloco { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); padding: var(--esp-4); background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); min-width: 0; }
+.jp-bloco__titulo { margin: 0; font-size: var(--t-md); line-height: var(--lh-normal); }
+.jp-mapa { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--esp-2); margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.jp-no { position: relative; display: grid; justify-items: center; gap: var(--esp-1); text-align: center; min-width: 0; }
+.jp-no + .jp-no::before {
+  content: ""; position: absolute; top: 22px; right: calc(50% + 22px); width: calc(100% - 44px + var(--esp-2)); height: 2px; background: var(--borda);
+}
+.jp-no__icone { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--fundo-fundo); border: 2px solid var(--borda); color: var(--texto-suave); }
+.jp-no__icone .icone { width: 20px; height: 20px; }
+.jp-no__nome { font-size: var(--t-xs); color: var(--texto-suave); overflow-wrap: anywhere; }
+.jp-no--passou .jp-no__icone { border-color: var(--turquesa); color: var(--turquesa-claro); background: var(--superficie-turquesa); }
+.jp-no--passou .jp-no__nome { color: var(--texto); }
+.jp-no--falhou .jp-no__icone { border-color: var(--coral); color: var(--coral); }
+.jp-no--falhou .jp-no__nome { color: var(--coral); font-weight: 700; }
+.jp-fixos { display: grid; gap: var(--esp-1); margin: 0; padding: 0; list-style: none; font-size: var(--t-sm); }
+.jp-fixos li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--esp-2); padding: var(--esp-1) 0; border-bottom: 1px solid var(--borda); }
+.jp-fixo__rotulo { color: var(--texto-suave); }
+.jp-campo { display: grid; gap: var(--esp-1); }
+.jp-campo__rotulo { font-weight: 700; font-size: var(--t-sm); }
+.jp-campo__entrada { min-height: 44px; font-family: var(--fonte-mono); max-width: 22em; }
+.jp-campo__ajuda { font-size: var(--t-xs); color: var(--texto-suave); }
+.jp-passos { display: grid; gap: var(--esp-2); margin: 0; padding: 0; list-style: none; }
+.jp-passo {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; gap: var(--esp-2);
+  padding: var(--esp-2) var(--esp-3); background: var(--fundo-fundo); border: 1px solid var(--borda); border-radius: var(--raio-sm);
+  animation: jp-surgir var(--dur-normal) var(--ease-saida) both; animation-delay: var(--atraso, 0ms);
+}
+.jp-passo > .icone { width: 18px; height: 18px; color: var(--turquesa-claro); margin-top: 2px; }
+.jp-passo--falha { border-color: var(--coral); }
+.jp-passo--falha > .icone { color: var(--coral); }
+.jp-passo__n { font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--texto-suave); margin-top: 3px; }
+.jp-passo__corpo { display: grid; gap: var(--esp-1); justify-items: start; min-width: 0; }
+.jp-passo__texto { font-size: var(--t-sm); line-height: var(--lh-normal); overflow-wrap: anywhere; }
+@keyframes jp-surgir { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .jp-passo { animation: none; } }
+@media (max-width: 479px) {
+  .jp-bloco { padding: var(--esp-3); }
+  .jp-no__icone { width: 36px; height: 36px; }
+  .jp-no + .jp-no::before { top: 18px; right: calc(50% + 18px); width: calc(100% - 36px + var(--esp-2)); }
+}

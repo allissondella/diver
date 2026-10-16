@@ -89,7 +89,7 @@ const LabJS = (() => {
         Laboratorios.cartao({ id: 'lab-ajuda', icone: 'i-bolha', titulo: 'Travou?',
           conteudo: [h('p', { class: 'lab-apoio__texto', text: 'Três dicas, cada uma mais perto da resposta. A última vale só 1 estrela.' }), dicasMissao.el] }));
 
-      const conferirBotao = h('button', { type: 'button', class: 'botao botao--primario', id: 'lab-conferir', onclick: () => conferir(m) }, icone('i-check'), m.textoConferir || 'Conferir');
+      const conferirBotao = h('button', { type: 'button', class: 'botao botao--primario', id: 'lab-conferir', onclick: () => conferir(m) }, icone(motor.iconeConferir || 'i-check'), m.textoConferir || motor.textoConferir || 'Conferir');
       const recomecar = h('button', { type: 'button', class: 'botao botao--fantasma', id: 'lab-recomecar', onclick: () => { bancada.recomecar(); atualizarAlvo(); telas.resultado.replaceChildren(); } }, icone('i-revisao'), 'Recomeçar');
 
       limpar(ctx.container).append(h('div', { class: `lab lab-js lab-js--${labId}` },

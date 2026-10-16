@@ -1,0 +1,1273 @@
+{
+  "id": "jornada-do-pacote",
+  "nome": "Jornada do Pacote",
+  "versao": 1,
+  "tipo": "rede",
+  "descricao": "Uma rede simulada do seu aparelho até o servidor: configure, mande o pacote e acompanhe cada salto no Painel de Pacotes.",
+  "tituloReferencia": "O que conferir na rede",
+  "rotuloBancada": "Rede simulada",
+  "referencia": [
+    {
+      "nome": "IP",
+      "faz": "quatro números de 0 a 255, único na rede"
+    },
+    {
+      "nome": "Máscara",
+      "faz": "255.255.255.0 (/24): os três primeiros números são a rede"
+    },
+    {
+      "nome": "Gateway",
+      "faz": "o roteador, na mesma rede: a saída para fora"
+    },
+    {
+      "nome": "DNS",
+      "faz": "quem transforma o nome em IP"
+    },
+    {
+      "nome": "Camadas",
+      "faz": "aplicação, transporte, internet, acesso à rede"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "O seu computador mostra a mesma configuração.",
+    "passos": [
+      "No Windows, abra o terminal e digite `ipconfig`; no macOS ou no Linux, `ip addr` ou `ifconfig`. Ache o IP, a máscara e o gateway.",
+      "Compare o seu IP com o do celular no mesmo Wi-Fi: os três primeiros números batem?",
+      "Digite `nslookup escola.edu.br` (ou outro site) e veja o DNS respondendo."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "jp-quem-responde",
+      "aulas": [
+        "rede-cliente-servidor"
+      ],
+      "grupo": "Cliente e servidor",
+      "titulo": "Para quem vai o pedido?",
+      "enunciado": "A Bia quer o boletim, que está no **servidor da escola**. Escolha para qual endereço o notebook manda o pedido.",
+      "objetivo": "O boletim chegar ao notebook da Bia.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "porta": "80",
+          "protocolo": "HTTP",
+          "mensagem": "GET /boletim",
+          "ip": ""
+        }
+      },
+      "mostrar": [
+        {
+          "rotulo": "Roteador",
+          "valor": "192.168.0.1"
+        },
+        {
+          "rotulo": "Impressora",
+          "valor": "192.168.0.50"
+        },
+        {
+          "rotulo": "Servidor da escola",
+          "valor": "198.51.100.7"
+        }
+      ],
+      "campos": [
+        {
+          "id": "destino",
+          "rotulo": "Destino do pedido",
+          "caminho": "pedido.ip",
+          "tipo": "escolha",
+          "opcoes": [
+            "192.168.0.1",
+            "192.168.0.50",
+            "198.51.100.7"
+          ]
+        }
+      ],
+      "solucao": {
+        "destino": "198.51.100.7"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "Quem guarda o boletim? É para esse que o pedido vai.",
+        "O roteador só encaminha; a impressora só imprime.",
+        "Escolha 198.51.100.7, o servidor da escola."
+      ]
+    },
+    {
+      "id": "jp-pedido-resposta",
+      "aulas": [
+        "rede-cliente-servidor"
+      ],
+      "grupo": "Cliente e servidor",
+      "titulo": "Quem pede, quem responde",
+      "enunciado": "Antes de mandar, diga quem faz cada papel nesta conversa.",
+      "objetivo": "Acertar os papéis e ver o boletim chegar.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "tituloCampos": "Os papéis",
+      "campos": [
+        {
+          "id": "cliente",
+          "rotulo": "Quem manda o pedido (cliente)?",
+          "tipo": "escolha",
+          "opcoes": [
+            "Servidor da escola",
+            "Notebook da Bia",
+            "Roteador"
+          ],
+          "certo": "Notebook da Bia",
+          "erro": "Quem pede é o cliente: o aparelho de quem quer o boletim."
+        },
+        {
+          "id": "servidor",
+          "rotulo": "Quem manda a resposta (servidor)?",
+          "tipo": "escolha",
+          "opcoes": [
+            "Roteador",
+            "Notebook da Bia",
+            "Servidor da escola"
+          ],
+          "certo": "Servidor da escola",
+          "erro": "Quem responde é o servidor: quem guarda o boletim."
+        }
+      ],
+      "solucao": {
+        "cliente": "Notebook da Bia",
+        "servidor": "Servidor da escola"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "Um pede, o outro responde.",
+        "O notebook quer o boletim; o servidor da escola tem o boletim.",
+        "Cliente: Notebook da Bia. Servidor: Servidor da escola."
+      ]
+    },
+    {
+      "id": "jp-ip-quebrado",
+      "aulas": [
+        "rede-ip-mascara"
+      ],
+      "grupo": "Endereços",
+      "titulo": "Um IP que não existe",
+      "enunciado": "Alguém digitou o IP do notebook errado. Corrija com um endereço **da rede da casa** que **ninguém esteja usando**.",
+      "objetivo": "O notebook ter um IP válido, livre e da rede 192.168.0.0/24.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.300",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "mostrar": [
+        {
+          "rotulo": "Rede da casa",
+          "valor": "192.168.0.0/24"
+        },
+        {
+          "rotulo": "Roteador",
+          "valor": "192.168.0.1"
+        },
+        {
+          "rotulo": "Impressora",
+          "valor": "192.168.0.50"
+        },
+        {
+          "rotulo": "Celular do Rui",
+          "valor": "192.168.0.21"
+        }
+      ],
+      "campos": [
+        {
+          "id": "ip",
+          "rotulo": "IP do notebook",
+          "caminho": "aparelho.ip",
+          "tipo": "texto",
+          "ajuda": "Quatro números de 0 a 255."
+        }
+      ],
+      "solucao": {
+        "ip": "192.168.0.20"
+      },
+      "metas": {
+        "envios": 2
+      },
+      "dicas": [
+        "Nenhum número de um IP passa de 255.",
+        "Mantenha 192.168.0 e troque só o último número, sem repetir o de ninguém (nem .0 nem .255).",
+        "Por exemplo: 192.168.0.20."
+      ]
+    },
+    {
+      "id": "jp-portaria",
+      "aulas": [
+        "rede-ip-mascara"
+      ],
+      "grupo": "Endereços",
+      "titulo": "A portaria errada",
+      "enunciado": "O notebook imprime, mas não chega à internet. Olhe o **gateway** e escolha a portaria certa.",
+      "objetivo": "O pacote sair da rede da casa e chegar à escola.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.1.1",
+          "dns": "1.1.1.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "mostrar": [
+        {
+          "rotulo": "Rede da casa",
+          "valor": "192.168.0.0/24"
+        },
+        {
+          "rotulo": "Roteador",
+          "valor": "192.168.0.1"
+        },
+        {
+          "rotulo": "Impressora",
+          "valor": "192.168.0.50"
+        },
+        {
+          "rotulo": "Celular do Rui",
+          "valor": "192.168.0.21"
+        }
+      ],
+      "campos": [
+        {
+          "id": "gateway",
+          "rotulo": "Gateway",
+          "caminho": "aparelho.gateway",
+          "tipo": "escolha",
+          "opcoes": [
+            "192.168.1.1",
+            "192.168.0.50",
+            "192.168.0.1",
+            "8.8.8.8"
+          ]
+        }
+      ],
+      "solucao": {
+        "gateway": "192.168.0.1"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "O gateway é o endereço do roteador, e ele tem de estar na mesma rede do notebook.",
+        "192.168.1.1 está em outra rede; 192.168.0.50 é a impressora.",
+        "Escolha 192.168.0.1."
+      ]
+    },
+    {
+      "id": "jp-mascara",
+      "aulas": [
+        "rede-ip-mascara"
+      ],
+      "grupo": "Endereços",
+      "titulo": "A máscara larga demais",
+      "enunciado": "O servidor de arquivos da empresa (192.168.5.10) fica **em outra rede**, atrás do roteador. Com a máscara atual, o notebook acha que ele é vizinho e manda direto. Conserte a máscara.",
+      "objetivo": "O pacote ir pelo roteador até o servidor de arquivos.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.0.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor de arquivos",
+            "rotulo": "Arquivos",
+            "ip": "192.168.5.10",
+            "portas": {
+              "445": "Arquivos"
+            },
+            "interno": true,
+            "resposta": "aqui está o relatorio.pdf."
+          }
+        ],
+        "pedido": {
+          "porta": "445",
+          "protocolo": "Arquivos",
+          "mensagem": "abrir relatorio.pdf",
+          "ip": "192.168.5.10"
+        }
+      },
+      "mostrar": [
+        {
+          "rotulo": "Rede da casa",
+          "valor": "192.168.0.0/24"
+        },
+        {
+          "rotulo": "Roteador",
+          "valor": "192.168.0.1"
+        },
+        {
+          "rotulo": "Impressora",
+          "valor": "192.168.0.50"
+        },
+        {
+          "rotulo": "Celular do Rui",
+          "valor": "192.168.0.21"
+        }
+      ],
+      "campos": [
+        {
+          "id": "mascara",
+          "rotulo": "Máscara",
+          "caminho": "aparelho.mascara",
+          "tipo": "escolha",
+          "opcoes": [
+            "255.255.0.0",
+            "255.0.0.0",
+            "255.255.255.0"
+          ]
+        }
+      ],
+      "solucao": {
+        "mascara": "255.255.255.0"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "A rede da casa é 192.168.0.0/24: só o último número muda entre vizinhos.",
+        "Com 255.255.0.0, 192.168.5.10 parece da mesma rua.",
+        "Use 255.255.255.0, que é o /24."
+      ]
+    },
+    {
+      "id": "jp-dns-sumido",
+      "aulas": [
+        "rede-dns"
+      ],
+      "grupo": "DNS",
+      "titulo": "Ninguém responde o nome",
+      "enunciado": "Pelo IP, tudo abre; pelo nome, nada. O **DNS** configurado não existe. Escolha um que responda.",
+      "objetivo": "O nome escola.edu.br virar IP e o boletim chegar.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.99"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "mostrar": [
+        {
+          "rotulo": "Rede da casa",
+          "valor": "192.168.0.0/24"
+        },
+        {
+          "rotulo": "Roteador",
+          "valor": "192.168.0.1"
+        },
+        {
+          "rotulo": "Impressora",
+          "valor": "192.168.0.50"
+        },
+        {
+          "rotulo": "Celular do Rui",
+          "valor": "192.168.0.21"
+        }
+      ],
+      "campos": [
+        {
+          "id": "dns",
+          "rotulo": "Servidor DNS",
+          "caminho": "aparelho.dns",
+          "tipo": "escolha",
+          "opcoes": [
+            "192.168.0.99",
+            "192.168.0.50",
+            "192.168.0.1"
+          ]
+        }
+      ],
+      "solucao": {
+        "dns": "192.168.0.1"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "O DNS precisa ser um aparelho que responda perguntas de nomes.",
+        "A impressora não responde DNS; o roteador de casa, sim.",
+        "Escolha 192.168.0.1."
+      ]
+    },
+    {
+      "id": "jp-nome-falso",
+      "aulas": [
+        "rede-dns"
+      ],
+      "grupo": "DNS",
+      "titulo": "O link da mensagem",
+      "enunciado": "A Bia recebeu um link \"para ver o boletim\". Escolha o endereço que leva **mesmo** à escola. O cadeado do HTTPS vai conferir.",
+      "objetivo": "Chegar ao servidor verdadeiro da escola, com o certificado certo.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br.matricula.net",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "campos": [
+        {
+          "id": "nome",
+          "rotulo": "Endereço digitado",
+          "caminho": "pedido.nome",
+          "tipo": "escolha",
+          "opcoes": [
+            "escola.edu.br.matricula.net",
+            "escola-edu-br.com",
+            "escola.edu.br"
+          ]
+        }
+      ],
+      "solucao": {
+        "nome": "escola.edu.br"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "Leia o endereço da direita para a esquerda: quem manda é o fim.",
+        "escola.edu.br.matricula.net pertence a matricula.net.",
+        "Escolha escola.edu.br."
+      ]
+    },
+    {
+      "id": "jp-camadas",
+      "aulas": [
+        "rede-pacotes-camadas"
+      ],
+      "grupo": "Pacotes e camadas",
+      "titulo": "Envelope dentro de envelope",
+      "enunciado": "Antes de sair, o pedido é embrulhado camada por camada. Diga qual protocolo trabalha em cada camada.",
+      "objetivo": "Montar as quatro camadas e ver o encapsulamento no painel.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "mostrarCamadas": true,
+      "tituloCampos": "As camadas",
+      "campos": [
+        {
+          "id": "aplicacao",
+          "rotulo": "Aplicação",
+          "tipo": "escolha",
+          "opcoes": [
+            "IP",
+            "HTTP",
+            "Wi-Fi",
+            "TCP"
+          ],
+          "certo": "HTTP",
+          "erro": "Na aplicação fica o que o programa quer dizer: o pedido da página."
+        },
+        {
+          "id": "transporte",
+          "rotulo": "Transporte",
+          "tipo": "escolha",
+          "opcoes": [
+            "HTTP",
+            "Wi-Fi",
+            "TCP",
+            "IP"
+          ],
+          "certo": "TCP",
+          "erro": "O transporte entrega de programa para programa: TCP ou UDP."
+        },
+        {
+          "id": "internet",
+          "rotulo": "Internet",
+          "tipo": "escolha",
+          "opcoes": [
+            "TCP",
+            "IP",
+            "HTTP",
+            "Wi-Fi"
+          ],
+          "certo": "IP",
+          "erro": "A camada de internet cuida do endereço e da rota."
+        },
+        {
+          "id": "acesso",
+          "rotulo": "Acesso à rede",
+          "tipo": "escolha",
+          "opcoes": [
+            "Wi-Fi",
+            "IP",
+            "TCP",
+            "HTTP"
+          ],
+          "certo": "Wi-Fi",
+          "erro": "Embaixo fica quem leva os bits pelo ar ou pelo fio."
+        }
+      ],
+      "solucao": {
+        "aplicacao": "HTTP",
+        "transporte": "TCP",
+        "internet": "IP",
+        "acesso": "Wi-Fi"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "De cima para baixo: o recado, o programa, o computador, o fio.",
+        "HTTP é o recado; IP é o endereço.",
+        "Aplicação HTTP, transporte TCP, internet IP, acesso Wi-Fi."
+      ]
+    },
+    {
+      "id": "jp-quantos-pacotes",
+      "aulas": [
+        "rede-pacotes-camadas"
+      ],
+      "grupo": "Pacotes e camadas",
+      "titulo": "Picar a mensagem",
+      "enunciado": "O boletim tem **4.200 bytes**, e cada pacote leva até **1.500 bytes** de conteúdo. Quantos pacotes saem do servidor?",
+      "objetivo": "Calcular os pacotes e ver o boletim chegar.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.20",
+          "mascara": "255.255.255.0",
+          "gateway": "192.168.0.1",
+          "dns": "192.168.0.1"
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "tituloCampos": "A conta",
+      "campos": [
+        {
+          "id": "pacotes",
+          "rotulo": "Quantidade de pacotes",
+          "tipo": "texto",
+          "numerico": true,
+          "certo": "3",
+          "erro": "4200 ÷ 1500 = 2,8, e não existe pedaço de pacote: arredonde para cima."
+        }
+      ],
+      "solucao": {
+        "pacotes": "3"
+      },
+      "metas": {
+        "envios": 1
+      },
+      "dicas": [
+        "Divida o tamanho da mensagem pelo tamanho de cada pacote.",
+        "4200 ÷ 1500 = 2,8.",
+        "O que sobra vai num pacote a mais: 3."
+      ]
+    },
+    {
+      "id": "jp-tudo-errado",
+      "aulas": [
+        "rede-revisao-internet"
+      ],
+      "grupo": "Revisão",
+      "titulo": "Configuração bagunçada",
+      "enunciado": "O notebook foi configurado à mão, e três coisas estão erradas. Conserte o **IP**, o **gateway** e o **DNS** e mande o pacote.",
+      "objetivo": "O boletim chegar, com IP livre, gateway e DNS certos.",
+      "cenario": {
+        "aparelho": {
+          "nome": "Notebook da Bia",
+          "ip": "192.168.0.50",
+          "mascara": "255.255.255.0",
+          "gateway": "",
+          "dns": ""
+        },
+        "redeLocal": "192.168.0.0/24",
+        "vizinhos": [
+          {
+            "nome": "Impressora",
+            "ip": "192.168.0.50"
+          },
+          {
+            "nome": "Celular do Rui",
+            "ip": "192.168.0.21"
+          }
+        ],
+        "roteador": {
+          "interno": "192.168.0.1",
+          "publico": "203.0.113.8"
+        },
+        "provedor": "Maré Net",
+        "resolvedores": {
+          "192.168.0.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          },
+          "1.1.1.1": {
+            "escola.edu.br": "198.51.100.7",
+            "escola.edu.br.matricula.net": "203.0.113.66",
+            "loja.com.br": "198.51.100.20"
+          }
+        },
+        "servidores": [
+          {
+            "nome": "Servidor da escola",
+            "rotulo": "Escola",
+            "ip": "198.51.100.7",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "escola.edu.br",
+              "confiavel": true
+            },
+            "resposta": "200 OK: aqui está o boletim da Bia."
+          },
+          {
+            "nome": "Servidor de matricula.net",
+            "rotulo": "Escola",
+            "ip": "203.0.113.66",
+            "portas": {
+              "80": "HTTP",
+              "443": "HTTPS"
+            },
+            "certificado": {
+              "nome": "matricula.net",
+              "confiavel": true
+            },
+            "falso": true
+          }
+        ],
+        "pedido": {
+          "nome": "escola.edu.br",
+          "porta": "443",
+          "protocolo": "HTTPS",
+          "mensagem": "GET /boletim"
+        }
+      },
+      "mostrar": [
+        {
+          "rotulo": "Rede da casa",
+          "valor": "192.168.0.0/24"
+        },
+        {
+          "rotulo": "Roteador",
+          "valor": "192.168.0.1"
+        },
+        {
+          "rotulo": "Impressora",
+          "valor": "192.168.0.50"
+        },
+        {
+          "rotulo": "Celular do Rui",
+          "valor": "192.168.0.21"
+        }
+      ],
+      "campos": [
+        {
+          "id": "ip",
+          "rotulo": "IP do notebook",
+          "caminho": "aparelho.ip",
+          "tipo": "texto"
+        },
+        {
+          "id": "gateway",
+          "rotulo": "Gateway",
+          "caminho": "aparelho.gateway",
+          "tipo": "escolha",
+          "opcoes": [
+            "192.168.0.50",
+            "192.168.0.1",
+            "192.168.1.1"
+          ]
+        },
+        {
+          "id": "dns",
+          "rotulo": "Servidor DNS",
+          "caminho": "aparelho.dns",
+          "tipo": "escolha",
+          "opcoes": [
+            "192.168.0.1",
+            "192.168.0.99",
+            "192.168.0.21"
+          ]
+        }
+      ],
+      "solucao": {
+        "ip": "192.168.0.30",
+        "gateway": "192.168.0.1",
+        "dns": "192.168.0.1"
+      },
+      "metas": {
+        "envios": 2
+      },
+      "dicas": [
+        "O IP atual é o da impressora: conflito. E sem gateway e sem DNS, nada sai.",
+        "Escolha um IP livre em 192.168.0; o gateway e o DNS podem ser o roteador.",
+        "IP 192.168.0.30, gateway 192.168.0.1 e DNS 192.168.0.1."
+      ]
+    }
+  ]
+}
