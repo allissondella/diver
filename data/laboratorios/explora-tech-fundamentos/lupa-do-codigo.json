@@ -581,6 +581,983 @@
         }
       ],
       "saidaFinal": "recuperação\n"
+    },
+    {
+      "id": "lc-while-1",
+      "grupo": "Laços",
+      "aulas": [
+        "log-while"
+      ],
+      "titulo": "O cofrinho",
+      "enunciado": "Um while junta 5 reais por dia até passar de 12. Siga as voltas e preveja o valor do cofrinho e a linha seguinte.",
+      "codigo": "cofre = 0\ndias = 0\nwhile cofre < 12:\n    cofre = cofre + 5\n    dias = dias + 1\nprint(dias, \"dias:\", cofre)\n",
+      "perguntas": [
+        {
+          "linha": 4,
+          "variavel": "cofre",
+          "opcoes": [
+            "5",
+            "0",
+            "10"
+          ],
+          "porque": "Na primeira volta, 0 + 5 = 5."
+        },
+        {
+          "linha": 4,
+          "vez": 3,
+          "variavel": "cofre",
+          "opcoes": [
+            "15",
+            "10",
+            "12"
+          ],
+          "porque": "Na terceira volta, 10 + 5 = 15: o laço pode passar da meta."
+        },
+        {
+          "linha": 3,
+          "vez": 4,
+          "tipo": "linha",
+          "opcoes": [
+            "6",
+            "4",
+            "5"
+          ],
+          "porque": "Com cofre = 15, o teste 15 < 12 dá falso: o Python pula para a linha depois do laço."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "5"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "5"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "5"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "15"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "15"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 6,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "15"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "cofre": {
+              "tipo": "int",
+              "valor": "15"
+            },
+            "dias": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 11
+        }
+      ],
+      "saidaFinal": "3 dias: 15\n"
+    },
+    {
+      "id": "lc-for-1",
+      "grupo": "Laços",
+      "aulas": [
+        "log-for-range"
+      ],
+      "titulo": "Soma de 1 a 4",
+      "enunciado": "O for percorre range(1, 5) somando cada número. Preveja o valor de n e do total nas voltas.",
+      "codigo": "total = 0\nfor n in range(1, 5):\n    total = total + n\nprint(total)\n",
+      "perguntas": [
+        {
+          "linha": 2,
+          "variavel": "n",
+          "opcoes": [
+            "1",
+            "0",
+            "5"
+          ],
+          "porque": "range(1, 5) começa no 1."
+        },
+        {
+          "linha": 3,
+          "vez": 2,
+          "variavel": "total",
+          "opcoes": [
+            "3",
+            "2",
+            "4"
+          ],
+          "porque": "Na segunda volta, n vale 2: 1 + 2 = 3."
+        },
+        {
+          "linha": 3,
+          "vez": 4,
+          "variavel": "total",
+          "opcoes": [
+            "10",
+            "15",
+            "6"
+          ],
+          "porque": "A última volta soma o 4: 6 + 4 = 10. O 5 fica de fora."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "1"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "2"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "6"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "3"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "6"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "4"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "4"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "4"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "total": {
+              "tipo": "int",
+              "valor": "10"
+            },
+            "n": {
+              "tipo": "int",
+              "valor": "4"
+            }
+          },
+          "saida": 3
+        }
+      ],
+      "saidaFinal": "10\n"
+    },
+    {
+      "id": "lc-for-2",
+      "grupo": "Laços",
+      "aulas": [
+        "log-for-range"
+      ],
+      "titulo": "Contando os a",
+      "enunciado": "O for anda pelas letras de uma palavra e conta os \"a\". Siga as voltas.",
+      "codigo": "qtd = 0\nfor letra in \"banana\":\n    if letra == \"a\":\n        qtd = qtd + 1\nprint(qtd)\n",
+      "perguntas": [
+        {
+          "linha": 2,
+          "variavel": "letra",
+          "opcoes": [
+            "'b'",
+            "'a'",
+            "'banana'"
+          ],
+          "porque": "Na primeira volta, letra recebe a primeira letra: b."
+        },
+        {
+          "linha": 3,
+          "tipo": "linha",
+          "opcoes": [
+            "2",
+            "4",
+            "5"
+          ],
+          "porque": "\"b\" == \"a\" é falso: o bloco do if é pulado e o for vai para a próxima letra (linha 2)."
+        },
+        {
+          "linha": 4,
+          "vez": 3,
+          "variavel": "qtd",
+          "opcoes": [
+            "3",
+            "2",
+            "6"
+          ],
+          "porque": "banana tem três letras a: na terceira vez que a linha 4 roda, qtd chega a 3."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'b'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'b'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "0"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'n'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'n'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "1"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'n'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'n'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 4,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "2"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "qtd": {
+              "tipo": "int",
+              "valor": "3"
+            },
+            "letra": {
+              "tipo": "str",
+              "valor": "'a'"
+            }
+          },
+          "saida": 2
+        }
+      ],
+      "saidaFinal": "3\n"
+    },
+    {
+      "id": "lc-funcao-1",
+      "grupo": "Funções",
+      "aulas": [
+        "log-funcoes"
+      ],
+      "titulo": "Quem chamou quem",
+      "enunciado": "Uma função recebe um parâmetro e devolve um valor. Siga a chamada: veja para onde o programa pula e o que volta.",
+      "codigo": "def dobro(n):\n    resultado = n * 2\n    return resultado\n\nx = dobro(7)\nprint(x + 1)\n",
+      "perguntas": [
+        {
+          "linha": 5,
+          "tipo": "linha",
+          "opcoes": [
+            "2",
+            "6",
+            "1"
+          ],
+          "porque": "A chamada dobro(7) pula para dentro da função, na linha 2."
+        },
+        {
+          "linha": 2,
+          "variavel": "resultado",
+          "opcoes": [
+            "14",
+            "7",
+            "15"
+          ],
+          "porque": "n vale 7 nesta chamada: 7 * 2 = 14."
+        },
+        {
+          "linha": 6,
+          "variavel": "x",
+          "opcoes": [
+            "14",
+            "7",
+            "None"
+          ],
+          "porque": "O return devolveu 14, e a chamada dobro(7) passou a valer 14: é o que x guarda."
+        }
+      ],
+      "passos": [
+        {
+          "linha": 1,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 5,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {},
+          "saida": 0
+        },
+        {
+          "linha": 2,
+          "pilha": [
+            "programa",
+            "dobro"
+          ],
+          "variaveis": {
+            "n": {
+              "tipo": "int",
+              "valor": "7"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 3,
+          "pilha": [
+            "programa",
+            "dobro"
+          ],
+          "variaveis": {
+            "n": {
+              "tipo": "int",
+              "valor": "7"
+            },
+            "resultado": {
+              "tipo": "int",
+              "valor": "14"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": 6,
+          "pilha": [
+            "programa"
+          ],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "14"
+            }
+          },
+          "saida": 0
+        },
+        {
+          "linha": null,
+          "pilha": [],
+          "variaveis": {
+            "x": {
+              "tipo": "int",
+              "valor": "14"
+            }
+          },
+          "saida": 3
+        }
+      ],
+      "saidaFinal": "15\n"
     }
   ]
 }

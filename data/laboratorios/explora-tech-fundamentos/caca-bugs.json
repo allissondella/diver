@@ -1,376 +1,540 @@
 {
-  "id": "caca-bugs",
-  "nome": "Caça-Bugs",
-  "versao": 1,
-  "tipo": "python",
-  "descricao": "Programas que quase funcionam: cada um tem defeitos escondidos. Rode, leia o erro, conserte e deixe todos os testes verdes.",
-  "tituloReferencia": "Comandos que você já conhece",
-  "referencia": [
-    {
-      "nome": "== != > < >= <=",
-      "faz": "comparações: dão True ou False"
-    },
-    {
-      "nome": "and  or  not",
-      "faz": "juntam ou invertem condições"
-    },
-    {
-      "nome": "if condição:",
-      "faz": "roda o bloco recuado só se for True"
-    },
-    {
-      "nome": "elif / else:",
-      "faz": "outro teste / o caso que sobrou"
-    },
-    {
-      "nome": "(4 espaços)",
-      "faz": "o recuo diz o que está dentro do bloco"
-    },
-    {
-      "nome": "int(input(\"…\"))",
-      "faz": "lê o que a pessoa digita e vira número"
-    }
-  ],
-  "fazDeVerdade": {
-    "titulo": "Agora faça de verdade",
-    "texto": "Achar e consertar defeitos é metade do trabalho de quem programa. Treine com o Python do seu computador.",
-    "passos": [
-      "Abra o Thonny, cole o programa de uma missão com o defeito e aperte Run (F5).",
-      "Leia a última linha do erro: ela diz o tipo (SyntaxError, NameError…) e a linha.",
-      "Conserte, rode de novo e teste com valores diferentes, inclusive os da beirada (como exatamente 18)."
-    ]
+ "id": "caca-bugs",
+ "nome": "Caça-Bugs",
+ "versao": 1,
+ "tipo": "python",
+ "descricao": "Programas que quase funcionam: cada um tem defeitos escondidos. Rode, leia o erro, conserte e deixe todos os testes verdes.",
+ "tituloReferencia": "Comandos que você já conhece",
+ "referencia": [
+  {
+   "nome": "== != > < >= <=",
+   "faz": "comparações: dão True ou False"
   },
-  "missoes": [
-    {
-      "id": "cb-carteira",
-      "aulas": [
-        "log-comparacoes"
-      ],
-      "grupo": "Comparações",
-      "defeitos": 1,
-      "titulo": "Carteira aos 18",
-      "enunciado": "Quem tem 18 anos ou mais pode tirar a carteira. Este programa erra justamente com quem tem 18. Ache o defeito.",
-      "codigoInicial": "idade = int(input(\"Idade: \"))\nif idade > 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")\n",
-      "solucao": "idade = int(input(\"Idade: \"))\nif idade >= 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Com 18 anos",
-          "entradas": [
-            "18"
-          ],
-          "esperada": "Idade: 18\nPode tirar a carteira\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com 17 anos",
-          "entradas": [
-            "17"
-          ],
-          "esperada": "Idade: 17\nAinda não pode\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com 40 anos",
-          "entradas": [
-            "40"
-          ],
-          "esperada": "Idade: 40\nPode tirar a carteira\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 5
-      },
-      "dicas": [
-        "Teste de cabeça com 18: a condição da linha 2 dá True ou False?",
-        "\"18 ou mais\" inclui o 18. Qual comparação inclui o próprio número?",
-        "Troque > por >= na linha 2."
-      ],
-      "toque": {
-        "modelo": "idade = int(input(\"Idade: \"))\nif idade ___ 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              ">=",
-              ">",
-              "=="
-            ],
-            "certa": 0,
-            "dica": "\"18 ou mais\" inclui o 18."
-          }
-        ]
-      }
-    },
-    {
-      "id": "cb-senha",
-      "aulas": [
-        "log-comparacoes"
-      ],
-      "grupo": "Comparações",
-      "defeitos": 2,
-      "titulo": "Senha que não entra",
-      "enunciado": "O programa compara a senha digitada com a guardada, mas nem chega a rodar. São dois defeitos na mesma linha.",
-      "codigoInicial": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada = senha\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")\n",
-      "solucao": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada == senha:\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Senha certa",
-          "entradas": [
-            "peixe123"
-          ],
-          "esperada": "Senha: peixe123\nBem-vindo, Diver!\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Senha errada",
-          "entradas": [
-            "peixe"
-          ],
-          "esperada": "Senha: peixe\nSenha errada\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Maiúscula conta",
-          "entradas": [
-            "PEIXE123"
-          ],
-          "esperada": "Senha: PEIXE123\nSenha errada\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 6
-      },
-      "dicas": [
-        "Rode e leia o erro: SyntaxError aponta a linha 3. O que falta e o que sobra nela?",
-        "Um = guarda valor; para comparar, são dois. E toda linha de if termina com dois-pontos.",
-        "A linha 3 fica: if digitada == senha:"
-      ],
-      "toque": {
-        "modelo": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada ___ senha___\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              "==",
-              "=",
-              "!="
-            ],
-            "certa": 0,
-            "dica": "Para comparar, são dois sinais de igual."
-          },
-          {
-            "opcoes": [
-              ":",
-              ";",
-              "."
-            ],
-            "certa": 0,
-            "dica": "A linha do if termina com dois-pontos."
-          }
-        ]
-      }
-    },
-    {
-      "id": "cb-praia",
-      "aulas": [
-        "log-comparacoes"
-      ],
-      "grupo": "Condições compostas",
-      "defeitos": 1,
-      "titulo": "Dia de praia",
-      "enunciado": "É dia de praia quando a temperatura está entre 25 e 35 graus. O programa diz \"praia\" até com 40 graus. Ache o conector errado.",
-      "codigoInicial": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 or graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")\n",
-      "solucao": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 and graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Com 30 graus",
-          "entradas": [
-            "30"
-          ],
-          "esperada": "Temperatura: 30\nDia de praia\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com 40 graus",
-          "entradas": [
-            "40"
-          ],
-          "esperada": "Temperatura: 40\nMelhor ficar na sombra\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com 20 graus",
-          "entradas": [
-            "20"
-          ],
-          "esperada": "Temperatura: 20\nMelhor ficar na sombra\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 5
-      },
-      "dicas": [
-        "Com 40 graus: 40 >= 25 é True. Com or, basta um lado verdadeiro…",
-        "\"Entre 25 e 35\" pede as duas coisas ao mesmo tempo.",
-        "Troque or por and na linha 2."
-      ],
-      "toque": {
-        "modelo": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 ___ graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              "and",
-              "or",
-              "not"
-            ],
-            "certa": 0,
-            "dica": "As duas condições precisam ser verdade ao mesmo tempo."
-          }
-        ]
-      }
-    },
-    {
-      "id": "cb-boletim",
-      "aulas": [
-        "log-revisao-decisoes"
-      ],
-      "grupo": "Revisão",
-      "defeitos": 1,
-      "titulo": "Boletim trocado",
-      "enunciado": "Nota 7 ou mais: aprovado. De 5 a 7: recuperação. Abaixo de 5: reprovado. O programa manda todo mundo com nota alta para a recuperação.",
-      "codigoInicial": "nota = float(input(\"Nota: \"))\nif nota >= 5:\n    print(\"Recuperação\")\nelif nota >= 7:\n    print(\"Aprovado\")\nelse:\n    print(\"Reprovado\")\n",
-      "solucao": "nota = float(input(\"Nota: \"))\nif nota >= 7:\n    print(\"Aprovado\")\nelif nota >= 5:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Com nota 8",
-          "entradas": [
-            "8"
-          ],
-          "esperada": "Nota: 8\nAprovado\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com nota 6",
-          "entradas": [
-            "6"
-          ],
-          "esperada": "Nota: 6\nRecuperação\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com nota 3",
-          "entradas": [
-            "3"
-          ],
-          "esperada": "Nota: 3\nReprovado\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Com nota 7",
-          "entradas": [
-            "7"
-          ],
-          "esperada": "Nota: 7\nAprovado\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 7
-      },
-      "dicas": [
-        "Com nota 8, a primeira condição (8 >= 5) já é True. O elif nem chega a ser testado.",
-        "No if/elif, vale o primeiro teste verdadeiro. A condição mais exigente vem primeiro.",
-        "Comece com if nota >= 7: print(\"Aprovado\") e depois elif nota >= 5: print(\"Recuperação\")."
-      ],
-      "toque": {
-        "modelo": "nota = float(input(\"Nota: \"))\nif nota >= ___:\n    print(\"Aprovado\")\nelif nota >= ___:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              "7",
-              "5",
-              "0"
-            ],
-            "certa": 0,
-            "dica": "Aprovado é com 7 ou mais."
-          },
-          {
-            "opcoes": [
-              "5",
-              "7",
-              "10"
-            ],
-            "certa": 0,
-            "dica": "Recuperação começa no 5."
-          }
-        ]
-      }
-    },
-    {
-      "id": "cb-aniversario",
-      "aulas": [
-        "log-revisao-decisoes"
-      ],
-      "grupo": "Revisão",
-      "defeitos": 2,
-      "titulo": "Desconto de aniversário",
-      "enunciado": "Quem faz aniversário em outubro (mês 10) ganha desconto. O programa nem roda: dois defeitos, um na comparação e outro no recuo.",
-      "codigoInicial": "mes = int(input(\"Mês do aniversário: \"))\nif mes = 10:\nprint(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")\n",
-      "solucao": "mes = int(input(\"Mês do aniversário: \"))\nif mes == 10:\n    print(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")\n",
-      "testes": [
-        {
-          "tipo": "saida",
-          "nome": "Em outubro",
-          "entradas": [
-            "10"
-          ],
-          "esperada": "Mês do aniversário: 10\nGanhou 10% de desconto!\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Em março",
-          "entradas": [
-            "3"
-          ],
-          "esperada": "Mês do aniversário: 3\nAinda não é o seu mês\n"
-        },
-        {
-          "tipo": "saida",
-          "nome": "Em novembro",
-          "entradas": [
-            "11"
-          ],
-          "esperada": "Mês do aniversário: 11\nAinda não é o seu mês\n",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 5
-      },
-      "dicas": [
-        "Rode: o primeiro erro aponta a linha 2. Depois de consertá-lo, rode de novo, porque aparece o segundo.",
-        "Comparar é ==. E o que fica dentro do if precisa de 4 espaços de recuo.",
-        "Linha 2: if mes == 10:  Linha 3: quatro espaços antes do print."
-      ],
-      "toque": {
-        "modelo": "mes = int(input(\"Mês do aniversário: \"))\nif mes ___ 10:\n    print(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")",
-        "lacunas": [
-          {
-            "opcoes": [
-              "==",
-              "=",
-              ">="
-            ],
-            "certa": 0,
-            "dica": "Comparar é com dois sinais de igual."
-          }
-        ]
-      }
-    }
+  {
+   "nome": "and  or  not",
+   "faz": "juntam ou invertem condições"
+  },
+  {
+   "nome": "if condição:",
+   "faz": "roda o bloco recuado só se for True"
+  },
+  {
+   "nome": "elif / else:",
+   "faz": "outro teste / o caso que sobrou"
+  },
+  {
+   "nome": "(4 espaços)",
+   "faz": "o recuo diz o que está dentro do bloco"
+  },
+  {
+   "nome": "int(input(\"…\"))",
+   "faz": "lê o que a pessoa digita e vira número"
+  }
+ ],
+ "fazDeVerdade": {
+  "titulo": "Agora faça de verdade",
+  "texto": "Achar e consertar defeitos é metade do trabalho de quem programa. Treine com o Python do seu computador.",
+  "passos": [
+   "Abra o Thonny, cole o programa de uma missão com o defeito e aperte Run (F5).",
+   "Leia a última linha do erro: ela diz o tipo (SyntaxError, NameError…) e a linha.",
+   "Conserte, rode de novo e teste com valores diferentes, inclusive os da beirada (como exatamente 18)."
   ]
+ },
+ "missoes": [
+  {
+   "id": "cb-carteira",
+   "aulas": [
+    "log-comparacoes"
+   ],
+   "grupo": "Comparações",
+   "defeitos": 1,
+   "titulo": "Carteira aos 18",
+   "enunciado": "Quem tem 18 anos ou mais pode tirar a carteira. Este programa erra justamente com quem tem 18. Ache o defeito.",
+   "codigoInicial": "idade = int(input(\"Idade: \"))\nif idade > 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")\n",
+   "solucao": "idade = int(input(\"Idade: \"))\nif idade >= 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com 18 anos",
+     "entradas": [
+      "18"
+     ],
+     "esperada": "Idade: 18\nPode tirar a carteira\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 17 anos",
+     "entradas": [
+      "17"
+     ],
+     "esperada": "Idade: 17\nAinda não pode\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 40 anos",
+     "entradas": [
+      "40"
+     ],
+     "esperada": "Idade: 40\nPode tirar a carteira\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "Teste de cabeça com 18: a condição da linha 2 dá True ou False?",
+    "\"18 ou mais\" inclui o 18. Qual comparação inclui o próprio número?",
+    "Troque > por >= na linha 2."
+   ],
+   "toque": {
+    "modelo": "idade = int(input(\"Idade: \"))\nif idade ___ 18:\n    print(\"Pode tirar a carteira\")\nelse:\n    print(\"Ainda não pode\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       ">=",
+       ">",
+       "=="
+      ],
+      "certa": 0,
+      "dica": "\"18 ou mais\" inclui o 18."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-senha",
+   "aulas": [
+    "log-comparacoes"
+   ],
+   "grupo": "Comparações",
+   "defeitos": 2,
+   "titulo": "Senha que não entra",
+   "enunciado": "O programa compara a senha digitada com a guardada, mas nem chega a rodar. São dois defeitos na mesma linha.",
+   "codigoInicial": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada = senha\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")\n",
+   "solucao": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada == senha:\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Senha certa",
+     "entradas": [
+      "peixe123"
+     ],
+     "esperada": "Senha: peixe123\nBem-vindo, Diver!\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Senha errada",
+     "entradas": [
+      "peixe"
+     ],
+     "esperada": "Senha: peixe\nSenha errada\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Maiúscula conta",
+     "entradas": [
+      "PEIXE123"
+     ],
+     "esperada": "Senha: PEIXE123\nSenha errada\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 6
+   },
+   "dicas": [
+    "Rode e leia o erro: SyntaxError aponta a linha 3. O que falta e o que sobra nela?",
+    "Um = guarda valor; para comparar, são dois. E toda linha de if termina com dois-pontos.",
+    "A linha 3 fica: if digitada == senha:"
+   ],
+   "toque": {
+    "modelo": "senha = \"peixe123\"\ndigitada = input(\"Senha: \")\nif digitada ___ senha___\n    print(\"Bem-vindo, Diver!\")\nelse:\n    print(\"Senha errada\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "==",
+       "=",
+       "!="
+      ],
+      "certa": 0,
+      "dica": "Para comparar, são dois sinais de igual."
+     },
+     {
+      "opcoes": [
+       ":",
+       ";",
+       "."
+      ],
+      "certa": 0,
+      "dica": "A linha do if termina com dois-pontos."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-praia",
+   "aulas": [
+    "log-comparacoes"
+   ],
+   "grupo": "Condições compostas",
+   "defeitos": 1,
+   "titulo": "Dia de praia",
+   "enunciado": "É dia de praia quando a temperatura está entre 25 e 35 graus. O programa diz \"praia\" até com 40 graus. Ache o conector errado.",
+   "codigoInicial": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 or graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")\n",
+   "solucao": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 and graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com 30 graus",
+     "entradas": [
+      "30"
+     ],
+     "esperada": "Temperatura: 30\nDia de praia\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 40 graus",
+     "entradas": [
+      "40"
+     ],
+     "esperada": "Temperatura: 40\nMelhor ficar na sombra\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com 20 graus",
+     "entradas": [
+      "20"
+     ],
+     "esperada": "Temperatura: 20\nMelhor ficar na sombra\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "Com 40 graus: 40 >= 25 é True. Com or, basta um lado verdadeiro…",
+    "\"Entre 25 e 35\" pede as duas coisas ao mesmo tempo.",
+    "Troque or por and na linha 2."
+   ],
+   "toque": {
+    "modelo": "graus = int(input(\"Temperatura: \"))\nif graus >= 25 ___ graus <= 35:\n    print(\"Dia de praia\")\nelse:\n    print(\"Melhor ficar na sombra\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "and",
+       "or",
+       "not"
+      ],
+      "certa": 0,
+      "dica": "As duas condições precisam ser verdade ao mesmo tempo."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-boletim",
+   "aulas": [
+    "log-revisao-decisoes"
+   ],
+   "grupo": "Revisão",
+   "defeitos": 1,
+   "titulo": "Boletim trocado",
+   "enunciado": "Nota 7 ou mais: aprovado. De 5 a 7: recuperação. Abaixo de 5: reprovado. O programa manda todo mundo com nota alta para a recuperação.",
+   "codigoInicial": "nota = float(input(\"Nota: \"))\nif nota >= 5:\n    print(\"Recuperação\")\nelif nota >= 7:\n    print(\"Aprovado\")\nelse:\n    print(\"Reprovado\")\n",
+   "solucao": "nota = float(input(\"Nota: \"))\nif nota >= 7:\n    print(\"Aprovado\")\nelif nota >= 5:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Com nota 8",
+     "entradas": [
+      "8"
+     ],
+     "esperada": "Nota: 8\nAprovado\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com nota 6",
+     "entradas": [
+      "6"
+     ],
+     "esperada": "Nota: 6\nRecuperação\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com nota 3",
+     "entradas": [
+      "3"
+     ],
+     "esperada": "Nota: 3\nReprovado\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Com nota 7",
+     "entradas": [
+      "7"
+     ],
+     "esperada": "Nota: 7\nAprovado\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 7
+   },
+   "dicas": [
+    "Com nota 8, a primeira condição (8 >= 5) já é True. O elif nem chega a ser testado.",
+    "No if/elif, vale o primeiro teste verdadeiro. A condição mais exigente vem primeiro.",
+    "Comece com if nota >= 7: print(\"Aprovado\") e depois elif nota >= 5: print(\"Recuperação\")."
+   ],
+   "toque": {
+    "modelo": "nota = float(input(\"Nota: \"))\nif nota >= ___:\n    print(\"Aprovado\")\nelif nota >= ___:\n    print(\"Recuperação\")\nelse:\n    print(\"Reprovado\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "7",
+       "5",
+       "0"
+      ],
+      "certa": 0,
+      "dica": "Aprovado é com 7 ou mais."
+     },
+     {
+      "opcoes": [
+       "5",
+       "7",
+       "10"
+      ],
+      "certa": 0,
+      "dica": "Recuperação começa no 5."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-aniversario",
+   "aulas": [
+    "log-revisao-decisoes"
+   ],
+   "grupo": "Revisão",
+   "defeitos": 2,
+   "titulo": "Desconto de aniversário",
+   "enunciado": "Quem faz aniversário em outubro (mês 10) ganha desconto. O programa nem roda: dois defeitos, um na comparação e outro no recuo.",
+   "codigoInicial": "mes = int(input(\"Mês do aniversário: \"))\nif mes = 10:\nprint(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")\n",
+   "solucao": "mes = int(input(\"Mês do aniversário: \"))\nif mes == 10:\n    print(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Em outubro",
+     "entradas": [
+      "10"
+     ],
+     "esperada": "Mês do aniversário: 10\nGanhou 10% de desconto!\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Em março",
+     "entradas": [
+      "3"
+     ],
+     "esperada": "Mês do aniversário: 3\nAinda não é o seu mês\n"
+    },
+    {
+     "tipo": "saida",
+     "nome": "Em novembro",
+     "entradas": [
+      "11"
+     ],
+     "esperada": "Mês do aniversário: 11\nAinda não é o seu mês\n",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "Rode: o primeiro erro aponta a linha 2. Depois de consertá-lo, rode de novo, porque aparece o segundo.",
+    "Comparar é ==. E o que fica dentro do if precisa de 4 espaços de recuo.",
+    "Linha 2: if mes == 10:  Linha 3: quatro espaços antes do print."
+   ],
+   "toque": {
+    "modelo": "mes = int(input(\"Mês do aniversário: \"))\nif mes ___ 10:\n    print(\"Ganhou 10% de desconto!\")\nelse:\n    print(\"Ainda não é o seu mês\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "==",
+       "=",
+       ">="
+      ],
+      "certa": 0,
+      "dica": "Comparar é com dois sinais de igual."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-contagem",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Laços",
+   "defeitos": 1,
+   "titulo": "Contagem que não chega",
+   "enunciado": "O programa deveria mostrar os números de 1 a 5, um por linha. Ele para antes. Ache o defeito.",
+   "codigoInicial": "for n in range(1, 5):\n    print(n)\n",
+   "solucao": "for n in range(1, 6):\n    print(n)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "De 1 a 5",
+     "esperada": "1\n2\n3\n4\n5\n"
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "Qual é o último número que aparece? E qual deveria ser?",
+    "O fim do range nunca entra: para incluir o 5, o fim precisa ser maior.",
+    "Troque range(1, 5) por range(1, 6)."
+   ],
+   "toque": {
+    "modelo": "for n in range(1, ___):\n    print(n)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "6",
+       "5",
+       "4"
+      ],
+      "certa": 0,
+      "dica": "O fim do range fica de fora."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-soma-zerada",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Laços",
+   "defeitos": 1,
+   "titulo": "Soma que esquece",
+   "enunciado": "O programa deveria somar 10 + 20 + 30 e mostrar 60. Ele mostra 30. Ache o defeito.",
+   "codigoInicial": "for valor in range(10, 40, 10):\n    total = 0\n    total = total + valor\nprint(total)\n",
+   "solucao": "total = 0\nfor valor in range(10, 40, 10):\n    total = total + valor\nprint(total)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 60",
+     "esperada": "60\n"
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Faça o teste de mesa: o que acontece com total no começo de cada volta?",
+    "O acumulador volta a zero a cada volta, porque nasce dentro do laço.",
+    "Mova total = 0 para antes do for."
+   ],
+   "toque": {
+    "modelo": "___\nfor valor in range(10, 40, 10):\n    total = total + valor\nprint(total)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "total = 0",
+       "total = 10",
+       "print(total)"
+      ],
+      "certa": 0,
+      "dica": "O acumulador nasce antes do laço, em zero."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-infinito",
+   "aulas": [
+    "log-resolver-problemas"
+   ],
+   "grupo": "Laços",
+   "defeitos": 1,
+   "titulo": "Laço sem fim",
+   "enunciado": "Este programa deveria mostrar 3, 2, 1 e \"Fogo!\", mas nunca termina. Ache o defeito e conserte.",
+   "codigoInicial": "n = 3\nwhile n > 0:\n    print(n)\nprint(\"Fogo!\")\n",
+   "solucao": "n = 3\nwhile n > 0:\n    print(n)\n    n = n - 1\nprint(\"Fogo!\")\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Contagem regressiva",
+     "esperada": "3\n2\n1\nFogo!\n"
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "O teste do while depende de n. Alguma linha do bloco muda o n?",
+    "Falta o passo: a cada volta, n precisa diminuir 1.",
+    "Acrescente n = n - 1 dentro do while, depois do print."
+   ],
+   "toque": {
+    "modelo": "n = 3\nwhile n > 0:\n    print(n)\n    ___\nprint(\"Fogo!\")",
+    "lacunas": [
+     {
+      "opcoes": [
+       "n = n - 1",
+       "n = n + 1",
+       "n = 0"
+      ],
+      "certa": 0,
+      "dica": "Para o laço acabar, n precisa diminuir até 0."
+     }
+    ]
+   }
+  },
+  {
+   "id": "cb-funcao-print",
+   "aulas": [
+    "log-revisao-repeticao"
+   ],
+   "grupo": "Funções",
+   "defeitos": 1,
+   "titulo": "Função que só fala",
+   "enunciado": "O programa deveria mostrar o total de 3 parcelas de 40 (120). Ele quebra com erro. Ache o defeito na função.",
+   "codigoInicial": "def parcela(valor):\n    print(valor)\n\ntotal = parcela(40) + parcela(40) + parcela(40)\nprint(total)\n",
+   "solucao": "def parcela(valor):\n    return valor\n\ntotal = parcela(40) + parcela(40) + parcela(40)\nprint(total)\n",
+   "testes": [
+    {
+     "tipo": "saida",
+     "nome": "Mostra 120",
+     "esperada": "120\n"
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Leia a mensagem de erro: ela fala de None. De onde vem esse None?",
+    "Uma função sem return devolve None. Para entrar na soma, a função precisa devolver o valor.",
+    "Troque print(valor) por return valor."
+   ],
+   "toque": {
+    "modelo": "def parcela(valor):\n    ___ valor\n\ntotal = parcela(40) + parcela(40) + parcela(40)\nprint(total)",
+    "lacunas": [
+     {
+      "opcoes": [
+       "return",
+       "print",
+       "pass"
+      ],
+      "certa": 0,
+      "dica": "Para entrar numa conta, o valor precisa ser devolvido."
+     }
+    ]
+   }
+  }
+ ]
 }

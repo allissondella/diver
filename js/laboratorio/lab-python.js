@@ -182,7 +182,9 @@ const LabPython = (() => {
       let r;
       try {
         for (let volta = 0; volta < 20; volta++) {
-          r = await Executor.rodar({ codigo, entradas, testes: m.testes, semente: 7 }, { tempoMs: 6000 });
+          // prelude: código do laboratório que roda antes (ex.: o número escondido do Caça ao Número);
+          // arquivos: a pasta da missão (Organizador de Pasta), devolvida depois em r.arquivos
+          r = await Executor.rodar({ codigo, entradas, testes: m.testes, semente: 7, prelude: m.prelude || '', arquivos: m.arquivos, verArquivos: !!m.arquivos }, { tempoMs: 6000 });
           if (destruido) return;
           if (!r.precisaEntrada) break;
           telas.console.limpar();

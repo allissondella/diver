@@ -1,267 +1,447 @@
 {
-  "id": "oficina-de-funcoes",
-  "nome": "Oficina de Funções",
-  "versao": 1,
-  "tipo": "python",
-  "descricao": "Complete pequenas funções até passarem nos testes. Os exemplos ficam à vista; testes escondidos conferem os casos de borda.",
-  "tituloReferencia": "Peças que você vai usar",
-  "referencia": [
-    {
-      "nome": "def nome(valor):",
-      "faz": "cria a função; a primeira linha já vem pronta"
-    },
-    {
-      "nome": "return resposta",
-      "faz": "devolve a resposta da função"
-    },
-    {
-      "nome": "if / else:",
-      "faz": "escolhe o que devolver"
-    },
-    {
-      "nome": "0 <= x <= 10",
-      "faz": "x está entre 0 e 10 (inclusive)"
-    },
-    {
-      "nome": "texto.isdigit()",
-      "faz": "True se o texto só tem algarismos"
-    },
-    {
-      "nome": "int(texto)",
-      "faz": "transforma o texto em número inteiro"
-    },
-    {
-      "nome": "round(x, 2)",
-      "faz": "arredonda para 2 casas"
-    }
-  ],
-  "fazDeVerdade": {
-    "titulo": "Agora faça de verdade",
-    "texto": "Validar o que a pessoa digita é o dia a dia de qualquer programa.",
-    "passos": [
-      "No Thonny, cole uma função desta oficina e, embaixo, um print chamando ela: print(nota_valida(7)).",
-      "Teste os casos de borda à mão: 0, 10, -1, texto vazio.",
-      "Depois, use a função de verdade: leia a nota com input() e só aceite se nota_valida() der True."
-    ]
+ "id": "oficina-de-funcoes",
+ "nome": "Oficina de Funções",
+ "versao": 1,
+ "tipo": "python",
+ "descricao": "Complete pequenas funções até passarem nos testes. Os exemplos ficam à vista; testes escondidos conferem os casos de borda.",
+ "tituloReferencia": "Peças que você vai usar",
+ "referencia": [
+  {
+   "nome": "def nome(valor):",
+   "faz": "cria a função; a primeira linha já vem pronta"
   },
-  "missoes": [
-    {
-      "id": "of-nota-valida",
-      "aulas": [
-        "log-entrada-validacao"
-      ],
-      "grupo": "Validação",
-      "titulo": "Nota válida",
-      "enunciado": "A função `nota_valida(nota)` recebe uma nota e devolve **True** se ela estiver entre 0 e 10, inclusive, e **False** se não estiver. A primeira linha (`def`) já vem pronta: complete o `return`.",
-      "codigoInicial": "def nota_valida(nota):\n    # devolva True se a nota estiver entre 0 e 10 (inclusive)\n    return False\n",
-      "solucao": "def nota_valida(nota):\n    return 0 <= nota <= 10\n",
-      "exemplos": [
-        "nota_valida(7)    # dá True",
-        "nota_valida(11)   # dá False"
-      ],
-      "testes": [
-        {
-          "nome": "nota_valida(7) dá True",
-          "codigo": "assert nota_valida(7) == True, 'nota_valida(7) deveria dar True'"
-        },
-        {
-          "nome": "nota_valida(11) dá False",
-          "codigo": "assert nota_valida(11) == False, 'nota_valida(11) deveria dar False'"
-        },
-        {
-          "nome": "Beirada: 0 vale",
-          "codigo": "assert nota_valida(0) == True, 'A nota 0 também é válida'",
-          "oculto": true
-        },
-        {
-          "nome": "Beirada: 10 vale",
-          "codigo": "assert nota_valida(10) == True, 'A nota 10 também é válida'",
-          "oculto": true
-        },
-        {
-          "nome": "Negativo não vale",
-          "codigo": "assert nota_valida(-1) == False, 'Nota negativa não é válida'",
-          "oculto": true
-        },
-        {
-          "nome": "10.5 não vale",
-          "codigo": "assert nota_valida(10.5) == False, '10.5 passa de 10'",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 2
-      },
-      "dicas": [
-        "A resposta é True ou False: dá para devolver a própria comparação, sem if.",
-        "\"Entre 0 e 10, inclusive\" usa <= dos dois lados. Em Python dá para escrever 0 <= nota <= 10.",
-        "return 0 <= nota <= 10"
-      ],
-      "toque": {
-        "modelo": "def nota_valida(nota):\n    return ___ <= nota ___ 10",
-        "lacunas": [
-          {
-            "opcoes": [
-              "0",
-              "1",
-              "-1"
-            ],
-            "certa": 0,
-            "dica": "A menor nota válida é zero."
-          },
-          {
-            "opcoes": [
-              "<=",
-              "<",
-              ">="
-            ],
-            "certa": 0,
-            "dica": "O 10 também vale: inclusive."
-          }
-        ]
-      }
-    },
-    {
-      "id": "of-so-numeros",
-      "aulas": [
-        "log-entrada-validacao"
-      ],
-      "grupo": "Validação",
-      "titulo": "Só números, por favor",
-      "enunciado": "O `input()` sempre devolve texto, e `int(\"abc\")` para o programa com **ValueError**. Complete `idade_digitada(texto)`: se o texto só tem algarismos, devolva o número; se não, devolva -1.",
-      "codigoInicial": "def idade_digitada(texto):\n    # se o texto só tem algarismos, devolva o número (int); senão, devolva -1\n    return int(texto)\n",
-      "solucao": "def idade_digitada(texto):\n    if texto.isdigit():\n        return int(texto)\n    return -1\n",
-      "exemplos": [
-        "idade_digitada(\"15\")    # dá 15",
-        "idade_digitada(\"abc\")   # dá -1"
-      ],
-      "testes": [
-        {
-          "nome": "\"15\" vira 15",
-          "codigo": "assert idade_digitada('15') == 15, 'idade_digitada(\"15\") deveria dar 15'"
-        },
-        {
-          "nome": "\"abc\" dá -1",
-          "codigo": "assert idade_digitada('abc') == -1, 'Texto com letras deveria dar -1'"
-        },
-        {
-          "nome": "Texto vazio dá -1",
-          "codigo": "assert idade_digitada('') == -1, 'Texto vazio deveria dar -1'",
-          "oculto": true
-        },
-        {
-          "nome": "\"0\" vira 0",
-          "codigo": "assert idade_digitada('0') == 0, '\"0\" deveria virar 0'",
-          "oculto": true
-        },
-        {
-          "nome": "\"-3\" dá -1",
-          "codigo": "assert idade_digitada('-3') == -1, 'O sinal de menos não é algarismo: deveria dar -1'",
-          "oculto": true
-        },
-        {
-          "nome": "\"12a\" dá -1",
-          "codigo": "assert idade_digitada('12a') == -1, 'Texto misturado deveria dar -1'",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 4
-      },
-      "dicas": [
-        "Antes de converter, pergunte se o texto só tem algarismos: texto.isdigit() dá True ou False.",
-        "Se isdigit() der True, devolva int(texto). Se não, a função segue e devolve -1.",
-        "if texto.isdigit(): return int(texto) (recuado) e, fora do if, return -1."
-      ],
-      "toque": {
-        "modelo": "def idade_digitada(texto):\n    if texto.___():\n        return ___(texto)\n    return -1",
-        "lacunas": [
-          {
-            "opcoes": [
-              "isdigit",
-              "isalpha",
-              "upper"
-            ],
-            "certa": 0,
-            "dica": "A pergunta é: só tem dígitos?"
-          },
-          {
-            "opcoes": [
-              "int",
-              "str",
-              "float"
-            ],
-            "certa": 0,
-            "dica": "Idade é um número inteiro."
-          }
-        ]
-      }
-    },
-    {
-      "id": "of-cupom",
-      "aulas": [
-        "log-entrada-validacao"
-      ],
-      "grupo": "Validação",
-      "titulo": "Cupom de desconto",
-      "enunciado": "`preco_final(preco, cupom)` devolve o preço com 10% de desconto se o cupom for exatamente \"DIVER10\" (arredondado em 2 casas). Qualquer outro cupom: preço cheio.",
-      "codigoInicial": "def preco_final(preco, cupom):\n    # cupom \"DIVER10\" dá 10% de desconto; qualquer outro, preço cheio\n    return preco\n",
-      "solucao": "def preco_final(preco, cupom):\n    if cupom == \"DIVER10\":\n        return round(preco * 0.9, 2)\n    return preco\n",
-      "exemplos": [
-        "preco_final(50, \"DIVER10\")   # dá 45.0",
-        "preco_final(50, \"OI\")        # dá 50"
-      ],
-      "testes": [
-        {
-          "nome": "Com DIVER10, 50 vira 45",
-          "codigo": "assert preco_final(50, 'DIVER10') == 45.0, 'Com o cupom, 50 deveria virar 45.0'"
-        },
-        {
-          "nome": "Sem cupom, preço cheio",
-          "codigo": "assert preco_final(50, 'OI') == 50, 'Com outro cupom, o preço é cheio'"
-        },
-        {
-          "nome": "Centavos arredondados",
-          "codigo": "assert preco_final(19.9, 'DIVER10') == 17.91, '19.9 com 10% de desconto dá 17.91 (arredonde em 2 casas)'",
-          "oculto": true
-        },
-        {
-          "nome": "Minúscula não vale",
-          "codigo": "assert preco_final(30, 'diver10') == 30, 'O cupom é exatamente DIVER10, em maiúsculas'",
-          "oculto": true
-        }
-      ],
-      "metas": {
-        "linhas": 4
-      },
-      "dicas": [
-        "Pergunte primeiro se o cupom é igual a \"DIVER10\", com ==.",
-        "10% de desconto é pagar 90%: preco * 0.9. Arredonde com round(…, 2).",
-        "if cupom == \"DIVER10\": return round(preco * 0.9, 2) e, fora do if, return preco."
-      ],
-      "toque": {
-        "modelo": "def preco_final(preco, cupom):\n    if cupom ___ \"DIVER10\":\n        return round(preco * ___, 2)\n    return preco",
-        "lacunas": [
-          {
-            "opcoes": [
-              "==",
-              "=",
-              "!="
-            ],
-            "certa": 0,
-            "dica": "Para comparar, são dois sinais de igual."
-          },
-          {
-            "opcoes": [
-              "0.9",
-              "0.1",
-              "10"
-            ],
-            "certa": 0,
-            "dica": "Com 10% de desconto, paga 90% do preço."
-          }
-        ]
-      }
-    }
+  {
+   "nome": "return resposta",
+   "faz": "devolve a resposta da função"
+  },
+  {
+   "nome": "if / else:",
+   "faz": "escolhe o que devolver"
+  },
+  {
+   "nome": "0 <= x <= 10",
+   "faz": "x está entre 0 e 10 (inclusive)"
+  },
+  {
+   "nome": "texto.isdigit()",
+   "faz": "True se o texto só tem algarismos"
+  },
+  {
+   "nome": "int(texto)",
+   "faz": "transforma o texto em número inteiro"
+  },
+  {
+   "nome": "round(x, 2)",
+   "faz": "arredonda para 2 casas"
+  }
+ ],
+ "fazDeVerdade": {
+  "titulo": "Agora faça de verdade",
+  "texto": "Validar o que a pessoa digita é o dia a dia de qualquer programa.",
+  "passos": [
+   "No Thonny, cole uma função desta oficina e, embaixo, um print chamando ela: print(nota_valida(7)).",
+   "Teste os casos de borda à mão: 0, 10, -1, texto vazio.",
+   "Depois, use a função de verdade: leia a nota com input() e só aceite se nota_valida() der True."
   ]
+ },
+ "missoes": [
+  {
+   "id": "of-nota-valida",
+   "aulas": [
+    "log-entrada-validacao"
+   ],
+   "grupo": "Validação",
+   "titulo": "Nota válida",
+   "enunciado": "A função `nota_valida(nota)` recebe uma nota e devolve **True** se ela estiver entre 0 e 10, inclusive, e **False** se não estiver. A primeira linha (`def`) já vem pronta: complete o `return`.",
+   "codigoInicial": "def nota_valida(nota):\n    # devolva True se a nota estiver entre 0 e 10 (inclusive)\n    return False\n",
+   "solucao": "def nota_valida(nota):\n    return 0 <= nota <= 10\n",
+   "exemplos": [
+    "nota_valida(7)    # dá True",
+    "nota_valida(11)   # dá False"
+   ],
+   "testes": [
+    {
+     "nome": "nota_valida(7) dá True",
+     "codigo": "assert nota_valida(7) == True, 'nota_valida(7) deveria dar True'"
+    },
+    {
+     "nome": "nota_valida(11) dá False",
+     "codigo": "assert nota_valida(11) == False, 'nota_valida(11) deveria dar False'"
+    },
+    {
+     "nome": "Beirada: 0 vale",
+     "codigo": "assert nota_valida(0) == True, 'A nota 0 também é válida'",
+     "oculto": true
+    },
+    {
+     "nome": "Beirada: 10 vale",
+     "codigo": "assert nota_valida(10) == True, 'A nota 10 também é válida'",
+     "oculto": true
+    },
+    {
+     "nome": "Negativo não vale",
+     "codigo": "assert nota_valida(-1) == False, 'Nota negativa não é válida'",
+     "oculto": true
+    },
+    {
+     "nome": "10.5 não vale",
+     "codigo": "assert nota_valida(10.5) == False, '10.5 passa de 10'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "A resposta é True ou False: dá para devolver a própria comparação, sem if.",
+    "\"Entre 0 e 10, inclusive\" usa <= dos dois lados. Em Python dá para escrever 0 <= nota <= 10.",
+    "return 0 <= nota <= 10"
+   ],
+   "toque": {
+    "modelo": "def nota_valida(nota):\n    return ___ <= nota ___ 10",
+    "lacunas": [
+     {
+      "opcoes": [
+       "0",
+       "1",
+       "-1"
+      ],
+      "certa": 0,
+      "dica": "A menor nota válida é zero."
+     },
+     {
+      "opcoes": [
+       "<=",
+       "<",
+       ">="
+      ],
+      "certa": 0,
+      "dica": "O 10 também vale: inclusive."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-so-numeros",
+   "aulas": [
+    "log-entrada-validacao"
+   ],
+   "grupo": "Validação",
+   "titulo": "Só números, por favor",
+   "enunciado": "O `input()` sempre devolve texto, e `int(\"abc\")` para o programa com **ValueError**. Complete `idade_digitada(texto)`: se o texto só tem algarismos, devolva o número; se não, devolva -1.",
+   "codigoInicial": "def idade_digitada(texto):\n    # se o texto só tem algarismos, devolva o número (int); senão, devolva -1\n    return int(texto)\n",
+   "solucao": "def idade_digitada(texto):\n    if texto.isdigit():\n        return int(texto)\n    return -1\n",
+   "exemplos": [
+    "idade_digitada(\"15\")    # dá 15",
+    "idade_digitada(\"abc\")   # dá -1"
+   ],
+   "testes": [
+    {
+     "nome": "\"15\" vira 15",
+     "codigo": "assert idade_digitada('15') == 15, 'idade_digitada(\"15\") deveria dar 15'"
+    },
+    {
+     "nome": "\"abc\" dá -1",
+     "codigo": "assert idade_digitada('abc') == -1, 'Texto com letras deveria dar -1'"
+    },
+    {
+     "nome": "Texto vazio dá -1",
+     "codigo": "assert idade_digitada('') == -1, 'Texto vazio deveria dar -1'",
+     "oculto": true
+    },
+    {
+     "nome": "\"0\" vira 0",
+     "codigo": "assert idade_digitada('0') == 0, '\"0\" deveria virar 0'",
+     "oculto": true
+    },
+    {
+     "nome": "\"-3\" dá -1",
+     "codigo": "assert idade_digitada('-3') == -1, 'O sinal de menos não é algarismo: deveria dar -1'",
+     "oculto": true
+    },
+    {
+     "nome": "\"12a\" dá -1",
+     "codigo": "assert idade_digitada('12a') == -1, 'Texto misturado deveria dar -1'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Antes de converter, pergunte se o texto só tem algarismos: texto.isdigit() dá True ou False.",
+    "Se isdigit() der True, devolva int(texto). Se não, a função segue e devolve -1.",
+    "if texto.isdigit(): return int(texto) (recuado) e, fora do if, return -1."
+   ],
+   "toque": {
+    "modelo": "def idade_digitada(texto):\n    if texto.___():\n        return ___(texto)\n    return -1",
+    "lacunas": [
+     {
+      "opcoes": [
+       "isdigit",
+       "isalpha",
+       "upper"
+      ],
+      "certa": 0,
+      "dica": "A pergunta é: só tem dígitos?"
+     },
+     {
+      "opcoes": [
+       "int",
+       "str",
+       "float"
+      ],
+      "certa": 0,
+      "dica": "Idade é um número inteiro."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-cupom",
+   "aulas": [
+    "log-entrada-validacao"
+   ],
+   "grupo": "Validação",
+   "titulo": "Cupom de desconto",
+   "enunciado": "`preco_final(preco, cupom)` devolve o preço com 10% de desconto se o cupom for exatamente \"DIVER10\" (arredondado em 2 casas). Qualquer outro cupom: preço cheio.",
+   "codigoInicial": "def preco_final(preco, cupom):\n    # cupom \"DIVER10\" dá 10% de desconto; qualquer outro, preço cheio\n    return preco\n",
+   "solucao": "def preco_final(preco, cupom):\n    if cupom == \"DIVER10\":\n        return round(preco * 0.9, 2)\n    return preco\n",
+   "exemplos": [
+    "preco_final(50, \"DIVER10\")   # dá 45.0",
+    "preco_final(50, \"OI\")        # dá 50"
+   ],
+   "testes": [
+    {
+     "nome": "Com DIVER10, 50 vira 45",
+     "codigo": "assert preco_final(50, 'DIVER10') == 45.0, 'Com o cupom, 50 deveria virar 45.0'"
+    },
+    {
+     "nome": "Sem cupom, preço cheio",
+     "codigo": "assert preco_final(50, 'OI') == 50, 'Com outro cupom, o preço é cheio'"
+    },
+    {
+     "nome": "Centavos arredondados",
+     "codigo": "assert preco_final(19.9, 'DIVER10') == 17.91, '19.9 com 10% de desconto dá 17.91 (arredonde em 2 casas)'",
+     "oculto": true
+    },
+    {
+     "nome": "Minúscula não vale",
+     "codigo": "assert preco_final(30, 'diver10') == 30, 'O cupom é exatamente DIVER10, em maiúsculas'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 4
+   },
+   "dicas": [
+    "Pergunte primeiro se o cupom é igual a \"DIVER10\", com ==.",
+    "10% de desconto é pagar 90%: preco * 0.9. Arredonde com round(…, 2).",
+    "if cupom == \"DIVER10\": return round(preco * 0.9, 2) e, fora do if, return preco."
+   ],
+   "toque": {
+    "modelo": "def preco_final(preco, cupom):\n    if cupom ___ \"DIVER10\":\n        return round(preco * ___, 2)\n    return preco",
+    "lacunas": [
+     {
+      "opcoes": [
+       "==",
+       "=",
+       "!="
+      ],
+      "certa": 0,
+      "dica": "Para comparar, são dois sinais de igual."
+     },
+     {
+      "opcoes": [
+       "0.9",
+       "0.1",
+       "10"
+      ],
+      "certa": 0,
+      "dica": "Com 10% de desconto, paga 90% do preço."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-dobro",
+   "aulas": [
+    "log-funcoes"
+   ],
+   "grupo": "Funções",
+   "titulo": "Dobro",
+   "enunciado": "A função `dobro(n)` devolve o dobro de n. Use **return**, não print.",
+   "codigoInicial": "def dobro(n):\n    # devolva o dobro de n\n    pass\n",
+   "solucao": "def dobro(n):\n    return n * 2\n",
+   "exemplos": [
+    "dobro(4)    # dá 8",
+    "dobro(2.5)  # dá 5.0"
+   ],
+   "testes": [
+    {
+     "nome": "dobro(4) dá 8",
+     "codigo": "assert dobro(4) == 8, 'dobro(4) deveria dar 8'"
+    },
+    {
+     "nome": "dobro(0) dá 0",
+     "codigo": "assert dobro(0) == 0, 'dobro(0) deveria dar 0'"
+    },
+    {
+     "nome": "Negativo",
+     "codigo": "assert dobro(-3) == -6, 'dobro(-3) deveria dar -6'",
+     "oculto": true
+    },
+    {
+     "nome": "Devolve, não mostra",
+     "codigo": "assert dobro(10) is not None, 'A função precisa devolver o valor com return'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 2
+   },
+   "dicas": [
+    "A função precisa entregar o resultado para quem chamou: isso é o return.",
+    "O dobro de n é n * 2. Escreva return seguido da conta.",
+    "return n * 2"
+   ],
+   "toque": {
+    "modelo": "def dobro(n):\n    ___ n * 2",
+    "lacunas": [
+     {
+      "opcoes": [
+       "return",
+       "print",
+       "def"
+      ],
+      "certa": 0,
+      "dica": "Quem entrega o valor é o return."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-soma-ate",
+   "aulas": [
+    "log-funcoes"
+   ],
+   "grupo": "Funções com laço",
+   "titulo": "Soma até n",
+   "enunciado": "A função `soma_ate(n)` devolve a soma de 1 até n, incluindo o n. Use um for com range e um acumulador.",
+   "codigoInicial": "def soma_ate(n):\n    total = 0\n    # some de 1 até n\n    return total\n",
+   "solucao": "def soma_ate(n):\n    total = 0\n    for i in range(1, n + 1):\n        total = total + i\n    return total\n",
+   "exemplos": [
+    "soma_ate(3)    # dá 6 (1 + 2 + 3)",
+    "soma_ate(10)   # dá 55"
+   ],
+   "testes": [
+    {
+     "nome": "soma_ate(3) dá 6",
+     "codigo": "assert soma_ate(3) == 6, 'soma_ate(3) deveria dar 6'"
+    },
+    {
+     "nome": "soma_ate(10) dá 55",
+     "codigo": "assert soma_ate(10) == 55, 'soma_ate(10) deveria dar 55'"
+    },
+    {
+     "nome": "Beirada: soma_ate(1) dá 1",
+     "codigo": "assert soma_ate(1) == 1, 'soma_ate(1) deveria dar 1: o n também entra'",
+     "oculto": true
+    },
+    {
+     "nome": "Beirada: soma_ate(0) dá 0",
+     "codigo": "assert soma_ate(0) == 0, 'soma_ate(0) deveria dar 0'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 5
+   },
+   "dicas": [
+    "O total começa em zero e recebe cada número de 1 até n.",
+    "Para incluir o n, o range vai até n + 1: range(1, n + 1).",
+    "for i in range(1, n + 1): total = total + i"
+   ],
+   "toque": {
+    "modelo": "def soma_ate(n):\n    total = 0\n    for i in range(1, ___):\n        total = total + i\n    return total",
+    "lacunas": [
+     {
+      "opcoes": [
+       "n + 1",
+       "n",
+       "n - 1"
+      ],
+      "certa": 0,
+      "dica": "O fim do range fica de fora: para incluir o n, use n + 1."
+     }
+    ]
+   }
+  },
+  {
+   "id": "of-contar-letra",
+   "aulas": [
+    "log-revisao-repeticao"
+   ],
+   "grupo": "Funções com laço",
+   "titulo": "Contar uma letra",
+   "enunciado": "A função `contar(texto, letra)` devolve quantas vezes a letra aparece no texto. Percorra o texto com for.",
+   "codigoInicial": "def contar(texto, letra):\n    qtd = 0\n    # percorra o texto\n    return qtd\n",
+   "solucao": "def contar(texto, letra):\n    qtd = 0\n    for c in texto:\n        if c == letra:\n            qtd = qtd + 1\n    return qtd\n",
+   "exemplos": [
+    "contar(\"banana\", \"a\")   # dá 3",
+    "contar(\"diver\", \"z\")    # dá 0"
+   ],
+   "testes": [
+    {
+     "nome": "banana tem 3 a",
+     "codigo": "assert contar('banana', 'a') == 3, 'contar(\"banana\", \"a\") deveria dar 3'"
+    },
+    {
+     "nome": "diver não tem z",
+     "codigo": "assert contar('diver', 'z') == 0, 'contar(\"diver\", \"z\") deveria dar 0'"
+    },
+    {
+     "nome": "Texto vazio",
+     "codigo": "assert contar('', 'a') == 0, 'Texto vazio não tem nenhuma letra'",
+     "oculto": true
+    },
+    {
+     "nome": "Maiúscula é outra letra",
+     "codigo": "assert contar('Ana', 'a') == 1, 'A e a são diferentes para o Python'",
+     "oculto": true
+    }
+   ],
+   "metas": {
+    "linhas": 6
+   },
+   "dicas": [
+    "for c in texto: passa por cada caractere. Um if decide se conta.",
+    "Dentro do for: if c == letra: qtd = qtd + 1.",
+    "for c in texto: / if c == letra: / qtd = qtd + 1"
+   ],
+   "toque": {
+    "modelo": "def contar(texto, letra):\n    qtd = 0\n    for c in ___:\n        if c == ___:\n            qtd = qtd + 1\n    return qtd",
+    "lacunas": [
+     {
+      "opcoes": [
+       "texto",
+       "letra",
+       "qtd"
+      ],
+      "certa": 0,
+      "dica": "O for anda pelo texto."
+     },
+     {
+      "opcoes": [
+       "letra",
+       "texto",
+       "\"a\""
+      ],
+      "certa": 0,
+      "dica": "Compare com a letra recebida no parâmetro."
+     }
+    ]
+   }
+  }
+ ]
 }
