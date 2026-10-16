@@ -24,7 +24,7 @@
   - a ficha de Medicina leva ao panorama;
   - entraram a conquista "Doze em doze", as linhas no Admin e o passo do tutorial atualizado.
 - **Id repetido:** o panorama e a ficha se chamam `medicina`. No Admin, o nome da ficha vem primeiro, e os eventos que saem do panorama levam `detalhes.panorama`.
-- **Banco:** os tipos `medicina_*` entraram no `setup.sql` e foram aplicados **só no banco de testes**. **Aplicar no de produção antes do merge.**
+- **Banco:** os tipos `medicina_*` entraram no `setup.sql` e foram aplicados no banco de testes e, antes do merge, no de produção.
 - **Testes:**
   - panorama, especialidade, jogo inteiro e a Tecnologia de novo, em 390 e 1280 px, sem erro nem transbordo;
   - visão de aluno ("Em breve");

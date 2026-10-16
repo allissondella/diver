@@ -48,7 +48,7 @@ Nada novo além do que o adendo de Tecnologia já pede: o módulo é o mesmo. O 
   - na página de cada especialidade, a nota do salário explica a referência.
 - **Ponte com os cursos:** "Estudar para entrar" abre o Enem · Biologia. Em Radiologia aparecem também os 4 cursos da sala Radiologia. A ficha de Medicina leva ao panorama em "Outros caminhos".
 - **Estado do aluno:** fica em `diver:v1:profissoes`, na chave `med` (a Tecnologia continua em `tec`).
-- **Log:** tipos `medicina_panorama`, `medicina_area_vista`, `medicina_jogo_inicio` e `medicina_jogo_concluido`, no `setup.sql`. Já estão no banco de testes; no de produção, aplicar antes do merge.
+- **Log:** tipos `medicina_panorama`, `medicina_area_vista`, `medicina_jogo_inicio` e `medicina_jogo_concluido`, no `setup.sql`. Aplicados nos dois bancos (testes e produção, 2026-10-16).
 - **Recompensa:** `medicina_jogo`, 30 XP e 3 pérolas, uma vez.
 - **Admin:** linhas da Medicina no bloco do Mapa: especialidades mais vistas, quem começa e quem termina o jogo, e a especialidade em 1º lugar.
 - **Conquista:** "Doze em doze".
