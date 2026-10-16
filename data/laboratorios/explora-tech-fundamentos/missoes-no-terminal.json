@@ -1,0 +1,954 @@
+{
+  "id": "missoes-no-terminal",
+  "nome": "Missões no Terminal",
+  "versao": 1,
+  "tipo": "shell",
+  "descricao": "Um Linux de mentirinha para praticar o terminal: achar pistas, organizar pastas, procurar em registros, dar permissões e editar arquivos.",
+  "tituloReferencia": "Comandos do terminal",
+  "rotuloBancada": "Terminal e árvore de arquivos",
+  "referencia": [
+    {
+      "nome": "pwd · ls -la · cd pasta",
+      "faz": "onde estou · o que tem aqui (com ocultos) · entrar (.. sobe, ~ volta para casa)"
+    },
+    {
+      "nome": "cat · head -n N · tail -n N",
+      "faz": "mostrar o arquivo · o começo · o fim"
+    },
+    {
+      "nome": "grep -i -c texto arquivo",
+      "faz": "linhas com o texto (-i ignora a caixa, -c conta)"
+    },
+    {
+      "nome": "mkdir -p · touch · cp -r · mv · rm",
+      "faz": "criar pasta · criar arquivo · copiar · mover · apagar (sem lixeira!)"
+    },
+    {
+      "nome": "| · > · >>",
+      "faz": "liga comandos · grava por cima · acrescenta no fim"
+    },
+    {
+      "nome": "chmod 600 · chmod u+x · ./script",
+      "faz": "só o dono lê e escreve · deixa executar · roda o script"
+    },
+    {
+      "nome": "nano arquivo",
+      "faz": "edita; Ctrl+O grava, Ctrl+X sai"
+    }
+  ],
+  "fazDeVerdade": {
+    "titulo": "Agora faça de verdade",
+    "texto": "Um terminal de verdade, sem medo de estragar nada.",
+    "passos": [
+      "No Windows, instale o WSL (Ubuntu) pela loja; no macOS, abra o app Terminal; no Linux, ele já está lá.",
+      "Crie uma pasta de treino com `mkdir treino` e repita as missões dentro dela, nunca na sua pasta de documentos.",
+      "Para praticar mais, procure jogos de terminal com fases, como o OverTheWire Bandit (níveis iniciais)."
+    ]
+  },
+  "missoes": [
+    {
+      "id": "mt-onde",
+      "aulas": [
+        "linux-navegar"
+      ],
+      "grupo": "Navegar",
+      "titulo": "Onde estou?",
+      "enunciado": "Antes de andar, se localize: use **pwd** para ver onde você está e entre na pasta **escola**.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "pwd",
+        "ls"
+      ],
+      "objetivos": [
+        {
+          "texto": "Usar o pwd",
+          "tipo": "usou",
+          "valor": "pwd"
+        },
+        {
+          "texto": "Estar na pasta escola",
+          "tipo": "cwd",
+          "valor": "/home/bia/escola"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "pwd",
+          "cd escola"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "pwd mostra a pasta atual; ls mostra o que tem nela.",
+        "A pasta escola aparece no ls; entre com cd.",
+        "pwd e depois cd escola."
+      ]
+    },
+    {
+      "id": "mt-oculto",
+      "aulas": [
+        "linux-navegar"
+      ],
+      "grupo": "Navegar",
+      "titulo": "A pista escondida",
+      "enunciado": "A primeira pista está num **arquivo oculto** da sua pasta pessoal. Ache e leia.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "ls",
+        "ls -a"
+      ],
+      "objetivos": [
+        {
+          "texto": "Ler a pista oculta",
+          "tipo": "leu",
+          "caminho": "/home/bia/.pista-secreta"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "ls -a",
+          "cat .pista-secreta"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "Arquivos ocultos começam com ponto e não aparecem no ls comum.",
+        "ls -a mostra todos; cat mostra o conteúdo.",
+        "cat .pista-secreta"
+      ]
+    },
+    {
+      "id": "mt-labirinto",
+      "aulas": [
+        "linux-navegar"
+      ],
+      "grupo": "Navegar",
+      "titulo": "O labirinto de pastas",
+      "enunciado": "Siga a pista: vá até **projetos/2026/site/img**, leia o **leia-me.txt** e responda o código do cofre.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "ls",
+        "cd ..",
+        "pwd"
+      ],
+      "objetivos": [
+        {
+          "texto": "Ler o leia-me.txt",
+          "tipo": "leu",
+          "caminho": "/home/bia/projetos/2026/site/img/leia-me.txt"
+        }
+      ],
+      "campos": [
+        {
+          "id": "codigo",
+          "rotulo": "Qual é o código do cofre?",
+          "opcoes": [
+            "1234",
+            "2026",
+            "4721"
+          ],
+          "certo": "4721",
+          "erro": "Leia de novo o leia-me.txt."
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "cd projetos/2026/site/img",
+          "cat leia-me.txt"
+        ],
+        "resposta": {
+          "codigo": "4721"
+        }
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "Dá para entrar em várias pastas de uma vez, com o caminho separado por /.",
+        "cd projetos/2026/site/img e depois cat leia-me.txt.",
+        "O código está na pista 2: 4721."
+      ]
+    },
+    {
+      "id": "mt-organizar",
+      "aulas": [
+        "linux-arquivos"
+      ],
+      "grupo": "Arquivos",
+      "titulo": "Fotos no lugar",
+      "enunciado": "Crie a pasta **fotos** e mova para ela **todas as fotos .jpg** da pasta pessoal, num comando só. O trabalho.pdf fica onde está.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "ls",
+        "ls fotos"
+      ],
+      "objetivos": [
+        {
+          "texto": "Existir a pasta fotos",
+          "tipo": "existe",
+          "caminho": "/home/bia/fotos",
+          "pasta": true
+        },
+        {
+          "texto": "As três fotos dentro de fotos",
+          "tipo": "existe",
+          "caminho": "/home/bia/fotos/selfie.jpg"
+        },
+        {
+          "texto": "Nenhuma foto solta na pasta pessoal",
+          "tipo": "naoExiste",
+          "caminho": "/home/bia/praia.jpg"
+        },
+        {
+          "texto": "O trabalho.pdf no mesmo lugar",
+          "tipo": "existe",
+          "caminho": "/home/bia/trabalho.pdf"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "mkdir fotos",
+          "mv *.jpg fotos/"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "Primeiro crie a pasta; depois mova com um curinga.",
+        "mkdir fotos; o curinga *.jpg escolhe todas as fotos.",
+        "mkdir fotos e depois mv *.jpg fotos/"
+      ]
+    },
+    {
+      "id": "mt-backup",
+      "aulas": [
+        "linux-arquivos"
+      ],
+      "grupo": "Arquivos",
+      "titulo": "Cópia de segurança",
+      "enunciado": "Antes da prova, faça uma cópia da pasta **escola** inteira, chamada **escola-backup**. A original continua lá.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "ls",
+        "ls escola-backup"
+      ],
+      "objetivos": [
+        {
+          "texto": "A cópia com as provas dentro",
+          "tipo": "existe",
+          "caminho": "/home/bia/escola-backup/provas/p1.txt"
+        },
+        {
+          "texto": "A pasta original intacta",
+          "tipo": "existe",
+          "caminho": "/home/bia/escola/provas/p1.txt"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "cp -r escola escola-backup"
+        ]
+      },
+      "metas": {
+        "comandos": 2
+      },
+      "dicas": [
+        "Copiar é cp; pastas exigem uma opção.",
+        "A opção -r copia a pasta com tudo dentro.",
+        "cp -r escola escola-backup"
+      ]
+    },
+    {
+      "id": "mt-limpar",
+      "aulas": [
+        "linux-arquivos"
+      ],
+      "grupo": "Arquivos",
+      "titulo": "Faxina nos temporários",
+      "enunciado": "Na pasta **temp**, apague os arquivos **.tmp** visíveis, sem apagar o **relatorio.txt** nem a configuração oculta. Confira com ls antes de apagar.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "cd temp",
+        "ls -a",
+        "ls *.tmp"
+      ],
+      "objetivos": [
+        {
+          "texto": "Conferir com ls antes",
+          "tipo": "usou",
+          "valor": "ls"
+        },
+        {
+          "texto": "a.tmp e b.tmp apagados",
+          "tipo": "naoExiste",
+          "caminho": "/home/bia/temp/b.tmp"
+        },
+        {
+          "texto": "relatorio.txt preservado",
+          "tipo": "existe",
+          "caminho": "/home/bia/temp/relatorio.txt"
+        },
+        {
+          "texto": "A configuração oculta preservada",
+          "tipo": "existe",
+          "caminho": "/home/bia/temp/.config.tmp"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "cd temp",
+          "ls *.tmp",
+          "rm *.tmp"
+        ]
+      },
+      "metas": {
+        "comandos": 4
+      },
+      "dicas": [
+        "O curinga *.tmp pega os temporários visíveis; ocultos ficam de fora.",
+        "Entre na pasta, rode ls *.tmp e confira a lista.",
+        "cd temp, ls *.tmp e rm *.tmp"
+      ]
+    },
+    {
+      "id": "mt-contar",
+      "aulas": [
+        "linux-ler-procurar"
+      ],
+      "grupo": "Ler e procurar",
+      "titulo": "Quantos erros?",
+      "enunciado": "O registro **/var/log/cantina.log** tem erros escritos em minúsculas e em MAIÚSCULAS. Conte as linhas com erro, em qualquer caixa, e grave **só o número** em **erros.txt**, na sua pasta pessoal.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "cat /var/log/cantina.log",
+        "cat erros.txt"
+      ],
+      "objetivos": [
+        {
+          "texto": "erros.txt com o número certo",
+          "tipo": "conteudo",
+          "caminho": "/home/bia/erros.txt",
+          "valor": "4\n"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "grep -ci erro /var/log/cantina.log > erros.txt"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "O grep conta com -c e ignora a caixa com -i.",
+        "grep -ci erro /var/log/cantina.log mostra o número; agora mande para o arquivo.",
+        "grep -ci erro /var/log/cantina.log > erros.txt"
+      ]
+    },
+    {
+      "id": "mt-relatorio",
+      "aulas": [
+        "linux-ler-procurar"
+      ],
+      "grupo": "Ler e procurar",
+      "titulo": "O relatório de erros",
+      "enunciado": "Grave em **relatorio.txt** todas as linhas de erro do registro (em qualquer caixa) e, depois, **acrescente** a linha **fim** no final, sem apagar o que já está lá.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "cat relatorio.txt"
+      ],
+      "objetivos": [
+        {
+          "texto": "relatorio.txt com os erros e \"fim\" no final",
+          "tipo": "conteudo",
+          "caminho": "/home/bia/relatorio.txt",
+          "valor": "08:05 erro: banco de dados não responde\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:25 erro: banco de dados não responde\nfim\n"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "grep -i erro /var/log/cantina.log > relatorio.txt",
+          "echo fim >> relatorio.txt"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "O > grava por cima; o >> acrescenta no fim.",
+        "grep -i erro /var/log/cantina.log > relatorio.txt cria o relatório.",
+        "Depois: echo fim >> relatorio.txt"
+      ]
+    },
+    {
+      "id": "mt-ultimo",
+      "aulas": [
+        "linux-ler-procurar"
+      ],
+      "grupo": "Ler e procurar",
+      "titulo": "O último evento",
+      "enunciado": "Sem despejar o registro inteiro, mostre só o **fim** de /var/log/cantina.log e responda: qual foi o último evento?",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "tail -n 3 /var/log/cantina.log"
+      ],
+      "objetivos": [
+        {
+          "texto": "Usar o tail",
+          "tipo": "usou",
+          "valor": "tail"
+        }
+      ],
+      "campos": [
+        {
+          "id": "ultimo",
+          "rotulo": "Qual foi o último evento?",
+          "opcoes": [
+            "servidor ligado",
+            "pedido 102",
+            "tempo esgotado"
+          ],
+          "certo": "pedido 102",
+          "erro": "Olhe a última linha que o tail mostrou."
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "tail -n 2 /var/log/cantina.log"
+        ],
+        "resposta": {
+          "ultimo": "pedido 102"
+        }
+      },
+      "metas": {
+        "comandos": 2
+      },
+      "dicas": [
+        "Registros crescem para baixo: o mais novo fica no fim.",
+        "tail mostra o fim; -n escolhe quantas linhas.",
+        "tail -n 2 /var/log/cantina.log: o último é o pedido 102."
+      ]
+    },
+    {
+      "id": "mt-executar",
+      "aulas": [
+        "linux-permissoes-editor"
+      ],
+      "grupo": "Permissões e editor",
+      "titulo": "O script que não rodava",
+      "enunciado": "O **backup.sh** dá \"Permissão negada\". Dê a ele permissão de **execução** para o dono e rode com **./backup.sh**.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "mostrarPermissoes": true,
+      "atalhos": [
+        "ls -l",
+        "./backup.sh"
+      ],
+      "objetivos": [
+        {
+          "texto": "backup.sh executável",
+          "tipo": "executavel",
+          "caminho": "/home/bia/backup.sh"
+        },
+        {
+          "texto": "Ver o \"backup feito\"",
+          "tipo": "saida",
+          "valor": "backup feito"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "chmod u+x backup.sh",
+          "./backup.sh"
+        ]
+      },
+      "metas": {
+        "comandos": 3
+      },
+      "dicas": [
+        "No ls -l, o primeiro trio é o do dono: falta o x.",
+        "chmod u+x acrescenta a execução para o dono.",
+        "chmod u+x backup.sh e depois ./backup.sh"
+      ]
+    },
+    {
+      "id": "mt-segredo",
+      "aulas": [
+        "linux-permissoes-editor"
+      ],
+      "grupo": "Permissões e editor",
+      "titulo": "Segredo trancado",
+      "enunciado": "O **senhas.txt** está com permissão **666**: qualquer um lê e muda. Deixe **só você** lendo e escrevendo.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "mostrarPermissoes": true,
+      "atalhos": [
+        "ls -l senhas.txt"
+      ],
+      "objetivos": [
+        {
+          "texto": "senhas.txt com permissão 600",
+          "tipo": "modo",
+          "caminho": "/home/bia/senhas.txt",
+          "valor": "600"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "chmod 600 senhas.txt"
+        ]
+      },
+      "metas": {
+        "comandos": 2
+      },
+      "dicas": [
+        "r = 4, w = 2, x = 1, um algarismo por grupo.",
+        "O dono precisa de rw (6); grupo e outros, nada (0).",
+        "chmod 600 senhas.txt"
+      ]
+    },
+    {
+      "id": "mt-editar",
+      "aulas": [
+        "linux-permissoes-editor"
+      ],
+      "grupo": "Permissões e editor",
+      "titulo": "A porta da cantina",
+      "enunciado": "Abra o **site.conf** no **nano** e troque **porta=80** por **porta=443**. Grave (Ctrl+O) e saia (Ctrl+X).",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "cat site.conf",
+        "nano site.conf"
+      ],
+      "objetivos": [
+        {
+          "texto": "Usar o nano",
+          "tipo": "usou",
+          "valor": "nano"
+        },
+        {
+          "texto": "site.conf com porta=443",
+          "tipo": "conteudo",
+          "caminho": "/home/bia/site.conf",
+          "valor": "porta=443\nnome=cantina\n"
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "nano site.conf",
+          {
+            "editar": "/home/bia/site.conf",
+            "texto": "porta=443\nnome=cantina\n"
+          }
+        ]
+      },
+      "metas": {
+        "comandos": 2
+      },
+      "dicas": [
+        "nano site.conf abre o editor na tela.",
+        "Troque 80 por 443 e grave com Ctrl+O (ou o botão Gravar).",
+        "Deixe o arquivo com porta=443 e nome=cantina, grave e saia."
+      ]
+    },
+    {
+      "id": "mt-investigacao",
+      "aulas": [
+        "linux-revisao"
+      ],
+      "grupo": "Revisão",
+      "titulo": "A investigação da cantina",
+      "enunciado": "O servidor da cantina ficou lento. Em **/var/log**, descubra qual erro **mais aparece** (use grep, sort e uniq -c) e grave o **total de linhas com erro** (em qualquer caixa) em **~/relatorio-final.txt**.",
+      "inicio": {
+        "casa": "/home/bia",
+        "arquivos": {
+          "/home/bia/.pista-secreta": "PISTA 1: a próxima está em projetos/2026/site/img/leia-me.txt\n",
+          "/home/bia/notas.txt": "matemática 8\nhistória 9\n",
+          "/home/bia/praia.jpg": "(foto)",
+          "/home/bia/festa.jpg": "(foto)",
+          "/home/bia/selfie.jpg": "(foto)",
+          "/home/bia/trabalho.pdf": "(documento)",
+          "/home/bia/escola/provas/p1.txt": "prova 1: 9,0\n",
+          "/home/bia/escola/provas/p2.txt": "prova 2: 8,5\n",
+          "/home/bia/escola/redacao.txt": "rascunho da redação\n",
+          "/home/bia/projetos/2026/site/img/leia-me.txt": "PISTA 2: o código do cofre é 4721\n",
+          "/home/bia/projetos/2026/site/index.html": "<h1>Cantina</h1>\n",
+          "/home/bia/temp/a.tmp": "lixo\n",
+          "/home/bia/temp/b.tmp": "lixo\n",
+          "/home/bia/temp/.config.tmp": "não apague\n",
+          "/home/bia/temp/relatorio.txt": "importante\n",
+          "/home/bia/backup.sh": "#!/bin/bash\necho \"backup feito: escola copiada\"\n",
+          "/home/bia/senhas.txt": "wifi: (anotada aqui)\n",
+          "/home/bia/site.conf": "porta=80\nnome=cantina\n",
+          "/var/log/cantina.log": "08:00 ok: servidor ligado\n08:05 erro: banco de dados não responde\n08:06 ok: tentando de novo\n08:10 ERRO: tempo esgotado\n08:12 erro: banco de dados não responde\n08:20 ok: pedido 101\n08:25 erro: banco de dados não responde\n08:30 ok: pedido 102\n"
+        },
+        "modos": {
+          "/home/bia/senhas.txt": "666"
+        }
+      },
+      "atalhos": [
+        "cd /var/log",
+        "ls -l"
+      ],
+      "objetivos": [
+        {
+          "texto": "Contar os erros repetidos com uniq",
+          "tipo": "usou",
+          "valor": "uniq"
+        },
+        {
+          "texto": "relatorio-final.txt com o total",
+          "tipo": "conteudo",
+          "caminho": "/home/bia/relatorio-final.txt",
+          "valor": "4\n"
+        }
+      ],
+      "campos": [
+        {
+          "id": "erro",
+          "rotulo": "Qual erro mais aparece?",
+          "opcoes": [
+            "tempo esgotado",
+            "banco de dados não responde",
+            "pedido 101"
+          ],
+          "certo": "banco de dados não responde",
+          "erro": "Confira a contagem do uniq -c."
+        }
+      ],
+      "solucao": {
+        "comandos": [
+          "cd /var/log",
+          "grep -i erro cantina.log | sort | uniq -c",
+          "grep -ci erro cantina.log > ~/relatorio-final.txt"
+        ],
+        "resposta": {
+          "erro": "banco de dados não responde"
+        }
+      },
+      "metas": {
+        "comandos": 5
+      },
+      "dicas": [
+        "grep pega as linhas de erro; sort junta as iguais; uniq -c conta.",
+        "Os horários atrapalham o uniq? Repare: a mensagem aparece depois do horário; olhe qual se repete.",
+        "grep -i erro cantina.log | sort | uniq -c; depois grep -ci erro cantina.log > ~/relatorio-final.txt"
+      ]
+    }
+  ]
+}

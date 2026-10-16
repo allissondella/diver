@@ -472,3 +472,16 @@
 .term__atalho code { font-family: var(--fonte-mono); font-size: var(--t-xs); overflow-wrap: anywhere; }
 .lr { display: grid; gap: var(--esp-3); min-width: 0; }
 @media (max-width: 479px) { .term__prompt { display: none; } .term__saida { padding: var(--esp-2) var(--esp-3); } }
+/* Missões no Terminal (js/jogos/missoes-no-terminal.js, 2026-10-16): terminal, mini editor e a árvore viva */
+.mt { display: grid; gap: var(--esp-3); min-width: 0; }
+.mt-arvore__lista { list-style: none; margin: 0; padding: 0 0 0 var(--esp-4); display: grid; gap: var(--esp-1); min-width: 0; }
+.mt-arvore > .mt-arvore__lista { padding-left: 0; }
+.mt-arvore__item { min-width: 0; }
+.mt-arvore__nome { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); font-family: var(--fonte-mono); font-size: var(--t-sm); overflow-wrap: anywhere; }
+.mt-arvore__nome .icone { width: 16px; height: 16px; color: var(--turquesa-claro); flex: none; }
+.mt-arvore__item--oculto > .mt-arvore__nome { color: var(--texto-suave); }
+.mt-arvore__item--aqui > .mt-arvore__nome { color: var(--amarelo); font-weight: 700; }
+.mt-arvore__modo { font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--texto-suave); }
+.mt-editor { display: grid; gap: var(--esp-2); }
+.mt-editor__area { width: 100%; min-height: 160px; padding: var(--esp-3); font-family: var(--fonte-mono); font-size: var(--t-md); line-height: var(--lh-normal); color: var(--texto); background: var(--fundo-fundo); border: 1px solid var(--borda); border-radius: var(--raio); resize: vertical; }
+.mt-editor__area:focus-visible { border-color: var(--turquesa); }

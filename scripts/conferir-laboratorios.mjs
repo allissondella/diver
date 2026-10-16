@@ -32,6 +32,7 @@ const MOTORES = {
   portas: new Function(`${ler('js/laboratorio/motor-portas.js')}\nreturn MotorPortas;`)(),
   sala: new Function(`${ler('js/laboratorio/motor-sala.js')}\nreturn MotorSala;`)(),
   rede: new Function(`${ler('js/laboratorio/motor-rede.js')}\nreturn MotorRede;`)(),
+  shell: new Function(`${ler('js/laboratorio/motor-shell.js')}\nreturn MotorShell;`)(),
 };
 MOTORES['rede-terminal'] = { verificar: (m) => MOTORES.rede.verificarTerminal(m) }; // Laboratório de Rede (terminal)
 
