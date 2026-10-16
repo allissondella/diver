@@ -192,6 +192,27 @@ const UI = (() => {
     if (lista.length) confete(); // comemoração discreta: só em conquista e em fim de fase, nunca num acerto comum
   }
 
+  /* ---------- Carregamento sob demanda (Onda 6) ---------- */
+  const scriptsCarregados = new Map(); // url -> Promise
+  /** Carrega um script uma vez só (cache em memória); devolve uma Promise. */
+  function carregarScript(url) {
+    if (scriptsCarregados.has(url)) return scriptsCarregados.get(url);
+    const p = new Promise((ok, falha) => {
+      const s = document.createElement('script');
+      s.src = url;
+      s.async = false; // vários de uma vez rodam na ordem em que foram pedidos
+      s.onload = () => ok();
+      s.onerror = () => { scriptsCarregados.delete(url); falha(new Error('Não deu para carregar ' + url)); };
+      document.head.append(s);
+    });
+    scriptsCarregados.set(url, p);
+    return p;
+  }
+  /** Vários scripts, na ordem. */
+  function carregarScripts(urls) {
+    return Promise.all(urls.map(carregarScript));
+  }
+
   /* ---------- Movimento (Onda 5); com "reduzir movimento" tudo vira instantâneo ---------- */
   /** Conta o número de um elemento de "de" até "para" em ~400 ms (XP e pérolas no feedback e no resumo). */
   function contar(el, de, para, ms = 400) {
@@ -367,7 +388,7 @@ const UI = (() => {
     $, h, icone, cor, carregando, progresso, esqueleto, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
     dataLocal, paraData, formatarData, id, baixarArquivo, toast, avisarConquistas,
     montarMascotes, humorMascote, mascote, cabecalho, vazio, movimentoReduzido, codigo, marcado,
-    contar, confete, atalhos,
+    contar, confete, atalhos, carregarScript, carregarScripts,
   };
 })();
 

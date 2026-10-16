@@ -152,9 +152,27 @@ Tudo some com "reduzir movimento" (regra global em `estilo.css`).
 - **Bolhas do fundo**: 12, só `transform`/`opacity`, paradas no quiz e nos jogos (`.modo-foco`) e com a aba escondida (`.aba-oculta`).
 - **Teclado**: "?" abre a lista de atalhos da tela e gerais (`UI.atalhos()`; atalhos de cada tela em `ATALHOS_TELA`, `js/ui.js`). Esc fecha janela, gaveta e tutorial. No quiz, o Esc não foi mudado (comportamento das perguntas).
 
+## Carregamento, app instalável e metadados (Onda 6, 2026-10-15)
+- **Scripts**: o Início abre com **20** (eram 61); jogos, laboratórios, Descompressão, Cronograma, Diagnóstica, Biblioteca, Perfil, Estatísticas, Admin, Fila e provas chegam em pacotes (`PACOTES` em `js/app.js`, detalhes em `docs/ARQUITETURA.md`).
+- **CSS**: `jogos.css`, `descompressao.css`, `artigo.css` e `laboratorio.css` baixam sem travar a página (`media="print"` → `all`), **na mesma posição** de antes (a posição do link decide a cascata; `ritmo.css` continua por último). `tokens`, `estilo`, `areas`, `caminho` e `ritmo` continuam bloqueantes.
+- **Abertura antecipada**: com o endereço do Início, o `index.html` mostra o herói (estático) antes dos scripts; o resto do Início aparece de uma vez quando o app desenha (`.tela-inicio--cedo`), para nada pular de lugar.
+- **Fontes**: Plus Jakarta Sans 500/600/700/800 e JetBrains Mono 500/700, com `preload` e `display=swap`.
+- **Catálogo**: o `catalogo.json` (300 KB no disco) viaja comprimido com ~31 KB; uma versão "mínima" pouparia ~1,5 KB e foi descartada (decisão registrada).
+- **App instalável, sem service worker** (evita cache velho em produção): `manifest.webmanifest`, ícones 192/512 e *maskable* em `assets/icones/` e `apple-touch-icon`, todos da máscara do Diver (`node scripts/gerar-icones.mjs`).
+- **Compartilhamento**: `og:*`, `twitter:card`, `canonical` e `assets/og.png` (1200 × 630, mascote e slogan).
+- **Lighthouse** (Início, modo local, servidor com compressão como o GitHub Pages; 2026-10-15). Antes → depois:
+
+  | | Desempenho | Acessibilidade | Boas práticas | SEO |
+  | --- | --- | --- | --- | --- |
+  | Celular (desaceleração real, `--throttling-method=devtools`) | 82 → **95** | 100 → **100** | 96 → **96**\* | 100 |
+  | Computador | 97 → **99** | 100 → **100** | 96 → **96**\* | 100 |
+  | Celular (estimativa simulada, padrão do Lighthouse) | 71 → 76 | 100 | 96\* | 100 |
+
+  \* O único item de "boas práticas" que falha é a fonte do Google bloqueada no ambiente de medição (certificado do proxy); na produção ele passa. A estimativa simulada conta os scripts como se viessem antes da primeira pintura; na medição real, o herói aparece em 1,5 s (LCP 1,8 s, CLS 0,04).
+
 ## Como auditar (rode antes de todo commit que mexe no visual)
 - `node scripts/auditar-design.mjs`: falha se achar hex fora de `css/tokens.css` (nos CSS e nos 3 JS que desenham), `font-size` fora da escala, `z-index` numérico ou `@media` fora dos 4 cortes.
 - `node scripts/fotos-design.mjs --onda <nome> --fase antes|depois --porta 8765`: fotografa 18 telas no celular (390×844) e no computador (1440×900) em `docs/fotos/design/<onda>/<fase>/`, com um servidor local rodando (`python3 -m http.server 8765`) e o Playwright instalado (`NODE_PATH=$(npm root -g)`). Compare o antes e o depois antes de dar a onda por pronta.
 - `node scripts/auditar-design.mjs --navegador [--porta 8124] [--larguras 390,1440] [--telas inicio,perfil]` (Onda 4): abre o app no Chromium em 26 telas (rotas `#...`, o artigo, o quiz antes e depois de responder e o login) nas larguras 360, 390, 430, 768, 1024, 1280 e 1440, e falha com **transbordo horizontal**, **alvo de toque < 44 × 44 px** (até 768 px, com toque; links no meio do texto e caixas dentro de rótulo ficam de fora) ou **texto < 12 px**. Leva uns 5 minutos.
 - As fotos novas saem em JPEG 1× (leves); `--png` para alta resolução.
-- A revisão completa, onda por onda, está em `docs/REVISAO_DESIGN.md`. **Ondas 1 a 5 feitas em 2026-10-15** (fundação, componentes, layout por tela, responsividade, movimento).
+- A revisão completa, onda por onda, está em `docs/REVISAO_DESIGN.md`. **Ondas 1 a 6 feitas em 2026-10-15** (fundação, componentes, layout por tela, responsividade, movimento, carregamento).

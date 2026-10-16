@@ -419,3 +419,9 @@ kbd {
   border: 1px solid var(--borda-forte); border-bottom-width: 2px; background: var(--superficie-2);
   font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--texto-1);
 }
+
+/* ---------- Abertura antecipada do Início (Onda 6) ----------
+   O index.html mostra o Início antes dos scripts (o herói é estático); até o app desenhar, só o herói aparece,
+   para nada pular de lugar quando os cartões "Continuar" e as salas chegam. */
+.tela-inicio--cedo > :not(.inicio-cabeca),
+.tela-inicio--cedo .inicio-topo { display: none; }

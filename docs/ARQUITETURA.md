@@ -8,7 +8,8 @@
 - Uma página só (`index.html`) com várias telas (`<section class="tela">`); só uma fica visível por vez.
 - **Barra lateral** com as áreas (fixa no computador a partir de 960 px; gaveta aberta pelo botão ☰ no celular). O endereço muda para `#secao` (ex.: `#jogos`), então o botão Voltar do navegador funciona.
 - Durante um quiz ou um jogo a barra lateral some (classe `modo-foco` no `<body>`): uma ação principal por tela.
-- Scripts **clássicos** com `defer` (sem módulos ES), cada um expondo um objeto global. Ordem de carregamento:
+- **Carregamento sob demanda (Onda 6 da revisão de design, 2026-10-15):** o `index.html` traz só os **20 scripts do núcleo** (config, trilhas, progresso, conquistas, economia, quiz, ui, mascotes, nuvem, atividade, conta, cartas, `jogos/registro.js`, quadros, organizar, mapa-partida, tutorial, grupos, caminho, app). O resto chega em **pacotes** (`PACOTES` em `js/app.js`) na primeira vez que a área abre: cada rota de `ROTAS` diz os seus (`pacotes: ['jogos']`), o `navegar` baixa e volta, e `UI.carregarScript(s)` guarda em memória o que já veio (`async = false`: roda na ordem). Pacotes: `jogos` (todos os jogos e laboratórios; também baixa sozinho, com o navegador ocioso, depois do Início), `cronograma`, `nivelamento`, `provas`, `biblioteca`, `perfil`, `estatisticas`, `admin`, `fila`, `descompressao`; o `js/artigo.js` baixa ao abrir o primeiro "Antes de mergulhar". **Arquivo novo de uma área:** entra no pacote dela, não no `index.html`. Código do núcleo que usa um global de pacote confere antes (`typeof Descompressao !== 'undefined'`). O `js/mapa-partida.js` fica no núcleo porque o `caminho.js` lê o resultado do nivelamento para os estados dos módulos.
+- Scripts **clássicos** com `defer` (sem módulos ES), cada um expondo um objeto global. Ordem de carregamento (os de pacote, na ordem em que o pacote os baixa):
 
 | Ordem | Arquivo | Global | Responsabilidade |
 | --- | --- | --- | --- |

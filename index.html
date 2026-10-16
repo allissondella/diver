@@ -7,17 +7,38 @@
   <meta name="theme-color" content="#0B2545">
   <meta name="color-scheme" content="dark">
   <title>Diver — aprender é a parte divertida</title>
+  <!-- Compartilhamento e app instalável (Onda 6). Sem service worker por enquanto: evita cache velho em produção. -->
+  <link rel="canonical" href="https://allissondella.github.io/diver/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Diver">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Diver: aprender é a parte divertida">
+  <meta property="og:description" content="Plataforma de estudos gamificada. Mergulhe. Acerte. Suba de nível.">
+  <meta property="og:url" content="https://allissondella.github.io/diver/">
+  <meta property="og:image" content="https://allissondella.github.io/diver/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="O mascote Diver, um pinguim com máscara de mergulho, ao lado do slogan Mergulhe. Acerte. Suba de nível.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Diver: aprender é a parte divertida">
+  <meta name="twitter:description" content="Plataforma de estudos gamificada. Mergulhe. Acerte. Suba de nível.">
+  <meta name="twitter:image" content="https://allissondella.github.io/diver/assets/og.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icones/apple-touch-icon.png">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%230B2545'/%3E%3Crect x='14' y='30' width='72' height='40' rx='18' fill='%230C354C' stroke='%23FACC15' stroke-width='8'/%3E%3Ccircle cx='37' cy='50' r='9' fill='%23E6F1FF'/%3E%3Ccircle cx='63' cy='50' r='9' fill='%23E6F1FF'/%3E%3Ccircle cx='35' cy='52' r='4.5' fill='%230B2545'/%3E%3Ccircle cx='61' cy='52' r='4.5' fill='%230B2545'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/estilo.css">
   <link rel="stylesheet" href="css/areas.css">
-  <link rel="stylesheet" href="css/jogos.css">
-  <link rel="stylesheet" href="css/descompressao.css">
-  <link rel="stylesheet" href="css/artigo.css">
-  <link rel="stylesheet" href="css/laboratorio.css">
+  <!-- CSS das áreas que não aparecem na primeira tela: baixa sem travar a página (Onda 6, media="print" → "all").
+       A ordem de cima para baixo continua valendo (a posição do link decide a cascata): ritmo.css segue por último. -->
+  <link rel="stylesheet" href="css/jogos.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/descompressao.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/artigo.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/laboratorio.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/caminho.css">
   <link rel="stylesheet" href="css/ritmo.css">
   <!-- Configuração do Supabase (login), escolhida pelo endereço: produção ou testes (docs/AMBIENTES.md).
@@ -47,56 +68,17 @@
   <script src="js/atividade.js" defer></script>
   <script src="js/conta.js" defer></script>
   <script src="js/cartas.js" defer></script>
-  <!-- Sala de Jogos: registro + um arquivo por jogo -->
+  <!-- Sala de Jogos: só o registro (os jogos e laboratórios chegam em pacote, js/app.js PACOTES) -->
   <script src="js/jogos/registro.js" defer></script>
-  <script src="js/jogos/comum.js" defer></script>
-  <script src="js/jogos/cartas-do-fundo.js" defer></script>
-  <script src="js/jogos/quiz-relampago.js" defer></script>
-  <script src="js/jogos/memoria.js" defer></script>
-  <script src="js/jogos/adivinha-ai.js" defer></script>
-  <script src="js/jogos/caca-ao-tesouro.js" defer></script>
-  <script src="js/jogos/chefao.js" defer></script>
-  <script src="js/jogos/mare-alta.js" defer></script>
-  <script src="js/jogos/forca.js" defer></script>
-  <script src="js/jogos/palavrinha.js" defer></script>
-  <script src="js/jogos/corrente-do-tempo.js" defer></script>
-  <script src="js/jogos/caso-resolvido.js" defer></script>
-  <!-- Laboratórios "Mão na massa" (Explora Tech): o Python (lib/pyodide) só baixa quando um laboratório abre -->
-  <script src="js/laboratorio/executor.js" defer></script>
-  <script src="js/laboratorio/editor.js" defer></script>
-  <script src="js/laboratorio/mundo-robo.js" defer></script>
-  <script src="js/laboratorio/laboratorio.js" defer></script>
-  <script src="js/laboratorio/lab-python.js" defer></script>
-  <script src="js/jogos/robo-entregador.js" defer></script>
-  <script src="js/jogos/primeiros-programas.js" defer></script>
-  <script src="js/jogos/lupa-do-codigo.js" defer></script>
-  <script src="js/jogos/caca-bugs.js" defer></script>
-  <script src="js/jogos/oficina-de-funcoes.js" defer></script>
-  <!-- Áreas -->
+  <!-- Áreas usadas no Início (resumo do dia, tarefas, foco) -->
   <script src="js/quadros.js" defer></script>
   <script src="js/organizar.js" defer></script>
-  <script src="js/cronograma-gerador.js" defer></script>
-  <script src="js/cronograma.js" defer></script>
-  <script src="js/diagnostica.js" defer></script>
+  <!-- Resultado do nivelamento (sala Ensino Médio): o js/caminho.js consulta para os estados dos módulos -->
   <script src="js/mapa-partida.js" defer></script>
-  <script src="js/biblioteca.js" defer></script>
-  <script src="js/perfil.js" defer></script>
-  <script src="js/estatisticas.js" defer></script>
-  <script src="js/admin.js" defer></script>
-  <script src="js/fila-validacao.js" defer></script>
-  <script src="js/leitor-prova.js" defer></script>
-  <script src="js/provas-enviadas.js" defer></script>
-  <!-- Sala de Descompressão: dicionário brasileiro + área + um arquivo por jogo -->
-  <script src="js/dicionario.js" defer></script>
-  <script src="js/descompressao.js" defer></script>
-  <script src="js/descompressao/investigacao.js" defer></script>
-  <script src="js/descompressao/palavrinha-dia.js" defer></script>
-  <script src="js/descompressao/tiro.js" defer></script>
-  <script src="js/descompressao/batata.js" defer></script>
-  <script src="js/descompressao/pitstop.js" defer></script>
-  <script src="js/descompressao/cardume.js" defer></script>
+  <!-- O resto carrega na primeira vez que a área abre (Onda 6; UI.carregarScripts + PACOTES em js/app.js):
+       jogos e laboratórios, artigo da aula, cronograma, diagnóstica, biblioteca, perfil, estatísticas,
+       admin, fila de validação, provas enviadas e a Sala de Descompressão. -->
   <script src="js/tutorial.js" defer></script>
-  <script src="js/artigo.js" defer></script>
   <script src="js/grupos.js" defer></script>
   <script src="js/caminho.js" defer></script>
   <script src="js/app.js" defer></script>
@@ -315,6 +297,15 @@
       </section>
 
       <!-- ============ SALA: o conteúdo de uma sala (Mergulho no Enem, Radiologia...; montada pelo app.js) ============ -->
+      <script>
+        // Onda 6: o Início aparece já com o HTML (o herói é estático; as salas mostram o esqueleto) e o app completa o resto.
+        // Com login ligado, o CSS (.exige-login) esconde as telas até a pessoa entrar; outro endereço (#perfil...) espera o app.
+        if (!location.hash || location.hash === '#inicio') {
+          var telaInicio = document.getElementById('tela-inicio');
+          telaInicio.hidden = false;
+          telaInicio.classList.add('tela-inicio--cedo'); // só o herói até o app desenhar o resto (nada pula de lugar)
+        }
+      </script>
       <section id="tela-sala" class="tela tela--larga" hidden aria-labelledby="sala-titulo"></section>
 
       <!-- ============ MERGULHO: PAINEL DA TRILHA (mapa de profundidades) ============ -->

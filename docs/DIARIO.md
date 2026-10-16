@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-15 · Revisão de design, Onda 6 (carregamento, app instalável e metadados)
+- **Feito:** o Início abre com 20 scripts (eram 61); o resto vem em pacotes na primeira vez que a área abre (`PACOTES` em `js/app.js`, `UI.carregarScript`), e os jogos baixam sozinhos com o navegador ocioso; `artigo.js` só ao abrir o primeiro artigo; `mapa-partida.js` ficou no núcleo (o Plano de estudos lê o nivelamento). CSS das áreas sem travar, na mesma ordem. Início aparece antes dos scripts (só o herói, sem nada pular). `manifest.webmanifest`, ícones, `og:image`, `canonical`, fontes com `preload`.
+- **Decisões:** sem service worker (cache velho); sem `catalogo-min.json` (o catálogo viaja com ~31 KB comprimido; ganharia ~1,5 KB).
+- **Lighthouse (Início):** celular 82 → 95 (desaceleração real), computador 97 → 99, acessibilidade 100, boas práticas 96 (só a fonte bloqueada no ambiente de medição).
+- **Testes:** todas as áreas abrem com os pacotes; regressão (nivelamento, prova, laboratórios, jogos, quiz) sem erro; auditor completo OK.
+- **Próximo:** Onda 7 (documentação viva).
+
 ## 2026-10-15 · Revisão de design, Onda 5 (movimento)
 - **Feito:** XP e pérolas que contam no feedback e no resumo (`UI.contar`); a certa pulsa e a errada balança; conquista com ícone girando e confete discreto (`UI.confete`, também no fim de fase novo); botões sobem 1 px no hover; filete da barra lateral que desliza; 12 bolhas, paradas no quiz, nos jogos e com a aba escondida; cortina em até 700 ms; "?" abre a lista de atalhos (`UI.atalhos`).
 - **Testes:** contagem, filete, atalhos (geral e do quiz), confete e bolhas paradas conferidos no navegador; regressão sem erro; auditor OK.

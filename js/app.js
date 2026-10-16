@@ -38,28 +38,58 @@ const App = (() => {
   /* =========================================================
      NAVEGAÇÃO (barra lateral + endereço #secao)
      ========================================================= */
+  /* Pacotes de scripts que chegam na primeira vez que a área abre (Onda 6). A ordem dentro de cada pacote importa. */
+  const PACOTES = {
+    jogos: ['js/jogos/comum.js', 'js/jogos/cartas-do-fundo.js', 'js/jogos/quiz-relampago.js', 'js/jogos/memoria.js', 'js/jogos/adivinha-ai.js',
+      'js/jogos/caca-ao-tesouro.js', 'js/jogos/chefao.js', 'js/jogos/mare-alta.js', 'js/jogos/forca.js', 'js/jogos/palavrinha.js',
+      'js/jogos/corrente-do-tempo.js', 'js/jogos/caso-resolvido.js',
+      'js/laboratorio/executor.js', 'js/laboratorio/editor.js', 'js/laboratorio/mundo-robo.js', 'js/laboratorio/laboratorio.js', 'js/laboratorio/lab-python.js',
+      'js/jogos/robo-entregador.js', 'js/jogos/primeiros-programas.js', 'js/jogos/lupa-do-codigo.js', 'js/jogos/caca-bugs.js', 'js/jogos/oficina-de-funcoes.js'],
+    cronograma: ['js/cronograma-gerador.js', 'js/diagnostica.js', 'js/cronograma.js'],
+    nivelamento: ['js/cronograma-gerador.js', 'js/diagnostica.js'], // o js/mapa-partida.js já vem no núcleo (o Plano de estudos usa)
+    provas: ['js/leitor-prova.js', 'js/provas-enviadas.js'],
+    biblioteca: ['js/biblioteca.js'],
+    perfil: ['js/perfil.js'],
+    estatisticas: ['js/estatisticas.js'],
+    admin: ['js/estatisticas.js', 'js/admin.js'],
+    fila: ['js/fila-validacao.js'],
+    descompressao: ['js/dicionario.js', 'js/descompressao.js', 'js/descompressao/investigacao.js', 'js/descompressao/palavrinha-dia.js',
+      'js/descompressao/tiro.js', 'js/descompressao/batata.js', 'js/descompressao/pitstop.js', 'js/descompressao/cardume.js'],
+  };
+  const pacotesProntos = new Set();
+  /** Garante os pacotes; depois dos jogos, as cartas são refeitas (os laboratórios entram nelas). */
+  function carregarPacotes(nomes = []) {
+    const faltam = nomes.filter((n) => !pacotesProntos.has(n));
+    if (!faltam.length) return Promise.resolve();
+    return UI.carregarScripts(faltam.flatMap((n) => PACOTES[n])).then(() => {
+      faltam.forEach((n) => pacotesProntos.add(n));
+      if (faltam.includes('jogos')) estado.cartasCache = {};
+    });
+  }
+  const pacotesProntosPara = (nomes = []) => nomes.every((n) => pacotesProntos.has(n));
+
   const ROTAS = {
     inicio: { tela: 'tela-inicio', render: renderizarInicio },
-    sala: { tela: 'tela-sala', lateral: 'inicio', render: renderizarSalaEstudo }, // endereço #sala-<id> (js/grupos.js)
-    mergulho: { tela: 'tela-painel', precisaTrilha: true, render: renderizarPainel },
-    simulado: { tela: 'tela-simulado', precisaTrilha: true, render: renderizarSimulado },
+    sala: { tela: 'tela-sala', lateral: 'inicio', pacotes: ['cronograma'], render: renderizarSalaEstudo }, // endereço #sala-<id> (js/grupos.js)
+    mergulho: { tela: 'tela-painel', precisaTrilha: true, pacotes: ['jogos'], render: renderizarPainel },
+    simulado: { tela: 'tela-simulado', precisaTrilha: true, pacotes: ['provas'], render: renderizarSimulado },
     revisao: { tela: 'tela-revisao', precisaTrilha: true, render: renderizarRevisao },
-    jogos: { tela: 'tela-jogos', precisaTrilha: true, render: renderizarSala },
+    jogos: { tela: 'tela-jogos', precisaTrilha: true, pacotes: ['jogos'], render: renderizarSala },
     tarefas: { tela: 'tela-tarefas', render: () => Quadros.render($('tela-tarefas')) },
     calendario: { tela: 'tela-calendario', render: () => Organizar.renderCalendario($('tela-calendario')) },
-    cronograma: { tela: 'tela-cronograma', render: () => Cronograma.render($('tela-cronograma')) },
-    diagnostica: { tela: 'tela-diagnostica', render: () => Diagnostica.render($('tela-diagnostica')) },
-    'mapa-partida': { tela: 'tela-mapa-partida', render: () => MapaPartida.render($('tela-mapa-partida')) }, // sala Ensino Médio (js/mapa-partida.js)
+    cronograma: { tela: 'tela-cronograma', pacotes: ['cronograma'], render: () => Cronograma.render($('tela-cronograma')) },
+    diagnostica: { tela: 'tela-diagnostica', pacotes: ['cronograma'], render: () => Diagnostica.render($('tela-diagnostica')) },
+    'mapa-partida': { tela: 'tela-mapa-partida', pacotes: ['nivelamento'], render: () => MapaPartida.render($('tela-mapa-partida')) }, // sala Ensino Médio (js/mapa-partida.js)
     foco: { tela: 'tela-foco', render: () => Organizar.renderFoco($('tela-foco')) },
-    cursos: { tela: 'tela-cursos', render: () => Biblioteca.renderCursos($('tela-cursos')) },
-    pdfs: { tela: 'tela-pdfs', render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
-    perfil: { tela: 'tela-perfil', render: () => Perfil.render($('tela-perfil')) },
-    estatisticas: { tela: 'tela-estatisticas', render: () => Estatisticas.render($('tela-estatisticas')) },
-    descompressao: { tela: 'tela-descompressao', render: () => Descompressao.render($('tela-descompressao')) },
+    cursos: { tela: 'tela-cursos', pacotes: ['biblioteca'], render: () => Biblioteca.renderCursos($('tela-cursos')) },
+    pdfs: { tela: 'tela-pdfs', pacotes: ['biblioteca'], render: () => Biblioteca.renderPdfs($('tela-pdfs')) },
+    perfil: { tela: 'tela-perfil', pacotes: ['perfil'], render: () => Perfil.render($('tela-perfil')) },
+    estatisticas: { tela: 'tela-estatisticas', pacotes: ['estatisticas'], render: () => Estatisticas.render($('tela-estatisticas')) },
+    descompressao: { tela: 'tela-descompressao', pacotes: ['descompressao'], render: () => Descompressao.render($('tela-descompressao')) },
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
-    'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
-    admin: { tela: 'tela-admin', soEquipe: true, render: () => Admin.render($('tela-admin')) },
-    fila: { tela: 'tela-fila', soAdmin: true, render: () => FilaValidacao.render($('tela-fila')) },
+    'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, pacotes: ['provas'], render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
+    admin: { tela: 'tela-admin', soEquipe: true, pacotes: ['admin'], render: () => Admin.render($('tela-admin')) },
+    fila: { tela: 'tela-fila', soAdmin: true, pacotes: ['fila'], render: () => FilaValidacao.render($('tela-fila')) },
   };
   const TELAS_FOCO = ['tela-quiz', 'tela-jogo']; // sem barra lateral: uma ação principal por tela
 
@@ -130,6 +160,16 @@ const App = (() => {
       });
       return;
     }
+    // Área que precisa de um pacote ainda não baixado: baixa e volta aqui (Onda 6)
+    if (!pacotesProntosPara(ROTAS[secao].pacotes)) {
+      const alvo = location.hash.slice(1) || secao;
+      if (secao === 'mergulho') mostrarEsqueletoDoCurso();
+      carregarPacotes(ROTAS[secao].pacotes).then(() => {
+        tirarEsqueletoDoCurso();
+        if (location.hash.slice(1) === alvo) navegar(alvo);
+      }, () => toast('Sem conexão', 'Não deu para abrir esta área agora. Confira a internet e tente de novo.', 'i-x'));
+      return;
+    }
     Tutorial.fechar(false);
     estado.secao = secao;
     if (secao === 'sala') estado.salaId = salaId;
@@ -147,7 +187,7 @@ const App = (() => {
   function emAndamento() {
     const quiz = estado.sessao && !estado.sessao.encerrada && !$('tela-quiz').hidden;
     const jogo = estado.jogo && !estado.jogo.fim && !$('tela-jogo').hidden;
-    return quiz || jogo || Descompressao.emAndamento();
+    return quiz || jogo || (typeof Descompressao !== 'undefined' && Descompressao.emAndamento());
   }
 
   function abandonarAndamento() {
@@ -164,7 +204,7 @@ const App = (() => {
       if (c && c.destruir) c.destruir();
     }
     estado.jogo = null;
-    Descompressao.parar(); // jogo da Sala de Descompressão aberto? fecha (a partida online avisa o outro lado)
+    if (typeof Descompressao !== 'undefined') Descompressao.parar(); // jogo da Sala de Descompressão aberto? fecha (a partida online avisa o outro lado)
   }
 
   /** O filete turquesa da barra lateral desliza até o item atual (Onda 5; só desenho). */
@@ -512,6 +552,7 @@ const App = (() => {
      INÍCIO (escolha de trilha + Seu dia)
      ========================================================= */
   function renderizarInicio() {
+    $('tela-inicio').classList.remove('tela-inicio--cedo'); // a abertura antecipada (index.html) mostrava só o herói
     renderizarContinuar();
     Caminho.cardInicio($('inicio-retomada')); // "Avaliação de nivelamento" (sala Ensino Médio)
     renderizarSalas();
@@ -841,7 +882,13 @@ const App = (() => {
   function renderizarHoje() {
     const area = limpar($('hoje'));
     if (!estado.trilhas.length) return;
-    let desafio = desafioDoDia();
+    // Os jogos chegam em pacote (Onda 6): o Início aparece primeiro e o "Seu dia" se redesenha quando eles chegam
+    if (!pacotesProntos.has('jogos')) {
+      // só quando o navegador estiver ocioso: o Início aparece antes, com os 20 scripts do núcleo
+      const quandoOcioso = window.requestIdleCallback || ((fn) => setTimeout(fn, 600));
+      quandoOcioso(() => carregarPacotes(['jogos']).then(() => { if (estado.secao === 'inicio') renderizarHoje(); }, () => {}), { timeout: 2500 });
+    }
+    let desafio = pacotesProntos.has('jogos') ? desafioDoDia() : null;
     if (desafio && desafio.pendente) {
       // baixa só o curso sorteado e desenha "Seu dia" de novo (se a pessoa ainda estiver no Início)
       const t = desafio.trilha;
@@ -1136,6 +1183,10 @@ const App = (() => {
   }
 
   function abrirResumo(fase, liberada) {
+    if (typeof Artigo === 'undefined') { // o artigo chega na primeira vez que um "Antes de mergulhar" abre (Onda 6)
+      UI.carregarScript('js/artigo.js').then(() => abrirResumo(fase, liberada), () => toast('Sem conexão', 'Não deu para abrir o artigo agora.', 'i-x'));
+      return;
+    }
     const r = fase.resumo || {};
     const eraNovo = precisaLer(fase);
     lembrarFase(fase.id);
@@ -1512,6 +1563,7 @@ const App = (() => {
   }
 
   function iniciarJogo(id, opcoes = {}, { desafio = false } = {}) {
+    if (!pacotesProntos.has('jogos')) return carregarPacotes(['jogos']).then(() => iniciarJogo(id, opcoes, { desafio }));
     if (estado.trilha && estado.trilha._parcial) return comCursoCompleto(() => iniciarJogo(id, opcoes, { desafio }));
     const def = Jogos.obter(id);
     if (!def || !estado.trilha) return;
