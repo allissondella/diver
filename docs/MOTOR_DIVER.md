@@ -172,6 +172,15 @@ Um curso grande (o Enem completo tem ~590 lotes) não dá para aprovar lote a lo
 
 Lote **sem** onda segue igual a antes (seção 11.6, passo 6). Tabela e funções: `supabase/setup.sql` (seção da Fila); tela: `js/fila-validacao.js`.
 
+### 11.9 Validação externa, sem API (2026-10-16)
+O usuário pode validar no Gemini, num Gem, em vez da Fila. `node scripts/validacao-externa.mjs exportar E1` monta o pacote:
+- lotes de questões em 2 partes (A sem gabarito, B com gabarito e o esqueleto JSON);
+- lotes de conteúdo (calendário, artigos, fichas, cartas, laboratórios, profissões);
+- o prompt do Gem;
+- o manifesto em `data/validacao-externa/`.
+
+`aplicar <arquivos>` grava `validacao` com `via: "externa"`. As regras são as do Mergulho Triplo: assinatura conferida, `pronta`, e 2ª reprovação → `emRevisao`. Cada problema apontado vira pendência para correção. Detalhes em `docs/VALIDACAO_EXTERNA.md`.
+
 ## 12. Variantes na Revisão (2026-10-01)
 
 **A ideia:** quem errou uma questão não deve rever exatamente a mesma, senão decora a letra. A Revisão mostra uma **variante**: mesma habilidade, outra situação e outros números. Tudo é **pré-gerado em lote** pelo mesmo caminho validado (skill `criar-trilha` → Fila de Validação com senha → Mergulho Triplo). **Nenhuma IA roda enquanto o aluno usa o app**: a Revisão só escolhe entre variantes que já têm `validacao.pronta = true`.
