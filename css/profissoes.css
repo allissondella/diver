@@ -1441,3 +1441,54 @@ body.prof-rc-aberto { overflow: hidden; }
 .prof-raiz .prof-bolha:is(:hover, :focus-visible) .prof-bolha-arte { opacity: .55; }
 .prof-postal .prof-arte { width: 86%; height: auto; }
 .prof-postal--falta .prof-arte { filter: brightness(0); opacity: .35; }
+
+/* O salário só depois do palpite nos panoramas (2026-10-17, pedido do usuário: "entrega de cara os salários aí acaba não tendo
+   tanta graça para adivinhar"): "R$ ?" nos cartões, o cadeado no "Maior salário", o valor escondido no meio do texto e o "Quem ganha mais?" */
+.prof-esp-salario--fechado { display: inline-flex; align-items: center; gap: 6px; }
+.prof-esp-salario--fechado .prof-ico { width: 16px; height: 16px; color: var(--amarelo); }
+.prof-raiz .prof-esp-salario--fechado b { color: var(--texto-suave); letter-spacing: .06em; }
+.prof-ordens .prof-chip .prof-ico { width: 14px; height: 14px; }
+.prof-ordens-aviso { margin: calc(var(--esp-1) * -1) 0 var(--esp-3); color: var(--texto-suave); }
+.prof-ordens-aviso:empty { display: none; }
+.prof-ordens-aviso .prof-link-botao { padding: 0 var(--esp-1); }
+.prof-reais { padding: 0 6px; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--amarelo) 14%, transparent); color: var(--amarelo); font-weight: 800; white-space: nowrap; }
+.prof-reais--aberto { padding: 0; background: none; color: inherit; font-weight: inherit; }
+.prof-qgm { display: grid; gap: var(--esp-3); justify-items: start; border: 1px solid color-mix(in srgb, var(--amarelo) 30%, transparent); }
+.prof-qgm > .prof-prosa { max-width: 60ch; }
+.prof-qgm-tit { font-size: var(--t-lg); font-weight: 800; }
+.prof-qgm-placar { color: var(--texto-suave); }
+.prof-qgm-par { justify-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--esp-3); align-items: stretch; }
+.prof-qgm-ou { align-self: center; font-size: var(--t-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-suave); }
+.prof-qgm-op {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-height: 132px; padding: var(--esp-4);
+  border: 2px solid transparent; border-radius: var(--raio); background: var(--superficie-turquesa); color: var(--texto);
+  font: inherit; text-align: left; cursor: pointer; transition: border-color var(--transicao), transform var(--transicao);
+}
+.prof-qgm-op:hover:not([aria-disabled="true"]) { border-color: var(--turquesa-claro); transform: translateY(-2px); }
+.prof-qgm-op[aria-disabled="true"] { cursor: default; }
+.prof-qgm-nome { font-size: var(--t-lg); font-weight: 800; line-height: 1.25; overflow-wrap: break-word; hyphens: auto; }
+.prof-qgm-valor { margin-top: auto; padding-top: var(--esp-2); font-size: var(--t-xl); font-weight: 800; color: var(--texto-suave); }
+.prof-qgm-op--maior { border-color: var(--verde); }
+.prof-qgm-op--maior .prof-qgm-valor { color: var(--amarelo); }
+.prof-qgm-op--menor { opacity: .8; }
+.prof-qgm-op--escolhida.prof-qgm-op--menor { border-color: var(--coral); opacity: 1; }
+.prof-qgm-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; white-space: nowrap; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--verde) 18%, transparent); color: var(--verde); font-size: var(--t-xs); font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.prof-qgm-tag .prof-ico { width: 12px; height: 12px; }
+.prof-qgm-retorno { font-weight: 700; }
+.prof-qgm-retorno:empty { display: none; }
+.prof-qgm-pe { min-height: 36px; }
+.prof-qgm-resultado { display: flex; align-items: center; gap: var(--esp-2); margin-bottom: var(--esp-3); color: var(--texto-suave); }
+.prof-qgm-resultado .prof-ico { flex: none; width: 18px; height: 18px; color: var(--amarelo); }
+.prof-qgm-resultado b { color: var(--amarelo); }
+@media (max-width: 479px) {
+  .prof-qgm-par { gap: var(--esp-2); }
+  .prof-qgm-op { min-height: 104px; padding: var(--esp-3); }
+  .prof-qgm-op .prof-esp-apelido { display: none; }
+  .prof-qgm-nome { font-size: var(--t-md); overflow-wrap: anywhere; }
+  .prof-qgm-valor { font-size: var(--t-lg); }
+  .prof-qgm-tag { padding-inline: 6px; letter-spacing: 0; }
+  .prof-qgm-tag .prof-ico { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prof-qgm-op:hover:not([aria-disabled="true"]) { transform: none; }
+}

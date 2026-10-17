@@ -135,6 +135,22 @@
      ========================================================= */
   function numeroFonte(f, id) { const i = (f.fontes || []).findIndex(x => x.id === id); return i >= 0 ? i + 1 : null; }
   const juntarE = l => l.length < 2 ? l.join('') : l.slice(0, -1).join(', ') + ' e ' + l[l.length - 1];
+  const maiusc = s => s.charAt(0).toUpperCase() + s.slice(1);
+  /* Valor em reais no meio de um texto ("R$ 10.303", "R$ 3,8 mil") fica "R$ ?" até o palpite (2026-10-17, pedido do usuário:
+     "entrega de cara os salários aí acaba não tendo tanta graça para adivinhar"); revelarReais mostra todos de uma vez. */
+  const RE_REAIS = /R\$[\s\u00a0]?\d[\d.]*(?:,\d+)?(?:\s(?:mil|milhão|milhões))?/g;
+  function semReais(texto, aberto) {
+    if (aberto || typeof texto !== 'string' || !texto.includes('R$')) return texto;
+    const partes = []; let i = 0;
+    texto.replace(RE_REAIS, (m, pos) => {
+      partes.push(texto.slice(i, pos), el('span', { class: 'prof-reais', dataset: { valor: m } },
+        el('span', { 'aria-hidden': 'true', text: 'R$ ?' }), el('span', { class: 'prof-oculto', text: 'valor escondido até o seu palpite' })));
+      i = pos + m.length; return m;
+    });
+    partes.push(texto.slice(i));
+    return partes;
+  }
+  function revelarReais(raiz) { (raiz || document).querySelectorAll('.prof-reais').forEach(r => { r.textContent = r.dataset.valor; r.classList.add('prof-reais--aberto'); }); }
   /* Um botão só por informação, mesmo com várias fontes (antes, uma bolinha por fonte, que se encostavam) */
   function citar(f, ids) {
     const lista = [...new Set(ids || [])].filter(id => numeroFonte(f, id));
@@ -885,7 +901,7 @@
     if (formacao.length) cap('formacao', 'A formação', null, ...formacao);
 
     // ---------- 03. O dinheiro: o palpite e, depois dele, todos os valores ----------
-    if (S.quanto_ganha) cap('dinheiro', 'O dinheiro', 'Salário-base de quem foi contratado com carteira. Adicionais não entram.', blocoSalario(f, S.quanto_ganha, pintarSalario));
+    if (S.quanto_ganha) cap('dinheiro', 'O dinheiro', 'Salário-base de quem foi contratado com carteira. Adicionais não entram.', blocoSalario(f, S.quanto_ganha, () => { pintarSalario(); revelarReais(raiz); }));
 
     // ---------- 04. O mercado: o número grande, o ranking, onde se busca e o "Você sabia?" ----------
     const mercado = [], ctx = f.contexto || {};
@@ -918,7 +934,9 @@
     if (carreira.length) cap('carreira', 'A carreira', null, ...carreira);
 
     // ---------- 06. O que ninguém te conta: tudo à vista, numerado ----------
-    if (S.ninguem_conta) cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.', calloutsNumerados(f, S.ninguem_conta.itens));
+    // Um valor em reais aqui ("A média fica em cerca de R$ 3,8 mil") só aparece depois do palpite, como o resto do dinheiro
+    const dinheiroVisto = (estado.salarioRevelado[f.id] || 0) > 0;
+    if (S.ninguem_conta) cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.', calloutsNumerados(f, S.ninguem_conta.itens.map(it => ({ ...it, texto: semReais(it.texto, dinheiroVisto) }))));
 
     // ---------- 07. Combina com você? DNA e o dilema ----------
     const combina = [];
@@ -1217,7 +1235,7 @@
   const pctBarra = p => (p + 0.5) / CHUTE.n * 100;
   /** Quão perto o palpite ficou: 'certo' (até 10%), 'perto' (até 30%) ou 'longe'. */
   const proximidade = (valor, media) => { const d = Math.abs(valor - media) / media; return d <= 0.1 ? 'certo' : d <= 0.3 ? 'perto' : 'longe'; };
-  /** A régua do palpite. o = { rotulo, aoEscolher(valor) }. Devolve { el, revelar(valor, media), focar() }. */
+  /** A régua do palpite. o = { rotulo, marca ('média'), aoEscolher(valor) }. Devolve { el, revelar(valor, media), focar() }. */
   function reguaPalpite(o) {
     let atual = null, travada = false, arrastando = false;
     const barras = Array.from({ length: CHUTE.n }, () => el('i'));
@@ -1272,38 +1290,42 @@
       regua.classList.add('prof-chute--travada');
       if (valor != null) { escolher(Math.round(posicaoValor(valor))); bolha.textContent = brl(valor); regua.classList.add('prof-chute--' + proximidade(valor, m)); pintar(atual, null); bolha.textContent = brl(valor); }
       else pintar(null, null);
-      media.hidden = false; media.textContent = 'média';
+      const marca = o.marca || 'média';
+      media.hidden = false; media.textContent = marca;
       media.style.setProperty('--x', pctBarra(posicaoValor(m)) + '%');
-      regua.setAttribute('aria-valuetext', valor != null ? `Seu palpite: ${brl(valor)}. Média: ${brl(m)}` : `Média: ${brl(m)}`);
+      regua.setAttribute('aria-valuetext', valor != null ? `Seu palpite: ${brl(valor)}. ${maiusc(marca)}: ${brl(m)}` : `${maiusc(marca)}: ${brl(m)}`);
     }
     return { el: el('div', { class: 'prof-chute-caixa' }, regua, escala), revelar, focar: () => regua.focus(), temValor: () => atual != null, confirmar };
   }
-  /** O palpite. o = { id, pergunta, cargo, media, faixa, citacao(), salvo, revelado, aoResponder({ valor, acertou, diferenca }) } */
+  /** O palpite. o = { id, pergunta, cargo, media, faixa, citacao(), salvo, revelado, aoResponder({ valor, acertou, diferenca }) }.
+      Fora da ficha (panoramas), os textos podem mudar: marca ('média'), dica, dicaDepois, tituloSemPalpite e textoValor. */
   function palpite(o) {
+    const marca = o.marca || 'média', dicaDepois = o.dicaDepois || 'Salário-base mensal, sem adicionais.';
     const resposta = el('div', { class: 'prof-palpite-resposta', 'aria-live': 'polite' });
     const confirmar = el('button', { type: 'button', class: 'prof-btn prof-btn--primario prof-btn--pequeno', hidden: true, onclick: () => r.confirmar() }, icone('alvo'), 'Confirmar palpite');
-    const r = reguaPalpite({ rotulo: 'Seu palpite de salário: use as setas e Enter', aoEscolher: v => responder(v, false), aoMexer: () => { confirmar.hidden = false; } });
+    const r = reguaPalpite({ rotulo: o.rotulo || 'Seu palpite de salário: use as setas e Enter', marca, aoEscolher: v => responder(v, false), aoMexer: () => { confirmar.hidden = false; } });
     const pular = el('button', { type: 'button', class: 'prof-link-botao', text: 'Prefiro ver direto', onclick: () => responder(null, false) });
-    const dica = el('span', { class: 'prof-micro', text: 'Toque ou arraste na régua e solte no seu palpite. Salário-base mensal, sem adicionais.' });
-    const caixa = el('div', { class: 'prof-palpite' },
+    const dica = el('span', { class: 'prof-micro', text: o.dica || 'Toque ou arraste na régua e solte no seu palpite. ' + dicaDepois });
+    const caixa = el('div', { class: 'prof-palpite', id: o.idCaixa || null },
       el('p', { class: 'prof-palpite-pergunta', text: o.pergunta }),
       r.el,
       el('div', { class: 'prof-palpite-pe' }, dica, el('div', { class: 'prof-palpite-botoes' }, confirmar, pular)),
       resposta);
     function responder(valor, jaSalvo) {
       r.revelar(valor, o.media);
-      pular.hidden = true; confirmar.hidden = true; dica.textContent = 'Salário-base mensal, sem adicionais.';
+      pular.hidden = true; confirmar.hidden = true; dica.textContent = dicaDepois;
       const dif = valor == null ? null : valor - o.media, perto = valor == null ? null : proximidade(valor, o.media);
-      const titulo = valor == null ? 'A média de contratação' : perto === 'certo' ? 'Na mosca!' : perto === 'perto' ? 'Quase!' : dif < 0 ? 'Mais do que você imaginou' : 'Menos do que você imaginou';
-      const difTexto = valor == null ? null : Math.abs(dif) < 50 ? 'Exatamente a média.' : `Seu palpite, ${brl(valor)}, ficou ${brl(Math.abs(dif))} ${dif > 0 ? 'acima' : 'abaixo'} da média.`;
+      const titulo = valor == null ? (o.tituloSemPalpite || 'A média de contratação') : perto === 'certo' ? 'Na mosca!' : perto === 'perto' ? 'Quase!' : dif < 0 ? 'Mais do que você imaginou' : 'Menos do que você imaginou';
+      const difTexto = valor == null ? null : Math.abs(dif) < 50 ? `Exatamente ${marca === 'média' ? 'a média' : 'o ' + marca}.` : `Seu palpite, ${brl(valor)}, ficou ${brl(Math.abs(dif))} ${dif > 0 ? 'acima' : 'abaixo'} ${marca === 'média' ? 'da média' : 'do ' + marca}.`;
       const dominio = dominioDe([{ media: o.media, faixa: o.faixa }]);
       resposta.textContent = '';
-      resposta.append(
+      // append() escreveria "null" no lugar do que não vem (sem palpite não há diferença; sem faixa, não há legenda)
+      resposta.append(...[
         el('p', { class: 'prof-palpite-titulo' + (perto ? ' prof-palpite-titulo--' + perto : '') }, titulo),
         difTexto ? el('p', { class: 'prof-palpite-dif', text: difTexto }) : null,
-        el('p', { class: 'prof-palpite-valor' }, el('b', { class: 'prof-num', text: brl(o.media) }), el('span', null, ` é a média de contratação de ${o.cargo.toLowerCase()}`, o.citacao(), '.')),
-        regua({ dominio, media: o.media, faixa: o.faixa }),
-        o.faixa ? el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), `A maior parte dos contratos: ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}`), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média')) : null);
+        el('p', { class: 'prof-palpite-valor' }, el('b', { class: 'prof-num', text: brl(o.media) }), el('span', null, o.textoValor || ` é a média de contratação de ${o.cargo.toLowerCase()}`, o.citacao(), '.')),
+        regua({ dominio, media: o.media, faixa: o.faixa, marca }),
+        o.faixa ? el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), `A maior parte dos contratos: ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}`), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média')) : null].filter(Boolean));
       if (!jaSalvo) o.aoResponder({ valor, acertou: perto === 'certo', diferenca: dif });
     }
     // Palpite guardado: o valor (régua) ou, de antes da régua, só a faixa (aí mostra a média, sem o palpite)
@@ -1314,7 +1336,7 @@
   /** Régua: a faixa comum (onde fica a maior parte dos contratos) e a média marcada. Também serve a várias linhas. */
   function regua(o) {
     const [a, b] = o.dominio, pct = v => Math.max(0, Math.min(100, (v - a) / (b - a) * 100));
-    return el('div', { class: 'prof-regua' + (o.fina ? ' prof-regua--fina' : ''), role: 'img', 'aria-label': `Média ${brl(o.media)}${o.faixa ? `; faixa comum de ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}` : ''}` },
+    return el('div', { class: 'prof-regua' + (o.fina ? ' prof-regua--fina' : ''), role: 'img', 'aria-label': `${maiusc(o.marca || 'média')} ${brl(o.media)}${o.faixa ? `; faixa comum de ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}` : ''}` },
       el('span', { class: 'prof-regua-trilho' }),
       o.faixa ? el('span', { class: 'prof-regua-faixa', style: { left: pct(o.faixa.de) + '%', width: (pct(o.faixa.ate) - pct(o.faixa.de)) + '%' } }) : null,
       el('span', { class: 'prof-regua-media', style: { left: pct(o.media) + '%' } }));
@@ -1930,7 +1952,7 @@
     /* Peças para as extensões (js/profissoes-panorama.js): as mesmas da ficha, para o desenho ficar igual */
     _util: { el, icone, aviso, botao, link, citar, prosa, brl, dataBR, normalizar, nomeArea, corArea, salvarEstado, lerJson, limpezas, IG, EIXOS,
       temFicha, temPanorama, pedir, semMovimento, contar, ir, fontesGuardadas, abrirFonte, abrirFontes, botaoFontes, numeroFonte, dadosPanorama,
-      topoPagina, cabecalho, indiceCapitulos, linhasCargos,
+      topoPagina, cabecalho, indiceCapitulos, linhasCargos, palpite, semReais, revelarReais, maiusc,
       capituloRelatorio, fonteLinha, faixaNumero, numerosProf, capaRelatorio, linhaEmNumeros, caixaResumo, calloutsNumerados, regua, dominioDe }
   };
 })();
