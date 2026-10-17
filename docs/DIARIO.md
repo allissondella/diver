@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-10-17 · Mapa das Profissões: "Na sua mira" numa linha só
+- **Pedido do usuário:** "à medida que vai caindo coisas na Mira, vai ficando um vazio imenso do lado, precisa esconder isso" (com 13 profissões na mira, a lista do cabeçalho crescia e deixava um buraco enorme ao lado do título).
+- **Feito:** no cabeçalho do mapa, "Na sua mira" ocupa **uma linha só**, da mais recente para a mais antiga; as que não cabem ficam atrás do **"+N"**, que abre a lista inteira embaixo do cabeçalho, na largura toda (como o álbum de selos). A conta de quantas cabem é refeita quando a largura muda.
+- **Testes:** com 13 na mira, em 1600, 1440, 1280, 1024, 768, 390 e 360 px: uma linha só, à vista + "+N" = 13, a lista inteira abre embaixo do cabeçalho e a diferença entre o título e o lado caiu de ~600 px para ~60 px.
+
 ## 2026-10-17 · Tiro ao Alvo: pistola de verdade, som de água e tiros satisfatórios
 - **Pedido do usuário:** "Essa pistola de água tem que ficar mais realista e ter som de água e ser satisfatório os tiros". **Regras, níveis, eliminação, 1 ponto por acerto e recorde iguais; o acerto continua decidido no clique (só o desenho espera a água chegar); nada no banco.**
 - **Feito:**

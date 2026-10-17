@@ -52,7 +52,7 @@ A **Fase 0 está feita**: protótipo em HTML/CSS/JS puros com os modos Mergulho,
 - **Aba repaginada (2026-10-16, pedido do usuário: "quadro invisível" ao rolar, pesada, chute atropelado, especialidades bagunçadas; só o desenho, conteúdo, rotas, XP e log iguais; `docs/MAPA_PROFISSOES_INTERACOES.md`, "A aba repaginada"):**
   - **página larga só nesta aba** (até 1240 px; exceção em `docs/DESIGN.md`) e **"Esconder menu"** de 1280 px para cima (`body.prof-sem-menu`, só no aparelho: `diver-local:v1:profissoes-sem-menu`);
   - **nada some ao rolar** (sem abertura em tela cheia, partes que acendem, guia com "Próximo" nem doca); peças comuns em `Profissoes._util` (desde 2026-10-17, as do relatório, no item abaixo);
-  - **mapa:** busca, abas de área com contagem, "Explore por dentro" (panoramas em destaque) e grade; área pequena fica ao lado de outra;
+  - **mapa:** busca, abas de área com contagem, "Explore por dentro" (panoramas em destaque) e grade; área pequena fica ao lado de outra; "Na sua mira" fica numa linha só, da mais recente para a mais antiga, e o "+N" abre a lista inteira embaixo do cabeçalho (2026-10-17, pedido do usuário: a lista crescia e abria um vazio ao lado do título);
   - **ficha:** cabeçalho com as ações, quatro números, faixa de capítulos presa no topo e capítulos em duas colunas;
   - **palpite de salário:** um lugar só, com "Prefiro ver direto" (as 4 faixas viraram régua em 2026-10-17, no item "Releitura"), resposta no lugar com a régua (faixa comum e média) e depois todos os cargos e pisos (`estado.chutes['<id>:palpite']`);
   - **panoramas como explorador:** "O que importa para você?" ordena os cartões; cada área ou especialidade abre com a faixa de todas no topo; o salário aparece aberto (o palpite fica só nas fichas);
