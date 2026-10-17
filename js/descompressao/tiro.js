@@ -11,6 +11,11 @@
  * com as placas em três trilhos (fundo, meio e frente). As placas de um trilho andam juntas, então nunca uma
  * passa por cima da outra. Com "reduzir movimento", as placas não sobem, não deslizam nem pulam e não há respingos
  * (o jogo continua acelerando pelo tempo de cada placa).
+ * Festa (2026-10-17, só no desenho e no som; pontos, regras e níveis iguais): a placa acertada tomba com respingo e
+ * "+1"; de 5 em 5 acertos seguidos, o selo "5 seguidas!" no balcão; a régua de risquinhos conta o nível; a regra nova
+ * entra em fatia; no erro, um véu de pixels coral e a placa culpada acesa; no fim, "Em números" com os pontos
+ * contando. Álbum de regras: cada nível completo vira o selo da regra (26), guardado com o estado da Sala
+ * (ctx.gravar, sem tabela nova). Som sintetizado (botão "Som" na barra) e teclado (setas miram, espaço atira).
  */
 (() => {
   const { h, icone, plural } = UI;
@@ -146,6 +151,65 @@
     };
   }
 
+  /* ---------- Álbum de regras (2026-10-17): um selo por regra simples, guardado com o estado da Sala ----------
+     Completou um nível, ganhou o selo da regra dele; numa regra em dupla ("A ou B"), os dois; em "Tudo MENOS A", o de A. */
+  const FAMILIAS = [
+    { id: 'bichos', nome: 'Bichos', regras: ['peixes', 'mamiferos', 'aves', 'voam', 'insetos', 'repteis'] },
+    { id: 'coisas', nome: 'Coisas', regras: ['frutas', 'instrumentos', 'cores'] },
+    { id: 'lugares', nome: 'Lugares', regras: ['capitais', 'sul'] },
+    { id: 'numeros', nome: 'Números e contas', regras: ['pares', 'impares', 'maior50', 'menor20', 'mult3', 'mult5', 'primos', 'conta10', 'conta12'] },
+    { id: 'letras', nome: 'Letras', regras: ['acento', 'vogais', 'consoantes'] },
+    { id: 'formas', nome: 'Formas', regras: ['circulos', 'triangulos', 'estrelas'] },
+  ];
+  const nomeSelo = (id) => {
+    const t = REGRAS.find((r) => r.id === id).texto.replace(/^(os|as) /, '');
+    return t[0].toUpperCase() + t.slice(1);
+  };
+  const selosDaRegra = (regra) => regra.id.replace(/^menos-/, '').split('+').filter((id) => REGRAS.some((r) => r.id === id));
+
+  /* ---------- Som (sintetizado na hora, como no Cardume; o botão "Som" fica na barra de cima) ---------- */
+  function criarSom(ligado) {
+    let ac = null;
+    const som = {
+      ligado,
+      iniciar() {
+        try {
+          ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+          if (ac.state === 'suspended') ac.resume();
+        } catch (e) { ac = null; }
+      },
+      tom(freq, dur, tipo = 'sine', vol = 0.08, desliza = 1, atraso = 0) {
+        if (!som.ligado || !ac) return;
+        try {
+          const t = ac.currentTime + atraso;
+          const o = ac.createOscillator();
+          const v = ac.createGain();
+          o.type = tipo;
+          o.frequency.setValueAtTime(freq, t);
+          if (desliza !== 1) o.frequency.exponentialRampToValueAtTime(Math.max(40, freq * desliza), t + dur);
+          v.gain.setValueAtTime(0.0001, t);
+          v.gain.exponentialRampToValueAtTime(vol, t + 0.012);
+          v.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+          o.connect(v).connect(ac.destination);
+          o.start(t);
+          o.stop(t + dur + 0.03);
+        } catch (e) { /* sem som, sem problema */ }
+      },
+      fechar() { try { if (ac) ac.close(); } catch (e) { /* nada */ } ac = null; },
+    };
+    return som;
+  }
+  const SONS = {
+    jato: (s) => s.tom(1500, 0.06, 'sine', 0.025, 0.45),
+    agua: (s) => s.tom(330, 0.14, 'sine', 0.05, 0.55),
+    acerto: (s) => { s.tom(660, 0.07, 'triangle', 0.07); s.tom(990, 0.12, 'sine', 0.06, 1, 0.05); },
+    seguidas: (s) => [784, 988, 1175].forEach((f, i) => s.tom(f, 0.12, 'sine', 0.06, 1, i * 0.07)),
+    nivel: (s) => [523, 659, 784, 1047].forEach((f, i) => s.tom(f, 0.2, 'sine', 0.08, 1, i * 0.09)),
+    erro: (s) => [392, 330, 262, 196].forEach((f, i) => s.tom(f, 0.22, 'triangle', 0.07, 1, i * 0.11)),
+  };
+  const vibrar = (ms) => { try { if (!UI.movimentoReduzido && navigator.vibrate) navigator.vibrate(ms); } catch (e) { /* nada */ } };
+  const QUEDA = 0.32; // segundos: a placa acertada tomba para trás do trilho
+
   Descompressao.registrar({
     id: 'tiro',
     nome: 'Tiro ao Alvo',
@@ -158,25 +222,43 @@
     abrir(ctx) {
       let jogo = null; // partida em andamento
       let quadro = 0;
-      let limpar = [];
+      let vivo = true; // vira false quando a pessoa sai do jogo
+      const limpar = [];
+      const salvo = ctx.estado() || {};
+      const som = criarSom(salvo.som !== false);
+      const tocar = (nome) => SONS[nome](som);
+      const selos = new Set((salvo.selos || []).filter((id) => REGRAS.some((r) => r.id === id)));
 
       // Tela toda (2026-10-17): o palco é a janela inteira; a regra e o placar ficam por cima dele, em pílulas
       const hudDados = h('div', { class: 'sd-tiro__dados' });
       const hud = h('div', { class: 'sd-tiro__hud', 'aria-live': 'off' }, hudDados);
       const regraEl = h('p', { class: 'sd-tiro__regra', id: 'sd-tiro-regra', 'aria-live': 'assertive' });
       const topo = h('div', { class: 'sd-tiro__topo' }, regraEl, hud);
-      const tela = h('canvas', { class: 'sd-tiro__canvas', id: 'sd-tiro-canvas', tabindex: '-1', 'aria-label': 'Área de tiro: mire e clique nas placas da regra' });
+      const tela = h('canvas', { class: 'sd-tiro__canvas', id: 'sd-tiro-canvas', tabindex: '0', 'aria-label': 'Área de tiro: mire e clique nas placas da regra. No teclado, as setas miram e o espaço atira.' });
       const palco = h('div', { class: 'sd-tiro__palco' }, tela);
       const abertura = h('div', { class: 'sd-tiro__abertura' });
-      const raiz = h('div', { class: 'sd-tiro' }, palco, topo, abertura);
+      const aviso = h('p', { class: 'visualmente-oculto', 'aria-live': 'polite' }); // "Nível 3 completo!" para quem usa leitor de tela
+      const raiz = h('div', { class: 'sd-tiro' }, palco, topo, abertura, aviso);
       ctx.container.replaceChildren(raiz);
       const g = tela.getContext('2d');
       let L = 0;
       let A = 0;
       let T = 0; // onde começa o campo das placas (abaixo da regra e do placar)
-      let mira = null; // { x, y } do ponteiro (mouse); no toque, só aparece no disparo
+      let mira = null; // { x, y } do ponteiro (mouse) ou das setas; no toque, só aparece no disparo
 
-      // "Tela cheia" de verdade (sem as barras do navegador), onde ele deixa; o botão fica na barra de cima
+      // Os botões do jogo na barra de cima: "Som" e, onde o navegador deixa, "Tela cheia" de verdade
+      const botaoSom = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-tiro__som', 'aria-label': 'Som', onclick: alternarSom });
+      function pintarSom() {
+        botaoSom.setAttribute('aria-pressed', String(som.ligado));
+        botaoSom.replaceChildren(icone(som.ligado ? 'i-som' : 'i-mudo'), h('span', { class: 'sd-barra__texto', text: 'Som' }));
+      }
+      function alternarSom() {
+        som.ligado = !som.ligado;
+        if (som.ligado) som.iniciar();
+        ctx.gravar({ som: som.ligado });
+        pintarSom();
+      }
+      pintarSom();
       const podeTelaCheia = !!(document.fullscreenEnabled && document.documentElement.requestFullscreen);
       const botaoCheia = podeTelaCheia ? h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-tiro__cheia', 'aria-pressed': 'false', onclick: alternarTelaCheia }) : null;
       function pintarCheia() {
@@ -189,9 +271,9 @@
         if (pedido && pedido.catch) pedido.catch(() => { /* o navegador recusou: segue na janela */ });
         tela.focus({ preventScroll: true });
       }
-      if (botaoCheia && ctx.barra) {
+      if (ctx.barra) ctx.barra(h('div', { class: 'sd-tiro__botoes' }, botaoSom, botaoCheia));
+      if (botaoCheia) {
         pintarCheia();
-        ctx.barra(botaoCheia);
         document.addEventListener('fullscreenchange', pintarCheia);
         limpar.push(() => document.removeEventListener('fullscreenchange', pintarCheia));
       }
@@ -214,36 +296,82 @@
         else desenhar();
       }
 
-      /* ---------- Abertura e fim ---------- */
+      /* ---------- Abertura, fim e álbum ---------- */
+      const numero = (rotulo, valor, destaque) => h('div', {}, h('dt', { text: rotulo }), h('dd', { class: destaque ? 'sd-tiro__destaque' : '', text: String(valor) }));
+      // passo numerado: o negrito sozinho já se entende (na tela bem baixa, o resto some)
+      const passo = (n, forte, mais) => h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: n }), h('p', {}, h('b', { text: forte }), h('span', { class: 'sd-tiro__passo-mais', text: mais })));
+      const botaoComecar = (texto) => h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-tiro-comecar', onclick: comecar }, icone('i-alvo'), texto);
+      /** A linha do álbum: quantos selos, os novos desta partida e o botão que abre o álbum */
+      function linhaAlbum(novos, voltar) {
+        return h('div', { class: 'sd-tiro__album' },
+          h('p', { class: 'sd-tiro__album-conta' }, icone('i-medalha'), h('span', {}, 'Álbum de regras: ', h('b', { text: `${selos.size} de ${REGRAS.length}` }))),
+          novos && novos.length ? h('p', { class: 'sd-tiro__novos' }, ...novos.map((id) => h('span', { class: 'tag tag--destaque', text: `Selo novo: ${nomeSelo(id)}` }))) : null,
+          h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', id: 'sd-tiro-album', onclick: () => mostrarAlbum(voltar) }, 'Ver álbum'));
+      }
+
       /** Abertura e fim: um cartão só, no desenho das Profissões (rótulo, título, passos numerados e "Em números") */
       function mostrarAbertura(fim = null) {
         const recorde = ctx.recorde();
         raiz.classList.remove('sd-tiro--jogando');
         abertura.hidden = false;
-        const numero = (rotulo, valor, destaque) => h('div', {}, h('dt', { text: rotulo }), h('dd', { class: destaque ? 'sd-tiro__destaque' : '', text: String(valor) }));
-        // passo numerado: o negrito sozinho já se entende (na tela bem baixa, o resto some)
-        const passo = (n, forte, mais) => h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: n }), h('p', {}, h('b', { text: forte }), h('span', { class: 'sd-tiro__passo-mais', text: mais })));
-        const corpo = fim
-          ? [h('p', { class: 'sd-tiro__rotulo', text: 'Fim da partida' }),
+        const voltarAqui = () => mostrarAbertura(fim);
+        let cartao;
+        if (fim) {
+          const novo = fim.pontos > fim.recordeAntes;
+          const pontosEl = h('dd', { class: 'sd-tiro__destaque', text: fim.mostrado ? String(fim.pontos) : '0' });
+          cartao = h('div', { class: 'sd-tiro__cartao sd-tiro__cartao--fim' },
+            h('p', { class: 'sd-tiro__rotulo', text: 'Fim da partida' }),
             h('h2', { class: 'sd-tiro__titulo', text: fim.motivo === 'errada' ? 'Placa errada!' : 'Deixou escapar!' }),
             h('p', { class: 'sd-tiro__porque', text: fim.porque }),
-            h('dl', { class: 'sd-tiro__numeros' },
-              numero('Pontos', fim.pontos, true),
-              numero('Nível', fim.nivel),
-              numero(fim.pontos >= recorde && fim.pontos > 0 ? 'Novo recorde' : 'Recorde', Math.max(recorde, fim.pontos)))]
-          : [h('p', { class: 'sd-tiro__rotulo', text: 'Pistola carregada' }),
+            h('section', { class: 'sd-tiro__em-numeros', 'aria-labelledby': 'sd-tiro-em-numeros' },
+              h('div', { class: 'sd-tiro__em-numeros-topo' },
+                h('h3', { class: 'sd-tiro__sobre', id: 'sd-tiro-em-numeros', text: 'Em números' }),
+                novo || recorde ? h('p', { class: 'sd-tiro__recorde' + (novo ? ' sd-tiro__recorde--novo' : '') }, icone(novo ? 'i-trofeu' : 'i-estrela'), novo ? 'Novo recorde!' : `Recorde: ${plural(recorde, 'ponto', 'pontos')}`) : null),
+              h('dl', { class: 'sd-tiro__numeros sd-tiro__numeros--fim' },
+                h('div', {}, h('dt', { text: 'Pontos' }), pontosEl),
+                numero('Nível', fim.nivel),
+                numero('Seguidas', fim.seguidas), // a maior sequência de acertos sem jato na água
+                numero('Tempo', UI.formatarTempo(fim.segundos)))),
+            linhaAlbum(fim.selosNovos, voltarAqui),
+            h('div', { class: 'acoes-linha sd-tiro__acoes' }, botaoComecar('Jogar de novo'), h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala')));
+          if (!fim.mostrado) {
+            fim.mostrado = true;
+            UI.contar(pontosEl, 0, fim.pontos, 700); // o número dos pontos conta de zero até ele
+            if (novo) UI.confete();
+          }
+        } else {
+          cartao = h('div', { class: 'sd-tiro__cartao' },
+            h('p', { class: 'sd-tiro__rotulo', text: 'Pistola carregada' }),
             h('h2', { class: 'sd-tiro__titulo', text: 'Tiro ao Alvo' }),
             h('p', { class: 'sd-tiro__lead', text: 'Pistola d\'água na mão: acerte só as placas da regra. 1 ponto por acerto.' }),
             h('ol', { class: 'sd-tiro__passos' },
               passo('01', 'Leia a regra. ', 'Cada nível tem uma, e só valem as placas que combinam com ela.'),
               passo('02', 'Errou ou deixou escapar, acabou. ', 'Placa errada ou placa certa que some: eliminação.'),
               passo('03', 'Acertou todas, sobe de nível. ', 'Regra nova e mais placas. O nível 1 é aquecimento: do 2 em diante, segura firme!')),
-            recorde ? h('dl', { class: 'sd-tiro__numeros' }, numero('Seu recorde', plural(recorde, 'ponto', 'pontos'), true)) : null];
-        abertura.replaceChildren(h('div', { class: 'sd-tiro__cartao' + (fim ? ' sd-tiro__cartao--fim' : '') }, ...corpo,
-          h('div', { class: 'acoes-linha sd-tiro__acoes' },
-            h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-tiro-comecar', onclick: comecar }, icone('i-alvo'), fim ? 'Jogar de novo' : 'Começar'),
-            fim ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala') : null)));
+            recorde ? h('dl', { class: 'sd-tiro__numeros' }, numero('Seu recorde', plural(recorde, 'ponto', 'pontos'), true)) : null,
+            linhaAlbum(null, voltarAqui),
+            h('div', { class: 'acoes-linha sd-tiro__acoes' }, botaoComecar('Começar')));
+        }
+        abertura.replaceChildren(cartao);
         const b = abertura.querySelector('#sd-tiro-comecar');
+        if (b) b.focus({ preventScroll: true });
+      }
+
+      /** O álbum: os 26 selos, por família; o que falta fica tracejado */
+      function mostrarAlbum(voltar) {
+        abertura.replaceChildren(h('div', { class: 'sd-tiro__cartao sd-tiro__cartao--album' },
+          h('div', { class: 'sd-tiro__album-topo' },
+            h('div', {}, h('p', { class: 'sd-tiro__rotulo', text: 'Álbum de regras' }), h('h2', { class: 'sd-tiro__titulo', text: `${selos.size} de ${REGRAS.length} selos` })),
+            h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', id: 'sd-tiro-album-voltar', onclick: voltar }, icone('i-voltar'), 'Voltar')),
+          h('p', { class: 'sd-tiro__lead', text: 'Complete um nível para ganhar o selo da regra dele. Numa regra em dupla, valem os dois selos.' }),
+          h('div', { class: 'sd-tiro__familias' }, FAMILIAS.map((f) => h('section', { class: `sd-tiro__familia sd-tiro__familia--${f.id}` },
+            h('h3', { text: f.nome }),
+            h('ul', { class: 'sd-tiro__selos' }, f.regras.map((id) => {
+              const tem = selos.has(id);
+              return h('li', { class: 'sd-tiro__selo' + (tem ? ' sd-tiro__selo--tem' : '') },
+                icone(tem ? 'i-check' : 'i-estrela-vazia'), h('span', { text: nomeSelo(id) }), h('span', { class: 'visualmente-oculto', text: tem ? ': ganho' : ': ainda não' }));
+            })))))));
+        const b = abertura.querySelector('#sd-tiro-album-voltar');
         if (b) b.focus({ preventScroll: true });
       }
 
@@ -254,21 +382,32 @@
 
       /* ---------- Partida ---------- */
       function comecar() {
+        som.iniciar();
         abertura.hidden = true;
         raiz.classList.add('sd-tiro--jogando');
         jogo = {
-          r: Math.random, t: 0, pontos: 0, nivel: 0, agua: TANQUE, recarga: 0, placas: [], respingos: [], jatos: [],
-          regra: null, pausa: 0, proxima: 0.6, coice: 0, fim: false, acertosNivel: 0, certasCriadas: 0, p: null,
+          r: Math.random, t: 0, pontos: 0, nivel: 0, agua: TANQUE, recarga: 0, placas: [], respingos: [], jatos: [], caindo: [], textos: [],
+          regra: null, pausa: 0, proxima: 0.6, coice: 0, fim: false, adeus: null, acertosNivel: 0, certasCriadas: 0, p: null,
+          seguidas: 0, melhorSeq: 0, selosNovos: [], completou: null, transicao: null, trilhos: [],
         };
         proximoNivel();
         cancelAnimationFrame(quadro);
         let antes = performance.now();
         const passo = (agora) => {
-          if (!jogo || jogo.fim) return;
+          if (!jogo) return;
           const dt = Math.min(0.05, (agora - antes) / 1000);
           antes = agora;
-          atualizar(dt);
-          desenhar();
+          if (jogo.fim) {
+            // o fim: o véu cobre a barraca e só depois vem o cartão
+            jogo.t += dt;
+            jogo.adeus.k += dt / (UI.movimentoReduzido ? 0.35 : 1.15);
+            efeitos(dt);
+            desenhar();
+            if (jogo.adeus.k >= 1) return acabar();
+          } else {
+            atualizar(dt);
+            desenhar();
+          }
           quadro = requestAnimationFrame(passo);
         };
         quadro = requestAnimationFrame(passo);
@@ -276,6 +415,8 @@
       }
 
       function proximoNivel() {
+        // as placas que sobraram tombam juntas: a regra vai mudar
+        if (!UI.movimentoReduzido) jogo.placas.forEach((p) => jogo.caindo.push({ ...p, caiu: jogo.t }));
         jogo.nivel++;
         jogo.p = parametros(jogo.nivel);
         jogo.regra = regraDoNivel(jogo.nivel, jogo.r, jogo.regra && jogo.regra.id);
@@ -286,13 +427,28 @@
         const mexe = !UI.movimentoReduzido;
         jogo.trilhos = [0.8, 1, 1.2].map((f, i) => ({ i, dir: jogo.r() < 0.5 ? -1 : 1, vel: mexe ? jogo.p.desliza * f : 0 }));
         jogo.pausa = jogo.nivel === 1 ? 1.4 : 1.8; // respiro para ler a regra nova
+        jogo.transicao = { t0: jogo.t, dur: jogo.pausa, completou: jogo.completou };
+        jogo.completou = null;
         jogo.proxima = 0.3;
         regraEl.textContent = jogo.regra.texto;
         regraEl.classList.toggle('sd-tiro__regra--longa', jogo.regra.texto.length > 28);
         regraEl.classList.remove('sd-tiro__regra--nova');
         void regraEl.offsetWidth;
-        regraEl.classList.add('sd-tiro__regra--nova');
+        regraEl.classList.add('sd-tiro__regra--nova'); // a regra nova entra em fatia
         hudDesenhar();
+      }
+
+      /** Nível completo: os selos da regra vão para o álbum (e ficam guardados na hora) */
+      function completarNivel() {
+        const ganhos = selosDaRegra(jogo.regra).filter((id) => !selos.has(id));
+        if (ganhos.length) {
+          ganhos.forEach((id) => { selos.add(id); jogo.selosNovos.push(id); });
+          ctx.gravar({ selos: [...selos] });
+        }
+        jogo.completou = { nivel: jogo.nivel, ganhos };
+        aviso.textContent = `Nível ${jogo.nivel} completo! Mandou bem, Diver!${ganhos.length ? ` ${plural(ganhos.length, 'selo novo', 'selos novos')} no álbum.` : ''}`;
+        tocar('nivel');
+        proximoNivel();
       }
 
       function criarPlaca() {
@@ -360,6 +516,12 @@
           if (jogo.t - p.nasceu >= p.vida && p.certa) return terminar('escapou', p);
         }
         jogo.placas = jogo.placas.filter((p) => jogo.t - p.nasceu < p.vida);
+        efeitos(dt);
+        hudDesenhar(true);
+      }
+
+      /** Respingos, jatos, placas tombando e os "+1" (andam também durante o fim) */
+      function efeitos(dt) {
         jogo.respingos = jogo.respingos.filter((s) => {
           s.x += s.vx * dt;
           s.y += s.vy * dt;
@@ -368,7 +530,8 @@
           return s.v > 0;
         });
         jogo.jatos = jogo.jatos.filter((j) => (j.v -= dt) > 0);
-        hudDesenhar(true);
+        jogo.caindo = jogo.caindo.filter((c) => jogo.t - c.caiu < QUEDA);
+        jogo.textos = jogo.textos.filter((x) => jogo.t - x.t0 < (x.tipo === 'mais' ? 0.7 : 1.4));
       }
 
       function atirar(x, y, folga = 6) {
@@ -377,11 +540,14 @@
         jogo.agua--;
         jogo.coice = 1;
         jogo.jatos.push({ x, y, v: 0.12 });
+        tocar('jato');
         // a placa mais na frente (trilho da frente, depois a mais nova) que contém o ponto
         const alvo = [...jogo.placas].sort((a, b) => b.trilho - a.trilho || b.nasceu - a.nasceu)
           .find((p) => Math.abs(p.x - x) <= p.w / 2 + folga && Math.abs(p.y - y) <= p.h / 2 + folga);
         if (!alvo) {
+          jogo.seguidas = 0; // jato na água: a sequência recomeça (só isso; não elimina)
           respingar(x, y, COR.claro, 6);
+          tocar('agua');
           return;
         }
         if (!alvo.certa) {
@@ -392,12 +558,17 @@
         jogo.placas = jogo.placas.filter((p) => p !== alvo);
         jogo.pontos++;
         jogo.acertosNivel++;
+        jogo.seguidas++;
+        jogo.melhorSeq = Math.max(jogo.melhorSeq, jogo.seguidas);
+        if (!UI.movimentoReduzido) jogo.caindo.push({ ...alvo, caiu: jogo.t }); // a placa tomba para trás do trilho
+        jogo.textos.push({ tipo: 'mais', x: alvo.x, y: alvo.y - alvo.h / 2 - 4, t0: jogo.t });
         respingar(alvo.x, alvo.y, COR.turquesa, 14);
+        if (jogo.seguidas % 5 === 0) {
+          jogo.textos.push({ tipo: 'seguidas', n: jogo.seguidas, t0: jogo.t }); // só festa: os pontos continuam 1 por acerto
+          tocar('seguidas');
+        } else tocar('acerto');
         hudDesenhar();
-        if (jogo.acertosNivel >= jogo.p.meta) {
-          UI.toast(`Nível ${jogo.nivel} completo!`, 'Mandou bem, Diver! Agora fica mais rápido.', 'i-estrela');
-          proximoNivel();
-        }
+        if (jogo.acertosNivel >= jogo.p.meta) completarNivel();
       }
 
       function respingar(x, y, cor, n) {
@@ -419,28 +590,56 @@
       function terminar(motivo, placa) {
         if (!jogo || jogo.fim) return;
         jogo.fim = true;
-        cancelAnimationFrame(quadro);
-        desenhar(placa);
-        const fim = { motivo, pontos: jogo.pontos, nivel: jogo.nivel, porque: explicar(placa, motivo) };
+        tocar('erro');
+        vibrar(90);
+        const fim = { motivo, pontos: jogo.pontos, nivel: jogo.nivel, seguidas: jogo.melhorSeq, segundos: Math.round(jogo.t),
+          porque: explicar(placa, motivo), selosNovos: [...jogo.selosNovos], recordeAntes: ctx.recorde() };
         ctx.pontuar(jogo.pontos, { acertos: jogo.pontos, nivel: jogo.nivel, segundos: Math.round(jogo.t), motivo });
         regraEl.textContent = motivo === 'errada' ? 'Placa errada!' : 'Deixou escapar!';
-        setTimeout(() => {
-          jogo = null;
-          mostrarAbertura(fim);
-        }, UI.movimentoReduzido ? 200 : 1100);
+        regraEl.classList.remove('sd-tiro__regra--longa');
+        // o véu de pixels coral cobre a barraca aos poucos; só a placa culpada fica acesa
+        const lado = Math.max(22, Math.round(Math.min(L, A) / 14));
+        const cols = Math.ceil(L / lado);
+        jogo.adeus = { k: 0, placa, motivo, fim, lado, cols, ordem: UI.embaralhar([...Array(cols * Math.ceil(A / lado)).keys()]) };
+      }
+
+      function acabar() {
+        const fim = jogo.adeus.fim;
+        jogo = null;
+        mira = null;
+        if (vivo) mostrarAbertura(fim);
       }
 
       let hudAntes = '';
+      let aguaBarra = null;
+      let aguaTexto = null;
+      let aguaAntes = -1;
       function hudDesenhar(soSeMudou = false) {
         if (!jogo) return;
-        const chave = `${jogo.pontos}|${jogo.nivel}|${jogo.acertosNivel}|${jogo.agua}`;
-        if (soSeMudou && chave === hudAntes) return;
+        const chave = `${jogo.pontos}|${jogo.nivel}|${jogo.acertosNivel}|${jogo.p.meta}`;
+        if (soSeMudou && chave === hudAntes && aguaBarra) { // no máximo a água mudou: mexe só na barrinha
+          if (jogo.agua !== aguaAntes) {
+            aguaAntes = jogo.agua;
+            aguaBarra.style.width = `${(jogo.agua / TANQUE) * 100}%`;
+            aguaTexto.textContent = `${jogo.agua} jatos`;
+          }
+          return;
+        }
         hudAntes = chave;
+        aguaAntes = jogo.agua;
+        const feito = jogo.acertosNivel;
+        const meta = jogo.p.meta;
+        aguaBarra = h('span', { class: 'sd-tiro__agua-barra', style: `width:${(jogo.agua / TANQUE) * 100}%` });
+        aguaTexto = h('span', { class: 'visualmente-oculto', text: `${jogo.agua} jatos` });
         hudDados.replaceChildren(
           h('span', { class: 'sd-tiro__pontos' }, icone('i-estrela'), `${jogo.pontos}`),
           h('span', { class: 'sd-tiro__nivel', text: `Nível ${jogo.nivel}` }),
-          h('span', { class: 'sd-tiro__seq' }, `${jogo.acertosNivel}/${jogo.p.meta}`, h('span', { class: 'sd-tiro__seq-rotulo', text: ' do nível' })),
-          h('span', { class: 'sd-tiro__agua' }, h('span', { class: 'sd-tiro__agua-barra', style: `width:${(jogo.agua / TANQUE) * 100}%` }), h('span', { class: 'visualmente-oculto', text: `${jogo.agua} jatos` })));
+          // a régua do nível: um risquinho por placa certa (de 5 em 5, um mais alto)
+          h('span', { class: 'sd-tiro__regua', role: 'img', 'aria-label': `${feito} de ${meta} placas certas do nível` },
+            h('span', { class: 'sd-tiro__riscos', style: `--n:${meta}`, 'aria-hidden': 'true' },
+              Array.from({ length: meta }, (_, i) => h('i', { class: 'sd-tiro__risco' + (i < feito ? ' sd-tiro__risco--feito' : '') + ((i + 1) % 5 === 0 ? ' sd-tiro__risco--cinco' : '') }))),
+            h('b', { 'aria-hidden': 'true', text: `${feito}/${meta}` })),
+          h('span', { class: 'sd-tiro__agua' }, aguaBarra, aguaTexto));
       }
 
       /* ---------- Desenho: a barraca de tiro na beira do mar (2026-10-17) ----------
@@ -751,7 +950,8 @@
         peixe(L - coluna() - t * 2.2, COR.amarelo, -1, t);
       }
 
-      function desenharPlaca(p, destaque = false) {
+      /** Uma placa no trilho; com "achata" < 1, ela está tombando para trás do trilho (acertada) */
+      function desenharPlaca(p, destaque = false, achata = 1) {
         const idade = jogo ? jogo.t - p.nasceu : 1;
         const resto = jogo ? Math.max(0, 1 - idade / p.vida) : 1;
         const base = trilhoY(p.trilho);
@@ -764,6 +964,11 @@
         g.beginPath();
         g.rect(0, 0, L, base); // a placa nasce de trás do trilho
         g.clip();
+        if (achata < 1) { // tomba girando no pé, como numa barraca de parque
+          g.translate(0, base);
+          g.scale(1, Math.max(0.02, achata));
+          g.translate(0, -base);
+        }
         // haste
         g.fillStyle = COR.sup3;
         g.fillRect(x - 3, y + alt / 2 - 2, 6, base - (y + alt / 2) + 4);
@@ -793,6 +998,7 @@
           g.fill();
         }
         // o que a placa diz
+        g.save();
         g.fillStyle = destaque ? COR.coralSombra : COR.escuro;
         if (p.forma) {
           g.translate(x, y - alt * 0.06);
@@ -802,6 +1008,12 @@
           g.textAlign = 'center';
           g.textBaseline = 'middle';
           g.fillText(p.rotulo, x, y - alt * 0.07);
+        }
+        g.restore();
+        if (achata < 1) { // escurece enquanto vira de costas
+          g.fillStyle = alfa(COR.fundo, (1 - achata) * 0.55);
+          arredondado(g, x - w / 2, y - alt / 2, w, alt, r);
+          g.fill();
         }
         g.restore();
       }
@@ -922,7 +1134,166 @@
         g.restore();
       }
 
-      function desenhar(errada = null) {
+      /** Quebra um texto em linhas que cabem na largura (com a fonte que já está no g.font) */
+      function quebrarTexto(texto, max) {
+        const linhas = [];
+        let atual = '';
+        for (const p of texto.split(' ')) {
+          const tenta = atual ? `${atual} ${p}` : p;
+          if (!atual || g.measureText(tenta).width <= max) atual = tenta;
+          else {
+            linhas.push(atual);
+            atual = p;
+          }
+        }
+        if (atual) linhas.push(atual);
+        return linhas;
+      }
+
+      /** A virada de nível: uma faixa entra em fatia, da esquerda, com a regra nova (e o "nível completo"), e sai pela direita */
+      function desenharTransicao() {
+        const tr = jogo.transicao;
+        const desde = jogo.t - tr.t0;
+        const ent = UI.movimentoReduzido ? 1 : suave(desde / 0.32);
+        const sai = UI.movimentoReduzido ? 0 : suave((desde - (tr.dur - 0.28)) / 0.28);
+        g.fillStyle = alfa(COR.fundo, 0.5 * ent * (1 - sai));
+        g.fillRect(0, T, L, balcaoY() - T);
+        const max = L - 56;
+        const f1 = Math.round(Math.max(13, Math.min(18, L / 64)));
+        const linhas = [];
+        if (tr.completou) {
+          linhas.push({ texto: `Nível ${tr.completou.nivel} completo! Mandou bem, Diver!`, fonte: f1, cor: COR.claro });
+          if (tr.completou.ganhos.length) linhas.push({ texto: `${plural(tr.completou.ganhos.length, 'selo novo', 'selos novos')} no álbum`, fonte: f1, cor: COR.amarelo });
+        }
+        linhas.push({ texto: `NÍVEL ${jogo.nivel} · ${jogo.p.meta} placas certas`, fonte: f1, cor: COR.texto });
+        let fr = Math.round(Math.max(18, Math.min(40, L / 22)));
+        g.font = `800 ${fr}px ${FONTE}`;
+        while (g.measureText(jogo.regra.texto).width > max && fr > 16) {
+          fr -= 1;
+          g.font = `800 ${fr}px ${FONTE}`;
+        }
+        quebrarTexto(jogo.regra.texto, max).forEach((t) => linhas.push({ texto: t, fonte: fr, cor: COR.amarelo }));
+        const pad = Math.max(12, f1);
+        const alt = linhas.reduce((s, l) => s + l.fonte * 1.3, 0) + pad * 2;
+        const y0 = Math.max(T + 4, meioCampo() - alt / 2);
+        const inclina = Math.min(36, alt * 0.3);
+        const x1 = -inclina + (L + inclina * 2) * ent; // a ponta da frente
+        const x0 = -inclina + (L + inclina * 2) * sai; // a ponta de trás, quando sai
+        if (x1 <= x0) return;
+        g.save();
+        g.beginPath();
+        g.moveTo(x0, y0);
+        g.lineTo(x1 + inclina, y0);
+        g.lineTo(x1, y0 + alt);
+        g.lineTo(x0 - inclina, y0 + alt);
+        g.closePath();
+        g.fillStyle = alfa(COR.fundo, 0.94);
+        g.fill();
+        g.clip();
+        g.fillStyle = COR.turquesa;
+        g.fillRect(0, y0, L, 3);
+        g.fillRect(0, y0 + alt - 3, L, 3);
+        g.textAlign = 'center';
+        g.textBaseline = 'top';
+        let y = y0 + pad;
+        for (const l of linhas) {
+          g.font = `800 ${l.fonte}px ${FONTE}`;
+          g.fillStyle = l.cor;
+          g.fillText(l.texto, L / 2, y + l.fonte * 0.08);
+          y += l.fonte * 1.3;
+        }
+        g.restore();
+      }
+
+      /** O "+1" que sobe da placa e o selo "5 seguidas!" pintado no balcão */
+      function desenharTextos() {
+        const fMais = Math.round(Math.max(16, Math.min(26, L / 55)));
+        const yb = balcaoY();
+        const faixaBalcao = Math.min(26, (A - yb) * 0.32) + 10; // até o fim da faixa coral
+        for (const x of jogo.textos) {
+          const idade = jogo.t - x.t0;
+          g.save();
+          if (x.tipo === 'mais') {
+            const k = idade / 0.7;
+            const sobe = UI.movimentoReduzido ? 0 : suave(k) * 34;
+            g.globalAlpha = Math.max(0, 1 - k * k);
+            g.font = `800 ${fMais}px ${FONTE}`;
+            g.textAlign = 'center';
+            g.textBaseline = 'bottom';
+            g.lineJoin = 'round';
+            g.lineWidth = 4;
+            g.strokeStyle = alfa(COR.fundo, 0.85);
+            g.strokeText('+1', x.x, x.y - sobe);
+            g.fillStyle = COR.amarelo;
+            g.fillText('+1', x.x, x.y - sobe);
+          } else {
+            const k = idade / 1.4;
+            const fs = Math.round(Math.max(13, Math.min(20, (A - yb) * 0.26)));
+            const cx = L * 0.25;
+            const cy = yb + faixaBalcao + (A - yb - faixaBalcao) / 2;
+            const escala = UI.movimentoReduzido ? 1 : 0.7 + 0.3 * suave(idade / 0.18);
+            g.globalAlpha = k > 0.72 ? Math.max(0, 1 - (k - 0.72) / 0.28) : 1;
+            g.translate(cx, cy);
+            g.scale(escala, escala);
+            g.font = `800 ${fs}px ${FONTE}`;
+            const texto = `${x.n} seguidas!`;
+            const w = g.measureText(texto).width + fs * 1.6;
+            const hh = fs * 1.7;
+            g.fillStyle = COR.amarelo;
+            arredondado(g, -w / 2, -hh / 2, w, hh, hh / 2);
+            g.fill();
+            g.lineWidth = 2.5;
+            g.strokeStyle = COR.amareloSombra;
+            g.stroke();
+            g.fillStyle = COR.escuro;
+            g.textAlign = 'center';
+            g.textBaseline = 'middle';
+            g.fillText(texto, 0, 1);
+          }
+          g.restore();
+        }
+      }
+
+      /** O fim: o véu de pixels coral cobre a barraca; a placa culpada fica acesa por cima, com o aviso */
+      function desenharAdeus() {
+        const a = jogo.adeus;
+        const k = UI.movimentoReduzido ? 1 : Math.min(1, a.k / 0.5);
+        const n = Math.round(a.ordem.length * k);
+        g.fillStyle = alfa(misturar(COR.coral, COR.fundo, 0.55), 0.7);
+        for (let i = 0; i < n; i++) {
+          const c = a.ordem[i];
+          g.fillRect((c % a.cols) * a.lado, Math.floor(c / a.cols) * a.lado, a.lado, a.lado); // sem sobrepor (senão aparece a grade)
+        }
+        const p = a.placa;
+        desenharPlaca(p, true);
+        g.save();
+        if (!UI.movimentoReduzido) { // um anel coral que pulsa duas vezes
+          const pulso = (a.k * 2) % 1;
+          const m = 6 + pulso * 14;
+          g.strokeStyle = alfa(COR.coral, 1 - pulso);
+          g.lineWidth = 3;
+          arredondado(g, p.x - p.w / 2 - m, p.y - p.h / 2 - m, p.w + m * 2, p.h + m * 2, Math.round(p.h * 0.22) + m);
+          g.stroke();
+        }
+        const fs = Math.round(Math.max(13, Math.min(18, L / 70)));
+        const texto = a.motivo === 'errada' ? 'Não vale!' : 'Escapou!';
+        g.font = `800 ${fs}px ${FONTE}`;
+        const w = g.measureText(texto).width + fs * 1.4;
+        const hh = fs * 1.7;
+        const embaixo = p.y + p.h / 2 + 10 + hh < A - 4;
+        const cx = Math.max(w / 2 + 4, Math.min(L - w / 2 - 4, p.x));
+        const cy = embaixo ? p.y + p.h / 2 + 10 + hh / 2 : p.y - p.h / 2 - 10 - hh / 2;
+        g.fillStyle = COR.coral;
+        arredondado(g, cx - w / 2, cy - hh / 2, w, hh, hh / 2);
+        g.fill();
+        g.fillStyle = COR.escuro;
+        g.textAlign = 'center';
+        g.textBaseline = 'middle';
+        g.fillText(texto, cx, cy + 1);
+        g.restore();
+      }
+
+      function desenhar() {
         desenharCena();
         if (!jogo) {
           desenharTrilho(0);
@@ -930,9 +1301,10 @@
           desenharBalcao();
           return;
         }
-        // do fundo para a frente: placas do trilho, depois o trilho (que esconde o pé delas)
+        // do fundo para a frente: as placas que tombam, as placas do trilho e o trilho (que esconde o pé delas)
         for (const i of [0, 1, 2]) {
-          jogo.placas.forEach((p) => { if (p.trilho === i) desenharPlaca(p, p === errada); });
+          jogo.caindo.forEach((c) => { if (c.trilho === i) desenharPlaca(c, false, Math.cos((Math.min(1, (jogo.t - c.caiu) / QUEDA) * Math.PI) / 2)); });
+          jogo.placas.forEach((p) => { if (p.trilho === i) desenharPlaca(p, !!jogo.adeus && p === jogo.adeus.placa); });
           if (i < 2) desenharTrilho(i);
           else desenharBalcao();
         }
@@ -965,27 +1337,12 @@
           g.fill();
         });
         g.globalAlpha = 1;
-        if (jogo.pausa > 0 && !jogo.fim) {
-          const meio = meioCampo();
-          g.fillStyle = alfa(COR.fundo, 0.62);
-          g.fillRect(0, T, L, balcaoY() - T);
-          g.textAlign = 'center';
-          g.textBaseline = 'middle';
-          g.fillStyle = COR.claro;
-          g.font = `800 ${Math.max(16, Math.min(22, L / 26))}px ${FONTE}`;
-          g.fillText(`NÍVEL ${jogo.nivel} · ${jogo.p.meta} placas certas`, L / 2, meio - 26);
-          g.fillStyle = COR.amarelo;
-          let tam = Math.max(18, Math.min(34, L / 18));
-          g.font = `800 ${tam}px ${FONTE}`;
-          while (g.measureText(jogo.regra.texto).width > L - 32 && tam > 12) {
-            tam -= 1;
-            g.font = `800 ${tam}px ${FONTE}`;
-          }
-          g.fillText(jogo.regra.texto, L / 2, meio + 18);
-        }
+        desenharTextos();
         const m = mira || { x: L / 2, y: meioCampo() };
         desenharPistola(m.x, m.y, jogo.coice);
-        if (mira) desenharMira(mira.x, mira.y);
+        if (jogo.adeus) desenharAdeus();
+        else if (mira) desenharMira(mira.x, mira.y);
+        if (jogo.pausa > 0 && !jogo.fim) desenharTransicao(); // a faixa da virada fica por cima de tudo
       }
 
       /* ---------- Controles ---------- */
@@ -1003,9 +1360,35 @@
         if (e.pointerType !== 'mouse') mira = p;
         atirar(p.x, p.y, e.pointerType === 'mouse' ? 6 : 10);
       };
+      // No teclado: as setas mexem a mira (com Shift, mais rápido) e o espaço ou o Enter atiram
+      const SETAS = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+      const aoTeclar = (e) => {
+        if (!jogo || jogo.fim || e.altKey || e.ctrlKey || e.metaKey) return;
+        const m = mira || { x: L / 2, y: meioCampo() };
+        if (SETAS[e.key]) {
+          e.preventDefault();
+          const passoMira = e.shiftKey ? 48 : 16;
+          mira = { x: Math.max(0, Math.min(L, m.x + SETAS[e.key][0] * passoMira)), y: Math.max(T, Math.min(A - 4, m.y + SETAS[e.key][1] * passoMira)) };
+        } else if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          mira = m;
+          atirar(m.x, m.y);
+        }
+      };
       tela.addEventListener('pointermove', aoMover);
       tela.addEventListener('pointerleave', aoSair);
       tela.addEventListener('pointerdown', aoAtirar);
+      tela.addEventListener('keydown', aoTeclar);
+      // o contorno amarelo do foco só aparece no palco para quem está no teclado (no mouse e no toque, nada)
+      const marcarTeclado = (e) => tela.classList.toggle('sd-tiro__canvas--teclado', e.type === 'keydown');
+      document.addEventListener('keydown', marcarTeclado, true);
+      document.addEventListener('pointerdown', marcarTeclado, true);
+      limpar.push(() => {
+        document.removeEventListener('keydown', marcarTeclado, true);
+        document.removeEventListener('pointerdown', marcarTeclado, true);
+      });
+      UI.atalhosDaTela('tela-descompressao', [['Setas', 'Mexem a mira (com Shift, mais rápido)'], ['Espaço ou Enter', 'Atira']]);
+      limpar.push(() => UI.atalhosDaTela('tela-descompressao', null));
       // O palco muda de tamanho com a janela, o celular girando e a tela cheia: mede de novo
       const observador = typeof ResizeObserver === 'function' ? new ResizeObserver(() => medir()) : null;
       if (observador) { observador.observe(palco); observador.observe(topo); } // a regra pode quebrar em duas linhas
@@ -1013,9 +1396,10 @@
       limpar.push(() => (observador ? observador.disconnect() : window.removeEventListener('resize', medir)));
 
       ctx.guia([
-        { alvo: '#sd-tiro-canvas', desenho: 'alvo', titulo: 'Pistola d\'água', texto: `Mire e clique (ou toque) nas placas. A pistola tem ${TANQUE} jatos e recarrega sozinha.` },
+        { alvo: '#sd-tiro-canvas', desenho: 'alvo', titulo: 'Pistola d\'água', texto: `Mire e clique (ou toque) nas placas. No teclado, as setas miram e o espaço atira. A pistola tem ${TANQUE} jatos e recarrega sozinha.` },
         { alvo: '.sd-tiro__passos', desenho: 'estrela', titulo: 'Leia a regra', texto: 'Cada nível tem uma regra, que aparece no alto da tela. Acertar uma placa que NÃO combina com ela elimina na hora.' },
-        { desenho: 'relogio', titulo: 'Não deixe escapar', texto: 'A barrinha amarela embaixo de cada placa mostra quanto tempo ela fica. Placa certa que some também elimina. Acertou todas as certas do nível? Sobe de nível. 1 ponto por acerto; vale o seu recorde.' },
+        { desenho: 'relogio', titulo: 'Não deixe escapar', texto: 'A barrinha amarela embaixo de cada placa mostra quanto tempo ela fica. Placa certa que some também elimina. A régua no alto conta as placas certas do nível: completou, sobe de nível. 1 ponto por acerto; vale o seu recorde.' },
+        { alvo: '.sd-tiro__album', desenho: 'trofeu', titulo: 'Álbum de regras', texto: `Cada nível completo vira o selo da regra dele no seu álbum. São ${REGRAS.length} para colecionar.` },
       ]);
       medir();
       // Só para os testes automáticos (window.__diverTeste existe apenas quando o teste cria): ver a partida e atirar numa placa
@@ -1026,9 +1410,11 @@
       return {
         emAndamento: () => !!(jogo && !jogo.fim),
         parar() {
+          vivo = false;
           cancelAnimationFrame(quadro);
           jogo = null;
           limpar.forEach((f) => f());
+          som.fechar();
           if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => { /* já saiu */ });
         },
       };

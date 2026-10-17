@@ -251,6 +251,11 @@ const UI = (() => {
     'tela-quiz': [['1 a 6 ou A a F', 'Escolhe a alternativa'], ['Enter ou Espaço', 'Continua depois de responder']],
     'tela-tarefas': [['Enter', 'Salva a tarefa'], ['Shift+Enter', 'Salva e abre outra'], ['Alt+Enter', 'Salva e abre os detalhes'], ['Esc', 'Desiste da edição']],
   };
+  /** Um jogo aberto numa tela põe os atalhos dele na lista do "?" (null tira, quando ele fecha). */
+  function atalhosDaTela(id, lista) {
+    if (lista) ATALHOS_TELA[id] = lista;
+    else delete ATALHOS_TELA[id];
+  }
   function atalhos() {
     const tela = [...document.querySelectorAll('.tela')].find((t) => !t.hidden);
     const daTela = (tela && ATALHOS_TELA[tela.id]) || [];
@@ -388,7 +393,7 @@ const UI = (() => {
     $, h, icone, cor, carregando, progresso, esqueleto, limpar, embaralhar, sortear, formatarTempo, plural, normalizar,
     dataLocal, paraData, formatarData, id, baixarArquivo, toast, avisarConquistas,
     montarMascotes, humorMascote, mascote, cabecalho, vazio, movimentoReduzido, codigo, marcado,
-    contar, confete, atalhos, carregarScript, carregarScripts,
+    contar, confete, atalhos, atalhosDaTela, carregarScript, carregarScripts,
   };
 })();
 

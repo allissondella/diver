@@ -278,15 +278,19 @@ body.sd-trava { overflow: hidden; }
 }
 .sd--tela-cheia > .sd-jogo { position: absolute; inset: 0; }
 .sd--tela-cheia .sd-barra__titulo { min-width: 0; font-size: var(--t-lg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sd-barra > .sd-tiro__cheia { margin-left: auto; }
-.sd-barra > .sd-tiro__cheia + .sd-barra__ranking { margin-left: 0; }
-@media (max-width: 479px) { .sd-barra__texto { display: none; } }
+.sd-barra > .sd-tiro__botoes { display: flex; gap: var(--esp-2); margin-left: auto; } /* "Som" e "Tela cheia", antes do Ranking */
+.sd-barra > .sd-tiro__botoes + .sd-barra__ranking { margin-left: 0; }
+@media (max-width: 479px) {
+  .sd-barra__texto, .sd--tela-cheia .sd-voltar__texto { display: none; }
+  .sd--tela-cheia > .sd-barra .botao--pequeno { min-width: 44px; padding-inline: 0; justify-content: center; } /* só o ícone: quadradinho de 44 px */
+}
 
 /* ---------- Tiro ao Alvo ---------- */
 .sd-tiro { position: absolute; inset: 0; overflow: hidden; background: var(--fundo-0); }
 .sd-tiro__palco { position: absolute; inset: 0; }
 .sd-tiro__canvas { display: block; width: 100%; height: 100%; cursor: none; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
 .sd-tiro__canvas:focus { outline: none; }
+.sd-tiro__canvas--teclado:focus { outline: 3px solid var(--amarelo); outline-offset: -3px; } /* no teclado: setas miram, espaço atira */
 /* A regra e o placar ficam por cima do jogo (só durante a partida; na abertura o cartão já diz tudo) */
 .sd-tiro__topo {
   position: absolute; z-index: var(--z-acima); inset: var(--sd-topo, 0px) 0 auto;
@@ -300,7 +304,8 @@ body.sd-trava { overflow: hidden; }
   background: color-mix(in srgb, var(--fundo-0) 74%, transparent);
   color: var(--amarelo); font-size: var(--t-2xl); font-weight: 800; line-height: 1.15; letter-spacing: -.01em; text-align: center; text-wrap: balance;
 }
-.sd-tiro__regra--nova { animation: sd-pulsar 600ms ease; }
+.sd-tiro__regra--nova { animation: sd-tiro-fatia 420ms var(--ease-saida) both; } /* a regra nova entra em fatia */
+@keyframes sd-tiro-fatia { from { clip-path: inset(0 100% 0 0 round var(--raio-pilula)); } to { clip-path: inset(0 0 0 0 round var(--raio-pilula)); } }
 @keyframes sd-pulsar { 0% { transform: scale(0.9); opacity: 0.4; } 60% { transform: scale(1.06); opacity: 1; } 100% { transform: scale(1); } }
 .sd-tiro__dados { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--esp-2); }
 .sd-tiro__dados > span {
@@ -311,10 +316,16 @@ body.sd-trava { overflow: hidden; }
 .sd-tiro__dados > .sd-tiro__pontos { color: var(--amarelo); font-size: var(--t-md); }
 .sd-tiro__pontos .icone { width: 16px; height: 16px; }
 .sd-tiro__dados > .sd-tiro__nivel { color: var(--turquesa-claro); }
-.sd-tiro__dados > .sd-tiro__seq { color: var(--texto-suave); }
 .sd-tiro__dados > .sd-tiro__agua { position: relative; width: 96px; padding: 0; overflow: hidden; }
 .sd-tiro__agua-barra { position: absolute; inset: 8px 8px; border-radius: var(--raio-pilula); background: var(--turquesa-claro); transform-origin: left; transition: width var(--dur-rapida) linear; }
 .sd-tiro__agua-barra { max-width: calc(100% - 16px); }
+/* A régua do nível: um risquinho por placa certa; de 5 em 5, um mais alto */
+.sd-tiro__dados > .sd-tiro__regua { gap: var(--esp-2); }
+.sd-tiro__riscos { display: flex; align-items: flex-end; gap: 2px; width: min(calc(var(--n) * 6px), 220px); height: 14px; }
+.sd-tiro__risco { flex: 1 1 0; min-width: 2px; height: 8px; border-radius: 1px; background: color-mix(in srgb, var(--texto) 28%, transparent); }
+.sd-tiro__risco--cinco { height: 14px; }
+.sd-tiro__risco--feito { background: var(--amarelo); }
+.sd-tiro__regua b { font-weight: 700; color: var(--texto-suave); }
 
 /* Abertura e fim: um cartão no desenho das Profissões, no meio do palco */
 .sd-tiro__abertura {
@@ -347,6 +358,40 @@ body.sd-trava { overflow: hidden; }
 .sd-tiro__numeros dd { margin: 0; font: 800 var(--t-2xl) var(--fonte-mono); line-height: 1.1; color: var(--texto); }
 .sd-tiro__numeros dd.sd-tiro__destaque { color: var(--amarelo); }
 .sd-tiro__acoes { margin-top: var(--esp-1); }
+/* O fim: "Em números" (os pontos contam de zero), o recorde e a linha do álbum */
+.sd-tiro__em-numeros { display: grid; gap: var(--esp-2); }
+.sd-tiro__em-numeros-topo { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--esp-1) var(--esp-3); }
+.sd-tiro__sobre { margin: 0; font-size: var(--t-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-suave); }
+.sd-tiro__numeros--fim { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sd-tiro__recorde { display: inline-flex; align-items: center; gap: var(--esp-1); margin: 0; font-size: var(--t-sm); font-weight: 700; color: var(--texto-suave); }
+.sd-tiro__recorde .icone { width: 16px; height: 16px; }
+.sd-tiro__recorde--novo { color: var(--amarelo); }
+.sd-tiro__album { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2) var(--esp-3); padding-top: var(--esp-3); border-top: 1px solid color-mix(in srgb, var(--texto) 12%, transparent); }
+.sd-tiro__album > p { margin: 0; }
+.sd-tiro__album-conta { display: inline-flex; align-items: center; gap: var(--esp-2); color: var(--texto-suave); }
+.sd-tiro__album-conta .icone { width: 18px; height: 18px; color: var(--amarelo); }
+.sd-tiro__album-conta b { color: var(--texto); }
+.sd-tiro__album > .botao { margin-left: auto; }
+.sd-tiro__novos { display: flex; flex-wrap: wrap; gap: var(--esp-1); } /* os selos novos ao lado da conta, se couber */
+/* O álbum: 26 selos por família; o que falta fica tracejado */
+.sd-tiro__cartao--album { width: min(100%, 760px); }
+.sd-tiro__album-topo { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--esp-3); }
+.sd-tiro__album-topo > div { display: grid; gap: var(--esp-2); }
+.sd-tiro__album-topo > div > * { margin: 0; }
+.sd-tiro__familias { columns: 2 16rem; column-gap: var(--esp-5); } /* em colunas de jornal: família comprida não abre buraco ao lado */
+.sd-tiro__familia { display: grid; gap: var(--esp-2); align-content: start; break-inside: avoid; margin-bottom: var(--esp-4); }
+.sd-tiro__familia h3 { margin: 0; font-size: var(--t-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--cor-selo); }
+.sd-tiro__selos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--esp-1); }
+.sd-tiro__selo { display: inline-flex; align-items: center; gap: var(--esp-1); padding: var(--esp-1) var(--esp-2); border-radius: var(--raio-sm); white-space: nowrap; border: 2px dashed color-mix(in srgb, var(--cor-selo) 45%, transparent); color: var(--texto-suave); font-size: var(--t-sm); font-weight: 700; }
+.sd-tiro__selo .icone { width: 14px; height: 14px; flex: none; opacity: .55; }
+.sd-tiro__selo--tem { border-style: solid; border-color: var(--cor-selo); background: color-mix(in srgb, var(--cor-selo) 16%, var(--fundo-0)); color: var(--texto); }
+.sd-tiro__selo--tem .icone { color: var(--cor-selo); opacity: 1; }
+.sd-tiro__familia--bichos { --cor-selo: var(--primaria-clara); }
+.sd-tiro__familia--coisas { --cor-selo: var(--erro-clara); }
+.sd-tiro__familia--lugares { --cor-selo: var(--info); }
+.sd-tiro__familia--numeros { --cor-selo: var(--aviso); }
+.sd-tiro__familia--letras { --cor-selo: var(--lilas); }
+.sd-tiro__familia--formas { --cor-selo: var(--destaque); }
 
 /* Celular: a regra num tamanho que cabe */
 @media (max-width: 479px) {
@@ -360,7 +405,9 @@ body.sd-trava { overflow: hidden; }
   .sd-tiro__numeros dd { font-size: var(--t-xl); }
   .sd-tiro__dados > span { padding: 0 var(--esp-2); }
   .sd-tiro__dados > .sd-tiro__agua { width: 56px; }
-  .sd-tiro__seq-rotulo { display: none; } /* "3/8" ao lado de "Nível 2" já diz tudo; o placar cabe numa linha */
+  .sd-tiro__dados > .sd-tiro__regua { order: 9; } /* a régua vai para a linha de baixo quando não cabe */
+  .sd-tiro__riscos { width: min(calc(var(--n) * 6px), 240px); }
+  .sd-tiro__numeros--fim { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 /* Tela baixa (celular deitado): tudo mais compacto, para sobrar campo de jogo */
 @container sd-cheia (max-height: 479px) {
@@ -373,16 +420,33 @@ body.sd-trava { overflow: hidden; }
   .sd-tiro__passos { gap: var(--esp-2); }
   .sd-tiro__numeros dd { font-size: var(--t-xl); }
   /* o cartão deita junto: duas colunas, para caber sem rolar */
-  .sd-tiro__cartao { width: min(100%, 860px); gap: var(--esp-2) var(--esp-5); padding: var(--esp-4) var(--esp-5); align-items: start;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "rot pas" "tit pas" "num pas" "aco pas" ". pas"; }
-  .sd-tiro__cartao--fim { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "rot num" "tit num" "por aco" "por ."; }
-  .sd-tiro__numeros > div { padding: var(--esp-2) var(--esp-3); }
-  .sd-tiro__rotulo { grid-area: rot; }
-  .sd-tiro__titulo { grid-area: tit; }
-  .sd-tiro__porque { grid-area: por; }
-  .sd-tiro__passos { grid-area: pas; }
-  .sd-tiro__numeros { grid-area: num; }
-  .sd-tiro__acoes { grid-area: aco; margin: 0; }
+  .sd-tiro__cartao { width: min(100%, 860px); gap: var(--esp-2) var(--esp-5); padding: var(--esp-3) var(--esp-5); align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "rot pas" "tit pas" "num pas" "alb pas" "aco pas" ". pas"; }
+  .sd-tiro__cartao--fim { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-rows: auto auto 1fr auto auto;
+    grid-template-areas: "rot num" "tit num" "por num" "alb alb" "aco aco"; } /* o álbum e os botões numa faixa embaixo, de ponta a ponta */
+  .sd-tiro__cartao--album { grid-template-columns: minmax(0, 1fr); grid-template-areas: none; }
+  .sd-tiro__cartao > .sd-tiro__em-numeros { grid-area: num; }
+  .sd-tiro__cartao > .sd-tiro__album { grid-area: alb; }
+  .sd-tiro__album { gap: var(--esp-2); font-size: var(--t-sm); }
+  .sd-tiro__numeros > div { padding: var(--esp-2); }
+  /* só os filhos diretos do cartão: dentro de "Em números" e do topo do álbum, nada de área (senão a grade de dentro quebra) */
+  .sd-tiro__cartao > .sd-tiro__rotulo { grid-area: rot; }
+  .sd-tiro__cartao > .sd-tiro__titulo { grid-area: tit; }
+  .sd-tiro__cartao > .sd-tiro__porque { grid-area: por; }
+  .sd-tiro__cartao > .sd-tiro__passos { grid-area: pas; }
+  .sd-tiro__cartao > .sd-tiro__numeros { grid-area: num; }
+  .sd-tiro__cartao > .sd-tiro__acoes { grid-area: aco; margin: 0; }
+}
+/* Celular deitado estreito: os quatro números do fim em 2 × 2, cada um deitado (rótulo à esquerda, valor à direita) */
+@container sd-cheia (max-height: 479px) and (max-width: 799px) {
+  .sd-tiro__numeros--fim { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sd-tiro__numeros--fim > div { grid-auto-flow: column; justify-content: space-between; align-items: baseline; gap: var(--esp-2); }
+}
+/* Celular em pé e baixinho: sem o texto de abertura (os passos já dizem tudo) e os números deitados, para o cartão caber sem rolar */
+@container sd-cheia (max-height: 799px) and (max-width: 479px) {
+  .sd-tiro__lead { display: none; }
+  .sd-tiro__cartao { gap: var(--esp-3); padding: var(--esp-4); }
+  .sd-tiro__numeros--fim > div { grid-auto-flow: column; justify-content: space-between; align-items: baseline; gap: var(--esp-2); }
 }
 /* Tela baixíssima (celular pequeno deitado): o cartão encolhe para caber sem rolar */
 @container sd-cheia (max-height: 379px) {

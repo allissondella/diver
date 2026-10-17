@@ -289,7 +289,8 @@ const Descompressao = (() => {
     if (!status.aberta) return render(tela);
     parar();
     const container = h('div', { class: `sd-jogo sd-jogo--${id}` });
-    const voltar = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-voltar', onclick: () => sairDoJogo() }, icone('i-voltar'), 'Sala');
+    // "Sala" some no celular quando o jogo ocupa a tela toda (sobra lugar para os botões do jogo); o nome fica no aria-label
+    const voltar = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-voltar', 'aria-label': 'Voltar para a Sala', onclick: () => sairDoJogo() }, icone('i-voltar'), h('span', { class: 'sd-voltar__texto', text: 'Sala' }));
     tela.classList.add('sd--jogando');
     tela.classList.toggle('sd--tela-cheia', !!def.telaCheia);
     document.body.classList.toggle('sd-trava', !!def.telaCheia); // a página não rola por baixo do jogo
