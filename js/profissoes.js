@@ -485,15 +485,16 @@
 
     raiz.appendChild(el('p', { class: 'prof-fonte-nota prof-rodape' }, 'Fatos das cartas: Censo da Educação Superior 2024 (Inep), leis e decretos federais, Sisu 2026, Google Trends 2021–2026, Novo Caged e Brasscom. Cada ficha traz a lista completa de fontes, com data de consulta. ', link('Veja como fazemos as fichas', 'profissoes-metodo')));
   }
-  /** A frase do mapa com a palavra que troca a cada 2,4 s: faz, estuda, vive. A caixa da palavra tem a largura da maior
-      (o resto da frase não pula); o leitor de tela ouve a frase inteira; com "reduzir movimento", fica "faz, estuda e vive". */
+  /** A frase do mapa com a parte que troca a cada 2,4 s: faz, estuda, vive. Ela fecha a primeira frase, no fim da linha,
+      e a caixa tem a largura da maior: o resto do texto não pula e o espaço que sobra não aparece. O leitor de tela ouve
+      a frase inteira; com "reduzir movimento", fica a frase inteira, parada. */
   function fraseQueTroca() {
-    const PALAVRAS = ['faz', 'estuda', 'vive'];
-    const resto = ' no dia a dia, com fonte e data em cada número. O Diver informa; quem decide é você.';
-    const inteira = 'O que cada profissão faz, estuda e vive' + resto;
+    const PALAVRAS = ['faz no dia a dia.', 'estuda para chegar lá.', 'vive de verdade.'];
+    const depois = 'Com fonte e data em cada número. O Diver informa; quem decide é você.';
+    const inteira = 'O que cada profissão faz no dia a dia, estuda para chegar lá e vive de verdade. ' + depois;
     if (semMovimento()) return el('p', { class: 'prof-lead', text: inteira });
     const caixa = el('span', { class: 'prof-troca-palavra' }, PALAVRAS.map(w => el('span', { class: 'prof-troca-medida', text: w })), el('span', { class: 'prof-troca-atual', text: PALAVRAS[0] }));
-    const p = el('p', { class: 'prof-lead' }, el('span', { class: 'prof-oculto', text: inteira }), el('span', { 'aria-hidden': 'true' }, 'O que cada profissão ', caixa, resto));
+    const p = el('p', { class: 'prof-lead' }, el('span', { class: 'prof-oculto', text: inteira }), el('span', { 'aria-hidden': 'true' }, 'O que cada profissão ', caixa, el('br'), depois));
     let i = 0;
     const t = setInterval(() => {
       if (!p.isConnected) { clearInterval(t); return; }

@@ -1018,7 +1018,7 @@ body.prof-rc-aberto { overflow: hidden; }
 
 /* A palavra que troca na frase do mapa (faz, estuda, vive): a caixa tem a largura da maior */
 .prof-troca-palavra { display: inline-grid; vertical-align: bottom; overflow: hidden; color: var(--turquesa-claro); font-weight: 800; }
-.prof-troca-palavra > span { grid-area: 1 / 1; }
+.prof-troca-palavra > span { grid-area: 1 / 1; white-space: nowrap; }
 .prof-troca-medida { visibility: hidden; }
 .prof-troca-entra { animation: prof-palavra-entra .45s var(--ease-saida) both; }
 .prof-troca-sai { animation: prof-palavra-sai .45s var(--ease-saida) both; }
