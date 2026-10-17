@@ -694,8 +694,8 @@ button.prof-ilha { cursor: pointer; }
 }
 @media (max-width: 479px) {
   /* Ações do cabeçalho enchem a linha (a principal ocupa a linha toda) */
-  .prof-cab-acoes > * { flex: 1 1 140px; min-width: 0; padding-inline: var(--esp-3); font-size: var(--t-sm); }
-  .prof-cab-acoes > .prof-btn--primario { flex-basis: 100%; font-size: var(--t-md); }
+  .prof-cab-acoes > * { flex: 1 1 auto; white-space: nowrap; padding-inline: var(--esp-3); font-size: var(--t-sm); }
+  .prof-cab-acoes > .prof-btn--primario { flex-basis: 100%; white-space: normal; text-align: center; font-size: var(--t-md); }
   /* Atalhos compactos: só o título (a descrição volta no tablet) */
   .prof-raiz a.prof-atalho { min-height: 52px; padding-block: var(--esp-2); }
   .prof-atalho-texto .prof-min { display: none; }
