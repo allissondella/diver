@@ -830,6 +830,25 @@ button.prof-ilha { cursor: pointer; }
 .prof-tabela-uf .prof-tabela thead th { font-weight: 800; }
 .prof-tabela-uf .prof-tabela td { text-align: right; }
 
+/* Mapa: as profissões lado a lado (duração e formato de oferta), sem salário */
+.prof-lado-fig { display: grid; align-content: start; min-width: 0; }
+.prof-lado-fig figcaption { display: grid; gap: 2px; margin-bottom: var(--esp-4); }
+.prof-lado-fig figcaption b { font-size: var(--t-md); font-weight: 800; }
+.prof-lado-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3); }
+.prof-lado-linha { display: grid; grid-template-columns: minmax(120px, 30%) minmax(0, 1fr); gap: var(--esp-3); align-items: start; padding-top: var(--esp-3); border-top: 1px solid var(--borda); }
+.prof-lado-linha:first-child { padding-top: 0; border-top: 0; }
+.prof-lado-rot { display: grid; gap: 2px; }
+.prof-lado-rot b { font-size: var(--t-md); font-weight: 800; }
+.prof-lado-barra { display: block; height: 6px; margin-top: var(--esp-1); border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--texto-suave) 16%, transparent); }
+.prof-lado-barra i { display: block; height: 100%; width: calc(var(--p, 0) * 100%); border-radius: inherit; background: var(--turquesa); }
+.prof-lado-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.prof-raiz a.prof-lado-chip {
+  display: inline-flex; align-items: center; min-height: 32px; padding: 0 var(--esp-3); border-radius: var(--raio-pilula);
+  font-size: var(--t-sm); font-weight: 600; color: var(--texto); text-decoration: none; background: var(--superficie-2);
+  border-left: 3px solid var(--cor-area, var(--turquesa)); transition: background var(--transicao);
+}
+.prof-raiz a.prof-lado-chip:hover { background: var(--superficie-3); }
+
 /* ---------- Responsivo ---------- */
 @media (max-width: 1023px) {
   .prof-capa { grid-template-columns: minmax(0, 1fr); }
@@ -875,6 +894,7 @@ button.prof-ilha { cursor: pointer; }
   .prof-raiz a.prof-mini-barra { grid-template-columns: 1fr 1fr 44px; }
 }
 @media (max-width: 479px) {
+  .prof-lado-linha { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
   /* Ações do cabeçalho enchem a linha (a principal ocupa a linha toda) */
   .prof-cab-acoes > * { flex: 1 1 auto; white-space: nowrap; padding-inline: var(--esp-3); font-size: var(--t-sm); }
   .prof-cab-acoes > .prof-btn--primario { flex-basis: 100%; white-space: normal; text-align: center; font-size: var(--t-md); }
@@ -902,7 +922,7 @@ button.prof-ilha { cursor: pointer; }
 
 /* Toque (celular e tablet): alvos de 44 px, como no resto do app (docs/DESIGN.md) */
 @media (pointer: coarse) {
-  .prof-chip, .prof-btn--pequeno, .prof-selecao, .prof-indice a, .prof-chips-lista a, .prof-fonte-mini, .prof-raiz a.prof-troca-item, .prof-menu-alterna { min-height: 44px; }
+  .prof-chip, .prof-btn--pequeno, .prof-selecao, .prof-indice a, .prof-chips-lista a, .prof-fonte-mini, .prof-raiz a.prof-troca-item, .prof-menu-alterna, .prof-raiz a.prof-lado-chip { min-height: 44px; }
   .prof-chips-lista a { display: inline-flex; align-items: center; }
   .prof-raiz input[type="range"] { height: 44px; }
 }

@@ -8,7 +8,9 @@
  *     contexto.posicao_ranking_matriculas (o total do curso, o mesmo critério para todas);
  *     número só do presencial ou só da EAD não entra, porque não se compara com o total;
  *   - o nome do curso é o do Censo quando a ficha tem contexto.curso_censo (Sistemas: "Sistemas de Informação");
- *   - por profissão: a média de contratação do cargo principal, os anos da graduação e as matrículas.
+ *   - por profissão: a média de contratação do cargo principal, os anos da graduação, se há caminho mais curto
+ *     (técnico ou tecnólogo), o formato de oferta (presencial, semipresencial, EAD) e as matrículas;
+ *   - fontes_mapa: o nome das normas que o mapa cita embaixo dos quadros "Quanto dura" e "Onde dá para estudar a distância".
  *
  * Uso: node scripts/gerar-numeros-profissoes.mjs            grava
  *      node scripts/gerar-numeros-profissoes.mjs --conferir  só confere (sai com 1 se estiver desatualizado)
@@ -21,21 +23,34 @@ const SAIDA = join(PASTA, 'numeros.json');
 const ler = (a) => JSON.parse(readFileSync(a, 'utf8'));
 const indice = ler(join(PASTA, 'indice.json'));
 
-const ranking = [], profissoes = {}, avisos = [];
+const ranking = [], profissoes = {}, avisos = [], normas = {};
+/** O formato de oferta, pelo texto da ficha: só presencial, presencial ou semipresencial, também a distância ou depende do curso. */
+function formatoDe(valor) {
+  if (!valor) return null;
+  if (/^presencial$/i.test(valor.trim())) return 'presencial';
+  if (/EAD/.test(valor) && /semipresencial/i.test(valor)) return 'ead';
+  if (/^presencial ou semipresencial$/i.test(valor.trim())) return 'semi';
+  return 'depende';
+}
 let fonteRanking = null;
 for (const p of indice.profissoes) {
   if (!p.arquivo || !existsSync(join(PASTA, p.arquivo))) continue;
   const f = ler(join(PASTA, p.arquivo));
   const ctx = f.contexto || {};
   const media = ((f.secoes && f.secoes.quanto_ganha && f.secoes.quanto_ganha.medias) || [])[0];
-  const grad = ((f.formacao && f.formacao.etapas) || []).find((e) => e.tipo === 'principal');
+  const etapas = (f.formacao && f.formacao.etapas) || [];
+  const grad = etapas.find((e) => e.tipo === 'principal');
+  const curto = grad && etapas.find((e) => e.tipo === 'alternativa' && e.anos_ate < grad.anos_de);
   profissoes[f.id] = {
     nome: f.nome,
     area: f.area,
     salario: media ? { cargo: media.cargo, media: Math.round(media.valor), fontes: media.fontes } : null,
     graduacao_anos: grad ? grad.anos_de : null,
+    caminho_curto: curto ? { nome: curto.nome, anos_de: curto.anos_de, anos_ate: curto.anos_ate } : null,
+    formato: formatoDe(f.numeros && f.numeros.formato && f.numeros.formato.valor),
     matriculas_2024: ctx.posicao_ranking_matriculas ? ctx.matriculas_2024 : null,
   };
+  ['portaria-378', 'decreto-12456'].forEach((id) => { const fo = (f.fontes || []).find((x) => x.id === id); if (fo && !normas[id]) normas[id] = fo.titulo.split(':')[0].trim(); });
   if (ctx.matriculas_2024 && ctx.posicao_ranking_matriculas) {
     const fo = (f.fontes || []).find((x) => (ctx.fontes || []).includes(x.id));
     if (!fo) { avisos.push(`${f.id}: contexto sem fonte`); continue; }
@@ -51,6 +66,10 @@ for (let i = 1; i < ranking.length; i++) if (ranking[i].matriculas > ranking[i -
 const dados = {
   aviso: 'Gerado por scripts/gerar-numeros-profissoes.mjs a partir das fichas. Não edite à mão: mude a ficha e rode o script.',
   matriculas_2024: ranking.length ? { titulo: 'Os cursos com mais matrículas no Brasil em 2024', fonte: fonteRanking, itens: ranking } : null,
+  fontes_mapa: {
+    duracao: 'Diretrizes curriculares e resoluções do Conselho Nacional de Educação (carga horária mínima de cada curso), citadas em cada ficha',
+    formato: [normas['portaria-378'], normas['decreto-12456']].filter(Boolean).join(' e '),
+  },
   profissoes,
 };
 const texto = JSON.stringify(dados, null, 2) + '\n';

@@ -443,7 +443,49 @@
     }
     render();
 
+    // As profissões lado a lado (2026-10-17): duas comparações sem salário (o salário fica para o palpite de cada ficha)
+    const ladoALado = el('section', { class: 'prof-bloco-mapa prof-lado', 'aria-labelledby': 'tit-lado', hidden: true });
+    raiz.appendChild(ladoALado);
+    numerosProf().then(d => montarLadoALado(ladoALado, ix, d));
+
     raiz.appendChild(el('p', { class: 'prof-fonte-nota prof-rodape' }, 'Fatos das cartas: Censo da Educação Superior 2024 (Inep), leis e decretos federais, Sisu 2026, Google Trends 2021–2026, Novo Caged e Brasscom. Cada ficha traz a lista completa de fontes, com data de consulta. ', link('Veja como fazemos as fichas', 'profissoes-metodo')));
+  }
+  /** "As profissões lado a lado": quanto dura a graduação e onde dá para estudar a distância, com as fichas que a pessoa pode abrir.
+      Os dados vêm de numeros.json (gerado das fichas). Com menos de 3 fichas abertas, o bloco não aparece. */
+  function montarLadoALado(sec, ix, d) {
+    if (!d || !d.profissoes || !sec.isConnected) return;
+    const abertas = ix.profissoes.filter(temFicha).map(p => ({ p, n: d.profissoes[p.id] })).filter(x => x.n);
+    if (abertas.length < 3) return;
+    const juntar = nomes => nomes.length < 2 ? nomes.join('') : nomes.slice(0, -1).join(', ') + ' e ' + nomes[nomes.length - 1];
+    const chip = ({ p }) => el('a', { href: '#profissao-' + p.id, class: 'prof-lado-chip', style: { '--cor-area': corArea(ix, p.area) } }, p.nome);
+    const linha = (rotulo, lista, max) => el('li', { class: 'prof-lado-linha' },
+      el('div', { class: 'prof-lado-rot' },
+        el('b', { text: rotulo }),
+        el('span', { class: 'prof-micro', text: `${lista.length} ${lista.length === 1 ? 'profissão' : 'profissões'}` }),
+        el('span', { class: 'prof-lado-barra', 'aria-hidden': 'true' }, el('i', { style: { '--p': lista.length / max } }))),
+      el('div', { class: 'prof-lado-chips' }, lista.map(chip)));
+    const agrupar = chave => { const g = {}; abertas.forEach(x => { const k = chave(x.n); if (k != null) (g[k] = g[k] || []).push(x); }); return g; };
+    const porAnos = agrupar(n => n.graduacao_anos), anos = Object.keys(porAnos).map(Number).sort((a, b) => a - b);
+    const maxAnos = Math.max(...anos.map(a => porAnos[a].length));
+    const curtos = abertas.filter(x => x.n.caminho_curto).map(x => x.p.nome);
+    const FORMATOS = [['presencial', 'Só presencial'], ['semi', 'Presencial ou semipresencial'], ['ead', 'Também a distância'], ['depende', 'Depende do curso']];
+    const porFormato = agrupar(n => n.formato), formatos = FORMATOS.filter(([k]) => porFormato[k]);
+    const maxFormato = Math.max(...formatos.map(([k]) => porFormato[k].length));
+    const fontes = d.fontes_mapa || {};
+    sec.append(
+      el('div', { class: 'prof-cap-cab' }, el('h2', { id: 'tit-lado', text: 'As profissões lado a lado' }),
+        el('p', { class: 'prof-min', text: 'Quanto dura a graduação e onde dá para estudar a distância. Toque numa profissão para abrir a ficha.' })),
+      el('div', { class: 'prof-grade-2' },
+        el('figure', { class: 'prof-caixa prof-lado-fig' },
+          el('figcaption', null, el('b', { text: 'Quanto dura a graduação' }), el('span', { class: 'prof-micro', text: 'Duração mínima do curso principal de cada profissão.' })),
+          el('ol', { class: 'prof-lado-lista' }, anos.map(a => linha(`${a} anos`, porAnos[a], maxAnos))),
+          curtos.length ? el('p', { class: 'prof-micro prof-espaco', text: `${juntar(curtos)} também ${curtos.length === 1 ? 'tem' : 'têm'} um caminho mais curto, de técnico ou tecnólogo: veja a linha do tempo na ficha.` }) : null,
+          fontes.duracao ? el('p', { class: 'prof-fonte-linha' }, el('b', { text: 'Fonte: ' }), fontes.duracao + '.') : null),
+        el('figure', { class: 'prof-caixa prof-lado-fig' },
+          el('figcaption', null, el('b', { text: 'Onde dá para estudar a distância' }), el('span', { class: 'prof-micro', text: 'Formato em que o curso pode ser oferecido, pelas regras de 2025.' })),
+          el('ol', { class: 'prof-lado-lista' }, formatos.map(([k, rotulo]) => linha(rotulo, porFormato[k], maxFormato))),
+          fontes.formato ? el('p', { class: 'prof-fonte-linha' }, el('b', { text: 'Fonte: ' }), fontes.formato + '.') : null)));
+    sec.hidden = false;
   }
   /* Panorama de uma área (Medicina, Tecnologia): cartão grande com as primeiras especialidades pelo apelido
      (aberto para a equipe; "Em breve" para o aluno enquanto é rascunho) */
