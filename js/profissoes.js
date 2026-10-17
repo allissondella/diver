@@ -91,7 +91,7 @@
     baixar: ['M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4', 'm7 10 5 5 5-5', 'M12 15V3'],
     embaralhar: ['M16 3h5v5', 'M4 20 21 3', 'M21 16v5h-5', 'm15 15 6 6', 'm4 4 5 5'],
     info: ['M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z', 'M12 16v-4', 'M12 8h.01'],
-    x: ['M18 6 6 18', 'm6 6 12 12'], baixo: ['M12 5v14', 'm19 12-7 7-7-7'], cadeado: ['M5 11h14v10H5z', 'M8 11V7a4 4 0 0 1 8 0v4'],
+    x: ['M18 6 6 18', 'm6 6 12 12'], baixo: ['M12 5v14', 'm19 12-7 7-7-7'], abre: ['m6 9 6 6 6-6'], cadeado: ['M5 11h14v10H5z', 'M8 11V7a4 4 0 0 1 8 0v4'],
     filtro: ['M22 3H2l8 9.46V19l4 2v-8.54L22 3z'],
     dado: ['M3 3h18v18H3z', 'M8 8h.01', 'M16 8h.01', 'M12 12h.01', 'M8 16h.01', 'M16 16h.01'],
     menu: ['M3 6h18', 'M3 12h18', 'M3 18h18'], expandir: ['M15 3h6v6', 'M9 21H3v-6', 'm21 3-7 7', 'm3 21 7-7']
@@ -580,7 +580,7 @@
       linhaSalario.append(el('dt', { text: visto ? 'Média de contratação' : 'Quanto ganha?' }),
         el('dd', null,
           visto ? el('b', { class: 'prof-emnum-salario', text: n.valor }) : el('button', { type: 'button', class: 'prof-link-botao prof-emnum-palpite', onclick: () => ir(document.getElementById('sec-dinheiro')) }, icone('alvo'), 'Dar meu palpite primeiro'),
-          el('span', { class: 'prof-micro' }, visto ? n.detalhe : 'Antes do número, arrisque uma faixa.', visto ? citar(f, n.fontes) : null)));
+          el('span', { class: 'prof-micro' }, visto ? n.detalhe : 'Antes do número, arraste a régua até o seu palpite.', visto ? citar(f, n.fontes) : null)));
     };
     pintarSalario();
     // "Ver resumo": as frases-tese (ou, sem elas, os fatos centrais da ficha); fica na coluna da capa
@@ -850,25 +850,112 @@
     btn.textContent = ''; btn.appendChild(icone(i < 0 ? 'certo' : 'alvo')); btn.appendChild(document.createTextNode(i < 0 ? 'Na mira' : 'Pôr na mira')); btn.setAttribute('aria-pressed', String(i < 0));
   }
 
-  /* ---------- Quanto ganha (repaginado em 2026-10-16: "o chutar salário está atropelado") ----------
-     Um lugar só: a pergunta com quatro faixas para tocar (ou "Prefiro ver direto"); a resposta aparece ali mesmo,
-     com a média e a faixa comum numa régua; depois dela, todos os cargos e os pisos. Nada borrado, nada em outro canto. */
+  /* ---------- Quanto ganha ----------
+     O palpite em régua (2026-10-17, inspirado num vídeo que o usuário mandou): uma fileira de risquinhos de R$ 1 mil a
+     R$ 30 mil, em escala que cresce em porcentagem e é igual para todas as profissões (a posição não entrega a resposta).
+     Passar o dedo ou o mouse aumenta os risquinhos perto e mostra o valor numa bolha; soltar (ou Enter) confirma.
+     Aí aparecem a média, a diferença e a cor: verde perto, laranja no meio do caminho, coral longe. */
   const nmil = v => (v / 1000).toLocaleString('pt-BR', { maximumFractionDigits: 1 });
-  /** Quatro faixas para o palpite: uma delas tem a média; a posição da certa muda de uma profissão para outra. */
-  function faixasPalpite(media, semente) {
-    const PASSOS = [1000, 2000, 3000, 4000, 5000, 6000, 8000, 10000];
-    const s = PASSOS.find(p => p >= media * 0.3) || 10000;
-    // começo da faixa certa: o que deixa a média mais longe das bordas (múltiplo do passo ou do meio passo)
-    const distancia = b => Math.min(media - b, b + s - media);
-    const base = [0, s / 2].map(o => Math.floor((media - o) / s) * s + o).sort((x, y) => distancia(y) - distancia(x))[0];
-    let h = 0; for (const c of String(semente)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
-    let certa = [1, 2, 0, 3, 2, 1][h % 6];
-    while (certa > 0 && base - (certa - 1) * s < s) certa--; // a primeira faixa não começa abaixo de um passo
-    const b1 = certa === 0 ? base + s : base - (certa - 1) * s;
-    const bordas = [b1, b1 + s, b1 + 2 * s];
-    const faixas = [{ de: null, ate: bordas[0] }, { de: bordas[0], ate: bordas[1] }, { de: bordas[1], ate: bordas[2] }, { de: bordas[2], ate: null }]
-      .map(fx => ({ ...fx, rotulo: fx.de == null ? `até R$ ${nmil(fx.ate)} mil` : fx.ate == null ? `mais de R$ ${nmil(fx.de)} mil` : `R$ ${nmil(fx.de)} a ${nmil(fx.ate)} mil`, meio: fx.de == null ? fx.ate - s / 2 : fx.ate == null ? fx.de + s / 2 : (fx.de + fx.ate) / 2 }));
-    return { faixas, certa };
+  const CHUTE = { min: 1000, max: 30000, n: 49 };
+  const valorBarra = i => CHUTE.min * Math.pow(CHUTE.max / CHUTE.min, i / (CHUTE.n - 1));
+  const posicaoValor = v => Math.log(Math.max(CHUTE.min, Math.min(CHUTE.max, v)) / CHUTE.min) / Math.log(CHUTE.max / CHUTE.min) * (CHUTE.n - 1);
+  const redondo = v => v < 10000 ? Math.round(v / 100) * 100 : Math.round(v / 500) * 500;
+  const pctBarra = p => (p + 0.5) / CHUTE.n * 100;
+  /** Quão perto o palpite ficou: 'certo' (até 10%), 'perto' (até 30%) ou 'longe'. */
+  const proximidade = (valor, media) => { const d = Math.abs(valor - media) / media; return d <= 0.1 ? 'certo' : d <= 0.3 ? 'perto' : 'longe'; };
+  /** A régua do palpite. o = { rotulo, aoEscolher(valor) }. Devolve { el, revelar(valor, media), focar() }. */
+  function reguaPalpite(o) {
+    let atual = null, travada = false, arrastando = false;
+    const barras = Array.from({ length: CHUTE.n }, () => el('i'));
+    const bolha = el('span', { class: 'prof-chute-bolha', 'aria-hidden': 'true', hidden: true });
+    const media = el('span', { class: 'prof-chute-media', hidden: true });
+    const trilho = el('div', { class: 'prof-chute-barras', 'aria-hidden': 'true' }, barras);
+    const regua = el('div', { class: 'prof-chute', role: 'slider', tabindex: '0', 'aria-label': o.rotulo,
+      'aria-valuemin': String(CHUTE.min), 'aria-valuemax': String(CHUTE.max) }, bolha, trilho, media);
+    const escala = el('div', { class: 'prof-chute-escala', 'aria-hidden': 'true' },
+      [1000, 3000, 10000, 30000].map(v => el('span', { style: { left: pctBarra(posicaoValor(v)) + '%' }, text: `R$ ${nmil(v)} mil` })));
+    const lupa = !semMovimento();
+    function pintar(i, foco) {
+      barras.forEach((b, k) => {
+        b.classList.toggle('on', i != null && k <= i);
+        b.style.setProperty('--s', lupa && foco != null ? (1 + 1.5 * Math.exp(-((k - foco) ** 2) / 8)).toFixed(3) : '1');
+      });
+      if (i == null) { bolha.hidden = true; return; }
+      bolha.hidden = false; bolha.textContent = brl(redondo(valorBarra(i)));
+      bolha.style.setProperty('--x', pctBarra(i) + '%');
+    }
+    const indice = x => { const r = trilho.getBoundingClientRect(); return Math.max(0, Math.min(CHUTE.n - 1, Math.round((x - r.left) / r.width * CHUTE.n - 0.5))); };
+    function escolher(i) {
+      atual = i; pintar(i, i);
+      regua.setAttribute('aria-valuenow', String(redondo(valorBarra(i))));
+      regua.setAttribute('aria-valuetext', brl(redondo(valorBarra(i))));
+    }
+    function confirmar() { if (travada || atual == null) return; o.aoEscolher(redondo(valorBarra(atual))); }
+    regua.addEventListener('pointermove', e => {
+      if (travada) return;
+      if (arrastando) { escolher(indice(e.clientX)); return; }
+      if (e.pointerType === 'mouse') pintar(indice(e.clientX), indice(e.clientX)); // só olhando: mostra, não escolhe
+    });
+    regua.addEventListener('pointerleave', () => { if (!travada && !arrastando) pintar(atual, null); });
+    regua.addEventListener('pointerdown', e => {
+      if (travada || (e.pointerType === 'mouse' && e.button !== 0)) return;
+      arrastando = true; escolher(indice(e.clientX));
+      try { regua.setPointerCapture(e.pointerId); } catch (erro) { /* sem captura: segue igual */ }
+    });
+    regua.addEventListener('pointerup', () => { if (!arrastando) return; arrastando = false; confirmar(); });
+    regua.addEventListener('pointercancel', () => { arrastando = false; if (!travada) pintar(atual, null); }); // a página rolou: não vale
+    regua.addEventListener('keydown', e => {
+      if (travada) return;
+      const passo = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1, PageUp: 5, PageDown: -5 }[e.key];
+      if (passo) { e.preventDefault(); escolher(Math.max(0, Math.min(CHUTE.n - 1, (atual == null ? Math.floor(CHUTE.n / 2) : atual) + passo))); o.aoMexer && o.aoMexer(); return; }
+      if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); escolher(e.key === 'Home' ? 0 : CHUTE.n - 1); o.aoMexer && o.aoMexer(); return; }
+      if ((e.key === 'Enter' || e.key === ' ') && atual != null) { e.preventDefault(); confirmar(); }
+    });
+    /** Mostra o resultado: a média com o losango embaixo e as barras na cor da proximidade (valor null: sem palpite). */
+    function revelar(valor, m) {
+      travada = true; arrastando = false;
+      regua.setAttribute('aria-disabled', 'true'); regua.removeAttribute('tabindex');
+      regua.classList.add('prof-chute--travada');
+      if (valor != null) { escolher(Math.round(posicaoValor(valor))); bolha.textContent = brl(valor); regua.classList.add('prof-chute--' + proximidade(valor, m)); pintar(atual, null); bolha.textContent = brl(valor); }
+      else pintar(null, null);
+      media.hidden = false; media.textContent = 'média';
+      media.style.setProperty('--x', pctBarra(posicaoValor(m)) + '%');
+      regua.setAttribute('aria-valuetext', valor != null ? `Seu palpite: ${brl(valor)}. Média: ${brl(m)}` : `Média: ${brl(m)}`);
+    }
+    return { el: el('div', { class: 'prof-chute-caixa' }, regua, escala), revelar, focar: () => regua.focus(), temValor: () => atual != null, confirmar };
+  }
+  /** O palpite. o = { id, pergunta, cargo, media, faixa, citacao(), salvo, revelado, aoResponder({ valor, acertou, diferenca }) } */
+  function palpite(o) {
+    const resposta = el('div', { class: 'prof-palpite-resposta', 'aria-live': 'polite' });
+    const confirmar = el('button', { type: 'button', class: 'prof-btn prof-btn--primario prof-btn--pequeno', hidden: true, onclick: () => r.confirmar() }, icone('alvo'), 'Confirmar palpite');
+    const r = reguaPalpite({ rotulo: 'Seu palpite de salário: use as setas e Enter', aoEscolher: v => responder(v, false), aoMexer: () => { confirmar.hidden = false; } });
+    const pular = el('button', { type: 'button', class: 'prof-link-botao', text: 'Prefiro ver direto', onclick: () => responder(null, false) });
+    const dica = el('span', { class: 'prof-micro', text: 'Toque ou arraste na régua e solte no seu palpite. Salário-base mensal, sem adicionais.' });
+    const caixa = el('div', { class: 'prof-palpite' },
+      el('p', { class: 'prof-palpite-pergunta', text: o.pergunta }),
+      r.el,
+      el('div', { class: 'prof-palpite-pe' }, dica, el('div', { class: 'prof-palpite-botoes' }, confirmar, pular)),
+      resposta);
+    function responder(valor, jaSalvo) {
+      r.revelar(valor, o.media);
+      pular.hidden = true; confirmar.hidden = true; dica.textContent = 'Salário-base mensal, sem adicionais.';
+      const dif = valor == null ? null : valor - o.media, perto = valor == null ? null : proximidade(valor, o.media);
+      const titulo = valor == null ? 'A média de contratação' : perto === 'certo' ? 'Na mosca!' : perto === 'perto' ? 'Quase!' : dif < 0 ? 'Mais do que você imaginou' : 'Menos do que você imaginou';
+      const difTexto = valor == null ? null : Math.abs(dif) < 50 ? 'Exatamente a média.' : `Seu palpite, ${brl(valor)}, ficou ${brl(Math.abs(dif))} ${dif > 0 ? 'acima' : 'abaixo'} da média.`;
+      const dominio = dominioDe([{ media: o.media, faixa: o.faixa }]);
+      resposta.textContent = '';
+      resposta.append(
+        el('p', { class: 'prof-palpite-titulo' + (perto ? ' prof-palpite-titulo--' + perto : '') }, titulo),
+        difTexto ? el('p', { class: 'prof-palpite-dif', text: difTexto }) : null,
+        el('p', { class: 'prof-palpite-valor' }, el('b', { class: 'prof-num', text: brl(o.media) }), el('span', null, ` é a média de contratação de ${o.cargo.toLowerCase()}`, o.citacao(), '.')),
+        regua({ dominio, media: o.media, faixa: o.faixa }),
+        o.faixa ? el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), `A maior parte dos contratos: ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}`), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média')) : null);
+      if (!jaSalvo) o.aoResponder({ valor, acertou: perto === 'certo', diferenca: dif });
+    }
+    // Palpite guardado: o valor (régua) ou, de antes da régua, só a faixa (aí mostra a média, sem o palpite)
+    if (o.salvo && typeof o.salvo.valor === 'number') responder(o.salvo.valor, true);
+    else if ((o.salvo && o.salvo.faixa !== undefined) || o.revelado) responder(null, true);
+    return caixa;
   }
   /** Régua: a faixa comum (onde fica a maior parte dos contratos) e a média marcada. Também serve a várias linhas. */
   function regua(o) {
@@ -893,40 +980,6 @@
         it.faixa ? el('span', { class: 'prof-micro prof-num', text: `faixa comum: ${brl(it.faixa.de)} a ${brl(it.faixa.ate)}` }) : null),
       it.nota ? el('p', { class: 'prof-fonte-nota prof-cargo-nota', text: it.nota }) : null)));
   }
-  /** O palpite. o = { id, pergunta, cargo, media, faixa, citacao(), salvo, revelado, aoResponder({faixa, certa}) } */
-  function palpite(o) {
-    const { faixas, certa } = faixasPalpite(o.media, o.id);
-    const botoes = faixas.map((fx, i) => el('button', { type: 'button', class: 'prof-palpite-op', 'aria-pressed': 'false', onclick: () => responder(i, false) }, fx.rotulo));
-    const pular = el('button', { type: 'button', class: 'prof-link-botao', text: 'Prefiro ver direto', onclick: () => responder(null, false) });
-    const resposta = el('div', { class: 'prof-palpite-resposta', 'aria-live': 'polite' });
-    const caixa = el('div', { class: 'prof-palpite' },
-      el('p', { class: 'prof-palpite-pergunta', text: o.pergunta }),
-      el('div', { class: 'prof-palpite-opcoes', role: 'group', 'aria-label': 'Escolha a faixa do seu palpite' }, botoes),
-      el('div', { class: 'prof-palpite-pe' }, el('span', { class: 'prof-micro', text: 'Salário-base mensal, sem adicionais.' }), pular),
-      resposta);
-    function responder(i, jaSalvo) {
-      botoes.forEach((b, k) => {
-        b.disabled = true;
-        b.classList.toggle('prof-palpite-op--certa', k === certa);
-        b.setAttribute('aria-pressed', String(k === i));
-        if (k === certa) b.appendChild(el('span', { class: 'prof-oculto', text: ' (a faixa da média)' }));
-      });
-      pular.hidden = true;
-      const acertou = i === certa;
-      const titulo = i == null ? 'A média de contratação' : acertou ? 'Na mosca!' : i < certa ? 'Mais do que você imaginou' : 'Menos do que você imaginou';
-      const dominio = dominioDe([{ media: o.media, faixa: o.faixa }]);
-      resposta.textContent = '';
-      resposta.append(
-        el('p', { class: 'prof-palpite-titulo' + (acertou ? ' prof-palpite-titulo--certo' : '') }, titulo),
-        el('p', { class: 'prof-palpite-valor' }, el('b', { class: 'prof-num', text: brl(o.media) }), el('span', null, ` é a média de contratação de ${o.cargo.toLowerCase()}`, o.citacao(), '.')),
-        regua({ dominio, media: o.media, faixa: o.faixa }),
-        o.faixa ? el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), `A maior parte dos contratos: ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}`), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média')) : null);
-      if (!jaSalvo) o.aoResponder({ faixa: i, certa, meio: i == null ? null : faixas[i].meio, rotulo: i == null ? null : faixas[i].rotulo, acertou });
-    }
-    if (o.salvo && o.salvo.faixa !== undefined) responder(o.salvo.faixa, true);
-    else if (o.revelado) responder(null, true);
-    return caixa;
-  }
   /* Bloco "Quanto ganha" da ficha: o palpite no cargo principal e, depois dele, todos os cargos, os pisos e a regra. */
   function blocoSalario(f, q, aoRevelar) {
     const raiz = el('div', { class: 'prof-salario' });
@@ -950,9 +1003,9 @@
       salvo: (estado.chutes[f.id + ':palpite'] && typeof estado.chutes[f.id + ':palpite'] === 'object') ? estado.chutes[f.id + ':palpite'] : null,
       revelado: revelado(),
       aoResponder: r => {
-        estado.chutes[f.id + ':palpite'] = { faixa: r.faixa, certa: r.certa, data: new Date().toISOString().slice(0, 10) };
+        estado.chutes[f.id + ':palpite'] = { valor: r.valor, data: new Date().toISOString().slice(0, 10) };
         estado.salarioRevelado[f.id] = 2; salvarEstado();
-        if (r.faixa != null) ganchos.registrar('profissao_chute_salario', { profissao: f.id, cargo: principal.cargo, chute: Math.round(r.meio), media: principal.valor, faixa: r.rotulo, acertou: r.acertou });
+        if (r.valor != null) ganchos.registrar('profissao_chute_salario', { profissao: f.id, cargo: principal.cargo, chute: r.valor, media: principal.valor, diferenca: r.diferenca, acertou: r.acertou });
         mostrarDetalhes();
         if (aoRevelar) aoRevelar();
       }
@@ -1326,6 +1379,75 @@
      Só entram as fichas que esta conta pode abrir. O salário segue a regra da ficha: se ainda estiver
      escondido, um botão mostra os dois de uma vez (vale como "Prefiro só ver os números").
      ========================================================= */
+  /* ---------- Roleta (comparador; 2026-10-17, inspirada num vídeo que o usuário mandou) ----------
+     Fechada, é um botão com a cor da área e o nome. Aberta, uma roda: o nome do meio fica em destaque e os outros vão
+     sumindo para cima e para baixo, com risquinhos do lado. Gira com a rolagem, o dedo ou as setas; o toque num nome
+     (ou Enter) escolhe; Esc fecha sem mudar. o = { rotulo, opcoes: [{ id, nome, cor }], atual, lado: 'dir'?, aoEscolher(id) } */
+  let roletas = 0;
+  function roleta(o) {
+    const uid = 'prof-roleta-' + (++roletas), LINHA = 44;
+    const ini = Math.max(0, o.opcoes.findIndex(x => x.id === o.atual)), escolhida = o.opcoes[ini];
+    const botaoR = el('button', { type: 'button', class: 'prof-roleta-botao', id: uid + '-bt', 'aria-haspopup': 'listbox', 'aria-expanded': 'false',
+      'aria-labelledby': `${uid}-rot ${uid}-bt`, style: { '--cor-area': escolhida.cor } },
+      el('i', { class: 'prof-roleta-cor', 'aria-hidden': 'true' }), el('span', { class: 'prof-roleta-nome', text: escolhida.nome }), icone('abre'));
+    const itens = o.opcoes.map((op, i) => el('li', { class: 'prof-roleta-op', role: 'option', id: `${uid}-${i}`, 'aria-selected': 'false',
+      style: { '--cor-area': op.cor }, onclick: () => escolher(i) }, el('i', { class: 'prof-roleta-cor', 'aria-hidden': 'true' }), op.nome));
+    const lista = el('ul', { class: 'prof-roleta-lista', role: 'listbox', tabindex: '0', 'aria-labelledby': uid + '-rot' }, itens);
+    const roda = el('div', { class: 'prof-roleta-roda', hidden: true }, el('span', { class: 'prof-roleta-faixa', 'aria-hidden': 'true' }, icone('direita')), lista);
+    const caixa = el('div', { class: 'prof-roleta' + (o.lado === 'dir' ? ' prof-roleta--dir' : '') },
+      el('span', { class: 'prof-min', id: uid + '-rot', text: o.rotulo }), botaoR, roda);
+    let centro = ini, quadro = 0, aberta = false;
+    function marcar(i) {
+      centro = i;
+      itens.forEach((li, k) => { li.setAttribute('aria-selected', String(k === i)); li.classList.toggle('prof-roleta-op--centro', k === i); });
+      lista.setAttribute('aria-activedescendant', itens[i].id);
+    }
+    // cada nome some e encolhe conforme se afasta do meio; os risquinhos descrevem um arco
+    function desenhar() {
+      quadro = 0;
+      const pos = lista.scrollTop / LINHA;
+      itens.forEach((li, i) => {
+        const d = i - pos, ad = Math.min(Math.abs(d), 3);
+        li.style.opacity = String(Math.max(0.08, 1 - ad * 0.3).toFixed(2));
+        li.style.transform = `translateX(${(Math.min(d * d, 9) * 3).toFixed(1)}px) scale(${(1 - ad * 0.06).toFixed(3)})`;
+      });
+      const c = Math.max(0, Math.min(itens.length - 1, Math.round(pos)));
+      if (c !== centro) marcar(c);
+    }
+    lista.addEventListener('scroll', () => { if (!quadro) quadro = requestAnimationFrame(desenhar); }, { passive: true });
+    const rolarPara = (i, suave) => lista.scrollTo({ top: i * LINHA, behavior: suave && !semMovimento() ? 'smooth' : 'auto' });
+    const fora = e => { if (!caixa.contains(e.target)) fechar(false); };
+    function abrir() {
+      if (aberta) return; aberta = true;
+      roda.hidden = false; botaoR.setAttribute('aria-expanded', 'true'); caixa.classList.add('prof-roleta--aberta');
+      marcar(centro); rolarPara(centro, false); desenhar(); lista.focus({ preventScroll: true });
+      setTimeout(() => document.addEventListener('pointerdown', fora, true), 0);
+    }
+    function fechar(devolverFoco) {
+      if (!aberta) return; aberta = false;
+      roda.hidden = true; botaoR.setAttribute('aria-expanded', 'false'); caixa.classList.remove('prof-roleta--aberta');
+      document.removeEventListener('pointerdown', fora, true);
+      if (devolverFoco) botaoR.focus({ preventScroll: true });
+    }
+    function escolher(i) { const op = o.opcoes[i]; fechar(true); if (op && op.id !== o.atual) o.aoEscolher(op.id); }
+    botaoR.addEventListener('click', () => { if (aberta) fechar(true); else abrir(); });
+    botaoR.addEventListener('keydown', e => { if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); abrir(); } });
+    lista.addEventListener('keydown', e => {
+      const passo = { ArrowDown: 1, ArrowUp: -1, PageDown: 5, PageUp: -5 }[e.key];
+      const ir = i => { const k = Math.max(0, Math.min(itens.length - 1, i)); marcar(k); rolarPara(k, true); };
+      if (passo) { e.preventDefault(); ir(centro + passo); return; }
+      if (e.key === 'Home' || e.key === 'End') { e.preventDefault(); ir(e.key === 'Home' ? 0 : itens.length - 1); return; }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); escolher(centro); return; }
+      if (e.key === 'Escape') { e.preventDefault(); fechar(true); return; }
+      if (e.key === 'Tab') { fechar(false); return; }
+      if (e.key.length === 1 && /\S/.test(e.key)) { // uma letra: o próximo nome que começa com ela
+        const l = normalizar(e.key);
+        for (let k = 1; k <= itens.length; k++) { const i = (centro + k) % itens.length; if (normalizar(o.opcoes[i].nome).startsWith(l)) { ir(i); break; } }
+      }
+    });
+    limpezas.push(() => document.removeEventListener('pointerdown', fora, true));
+    return caixa;
+  }
   async function telaComparar(raiz, ix, par) {
     const abertas = ix.profissoes.filter(temFicha);
     raiz.classList.add('prof-raiz--media');
@@ -1345,16 +1467,13 @@
     if (!ids.includes(a)) a = estado.mira.find(id => ids.includes(id)) || ids[0];
     if (!ids.includes(b) || b === a) b = estado.mira.find(id => ids.includes(id) && id !== a) || ids.find(id => id !== a);
     const ir = (na, nb) => { location.hash = `profissoes-comparar-${na}--${nb}`; };
-    const escolha = (rotulo, atual, outro, aoMudar) => el('label', { class: 'prof-comp-escolha' }, el('span', { class: 'prof-min', text: rotulo }),
-      el('select', { class: 'prof-selecao', onchange: e => aoMudar(e.target.value) },
-        ix.areas.map(ar => {
-          const daArea = abertas.filter(p => p.area === ar.id);
-          return daArea.length ? el('optgroup', { label: ar.nome }, daArea.map(p => el('option', { value: p.id, text: p.nome, selected: p.id === atual, disabled: p.id === outro }))) : null;
-        })));
+    // as fichas abertas na ordem das áreas (a cor da área no lugar da bandeira); a escolhida do outro lado fica fora
+    const emOrdem = ix.areas.flatMap(ar => abertas.filter(p => p.area === ar.id));
+    const opcoes = outro => emOrdem.filter(p => p.id !== outro).map(p => ({ id: p.id, nome: p.nome, cor: corArea(ix, p.area) }));
     raiz.appendChild(el('div', { class: 'prof-comp-escolhas' },
-      escolha('Profissão 1', a, b, v => ir(v, b)),
+      roleta({ rotulo: 'Profissão 1', opcoes: opcoes(b), atual: a, aoEscolher: v => ir(v, b) }),
       botao('Trocar de lado', { classe: 'prof-btn--linha prof-btn--pequeno', icone: 'embaralhar', onclick: () => ir(b, a) }),
-      escolha('Profissão 2', b, a, v => ir(a, v))));
+      roleta({ rotulo: 'Profissão 2', opcoes: opcoes(a), atual: b, lado: 'dir', aoEscolher: v => ir(a, v) })));
     const [fa, fb] = await Promise.all([ficha(a), ficha(b)]);
     if (!fa || !fb) return naoEncontrada(raiz, !fa ? a : b, ix);
     const par2 = [fa, fb];
