@@ -34,6 +34,8 @@
 | `data/profissoes/panorama-medicina.json` | Panorama da Medicina: números, doze especialidades, formação, jogo e 15 fontes (no kit v4 chamava `medicina.json`, nome que já era da ficha) | `data/profissoes/panorama-medicina.json` |
 | `data/profissoes/tecnologia.json` | Panorama: números, dez áreas, formação, jogo e 18 fontes | `data/profissoes/tecnologia.json` |
 | `scripts/conferir-panorama.mjs` | Confere um panorama (áreas, jogo, fontes, prazo de salário) | `scripts/conferir-panorama.mjs` |
+| `js/profissoes-mergulho.js` | "Quão fundo é cada carreira" (`#profissoes-fundo`, 2026-10-17): os anos de estudo como profundidade, com profundímetro (extensão) | `js/profissoes-mergulho.js` (depois de `profissoes.js`, no mesmo pacote) |
+| `data/profissoes/numeros.json` | Números que comparam as profissões (ranking das matrículas, duração, formato, cenas do dia, etapas da formação), gerado das fichas | `node scripts/gerar-numeros-profissoes.mjs` (nunca à mão) |
 | `.claude/skills/criar-ficha-profissao/SKILL.md` | Skill para escrever as próximas fichas | `.claude/skills/criar-ficha-profissao/` |
 | `docs/MAPA_PROFISSOES*.md` | Especificação, interações e este guia | `docs/` |
 
@@ -108,7 +110,7 @@ Todos vão para `eventos_atividade` pelo gancho `registrar`:
 | `profissao_pedido` | `{ profissao }` (ficha "em breve" pedida) |
 | `profissao_carta` | `{ profissao, interesse }` |
 | `profissoes_cartas_inicio`, `profissoes_cartas_fim` | `{ interesse[], area }` |
-| `profissao_chute_salario` | `{ profissao, cargo, chute, media }` |
+| `profissao_chute_salario` | `{ profissao, cargo, chute, media, diferenca, acertou }` (desde 2026-10-17, com a régua; antes, `faixa` no lugar de `diferenca`) |
 | `profissao_carta_gerada` | `{ profissao, afinidade }` |
 | `profissao_dilema_voto` | `{ profissao, dilema, opcao }` |
 | `profissao_materias_chave` | `{ profissao, curso }` |

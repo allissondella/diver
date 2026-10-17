@@ -5,6 +5,25 @@
 
 ---
 
+## 2026-10-17 · Mapa das Profissões: releitura com os vídeos de referência
+- **Pedido do usuário:** todos os cartões "igual ao primeiro print de Tecnologia e Medicina", consertar o que estava torto ("igual ali Educação"), uma repassada completa na aba, as fontes "mais escondidas mas de fácil acesso" e coisas criativas como as dos vídeos que ele mandou (e o site *Size of Life*), sem copiar. Plano de 6 etapas aprovado ("pode sim"), com fotos depois de cada uma.
+- **Feito (só o desenho e a interação; textos e números das fichas, rotas antigas, XP e log iguais; nada no banco):**
+  - **Etapa 1, cartões e nada torto:** cartões no desenho dos panoramas, alinhados com `subgrid`; uma varredura no navegador (22 telas, 7 larguras) procura sobreposição, topo torto, alturas diferentes, transbordo e texto cortado. Consertos: rótulos do radar cortados, "semipresencial" saindo da coluna, o nome do cargo no celular, os seletores do comparador no celular;
+  - **Etapa 2, fontes discretas:** um pontinho depois da informação abre a fonte; cada gráfico tem o botão "Fonte" no canto; "Mostrar as fontes" acende tudo (só no aparelho);
+  - **Etapa 3:** o palpite de salário virou régua (R$ 1 mil a R$ 30 mil, escala que cresce em porcentagem, igual para todas) e o comparador ganhou a roleta para trocar as profissões;
+  - **Etapa 4:** "Ver como" (cartões, lista, aquário), álbum de selos, faixa "Agora, às Xh" e o mergulho "Quão fundo é cada carreira" (`#profissoes-fundo`, `js/profissoes-mergulho.js`), com as etapas da formação e as cenas do dia em `numeros.json`;
+  - **Etapa 5:** "Ver resumo" em cartas (o número que conta, a troca em fatia, arrastar, teclado; cabe até 320 px e no celular deitado), a frase do mapa que troca a parte final e o véu de pixels ao abrir uma ficha;
+  - **Etapa 6:** tutorial na versão 5 (7 passos), documentos, testes e PR.
+- **Decisões:**
+  - o gráfico das 24 horas ficou igual (o usuário: "isso mantém muito!");
+  - o número grande das cartas só aparece com unidade, porcentagem ou milhar: ano solto, ordinal, data e valor em reais ficam de fora (aí vai o ícone do capítulo);
+  - o "Você sabia?" sai do resumo quando fala de salário (Engenharia de Produção; o salário só aparece depois do palpite) ou quando repete o número de outra carta (Pedagogia, Ciência da Computação e Inteligência Artificial); o mergulho também esconde o fato com salário;
+  - a frase do mapa: a parte que troca fecha a primeira frase ("faz no dia a dia", "estuda para chegar lá", "vive de verdade"), para não deixar buraco no meio do texto;
+  - log do palpite: `chute`, `media`, `diferenca` e `acertou` (sai `faixa`), sem tipo novo de evento.
+- **Testes:** varredura em 22 telas × 7 larguras, também com "Mostrar as fontes" e com as vistas lista e aquário; `auditar-design` e `--navegador` (todas as telas do app); o baralho do resumo em 320, 360, 390, 430, 768, 1024, 1440 e no celular deitado, com teclado (foco preso, Esc em duas camadas), toque (arrastar) e "reduzir movimento"; o tutorial em 320, 390 e 1280; `conferir-ficha` nas 22 fichas, `conferir-panorama` nos dois, `gerar-numeros-profissoes --conferir`.
+- **Atenção:** a Maré de cartas continua mostrando o "Você sabia?" de Engenharia de Produção, que traz a faixa de salário (já era assim antes); fica para o usuário decidir se troca o fato.
+- **Próximo passo:** o usuário olha a prévia e aprova o merge.
+
 ## 2026-10-17 · Mapa das Profissões: fichas e panoramas em formato de relatório
 - **Pedido do usuário:** deixar a aba no estilo de um relatório de dados da Globo (faixas de capítulo numeradas, frases-tese coloridas, gráficos variados com "Fonte:" embaixo, "Ver resumo" e números gigantes). Piloto na Medicina aprovado com "Manda bala"; depois "Manda bala pra tudo", com uma repassada no fim, parando só para o merge.
 - **Feito:**

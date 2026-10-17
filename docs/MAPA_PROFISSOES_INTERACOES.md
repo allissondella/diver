@@ -27,12 +27,13 @@
 ### 2. Palpite de salário (dentro da ficha, capítulo "O dinheiro", antes "Quanto ganha")
 
 - **Repaginado em 2026-10-16** (pedido do usuário: o chute "não fazia sentido, muito atropelado"). Saíram o controle deslizante de R$ 1 mil a R$ 20 mil, a tampa embaçada sobre a tabela e a segunda rodada.
-- Um lugar só: a pergunta ("Quanto ganha, por mês, um ... contratado com carteira no Brasil?") com **4 faixas** em botões e "Prefiro ver direto".
-  - As faixas saem de `faixasPalpite(media, semente)`: degraus redondos (R$ 1 mil, 2 mil, 3 mil...) perto de 30% da média; a faixa certa muda de posição de uma profissão para outra (semente pelo id), e a média nunca fica colada na borda de uma faixa.
-- A resposta aparece **no mesmo lugar**: "Na mosca!", "Mais do que você imaginou" ou "Menos do que você imaginou", a média grande e uma régua com a faixa comum (percentis 25 e 75) e a média. Depois vêm os outros cargos, os pisos e o texto da ficha, tudo aberto.
+- Um lugar só: a pergunta ("Quanto ganha, por mês, um ... contratado com carteira no Brasil?"), a régua e "Prefiro ver direto".
+- **A régua (2026-10-17, inspirada num vídeo que o usuário mandou; substitui as 4 faixas):** 49 risquinhos de R$ 1 mil a R$ 30 mil, numa escala que cresce em porcentagem e é **igual para todas as profissões** (a posição não entrega a resposta). Passar o mouse ou o dedo aumenta os risquinhos por perto e mostra o valor numa bolha; soltar confirma. No teclado: setas, Page Up/Down, Home e End, e Enter ou "Confirmar palpite".
+- A resposta aparece **no mesmo lugar**: "Na mosca!" (até 10% da média), "Quase!" (até 30%), "Mais do que você imaginou" ou "Menos do que você imaginou", a diferença em reais, a média grande e a régua com a faixa comum (percentis 25 e 75) e a média. Na régua do palpite, as barras ficam verdes perto, laranja no meio do caminho e coral longe. Depois vêm os outros cargos, os pisos e o texto da ficha, tudo aberto.
+- Palpite antigo, das 4 faixas, aparece como "A média de contratação", sem o palpite.
 - A linha "Quanto ganha?" de "Em números", na capa da ficha, só leva ao capítulo ("Dar meu palpite primeiro"); depois do palpite, mostra a média. O "Ver resumo" e as frases-tese do capítulo nunca trazem o salário, e o mapa compara as profissões sem ele (2026-10-17).
 - Fica guardado no aparelho e na nuvem com o resto do estado (`estado.chutes['<id>:palpite']` e `estado.salarioRevelado`).
-- Log: `profissao_chute_salario` com `faixa` (o rótulo escolhido), `chute` (o meio da faixa), `media` e `acertou`. Nada digitado entra no log.
+- Log: `profissao_chute_salario` com `profissao`, `cargo`, `chute` (o valor do palpite, arredondado), `media`, `diferenca` (palpite menos média) e `acertou` (até 10% da média). Até 2026-10-17, com as faixas, levava `faixa` no lugar de `diferenca`. Nada digitado entra no log.
 - Variante futura: "Chute a nota de corte", com os dados do Sisu que a Sala Enem já usa. "A maioria dos Divers chuta acima" só quando houver dados no log; nunca inventar esse número.
 
 ### 3. Agora mesmo (topo da ficha, quando a ficha tiver `agora`)
@@ -115,3 +116,23 @@ Pedido do usuário, a partir de um relatório de dados da Globo (as faixas de ca
 - **Mapa:** "As profissões lado a lado" no pé (quanto dura a graduação e onde dá para estudar a distância). **Sem salário de propósito**, para não entregar o palpite das fichas; a ideia inicial de bolhas com o salário de todas ficou de fora por isso.
 - **Regras de gráfico** (as da skill de visualização): barras finas com a ponta arredondada só no fim, uma cor para o dado e cinza para o contexto (ênfase), escala de um tom só no mapa, um número gigante por tela, texto sempre nas cores de texto, tabela para quem não lê o mapa e nada que dependa só de cor.
 - **Saíram:** `tileFato`, `capitulo`, `cabecalho` nos panoramas (continua só no mapa), `cartasViradas` (as cartas para virar) e os gráficos SVG sem uso (relógio, faixa salarial, barras, linha da formação e anel). A sazonalidade das buscas virou HTML (`barrasMeses`): no SVG encolhido do celular, os meses ficavam com uns 5 px. Em `js/profissoes-infograficos.js` ficou só o radar.
+
+## A releitura com os vídeos de referência (2026-10-17)
+
+Pedido do usuário, com sete vídeos de referência e o site *Size of Life* (neal.fun): todos os cartões no desenho dos panoramas da Tecnologia e da Medicina, nada torto, as fontes mais escondidas mas a um toque, e coisas criativas "nesse gênero", sem copiar. **Os textos e números das fichas, as rotas antigas, o XP e o log são os mesmos** (o palpite só ganhou campos no log). Nada novo no banco. O gráfico das 24 horas (`linhaDoDia`) ficou como estava, a pedido do usuário.
+
+- **Cartões e alinhamento:** os cartões de profissão seguem o desenho dos panoramas; grades com `subgrid` alinham título, texto e pé entre vizinhos; o que não cabe vai para a linha de baixo (consultas de contêiner). Conferido por uma varredura em 22 telas e 7 larguras (sobreposição, topo torto, altura diferente, transbordo, texto cortado).
+- **Fontes discretas, mas a um toque:** depois de uma informação, um pontinho abre o cartão da fonte; cada gráfico tem o botão "Fonte" no canto de baixo. "Mostrar as fontes", no topo, acende os números das fontes e as linhas "Fonte: ..." embaixo dos gráficos; a escolha fica só no aparelho (`diver-local:v1:profissoes-fontes`).
+- **Palpite em régua** e **roleta no comparador:** a régua está na seção 2. No comparador, tocar no nome de uma profissão abre uma roleta (lista que gira; setas, Page Up/Down, a letra inicial e Enter no teclado).
+- **Mapa:**
+  - a frase do topo troca a parte final a cada 2,4 s ("faz no dia a dia", "estuda para chegar lá", "vive de verdade"); o leitor de tela ouve a frase inteira;
+  - **"Ver como":** cartões, lista em letra grande ou **aquário** (uma bolha por profissão, que boia devagar; tocar abre a ficha). A escolha fica só no aparelho (`diver-local:v1:profissoes-vista`). O aquário para fora da tela e com a aba escondida;
+  - **álbum de selos:** cada ficha aberta vira um selo (de `estado.vistas`, na ordem da primeira visita); o envelope mostra os últimos quatro e abre o álbum inteiro;
+  - **faixa "Agora, às Xh":** o que cada profissão costuma estar fazendo nesta hora, das cenas do dia das fichas (`numeros.json` → `agora`), rolando devagar; parada com "reduzir movimento";
+  - os atalhos ganharam **"Quão fundo é cada carreira"**.
+- **"Quão fundo é cada carreira"** (`#profissoes-fundo`, `js/profissoes-mergulho.js`): os anos de estudo viram profundidade, como no *Size of Life*. No raso, os técnicos e tecnólogos (até 3 anos); uma parada para cada duração de graduação (hoje, 4, 5 e 6 anos); no abismo, Medicina com a residência. Um profundímetro preso na lateral desce com a rolagem; tocar numa profissão mostra a etapa, a fonte, um "Você sabia?" e "Abrir a ficha". Dados de `numeros.json` (`formacao` e `fontes_formacao`); só entram as fichas que a pessoa pode ver (o aluno vê o aviso de que estão em revisão até a publicação).
+- **"Ver resumo" em cartas:** um baralho com uma carta por capítulo (as frases-tese, sem salário) e o "Você sabia?". O número principal de cada carta conta de zero até ele (só números com unidade, porcentagem ou milhar; ano solto, ordinal, data e valor em reais ficam de fora, e aí aparece o ícone do capítulo); a borda acende na cor da área e a troca é em fatia. Setas, bolinhas, arrastar e teclado (←, →, Esc); o foco fica preso no baralho e volta ao botão. Cabe em qualquer tela: até 320 px, e no celular deitado a carta deita junto. O "Você sabia?" sai do resumo quando fala de salário (Engenharia de Produção) ou quando repete o número de outra carta (o mesmo fato contado de novo); o mergulho também esconde o fato com salário.
+- **Véu de pixels:** ao abrir uma ficha de dentro da aba, quadradinhos na cor da área somem em meio segundo; não pega clique.
+- **Reduzir movimento:** sem véu, sem frase trocando, sem fatia, sem bolhas boiando e sem contagem; tudo aparece pronto.
+- **Tutorial da área na versão 5** (sete passos: o mapa, o álbum e a faixa "Agora", a ficha, o mergulho, a Maré, o comparador e os panoramas).
+
