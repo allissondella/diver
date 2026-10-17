@@ -321,7 +321,9 @@ body.sd-trava { overflow: hidden; }
 .sd-tiro__agua-barra { max-width: calc(100% - 16px); }
 /* A régua do nível: um risquinho por placa certa; de 5 em 5, um mais alto */
 .sd-tiro__dados > .sd-tiro__regua { gap: var(--esp-2); }
-.sd-tiro__riscos { display: flex; align-items: flex-end; gap: 2px; width: min(calc(var(--n) * 6px), 220px); height: 14px; }
+.sd-tiro__riscos { display: flex; align-items: flex-end; gap: 2px; width: min(calc(var(--n) * 6px), 220px); height: 14px; overflow: hidden; }
+.sd-tiro__riscos--denso { gap: 1px; } /* nível alto: mais de 36 placas certas, risquinhos mais finos */
+.sd-tiro__riscos--denso .sd-tiro__risco { min-width: 1px; }
 .sd-tiro__risco { flex: 1 1 0; min-width: 2px; height: 8px; border-radius: 1px; background: color-mix(in srgb, var(--texto) 28%, transparent); }
 .sd-tiro__risco--cinco { height: 14px; }
 .sd-tiro__risco--feito { background: var(--amarelo); }
@@ -334,6 +336,8 @@ body.sd-trava { overflow: hidden; }
   background: color-mix(in srgb, var(--fundo-0) 58%, transparent);
 }
 .sd-tiro__abertura[hidden] { display: none; }
+/* Tutorial aberto no celular: o balão fica preso no pé da tela; a folga deixa o cartão rolar até a parte destacada */
+@media (max-width: 767px) { body:has(#tour) .sd-tiro__abertura { padding-bottom: 260px; } }
 .sd-tiro__cartao {
   margin: auto; width: min(100%, 540px); display: grid; gap: var(--esp-4); padding: var(--esp-6) var(--esp-5);
   border-radius: var(--raio-xl); border: 1px solid color-mix(in srgb, var(--turquesa) 40%, transparent);

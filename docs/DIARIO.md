@@ -5,6 +5,22 @@
 
 ---
 
+## 2026-10-17 · Tiro ao Alvo: tela toda, barraca na beira do mar e festa
+- **Pedido do usuário:** "usar essas técnicas de design [das Profissões] no nosso jogo de tiro ao alvo para que ele fique mais bonito, divertido e use a tela toda". Plano de 4 etapas aprovado ("Manda bala"), com fotos depois de cada uma. **Regras, níveis, dificuldade (`parametros`), eliminação, 1 ponto por acerto e recorde iguais; nada no banco.**
+- **Feito:**
+  - **Etapa 1, tela toda:** contrato da Sala com `telaCheia` e `ctx.barra(...nós)`; a tela vira uma camada do tamanho da janela, a barra de cima fica por cima do jogo (com "Tela cheia" de verdade onde o navegador deixa); regra e placar em pílulas; abertura e fim num cartão no desenho das Profissões, que deita junto no celular deitado;
+  - **Etapa 2, cenário e placas:** barraca na beira do mar ao pôr do sol (toldo listrado, luzinhas, bandeirinhas, balcão), em imagens guardadas; placas retangulares em três trilhos que andam juntos (nunca uma por cima da outra), letra de no mínimo 12 px e alvo de dedo; barrinha do tempo; pistola com tanque transparente; folga de 10 px no toque;
+  - **Etapa 3, movimento e diversão:** placa que tomba com "+1", "5 seguidas!", régua de risquinhos do nível, regra nova em fatia e a virada de nível no próprio jogo (saiu o aviso), véu de pixels coral e a placa culpada acesa no erro, "Em números" no fim (pontos contando, nível, seguidas, tempo), **álbum de regras** (26 selos em 6 famílias, no estado da Sala), som sintetizado com botão na barra e teclado (setas e espaço; o "?" mostra os atalhos com `UI.atalhosDaTela`);
+  - **Etapa 4:** tutorial do jogo na versão 2 (passo novo do álbum; no celular, o cartão rola até o destaque), documentos, testes e PR.
+- **Decisões:**
+  - "Seguidas" = acertos sem jato na água; é só festa, os pontos continuam 1 por acerto;
+  - numa regra em dupla valem os dois selos; em "Tudo MENOS A", o de A;
+  - placa sem vão livre no trilho espera a próxima vez (antes nascia em cima de outra);
+  - no celular, a barra de cima vira ícones de 44 px (o "Sala" fica no `aria-label`); o contorno do foco no palco só aparece para quem usa o teclado;
+  - "Novo recorde!" só quando passa o recorde (empate não conta); confete só aí.
+- **Testes:** varredura de "coisa torta" (sobreposição, transbordo, texto cortado, cartão fora da tela, alvos de 44 px) em 10 tamanhos, de 360 × 740 a 1440 × 900 e quatro celulares deitados, também com "reduzir movimento" e com o álbum; conferência das placas no canvas até o nível 8 (letra ≥ 12 px, dentro das colunas, abaixo do placar, sem encavalar no trilho, trilhos andando e parados com "reduzir movimento"); o pior caso do fim (selo novo + novo recorde) em 9 telas; teclado, "?", som guardado e selo guardado; toque de verdade (no meio, 8 px fora da borda e na água); tela cheia e ordem do Tab; tutorial em 3 telas; `auditar-design` e `--navegador` (com o Tiro na lista de telas).
+- **Pendências:** merge para produção com o OK do usuário.
+
 ## 2026-10-17 · Mapa das Profissões: releitura com os vídeos de referência
 - **Pedido do usuário:** todos os cartões "igual ao primeiro print de Tecnologia e Medicina", consertar o que estava torto ("igual ali Educação"), uma repassada completa na aba, as fontes "mais escondidas mas de fácil acesso" e coisas criativas como as dos vídeos que ele mandou (e o site *Size of Life*), sem copiar. Plano de 6 etapas aprovado ("pode sim"), com fotos depois de cada uma.
 - **Feito (só o desenho e a interação; textos e números das fichas, rotas antigas, XP e log iguais; nada no banco):**

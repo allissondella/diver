@@ -314,6 +314,7 @@
         const recorde = ctx.recorde();
         raiz.classList.remove('sd-tiro--jogando');
         abertura.hidden = false;
+        tela.tabIndex = -1; // com o cartão aberto, o palco sai do Tab (volta na partida)
         const voltarAqui = () => mostrarAbertura(fim);
         let cartao;
         if (fim) {
@@ -385,6 +386,7 @@
         som.iniciar();
         abertura.hidden = true;
         raiz.classList.add('sd-tiro--jogando');
+        tela.tabIndex = 0;
         jogo = {
           r: Math.random, t: 0, pontos: 0, nivel: 0, agua: TANQUE, recarga: 0, placas: [], respingos: [], jatos: [], caindo: [], textos: [],
           regra: null, pausa: 0, proxima: 0.6, coice: 0, fim: false, adeus: null, acertosNivel: 0, certasCriadas: 0, p: null,
@@ -636,7 +638,7 @@
           h('span', { class: 'sd-tiro__nivel', text: `Nível ${jogo.nivel}` }),
           // a régua do nível: um risquinho por placa certa (de 5 em 5, um mais alto)
           h('span', { class: 'sd-tiro__regua', role: 'img', 'aria-label': `${feito} de ${meta} placas certas do nível` },
-            h('span', { class: 'sd-tiro__riscos', style: `--n:${meta}`, 'aria-hidden': 'true' },
+            h('span', { class: 'sd-tiro__riscos' + (meta > 36 ? ' sd-tiro__riscos--denso' : ''), style: `--n:${meta}`, 'aria-hidden': 'true' },
               Array.from({ length: meta }, (_, i) => h('i', { class: 'sd-tiro__risco' + (i < feito ? ' sd-tiro__risco--feito' : '') + ((i + 1) % 5 === 0 ? ' sd-tiro__risco--cinco' : '') }))),
             h('b', { 'aria-hidden': 'true', text: `${feito}/${meta}` })),
           h('span', { class: 'sd-tiro__agua' }, aguaBarra, aguaTexto));
@@ -1403,7 +1405,7 @@
       ]);
       medir();
       // Só para os testes automáticos (window.__diverTeste existe apenas quando o teste cria): ver a partida e atirar numa placa
-      if (window.__diverTeste) window.__diverTeste.tiro = { jogo: () => jogo, atirar: (x, y) => atirar(x, y), medidas: () => ({ L, A, T, balcao: balcaoY(), pistola: BICO * escalaPistola() }) };
+      if (window.__diverTeste) window.__diverTeste.tiro = { jogo: () => jogo, atirar: (x, y) => atirar(x, y), mira: () => mira, medidas: () => ({ L, A, T, balcao: balcaoY(), pistola: BICO * escalaPistola() }) };
       regraEl.textContent = 'Tiro ao Alvo';
       mostrarAbertura();
 
