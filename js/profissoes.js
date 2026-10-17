@@ -274,25 +274,6 @@
       o.extra ? el('div', { class: 'prof-cab-lado' }, o.extra) : null,
       acoes.length ? el('div', { class: 'prof-cab-acoes' }, acoes) : null);
   }
-  /** Um número em destaque (duração, salário...), com as fontes no toque. */
-  function tileFato(o) {
-    return el('div', { class: 'prof-fato-tile' + (o.cor ? ' prof-fato-tile--' + o.cor : '') },
-      el('div', { class: 'prof-min', text: o.rotulo }),
-      o.valor instanceof Node ? o.valor : el('div', { class: 'prof-fato-v prof-num' + (String(o.valor).length > 14 ? ' prof-fato-v--texto' : ''), text: o.valor }),
-      o.detalhe ? el('div', { class: 'prof-micro', text: o.detalhe }) : null,
-      o.fontes || null);
-  }
-  /** "Fonte N" no pé de um número: abre a fonte no cartão */
-  function fontesMini(f, ids) {
-    const l = (ids || []).filter(id => numeroFonte(f, id));
-    return l.length ? el('div', { class: 'prof-numero-fontes' }, l.map(id => el('button', { type: 'button', class: 'prof-fonte-mini', onclick: e => { e.stopPropagation(); abrirFonte(f, id, e.currentTarget); } }, icone('info'), `Fonte ${numeroFonte(f, id)}`))) : null;
-  }
-  /** Capítulo: título, subtítulo e o conteúdo (que já vem arrumado em grade). */
-  function capitulo(id, titulo, sub, ...conteudo) {
-    return el('section', { class: 'prof-cap', id: 'sec-' + id, 'aria-labelledby': 'tit-' + id },
-      el('div', { class: 'prof-cap-cab' }, el('h2', { id: 'tit-' + id, text: titulo }), sub ? el('p', { class: 'prof-min', text: sub }) : null),
-      ...conteudo);
-  }
   /** Faixa de capítulos presa no topo; o capítulo da vez fica aceso (um observador só, sem conta a cada rolagem). */
   function indiceCapitulos(corpo, rotulo) {
     const caps = [...corpo.querySelectorAll(':scope > .prof-cap')];
@@ -326,23 +307,6 @@
       if (k < 1) requestAnimationFrame(passo);
     };
     requestAnimationFrame(passo);
-  }
-  /** Cartas para virar ("O que ninguém te conta"), uma por vez ou todas. */
-  function cartasViradas(itens, citarItem) {
-    const viradas = new Set();
-    const cartas = itens.map((it, i) => {
-      const verso = el('div', { class: 'prof-virar-verso', hidden: true }, el('p', null, it.texto, citarItem(it)));
-      const frente = el('button', { type: 'button', class: 'prof-virar-frente', 'aria-expanded': 'false', onclick: () => virar(i) },
-        el('span', { class: 'prof-virar-n', text: String(i + 1) }), el('span', { text: 'Toque para revelar' }), icone('olho'));
-      return { caixa: el('li', { class: 'prof-virar' }, frente, verso), frente, verso };
-    });
-    const todas = botao('Revelar todos', { classe: 'prof-btn--linha prof-btn--pequeno', icone: 'olho', onclick: () => itens.forEach((_, i) => virar(i)) });
-    function virar(i) {
-      const c = cartas[i]; if (viradas.has(i)) return;
-      viradas.add(i); c.frente.hidden = true; c.verso.hidden = false; c.caixa.classList.add('prof-virar--aberta'); c.frente.setAttribute('aria-expanded', 'true');
-      if (viradas.size === itens.length) todas.hidden = true;
-    }
-    return el('div', null, el('ol', { class: 'prof-virar-lista' }, cartas.map(c => c.caixa)), el('div', { class: 'prof-espaco' }, todas));
   }
   /** Os dados de um panorama (Medicina, Tecnologia): uma cópia só para o mapa e para js/profissoes-panorama.js */
   const cachePanoramas = {};
@@ -546,9 +510,7 @@
       btnMira,
       f.mitos && f.mitos.length ? link('Mito ou verdade', 'profissao-' + f.id + '-mitos', { classe: 'prof-btn prof-btn--linha', icone: 'dado' }) : null,
       vizComFicha ? link('Comparar', `profissoes-comparar-${f.id}--${vizComFicha.id}`, { classe: 'prof-btn prof-btn--linha', icone: 'balanca' }) : null].filter(Boolean);
-    const linhaNumero = (rotulo, n) => el('div', { class: 'prof-emnum-linha' },
-      el('dt', { text: rotulo }),
-      el('dd', null, el('b', { text: n.valor.replace(/semipresencial/g, 'semi­presencial') }), el('span', { class: 'prof-micro' }, n.detalhe || '', citar(f, n.fontes))));
+    const linhaNumero = (rotulo, n) => linhaEmNumeros(rotulo, n.valor.replace(/semipresencial/g, 'semi\u00adpresencial'), n.detalhe, citar(f, n.fontes));
     // O salário fica para o palpite (capítulo "O dinheiro"); aqui só o convite, e depois dele a média
     const linhaSalario = el('div', { class: 'prof-emnum-linha prof-emnum-linha--salario' });
     const pintarSalario = () => {
@@ -561,22 +523,12 @@
     };
     pintarSalario();
     // "Ver resumo": as frases-tese (ou, sem elas, os fatos centrais da ficha); fica na coluna da capa
-    const itensResumo = resumoDe(f);
-    const resumo = itensResumo.length ? el('details', { class: 'prof-resumo' },
-      el('summary', null, el('span', { class: 'prof-resumo-rot' }, icone('livro'), 'Ver resumo'), el('span', { class: 'prof-micro', text: `${itensResumo.length} pontos desta ficha` })),
-      el('ul', null, itensResumo)) : null;
-    raiz.appendChild(el('header', { class: 'prof-capa' },
-      el('div', { class: 'prof-capa-texto' },
-        el('span', { class: 'prof-rotulo prof-rotulo--area', text: nomeArea(ix, f.area) }),
-        el('h1', { text: f.nome }),
-        el('p', { class: 'prof-lead', text: f.frase }),
-        el('p', { class: 'prof-capa-meta', text: [f.conferido_em ? `Ficha conferida em ${dataBR(f.conferido_em)}` : null, `${(f.fontes || []).length} fontes`, 'Mapa das Profissões do Diver'].filter(Boolean).join(' · ') }),
-        acoes.length ? el('div', { class: 'prof-cab-acoes' }, acoes) : null,
-        resumo),
-      el('aside', { class: 'prof-emnum', 'aria-labelledby': 'prof-emnum-tit' },
-        el('p', { class: 'prof-emnum-tit', id: 'prof-emnum-tit', text: 'Em números' }),
-        el('dl', null, [['duracao', 'Duração'], ['formato', 'Formato'], ['registro', 'Registro profissional']].filter(([k]) => nums[k]).map(([k, r]) => linhaNumero(r, nums[k])), linhaSalario),
-        linkPanorama(f, ix))));
+    raiz.appendChild(capaRelatorio({
+      rotulo: nomeArea(ix, f.area), titulo: f.nome, frase: f.frase,
+      meta: [f.conferido_em ? `Ficha conferida em ${dataBR(f.conferido_em)}` : null, `${(f.fontes || []).length} fontes`, 'Mapa das Profissões do Diver'],
+      acoes, resumo: caixaResumo(resumoDe(f), 'desta ficha'),
+      numeros: [...[['duracao', 'Duração'], ['formato', 'Formato'], ['registro', 'Registro profissional']].filter(([k]) => nums[k]).map(([k, r]) => linhaNumero(r, nums[k])), linhaSalario],
+      pe: linkPanorama(f, ix) }));
 
     const corpo = el('div', { class: 'prof-corpo' });
     raiz.appendChild(corpo);
@@ -642,9 +594,7 @@
     if (carreira.length) cap('carreira', 'A carreira', null, ...carreira);
 
     // ---------- 06. O que ninguém te conta: tudo à vista, numerado ----------
-    if (S.ninguem_conta) cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.',
-      el('ol', { class: 'prof-callouts' }, S.ninguem_conta.itens.map((it, i) => el('li', { class: 'prof-callout' },
-        el('span', { class: 'prof-callout-n', 'aria-hidden': 'true', text: String(i + 1).padStart(2, '0') }), el('p', null, it.texto, citar(f, it.fontes))))));
+    if (S.ninguem_conta) cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.', calloutsNumerados(f, S.ninguem_conta.itens));
 
     // ---------- 07. Combina com você? DNA e o dilema ----------
     const combina = [];
@@ -665,6 +615,39 @@
   }
 
   /* ---------- Peças do relatório ---------- */
+  /** Capa dos relatórios (ficha, panorama e cada área de um panorama): o texto e as ações à esquerda; "Em números" à direita, no lugar da foto. */
+  function capaRelatorio(o) {
+    const acoes = (o.acoes || []).filter(Boolean), numeros = (o.numeros || []).filter(Boolean);
+    return el('header', { class: 'prof-capa' + (numeros.length ? '' : ' prof-capa--so-texto') },
+      el('div', { class: 'prof-capa-texto' },
+        o.rotulo ? el('span', { class: 'prof-rotulo prof-rotulo--area', text: o.rotulo }) : null,
+        el('h1', { text: o.titulo }),
+        o.frase ? el('p', { class: 'prof-lead', text: o.frase }) : null,
+        o.meta ? el('p', { class: 'prof-capa-meta', text: o.meta.filter(Boolean).join(' · ') }) : null,
+        acoes.length ? el('div', { class: 'prof-cab-acoes' }, acoes) : null,
+        o.resumo || null),
+      numeros.length ? el('aside', { class: 'prof-emnum', 'aria-labelledby': 'prof-emnum-tit' },
+        el('p', { class: 'prof-emnum-tit', id: 'prof-emnum-tit', text: 'Em números' }),
+        el('dl', null, numeros),
+        o.pe || null) : null);
+  }
+  /** Uma linha do "Em números": o rótulo, o valor em destaque (texto ou um elemento pronto) e o detalhe com a fonte. */
+  function linhaEmNumeros(rotulo, valor, detalhe, cit) {
+    return el('div', { class: 'prof-emnum-linha' },
+      el('dt', { text: rotulo }),
+      el('dd', null, valor instanceof Node ? valor : el('b', { text: valor }), el('span', { class: 'prof-micro' }, detalhe || '', cit || null)));
+  }
+  /** "Ver resumo": os pontos principais, fechados até a pessoa pedir. */
+  function caixaResumo(itens, deQue) {
+    return itens.length ? el('details', { class: 'prof-resumo' },
+      el('summary', null, el('span', { class: 'prof-resumo-rot' }, icone('livro'), 'Ver resumo'), el('span', { class: 'prof-micro', text: `${itens.length} pontos ${deQue}` })),
+      el('ul', null, itens)) : null;
+  }
+  /** "O que ninguém te conta": tudo à vista, numerado (01, 02...), cada ponto com a sua fonte. */
+  function calloutsNumerados(f, itens, classe) {
+    return el('ol', { class: 'prof-callouts' + (classe ? ' ' + classe : '') }, itens.map((it, i) => el('li', { class: 'prof-callout' },
+      el('span', { class: 'prof-callout-n', 'aria-hidden': 'true', text: String(i + 1).padStart(2, '0') }), el('p', null, it.texto, citar(f, it.fontes)))));
+  }
   /** Capítulo com a faixa numerada ("01 · O trabalho") e, se a ficha tiver, a frase-tese com a linha de apoio. */
   function capituloRelatorio(f, n, id, titulo, tese, sub, ...conteudo) {
     return el('section', { class: 'prof-cap prof-rel-cap', id: 'sec-' + id, 'aria-labelledby': 'tit-' + id },
@@ -694,7 +677,11 @@
   function fonteLinha(f, ids, texto) {
     const fs = [...new Set(ids || [])].map(id => (f.fontes || []).find(x => x.id === id)).filter(Boolean);
     if (!fs.length && !texto) return null;
-    const curto = fo => { const t = fo.titulo.split(':')[0].trim(), o = (fo.orgao || '').replace(/\s*\(.*\)$/, ''); return o && !t.includes(o) ? `${t}, ${o}` : t; };
+    const curto = fo => {
+      const t = fo.titulo.split(':')[0].trim();
+      const o = (fo.orgao || '').replace(/\s*\(\d{2}\/\d{2}\/\d{4}\)/g, '').replace(/\s*\(.*\)$/, '').replace(/,\s*(\d{2}\/\d{2}\/\d{4}|[a-zç]+ de \d{4})$/i, '').trim();
+      return o && !t.includes(o) ? `${t}, ${o}` : t;
+    };
     return el('p', { class: 'prof-fonte-linha' }, el('b', { text: 'Fonte: ' }), texto || fs.map(curto).join(' · '), fs.length ? citar(f, fs.map(x => x.id)) : null);
   }
   /** O número gigante numa faixa (o "R$ 1,2 trilhão por ano" dos relatórios). Um por página. */
@@ -1012,6 +999,18 @@
   /* ---------- Bloco: Onde e quando se busca (2026-10-17: mapa do Brasil em quadradinhos, um por estado) ---------- */
   // Cada estado é um quadradinho na posição aproximada do mapa: [linha, coluna]
   const GRADE_UF = { RR: [1, 2], AP: [1, 3], AM: [2, 2], PA: [2, 3], MA: [2, 4], CE: [2, 5], RN: [2, 6], AC: [3, 1], RO: [3, 2], TO: [3, 3], PI: [3, 4], PE: [3, 5], PB: [3, 6], MT: [4, 2], GO: [4, 3], BA: [4, 4], SE: [4, 5], AL: [4, 6], MS: [5, 2], DF: [5, 3], MG: [5, 4], ES: [5, 5], PR: [6, 2], SP: [6, 3], RJ: [6, 4], SC: [7, 2], RS: [8, 2] };
+  /** Quando se busca: uma coluna por mês, a barra sobe ou desce a partir da média do ano (100); o pico em amarelo.
+      Em HTML (não SVG) para os meses ficarem legíveis no celular. */
+  function barrasMeses(valores) {
+    const MESES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    const max = Math.max(...valores), min = Math.min(...valores);
+    const escala = Math.max(30, ...valores.map(v => Math.abs(v - 100))); // pelo menos ±30, para variação pequena não parecer grande
+    return el('div', { class: 'prof-meses', role: 'img', 'aria-label': 'Interesse por mês, com a média do ano igual a 100: ' + valores.map((v, i) => `${MESES[i]} ${v}`).join(', ') },
+      valores.map((v, i) => el('div', { class: 'prof-mes' + (v === max ? ' prof-mes--max' : '') + (v < 100 ? ' prof-mes--abaixo' : ''), title: `${MESES[i]}: ${v} (média do ano = 100)`, style: { '--h': Math.abs(v - 100) / escala } },
+        el('span', { class: 'prof-mes-barra' }),
+        v === max || v === min ? el('span', { class: 'prof-mes-v prof-num', text: String(v) }) : null,
+        el('span', { class: 'prof-mes-rot', text: MESES[i] }))));
+  }
   function blocoBuscas(sec, f, t) {
     const carregando = sec.querySelector('.prof-carregando'); if (carregando) carregando.remove();
     if (!t || !f.trends_id || !t.sazonalidade[f.trends_id]) { sec.appendChild(el('p', { class: 'prof-min', text: 'Sem dados de busca para esta profissão ainda.' })); return; }
@@ -1032,7 +1031,7 @@
           el('div', { class: 'prof-buscas-corpo' }, mapas, el('div', { class: 'prof-buscas-lado' }, escala, leitura, tabela))),
         el('figure', { class: 'prof-caixa prof-buscas-meses' },
           el('figcaption', { class: 'prof-grafico-cab' }, el('b', { text: 'Quando o Brasil pesquisa ' + f.nome }), el('span', { class: 'prof-min', text: 'média do ano = 100' })),
-          IG() ? IG().sazonalidade({ valores: saz }) : null,
+          barrasMeses(saz),
           el('p', { class: 'prof-min prof-espaco', text: `O pico é em ${meses[maxMes]} (${saz[maxMes]}) e o vale em ${meses[minMes]} (${saz[minMes]}). Em cursos de saúde, os picos acompanham o começo dos semestres; em Medicina e Engenharia, o Sisu de janeiro.` }))),
       fonteLinha(f, [], `${t.fonte}. ${t.nota}`));
     function desenhar() {
@@ -1381,8 +1380,8 @@
     registrarExtensao: ext => extensoes.push(ext),
     /* Peças para as extensões (js/profissoes-panorama.js): as mesmas da ficha, para o desenho ficar igual */
     _util: { el, icone, aviso, botao, link, citar, prosa, brl, dataBR, normalizar, nomeArea, corArea, salvarEstado, lerJson, limpezas, IG, EIXOS,
-      temFicha, temPanorama, pedir, semMovimento, contar, ir, fontesGuardadas, abrirFonte, numeroFonte, fontesMini, dadosPanorama,
-      topoPagina, cabecalho, tileFato, capitulo, indiceCapitulos, cartasViradas, linhasCargos,
-      capituloRelatorio, fonteLinha, faixaNumero, numerosProf }
+      temFicha, temPanorama, pedir, semMovimento, contar, ir, fontesGuardadas, abrirFonte, numeroFonte, dadosPanorama,
+      topoPagina, cabecalho, indiceCapitulos, linhasCargos,
+      capituloRelatorio, fonteLinha, faixaNumero, numerosProf, capaRelatorio, linhaEmNumeros, caixaResumo, calloutsNumerados, regua, dominioDe }
   };
 })();
