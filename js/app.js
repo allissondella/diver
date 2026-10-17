@@ -57,7 +57,7 @@ const App = (() => {
     estatisticas: ['js/estatisticas.js'],
     admin: ['js/estatisticas.js', 'js/admin.js'],
     fila: ['js/fila-validacao.js'],
-    profissoes: ['js/profissoes-infograficos.js', 'js/profissoes.js', 'js/profissoes-panorama.js'], // Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md); os panoramas (Tecnologia, Medicina) são extensão e vêm depois
+    profissoes: ['js/profissoes-infograficos.js', 'js/profissoes.js', 'js/profissoes-panorama.js', 'js/profissoes-mergulho.js'], // Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md); os panoramas (Tecnologia, Medicina) e o mergulho "Quão fundo" são extensões e vêm depois
     descompressao: ['js/dicionario.js', 'js/descompressao.js', 'js/descompressao/investigacao.js', 'js/descompressao/palavrinha-dia.js',
       'js/descompressao/tiro.js', 'js/descompressao/batata.js', 'js/descompressao/pitstop.js', 'js/descompressao/cardume.js'],
   };
@@ -91,7 +91,7 @@ const App = (() => {
     perfil: { tela: 'tela-perfil', pacotes: ['perfil'], render: () => Perfil.render($('tela-perfil')) },
     estatisticas: { tela: 'tela-estatisticas', pacotes: ['estatisticas'], render: () => Estatisticas.render($('tela-estatisticas')) },
     descompressao: { tela: 'tela-descompressao', pacotes: ['descompressao'], render: () => Descompressao.render($('tela-descompressao')) },
-    profissoes: { tela: 'tela-profissoes', pacotes: ['profissoes'], render: renderizarProfissoes }, // endereços #profissoes, #profissoes-cartas, #profissoes-metodo, #profissoes-comparar[-<a>--<b>], #profissao-<id>[-dia|-mitos] e da Tecnologia (#profissoes-tecnologia[-jogo], #tecnologia-<área>)
+    profissoes: { tela: 'tela-profissoes', pacotes: ['profissoes'], render: renderizarProfissoes }, // endereços #profissoes, #profissoes-cartas, #profissoes-metodo, #profissoes-fundo, #profissoes-comparar[-<a>--<b>], #profissao-<id>[-dia|-mitos] e da Tecnologia (#profissoes-tecnologia[-jogo], #tecnologia-<área>)
     prova: { tela: 'tela-prova', precisaTrilha: true, render: renderizarProva },
     'upload-prova': { tela: 'tela-upload-prova', precisaTrilha: true, pacotes: ['provas'], render: () => ProvasEnviadas.renderUpload($('tela-upload-prova')) },
     admin: { tela: 'tela-admin', soEquipe: true, pacotes: ['admin'], render: () => Admin.render($('tela-admin')) },
@@ -106,7 +106,7 @@ const App = (() => {
   }
 
   /** Endereços do Mapa das Profissões que caem na tela "profissoes" (o módulo desenha a rota certa). */
-  const ehRotaProfissoes = (secao) => /^profissoes(-cartas|-metodo|-tecnologia|-tecnologia-jogo|-medicina|-medicina-jogo)?$|^profissoes-comparar(-[a-z0-9-]+)?$|^profissao-[a-z0-9-]+$|^(tecnologia|medicina)-[a-z-]+$/.test(secao || '');
+  const ehRotaProfissoes = (secao) => /^profissoes(-cartas|-metodo|-fundo|-tecnologia|-tecnologia-jogo|-medicina|-medicina-jogo)?$|^profissoes-comparar(-[a-z0-9-]+)?$|^profissao-[a-z0-9-]+$|^(tecnologia|medicina)-[a-z-]+$/.test(secao || '');
 
   /** O endereço existe? (#secao, #sala-<id> ou uma rota do Mapa das Profissões) */
   function rotaExiste(secao) {

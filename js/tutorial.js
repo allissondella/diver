@@ -142,12 +142,16 @@ const Tutorial = (() => {
     // Repaginada em 2026-10-16 (versão 3): página larga, capítulos, palpite de salário e panoramas como explorador.
     // Versão 4 (2026-10-17): fichas e panoramas em formato de relatório (capa com "Em números", "Ver resumo",
     // capítulos numerados com a frase-tese e a fonte embaixo de cada gráfico) e as profissões lado a lado no mapa.
+    // Versão 5 (2026-10-17, vídeos de referência do usuário): "Ver como" (cartões, lista, aquário), álbum de selos,
+    // faixa "Agora", o mergulho "Quão fundo é cada carreira", as cartas do "Ver resumo", a régua do palpite e a roleta.
     // Ao publicar as fichas e os panoramas, suba "profissoes" em VERSOES só se o texto daqui mudar.
     profissoes: [
-      { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque uma profissão pelo nome ou filtre pela área nas abas. Em "Características", marque o que importa para você, como "Lida com pessoas" ou "Só presencial". "Pôr na mira" guarda as que você quer acompanhar. No fim do mapa, as profissões lado a lado. No computador, "Esconder menu" deixa a tela inteira para as profissões.' },
-      { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'Cada ficha é um relatório: a capa traz os números principais e "Ver resumo"; os capítulos numerados começam com uma frase que resume o que vem, e cada gráfico tem a fonte embaixo. Em "O dinheiro", arrisque uma faixa antes de ver o salário (ou toque em "Prefiro ver direto"). Cada bolinha numerada abre a fonte daquela informação.' },
+      { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque pelo nome, filtre pela área nas abas ou, em "Características", pelo que importa para você, como "Lida com pessoas" ou "Só presencial". Em "Ver como", troque os cartões pela lista ou pelo aquário. No computador, "Esconder menu" deixa a tela inteira para as profissões.' },
+      { desenho: 'carta', titulo: 'Seu álbum e a faixa "Agora"', texto: 'Cada ficha que você abre vira um selo: toque no envelope para ver o álbum inteiro. A faixa "Agora" mostra o que cada profissão costuma estar fazendo neste horário. "Pôr na mira" guarda as que você quer acompanhar.' },
+      { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'Cada ficha é um relatório: a capa traz os números principais, e "Ver resumo" abre o resumo em cartas. Em "O dinheiro", arraste a régua até o seu palpite antes de ver o salário (ou toque em "Prefiro ver direto"). O pontinho depois de uma informação e o botão "Fonte" abrem a fonte; "Mostrar as fontes", no topo, acende todas.' },
+      { desenho: 'ancora', titulo: 'Quão fundo é cada carreira', texto: 'Um mergulho pelos anos de estudo: no raso, os cursos técnicos e tecnólogos; lá no fundo, Medicina com a residência. Role a tela, veja o profundímetro descer e toque numa profissão para ver a formação, a fonte e um "Você sabia?".' },
       { desenho: 'estrela', titulo: 'Maré de cartas', texto: 'Sem ideia por onde começar? A Maré mostra uma profissão por vez: "Me interessa" ou "Não é pra mim". No fim, o seu rastro e uma sugestão que talvez você não tenha considerado.' },
-      { desenho: 'lupa', titulo: 'Comparar duas profissões', texto: 'Em dúvida entre duas? "Comparar duas" põe as profissões lado a lado: duração, formato, salário, registro, matérias que pesam para entrar, caminhos e o DNA de cada uma.' },
+      { desenho: 'lupa', titulo: 'Comparar duas profissões', texto: 'Em dúvida entre duas? "Comparar duas" põe as profissões lado a lado: duração, formato, salário, registro, matérias que pesam para entrar, caminhos e o DNA de cada uma. Para trocar, toque no nome e gire a roleta.' },
       { desenho: 'mapa', titulo: 'Explore por dentro', texto: 'Carreiras grandes se abrem em áreas: dez na Tecnologia e doze especialidades na Medicina. Ordene pelo que importa para você (mais contato com pessoas, mais rotina, maior salário...), compare o salário de todas na mesma régua e abra cada uma para ver o dia típico, a formação e o que ninguém conta. Um jogo ajuda a descobrir a sua. Com o selo "Em breve", o panorama ainda está em revisão.' },
     ],
     perfil: [
@@ -159,7 +163,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { profissoes: 4, inicio: 5, sala: 2, 'sala-ensino-medio': 2, 'mapa-partida': 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { profissoes: 5, inicio: 5, sala: 2, 'sala-ensino-medio': 2, 'mapa-partida': 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

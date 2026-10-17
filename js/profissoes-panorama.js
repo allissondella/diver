@@ -19,7 +19,7 @@
   const { el, icone, botao, link, citar, brl, dataBR, salvarEstado, limpezas, IG, EIXOS, temFicha, temPanorama, pedir,
     semMovimento, contar, ir, fontesGuardadas, dadosPanorama, corArea,
     topoPagina, indiceCapitulos, linhasCargos, regua, dominioDe,
-    capaRelatorio, linhaEmNumeros, caixaResumo, calloutsNumerados, capituloRelatorio, fonteLinha } = P._util;
+    capaRelatorio, linhaEmNumeros, caixaResumo, calloutsNumerados, capituloRelatorio, fonteLinha, botaoFontes } = P._util;
 
   /* O panorama da tela atual: montar() define antes de desenhar (as telas são desenhadas uma de cada vez) */
   let ID = 'tecnologia', T = null;
@@ -126,9 +126,9 @@
     const cem = t.numeros.find(n => porcento(n.valor) != null);
     raiz.appendChild(capaRelatorio({
       rotulo: rot('rotulo', 'Panorama'), titulo: t.titulo, frase: t.frase,
-      meta: [`Panorama conferido em ${dataBR(t.conferido_em)}`, `${t.fontes.length} fontes`, 'Mapa das Profissões do Diver'],
+      meta: [`Panorama conferido em ${dataBR(t.conferido_em)}`, 'Mapa das Profissões do Diver'], fontes: botaoFontes(t.fontes.length),
       acoes: [linkJogo(rank, 'prof-btn--primario'), botaoEstudar('prof-btn--linha')],
-      resumo: caixaResumo(t.contexto.map(c => el('li', null, c.texto, citar(t, c.fontes))), 'deste panorama'),
+      resumo: caixaResumo(t.contexto.map(c => ({ icone: 'info', texto: c.texto, ids: c.fontes })), 'deste panorama', { fonte: t, nome: t.titulo }),
       numeros: t.numeros.filter(n => n !== cem).map(n => linhaEmNumeros(n.rotulo, n.valor, n.detalhe, citar(t, n.fontes))) }));
 
     const corpo = el('div', { class: 'prof-corpo' });
@@ -170,7 +170,7 @@
       el('div', { class: 'prof-caixa prof-ponte' }, el('p', { class: 'prof-prosa', text: ponte().texto }),
         el('div', { class: 'prof-espaco' }, botao(ponte().abrir, { classe: 'prof-btn--linha', icone: 'livro', iconeDepois: 'direita', onclick: () => estudar(ponte().entrada) }))));
 
-    cap('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Toque num número ao longo da página para ver de onde ele vem.`,
+    cap('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Toque no pontinho depois de uma informação para ver de onde ela vem, ou em "Mostrar as fontes", no topo, para ver todas.`,
       ...fontesGuardadas(t, t.fontes, `Ver as ${t.fontes.length} fontes deste panorama`), linhaRevisao(t));
 
     indiceCapitulos(corpo, 'Capítulos do panorama');
@@ -196,7 +196,7 @@
     const fontesSal = uniq(t.areas.flatMap(a => (salarioPrincipal(a) || {}).fontes || []));
     const nota = el('p', { class: 'prof-fonte-nota' },
       'Perfil: estimativa inicial, a calibrar com profissionais. Salário: média de contratação com carteira no Novo Caged, comparada no capítulo "O dinheiro"',
-      refs.length ? ' ("referência" quando é o de uma ocupação próxima)' : '', '. Fontes:', citar(t, fontesSal));
+      refs.length ? ' ("referência" quando é o de uma ocupação próxima)' : '', '.', citar(t, fontesSal));
     function desenhar() {
       botoes.forEach((b, i) => b.setAttribute('aria-pressed', String(ordens[i] === atual)));
       const afin = id => (rank ? (rank.find(r => r.area.id === id) || {}).pct || 0 : 0);
@@ -313,7 +313,7 @@
     requestAnimationFrame(() => { const atual = troca.querySelector('[aria-current]'); if (atual) troca.scrollLeft = atual.offsetLeft - (troca.clientWidth - atual.offsetWidth) / 2; });
     raiz.appendChild(capaRelatorio({
       rotulo: a.apelido, titulo: a.nome, frase: a.resumo,
-      meta: [`${maiuscula(umaArea())} ${k + 1} de ${t.areas.length}`, t.titulo, 'Mapa das Profissões do Diver'],
+      meta: [`${maiuscula(umaArea())} ${k + 1} de ${t.areas.length}`, t.titulo, 'Mapa das Profissões do Diver'], fontes: botaoFontes(),
       acoes: [j ? botaoEstudar('prof-btn--primario') : link((t.jogo && t.jogo.chamada_curta) || 'Que área é a minha?', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--primario', icone: 'play' }),
         j ? link('Refazer o jogo', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--linha', icone: 'embaralhar' }) : botaoEstudar('prof-btn--linha')],
       numeros: s ? [
@@ -382,7 +382,7 @@
     cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.', calloutsNumerados(t, a.ninguem_conta));
 
     // 06. Vizinhas
-    cap('vizinhas', rot('rotulo_vizinhas', 'Áreas vizinhas'), 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, a.vizinhas.map(id => {
+    cap('vizinhas', rot('rotulo_vizinhas', 'Áreas vizinhas'), 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards prof-cards--linhas' }, a.vizinhas.map(id => {
       const v = t.areas.find(x => x.id === id);
       return v ? el('a', { href: '#' + ID + '-' + v.id, class: 'prof-caixa prof-vizinha' }, el('span', { class: 'prof-esp-apelido', text: v.apelido }), el('h3', null, v.nome, icone('direita')), el('p', { text: v.resumo })) : null;
     })));

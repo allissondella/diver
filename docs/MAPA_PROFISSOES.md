@@ -45,9 +45,9 @@ O Mapa responde a essas perguntas, sempre na mesma ordem, com fonte em cada núm
 ## 3. Onde fica no app
 
 - **Barra lateral:** novo item "Profissões" (ícone de bússola). Se o padrão atual da barra pedir outro lugar, siga o padrão e registre a decisão no DIARIO.
-- **Rotas:** `#profissoes` (mapa), `#profissoes-cartas` (Maré de cartas), `#profissoes-metodo` (Como fazemos as fichas), `#profissao-<id>` (ficha), `#profissao-<id>-dia` (Um dia como...), `#profissao-<id>-mitos` (Mito ou verdade) e `#profissoes-comparar` (Fase 2).
+- **Rotas:** `#profissoes` (mapa), `#profissoes-cartas` (Maré de cartas), `#profissoes-metodo` (Como fazemos as fichas), `#profissao-<id>` (ficha), `#profissao-<id>-dia` (Um dia como...), `#profissao-<id>-mitos` (Mito ou verdade) `#profissoes-comparar` (Fase 2) e `#profissoes-fundo` ("Quão fundo é cada carreira", 2026-10-17).
 - **Acesso:** qualquer conta logada, sem matrícula. No modo local (sem Supabase), funciona igual.
-- **Tutorial de primeiro acesso:** entrada nova em `js/tutorial.js`, com 3 passos (o mapa, a ficha e o "Um dia como").
+- **Tutorial de primeiro acesso:** entrada nova em `js/tutorial.js`, com 3 passos (o mapa, a ficha e o "Um dia como"). Hoje, na versão 5 (2026-10-17), são 7 passos: o mapa, o álbum e a faixa "Agora", a ficha, o mergulho, a Maré, o comparador e os panoramas.
 
 ## 4. Telas
 
@@ -60,12 +60,13 @@ O Mapa responde a essas perguntas, sempre na mesma ordem, com fonte em cada núm
 - Quando houver profissões na mira, elas aparecem numa faixa no topo.
 - Admin e professor veem também as fichas em `rascunho`, com uma etiqueta, para revisar.
 - **As profissões lado a lado** (2026-10-17), no pé do mapa, quando há 3 ou mais fichas abertas para quem está vendo: "Quanto dura a graduação" (as profissões agrupadas pelos anos, com a nota de quem tem caminho mais curto, de técnico ou tecnólogo) e "Onde dá para estudar a distância" (só presencial, presencial ou semipresencial, também a distância, depende do curso), cada quadro com a fonte embaixo. **O salário fica de fora de propósito:** ele estragaria o palpite de cada ficha. Os números vêm de `data/profissoes/numeros.json` (seção 5.3).
+- **A releitura de 2026-10-17** (vídeos de referência do usuário; detalhes em `docs/MAPA_PROFISSOES_INTERACOES.md`, "A releitura com os vídeos de referência"): a frase do topo troca a parte final; **"Ver como"** (cartões, lista ou aquário, guardado só no aparelho); o **álbum de selos** das fichas abertas; a faixa **"Agora, às Xh"**, com o que cada profissão costuma fazer nesta hora; e o atalho para **"Quão fundo é cada carreira"** (4.6). Os cartões seguem o desenho dos panoramas.
 
 ### 4.2 Ficha (`#profissao-<id>`)
 
 **Formato de relatório (2026-10-17;** pedido do usuário, a partir de um relatório de dados da Globo; detalhes em `docs/MAPA_PROFISSOES_INTERACOES.md`, "O formato de relatório"). Só o desenho mudou: o conteúdo, as rotas, o XP e o log são os mesmos. A ordem abaixo substitui a da repaginação de 2026-10-16:
 
-1. **Capa:** área, nome, frase, "Ficha conferida em ... · N fontes", as ações (Viver um dia, Pôr na mira, Mito ou verdade, Comparar) e **"Ver resumo"** (as frases-tese, sem o salário). À direita, **"Em números"**: duração, formato, registro e "Quanto ganha?" (leva ao palpite; depois dele, mostra a média) e o atalho para o panorama da área.
+1. **Capa:** área, nome, frase, "Ficha conferida em ... · N fontes", as ações (Viver um dia, Pôr na mira, Mito ou verdade, Comparar) e **"Ver resumo"** (as frases-tese, sem o salário; desde 2026-10-17, um baralho de cartas, e o "Você sabia?" que fala de salário ou repete o número de outra carta fica de fora). À direita, **"Em números"**: duração, formato, registro e "Quanto ganha?" (leva ao palpite; depois dele, mostra a média) e o atalho para o panorama da área.
 2. **Faixa de capítulos** presa no topo; o capítulo da vez fica aceso.
 3. Capítulos em **faixas numeradas**, cada um aberto pela **frase-tese** (`manchetes`) quando a ficha tem:
    - **01 O trabalho:** O que faz × O que não faz; Um dia de trabalho ao lado das **24 horas de um dia típico** (o trecho de agora aceso);
@@ -103,6 +104,7 @@ Jogo de decisões sobre a rotina real da profissão.
 Duas profissões lado a lado com os 4 números, a seção "Como entrar" resumida e os caminhos.
 
 - **Rotas:** `#profissoes-comparar` (escolhe duas: as da mira primeiro) e `#profissoes-comparar-<a>--<b>` (dois hífens separam os ids).
+- **Trocar uma das duas** (2026-10-17): tocar no nome abre uma roleta com todas as fichas abertas, na ordem das áreas (setas, Page Up/Down, a letra inicial e Enter no teclado).
 - **Entradas:** "Comparar profissões" no topo do mapa (só com 2 ou mais fichas abertas para a conta) e "Comparar com <vizinha>" no pé de "Profissões vizinhas" da ficha.
 - **Blocos:**
   - duração, formato, média de contratação e registro, cada um com as fontes da própria ficha;
@@ -113,6 +115,15 @@ Duas profissões lado a lado com os 4 números, a seção "Como entrar" resumida
 - **Salário:** segue a regra da ficha. Se ainda estiver escondido (sem palpite), "Mostrar os dois salários" revela os dois de uma vez, como o "Prefiro ver direto".
 - **Aluno:** enquanto não houver duas fichas publicadas, a tela explica que elas estão em revisão.
 - **Log:** sem evento novo (não exigiu mudança no banco).
+
+### 4.6 Quão fundo é cada carreira (`#profissoes-fundo`, 2026-10-17)
+
+Os anos de estudo como profundidade, num mergulho que se rola (inspirado no *Size of Life*, de neal.fun). Código em `js/profissoes-mergulho.js` (extensão do pacote `profissoes`); dados de `data/profissoes/numeros.json` (`formacao` e `fontes_formacao`), sem baixar as fichas.
+
+- **Paradas:** a superfície; o raso (técnicos e tecnólogos de até 3 anos, quando o caminho existe); uma parada para cada duração de graduação, de 4 anos para cima; o abismo (Medicina com a residência, depois de uma fossa tracejada); e o fim.
+- **Profundímetro** preso na lateral, com a marca dos anos, que desce com a rolagem; "Mergulhar mais fundo" leva à próxima parada.
+- Tocar numa profissão abre o detalhe: a etapa e quanto dura, o botão "Fonte", um "Você sabia?" (do índice, sem salário) e "Abrir a ficha".
+- Só entram as fichas que a pessoa pode ver; enquanto todas estão em revisão, o aluno vê o aviso. Sem XP e sem evento novo no log.
 
 ## 5. Modelo de dados
 
@@ -154,6 +165,7 @@ Os números que comparam uma profissão com as outras, para o relatório da fich
 - `matriculas_2024`: o ranking dos cursos com mais matrículas, só com as fichas que têm `contexto.matriculas_2024` **e** `contexto.posicao_ranking_matriculas` (o total do curso, o mesmo critério para todas; número só do presencial ou só da EAD não entra). O script avisa fonte diferente, posição faltando ou fora de ordem.
 - `profissoes.<id>`: média do cargo principal, anos da graduação, caminho mais curto (técnico ou tecnólogo que termina antes da graduação), formato de oferta (`presencial`, `semi`, `ead` ou `depende`, lido de `numeros.formato.valor`) e matrículas.
 - `fontes_mapa`: o nome das normas citadas embaixo dos quadros do mapa.
+- Desde 2026-10-17, também, por profissão: `duracao` e `registro` (como a ficha escreve, para as etiquetas dos cartões), `agora` (as cenas do dia: `de`, `ate`, `texto`, para a faixa "Agora" do mapa) e `formacao` (as etapas: `tipo`, `nome`, `anos_de`, `anos_ate`, `texto`, `fontes`); e, no topo, `fontes_formacao` (cada fonte citada nas etapas, com título, órgão, link e data da consulta), para o mergulho "Quão fundo é cada carreira". O script avisa quando uma etapa cita fonte que não está na ficha ou quando o mesmo id tem títulos diferentes em duas fichas.
 
 Regras:
 
