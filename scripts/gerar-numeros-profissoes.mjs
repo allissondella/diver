@@ -12,6 +12,8 @@
  *     (técnico ou tecnólogo), o formato de oferta (presencial, semipresencial, EAD), as matrículas e, para as
  *     etiquetas do cartão no mapa, a duração e o registro como a ficha escreve (numeros.duracao e numeros.registro);
  *   - as cenas do dia (agora[]: de, ate, texto), para o mapa mostrar o que cada profissão costuma fazer agora;
+ *   - as etapas da formação (formacao[]: tipo, nome, anos_de, anos_ate, texto, fontes) e, em fontes_formacao, cada fonte
+ *     citada nelas (título, órgão, link, data da consulta), para o mergulho "Quão fundo é cada carreira";
  *   - fontes_mapa: o nome das normas que o mapa cita embaixo dos quadros "Quanto dura" e "Onde dá para estudar a distância".
  *
  * Uso: node scripts/gerar-numeros-profissoes.mjs            grava
@@ -25,7 +27,7 @@ const SAIDA = join(PASTA, 'numeros.json');
 const ler = (a) => JSON.parse(readFileSync(a, 'utf8'));
 const indice = ler(join(PASTA, 'indice.json'));
 
-const ranking = [], profissoes = {}, avisos = [], normas = {};
+const ranking = [], profissoes = {}, avisos = [], normas = {}, fontesFormacao = {};
 /** O formato de oferta, pelo texto da ficha: só presencial, presencial ou semipresencial, também a distância ou depende do curso. */
 function formatoDe(valor) {
   if (!valor) return null;
@@ -53,8 +55,17 @@ for (const p of indice.profissoes) {
     duracao: (f.numeros && f.numeros.duracao && f.numeros.duracao.valor) || null,
     registro: (f.numeros && f.numeros.registro && f.numeros.registro.valor) || null,
     agora: Array.isArray(f.agora) && f.agora.length ? f.agora.map(({ de, ate, texto }) => ({ de, ate, texto })) : null,
+    formacao: etapas.length ? etapas.map((e) => ({ tipo: e.tipo, nome: e.nome, anos_de: e.anos_de, anos_ate: e.anos_ate, texto: e.texto || null, fontes: e.fontes || [] })) : null,
     matriculas_2024: ctx.posicao_ranking_matriculas ? ctx.matriculas_2024 : null,
   };
+  // as fontes das etapas, uma vez só (o mesmo id tem de ser a mesma fonte em todas as fichas)
+  etapas.flatMap((e) => e.fontes || []).forEach((id) => {
+    const fo = (f.fontes || []).find((x) => x.id === id);
+    if (!fo) { avisos.push(`${f.id}: a etapa cita a fonte ${id}, que não está na lista da ficha`); return; }
+    const resumo = { id, titulo: fo.titulo, orgao: fo.orgao, url: fo.url || null, consultado_em: fo.consultado_em, tipo: fo.tipo };
+    if (fontesFormacao[id] && fontesFormacao[id].titulo !== fo.titulo) avisos.push(`${f.id}: a fonte ${id} tem outro título em outra ficha`);
+    fontesFormacao[id] = fontesFormacao[id] || resumo;
+  });
   ['portaria-378', 'decreto-12456'].forEach((id) => { const fo = (f.fontes || []).find((x) => x.id === id); if (fo && !normas[id]) normas[id] = fo.titulo.split(':')[0].trim(); });
   if (ctx.matriculas_2024 && ctx.posicao_ranking_matriculas) {
     const fo = (f.fontes || []).find((x) => (ctx.fontes || []).includes(x.id));
@@ -75,6 +86,7 @@ const dados = {
     duracao: 'Diretrizes curriculares e resoluções do Conselho Nacional de Educação (carga horária mínima de cada curso), citadas em cada ficha',
     formato: [normas['portaria-378'], normas['decreto-12456']].filter(Boolean).join(' e '),
   },
+  fontes_formacao: fontesFormacao,
   profissoes,
 };
 const texto = JSON.stringify(dados, null, 2) + '\n';
