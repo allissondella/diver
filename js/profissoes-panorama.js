@@ -382,7 +382,7 @@
     cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.', calloutsNumerados(t, a.ninguem_conta));
 
     // 06. Vizinhas
-    cap('vizinhas', rot('rotulo_vizinhas', 'Áreas vizinhas'), 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, a.vizinhas.map(id => {
+    cap('vizinhas', rot('rotulo_vizinhas', 'Áreas vizinhas'), 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards prof-cards--linhas' }, a.vizinhas.map(id => {
       const v = t.areas.find(x => x.id === id);
       return v ? el('a', { href: '#' + ID + '-' + v.id, class: 'prof-caixa prof-vizinha' }, el('span', { class: 'prof-esp-apelido', text: v.apelido }), el('h3', null, v.nome, icone('direita')), el('p', { text: v.resumo })) : null;
     })));

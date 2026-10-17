@@ -9,7 +9,9 @@
  *     número só do presencial ou só da EAD não entra, porque não se compara com o total;
  *   - o nome do curso é o do Censo quando a ficha tem contexto.curso_censo (Sistemas: "Sistemas de Informação");
  *   - por profissão: a média de contratação do cargo principal, os anos da graduação, se há caminho mais curto
- *     (técnico ou tecnólogo), o formato de oferta (presencial, semipresencial, EAD) e as matrículas;
+ *     (técnico ou tecnólogo), o formato de oferta (presencial, semipresencial, EAD), as matrículas e, para as
+ *     etiquetas do cartão no mapa, a duração e o registro como a ficha escreve (numeros.duracao e numeros.registro);
+ *   - as cenas do dia (agora[]: de, ate, texto), para o mapa mostrar o que cada profissão costuma fazer agora;
  *   - fontes_mapa: o nome das normas que o mapa cita embaixo dos quadros "Quanto dura" e "Onde dá para estudar a distância".
  *
  * Uso: node scripts/gerar-numeros-profissoes.mjs            grava
@@ -48,6 +50,9 @@ for (const p of indice.profissoes) {
     graduacao_anos: grad ? grad.anos_de : null,
     caminho_curto: curto ? { nome: curto.nome, anos_de: curto.anos_de, anos_ate: curto.anos_ate } : null,
     formato: formatoDe(f.numeros && f.numeros.formato && f.numeros.formato.valor),
+    duracao: (f.numeros && f.numeros.duracao && f.numeros.duracao.valor) || null,
+    registro: (f.numeros && f.numeros.registro && f.numeros.registro.valor) || null,
+    agora: Array.isArray(f.agora) && f.agora.length ? f.agora.map(({ de, ate, texto }) => ({ de, ate, texto })) : null,
     matriculas_2024: ctx.posicao_ranking_matriculas ? ctx.matriculas_2024 : null,
   };
   ['portaria-378', 'decreto-12456'].forEach((id) => { const fo = (f.fontes || []).find((x) => x.id === id); if (fo && !normas[id]) normas[id] = fo.titulo.split(':')[0].trim(); });

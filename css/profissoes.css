@@ -171,7 +171,7 @@
 .prof-chips-lista a { border: 1px solid var(--turquesa); color: var(--turquesa-claro); display: inline-flex; align-items: center; gap: 6px; }
 .prof-chips-lista a svg { width: 14px; height: 14px; }
 .prof-fonte-nota { font-size: var(--t-xs); color: var(--texto-suave); margin-top: var(--esp-3); max-width: 90ch; }
-.prof-rodape { margin-top: var(--esp-8); }
+.prof-raiz .prof-rodape { margin-top: var(--esp-8); }
 .prof-rolagem { overflow-x: auto; }
 .prof-vazio { padding: var(--esp-5); text-align: center; color: var(--texto-suave); background: var(--superficie-turquesa); border-radius: var(--raio); }
 .prof-vazio h1 { font-size: var(--t-2xl); margin-bottom: var(--esp-2); color: var(--texto); }
@@ -240,31 +240,31 @@ button.prof-pan { cursor: pointer; }
 .prof-caracts { padding-top: var(--esp-3); border-top: 1px dashed color-mix(in srgb, var(--texto-suave) 25%, transparent); }
 .prof-caracts[hidden] { display: none; }
 
-/* As áreas dividem a mesma grade dos cartões: área pequena (1 ou 2 profissões) fica ao lado de outra, sem buraco */
-.prof-regioes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); grid-auto-flow: row dense; column-gap: var(--esp-3); }
-.prof-regiao { grid-column: 1 / -1; margin-top: var(--esp-6); min-width: 0; }
-.prof-regiao--1 { grid-column: span 1; }
-.prof-regiao--2 { grid-column: span 2; }
+/* As áreas numa grade só: o JS conta as colunas pela largura real (--cols, até 4) e cada área ocupa as colunas que os cartões
+   dela pedem; as pequenas se encaixam ao lado das grandes (grid denso). Cada área ocupa duas linhas da grade (cabeçalho e
+   cartões) com subgrid: os cabeçalhos de uma mesma linha têm a mesma altura e os cartões começam juntos (2026-10-17, "tem coisa torta"). */
+.prof-regioes { --cols: 1; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); grid-auto-flow: row dense; column-gap: var(--esp-3); }
+.prof-regiao { grid-column: 1 / -1; grid-row: span 2; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; margin-top: var(--esp-6); min-width: 0; }
 .prof-regioes > .prof-vazio { grid-column: 1 / -1; }
-.prof-regiao-cab { display: flex; align-items: baseline; gap: var(--esp-3); margin-bottom: var(--esp-3); flex-wrap: wrap; }
+.prof-regiao-cab { grid-column: 1 / -1; display: grid; gap: 2px; align-content: end; margin-bottom: var(--esp-3); }
 .prof-regiao-cab h2 { display: flex; align-items: center; gap: var(--esp-2); font-size: var(--t-xl); font-weight: 800; }
-.prof-regiao-cor { width: 12px; height: 12px; border-radius: 50%; background: var(--cor-area, var(--turquesa)); }
-.prof-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: var(--esp-3); }
-.prof-ilha {
-  position: relative; display: flex; flex-direction: column; gap: var(--esp-2); min-height: 170px; width: 100%;
-  padding: var(--esp-4); border-radius: var(--raio); text-decoration: none; color: var(--texto); text-align: left; font: inherit;
-  background: var(--superficie); border: 1px solid transparent; border-top: 3px solid var(--cor-area, var(--turquesa));
-  transition: transform var(--transicao), border-color var(--transicao), box-shadow var(--transicao);
+.prof-regiao-cor { width: 12px; height: 12px; flex: none; border-radius: 50%; background: var(--cor-area, var(--turquesa)); }
+.prof-regiao > .prof-grade { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; row-gap: var(--esp-3); }
+@supports not (grid-template-columns: subgrid) {
+  .prof-regiao { display: block; }
+  .prof-regiao > .prof-grade { grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: var(--esp-3); }
 }
-.prof-raiz a.prof-ilha { color: var(--texto); }
-.prof-ilha:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--cor-area, var(--turquesa)) 60%, transparent); box-shadow: var(--sombra-2); }
-button.prof-ilha { cursor: pointer; }
-.prof-ilha--breve { opacity: .8; }
-.prof-ilha h3 { font-size: var(--t-lg); font-weight: 800; }
-.prof-ilha p { font-size: var(--t-sm); color: var(--texto-suave); }
-.prof-ilha .prof-fato { color: var(--texto); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
-.prof-ilha .prof-fato b { color: var(--amarelo); }
-.prof-ilha-pe { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; font-size: var(--t-sm); font-weight: 700; color: var(--turquesa-claro); }
+/* O cartão de profissão usa o desenho do cartão de panorama (.prof-pan), um pouco menor. Com subgrid, as partes dos
+   cartões de uma mesma linha ficam na mesma altura (nome, frase, etiquetas e pé), mesmo quando um nome quebra a linha. */
+.prof-pan--ficha { min-height: 0; padding: var(--esp-4); }
+.prof-pan--ficha h3 { font-size: var(--t-xl); }
+.prof-pan--ficha > p { font-size: var(--t-sm); }
+.prof-pan--ficha .prof-pan-pe { row-gap: var(--esp-2); }
+.prof-pan--ficha .prof-pan-ir { margin-left: auto; font-size: var(--t-sm); white-space: nowrap; }
+.prof-pan--ficha .prof-selo { flex: none; }
+@supports (grid-template-rows: subgrid) {
+  .prof-regiao > .prof-grade > .prof-pan--ficha { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: var(--esp-2); }
+}
 
 /* ---------- Infográficos ---------- */
 .prof-info { width: 100%; height: auto; display: block; overflow: visible; }
@@ -339,7 +339,7 @@ button.prof-ilha { cursor: pointer; }
 
 /* ---------- DNA e carta ---------- */
 .prof-dna { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--esp-5); align-items: center; }
-.prof-dna svg { max-width: 300px; margin: 0 auto; }
+.prof-dna svg { max-width: 400px; margin: 0 auto; }
 .prof-dna-controles { display: grid; gap: 6px; }
 .prof-dna-controles label { display: grid; grid-template-columns: 96px 1fr 36px; gap: 10px; align-items: center; font-size: var(--t-sm); color: var(--texto-suave); }
 .prof-dna-controles input[type="range"] { width: 100%; accent-color: var(--amarelo); height: 28px; }
@@ -425,7 +425,7 @@ button.prof-ilha { cursor: pointer; }
 }
 .prof-raiz a.prof-esp:hover { border-color: var(--turquesa-claro); transform: translateY(-2px); box-shadow: var(--sombra-2); }
 .prof-esp-cab { display: flex; justify-content: space-between; align-items: center; gap: var(--esp-2); }
-.prof-esp-apelido { font-size: var(--t-xs); font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--cor-area, var(--turquesa-claro)); }
+.prof-esp-apelido { font-size: var(--t-xs); font-weight: 800; line-height: 1.35; letter-spacing: .05em; text-transform: uppercase; color: var(--cor-area, var(--turquesa-claro)); }
 .prof-esp-pos { font-size: var(--t-sm); font-weight: 800; color: var(--amarelo); }
 .prof-esp h3 { font-size: var(--t-lg); font-weight: 800; overflow-wrap: break-word; hyphens: auto; }
 .prof-esp-resumo { font-size: var(--t-sm); color: var(--texto-suave); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
@@ -440,6 +440,15 @@ button.prof-ilha { cursor: pointer; }
 .prof-esp--salario .prof-esp-salario b { font-size: var(--t-lg); }
 .prof-esp-ir, .prof-esp-vista { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; color: var(--turquesa-claro); }
 .prof-esp-afin { font-weight: 800; color: var(--amarelo); }
+/* Cartões de especialidade (e de área vizinha) em subgrid: numa mesma linha, rótulo, título, resumo, barras e pé
+   começam na mesma altura, mesmo quando o rótulo ou o título quebram a linha (2026-10-17, "nada torto"). */
+@supports (grid-template-rows: subgrid) {
+  .prof-raiz .prof-esps > a.prof-esp { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: var(--esp-2); }
+  .prof-raiz .prof-cards--linhas > .prof-caixa { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: var(--esp-1); }
+  /* o rótulo fica colado no título, mesmo quando o do vizinho ocupa duas linhas */
+  .prof-esps .prof-esp-cab { align-items: end; }
+  .prof-cards--linhas .prof-esp-apelido { align-self: end; }
+}
 
 /* Que curso fazer (panoramas): um curso ou etapa por linha, as barras na mesma régua de anos (o que varia, listrado) */
 .prof-cursos { list-style: none; margin: 0; padding: 0; display: grid; }
@@ -621,7 +630,7 @@ button.prof-ilha { cursor: pointer; }
 .prof-comp-lista { margin: 0; padding-left: 1.1em; display: grid; gap: var(--esp-1); font-size: var(--t-sm); }
 .prof-comp-cel .prof-chips-lista { margin-top: 0; }
 .prof-comp-dna { display: grid; grid-template-columns: minmax(0, 280px) 1fr; gap: var(--esp-4); align-items: center; background: var(--superficie); border-radius: var(--raio); padding: var(--esp-4); }
-.prof-comp-radar svg { width: 100%; height: auto; max-width: 280px; }
+.prof-comp-radar svg { width: 100%; height: auto; max-width: 360px; }
 .prof-comp-fim { display: grid; grid-template-columns: 1fr 1fr; gap: var(--esp-3); margin-top: var(--esp-2); }
 .prof-comp-fim .prof-comp-cel { display: flex; flex-direction: column; gap: var(--esp-2); background: none; padding: 0; }
 .prof-sigilo { color: var(--amarelo); letter-spacing: .04em; }
@@ -691,7 +700,9 @@ button.prof-ilha { cursor: pointer; }
 .prof-raiz .prof-rel-sub { margin-bottom: var(--esp-5); }
 .prof-raiz .prof-regua-legenda + .prof-fonte-nota { margin-top: var(--esp-3); }
 .prof-raiz .prof-rel-espaco { margin-top: var(--esp-6); }
-.prof-rel-bloco { min-width: 0; }
+.prof-caixa.prof-dia-texto { padding: var(--esp-5); }
+.prof-dia-texto-cab { display: grid; gap: 2px; margin-bottom: var(--esp-4); }
+.prof-raiz .prof-dia-texto-cab h3 { margin: 0; font-size: var(--t-md); }
 
 .prof-versus-card { display: grid; gap: var(--esp-3); align-content: start; padding: var(--esp-5); border-radius: var(--raio-lg); min-width: 0; }
 .prof-versus-card--sim { background: linear-gradient(140deg, color-mix(in srgb, var(--turquesa) 30%, var(--superficie)), var(--superficie) 70%); }
@@ -835,17 +846,24 @@ button.prof-ilha { cursor: pointer; }
 .prof-tabela-uf .prof-tabela td { text-align: right; }
 
 /* Mapa: as profissões lado a lado (duração e formato de oferta), sem salário */
-.prof-lado-fig { display: grid; align-content: start; min-width: 0; }
+.prof-lado-fig { display: grid; align-content: start; min-width: 0; container-type: inline-size; }
 .prof-lado-fig figcaption { display: grid; gap: 2px; margin-bottom: var(--esp-4); }
 .prof-lado-fig figcaption b { font-size: var(--t-md); font-weight: 800; }
 .prof-lado-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-3); }
-.prof-lado-linha { display: grid; grid-template-columns: minmax(120px, 30%) minmax(0, 1fr); gap: var(--esp-3); align-items: start; padding-top: var(--esp-3); border-top: 1px solid var(--borda); }
+.prof-lado-linha { display: grid; grid-template-columns: minmax(130px, 28%) minmax(0, 1fr); gap: var(--esp-3); align-items: start; padding-top: var(--esp-3); border-top: 1px solid var(--borda); }
 .prof-lado-linha:first-child { padding-top: 0; border-top: 0; }
 .prof-lado-rot { display: grid; gap: 2px; }
 .prof-lado-rot b { font-size: var(--t-md); font-weight: 800; }
 .prof-lado-barra { display: block; height: 6px; margin-top: var(--esp-1); border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--texto-suave) 16%, transparent); }
 .prof-lado-barra i { display: block; height: 100%; width: calc(var(--p, 0) * 100%); border-radius: inherit; background: var(--turquesa); }
 .prof-lado-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+/* Figura estreita (tablet com duas colunas, celular): o rótulo vai para cima, numa linha só, e as profissões usam a largura toda */
+@container (max-width: 379px) {
+  .prof-lado-linha { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
+  .prof-lado-rot { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--esp-2); row-gap: 2px; }
+  .prof-lado-rot .prof-micro { white-space: nowrap; }
+  .prof-lado-barra { flex: 0 0 100%; max-width: 200px; }
+}
 .prof-raiz a.prof-lado-chip {
   display: inline-flex; align-items: center; min-height: 32px; padding: 0 var(--esp-3); border-radius: var(--raio-pilula);
   font-size: var(--t-sm); font-weight: 600; color: var(--texto); text-decoration: none; background: var(--superficie-2);
@@ -884,7 +902,6 @@ button.prof-ilha { cursor: pointer; }
   .prof-curso { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
   .prof-resumo summary { padding: var(--esp-3) var(--esp-4); }
   .prof-resumo ul { padding: 0 var(--esp-4) var(--esp-4) calc(var(--esp-4) + 1.1em); }
-  .prof-regiao--1, .prof-regiao--2 { grid-column: 1 / -1; }
   .prof-indice { width: auto; margin-inline: calc(var(--esp-2) * -1); border-radius: var(--raio-md); }
   .prof-troca { scrollbar-width: none; }
   .prof-troca::-webkit-scrollbar { display: none; }
@@ -892,6 +909,7 @@ button.prof-ilha { cursor: pointer; }
   .prof-cargo-regua { grid-column: 1 / -1; }
   .prof-indicadores { grid-template-columns: 1fr; }
   .prof-caixa { padding: var(--esp-3) var(--esp-4); }
+  .prof-caixa.prof-dia-texto { padding: var(--esp-4); }
   .prof-palpite { padding: var(--esp-4); }
   .prof-palpite-opcoes { grid-template-columns: 1fr 1fr; }
   .prof-palpite-op { font-size: var(--t-sm); }
@@ -899,7 +917,7 @@ button.prof-ilha { cursor: pointer; }
   .prof-raiz a.prof-mini-barra { grid-template-columns: 1fr 1fr 44px; }
 }
 @media (max-width: 479px) {
-  .prof-lado-linha { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
+  .prof-cargo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
   .prof-salareas-linha { grid-template-columns: minmax(0, 1fr) auto; }
   .prof-salareas-linha .prof-regua { grid-column: 1 / -1; grid-row: 2; }
   /* Ações do cabeçalho enchem a linha (a principal ocupa a linha toda) */
@@ -934,7 +952,7 @@ button.prof-ilha { cursor: pointer; }
 /* Reduzir movimento: nada se mexe */
 @media (prefers-reduced-motion: reduce) {
   .prof-raiz *, .prof-pop, .prof-aviso { animation: none !important; transition: none !important; }
-  .prof-raiz .prof-ilha:hover, .prof-raiz a.prof-esp:hover, .prof-raiz .prof-pan:hover, .prof-raiz a.prof-atalho:hover, .prof-raiz a.prof-vizinha:hover { transform: none; }
+  .prof-raiz a.prof-esp:hover, .prof-raiz .prof-pan:hover, .prof-raiz a.prof-atalho:hover, .prof-raiz a.prof-vizinha:hover { transform: none; }
   .prof-pop { transform: translateX(-50%); }
   .prof-pop--ancorado { transform: none; }
 }

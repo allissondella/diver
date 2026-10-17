@@ -17,8 +17,10 @@
     t.textContent = conteudo;
     return t;
   }
-  function svg(largura, altura, rotulo) {
-    const s = no('svg', { viewBox: `0 0 ${largura} ${altura}`, class: 'prof-info', role: 'img', 'aria-label': rotulo || '' });
+  /* folgaX: espaço dos dois lados para os rótulos que passam do desenho (sem ela, o SVG corta o texto) */
+  function svg(largura, altura, rotulo, folgaX) {
+    const fx = folgaX || 0; largura += 2 * fx;
+    const s = no('svg', { viewBox: `${-fx} 0 ${largura} ${altura}`, class: 'prof-info', role: 'img', 'aria-label': rotulo || '' });
     s.style.aspectRatio = `${largura} / ${altura}`;
     // Na página larga o gráfico não cresce além de 15% do tamanho desenhado (o texto não fica enorme)
     if (largura >= 400) s.style.maxWidth = Math.round(largura * 1.15) + 'px';
@@ -30,7 +32,7 @@
      eixos: ['Pessoas', ...]; series: [{ nome, valores[0-100], classe: 'profissao'|'voce' }] */
   function radar(opts) {
     const eixos = opts.eixos, n = eixos.length, R = 76, C = 120;
-    const s = svg(240, 240, opts.rotulo || 'Radar de afinidade');
+    const s = svg(240, 240, opts.rotulo || 'Radar de afinidade', 48);
     const ponto = (v, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / n, r = v / 100 * R; return [C + r * Math.cos(a), C + r * Math.sin(a)]; };
     const poligono = vals => vals.map((v, i) => ponto(v, i).map(x => x.toFixed(1)).join(',')).join(' ');
     [25, 50, 75, 100].forEach(r => no('polygon', { points: poligono(eixos.map(() => r)), class: 'prof-info-grade' }, s));
