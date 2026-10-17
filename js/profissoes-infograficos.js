@@ -19,6 +19,8 @@
   function svg(largura, altura, rotulo) {
     const s = no('svg', { viewBox: `0 0 ${largura} ${altura}`, class: 'prof-info', role: 'img', 'aria-label': rotulo || '' });
     s.style.aspectRatio = `${largura} / ${altura}`;
+    // Na página larga o gráfico não cresce além de 15% do tamanho desenhado (o texto não fica enorme)
+    if (largura >= 400) s.style.maxWidth = Math.round(largura * 1.15) + 'px';
     return s;
   }
   function titulo(pai, t) { const el = no('title', null, pai); el.textContent = t; return el; }
@@ -174,9 +176,11 @@
     const s = svg(L, A, 'Linha do tempo da formação, em anos');
     const maxAnos = o.maxAnos || 8;
     const px = a => esq + a / maxAnos * (L - esq - dir);
+    // Com muitos anos, o rótulo vai de 2 em 2 (a grade continua ano a ano)
+    const passo = maxAnos > 7 ? 2 : 1;
     for (let a = 0; a <= maxAnos; a++) {
       no('line', { x1: px(a), y1: topo - 10, x2: px(a), y2: A - 20, class: 'prof-info-grade' }, s);
-      texto(s, px(a), topo - 14, a === 0 ? 'início' : `${a} ano${a > 1 ? 's' : ''}`, { 'text-anchor': 'middle', 'font-size': 10 });
+      if (a % passo === 0) texto(s, px(a), topo - 14, a === 0 ? 'início' : `${a} ano${a > 1 ? 's' : ''}`, { 'text-anchor': 'middle', 'font-size': 10 });
     }
     let cursor = 0;
     etapas.forEach((e, i) => {

@@ -138,15 +138,15 @@ const Tutorial = (() => {
       { alvo: '#sd-ver-ranking', desenho: 'trofeu', titulo: 'Ranking', texto: 'Cada jogo tem o seu ranking com todo mundo, deste mês e o total (e tem o geral). Os pontos daqui valem só o ranking da sala: nada de XP ou pérolas dos cursos.' },
       { alvo: '#sd-horarios', desenho: 'relogio', titulo: 'Horários de foco', texto: 'Você pode fechar a sala para os alunos em horários de estudo. Admin e professores continuam entrando.' },
     ],
-    // Mapa das Profissões (2026-10-16): a tela é desenhada depois de baixar o índice, então os passos não dependem de alvo
+    // Mapa das Profissões (2026-10-16): a tela é desenhada depois de baixar o índice, então os passos não dependem de alvo.
+    // Repaginada em 2026-10-16 (versão 3): página larga, capítulos, palpite de salário e panoramas como explorador.
+    // Ao publicar as fichas e os panoramas, suba "profissoes" em VERSOES só se o texto daqui mudar.
     profissoes: [
-      { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque uma profissão pelo nome ou filtre pela área. Em "Características", marque o que importa para você, como "Lida com pessoas" ou "Só presencial". Toque numa ficha para abrir; "Pôr na mira" guarda as que você quer acompanhar, e elas aparecem no topo do mapa.' },
-      { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'A ficha se conta enquanto você rola: as partes acendem, os números se montam e a barra no topo mostra quanto falta (toque numa seção para pular). O salário fica escondido até o seu chute, e cada bolinha numerada abre a fonte daquela informação.' },
+      { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque uma profissão pelo nome ou filtre pela área nas abas. Em "Características", marque o que importa para você, como "Lida com pessoas" ou "Só presencial". "Pôr na mira" guarda as que você quer acompanhar. No computador, "Esconder menu" deixa a tela inteira para as profissões.' },
+      { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'A ficha abre com os números principais e se divide em capítulos: a faixa no topo leva direto a cada um. Em "Quanto ganha", arrisque uma faixa antes de ver o salário (ou toque em "Prefiro ver direto"). Cada bolinha numerada abre a fonte daquela informação.' },
       { desenho: 'estrela', titulo: 'Maré de cartas', texto: 'Sem ideia por onde começar? A Maré mostra uma profissão por vez: "Me interessa" ou "Não é pra mim". No fim, o seu rastro e uma sugestão que talvez você não tenha considerado.' },
-      // Panorama da Tecnologia (2026-10-16): enquanto for rascunho, o aluno vê "Em breve"; ao publicar, suba "profissoes" em VERSOES
-      // Fase 2 (2026-10-16): características, comparador e mais "Um dia como". Ao publicar as fichas, suba "profissoes" em VERSOES (uma vez só, junto com o Panorama)
-      { desenho: 'lupa', titulo: 'Comparar duas profissões', texto: 'Em dúvida entre duas? "Comparar profissões" põe as duas lado a lado: duração, formato, salário, registro, matérias que pesam para entrar, caminhos e o DNA de cada uma.' },
-      { desenho: 'mapa', titulo: 'Panoramas de área', texto: 'Algumas áreas são grandes demais para uma ficha só e ganham um panorama: o da Tecnologia, com dez áreas, e o da Medicina, com doze especialidades. Cada um traz o dia típico de cada área e um jogo para descobrir com qual você combina. Com o selo "Em breve", o panorama ainda está em revisão.' },
+      { desenho: 'lupa', titulo: 'Comparar duas profissões', texto: 'Em dúvida entre duas? "Comparar duas" põe as profissões lado a lado: duração, formato, salário, registro, matérias que pesam para entrar, caminhos e o DNA de cada uma.' },
+      { desenho: 'mapa', titulo: 'Explore por dentro', texto: 'Carreiras grandes se abrem em áreas: dez na Tecnologia e doze especialidades na Medicina. Ordene pelo que importa para você (mais contato com pessoas, mais rotina, maior salário...) e abra cada uma para ver o dia típico, o salário e a formação. Um jogo ajuda a descobrir a sua. Com o selo "Em breve", o panorama ainda está em revisão.' },
     ],
     perfil: [
       { alvo: '.perfil-topo__info', desenho: 'trofeu', titulo: 'Seu nível geral', texto: 'O XP de todos os cursos somado. Cada mergulho, jogo e revisão empurra a barra.' },
@@ -157,7 +157,7 @@ const Tutorial = (() => {
   /** Roteiro que mudou de um jeito importante sobe de versão e aparece de novo para todo mundo
    *  (inicio/mergulho 2: leitura obrigatória do "Antes de mergulhar"; revisao 2: "Revisar a fundo").
    *  Sem número aqui = versão 1. */
-  const VERSOES = { profissoes: 2, inicio: 5, sala: 2, 'sala-ensino-medio': 2, 'mapa-partida': 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
+  const VERSOES = { profissoes: 3, inicio: 5, sala: 2, 'sala-ensino-medio': 2, 'mapa-partida': 2, mergulho: 3, revisao: 2, calendario: 3, descompressao: 2, 'descompressao-cardume': 2 };
   function vistos() {
     const d = Dados.ler(CHAVE, null);
     return d && d.vistos ? d.vistos : {};

@@ -5,6 +5,37 @@
 
 ---
 
+## 2026-10-16 · Mapa das Profissões: aba repaginada
+- **Pedido do usuário:** a aba parecia um "quadro invisível" ao rolar, estava pesada, o chute de salário "não fazia sentido, muito atropelado" e as especialidades da Medicina e as áreas de TI estavam difíceis de separar; usar toda a largura ao lado do menu, com a opção de esconder o menu. Plano aprovado com "Manda bala".
+- **Causa do "quadro invisível":** cada parte da ficha começava apagada e só acendia quando o observador via a parte na tela; rolando rápido (e no celular), sobrava tela vazia. Pesava também: desfoque, conta a cada rolagem, palavras entrando uma a uma e animações sem fim.
+- **Feito (só o desenho; conteúdo, rotas, XP e log iguais):**
+  - página de até 1240 px só nesta aba e "Esconder menu" (de 1280 px para cima, só no aparelho);
+  - mapa com busca, abas de área com contagem, "Explore por dentro" (panoramas em destaque) e grade sem buracos;
+  - ficha com cabeçalho e ações, quatro números, faixa de capítulos presa no topo e capítulos em duas colunas;
+  - palpite de salário em 4 faixas (ou "Prefiro ver direto"), com a resposta no mesmo lugar e uma régua;
+  - panoramas como explorador ("O que importa para você?") e a faixa com todas as especialidades/áreas no topo de cada uma;
+  - gráficos que não crescem demais na página larga; tutorial da área na versão 3; auditor cobrindo também as rotas `medicina-*`.
+- **Testes:** todas as rotas da aba em 390, 768, 1280 e 1440 (com e sem o menu), sem erro de JavaScript, sem rolagem lateral e sem nada apagado no meio da rolagem; palpite gravado e lembrado depois de recarregar; `auditar-design` e `--navegador` passando; `conferir-ficha` nas 22 fichas e `conferir-panorama` nos dois panoramas.
+- **Decisão:** a regra "tudo numa coluna de 720 px" continua nas outras telas; a aba Profissões é a exceção, registrada em `docs/DESIGN.md`.
+- **Próximo passo:** o usuário olha a prévia do PR e decide quando vai para a produção.
+
+## 2026-10-16 · Validação externa no Gemini (sem API)
+- **Pedido do usuário:** "Você consegue colocar tudo que tem que validar de perguntas e respostas em um documento? Do todo o Diver, conteúdo e tudo, ao invés de fazer com API, eu vou colocar em outra IA". Escolhas dele: **Gemini** e **checagem em 2 passos**.
+- **Por que não "um documento só":** são cerca de 2,3 milhões de palavras, e nenhuma IA revisa isso de uma vez com qualidade. Virou um pacote com guia, prompt do Gem, índice e lotes.
+- **`scripts/validacao-externa.mjs`:**
+  - `exportar`: Parte A sem gabarito, Parte B com gabarito e o esqueleto JSON já com n, id e gabarito; conteúdo renderizado por tipo; manifesto com a impressão digital de cada item.
+  - `aplicar`: acha os blocos JSON em qualquer texto colado, junta as partes do CONTINUA e conserta a vírgula sobrando.
+  - `progresso`.
+- **Testado com respostas simuladas:** aprovado, com ajuste, reprovado, conferir, item faltando, JSON em duas partes. Um bug foi corrigido: mandar o mesmo arquivo duas vezes contava como 2ª reprovação e tirava a questão do curso. Agora só regrava.
+- **E1:**
+  - 325 lotes de questões (25.051 itens: 13.108 questões, 11.851 variantes, 92 diagnósticas);
+  - 208 lotes de conteúdo: 1 calendário, 78 de artigos, 42 de fichas, 47 de cartas, 15 de laboratórios, 25 de profissões.
+  - Nenhuma questão tinha validação antes.
+- **Pendências:**
+  - o usuário faz os lotes no Gem e traz os JSON;
+  - o Claude aplica, corrige as reprovadas com o OK dele e gera a E2;
+  - começar pelo K0001 (calendário), porque o Enem é em 8 e 15/11.
+
 ## 2026-10-16 · Mapa das Profissões: Panorama da Medicina (kit v4)
 - **Pedido do usuário:** "Deixa na fila para quando terminar a Fase 2, sobe esse mapa das profissões para Medicina, aqui vamos ter todas as áreas, no estilo da de Tecnologia" (zip `diver-mapa-profissoes-v4`).
 - **Do kit veio só o conteúdo novo:**

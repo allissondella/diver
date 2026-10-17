@@ -64,14 +64,20 @@ O Mapa responde a essas perguntas, sempre na mesma ordem, com fonte em cada núm
 
 Ordem fixa (como na implementação de referência):
 
-1. Área, nome, frase de uma linha e selo de situação (em revisão, validada).
-2. Ações: **Pôr na mira**, **Viver um dia** (se a ficha tiver `dia`) e **Mito ou verdade**.
-3. **Agora mesmo**: relógio de 24 h em SVG com o período atual destacado e o texto do que o profissional provavelmente está fazendo (campo `agora`).
-4. Quatro números: duração, formato, média de contratação e registro profissional, cada um com citação numerada e o botão "Fonte" (órgão e data).
-5. Navegação fixa com as seções existentes.
-6. Seções abertas (sem acordeão), nesta ordem: O que faz (com "O que não faz"), Um dia de trabalho, O que estuda (disciplinas e o infográfico **Quanto tempo até trabalhar**), Como entrar (com as matérias-chave), Quanto ganha (**Chute o salário**, infográfico da faixa salarial, tabela de pisos e médias), Outros caminhos, **DNA da profissão** (radar e Carta Diver), **O que você faria?** (dilema), O que ninguém te conta (borda em `--coral`), **Onde e quando se busca** (barras por estado com comparação e sazonalidade), Profissões vizinhas e Fontes.
-7. **Citações como em artigo:** cada número ou afirmação com fonte recebe `[n]`, que leva à lista numerada de fontes no fim, com título, órgão, data da consulta, tipo (primária ou secundária), link e pendência quando houver.
-8. Rodapé: situação das três revisões (fontes, IA, profissional) e o caminho para reportar erro.
+1. Área, nome, frase de uma linha e selo de situação (em revisão, validada). Ao lado, o atalho para o panorama da área, quando houver.
+2. Ações numa linha: **Viver um dia** (se a ficha tiver `dia`), **Pôr na mira**, **Mito ou verdade** e **Comparar** (com a primeira vizinha que tem ficha).
+3. Quatro números: duração, formato, registro profissional e "Quanto ganha?" (leva ao palpite; depois dele, mostra a média), cada um com o botão "Fonte".
+4. **Faixa de capítulos** presa no topo; o capítulo da vez fica aceso.
+5. Capítulos abertos (sem acordeão), nesta ordem (repaginação de 2026-10-16, `docs/MAPA_PROFISSOES_INTERACOES.md`):
+   - **Visão geral:** O que faz e O que não faz lado a lado; Um dia de trabalho e o **Agora mesmo** (relógio de 24 h com o que o profissional provavelmente está fazendo, campo `agora`);
+   - **O que ninguém te conta:** cartas para revelar (borda em `--coral`);
+   - **Formação e entrada:** O que estuda e Como entrar (com as matérias-chave) lado a lado, e o infográfico **Quanto tempo até trabalhar**;
+   - **Quanto ganha:** o **palpite** em 4 faixas (ou "Prefiro ver direto"), a resposta com a régua da faixa comum e da média, e depois todos os cargos, os pisos e a regra;
+   - **Carreira:** outros caminhos, profissões vizinhas, "Comparar" e **Onde e quando se busca** (barras por estado com comparação e sazonalidade);
+   - **Combina com você?:** **DNA da profissão** (radar e Carta Diver) e **O que você faria?** (dilema);
+   - **Fontes.**
+6. **Citações como em artigo:** cada número ou afirmação com fonte recebe `[n]`, que leva à lista numerada de fontes no fim, com título, órgão, data da consulta, tipo (primária ou secundária), link e pendência quando houver.
+7. Rodapé: situação das três revisões (fontes, IA, profissional) e o caminho para reportar erro.
 
 ### 4.3 Um dia como... (`#profissao-<id>-dia`)
 
@@ -103,7 +109,7 @@ Duas profissões lado a lado com os 4 números, a seção "Como entrar" resumida
   - caminhos depois de formado;
   - DNA das duas no mesmo radar, com uma frase sobre a maior diferença;
   - links para as fichas e para os "Um dia como".
-- **Salário:** segue a regra da ficha. Se ainda estiver escondido, "Mostrar os dois salários" revela os dois de uma vez, como o "Prefiro só ver os números".
+- **Salário:** segue a regra da ficha. Se ainda estiver escondido (sem palpite), "Mostrar os dois salários" revela os dois de uma vez, como o "Prefiro ver direto".
 - **Aluno:** enquanto não houver duas fichas publicadas, a tela explica que elas estão em revisão.
 - **Log:** sem evento novo (não exigiu mudança no banco).
 
@@ -135,7 +141,7 @@ Duas profissões lado a lado com os 4 números, a seção "Como entrar" resumida
 | `dna`, `dna_calibrado` | não | Seis eixos de 0 a 100: `pessoas`, `pressao`, `corpo`, `rotina`, `numeros`, `criatividade` |
 | `dilemas[]` | não | `id`, `situacao`, `opcoes[]` (`texto`, `recomendada`), `resposta`, `fontes[]` |
 | `trends_id` | não | Chave em `trends/trends.json` para "Onde e quando se busca" |
-| `secoes.quanto_ganha.chute` | não | `pergunta`, `min`, `max`, `passo`, `inicial` e `segunda` (segunda rodada) |
+| `secoes.quanto_ganha.chute` | não | `pergunta` (a pergunta do palpite). Desde a repaginação (2026-10-16), `min`, `max`, `passo`, `inicial` e `segunda` ficam no JSON, mas o app não os usa: as 4 faixas saem da média |
 | `secoes.quanto_ganha.medias[].faixa` | não | `de`, `ate`, `rotulo` (percentis 25 e 75 ou faixa comum de contratação) |
 
 Regras:

@@ -213,8 +213,8 @@ async function auditarNoNavegador() {
         }
         // cada tela abre do zero (sem sobra de quiz, caixa ou gaveta da tela anterior)
         await p.goto(`${base}?a=${Date.now()}#${tela}`); await p.waitForSelector('.app', { state: 'attached' });
-        await esperar(tela.startsWith('sala') || tela === 'descompressao' || /^(profiss|tecnologia-)/.test(tela) ? 1000 : 700); await limpar();
-        const id = tela.startsWith('sala-') ? 'tela-sala' : tela === 'mergulho' ? 'tela-painel' : /^(profiss|tecnologia-)/.test(tela) ? 'tela-profissoes' : 'tela-' + tela;
+        await esperar(tela.startsWith('sala') || tela === 'descompressao' || /^(profiss|tecnologia-|medicina-)/.test(tela) ? 1000 : 700); await limpar();
+        const id = tela.startsWith('sala-') ? 'tela-sala' : tela === 'mergulho' ? 'tela-painel' : /^(profiss|tecnologia-|medicina-)/.test(tela) ? 'tela-profissoes' : 'tela-' + tela;
         if (await p.locator(`#${id}[hidden]`).count()) {
           await p.evaluate(() => App.abrirTrilha('enem-matematica')); await esperar(500);
           await p.evaluate((h) => { location.hash = h; }, tela); await esperar(700); await limpar();

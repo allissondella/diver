@@ -60,45 +60,39 @@ Saúde (especialidades médicas e profissões da saúde), Engenharias e Direito 
 
 ## Como ficou no app (2026-10-16)
 
-O kit v1.2 trazia a sua própria versão de `js/profissoes.js` e `css/profissoes.css`, anterior à ficha que se conta ao rolar. Elas não foram copiadas: o panorama foi reescrito no mesmo desenho da ficha, e só os dados e o verificador vieram como estão.
+O kit v1.2 trazia a sua própria versão de `js/profissoes.js` e `css/profissoes.css`. Elas não foram copiadas: o panorama usa as mesmas peças da ficha, e só os dados e o verificador vieram como estão. **Repaginado em 2026-10-16** junto com a aba inteira (`docs/MAPA_PROFISSOES_INTERACOES.md`, "A aba repaginada"): saíram a abertura em tela cheia, o guia com "Próximo", a doca, a aposta "qual área paga mais?" e o chute em cada área. O palpite de salário ficou só nas fichas; no panorama, o salário aparece aberto, para comparar as áreas.
 
 **O que o aluno vê (a equipe vê agora; o aluno, quando o panorama for publicado):**
 
-- **Mapa:** um cartão largo "Panorama da Tecnologia" no topo da região Tecnologia. A busca também o acha ("devops", "dados", "segurança"…).
+- **Mapa:** o cartão "Panorama da Tecnologia" em "Explore por dentro", com os apelidos das primeiras áreas ("Quem constrói", "Quem protege"...). A busca também o acha ("devops", "dados", "segurança"…).
 - **Panorama (`#profissoes-tecnologia`):**
-  - abertura em tela cheia, guia fixo com progresso e as seções, e "Próximo" no pé de cada parte;
-  - os quatro números contam do zero ao aparecer;
-  - "Antes de escolher" junta a introdução e o retrato do setor;
-  - **"Quanto paga cada área" começa com uma aposta**: "qual destas áreas paga mais?". As barras ficam cobertas até a escolha ou até "Prefiro só ver os números". Depois elas crescem, a aposta fica marcada em amarelo e o veredito diz a posição dela ("Mandou bem, Diver!" quando acerta). Os cartões das dez áreas mostram "R$ ?" até lá;
-  - a grade das dez áreas mostra quantas você já explorou;
-  - "Que curso fazer" mostra a duração de cada curso como uma barra que cresce;
-  - por fim, o convite do jogo, "Comece a estudar" (abre o Explora Tech · Fundamentos) e as fontes guardadas. A doca no rodapé traz "Descobrir a minha área" e "Estudar tecnologia".
+  - cabeçalho com "Descobrir a minha área" e "Estudar tecnologia", e os quatro números do setor;
+  - a faixa de capítulos: As dez áreas, Antes de escolher, Que curso fazer, o jogo, Comece a estudar e Fontes;
+  - **"As dez áreas" é um explorador**: "O que importa para você?" ordena os cartões (Mais contato com pessoas, Mais pressão e adrenalina, Mais rotina, Mais esforço físico, Mais números, Mais criatividade, Maior salário e, depois do jogo, "Mais parecidas comigo"). Cada cartão traz o apelido, o nome, o resumo, três barras do perfil (a do critério escolhido fica amarela), o salário (média ou "referência") e o selo "Explorada";
+  - a nota do salário explica as áreas sem ocupação própria no Caged ("referência"), com as fontes.
 - **Área (`#tecnologia-<id>`):**
-  - média e faixa comum ficam escondidas até o chute, feito na régua como na ficha;
-  - "Um dia típico" entra momento a momento e marca com "agora" o momento mais perto da hora atual;
-  - "O que faz" tem a chave "Combina com quem / Pense duas vezes se";
-  - a carreira aparece como uma escada que sobe degrau por degrau;
-  - "O que ninguém te conta" são cartas para virar;
-  - as áreas vizinhas são cartões inteiros clicáveis;
+  - **faixa com as dez áreas** no topo (rola de lado; a da vez fica acesa): trocar de área é um toque;
+  - cabeçalho com o apelido, o nome e o resumo; números: média, faixa comum, contato com pessoas e a sua afinidade (depois do jogo);
+  - capítulos: Como é o trabalho (o dia típico ao lado de "O que faz", "Combina com quem gosta de" e "Pense duas vezes se"; as ferramentas), Quanto ganha (cada cargo com a régua da faixa comum e da média), Formação e carreira (a escada), Combina com você? (DNA), O que ninguém te conta (cartas para virar), Áreas vizinhas e Fontes;
   - em "Formação", os cursos do Diver que servem à área: Explora Tech em todas, e Cibersegurança Essencial e ISO/IEC 27001 Foundation na de Segurança;
   - no pé, "área anterior / próxima" (as dez em sequência).
 - **Jogo (`#profissoes-tecnologia-jogo`):**
   - 12 situações, teclas 1 a 4 e "Voltar";
   - um só atalho de teclado por vez (o do kit deixava dois depois de "Voltar");
-  - o resultado conta as porcentagens e faz as barras das outras sete crescerem;
+  - o resultado mostra as porcentagens, o apelido e o salário de cada área;
   - 30 XP e 3 pérolas na primeira vez, pela economia.
 - **Reduzir movimento:** tudo aparece pronto, sem animação.
 
 **Peças e regras:**
 
-- `js/profissoes.js` ganhou `registrarExtensao`, `_util` e as peças da história separadas (`abrirHistoria`, `fecharHistoria`, `fontesGuardadas`), que a ficha e o panorama usam.
+- `js/profissoes.js` tem `registrarExtensao` e `_util` com as peças comuns (`topoPagina`, `cabecalho`, `tileFato`, `capitulo`, `indiceCapitulos`, `cartasViradas`, `linhasCargos`, `fontesGuardadas`), que a ficha e o panorama usam.
 - O roteador do app manda `#profissoes-tecnologia[-jogo]` e `#tecnologia-<id>` para a tela Profissões. O módulo entra no pacote `profissoes`.
 - **Quem vê:** `indice.json` → `panoramas[].status`. Em `rascunho`, a equipe e o modo local veem; o aluno vê "Em breve" com "Quero ver este panorama" (vira `profissao_pedido` com `profissao: "tecnologia"`).
-- **Estado:** `diver:v1:profissoes` → `tec`. Os campos são `areasVistas`, `jogo`, `jogoConcluido` e `salario` (`panorama: { aposta }` ou `<área>: true`). O chute de cada área fica em `chutes["tecnologia:<área>"]`.
-- **Log:** os 4 tipos `tecnologia_*`, mais `profissao_chute_salario` e `profissao_materias_chave` com `profissao: "tecnologia"`.
+- **Estado:** `diver:v1:profissoes` → `tec`. Os campos são `areasVistas`, `jogo` e `jogoConcluido`. Os campos antigos da aposta e do chute por área (`salario`, `chutes["tecnologia:<área>"]`) ficam guardados, mas o app não os usa mais.
+- **Log:** os 4 tipos `tecnologia_*` e `profissao_materias_chave` com `profissao: "tecnologia"` (desde a repaginação, o panorama não grava mais `profissao_chute_salario`).
 - **Conquista geral "Dez em dez"** (abrir as dez áreas), no Perfil.
 - **Admin:** no bloco do Mapa, as áreas mais vistas, quem começa e quem termina o jogo, e a área que mais fica em 1º lugar.
-- **Tutorial:** um passo novo, "Panoramas de área". Ao publicar o panorama, suba `profissoes` em `VERSOES` (`js/tutorial.js`) para todo mundo ver de novo.
+- **Tutorial:** o passo "Explore por dentro" (versão 3 do roteiro, na repaginação). Ao publicar o panorama, suba `profissoes` em `VERSOES` (`js/tutorial.js`) só se o texto do roteiro mudar.
 
 **Para publicar:** depois da revisão das rotinas por profissionais de cada área, troque `status` para `"publicada"` em `data/profissoes/tecnologia.json` e em `indice.json` (`panoramas[]`). Rode `node scripts/conferir-panorama.mjs data/profissoes/tecnologia.json`. Os salários vencem 180 dias depois da data dos dados: o verificador avisa.
 

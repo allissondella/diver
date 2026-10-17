@@ -166,7 +166,8 @@ Jogos.registrar({
 | `diver:v1:mascote` | Mascote escolhido: `{ rosto, tom }` (ids de `Mascotes.ROSTOS` e `Mascotes.TONS`). Sincroniza com a nuvem. |
 | `diver:v1:operacao` | Caso Resolvido ("Operação Recife Sombrio" v2): número do caso atual (`rodada`), o caso sorteado (solução, pérolas, interrogados, mergulhos feitos, chaves, riscados, acusação), o histórico dos casos fechados, um resultado ainda não recebido (`pendente`) e o diário de bordo (até 80). Sincroniza com a nuvem. |
 | `diver:v1:descompressao` | Sala de Descompressão: `recordes` por jogo, `hoje` (pontos do dia por jogo, para o card) e `jogos` (estado de cada jogo: caso do dia da Investigação, partida e histórico da Palavrinha do Dia, preferências da Batata Quente). Sincroniza com a nuvem. |
-| `diver:v1:profissoes` | Mapa das Profissões: `vistas`, `mira`, cartas da Maré (`cartasSim`/`cartasNao`), `pedidos`, `dna`, `diaConcluido`, `mitosConcluido`, `chutes`, `votos`, `cartasGeradas` e `tec` (Panorama da Tecnologia: `areasVistas`, `jogo`, `jogoConcluido`, `salario`). Sincroniza com a nuvem. |
+| `diver:v1:profissoes` | Mapa das Profissões: `vistas`, `mira`, cartas da Maré (`cartasSim`/`cartasNao`), `pedidos`, `dna`, `diaConcluido`, `mitosConcluido`, `chutes`, `votos`, `cartasGeradas`, `salarioRevelado`, `tec` (Panorama da Tecnologia: `areasVistas`, `jogo`, `jogoConcluido`; o `salario` antigo não é mais usado) e `med` (Panorama da Medicina, mesmos campos). O palpite de salário fica em `chutes['<id>:palpite']`. Sincroniza com a nuvem. |
+| `diver-local:v1:profissoes-sem-menu` | "Esconder menu" da aba Profissões (só no aparelho). |
 | `diver:v1:conquistas-gerais` | Conquistas fora dos cursos (Mapa das Profissões): id → data. Sincroniza com a nuvem. |
 | `diver:v1:tutorial` | Tutoriais já vistos: `{ vistos: { inicio: true, mergulho: true, ... } }`. Sincroniza com a nuvem. |
 | `diver:sessao` | Sessão de login (tokens). Não sincroniza e não entra no backup. |

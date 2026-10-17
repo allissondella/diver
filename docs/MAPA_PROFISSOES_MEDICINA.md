@@ -41,10 +41,13 @@ Nada novo além do que o adendo de Tecnologia já pede: o módulo é o mesmo. O 
 ## Como ficou no app (16/10/2026)
 
 - **Mesmo módulo e mesmo desenho da Tecnologia.** O módulo é `js/profissoes-panorama.js`, a extensão genérica (antes `profissoes-tecnologia.js`). Ela lê os rótulos do JSON (`rotulo`, `cor`, `rotulo_area`, `rotulo_areas`, `titulo_areas`, `rotulo_vizinhas`, `nota_salarios`, `jogo.chamada`, `jogo.chamada_curta`, `jogo.titulo_resultado`). O `tecnologia.json` ganhou os mesmos campos, só de rótulo.
-- **Rotas:** `#profissoes-medicina`, `#medicina-<especialidade>` e `#profissoes-medicina-jogo`. O cartão "Panorama da Medicina" fica no topo da região Saúde.
+- **Rotas:** `#profissoes-medicina`, `#medicina-<especialidade>` e `#profissoes-medicina-jogo`. O cartão "Panorama da Medicina" fica em "Explore por dentro", no topo do mapa.
+- **Repaginado em 2026-10-16** (pedido do usuário: "as informações por área da medicina estão bagunçadas de entender para separar por especialidade"):
+  - as doze especialidades viram um **explorador**: "O que importa para você?" ordena os cartões (mais contato com pessoas, mais pressão, mais rotina, maior salário...), e cada cartão mostra o apelido ("Quem escuta", "Quem enxerga por dentro"), o resumo, três barras do perfil e o salário;
+  - a página de cada especialidade abre com uma **faixa com as doze** (a da vez acesa; trocar é um toque), o cabeçalho, quatro números e os capítulos (Como é o trabalho, Quanto ganha, Formação e carreira, Combina com você?, O que ninguém te conta, Especialidades vizinhas, Fontes);
+  - saíram a aposta "qual especialidade paga mais?" e o chute em cada especialidade: no panorama o salário aparece aberto, e o palpite ficou só nas fichas.
 - **Salário:**
-  - a aposta e as barras usam só as 8 especialidades com CBO próprio;
-  - as 4 que usam o clínico "(referência)" ficam fora, citadas na nota: Cardiologia, Medicina de Família, Dermatologia e Emergência e Intensiva;
+  - em "Maior salário", as 8 especialidades com CBO próprio vêm primeiro; as 4 que usam o clínico "(referência)" vêm depois, com a palavra "referência" no cartão: Cardiologia, Medicina de Família, Dermatologia e Emergência e Intensiva;
   - na página de cada especialidade, a nota do salário explica a referência.
 - **Ponte com os cursos:** "Estudar para entrar" abre o Enem · Biologia. Em Radiologia aparecem também os 4 cursos da sala Radiologia. A ficha de Medicina leva ao panorama em "Outros caminhos".
 - **Estado do aluno:** fica em `diver:v1:profissoes`, na chave `med` (a Tecnologia continua em `tec`).

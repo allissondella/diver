@@ -17,6 +17,13 @@ Toda execução real do Mergulho Triplo passa pela Fila de Validação (`fila_va
 
 **Onde está implementado (2026-10-01):** Edge Function `supabase/functions/mergulho-triplo/` (lê as chaves só com `Deno.env.get`), núcleo com os prompts e o funil em `supabase/functions/_shared/mergulho-nucleo.mjs`, tabela e funções do banco no fim de `supabase/setup.sql`, tela `js/fila-validacao.js` e o script `scripts/fila.mjs` (`simular`, `enviar`, `listar`, `baixar`), que não chama IA. Fluxo completo em `docs/MOTOR_DIVER.md`, seção 11. Para "rodar" esta skill: envie o lote para a fila (seção 2.3 da skill `criar-trilha`) e peça ao admin para aprovar na tela; o relatório da seção 5 aparece na tela e no `fila.mjs baixar`.
 
+**Rota sem API (2026-10-16, `docs/VALIDACAO_EXTERNA.md`):** o usuário pode validar num Gem do Gemini em vez da Fila.
+- `node scripts/validacao-externa.mjs exportar E<n>` monta o pacote. Sem `--tudo`, entra só o que ainda não tem validação para o texto atual.
+- Mande o pacote ao usuário.
+- Quando ele trouxer as respostas: `aplicar <arquivos> --simular`, depois `aplicar <arquivos>`.
+- As pendências em `data/validacao-externa/pendencias.json` são corrigidas pelas regras desta skill e da `criar-trilha`, com o OK do usuário. Depois vão numa exportação nova.
+- A seção 3.1 (Lições da validação) vale igual para os resultados dessa rota.
+
 ## 1. Prompts exatos
 
 **Camada 1 — Fato (Gemini + grounding):**
