@@ -483,7 +483,7 @@
     raiz.appendChild(ladoALado);
     numerosProf().then(d => montarLadoALado(ladoALado, ix, d));
 
-    raiz.appendChild(el('p', { class: 'prof-fonte-nota prof-rodape' }, 'Fatos das cartas: Censo da Educação Superior 2024 (Inep), leis e decretos federais, Sisu 2026, Google Trends 2021–2026, Novo Caged e Brasscom. Cada ficha traz a lista completa de fontes, com data de consulta. ', link('Veja como fazemos as fichas', 'profissoes-metodo')));
+    raiz.appendChild(el('p', { class: 'prof-fonte-nota prof-rodape' }, 'Fatos das cartas: Censo da Educação Superior 2024 (Inep), leis, decretos e resoluções federais, Sisu 2026, Google Trends 2021–2026 e Brasscom. Cada ficha traz a lista completa de fontes, com data de consulta. ', link('Veja como fazemos as fichas', 'profissoes-metodo')));
   }
   /** A frase do mapa com a parte que troca a cada 2,4 s: faz, estuda, vive. Ela fecha a primeira frase, no fim da linha,
       e a caixa tem a largura da maior: o resto do texto não pula e o espaço que sobra não aparece. O leitor de tela ouve

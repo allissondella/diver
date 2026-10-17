@@ -17,12 +17,13 @@
 - **Decisões:**
   - o gráfico das 24 horas ficou igual (o usuário: "isso mantém muito!");
   - o número grande das cartas só aparece com unidade, porcentagem ou milhar: ano solto, ordinal, data e valor em reais ficam de fora (aí vai o ícone do capítulo);
-  - o "Você sabia?" sai do resumo quando fala de salário (Engenharia de Produção; o salário só aparece depois do palpite) ou quando repete o número de outra carta (Pedagogia, Ciência da Computação e Inteligência Artificial); o mergulho também esconde o fato com salário;
+  - o "Você sabia?" sai do resumo quando fala de salário (o salário só aparece depois do palpite) ou quando repete o número de outra carta (Pedagogia, Ciência da Computação e Inteligência Artificial); o mergulho também esconde o fato com salário;
+  - **troca pedida pelo usuário ("Troque"):** o "Você sabia?" de Engenharia de Produção falava da faixa de salário (na Maré, na ficha e no mergulho); virou "não é Administração com outro nome: é uma engenharia, com no mínimo 3.600 horas de curso e registro no Crea para exercer", com as fontes que a ficha já tinha (Resolução CNE/CES nº 2/2007 e Lei nº 5.194/1966); saiu do índice a fonte curta do Caged, que nenhuma carta usa mais;
   - a frase do mapa: a parte que troca fecha a primeira frase ("faz no dia a dia", "estuda para chegar lá", "vive de verdade"), para não deixar buraco no meio do texto;
   - log do palpite: `chute`, `media`, `diferenca` e `acertou` (sai `faixa`), sem tipo novo de evento.
 - **Testes:** varredura em 22 telas × 7 larguras, também com "Mostrar as fontes" e com as vistas lista e aquário; `auditar-design` e `--navegador` (todas as telas do app); o baralho do resumo em 320, 360, 390, 430, 768, 1024, 1440 e no celular deitado, com teclado (foco preso, Esc em duas camadas), toque (arrastar) e "reduzir movimento"; o tutorial em 320, 390 e 1280; `conferir-ficha` nas 22 fichas, `conferir-panorama` nos dois, `gerar-numeros-profissoes --conferir`.
-- **Atenção:** a Maré de cartas continua mostrando o "Você sabia?" de Engenharia de Produção, que traz a faixa de salário (já era assim antes); fica para o usuário decidir se troca o fato.
-- **Próximo passo:** o usuário olha a prévia e aprova o merge.
+- **Atenção:** o índice e a ficha de Engenharia de Produção mudaram depois da exportação E1 da validação externa (a troca do "Você sabia?"): na hora de aplicar as respostas da E1, os lotes P0001 (índice) e P0020 (ficha) aparecem como "o texto mudou" e vão para a próxima exportação, junto com as frases-tese.
+- **Publicado:** o usuário aprovou ("pode subir para prd") e o PR foi mesclado na `main` (produção).
 
 ## 2026-10-17 · Mapa das Profissões: fichas e panoramas em formato de relatório
 - **Pedido do usuário:** deixar a aba no estilo de um relatório de dados da Globo (faixas de capítulo numeradas, frases-tese coloridas, gráficos variados com "Fonte:" embaixo, "Ver resumo" e números gigantes). Piloto na Medicina aprovado com "Manda bala"; depois "Manda bala pra tudo", com uma repassada no fim, parando só para o merge.
