@@ -144,11 +144,11 @@ const Tutorial = (() => {
     // capítulos numerados com a frase-tese e a fonte embaixo de cada gráfico) e as profissões lado a lado no mapa.
     // Versão 5 (2026-10-17, vídeos de referência do usuário): "Ver como" (cartões, lista, aquário), álbum de selos,
     // faixa "Agora", o mergulho "Quão fundo é cada carreira", as cartas do "Ver resumo", a régua do palpite e a roleta.
-    // Versão 6 (2026-10-17): uma arte para cada profissão e, nos panoramas, o salário só depois do palpite ("Quem ganha mais?").
+    // Versão 6 (2026-10-17): um ícone para cada profissão e, nos panoramas, o salário só depois do palpite ("Quem ganha mais?").
     // Ao publicar as fichas e os panoramas, suba "profissoes" em VERSOES só se o texto daqui mudar.
     profissoes: [
       { desenho: 'mapa', titulo: 'Mapa das Profissões', texto: 'Busque pelo nome, filtre pela área nas abas ou, em "Características", pelo que importa para você, como "Lida com pessoas" ou "Só presencial". Em "Ver como", troque os cartões pela lista ou pelo aquário. No computador, "Esconder menu" deixa a tela inteira para as profissões.' },
-      { desenho: 'carta', titulo: 'Seu álbum e a faixa "Agora"', texto: 'Cada profissão tem a sua arte, e cada ficha que você abre vira um selo: toque no envelope para ver o álbum inteiro (as que faltam aparecem na sombra). A faixa "Agora" mostra o que cada profissão costuma estar fazendo neste horário. "Pôr na mira" guarda as que você quer acompanhar.' },
+      { desenho: 'carta', titulo: 'Seu álbum e a faixa "Agora"', texto: 'Cada profissão tem o seu ícone, e cada ficha que você abre vira um selo: toque no envelope para ver o álbum inteiro (os que faltam estão em cinza). A faixa "Agora" mostra o que cada profissão costuma estar fazendo neste horário. "Pôr na mira" guarda as que você quer acompanhar.' },
       { desenho: 'lupa', titulo: 'Uma ficha por profissão', texto: 'Cada ficha é um relatório: a capa traz os números principais, e "Ver resumo" abre o resumo em cartas. Em "O dinheiro", arraste a régua até o seu palpite antes de ver o salário (ou toque em "Prefiro ver direto"). O pontinho depois de uma informação e o botão "Fonte" abrem a fonte; "Mostrar as fontes", no topo, acende todas.' },
       { desenho: 'ancora', titulo: 'Quão fundo é cada carreira', texto: 'Um mergulho pelos anos de estudo: no raso, os cursos técnicos e tecnólogos; lá no fundo, Medicina com a residência. Role a tela, veja o profundímetro descer e toque numa profissão para ver a formação, a fonte e um "Você sabia?".' },
       { desenho: 'estrela', titulo: 'Maré de cartas', texto: 'Sem ideia por onde começar? A Maré mostra uma profissão por vez: "Me interessa" ou "Não é pra mim". No fim, o seu rastro e uma sugestão que talvez você não tenha considerado.' },

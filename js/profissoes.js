@@ -538,17 +538,19 @@
   const lerVista = () => { try { const v = localStorage.getItem(CHAVE_VISTA); return ['cartoes', 'lista', 'aquario'].includes(v) ? v : 'cartoes'; } catch (e) { return 'cartoes'; } };
   /* A inicial de cada palavra que importa ("Medicina Veterinária" → MV; "Direito" → D) */
   const sigla = nome => nome.split(/\s+/).filter(w => w.length > 2).slice(0, 2).map(w => w[0]).join('').toUpperCase();
-  /** A arte da profissão (js/profissoes-artes.js, 2026-10-17); sem ela, null e a peça segue sem desenho */
-  const arteDe = (id, o) => (window.ArtesProfissoes ? window.ArtesProfissoes.arte(id, o) : null);
+  /** O ícone da profissão (js/profissoes-icones.js, 2026-10-17); sem ele, null e a peça segue sem ícone */
+  const iconeProf = id => (window.IconesProfissoes ? window.IconesProfissoes.icone(id) : null);
+  /** O ícone num quadradinho na cor da área (cartão, lista, capa, Maré e comparador) */
+  const emblema = id => { const ic = iconeProf(id); return ic ? el('span', { class: 'prof-emblema', 'aria-hidden': 'true' }, ic) : null; };
 
   /** Álbum de selos: cada ficha aberta vira um selo. No envelope aparecem os últimos quatro; tocar abre o álbum inteiro. */
   function albumSelos(ix, exploradas, total) {
     const ordem = Object.keys(estado.vistas || {}).map(id => ix.profissoes.find(p => p.id === id)).filter(Boolean); // na ordem da primeira visita
     const amostra = ordem.slice(-4);
-    const marca = p => arteDe(p.id, { simples: true }) || el('b', { text: sigla(p.nome) }); // a arte da profissão; sem ela, as iniciais
+    const marca = p => iconeProf(p.id) || el('b', { text: sigla(p.nome) }); // o ícone da profissão; sem ele, as iniciais
     const selo = (p, i) => el('span', { class: 'prof-postal', style: { '--cor-area': corArea(ix, p.area), '--i': String(i - (amostra.length - 1) / 2) } }, marca(p));
     const painel = el('section', { class: 'prof-album', id: 'prof-album', 'aria-label': 'Álbum de selos', hidden: true },
-      el('p', { class: 'prof-min', text: exploradas ? 'Cada ficha que você abre vira um selo. Os que faltam aparecem só na sombra: toque para abrir.' : 'Abra a primeira ficha para ganhar o primeiro selo.' }),
+      el('p', { class: 'prof-min', text: exploradas ? 'Cada ficha que você abre vira um selo. Os que faltam estão em cinza: toque para abrir.' : 'Abra a primeira ficha para ganhar o primeiro selo.' }),
       el('ul', { class: 'prof-album-grade' }, ix.profissoes.map(p => {
         const tem = !!estado.vistas[p.id], aberta = temFicha(p);
         const conteudo = [el('span', { class: 'prof-postal prof-postal--grande' + (tem ? '' : ' prof-postal--falta'), 'aria-hidden': 'true' }, marca(p)),
@@ -645,13 +647,13 @@
     const itens = lista.map((p, i) => {
       const aberta = temFicha(p);
       const conteudo = [el('span', { class: 'prof-lg-n prof-num', 'aria-hidden': 'true', text: String(i + 1).padStart(2, '0') }),
-        el('span', { class: 'prof-lg-arte', 'aria-hidden': 'true' }, arteDe(p.id, { simples: true })),
+        emblema(p.id) || el('span', { 'aria-hidden': 'true' }), // sem ícone, a coluna fica vazia e o resto não sai do lugar
         el('span', { class: 'prof-lg-texto' }, el('span', { class: 'prof-lg-nome', text: p.nome }), p.frase ? el('span', { class: 'prof-lg-frase', text: p.frase }) : null),
         el('span', { class: 'prof-lg-area' }, el('i', { class: 'prof-regiao-cor', 'aria-hidden': 'true' }), nomeArea(ix, p.area)),
         aberta ? icone('direita') : el('span', { class: 'prof-selo', text: 'Em breve' })];
       const estilo = { '--cor-area': corArea(ix, p.area) };
-      const item = aberta ? el('a', { href: '#profissao-' + p.id, class: 'prof-lg-item prof-arte-vivo', style: estilo }, ...conteudo)
-        : el('button', { type: 'button', class: 'prof-lg-item prof-lg-item--breve prof-arte-vivo', style: estilo, onclick: () => pedir(p.id, p.nome) }, ...conteudo);
+      const item = aberta ? el('a', { href: '#profissao-' + p.id, class: 'prof-lg-item', style: estilo }, ...conteudo)
+        : el('button', { type: 'button', class: 'prof-lg-item prof-lg-item--breve', style: estilo, onclick: () => pedir(p.id, p.nome) }, ...conteudo);
       item.addEventListener('pointerenter', e => {
         if (e.pointerType !== 'mouse') return;
         if (atual !== p.id) { atual = p.id; previa.textContent = ''; previa.appendChild(ilha(p, ix)); }
@@ -670,10 +672,11 @@
     const legenda = el('p', { class: 'prof-aquario-legenda', 'aria-live': 'polite', text: 'Passe o mouse, foque ou toque numa bolha.' });
     const bolhas = lista.map(p => {
       const aberta = temFicha(p);
-      const conteudo = [el('span', { class: 'prof-bolha-arte', 'aria-hidden': 'true' }, arteDe(p.id, { simples: true })), el('span', { class: 'prof-bolha-nome', text: p.nome })];
+      const ic = iconeProf(p.id);
+      const conteudo = [ic ? el('span', { class: 'prof-bolha-icone', 'aria-hidden': 'true' }, ic) : null, el('span', { class: 'prof-bolha-nome', text: p.nome })];
       const estilo = { '--cor-area': corArea(ix, p.area) };
-      const b = aberta ? el('a', { href: '#profissao-' + p.id, class: 'prof-bolha prof-arte-vivo', style: estilo }, ...conteudo)
-        : el('button', { type: 'button', class: 'prof-bolha prof-bolha--breve prof-arte-vivo', style: estilo, onclick: () => pedir(p.id, p.nome) }, ...conteudo);
+      const b = aberta ? el('a', { href: '#profissao-' + p.id, class: 'prof-bolha', style: estilo }, ...conteudo)
+        : el('button', { type: 'button', class: 'prof-bolha prof-bolha--breve', style: estilo, onclick: () => pedir(p.id, p.nome) }, ...conteudo);
       const contar = () => { legenda.textContent = ''; legenda.append(el('b', { text: p.nome }), ` · ${nomeArea(ix, p.area)}`, p.frase ? `: ${p.frase}` : '', aberta ? '' : ' (em breve)'); };
       b.addEventListener('pointerenter', contar); b.addEventListener('focus', contar);
       return { p, b, x: 0, y: 0 };
@@ -810,18 +813,15 @@
         FORMATO_CURTO[n.formato] ? el('span', { text: FORMATO_CURTO[n.formato] }) : null,
         registroCurto(n.registro) ? el('span', { text: registroCurto(n.registro) }) : null].filter(Boolean));
     });
-    const arte = arteDe(p.id);
     const conteudo = [
-      arte ? el('span', { class: 'prof-pan-arte', 'aria-hidden': 'true' }, arte) : null,
-      el('span', { class: 'prof-rotulo prof-rotulo--area', text: nomeArea(ix, p.area) }),
+      el('span', { class: 'prof-pan-cab' }, el('span', { class: 'prof-rotulo prof-rotulo--area', text: nomeArea(ix, p.area) }), emblema(p.id)),
       el('h3', { text: p.nome }),
       el('p', { text: p.frase || 'Ficha em produção.' }),
       etiquetas,
       el('span', { class: 'prof-pan-pe' }, selo, el('span', { class: 'prof-pan-ir' }, aberta ? 'Abrir a ficha' : 'Pedir prioridade', icone(aberta ? 'direita' : 'estrela')))];
     const estilo = { '--cor-area': corArea(ix, p.area) };
-    const classe = 'prof-pan prof-pan--ficha' + (arte ? ' prof-pan--arte prof-arte-vivo' : '');
-    if (aberta) return el('a', { href: '#profissao-' + p.id, class: classe, style: estilo }, ...conteudo);
-    return el('button', { type: 'button', class: classe + ' prof-pan--breve', style: estilo, onclick: () => pedir(p.id, p.nome) }, ...conteudo);
+    if (aberta) return el('a', { href: '#profissao-' + p.id, class: 'prof-pan prof-pan--ficha', style: estilo }, ...conteudo);
+    return el('button', { type: 'button', class: 'prof-pan prof-pan--ficha prof-pan--breve', style: estilo, onclick: () => pedir(p.id, p.nome) }, ...conteudo);
   }
 
   /* =========================================================
@@ -865,7 +865,7 @@
       rotulo: nomeArea(ix, f.area), titulo: f.nome, frase: f.frase,
       meta: [f.conferido_em ? `Ficha conferida em ${dataBR(f.conferido_em)}` : null, 'Mapa das Profissões do Diver'],
       fontes: (f.fontes || []).length ? botaoFontes((f.fontes || []).length) : null,
-      acoes, resumo: caixaResumo(resumoDe(f), 'desta ficha', { fonte: f, nome: f.nome }), arte: arteDe(f.id),
+      acoes, resumo: caixaResumo(resumoDe(f), 'desta ficha', { fonte: f, nome: f.nome }), icone: emblema(f.id),
       numeros: [...[['duracao', 'Duração'], ['formato', 'Formato'], ['registro', 'Registro profissional']].filter(([k]) => nums[k]).map(([k, r]) => linhaNumero(r, nums[k])), linhaSalario],
       pe: linkPanorama(f, ix) }));
 
@@ -962,15 +962,15 @@
     const acoes = (o.acoes || []).filter(Boolean), numeros = (o.numeros || []).filter(Boolean);
     return el('header', { class: 'prof-capa' + (numeros.length ? '' : ' prof-capa--so-texto') },
       el('div', { class: 'prof-capa-texto' },
-        o.rotulo ? el('span', { class: 'prof-rotulo prof-rotulo--area', text: o.rotulo }) : null,
+        o.rotulo ? (o.icone ? el('span', { class: 'prof-capa-rotulo' }, o.icone, el('span', { class: 'prof-rotulo prof-rotulo--area', text: o.rotulo }))
+          : el('span', { class: 'prof-rotulo prof-rotulo--area', text: o.rotulo })) : null,
         el('h1', { text: o.titulo }),
         o.frase ? el('p', { class: 'prof-lead', text: o.frase }) : null,
         o.meta ? el('p', { class: 'prof-capa-meta', text: o.meta.filter(Boolean).join(' · ') }) : null,
         o.fontes ? el('p', { class: 'prof-capa-meta prof-capa-fontes' }, o.fontes) : null,
         acoes.length ? el('div', { class: 'prof-cab-acoes' }, acoes) : null,
         o.resumo || null),
-      numeros.length ? el('aside', { class: 'prof-emnum' + (o.arte ? ' prof-emnum--arte prof-arte-vivo' : ''), 'aria-labelledby': 'prof-emnum-tit' },
-        o.arte ? el('div', { class: 'prof-emnum-arte', 'aria-hidden': 'true' }, o.arte) : null,
+      numeros.length ? el('aside', { class: 'prof-emnum', 'aria-labelledby': 'prof-emnum-tit' },
         el('p', { class: 'prof-emnum-tit', id: 'prof-emnum-tit', text: 'Em números' }),
         el('dl', null, numeros),
         o.pe || null) : null);
@@ -1688,10 +1688,8 @@
     limpezas.push(() => document.removeEventListener('keydown', teclas));
 
     function cartaEl(p, classe) {
-      const arte = arteDe(p.id);
-      const c = el('article', { class: 'prof-carta prof-arte-vivo ' + (classe || ''), 'aria-label': p.nome },
-        el('div', { class: 'prof-carta-cab' }, el('span', { text: nomeArea(ix, p.area) }), el('span', { text: `${Math.min(idx + 1, baralho.length)} de ${baralho.length}` })),
-        arte ? el('div', { class: 'prof-carta-arte', 'aria-hidden': 'true' }, arte) : null,
+      const c = el('article', { class: 'prof-carta ' + (classe || ''), 'aria-label': p.nome },
+        el('div', { class: 'prof-carta-cab' }, el('span', { class: 'prof-carta-area' }, emblema(p.id), nomeArea(ix, p.area)), el('span', { text: `${Math.min(idx + 1, baralho.length)} de ${baralho.length}` })),
         el('h2', { text: p.nome }),
         el('p', { class: 'prof-fato' }, el('b', { text: 'Você sabia? ' }), p.carta.fato),
         el('p', { class: 'prof-micro', text: 'Fonte: ' + ((ix.fontes_cartas || {})[p.carta.fonte] || p.carta.fonte) }),
@@ -1701,6 +1699,22 @@
       c.style.setProperty('--cor-area', corArea(ix, p.area));
       return c;
     }
+    /* A pilha fica com a altura da carta mais alta deste baralho, na largura de agora: nenhum texto passa do fim da carta.
+       Mede de novo quando a largura muda e quando as fontes terminam de carregar. */
+    function medir() {
+      if (!pilha.isConnected) return;
+      const caixa = el('div', { 'aria-hidden': 'true', style: { position: 'absolute', left: '0', right: '0', top: '0', visibility: 'hidden', pointerEvents: 'none' } });
+      pilha.appendChild(caixa);
+      let alto = 0;
+      baralho.forEach(p => { const c = cartaEl(p, ''); c.style.position = 'relative'; c.style.inset = 'auto'; caixa.appendChild(c); alto = Math.max(alto, c.offsetHeight); });
+      caixa.remove();
+      pilha.style.setProperty('--alto-carta', Math.ceil(alto) + 'px');
+    }
+    let tMedir = 0;
+    const aoMudarLargura = () => { clearTimeout(tMedir); tMedir = setTimeout(medir, 150); };
+    addEventListener('resize', aoMudarLargura);
+    limpezas.push(() => { removeEventListener('resize', aoMudarLargura); clearTimeout(tMedir); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(medir);
     function render() {
       pilha.textContent = '';
       if (idx >= baralho.length) { acoes.hidden = true; return fim(); }
@@ -1742,11 +1756,12 @@
         topArea ? el('p', { class: 'prof-prosa', style: { marginTop: '8px' } }, 'A área que mais apareceu: ', el('b', { text: nomeArea(ix, topArea) }), '.') : null,
         sugestao ? el('p', { class: 'prof-sugestao' }, 'Uma que talvez você não tenha considerado: ', el('b', { text: sugestao.nome }), temFicha(sugestao) ? ['. ', link('Abrir a ficha', 'profissao-' + sugestao.id)] : '. A ficha dela está em produção.') : null,
         el('div', { style: { marginTop: '14px', display: 'flex', gap: '10px', flexWrap: 'wrap' } },
-          botao('Embaralhar de novo', { classe: 'prof-btn--primario', icone: 'embaralhar', onclick: () => { idx = 0; sim.length = 0; nao.length = 0; baralho = todas.slice().sort(() => Math.random() - .5); rastro.textContent = ''; acoes.hidden = false; render(); } }),
+          botao('Embaralhar de novo', { classe: 'prof-btn--primario', icone: 'embaralhar', onclick: () => { idx = 0; sim.length = 0; nao.length = 0; baralho = todas.slice().sort(() => Math.random() - .5); rastro.textContent = ''; acoes.hidden = false; render(); medir(); } }),
           link('Ver o mapa', 'profissoes', { classe: 'prof-btn prof-btn--linha' }))));
       ganchos.registrar('profissoes_cartas_fim', { interesse: sim.map(p => p.id), area: topArea });
     }
     render();
+    requestAnimationFrame(medir);
   }
 
   /* =========================================================
@@ -1858,8 +1873,8 @@
     const par2 = [fa, fb];
 
     // Cabeçalho das colunas: fica preso no topo enquanto rola
-    raiz.appendChild(el('div', { class: 'prof-comp-linha prof-comp-cab' }, par2.map(f => el('a', { href: '#profissao-' + f.id, class: 'prof-comp-nome prof-arte-vivo', style: { '--cor-area': corArea(ix, f.area) } },
-      el('span', { class: 'prof-comp-arte', 'aria-hidden': 'true' }, arteDe(f.id, { simples: true })),
+    raiz.appendChild(el('div', { class: 'prof-comp-linha prof-comp-cab' }, par2.map(f => el('a', { href: '#profissao-' + f.id, class: 'prof-comp-nome', style: { '--cor-area': corArea(ix, f.area) } },
+      emblema(f.id),
       el('span', { class: 'prof-comp-nome-texto' }, el('span', { class: 'prof-rotulo', text: nomeArea(ix, f.area) }), el('b', null, f.nome, icone('direita')))))));
     const bloco = (titulo, celulas, extra) => el('section', { class: 'prof-comp-bloco' }, el('h2', { text: titulo }),
       celulas ? el('div', { class: 'prof-comp-linha' }, celulas.map(c => el('div', { class: 'prof-comp-cel' }, c))) : null, extra || null);

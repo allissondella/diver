@@ -5,6 +5,19 @@
 
 ---
 
+## 2026-10-17 · Mapa das Profissões: ícones discretos no lugar das artes
+- **Pedido do usuário:** "Essas logos do preview ficaram horríveis, faz mais discreto e simples". Amostra mostrada antes e aprovada ("Segue").
+- **Feito:**
+  - as 22 artes coloridas viraram **22 ícones de traço nossos** (`js/profissoes-icones.js`, `IconesProfissoes.icone(id)`; o `profissoes-artes.js` saiu), de uma cor só (a da área), pequenos e parados, no estilo dos ícones do app;
+  - **onde aparecem:** num quadradinho clarinho no canto do cartão do mapa, na lista, antes da área na capa da ficha, no cabeçalho da carta da Maré e no comparador; pequeno, em cima do nome, no aquário; e dentro do selo no álbum (os que faltam em cinza);
+  - saíram a faixa da arte no alto dos cartões e no "Em números", o halo e as animações. Educação Física ganhou um haltere no lugar do apito.
+- **Correção junto:** no celular, o texto de algumas cartas da Maré passava do fim da carta (já acontecia antes das artes, com a pilha fixa em 270 px). Agora a pilha mede a carta mais alta do baralho na largura da tela.
+- **Testes:**
+  - fotos em 1440, 390 e 360 px (cartões, lista, aquário, envelope, álbum, ficha, Maré e comparador): todos os cartões com ícone e o ícone na linha da área; nenhuma bolha nem carta vazando; nenhum erro no console;
+  - varredura de "coisa torta" nas 26 telas da aba, em 8 larguras de 360 a 1440 px (com e sem menu), e no mapa em lista e em aquário: nenhum achado;
+  - `node scripts/auditar-design.mjs` e `--navegador` OK; `gerar-componentes --conferir` e `gerar-numeros-profissoes --conferir` em dia.
+- **Pendências:** a pistola em primeira pessoa do Tiro ao Alvo (próximo commit); merge para produção só com o OK do usuário.
+
 ## 2026-10-17 · Mapa das Profissões: uma arte para cada profissão e o salário dos panoramas só depois do palpite
 - **Pedido do usuário:** "Nas profissões faça uma arte que represente universalmente cada uma delas, para deixar ainda mais legal e curioso, quando clico em medicina ele também entrega de cara os salários aí acaba não tendo tanta graça para adivinhar". Plano de 3 etapas aprovado ("Manda bala"), com fotos depois de cada uma. **Textos e números das fichas e dos panoramas, rotas e XP iguais; nada no banco.**
 - **Feito:**
