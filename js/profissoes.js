@@ -126,21 +126,38 @@
   }
 
   /* =========================================================
-     Citações: marcação numerada que leva à lista de fontes
+     Citações discretas (2026-10-17, pedido do usuário: "fontes mais escondidas, mas de fácil acesso"):
+     depois de cada informação, um pontinho apagado que acende no toque ou no foco e abre as fontes dela num cartão.
+     "Mostrar as fontes" (no topo) acende todos e troca os pontinhos pelos números (.prof-raiz--fontes).
      ========================================================= */
   function numeroFonte(f, id) { const i = (f.fontes || []).findIndex(x => x.id === id); return i >= 0 ? i + 1 : null; }
-  /* Cada fonte citada vira uma bolinha com o número; o toque abre a fonte num cartão (as fontes ficam guardadas até alguém pedir). */
+  const juntarE = l => l.length < 2 ? l.join('') : l.slice(0, -1).join(', ') + ' e ' + l[l.length - 1];
+  /* Um botão só por informação, mesmo com várias fontes (antes, uma bolinha por fonte, que se encostavam) */
   function citar(f, ids) {
-    const lista = (ids || []).filter(id => numeroFonte(f, id));
+    const lista = [...new Set(ids || [])].filter(id => numeroFonte(f, id));
     if (!lista.length) return null;
-    const sup = el('sup', { class: 'prof-cit' });
-    lista.forEach(id => {
-      const fonte = f.fontes.find(x => x.id === id), n = numeroFonte(f, id);
-      sup.appendChild(el('button', { type: 'button', class: 'prof-cit-b', 'aria-label': `Fonte ${n}: ${fonte.titulo}`, title: 'Ver a fonte', text: String(n), onclick: e => { e.stopPropagation(); abrirFonte(f, id, e.currentTarget); } }));
-    });
-    return sup;
+    const nums = lista.map(id => numeroFonte(f, id));
+    const rotulo = lista.length === 1 ? `Fonte ${nums[0]}: ${f.fontes.find(x => x.id === lista[0]).titulo}` : `Fontes ${juntarE(nums)}`;
+    return el('sup', { class: 'prof-cit' }, el('button', { type: 'button', class: 'prof-cit-b', 'aria-label': rotulo, title: lista.length === 1 ? 'Ver a fonte' : 'Ver as fontes',
+      onclick: e => { e.stopPropagation(); abrirFontes(f, lista, e.currentTarget); } }, el('span', { class: 'prof-cit-n', 'aria-hidden': 'true', text: nums.join(' · ') })));
   }
   const metaFonte = fo => `${fo.orgao}. Consultado em ${dataBR(fo.consultado_em)}${fo.dados_atualizados_em ? ', dados atualizados em ' + dataBR(fo.dados_atualizados_em) : ''}. Fonte ${fo.tipo === 'primaria' ? 'primária' : 'secundária'}.`;
+  /* "Mostrar as fontes": só neste aparelho, como o "Esconder menu" */
+  const CHAVE_FONTES = 'diver-local:v1:profissoes-fontes';
+  const lerFontes = () => { try { return localStorage.getItem(CHAVE_FONTES) === '1'; } catch (e) { return false; } };
+  function botaoFontes(total) {
+    const b = el('button', { type: 'button', class: 'prof-link-botao prof-fontes-alterna' });
+    const pintar = on => { b.textContent = ''; b.append(icone('olho'), on ? 'Esconder as fontes' : total ? `Mostrar as ${total} fontes` : 'Mostrar as fontes'); b.setAttribute('aria-pressed', String(on)); };
+    b.addEventListener('click', () => {
+      const raiz = b.closest('.prof-raiz'); if (!raiz) return;
+      const on = !raiz.classList.contains('prof-raiz--fontes');
+      raiz.classList.toggle('prof-raiz--fontes', on);
+      try { localStorage.setItem(CHAVE_FONTES, on ? '1' : '0'); } catch (e) { /* sem armazenamento: vale só agora */ }
+      pintar(on);
+    });
+    pintar(lerFontes());
+    return b;
+  }
   let popFonte = null;
   function fecharFonte() {
     if (!popFonte) return;
@@ -148,23 +165,40 @@
     sair(); caixa.remove();
     if (origem && origem.isConnected) origem.focus({ preventScroll: true });
   }
-  function abrirFonte(f, id, origem) {
-    const fo = (f.fontes || []).find(x => x.id === id); if (!fo) return;
+  /* A lista inteira (capítulo Fontes) aberta no item pedido, com um destaque rápido */
+  function irParaFonte(id) {
+    const ol = document.getElementById('prof-lista-fontes'); if (!ol) return;
+    if (ol.hidden) { const b = document.querySelector('[aria-controls="prof-lista-fontes"]'); if (b) b.click(); }
+    const li = document.getElementById('fonte-' + id) || ol;
+    li.classList.remove('prof-fontes-destaque'); void li.offsetWidth; li.classList.add('prof-fontes-destaque');
+    li.setAttribute('tabindex', '-1'); ir(li); li.focus({ preventScroll: true });
+  }
+  /** Cartão com as fontes de uma informação (ids) ou de um gráfico (extra: { titulo, texto }). */
+  function abrirFontes(f, ids, origem, extra) {
+    const fos = [...new Set(ids || [])].map(id => (f.fontes || []).find(x => x.id === id)).filter(Boolean);
+    if (!fos.length && !(extra && extra.texto)) return;
     fecharFonte();
-    const n = numeroFonte(f, id);
-    const fechar = el('button', { type: 'button', class: 'prof-pop-fechar', 'aria-label': 'Fechar a fonte', onclick: fecharFonte }, icone('x'));
-    const caixa = el('div', { class: 'prof-pop', role: 'dialog', 'aria-label': `Fonte ${n}` },
-      el('div', { class: 'prof-pop-cab' }, el('span', { class: 'prof-pop-n', text: String(n) }), el('span', { class: 'prof-rotulo', text: `Fonte ${n} de ${f.fontes.length}` }), fechar),
-      el('p', { class: 'prof-pop-titulo' }, fo.url ? el('a', { href: fo.url, target: '_blank', rel: 'noopener' }, fo.titulo, ' ', icone('link')) : fo.titulo),
-      el('p', { class: 'prof-micro', text: metaFonte(fo) }),
-      fo.nota ? el('p', { class: 'prof-fontes-nota', text: 'Pendência: ' + fo.nota }) : null);
+    const nums = fos.map(fo => numeroFonte(f, fo.id)), total = (f.fontes || []).length;
+    const titulo = extra && extra.titulo ? extra.titulo : fos.length === 1 ? `Fonte ${nums[0]} de ${total}` : `Fontes ${juntarE(nums)}`;
+    const fechar = el('button', { type: 'button', class: 'prof-pop-fechar', 'aria-label': 'Fechar', onclick: fecharFonte }, icone('x'));
+    const temLista = !!document.getElementById('prof-lista-fontes');
+    const caixa = el('div', { class: 'prof-pop', role: 'dialog', 'aria-label': titulo },
+      el('div', { class: 'prof-pop-cab' }, el('span', { class: 'prof-pop-ico' }, icone('livro')), el('span', { class: 'prof-rotulo', text: titulo }), fechar),
+      extra && extra.texto ? el('p', { class: 'prof-pop-resumo', text: extra.texto }) : null,
+      fos.length ? el('ol', { class: 'prof-pop-lista' }, fos.map(fo => el('li', null,
+        el('p', { class: 'prof-pop-titulo' }, el('span', { class: 'prof-pop-n', text: String(numeroFonte(f, fo.id)) }),
+          fo.url ? el('a', { href: fo.url, target: '_blank', rel: 'noopener' }, fo.titulo, ' ', icone('link')) : fo.titulo),
+        el('p', { class: 'prof-micro', text: metaFonte(fo) }),
+        fo.nota ? el('p', { class: 'prof-fontes-nota', text: 'Pendência: ' + fo.nota }) : null))) : null,
+      temLista && fos.length ? el('button', { type: 'button', class: 'prof-link-botao prof-pop-lista-todas', onclick: () => { const id = fos[0].id; fecharFonte(); irParaFonte(id); } },
+        `Ver na lista das ${total} fontes`, icone('direita')) : null);
     const tecla = e => { if (e.key === 'Escape') fecharFonte(); };
     const fora = e => { if (!caixa.contains(e.target)) fecharFonte(); };
     document.addEventListener('keydown', tecla);
     setTimeout(() => document.addEventListener('click', fora), 0);
     popFonte = { caixa, origem, sair: () => { document.removeEventListener('keydown', tecla); document.removeEventListener('click', fora); } };
     document.body.appendChild(caixa);
-    // No computador, o cartão abre junto da bolinha tocada; no celular, sobe do rodapé
+    // No computador, o cartão abre junto do pontinho tocado; no celular, sobe do rodapé
     if (origem && innerWidth >= 768) {
       const r = origem.getBoundingClientRect(), w = caixa.offsetWidth, h = caixa.offsetHeight;
       const x = Math.min(Math.max(r.left + r.width / 2 - w / 2, 16), innerWidth - w - 16);
@@ -177,6 +211,7 @@
     }
     fechar.focus({ preventScroll: true });
   }
+  const abrirFonte = (f, id, origem) => abrirFontes(f, [id], origem);
   function prosa(f, textoProsa, ids, classe) { return el('p', { class: classe || 'prof-prosa' }, textoProsa, citar(f, ids)); }
 
   /* =========================================================
@@ -191,6 +226,7 @@
     raiz.textContent = '';
     raiz.classList.add('prof-raiz');
     raiz.classList.remove('prof-raiz--estreita', 'prof-raiz--media', 'prof-raiz--cartas');
+    raiz.classList.toggle('prof-raiz--fontes', lerFontes());
     raiz.style.removeProperty('--cor-area');
     document.body.classList.toggle('prof-sem-menu', lerSemMenu()); // "Esconder menu" vale só nesta aba (desmontar tira)
     const r = (rota || 'profissoes').replace(/^#/, '');
@@ -454,11 +490,11 @@
           el('figcaption', null, el('b', { text: 'Quanto dura a graduação' }), el('span', { class: 'prof-micro', text: 'Duração mínima do curso principal de cada profissão.' })),
           el('ol', { class: 'prof-lado-lista' }, anos.map(a => linha(`${a} anos`, porAnos[a], maxAnos))),
           curtos.length ? el('p', { class: 'prof-micro prof-espaco', text: `${juntar(curtos)} também ${curtos.length === 1 ? 'tem' : 'têm'} um caminho mais curto, de técnico ou tecnólogo: veja a linha do tempo na ficha.` }) : null,
-          fontes.duracao ? el('p', { class: 'prof-fonte-linha' }, el('b', { text: 'Fonte: ' }), fontes.duracao + '.') : null),
+          fontes.duracao ? fonteLinha({}, [], fontes.duracao + '.') : null),
         el('figure', { class: 'prof-caixa prof-lado-fig' },
           el('figcaption', null, el('b', { text: 'Onde dá para estudar a distância' }), el('span', { class: 'prof-micro', text: 'Formato em que o curso pode ser oferecido, pelas regras de 2025.' })),
           el('ol', { class: 'prof-lado-lista' }, formatos.map(([k, rotulo]) => linha(rotulo, porFormato[k], maxFormato))),
-          fontes.formato ? el('p', { class: 'prof-fonte-linha' }, el('b', { text: 'Fonte: ' }), fontes.formato + '.') : null)));
+          fontes.formato ? fonteLinha({}, [], fontes.formato + '.') : null)));
     sec.hidden = false;
   }
   /* Panorama de uma área (Medicina, Tecnologia): cartão grande com as primeiras especialidades pelo apelido
@@ -550,7 +586,8 @@
     // "Ver resumo": as frases-tese (ou, sem elas, os fatos centrais da ficha); fica na coluna da capa
     raiz.appendChild(capaRelatorio({
       rotulo: nomeArea(ix, f.area), titulo: f.nome, frase: f.frase,
-      meta: [f.conferido_em ? `Ficha conferida em ${dataBR(f.conferido_em)}` : null, `${(f.fontes || []).length} fontes`, 'Mapa das Profissões do Diver'],
+      meta: [f.conferido_em ? `Ficha conferida em ${dataBR(f.conferido_em)}` : null, 'Mapa das Profissões do Diver'],
+      fontes: (f.fontes || []).length ? botaoFontes((f.fontes || []).length) : null,
       acoes, resumo: caixaResumo(resumoDe(f), 'desta ficha'),
       numeros: [...[['duracao', 'Duração'], ['formato', 'Formato'], ['registro', 'Registro profissional']].filter(([k]) => nums[k]).map(([k, r]) => linhaNumero(r, nums[k])), linhaSalario],
       pe: linkPanorama(f, ix) }));
@@ -629,7 +666,7 @@
     if (combina.length) cap('combina', 'Combina com você?', null, ...combina);
 
     // ---------- Fontes: guardadas; a lista abre no botão ----------
-    cap('fontes', 'Fontes', `Conferidas em ${dataBR(f.conferido_em)}. Toque num número ao longo da ficha para ver de onde ele vem.`,
+    cap('fontes', 'Fontes', `Conferidas em ${dataBR(f.conferido_em)}. Toque no pontinho depois de uma informação para ver de onde ela vem, ou em "Mostrar as fontes", no topo, para ver todas.`,
       ...fontesGuardadas(f, f.fontes || [], `Ver as ${(f.fontes || []).length} fontes desta ficha`),
       el('div', { class: 'prof-revisao' },
         el('span', { class: f.revisao && f.revisao.fontes === 'conferidas' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.fontes === 'conferidas' ? 'certo' : 'relogio'), 'Fontes: ' + (f.revisao ? f.revisao.fontes : 'pendente')),
@@ -650,6 +687,7 @@
         el('h1', { text: o.titulo }),
         o.frase ? el('p', { class: 'prof-lead', text: o.frase }) : null,
         o.meta ? el('p', { class: 'prof-capa-meta', text: o.meta.filter(Boolean).join(' · ') }) : null,
+        o.fontes ? el('p', { class: 'prof-capa-meta prof-capa-fontes' }, o.fontes) : null,
         acoes.length ? el('div', { class: 'prof-cab-acoes' }, acoes) : null,
         o.resumo || null),
       numeros.length ? el('aside', { class: 'prof-emnum', 'aria-labelledby': 'prof-emnum-tit' },
@@ -699,7 +737,8 @@
     if (f.carta) add(f.carta.fato, f.carta.fontes, 'Você sabia?');
     return itens;
   }
-  /** "Fonte: ..." embaixo de cada gráfico, como nos relatórios (as bolinhas abrem o cartão de cada fonte). */
+  /** A fonte de cada gráfico: um botãozinho "Fonte" no canto de baixo, que abre o cartão; com "Mostrar as fontes",
+      a linha inteira "Fonte: ..." volta, como nos relatórios. */
   function fonteLinha(f, ids, texto) {
     const fs = [...new Set(ids || [])].map(id => (f.fontes || []).find(x => x.id === id)).filter(Boolean);
     if (!fs.length && !texto) return null;
@@ -708,7 +747,11 @@
       const o = (fo.orgao || '').replace(/\s*\(\d{2}\/\d{2}\/\d{4}\)/g, '').replace(/\s*\(.*\)$/, '').replace(/,\s*(\d{2}\/\d{2}\/\d{4}|[a-zç]+ de \d{4})$/i, '').trim();
       return o && !t.includes(o) ? `${t}, ${o}` : t;
     };
-    return el('p', { class: 'prof-fonte-linha' }, el('b', { text: 'Fonte: ' }), texto || fs.map(curto).join(' · '), fs.length ? citar(f, fs.map(x => x.id)) : null);
+    const resumo = texto || fs.map(curto).join(' · ');
+    return el('div', { class: 'prof-fonte' },
+      el('button', { type: 'button', class: 'prof-fonte-canto', 'aria-label': 'Fonte deste gráfico: ' + resumo,
+        onclick: e => { e.stopPropagation(); abrirFontes(f, fs.map(x => x.id), e.currentTarget, { titulo: 'Fonte deste gráfico', texto: resumo }); } }, icone('livro'), 'Fonte'),
+      el('p', { class: 'prof-fonte-linha' }, el('b', { text: 'Fonte: ' }), resumo, fs.length ? citar(f, fs.map(x => x.id)) : null));
   }
   /** O número gigante numa faixa (o "R$ 1,2 trilhão por ano" dos relatórios). Um por página. */
   function faixaNumero(o) {
@@ -1290,7 +1333,8 @@
     raiz.appendChild(el('header', { class: 'prof-comp-topo' },
       el('span', { class: 'prof-rotulo', text: 'Comparar' }),
       el('h1', { text: 'Duas profissões lado a lado' }),
-      el('p', { class: 'prof-lead', text: 'Duração, formato, salário, registro, como entrar, caminhos e o DNA de cada uma. Os números são os das fichas, com as mesmas fontes.' })));
+      el('p', { class: 'prof-lead', text: 'Duração, formato, salário, registro, como entrar, caminhos e o DNA de cada uma. Os números são os das fichas, com as mesmas fontes.' }),
+      el('p', { class: 'prof-capa-meta prof-capa-fontes' }, botaoFontes())));
     if (abertas.length < 2) {
       raiz.appendChild(el('div', { class: 'prof-vazio' }, el('p', { text: 'Para comparar, é preciso ter pelo menos duas fichas no ar. Elas estão em revisão por profissionais e chegam em breve.' })));
       return;
@@ -1408,7 +1452,7 @@
     registrarExtensao: ext => extensoes.push(ext),
     /* Peças para as extensões (js/profissoes-panorama.js): as mesmas da ficha, para o desenho ficar igual */
     _util: { el, icone, aviso, botao, link, citar, prosa, brl, dataBR, normalizar, nomeArea, corArea, salvarEstado, lerJson, limpezas, IG, EIXOS,
-      temFicha, temPanorama, pedir, semMovimento, contar, ir, fontesGuardadas, abrirFonte, numeroFonte, dadosPanorama,
+      temFicha, temPanorama, pedir, semMovimento, contar, ir, fontesGuardadas, abrirFonte, abrirFontes, botaoFontes, numeroFonte, dadosPanorama,
       topoPagina, cabecalho, indiceCapitulos, linhasCargos,
       capituloRelatorio, fonteLinha, faixaNumero, numerosProf, capaRelatorio, linhaEmNumeros, caixaResumo, calloutsNumerados, regua, dominioDe }
   };
