@@ -49,29 +49,26 @@ A **Fase 0 está feita**: protótipo em HTML/CSS/JS puros com os modos Mergulho,
 - **Recompensas e log:** "Um dia como" 30 XP/3 pérolas e "Mito ou verdade" 20 XP/2 pérolas, uma vez por profissão, pela economia. Eventos `profissao_*`/`profissoes_*` no log, sem tabela nova; nada digitado entra no log.
 - **Conquistas e Admin:** conquistas gerais (Explorador de carreiras, Um dia na pele, Baralho completo) no Perfil; bloco "Mapa das Profissões" no Admin, tirado do log.
 - **Prévia do kit:** em `docs/prototipos/profissoes/` (não é do app).
-- **Ficha que se conta ao rolar (2026-10-16, pedido do usuário; só o desenho, o conteúdo não muda):**
-  - abertura em tela cheia;
-  - partes que acendem ao rolar (o relógio gira, os números contam, a formação cresce, o DNA se monta);
-  - guia fixo com progresso e as seções, e "Próximo" no pé de cada parte;
-  - doca com as ações no rodapé;
-  - **salário escondido até o chute** (ou "Prefiro só ver os números");
-  - **fontes guardadas**: cada bolinha numerada abre a fonte num cartão, e a lista inteira só abre no botão.
-  - Tudo respeita "reduzir movimento". Detalhes em `docs/MAPA_PROFISSOES_INTERACOES.md`.
+- **Aba repaginada (2026-10-16, pedido do usuário: "quadro invisível" ao rolar, pesada, chute atropelado, especialidades bagunçadas; só o desenho, conteúdo, rotas, XP e log iguais; `docs/MAPA_PROFISSOES_INTERACOES.md`, "A aba repaginada"):**
+  - **página larga só nesta aba** (até 1240 px; exceção em `docs/DESIGN.md`) e **"Esconder menu"** de 1280 px para cima (`body.prof-sem-menu`, só no aparelho: `diver-local:v1:profissoes-sem-menu`);
+  - **nada some ao rolar** (sem abertura em tela cheia, partes que acendem, guia com "Próximo" nem doca); peças comuns em `Profissoes._util` (`topoPagina`, `cabecalho`, `tileFato`, `capitulo`, `indiceCapitulos`);
+  - **mapa:** busca, abas de área com contagem, "Explore por dentro" (panoramas em destaque) e grade; área pequena fica ao lado de outra;
+  - **ficha:** cabeçalho com as ações, quatro números, faixa de capítulos presa no topo e capítulos em duas colunas;
+  - **palpite de salário:** um lugar só, 4 faixas ou "Prefiro ver direto", resposta no lugar com a régua (faixa comum e média) e depois todos os cargos e pisos (`estado.chutes['<id>:palpite']`);
+  - **panoramas como explorador:** "O que importa para você?" ordena os cartões; cada área ou especialidade abre com a faixa de todas no topo; o salário aparece aberto (o palpite fica só nas fichas);
+  - **fontes guardadas**: cada bolinha numerada abre a fonte num cartão, e a lista inteira só abre no botão. Tutorial da área na versão 3.
 - **Panorama da Tecnologia (2026-10-16, kit v1.2; `docs/MAPA_PROFISSOES_TECNOLOGIA.md`):**
-  - Cartão largo no topo da região Tecnologia do mapa. As rotas são `#profissoes-tecnologia`, `#tecnologia-<área>` (as dez áreas) e `#profissoes-tecnologia-jogo` ("Que área da tecnologia é a sua praia?", 12 situações; 30 XP e 3 pérolas uma vez).
+  - Cartão em "Explore por dentro", no topo do mapa. As rotas são `#profissoes-tecnologia`, `#tecnologia-<área>` (as dez áreas) e `#profissoes-tecnologia-jogo` ("Que área da tecnologia é a sua praia?", 12 situações; 30 XP e 3 pérolas uma vez).
   - O código é `js/profissoes-panorama.js` (até 16/10/2026, `profissoes-tecnologia.js`), uma extensão do mesmo pacote que serve **todos** os panoramas de `indice.json` → `panoramas[]`. Ela usa `Profissoes.registrarExtensao` e as peças da ficha via `Profissoes._util`, com o **mesmo desenho da ficha**. Os rótulos ("área" ou "especialidade", cor, títulos) vêm do JSON de cada panorama; a ponte com os cursos fica em `PONTES` no módulo.
-  - Nas telas:
-    - no panorama, a aposta "qual área paga mais?" vem antes das barras;
-    - em cada área, média e faixa ficam escondidas até o chute;
-    - a ponte "Estudar tecnologia" abre o Explora Tech, e a área de Segurança indica também Ciber e ISO.
+  - Nas telas: o explorador das dez áreas (desde a repaginação, sem a aposta nem o chute por área) e a ponte "Estudar tecnologia", que abre o Explora Tech; a área de Segurança indica também Ciber e ISO.
   - Os dados ficam em `data/profissoes/tecnologia.json`, conferido por `node scripts/conferir-panorama.mjs data/profissoes/tecnologia.json`.
   - **Segue `rascunho` até 1 ou 2 profissionais de cada área revisarem as rotinas.** Até lá o aluno vê "Em breve" (`indice.json`, `panoramas[].status`). Não publique nem mude o conteúdo sem o OK do usuário.
   - No log entram os tipos `tecnologia_*` (regra aplicada nos dois bancos). Há a conquista geral **Dez em dez** e as linhas da Tecnologia no bloco do Admin.
   - **Nomes de classe:** antes de criar uma, procure em `css/profissoes.css`. `prof-cena`, `prof-barra` e `prof-oculto` já existiam e quase quebraram o "Um dia como".
 - **Panorama da Medicina (2026-10-16, kit v4; `docs/MAPA_PROFISSOES_MEDICINA.md`; pedido do usuário: "no estilo da de Tecnologia"):**
-  - Cartão largo no topo da região Saúde. As rotas são `#profissoes-medicina`, `#medicina-<especialidade>` (as doze) e `#profissoes-medicina-jogo` ("Que especialidade médica é a sua?"; 30 XP e 3 pérolas uma vez).
+  - Cartão em "Explore por dentro", no topo do mapa. As rotas são `#profissoes-medicina`, `#medicina-<especialidade>` (as doze) e `#profissoes-medicina-jogo` ("Que especialidade médica é a sua?"; 30 XP e 3 pérolas uma vez).
   - Os dados ficam em `data/profissoes/panorama-medicina.json`: no kit o arquivo se chamava `medicina.json`, que já é a ficha. O panorama tem o id `medicina`, igual ao da ficha; por isso, no Admin, o nome da ficha vem antes do do panorama, e os eventos do panorama levam `detalhes.panorama`.
-  - Na aposta e nas barras de salário entram só as especialidades com CBO próprio. As 4 que usam o clínico "(referência)" ficam fora, explicadas na nota.
+  - Em "Maior salário", as especialidades com CBO próprio vêm primeiro; as 4 que usam o clínico aparecem como "referência", explicadas na nota.
   - A ponte com os cursos leva a Enem · Biologia (para entrar), e Radiologia indica os 4 cursos da sala Radiologia. A ficha de Medicina tem o link para o panorama em "Outros caminhos".
   - No log entram os tipos `medicina_*` (regra aplicada nos dois bancos; sem ela o envio do log em lote falha). Há a conquista geral **Doze em doze**.
   - **Segue `rascunho` até médicos de cada especialidade revisarem.** A professora Georgia pode começar por Radiologia. Não publique nem mude o conteúdo sem o OK do usuário.

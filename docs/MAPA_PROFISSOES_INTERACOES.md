@@ -24,12 +24,16 @@
 - "Me interessa" marca "na mira" automaticamente. "Não é pra mim" guarda a decisão para não repetir a carta na próxima rodada.
 - Log: `profissao_carta` com a decisão.
 
-### 2. Chute o salário (dentro da ficha, seção "Quanto ganha")
+### 2. Palpite de salário (dentro da ficha, capítulo "Quanto ganha")
 
-- Antes de mostrar o número, um controle deslizante pede o chute. Ao confirmar, aparece a faixa comum de contratação (percentis 25 e 75), a média, o piso por lei quando houver e a marca do chute, com "você chutou X% acima/abaixo".
-- Segunda rodada quando a ficha tiver caminho técnico (técnico de enfermagem, por exemplo).
-- Variante futura: "Chute a nota de corte", com os dados do Sisu que a Sala Enem já usa.
-- Guardar o chute no log (`profissao_chute_salario`, com o valor) permite, no futuro, mostrar "a maioria dos Divers chuta acima". Nunca inventar esse número antes de ter os dados.
+- **Repaginado em 2026-10-16** (pedido do usuário: o chute "não fazia sentido, muito atropelado"). Saíram o controle deslizante de R$ 1 mil a R$ 20 mil, a tampa embaçada sobre a tabela e a segunda rodada.
+- Um lugar só: a pergunta ("Quanto ganha, por mês, um ... contratado com carteira no Brasil?") com **4 faixas** em botões e "Prefiro ver direto".
+  - As faixas saem de `faixasPalpite(media, semente)`: degraus redondos (R$ 1 mil, 2 mil, 3 mil...) perto de 30% da média; a faixa certa muda de posição de uma profissão para outra (semente pelo id), e a média nunca fica colada na borda de uma faixa.
+- A resposta aparece **no mesmo lugar**: "Na mosca!", "Mais do que você imaginou" ou "Menos do que você imaginou", a média grande e uma régua com a faixa comum (percentis 25 e 75) e a média. Depois vêm os outros cargos, os pisos e o texto da ficha, tudo aberto.
+- O cartão "Quanto ganha?" no topo da ficha só leva ao capítulo ("Dar meu palpite"); depois do palpite, mostra a média.
+- Fica guardado no aparelho e na nuvem com o resto do estado (`estado.chutes['<id>:palpite']` e `estado.salarioRevelado`).
+- Log: `profissao_chute_salario` com `faixa` (o rótulo escolhido), `chute` (o meio da faixa), `media` e `acertou`. Nada digitado entra no log.
+- Variante futura: "Chute a nota de corte", com os dados do Sisu que a Sala Enem já usa. "A maioria dos Divers chuta acima" só quando houver dados no log; nunca inventar esse número.
 
 ### 3. Agora mesmo (topo da ficha, quando a ficha tiver `agora`)
 
@@ -84,32 +88,17 @@
 
 A ficha `enfermagem.json` já traz `carta`, `agora`, `dna` e um `dilema` preenchidos como exemplo.
 
-## A ficha que se conta ao rolar (2026-10-16)
+## A aba repaginada (2026-10-16)
 
-Pedido do usuário: a ficha mais moderna e interativa, "como a página da Apple, que vai carregando ao descer", **sem mudar uma vírgula do conteúdo**. O código fica em `js/profissoes.js` (`telaFicha`, `blocoSalario`, `citar`, `abrirFonte`) e `css/profissoes.css` (bloco "Ficha que se conta enquanto rola").
+Pedido do usuário: a aba parecia um "quadro invisível" ao rolar (as partes ficavam apagadas até o observador acender), estava pesada, o chute de salário estava atropelado e as especialidades da Medicina e as áreas da Tecnologia estavam difíceis de separar. A repaginação mudou só o desenho: **o conteúdo dos JSON, as rotas, o XP e o log são os mesmos**. Substitui a "ficha que se conta ao rolar" (abertura em tela cheia, partes que acendiam, guia com "Próximo", doca no rodapé, salário embaçado).
 
-- **Abertura em tela cheia:** área, nome e frase entram palavra por palavra; "Role para mergulhar" leva à primeira parte.
-- **Cenas:** cada parte (`.prof-surge`; o nome `.prof-cena` é do cartão dos jogos "Um dia como" e da Tecnologia) acende uma vez ao entrar na tela (IntersectionObserver); algumas se montam:
-  - o relógio do "Agora mesmo" gira até a hora atual;
-  - os números contam do zero até o valor exato do JSON;
-  - a linha "Quanto tempo até trabalhar" cresce etapa por etapa;
-  - o gráfico do DNA se monta.
-- **Guia fixo:** barra de progresso da leitura, um chip por seção (o da seção atual fica aceso) e o botão "Próximo" no pé de cada parte.
-- **Doca no rodapé:** "Pôr na mira", "Viver um dia" e "Mito ou verdade" aparecem depois da abertura.
-- **Salário escondido:**
-  - O cartão "Média de contratação" mostra "R$ ?" e "Chutar primeiro".
-  - A tabela de pisos e médias fica coberta (`inert`), sem ninguém ler ou focar os valores.
-  - O 1º chute revela a média do topo; o fim do chute revela tudo. "Prefiro só ver os números" pula o jogo.
-  - Fica guardado em `estado.salarioRevelado`.
-- **Fontes guardadas:**
-  - Cada citação vira uma bolinha numerada, com alvo de 44 px.
-  - O toque abre a fonte num cartão: perto da bolinha no computador; subindo do rodapé no celular. Fecha no X, no Esc, tocando fora ou rolando.
-  - A lista completa só abre no botão "Ver as N fontes desta ficha".
-- **Mais toque:**
-  - "O que faz / O que não faz" vira uma chave;
-  - "O que ninguém te conta" vira cartas para revelar uma a uma (ou "Revelar todos");
-  - no celular, a tabela de valores vira cartões e o gráfico do chute rola dentro da caixa.
-- **Reduzir movimento:** nada se mexe e tudo aparece pronto. O tutorial da área subiu para a versão 2.
+- **Página larga, só nesta aba** (exceção registrada em `docs/DESIGN.md`): `#tela-profissoes` usa até 1240 px ao lado da barra lateral. Telas de leitura (Um dia como, Mito ou verdade, Maré, Método e os jogos) ficam em 760 px (`prof-raiz--estreita`); o comparador, em 1000 px (`prof-raiz--media`).
+- **"Esconder menu"** (de 1280 px para cima): esconde a barra lateral só nesta aba (`body.prof-sem-menu`). A escolha fica só no aparelho (`diver-local:v1:profissoes-sem-menu`) e o menu volta sozinho ao sair da aba.
+- **Nada some ao rolar:** tudo aparece pronto. Sem palavras entrando uma a uma, sem filtro de desfoque, sem animação infinita e sem conta a cada rolagem; um só observador acende o capítulo da vez na faixa.
+- **Peças comuns** (`Profissoes._util`): `topoPagina` (voltar, selo e o botão do menu), `cabecalho` (rótulo, título, frase, ações numa linha e um extra à direita), `tileFato` (número em destaque), `capitulo` (seção com título) e `indiceCapitulos` (faixa de capítulos presa no topo).
+- **Mapa:** busca grande, abas de área com a contagem, "Características" e "Só com ficha"; "Você explorou X de 22"; atalhos (Maré, Comparar duas, Como fazemos); **"Explore por dentro"** com os panoramas em destaque (apelidos das especialidades e áreas); cartões da mesma altura numa grade. Áreas com 1 ou 2 profissões ficam lado a lado (`prof-regiao--1`, `--2`), sem buraco.
+- **Ficha:** cabeçalho com as ações (Viver um dia, Pôr na mira, Mito ou verdade, Comparar) e o atalho para o panorama da área; quatro números (duração, formato, registro e "Quanto ganha?"); a faixa de capítulos (Visão geral, O que ninguém te conta, Formação e entrada, Quanto ganha, Carreira, Combina com você?, Fontes); capítulos em duas colunas no computador e uma no celular.
+- **Gráficos:** o SVG não cresce mais que 15% do tamanho desenhado (o texto não fica enorme na página larga), a linha da formação marca os anos de 2 em 2 quando passa de 7 anos e os gráficos de busca ficam empilhados até haver espaço para dois.
+- **Reduzir movimento:** sem animação nenhuma. O tutorial da área subiu para a versão 3.
 
-**Panorama da Tecnologia (2026-10-16):** o panorama, as dez áreas e o jogo usam as mesmas peças da ficha (`abrirHistoria`, `fecharHistoria`, `fontesGuardadas`, via `Profissoes._util`). Há também uma aposta antes das barras de salário, o chute em cada área, a linha do dia que marca "agora", a carreira em escada e a duração dos cursos que cresce. Detalhes em `docs/MAPA_PROFISSOES_TECNOLOGIA.md`, "Como ficou no app".
-
+**Panoramas (Tecnologia e Medicina):** viraram um **explorador**. Detalhes em `docs/MAPA_PROFISSOES_TECNOLOGIA.md` e `docs/MAPA_PROFISSOES_MEDICINA.md`, "Como ficou no app".
