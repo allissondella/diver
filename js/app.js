@@ -57,7 +57,7 @@ const App = (() => {
     estatisticas: ['js/estatisticas.js'],
     admin: ['js/estatisticas.js', 'js/admin.js'],
     fila: ['js/fila-validacao.js'],
-    profissoes: ['js/profissoes-infograficos.js', 'js/profissoes.js', 'js/profissoes-panorama.js', 'js/profissoes-mergulho.js'], // Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md); os panoramas (Tecnologia, Medicina) e o mergulho "Quão fundo" são extensões e vêm depois
+    profissoes: ['js/profissoes-infograficos.js', 'js/profissoes-artes.js', 'js/profissoes.js', 'js/profissoes-panorama.js', 'js/profissoes-mergulho.js'], // Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md); as artes vêm antes da tela; os panoramas (Tecnologia, Medicina) e o mergulho "Quão fundo" são extensões e vêm depois
     descompressao: ['js/dicionario.js', 'js/descompressao.js', 'js/descompressao/investigacao.js', 'js/descompressao/palavrinha-dia.js',
       'js/descompressao/tiro.js', 'js/descompressao/batata.js', 'js/descompressao/pitstop.js', 'js/descompressao/cardume.js'],
   };
