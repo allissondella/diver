@@ -165,7 +165,7 @@ Jogos.registrar({
 | `diver:v1:provas-enviadas` | Provas antigas: `{ versao, provas: [{ id, trilhaId, titulo, criadaEm, honesto, minutos, questoes: [{ id, tema, dificuldade, enunciado, alternativas, correta, explicacao }], tentativas: [{ data, acertos, total, nota, tempoSeg, xp, perolas }] }], feitas: { idDaProvaDoProfessor: [tentativas] } }`. Sincroniza com a nuvem como o resto. |
 | `diver:v1:mascote` | Mascote escolhido: `{ rosto, tom }` (ids de `Mascotes.ROSTOS` e `Mascotes.TONS`). Sincroniza com a nuvem. |
 | `diver:v1:operacao` | Caso Resolvido ("Operação Recife Sombrio" v2): número do caso atual (`rodada`), o caso sorteado (solução, pérolas, interrogados, mergulhos feitos, chaves, riscados, acusação), o histórico dos casos fechados, um resultado ainda não recebido (`pendente`) e o diário de bordo (até 80). Sincroniza com a nuvem. |
-| `diver:v1:descompressao` | Sala de Descompressão: `recordes` por jogo, `hoje` (pontos do dia por jogo, para o card) e `jogos` (estado de cada jogo: caso do dia da Investigação, partida e histórico da Palavrinha do Dia, preferências da Batata Quente). Sincroniza com a nuvem. |
+| `diver:v1:descompressao` | Sala de Descompressão: `recordes` por jogo, `hoje` (pontos do dia por jogo, para o card) e `jogos` (estado de cada jogo: caso do dia da Investigação, partida e histórico da Palavrinha do Dia, preferências da Batata Quente, o som do Cardume e do Tiro ao Alvo, e o álbum de regras do Tiro, `jogos.tiro.selos`). Sincroniza com a nuvem. |
 | `diver:v1:profissoes` | Mapa das Profissões: `vistas`, `mira`, cartas da Maré (`cartasSim`/`cartasNao`), `pedidos`, `dna`, `diaConcluido`, `mitosConcluido`, `chutes`, `votos`, `cartasGeradas`, `salarioRevelado`, `tec` (Panorama da Tecnologia: `areasVistas`, `jogo`, `jogoConcluido`; o `salario` antigo não é mais usado) e `med` (Panorama da Medicina, mesmos campos). O palpite de salário fica em `chutes['<id>:palpite']`. Sincroniza com a nuvem. |
 | `diver-local:v1:profissoes-sem-menu` | "Esconder menu" da aba Profissões (só no aparelho). |
 | `diver-local:v1:profissoes-fontes` | "Mostrar as fontes" da aba Profissões: os números das fontes e as linhas "Fonte:" à vista (só no aparelho). |
@@ -199,7 +199,7 @@ O progresso da trilha também guarda `provas` (prova final: data, total, acertos
 - **Streak/meta:** contam questões respondidas (quiz e jogos); tarefas e foco não contam.
 
 ## Acessibilidade implementada
-Foco visível (amarelo); alvos ≥ 44 px; `aria-live` em feedbacks e avisos; atalhos 1–6 / A–F nas alternativas (quiz e jogos), V/F no Quiz Relâmpago, Espaço + 1/2/3 nas Cartas do Fundo, setas na Memória, Enter + setas na Corrente do Tempo, teclado físico na Forca; Esc fecha a barra lateral; `prefers-reduced-motion` (bolhas somem, mascote vira PNG parado, animações desligam).
+Foco visível (amarelo); alvos ≥ 44 px; `aria-live` em feedbacks e avisos; atalhos 1–6 / A–F nas alternativas (quiz e jogos), V/F no Quiz Relâmpago, Espaço + 1/2/3 nas Cartas do Fundo, setas na Memória, Enter + setas na Corrente do Tempo, teclado físico na Forca, setas + espaço no Tiro ao Alvo (o "?" também lista os atalhos do jogo aberto: `UI.atalhosDaTela(id, lista)`); Esc fecha a barra lateral; `prefers-reduced-motion` (bolhas somem, mascote vira PNG parado, animações desligam).
 
 ## Como testar
 - Abrir com Live Server (ou `python3 -m http.server`) e passar por cada área da barra lateral, no celular (360–390 px) e no computador.

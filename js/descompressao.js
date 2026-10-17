@@ -7,7 +7,8 @@
  * - Admin e professores podem fechar a sala em horários de estudo (tabela sala_bloqueios): o admin para
  *   todos os alunos ou para um curso; o professor, para os cursos dele. Admin e professor nunca ficam presos.
  * - Os jogos ficam em js/descompressao/ e se registram aqui com Descompressao.registrar({ ... }).
- *   Contrato do jogo: { id, nome, icone, descricao, duracao, diario, abrir(ctx) → { parar(), emAndamento() } }
+ *   Contrato do jogo: { id, nome, icone, descricao, duracao, diario, telaCheia?, abrir(ctx) → { parar(), emAndamento() } }
+ *   (telaCheia: o jogo ocupa a janela inteira, com a barra de cima por cima dele; ctx.barra(...nós) põe botões nessa barra)
  *   ctx = { container, voltar(), pontuar(pontos, extras), hoje, aleatorio(semente), hash(texto), guia(passos, forcar),
  *           estado(), gravar(parcial), recorde() }.
  */
@@ -76,7 +77,7 @@ const Descompressao = (() => {
     tela = container;
     const vez = ++renderVez;
     parar();
-    container.classList.remove('sd--jogando');
+    container.classList.remove('sd--jogando', 'sd--tela-cheia');
     container.replaceChildren(UI.cabecalho('Respira, Diver', 'Sala de Descompressão', 'Um intervalo para brincar e distrair. Aqui não tem matéria: os pontos valem só o placar da sala.'));
     await conferirStatus();
     if (vez !== renderVez || tela !== container || atual) return; // outra chamada mais nova, ou a pessoa abriu um jogo enquanto conferia
@@ -288,8 +289,11 @@ const Descompressao = (() => {
     if (!status.aberta) return render(tela);
     parar();
     const container = h('div', { class: `sd-jogo sd-jogo--${id}` });
-    const voltar = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-voltar', onclick: () => sairDoJogo() }, icone('i-voltar'), 'Sala');
+    // "Sala" some no celular quando o jogo ocupa a tela toda (sobra lugar para os botões do jogo); o nome fica no aria-label
+    const voltar = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-voltar', 'aria-label': 'Voltar para a Sala', onclick: () => sairDoJogo() }, icone('i-voltar'), h('span', { class: 'sd-voltar__texto', text: 'Sala' }));
     tela.classList.add('sd--jogando');
+    tela.classList.toggle('sd--tela-cheia', !!def.telaCheia);
+    document.body.classList.toggle('sd-trava', !!def.telaCheia); // a página não rola por baixo do jogo
     const ranking = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-barra__ranking', id: 'sd-ranking-botao', onclick: () => abrirRanking(id), 'aria-label': `Ranking de ${def.nome}` }, icone('i-trofeu'), h('span', { class: 'sd-barra__ranking-texto', text: 'Ranking' }));
     tela.replaceChildren(h('div', { class: 'sd-barra' }, voltar, h('h1', { class: 'sd-barra__titulo', tabindex: '-1', text: def.nome }), ranking), container);
     document.body.classList.add('modo-foco');
@@ -298,6 +302,7 @@ const Descompressao = (() => {
     const hoje = dataLocal();
     const ctx = {
       container,
+      barra: (...nos) => ranking.before(...nos), // botões do jogo na barra de cima, antes do Ranking
       hoje,
       hash,
       aleatorio,
@@ -332,7 +337,8 @@ const Descompressao = (() => {
   function parar() {
     if (atual && atual.controlador && atual.controlador.parar) atual.controlador.parar();
     atual = null;
-    document.body.classList.remove('modo-foco');
+    document.body.classList.remove('modo-foco', 'sd-trava');
+    if (tela) tela.classList.remove('sd--tela-cheia');
   }
 
   async function sairDoJogo(semPerguntar = false) {

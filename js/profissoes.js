@@ -363,13 +363,13 @@
     const exploradas = ix.profissoes.filter(p => estado.vistas[p.id]).length;
 
     raiz.appendChild(topoPagina(null, null));
-    const mira = estado.mira.map(id => ix.profissoes.find(x => x.id === id)).filter(Boolean);
+    const mira = estado.mira.map(id => ix.profissoes.find(x => x.id === id)).filter(Boolean).reverse(); // a mais recente primeiro
     const album = albumSelos(ix, exploradas, total);
-    const progresso = el('div', { class: 'prof-mapa-progresso' }, album.envelope,
-      mira.length ? el('div', { class: 'prof-mira-linha' }, el('span', { class: 'prof-micro' }, icone('alvo'), 'Na sua mira'),
-        el('div', { class: 'prof-chips' }, mira.map(p => link(p.nome, 'profissao-' + p.id, { classe: 'prof-chip prof-chip--link' })))) : null);
+    const naMira = linhaMira(mira);
+    const progresso = el('div', { class: 'prof-mapa-progresso' }, album.envelope, naMira.linha);
     raiz.appendChild(cabecalho({ rotulo: 'Futuro', titulo: 'Mapa das Profissões', frase: fraseQueTroca(), extra: progresso }));
     raiz.appendChild(album.painel);
+    if (naMira.painel) raiz.appendChild(naMira.painel);
     raiz.appendChild(faixaAgora(ix));
 
     // Outros jeitos de explorar
@@ -544,6 +544,40 @@
         el('span', { class: 'prof-min' }, el('b', { class: 'prof-num', text: `${exploradas} de ${total}` }), ' profissões exploradas'),
         el('span', { class: 'prof-trilho', 'aria-hidden': 'true' }, el('i', { style: { '--fracao': exploradas / total } }))));
     return { envelope, painel };
+  }
+
+  /** "Na sua mira" no cabeçalho do mapa: uma linha só, da mais recente para a mais antiga (2026-10-17, pedido do usuário:
+      com muitas na mira, a lista crescia e abria um vazio enorme ao lado do título). As que não cabem na linha ficam
+      atrás do "+N", que abre a lista inteira embaixo do cabeçalho, na largura toda, como o álbum. */
+  function linhaMira(mira) {
+    if (!mira.length) return { linha: null, painel: null };
+    const chip = p => link(p.nome, 'profissao-' + p.id, { classe: 'prof-chip prof-chip--link' });
+    const chips = mira.map(chip);
+    const painel = el('section', { class: 'prof-album', id: 'prof-mira-todas', 'aria-label': 'Todas as profissões na sua mira', hidden: true },
+      el('p', { class: 'prof-min', text: `${mira.length} profissões na sua mira, da mais recente para a mais antiga.` }),
+      el('div', { class: 'prof-chips prof-mira-todas' }, mira.map(chip)));
+    const mais = el('button', { type: 'button', class: 'prof-chip prof-chip--abre', 'aria-expanded': 'false', 'aria-controls': 'prof-mira-todas', hidden: true,
+      'aria-label': `Ver as ${mira.length} profissões na sua mira`,
+      onclick: () => { const abrir = painel.hidden; painel.hidden = !abrir; mais.setAttribute('aria-expanded', String(abrir)); if (abrir) ir(painel); } });
+    const fila = el('div', { class: 'prof-chips' }, chips, mais);
+    const ajustar = () => { // esconde do fim para o começo até o resto (e o "+N") caber na primeira linha
+      chips.forEach(c => { c.hidden = false; });
+      mais.hidden = true;
+      const topo = chips[0].offsetTop;
+      if (!fila.clientWidth || chips.every(c => c.offsetTop === topo)) return;
+      mais.hidden = false;
+      for (let i = chips.length - 1; i > 0; i--) {
+        chips[i].hidden = true;
+        mais.textContent = '+' + (chips.length - i);
+        if (mais.offsetTop === topo && chips[i - 1].offsetTop === topo) break;
+      }
+    };
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(ajustar);
+      ro.observe(fila);
+      limpezas.push(() => ro.disconnect());
+    } else requestAnimationFrame(ajustar);
+    return { linha: el('div', { class: 'prof-mira-linha' }, el('span', { class: 'prof-micro' }, icone('alvo'), 'Na sua mira'), fila), painel };
   }
 
   /** "Agora, às 22h": o que cada profissão costuma estar fazendo nesta hora (as cenas do dia das fichas), rolando devagar.

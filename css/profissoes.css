@@ -293,6 +293,8 @@
 .prof-mira-linha { display: grid; gap: 6px; }
 .prof-mira-linha > .prof-micro { display: inline-flex; align-items: center; gap: 6px; }
 .prof-mira-linha .prof-ico { color: var(--amarelo); }
+.prof-mira-linha .prof-chip[hidden] { display: none; } /* o que não cabe na linha fica atrás do "+N" */
+.prof-mira-todas { margin-top: var(--esp-3); }
 
 /* os atalhos em duas colunas (2×2 com quatro) e, na tela larga, todos numa linha só (--n vem do JS): nenhum fica sobrando sozinho */
 .prof-atalhos { container-type: inline-size; }

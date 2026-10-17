@@ -93,12 +93,12 @@ async function auditarNoNavegador() {
   const soTelas = arg('telas', '') ? arg('telas', '').split(',') : null;
   const TELAS = ['inicio', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'artigo', 'quiz', 'quiz-feedback',
     'simulado', 'revisao', 'jogos', 'prova', 'upload-prova', 'tarefas', 'calendario', 'cronograma', 'diagnostica', 'mapa-partida', 'foco',
-    'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao',
+    'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao', 'descompressao-tiro',
     'profissoes', 'profissoes-cartas', 'profissoes-metodo', 'profissoes-fundo', 'profissao-enfermagem', 'profissao-enfermagem-dia', 'profissao-enfermagem-mitos', 'profissao-pedagogia', 'profissao-sistemas', 'profissao-medicina', 'profissao-direito-dia', 'profissoes-comparar',
     'profissoes-tecnologia', 'tecnologia-seguranca', 'profissoes-tecnologia-jogo', 'profissoes-medicina', 'medicina-psiquiatria', 'profissoes-medicina-jogo', 'login'].filter((t) => !soTelas || soTelas.includes(t));
   const vistos = {};
   ['inicio', 'sala', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'trilha', 'quiz', 'artigo', 'resumo', 'simulado', 'revisao', 'jogos', 'tarefas', 'quadros',
-    'calendario', 'cronograma', 'foco', 'perfil', 'estatisticas', 'descompressao', 'diagnostica', 'mapa-partida', 'prova', 'pdfs', 'cursos', 'upload-prova', 'profissoes'].forEach((k) => { vistos[k] = 99; });
+    'calendario', 'cronograma', 'foco', 'perfil', 'estatisticas', 'descompressao', 'descompressao-tiro', 'diagnostica', 'mapa-partida', 'prova', 'pdfs', 'cursos', 'upload-prova', 'profissoes'].forEach((k) => { vistos[k] = 99; });
 
   /* O que medir numa tela (roda dentro da página) */
   const medir = ({ toque }) => {
@@ -190,6 +190,15 @@ async function auditarNoNavegador() {
     for (const tela of TELAS) {
       try {
         if (tela === 'login') continue; // abaixo, com um Supabase de mentira
+        if (tela === 'descompressao-tiro') { // o jogo em tela toda: o cartão de abertura e a partida (regra e placar por cima)
+          await p.goto(`${base}?a=${Date.now()}#descompressao`); await p.waitForSelector('.app', { state: 'attached' });
+          await esperar(1000); await limpar();
+          await p.evaluate(() => Descompressao.abrir('tiro')); await esperar(700); await limpar();
+          await anotar(`${tela} (abertura)`);
+          await p.locator('#sd-tiro-comecar').click(); await esperar(2500);
+          await anotar(`${tela} (partida)`);
+          continue;
+        }
         if (tela === 'artigo' || tela === 'quiz' || tela === 'quiz-feedback') {
           if (tela === 'artigo') {
             await p.evaluate(() => { location.hash = 'mergulho'; }); await esperar(600); await limpar();
