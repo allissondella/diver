@@ -943,13 +943,95 @@ button.prof-pan { cursor: pointer; }
 .prof-emnum .prof-cab-pan { margin-top: var(--esp-1); }
 
 .prof-resumo { margin-top: var(--esp-4); border-radius: var(--raio-lg); background: var(--superficie); border: 1px solid var(--borda); }
-.prof-resumo summary { display: flex; align-items: center; gap: var(--esp-3); min-height: 56px; padding: var(--esp-3) var(--esp-5); cursor: pointer; list-style: none; }
-.prof-resumo summary::-webkit-details-marker { display: none; }
-.prof-resumo summary:hover .prof-resumo-rot { color: var(--turquesa-claro); }
+/* "Ver resumo" abre o baralho de cartas (2026-10-17) */
+.prof-raiz .prof-resumo-abre { display: flex; align-items: center; gap: var(--esp-3); width: 100%; min-height: 56px; padding: var(--esp-3) var(--esp-5); color: var(--texto); font: inherit; text-align: left; cursor: pointer; transition: border-color var(--transicao); }
+.prof-raiz .prof-resumo-abre:hover { border-color: var(--turquesa-claro); }
+.prof-resumo-abre > .prof-ico { width: 18px; height: 18px; margin-left: auto; color: var(--turquesa-claro); }
+
+/* O baralho do resumo: cartas em pé, texto em dois tons, o número que conta, a borda acesa na cor da área e a troca em fatia */
+body.prof-rc-aberto { overflow: hidden; }
+/* O fundo é a régua de tamanho (container de altura e largura): a carta encolhe para caber na tela, até no celular deitado.
+   Se ainda assim não couber, o fundo rola, e a margem automática nunca esconde o topo. */
+.prof-rc-fundo { position: fixed; inset: 0; z-index: var(--z-dialogo); container-type: size; display: grid; overflow-y: auto; padding: var(--esp-4); background: color-mix(in srgb, var(--fundo-0) 90%, transparent); animation: prof-entra .2s var(--ease-saida); }
+.prof-rc { --rc-cromo: 176px; display: grid; gap: var(--esp-3); justify-items: center; width: min(400px, 100%); margin: auto; outline: none; } /* cromo: o que não é carta (topo, setas, dica, espaços) */
+.prof-rc p { margin: 0; }
+.prof-rc :focus-visible { outline: 2px solid var(--amarelo); outline-offset: 2px; }
+.prof-rc-topo { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-2); width: 100%; }
+.prof-rc-topo .prof-rotulo { min-width: 0; }
+.prof-rc-topo .prof-pop-fechar { flex: none; }
+.prof-rc-palco { display: grid; width: min(340px, 100%); touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.prof-rc-palco > .prof-carta-r { grid-area: 1 / 1; }
+.prof-carta-r {
+  position: relative; display: grid; grid-template-rows: auto auto 1fr auto; gap: var(--esp-3); min-height: 420px; min-height: min(420px, calc(100cqh - var(--rc-cromo))); padding: var(--esp-5);
+  border-radius: var(--raio-lg); border: 1px solid color-mix(in srgb, var(--cor-area) 70%, transparent); color: var(--texto);
+  background: radial-gradient(120% 70% at 50% 115%, color-mix(in srgb, var(--cor-area) 42%, transparent), transparent 62%), linear-gradient(165deg, var(--superficie-2), var(--fundo-0));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cor-area) 25%, transparent), 0 0 36px -8px color-mix(in srgb, var(--cor-area) 60%, transparent);
+}
+.prof-carta-r-topo { display: flex; justify-content: space-between; gap: var(--esp-2); font-size: var(--t-xs); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--cor-area); }
+.prof-carta-r-topo span:last-child { color: var(--texto-suave); }
+.prof-carta-r-texto { font-size: var(--t-lg); line-height: 1.35; color: var(--texto-suave); }
+.prof-carta-r-texto b { color: var(--texto); }
+.prof-carta-r-meio { display: grid; place-content: center; justify-items: center; gap: 2px; color: var(--cor-area); }
+.prof-carta-r-meio b { font-size: var(--t-display); font-weight: 800; letter-spacing: -.03em; line-height: 1; color: var(--texto); }
+.prof-carta-r-meio span { font-size: var(--t-sm); font-weight: 700; color: var(--texto-suave); }
+.prof-carta-r-meio .prof-ico { width: 72px; height: 72px; opacity: .9; }
+.prof-rc .prof-carta-r-ir { justify-self: start; display: inline-flex; align-items: center; gap: 4px; padding: 0; }
+.prof-carta-r-ir .prof-ico { width: 16px; height: 16px; }
+.prof-carta-r--entra { animation: prof-fatia-entra .5s var(--ease-saida) both; }
+.prof-carta-r--volta { animation: prof-fatia-volta .5s var(--ease-saida) both; }
+@keyframes prof-fatia-entra { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0); } }
+@keyframes prof-fatia-volta { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+.prof-rc-nav { display: flex; align-items: center; justify-content: center; gap: var(--esp-2); max-width: 100%; }
+.prof-rc-seta { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--borda); background: var(--superficie); color: var(--texto); cursor: pointer; }
+.prof-rc-seta:disabled { opacity: .35; cursor: default; }
+.prof-rc-seta .prof-ico { width: 20px; height: 20px; }
+.prof-rc-pontos { display: flex; flex-wrap: wrap; justify-content: center; min-width: 0; }
+.prof-rc-ponto { display: grid; place-items: center; width: 36px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; }
+.prof-rc-ponto i { width: 8px; height: 8px; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--texto-suave) 40%, transparent); transition: width var(--transicao), background var(--transicao); }
+.prof-rc-ponto[aria-current="true"] i { width: 22px; background: var(--cor-area); }
+.prof-rc-dica { color: var(--texto-suave); text-align: center; }
+@media (pointer: coarse) { .prof-rc-ponto { width: 44px; } }
+/* Tela bem estreita: as bolinhas saem (a carta já diz "2 de 5") e as setas vão para as pontas */
+@container (max-width: 359px) {
+  .prof-rc-pontos { display: none; }
+  .prof-rc-nav { justify-content: space-between; width: 100%; }
+}
+/* Tela baixa (celular pequeno ou deitado): carta mais compacta e sem a dica */
+@container (max-height: 619px) {
+  .prof-rc { --rc-cromo: 140px; gap: var(--esp-2); }
+  .prof-rc-dica { display: none; }
+  .prof-rc-fundo .prof-carta-r { gap: var(--esp-2); padding: var(--esp-4); }
+  .prof-carta-r-texto { font-size: var(--t-md); }
+  .prof-carta-r-meio .prof-ico { width: 48px; height: 48px; }
+}
+/* Celular deitado: a carta deita junto (o texto à esquerda, o número à direita) */
+@container (max-height: 479px) and (min-width: 560px) {
+  .prof-rc { width: min(640px, 100%); }
+  .prof-rc-palco { width: 100%; }
+  .prof-rc-fundo .prof-carta-r { grid-template-columns: 1fr auto; grid-template-rows: auto 1fr auto; grid-template-areas: "topo topo" "texto meio" "ir meio"; column-gap: var(--esp-5); }
+  .prof-carta-r-topo { grid-area: topo; }
+  .prof-carta-r-texto { grid-area: texto; }
+  .prof-carta-r-meio { grid-area: meio; min-width: 120px; }
+  .prof-rc .prof-carta-r-ir { grid-area: ir; }
+}
+@media (prefers-reduced-motion: reduce) { .prof-rc-fundo, .prof-rc-fundo * { animation: none !important; transition: none !important; } }
+
+/* A palavra que troca na frase do mapa (faz, estuda, vive): a caixa tem a largura da maior */
+.prof-troca-palavra { display: inline-grid; vertical-align: bottom; overflow: hidden; color: var(--turquesa-claro); font-weight: 800; }
+.prof-troca-palavra > span { grid-area: 1 / 1; }
+.prof-troca-medida { visibility: hidden; }
+.prof-troca-entra { animation: prof-palavra-entra .45s var(--ease-saida) both; }
+.prof-troca-sai { animation: prof-palavra-sai .45s var(--ease-saida) both; }
+@keyframes prof-palavra-entra { from { transform: translateY(100%); opacity: 0; } }
+@keyframes prof-palavra-sai { to { transform: translateY(-100%); opacity: 0; } }
+
+/* Véu de pixels ao abrir uma ficha: os quadradinhos na cor da área somem em ordem aleatória */
+.prof-veu { position: fixed; inset: 0; z-index: var(--z-transicao); display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(8, 1fr); pointer-events: none; }
+.prof-veu i { background: color-mix(in srgb, var(--cor-area) 42%, var(--fundo-0)); animation: prof-veu-some .24s steps(3, end) var(--atraso, 0ms) both; }
+@keyframes prof-veu-some { to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .prof-veu { display: none; } }
 .prof-resumo-rot { display: inline-flex; align-items: center; gap: var(--esp-2); font-weight: 800; }
 .prof-resumo-rot .prof-ico { width: 18px; height: 18px; color: var(--turquesa-claro); }
-.prof-resumo ul { margin: 0; padding: 0 var(--esp-5) var(--esp-5) calc(var(--esp-5) + 1.1em); display: grid; gap: var(--esp-3); max-width: 90ch; }
-.prof-resumo li::marker { color: var(--turquesa-claro); }
 
 .prof-raiz .prof-rel-cap { padding-top: var(--esp-8); }
 .prof-faixa-cap {
@@ -1177,8 +1259,6 @@ button.prof-pan { cursor: pointer; }
   .prof-ranking-trilho { grid-column: 2; }
   .prof-dia24, .prof-gantt, .prof-ranking, .prof-salareas, .prof-cursos-fig, .prof-dia-fig, .prof-cem { padding: var(--esp-4); }
   .prof-curso { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
-  .prof-resumo summary { padding: var(--esp-3) var(--esp-4); }
-  .prof-resumo ul { padding: 0 var(--esp-4) var(--esp-4) calc(var(--esp-4) + 1.1em); }
   .prof-indice { width: auto; margin-inline: calc(var(--esp-2) * -1); border-radius: var(--raio-md); }
   .prof-troca { scrollbar-width: none; }
   .prof-troca::-webkit-scrollbar { display: none; }
@@ -1187,6 +1267,7 @@ button.prof-pan { cursor: pointer; }
   .prof-indicadores { grid-template-columns: 1fr; }
   .prof-caixa { padding: var(--esp-3) var(--esp-4); }
   .prof-caixa.prof-dia-texto { padding: var(--esp-4); }
+  .prof-raiz .prof-resumo-abre { padding: var(--esp-3) var(--esp-4); }
   .prof-palpite { padding: var(--esp-4); }
   .prof-comp-dna { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .prof-raiz a.prof-mini-barra { grid-template-columns: 1fr 1fr 44px; }

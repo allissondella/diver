@@ -124,7 +124,8 @@
       detalhe.textContent = '';
       detalhe.style.setProperty('--cor-area', corArea(ix, x.p.area));
       const e = x.etapa, fontesEtapa = (e.fontes || []).concat(x.depois ? x.depois.fontes || [] : []);
-      const carta = x.p.carta, fonteCarta = carta && (ix.fontes_cartas || {})[carta.fonte];
+      const carta = x.p.carta && !/R\$/.test(x.p.carta.fato) ? x.p.carta : null; // salário só depois do palpite, na ficha
+      const fonteCarta = carta && (ix.fontes_cartas || {})[carta.fonte];
       const botaoFonte = (ids, texto, titulo) => el('button', { type: 'button', class: 'prof-fonte-canto', 'aria-label': titulo + ': ' + (texto || ''),
         onclick: ev => { ev.stopPropagation(); abrirFontes(ids.length ? fontesF : {}, ids, ev.currentTarget, { titulo, texto }); } }, icone('livro'), 'Fonte');
       detalhe.append(

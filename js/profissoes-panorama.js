@@ -128,7 +128,7 @@
       rotulo: rot('rotulo', 'Panorama'), titulo: t.titulo, frase: t.frase,
       meta: [`Panorama conferido em ${dataBR(t.conferido_em)}`, 'Mapa das Profissões do Diver'], fontes: botaoFontes(t.fontes.length),
       acoes: [linkJogo(rank, 'prof-btn--primario'), botaoEstudar('prof-btn--linha')],
-      resumo: caixaResumo(t.contexto.map(c => el('li', null, c.texto, citar(t, c.fontes))), 'deste panorama'),
+      resumo: caixaResumo(t.contexto.map(c => ({ icone: 'info', texto: c.texto, ids: c.fontes })), 'deste panorama', { fonte: t, nome: t.titulo }),
       numeros: t.numeros.filter(n => n !== cem).map(n => linhaEmNumeros(n.rotulo, n.valor, n.detalhe, citar(t, n.fontes))) }));
 
     const corpo = el('div', { class: 'prof-corpo' });

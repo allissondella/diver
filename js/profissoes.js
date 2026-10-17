@@ -222,7 +222,9 @@
      ========================================================= */
   const limpezas = []; /* listeners de teclado da tela anterior */
   const extensoes = []; /* módulos extras (ex.: js/profissoes-panorama.js) registram { aceita(rota, ix), montar(raiz, rota, ix) } */
+  let jaMontou = false; /* o véu de pixels só aparece quando a ficha abre a partir de outra tela da aba */
   async function montar(raiz, rota) {
+    const deDentro = jaMontou; jaMontou = true;
     carregarEstado();
     fecharFonte();
     while (limpezas.length) { try { limpezas.pop()(); } catch (e) { /* ignora */ } }
@@ -243,7 +245,7 @@
       let m = r.match(/^profissao-(.+)-(dia|mitos)$/);
       if (m) { const f = await ficha(m[1]); if (!f) return naoEncontrada(raiz, m[1], ix); return m[2] === 'dia' ? telaDia(raiz, f, ix) : telaMitos(raiz, f, ix); }
       m = r.match(/^profissao-(.+)$/);
-      if (m) { const f = await ficha(m[1]); if (!f) return naoEncontrada(raiz, m[1], ix); return telaFicha(raiz, f, ix); }
+      if (m) { const f = await ficha(m[1]); if (!f) return naoEncontrada(raiz, m[1], ix); telaFicha(raiz, f, ix); if (deDentro) veuDePixels(corArea(ix, f.area)); return; }
       return telaMapa(raiz, ix);
     } catch (e) {
       raiz.appendChild(el('div', { class: 'prof-vazio' }, el('p', { text: 'Não deu para carregar o Mapa das Profissões agora. Tente de novo em instantes.' }), el('p', { class: 'prof-micro', text: String(e.message || e) })));
@@ -310,7 +312,7 @@
       el('div', { class: 'prof-cab-texto' },
         o.rotulo ? el('span', { class: 'prof-rotulo prof-rotulo--area', text: o.rotulo }) : null,
         el('h1', { text: o.titulo }),
-        o.frase ? el('p', { class: 'prof-lead', text: o.frase }) : null),
+        o.frase ? (o.frase instanceof Node ? o.frase : el('p', { class: 'prof-lead', text: o.frase })) : null),
       o.extra ? el('div', { class: 'prof-cab-lado' }, o.extra) : null,
       acoes.length ? el('div', { class: 'prof-cab-acoes' }, acoes) : null);
   }
@@ -366,7 +368,7 @@
     const progresso = el('div', { class: 'prof-mapa-progresso' }, album.envelope,
       mira.length ? el('div', { class: 'prof-mira-linha' }, el('span', { class: 'prof-micro' }, icone('alvo'), 'Na sua mira'),
         el('div', { class: 'prof-chips' }, mira.map(p => link(p.nome, 'profissao-' + p.id, { classe: 'prof-chip prof-chip--link' })))) : null);
-    raiz.appendChild(cabecalho({ rotulo: 'Futuro', titulo: 'Mapa das Profissões', frase: 'O que cada profissão faz, estuda e vive no dia a dia, com fonte e data em cada número. O Diver informa; quem decide é você.', extra: progresso }));
+    raiz.appendChild(cabecalho({ rotulo: 'Futuro', titulo: 'Mapa das Profissões', frase: fraseQueTroca(), extra: progresso }));
     raiz.appendChild(album.painel);
     raiz.appendChild(faixaAgora(ix));
 
@@ -483,6 +485,37 @@
 
     raiz.appendChild(el('p', { class: 'prof-fonte-nota prof-rodape' }, 'Fatos das cartas: Censo da Educação Superior 2024 (Inep), leis e decretos federais, Sisu 2026, Google Trends 2021–2026, Novo Caged e Brasscom. Cada ficha traz a lista completa de fontes, com data de consulta. ', link('Veja como fazemos as fichas', 'profissoes-metodo')));
   }
+  /** A frase do mapa com a palavra que troca a cada 2,4 s: faz, estuda, vive. A caixa da palavra tem a largura da maior
+      (o resto da frase não pula); o leitor de tela ouve a frase inteira; com "reduzir movimento", fica "faz, estuda e vive". */
+  function fraseQueTroca() {
+    const PALAVRAS = ['faz', 'estuda', 'vive'];
+    const resto = ' no dia a dia, com fonte e data em cada número. O Diver informa; quem decide é você.';
+    const inteira = 'O que cada profissão faz, estuda e vive' + resto;
+    if (semMovimento()) return el('p', { class: 'prof-lead', text: inteira });
+    const caixa = el('span', { class: 'prof-troca-palavra' }, PALAVRAS.map(w => el('span', { class: 'prof-troca-medida', text: w })), el('span', { class: 'prof-troca-atual', text: PALAVRAS[0] }));
+    const p = el('p', { class: 'prof-lead' }, el('span', { class: 'prof-oculto', text: inteira }), el('span', { 'aria-hidden': 'true' }, 'O que cada profissão ', caixa, resto));
+    let i = 0;
+    const t = setInterval(() => {
+      if (!p.isConnected) { clearInterval(t); return; }
+      if (document.hidden) return;
+      i = (i + 1) % PALAVRAS.length;
+      const velha = caixa.querySelector('.prof-troca-atual:not(.prof-troca-sai)');
+      if (velha) { velha.classList.add('prof-troca-sai'); setTimeout(() => velha.remove(), 500); }
+      caixa.appendChild(el('span', { class: 'prof-troca-atual prof-troca-entra', text: PALAVRAS[i] }));
+    }, 2400);
+    limpezas.push(() => clearInterval(t));
+    return p;
+  }
+  /** Véu de pixels na cor da área ao abrir uma ficha vindo de outra tela da aba: os quadradinhos somem em ~0,5 s,
+      sem travar nada (não pega clique). Nada com "reduzir movimento". */
+  function veuDePixels(cor) {
+    if (semMovimento()) return;
+    const veu = el('div', { class: 'prof-veu', 'aria-hidden': 'true', style: { '--cor-area': cor } },
+      Array.from({ length: 96 }, () => el('i', { style: { '--atraso': Math.round(Math.random() * 220) + 'ms' } })));
+    document.body.appendChild(veu);
+    setTimeout(() => veu.remove(), 700);
+  }
+
   /* ---------- Mapa: as peças de 2026-10-17 (vídeos de referência do usuário) ---------- */
   const CHAVE_VISTA = 'diver-local:v1:profissoes-vista';
   const lerVista = () => { try { const v = localStorage.getItem(CHAVE_VISTA); return ['cartoes', 'lista', 'aquario'].includes(v) ? v : 'cartoes'; } catch (e) { return 'cartoes'; } };
@@ -774,7 +807,7 @@
       rotulo: nomeArea(ix, f.area), titulo: f.nome, frase: f.frase,
       meta: [f.conferido_em ? `Ficha conferida em ${dataBR(f.conferido_em)}` : null, 'Mapa das Profissões do Diver'],
       fontes: (f.fontes || []).length ? botaoFontes((f.fontes || []).length) : null,
-      acoes, resumo: caixaResumo(resumoDe(f), 'desta ficha'),
+      acoes, resumo: caixaResumo(resumoDe(f), 'desta ficha', { fonte: f, nome: f.nome }),
       numeros: [...[['duracao', 'Duração'], ['formato', 'Formato'], ['registro', 'Registro profissional']].filter(([k]) => nums[k]).map(([k, r]) => linhaNumero(r, nums[k])), linhaSalario],
       pe: linkPanorama(f, ix) }));
 
@@ -887,11 +920,99 @@
       el('dt', { text: rotulo }),
       el('dd', null, valor instanceof Node ? valor : el('b', { text: valor }), el('span', { class: 'prof-micro' }, detalhe || '', cit || null)));
   }
-  /** "Ver resumo": os pontos principais, fechados até a pessoa pedir. */
-  function caixaResumo(itens, deQue) {
-    return itens.length ? el('details', { class: 'prof-resumo' },
-      el('summary', null, el('span', { class: 'prof-resumo-rot' }, icone('livro'), 'Ver resumo'), el('span', { class: 'prof-micro', text: `${itens.length} pontos ${deQue}` })),
-      el('ul', null, itens)) : null;
+  /** "Ver resumo" (2026-10-17, inspirado num vídeo que o usuário mandou): um baralho de cartas em pé, uma por frase-tese,
+      com o texto em dois tons, o número grande que conta, a borda acesa na cor da área e a troca em fatia.
+      itens = [{ rotulo, icone, alvo, titulo, texto, ids, semNumero }]; o = { fonte (quem tem a lista de fontes), nome } */
+  function caixaResumo(itens, deQue, o) {
+    if (!itens.length) return null;
+    const b = el('button', { type: 'button', class: 'prof-resumo prof-resumo-abre', 'aria-haspopup': 'dialog' },
+      el('span', { class: 'prof-resumo-rot' }, icone('livro'), 'Ver resumo'), el('span', { class: 'prof-micro', text: `${itens.length} cartas ${deQue}` }), icone('direita'));
+    b.addEventListener('click', () => baralhoResumo(itens, Object.assign({ origem: b }, o || {})));
+    return b;
+  }
+  /* O número grande de cada carta: o primeiro número do texto, com a palavra que vem depois ("7.200 horas", "284 mil") */
+  const UNIDADES_CARTA = 'horas|anos|vagas|candidatos|estudantes|pessoas|profissionais|especialistas|cursos|pontos|desligamentos|matrículas|residentes';
+  const RE_NUMERO_CARTA = new RegExp(`(R\\$\\s?)?(\\d{1,3}(?:\\.\\d{3})+|\\d+(?:,\\d+)?)(?:\\sa\\s(\\d+(?:,\\d+)?))?(\\s?%|º|ª)?(\\s(?:mil|milhões|milhão))?(?:\\s(${UNIDADES_CARTA})(?![\\wÀ-ú]))?`, 'g');
+  function numeroDaCarta(it) {
+    if (it.semNumero) return null;
+    const txt = `${it.titulo || ''} ${it.texto || ''}`;
+    for (const m of txt.matchAll(RE_NUMERO_CARTA)) {
+      const [todo, real, n, ate, marca, mil, unidade] = m, pct = !!marca && marca.trim() === '%';
+      if (real || txt[m.index - 1] === '/' || txt[m.index + todo.length] === '/') continue; // dinheiro (é do palpite) e datas (set/2024)
+      if (marca && !pct) continue; // ordinal ("4º curso"): fica o ícone
+      if (!pct && !mil && !unidade) continue; // ano solto ("Desde 2025") ou número sem dizer do quê
+      return { valor: n + (ate ? ' a ' + ate : '') + (pct ? '%' : '') + (mil || ''), unidade: unidade || '' };
+    }
+    return null;
+  }
+  function baralhoResumo(itens, o) {
+    let atual = 0, trocando = false;
+    const fonte = o.fonte || { fontes: [] };
+    const palco = el('div', { class: 'prof-rc-palco', 'aria-live': 'polite' });
+    const pontos = itens.map((_, i) => el('button', { type: 'button', class: 'prof-rc-ponto', 'aria-label': `Carta ${i + 1} de ${itens.length}`, onclick: () => virar(i) }, el('i')));
+    const ant = el('button', { type: 'button', class: 'prof-rc-seta', 'aria-label': 'Carta anterior', onclick: () => virar(atual - 1) }, icone('esquerda'));
+    const prox = el('button', { type: 'button', class: 'prof-rc-seta', 'aria-label': 'Próxima carta', onclick: () => virar(atual + 1) }, icone('direita'));
+    const fechar = el('button', { type: 'button', class: 'prof-pop-fechar', 'aria-label': 'Fechar o resumo', onclick: () => sair() }, icone('x'));
+    const caixa = el('div', { class: 'prof-rc', role: 'dialog', 'aria-modal': 'true', 'aria-label': `Resumo${o.nome ? ' de ' + o.nome : ''}`, tabindex: '-1' },
+      el('div', { class: 'prof-rc-topo' }, el('span', { class: 'prof-rotulo', text: `Resumo${o.nome ? ' · ' + o.nome : ''}` }), fechar),
+      palco,
+      el('div', { class: 'prof-rc-nav' }, ant, el('div', { class: 'prof-rc-pontos' }, pontos), prox),
+      el('p', { class: 'prof-micro prof-rc-dica', text: 'Arraste a carta para o lado ou use as setas.' }));
+    // fora da raiz da aba: leva a cor da área e o "Mostrar as fontes" junto
+    const fundo = el('div', { class: 'prof-rc-fundo' + (o.origem.closest('.prof-raiz--fontes') ? ' prof-raiz--fontes' : ''), style: { '--cor-area': getComputedStyle(o.origem).getPropertyValue('--cor-area').trim() || 'var(--turquesa)' } }, caixa);
+    function carta(i) {
+      const it = itens[i], n = numeroDaCarta(it);
+      const num = n ? el('b', { class: 'prof-num' }) : null;
+      const c = el('article', { class: 'prof-carta-r' },
+        el('div', { class: 'prof-carta-r-topo' }, el('span', { text: String(i + 1).padStart(2, '0') + (it.rotulo ? ' · ' + it.rotulo : '') }), el('span', { text: `${i + 1} de ${itens.length}` })),
+        el('p', { class: 'prof-carta-r-texto' }, it.titulo ? el('b', { text: it.titulo + ' ' }) : null, el('span', { text: it.texto || '' }), citar(fonte, it.ids)),
+        el('div', { class: 'prof-carta-r-meio', 'aria-hidden': 'true' }, n ? num : icone(it.icone || 'livro'), n && n.unidade ? el('span', { text: n.unidade }) : null),
+        it.alvo && document.getElementById(it.alvo) ? el('button', { type: 'button', class: 'prof-link-botao prof-carta-r-ir', onclick: () => { const alvo = document.getElementById(it.alvo); sair(); ir(alvo); } }, 'Ler o capítulo', icone('direita')) : null);
+      if (num) { if (n.valor.includes(' a ')) num.textContent = n.valor; else contar(num, n.valor); } // conta de zero até o número (direto numa faixa e com "reduzir movimento")
+      return c;
+    }
+    function pintarNav() {
+      pontos.forEach((p, k) => p.setAttribute('aria-current', String(k === atual)));
+      ant.disabled = atual === 0; prox.disabled = atual === itens.length - 1;
+    }
+    function virar(i) {
+      if (i < 0 || i >= itens.length || i === atual || trocando) return;
+      const dir = i > atual ? 1 : -1; atual = i;
+      const nova = carta(i), velha = palco.firstChild;
+      pintarNav();
+      if (!velha || semMovimento()) { palco.textContent = ''; palco.appendChild(nova); return; }
+      // a troca em fatia: a carta nova entra como uma cortina, da direita (ou da esquerda, voltando)
+      trocando = true;
+      nova.classList.add(dir > 0 ? 'prof-carta-r--entra' : 'prof-carta-r--volta');
+      palco.appendChild(nova);
+      const fim = () => { trocando = false; nova.classList.remove('prof-carta-r--entra', 'prof-carta-r--volta'); if (velha.isConnected) velha.remove(); };
+      nova.addEventListener('animationend', fim, { once: true }); setTimeout(() => { if (trocando) fim(); }, 700);
+    }
+    // arrastar para os lados (dedo ou mouse)
+    let x0 = null;
+    palco.addEventListener('pointerdown', e => { if (e.target.closest('button, a')) return; x0 = e.clientX; });
+    palco.addEventListener('pointerup', e => { if (x0 == null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) virar(atual + (dx < 0 ? 1 : -1)); });
+    palco.addEventListener('pointercancel', () => { x0 = null; });
+    const tecla = e => {
+      if (e.key === 'Escape') { if (!document.querySelector('.prof-pop')) { e.preventDefault(); sair(); } return; }
+      if (e.key === 'ArrowRight') { e.preventDefault(); virar(atual + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); virar(atual - 1); }
+      if (e.key === 'Tab') { // o foco fica dentro do baralho
+        const focaveis = [...caixa.querySelectorAll('button:not([disabled]), a[href]')]; if (!focaveis.length) return;
+        const pri = focaveis[0], ult = focaveis[focaveis.length - 1];
+        if (e.shiftKey && document.activeElement === pri) { e.preventDefault(); ult.focus(); } else if (!e.shiftKey && document.activeElement === ult) { e.preventDefault(); pri.focus(); }
+      }
+    };
+    function sair() {
+      document.removeEventListener('keydown', tecla); fundo.remove(); document.body.classList.remove('prof-rc-aberto');
+      if (o.origem && o.origem.isConnected) o.origem.focus({ preventScroll: true });
+    }
+    fundo.addEventListener('click', e => { if (e.target === fundo) sair(); });
+    document.addEventListener('keydown', tecla);
+    limpezas.push(() => { if (fundo.isConnected) sair(); });
+    palco.appendChild(carta(0)); pintarNav();
+    document.body.appendChild(fundo); document.body.classList.add('prof-rc-aberto');
+    caixa.focus({ preventScroll: true });
   }
   /** "O que ninguém te conta": tudo à vista, numerado (01, 02...), cada ponto com a sua fonte. */
   function calloutsNumerados(f, itens, classe) {
@@ -909,18 +1030,22 @@
   /** Os pontos do "Ver resumo": as frases-tese, ou, sem elas, os fatos centrais que a ficha já tem. O salário fica fora (é do palpite). */
   function resumoDe(f) {
     const S = f.secoes || {}, M = f.manchetes || {}, itens = [];
-    const add = (texto, ids, forte) => itens.push(el('li', null, forte ? el('b', { text: forte + ' ' }) : null, texto || '', citar(f, ids)));
-    const teses = ['trabalho', 'formacao', 'dinheiro', 'mercado'].filter(k => M[k] && M[k].titulo);
-    if (teses.length) teses.forEach(k => add(M[k].linha, M[k].fontes, M[k].titulo));
+    const CAPS = { trabalho: ['O trabalho', 'relogio'], formacao: ['A formação', 'livro'], dinheiro: ['O dinheiro', 'alvo'], mercado: ['O mercado', 'camadas'] };
+    const teses = Object.keys(CAPS).filter(k => M[k] && M[k].titulo);
+    if (teses.length) teses.forEach(k => itens.push({ rotulo: CAPS[k][0], icone: CAPS[k][1], alvo: 'sec-' + k, titulo: M[k].titulo, texto: M[k].linha, ids: M[k].fontes, semNumero: k === 'dinheiro' }));
     else {
-      if (S.o_que_faz) add(S.o_que_faz.texto.split(/(?<=\.)\s/)[0], S.o_que_faz.fontes);
+      if (S.o_que_faz) itens.push({ rotulo: 'O trabalho', icone: 'relogio', alvo: 'sec-trabalho', texto: S.o_que_faz.texto.split(/(?<=\.)\s/)[0], ids: S.o_que_faz.fontes });
       const grad = f.formacao && (f.formacao.etapas || []).find(e => e.tipo === 'principal');
-      if (grad) add(grad.texto, grad.fontes, grad.nome + ':');
-      if (f.contexto && f.contexto.texto) add(f.contexto.texto, f.contexto.fontes);
+      if (grad) itens.push({ rotulo: 'A formação', icone: 'livro', alvo: 'sec-formacao', titulo: grad.nome + ':', texto: grad.texto, ids: grad.fontes });
+      if (f.contexto && f.contexto.texto) itens.push({ rotulo: 'O mercado', icone: 'camadas', alvo: 'sec-mercado', texto: f.contexto.texto, ids: f.contexto.fontes });
       const dura = S.ninguem_conta && S.ninguem_conta.itens && S.ninguem_conta.itens[0];
-      if (dura) add(dura.texto, dura.fontes);
+      if (dura) itens.push({ rotulo: 'O que ninguém te conta', icone: 'info', alvo: 'sec-ninguem', texto: dura.texto, ids: dura.fontes });
     }
-    if (f.carta) add(f.carta.fato, f.carta.fontes, 'Você sabia?');
+    // o "Você sabia?" fica fora quando fala de salário (o salário só aparece depois do palpite)
+    // ou quando repete o número de uma carta anterior (é o mesmo fato contado de novo)
+    const carta = f.carta && { rotulo: 'Você sabia?', icone: 'estrela', texto: f.carta.fato, ids: f.carta.fontes };
+    const mesmoNumero = (a, b) => a && b && a.valor === b.valor && a.unidade === b.unidade;
+    if (carta && !/R\$/.test(carta.texto) && !itens.some(x => mesmoNumero(numeroDaCarta(x), numeroDaCarta(carta)))) itens.push(carta);
     return itens;
   }
   /** A fonte de cada gráfico: um botãozinho "Fonte" no canto de baixo, que abre o cartão; com "Mostrar as fontes",
@@ -1751,7 +1876,7 @@
   }
 
   /* No app: ao sair da área, solta os atalhos de teclado da tela (Maré de cartas, Um dia como). */
-  function desmontar() { fecharFonte(); document.body.classList.remove('prof-sem-menu'); while (limpezas.length) { try { limpezas.pop()(); } catch (e) { /* ignora */ } } }
+  function desmontar() { jaMontou = false; fecharFonte(); document.body.classList.remove('prof-sem-menu'); while (limpezas.length) { try { limpezas.pop()(); } catch (e) { /* ignora */ } } }
   window.Profissoes = {
     montar, desmontar, iniciar, ganchos, estado: () => estado, indice, ficha, BASE,
     registrarExtensao: ext => extensoes.push(ext),
