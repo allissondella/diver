@@ -295,7 +295,7 @@ body.sd-trava { overflow: hidden; }
 }
 .sd-tiro--jogando .sd-tiro__topo { visibility: visible; }
 .sd-tiro__regra {
-  margin: 0; max-width: min(100%, 60rem); padding: var(--esp-2) var(--esp-5);
+  margin: 0; max-width: min(100%, 72rem); padding: var(--esp-2) var(--esp-5);
   border-radius: var(--raio-pilula); border: 1px solid color-mix(in srgb, var(--amarelo) 35%, transparent);
   background: color-mix(in srgb, var(--fundo-0) 74%, transparent);
   color: var(--amarelo); font-size: var(--t-2xl); font-weight: 800; line-height: 1.15; letter-spacing: -.01em; text-align: center; text-wrap: balance;
@@ -353,15 +353,18 @@ body.sd-trava { overflow: hidden; }
   .sd--tela-cheia > .sd-barra { gap: var(--esp-2); }
   .sd--tela-cheia .sd-barra__titulo { font-size: var(--t-md); }
   .sd-tiro__regra { font-size: var(--t-xl); padding: var(--esp-2) var(--esp-4); }
+  .sd-tiro__regra--longa { font-size: var(--t-lg); } /* "A ou B" comprido: duas linhas, não três */
   .sd-tiro__cartao { padding: var(--esp-5) var(--esp-4); }
   .sd-tiro__titulo { font-size: var(--t-2xl); }
   .sd-tiro__numeros > div { padding: var(--esp-2) var(--esp-3); }
   .sd-tiro__numeros dd { font-size: var(--t-xl); }
-  .sd-tiro__dados > .sd-tiro__agua { width: 64px; }
+  .sd-tiro__dados > span { padding: 0 var(--esp-2); }
+  .sd-tiro__dados > .sd-tiro__agua { width: 56px; }
+  .sd-tiro__seq-rotulo { display: none; } /* "3/8" ao lado de "Nível 2" já diz tudo; o placar cabe numa linha */
 }
 /* Tela baixa (celular deitado): tudo mais compacto, para sobrar campo de jogo */
 @container sd-cheia (max-height: 479px) {
-  .sd-tiro__topo { gap: var(--esp-1); }
+  .sd-tiro__topo { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: var(--esp-1) var(--esp-2); } /* regra e placar na mesma linha, se couber */
   .sd-tiro__regra { font-size: var(--t-lg); padding: var(--esp-1) var(--esp-4); }
   .sd-tiro__dados > span { min-height: 26px; font-size: var(--t-xs); }
   .sd-tiro__dados > .sd-tiro__pontos { font-size: var(--t-sm); }
@@ -372,13 +375,22 @@ body.sd-trava { overflow: hidden; }
   /* o cartão deita junto: duas colunas, para caber sem rolar */
   .sd-tiro__cartao { width: min(100%, 860px); gap: var(--esp-2) var(--esp-5); padding: var(--esp-4) var(--esp-5); align-items: start;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "rot pas" "tit pas" "num pas" "aco pas" ". pas"; }
-  .sd-tiro__cartao--fim { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-areas: "rot num" "tit num" "por aco" "por ."; }
+  .sd-tiro__cartao--fim { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "rot num" "tit num" "por aco" "por ."; }
+  .sd-tiro__numeros > div { padding: var(--esp-2) var(--esp-3); }
   .sd-tiro__rotulo { grid-area: rot; }
   .sd-tiro__titulo { grid-area: tit; }
   .sd-tiro__porque { grid-area: por; }
   .sd-tiro__passos { grid-area: pas; }
   .sd-tiro__numeros { grid-area: num; }
   .sd-tiro__acoes { grid-area: aco; margin: 0; }
+}
+/* Tela baixíssima (celular pequeno deitado): o cartão encolhe para caber sem rolar */
+@container sd-cheia (max-height: 379px) {
+  .sd-tiro__abertura { padding-bottom: var(--esp-2); }
+  .sd-tiro__cartao { padding: var(--esp-3) var(--esp-4); }
+  .sd-tiro__passo-mais { display: none; }
+  .sd-tiro__numeros > div { padding: var(--esp-1) var(--esp-2); }
+  .sd-tiro__numeros dt { letter-spacing: .02em; }
 }
 
 /* ---------- Batata Quente ---------- */

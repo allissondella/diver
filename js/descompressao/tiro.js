@@ -7,13 +7,23 @@
  * - Dificuldade: o nível 1 é de aquecimento; do 2 em diante as placas somem mais rápido, ficam menores, deslizam
  *   (e balançam a partir do 3), aparecem várias ao mesmo tempo e a leva cresce 5 placas certas por nível.
  *   Do nível 4 em diante podem vir regras em dupla ("A OU B"); do 5 em diante, "Tudo MENOS ...".
- * Desenho todo no <canvas> (nada de imagem de fora). Com "reduzir movimento", as placas não deslizam nem balançam
- * e não há respingos (o jogo continua acelerando pelo tempo de cada placa).
+ * Desenho todo no <canvas> (nada de imagem de fora): uma barraca de tiro na beira do mar ao pôr do sol (2026-10-17),
+ * com as placas em três trilhos (fundo, meio e frente). As placas de um trilho andam juntas, então nunca uma
+ * passa por cima da outra. Com "reduzir movimento", as placas não sobem, não deslizam nem pulam e não há respingos
+ * (o jogo continua acelerando pelo tempo de cada placa).
  */
 (() => {
   const { h, icone, plural } = UI;
   // Cores do canvas vêm dos tokens do css/tokens.css (UI.cor)
-  const COR = { turquesa: UI.cor('primaria'), claro: UI.cor('primaria-clara'), amarelo: UI.cor('destaque'), coral: UI.cor('erro'), texto: UI.cor('texto-1'), suave: UI.cor('texto-2'), fundo: UI.cor('fundo-0'), marinho: UI.cor('fundo-1'), sup: UI.cor('superficie-1'), sup2: UI.cor('superficie-2'), escuro: UI.cor('texto-inverso') };
+  const COR = { turquesa: UI.cor('primaria'), claro: UI.cor('primaria-clara'), amarelo: UI.cor('destaque'), coral: UI.cor('erro'), texto: UI.cor('texto-1'), suave: UI.cor('texto-2'), fundo: UI.cor('fundo-0'), marinho: UI.cor('fundo-1'), sup: UI.cor('superficie-1'), sup2: UI.cor('superficie-2'), escuro: UI.cor('texto-inverso'),
+    sup3: UI.cor('superficie-3'), turquesaEscura: UI.cor('primaria-escura'), turquesaSombra: UI.cor('primaria-sombra'), amareloSombra: UI.cor('amarelo-sombra'), coralSombra: UI.cor('erro-sombra'), coralPalida: UI.cor('erro-palida'),
+    laranja: UI.cor('aviso'), lilas: UI.cor('lilas'), azul: UI.cor('info'), perola: UI.cor('perola'), branco: UI.cor('claro') };
+  // Misturas de cor feitas a partir dos tokens (o canvas não entende color-mix)
+  const rgb = (c) => { const m = /^#?([0-9a-f]{6})$/i.exec(String(c).trim()); const n = m ? parseInt(m[1], 16) : 0; return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  const misturar = (a, b, t) => { const x = rgb(a); const y = rgb(b); return `rgb(${x.map((v, i) => Math.round(v + (y[i] - v) * t)).join(',')})`; };
+  const alfa = (c, a) => `rgba(${rgb(c).join(',')},${a})`;
+  const suave = (k) => 1 - Math.pow(1 - Math.max(0, Math.min(1, k)), 3); // desacelera no fim
+  const FONTE = '"Plus Jakarta Sans", system-ui, sans-serif';
   const TANQUE = 12;
   const RECARGA = 0.22; // segundos por jato
 
@@ -186,8 +196,8 @@
         limpar.push(() => document.removeEventListener('fullscreenchange', pintarCheia));
       }
 
-      /** O campo das placas: do pé do placar até um pouco acima do balcão */
-      const baseCampo = () => A * 0.66;
+      /** O campo das placas: do pé do placar até o balcão */
+      const baseCampo = () => balcaoY();
       const meioCampo = () => (T + baseCampo()) / 2;
       function medir() {
         const largura = Math.max(280, palco.clientWidth || 320);
@@ -211,6 +221,8 @@
         raiz.classList.remove('sd-tiro--jogando');
         abertura.hidden = false;
         const numero = (rotulo, valor, destaque) => h('div', {}, h('dt', { text: rotulo }), h('dd', { class: destaque ? 'sd-tiro__destaque' : '', text: String(valor) }));
+        // passo numerado: o negrito sozinho já se entende (na tela bem baixa, o resto some)
+        const passo = (n, forte, mais) => h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: n }), h('p', {}, h('b', { text: forte }), h('span', { class: 'sd-tiro__passo-mais', text: mais })));
         const corpo = fim
           ? [h('p', { class: 'sd-tiro__rotulo', text: 'Fim da partida' }),
             h('h2', { class: 'sd-tiro__titulo', text: fim.motivo === 'errada' ? 'Placa errada!' : 'Deixou escapar!' }),
@@ -223,9 +235,9 @@
             h('h2', { class: 'sd-tiro__titulo', text: 'Tiro ao Alvo' }),
             h('p', { class: 'sd-tiro__lead', text: 'Pistola d\'água na mão: acerte só as placas da regra. 1 ponto por acerto.' }),
             h('ol', { class: 'sd-tiro__passos' },
-              h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: '01' }), h('p', {}, h('b', { text: 'Leia a regra. ' }), 'Cada nível tem uma, e só valem as placas que combinam com ela.')),
-              h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: '02' }), h('p', {}, h('b', { text: 'Errou ou deixou escapar, acabou. ' }), 'Placa errada ou placa certa que some: eliminação.')),
-              h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: '03' }), h('p', {}, h('b', { text: 'Acertou todas, sobe de nível. ' }), 'Regra nova e mais placas. O nível 1 é aquecimento: do 2 em diante, segura firme!'))),
+              passo('01', 'Leia a regra. ', 'Cada nível tem uma, e só valem as placas que combinam com ela.'),
+              passo('02', 'Errou ou deixou escapar, acabou. ', 'Placa errada ou placa certa que some: eliminação.'),
+              passo('03', 'Acertou todas, sobe de nível. ', 'Regra nova e mais placas. O nível 1 é aquecimento: do 2 em diante, segura firme!')),
             recorde ? h('dl', { class: 'sd-tiro__numeros' }, numero('Seu recorde', plural(recorde, 'ponto', 'pontos'), true)) : null];
         abertura.replaceChildren(h('div', { class: 'sd-tiro__cartao' + (fim ? ' sd-tiro__cartao--fim' : '') }, ...corpo,
           h('div', { class: 'acoes-linha sd-tiro__acoes' },
@@ -236,7 +248,7 @@
       }
 
       function desenharParado() {
-        desenharFundo();
+        desenhar();
         desenharPistola(L / 2, meioCampo(), 0);
       }
 
@@ -270,9 +282,13 @@
         jogo.acertosNivel = 0;
         jogo.certasCriadas = 0;
         jogo.placas = [];
+        // três trilhos (fundo, meio, frente); cada um anda inteiro num sentido, como numa barraca de parque
+        const mexe = !UI.movimentoReduzido;
+        jogo.trilhos = [0.8, 1, 1.2].map((f, i) => ({ i, dir: jogo.r() < 0.5 ? -1 : 1, vel: mexe ? jogo.p.desliza * f : 0 }));
         jogo.pausa = jogo.nivel === 1 ? 1.4 : 1.8; // respiro para ler a regra nova
         jogo.proxima = 0.3;
         regraEl.textContent = jogo.regra.texto;
+        regraEl.classList.toggle('sd-tiro__regra--longa', jogo.regra.texto.length > 28);
         regraEl.classList.remove('sd-tiro__regra--nova');
         void regraEl.offsetWidth;
         regraEl.classList.add('sd-tiro__regra--nova');
@@ -291,24 +307,23 @@
           if (!!jogo.regra.teste(it) === certa && !jogo.placas.some((x) => x.rotulo === it.rotulo)) item = it;
         }
         if (!item) return;
-        if (certa) jogo.certasCriadas++;
-        const raio = Math.max(26, Math.min(54, L / 11)) * p.raio;
-        const margem = raio + 8;
-        const mexe = !UI.movimentoReduzido;
-        const amp = mexe ? p.balanca : 0;
-        // Procura um lugar livre (placa nascendo em cima de outra seria injusto), sempre abaixo da regra e do placar
-        const cima = T + margem + amp;
-        const baixo = Math.max(cima + 10, baseCampo() - amp);
-        let x = 0;
-        let y = 0;
-        for (let t = 0; t < 12; t++) {
-          x = margem + jogo.r() * (L - margem * 2);
-          y = cima + jogo.r() * (baixo - cima);
-          if (!jogo.placas.some((o) => Math.hypot(o.x - x, o.y - y) < o.raio + raio + 8)) break;
+        // Procura um trilho com um vão livre (placa nascendo em cima de outra seria injusto); sem vão, espera a próxima vez
+        const ordem = [0, 1, 2].sort(() => jogo.r() - 0.5);
+        for (const i of ordem) {
+          const tam = medidasPlaca(item, i);
+          const nas = jogo.placas.filter((o) => o.trilho === i);
+          const borda = beira() + tam.w / 2;
+          for (let t = 0; t < 12; t++) {
+            const x = borda + jogo.r() * Math.max(0, L - borda * 2);
+            if (nas.some((o) => Math.abs(o.x - x) < (o.w + tam.w) / 2 + 14)) continue;
+            if (certa) jogo.certasCriadas++;
+            // o pulo na haste nunca leva a placa para baixo da regra e do placar
+            const amp = UI.movimentoReduzido ? 0 : Math.max(0, Math.min(p.balanca, faixa() * 0.18, (trilhoY(i) - tam.poste - tam.h - T) / 2));
+            jogo.placas.push({ ...item, ...tam, certa, trilho: i, x, y: trilhoY(i) - tam.h / 2, nasceu: jogo.t, vida: p.vida * (0.9 + jogo.r() * 0.2),
+              amp, fase: jogo.r() * Math.PI * 2, regra: jogo.regra });
+            return;
+          }
         }
-        jogo.placas.push({ ...item, certa, x, y, y0: y, raio, nasceu: jogo.t, vida: p.vida * (0.9 + jogo.r() * 0.2),
-          vx: mexe && p.desliza ? (jogo.r() < 0.5 ? -1 : 1) * p.desliza * (0.7 + jogo.r() * 0.6) : 0,
-          amp, fase: jogo.r() * Math.PI * 2, regra: jogo.regra });
       }
 
       function atualizar(dt) {
@@ -329,11 +344,19 @@
             jogo.proxima = jogo.p.intervalo * (0.8 + jogo.r() * 0.4);
           }
         }
-        // placas: andam, balançam e somem
+        // trilhos: as placas de um trilho andam juntas e o trilho vira de sentido na beira (nunca uma passa por cima da outra)
+        for (const tr of jogo.trilhos) {
+          const nas = jogo.placas.filter((o) => o.trilho === tr.i);
+          if (!tr.vel || !nas.length) continue;
+          const esq = Math.min(...nas.map((o) => o.x - o.w / 2));
+          const dir = Math.max(...nas.map((o) => o.x + o.w / 2));
+          if (tr.dir > 0 && dir >= L - beira()) tr.dir = -1;
+          else if (tr.dir < 0 && esq <= beira()) tr.dir = 1;
+          const dx = Math.max(beira() - esq, Math.min(L - beira() - dir, tr.dir * tr.vel * dt));
+          nas.forEach((o) => { o.x += dx; });
+        }
         for (const p of jogo.placas) {
-          p.x += p.vx * dt;
-          if (p.x < p.raio || p.x > L - p.raio) p.vx = -p.vx;
-          if (p.amp) p.y = p.y0 + Math.sin(jogo.t * 3 + p.fase) * p.amp;
+          posicionar(p);
           if (jogo.t - p.nasceu >= p.vida && p.certa) return terminar('escapou', p);
         }
         jogo.placas = jogo.placas.filter((p) => jogo.t - p.nasceu < p.vida);
@@ -348,14 +371,15 @@
         hudDesenhar(true);
       }
 
-      function atirar(x, y) {
+      function atirar(x, y, folga = 6) {
         if (!jogo || jogo.fim || jogo.pausa > 0) return;
         if (jogo.agua <= 0) return; // tanque vazio: a barra de água mostra a recarga
         jogo.agua--;
         jogo.coice = 1;
         jogo.jatos.push({ x, y, v: 0.12 });
-        // placa mais "na frente" (a mais nova) que contém o ponto
-        const alvo = [...jogo.placas].reverse().find((p) => Math.hypot(p.x - x, p.y - y) <= p.raio + 6);
+        // a placa mais na frente (trilho da frente, depois a mais nova) que contém o ponto
+        const alvo = [...jogo.placas].sort((a, b) => b.trilho - a.trilho || b.nasceu - a.nasceu)
+          .find((p) => Math.abs(p.x - x) <= p.w / 2 + folga && Math.abs(p.y - y) <= p.h / 2 + folga);
         if (!alvo) {
           respingar(x, y, COR.claro, 6);
           return;
@@ -415,77 +439,369 @@
         hudDados.replaceChildren(
           h('span', { class: 'sd-tiro__pontos' }, icone('i-estrela'), `${jogo.pontos}`),
           h('span', { class: 'sd-tiro__nivel', text: `Nível ${jogo.nivel}` }),
-          h('span', { class: 'sd-tiro__seq', text: `${jogo.acertosNivel}/${jogo.p.meta} do nível` }),
+          h('span', { class: 'sd-tiro__seq' }, `${jogo.acertosNivel}/${jogo.p.meta}`, h('span', { class: 'sd-tiro__seq-rotulo', text: ' do nível' })),
           h('span', { class: 'sd-tiro__agua' }, h('span', { class: 'sd-tiro__agua-barra', style: `width:${(jogo.agua / TANQUE) * 100}%` }), h('span', { class: 'visualmente-oculto', text: `${jogo.agua} jatos` })));
       }
 
-      /* ---------- Desenho ---------- */
-      function desenharFundo() {
-        const grad = g.createLinearGradient(0, 0, 0, A);
-        grad.addColorStop(0, COR.marinho);
-        grad.addColorStop(1, COR.fundo);
-        g.fillStyle = grad;
-        g.fillRect(0, 0, L, A);
-        // faixas de luz e o "balcão" da barraca de tiro
-        g.globalAlpha = 0.06;
-        g.fillStyle = COR.claro;
-        for (let i = 0; i < 4; i++) {
+      /* ---------- Desenho: a barraca de tiro na beira do mar (2026-10-17) ----------
+         O fundo (céu e mar ao pôr do sol, com o sol e uma ilhota) e a moldura da barraca (toldo listrado, luzinhas,
+         bandeirinhas e colunas) ficam em duas imagens guardadas, que só mudam quando a tela muda de tamanho. A cada
+         quadro entram só as placas, os trilhos, o balcão, a pistola, os jatos e a mira. As placas ficam em três
+         trilhos (fundo, meio e frente): as do fundo são menores, e todas nascem de trás do trilho. */
+      function balcaoY() { return A - Math.max(56, Math.round(A * 0.17)); }
+      function faixa() { return Math.max(40, (balcaoY() - (T + 6)) / 3); }
+      function trilhoY(i) { return T + 6 + faixa() * (i + 1); }
+      function coluna() { return Math.max(10, Math.min(18, L * 0.012)); }
+      function beira() { return coluna() + 8; }
+      const ESCALA_TRILHO = [0.82, 0.91, 1];
+
+      /** Tamanho da placa: a letra nunca fica menor que 12 px; no fundo e nos níveis altos, a placa encolhe */
+      function medidasPlaca(item, i) {
+        const base = Math.max(17, Math.min(34, L / 42));
+        const nivel = jogo && jogo.p ? jogo.p.raio : 1;
+        let fonte = Math.max(12, Math.round(base * ESCALA_TRILHO[i] * nivel));
+        const cabe = faixa() - 10; // a placa e a haste cabem na faixa do trilho
+        if (fonte * 2.4 + 6 > cabe) fonte = Math.max(12, Math.floor((cabe - 6) / 2.4));
+        const alt = Math.max(32, Math.round(fonte * 2.4)); // nunca menor que um alvo de dedo
+        if (item.forma) {
+          const lado = Math.max(40, alt);
+          return { w: lado, h: lado, fonte, poste: Math.max(6, Math.min(40, Math.round((cabe - lado) * 0.45))) };
+        }
+        const poste = Math.max(6, Math.min(40, Math.round((cabe - alt) * 0.45)));
+        g.font = `800 ${fonte}px ${FONTE}`;
+        return { w: Math.round(Math.max(46, fonte * 3.4, g.measureText(item.rotulo).width + fonte * 1.5)), h: alt, fonte, poste };
+      }
+
+      /** Onde a placa está agora: sobe de trás do trilho ao nascer e, nos níveis altos, pula na haste */
+      function posicionar(p) {
+        const entra = UI.movimentoReduzido ? 1 : suave((jogo.t - p.nasceu) / 0.18);
+        const pulo = p.amp ? (Math.sin(jogo.t * 3 + p.fase) - 1) * p.amp : 0;
+        p.y = trilhoY(p.trilho) - p.poste - p.h / 2 + pulo + (1 - entra) * (p.h + p.poste + 8);
+      }
+
+      function arredondado(c, x, y, w, alt, r) {
+        c.beginPath();
+        if (c.roundRect) c.roundRect(x, y, w, alt, r);
+        else c.rect(x, y, w, alt);
+      }
+
+      /* --- as imagens guardadas --- */
+      let fundoMar = null;
+      let moldura = null;
+      let cenarioChave = '';
+      const FOLGA = 24; // sobra dos lados para o fundo andar um tiquinho com a mira
+      function novaImagem(largura) {
+        const dpr = Math.min(2, window.devicePixelRatio || 1);
+        const c = document.createElement('canvas');
+        c.width = Math.round(largura * dpr);
+        c.height = Math.round(A * dpr);
+        const f = c.getContext('2d');
+        f.setTransform(dpr, 0, 0, dpr, 0, 0);
+        return { c, f };
+      }
+      function prepararCenario() {
+        const chave = `${L}x${A}x${T}`;
+        if (fundoMar && cenarioChave === chave) return;
+        cenarioChave = chave;
+        const fm = novaImagem(L + FOLGA * 2);
+        fm.f.translate(FOLGA, 0);
+        pintarMar(fm.f, -FOLGA, L + FOLGA);
+        fundoMar = fm.c;
+        const mo = novaImagem(L);
+        pintarMoldura(mo.f);
+        moldura = mo.c;
+      }
+
+      function pintarMar(f, x0, x1) {
+        const W = x1 - x0;
+        const horiz = Math.round(T + (balcaoY() - T) * 0.36);
+        // céu: noite lá em cima, pôr do sol perto do mar
+        const ceu = f.createLinearGradient(0, 0, 0, horiz);
+        ceu.addColorStop(0, COR.fundo);
+        ceu.addColorStop(0.45, misturar(COR.marinho, COR.lilas, 0.22));
+        ceu.addColorStop(0.82, misturar(COR.coral, COR.marinho, 0.35));
+        ceu.addColorStop(1, misturar(COR.laranja, COR.coral, 0.25));
+        f.fillStyle = ceu;
+        f.fillRect(x0, 0, W, horiz);
+        // o sol, metade já no mar, com o brilho em volta
+        const sx = L * 0.68;
+        const raio = Math.max(26, Math.min(84, Math.min(L, A) * 0.07));
+        const brilho = f.createRadialGradient(sx, horiz, raio * 0.4, sx, horiz, raio * 3.4);
+        brilho.addColorStop(0, alfa(COR.amarelo, 0.45));
+        brilho.addColorStop(1, alfa(COR.amarelo, 0));
+        f.fillStyle = brilho;
+        f.fillRect(sx - raio * 3.4, horiz - raio * 3.4, raio * 6.8, raio * 3.4);
+        f.save();
+        f.beginPath();
+        f.rect(x0, 0, W, horiz);
+        f.clip();
+        f.beginPath();
+        f.arc(sx, horiz, raio, 0, Math.PI * 2);
+        f.fillStyle = misturar(COR.amarelo, COR.laranja, 0.25);
+        f.fill();
+        f.restore();
+        // uma ilhota com coqueiro, à esquerda
+        const ix = L * 0.16;
+        const iw = Math.max(70, L * 0.13);
+        const sombraIlha = misturar(COR.fundo, COR.lilas, 0.12);
+        f.fillStyle = sombraIlha;
+        f.beginPath();
+        f.ellipse(ix, horiz, iw / 2, raio * 0.42, 0, Math.PI, 0);
+        f.fill();
+        f.strokeStyle = sombraIlha;
+        f.lineWidth = Math.max(3, raio * 0.09);
+        f.lineCap = 'round';
+        const topoX = ix + raio * 0.35;
+        const topoY = horiz - raio * 1.35;
+        f.beginPath();
+        f.moveTo(ix - raio * 0.05, horiz - raio * 0.3);
+        f.quadraticCurveTo(ix + raio * 0.05, horiz - raio * 0.9, topoX, topoY);
+        f.stroke();
+        f.lineWidth = Math.max(2.5, raio * 0.07);
+        [[-1, -0.25], [-0.75, 0.35], [0.85, 0.3], [1, -0.2], [0.15, -0.65]].forEach(([dx, dy]) => {
+          f.beginPath();
+          f.moveTo(topoX, topoY);
+          f.quadraticCurveTo(topoX + dx * raio * 0.45, topoY + dy * raio * 0.45 - raio * 0.2, topoX + dx * raio * 0.75, topoY + dy * raio * 0.6 + raio * 0.15);
+          f.stroke();
+        });
+        // o mar
+        const mar = f.createLinearGradient(0, horiz, 0, A);
+        mar.addColorStop(0, misturar(COR.turquesaEscura, COR.marinho, 0.35));
+        mar.addColorStop(0.5, misturar(COR.turquesaEscura, COR.fundo, 0.7));
+        mar.addColorStop(1, COR.fundo);
+        f.fillStyle = mar;
+        f.fillRect(x0, horiz, W, A - horiz);
+        // o reflexo do sol e os brilhos na água (sorteio fixo, para a imagem ficar sempre igual)
+        let semente = 7;
+        const sorte = () => { semente = (semente * 9301 + 49297) % 233280; return semente / 233280; };
+        for (let k = 0; k < 16; k++) {
+          const y = horiz + 5 + k * k * 1.5;
+          if (y > balcaoY()) break;
+          const w = raio * (1.7 - k * 0.07) * (0.6 + sorte() * 0.6);
+          f.fillStyle = alfa(COR.amarelo, Math.max(0.05, 0.55 - k * 0.035));
+          f.fillRect(sx - w / 2 + (sorte() - 0.5) * 12, y, w, 2);
+        }
+        f.strokeStyle = alfa(COR.claro, 0.13);
+        f.lineWidth = 1.5;
+        for (let k = 0; k < 30; k++) {
+          const y = horiz + 8 + sorte() * (balcaoY() - horiz - 8);
+          const x = x0 + sorte() * W;
+          f.beginPath();
+          f.moveTo(x, y);
+          f.lineTo(x + 16 + sorte() * 46, y);
+          f.stroke();
+        }
+        f.fillStyle = alfa(COR.amarelo, 0.32);
+        f.fillRect(x0, horiz - 1, W, 2);
+      }
+
+      function pintarMoldura(f) {
+        // o toldo listrado, com a barra de baixo em ondinhas
+        const listra = Math.max(24, Math.min(56, L / 18, A / 13));
+        const fimToldo = Math.max(28, T - listra * 0.45);
+        const caminho = (x) => {
+          f.beginPath();
+          f.moveTo(x, 0);
+          f.lineTo(x + listra, 0);
+          f.lineTo(x + listra, fimToldo);
+          f.arc(x + listra / 2, fimToldo, listra / 2, 0, Math.PI, false);
+          f.closePath();
+        };
+        const sombra = f.createLinearGradient(0, 0, 0, fimToldo + listra / 2);
+        sombra.addColorStop(0, alfa(COR.fundo, 0.62));
+        sombra.addColorStop(1, alfa(COR.fundo, 0.08));
+        for (let x = 0, k = 0; x < L; x += listra, k++) {
+          caminho(x);
+          f.fillStyle = k % 2 ? COR.perola : COR.turquesa;
+          f.fill();
+          f.fillStyle = sombra;
+          f.fill();
+        }
+        // as luzinhas na ponta de cada ondinha
+        for (let x = listra / 2; x < L; x += listra) {
+          const y = fimToldo + listra / 2 + 5;
+          const halo = f.createRadialGradient(x, y, 1, x, y, 15);
+          halo.addColorStop(0, alfa(COR.amarelo, 0.5));
+          halo.addColorStop(1, alfa(COR.amarelo, 0));
+          f.fillStyle = halo;
+          f.fillRect(x - 15, y - 15, 30, 30);
+          f.fillStyle = COR.amarelo;
+          f.beginPath();
+          f.arc(x, y, 3.5, 0, Math.PI * 2);
+          f.fill();
+        }
+        // o cordão de bandeirinhas, meio caído no meio (a ponta das do meio desce pouco no campo das placas)
+        const queda = Math.max(10, listra * 0.45);
+        const passo = Math.max(30, listra * 0.85);
+        const yb = T + Math.min(listra * 0.66, faixa() * 0.25) - queda - passo * 0.6;
+        const fioY = (x) => yb + 4 * queda * (x / L) * (1 - x / L);
+        f.strokeStyle = alfa(COR.texto, 0.5);
+        f.lineWidth = 1.5;
+        f.beginPath();
+        for (let x = 0; x <= L; x += 8) (x ? f.lineTo(x, fioY(x)) : f.moveTo(x, fioY(x)));
+        f.stroke();
+        const cores = [COR.coral, COR.amarelo, COR.claro, COR.lilas, COR.azul, COR.laranja];
+        for (let x = passo * 0.5, k = 0; x < L - passo * 0.3; x += passo, k++) {
+          const a = x - passo * 0.32;
+          const b = x + passo * 0.32;
+          f.fillStyle = cores[k % cores.length];
+          f.beginPath();
+          f.moveTo(a, fioY(a));
+          f.lineTo(b, fioY(b));
+          f.lineTo(x, fioY(x) + passo * 0.6);
+          f.closePath();
+          f.fill();
+        }
+        // as colunas da barraca nas laterais
+        const c = coluna();
+        [0, L - c].forEach((x) => {
+          const col = f.createLinearGradient(x, 0, x + c, 0);
+          col.addColorStop(0, COR.sup3);
+          col.addColorStop(1, COR.sup);
+          f.fillStyle = col;
+          f.fillRect(x, 0, c, balcaoY());
+          f.fillStyle = alfa(COR.claro, 0.25);
+          f.fillRect(x + c * 0.25, 0, 2, balcaoY());
+        });
+      }
+
+      function desenharCena() {
+        prepararCenario();
+        const desloca = mira && !UI.movimentoReduzido ? (0.5 - mira.x / L) * FOLGA : 0; // o mar lá no fundo anda com a mira
+        g.drawImage(fundoMar, -FOLGA + desloca, 0, L + FOLGA * 2, A);
+        g.drawImage(moldura, 0, 0, L, A);
+      }
+
+      function desenharTrilho(i) {
+        const y = trilhoY(i);
+        const alt = Math.max(6, Math.round(A * 0.011));
+        const x0 = coluna();
+        const w = L - x0 * 2;
+        g.fillStyle = COR.sup3;
+        g.fillRect(x0, y, w, alt);
+        g.fillStyle = alfa(COR.claro, 0.35);
+        g.fillRect(x0, y, w, 1.5);
+        g.fillStyle = alfa(COR.fundo, 0.45);
+        g.fillRect(x0, y + alt - 2, w, 2);
+        g.fillStyle = alfa(COR.fundo, 0.55);
+        for (let x = x0 + 26; x < L - x0; x += 64) {
           g.beginPath();
-          g.moveTo(L * (0.1 + i * 0.25), 0);
-          g.lineTo(L * (0.2 + i * 0.25), 0);
-          g.lineTo(L * (0.05 + i * 0.25), A);
-          g.lineTo(L * (-0.05 + i * 0.25), A);
+          g.arc(x, y + alt / 2, 1.8, 0, Math.PI * 2);
           g.fill();
         }
-        g.globalAlpha = 1;
-        g.fillStyle = COR.sup;
-        g.fillRect(0, A * 0.82, L, A * 0.18);
-        g.fillStyle = COR.turquesa;
-        g.fillRect(0, A * 0.82, L, 4);
+      }
+
+      function desenharBalcao() {
+        const y = balcaoY();
+        const frente = g.createLinearGradient(0, y, 0, A);
+        frente.addColorStop(0, COR.sup2);
+        frente.addColorStop(1, COR.sup);
+        g.fillStyle = frente;
+        g.fillRect(0, y, L, A - y);
+        // as tábuas
+        g.strokeStyle = alfa(COR.fundo, 0.32);
+        g.lineWidth = 2;
+        const tabua = Math.max(48, L / 14);
+        for (let x = tabua; x < L; x += tabua) {
+          g.beginPath();
+          g.moveTo(x, y + 10);
+          g.lineTo(x, A);
+          g.stroke();
+        }
+        // a faixa coral com bolinhas, enfeite de barraca
+        const fy = y + Math.min(26, (A - y) * 0.32);
+        g.fillStyle = COR.coral;
+        g.fillRect(0, fy, L, 10);
+        g.fillStyle = alfa(COR.branco, 0.85);
+        for (let x = 12; x < L; x += 24) {
+          g.beginPath();
+          g.arc(x, fy + 5, 2.2, 0, Math.PI * 2);
+          g.fill();
+        }
+        // o tampo amarelo
+        g.fillStyle = COR.amarelo;
+        g.fillRect(0, y - 4, L, 8);
+        g.fillStyle = COR.amareloSombra;
+        g.fillRect(0, y + 4, L, 3);
+        // os prêmios: peixinhos de pelúcia nas pontas
+        const peixe = (x, cor, lado, t) => {
+          g.save();
+          g.translate(x, y - 4 - t * 0.55);
+          g.scale(lado, 1);
+          g.fillStyle = cor;
+          g.strokeStyle = COR.fundo;
+          g.lineWidth = 2.5;
+          g.beginPath();
+          g.ellipse(0, 0, t, t * 0.62, 0, 0, Math.PI * 2);
+          g.moveTo(-t * 0.85, 0);
+          g.lineTo(-t * 1.5, -t * 0.55);
+          g.lineTo(-t * 1.5, t * 0.55);
+          g.closePath();
+          g.fill();
+          g.stroke();
+          g.fillStyle = COR.fundo;
+          g.beginPath();
+          g.arc(t * 0.45, -t * 0.12, t * 0.13, 0, Math.PI * 2);
+          g.fill();
+          g.restore();
+        };
+        const t = Math.max(12, Math.min(22, L / 60));
+        peixe(coluna() + t * 2.2, COR.coral, 1, t);
+        peixe(coluna() + t * 4.6, COR.lilas, 1, t * 0.8);
+        peixe(L - coluna() - t * 2.2, COR.amarelo, -1, t);
       }
 
       function desenharPlaca(p, destaque = false) {
         const idade = jogo ? jogo.t - p.nasceu : 1;
-        const entra = UI.movimentoReduzido ? 1 : Math.min(1, idade / 0.15);
         const resto = jogo ? Math.max(0, 1 - idade / p.vida) : 1;
-        const r = p.raio * entra;
+        const base = trilhoY(p.trilho);
+        const x = p.x;
+        const y = p.y;
+        const w = p.w;
+        const alt = p.h;
+        const r = Math.round(alt * 0.22);
         g.save();
-        g.translate(p.x, p.y);
-        // haste
-        g.fillStyle = COR.sup2;
-        g.fillRect(-3, r * 0.6, 6, A);
-        // placa
         g.beginPath();
-        g.arc(0, 0, r, 0, Math.PI * 2);
-        g.fillStyle = destaque ? COR.coral : COR.texto;
+        g.rect(0, 0, L, base); // a placa nasce de trás do trilho
+        g.clip();
+        // haste
+        g.fillStyle = COR.sup3;
+        g.fillRect(x - 3, y + alt / 2 - 2, 6, base - (y + alt / 2) + 4);
+        // sombra e placa
+        g.fillStyle = alfa(COR.fundo, 0.35);
+        arredondado(g, x - w / 2 + 3, y - alt / 2 + 4, w, alt, r);
         g.fill();
-        g.lineWidth = 5;
+        const fundoPlaca = g.createLinearGradient(0, y - alt / 2, 0, y + alt / 2);
+        fundoPlaca.addColorStop(0, destaque ? COR.coralPalida : COR.branco);
+        fundoPlaca.addColorStop(1, destaque ? misturar(COR.coralPalida, COR.coral, 0.25) : COR.perola);
+        g.fillStyle = fundoPlaca;
+        arredondado(g, x - w / 2, y - alt / 2, w, alt, r);
+        g.fill();
+        g.lineWidth = Math.max(2.5, alt * 0.06);
         g.strokeStyle = destaque ? COR.coral : COR.turquesa;
         g.stroke();
-        g.beginPath();
-        g.arc(0, 0, r * 0.78, 0, Math.PI * 2);
-        g.lineWidth = 2;
-        g.strokeStyle = 'rgba(11, 37, 69, 0.25)';
-        g.stroke();
-        // tempo restante (anel amarelo que vai fechando)
-        g.beginPath();
-        g.arc(0, 0, r + 6, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * resto);
-        g.lineWidth = 3;
-        g.strokeStyle = COR.amarelo;
-        g.stroke();
-        g.fillStyle = COR.escuro;
-        if (p.forma) desenharForma(p.forma, r * 0.5);
-        else {
-          const texto = p.rotulo;
-          let tam = r * (texto.length <= 2 ? 0.8 : texto.length <= 5 ? 0.46 : 0.34);
-          g.font = `800 ${tam}px "Plus Jakarta Sans", system-ui, sans-serif`;
-          while (g.measureText(texto).width > r * 1.7 && tam > 9) {
-            tam -= 1;
-            g.font = `800 ${tam}px "Plus Jakarta Sans", system-ui, sans-serif`;
-          }
+        // o tempo que falta: barrinha amarela embaixo (coral no fim)
+        const folga = Math.max(6, alt * 0.14);
+        const bw = w - folga * 2;
+        const by = y + alt / 2 - folga * 0.7 - 3;
+        g.fillStyle = alfa(COR.escuro, 0.12);
+        arredondado(g, x - bw / 2, by, bw, 4, 2);
+        g.fill();
+        if (resto > 0) {
+          g.fillStyle = resto > 0.35 ? COR.amarelo : COR.coral;
+          arredondado(g, x - bw / 2, by, Math.max(4, bw * resto), 4, 2);
+          g.fill();
+        }
+        // o que a placa diz
+        g.fillStyle = destaque ? COR.coralSombra : COR.escuro;
+        if (p.forma) {
+          g.translate(x, y - alt * 0.06);
+          desenharForma(p.forma, alt * 0.27);
+        } else {
+          g.font = `800 ${p.fonte}px ${FONTE}`;
           g.textAlign = 'center';
           g.textBaseline = 'middle';
-          g.fillText(texto, 0, 1);
+          g.fillText(p.rotulo, x, y - alt * 0.07);
         }
         g.restore();
       }
@@ -510,111 +826,162 @@
         g.fill();
       }
 
-      const escalaPistola = () => Math.max(1, Math.min(1.5, A / 420));
+      /* --- a pistola d'água: cabo coral, corpo turquesa, tanque transparente com a água que sobra e o cano amarelo --- */
+      const BICO = 132; // do pé da pistola até a ponta do bico
+      // a pistola cresce com o balcão e só a ponta passa dele (não cobre as placas da frente)
+      const escalaPistola = () => Math.max(0.62, Math.min(1.3, (A - balcaoY() + 16) / BICO));
       function desenharPistola(mx, my, coice) {
+        const s = escalaPistola();
         const bx = L / 2;
-        const by = A + 10;
-        const ang = Math.atan2(my - by, mx - bx);
+        const by = A + 6 * s;
         g.save();
         g.translate(bx, by);
-        g.rotate(ang + Math.PI / 2);
-        g.scale(escalaPistola(), escalaPistola());
+        g.rotate(Math.atan2(my - by, mx - bx) + Math.PI / 2);
+        g.scale(s, s);
         g.translate(0, coice * 12);
+        g.lineJoin = 'round';
+        g.lineWidth = 4;
+        g.strokeStyle = COR.fundo;
         // cabo
         g.fillStyle = COR.coral;
-        g.strokeStyle = COR.fundo;
-        g.lineWidth = 4;
-        g.beginPath();
-        g.roundRect ? g.roundRect(-22, -40, 44, 80, 12) : g.rect(-22, -40, 44, 80);
+        arredondado(g, -16, -22, 32, 62, 12);
         g.fill();
         g.stroke();
-        // cano
+        g.fillStyle = alfa(COR.coralSombra, 0.55);
+        for (let k = 0; k < 3; k++) {
+          arredondado(g, -10, -10 + k * 13, 20, 5, 2.5);
+          g.fill();
+        }
+        // corpo
         g.fillStyle = COR.turquesa;
-        g.beginPath();
-        g.roundRect ? g.roundRect(-12, -110, 24, 80, 8) : g.rect(-12, -110, 24, 80);
+        arredondado(g, -28, -62, 56, 48, 16);
         g.fill();
         g.stroke();
-        // bico
-        g.fillStyle = COR.amarelo;
-        g.fillRect(-7, -122, 14, 14);
-        g.strokeRect(-7, -122, 14, 14);
-        // tanque d'água
-        const nivelAgua = jogo ? jogo.agua / TANQUE : 1;
-        g.fillStyle = 'rgba(230, 241, 255, 0.25)';
-        g.beginPath();
-        g.arc(0, -46, 20, 0, Math.PI * 2);
+        g.fillStyle = alfa(COR.claro, 0.6);
+        arredondado(g, -20, -56, 9, 34, 4.5);
         g.fill();
-        g.stroke();
+        // tanque transparente: a água baixa a cada jato e volta sozinha
+        const nivel = jogo ? jogo.agua / TANQUE : 1;
         g.save();
-        g.beginPath();
-        g.arc(0, -46, 18, 0, Math.PI * 2);
+        arredondado(g, -22, -100, 44, 40, 18);
+        g.fillStyle = alfa(COR.branco, 0.16);
+        g.fill();
         g.clip();
         g.fillStyle = COR.claro;
-        g.fillRect(-20, -46 + 18 - 36 * nivelAgua, 40, 36 * nivelAgua);
+        g.fillRect(-24, -60 - 40 * nivel, 48, 40 * nivel + 2);
+        g.fillStyle = alfa(COR.branco, 0.65);
+        [[-7, -70, 3], [6, -80, 2.2], [-1, -89, 1.6]].forEach(([x, y, r]) => {
+          if (y > -60 - 40 * nivel) {
+            g.beginPath();
+            g.arc(x, y, r, 0, Math.PI * 2);
+            g.fill();
+          }
+        });
         g.restore();
+        arredondado(g, -22, -100, 44, 40, 18);
+        g.lineWidth = 3.5;
+        g.stroke();
+        // cano e bico
+        g.lineWidth = 4;
+        g.fillStyle = COR.amarelo;
+        arredondado(g, -8, -126, 16, 30, 6);
+        g.fill();
+        g.stroke();
+        g.fillStyle = COR.coral;
+        arredondado(g, -11, -BICO - 2, 22, 12, 5);
+        g.fill();
+        g.stroke();
         g.restore();
       }
 
       function desenharMira(x, y) {
         g.save();
+        g.lineCap = 'round';
+        const tracos = () => {
+          g.beginPath();
+          g.arc(x, y, 15, 0, Math.PI * 2);
+          [[-25, -9], [9, 25]].forEach(([a, b]) => {
+            g.moveTo(x + a, y);
+            g.lineTo(x + b, y);
+            g.moveTo(x, y + a);
+            g.lineTo(x, y + b);
+          });
+        };
+        g.strokeStyle = alfa(COR.fundo, 0.7);
+        g.lineWidth = 5;
+        tracos();
+        g.stroke();
         g.strokeStyle = COR.amarelo;
         g.lineWidth = 2.5;
-        g.beginPath();
-        g.arc(x, y, 14, 0, Math.PI * 2);
-        g.moveTo(x - 22, y);
-        g.lineTo(x - 8, y);
-        g.moveTo(x + 8, y);
-        g.lineTo(x + 22, y);
-        g.moveTo(x, y - 22);
-        g.lineTo(x, y - 8);
-        g.moveTo(x, y + 8);
-        g.lineTo(x, y + 22);
+        tracos();
         g.stroke();
+        g.fillStyle = COR.amarelo;
+        g.beginPath();
+        g.arc(x, y, 2.5, 0, Math.PI * 2);
+        g.fill();
         g.restore();
       }
 
       function desenhar(errada = null) {
-        desenharFundo();
-        if (!jogo) return;
-        jogo.placas.forEach((p) => desenharPlaca(p, p === errada));
-        // jatos d'água (do bico até o ponto)
+        desenharCena();
+        if (!jogo) {
+          desenharTrilho(0);
+          desenharTrilho(1);
+          desenharBalcao();
+          return;
+        }
+        // do fundo para a frente: placas do trilho, depois o trilho (que esconde o pé delas)
+        for (const i of [0, 1, 2]) {
+          jogo.placas.forEach((p) => { if (p.trilho === i) desenharPlaca(p, p === errada); });
+          if (i < 2) desenharTrilho(i);
+          else desenharBalcao();
+        }
+        // jatos d'água: do bico até o ponto
+        const s = escalaPistola();
+        const by = A + 6 * s;
         jogo.jatos.forEach((j) => {
+          const ang = Math.atan2(j.y - by, j.x - L / 2);
+          const ox = L / 2 + Math.cos(ang) * BICO * s;
+          const oy = by + Math.sin(ang) * BICO * s;
+          const k = Math.max(0, j.v / 0.12);
           g.save();
-          g.strokeStyle = 'rgba(94, 234, 212, 0.8)';
-          g.lineWidth = 5;
           g.lineCap = 'round';
+          g.strokeStyle = alfa(COR.claro, 0.25 + 0.35 * k);
+          g.lineWidth = 9 * s;
           g.beginPath();
-          const bico = 110 * escalaPistola();
-          const ang = Math.atan2(j.y - (A + 10), j.x - L / 2);
-          g.moveTo(L / 2 + Math.cos(ang) * bico, A + 10 + Math.sin(ang) * bico);
+          g.moveTo(ox, oy);
           g.lineTo(j.x, j.y);
+          g.stroke();
+          g.strokeStyle = alfa(COR.branco, 0.85 * k);
+          g.lineWidth = 3 * s;
           g.stroke();
           g.restore();
         });
-        jogo.respingos.forEach((s) => {
-          g.globalAlpha = Math.max(0, Math.min(1, s.v * 2));
-          g.fillStyle = s.cor;
+        jogo.respingos.forEach((r) => {
+          g.globalAlpha = Math.max(0, Math.min(1, r.v * 2));
+          g.fillStyle = r.cor;
           g.beginPath();
-          g.arc(s.x, s.y, 3.5, 0, Math.PI * 2);
+          g.arc(r.x, r.y, 3.5, 0, Math.PI * 2);
           g.fill();
         });
         g.globalAlpha = 1;
         if (jogo.pausa > 0 && !jogo.fim) {
-          g.fillStyle = 'rgba(6, 23, 45, 0.6)';
-          g.fillRect(0, 0, L, A);
+          const meio = meioCampo();
+          g.fillStyle = alfa(COR.fundo, 0.62);
+          g.fillRect(0, T, L, balcaoY() - T);
           g.textAlign = 'center';
           g.textBaseline = 'middle';
           g.fillStyle = COR.claro;
-          g.font = `800 ${Math.max(16, Math.min(22, L / 26))}px "Plus Jakarta Sans", system-ui, sans-serif`;
-          g.fillText(`NÍVEL ${jogo.nivel} · ${jogo.p.meta} placas certas`, L / 2, meioCampo() - 26);
+          g.font = `800 ${Math.max(16, Math.min(22, L / 26))}px ${FONTE}`;
+          g.fillText(`NÍVEL ${jogo.nivel} · ${jogo.p.meta} placas certas`, L / 2, meio - 26);
           g.fillStyle = COR.amarelo;
           let tam = Math.max(18, Math.min(34, L / 18));
-          g.font = `800 ${tam}px "Plus Jakarta Sans", system-ui, sans-serif`;
+          g.font = `800 ${tam}px ${FONTE}`;
           while (g.measureText(jogo.regra.texto).width > L - 32 && tam > 12) {
             tam -= 1;
-            g.font = `800 ${tam}px "Plus Jakarta Sans", system-ui, sans-serif`;
+            g.font = `800 ${tam}px ${FONTE}`;
           }
-          g.fillText(jogo.regra.texto, L / 2, meioCampo() + 18);
+          g.fillText(jogo.regra.texto, L / 2, meio + 18);
         }
         const m = mira || { x: L / 2, y: meioCampo() };
         desenharPistola(m.x, m.y, jogo.coice);
@@ -634,7 +1001,7 @@
         e.preventDefault();
         const p = ponto(e);
         if (e.pointerType !== 'mouse') mira = p;
-        atirar(p.x, p.y);
+        atirar(p.x, p.y, e.pointerType === 'mouse' ? 6 : 10);
       };
       tela.addEventListener('pointermove', aoMover);
       tela.addEventListener('pointerleave', aoSair);
@@ -648,11 +1015,11 @@
       ctx.guia([
         { alvo: '#sd-tiro-canvas', desenho: 'alvo', titulo: 'Pistola d\'água', texto: `Mire e clique (ou toque) nas placas. A pistola tem ${TANQUE} jatos e recarrega sozinha.` },
         { alvo: '.sd-tiro__passos', desenho: 'estrela', titulo: 'Leia a regra', texto: 'Cada nível tem uma regra, que aparece no alto da tela. Acertar uma placa que NÃO combina com ela elimina na hora.' },
-        { desenho: 'relogio', titulo: 'Não deixe escapar', texto: 'O anel amarelo mostra quanto tempo a placa fica. Placa certa que some também elimina. Acertou todas as certas do nível? Sobe de nível. 1 ponto por acerto; vale o seu recorde.' },
+        { desenho: 'relogio', titulo: 'Não deixe escapar', texto: 'A barrinha amarela embaixo de cada placa mostra quanto tempo ela fica. Placa certa que some também elimina. Acertou todas as certas do nível? Sobe de nível. 1 ponto por acerto; vale o seu recorde.' },
       ]);
       medir();
       // Só para os testes automáticos (window.__diverTeste existe apenas quando o teste cria): ver a partida e atirar numa placa
-      if (window.__diverTeste) window.__diverTeste.tiro = { jogo: () => jogo, atirar: (x, y) => atirar(x, y) };
+      if (window.__diverTeste) window.__diverTeste.tiro = { jogo: () => jogo, atirar: (x, y) => atirar(x, y), medidas: () => ({ L, A, T, balcao: balcaoY(), pistola: BICO * escalaPistola() }) };
       regraEl.textContent = 'Tiro ao Alvo';
       mostrarAbertura();
 
