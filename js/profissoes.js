@@ -37,7 +37,7 @@
   /* =========================================================
      Dados
      ========================================================= */
-  const cache = { indice: null, fichas: {}, trends: undefined };
+  const cache = { indice: null, fichas: {}, trends: undefined, numeros: undefined };
   async function lerJson(caminho) { const r = await fetch(caminho); if (!r.ok) throw new Error('Não foi possível carregar ' + caminho); return r.json(); }
   async function indice() { if (!cache.indice) cache.indice = await lerJson(BASE + 'indice.json'); return cache.indice; }
   async function ficha(id) {
@@ -47,6 +47,10 @@
       cache.fichas[id] = await lerJson(BASE + p.arquivo);
     }
     return cache.fichas[id];
+  }
+  async function numerosProf() {
+    if (cache.numeros === undefined) { try { cache.numeros = await lerJson(BASE + 'numeros.json'); } catch (e) { cache.numeros = null; } }
+    return cache.numeros;
   }
   async function trends() {
     if (cache.trends === undefined) { try { cache.trends = await lerJson(BASE + 'trends/trends.json'); } catch (e) { cache.trends = null; } }
@@ -477,77 +481,81 @@
   }
 
   /* =========================================================
-     Tela: Ficha (repaginada em 2026-10-16): cabeçalho com as ações, quatro números, a faixa de capítulos
-     e os capítulos em grade. O conteúdo é o mesmo do JSON, sem mudança.
+     Tela: Ficha em formato de relatório (2026-10-17, pedido do usuário: "olha esses que a Globo faz").
+     Capa com "Em números", "Ver resumo", capítulos numerados em faixas, uma frase-tese por capítulo
+     (f.manchetes, opcional) e um gráfico diferente em cada bloco, com "Fonte:" embaixo.
+     O conteúdo é o do JSON da ficha; os números que comparam profissões vêm de numeros.json.
      ========================================================= */
   function telaFicha(raiz, f, ix) {
     estado.vistas[f.id] = (estado.vistas[f.id] || 0) + 1; salvarEstado();
     ganchos.registrar('profissao_vista', { profissao: f.id });
     if (!estado.salarioRevelado) estado.salarioRevelado = {};
     raiz.style.setProperty('--cor-area', corArea(ix, f.area));
-    const S = f.secoes || {};
+    const S = f.secoes || {}, M = f.manchetes || {}, nums = f.numeros || {};
 
     raiz.appendChild(topoPagina({ texto: 'Mapa das Profissões', rota: 'profissoes' },
       f.status !== 'publicada' ? el('span', { class: 'prof-selo prof-selo--rascunho', text: f.revisao && f.revisao.profissional === 'ok' ? 'Validada' : 'Em revisão por profissional' }) : null));
 
-    // Ações no cabeçalho (a doca flutuante saiu: ela cobria o texto)
+    // ---------- Capa: título e ações à esquerda; "Em números" à direita (no lugar da foto dos relatórios) ----------
     const vizComFicha = (S.vizinhas || []).map(v => ix.profissoes.find(x => x.id === v.id)).find(p => temFicha(p));
     const btnMira = botao(estado.mira.includes(f.id) ? 'Na mira' : 'Pôr na mira', { classe: 'prof-btn--linha prof-btn--mira', icone: estado.mira.includes(f.id) ? 'certo' : 'alvo', pressed: String(estado.mira.includes(f.id)), onclick: () => alternarMira(f, btnMira) });
-    raiz.appendChild(cabecalho({ rotulo: nomeArea(ix, f.area), titulo: f.nome, frase: f.frase, extra: linkPanorama(f, ix), acoes: [
+    const acoes = [
       f.dia ? link('Viver um dia', 'profissao-' + f.id + '-dia', { classe: 'prof-btn prof-btn--primario', icone: 'play' }) : null,
       btnMira,
       f.mitos && f.mitos.length ? link('Mito ou verdade', 'profissao-' + f.id + '-mitos', { classe: 'prof-btn prof-btn--linha', icone: 'dado' }) : null,
-      vizComFicha ? link('Comparar', `profissoes-comparar-${f.id}--${vizComFicha.id}`, { classe: 'prof-btn prof-btn--linha', icone: 'balanca' }) : null] }));
-
-    // Quatro números: o salário fica para o palpite (um lugar só, no capítulo "Quanto ganha")
-    const nums = f.numeros || {};
-    const tileSalario = el('div', { class: 'prof-fato-tile prof-fato-tile--amarelo' });
+      vizComFicha ? link('Comparar', `profissoes-comparar-${f.id}--${vizComFicha.id}`, { classe: 'prof-btn prof-btn--linha', icone: 'balanca' }) : null].filter(Boolean);
+    const linhaNumero = (rotulo, n) => el('div', { class: 'prof-emnum-linha' },
+      el('dt', { text: rotulo }),
+      el('dd', null, el('b', { text: n.valor.replace(/semipresencial/g, 'semi­presencial') }), el('span', { class: 'prof-micro' }, n.detalhe || '', citar(f, n.fontes))));
+    // O salário fica para o palpite (capítulo "O dinheiro"); aqui só o convite, e depois dele a média
+    const linhaSalario = el('div', { class: 'prof-emnum-linha prof-emnum-linha--salario' });
     const pintarSalario = () => {
-      const n = nums.salario; tileSalario.textContent = ''; if (!n) { tileSalario.hidden = true; return; }
+      const n = nums.salario; linhaSalario.textContent = ''; if (!n) { linhaSalario.hidden = true; return; }
       const visto = (estado.salarioRevelado[f.id] || 0) > 0;
-      tileSalario.append(el('div', { class: 'prof-min', text: visto ? 'Média de contratação' : 'Quanto ganha?' }),
-        visto ? el('div', { class: 'prof-fato-v prof-num', text: n.valor }) : el('button', { type: 'button', class: 'prof-btn prof-btn--linha prof-btn--pequeno prof-fato-palpite', onclick: () => ir(document.getElementById('sec-salario')) }, icone('alvo'), 'Dar meu palpite'),
-        el('div', { class: 'prof-micro', text: visto ? n.detalhe : 'Antes do número, arrisque uma faixa.' }),
-        visto ? fontesMini(f, n.fontes) || '' : '');
+      linhaSalario.append(el('dt', { text: visto ? 'Média de contratação' : 'Quanto ganha?' }),
+        el('dd', null,
+          visto ? el('b', { class: 'prof-emnum-salario', text: n.valor }) : el('button', { type: 'button', class: 'prof-link-botao prof-emnum-palpite', onclick: () => ir(document.getElementById('sec-dinheiro')) }, icone('alvo'), 'Dar meu palpite primeiro'),
+          el('span', { class: 'prof-micro' }, visto ? n.detalhe : 'Antes do número, arrisque uma faixa.', visto ? citar(f, n.fontes) : null)));
     };
     pintarSalario();
-    raiz.appendChild(el('section', { class: 'prof-fatos', 'aria-label': 'Números principais' },
-      [['duracao', 'Duração'], ['formato', 'Formato'], ['registro', 'Registro profissional']].filter(([k]) => nums[k]).map(([k, rotulo]) => {
-        const n = nums[k];
-        return tileFato({ rotulo, valor: n.valor.replace(/semipresencial/g, 'semi­presencial'), detalhe: n.detalhe, fontes: fontesMini(f, n.fontes) });
-      }), tileSalario));
+    // "Ver resumo": as frases-tese (ou, sem elas, os fatos centrais da ficha); fica na coluna da capa
+    const itensResumo = resumoDe(f);
+    const resumo = itensResumo.length ? el('details', { class: 'prof-resumo' },
+      el('summary', null, el('span', { class: 'prof-resumo-rot' }, icone('livro'), 'Ver resumo'), el('span', { class: 'prof-micro', text: `${itensResumo.length} pontos desta ficha` })),
+      el('ul', null, itensResumo)) : null;
+    raiz.appendChild(el('header', { class: 'prof-capa' },
+      el('div', { class: 'prof-capa-texto' },
+        el('span', { class: 'prof-rotulo prof-rotulo--area', text: nomeArea(ix, f.area) }),
+        el('h1', { text: f.nome }),
+        el('p', { class: 'prof-lead', text: f.frase }),
+        el('p', { class: 'prof-capa-meta', text: [f.conferido_em ? `Ficha conferida em ${dataBR(f.conferido_em)}` : null, `${(f.fontes || []).length} fontes`, 'Mapa das Profissões do Diver'].filter(Boolean).join(' · ') }),
+        acoes.length ? el('div', { class: 'prof-cab-acoes' }, acoes) : null,
+        resumo),
+      el('aside', { class: 'prof-emnum', 'aria-labelledby': 'prof-emnum-tit' },
+        el('p', { class: 'prof-emnum-tit', id: 'prof-emnum-tit', text: 'Em números' }),
+        el('dl', null, [['duracao', 'Duração'], ['formato', 'Formato'], ['registro', 'Registro profissional']].filter(([k]) => nums[k]).map(([k, r]) => linhaNumero(r, nums[k])), linhaSalario),
+        linkPanorama(f, ix))));
 
     const corpo = el('div', { class: 'prof-corpo' });
     raiz.appendChild(corpo);
+    let n = 0;
+    const cap = (id, titulo, sub, ...conteudo) => corpo.appendChild(capituloRelatorio(f, ++n, id, titulo, M[id], sub, ...conteudo));
 
-    // 1. Visão geral: o que faz e o que não faz lado a lado; o dia de trabalho ao lado do "agora mesmo"
-    const visao = [];
-    if (S.o_que_faz) visao.push(el('div', { class: 'prof-grade-2' },
-      el('div', { class: 'prof-caixa' }, el('h3', { text: 'O que faz' }), prosa(f, S.o_que_faz.texto, S.o_que_faz.fontes)),
-      S.o_que_faz.nao_faz ? el('div', { class: 'prof-caixa prof-caixa--contorno' }, el('h3', { text: 'O que não faz' }), prosa(f, S.o_que_faz.nao_faz, S.o_que_faz.fontes)) : null));
-    const dia = S.dia_a_dia ? el('div', { class: 'prof-caixa' }, el('h3', { text: 'Um dia de trabalho' }),
+    // ---------- 01. O trabalho: o que faz × o que não faz; o dia em 24 horas ----------
+    const trabalho = [];
+    if (S.o_que_faz) trabalho.push(el('div', { class: 'prof-grade-2 prof-versus' },
+      el('div', { class: 'prof-versus-card prof-versus-card--sim' }, el('p', { class: 'prof-versus-tit' }, icone('certo'), 'O que faz'), prosa(f, S.o_que_faz.texto, S.o_que_faz.fontes)),
+      S.o_que_faz.nao_faz ? el('div', { class: 'prof-versus-card prof-versus-card--nao' }, el('p', { class: 'prof-versus-tit' }, icone('x'), 'O que não faz'), prosa(f, S.o_que_faz.nao_faz, S.o_que_faz.fontes)) : null));
+    const diaTexto = S.dia_a_dia ? el('div', { class: 'prof-rel-bloco' },
+      el('h3', { class: 'prof-sub', text: 'Um dia de trabalho' }),
       S.dia_a_dia.revisar_com_profissional ? el('p', { class: 'prof-micro prof-espaco-b', text: 'Descrição típica, em revisão com profissionais da área.' }) : null,
       prosa(f, S.dia_a_dia.texto, S.dia_a_dia.fontes),
       f.dia ? el('div', { class: 'prof-espaco' }, link('Viver ' + f.dia.titulo.charAt(0).toLowerCase() + f.dia.titulo.slice(1), 'profissao-' + f.id + '-dia', { classe: 'prof-btn prof-btn--linha', icone: 'play' })) : null) : null;
-    let agora = null;
-    if (f.agora && f.agora.length && IG()) {
-      const d = new Date(), h = d.getHours(), mi = d.getMinutes();
-      const faixa = f.agora.find(x => h >= x.de && h < x.ate) || f.agora[0];
-      agora = el('div', { class: 'prof-caixa prof-agora', 'aria-label': 'Agora mesmo' },
-        el('div', { class: 'prof-agora-relogio' }, IG().relogio({ faixas: f.agora, hora: h, minuto: mi })),
-        el('div', null,
-          el('div', { class: 'prof-agora-hora' }, 'Agora, às ', el('span', { class: 'prof-num', text: `${String(h).padStart(2, '0')}:${String(mi).padStart(2, '0')}` }), ', um profissional de ', f.nome.toLowerCase(), ' provavelmente está em:'),
-          el('p', { class: 'prof-agora-texto' }, el('b', { text: faixa.texto })),
-          f.agora_nota ? el('p', { class: 'prof-micro prof-espaco-p', text: f.agora_nota }) : null));
-    }
-    if (dia || agora) visao.push(el('div', { class: 'prof-grade-2 prof-espaco' }, dia, agora));
-    if (visao.length) corpo.appendChild(capitulo('visao', 'Visão geral', null, ...visao));
+    const dia24 = f.agora && f.agora.length ? linhaDoDia(f) : null;
+    if (diaTexto || dia24) trabalho.push(el('div', { class: 'prof-grade-2 prof-rel-espaco' }, diaTexto, dia24));
+    if (trabalho.length) cap('trabalho', 'O trabalho', null, ...trabalho);
 
-    // 2. O que ninguém te conta: logo depois da visão geral (a honestidade vem cedo)
-    if (S.ninguem_conta) corpo.appendChild(capitulo('ninguem-conta', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio. Toque para revelar.',
-      cartasViradas(S.ninguem_conta.itens, it => citar(f, it.fontes))));
-
-    // 3. Formação e entrada
+    // ---------- 02. A formação: o que estuda, como entrar e a linha do tempo até trabalhar ----------
     const formacao = [];
     if (S.o_que_estuda || S.como_entrar) formacao.push(el('div', { class: 'prof-grade-2' },
       S.o_que_estuda ? el('div', { class: 'prof-caixa' }, el('h3', { text: 'O que estuda' }), prosa(f, S.o_que_estuda.texto, S.o_que_estuda.fontes),
@@ -555,47 +563,167 @@
       S.como_entrar ? el('div', { class: 'prof-caixa' }, el('h3', { text: 'Como entrar' }), prosa(f, S.como_entrar.texto, S.como_entrar.fontes),
         S.como_entrar.materias_chave ? el('div', null, el('p', { class: 'prof-min prof-espaco', text: 'Matérias que mais pesam. Toque para estudar no Diver:' }),
           el('div', { class: 'prof-chips-lista' }, S.como_entrar.materias_chave.map(m => el('a', { href: '#', onclick: e => { e.preventDefault(); ganchos.registrar('profissao_materias_chave', { profissao: f.id, curso: m }); ganchos.abrirCurso(m); } }, icone('livro'), ganchos.nomeCurso(m))))) : null) : null));
-    if (f.formacao && IG()) formacao.push(el('div', { class: 'prof-caixa prof-formacao prof-espaco' },
-      el('div', { class: 'prof-grafico-cab' }, el('h3', { text: 'Quanto tempo até trabalhar' }), el('span', { class: 'prof-min', text: f.formacao.nota })),
-      el('div', { class: 'prof-rolagem' }, IG().linhaFormacao({ etapas: f.formacao.etapas, maxAnos: anosFormacao(f.formacao.etapas) })),
-      el('div', { class: 'prof-legenda' }, el('span', null, el('i', { style: { '--cor': 'var(--amarelo)' } }), 'caminho técnico'), el('span', null, el('i', { style: { '--cor': 'var(--turquesa)' } }), 'graduação'), el('span', null, el('i', { style: { '--cor': 'color-mix(in srgb, var(--turquesa) 35%, transparent)' } }), 'depois da graduação')),
-      el('ul', { class: 'prof-lista prof-espaco' }, f.formacao.etapas.map(e => el('li', null, el('b', { text: e.nome + ': ' }), e.texto, citar(f, e.fontes))))));
-    if (formacao.length) corpo.appendChild(capitulo('formacao', 'Formação e entrada', null, ...formacao));
+    if (f.formacao && f.formacao.etapas && f.formacao.etapas.length) formacao.push(ganttFormacao(f));
+    if (formacao.length) cap('formacao', 'A formação', null, ...formacao);
 
-    // 4. Quanto ganha: o palpite e, depois dele, todos os valores
-    if (S.quanto_ganha) corpo.appendChild(capitulo('salario', 'Quanto ganha', 'Salário-base de quem foi contratado com carteira. Adicionais não entram.', blocoSalario(f, S.quanto_ganha, pintarSalario)));
+    // ---------- 03. O dinheiro: o palpite e, depois dele, todos os valores ----------
+    if (S.quanto_ganha) cap('dinheiro', 'O dinheiro', 'Salário-base de quem foi contratado com carteira. Adicionais não entram.', blocoSalario(f, S.quanto_ganha, pintarSalario));
 
-    // 5. Carreira: caminhos, vizinhas e onde se busca
+    // ---------- 04. O mercado: o número grande, o ranking, onde se busca e o "Você sabia?" ----------
+    const mercado = [], ctx = f.contexto || {};
+    const nMat = ctx.matriculas_2024 || ctx.matriculas_ead_2024;
+    if (nMat) mercado.push(faixaNumero({
+      valor: `${Math.round(nMat / 1000).toLocaleString('pt-BR')} mil`,
+      rotulo: ctx.matriculas_2024 ? 'matrículas em 2024' : 'matrículas a distância em 2024',
+      texto: ctx.texto, cit: citar(f, ctx.fontes), fonte: fonteLinha(f, ctx.fontes) }));
+    const ranking = el('div', { class: 'prof-rel-espaco', hidden: true });
+    if (ctx.posicao_ranking_matriculas) {
+      mercado.push(ranking);
+      numerosProf().then(d => { if (d && d.matriculas_2024 && d.matriculas_2024.itens.some(x => x.id === f.id)) { ranking.appendChild(rankingMatriculas(f, ix, d.matriculas_2024)); ranking.hidden = false; } });
+    }
+    let buscas = null;
+    if (f.trends_id) { buscas = el('div', { class: 'prof-rel-espaco' }, el('p', { class: 'prof-min prof-carregando', text: 'Carregando dados de busca…' })); mercado.push(buscas); }
+    if (f.carta) mercado.push(el('aside', { class: 'prof-banda prof-rel-espaco' }, el('p', { class: 'prof-banda-rot', text: 'Você sabia?' }), el('p', { class: 'prof-banda-texto' }, f.carta.fato, citar(f, f.carta.fontes))));
+    if (mercado.length) cap('mercado', 'O mercado', null, ...mercado);
+    if (buscas) trends().then(t => blocoBuscas(buscas, f, t));
+
+    // ---------- 05. A carreira: outros caminhos e profissões vizinhas ----------
     const carreira = [];
     if (S.caminhos) carreira.push(el('h3', { class: 'prof-sub', text: 'Outros caminhos' }), el('div', { class: 'prof-cards' }, S.caminhos.itens.map(c => el('div', { class: 'prof-caixa' }, el('h3', { text: c.titulo }), el('p', null, c.texto, citar(f, c.fontes))))));
-    if (S.vizinhas) carreira.push(el('h3', { class: 'prof-sub', text: 'Profissões vizinhas' }), el('p', { class: 'prof-min', text: 'Para quem está em dúvida entre duas.' }),
+    if (S.vizinhas) carreira.push(el('h3', { class: 'prof-sub', text: 'Profissões vizinhas' }), el('p', { class: 'prof-min prof-espaco-b', text: 'Para quem está em dúvida entre duas.' }),
       el('div', { class: 'prof-cards' }, S.vizinhas.map(v => {
         const p = ix.profissoes.find(x => x.id === v.id);
         if (temFicha(p)) return el('a', { href: '#profissao-' + p.id, class: 'prof-caixa prof-vizinha' }, el('h3', null, p.nome, icone('direita')), el('p', { text: v.diferenca }));
         return el('div', { class: 'prof-caixa' }, el('h3', { text: p ? p.nome : v.id }), el('p', { text: v.diferenca }), p ? el('p', { class: 'prof-micro prof-espaco-p', text: 'Ficha em breve' }) : null);
       })),
       vizComFicha ? el('div', { class: 'prof-espaco' }, link(`Comparar com ${vizComFicha.nome}`, `profissoes-comparar-${f.id}--${vizComFicha.id}`, { classe: 'prof-btn prof-btn--linha', icone: 'balanca' })) : null);
-    const buscas = el('div', null, el('h3', { class: 'prof-sub', text: 'Onde e quando se busca' }), el('p', { class: 'prof-min', text: 'Google Trends, Brasil, 2021 a 2026. Índices relativos, não volumes.' }), el('p', { class: 'prof-min prof-carregando', text: 'Carregando dados…' }));
-    carreira.push(buscas);
-    corpo.appendChild(capitulo('carreira', 'Carreira', null, ...carreira));
-    trends().then(t => blocoBuscas(buscas, f, ix, t));
+    if (carreira.length) cap('carreira', 'A carreira', null, ...carreira);
 
-    // 6. Combina com você? DNA (radar e controles lado a lado) e o dilema
+    // ---------- 06. O que ninguém te conta: tudo à vista, numerado ----------
+    if (S.ninguem_conta) cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.',
+      el('ol', { class: 'prof-callouts' }, S.ninguem_conta.itens.map((it, i) => el('li', { class: 'prof-callout' },
+        el('span', { class: 'prof-callout-n', 'aria-hidden': 'true', text: String(i + 1).padStart(2, '0') }), el('p', null, it.texto, citar(f, it.fontes))))));
+
+    // ---------- 07. Combina com você? DNA e o dilema ----------
     const combina = [];
     if (f.dna && IG()) combina.push(el('h3', { class: 'prof-sub', text: 'DNA da profissão' }), el('p', { class: 'prof-min', text: f.dna_calibrado ? 'Calibrado com profissionais da área.' : 'Estimativa inicial, a calibrar com profissionais da área.' }), blocoDna(f, ix));
     if (f.dilemas && f.dilemas.length) combina.push(el('h3', { class: 'prof-sub', text: 'O que você faria?' }), el('p', { class: 'prof-min', text: 'Um dilema real da profissão. Vote e veja o que a lei diz.' }), blocoDilema(f, f.dilemas[0]));
-    if (combina.length) corpo.appendChild(capitulo('combina', 'Combina com você?', null, ...combina));
+    if (combina.length) cap('combina', 'Combina com você?', null, ...combina);
 
-    // 7. Fontes: guardadas; a lista abre no botão
-    corpo.appendChild(capitulo('fontes', 'Fontes', `Conferidas em ${dataBR(f.conferido_em)}. Toque num número ao longo da ficha para ver de onde ele vem.`,
+    // ---------- Fontes: guardadas; a lista abre no botão ----------
+    cap('fontes', 'Fontes', `Conferidas em ${dataBR(f.conferido_em)}. Toque num número ao longo da ficha para ver de onde ele vem.`,
       ...fontesGuardadas(f, f.fontes || [], `Ver as ${(f.fontes || []).length} fontes desta ficha`),
       el('div', { class: 'prof-revisao' },
         el('span', { class: f.revisao && f.revisao.fontes === 'conferidas' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.fontes === 'conferidas' ? 'certo' : 'relogio'), 'Fontes: ' + (f.revisao ? f.revisao.fontes : 'pendente')),
         el('span', { class: f.revisao && f.revisao.ia === 'ok' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.ia === 'ok' ? 'certo' : 'relogio'), 'Validação por IA (Mergulho Triplo): ' + (f.revisao ? f.revisao.ia : 'pendente')),
         el('span', { class: f.revisao && f.revisao.profissional === 'ok' ? 'ok' : 'pendente' }, icone(f.revisao && f.revisao.profissional === 'ok' ? 'certo' : 'relogio'), f.revisao && f.revisao.profissional === 'ok' ? `Revisada por ${f.revisao.revisor} em ${dataBR(f.revisao.data)}` : 'Revisão por profissional da área: pendente')),
-      el('p', { class: 'prof-fonte-nota' }, 'Achou um erro? Conte para a equipe do Diver: a correção entra na fila de revisão. ', link('Como fazemos as fichas', 'profissoes-metodo'))));
+      el('p', { class: 'prof-fonte-nota' }, 'Achou um erro? Conte para a equipe do Diver: a correção entra na fila de revisão. ', link('Como fazemos as fichas', 'profissoes-metodo')));
 
     indiceCapitulos(corpo, 'Capítulos da ficha');
+  }
+
+  /* ---------- Peças do relatório ---------- */
+  /** Capítulo com a faixa numerada ("01 · O trabalho") e, se a ficha tiver, a frase-tese com a linha de apoio. */
+  function capituloRelatorio(f, n, id, titulo, tese, sub, ...conteudo) {
+    return el('section', { class: 'prof-cap prof-rel-cap', id: 'sec-' + id, 'aria-labelledby': 'tit-' + id },
+      el('div', { class: 'prof-faixa-cap' }, el('span', { class: 'prof-faixa-n', 'aria-hidden': 'true', text: String(n).padStart(2, '0') }), el('h2', { id: 'tit-' + id, text: titulo })),
+      tese && tese.titulo ? el('div', { class: 'prof-tese' }, el('p', { class: 'prof-tese-titulo', text: tese.titulo }), tese.linha ? el('p', { class: 'prof-tese-linha' }, tese.linha, citar(f, tese.fontes)) : null) : null,
+      sub ? el('p', { class: 'prof-min prof-rel-sub', text: sub }) : null,
+      ...conteudo);
+  }
+  /** Os pontos do "Ver resumo": as frases-tese, ou, sem elas, os fatos centrais que a ficha já tem. O salário fica fora (é do palpite). */
+  function resumoDe(f) {
+    const S = f.secoes || {}, M = f.manchetes || {}, itens = [];
+    const add = (texto, ids, forte) => itens.push(el('li', null, forte ? el('b', { text: forte + ' ' }) : null, texto || '', citar(f, ids)));
+    const teses = ['trabalho', 'formacao', 'dinheiro', 'mercado'].filter(k => M[k] && M[k].titulo);
+    if (teses.length) teses.forEach(k => add(M[k].linha, M[k].fontes, M[k].titulo));
+    else {
+      if (S.o_que_faz) add(S.o_que_faz.texto.split(/(?<=\.)\s/)[0], S.o_que_faz.fontes);
+      const grad = f.formacao && (f.formacao.etapas || []).find(e => e.tipo === 'principal');
+      if (grad) add(grad.texto, grad.fontes, grad.nome + ':');
+      if (f.contexto && f.contexto.texto) add(f.contexto.texto, f.contexto.fontes);
+      const dura = S.ninguem_conta && S.ninguem_conta.itens && S.ninguem_conta.itens[0];
+      if (dura) add(dura.texto, dura.fontes);
+    }
+    if (f.carta) add(f.carta.fato, f.carta.fontes, 'Você sabia?');
+    return itens;
+  }
+  /** "Fonte: ..." embaixo de cada gráfico, como nos relatórios (as bolinhas abrem o cartão de cada fonte). */
+  function fonteLinha(f, ids, texto) {
+    const fs = [...new Set(ids || [])].map(id => (f.fontes || []).find(x => x.id === id)).filter(Boolean);
+    if (!fs.length && !texto) return null;
+    const curto = fo => { const t = fo.titulo.split(':')[0].trim(), o = (fo.orgao || '').replace(/\s*\(.*\)$/, ''); return o && !t.includes(o) ? `${t}, ${o}` : t; };
+    return el('p', { class: 'prof-fonte-linha' }, el('b', { text: 'Fonte: ' }), texto || fs.map(curto).join(' · '), fs.length ? citar(f, fs.map(x => x.id)) : null);
+  }
+  /** O número gigante numa faixa (o "R$ 1,2 trilhão por ano" dos relatórios). Um por página. */
+  function faixaNumero(o) {
+    return el('div', { class: 'prof-numero-grande' },
+      el('p', { class: 'prof-numero-grande-v', text: o.valor }),
+      el('p', { class: 'prof-numero-grande-rot', text: o.rotulo }),
+      o.texto ? el('p', { class: 'prof-numero-grande-txt' }, o.texto, o.cit || null) : null,
+      o.fonte || null);
+  }
+  /** Ranking dos cursos com mais matrículas: a profissão da ficha em turquesa, as outras em cinza (ênfase, não arco-íris). */
+  function rankingMatriculas(f, ix, R) {
+    const max = R.itens[0].matriculas;
+    const mil = v => `${Math.round(v / 1000).toLocaleString('pt-BR')} mil`;
+    return el('figure', { class: 'prof-ranking' },
+      el('figcaption', null, el('b', { text: R.titulo }), el('span', { class: 'prof-micro', text: 'Total de matrículas de cada curso, somando presencial e a distância.' })),
+      el('ol', null, R.itens.map(it => {
+        const eu = it.id === f.id, p = ix.profissoes.find(x => x.id === it.id);
+        return el('li', { class: eu ? 'prof-ranking-eu' : null, 'aria-current': eu ? 'true' : null },
+          el('span', { class: 'prof-ranking-pos prof-num', text: it.posicao + 'º' }),
+          el('span', { class: 'prof-ranking-nome' }, !eu && temFicha(p) ? el('a', { href: '#profissao-' + it.id, text: it.nome }) : it.nome),
+          el('span', { class: 'prof-ranking-trilho', title: `${it.nome}: ${it.matriculas.toLocaleString('pt-BR')} matrículas` },
+            el('i', { style: { '--p': it.matriculas / max } }), el('span', { class: 'prof-ranking-valor', text: mil(it.matriculas) })));
+      })),
+      fonteLinha(f, [R.fonte && R.fonte.id].filter(Boolean)));
+  }
+  /** O dia em 24 horas: uma faixa com os blocos do dia (o de agora aceso) e a lista hora a hora. Lê o relógio do aparelho. */
+  function linhaDoDia(f) {
+    const d = new Date(), h = d.getHours(), agoraPct = (h + d.getMinutes() / 60) / 24 * 100;
+    const faixas = [...f.agora].sort((a, b) => a.de - b.de);
+    const hh = v => String(v % 24).padStart(2, '0') + 'h';
+    const ehAgora = x => h >= x.de && h < x.ate;
+    const atual = faixas.find(ehAgora);
+    return el('figure', { class: 'prof-dia24' },
+      el('figcaption', null, el('b', { text: 'As 24 horas de um dia típico' }), el('span', { class: 'prof-micro', text: f.agora_nota || 'Cenas típicas; cada lugar tem a sua rotina.' })),
+      el('div', { class: 'prof-dia24-faixa', role: 'img', 'aria-label': `Linha do dia, das 0h às 24h. Agora, às ${hh(h)}${atual ? ': ' + atual.texto : ''}` },
+        faixas.map((x, i) => el('span', { class: 'prof-dia24-bloco' + (ehAgora(x) ? ' prof-dia24-bloco--agora' : '') + (i % 2 ? ' prof-dia24-bloco--par' : ''), style: { flexGrow: x.ate - x.de }, title: `${hh(x.de)} às ${hh(x.ate)}: ${x.texto}` })),
+        el('span', { class: 'prof-dia24-agora' + (agoraPct < 8 ? ' prof-dia24-agora--ini' : agoraPct > 92 ? ' prof-dia24-agora--fim' : ''), style: { left: agoraPct + '%' }, 'aria-hidden': 'true' }, el('span', { text: 'agora' }))),
+      el('div', { class: 'prof-dia24-escala', 'aria-hidden': 'true' }, ['0h', '6h', '12h', '18h', '24h'].map(t => el('span', { text: t }))),
+      el('ol', { class: 'prof-dia24-lista' }, faixas.map(x => el('li', { class: ehAgora(x) ? 'prof-dia24-item--agora' : null },
+        el('span', { class: 'prof-dia24-h prof-num', text: `${hh(x.de)}–${hh(x.ate)}` }),
+        el('span', null, x.texto, ehAgora(x) ? el('span', { class: 'prof-tag-agora', text: 'agora' }) : null)))));
+  }
+  /** Quanto tempo até trabalhar: uma linha por etapa, na mesma régua de anos (o caminho técnico corre em paralelo). */
+  function ganttFormacao(f) {
+    const etapas = f.formacao.etapas, bruto = anosFormacao(etapas), passo = bruto > 8 ? 2 : 1, max = Math.ceil(bruto / passo) * passo;
+    const fmt = v => v.toLocaleString('pt-BR');
+    const anos = e => e.anos_de === e.anos_ate ? `${fmt(e.anos_de)} ${e.anos_de === 1 ? 'ano' : 'anos'}` : `${fmt(e.anos_de)} a ${fmt(e.anos_ate)} anos`;
+    const pct = v => (v / max * 100) + '%';
+    const ticks = [];
+    for (let a = 0; a <= max; a += passo) ticks.push(a);
+    let cursor = 0;
+    const linhas = etapas.map(e => { const inicio = e.tipo === 'depois' ? cursor : 0; if (e.tipo === 'principal') cursor = e.anos_ate; return { e, inicio }; });
+    const tipos = [...new Set(etapas.map(e => e.tipo))];
+    const NOME_TIPO = { alternativa: 'caminho técnico', principal: 'graduação', depois: 'depois da graduação' };
+    const COR_TIPO = { alternativa: 'var(--amarelo)', principal: 'var(--turquesa)', depois: 'color-mix(in srgb, var(--turquesa) 55%, var(--superficie))' };
+    return el('figure', { class: 'prof-gantt prof-rel-espaco', style: { '--anos': max } },
+      el('figcaption', null, el('b', { text: 'Quanto tempo até trabalhar' }), el('span', { class: 'prof-micro', text: f.formacao.nota || '' })),
+      el('div', { class: 'prof-gantt-grade' },
+        el('div', { class: 'prof-gantt-linha prof-gantt-linha--escala', 'aria-hidden': 'true' }, el('span'),
+          el('div', { class: 'prof-gantt-escala' }, ticks.map((a, i) => el('span', { class: i % 2 && i < ticks.length - 1 ? 'prof-gantt-tick--menor' : null, style: { left: pct(a) }, text: i === ticks.length - 1 ? `${a} anos` : String(a) })))),
+        linhas.map(({ e, inicio }) => el('div', { class: 'prof-gantt-linha' },
+          el('div', { class: 'prof-gantt-rot' }, el('b', { text: e.nome }), el('span', { class: 'prof-micro', text: anos(e) + (e.tipo === 'depois' ? ', depois da graduação' : '') })),
+          el('div', { class: 'prof-gantt-trilho', role: 'img', 'aria-label': `${e.nome}: ${anos(e)}` },
+            el('span', { class: 'prof-gantt-seg prof-gantt-seg--' + e.tipo, style: { left: pct(inicio), width: pct(e.anos_de) } }),
+            e.anos_ate > e.anos_de ? el('span', { class: 'prof-gantt-seg prof-gantt-seg--faixa prof-gantt-seg--' + e.tipo, style: { left: pct(inicio + e.anos_de), width: pct(e.anos_ate - e.anos_de) } }) : null,
+            e.tipo !== 'depois' ? el('span', { class: 'prof-gantt-mercado', style: { left: pct(inicio + e.anos_de) } }, el('span', { text: 'entra no mercado' })) : null)))),
+      el('div', { class: 'prof-legenda' }, tipos.map(t => el('span', null, el('i', { style: { '--cor': COR_TIPO[t] } }), NOME_TIPO[t] || t)),
+        etapas.some(e => e.anos_ate > e.anos_de) ? el('span', null, el('i', { class: 'prof-gantt-chave-faixa', style: { '--cor': COR_TIPO.depois } }), 'depende do caminho') : null),
+      el('ul', { class: 'prof-lista prof-espaco' }, etapas.map(e => el('li', null, el('b', { text: e.nome + ': ' }), e.texto, citar(f, e.fontes)))),
+      fonteLinha(f, etapas.flatMap(e => e.fontes || [])));
   }
 
   /** Fontes guardadas: o botão abre e fecha a lista (numerada como em f.fontes). Devolve [botão, lista]. */
@@ -839,43 +967,63 @@
     return raiz;
   }
 
-  /* ---------- Bloco: Onde e quando se busca ---------- */
-  function blocoBuscas(sec, f, ix, t) {
+  /* ---------- Bloco: Onde e quando se busca (2026-10-17: mapa do Brasil em quadradinhos, um por estado) ---------- */
+  // Cada estado é um quadradinho na posição aproximada do mapa: [linha, coluna]
+  const GRADE_UF = { RR: [1, 2], AP: [1, 3], AM: [2, 2], PA: [2, 3], MA: [2, 4], CE: [2, 5], RN: [2, 6], AC: [3, 1], RO: [3, 2], TO: [3, 3], PI: [3, 4], PE: [3, 5], PB: [3, 6], MT: [4, 2], GO: [4, 3], BA: [4, 4], SE: [4, 5], AL: [4, 6], MS: [5, 2], DF: [5, 3], MG: [5, 4], ES: [5, 5], PR: [6, 2], SP: [6, 3], RJ: [6, 4], SC: [7, 2], RS: [8, 2] };
+  function blocoBuscas(sec, f, t) {
     const carregando = sec.querySelector('.prof-carregando'); if (carregando) carregando.remove();
     if (!t || !f.trends_id || !t.sazonalidade[f.trends_id]) { sec.appendChild(el('p', { class: 'prof-min', text: 'Sem dados de busca para esta profissão ainda.' })); return; }
-    const outros = Object.keys(t.nomes).filter(id => id !== f.trends_id);
-    let comparar = outros.includes('ciencias-contabeis') ? 'ciencias-contabeis' : outros[0];
-    const sel = el('select', { class: 'prof-selecao', 'aria-label': 'Comparar com outra profissão', onchange: e => { comparar = e.target.value; desenharEstados(); } }, outros.map(id => el('option', { value: id, text: t.nomes[id], selected: id === comparar })));
-    const estadosWrap = el('div');
-    const leitura = el('p', { class: 'prof-min', style: { marginTop: '8px' } });
-    const caixaEstados = el('div', { class: 'prof-caixa' }, el('div', { class: 'prof-grafico-cab' }, el('h3', { text: 'Onde o curso pesa mais nas buscas' }), el('label', { class: 'prof-min' }, 'Comparar com ', sel)), estadosWrap, leitura);
-    const saz = t.sazonalidade[f.trends_id];
+    const a = f.trends_id, outros = Object.keys(t.nomes).filter(id => id !== a);
+    let b = outros.includes('ciencias-contabeis') ? 'ciencias-contabeis' : outros[0];
+    const sel = el('select', { class: 'prof-selecao', 'aria-label': 'Comparar com outra profissão', onchange: e => { b = e.target.value; desenhar(); } }, outros.map(id => el('option', { value: id, text: t.nomes[id], selected: id === b })));
+    const mapas = el('div', { class: 'prof-mapas-uf' });
+    const escala = el('div', { class: 'prof-escala-uf' });
+    const leitura = el('p', { class: 'prof-min prof-espaco' });
+    const tabela = el('details', { class: 'prof-tabela-uf' });
+    const saz = t.sazonalidade[a];
     const maxMes = saz.indexOf(Math.max(...saz)), minMes = saz.indexOf(Math.min(...saz));
     const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-    const caixaSaz = el('div', { class: 'prof-caixa' }, el('div', { class: 'prof-grafico-cab' }, el('h3', { text: 'Quando o Brasil pesquisa ' + f.nome }), el('span', { class: 'prof-min', text: 'média do ano = 100' })), IG().sazonalidade({ valores: saz }),
-      el('p', { class: 'prof-min', style: { marginTop: '8px' }, text: `O pico é em ${meses[maxMes]} (${saz[maxMes]}) e o vale em ${meses[minMes]} (${saz[minMes]}). Em cursos de saúde, os picos acompanham o começo dos semestres; em Medicina e Engenharia, o Sisu de janeiro.` }));
-    sec.append(el('div', { class: 'prof-duas' }, caixaEstados, caixaSaz), el('p', { class: 'prof-fonte-nota', text: t.fonte + '. ' + t.nota }));
-    function desenharEstados() {
-      estadosWrap.textContent = '';
-      const a = f.trends_id, b = comparar;
-      const itens = t.estados.map(e => ({ uf: e.uf, nome: e.nome, regiao: e.regiao, a: e.valores[a] || 0, b: e.valores[b] || 0 }));
-      const topA = [...itens].sort((x, y) => y.a - x.a).slice(0, 6), botA = [...itens].sort((x, y) => x.a - y.a).slice(0, 2);
-      const lista = [...topA, ...botA];
-      const maxV = Math.max(...itens.map(i => Math.max(i.a, i.b)));
-      estadosWrap.appendChild(IG().barras({ itens: lista.map(i => ({ rotulo: `${i.nome} (${i.uf})`, valor: i.a, sub: i.regiao, destaque: false })), max: maxV, sufixo: '%', larguraRotulo: 190, rotulo: `Parcela das buscas por estado: ${f.nome}` }));
-      estadosWrap.appendChild(el('p', { class: 'prof-min', style: { margin: '6px 0' }, text: `${t.nomes[b]}, nos mesmos estados:` }));
-      estadosWrap.appendChild(IG().barras({ itens: lista.map(i => ({ rotulo: `${i.nome} (${i.uf})`, valor: i.b, sub: i.regiao, destaque: true })), max: maxV, sufixo: '%', larguraRotulo: 190, rotulo: `Parcela das buscas por estado: ${t.nomes[b]}` }));
-      const regA = regiaoDominante(itens, 'a'), regB = regiaoDominante(itens, 'b');
-      leitura.textContent = `${f.nome} pesa mais ${regA}; ${t.nomes[b]} pesa mais ${regB}. Seis estados onde ${f.nome} mais pesa e os dois onde menos pesa.`;
+    sec.append(el('h3', { class: 'prof-sub', text: 'Onde e quando se busca' }),
+      el('div', { class: 'prof-buscas' },
+        el('figure', { class: 'prof-caixa prof-buscas-mapa' },
+          el('figcaption', { class: 'prof-grafico-cab' }, el('b', { text: 'Onde o curso pesa mais nas buscas' }), el('label', { class: 'prof-min' }, 'Comparar com ', sel)),
+          el('div', { class: 'prof-buscas-corpo' }, mapas, el('div', { class: 'prof-buscas-lado' }, escala, leitura, tabela))),
+        el('figure', { class: 'prof-caixa prof-buscas-meses' },
+          el('figcaption', { class: 'prof-grafico-cab' }, el('b', { text: 'Quando o Brasil pesquisa ' + f.nome }), el('span', { class: 'prof-min', text: 'média do ano = 100' })),
+          IG() ? IG().sazonalidade({ valores: saz }) : null,
+          el('p', { class: 'prof-min prof-espaco', text: `O pico é em ${meses[maxMes]} (${saz[maxMes]}) e o vale em ${meses[minMes]} (${saz[minMes]}). Em cursos de saúde, os picos acompanham o começo dos semestres; em Medicina e Engenharia, o Sisu de janeiro.` }))),
+      fonteLinha(f, [], `${t.fonte}. ${t.nota}`));
+    function desenhar() {
+      const todos = t.estados.flatMap(e => [e.valores[a] || 0, e.valores[b] || 0]);
+      const lo = Math.min(...todos), hi = Math.max(...todos);
+      const mapa = id => el('div', { class: 'prof-mapa-uf' },
+        el('p', { class: 'prof-mapa-uf-tit', text: t.nomes[id] }),
+        el('div', { class: 'prof-uf-grade', role: 'img', 'aria-label': `Peso de ${t.nomes[id]} nas buscas de cada estado. Os valores estão na tabela logo abaixo.` },
+          t.estados.map(e => {
+            const pos = GRADE_UF[e.uf]; if (!pos) return null;
+            const v = e.valores[id] || 0, r = (v - lo) / ((hi - lo) || 1);
+            return el('span', { class: 'prof-uf' + (r >= 0.55 ? ' prof-uf--claro' : ''), style: { gridRow: pos[0], gridColumn: pos[1], '--v': r.toFixed(3) }, title: `${e.nome}: ${v}%` },
+              el('b', { text: e.uf }), el('span', { text: v + '%' }));
+          })));
+      mapas.textContent = ''; mapas.append(mapa(a), mapa(b));
+      escala.textContent = '';
+      escala.append(el('span', { class: 'prof-num', text: lo + '%' }), el('i', { 'aria-hidden': 'true' }), el('span', { class: 'prof-num', text: hi + '%' }),
+        el('span', { class: 'prof-micro prof-escala-uf-rot', text: 'parcela de cada curso nas buscas do estado, entre os 7 cursos comparados' }));
+      leitura.textContent = `${f.nome} pesa mais ${regiaoDominante('a')}; ${t.nomes[b]} pesa mais ${regiaoDominante('b')}.`;
+      const linhas = [...t.estados].sort((x, y) => (y.valores[a] || 0) - (x.valores[a] || 0));
+      tabela.textContent = '';
+      tabela.append(el('summary', null, 'Ver os 27 estados em tabela'),
+        el('div', { class: 'prof-rolagem' }, el('table', { class: 'prof-tabela' },
+          el('thead', null, el('tr', null, el('th', { scope: 'col', text: 'Estado' }), el('th', { scope: 'col', text: t.nomes[a] }), el('th', { scope: 'col', text: t.nomes[b] }))),
+          el('tbody', null, linhas.map(e => el('tr', null, el('th', { scope: 'row', text: `${e.nome} (${e.uf})` }), el('td', { class: 'prof-num', text: (e.valores[a] || 0) + '%' }), el('td', { class: 'prof-num', text: (e.valores[b] || 0) + '%' })))))));
     }
-    function regiaoDominante(itens, k) {
-      const soma = {}; const n = {};
-      itens.forEach(i => { soma[i.regiao] = (soma[i.regiao] || 0) + i[k]; n[i.regiao] = (n[i.regiao] || 0) + 1; });
+    function regiaoDominante(k) {
+      const id = k === 'a' ? a : b, soma = {}, n = {};
+      t.estados.forEach(e => { soma[e.regiao] = (soma[e.regiao] || 0) + (e.valores[id] || 0); n[e.regiao] = (n[e.regiao] || 0) + 1; });
       const ordem = Object.keys(soma).sort((x, y) => soma[y] / n[y] - soma[x] / n[x]);
-      const art = r => r === 'Norte' || r === 'Nordeste' || r === 'Centro-Oeste' || r === 'Sul' || r === 'Sudeste' ? 'no ' + r : 'em ' + r;
-      return `${art(ordem[0])} e ${art(ordem[1])}`;
+      return `no ${ordem[0]} e no ${ordem[1]}`;
     }
-    desenharEstados();
+    desenhar();
   }
 
   /* =========================================================
@@ -1192,6 +1340,7 @@
     /* Peças para as extensões (js/profissoes-panorama.js): as mesmas da ficha, para o desenho ficar igual */
     _util: { el, icone, aviso, botao, link, citar, prosa, brl, dataBR, normalizar, nomeArea, corArea, salvarEstado, lerJson, limpezas, IG, EIXOS,
       temFicha, temPanorama, pedir, semMovimento, contar, ir, fontesGuardadas, abrirFonte, numeroFonte, fontesMini, dadosPanorama,
-      topoPagina, cabecalho, tileFato, capitulo, indiceCapitulos, cartasViradas, linhasCargos }
+      topoPagina, cabecalho, tileFato, capitulo, indiceCapitulos, cartasViradas, linhasCargos,
+      capituloRelatorio, fonteLinha, faixaNumero, numerosProf }
   };
 })();

@@ -141,6 +141,8 @@ Duas profissões lado a lado com os 4 números, a seção "Como entrar" resumida
 | `dna`, `dna_calibrado` | não | Seis eixos de 0 a 100: `pessoas`, `pressao`, `corpo`, `rotina`, `numeros`, `criatividade` |
 | `dilemas[]` | não | `id`, `situacao`, `opcoes[]` (`texto`, `recomendada`), `resposta`, `fontes[]` |
 | `trends_id` | não | Chave em `trends/trends.json` para "Onde e quando se busca" |
+| `manchetes` | não | Frases-tese do relatório (2026-10-17), por capítulo: `trabalho`, `formacao`, `dinheiro`, `mercado`, `ninguem`, `combina`. Cada uma com `titulo` (até 70 caracteres), `linha` (apoio, até 200) e `fontes`. Só fatos que já estão na ficha; número sempre com fonte; nunca "você deveria". Sem elas, o capítulo abre só com a faixa |
+| `contexto.curso_censo` | não | Nome do curso no Censo, quando é diferente do nome da ficha (Sistemas: "Sistemas de Informação"); vai para o ranking das matrículas |
 | `secoes.quanto_ganha.chute` | não | `pergunta` (a pergunta do palpite). Desde a repaginação (2026-10-16), `min`, `max`, `passo`, `inicial` e `segunda` ficam no JSON, mas o app não os usa: as 4 faixas saem da média |
 | `secoes.quanto_ganha.medias[].faixa` | não | `de`, `ate`, `rotulo` (percentis 25 e 75 ou faixa comum de contratação) |
 
