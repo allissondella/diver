@@ -261,30 +261,125 @@
 .ps-resumo__erros ol { margin: 0; padding-left: 1.2em; display: grid; gap: var(--esp-3); }
 .ps-resumo__passos { margin-top: var(--esp-1); color: var(--texto-suave); font-family: var(--fonte-mono); font-size: var(--t-sm); }
 
+/* ---------- Jogo em tela toda (Tiro ao Alvo, 2026-10-17) ----------
+   A tela da Sala vira uma camada do tamanho da janela, e a barra de cima (Sala, título, botões) fica por cima do
+   jogo, num degradê. O fundo é um contêiner de tamanho: o que fica baixo demais (celular deitado) se ajusta. */
+body.sd-trava { overflow: hidden; }
+.tela.sd--tela-cheia {
+  position: fixed; inset: 0; z-index: var(--z-flutuante); max-width: none; margin: 0;
+  container: sd-cheia / size;
+  --sd-topo: calc(44px + var(--esp-2) * 2 + env(safe-area-inset-top));
+}
+.ambiente-testes .tela.sd--tela-cheia { top: var(--faixa); }
+.sd--tela-cheia > .sd-barra {
+  position: absolute; z-index: var(--z-acima-2); inset: 0 0 auto; margin: 0;
+  padding: calc(var(--esp-2) + env(safe-area-inset-top)) calc(var(--esp-3) + env(safe-area-inset-right)) var(--esp-2) calc(var(--esp-3) + env(safe-area-inset-left));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--fundo-0) 88%, transparent), transparent);
+}
+.sd--tela-cheia > .sd-jogo { position: absolute; inset: 0; }
+.sd--tela-cheia .sd-barra__titulo { min-width: 0; font-size: var(--t-lg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sd-barra > .sd-tiro__cheia { margin-left: auto; }
+.sd-barra > .sd-tiro__cheia + .sd-barra__ranking { margin-left: 0; }
+@media (max-width: 479px) { .sd-barra__texto { display: none; } }
+
 /* ---------- Tiro ao Alvo ---------- */
-.sd-tiro { position: relative; display: grid; gap: var(--esp-3); }
-.sd-tiro__regra { margin: 0; text-align: center; font-size: var(--t-xl); font-weight: 800; color: var(--amarelo); min-height: 1.5em; }
+.sd-tiro { position: absolute; inset: 0; overflow: hidden; background: var(--fundo-0); }
+.sd-tiro__palco { position: absolute; inset: 0; }
+.sd-tiro__canvas { display: block; width: 100%; height: 100%; cursor: none; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.sd-tiro__canvas:focus { outline: none; }
+/* A regra e o placar ficam por cima do jogo (só durante a partida; na abertura o cartão já diz tudo) */
+.sd-tiro__topo {
+  position: absolute; z-index: var(--z-acima); inset: var(--sd-topo, 0px) 0 auto;
+  display: grid; justify-items: center; gap: var(--esp-2); padding: 0 calc(var(--esp-3) + env(safe-area-inset-right)) 0 calc(var(--esp-3) + env(safe-area-inset-left));
+  pointer-events: none; visibility: hidden;
+}
+.sd-tiro--jogando .sd-tiro__topo { visibility: visible; }
+.sd-tiro__regra {
+  margin: 0; max-width: min(100%, 60rem); padding: var(--esp-2) var(--esp-5);
+  border-radius: var(--raio-pilula); border: 1px solid color-mix(in srgb, var(--amarelo) 35%, transparent);
+  background: color-mix(in srgb, var(--fundo-0) 74%, transparent);
+  color: var(--amarelo); font-size: var(--t-2xl); font-weight: 800; line-height: 1.15; letter-spacing: -.01em; text-align: center; text-wrap: balance;
+}
 .sd-tiro__regra--nova { animation: sd-pulsar 600ms ease; }
 @keyframes sd-pulsar { 0% { transform: scale(0.9); opacity: 0.4; } 60% { transform: scale(1.06); opacity: 1; } 100% { transform: scale(1); } }
-.sd-tiro__hud { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--esp-2) var(--esp-5); min-height: 28px; font: 700 var(--t-md) var(--fonte-mono); }
-.sd-tiro__pontos { display: inline-flex; align-items: center; gap: var(--esp-1); color: var(--amarelo); font-size: var(--t-lg); }
-.sd-tiro__vidas { display: inline-flex; gap: var(--esp-1); }
-.sd-tiro__gota { width: 14px; height: 18px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: var(--turquesa-claro); }
-.sd-tiro__gota--vazia { background: transparent; box-shadow: inset 0 0 0 2px rgba(230, 241, 255, 0.25); }
-.sd-tiro__seq { color: var(--texto-suave); }
-.sd-tiro__nivel { padding: 2px var(--esp-2); border-radius: var(--raio-pequeno); background: var(--superficie-turquesa); color: var(--turquesa-claro); }
-.sd-tiro__agua { position: relative; width: 90px; height: 10px; border-radius: 5px; background: rgba(230, 241, 255, 0.1); overflow: hidden; }
-.sd-tiro__agua-barra { position: absolute; inset: 0 auto 0 0; background: var(--turquesa-claro); transition: width var(--dur-rapida) linear; }
-.sd-tiro__palco { position: relative; width: 100%; border-radius: var(--raio); overflow: hidden; border: 1px solid var(--borda); }
-.sd-tiro__canvas { display: block; width: 100%; cursor: none; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
-.sd-tiro__canvas:focus { outline: none; }
-.sd-tiro__abertura { position: absolute; inset: 3.4rem 0 0; display: grid; place-items: center; padding: var(--esp-4); background: rgba(6, 23, 45, 0.55); }
+.sd-tiro__dados { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--esp-2); }
+.sd-tiro__dados > span {
+  display: inline-flex; align-items: center; gap: var(--esp-1); min-height: 32px; padding: 0 var(--esp-3);
+  border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--fundo-0) 68%, transparent);
+  font: 700 var(--t-sm) var(--fonte-mono); color: var(--texto); white-space: nowrap;
+}
+.sd-tiro__dados > .sd-tiro__pontos { color: var(--amarelo); font-size: var(--t-md); }
+.sd-tiro__pontos .icone { width: 16px; height: 16px; }
+.sd-tiro__dados > .sd-tiro__nivel { color: var(--turquesa-claro); }
+.sd-tiro__dados > .sd-tiro__seq { color: var(--texto-suave); }
+.sd-tiro__dados > .sd-tiro__agua { position: relative; width: 96px; padding: 0; overflow: hidden; }
+.sd-tiro__agua-barra { position: absolute; inset: 8px 8px; border-radius: var(--raio-pilula); background: var(--turquesa-claro); transform-origin: left; transition: width var(--dur-rapida) linear; }
+.sd-tiro__agua-barra { max-width: calc(100% - 16px); }
+
+/* Abertura e fim: um cartão no desenho das Profissões, no meio do palco */
+.sd-tiro__abertura {
+  position: absolute; z-index: var(--z-acima); inset: 0; display: grid; overflow-y: auto;
+  padding: var(--sd-topo, var(--esp-4)) calc(var(--esp-4) + env(safe-area-inset-right)) calc(var(--esp-4) + env(safe-area-inset-bottom)) calc(var(--esp-4) + env(safe-area-inset-left));
+  background: color-mix(in srgb, var(--fundo-0) 58%, transparent);
+}
 .sd-tiro__abertura[hidden] { display: none; }
-.sd-tiro__cartao { display: grid; gap: var(--esp-3); max-width: 460px; width: 100%; }
-.sd-tiro__cartao .cartao + .cartao { margin: 0; }
-.sd-tiro__regras { margin: 0; padding-left: 1.2em; display: grid; gap: var(--esp-1); color: var(--texto-suave); }
-.sd-tiro__total { font-size: var(--t-lg); }
-.sd-tiro__total strong { color: var(--amarelo); font-family: var(--fonte-mono); }
+.sd-tiro__cartao {
+  margin: auto; width: min(100%, 540px); display: grid; gap: var(--esp-4); padding: var(--esp-6) var(--esp-5);
+  border-radius: var(--raio-xl); border: 1px solid color-mix(in srgb, var(--turquesa) 40%, transparent);
+  background: linear-gradient(165deg, var(--superficie-2), var(--fundo-0)); box-shadow: var(--sombra-4);
+}
+.sd-tiro__cartao > * { margin: 0; }
+.sd-tiro__rotulo { display: inline-flex; align-items: center; gap: var(--esp-2); font-size: var(--t-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--turquesa-claro); }
+.sd-tiro__rotulo::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.sd-tiro__cartao--fim .sd-tiro__rotulo { color: var(--coral); }
+.sd-tiro__titulo { font-size: var(--t-3xl); font-weight: 800; line-height: 1.05; letter-spacing: -.02em; }
+.sd-tiro__cartao--fim .sd-tiro__titulo { color: var(--coral); }
+.sd-tiro__lead, .sd-tiro__porque { font-size: var(--t-lg); color: var(--texto-suave); }
+.sd-tiro__porque { color: var(--texto); }
+.sd-tiro__passos { list-style: none; padding: 0; display: grid; gap: var(--esp-3); }
+.sd-tiro__passos li { display: grid; grid-template-columns: 2.4em minmax(0, 1fr); gap: var(--esp-2); align-items: baseline; }
+.sd-tiro__n { font: 800 var(--t-lg) var(--fonte-mono); color: var(--turquesa-claro); }
+.sd-tiro__passos p { margin: 0; color: var(--texto-suave); }
+.sd-tiro__passos b { color: var(--texto); }
+.sd-tiro__numeros { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--esp-2); } /* os números sempre numa linha só */
+.sd-tiro__numeros > div { display: grid; gap: 2px; padding: var(--esp-3) var(--esp-4); border-radius: var(--raio-md); background: color-mix(in srgb, var(--fundo-0) 55%, transparent); }
+.sd-tiro__numeros dt { font-size: var(--t-xs); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-suave); }
+.sd-tiro__numeros dd { margin: 0; font: 800 var(--t-2xl) var(--fonte-mono); line-height: 1.1; color: var(--texto); }
+.sd-tiro__numeros dd.sd-tiro__destaque { color: var(--amarelo); }
+.sd-tiro__acoes { margin-top: var(--esp-1); }
+
+/* Celular: a regra num tamanho que cabe */
+@media (max-width: 479px) {
+  .sd--tela-cheia > .sd-barra { gap: var(--esp-2); }
+  .sd--tela-cheia .sd-barra__titulo { font-size: var(--t-md); }
+  .sd-tiro__regra { font-size: var(--t-xl); padding: var(--esp-2) var(--esp-4); }
+  .sd-tiro__cartao { padding: var(--esp-5) var(--esp-4); }
+  .sd-tiro__titulo { font-size: var(--t-2xl); }
+  .sd-tiro__numeros > div { padding: var(--esp-2) var(--esp-3); }
+  .sd-tiro__numeros dd { font-size: var(--t-xl); }
+  .sd-tiro__dados > .sd-tiro__agua { width: 64px; }
+}
+/* Tela baixa (celular deitado): tudo mais compacto, para sobrar campo de jogo */
+@container sd-cheia (max-height: 479px) {
+  .sd-tiro__topo { gap: var(--esp-1); }
+  .sd-tiro__regra { font-size: var(--t-lg); padding: var(--esp-1) var(--esp-4); }
+  .sd-tiro__dados > span { min-height: 26px; font-size: var(--t-xs); }
+  .sd-tiro__dados > .sd-tiro__pontos { font-size: var(--t-sm); }
+  .sd-tiro__titulo { font-size: var(--t-2xl); }
+  .sd-tiro__lead { display: none; }
+  .sd-tiro__passos { gap: var(--esp-2); }
+  .sd-tiro__numeros dd { font-size: var(--t-xl); }
+  /* o cartão deita junto: duas colunas, para caber sem rolar */
+  .sd-tiro__cartao { width: min(100%, 860px); gap: var(--esp-2) var(--esp-5); padding: var(--esp-4) var(--esp-5); align-items: start;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "rot pas" "tit pas" "num pas" "aco pas" ". pas"; }
+  .sd-tiro__cartao--fim { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-areas: "rot num" "tit num" "por aco" "por ."; }
+  .sd-tiro__rotulo { grid-area: rot; }
+  .sd-tiro__titulo { grid-area: tit; }
+  .sd-tiro__porque { grid-area: por; }
+  .sd-tiro__passos { grid-area: pas; }
+  .sd-tiro__numeros { grid-area: num; }
+  .sd-tiro__acoes { grid-area: aco; margin: 0; }
+}
 
 /* ---------- Batata Quente ---------- */
 .sd-bat { display: grid; gap: var(--esp-4); }

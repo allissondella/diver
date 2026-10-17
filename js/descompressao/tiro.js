@@ -143,52 +143,92 @@
     icone: 'i-alvo',
     duracao: 'quanto você aguentar',
     diario: false,
+    telaCheia: true, // o jogo ocupa a janela inteira (2026-10-17); a barra da Sala fica por cima
     descricao: 'Pistola d\'água na mão: acerte só as placas da regra. Placa errada ou placa certa que escapa: eliminação. Cada nível fica mais rápido.',
     abrir(ctx) {
       let jogo = null; // partida em andamento
       let quadro = 0;
       let limpar = [];
 
-      const hud = h('div', { class: 'sd-tiro__hud', 'aria-live': 'off' });
+      // Tela toda (2026-10-17): o palco é a janela inteira; a regra e o placar ficam por cima dele, em pílulas
+      const hudDados = h('div', { class: 'sd-tiro__dados' });
+      const hud = h('div', { class: 'sd-tiro__hud', 'aria-live': 'off' }, hudDados);
       const regraEl = h('p', { class: 'sd-tiro__regra', id: 'sd-tiro-regra', 'aria-live': 'assertive' });
+      const topo = h('div', { class: 'sd-tiro__topo' }, regraEl, hud);
       const tela = h('canvas', { class: 'sd-tiro__canvas', id: 'sd-tiro-canvas', tabindex: '-1', 'aria-label': 'Área de tiro: mire e clique nas placas da regra' });
       const palco = h('div', { class: 'sd-tiro__palco' }, tela);
       const abertura = h('div', { class: 'sd-tiro__abertura' });
-      ctx.container.replaceChildren(h('div', { class: 'sd-tiro' }, regraEl, hud, palco, abertura));
+      const raiz = h('div', { class: 'sd-tiro' }, palco, topo, abertura);
+      ctx.container.replaceChildren(raiz);
       const g = tela.getContext('2d');
       let L = 0;
       let A = 0;
+      let T = 0; // onde começa o campo das placas (abaixo da regra e do placar)
       let mira = null; // { x, y } do ponteiro (mouse); no toque, só aparece no disparo
 
+      // "Tela cheia" de verdade (sem as barras do navegador), onde ele deixa; o botão fica na barra de cima
+      const podeTelaCheia = !!(document.fullscreenEnabled && document.documentElement.requestFullscreen);
+      const botaoCheia = podeTelaCheia ? h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-tiro__cheia', 'aria-pressed': 'false', onclick: alternarTelaCheia }) : null;
+      function pintarCheia() {
+        const on = !!document.fullscreenElement;
+        botaoCheia.setAttribute('aria-pressed', String(on));
+        botaoCheia.replaceChildren(icone(on ? 'i-recolher' : 'i-expandir'), h('span', { class: 'sd-barra__texto', text: on ? 'Sair da tela cheia' : 'Tela cheia' }));
+      }
+      function alternarTelaCheia() {
+        const pedido = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen({ navigationUI: 'hide' });
+        if (pedido && pedido.catch) pedido.catch(() => { /* o navegador recusou: segue na janela */ });
+        tela.focus({ preventScroll: true });
+      }
+      if (botaoCheia && ctx.barra) {
+        pintarCheia();
+        ctx.barra(botaoCheia);
+        document.addEventListener('fullscreenchange', pintarCheia);
+        limpar.push(() => document.removeEventListener('fullscreenchange', pintarCheia));
+      }
+
+      /** O campo das placas: do pé do placar até um pouco acima do balcão */
+      const baseCampo = () => A * 0.66;
+      const meioCampo = () => (T + baseCampo()) / 2;
       function medir() {
         const largura = Math.max(280, palco.clientWidth || 320);
-        const alturaUtil = window.innerHeight - (palco.getBoundingClientRect().top || 160) - 24;
-        const altura = Math.round(Math.max(320, Math.min(largura * 0.72, alturaUtil, 620)));
+        const altura = Math.max(240, palco.clientHeight || 320);
         const dpr = Math.min(2, window.devicePixelRatio || 1);
         tela.width = Math.round(largura * dpr);
         tela.height = Math.round(altura * dpr);
-        tela.style.height = `${altura}px`;
         g.setTransform(dpr, 0, 0, dpr, 0, 0);
         L = largura;
         A = altura;
+        const r = topo.getBoundingClientRect();
+        T = Math.min(A * 0.4, Math.max(0, Math.round(r.bottom - palco.getBoundingClientRect().top)) + 8);
         if (!jogo) desenharParado();
+        else desenhar();
       }
 
       /* ---------- Abertura e fim ---------- */
+      /** Abertura e fim: um cartão só, no desenho das Profissões (rótulo, título, passos numerados e "Em números") */
       function mostrarAbertura(fim = null) {
         const recorde = ctx.recorde();
+        raiz.classList.remove('sd-tiro--jogando');
         abertura.hidden = false;
-        abertura.replaceChildren(h('div', { class: 'cartao sd-tiro__cartao' },
-          fim ? h('h2', { class: 'texto-erro', text: fim.motivo === 'errada' ? 'Placa errada!' : 'Deixou escapar!' }) : h('h2', { text: 'Pistola carregada' }),
-          fim ? h('p', { text: fim.porque }) : null,
-          fim ? h('p', { class: 'sd-tiro__total' }, h('strong', { text: plural(fim.pontos, 'ponto', 'pontos') }), ` · chegou ao nível ${fim.nivel}${fim.pontos >= recorde && fim.pontos > 0 ? ' · novo recorde!' : ''}`)
-            : h('ul', { class: 'sd-tiro__regras' },
-              h('li', {}, 'Cada nível tem uma regra. Acerte só as placas que combinam com ela.'),
-              h('li', {}, h('strong', { text: 'Placa errada = eliminação. Placa certa que escapa = eliminação.' })),
-              h('li', {}, 'Acertou todas as placas certas do nível? Sobe de nível, com regra nova e mais placas.'),
-              h('li', {}, '1 ponto por acerto. O nível 1 é aquecimento: do 2 em diante, segura firme!')),
-          recorde ? h('p', { class: 'texto-suave', text: `Seu recorde: ${plural(recorde, 'ponto', 'pontos')}` }) : null,
-          h('div', { class: 'acoes-linha' },
+        const numero = (rotulo, valor, destaque) => h('div', {}, h('dt', { text: rotulo }), h('dd', { class: destaque ? 'sd-tiro__destaque' : '', text: String(valor) }));
+        const corpo = fim
+          ? [h('p', { class: 'sd-tiro__rotulo', text: 'Fim da partida' }),
+            h('h2', { class: 'sd-tiro__titulo', text: fim.motivo === 'errada' ? 'Placa errada!' : 'Deixou escapar!' }),
+            h('p', { class: 'sd-tiro__porque', text: fim.porque }),
+            h('dl', { class: 'sd-tiro__numeros' },
+              numero('Pontos', fim.pontos, true),
+              numero('Nível', fim.nivel),
+              numero(fim.pontos >= recorde && fim.pontos > 0 ? 'Novo recorde' : 'Recorde', Math.max(recorde, fim.pontos)))]
+          : [h('p', { class: 'sd-tiro__rotulo', text: 'Pistola carregada' }),
+            h('h2', { class: 'sd-tiro__titulo', text: 'Tiro ao Alvo' }),
+            h('p', { class: 'sd-tiro__lead', text: 'Pistola d\'água na mão: acerte só as placas da regra. 1 ponto por acerto.' }),
+            h('ol', { class: 'sd-tiro__passos' },
+              h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: '01' }), h('p', {}, h('b', { text: 'Leia a regra. ' }), 'Cada nível tem uma, e só valem as placas que combinam com ela.')),
+              h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: '02' }), h('p', {}, h('b', { text: 'Errou ou deixou escapar, acabou. ' }), 'Placa errada ou placa certa que some: eliminação.')),
+              h('li', {}, h('span', { class: 'sd-tiro__n', 'aria-hidden': 'true', text: '03' }), h('p', {}, h('b', { text: 'Acertou todas, sobe de nível. ' }), 'Regra nova e mais placas. O nível 1 é aquecimento: do 2 em diante, segura firme!'))),
+            recorde ? h('dl', { class: 'sd-tiro__numeros' }, numero('Seu recorde', plural(recorde, 'ponto', 'pontos'), true)) : null];
+        abertura.replaceChildren(h('div', { class: 'sd-tiro__cartao' + (fim ? ' sd-tiro__cartao--fim' : '') }, ...corpo,
+          h('div', { class: 'acoes-linha sd-tiro__acoes' },
             h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-tiro-comecar', onclick: comecar }, icone('i-alvo'), fim ? 'Jogar de novo' : 'Começar'),
             fim ? h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala') : null)));
         const b = abertura.querySelector('#sd-tiro-comecar');
@@ -197,12 +237,13 @@
 
       function desenharParado() {
         desenharFundo();
-        desenharPistola(L / 2, A * 0.35, 0);
+        desenharPistola(L / 2, meioCampo(), 0);
       }
 
       /* ---------- Partida ---------- */
       function comecar() {
         abertura.hidden = true;
+        raiz.classList.add('sd-tiro--jogando');
         jogo = {
           r: Math.random, t: 0, pontos: 0, nivel: 0, agua: TANQUE, recarga: 0, placas: [], respingos: [], jatos: [],
           regra: null, pausa: 0, proxima: 0.6, coice: 0, fim: false, acertosNivel: 0, certasCriadas: 0, p: null,
@@ -253,18 +294,21 @@
         if (certa) jogo.certasCriadas++;
         const raio = Math.max(26, Math.min(54, L / 11)) * p.raio;
         const margem = raio + 8;
-        // Procura um lugar livre (placa nascendo em cima de outra seria injusto)
+        const mexe = !UI.movimentoReduzido;
+        const amp = mexe ? p.balanca : 0;
+        // Procura um lugar livre (placa nascendo em cima de outra seria injusto), sempre abaixo da regra e do placar
+        const cima = T + margem + amp;
+        const baixo = Math.max(cima + 10, baseCampo() - amp);
         let x = 0;
         let y = 0;
         for (let t = 0; t < 12; t++) {
           x = margem + jogo.r() * (L - margem * 2);
-          y = margem + 30 + jogo.r() * Math.max(10, A * 0.64 - margem - 30);
+          y = cima + jogo.r() * (baixo - cima);
           if (!jogo.placas.some((o) => Math.hypot(o.x - x, o.y - y) < o.raio + raio + 8)) break;
         }
-        const mexe = !UI.movimentoReduzido;
         jogo.placas.push({ ...item, certa, x, y, y0: y, raio, nasceu: jogo.t, vida: p.vida * (0.9 + jogo.r() * 0.2),
           vx: mexe && p.desliza ? (jogo.r() < 0.5 ? -1 : 1) * p.desliza * (0.7 + jogo.r() * 0.6) : 0,
-          amp: mexe ? p.balanca : 0, fase: jogo.r() * Math.PI * 2, regra: jogo.regra });
+          amp, fase: jogo.r() * Math.PI * 2, regra: jogo.regra });
       }
 
       function atualizar(dt) {
@@ -368,7 +412,7 @@
         const chave = `${jogo.pontos}|${jogo.nivel}|${jogo.acertosNivel}|${jogo.agua}`;
         if (soSeMudou && chave === hudAntes) return;
         hudAntes = chave;
-        hud.replaceChildren(
+        hudDados.replaceChildren(
           h('span', { class: 'sd-tiro__pontos' }, icone('i-estrela'), `${jogo.pontos}`),
           h('span', { class: 'sd-tiro__nivel', text: `Nível ${jogo.nivel}` }),
           h('span', { class: 'sd-tiro__seq', text: `${jogo.acertosNivel}/${jogo.p.meta} do nível` }),
@@ -562,7 +606,7 @@
           g.textBaseline = 'middle';
           g.fillStyle = COR.claro;
           g.font = `800 ${Math.max(16, Math.min(22, L / 26))}px "Plus Jakarta Sans", system-ui, sans-serif`;
-          g.fillText(`NÍVEL ${jogo.nivel} · ${jogo.p.meta} placas certas`, L / 2, A * 0.3);
+          g.fillText(`NÍVEL ${jogo.nivel} · ${jogo.p.meta} placas certas`, L / 2, meioCampo() - 26);
           g.fillStyle = COR.amarelo;
           let tam = Math.max(18, Math.min(34, L / 18));
           g.font = `800 ${tam}px "Plus Jakarta Sans", system-ui, sans-serif`;
@@ -570,9 +614,9 @@
             tam -= 1;
             g.font = `800 ${tam}px "Plus Jakarta Sans", system-ui, sans-serif`;
           }
-          g.fillText(jogo.regra.texto, L / 2, A * 0.42);
+          g.fillText(jogo.regra.texto, L / 2, meioCampo() + 18);
         }
-        const m = mira || { x: L / 2, y: A * 0.35 };
+        const m = mira || { x: L / 2, y: meioCampo() };
         desenharPistola(m.x, m.y, jogo.coice);
         if (mira) desenharMira(mira.x, mira.y);
       }
@@ -595,13 +639,15 @@
       tela.addEventListener('pointermove', aoMover);
       tela.addEventListener('pointerleave', aoSair);
       tela.addEventListener('pointerdown', aoAtirar);
-      const aoRedim = () => medir();
-      window.addEventListener('resize', aoRedim);
-      limpar = [() => window.removeEventListener('resize', aoRedim)];
+      // O palco muda de tamanho com a janela, o celular girando e a tela cheia: mede de novo
+      const observador = typeof ResizeObserver === 'function' ? new ResizeObserver(() => medir()) : null;
+      if (observador) { observador.observe(palco); observador.observe(topo); } // a regra pode quebrar em duas linhas
+      else window.addEventListener('resize', medir);
+      limpar.push(() => (observador ? observador.disconnect() : window.removeEventListener('resize', medir)));
 
       ctx.guia([
         { alvo: '#sd-tiro-canvas', desenho: 'alvo', titulo: 'Pistola d\'água', texto: `Mire e clique (ou toque) nas placas. A pistola tem ${TANQUE} jatos e recarrega sozinha.` },
-        { alvo: '#sd-tiro-regra', desenho: 'estrela', titulo: 'Leia a regra', texto: 'Cada nível tem uma regra. Acertar uma placa que NÃO combina com ela elimina na hora.' },
+        { alvo: '.sd-tiro__passos', desenho: 'estrela', titulo: 'Leia a regra', texto: 'Cada nível tem uma regra, que aparece no alto da tela. Acertar uma placa que NÃO combina com ela elimina na hora.' },
         { desenho: 'relogio', titulo: 'Não deixe escapar', texto: 'O anel amarelo mostra quanto tempo a placa fica. Placa certa que some também elimina. Acertou todas as certas do nível? Sobe de nível. 1 ponto por acerto; vale o seu recorde.' },
       ]);
       medir();
@@ -616,6 +662,7 @@
           cancelAnimationFrame(quadro);
           jogo = null;
           limpar.forEach((f) => f());
+          if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => { /* já saiu */ });
         },
       };
     },
