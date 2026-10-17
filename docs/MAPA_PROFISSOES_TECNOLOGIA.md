@@ -87,11 +87,11 @@ O kit v1.2 trazia a sua própria versão de `js/profissoes.js` e `css/profissoes
 
 **Peças e regras:**
 
-- `js/profissoes.js` tem `registrarExtensao` e `_util` com as peças comuns que a ficha e o panorama usam: `topoPagina`, `capaRelatorio` e `linhaEmNumeros` (capa e "Em números"), `caixaResumo` ("Ver resumo"), `capituloRelatorio` (faixa numerada e frase-tese), `indiceCapitulos`, `calloutsNumerados`, `fonteLinha` ("Fonte:"), `linhasCargos`, `regua`, `dominioDe` e `fontesGuardadas`.
+- `js/profissoes.js` tem `registrarExtensao` e `_util` com as peças comuns que a ficha e o panorama usam: `topoPagina`, `capaRelatorio` e `linhaEmNumeros` (capa e "Em números"), `caixaResumo` ("Ver resumo"), `capituloRelatorio` (faixa numerada e frase-tese), `indiceCapitulos`, `calloutsNumerados`, `fonteLinha` ("Fonte:"), `linhasCargos`, `regua`, `dominioDe`, `fontesGuardadas` e, desde 2026-10-17, `palpite` (a régua do palpite), `semReais` e `revelarReais` (o "R$ ?" no meio do texto).
 - O roteador do app manda `#profissoes-tecnologia[-jogo]` e `#tecnologia-<id>` para a tela Profissões. O módulo entra no pacote `profissoes`.
 - **Quem vê:** `indice.json` → `panoramas[].status`. Em `rascunho`, a equipe e o modo local veem; o aluno vê "Em breve" com "Quero ver este panorama" (vira `profissao_pedido` com `profissao: "tecnologia"`).
-- **Estado:** `diver:v1:profissoes` → `tec`. Os campos são `areasVistas`, `jogo` e `jogoConcluido`. Os campos antigos da aposta e do chute por área (`salario`, `chutes["tecnologia:<área>"]`) ficam guardados, mas o app não os usa mais.
-- **Log:** os 4 tipos `tecnologia_*` e `profissao_materias_chave` com `profissao: "tecnologia"` (desde a repaginação, o panorama não grava mais `profissao_chute_salario`).
+- **Estado:** `diver:v1:profissoes` → `tec`. Os campos são `areasVistas`, `jogo`, `jogoConcluido` e, desde 2026-10-17, `salario` de novo: o palpite de cada área e o "Quem ganha mais?" (formato em `docs/MAPA_PROFISSOES_INTERACOES.md`, "As artes e o salário depois do palpite nos panoramas"). O que ficou da aposta e do chute por área de antes da repaginação conta como "já viu"; `chutes["tecnologia:<área>"]` continua guardado, sem uso.
+- **Log:** os 4 tipos `tecnologia_*` e `profissao_materias_chave` com `profissao: "tecnologia"`. Da repaginação até 2026-10-17, o panorama não gravava `profissao_chute_salario`; agora grava de novo, com `panorama` e `area` (ou `jogo: "quem-ganha-mais"`).
 - **Conquista geral "Dez em dez"** (abrir as dez áreas), no Perfil.
 - **Admin:** no bloco do Mapa, as áreas mais vistas, quem começa e quem termina o jogo, e a área que mais fica em 1º lugar.
 - **Tutorial:** o passo "Explore por dentro" (versão 3 do roteiro, na repaginação; versão 4 no formato de relatório). Ao publicar o panorama, suba `profissoes` em `VERSOES` (`js/tutorial.js`) só se o texto do roteiro mudar.

@@ -5,6 +5,21 @@
 
 ---
 
+## 2026-10-17 · Mapa das Profissões: uma arte para cada profissão e o salário dos panoramas só depois do palpite
+- **Pedido do usuário:** "Nas profissões faça uma arte que represente universalmente cada uma delas, para deixar ainda mais legal e curioso, quando clico em medicina ele também entrega de cara os salários aí acaba não tendo tanta graça para adivinhar". Plano de 3 etapas aprovado ("Manda bala"), com fotos depois de cada uma. **Textos e números das fichas e dos panoramas, rotas e XP iguais; nada no banco.**
+- **Feito:**
+  - **Etapa 1, as 22 artes** (`js/profissoes-artes.js`): desenhos nossos em SVG, no estilo figurinha, com as cores dos tokens e o halo da cor da área (estetoscópio com coração, soro, cabeça com Ψ, bola de pilates, cronômetro e apito, dente e escova, pata, maçã e fita métrica, pilão, microscópio, gráfico, calculadora e moedas, três pessoas, balança, quadro com ABC, prédio e guindaste, engrenagens, planta e compasso, notebook com `</>`, chip, cérebro em rede, megafone). Aparecem nos cartões do mapa, na lista, no aquário, nos selos do álbum (os que faltam na sombra), na capa da ficha, na Maré e no comparador; um detalhe mexe ao passar o mouse;
+  - **Etapa 2, o salário só depois do palpite nos panoramas** (Medicina e Tecnologia): "R$ ?" nos cartões; na página de cada especialidade, "Dar meu palpite primeiro" na capa e a régua da ficha no capítulo "O dinheiro"; a comparação de todas e a ordem "Maior salário" abrem no **"Quem ganha mais?"** (duas por vez, cinco rodadas) ou no "Prefiro ver direto"; a bolsa de residência virou palpite; o resultado do jogo de afinidade também esconde o salário. Valor em reais no meio de um texto ("O que ninguém te conta", nos panoramas e nas fichas, e o curso de residência) fica "R$ ?" até o palpite;
+  - **Etapa 3:** tutorial da área na versão 6, documentos e PR.
+- **Decisões:**
+  - o "Quem ganha mais?" usa só as especialidades com ocupação própria no Caged (as de referência repetiriam o mesmo valor) e pares com 6% ou mais de diferença; cada uma entra no máximo duas vezes;
+  - abrir o dinheiro de todas mostra também o salário de cada uma (não faz sentido esconder o que a régua já mostra); o palpite de uma especialidade abre só ela;
+  - o log reusa `profissao_chute_salario` (com `panorama` e `area`, `numero` ou `jogo`), para não mexer na regra do banco; a lista de fontes, que só abre no botão, continua com os valores;
+  - no celular, o cabeçalho do comparador põe a arte ao lado da área e deixa o nome com a largura toda; os cartões do "Quem ganha mais?" mostram só o nome e o valor.
+- **Correção junto:** a resposta do palpite da ficha escrevia "null" quando a pessoa tocava em "Prefiro ver direto".
+- **Testes:** galeria das 22 artes; fotos do mapa (cartões, álbum, lista, aquário), da ficha, da Maré e do comparador em 1440 × 900 e 390 × 844; no panorama da Medicina e no da Tecnologia, em 1440 × 900 e 390 × 844: nenhum valor em reais à vista antes do palpite, cadeado do "Maior salário", as cinco rodadas, a régua de todas e a ordem depois do jogo, a bolsa pelo teclado (o foco vai para a régua), a especialidade antes e depois do palpite, o "Prefiro ver direto", o "R$ ?" no texto da ficha, o log e nenhum erro; o jogo de afinidade e a rodada em 360 px; `auditar-design` e `--navegador`.
+- **Pendências:** merge para produção com o OK do usuário. Se o usuário quiser: artes também para as 12 especialidades da Medicina e as 10 áreas da Tecnologia.
+
 ## 2026-10-17 · Mapa das Profissões: "Na sua mira" numa linha só
 - **Pedido do usuário:** "à medida que vai caindo coisas na Mira, vai ficando um vazio imenso do lado, precisa esconder isso" (com 13 profissões na mira, a lista do cabeçalho crescia e deixava um buraco enorme ao lado do título).
 - **Feito:** no cabeçalho do mapa, "Na sua mira" ocupa **uma linha só**, da mais recente para a mais antiga; as que não cabem ficam atrás do **"+N"**, que abre a lista inteira embaixo do cabeçalho, na largura toda (como o álbum de selos). A conta de quantas cabem é refeita quando a largura muda.

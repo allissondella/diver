@@ -444,6 +444,7 @@ button.prof-pan { cursor: pointer; }
 .prof-mes-v { grid-row: 1; grid-column: 1; position: absolute; bottom: calc(50% + var(--h, 0) * 38% + 2px); font-size: var(--t-xs); font-weight: 700; color: var(--texto); }
 .prof-mes--abaixo .prof-mes-v { bottom: auto; top: calc(50% + var(--h, 0) * 38% + 2px); }
 .prof-mes-rot { margin-top: var(--esp-1); font-size: var(--t-xs); color: var(--texto-suave); }
+@media (max-width: 479px) { .prof-mes-resto { display: none; } }
 .prof-legenda { display: flex; gap: 16px; flex-wrap: wrap; font-size: var(--t-sm); color: var(--texto-suave); margin-top: 8px; }
 .prof-legenda span { display: inline-flex; align-items: center; gap: 6px; }
 .prof-legenda i { width: 14px; height: 4px; border-radius: 2px; background: var(--cor, var(--turquesa)); display: inline-block; }

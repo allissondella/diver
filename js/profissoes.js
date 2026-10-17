@@ -1498,7 +1498,7 @@
   // Cada estado é um quadradinho na posição aproximada do mapa: [linha, coluna]
   const GRADE_UF = { RR: [1, 2], AP: [1, 3], AM: [2, 2], PA: [2, 3], MA: [2, 4], CE: [2, 5], RN: [2, 6], AC: [3, 1], RO: [3, 2], TO: [3, 3], PI: [3, 4], PE: [3, 5], PB: [3, 6], MT: [4, 2], GO: [4, 3], BA: [4, 4], SE: [4, 5], AL: [4, 6], MS: [5, 2], DF: [5, 3], MG: [5, 4], ES: [5, 5], PR: [6, 2], SP: [6, 3], RJ: [6, 4], SC: [7, 2], RS: [8, 2] };
   /** Quando se busca: uma coluna por mês, a barra sobe ou desce a partir da média do ano (100); o pico em amarelo.
-      Em HTML (não SVG) para os meses ficarem legíveis no celular. */
+      Em HTML (não SVG) para os meses ficarem legíveis no celular; abaixo de 480 px, só a inicial (J F M...), que cabe em 360 px. */
   function barrasMeses(valores) {
     const MESES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
     const max = Math.max(...valores), min = Math.min(...valores);
@@ -1507,7 +1507,7 @@
       valores.map((v, i) => el('div', { class: 'prof-mes' + (v === max ? ' prof-mes--max' : '') + (v < 100 ? ' prof-mes--abaixo' : ''), title: `${MESES[i]}: ${v} (média do ano = 100)`, style: { '--h': Math.abs(v - 100) / escala } },
         el('span', { class: 'prof-mes-barra' }),
         v === max || v === min ? el('span', { class: 'prof-mes-v prof-num', text: String(v) }) : null,
-        el('span', { class: 'prof-mes-rot', text: MESES[i] }))));
+        el('span', { class: 'prof-mes-rot' }, MESES[i].charAt(0), el('span', { class: 'prof-mes-resto', text: MESES[i].slice(1) })))));
   }
   function blocoBuscas(sec, f, t) {
     const carregando = sec.querySelector('.prof-carregando'); if (carregando) carregando.remove();

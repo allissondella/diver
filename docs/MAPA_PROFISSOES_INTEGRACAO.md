@@ -110,7 +110,7 @@ Todos vão para `eventos_atividade` pelo gancho `registrar`:
 | `profissao_pedido` | `{ profissao }` (ficha "em breve" pedida) |
 | `profissao_carta` | `{ profissao, interesse }` |
 | `profissoes_cartas_inicio`, `profissoes_cartas_fim` | `{ interesse[], area }` |
-| `profissao_chute_salario` | `{ profissao, cargo, chute, media, diferenca, acertou }` (desde 2026-10-17, com a régua; antes, `faixa` no lugar de `diferenca`) |
+| `profissao_chute_salario` | `{ profissao, cargo, chute, media, diferenca, acertou }` (desde 2026-10-17, com a régua; antes, `faixa` no lugar de `diferenca`). Nos panoramas (desde 2026-10-17), `profissao` é o id do panorama e entram `panorama` e `area` (palpite de uma especialidade), `numero` (a bolsa de residência, sem `cargo`) ou `jogo: "quem-ganha-mais"` com `acertos` e `rodadas` (sem `chute`, `media` e `diferenca`) |
 | `profissao_carta_gerada` | `{ profissao, afinidade }` |
 | `profissao_dilema_voto` | `{ profissao, dilema, opcao }` |
 | `profissao_materias_chave` | `{ profissao, curso }` |

@@ -32,8 +32,10 @@
 - A resposta aparece **no mesmo lugar**: "Na mosca!" (até 10% da média), "Quase!" (até 30%), "Mais do que você imaginou" ou "Menos do que você imaginou", a diferença em reais, a média grande e a régua com a faixa comum (percentis 25 e 75) e a média. Na régua do palpite, as barras ficam verdes perto, laranja no meio do caminho e coral longe. Depois vêm os outros cargos, os pisos e o texto da ficha, tudo aberto.
 - Palpite antigo, das 4 faixas, aparece como "A média de contratação", sem o palpite.
 - A linha "Quanto ganha?" de "Em números", na capa da ficha, só leva ao capítulo ("Dar meu palpite primeiro"); depois do palpite, mostra a média. O "Ver resumo" e as frases-tese do capítulo nunca trazem o salário, e o mapa compara as profissões sem ele (2026-10-17).
+- Um valor em reais no meio do "O que ninguém te conta" ("fica em cerca de R$ 3,8 mil") aparece como "R$ ?" até o palpite (ou o "Prefiro ver direto"), e aí acende sozinho (`semReais` e `revelarReais` em `Profissoes._util`; desde 2026-10-17). A lista de fontes, que só abre no botão, continua com os valores.
+- Os panoramas também têm o palpite, na página de cada especialidade ou área (seção "As artes e o salário depois do palpite nos panoramas", no fim).
 - Fica guardado no aparelho e na nuvem com o resto do estado (`estado.chutes['<id>:palpite']` e `estado.salarioRevelado`).
-- Log: `profissao_chute_salario` com `profissao`, `cargo`, `chute` (o valor do palpite, arredondado), `media`, `diferenca` (palpite menos média) e `acertou` (até 10% da média). Até 2026-10-17, com as faixas, levava `faixa` no lugar de `diferenca`. Nada digitado entra no log.
+- Log: `profissao_chute_salario` com `profissao`, `cargo`, `chute` (o valor do palpite, arredondado), `media`, `diferenca` (palpite menos média) e `acertou` (até 10% da média). Até 2026-10-17, com as faixas, levava `faixa` no lugar de `diferenca`. Nos panoramas, o mesmo evento leva também `panorama` e `area` (ou `numero`, ou `jogo`; ver o fim deste documento). Nada digitado entra no log.
 - Variante futura: "Chute a nota de corte", com os dados do Sisu que a Sala Enem já usa. "A maioria dos Divers chuta acima" só quando houver dados no log; nunca inventar esse número.
 
 ### 3. Agora mesmo (topo da ficha, quando a ficha tiver `agora`)
@@ -135,4 +137,26 @@ Pedido do usuário, com sete vídeos de referência e o site *Size of Life* (nea
 - **Véu de pixels:** ao abrir uma ficha de dentro da aba, quadradinhos na cor da área somem em meio segundo; não pega clique.
 - **Reduzir movimento:** sem véu, sem frase trocando, sem fatia, sem bolhas boiando e sem contagem; tudo aparece pronto.
 - **Tutorial da área na versão 5** (sete passos: o mapa, o álbum e a faixa "Agora", a ficha, o mergulho, a Maré, o comparador e os panoramas).
+
+## As artes e o salário depois do palpite nos panoramas (2026-10-17)
+
+Pedido do usuário: "faça uma arte que represente universalmente cada uma delas, para deixar ainda mais legal e curioso" e "quando clico em medicina ele também entrega de cara os salários aí acaba não tendo tanta graça para adivinhar". Textos e números das fichas e dos panoramas, rotas e XP iguais; nada novo no banco.
+
+**Uma arte para cada profissão** (`js/profissoes-artes.js`, no pacote `profissoes`, antes de `profissoes.js`):
+- 22 desenhos nossos, vetoriais, no estilo figurinha do app: contorno escuro, as cores dos tokens (classes `pa-*` em `css/profissoes.css`, nada de cor solta) e um halo na cor da área. Um objeto que qualquer pessoa reconhece: estetoscópio com coração (Medicina), soro com gota em coração (Enfermagem), balança e martelo (Direito), quadro com ABC (Pedagogia), engrenagens e esteira (Engenharia de Produção), megafone (Comunicação) e assim por diante.
+- `ArtesProfissoes.arte(id, { simples })` devolve o `<svg>`; `simples` recorta só o objeto (para os tamanhos pequenos). Profissão sem arte não quebra nada: o lugar fica como antes.
+- Onde aparece: no alto dos cartões do mapa, pequena na lista e no cabeçalho do comparador, clarinha atrás do nome no aquário, no "Em números" da capa da ficha, na Maré de cartas e nos selos do álbum (o que falta aparece só na sombra, para dar vontade de completar).
+- Um detalhe de cada arte mexe ao passar o mouse ou focar (o coração bate, a gota pinga, a engrenagem gira); com "reduzir movimento", nada mexe.
+- No celular, o cabeçalho do comparador põe a arte ao lado da área e deixa o nome com a largura toda.
+
+**O salário só depois do palpite nos panoramas** (`js/profissoes-panorama.js`, Medicina e Tecnologia):
+- **Cartões das especialidades (ou áreas):** "R$ ?" no lugar da média até o palpite daquela especialidade.
+- **Página da especialidade:** a capa convida "Dar meu palpite primeiro", que leva ao capítulo "O dinheiro" e põe o foco na régua; a média e a faixa comum aparecem depois. O palpite é o da ficha (a mesma régua, "Na mosca!", "Prefiro ver direto"), sobre o cargo principal; quando a especialidade usa o salário de uma ocupação próxima, a pergunta diz qual é a referência. Depois do palpite vêm os outros cargos (ou a nota do cargo) e a pergunta "E entre as outras?".
+- **"Quem ganha mais?":** a comparação de todas na mesma régua (no panorama e na página de cada uma) e a ordem "Maior salário" (com cadeado) abrem depois de um jogo curto: duas especialidades por vez, toque na que ganha mais, cinco rodadas. Só entram as que têm ocupação própria no Caged, em pares com 6% ou mais de diferença. No fim, o placar ("você acertou 4 de 5") fica em cima da régua. "Prefiro ver direto" abre na hora.
+- **Bolsa de residência:** o número em reais da capa do panorama também virou palpite, em "Antes de escolher" (marca "valor" na régua). O mesmo valor no texto do curso de residência fica "R$ ?" até lá.
+- **Jogo de afinidade:** o resultado mostra "R$ ?" nas especialidades ainda sem palpite.
+- **Onde fica:** no estado do panorama (`est().salario`, dentro de `diver:v1:profissoes`, que vai para a nuvem): `{ <área>: { valor, data } }` (valor `null` quando a pessoa preferiu ver direto), `'numero:<rótulo>': { valor, data }` e `panorama: { via: 'jogo' | 'direto', acertos, rodadas, data }`. O que ficou de antes da repaginação de 2026-10-16 (`true` numa área, `{ aposta }` no panorama) conta como "já viu".
+- **Log:** o mesmo `profissao_chute_salario`, sem tipo novo no banco: `{ profissao, panorama, area, cargo, chute, media, diferenca, acertou }` no palpite de uma especialidade, `{ profissao, panorama, numero, chute, media, diferenca, acertou }` na bolsa e `{ profissao, panorama, jogo: 'quem-ganha-mais', acertos, rodadas, acertou }` no fim do jogo. Nos panoramas, `profissao` é o id do panorama.
+- **Correção junto:** a resposta do palpite escrevia "null" quando a pessoa tocava em "Prefiro ver direto" (na ficha também).
+- **Tutorial da área na versão 6** (o álbum com as artes e o "Quem ganha mais?" nos panoramas).
 
