@@ -295,9 +295,10 @@
 .prof-mira-linha .prof-ico { color: var(--amarelo); }
 
 /* os atalhos em duas colunas (2×2 com quatro) e, na tela larga, todos numa linha só (--n vem do JS): nenhum fica sobrando sozinho */
-.prof-atalhos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-3); }
-.prof-atalhos > :last-child:nth-child(odd) { grid-column: 1 / -1; }
-@media (min-width: 1280px) { .prof-atalhos { grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); } .prof-atalhos > :last-child:nth-child(odd) { grid-column: auto; } }
+.prof-atalhos { container-type: inline-size; }
+.prof-atalhos-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-3); }
+.prof-atalhos-grade > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+@container (min-width: 1000px) { .prof-atalhos-grade { grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); } .prof-atalhos-grade > :last-child:nth-child(odd) { grid-column: auto; } }
 .prof-raiz a.prof-atalho {
   display: flex; align-items: center; gap: var(--esp-3); min-height: 72px; padding: var(--esp-3) var(--esp-4);
   border-radius: var(--raio); background: var(--superficie); color: var(--texto); text-decoration: none;
@@ -1207,7 +1208,7 @@ button.prof-pan { cursor: pointer; }
   .prof-raiz a.prof-atalho { min-height: 52px; padding-block: var(--esp-2); }
   .prof-atalho-texto .prof-min { display: none; }
   .prof-atalho-ico { width: 36px; height: 36px; }
-  .prof-atalhos { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
+  .prof-atalhos-grade { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
   .prof-dia li { grid-template-columns: 48px 1fr; }
   .prof-dia li::before { left: 54px; }
   .prof-dia li::after { left: 49px; }

@@ -379,7 +379,7 @@
       ix.profissoes.filter(temFicha).length >= 2 ? atalho('profissoes-comparar', 'balanca', 'Comparar duas', 'Duração, salário e DNA lado a lado.') : null,
       ix.profissoes.filter(temFicha).length >= 3 ? atalho('profissoes-fundo', 'ancora', 'Quão fundo é cada carreira', 'Os anos de estudo, do raso ao abismo.') : null,
       atalho('profissoes-metodo', 'info', 'Como fazemos as fichas', 'Fonte oficial e data em cada número.')].filter(Boolean);
-    raiz.appendChild(el('nav', { class: 'prof-atalhos', 'aria-label': 'Outros jeitos de explorar', style: { '--n': String(atalhos.length) } }, atalhos));
+    raiz.appendChild(el('nav', { class: 'prof-atalhos', 'aria-label': 'Outros jeitos de explorar' }, el('div', { class: 'prof-atalhos-grade', style: { '--n': String(atalhos.length) } }, atalhos)));
 
     // Explore por dentro: as carreiras grandes demais para uma ficha só (Medicina, Tecnologia)
     const pans = (ix.panoramas || []).map(pn => ({ pn, area: ix.areas.find(a => a.panorama && a.panorama.rota === pn.rota) })).filter(x => x.area);
