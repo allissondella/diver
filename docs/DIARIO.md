@@ -5,6 +5,20 @@
 
 ---
 
+## 2026-10-17 · Tiro ao Alvo: pistola de verdade, som de água e tiros satisfatórios
+- **Pedido do usuário:** "Essa pistola de água tem que ficar mais realista e ter som de água e ser satisfatório os tiros". **Regras, níveis, eliminação, 1 ponto por acerto e recorde iguais; o acerto continua decidido no clique (só o desenho espera a água chegar); nada no banco.**
+- **Feito:**
+  - **a pistola de lado**, no canto de baixo: tanque transparente com a água sempre na horizontal (balança e solta bolhas), presilhas, tampa, mangueirinha, manômetro, cano com mira, bomba que vai e volta na recarga, gatilho e cabo; gira até a mira e vira o pulso do outro lado (a primeira tentativa, vista de trás, parecia um borrifador e saiu);
+  - **o tiro:** coice com volta macia, névoa no bico, jato em fita d'água (borda, corpo, miolo e brilho; engorda e afina de leve) que fica preso no bico enquanto o gatilho está apertado e leva de 0,08 a 0,18 s para chegar;
+  - **a batida:** clarão, anel, coroa de gotas que se desfaz e cai, leque de gotas, marca d'água que escorre por baixo do texto da placa e uma tremidinha; no mar, ondinhas e a colunazinha do "ploc"; tanque vazio estala seco e pinga;
+  - **os sons de água** (ruído filtrado): chiado do jato, "splash" com gotinhas pingando, "ploc", gotas no ar, estalo seco e o "toc" da placa; cada tiro com um tiquinho de tom diferente;
+  - a régua do nível com mais de 100 placas não vaza mais do placar (o problema já existia no nível 22).
+- **Decisões:**
+  - os volumes foram acertados numa gravação sem tocar (renderização do áudio), medida depois de o compressor "acordar", como no jogo: jato e splash um pouco acima dos sons de festa, o resto abaixo, sem estourar quando tudo toca junto;
+  - com "reduzir movimento", a pistola aponta na hora e a água do tanque fica parada; o jato aparece inteiro e some.
+- **Testes:** fotos quadro a quadro (o relógio do jogo na mão, só no teste) do jato no meio do caminho, da batida e da placa tombando em 1440 × 900, 390 × 844 e 844 × 390, também com "reduzir movimento"; espectrograma dos sons; robô das placas até o nível 8 em 9 telas (também com "reduzir movimento"), teclado, toque, varredura de coisa torta em 9 telas, tela cheia, fim em 9 telas, régua até o nível 22, tutorial; `auditar-design` e `--navegador`.
+- **Pendências:** merge para produção com o OK do usuário.
+
 ## 2026-10-17 · Tiro ao Alvo: tela toda, barraca na beira do mar e festa
 - **Pedido do usuário:** "usar essas técnicas de design [das Profissões] no nosso jogo de tiro ao alvo para que ele fique mais bonito, divertido e use a tela toda". Plano de 4 etapas aprovado ("Manda bala"), com fotos depois de cada uma. **Regras, níveis, dificuldade (`parametros`), eliminação, 1 ponto por acerto e recorde iguais; nada no banco.**
 - **Feito:**

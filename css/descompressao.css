@@ -324,6 +324,7 @@ body.sd-trava { overflow: hidden; }
 .sd-tiro__riscos { display: flex; align-items: flex-end; gap: 2px; width: min(calc(var(--n) * 6px), 220px); height: 14px; overflow: hidden; }
 .sd-tiro__riscos--denso { gap: 1px; } /* nível alto: mais de 36 placas certas, risquinhos mais finos */
 .sd-tiro__riscos--denso .sd-tiro__risco { min-width: 1px; }
+.sd-tiro__riscos--colado { gap: 0; } /* mais de 100: os risquinhos encostam e viram uma barra (com o de 5 em 5 mais alto) */
 .sd-tiro__risco { flex: 1 1 0; min-width: 2px; height: 8px; border-radius: 1px; background: color-mix(in srgb, var(--texto) 28%, transparent); }
 .sd-tiro__risco--cinco { height: 14px; }
 .sd-tiro__risco--feito { background: var(--amarelo); }
