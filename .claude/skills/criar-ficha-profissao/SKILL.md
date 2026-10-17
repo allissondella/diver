@@ -21,9 +21,10 @@ Antes de começar, leia `docs/MAPA_PROFISSOES.md` (seções 2, 5 e 7) e use `dat
 5. **Escreva a ficha completa:** `numeros` (4), `secoes` (8), `mitos` (5 ou mais), `carta` (um fato que surpreende), `agora` (24 horas), `formacao` (etapas), `dna` (estimativa, `dna_calibrado: false`), um `dilema` com resposta baseada em lei ou código de ética, `vizinhas` (ids do índice) e `trends_id` se houver dados em `trends/trends.json`.
 6. **"O que ninguém te conta"** com pelo menos 3 pontos difíceis e reais.
 7. **"Um dia como"** só quando o usuário pedir: 5 ou 6 cenas sobre prioridades, ética, comunicação e rotina; nunca procedimento técnico; exatamente uma opção `melhor: true` por cena; `revisar_com_profissional: true`.
-8. **Confira:** `node scripts/conferir-ficha.mjs data/profissoes/<id>.json`. Corrija até passar sem erros; trate cada aviso.
-9. **Atualize o índice:** `status: rascunho`, `arquivo`, `frase`, `carta` e `tags` (cópia exata das da ficha: os filtros do mapa leem o índice, e o `conferir-ficha` acusa diferença).
-10. **Peça o parecer** com a skill `validar-fontes` e registre no DIARIO o que ficou pendente.
+8. **Frases-tese (opcional, 2026-10-17):** o relatório da ficha abre cada capítulo com uma frase-tese (`manchetes.trabalho`, `formacao`, `dinheiro`, `mercado`). Escreva só com fatos que já estão na ficha, com as mesmas `fontes`; frase curta e afirmativa, sem número no título do capítulo "dinheiro" (o salário é do palpite), sem "você deveria".
+9. **Confira:** `node scripts/conferir-ficha.mjs data/profissoes/<id>.json`. Corrija até passar sem erros; trate cada aviso. Depois rode `node scripts/gerar-numeros-profissoes.mjs` (ranking das matrículas e números que comparam as profissões).
+10. **Atualize o índice:** `status: rascunho`, `arquivo`, `frase`, `carta` e `tags` (cópia exata das da ficha: os filtros do mapa leem o índice, e o `conferir-ficha` acusa diferença).
+11. **Peça o parecer** com a skill `validar-fontes` e registre no DIARIO o que ficou pendente.
 
 ## Tom
 

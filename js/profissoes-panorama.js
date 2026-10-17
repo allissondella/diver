@@ -9,13 +9,17 @@
    salário, e botões que reordenam pelo que importa para a pessoa; a página de cada uma tem a faixa para trocar de
    especialidade, o dia típico ao lado do "combina com quem" e o salário à vista (o palpite fica só nas fichas).
    Nada some ao rolar. Os textos vêm do JSON de cada panorama, sem mudança.
+   Em 2026-10-17 virou relatório, como a ficha (pedido do usuário: "no estilo dos relatórios da Globo"): capa com "Em números",
+   capítulos em faixas numeradas, o dinheiro de todas na mesma régua, os cem quadradinhos do número em porcentagem e
+   "Fonte:" embaixo de cada gráfico. Só o desenho mudou: textos, números, rotas, XP e log são os mesmos.
    Enquanto o panorama for rascunho (data/profissoes/indice.json, panoramas[].status), só a equipe vê; o aluno vê "Em breve". */
 (function () {
   'use strict';
   const P = window.Profissoes; if (!P || !P._util) return;
   const { el, icone, botao, link, citar, brl, dataBR, salvarEstado, limpezas, IG, EIXOS, temFicha, temPanorama, pedir,
-    semMovimento, contar, ir, fontesGuardadas, fontesMini, dadosPanorama, corArea,
-    topoPagina, cabecalho, tileFato, capitulo, indiceCapitulos, cartasViradas, linhasCargos } = P._util;
+    semMovimento, contar, ir, fontesGuardadas, dadosPanorama, corArea,
+    topoPagina, indiceCapitulos, linhasCargos, regua, dominioDe,
+    capaRelatorio, linhaEmNumeros, caixaResumo, calloutsNumerados, capituloRelatorio, fonteLinha } = P._util;
 
   /* O panorama da tela atual: montar() define antes de desenhar (as telas são desenhadas uma de cada vez) */
   let ID = 'tecnologia', T = null;
@@ -104,8 +108,13 @@
   }
 
   /* =====================================================================
-     Panorama: as especialidades (ou áreas) primeiro, depois o contexto, os cursos e o jogo
+     Panorama, no formato de relatório (2026-10-17): a capa com "Em números", os capítulos numerados (as especialidades
+     ou áreas primeiro, o dinheiro na mesma régua, o contexto, os cursos e o jogo) e a fonte embaixo de cada gráfico
      ===================================================================== */
+  /** "48%" vira 48; o que não for porcentagem, null */
+  const porcento = v => { const m = /^(\d+(?:,\d+)?)\s*%$/.exec(String(v).trim()); return m ? Number(m[1].replace(',', '.')) : null; };
+  const juntar = nomes => nomes.length < 2 ? nomes.join('') : nomes.slice(0, -1).join(', ') + ' e ' + nomes[nomes.length - 1];
+
   function telaPanorama(raiz, t, ix) {
     P.ganchos.registrar(evento('panorama'), {});
     raiz.style.setProperty('--cor-area', corPan(ix));
@@ -113,24 +122,40 @@
     const rank = j ? ranking(t, j.pontos) : null;
 
     raiz.appendChild(topoPagina({ texto: 'Mapa das Profissões', rota: 'profissoes' }, t.status !== 'publicada' ? selo('Em revisão por profissionais') : null));
-    raiz.appendChild(cabecalho({ rotulo: rot('rotulo', 'Panorama'), titulo: t.titulo, frase: t.frase, acoes: [linkJogo(rank, 'prof-btn--primario'), botaoEstudar('prof-btn--linha')] }));
-    raiz.appendChild(el('section', { class: 'prof-fatos', 'aria-label': 'O setor em números' }, t.numeros.map((n, i) =>
-      tileFato({ rotulo: n.rotulo, valor: n.valor, detalhe: n.detalhe, cor: i === 0 ? 'amarelo' : null, fontes: fontesMini(t, n.fontes) }))));
+    // O número em porcentagem vira os cem quadradinhos de "Antes de escolher"; os outros ficam na capa (cada número aparece uma vez)
+    const cem = t.numeros.find(n => porcento(n.valor) != null);
+    raiz.appendChild(capaRelatorio({
+      rotulo: rot('rotulo', 'Panorama'), titulo: t.titulo, frase: t.frase,
+      meta: [`Panorama conferido em ${dataBR(t.conferido_em)}`, `${t.fontes.length} fontes`, 'Mapa das Profissões do Diver'],
+      acoes: [linkJogo(rank, 'prof-btn--primario'), botaoEstudar('prof-btn--linha')],
+      resumo: caixaResumo(t.contexto.map(c => el('li', null, c.texto, citar(t, c.fontes))), 'deste panorama'),
+      numeros: t.numeros.filter(n => n !== cem).map(n => linhaEmNumeros(n.rotulo, n.valor, n.detalhe, citar(t, n.fontes))) }));
 
     const corpo = el('div', { class: 'prof-corpo' });
     raiz.appendChild(corpo);
+    let n = 0;
+    const cap = (id, titulo, sub, ...conteudo) => corpo.appendChild(capituloRelatorio(t, ++n, id, titulo, null, sub, ...conteudo));
+
+    // 01. As especialidades (ou áreas) lado a lado
     const vistas = t.areas.filter(a => est().areasVistas[a.id]).length;
-    corpo.appendChild(capitulo('areas', rot('titulo_areas', 'As áreas'),
+    cap('areas', rot('titulo_areas', 'As áreas'),
       `${maiuscula(extenso(t.areas.length))} ${rot('rotulo_areas', 'áreas')}, cada uma com o seu dia a dia. ${vistas ? `Você já explorou ${vistas}. ` : ''}Toque numa para ver por dentro.`,
-      explorador(t, rank)));
+      explorador(t, rank));
 
-    corpo.appendChild(capitulo('antes', 'Antes de escolher', null,
-      el('p', { class: 'prof-prosa prof-prosa--grande', text: t.intro }),
-      el('div', { class: 'prof-cards prof-espaco' }, t.contexto.map(c => el('div', { class: 'prof-caixa' }, el('p', null, c.texto, citar(t, c.fontes)))))));
+    // 02. O dinheiro: todas na mesma régua
+    cap('dinheiro', 'O dinheiro', `Salário-base de quem foi contratado com carteira nos últimos 12 meses, na ocupação mais próxima de cada ${umaArea()}. Adicionais, PJ e bônus não entram.`,
+      comparaSalarios(t, null));
 
-    corpo.appendChild(capitulo('formacao', 'Que curso fazer', t.formacao_geral.nota, blocoCursos(t)));
+    // 03. Antes de escolher: a introdução, os cem quadradinhos e o contexto
+    cap('antes', 'Antes de escolher', null,
+      el('div', { class: 'prof-antes' + (cem ? '' : ' prof-antes--so-texto') }, el('p', { class: 'prof-prosa prof-prosa--grande', text: t.intro }), cem ? cemQuadrados(t, cem) : null),
+      el('div', { class: 'prof-rel-espaco' }, calloutsNumerados(t, t.contexto, 'prof-callouts--fatos')));
 
-    corpo.appendChild(capitulo('jogo', t.jogo.titulo, t.jogo.subtitulo,
+    // 04. Que curso fazer
+    cap('formacao', 'Que curso fazer', t.formacao_geral.nota, blocoCursos(t));
+
+    // 05. O jogo
+    cap('jogo', t.jogo.titulo, t.jogo.subtitulo,
       el('div', { class: 'prof-caixa prof-jogo-convite' },
         el('ul', { class: 'prof-jogo-fatos', 'aria-label': 'Como é o jogo' },
           el('li', null, el('b', { class: 'prof-num', text: String(t.jogo.cenas.length) }), 'situações'),
@@ -138,14 +163,15 @@
           el('li', null, el('b', { class: 'prof-num', text: '3' }), rot('rotulo_areas', 'áreas') + ' no fim')),
         rank ? el('div', null, el('p', { class: 'prof-min', text: 'Seu último resultado:' }),
           el('div', { class: 'prof-chips prof-espaco-p' }, rank.slice(0, 3).map(x => link(`${nomeCurto(x.area)} · ${x.pct}%`, ID + '-' + x.area.id, { classe: 'prof-chip prof-chip--link' })))) : null,
-        linkJogo(rank, rank ? 'prof-btn--linha' : 'prof-btn--primario'))));
+        linkJogo(rank, rank ? 'prof-btn--linha' : 'prof-btn--primario')));
 
-    if (ponte()) corpo.appendChild(capitulo('estudar', 'Comece a estudar', null,
+    // 06. Comece a estudar
+    if (ponte()) cap('estudar', 'Comece a estudar', null,
       el('div', { class: 'prof-caixa prof-ponte' }, el('p', { class: 'prof-prosa', text: ponte().texto }),
-        el('div', { class: 'prof-espaco' }, botao(ponte().abrir, { classe: 'prof-btn--linha', icone: 'livro', iconeDepois: 'direita', onclick: () => estudar(ponte().entrada) })))));
+        el('div', { class: 'prof-espaco' }, botao(ponte().abrir, { classe: 'prof-btn--linha', icone: 'livro', iconeDepois: 'direita', onclick: () => estudar(ponte().entrada) }))));
 
-    corpo.appendChild(capitulo('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Toque num número ao longo da página para ver de onde ele vem.`,
-      ...fontesGuardadas(t, t.fontes, `Ver as ${t.fontes.length} fontes deste panorama`), linhaRevisao(t)));
+    cap('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Toque num número ao longo da página para ver de onde ele vem.`,
+      ...fontesGuardadas(t, t.fontes, `Ver as ${t.fontes.length} fontes deste panorama`), linhaRevisao(t));
 
     indiceCapitulos(corpo, 'Capítulos do panorama');
   }
@@ -169,9 +195,8 @@
     const refs = t.areas.filter(ehReferencia);
     const fontesSal = uniq(t.areas.flatMap(a => (salarioPrincipal(a) || {}).fontes || []));
     const nota = el('p', { class: 'prof-fonte-nota' },
-      'Salário: média de contratação com carteira (salário-base) da ocupação mais próxima, no Novo Caged dos últimos 12 meses. ', rot('nota_salarios', ''), ' ',
-      refs.length ? `${refs.map(nomeCurto).join(', ')} não ${refs.length > 1 ? 'têm' : 'tem'} ocupação própria no Caged: o salário é o de uma ocupação próxima, marcado como "referência". ` : '',
-      'Perfil: estimativa inicial, a calibrar com profissionais. ', 'Fontes: ', ...fontesSal.map(id => citar(t, [id])));
+      'Perfil: estimativa inicial, a calibrar com profissionais. Salário: média de contratação com carteira no Novo Caged, comparada no capítulo "O dinheiro"',
+      refs.length ? ' ("referência" quando é o de uma ocupação próxima)' : '', '. Fontes:', citar(t, fontesSal));
     function desenhar() {
       botoes.forEach((b, i) => b.setAttribute('aria-pressed', String(ordens[i] === atual)));
       const afin = id => (rank ? (rank.find(r => r.area.id === id) || {}).pct || 0 : 0);
@@ -204,25 +229,79 @@
         vista ? el('span', { class: 'prof-esp-vista' }, icone('certo'), 'Explorada') : o.afin != null ? el('span', { class: 'prof-esp-afin prof-num', text: o.afin + '% com você' }) : el('span', { class: 'prof-esp-ir', 'aria-hidden': 'true' }, icone('direita'))));
   }
 
+  /** O dinheiro lado a lado: cada especialidade (ou área) com ocupação própria no Caged, na mesma régua (a faixa comum e a média),
+      da maior para a menor média. Na página de uma delas, ela fica acesa e as outras em cinza (ênfase, sem arco-íris).
+      As que usam o salário de uma ocupação próxima ("referência") ficam fora, com o nome delas embaixo. */
+  function comparaSalarios(t, destaque) {
+    const itens = t.areas.filter(a => salarioPrincipal(a) && !ehReferencia(a))
+      .map(a => { const s = salarioPrincipal(a); return { a, s, media: s.media, faixa: { de: s.p25, ate: s.p75 } }; })
+      .sort((x, y) => y.media - x.media);
+    if (!itens.length) return null;
+    const refs = t.areas.filter(ehReferencia), dominio = dominioDe(itens), notaPan = rot('nota_salarios', '');
+    return el('figure', { class: 'prof-salareas' + (destaque ? ' prof-salareas--destaque' : '') },
+      el('figcaption', null,
+        el('b', { text: destaque ? `${nomeCurto(destaque)} e as outras ${rot('rotulo_areas', 'áreas')}` : `A média de cada ${umaArea()}` }),
+        el('span', { class: 'prof-micro', text: 'Da maior para a menor média, todas na mesma régua.' })),
+      // Cada linha inteira abre a especialidade (alvo grande no toque); a da página atual não é link
+      el('ol', null, itens.map(it => {
+        const eu = it.a === destaque;
+        const linha = [
+          el('span', { class: 'prof-salareas-nome' }, el('b', { text: nomeCurto(it.a) }), el('span', { class: 'prof-micro', text: it.s.cargo })),
+          regua({ dominio, media: it.media, faixa: it.faixa, fina: true }),
+          el('b', { class: 'prof-salareas-valor prof-num', text: brl(it.media) })];
+        return el('li', { class: eu ? 'prof-salareas-eu' : null, 'aria-current': eu ? 'true' : null },
+          eu ? el('div', { class: 'prof-salareas-linha' }, linha)
+            : el('a', { href: '#' + ID + '-' + it.a.id, class: 'prof-salareas-linha', 'aria-label': `${nomeCurto(it.a)}: média de ${brl(it.media)}, faixa comum de ${brl(it.faixa.de)} a ${brl(it.faixa.ate)}. Ver por dentro` }, linha));
+      })),
+      el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), 'faixa comum (percentis 25 e 75)'), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média')),
+      notaPan || refs.length ? el('p', { class: 'prof-fonte-nota' }, notaPan,
+        refs.length ? `${notaPan ? ' ' : ''}${refs.length > 1 ? 'Ficam fora da comparação as que usam' : 'Fica fora da comparação a que usa'} o salário de uma ocupação próxima como referência: ${juntar(refs.map(nomeCurto))}.` : '') : null,
+      fonteLinha(t, uniq(itens.flatMap(it => it.s.fontes || [])), 'Novo Caged (Ministério do Trabalho e Emprego), via Portal Salário'));
+  }
+
+  /** "De cada 100": o número e a frase em cima, cem quadradinhos com os da parte acesos (uma cor só, o resto em cinza) e a fonte embaixo. */
+  function cemQuadrados(t, n) {
+    const acesos = Math.round(porcento(n.valor));
+    return el('figure', { class: 'prof-cem' },
+      el('figcaption', null,
+        el('b', { class: 'prof-cem-v prof-num', text: n.valor }),
+        el('span', { class: 'prof-cem-rot', text: n.rotulo }),
+        n.detalhe ? el('span', { class: 'prof-micro', text: n.detalhe }) : null),
+      el('div', { class: 'prof-cem-grade', 'aria-hidden': 'true' }, Array.from({ length: 100 }, (_, i) => el('i', { class: i < acesos ? 'prof-cem-sim' : null }))),
+      el('p', { class: 'prof-micro', text: `Cada quadradinho é 1 em 100; ${acesos} estão acesos.` }),
+      fonteLinha(t, n.fontes));
+  }
+
+  /** Que curso fazer: um curso (ou etapa) por linha, as durações na mesma régua de anos. O que não se mede em anos (uma prova) fica sem barra. */
   function blocoCursos(t) {
-    const anos = c => Math.max(...(String(c.duracao).match(/\d+/g) || ['1']).map(Number));
-    const max = Math.max(...t.formacao_geral.cursos.map(anos));
-    return el('ol', { class: 'prof-cursos' }, t.formacao_geral.cursos.map(c => el('li', { class: 'prof-curso' },
-      el('div', { class: 'prof-curso-cab' }, el('b', { text: c.nome }), el('span', { class: 'prof-selo', text: c.nivel })),
-      el('div', { class: 'prof-curso-linha' },
-        el('span', { class: 'prof-curso-trilho', 'aria-hidden': 'true' }, el('i', { style: { '--fracao': anos(c) / max } })),
-        el('span', { class: 'prof-num prof-curso-duracao', text: c.duracao })),
-      el('p', { class: 'prof-min' }, c.texto, ' ', el('span', { class: 'prof-num', text: `Mínimo de ${c.horas.toLocaleString('pt-BR')} horas.` }), citar(t, c.fontes)))));
+    const cursos = t.formacao_geral.cursos;
+    const anos = c => (String(c.duracao).match(/\d+(?:,\d+)?/g) || []).map(x => Number(x.replace(',', '.')));
+    const max = Math.max(1, ...cursos.flatMap(anos));
+    return el('figure', { class: 'prof-cursos-fig' },
+      el('figcaption', null, el('b', { text: 'Quanto tempo leva cada etapa' }), el('span', { class: 'prof-micro', text: 'Em anos, todas na mesma régua. A parte listrada é o que varia de um caminho para outro.' })),
+      el('ol', { class: 'prof-cursos' }, cursos.map(c => {
+        const a = anos(c), de = a.length ? Math.min(...a) : 0, ate = a.length ? Math.max(...a) : 0;
+        return el('li', { class: 'prof-curso' },
+          el('div', { class: 'prof-curso-rot' }, el('b', { text: c.nome }), el('span', { class: 'prof-selo', text: c.nivel })),
+          el('div', { class: 'prof-curso-linha' },
+            a.length ? el('span', { class: 'prof-curso-trilho', 'aria-hidden': 'true' },
+              el('i', { style: { '--fracao': de / max } }),
+              ate > de ? el('i', { class: 'prof-curso-faixa', style: { '--de': de / max, '--fracao': (ate - de) / max } }) : null) : null,
+            el('span', { class: 'prof-num prof-curso-duracao' + (a.length ? '' : ' prof-curso-duracao--texto'), text: c.duracao })),
+          el('p', { class: 'prof-min prof-curso-txt' }, c.texto, c.horas ? ' ' : null, c.horas ? el('span', { class: 'prof-num', text: `Mínimo de ${c.horas.toLocaleString('pt-BR')} horas.` }) : null, citar(t, c.fontes)));
+      })),
+      fonteLinha(t, uniq(cursos.flatMap(c => c.fontes || []))));
   }
 
   /* =====================================================================
-     Uma especialidade (ou área): a faixa para trocar, o dia típico ao lado do perfil, o salário à vista
+     Uma especialidade (ou área), no formato de relatório: a faixa para trocar, a capa com "Em números"
+     e os capítulos (o trabalho, o dinheiro com a comparação, a formação, o perfil, o que ninguém conta, as vizinhas)
      ===================================================================== */
   function telaArea(raiz, t, a, ix) {
     est().areasVistas[a.id] = (est().areasVistas[a.id] || 0) + 1; salvarEstado();
     P.ganchos.registrar(evento('area_vista'), { area: a.id });
     raiz.style.setProperty('--cor-area', corPan(ix));
-    const s = salarioPrincipal(a);
+    const s = salarioPrincipal(a), k = t.areas.indexOf(a);
     const j = est().jogo; const afin = j ? ranking(t, j.pontos).find(r => r.area.id === a.id) : null;
 
     raiz.appendChild(topoPagina({ texto: t.titulo, rota: 'profissoes-' + ID }, selo('Rotina típica, em revisão com profissionais')));
@@ -232,82 +311,90 @@
     raiz.appendChild(troca);
     // A faixa rola de lado; a especialidade da vez aparece no meio (sem mexer na rolagem da página)
     requestAnimationFrame(() => { const atual = troca.querySelector('[aria-current]'); if (atual) troca.scrollLeft = atual.offsetLeft - (troca.clientWidth - atual.offsetWidth) / 2; });
-    raiz.appendChild(cabecalho({ rotulo: a.apelido, titulo: a.nome, frase: a.resumo,
+    raiz.appendChild(capaRelatorio({
+      rotulo: a.apelido, titulo: a.nome, frase: a.resumo,
+      meta: [`${maiuscula(umaArea())} ${k + 1} de ${t.areas.length}`, t.titulo, 'Mapa das Profissões do Diver'],
       acoes: [j ? botaoEstudar('prof-btn--primario') : link((t.jogo && t.jogo.chamada_curta) || 'Que área é a minha?', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--primario', icone: 'play' }),
-        j ? link('Refazer o jogo', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--linha', icone: 'embaralhar' }) : botaoEstudar('prof-btn--linha')] }));
-    raiz.appendChild(el('section', { class: 'prof-fatos', 'aria-label': 'Números principais' },
-      tileFato({ rotulo: ehReferencia(a) ? 'Média de contratação (referência)' : 'Média de contratação', valor: brl(s.media), detalhe: `${s.cargo}, CBO ${s.cbo}`, cor: 'amarelo', fontes: fontesMini(t, s.fontes) }),
-      tileFato({ rotulo: 'Faixa comum', valor: `${brl(s.p25)} a ${brl(s.p75)}`, detalhe: 'onde fica a maior parte dos contratos' }),
-      tileFato({ rotulo: 'Contato com pessoas', valor: a.dna.pessoas + '/100', detalhe: 'no perfil da ' + umaArea() }),
-      tileFato({ rotulo: 'Sua afinidade', valor: afin ? afin.pct + '%' : '—', detalhe: afin ? 'pelo jogo' : 'jogue para descobrir' })));
+        j ? link('Refazer o jogo', 'profissoes-' + ID + '-jogo', { classe: 'prof-btn prof-btn--linha', icone: 'embaralhar' }) : botaoEstudar('prof-btn--linha')],
+      numeros: s ? [
+        linhaEmNumeros(ehReferencia(a) ? 'Média de contratação (referência)' : 'Média de contratação', el('b', { class: 'prof-emnum-salario', text: brl(s.media) }), `${s.cargo}, CBO ${s.cbo}`, citar(t, s.fontes)),
+        linhaEmNumeros('Faixa comum', `${brl(s.p25)} a ${brl(s.p75)}`, 'onde fica a maior parte dos contratos'),
+        linhaEmNumeros('Sua afinidade', afin ? afin.pct + '%' : '—', afin ? 'pelo jogo' : 'jogue para descobrir')] : [] }));
 
     const corpo = el('div', { class: 'prof-corpo' });
     raiz.appendChild(corpo);
+    let n = 0;
+    const cap = (id, titulo, sub, ...conteudo) => corpo.appendChild(capituloRelatorio(t, ++n, id, titulo, null, sub, ...conteudo));
 
-    // 1. Como é o trabalho: o dia típico ao lado do que faz, de quem combina e de quem deve pensar duas vezes
+    // 01. O trabalho: o que faz; o dia típico ao lado de com quem combina e de quem deve pensar duas vezes; as ferramentas
     const agora = new Date(); const minutos = agora.getHours() * 60 + agora.getMinutes();
     const emMin = hh => { const [x, y] = String(hh).split(':').map(Number); return x * 60 + (y || 0); };
     let atual = -1; a.dia.forEach((d, i) => { if (emMin(d.hora) <= minutos) atual = i; });
     if (atual === a.dia.length - 1 && minutos > emMin(a.dia[atual].hora) + 120) atual = -1;
-    corpo.appendChild(capitulo('trabalho', 'Como é o trabalho', `Rotina ilustrativa de um dia comum, a revisar com profissionais da ${umaArea()}. ${(ponte() && ponte().lugar) || 'Cada lugar de trabalho é diferente.'}`,
-      el('div', { class: 'prof-grade-2' },
-        el('div', { class: 'prof-caixa' }, el('h3', { text: 'Um dia típico' }),
+    cap('trabalho', 'O trabalho', `Rotina ilustrativa de um dia comum, a revisar com profissionais da ${umaArea()}. ${(ponte() && ponte().lugar) || 'Cada lugar de trabalho é diferente.'}`,
+      el('p', { class: 'prof-prosa prof-prosa--grande', text: a.o_que_faz }),
+      el('div', { class: 'prof-grade-2 prof-rel-espaco' },
+        el('figure', { class: 'prof-dia-fig' },
+          el('figcaption', null, el('b', { text: 'Um dia típico' }), atual >= 0 ? el('span', { class: 'prof-micro', text: 'Em amarelo, a hora de agora no seu aparelho.' }) : null),
           el('ol', { class: 'prof-dia' }, a.dia.map((d, i) => el('li', { class: i === atual ? 'prof-dia--agora' : null },
             el('span', { class: 'prof-dia-hora prof-num', text: d.hora }),
             el('span', null, d.texto, i === atual ? el('span', { class: 'prof-dia-tag', text: 'agora' }) : null))))),
         el('div', { class: 'prof-pilha-caixas' },
-          el('div', { class: 'prof-caixa' }, el('h3', { text: 'O que faz' }), el('p', { class: 'prof-prosa', text: a.o_que_faz })),
-          el('div', { class: 'prof-caixa prof-caixa--turquesa' }, el('h3', { text: 'Combina com quem gosta de' }), el('ul', { class: 'prof-lista' }, a.gosta_de.map(g => el('li', { text: g })))),
-          el('div', { class: 'prof-caixa prof-caixa--contorno-coral' }, el('h3', { text: 'Pense duas vezes se' }), el('ul', { class: 'prof-lista prof-lista--coral' }, a.nao_gosta_se.map(g => el('li', { text: g })))))),
-      el('h3', { class: 'prof-sub', text: 'Ferramentas do dia a dia' }),
-      el('div', { class: 'prof-chips-lista' }, a.ferramentas.map(f => el('span', { text: f }))),
-      a.ferramentas_fontes && a.ferramentas_fontes.length ? el('p', { class: 'prof-fonte-nota' }, 'Linguagens e ferramentas mais usadas segundo pesquisa global de desenvolvedores', citar(t, a.ferramentas_fontes)) : null));
+          el('div', { class: 'prof-versus-card prof-versus-card--sim' }, el('p', { class: 'prof-versus-tit' }, icone('certo'), 'Combina com quem gosta de'), el('ul', { class: 'prof-lista' }, a.gosta_de.map(g => el('li', { text: g })))),
+          el('div', { class: 'prof-versus-card prof-versus-card--nao' }, el('p', { class: 'prof-versus-tit' }, icone('x'), 'Pense duas vezes se'), el('ul', { class: 'prof-lista' }, a.nao_gosta_se.map(g => el('li', { text: g })))))),
+      el('div', { class: 'prof-rel-espaco' },
+        el('h3', { class: 'prof-sub', text: 'Ferramentas do dia a dia' }),
+        el('div', { class: 'prof-chips-lista' }, a.ferramentas.map(f => el('span', { text: f }))),
+        a.ferramentas_fontes && a.ferramentas_fontes.length ? fonteLinha(t, a.ferramentas_fontes) : null));
 
-    // 2. Quanto ganha: cada cargo numa linha, todos na mesma régua (aqui sem palpite: o panorama é para comparar)
-    corpo.appendChild(capitulo('salario', 'Quanto ganha', 'Salário-base de quem foi contratado com carteira nos últimos 12 meses. Adicionais, PJ e bônus não entram.',
+    // 02. O dinheiro: cada cargo na mesma régua (aqui sem palpite: o panorama é para comparar) e a especialidade entre as outras
+    cap('dinheiro', 'O dinheiro', 'Salário-base de quem foi contratado com carteira nos últimos 12 meses. Adicionais, PJ e bônus não entram.',
       linhasCargos(a.salarios.map(sx => ({ cargo: sx.cargo, sub: 'CBO ' + sx.cbo, media: sx.media, faixa: { de: sx.p25, ate: sx.p75 }, fontes: sx.fontes, nota: sx.nota })), it => citar(t, it.fontes)),
-      el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), 'faixa comum (percentis 25 e 75)'), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média'))));
+      el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), 'faixa comum (percentis 25 e 75)'), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média')),
+      ehReferencia(a)
+        ? el('p', { class: 'prof-fonte-nota' }, `Como o salário aqui é o de uma ocupação próxima, esta ${umaArea()} não entra na comparação entre as ${rot('rotulo_areas', 'áreas')}, no capítulo "O dinheiro" do `, link('panorama', 'profissoes-' + ID), '.')
+        : el('div', { class: 'prof-rel-espaco' }, comparaSalarios(t, a)));
 
-    // 3. Formação e carreira, lado a lado
-    corpo.appendChild(capitulo('formacao', 'Formação e carreira', null,
+    // 03. Formação e carreira, lado a lado
+    cap('formacao', 'Formação e carreira', null,
       el('div', { class: 'prof-grade-2' },
         el('div', { class: 'prof-caixa' }, el('h3', { text: 'Formação' }), el('p', { class: 'prof-prosa' }, a.formacao, citar(t, a.formacao_fontes)),
           ponte() ? el('p', { class: 'prof-min prof-espaco', text: `Para começar no Diver, ${ponte().onde}:` }) : null,
           ponte() ? el('div', { class: 'prof-chips-lista' }, cursosDe(a).map(c => el('a', { href: '#', onclick: ev => { ev.preventDefault(); estudar(c); } }, icone('livro'), c === ponte().entrada ? ponte().nomeEntrada : P.ganchos.nomeCurso(c)))) : null,
           el('p', { class: 'prof-micro prof-espaco' }, 'As durações e cargas dos cursos estão no ', link('panorama', 'profissoes-' + ID), '.')),
         el('div', { class: 'prof-caixa' }, el('h3', { text: 'Como a carreira costuma andar' }), el('p', { class: 'prof-micro', text: 'Nomes e prazos variam.' }),
-          el('ol', { class: 'prof-escada' }, a.caminhos.map(c => el('li', { text: c })))))));
+          el('ol', { class: 'prof-escada' }, a.caminhos.map(c => el('li', { text: c }))))));
 
-    // 4. Combina com você? O radar do perfil (o seu DNA é ajustado em qualquer ficha)
-    const prof = EIXOS.map(([k]) => a.dna[k] ?? 50); const e = P.estado(); if (!e.dna) e.dna = EIXOS.map(() => 50);
+    // 04. Combina com você? O radar do perfil (o seu DNA é ajustado em qualquer ficha)
+    const prof = EIXOS.map(([x]) => a.dna[x] ?? 50); const e = P.estado(); if (!e.dna) e.dna = EIXOS.map(() => 50);
     const afDna = Math.round(100 - prof.reduce((tt, p, i) => tt + Math.abs(p - e.dna[i]), 0) / prof.length);
     const fichaDna = ix.profissoes.find(p => temFicha(p) && p.arquivo);
-    corpo.appendChild(capitulo('dna', 'Combina com você?', `Turquesa: a ${umaArea()}. Amarelo tracejado: o seu perfil, ajustado em qualquer ficha. Estimativa inicial, a calibrar com profissionais.`,
+    cap('dna', 'Combina com você?', `Turquesa: a ${umaArea()}. Amarelo tracejado: o seu perfil, ajustado em qualquer ficha. Estimativa inicial, a calibrar com profissionais.`,
       el('div', { class: 'prof-caixa prof-dna' },
         el('div', null, el('div', { class: 'prof-dna-grafico' }, IG().radar({ eixos: EIXOS.map(x => x[1]), series: [{ nome: a.nome, valores: prof, classe: 'profissao' }, { nome: 'Você', valores: e.dna, classe: 'voce' }] })),
           el('div', { class: 'prof-legenda' }, el('span', null, el('i', { style: { '--cor': 'var(--turquesa)' } }), a.nome), el('span', null, el('i', { class: 'prof-legenda--tracejado', style: { '--cor': 'var(--amarelo)' } }), 'Você'))),
         el('div', null,
           el('div', { class: 'prof-afinidade ' + (afDna >= 70 ? 'prof-afinidade--alta' : afDna >= 50 ? 'prof-afinidade--media' : 'prof-afinidade--baixa') }, el('span', { class: 'prof-min', text: 'Afinidade pelo perfil' }), el('b', { class: 'prof-num', text: afDna + '%' })),
           el('p', { class: 'prof-min', text: 'O jogo mede afinidade por decisões; o perfil mede por jeito de ser. Os dois juntos dizem mais que cada um sozinho.' }),
-          fichaDna ? el('div', { class: 'prof-espaco' }, link('Ajustar meu perfil na ficha de ' + fichaDna.nome, 'profissao-' + fichaDna.id, { classe: 'prof-btn prof-btn--linha prof-btn--pequeno' })) : null))));
+          fichaDna ? el('div', { class: 'prof-espaco' }, link('Ajustar meu perfil na ficha de ' + fichaDna.nome, 'profissao-' + fichaDna.id, { classe: 'prof-btn prof-btn--linha prof-btn--pequeno' })) : null)));
 
-    // 5. O que ninguém te conta
-    corpo.appendChild(capitulo('ninguem-conta', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio. Toque para revelar.', cartasViradas(a.ninguem_conta, it => citar(t, it.fontes))));
+    // 05. O que ninguém te conta: tudo à vista, numerado (como na ficha)
+    cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.', calloutsNumerados(t, a.ninguem_conta));
 
-    // 6. Vizinhas
-    corpo.appendChild(capitulo('vizinhas', rot('rotulo_vizinhas', 'Áreas vizinhas'), 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, a.vizinhas.map(id => {
+    // 06. Vizinhas
+    cap('vizinhas', rot('rotulo_vizinhas', 'Áreas vizinhas'), 'Para quem está em dúvida entre duas.', el('div', { class: 'prof-cards' }, a.vizinhas.map(id => {
       const v = t.areas.find(x => x.id === id);
       return v ? el('a', { href: '#' + ID + '-' + v.id, class: 'prof-caixa prof-vizinha' }, el('span', { class: 'prof-esp-apelido', text: v.apelido }), el('h3', null, v.nome, icone('direita')), el('p', { text: v.resumo })) : null;
-    }))));
+    })));
 
-    // 7. Fontes: só as citadas nesta área (a numeração é a do panorama)
-    const ids = new Set(); JSON.stringify(a, (k, v) => { if ((k === 'fontes' || k.endsWith('_fontes')) && Array.isArray(v)) v.forEach(x => ids.add(x)); return v; });
+    // Fontes: só as citadas nesta área (a numeração é a do panorama)
+    const ids = new Set(); JSON.stringify(a, (x, v) => { if ((x === 'fontes' || x.endsWith('_fontes')) && Array.isArray(v)) v.forEach(id => ids.add(id)); return v; });
     const lista = t.fontes.filter(fo => ids.has(fo.id));
-    corpo.appendChild(capitulo('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Só as fontes citadas nesta ${umaArea()}; a numeração é a do panorama.`,
-      ...fontesGuardadas(t, lista, lista.length === 1 ? 'Ver a fonte desta ' + umaArea() : `Ver as ${lista.length} fontes desta ${umaArea()}`), linhaRevisao(t)));
+    cap('fontes', 'Fontes', `Conferidas em ${dataBR(t.conferido_em)}. Só as fontes citadas nesta ${umaArea()}; a numeração é a do panorama.`,
+      ...fontesGuardadas(t, lista, lista.length === 1 ? 'Ver a fonte desta ' + umaArea() : `Ver as ${lista.length} fontes desta ${umaArea()}`), linhaRevisao(t));
 
     // Anterior e próxima
-    const k = t.areas.indexOf(a), ant = t.areas[(k + t.areas.length - 1) % t.areas.length], prox = t.areas[(k + 1) % t.areas.length];
+    const ant = t.areas[(k + t.areas.length - 1) % t.areas.length], prox = t.areas[(k + 1) % t.areas.length];
     corpo.appendChild(el('nav', { class: 'prof-areas-nav', 'aria-label': 'Outras ' + rot('rotulo_areas', 'áreas') },
       link(nomeCurto(ant), ID + '-' + ant.id, { classe: 'prof-btn prof-btn--linha prof-btn--pequeno', icone: 'esquerda' }),
       el('span', { class: 'prof-micro prof-num', text: `${maiuscula(umaArea())} ${k + 1} de ${t.areas.length}` }),

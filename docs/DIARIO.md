@@ -5,6 +5,24 @@
 
 ---
 
+## 2026-10-17 · Mapa das Profissões: fichas e panoramas em formato de relatório
+- **Pedido do usuário:** deixar a aba no estilo de um relatório de dados da Globo (faixas de capítulo numeradas, frases-tese coloridas, gráficos variados com "Fonte:" embaixo, "Ver resumo" e números gigantes). Piloto na Medicina aprovado com "Manda bala"; depois "Manda bala pra tudo", com uma repassada no fim, parando só para o merge.
+- **Feito:**
+  - **fichas:** capa com "Em números" (no lugar da foto) e "Ver resumo"; 8 capítulos numerados com a frase-tese; O que faz × O que não faz, as 24 horas do dia, a linha do tempo da formação, o número gigante e o ranking das matrículas (Inep 2024), o mapa do Brasil em quadradinhos para as buscas (com tabela dos 27 estados), "Você sabia?" e "O que ninguém te conta" à vista;
+  - **frases-tese** (`manchetes`) nas 22 fichas, escritas só com fatos e fontes que já estavam em cada uma, sem salário; Enfermagem com o OK do usuário; o `conferir-ficha` valida o campo;
+  - **mapa:** "As profissões lado a lado" (duração da graduação e onde dá para estudar a distância);
+  - **panoramas (Tecnologia e Medicina):** o mesmo formato; "O dinheiro" com todas na mesma régua e a especialidade acesa na página dela; os cem quadradinhos ("48% esperam mais de um ano pela residência"); os cursos na mesma régua de anos (o que não se mede em anos fica sem barra; antes, o Enamed aparecia com uma barra de 1 ano e "Mínimo de 0 horas");
+  - `data/profissoes/numeros.json`, gerado das fichas por `scripts/gerar-numeros-profissoes.mjs`;
+  - **repassada:** saíram o código e o CSS sem uso (as peças antigas, as cartas para virar e cinco gráficos SVG); a sazonalidade das buscas virou HTML (no celular, os meses do SVG tinham uns 5 px); o espaço sob o subtítulo dos capítulos voltou (o reset de margens anulava); as linhas do gráfico de salário viraram alvos de 44 px no celular; o nome curto das fontes ficou sem as datas de consulta.
+- **Decisões:**
+  - **sem salário no mapa:** a ideia inicial ("as 22 profissões em números", em bolhas com o salário) entregaria o palpite de todas as fichas; o mapa compara só duração e formato;
+  - o ranking das matrículas só entra com o total do curso (presencial + EAD), o mesmo critério para todas; ficha com número só do presencial ou só da EAD mostra o número grande, sem o ranking;
+  - nos panoramas, as especialidades que usam o salário de outra ocupação ("referência") ficam fora da comparação, com o nome na nota;
+  - o tutorial da área subiu para a versão 4 (o texto mudou).
+- **Testes:** as 22 fichas e os dois panoramas (com as áreas e o jogo inteiro) sem erro de JavaScript e sem rolagem lateral; `auditar-design` e `--navegador` nas 17 telas da aba em 7 larguras; `conferir-ficha` nas 22 fichas e `conferir-panorama` nos dois.
+- **Atenção:** a exportação E1 da validação externa saiu antes das frases-tese. Os lotes P da E1 continuam valendo para o resto das fichas; as `manchetes` entram na próxima exportação (o pacote manda a ficha inteira).
+- **Próximo passo:** o usuário olha a prévia e aprova o merge.
+
 ## 2026-10-16 · Mapa das Profissões: aba repaginada
 - **Pedido do usuário:** a aba parecia um "quadro invisível" ao rolar, estava pesada, o chute de salário "não fazia sentido, muito atropelado" e as especialidades da Medicina e as áreas de TI estavam difíceis de separar; usar toda a largura ao lado do menu, com a opção de esconder o menu. Plano aprovado com "Manda bala".
 - **Causa do "quadro invisível":** cada parte da ficha começava apagada e só acendia quando o observador via a parte na tela; rolando rápido (e no celular), sobrava tela vazia. Pesava também: desfoque, conta a cada rolagem, palavras entrando uma a uma e animações sem fim.

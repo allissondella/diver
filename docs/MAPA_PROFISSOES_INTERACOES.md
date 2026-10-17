@@ -24,13 +24,13 @@
 - "Me interessa" marca "na mira" automaticamente. "Não é pra mim" guarda a decisão para não repetir a carta na próxima rodada.
 - Log: `profissao_carta` com a decisão.
 
-### 2. Palpite de salário (dentro da ficha, capítulo "Quanto ganha")
+### 2. Palpite de salário (dentro da ficha, capítulo "O dinheiro", antes "Quanto ganha")
 
 - **Repaginado em 2026-10-16** (pedido do usuário: o chute "não fazia sentido, muito atropelado"). Saíram o controle deslizante de R$ 1 mil a R$ 20 mil, a tampa embaçada sobre a tabela e a segunda rodada.
 - Um lugar só: a pergunta ("Quanto ganha, por mês, um ... contratado com carteira no Brasil?") com **4 faixas** em botões e "Prefiro ver direto".
   - As faixas saem de `faixasPalpite(media, semente)`: degraus redondos (R$ 1 mil, 2 mil, 3 mil...) perto de 30% da média; a faixa certa muda de posição de uma profissão para outra (semente pelo id), e a média nunca fica colada na borda de uma faixa.
 - A resposta aparece **no mesmo lugar**: "Na mosca!", "Mais do que você imaginou" ou "Menos do que você imaginou", a média grande e uma régua com a faixa comum (percentis 25 e 75) e a média. Depois vêm os outros cargos, os pisos e o texto da ficha, tudo aberto.
-- O cartão "Quanto ganha?" no topo da ficha só leva ao capítulo ("Dar meu palpite"); depois do palpite, mostra a média.
+- A linha "Quanto ganha?" de "Em números", na capa da ficha, só leva ao capítulo ("Dar meu palpite primeiro"); depois do palpite, mostra a média. O "Ver resumo" e as frases-tese do capítulo nunca trazem o salário, e o mapa compara as profissões sem ele (2026-10-17).
 - Fica guardado no aparelho e na nuvem com o resto do estado (`estado.chutes['<id>:palpite']` e `estado.salarioRevelado`).
 - Log: `profissao_chute_salario` com `faixa` (o rótulo escolhido), `chute` (o meio da faixa), `media` e `acertou`. Nada digitado entra no log.
 - Variante futura: "Chute a nota de corte", com os dados do Sisu que a Sala Enem já usa. "A maioria dos Divers chuta acima" só quando houver dados no log; nunca inventar esse número.
@@ -59,7 +59,7 @@
 
 ### 6. Onde se busca (capa do Mapa e dentro da ficha)
 
-- Barras por estado com a parcela das buscas do estado sobre o curso (Google Trends, 2021–2026, dados já baixados em `data/profissoes/trends/`).
+- Mapa do Brasil em quadradinhos (um por estado, na posição aproximada; mais claro = mais buscas), com a parcela das buscas do estado sobre o curso (Google Trends, 2021–2026, dados já baixados em `data/profissoes/trends/`). Desde 2026-10-17, no capítulo "O mercado", com "Ver os 27 estados em tabela".
 - Toggle para comparar duas profissões lado a lado, com uma frase de leitura ("Enfermagem pesa mais no Norte e Nordeste; Contabilidade, no Sul e Centro-Oeste").
 - Fase 2: trocar por mapa do Brasil em SVG (há um mapa do Brasil no "Antes de mergulhar" que pode ser reaproveitado) e cruzar com salário médio por UF do Novo Caged.
 - Guardar os CSV do Trends com data de extração; a leitura envelhece em um ano.
@@ -102,3 +102,16 @@ Pedido do usuário: a aba parecia um "quadro invisível" ao rolar (as partes fic
 - **Reduzir movimento:** sem animação nenhuma. O tutorial da área subiu para a versão 3.
 
 **Panoramas (Tecnologia e Medicina):** viraram um **explorador**. Detalhes em `docs/MAPA_PROFISSOES_TECNOLOGIA.md` e `docs/MAPA_PROFISSOES_MEDICINA.md`, "Como ficou no app".
+
+## O formato de relatório (2026-10-17)
+
+Pedido do usuário, a partir de um relatório de dados da Globo (as faixas de capítulo numeradas, as frases-tese coloridas, gráficos variados com "Fonte:" embaixo, o "Ver resumo" e os números gigantes). Vale para as 22 fichas e para os dois panoramas. **Só o desenho mudou:** os textos e números dos JSON, as rotas, o XP e o log são os mesmos. O único conteúdo novo são as frases-tese (`manchetes`) das fichas, escritas só com fatos e fontes que já estavam em cada uma (Enfermagem com o OK do usuário).
+
+- **Capa** (`capaRelatorio`): rótulo, título, frase, a linha "conferida em ... · N fontes", as ações e o **"Ver resumo"** (`caixaResumo`) à esquerda; à direita, **"Em números"** (`linhaEmNumeros`), no lugar da foto dos relatórios. Na ficha, o resumo são as frases-tese (sem salário); no panorama, os fatos do contexto.
+- **Capítulos em faixas numeradas** (`capituloRelatorio`): "01 O trabalho", com a frase-tese em letra grande (turquesa para azul) e a linha de apoio com a fonte. Sem frase-tese, o capítulo abre só com a faixa. A faixa de capítulos presa no topo continua (`indiceCapitulos`).
+- **"Fonte:" embaixo de cada gráfico** (`fonteLinha`): o nome curto das fontes (o título até os dois-pontos e o órgão, sem as datas de consulta) e as bolinhas que abrem cada uma. O cartão da fonte segue com tudo.
+- **Gráficos novos da ficha:** O que faz × O que não faz; as 24 horas de um dia típico (o trecho de agora aceso); Quanto tempo até trabalhar (as etapas na mesma régua de anos, o que varia listrado); o número gigante das matrículas (`faixaNumero`); o ranking dos 10 cursos com mais matrículas, com a profissão acesa e as outras em cinza (`rankingMatriculas`, de `data/profissoes/numeros.json`); Onde e quando se busca (mapa em quadradinhos com comparação na mesma escala, tabela e sazonalidade); a faixa "Você sabia?"; "O que ninguém te conta" numerado e à vista (`calloutsNumerados`, no lugar das cartas para virar).
+- **Panoramas:** capa com "Em números"; o número em porcentagem vira **cem quadradinhos** ("de cada 100"); **O dinheiro** põe todas as especialidades (ou áreas) com ocupação própria no Caged na mesma régua, e cada linha abre a especialidade; na página de uma delas, a mesma comparação com ela acesa e as outras em cinza; **Que curso fazer** com as durações na mesma régua (o que não se mede em anos, como uma prova, fica sem barra). Detalhes em `docs/MAPA_PROFISSOES_TECNOLOGIA.md` e `docs/MAPA_PROFISSOES_MEDICINA.md`.
+- **Mapa:** "As profissões lado a lado" no pé (quanto dura a graduação e onde dá para estudar a distância). **Sem salário de propósito**, para não entregar o palpite das fichas; a ideia inicial de bolhas com o salário de todas ficou de fora por isso.
+- **Regras de gráfico** (as da skill de visualização): barras finas com a ponta arredondada só no fim, uma cor para o dado e cinza para o contexto (ênfase), escala de um tom só no mapa, um número gigante por tela, texto sempre nas cores de texto, tabela para quem não lê o mapa e nada que dependa só de cor.
+- **Saíram:** `tileFato`, `capitulo`, `cabecalho` nos panoramas (continua só no mapa), `cartasViradas` (as cartas para virar) e os gráficos SVG sem uso (relógio, faixa salarial, barras, linha da formação e anel). A sazonalidade das buscas virou HTML (`barrasMeses`): no SVG encolhido do celular, os meses ficavam com uns 5 px. Em `js/profissoes-infograficos.js` ficou só o radar.

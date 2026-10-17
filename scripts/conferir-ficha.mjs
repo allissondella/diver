@@ -109,7 +109,19 @@ if (f.dna) ['pessoas', 'pressao', 'corpo', 'rotina', 'numeros', 'criatividade'].
 if (f.dna && f.status === 'publicada' && !f.dna_calibrado) aviso('DNA não calibrado em ficha publicada');
 (f.dilemas || []).forEach(d => { const n = (d.opcoes || []).filter(o => o.recomendada).length; if (n !== 1) erro(`Dilema ${d.id}: exatamente uma opção recomendada (tem ${n})`); if (!d.resposta) erro(`Dilema ${d.id} sem resposta`); if (!d.fontes || !d.fontes.length) aviso(`Dilema ${d.id} sem fonte`); });
 
-// 9. Texto marcado para revisão
+// 9. Frases-tese do relatório (opcionais): só fatos da própria ficha, com fonte quando há número
+const CAPITULOS = ['trabalho', 'formacao', 'dinheiro', 'mercado', 'ninguem', 'combina'];
+if (f.manchetes) Object.entries(f.manchetes).forEach(([k, m]) => {
+  if (!CAPITULOS.includes(k)) erro(`manchetes.${k}: capítulo desconhecido (use ${CAPITULOS.join(', ')})`);
+  if (!m || !m.titulo) return erro(`manchetes.${k} sem titulo`);
+  if (m.titulo.length > 70) aviso(`manchetes.${k}.titulo com ${m.titulo.length} caracteres: frase-tese boa cabe em 70`);
+  if (m.linha && m.linha.length > 200) aviso(`manchetes.${k}.linha com ${m.linha.length} caracteres: a linha de apoio cabe em 200`);
+  const texto = `${m.titulo} ${m.linha || ''}`;
+  if (/você deveria|você nasceu para/i.test(texto)) erro(`manchetes.${k}: nada de "você deveria" nem "você nasceu para"`);
+  if (/\d/.test(texto) && !(m.fontes && m.fontes.length)) erro(`manchetes.${k} tem número sem fonte`);
+});
+
+// 10. Texto marcado para revisão
 if (f.status === 'publicada') {
   const pend = [];
   (function buscar(o, t) { if (Array.isArray(o)) return o.forEach((x, i) => buscar(x, `${t}[${i}]`)); if (o && typeof o === 'object') for (const k in o) { if (k === 'revisar_com_profissional' && o[k]) pend.push(t); buscar(o[k], `${t}.${k}`); } })(f, 'ficha');

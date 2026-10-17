@@ -59,25 +59,26 @@ O Mapa responde a essas perguntas, sempre na mesma ordem, com fonte em cada núm
 - Regiões por área, cada uma com suas profissões. Estados de cada profissão: **em breve** (status `planejada` ou `rascunho`), **pronta** (`publicada`), **explorada** (o aluno já abriu) e **na mira** (o aluno marcou).
 - Quando houver profissões na mira, elas aparecem numa faixa no topo.
 - Admin e professor veem também as fichas em `rascunho`, com uma etiqueta, para revisar.
+- **As profissões lado a lado** (2026-10-17), no pé do mapa, quando há 3 ou mais fichas abertas para quem está vendo: "Quanto dura a graduação" (as profissões agrupadas pelos anos, com a nota de quem tem caminho mais curto, de técnico ou tecnólogo) e "Onde dá para estudar a distância" (só presencial, presencial ou semipresencial, também a distância, depende do curso), cada quadro com a fonte embaixo. **O salário fica de fora de propósito:** ele estragaria o palpite de cada ficha. Os números vêm de `data/profissoes/numeros.json` (seção 5.3).
 
 ### 4.2 Ficha (`#profissao-<id>`)
 
-Ordem fixa (como na implementação de referência):
+**Formato de relatório (2026-10-17;** pedido do usuário, a partir de um relatório de dados da Globo; detalhes em `docs/MAPA_PROFISSOES_INTERACOES.md`, "O formato de relatório"). Só o desenho mudou: o conteúdo, as rotas, o XP e o log são os mesmos. A ordem abaixo substitui a da repaginação de 2026-10-16:
 
-1. Área, nome, frase de uma linha e selo de situação (em revisão, validada). Ao lado, o atalho para o panorama da área, quando houver.
-2. Ações numa linha: **Viver um dia** (se a ficha tiver `dia`), **Pôr na mira**, **Mito ou verdade** e **Comparar** (com a primeira vizinha que tem ficha).
-3. Quatro números: duração, formato, registro profissional e "Quanto ganha?" (leva ao palpite; depois dele, mostra a média), cada um com o botão "Fonte".
-4. **Faixa de capítulos** presa no topo; o capítulo da vez fica aceso.
-5. Capítulos abertos (sem acordeão), nesta ordem (repaginação de 2026-10-16, `docs/MAPA_PROFISSOES_INTERACOES.md`):
-   - **Visão geral:** O que faz e O que não faz lado a lado; Um dia de trabalho e o **Agora mesmo** (relógio de 24 h com o que o profissional provavelmente está fazendo, campo `agora`);
-   - **O que ninguém te conta:** cartas para revelar (borda em `--coral`);
-   - **Formação e entrada:** O que estuda e Como entrar (com as matérias-chave) lado a lado, e o infográfico **Quanto tempo até trabalhar**;
-   - **Quanto ganha:** o **palpite** em 4 faixas (ou "Prefiro ver direto"), a resposta com a régua da faixa comum e da média, e depois todos os cargos, os pisos e a regra;
-   - **Carreira:** outros caminhos, profissões vizinhas, "Comparar" e **Onde e quando se busca** (barras por estado com comparação e sazonalidade);
-   - **Combina com você?:** **DNA da profissão** (radar e Carta Diver) e **O que você faria?** (dilema);
-   - **Fontes.**
-6. **Citações como em artigo:** cada número ou afirmação com fonte recebe `[n]`, que leva à lista numerada de fontes no fim, com título, órgão, data da consulta, tipo (primária ou secundária), link e pendência quando houver.
-7. Rodapé: situação das três revisões (fontes, IA, profissional) e o caminho para reportar erro.
+1. **Capa:** área, nome, frase, "Ficha conferida em ... · N fontes", as ações (Viver um dia, Pôr na mira, Mito ou verdade, Comparar) e **"Ver resumo"** (as frases-tese, sem o salário). À direita, **"Em números"**: duração, formato, registro e "Quanto ganha?" (leva ao palpite; depois dele, mostra a média) e o atalho para o panorama da área.
+2. **Faixa de capítulos** presa no topo; o capítulo da vez fica aceso.
+3. Capítulos em **faixas numeradas**, cada um aberto pela **frase-tese** (`manchetes`) quando a ficha tem:
+   - **01 O trabalho:** O que faz × O que não faz; Um dia de trabalho ao lado das **24 horas de um dia típico** (o trecho de agora aceso);
+   - **02 A formação:** O que estuda e Como entrar (matérias-chave); **Quanto tempo até trabalhar** (linha do tempo das etapas na mesma régua de anos);
+   - **03 O dinheiro:** o palpite em 4 faixas e, depois dele, todos os cargos, os pisos e a regra;
+   - **04 O mercado:** o número gigante das matrículas, o **ranking dos 10 cursos com mais matrículas** (a profissão acesa, as outras em cinza; só quando a ficha tem a posição no Censo), **Onde e quando se busca** (mapa do Brasil em quadradinhos, comparação com outra profissão, tabela com os 27 estados e a sazonalidade) e a faixa **"Você sabia?"**;
+   - **05 A carreira:** outros caminhos, profissões vizinhas e "Comparar";
+   - **06 O que ninguém te conta:** os pontos numerados, todos à vista;
+   - **07 Combina com você?:** DNA da profissão e O que você faria?;
+   - **08 Fontes.**
+4. Embaixo de cada gráfico, a linha **"Fonte:"** com o nome curto das fontes e as bolinhas que abrem cada uma.
+5. **Citações como em artigo:** cada número ou afirmação com fonte recebe uma bolinha numerada, que abre a fonte num cartão; a lista inteira, numerada, abre no botão do capítulo Fontes, com título, órgão, data da consulta, tipo (primária ou secundária), link e pendência quando houver.
+6. No capítulo Fontes: situação das três revisões (fontes, IA, profissional) e o caminho para reportar erro.
 
 ### 4.3 Um dia como... (`#profissao-<id>-dia`)
 
@@ -141,8 +142,18 @@ Duas profissões lado a lado com os 4 números, a seção "Como entrar" resumida
 | `dna`, `dna_calibrado` | não | Seis eixos de 0 a 100: `pessoas`, `pressao`, `corpo`, `rotina`, `numeros`, `criatividade` |
 | `dilemas[]` | não | `id`, `situacao`, `opcoes[]` (`texto`, `recomendada`), `resposta`, `fontes[]` |
 | `trends_id` | não | Chave em `trends/trends.json` para "Onde e quando se busca" |
+| `manchetes` | não | Frases-tese do relatório (2026-10-17), por capítulo: `trabalho`, `formacao`, `dinheiro`, `mercado`, `ninguem`, `combina`. Cada uma com `titulo` (até 70 caracteres), `linha` (apoio, até 200) e `fontes`. Só fatos que já estão na ficha; número sempre com fonte; nunca "você deveria". Sem elas, o capítulo abre só com a faixa |
+| `contexto.curso_censo` | não | Nome do curso no Censo, quando é diferente do nome da ficha (Sistemas: "Sistemas de Informação"); vai para o ranking das matrículas |
 | `secoes.quanto_ganha.chute` | não | `pergunta` (a pergunta do palpite). Desde a repaginação (2026-10-16), `min`, `max`, `passo`, `inicial` e `segunda` ficam no JSON, mas o app não os usa: as 4 faixas saem da média |
 | `secoes.quanto_ganha.medias[].faixa` | não | `de`, `ate`, `rotulo` (percentis 25 e 75 ou faixa comum de contratação) |
+
+### 5.3 `data/profissoes/numeros.json` (gerado, 2026-10-17)
+
+Os números que comparam uma profissão com as outras, para o relatório da ficha e o mapa lerem sem baixar as 22 fichas. **Não se edita à mão:** sai das fichas por `node scripts/gerar-numeros-profissoes.mjs` (e `--conferir` só confere; sai com 1 se estiver desatualizado). Rode depois de mexer em qualquer ficha.
+
+- `matriculas_2024`: o ranking dos cursos com mais matrículas, só com as fichas que têm `contexto.matriculas_2024` **e** `contexto.posicao_ranking_matriculas` (o total do curso, o mesmo critério para todas; número só do presencial ou só da EAD não entra). O script avisa fonte diferente, posição faltando ou fora de ordem.
+- `profissoes.<id>`: média do cargo principal, anos da graduação, caminho mais curto (técnico ou tecnólogo que termina antes da graduação), formato de oferta (`presencial`, `semi`, `ead` ou `depende`, lido de `numeros.formato.valor`) e matrículas.
+- `fontes_mapa`: o nome das normas citadas embaixo dos quadros do mapa.
 
 Regras:
 

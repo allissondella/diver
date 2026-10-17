@@ -1,0 +1,421 @@
+{
+  "aviso": "Gerado por scripts/gerar-numeros-profissoes.mjs a partir das fichas. Não edite à mão: mude a ficha e rode o script.",
+  "matriculas_2024": {
+    "titulo": "Os cursos com mais matrículas no Brasil em 2024",
+    "fonte": {
+      "id": "censo-2024",
+      "orgao": "Inep, via CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/"
+    },
+    "itens": [
+      {
+        "id": "pedagogia",
+        "nome": "Pedagogia",
+        "matriculas": 887695,
+        "posicao": 1
+      },
+      {
+        "id": "administracao",
+        "nome": "Administração",
+        "matriculas": 653126,
+        "posicao": 2
+      },
+      {
+        "id": "direito",
+        "nome": "Direito",
+        "matriculas": 652996,
+        "posicao": 3
+      },
+      {
+        "id": "enfermagem",
+        "nome": "Enfermagem",
+        "matriculas": 478008,
+        "posicao": 4
+      },
+      {
+        "id": "sistemas",
+        "nome": "Sistemas de Informação",
+        "matriculas": 420479,
+        "posicao": 5
+      },
+      {
+        "id": "psicologia",
+        "nome": "Psicologia",
+        "matriculas": 375574,
+        "posicao": 6
+      },
+      {
+        "id": "ciencias-contabeis",
+        "nome": "Ciências Contábeis",
+        "matriculas": 322837,
+        "posicao": 7
+      },
+      {
+        "id": "educacao-fisica",
+        "nome": "Educação Física",
+        "matriculas": 303939,
+        "posicao": 8
+      },
+      {
+        "id": "medicina",
+        "nome": "Medicina",
+        "matriculas": 283594,
+        "posicao": 9
+      },
+      {
+        "id": "fisioterapia",
+        "nome": "Fisioterapia",
+        "matriculas": 227223,
+        "posicao": 10
+      }
+    ]
+  },
+  "fontes_mapa": {
+    "duracao": "Diretrizes curriculares e resoluções do Conselho Nacional de Educação (carga horária mínima de cada curso), citadas em cada ficha",
+    "formato": "Portaria MEC nº 378/2025 e Decreto nº 12.456, de 19 de maio de 2025 (novo marco da EAD)"
+  },
+  "profissoes": {
+    "enfermagem": {
+      "nome": "Enfermagem",
+      "area": "saude",
+      "salario": {
+        "cargo": "Enfermeiro",
+        "media": 4503,
+        "fontes": [
+          "caged-enfermeiro"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": {
+        "nome": "Técnico em enfermagem",
+        "anos_de": 1.5,
+        "anos_ate": 2
+      },
+      "formato": "presencial",
+      "matriculas_2024": 478008
+    },
+    "medicina": {
+      "nome": "Medicina",
+      "area": "saude",
+      "salario": {
+        "cargo": "Médico clínico",
+        "media": 10303,
+        "fontes": [
+          "caged-medico"
+        ]
+      },
+      "graduacao_anos": 6,
+      "caminho_curto": null,
+      "formato": "presencial",
+      "matriculas_2024": 283594
+    },
+    "psicologia": {
+      "nome": "Psicologia",
+      "area": "saude",
+      "salario": {
+        "cargo": "Psicólogo clínico",
+        "media": 3809,
+        "fontes": [
+          "caged-psicologo"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "presencial",
+      "matriculas_2024": 375574
+    },
+    "fisioterapia": {
+      "nome": "Fisioterapia",
+      "area": "saude",
+      "salario": {
+        "cargo": "Fisioterapeuta",
+        "media": 3445,
+        "fontes": [
+          "caged-fisio"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": 227223
+    },
+    "educacao-fisica": {
+      "nome": "Educação Física",
+      "area": "saude",
+      "salario": {
+        "cargo": "Professor de educação física",
+        "media": 3321,
+        "fontes": [
+          "caged-prof-ef"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": null,
+      "formato": "depende",
+      "matriculas_2024": 303939
+    },
+    "administracao": {
+      "nome": "Administração",
+      "area": "negocios",
+      "salario": {
+        "cargo": "Administrador",
+        "media": 5086,
+        "fontes": [
+          "caged-administrador"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": null,
+      "formato": "ead",
+      "matriculas_2024": 653126
+    },
+    "ciencias-contabeis": {
+      "nome": "Ciências Contábeis",
+      "area": "negocios",
+      "salario": {
+        "cargo": "Contador",
+        "media": 5566,
+        "fontes": [
+          "caged-contador"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": null,
+      "formato": "ead",
+      "matriculas_2024": 322837
+    },
+    "gestao-de-pessoas": {
+      "nome": "Gestão de Pessoas",
+      "area": "negocios",
+      "salario": {
+        "cargo": "Analista de recursos humanos",
+        "media": 4429,
+        "fontes": [
+          "caged-rh"
+        ]
+      },
+      "graduacao_anos": 2,
+      "caminho_curto": null,
+      "formato": "ead",
+      "matriculas_2024": null
+    },
+    "direito": {
+      "nome": "Direito",
+      "area": "direito-sociedade",
+      "salario": {
+        "cargo": "Advogado",
+        "media": 5710,
+        "fontes": [
+          "caged-advogado"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "presencial",
+      "matriculas_2024": 652996
+    },
+    "pedagogia": {
+      "nome": "Pedagogia",
+      "area": "educacao",
+      "salario": {
+        "cargo": "Professor dos anos iniciais",
+        "media": 3426,
+        "fontes": [
+          "caged-prof-iniciais"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": 887695
+    },
+    "sistemas": {
+      "nome": "Sistemas e desenvolvimento",
+      "area": "tecnologia",
+      "salario": {
+        "cargo": "Analista de desenvolvimento de sistemas",
+        "media": 8458,
+        "fontes": [
+          "caged-dev-analista"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": {
+        "nome": "Tecnólogo em ADS",
+        "anos_de": 2,
+        "anos_ate": 3
+      },
+      "formato": "ead",
+      "matriculas_2024": 420479
+    },
+    "engenharia-civil": {
+      "nome": "Engenharia Civil",
+      "area": "engenharia",
+      "salario": {
+        "cargo": "Engenheiro civil",
+        "media": 9847,
+        "fontes": [
+          "caged-eng-civil"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": null
+    },
+    "odontologia": {
+      "nome": "Odontologia",
+      "area": "saude",
+      "salario": {
+        "cargo": "Cirurgião-dentista clínico geral",
+        "media": 5760,
+        "fontes": [
+          "caged-dentista"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "presencial",
+      "matriculas_2024": null
+    },
+    "medicina-veterinaria": {
+      "nome": "Medicina Veterinária",
+      "area": "saude",
+      "salario": {
+        "cargo": "Médico veterinário",
+        "media": 5077,
+        "fontes": [
+          "caged-vet"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": null
+    },
+    "nutricao": {
+      "nome": "Nutrição",
+      "area": "saude",
+      "salario": {
+        "cargo": "Nutricionista",
+        "media": 3971,
+        "fontes": [
+          "caged-nutri"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": null
+    },
+    "farmacia": {
+      "nome": "Farmácia",
+      "area": "saude",
+      "salario": {
+        "cargo": "Farmacêutico",
+        "media": 4617,
+        "fontes": [
+          "caged-farma"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": null
+    },
+    "biomedicina": {
+      "nome": "Biomedicina",
+      "area": "saude",
+      "salario": {
+        "cargo": "Biomédico",
+        "media": 3337,
+        "fontes": [
+          "caged-biomed"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": null
+    },
+    "arquitetura": {
+      "nome": "Arquitetura e Urbanismo",
+      "area": "engenharia",
+      "salario": {
+        "cargo": "Arquiteto de edificações",
+        "media": 7556,
+        "fontes": [
+          "caged-arquiteto"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": null
+    },
+    "engenharia-de-producao": {
+      "nome": "Engenharia de Produção",
+      "area": "engenharia",
+      "salario": {
+        "cargo": "Engenheiro de produção",
+        "media": 11530,
+        "fontes": [
+          "caged-eng-producao"
+        ]
+      },
+      "graduacao_anos": 5,
+      "caminho_curto": null,
+      "formato": "semi",
+      "matriculas_2024": null
+    },
+    "ciencia-da-computacao": {
+      "nome": "Ciência da Computação",
+      "area": "tecnologia",
+      "salario": {
+        "cargo": "Analista de desenvolvimento de sistemas",
+        "media": 8458,
+        "fontes": [
+          "caged-dev-analista"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": {
+        "nome": "Tecnólogo em ADS",
+        "anos_de": 2,
+        "anos_ate": 3
+      },
+      "formato": "ead",
+      "matriculas_2024": null
+    },
+    "inteligencia-artificial": {
+      "nome": "Inteligência Artificial",
+      "area": "tecnologia",
+      "salario": {
+        "cargo": "Cientista de dados",
+        "media": 10356,
+        "fontes": [
+          "caged-cientista"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": null,
+      "formato": "depende",
+      "matriculas_2024": null
+    },
+    "comunicacao": {
+      "nome": "Jornalismo e Publicidade",
+      "area": "comunicacao",
+      "salario": {
+        "cargo": "Jornalista",
+        "media": 5041,
+        "fontes": [
+          "caged-jornalista"
+        ]
+      },
+      "graduacao_anos": 4,
+      "caminho_curto": null,
+      "formato": "ead",
+      "matriculas_2024": null
+    }
+  }
+}
