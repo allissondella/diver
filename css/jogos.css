@@ -1158,6 +1158,8 @@ body.jogo-trava { overflow: hidden; }
    não está: apagada. Forma + cor, para quem não distingue cores. --tam vem do JS (cabe na tela). */
 .pal { --tam: 52px; --vao: 6px; display: grid; gap: var(--esp-4, 16px); min-width: 0; max-width: 100%; }
 .pal-abertura { gap: var(--ritmo-cartoes, 16px); }
+.pal-modos { justify-self: center; } /* Palavrinha, x2 ou x4: o modo no topo do saguão (um cartão só na Sala de Jogos) */
+.pal-modos button { min-width: 72px; }
 .pal-cartao { display: grid; gap: var(--esp-3, 12px); }
 .pal-cartao .cartao__titulo { margin: 0; }
 .pal-titulo { font-size: var(--t-2xl); font-weight: 800; }
