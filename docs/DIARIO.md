@@ -5,6 +5,29 @@
 
 ---
 
+## 2026-10-18 · Onda A dos jogos no palco: Chefão do Abismo e Maré Alta (etapa 4)
+- **Pedido do usuário:** o mesmo da etapa 3 ("pode aplicar para todos"), com "Regras, pontos, XP e conteúdo ficam iguais".
+- **Feito:**
+  - **Chefão do Abismo:**
+    - abre num cartão (quantos chefões estão liberados) e depois na escolha;
+    - o abismo escurece a cada profundidade;
+    - o chefão fica ao lado da pergunta na tela larga e no celular deitado, e num painel preso no alto no celular em pé, para nunca sair de vista;
+    - golpe com onda de choque e o dano subindo; ataque com a borda coral; derrotado, ele afunda;
+    - "Revanche" ou "Escolher outro chefão" no fim;
+    - antes, depois do primeiro golpe o chefão parava de flutuar (a classe da animação ficava presa); agora volta a flutuar.
+  - **Maré Alta:**
+    - um cais ao entardecer, com a lua, o farol que gira e a régua de maré (só na tela larga; no celular, a pílula "Maré: x%");
+    - o mar sobe com uma sobra e assenta (mola amortecida), e a onda quebra no erro;
+    - a cada 5 seguidos, faíscas douradas e o farol amarelo;
+    - o título do fim diz "1 acerto" no singular.
+  - **Peças comuns** em `Palco.pintar`: o mar (`mar`), as nuvens macias (`nuvem`, `nuvemBaixa`), `seme` e `tela`. O Quiz passou a usá-las, sem mudar o desenho.
+  - Saíram os estilos velhos da onda do tempo do Quiz e da maré, sem uso.
+- **Testes:**
+  - os 3 jogos da onda A em 1440×900, 390×844, 844×390, 360×740, 768×1024, 1024×768, 1280×800, 1920×1080 e 667×375, de ponta a ponta (abertura, perguntas, fim com XP no curso), sem nada passando da tela;
+  - a Maré com "reduzir movimento";
+  - a cena sozinha (calma, golpe, onda, maré baixando);
+  - o auditor de design passou.
+
 ## 2026-10-18 · O palco em tela toda dos jogos e o Quiz Relâmpago nele (etapa 3 dos jogos)
 - **Pedido do usuário:** "vamos atualizar nossos jogos para esse estilo de design que ficou o jogo da pistola, tela cheia, bonito, da uma sensação de entrar realmente no jogo [...] o realismo a fluidez, pode aplicar para todos". O plano aprovado ("Manda bala"): uma base comum de tela cheia e depois os jogos em ondas, com regras, pontos, XP e conteúdo iguais.
 - **Feito:**

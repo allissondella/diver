@@ -73,23 +73,7 @@ body.jogo-trava { overflow: hidden; }
 .jogo-feedback__certa { font-weight: 700; color: var(--amarelo); }
 .jogo-feedback__texto { font-size: var(--t-sm); }
 
-/* ---------- Quiz Relâmpago ---------- */
-.onda {
-  height: 10px;
-  border-radius: var(--raio-pilula);
-  background: rgba(230, 241, 255, 0.08);
-  overflow: hidden;
-}
-.onda__agua {
-  width: 0;
-  height: 100%;
-  background: repeating-linear-gradient(-45deg, var(--turquesa) 0 10px, var(--turquesa-brilho) 10px 20px);
-  background-size: 28px 100%;
-  animation: correnteza 1.2s linear infinite;
-  transition: width var(--dur-normal) linear;
-}
-.onda--alta .onda__agua { background: repeating-linear-gradient(-45deg, var(--coral) 0 10px, var(--amarelo) 10px 20px); }
-@keyframes correnteza { to { background-position: 28px 0; } }
+/* ---------- Quiz Relâmpago: no palco (o mar é a onda do tempo; estilos no fim, "O palco em tela toda") ---------- */
 .vf__pergunta { color: var(--texto-suave); margin-bottom: 6px; }
 .vf__botoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
@@ -219,40 +203,8 @@ body.jogo-trava { overflow: hidden; }
 .adivinha-msg { margin-top: 12px; display: grid; gap: 8px; }
 .adivinha-explicacao { color: var(--texto-suave); font-size: var(--t-sm); }
 
-/* ---------- Maré Alta ---------- */
-.mare {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 0;
-  z-index: var(--z-base);
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(20, 184, 166, 0.35), rgba(20, 184, 166, 0.55));
-  transition: height 700ms ease;
-}
-.mare__onda {
-  position: absolute;
-  top: -12px;
-  left: 0;
-  right: 0;
-  height: 14px;
-  background: radial-gradient(circle at 10px -2px, transparent 12px, rgba(20, 184, 166, 0.35) 13px) repeat-x;
-  background-size: 20px 14px;
-  animation: correnteza 2s linear infinite;
-}
-.mare-palco,
-.mare-medidor,
+/* ---------- Maré Alta: no palco (a maré é o mar da cena, js/jogos/mare-alta.js) ---------- */
 .tela--jogo .jogo-hud { position: relative; z-index: var(--z-acima); }
-.mare-medidor {
-  padding: 6px 12px;
-  border-radius: var(--raio-pilula);
-  justify-self: start;
-  background: var(--superficie-turquesa);
-  font-weight: 800;
-  font-size: var(--t-sm);
-}
-.mare-medidor--perigo { background: rgba(251, 113, 133, 0.2); color: var(--coral); }
 
 /* ---------- Chefão do Abismo ---------- */
 .chefoes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -1401,4 +1353,66 @@ body.jogo-trava { overflow: hidden; }
 @container sd-cheia (max-height: 479px) and (max-width: 799px) {
   .palco__fim .sd-tiro__numeros--fim { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .palco__numeros--3 > :last-child { grid-column: 1 / -1; }
+}
+
+/* ---------- Chefão do Abismo no palco (2026-10-18) ----------
+   O chefão sempre à vista: ao lado da pergunta na tela larga (a coluna alarga) e preso no alto da rolagem nas outras;
+   a vida embaixo dele e o dano subindo; a escolha em cartões de vidro. */
+.chefe-batalha { display: grid; gap: var(--esp-3); }
+.chefe-batalha__lado { /* no celular em pé: um painel de vidro preso no alto (a pergunta passa por baixo dele) */
+  position: sticky; top: 0; z-index: var(--z-acima); display: grid; gap: var(--esp-1); padding: var(--esp-2) var(--esp-3);
+  border-radius: var(--raio-lg); border: 1px solid color-mix(in srgb, var(--texto) 12%, transparent);
+  background: var(--fundo-0); box-shadow: var(--sombra-4);
+}
+.chefe-batalha__lado .chefe-narracao { font-size: var(--t-sm); }
+@media (min-width: 1024px) { /* tela larga: o chefão ao lado da pergunta */
+  .palco--chefao .palco__coluna { width: min(100% - var(--esp-6) * 2, 1100px); }
+  .chefe-batalha { grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); align-items: start; gap: var(--esp-5); }
+  .chefe-batalha__lado { top: var(--esp-3); padding: var(--esp-4) 0 0; border: 0; background: none; box-shadow: none; }
+  .chefe-batalha__lado .chefe-narracao { font-size: var(--t-md); }
+}
+@container sd-cheia (max-height: 479px) and (min-width: 640px) { /* celular deitado: também ao lado, mais compacto */
+  .palco--chefao .palco__coluna { width: min(100% - var(--esp-4) * 2, 1100px); }
+  .chefe-batalha { grid-template-columns: minmax(170px, 230px) minmax(0, 1fr); align-items: start; gap: var(--esp-3); }
+  .chefe-batalha__lado { padding: var(--esp-2); }
+  .palco--chefao .chefe-batalha__lado .arena { flex-direction: column; text-align: center; }
+  .palco--chefao .chefe-batalha__lado .arena__info { justify-items: center; }
+  .palco--chefao .chefe-batalha__lado .chefe-narracao { text-align: center; }
+}
+.palco--chefao .arena { position: relative; flex-direction: column; gap: var(--esp-2); padding: 0; text-align: center; background: none; border: 0; }
+.palco--chefao .chefe--batalha { width: clamp(120px, 24vh, 200px); filter: drop-shadow(0 12px 24px color-mix(in srgb, var(--fundo-0) 70%, transparent)); }
+.palco--chefao .arena__info { width: min(100%, 420px); justify-items: center; gap: var(--esp-1); }
+.palco--chefao .arena__nome { font-size: var(--t-xl); text-shadow: 0 1px 2px var(--fundo-0); }
+.palco--chefao .vida { width: 100%; height: 12px; background: color-mix(in srgb, var(--fundo-0) 70%, transparent); }
+.chefe-vida { font: 700 var(--t-xs) var(--fonte-mono); color: var(--texto-suave); }
+.palco--chefao .chefe-narracao { margin: 0; text-align: center; text-shadow: 0 1px 2px var(--fundo-0); }
+.chefe-dano {
+  position: absolute; left: 50%; top: 18%; pointer-events: none;
+  font: 800 var(--t-2xl) var(--fonte-mono); color: var(--amarelo); text-shadow: 0 2px 6px var(--fundo-0);
+  animation: chefe-dano 900ms var(--ease-saida) forwards;
+}
+.chefe-dano--critico { color: var(--coral); font-size: var(--t-3xl); }
+@keyframes chefe-dano {
+  from { opacity: 0; transform: translate(-50%, 10px) scale(.8); }
+  20% { opacity: 1; transform: translate(-50%, 0) scale(1.1); }
+  to { opacity: 0; transform: translate(-50%, -48px) scale(1); }
+}
+.chefe--derrotado { animation: chefe-afunda 900ms var(--ease-saida) forwards; }
+@keyframes chefe-afunda { to { transform: translateY(36px) scale(.85) rotate(12deg); opacity: .25; filter: grayscale(.6); } }
+.palco .chefoes { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.palco .chefe-opcao { background: color-mix(in srgb, var(--fundo-0) 72%, transparent); border-color: color-mix(in srgb, var(--texto) 14%, transparent); }
+.palco .chefe-opcao:hover:not(:disabled) { border-color: var(--coral); }
+@media (max-width: 479px) {
+  .palco--chefao .arena { flex-direction: row; text-align: left; }
+  .palco--chefao .chefe--batalha { width: 96px; }
+  .palco--chefao .arena__info { justify-items: start; }
+  .palco--chefao .chefe-narracao { text-align: left; }
+  .palco .chefoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container sd-cheia (max-height: 479px) {
+  .palco--chefao .chefe--batalha { width: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chefe-dano { animation: none; transform: translate(-50%, -24px); }
+  .chefe--derrotado { animation: none; opacity: .4; }
 }

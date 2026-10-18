@@ -223,7 +223,7 @@ Jogos.registrar({
 
     /* ---------- A cena: tempestade no mar, à noite ---------- */
     function cenaTempestade() {
-      const { COR, misturar, alfa, degrade, agua } = Palco.pintar;
+      const { COR, misturar, alfa, degrade, mar, seme, tela, nuvem, nuvemBaixa } = Palco.pintar;
       let ceu = null; // o céu com a lua por trás, guardado (só refaz quando a tela muda)
       let deck = null; // o teto de nuvens, que se repete na largura (anda devagar sem emenda)
       let deckClaro = null; // o mesmo teto aceso: o clarão do raio dentro das nuvens
@@ -239,8 +239,6 @@ Jogos.registrar({
       let crista = 0; // a onda que quebra quando o tempo acaba
       let L0 = 0;
       let A0 = 0;
-      const seme = (n) => { let x = n; return () => { x = (x * 9301 + 49297) % 233280; return x / 233280; }; };
-      const tela = (w, h) => { const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w)); c.height = Math.max(1, Math.round(h)); return c; };
       // as cores das nuvens: escuras contra o céu, com o contorno aceso pela lua ("forro de prata"); ACESA é o clarão do raio
       const CORES = {
         topo: misturar(COR.fundo, COR.marinho, 0.6), meio: misturar(COR.sup, COR.fundo, 0.3), base: misturar(COR.sup, COR.sup2, 0.45),
@@ -250,60 +248,6 @@ Jogos.registrar({
         topo: misturar(COR.lilas, COR.sup2, 0.45), meio: misturar(COR.lilas, COR.branco, 0.15), base: misturar(COR.lilas, COR.branco, 0.4),
         luz: COR.branco, forro: alfa(COR.branco, 0.6),
       };
-
-      /** A forma macia (em branco) de uma nuvem: cada gomo é cheio por dentro e some na borda; repete na largura, se pedir */
-      function mascara(W, H, bolas, cresce = 1, repete = 0) {
-        const c = tela(W, H);
-        const f = c.getContext('2d');
-        for (const b of bolas) {
-          for (const x of repete ? [b.x - repete, b.x, b.x + repete] : [b.x]) {
-            const r = b.r * cresce;
-            if (x + r < 0 || x - r > W) continue;
-            const d = f.createRadialGradient(x, b.y, 0, x, b.y, r);
-            d.addColorStop(0, alfa(COR.branco, 1));
-            d.addColorStop(0.6, alfa(COR.branco, 0.95));
-            d.addColorStop(1, alfa(COR.branco, 0));
-            f.fillStyle = d;
-            f.fillRect(x - r, b.y - r, r * 2, r * 2);
-          }
-        }
-        return c;
-      }
-
-      /**
-       * Uma nuvem pronta: primeiro o contorno aceso (a mesma forma, um pouco maior, clara); por cima, o corpo num degradê
-       * (escuro no alto, um pouco mais claro na base, onde bate a luz do horizonte), com um toque de luz no alto de alguns
-       * gomos, que dá o volume sem virar bola. repete: a largura em que o desenho se repete (o teto anda sem emenda).
-       */
-      function pintarNuvem(W, H, bolas, cores, repete = 0) {
-        const c = tela(W, H);
-        const f = c.getContext('2d');
-        f.drawImage(mascara(W, H, bolas, 1.1, repete), 0, 0);
-        f.globalCompositeOperation = 'source-in';
-        f.fillStyle = cores.forro;
-        f.fillRect(0, 0, W, H);
-        const corpo = mascara(W, H, bolas, 1, repete);
-        const fc = corpo.getContext('2d');
-        fc.globalCompositeOperation = 'source-in';
-        fc.fillStyle = degrade(fc, 0, H, [[0, cores.topo], [0.55, cores.meio], [1, cores.base]]);
-        fc.fillRect(0, 0, W, H);
-        fc.globalCompositeOperation = 'source-atop';
-        for (const b of bolas) {
-          if (!b.luz) continue;
-          for (const x of repete ? [b.x - repete, b.x, b.x + repete] : [b.x]) {
-            const lx = x - b.r * 0.25;
-            const ly = b.y - b.r * 0.45;
-            const l = fc.createRadialGradient(lx, ly, 0, lx, ly, b.r * 0.9);
-            l.addColorStop(0, alfa(cores.luz, 0.2));
-            l.addColorStop(1, alfa(cores.luz, 0));
-            fc.fillStyle = l;
-            fc.fillRect(lx - b.r, ly - b.r, b.r * 2, b.r * 2);
-          }
-        }
-        f.globalCompositeOperation = 'source-over';
-        f.drawImage(corpo, 0, 0);
-        return c;
-      }
 
       /** O teto de nuvens: gomos grandes no alto (saindo da tela) e, na frente, a borda de baixo em gomos de vários tamanhos */
       function gomosDoTeto(L, H, base) {
@@ -320,32 +264,6 @@ Jogos.registrar({
         fileira(0.08, 0.07, 0.14, 0.16, 0.85, true); // o meio
         fileira(0.05, 0.045, 0.3, 0.12, 0.8, true); // a borda de baixo, em gomos colados no meio
         return bolas;
-      }
-
-      /** Uma nuvem baixa, em gomos, com a base reta (cortada num degradê) */
-      function fazerNuvem(w, r) {
-        const W = Math.round(w);
-        const H = Math.round(w * 0.42);
-        const bolas = [];
-        const n = 6 + Math.floor(r() * 4);
-        for (let i = 0; i < n; i++) { // a fileira de trás: os gomos altos do meio
-          const k = (i + 0.5) / n;
-          const meio = 1 - Math.abs(k - 0.5) * 1.6;
-          const raio = H * (0.16 + 0.2 * meio + r() * 0.06);
-          bolas.push({ x: W * (0.16 + 0.68 * k), y: H * 0.66 - raio * (0.2 + 0.5 * meio * r()), r: raio, luz: true });
-        }
-        for (let i = 0; i < n + 2; i++) { // a fileira da frente: gomos menores perto da base
-          const k = (i + 0.5) / (n + 2);
-          const raio = H * (0.1 + r() * 0.07);
-          bolas.push({ x: W * (0.12 + 0.76 * k) + (r() - 0.5) * W * 0.03, y: H * (0.66 + r() * 0.06), r: raio });
-        }
-        const c = pintarNuvem(W, H, bolas, CORES);
-        const f = c.getContext('2d');
-        f.globalCompositeOperation = 'destination-out';
-        f.fillStyle = degrade(f, H * 0.7, H * 0.86, [[0, alfa(COR.fundo, 0)], [1, alfa(COR.fundo, 1)]]);
-        f.fillRect(0, H * 0.7, W, H * 0.3);
-        f.globalCompositeOperation = 'source-over';
-        return c;
       }
 
       function medir(L, A) {
@@ -367,14 +285,14 @@ Jogos.registrar({
         // o teto de nuvens, nas duas cores (a normal e a do clarão)
         const H = Math.round(A * 0.42);
         const bolas = gomosDoTeto(L, H, Math.min(L, A));
-        deck = pintarNuvem(L, H, bolas, CORES, L);
-        deckClaro = pintarNuvem(L, H, bolas, ACESA, L);
+        deck = nuvem(L, H, bolas, CORES, L);
+        deckClaro = nuvem(L, H, bolas, ACESA, L);
         rascunho = tela(L, H);
         // as nuvens baixas
         const rn = seme(5);
         nuvens = Array.from({ length: Math.max(3, Math.round(L / 380)) }, (_, i) => {
           const w = Math.max(200, Math.min(L, A) * (0.42 + rn() * 0.3));
-          return { img: fazerNuvem(w, rn), x: rn() * L, y: A * (0.12 + rn() * 0.12), v: 7 + rn() * 9 + i, a: 0.75 + rn() * 0.2 };
+          return { img: nuvemBaixa(w, rn, CORES), x: rn() * L, y: A * (0.12 + rn() * 0.12), v: 7 + rn() * 9 + i, a: 0.75 + rn() * 0.2 };
         });
       }
 
@@ -436,9 +354,6 @@ Jogos.registrar({
         g.drawImage(rascunho, 0, 0);
         g.globalAlpha = 1;
       }
-
-      /** A altura da onda da frente em x (a mesma conta de Palco.pintar.agua) */
-      const ondaEm = (x, y, a, c, f) => y + Math.sin(x / c + f) * a + Math.sin(x / (c * 0.43) - f * 1.7) * a * 0.35;
 
       function desenhar(g, L, A, t, dt, est) {
         if (!ceu || L0 !== L || A0 !== A) medir(L, A);
@@ -526,33 +441,14 @@ Jogos.registrar({
             g.stroke();
           }
         }
-        // o mar em três camadas de onda (a da frente mais clara)
-        const corTopo = misturar(misturar(COR.turquesaEscura, COR.marinho, 0.3), misturar(COR.turquesaEscura, COR.coralSombra, 0.5), perigo);
-        const corFundo = misturar(COR.turquesaEscura, COR.fundo, 0.72);
-        const camadas = [[0, 0.5, 7, 90, 0.7], [10, 0.75, 9, 60, 1.1], [22, 1, 11, 120, 1.6]];
+        // o mar (Palco.pintar.mar); perto do fim do tempo, a crista vai ficando coral
         crista = Math.max(0, crista - dt * 1.2);
         const fase = est.rm ? 0 : t;
-        for (const [dy, a, amp, comp, vel] of camadas) {
-          const y = yMar + dy - crista * 40 * (dy === 22 ? 1 : 0.5);
-          g.fillStyle = degrade(g, y - amp, A, [[0, alfa(corTopo, a)], [0.18, alfa(misturar(corTopo, corFundo, 0.5), a)], [0.55, alfa(corFundo, Math.max(a, 0.9))], [1, COR.fundo]]);
-          agua(g, 0, L, y, amp * (1 + crista), comp, fase * vel, A);
-          g.fill();
-        }
-        const yFrente = yMar + 22 - crista * 40;
-        const ampFrente = 11 * (1 + crista);
-        // as ondulações no corpo do mar: linhas finas que se afastam umas das outras para perto de quem olha
-        g.lineWidth = 1;
-        for (let i = 1; i <= 7; i++) {
-          const k = i / 8;
-          const y = yFrente + 6 + (A - yFrente) * k * k;
-          g.strokeStyle = alfa(COR.claro, 0.07 * (1 - k * 0.6));
-          g.beginPath();
-          for (let x = 0; x <= L + 10; x += 10) {
-            const yy = y + Math.sin(x / (70 + i * 24) + fase * (0.9 + i * 0.1) + i) * (1.5 + i * 0.6);
-            if (x) g.lineTo(x, yy); else g.moveTo(x, yy);
-          }
-          g.stroke();
-        }
+        const { yFrente } = mar(g, L, A, yMar, fase, {
+          corTopo: misturar(misturar(COR.turquesaEscura, COR.marinho, 0.3), misturar(COR.turquesaEscura, COR.coralSombra, 0.5), perigo),
+          corFundo: misturar(COR.turquesaEscura, COR.fundo, 0.72), crista,
+          espuma: perigo > 0.5 ? COR.coral : COR.claro, espumaA: 0.3 + 0.35 * perigo,
+        });
         // o reflexo do raio na água: uma faixa de luz embaixo dele, que abre e some para baixo (bordas macias)
         if (brilho > 0.02) {
           g.save();
@@ -571,26 +467,6 @@ Jogos.registrar({
             g.fillRect(xBrilho - meia, y0, meia * 2, y1 - y0 + 1);
           }
           g.restore();
-        }
-        // a espuma: uma linha fina na crista da frente e cristas brancas que andam com a onda
-        g.strokeStyle = alfa(perigo > 0.5 ? COR.coral : COR.claro, 0.3 + 0.35 * perigo);
-        g.lineWidth = 1.5;
-        g.beginPath();
-        for (let x = 0; x <= L + 8; x += 8) {
-          const y = ondaEm(x, yFrente, ampFrente, 120, fase * 1.6);
-          if (x) g.lineTo(x, y); else g.moveTo(x, y);
-        }
-        g.stroke();
-        const cristas = Math.max(5, Math.round(L / 110));
-        for (let i = 0; i < cristas; i++) {
-          const x = (((i / cristas) * L + fase * (14 + (i % 3) * 6)) % (L + 60)) - 30;
-          const y = ondaEm(x, yFrente, ampFrente, 120, fase * 1.6);
-          const k = 0.5 + 0.5 * Math.sin(fase * 1.3 + i * 2.1); // cada crista aparece e some
-          if (k < 0.25) continue;
-          g.fillStyle = alfa(misturar(COR.claro, COR.branco, 0.5), 0.2 * k);
-          g.beginPath();
-          g.ellipse(x, y + 1, 16 + (i % 4) * 5, 2.2, 0, 0, Math.PI * 2);
-          g.fill();
         }
         // a chuva batendo no mar: rodinhas que abrem e somem
         if (!est.rm) {

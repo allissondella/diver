@@ -35,8 +35,8 @@ _Jogos com mapa, chefe, sobrevivência e desafios de raciocínio._
 | Jogo | Como funciona | Conteúdo usado | Roupa de mar | Semana |
 | --- | --- | --- | --- | --- |
 | **Caça ao Tesouro** (`caca-ao-tesouro`) | Um mapa com paradas; cada pergunta respondida libera o próximo trecho até o baú de pérolas. Cada caça é gerada diferente. | Qualquer trilha (derivado) | Mapa do fundo do mar, ilhas e ruínas | Pronto (v0) |
-| **Chefão do Abismo** (`chefao`) | Um monstro marinho com barra de vida. Cada acerto causa dano (combo = golpe crítico); cada erro custa oxigênio. Um chefão por profundidade. | Qualquer trilha (derivado) | Kraken, peixe-lanterna e companhia | Pronto (v0) |
-| **Maré Alta** (`mare-alta`) | Modo sobrevivência sem fim: a maré sobe a cada erro. Quanto tempo você aguenta? O recorde fica salvo por trilha. | Qualquer trilha (derivado) | A água sobe na tela | Pronto (v0) |
+| **Chefão do Abismo** (`chefao`) | Um monstro marinho com barra de vida. Cada acerto causa dano (combo = golpe crítico); cada erro custa oxigênio. Um chefão por profundidade. | Qualquer trilha (derivado) | O abismo em tela toda, mais escuro a cada profundidade, com o chefão grande ao lado da pergunta (no celular, preso no alto) | Pronto (palco, 2026-10-18) |
+| **Maré Alta** (`mare-alta`) | Modo sobrevivência sem fim: a maré sobe a cada erro. Quanto tempo você aguenta? O recorde fica salvo por trilha. | Qualquer trilha (derivado) | Um cais ao entardecer, em tela toda: o farol gira e o mar sobe a régua de maré a cada erro | Pronto (palco, 2026-10-18) |
 | **Forca do Náufrago** (`forca`) | Descubra a palavra-chave letra por letra. Cada erro tira uma peça da jangada; uma dica opcional custa 1 pérola. | Palavras-chave (ou dos temas) | Uma jangada que vai se desmontando | Pronto (v0) |
 | **Corrente do Tempo** (`corrente-do-tempo`) | Ordene eventos ou passos arrastando cada item na correnteza: cronologias, etapas de um processo, procedimentos. | Sequências | Itens boiando na correnteza | Pronto (v0) |
 
@@ -186,7 +186,8 @@ Pedido do usuário: "vamos atualizar nossos jogos para esse estilo de design que
 - **"Reduzir movimento":** a cena fica parada (sem partículas, clarão, raio nem tremidinha) e só muda quando o jogo muda (o mar que sobe, a vida do chefão).
 - **Ajudas de desenho:** `Palco.pintar` (`COR` dos tokens, `misturar`, `alfa`, `degrade`, `agua`, `raios`, `poeira`).
 - **Nos testes:** com `window.__diverTeste`, o palco fica em `__diverTeste.palco`.
-- **Já no palco:** Quiz Relâmpago. Os outros entram em ondas: A (Chefão do Abismo, Maré Alta), B (Memória, Cartas do Fundo, Forca, Adivinha Aí), C (Caça ao Tesouro, Corrente do Tempo, Palavrinha, Caso Resolvido) e D (a Sala de Descompressão).
+- **Já no palco:** Quiz Relâmpago, Chefão do Abismo e Maré Alta (onda A). Os outros entram em ondas: B (Memória, Cartas do Fundo, Forca, Adivinha Aí), C (Caça ao Tesouro, Corrente do Tempo, Palavrinha, Caso Resolvido) e D (a Sala de Descompressão).
+- **Peças comuns de desenho** (`Palco.pintar`): `mar(g, L, A, yMar, fase, { corTopo, corFundo, crista, espuma })` (o mar visto da praia, com três camadas, ondulações, espuma e cristas; o Quiz e a Maré usam), `nuvem(W, H, gomos, cores, repete)` e `nuvemBaixa(w, sorteio, cores)` (nuvens macias de gomos, com o contorno aceso), `mascara`, `seme` (sorteio com semente), `tela` (canvas fora da tela) e `ondaEm`. O jogo também pode dizer se a rodada está valendo com `palco.jogando(true | false)` (o Chefão, na escolha do monstro, ainda não vale).
 
 ## 4. Checklist de aceitação (todo jogo novo)
 - [ ] Registrado em `js/jogos/registro.js` com o `requer` certo: o card aparece na Sala de Jogos **só** nos cursos que têm o conteúdo pedido (sem conteúdo ou "em breve" = não aparece).
@@ -238,11 +239,13 @@ Pedido do usuário: "vamos atualizar nossos jogos para esse estilo de design que
 - Acerto causa dano (fácil 10, médio 15, difícil 20); combo multiplica por 1,5. Erro = −1 oxigênio e o chefão "ataca".
 - Vitória: +30 XP e +5 pérolas; sem perder oxigênio: +5 pérolas extras.
 - Arte inicial em SVG simples (peixe-balão, moreia, peixe-lanterna e kraken); ilustrações finais na Semana 23.
+- **No palco (2026-10-18):** abre num cartão (quantos chefões estão liberados) e depois a escolha do chefão. O abismo fica mais escuro a cada profundidade (raios de luz cada vez mais fracos, algas, neve marinha e, do meio para baixo, pontinhos que brilham). O chefão fica grande ao lado da pergunta na tela larga e no celular deitado; no celular em pé, num painel preso no alto. Ele tem um brilho na cor dele; o golpe faz uma onda de choque e o dano sobe dele ("−15", coral no crítico); o ataque deixa a borda da tela coral; derrotado, ele afunda. No fim, "Revanche" (perdeu) ou "Escolher outro chefão" (venceu).
 
 #### Maré Alta (`mare-alta`) — semana 7
 - Sobrevivência: as perguntas continuam até a água chegar ao topo da tela.
 - Cada erro sobe a maré; a cada 5 acertos seguidos ela baixa um pouco. A dificuldade sobe aos poucos.
 - Recorde (maior sequência) salvo por trilha; XP e pérolas pela tabela normal de acertos.
+- **No palco (2026-10-18):** um cais ao entardecer, com a lua nascendo, um farol que gira e, na tela larga, uma **régua de maré** de 0 a 100% (do 75 para cima, em coral). A maré é o próprio mar: no erro, sobe com uma sobra, assenta e uma onda quebra; a cada 5 seguidos, baixa com faíscas douradas e o farol pisca amarelo. A pílula "Maré: x%" é o medidor (`role="meter"`). O cartão de abertura mostra o recorde; o fim, acertos, maior sequência, recorde e tempo, com "Jogar de novo".
 
 #### Forca do Náufrago (`forca`) — semana 8
 - Palavra-chave com dica de tema; letras pelo teclado físico e por um teclado na tela. Normalização sem acento.
