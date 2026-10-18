@@ -570,16 +570,9 @@ body.sd-trava { overflow: hidden; }
 .sd-bat__ultima { min-height: 1.5em; font: 700 var(--t-md) var(--fonte-mono); color: var(--turquesa-claro); overflow-wrap: anywhere; }
 
 .sd-bat__centro { display: grid; justify-items: center; gap: var(--esp-3); text-align: center; }
-.sd-bat__bomba { position: relative; width: 84px; height: 84px; }
-.sd-bat__bomba-corpo { position: absolute; inset: 14px 6px 0; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--superficie-2), var(--fundo-fundo) 70%); border: 3px solid var(--turquesa); }
-.sd-bat__bomba-corpo::before { content: ""; position: absolute; top: -12px; left: 50%; width: 14px; height: 12px; transform: translateX(-50%); border-radius: 3px; background: var(--superficie-2); border: 2px solid var(--turquesa); }
-.sd-bat__bomba-luz { position: absolute; top: 0; left: 50%; width: 14px; height: 14px; transform: translateX(-50%); border-radius: 50%; background: var(--amarelo); box-shadow: 0 0 14px var(--amarelo); animation: sd-faisca 400ms ease-in-out infinite alternate; }
-.sd-bat__bomba--quase .sd-bat__bomba-luz { background: var(--coral); box-shadow: 0 0 18px var(--coral); animation-duration: 160ms; }
-@keyframes sd-faisca { from { transform: translateX(-50%) scale(0.8); } to { transform: translateX(-50%) scale(1.2); } }
+.sd-bat__bomba { position: relative; width: 200px; }
 .sd-bat__silaba { font: 800 var(--t-display) var(--fonte-mono); letter-spacing: 0.08em; color: var(--amarelo); min-height: 1.2em; }
-.sd-bat__pavio { --resta: 1; position: relative; width: min(100%, 320px); height: 10px; border-radius: 5px; background: rgba(230, 241, 255, 0.1); overflow: hidden; }
-.sd-bat__chama { position: absolute; inset: 0 auto 0 0; width: calc(var(--resta) * 100%); background: var(--amarelo); }
-.sd-bat__bomba--quase ~ .sd-bat__pavio .sd-bat__chama { background: var(--coral); }
+.sd-bat__pavio { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } /* o tempo está no visor da bomba; a barra fica só para o leitor de tela */
 .sd-bat__vez { font-weight: 800; min-height: 1.5em; }
 .sd-bat__form { display: flex; gap: var(--esp-2); width: min(100%, 420px); }
 .sd-bat__form[hidden] { display: none; }
@@ -605,22 +598,11 @@ body.sd-trava { overflow: hidden; }
 .palco--batata .sd-bat__lado--vez { border-color: var(--turquesa); box-shadow: var(--anel-primaria), var(--sombra-4); }
 .palco--batata .sd-bat__centro > :is(.sd-bat__silaba, .sd-bat__vez, .sd-bat__msg) { text-shadow: 0 1px 3px var(--fundo-0), 0 0 12px var(--fundo-0); }
 .palco--batata .sd-bat__nivel { background: color-mix(in srgb, var(--fundo-0) 80%, transparent); border: 1px solid color-mix(in srgb, var(--turquesa) 40%, transparent); }
-.palco--batata .sd-bat__bomba { width: 112px; height: 112px; transition: translate var(--dur-normal) var(--ease-saida), rotate var(--dur-normal) var(--ease-saida); }
-.palco--batata .sd-bat--jogo[data-vez="0"] .sd-bat__bomba { translate: -18px 0; rotate: -10deg; } /* a bomba pende para quem está com a vez */
-.palco--batata .sd-bat--jogo[data-vez="1"] .sd-bat__bomba { translate: 18px 0; rotate: 10deg; }
-.palco--batata .sd-bat__bomba-corpo { /* a bomba com brilho de verdade: o reflexo da luz no alto */
-  background: radial-gradient(circle at 32% 28%, color-mix(in srgb, var(--texto) 55%, transparent) 0 7%, var(--superficie-2) 18%, var(--fundo-0) 72%);
-}
-.palco--batata .sd-bat__bomba--quase .sd-bat__bomba-corpo { border-color: var(--coral); animation: sd-bat-tremer 110ms linear infinite alternate; }
+.palco--batata .sd-bat__bomba { width: clamp(180px, 22vw, 280px); transition: translate var(--dur-normal) var(--ease-saida), rotate var(--dur-normal) var(--ease-saida); }
+.palco--batata .sd-bat--jogo[data-vez="0"] .sd-bat__bomba { translate: -14px 0; rotate: -7deg; } /* a bomba pende para quem está com a vez */
+.palco--batata .sd-bat--jogo[data-vez="1"] .sd-bat__bomba { translate: 14px 0; rotate: 7deg; }
+.palco--batata .sd-bat__bomba--quase .bb { animation: sd-bat-tremer 110ms linear infinite alternate; }
 @keyframes sd-bat-tremer { from { translate: -1.5px 0; } to { translate: 1.5px 0; } }
-.palco--batata .sd-bat__pavio { height: 12px; overflow: visible; background: color-mix(in srgb, var(--fundo-0) 70%, transparent); border: 1px solid color-mix(in srgb, var(--texto) 12%, transparent); }
-.palco--batata .sd-bat__chama { border-radius: inherit; }
-.palco--batata .sd-bat__chama::after { /* a faísca na ponta do pavio */
-  content: ""; position: absolute; top: 50%; right: -9px; width: 18px; height: 18px; translate: 0 -50%; border-radius: 50%;
-  background: radial-gradient(circle, var(--claro) 0 18%, var(--amarelo) 30%, transparent 70%); animation: sd-bat-faisca 260ms ease-in-out infinite alternate;
-}
-.palco--batata .sd-bat__bomba--quase ~ .sd-bat__pavio .sd-bat__chama::after { background: radial-gradient(circle, var(--claro) 0 18%, var(--coral) 30%, transparent 70%); }
-@keyframes sd-bat-faisca { from { scale: 0.8; } to { scale: 1.25; } }
 .palco--batata .sd-bat__espera { justify-self: center; width: min(100%, 540px); text-align: center; }
 .palco--batata .sd-bat__mesa.sd-bat__mesa--solo { justify-self: center; width: min(100%, 640px); grid-template-columns: minmax(0, 1fr); grid-template-areas: "centro" "a"; } /* Sozinho: a bomba no meio e o painel embaixo */
 @container sd-cheia (min-height: 800px) { .palco--batata .sd-bat--jogo { margin-top: 4cqh; } } /* tela alta: o jogo desce um pouco, para o meio */
@@ -633,11 +615,86 @@ body.sd-trava { overflow: hidden; }
   .palco--batata .sd-bat__mesa { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr); grid-template-areas: "a centro b"; gap: var(--esp-3); }
   .palco--batata .sd-bat__mesa.sd-bat__mesa--solo { width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); grid-template-areas: "a centro"; }
   .palco--batata .sd-bat__centro { gap: var(--esp-1); }
-  .palco--batata .sd-bat__bomba { width: 64px; height: 64px; }
+  .palco--batata .sd-bat__bomba { width: 132px; }
   .palco--batata .sd-bat__silaba { font-size: var(--t-3xl); }
   .palco--batata .sd-bat__lado { padding: var(--esp-2); gap: var(--esp-2); }
   .palco--batata .sd-bat__alfabeto span { width: 1.25rem; height: 1.4rem; }
 }
+
+/* ---------- A bomba de batata (js/descompressao/bomba-batata.js; cores no grupo "Bomba de batata" de css/tokens.css) ----------
+   Desenho nosso: duas batatas com eletrodos de cobre e zinco, a caixa com faixa de alerta, parafusos, LED, teclado e o visor
+   vermelho de 7 segmentos (segundos e centésimos). O LED pisca devagar; perto do fim, rápido; nos 3 últimos segundos o visor pisca. */
+.bb { display: block; width: 100%; height: auto; overflow: visible; }
+.bb-contorno { stroke: var(--bomba-tinta); stroke-width: 3; stroke-linejoin: round; }
+.bb-contorno-fino { stroke: var(--bomba-tinta); stroke-width: 1.6; stroke-linejoin: round; }
+.bb-sombra-macia { fill: var(--bomba-tinta); opacity: 0.28; }
+.bb-sombra-caixa { fill: var(--bomba-tinta); opacity: 0.45; }
+.bb-chao { fill: var(--fundo-0); opacity: 0.55; }
+.bb-batata-brilho { fill: var(--claro); opacity: 0.42; }
+.bb-batata-reflexo { stroke: var(--bomba-batata-claro); stroke-width: 3; stroke-linecap: round; opacity: 0.7; }
+.bb-olho { fill: var(--bomba-batata-olho); opacity: 0.85; }
+.bb-olho-borda { stroke: var(--bomba-batata-escuro); stroke-width: 1.2; stroke-linecap: round; }
+.bb-pinta { fill: var(--bomba-batata-olho); opacity: 0.6; }
+.bb-metal-brilho { fill: var(--claro); opacity: 0.6; }
+.bb-terminal { stroke: var(--bomba-tinta); stroke-width: 1.4; }
+.bb-terminal--cobre { fill: var(--bomba-cobre-escuro); }
+.bb-terminal--zinco { fill: var(--bomba-zinco-escuro); }
+.bb-fio path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.bb-fio-borda { stroke: var(--bomba-tinta); stroke-width: 3.6; }
+.bb-fio-cor { stroke-width: 1.9; }
+.bb-ponta { fill: var(--bomba-zinco-claro); stroke: var(--bomba-tinta); stroke-width: 1.4; }
+.bb-fio-cor--branco { stroke: var(--bomba-tecla); }
+.bb-fio-cor--vermelho { stroke: var(--bomba-fio-vermelho); }
+.bb-fio-cor--preto { stroke: var(--bomba-fio-preto); }
+.bb-fio-brilho { stroke: var(--claro); stroke-width: 0.6; opacity: 0.5; }
+.bb-alerta-a { fill: var(--bomba-tinta); }
+.bb-alerta-b { fill: var(--bomba-alerta); }
+.bb-alerta-linha { fill: var(--bomba-tinta); }
+.bb-borda-luz { fill: var(--claro); opacity: 0.16; }
+.bb-borda-luz--lado { opacity: 0.1; }
+.bb-parafuso { fill: var(--bomba-metal); stroke: var(--bomba-tinta); stroke-width: 1.2; }
+.bb-parafuso-fenda { stroke: var(--bomba-tinta); stroke-width: 1.1; stroke-linecap: round; }
+.bb-parafuso-brilho { fill: var(--claro); opacity: 0.7; }
+.bb-borne-base { fill: var(--bomba-metal); }
+.bb-borne--mais { fill: var(--bomba-fio-vermelho); }
+.bb-borne--menos { fill: var(--bomba-fio-preto); }
+.bb-led-base { fill: var(--bomba-tinta); }
+.bb-led-halo { fill: var(--bomba-led); opacity: 0.85; }
+.bb-led-miolo { fill: var(--bomba-led); }
+.bb-led-reflexo { fill: var(--claro); opacity: 0.85; }
+.bb-led-luz { animation: bb-piscar 1s steps(1, end) infinite; }
+.bb--quase .bb-led-luz { animation-duration: 260ms; }
+.bb-moldura { fill: var(--bomba-corpo-escuro); }
+.bb-seg-apagado polygon { fill: var(--bomba-digito-apagado); opacity: 0.55; }
+.bb-seg-aceso polygon { fill: var(--bomba-digito); opacity: 0; }
+.bb-seg-aceso polygon.bb-on { opacity: 1; }
+.bb-ponto { fill: var(--bomba-digito); }
+.bb--fim .bb-seg-aceso, .bb--fim .bb-ponto { animation: bb-piscar 300ms steps(1, end) infinite; }
+.bb-vidro { pointer-events: none; }
+.bb-teclado { fill: var(--bomba-corpo-escuro); }
+.bb-tecla-base { fill: var(--bomba-tecla-base); }
+.bb-tecla-letra { fill: var(--bomba-tinta); font-family: var(--fonte-mono); font-weight: 800; text-anchor: middle; dominant-baseline: central; }
+@keyframes bb-piscar { 0% { opacity: 1; } 50% { opacity: 0.18; } }
+/* as paradas dos degradês (cor só pela classe: var() em atributo de SVG não é confiável) */
+.bb-s-batata-claro { stop-color: var(--bomba-batata-claro); }
+.bb-s-batata { stop-color: var(--bomba-batata); }
+.bb-s-batata-escuro { stop-color: var(--bomba-batata-escuro); }
+.bb-s-cobre-claro { stop-color: var(--bomba-cobre-claro); }
+.bb-s-cobre { stop-color: var(--bomba-cobre); }
+.bb-s-cobre-escuro { stop-color: var(--bomba-cobre-escuro); }
+.bb-s-zinco-claro { stop-color: var(--bomba-zinco-claro); }
+.bb-s-zinco { stop-color: var(--bomba-zinco); }
+.bb-s-zinco-escuro { stop-color: var(--bomba-zinco-escuro); }
+.bb-s-corpo-claro { stop-color: var(--bomba-corpo-claro); }
+.bb-s-corpo { stop-color: var(--bomba-corpo); }
+.bb-s-corpo-escuro { stop-color: var(--bomba-corpo-escuro); }
+.bb-s-tinta { stop-color: var(--bomba-tinta); }
+.bb-s-tecla { stop-color: var(--bomba-tecla); }
+.bb-s-tecla-sombra { stop-color: var(--bomba-tecla-sombra); }
+.bb-s-visor { stop-color: var(--bomba-visor); }
+.bb-s-visor-fundo { stop-color: var(--bomba-visor-fundo); }
+.bb-s-vidro { stop-color: var(--claro); stop-opacity: 0.16; }
+.bb-s-vidro-some { stop-color: var(--claro); stop-opacity: 0; }
 
 /* ---------- Cardume (corrida com cardume no <canvas>) ---------- */
 /* No palco (2026-10-18): a corrida ocupa a tela inteira; o placar vai nas pílulas do palco (só mostram: o arrasto passa para
@@ -669,7 +726,7 @@ body.sd-trava { overflow: hidden; }
 .sd-car__total strong { color: var(--amarelo); font-family: var(--fonte-mono); }
 
 @media (prefers-reduced-motion: reduce) {
-  .sd-car__bau--escolhido, .sd-tiro__regra--nova, .sd-bat__bomba-luz, .sd-bat--boom .sd-bat__mesa, .sd-bat__form--tremer, .palco--batata .sd-bat__bomba--quase .sd-bat__bomba-corpo, .palco--batata .sd-bat__chama::after { animation: none; }
+  .sd-car__bau--escolhido, .sd-tiro__regra--nova, .sd-bat--boom .sd-bat__mesa, .sd-bat__form--tremer, .palco--batata .sd-bat__bomba--quase .bb, .bb .bb-led-luz, .bb--fim .bb-seg-aceso, .bb--fim .bb-ponto { animation: none; }
   .palco--batata .sd-bat__bomba { transition: none; }
   .sd-tiro__agua-barra, .sd-bat__lado { transition: none; }
   .sd-tiro__vidas .icone.perdeu { animation: none; }
