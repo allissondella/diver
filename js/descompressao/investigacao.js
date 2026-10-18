@@ -10,6 +10,10 @@
  * - Duas acusações por dia. Errou? Eu conto quantas das três escolhas estavam certas.
  * - Pontos (só no placar da sala): 60 por desafio vencido (10 se não deu) + 520 pela acusação certa na 1ª
  *   (260 na 2ª). Máximo 1000.
+ * Palco em tela toda (2026-10-18, js/jogos/palco.js): o convés do Aurora à noite (a lua entre as nuvens, o farol varrendo o
+ * horizonte, a neblina e a grade do navio com a boia). O caso do dia abre no cartão de abertura do palco; desafio vencido
+ * acende o farol; acusação errada é um relâmpago com trovão; caso resolvido abre as nuvens; o fim vem no cartão de "Em
+ * números". Casos, desafios, pistas e pontos iguais.
  */
 (() => {
   const { h, icone, plural } = UI;
@@ -596,7 +600,9 @@
     duracao: '10 a 15 min · 1 por dia',
     diario: true,
     descricao: 'Um mistério por dia no Navio Aurora. Cada cômodo tem um desafio (cofre, e-mails suspeitos, mensagem cifrada, câmeras...) que libera pistas. Quem foi, com qual arma e onde?',
+    telaCheia: true, // o palco: a janela inteira, com a barra da Sala por cima
     abrir(ctx) {
+      const palcoTela = Palco.montar(Palco.daSala(ctx), { id: 'investigacao', cena: cenaNavio() });
       const caso = casoDoDia(ctx.hoje);
       const salvo = ctx.estado();
       // Estado antigo (antes dos desafios) recomeça; o placar conta só o melhor do dia
@@ -620,16 +626,14 @@
       const acusar = h('div', { class: 'sd-inv__acusar', id: 'sd-inv-acusar' });
       const principal = h('div', { class: 'sd-inv__principal' });
       const desafioEl = h('section', { class: 'cartao sd-atv', id: 'sd-inv-desafio', hidden: true, 'aria-labelledby': 'sd-atv-titulo' });
-      ctx.container.replaceChildren(h('div', { class: 'sd-inv' },
-        h('section', { class: 'cartao sd-inv__caso' },
+      const casoEl = h('section', { class: 'cartao sd-inv__caso' },
           h('div', { class: 'sd-inv__topo' },
             h('span', { class: 'chip chip--hoje' }, icone('i-calendario'), `Caso de ${new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' })}`),
             h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => guia(true) }, icone('i-livro'), 'Como jogar')),
           h('p', { class: 'sd-inv__historia', text: caso.historia }),
           h('p', { class: 'texto-suave', text: 'O culpado é um dos 8 suspeitos, usou uma das 8 armas e agiu num dos 8 cômodos. Cada cômodo tem um desafio: vença e leve todas as pistas dele.' }),
-          placa),
-        desafioEl,
-        principal));
+          placa);
+      palcoTela.area.replaceChildren(h('div', { class: 'sd-inv' }, casoEl, desafioEl, principal));
       principal.append(h('div', { class: 'sd-inv__grade' },
         h('div', { class: 'sd-inv__col' },
           h('section', { class: 'cartao' }, h('h2', { class: 'cartao__titulo', text: 'Desafios do navio' }), mapa),
@@ -716,6 +720,8 @@
           limparDesafio = null;
           p.desafios[comodo] = { sucesso: !!sucesso };
           gravar();
+          if (sucesso) palcoTela.reagir('acerto', { el: desafioEl.querySelector('h2') }); // o farol acende forte
+          else palcoTela.tocar('erro');
           const novas = pistasDe(comodo);
           desafioEl.replaceChildren(
             h('h2', { class: 'cartao__titulo', id: 'sd-atv-titulo', tabindex: '-1', text: `${nomeComodo} · ${info.nome}` }),
@@ -732,6 +738,7 @@
         };
         desafioEl.hidden = false;
         principal.hidden = true;
+        casoEl.hidden = true; // durante o desafio, só ele na tela (o caso volta junto com o mapa)
         desafioEl.replaceChildren(
           h('div', { class: 'sd-atv__topo' },
             h('h2', { class: 'cartao__titulo', id: 'sd-atv-titulo', tabindex: '-1' }, icone(info.icone), ` ${nomeComodo} · ${info.nome}`),
@@ -740,7 +747,8 @@
         const r = Descompressao.aleatorio(`diver-sala-investigacao-${ctx.hoje}-${comodo}`);
         const limpa = info.abrir(area, r, fim);
         limparDesafio = typeof limpa === 'function' ? limpa : null;
-        window.scrollTo(0, 0);
+        palcoTela.tocar('virar');
+        palcoTela.topo();
         desafioEl.querySelector('h2').focus({ preventScroll: true });
       }
 
@@ -748,6 +756,7 @@
         desafioEl.hidden = true;
         desafioEl.replaceChildren();
         principal.hidden = false;
+        casoEl.hidden = false;
         desenhar();
         mapa.scrollIntoView({ block: 'start', behavior: UI.movimentoReduzido ? 'auto' : 'smooth' });
       }
@@ -773,7 +782,10 @@
         } else {
           p.erros.push({ ...escolha, certos });
           if (p.erros.length >= ACUSACOES) p.fim = true;
-          else UI.toast('Não foi bem assim', `${certos} de 3 certos. Você tem mais uma acusação.`, 'i-alerta');
+          else {
+            palcoTela.reagir('erro', { el: acusar }); // um relâmpago e o trovão
+            UI.toast('Não foi bem assim', `${certos} de 3 certos. Você tem mais uma acusação.`, 'i-alerta');
+          }
         }
         if (p.fim && !p.registrado) {
           p.registrado = true;
@@ -781,6 +793,41 @@
         }
         gravar();
         desenhar();
+        if (p.fim) fimDoCaso();
+      }
+
+      /** O fim do caso no cartão do palco: a solução, os pontos e "Rever o caso" (o mapa com tudo o que foi achado) */
+      function fimDoCaso() {
+        const s = caso.solucao;
+        const vencidos = Object.values(p.desafios).filter((d) => d.sucesso).length;
+        const nPistas = Object.keys(p.desafios).reduce((t, c) => t + pistasDe(c).length, 0);
+        palcoTela.terminar({ titulo: p.venceu ? 'Caso resolvido!' : 'O caso esfriou', detalhes: [] }, {
+          texto: `${p.venceu ? 'Mandou bem, Diver! ' : ''}Foi ${nomeDe('quem', s.quem)}, com ${nomeDe('arma', s.arma).toLowerCase()}, em ${nomeDe('onde', s.onde).toLowerCase()}.`,
+          tom: p.venceu ? 'vitoria' : 'derrota',
+          numeros: [['Pontos', pontos(), true], ['Desafios', `${vencidos}/8`], ['Pistas', nPistas], ['Acusações', p.erros.length + (p.venceu ? 1 : 0)]],
+          mais: h('p', { class: 'texto-suave', text: `${pontos()} pontos no placar da sala. Amanhã tem outro mistério a bordo.` }),
+          aoJogarDeNovo: () => desenhar(),
+          textoDeNovo: 'Rever o caso',
+        });
+      }
+
+      /** A abertura: o caso do dia no cartão do palco (começar, continuar ou rever) */
+      function abertura() {
+        const feitos = Object.keys(p.desafios).length;
+        palcoTela.abertura({
+          rotulo: `Caso de ${new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' })} · Navio Aurora`,
+          titulo: 'Investigação',
+          lead: caso.historia,
+          passos: [
+            ['01', 'Um desafio em cada cômodo. ', `Venceu, leva todas as pistas dele (+${PONTOS_DESAFIO}); não deu, leva uma (+${PONTOS_TENTOU}).`],
+            ['02', 'Anote no caderno. ', 'Cada pista descarta um suspeito, uma arma ou um cômodo.'],
+            ['03', 'Duas acusações. ', `Quem foi, com o quê e onde: acertar na 1ª vale ${ACUSACAO[0]}; na 2ª, ${ACUSACAO[1]}.`],
+          ],
+          numeros: [['Pontos', pontos(), true], ['Desafios', `${feitos}/8`], [p.fim ? 'Caso' : 'Acusações', p.fim ? (p.venceu ? 'resolvido' : 'encerrado') : ACUSACOES - p.erros.length]],
+          botao: p.fim ? 'Rever o caso' : feitos ? 'Continuar a investigação' : 'Começar a investigação',
+          icone: 'i-lupa',
+          aoComecar: () => { desenhar(); guia(false); },
+        });
       }
 
       function guia(forcar) {
@@ -793,13 +840,255 @@
       }
 
       desenhar();
-      guia(false);
+      abertura();
       return {
         emAndamento: () => false, // tudo fica salvo; desafio aberto e abandonado pode ser retomado
         parar() {
           if (limparDesafio) limparDesafio();
+          palcoTela.parar();
         },
       };
+
+      /* ---------- A cena: o convés do Navio Aurora à noite ---------- */
+      function cenaNavio() {
+        const { COR, misturar, alfa, degrade, mar, seme, tela, nuvemBaixa } = Palco.pintar;
+        let ceu = null; // o céu, a lua, a ilha do farol e o mar parado, guardados (só refaz quando a tela muda)
+        let frente = null; // a grade do navio com a boia, na frente de tudo
+        let chave = '';
+        let geo = null;
+        let nuvens = [];
+        let facho = 0; // o farol aceso forte (desafio vencido)
+        let relampago = 0; // o clarão do relâmpago (acusação errada)
+        let abre = 0; // as nuvens abrindo e a lua aparecendo (caso resolvido)
+        const CORES_NUVEM = { // nuvens da noite: a barriga escura, a borda acesa pela lua
+          topo: misturar(COR.marinho, COR.sup3, 0.5), meio: misturar(COR.marinho, COR.lilas, 0.2), base: misturar(COR.fundo, COR.marinho, 0.6),
+          luz: COR.perola, forro: alfa(misturar(COR.perola, COR.lilas, 0.4), 0.35),
+        };
+
+        function pintar(L, A) {
+          const r = seme(23);
+          const hz = A * 0.58;
+          const lua = { x: L * 0.74, y: A * 0.17, r: Math.max(16, Math.min(L, A) * 0.042) };
+          const iw = Math.max(110, L * 0.14); // a ilha do farol, lá longe à esquerda
+          const ix = L * 0.17;
+          const farol = { x: ix, y: hz - iw * 0.12 - Math.max(34, A * 0.07) };
+          geo = { hz, lua, farol };
+          ceu = tela(L, A);
+          const f = ceu.getContext('2d');
+          f.fillStyle = degrade(f, 0, hz, [[0, misturar(COR.fundo, COR.marinho, 0.25)], [0.7, misturar(COR.marinho, COR.azul, 0.14)], [1, misturar(COR.marinho, COR.lilas, 0.22)]]);
+          f.fillRect(0, 0, L, hz + 1);
+          for (let i = 0; i < 70; i++) {
+            f.fillStyle = alfa(COR.perola, 0.1 + r() * 0.4);
+            f.fillRect(r() * L, r() * hz * 0.7, 1.3, 1.3);
+          }
+          const halo = f.createRadialGradient(lua.x, lua.y, lua.r, lua.x, lua.y, lua.r * 6);
+          halo.addColorStop(0, alfa(COR.perola, 0.2));
+          halo.addColorStop(1, alfa(COR.perola, 0));
+          f.fillStyle = halo;
+          f.fillRect(lua.x - lua.r * 6, lua.y - lua.r * 6, lua.r * 12, lua.r * 12);
+          f.fillStyle = misturar(COR.perola, COR.claro, 0.4);
+          f.beginPath();
+          f.arc(lua.x, lua.y, lua.r, 0, Math.PI * 2);
+          f.fill();
+          f.fillStyle = alfa(COR.suave, 0.16);
+          [[-0.28, -0.22, 0.2], [0.3, 0.12, 0.15], [-0.02, 0.36, 0.11]].forEach(([dx, dy, rr]) => {
+            f.beginPath();
+            f.arc(lua.x + dx * lua.r, lua.y + dy * lua.r, rr * lua.r, 0, Math.PI * 2);
+            f.fill();
+          });
+          // a ilha e o farol: a torre listrada e a casinha da lâmpada
+          f.fillStyle = misturar(COR.fundo, COR.marinho, 0.55);
+          f.beginPath();
+          f.moveTo(ix - iw / 2, hz + 1);
+          f.quadraticCurveTo(ix - iw * 0.1, hz - iw * 0.24, ix + iw / 2, hz + 1);
+          f.closePath();
+          f.fill();
+          const base = hz - iw * 0.1;
+          const topo = farol.y + 8;
+          const wb = Math.max(7, iw * 0.065);
+          const wt = wb * 0.62;
+          const torre = (y0, y1, cor) => {
+            const k0 = (base - y0) / (base - topo);
+            const k1 = (base - y1) / (base - topo);
+            const w0 = wb + (wt - wb) * k0;
+            const w1 = wb + (wt - wb) * k1;
+            f.fillStyle = cor;
+            f.beginPath();
+            f.moveTo(ix - w0, y0);
+            f.lineTo(ix - w1, y1);
+            f.lineTo(ix + w1, y1);
+            f.lineTo(ix + w0, y0);
+            f.closePath();
+            f.fill();
+          };
+          torre(base, topo, misturar(COR.perola, COR.fundo, 0.5));
+          for (let i = 0; i < 3; i++) {
+            const y0 = base - (base - topo) * (0.12 + i * 0.3);
+            torre(y0, y0 - (base - topo) * 0.12, alfa(COR.coral, 0.75));
+          }
+          f.fillStyle = misturar(COR.fundo, COR.marinho, 0.4);
+          f.fillRect(ix - wt * 1.4, topo - 4, wt * 2.8, 4);
+          f.fillRect(ix - wt * 0.9, farol.y - 6, wt * 1.8, 8);
+          f.beginPath();
+          f.moveTo(ix - wt * 1.1, farol.y - 6);
+          f.lineTo(ix, farol.y - 6 - wt * 1.2);
+          f.lineTo(ix + wt * 1.1, farol.y - 6);
+          f.closePath();
+          f.fill();
+          // o mar parado lá no fundo (as ondas de perto vêm em cada quadro)
+          f.fillStyle = degrade(f, hz, A, [[0, misturar(COR.marinho, COR.lilas, 0.22)], [0.3, misturar(COR.fundo, COR.marinho, 0.6)], [1, COR.fundo]]);
+          f.fillRect(0, hz, L, A - hz);
+          // a frente: a grade do navio (corrimão, colunas, dois cabos) e a boia pendurada
+          frente = tela(L, A);
+          const g2 = frente.getContext('2d');
+          const yc = A * 0.9;
+          g2.fillStyle = misturar(COR.fundo, COR.marinho, 0.35);
+          g2.fillRect(0, yc, L, A - yc);
+          g2.strokeStyle = misturar(COR.fundo, COR.marinho, 0.25);
+          g2.lineCap = 'round';
+          for (let x = 30; x < L; x += 110) {
+            g2.lineWidth = 6;
+            g2.beginPath();
+            g2.moveTo(x, yc - A * 0.1);
+            g2.lineTo(x, yc + 4);
+            g2.stroke();
+          }
+          [[yc - A * 0.065, 3], [yc - A * 0.032, 3]].forEach(([y, w]) => {
+            g2.lineWidth = w;
+            g2.beginPath();
+            g2.moveTo(0, y);
+            g2.lineTo(L, y);
+            g2.stroke();
+          });
+          g2.lineWidth = 9;
+          g2.beginPath();
+          g2.moveTo(0, yc - A * 0.1);
+          g2.lineTo(L, yc - A * 0.1);
+          g2.stroke();
+          g2.strokeStyle = alfa(COR.perola, 0.14); // o brilho da lua no corrimão
+          g2.lineWidth = 2;
+          g2.beginPath();
+          g2.moveTo(0, yc - A * 0.1 - 3);
+          g2.lineTo(L, yc - A * 0.1 - 3);
+          g2.stroke();
+          const bx = 30 + 110 * Math.max(0, Math.round((L * 0.82 - 30) / 110)) + 55; // entre duas colunas
+          const by = yc - A * 0.05;
+          const br = Math.max(16, A * 0.032);
+          for (let k = 0; k < 8; k++) { // a boia: listras coral e pérola
+            g2.strokeStyle = k % 2 ? misturar(COR.perola, COR.fundo, 0.25) : misturar(COR.coral, COR.fundo, 0.2);
+            g2.lineWidth = br * 0.5;
+            g2.beginPath();
+            g2.arc(bx, by, br, (k / 8) * Math.PI * 2, ((k + 1) / 8) * Math.PI * 2);
+            g2.stroke();
+          }
+          const rn = seme(77);
+          nuvens = Array.from({ length: Math.max(3, Math.round(L / 360)) }, (_, i) => {
+            const w = Math.max(200, Math.min(L, A) * (0.4 + rn() * 0.3));
+            return { img: nuvemBaixa(w, rn, CORES_NUVEM), x: rn() * L, y: A * (0.06 + rn() * 0.2), v: 6 + rn() * 6 + i, a: 0.8 + rn() * 0.15 };
+          });
+        }
+
+        function desenhar(g, L, A, t, dt, est) {
+          const nova = `${L}x${A}`;
+          if (!ceu || nova !== chave) { chave = nova; pintar(L, A); }
+          facho = Math.max(0, facho - dt * 0.7);
+          relampago = Math.max(0, relampago - dt * 2.2);
+          abre = Math.max(0, abre - dt * 0.05); // as nuvens fecham de novo bem devagar
+          const { hz, lua, farol } = geo;
+          g.drawImage(ceu, 0, 0, L, A);
+          if (abre > 0) { // a lua mais forte
+            const b = g.createRadialGradient(lua.x, lua.y, lua.r, lua.x, lua.y, lua.r * 9);
+            b.addColorStop(0, alfa(COR.perola, 0.25 * abre));
+            b.addColorStop(1, alfa(COR.perola, 0));
+            g.fillStyle = b;
+            g.fillRect(lua.x - lua.r * 9, lua.y - lua.r * 9, lua.r * 18, lua.r * 18);
+          }
+          for (const n of nuvens) { // as nuvens passam na frente da lua
+            const w = n.img.width;
+            g.globalAlpha = n.a * (1 - 0.75 * abre);
+            g.drawImage(n.img, ((n.x + t * n.v) % (L + w)) - w, n.y);
+          }
+          g.globalAlpha = 1;
+          if (relampago > 0) { // o céu inteiro acende
+            g.fillStyle = alfa(COR.perola, 0.4 * relampago);
+            g.fillRect(0, 0, L, hz);
+          }
+          // o facho do farol girando: comprido quando aponta para o lado, a lâmpada estoura quando aponta para nós
+          const giro = est.rm ? 0.6 : t * 0.7;
+          const lado = Math.cos(giro);
+          const forca = 0.6 + facho * 0.8;
+          g.save();
+          g.globalCompositeOperation = 'lighter';
+          const comp = L * 0.75 * Math.abs(lado);
+          if (comp > 8) {
+            const dir = lado > 0 ? 1 : -1;
+            const d = g.createLinearGradient(farol.x, 0, farol.x + dir * comp, 0);
+            d.addColorStop(0, alfa(COR.perola, 0.3 * forca));
+            d.addColorStop(1, alfa(COR.perola, 0));
+            g.fillStyle = d;
+            g.beginPath();
+            g.moveTo(farol.x, farol.y - 3);
+            g.lineTo(farol.x + dir * comp, farol.y - 3 - comp * 0.09);
+            g.lineTo(farol.x + dir * comp, farol.y - 3 + comp * 0.06);
+            g.closePath();
+            g.fill();
+          }
+          const brilho = (0.35 + 0.65 * Math.pow(Math.max(0, Math.sin(giro)), 6)) * forca; // virado para nós: mais forte
+          const lamp = g.createRadialGradient(farol.x, farol.y - 3, 0, farol.x, farol.y - 3, 40 + 50 * brilho);
+          lamp.addColorStop(0, alfa(COR.amarelo, 0.6 * brilho));
+          lamp.addColorStop(1, alfa(COR.amarelo, 0));
+          g.fillStyle = lamp;
+          g.fillRect(farol.x - 100, farol.y - 103, 200, 200);
+          g.restore();
+          // o caminho da lua no mar, as ondas e a neblina rasteira
+          g.save();
+          g.globalCompositeOperation = 'lighter';
+          for (let i = 0; i < 30; i++) {
+            const k = (i % 15) / 15;
+            const y = hz + 3 + Math.pow(k, 1.4) * (A - hz) * 0.55;
+            const abertura = 8 + k * 70;
+            const x = lua.x + Math.sin(i * 12.9898) * abertura;
+            const a = 0.5 + 0.5 * Math.sin(t * 2 + i * 1.7);
+            g.fillStyle = alfa(COR.perola, (0.22 + 0.2 * abre) * a * (1 - k * 0.6));
+            g.fillRect(x - (6 + k * 16) / 2, y, 6 + k * 16, 1.5);
+          }
+          g.restore();
+          mar(g, L, A, hz + (A - hz) * 0.4, est.rm ? 0 : t * 0.8, {
+            corTopo: misturar(COR.marinho, COR.lilas, 0.3), corFundo: misturar(COR.fundo, COR.marinho, 0.6), espuma: COR.perola, espumaA: 0.16,
+          });
+          for (let i = 0; i < 3; i++) { // a neblina: faixas largas que andam devagar
+            const w = L * 0.9;
+            const x = (((t * (8 + i * 5)) + i * L * 0.4) % (L + w)) - w;
+            const y = hz - A * 0.02 + i * A * 0.05;
+            const n = g.createRadialGradient(x + w / 2, y, 0, x + w / 2, y, w / 2);
+            n.addColorStop(0, alfa(COR.perola, 0.06));
+            n.addColorStop(1, alfa(COR.perola, 0));
+            g.fillStyle = n;
+            g.save();
+            g.translate(x + w / 2, y);
+            g.scale(1, 0.12);
+            g.translate(-(x + w / 2), -y);
+            g.fillRect(x, y - w / 2, w, w);
+            g.restore();
+          }
+          g.drawImage(frente, 0, 0, L, A);
+          if (relampago > 0) { // o relâmpago também ilumina a grade
+            g.fillStyle = alfa(COR.perola, 0.12 * relampago);
+            g.fillRect(0, 0, L, A);
+          }
+        }
+
+        function reagir(tipo, info, est) {
+          if (tipo === 'acerto') { if (!est.rm) facho = 1; } else if (tipo === 'erro' || tipo === 'derrota') { // o relâmpago e o trovão
+            info.tocar('trovao');
+            if (!est.rm) relampago = 1;
+          } else if (tipo === 'vitoria') {
+            abre = 1; // (sem movimento, a lua também acende: é uma mudança de estado, não uma animação)
+          }
+        }
+
+        return { desenhar, reagir };
+      }
     },
   });
 })();

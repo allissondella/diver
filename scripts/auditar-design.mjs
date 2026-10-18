@@ -93,7 +93,7 @@ async function auditarNoNavegador() {
   const soTelas = arg('telas', '') ? arg('telas', '').split(',') : null;
   const TELAS = ['inicio', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'artigo', 'quiz', 'quiz-feedback',
     'simulado', 'revisao', 'jogos', 'prova', 'upload-prova', 'tarefas', 'calendario', 'cronograma', 'diagnostica', 'mapa-partida', 'foco',
-    'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao', 'descompressao-tiro',
+    'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao', 'descompressao-tiro', 'descompressao-palco',
     'profissoes', 'profissoes-cartas', 'profissoes-metodo', 'profissoes-fundo', 'profissao-enfermagem', 'profissao-enfermagem-dia', 'profissao-enfermagem-mitos', 'profissao-pedagogia', 'profissao-sistemas', 'profissao-medicina', 'profissao-direito-dia', 'profissoes-comparar',
     'profissoes-tecnologia', 'tecnologia-seguranca', 'profissoes-tecnologia-jogo', 'profissoes-medicina', 'medicina-psiquiatria', 'profissoes-medicina-jogo', 'login'].filter((t) => !soTelas || soTelas.includes(t));
   const vistos = {};
@@ -197,6 +197,15 @@ async function auditarNoNavegador() {
           await anotar(`${tela} (abertura)`);
           await p.locator('#sd-tiro-comecar').click(); await esperar(2500);
           await anotar(`${tela} (partida)`);
+          continue;
+        }
+        if (tela === 'descompressao-palco') { // os outros jogos da sala, no palco: a abertura (ou o tabuleiro) de cada um
+          for (const id of ['investigacao', 'palavrinha', 'batata', 'pitstop', 'cardume']) {
+            await p.goto(`${base}?a=${Date.now()}#descompressao`); await p.waitForSelector('.app', { state: 'attached' });
+            await esperar(1000); await limpar();
+            await p.evaluate((j) => Descompressao.abrir(j), id); await esperar(1500); await limpar();
+            await anotar(`descompressao-${id}`);
+          }
           continue;
         }
         if (tela === 'artigo' || tela === 'quiz' || tela === 'quiz-feedback') {

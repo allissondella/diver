@@ -102,10 +102,15 @@
 .sd-inv__veredito { font-size: var(--t-md); }
 
 /* Investigação: desafios dos cômodos */
-.sd-inv__principal[hidden], .sd-atv[hidden] { display: none; }
+.sd-inv__principal[hidden], .sd-inv__caso[hidden], .sd-atv[hidden] { display: none; }
 .sd-inv__comodo-desafio { display: inline-flex; align-items: center; gap: var(--esp-1); font-size: var(--t-xs); color: var(--amarelo); font-weight: 700; }
 .sd-inv__comodo-desafio .icone { width: 14px; height: 14px; }
 .sd-inv__comodo--parcial { background: rgba(250, 204, 21, 0.08); border-color: rgba(250, 204, 21, 0.35); }
+/* Investigação no palco (2026-10-18): o caso abre no cartão do palco; o mapa, o diário, o caderno e a acusação em vidro
+   escuro por cima do convés do Aurora (a coluna alarga na tela larga, para as duas colunas caberem) */
+@media (min-width: 1024px) { .palco--investigacao .palco__coluna { width: min(100% - var(--esp-6) * 2, 1240px); } }
+.palco--investigacao .sd-inv__comodo { background: color-mix(in srgb, var(--superficie-1) 82%, transparent); }
+.palco--investigacao .sd-inv__comodo--visto { background: color-mix(in srgb, var(--superficie-turquesa) 88%, transparent); }
 .sd-atv { display: grid; gap: var(--esp-4); }
 .sd-atv__topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2); }
 .sd-atv__topo .cartao__titulo { display: inline-flex; align-items: center; gap: var(--esp-2); margin: 0; }
@@ -155,14 +160,9 @@
 
 /* ---------- Pit Stop Mental ---------- */
 .ps { display: grid; gap: var(--esp-4); }
-.ps-menu, .ps-resumo { display: grid; gap: var(--esp-3); max-width: 720px; }
-.ps-menu__topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2); }
-.ps-menu__topo .cartao__titulo { margin: 0; }
+.ps-resumo { display: grid; gap: var(--esp-3); max-width: 720px; }
 .ps-menu__opcao { display: grid; gap: var(--esp-2); }
 .ps-menu__rotulo { font-size: var(--t-sm); font-weight: 700; color: var(--texto-suave); }
-.ps-menu__dados { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--esp-3) var(--esp-6); }
-.ps-menu__dados strong { display: block; font: 800 var(--t-xl) var(--fonte-mono); color: var(--amarelo); }
-.ps-menu__dados span { font-size: var(--t-xs); color: var(--texto-suave); }
 .ps-painel { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--esp-2) var(--esp-4); }
 .ps-cronometro, .ps-rival { display: grid; justify-items: center; padding: var(--esp-1) var(--esp-4); border-radius: var(--raio-pequeno); background: var(--fundo-fundo); border: 2px solid var(--borda); }
 .ps-cronometro span, .ps-rival span { font: 700 var(--t-xs) var(--fonte-mono); letter-spacing: 0.12em; color: var(--texto-suave); }
@@ -188,7 +188,13 @@
 }
 .ps-palco { max-width: 420px; width: 100%; justify-self: center; }
 .ps-cena { display: block; width: 100%; height: auto; border-radius: var(--raio); border: 1px solid var(--borda); }
-.ps-asfalto { fill: var(--superficie); }
+.ps-asfalto { fill: url(#ps-chao); } /* o chão do box: o asfalto num degradê e a luz do holofote no meio */
+.ps-chao__a { stop-color: var(--superficie-1); }
+.ps-chao__b { stop-color: var(--fundo-0); }
+.ps-holofote { fill: url(#ps-holofote); }
+.ps-holofote__a { stop-color: var(--perola); stop-opacity: 0.12; }
+.ps-holofote__b { stop-color: var(--perola); stop-opacity: 0; }
+.ps-box { fill: none; stroke: var(--turquesa); stroke-width: 3; stroke-opacity: 0.35; } /* a marca da equipe pintada no chão */
 .ps-faixa { stroke: var(--amarelo); stroke-width: 4; stroke-dasharray: 14 10; opacity: 0.5; fill: none; }
 .ps-marca { fill: none; stroke: var(--texto); stroke-width: 2; stroke-dasharray: 6 4; opacity: 0.35; }
 .ps-carro, .ps-pneu, .ps-ok { transition: transform 700ms cubic-bezier(.2, .8, .2, 1), opacity var(--dur-normal); }
@@ -245,21 +251,61 @@
 .ps-aviso--bom { color: var(--texto); }
 .ps-aviso--lento { color: var(--amarelo); }
 .ps-aviso--erro { color: var(--coral); }
-.ps-resumo__titulo { font-size: var(--t-2xl); margin: 0; }
-.ps-resumo__titulo--recorde { color: var(--amarelo); }
-.ps-resumo__titulo--rapido { color: var(--turquesa-claro); }
-.ps-resumo__titulo--lento { color: var(--coral); }
-.ps-resumo__tempo strong { font: 800 var(--t-2xl) var(--fonte-mono); }
 .ps-resumo__pontos { display: inline-flex; align-items: center; gap: var(--esp-2); font-weight: 800; color: var(--amarelo); }
 .ps-resumo__sub { font-size: var(--t-md); margin: var(--esp-2) 0 0; }
 .ps-resumo__rodas { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-1); }
 @media (min-width: 1024px) { .ps-resumo__rodas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.ps-resumo__roda { display: grid; gap: 2px; padding: var(--esp-2) var(--esp-3); border-radius: var(--raio-pequeno); background: rgba(230, 241, 255, 0.04); border-left: 3px solid var(--turquesa); }
+.ps-resumo__roda { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 0 var(--esp-2); padding: var(--esp-2) var(--esp-3); border-radius: var(--raio-pequeno); background: rgba(230, 241, 255, 0.04); border-left: 3px solid var(--turquesa); }
+.ps-resumo__roda-nome { font-size: var(--t-sm); }
+.ps-resumo__roda-nota { grid-column: 1 / -1; font-size: var(--t-xs); color: var(--texto-suave); }
 .ps-resumo__roda--bom { border-left-color: var(--texto-suave); }
 .ps-resumo__roda--lento { border-left-color: var(--amarelo); }
 .ps-resumo__roda strong { font-family: var(--fonte-mono); }
 .ps-resumo__erros ol { margin: 0; padding-left: 1.2em; display: grid; gap: var(--esp-3); }
 .ps-resumo__passos { margin-top: var(--esp-1); color: var(--texto-suave); font-family: var(--fonte-mono); font-size: var(--t-sm); }
+
+/* ---------- Pit Stop no palco (2026-10-18) ----------
+   O menu é o cartão de abertura do palco; na corrida, o painel e a conta em vidro escuro por cima do autódromo; o box ao
+   lado da conta na tela larga e no celular deitado (o box encolhe para a corrida caber sem rolar); o resumo no cartão do fim. */
+.sd-tiro__cartao .ps-menu__opcao .segmentado { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); } /* as duas opções em metades iguais */
+.palco--pitstop .ps-cronometro, .palco--pitstop .ps-rival, .palco--pitstop .ps-conta {
+  background: color-mix(in srgb, var(--fundo-0) 84%, transparent); border-color: color-mix(in srgb, var(--texto) 14%, transparent); box-shadow: var(--sombra-4);
+}
+.palco--pitstop .ps-cronometro--batendo { border-color: var(--turquesa); }
+.palco--pitstop .ps-combo__rotulo, .palco--pitstop .ps-aviso { text-shadow: 0 1px 2px var(--fundo-0); }
+.palco--pitstop .ps-combo__trilho { background: color-mix(in srgb, var(--fundo-0) 70%, transparent); }
+.palco--pitstop .ps-janela { background: color-mix(in srgb, var(--fundo-0) 70%, transparent); }
+.palco--pitstop .ps-alternativa { background: color-mix(in srgb, var(--superficie-2) 86%, transparent); box-shadow: 0 4px 0 var(--fundo-0); }
+.palco--pitstop .ps-alternativa:active:not(:disabled) { translate: 0 2px; box-shadow: 0 2px 0 var(--fundo-0); }
+.palco--pitstop .ps-cena { box-shadow: var(--sombra-4); border-color: color-mix(in srgb, var(--texto) 14%, transparent); }
+.ps-resumo--palco { max-width: none; padding-top: var(--esp-3); border-top: 1px solid color-mix(in srgb, var(--texto) 12%, transparent); }
+.ps-resumo--palco .ps-resumo__sub { margin: 0; }
+.ps-resumo__menu { justify-self: start; }
+.ps-resumo__erros > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
+@media (max-width: 1023px) { /* celular em pé: o box fica embaixo da conta e encolhe para caber na tela */
+  .palco--pitstop .ps-pista .ps-palco { max-width: min(300px, max(180px, calc((100cqh - 545px) * 0.857))); }
+}
+@media (max-width: 479px) { .palco--pitstop .sd-tiro__lead { display: none; } } /* (os passos já dizem tudo: o botão de começar cabe na tela) */
+@media (min-width: 1024px) { /* tela larga: a coluna alarga e o box fica ao lado da conta, do tamanho que a altura deixa */
+  .palco--pitstop .palco__coluna { width: min(100% - var(--esp-6) * 2, 1000px); }
+  .palco--pitstop .ps-pista { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); align-items: center; gap: var(--esp-5); }
+  .palco--pitstop .ps-palco { max-width: min(420px, calc((100cqh - var(--sd-topo) - 170px) * 0.857)); }
+}
+@container sd-cheia (max-height: 479px) { /* celular deitado: o painel numa linha só e o box ao lado da conta */
+  .palco--pitstop .ps { gap: var(--esp-2); }
+  .palco--pitstop .ps-painel { flex-wrap: nowrap; gap: var(--esp-2) var(--esp-3); }
+  .palco--pitstop .ps-cronometro, .palco--pitstop .ps-rival { grid-auto-flow: column; align-items: baseline; gap: var(--esp-2); padding: var(--esp-1) var(--esp-3); }
+  .palco--pitstop .ps-cronometro__valor { font-size: var(--t-2xl); }
+  .palco--pitstop .ps-rival strong { font-size: var(--t-lg); }
+  .palco--pitstop .ps-combo { min-width: 90px; }
+  .palco--pitstop .ps-pista { grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: var(--esp-3); }
+  .palco--pitstop .ps-comando { order: 0; gap: var(--esp-2); }
+  .palco--pitstop .ps-pista .ps-palco { width: calc((100cqh - var(--sd-topo) - 84px) * 0.857); max-width: none; }
+  .palco--pitstop .ps-pista .ps-conta { padding: var(--esp-2) var(--esp-3); gap: 0; }
+  .palco--pitstop .ps-conta__expressao { font-size: var(--t-xl); }
+  .palco--pitstop .ps-alternativa { min-height: 44px; font-size: var(--t-lg); }
+  .palco--pitstop .ps-aviso { min-height: 0; font-size: var(--t-sm); }
+}
 
 /* ---------- Jogo em tela toda (Tiro ao Alvo, 2026-10-17) ----------
    A tela da Sala vira uma camada do tamanho da janela, e a barra de cima (Sala, título, botões) fica por cima do
@@ -277,6 +323,7 @@ body.sd-trava { overflow: hidden; }
   background: linear-gradient(to bottom, color-mix(in srgb, var(--fundo-0) 88%, transparent), transparent);
 }
 .sd--tela-cheia > .sd-jogo { position: absolute; inset: 0; }
+.sd--tela-cheia > .sd-barra .botao--fantasma { background: color-mix(in srgb, var(--fundo-0) 55%, transparent); color: var(--texto-1); } /* legíveis também sobre cenas claras (o Cardume no raso) */
 .sd--tela-cheia .sd-barra__titulo { min-width: 0; font-size: var(--t-lg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sd-barra > .sd-tiro__botoes { display: flex; gap: var(--esp-2); margin-left: auto; } /* "Som" e "Tela cheia", antes do Ranking */
 .sd-barra > .sd-tiro__botoes + .sd-barra__ranking { margin-left: 0; }
@@ -450,8 +497,9 @@ body.sd-trava { overflow: hidden; }
   .sd-tiro__cartao--fim { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-rows: auto auto 1fr auto auto;
     grid-template-areas: "rot num" "tit num" "por num" "alb alb" "aco aco"; } /* o álbum e os botões numa faixa embaixo, de ponta a ponta */
   .sd-tiro__cartao--album { grid-template-columns: minmax(0, 1fr); grid-template-areas: none; }
+  .sd-tiro__cartao--opcoes { grid-template-areas: "rot pas" "tit pas" "num pas" "alb pas" "aco aco"; } /* abertura com opções: os botões numa faixa embaixo */
   .sd-tiro__cartao > .sd-tiro__em-numeros { grid-area: num; }
-  .sd-tiro__cartao > .sd-tiro__album { grid-area: alb; }
+  .sd-tiro__cartao > .sd-tiro__album, .sd-tiro__cartao > .palco__opcoes { grid-area: alb; } /* (palco__opcoes: as opções da abertura de um jogo do palco) */
   .sd-tiro__album { gap: var(--esp-2); font-size: var(--t-sm); }
   .sd-tiro__numeros > div { padding: var(--esp-2); }
   /* só os filhos diretos do cartão: dentro de "Em números" e do topo do álbum, nada de área (senão a grade de dentro quebra) */
@@ -546,28 +594,67 @@ body.sd-trava { overflow: hidden; }
 .sd-bat--boom .sd-bat__mesa { animation: sd-boom 420ms ease; }
 @keyframes sd-boom { 0% { transform: translate(0, 0); } 20% { transform: translate(-8px, 3px); } 40% { transform: translate(7px, -4px); } 60% { transform: translate(-5px, 2px); } 80% { transform: translate(3px, -1px); } 100% { transform: translate(0, 0); } }
 
+/* ---------- Batata Quente no palco (2026-10-18) ----------
+   O menu é o cartão de abertura do palco; o jogo por cima do luau: o painel de cada pessoa em vidro escuro, a bomba grande
+   no meio (pende para quem está com a vez e treme no fim do pavio), a sílaba e o pavio com a faísca na ponta. */
+.sd-tiro__cartao .sd-bat__opcoes { display: grid; gap: var(--esp-3); }
+.sd-tiro__cartao .sd-bat__modos { display: flex; flex-wrap: wrap; gap: var(--esp-2); padding: 0; background: none; border: 0; border-radius: 0; } /* os cinco modos em pílulas soltas */
+.sd-tiro__cartao .sd-bat__modos button { border: 1px solid var(--borda-forte); }
+.sd-tiro__cartao .sd-bat__entrar { flex-wrap: wrap; align-items: center; }
+.palco--batata .sd-bat__lado { background: color-mix(in srgb, var(--fundo-0) 84%, transparent); border-color: color-mix(in srgb, var(--texto) 14%, transparent); box-shadow: var(--sombra-4); }
+.palco--batata .sd-bat__lado--vez { border-color: var(--turquesa); box-shadow: var(--anel-primaria), var(--sombra-4); }
+.palco--batata .sd-bat__centro > :is(.sd-bat__silaba, .sd-bat__vez, .sd-bat__msg) { text-shadow: 0 1px 3px var(--fundo-0), 0 0 12px var(--fundo-0); }
+.palco--batata .sd-bat__nivel { background: color-mix(in srgb, var(--fundo-0) 80%, transparent); border: 1px solid color-mix(in srgb, var(--turquesa) 40%, transparent); }
+.palco--batata .sd-bat__bomba { width: 112px; height: 112px; transition: translate var(--dur-normal) var(--ease-saida), rotate var(--dur-normal) var(--ease-saida); }
+.palco--batata .sd-bat--jogo[data-vez="0"] .sd-bat__bomba { translate: -18px 0; rotate: -10deg; } /* a bomba pende para quem está com a vez */
+.palco--batata .sd-bat--jogo[data-vez="1"] .sd-bat__bomba { translate: 18px 0; rotate: 10deg; }
+.palco--batata .sd-bat__bomba-corpo { /* a bomba com brilho de verdade: o reflexo da luz no alto */
+  background: radial-gradient(circle at 32% 28%, color-mix(in srgb, var(--texto) 55%, transparent) 0 7%, var(--superficie-2) 18%, var(--fundo-0) 72%);
+}
+.palco--batata .sd-bat__bomba--quase .sd-bat__bomba-corpo { border-color: var(--coral); animation: sd-bat-tremer 110ms linear infinite alternate; }
+@keyframes sd-bat-tremer { from { translate: -1.5px 0; } to { translate: 1.5px 0; } }
+.palco--batata .sd-bat__pavio { height: 12px; overflow: visible; background: color-mix(in srgb, var(--fundo-0) 70%, transparent); border: 1px solid color-mix(in srgb, var(--texto) 12%, transparent); }
+.palco--batata .sd-bat__chama { border-radius: inherit; }
+.palco--batata .sd-bat__chama::after { /* a faísca na ponta do pavio */
+  content: ""; position: absolute; top: 50%; right: -9px; width: 18px; height: 18px; translate: 0 -50%; border-radius: 50%;
+  background: radial-gradient(circle, var(--claro) 0 18%, var(--amarelo) 30%, transparent 70%); animation: sd-bat-faisca 260ms ease-in-out infinite alternate;
+}
+.palco--batata .sd-bat__bomba--quase ~ .sd-bat__pavio .sd-bat__chama::after { background: radial-gradient(circle, var(--claro) 0 18%, var(--coral) 30%, transparent 70%); }
+@keyframes sd-bat-faisca { from { scale: 0.8; } to { scale: 1.25; } }
+.palco--batata .sd-bat__espera { justify-self: center; width: min(100%, 540px); text-align: center; }
+.palco--batata .sd-bat__mesa.sd-bat__mesa--solo { justify-self: center; width: min(100%, 640px); grid-template-columns: minmax(0, 1fr); grid-template-areas: "centro" "a"; } /* Sozinho: a bomba no meio e o painel embaixo */
+@container sd-cheia (min-height: 800px) { .palco--batata .sd-bat--jogo { margin-top: 4cqh; } } /* tela alta: o jogo desce um pouco, para o meio */
+.sd-bat__trocar { justify-self: start; }
+@media (min-width: 1024px) { /* tela larga: os dois painéis dos lados da bomba */
+  .palco--batata .palco__coluna { width: min(100% - var(--esp-6) * 2, 1100px); }
+  .palco--batata .sd-bat__mesa { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); grid-template-areas: "a centro b"; gap: var(--esp-5); }
+}
+@container sd-cheia (max-height: 479px) { /* celular deitado: tudo numa linha, a bomba menor */
+  .palco--batata .sd-bat__mesa { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr); grid-template-areas: "a centro b"; gap: var(--esp-3); }
+  .palco--batata .sd-bat__mesa.sd-bat__mesa--solo { width: 100%; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); grid-template-areas: "a centro"; }
+  .palco--batata .sd-bat__centro { gap: var(--esp-1); }
+  .palco--batata .sd-bat__bomba { width: 64px; height: 64px; }
+  .palco--batata .sd-bat__silaba { font-size: var(--t-3xl); }
+  .palco--batata .sd-bat__lado { padding: var(--esp-2); gap: var(--esp-2); }
+  .palco--batata .sd-bat__alfabeto span { width: 1.25rem; height: 1.4rem; }
+}
+
 /* ---------- Cardume (corrida com cardume no <canvas>) ---------- */
-.sd-car { position: relative; width: 100%; max-width: 560px; margin: 0 auto; }
-.sd-car__palco { position: relative; width: 100%; border-radius: var(--raio); overflow: hidden; border: 1px solid var(--borda); }
-.sd-car__canvas { display: block; width: 100%; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
+/* No palco (2026-10-18): a corrida ocupa a tela inteira; o placar vai nas pílulas do palco (só mostram: o arrasto passa para
+   a corrida) e a abertura, o baú e o fim no cartão do palco */
+.palco--cardume .palco__cena { display: none; } /* (a corrida tem o canvas dela) */
+.sd-car__canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
 .sd-car__canvas:active { cursor: grabbing; }
 .sd-car__canvas:focus { outline: none; }
-.sd-car__canvas:focus-visible { outline: 3px solid var(--amarelo); outline-offset: -3px; }
-.sd-car__hud { position: absolute; inset: var(--esp-2) var(--esp-2) auto; display: flex; align-items: center; gap: var(--esp-2); pointer-events: none; }
-.sd-car__fase, .sd-car__pontos { padding: var(--esp-1) var(--esp-3); border-radius: var(--raio-pilula); background: rgba(6, 23, 45, 0.6); font-weight: 800; font-size: var(--t-sm); white-space: nowrap; }
-.sd-car__fase { color: var(--texto); }
-.sd-car__pontos { display: inline-flex; align-items: center; gap: var(--esp-1); color: var(--amarelo); font-family: var(--fonte-mono); font-size: var(--t-md); }
-.sd-car__barra { flex: 1; min-width: 40px; height: 10px; border-radius: var(--raio-pilula); background: rgba(6, 23, 45, 0.45); box-shadow: inset 0 0 0 1px rgba(230, 241, 255, 0.3); overflow: hidden; }
+.sd-car__canvas:focus-visible { outline: 2px solid var(--amarelo); outline-offset: -2px; }
+.palco--cardume .palco__rolagem { pointer-events: none; }
+.sd-car__barra { flex: none; align-self: center; width: min(36vw, 240px); height: 10px; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--fundo-0) 55%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--texto) 30%, transparent); overflow: hidden; }
 .sd-car__barra > span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--turquesa), var(--turquesa-claro)); }
-.sd-car__som { pointer-events: auto; display: grid; place-items: center; min-width: 44px; min-height: 44px; border: 0; border-radius: var(--raio-pilula); background: rgba(6, 23, 45, 0.6); color: var(--texto); font-size: var(--t-lg); cursor: pointer; }
-.sd-car__som:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 2px; }
-.sd-car__abertura { position: absolute; inset: 0; display: grid; place-items: center; padding: var(--esp-4); background: rgba(6, 23, 45, 0.5); overflow-y: auto; }
-.sd-car__abertura[hidden] { display: none; }
-.sd-car__cartao { display: grid; gap: var(--esp-3); width: 100%; max-width: 420px; }
-.sd-car__regras { margin: 0; padding-left: 1.2em; display: grid; gap: var(--esp-1); color: var(--texto-suave); }
+.sd-car__pontos { font-family: var(--fonte-mono); }
 .sd-car__soma { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--esp-1); }
 .sd-car__soma li { display: flex; justify-content: space-between; gap: var(--esp-3); color: var(--texto-suave); }
 .sd-car__soma strong { color: var(--amarelo); font-family: var(--fonte-mono); }
+.sd-car__premio { display: grid; gap: var(--esp-3); }
 .sd-car__escolha { margin: 0; font-weight: 700; }
 .sd-car__baus { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--esp-2); }
 .sd-car__bau { display: grid; place-items: center; aspect-ratio: 1; min-height: 56px; border: 2px solid rgba(250, 204, 21, 0.5); border-radius: var(--raio); background: linear-gradient(180deg, var(--superficie-2), var(--superficie)); color: var(--amarelo); cursor: pointer; transition: transform var(--dur-rapida) var(--ease-saida); }
@@ -582,7 +669,8 @@ body.sd-trava { overflow: hidden; }
 .sd-car__total strong { color: var(--amarelo); font-family: var(--fonte-mono); }
 
 @media (prefers-reduced-motion: reduce) {
-  .sd-car__bau--escolhido, .sd-tiro__regra--nova, .sd-bat__bomba-luz, .sd-bat--boom .sd-bat__mesa, .sd-bat__form--tremer { animation: none; }
+  .sd-car__bau--escolhido, .sd-tiro__regra--nova, .sd-bat__bomba-luz, .sd-bat--boom .sd-bat__mesa, .sd-bat__form--tremer, .palco--batata .sd-bat__bomba--quase .sd-bat__bomba-corpo, .palco--batata .sd-bat__chama::after { animation: none; }
+  .palco--batata .sd-bat__bomba { transition: none; }
   .sd-tiro__agua-barra, .sd-bat__lado { transition: none; }
   .sd-tiro__vidas .icone.perdeu { animation: none; }
   .ps-carro, .ps-pneu, .ps-braco, .ps-ok, .ps-combo__barra, .ps-cena--saindo .ps-carro, .ps-cena--saindo .ps-pneu, .ps-cena--saindo .ps-ok { transition: none; }

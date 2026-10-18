@@ -247,7 +247,7 @@ const Palavrinha = (() => {
     const lista = ctx.cartas.palavrinha || [];
     const porId = new Map(lista.map((p) => [p.id, p]));
     const hoje = UI.dataLocal();
-    const palco = Palco.montar(ctx, { id: 'palavrinha', cena: cenaLetras() });
+    const palco = Palco.montar(ctx, { id: 'palavrinha', cena: Palco.cenas.letras() }); // o mar de letras (o mesmo da Palavrinha da Sala de Descompressão)
     let desligar = null;
     let aoRedimensionar = null;
     const relogios = new Set(); // os tempinhos da virada das letras (param junto com o jogo)
@@ -642,90 +642,6 @@ const Palavrinha = (() => {
         palco.parar();
       },
     };
-  }
-
-  /* ---------- A cena: o mar de letras (as peças boiam devagar; no acerto, sobem em festa) ---------- */
-  function cenaLetras() {
-    const { COR, misturar, alfa, degrade, raios, poeira, seme, tela } = Palco.pintar;
-    const LETRAS = 'ABCDEFGHIJLMNOPQRSTUVXZ';
-    let agua = null;
-    let chave = '';
-    let pecas = [];
-    let festa = 0; // 1 no acerto (as peças sobem rápido e ganham cor), −1 quando a palavra escapa (elas apagam)
-    let subida = 0; // o quanto as peças já subiram (cresce mais rápido na festa)
-    const imagens = new Map(); // cada peça desenhada uma vez (letra + tamanho + cor)
-
-    function imagem(letra, tam, cor) {
-      const k = `${letra}${tam}${cor}`;
-      if (imagens.has(k)) return imagens.get(k);
-      const c = tela(tam + 4, tam + 4);
-      const f = c.getContext('2d');
-      const r = tam / 6;
-      f.fillStyle = cor;
-      f.beginPath();
-      f.roundRect ? f.roundRect(2, 2, tam, tam, r) : f.rect(2, 2, tam, tam);
-      f.fill();
-      f.fillStyle = COR.fundo;
-      f.font = `800 ${Math.round(tam * 0.52)}px "Plus Jakarta Sans", system-ui, sans-serif`;
-      f.textAlign = 'center';
-      f.textBaseline = 'middle';
-      f.fillText(letra, 2 + tam / 2, 2 + tam / 2 + tam * 0.04);
-      imagens.set(k, c);
-      return c;
-    }
-
-    function pintar(L, A) {
-      const r = seme(53);
-      agua = tela(L, A);
-      const f = agua.getContext('2d');
-      f.fillStyle = degrade(f, 0, A, [[0, misturar(COR.marinho, COR.lilas, 0.16)], [0.5, COR.marinho], [1, COR.fundo]]);
-      f.fillRect(0, 0, L, A);
-      const halo = f.createRadialGradient(L * 0.5, A * 0.35, 0, L * 0.5, A * 0.35, Math.max(L, A) * 0.6);
-      halo.addColorStop(0, alfa(COR.turquesa, 0.1));
-      halo.addColorStop(1, alfa(COR.turquesa, 0));
-      f.fillStyle = halo;
-      f.fillRect(0, 0, L, A);
-      const cores = [COR.perola, COR.perola, COR.perola, COR.turquesa, COR.amarelo, COR.claro];
-      const n = Math.round(18 + (L * A) / 26000);
-      pecas = Array.from({ length: n }, (_, i) => {
-        const perto = i % 3; // 0 longe, 1 meio, 2 perto
-        return {
-          x: r() * L, y: r() * A, tam: [16, 24, 34][perto], a: [0.07, 0.11, 0.15][perto], v: [8, 13, 19][perto],
-          letra: LETRAS[Math.floor(r() * LETRAS.length)], cor: cores[Math.floor(r() * cores.length)], giro: (r() - 0.5) * 0.5, fase: r() * 6,
-        };
-      });
-    }
-
-    function desenhar(g, L, A, t, dt, est) {
-      const nova = `${L}x${A}`;
-      if (!agua || nova !== chave) { chave = nova; pintar(L, A); }
-      const alvo = est.festa || 0;
-      festa += (alvo - festa) * Math.min(1, dt * 2);
-      if (!est.rm) subida += dt * (1 + Math.max(0, festa) * 5);
-      g.drawImage(agua, 0, 0, L, A);
-      raios(g, L, A * 0.8, t, COR.claro, 0.06);
-      for (const p of pecas) {
-        const y = ((((p.y - subida * p.v) % (A + 60)) + A + 60) % (A + 60)) - 30;
-        const x = p.x + Math.sin(t * 0.4 + p.fase) * 14;
-        const cor = festa > 0.3 && (p.cor === COR.perola) ? (p.fase > 3 ? COR.turquesa : COR.amarelo) : p.cor;
-        const a = Math.max(0.02, p.a * (1 + festa * 1.6));
-        const img = imagem(p.letra, p.tam, cor);
-        g.save();
-        g.globalAlpha = Math.min(0.5, a);
-        g.translate(x, y);
-        g.rotate(p.giro + Math.sin(t * 0.5 + p.fase) * 0.12);
-        g.drawImage(img, -img.width / 2, -img.height / 2);
-        g.restore();
-      }
-      poeira(g, L, A, t, alfa(COR.perola, 0.35), 34, 10);
-    }
-
-    function reagir(tipo, info, est) {
-      if (tipo === 'festa') info.tocar('vitoria');
-      else if (tipo === 'escapou') info.tocar('derrota');
-    }
-
-    return { desenhar, reagir };
   }
 
   Object.values(VARIANTES).forEach((v) => Jogos.registrar({

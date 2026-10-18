@@ -1503,11 +1503,15 @@ body.jogo-trava { overflow: hidden; }
 /* ---------- Palavrinha no palco (2026-10-18) ----------
    O saguão (palavra do dia, treino, estatísticas e ranking) e o jogo por cima do mar de letras; as letras de cada
    palpite viram uma a uma (a cor aparece quando a letra está de lado); no fim, as estatísticas entram em "Em números". */
-.palco--palavrinha .pal-letra { background: color-mix(in srgb, var(--fundo-0) 90%, transparent); } /* (as letras do mar não aparecem dentro da grade) */
-.palco--palavrinha .pal-letra--certa { background: var(--turquesa); }
-.palco--palavrinha .pal-letra--lugar { background: var(--amarelo); }
-.palco--palavrinha .pal-letra--fora { background: color-mix(in srgb, var(--fundo-0) 92%, transparent); }
-.palco--palavrinha .pal-tema, .palco--palavrinha .pal-msg { text-shadow: 0 1px 2px var(--fundo-0); }
+.palco--palavrinha .pal-letra, .palco--sala-palavrinha .pal-letra { background: color-mix(in srgb, var(--fundo-0) 90%, transparent); } /* (as letras do mar não aparecem dentro da grade) */
+.palco--palavrinha .pal-letra--certa, .palco--sala-palavrinha .pal-letra--certa { background: var(--turquesa); }
+.palco--palavrinha .pal-letra--lugar, .palco--sala-palavrinha .pal-letra--lugar { background: var(--amarelo); }
+.palco--palavrinha .pal-letra--fora, .palco--sala-palavrinha .pal-letra--fora { background: color-mix(in srgb, var(--fundo-0) 92%, transparent); }
+.palco--palavrinha .pal-tema, .palco--palavrinha .pal-msg, .palco--sala-palavrinha .pal-msg, .palco--sala-palavrinha .pal-revela { text-shadow: 0 1px 2px var(--fundo-0); }
+.palco--sala-palavrinha .sd-pal { justify-items: stretch; }
+.palco--sala-palavrinha .sd-pal > .sd-pal__modos, .palco--sala-palavrinha .sd-pal > .sd-pal__info { justify-self: center; }
+.palco--sala-palavrinha .sd-pal__fim { justify-self: center; }
+.sd-pal__abrindo { text-align: center; text-shadow: 0 1px 2px var(--fundo-0); }
 .pal-letra--virando { animation: pal-virar 320ms ease-in-out; }
 @keyframes pal-virar { 50% { transform: rotateX(90deg); } }
 .palco--palavrinha .pal-cartao--dia .pal-titulo { font-size: var(--t-3xl); }
@@ -1516,7 +1520,15 @@ body.jogo-trava { overflow: hidden; }
 .pal-fim-estat .pal-dist { margin-top: var(--esp-2); }
 @media (min-width: 1024px) { .palco--larga .palco__coluna { width: min(100% - var(--esp-6) * 2, 1200px); } } /* x2 e x4 */
 @container sd-cheia (max-height: 479px) and (min-width: 640px) { /* celular deitado: o teclado ao lado do tabuleiro */
-  .palco--palavrinha .palco__coluna { width: min(100% - var(--esp-4) * 2, 1100px); }
+  .palco--palavrinha .palco__coluna, .palco--sala-palavrinha .palco__coluna { width: min(100% - var(--esp-4) * 2, 1100px); }
+  .palco--sala-palavrinha .sd-pal { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "mod inf" "tab msg" "tab tec" "tab fim"; align-items: start; column-gap: var(--esp-4); }
+  .palco--sala-palavrinha .sd-pal > .sd-pal__modos { grid-area: mod; }
+  .palco--sala-palavrinha .sd-pal > .sd-pal__info { grid-area: inf; }
+  .palco--sala-palavrinha .sd-pal > .pal-tabuleiros { grid-area: tab; }
+  .palco--sala-palavrinha .sd-pal > .pal-msg { grid-area: msg; align-self: end; }
+  .palco--sala-palavrinha .sd-pal > .pal-teclado { grid-area: tec; }
+  .palco--sala-palavrinha .sd-pal > .sd-pal__fim { grid-area: fim; }
+  .palco--sala-palavrinha .pal-tecla { min-height: 44px; }
   .palco--palavrinha .pal:not(.pal-abertura) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "tab msg" "tab tec" "tab ."; align-items: start; column-gap: var(--esp-4); }
   .palco--palavrinha .pal:not(.pal-abertura) > .pal-tabuleiros { grid-area: tab; }
   .palco--palavrinha .pal:not(.pal-abertura) > .pal-msg { grid-area: msg; align-self: end; }

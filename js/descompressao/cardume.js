@@ -18,6 +18,10 @@
  * - Pontos só do placar da sala: 50 × fase + sobreviventes + pérolas + inimigos + baú. Vale o recorde.
  * Personagens "gelatina": desenhados uma vez em sprites (8 quadros), com squash & stretch na hora de desenhar.
  * Com "reduzir movimento": sem tremida de tela, sem câmera lenta e menos partículas.
+ * Palco em tela toda (2026-10-18, js/jogos/palco.js): a corrida ocupa a janela inteira, com a pista do mesmo tamanho de
+ * antes (o que se vê à frente não muda) e, dos lados, o fundo de areia com algas, pedras e corais passando. O placar vai
+ * para as pílulas do palco, o som para o botão "Som" da barra e a abertura, o baú da sorte e o fim para o cartão do palco.
+ * Regras, fases, chefões e pontos iguais.
  */
 (() => {
   const { h, icone, plural } = UI;
@@ -1089,40 +1093,25 @@
   /* =========================================================
      Som (sintetizado na hora; dá para desligar)
      ========================================================= */
-  function criarSom(ligado) {
-    let ac = null;
+  /**
+   * O som do jogo pelo som do palco (js/jogos/palco.js): a mesma chave "Som" da barra de todos os jogos. "chave" e "minimo"
+   * evitam o mesmo som tocando em cima dele mesmo.
+   */
+  function criarSom(base) {
     const ultimo = {};
     const som = {
-      ligado,
-      iniciar() {
-        try {
-          ac = ac || new (window.AudioContext || window.webkitAudioContext)();
-          if (ac.state === 'suspended') ac.resume();
-        } catch (e) { ac = null; }
-      },
+      get ligado() { return base.ligado; },
+      iniciar() { base.iniciar(); },
       tom(freq, dur, tipo = 'sine', vol = 0.1, desliza = 1, atraso = 0, chave = null, minimo = 0) {
-        if (!som.ligado || !ac) return;
-        const agora = ac.currentTime;
+        if (!base.ligado) return;
         if (chave) {
+          const agora = performance.now() / 1000;
           if (ultimo[chave] && agora - ultimo[chave] < minimo) return;
           ultimo[chave] = agora;
         }
-        try {
-          const t = agora + atraso;
-          const o = ac.createOscillator();
-          const v = ac.createGain();
-          o.type = tipo;
-          o.frequency.setValueAtTime(freq, t);
-          if (desliza !== 1) o.frequency.exponentialRampToValueAtTime(Math.max(40, freq * desliza), t + dur);
-          v.gain.setValueAtTime(0.0001, t);
-          v.gain.exponentialRampToValueAtTime(vol, t + 0.012);
-          v.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-          o.connect(v).connect(ac.destination);
-          o.start(t);
-          o.stop(t + dur + 0.03);
-        } catch (e) { /* sem som, sem problema */ }
+        base.tom(freq, dur, tipo, vol, desliza, atraso);
       },
-      fechar() { try { if (ac) ac.close(); } catch (e) { /* nada */ } ac = null; },
+      fechar() { /* quem fecha é o palco */ },
     };
     return som;
   }
@@ -1139,26 +1128,26 @@
     duracao: '30 s por fase',
     diario: false,
     descricao: 'Arraste para os lados, junte Divers, pegue armas d’água, derrube os inimigos e vença o chefão. Da fase 3 em diante, fica muito difícil.',
+    telaCheia: true, // o palco: a janela inteira, com a barra da Sala por cima
     abrir(ctx) {
       const SPR = sprites();
-      const salvo = ctx.estado() || {};
-      const som = criarSom(salvo.som !== false);
+      const palcoTela = Palco.montar(Palco.daSala(ctx), { id: 'cardume', cena: { desenhar() { /* a corrida tem o canvas dela */ } } });
+      const som = criarSom(palcoTela.som);
       let P = null; // partida
       let quadro = 0;
       let ultimoT = 0;
       let limpar = [];
 
-      /* ---------- Tela ---------- */
-      const faseEl = h('span', { class: 'sd-car__fase', id: 'sd-car-fase' });
+      /* ---------- Tela: o canvas da corrida ocupa o palco inteiro; o placar vai nas pílulas do palco ---------- */
+      const faseEl = h('span', { class: 'palco__pilula sd-car__fase', id: 'sd-car-fase' });
       const barra = h('span');
-      const pontosEl = h('span', { class: 'sd-car__pontos', id: 'sd-car-pontos' }, icone('i-perola'), h('span', { text: '0' }));
-      const botaoSom = h('button', { type: 'button', class: 'sd-car__som', 'aria-pressed': String(som.ligado), 'aria-label': 'Som', onclick: alternarSom });
-      const hud = h('div', { class: 'sd-car__hud' }, faseEl, h('span', { class: 'sd-car__barra', 'aria-hidden': 'true' }, barra), pontosEl, botaoSom);
+      const pontosEl = h('span', { class: 'palco__pilula palco__pilula--destaque sd-car__pontos', id: 'sd-car-pontos' }, icone('i-perola'), h('span', { text: '0' }));
+      palcoTela.hud(faseEl, h('span', { class: 'sd-car__barra', 'aria-hidden': 'true' }, barra), pontosEl);
       const aviso = h('p', { class: 'visualmente-oculto', 'aria-live': 'polite' });
       const tela = h('canvas', { class: 'sd-car__canvas', id: 'sd-car-canvas', tabindex: '0', 'aria-label': 'Cardume: arraste para os lados ou use as setas para guiar o Diver' });
-      const abertura = h('div', { class: 'sd-car__abertura' });
-      const palco = h('div', { class: 'sd-car__palco' }, tela, hud, abertura);
-      ctx.container.replaceChildren(h('div', { class: 'sd-car' }, palco, aviso));
+      const raiz = palcoTela.raiz;
+      raiz.insertBefore(tela, raiz.querySelector('.palco__rolagem'));
+      raiz.append(aviso);
       const g = tela.getContext('2d');
       let L = 360;
       let A = 640;
@@ -1166,26 +1155,13 @@
       let HOR = 190;
       let CAMH = 5;
 
-      function desenharBotaoSom() {
-        botaoSom.setAttribute('aria-pressed', String(som.ligado));
-        botaoSom.replaceChildren(UI.icone(som.ligado ? 'i-som' : 'i-mudo'), h('span', { class: 'visualmente-oculto', text: som.ligado ? 'Desligar o som' : 'Ligar o som' }));
-      }
-      function alternarSom() {
-        som.ligado = !som.ligado;
-        if (som.ligado) som.iniciar();
-        ctx.gravar({ som: som.ligado });
-        desenharBotaoSom();
-      }
-      desenharBotaoSom();
-
       function medir() {
-        const largura = Math.max(280, palco.clientWidth || 360);
-        const topo = palco.getBoundingClientRect().top || 120;
-        const altura = Math.round(clamp(window.innerHeight - topo - 16, 420, Math.min(900, largura * 2)));
+        const r = raiz.getBoundingClientRect();
+        const largura = Math.max(280, Math.round(r.width) || 360);
+        const altura = Math.max(320, Math.round(r.height) || 640);
         const dpr = Math.min(2, window.devicePixelRatio || 1);
         tela.width = Math.round(largura * dpr);
         tela.height = Math.round(altura * dpr);
-        tela.style.height = `${altura}px`;
         g.setTransform(dpr, 0, 0, dpr, 0, 0);
         L = largura;
         A = altura;
@@ -1232,7 +1208,6 @@
         faseEl.textContent = `Fase ${P.n} · ${fase.tema.nome}`;
         aviso.textContent = `Fase ${P.n}. Chefão: ${fase.chefe.nome}, com ${fase.hp} de vida.`;
         atualizarPontos();
-        abertura.hidden = true;
         tela.focus({ preventScroll: true });
       }
 
@@ -1863,22 +1838,23 @@
         setTimeout(() => mostrarFim(total, novo), reduzir() ? 200 : 900);
       }
 
-      /* ---------- Cartões ---------- */
+      /* ---------- Cartões: a abertura, o baú da sorte e o fim, no cartão do palco ---------- */
       function mostrarAbertura() {
         const recorde = ctx.recorde();
-        abertura.hidden = false;
-        abertura.replaceChildren(h('div', { class: 'cartao sd-car__cartao' },
-          h('h2', { text: 'Bora juntar o cardume!' }),
-          h('ul', { class: 'sd-car__regras' },
-            h('li', {}, 'Arraste para os lados (ou use as setas). O Diver nada sozinho; toque nos Divers perdidos para eles entrarem no cardume.'),
-            h('li', {}, 'Passe por cima da arma d’água: o cardume atira sozinho, com 1, 2 ou 3 jatos.'),
-            h('li', {}, h('strong', { text: 'Leia o número do portal:' }), ' às vezes a cor engana.'),
-            h('li', {}, 'Inimigos chegam o tempo todo. Cada um derruba tantos Divers quanto a vida dele.'),
-            h('li', {}, 'No fim, o chefão. ', h('strong', { text: 'Da fase 3 em diante, fica muito difícil.' }))),
-          recorde ? h('p', { class: 'texto-suave', text: `Seu recorde: ${plural(recorde, 'ponto', 'pontos')}` }) : null,
-          h('div', { class: 'acoes-linha' },
-            h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-car-comecar', onclick: comecar }, icone('i-onda'), 'Começar'))));
-        abertura.querySelector('#sd-car-comecar').focus({ preventScroll: true });
+        palcoTela.abertura({
+          rotulo: 'Corrida no fundo do mar',
+          titulo: 'Bora juntar o cardume!',
+          passos: [
+            ['01', 'Arraste para os lados (ou use as setas). ', 'O Diver nada sozinho; toque nos Divers perdidos para eles entrarem no cardume.'],
+            ['02', 'Passe por cima da arma d’água. ', 'O cardume atira sozinho, com 1, 2 ou 3 jatos.'],
+            ['03', 'Leia o número do portal: ', 'às vezes a cor engana.'],
+            ['04', 'Inimigos o tempo todo e, no fim, o chefão. ', 'Cada inimigo derruba tantos Divers quanto a vida dele. Da fase 3 em diante, fica muito difícil.'],
+          ],
+          numeros: recorde ? [['Seu recorde', plural(recorde, 'ponto', 'pontos'), true]] : [],
+          botao: 'Começar',
+          icone: 'i-onda',
+          aoComecar: comecar,
+        });
       }
 
       function mostrarBau() {
@@ -1891,7 +1867,6 @@
         const r = ctx.aleatorio(`bau-${Date.now()}`);
         const premios = [10, 15, 20, 25, 30, 40, 50, 60, 100].sort(() => r() - 0.5);
         let escolhido = -1;
-        const proxima = h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-car-proxima', disabled: true, onclick: () => { P.bauAberto = false; proximaFase(); } }, icone('i-seta-dir'), 'Próxima fase');
         const baus = premios.map((v, i) => h('button', {
           type: 'button', class: 'sd-car__bau', 'aria-label': `Baú ${i + 1}`,
           onclick: () => {
@@ -1914,30 +1889,36 @@
             proxima.focus({ preventScroll: true });
           },
         }, icone('i-bau')));
-        abertura.hidden = false;
-        abertura.replaceChildren(h('div', { class: 'cartao sd-car__cartao' },
-          h('h2', { text: `${f.chefe.nome} derrotado!` }),
-          h('ul', { class: 'sd-car__soma' },
-            h('li', {}, h('span', { text: `Fase ${P.n}` }), h('strong', { text: `+${bonusFase}` })),
-            h('li', {}, h('span', { text: `Cardume que sobrou (${ganhoCardume})` }), h('strong', { text: `+${ganhoCardume}` })),
-            h('li', {}, h('span', { text: 'Pérolas' }), h('strong', { text: `+${ganhoPerolas}` })),
-            h('li', {}, h('span', { text: `Inimigos derrubados (${abatidos})` }), h('strong', { text: `+${ganhoAbates}` }))),
-          h('p', { class: 'sd-car__escolha', text: 'Escolha um baú da sorte:' }),
-          h('div', { class: 'sd-car__baus' }, baus),
-          h('div', { class: 'acoes-linha' }, proxima)));
+        palcoTela.abertura({
+          rotulo: `Fase ${P.n} vencida`,
+          titulo: `${f.chefe.nome} derrotado!`,
+          mais: h('div', { class: 'palco__opcoes sd-car__premio' },
+            h('ul', { class: 'sd-car__soma' },
+              h('li', {}, h('span', { text: `Fase ${P.n}` }), h('strong', { text: `+${bonusFase}` })),
+              h('li', {}, h('span', { text: `Cardume que sobrou (${ganhoCardume})` }), h('strong', { text: `+${ganhoCardume}` })),
+              h('li', {}, h('span', { text: 'Pérolas' }), h('strong', { text: `+${ganhoPerolas}` })),
+              h('li', {}, h('span', { text: `Inimigos derrubados (${abatidos})` }), h('strong', { text: `+${ganhoAbates}` }))),
+            h('p', { class: 'sd-car__escolha', text: 'Escolha um baú da sorte:' }),
+            h('div', { class: 'sd-car__baus' }, baus)),
+          botao: 'Próxima fase',
+          icone: 'i-seta-dir',
+          aoComecar: () => { P.bauAberto = false; proximaFase(); },
+        });
+        const proxima = document.getElementById('palco-comecar');
+        proxima.disabled = true; // abre depois de escolher o baú
         baus[4].focus({ preventScroll: true });
       }
 
       function mostrarFim(total, novo) {
-        abertura.hidden = false;
-        abertura.replaceChildren(h('div', { class: 'cartao sd-car__cartao' },
-          h('h2', { class: 'texto-erro', text: 'O cardume se espalhou!' }),
-          h('p', {}, `Você chegou à fase ${P.n}.`),
-          h('p', { class: 'sd-car__total' }, h('strong', { text: plural(total, 'ponto', 'pontos') }), novo && total > 0 ? ' · novo recorde!' : ''),
-          h('div', { class: 'acoes-linha' },
-            h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-car-comecar', onclick: comecar }, icone('i-onda'), 'Jogar de novo'),
-            h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala'))));
-        abertura.querySelector('#sd-car-comecar').focus({ preventScroll: true });
+        if (!P) return; // saiu do jogo antes do cartão
+        palcoTela.terminar({ titulo: 'O cardume se espalhou!', subtitulo: `Você chegou à fase ${P.n}.`, detalhes: [] }, {
+          tom: novo && total > 0 ? 'vitoria' : 'derrota',
+          calado: true, // a corrida já tocou o som do fim
+          numeros: [['Pontos', total, true], ['Fase', P.n], ['Recorde', Math.max(total, P.recorde || 0)]],
+          mais: novo && total > 0 ? h('p', { class: 'sd-car__total' }, h('strong', { text: 'Novo recorde!' }), ` ${plural(total, 'ponto', 'pontos')} no placar da sala.`) : h('p', { class: 'texto-suave', text: `${plural(total, 'ponto', 'pontos')} no placar da sala.` }),
+          aoJogarDeNovo: comecar,
+          textoDeNovo: 'Jogar de novo',
+        });
       }
 
       function comecar() {
@@ -1965,7 +1946,9 @@
         camX = 0;
         const tema = TEMAS[0];
         fundo(tema, 0);
+        chao(tema);
         pista(tema, { comprimento: 999, eventos: [] });
+        enfeites(tema, 0).sort((a, b) => b.d - a.d).forEach((o) => o.f());
         const p = proj(0, 0, 0);
         if (p) {
           sombra(0, 0, 1.3);
@@ -2091,6 +2074,112 @@
         }
       }
 
+      /* ---------- Os lados da pista (tela larga): o fundo de areia e os enfeites que passam ---------- */
+      const hexMix = (c1, c2, t) => { // como misturar(), mas devolve '#RRGGBB' (para misturar de novo com a névoa)
+        const a = parseInt(c1.slice(1), 16);
+        const b = parseInt(c2.slice(1), 16);
+        const c = [16, 8, 0].map((k) => Math.round(((a >> k) & 255) * (1 - t) + ((b >> k) & 255) * t));
+        return `#${c.map((v) => v.toString(16).padStart(2, '0')).join('')}`;
+      };
+      const coresLado = new Map();
+      function corLado(tema) {
+        if (!coresLado.has(tema)) {
+          coresLado.set(tema, {
+            chaoA: hexMix(tema.fundo, tema.pista[1], 0.3), chaoB: hexMix(tema.fundo, tema.pista[1], 0.23),
+            alga: hexMix(tema.lado, tema.fundo, 0.25), algaLuz: hexMix(tema.borda, tema.lado, 0.4),
+            pedra: hexMix(tema.fundo, tema.horiz, 0.35), pedraLuz: hexMix(tema.horiz, tema.topo, 0.3), coral: hexMix(tema.borda, tema.pista[0], 0.15),
+          });
+        }
+        return coresLado.get(tema);
+      }
+      /** O chão dos lados: listras de areia que passam como as da pista (a velocidade aparece também ali); a pista vem por cima */
+      function chao(tema) {
+        const c = corLado(tema);
+        const z0 = Math.floor(camZ / 2) * 2;
+        for (let z = z0 + 72; z >= z0; z -= 2) {
+          const za = Math.max(z, camZ + 0.4);
+          const zb = z + 2;
+          const a1 = proj(-34, 0, za);
+          const a2 = proj(34, 0, za);
+          const b1 = proj(-34, 0, zb);
+          const b2 = proj(34, 0, zb);
+          if (!a1 || !b1) continue;
+          const nv = nevoa((za + zb) / 2 - camZ);
+          quad(a1, a2, b2, b1, misturar(Math.floor(z / 2) % 2 === 0 ? c.chaoA : c.chaoB, tema.horiz, nv));
+        }
+      }
+      // os enfeites: algas, pedras e corais dos dois lados, numa sequência que se repete a cada CICLO (sempre os mesmos)
+      const ENFEITES = (() => {
+        let x = 7;
+        const r = () => { x = (x * 9301 + 49297) % 233280; return x / 233280; };
+        return Array.from({ length: 52 }, (_, i) => ({
+          lado: i % 2 ? 1 : -1, x: MEIA + 1.2 + r() * 7, dz: (i / 52) * 120 + r() * 2,
+          tipo: ['alga', 'alga', 'pedra', 'coral'][Math.floor(r() * 4)], tam: 0.7 + r() * 0.8, fase: r() * 6,
+        }));
+      })();
+      const CICLO = 120;
+      /** Os enfeites à vista, para entrarem na ordem de profundidade junto com o resto: [{ d, f }] */
+      function enfeites(tema, t) {
+        const c = corLado(tema);
+        const lista = [];
+        for (const e of ENFEITES) {
+          const z = e.dz + Math.ceil((camZ + 0.8 - e.dz) / CICLO) * CICLO;
+          const d = z - camZ;
+          if (d > 72) continue;
+          lista.push({ d, f: () => enfeite(e, z, c, tema, t) });
+        }
+        return lista;
+      }
+      function enfeite(e, z, c, tema, t) {
+        const p = proj(e.lado * e.x, 0, z);
+        if (!p) return;
+        const nv = nevoa(p.d);
+        const s = p.s * e.tam;
+        if (s < 1.5) return;
+        g.save();
+        g.globalAlpha = alfaDist(p.d);
+        if (e.tipo === 'alga') { // três fitas que balançam
+          g.lineCap = 'round';
+          for (let k = 0; k < 3; k++) {
+            const bx = p.x + (k - 1) * s * 0.2;
+            const alto = s * (k === 1 ? 1.5 : 1.1);
+            const balanca = reduzir() ? 0 : Math.sin(t * 1.6 + e.fase + k * 0.8) * s * 0.2;
+            g.strokeStyle = misturar(k === 1 ? c.algaLuz : c.alga, tema.horiz, nv);
+            g.lineWidth = Math.max(1.5, s * 0.09);
+            g.beginPath();
+            g.moveTo(bx, p.y);
+            g.quadraticCurveTo(bx + balanca * 0.4 + s * 0.12, p.y - alto * 0.5, bx + balanca, p.y - alto);
+            g.stroke();
+          }
+        } else if (e.tipo === 'pedra') { // uma pedra arredondada, com a luz de cima
+          g.fillStyle = misturar(c.pedra, tema.horiz, nv);
+          g.beginPath();
+          g.ellipse(p.x, p.y, s * 0.55, s * 0.4, 0, Math.PI, TAU);
+          g.fill();
+          g.fillStyle = misturar(c.pedraLuz, tema.horiz, Math.min(1, nv + 0.35));
+          g.beginPath();
+          g.ellipse(p.x - s * 0.12, p.y - s * 0.24, s * 0.22, s * 0.1, -0.2, 0, TAU);
+          g.fill();
+        } else { // um coral em galhos, com as pontas redondas
+          g.strokeStyle = misturar(c.coral, tema.horiz, nv);
+          g.fillStyle = g.strokeStyle;
+          g.lineCap = 'round';
+          g.lineWidth = Math.max(1.5, s * 0.1);
+          [[-0.35, 0.9], [0, 1.25], [0.32, 1]].forEach(([dx, alto]) => {
+            const tx = p.x + dx * s;
+            const ty = p.y - alto * s;
+            g.beginPath();
+            g.moveTo(p.x, p.y);
+            g.quadraticCurveTo(p.x + dx * s * 0.2, p.y - alto * s * 0.5, tx, ty);
+            g.stroke();
+            g.beginPath();
+            g.arc(tx, ty, Math.max(1.2, s * 0.08), 0, TAU);
+            g.fill();
+          });
+        }
+        g.restore();
+      }
+
       function sombra(x, z, tam = 1) {
         const p = proj(x, 0, z);
         if (!p) return;
@@ -2194,6 +2283,7 @@
             personagem(SPR.lider[P.arma][qf], p, 1.6, 1 + Math.sin(t * 12) * 0.05, clamp(-P.vx * 0.03, -0.35, 0.35), pisca ? 0.35 : 1);
           } });
         }
+        lista.push(...enfeites(tema, t));
         lista.sort((a, b) => b.d - a.d);
         // sombras do cardume primeiro (por baixo de tudo que está perto)
         P.membros.forEach((m) => sombra(m.x, P.z + m.dz, 1.15));
@@ -2754,6 +2844,7 @@
         g.save();
         if (P.tremor > 0) g.translate((Math.random() - 0.5) * 10 * P.tremor, (Math.random() - 0.5) * 10 * P.tremor);
         fundo(tema, P.t);
+        chao(tema);
         pista(tema, P.fase);
         desenharObjetos();
         contador();
@@ -2786,11 +2877,12 @@
       const soltar = () => { arrasto = null; };
       tela.addEventListener('pointerup', soltar);
       tela.addEventListener('pointercancel', soltar);
-      const aoRedim = () => medir();
-      window.addEventListener('resize', aoRedim);
+      const observador = typeof ResizeObserver === 'function' ? new ResizeObserver(() => medir()) : null;
+      if (observador) observador.observe(raiz);
+      else window.addEventListener('resize', medir);
       const aoVisivel = () => { ultimoT = performance.now(); teclas.esq = false; teclas.dir = false; };
       document.addEventListener('visibilitychange', aoVisivel);
-      limpar = [() => window.removeEventListener('resize', aoRedim), () => document.removeEventListener('visibilitychange', aoVisivel)];
+      limpar = [() => (observador ? observador.disconnect() : window.removeEventListener('resize', medir)), () => document.removeEventListener('visibilitychange', aoVisivel)];
 
       ctx.guia([
         { alvo: '#sd-car-canvas', desenho: 'onda', titulo: 'Guie o Diver', texto: 'Ele nada sozinho. Arraste para os lados (ou use as setas) e encoste nos Divers perdidos: eles entram no cardume.' },
@@ -2817,6 +2909,7 @@
           P = null;
           som.fechar();
           limpar.forEach((f) => f());
+          palcoTela.parar();
         },
       };
     },

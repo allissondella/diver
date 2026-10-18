@@ -11,6 +11,9 @@
  *   embaralhado com semente fixa; o dia escolhe a posição, então nenhuma palavra se repete até o banco acabar.
  * - Pontos (só no placar da sala): palavra do dia (7 − tentativas) × 10 (1ª = 60); treino (7 − tentativas) × 2
  *   (1ª = 12), com até 60 por dia de treino no placar (ranking_sala). Não acertou = 0.
+ * - Palco em tela toda (2026-10-18, js/jogos/palco.js, o mesmo da Sala de Jogos): o mar de letras ao entardecer; as
+ *   letras de cada palpite viram uma a uma; no fim, "Ver resultado" abre o cartão com os pontos da sala, as
+ *   estatísticas e "Treino livre" (ou "Nova palavra"). Regras, dicionário e pontos iguais.
  */
 (() => {
   const { h, icone, plural } = UI;
@@ -94,10 +97,15 @@
     diario: true,
     treino: true,
     descricao: 'Uma palavra nova por dia, de 5 a 10 letras, a mesma para todo mundo, e o Treino livre para jogar quanto quiser (vale menos pontos). Só vale palavra do nosso dicionário.',
+    telaCheia: true, // o palco: a janela inteira, com a barra da Sala por cima
     abrir(ctx) {
       let ativo = true;
       let aoTeclar = null;
       let aoRedim = null;
+      const palco = Palco.montar(Palco.daSala(ctx), { id: 'sala-palavrinha', cena: Palco.cenas.letras({ tom: 'entardecer' }) });
+      const area = palco.area;
+      const relogios = new Set(); // os tempinhos da virada das letras (param junto com o jogo)
+      const depois = (ms, fn) => { const id = setTimeout(() => { relogios.delete(id); if (ativo) fn(); }, ms); relogios.add(id); };
       const doDiaFeito = () => { const s = ctx.estado() || {}; return !!(s.partida && s.partida.data === ctx.hoje && s.partida.alvo && s.partida.fim); };
       abrirModo(doDiaFeito() ? 'treino' : 'dia');
 
@@ -106,12 +114,16 @@
         if (aoRedim) window.removeEventListener('resize', aoRedim);
         aoTeclar = null;
         aoRedim = null;
+        relogios.forEach(clearTimeout);
+        relogios.clear();
       }
 
       /** Abre a palavra do dia ou o treino (continua a partida guardada, se houver). */
       function abrirModo(modo, { nova = false } = {}) {
         soltarEventos();
-        ctx.container.replaceChildren(h('p', { class: 'texto-suave', text: 'Abrindo o dicionário…' }));
+        palco.estado.festa = 0;
+        palco.topo();
+        area.replaceChildren(h('p', { class: 'texto-suave sd-pal__abrindo', text: 'Abrindo o dicionário…' }));
         palavraDoDia(ctx.hoje).then(async (doDia) => {
           const salvo = ctx.estado() || {};
           let alvo;
@@ -132,7 +144,7 @@
           const listaDoTamanho = await Dicionario.tamanho(alvo.palavra.length);
           if (ativo) montar(modo, alvo, listaDoTamanho);
         }).catch((e) => {
-          if (ativo) ctx.container.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui abrir o jogo. Confira a internet e tente de novo.' }));
+          if (ativo) area.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui abrir o jogo. Confira a internet e tente de novo.' }));
         });
       }
 
@@ -147,6 +159,7 @@
           : salvo.partida && salvo.partida.data === ctx.hoje && salvo.partida.alvo ? salvo.partida : { data: ctx.hoje, palpites: [], fim: false, registrado: false };
         partida.alvo = { original: alvo.original, palavra: alvo.palavra };
         let atual = '';
+        let virando = false; // as letras do último palpite ainda estão virando (o teclado espera)
         const gravar = () => ctx.gravar(treino ? { treino: partida, treinoStats: stats } : { partida, historico: hist });
 
         const raiz = h('div', { class: 'pal sd-pal', style: `--letras:${LETRAS}` });
@@ -163,7 +176,7 @@
         const teclado = h('div', { class: 'pal-teclado', id: 'sd-pal-teclado', role: 'group', 'aria-label': 'Teclado' });
         const fimBox = h('div', { class: 'sd-pal__fim' });
         raiz.append(modos, info, h('div', { class: 'pal-tabuleiros' }, h('section', { class: 'pal-tabuleiro', 'aria-label': 'Tabuleiro' }, grade)), msg, anuncio, teclado, fimBox);
-        ctx.container.replaceChildren(raiz);
+        area.replaceChildren(raiz);
 
         TECLADO.forEach((linha, n) => {
           const fila = h('div', { class: 'pal-teclado__linha' });
@@ -173,7 +186,8 @@
           teclado.append(fila);
         });
 
-        function desenhar() {
+        /** revelar: a tentativa que acabou de entrar (as letras dela aparecem sem cor e viram uma a uma) */
+        function desenhar({ revelar = -1 } = {}) {
           const linhas = [];
           for (let t = 0; t < TENTATIVAS; t++) {
             const p = partida.palpites[t];
@@ -182,15 +196,18 @@
             if (p) {
               const cores = avaliar(p, alvo.palavra);
               rotulo = `Tentativa ${t + 1}: ${p.split('').map((l, i) => `${l} ${NOME_STATUS[cores[i]]}`).join(', ')}`;
-              letras = p.split('').map((l, i) => h('span', { class: `pal-letra pal-letra--${cores[i]}`, text: l.toUpperCase() }));
+              letras = p.split('').map((l, i) => (t === revelar
+                ? h('span', { class: 'pal-letra pal-letra--digitando', 'data-cor': cores[i], text: l.toUpperCase() })
+                : h('span', { class: `pal-letra pal-letra--${cores[i]}`, text: l.toUpperCase() })));
             } else if (t === partida.palpites.length && !partida.fim) {
               letras = Array.from({ length: LETRAS }, (_, i) => h('span', { class: `pal-letra pal-letra--digitando ${i === atual.length ? 'pal-letra--cursor' : ''}`.trim(), text: (atual[i] || '').toUpperCase() }));
             } else {
               letras = Array.from({ length: LETRAS }, () => h('span', { class: 'pal-letra' }));
             }
-            linhas.push(h('div', { class: 'pal-linha', role: rotulo ? 'img' : null, 'aria-label': rotulo, 'aria-hidden': rotulo ? null : 'true' }, letras));
+            linhas.push(h('div', { class: 'pal-linha', 'data-t': t, role: rotulo ? 'img' : null, 'aria-label': rotulo, 'aria-hidden': rotulo ? null : 'true' }, letras));
           }
           grade.replaceChildren(...linhas);
+          if (revelar >= 0) return ajustar(); // o teclado e o fim esperam as letras virarem
           info.querySelector('.sd-pal__tentativa').textContent = partida.fim ? (treino ? 'Palavra encerrada' : 'Partida de hoje encerrada') : `Tentativa ${partida.palpites.length + 1} de ${TENTATIVAS}`;
           // Teclado: a melhor informação de cada letra
           const ordem = { fora: 1, lugar: 2, certa: 3 };
@@ -209,9 +226,28 @@
           if (partida.fim) mostrarFim();
         }
 
+        /** As letras do palpite t viram uma a uma (a cor aparece quando a letra está de lado); depois, o tabuleiro todo */
+        function virar(t, entao) {
+          if (UI.movimentoReduzido) return entao();
+          virando = true;
+          const linha = grade.querySelector(`.pal-linha[data-t="${t}"]`);
+          const PASSO = 130;
+          const METADE = 160;
+          [...linha.children].forEach((el, i) => depois(i * PASSO, () => {
+            el.classList.add('pal-letra--virando');
+            depois(METADE, () => { el.className = `pal-letra pal-letra--virando pal-letra--${el.dataset.cor}`; });
+            palco.tocar('tique');
+          }));
+          depois((LETRAS - 1) * PASSO + METADE * 2 + 60, () => { virando = false; entao(); });
+        }
+
         function ajustar() {
-          const largura = Math.min(ctx.container.clientWidth || 340, document.documentElement.clientWidth - 32);
-          const altura = Math.max(260, window.innerHeight - 380);
+          // celular deitado: o teclado fica ao lado do tabuleiro (css), então a altura toda é do tabuleiro e a largura, metade
+          const deitado = palco.raiz.clientHeight < 480 && palco.raiz.clientWidth >= 640;
+          const cheia = Math.min(area.clientWidth || 340, document.documentElement.clientWidth - 32);
+          const largura = deitado ? Math.floor(cheia * 0.52) - 16 : cheia;
+          const rolagem = area.closest('.palco__rolagem');
+          const altura = rolagem ? Math.max(deitado ? 150 : 220, rolagem.clientHeight - (deitado ? 110 : teclado.offsetHeight + 150)) : Math.max(260, window.innerHeight - 380);
           const vao = LETRAS > 7 ? 4 : 6;
           const tam = Math.max(24, Math.min(60, Math.floor(largura / LETRAS - vao - 1), Math.floor(altura / TENTATIVAS - vao)));
           raiz.style.setProperty('--tam', `${tam}px`);
@@ -225,21 +261,23 @@
           raiz.classList.add('pal--tremer');
         }
         function digitar(l) {
-          if (partida.fim || atual.length >= LETRAS) return;
+          if (partida.fim || virando || atual.length >= LETRAS) return;
           atual += l.toLowerCase();
           msg.textContent = '';
+          palco.tocar('clique');
           desenhar();
         }
         function apagar() {
-          if (partida.fim || !atual) return;
+          if (partida.fim || virando || !atual) return;
           atual = atual.slice(0, -1);
           desenhar();
         }
         function confirmar() {
-          if (partida.fim) return;
-          if (atual.length < LETRAS) return tremer(`A palavra tem ${LETRAS} letras.`);
-          if (!lista.existe(atual)) return tremer('Essa palavra não faz parte do nosso dicionário brasileiro.');
-          if (partida.palpites.includes(atual)) return tremer('Você já tentou essa.');
+          if (partida.fim || virando) return;
+          const recusar = (texto) => { palco.tocar('erro'); return tremer(texto); };
+          if (atual.length < LETRAS) return recusar(`A palavra tem ${LETRAS} letras.`);
+          if (!lista.existe(atual)) return recusar('Essa palavra não faz parte do nosso dicionário brasileiro.');
+          if (partida.palpites.includes(atual)) return recusar('Você já tentou essa.');
           partida.palpites.push(atual);
           const cores = avaliar(atual, alvo.palavra);
           anuncio.textContent = atual.split('').map((l, i) => `${l} ${NOME_STATUS[cores[i]]}`).join(', ');
@@ -254,9 +292,15 @@
             } else hist[ctx.hoje] = venceu ? partida.palpites.length : 0;
           }
           gravar();
-          desenhar();
+          const t = partida.palpites.length - 1;
+          desenhar({ revelar: t });
+          virar(t, () => {
+            desenhar();
+            if (venceu) palco.reagir('combo', { el: grade });
+          });
         }
 
+        /** O fim: os pontos entram na hora; "Ver resultado" abre o cartão do palco (com as estatísticas). */
         function mostrarFim() {
           if (fimBox.childElementCount) return;
           const t = partida.palpites.length;
@@ -266,30 +310,28 @@
             gravar();
             ctx.pontuar(pontos, { venceu: !!partida.venceu, tentativas: t, modo, letras: LETRAS });
           }
-          if (treino) {
-            msg.replaceChildren(h('span', { class: partida.venceu ? 'texto-sucesso' : 'texto-erro', text: partida.venceu
-              ? `Mandou bem, Diver! Acertou na ${t}ª tentativa: +${plural(pontos, 'ponto', 'pontos')} de treino.`
-              : 'Essa escapou. Bora a próxima?' }));
-            teclado.hidden = true;
-            fimBox.replaceChildren(
-              h('p', { class: 'pal-revela', text: `A palavra era: ${alvo.original.toUpperCase()}` }),
-              h('p', { class: 'texto-suave sd-pal__nota', text: `Treino: ${stats.vitorias} de ${plural(stats.jogos, 'palavra', 'palavras')} certas. Vale ${PONTOS.treino} pontos por tentativa que sobrou (até 60 por dia no placar); a palavra do dia vale ${PONTOS.dia}.` }),
-              h('div', { class: 'acoes-linha' },
-                h('button', { type: 'button', class: 'botao botao--primario', id: 'sd-pal-nova', onclick: () => abrirModo('treino', { nova: true }) }, icone('i-revisao'), 'Nova palavra'),
-                h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala')));
-            fimBox.querySelector('#sd-pal-nova').focus({ preventScroll: true });
-            return;
-          }
-          const r = resumo(hist);
-          const max = Math.max(1, ...r.dist);
+          palco.estado.festa = partida.venceu ? 1 : -1;
+          if (!partida.venceu) palco.reagir('escapou');
           msg.replaceChildren(h('span', { class: partida.venceu ? 'texto-sucesso' : 'texto-erro', text: partida.venceu
-            ? `Mandou bem, Diver! Acertou na ${t}ª tentativa: +${pontos} pontos no placar da sala.`
-            : 'Dessa vez a palavra escapou. Amanhã tem outra!' }));
+            ? `Mandou bem, Diver! Acertou na ${t}ª tentativa.`
+            : treino ? 'Essa escapou. Bora a próxima?' : 'Dessa vez a palavra escapou. Amanhã tem outra!' }));
           teclado.hidden = true;
-          fimBox.replaceChildren(
-            h('p', { class: 'pal-revela', text: `A palavra de hoje: ${alvo.original.toUpperCase()}` }),
-            h('section', { class: 'cartao pal-cartao' },
-              h('h2', { class: 'cartao__titulo', text: 'Suas estatísticas' }),
+          const ver = h('button', { type: 'button', class: 'botao botao--primario botao--largo', id: 'sd-pal-ver', onclick: () => cartao(pontos, t) }, 'Ver resultado');
+          fimBox.replaceChildren(h('p', { class: 'pal-revela', text: `${treino ? 'A palavra era' : 'A palavra de hoje'}: ${alvo.original.toUpperCase()}` }), ver);
+          ver.focus({ preventScroll: true });
+        }
+
+        function cartao(pontos, t) {
+          const linhaPontos = h('p', { class: 'sd-tiro__ganhos' }, icone('i-estrela'), h('span', {}, h('b', { text: `+${plural(pontos, 'ponto', 'pontos')}` }), treino ? ' de treino no placar da sala' : ' no placar da sala'));
+          let mais;
+          if (treino) {
+            mais = h('div', { class: 'pal-fim-estat' }, linhaPontos,
+              h('p', { class: 'texto-suave sd-pal__nota', text: `Treino: ${stats.vitorias} de ${plural(stats.jogos, 'palavra', 'palavras')} certas. Vale ${PONTOS.treino} pontos por tentativa que sobrou (até 60 por dia no placar); a palavra do dia vale ${PONTOS.dia}.` }));
+          } else {
+            const r = resumo(hist);
+            const max = Math.max(1, ...r.dist);
+            mais = h('div', { class: 'pal-fim-estat' }, linhaPontos,
+              h('h3', { class: 'sd-tiro__sobre', text: 'Suas estatísticas' }),
               h('ul', { class: 'pal-numeros' },
                 h('li', {}, h('strong', { text: String(r.jogos) }), h('span', { text: 'jogos' })),
                 h('li', {}, h('strong', { text: `${r.jogos ? Math.round((r.vitorias / r.jogos) * 100) : 0}%` }), h('span', { text: 'de acertos' })),
@@ -300,10 +342,21 @@
                 h('ol', { class: 'pal-dist__lista' }, r.dist.map((n, i) => h('li', { class: 'pal-dist__linha', title: `${plural(n, 'vitória', 'vitórias')} na ${i + 1}ª tentativa` },
                   h('span', { class: 'pal-dist__num', text: String(i + 1) }),
                   h('span', { class: 'pal-dist__trilho', 'aria-hidden': 'true' }, h('span', { class: 'pal-dist__barra', style: `width:${n ? Math.max(6, (n / max) * 100) : 0}%` })),
-                  h('span', { class: 'pal-dist__valor', text: String(n) })))))),
-            h('div', { class: 'acoes-linha' },
-              h('button', { type: 'button', class: 'botao botao--primario', onclick: () => abrirModo('treino') }, icone('i-revisao'), 'Treino livre'),
-              h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, 'Voltar para a sala')));
+                  h('span', { class: 'pal-dist__valor', text: String(n) }))))));
+          }
+          soltarEventos();
+          area.replaceChildren();
+          palco.terminar({
+            titulo: partida.venceu ? (treino ? `Acertou na ${t}ª tentativa` : 'Mandou bem, Diver!') : (treino ? 'Essa escapou' : 'Dessa vez a palavra escapou'),
+            subtitulo: `${treino ? 'A palavra era' : 'A palavra de hoje'}: ${alvo.original.toUpperCase()}.${treino ? '' : ' Amanhã tem outra!'}`,
+            detalhes: [], acertos: partida.venceu ? 1 : 0, tempoSegundos: 0,
+          }, {
+            tom: partida.venceu ? 'vitoria' : 'derrota',
+            numeros: [['Tentativas', partida.venceu ? `${t}/${TENTATIVAS}` : '—', true], ['Pontos', pontos], ['Letras', LETRAS]],
+            mais,
+            aoJogarDeNovo: () => abrirModo('treino', { nova: true }),
+            textoDeNovo: treino ? 'Nova palavra' : 'Treino livre',
+          });
         }
 
         aoTeclar = (e) => {
@@ -342,6 +395,7 @@
         parar() {
           ativo = false;
           soltarEventos();
+          palco.parar();
         },
       };
     },

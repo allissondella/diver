@@ -486,7 +486,7 @@ const Palco = (() => {
       camada.hidden = false;
       rolagem.inert = true; // o jogo de trás não pega o Tab
       raiz.classList.add('palco--cartao');
-      const b = camada.querySelector(focar || '.botao--primario');
+      const b = camada.querySelector(focar || '.botao--primario') || camada.querySelector('button, input');
       if (b) b.focus({ preventScroll: true });
     }
     function esconderCartao() {
@@ -495,17 +495,22 @@ const Palco = (() => {
       rolagem.inert = false;
       raiz.classList.remove('palco--cartao');
     }
-    /** A abertura: { rotulo, titulo, lead, passos: [[n, forte, mais]], numeros: [[rotulo, valor, destaque]], botao, aoComecar } */
-    function abertura({ rotulo = 'Pronto para mergulhar', titulo, lead, passos = [], numeros = [], botao = 'Começar', aoComecar }) {
+    /**
+     * A abertura: { rotulo, titulo, lead, passos: [[n, forte, mais]], numeros: [[rotulo, valor, destaque]], botao, aoComecar,
+     *   id (do cartão), icone (do botão), mais (um nó antes dos botões: as opções do jogo), acoes (botões depois do principal);
+     *   botao: null não mostra o botão de começar (o jogo põe o seu em "mais") }
+     */
+    function abertura({ rotulo = 'Pronto para mergulhar', titulo, lead, passos = [], numeros = [], botao = 'Começar', aoComecar, id = null, icone: ic = 'i-raio', mais = null, acoes = [] }) {
       jogando = false;
-      mostrarCartao(h('div', { class: 'sd-tiro__cartao' },
+      mostrarCartao(h('div', { class: mais ? 'sd-tiro__cartao sd-tiro__cartao--opcoes' : 'sd-tiro__cartao', id },
         h('p', { class: 'sd-tiro__rotulo', text: rotulo }),
         h('h2', { class: 'sd-tiro__titulo', text: titulo }),
         lead ? h('p', { class: 'sd-tiro__lead', text: lead }) : null,
         passos.length ? h('ol', { class: 'sd-tiro__passos' }, passos.map(([n, f, m]) => passoEl(n, f, m))) : null,
         numeros.length ? h('dl', { class: 'sd-tiro__numeros' }, numeros.map(([r, v, d]) => numeroEl(r, v, d))) : null,
+        mais,
         h('div', { class: 'acoes-linha sd-tiro__acoes' },
-          h('button', { type: 'button', class: 'botao botao--primario', id: 'palco-comecar', onclick: () => comecar(aoComecar) }, icone('i-raio'), botao))));
+          botao ? h('button', { type: 'button', class: 'botao botao--primario', id: 'palco-comecar', onclick: () => comecar(aoComecar) }, icone(ic), botao) : null, ...acoes)));
     }
     /** Começa uma rodada: some o cartão, liga o som (o clique é o gesto que o navegador pede) e chama o jogo */
     function comecar(fn) {
@@ -519,12 +524,13 @@ const Palco = (() => {
     /**
      * O fim da rodada: aplica o resultado na hora (ctx.concluirRodada) e mostra o cartão.
      * extra: { titulo, texto, tom ('vitoria' | 'derrota'), numeros: [[rotulo, valor, destaque]], aoJogarDeNovo, textoDeNovo,
-     *   mais (um nó a mais no fim de "Em números": as estatísticas da Palavrinha) }
+     *   mais (um nó a mais no fim de "Em números": as estatísticas da Palavrinha), calado (sem o som e o efeito do fim: o
+     *   jogo já tocou o dele) }
      */
-    function terminar(res, { titulo, texto, tom = 'vitoria', numeros, aoJogarDeNovo, textoDeNovo = 'Jogar de novo', mais = null } = {}) {
+    function terminar(res, { titulo, texto, tom = 'vitoria', numeros, aoJogarDeNovo, textoDeNovo = 'Jogar de novo', mais = null, calado = false } = {}) {
       jogando = false;
       const ganho = ctx.concluirRodada ? ctx.concluirRodada(res) : null;
-      reagir(tom);
+      if (!calado) reagir(tom);
       const validos = (res.detalhes || []).filter((d) => !d.neutro);
       const revisar = validos.filter((d) => !d.acertou);
       const nums = numeros || [['Acertos', `${res.acertos}/${validos.length}`, true], ['Tempo', UI.formatarTempo(res.tempoSegundos)]];
@@ -582,5 +588,104 @@ const Palco = (() => {
     return api;
   }
 
-  return { montar, pintar, COR, SONS };
+  /* ---------- Cenas que mais de um jogo usa ---------- */
+  const cenas = {
+    /**
+     * O mar de letras (as duas Palavrinhas): peças com letras boiando em três profundidades. estado.festa: 1 no acerto
+     * (as peças sobem rápido e ganham cor), −1 quando a palavra escapa (elas apagam). tom: 'mar' (a do curso) ou
+     * 'entardecer' (a da Sala de Descompressão: o céu lilás e coral lá em cima).
+     */
+    letras({ tom = 'mar' } = {}) {
+      const { misturar, alfa, degrade, raios, poeira, seme, tela } = pintar;
+      const LETRAS = 'ABCDEFGHIJLMNOPQRSTUVXZ';
+      const entardecer = tom === 'entardecer';
+      let agua = null;
+      let chave = '';
+      let pecas = [];
+      let festa = 0;
+      let subida = 0; // o quanto as peças já subiram (cresce mais rápido na festa)
+      const imagens = new Map(); // cada peça desenhada uma vez (letra + tamanho + cor)
+
+      function imagem(letra, tam, cor) {
+        const k = `${letra}${tam}${cor}`;
+        if (imagens.has(k)) return imagens.get(k);
+        const c = tela(tam + 4, tam + 4);
+        const f = c.getContext('2d');
+        f.fillStyle = cor;
+        f.beginPath();
+        if (f.roundRect) f.roundRect(2, 2, tam, tam, tam / 6); else f.rect(2, 2, tam, tam);
+        f.fill();
+        f.fillStyle = COR.fundo;
+        f.font = `800 ${Math.round(tam * 0.52)}px "Plus Jakarta Sans", system-ui, sans-serif`;
+        f.textAlign = 'center';
+        f.textBaseline = 'middle';
+        f.fillText(letra, 2 + tam / 2, 2 + tam / 2 + tam * 0.04);
+        imagens.set(k, c);
+        return c;
+      }
+
+      function pintarFundo(L, A) {
+        const r = seme(53);
+        agua = tela(L, A);
+        const f = agua.getContext('2d');
+        f.fillStyle = degrade(f, 0, A, entardecer
+          ? [[0, misturar(misturar(COR.lilas, COR.coral, 0.35), COR.marinho, 0.55)], [0.35, misturar(COR.marinho, COR.lilas, 0.22)], [1, COR.fundo]]
+          : [[0, misturar(COR.marinho, COR.lilas, 0.16)], [0.5, COR.marinho], [1, COR.fundo]]);
+        f.fillRect(0, 0, L, A);
+        const halo = f.createRadialGradient(L * 0.5, entardecer ? 0 : A * 0.35, 0, L * 0.5, entardecer ? 0 : A * 0.35, Math.max(L, A) * 0.6);
+        halo.addColorStop(0, alfa(entardecer ? COR.amarelo : COR.turquesa, entardecer ? 0.14 : 0.1));
+        halo.addColorStop(1, alfa(entardecer ? COR.amarelo : COR.turquesa, 0));
+        f.fillStyle = halo;
+        f.fillRect(0, 0, L, A);
+        const cores = entardecer ? [COR.perola, COR.perola, COR.perola, COR.coral, COR.amarelo, COR.lilas] : [COR.perola, COR.perola, COR.perola, COR.turquesa, COR.amarelo, COR.claro];
+        const n = Math.round(18 + (L * A) / 26000);
+        pecas = Array.from({ length: n }, (_, i) => {
+          const perto = i % 3; // 0 longe, 1 meio, 2 perto
+          return {
+            x: r() * L, y: r() * A, tam: [16, 24, 34][perto], a: [0.07, 0.11, 0.15][perto], v: [8, 13, 19][perto],
+            letra: LETRAS[Math.floor(r() * LETRAS.length)], cor: cores[Math.floor(r() * cores.length)], giro: (r() - 0.5) * 0.5, fase: r() * 6,
+          };
+        });
+      }
+
+      function desenhar(g, L, A, t, dt, est) {
+        const nova = `${L}x${A}`;
+        if (!agua || nova !== chave) { chave = nova; pintarFundo(L, A); }
+        const alvo = est.festa || 0;
+        festa += (alvo - festa) * Math.min(1, dt * 2);
+        if (!est.rm) subida += dt * (1 + Math.max(0, festa) * 5);
+        g.drawImage(agua, 0, 0, L, A);
+        raios(g, L, A * 0.8, t, entardecer ? COR.amarelo : COR.claro, entardecer ? 0.04 : 0.06);
+        const acesas = entardecer ? [COR.coral, COR.amarelo] : [COR.turquesa, COR.amarelo];
+        for (const p of pecas) {
+          const y = ((((p.y - subida * p.v) % (A + 60)) + A + 60) % (A + 60)) - 30;
+          const x = p.x + Math.sin(t * 0.4 + p.fase) * 14;
+          const cor = festa > 0.3 && p.cor === COR.perola ? acesas[p.fase > 3 ? 0 : 1] : p.cor;
+          const a = Math.max(0.02, p.a * (1 + festa * 1.6));
+          const img = imagem(p.letra, p.tam, cor);
+          g.save();
+          g.globalAlpha = Math.min(0.5, a);
+          g.translate(x, y);
+          g.rotate(p.giro + Math.sin(t * 0.5 + p.fase) * 0.12);
+          g.drawImage(img, -img.width / 2, -img.height / 2);
+          g.restore();
+        }
+        poeira(g, L, A, t, alfa(COR.perola, 0.35), 34, 10);
+      }
+
+      function reagir(tipo, info) {
+        if (tipo === 'escapou') info.tocar('derrota'); // (a festa não tem som: o acerto do tabuleiro já tocou)
+      }
+
+      return { desenhar, reagir };
+    },
+  };
+
+  /**
+   * Para os jogos da Sala de Descompressão: o ctx da sala vira o do palco (o sair volta para a Sala; os pontos são do
+   * placar da sala, então o cartão do fim não mostra XP).
+   */
+  const daSala = (ctx) => ({ container: ctx.container, barra: ctx.barra, fim: { texto: 'Voltar para a Sala' }, sair: () => ctx.voltar() });
+
+  return { montar, pintar, COR, SONS, cenas, daSala };
 })();

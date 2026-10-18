@@ -5,6 +5,36 @@
 
 ---
 
+## 2026-10-18 · Onda D dos jogos no palco: a Sala de Descompressão (etapa 4)
+- **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos e conteúdo iguais; o Tiro de Reflexo já estava pronto.
+- **Feito:** os cinco jogos da sala em tela toda (`telaCheia`), no palco (`Palco.daSala(ctx)`), cada um com o seu cenário, movimento e som.
+  - **Investigação:**
+    - o convés do Navio Aurora à noite: a lua entre nuvens, o farol varrendo o horizonte, a neblina e a grade com a boia;
+    - o caso do dia abre no cartão de abertura ("Começar", "Continuar" ou "Rever o caso");
+    - desafio vencido acende o farol; acusação errada é um relâmpago com trovão; caso resolvido abre as nuvens;
+    - durante um desafio, só ele fica na tela; o fim vem no cartão, com "Rever o caso".
+  - **Palavrinha do dia:** o mar de letras do entardecer (a mesma cena da Palavrinha do curso, agora `Palco.cenas.letras`), letras que viram e o fim no cartão, com "Treino livre" ou "Nova palavra".
+  - **Batata Quente:**
+    - um luau na praia à noite (lua, coqueiros, varal de lâmpadas e duas fogueiras);
+    - quanto mais o pavio queima, mais o fogo cresce, as brasas sobem, o tique-taque acelera e a borda da tela pulsa em coral;
+    - a explosão clareia e treme; palavra aceita acalma o fogo; a bomba pende para quem está com a vez;
+    - o menu é o cartão de abertura (os modos em pílulas, com a explicação de cada um embaixo); o fim tem "Jogar de novo" e "Trocar modo".
+  - **Pit Stop Mental:**
+    - um autódromo à noite atrás do box (cidade, arquibancada coberta com flashes, refletores, carros com farol);
+    - o motor desacelera na chegada, a pistola faz "trrr" no acerto e solta faíscas, a porca quica no erro e, na luz verde, o carro passa voando;
+    - o menu é o cartão de abertura; o resumo (cada roda e as contas passo a passo) vai para o cartão do fim;
+    - o box fica ao lado da conta na tela larga e no celular deitado (antes, no celular deitado, as respostas ficavam embaixo da tela).
+  - **Cardume:**
+    - a corrida ocupa a janela inteira, com a pista do mesmo tamanho (o que se vê à frente não muda);
+    - dos lados, o fundo de areia em listras que passam e algas, pedras e corais, na ordem de profundidade de tudo: a velocidade aparece também ali;
+    - o placar foi para as pílulas do palco, o som para o "Som" da barra e a abertura, o baú da sorte e o fim para o cartão.
+  - **No palco:** `abertura({ id, icone, mais, acoes, botao })` (opções e botões a mais no cartão; `botao: null` tira o "Começar"), `terminar(..., { calado })` e, no celular deitado, os botões do cartão com opções numa faixa embaixo. Os botões da barra de cima ganharam fundo escuro translúcido, para ficarem legíveis também sobre cenas claras.
+  - **Auditor no navegador:** agora também abre os cinco jogos da sala no palco.
+- **Testes:**
+  - cada jogo da sala em 1440×900, 390×844 e 844×390: Investigação (abertura, um desafio, a 1ª acusação errada com relâmpago, a 2ª certa, o fim e "Rever o caso"), Palavrinha do dia (palpite errado, palavra certa, fim e treino), Batata Quente (palavra que não serve, três palavras, o pavio no fim, três explosões, o fim, "Trocar modo", o robô e sair no meio; e o Treino com "Encerrar treino" e o lado a lado), Pit Stop (um erro e três acertos, o resumo, "Menu", a fase 2 e sair no meio; e o modo Digitar) e Cardume (setas, baú da sorte, fim, "Jogar de novo" e sair no meio);
+  - "reduzir movimento" no Pit Stop, na Batata e no Cardume;
+  - o auditor de design passou.
+
 ## 2026-10-18 · Onda C dos jogos no palco: Caça ao Tesouro, Corrente do Tempo, Palavrinha e Caso Resolvido (etapa 4)
 - **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos, XP e conteúdo iguais.
 - **Feito:**
