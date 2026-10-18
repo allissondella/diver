@@ -669,7 +669,7 @@
         const alfaAlvo = atras ? 0.4 : 1;
         jogo.armaAlfa = rm ? alfaAlvo : jogo.armaAlfa + (alfaAlvo - jogo.armaAlfa) * Math.min(1, dt * 10);
         const m = mira || jogo.ultimoAlvo || { x: L / 2, y: meioCampo() };
-        const alvo = arma.alvo(L, A, m.x, m.y);
+        const alvo = poseDaMira(m.x, m.y);
         if (rm) { // "reduzir movimento": a pistola aponta na hora, sem balanço, e a água fica parada
           jogo.guinada = alvo.guinada;
           jogo.arfagem = alvo.arfagem;
@@ -762,7 +762,7 @@
         jogo.agua--;
         jogo.coice = 1;
         jogo.ultimoAlvo = { x, y };
-        const pose = arma.alvo(L, A, x, y); // no tiro, a pistola aponta na hora
+        const pose = poseDaMira(x, y); // no tiro, a pistola aponta na hora
         jogo.guinada = pose.guinada;
         jogo.arfagem = pose.arfagem;
         jogo.slosh = Math.min(1.6, jogo.slosh + 1);
@@ -1317,12 +1317,15 @@
       /* --- a pistola d'água em primeira pessoa (2026-10-17; o modelo 3D fica em js/descompressao/pistola-3d.js): no canto
          de baixo, à direita, vista por trás, na mão de luva. Ela aponta para o meio da tela, acompanha a mira só em parte,
          dá o coice no tiro e fica transparente quando uma placa passa atrás dela. --- */
+      /** A pose da pistola para a mira em (x, y). A mira acima do campo (no placar) conta como no alto do campo: a pistola
+          não levanta o bico mais que isso, para não subir além do trilho do meio */
+      const poseDaMira = (x, y) => arma.alvo(L, A, x, Math.max(T, y));
       /** O tamanho dos respingos e do jato acompanha o balcão */
       const escala = () => Math.max(0.42, Math.min(1, ((A - balcaoY()) * 0.72 + 15) / 138));
       /** O estado da pistola para o desenho: a pose, o coice, a água, a bomba, a marola e as bolhas */
       function estadoArma(mx = L / 2, my = meioCampo()) {
         const rm = UI.movimentoReduzido;
-        if (!jogo) return { L, A, ...arma.alvo(L, A, mx, my), t: 0, coice: 0, nivel: 1, bomba: 0, slosh: 0, tilt: 0, bolhas: [], rm };
+        if (!jogo) return { L, A, ...poseDaMira(mx, my), t: 0, coice: 0, nivel: 1, bomba: 0, slosh: 0, tilt: 0, bolhas: [], rm };
         return { L, A, guinada: jogo.guinada, arfagem: jogo.arfagem, t: jogo.t, coice: jogo.coice, nivel: jogo.aguaVis, bomba: jogo.bomba, slosh: jogo.slosh, tilt: jogo.tilt, bolhas: jogo.bolhas, rm };
       }
       /** A ponta do bico como ela está desenhada agora (com o coice): o jato sai daqui */

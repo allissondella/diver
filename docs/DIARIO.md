@@ -5,6 +5,15 @@
 
 ---
 
+## 2026-10-18 · Tiro ao Alvo: a pistola segue a mira
+- **Pedido do usuário:** "a arma está invertida quando a mira sobe ela desce, isso ficou feio, ela tem que seguir certinho".
+- **Causa:** o giro de subir e descer do modelo 3D abaixa o bico com o ângulo positivo, e a pose usava o ângulo da mira sem trocar o sinal (o comentário dizia o contrário). O coice também abaixava o bico.
+- **Feito (`js/descompressao/pistola-3d.js` e `tiro.js`):**
+  - a pose troca o sinal: o bico sobe quando a mira sobe, e o coice levanta o bico, como diz o documento;
+  - o giro de subir e descer passou a ser em volta da frente do corpo (não da mão): o bico sobe, a mão desce um pouco e o alto da pistola fica no lugar. Girando em volta da mão, ela passava até 41 px do trilho do meio;
+  - a mira em cima do placar conta como o alto do campo, para a pistola não levantar além disso.
+- **Testes:** varredura da mira pelo campo inteiro, com e sem o coice, nos 9 tamanhos de tela (o alto da pistola fica de 9 a 126 px abaixo do trilho do meio); o robô até o nível 8 nos 9 tamanhos e com "reduzir movimento"; fotos no jogo; teclado e som OK.
+
 ## 2026-10-18 · Tiro ao Alvo: a luva mais real
 - **Pedido do usuário:** "Melhora essa luva aí, deixa mais real", com a foto de uma mão de luva num jogo de tiro como referência. **Regras, níveis, pontos, sons e álbum iguais;** o desenho é nosso.
 - **Feito (`js/descompressao/pistola-3d.js`):**
