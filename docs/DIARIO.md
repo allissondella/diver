@@ -5,6 +5,20 @@
 
 ---
 
+## 2026-10-17 · Tiro ao Alvo: a pistola d'água em primeira pessoa
+- **Pedido do usuário:** a pistola igual à de um jogo de tiro famoso, "mas de água, a mesma visão". Amostra mostrada antes e aprovada ("Segue"). **Regras, níveis, pontos, sons e álbum iguais.**
+- **Feito:**
+  - saiu a pistola de lado; a nova é **em primeira pessoa**: no canto de baixo, à direita, vista por trás e segura por uma mão de luva de mergulho, com o braço na roupa de neoprene. É um modelo 3D nosso (`js/descompressao/pistola-3d.js`, no pacote `descompressao`, antes de `tiro.js`);
+  - tanque transparente com a água sempre na horizontal, marola e bolhas; tampinha amarela, presilhas, manômetro, cano com anéis e mira, bomba que vai e volta na recarga, gatilho e cabo;
+  - ela aponta para o meio da tela e acompanha a mira só em parte; no celular em pé, fica de três quartos. No tiro, o coice; o jato sai do furo do bico numa curva leve até o alvo;
+  - quando uma placa passa atrás dela (3 dos 9 pontos da placa cobertos), ela fica transparente (40%), para a placa não sumir;
+  - o desenho foi enxugado: os contornos de cada peça viram um traço só (de 1.156 para 319 traços por quadro) e os cilindros pequenos têm menos lados.
+- **Testes:**
+  - fotos quadro a quadro em 1440 × 900, 390 × 844 e 844 × 390 (parada, jato no meio do caminho, batida, mar, tanque vazio, mira na direita, placa atrás, placa errada), também com "reduzir movimento": nenhum erro;
+  - o robô jogou até o nível 8 em 9 tamanhos de tela (de 1440 × 900 a 667 × 375, em pé e deitado), com a pistola sempre abaixo do trilho do meio: nenhum achado nem erro. O teste de teclado, som e álbum passou inteiro;
+  - a pistola leva cerca de 2 ms por quadro no computador de testes; `node scripts/auditar-design.mjs` OK.
+- **Pendências:** merge para produção só com o OK do usuário.
+
 ## 2026-10-17 · Mapa das Profissões: ícones discretos no lugar das artes
 - **Pedido do usuário:** "Essas logos do preview ficaram horríveis, faz mais discreto e simples". Amostra mostrada antes e aprovada ("Segue").
 - **Feito:**
