@@ -134,7 +134,7 @@ const Tutorial = (() => {
     ],
     descompressao: [
       { desenho: 'diver', titulo: 'Sala de Descompressão', texto: 'Respira, Diver! Aqui é só para brincar e distrair, sem matéria. Vale para todo mundo, de qualquer curso.' },
-      { alvo: '#sd-jogos', desenho: 'controle', titulo: 'Os jogos', texto: 'Investigação e Palavrinha do Dia mudam todo dia (e são iguais para todo mundo). Tiro de Reflexo, Batata Quente, Pit Stop e Cardume são à vontade.' },
+      { alvo: '#sd-jogos', desenho: 'controle', titulo: 'Os jogos', texto: 'Investigação e Palavrinha do Dia mudam todo dia (e são iguais para todo mundo). Tiro ao Alvo, Batata Quente, Pit Stop e Cardume são à vontade.' },
       { alvo: '#sd-ver-ranking', desenho: 'trofeu', titulo: 'Ranking', texto: 'Cada jogo tem o seu ranking com todo mundo, deste mês e o total (e tem o geral). Os pontos daqui valem só o ranking da sala: nada de XP ou pérolas dos cursos.' },
       { alvo: '#sd-horarios', desenho: 'relogio', titulo: 'Horários de foco', texto: 'Você pode fechar a sala para os alunos em horários de estudo. Admin e professores continuam entrando.' },
     ],

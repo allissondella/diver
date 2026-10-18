@@ -1,7 +1,7 @@
 /*
- * Tiro de Reflexo (Sala de Descompressão, 2026-10-18, pedido do usuário: "placas verdes onde a pessoa deve atirar ou
+ * Tiro ao Alvo da Sala de Descompressão, o jogo de reação (chamado Tiro de Reflexo até o fim do dia 2026-10-18; pedido do usuário: "placas verdes onde a pessoa deve atirar ou
  * vermelhas que perde, mas a cada fase vai diminuindo o tempo que a placa aparece, tem que ser um jogo de reação, e não
- * deve aparecer placas ali onde a arma tampa").
+ * deve aparecer placas ali onde a arma tampa"). Internamente o modo continua "reflexo".
  * - Placa verde (o disco com o alvo): atire. Placa vermelha (o octógono com o X): um jato nela acaba a partida.
  * - Cada verde que escapa gasta 1 de 3 tanques de oxigênio; sem tanque, acabou. 1 ponto por verde; vale o recorde.
  * - A cada fase a placa fica menos tempo de pé (de 1,6 s até 0,45 s), nasce mais rápido, aparecem mais juntas e as
@@ -11,8 +11,8 @@
  */
 Descompressao.registrar({
   id: 'reflexo',
-  nome: 'Tiro de Reflexo',
-  curto: 'Reflexo',
+  nome: 'Tiro ao Alvo', // 2026-10-18, pedido do usuário: "O nome deve ser 'Tiro ao Alvo'" (o id e o placar seguem 'reflexo')
+  curto: 'Tiro',
   icone: 'i-alvo',
   duracao: 'quanto você aguentar',
   diario: false,
