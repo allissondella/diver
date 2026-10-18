@@ -284,6 +284,11 @@ body.sd-trava { overflow: hidden; }
   .sd-barra__texto, .sd--tela-cheia .sd-voltar__texto { display: none; }
   .sd--tela-cheia > .sd-barra .botao--pequeno { min-width: 44px; padding-inline: 0; justify-content: center; } /* só o ícone: quadradinho de 44 px */
 }
+/* Até 767 px (o celular deitado), os botões do jogo e o Ranking ficam só no ícone: sobra lugar para o nome do jogo */
+@media (max-width: 767px) {
+  .sd--tela-cheia > .sd-barra .sd-barra__texto, .sd--tela-cheia .sd-barra__ranking-texto { display: none; }
+  .sd--tela-cheia > .sd-barra .sd-tiro__botoes .botao--pequeno, .sd--tela-cheia > .sd-barra .sd-barra__ranking { min-width: 44px; padding-inline: 0; justify-content: center; }
+}
 
 /* ---------- Tiro ao Alvo ---------- */
 .sd-tiro { position: absolute; inset: 0; overflow: hidden; background: var(--fundo-0); }
@@ -329,6 +334,9 @@ body.sd-trava { overflow: hidden; }
 .sd-tiro__risco--cinco { height: 14px; }
 .sd-tiro__risco--feito { background: var(--amarelo); }
 .sd-tiro__regua b { font-weight: 700; color: var(--texto-suave); }
+/* Tiro de Reflexo: os tanques de oxigênio (o que acabou de esvaziar pisca em coral, como no Mergulho) */
+.sd-tiro__dados > .sd-tiro__vidas { gap: 2px; padding: 0 var(--esp-2); }
+.sd-tiro__vidas .icone { width: 18px; height: 18px; }
 
 /* Abertura e fim: um cartão no desenho das Profissões, no meio do palco */
 .sd-tiro__abertura {
@@ -355,6 +363,12 @@ body.sd-trava { overflow: hidden; }
 .sd-tiro__passos { list-style: none; padding: 0; display: grid; gap: var(--esp-3); }
 .sd-tiro__passos li { display: grid; grid-template-columns: 2.4em minmax(0, 1fr); gap: var(--esp-2); align-items: baseline; }
 .sd-tiro__n { font: 800 var(--t-lg) var(--fonte-mono); color: var(--turquesa-claro); }
+/* Tiro de Reflexo: no lugar do número, a amostra da placa (o disco verde com o alvo, o octógono vermelho com o X) */
+.sd-tiro__passos li:has(.sd-tiro__amostra) { align-items: center; }
+.sd-tiro__amostra { display: grid; place-items: center; width: 2em; height: 2em; }
+.sd-tiro__amostra .icone { width: 1.15em; height: 1.15em; }
+.sd-tiro__amostra--verde { border-radius: 50%; background: var(--sucesso); color: var(--sucesso-sombra); box-shadow: inset 0 0 0 3px var(--sucesso-sombra); }
+.sd-tiro__amostra--vermelha { clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%); background: var(--erro-sombra); color: var(--claro); }
 .sd-tiro__passos p { margin: 0; color: var(--texto-suave); }
 .sd-tiro__passos b { color: var(--texto); }
 .sd-tiro__numeros { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--esp-2); } /* os números sempre numa linha só */
@@ -368,6 +382,8 @@ body.sd-trava { overflow: hidden; }
 .sd-tiro__em-numeros-topo { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--esp-1) var(--esp-3); }
 .sd-tiro__sobre { margin: 0; font-size: var(--t-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-suave); }
 .sd-tiro__numeros--fim { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sd-tiro--reflexo .sd-tiro__numeros--fim { grid-template-columns: repeat(2, minmax(0, 1fr)); } /* Tiro de Reflexo: "0,27 s" não cabe em quatro colunas */
+.sd-tiro--reflexo .sd-tiro__numeros dd { white-space: nowrap; }
 .sd-tiro__recorde { display: inline-flex; align-items: center; gap: var(--esp-1); margin: 0; font-size: var(--t-sm); font-weight: 700; color: var(--texto-suave); }
 .sd-tiro__recorde .icone { width: 16px; height: 16px; }
 .sd-tiro__recorde--novo { color: var(--amarelo); }
@@ -400,8 +416,8 @@ body.sd-trava { overflow: hidden; }
 
 /* Celular: a regra num tamanho que cabe */
 @media (max-width: 479px) {
-  .sd--tela-cheia > .sd-barra { gap: var(--esp-2); }
-  .sd--tela-cheia .sd-barra__titulo { font-size: var(--t-md); }
+  .sd--tela-cheia > .sd-barra { gap: var(--esp-1); }
+  .sd--tela-cheia .sd-barra__titulo { font-size: var(--t-sm); margin-inline: var(--esp-1); }
   .sd-tiro__regra { font-size: var(--t-xl); padding: var(--esp-2) var(--esp-4); }
   .sd-tiro__regra--longa { font-size: var(--t-lg); } /* "A ou B" comprido: duas linhas, não três */
   .sd-tiro__cartao { padding: var(--esp-5) var(--esp-4); }
@@ -564,6 +580,7 @@ body.sd-trava { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .sd-car__bau--escolhido, .sd-tiro__regra--nova, .sd-bat__bomba-luz, .sd-bat--boom .sd-bat__mesa, .sd-bat__form--tremer { animation: none; }
   .sd-tiro__agua-barra, .sd-bat__lado { transition: none; }
+  .sd-tiro__vidas .icone.perdeu { animation: none; }
   .ps-carro, .ps-pneu, .ps-braco, .ps-ok, .ps-combo__barra, .ps-cena--saindo .ps-carro, .ps-cena--saindo .ps-pneu, .ps-cena--saindo .ps-ok { transition: none; }
   .ps-roda--trocando .ps-pistola, .ps-roda--erro .ps-porca, .ps-roda--erro .ps-mec--pistola { animation: none; }
 }

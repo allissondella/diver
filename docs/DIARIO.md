@@ -5,6 +5,27 @@
 
 ---
 
+## 2026-10-18 · Tiro de Reflexo na Sala de Descompressão (etapa 1 dos jogos)
+- **Pedido do usuário:** "Para a sala de descompressão vamos ter placas verdes onde a pessoa deve atirar ou vermelhas que perde, mas a cada fase vai diminuindo o tempo que a placa aparece, tem que ser um jogo de reação, e não deve aparecer placas ali onde a arma tampa". Nas respostas ao plano: a verde que escapa tira 1 de 3 vidas e a vermelha acaba na hora ("1 - perfeito, isso aí!"); o placar começa do zero ("2 - perfeito").
+- **Feito:**
+  - `js/descompressao/tiro.js` virou o **motor** `TiroAoAlvo.abrir(ctx, { modo })`, com dois jeitos de jogar: `regras` (o Tiro ao Alvo de sempre, que vai para a Sala de Jogos na etapa 2) e `reflexo`. O jogo das regras ficou igual.
+  - **`js/descompressao/reflexo.js`:** o Tiro de Reflexo na sala.
+    - A placa verde é um disco claro com o alvo e o anel do tempo; a vermelha, um octógono escuro com o X, como a placa de "pare". Dá para separar as duas sem depender da cor.
+    - Cada verde que escapa gasta 1 de 3 tanques de oxigênio; a vermelha acaba a partida na hora.
+    - A cada fase a placa fica menos tempo de pé: de 1,6 s até 0,45 s.
+    - No fim, "Em números" com a reação média e a mais rápida.
+  - **Longe da pistola:** a zona dela é o contorno com a mira em 15 pontos do campo, parada e no coice. Ele vem de `Pistola3D.contornoDe`, uma conta sem desenhar: 15 ms no lugar de 100 ms, e cobre a pistola desenhada em 105 poses e 5 telas. A placa só nasce fora da zona. No celular, sobra 28% do trilho da frente; no computador, uns 64%. Os outros dois trilhos ficam livres.
+  - **Acerto justo:** a vermelha só conta dentro do octógono; a verde ganha a folga do dedo.
+  - **Placar `sala-reflexo`:** a função `ranking_sala` do `setup.sql` ganhou o jogo. O `sala-tiro` continua contando no geral. Rodado **só no banco de testes**: o anônimo não roda, e o teste de pontos (desfeito na hora) deu o recorde certo e o geral somando.
+  - Barra de cima no celular estreito e deitado: os botões ficam só no ícone, para o nome do jogo caber.
+  - Token novo `--sucesso-sombra` (o verde escuro da placa) e tutorial da sala na versão 3.
+- **Testes:**
+  - o robô jogou até a fase 5 em 3 telas: nenhuma placa atrás da pistola, as vidas e o fim pela vermelha e pela falta de oxigênio;
+  - a varredura de layout passou nos 9 tamanhos e com "reduzir movimento";
+  - o jogo das regras passou pelo motor novo;
+  - o auditor de design passou.
+- **Pendências:** a etapa 2 (o Tiro ao Alvo das regras na Sala de Jogos dos cursos do Enem e do Ensino Médio) e as etapas 3 e 4. O SQL na produção só vai no merge, com o OK do usuário.
+
 ## 2026-10-18 · Tiro ao Alvo: a pistola segue a mira
 - **Pedido do usuário:** "a arma está invertida quando a mira sobe ela desce, isso ficou feio, ela tem que seguir certinho".
 - **Causa:** o giro de subir e descer do modelo 3D abaixa o bico com o ângulo positivo, e a pose usava o ângulo da mira sem trocar o sinal (o comentário dizia o contrário). O coice também abaixava o bico.

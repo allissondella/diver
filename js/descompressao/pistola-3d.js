@@ -13,6 +13,8 @@
  *   desenhar(c, e)   → desenha no contexto c; e = { L, A, guinada, arfagem, t, coice, nivel, bomba, slosh, tilt, bolhas, rm }
  *   bico(e)          → { x, y, a, r }: a ponta do bico na tela, a direção do cano na tela e o raio do furo
  *   silhueta()       → o contorno (convexo) da pistola inteira no último desenho, em px da tela
+ *   contornoDe(e)    → o mesmo contorno numa pose qualquer, sem desenhar (é só conta: o Tiro de Reflexo usa para saber
+ *                      onde a pistola pode tampar em todas as poses)
  *   cobre(x, y)      → o ponto (x, y) fica atrás de alguma peça da pistola no último desenho?
  *   mao(L, A)        → onde fica a mão na tela
  *   tanque           → { y, r, z0, z1 }: o tanque em unidades da pistola (para as bolhas)
@@ -851,6 +853,19 @@ window.Pistola3D = {
     }
     /** O ponto (x, y) fica atrás de alguma peça da pistola no último desenho? */
     const cobre = (x, y) => cascos.some((k) => x >= k.x0 && x <= k.x1 && y >= k.y0 && y <= k.y1 && dentro(k.pts, x, y));
-    return { alvo, desenhar, bico, cobre, silhueta: () => silhueta, mao: maoNaTela, tanque: TQ };
+    /** O contorno (convexo) da pistola inteira na pose e, sem desenhar nada: as pontas das peças duras e do tanque e a
+        borda das esferas das peças macias, projetadas. Cobre um tiquinho mais que silhueta() (as esferas inteiras) */
+    function contornoDe(e) {
+      const ps = pose(e);
+      const pts = [];
+      for (const [, p] of PECAS) {
+        const vc = p.verts.map((q) => paraCamera(ps, q));
+        if (p.macia) vc.forEach((q, i) => esferaNaTela(q, p.raios[i] * 1.06, pts));
+        else vc.forEach((q) => pts.push(projetar(q)));
+      }
+      VIDRO.verts.forEach((q) => pts.push(projetar(paraCamera(ps, q))));
+      return contorno(pts);
+    }
+    return { alvo, desenhar, bico, cobre, silhueta: () => silhueta, contornoDe, mao: maoNaTela, tanque: TQ };
   },
 };

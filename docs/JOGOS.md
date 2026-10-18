@@ -290,7 +290,35 @@ _Cruzadinha Submarina e Batalha de Turmas ao vivo ficam para depois do lançamen
 - **Treino livre** (botão no topo e no fim da palavra do dia): palavras sorteadas do mesmo banco (nunca a do dia; evita as 200 últimas do treino), quantas quiser, "Nova palavra" ao terminar.
 - Pontos: palavra do dia (7 − tentativas) × 10; treino (7 − tentativas) × 2, até 60 por dia no placar (`detalhes.modo = "treino"`). Estatísticas da palavra do dia no aparelho: jogos, % de acertos, dias seguidos, distribuição.
 
-#### Tiro ao Alvo (`sala-tiro`) — à vontade, vale o recorde
+#### Tiro de Reflexo (`sala-reflexo`) — à vontade, vale o recorde (2026-10-18)
+- **Pedido do usuário:** "placas verdes onde a pessoa deve atirar ou vermelhas que perde, mas a cada fase vai diminuindo o tempo que a placa aparece, tem que ser um jogo de reação, e não deve aparecer placas ali onde a arma tampa". O jogo das regras (logo abaixo) saiu da sala.
+- **Arquivo:** `js/descompressao/reflexo.js`, só o registro. O jogo é o **motor do Tiro ao Alvo**, `TiroAoAlvo.abrir(ctx, { modo: 'reflexo' })` em `js/descompressao/tiro.js`. A barraca, a pistola, o jato, os sons, o teclado, a tela toda, "reduzir movimento" e o "Em números" são os mesmos.
+- **As placas:**
+  - **Verde:** um disco claro com o alvo no meio e o anel do tempo na borda. O arco amarelo encolhe e fica coral no fim.
+  - **Vermelha:** um octógono escuro com a borda branca e o X, como a placa de "pare".
+  - Claro contra escuro, disco contra octógono e alvo contra X: dá para separar as duas sem depender da cor.
+  - As placas nascem paradas (não deslizam nem pulam) e têm pelo menos 44 px.
+- **As regras:**
+  - Um jato numa vermelha acaba a partida na hora ("Placa vermelha!").
+  - Cada verde que escapa gasta 1 de **3 tanques de oxigênio**. Os tanques ficam no placar, e o que esvazia pisca em coral, como no Mergulho. Na verde que escapou sobe um "Escapou!".
+  - Sem tanque, a partida acaba ("Acabou o oxigênio!").
+  - A vermelha que some só volta para trás do trilho.
+  - Vale 1 ponto por verde.
+- **As fases (a fase n):**
+  - Pede 10 + 2(n − 1) verdes acertadas.
+  - Cada placa fica de pé 1,6 s × 0,86^(n − 1), com no mínimo 0,45 s.
+  - Uma placa nasce a cada 0,85 s × 0,9^(n − 1), com no mínimo 0,26 s.
+  - Cabem até 2 + n/2 placas ao mesmo tempo, com no máximo 6.
+  - As vermelhas vão de 22% a 45% das placas.
+  - As verdes continuam nascendo até a fase fechar, porque uma verde pode escapar sem acabar a partida.
+  - A faixa da fase diz quantas verdes ela pede e quanto tempo cada placa fica de pé ("Mais rápido!").
+- **Longe da pistola:** a pistola acompanha a mira, então a zona dela é a soma dos contornos da pistola com a mira em 15 pontos do campo, parada e no coice. A conta é feita na primeira placa e de novo quando a tela muda de tamanho. A placa só nasce onde não cruza nenhum desses contornos (com 10 px de folga): nunca fica atrás da pistola.
+- **Acerto justo:** a vermelha só conta dentro do octógono, sem folga. A verde conta na caixa toda, com a folga do dedo (10 px no toque e 6 no mouse). Se o ponto cai nas duas, vale a que está bem embaixo do jato.
+- **Em números:** os pontos, a fase, a reação média e a mais rápida (do nascer da verde até o tiro). Não tem álbum.
+- **Placar:** é novo (`sala-reflexo`) e começou do zero, a pedido do usuário. O recorde do Tiro ao Alvo que morou na sala (`sala-tiro`) continua contando no ranking geral. O log leva `acertos`, `nivel`, `segundos`, `motivo` (`vermelha` ou `escapou`) e `reacao` (a média, em ms).
+- **Testes:** o gancho dos testes (abaixo) também tem `modo`, `zona()` (os contornos da pistola) e `naZona(x, y, w, h)`.
+
+#### Tiro ao Alvo — o motor e o jogo das regras (morou na sala como `sala-tiro` até 2026-10-18)
 - **Tela toda (2026-10-17, pedido do usuário: "mais bonito, divertido e use a tela toda"):** o jogo ocupa a janela inteira (`telaCheia: true` no contrato; a barra da Sala fica por cima, num degradê, com **Som**, **Tela cheia** de verdade onde o navegador deixa e **Ranking**; no celular, só os ícones, de 44 px). A regra e o placar ficam em pílulas no alto (no celular deitado, na mesma linha). Abertura e fim num cartão só, no desenho das Profissões; no celular deitado ele vira duas colunas e, nas telas bem baixas, encolhe para caber sem rolar.
 - **A barraca na beira do mar** (tudo desenhado no `<canvas>`, com as cores dos tokens via `UI.cor`): céu e mar ao pôr do sol (sol, ilhota com coqueiro, reflexo), toldo listrado, luzinhas, bandeirinhas, colunas e balcão de madeira com peixinhos de pelúcia. O fundo e a moldura ficam guardados em imagens e só são refeitos quando a tela muda de tamanho.
 - **A pistola e a água (2026-10-17, pedido do usuário: "mais realista", "som de água" e "satisfatório os tiros"; só desenho e som, o acerto continua decidido no clique):** desde o fim do dia (pedido do usuário: a mesma visão dos jogos de tiro, "mas de água"), a pistola é **em primeira pessoa**: no canto de baixo, à direita, vista por trás e segura por uma **mão de luva de mergulho**, com o braço na roupa de neoprene. É um modelo 3D pequeno, desenho nosso (`js/descompressao/pistola-3d.js`, no pacote `descompressao`, antes de `tiro.js`): prismas e cilindros em perspectiva no `<canvas>`, com luz de cima, vincos e contorno de figurinha. Tanque transparente com tampinha amarela e presilhas (a água fica sempre na horizontal do mundo, balança quando a pistola gira e solta bolhas), **manômetro** do lado (o ponteiro mostra a água que sobra), cano com anéis e mira, **bomba** que vai e volta enquanto a água recarrega, gatilho que puxa no tiro e cabo. Ela aponta para o meio da tela e **acompanha a mira só em parte**, como nos jogos em primeira pessoa (no celular em pé, fica de três quartos, virada para a esquerda); o **bico sobe quando a mira sobe** e desce quando ela desce (2026-10-18, pedido do usuário: estava invertido). Para subir e descer, ela gira em volta da frente do corpo: a mão desce um pouco e o alto dela não passa do trilho do meio; a mira em cima do placar conta como o alto do campo; quando uma placa passa atrás dela, **fica transparente** (40%) para a placa não sumir. No tiro: coice (o bico sobe e a pistola recua; tranco rápido, volta macia), névoa no bico e um **jato de verdade**, uma fita d'água que sai do furo do bico numa curva leve até o alvo (quase reta, num arquinho para cima), engorda e afina de leve, e leva um instante para chegar (de 0,08 a 0,18 s; a placa só tomba quando a água chega). Na placa: clarão, anel, uma **coroa de gotas** que se desfaz e cai, gotas voltando num leque, a **marca d'água** que escorre (por baixo do texto, que continua nítido) e uma tremidinha da barraca. No mar: ondinhas e a colunazinha do "ploc"; no ar, a água se espalha. Tanque vazio: o gatilho estala seco e o bico só pinga.
