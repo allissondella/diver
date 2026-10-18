@@ -22,10 +22,10 @@ _Partidas curtas para revisar um pouquinho a cada dia._
 
 | Jogo | Como funciona | Conteúdo usado | Roupa de mar | Semana |
 | --- | --- | --- | --- | --- |
-| **Cartas do Fundo** (`cartas-do-fundo`) | Flashcards: vire a carta, veja a resposta e diga se sabia, quase sabia ou não sabia. Alimenta as caixas de revisão espaçada (Leitner). | Qualquer trilha (derivado das questões) | Cartas guardadas em um baú | Pronto (v0) |
+| **Cartas do Fundo** (`cartas-do-fundo`) | Flashcards: vire a carta, veja a resposta e diga se sabia, quase sabia ou não sabia. Alimenta as caixas de revisão espaçada (Leitner). | Qualquer trilha (derivado das questões) | A zona do crepúsculo em tela toda, com águas-vivas que pulsam e brilham | Pronto (palco, 2026-10-18) |
 | **Quiz Relâmpago** (`quiz-relampago`) | Múltipla escolha e verdadeiro ou falso, com cronômetro opcional e combo de acertos (a partir do 3º seguido, +5 XP). | Qualquer trilha (derivado) | Tempestade no mar, à noite, em tela toda: o mar sobe enquanto o relógio corre e cai um raio a cada acerto | Pronto (palco, 2026-10-18) |
-| **Memória** (`memoria`) | Jogo das cartas viradas: encontre os pares termo ↔ definição. Menos tentativas e menos tempo, mais pontos. | Pares (ou derivado das questões) | Conchas que abrem e fecham | Pronto (v0) |
-| **Adivinha Aí** (`adivinha-ai`) | As dicas aparecem uma a uma. Quanto antes você acertar, mais pontos. Aceita a resposta sem acento e sem maiúsculas. | Adivinhas (até 10 dicas por carta) | Dicas que chegam em garrafas com mensagem | Pronto (v0) |
+| **Memória** (`memoria`) | Jogo das cartas viradas: encontre os pares termo ↔ definição. Menos tentativas e menos tempo, mais pontos. | Pares (ou derivado das questões) | Conchas cor de pérola num recife raso ao meio-dia, com a luz dançando na areia | Pronto (palco, 2026-10-18) |
+| **Adivinha Aí** (`adivinha-ai`) | As dicas aparecem uma a uma. Quanto antes você acertar, mais pontos. Aceita a resposta sem acento e sem maiúsculas. | Adivinhas (até 10 dicas por carta) | Uma praia à noite: cada dica é uma garrafa que boia até a areia; o acerto acende fogos | Pronto (palco, 2026-10-18) |
 | **Palavrinha**, **Palavrinha x2** e **Palavrinha x4** (`palavrinha`, `palavrinha-x2`, `palavrinha-x4`) | Descubra a palavra-chave do curso: cada palpite pinta as letras (lugar certo, em outro lugar, não está). 6 tentativas; no x2 e no x4, 2 ou 4 palavras de uma vez (7 e 9 tentativas). **Palavra do dia** igual para todo o curso (sorteio pela data, sem repetir até usar todas) e **Treino livre**. Os dois valem XP, estatísticas e pontos no **Ranking Diver** do curso (zera todo mês); pérolas, só a palavra do dia. Tema desde o início (nunca um que entregue a palavra); dica completa depois da 3ª tentativa. Aviso do ranking na primeira vez. Tudo vindo do log de atividade (`docs/ATIVIDADE.md`). | Palavras simples de 4 a 8 letras (bloco `palavras` + respostas curtas). Aparece com 30 (x1) ou 40 palavras (x2/x4, com 10 de um mesmo tamanho) | Peças de letra no fundo do mar, que acendem quando acertam | Pronto (v1) |
 | **Tiro ao Alvo** (`tiro-ao-alvo`) | Pistola d'água em primeira pessoa, por níveis: cada nível tem uma regra de escola ("Só os PEIXES", "Números PRIMOS", "Capitais do Brasil"...) e só valem as placas que combinam com ela; placa errada ou certa que escapa acaba a rodada. Em **tela toda**, com o álbum de 26 selos. Cada nível completo vale XP e pérolas (detalhes na seção 5). | Não usa as cartas: as 26 regras são do próprio jogo. **Só nos cursos das salas do Enem e do Ensino Médio** | Barraca de tiro na beira do mar, ao pôr do sol | Pronto (2026-10-18) |
 
@@ -37,7 +37,7 @@ _Jogos com mapa, chefe, sobrevivência e desafios de raciocínio._
 | **Caça ao Tesouro** (`caca-ao-tesouro`) | Um mapa com paradas; cada pergunta respondida libera o próximo trecho até o baú de pérolas. Cada caça é gerada diferente. | Qualquer trilha (derivado) | Mapa do fundo do mar, ilhas e ruínas | Pronto (v0) |
 | **Chefão do Abismo** (`chefao`) | Um monstro marinho com barra de vida. Cada acerto causa dano (combo = golpe crítico); cada erro custa oxigênio. Um chefão por profundidade. | Qualquer trilha (derivado) | O abismo em tela toda, mais escuro a cada profundidade, com o chefão grande ao lado da pergunta (no celular, preso no alto) | Pronto (palco, 2026-10-18) |
 | **Maré Alta** (`mare-alta`) | Modo sobrevivência sem fim: a maré sobe a cada erro. Quanto tempo você aguenta? O recorde fica salvo por trilha. | Qualquer trilha (derivado) | Um cais ao entardecer, em tela toda: o farol gira e o mar sobe a régua de maré a cada erro | Pronto (palco, 2026-10-18) |
-| **Forca do Náufrago** (`forca`) | Descubra a palavra-chave letra por letra. Cada erro tira uma peça da jangada; uma dica opcional custa 1 pérola. | Palavras-chave (ou dos temas) | Uma jangada que vai se desmontando | Pronto (v0) |
+| **Forca do Náufrago** (`forca`) | Descubra a palavra-chave letra por letra. Cada erro tira uma peça da jangada; uma dica opcional custa 1 pérola. | Palavras-chave (ou dos temas) | A jangada que se desmonta, no mar aberto ao amanhecer (ilha, coqueiros e gaivotas) | Pronto (palco, 2026-10-18) |
 | **Corrente do Tempo** (`corrente-do-tempo`) | Ordene eventos ou passos arrastando cada item na correnteza: cronologias, etapas de um processo, procedimentos. | Sequências | Itens boiando na correnteza | Pronto (v0) |
 
 ### Estratégia e duelos
@@ -186,7 +186,7 @@ Pedido do usuário: "vamos atualizar nossos jogos para esse estilo de design que
 - **"Reduzir movimento":** a cena fica parada (sem partículas, clarão, raio nem tremidinha) e só muda quando o jogo muda (o mar que sobe, a vida do chefão).
 - **Ajudas de desenho:** `Palco.pintar` (`COR` dos tokens, `misturar`, `alfa`, `degrade`, `agua`, `raios`, `poeira`).
 - **Nos testes:** com `window.__diverTeste`, o palco fica em `__diverTeste.palco`.
-- **Já no palco:** Quiz Relâmpago, Chefão do Abismo e Maré Alta (onda A). Os outros entram em ondas: B (Memória, Cartas do Fundo, Forca, Adivinha Aí), C (Caça ao Tesouro, Corrente do Tempo, Palavrinha, Caso Resolvido) e D (a Sala de Descompressão).
+- **Já no palco:** Quiz Relâmpago, Chefão do Abismo e Maré Alta (onda A); Memória, Cartas do Fundo, Forca do Náufrago e Adivinha Aí (onda B). Faltam C (Caça ao Tesouro, Corrente do Tempo, Palavrinha, Caso Resolvido) e D (a Sala de Descompressão).
 - **Peças comuns de desenho** (`Palco.pintar`): `mar(g, L, A, yMar, fase, { corTopo, corFundo, crista, espuma })` (o mar visto da praia, com três camadas, ondulações, espuma e cristas; o Quiz e a Maré usam), `nuvem(W, H, gomos, cores, repete)` e `nuvemBaixa(w, sorteio, cores)` (nuvens macias de gomos, com o contorno aceso), `mascara`, `seme` (sorteio com semente), `tela` (canvas fora da tela) e `ondaEm`. O jogo também pode dizer se a rodada está valendo com `palco.jogando(true | false)` (o Chefão, na escolha do monstro, ainda não vale).
 
 ## 4. Checklist de aceitação (todo jogo novo)
@@ -207,6 +207,7 @@ Pedido do usuário: "vamos atualizar nossos jogos para esse estilo de design que
 - Só "Sabia" conta como acerto para XP; "Não sabia" vai para a lista de revisão.
 - Teclado: Espaço vira; 1, 2 e 3 avaliam.
 - **Depois do Mergulho (2026-10-04):** quando a rodada do Mergulho termina (fase completa ou sem oxigênio), a caixa do Diver sugere "Bora fixar com flashcards?" e o resultado ganha o botão **🃏 Fixar com flashcards**. Eles abrem o jogo com `opcoes.fase` = a fase do Mergulho: só cartas daquela fase (cada carta derivada guarda `fase`; com menos de 4, usa a trilha toda). No fim, o botão principal é **"Voltar para a trilha"** (mapa do Mergulho) e o secundário "Mais cartas desta fase"; sair no meio também volta para a trilha.
+- **No palco (2026-10-18):** a zona do crepúsculo, com águas-vivas que sobem pulsando (o sino abre e fecha, os tentáculos ondulam). "Sabia" acende a água-viva mais perto da carta; "Quase" e "Não sabia" só passam de carta, sem bronca. O fim mostra Sabia, Quase, Não sabia e tempo; o "Voltar para a trilha" da fase continua o principal (`ctx.fim`).
 
 #### Quiz Relâmpago (`quiz-relampago`) — semana 3
 - Múltipla escolha e V/F; cronômetro opcional por pergunta (15, 30 ou 60 s), mostrado como uma onda que vai subindo.
@@ -221,12 +222,14 @@ Pedido do usuário: "vamos atualizar nossos jogos para esse estilo de design que
 - Erro de par só conta quando as duas conchas dele já tinham sido vistas (errar no escuro não pune).
 - Ao achar um par, mostrar a definição por um instante (é aprendizado, não só memória).
 - Acessível: setas + Enter; opção sem animação de virar. Deriva pares apenas de questões com enunciado e resposta curtos.
+- **No palco (2026-10-18):** um recife raso ao meio-dia, com a luz do sol dançando na areia, algas, corais e um cardume que passa; as costas das conchas ficam cor de pérola, para destacar da água. Par achado solta bolhas; par errado só desvira, com uma nuvenzinha de areia (sem bronca). As pílulas mostram pares, tentativas, tempo e a medalha que ainda dá para pegar. Nunca use `filter` numa carta que vira: ele achata o 3D (vale também para as Cartas do Fundo).
 
 #### Adivinha Aí (`adivinha-ai`) — semana 4
 - Uma resposta secreta e até 10 dicas. A dica 1 aparece sozinha; as outras, ao tocar em "Próxima dica" (em "garrafas com mensagem").
 - Pontos = 11 − dicas usadas (mínimo 1), aplicados sobre o XP base da dificuldade.
 - Comparação normalizada: sem acento, sem maiúsculas, sem pontuação; aceita as variações da lista "aceitas".
 - 3 chutes por carta; depois revela a resposta e a explicação.
+- **No palco (2026-10-18):** uma praia à noite, com a lua cheia, o caminho de luz dela no mar e as ondas chegando na areia. Cada dica aberta é uma garrafa com bilhete que boia até a beira; o acerto acende fogos no céu, o chute errado é um erro gentil. O fim mostra pontos, acertos, dicas abertas e tempo.
 
 #### Caça ao Tesouro (`caca-ao-tesouro`) — semana 6
 - Mapa SVG do fundo do mar com 5 a 8 paradas; cada parada é 1 pergunta e acertar revela o trecho seguinte.
@@ -251,6 +254,7 @@ Pedido do usuário: "vamos atualizar nossos jogos para esse estilo de design que
 - Palavra-chave com dica de tema; letras pelo teclado físico e por um teclado na tela. Normalização sem acento.
 - 6 erros e a jangada se desmonta (sem imagens violentas). Dica extra custa 1 pérola.
 - Palavras vêm do campo "palavras"; se não houver, do campo "tema" e das respostas curtas das questões.
+- **No palco (2026-10-18):** o mar aberto ao amanhecer, com o sol nascendo, o brilho dele na água, uma ilha com coqueiros e gaivotas. A jangada (o mesmo desenho, que perde uma peça por erro) fica no cartão; letra errada respinga nela, palavra salva solta faíscas. O fim mostra palavras salvas, erros, dicas e tempo.
 
 #### Corrente do Tempo (`corrente-do-tempo`) — semana 8
 - Itens embaralhados boiando na correnteza; o aluno arrasta para a ordem certa e confere (até 3 conferências).

@@ -5,6 +5,32 @@
 
 ---
 
+## 2026-10-18 · Onda B dos jogos no palco: Memória, Cartas do Fundo, Forca e Adivinha Aí (etapa 4)
+- **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos, XP e conteúdo iguais.
+- **Feito:**
+  - **Memória:**
+    - recife raso ao meio-dia, com a luz do sol dançando na areia, algas, corais e cardume;
+    - conchas cor de pérola, para destacar da água;
+    - par achado solta bolhas; par errado só desvira, sem bronca;
+    - as pílulas mostram a medalha que ainda dá para pegar.
+  - **Cartas do Fundo:**
+    - águas-vivas no escuro, e "Sabia" acende a mais perto;
+    - o caminho da fase (Mergulho → flashcards → "Voltar para a trilha" como principal) continua igual.
+  - **Forca do Náufrago:** mar ao amanhecer, com sol, ilha, coqueiros e gaivotas; letra errada respinga na jangada.
+  - **Adivinha Aí:** praia à noite; cada dica é uma garrafa que boia até a areia, e o acerto acende fogos.
+  - **Os quatro:** todos com abertura, "Em números" no fim e "Jogar de novo" sem sair.
+  - **Achado no teste:** uma sombra com `filter` na carta das Cartas do Fundo achatava o 3D, e a carta virada mostrava a frente espelhada. Agora a sombra fica nos lados da carta (regra anotada no JOGOS.md).
+- **Testes:**
+  - os quatro jogados de verdade:
+    - Memória: os pares pelo conteúdo, com ouro;
+    - Cartas: Sabia, Quase e Não sabia;
+    - Forca: letras pelo teclado;
+    - Adivinha: um acerto e chutes errados;
+  - feitos em 1440×900, 390×844, 844×390, 360×740, 768×1024, 1024×768, 1920×1080 e 667×375, com o fim, o XP, o histórico e o "Jogar de novo";
+  - "reduzir movimento" nas Cartas;
+  - o caminho Mergulho → "Bora fixar com flashcards?" → 10 cartas da fase → "Voltar para a trilha" → mapa;
+  - o auditor de design passou.
+
 ## 2026-10-18 · Onda A dos jogos no palco: Chefão do Abismo e Maré Alta (etapa 4)
 - **Pedido do usuário:** o mesmo da etapa 3 ("pode aplicar para todos"), com "Regras, pontos, XP e conteúdo ficam iguais".
 - **Feito:**

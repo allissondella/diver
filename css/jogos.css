@@ -1416,3 +1416,18 @@ body.jogo-trava { overflow: hidden; }
   .chefe-dano { animation: none; transform: translate(-50%, -24px); }
   .chefe--derrotado { animation: none; opacity: .4; }
 }
+
+/* ---------- Onda B no palco (2026-10-18): Memória, Cartas do Fundo, Forca do Náufrago e Adivinha Aí ---------- */
+.palco .memoria-aviso { text-shadow: 0 1px 2px var(--fundo-0); }
+.palco__pilula.memoria-medalha--ouro { color: var(--amarelo); }
+.palco__pilula.memoria-medalha--prata { color: var(--texto); }
+.palco__pilula.memoria-medalha--bronze { color: var(--laranja); }
+/* (sombra nos lados, nunca filter na carta: filter achata o 3D e a carta virada mostraria a frente espelhada) */
+.palco .concha__costas, .palco .concha__frente { box-shadow: 0 6px 14px color-mix(in srgb, var(--fundo-0) 45%, transparent); }
+.palco .concha__costas { /* as costas cor de pérola, para destacar da água rasa */
+  background: radial-gradient(circle at 30% 25%, var(--perola), color-mix(in srgb, var(--perola) 72%, var(--lilas)));
+  border-color: color-mix(in srgb, var(--perola) 60%, var(--fundo-0)); color: var(--turquesa-sombra);
+}
+.palco .flash__lado { box-shadow: 0 16px 32px color-mix(in srgb, var(--fundo-0) 55%, transparent); }
+.palco .flash-avaliacao__pergunta { text-shadow: 0 1px 2px var(--fundo-0); }
+.forca-cartao { display: grid; gap: var(--esp-3); }
