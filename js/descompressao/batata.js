@@ -157,13 +157,13 @@
         const campo = h('input', { class: 'campo sd-bat__campo', id: 'sd-bat-campo', autocomplete: 'off', autocapitalize: 'none', spellcheck: 'false', maxlength: '25', 'aria-label': 'Sua palavra' });
         const msg = h('p', { class: 'sd-bat__msg', 'aria-live': 'assertive' });
         const form = h('form', { class: 'sd-bat__form' }, campo, h('button', { type: 'submit', class: 'botao botao--primario' }, 'Enviar'));
-        const bomba = h('div', { class: 'sd-bat__bomba', 'aria-hidden': 'true' },
-          h('div', { class: 'sd-bat__bomba-corpo' }), h('div', { class: 'sd-bat__bomba-luz' }));
+        const desenho = BombaBatata.criar(); // a bomba de batata com o visor de segundos e centésimos
+        const bomba = h('div', { class: 'sd-bat__bomba', 'aria-hidden': 'true' }, desenho.svg);
         const centro = h('div', { class: 'sd-bat__centro' }, bomba, silaba, pavio, vez, form, msg);
         const raiz = h('div', { class: 'sd-bat sd-bat--jogo' }, h('div', { class: 'sd-bat__mesa' }, lados[0], centro, lados[1]));
         area.replaceChildren(raiz);
         palcoTela.topo();
-        return { raiz, lados, silaba, pavio, vez, campo, msg, form, bomba };
+        return { raiz, lados, silaba, pavio, vez, campo, msg, form, bomba, desenho };
       }
 
       function pintarLado(t, i, { nome, vidas, letras, ultima, daVez }) {
@@ -181,10 +181,15 @@
         t.pavio.style.setProperty('--resta', String(f));
         t.pavio.setAttribute('aria-valuenow', String(Math.round(f * 100)));
         t.bomba.classList.toggle('sd-bat__bomba--quase', f < 0.3);
-        palcoTela.estado.calor = 1 - f; // o luau esquenta: fogo, brasas, tique-taque
-        if (f > 0 && f < 0.5) { // o tique-taque: da metade do pavio até o fim, cada vez mais rápido
+        t.desenho.mostrar(resta); // o visor marca os segundos e os centésimos que faltam
+        t.desenho.estado({ quase: f < 0.3, fim: resta > 0 && resta < 3000 });
+        palcoTela.estado.calor = 1 - f; // o luau esquenta: fogo, brasas e o bip
+        if (f > 0) { // o bip eletrônico da bomba: devagar no começo, cada vez mais rápido até o fim
           const agora = performance.now();
-          if (agora - ultimoTique >= 120 + 900 * f) { ultimoTique = agora; palcoTela.tocar('tique'); }
+          if (agora - ultimoTique >= 110 + 890 * f) {
+            ultimoTique = agora;
+            palcoTela.som.tom(f < 0.3 ? 2400 : 2100, 0.05, 'square', f < 0.3 ? 0.05 : 0.035);
+          }
         }
       }
 
@@ -201,6 +206,8 @@
       }
 
       function explosao(t) {
+        t.desenho.mostrar(0);
+        t.desenho.estado({ quase: false, fim: false });
         palcoTela.reagir('explosao', { el: t.bomba });
         if (UI.movimentoReduzido) return;
         t.raiz.classList.remove('sd-bat--boom');
@@ -964,9 +971,15 @@
         function reagir(tipo, info, est) {
           const som = palcoTela.som;
           if (tipo === 'explosao') { // o estrondo que rola, o estalo, as faíscas e a tela inteira tremendo
-            som.chiado({ filtro: 'lowpass', de: 900, ate: 60, q: 0.5, vol: 0.45, dur: 1.3, ataque: 0.01 });
-            som.tom(70, 0.7, 'triangle', 0.16, 0.5);
-            som.chiado({ filtro: 'highpass', de: 3000, vol: 0.08, dur: 0.25 });
+            // o estalo seco, o soco grave que desce, o estrondo que rola, os destroços caindo e o zumbido no ouvido
+            som.chiado({ filtro: 'highpass', de: 2500, vol: 0.16, dur: 0.12, ataque: 0.002 });
+            som.tom(120, 0.9, 'sine', 0.32, 0.25);
+            som.tom(58, 1.2, 'triangle', 0.2, 0.45);
+            som.chiado({ filtro: 'lowpass', de: 1600, ate: 90, q: 0.6, vol: 0.55, dur: 0.5, ataque: 0.006 }); // (o ruído do palco dura meio segundo: o estrondo vem em três ondas)
+            som.chiado({ filtro: 'lowpass', de: 500, ate: 70, q: 0.6, vol: 0.32, dur: 0.5, ataque: 0.05, atraso: 0.42 });
+            som.chiado({ filtro: 'lowpass', de: 260, ate: 50, q: 0.6, vol: 0.18, dur: 0.5, ataque: 0.08, atraso: 0.85 });
+            [0.3, 0.55, 0.75, 1.0].forEach((a, i) => som.chiado({ filtro: 'bandpass', de: 1800 - i * 300, q: 2, vol: 0.05, dur: 0.08, atraso: a })); // os pedacinhos caindo
+            som.tom(3520, 1.6, 'sine', 0.012, 1, 0.3);
             info.espirrar(info.x, info.y, COR.amarelo, 26, 1.8);
             info.espirrar(info.x, info.y, COR.laranja, 18, 1.4);
             info.espirrar(info.x, info.y, COR.coral, 12, 1.1);

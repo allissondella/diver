@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-18 · A bomba de batata da Batata Quente
+- **Pedido do usuário** (com o desenho `bomba-batata.svg`): "deixa mais realista com um design mais igual a nossa arma do tiro ao alvo [...] continue sendo uma c4 do cs2 bem caseira alimentada por batatas e o contador do relógio ser igual a esse e ter som de explosão se bater o tempo, ele marca segundos e centésimos". Plano aprovado ("manda bala"), com a condição de não usar nome nem arte do jogo comercial.
+- **Feito:** bomba nova em SVG, nossa (`js/descompressao/bomba-batata.js`, no pacote `descompressao` antes de `batata.js`): duas batatas altas com eletrodos de cobre e zinco, fios em mola com as pontas de metal, a caixa com lado em 3/4, faixa de alerta, parafusos, LED, teclado e o visor de 7 segmentos (segundos e centésimos que faltam, "88.88" apagado atrás). LED rápido perto do fim, visor piscando nos 3 últimos segundos, "00.00" na explosão. O tique-taque virou um bip eletrônico que acelera; a explosão ganhou estalo, soco grave, estrondo em três ondas, destroços e zumbido. Cores no grupo "Bomba de batata" de `css/tokens.css`; a barra do pavio ficou só para o leitor de tela.
+- **Testes:** Sozinho, Treino e robô em 1440×900, 390×844 e 844×390 (o visor desce, por exemplo 09.01 → 07.71 em 1,3 s), "reduzir movimento", os outros jogos da sala e o auditor de design (com navegador) sem problemas.
+- **Decisões:** regras, tempos, pontos e modos iguais; o ruído do palco dura meio segundo, então o estrondo vem em três ondas em vez de um ruído longo.
+- **Próximo passo:** o usuário jogar e dizer o que ajustar; PR e produção com o OK dele.
+
 ## 2026-10-18 · Pontos de melhoria: tiro mais rápido, "Tiro ao Alvo", Palavrinha num cartão só, Biologia e som nas perguntas
 - **Pedido do usuário:** "Quero que a pistola atire mais rápido [...] igual a um jogo de tiro, mas vamos por água", "O nome deve ser 'Tiro ao Alvo'", "Palavrinha vamos deixar apenas uma, na parte de cima deve ter a opção de escolher x2 e x4", "Vamos subir essa profissão: Biologia" (kit v4.1) e o som de acerto e de erro em todas as perguntas da trilha (sons comprados por ele na ElevenLabs). Plano aprovado ("manda bala").
 - **Feito:**

@@ -60,7 +60,7 @@ const App = (() => {
     fila: ['js/fila-validacao.js'],
     profissoes: ['js/profissoes-infograficos.js', 'js/profissoes-icones.js', 'js/profissoes.js', 'js/profissoes-panorama.js', 'js/profissoes-mergulho.js'], // Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md); os ícones vêm antes da tela; os panoramas (Tecnologia, Medicina) e o mergulho "Quão fundo" são extensões e vêm depois
     descompressao: ['js/dicionario.js', 'js/descompressao.js', 'js/jogos/palco.js', 'js/descompressao/investigacao.js', 'js/descompressao/palavrinha-dia.js',
-      'js/descompressao/pistola-3d.js', 'js/descompressao/tiro.js', 'js/descompressao/reflexo.js', 'js/descompressao/batata.js', 'js/descompressao/pitstop.js', 'js/descompressao/cardume.js'], // tiro.js é o motor (pistola-3d.js antes dele); reflexo.js é o jogo da sala; o palco (js/jogos/palco.js) é o mesmo da Sala de Jogos
+      'js/descompressao/pistola-3d.js', 'js/descompressao/tiro.js', 'js/descompressao/reflexo.js', 'js/descompressao/bomba-batata.js', 'js/descompressao/batata.js', 'js/descompressao/pitstop.js', 'js/descompressao/cardume.js'], // tiro.js é o motor (pistola-3d.js antes dele); reflexo.js é o jogo da sala; o palco (js/jogos/palco.js) é o mesmo da Sala de Jogos
   };
   const pacotesProntos = new Set();
   /** Garante os pacotes; depois dos jogos, as cartas são refeitas (os laboratórios entram nelas). */
