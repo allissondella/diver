@@ -33,13 +33,14 @@ A **Fase 0 está feita**: protótipo em HTML/CSS/JS puros com os modos Mergulho,
 - **Onde fica:** aba **Profissões** na barra lateral (grupo "Futuro", ícone de bússola), para qualquer conta e sem matrícula.
 - **Rotas:** `#profissoes` (mapa com busca, áreas, "Características" e "na mira"), `#profissoes-cartas` (Maré de cartas), `#profissoes-metodo`, `#profissoes-comparar[-<a>--<b>]` (comparador), `#profissao-<id>` (ficha com fonte em cada número), `-dia` ("Um dia como"), `-mitos` ("Mito ou verdade") e `#profissoes-fundo` ("Quão fundo é cada carreira").
 - **Código:** `js/profissoes.js` + `js/profissoes-infograficos.js` + `js/profissoes-icones.js` (o ícone de cada profissão) (+ as extensões `js/profissoes-panorama.js`, que serve os panoramas, e `js/profissoes-mergulho.js`, o "Quão fundo") são o pacote `profissoes`; os ganchos são ligados em `js/app.js` (`ligarProfissoes`); CSS em `css/profissoes.css` (prefixo `prof-`).
-- **Dados:** `data/profissoes/` (`indice.json` com 22 profissões, uma ficha por arquivo e `trends/`).
+- **Dados:** `data/profissoes/` (`indice.json` com 23 profissões, uma ficha por arquivo e `trends/`).
 - **Fichas:**
   - só com fonte e data em cada número;
   - escritas **uma por vez** com a skill `criar-ficha-profissao` e conferidas por `node scripts/conferir-ficha.mjs <ficha>`, que também confere os `materias_chave` no catálogo;
   - ficha `rascunho`/`validada` aparece para o aluno como "Em breve" (equipe e modo local veem);
   - **Enfermagem segue rascunho até a revisão de um(a) enfermeiro(a)**: não publique nem mude o conteúdo sem o OK do usuário.
   - **As 22 fichas estão escritas (2026-10-16, pedido do usuário: "sobe todas as outras profissões"):** as 21 novas seguem `rascunho`, sem "Um dia como", e o aluno vê "Em breve". Cada uma só vira `publicada` depois da revisão de um profissional da área (`revisao.profissional: ok`, com nome e data) e do OK do usuário. Parecer das fontes: `docs/validacoes/profissoes-fichas-2026-10-16.md`. Salário do Caged vence em 180 dias (abril de 2027).
+  - **Biologia (2026-10-18, pedido do usuário: "Vamos subir essa profissão"):** a 23ª ficha veio do kit v4.1 e entrou `rascunho`, com três correções conferidas na fonte oficial (sem EAD pela Portaria MEC nº 378/2025; o PL do piso passou pela CCJ da Câmara em abril de 2026 e ainda não é lei; o período do Caged é 09/2025 a 08/2026), ícone da dupla hélice e parecer `docs/validacoes/profissoes-biologia-2026-10-18.md`. Só vira `publicada` com a revisão de um(a) biólogo(a) e o OK do usuário.
   - Ficha sem piso em lei mostra a faixa comum na tabela de salário; `quanto_ganha.piso_rotulo` troca o rótulo do piso (Pedagogia: magistério público, até 40 h).
 - **Fase 2 (2026-10-16, pedido do usuário: "Pode fazer"; detalhes em `docs/MAPA_PROFISSOES.md` 4.1, 4.3 e 4.5):**
   - **"Um dia como"** também em Medicina, Direito, Psicologia, Administração e Engenharia Civil: 6 cenas cada, cenas `revisar_com_profissional`, nada de procedimento técnico.
