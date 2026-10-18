@@ -38,7 +38,7 @@ window.TiroAoAlvo = (() => {
   const suave = (k) => 1 - Math.pow(1 - Math.max(0, Math.min(1, k)), 3); // desacelera no fim
   const FONTE = '"Plus Jakarta Sans", system-ui, sans-serif';
   const TANQUE = 12;
-  const RECARGA = 0.22; // segundos por jato
+  const RECARGA = 0.11; // segundos por jato (2026-10-18: o dobro da velocidade, para o tanque não engasgar)
 
   /* ---------- Itens (rótulo + etiquetas) ---------- */
   const lista = (texto, tags, dica = '') => texto.split(' ').map((r) => ({ rotulo: r.replace(/_/g, ' '), tags: tags.split(' '), dica }));
@@ -278,13 +278,14 @@ window.TiroAoAlvo = (() => {
     for (let i = 0; i < n; i++) s.tom(1700 + Math.random() * 1600, 0.025, 'sine', 0.03, 1.6, depois + i * 0.05 + Math.random() * 0.04);
   };
   const SONS = {
-    // o jato: o chiado da água sob pressão enquanto o gatilho está apertado (desce de tom quando a pressão cai),
-    // o corpo da água por baixo e o "pof" da válvula
+    // o jato: um disparo seco de água sob pressão (2026-10-18, pedido do usuário: "igual a um jogo de tiro"): o estalo
+    // da válvula, o "tchk" curto da água saindo e o soco grave por baixo
     jato: (s) => {
       const r = varia();
-      s.chiado({ de: 4200 * r, ate: 1800 * r, q: 0.7, vol: 0.12, dur: 0.24, ataque: 0.006, segura: 0.09 });
-      s.chiado({ de: 900 * r, ate: 520 * r, q: 1.3, vol: 0.08, dur: 0.2, ataque: 0.01, segura: 0.06 });
-      s.tom(160 * r, 0.07, 'sine', 0.08, 0.55);
+      s.chiado({ de: 5200 * r, q: 1.8, vol: 0.2, dur: 0.035, ataque: 0.001 });
+      s.chiado({ de: 3600 * r, ate: 1600 * r, q: 0.8, vol: 0.13, dur: 0.11, ataque: 0.002, segura: 0.02 });
+      s.chiado({ filtro: 'lowpass', de: 700 * r, ate: 300, q: 0.9, vol: 0.16, dur: 0.07, ataque: 0.001 });
+      s.tom(150 * r, 0.06, 'sine', 0.12, 0.45);
     },
     // a água bate na placa: o "splash" molhado, o "toc" do plástico e as gotinhas que caem depois
     respingo: (s) => {
@@ -317,7 +318,7 @@ window.TiroAoAlvo = (() => {
   };
   const vibrar = (ms) => { try { if (!UI.movimentoReduzido && navigator.vibrate) navigator.vibrate(ms); } catch (e) { /* nada */ } };
   const QUEDA = 0.32; // segundos: a placa acertada tomba para trás do trilho
-  const JATO_PULSO = 0.13; // segundos com o gatilho apertado: o comprimento do jato
+  const JATO_PULSO = 0.07; // segundos com o gatilho apertado: o comprimento do jato (curto: um disparo seco)
 
   /**
    * Abre o jogo em ctx.container. modo: "regras" (Tiro ao Alvo) ou "reflexo" (Tiro de Reflexo).
@@ -326,7 +327,7 @@ window.TiroAoAlvo = (() => {
    */
   function abrir(ctx, { modo = 'regras' } = {}) {
     const reflexo = modo === 'reflexo';
-    const NOME = reflexo ? 'Tiro de Reflexo' : 'Tiro ao Alvo';
+    const NOME = 'Tiro ao Alvo'; // os dois modos têm o mesmo nome (2026-10-18); o da sala era "Tiro de Reflexo"
     let jogo = null; // partida em andamento
     let quadro = 0;
     let vivo = true; // vira false quando a pessoa sai do jogo
@@ -689,7 +690,7 @@ window.TiroAoAlvo = (() => {
 
     function atualizar(dt) {
       jogo.t += dt;
-      jogo.coice = jogo.coice > 0.01 ? jogo.coice * Math.exp(-dt * 11) : 0; // o coice: tranco rápido, volta macia
+      jogo.coice = jogo.coice > 0.01 ? jogo.coice * Math.exp(-dt * 24) : 0; // o coice: tranco seco e volta rápida, como num jogo de tiro
       if (jogo.agua < TANQUE) {
         jogo.recarga += dt;
         while (jogo.recarga >= RECARGA && jogo.agua < TANQUE) {
@@ -894,13 +895,13 @@ window.TiroAoAlvo = (() => {
       jogo.slosh = Math.min(1.6, jogo.slosh + 1);
       soltarBolhas(3);
       // o jato sai do bico na direção do cano e faz uma curva leve até o ponto (perto da linha reta, num arquinho para
-      // cima); a água leva um instante para chegar (só no desenho)
+      // cima); a água chega quase na hora, como num jogo de tiro (só no desenho)
       const b = arma.bico({ ...estadoArma(), coice: 0 });
       const dist = Math.hypot(x - b.x, y - b.y);
-      const dur = UI.movimentoReduzido ? 0 : Math.max(0.08, Math.min(0.18, dist / 2600));
-      const cano = 0.35; // quanto a curva lembra a direção do cano
+      const dur = UI.movimentoReduzido ? 0 : Math.max(0.025, Math.min(0.05, dist / 9000));
+      const cano = 0.15; // quanto a curva lembra a direção do cano (pouco: o jato vai quase reto)
       const jato = { x0: b.x, y0: b.y, x1: x, y1: y, w0: Math.max(6, Math.min(13, b.r * 1.8)), t0: jogo.t, dur, tipo: 'agua', placa: null, seguidas: 0, bateu: false,
-        cx: (b.x + Math.cos(b.a) * dist * 0.4) * cano + ((b.x + x) / 2) * (1 - cano), cy: (b.y + Math.sin(b.a) * dist * 0.4) * cano + ((b.y + y) / 2) * (1 - cano) - dist * 0.06 };
+        cx: (b.x + Math.cos(b.a) * dist * 0.4) * cano + ((b.x + x) / 2) * (1 - cano), cy: (b.y + Math.sin(b.a) * dist * 0.4) * cano + ((b.y + y) / 2) * (1 - cano) - dist * 0.02 };
       jogo.jatos.push(jato);
       espirrar(b.x, b.y, b.a, 0.7, COR.branco, 6, 0.9); // a névoa na saída do bico e o "tchic" que abre na ponta
       if (!UI.movimentoReduzido) jogo.estalos.push({ x: b.x, y: b.y, t0: jogo.t, r: 2, cresce: 10 * Math.max(0.6, escala()), dur: 0.1, cheio: true });

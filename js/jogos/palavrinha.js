@@ -27,6 +27,7 @@ const Palavrinha = (() => {
   const DICA_DEPOIS = 3; // tentativas sem acertar até a dica completa aparecer
   const CHAVE = 'diver:v1:palavrinha'; // partida do dia em andamento (vai junto com o progresso na nuvem)
   const CHAVE_AVISO = 'diver:v1:palavrinha-aviso-ranking'; // já viu o aviso do Ranking Diver (vale para todos os cursos)
+  const CHAVE_VARIANTE = 'diver-local:v1:palavrinha-variante'; // o último modo escolhido no topo do jogo (só no aparelho)
   const TECLADO = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'];
   const NOME_STATUS = { certa: 'no lugar certo', lugar: 'em outro lugar', fora: 'não está na palavra' };
 
@@ -243,8 +244,15 @@ const Palavrinha = (() => {
   const dataBonita = (iso) => UI.paraData(iso).toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
 
   /* ---------- O jogo (no palco em tela toda, js/jogos/palco.js) ---------- */
-  function iniciar(v, ctx) {
+  /** Os modos que o curso aguenta (x2 e x4 pedem mais palavras), na ordem do seletor do topo */
+  const variantesDo = (cartas) => Object.values(VARIANTES).filter((x) => temConteudo(x, cartas));
+  function lerVariante() { try { return localStorage.getItem(CHAVE_VARIANTE); } catch (e) { return null; } }
+  function gravarVariante(chave) { try { localStorage.setItem(CHAVE_VARIANTE, chave); } catch (e) { /* sem armazenamento: vale só agora */ } }
+
+  function iniciar(ctx) {
     const lista = ctx.cartas.palavrinha || [];
+    const modos = variantesDo(ctx.cartas);
+    let v = modos.find((x) => x.chave === lerVariante()) || VARIANTES.x1; // um cartão só na Sala; o modo se escolhe no topo do jogo
     const porId = new Map(lista.map((p) => [p.id, p]));
     const hoje = UI.dataLocal();
     const palco = Palco.montar(ctx, { id: 'palavrinha', cena: Palco.cenas.letras() }); // o mar de letras (o mesmo da Palavrinha da Sala de Descompressão)
@@ -289,7 +297,19 @@ const Palavrinha = (() => {
       const rank = h('div', { class: 'pal-ranking' });
       const cartaoRanking = h('section', { class: 'cartao pal-cartao', id: 'pal-ranking', 'aria-labelledby': 'pal-ranking-titulo' },
         h('h3', { class: 'cartao__titulo', id: 'pal-ranking-titulo', tabindex: '-1', text: 'Ranking Diver' }), rank);
+      // o modo (Palavrinha, x2 ou x4) no topo do saguão (2026-10-18, pedido do usuário: "Palavrinha vamos deixar apenas uma,
+      // na parte de cima deve ter a opção de escolher x2 e x4"); cada modo segue com a sua palavra, estatísticas e ranking
+      const seletor = modos.length > 1 ? h('div', { class: 'segmentado pal-modos', role: 'group', 'aria-label': 'Modo da Palavrinha' },
+        modos.map((x) => h('button', { type: 'button', 'aria-pressed': String(x === v), title: x.descricao, onclick: () => {
+          if (x === v) return;
+          v = x;
+          gravarVariante(x.chave);
+          abertura();
+          const ativo = palco.area.querySelector('.pal-modos [aria-pressed="true"]');
+          if (ativo) ativo.focus({ preventScroll: true });
+        } }, x.tabuleiros === 1 ? 'Palavrinha' : x.chave))) : null;
       palco.area.replaceChildren(h('div', { class: 'pal pal-abertura' },
+        seletor,
         avisoRanking(cartaoRanking),
         h('section', { class: 'cartao pal-cartao pal-cartao--dia' },
           h('span', { class: 'rotulo', text: `Palavra do dia · ${dataBonita(hoje)}` }),
@@ -644,18 +664,20 @@ const Palavrinha = (() => {
     };
   }
 
-  Object.values(VARIANTES).forEach((v) => Jogos.registrar({
-    id: v.id,
-    nome: v.nome,
+  // Um cartão só na Sala de Jogos (2026-10-18): o x2 e o x4 se escolhem no topo do jogo. O resultado de cada modo continua
+  // com o id dele (palavrinha-x2, palavrinha-x4) e a variante no log, como antes.
+  Jogos.registrar({
+    id: VARIANTES.x1.id,
+    nome: VARIANTES.x1.nome,
     grupo: 'rapidos',
     icone: 'i-letras',
-    descricao: v.descricao,
-    duracao: v.tabuleiros === 1 ? '2-4 min' : v.tabuleiros === 2 ? '3-6 min' : '5-10 min',
-    requer: { palavrinha: v.minimo },
-    temConteudo: (cartas) => temConteudo(v, cartas),
+    descricao: 'Descubra a palavra-chave do curso em até 6 tentativas. Uma nova por dia. No topo do jogo, escolha x2 ou x4 para mais desafio.',
+    duracao: '2-10 min',
+    requer: { palavrinha: VARIANTES.x1.minimo },
+    temConteudo: (cartas) => temConteudo(VARIANTES.x1, cartas),
     telaCheia: true,
-    iniciar: (ctx) => iniciar(v, ctx),
-  }));
+    iniciar,
+  });
 
   return { VARIANTES, avaliar, palavrasDoDia, palavrasTreino, estatisticas, temConteudo, grupos, diaNumero, hash };
 })();

@@ -1915,6 +1915,10 @@ const App = (() => {
     const s = estado.sessao;
     const q = Quiz.atual(s);
     estado.respondida = false;
+    // o som das respostas só existe onde a resposta aparece na hora (Mergulho e Revisão)
+    const comSom = !['simulado', 'prova', 'enviada'].includes(s.modo);
+    $('btn-som-quiz').hidden = !comSom;
+    if (comSom) { SomQuiz.desenharBotao(); SomQuiz.preparar(); }
 
     $('quiz-feedback').hidden = true;
     humorMascote($('tela-quiz'), null);
@@ -1974,6 +1978,55 @@ const App = (() => {
     btn.querySelector('span').textContent = marcada ? 'Marcada para revisar' : 'Marcar para revisar';
   }
 
+  /*
+   * Som do acerto e do erro nas perguntas da trilha (2026-10-18, pedido do usuário; os dois sons foram comprados por ele na
+   * ElevenLabs): só onde a resposta aparece na hora (Mergulho e Revisão). No Simulado, na Prova e na prova enviada não
+   * toca, para não entregar o gabarito. A escolha "Som" é a mesma dos jogos (diver-local:v1:jogos-som, só no aparelho).
+   */
+  const SomQuiz = (() => {
+    const CHAVE = 'diver-local:v1:jogos-som';
+    const ARQUIVOS = { acerto: 'assets/sons/acerto.mp3', erro: 'assets/sons/erro.mp3' };
+    const audios = {};
+    const ligado = () => { try { return localStorage.getItem(CHAVE) !== '0'; } catch (e) { return true; } };
+    function preparar() {
+      if (typeof Audio === 'undefined') return;
+      Object.entries(ARQUIVOS).forEach(([k, src]) => {
+        if (audios[k]) return;
+        const a = new Audio(src);
+        a.preload = 'auto';
+        a.volume = 0.7;
+        audios[k] = a;
+      });
+    }
+    function tocar(k) {
+      if (!ligado()) return;
+      preparar();
+      const a = audios[k];
+      if (!a) return;
+      try {
+        a.currentTime = 0;
+        const p = a.play();
+        if (p && p.catch) p.catch(() => {}); // navegador sem som ou bloqueado: segue em silêncio
+      } catch (e) { /* sem áudio: tudo bem */ }
+    }
+    function desenharBotao() {
+      const b = $('btn-som-quiz');
+      if (!b) return;
+      const on = ligado();
+      b.setAttribute('aria-pressed', String(on));
+      b.setAttribute('aria-label', on ? 'Som das respostas: ligado' : 'Som das respostas: desligado');
+      b.title = b.getAttribute('aria-label');
+      b.querySelector('use').setAttribute('href', on ? '#i-som' : '#i-mudo');
+    }
+    function alternar() {
+      const on = !ligado();
+      try { localStorage.setItem(CHAVE, on ? '1' : '0'); } catch (e) { /* sem armazenamento: vale só agora */ }
+      desenharBotao();
+      toast(on ? 'Som ligado' : 'Som desligado', on ? 'Acerto e erro com som (vale também para os jogos).' : 'Sem som nas respostas e nos jogos.', on ? 'i-som' : 'i-mudo');
+    }
+    return { preparar, tocar, desenharBotao, alternar };
+  })();
+
   function responder(indice) {
     if (estado.respondida || !estado.sessao || estado.sessao.encerrada) return;
     estado.respondida = true;
@@ -2001,6 +2054,7 @@ const App = (() => {
     }
 
     // Mergulho e Revisão: mostra certo/errado e a explicação
+    SomQuiz.tocar(r.acertou ? 'acerto' : 'erro');
     botoes.forEach((b) => {
       const i = Number(b.dataset.indice);
       if (i === q.correta) b.classList.add('alternativa--correta');
@@ -2480,6 +2534,7 @@ const App = (() => {
     });
 
     $('btn-sair-quiz').addEventListener('click', sairDoQuiz);
+    $('btn-som-quiz').addEventListener('click', () => SomQuiz.alternar());
     $('btn-sair-jogo').addEventListener('click', () => sairDoJogo());
     $('btn-continuar').addEventListener('click', continuar);
     $('btn-marcar').addEventListener('click', () => {
