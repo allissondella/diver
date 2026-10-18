@@ -5,6 +5,62 @@
 
 ---
 
+## 2026-10-18 · Tiro ao Alvo: a luva mais real
+- **Pedido do usuário:** "Melhora essa luva aí, deixa mais real", com a foto de uma mão de luva num jogo de tiro como referência. **Regras, níveis, pontos, sons e álbum iguais;** o desenho é nosso.
+- **Feito (`js/descompressao/pistola-3d.js`):**
+  - a mão deixou de ser de prismas facetados: virou **peças macias**, o contorno de algumas esferas, liso, com a sombra em degradê (em faixas nos dedos, redonda na palma) e o brilho espalhado de tecido;
+  - o **polegar** (a parte que mais aparece) é uma peça só, com as dobras na junta, a costura por cima e a costura em volta da base; o indicador abraça o gatilho e os outros dedos dão a volta no cabo; o punho ganhou a tira turquesa;
+  - as peças da luva que se encostam formam um grupo: a borda forte fica só em volta dele, e dentro só uma dobra fraca (antes cada peça tinha o seu contorno e a mão parecia feita de bolinhas);
+  - a mão sobe um pouco onde a tela tem altura (até 4% da tela), para a luva aparecer; no celular deitado, não. O tom da luva ficou um pouco mais claro, para separar do balcão escuro;
+  - o cabo passou a inclinar para trás, como numa pistola de verdade.
+- **Testes:**
+  - fotos de antes e depois no jogo (1440 × 900, 390 × 844, 844 × 390 e "reduzir movimento"), em 6 posições de mira, com o coice, e de outros ângulos fora do jogo;
+  - o robô jogou até o nível 8 em 9 tamanhos de tela, com a pistola sempre abaixo do trilho do meio; teclado e som OK; `node scripts/auditar-design.mjs` (e `--navegador`) OK;
+  - custo: cerca de 1,9 ms de conta por quadro (antes 1,5 ms) e uns 7% a mais de pintura; menos pinturas (236 contra 295) e os traços iguais.
+- **Pendências:** merge para produção só com o OK do usuário.
+
+## 2026-10-17 · Tiro ao Alvo: a pistola d'água em primeira pessoa
+- **Pedido do usuário:** a pistola igual à de um jogo de tiro famoso, "mas de água, a mesma visão". Amostra mostrada antes e aprovada ("Segue"). **Regras, níveis, pontos, sons e álbum iguais.**
+- **Feito:**
+  - saiu a pistola de lado; a nova é **em primeira pessoa**: no canto de baixo, à direita, vista por trás e segura por uma mão de luva de mergulho, com o braço na roupa de neoprene. É um modelo 3D nosso (`js/descompressao/pistola-3d.js`, no pacote `descompressao`, antes de `tiro.js`);
+  - tanque transparente com a água sempre na horizontal, marola e bolhas; tampinha amarela, presilhas, manômetro, cano com anéis e mira, bomba que vai e volta na recarga, gatilho e cabo;
+  - ela aponta para o meio da tela e acompanha a mira só em parte; no celular em pé, fica de três quartos. No tiro, o coice; o jato sai do furo do bico numa curva leve até o alvo;
+  - quando uma placa passa atrás dela (3 dos 9 pontos da placa cobertos), ela fica transparente (40%), para a placa não sumir;
+  - o desenho foi enxugado: os contornos de cada peça viram um traço só (de 1.156 para 319 traços por quadro) e os cilindros pequenos têm menos lados.
+- **Testes:**
+  - fotos quadro a quadro em 1440 × 900, 390 × 844 e 844 × 390 (parada, jato no meio do caminho, batida, mar, tanque vazio, mira na direita, placa atrás, placa errada), também com "reduzir movimento": nenhum erro;
+  - o robô jogou até o nível 8 em 9 tamanhos de tela (de 1440 × 900 a 667 × 375, em pé e deitado), com a pistola sempre abaixo do trilho do meio: nenhum achado nem erro. O teste de teclado, som e álbum passou inteiro;
+  - a pistola leva cerca de 2 ms por quadro no computador de testes; `node scripts/auditar-design.mjs` OK.
+- **Pendências:** merge para produção só com o OK do usuário.
+
+## 2026-10-17 · Mapa das Profissões: ícones discretos no lugar das artes
+- **Pedido do usuário:** "Essas logos do preview ficaram horríveis, faz mais discreto e simples". Amostra mostrada antes e aprovada ("Segue").
+- **Feito:**
+  - as 22 artes coloridas viraram **22 ícones de traço nossos** (`js/profissoes-icones.js`, `IconesProfissoes.icone(id)`; o `profissoes-artes.js` saiu), de uma cor só (a da área), pequenos e parados, no estilo dos ícones do app;
+  - **onde aparecem:** num quadradinho clarinho no canto do cartão do mapa, na lista, antes da área na capa da ficha, no cabeçalho da carta da Maré e no comparador; pequeno, em cima do nome, no aquário; e dentro do selo no álbum (os que faltam em cinza);
+  - saíram a faixa da arte no alto dos cartões e no "Em números", o halo e as animações. Educação Física ganhou um haltere no lugar do apito.
+- **Correção junto:** no celular, o texto de algumas cartas da Maré passava do fim da carta (já acontecia antes das artes, com a pilha fixa em 270 px). Agora a pilha mede a carta mais alta do baralho na largura da tela.
+- **Testes:**
+  - fotos em 1440, 390 e 360 px (cartões, lista, aquário, envelope, álbum, ficha, Maré e comparador): todos os cartões com ícone e o ícone na linha da área; nenhuma bolha nem carta vazando; nenhum erro no console;
+  - varredura de "coisa torta" nas 26 telas da aba, em 8 larguras de 360 a 1440 px (com e sem menu), e no mapa em lista e em aquário: nenhum achado;
+  - `node scripts/auditar-design.mjs` e `--navegador` OK; `gerar-componentes --conferir` e `gerar-numeros-profissoes --conferir` em dia.
+- **Pendências:** a pistola em primeira pessoa do Tiro ao Alvo (próximo commit); merge para produção só com o OK do usuário.
+
+## 2026-10-17 · Mapa das Profissões: uma arte para cada profissão e o salário dos panoramas só depois do palpite
+- **Pedido do usuário:** "Nas profissões faça uma arte que represente universalmente cada uma delas, para deixar ainda mais legal e curioso, quando clico em medicina ele também entrega de cara os salários aí acaba não tendo tanta graça para adivinhar". Plano de 3 etapas aprovado ("Manda bala"), com fotos depois de cada uma. **Textos e números das fichas e dos panoramas, rotas e XP iguais; nada no banco.**
+- **Feito:**
+  - **Etapa 1, as 22 artes** (`js/profissoes-artes.js`): desenhos nossos em SVG, no estilo figurinha, com as cores dos tokens e o halo da cor da área (estetoscópio com coração, soro, cabeça com Ψ, bola de pilates, cronômetro e apito, dente e escova, pata, maçã e fita métrica, pilão, microscópio, gráfico, calculadora e moedas, três pessoas, balança, quadro com ABC, prédio e guindaste, engrenagens, planta e compasso, notebook com `</>`, chip, cérebro em rede, megafone). Aparecem nos cartões do mapa, na lista, no aquário, nos selos do álbum (os que faltam na sombra), na capa da ficha, na Maré e no comparador; um detalhe mexe ao passar o mouse;
+  - **Etapa 2, o salário só depois do palpite nos panoramas** (Medicina e Tecnologia): "R$ ?" nos cartões; na página de cada especialidade, "Dar meu palpite primeiro" na capa e a régua da ficha no capítulo "O dinheiro"; a comparação de todas e a ordem "Maior salário" abrem no **"Quem ganha mais?"** (duas por vez, cinco rodadas) ou no "Prefiro ver direto"; a bolsa de residência virou palpite; o resultado do jogo de afinidade também esconde o salário. Valor em reais no meio de um texto ("O que ninguém te conta", nos panoramas e nas fichas, e o curso de residência) fica "R$ ?" até o palpite;
+  - **Etapa 3:** tutorial da área na versão 6, documentos e PR.
+- **Decisões:**
+  - o "Quem ganha mais?" usa só as especialidades com ocupação própria no Caged (as de referência repetiriam o mesmo valor) e pares com 6% ou mais de diferença; cada uma entra no máximo duas vezes;
+  - abrir o dinheiro de todas mostra também o salário de cada uma (não faz sentido esconder o que a régua já mostra); o palpite de uma especialidade abre só ela;
+  - o log reusa `profissao_chute_salario` (com `panorama` e `area`, `numero` ou `jogo`), para não mexer na regra do banco; a lista de fontes, que só abre no botão, continua com os valores;
+  - no celular, o cabeçalho do comparador põe a arte ao lado da área e deixa o nome com a largura toda; os cartões do "Quem ganha mais?" mostram só o nome e o valor.
+- **Correção junto:** a resposta do palpite da ficha escrevia "null" quando a pessoa tocava em "Prefiro ver direto".
+- **Testes:** galeria das 22 artes; fotos do mapa (cartões, álbum, lista, aquário), da ficha, da Maré e do comparador em 1440 × 900 e 390 × 844; no panorama da Medicina e no da Tecnologia, em 1440 × 900 e 390 × 844: nenhum valor em reais à vista antes do palpite, cadeado do "Maior salário", as cinco rodadas, a régua de todas e a ordem depois do jogo, a bolsa pelo teclado (o foco vai para a régua), a especialidade antes e depois do palpite, o "Prefiro ver direto", o "R$ ?" no texto da ficha, o log e nenhum erro; o jogo de afinidade e a rodada em 360 px; `auditar-design` e `--navegador`.
+- **Pendências:** merge para produção com o OK do usuário. Se o usuário quiser: artes também para as 12 especialidades da Medicina e as 10 áreas da Tecnologia.
+
 ## 2026-10-17 · Mapa das Profissões: "Na sua mira" numa linha só
 - **Pedido do usuário:** "à medida que vai caindo coisas na Mira, vai ficando um vazio imenso do lado, precisa esconder isso" (com 13 profissões na mira, a lista do cabeçalho crescia e deixava um buraco enorme ao lado do título).
 - **Feito:** no cabeçalho do mapa, "Na sua mira" ocupa **uma linha só**, da mais recente para a mais antiga; as que não cabem ficam atrás do **"+N"**, que abre a lista inteira embaixo do cabeçalho, na largura toda (como o álbum de selos). A conta de quantas cabem é refeita quando a largura muda.

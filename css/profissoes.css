@@ -258,7 +258,7 @@
 .prof-lg { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--borda); }
 .prof-lg > li { border-bottom: 1px solid var(--borda); }
 .prof-raiz .prof-lg-item {
-  display: grid; grid-template-columns: 2.5em minmax(0, 1fr) auto 20px; align-items: center; gap: var(--esp-3); width: 100%; min-height: 64px;
+  display: grid; grid-template-columns: 2.5em 40px minmax(0, 1fr) auto 20px; align-items: center; gap: var(--esp-3); width: 100%; min-height: 64px;
   padding: var(--esp-3) var(--esp-2); border: 0; background: none; color: var(--texto); font: inherit; text-align: left; text-decoration: none; cursor: pointer;
   transition: background var(--transicao), padding var(--transicao);
 }
@@ -278,7 +278,7 @@
 .prof-aquario { margin-top: var(--esp-5); padding: var(--esp-3); border-radius: var(--raio-lg); background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--turquesa) 14%, var(--superficie)), var(--superficie) 70%); }
 .prof-aquario-tanque { position: relative; list-style: none; margin: 0; padding: 0; height: 420px; overflow: hidden; }
 .prof-raiz .prof-bolha {
-  position: absolute; left: 0; top: 0; display: grid; place-items: center; width: var(--d, 96px); height: var(--d, 96px); padding: var(--esp-2);
+  position: absolute; left: 0; top: 0; display: grid; place-items: center; align-content: center; gap: 4px; width: var(--d, 96px); height: var(--d, 96px); padding: var(--esp-2);
   border-radius: 50%; border: 1px solid color-mix(in srgb, var(--cor-area) 60%, transparent); color: var(--texto); font: inherit; text-align: center; text-decoration: none; cursor: pointer;
   background: radial-gradient(circle at 32% 28%, color-mix(in srgb, var(--texto) 26%, transparent), transparent 30%), color-mix(in srgb, var(--cor-area) 30%, var(--superficie-2));
   box-shadow: inset 0 -8px 16px color-mix(in srgb, var(--fundo) 45%, transparent); transition: scale var(--transicao), border-color var(--transicao);
@@ -443,6 +443,7 @@ button.prof-pan { cursor: pointer; }
 .prof-mes-v { grid-row: 1; grid-column: 1; position: absolute; bottom: calc(50% + var(--h, 0) * 38% + 2px); font-size: var(--t-xs); font-weight: 700; color: var(--texto); }
 .prof-mes--abaixo .prof-mes-v { bottom: auto; top: calc(50% + var(--h, 0) * 38% + 2px); }
 .prof-mes-rot { margin-top: var(--esp-1); font-size: var(--t-xs); color: var(--texto-suave); }
+@media (max-width: 479px) { .prof-mes-resto { display: none; } }
 .prof-legenda { display: flex; gap: 16px; flex-wrap: wrap; font-size: var(--t-sm); color: var(--texto-suave); margin-top: 8px; }
 .prof-legenda span { display: inline-flex; align-items: center; gap: 6px; }
 .prof-legenda i { width: 14px; height: 4px; border-radius: 2px; background: var(--cor, var(--turquesa)); display: inline-block; }
@@ -763,7 +764,7 @@ button.prof-pan { cursor: pointer; }
 
 /* ---------- Maré de cartas ---------- */
 .prof-baralho { max-width: 520px; margin: 0 auto; }
-.prof-pilha { position: relative; min-height: 270px; touch-action: pan-y; }
+.prof-pilha { position: relative; min-height: max(270px, var(--alto-carta, 0px)); touch-action: pan-y; } /* --alto-carta: a carta mais alta do baralho (o JS mede) */
 .prof-carta {
   position: absolute; inset: 0; display: flex; flex-direction: column; gap: 10px;
   background: var(--superficie); border-radius: 20px; padding: 22px; box-shadow: var(--sombra);
@@ -776,7 +777,7 @@ button.prof-pan { cursor: pointer; }
 .prof-carta h2 { font-size: var(--t-2xl); font-weight: 800; letter-spacing: -.02em; }
 .prof-carta .prof-fato { font-size: var(--t-md); }
 .prof-carta .prof-fato b { color: var(--amarelo); }
-.prof-carta-cab { display: flex; justify-content: space-between; font-size: var(--t-sm); color: var(--texto-suave); }
+.prof-carta-cab { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-2); font-size: var(--t-sm); color: var(--texto-suave); }
 .prof-carta-carimbo {
   position: absolute; top: 18px; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: var(--t-sm);
   letter-spacing: .06em; text-transform: uppercase; opacity: 0; transform: rotate(-8deg); border: 2px solid currentColor;
@@ -887,7 +888,8 @@ button.prof-pan { cursor: pointer; }
   margin: 0 calc(var(--esp-2) * -1) var(--esp-3); padding: var(--esp-2);
   background: var(--fundo-fundo); box-shadow: var(--sombra-1); border-radius: 0 0 var(--raio-md) var(--raio-md);
 }
-.prof-comp-nome { display: flex; flex-direction: column; gap: 2px; min-height: 44px; justify-content: center; text-decoration: none; color: var(--texto); border-left: 3px solid var(--cor-area); padding-left: var(--esp-2); min-width: 0; }
+.prof-comp-nome { display: flex; align-items: center; gap: var(--esp-2); min-height: 44px; text-decoration: none; color: var(--texto); border-left: 3px solid var(--cor-area); padding-left: var(--esp-2); min-width: 0; }
+.prof-comp-nome-texto { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .prof-raiz a.prof-comp-nome { color: var(--texto); }
 .prof-comp-nome .prof-rotulo { color: var(--cor-area); }
 .prof-comp-nome b { display: flex; align-items: center; gap: 6px; font-size: var(--t-lg); overflow-wrap: break-word; }
@@ -1276,7 +1278,7 @@ body.prof-rc-aberto { overflow: hidden; }
 }
 @media (max-width: 479px) {
   .prof-cargo { grid-template-columns: minmax(0, 1fr); gap: var(--esp-2); }
-  .prof-raiz .prof-lg-item { grid-template-columns: minmax(0, 1fr) 20px; }
+  .prof-raiz .prof-lg-item { grid-template-columns: 40px minmax(0, 1fr) 20px; }
   .prof-lg-n, .prof-lg-area { display: none; }
   .prof-lg-nome { font-size: var(--t-xl); }
   .prof-lg-frase { display: block; }
@@ -1322,4 +1324,84 @@ body.prof-rc-aberto { overflow: hidden; }
   .prof-agora-grupo[aria-hidden] { display: none; }
   .prof-raiz .prof-bolha:hover, .prof-raiz .prof-bolha:focus-visible { scale: none; }
   .prof-pop--ancorado { transform: none; }
+}
+
+/* ---------- O ícone de cada profissão (js/profissoes-icones.js, 2026-10-17). Primeiro foram artes coloridas; o usuário pediu
+   "mais discreto e simples": um ícone de traço na cor da área, num quadradinho clarinho, sempre pequeno e parado. ---------- */
+.prof-icone { display: block; width: 100%; height: 100%; }
+.prof-emblema {
+  display: inline-grid; place-items: center; flex: none; width: 40px; height: 40px; padding: 9px; border-radius: var(--raio-md);
+  background: color-mix(in srgb, var(--cor-area, var(--turquesa)) 15%, transparent); color: var(--cor-area, var(--turquesa-claro));
+}
+/* No cartão do mapa: na linha da área, no canto direito */
+.prof-pan-cab { display: flex; align-items: center; justify-content: space-between; gap: var(--esp-2); min-width: 0; }
+/* Na capa da ficha, na carta da Maré e no comparador: antes da área (ou do nome) */
+.prof-capa-rotulo, .prof-carta-area { display: inline-flex; align-items: center; gap: var(--esp-2); min-width: 0; }
+.prof-capa-rotulo .prof-emblema, .prof-comp-nome .prof-emblema { width: 36px; height: 36px; padding: 8px; }
+.prof-carta-area .prof-emblema { width: 32px; height: 32px; padding: 7px; }
+/* No aquário: pequeno, em cima do nome */
+.prof-bolha-icone { display: block; width: 20px; height: 20px; color: var(--cor-area, var(--turquesa-claro)); }
+/* Nos selos do álbum: o ícone escuro no selo colorido; o que falta fica em cinza */
+.prof-postal .prof-icone { width: 50%; height: auto; }
+.prof-postal--falta .prof-icone { opacity: .6; }
+@media (max-width: 479px) {
+  /* Comparador: o ícone ao lado da área (sem a bolinha, que o ícone já tem a cor) e o nome na largura toda */
+  .prof-comp-nome { display: grid; grid-template-columns: 32px minmax(0, 1fr); align-items: center; column-gap: 6px; row-gap: 4px; }
+  .prof-comp-nome-texto { display: contents; }
+  .prof-comp-nome .prof-rotulo { letter-spacing: .02em; line-height: 1.2; }
+  .prof-comp-nome .prof-rotulo::before { display: none; }
+  .prof-comp-nome b { grid-column: 1 / -1; display: block; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: anywhere; }
+  .prof-comp-nome b .prof-ico { display: inline-block; vertical-align: -2px; margin-left: 4px; }
+  .prof-comp-nome .prof-emblema { width: 32px; height: 32px; padding: 7px; }
+}
+
+/* O salário só depois do palpite nos panoramas (2026-10-17, pedido do usuário: "entrega de cara os salários aí acaba não tendo
+   tanta graça para adivinhar"): "R$ ?" nos cartões, o cadeado no "Maior salário", o valor escondido no meio do texto e o "Quem ganha mais?" */
+.prof-esp-salario--fechado { display: inline-flex; align-items: center; gap: 6px; }
+.prof-esp-salario--fechado .prof-ico { width: 16px; height: 16px; color: var(--amarelo); }
+.prof-raiz .prof-esp-salario--fechado b { color: var(--texto-suave); letter-spacing: .06em; }
+.prof-ordens .prof-chip .prof-ico { width: 14px; height: 14px; }
+.prof-ordens-aviso { margin: calc(var(--esp-1) * -1) 0 var(--esp-3); color: var(--texto-suave); }
+.prof-ordens-aviso:empty { display: none; }
+.prof-ordens-aviso .prof-link-botao { padding: 0 var(--esp-1); }
+.prof-reais { padding: 0 6px; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--amarelo) 14%, transparent); color: var(--amarelo); font-weight: 800; white-space: nowrap; }
+.prof-reais--aberto { padding: 0; background: none; color: inherit; font-weight: inherit; }
+.prof-qgm { display: grid; gap: var(--esp-3); justify-items: start; border: 1px solid color-mix(in srgb, var(--amarelo) 30%, transparent); }
+.prof-qgm > .prof-prosa { max-width: 60ch; }
+.prof-qgm-tit { font-size: var(--t-lg); font-weight: 800; }
+.prof-qgm-placar { color: var(--texto-suave); }
+.prof-qgm-par { justify-self: stretch; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: var(--esp-3); align-items: stretch; }
+.prof-qgm-ou { align-self: center; font-size: var(--t-xs); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-suave); }
+.prof-qgm-op {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-height: 132px; padding: var(--esp-4);
+  border: 2px solid transparent; border-radius: var(--raio); background: var(--superficie-turquesa); color: var(--texto);
+  font: inherit; text-align: left; cursor: pointer; transition: border-color var(--transicao), transform var(--transicao);
+}
+.prof-qgm-op:hover:not([aria-disabled="true"]) { border-color: var(--turquesa-claro); transform: translateY(-2px); }
+.prof-qgm-op[aria-disabled="true"] { cursor: default; }
+.prof-qgm-nome { font-size: var(--t-lg); font-weight: 800; line-height: 1.25; overflow-wrap: break-word; hyphens: auto; }
+.prof-qgm-valor { margin-top: auto; padding-top: var(--esp-2); font-size: var(--t-xl); font-weight: 800; color: var(--texto-suave); }
+.prof-qgm-op--maior { border-color: var(--verde); }
+.prof-qgm-op--maior .prof-qgm-valor { color: var(--amarelo); }
+.prof-qgm-op--menor { opacity: .8; }
+.prof-qgm-op--escolhida.prof-qgm-op--menor { border-color: var(--coral); opacity: 1; }
+.prof-qgm-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; white-space: nowrap; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--verde) 18%, transparent); color: var(--verde); font-size: var(--t-xs); font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.prof-qgm-tag .prof-ico { width: 12px; height: 12px; }
+.prof-qgm-retorno { font-weight: 700; }
+.prof-qgm-retorno:empty { display: none; }
+.prof-qgm-pe { min-height: 36px; }
+.prof-qgm-resultado { display: flex; align-items: center; gap: var(--esp-2); margin-bottom: var(--esp-3); color: var(--texto-suave); }
+.prof-qgm-resultado .prof-ico { flex: none; width: 18px; height: 18px; color: var(--amarelo); }
+.prof-qgm-resultado b { color: var(--amarelo); }
+@media (max-width: 479px) {
+  .prof-qgm-par { gap: var(--esp-2); }
+  .prof-qgm-op { min-height: 104px; padding: var(--esp-3); }
+  .prof-qgm-op .prof-esp-apelido { display: none; }
+  .prof-qgm-nome { font-size: var(--t-md); overflow-wrap: anywhere; }
+  .prof-qgm-valor { font-size: var(--t-lg); }
+  .prof-qgm-tag { padding-inline: 6px; letter-spacing: 0; }
+  .prof-qgm-tag .prof-ico { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prof-qgm-op:hover:not([aria-disabled="true"]) { transform: none; }
 }

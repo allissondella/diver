@@ -16,6 +16,9 @@
  * entra em fatia; no erro, um véu de pixels coral e a placa culpada acesa; no fim, "Em números" com os pontos
  * contando. Álbum de regras: cada nível completo vira o selo da regra (26), guardado com o estado da Sala
  * (ctx.gravar, sem tabela nova). Som sintetizado (botão "Som" na barra) e teclado (setas miram, espaço atira).
+ * A pistola (2026-10-17, a pedido do usuário): em primeira pessoa, como nos jogos de tiro, no canto de baixo, vista por trás
+ * e na mão de luva (o modelo 3D, desenho nosso, fica em js/descompressao/pistola-3d.js). Ela acompanha a mira só em parte,
+ * dá o coice no tiro e fica transparente quando uma placa passa atrás dela.
  */
 (() => {
   const { h, icone, plural } = UI;
@@ -313,6 +316,10 @@
       const raiz = h('div', { class: 'sd-tiro' }, palco, topo, abertura, aviso);
       ctx.container.replaceChildren(raiz);
       const g = tela.getContext('2d');
+      const arma = Pistola3D.criar({ COR }); // a pistola em primeira pessoa (js/descompressao/pistola-3d.js)
+      const fora = document.createElement('canvas'); // a pistola transparente passa por aqui antes (sem ver uma peça pela outra)
+      const og = fora.getContext('2d');
+      let dpr = 1;
       let L = 0;
       let A = 0;
       let T = 0; // onde começa o campo das placas (abaixo da regra e do placar)
@@ -356,9 +363,11 @@
       function medir() {
         const largura = Math.max(280, palco.clientWidth || 320);
         const altura = Math.max(240, palco.clientHeight || 320);
-        const dpr = Math.min(2, window.devicePixelRatio || 1);
+        dpr = Math.min(2, window.devicePixelRatio || 1);
         tela.width = Math.round(largura * dpr);
         tela.height = Math.round(altura * dpr);
+        fora.width = tela.width;
+        fora.height = tela.height;
         g.setTransform(dpr, 0, 0, dpr, 0, 0);
         L = largura;
         A = altura;
@@ -463,9 +472,10 @@
           r: Math.random, t: 0, pontos: 0, nivel: 0, agua: TANQUE, recarga: 0, placas: [], respingos: [], jatos: [], caindo: [], textos: [],
           regra: null, pausa: 0, proxima: 0.6, coice: 0, fim: false, adeus: null, acertosNivel: 0, certasCriadas: 0, p: null,
           seguidas: 0, melhorSeq: 0, selosNovos: [], completou: null, transicao: null, trilhos: [],
-          // só para o desenho e o som: ondinhas, estalos, bolhas no tanque, água balançando, bomba, tremidinha
+          // só para o desenho e o som: ondinhas, estalos, bolhas no tanque, água balançando, bomba, tremidinha, a pose da
+          // pistola (guinada e arfagem) e a transparência dela quando uma placa passa atrás
           ondas: [], estalos: [], bolhas: [], slosh: 0, tilt: 0, aguaVis: 1, bomba: 0, tremor: 0, ultimoSeco: -1, ultimoAlvo: null,
-          angVis: anguloPara(L / 2, meioCampo()), lado: -1, ladoVis: -1,
+          ...arma.alvo(L, A, L / 2, meioCampo()), armaAlfa: 1,
         };
         proximoNivel();
         cancelAnimationFrame(quadro);
@@ -646,62 +656,59 @@
         pistolaViva(dt);
       }
 
-      /** A pistola viva (só desenho): a água do tanque desce suave, balança e solta bolhas; a bomba vai e volta na recarga */
+      /** A pistola viva (só desenho): ela vira devagar até a mira (só uma parte do caminho, como nos jogos em primeira
+          pessoa), a água do tanque desce suave, balança e solta bolhas, a bomba vai e volta na recarga e, quando uma placa
+          passa atrás dela, ela fica transparente para a placa não sumir */
       function pistolaViva(dt) {
         const nivel = jogo.agua / TANQUE;
         const rm = UI.movimentoReduzido;
         jogo.aguaVis = rm ? nivel : jogo.aguaVis + (nivel - jogo.aguaVis) * Math.min(1, dt * 12);
         jogo.bomba = rm || jogo.fim || jogo.agua >= TANQUE ? 0 : Math.sin(Math.PI * Math.min(1, jogo.recarga / RECARGA));
-        // a pistola segue a mira com um tiquinho de peso; quando a mira passa para o outro lado, o pulso vira
+        // uma placa conta como atrás quando a pistola cobre pelo menos 3 dos 9 pontos dela (uma pontinha só não conta)
+        const atras = jogo.placas.some((p) => GRADE.filter(([a, b]) => arma.cobre(p.x + a * p.w, p.y + b * p.h)).length >= 3);
+        const alfaAlvo = atras ? 0.4 : 1;
+        jogo.armaAlfa = rm ? alfaAlvo : jogo.armaAlfa + (alfaAlvo - jogo.armaAlfa) * Math.min(1, dt * 10);
         const m = mira || jogo.ultimoAlvo || { x: L / 2, y: meioCampo() };
-        const alvo = anguloPara(m.x, m.y);
+        const alvo = arma.alvo(L, A, m.x, m.y);
         if (rm) { // "reduzir movimento": a pistola aponta na hora, sem balanço, e a água fica parada
-          jogo.angVis = alvo;
-          virarPulso(alvo);
+          jogo.guinada = alvo.guinada;
+          jogo.arfagem = alvo.arfagem;
           jogo.slosh = 0;
           jogo.tilt = 0;
           jogo.bolhas = [];
           return;
         }
-        const antes = jogo.angVis;
-        jogo.angVis += (alvo - jogo.angVis) * Math.min(1, dt * 18);
-        virarPulso(alvo);
-        jogo.ladoVis += (jogo.lado - jogo.ladoVis) * Math.min(1, dt * 14);
-        if (dt > 0) { // a pistola girando: a água inclina e balança
-          const w = (jogo.angVis - antes) / dt;
-          jogo.tilt += (Math.max(-0.3, Math.min(0.3, -w * 0.05)) - jogo.tilt) * Math.min(1, dt * 7);
-          jogo.slosh = Math.min(1.6, jogo.slosh + Math.min(0.5, Math.abs(w) * dt * 0.35));
+        const antes = jogo.guinada;
+        const k = Math.min(1, dt * 12);
+        jogo.guinada += (alvo.guinada - jogo.guinada) * k;
+        jogo.arfagem += (alvo.arfagem - jogo.arfagem) * k;
+        if (dt > 0) { // a pistola girando de lado: a água inclina e balança
+          const w = (jogo.guinada - antes) / dt;
+          jogo.tilt += (Math.max(-0.5, Math.min(0.5, -w * 0.25)) - jogo.tilt) * Math.min(1, dt * 7);
+          jogo.slosh = Math.min(1.6, jogo.slosh + Math.min(0.5, Math.abs(w) * dt * 1.2));
         }
         jogo.slosh *= Math.exp(-dt * 3);
-        // as bolhas sobem para o "em cima" do mundo e somem na linha d'água
-        const ag = aguaNoTanque(jogo.angVis, jogo.ladoVis, jogo.aguaVis);
+        // as bolhas sobem e somem lá em cima (o desenho só mostra as que estão embaixo da linha d'água)
+        const tq = arma.tanque;
         jogo.bolhas = jogo.bolhas.filter((b) => {
-          b.x -= ag.dx * b.v * dt;
-          b.y -= ag.dy * b.v * dt;
-          return (b.x - CAPSULA.x) * ag.dx + (b.y - CAPSULA.y) * ag.dy > ag.limiar + 1;
+          b.y += b.v * dt;
+          b.idade += dt;
+          return b.y < tq.y + tq.r * 0.85 && b.idade < 1.6;
         });
       }
-      /** O pulso vira só quando a mira passa bem para o outro lado (sem ficar virando à toa no meio) */
-      function virarPulso(alvo) {
-        const c = Math.cos(alvo);
-        if (jogo.lado < 0 && c > 0.18) jogo.lado = 1;
-        else if (jogo.lado > 0 && c < -0.18) jogo.lado = -1;
-        if (UI.movimentoReduzido) jogo.ladoVis = jogo.lado;
-      }
+      const GRADE = [-0.35, 0, 0.35].flatMap((a) => [-0.35, 0, 0.35].map((b) => [a, b])); // 9 pontos de uma placa
       function soltarBolhas(n) {
         if (UI.movimentoReduzido || jogo.bolhas.length > 24) return;
-        const ag = aguaNoTanque(jogo.angVis, jogo.ladoVis, jogo.aguaVis);
-        for (let i = 0; i < n; i++) { // nascem no fundo da água e sobem
-          const u = (Math.random() - 0.5) * CAPSULA.a * 1.2;
-          const fundo = ag.e * (0.55 + Math.random() * 0.3);
-          jogo.bolhas.push({ x: CAPSULA.x + ag.tx * u + ag.dx * fundo, y: CAPSULA.y + ag.ty * u + ag.dy * fundo, r: 1.1 + Math.random() * 1.7, v: 16 + Math.random() * 26 });
+        const tq = arma.tanque;
+        for (let i = 0; i < n; i++) { // nascem no fundo do tanque e sobem
+          jogo.bolhas.push({ x: (Math.random() - 0.5) * tq.r, y: tq.y - tq.r * (0.55 + Math.random() * 0.25), z: tq.z0 + 0.6 + Math.random() * (tq.z1 - tq.z0 - 1.2), r: 0.06 + Math.random() * 0.07, v: 1.4 + Math.random() * 1.6, idade: 0 });
         }
       }
 
       /** A água chegou: respingo, estalo e som; na placa certa, o "+1" e a placa tomba (os pontos já contaram no clique) */
       function impacto(j) {
         const chega = Math.atan2(j.y1 - j.cy, j.x1 - j.cx); // a direção da água na chegada
-        const s = Math.max(0.6, escalaPistola());
+        const s = Math.max(0.6, escala());
         if (j.tipo === 'agua') {
           const noMar = j.y1 > horizonte() + 3 && j.y1 < balcaoY() - 2;
           if (noMar) { // as ondinhas e a colunazinha d'água do "ploc"
@@ -755,20 +762,22 @@
         jogo.agua--;
         jogo.coice = 1;
         jogo.ultimoAlvo = { x, y };
-        jogo.angVis = anguloPara(x, y); // no tiro, a pistola aponta na hora
-        virarPulso(jogo.angVis);
-        jogo.ladoVis = jogo.lado;
+        const pose = arma.alvo(L, A, x, y); // no tiro, a pistola aponta na hora
+        jogo.guinada = pose.guinada;
+        jogo.arfagem = pose.arfagem;
         jogo.slosh = Math.min(1.6, jogo.slosh + 1);
         soltarBolhas(3);
-        // o jato sai do bico na direção do cano e faz a curva até o ponto; a água leva um instante para chegar (só no desenho)
-        const b = bico(x, y);
+        // o jato sai do bico na direção do cano e faz uma curva leve até o ponto (perto da linha reta, num arquinho para
+        // cima); a água leva um instante para chegar (só no desenho)
+        const b = arma.bico({ ...estadoArma(), coice: 0 });
         const dist = Math.hypot(x - b.x, y - b.y);
         const dur = UI.movimentoReduzido ? 0 : Math.max(0.08, Math.min(0.18, dist / 2600));
-        const jato = { x0: b.x, y0: b.y, cx: b.x + Math.cos(b.a) * dist * 0.45, cy: b.y + Math.sin(b.a) * dist * 0.45 - dist * 0.05, x1: x, y1: y,
-          t0: jogo.t, dur, tipo: 'agua', placa: null, seguidas: 0, bateu: false };
+        const cano = 0.35; // quanto a curva lembra a direção do cano
+        const jato = { x0: b.x, y0: b.y, x1: x, y1: y, w0: Math.max(6, Math.min(13, b.r * 1.8)), t0: jogo.t, dur, tipo: 'agua', placa: null, seguidas: 0, bateu: false,
+          cx: (b.x + Math.cos(b.a) * dist * 0.4) * cano + ((b.x + x) / 2) * (1 - cano), cy: (b.y + Math.sin(b.a) * dist * 0.4) * cano + ((b.y + y) / 2) * (1 - cano) - dist * 0.06 };
         jogo.jatos.push(jato);
         espirrar(b.x, b.y, b.a, 0.7, COR.branco, 6, 0.9); // a névoa na saída do bico e o "tchic" que abre na ponta
-        if (!UI.movimentoReduzido) jogo.estalos.push({ x: b.x, y: b.y, t0: jogo.t, r: 2, cresce: 10 * Math.max(0.6, escalaPistola()), dur: 0.1, cheio: true });
+        if (!UI.movimentoReduzido) jogo.estalos.push({ x: b.x, y: b.y, t0: jogo.t, r: 2, cresce: 10 * Math.max(0.6, escala()), dur: 0.1, cheio: true });
         tocar('jato');
         // a placa mais na frente (trilho da frente, depois a mais nova) que contém o ponto
         const alvo = [...jogo.placas].sort((a, b) => b.trilho - a.trilho || b.nasceu - a.nasceu)
@@ -1305,354 +1314,33 @@
         g.fill();
       }
 
-      /* --- a pistola d'água (2026-10-17, pedido do usuário: "mais realista"): de lado, do jeito que a gente conhece o
-         brinquedo, no canto de baixo, como se estivesse na mão. Tanque transparente em cima (a água fica sempre na
-         horizontal, balança e solta bolhas), presilhas, mangueirinha, corpo com manômetro, cano com mira, bomba embaixo
-         do cano, gatilho e cabo emborrachado. Ela gira até a mira e, quando a mira passa para o outro lado, vira o pulso. --- */
-      const BICO = 138; // do eixo da pistola (a mão) até a ponta do bico, onde a água sai
-      // o tamanho acompanha o balcão: apontada para cima, a ponta só passa um tiquinho dele
-      const escalaPistola = () => Math.max(0.42, Math.min(1, ((A - balcaoY()) * 0.72 + 15) / BICO));
-      /** A mão: no canto de baixo, à direita (no celular, um pouco mais para o meio) */
-      const pePistola = () => ({ x: L * (L < 600 ? 0.72 : 0.76), y: A - (A - balcaoY()) * 0.28 });
-      /** Para onde a pistola aponta (sempre um pouco para cima) */
-      function anguloPara(mx, my) {
-        const pe = pePistola();
-        return Math.max(-Math.PI + 0.09, Math.min(-0.09, Math.atan2(my - pe.y, mx - pe.x)));
+      /* --- a pistola d'água em primeira pessoa (2026-10-17; o modelo 3D fica em js/descompressao/pistola-3d.js): no canto
+         de baixo, à direita, vista por trás, na mão de luva. Ela aponta para o meio da tela, acompanha a mira só em parte,
+         dá o coice no tiro e fica transparente quando uma placa passa atrás dela. --- */
+      /** O tamanho dos respingos e do jato acompanha o balcão */
+      const escala = () => Math.max(0.42, Math.min(1, ((A - balcaoY()) * 0.72 + 15) / 138));
+      /** O estado da pistola para o desenho: a pose, o coice, a água, a bomba, a marola e as bolhas */
+      function estadoArma(mx = L / 2, my = meioCampo()) {
+        const rm = UI.movimentoReduzido;
+        if (!jogo) return { L, A, ...arma.alvo(L, A, mx, my), t: 0, coice: 0, nivel: 1, bomba: 0, slosh: 0, tilt: 0, bolhas: [], rm };
+        return { L, A, guinada: jogo.guinada, arfagem: jogo.arfagem, t: jogo.t, coice: jogo.coice, nivel: jogo.aguaVis, bomba: jogo.bomba, slosh: jogo.slosh, tilt: jogo.tilt, bolhas: jogo.bolhas, rm };
       }
-      /** A ponta do bico na tela, com a pistola apontada para (mx, my) */
-      function bico(mx, my) {
-        const s = escalaPistola();
-        const pe = pePistola();
-        const a = anguloPara(mx, my);
-        return { x: pe.x + Math.cos(a) * BICO * s, y: pe.y + Math.sin(a) * BICO * s, a };
-      }
-      /** A ponta do bico como ela está desenhada agora (com o coice e o giro da pistola): o jato sai daqui */
-      function pontaDaPistola() {
-        const s = escalaPistola();
-        const pe = pePistola();
-        const giro = jogo.angVis - jogo.coice * 0.07 * (jogo.ladoVis < 0 ? -1 : 1);
-        const d = (BICO - jogo.coice * 8) * s;
-        return { x: pe.x + Math.cos(giro) * d, y: pe.y + Math.sin(giro) * d };
-      }
-      /** Um polígono de cantos redondos */
-      function poligono(c, pts, r) {
-        c.beginPath();
-        c.moveTo((pts[0][0] + pts[pts.length - 1][0]) / 2, (pts[0][1] + pts[pts.length - 1][1]) / 2);
-        for (let i = 0; i < pts.length; i++) c.arcTo(pts[i][0], pts[i][1], pts[(i + 1) % pts.length][0], pts[(i + 1) % pts.length][1], r);
-        c.closePath();
-      }
-      /** Plástico com volume: brilho em cima, sombra embaixo (na pistola, "em cima" é o lado do tanque) */
-      function plastico(y0, y1, base, escura, clara) {
-        const gr = g.createLinearGradient(0, y0, 0, y1);
-        gr.addColorStop(0, clara);
-        gr.addColorStop(0.35, base);
-        gr.addColorStop(0.8, base);
-        gr.addColorStop(1, escura);
-        return gr;
-      }
-      // o tanque é uma cápsula: centro, meio comprimento e meia altura (em unidades da pistola)
-      const CAPSULA = { x: -8, y: -44, a: 54, b: 21 };
-      /** A água do tanque fica na horizontal do mundo: devolve a direção "para baixo" dentro da pistola e a linha d'água */
-      function aguaNoTanque(ang, ly, nivel) {
-        const lyy = Math.sign(ly || 1) * Math.max(0.2, Math.abs(ly));
-        let dx = Math.sin(ang);
-        let dy = Math.cos(ang) / lyy;
-        const n = Math.hypot(dx, dy) || 1;
-        dx /= n;
-        dy /= n;
-        const e = (CAPSULA.a - CAPSULA.b) * Math.abs(dx) + CAPSULA.b; // até onde o tanque vai nessa direção
-        return { dx, dy, tx: -dy, ty: dx, e, limiar: e * (1 - 2 * nivel) };
-      }
-
+      /** A ponta do bico como ela está desenhada agora (com o coice): o jato sai daqui */
+      const pontaDaPistola = () => arma.bico(estadoArma());
       function desenharPistola(mx, my) {
-        const s = escalaPistola();
-        const pe = pePistola();
-        const j = jogo;
-        const ang = j ? j.angVis : anguloPara(mx, my);
-        const ly = j ? j.ladoVis : (Math.cos(ang) < 0 ? -1 : 1);
-        const coice = j ? j.coice : 0;
-        const nivel = j ? j.aguaVis : 1;
-        const tempo = j ? j.t : 0;
-        const contorno = alfa(COR.fundo, 0.92);
-        // a sombra macia em volta, para a pistola sair do balcão
-        const cx = pe.x + Math.cos(ang) * 40 * s;
-        const cy = pe.y + Math.sin(ang) * 40 * s;
-        const halo = g.createRadialGradient(cx, cy, 8 * s, cx, cy, 120 * s);
-        halo.addColorStop(0, alfa(COR.fundo, 0.4));
-        halo.addColorStop(1, alfa(COR.fundo, 0));
-        g.fillStyle = halo;
-        g.fillRect(cx - 120 * s, cy - 120 * s, 240 * s, 240 * s);
-
-        const sobe = coice * 0.07 * (ly < 0 ? -1 : 1); // o bico sobe um tiquinho no coice
-        const giro = ang - sobe;
+        const e = estadoArma(mx, my);
+        if (!jogo || jogo.armaAlfa > 0.99) {
+          arma.desenhar(g, e);
+          return;
+        }
+        // transparente: a pistola é desenhada inteira no canvas de fora e volta de uma vez
+        og.setTransform(1, 0, 0, 1, 0, 0);
+        og.clearRect(0, 0, fora.width, fora.height);
+        og.setTransform(dpr, 0, 0, dpr, 0, 0);
+        arma.desenhar(og, e);
         g.save();
-        g.translate(pe.x, pe.y);
-        g.rotate(giro);
-        g.scale(s, s * (Math.sign(ly || 1) * Math.max(0.12, Math.abs(ly))));
-        g.translate(-coice * 8, 0); // e a pistola recua no eixo
-        g.lineJoin = 'round';
-        g.lineCap = 'round';
-
-        // o tanque transparente, com a água sempre na horizontal
-        const tq = CAPSULA;
-        const capsula = () => arredondado(g, tq.x - tq.a, tq.y - tq.b, tq.a * 2, tq.b * 2, tq.b);
-        capsula();
-        g.fillStyle = alfa(COR.branco, 0.12);
-        g.fill();
-        g.save();
-        capsula();
-        g.clip();
-        const ag = aguaNoTanque(giro, ly, nivel);
-        if (nivel > 0.01) {
-          const amp = 0.8 + (j ? j.slosh : 0) * 3.2;
-          const inc = j ? j.tilt : 0;
-          const lx = tq.x + ag.dx * ag.limiar;
-          const lyw = tq.y + ag.dy * ag.limiar;
-          const onda = (u) => {
-            const o = Math.sin(u * 0.2 + tempo * 9) * amp + u * inc;
-            return [lx + ag.tx * u + ag.dx * o, lyw + ag.ty * u + ag.dy * o];
-          };
-          const agua = g.createLinearGradient(lx, lyw, lx + ag.dx * ag.e * 2, lyw + ag.dy * ag.e * 2);
-          agua.addColorStop(0, alfa(COR.claro, 0.9));
-          agua.addColorStop(1, alfa(COR.turquesa, 0.95));
-          g.fillStyle = agua;
-          g.beginPath();
-          for (let u = -80; u <= 80; u += 4) {
-            const [x, y] = onda(u);
-            if (u === -80) g.moveTo(x, y);
-            else g.lineTo(x, y);
-          }
-          g.lineTo(lx + ag.tx * 80 + ag.dx * 120, lyw + ag.ty * 80 + ag.dy * 120);
-          g.lineTo(lx - ag.tx * 80 + ag.dx * 120, lyw - ag.ty * 80 + ag.dy * 120);
-          g.closePath();
-          g.fill();
-          g.strokeStyle = alfa(COR.branco, 0.8); // a linha d'água brilha
-          g.lineWidth = 1.5;
-          g.beginPath();
-          for (let u = -80; u <= 80; u += 4) {
-            const [x, y] = onda(u);
-            if (u === -80) g.moveTo(x, y);
-            else g.lineTo(x, y);
-          }
-          g.stroke();
-          if (j) {
-            g.strokeStyle = alfa(COR.branco, 0.8);
-            g.lineWidth = 1;
-            j.bolhas.forEach((b) => {
-              if ((b.x - tq.x) * ag.dx + (b.y - tq.y) * ag.dy < ag.limiar) return; // só embaixo da linha d'água
-              g.beginPath();
-              g.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-              g.stroke();
-            });
-          }
-        }
-        g.restore();
-        // o reflexo comprido do plástico e um brilho na ponta
-        g.strokeStyle = alfa(COR.branco, 0.6);
-        g.lineWidth = 3.2;
-        g.beginPath();
-        g.moveTo(tq.x - tq.a + 16, tq.y - tq.b + 7);
-        g.lineTo(tq.x + tq.a - 22, tq.y - tq.b + 7);
-        g.stroke();
-        g.lineWidth = 1.6;
-        g.beginPath();
-        g.moveTo(tq.x + tq.a - 13, tq.y - tq.b + 10);
-        g.lineTo(tq.x + tq.a - 9, tq.y - tq.b + 15);
-        g.stroke();
-        capsula();
-        g.lineWidth = 3;
-        g.strokeStyle = contorno;
-        g.stroke();
-        arredondado(g, tq.x - tq.a + 2, tq.y - tq.b + 2, tq.a * 2 - 4, tq.b * 2 - 4, tq.b - 2);
-        g.lineWidth = 1.2;
-        g.strokeStyle = alfa(COR.branco, 0.4);
-        g.stroke();
-        // as presilhas que prendem o tanque
-        [-42, 24].forEach((x) => {
-          arredondado(g, x, tq.y - tq.b - 2, 7, tq.b * 2 + 6, 3);
-          g.fillStyle = plastico(tq.y - tq.b, tq.y + tq.b, COR.turquesa, COR.turquesaEscura, COR.claro);
-          g.fill();
-          g.lineWidth = 2;
-          g.strokeStyle = contorno;
-          g.stroke();
-        });
-        // a tampa de rosca, atrás, em cima do tanque
-        arredondado(g, -54, tq.y - tq.b - 9, 16, 10, 3);
-        g.fillStyle = plastico(tq.y - tq.b - 9, tq.y - tq.b + 1, COR.amarelo, COR.amareloSombra, misturar(COR.amarelo, COR.branco, 0.6));
-        g.fill();
-        g.lineWidth = 2;
-        g.strokeStyle = contorno;
-        g.stroke();
-        g.strokeStyle = alfa(COR.amareloSombra, 0.9);
-        g.lineWidth = 1;
-        for (let x = -51; x <= -41; x += 3) {
-          g.beginPath();
-          g.moveTo(x, tq.y - tq.b - 7.5);
-          g.lineTo(x, tq.y - tq.b - 0.5);
-          g.stroke();
-        }
-
-        // o cano, com dois anéis e a mira na ponta
-        arredondado(g, 52, -6, 76, 12, 5);
-        g.fillStyle = plastico(-6, 6, COR.amarelo, COR.amareloSombra, misturar(COR.amarelo, COR.branco, 0.6));
-        g.fill();
-        g.lineWidth = 2.5;
-        g.strokeStyle = contorno;
-        g.stroke();
-        g.strokeStyle = alfa(COR.fundo, 0.4);
-        g.lineWidth = 1.6;
-        [80, 104].forEach((x) => {
-          g.beginPath();
-          g.moveTo(x, -5);
-          g.lineTo(x, 5);
-          g.stroke();
-        });
-        g.strokeStyle = alfa(COR.branco, 0.55);
-        g.lineWidth = 2;
-        g.beginPath();
-        g.moveTo(58, -3);
-        g.lineTo(122, -3);
-        g.stroke();
-        poligono(g, [[116, -6], [121, -12], [125, -6]], 1.5); // a mira (alça de mira na ponta do cano)
-        g.fillStyle = COR.coral;
-        g.fill();
-        g.lineWidth = 1.6;
-        g.strokeStyle = contorno;
-        g.stroke();
-        // o bico, por onde a água sai
-        arredondado(g, 124, -8, 16, 16, 4);
-        g.fillStyle = plastico(-8, 8, COR.coral, COR.coralSombra, misturar(COR.coral, COR.branco, 0.5));
-        g.fill();
-        g.lineWidth = 2.5;
-        g.strokeStyle = contorno;
-        g.stroke();
-        g.strokeStyle = alfa(COR.fundo, 0.45);
-        g.lineWidth = 1.4;
-        g.beginPath();
-        g.moveTo(135, -6);
-        g.lineTo(135, 6);
-        g.stroke();
-
-        // a bomba embaixo do cano: vai e volta enquanto a água recarrega
-        const bo = -(j ? j.bomba : 0) * 14;
-        arredondado(g, 62 + bo, 6, 42, 16, 6);
-        g.fillStyle = plastico(6, 22, COR.coral, COR.coralSombra, misturar(COR.coral, COR.branco, 0.45));
-        g.fill();
-        g.lineWidth = 2.5;
-        g.strokeStyle = contorno;
-        g.stroke();
-        g.strokeStyle = alfa(COR.coralSombra, 0.85);
-        g.lineWidth = 1.6;
-        for (let x = 69; x <= 97; x += 5.5) {
-          g.beginPath();
-          g.moveTo(x + bo, 9);
-          g.lineTo(x + bo, 19);
-          g.stroke();
-        }
-
-        // o cabo emborrachado, inclinado para trás
-        const cabo = [[-30, 8], [2, 8], [-6, 70], [-38, 70]];
-        poligono(g, cabo, 8);
-        g.fillStyle = plastico(8, 70, COR.turquesaEscura, misturar(COR.turquesaEscura, COR.fundo, 0.45), COR.turquesa);
-        g.fill();
-        g.save();
-        poligono(g, cabo, 8);
-        g.clip();
-        g.strokeStyle = alfa(COR.fundo, 0.4);
-        g.lineWidth = 2;
-        for (let y = 20; y < 70; y += 7) {
-          g.beginPath();
-          g.moveTo(-42, y);
-          g.lineTo(6, y - 3);
-          g.stroke();
-        }
-        g.restore();
-        poligono(g, cabo, 8);
-        g.lineWidth = 3;
-        g.strokeStyle = contorno;
-        g.stroke();
-        // o guarda-mato e o gatilho (que puxa no tiro)
-        g.strokeStyle = COR.turquesaEscura;
-        g.lineWidth = 4;
-        g.beginPath();
-        g.moveTo(2, 10);
-        g.lineTo(2, 26);
-        g.quadraticCurveTo(2, 34, 12, 34);
-        g.lineTo(26, 34);
-        g.quadraticCurveTo(34, 34, 34, 24);
-        g.lineTo(34, 10);
-        g.stroke();
-        const puxa = coice * 4;
-        g.strokeStyle = contorno;
-        g.lineWidth = 7;
-        g.beginPath();
-        g.moveTo(20 - puxa, 12);
-        g.quadraticCurveTo(22 - puxa, 22, 14 - puxa, 28);
-        g.stroke();
-        g.strokeStyle = COR.coral;
-        g.lineWidth = 4.2;
-        g.stroke();
-
-        // o corpo de plástico, com a costura, os parafusos e o manômetro
-        arredondado(g, -62, -26, 120, 38, 11);
-        g.fillStyle = plastico(-26, 12, COR.turquesa, COR.turquesaEscura, COR.claro);
-        g.fill();
-        g.lineWidth = 3;
-        g.strokeStyle = contorno;
-        g.stroke();
-        g.strokeStyle = alfa(COR.branco, 0.35);
-        g.lineWidth = 2.4;
-        g.beginPath();
-        g.moveTo(-52, -21.5);
-        g.lineTo(46, -21.5);
-        g.stroke();
-        g.strokeStyle = alfa(COR.fundo, 0.25);
-        g.lineWidth = 1.2;
-        g.beginPath();
-        g.moveTo(-56, -6);
-        g.lineTo(14, -6);
-        g.stroke();
-        [[-52, -15], [-52, 3], [8, 4]].forEach(([x, y]) => {
-          g.fillStyle = COR.turquesaSombra;
-          g.beginPath();
-          g.arc(x, y, 2.6, 0, Math.PI * 2);
-          g.fill();
-          g.strokeStyle = alfa(COR.branco, 0.45);
-          g.lineWidth = 1;
-          g.beginPath();
-          g.moveTo(x - 1.4, y);
-          g.lineTo(x + 1.4, y);
-          g.stroke();
-        });
-        g.fillStyle = COR.perola;
-        g.strokeStyle = contorno;
-        g.lineWidth = 2;
-        g.beginPath();
-        g.arc(34, -8, 9, 0, Math.PI * 2);
-        g.fill();
-        g.stroke();
-        g.strokeStyle = COR.coral;
-        g.lineWidth = 1.4;
-        g.beginPath();
-        g.arc(34, -8, 6.4, Math.PI * 0.75, Math.PI * 1.05);
-        g.stroke();
-        const pa = Math.PI * 0.75 + nivel * Math.PI * 1.5; // o ponteiro mostra quanta água (pressão) ainda tem
-        g.strokeStyle = COR.escuro;
-        g.lineWidth = 1.7;
-        g.beginPath();
-        g.moveTo(34, -8);
-        g.lineTo(34 + Math.cos(pa) * 6.6, -8 + Math.sin(pa) * 6.6);
-        g.stroke();
-        // a mangueirinha que leva a água do tanque para o cano
-        g.strokeStyle = contorno;
-        g.lineWidth = 7;
-        g.beginPath();
-        g.moveTo(40, -22);
-        g.quadraticCurveTo(58, -24, 56, -6);
-        g.stroke();
-        g.strokeStyle = alfa(COR.claro, 0.9);
-        g.lineWidth = 3.6;
-        g.stroke();
+        g.globalAlpha = jogo.armaAlfa;
+        g.drawImage(fora, 0, 0, L, A);
         g.restore();
       }
 
@@ -1667,13 +1355,13 @@
         if (!j.dur) return [0, idade < 0.12 ? 1 : 0]; // "reduzir movimento": o jato aparece inteiro e some
         return [Math.max(0, Math.min(1, (idade - JATO_PULSO) / j.dur)), Math.min(1, idade / j.dur)];
       }
-      /** A largura do jato (u de 0, no bico, a 1, no alvo): grosso na saída e mais fino lá longe */
-      const larguraDoJato = (u, s) => (12 - 6.5 * u) * s;
+      /** A largura do jato (u de 0, no bico, a 1, no alvo): grosso na saída (do tamanho do furo do bico) e mais fino lá longe */
+      const larguraDoJato = (j, u, s) => (j.w0 || 12 * s) * (1 - u) + 5.5 * s * u;
       /** O jato é uma fita d'água: borda escura (para aparecer no céu e nas placas), corpo claro, miolo e o brilho do
          lado da luz. Ele engorda e afina de leve (mais perto da frente, onde a água começa a virar gotas), afina quando o
          gatilho solta, e a frente é uma gota gorda que vai espirrando. */
       function desenharJatos() {
-        const s = Math.max(0.55, escalaPistola());
+        const s = Math.max(0.55, escala());
         const rm = UI.movimentoReduzido;
         for (const j of jogo.jatos) {
           const [k0, k1] = trechoDoJato(j);
@@ -1703,7 +1391,7 @@
             }
             const afina = k0 > 0 ? Math.min(1, i / 4) : 1; // o rabo solto termina em ponta
             const pulsa = rm || !j.dur ? 1 : 1 + (0.06 + 0.16 * p.u) * Math.sin(comprido / (7 * s) - idade * 60);
-            p.w = larguraDoJato(p.u, s) * pressao * afina * pulsa;
+            p.w = larguraDoJato(j, p.u, s) * pressao * afina * pulsa;
             p.nx = nx;
             p.ny = ny;
           });
@@ -1735,13 +1423,13 @@
             const u = k0 + (k1 - k0) * ((idade * 6 + n / 3) % 1);
             const [x, y] = pontoDoJato(j, u);
             g.beginPath();
-            g.arc(x, y, Math.max(1, larguraDoJato(u, s) * 0.14), 0, Math.PI * 2);
+            g.arc(x, y, Math.max(1, larguraDoJato(j, u, s) * 0.14), 0, Math.PI * 2);
             g.fill();
           }
           if (k1 >= 1) continue;
           // a frente: uma gota gorda, com brilho, e as gotinhas que espirram na frente dela
           const f = pts[N];
-          const rf = (larguraDoJato(k1, s) * pressao) * 0.62 + 1;
+          const rf = (larguraDoJato(j, k1, s) * pressao) * 0.62 + 1;
           g.fillStyle = alfa(COR.turquesaEscura, 0.5);
           g.beginPath();
           g.arc(f.x, f.y, rf + 1.5, 0, Math.PI * 2);
@@ -2127,7 +1815,13 @@
       ]);
       medir();
       // Só para os testes automáticos (window.__diverTeste existe apenas quando o teste cria): ver a partida e atirar numa placa
-      if (window.__diverTeste) window.__diverTeste.tiro = { jogo: () => jogo, atirar: (x, y) => atirar(x, y), mira: () => mira, medidas: () => ({ L, A, T, balcao: balcaoY(), pistola: A - (pePistola().y - BICO * escalaPistola()), pe: pePistola(), escala: escalaPistola() }) };
+      if (window.__diverTeste) {
+        window.__diverTeste.tiro = { jogo: () => jogo, atirar: (x, y) => atirar(x, y), mira: () => mira, silhueta: () => arma.silhueta(), cobre: (x, y) => arma.cobre(x, y),
+          medidas: () => {
+            const s = arma.silhueta(); // "pistola": quanto da altura da tela a pistola ocupa
+            return { L, A, T, balcao: balcaoY(), pistola: s ? A - Math.min(...s.map((q) => q.y)) : 0, pe: arma.mao(L, A), escala: escala() };
+          } };
+      }
       regraEl.textContent = 'Tiro ao Alvo';
       mostrarAbertura();
 
