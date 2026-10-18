@@ -5,6 +5,16 @@
 
 ---
 
+## 2026-10-18 · Pontos de melhoria: tiro mais rápido, "Tiro ao Alvo", Palavrinha num cartão só, Biologia e som nas perguntas
+- **Pedido do usuário:** "Quero que a pistola atire mais rápido [...] igual a um jogo de tiro, mas vamos por água", "O nome deve ser 'Tiro ao Alvo'", "Palavrinha vamos deixar apenas uma, na parte de cima deve ter a opção de escolher x2 e x4", "Vamos subir essa profissão: Biologia" (kit v4.1) e o som de acerto e de erro em todas as perguntas da trilha (sons comprados por ele na ElevenLabs). Plano aprovado ("manda bala").
+- **Feito:**
+  - **Tiro:** o jato chega em 0,025 a 0,05 s, quase reto; coice seco; estalo curto de água sob pressão; recarga em dobro (0,11 s por jato). Um jato por clique, sem espera. Vale para os dois jogos de tiro.
+  - **Nome:** na Sala de Descompressão, "Tiro de Reflexo" virou "Tiro ao Alvo" (id e placar `sala-reflexo` iguais).
+  - **Palavrinha:** um cartão só na Sala de Jogos; no topo do jogo, Palavrinha · x2 · x4 (só os modos que o curso aguenta), lembrado no aparelho. Cada modo segue com a sua palavra, estatísticas e ranking.
+  - **Som nas perguntas:** Mergulho e Revisão tocam `assets/sons/acerto.mp3` e `erro.mp3`; Simulado, Prova e prova enviada não (entregaria o gabarito). Botão de som no topo da questão, a mesma escolha dos jogos.
+  - **Biologia:** a 23ª ficha, `rascunho`, conferida na fonte oficial. Três correções no kit: sem EAD (Portaria 378/2025), o PL do piso passou pela CCJ em 28/04/2026 e ainda não é lei, período do Caged 09/2025 a 08/2026. Ícone da dupla hélice; parecer em `docs/validacoes/profissoes-biologia-2026-10-18.md`.
+- **Pendente:** revisão da ficha de Biologia por um(a) biólogo(a) (dia a dia, o que estuda, "Agora", DNA, dilema) e trocar o Caged pelo painel do MTE.
+
 ## 2026-10-18 · Onda D dos jogos no palco: a Sala de Descompressão (etapa 4)
 - **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos e conteúdo iguais; o Tiro de Reflexo já estava pronto.
 - **Feito:** os cinco jogos da sala em tela toda (`telaCheia`), no palco (`Palco.daSala(ctx)`), cada um com o seu cenário, movimento e som.
