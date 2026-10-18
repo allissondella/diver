@@ -27,6 +27,7 @@ _Partidas curtas para revisar um pouquinho a cada dia._
 | **Memória** (`memoria`) | Jogo das cartas viradas: encontre os pares termo ↔ definição. Menos tentativas e menos tempo, mais pontos. | Pares (ou derivado das questões) | Conchas que abrem e fecham | Pronto (v0) |
 | **Adivinha Aí** (`adivinha-ai`) | As dicas aparecem uma a uma. Quanto antes você acertar, mais pontos. Aceita a resposta sem acento e sem maiúsculas. | Adivinhas (até 10 dicas por carta) | Dicas que chegam em garrafas com mensagem | Pronto (v0) |
 | **Palavrinha**, **Palavrinha x2** e **Palavrinha x4** (`palavrinha`, `palavrinha-x2`, `palavrinha-x4`) | Descubra a palavra-chave do curso: cada palpite pinta as letras (lugar certo, em outro lugar, não está). 6 tentativas; no x2 e no x4, 2 ou 4 palavras de uma vez (7 e 9 tentativas). **Palavra do dia** igual para todo o curso (sorteio pela data, sem repetir até usar todas) e **Treino livre**. Os dois valem XP, estatísticas e pontos no **Ranking Diver** do curso (zera todo mês); pérolas, só a palavra do dia. Tema desde o início (nunca um que entregue a palavra); dica completa depois da 3ª tentativa. Aviso do ranking na primeira vez. Tudo vindo do log de atividade (`docs/ATIVIDADE.md`). | Palavras simples de 4 a 8 letras (bloco `palavras` + respostas curtas). Aparece com 30 (x1) ou 40 palavras (x2/x4, com 10 de um mesmo tamanho) | Peças de letra no fundo do mar, que acendem quando acertam | Pronto (v1) |
+| **Tiro ao Alvo** (`tiro-ao-alvo`) | Pistola d'água em primeira pessoa, por níveis: cada nível tem uma regra de escola ("Só os PEIXES", "Números PRIMOS", "Capitais do Brasil"...) e só valem as placas que combinam com ela; placa errada ou certa que escapa acaba a rodada. Em **tela toda**, com o álbum de 26 selos. Cada nível completo vale XP e pérolas (detalhes na seção 5). | Não usa as cartas: as 26 regras são do próprio jogo. **Só nos cursos das salas do Enem e do Ensino Médio** | Barraca de tiro na beira do mar, ao pôr do sol | Pronto (2026-10-18) |
 
 ### Aventuras
 _Jogos com mapa, chefe, sobrevivência e desafios de raciocínio._
@@ -125,7 +126,7 @@ O formato atual das **questões** (múltipla escolha) **não muda**. Os blocos a
 ### Sala de Jogos por curso (desde 2026-10-01)
 A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os jogos que esse curso suporta**:
 - **Núcleo** (Mergulho, Simulado, Revisão): sempre aparece.
-- **Demais jogos:** aparecem só se `Jogos.estado(jogo, Cartas.derivar(trilha))` for `disponivel`, ou seja, se o curso tem o mínimo de cartas de cada tipo pedido em `requer` (ex.: Memória `{ pares: 6 }`, Adivinha Aí `{ adivinhas: 1 }`, Caso Resolvido `{ casos: 1 }`).
+- **Demais jogos:** aparecem só se `Jogos.estado(jogo, Cartas.derivar(trilha))` for `disponivel`, ou seja, se o curso tem o mínimo de cartas de cada tipo pedido em `requer` (ex.: Memória `{ pares: 6 }`, Adivinha Aí `{ adivinhas: 1 }`, Caso Resolvido `{ casos: 1 }`). Um jogo também pode ter a regra própria `temConteudo(cartas)`: o Tiro ao Alvo usa `cartas.trilhaId` (o id do curso, que o `Cartas.derivar` devolve junto desde 2026-10-18) para aparecer só nos cursos das salas do Enem e do Ensino Médio (`Grupos.LISTA`).
 - **Sem conteúdo suficiente** (`precisa`) ou **ainda não lançado** (`embreve`: Torre do Saber, Duelo, Cruzadinha, Batalha de Turmas): o jogo **não aparece**, nem desabilitado. Nada de card fantasma.
 - **Grupo vazio** (ex.: "Estratégia e duelos" num curso sem `casos`): o título do grupo também some.
 - O **Desafio do Dia** já sorteava só jogos disponíveis; continua igual.
@@ -164,6 +165,11 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
   registro: {}                                 // opcional: dados extras do jogo para o log de atividade (docs/ATIVIDADE.md)
 }
 ```
+
+### Jogo em tela toda e com rodadas (2026-10-18; o Tiro ao Alvo)
+- **`telaCheia: true`** na definição: a tela do jogo vira uma camada do tamanho da janela (`#tela-jogo.tela--cheia`, `body.jogo-trava`, contêiner `sd-cheia`, o mesmo da Sala de Descompressão) e a barra de cima (sair, o nome do jogo e o curso) fica por cima, num degradê. **`ctx.barra(...nós)`** põe os botões do jogo nessa barra (`#jogo-botoes`; o Tiro ao Alvo põe "Som" e "Tela cheia"). Até 767 px os botões ficam só no ícone; até 479 px o nome do curso some e fica só o do jogo.
+- **Rodadas sem sair do jogo:** **`ctx.concluirRodada(resultado)`** aplica um Resultado padrão na hora (economia, log, conquistas, nível) e devolve `{ xp, perolas, dobro }`; o jogo mostra o fim dele e oferece "Jogar de novo". O Desafio do Dia dobra só a primeira rodada. **`ctx.sair()`** volta para a Sala de Jogos sem perguntar.
+- **`emAndamento()`** no controlador (o que `iniciar` devolve, junto com `destruir`): entre as rodadas, o X e o Voltar do navegador saem sem perguntar (as rodadas feitas já valeram); durante a rodada, perguntam, como nos outros jogos.
 
 ## 4. Checklist de aceitação (todo jogo novo)
 - [ ] Registrado em `js/jogos/registro.js` com o `requer` certo: o card aparece na Sala de Jogos **só** nos cursos que têm o conteúdo pedido (sem conteúdo ou "em breve" = não aparece).
@@ -229,6 +235,21 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
 - Itens embaralhados boiando na correnteza; o aluno arrasta para a ordem certa e confere (até 3 conferências).
 - Pontuação por itens no lugar certo. Serve para cronologias, etapas e procedimentos.
 - **Obrigatório:** alternativa por teclado (mover item com setas + Enter) e funcionamento por toque.
+
+#### Tiro ao Alvo (`tiro-ao-alvo`) — 2026-10-18
+- **Pedido do usuário:** "vamos deixar esse jogo da pistola como educacional para quem faz o enem ou ensino médio lá na sala de jogos". Sobre o conteúdo, a resposta foi "pode deixar como está o jogo agora, não muda nada".
+- **O jogo:** arquivo `js/jogos/tiro-ao-alvo.js`, só o registro. É o mesmo jogo que morava na Sala de Descompressão: as 26 regras, os níveis, a barraca, a pistola, a festa e o álbum. Roda pelo motor `TiroAoAlvo.abrir(ctx, { modo: 'regras' })` de `js/descompressao/tiro.js`, que entrou no pacote `jogos` com `pistola-3d.js`. As regras e o desenho estão na seção 6 ("Tiro ao Alvo — o motor e o jogo das regras").
+- **Onde aparece:** só nos cursos das salas Mergulho no Enem e Vestibular (`enem-*`) e Ensino Médio (`em-*`), pela regra `temConteudo`. Fica no grupo "Jogos rápidos".
+- **XP e pérolas, pela economia, a cada rodada (`ctx.concluirRodada`):**
+  - cada nível completo é um acerto: fácil nos níveis 1 e 2, médio no 3 e no 4, difícil do 5 em diante, com o combo da economia;
+  - a placa do fim é o erro;
+  - cada 4 pontos viram 1 de XP de bônus.
+  - Exemplo: com 2 níveis e 21 pontos, a rodada dá +25 XP e +2 pérolas.
+  - O cartão do fim mostra o que a rodada rendeu ("+25 XP e +2 pérolas no curso"). Sem nível completo, mostra "Complete um nível para ganhar XP no curso.".
+  - O recorde é o do curso (`prog.jogos['tiro-ao-alvo'].melhor`), como nos outros jogos.
+  - O log leva `pontos`, `nivel`, `motivo` e `seguidas`.
+- **O álbum e o som** continuam no estado da Sala de Descompressão (`diver:v1:descompressao` → `jogos.tiro`): quem já tinha selos não perde nenhum.
+- **Voltar e sair:** o fim mostra "Voltar para a Sala de Jogos". Tutorial próprio: `jogo-tiro-ao-alvo`.
 
 #### Torre do Saber (`torre`) — semana 16
 - Torre de 12 a 18 blocos, coloridos por dificuldade (verde fácil, azul médio, roxo difícil; roxo vale mais).
@@ -319,6 +340,7 @@ _Cruzadinha Submarina e Batalha de Turmas ao vivo ficam para depois do lançamen
 - **Testes:** o gancho dos testes (abaixo) também tem `modo`, `zona()` (os contornos da pistola) e `naZona(x, y, w, h)`.
 
 #### Tiro ao Alvo — o motor e o jogo das regras (morou na sala como `sala-tiro` até 2026-10-18)
+- **Desde 2026-10-18 o jogo das regras fica na Sala de Jogos** dos cursos do Enem e do Ensino Médio, valendo XP (seção 5, "Tiro ao Alvo"). O que vem abaixo vale para os dois jeitos de jogar do motor: o das regras e o Tiro de Reflexo, logo acima.
 - **Tela toda (2026-10-17, pedido do usuário: "mais bonito, divertido e use a tela toda"):** o jogo ocupa a janela inteira (`telaCheia: true` no contrato; a barra da Sala fica por cima, num degradê, com **Som**, **Tela cheia** de verdade onde o navegador deixa e **Ranking**; no celular, só os ícones, de 44 px). A regra e o placar ficam em pílulas no alto (no celular deitado, na mesma linha). Abertura e fim num cartão só, no desenho das Profissões; no celular deitado ele vira duas colunas e, nas telas bem baixas, encolhe para caber sem rolar.
 - **A barraca na beira do mar** (tudo desenhado no `<canvas>`, com as cores dos tokens via `UI.cor`): céu e mar ao pôr do sol (sol, ilhota com coqueiro, reflexo), toldo listrado, luzinhas, bandeirinhas, colunas e balcão de madeira com peixinhos de pelúcia. O fundo e a moldura ficam guardados em imagens e só são refeitos quando a tela muda de tamanho.
 - **A pistola e a água (2026-10-17, pedido do usuário: "mais realista", "som de água" e "satisfatório os tiros"; só desenho e som, o acerto continua decidido no clique):** desde o fim do dia (pedido do usuário: a mesma visão dos jogos de tiro, "mas de água"), a pistola é **em primeira pessoa**: no canto de baixo, à direita, vista por trás e segura por uma **mão de luva de mergulho**, com o braço na roupa de neoprene. É um modelo 3D pequeno, desenho nosso (`js/descompressao/pistola-3d.js`, no pacote `descompressao`, antes de `tiro.js`): prismas e cilindros em perspectiva no `<canvas>`, com luz de cima, vincos e contorno de figurinha. Tanque transparente com tampinha amarela e presilhas (a água fica sempre na horizontal do mundo, balança quando a pistola gira e solta bolhas), **manômetro** do lado (o ponteiro mostra a água que sobra), cano com anéis e mira, **bomba** que vai e volta enquanto a água recarrega, gatilho que puxa no tiro e cabo. Ela aponta para o meio da tela e **acompanha a mira só em parte**, como nos jogos em primeira pessoa (no celular em pé, fica de três quartos, virada para a esquerda); o **bico sobe quando a mira sobe** e desce quando ela desce (2026-10-18, pedido do usuário: estava invertido). Para subir e descer, ela gira em volta da frente do corpo: a mão desce um pouco e o alto dela não passa do trilho do meio; a mira em cima do placar conta como o alto do campo; quando uma placa passa atrás dela, **fica transparente** (40%) para a placa não sumir. No tiro: coice (o bico sobe e a pistola recua; tranco rápido, volta macia), névoa no bico e um **jato de verdade**, uma fita d'água que sai do furo do bico numa curva leve até o alvo (quase reta, num arquinho para cima), engorda e afina de leve, e leva um instante para chegar (de 0,08 a 0,18 s; a placa só tomba quando a água chega). Na placa: clarão, anel, uma **coroa de gotas** que se desfaz e cai, gotas voltando num leque, a **marca d'água** que escorre (por baixo do texto, que continua nítido) e uma tremidinha da barraca. No mar: ondinhas e a colunazinha do "ploc"; no ar, a água se espalha. Tanque vazio: o gatilho estala seco e o bico só pinga.

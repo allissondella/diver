@@ -145,11 +145,14 @@ Jogos.registrar({
   opcoes: [{ id: 'pares', rotulo: 'Tamanho', valores: [[6, '6 pares'], [8, '8 pares']], padrao: 6 }], // opcional
   iniciar(ctx) { /* monta a tela em ctx.container */ return { destruir() {} }; },
 });
-// ctx = { container, trilha, cartas, prog, opcoes, aoTerminar(resultado), gastarPerolas(n) }
+// ctx = { container, trilha, cartas, prog, opcoes, aoTerminar(resultado), gastarPerolas(n),
+//         barra(...nós), concluirRodada(resultado) → { xp, perolas, dobro }, sair() }   // tela toda e rodadas (2026-10-18)
+// definição: telaCheia: true (a janela inteira); controlador: { destruir(), emAndamento() } (emAndamento é opcional)
 // resultado = Jogos.resultado({ jogoId, trilha, detalhes, inicio, comboMaximo, bonus, pontuacao, titulo, subtitulo, ... })
 // detalhe  = JogoComum.detalhe(carta, acertou, { inicio, pergunta, resposta, sua, neutro })
 ```
-- `cartas` vem de `Cartas.derivar(trilha)`: `{ multipla, vf, flash, pares, adivinhas, sequencias, palavras }`.
+- `cartas` vem de `Cartas.derivar(trilha)`: `{ trilhaId, multipla, vf, flash, pares, adivinhas, sequencias, palavras }` (`trilhaId` desde 2026-10-18: o Tiro ao Alvo só aparece nas salas do Enem e do Ensino Médio).
+- **Tela toda e rodadas (2026-10-18, o Tiro ao Alvo):** com `telaCheia`, o `iniciarJogo` põe `tela--cheia` no `#tela-jogo` e o `mostrarTela` trava a rolagem (`body.jogo-trava`); os botões do jogo vão para `#jogo-botoes`. `ctx.concluirRodada` aplica o resultado sem sair do jogo (`aplicarResultadoDoJogo`, a mesma parte da economia do `terminarJogo`; o Desafio do Dia dobra só a primeira rodada). Com `emAndamento()` falso, sair não pergunta.
 - Estado do jogo: `disponivel` | `precisa` (falta conteúdo) | `embreve`. **A Sala mostra só o núcleo (Mergulho, Simulado, Revisão: abrem a própria área) e os jogos `disponivel` do curso atual**; `precisa` e `embreve` não aparecem, e grupo vazio some (`renderizarSala` no `app.js`; regra em `docs/JOGOS.md`, "Sala de Jogos por curso").
 - `Economia.aplicarResultado()`: detalhe cujo `cartaId` é uma questão da trilha passa pela repetição espaçada (`Progresso.registrarResposta`); o resto por `Progresso.registrarAvulsa`. `neutro: true` ("Quase" nas Cartas do Fundo) conta como estudo, sem acerto nem erro. XP por acerto = tabela do Mergulho + combo (3+ seguidos, +5); bônus do jogo com teto (`CONFIG.bonusMaximo`); Desafio do Dia dobra o XP.
 
@@ -165,7 +168,7 @@ Jogos.registrar({
 | `diver:v1:provas-enviadas` | Provas antigas: `{ versao, provas: [{ id, trilhaId, titulo, criadaEm, honesto, minutos, questoes: [{ id, tema, dificuldade, enunciado, alternativas, correta, explicacao }], tentativas: [{ data, acertos, total, nota, tempoSeg, xp, perolas }] }], feitas: { idDaProvaDoProfessor: [tentativas] } }`. Sincroniza com a nuvem como o resto. |
 | `diver:v1:mascote` | Mascote escolhido: `{ rosto, tom }` (ids de `Mascotes.ROSTOS` e `Mascotes.TONS`). Sincroniza com a nuvem. |
 | `diver:v1:operacao` | Caso Resolvido ("Operação Recife Sombrio" v2): número do caso atual (`rodada`), o caso sorteado (solução, pérolas, interrogados, mergulhos feitos, chaves, riscados, acusação), o histórico dos casos fechados, um resultado ainda não recebido (`pendente`) e o diário de bordo (até 80). Sincroniza com a nuvem. |
-| `diver:v1:descompressao` | Sala de Descompressão: `recordes` por jogo, `hoje` (pontos do dia por jogo, para o card) e `jogos` (estado de cada jogo: caso do dia da Investigação, partida e histórico da Palavrinha do Dia, preferências da Batata Quente, o som do Cardume, do Tiro de Reflexo (`jogos.reflexo.som`) e do Tiro ao Alvo, e o álbum de regras do Tiro, `jogos.tiro.selos`). Sincroniza com a nuvem. |
+| `diver:v1:descompressao` | Sala de Descompressão: `recordes` por jogo, `hoje` (pontos do dia por jogo, para o card) e `jogos` (estado de cada jogo: caso do dia da Investigação, partida e histórico da Palavrinha do Dia, preferências da Batata Quente, o som do Cardume, do Tiro de Reflexo (`jogos.reflexo.som`) e do Tiro ao Alvo, e o álbum de regras do Tiro, `jogos.tiro.selos`; o Tiro ao Alvo da Sala de Jogos lê e grava o mesmo `jogos.tiro`, para ninguém perder os selos). Sincroniza com a nuvem. |
 | `diver:v1:profissoes` | Mapa das Profissões: `vistas`, `mira`, cartas da Maré (`cartasSim`/`cartasNao`), `pedidos`, `dna`, `diaConcluido`, `mitosConcluido`, `chutes`, `votos`, `cartasGeradas`, `salarioRevelado`, `tec` (Panorama da Tecnologia: `areasVistas`, `jogo`, `jogoConcluido`; o `salario` antigo não é mais usado) e `med` (Panorama da Medicina, mesmos campos). O palpite de salário fica em `chutes['<id>:palpite']`. Sincroniza com a nuvem. |
 | `diver-local:v1:profissoes-sem-menu` | "Esconder menu" da aba Profissões (só no aparelho). |
 | `diver-local:v1:profissoes-fontes` | "Mostrar as fontes" da aba Profissões: os números das fontes e as linhas "Fonte:" à vista (só no aparelho). |

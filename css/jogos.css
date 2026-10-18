@@ -6,6 +6,39 @@
 .tela--jogo { padding-bottom: 40px; }
 .jogo-topo__titulo { flex: 1; min-width: 0; }
 .jogo-topo__titulo h1 { font-size: var(--t-lg); font-weight: 800; }
+.jogo-topo__botoes { display: flex; gap: var(--esp-2); }
+.jogo-topo__botoes:empty { display: none; }
+.jogo-topo__botoes > .sd-tiro__botoes { display: flex; gap: var(--esp-2); } /* "Som" e "Tela cheia" do Tiro ao Alvo */
+
+/* ---------- Jogo em tela toda (2026-10-18; o Tiro ao Alvo, com o desenho da Sala de Descompressão) ----------
+   A tela do jogo vira uma camada do tamanho da janela, e a barra de cima (sair, nome do jogo e os botões dele) fica por
+   cima do jogo, num degradê. O fundo é o mesmo contêiner de tamanho da Descompressão (sd-cheia): o que fica baixo demais
+   (celular deitado) se ajusta igual. */
+body.jogo-trava { overflow: hidden; }
+.tela--jogo.tela--cheia {
+  position: fixed; inset: 0; z-index: var(--z-flutuante); max-width: none; margin: 0; padding: 0;
+  container: sd-cheia / size;
+  --sd-topo: calc(44px + var(--esp-2) * 2 + env(safe-area-inset-top));
+}
+.ambiente-testes .tela--jogo.tela--cheia { top: var(--faixa); }
+.tela--cheia > .quiz-topo {
+  position: absolute; z-index: var(--z-acima-2); inset: 0 0 auto; margin: 0; gap: var(--esp-3);
+  padding: calc(var(--esp-2) + env(safe-area-inset-top)) calc(var(--esp-3) + env(safe-area-inset-right)) var(--esp-2) calc(var(--esp-3) + env(safe-area-inset-left));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--fundo-0) 88%, transparent), transparent);
+}
+.tela--cheia > .jogo-palco { position: absolute; inset: 0; margin: 0; display: block; }
+.tela--cheia .jogo-topo__titulo { display: grid; }
+.tela--cheia .jogo-topo__titulo > * { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Até 767 px (o celular deitado), os botões do jogo ficam só no ícone: sobra lugar para o nome do jogo */
+@media (max-width: 767px) {
+  .tela--cheia .jogo-topo__botoes .sd-barra__texto { display: none; }
+  .tela--cheia .jogo-topo__botoes .botao--pequeno { min-width: 44px; padding-inline: 0; justify-content: center; }
+}
+@media (max-width: 479px) {
+  .tela--cheia > .quiz-topo { gap: var(--esp-2); }
+  .tela--cheia .jogo-topo__titulo h1 { font-size: var(--t-md); }
+  .tela--cheia .jogo-topo__titulo .rotulo { display: none; } /* no celular estreito, só o nome do jogo (o curso não cabe) */
+}
 .jogo-palco { position: relative; margin-top: 16px; display: grid; gap: 14px; }
 .jogo-intro { color: var(--texto-suave); }
 

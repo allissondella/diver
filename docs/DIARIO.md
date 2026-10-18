@@ -5,6 +5,28 @@
 
 ---
 
+## 2026-10-18 · Tiro ao Alvo na Sala de Jogos do Enem e do Ensino Médio (etapa 2 dos jogos)
+- **Pedido do usuário:** "vamos deixar esse jogo da pistola como educacional para quem faz o enem ou ensino médio lá na sala de jogos". Sobre o conteúdo: "pode deixar como está o jogo agora, não muda nada".
+- **Feito:**
+  - `js/jogos/tiro-ao-alvo.js` registra o jogo das regras (o mesmo motor, igual ao de antes) na Sala de Jogos, no grupo "Jogos rápidos".
+  - Ele só aparece nos cursos das salas do Enem e do Ensino Médio: `Cartas.derivar` devolve `trilhaId`, e a regra usa `Grupos.LISTA`.
+  - **Tela toda na Sala de Jogos** (`telaCheia`): `#tela-jogo.tela--cheia`, `body.jogo-trava` e a barra por cima, com "Som" e "Tela cheia" em `#jogo-botoes`.
+  - **XP por rodada sem sair do jogo** (`ctx.concluirRodada`):
+    - a parte da economia do `terminarJogo` virou `aplicarResultadoDoJogo` e as rodadas usam a mesma;
+    - cada nível completo é um acerto e a placa do fim é o erro, com bônus de 1 XP a cada 4 pontos;
+    - o Desafio do Dia dobra só a primeira rodada;
+    - o fim mostra "+25 XP e +2 pérolas no curso".
+  - Entre as rodadas, sair não pergunta.
+  - O álbum e o som continuam em `diver:v1:descompressao` → `jogos.tiro`: os selos de quem já jogava ficam.
+- **Testes:**
+  - o jogo aparece em Enem · Biologia, Ensino Médio · Matemática e no Comece por aqui, e não aparece em Radiologia, Explora Tech nem Cibersegurança;
+  - uma rodada com 2 níveis deu +25 XP e +2 pérolas, e a segunda contou outra partida;
+  - o álbum de 2 selos virou 4;
+  - sair sem pergunta entre as rodadas e com pergunta no meio;
+  - a varredura de layout passou nos 9 tamanhos;
+  - o Quiz Relâmpago terminou como antes (resumo, XP e histórico);
+  - o auditor de design passou.
+
 ## 2026-10-18 · Tiro de Reflexo na Sala de Descompressão (etapa 1 dos jogos)
 - **Pedido do usuário:** "Para a sala de descompressão vamos ter placas verdes onde a pessoa deve atirar ou vermelhas que perde, mas a cada fase vai diminuindo o tempo que a placa aparece, tem que ser um jogo de reação, e não deve aparecer placas ali onde a arma tampa". Nas respostas ao plano: a verde que escapa tira 1 de 3 vidas e a vermelha acaba na hora ("1 - perfeito, isso aí!"); o placar começa do zero ("2 - perfeito").
 - **Feito:**

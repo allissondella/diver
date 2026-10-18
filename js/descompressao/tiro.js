@@ -321,8 +321,8 @@ window.TiroAoAlvo = (() => {
 
   /**
    * Abre o jogo em ctx.container. modo: "regras" (Tiro ao Alvo) ou "reflexo" (Tiro de Reflexo).
-   * ctx = { container, barra(...nós), estado(), gravar(parcial), recorde(), concluir(fim) → { xp, perolas } ou nada,
-   *         voltar(), guia(passos), tela (o id da tela, para os atalhos), textoVoltar }
+   * ctx = { container, barra(...nós), estado(), gravar(parcial), recorde(), concluir(fim) → { xp, perolas, dobro } ou nada,
+   *         voltar(), guia(passos), tela (o id da tela, para os atalhos), textoVoltar, notaPontos (o que valem os pontos) }
    */
   function abrir(ctx, { modo = 'regras' } = {}) {
     const reflexo = modo === 'reflexo';
@@ -457,7 +457,12 @@ window.TiroAoAlvo = (() => {
                 ? [numero('Fase', fim.nivel), numero('Reação média', fim.reacao ? reacaoTexto(fim.reacao) : '—'), numero('Mais rápida', fim.melhorReacao ? reacaoTexto(fim.melhorReacao) : '—')]
                 : [numero('Nível', fim.nivel),
                   numero('Seguidas', fim.seguidas), // a maior sequência de acertos sem jato na água
-                  numero('Tempo', UI.formatarTempo(fim.segundos))]))),
+                  numero('Tempo', UI.formatarTempo(fim.segundos))])),
+            // na Sala de Jogos, o que a rodada rendeu no curso (a economia já aplicou)
+            fim.recompensa ? h('p', { class: 'sd-tiro__ganhos' }, icone('i-estrela'), fim.recompensa.xp || fim.recompensa.perolas
+              ? h('span', {}, h('b', { text: `+${fim.recompensa.xp} XP` }), fim.recompensa.perolas ? ` e +${plural(fim.recompensa.perolas, 'pérola', 'pérolas')}` : '', ' no curso',
+                fim.recompensa.dobro ? ' (Desafio do Dia: XP em dobro)' : '')
+              : h('span', { text: 'Complete um nível para ganhar XP no curso.' })) : null),
           reflexo ? null : linhaAlbum(fim.selosNovos, voltarAqui),
           h('div', { class: 'acoes-linha sd-tiro__acoes' }, botaoComecar('Jogar de novo'), h('button', { type: 'button', class: 'botao botao--fantasma', onclick: ctx.voltar }, ctx.textoVoltar || 'Voltar para a sala')));
         if (!fim.mostrado) {
@@ -2088,7 +2093,7 @@ window.TiroAoAlvo = (() => {
     else ctx.guia([
       pistola,
       { alvo: '.sd-tiro__passos', desenho: 'estrela', titulo: 'Leia a regra', texto: 'Cada nível tem uma regra, que aparece no alto da tela. Acertar uma placa que NÃO combina com ela elimina na hora.' },
-      { desenho: 'relogio', titulo: 'Não deixe escapar', texto: 'A barrinha amarela embaixo de cada placa mostra quanto tempo ela fica. Placa certa que some também elimina. A régua no alto conta as placas certas do nível: completou, sobe de nível. 1 ponto por acerto; vale o seu recorde.' },
+      { desenho: 'relogio', titulo: 'Não deixe escapar', texto: `A barrinha amarela embaixo de cada placa mostra quanto tempo ela fica. Placa certa que some também elimina. A régua no alto conta as placas certas do nível: completou, sobe de nível. ${ctx.notaPontos || '1 ponto por acerto; vale o seu recorde.'}` },
       { alvo: '.sd-tiro__album', desenho: 'trofeu', titulo: 'Álbum de regras', texto: `Cada nível completo vira o selo da regra dele no seu álbum. São ${REGRAS.length} para colecionar.` },
     ]);
     medir();

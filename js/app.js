@@ -43,6 +43,7 @@ const App = (() => {
     jogos: ['js/jogos/comum.js', 'js/jogos/cartas-do-fundo.js', 'js/jogos/quiz-relampago.js', 'js/jogos/memoria.js', 'js/jogos/adivinha-ai.js',
       'js/jogos/caca-ao-tesouro.js', 'js/jogos/chefao.js', 'js/jogos/mare-alta.js', 'js/jogos/forca.js', 'js/jogos/palavrinha.js',
       'js/jogos/corrente-do-tempo.js', 'js/jogos/caso-resolvido.js',
+      'js/descompressao/pistola-3d.js', 'js/descompressao/tiro.js', 'js/jogos/tiro-ao-alvo.js', // o Tiro ao Alvo e o motor dele (o mesmo do Tiro de Reflexo)
       'js/laboratorio/executor.js', 'js/laboratorio/editor.js', 'js/laboratorio/mundo-robo.js', 'js/laboratorio/laboratorio.js', 'js/laboratorio/lab-python.js',
       'js/laboratorio/lab-js.js', 'js/laboratorio/motor-portas.js', 'js/laboratorio/motor-sala.js', 'js/laboratorio/motor-rede.js', 'js/laboratorio/terminal.js', 'js/laboratorio/motor-shell.js', 'js/laboratorio/motor-git.js',
       'js/jogos/robo-entregador.js', 'js/jogos/primeiros-programas.js', 'js/jogos/lupa-do-codigo.js', 'js/jogos/caca-bugs.js', 'js/jogos/oficina-de-funcoes.js',
@@ -202,7 +203,8 @@ const App = (() => {
 
   function emAndamento() {
     const quiz = estado.sessao && !estado.sessao.encerrada && !$('tela-quiz').hidden;
-    const jogo = estado.jogo && !estado.jogo.fim && !$('tela-jogo').hidden;
+    const c = estado.jogo && estado.jogo.controlador;
+    const jogo = estado.jogo && !estado.jogo.fim && !$('tela-jogo').hidden && !(c && c.emAndamento && !c.emAndamento());
     return quiz || jogo || (typeof Descompressao !== 'undefined' && Descompressao.emAndamento());
   }
 
@@ -244,6 +246,7 @@ const App = (() => {
   function mostrarTela(id) {
     document.querySelectorAll('.tela').forEach((t) => (t.hidden = t.id !== id));
     document.body.classList.toggle('modo-foco', TELAS_FOCO.includes(id));
+    document.body.classList.toggle('jogo-trava', id === 'tela-jogo' && $('tela-jogo').classList.contains('tela--cheia')); // jogo em tela toda: a página não rola por baixo
     const naLateral = (ROTAS[estado.secao] && ROTAS[estado.secao].lateral) || estado.secao; // a Sala fica sob "Início"
     document.querySelectorAll('.lateral__nav a').forEach((a) => {
       if (a.dataset.secao === naLateral) a.setAttribute('aria-current', 'page');
@@ -1669,6 +1672,8 @@ const App = (() => {
     const faseFlash = opcoes.fase && estado.trilha.fases.find((f) => f.id === opcoes.fase);
     $('jogo-rotulo').textContent = desafio ? 'Desafio do Dia · XP em dobro' : faseFlash ? `${estado.trilha.nome} · ${faseFlash.nome}` : estado.trilha.nome;
     $('tela-jogo').classList.toggle('tela--larga', !!def.largo); // ex.: Caso Resolvido (painel + log ao lado)
+    $('tela-jogo').classList.toggle('tela--cheia', !!def.telaCheia); // ex.: Tiro ao Alvo (a janela inteira, com a barra por cima)
+    limpar($('jogo-botoes'));
     const container = limpar($('jogo-palco'));
     mostrarTela('tela-jogo');
 
@@ -1682,6 +1687,10 @@ const App = (() => {
       aoTerminar: (resultado) => {
         if (estado.jogo === partida) terminarJogo(resultado);
       },
+      // Jogo que segue aberto entre as rodadas (o Tiro ao Alvo: "Jogar de novo" sem sair): o XP da rodada entra na hora
+      concluirRodada: (resultado) => (estado.jogo === partida ? concluirRodada(partida, resultado) : null),
+      sair: () => { if (estado.jogo === partida) sairDoJogo(true); },
+      barra: (...nos) => $('jogo-botoes').append(...nos), // botões do jogo na barra de cima (Som, Tela cheia)
       gastarPerolas: (n) => {
         const ok = Economia.gastar(estado.prog, n);
         if (ok) {
@@ -1702,19 +1711,15 @@ const App = (() => {
     }
   }
 
-  function terminarJogo(res) {
-    const partida = estado.jogo;
-    if (!partida || partida.fim) return;
-    partida.fim = true;
-    if (partida.controlador && partida.controlador.destruir) partida.controlador.destruir();
-
-    const r = Economia.aplicarResultado(res, estado.trilha, estado.prog, { dobro: partida.desafio });
+  /** O resultado de uma partida (ou de uma rodada) vale: economia, log, Desafio do Dia, conquistas e nível */
+  function aplicarResultadoDoJogo(partida, res, dobro) {
+    const r = Economia.aplicarResultado(res, estado.trilha, estado.prog, { dobro });
     Atividade.registrar('jogo_concluido', estado.trilha && estado.trilha.id, {
       jogo: partida.def.id, acertos: res.acertos, erros: res.erros, total: res.total, pontuacao: res.pontuacao,
-      tempo_seg: res.tempoSegundos, perfeito: res.perfeito, desafio: !!partida.desafio, xp: r.xp, perolas: r.perolas,
+      tempo_seg: res.tempoSegundos, perfeito: res.perfeito, desafio: !!dobro, xp: r.xp, perolas: r.perolas,
       ...(res.registro || {}), // dados próprios do jogo (ex.: Palavrinha: variante, palavra do dia, tentativas)
     });
-    if (partida.desafio) {
+    if (dobro) {
       const feitos = Dados.ler(CHAVE_DESAFIOS, {});
       feitos[UI.dataLocal()] = true;
       Dados.gravar(CHAVE_DESAFIOS, feitos);
@@ -1722,6 +1727,25 @@ const App = (() => {
     salvar();
     avisarConquistas(r.novas);
     checarNivel();
+    return r;
+  }
+
+  /** Uma rodada de um jogo que segue aberto (o Tiro ao Alvo): vale na hora; o Desafio do Dia dobra só a primeira */
+  function concluirRodada(partida, res) {
+    const dobro = !!partida.desafio && !partida.rodadas;
+    const r = aplicarResultadoDoJogo(partida, res, dobro);
+    partida.rodadas = (partida.rodadas || 0) + 1;
+    atualizarLateral();
+    return { xp: r.xp, perolas: r.perolas, dobro };
+  }
+
+  function terminarJogo(res) {
+    const partida = estado.jogo;
+    if (!partida || partida.fim) return;
+    partida.fim = true;
+    if (partida.controlador && partida.controlador.destruir) partida.controlador.destruir();
+
+    const r = aplicarResultadoDoJogo(partida, res, partida.desafio);
 
     const validos = res.detalhes.filter((d) => !d.neutro);
     const temas = {};
@@ -1741,9 +1765,11 @@ const App = (() => {
     mostrarTela('tela-resumo');
   }
 
-  async function sairDoJogo() {
+  async function sairDoJogo(semPerguntar = false) {
     if (!estado.jogo) return;
-    if (!(await UI.confirmar({ titulo: 'Sair do jogo?', texto: 'Esta partida não vale XP.', sim: 'Sair do jogo', nao: 'Continuar jogando', humor: 'triste' }))) return;
+    const c = estado.jogo.controlador;
+    const parado = !!(c && c.emAndamento && !c.emAndamento()); // entre as rodadas (o Tiro ao Alvo): as rodadas feitas já valeram
+    if (!semPerguntar && !parado && !(await UI.confirmar({ titulo: 'Sair do jogo?', texto: 'Esta partida não vale XP.', sim: 'Sair do jogo', nao: 'Continuar jogando', humor: 'triste' }))) return;
     if (!estado.jogo) return;
     const daFase = !!(estado.jogo.opcoes && estado.jogo.opcoes.fase);
     abandonarAndamento();
@@ -2451,7 +2477,7 @@ const App = (() => {
     });
 
     $('btn-sair-quiz').addEventListener('click', sairDoQuiz);
-    $('btn-sair-jogo').addEventListener('click', sairDoJogo);
+    $('btn-sair-jogo').addEventListener('click', () => sairDoJogo());
     $('btn-continuar').addEventListener('click', continuar);
     $('btn-marcar').addEventListener('click', () => {
       const q = Quiz.atual(estado.sessao);

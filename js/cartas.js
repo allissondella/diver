@@ -116,6 +116,7 @@ const Cartas = (() => {
     const soTexto = { ...trilha, questoes: trilha.questoes.filter((q) => !q.codigo && !q.alternativasCodigo) };
     const palavras = derivarPalavras(soTexto);
     return {
+      trilhaId: trilha.id, // de que curso são (o Tiro ao Alvo só aparece nas salas do Enem e do Ensino Médio)
       multipla: trilha.questoes,
       vf: derivarVF(soTexto),
       flash: derivarFlash(trilha),

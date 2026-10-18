@@ -387,6 +387,10 @@ body.sd-trava { overflow: hidden; }
 .sd-tiro__recorde { display: inline-flex; align-items: center; gap: var(--esp-1); margin: 0; font-size: var(--t-sm); font-weight: 700; color: var(--texto-suave); }
 .sd-tiro__recorde .icone { width: 16px; height: 16px; }
 .sd-tiro__recorde--novo { color: var(--amarelo); }
+/* Na Sala de Jogos: o XP e as pérolas que a rodada rendeu no curso */
+.sd-tiro__ganhos { display: flex; align-items: center; gap: var(--esp-2); margin: 0; font-size: var(--t-sm); color: var(--texto-suave); }
+.sd-tiro__ganhos .icone { flex: none; width: 16px; height: 16px; color: var(--amarelo); }
+.sd-tiro__ganhos b { color: var(--amarelo); }
 .sd-tiro__album { display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2) var(--esp-3); padding-top: var(--esp-3); border-top: 1px solid color-mix(in srgb, var(--texto) 12%, transparent); }
 .sd-tiro__album > p { margin: 0; }
 .sd-tiro__album-conta { display: inline-flex; align-items: center; gap: var(--esp-2); color: var(--texto-suave); }
