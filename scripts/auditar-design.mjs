@@ -193,7 +193,7 @@ async function auditarNoNavegador() {
         if (tela === 'descompressao-tiro') { // o jogo em tela toda: o cartão de abertura e a partida (regra e placar por cima)
           await p.goto(`${base}?a=${Date.now()}#descompressao`); await p.waitForSelector('.app', { state: 'attached' });
           await esperar(1000); await limpar();
-          await p.evaluate(() => Descompressao.abrir('tiro')); await esperar(700); await limpar();
+          await p.evaluate(() => Descompressao.abrir('reflexo')); await esperar(700); await limpar(); // (o Tiro de Reflexo; o das regras foi para a Sala de Jogos)
           await anotar(`${tela} (abertura)`);
           await p.locator('#sd-tiro-comecar').click(); await esperar(2500);
           await anotar(`${tela} (partida)`);

@@ -11,7 +11,7 @@
  *   "Jogar de novo" sem sair do jogo (ctx.concluirRodada; o fim nunca leva para outra tela).
  * - Som sintetizado na hora (botão "Som" na barra; a escolha fica só no aparelho) e "Tela cheia" de verdade.
  * Palco.montar(ctx, { id, cena }) → { area, hud(...), reagir(tipo, onde), estado, abertura({...}), terminar(res, {...}),
- *   som, jogando(), parar() }. A cena: { desenhar(g, L, A, t, dt, estado), reagir?(tipo, info, estado), medir?(L, A) }.
+ *   som, jogando(), comecar(fn), topo(), parar() }. A cena: { desenhar(g, L, A, t, dt, estado), reagir?(tipo, info, estado), medir?(L, A) }.
  * Desenho e cores: tokens do css/tokens.css (UI.cor). Faz parte do pacote "jogos" e vem antes dos jogos.
  */
 const Palco = (() => {
@@ -518,9 +518,10 @@ const Palco = (() => {
 
     /**
      * O fim da rodada: aplica o resultado na hora (ctx.concluirRodada) e mostra o cartão.
-     * extra: { titulo, texto, tom ('vitoria' | 'derrota'), numeros: [[rotulo, valor, destaque]], aoJogarDeNovo, textoDeNovo }
+     * extra: { titulo, texto, tom ('vitoria' | 'derrota'), numeros: [[rotulo, valor, destaque]], aoJogarDeNovo, textoDeNovo,
+     *   mais (um nó a mais no fim de "Em números": as estatísticas da Palavrinha) }
      */
-    function terminar(res, { titulo, texto, tom = 'vitoria', numeros, aoJogarDeNovo, textoDeNovo = 'Jogar de novo' } = {}) {
+    function terminar(res, { titulo, texto, tom = 'vitoria', numeros, aoJogarDeNovo, textoDeNovo = 'Jogar de novo', mais = null } = {}) {
       jogando = false;
       const ganho = ctx.concluirRodada ? ctx.concluirRodada(res) : null;
       reagir(tom);
@@ -544,7 +545,7 @@ const Palco = (() => {
         h('section', { class: 'sd-tiro__em-numeros', 'aria-labelledby': 'palco-em-numeros' },
           h('div', { class: 'sd-tiro__em-numeros-topo' }, h('h3', { class: 'sd-tiro__sobre', id: 'palco-em-numeros', text: 'Em números' })),
           h('dl', { class: `sd-tiro__numeros sd-tiro__numeros--fim palco__numeros--${Math.min(4, nums.length)}`, style: `--colunas:${Math.min(4, nums.length)}` }, nums.map(([r, v, d]) => numeroEl(r, v, d))),
-          ganhos),
+          ganhos, mais),
         revisar.length ? h('details', { class: 'palco__revisar' },
           h('summary', { text: `O que revisar (${revisar.length})` }),
           h('div', { class: 'palco__revisar-lista' }, revisar.map((d) => h('details', { class: 'revisar-item' },
@@ -572,6 +573,8 @@ const Palco = (() => {
       tocar: (nome) => SONS[nome] && SONS[nome](som),
       avisar: (texto) => { aviso.textContent = texto; },
       jogando: (v) => { if (typeof v === 'boolean') jogando = v; return jogando; }, // (com true/false: o jogo diz se a rodada está valendo)
+      comecar, // fecha o cartão, liga o som e chama o jogo (o que os botões do próprio jogo usam para começar uma rodada)
+      topo: () => { rolagem.scrollTop = 0; }, // a próxima pergunta começa no alto
       medidas: () => ({ L, A }),
       pontoDe,
     };

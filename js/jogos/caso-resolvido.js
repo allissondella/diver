@@ -18,6 +18,10 @@
  * Diário de bordo e placar da turma (ranking_caso, soma de todos os casos) ficam ao lado.
  * Pontos viram XP e pérolas pela economia central. Estado em localStorage "diver:v1:operacao".
  * Cada tela tem tutorial (Tutorial.guiar) na primeira visita e no botão "Como funciona esta tela?".
+ * Palco em tela toda (2026-10-18, js/jogos/palco.js): um recife sombrio que fica mais fundo a cada mergulho (o Raso com
+ * luz, o Recife com corais, a Caverna com paredes e sonar, o Abismo com brilhos no escuro), com a Sombra passando ao
+ * longe; o ar gasto sai do tanque em bolhas e a pérola de evidência brilha no fim do mergulho. As telas, as regras, os
+ * pontos e o XP são os mesmos; os pontos entram no cartão do fim do palco, com "Voltar ao caso".
  * Formato do bloco: docs/JOGOS.md, "Caso Resolvido".
  */
 const CasoResolvido = (() => {
@@ -175,7 +179,7 @@ const CasoResolvido = (() => {
   /** Texto comparável: sem acento, minúsculo, só letras e números. */
   const normal = (t) => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
-  return { CHAVE, COLUNAS, valido, novoCaso, ler, gravar, SOMBRA, rico, hostDe, retrato, normal, sortear, embaralhar };
+  return { CHAVE, COLUNAS, valido, novoCaso, ler, gravar, SOMBRA, rico, hostDe, retrato, normal, sortear, embaralhar, estrelas };
 })();
 
 Jogos.registrar({
@@ -183,18 +187,20 @@ Jogos.registrar({
   nome: 'Caso Resolvido',
   grupo: 'estrategia',
   icone: 'i-lupa',
-  largo: true, // a tela do jogo usa a largura grande (painel + diário de bordo)
+  telaCheia: true, // o palco: a janela inteira; na tela larga, o painel e o diário de bordo lado a lado
   descricao: 'Operação Recife Sombrio: a Diver foi invadida. Desça quatro mergulhos e descubra quem foi. A cada caso, a Sombra é outra pessoa.',
   duracao: '10-20 min por mergulho',
   requer: { casos: 1 },
 
   iniciar(ctx) {
     const { h, icone } = UI;
-    const { rico, hostDe, sortear, embaralhar, normal, COLUNAS } = CasoResolvido;
+    const { rico, hostDe, sortear, embaralhar, normal, COLUNAS, estrelas } = CasoResolvido; // (estrelas: sem ela, a revelação e o mural depois da acusação quebravam)
     const caso = ctx.cartas.casos[0];
     const tab = caso.tabuleiro;
     const est = CasoResolvido.ler(caso.id);
-    const raiz = ctx.container;
+    const palco = Palco.montar(ctx, { id: 'caso', cena: cenaRecifeSombrio() });
+    palco.estado.fundo = 0; // a profundidade da cena: 0 o painel, 1 a 4 os mergulhos, 5 o mural
+    const raiz = palco.area;
     let limparTela = () => {}; // desliga cronômetros e atalhos da tela atual
 
     const salvar = () => CasoResolvido.gravar(caso.id, est);
@@ -291,7 +297,7 @@ Jogos.registrar({
       limparTela = () => {};
       if (typeof Tutorial !== 'undefined') Tutorial.fechar(false);
       principal.replaceChildren(...filhos);
-      principal.scrollIntoView({ block: 'start', behavior: UI.movimentoReduzido ? 'auto' : 'smooth' });
+      palco.topo();
     }
 
     /* ---------- Tutorial de cada tela ---------- */
@@ -321,6 +327,7 @@ Jogos.registrar({
           el.classList.remove('op-tanque--treme');
           void el.offsetWidth;
           el.classList.add('op-tanque--treme');
+          palco.reagir('vazou', { el }); // o ar sai do tanque em bolhas
           registrar('i-oxigenio', motivo, -n, 'o2');
         },
       };
@@ -372,6 +379,13 @@ Jogos.registrar({
        Painel do caso
        ===================================================================== */
     const MERGULHOS = { isca: mergulhoIsca, cardume: mergulhoCardume, sonar: mergulhoSonar, interrogatorio: mergulhoInterrogatorio };
+    /** Desce para um mergulho: a cena vai para a profundidade dele e a partida passa a valer (sair pergunta) */
+    function descer(id, treino) {
+      palco.estado.fundo = caso.mergulhos.findIndex((m) => m.id === id) + 1;
+      palco.jogando(true);
+      palco.tocar('bolhas');
+      MERGULHOS[id](treino);
+    }
 
     function situacao(i) {
       const c = est.caso;
@@ -382,6 +396,8 @@ Jogos.registrar({
     }
 
     function painel() {
+      palco.jogando(false);
+      palco.estado.fundo = 0;
       if (!est.caso) abrirCasoNovo();
       const c = est.caso;
       const nPerolas = c.pistas.length;
@@ -429,7 +445,7 @@ Jogos.registrar({
           [botao('Abrir caso novo', () => { abrirCasoNovo(); painel(); }), botao('Ver o mural', mural, 'botao--fantasma')]);
       } else if (proxima) {
         destaque = caixaDestaque(`Próximo mergulho · ${proxima.profundidade} · ${proxima.metros}`, proxima.titulo, proxima.resumo || '',
-          [botao('Mergulhar', () => MERGULHOS[proxima.id](false))]);
+          [botao('Mergulhar', () => descer(proxima.id, false))]);
       } else {
         destaque = caixaDestaque('Hora da acusação', 'Mural do caso',
           'As 4 pérolas estão no caderno. Cruze tudo e acuse quem, com o quê e como. Uma tentativa por caso.', [botao('Abrir o mural', mural)]);
@@ -442,8 +458,8 @@ Jogos.registrar({
           : s === 'trancada' ? `termine "${caso.mergulhos[i - 1].titulo}" antes`
             : m.chave && c.chaves[m.chave] ? 'chave aberta: falta a missão' : 'liberado';
         let acao;
-        if (s === 'feita') acao = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => MERGULHOS[m.id](true) }, 'Treinar de novo');
-        else if (s === 'aberta') acao = h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => MERGULHOS[m.id](false) }, 'Mergulhar');
+        if (s === 'feita') acao = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', onclick: () => descer(m.id, true) }, 'Treinar de novo');
+        else if (s === 'aberta') acao = h('button', { type: 'button', class: 'botao botao--primario botao--pequeno', onclick: () => descer(m.id, false) }, 'Mergulhar');
         else acao = h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno', disabled: true }, icone('i-cadeado'), 'Trancado');
         return h('li', { class: `op-nivel op-nivel--${i + 1} op-nivel--${s}` },
           h('div', { class: 'op-nivel__fundo', 'aria-hidden': 'true' }, h('strong', { text: m.metros }), h('span', { text: m.profundidade })),
@@ -488,6 +504,8 @@ Jogos.registrar({
     }
 
     function caderno() {
+      palco.jogando(false);
+      palco.estado.fundo = 0;
       const c = est.caso;
       const voltar = guia('caderno', [
         { alvo: '.op-pistas', desenho: 'perola', titulo: 'Pérolas de evidência', texto: 'Cada pérola descarta suspeitos, ferramentas e formas de ataque. Quem aparece aqui com álibi não é a Sombra.' },
@@ -506,10 +524,17 @@ Jogos.registrar({
       est.pendente = resultado;
       salvar();
     }
+    /** Os pontos entram (no cartão do fim do palco); "Voltar ao caso" abre o painel sem sair do jogo */
     function entregar(resultado) {
       est.pendente = null;
       salvar();
-      ctx.aoTerminar(resultado);
+      palco.estado.fundo = 0;
+      palco.terminar(resultado, {
+        tom: resultado.tom || 'vitoria',
+        numeros: resultado.numeros || undefined,
+        aoJogarDeNovo: painel,
+        textoDeNovo: resultado.textoDeNovo || 'Voltar ao caso',
+      });
     }
 
     function fecharMergulho({ id, treino, tanque, inicio, detalhes, limites, resumo }) {
@@ -536,6 +561,9 @@ Jogos.registrar({
       });
       resultado.registro = { operacao: caso.id, rodada: c.n, missao: id, treino: !!treino, pontos_missao: pontos };
       resultado.textoDeNovo = 'Voltar ao caso';
+      resultado.numeros = treino // ("Em números" do cartão do fim)
+        ? [['Treino', 'sem pontos', true], ['Oxigênio no fim', `${tanque.o2}%`], ['Tempo', mm(seg)]]
+        : [['Pontos', pontos, true], ['Oxigênio no fim', `${tanque.o2}%`], ['Rapidez', rapidez ? `+${rapidez}` : '0'], ['Tempo', mm(seg)]];
       guardarPendente(resultado);
       carregarRanking();
       const numeros = [mm(seg), `${tanque.o2}% de oxigênio no fim`];
@@ -551,6 +579,7 @@ Jogos.registrar({
         h('div', { class: 'op-linha-botoes op-linha-botoes--fim' },
           h('button', { type: 'button', class: 'botao botao--primario', onclick: () => entregar(resultado) }, 'Receber pontos e voltar ao caso'))));
       principal.querySelector('.op-linha-botoes--fim .botao').focus({ preventScroll: true });
+      palco.reagir(treino ? 'combo' : 'perola', { el: principal.querySelector('.op-pista') || principal }); // a pérola brilha
     }
 
     /* =====================================================================
@@ -1407,6 +1436,8 @@ Jogos.registrar({
        Mural do caso — QUEM / COM O QUÊ / COMO, uma acusação por caso
        ===================================================================== */
     function mural() {
+      palco.jogando(false);
+      palco.estado.fundo = 5;
       const c = est.caso;
       const feita = c.acusacao;
       const pronto = !!c.mergulhos.interrogatorio;
@@ -1496,6 +1527,8 @@ Jogos.registrar({
       });
       resultado.registro = { operacao: caso.id, rodada: c.n, missao: 'acusacao', treino: false, pontos_missao: a.pontos };
       resultado.textoDeNovo = 'Voltar ao caso';
+      resultado.tom = pega ? 'vitoria' : 'derrota';
+      resultado.numeros = [['Estrelas', `${a.acertos}/3`, true], ['Pontos', a.pontos], ['Casos fechados', est.historico.length]];
       guardarPendente(resultado);
       carregarRanking();
       mostrar(h('section', { class: 'op-missao-tela' },
@@ -1517,9 +1550,221 @@ Jogos.registrar({
           h('button', { type: 'button', class: 'botao botao--fantasma', onclick: mural }, 'Ver o mural'),
           h('button', { type: 'button', class: 'botao botao--primario', onclick: () => entregar(resultado) }, 'Receber pontos e voltar ao caso'))));
       principal.querySelector('.op-linha-botoes--fim .botao--primario').focus({ preventScroll: true });
+      if (pega) palco.reagir('combo', { el: principal.querySelector('.op-revelado') });
+      else palco.tocar('derrota');
     }
 
     painel();
-    return { destruir: () => { limparTela(); if (typeof Tutorial !== 'undefined') Tutorial.fechar(false); } };
+    return {
+      emAndamento: () => palco.jogando(),
+      destruir: () => { limparTela(); if (typeof Tutorial !== 'undefined') Tutorial.fechar(false); palco.parar(); },
+    };
+
+    /* ---------- A cena: o recife sombrio, mais fundo a cada mergulho ---------- */
+    function cenaRecifeSombrio() {
+      const { COR, misturar, alfa, degrade, raios, poeira, seme, tela } = Palco.pintar;
+      const PROF = [0.42, 0.08, 0.34, 0.66, 1, 0.5]; // o painel, o Raso, o Recife, a Caverna, o Abismo e o mural
+      let chave = '';
+      let recife = null; // corais e pedras (silhueta com a borda lilás), guardados
+      let caverna = null; // as paredes da caverna, nas bordas
+      let brilhos = [];
+      let d = PROF[0]; // a profundidade que a cena mostra (vai atrás da do jogo devagar)
+      let perola = null; // o brilho dourado da pérola de evidência: { x, y, k }
+      const bolhas = []; // o ar que escapou do tanque
+
+      function galho(f, x, y, ang, comp, larg, nivel, r) { // um coral de galhos
+        const x2 = x + Math.cos(ang) * comp;
+        const y2 = y + Math.sin(ang) * comp;
+        f.lineWidth = larg;
+        f.beginPath();
+        f.moveTo(x, y);
+        f.lineTo(x2, y2);
+        f.stroke();
+        if (nivel <= 0) return;
+        galho(f, x2, y2, ang - (0.35 + r() * 0.4), comp * (0.62 + r() * 0.2), larg * 0.72, nivel - 1, r);
+        galho(f, x2, y2, ang + (0.35 + r() * 0.4), comp * (0.62 + r() * 0.2), larg * 0.72, nivel - 1, r);
+      }
+
+      function pintarRecife(f, L, A, cor, dy) { // as mesmas formas toda vez (a semente é fixa): primeiro a borda, depois o corpo
+        const r = seme(77);
+        f.fillStyle = cor;
+        f.strokeStyle = cor;
+        f.lineCap = 'round';
+        f.beginPath();
+        f.moveTo(0, A);
+        f.lineTo(0, A * 0.9 + dy);
+        let x = 0;
+        while (x < L) {
+          const w = 60 + r() * 140;
+          f.quadraticCurveTo(x + w / 2, A * (0.84 - r() * 0.06) + dy, x + w, A * (0.9 + (r() - 0.5) * 0.03) + dy);
+          x += w;
+        }
+        f.lineTo(L, A);
+        f.closePath();
+        f.fill();
+        const n = Math.max(5, Math.round(L / 140));
+        for (let i = 0; i < n; i++) {
+          const cx = ((i + 0.3 + r() * 0.4) / n) * L;
+          if (r() < 0.55) galho(f, cx, A * 0.9 + dy, -Math.PI / 2 + (r() - 0.5) * 0.3, A * (0.05 + r() * 0.05), 4 + r() * 3, 3, r);
+          else { // um leque do mar
+            const raio = A * (0.06 + r() * 0.06);
+            f.beginPath();
+            f.moveTo(cx, A * 0.9 + dy);
+            f.arc(cx, A * 0.9 + dy, raio, Math.PI * 1.08, Math.PI * 1.92);
+            f.closePath();
+            f.fill();
+          }
+        }
+      }
+
+      function pintar(L, A) {
+        recife = tela(L, A);
+        const f = recife.getContext('2d');
+        pintarRecife(f, L, A, alfa(COR.lilas, 0.55), -2);
+        pintarRecife(f, L, A, misturar(COR.fundo, COR.lilas, 0.1), 0);
+        caverna = tela(L, A);
+        const c = caverna.getContext('2d');
+        const r = seme(91);
+        c.fillStyle = misturar(COR.fundo, COR.marinho, 0.25);
+        [-1, 1].forEach((lado) => { // as paredes, irregulares, dos dois lados
+          const x0 = lado < 0 ? 0 : L;
+          const pts = Array.from({ length: 13 }, (_, k) => {
+            const y = (k / 12) * A;
+            const larg = L * (0.06 + r() * 0.08) + Math.sin((y / A) * Math.PI) * L * 0.05;
+            return { x: lado < 0 ? larg : L - larg, y };
+          });
+          c.beginPath();
+          c.moveTo(x0, 0);
+          c.lineTo(pts[0].x, 0);
+          for (let k = 1; k < pts.length; k++) {
+            const m = { x: (pts[k - 1].x + pts[k].x) / 2, y: (pts[k - 1].y + pts[k].y) / 2 };
+            c.quadraticCurveTo(pts[k - 1].x, pts[k - 1].y, m.x, m.y);
+          }
+          c.lineTo(pts[pts.length - 1].x, A);
+          c.lineTo(x0, A);
+          c.closePath();
+          c.fill();
+        });
+        for (let i = 0; i < Math.max(6, Math.round(L / 120)); i++) { // as estalactites
+          const x = r() * L;
+          const w = 10 + r() * 26;
+          c.beginPath();
+          c.moveTo(x - w / 2, 0);
+          c.quadraticCurveTo(x, A * (0.06 + r() * 0.1), x + w / 2, 0);
+          c.closePath();
+          c.fill();
+        }
+        brilhos = Array.from({ length: Math.round(28 + L / 30) }, () => ({ x: r() * L, y: r() * A * 0.92, fase: r() * 6, cor: r() < 0.6 ? COR.claro : COR.lilas, raio: 0.8 + r() * 1.6 }));
+      }
+
+      function manta(g, x, y, w, bate, cor) { // a Sombra: uma raia grande, só a silhueta
+        g.fillStyle = cor;
+        g.beginPath();
+        g.moveTo(x + w * 0.24, y);
+        g.quadraticCurveTo(x + w * 0.04, y - w * 0.12, x - w * 0.06, y - w * (0.5 + bate));
+        g.quadraticCurveTo(x - w * 0.12, y - w * 0.14, x - w * 0.24, y);
+        g.quadraticCurveTo(x - w * 0.12, y + w * 0.14, x - w * 0.06, y + w * (0.5 - bate));
+        g.quadraticCurveTo(x + w * 0.04, y + w * 0.12, x + w * 0.24, y);
+        g.fill();
+        g.strokeStyle = cor;
+        g.lineWidth = Math.max(1.5, w * 0.012);
+        g.beginPath();
+        g.moveTo(x - w * 0.24, y);
+        g.quadraticCurveTo(x - w * 0.42, y + w * 0.04, x - w * 0.62, y - w * 0.02);
+        g.stroke();
+      }
+
+      function desenhar(g, L, A, t, dt, est) {
+        const nova = `${L}x${A}`;
+        if (nova !== chave) { chave = nova; pintar(L, A); }
+        const alvo = PROF[est.fundo || 0] ?? PROF[0];
+        d = est.rm ? alvo : d + (alvo - d) * Math.min(1, dt * 1.2);
+        const topo = misturar(misturar(COR.turquesaEscura, COR.marinho, 0.3), misturar(COR.fundo, COR.lilas, 0.14), d);
+        const meio = misturar(misturar(COR.marinho, COR.turquesaEscura, 0.12), misturar(COR.fundo, COR.lilas, 0.06), d);
+        g.fillStyle = degrade(g, 0, A, [[0, topo], [0.6, meio], [1, COR.fundo]]);
+        g.fillRect(0, 0, L, A);
+        if (d < 0.8) raios(g, L, A * 0.9, t, COR.claro, 0.12 * (1 - d / 0.8));
+        // a Sombra passando ao longe (mais perto quanto mais fundo)
+        const w = Math.max(160, Math.min(L, A) * (0.34 + d * 0.16));
+        const volta = L + w * 2.4;
+        const sx = ((t * 14 + L * 0.3) % volta) - w * 1.2;
+        const sy = A * (0.3 + d * 0.06) + Math.sin(t * 0.3) * 16;
+        manta(g, sx, sy, w, Math.sin(t * 0.7) * 0.08, alfa(COR.fundo, 0.32 + d * 0.3));
+        const olho = 0.25 + d * 0.5 * (0.6 + 0.4 * Math.sin(t * 0.9));
+        g.fillStyle = alfa(COR.lilas, olho * (Math.sin(t * 0.23) > -0.85 ? 1 : 0)); // de vez em quando, ela pisca
+        g.beginPath();
+        g.arc(sx + w * 0.17, sy - w * 0.035, Math.max(1.5, w * 0.012), 0, Math.PI * 2);
+        g.arc(sx + w * 0.17, sy + w * 0.035, Math.max(1.5, w * 0.012), 0, Math.PI * 2);
+        g.fill();
+        // o recife (no Recife e no painel) e as paredes da caverna (na Caverna e no Abismo)
+        const aRecife = Math.max(0, 1 - Math.abs(d - 0.38) * 2.4);
+        if (aRecife > 0.01) { g.globalAlpha = aRecife; g.drawImage(recife, 0, 0, L, A); g.globalAlpha = 1; }
+        const aCaverna = Math.max(0, Math.min(1, (d - 0.48) * 3.2));
+        if (aCaverna > 0.01) { g.globalAlpha = aCaverna; g.drawImage(caverna, 0, 0, L, A); g.globalAlpha = 1; }
+        // o sonar, mais forte na caverna
+        const k = ((t / 3.6) % 1 + 1) % 1;
+        const forcaSonar = 0.05 + aCaverna * 0.14;
+        if (!est.rm) {
+          g.strokeStyle = alfa(COR.claro, forcaSonar * (1 - k));
+          g.lineWidth = 2;
+          g.beginPath();
+          g.arc(L / 2, A + 30, 40 + k * Math.max(L, A) * 1.05, Math.PI * 1.05, Math.PI * 1.95);
+          g.stroke();
+        }
+        // os brilhos do escuro (do meio para baixo)
+        if (d > 0.3) {
+          for (const b of brilhos) {
+            const pisca = 0.5 + 0.5 * Math.sin(t * 1.3 + b.fase);
+            g.fillStyle = alfa(b.cor, (d - 0.3) * (0.15 + 0.5 * pisca));
+            g.beginPath();
+            g.arc(b.x + Math.sin(t * 0.3 + b.fase) * 6, b.y, b.raio * (0.8 + pisca * 0.6), 0, Math.PI * 2);
+            g.fill();
+          }
+        }
+        poeira(g, L, A, t, alfa(COR.texto, 0.32), 40, 7);
+        // a pérola de evidência, brilhando
+        if (perola) {
+          perola.k -= dt * 0.7;
+          if (perola.k <= 0) perola = null;
+          else {
+            const raio = 60 + (1 - perola.k) * 160;
+            const brilho = g.createRadialGradient(perola.x, perola.y, 0, perola.x, perola.y, raio);
+            brilho.addColorStop(0, alfa(COR.amarelo, 0.32 * perola.k));
+            brilho.addColorStop(1, alfa(COR.amarelo, 0));
+            g.fillStyle = brilho;
+            g.fillRect(perola.x - raio, perola.y - raio, raio * 2, raio * 2);
+          }
+        }
+        // o ar que escapou do tanque
+        for (let i = bolhas.length - 1; i >= 0; i--) {
+          const b = bolhas[i];
+          b.v -= dt;
+          if (b.v <= 0) { bolhas.splice(i, 1); continue; }
+          b.y += b.vy * dt;
+          b.x += Math.sin((1.6 - b.v) * 6 + b.fase) * 18 * dt;
+          g.strokeStyle = alfa(COR.perola, Math.min(1, b.v) * 0.7);
+          g.lineWidth = 1.2;
+          g.beginPath();
+          g.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+          g.stroke();
+        }
+      }
+
+      function reagir(tipo, info, est) {
+        if (tipo === 'vazou') {
+          info.tocar('bolhas');
+          if (est.rm) return;
+          for (let i = 0; i < 12; i++) bolhas.push({ x: info.x + (Math.random() - 0.5) * 40, y: info.y, vy: -(50 + Math.random() * 90), r: 2 + Math.random() * 4, v: 1 + Math.random() * 0.8, fase: Math.random() * 6 });
+        } else if (tipo === 'perola') {
+          info.tocar('combo');
+          if (est.rm) return;
+          perola = { x: info.x, y: info.y, k: 1 };
+          info.espirrar(info.x, info.y, COR.amarelo, 22, 1.2);
+          info.espirrar(info.x, info.y, COR.perola, 10, 0.8);
+        }
+      }
+
+      return { desenhar, reagir };
+    }
   },
 });

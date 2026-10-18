@@ -317,16 +317,7 @@ body.jogo-trava { overflow: hidden; }
 .corrente__botoes { display: flex; gap: 4px; }
 .corrente-aviso { min-height: 1.4em; font-size: var(--t-sm); color: var(--turquesa-claro); font-weight: 700; margin-bottom: 8px; }
 
-/* ---------- Caça ao Tesouro ---------- */
-.mapa-tesouro {
-  padding: 8px;
-  border-radius: var(--raio);
-  background: linear-gradient(180deg, var(--superficie-turquesa), var(--fundo-fundo));
-  border: 1px solid var(--borda);
-}
-.mapa-tesouro svg { display: block; width: 100%; height: auto; }
-.parada-atual { animation: pulsar 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-@keyframes pulsar { 50% { transform: scale(1.18); } }
+/* ---------- Caça ao Tesouro: no palco (a carta náutica, js/jogos/caca-ao-tesouro.js; estilos no fim) ---------- */
 
 @media (min-width: 1024px) {
   .forca { grid-template-columns: 1fr 1.2fr; }
@@ -1189,7 +1180,8 @@ body.jogo-trava { overflow: hidden; }
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
 .pal-dica { font-size: var(--t-sm); color: var(--amarelo); text-align: center; max-width: calc(var(--letras) * (var(--tam) + var(--vao)) + 40px); }
-.pal-revela { font: 800 var(--t-sm) var(--fonte-mono); text-align: center; letter-spacing: 0.04em; }
+.pal--x2 .pal-dica, .pal--x4 .pal-dica { max-width: calc(var(--letras) * (var(--tam) + var(--vao))); overflow-wrap: anywhere; } /* lado a lado: a dica não alarga o tabuleiro */
+.pal-revela { font: 800 var(--t-sm) var(--fonte-mono); text-align: center; letter-spacing: 0.04em; max-width: calc(var(--letras) * (var(--tam) + var(--vao))); overflow-wrap: anywhere; } /* (quebra a linha em vez de alargar o tabuleiro) */
 .pal-grade { display: grid; gap: var(--vao); }
 .pal-linha { display: grid; grid-template-columns: repeat(var(--letras), var(--tam)); gap: var(--vao); }
 .pal-letra {
@@ -1306,8 +1298,8 @@ body.jogo-trava { overflow: hidden; }
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--esp-3)); mask-image: linear-gradient(to bottom, transparent 0, black var(--esp-3));
 }
 .palco--cartao .palco__rolagem { visibility: hidden; } /* com o cartão aberto, a rodada de trás some (a cena continua) */
-.palco__coluna {
-  width: min(100% - var(--esp-4) * 2, 760px); margin: 0 auto; display: grid; gap: var(--esp-3); align-content: start;
+.palco__coluna { /* (uma coluna que nunca alarga por causa do conteúdo: ele quebra a linha dentro dela) */
+  width: min(100% - var(--esp-4) * 2, 760px); margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--esp-3); align-content: start;
   padding: var(--esp-3) 0 calc(var(--esp-6) + env(safe-area-inset-bottom));
 }
 .palco__hud { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--esp-2); }
@@ -1431,3 +1423,111 @@ body.jogo-trava { overflow: hidden; }
 .palco .flash__lado { box-shadow: 0 16px 32px color-mix(in srgb, var(--fundo-0) 55%, transparent); }
 .palco .flash-avaliacao__pergunta { text-shadow: 0 1px 2px var(--fundo-0); }
 .forca-cartao { display: grid; gap: var(--esp-3); }
+
+/* ---------- Caça ao Tesouro no palco (2026-10-18) ----------
+   A carta náutica presa no alto da rolagem (a pergunta passa por baixo dela): a grade, as linhas de profundidade, a
+   rosa dos ventos, o caminho tracejado que acende a cada acerto, as boias numeradas, o baú com o X e o mergulhador. */
+.tesouro { display: grid; gap: var(--esp-3); }
+.tesouro__mapa {
+  position: sticky; top: 0; z-index: var(--z-acima); display: grid; gap: var(--esp-1); padding: var(--esp-2) var(--esp-3);
+  border-radius: var(--raio-lg); border: 1px solid color-mix(in srgb, var(--turquesa) 24%, transparent);
+  background: radial-gradient(130% 160% at 50% 0%, color-mix(in srgb, var(--turquesa-sombra) 34%, var(--fundo-0)), var(--fundo-0) 70%);
+  box-shadow: var(--sombra-4);
+}
+.tesouro__topo { display: flex; flex-wrap: wrap; gap: var(--esp-2); }
+.tesouro__carta svg { display: block; width: 100%; height: auto; overflow: visible; }
+.tesouro__grade path { fill: none; stroke: var(--turquesa); stroke-opacity: .08; stroke-width: 1; }
+.tesouro__banco { fill: var(--perola); fill-opacity: .05; }
+.tesouro__isobata { fill: none; stroke: var(--turquesa); stroke-opacity: .2; stroke-width: 1; stroke-dasharray: 2 3; }
+.tesouro__rosa circle { fill: none; stroke: var(--texto); stroke-opacity: .22; }
+.tesouro__rosa text { font-family: var(--fonte); font-weight: 800; fill: var(--texto-suave); } /* (o tamanho vai no SVG: é em unidades do desenho) */
+.tesouro__trecho { fill: none; stroke: var(--texto-suave); stroke-opacity: .5; stroke-width: 2; stroke-dasharray: 4 5; stroke-linecap: round; }
+.tesouro__trecho--aberto { stroke: var(--turquesa-claro); stroke-opacity: 1; stroke-width: 3; stroke-dasharray: none; }
+.tesouro__brilho { fill: none; stroke: var(--turquesa); stroke-opacity: .28; stroke-width: 9; stroke-linecap: round; }
+.tesouro__parada circle { fill: var(--superficie-2); stroke: var(--fundo-0); stroke-width: 3; }
+.tesouro__parada text { font-family: var(--fonte); font-weight: 800; fill: var(--texto-suave); }
+.tesouro__parada--feita circle { fill: var(--turquesa); }
+.tesouro__parada--feita path { fill: none; stroke: var(--texto-escuro); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tesouro__parada--atual circle { fill: var(--amarelo); }
+.tesouro__parada--atual text { fill: var(--texto-escuro); }
+.tesouro__parada--atual .tesouro__pulso { fill: none; stroke: var(--amarelo); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: tesouro-pulso 1.8s var(--ease-saida) infinite; }
+@keyframes tesouro-pulso { from { transform: scale(.9); opacity: .9; } to { transform: scale(2.1); opacity: 0; } }
+.tesouro__x { fill: none; stroke: var(--coral); stroke-width: 3; stroke-linecap: round; opacity: .55; }
+.tesouro__bau-corpo { fill: var(--amarelo-sombra); stroke: var(--fundo-0); stroke-width: 2; }
+.tesouro__bau-faixa { fill: none; stroke: var(--amarelo); stroke-width: 2.2; }
+.tesouro__fecho { fill: var(--amarelo); stroke: var(--fundo-0); stroke-width: 1.2; }
+.tesouro__tampa { fill: var(--amarelo); stroke: var(--fundo-0); stroke-width: 2; transform-box: fill-box; transform-origin: 0% 100%; transition: transform var(--dur-lenta) var(--ease-elastica); }
+.tesouro__perolas circle { fill: var(--perola); opacity: 0; transition: opacity var(--dur-lenta); }
+.tesouro__raios path { fill: none; stroke: var(--amarelo); stroke-width: 2; stroke-linecap: round; opacity: 0; }
+.tesouro__bau--aberto .tesouro__tampa { transform: rotate(-38deg) translate(-2px, -3px); }
+.tesouro__bau--aberto .tesouro__perolas circle { opacity: 1; }
+.tesouro__bau--aberto .tesouro__raios path { opacity: .85; animation: tesouro-raios 1.6s ease-in-out infinite alternate; }
+@keyframes tesouro-raios { to { opacity: .3; } }
+.tesouro__halo { fill: var(--turquesa); opacity: .22; }
+.tesouro__bolhas circle { fill: none; stroke: var(--perola); stroke-width: 1; opacity: 0; animation: tesouro-bolha 2.4s linear infinite; }
+.tesouro__bolhas circle:nth-child(2) { animation-delay: .8s; }
+.tesouro__bolhas circle:nth-child(3) { animation-delay: 1.6s; }
+@keyframes tesouro-bolha { 0% { transform: translateY(6px); opacity: 0; } 20% { opacity: .9; } 100% { transform: translateY(-10px); opacity: 0; } }
+.tesouro__mergulhador--susto > :not(.tesouro__bolhas) { animation: tesouro-susto 480ms ease; }
+@keyframes tesouro-susto { 20%, 60% { transform: translateX(-2.5px); } 40%, 80% { transform: translateX(2.5px); } }
+@media (prefers-reduced-motion: reduce) {
+  .tesouro__parada--atual .tesouro__pulso, .tesouro__bolhas circle, .tesouro__bau--aberto .tesouro__raios path, .tesouro__mergulhador--susto > * { animation: none; }
+  .tesouro__tampa, .tesouro__perolas circle { transition: none; }
+}
+@container sd-cheia (max-height: 479px) {
+  .tesouro__mapa { padding: var(--esp-1) var(--esp-2); }
+}
+@container sd-cheia (max-height: 479px) and (min-width: 640px) { /* celular deitado: a carta ao lado da pergunta */
+  .palco--caca-ao-tesouro .palco__coluna { width: min(100% - var(--esp-4) * 2, 1100px); }
+  .tesouro { grid-template-columns: minmax(220px, 38%) minmax(0, 1fr); align-items: start; }
+}
+
+/* ---------- Corrente do Tempo no palco (2026-10-18) ----------
+   Os itens boiam ao chegar e depois só deslizam (o JS anima a troca de lugar); o arrastado segue o dedo, por cima. */
+.corrente--viva .corrente__item { animation: none; }
+.palco .corrente__item {
+  background: color-mix(in srgb, var(--superficie-2) 82%, transparent); border-color: color-mix(in srgb, var(--texto) 14%, transparent);
+  transition: background-color var(--dur-normal), border-color var(--dur-normal);
+}
+.palco .corrente__item--certo { border-color: var(--turquesa); background: color-mix(in srgb, var(--turquesa) 16%, var(--fundo-0)); }
+.palco .corrente__item--pego { border-color: var(--amarelo); }
+.palco .corrente__item--arrastando { /* opaco: o item de baixo não aparece através dele */
+  position: relative; z-index: var(--z-acima); opacity: 1; scale: 1.02; cursor: grabbing;
+  background: var(--superficie-2); border-color: var(--turquesa-claro); box-shadow: var(--sombra-4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .palco .corrente__item { transition: none; }
+  .palco .corrente__item--arrastando { scale: none; }
+}
+
+/* ---------- Palavrinha no palco (2026-10-18) ----------
+   O saguão (palavra do dia, treino, estatísticas e ranking) e o jogo por cima do mar de letras; as letras de cada
+   palpite viram uma a uma (a cor aparece quando a letra está de lado); no fim, as estatísticas entram em "Em números". */
+.palco--palavrinha .pal-letra { background: color-mix(in srgb, var(--fundo-0) 90%, transparent); } /* (as letras do mar não aparecem dentro da grade) */
+.palco--palavrinha .pal-letra--certa { background: var(--turquesa); }
+.palco--palavrinha .pal-letra--lugar { background: var(--amarelo); }
+.palco--palavrinha .pal-letra--fora { background: color-mix(in srgb, var(--fundo-0) 92%, transparent); }
+.palco--palavrinha .pal-tema, .palco--palavrinha .pal-msg { text-shadow: 0 1px 2px var(--fundo-0); }
+.pal-letra--virando { animation: pal-virar 320ms ease-in-out; }
+@keyframes pal-virar { 50% { transform: rotateX(90deg); } }
+.palco--palavrinha .pal-cartao--dia .pal-titulo { font-size: var(--t-3xl); }
+.pal-fim-estat { display: grid; gap: var(--esp-3); padding-top: var(--esp-3); border-top: 1px solid color-mix(in srgb, var(--texto) 12%, transparent); }
+.pal-fim-estat > .botao { justify-self: start; }
+.pal-fim-estat .pal-dist { margin-top: var(--esp-2); }
+@media (min-width: 1024px) { .palco--larga .palco__coluna { width: min(100% - var(--esp-6) * 2, 1200px); } } /* x2 e x4 */
+@container sd-cheia (max-height: 479px) and (min-width: 640px) { /* celular deitado: o teclado ao lado do tabuleiro */
+  .palco--palavrinha .palco__coluna { width: min(100% - var(--esp-4) * 2, 1100px); }
+  .palco--palavrinha .pal:not(.pal-abertura) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "tab msg" "tab tec" "tab ."; align-items: start; column-gap: var(--esp-4); }
+  .palco--palavrinha .pal:not(.pal-abertura) > .pal-tabuleiros { grid-area: tab; }
+  .palco--palavrinha .pal:not(.pal-abertura) > .pal-msg { grid-area: msg; align-self: end; }
+  .palco--palavrinha .pal:not(.pal-abertura) > .pal-teclado { grid-area: tec; }
+  .palco--palavrinha .pal-tecla { min-height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pal-letra--virando { animation: none; }
+}
+
+/* ---------- Caso Resolvido no palco (2026-10-18) ----------
+   O painel e o diário de bordo lado a lado na tela larga (a coluna alarga), em vidro escuro por cima do recife sombrio. */
+@media (min-width: 1024px) { .palco--caso .palco__coluna { width: min(100% - var(--esp-6) * 2, 1240px); } }
+.palco--caso .op-raiz { --op-fundo: color-mix(in srgb, var(--fundo-0) 84%, transparent); }

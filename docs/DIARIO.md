@@ -5,6 +5,42 @@
 
 ---
 
+## 2026-10-18 · Onda C dos jogos no palco: Caça ao Tesouro, Corrente do Tempo, Palavrinha e Caso Resolvido (etapa 4)
+- **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos, XP e conteúdo iguais.
+- **Feito:**
+  - **Caça ao Tesouro:**
+    - a carta náutica (o mapa) fica presa no alto, com o oxigênio e a parada; no celular deitado, ao lado da pergunta;
+    - no acerto, o trecho se desenha e o mergulhador nada até a próxima boia; no erro, as bolhas escapam do tanque;
+    - atrás, um naufrágio que anda a cada trecho, com o baú do fundo aparecendo; no fim, a tampa do baú abre;
+    - "Outra caça" sorteia outro caminho e outras perguntas.
+  - **Corrente do Tempo:**
+    - uma correnteza com fios de água, algas deitadas e uma tartaruga de carona;
+    - o item arrastado segue o dedo e os outros abrem espaço deslizando;
+    - sequência certa faz a correnteza disparar.
+  - **Palavrinha (x1, x2 e x4):**
+    - o saguão (palavra do dia, treino, estatísticas e ranking) por cima de um mar de letras;
+    - as letras de cada palpite viram uma a uma;
+    - o fim traz "Suas estatísticas" e "Ver o Ranking Diver", e a partida do dia continua guardada até os pontos entrarem;
+    - no celular deitado, o teclado fica ao lado do tabuleiro (antes ficava escondido embaixo); o x2 e o x4 alargam a coluna no computador.
+  - **Caso Resolvido:**
+    - em tela toda, com o painel e o diário de bordo lado a lado no computador;
+    - um recife sombrio que fica mais fundo a cada mergulho (luz no Raso, corais no Recife, paredes e sonar na Caverna, brilhos no Abismo), com a Sombra passando ao longe;
+    - o ar gasto sai do tanque em bolhas e a pérola brilha no fim do mergulho;
+    - os pontos entram no cartão do fim, com "Voltar ao caso" (e "Ir para a Prova final" quando o jogo foi aberto antes da prova).
+  - **No palco:** `palco.comecar`, `palco.topo` e `terminar(..., { mais })`; a coluna nunca alarga por causa do conteúdo.
+  - **Auditor no navegador:** abria o Tiro antigo da Descompressão (`tiro`), que virou o Tiro de Reflexo (`reflexo`); agora abre o certo.
+- **Achados no teste:**
+  - **defeito antigo no Caso Resolvido (desde 2026-10-15):** depois da acusação, a revelação e o mural quebravam, porque a função das estrelas tinha ficado fora do jogo. Os pontos não se perdiam (ficavam em "Receber agora"), mas a tela travava. Corrigido;
+  - no x2 e no x4, o "Acertou na 2ª: …" alargava o tabuleiro e passava da tela no celular; agora quebra a linha;
+  - o teste da Memória escolhia o par errado quando dois pares tinham o mesmo texto (era o teste, não o jogo).
+- **Testes:**
+  - Caça ao Tesouro: acertos, um erro e o baú, em 1440×900, 390×844, 844×390, 360×740, 768×1024, 1024×768 e 667×375, e "reduzir movimento" com 3 erros;
+  - Corrente do Tempo: arrastar pela alça, conferir, resolver pelas setinhas e perder uma sequência, nos mesmos tamanhos;
+  - Palavrinha x1, x2 e x4: palpite errado, palavra do dia certa, fim, estatísticas, registro do dia e treino, em 7 tamanhos;
+  - Caso Resolvido: o Mergulho 1 inteiro (triagem certa pelo conteúdo do caso, armadilha e rastro), os treinos do Recife e da Caverna, o Interrogatório, o mural e a acusação, em 7 tamanhos e com "reduzir movimento"; e o detetive aberto antes da prova, com "Ir para a Prova final";
+  - de novo os jogos das ondas A e B, os flashcards da fase e a Sala de Jogos;
+  - o auditor de design passou, também no navegador (7 larguras).
+
 ## 2026-10-18 · Onda B dos jogos no palco: Memória, Cartas do Fundo, Forca e Adivinha Aí (etapa 4)
 - **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos, XP e conteúdo iguais.
 - **Feito:**
