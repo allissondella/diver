@@ -13,6 +13,8 @@
  *   desenhar(c, e)   → desenha no contexto c; e = { L, A, guinada, arfagem, t, coice, nivel, bomba, slosh, tilt, bolhas, rm }
  *   bico(e)          → { x, y, a, r }: a ponta do bico na tela, a direção do cano na tela e o raio do furo
  *   silhueta()       → o contorno (convexo) da pistola inteira no último desenho, em px da tela
+ *   contornoDe(e)    → o mesmo contorno numa pose qualquer, sem desenhar (é só conta: o Tiro de Reflexo usa para saber
+ *                      onde a pistola pode tampar em todas as poses)
  *   cobre(x, y)      → o ponto (x, y) fica atrás de alguma peça da pistola no último desenho?
  *   mao(L, A)        → onde fica a mão na tela
  *   tanque           → { y, r, z0, z1 }: o tanque em unidades da pistola (para as bolhas)
@@ -52,7 +54,7 @@ window.Pistola3D = {
       return v(a.x / n, a.y / n, a.z / n);
     };
     const media = (pts) => vezes(pts.reduce((s, q) => mais(s, q), v(0, 0, 0)), 1 / pts.length);
-    /** Rotação: rolagem (em volta de z), depois arfagem (em volta de x; o bico sobe com ângulo positivo), depois guinada
+    /** Rotação: rolagem (em volta de z), depois arfagem (em volta de x; o bico desce com ângulo positivo), depois guinada
         (em volta de y; o bico vai para a direita com ângulo positivo) */
     function rotacao(guinada, arfagem, rolagem) {
       const cy = Math.cos(guinada);
@@ -239,6 +241,7 @@ window.Pistola3D = {
       return { x: L - k * 0.17, y: A - k * (0.085 + 0.04 * Math.max(0, Math.min(1, (A - 420) / 200))) };
     };
     const PROFUNDO = 31; // a que distância da câmera fica a mão
+    const PIVO = v(0, 3.5, 11); // o ponto em volta do qual a pistola sobe e desce o bico
     /** As direções (guinada e arfagem) de um ponto da tela, vistas da câmera */
     const angulos = (x, y) => {
       const r = unit(v((x - cam.cx) / cam.f, -(y - cam.cy) / cam.f, 1));
@@ -265,9 +268,13 @@ window.Pistola3D = {
       const c = e.coice || 0;
       const t = e.t || 0;
       const b = e.rm ? 0 : 1;
-      const R = rotacao(e.guinada + c * 0.02, e.arfagem + c * 0.16 + Math.sin(t * 1.6) * 0.006 * b, -0.07 - c * 0.03);
-      const pos = mais(mao, v(c * 0.35 + Math.sin(t * 0.8) * 0.08 * b, c * 0.45 + Math.sin(t * 1.6) * 0.1 * b, -c * 1.6));
-      return { R, pos };
+      // a rotação abaixa o bico com arfagem positiva: aqui o sinal vira, para o bico subir quando a mira sobe (e no coice)
+      const R = rotacao(e.guinada + c * 0.02, -(e.arfagem + c * 0.16 + Math.sin(t * 1.6) * 0.006 * b), -0.07 - c * 0.03);
+      const base = mais(mao, v(c * 0.35 + Math.sin(t * 0.8) * 0.08 * b, c * 0.45 + Math.sin(t * 1.6) * 0.1 * b, -c * 1.6));
+      // a arfagem gira em volta da frente do corpo, não da mão: o bico sobe, a mão desce um pouco e o alto da pistola fica
+      // no lugar (ela não passa do trilho do meio)
+      const R0 = rotacao(e.guinada + c * 0.02, 0, -0.07 - c * 0.03);
+      return { R, pos: mais(base, menos(R0(PIVO), R(PIVO))) };
     }
     const paraCamera = (ps, q) => mais(ps.pos, ps.R(q));
 
@@ -846,6 +853,19 @@ window.Pistola3D = {
     }
     /** O ponto (x, y) fica atrás de alguma peça da pistola no último desenho? */
     const cobre = (x, y) => cascos.some((k) => x >= k.x0 && x <= k.x1 && y >= k.y0 && y <= k.y1 && dentro(k.pts, x, y));
-    return { alvo, desenhar, bico, cobre, silhueta: () => silhueta, mao: maoNaTela, tanque: TQ };
+    /** O contorno (convexo) da pistola inteira na pose e, sem desenhar nada: as pontas das peças duras e do tanque e a
+        borda das esferas das peças macias, projetadas. Cobre um tiquinho mais que silhueta() (as esferas inteiras) */
+    function contornoDe(e) {
+      const ps = pose(e);
+      const pts = [];
+      for (const [, p] of PECAS) {
+        const vc = p.verts.map((q) => paraCamera(ps, q));
+        if (p.macia) vc.forEach((q, i) => esferaNaTela(q, p.raios[i] * 1.06, pts));
+        else vc.forEach((q) => pts.push(projetar(q)));
+      }
+      VIDRO.verts.forEach((q) => pts.push(projetar(paraCamera(ps, q))));
+      return contorno(pts);
+    }
+    return { alvo, desenhar, bico, cobre, silhueta: () => silhueta, contornoDe, mao: maoNaTela, tanque: TQ };
   },
 };

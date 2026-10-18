@@ -120,7 +120,7 @@ const Descompressao = (() => {
   const REGRA = {
     investigacao: 'Soma o melhor resultado de cada dia.',
     palavrinha: 'Palavra do dia: o melhor de cada dia, somado. Treino livre: até 60 por dia.',
-    tiro: 'Vale o seu recorde.',
+    reflexo: 'Vale o seu recorde.',
     batata: 'Vitórias do dia (até 150 por dia) + o recorde do modo Sozinho.',
     pitstop: 'Vale o seu recorde.',
     cardume: 'Vale o seu recorde.',
@@ -171,7 +171,7 @@ const Descompressao = (() => {
           h('span', { class: 'pal-ranking__pontos', text: `${l.pontos} pts` }))))
           : h('p', { class: 'texto-suave', text: 'Ninguém pontuou ainda. A primeira posição está esperando você.' }),
         h('p', { class: 'texto-suave pal-ranking__nota', text: jogo === 'geral'
-          ? 'Geral: a soma de todos os jogos. Investigação e palavra do dia: o melhor de cada dia, somado; treino da Palavrinha: até 60 por dia. Tiro ao Alvo, Pit Stop e Cardume: o recorde. Batata Quente: vitórias do dia (até 150 por dia) + o recorde do Sozinho.'
+          ? 'Geral: a soma de todos os jogos. Investigação e palavra do dia: o melhor de cada dia, somado; treino da Palavrinha: até 60 por dia. Tiro de Reflexo, Pit Stop e Cardume: o recorde (o do Tiro ao Alvo que morou aqui também continua). Batata Quente: vitórias do dia (até 150 por dia) + o recorde do Sozinho.'
           : REGRA[jogo] || '' }));
     } catch (e) {
       if (lista.dataset.vez === vez) lista.replaceChildren(h('p', { class: 'texto-erro', text: e.message || 'Não consegui carregar o ranking agora.' }));

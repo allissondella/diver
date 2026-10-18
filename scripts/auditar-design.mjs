@@ -93,7 +93,7 @@ async function auditarNoNavegador() {
   const soTelas = arg('telas', '') ? arg('telas', '').split(',') : null;
   const TELAS = ['inicio', 'sala-enem', 'sala-ensino-medio', 'sala-tecnologia', 'sala-radiologia', 'mergulho', 'artigo', 'quiz', 'quiz-feedback',
     'simulado', 'revisao', 'jogos', 'prova', 'upload-prova', 'tarefas', 'calendario', 'cronograma', 'diagnostica', 'mapa-partida', 'foco',
-    'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao', 'descompressao-tiro',
+    'cursos', 'pdfs', 'perfil', 'estatisticas', 'descompressao', 'descompressao-tiro', 'descompressao-palco',
     'profissoes', 'profissoes-cartas', 'profissoes-metodo', 'profissoes-fundo', 'profissao-enfermagem', 'profissao-enfermagem-dia', 'profissao-enfermagem-mitos', 'profissao-pedagogia', 'profissao-sistemas', 'profissao-medicina', 'profissao-direito-dia', 'profissoes-comparar',
     'profissoes-tecnologia', 'tecnologia-seguranca', 'profissoes-tecnologia-jogo', 'profissoes-medicina', 'medicina-psiquiatria', 'profissoes-medicina-jogo', 'login'].filter((t) => !soTelas || soTelas.includes(t));
   const vistos = {};
@@ -134,7 +134,8 @@ async function auditarNoNavegador() {
         if (el.tagName === 'A' && el.closest('sup') && getComputedStyle(el).display === 'inline') continue; // notinha de fonte [1] no meio do texto (Mapa das Profissões)
         if (el.closest('.lateral') && !document.querySelector('.lateral--aberta')) continue; // gaveta fechada
         const r = el.getBoundingClientRect();
-        if (r.width < 43.5 || r.height < 43.5) achados.push(`alvo pequeno ${Math.round(r.width)}×${Math.round(r.height)}: ${nome(el)}`);
+        const tecla = el.closest('.pal-teclado'); // teclado na tela: dez teclas numa linha não cabem com 44 px de largura no celular (altura de 44 e largura de 24, o mínimo da WCAG 2.5.8)
+        if (r.width < (tecla ? 23.5 : 43.5) || r.height < 43.5) achados.push(`alvo pequeno ${Math.round(r.width)}×${Math.round(r.height)}: ${nome(el)}`);
       }
     }
     const raizTexto = document.querySelector('dialog[open]') || document.body;
@@ -193,10 +194,19 @@ async function auditarNoNavegador() {
         if (tela === 'descompressao-tiro') { // o jogo em tela toda: o cartão de abertura e a partida (regra e placar por cima)
           await p.goto(`${base}?a=${Date.now()}#descompressao`); await p.waitForSelector('.app', { state: 'attached' });
           await esperar(1000); await limpar();
-          await p.evaluate(() => Descompressao.abrir('tiro')); await esperar(700); await limpar();
+          await p.evaluate(() => Descompressao.abrir('reflexo')); await esperar(700); await limpar(); // (o Tiro de Reflexo; o das regras foi para a Sala de Jogos)
           await anotar(`${tela} (abertura)`);
           await p.locator('#sd-tiro-comecar').click(); await esperar(2500);
           await anotar(`${tela} (partida)`);
+          continue;
+        }
+        if (tela === 'descompressao-palco') { // os outros jogos da sala, no palco: a abertura (ou o tabuleiro) de cada um
+          for (const id of ['investigacao', 'palavrinha', 'batata', 'pitstop', 'cardume']) {
+            await p.goto(`${base}?a=${Date.now()}#descompressao`); await p.waitForSelector('.app', { state: 'attached' });
+            await esperar(1000); await limpar();
+            await p.evaluate((j) => Descompressao.abrir(j), id); await esperar(1500); await limpar();
+            await anotar(`descompressao-${id}`);
+          }
           continue;
         }
         if (tela === 'artigo' || tela === 'quiz' || tela === 'quiz-feedback') {

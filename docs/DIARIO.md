@@ -5,6 +5,188 @@
 
 ---
 
+## 2026-10-18 · Onda D dos jogos no palco: a Sala de Descompressão (etapa 4)
+- **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos e conteúdo iguais; o Tiro de Reflexo já estava pronto.
+- **Feito:** os cinco jogos da sala em tela toda (`telaCheia`), no palco (`Palco.daSala(ctx)`), cada um com o seu cenário, movimento e som.
+  - **Investigação:**
+    - o convés do Navio Aurora à noite: a lua entre nuvens, o farol varrendo o horizonte, a neblina e a grade com a boia;
+    - o caso do dia abre no cartão de abertura ("Começar", "Continuar" ou "Rever o caso");
+    - desafio vencido acende o farol; acusação errada é um relâmpago com trovão; caso resolvido abre as nuvens;
+    - durante um desafio, só ele fica na tela; o fim vem no cartão, com "Rever o caso".
+  - **Palavrinha do dia:** o mar de letras do entardecer (a mesma cena da Palavrinha do curso, agora `Palco.cenas.letras`), letras que viram e o fim no cartão, com "Treino livre" ou "Nova palavra".
+  - **Batata Quente:**
+    - um luau na praia à noite (lua, coqueiros, varal de lâmpadas e duas fogueiras);
+    - quanto mais o pavio queima, mais o fogo cresce, as brasas sobem, o tique-taque acelera e a borda da tela pulsa em coral;
+    - a explosão clareia e treme; palavra aceita acalma o fogo; a bomba pende para quem está com a vez;
+    - o menu é o cartão de abertura (os modos em pílulas, com a explicação de cada um embaixo); o fim tem "Jogar de novo" e "Trocar modo".
+  - **Pit Stop Mental:**
+    - um autódromo à noite atrás do box (cidade, arquibancada coberta com flashes, refletores, carros com farol);
+    - o motor desacelera na chegada, a pistola faz "trrr" no acerto e solta faíscas, a porca quica no erro e, na luz verde, o carro passa voando;
+    - o menu é o cartão de abertura; o resumo (cada roda e as contas passo a passo) vai para o cartão do fim;
+    - o box fica ao lado da conta na tela larga e no celular deitado (antes, no celular deitado, as respostas ficavam embaixo da tela).
+  - **Cardume:**
+    - a corrida ocupa a janela inteira, com a pista do mesmo tamanho (o que se vê à frente não muda);
+    - dos lados, o fundo de areia em listras que passam e algas, pedras e corais, na ordem de profundidade de tudo: a velocidade aparece também ali;
+    - o placar foi para as pílulas do palco, o som para o "Som" da barra e a abertura, o baú da sorte e o fim para o cartão.
+  - **No palco:** `abertura({ id, icone, mais, acoes, botao })` (opções e botões a mais no cartão; `botao: null` tira o "Começar"), `terminar(..., { calado })` e, no celular deitado, os botões do cartão com opções numa faixa embaixo. Os botões da barra de cima ganharam fundo escuro translúcido, para ficarem legíveis também sobre cenas claras.
+  - **Auditor no navegador:** agora também abre os cinco jogos da sala no palco.
+- **Testes:**
+  - cada jogo da sala em 1440×900, 390×844 e 844×390: Investigação (abertura, um desafio, a 1ª acusação errada com relâmpago, a 2ª certa, o fim e "Rever o caso"), Palavrinha do dia (palpite errado, palavra certa, fim e treino), Batata Quente (palavra que não serve, três palavras, o pavio no fim, três explosões, o fim, "Trocar modo", o robô e sair no meio; e o Treino com "Encerrar treino" e o lado a lado), Pit Stop (um erro e três acertos, o resumo, "Menu", a fase 2 e sair no meio; e o modo Digitar) e Cardume (setas, baú da sorte, fim, "Jogar de novo" e sair no meio);
+  - "reduzir movimento" no Pit Stop, na Batata e no Cardume;
+  - de novo, os jogos dos cursos (Quiz Relâmpago, Chefão, Maré Alta, Memória, Cartas do Fundo, Forca, Adivinha Aí, Caça ao Tesouro, Corrente do Tempo, Palavrinha, as cartas da fase depois do Mergulho e a Sala de Jogos): tudo certo;
+  - o auditor de design passou, também no navegador. Ao abrir os jogos da sala, ele mediu pela primeira vez o teclado da Palavrinha: no celular, dez teclas numa linha não cabem com 44 px de largura. A regra ganhou essa exceção em `docs/DESIGN.md` e no auditor (a tecla tem 44 px de altura e pelo menos 24 de largura, o mínimo da WCAG 2.5.8); o teclado não mudou.
+
+## 2026-10-18 · Onda C dos jogos no palco: Caça ao Tesouro, Corrente do Tempo, Palavrinha e Caso Resolvido (etapa 4)
+- **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos, XP e conteúdo iguais.
+- **Feito:**
+  - **Caça ao Tesouro:**
+    - a carta náutica (o mapa) fica presa no alto, com o oxigênio e a parada; no celular deitado, ao lado da pergunta;
+    - no acerto, o trecho se desenha e o mergulhador nada até a próxima boia; no erro, as bolhas escapam do tanque;
+    - atrás, um naufrágio que anda a cada trecho, com o baú do fundo aparecendo; no fim, a tampa do baú abre;
+    - "Outra caça" sorteia outro caminho e outras perguntas.
+  - **Corrente do Tempo:**
+    - uma correnteza com fios de água, algas deitadas e uma tartaruga de carona;
+    - o item arrastado segue o dedo e os outros abrem espaço deslizando;
+    - sequência certa faz a correnteza disparar.
+  - **Palavrinha (x1, x2 e x4):**
+    - o saguão (palavra do dia, treino, estatísticas e ranking) por cima de um mar de letras;
+    - as letras de cada palpite viram uma a uma;
+    - o fim traz "Suas estatísticas" e "Ver o Ranking Diver", e a partida do dia continua guardada até os pontos entrarem;
+    - no celular deitado, o teclado fica ao lado do tabuleiro (antes ficava escondido embaixo); o x2 e o x4 alargam a coluna no computador.
+  - **Caso Resolvido:**
+    - em tela toda, com o painel e o diário de bordo lado a lado no computador;
+    - um recife sombrio que fica mais fundo a cada mergulho (luz no Raso, corais no Recife, paredes e sonar na Caverna, brilhos no Abismo), com a Sombra passando ao longe;
+    - o ar gasto sai do tanque em bolhas e a pérola brilha no fim do mergulho;
+    - os pontos entram no cartão do fim, com "Voltar ao caso" (e "Ir para a Prova final" quando o jogo foi aberto antes da prova).
+  - **No palco:** `palco.comecar`, `palco.topo` e `terminar(..., { mais })`; a coluna nunca alarga por causa do conteúdo.
+  - **Auditor no navegador:** abria o Tiro antigo da Descompressão (`tiro`), que virou o Tiro de Reflexo (`reflexo`); agora abre o certo.
+- **Achados no teste:**
+  - **defeito antigo no Caso Resolvido (desde 2026-10-15):** depois da acusação, a revelação e o mural quebravam, porque a função das estrelas tinha ficado fora do jogo. Os pontos não se perdiam (ficavam em "Receber agora"), mas a tela travava. Corrigido;
+  - no x2 e no x4, o "Acertou na 2ª: …" alargava o tabuleiro e passava da tela no celular; agora quebra a linha;
+  - o teste da Memória escolhia o par errado quando dois pares tinham o mesmo texto (era o teste, não o jogo).
+- **Testes:**
+  - Caça ao Tesouro: acertos, um erro e o baú, em 1440×900, 390×844, 844×390, 360×740, 768×1024, 1024×768 e 667×375, e "reduzir movimento" com 3 erros;
+  - Corrente do Tempo: arrastar pela alça, conferir, resolver pelas setinhas e perder uma sequência, nos mesmos tamanhos;
+  - Palavrinha x1, x2 e x4: palpite errado, palavra do dia certa, fim, estatísticas, registro do dia e treino, em 7 tamanhos;
+  - Caso Resolvido: o Mergulho 1 inteiro (triagem certa pelo conteúdo do caso, armadilha e rastro), os treinos do Recife e da Caverna, o Interrogatório, o mural e a acusação, em 7 tamanhos e com "reduzir movimento"; e o detetive aberto antes da prova, com "Ir para a Prova final";
+  - de novo os jogos das ondas A e B, os flashcards da fase e a Sala de Jogos;
+  - o auditor de design passou, também no navegador (7 larguras).
+
+## 2026-10-18 · Onda B dos jogos no palco: Memória, Cartas do Fundo, Forca e Adivinha Aí (etapa 4)
+- **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos, XP e conteúdo iguais.
+- **Feito:**
+  - **Memória:**
+    - recife raso ao meio-dia, com a luz do sol dançando na areia, algas, corais e cardume;
+    - conchas cor de pérola, para destacar da água;
+    - par achado solta bolhas; par errado só desvira, sem bronca;
+    - as pílulas mostram a medalha que ainda dá para pegar.
+  - **Cartas do Fundo:**
+    - águas-vivas no escuro, e "Sabia" acende a mais perto;
+    - o caminho da fase (Mergulho → flashcards → "Voltar para a trilha" como principal) continua igual.
+  - **Forca do Náufrago:** mar ao amanhecer, com sol, ilha, coqueiros e gaivotas; letra errada respinga na jangada.
+  - **Adivinha Aí:** praia à noite; cada dica é uma garrafa que boia até a areia, e o acerto acende fogos.
+  - **Os quatro:** todos com abertura, "Em números" no fim e "Jogar de novo" sem sair.
+  - **Achado no teste:** uma sombra com `filter` na carta das Cartas do Fundo achatava o 3D, e a carta virada mostrava a frente espelhada. Agora a sombra fica nos lados da carta (regra anotada no JOGOS.md).
+- **Testes:**
+  - os quatro jogados de verdade:
+    - Memória: os pares pelo conteúdo, com ouro;
+    - Cartas: Sabia, Quase e Não sabia;
+    - Forca: letras pelo teclado;
+    - Adivinha: um acerto e chutes errados;
+  - feitos em 1440×900, 390×844, 844×390, 360×740, 768×1024, 1024×768, 1920×1080 e 667×375, com o fim, o XP, o histórico e o "Jogar de novo";
+  - "reduzir movimento" nas Cartas;
+  - o caminho Mergulho → "Bora fixar com flashcards?" → 10 cartas da fase → "Voltar para a trilha" → mapa;
+  - o auditor de design passou.
+
+## 2026-10-18 · Onda A dos jogos no palco: Chefão do Abismo e Maré Alta (etapa 4)
+- **Pedido do usuário:** o mesmo da etapa 3 ("pode aplicar para todos"), com "Regras, pontos, XP e conteúdo ficam iguais".
+- **Feito:**
+  - **Chefão do Abismo:**
+    - abre num cartão (quantos chefões estão liberados) e depois na escolha;
+    - o abismo escurece a cada profundidade;
+    - o chefão fica ao lado da pergunta na tela larga e no celular deitado, e num painel preso no alto no celular em pé, para nunca sair de vista;
+    - golpe com onda de choque e o dano subindo; ataque com a borda coral; derrotado, ele afunda;
+    - "Revanche" ou "Escolher outro chefão" no fim;
+    - antes, depois do primeiro golpe o chefão parava de flutuar (a classe da animação ficava presa); agora volta a flutuar.
+  - **Maré Alta:**
+    - um cais ao entardecer, com a lua, o farol que gira e a régua de maré (só na tela larga; no celular, a pílula "Maré: x%");
+    - o mar sobe com uma sobra e assenta (mola amortecida), e a onda quebra no erro;
+    - a cada 5 seguidos, faíscas douradas e o farol amarelo;
+    - o título do fim diz "1 acerto" no singular.
+  - **Peças comuns** em `Palco.pintar`: o mar (`mar`), as nuvens macias (`nuvem`, `nuvemBaixa`), `seme` e `tela`. O Quiz passou a usá-las, sem mudar o desenho.
+  - Saíram os estilos velhos da onda do tempo do Quiz e da maré, sem uso.
+- **Testes:**
+  - os 3 jogos da onda A em 1440×900, 390×844, 844×390, 360×740, 768×1024, 1024×768, 1280×800, 1920×1080 e 667×375, de ponta a ponta (abertura, perguntas, fim com XP no curso), sem nada passando da tela;
+  - a Maré com "reduzir movimento";
+  - a cena sozinha (calma, golpe, onda, maré baixando);
+  - o auditor de design passou.
+
+## 2026-10-18 · O palco em tela toda dos jogos e o Quiz Relâmpago nele (etapa 3 dos jogos)
+- **Pedido do usuário:** "vamos atualizar nossos jogos para esse estilo de design que ficou o jogo da pistola, tela cheia, bonito, da uma sensação de entrar realmente no jogo [...] o realismo a fluidez, pode aplicar para todos". O plano aprovado ("Manda bala"): uma base comum de tela cheia e depois os jogos em ondas, com regras, pontos, XP e conteúdo iguais.
+- **Feito:**
+  - **`js/jogos/palco.js`:** a cena em canvas, a coluna de vidro com as pílulas, o som sintetizado ("Som" na barra, a escolha só no aparelho), "Tela cheia", as reações comuns e a abertura e o fim no cartão do Tiro ao Alvo ("Em números", XP e pérolas da rodada, "O que revisar" e "Jogar de novo").
+  - **`ctx.fim` e `ctx.sair(destino)` no app:** o botão de sair do fim é "Voltar para a Sala de Jogos", "Voltar para a trilha" (flashcards da fase, como principal) ou "Ir para a Prova final" (detetive antes da prova).
+  - **`JogoComum.questao(..., { palco })`** reage sozinho no acerto e no erro.
+  - **Quiz Relâmpago no palco:** uma tempestade no mar, à noite. O mar sobe com o relógio, cai um raio (todo quebrado, com galhos e brilho) a cada acerto, amarelo no combo, e as nuvens acendem por dentro; no erro, o trovão; no fim do tempo, a onda quebra.
+  - As nuvens passaram por quatro tentativas até ficarem macias, com o contorno aceso pela lua (as primeiras pareciam bolas).
+  - O mar saía preto: a transparência não lia as cores misturadas (`Palco.pintar.alfa` agora lê `rgb()`).
+- **Testes:**
+  - o Quiz inteiro em 1440×900, 390×844 e 844×390 (abertura, pergunta, resposta, fim, XP no curso, "O que revisar", sem rolar a página);
+  - a cena sozinha: calma, raio, mar alto e onda, no computador e no celular;
+  - o auditor de design passou.
+
+## 2026-10-18 · Tiro ao Alvo na Sala de Jogos do Enem e do Ensino Médio (etapa 2 dos jogos)
+- **Pedido do usuário:** "vamos deixar esse jogo da pistola como educacional para quem faz o enem ou ensino médio lá na sala de jogos". Sobre o conteúdo: "pode deixar como está o jogo agora, não muda nada".
+- **Feito:**
+  - `js/jogos/tiro-ao-alvo.js` registra o jogo das regras (o mesmo motor, igual ao de antes) na Sala de Jogos, no grupo "Jogos rápidos".
+  - Ele só aparece nos cursos das salas do Enem e do Ensino Médio: `Cartas.derivar` devolve `trilhaId`, e a regra usa `Grupos.LISTA`.
+  - **Tela toda na Sala de Jogos** (`telaCheia`): `#tela-jogo.tela--cheia`, `body.jogo-trava` e a barra por cima, com "Som" e "Tela cheia" em `#jogo-botoes`.
+  - **XP por rodada sem sair do jogo** (`ctx.concluirRodada`):
+    - a parte da economia do `terminarJogo` virou `aplicarResultadoDoJogo` e as rodadas usam a mesma;
+    - cada nível completo é um acerto e a placa do fim é o erro, com bônus de 1 XP a cada 4 pontos;
+    - o Desafio do Dia dobra só a primeira rodada;
+    - o fim mostra "+25 XP e +2 pérolas no curso".
+  - Entre as rodadas, sair não pergunta.
+  - O álbum e o som continuam em `diver:v1:descompressao` → `jogos.tiro`: os selos de quem já jogava ficam.
+- **Testes:**
+  - o jogo aparece em Enem · Biologia, Ensino Médio · Matemática e no Comece por aqui, e não aparece em Radiologia, Explora Tech nem Cibersegurança;
+  - uma rodada com 2 níveis deu +25 XP e +2 pérolas, e a segunda contou outra partida;
+  - o álbum de 2 selos virou 4;
+  - sair sem pergunta entre as rodadas e com pergunta no meio;
+  - a varredura de layout passou nos 9 tamanhos;
+  - o Quiz Relâmpago terminou como antes (resumo, XP e histórico);
+  - o auditor de design passou.
+
+## 2026-10-18 · Tiro de Reflexo na Sala de Descompressão (etapa 1 dos jogos)
+- **Pedido do usuário:** "Para a sala de descompressão vamos ter placas verdes onde a pessoa deve atirar ou vermelhas que perde, mas a cada fase vai diminuindo o tempo que a placa aparece, tem que ser um jogo de reação, e não deve aparecer placas ali onde a arma tampa". Nas respostas ao plano: a verde que escapa tira 1 de 3 vidas e a vermelha acaba na hora ("1 - perfeito, isso aí!"); o placar começa do zero ("2 - perfeito").
+- **Feito:**
+  - `js/descompressao/tiro.js` virou o **motor** `TiroAoAlvo.abrir(ctx, { modo })`, com dois jeitos de jogar: `regras` (o Tiro ao Alvo de sempre, que vai para a Sala de Jogos na etapa 2) e `reflexo`. O jogo das regras ficou igual.
+  - **`js/descompressao/reflexo.js`:** o Tiro de Reflexo na sala.
+    - A placa verde é um disco claro com o alvo e o anel do tempo; a vermelha, um octógono escuro com o X, como a placa de "pare". Dá para separar as duas sem depender da cor.
+    - Cada verde que escapa gasta 1 de 3 tanques de oxigênio; a vermelha acaba a partida na hora.
+    - A cada fase a placa fica menos tempo de pé: de 1,6 s até 0,45 s.
+    - No fim, "Em números" com a reação média e a mais rápida.
+  - **Longe da pistola:** a zona dela é o contorno com a mira em 15 pontos do campo, parada e no coice. Ele vem de `Pistola3D.contornoDe`, uma conta sem desenhar: 15 ms no lugar de 100 ms, e cobre a pistola desenhada em 105 poses e 5 telas. A placa só nasce fora da zona. No celular, sobra 28% do trilho da frente; no computador, uns 64%. Os outros dois trilhos ficam livres.
+  - **Acerto justo:** a vermelha só conta dentro do octógono; a verde ganha a folga do dedo.
+  - **Placar `sala-reflexo`:** a função `ranking_sala` do `setup.sql` ganhou o jogo. O `sala-tiro` continua contando no geral. Rodado **só no banco de testes**: o anônimo não roda, e o teste de pontos (desfeito na hora) deu o recorde certo e o geral somando.
+  - Barra de cima no celular estreito e deitado: os botões ficam só no ícone, para o nome do jogo caber.
+  - Token novo `--sucesso-sombra` (o verde escuro da placa) e tutorial da sala na versão 3.
+- **Testes:**
+  - o robô jogou até a fase 5 em 3 telas: nenhuma placa atrás da pistola, as vidas e o fim pela vermelha e pela falta de oxigênio;
+  - a varredura de layout passou nos 9 tamanhos e com "reduzir movimento";
+  - o jogo das regras passou pelo motor novo;
+  - o auditor de design passou.
+- **Pendências:** a etapa 2 (o Tiro ao Alvo das regras na Sala de Jogos dos cursos do Enem e do Ensino Médio) e as etapas 3 e 4. O SQL na produção só vai no merge, com o OK do usuário.
+
+## 2026-10-18 · Tiro ao Alvo: a pistola segue a mira
+- **Pedido do usuário:** "a arma está invertida quando a mira sobe ela desce, isso ficou feio, ela tem que seguir certinho".
+- **Causa:** o giro de subir e descer do modelo 3D abaixa o bico com o ângulo positivo, e a pose usava o ângulo da mira sem trocar o sinal (o comentário dizia o contrário). O coice também abaixava o bico.
+- **Feito (`js/descompressao/pistola-3d.js` e `tiro.js`):**
+  - a pose troca o sinal: o bico sobe quando a mira sobe, e o coice levanta o bico, como diz o documento;
+  - o giro de subir e descer passou a ser em volta da frente do corpo (não da mão): o bico sobe, a mão desce um pouco e o alto da pistola fica no lugar. Girando em volta da mão, ela passava até 41 px do trilho do meio;
+  - a mira em cima do placar conta como o alto do campo, para a pistola não levantar além disso.
+- **Testes:** varredura da mira pelo campo inteiro, com e sem o coice, nos 9 tamanhos de tela (o alto da pistola fica de 9 a 126 px abaixo do trilho do meio); o robô até o nível 8 nos 9 tamanhos e com "reduzir movimento"; fotos no jogo; teclado e som OK.
+
 ## 2026-10-18 · Tiro ao Alvo: a luva mais real
 - **Pedido do usuário:** "Melhora essa luva aí, deixa mais real", com a foto de uma mão de luva num jogo de tiro como referência. **Regras, níveis, pontos, sons e álbum iguais;** o desenho é nosso.
 - **Feito (`js/descompressao/pistola-3d.js`):**
