@@ -5,6 +5,20 @@
 
 ---
 
+## 2026-10-18 · O palco em tela toda dos jogos e o Quiz Relâmpago nele (etapa 3 dos jogos)
+- **Pedido do usuário:** "vamos atualizar nossos jogos para esse estilo de design que ficou o jogo da pistola, tela cheia, bonito, da uma sensação de entrar realmente no jogo [...] o realismo a fluidez, pode aplicar para todos". O plano aprovado ("Manda bala"): uma base comum de tela cheia e depois os jogos em ondas, com regras, pontos, XP e conteúdo iguais.
+- **Feito:**
+  - **`js/jogos/palco.js`:** a cena em canvas, a coluna de vidro com as pílulas, o som sintetizado ("Som" na barra, a escolha só no aparelho), "Tela cheia", as reações comuns e a abertura e o fim no cartão do Tiro ao Alvo ("Em números", XP e pérolas da rodada, "O que revisar" e "Jogar de novo").
+  - **`ctx.fim` e `ctx.sair(destino)` no app:** o botão de sair do fim é "Voltar para a Sala de Jogos", "Voltar para a trilha" (flashcards da fase, como principal) ou "Ir para a Prova final" (detetive antes da prova).
+  - **`JogoComum.questao(..., { palco })`** reage sozinho no acerto e no erro.
+  - **Quiz Relâmpago no palco:** uma tempestade no mar, à noite. O mar sobe com o relógio, cai um raio (todo quebrado, com galhos e brilho) a cada acerto, amarelo no combo, e as nuvens acendem por dentro; no erro, o trovão; no fim do tempo, a onda quebra.
+  - As nuvens passaram por quatro tentativas até ficarem macias, com o contorno aceso pela lua (as primeiras pareciam bolas).
+  - O mar saía preto: a transparência não lia as cores misturadas (`Palco.pintar.alfa` agora lê `rgb()`).
+- **Testes:**
+  - o Quiz inteiro em 1440×900, 390×844 e 844×390 (abertura, pergunta, resposta, fim, XP no curso, "O que revisar", sem rolar a página);
+  - a cena sozinha: calma, raio, mar alto e onda, no computador e no celular;
+  - o auditor de design passou.
+
 ## 2026-10-18 · Tiro ao Alvo na Sala de Jogos do Enem e do Ensino Médio (etapa 2 dos jogos)
 - **Pedido do usuário:** "vamos deixar esse jogo da pistola como educacional para quem faz o enem ou ensino médio lá na sala de jogos". Sobre o conteúdo: "pode deixar como está o jogo agora, não muda nada".
 - **Feito:**

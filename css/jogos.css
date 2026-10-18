@@ -1342,3 +1342,63 @@ body.jogo-trava { overflow: hidden; }
   .pal-aviso { flex-direction: column; }
   .pal-aviso__mascote { width: 60px; }
 }
+
+/* ---------- O palco em tela toda (js/jogos/palco.js, 2026-10-18) ----------
+   A cena (canvas) fica atrás de tudo; o jogo vai numa coluna por cima, que rola sozinha (a cena fica parada); o cartão
+   de abertura e de fim é o do Tiro ao Alvo (sd-tiro__cartao), numa camada por cima. */
+.palco { position: absolute; inset: 0; overflow: hidden; background: var(--fundo-0); }
+.palco__cena { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+/* a rolagem começa embaixo da barra de cima (o jogo nunca passa por baixo dela) e o que sobe some num degradê curto */
+.palco__rolagem {
+  position: absolute; inset: var(--sd-topo, 0px) 0 0; overflow-y: auto; overscroll-behavior: contain;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--esp-3)); mask-image: linear-gradient(to bottom, transparent 0, black var(--esp-3));
+}
+.palco--cartao .palco__rolagem { visibility: hidden; } /* com o cartão aberto, a rodada de trás some (a cena continua) */
+.palco__coluna {
+  width: min(100% - var(--esp-4) * 2, 760px); margin: 0 auto; display: grid; gap: var(--esp-3); align-content: start;
+  padding: var(--esp-3) 0 calc(var(--esp-6) + env(safe-area-inset-bottom));
+}
+.palco__hud { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--esp-2); }
+.palco__hud:empty { display: none; }
+.palco__pilula {
+  display: inline-flex; align-items: center; gap: var(--esp-1); min-height: 32px; padding: 0 var(--esp-3);
+  border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--fundo-0) 70%, transparent);
+  font: 700 var(--t-sm) var(--fonte); font-variant-numeric: tabular-nums; color: var(--texto); white-space: nowrap;
+  border: 1px solid color-mix(in srgb, var(--texto) 10%, transparent);
+}
+.palco__pilula .icone { width: 16px; height: 16px; flex: none; }
+.palco__pilula--destaque { color: var(--amarelo); }
+.palco__pilula--turquesa { color: var(--turquesa-claro); }
+.palco__pilula--perigo { color: var(--coral); }
+.palco__pilula.oxigenio .icone { width: 18px; height: 18px; }
+/* a pergunta num cartão de vidro escuro, por cima da cena */
+.palco .cartao { background: color-mix(in srgb, var(--fundo-0) 82%, transparent); border-color: color-mix(in srgb, var(--texto) 14%, transparent); box-shadow: var(--sombra-4); }
+.palco .cartao .cartao { background: color-mix(in srgb, var(--superficie-1) 80%, transparent); }
+.palco .alternativa { background: color-mix(in srgb, var(--superficie-1) 72%, transparent); }
+.palco .jogo-intro { text-align: center; color: var(--texto); text-shadow: 0 1px 2px var(--fundo-0); }
+/* o cartão de abertura e de fim: os números do fim em até 4 colunas (2 no celular); o título do
+   fim é amarelo quando a rodada foi boa e fica na cor do texto quando não foi (o coral do Tiro é da placa errada) */
+.palco__camada { z-index: var(--z-acima-2); }
+.palco__fim.palco__fim--vitoria .sd-tiro__rotulo { color: var(--turquesa-claro); }
+.palco__fim.palco__fim--vitoria .sd-tiro__titulo { color: var(--amarelo); }
+.palco__fim.palco__fim--derrota .sd-tiro__titulo { color: var(--texto); }
+.palco__fim .sd-tiro__numeros--fim { grid-template-columns: repeat(var(--colunas, 4), minmax(0, 1fr)); }
+.palco__fim .sd-tiro__numeros dd { white-space: nowrap; }
+.palco__revisar { border-top: 1px solid color-mix(in srgb, var(--texto) 12%, transparent); padding-top: var(--esp-3); }
+.palco__revisar > summary { cursor: pointer; font-weight: 800; color: var(--texto); min-height: 44px; display: flex; align-items: center; }
+.palco__revisar-lista { display: grid; gap: var(--esp-2); max-height: 40vh; overflow-y: auto; margin-top: var(--esp-2); }
+@media (max-width: 479px) {
+  .palco__coluna { width: min(100% - var(--esp-3) * 2, 760px); }
+  .palco__fim .sd-tiro__numeros--fim { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .palco__numeros--3 > :last-child { grid-column: 1 / -1; } /* três números: o último ocupa a linha de baixo inteira */
+  .palco__pilula { padding: 0 var(--esp-2); }
+}
+@container sd-cheia (max-height: 479px) {
+  .sd-tiro__cartao > .palco__revisar { grid-area: alb; }
+  .palco__revisar-lista { max-height: 30vh; }
+  .palco__pilula { min-height: 26px; font-size: var(--t-xs); }
+}
+@container sd-cheia (max-height: 479px) and (max-width: 799px) {
+  .palco__fim .sd-tiro__numeros--fim { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .palco__numeros--3 > :last-child { grid-column: 1 / -1; }
+}

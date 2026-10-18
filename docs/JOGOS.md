@@ -23,7 +23,7 @@ _Partidas curtas para revisar um pouquinho a cada dia._
 | Jogo | Como funciona | Conteúdo usado | Roupa de mar | Semana |
 | --- | --- | --- | --- | --- |
 | **Cartas do Fundo** (`cartas-do-fundo`) | Flashcards: vire a carta, veja a resposta e diga se sabia, quase sabia ou não sabia. Alimenta as caixas de revisão espaçada (Leitner). | Qualquer trilha (derivado das questões) | Cartas guardadas em um baú | Pronto (v0) |
-| **Quiz Relâmpago** (`quiz-relampago`) | Múltipla escolha e verdadeiro ou falso, com cronômetro opcional e combo de acertos (a partir do 3º seguido, +5 XP). | Qualquer trilha (derivado) | O tempo é uma onda que vai chegando | Pronto (v0) |
+| **Quiz Relâmpago** (`quiz-relampago`) | Múltipla escolha e verdadeiro ou falso, com cronômetro opcional e combo de acertos (a partir do 3º seguido, +5 XP). | Qualquer trilha (derivado) | Tempestade no mar, à noite, em tela toda: o mar sobe enquanto o relógio corre e cai um raio a cada acerto | Pronto (palco, 2026-10-18) |
 | **Memória** (`memoria`) | Jogo das cartas viradas: encontre os pares termo ↔ definição. Menos tentativas e menos tempo, mais pontos. | Pares (ou derivado das questões) | Conchas que abrem e fecham | Pronto (v0) |
 | **Adivinha Aí** (`adivinha-ai`) | As dicas aparecem uma a uma. Quanto antes você acertar, mais pontos. Aceita a resposta sem acento e sem maiúsculas. | Adivinhas (até 10 dicas por carta) | Dicas que chegam em garrafas com mensagem | Pronto (v0) |
 | **Palavrinha**, **Palavrinha x2** e **Palavrinha x4** (`palavrinha`, `palavrinha-x2`, `palavrinha-x4`) | Descubra a palavra-chave do curso: cada palpite pinta as letras (lugar certo, em outro lugar, não está). 6 tentativas; no x2 e no x4, 2 ou 4 palavras de uma vez (7 e 9 tentativas). **Palavra do dia** igual para todo o curso (sorteio pela data, sem repetir até usar todas) e **Treino livre**. Os dois valem XP, estatísticas e pontos no **Ranking Diver** do curso (zera todo mês); pérolas, só a palavra do dia. Tema desde o início (nunca um que entregue a palavra); dica completa depois da 3ª tentativa. Aviso do ranking na primeira vez. Tudo vindo do log de atividade (`docs/ATIVIDADE.md`). | Palavras simples de 4 a 8 letras (bloco `palavras` + respostas curtas). Aparece com 30 (x1) ou 40 palavras (x2/x4, com 10 de um mesmo tamanho) | Peças de letra no fundo do mar, que acendem quando acertam | Pronto (v1) |
@@ -171,6 +171,23 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
 - **Rodadas sem sair do jogo:** **`ctx.concluirRodada(resultado)`** aplica um Resultado padrão na hora (economia, log, conquistas, nível) e devolve `{ xp, perolas, dobro }`; o jogo mostra o fim dele e oferece "Jogar de novo". O Desafio do Dia dobra só a primeira rodada. **`ctx.sair()`** volta para a Sala de Jogos sem perguntar.
 - **`emAndamento()`** no controlador (o que `iniciar` devolve, junto com `destruir`): entre as rodadas, o X e o Voltar do navegador saem sem perguntar (as rodadas feitas já valeram); durante a rodada, perguntam, como nos outros jogos.
 
+### O palco em tela toda (`js/jogos/palco.js`, 2026-10-18)
+Pedido do usuário: "vamos atualizar nossos jogos para esse estilo de design que ficou o jogo da pistola, tela cheia, bonito, da uma sensação de entrar realmente no jogo [...] pode aplicar para todos". O palco é a roupa comum; **regras, pontos, XP e conteúdo de cada jogo ficam iguais**.
+- **`Palco.montar(ctx, { id, cena })`** (no pacote `jogos`, antes dos jogos) monta, dentro de `ctx.container`:
+  - a **cena**: um `<canvas>` atrás de tudo, que o jogo desenha (`cena.desenhar(g, L, A, t, dt, estado)`, `cena.medir(L, A)` quando a tela muda e `cena.reagir(tipo, info, estado)`);
+  - a **coluna** do jogo por cima (`palco.area`), num vidro escuro, com o placar em **pílulas** (`palco.hud(...)`, `palco.pilula(texto, { icone, classe })`); a rolagem começa embaixo da barra de cima;
+  - **"Som"** (sintetizado na hora, sem arquivo; a escolha fica só no aparelho, `diver-local:v1:jogos-som`) e **"Tela cheia"** na barra (`ctx.barra`).
+- **Reações comuns:** `palco.reagir('acerto' | 'erro' | 'combo' | 'vitoria' | 'derrota' | <som>, { el } ou { x, y })` toca o som, solta partículas do elemento, dá o clarão e a tremidinha e chama a cena. `JogoComum.questao(..., { palco })` já reage sozinho no acerto e no erro.
+- **Abertura e fim no cartão do Tiro ao Alvo:**
+  - `palco.abertura({ rotulo, titulo, lead, passos, numeros, botao, aoComecar })`;
+  - `palco.terminar(resultado, { tom, numeros, aoJogarDeNovo, textoDeNovo })` aplica o resultado na hora (`ctx.concluirRodada`) e mostra "Em números", o XP e as pérolas da rodada, **"O que revisar"** e **"Jogar de novo"** sem sair do jogo. Título amarelo quando a rodada foi boa (`tom: 'vitoria'`), na cor do texto quando não foi.
+- **O botão de sair do fim vem do app** (`ctx.fim`): "Voltar para a Sala de Jogos"; nos flashcards da fase, **"Voltar para a trilha"** é o principal e "Mais cartas desta fase" joga de novo; no detetive antes da prova, "Ir para a Prova final".
+- **Controlador:** `{ emAndamento: () => palco.jogando(), destruir() { ...; palco.parar(); } }`.
+- **"Reduzir movimento":** a cena fica parada (sem partículas, clarão, raio nem tremidinha) e só muda quando o jogo muda (o mar que sobe, a vida do chefão).
+- **Ajudas de desenho:** `Palco.pintar` (`COR` dos tokens, `misturar`, `alfa`, `degrade`, `agua`, `raios`, `poeira`).
+- **Nos testes:** com `window.__diverTeste`, o palco fica em `__diverTeste.palco`.
+- **Já no palco:** Quiz Relâmpago. Os outros entram em ondas: A (Chefão do Abismo, Maré Alta), B (Memória, Cartas do Fundo, Forca, Adivinha Aí), C (Caça ao Tesouro, Corrente do Tempo, Palavrinha, Caso Resolvido) e D (a Sala de Descompressão).
+
 ## 4. Checklist de aceitação (todo jogo novo)
 - [ ] Registrado em `js/jogos/registro.js` com o `requer` certo: o card aparece na Sala de Jogos **só** nos cursos que têm o conteúdo pedido (sem conteúdo ou "em breve" = não aparece).
 - [ ] Funciona com uma trilha de 20 questões (derivada) ou declara no `requer` o bloco de que precisa.
@@ -195,6 +212,7 @@ A Sala de Jogos é sempre a de **um curso** (a trilha atual) e mostra **só os j
 - Combo: a partir do 3º acerto seguido, +5 XP por acerto; o combo quebra no erro.
 - Sem oxigênio. Termina ao acabar as perguntas (10 por padrão).
 - Feedback imediato com explicação curta. Teclado: 1–6 / A–F; V e F no verdadeiro ou falso.
+- **No palco (2026-10-18):** uma tempestade no mar, à noite. A onda do tempo é o próprio mar, que sobe na tela enquanto o relógio corre (perto do fim, a crista fica coral) e baixa quando você responde. No acerto, cai um raio (amarelo no combo) e as nuvens acendem por dentro; no erro, o trovão; no fim do tempo, a onda quebra. As nuvens são gomos macios com o contorno aceso pela lua, num teto que anda devagar. O fim fica no próprio jogo, com "Jogar de novo".
 
 #### Memória (`memoria`) — semana 4
 - Grade de conchas: 3×4 (6 pares), 4×4 (8) ou 4×5 (10). Vira duas por vez; par certo fica aberto, par errado desvira após ~1 s.

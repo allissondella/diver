@@ -146,13 +146,15 @@ Jogos.registrar({
   iniciar(ctx) { /* monta a tela em ctx.container */ return { destruir() {} }; },
 });
 // ctx = { container, trilha, cartas, prog, opcoes, aoTerminar(resultado), gastarPerolas(n),
-//         barra(...nós), concluirRodada(resultado) → { xp, perolas, dobro }, sair() }   // tela toda e rodadas (2026-10-18)
+//         barra(...nós), concluirRodada(resultado) → { xp, perolas, dobro }, sair(destino?), // tela toda e rodadas (2026-10-18)
+//         fim: { texto, destino?, principal?, deNovo? } }                                    // o botão de sair do fim no palco
 // definição: telaCheia: true (a janela inteira); controlador: { destruir(), emAndamento() } (emAndamento é opcional)
 // resultado = Jogos.resultado({ jogoId, trilha, detalhes, inicio, comboMaximo, bonus, pontuacao, titulo, subtitulo, ... })
 // detalhe  = JogoComum.detalhe(carta, acertou, { inicio, pergunta, resposta, sua, neutro })
 ```
 - `cartas` vem de `Cartas.derivar(trilha)`: `{ trilhaId, multipla, vf, flash, pares, adivinhas, sequencias, palavras }` (`trilhaId` desde 2026-10-18: o Tiro ao Alvo só aparece nas salas do Enem e do Ensino Médio).
 - **Tela toda e rodadas (2026-10-18, o Tiro ao Alvo):** com `telaCheia`, o `iniciarJogo` põe `tela--cheia` no `#tela-jogo` e o `mostrarTela` trava a rolagem (`body.jogo-trava`); os botões do jogo vão para `#jogo-botoes`. `ctx.concluirRodada` aplica o resultado sem sair do jogo (`aplicarResultadoDoJogo`, a mesma parte da economia do `terminarJogo`; o Desafio do Dia dobra só a primeira rodada). Com `emAndamento()` falso, sair não pergunta.
+- **O palco (2026-10-18, `js/jogos/palco.js`, no pacote `jogos` antes dos jogos):** a roupa comum dos jogos em tela toda: cena em canvas desenhada pelo jogo, coluna de vidro com as pílulas do placar, som sintetizado, reações (partículas, clarão, tremidinha) e a abertura e o fim no cartão do Tiro ao Alvo, com "Jogar de novo" (detalhes em `docs/JOGOS.md`, "O palco em tela toda"). `ctx.fim` diz qual é o botão de sair do fim (sala, trilha ou prova) e `ctx.sair(destino)` leva para lá. O Quiz Relâmpago foi o primeiro.
 - Estado do jogo: `disponivel` | `precisa` (falta conteúdo) | `embreve`. **A Sala mostra só o núcleo (Mergulho, Simulado, Revisão: abrem a própria área) e os jogos `disponivel` do curso atual**; `precisa` e `embreve` não aparecem, e grupo vazio some (`renderizarSala` no `app.js`; regra em `docs/JOGOS.md`, "Sala de Jogos por curso").
 - `Economia.aplicarResultado()`: detalhe cujo `cartaId` é uma questão da trilha passa pela repetição espaçada (`Progresso.registrarResposta`); o resto por `Progresso.registrarAvulsa`. `neutro: true` ("Quase" nas Cartas do Fundo) conta como estudo, sem acerto nem erro. XP por acerto = tabela do Mergulho + combo (3+ seguidos, +5); bônus do jogo com teto (`CONFIG.bonusMaximo`); Desafio do Dia dobra o XP.
 

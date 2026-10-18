@@ -40,7 +40,7 @@ const App = (() => {
      ========================================================= */
   /* Pacotes de scripts que chegam na primeira vez que a área abre (Onda 6). A ordem dentro de cada pacote importa. */
   const PACOTES = {
-    jogos: ['js/jogos/comum.js', 'js/jogos/cartas-do-fundo.js', 'js/jogos/quiz-relampago.js', 'js/jogos/memoria.js', 'js/jogos/adivinha-ai.js',
+    jogos: ['js/jogos/comum.js', 'js/jogos/palco.js', 'js/jogos/cartas-do-fundo.js', 'js/jogos/quiz-relampago.js', 'js/jogos/memoria.js', 'js/jogos/adivinha-ai.js',
       'js/jogos/caca-ao-tesouro.js', 'js/jogos/chefao.js', 'js/jogos/mare-alta.js', 'js/jogos/forca.js', 'js/jogos/palavrinha.js',
       'js/jogos/corrente-do-tempo.js', 'js/jogos/caso-resolvido.js',
       'js/descompressao/pistola-3d.js', 'js/descompressao/tiro.js', 'js/jogos/tiro-ao-alvo.js', // o Tiro ao Alvo e o motor dele (o mesmo do Tiro de Reflexo)
@@ -1689,7 +1689,10 @@ const App = (() => {
       },
       // Jogo que segue aberto entre as rodadas (o Tiro ao Alvo: "Jogar de novo" sem sair): o XP da rodada entra na hora
       concluirRodada: (resultado) => (estado.jogo === partida ? concluirRodada(partida, resultado) : null),
-      sair: () => { if (estado.jogo === partida) sairDoJogo(true); },
+      sair: (destino) => { if (estado.jogo === partida) sairDoJogo(true, typeof destino === 'string' ? destino : null); }, // (um clique pode chegar como destino)
+      // O fim de um jogo em tela toda (Palco.terminar): o botão de sair (e se ele é o principal), como no resumo
+      fim: faseFlash ? { texto: 'Voltar para a trilha', principal: true, deNovo: 'Mais cartas desta fase' }
+        : opcoes.antesDaProva ? { texto: 'Ir para a Prova final', destino: 'prova' } : { texto: 'Voltar para a Sala de Jogos' },
       barra: (...nos) => $('jogo-botoes').append(...nos), // botões do jogo na barra de cima (Som, Tela cheia)
       gastarPerolas: (n) => {
         const ok = Economia.gastar(estado.prog, n);
@@ -1765,7 +1768,7 @@ const App = (() => {
     mostrarTela('tela-resumo');
   }
 
-  async function sairDoJogo(semPerguntar = false) {
+  async function sairDoJogo(semPerguntar = false, destino = null) {
     if (!estado.jogo) return;
     const c = estado.jogo.controlador;
     const parado = !!(c && c.emAndamento && !c.emAndamento()); // entre as rodadas (o Tiro ao Alvo): as rodadas feitas já valeram
@@ -1773,7 +1776,7 @@ const App = (() => {
     if (!estado.jogo) return;
     const daFase = !!(estado.jogo.opcoes && estado.jogo.opcoes.fase);
     abandonarAndamento();
-    irPara(daFase ? 'mergulho' : 'jogos');
+    irPara(destino || (daFase ? 'mergulho' : 'jogos'));
   }
 
   /* Flashcards da fase (fim do Mergulho → Cartas do Fundo → volta para a trilha) */

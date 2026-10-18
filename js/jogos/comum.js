@@ -37,7 +37,8 @@ const JogoComum = (() => {
 
   /**
    * Mostra uma questão de múltipla escolha em `alvo`.
-   * opcoes: { aoResponder(acertou, detalhe), aoContinuar(), feedback: true, textoContinuar }
+   * opcoes: { aoResponder(acertou, detalhe), aoContinuar(), feedback: true, textoContinuar, palco }
+   * (palco: o palco em tela toda, js/jogos/palco.js; a resposta faz o som e o respingo saírem da alternativa)
    * Com feedback = false, chama aoContinuar logo depois de responder.
    * Retorna { destruir, responder(indiceNaTela) }.
    */
@@ -68,6 +69,10 @@ const JogoComum = (() => {
         else if (i === original) b.classList.add('alternativa--errada');
         else b.classList.add('alternativa--apagada');
       });
+      if (opcoes.palco) {
+        const el = botoes.find((b) => Number(b.dataset.indice) === original) || botoes.find((b) => Number(b.dataset.indice) === q.correta) || alts;
+        opcoes.palco.reagir(acertou ? 'acerto' : 'erro', { el });
+      }
       const d = detalhe(q, acertou, { inicio, sua: q.alternativas[original] });
       opcoes.aoResponder(acertou, d);
 
