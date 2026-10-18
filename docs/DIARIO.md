@@ -33,7 +33,8 @@
 - **Testes:**
   - cada jogo da sala em 1440×900, 390×844 e 844×390: Investigação (abertura, um desafio, a 1ª acusação errada com relâmpago, a 2ª certa, o fim e "Rever o caso"), Palavrinha do dia (palpite errado, palavra certa, fim e treino), Batata Quente (palavra que não serve, três palavras, o pavio no fim, três explosões, o fim, "Trocar modo", o robô e sair no meio; e o Treino com "Encerrar treino" e o lado a lado), Pit Stop (um erro e três acertos, o resumo, "Menu", a fase 2 e sair no meio; e o modo Digitar) e Cardume (setas, baú da sorte, fim, "Jogar de novo" e sair no meio);
   - "reduzir movimento" no Pit Stop, na Batata e no Cardume;
-  - o auditor de design passou.
+  - de novo, os jogos dos cursos (Quiz Relâmpago, Chefão, Maré Alta, Memória, Cartas do Fundo, Forca, Adivinha Aí, Caça ao Tesouro, Corrente do Tempo, Palavrinha, as cartas da fase depois do Mergulho e a Sala de Jogos): tudo certo;
+  - o auditor de design passou, também no navegador. Ao abrir os jogos da sala, ele mediu pela primeira vez o teclado da Palavrinha: no celular, dez teclas numa linha não cabem com 44 px de largura. A regra ganhou essa exceção em `docs/DESIGN.md` e no auditor (a tecla tem 44 px de altura e pelo menos 24 de largura, o mínimo da WCAG 2.5.8); o teclado não mudou.
 
 ## 2026-10-18 · Onda C dos jogos no palco: Caça ao Tesouro, Corrente do Tempo, Palavrinha e Caso Resolvido (etapa 4)
 - **Pedido do usuário:** o mesmo das ondas anteriores ("pode aplicar para todos"), com regras, pontos, XP e conteúdo iguais.

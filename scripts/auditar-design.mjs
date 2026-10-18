@@ -134,7 +134,8 @@ async function auditarNoNavegador() {
         if (el.tagName === 'A' && el.closest('sup') && getComputedStyle(el).display === 'inline') continue; // notinha de fonte [1] no meio do texto (Mapa das Profissões)
         if (el.closest('.lateral') && !document.querySelector('.lateral--aberta')) continue; // gaveta fechada
         const r = el.getBoundingClientRect();
-        if (r.width < 43.5 || r.height < 43.5) achados.push(`alvo pequeno ${Math.round(r.width)}×${Math.round(r.height)}: ${nome(el)}`);
+        const tecla = el.closest('.pal-teclado'); // teclado na tela: dez teclas numa linha não cabem com 44 px de largura no celular (altura de 44 e largura de 24, o mínimo da WCAG 2.5.8)
+        if (r.width < (tecla ? 23.5 : 43.5) || r.height < 43.5) achados.push(`alvo pequeno ${Math.round(r.width)}×${Math.round(r.height)}: ${nome(el)}`);
       }
     }
     const raizTexto = document.querySelector('dialog[open]') || document.body;
