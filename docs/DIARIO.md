@@ -5,6 +5,20 @@
 
 ---
 
+## 2026-10-18 · Tiro ao Alvo: a luva mais real
+- **Pedido do usuário:** "Melhora essa luva aí, deixa mais real", com a foto de uma mão de luva num jogo de tiro como referência. **Regras, níveis, pontos, sons e álbum iguais;** o desenho é nosso.
+- **Feito (`js/descompressao/pistola-3d.js`):**
+  - a mão deixou de ser de prismas facetados: virou **peças macias**, o contorno de algumas esferas, liso, com a sombra em degradê (em faixas nos dedos, redonda na palma) e o brilho espalhado de tecido;
+  - o **polegar** (a parte que mais aparece) é uma peça só, com as dobras na junta, a costura por cima e a costura em volta da base; o indicador abraça o gatilho e os outros dedos dão a volta no cabo; o punho ganhou a tira turquesa;
+  - as peças da luva que se encostam formam um grupo: a borda forte fica só em volta dele, e dentro só uma dobra fraca (antes cada peça tinha o seu contorno e a mão parecia feita de bolinhas);
+  - a mão sobe um pouco onde a tela tem altura (até 4% da tela), para a luva aparecer; no celular deitado, não. O tom da luva ficou um pouco mais claro, para separar do balcão escuro;
+  - o cabo passou a inclinar para trás, como numa pistola de verdade.
+- **Testes:**
+  - fotos de antes e depois no jogo (1440 × 900, 390 × 844, 844 × 390 e "reduzir movimento"), em 6 posições de mira, com o coice, e de outros ângulos fora do jogo;
+  - o robô jogou até o nível 8 em 9 tamanhos de tela, com a pistola sempre abaixo do trilho do meio; teclado e som OK; `node scripts/auditar-design.mjs` (e `--navegador`) OK;
+  - custo: cerca de 1,9 ms de conta por quadro (antes 1,5 ms) e uns 7% a mais de pintura; menos pinturas (236 contra 295) e os traços iguais.
+- **Pendências:** merge para produção só com o OK do usuário.
+
 ## 2026-10-17 · Tiro ao Alvo: a pistola d'água em primeira pessoa
 - **Pedido do usuário:** a pistola igual à de um jogo de tiro famoso, "mas de água, a mesma visão". Amostra mostrada antes e aprovada ("Segue"). **Regras, níveis, pontos, sons e álbum iguais.**
 - **Feito:**

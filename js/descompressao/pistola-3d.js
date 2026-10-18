@@ -5,6 +5,9 @@
  * transparente, tampinha de encher, presilhas, manômetro, cano com anéis, mira, bomba e bico.
  * Um modelo 3D pequeno (prismas e cilindros) projetado em perspectiva no <canvas>: luz de cima, vincos finos, contorno de
  * figurinha e a água do tanque sempre na horizontal do mundo (cortada por um plano), com marola e bolhas.
+ * A luva (2026-10-18, pedido do usuário: "deixa mais real") é feita de peças macias: o contorno de esferas, liso e com a
+ * sombra em degradê (sem facetas), dedos em falanges com as dobras nas juntas, costuras e o punho com a tira. As peças
+ * macias seguidas formam um grupo: a borda forte vai só em volta dele, e dentro fica a dobra fraca onde uma encosta na outra.
  * Pistola3D.criar({ COR }) devolve:
  *   alvo(L, A, x, y) → { guinada, arfagem }: a pose que a pistola quer para mirar em (x, y) (ela segue a mira só em parte)
  *   desenhar(c, e)   → desenha no contexto c; e = { L, A, guinada, arfagem, t, coice, nivel, bomba, slosh, tilt, bolhas, rm }
@@ -130,27 +133,27 @@ window.Pistola3D = {
       faces.push({ idx: Array.from({ length: n }, (_, i) => 2 * n - 1 - i) });
       return montar(verts, faces, o);
     }
-    /** Cilindro entre dois pontos quaisquer (dedos, punho, braço): raio r0 em a e r1 em b */
-    function tubo(a, b, r0, r1, o = {}) {
-      const eixo = menos(b, a);
-      const comp = Math.hypot(eixo.x, eixo.y, eixo.z);
-      const w = unit(eixo);
-      const u = unit(cruz(Math.abs(w.y) < 0.9 ? v(0, 1, 0) : v(1, 0, 0), w));
-      const t = cruz(w, u);
-      const p = prisma(perfilCirculo(r0, o.n || 10), 0, comp, { ...o, s1: r1 / r0 });
-      p.verts = p.verts.map((q) => mais(a, mais(mais(vezes(u, q.x), vezes(t, q.y)), vezes(w, q.z))));
-      return p;
-    }
     /** Move e gira uma peça (no espaço da pistola) */
     function mover(p, giro, desloc = v(0, 0, 0)) {
       p.verts = p.verts.map((q) => mais(giro ? giro(q) : q, desloc));
       return p;
     }
 
+    /** Peça macia (a luva e a manga), desenhada lisa, com a sombra em degradê e sem facetas. Os centros das esferas (ou dos
+        anéis) ficam em verts: assim a ordem de desenho vale para ela. Tipos (o.tipo):
+          'bola'   o contorno convexo de algumas esferas (a palma, a base do polegar)
+          'dedo'   esferas em fila, ligadas duas a duas (as falanges); a linha entre elas some e fica só a dobra
+          'tronco' a parede de um cilindro entre dois anéis (o punho, a manga, as faixas), sem as tampas
+        o.costura: o lado (uma direção) por onde corre uma costura; o.anel: costura em volta, no começo do dedo (0 a 1);
+        o.sobre: a peça que ela veste (desenhada logo depois dela) */
+    function macia(esferas, o = {}) {
+      return { macia: o.tipo || 'bola', verts: esferas.map((s) => s[0]), raios: esferas.map((s) => s[1]), cor: o.cor, brilho: o.brilho ?? 0.3, costura: o.costura || null, anel: o.anel ?? null, sobre: o.sobre || null };
+    }
+
     /* ---------- o modelo ---------- */
     const TQ = { y: 3.75, r: 1.55, z0: -1.2, z1: 6.6 }; // o tanque: altura do eixo, raio e onde começa e termina
     const BICO = v(0, 1.0, 18.0); // de onde a água sai
-    const giroCabo = rotacao(0, -0.26, 0); // o cabo inclina para trás
+    const giroCabo = rotacao(0, 0.2, 0); // o cabo inclina para trás, como numa pistola de verdade
     function modelo() {
       const P = {};
       P.corpo = prisma(perfilArredondado(2.9, 3.1, 1.0), -3.2, 8.4, { cor: COR.turquesa, dy: 0.9 });
@@ -162,7 +165,7 @@ window.Pistola3D = {
       P.miraFrente = prisma(perfilArredondado(0.45, 1.1, 0.18), 16.5, 17.6, { cor: COR.coral, dy: 2.25 });
       P.bomba = cilindro(1.1, 9.2, 13.6, { cor: COR.coral, dy: -0.6 });
       P.cabo = mover(prismaY(perfilArredondado(2.6, 3.8, 1.0), -0.2, -9.2, { cor: COR.turquesaEscura, s1: 0.94, desloc: [0, -1.3, 0, -1.3] }), giroCabo);
-      P.guardaBaixo = prisma(perfilArredondado(0.7, 0.6, 0.25), 0.4, 4.6, { cor: COR.turquesaEscura, dy: -3.4 });
+      P.guardaBaixo = prisma(perfilArredondado(0.7, 0.6, 0.25), -0.4, 4.6, { cor: COR.turquesaEscura, dy: -3.4 });
       P.guardaFrente = mover(cilindro(0.38, -3.4, -0.4, { cor: COR.turquesaEscura, n: 8 }), rotacao(0, -Math.PI / 2, 0), v(0, 0, 4.3));
       P.gatilho = mover(prisma(perfilArredondado(0.55, 0.7, 0.25), -2.5, -0.4, { cor: COR.coral }), rotacao(0, -Math.PI / 2 + 0.25, 0), v(0, 0, 2.0));
       P.tanqueTras = cilindro(1.66, TQ.z0 - 0.3, TQ.z0 + 0.35, { cor: COR.turquesa, dy: TQ.y, n: 20, vazado: true }); // o aro de trás, aberto: dá para ver a água
@@ -173,23 +176,40 @@ window.Pistola3D = {
       P.presilha2 = cilindro(1.66, 4.2, 4.7, { cor: COR.turquesaEscura, dy: TQ.y, n: 20 });
       P.miraTras1 = prisma(perfilArredondado(0.42, 1.0, 0.16), -3.0, -2.4, { cor: COR.coral, dx: -0.62, dy: 2.85 });
       P.miraTras2 = prisma(perfilArredondado(0.42, 1.0, 0.16), -3.0, -2.4, { cor: COR.coral, dx: 0.62, dy: 2.85 });
-      // a luva de neoprene segurando o cabo e o braço com a roupa de mergulho
-      const luva = { cor: misturar(COR.suave, COR.fundo, 0.5), brilho: 0.18, vinco: 0.2 };
-      P.mao = mover(prismaY(perfilArredondado(3.6, 5.0, 1.5, 4), 0.4, -5.6, { ...luva, s1: 0.95, desloc: [0.35, -1.6, 0.35, -1.9] }), giroCabo);
-      P.polegar = tubo(giroCabo(v(-1.5, -0.5, -2.4)), v(-1.68, 0.15, 0.6), 0.82, 0.7, luva);
-      P.polegarPonta = tubo(v(-1.68, 0.15, 0.6), v(-1.58, 0.3, 1.5), 0.7, 0.42, luva);
-      P.indicador1 = tubo(giroCabo(v(-1.25, -1.6, 0.7)), v(-1.0, -1.9, 2.55), 0.62, 0.56, luva);
-      P.indicador2 = tubo(v(-1.0, -1.9, 2.55), v(-0.15, -2.15, 2.25), 0.56, 0.5, luva);
-      [[-3.3, 0.85], [-4.5, 0.75], [-5.6, 0.65]].forEach(([y, r], i) => {
-        P[`dedo${i}`] = tubo(giroCabo(v(-1.45, y, 0.9)), giroCabo(v(0.9, y - 0.1, 1.15)), r, r * 0.9, luva);
+      // A mão direita de luva de mergulho (2026-10-18, pedido do usuário: "deixa mais real"). Peças macias: o contorno de
+      // algumas esferas, liso e com a sombra em degradê (sem facetas); os dedos em falanges, com as juntas marcando as dobras.
+      // As medidas são do cabo antes de ele inclinar (G gira junto com o cabo): o cabo vai de x -1,3 a 1,3, de z -3,2 (as
+      // costas) a 0,6 (a frente) e de y -0,2 a -9,2. A palma e o dorso ficam do lado direito do cabo e o calcanhar da mão
+      // atrás; o polegar corre pelo lado esquerdo da armação, o indicador vai no gatilho e os outros três dedos dão a volta
+      // na frente do cabo, com as pontas no lado esquerdo.
+      const G = (x, y, z) => giroCabo(v(x, y, z));
+      const luva = { cor: misturar(COR.fundo, COR.suave, 0.4), brilho: 0.32 };
+      // a mão: o dorso e a palma (do lado direito e atrás do cabo) e a base do polegar, com o vão até o indicador
+      P.mao = macia([[G(1.95, -1.3, -1.15), 1.0], [G(1.95, -6.75, -1.0), 0.85], [G(0.55, -1.35, -3.75), 1.1], [G(0.8, -5.6, -4.15), 1.35], [G(2.35, -3.9, -2.55), 1.25]], luva);
+      P.tenar = macia([[G(-0.1, -0.75, -3.45), 0.95], [G(-1.15, -1.75, -3.0), 1.0], [G(-0.75, -3.7, -3.55), 1.15]], luva);
+      // o polegar deitado na armação, com a costura por cima e a costura em volta da base
+      P.polegar = macia([[G(-1.5, -1.45, -2.45), 0.9], [v(-1.98, -0.38, -0.75), 0.82], [v(-2.0, -0.08, 0.8), 0.74]], { ...luva, tipo: 'dedo', costura: v(-0.55, 0.83, 0), anel: 0.2 });
+      // o indicador: a falange de baixo corre pelo lado direito da armação e as outras abraçam o gatilho (a ponta aparece
+      // do lado esquerdo dele)
+      P.indicadorBase = macia([[G(2.0, -1.3, -0.9), 0.66], [v(1.35, -1.55, 1.45), 0.6]], { ...luva, tipo: 'dedo' });
+      P.indicador = macia([[v(1.35, -1.55, 1.45), 0.6], [v(0.25, -1.95, 2.25), 0.55], [v(-0.75, -2.2, 1.95), 0.5]], { ...luva, tipo: 'dedo' });
+      // médio, anelar e mínimo: a falange de baixo do lado direito do cabo, as outras dando a volta na frente dele (as
+      // pontas ficam do lado esquerdo)
+      [[-4.3, 0.64], [-5.7, 0.6], [-7.0, 0.52]].forEach(([y, r], d) => {
+        const junta = G(1.45, y - 0.05, 1.3);
+        P[`dedoBase${d}`] = macia([[G(2.05, y, -1.0), r], [junta, r]], { ...luva, tipo: 'dedo' });
+        P[`dedo${d}`] = macia([[junta, r], [G(-0.55, y - 0.1, 1.45), r * 0.93], [G(-1.75, y + 0.05, 0.25), r * 0.86]], { ...luva, tipo: 'dedo' });
       });
-      const pulso = giroCabo(v(0.5, -6.6, -2.6));
+      // o punho da luva com a tira, e o braço com a roupa de mergulho e a faixa
+      const pulso = G(0.85, -6.5, -4.55);
       const cotovelo = v(5.5, -16, -17);
       const rumo = unit(menos(cotovelo, pulso));
       const noBraco = (d) => mais(pulso, vezes(rumo, d));
-      P.punho = tubo(pulso, noBraco(1.4), 2.55, 2.6, { cor: COR.turquesa, brilho: 0.2, n: 14 });
-      P.braco = tubo(noBraco(1.3), cotovelo, 2.5, 3.6, { cor: misturar(COR.marinho, COR.fundo, 0.3), brilho: 0.1, vinco: 0.1, n: 14 });
-      P.faixa = tubo(noBraco(5.5), noBraco(6.4), 2.85, 2.95, { cor: COR.turquesa, brilho: 0.2, n: 14 });
+      const tronco = { tipo: 'tronco' };
+      P.punho = macia([[noBraco(-0.4), 2.0], [noBraco(2.3), 2.25]], { ...luva, ...tronco });
+      P.tira = macia([[noBraco(0.6), 2.3], [noBraco(1.5), 2.33]], { cor: COR.turquesa, brilho: 0.2, ...tronco, sobre: 'punho' });
+      P.braco = macia([[noBraco(2.1), 2.3], [cotovelo, 3.4]], { cor: misturar(COR.marinho, COR.fundo, 0.3), brilho: 0.12, ...tronco });
+      P.faixa = macia([[noBraco(5.5), 2.62], [noBraco(6.4), 2.75]], { cor: COR.turquesa, brilho: 0.2, ...tronco, sobre: 'braco' });
       return P;
     }
     const PECAS = Object.entries(modelo());
@@ -212,10 +232,11 @@ window.Pistola3D = {
       cam = { cx: L / 2, cy: pe ? A * 0.6 : A / 2, f: k * (pe ? 1.05 : 0.95), k };
       return cam;
     }
-    /** A mão: presa no canto de baixo, à direita */
+    /** A mão: presa no canto de baixo, à direita. Onde a tela tem altura, ela sobe um pouco para a luva aparecer; no
+        celular deitado, não (ali a pistola já chega perto do trilho do meio) */
     const maoNaTela = (L, A) => {
       const k = Math.min(A, L * 1.25);
-      return { x: L - k * 0.17, y: A - k * 0.085 };
+      return { x: L - k * 0.17, y: A - k * (0.085 + 0.04 * Math.max(0, Math.min(1, (A - 420) / 200))) };
     };
     const PROFUNDO = 31; // a que distância da câmera fica a mão
     /** As direções (guinada e arfagem) de um ponto da tela, vistas da câmera */
@@ -253,10 +274,11 @@ window.Pistola3D = {
     /* ---------- luz e cor ---------- */
     const LUZ = unit(v(-0.5, 0.78, -0.45)); // de cima, da esquerda, um pouco do nosso lado
     const RECHEIO = unit(v(0.7, -0.2, -0.6));
-    function tom(base, n, centro, brilho) {
+    /** A cor de um ponto da peça pela normal: luz, recheio e o brilho (expoente menor espalha o brilho, como no tecido da
+        luva); "meio" (entre a luz e a vista) pode vir pronto quando a mesma peça pede várias cores */
+    function tom(base, n, centro, brilho, expoente = 28, meio = unit(mais(LUZ, unit(vezes(centro, -1))))) {
       const k = 0.42 + Math.max(0, ponto(n, LUZ)) * 0.62 + Math.max(0, ponto(n, RECHEIO)) * 0.18;
-      const meio = unit(mais(LUZ, unit(vezes(centro, -1))));
-      const esp = Math.pow(Math.max(0, ponto(n, meio)), 28) * brilho;
+      const esp = Math.pow(Math.max(0, ponto(n, meio)), expoente) * brilho;
       const cor = k >= 1 ? misturar(base, COR.branco, Math.min(0.35, (k - 1) * 0.6)) : misturar(misturar(COR.fundo, base, 0.25), base, Math.max(0, Math.min(1, (k - 0.42) / 0.58)));
       return alfa(esp > 0.02 ? misturar(cor, COR.branco, Math.min(0.85, esp)) : cor);
     }
@@ -327,6 +349,270 @@ window.Pistola3D = {
         c.lineWidth = largura;
         c.stroke();
       });
+    }
+    /** Um círculo no espaço (centro, raio e a normal do plano dele), projetado na tela em n pontos */
+    function circuloNaTela(centro, r, normal, n, pts) {
+      const a = unit(cruz(normal, Math.abs(normal.y) < 0.9 ? v(0, 1, 0) : v(1, 0, 0)));
+      const b = cruz(normal, a);
+      for (let j = 0; j < n; j++) {
+        const t = (j / n) * Math.PI * 2;
+        pts.push(projetar(mais(centro, mais(vezes(a, r * Math.cos(t)), vezes(b, r * Math.sin(t))))));
+      }
+    }
+    /** O contorno liso: a curva passa pelo meio de cada lado do contorno convexo */
+    function liso(c, pts) {
+      const n = pts.length;
+      const meio = (i) => ({ x: (pts[i].x + pts[(i + 1) % n].x) / 2, y: (pts[i].y + pts[(i + 1) % n].y) / 2 });
+      const m0 = meio(n - 1);
+      c.beginPath();
+      c.moveTo(m0.x, m0.y);
+      for (let i = 0; i < n; i++) {
+        const m = meio(i);
+        c.quadraticCurveTo(pts[i].x, pts[i].y, m.x, m.y);
+      }
+      c.closePath();
+    }
+    /** O centro, os eixos e o giro do contorno (pelos momentos da área): a elipse que mais se parece com ele */
+    function forma(pts) {
+      const o = pts[0];
+      let A = 0;
+      let cx = 0;
+      let cy = 0;
+      let xx = 0;
+      let yy = 0;
+      let xy = 0;
+      for (let i = 0; i < pts.length; i++) {
+        const j = (i + 1) % pts.length;
+        const x0 = pts[i].x - o.x;
+        const y0 = pts[i].y - o.y;
+        const x1 = pts[j].x - o.x;
+        const y1 = pts[j].y - o.y;
+        const k = x0 * y1 - x1 * y0;
+        A += k;
+        cx += (x0 + x1) * k;
+        cy += (y0 + y1) * k;
+        xx += (x0 * x0 + x0 * x1 + x1 * x1) * k;
+        yy += (y0 * y0 + y0 * y1 + y1 * y1) * k;
+        xy += (x0 * y1 + 2 * x0 * y0 + 2 * x1 * y1 + x1 * y0) * k;
+      }
+      A /= 2;
+      if (Math.abs(A) < 1e-6) return null;
+      cx /= 6 * A;
+      cy /= 6 * A;
+      const sxx = xx / (12 * A) - cx * cx;
+      const syy = yy / (12 * A) - cy * cy;
+      const sxy = xy / (24 * A) - cx * cy;
+      const m = (sxx + syy) / 2;
+      const d = Math.hypot((sxx - syy) / 2, sxy);
+      return { x: cx + o.x, y: cy + o.y, ang: 0.5 * Math.atan2(2 * sxy, sxx - syy), a: Math.max(1, 2 * Math.sqrt(m + d)), b: Math.max(1, 2 * Math.sqrt(Math.max(0, m - d))) };
+    }
+    /** O contorno de uma esfera na tela: a vista tangencia a esfera num círculo um pouco mais perto da câmera */
+    function esferaNaTela(q, r, pts) {
+      const d2 = ponto(q, q);
+      if (d2 <= r * r * 1.05) return;
+      const k = 1 - (r * r) / d2;
+      circuloNaTela(vezes(q, k), r * Math.sqrt(k), unit(q), 12, pts);
+    }
+    /** A sombra de um pedaço comprido (uma falange, o punho): faixas ao longo do eixo, como num cilindro. Devolve false
+        quando o eixo aponta para a câmera (aí a sombra redonda fica melhor) */
+    function sombraCilindro(c, p, a, b, rm) {
+      const centro = vezes(mais(a, b), 0.5);
+      const w = unit(menos(b, a));
+      const V = unit(vezes(centro, -1));
+      const deLado = menos(V, vezes(w, ponto(V, w)));
+      if (Math.hypot(deLado.x, deLado.y, deLado.z) < 0.5) return false;
+      const fr = unit(deLado);
+      const e = cruz(w, fr);
+      const q0 = projetar(mais(centro, vezes(e, -rm)));
+      const q1 = projetar(mais(centro, vezes(e, rm)));
+      const g = c.createLinearGradient(q0.x, q0.y, q1.x, q1.y);
+      const meio = unit(mais(LUZ, V));
+      [-1, -0.85, -0.5, 0, 0.5, 0.85, 1].forEach((u) => g.addColorStop((u + 1) / 2, tom(p.cor, unit(mais(vezes(fr, Math.sqrt(1 - u * u)), vezes(e, u))), centro, p.brilho, 9, meio)));
+      c.fillStyle = g;
+      c.fill();
+      return true;
+    }
+    /** A sombra de uma bola: um degradê redondo, esticado na forma do contorno, mais claro do lado da luz */
+    function sombraBola(c, p, centro, casco) {
+      const f = forma(casco);
+      if (!f) return;
+      const V = unit(vezes(centro, -1));
+      const L3 = menos(LUZ, vezes(V, ponto(LUZ, V)));
+      const b3 = Math.hypot(L3.x, L3.y, L3.z);
+      const d3 = b3 > 1e-3 ? vezes(L3, 1 / b3) : v(0, 1, 0);
+      const q0 = projetar(centro);
+      const q1 = projetar(mais(centro, vezes(d3, 0.5)));
+      const co = Math.cos(-f.ang);
+      const si = Math.sin(-f.ang);
+      const dx = q1.x - q0.x;
+      const dy = q1.y - q0.y;
+      let ux = (dx * co - dy * si) / f.a;
+      let uy = (dx * si + dy * co) / f.b;
+      const un = Math.hypot(ux, uy) || 1;
+      ux /= un;
+      uy /= un;
+      const xf = (b3 + Math.max(0, ponto(unit(mais(LUZ, V)), d3))) / 2; // entre o ponto mais claro e o brilho
+      const s = 0.25;
+      c.save();
+      c.translate(f.x, f.y);
+      c.rotate(f.ang);
+      c.scale(f.a, f.b);
+      const g = c.createRadialGradient(ux * xf, uy * xf, 0, ux * s, uy * s, 1 + s);
+      const meio = unit(mais(LUZ, V));
+      [0, 0.15, 0.32, 0.5, 0.68, 0.86, 1].forEach((t) => {
+        const x = Math.max(-1, xf - t * (1 + xf));
+        g.addColorStop(t, tom(p.cor, unit(mais(vezes(d3, x), vezes(V, Math.sqrt(1 - x * x)))), centro, p.brilho, 9, meio));
+      });
+      c.fillStyle = g;
+      c.fill();
+      c.restore();
+    }
+    /** A borda das peças macias, sempre por baixo do preenchimento (que cobre a metade de dentro; por isso a largura
+        dobra). "fora": a borda forte, em volta do grupo de peças macias vizinhas; sem ela, a dobra fraca onde uma peça do
+        grupo encosta na outra, com uma sombrinha larga */
+    function borda(c, pts, esp, fora) {
+      liso(c, pts);
+      c.strokeStyle = alfa(COR.fundo, fora ? 0.2 : 0.12);
+      c.lineWidth = esp * (fora ? 6.4 : 4.4);
+      c.stroke();
+      c.strokeStyle = alfa(COR.fundo, fora ? 0.88 : 0.5);
+      c.lineWidth = esp * (fora ? 2.6 : 1.5);
+      c.stroke();
+    }
+    /** Uma linha na tela (os pontos já projetados, em trechos), com o traço e a cor dados */
+    function riscar(c, trechos, cor, largura, tracos) {
+      c.beginPath();
+      trechos.forEach((tr) => tr.forEach((q, j) => (j ? c.lineTo(q.x, q.y) : c.moveTo(q.x, q.y))));
+      if (tracos) c.setLineDash(tracos);
+      c.strokeStyle = cor;
+      c.lineWidth = largura;
+      c.stroke();
+      if (tracos) c.setLineDash([]);
+    }
+    /** A costura de verdade: o vinco escuro e os pontos claros por cima */
+    function pesponto(c, p, trechos, esp) {
+      riscar(c, trechos, alfa(COR.fundo, 0.4), esp * 0.9);
+      riscar(c, trechos, alfa(misturar(p.cor, COR.branco, 0.45), 0.55), esp * 0.55, [esp * 1.3, esp * 1.5]);
+    }
+    /** Os pontos de um anel em volta do eixo (no plano perpendicular a ele), separados em trechos virados para nós.
+        "So" escolhe só a parte do anel que vai para um lado (o dorso do dedo) */
+    function anelNaTela(centro, r, eixo, so, limite = 0, N = 24) {
+      const a = unit(cruz(eixo, Math.abs(eixo.y) < 0.9 ? v(0, 1, 0) : v(1, 0, 0)));
+      const b = cruz(eixo, a);
+      const marca = [];
+      for (let j = 0; j < N; j++) {
+        const t = (j / N) * Math.PI * 2;
+        const n = mais(vezes(a, Math.cos(t)), vezes(b, Math.sin(t)));
+        const q = mais(centro, vezes(n, r));
+        marca.push({ q, ok: ponto(n, unit(q)) < -limite && (!so || ponto(n, so) > 0.15) });
+      }
+      const k0 = marca.findIndex((x, j) => x.ok && !marca[(j + N - 1) % N].ok);
+      if (k0 < 0) return [];
+      const trechos = [[]];
+      for (let j = 0; j < N; j++) {
+        const x = marca[(k0 + j) % N];
+        if (x.ok) trechos[trechos.length - 1].push(projetar(x.q));
+        else if (trechos[trechos.length - 1].length) trechos.push([]);
+      }
+      return trechos.filter((tr) => tr.length > 1);
+    }
+    /** Uma bola: o contorno convexo das esferas */
+    function prepararBola(p, vc, esp) {
+      const pts = [];
+      vc.forEach((q, i) => esferaNaTela(q, p.raios[i], pts));
+      const casco = contorno(pts);
+      if (!casco) return null;
+      guardarContorno(casco);
+      return {
+        contornos: [casco],
+        pintar(c) {
+          borda(c, casco, esp);
+          liso(c, casco);
+          sombraBola(c, p, media(vc), casco);
+        },
+      };
+    }
+    /** Um dedo: as falanges (cada uma, o contorno de duas esferas); as bordas vão todas antes dos preenchimentos, para a
+        linha entre as falanges sumir; depois vêm as dobras das juntas e as costuras */
+    function prepararDedo(p, vc, ps, esp) {
+      const fal = [];
+      for (let i = 0; i + 1 < vc.length; i++) {
+        const pts = [];
+        esferaNaTela(vc[i], p.raios[i], pts);
+        esferaNaTela(vc[i + 1], p.raios[i + 1], pts);
+        const casco = contorno(pts);
+        const m = vezes(mais(vc[i], vc[i + 1]), 0.5);
+        if (casco) fal.push({ i, casco, d: Math.hypot(m.x, m.y, m.z) });
+      }
+      if (!fal.length) return null;
+      fal.sort((a, b) => b.d - a.d);
+      fal.forEach((f) => guardarContorno(f.casco));
+      return {
+        contornos: fal.map((f) => f.casco),
+        pintar(c) {
+          fal.forEach((f) => borda(c, f.casco, esp));
+          fal.forEach((f) => {
+            liso(c, f.casco);
+            if (!sombraCilindro(c, p, vc[f.i], vc[f.i + 1], (p.raios[f.i] + p.raios[f.i + 1]) / 2)) sombraBola(c, p, vezes(mais(vc[f.i], vc[f.i + 1]), 0.5), f.casco);
+          });
+          const dorso = p.costura ? ps.R(p.costura) : null;
+          // as dobras: dois risquinhos em volta de cada junta, no dorso do dedo (o polegar, o que mais aparece)
+          for (let i = 1; dorso && i + 1 < vc.length; i++) {
+            const eixo = unit(mais(unit(menos(vc[i + 1], vc[i])), unit(menos(vc[i], vc[i - 1]))));
+            [-0.18, 0.16].forEach((d) => riscar(c, anelNaTela(mais(vc[i], vezes(eixo, d * p.raios[i])), p.raios[i] * 0.99, eixo, dorso, 0.2), alfa(COR.fundo, 0.3), esp * 0.8));
+          }
+          // a costura em volta da base (onde o dedo é costurado na luva)
+          if (p.anel != null) {
+            const eixo = unit(menos(vc[1], vc[0]));
+            const r = p.raios[0] + (p.raios[1] - p.raios[0]) * p.anel;
+            pesponto(c, p, anelNaTela(mais(vc[0], vezes(menos(vc[1], vc[0]), p.anel)), r * 0.99, eixo, null, 0.1), esp);
+          }
+          // a costura pelo dorso, de ponta a ponta
+          if (dorso) {
+            const trechos = [[]];
+            const t0 = Math.max(0.04, (p.anel ?? 0) + 0.08);
+            for (let i = 0; i + 1 < vc.length; i++) {
+              const w = unit(menos(vc[i + 1], vc[i]));
+              const s = unit(menos(dorso, vezes(w, ponto(dorso, w))));
+              const ini = i ? 0 : t0;
+              const fim = i + 2 === vc.length ? 0.92 : 1;
+              for (let j = i ? 1 : 0; j <= 6; j++) {
+                const t = ini + (j / 6) * (fim - ini);
+                const q = mais(mais(vc[i], vezes(menos(vc[i + 1], vc[i]), t)), vezes(s, (p.raios[i] + (p.raios[i + 1] - p.raios[i]) * t) * 0.97));
+                if (ponto(s, unit(q)) < -0.12) trechos[trechos.length - 1].push(projetar(q));
+                else if (trechos[trechos.length - 1].length) trechos.push([]);
+              }
+            }
+            pesponto(c, p, trechos.filter((tr) => tr.length > 1), esp);
+          }
+        },
+      };
+    }
+    /** Um tronco: só a parede, entre o lado visível de cada anel */
+    function prepararTronco(p, vc, esp) {
+      const eixo = unit(menos(vc[1], vc[0]));
+      const lado = (q, r) => anelNaTela(q, r, eixo, null, 0, 20).flat();
+      const a0 = lado(vc[0], p.raios[0]);
+      const a1 = lado(vc[1], p.raios[1]);
+      if (a0.length < 2 || a1.length < 2) return null;
+      const poli = a0.concat(a1.reverse());
+      const casco = contorno(poli);
+      if (casco) guardarContorno(casco);
+      return {
+        contornos: [poli],
+        pintar(c) {
+          borda(c, poli, esp);
+          liso(c, poli);
+          if (!sombraCilindro(c, p, vc[0], vc[1], (p.raios[0] + p.raios[1]) / 2) && casco) sombraBola(c, p, media(vc), casco);
+        },
+      };
+    }
+    /** Prepara uma peça macia: devolve os contornos (para a borda do grupo) e a pintura */
+    function prepararMacia(p, ps, esp) {
+      const vc = p.verts.map((q) => paraCamera(ps, q));
+      if (p.macia === 'dedo') return prepararDedo(p, vc, ps, esp);
+      if (p.macia === 'tronco') return prepararTronco(p, vc, esp);
+      return prepararBola(p, vc, esp);
     }
     /** A distância do miolo da peça até a câmera, para desenhar do fundo para a frente */
     const profundidade = (p, ps) => {
@@ -433,10 +719,13 @@ window.Pistola3D = {
       c.stroke();
     }
 
-    /** Guarda o contorno de uma peça, com a caixa em volta (para descartar rápido) */
+    /** Guarda o contorno convexo dos pontos de uma peça */
     function guardarCasco(vp) {
       const pts = contorno(vp);
-      if (!pts) return;
+      if (pts) guardarContorno(pts);
+    }
+    /** Guarda um contorno já pronto, com a caixa em volta (para descartar rápido) */
+    function guardarContorno(pts) {
       const xs = pts.map((q) => q.x);
       const ys = pts.map((q) => q.y);
       cascos.push({ pts, x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys) });
@@ -466,13 +755,33 @@ window.Pistola3D = {
       const puxa = (e.coice || 0) * -0.5; // o gatilho puxa no tiro
       const local = { bomba: (q) => mais(q, v(0, 0, bomba)), gatilho: (q) => mais(q, v(0, 0, puxa)) };
       const lista = PECAS.map(([k, p]) => ({ k, p, d: profundidade(p, ps) }));
+      const fundo = Object.fromEntries(lista.map((x) => [x.k, x.d]));
+      lista.forEach((x) => { if (x.p.sobre) x.d = fundo[x.p.sobre] - 0.01; }); // o que veste outra peça vem logo depois dela
       lista.push({ k: 'tanque', p: VIDRO, d: profundidade(VIDRO, ps) + 0.6 });
       lista.sort((a, b) => b.d - a.d);
       cascos = [];
       c.save();
       c.lineJoin = 'round';
       c.lineCap = 'round';
-      lista.forEach(({ k, p }) => (k === 'tanque' ? desenharTanque(c, ps, e) : desenharPeca(c, p, ps, local[k])));
+      const esp = Math.max(1.2, cam.k / 360);
+      for (let i = 0; i < lista.length;) {
+        const { k, p } = lista[i];
+        if (!p.macia) {
+          if (k === 'tanque') desenharTanque(c, ps, e);
+          else desenharPeca(c, p, ps, local[k]);
+          i++;
+          continue;
+        }
+        // as peças macias seguidas (a mão, os dedos, o punho, a manga): a borda forte vai em volta do grupo todo e, dentro
+        // dele, cada peça marca só uma dobra fraca onde encosta na outra
+        const grupo = [];
+        for (; i < lista.length && lista[i].p.macia; i++) {
+          const m = prepararMacia(lista[i].p, ps, esp);
+          if (m) grupo.push(m);
+        }
+        grupo.forEach((m) => m.contornos.forEach((pts) => borda(c, pts, esp, true)));
+        grupo.forEach((m) => m.pintar(c));
+      }
       // o manômetro, na lateral esquerda do corpo: o ponteiro mostra quanta água ainda tem
       const c0 = paraCamera(ps, v(-1.46, 1.55, -1.9));
       if (ponto(unit(menos(paraCamera(ps, v(-2.46, 1.55, -1.9)), c0)), c0) < 0) {
