@@ -135,6 +135,22 @@
      ========================================================= */
   function numeroFonte(f, id) { const i = (f.fontes || []).findIndex(x => x.id === id); return i >= 0 ? i + 1 : null; }
   const juntarE = l => l.length < 2 ? l.join('') : l.slice(0, -1).join(', ') + ' e ' + l[l.length - 1];
+  const maiusc = s => s.charAt(0).toUpperCase() + s.slice(1);
+  /* Valor em reais no meio de um texto ("R$ 10.303", "R$ 3,8 mil") fica "R$ ?" até o palpite (2026-10-17, pedido do usuário:
+     "entrega de cara os salários aí acaba não tendo tanta graça para adivinhar"); revelarReais mostra todos de uma vez. */
+  const RE_REAIS = /R\$[\s\u00a0]?\d[\d.]*(?:,\d+)?(?:\s(?:mil|milhão|milhões))?/g;
+  function semReais(texto, aberto) {
+    if (aberto || typeof texto !== 'string' || !texto.includes('R$')) return texto;
+    const partes = []; let i = 0;
+    texto.replace(RE_REAIS, (m, pos) => {
+      partes.push(texto.slice(i, pos), el('span', { class: 'prof-reais', dataset: { valor: m } },
+        el('span', { 'aria-hidden': 'true', text: 'R$ ?' }), el('span', { class: 'prof-oculto', text: 'valor escondido até o seu palpite' })));
+      i = pos + m.length; return m;
+    });
+    partes.push(texto.slice(i));
+    return partes;
+  }
+  function revelarReais(raiz) { (raiz || document).querySelectorAll('.prof-reais').forEach(r => { r.textContent = r.dataset.valor; r.classList.add('prof-reais--aberto'); }); }
   /* Um botão só por informação, mesmo com várias fontes (antes, uma bolinha por fonte, que se encostavam) */
   function citar(f, ids) {
     const lista = [...new Set(ids || [])].filter(id => numeroFonte(f, id));
@@ -522,17 +538,22 @@
   const lerVista = () => { try { const v = localStorage.getItem(CHAVE_VISTA); return ['cartoes', 'lista', 'aquario'].includes(v) ? v : 'cartoes'; } catch (e) { return 'cartoes'; } };
   /* A inicial de cada palavra que importa ("Medicina Veterinária" → MV; "Direito" → D) */
   const sigla = nome => nome.split(/\s+/).filter(w => w.length > 2).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  /** O ícone da profissão (js/profissoes-icones.js, 2026-10-17); sem ele, null e a peça segue sem ícone */
+  const iconeProf = id => (window.IconesProfissoes ? window.IconesProfissoes.icone(id) : null);
+  /** O ícone num quadradinho na cor da área (cartão, lista, capa, Maré e comparador) */
+  const emblema = id => { const ic = iconeProf(id); return ic ? el('span', { class: 'prof-emblema', 'aria-hidden': 'true' }, ic) : null; };
 
   /** Álbum de selos: cada ficha aberta vira um selo. No envelope aparecem os últimos quatro; tocar abre o álbum inteiro. */
   function albumSelos(ix, exploradas, total) {
     const ordem = Object.keys(estado.vistas || {}).map(id => ix.profissoes.find(p => p.id === id)).filter(Boolean); // na ordem da primeira visita
     const amostra = ordem.slice(-4);
-    const selo = (p, i) => el('span', { class: 'prof-postal', style: { '--cor-area': corArea(ix, p.area), '--i': String(i - (amostra.length - 1) / 2) } }, el('b', { text: sigla(p.nome) }));
+    const marca = p => iconeProf(p.id) || el('b', { text: sigla(p.nome) }); // o ícone da profissão; sem ele, as iniciais
+    const selo = (p, i) => el('span', { class: 'prof-postal', style: { '--cor-area': corArea(ix, p.area), '--i': String(i - (amostra.length - 1) / 2) } }, marca(p));
     const painel = el('section', { class: 'prof-album', id: 'prof-album', 'aria-label': 'Álbum de selos', hidden: true },
       el('p', { class: 'prof-min', text: exploradas ? 'Cada ficha que você abre vira um selo. Os que faltam estão em cinza: toque para abrir.' : 'Abra a primeira ficha para ganhar o primeiro selo.' }),
       el('ul', { class: 'prof-album-grade' }, ix.profissoes.map(p => {
         const tem = !!estado.vistas[p.id], aberta = temFicha(p);
-        const conteudo = [el('span', { class: 'prof-postal prof-postal--grande' + (tem ? '' : ' prof-postal--falta'), 'aria-hidden': 'true' }, el('b', { text: sigla(p.nome) })),
+        const conteudo = [el('span', { class: 'prof-postal prof-postal--grande' + (tem ? '' : ' prof-postal--falta'), 'aria-hidden': 'true' }, marca(p)),
           el('span', { class: 'prof-album-nome', text: p.nome }), el('span', { class: 'prof-micro', text: tem ? 'No álbum' : aberta ? 'Falta' : 'Em breve' })];
         return el('li', { style: { '--cor-area': corArea(ix, p.area) } }, aberta ? el('a', { href: '#profissao-' + p.id, class: 'prof-album-item' }, ...conteudo) : el('span', { class: 'prof-album-item prof-album-item--breve' }, ...conteudo));
       })));
@@ -626,6 +647,7 @@
     const itens = lista.map((p, i) => {
       const aberta = temFicha(p);
       const conteudo = [el('span', { class: 'prof-lg-n prof-num', 'aria-hidden': 'true', text: String(i + 1).padStart(2, '0') }),
+        emblema(p.id) || el('span', { 'aria-hidden': 'true' }), // sem ícone, a coluna fica vazia e o resto não sai do lugar
         el('span', { class: 'prof-lg-texto' }, el('span', { class: 'prof-lg-nome', text: p.nome }), p.frase ? el('span', { class: 'prof-lg-frase', text: p.frase }) : null),
         el('span', { class: 'prof-lg-area' }, el('i', { class: 'prof-regiao-cor', 'aria-hidden': 'true' }), nomeArea(ix, p.area)),
         aberta ? icone('direita') : el('span', { class: 'prof-selo', text: 'Em breve' })];
@@ -650,7 +672,8 @@
     const legenda = el('p', { class: 'prof-aquario-legenda', 'aria-live': 'polite', text: 'Passe o mouse, foque ou toque numa bolha.' });
     const bolhas = lista.map(p => {
       const aberta = temFicha(p);
-      const conteudo = [el('span', { class: 'prof-bolha-nome', text: p.nome })];
+      const ic = iconeProf(p.id);
+      const conteudo = [ic ? el('span', { class: 'prof-bolha-icone', 'aria-hidden': 'true' }, ic) : null, el('span', { class: 'prof-bolha-nome', text: p.nome })];
       const estilo = { '--cor-area': corArea(ix, p.area) };
       const b = aberta ? el('a', { href: '#profissao-' + p.id, class: 'prof-bolha', style: estilo }, ...conteudo)
         : el('button', { type: 'button', class: 'prof-bolha prof-bolha--breve', style: estilo, onclick: () => pedir(p.id, p.nome) }, ...conteudo);
@@ -791,7 +814,7 @@
         registroCurto(n.registro) ? el('span', { text: registroCurto(n.registro) }) : null].filter(Boolean));
     });
     const conteudo = [
-      el('span', { class: 'prof-rotulo prof-rotulo--area', text: nomeArea(ix, p.area) }),
+      el('span', { class: 'prof-pan-cab' }, el('span', { class: 'prof-rotulo prof-rotulo--area', text: nomeArea(ix, p.area) }), emblema(p.id)),
       el('h3', { text: p.nome }),
       el('p', { text: p.frase || 'Ficha em produção.' }),
       etiquetas,
@@ -842,7 +865,7 @@
       rotulo: nomeArea(ix, f.area), titulo: f.nome, frase: f.frase,
       meta: [f.conferido_em ? `Ficha conferida em ${dataBR(f.conferido_em)}` : null, 'Mapa das Profissões do Diver'],
       fontes: (f.fontes || []).length ? botaoFontes((f.fontes || []).length) : null,
-      acoes, resumo: caixaResumo(resumoDe(f), 'desta ficha', { fonte: f, nome: f.nome }),
+      acoes, resumo: caixaResumo(resumoDe(f), 'desta ficha', { fonte: f, nome: f.nome }), icone: emblema(f.id),
       numeros: [...[['duracao', 'Duração'], ['formato', 'Formato'], ['registro', 'Registro profissional']].filter(([k]) => nums[k]).map(([k, r]) => linhaNumero(r, nums[k])), linhaSalario],
       pe: linkPanorama(f, ix) }));
 
@@ -878,7 +901,7 @@
     if (formacao.length) cap('formacao', 'A formação', null, ...formacao);
 
     // ---------- 03. O dinheiro: o palpite e, depois dele, todos os valores ----------
-    if (S.quanto_ganha) cap('dinheiro', 'O dinheiro', 'Salário-base de quem foi contratado com carteira. Adicionais não entram.', blocoSalario(f, S.quanto_ganha, pintarSalario));
+    if (S.quanto_ganha) cap('dinheiro', 'O dinheiro', 'Salário-base de quem foi contratado com carteira. Adicionais não entram.', blocoSalario(f, S.quanto_ganha, () => { pintarSalario(); revelarReais(raiz); }));
 
     // ---------- 04. O mercado: o número grande, o ranking, onde se busca e o "Você sabia?" ----------
     const mercado = [], ctx = f.contexto || {};
@@ -911,7 +934,9 @@
     if (carreira.length) cap('carreira', 'A carreira', null, ...carreira);
 
     // ---------- 06. O que ninguém te conta: tudo à vista, numerado ----------
-    if (S.ninguem_conta) cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.', calloutsNumerados(f, S.ninguem_conta.itens));
+    // Um valor em reais aqui ("A média fica em cerca de R$ 3,8 mil") só aparece depois do palpite, como o resto do dinheiro
+    const dinheiroVisto = (estado.salarioRevelado[f.id] || 0) > 0;
+    if (S.ninguem_conta) cap('ninguem', 'O que ninguém te conta', 'Os pontos difíceis, sem rodeio.', calloutsNumerados(f, S.ninguem_conta.itens.map(it => ({ ...it, texto: semReais(it.texto, dinheiroVisto) }))));
 
     // ---------- 07. Combina com você? DNA e o dilema ----------
     const combina = [];
@@ -937,7 +962,8 @@
     const acoes = (o.acoes || []).filter(Boolean), numeros = (o.numeros || []).filter(Boolean);
     return el('header', { class: 'prof-capa' + (numeros.length ? '' : ' prof-capa--so-texto') },
       el('div', { class: 'prof-capa-texto' },
-        o.rotulo ? el('span', { class: 'prof-rotulo prof-rotulo--area', text: o.rotulo }) : null,
+        o.rotulo ? (o.icone ? el('span', { class: 'prof-capa-rotulo' }, o.icone, el('span', { class: 'prof-rotulo prof-rotulo--area', text: o.rotulo }))
+          : el('span', { class: 'prof-rotulo prof-rotulo--area', text: o.rotulo })) : null,
         el('h1', { text: o.titulo }),
         o.frase ? el('p', { class: 'prof-lead', text: o.frase }) : null,
         o.meta ? el('p', { class: 'prof-capa-meta', text: o.meta.filter(Boolean).join(' · ') }) : null,
@@ -1209,7 +1235,7 @@
   const pctBarra = p => (p + 0.5) / CHUTE.n * 100;
   /** Quão perto o palpite ficou: 'certo' (até 10%), 'perto' (até 30%) ou 'longe'. */
   const proximidade = (valor, media) => { const d = Math.abs(valor - media) / media; return d <= 0.1 ? 'certo' : d <= 0.3 ? 'perto' : 'longe'; };
-  /** A régua do palpite. o = { rotulo, aoEscolher(valor) }. Devolve { el, revelar(valor, media), focar() }. */
+  /** A régua do palpite. o = { rotulo, marca ('média'), aoEscolher(valor) }. Devolve { el, revelar(valor, media), focar() }. */
   function reguaPalpite(o) {
     let atual = null, travada = false, arrastando = false;
     const barras = Array.from({ length: CHUTE.n }, () => el('i'));
@@ -1264,38 +1290,42 @@
       regua.classList.add('prof-chute--travada');
       if (valor != null) { escolher(Math.round(posicaoValor(valor))); bolha.textContent = brl(valor); regua.classList.add('prof-chute--' + proximidade(valor, m)); pintar(atual, null); bolha.textContent = brl(valor); }
       else pintar(null, null);
-      media.hidden = false; media.textContent = 'média';
+      const marca = o.marca || 'média';
+      media.hidden = false; media.textContent = marca;
       media.style.setProperty('--x', pctBarra(posicaoValor(m)) + '%');
-      regua.setAttribute('aria-valuetext', valor != null ? `Seu palpite: ${brl(valor)}. Média: ${brl(m)}` : `Média: ${brl(m)}`);
+      regua.setAttribute('aria-valuetext', valor != null ? `Seu palpite: ${brl(valor)}. ${maiusc(marca)}: ${brl(m)}` : `${maiusc(marca)}: ${brl(m)}`);
     }
     return { el: el('div', { class: 'prof-chute-caixa' }, regua, escala), revelar, focar: () => regua.focus(), temValor: () => atual != null, confirmar };
   }
-  /** O palpite. o = { id, pergunta, cargo, media, faixa, citacao(), salvo, revelado, aoResponder({ valor, acertou, diferenca }) } */
+  /** O palpite. o = { id, pergunta, cargo, media, faixa, citacao(), salvo, revelado, aoResponder({ valor, acertou, diferenca }) }.
+      Fora da ficha (panoramas), os textos podem mudar: marca ('média'), dica, dicaDepois, tituloSemPalpite e textoValor. */
   function palpite(o) {
+    const marca = o.marca || 'média', dicaDepois = o.dicaDepois || 'Salário-base mensal, sem adicionais.';
     const resposta = el('div', { class: 'prof-palpite-resposta', 'aria-live': 'polite' });
     const confirmar = el('button', { type: 'button', class: 'prof-btn prof-btn--primario prof-btn--pequeno', hidden: true, onclick: () => r.confirmar() }, icone('alvo'), 'Confirmar palpite');
-    const r = reguaPalpite({ rotulo: 'Seu palpite de salário: use as setas e Enter', aoEscolher: v => responder(v, false), aoMexer: () => { confirmar.hidden = false; } });
+    const r = reguaPalpite({ rotulo: o.rotulo || 'Seu palpite de salário: use as setas e Enter', marca, aoEscolher: v => responder(v, false), aoMexer: () => { confirmar.hidden = false; } });
     const pular = el('button', { type: 'button', class: 'prof-link-botao', text: 'Prefiro ver direto', onclick: () => responder(null, false) });
-    const dica = el('span', { class: 'prof-micro', text: 'Toque ou arraste na régua e solte no seu palpite. Salário-base mensal, sem adicionais.' });
-    const caixa = el('div', { class: 'prof-palpite' },
+    const dica = el('span', { class: 'prof-micro', text: o.dica || 'Toque ou arraste na régua e solte no seu palpite. ' + dicaDepois });
+    const caixa = el('div', { class: 'prof-palpite', id: o.idCaixa || null },
       el('p', { class: 'prof-palpite-pergunta', text: o.pergunta }),
       r.el,
       el('div', { class: 'prof-palpite-pe' }, dica, el('div', { class: 'prof-palpite-botoes' }, confirmar, pular)),
       resposta);
     function responder(valor, jaSalvo) {
       r.revelar(valor, o.media);
-      pular.hidden = true; confirmar.hidden = true; dica.textContent = 'Salário-base mensal, sem adicionais.';
+      pular.hidden = true; confirmar.hidden = true; dica.textContent = dicaDepois;
       const dif = valor == null ? null : valor - o.media, perto = valor == null ? null : proximidade(valor, o.media);
-      const titulo = valor == null ? 'A média de contratação' : perto === 'certo' ? 'Na mosca!' : perto === 'perto' ? 'Quase!' : dif < 0 ? 'Mais do que você imaginou' : 'Menos do que você imaginou';
-      const difTexto = valor == null ? null : Math.abs(dif) < 50 ? 'Exatamente a média.' : `Seu palpite, ${brl(valor)}, ficou ${brl(Math.abs(dif))} ${dif > 0 ? 'acima' : 'abaixo'} da média.`;
+      const titulo = valor == null ? (o.tituloSemPalpite || 'A média de contratação') : perto === 'certo' ? 'Na mosca!' : perto === 'perto' ? 'Quase!' : dif < 0 ? 'Mais do que você imaginou' : 'Menos do que você imaginou';
+      const difTexto = valor == null ? null : Math.abs(dif) < 50 ? `Exatamente ${marca === 'média' ? 'a média' : 'o ' + marca}.` : `Seu palpite, ${brl(valor)}, ficou ${brl(Math.abs(dif))} ${dif > 0 ? 'acima' : 'abaixo'} ${marca === 'média' ? 'da média' : 'do ' + marca}.`;
       const dominio = dominioDe([{ media: o.media, faixa: o.faixa }]);
       resposta.textContent = '';
-      resposta.append(
+      // append() escreveria "null" no lugar do que não vem (sem palpite não há diferença; sem faixa, não há legenda)
+      resposta.append(...[
         el('p', { class: 'prof-palpite-titulo' + (perto ? ' prof-palpite-titulo--' + perto : '') }, titulo),
         difTexto ? el('p', { class: 'prof-palpite-dif', text: difTexto }) : null,
-        el('p', { class: 'prof-palpite-valor' }, el('b', { class: 'prof-num', text: brl(o.media) }), el('span', null, ` é a média de contratação de ${o.cargo.toLowerCase()}`, o.citacao(), '.')),
-        regua({ dominio, media: o.media, faixa: o.faixa }),
-        o.faixa ? el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), `A maior parte dos contratos: ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}`), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média')) : null);
+        el('p', { class: 'prof-palpite-valor' }, el('b', { class: 'prof-num', text: brl(o.media) }), el('span', null, o.textoValor || ` é a média de contratação de ${o.cargo.toLowerCase()}`, o.citacao(), '.')),
+        regua({ dominio, media: o.media, faixa: o.faixa, marca }),
+        o.faixa ? el('div', { class: 'prof-regua-legenda' }, el('span', null, el('i', { class: 'prof-legenda-faixa', 'aria-hidden': 'true' }), `A maior parte dos contratos: ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}`), el('span', null, el('i', { class: 'prof-legenda-media', 'aria-hidden': 'true' }), 'a média')) : null].filter(Boolean));
       if (!jaSalvo) o.aoResponder({ valor, acertou: perto === 'certo', diferenca: dif });
     }
     // Palpite guardado: o valor (régua) ou, de antes da régua, só a faixa (aí mostra a média, sem o palpite)
@@ -1306,7 +1336,7 @@
   /** Régua: a faixa comum (onde fica a maior parte dos contratos) e a média marcada. Também serve a várias linhas. */
   function regua(o) {
     const [a, b] = o.dominio, pct = v => Math.max(0, Math.min(100, (v - a) / (b - a) * 100));
-    return el('div', { class: 'prof-regua' + (o.fina ? ' prof-regua--fina' : ''), role: 'img', 'aria-label': `Média ${brl(o.media)}${o.faixa ? `; faixa comum de ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}` : ''}` },
+    return el('div', { class: 'prof-regua' + (o.fina ? ' prof-regua--fina' : ''), role: 'img', 'aria-label': `${maiusc(o.marca || 'média')} ${brl(o.media)}${o.faixa ? `; faixa comum de ${brl(o.faixa.de)} a ${brl(o.faixa.ate)}` : ''}` },
       el('span', { class: 'prof-regua-trilho' }),
       o.faixa ? el('span', { class: 'prof-regua-faixa', style: { left: pct(o.faixa.de) + '%', width: (pct(o.faixa.ate) - pct(o.faixa.de)) + '%' } }) : null,
       el('span', { class: 'prof-regua-media', style: { left: pct(o.media) + '%' } }));
@@ -1468,7 +1498,7 @@
   // Cada estado é um quadradinho na posição aproximada do mapa: [linha, coluna]
   const GRADE_UF = { RR: [1, 2], AP: [1, 3], AM: [2, 2], PA: [2, 3], MA: [2, 4], CE: [2, 5], RN: [2, 6], AC: [3, 1], RO: [3, 2], TO: [3, 3], PI: [3, 4], PE: [3, 5], PB: [3, 6], MT: [4, 2], GO: [4, 3], BA: [4, 4], SE: [4, 5], AL: [4, 6], MS: [5, 2], DF: [5, 3], MG: [5, 4], ES: [5, 5], PR: [6, 2], SP: [6, 3], RJ: [6, 4], SC: [7, 2], RS: [8, 2] };
   /** Quando se busca: uma coluna por mês, a barra sobe ou desce a partir da média do ano (100); o pico em amarelo.
-      Em HTML (não SVG) para os meses ficarem legíveis no celular. */
+      Em HTML (não SVG) para os meses ficarem legíveis no celular; abaixo de 480 px, só a inicial (J F M...), que cabe em 360 px. */
   function barrasMeses(valores) {
     const MESES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
     const max = Math.max(...valores), min = Math.min(...valores);
@@ -1477,7 +1507,7 @@
       valores.map((v, i) => el('div', { class: 'prof-mes' + (v === max ? ' prof-mes--max' : '') + (v < 100 ? ' prof-mes--abaixo' : ''), title: `${MESES[i]}: ${v} (média do ano = 100)`, style: { '--h': Math.abs(v - 100) / escala } },
         el('span', { class: 'prof-mes-barra' }),
         v === max || v === min ? el('span', { class: 'prof-mes-v prof-num', text: String(v) }) : null,
-        el('span', { class: 'prof-mes-rot', text: MESES[i] }))));
+        el('span', { class: 'prof-mes-rot' }, MESES[i].charAt(0), el('span', { class: 'prof-mes-resto', text: MESES[i].slice(1) })))));
   }
   function blocoBuscas(sec, f, t) {
     const carregando = sec.querySelector('.prof-carregando'); if (carregando) carregando.remove();
@@ -1659,15 +1689,32 @@
 
     function cartaEl(p, classe) {
       const c = el('article', { class: 'prof-carta ' + (classe || ''), 'aria-label': p.nome },
-        el('div', { class: 'prof-carta-cab' }, el('span', { text: nomeArea(ix, p.area) }), el('span', { text: `${Math.min(idx + 1, baralho.length)} de ${baralho.length}` })),
+        el('div', { class: 'prof-carta-cab' }, el('span', { class: 'prof-carta-area' }, emblema(p.id), nomeArea(ix, p.area)), el('span', { text: `${Math.min(idx + 1, baralho.length)} de ${baralho.length}` })),
         el('h2', { text: p.nome }),
         el('p', { class: 'prof-fato' }, el('b', { text: 'Você sabia? ' }), p.carta.fato),
         el('p', { class: 'prof-micro', text: 'Fonte: ' + ((ix.fontes_cartas || {})[p.carta.fonte] || p.carta.fonte) }),
         el('span', { class: 'prof-carta-carimbo prof-carta-carimbo--sim', text: 'Me interessa', 'aria-hidden': 'true' }),
         el('span', { class: 'prof-carta-carimbo prof-carta-carimbo--nao', text: 'Não é pra mim', 'aria-hidden': 'true' }));
       c.style.setProperty('border-color', corArea(ix, p.area));
+      c.style.setProperty('--cor-area', corArea(ix, p.area));
       return c;
     }
+    /* A pilha fica com a altura da carta mais alta deste baralho, na largura de agora: nenhum texto passa do fim da carta.
+       Mede de novo quando a largura muda e quando as fontes terminam de carregar. */
+    function medir() {
+      if (!pilha.isConnected) return;
+      const caixa = el('div', { 'aria-hidden': 'true', style: { position: 'absolute', left: '0', right: '0', top: '0', visibility: 'hidden', pointerEvents: 'none' } });
+      pilha.appendChild(caixa);
+      let alto = 0;
+      baralho.forEach(p => { const c = cartaEl(p, ''); c.style.position = 'relative'; c.style.inset = 'auto'; caixa.appendChild(c); alto = Math.max(alto, c.offsetHeight); });
+      caixa.remove();
+      pilha.style.setProperty('--alto-carta', Math.ceil(alto) + 'px');
+    }
+    let tMedir = 0;
+    const aoMudarLargura = () => { clearTimeout(tMedir); tMedir = setTimeout(medir, 150); };
+    addEventListener('resize', aoMudarLargura);
+    limpezas.push(() => { removeEventListener('resize', aoMudarLargura); clearTimeout(tMedir); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(medir);
     function render() {
       pilha.textContent = '';
       if (idx >= baralho.length) { acoes.hidden = true; return fim(); }
@@ -1709,11 +1756,12 @@
         topArea ? el('p', { class: 'prof-prosa', style: { marginTop: '8px' } }, 'A área que mais apareceu: ', el('b', { text: nomeArea(ix, topArea) }), '.') : null,
         sugestao ? el('p', { class: 'prof-sugestao' }, 'Uma que talvez você não tenha considerado: ', el('b', { text: sugestao.nome }), temFicha(sugestao) ? ['. ', link('Abrir a ficha', 'profissao-' + sugestao.id)] : '. A ficha dela está em produção.') : null,
         el('div', { style: { marginTop: '14px', display: 'flex', gap: '10px', flexWrap: 'wrap' } },
-          botao('Embaralhar de novo', { classe: 'prof-btn--primario', icone: 'embaralhar', onclick: () => { idx = 0; sim.length = 0; nao.length = 0; baralho = todas.slice().sort(() => Math.random() - .5); rastro.textContent = ''; acoes.hidden = false; render(); } }),
+          botao('Embaralhar de novo', { classe: 'prof-btn--primario', icone: 'embaralhar', onclick: () => { idx = 0; sim.length = 0; nao.length = 0; baralho = todas.slice().sort(() => Math.random() - .5); rastro.textContent = ''; acoes.hidden = false; render(); medir(); } }),
           link('Ver o mapa', 'profissoes', { classe: 'prof-btn prof-btn--linha' }))));
       ganchos.registrar('profissoes_cartas_fim', { interesse: sim.map(p => p.id), area: topArea });
     }
     render();
+    requestAnimationFrame(medir);
   }
 
   /* =========================================================
@@ -1826,7 +1874,8 @@
 
     // Cabeçalho das colunas: fica preso no topo enquanto rola
     raiz.appendChild(el('div', { class: 'prof-comp-linha prof-comp-cab' }, par2.map(f => el('a', { href: '#profissao-' + f.id, class: 'prof-comp-nome', style: { '--cor-area': corArea(ix, f.area) } },
-      el('span', { class: 'prof-rotulo', text: nomeArea(ix, f.area) }), el('b', null, f.nome, icone('direita'))))));
+      emblema(f.id),
+      el('span', { class: 'prof-comp-nome-texto' }, el('span', { class: 'prof-rotulo', text: nomeArea(ix, f.area) }), el('b', null, f.nome, icone('direita')))))));
     const bloco = (titulo, celulas, extra) => el('section', { class: 'prof-comp-bloco' }, el('h2', { text: titulo }),
       celulas ? el('div', { class: 'prof-comp-linha' }, celulas.map(c => el('div', { class: 'prof-comp-cel' }, c))) : null, extra || null);
     const numero = (f, k) => {
@@ -1918,7 +1967,7 @@
     /* Peças para as extensões (js/profissoes-panorama.js): as mesmas da ficha, para o desenho ficar igual */
     _util: { el, icone, aviso, botao, link, citar, prosa, brl, dataBR, normalizar, nomeArea, corArea, salvarEstado, lerJson, limpezas, IG, EIXOS,
       temFicha, temPanorama, pedir, semMovimento, contar, ir, fontesGuardadas, abrirFonte, abrirFontes, botaoFontes, numeroFonte, dadosPanorama,
-      topoPagina, cabecalho, indiceCapitulos, linhasCargos,
+      topoPagina, cabecalho, indiceCapitulos, linhasCargos, palpite, semReais, revelarReais, maiusc,
       capituloRelatorio, fonteLinha, faixaNumero, numerosProf, capaRelatorio, linhaEmNumeros, caixaResumo, calloutsNumerados, regua, dominioDe }
   };
 })();

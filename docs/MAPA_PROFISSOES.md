@@ -47,7 +47,7 @@ O Mapa responde a essas perguntas, sempre na mesma ordem, com fonte em cada núm
 - **Barra lateral:** novo item "Profissões" (ícone de bússola). Se o padrão atual da barra pedir outro lugar, siga o padrão e registre a decisão no DIARIO.
 - **Rotas:** `#profissoes` (mapa), `#profissoes-cartas` (Maré de cartas), `#profissoes-metodo` (Como fazemos as fichas), `#profissao-<id>` (ficha), `#profissao-<id>-dia` (Um dia como...), `#profissao-<id>-mitos` (Mito ou verdade) `#profissoes-comparar` (Fase 2) e `#profissoes-fundo` ("Quão fundo é cada carreira", 2026-10-17).
 - **Acesso:** qualquer conta logada, sem matrícula. No modo local (sem Supabase), funciona igual.
-- **Tutorial de primeiro acesso:** entrada nova em `js/tutorial.js`, com 3 passos (o mapa, a ficha e o "Um dia como"). Hoje, na versão 5 (2026-10-17), são 7 passos: o mapa, o álbum e a faixa "Agora", a ficha, o mergulho, a Maré, o comparador e os panoramas.
+- **Tutorial de primeiro acesso:** entrada nova em `js/tutorial.js`, com 3 passos (o mapa, a ficha e o "Um dia como"). Hoje, na versão 6 (2026-10-17), são 7 passos: o mapa, o álbum e a faixa "Agora", a ficha, o mergulho, a Maré, o comparador e os panoramas.
 
 ## 4. Telas
 
@@ -61,6 +61,7 @@ O Mapa responde a essas perguntas, sempre na mesma ordem, com fonte em cada núm
 - Admin e professor veem também as fichas em `rascunho`, com uma etiqueta, para revisar.
 - **As profissões lado a lado** (2026-10-17), no pé do mapa, quando há 3 ou mais fichas abertas para quem está vendo: "Quanto dura a graduação" (as profissões agrupadas pelos anos, com a nota de quem tem caminho mais curto, de técnico ou tecnólogo) e "Onde dá para estudar a distância" (só presencial, presencial ou semipresencial, também a distância, depende do curso), cada quadro com a fonte embaixo. **O salário fica de fora de propósito:** ele estragaria o palpite de cada ficha. Os números vêm de `data/profissoes/numeros.json` (seção 5.3).
 - **A releitura de 2026-10-17** (vídeos de referência do usuário; detalhes em `docs/MAPA_PROFISSOES_INTERACOES.md`, "A releitura com os vídeos de referência"): a frase do topo troca a parte final; **"Ver como"** (cartões, lista ou aquário, guardado só no aparelho); o **álbum de selos** das fichas abertas; a faixa **"Agora, às Xh"**, com o que cada profissão costuma fazer nesta hora; e o atalho para **"Quão fundo é cada carreira"** (4.6). Os cartões seguem o desenho dos panoramas.
+- **Um ícone para cada profissão** (2026-10-17, pedido do usuário: "uma arte que represente universalmente cada uma delas"; depois, "mais discreto e simples"): 22 ícones de traço nossos em `js/profissoes-icones.js`, na cor da área, pequenos e parados: no canto dos cartões, na lista, no aquário, nos selos do álbum (o que falta fica em cinza), na capa da ficha, na Maré e no comparador. Detalhes em `docs/MAPA_PROFISSOES_INTERACOES.md`, "Os ícones e o salário depois do palpite nos panoramas".
 
 ### 4.2 Ficha (`#profissao-<id>`)
 
@@ -71,10 +72,10 @@ O Mapa responde a essas perguntas, sempre na mesma ordem, com fonte em cada núm
 3. Capítulos em **faixas numeradas**, cada um aberto pela **frase-tese** (`manchetes`) quando a ficha tem:
    - **01 O trabalho:** O que faz × O que não faz; Um dia de trabalho ao lado das **24 horas de um dia típico** (o trecho de agora aceso);
    - **02 A formação:** O que estuda e Como entrar (matérias-chave); **Quanto tempo até trabalhar** (linha do tempo das etapas na mesma régua de anos);
-   - **03 O dinheiro:** o palpite em 4 faixas e, depois dele, todos os cargos, os pisos e a regra;
+   - **03 O dinheiro:** o palpite (a régua, desde 2026-10-17) e, depois dele, todos os cargos, os pisos e a regra;
    - **04 O mercado:** o número gigante das matrículas, o **ranking dos 10 cursos com mais matrículas** (a profissão acesa, as outras em cinza; só quando a ficha tem a posição no Censo), **Onde e quando se busca** (mapa do Brasil em quadradinhos, comparação com outra profissão, tabela com os 27 estados e a sazonalidade) e a faixa **"Você sabia?"**;
    - **05 A carreira:** outros caminhos, profissões vizinhas e "Comparar";
-   - **06 O que ninguém te conta:** os pontos numerados, todos à vista;
+   - **06 O que ninguém te conta:** os pontos numerados, todos à vista (um valor em reais no meio do texto fica "R$ ?" até o palpite, desde 2026-10-17);
    - **07 Combina com você?:** DNA da profissão e O que você faria?;
    - **08 Fontes.**
 4. Embaixo de cada gráfico, a linha **"Fonte:"** com o nome curto das fontes e as bolinhas que abrem cada uma.
