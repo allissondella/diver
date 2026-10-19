@@ -12,6 +12,7 @@
   - **Online:** `batata_criar`, `batata_jogar` e `batata_explodir` em `supabase/setup.sql` (explodiu = `status: fim`; `estado.alfabetos`). Testado num Postgres local e aplicado no **banco de testes**; permissões iguais.
   - **Dicionário:** +5,4 mil palavras do léxico e das conjugações e as flexões frequentes ("vocês", "pés"), sem nomes próprios (os que o VERO tem com maiúscula), inglês, siglas, palavrões e ofensas. Saíram da lista de bloqueio as palavras do dia a dia com duplo sentido (vaca, pinto, saco, pau, rola, piranha, macaca, gostosa, peitos). Créditos e licença MIT em `data/dicionario/leia-me-pt-br.txt`; fonte em `docs/FONTES_CATALOGADAS.md`.
 - **Testes:** Sozinho em 1440×900, 390×844 e 844×390 (uma explosão = game over; o cartão chega em menos de 3 s), robô e lado a lado (uma explosão até o fim), Treino, "reduzir movimento", o dicionário no navegador (as palavras novas valem; palavrões, nomes e inglês não) e o auditor de design.
+- **Depois (mesmo dia, pedido do usuário: "vamos ter 5 segundos, 10 e 15 somente"):** o pavio passou a ter só 5, 10 e 15 s (quem tinha 20 s guardado volta para 10); o banco aceita de 5 a 15 s (`batata_criar`, já nos testes). Com 5 s, a bomba estourou em 5,1 s no navegador.
 - **Pendências:** aplicar as três funções no banco de produção junto com o merge.
 
 ## 2026-10-18 · A bomba de batata da Batata Quente

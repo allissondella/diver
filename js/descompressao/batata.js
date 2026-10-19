@@ -25,7 +25,7 @@
   const ALFABETO = 'abcdefghijlmnopqrstuvxz';
   const BONUS_ALFABETO = { sozinho: 10, outros: 5 }; // pontos por alfabeto completo
   const ATRASO_FIM = 1300; // o cartão do game over espera a explosão (ms; menos com "reduzir movimento")
-  const PAVIOS = [10, 15, 20];
+  const PAVIOS = [5, 10, 15]; // (2026-10-19, pedido do usuário: só 5, 10 e 15 s)
   const ROBOS = {
     facil: { nome: 'Fácil', pontos: 10, espera: [3200, 6500], falha: 0.22, maxLetras: 7 },
     medio: { nome: 'Médio', pontos: 15, espera: [1800, 4200], falha: 0.1, maxLetras: 10 },
@@ -68,7 +68,8 @@
     descricao: 'Uma sílaba, uma bomba e o relógio correndo: digite uma palavra com a sílaba antes de explodir. Contra o robô, lado a lado ou online.',
     telaCheia: true, // o palco: a janela inteira, com a barra da Sala por cima
     abrir(ctx) {
-      const cfg = { modo: 'sozinho', robo: 'medio', tempo: 15, nomes: [primeiroNome() || 'Jogador 1', 'Jogador 2'], ...(ctx.estado() || {}).cfg };
+      const cfg = { modo: 'sozinho', robo: 'medio', tempo: 10, nomes: [primeiroNome() || 'Jogador 1', 'Jogador 2'], ...(ctx.estado() || {}).cfg };
+      if (!PAVIOS.includes(cfg.tempo)) cfg.tempo = 10; // quem tinha guardado 20 s volta para 10
       const palcoTela = Palco.montar(Palco.daSala(ctx), { id: 'batata', cena: cenaLuau() });
       const area = palcoTela.area;
       let partida = null; // motor local (robô e lado a lado)

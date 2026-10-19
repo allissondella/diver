@@ -1188,7 +1188,7 @@ begin
   end loop;
   insert into public.batata_salas (codigo, jogadores, nomes, estado)
   values (v_cod, array[auth.uid()], array[v_nome], jsonb_build_object(
-    'status', 'aguardando', 'tempo', greatest(8, least(30, coalesce(p_tempo, 15))), 'vidas', jsonb_build_array(1, 1), 'alfabetos', jsonb_build_array(0, 0),
+    'status', 'aguardando', 'tempo', greatest(5, least(15, coalesce(p_tempo, 15))), 'vidas', jsonb_build_array(1, 1), 'alfabetos', jsonb_build_array(0, 0),
     'letras', jsonb_build_array('', ''), 'vez', 0, 'silaba', null, 'usadas', '[]'::jsonb, 'rodada', 0,
     'prazo', null, 'vencedor', null, 'ultima', null))
   on conflict (codigo) do update
