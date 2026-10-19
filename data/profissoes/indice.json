@@ -1,6 +1,6 @@
 {
   "versao": 2,
-  "atualizado_em": "2026-10-18",
+  "atualizado_em": "2026-10-19",
   "areas": [
     {
       "id": "saude",
@@ -17,7 +17,12 @@
       "id": "negocios",
       "nome": "Negócios",
       "cor": "--laranja",
-      "icone": "briefcase"
+      "icone": "briefcase",
+      "panorama": {
+        "rota": "profissoes-negocios",
+        "titulo": "Panorama de Finanças, Gestão e Negócios",
+        "frase": "Dez áreas, do planejador financeiro ao gerente de projetos, e um jogo para descobrir a sua."
+      }
     },
     {
       "id": "direito-sociedade",
@@ -52,7 +57,12 @@
       "id": "comunicacao",
       "nome": "Comunicação e artes",
       "cor": "--coral",
-      "icone": "speakerphone"
+      "icone": "speakerphone",
+      "panorama": {
+        "rota": "profissoes-marketing",
+        "titulo": "Panorama do Marketing Digital",
+        "frase": "Tráfego pago, conteúdo, SEO, growth e vendas: nove áreas e um jogo para descobrir a sua."
+      }
     }
   ],
   "filtros": [
@@ -144,7 +154,7 @@
       "onda": 1,
       "status": "rascunho",
       "arquivo": "psicologia.json",
-      "frase": "Avalia e cuida da saúde mental e do comportamento, do consultório à escola e à empresa.",
+      "frase": "Avalia, orienta e acompanha pessoas, grupos e organizações usando métodos psicológicos, do consultório ao hospital, da escola ao RH.",
       "busca": "psicologia psicologo psicologa",
       "tags": [
         "lida-com-pessoas",
@@ -152,8 +162,8 @@
         "conselho-profissional"
       ],
       "carta": {
-        "fato": "375 mil matriculados, quase todos presenciais. Psicólogo não prescreve remédio; isso é do psiquiatra.",
-        "fonte": "censo-2024"
+        "fato": "O perfil mais comum de quem é contratado com carteira como psicólogo: uma mulher de 25 anos, 30 horas por semana, numa ONG. O consultório particular que todo mundo imagina não entra nessa conta.",
+        "fonte": "caged-psicologo"
       },
       "trends_id": "psicologia"
     },
@@ -164,7 +174,7 @@
       "onda": 1,
       "status": "rascunho",
       "arquivo": "fisioterapia.json",
-      "frase": "Avalia e trata o movimento do corpo: reabilita depois de lesões, cirurgias e doenças.",
+      "frase": "Avalia e trata o movimento e a função do corpo, da UTI à quadra, para a pessoa voltar a fazer o que fazia.",
       "busca": "fisioterapia fisioterapeuta",
       "tags": [
         "lida-com-pessoas",
@@ -173,7 +183,7 @@
         "conselho-profissional"
       ],
       "carta": {
-        "fato": "Em 2024, Fisioterapia foi o 10º curso com mais matrículas do país, com cerca de 227 mil estudantes.",
+        "fato": "Em 2024, cerca de 83 mil dos 227 mil alunos de Fisioterapia estavam em curso a distância. Desde 2025, a porta fechou para quem entra: curso de saúde não pode mais ser EAD.",
         "fonte": "censo-2024"
       }
     },
@@ -264,7 +274,7 @@
       "onda": 1,
       "status": "rascunho",
       "arquivo": "direito.json",
-      "frase": "Interpreta e aplica as leis para defender pessoas, empresas e o interesse público.",
+      "frase": "Transforma conflito em argumento: defende, acusa, julga, aconselha e escreve as regras que organizam a vida em sociedade.",
       "busca": "direito advogado advogada advocacia",
       "tags": [
         "lida-com-pessoas",
@@ -273,8 +283,8 @@
         "conselho-profissional"
       ],
       "carta": {
-        "fato": "Quase 653 mil matriculados, e praticamente todos em curso presencial. EAD também está proibido aqui.",
-        "fonte": "censo-2024"
+        "fato": "Formar-se não basta: só vira advogado quem passa no Exame de Ordem, e nas últimas edições cerca de 15% dos inscritos foram aprovados.",
+        "fonte": "lei-8906"
       }
     },
     {
@@ -385,15 +395,15 @@
       "onda": 2,
       "status": "rascunho",
       "arquivo": "nutricao.json",
-      "frase": "Planeja a alimentação de pessoas e grupos, do consultório ao hospital e à cozinha industrial.",
+      "frase": "Cuida do que as pessoas comem, do cardápio de mil refeições à dieta de um paciente só.",
       "busca": "nutricao nutricionista",
       "tags": [
         "lida-com-pessoas",
         "conselho-profissional"
       ],
       "carta": {
-        "fato": "Cerca de 102 mil estudantes faziam Nutrição a distância em 2024, entre os 10 cursos com mais alunos na EAD.",
-        "fonte": "censo-2024"
+        "fato": "O empregador que mais contrata nutricionista com carteira não é a clínica nem a academia: é a empresa de refeições coletivas, a cozinha industrial que serve mil almoços por dia.",
+        "fonte": "caged-nutricionista"
       }
     },
     {
@@ -422,15 +432,15 @@
       "onda": 2,
       "status": "rascunho",
       "arquivo": "biomedicina.json",
-      "frase": "Trabalha no laboratório e nos exames que ajudam a descobrir e acompanhar doenças.",
+      "frase": "Faz o exame que o médico pede: do sangue ao DNA, produz o resultado que sustenta o diagnóstico.",
       "busca": "biomedicina biomedico",
       "tags": [
         "laboratorio",
         "conselho-profissional"
       ],
       "carta": {
-        "fato": "O biomédico pode fazer radiografias, mas a interpretação do exame não é dele.",
-        "fonte": "lei-6684"
+        "fato": "O biomédico tem mais de 30 habilitações possíveis, da genética à perfusão em cirurgia cardíaca. Mas quase todo mundo que é contratado com carteira começa no mesmo lugar: o laboratório clínico.",
+        "fonte": "crbm1-manual-2024"
       }
     },
     {
@@ -481,7 +491,7 @@
       "onda": 2,
       "status": "rascunho",
       "arquivo": "engenharia-de-producao.json",
-      "frase": "Organiza fábricas, processos e cadeias de suprimento para produzir mais, melhor e com menos desperdício.",
+      "frase": "Não constrói a coisa: desenha como ela é feita, com menos desperdício, menos tempo e menos erro.",
       "busca": "engenharia de producao",
       "tags": [
         "trabalho-com-numeros",
@@ -489,8 +499,8 @@
         "conselho-profissional"
       ],
       "carta": {
-        "fato": "Engenharia de Produção não é Administração com outro nome: é uma engenharia, com no mínimo 3.600 horas de curso e registro no Crea para exercer.",
-        "fonte": "cne-lei-5194"
+        "fato": "É o engenheiro que não projeta prédio, ponte nem motor. Projeta o jeito de produzir. O perfil típico de contratação tem 31 anos e trabalha em escritório de engenharia, não em fábrica.",
+        "fonte": "caged-eng-producao"
       }
     },
     {
@@ -549,6 +559,62 @@
         "fato": "Desde 2009, não é preciso diploma para trabalhar como jornalista: o STF derrubou a exigência.",
         "fonte": "stf-jornalismo"
       }
+    },
+    {
+      "id": "agronomia",
+      "nome": "Agronomia (Engenharia Agronômica)",
+      "area": "engenharia",
+      "onda": 2,
+      "status": "rascunho",
+      "busca": "agronomia engenheiro agronomo agro agricultura",
+      "arquivo": "agronomia.json",
+      "frase": "Faz a comida existir: decide o que plantar, como cuidar do solo, da água e da planta, e responde pelo que assina.",
+      "carta": {
+        "fato": "O agrônomo tem piso por lei desde 1966: seis salários mínimos para seis horas de trabalho. Mas em 2022 o STF congelou a base de cálculo, e o piso parou de acompanhar o mínimo.",
+        "fonte": "lei-4950a"
+      },
+      "tags": [
+        "trabalho-de-campo",
+        "trabalho-com-numeros",
+        "conselho-profissional"
+      ]
+    },
+    {
+      "id": "engenharia-de-seguranca-do-trabalho",
+      "nome": "Engenharia de Segurança do Trabalho",
+      "area": "engenharia",
+      "onda": 2,
+      "status": "rascunho",
+      "busca": "seguranca do trabalho engenheiro de seguranca tecnico em seguranca do trabalho nr",
+      "arquivo": "engenharia-de-seguranca-do-trabalho.json",
+      "frase": "Trabalha para que ninguém se machuque nem adoeça trabalhando. Tem duas portas: a pós para engenheiros e arquitetos, e o curso técnico de nível médio.",
+      "carta": {
+        "fato": "Não existe faculdade de Engenharia de Segurança do Trabalho. É pós-graduação para quem já é engenheiro ou arquiteto. O técnico entra com curso de nível médio, e o mercado dele é mais de 20 vezes maior em contratações.",
+        "fonte": "lei-7410"
+      },
+      "tags": [
+        "trabalho-de-campo",
+        "lida-com-pessoas",
+        "conselho-profissional"
+      ]
+    },
+    {
+      "id": "servico-social",
+      "nome": "Serviço Social",
+      "area": "direito-sociedade",
+      "onda": 2,
+      "status": "rascunho",
+      "busca": "servico social assistente social cras creas suas",
+      "arquivo": "servico-social.json",
+      "frase": "Garante que direitos saiam do papel: conecta pessoas em situação difícil a benefícios, serviços e políticas públicas.",
+      "carta": {
+        "fato": "É a única profissão de nível superior com jornada de 30 horas semanais fixada em lei federal, sem redução de salário. E é presença obrigatória em todo CRAS e CREAS do país.",
+        "fonte": "lei-8662"
+      },
+      "tags": [
+        "lida-com-pessoas",
+        "conselho-profissional"
+      ]
     }
   ],
   "fontes_cartas": {
@@ -577,6 +643,20 @@
       "rota": "profissoes-medicina",
       "status": "rascunho",
       "busca": "medicina especialidade especialidades residencia medica clinica medica cirurgia pediatria ginecologia obstetricia anestesia anestesiologia cardiologia ortopedia psiquiatria radiologia medicina de familia dermatologia emergencia uti intensiva"
+    },
+    {
+      "id": "marketing",
+      "arquivo": "marketing.json",
+      "rota": "profissoes-marketing",
+      "status": "rascunho",
+      "busca": "marketing digital trafego pago anuncios inbound growth conteudo redes sociais social media seo branding marca dados de marketing relacoes publicas vendas digitais ecommerce"
+    },
+    {
+      "id": "negocios",
+      "arquivo": "negocios.json",
+      "rota": "profissoes-negocios",
+      "status": "rascunho",
+      "busca": "financas planejador financeiro investimentos financas corporativas contabilidade contador projetos agil scrum compliance rh recursos humanos administracao vendas empreendedorismo mei logistica"
     }
   ]
 }

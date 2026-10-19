@@ -181,7 +181,7 @@ Regras:
 - **Um dia como...:** 30 XP e 3 pérolas, uma vez por profissão.
 - **Mito ou verdade:** recompensa igual à do jogo de verdadeiro ou falso existente, uma vez por profissão.
 - **Abrir uma ficha:** sem XP, para não virar fazenda de pontos.
-- **Conquistas novas:** "Explorador de carreiras" (abrir 5 fichas) e "Um dia na pele" (concluir 3 "Um dia como").
+- **Conquistas novas:** "Explorador de carreiras" (abrir 5 fichas) e "Um dia na pele" (concluir 3 "Um dia como"); dos panoramas, "Dez em dez" (Tecnologia), "Doze em doze" (Medicina), "Nove em nove" (Marketing) e "Dez em dez, de novo" (Negócios).
 - **Log de atividade** (`eventos_atividade`, sem tabela nova): `profissao_vista`, `profissao_mira`, `profissao_dia_concluido`, `profissao_mitos_concluido` e `profissao_materias_chave`. O Admin ganha o bloco "Profissões mais vistas", derivado do log.
 
 ## 7. Conteúdo, fontes e validação
@@ -228,6 +228,14 @@ Fonte `secundaria` com `nota` é pendência: antes de publicar, troque pela prim
 - parecer das fontes: `docs/validacoes/profissoes-fichas-2026-10-16.md`.
 
 Para publicar, cada ficha precisa da revisão de um profissional da área e do OK do usuário.
+
+**Kit v5 (19/10/2026, pedido do usuário: "Vamos subir esse mapa das profissões" e "Atualizar com mais essas"; detalhes em `docs/MAPA_PROFISSOES_ONDA2.md` e no parecer `docs/validacoes/profissoes-kit-v5-2026-10-19.md`):**
+
+- **3 fichas novas:** Agronomia, Engenharia de Segurança do Trabalho e Serviço Social (26 profissões no índice; as 23ª a 26ª fichas), com frases-tese e ícone nossos.
+- **6 fichas atualizadas com a pesquisa do kit** (mais fontes, contexto e Trends): Psicologia, Fisioterapia, Nutrição, Biomedicina, Direito e Engenharia de Produção. Ficaram nossas as frases-tese (reescritas onde o fato ou a fonte mudou), o "Um dia como" de Psicologia e Direito, as características (`tags`) e o lugar no ranking das matrículas.
+- **2 panoramas novos:** Marketing Digital (9 áreas, área "Comunicação e artes") e Finanças, Gestão e Negócios (10 áreas, área "Negócios"), em "Explore por dentro", com rotas `#profissoes-<id>`, `#<id>-<área>` e `#profissoes-<id>-jogo`, o salário só depois do palpite, o log `marketing_*`/`negocios_*` (regra no banco) e as conquistas "Nove em nove" e "Dez em dez, de novo". Sem ponte com curso: o Diver ainda não tem curso dessas áreas.
+- **Ficaram de fora do kit:** o código e o desenho (os do app são mais novos), o `medicina.json` do kit (é o panorama, que no app se chama `panorama-medicina.json`), Biologia, Enfermagem e Tecnologia (as nossas são mais novas).
+- Tudo segue `rascunho` até a revisão de um profissional de cada área e o OK do usuário.
 
 ## 9. Fases e critério de pronto
 

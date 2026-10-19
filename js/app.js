@@ -107,7 +107,7 @@ const App = (() => {
   }
 
   /** Endereços do Mapa das Profissões que caem na tela "profissoes" (o módulo desenha a rota certa). */
-  const ehRotaProfissoes = (secao) => /^profissoes(-cartas|-metodo|-fundo|-tecnologia|-tecnologia-jogo|-medicina|-medicina-jogo)?$|^profissoes-comparar(-[a-z0-9-]+)?$|^profissao-[a-z0-9-]+$|^(tecnologia|medicina)-[a-z-]+$/.test(secao || '');
+  const ehRotaProfissoes = (secao) => /^profissoes(-cartas|-metodo|-fundo|-(tecnologia|medicina|marketing|negocios)(-jogo)?)?$|^profissoes-comparar(-[a-z0-9-]+)?$|^profissao-[a-z0-9-]+$|^(tecnologia|medicina|marketing|negocios)-[a-z-]+$/.test(secao || ''); // os quatro panoramas de indice.json
 
   /** O endereço existe? (#secao, #sala-<id> ou uma rota do Mapa das Profissões) */
   function rotaExiste(secao) {
@@ -1321,7 +1321,7 @@ const App = (() => {
       if (!trilha || !ev) return;
       const teto = Economia.CONFIG.bonusMaximo;
       const valores = { xp: Math.min(Math.max(0, ev.xp || 0), teto.xp), perolas: Math.min(Math.max(0, ev.perolas || 0), teto.perolas) };
-      const motivo = { profissao_dia: 'Um dia completo!', tecnologia_jogo: 'Descobriu as suas áreas!', medicina_jogo: 'Descobriu as suas especialidades!' }[ev.tipo] || 'Mito ou verdade concluído';
+      const motivo = { profissao_dia: 'Um dia completo!', tecnologia_jogo: 'Descobriu as suas áreas!', medicina_jogo: 'Descobriu as suas especialidades!', marketing_jogo: 'Descobriu as suas áreas!', negocios_jogo: 'Descobriu as suas áreas!' }[ev.tipo] || 'Mito ou verdade concluído';
       concederXP(trilha.id, valores, motivo);
     };
     // Log de atividade (sem tabela nova). Nada digitado vai para o log: um pedido feito pela busca livre vira "outra".
@@ -1334,7 +1334,7 @@ const App = (() => {
           delete d.indicadores;
         }
         Atividade.registrar(evento, null, d);
-        if (['profissao_vista', 'profissao_dia_concluido', 'profissao_carta_gerada', 'tecnologia_area_vista', 'medicina_area_vista'].includes(evento)) {
+        if (['profissao_vista', 'profissao_dia_concluido', 'profissao_carta_gerada', 'tecnologia_area_vista', 'medicina_area_vista', 'marketing_area_vista', 'negocios_area_vista'].includes(evento)) {
           avisarConquistas(Conquistas.verificarGerais(ix.profissoes.filter((p) => p.arquivo && p.status === 'publicada').map((p) => p.id)));
         }
       }).catch(() => { /* sem o índice, o evento não vale a pena */ });

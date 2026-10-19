@@ -1,6 +1,7 @@
 /* Mapa das Profissões · Panoramas de área (js/profissoes-panorama.js)
    Extensão de js/profissoes.js: carrega depois dele (pacote "profissoes" em js/app.js) e se registra sozinha.
-   Serve todos os panoramas de indice.json → panoramas[] (hoje: Tecnologia e Medicina). Para cada <id>:
+   Serve todos os panoramas de indice.json → panoramas[] (hoje: Tecnologia, Medicina e, desde 2026-10-19, Marketing Digital e
+   Finanças, Gestão e Negócios, do kit v5; os dois últimos sem ponte com curso, porque o Diver ainda não tem curso dessas áreas). Para cada <id>:
    rotas #profissoes-<id> (panorama) · #<id>-<área> (uma área) · #profissoes-<id>-jogo (jogo de afinidade);
    eventos <id>_panorama, <id>_area_vista, <id>_jogo_inicio e <id>_jogo_concluido; recompensa do jogo <id>_jogo.
    Os rótulos ("área" ou "especialidade", cor, títulos) vêm do JSON de cada panorama.

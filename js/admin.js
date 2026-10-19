@@ -284,7 +284,14 @@ const Admin = (() => {
   /* ---------- Mapa das Profissões: números derivados do log (eventos_atividade), sem tabela nova ---------- */
   const TIPOS_PROFISSOES = ['profissao_vista', 'profissao_pedido', 'profissao_carta', 'profissao_dia_inicio', 'profissao_dia_concluido',
     'tecnologia_area_vista', 'tecnologia_jogo_inicio', 'tecnologia_jogo_concluido',
-    'medicina_area_vista', 'medicina_jogo_inicio', 'medicina_jogo_concluido'];
+    'medicina_area_vista', 'medicina_jogo_inicio', 'medicina_jogo_concluido',
+    'marketing_area_vista', 'marketing_jogo_inicio', 'marketing_jogo_concluido',
+    'negocios_area_vista', 'negocios_jogo_inicio', 'negocios_jogo_concluido'];
+  /* Os panoramas que entraram depois (2026-10-19): o mesmo quadro para cada um, montado em laço */
+  const MAIS_PANORAMAS = [
+    { id: 'marketing', arquivo: 'marketing.json', titulo: 'Panorama do Marketing Digital', jogo: 'Que área do marketing é a sua?' },
+    { id: 'negocios', arquivo: 'negocios.json', titulo: 'Panorama de Finanças, Gestão e Negócios', jogo: 'Que área de negócios é a sua?' },
+  ];
   function blocoProfissoes() {
     const corpo = h('div', { class: 'admin-profissoes', 'aria-live': 'polite' });
     let carregado = false;
@@ -304,7 +311,7 @@ const Admin = (() => {
   }
 
   async function carregarProfissoes() {
-    const [ix, tec, med, eventos] = await Promise.all([
+    const [ix, tec, med, eventos, ...outros] = await Promise.all([
       fetch('data/profissoes/indice.json').then((r) => r.json()).catch(() => ({ profissoes: [] })),
       fetch('data/profissoes/tecnologia.json').then((r) => r.json()).catch(() => ({ areas: [] })),
       fetch('data/profissoes/panorama-medicina.json').then((r) => r.json()).catch(() => ({ areas: [] })),
@@ -317,8 +324,9 @@ const Admin = (() => {
         }
         return linhas;
       })(),
+      ...MAIS_PANORAMAS.map((pn) => fetch(`data/profissoes/${pn.arquivo}`).then((r) => r.json()).catch(() => ({ areas: [] }))),
     ]);
-    const panoramas = { tecnologia: 'Panorama da Tecnologia', medicina: 'Panorama da Medicina' };
+    const panoramas = { tecnologia: 'Panorama da Tecnologia', medicina: 'Panorama da Medicina', ...Object.fromEntries(MAIS_PANORAMAS.map((pn) => [pn.id, pn.titulo])) };
     // A ficha vem antes do panorama: "medicina" é as duas coisas (os eventos do panorama trazem detalhes.panorama)
     const nome = (id) => (id === 'outra' ? 'Outra (busca livre)' : ((ix.profissoes || []).find((p) => p.id === id) || {}).nome || panoramas[id] || id);
     const nomeArea = (id) => ((tec.areas || []).find((a) => a.id === id) || {}).nome || id;
@@ -377,6 +385,15 @@ const Admin = (() => {
       tabela('Panorama da Medicina: especialidades mais vistas', especialidadesVistas, [['Especialidade', (l) => nomeEspecialidade(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Aberturas', (l) => String(l.vezes)]], 'Nenhuma especialidade aberta ainda.'),
       h('p', { class: 'texto-suave', text: jogoMedComecou ? `Jogo "Que especialidade médica é a sua?": ${UI.plural(jogoMedComecou, 'pessoa começou', 'pessoas começaram')} e ${UI.plural(jogoMedTerminou, 'terminou', 'terminaram')} (${Math.round((100 * jogoMedTerminou) / Math.max(1, jogoMedComecou))}%).` : 'Ninguém começou o jogo da Medicina ainda.' }),
       tabela('Jogo da Medicina: especialidade em 1º lugar', primeirasMed, [['Especialidade', (l) => nomeEspecialidade(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Partidas', (l) => String(l.vezes)]], 'Nenhuma partida terminada ainda.'),
+      ...MAIS_PANORAMAS.flatMap((pn, i) => {
+        const nomeDaArea = (id) => ((outros[i].areas || []).find((a) => a.id === id) || {}).nome || id;
+        const comecou = pessoasDe(`${pn.id}_jogo_inicio`), terminou = pessoasDe(`${pn.id}_jogo_concluido`);
+        return [
+          tabela(`${pn.titulo}: áreas mais vistas`, contar((e) => e.tipo === `${pn.id}_area_vista`, area), [['Área', (l) => nomeDaArea(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Aberturas', (l) => String(l.vezes)]], 'Nenhuma área aberta ainda.'),
+          h('p', { class: 'texto-suave', text: comecou ? `Jogo "${pn.jogo}": ${UI.plural(comecou, 'pessoa começou', 'pessoas começaram')} e ${UI.plural(terminou, 'terminou', 'terminaram')} (${Math.round((100 * terminou) / Math.max(1, comecou))}%).` : `Ninguém jogou "${pn.jogo}" ainda.` }),
+          tabela(`Jogo "${pn.jogo}": área em 1º lugar`, contar((e) => e.tipo === `${pn.id}_jogo_concluido`, primeiraArea), [['Área', (l) => nomeDaArea(l.id)], ['Pessoas', (l) => String(l.pessoas)], ['Partidas', (l) => String(l.vezes)]], 'Nenhuma partida terminada ainda.'),
+        ];
+      }),
     ];
   }
 

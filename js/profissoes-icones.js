@@ -2,7 +2,8 @@
    algo "mais discreto e simples", e cada profissão ganhou um ícone de traço, de uma cor só, no mesmo estilo dos ícones
    do app (24 × 24, traço 2, pontas redondas). Desenho nosso. A cor vem de currentColor: quem usa pinta com a cor da área.
    IconesProfissoes.icone(id) devolve o <svg> pronto (ou null, e a peça segue sem ícone). Faz parte do pacote
-   "profissoes" (PACOTES em js/app.js) e vem antes de js/profissoes.js. Profissão nova pede um ícone novo aqui. */
+   "profissoes" (PACOTES em js/app.js) e vem antes de js/profissoes.js. Profissão nova pede um ícone novo aqui (2026-10-19:
+   Agronomia, Engenharia de Segurança do Trabalho e Serviço Social, do kit v5). */
 (function () {
   'use strict';
 
@@ -30,6 +31,9 @@
     sistemas: ['Sinais de código', '<path d="M8 7.5 3.5 12 8 16.5M16 7.5l4.5 4.5-4.5 4.5M13.6 5l-3.2 14"/>'],
     'ciencia-da-computacao': ['Chip de processador', '<rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx=".8"/><path d="M9.5 3v3M14.5 3v3M9.5 18v3M14.5 18v3M3 9.5h3M3 14.5h3M18 9.5h3M18 14.5h3"/>'],
     'inteligencia-artificial': ['Brilhos de ideia', '<path d="M10.5 3.5c.6 4.4 2.6 6.4 7 7-4.4.6-6.4 2.6-7 7-.6-4.4-2.6-6.4-7-7 4.4-.6 6.4-2.6 7-7z"/><path d="M18.5 15c.3 1.7 1 2.4 2.7 2.7-1.7.3-2.4 1-2.7 2.7-.3-1.7-1-2.4-2.7-2.7 1.7-.3 2.4-1 2.7-2.7z"/>'],
+    agronomia: ['Broto com duas folhas', '<path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 2.8-7.3 7.5-7.5.2 4.7-2.8 7.5-7.5 7.5z"/><path d="M12 15c0-3.3-2.3-5.8-6.5-6 0 3.9 2.5 6 6.5 6z"/><path d="M8 21h8"/>'],
+    'engenharia-de-seguranca-do-trabalho': ['Escudo com sinal de certo', '<path d="M12 3.2 5 6v5.5c0 4.4 3 7.8 7 9.3 4-1.5 7-4.9 7-9.3V6z"/><path d="m8.8 12.2 2.3 2.3 4.3-4.6"/>'],
+    'servico-social': ['Mão que acolhe um coração', '<path d="M2.5 14.5h3l3.6 3h4.3a1.4 1.4 0 0 0 0-2.8h-3"/><path d="M5.5 14.5v6M9 17.5h7.8a2.6 2.6 0 0 0 2-1l2.2-2.8a1.3 1.3 0 0 0-2-1.6l-2.4 2.2"/><path d="M14.5 10.2S11 8.1 11 5.6a1.8 1.8 0 0 1 3.5-.7 1.8 1.8 0 0 1 3.5.7c0 2.5-3.5 4.6-3.5 4.6z"/>'],
     comunicacao: ['Megafone com ondas de som', '<path d="M3.5 10v4a1 1 0 0 0 1 1H7l7 4.5v-15L7 9H4.5a1 1 0 0 0-1 1z"/><path d="M17.5 9.2a4 4 0 0 1 0 5.6M20 6.6a7.6 7.6 0 0 1 0 10.8"/>'],
   };
 

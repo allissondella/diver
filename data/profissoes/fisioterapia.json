@@ -3,9 +3,9 @@
   "versao": 1,
   "nome": "Fisioterapia",
   "area": "saude",
-  "frase": "Avalia e trata o movimento do corpo: reabilita depois de lesões, cirurgias e doenças.",
+  "frase": "Avalia e trata o movimento e a função do corpo, da UTI à quadra, para a pessoa voltar a fazer o que fazia.",
   "status": "rascunho",
-  "conferido_em": "2026-10-16",
+  "conferido_em": "2026-10-18",
   "revisao": {
     "fontes": "conferidas",
     "ia": "pendente",
@@ -19,51 +19,520 @@
     "plantao",
     "conselho-profissional"
   ],
+  "trends_id": null,
+  "carta": {
+    "fato": "Em 2024, cerca de 83 mil dos 227 mil alunos de Fisioterapia estavam em curso a distância. Desde 2025, a porta fechou para quem entra: curso de saúde não pode mais ser EAD.",
+    "fontes": [
+      "censo-2024",
+      "decreto-12456"
+    ]
+  },
   "numeros": {
     "duracao": {
       "valor": "5 anos",
-      "detalhe": "4.000 horas, bacharelado",
+      "detalhe": "4.000 horas, bacharelado, com estágio de pelo menos 20% do curso",
       "fontes": [
-        "cne-4-2009"
+        "cne-4-2009",
+        "dcn-fisioterapia-2002"
       ]
     },
     "formato": {
-      "valor": "Presencial ou semipresencial",
-      "detalhe": "sem EAD; no semipresencial, pelo menos 40% de atividades presenciais",
+      "valor": "Presencial",
+      "detalhe": "curso da área de saúde: EAD vedado para novos alunos desde 2025",
       "fontes": [
-        "portaria-378",
         "decreto-12456"
       ]
     },
     "salario": {
       "valor": "R$ 3.445",
-      "detalhe": "média de contratação de fisioterapeuta com carteira, salário-base, 12 meses até ago/2026",
+      "detalhe": "média de contratação com carteira, salário-base, jornada média de 31 h, 12 meses até out/2026",
       "fontes": [
-        "caged-fisio"
+        "caged-fisioterapeuta"
       ]
     },
     "registro": {
       "valor": "Crefito",
-      "detalhe": "carteira profissional do conselho regional para exercer",
+      "detalhe": "carteira profissional do Conselho Regional de Fisioterapia e Terapia Ocupacional, obrigatória",
       "fontes": [
         "lei-6316"
       ]
     }
   },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 6,
+      "texto": "Na UTI, o plantão de fisioterapia segue: ajuste de ventilação mecânica, aspiração, mudança de posição no leito. Fora do hospital, a maioria dorme."
+    },
+    {
+      "de": 6,
+      "ate": 8,
+      "texto": "Primeira visita aos leitos, antes da ronda médica. Na clínica, o primeiro paciente é quem passa antes do trabalho."
+    },
+    {
+      "de": 8,
+      "ate": 12,
+      "texto": "Atendimentos de 40 a 60 minutos em sequência: exercício, mobilização, eletroterapia e muita conversa para o paciente não desistir."
+    },
+    {
+      "de": 12,
+      "ate": 14,
+      "texto": "Almoço e evolução no prontuário. No atendimento domiciliar, é o trânsito entre a casa de um paciente e a de outro."
+    },
+    {
+      "de": 14,
+      "ate": 18,
+      "texto": "Pico da clínica e dos convênios. No clube, o treino acabou e começa a fila de atletas com dor."
+    },
+    {
+      "de": 18,
+      "ate": 21,
+      "texto": "Quem trabalha o dia inteiro vem agora. Em muitas clínicas, o último horário é às 20h."
+    },
+    {
+      "de": 21,
+      "ate": 24,
+      "texto": "Fechamento da agenda. No hospital, o plantão noturno assume os pacientes em ventilação."
+    }
+  ],
+  "agora_nota": "A fisioterapia tem rotinas bem diferentes (hospital e UTI, clínica e convênio, esporte, domicílio, saúde pública). Cenas típicas, a revisar com profissionais.",
   "contexto": {
     "matriculas_2024": 227223,
     "posicao_ranking_matriculas": 10,
-    "texto": "Em 2024, Fisioterapia foi o 10º curso com mais matrículas no Brasil, com cerca de 227 mil estudantes, cerca de 144 mil deles no presencial.",
+    "texto": "Em 2024, Fisioterapia foi o 10º curso com mais matrículas no Brasil, com cerca de 227 mil estudantes. O perfil mais comum de contratação com carteira: mulher, 28 anos, 30 horas semanais, em hospital.",
     "fontes": [
-      "censo-2024"
+      "censo-2024",
+      "caged-fisioterapeuta"
     ]
   },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Avalia, previne e trata distúrbios do movimento e da função do corpo. A lei define como atividade privativa do fisioterapeuta executar métodos e técnicas fisioterapêuticos para restaurar, desenvolver e conservar a capacidade física do paciente. Ele faz a própria consulta, chega a um diagnóstico cinesiológico funcional (o que a pessoa consegue ou não fazer e por quê), monta o plano de tratamento e dá alta. Trabalha em hospitais (inclusive na UTI, onde cuida da ventilação mecânica e da mobilização precoce), clínicas, consultórios, ambientes de trabalho, centros esportivos, instituições de longa permanência e centros de reabilitação. O conselho reconhece 16 especialidades, de Terapia Intensiva a Saúde da Mulher, de Esportiva a Oncologia.",
+      "nao_faz": "Não diagnostica doenças (isso é diagnóstico médico), não prescreve medicamentos nem opera. Avalia a função e o movimento; a doença em si é de outro profissional.",
+      "fontes": [
+        "decreto-lei-938",
+        "coffito-definicao",
+        "coffito-especialidades",
+        "crefito4-autonomia"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "No hospital, o dia começa cedo com a visita aos leitos e a discussão em equipe: quem está pronto para sair da ventilação, quem precisa sentar pela primeira vez depois da cirurgia. Na UTI, há plantões, inclusive à noite e no fim de semana. Na clínica de convênio, são atendimentos de 40 a 60 minutos em sequência, às vezes dois pacientes ao mesmo tempo, com exercícios, mobilização e aparelhos; o fisioterapeuta repete orientação, corrige postura e convence a pessoa a continuar. No esporte, acompanha treinos e jogos e trabalha com a prevenção de lesões. No atendimento domiciliar, passa boa parte do dia no trânsito. Em todas as rotinas, o trabalho é físico: em pé, sustentando peso, com as mãos no paciente.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "As diretrizes nacionais organizam o curso em quatro grupos: ciências biológicas e da saúde (anatomia, fisiologia, patologia), ciências sociais e humanas (saúde coletiva, ética, políticas de saúde), conhecimentos biotecnológicos e conhecimentos fisioterapêuticos (cinesiologia, cinesioterapia, recursos terapêuticos e intervenção em cada sistema do corpo). O estágio supervisionado é pelo menos 20% do curso e passa por hospital, clínica e atenção básica. Anatomia e cinesiologia são a base de tudo: quem não domina músculo, articulação e alavanca não consegue avaliar movimento.",
+      "disciplinas": [
+        "Anatomia e neuroanatomia",
+        "Fisiologia e fisiologia do exercício",
+        "Cinesiologia e biomecânica",
+        "Patologia",
+        "Semiologia e avaliação funcional",
+        "Cinesioterapia",
+        "Recursos terapêuticos manuais",
+        "Eletrotermofototerapia",
+        "Fisioterapia cardiorrespiratória",
+        "Fisioterapia neurofuncional",
+        "Fisioterapia traumato-ortopédica",
+        "Saúde coletiva",
+        "Ética e legislação profissional"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "dcn-fisioterapia-2002"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni e Fies. A concorrência é média, bem abaixo de Medicina. Biologia pesa mais (anatomia e fisiologia começam no primeiro semestre); Física ajuda mais do que parece, porque biomecânica é alavanca, força e torque aplicados ao corpo; Química aparece na fisiologia.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-fisica",
+        "enem-quimica"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "Não existe piso em lei, mas existe jornada máxima: fisioterapeutas e terapeutas ocupacionais têm limite de 30 horas semanais desde 1994. Isso explica parte da média de contratação com carteira (R$ 3.445 por uma jornada média de 31 horas): o valor por hora é melhor do que o número sugere, e muita gente soma dois vínculos. Convênios pagam por sessão, com valores baixos e atraso; o atendimento particular paga melhor por hora, mas a agenda precisa encher. A residência multiprofissional paga bolsa de R$ 4.106 por 60 horas semanais, durante dois anos. As médias consideram só o salário-base, sem adicionais como insalubridade e plantão.",
+      "fontes": [
+        "lei-8856",
+        "caged-fisioterapeuta",
+        "bolsa-residencia-santa-casa"
+      ],
+      "pisos": [],
+      "medias": [
+        {
+          "cargo": "Fisioterapeuta",
+          "valor": 3444.85,
+          "periodo": "12 meses até out/2026",
+          "faixa": {
+            "de": 2500,
+            "ate": 4086,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          },
+          "fontes": [
+            "caged-fisioterapeuta"
+          ]
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um fisioterapeuta contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 12000,
+        "passo": 100,
+        "inicial": 6000
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Especialidades e título de especialista",
+          "texto": "São 16 reconhecidas pelo Coffito: Terapia Intensiva, Respiratória, Cardiovascular, Neurofuncional, Traumato-Ortopédica, Esportiva, Saúde da Mulher, Oncologia, Gerontologia, Dermatofuncional, do Trabalho, Aquática, Reumatologia, Acupuntura, Osteopatia e Quiropraxia. O título vem por prova ou por pós-graduação, conforme a especialidade.",
+          "fontes": [
+            "coffito-especialidades"
+          ]
+        },
+        {
+          "titulo": "Residência multiprofissional em saúde",
+          "texto": "Dois anos dentro de um hospital ou rede do SUS, com 60 horas semanais e bolsa de R$ 4.106,09. É o caminho mais comum para a UTI e para a reabilitação hospitalar.",
+          "fontes": [
+            "bolsa-residencia-santa-casa"
+          ]
+        },
+        {
+          "titulo": "Concursos e SUS",
+          "texto": "Hospitais públicos, unidades básicas de saúde, centros de reabilitação, equipes multiprofissionais da atenção básica e Forças Armadas.",
+          "fontes": []
+        },
+        {
+          "titulo": "Esporte",
+          "texto": "Clubes, seleções, academias e corredores amadores. Prevenção de lesão e retorno ao jogo. Poucas vagas, muita procura.",
+          "fontes": []
+        },
+        {
+          "titulo": "Consultório e atendimento domiciliar",
+          "texto": "Trabalho autônomo, por hora ou por pacote. Idosos, pós-operatório e pacientes neurológicos em casa são um mercado que cresce com o envelhecimento da população.",
+          "fontes": []
+        },
+        {
+          "titulo": "Mestrado e doutorado",
+          "texto": "Pesquisa em reabilitação, biomecânica e fisiologia do exercício, e docência nos cursos de graduação.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "A média de contratação com carteira é R$ 3.445 por 31 horas semanais. Muita gente soma dois ou três vínculos para fechar o mês, e o convênio paga por sessão, com atraso.",
+          "fontes": [
+            "caged-fisioterapeuta",
+            "lei-8856"
+          ]
+        },
+        {
+          "texto": "É trabalho físico. O dia inteiro em pé, sustentando o peso de outra pessoa, repetindo movimentos. Dor nas costas do fisioterapeuta é piada interna, e é real.",
+          "fontes": []
+        },
+        {
+          "texto": "O paciente desiste. Reabilitação leva semanas ou meses, e metade do trabalho é convencer a pessoa a voltar e a fazer os exercícios em casa.",
+          "fontes": []
+        },
+        {
+          "texto": "O curso tem 4.000 horas em 5 anos, o mesmo que Enfermagem e Farmácia. E não pode mais ser a distância para quem entra agora, embora 83 mil alunos estivessem em EAD em 2024.",
+          "fontes": [
+            "cne-4-2009",
+            "decreto-12456",
+            "censo-2024"
+          ]
+        },
+        {
+          "texto": "O mercado formal cresceu no último ano: saldo de 2.458 vagas em 12 meses, com 14.262 admissões e 11.804 desligamentos. Mas a maior parte das vagas é em hospital, com plantão.",
+          "fontes": [
+            "caged-fisioterapeuta"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "educacao-fisica",
+        "diferenca": "Treina quem está saudável e prescreve exercício; não trata lesão nem doença. A fronteira na academia e no esporte é fina e gera disputa."
+      },
+      {
+        "id": "medicina",
+        "diferenca": "Diagnostica a doença, opera e prescreve remédio. Ortopedia e fisiatria encaminham para a fisioterapia, que faz a reabilitação."
+      },
+      {
+        "id": "enfermagem",
+        "diferenca": "Cuida do paciente como um todo no leito: medicação, curativos, sinais vitais. O fisioterapeuta cuida da função e do movimento."
+      },
+      {
+        "id": "nutricao",
+        "diferenca": "Outra profissão da equipe de reabilitação e da UTI, com foco em alimentação e dieta; mesma lógica de conselho e de 4 anos de curso."
+      }
+    ]
+  },
+  "formacao": {
+    "nota": "Durações mínimas pelas normas nacionais. Para UTI e reabilitação hospitalar, a residência ou a especialização é quase obrigatória na prática.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 5,
+        "anos_ate": 5,
+        "texto": "4.000 horas, presencial, com estágio de pelo menos 20% do curso. Dá a carteira do Crefito.",
+        "fontes": [
+          "cne-4-2009",
+          "dcn-fisioterapia-2002",
+          "lei-6316"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "residencia",
+        "nome": "Residência multiprofissional",
+        "anos_de": 2,
+        "anos_ate": 2,
+        "texto": "Hospital ou rede do SUS, 60 horas semanais, com bolsa.",
+        "fontes": [
+          "bolsa-residencia-santa-casa"
+        ],
+        "tipo": "depois"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização e título de especialista",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Uma das 16 especialidades reconhecidas pelo Coffito.",
+        "fontes": [
+          "coffito-especialidades"
+        ],
+        "tipo": "depois"
+      },
+      {
+        "id": "mestrado",
+        "nome": "Mestrado e doutorado",
+        "anos_de": 2,
+        "anos_ate": 6,
+        "texto": "Pesquisa e docência.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  },
+  "dna": {
+    "pessoas": 85,
+    "pressao": 50,
+    "corpo": 90,
+    "rotina": 55,
+    "numeros": 25,
+    "criatividade": 45
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "protocolo-que-nao-serve",
+      "situacao": "Um paciente chega com encaminhamento médico pedindo dez sessões de um protocolo. Na sua avaliação, o quadro mudou e aquele protocolo não faz mais sentido; pode até piorar a dor.",
+      "opcoes": [
+        {
+          "texto": "Seguir o encaminhamento à risca: quem pediu foi o médico",
+          "recomendada": false
+        },
+        {
+          "texto": "Reavaliar, ajustar o plano de tratamento e comunicar o médico que encaminhou",
+          "recomendada": true
+        },
+        {
+          "texto": "Interromper tudo e mandar o paciente voltar ao médico sem orientação",
+          "recomendada": false
+        }
+      ],
+      "resposta": "O Código de Ética diz que cabe ao fisioterapeuta instituir e aplicar o plano de tratamento e conceder alta, e proíbe executar tratamento desnecessário ou que atente contra a saúde do paciente. Também proíbe abandonar o paciente sem garantir a continuidade do cuidado. A consulta e o diagnóstico fisioterapêutico são do fisioterapeuta; o encaminhamento é uma indicação, não uma ordem. Reavaliar e dialogar com a equipe é o caminho.",
+      "fontes": [
+        "codigo-etica-coffito",
+        "crefito4-autonomia"
+      ]
+    }
+  ],
+  "mitos": [
+    {
+      "id": "auxiliar-do-medico",
+      "afirmacao": "Fisioterapeuta só executa o que o médico mandou.",
+      "verdade": false,
+      "explicacao": "É profissão de nível superior com atividade privativa definida em lei desde 1969. O fisioterapeuta faz a própria consulta, o diagnóstico cinesiológico funcional e o plano de tratamento, e não é subordinado a outra profissão da saúde.",
+      "fontes": [
+        "decreto-lei-938",
+        "crefito4-autonomia"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Dá para fazer a faculdade de Fisioterapia a distância.",
+      "verdade": false,
+      "explicacao": "Desde o Decreto nº 12.456/2025, cursos da área de saúde não podem ser oferecidos a distância. Quem já estava matriculado em EAD pode concluir.",
+      "fontes": [
+        "decreto-12456"
+      ]
+    },
+    {
+      "id": "jornada",
+      "afirmacao": "Fisioterapeuta pode ter jornada de 44 horas, como qualquer empregado.",
+      "verdade": false,
+      "explicacao": "A Lei nº 8.856/1994 limita a jornada de fisioterapeutas e terapeutas ocupacionais a 30 horas semanais.",
+      "fontes": [
+        "lei-8856"
+      ]
+    },
+    {
+      "id": "so-joelho",
+      "afirmacao": "Fisioterapia é massagem e exercício para quem machucou o joelho.",
+      "verdade": false,
+      "explicacao": "Ortopedia é só uma das 16 especialidades. Fisioterapeutas trabalham em UTI com ventilação mecânica, em cardiologia, oncologia, saúde da mulher, neurologia, esporte e pele.",
+      "fontes": [
+        "coffito-especialidades"
+      ]
+    },
+    {
+      "id": "hospital",
+      "afirmacao": "O maior empregador com carteira é o hospital, não a clínica de ortopedia.",
+      "verdade": true,
+      "explicacao": "O perfil mais comum de contratação com carteira é em atividades de atendimento hospitalar, com jornada de 30 horas.",
+      "fontes": [
+        "caged-fisioterapeuta"
+      ]
+    },
+    {
+      "id": "pos-obrigatoria",
+      "afirmacao": "Precisa de pós-graduação para começar a trabalhar.",
+      "verdade": false,
+      "explicacao": "Com o diploma e a carteira do Crefito, o exercício já é permitido. Para UTI e algumas especialidades, a residência ou a especialização pesa na prática, mas não é exigência legal.",
+      "fontes": [
+        "lei-6316"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "caged-fisioterapeuta",
+      "titulo": "Fisioterapeuta (CBO 2236-05): média R$ 3.444,85, mediana R$ 3.265, P25 R$ 2.500, P75 R$ 4.086, 31 h; 14.262 admissões, 11.804 desligamentos, saldo +2.458 em 12 meses; perfil típico mulher, 28 anos, 30 h, em hospital",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/fisioterapeuta-geral-cbo-223605",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "decreto-lei-938",
+      "titulo": "Decreto-Lei nº 938/1969: fisioterapeuta é profissional de nível superior (art. 2º); atividade privativa de executar métodos e técnicas fisioterápicos para restaurar, desenvolver e conservar a capacidade física do paciente (art. 3º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/1965-1988/del0938.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-6316",
+      "titulo": "Lei nº 6.316/1975: cria o Coffito e os Crefitos; art. 12, exercício só com carteira profissional do conselho",
+      "orgao": "Presidência da República",
+      "url": "https://planalto.gov.br/ccivil_03/leis/1970-1979/l6316.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-8856",
+      "titulo": "Lei nº 8.856/1994: jornada máxima de 30 horas semanais para fisioterapeutas e terapeutas ocupacionais",
+      "orgao": "Presidência da República",
+      "url": "https://planalto.gov.br/ccivil_03/leis/L8856.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-4-2009",
+      "titulo": "Resolução CNE/CES nº 4/2009: carga horária mínima de Biomedicina, Educação Física, Farmácia, Fisioterapia, Nutrição e outros cursos da saúde",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/public/arquivos/legislacoes/Resolucao-cne-ces-004-2009-04-06.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL no portal do MEC. A DCN de Fisioterapia (CNE/CES 4/2002) não fixa carga horária; as 4.000 h vêm desta resolução de 2009."
+    },
+    {
+      "id": "dcn-fisioterapia-2002",
+      "titulo": "Resolução CNE/CES nº 4/2002 (DCN de Fisioterapia): perfil generalista, quatro grupos de conteúdos, estágio supervisionado de pelo menos 20% da carga horária",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/res_ces_cne_04_190202.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL no portal do MEC, que bloqueou a consulta automática."
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República, via IFPB",
+      "url": "https://portalv1.ifpb.edu.br/ead/assuntos/pasta-legislacoes/decretos/decreto-12456-2025.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL do decreto no Planalto. Confirmar com o MEC o enquadramento de Fisioterapia como curso da área de saúde e a situação de quem já estava matriculado em EAD. Conferir se há decisão do STF sobre a ação da ABE-EAD (jul/2025)."
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: Fisioterapia com 227.223 matrículas, 10º lugar; 143.969 presenciais (as cerca de 83 mil restantes, em EAD, são a diferença)",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep e confirmar o número de matrículas EAD, que foi calculado por subtração."
+    },
+    {
+      "id": "coffito-especialidades",
+      "titulo": "Coffito: 16 especialidades da Fisioterapia reconhecidas (Acupuntura, Aquática, Cardiovascular, Dermatofuncional, Esportiva, Gerontologia, do Trabalho, Neurofuncional, Oncologia, Reumatologia, Respiratória, Traumato-Ortopédica, Osteopatia, Quiropraxia, Saúde da Mulher, Terapia Intensiva)",
+      "orgao": "Conselho Federal de Fisioterapia e Terapia Ocupacional",
+      "url": "https://www.coffito.gov.br/nsite/?page_id=2350",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "coffito-definicao",
+      "titulo": "Coffito, definição da Fisioterapia: avaliação, diagnóstico, prevenção e tratamento de distúrbios do movimento e da funcionalidade; atuação em hospitais, clínicas, consultórios, ambientes de trabalho, ensino, centros esportivos, ILPI e centros de reabilitação",
+      "orgao": "Conselho Federal de Fisioterapia e Terapia Ocupacional",
+      "url": "https://www.coffito.gov.br/nsite/?page_id=2341",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "crefito4-autonomia",
+      "titulo": "Parecer Crefito-4 nº 001/2016: autonomia do fisioterapeuta, consulta fisioterapêutica privativa, diagnóstico cinesiológico funcional (Resolução Coffito nº 80/1987, art. 1º)",
+      "orgao": "Crefito-4 (Minas Gerais)",
+      "url": "https://crefito4.org.br/site/wp-content/uploads/2023/07/Parecer-001.2016_autonomia-fisioterapeuta.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela Resolução Coffito nº 80/1987 no site do Coffito."
+    },
+    {
+      "id": "codigo-etica-coffito",
+      "titulo": "Código de Ética e Deontologia da Fisioterapia (Resolução Coffito nº 424/2013): art. 10, II, proibido tratamento desnecessário ou atentatório à saúde; art. 12, instituir plano de tratamento e conceder alta; art. 15, I, não abandonar o paciente; art. 32, sigilo",
+      "orgao": "Coffito, via Normas Brasil",
+      "url": "https://www.normasbrasil.com.br/norma/resolucao-424-2013_257114.html",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela URL da resolução no site do Coffito."
+    },
+    {
+      "id": "bolsa-residencia-santa-casa",
+      "titulo": "Residência multiprofissional em saúde com fisioterapia, nutrição, psicologia e enfermagem: bolsa de R$ 4.106,09, 60 h semanais, 2 anos (Santa Casa de Campo Grande, autorizada pelo MEC)",
+      "orgao": "Midiamax, 23/06/2026",
+      "url": "https://midiamax.com.br/cotidiano/emprego-concurso/2026/bolsa-r41-mil-santa-casa-lanca-primeira-residencia-multiprofissional/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Imprensa como ponte. Trocar pela Portaria Interministerial MEC/MS nº 9/2021, que fixa o valor nacional da bolsa, e conferir reajuste."
+    }
+  ],
   "manchetes": {
     "trabalho": {
       "titulo": "O movimento é o campo de trabalho",
       "linha": "Executar técnicas fisioterápicas para restaurar a capacidade física é privativo do fisioterapeuta, da reabilitação à UTI.",
       "fontes": [
-        "dl-938"
+        "decreto-lei-938"
       ]
     },
     "formacao": {
@@ -71,7 +540,7 @@
       "linha": "A graduação tem 4.000 horas, com estágios em clínicas e hospitais; o curso é presencial ou semipresencial, sem EAD.",
       "fontes": [
         "cne-4-2009",
-        "portaria-378"
+        "decreto-12456"
       ]
     },
     "dinheiro": {
@@ -88,356 +557,5 @@
         "censo-2024"
       ]
     }
-  },
-  "secoes": {
-    "o_que_faz": {
-      "texto": "Por lei, é atividade privativa do fisioterapeuta executar métodos e técnicas fisioterápicos para restaurar, desenvolver e conservar a capacidade física do paciente. Na prática, atua em reabilitação ortopédica e neurológica, fisioterapia respiratória em hospitais e UTIs, esporte, saúde do trabalhador e cuidado de idosos.",
-      "nao_faz": "Não faz cirurgias nem procedimentos invasivos, não emite laudo de exames de imagem e não indica internação ou alta hospitalar: são atividades privativas do médico.",
-      "fontes": [
-        "dl-938",
-        "lei-12842"
-      ]
-    },
-    "dia_a_dia": {
-      "texto": "Na clínica, é uma sequência de atendimentos com hora marcada, cada um com avaliação, exercícios e técnicas manuais ou com aparelhos. No hospital, há turnos e plantões, com fisioterapia respiratória e motora nos pacientes internados. Muita gente combina um vínculo fixo com atendimento em domicílio.",
-      "revisar_com_profissional": true,
-      "fontes": []
-    },
-    "o_que_estuda": {
-      "texto": "Ciências do corpo humano, avaliação do movimento e técnicas de tratamento, com estágios em clínicas, hospitais e na rede pública.",
-      "disciplinas": [
-        "Anatomia",
-        "Fisiologia do exercício",
-        "Biomecânica e cinesiologia",
-        "Neurologia",
-        "Fisioterapia traumato-ortopédica",
-        "Fisioterapia respiratória",
-        "Fisioterapia neurofuncional",
-        "Recursos terapêuticos manuais",
-        "Saúde coletiva"
-      ],
-      "revisar_com_profissional": true,
-      "fontes": []
-    },
-    "como_entrar": {
-      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Biologia e Química costumam pesar em cursos de saúde, e Física ajuda em biomecânica; o peso muda de universidade para universidade.",
-      "materias_chave": [
-        "enem-biologia",
-        "enem-quimica",
-        "enem-fisica"
-      ],
-      "fontes": []
-    },
-    "quanto_ganha": {
-      "texto": "Por lei, a jornada do fisioterapeuta é de no máximo 30 horas por semana, e as médias de contratação refletem essa jornada menor. Elas contam só o salário-base com carteira; atendimento particular e em domicílio ficam fora.",
-      "fontes": [
-        "lei-8856",
-        "caged-fisio"
-      ],
-      "medias": [
-        {
-          "cargo": "Fisioterapeuta",
-          "valor": 3444.85,
-          "periodo": "12 meses até ago/2026",
-          "fontes": [
-            "caged-fisio"
-          ],
-          "faixa": {
-            "de": 2500,
-            "ate": 4086,
-            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
-          }
-        }
-      ],
-      "chute": {
-        "pergunta": "Quanto ganha, por mês, um fisioterapeuta contratado com carteira no Brasil?",
-        "min": 1000,
-        "max": 10000,
-        "passo": 100,
-        "inicial": 6000
-      }
-    },
-    "caminhos": {
-      "itens": [
-        {
-          "titulo": "Especializações",
-          "texto": "Ortopedia, esporte, respiratória, neurofuncional, terapia intensiva, saúde da mulher e geriatria, entre outras.",
-          "fontes": []
-        },
-        {
-          "titulo": "Hospital e UTI",
-          "texto": "Fisioterapia respiratória e motora em pacientes internados, em escalas de plantão.",
-          "fontes": []
-        },
-        {
-          "titulo": "Clínica e atendimento em domicílio",
-          "texto": "Consultório próprio, clínicas de reabilitação e atendimento na casa do paciente.",
-          "fontes": []
-        },
-        {
-          "titulo": "Esporte e trabalho",
-          "texto": "Clubes, equipes esportivas e programas de saúde do trabalhador.",
-          "fontes": []
-        }
-      ]
-    },
-    "ninguem_conta": {
-      "itens": [
-        {
-          "texto": "A jornada máxima de 30 horas por semana protege o profissional, mas muita gente soma dois vínculos para fechar a renda.",
-          "fontes": [
-            "lei-8856"
-          ]
-        },
-        {
-          "texto": "A média de contratação com carteira fica em cerca de R$ 3,4 mil.",
-          "fontes": [
-            "caged-fisio"
-          ]
-        },
-        {
-          "texto": "O trabalho é físico: posicionar pacientes, ficar de pé e repetir movimentos o dia inteiro cansa.",
-          "fontes": []
-        },
-        {
-          "texto": "O resultado é lento e depende do paciente fazer os exercícios em casa.",
-          "fontes": []
-        }
-      ]
-    },
-    "vizinhas": [
-      {
-        "id": "educacao-fisica",
-        "diferenca": "Treina pessoas saudáveis e atletas; a reabilitação é da fisioterapia."
-      },
-      {
-        "id": "enfermagem",
-        "diferenca": "Planeja e executa o cuidado contínuo do paciente internado."
-      },
-      {
-        "id": "medicina",
-        "diferenca": "Diagnostica, prescreve e opera; indica internação e alta."
-      }
-    ]
-  },
-  "mitos": [
-    {
-      "id": "jornada",
-      "afirmacao": "Fisioterapeuta pode ser contratado para 44 horas por semana, como qualquer CLT.",
-      "verdade": false,
-      "explicacao": "A lei limita a jornada a 30 horas semanais.",
-      "fontes": [
-        "lei-8856"
-      ]
-    },
-    {
-      "id": "ead",
-      "afirmacao": "Dá para fazer Fisioterapia totalmente a distância.",
-      "verdade": false,
-      "explicacao": "Cursos da saúde só podem ser presenciais ou semipresenciais, com pelo menos 40% de atividades presenciais.",
-      "fontes": [
-        "portaria-378"
-      ]
-    },
-    {
-      "id": "privativa",
-      "afirmacao": "Aplicar técnicas fisioterápicas é atividade privativa do fisioterapeuta.",
-      "verdade": true,
-      "explicacao": "Está na lei da profissão, de 1969.",
-      "fontes": [
-        "dl-938"
-      ]
-    },
-    {
-      "id": "crefito",
-      "afirmacao": "É preciso registro em conselho para trabalhar.",
-      "verdade": true,
-      "explicacao": "O exercício só é permitido a quem tem a carteira profissional do Crefito.",
-      "fontes": [
-        "lei-6316"
-      ]
-    },
-    {
-      "id": "duracao",
-      "afirmacao": "Fisioterapia se forma em 4 anos.",
-      "verdade": false,
-      "explicacao": "A carga mínima é de 4.000 horas, com integralização em pelo menos 5 anos.",
-      "fontes": [
-        "cne-4-2009"
-      ]
-    }
-  ],
-  "fontes": [
-    {
-      "id": "caged-fisio",
-      "titulo": "Fisioterapeuta (CBO 2236-05): média de R$ 3.444,85, P25 de R$ 2.500,00 e P75 de R$ 4.086,00, jornada média de 31 h semanais, saldo de +2.458 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
-      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
-      "url": "https://www.salario.com.br/profissao/fisioterapeuta-geral-cbo-223605",
-      "consultado_em": "2026-10-16",
-      "dados_atualizados_em": "2026-10-08",
-      "tipo": "secundaria"
-    },
-    {
-      "id": "lei-8856",
-      "titulo": "Lei nº 8.856/1994: jornada máxima de 30 horas semanais para fisioterapeutas e terapeutas ocupacionais",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8856.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "cne-4-2009",
-      "titulo": "Resolução CNE/CES nº 4/2009: carga horária mínima de Biomedicina, Educação Física, Farmácia, Fisioterapia, Nutrição e outros cursos da saúde",
-      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
-      "url": "https://abmes.org.br/public/arquivos/legislacoes/Resolucao-cne-ces-004-2009-04-06.pdf",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "portaria-378",
-      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
-      "orgao": "Ministério da Educação, via ABMES",
-      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "lei-6316",
-      "titulo": "Lei nº 6.316/1975: Coffito e Crefitos; exercício só com carteira profissional",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/1970-1979/L6316.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "dl-938",
-      "titulo": "Decreto-Lei nº 938/1969: atividade privativa do fisioterapeuta (art. 3º)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/1965-1988/Del0938.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "lei-12842",
-      "titulo": "Lei nº 12.842/2013 (Lei do Ato Médico): atividades privativas do médico (arts. 4º e 5º)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12842.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "decreto-12456",
-      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "censo-2024",
-      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
-      "orgao": "Inep, via CNN Brasil (23/09/2025)",
-      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
-      "consultado_em": "2026-10-16",
-      "tipo": "secundaria",
-      "nota": "Trocar pela planilha oficial do Inep."
-    }
-  ],
-  "carta": {
-    "fato": "Desde 1994, a lei limita a jornada do fisioterapeuta a 30 horas por semana.",
-    "fontes": [
-      "lei-8856"
-    ]
-  },
-  "agora": [
-    {
-      "de": 0,
-      "ate": 7,
-      "texto": "Na UTI, há fisioterapeutas de plantão também de madrugada, cuidando da respiração dos pacientes."
-    },
-    {
-      "de": 7,
-      "ate": 12,
-      "texto": "Manhã de atendimentos: avaliação, exercícios e técnicas manuais."
-    },
-    {
-      "de": 12,
-      "ate": 13,
-      "texto": "Almoço."
-    },
-    {
-      "de": 13,
-      "ate": 18,
-      "texto": "Mais pacientes, com coluna, joelho, ombro e reabilitação neurológica."
-    },
-    {
-      "de": 18,
-      "ate": 21,
-      "texto": "Atendimentos em domicílio ou em academias e clubes."
-    },
-    {
-      "de": 21,
-      "ate": 24,
-      "texto": "Fim do dia: evolução dos prontuários e planejamento das próximas sessões."
-    }
-  ],
-  "agora_nota": "Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
-  "dna": {
-    "pessoas": 85,
-    "pressao": 55,
-    "corpo": 75,
-    "rotina": 55,
-    "numeros": 30,
-    "criatividade": 40
-  },
-  "dna_calibrado": false,
-  "dilemas": [
-    {
-      "id": "alta-paciente",
-      "situacao": "Um paciente internado pergunta se já pode ir para casa, porque se sente bem depois da sessão.",
-      "opcoes": [
-        {
-          "texto": "Dizer que sim, ele parece ótimo",
-          "recomendada": false
-        },
-        {
-          "texto": "Explicar que a alta é indicada pelo médico e levar a avaliação da fisioterapia para a equipe",
-          "recomendada": true
-        },
-        {
-          "texto": "Dizer que não sabe e sair",
-          "recomendada": false
-        }
-      ],
-      "resposta": "Indicar internação e alta hospitalar é atividade privativa do médico. A avaliação da fisioterapia ajuda na decisão e precisa chegar à equipe.",
-      "fontes": [
-        "lei-12842"
-      ]
-    }
-  ],
-  "formacao": {
-    "nota": "Duração mínima pelas normas nacionais.",
-    "etapas": [
-      {
-        "id": "graduacao",
-        "nome": "Graduação (bacharelado)",
-        "anos_de": 5,
-        "anos_ate": 5,
-        "texto": "4.000 horas em 5 anos, com estágios em clínicas e hospitais.",
-        "fontes": [
-          "cne-4-2009"
-        ],
-        "tipo": "principal"
-      },
-      {
-        "id": "especializacao",
-        "nome": "Especialização ou residência",
-        "anos_de": 1,
-        "anos_ate": 2,
-        "texto": "Em áreas como terapia intensiva, ortopedia, esporte e neurologia.",
-        "fontes": [],
-        "tipo": "depois"
-      }
-    ]
   }
 }

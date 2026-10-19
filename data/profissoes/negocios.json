@@ -1,0 +1,2036 @@
+{
+  "id": "negocios",
+  "versao": 1,
+  "titulo": "Panorama de Finanças, Gestão e Negócios",
+  "rotulo": "Negócios",
+  "cor": "--laranja",
+  "rotulo_areas": "áreas",
+  "rotulo_area": "área",
+  "titulo_areas": "As dez áreas",
+  "rotulo_vizinhas": "Áreas vizinhas",
+  "frase": "Negócios não é uma profissão. São dez áreas que cuidam do dinheiro, das pessoas, dos prazos e das regras de qualquer empresa.",
+  "status": "rascunho",
+  "conferido_em": "2026-10-18",
+  "revisao": {
+    "fontes": "conferidas",
+    "ia": "pendente",
+    "profissional": "pendente",
+    "revisor": null,
+    "data": null
+  },
+  "intro": "Quem diz \"quero fazer Administração\" ou \"quero trabalhar com finanças\" ainda não escolheu nada: há quem passe o dia em planilha fechando o balanço, quem passe o dia ouvindo gente, quem viva de meta de venda, quem cuide para que a empresa não quebre a lei e quem queira abrir o próprio negócio. Só duas dessas áreas têm diploma e conselho próprios; as outras são funções em que se entra por vários cursos. Este panorama existe para você descobrir em qual rotina se enxerga antes de escolher um curso.",
+  "nota_salarios": "Uma ou duas ocupações por área, como aproximação: o Caged registra o cargo pela CBO, e várias funções deste panorama (planejador financeiro, assessor de investimentos, Scrum master, product owner, dono de negócio) não têm CBO próprio ou nem são registradas em carteira. Veja a nota em cada área. Média de contratação com carteira, salário-base, sem adicionais e sem comissão.",
+  "nota_rotinas": "As rotinas de cada área são composições de cenas típicas, escritas a partir de descrições de ocupação e de depoimentos públicos. Precisam de revisão por um profissional da área antes de publicar.",
+  "numeros": [
+    {
+      "rotulo": "Matrículas em Administração",
+      "valor": "653 mil",
+      "detalhe": "2º curso do país em 2024; 67% delas a distância",
+      "fontes": [
+        "censo-2024"
+      ]
+    },
+    {
+      "rotulo": "Matrículas em Ciências Contábeis",
+      "valor": "323 mil",
+      "detalhe": "7º curso do país em 2024; 216 mil a distância",
+      "fontes": [
+        "censo-2024"
+      ]
+    },
+    {
+      "rotulo": "Aprovação no Exame de Suficiência do CFC",
+      "valor": "27,3%",
+      "detalhe": "1ª edição de 2026: 12.614 aprovados entre 42.535 presentes",
+      "fontes": [
+        "cfc-exame-2026"
+      ]
+    },
+    {
+      "rotulo": "MEI que chegam aos 5 anos",
+      "valor": "41,5%",
+      "detalhe": "empresas abertas entre 2021 e 2025; entre micro e pequenas empresas, 76%",
+      "fontes": [
+        "sebrae-2026"
+      ]
+    }
+  ],
+  "contexto": [
+    {
+      "texto": "Administração e Ciências Contábeis são o 2º e o 7º cursos com mais matrículas do país, e a maioria delas é a distância (67% em Administração). Gestão de Pessoas tem 198 mil matrículas só em EAD. Nenhum desses cursos está na lista de proibição do Decreto nº 12.456/2025, que vale para Medicina, Direito, Enfermagem, Odontologia e Psicologia.",
+      "fontes": [
+        "censo-2024",
+        "decreto-12456"
+      ]
+    },
+    {
+      "texto": "Entre as 15 ocupações do Caged consultadas para este panorama, só uma teve saldo positivo de vagas em 12 meses: analista de compliance (+571). Gerente comercial (-15.912) e gerente administrativo (-24.199) tiveram os maiores saldos negativos. É um setor que contrata e demite muito; estabilidade não é o forte.",
+      "fontes": [
+        "caged-compliance",
+        "caged-gerente-comercial",
+        "caged-gerente-administrativo"
+      ]
+    },
+    {
+      "texto": "Só dois caminhos têm diploma e conselho próprios: Administração (CRA, pela Lei nº 4.769/1965) e Contabilidade (CRC, pelo Decreto-Lei nº 9.295/1946, com Exame de Suficiência obrigatório desde 2010). Planejador financeiro, gerente de projetos, Scrum master, analista de compliance e diretor de receita são funções: entra-se nelas vindo de vários cursos, e as certificações pesam.",
+      "fontes": [
+        "lei-4769",
+        "dl-9295"
+      ]
+    },
+    {
+      "texto": "As certificações são um mercado em si. O Brasil tem mais de 12 mil planejadores com a certificação CFP (5ª posição no mundo), há mais de 1,7 milhão de certificados PMP no planeta, e a Anbima trocou em 2026 as certificações CPA-10, CPA-20 e CEA por três novas (CPA, C-Pro R e C-Pro I), depois de aplicar 65 mil exames só em dezembro de 2025.",
+      "fontes": [
+        "planejar",
+        "pmi-pmp",
+        "anbima-2026"
+      ]
+    }
+  ],
+  "formacao_geral": {
+    "nota": "Em negócios, o diploma de Administração ou Contábeis abre a porta, mas muita gente entra por tecnólogo de 2 anos, por Economia, Engenharia ou Direito, e se diferencia depois com certificação e experiência. Durações mínimas pelas normas nacionais; cada instituição pode pedir mais.",
+    "cursos": [
+      {
+        "nome": "Tecnólogo em Processos Gerenciais",
+        "nivel": "superior",
+        "duracao": "2 anos, em geral",
+        "horas": 1600,
+        "texto": "Curso superior curto de gestão geral: rotinas administrativas, finanças básicas, pessoas. Porta de entrada rápida para cargos operacionais e para o próprio negócio.",
+        "fontes": [
+          "cncst-2016"
+        ]
+      },
+      {
+        "nome": "Tecnólogo em Gestão de Recursos Humanos",
+        "nivel": "superior",
+        "duracao": "2 anos, em geral",
+        "horas": 1600,
+        "texto": "Recrutamento, folha, treinamento e legislação trabalhista. É um dos cursos com mais ingressantes do país, quase todo a distância.",
+        "fontes": [
+          "cncst-2016",
+          "censo-2024"
+        ]
+      },
+      {
+        "nome": "Tecnólogo em Logística",
+        "nivel": "superior",
+        "duracao": "2 anos, em geral",
+        "horas": 1600,
+        "texto": "Estoque, transporte, compras e distribuição. Caminho comum para quem já trabalha em armazém ou expedição.",
+        "fontes": [
+          "cncst-2016"
+        ]
+      },
+      {
+        "nome": "Tecnólogo em Gestão Financeira",
+        "nivel": "superior",
+        "duracao": "2 anos, em geral",
+        "horas": 1600,
+        "texto": "Contas a pagar e receber, fluxo de caixa, análise de crédito. Forma o analista financeiro de empresa média.",
+        "fontes": [
+          "cncst-2016"
+        ]
+      },
+      {
+        "nome": "Bacharelado em Administração",
+        "nivel": "superior",
+        "duracao": "4 anos",
+        "horas": 3000,
+        "texto": "O curso mais amplo da área: finanças, marketing, pessoas, operações, estratégia. Dá registro no CRA. Serve a quase todas as dez áreas, e por isso mesmo não aprofunda nenhuma.",
+        "fontes": [
+          "cne-2-2007",
+          "cne-5-2021",
+          "lei-4769"
+        ]
+      },
+      {
+        "nome": "Bacharelado em Ciências Contábeis",
+        "nivel": "superior",
+        "duracao": "4 anos",
+        "horas": 3000,
+        "texto": "Contabilidade, tributos, auditoria, perícia e controladoria. Para exercer a profissão é preciso passar no Exame de Suficiência e registrar-se no CRC.",
+        "fontes": [
+          "cne-2-2007",
+          "cne-1-2024",
+          "dl-9295"
+        ]
+      },
+      {
+        "nome": "Bacharelado em Ciências Econômicas",
+        "nivel": "superior",
+        "duracao": "4 anos",
+        "horas": 3000,
+        "texto": "Mais teoria e matemática que Administração. Caminho frequente para finanças, investimentos e planejamento.",
+        "fontes": [
+          "cne-2-2007"
+        ]
+      }
+    ]
+  },
+  "areas": [
+    {
+      "id": "planejamento",
+      "nome": "Planejamento financeiro e investimentos",
+      "apelido": "Quem cuida do dinheiro dos outros",
+      "resumo": "Ajuda pessoas e famílias a organizar o dinheiro, escolher onde aplicar e planejar aposentadoria, seguros e herança. Vive de confiança e de certificação.",
+      "o_que_faz": "O planejador financeiro olha a vida inteira do cliente (renda, dívidas, objetivos, família) e monta um plano: quanto guardar, onde aplicar, que seguro ter, como se aposentar. O assessor de investimentos trabalha ligado a uma corretora e indica produtos. O consultor é remunerado só pelo cliente, sem comissão de produto. As três funções exigem certificação, não um curso específico, e o trabalho é tanto conversa quanto conta.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "08:00",
+          "texto": "Ler o que aconteceu no mercado antes de qualquer cliente ligar: juros, câmbio, uma notícia que vai gerar pergunta."
+        },
+        {
+          "hora": "09:30",
+          "texto": "Reunião com um casal que quer comprar apartamento em três anos. Ouvir mais do que falar; a planilha vem depois."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Montar o plano: simular cenários, comparar produtos, escrever em linguagem que o cliente entenda."
+        },
+        {
+          "hora": "14:00",
+          "texto": "O mercado caiu 3%. Cinco clientes mandam mensagem. Acalmar, explicar, não deixar ninguém vender no pânico."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Estudar para a prova de certificação ou cumprir os créditos de educação continuada. Nesta área, nunca acaba."
+        },
+        {
+          "hora": "18:00",
+          "texto": "Prospecção: um café com alguém indicado por um cliente. A carteira cresce por indicação."
+        }
+      ],
+      "ferramentas": [
+        "Excel avançado e simuladores",
+        "Plataformas de corretora e home broker",
+        "Matemática financeira",
+        "Legislação tributária e previdenciária",
+        "Produtos: renda fixa, fundos, previdência, seguros",
+        "Comunicação e escuta"
+      ],
+      "ferramentas_fontes": [
+        "planejar-jc"
+      ],
+      "gosta_de": [
+        "Conversar sobre dinheiro sem constrangimento",
+        "Pensar em prazos longos: 10, 20, 30 anos",
+        "Estudar produtos e regras que mudam toda hora",
+        "Ganhar confiança aos poucos"
+      ],
+      "nao_gosta_se": [
+        "Quer salário fixo e previsível desde o começo",
+        "Se incomoda em vender ou prospectar",
+        "Não aguenta ver gente tomar decisão ruim com o próprio dinheiro"
+      ],
+      "dna": {
+        "pessoas": 75,
+        "pressao": 60,
+        "corpo": 5,
+        "rotina": 35,
+        "numeros": 80,
+        "criatividade": 40
+      },
+      "salarios": [
+        {
+          "cargo": "Analista financeiro (economista) (ocupação mais próxima no Caged)",
+          "cbo": "2512-15",
+          "media": 5320,
+          "p25": 3214,
+          "p75": 6024,
+          "fontes": [
+            "caged-analista-economista"
+          ],
+          "nota": "Planejador financeiro, assessor e consultor de investimentos não têm CBO próprio, e a maioria dos assessores trabalha como pessoa jurídica ligada a uma corretora, fora do Caged. A renda real vem em boa parte de comissão ou de honorário do cliente, que estes números não captam."
+        }
+      ],
+      "formacao": "Não há curso obrigatório: entram economistas, administradores, contadores, engenheiros e advogados. O que conta é a certificação. Para assessor de investimentos, a certificação da Ancord e o registro na CVM (Resolução CVM 178/2023). Para planejador, a CFP da Planejar, que exige prova em seis módulos, experiência comprovada e adesão a código de ética. Para quem trabalha em banco, as certificações da Anbima (CPA, C-Pro R e C-Pro I, que substituíram CPA-10, CPA-20 e CEA em 2026).",
+      "formacao_fontes": [
+        "planejar-jc",
+        "cvm-178",
+        "anbima-2026"
+      ],
+      "caminhos": [
+        "Estágio ou atendimento em banco ou corretora",
+        "Assessor de investimentos certificado (Ancord)",
+        "Planejador financeiro CFP",
+        "Consultor independente ou gestor de carteira",
+        "Sócio de escritório de assessoria ou gestora"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "O assessor ligado a corretora ganha comissão sobre o que o cliente compra. Desde 2023 a CVM obriga a mostrar isso ao cliente e acabou com a exclusividade com uma só corretora, mas o conflito de interesse continua sendo o tema da profissão.",
+          "fontes": [
+            "cvm-178"
+          ]
+        },
+        {
+          "texto": "Nos primeiros anos, a renda é instável: você constrói carteira de clientes do zero, e boa parte da prospecção é indicação, evento e mensagem para conhecido.",
+          "fontes": []
+        },
+        {
+          "texto": "A certificação CFP pede cinco anos de experiência comprovada e seis módulos de prova. Só 12 mil pessoas têm a certificação no país. É um caminho longo, não uma primeira profissão.",
+          "fontes": [
+            "planejar-jc",
+            "planejar"
+          ]
+        }
+      ],
+      "vizinhas": [
+        "financas",
+        "vendas",
+        "contabilidade"
+      ]
+    },
+    {
+      "id": "financas",
+      "nome": "Finanças corporativas",
+      "apelido": "Quem cuida do dinheiro da empresa",
+      "resumo": "Controla o caixa, faz o orçamento, projeta cenários e explica à diretoria se dá ou não para investir. Do analista ao diretor financeiro.",
+      "o_que_faz": "O analista financeiro acompanha o que entra e sai, monta o orçamento e compara previsto com realizado. A controladoria junta contabilidade e gestão: custos, indicadores, relatórios para a diretoria. O FP&A (planejamento e análise financeira) projeta os próximos meses e anos em cenários. O gerente e o diretor financeiro decidem com o dono ou o conselho: tomar empréstimo, cortar custo, comprar outra empresa. É a área que fala a língua de todas as outras em número.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "08:30",
+          "texto": "Posição de caixa do dia: quanto tem, quanto vence, o que precisa ser pago hoje sem falta."
+        },
+        {
+          "hora": "09:30",
+          "texto": "Fechar o relatório do mês: receita, custo, margem por produto. Um número não bate com a contabilidade. Achar por quê."
+        },
+        {
+          "hora": "11:30",
+          "texto": "Reunião com a área comercial: a meta de vendas está otimista demais para o orçamento. Negociar."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Modelar o cenário de abrir uma filial: investimento, retorno, risco se a venda vier 20% abaixo."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Apresentar à diretoria em três slides. Quem decide não lê planilha, lê conclusão."
+        },
+        {
+          "hora": "18:00",
+          "texto": "No fechamento do mês e do ano, o dia estica. É a época de pico da área."
+        }
+      ],
+      "ferramentas": [
+        "Excel avançado e modelagem financeira",
+        "Sistemas de gestão (ERP)",
+        "Power BI ou similares",
+        "Contabilidade gerencial e custos",
+        "Matemática financeira e valuation",
+        "Apresentação executiva"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Planilha grande e bem construída",
+        "Entender o negócio inteiro pelos números",
+        "Discutir com quem gasta e com quem vende",
+        "Rotina com picos previsíveis (fechamento)"
+      ],
+      "nao_gosta_se": [
+        "Não gosta de dizer não a projetos dos outros",
+        "Se perde em detalhe e demora a concluir",
+        "Quer trabalhar com pessoas mais do que com relatórios"
+      ],
+      "dna": {
+        "pessoas": 50,
+        "pressao": 65,
+        "corpo": 5,
+        "rotina": 55,
+        "numeros": 95,
+        "criatividade": 35
+      },
+      "salarios": [
+        {
+          "cargo": "Analista financeiro (instituições financeiras)",
+          "cbo": "2525-45",
+          "media": 4961,
+          "p25": 3023,
+          "p75": 5670,
+          "fontes": [
+            "caged-analista-financeiro"
+          ],
+          "nota": "A CBO descreve o analista de instituição financeira, mas é o código em que empresas de todos os setores costumam registrar o analista financeiro."
+        },
+        {
+          "cargo": "Gerente financeiro",
+          "cbo": "1421-15",
+          "media": 8967,
+          "p25": 3000,
+          "p75": 11051,
+          "fontes": [
+            "caged-gerente-financeiro"
+          ]
+        }
+      ],
+      "formacao": "Administração, Ciências Contábeis, Economia ou Engenharia (de Produção, em especial). Controladoria costuma pedir contador registrado no CRC. Pós em finanças e as certificações da Anbima ajudam, mas o que diferencia é domínio de Excel, de contabilidade e de apresentação.",
+      "formacao_fontes": [
+        "cne-2-2007",
+        "dl-9295"
+      ],
+      "caminhos": [
+        "Estágio ou assistente financeiro",
+        "Analista financeiro (júnior a sênior)",
+        "Coordenador de FP&A ou controller",
+        "Gerente financeiro",
+        "Diretor financeiro (CFO)"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "A diferença entre o analista (média R$ 4.961) e o gerente (R$ 8.967) é grande, mas um quarto dos gerentes financeiros foi contratado por R$ 3.000 ou menos: em empresa pequena, \"gerente\" é quem faz tudo sozinho.",
+          "fontes": [
+            "caged-analista-financeiro",
+            "caged-gerente-financeiro"
+          ]
+        },
+        {
+          "texto": "Você vai ser a pessoa que diz \"não tem orçamento\". Boa parte do trabalho é negociar com quem acha que a área financeira só atrapalha.",
+          "fontes": []
+        },
+        {
+          "texto": "Fechamento de mês, trimestre e ano tem hora extra quase garantida. Em empresa com ação na bolsa, o calendário de divulgação manda no seu.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "contabilidade",
+        "planejamento",
+        "administracao"
+      ]
+    },
+    {
+      "id": "contabilidade",
+      "nome": "Contabilidade e auditoria",
+      "apelido": "Quem faz os números baterem",
+      "resumo": "Registra tudo o que a empresa faz em dinheiro, apura impostos, fecha o balanço e, na auditoria, confere se o que outra pessoa registrou é verdade. Profissão regulamentada, com prova de entrada.",
+      "o_que_faz": "O contador registra e classifica cada operação, apura impostos, entrega obrigações ao fisco e fecha balanços que bancos, sócios e governo vão ler. Em escritório, atende dezenas de empresas pequenas; dentro de empresa, cuida de uma só, em profundidade. O auditor independente examina as contas de outras empresas e assina um parecer dizendo se elas refletem a realidade. O perito contábil é chamado pela Justiça. Para exercer qualquer uma dessas funções, é preciso o bacharelado, o Exame de Suficiência e o registro no CRC.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "08:00",
+          "texto": "Checar o calendário fiscal: hoje vence uma obrigação. Conferir se todas as empresas da carteira estão em dia."
+        },
+        {
+          "hora": "09:00",
+          "texto": "Classificar e conciliar lançamentos do mês: extrato bancário contra o sistema, nota fiscal contra pagamento."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Cliente liga: recebeu uma notificação da Receita. Entender o motivo, responder, orientar."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Na auditoria: visitar a empresa auditada, pedir documentos, testar uma amostra de transações. Desconfiar com educação."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Ler a mudança de regra que saiu hoje. Tributo muda o tempo todo; quem não acompanha erra."
+        },
+        {
+          "hora": "17:30",
+          "texto": "Documentar o que foi feito. Em contabilidade e auditoria, o que não está escrito não existe."
+        }
+      ],
+      "ferramentas": [
+        "Sistemas contábeis e fiscais",
+        "Excel",
+        "Normas brasileiras de contabilidade (NBC) e IFRS",
+        "Legislação tributária",
+        "Portais do fisco (eSocial, SPED)",
+        "Papéis de trabalho de auditoria"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Precisão: conferir até bater",
+        "Regras claras e calendário fixo",
+        "Entender o imposto que ninguém entende",
+        "Trabalho sozinho, com concentração"
+      ],
+      "nao_gosta_se": [
+        "Se entedia com rotina mensal repetida",
+        "Não gosta de prazo rígido e de multa por atraso",
+        "Prefere criar a conferir"
+      ],
+      "dna": {
+        "pessoas": 40,
+        "pressao": 60,
+        "corpo": 5,
+        "rotina": 80,
+        "numeros": 90,
+        "criatividade": 20
+      },
+      "salarios": [
+        {
+          "cargo": "Contador",
+          "cbo": "2522-10",
+          "media": 5566,
+          "p25": 3400,
+          "p75": 6182,
+          "fontes": [
+            "caged-contador"
+          ]
+        },
+        {
+          "cargo": "Auditor (contadores e afins)",
+          "cbo": "2522-05",
+          "media": 5174,
+          "p25": 2000,
+          "p75": 6420,
+          "fontes": [
+            "caged-auditor"
+          ]
+        }
+      ],
+      "formacao": "Bacharelado em Ciências Contábeis (3.000 h, 4 anos), com diretrizes novas desde 2024 que trazem estágio supervisionado ou laboratório de simulação. Depois do diploma, o Exame de Suficiência do CFC (27,3% de aprovação na primeira edição de 2026) e o registro no CRC. Técnico em contabilidade não registra mais desde 2015. Pode ser cursado a distância.",
+      "formacao_fontes": [
+        "cne-2-2007",
+        "cne-1-2024",
+        "dl-9295",
+        "cfc-exame-2026",
+        "decreto-12456"
+      ],
+      "caminhos": [
+        "Auxiliar ou assistente contábil (ainda na faculdade)",
+        "Analista contábil ou fiscal",
+        "Contador responsável ou auditor sênior",
+        "Controller, gerente de auditoria ou perito",
+        "Sócio de escritório ou de firma de auditoria"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Quase três em cada quatro candidatos reprovam no Exame de Suficiência. O diploma, sozinho, não dá o direito de assinar.",
+          "fontes": [
+            "cfc-exame-2026"
+          ]
+        },
+        {
+          "texto": "O auditor júnior é contratado barato (um quarto deles por R$ 2.000 ou menos) e viaja muito na temporada de fechamento, de janeiro a março. A carreira nas grandes firmas é \"sobe ou sai\".",
+          "fontes": [
+            "caged-auditor"
+          ]
+        },
+        {
+          "texto": "O contador responde pessoalmente pelo que assina. Erro ou fraude do cliente pode virar processo contra você, e o código de ética do CFC vale para a vida inteira.",
+          "fontes": [
+            "dl-9295"
+          ]
+        }
+      ],
+      "vizinhas": [
+        "financas",
+        "compliance",
+        "administracao"
+      ]
+    },
+    {
+      "id": "projetos",
+      "nome": "Gestão de projetos e métodos ágeis",
+      "apelido": "Quem faz acontecer no prazo",
+      "resumo": "Organiza pessoas, prazos e dinheiro para entregar algo com começo, meio e fim: um sistema, uma obra, um lançamento. Função, não curso: entra-se por qualquer área e se certifica depois.",
+      "o_que_faz": "O gerente de projetos define escopo, prazo, orçamento e riscos, e acompanha até a entrega, cobrando e desbloqueando. O Scrum master cuida do método de um time ágil: ritos, impedimentos, melhoria contínua. O product owner decide o que o time faz primeiro, ouvindo cliente e negócio. Os três passam o dia em reunião, quadro de tarefas e conversa difícil. Pouco trabalho técnico direto; muita coordenação.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "09:00",
+          "texto": "Reunião diária de 15 minutos com o time: o que avançou, o que travou, quem precisa de quem."
+        },
+        {
+          "hora": "09:30",
+          "texto": "Um fornecedor atrasou duas semanas. Replanejar: o que dá para fazer em paralelo, o que vai atrasar mesmo, quem precisa saber hoje."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Priorizar o quadro com o cliente: tudo é urgente, mas só três coisas cabem nas próximas duas semanas."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Atualizar o relatório de status: prazo, custo, riscos. Verde, amarelo ou vermelho, com motivo."
+        },
+        {
+          "hora": "15:30",
+          "texto": "Conversa difícil: dois membros do time não se falam. Resolver antes que vire atraso."
+        },
+        {
+          "hora": "17:00",
+          "texto": "Retrospectiva: o que o time quer mudar no próximo ciclo. Anotar e cobrar na semana seguinte."
+        }
+      ],
+      "ferramentas": [
+        "Jira, Trello, Asana ou MS Project",
+        "Scrum e Kanban",
+        "Cronograma, orçamento e matriz de riscos",
+        "Planilhas e painéis de status",
+        "Facilitação de reunião",
+        "Negociação"
+      ],
+      "ferramentas_fontes": [
+        "scrum-alliance",
+        "pmi-pmp"
+      ],
+      "gosta_de": [
+        "Organizar o caos dos outros",
+        "Cobrar sem brigar",
+        "Ver uma entrega sair no prazo",
+        "Reunião, desde que seja útil"
+      ],
+      "nao_gosta_se": [
+        "Quer fazer a coisa, não coordenar quem faz",
+        "Se incomoda de ser responsável pelo atraso que não causou",
+        "Não gosta de falar em público nem de conflito"
+      ],
+      "dna": {
+        "pessoas": 85,
+        "pressao": 75,
+        "corpo": 10,
+        "rotina": 35,
+        "numeros": 50,
+        "criatividade": 50
+      },
+      "salarios": [
+        {
+          "cargo": "Gerente de projetos de tecnologia da informação",
+          "cbo": "1425-20",
+          "media": 14040,
+          "p25": 8516,
+          "p75": 17743,
+          "fontes": [
+            "caged-gerente-projetos-ti"
+          ],
+          "nota": "É a CBO em que empresas de software e consultorias registram gerentes de projeto, Scrum masters e product owners experientes. Não há CBO para Scrum master nem para product owner, e iniciantes costumam ser registrados como analista."
+        },
+        {
+          "cargo": "Gerente de projetos e serviços de manutenção",
+          "cbo": "1427-05",
+          "media": 10364,
+          "p25": 4499,
+          "p75": 14000,
+          "fontes": [
+            "caged-gerente-projetos-manutencao"
+          ],
+          "nota": "Ocupação usada fora da tecnologia (indústria, engenharia, serviços). A faixa larga mostra que \"gerente de projetos\" vai do coordenador de obra pequena ao gestor de programa grande."
+        }
+      ],
+      "formacao": "Não existe graduação em gestão de projetos. A maioria vem de Engenharia, Administração, Sistemas de Informação ou da área do projeto (obra, software, marketing). O que o mercado reconhece são as certificações: PMP, do PMI, que exige 36 meses liderando projetos (com diploma superior) ou 60 meses (sem) mais 35 horas de curso; e CSM, da Scrum Alliance, que exige um curso de 16 horas e uma prova de 50 questões, sem pré-requisito de diploma ou experiência.",
+      "formacao_fontes": [
+        "pmi-pmp",
+        "scrum-alliance"
+      ],
+      "caminhos": [
+        "Analista ou assistente de projetos (PMO)",
+        "Scrum master ou coordenador de projetos",
+        "Gerente de projetos (PMP) ou product owner",
+        "Gerente de programa ou portfólio",
+        "Diretor de operações ou de produto"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Quase ninguém começa como gerente de projetos. Você entra em outra função, mostra que organiza bem e migra. A certificação PMP só pode ser tirada depois de anos liderando projetos.",
+          "fontes": [
+            "pmi-pmp"
+          ]
+        },
+        {
+          "texto": "Scrum master é uma função, não uma profissão: a certificação sai em dois dias de curso, e o mercado sabe disso. O que vale é experiência em time de verdade.",
+          "fontes": [
+            "scrum-alliance"
+          ]
+        },
+        {
+          "texto": "Você é cobrado pelo resultado de um time que não é seu subordinado. Autoridade, aqui, se conquista; o cargo não dá.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "administracao",
+        "logistica",
+        "rh"
+      ]
+    },
+    {
+      "id": "compliance",
+      "nome": "Compliance e assuntos regulatórios",
+      "apelido": "Quem impede a empresa de quebrar a lei",
+      "resumo": "Cria e fiscaliza as regras internas para a empresa cumprir leis, contratos e normas de setor: anticorrupção, dados pessoais, concorrência, regras de banco ou de saúde. Mistura Direito, processos e investigação.",
+      "o_que_faz": "O analista de compliance mapeia que leis e normas a empresa precisa seguir, escreve políticas, treina funcionários, mantém canal de denúncia e investiga quando algo foge da regra. Em setores regulados (bancos, saúde, energia, telecomunicações), o profissional de assuntos regulatórios acompanha as agências e garante que produtos e processos sigam o que elas exigem. A Lei Anticorrupção fez o programa de integridade virar item de defesa da empresa, e a LGPD criou a figura do encarregado de dados. É uma área que cresceu por obrigação legal.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "08:30",
+          "texto": "Ler as novidades regulatórias do dia: uma agência publicou norma nova. Impacta a empresa? Em quê?"
+        },
+        {
+          "hora": "09:30",
+          "texto": "Avaliar um fornecedor novo antes do contrato: histórico, sócios, processos. Dizer não quando precisa."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Uma denúncia anônima chegou pelo canal. Abrir apuração, preservar sigilo, ouvir as partes."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Treinamento para o time comercial sobre presentes e brindes: o que pode, o que não pode, por quê."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Reunião com a área de produto: a funcionalidade nova coleta dados demais. Ajustar antes de lançar."
+        },
+        {
+          "hora": "17:30",
+          "texto": "Relatório para a diretoria e o conselho: riscos, apurações em andamento, o que mudou na lei."
+        }
+      ],
+      "ferramentas": [
+        "Leis e normas (Lei Anticorrupção, LGPD, normas setoriais)",
+        "Políticas, códigos de conduta e treinamentos",
+        "Canal de denúncias e técnicas de apuração",
+        "Matriz de riscos",
+        "Due diligence de terceiros",
+        "Escrita clara e documentação"
+      ],
+      "ferramentas_fontes": [
+        "lei-12846",
+        "lgpd"
+      ],
+      "gosta_de": [
+        "Regras, processo e detalhe",
+        "Ler lei e traduzir para gente normal",
+        "Investigar com discrição",
+        "Dizer não com fundamento"
+      ],
+      "nao_gosta_se": [
+        "Quer ser popular na empresa",
+        "Se entedia com documentação e treinamento",
+        "Prefere velocidade a cuidado"
+      ],
+      "dna": {
+        "pessoas": 60,
+        "pressao": 65,
+        "corpo": 5,
+        "rotina": 55,
+        "numeros": 45,
+        "criatividade": 35
+      },
+      "salarios": [
+        {
+          "cargo": "Analista de compliance",
+          "cbo": "1421-25",
+          "media": 6196,
+          "p25": 3400,
+          "p75": 7500,
+          "fontes": [
+            "caged-compliance"
+          ],
+          "nota": "CBO recente e amostra pequena (7 mil movimentações em 12 meses). Antes dela, a função era registrada como analista de riscos, auditor interno ou advogado, então os dados ainda não refletem toda a área."
+        }
+      ],
+      "formacao": "Direito é a origem mais comum, seguido de Administração, Ciências Contábeis e Economia. Em setores regulados, a formação técnica do setor (Farmácia e Engenharia em saúde, por exemplo) também leva a assuntos regulatórios. Pós em compliance, certificações de associações da área e inglês contam. Não há conselho nem exame obrigatório.",
+      "formacao_fontes": [
+        "lei-12846",
+        "lgpd"
+      ],
+      "caminhos": [
+        "Estágio em jurídico, auditoria interna ou controles internos",
+        "Analista de compliance ou regulatório",
+        "Especialista (anticorrupção, dados, regulatório setorial)",
+        "Gerente de compliance ou encarregado de dados",
+        "Diretor de compliance ou de riscos"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Foi a única das 15 ocupações consultadas para este panorama com saldo positivo de vagas em 12 meses (+571), mas a amostra é pequena e concentrada em empresas grandes e reguladas.",
+          "fontes": [
+            "caged-compliance"
+          ]
+        },
+        {
+          "texto": "Você vai ser visto como quem atrapalha. O trabalho de convencer a área comercial de que a regra existe por um motivo é diário, e nem sempre a diretoria apoia.",
+          "fontes": []
+        },
+        {
+          "texto": "Em muitas empresas, compliance existe porque a lei passou a considerar o programa de integridade na hora de aplicar multa. Isso garante vaga, mas às vezes significa orçamento mínimo e pouco poder real.",
+          "fontes": [
+            "lei-12846"
+          ]
+        }
+      ],
+      "vizinhas": [
+        "contabilidade",
+        "financas",
+        "rh"
+      ]
+    },
+    {
+      "id": "rh",
+      "nome": "Gestão de pessoas e recursos humanos",
+      "apelido": "Quem cuida de quem trabalha",
+      "resumo": "Contrata, treina, paga, avalia e desliga. Vai da folha de pagamento ao desenho de carreira e cultura. Área grande, com muita vaga de entrada e salário de entrada baixo.",
+      "o_que_faz": "O RH operacional cuida de admissão, folha, benefícios, férias e desligamentos, dentro da lei trabalhista. Recrutamento e seleção procura e escolhe gente. Treinamento e desenvolvimento desenha cursos, trilhas e avaliação. O parceiro de negócios (business partner) trabalha ao lado dos gestores de uma área em decisões sobre times. Nas empresas grandes, dados de pessoas e cultura organizacional viram especialidades próprias.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "08:30",
+          "texto": "Fechar a folha do mês: horas extras, faltas, férias. Erro aqui aparece no bolso de alguém."
+        },
+        {
+          "hora": "09:30",
+          "texto": "Três entrevistas seguidas para uma vaga de analista. Comparar com o que o gestor pediu, não com o que você gostou."
+        },
+        {
+          "hora": "11:30",
+          "texto": "Um gestor quer demitir alguém hoje. Entender o motivo, checar o processo, orientar sobre a forma."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Reunião de clima: o time de uma área reclama do chefe. Ouvir, registrar, levar adiante sem expor ninguém."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Montar o treinamento de integração para os 12 novos que entram segunda-feira."
+        },
+        {
+          "hora": "17:30",
+          "texto": "Conversa de desligamento com um funcionário de 8 anos de casa. Ser humano e seguir o processo ao mesmo tempo."
+        }
+      ],
+      "ferramentas": [
+        "Legislação trabalhista e eSocial",
+        "Sistemas de folha e de RH",
+        "Entrevista e avaliação",
+        "Excel e indicadores de pessoas",
+        "Plataformas de recrutamento",
+        "Escuta e mediação de conflito"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Gente: ouvir, entender, orientar",
+        "Mediar conflito sem tomar lado",
+        "Processo e lei trabalhista",
+        "Ver alguém crescer na empresa"
+      ],
+      "nao_gosta_se": [
+        "Leva para casa o problema dos outros",
+        "Não suporta ser visto como \"o lado da empresa\"",
+        "Quer trabalho concentrado, com pouca interrupção"
+      ],
+      "dna": {
+        "pessoas": 95,
+        "pressao": 55,
+        "corpo": 10,
+        "rotina": 55,
+        "numeros": 35,
+        "criatividade": 45
+      },
+      "salarios": [
+        {
+          "cargo": "Analista de recursos humanos",
+          "cbo": "2524-05",
+          "media": 4429,
+          "p25": 3000,
+          "p75": 5000,
+          "fontes": [
+            "caged-rh"
+          ]
+        }
+      ],
+      "formacao": "Tecnólogo em Gestão de Recursos Humanos (1.600 h, cerca de 2 anos, quase todo a distância), Administração ou Psicologia. Psicologia leva mais a seleção e desenvolvimento; Administração e Direito, a folha, relações sindicais e legislação. Não há conselho obrigatório para RH, mas o psicólogo organizacional precisa do CRP.",
+      "formacao_fontes": [
+        "cncst-2016",
+        "censo-2024"
+      ],
+      "caminhos": [
+        "Auxiliar ou assistente de RH / departamento pessoal",
+        "Analista de recrutamento, folha ou treinamento",
+        "Parceiro de negócios (business partner)",
+        "Coordenador ou gerente de RH",
+        "Diretor de pessoas"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "É uma das maiores ocupações do panorama (116 mil movimentações em 12 meses) e uma das que pagam menos na entrada: média R$ 4.429, com um quarto das contratações até R$ 3.000. Gestão de Pessoas tem 198 mil matrículas só em EAD, ou seja, muita concorrência por vaga de entrada.",
+          "fontes": [
+            "caged-rh",
+            "censo-2024"
+          ]
+        },
+        {
+          "texto": "Você vai demitir gente. Vai ouvir assédio, adoecimento e briga, e vai precisar seguir o processo mesmo quando sua vontade é outra.",
+          "fontes": []
+        },
+        {
+          "texto": "O RH que não sabe ler número (rotatividade, custo de folha, tempo de contratação) fica preso no operacional. Quem sobe é quem fala a língua da diretoria.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "administracao",
+        "compliance",
+        "projetos"
+      ]
+    },
+    {
+      "id": "administracao",
+      "nome": "Administração geral e operações",
+      "apelido": "Quem faz a empresa funcionar todo dia",
+      "resumo": "Cuida dos processos, dos contratos, dos fornecedores e da rotina para que as outras áreas consigam trabalhar. É o curso com mais formados do setor e a função mais espalhada por todo tipo de empresa.",
+      "o_que_faz": "O administrador organiza processos, compras, contratos, instalações e indicadores. Em operações, desenha e melhora como o trabalho é feito: filas, gargalos, padrões, qualidade. É quem percebe que a fila está grande e muda o fluxo, que o contrato de limpeza vence, que um relatório pode ser automatizado. Em empresa pequena, é generalista; em grande, vira especialista em processos, facilities ou excelência operacional. Serve de porta de entrada para quase todas as outras áreas deste panorama.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "08:00",
+          "texto": "Rodar a empresa: um ar-condicionado quebrou, um fornecedor não entregou, uma sala está sem reserva. Resolver na ordem certa."
+        },
+        {
+          "hora": "09:30",
+          "texto": "Revisar os indicadores da operação: tempo de atendimento, retrabalho, custo por unidade. Onde está o gargalo?"
+        },
+        {
+          "hora": "11:00",
+          "texto": "Negociar a renovação de um contrato. Comparar três propostas, não só pelo preço."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Mapear um processo com a equipe: oito passos, três são desnecessários. Redesenhar."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Reunião com todas as áreas sobre o orçamento do semestre. Mediar quem quer mais com quem corta."
+        },
+        {
+          "hora": "17:30",
+          "texto": "Fechar o dia com a lista do amanhã. O trabalho é contínuo; a sensação de \"acabei\" é rara."
+        }
+      ],
+      "ferramentas": [
+        "Excel e sistemas de gestão (ERP)",
+        "Mapeamento de processos e Lean",
+        "Indicadores e painéis",
+        "Compras, contratos e fornecedores",
+        "Comunicação com todas as áreas",
+        "Noções de finanças, pessoas e direito"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Ver uma operação rodando redonda",
+        "Resolver dez problemas pequenos por dia",
+        "Organizar processo e padrão",
+        "Conversar com todas as áreas"
+      ],
+      "nao_gosta_se": [
+        "Quer ser especialista em uma coisa só",
+        "Se frustra por não ser notado quando tudo funciona",
+        "Não gosta de ser interrompido o tempo todo"
+      ],
+      "dna": {
+        "pessoas": 70,
+        "pressao": 55,
+        "corpo": 25,
+        "rotina": 60,
+        "numeros": 55,
+        "criatividade": 40
+      },
+      "salarios": [
+        {
+          "cargo": "Administrador",
+          "cbo": "2521-05",
+          "media": 5086,
+          "p25": 2900,
+          "p75": 6000,
+          "fontes": [
+            "caged-administrador"
+          ]
+        }
+      ],
+      "formacao": "Bacharelado em Administração (3.000 h, 4 anos; registro no CRA pela Lei nº 4.769/1965) ou tecnólogo em Processos Gerenciais (1.600 h). Engenharia de Produção leva ao lado de operações e processos. É o curso com mais matrículas do setor e o segundo do país, dois terços a distância.",
+      "formacao_fontes": [
+        "cne-2-2007",
+        "cne-5-2021",
+        "lei-4769",
+        "cncst-2016",
+        "censo-2024"
+      ],
+      "caminhos": [
+        "Auxiliar ou assistente administrativo",
+        "Analista administrativo ou de processos",
+        "Coordenador de operações ou de facilities",
+        "Gerente administrativo ou de operações",
+        "Diretor de operações (COO)"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Gerente administrativo teve o pior saldo de vagas entre as ocupações consultadas (-24.199 em 12 meses) e metade das contratações foi por R$ 3.205 ou menos. O título é generoso; o salário, nem sempre.",
+          "fontes": [
+            "caged-gerente-administrativo"
+          ]
+        },
+        {
+          "texto": "São 653 mil pessoas estudando Administração ao mesmo tempo. O diploma, sozinho, não diferencia; o que diferencia é especializar em algo (processos, finanças, pessoas, logística) nos primeiros anos.",
+          "fontes": [
+            "censo-2024"
+          ]
+        },
+        {
+          "texto": "Quando tudo funciona, ninguém lembra de você. Quando o café acaba ou o sistema cai, todo mundo sabe quem procurar.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "financas",
+        "rh",
+        "logistica"
+      ]
+    },
+    {
+      "id": "vendas",
+      "nome": "Vendas e receita",
+      "apelido": "Quem traz o dinheiro para dentro",
+      "resumo": "Encontra clientes, entende o que precisam, negocia e fecha. Do vendedor ao diretor de receita. Área de meta, comissão e resultado visível todo mês.",
+      "o_que_faz": "O vendedor ou executivo de contas prospecta, apresenta, negocia e fecha; depois, cuida do cliente para que ele compre de novo. O supervisor e o gerente comercial montam a equipe, dividem metas e territórios e acompanham o funil. O diretor de receita (CRO) junta vendas, marketing e sucesso do cliente numa estratégia só; é um cargo de topo, não uma formação. Em empresas de tecnologia, vendas virou processo: pré-venda qualifica, o executivo fecha, o time de sucesso do cliente mantém. Em comércio e indústria, continua sendo relação e estrada.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "08:30",
+          "texto": "Olhar o funil: quantas propostas abertas, quantas vencem esta semana, quanto falta para a meta do mês."
+        },
+        {
+          "hora": "09:00",
+          "texto": "Bloco de prospecção: ligações, mensagens, e-mails. A maioria não responde. Faz parte."
+        },
+        {
+          "hora": "11:00",
+          "texto": "Reunião com um cliente em potencial. Perguntar mais do que apresentar; descobrir o problema real."
+        },
+        {
+          "hora": "14:00",
+          "texto": "Negociação final de um contrato grande: desconto, prazo, condição. Saber até onde dá para ir."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Visita ou videochamada com cliente antigo que está comprando menos. Entender antes de perder."
+        },
+        {
+          "hora": "18:00",
+          "texto": "Atualizar o CRM e planejar o dia seguinte. No fim do mês, o dia estica até a meta fechar."
+        }
+      ],
+      "ferramentas": [
+        "CRM (Salesforce, HubSpot, Pipedrive)",
+        "Funil e métricas de conversão",
+        "Técnicas de negociação",
+        "Apresentação e proposta comercial",
+        "LinkedIn e prospecção",
+        "Conhecimento profundo do produto"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Meta clara e placar visível",
+        "Conversar com desconhecidos",
+        "Ouvir não e continuar",
+        "Ganhar mais quando entrega mais"
+      ],
+      "nao_gosta_se": [
+        "Precisa de renda igual todo mês",
+        "Leva rejeição para o pessoal",
+        "Se incomoda em insistir"
+      ],
+      "dna": {
+        "pessoas": 95,
+        "pressao": 85,
+        "corpo": 35,
+        "rotina": 30,
+        "numeros": 50,
+        "criatividade": 55
+      },
+      "salarios": [
+        {
+          "cargo": "Supervisor de vendas comercial",
+          "cbo": "5201-10",
+          "media": 3963,
+          "p25": 2200,
+          "p75": 4554,
+          "fontes": [
+            "caged-supervisor-vendas"
+          ],
+          "nota": "Salário-base, sem comissão: em vendas, a comissão costuma ser a maior parte da renda e não entra no Caged. Gerente comercial (CBO 1423-05) tem média de R$ 6.039, mas mediana de R$ 3.092: poucos salários muito altos puxam a média. Diretor de receita (CRO) não tem CBO."
+        }
+      ],
+      "formacao": "Não há curso obrigatório nem conselho: entram administradores, publicitários, engenheiros e muita gente sem diploma que começou no balcão. Tecnólogo em Gestão Comercial (1.600 h) e Administração são as formações mais comuns. Em vendas técnicas (software, máquinas, saúde), a formação na área do produto conta mais que a de negócios.",
+      "formacao_fontes": [
+        "cncst-2016"
+      ],
+      "caminhos": [
+        "Vendedor, atendente ou pré-venda (SDR)",
+        "Executivo de contas",
+        "Supervisor ou coordenador comercial",
+        "Gerente comercial ou de contas-chave",
+        "Diretor comercial ou de receita (CRO)"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Gerente comercial teve saldo de -15.912 vagas em 12 meses e supervisor de vendas, -19.010. Quem não bate meta sai, e a rotatividade é das maiores do mercado.",
+          "fontes": [
+            "caged-gerente-comercial",
+            "caged-supervisor-vendas"
+          ]
+        },
+        {
+          "texto": "O salário fixo é baixo de propósito: a renda vem da comissão. Mês bom paga muito; mês ruim, o fixo. Planejar o próprio dinheiro é parte do trabalho.",
+          "fontes": [
+            "caged-supervisor-vendas"
+          ]
+        },
+        {
+          "texto": "Você vai ouvir não dezenas de vezes por dia, e vai ser medido em público. Quem leva para o pessoal não dura.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "empreendedorismo",
+        "planejamento",
+        "administracao"
+      ]
+    },
+    {
+      "id": "empreendedorismo",
+      "nome": "Empreendedorismo e gestão de pequenos negócios",
+      "apelido": "Quem assume o risco",
+      "resumo": "Abre, toca e tenta fazer crescer o próprio negócio, ou gerencia um pequeno. Faz tudo ao mesmo tempo: vende, compra, paga, contrata, resolve. Liberdade e risco no mesmo pacote.",
+      "o_que_faz": "O dono de pequeno negócio decide o que vender, para quem e a que preço; cuida do caixa, dos fornecedores, da equipe, dos impostos e do atendimento, muitas vezes sozinho no começo. O gestor de pequeno negócio faz o mesmo para um dono que não está no dia a dia, ou para uma franquia. Em startups, o fundador soma a isso captar investimento e crescer rápido. Não há cargo nem CBO: há uma empresa com CNPJ (MEI, ME ou EPP) e alguém que responde por ela.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "07:00",
+          "texto": "Abrir o negócio ou checar o caixa de ontem no celular antes de qualquer coisa. Entrou menos do que precisava."
+        },
+        {
+          "hora": "08:30",
+          "texto": "Fornecedor avisa que o preço subiu 12%. Repassar, absorver ou trocar? Decidir hoje."
+        },
+        {
+          "hora": "10:00",
+          "texto": "Atender cliente, responder mensagem, postar no Instagram, emitir nota. Tudo ao mesmo tempo, porque não tem outra pessoa."
+        },
+        {
+          "hora": "13:00",
+          "texto": "Entrevistar alguém para a primeira contratação. Pagar salário todo mês muda o jogo."
+        },
+        {
+          "hora": "16:00",
+          "texto": "Reunião com o contador: imposto, regime tributário, o que pode e não pode. Ouvir com atenção."
+        },
+        {
+          "hora": "20:00",
+          "texto": "Fechar o caixa, planejar a semana, pensar em como vender mais. O horário de trabalho é o que você aguentar."
+        }
+      ],
+      "ferramentas": [
+        "Planilha de fluxo de caixa e precificação",
+        "Maquininha, PIX e emissor de nota fiscal",
+        "Redes sociais e WhatsApp comercial",
+        "Noções de tributos e de contrato",
+        "Negociação com fornecedor e cliente",
+        "Capacidade de aprender tudo rápido"
+      ],
+      "ferramentas_fontes": [
+        "sebrae-2026"
+      ],
+      "gosta_de": [
+        "Decidir e ver a consequência na hora",
+        "Fazer de tudo um pouco",
+        "Risco calculado",
+        "Construir algo que é seu"
+      ],
+      "nao_gosta_se": [
+        "Precisa de salário fixo e horário",
+        "Não dorme bem com incerteza",
+        "Prefere executar bem uma coisa a coordenar dez"
+      ],
+      "dna": {
+        "pessoas": 80,
+        "pressao": 90,
+        "corpo": 40,
+        "rotina": 20,
+        "numeros": 60,
+        "criatividade": 80
+      },
+      "salarios": [
+        {
+          "cargo": "Administrador (ocupação de referência, não de dono)",
+          "cbo": "2521-05",
+          "media": 5086,
+          "p25": 2900,
+          "p75": 6000,
+          "fontes": [
+            "caged-administrador"
+          ],
+          "nota": "Dono de negócio não tem salário nem carteira: a renda é o que sobra depois de pagar tudo, e pode ser zero. O Caged não mede isso. O número acima é só uma referência do que paga uma empresa a quem gerencia por ela, e do que o empreendedor deixa de ganhar como empregado."
+        }
+      ],
+      "formacao": "Nenhuma é obrigatória, e muitos donos de negócio não têm diploma. Administração, tecnólogo em Processos Gerenciais e cursos curtos do Sebrae dão base de finanças, tributos e gestão; a formação na área do produto (gastronomia, moda, tecnologia, saúde) dá o diferencial. O que mais falta, segundo o Sebrae, é planejamento, capacitação e acesso a crédito e mercado.",
+      "formacao_fontes": [
+        "cncst-2016",
+        "sebrae-2026"
+      ],
+      "caminhos": [
+        "Trabalhar em negócio parecido com o que quer abrir",
+        "MEI ou microempresa, sozinho ou com sócio",
+        "Primeira equipe e primeiro ponto",
+        "Empresa de pequeno porte, filial ou franquia",
+        "Venda do negócio, expansão ou novo negócio"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "Entre os MEI abertos de 2021 a 2025, só 41,5% chegaram aos cinco anos; entre micro e pequenas empresas, 76%. Mais da metade dos MEI fecha, e o Sebrae aponta falta de planejamento, de capacitação e de acesso a crédito como causas.",
+          "fontes": [
+            "sebrae-2026"
+          ]
+        },
+        {
+          "texto": "Nos primeiros anos, o dono costuma ser o funcionário mais barato da empresa: trabalha mais horas e tira menos que pagaria a um gerente.",
+          "fontes": [
+            "caged-administrador"
+          ]
+        },
+        {
+          "texto": "Não existe férias, 13º nem fim de expediente garantido. Quem abre negócio para \"ter liberdade\" descobre que a liberdade vem depois, se vier.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "vendas",
+        "financas",
+        "administracao"
+      ]
+    },
+    {
+      "id": "logistica",
+      "nome": "Logística e cadeia de suprimentos",
+      "apelido": "Quem faz a coisa chegar",
+      "resumo": "Compra, armazena, transporta e entrega. Planeja estoque, negocia frete e descobre por que o caminhão não chegou. Área grande, com chão de armazém e planilha no mesmo dia.",
+      "o_que_faz": "O analista de logística planeja estoque, roteiriza entregas, acompanha transportadoras e mede custo por entrega. Compras (suprimentos) escolhe e negocia com fornecedores. O planejador de demanda prevê quanto vai vender para a fábrica e o armazém se prepararem. O gerente de logística cuida de armazém, frota e equipe, que trabalham em turnos. Comércio eletrônico, agro e indústria são os grandes empregadores. É a área deste panorama com mais trabalho fora da mesa.",
+      "revisar_com_profissional": true,
+      "dia": [
+        {
+          "hora": "06:30",
+          "texto": "Chegar com o primeiro turno do armazém. Conferir o que saiu de madrugada e o que ficou para trás."
+        },
+        {
+          "hora": "08:00",
+          "texto": "Um caminhão está parado na estrada. Reorganizar entregas, avisar clientes, acionar a transportadora."
+        },
+        {
+          "hora": "10:00",
+          "texto": "Analisar o estoque: um item com excesso parado, outro prestes a faltar. Ajustar o pedido de compra."
+        },
+        {
+          "hora": "13:00",
+          "texto": "Negociar frete com duas transportadoras para a rota nova. Preço, prazo, avaria, seguro."
+        },
+        {
+          "hora": "15:00",
+          "texto": "Reunião com vendas e produção: a promoção do mês vai triplicar o volume. O armazém aguenta?"
+        },
+        {
+          "hora": "17:00",
+          "texto": "Indicadores do dia: entregas no prazo, custo por pedido, acuracidade do estoque. Passar o bastão para o segundo turno."
+        }
+      ],
+      "ferramentas": [
+        "Sistemas de armazém e transporte (WMS, TMS) e ERP",
+        "Excel e previsão de demanda",
+        "Roteirização",
+        "Negociação com fornecedores e transportadoras",
+        "Lean e indicadores operacionais",
+        "Legislação de transporte e comércio exterior"
+      ],
+      "ferramentas_fontes": [],
+      "gosta_de": [
+        "Ver o fluxo físico funcionando",
+        "Resolver problema na hora, com gente e caminhão",
+        "Planilha e chão de armazém no mesmo dia",
+        "Otimizar: menos custo, menos tempo, menos erro"
+      ],
+      "nao_gosta_se": [
+        "Quer horário fixo e escritório com ar-condicionado",
+        "Não gosta de pressão de prazo diário",
+        "Prefere pensar a executar"
+      ],
+      "dna": {
+        "pessoas": 65,
+        "pressao": 75,
+        "corpo": 55,
+        "rotina": 50,
+        "numeros": 70,
+        "criatividade": 40
+      },
+      "salarios": [
+        {
+          "cargo": "Analista de logística",
+          "cbo": "2527-15",
+          "media": 3983,
+          "p25": 2714,
+          "p75": 4514,
+          "fontes": [
+            "caged-analista-logistica"
+          ]
+        },
+        {
+          "cargo": "Gerente de logística (armazenagem e distribuição)",
+          "cbo": "1416-15",
+          "media": 6843,
+          "p25": 2650,
+          "p75": 7568,
+          "fontes": [
+            "caged-gerente-logistica"
+          ]
+        }
+      ],
+      "formacao": "Tecnólogo em Logística (1.600 h, cerca de 2 anos), Administração ou Engenharia de Produção. Muita gente começa como auxiliar ou conferente de armazém e estuda à noite. Comércio exterior e supply chain em empresa grande pedem inglês e, às vezes, pós.",
+      "formacao_fontes": [
+        "cncst-2016",
+        "cne-2-2007"
+      ],
+      "caminhos": [
+        "Auxiliar ou conferente de armazém e expedição",
+        "Analista de logística, compras ou planejamento",
+        "Coordenador de armazém, transporte ou suprimentos",
+        "Gerente de logística ou de supply chain",
+        "Diretor de operações ou de supply chain"
+      ],
+      "ninguem_conta": [
+        {
+          "texto": "O salário do analista é dos mais baixos do panorama (média R$ 3.983, três quartos das contratações abaixo de R$ 4.514) e sobe de verdade só na coordenação e na gerência.",
+          "fontes": [
+            "caged-analista-logistica",
+            "caged-gerente-logistica"
+          ]
+        },
+        {
+          "texto": "Armazém funciona em turno, inclusive madrugada, sábado e véspera de feriado. Datas de pico (Black Friday, Natal) são as piores semanas do ano.",
+          "fontes": []
+        },
+        {
+          "texto": "Quando a entrega atrasa, a culpa cai na logística mesmo quando o erro veio de vendas, da fábrica ou do fornecedor.",
+          "fontes": []
+        }
+      ],
+      "vizinhas": [
+        "administracao",
+        "projetos",
+        "financas"
+      ]
+    }
+  ],
+  "jogo": {
+    "titulo": "Que área de negócios é a sua?",
+    "chamada": "Descobrir a minha área",
+    "chamada_curta": "Que área é a minha?",
+    "titulo_resultado": "Suas três áreas",
+    "subtitulo": "Doze situações da vida real. Escolha o que você faria de verdade, não o que parece bonito. No fim, as três áreas mais parecidas com você e por quê.",
+    "aviso": "Afinidade é informação, não veredito. O jogo mede reações a situações típicas, e o resultado aponta onde vale a pena ler mais; a decisão é sua.",
+    "cenas": [
+      {
+        "id": "sobrou-dinheiro",
+        "texto": "Sobrou dinheiro no fim do mês. O que você faz com ele?",
+        "opcoes": [
+          {
+            "texto": "Separo uma parte para um objetivo de longo prazo e vejo onde render mais.",
+            "pontos": {
+              "planejamento": 3
+            }
+          },
+          {
+            "texto": "Compro algo para fazer e vender, nem que seja pequeno.",
+            "pontos": {
+              "empreendedorismo": 3
+            }
+          },
+          {
+            "texto": "Gasto parte, mas antes anoto tudo o que entrou e saiu no mês.",
+            "pontos": {
+              "contabilidade": 2,
+              "financas": 1
+            }
+          },
+          {
+            "texto": "Guardo para a viagem da turma e organizo quem paga o quê.",
+            "pontos": {
+              "administracao": 2,
+              "projetos": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "grupo-atrasado",
+        "texto": "Trabalho em grupo atrasado, entrega amanhã. Você:",
+        "opcoes": [
+          {
+            "texto": "Divido o que falta em tarefas com hora e cobro cada um.",
+            "pontos": {
+              "projetos": 3
+            }
+          },
+          {
+            "texto": "Converso com quem travou para entender o que aconteceu.",
+            "pontos": {
+              "rh": 2,
+              "administracao": 1
+            }
+          },
+          {
+            "texto": "Vou falar com o professor e negocio um prazo melhor.",
+            "pontos": {
+              "vendas": 2,
+              "empreendedorismo": 1
+            }
+          },
+          {
+            "texto": "Junto os arquivos, vejo o que falta de material e faço o resto fluir.",
+            "pontos": {
+              "logistica": 2,
+              "administracao": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "colega-negocio",
+        "texto": "Um colega quer abrir um negócio e pede sua ajuda. Qual é a primeira coisa que você faz?",
+        "opcoes": [
+          {
+            "texto": "Me empolgo e já penso em como eu também entraria de sócio.",
+            "pontos": {
+              "empreendedorismo": 3
+            }
+          },
+          {
+            "texto": "Monto a planilha de custos e de preço para ver se fecha.",
+            "pontos": {
+              "financas": 2,
+              "contabilidade": 1
+            }
+          },
+          {
+            "texto": "Pergunto de CNPJ, nota fiscal e o que precisa para ficar tudo certo.",
+            "pontos": {
+              "compliance": 2,
+              "contabilidade": 1
+            }
+          },
+          {
+            "texto": "Penso em quem compraria e em como chegar nessas pessoas.",
+            "pontos": {
+              "vendas": 2,
+              "empreendedorismo": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "erro-planilha",
+        "texto": "Você descobre um erro numa planilha que já foi enviada. Você:",
+        "opcoes": [
+          {
+            "texto": "Aviso na hora, refaço e explico exatamente qual foi a diferença.",
+            "pontos": {
+              "contabilidade": 3
+            }
+          },
+          {
+            "texto": "Corrijo e registro o que aconteceu para que não se repita.",
+            "pontos": {
+              "compliance": 2,
+              "contabilidade": 1
+            }
+          },
+          {
+            "texto": "Aviso, avalio o que o erro afeta e ajusto o que vem depois.",
+            "pontos": {
+              "projetos": 2,
+              "financas": 1
+            }
+          },
+          {
+            "texto": "Ligo para quem recebeu, explico pessoalmente e já levo a versão certa.",
+            "pontos": {
+              "vendas": 2,
+              "rh": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "festa-turma",
+        "texto": "A turma vai organizar a festa de formatura. O que você assume?",
+        "opcoes": [
+          {
+            "texto": "O caixa: quanto entra, quanto sai, quanto falta.",
+            "pontos": {
+              "financas": 2,
+              "contabilidade": 1
+            }
+          },
+          {
+            "texto": "Local, transporte, fornecedores e o que precisa estar lá no dia.",
+            "pontos": {
+              "logistica": 3
+            }
+          },
+          {
+            "texto": "Conseguir patrocínio e fazer os convites saírem.",
+            "pontos": {
+              "vendas": 3
+            }
+          },
+          {
+            "texto": "O contrato com o local, as autorizações e as regras do evento.",
+            "pontos": {
+              "compliance": 2,
+              "administracao": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "loja-fila",
+        "texto": "Você trabalha num comércio nas férias e a fila está enorme. Você:",
+        "opcoes": [
+          {
+            "texto": "Reorganizo o fluxo: um atende, outro embala, outro recebe.",
+            "pontos": {
+              "administracao": 3
+            }
+          },
+          {
+            "texto": "Percebo que vai faltar produto e reponho antes que acabe.",
+            "pontos": {
+              "logistica": 2,
+              "administracao": 1
+            }
+          },
+          {
+            "texto": "Aproveito para oferecer algo a mais a cada cliente da fila.",
+            "pontos": {
+              "vendas": 3
+            }
+          },
+          {
+            "texto": "Vejo quem da equipe está no limite e troco as posições.",
+            "pontos": {
+              "rh": 2,
+              "projetos": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "regra-chata",
+        "texto": "Na escola, há uma regra que ninguém segue. Você:",
+        "opcoes": [
+          {
+            "texto": "Procuro entender por que ela existe e, se fizer sentido, cobro; se não, proponho mudar pelo caminho oficial.",
+            "pontos": {
+              "compliance": 3
+            }
+          },
+          {
+            "texto": "Converso com as pessoas para entender por que não seguem.",
+            "pontos": {
+              "rh": 2,
+              "administracao": 1
+            }
+          },
+          {
+            "texto": "Regra ruim é oportunidade: proponho outro jeito de fazer.",
+            "pontos": {
+              "empreendedorismo": 2,
+              "projetos": 1
+            }
+          },
+          {
+            "texto": "Sigo a regra, mas não cobro de ninguém.",
+            "pontos": {
+              "contabilidade": 1,
+              "financas": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "dinheiro-familia",
+        "texto": "Alguém da família perdeu o emprego e pede sua opinião sobre as contas. Você:",
+        "opcoes": [
+          {
+            "texto": "Listo as dívidas, corto o que dá e monto um plano mês a mês.",
+            "pontos": {
+              "planejamento": 3
+            }
+          },
+          {
+            "texto": "Faço uma planilha do que entra e sai nos próximos seis meses.",
+            "pontos": {
+              "financas": 2,
+              "contabilidade": 1
+            }
+          },
+          {
+            "texto": "Penso no que essa pessoa sabe fazer e poderia oferecer por conta própria.",
+            "pontos": {
+              "empreendedorismo": 2,
+              "vendas": 1
+            }
+          },
+          {
+            "texto": "Ajudo a arrumar o currículo e a procurar vaga.",
+            "pontos": {
+              "rh": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "noticia-fraude",
+        "texto": "Sai a notícia de que uma empresa grande foi multada por fraude. O que te prende?",
+        "opcoes": [
+          {
+            "texto": "Como ninguém dentro da empresa impediu, e que regras faltaram.",
+            "pontos": {
+              "compliance": 3
+            }
+          },
+          {
+            "texto": "Como o número foi maquiado e quem assinou embaixo.",
+            "pontos": {
+              "contabilidade": 3
+            }
+          },
+          {
+            "texto": "O que vai acontecer com o caixa, as dívidas e o valor da empresa.",
+            "pontos": {
+              "financas": 2,
+              "planejamento": 1
+            }
+          },
+          {
+            "texto": "As pessoas que confiaram e perderam dinheiro ou emprego.",
+            "pontos": {
+              "planejamento": 1,
+              "rh": 1,
+              "vendas": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "pessoas",
+        "texto": "Quanto você quer lidar com pessoas durante o dia de trabalho?",
+        "opcoes": [
+          {
+            "texto": "O dia todo, convencendo gente que ainda não me conhece.",
+            "pontos": {
+              "vendas": 3,
+              "empreendedorismo": 1
+            }
+          },
+          {
+            "texto": "Muito, ouvindo problemas e resolvendo conflitos.",
+            "pontos": {
+              "rh": 3,
+              "administracao": 1
+            }
+          },
+          {
+            "texto": "O necessário: reuniões curtas e coordenar quem faz o quê.",
+            "pontos": {
+              "projetos": 2,
+              "logistica": 1
+            }
+          },
+          {
+            "texto": "O mínimo. Me deixa com os números e eu volto com a resposta.",
+            "pontos": {
+              "contabilidade": 2,
+              "financas": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "numeros",
+        "texto": "Matemática e planilhas, para você, são:",
+        "opcoes": [
+          {
+            "texto": "Minha parte favorita: modelo, projeção, cenário.",
+            "pontos": {
+              "financas": 3,
+              "planejamento": 1
+            }
+          },
+          {
+            "texto": "Boas quando tudo precisa bater certinho, centavo por centavo.",
+            "pontos": {
+              "contabilidade": 3
+            }
+          },
+          {
+            "texto": "Uma ferramenta útil para organizar o que precisa acontecer.",
+            "pontos": {
+              "logistica": 2,
+              "projetos": 1
+            }
+          },
+          {
+            "texto": "O mínimo possível. Prefiro gente a célula.",
+            "pontos": {
+              "vendas": 2,
+              "rh": 1,
+              "empreendedorismo": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "orgulho",
+        "texto": "O que te daria mais orgulho daqui a dez anos?",
+        "opcoes": [
+          {
+            "texto": "Algo meu funcionando e pagando as contas de outras pessoas.",
+            "pontos": {
+              "empreendedorismo": 3
+            }
+          },
+          {
+            "texto": "Ter entregado no prazo o que todo mundo achava impossível.",
+            "pontos": {
+              "projetos": 3
+            }
+          },
+          {
+            "texto": "Ver uma família realizar um objetivo com um plano que montei.",
+            "pontos": {
+              "planejamento": 2,
+              "financas": 1
+            }
+          },
+          {
+            "texto": "Uma operação rodando redonda sem que ninguém perceba que fui eu.",
+            "pontos": {
+              "logistica": 2,
+              "administracao": 2
+            }
+          }
+        ]
+      }
+    ],
+    "resultado": {
+      "texto_alto": "é bem parecida com o seu jeito de resolver as coisas.",
+      "texto_medio": "combina com parte do que você escolheu. Vale ler o dia a dia.",
+      "texto_baixo": "está longe das suas escolhas hoje. Nada impede de explorar.",
+      "recompensa": {
+        "xp": 30,
+        "perolas": 3
+      }
+    }
+  },
+  "fontes": [
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: Administração com 653.126 matrículas (2º lugar, 438.487 a distância), Contabilidade com 322.837 (7º, 216.183 a distância), Gestão de Pessoas com 198.347 matrículas em EAD",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep. A reportagem não traz o número de ingressantes por curso; a afirmação de que Gestão de Pessoas está entre os mais ingressantes vem da especificação do Mapa e precisa de confirmação no Censo."
+    },
+    {
+      "id": "caged-analista-financeiro",
+      "titulo": "Analista financeiro (instituições financeiras) (CBO 2525-45): média R$ 4.961, mediana R$ 4.000, P25 R$ 3.023, P75 R$ 5.670, 43 h, amostra 49.488, saldo de -2.146 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/analista-financeiro-instituicoes-financeiras-cbo-252545/",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-analista-economista",
+      "titulo": "Analista financeiro (economista) (CBO 2512-15): média R$ 5.320, mediana R$ 4.145, P25 R$ 3.214, P75 R$ 6.024, 43 h, amostra 15.636, saldo de -391 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/analista-financeiro-economista-cbo-251215",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "Usada como aproximação para planejador financeiro e analista de investimentos, que não têm CBO própria."
+    },
+    {
+      "id": "caged-gerente-financeiro",
+      "titulo": "Gerente financeiro (CBO 1421-15): média R$ 8.967, mediana R$ 4.801, P25 R$ 3.000, P75 R$ 11.051, 43 h, amostra 20.232, saldo de -3.860 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/gerente-financeiro-cbo-142115",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-contador",
+      "titulo": "Contador (CBO 2522-10): média R$ 5.566, mediana R$ 4.489, P25 R$ 3.400, P75 R$ 6.182, 43 h, amostra 82.646, saldo de -3.965 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/contador-cbo-252210",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "A mesma CBO cobre controller, analista contábil e contador. A página do Portal Salário para controller traz os mesmos números."
+    },
+    {
+      "id": "caged-auditor",
+      "titulo": "Auditor (contadores e afins) (CBO 2522-05): média R$ 5.174, mediana R$ 3.795, P25 R$ 2.000, P75 R$ 6.420, 43 h, amostra 13.889, saldo de -702 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/auditor-contadores-e-afins-cbo-252205",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-gerente-projetos-ti",
+      "titulo": "Gerente de projetos de tecnologia da informação (CBO 1425-20): média R$ 14.040, mediana R$ 12.490, P25 R$ 8.516, P75 R$ 17.743, 42 h, amostra 13.257, saldo de -1.305 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/gerente-de-projetos-de-tecnologia-da-informacao-cbo-142520/",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "Não existe CBO genérica de gerente de projetos nem CBO para Scrum master e product owner; esta é a mais usada em software e consultoria."
+    },
+    {
+      "id": "caged-gerente-projetos-manutencao",
+      "titulo": "Gerente de projetos e serviços de manutenção (CBO 1427-05): média R$ 10.364, mediana R$ 7.952, P25 R$ 4.499, P75 R$ 14.000, 43 h, amostra 15.458, saldo de -2.568 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/gerente-de-projetos-e-servicos-de-manutencao-cbo-142705/",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "Aproximação para gerente de projetos fora da tecnologia."
+    },
+    {
+      "id": "caged-compliance",
+      "titulo": "Analista de compliance (CBO 1421-25): média R$ 6.196, mediana R$ 5.170, P25 R$ 3.400, P75 R$ 7.500, 41 h, amostra 7.014, saldo de +571 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/analista-de-compliance-cbo-142125/",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "CBO recente; amostra pequena. Confirmar a data de criação do código na tabela CBO do MTE."
+    },
+    {
+      "id": "caged-rh",
+      "titulo": "Analista de recursos humanos (CBO 2524-05): média R$ 4.429, mediana R$ 3.763, P25 R$ 3.000, P75 R$ 5.000, 43 h, amostra 116.134, saldo de -1.655 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/analista-de-recursos-humanos-cbo-252405",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-administrador",
+      "titulo": "Administrador (CBO 2521-05): média R$ 5.086, mediana R$ 3.930, P25 R$ 2.900, P75 R$ 6.000, 42 h, amostra 146.186, saldo de -3.096 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/administrador-cbo-252105",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-gerente-administrativo",
+      "titulo": "Gerente administrativo (CBO 1421-05): média R$ 5.625, mediana R$ 3.205, P25 R$ 2.300, P75 R$ 5.494, 43 h, amostra 146.888, saldo de -24.199 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/gerente-administrativo-cbo-142105/",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "Média acima do P75: poucos salários altos puxam a média. Por isso não entra na tabela de salários, só no texto."
+    },
+    {
+      "id": "caged-gerente-comercial",
+      "titulo": "Gerente comercial (CBO 1423-05): média R$ 6.039, mediana R$ 3.092, P25 R$ 2.271, P75 R$ 5.789, 43 h, amostra 89.533, saldo de -15.912 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://salario.com.br/profissao/gerente-comercial-cbo-142305/",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "Média acima do P75: poucos salários altos puxam a média. Por isso não entra na tabela de salários, só no texto."
+    },
+    {
+      "id": "caged-supervisor-vendas",
+      "titulo": "Supervisor de vendas comercial (CBO 5201-10): média R$ 3.963, mediana R$ 3.000, P25 R$ 2.200, P75 R$ 4.554, 44 h, amostra 89.290, saldo de -19.010 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/supervisor-de-vendas-comercial-cbo-520110/",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "Salário-base; comissões não entram no Caged."
+    },
+    {
+      "id": "caged-analista-logistica",
+      "titulo": "Analista de logística (CBO 2527-15): média R$ 3.983, mediana R$ 3.500, P25 R$ 2.714, P75 R$ 4.514, 43 h, amostra 26.492, saldo de -362 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/analista-de-logistica-cbo-252715",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "caged-gerente-logistica",
+      "titulo": "Gerente de logística (armazenagem e distribuição) (CBO 1416-15): média R$ 6.843, mediana R$ 4.000, P25 R$ 2.650, P75 R$ 7.568, 44 h, amostra 17.697, saldo de -2.989 vagas em 12 meses",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/gerente-de-logistica-armazenagem-e-distribuicao-cbo-141615/",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria"
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga mínima de 3.000 h e 4 anos para Administração, Ciências Contábeis e Ciências Econômicas",
+      "orgao": "Conselho Nacional de Educação (MEC), cópia hospedada pela UFRRJ",
+      "url": "https://portal.ufrrj.br/wp-content/uploads/2015/07/Resolução-CNE_CES-nº-2_18-de-junho-de-2007_Bacharelados.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL do MEC (portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf), que não respondeu na consulta."
+    },
+    {
+      "id": "cne-5-2021",
+      "titulo": "Resolução CNE/CES nº 5/2021: Diretrizes Curriculares Nacionais do curso de graduação em Administração (substitui a Resolução CNE/CES nº 4/2005)",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/legislacoes/detalhe/3743/resolucao-cne-ces-n-5",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Só a ementa foi lida; o PDF completo não abriu. Confirmar no texto a revogação expressa da Resolução CNE/CES nº 4/2005 e as regras de estágio, TCC e extensão. A DCN de 2005 (lida na cópia da UFRRJ) não fixava carga horária e deixava estágio e TCC como opcionais."
+    },
+    {
+      "id": "cne-1-2024",
+      "titulo": "Resolução CNE/CES nº 1/2024: novas Diretrizes Curriculares Nacionais de Ciências Contábeis, com estágio supervisionado ou laboratório de simulação, TCC opcional e extensão; revoga a Resolução CNE/CES nº 10/2004",
+      "orgao": "Conselho Nacional de Educação (MEC), cópia hospedada pela UDESC",
+      "url": "https://udesc.br/arquivos/ceavi/id_cpmenu/136/Resolucao_cne_ces_001_2024_03_27_17250521214255_136.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL do MEC (gov.br/mec/.../rces001_24.pdf), que exigiu verificação humana na consulta."
+    },
+    {
+      "id": "cncst-2016",
+      "titulo": "Portaria MEC nº 413/2016, Catálogo Nacional de Cursos Superiores de Tecnologia: Processos Gerenciais, Gestão de Recursos Humanos, Logística, Gestão Financeira e Gestão Comercial com 1.600 h",
+      "orgao": "MEC, via ABMES",
+      "url": "https://abmes.org.br/public/arquivos/legislacoes/Portaria_413.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Confirmar se há edição posterior do catálogo com alteração de carga; a página oficial do catálogo no gov.br exigiu verificação humana."
+    },
+    {
+      "id": "lei-4769",
+      "titulo": "Lei nº 4.769/1965: regula a profissão de administrador e exige registro no Conselho Regional de Administração (CRA) para o exercício",
+      "orgao": "Presidência da República (Planalto)",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l4769.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "dl-9295",
+      "titulo": "Decreto-Lei nº 9.295/1946 (com a Lei nº 12.249/2010): cria o Conselho Federal de Contabilidade e condiciona o exercício da profissão ao bacharelado, à aprovação no Exame de Suficiência e ao registro no CRC; técnicos só até 1º/06/2015",
+      "orgao": "Presidência da República (Planalto)",
+      "url": "https://www.planalto.gov.br/ccivil_03/decreto-lei/del9295.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cfc-exame-2026",
+      "titulo": "Exame de Suficiência 1/2026: 27,30% de aprovação no país, 12.614 aprovados entre 42.535 presentes",
+      "orgao": "CRC-MS, com dados do Conselho Federal de Contabilidade (03/08/2026)",
+      "url": "https://crcms.org.br/indice-de-aprovacao-na-1a-edicao-do-exame-de-suficiencia-de-2026-em-ms-foi-de-2240/",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela publicação do CFC. O número de profissionais com registro ativo (526.697 em jan/2023, segundo o Portal Contábeis) está desatualizado e ficou fora do panorama."
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: só Direito, Medicina, Enfermagem, Odontologia e Psicologia são exclusivamente presenciais; Administração e Ciências Contábeis não são citados",
+      "orgao": "Presidência da República (Planalto)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "planejar",
+      "titulo": "Planejar: Brasil na 5ª posição mundial, com mais de 12 mil profissionais CFP certificados",
+      "orgao": "Associação Brasileira de Planejamento Financeiro (Planejar)",
+      "url": "https://www.planejar.org.br/",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "A página não data o número. Em dez/2024 eram 10.634, segundo a própria Planejar via Investalk/BB."
+    },
+    {
+      "id": "planejar-jc",
+      "titulo": "Certificação CFP: cerca de 10.600 certificados em maio/2025; exige cinco anos de experiência comprovada, prova em seis módulos, adesão a código de ética e educação continuada a cada dois anos",
+      "orgao": "Jornal do Comércio, com dados da Planejar (06/05/2025)",
+      "url": "https://www.jornaldocomercio.com/cadernos/jc-contabilidade/2025/05/1198925-brasil-tem-10-600-planejadores-financeiros-certificados-cfp.html",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela página de requisitos da Planejar."
+    },
+    {
+      "id": "anbima-2026",
+      "titulo": "Anbima: 65 mil exames em dezembro de 2025 (recorde); CPA-10, CPA-20 e CEA substituídas por CPA, C-Pro R e C-Pro I a partir de 19/02/2026",
+      "orgao": "Anbima (21/01/2026)",
+      "url": "https://www.anbima.com.br/pt_br/imprensa/certificacoes-anbima-batem-recordes-de-inscricoes-e-exames-em-2025.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cvm-178",
+      "titulo": "Resolução CVM nº 178/2023: fim da exclusividade do assessor de investimentos com uma só corretora, transparência da remuneração (Resolução 179) e certificação pela Ancord; cerca de 16 mil assessores no início de 2022",
+      "orgao": "Capital Aberto (19/03/2023), com dados da CVM e do anuário ABAI/FGV 2022",
+      "url": "https://capitalaberto.com.br/artigos/uma-nova-era-para-os-assessores-de-investimento/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela Resolução CVM 178 no site da CVM e por número atual de assessores registrados."
+    },
+    {
+      "id": "pmi-pmp",
+      "titulo": "Certificação PMP: 36 meses liderando projetos (com diploma superior) ou 60 meses (ensino médio), mais 35 horas de curso; mais de 1,7 milhão de certificados no mundo",
+      "orgao": "Project Management Institute (PMI)",
+      "url": "https://www.pmi.org/certifications/project-management-pmp",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "scrum-alliance",
+      "titulo": "Certified ScrumMaster (CSM): curso de 16 horas e prova de 50 questões (mínimo 37 acertos), sem pré-requisito de diploma ou experiência; renovação a cada dois anos",
+      "orgao": "Scrum Alliance",
+      "url": "https://www.scrumalliance.org/get-certified/scrum-master-track/certified-scrummaster",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "sebrae-2026",
+      "titulo": "Sobrevivência das empresas mercantis brasileiras 2021-2025: 41,5% dos MEI e 76% das micro e pequenas empresas sobrevivem 5 anos; 19,7 milhões de empresas analisadas, 13,8 milhões delas MEI",
+      "orgao": "Sebrae / DataSebrae (18/03/2026)",
+      "url": "https://datasebrae.com.br/wp-content/uploads/2026/03/Relatorio-tecnico-Sobrevivencia-das-empresas-mercantis-brasileiras-2021-2025.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-12846",
+      "titulo": "Lei nº 12.846/2013 (Lei Anticorrupção): a existência de mecanismos internos de integridade, auditoria e canal de denúncia é considerada na aplicação das sanções (art. 7º, VIII)",
+      "orgao": "Presidência da República (Planalto)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12846.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lgpd",
+      "titulo": "Lei nº 13.709/2018 (LGPD): o controlador deve indicar encarregado pelo tratamento de dados pessoais (art. 41)",
+      "orgao": "Presidência da República (Planalto)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    }
+  ]
+}

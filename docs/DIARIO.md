@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-10-19 · Mapa das Profissões com o kit v5
+- **Pedido do usuário:** "Vamos subir esse mapa das profissões lá para Profissões" e "Atualizar com mais essas" (kit v5). Plano aprovado ("isso").
+- **Feito:** 3 fichas novas (Agronomia, Engenharia de Segurança do Trabalho, Serviço Social, com frases-tese e ícones nossos); 6 fichas atualizadas com a pesquisa do kit (Psicologia, Fisioterapia, Nutrição, Biomedicina, Direito, Engenharia de Produção), mantendo as nossas frases-tese (5 reescritas porque o fato ou a fonte mudou, entre elas a de Biomedicina, que dizia o contrário do kit sobre o laudo), o "Um dia como", as `tags` e o ranking das matrículas; 2 panoramas novos (Marketing Digital e Finanças, Gestão e Negócios) com rotas, recompensa do jogo, log, conquistas "Nove em nove" e "Dez em dez, de novo" e o bloco do Admin. A regra do log foi aplicada no banco de testes.
+- **Ajustes:** valores em reais que o kit pôs na capa do Marketing e em "Outros caminhos" (bolsa de residência) não aparecem mais antes do palpite; `gerar-numeros-profissoes.mjs` lê as matrículas na primeira fonte do contexto.
+- **Testes:** `conferir-ficha` e `conferir-panorama` sem erro e sem aviso; `numeros.json` em dia; mapa, os dois panoramas, uma área e o jogo de cada um e as 9 fichas no computador e no celular, sem erro no console e com os eventos no log; busca ("agronomia", "tráfego pago"); auditor de design.
+- **Pendências:** revisão por profissionais de cada área (tudo `rascunho`), fontes oficiais no lugar das cópias, data da Anbima e a regra do log no banco de produção, com o merge.
+
 ## 2026-10-19 · Batata Quente: estourou, acabou, e o dicionário completado
 - **Pedido do usuário:** "Faltou dar game over quando a batata estoura" e "algumas palavras simples ele não achou, então baixei esse dicionario, alimenta com ele" (zip do *pt-br* de Fernando Serboncini). Regra escolhida por ele: **"Estourou, acabou"** em todos os modos que valem ponto (o Treino continua sem fim).
 - **Feito:**

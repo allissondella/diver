@@ -3,9 +3,9 @@
   "versao": 1,
   "nome": "Psicologia",
   "area": "saude",
-  "frase": "Avalia e cuida da saúde mental e do comportamento, do consultório à escola e à empresa.",
+  "frase": "Avalia, orienta e acompanha pessoas, grupos e organizações usando métodos psicológicos, do consultório ao hospital, da escola ao RH.",
   "status": "rascunho",
-  "conferido_em": "2026-10-16",
+  "conferido_em": "2026-10-18",
   "revisao": {
     "fontes": "conferidas",
     "ia": "pendente",
@@ -18,45 +18,516 @@
     "presencial-obrigatorio",
     "conselho-profissional"
   ],
+  "trends_id": "psicologia",
+  "carta": {
+    "fato": "O perfil mais comum de quem é contratado com carteira como psicólogo: uma mulher de 25 anos, 30 horas por semana, numa ONG. O consultório particular que todo mundo imagina não entra nessa conta.",
+    "fontes": [
+      "caged-psicologo"
+    ]
+  },
   "numeros": {
     "duracao": {
       "valor": "5 anos",
-      "detalhe": "4.000 horas, bacharelado",
+      "detalhe": "4.000 horas, formação de psicólogo (bacharelado)",
       "fontes": [
         "cne-2-2007"
       ]
     },
     "formato": {
       "valor": "Presencial",
-      "detalhe": "EAD proibido; pelo menos 70% da carga em atividades presenciais",
+      "detalhe": "um dos cinco cursos que o decreto de 2025 obriga a ser 100% presencial",
       "fontes": [
-        "decreto-12456",
-        "portaria-378"
+        "decreto-12456"
       ]
     },
     "salario": {
       "valor": "R$ 3.809",
-      "detalhe": "média de contratação de psicólogo clínico com carteira, salário-base, 12 meses até ago/2026",
+      "detalhe": "média de contratação com carteira, salário-base, 12 meses até out/2026",
       "fontes": [
         "caged-psicologo"
       ]
     },
     "registro": {
       "valor": "CRP",
-      "detalhe": "inscrição obrigatória no Conselho Regional de Psicologia",
+      "detalhe": "inscrição obrigatória no Conselho Regional de Psicologia para exercer a profissão",
       "fontes": [
         "lei-5766"
       ]
     }
   },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 7,
+      "texto": "A maioria dorme. Quem está de plantão num CAPS 24 horas ou num hospital acompanha crises que não esperam o dia clarear."
+    },
+    {
+      "de": 7,
+      "ate": 9,
+      "texto": "No RH, a primeira entrevista de seleção do dia. Na escola, reunião com a coordenação antes do sinal tocar."
+    },
+    {
+      "de": 9,
+      "ate": 12,
+      "texto": "Sessões de cerca de 50 minutos, uma atrás da outra. Na UBS, grupo de saúde mental; no hospital, visita aos leitos com a equipe."
+    },
+    {
+      "de": 12,
+      "ate": 14,
+      "texto": "Almoço e prontuário. Evolução de cada atendimento, porque o que não está registrado é como se não tivesse acontecido."
+    },
+    {
+      "de": 14,
+      "ate": 18,
+      "texto": "Avaliação psicológica, laudo, devolutiva para a família. No consultório, a tarde começa a encher."
+    },
+    {
+      "de": 18,
+      "ate": 22,
+      "texto": "Pico do consultório: quem trabalha o dia inteiro só consegue sessão à noite, presencial ou on-line."
+    },
+    {
+      "de": 22,
+      "ate": 24,
+      "texto": "Leitura de caso, supervisão adiada e a conta do dia: quantas sessões, quantas faltas."
+    }
+  ],
+  "agora_nota": "A psicologia tem rotinas muito diferentes (clínica, hospital e saúde pública, RH, escola, assistência social e justiça). Cenas típicas, a revisar com profissionais.",
   "contexto": {
     "matriculas_2024": 375574,
     "posicao_ranking_matriculas": 6,
-    "texto": "Em 2024, Psicologia foi o 6º curso com mais matrículas no Brasil, com cerca de 376 mil estudantes, quase todos no presencial.",
+    "texto": "Em 2024, Psicologia foi o 6º curso com mais matrículas no Brasil, com cerca de 376 mil estudantes, quase todos em cursos presenciais.",
     "fontes": [
       "censo-2024"
     ]
   },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Usa métodos e técnicas psicológicas para avaliar, orientar e acompanhar pessoas, grupos e organizações. A lei de 1962 define as funções privativas do psicólogo: diagnóstico psicológico, orientação e seleção profissional, orientação psicopedagógica e solução de problemas de ajustamento. Na prática, isso vira pelo menos cinco mundos: clínica (psicoterapia em consultório), saúde (hospital, UBS, CAPS), organizacional (seleção, treinamento, saúde do trabalhador), escolar e educacional, e social e jurídica (CRAS, varas de família, sistema prisional). O conselho reconhece 13 especialidades, entre elas Neuropsicologia, Avaliação Psicológica, Psicologia Hospitalar e Psicologia do Esporte.",
+      "nao_faz": "Não prescreve medicamentos nem faz diagnóstico médico: isso é do psiquiatra, que é médico. Também não dá conselho de amigo: psicoterapia segue método, sigilo e código de ética.",
+      "fontes": [
+        "lei-4119",
+        "cfp-res-23-2022"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Depende do mundo escolhido. No consultório, o dia é uma sequência de sessões de cerca de 50 minutos, com intervalos para anotar, e a agenda engorda à noite, quando quem trabalha consegue vir. Faltas e desmarcações mexem direto na renda de quem é autônomo. No hospital ou no CAPS, a rotina é de equipe: visita aos leitos, reunião multiprofissional, acolhimento de crise, prontuário. No RH, entrevistas, dinâmicas, treinamentos e planilhas de indicadores. Na escola, conversa com professores e famílias, observação em sala e encaminhamentos. Em todas elas, algo igual: ouvir histórias pesadas e não levar para casa é uma habilidade que se treina, com supervisão e terapia própria.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Os primeiros anos são um núcleo comum: história e epistemologia da psicologia, bases biológicas do comportamento, processos psicológicos (percepção, memória, emoção, aprendizagem), desenvolvimento humano, psicopatologia, teorias da personalidade, estatística e métodos de pesquisa. Depois o curso se divide em ênfases, e cada faculdade oferece no mínimo duas (processos clínicos, saúde, educação, gestão, pesquisa, avaliação diagnóstica). Os estágios somam pelo menos 15% do curso. Quem quer dar aula de Psicologia no ensino médio faz um complemento de 800 horas, que dá a licenciatura no diploma.",
+      "disciplinas": [
+        "História e epistemologia da psicologia",
+        "Neurociência e bases biológicas do comportamento",
+        "Processos psicológicos básicos",
+        "Psicologia do desenvolvimento",
+        "Psicopatologia",
+        "Teorias da personalidade",
+        "Avaliação psicológica e testes",
+        "Psicologia social",
+        "Estatística e métodos de pesquisa",
+        "Ética profissional",
+        "Estágios básico e específico"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "dcn-psicologia-2011"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni e Fies. É um dos cursos mais procurados do país, o que significa nota de corte alta nas públicas e muita vaga nas privadas. Biologia ajuda nas bases biológicas; Matemática, porque a estatística aparece cedo e não sai mais; Português e redação, porque a profissão vive de ler, escrever laudo e interpretar o que as pessoas dizem.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-matematica",
+        "enem-portugues"
+      ],
+      "fontes": [
+        "censo-2024"
+      ]
+    },
+    "quanto_ganha": {
+      "texto": "Não existe piso nem jornada máxima em lei para psicólogos. Um projeto no Senado (PL 3.086/2024) propõe jornada de 30 horas e piso de R$ 4.750, mas ainda não foi votado. A média de contratação com carteira (R$ 3.809) reflete empregos de 30 a 40 horas em ONGs, clínicas, hospitais, escolas e empresas; não inclui o consultório particular, onde a renda depende do valor da sessão, do tamanho da agenda e das faltas. A residência multiprofissional paga bolsa de R$ 4.106 por 60 horas semanais, durante dois anos. As médias consideram só o salário-base, sem adicionais.",
+      "fontes": [
+        "pl-3086-2024",
+        "caged-psicologo",
+        "bolsa-residencia"
+      ],
+      "pisos": [],
+      "medias": [
+        {
+          "cargo": "Psicólogo clínico",
+          "valor": 3809.25,
+          "periodo": "12 meses até out/2026",
+          "faixa": {
+            "de": 2736,
+            "ate": 4399,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          },
+          "fontes": [
+            "caged-psicologo"
+          ]
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um psicólogo contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 12000,
+        "passo": 100,
+        "inicial": 6000
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Especialização e título de especialista",
+          "texto": "O conselho reconhece 13 especialidades. O título pede dois anos de inscrição no CRP, dois anos de exercício na área e um curso de especialização ou a aprovação na prova do CFP. Não é obrigatório para trabalhar, mas pesa em concursos e clínicas.",
+          "fontes": [
+            "cfp-res-23-2022"
+          ]
+        },
+        {
+          "titulo": "Neuropsicologia",
+          "texto": "Avalia atenção, memória, linguagem e funções executivas com testes padronizados, em casos como TDAH, demências, AVC e autismo. É uma das 13 especialidades reconhecidas; o caminho usual é a especialização depois da graduação, muitas vezes junto com hospital ou pesquisa.",
+          "fontes": [
+            "cfp-res-23-2022"
+          ]
+        },
+        {
+          "titulo": "Residência multiprofissional em saúde",
+          "texto": "Dois anos dentro do SUS, em saúde mental, saúde da família, hospital ou outra área, com 60 horas semanais e bolsa de R$ 4.106,09. Entrada por prova depois da graduação.",
+          "fontes": [
+            "bolsa-residencia"
+          ]
+        },
+        {
+          "titulo": "Concursos e políticas públicas",
+          "texto": "CAPS, UBS, hospitais, CRAS e CREAS, tribunais, sistema prisional e, desde 2019, as redes públicas de educação básica, que a lei manda ter psicólogos e assistentes sociais.",
+          "fontes": [
+            "lei-13935"
+          ]
+        },
+        {
+          "titulo": "Mestrado e doutorado",
+          "texto": "Pesquisa e docência em universidades. É o caminho de quem gosta de método, estatística e de produzir conhecimento, não só de aplicar.",
+          "fontes": []
+        },
+        {
+          "titulo": "Consultório particular",
+          "texto": "Trabalho autônomo, presencial ou on-line. A agenda leva tempo para encher, a renda oscila com faltas e a maioria combina clínica com emprego, convênio ou plantão nos primeiros anos.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "A média de contratação com carteira (R$ 3.809) fica abaixo do piso que a própria categoria pede no Congresso (R$ 4.750). O perfil mais comum é uma mulher de 25 anos, com jornada de 30 horas, numa ONG.",
+          "fontes": [
+            "caged-psicologo",
+            "pl-3086-2024"
+          ]
+        },
+        {
+          "texto": "São 612 mil psicólogos registrados, e o curso é o 6º do país em matrículas. A concorrência por vaga e por paciente é alta, principalmente nas capitais.",
+          "fontes": [
+            "cfp-quantos-somos",
+            "censo-2024"
+          ]
+        },
+        {
+          "texto": "Consultório não é renda garantida. Os primeiros anos costumam ser de agenda vazia, faltas e preço baixo; quem vive só de clínica em geral levou tempo para chegar lá.",
+          "fontes": []
+        },
+        {
+          "texto": "Ouvir sofrimento todo dia cobra um preço. Supervisão e terapia pessoal são despesa fixa de quem trabalha bem, não luxo.",
+          "fontes": []
+        },
+        {
+          "texto": "São cinco anos de curso 100% presencial. Não existe caminho técnico nem EAD para virar psicólogo.",
+          "fontes": [
+            "decreto-12456",
+            "cne-2-2007"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "medicina",
+        "diferenca": "A psiquiatria é especialidade médica: diagnostica doenças e prescreve medicamentos. O psicólogo trata com métodos psicológicos."
+      },
+      {
+        "id": "servico-social",
+        "diferenca": "Trabalha com direitos, políticas públicas e acesso a benefícios. Divide com a psicologia o CRAS, o hospital e a escola, mas não faz diagnóstico psicológico."
+      },
+      {
+        "id": "pedagogia",
+        "diferenca": "Cuida do ensino e da aprendizagem em sala. O psicólogo escolar olha o aluno, a família e a instituição, sem dar aula."
+      },
+      {
+        "id": "gestao-de-pessoas",
+        "diferenca": "Recrutamento, treinamento e carreira sem a parte clínica. Muitos psicólogos organizacionais trabalham nesse time."
+      }
+    ]
+  },
+  "formacao": {
+    "nota": "Durações mínimas pelas normas nacionais. A pós-graduação não é obrigatória para trabalhar, mas é o caminho usual para clínica especializada, hospital e concursos.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (formação de psicólogo)",
+        "anos_de": 5,
+        "anos_ate": 5,
+        "texto": "4.000 horas, presencial, com estágios somando pelo menos 15% do curso. Dá o registro no CRP.",
+        "fontes": [
+          "cne-2-2007",
+          "dcn-psicologia-2011",
+          "lei-5766"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "residencia",
+        "nome": "Residência multiprofissional",
+        "anos_de": 2,
+        "anos_ate": 2,
+        "texto": "Dentro do SUS, 60 horas semanais, com bolsa. Saúde mental, saúde da família, hospital.",
+        "fontes": [
+          "bolsa-residencia"
+        ],
+        "tipo": "depois"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização e título de especialista",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Neuropsicologia, Avaliação Psicológica, Hospitalar, Clínica e outras 9. O título do CFP pede ainda dois anos de prática na área.",
+        "fontes": [
+          "cfp-res-23-2022"
+        ],
+        "tipo": "depois"
+      },
+      {
+        "id": "mestrado",
+        "nome": "Mestrado e doutorado",
+        "anos_de": 2,
+        "anos_ate": 6,
+        "texto": "Pesquisa e docência universitária.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  },
+  "dna": {
+    "pessoas": 95,
+    "pressao": 60,
+    "corpo": 15,
+    "rotina": 45,
+    "numeros": 30,
+    "criatividade": 60
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "sigilo-adolescente",
+      "situacao": "Você atende uma aluna de 15 anos na escola. Ela conta algo que te preocupa. No fim do dia, a mãe aparece e exige saber \"tudo o que ela disse\".",
+      "opcoes": [
+        {
+          "texto": "Contar tudo: a mãe é responsável legal e tem direito",
+          "recomendada": false
+        },
+        {
+          "texto": "Comunicar aos responsáveis só o estritamente essencial para proteger a adolescente, preservando o resto",
+          "recomendada": true
+        },
+        {
+          "texto": "Não dizer nada, em nenhuma hipótese: sigilo é sigilo",
+          "recomendada": false
+        }
+      ],
+      "resposta": "O Código de Ética manda respeitar o sigilo e, no atendimento a criança e adolescente, comunicar aos responsáveis apenas o estritamente essencial para que medidas em benefício dela sejam tomadas. Nem tudo, nem nada: o psicólogo decide pelo menor prejuízo. Se houver risco, a quebra de sigilo é possível e, em alguns casos, obrigatória por lei.",
+      "fontes": [
+        "codigo-etica-cfp"
+      ]
+    }
+  ],
+  "mitos": [
+    {
+      "id": "receita",
+      "afirmacao": "Psicólogo pode receitar remédio.",
+      "verdade": false,
+      "explicacao": "A lei que regula a profissão lista o que o psicólogo faz: diagnóstico psicológico, orientação e seleção profissional, orientação psicopedagógica e solução de problemas de ajustamento. Receitar medicamento não está nessa lista; é do médico, no caso o psiquiatra.",
+      "fontes": [
+        "lei-4119"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Dá para fazer a faculdade de Psicologia a distância.",
+      "verdade": false,
+      "explicacao": "Desde o Decreto nº 12.456/2025, Psicologia é um dos cinco cursos que só podem ser oferecidos no formato presencial, ao lado de Medicina, Direito, Enfermagem e Odontologia.",
+      "fontes": [
+        "decreto-12456"
+      ]
+    },
+    {
+      "id": "pos-obrigatoria",
+      "afirmacao": "Precisa de pós-graduação para trabalhar como psicólogo.",
+      "verdade": false,
+      "explicacao": "Com o diploma e a inscrição no CRP, o exercício já é permitido. O título de especialista existe, mas o próprio conselho diz que ele não é condição para exercer a profissão.",
+      "fontes": [
+        "lei-5766",
+        "cfp-res-23-2022"
+      ]
+    },
+    {
+      "id": "so-consultorio",
+      "afirmacao": "Psicólogo só trabalha em consultório.",
+      "verdade": false,
+      "explicacao": "Entre quem é contratado com carteira, o perfil mais comum é em ONG. Seleção profissional e orientação psicopedagógica são funções previstas em lei, e o conselho reconhece especialidades em hospital, escola, trabalho, esporte e trânsito.",
+      "fontes": [
+        "caged-psicologo",
+        "lei-4119",
+        "cfp-res-23-2022"
+      ]
+    },
+    {
+      "id": "piso",
+      "afirmacao": "Psicólogo tem piso salarial e jornada de 30 horas por lei.",
+      "verdade": false,
+      "explicacao": "Ainda não. O PL 3.086/2024, que propõe jornada de 30 horas e piso de R$ 4.750, tramita no Senado.",
+      "fontes": [
+        "pl-3086-2024"
+      ]
+    },
+    {
+      "id": "dar-aula",
+      "afirmacao": "Quem faz Psicologia pode dar aula de Psicologia no ensino médio.",
+      "verdade": true,
+      "explicacao": "Sim, se fizer o projeto complementar de formação de professor, com 800 horas a mais (500 de conteúdos de educação e 300 de estágio), que apostila a licenciatura no diploma.",
+      "fontes": [
+        "dcn-psicologia-2011"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "caged-psicologo",
+      "titulo": "Psicólogo clínico (CBO 2515-10): média R$ 3.809,25, mediana R$ 3.487, P25 R$ 2.736, P75 R$ 4.399, 34 h; 8.073 admissões, 6.456 desligamentos, saldo +1.617 em 12 meses; perfil típico mulher, 25 anos, 30 h, em ONG",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/psicologo-clinico-cbo-251510",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "CBO de psicólogo clínico; a família 2515 tem outras ocupações (organizacional, escolar, hospitalar) com médias próprias."
+    },
+    {
+      "id": "lei-4119",
+      "titulo": "Lei nº 4.119/1962: regula a profissão de psicólogo; art. 13, § 1º, funções privativas (diagnóstico psicológico, orientação e seleção profissional, orientação psicopedagógica, solução de problemas de ajustamento)",
+      "orgao": "Presidência da República, via Câmara dos Deputados",
+      "url": "https://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-4119-27-agosto-1962-353841-normaatualizada-pl.html",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-5766",
+      "titulo": "Lei nº 5.766/1971: cria o Conselho Federal e os Conselhos Regionais de Psicologia; art. 10, inscrição obrigatória no CRP para exercer a profissão",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l5766.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
+      "orgao": "Conselho Nacional de Educação (MEC), via UFRRJ",
+      "url": "https://portal.ufrrj.br/wp-content/uploads/2015/07/Resolução-CNE_CES-nº-2_18-de-junho-de-2007_Bacharelados.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL no portal do MEC (portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf), que bloqueou a consulta automática."
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República, via IFPB",
+      "url": "https://portalv1.ifpb.edu.br/ead/assuntos/pasta-legislacoes/decretos/decreto-12456-2025.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL do decreto no Planalto. Conferir se há decisão do STF sobre a ação da ABE-EAD (jul/2025)."
+    },
+    {
+      "id": "censo-2024",
+      "titulo": "Censo da Educação Superior 2024: Psicologia com 375.574 matrículas, 6º lugar, 375.465 presenciais",
+      "orgao": "Inep, via CNN Brasil (23/09/2025)",
+      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela planilha oficial do Inep."
+    },
+    {
+      "id": "cfp-res-23-2022",
+      "titulo": "Resolução CFP nº 23/2022: 13 especialidades reconhecidas (inclui Neuropsicologia); título exige 2 anos de CRP e 2 anos de exercício, com curso de especialização ou prova do CFP; registro não é obrigatório para exercer",
+      "orgao": "Conselho Federal de Psicologia, via Biblioteca Virtual em Saúde (SES-SP)",
+      "url": "https://ses.sp.bvs.br/wp-content/uploads/2022/10/U_RS-CFP-23_131022.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL da resolução no site do CFP."
+    },
+    {
+      "id": "codigo-etica-cfp",
+      "titulo": "Código de Ética Profissional do Psicólogo (Resolução CFP nº 10/2005): art. 9º sigilo; art. 10 quebra pelo menor prejuízo; art. 13 comunicar aos responsáveis só o estritamente essencial",
+      "orgao": "Conselho Federal de Psicologia",
+      "url": "https://site.cfp.org.br/wp-content/uploads/2012/07/codigo-de-etica-psicologia.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cfp-quantos-somos",
+      "titulo": "CFP, Quantos somos: 612.789 psicólogas(os) registradas(os), cerca de 85% mulheres (atualizado em 14/09/2026)",
+      "orgao": "Conselho Federal de Psicologia",
+      "url": "https://www2.cfp.org.br/infografico/quantos-somos/",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "pl-3086-2024",
+      "titulo": "PL 3.086/2024: jornada de 30 h e piso de R$ 4.750 para psicólogos, em tramitação no Senado (CAE e CAS)",
+      "orgao": "Conselho Federal de Psicologia, 06/09/2024",
+      "url": "https://site.cfp.org.br/novo-projeto-das-30-horas-e-do-piso-comeca-a-tramitar-no-senado/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Conferir a situação atual da tramitação no site do Senado."
+    },
+    {
+      "id": "bolsa-residencia",
+      "titulo": "Residência multiprofissional em saúde: bolsa de R$ 4.106,09 (Portaria Interministerial MEC/MS nº 9/2021), 60 h semanais, 2 anos; aceita psicologia, nutrição, enfermagem e outras",
+      "orgao": "Fiocruz (ENSP), chamada de seleção 2026",
+      "url": "https://ensino.ensp.fiocruz.br/documentos_upload/2026_RMSF_Chamada_de_Selecao.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela Portaria Interministerial MEC/MS nº 9/2021 e conferir se o valor foi reajustado."
+    },
+    {
+      "id": "lei-13935",
+      "titulo": "Lei nº 13.935/2019: psicólogos e assistentes sociais nas redes públicas de educação básica",
+      "orgao": "Presidência da República, via CFP e CFESS",
+      "url": "https://site.cfp.org.br/publicacao/psicologasos-e-assistentes-sociais-na-rede-publica-de-educacao-basica/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela URL da lei no Planalto."
+    },
+    {
+      "id": "dcn-psicologia-2011",
+      "titulo": "Resolução CNE/CES nº 5/2011 (DCN de Psicologia): núcleo comum, mínimo de 2 ênfases, estágios de pelo menos 15% da carga horária, formação de professor com 800 h a mais",
+      "orgao": "Conselho Nacional de Educação (MEC), via UFRRJ",
+      "url": "https://portal.ufrrj.br/wp-content/uploads/2016/10/rces005_11.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL no portal do MEC (gov.br/mec), que bloqueou a consulta automática."
+    }
+  ],
   "manchetes": {
     "trabalho": {
       "titulo": "Escuta, avalia e acompanha, sem receitar remédio",
@@ -87,138 +558,6 @@
         "censo-2024"
       ]
     }
-  },
-  "secoes": {
-    "o_que_faz": {
-      "texto": "Usa métodos e técnicas psicológicas para avaliar e acompanhar pessoas e grupos. Por lei, são funções privativas do psicólogo o diagnóstico psicológico, a orientação e a seleção profissional, a orientação psicopedagógica e o trabalho com problemas de ajustamento. Atua em consultório, hospital, escola, empresa, assistência social, esporte e Justiça.",
-      "nao_faz": "A lei da profissão não inclui prescrever medicamentos. Quando o tratamento envolve remédio, quem prescreve é o médico, como o psiquiatra, e os dois costumam trabalhar juntos.",
-      "fontes": [
-        "lei-4119"
-      ]
-    },
-    "dia_a_dia": {
-      "texto": "No consultório, a agenda é de sessões com hora marcada e registros depois de cada atendimento. Na empresa, o trabalho passa por seleção, treinamento e clima organizacional. Na escola e na assistência social, há muito contato com famílias e com a rede de proteção.",
-      "revisar_com_profissional": true,
-      "fontes": []
-    },
-    "o_que_estuda": {
-      "texto": "Processos psicológicos, desenvolvimento humano, avaliação psicológica e diferentes abordagens teóricas, com estágios supervisionados em clínica-escola, serviços de saúde, escolas e organizações.",
-      "disciplinas": [
-        "Processos psicológicos básicos",
-        "Psicologia do desenvolvimento",
-        "Neurociências",
-        "Psicopatologia",
-        "Avaliação psicológica",
-        "Teorias e técnicas psicoterápicas",
-        "Psicologia social",
-        "Psicologia do trabalho",
-        "Ética profissional"
-      ],
-      "revisar_com_profissional": true,
-      "fontes": []
-    },
-    "como_entrar": {
-      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. A redação e as Ciências Humanas costumam pesar, e algumas universidades dão peso também a Biologia.",
-      "materias_chave": [
-        "enem-redacao",
-        "enem-biologia",
-        "enem-sociologia",
-        "enem-filosofia"
-      ],
-      "fontes": []
-    },
-    "quanto_ganha": {
-      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira. O atendimento em consultório próprio, muito comum na área, fica fora da conta. A jornada média desses contratos é de 34 horas por semana.",
-      "fontes": [
-        "caged-psicologo"
-      ],
-      "medias": [
-        {
-          "cargo": "Psicólogo clínico",
-          "valor": 3809.25,
-          "periodo": "12 meses até ago/2026",
-          "fontes": [
-            "caged-psicologo"
-          ],
-          "faixa": {
-            "de": 2736,
-            "ate": 4399,
-            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
-          }
-        }
-      ],
-      "chute": {
-        "pergunta": "Quanto ganha, por mês, um psicólogo clínico contratado com carteira no Brasil?",
-        "min": 1000,
-        "max": 12000,
-        "passo": 100,
-        "inicial": 7000
-      }
-    },
-    "caminhos": {
-      "itens": [
-        {
-          "titulo": "Clínica",
-          "texto": "Atendimento individual, de casais, famílias ou grupos, presencial ou online, em consultório próprio ou em clínicas.",
-          "fontes": []
-        },
-        {
-          "titulo": "Saúde e assistência social",
-          "texto": "Hospitais, serviços de saúde mental e assistência social, muitas vezes por concurso público.",
-          "fontes": []
-        },
-        {
-          "titulo": "Organizações e trabalho",
-          "texto": "Seleção, treinamento, desenvolvimento de pessoas e saúde do trabalhador. A seleção com métodos psicológicos é privativa do psicólogo.",
-          "fontes": [
-            "lei-4119"
-          ]
-        },
-        {
-          "titulo": "Escola e educação",
-          "texto": "Apoio a estudantes, famílias e professores em escolas e redes de ensino.",
-          "fontes": []
-        }
-      ]
-    },
-    "ninguem_conta": {
-      "itens": [
-        {
-          "texto": "Muita gente trabalha por conta própria: atender em consultório significa montar agenda, cobrar e atravessar meses mais fracos.",
-          "fontes": []
-        },
-        {
-          "texto": "A média de contratação com carteira fica em cerca de R$ 3,8 mil, abaixo do que muita gente imagina para 5 anos de curso.",
-          "fontes": [
-            "caged-psicologo"
-          ]
-        },
-        {
-          "texto": "Ouvir sofrimento todos os dias pesa. Cuidar da própria saúde mental faz parte do trabalho.",
-          "fontes": []
-        },
-        {
-          "texto": "O curso não pode mais ser feito a distância.",
-          "fontes": [
-            "decreto-12456"
-          ]
-        }
-      ]
-    },
-    "vizinhas": [
-      {
-        "id": "medicina",
-        "diferenca": "O psiquiatra é médico: diagnostica doenças e prescreve medicamentos."
-      },
-      {
-        "id": "gestao-de-pessoas",
-        "diferenca": "Recrutamento, carreira e treinamento, sem avaliação psicológica."
-      },
-      {
-        "id": "pedagogia",
-        "diferenca": "Foco no ensino e na aprendizagem, dentro e fora da escola."
-      }
-    ]
   },
   "dia": {
     "titulo": "Um dia como psicólogo(a)",
@@ -455,212 +794,5 @@
       "perolas": 3,
       "uma_vez_por_profissao": true
     }
-  },
-  "mitos": [
-    {
-      "id": "remedio",
-      "afirmacao": "Psicólogo pode receitar remédio.",
-      "verdade": false,
-      "explicacao": "A lei da profissão não inclui prescrever medicamentos. Isso é do médico, como o psiquiatra.",
-      "fontes": [
-        "lei-4119"
-      ]
-    },
-    {
-      "id": "ead",
-      "afirmacao": "Dá para fazer Psicologia a distância.",
-      "verdade": false,
-      "explicacao": "Psicologia está entre os cinco cursos que só podem ser presenciais.",
-      "fontes": [
-        "decreto-12456",
-        "portaria-378"
-      ]
-    },
-    {
-      "id": "selecao",
-      "afirmacao": "Avaliação psicológica em seleção de emprego só pode ser feita por psicólogo.",
-      "verdade": true,
-      "explicacao": "Orientação e seleção profissional com métodos psicológicos são funções privativas do psicólogo.",
-      "fontes": [
-        "lei-4119"
-      ]
-    },
-    {
-      "id": "duracao",
-      "afirmacao": "Psicologia se forma em 4 anos.",
-      "verdade": false,
-      "explicacao": "A carga mínima é de 4.000 horas, com integralização em pelo menos 5 anos.",
-      "fontes": [
-        "cne-2-2007"
-      ]
-    },
-    {
-      "id": "crp",
-      "afirmacao": "Para atender, o psicólogo precisa estar inscrito no conselho.",
-      "verdade": true,
-      "explicacao": "A inscrição no Conselho Regional de Psicologia é obrigatória para exercer.",
-      "fontes": [
-        "lei-5766"
-      ]
-    }
-  ],
-  "fontes": [
-    {
-      "id": "lei-4119",
-      "titulo": "Lei nº 4.119/1962: formação em Psicologia e função privativa do psicólogo (art. 13)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/1950-1969/l4119.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "decreto-12456",
-      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "caged-psicologo",
-      "titulo": "Psicólogo clínico (CBO 2515-10): média de R$ 3.809,25, P25 de R$ 2.736,00 e P75 de R$ 4.399,00, jornada média de 34 h semanais, saldo de +1.617 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
-      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
-      "url": "https://www.salario.com.br/profissao/psicologo-clinico-cbo-251510",
-      "consultado_em": "2026-10-16",
-      "dados_atualizados_em": "2026-10-08",
-      "tipo": "secundaria"
-    },
-    {
-      "id": "cne-2-2007",
-      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
-      "orgao": "Conselho Nacional de Educação (MEC)",
-      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "portaria-378",
-      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
-      "orgao": "Ministério da Educação, via ABMES",
-      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "lei-5766",
-      "titulo": "Lei nº 5.766/1971: Conselhos de Psicologia; inscrição obrigatória para exercer (art. 10)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l5766.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "censo-2024",
-      "titulo": "Censo da Educação Superior 2024: os cursos com mais matrículas, no total, no presencial e na EAD",
-      "orgao": "Inep, via CNN Brasil (23/09/2025)",
-      "url": "https://www.cnnbrasil.com.br/educacao/pedagogia-direito-veja-ranking-dos-10-cursos-com-mais-alunos-matriculados/",
-      "consultado_em": "2026-10-16",
-      "tipo": "secundaria",
-      "nota": "Trocar pela planilha oficial do Inep."
-    }
-  ],
-  "carta": {
-    "fato": "Avaliação psicológica para seleção de emprego é função privativa do psicólogo, por lei, desde 1962.",
-    "fontes": [
-      "lei-4119"
-    ]
-  },
-  "agora": [
-    {
-      "de": 0,
-      "ate": 7,
-      "texto": "Fora do expediente, quase sempre. Em serviços de crise e hospitais, há atendimento também de madrugada."
-    },
-    {
-      "de": 7,
-      "ate": 9,
-      "texto": "Leitura dos registros e preparação das sessões do dia."
-    },
-    {
-      "de": 9,
-      "ate": 12,
-      "texto": "Atendimentos individuais ou em grupo."
-    },
-    {
-      "de": 12,
-      "ate": 14,
-      "texto": "Pausa, supervisão de casos ou reunião com a equipe."
-    },
-    {
-      "de": 14,
-      "ate": 19,
-      "texto": "Sessões da tarde; na empresa, entrevistas e treinamentos."
-    },
-    {
-      "de": 19,
-      "ate": 24,
-      "texto": "Muitos atendem à noite, quando os pacientes saem do trabalho. Depois, registros e estudo."
-    }
-  ],
-  "agora_nota": "Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
-  "dna": {
-    "pessoas": 90,
-    "pressao": 60,
-    "corpo": 15,
-    "rotina": 50,
-    "numeros": 30,
-    "criatividade": 55
-  },
-  "dna_calibrado": false,
-  "dilemas": [
-    {
-      "id": "diagnostico-namorado",
-      "situacao": "Uma amiga pede que você \"faça um diagnóstico rapidinho\" do namorado dela, só pelo que ela conta.",
-      "opcoes": [
-        {
-          "texto": "Dizer o que acha que ele tem",
-          "recomendada": false
-        },
-        {
-          "texto": "Explicar que diagnóstico psicológico exige avaliar a própria pessoa e sugerir que ela busque atendimento para si",
-          "recomendada": true
-        },
-        {
-          "texto": "Mudar de assunto",
-          "recomendada": false
-        }
-      ],
-      "resposta": "Diagnóstico psicológico é função privativa do psicólogo e depende de avaliação com os métodos da profissão, feita com a própria pessoa. Opinião de corredor não é diagnóstico, e pode machucar.",
-      "fontes": [
-        "lei-4119"
-      ]
-    }
-  ],
-  "formacao": {
-    "nota": "Duração mínima pelas normas nacionais.",
-    "etapas": [
-      {
-        "id": "graduacao",
-        "nome": "Graduação (bacharelado)",
-        "anos_de": 5,
-        "anos_ate": 5,
-        "texto": "4.000 horas em 5 anos, presencial, com estágios supervisionados.",
-        "fontes": [
-          "cne-2-2007",
-          "decreto-12456"
-        ],
-        "tipo": "principal"
-      },
-      {
-        "id": "especializacao",
-        "nome": "Especialização ou mestrado",
-        "anos_de": 1,
-        "anos_ate": 2,
-        "texto": "Em áreas como clínica, hospitalar, escolar ou do trabalho.",
-        "fontes": [],
-        "tipo": "depois"
-      }
-    ]
-  },
-  "trends_id": "psicologia"
+  }
 }

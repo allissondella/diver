@@ -68,7 +68,7 @@ for (const p of indice.profissoes) {
   });
   ['portaria-378', 'decreto-12456'].forEach((id) => { const fo = (f.fontes || []).find((x) => x.id === id); if (fo && !normas[id]) normas[id] = fo.titulo.split(':')[0].trim(); });
   if (ctx.matriculas_2024 && ctx.posicao_ranking_matriculas) {
-    const fo = (f.fontes || []).find((x) => (ctx.fontes || []).includes(x.id));
+    const fo = (f.fontes || []).find((x) => x.id === (ctx.fontes || [])[0]) || (f.fontes || []).find((x) => (ctx.fontes || []).includes(x.id)); // a primeira fonte do contexto é a das matrículas
     if (!fo) { avisos.push(`${f.id}: contexto sem fonte`); continue; }
     if (fonteRanking && fonteRanking.url !== fo.url) avisos.push(`${f.id}: a fonte das matrículas (${fo.url}) é diferente da das outras fichas (${fonteRanking.url})`);
     fonteRanking = fonteRanking || { id: fo.id, orgao: fo.orgao.replace(/\s*\(.*\)$/, ''), url: fo.url };

@@ -923,7 +923,8 @@
 
     // ---------- 05. A carreira: outros caminhos e profissões vizinhas ----------
     const carreira = [];
-    if (S.caminhos) carreira.push(el('h3', { class: 'prof-sub', text: 'Outros caminhos' }), el('div', { class: 'prof-cards' }, S.caminhos.itens.map(c => el('div', { class: 'prof-caixa' }, el('h3', { text: c.titulo }), el('p', null, c.texto, citar(f, c.fontes))))));
+    // (a bolsa de residência em reais, nos caminhos da saúde, também espera o palpite: 2026-10-19, kit v5)
+    if (S.caminhos) carreira.push(el('h3', { class: 'prof-sub', text: 'Outros caminhos' }), el('div', { class: 'prof-cards' }, S.caminhos.itens.map(c => el('div', { class: 'prof-caixa' }, el('h3', { text: c.titulo }), el('p', null, semReais(c.texto, (estado.salarioRevelado[f.id] || 0) > 0), citar(f, c.fontes))))));
     if (S.vizinhas) carreira.push(el('h3', { class: 'prof-sub', text: 'Profissões vizinhas' }), el('p', { class: 'prof-min prof-espaco-b', text: 'Para quem está em dúvida entre duas.' }),
       el('div', { class: 'prof-cards' }, S.vizinhas.map(v => {
         const p = ix.profissoes.find(x => x.id === v.id);

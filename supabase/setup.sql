@@ -759,6 +759,7 @@ create table if not exists public.eventos_atividade (
 -- 2026-10-16: tipos do Mapa das Profissões (docs/MAPA_PROFISSOES_INTEGRACAO.md, 3.4), sempre com curso_id nulo.
 -- 2026-10-16 (2): tipos do Panorama da Tecnologia (docs/MAPA_PROFISSOES_TECNOLOGIA.md), também com curso_id nulo.
 -- 2026-10-16 (3): tipos do Panorama da Medicina (docs/MAPA_PROFISSOES_MEDICINA.md), também com curso_id nulo.
+-- 2026-10-19: tipos dos panoramas do Marketing Digital e de Finanças, Gestão e Negócios (kit v5), também com curso_id nulo.
 alter table public.eventos_atividade drop constraint if exists eventos_atividade_tipo_check;
 alter table public.eventos_atividade add constraint eventos_atividade_tipo_check
   check (tipo in ('questao_respondida', 'jogo_concluido', 'mergulho_sessao', 'revisao_sessao', 'simulado_concluido',
@@ -768,7 +769,9 @@ alter table public.eventos_atividade add constraint eventos_atividade_tipo_check
                   'profissao_carta_gerada', 'profissao_dilema_voto', 'profissao_materias_chave', 'profissao_dia_inicio',
                   'profissao_dia_concluido', 'profissao_mitos_inicio', 'profissao_mitos_concluido',
                   'tecnologia_panorama', 'tecnologia_area_vista', 'tecnologia_jogo_inicio', 'tecnologia_jogo_concluido',
-                  'medicina_panorama', 'medicina_area_vista', 'medicina_jogo_inicio', 'medicina_jogo_concluido'));
+                  'medicina_panorama', 'medicina_area_vista', 'medicina_jogo_inicio', 'medicina_jogo_concluido',
+                  'marketing_panorama', 'marketing_area_vista', 'marketing_jogo_inicio', 'marketing_jogo_concluido',
+                  'negocios_panorama', 'negocios_area_vista', 'negocios_jogo_inicio', 'negocios_jogo_concluido'));
 create index if not exists eventos_atividade_aluno on public.eventos_atividade (aluno_id, criado_em desc);
 create index if not exists eventos_atividade_curso on public.eventos_atividade (curso_id, tipo, criado_em desc);
 

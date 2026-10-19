@@ -3,9 +3,9 @@
   "versao": 1,
   "nome": "Biomedicina",
   "area": "saude",
-  "frase": "Trabalha no laboratório e nos exames que ajudam a descobrir e acompanhar doenças.",
+  "frase": "Faz o exame que o médico pede: do sangue ao DNA, produz o resultado que sustenta o diagnóstico.",
   "status": "rascunho",
-  "conferido_em": "2026-10-16",
+  "conferido_em": "2026-10-18",
   "revisao": {
     "fontes": "conferidas",
     "ia": "pendente",
@@ -17,44 +17,464 @@
     "laboratorio",
     "conselho-profissional"
   ],
+  "trends_id": null,
+  "carta": {
+    "fato": "O biomédico tem mais de 30 habilitações possíveis, da genética à perfusão em cirurgia cardíaca. Mas quase todo mundo que é contratado com carteira começa no mesmo lugar: o laboratório clínico.",
+    "fontes": [
+      "crbm1-manual-2024",
+      "caged-biomedico"
+    ]
+  },
   "numeros": {
     "duracao": {
       "valor": "4 anos",
       "detalhe": "3.200 horas, bacharelado",
       "fontes": [
-        "cne-4-2009"
+        "cne-4-2009",
+        "cne-2-2003"
       ]
     },
     "formato": {
       "valor": "Presencial ou semipresencial",
-      "detalhe": "sem EAD; no semipresencial, pelo menos 40% de atividades presenciais",
+      "detalhe": "curso da área da saúde: não pode ser totalmente a distância",
       "fontes": [
-        "portaria-378",
         "decreto-12456"
       ]
     },
     "salario": {
       "valor": "R$ 3.337",
-      "detalhe": "média de contratação de biomédico com carteira, salário-base, 12 meses até ago/2026",
+      "detalhe": "média de contratação com carteira, salário-base, 12 meses até ago/2026",
       "fontes": [
-        "caged-biomed"
+        "caged-biomedico"
       ]
     },
     "registro": {
       "valor": "CRBM",
-      "detalhe": "carteira profissional do conselho para exercer",
+      "detalhe": "carteira do conselho obrigatória para exercer a profissão",
       "fontes": [
         "lei-6684"
       ]
     }
   },
-  "manchetes": {
-    "trabalho": {
-      "titulo": "Faz o exame, mas não dá o laudo",
-      "linha": "O biomédico atua em análises clínicas, bancos de sangue e imagem; pode fazer a radiografia, mas a interpretação é do médico.",
+  "agora": [
+    {
+      "de": 0,
+      "ate": 6,
+      "texto": "Laboratório de hospital não fecha: plantão noturno processa gasometria, hemograma e exames de urgência do pronto-socorro."
+    },
+    {
+      "de": 6,
+      "ate": 9,
+      "texto": "Pico de coleta. Pacientes em jejum chegam cedo, e os tubos de sangue começam a subir para o setor técnico."
+    },
+    {
+      "de": 9,
+      "ate": 12,
+      "texto": "Equipamentos automatizados rodando, controle de qualidade conferido, resultados fora da curva repetidos e checados um a um."
+    },
+    {
+      "de": 12,
+      "ate": 14,
+      "texto": "Almoço em turnos. Na biologia molecular, uma PCR que leva horas segue rodando sem ninguém olhar."
+    },
+    {
+      "de": 14,
+      "ate": 18,
+      "texto": "Liberação de laudos, culturas lidas, lâminas no microscópio. No diagnóstico por imagem, exames de ressonância e tomografia em sequência."
+    },
+    {
+      "de": 18,
+      "ate": 24,
+      "texto": "Resultados do dia fechados. Quem é de pesquisa prepara o experimento de amanhã; quem é de estética atende depois do horário comercial."
+    }
+  ],
+  "agora_nota": "Cenas típicas de laboratório clínico, imagem, pesquisa e estética, a revisar com profissionais. Cada serviço tem rotina própria.",
+  "contexto": {
+    "texto": "O perfil mais comum de quem é contratado com carteira como biomédico: 25 anos, mulher (82% das admissões), ensino superior completo, em laboratório clínico.",
+    "fontes": [
+      "caged-biomedico"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Trabalha nas análises que sustentam o diagnóstico: coleta, processa e analisa sangue, urina, tecidos e outros materiais, e assina o laudo técnico de exames laboratoriais. A lei o coloca na equipe de saúde \"em nível tecnológico\", nas atividades complementares de diagnóstico. A partir daí, o conselho reconhece mais de 30 habilitações: análises clínicas, biologia molecular e genética, microbiologia, hematologia e banco de sangue, imagenologia (operar tomógrafo, ressonância e radioterapia), reprodução humana assistida, perfusão extracorpórea em cirurgia cardíaca, toxicologia, análise ambiental e de alimentos, saúde pública, pesquisa, docência e biomedicina estética. Cada habilitação exige estágio de pelo menos 500 horas na área ou pós-graduação, registrados no CRBM.",
+      "nao_faz": "Não diagnostica nem trata pacientes: entrega o resultado, o diagnóstico é do médico. Não interpreta radiografias. Em hemoterapia e radiodiagnóstico, trabalha sob supervisão médica. Não coleta material de biópsia nem líquor, não trabalha em farmácia e não prescreve.",
       "fontes": [
         "lei-6684",
-        "lei-12842"
+        "crbm1-manual-2024"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "No laboratório clínico, que é onde a maioria começa, o dia tem um ritmo conhecido: coleta de manhã cedo, amostras centrifugadas e distribuídas pelos setores (bioquímica, hematologia, microbiologia, imunologia), equipamentos automatizados que fazem a maior parte do trabalho bruto e o biomédico conferindo controle de qualidade, repetindo o que deu estranho e liberando laudos. Muito protocolo, rastreabilidade e atenção a detalhe; pouco contato com o paciente além da coleta. Em hospital, há plantão, inclusive noturno. Na biologia molecular e na genética, a rotina é de experimentos longos e resultados que demoram. Na imagem, é operar o equipamento e posicionar o paciente, com o médico radiologista laudando. Na estética, é atendimento em clínica, horário comercial estendido e muita venda de serviço.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Os dois primeiros anos são ciências básicas pesadas: anatomia, histologia, bioquímica, fisiologia, microbiologia, imunologia, parasitologia, genética e patologia. Depois vêm as disciplinas de laboratório (análises clínicas, hematologia, bioquímica clínica, microbiologia clínica) e os estágios, que as diretrizes exigem em quantidade grande no fim do curso. A escolha da habilitação acontece no estágio final: é ele que define o que vai na carteira do conselho.",
+      "disciplinas": [
+        "Anatomia e histologia",
+        "Bioquímica",
+        "Fisiologia",
+        "Microbiologia e parasitologia",
+        "Imunologia",
+        "Genética e biologia molecular",
+        "Patologia",
+        "Hematologia",
+        "Análises clínicas",
+        "Bioestatística",
+        "Ética e legislação",
+        "Estágio supervisionado por habilitação"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "cne-2-2003",
+        "crbm1-manual-2024"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni e Fies. A oferta pública é pequena; a maioria das vagas é privada e presencial. Biologia e Química são o que mais pesa, e a química continua forte no curso inteiro, porque bioquímica e análises clínicas são o coração dele.",
+      "materias_chave": [
+        "enem-biologia",
+        "enem-quimica"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "Não há piso nacional em lei para o biomédico; o que existe vem de convenções coletivas de laboratórios e hospitais de cada região. A média de contratação com carteira é uma das mais baixas entre as profissões de saúde com conselho, e a faixa comum de contratação é estreita. Quem ganha mais em geral trocou o laboratório de rotina por uma habilitação específica (reprodução humana, perfusão, biologia molecular), virou responsável técnico, foi para a indústria de diagnóstico ou abriu negócio próprio. O Caged só captura carteira assinada e salário-base, então não vê quem atende como autônomo ou PJ, caso comum na estética.",
+      "fontes": [
+        "caged-biomedico"
+      ],
+      "pisos": [],
+      "medias": [
+        {
+          "cargo": "Biomédico",
+          "valor": 3336.82,
+          "periodo": "12 meses até ago/2026",
+          "faixa": {
+            "de": 2525,
+            "ate": 3653,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          },
+          "fontes": [
+            "caged-biomedico"
+          ]
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um biomédico contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 12000,
+        "passo": 100,
+        "inicial": 6000
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Habilitações pelo conselho",
+          "texto": "Estágio de 500 horas ou pós-graduação em uma área (reprodução humana, imagenologia, perfusão, toxicologia, gerontologia biomédica e outras) acrescenta a habilitação na carteira e abre portas fora do laboratório de rotina.",
+          "fontes": [
+            "crbm1-manual-2024",
+            "cfbm-397-2025"
+          ]
+        },
+        {
+          "titulo": "Residência multiprofissional",
+          "texto": "Programas em hospitais de ensino, com bolsa, em áreas como análises clínicas, oncologia e saúde da família. Também vale como habilitação.",
+          "fontes": [
+            "crbm1-manual-2024"
+          ]
+        },
+        {
+          "titulo": "Mestrado e doutorado",
+          "texto": "Pesquisa em universidades, Fiocruz, Butantan e indústria de diagnóstico e biotecnologia. É o caminho de quem quer genética, biologia molecular e desenvolvimento de testes.",
+          "fontes": []
+        },
+        {
+          "titulo": "Concursos",
+          "texto": "Laboratórios públicos, hemocentros, hospitais universitários, vigilância sanitária e perícia criminal (perito em algumas polícias técnicas aceita biomédico).",
+          "fontes": []
+        },
+        {
+          "titulo": "Indústria e gestão",
+          "texto": "Fabricantes de equipamentos e reagentes, áreas de aplicação e suporte científico, qualidade e gestão de laboratório.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "A média de contratação (R$ 3.337) é a menor entre biomédico, biólogo e enfermeiro, e a faixa comum vai de R$ 2.525 a R$ 3.653. Muito plantão e muita responsabilidade por um salário de técnico.",
+          "fontes": [
+            "caged-biomedico"
+          ]
+        },
+        {
+          "texto": "O laboratório clínico é disputado: farmacêuticos e biólogos também podem trabalhar e assinar nele. A automação reduz o número de pessoas por bancada.",
+          "fontes": [
+            "lei-6684"
+          ]
+        },
+        {
+          "texto": "A estética é o que mais atrai gente para o curso, e é o terreno mais instável: em 2026, o TRF da 1ª Região manteve a anulação de uma norma do CFBM e disse que procedimentos estéticos invasivos, mesmo os minimamente invasivos, são privativos de médico. Quem entra pensando em botox e preenchimento precisa acompanhar essa disputa.",
+          "fontes": [
+            "trf1-estetica-2026"
+          ]
+        },
+        {
+          "texto": "O mercado formal cresceu pouco no último ano: saldo de 741 vagas em 12 meses, com 9.888 admissões e 9.147 desligamentos. A rotatividade é alta.",
+          "fontes": [
+            "caged-biomedico"
+          ]
+        },
+        {
+          "texto": "Para fazer qualquer coisa fora do que está na carteira do conselho é preciso nova habilitação. Praticar sem ela é infração ética, com processo no CRBM.",
+          "fontes": [
+            "cfbm-330-2020",
+            "crbm1-manual-2024"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "biologia",
+        "diferenca": "Mesma lei de origem, outra modalidade: o biólogo vai para campo, ecologia e ensino; o biomédico fica na saúde humana."
+      },
+      {
+        "id": "farmacia",
+        "diferenca": "Divide o laboratório clínico, mas tem o medicamento como centro: produção, farmácia e dispensação, que o biomédico não faz."
+      },
+      {
+        "id": "enfermagem",
+        "diferenca": "Cuida do paciente no leito e executa o tratamento; o biomédico quase não vê o paciente, vê a amostra."
+      },
+      {
+        "id": "medicina",
+        "diferenca": "Recebe o laudo e decide o diagnóstico e o tratamento. O biomédico produz o exame, não a conclusão clínica."
+      }
+    ]
+  },
+  "formacao": {
+    "nota": "Durações mínimas pelas normas nacionais. A habilitação registrada no conselho depende do estágio ou da pós-graduação escolhida.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 4,
+        "anos_ate": 4,
+        "texto": "3.200 horas, presencial ou semipresencial, com estágio supervisionado de pelo menos 500 horas na habilitação escolhida. Dá o registro no CRBM.",
+        "fontes": [
+          "cne-4-2009",
+          "decreto-12456",
+          "crbm1-manual-2024"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "habilitacao",
+        "nome": "Nova habilitação ou residência",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Pós-graduação de 360 horas ou mais, residência multiprofissional ou estágio de 500 horas acrescenta áreas à carteira.",
+        "fontes": [
+          "crbm1-manual-2024",
+          "cfbm-397-2025"
+        ],
+        "tipo": "depois"
+      },
+      {
+        "id": "mestrado",
+        "nome": "Mestrado e doutorado",
+        "anos_de": 2,
+        "anos_ate": 6,
+        "texto": "Pesquisa, docência e desenvolvimento em biotecnologia e diagnóstico.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  },
+  "dna": {
+    "pessoas": 35,
+    "pressao": 55,
+    "corpo": 40,
+    "rotina": 70,
+    "numeros": 65,
+    "criatividade": 30
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "controle-falhou",
+      "situacao": "Fim de plantão, o controle de qualidade de um equipamento falhou e há 40 resultados de pacientes esperando liberação. O supervisor diz: \"libera, a gente recalibra amanhã\".",
+      "opcoes": [
+        {
+          "texto": "Segurar os resultados, recalibrar e repetir as amostras, mesmo atrasando",
+          "recomendada": true
+        },
+        {
+          "texto": "Liberar os resultados e deixar uma observação interna",
+          "recomendada": false
+        },
+        {
+          "texto": "Liberar só os que \"parecem normais\" e repetir os alterados",
+          "recomendada": false
+        }
+      ],
+      "resposta": "O código de ética proíbe divulgar resultados que não estejam científica e tecnicamente comprovados e garante ao paciente informação confiável e rastreável. Resultado liberado com controle falho é resultado sem garantia, e quem assinou responde. O atraso incomoda; um laudo errado pode mudar um tratamento.",
+      "fontes": [
+        "cfbm-330-2020"
+      ]
+    }
+  ],
+  "mitos": [
+    {
+      "id": "quase-medico",
+      "afirmacao": "Biomédico é quase médico.",
+      "verdade": false,
+      "explicacao": "A lei coloca o biomédico na equipe de saúde em atividades complementares de diagnóstico. Ele produz o exame; diagnosticar e tratar é do médico.",
+      "fontes": [
+        "lei-6684"
+      ]
+    },
+    {
+      "id": "estetica-livre",
+      "afirmacao": "Biomédico pode fazer qualquer procedimento estético.",
+      "verdade": false,
+      "explicacao": "A habilitação em estética existe no conselho, mas é disputada na Justiça: em 2026, o TRF-1 manteve anulada uma norma do CFBM e tratou procedimentos invasivos como privativos de médico.",
+      "fontes": [
+        "crbm1-manual-2024",
+        "trf1-estetica-2026"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "Dá para fazer Biomedicina a distância.",
+      "verdade": false,
+      "explicacao": "O decreto de 2025 veda cursos da área da saúde totalmente a distância. Biomedicina pode ser presencial ou semipresencial.",
+      "fontes": [
+        "decreto-12456"
+      ]
+    },
+    {
+      "id": "registro",
+      "afirmacao": "Precisa de registro no CRBM para trabalhar.",
+      "verdade": true,
+      "explicacao": "A lei só permite o exercício da profissão com a carteira do conselho regional, e a anuidade em dia é condição para exercer.",
+      "fontes": [
+        "lei-6684"
+      ]
+    },
+    {
+      "id": "mesmo-que-biologia",
+      "afirmacao": "Biomedicina e Biologia são a mesma profissão.",
+      "verdade": false,
+      "explicacao": "Nasceram na mesma lei, como duas modalidades de Ciências Biológicas, e hoje têm conselhos separados. O biomédico atua na saúde humana; o biólogo, em ambiente, biotecnologia, ensino e saúde.",
+      "fontes": [
+        "lei-6684",
+        "crbm1-manual-2024"
+      ]
+    },
+    {
+      "id": "farmacia",
+      "afirmacao": "Biomédico pode trabalhar no balcão da farmácia.",
+      "verdade": false,
+      "explicacao": "Atuar em farmácia e responder pela dispensação de medicamentos é do farmacêutico, não do biomédico.",
+      "fontes": [
+        "crbm1-manual-2024"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "caged-biomedico",
+      "titulo": "Biomédico (CBO 2212-05): média R$ 3.337, mediana R$ 3.158, P25 R$ 2.525, P75 R$ 3.653, 41 h; saldo de +741 vagas em 12 meses (9.888 admissões, 9.147 desligamentos); perfil típico 25 anos, mulher (81,9%), laboratório clínico",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/biomedico-cbo-221205",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "Período das admissões: set/2025 a ago/2026. Conferir no painel do Novo Caged quando possível."
+    },
+    {
+      "id": "lei-6684",
+      "titulo": "Lei nº 6.684/1979: profissão de biomédico (bacharel em Ciências Biológicas, modalidade médica), atribuições em atividades complementares de diagnóstico, limites (radiografia sem interpretação, supervisão médica em hemoterapia e radiodiagnóstico) e carteira do conselho obrigatória (arts. 3º, 4º, 5º, 20 e 23)",
+      "orgao": "Presidência da República (Planalto)",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/1970-1979/l6684.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "O desmembramento dos conselhos de Biologia e Biomedicina veio com a Lei nº 7.017/1982; confirmar texto no Planalto."
+    },
+    {
+      "id": "crbm1-manual-2024",
+      "titulo": "Manual do Biomédico (out/2024): 34 habilitações listadas, estágio mínimo de 500 h ou pós-graduação para habilitação, limites de atuação (sem PAAF, biópsia, líquor, farmácia), estética com habilitação registrada, cerca de 100 mil biomédicos habilitados",
+      "orgao": "CRBM-1 (Conselho Regional de Biomedicina, 1ª Região)",
+      "url": "https://crbm1.gov.br/site2019/wp-content/uploads/2024/10/MANUAL-DO-BIOMEDICO-OUT24.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Documento de conselho regional que compila resoluções do CFBM. O número de profissionais é aproximado; buscar a estatística oficial do CFBM."
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República (Planalto)",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cne-4-2009",
+      "titulo": "Resolução CNE/CES nº 4/2009: carga horária mínima de Biomedicina, Educação Física, Farmácia, Fisioterapia, Nutrição e outros cursos da saúde",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/public/arquivos/legislacoes/Resolucao-cne-ces-004-2009-04-06.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Cópia hospedada pela ABMES; trocar pela URL do portal do MEC."
+    },
+    {
+      "id": "cne-2-2003",
+      "titulo": "Resolução CNE/CES nº 2/2003: Diretrizes Curriculares Nacionais do curso de Biomedicina (perfil do egresso, competências, conteúdos essenciais e estágio)",
+      "orgao": "Conselho Nacional de Educação (MEC), via Legisweb",
+      "url": "https://www.legisweb.com.br/legislacao/?id=100230",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "O PDF do portal do MEC (ces022003.pdf) não abriu na consulta; confirmar texto e trocar a URL."
+    },
+    {
+      "id": "cfbm-330-2020",
+      "titulo": "Resolução CFBM nº 330/2020, Código de Ética do Biomédico: não divulgar resultados sem comprovação científica e técnica (art. 5º, II), informação confiável e rastreável ao usuário (art. 11, n), vedado praticar procedimentos não reconhecidos pelo CFBM (art. 5º, XII), atividade incompatível com a habilitação é infração (art. 16, XXIV)",
+      "orgao": "Conselho Federal de Biomedicina, via CRBM-1",
+      "url": "https://crbm1.gov.br/site2019/wp-content/uploads/2020/11/RES-330-CODIGO-DE-ETICA-CFBM.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "cfbm-397-2025",
+      "titulo": "Resolução CFBM nº 397/2025: habilitação em Gerontologia Biomédica por pós-graduação de 360 h ou estágio de 500 h (DOU de 01/08/2025)",
+      "orgao": "Conselho Federal de Biomedicina, via ABMES",
+      "url": "https://abmes.org.br/arquivos/legislacoes/Resolucao-cfbm-397-2025-07-30.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL do DOU ou do site do CFBM."
+    },
+    {
+      "id": "trf1-estetica-2026",
+      "titulo": "TRF-1, 7ª Turma, mantém anulação de resolução do CFBM e afirma que procedimentos estéticos invasivos, mesmo minimamente invasivos, são privativos de médico (notícia de 19/03/2026)",
+      "orgao": "Jornal Opção",
+      "url": "https://www.jornalopcao.com.br/ultimas-noticias/trf-1-mantem-anulacao-de-norma-e-afirma-que-procedimentos-esteticos-invasivos-sao-exclusivos-de-medicos-806218/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Imprensa como ponte. Buscar o acórdão no TRF-1, o número da resolução anulada e a situação atual do processo (recursos ao STJ)."
+    }
+  ],
+  "manchetes": {
+    "trabalho": {
+      "titulo": "Os exames por trás do diagnóstico",
+      "linha": "Coleta, processa e analisa amostras em laboratório, banco de sangue e imagem, entre mais de 30 habilitações, com registro no conselho.",
+      "fontes": [
+        "lei-6684",
+        "crbm1-manual-2024"
       ]
     },
     "formacao": {
@@ -68,345 +488,12 @@
       "titulo": "A conta é a do biomédico com carteira",
       "linha": "A média considera só o salário-base de contratados com carteira, numa jornada média de 41 horas semanais.",
       "fontes": [
-        "caged-biomed"
+        "caged-biomedico"
       ]
     },
     "mercado": {
       "titulo": "Um trabalho de bastidor",
       "linha": "Laboratórios funcionam em turnos, inclusive à noite e nos fins de semana, e o paciente quase nunca sabe quem fez o exame."
     }
-  },
-  "secoes": {
-    "o_que_faz": {
-      "texto": "Atua em análises clínicas, bancos de sangue, diagnóstico por imagem e pesquisa. Pela lei da profissão, o biomédico pode fazer análises para o saneamento do meio ambiente, realizar radiografias, atuar sob supervisão médica em hemoterapia e radiodiagnóstico e planejar pesquisas científicas na sua área.",
-      "nao_faz": "Pode fazer a radiografia, mas não interpretá-la: a lei exclui a interpretação, e o laudo de exames de imagem é atividade privativa do médico.",
-      "fontes": [
-        "lei-6684",
-        "lei-12842"
-      ]
-    },
-    "dia_a_dia": {
-      "texto": "No laboratório de análises clínicas, a rotina é de coleta, processamento de amostras, controle de qualidade e liberação de resultados, muitas vezes em turnos. Na imagem e no banco de sangue, o trabalho é junto da equipe médica.",
-      "revisar_com_profissional": true,
-      "fontes": []
-    },
-    "o_que_estuda": {
-      "texto": "Bioquímica, microbiologia, imunologia, genética e técnicas de laboratório, com estágios em análises clínicas e nas outras áreas de atuação.",
-      "disciplinas": [
-        "Bioquímica",
-        "Microbiologia",
-        "Imunologia",
-        "Parasitologia",
-        "Hematologia",
-        "Genética",
-        "Citologia",
-        "Análises clínicas",
-        "Imagenologia"
-      ],
-      "revisar_com_profissional": true,
-      "fontes": []
-    },
-    "como_entrar": {
-      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Biologia e Química costumam pesar.",
-      "materias_chave": [
-        "enem-biologia",
-        "enem-quimica"
-      ],
-      "fontes": []
-    },
-    "quanto_ganha": {
-      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira, para uma jornada média de 41 horas semanais.",
-      "fontes": [
-        "caged-biomed"
-      ],
-      "medias": [
-        {
-          "cargo": "Biomédico",
-          "valor": 3336.82,
-          "periodo": "12 meses até ago/2026",
-          "fontes": [
-            "caged-biomed"
-          ],
-          "faixa": {
-            "de": 2525,
-            "ate": 3653,
-            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
-          }
-        }
-      ],
-      "chute": {
-        "pergunta": "Quanto ganha, por mês, um biomédico contratado com carteira no Brasil?",
-        "min": 1000,
-        "max": 9000,
-        "passo": 100,
-        "inicial": 5500
-      }
-    },
-    "caminhos": {
-      "itens": [
-        {
-          "titulo": "Análises clínicas",
-          "texto": "Laboratórios de exames de sangue, urina e outros materiais.",
-          "fontes": []
-        },
-        {
-          "titulo": "Imagem e banco de sangue",
-          "texto": "Radiografia e radiodiagnóstico e hemoterapia, sob supervisão médica.",
-          "fontes": [
-            "lei-6684"
-          ]
-        },
-        {
-          "titulo": "Meio ambiente",
-          "texto": "Análises físico-químicas e microbiológicas para o saneamento.",
-          "fontes": [
-            "lei-6684"
-          ]
-        },
-        {
-          "titulo": "Pesquisa e indústria",
-          "texto": "Genética, biotecnologia e laboratórios de pesquisa.",
-          "fontes": [
-            "lei-6684"
-          ]
-        }
-      ]
-    },
-    "ninguem_conta": {
-      "itens": [
-        {
-          "texto": "Muita gente confunde com Medicina. O trabalho é de bastidor: o paciente quase nunca sabe quem fez o exame dele.",
-          "fontes": []
-        },
-        {
-          "texto": "Laboratórios funcionam em turnos, inclusive à noite e nos fins de semana.",
-          "fontes": []
-        },
-        {
-          "texto": "A média de contratação com carteira fica em cerca de R$ 3,3 mil.",
-          "fontes": [
-            "caged-biomed"
-          ]
-        },
-        {
-          "texto": "Em imagem e banco de sangue, o trabalho é sob supervisão médica.",
-          "fontes": [
-            "lei-6684"
-          ]
-        }
-      ]
-    },
-    "vizinhas": [
-      {
-        "id": "farmacia",
-        "diferenca": "Medicamentos: produção, qualidade e orientação de uso."
-      },
-      {
-        "id": "medicina",
-        "diferenca": "Diagnostica, prescreve e faz o laudo dos exames de imagem."
-      },
-      {
-        "id": "enfermagem",
-        "diferenca": "Cuidado direto ao paciente, no leito."
-      }
-    ]
-  },
-  "mitos": [
-    {
-      "id": "radiografia",
-      "afirmacao": "Biomédico pode fazer radiografia.",
-      "verdade": true,
-      "explicacao": "A lei permite realizar o exame, excluída a interpretação.",
-      "fontes": [
-        "lei-6684"
-      ]
-    },
-    {
-      "id": "laudo",
-      "afirmacao": "Biomédico pode dar o laudo de uma radiografia.",
-      "verdade": false,
-      "explicacao": "A interpretação fica de fora das atribuições, e o laudo de exames de imagem é privativo do médico.",
-      "fontes": [
-        "lei-6684",
-        "lei-12842"
-      ]
-    },
-    {
-      "id": "mesma-coisa",
-      "afirmacao": "Biomedicina e Medicina são a mesma profissão com nomes diferentes.",
-      "verdade": false,
-      "explicacao": "Cada uma tem a sua lei e as suas atribuições.",
-      "fontes": [
-        "lei-6684",
-        "lei-12842"
-      ]
-    },
-    {
-      "id": "ead",
-      "afirmacao": "O curso pode ser totalmente a distância.",
-      "verdade": false,
-      "explicacao": "Cursos da saúde só podem ser presenciais ou semipresenciais, com pelo menos 40% de atividades presenciais.",
-      "fontes": [
-        "portaria-378"
-      ]
-    },
-    {
-      "id": "duracao",
-      "afirmacao": "O curso dura no mínimo 4 anos.",
-      "verdade": true,
-      "explicacao": "A carga mínima é de 3.200 horas, com integralização em pelo menos 4 anos.",
-      "fontes": [
-        "cne-4-2009"
-      ]
-    }
-  ],
-  "fontes": [
-    {
-      "id": "lei-6684",
-      "titulo": "Lei nº 6.684/1979: profissões de biólogo e biomédico; atividades do biomédico (art. 5º)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/1970-1979/l6684.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "caged-biomed",
-      "titulo": "Biomédico (CBO 2212-05): média de R$ 3.336,82, P25 de R$ 2.525,00 e P75 de R$ 3.653,00, jornada média de 41 h semanais, saldo de +741 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
-      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
-      "url": "https://www.salario.com.br/profissao/biomedico-cbo-221205",
-      "consultado_em": "2026-10-16",
-      "dados_atualizados_em": "2026-10-08",
-      "tipo": "secundaria"
-    },
-    {
-      "id": "lei-12842",
-      "titulo": "Lei nº 12.842/2013 (Lei do Ato Médico): atividades privativas do médico (arts. 4º e 5º)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12842.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "cne-4-2009",
-      "titulo": "Resolução CNE/CES nº 4/2009: carga horária mínima de Biomedicina, Educação Física, Farmácia, Fisioterapia, Nutrição e outros cursos da saúde",
-      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
-      "url": "https://abmes.org.br/public/arquivos/legislacoes/Resolucao-cne-ces-004-2009-04-06.pdf",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "portaria-378",
-      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
-      "orgao": "Ministério da Educação, via ABMES",
-      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "decreto-12456",
-      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    }
-  ],
-  "carta": {
-    "fato": "O biomédico pode fazer a radiografia, mas a lei não deixa que ele a interprete.",
-    "fontes": [
-      "lei-6684"
-    ]
-  },
-  "agora": [
-    {
-      "de": 0,
-      "ate": 7,
-      "texto": "Laboratórios de hospital funcionam de madrugada, com exames de urgência."
-    },
-    {
-      "de": 7,
-      "ate": 10,
-      "texto": "Coleta de amostras e chegada dos exames do dia."
-    },
-    {
-      "de": 10,
-      "ate": 13,
-      "texto": "Processamento nas máquinas e controle de qualidade."
-    },
-    {
-      "de": 13,
-      "ate": 14,
-      "texto": "Almoço em revezamento."
-    },
-    {
-      "de": 14,
-      "ate": 18,
-      "texto": "Análise, conferência e liberação dos resultados."
-    },
-    {
-      "de": 18,
-      "ate": 24,
-      "texto": "Turno da noite em hospitais e bancos de sangue."
-    }
-  ],
-  "agora_nota": "Cenas típicas, a revisar com profissionais; cada serviço é diferente.",
-  "dna": {
-    "pessoas": 40,
-    "pressao": 50,
-    "corpo": 30,
-    "rotina": 70,
-    "numeros": 60,
-    "criatividade": 35
-  },
-  "dna_calibrado": false,
-  "dilemas": [
-    {
-      "id": "quebrou",
-      "situacao": "Um paciente vê você fazendo a radiografia e pergunta: \"E aí, quebrou ou não?\"",
-      "opcoes": [
-        {
-          "texto": "Dizer o que você viu na imagem",
-          "recomendada": false
-        },
-        {
-          "texto": "Explicar que o laudo vem do médico e como o resultado chega até ele",
-          "recomendada": true
-        },
-        {
-          "texto": "Dizer que não pode falar e sair rápido",
-          "recomendada": false
-        }
-      ],
-      "resposta": "A lei permite ao biomédico fazer a radiografia, mas exclui a interpretação, e o laudo de exames de imagem é privativo do médico. Explicar o caminho do resultado acolhe o paciente sem passar do limite.",
-      "fontes": [
-        "lei-6684",
-        "lei-12842"
-      ]
-    }
-  ],
-  "formacao": {
-    "nota": "Duração mínima pelas normas nacionais.",
-    "etapas": [
-      {
-        "id": "graduacao",
-        "nome": "Graduação (bacharelado)",
-        "anos_de": 4,
-        "anos_ate": 4,
-        "texto": "3.200 horas em 4 anos, com estágios em laboratório.",
-        "fontes": [
-          "cne-4-2009"
-        ],
-        "tipo": "principal"
-      },
-      {
-        "id": "especializacao",
-        "nome": "Especialização",
-        "anos_de": 1,
-        "anos_ate": 2,
-        "texto": "Em análises clínicas, imagem ou genética.",
-        "fontes": [],
-        "tipo": "depois"
-      }
-    ]
   }
 }

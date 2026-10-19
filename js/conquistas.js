@@ -192,6 +192,22 @@ const Conquistas = (() => {
       icone: 'i-estrela',
       testar: () => Object.keys((mapa().med && mapa().med.areasVistas) || {}).length >= 12,
     },
+    {
+      // Panorama do Marketing Digital (2026-10-19): as nove áreas ficam em mapa().pan_marketing.areasVistas
+      id: 'nove-em-nove',
+      nome: 'Nove em nove',
+      descricao: 'Abriu as nove áreas do Panorama do Marketing Digital.',
+      icone: 'i-lampada',
+      testar: () => Object.keys((mapa().pan_marketing && mapa().pan_marketing.areasVistas) || {}).length >= 9,
+    },
+    {
+      // Panorama de Finanças, Gestão e Negócios (2026-10-19): as dez áreas ficam em mapa().pan_negocios.areasVistas
+      id: 'dez-em-dez-negocios',
+      nome: 'Dez em dez, de novo',
+      descricao: 'Abriu as dez áreas do Panorama de Finanças, Gestão e Negócios.',
+      icone: 'i-grafico',
+      testar: () => Object.keys((mapa().pan_negocios && mapa().pan_negocios.areasVistas) || {}).length >= 10,
+    },
   ];
   const lerGerais = () => { const g = Dados.ler(CHAVE_GERAIS, null); return g && typeof g === 'object' ? g : {}; };
 

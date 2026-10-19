@@ -3,9 +3,9 @@
   "versao": 1,
   "nome": "Engenharia de Produção",
   "area": "engenharia",
-  "frase": "Organiza fábricas, processos e cadeias de suprimento para produzir mais, melhor e com menos desperdício.",
+  "frase": "Não constrói a coisa: desenha como ela é feita, com menos desperdício, menos tempo e menos erro.",
   "status": "rascunho",
-  "conferido_em": "2026-10-16",
+  "conferido_em": "2026-10-18",
   "revisao": {
     "fontes": "conferidas",
     "ia": "pendente",
@@ -18,44 +18,490 @@
     "industria",
     "conselho-profissional"
   ],
+  "trends_id": null,
+  "carta": {
+    "fato": "É o engenheiro que não projeta prédio, ponte nem motor. Projeta o jeito de produzir. O perfil típico de contratação tem 31 anos e trabalha em escritório de engenharia, não em fábrica.",
+    "fontes": [
+      "caged-eng-producao"
+    ]
+  },
   "numeros": {
     "duracao": {
       "valor": "5 anos",
-      "detalhe": "3.600 horas, bacharelado",
+      "detalhe": "3.600 horas, bacharelado, mesma carga de todas as engenharias",
       "fontes": [
-        "cne-2-2007"
+        "cne-2-2007",
+        "cne-2-2019"
       ]
     },
     "formato": {
-      "valor": "Presencial ou semipresencial",
-      "detalhe": "sem EAD; no semipresencial, pelo menos 40% de atividades presenciais",
+      "valor": "Presencial ou EAD",
+      "detalhe": "não está na lista de cursos com EAD proibido pelo decreto de 2025",
       "fontes": [
-        "portaria-378",
         "decreto-12456"
       ]
     },
     "salario": {
       "valor": "R$ 11.530",
-      "detalhe": "média de contratação de engenheiro de produção com carteira, salário-base, 12 meses até ago/2026",
+      "detalhe": "média de contratação com carteira, salário-base, 12 meses até out/2026",
       "fontes": [
         "caged-eng-producao"
       ]
     },
     "registro": {
-      "valor": "Crea",
-      "detalhe": "registro no conselho regional onde vai trabalhar, para exercer",
+      "valor": "CREA",
+      "detalhe": "registro obrigatório para exercer a engenharia",
       "fontes": [
         "lei-5194"
       ]
     }
   },
+  "agora": [
+    {
+      "de": 0,
+      "ate": 6,
+      "texto": "Fábrica de três turnos não dorme. O engenheiro de plantão recebe a mensagem: linha parada, gargalo no setor de embalagem."
+    },
+    {
+      "de": 6,
+      "ate": 8,
+      "texto": "Reunião de início de turno no chão de fábrica: indicadores de ontem, metas de hoje, o que travou."
+    },
+    {
+      "de": 8,
+      "ate": 12,
+      "texto": "Mapear processo, cronometrar etapas, levantar dados. Muito Excel, algum software de simulação, conversa com operador."
+    },
+    {
+      "de": 12,
+      "ate": 14,
+      "texto": "Almoço no refeitório da empresa. Em consultoria, é marmita no cliente ou almoço de negócios."
+    },
+    {
+      "de": 14,
+      "ate": 18,
+      "texto": "Apresentar resultado para gerência, negociar prioridade com manutenção, revisar custo do projeto. Reunião atrás de reunião."
+    },
+    {
+      "de": 18,
+      "ate": 24,
+      "texto": "Quem é de logística acompanha a expedição da noite. Quem é de projetos fecha o relatório que vai para o cliente amanhã."
+    }
+  ],
+  "agora_nota": "Engenharia de Produção tem rotinas de fábrica, de escritório e de consultoria, bem diferentes entre si. Cenas típicas, a revisar com profissionais.",
+  "contexto": {
+    "texto": "Quem é contratado com carteira como engenheiro de produção tem, no perfil mais comum, 31 anos, curso superior completo, é homem e trabalha em escritório de engenharia.",
+    "fontes": [
+      "caged-eng-producao"
+    ]
+  },
+  "secoes": {
+    "o_que_faz": {
+      "texto": "Projeta, organiza e melhora sistemas de produção de bens e serviços. Isso quer dizer: desenhar o layout de uma fábrica, definir a sequência de operações, dimensionar estoque e logística, controlar qualidade, calcular custos e viabilidade, planejar a produção e medir se o que foi planejado aconteceu. O conselho reconhece ao engenheiro de produção as 18 atividades gerais da engenharia (projeto, direção, vistoria, perícia, consultoria, ensino) aplicadas a procedimentos de fabricação, métodos e sequências de produção e instalações industriais. Na prática, está na indústria, mas também em logística, hospitais, bancos, varejo, tecnologia e consultoria.",
+      "nao_faz": "Não projeta edifícios, estruturas, estradas nem instalações elétricas: isso é de outras modalidades da engenharia. Não é administrador: a formação é de cálculo, física e métodos quantitativos, com gestão por cima, não o contrário.",
+      "fontes": [
+        "confea-235",
+        "confea-218",
+        "lei-5194"
+      ]
+    },
+    "dia_a_dia": {
+      "texto": "Na indústria, o dia começa no chão de fábrica: reunião de turno, indicadores, o que parou e por quê. Depois vem o trabalho de mesa: mapear o processo, cronometrar, levantar dados, montar a planilha, rodar a simulação, propor a mudança. Muita reunião com manutenção, qualidade, compras e gerência; o engenheiro de produção é quem fala com todo mundo e raramente decide sozinho. Em logística e supply chain, a rotina gira em torno de prazos, estoques e transportadoras, com pressão por data. Em consultoria, são projetos de alguns meses em clientes diferentes, viagens e apresentação de resultados para diretoria. Em serviços (hospital, banco, varejo), o nome do cargo quase nunca é engenheiro: é analista de processos, de operações, de melhoria contínua.",
+      "revisar_com_profissional": true,
+      "fontes": []
+    },
+    "o_que_estuda": {
+      "texto": "Os dois primeiros anos são o núcleo comum das engenharias: cálculo, álgebra linear, física, química, programação, desenho técnico, estatística. Depois entram as matérias da modalidade: pesquisa operacional (otimizar com matemática), engenharia de métodos e ergonomia, planejamento e controle da produção, logística, qualidade e confiabilidade, engenharia econômica e custos, gestão de projetos, simulação, engenharia do produto e sustentabilidade. As diretrizes de 2019 exigem estágio supervisionado, trabalho de conclusão e atividades de extensão, e pedem que o curso trabalhe competências (resolver problemas reais) e não só conteúdo.",
+      "disciplinas": [
+        "Cálculo e álgebra linear",
+        "Física e fenômenos de transporte",
+        "Estatística e probabilidade",
+        "Programação e computação",
+        "Pesquisa operacional",
+        "Engenharia de métodos e ergonomia",
+        "Planejamento e controle da produção",
+        "Logística e cadeia de suprimentos",
+        "Gestão da qualidade",
+        "Engenharia econômica e custos",
+        "Gestão de projetos",
+        "Simulação de sistemas",
+        "Engenharia do produto",
+        "Engenharia do trabalho e segurança"
+      ],
+      "revisar_com_profissional": true,
+      "fontes": [
+        "cne-2-2019",
+        "cne-2-2007"
+      ]
+    },
+    "como_entrar": {
+      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni e Fies. A concorrência costuma ficar acima da média das engenharias nas públicas, porque o curso atrai quem quer engenharia sem abrir mão de gestão. Matemática e Física são as matérias que mais pesam, no vestibular e no curso: os dois primeiros anos são quase só cálculo e física, e é aí que muita gente desiste.",
+      "materias_chave": [
+        "enem-matematica",
+        "enem-fisica"
+      ],
+      "fontes": []
+    },
+    "quanto_ganha": {
+      "texto": "Como toda engenharia, a profissão tem piso por lei: a Lei 4.950-A/1966 fixa seis salários mínimos para jornada de 6 horas diárias, com acréscimo de 25% nas horas além disso (8,5 salários mínimos para 8 horas). Em 2022, o STF congelou a base de cálculo no salário mínimo de março de 2022 (R$ 1.212): o piso deixou de subir junto com o mínimo. A média de contratação com carteira fica bem acima do piso, e a faixa é estreita em comparação com outras engenharias. O detalhe: o piso e a média valem para quem é contratado com o CBO de engenheiro de produção. Quem entra como analista, trainee ou coordenador não está nessa conta.",
+      "fontes": [
+        "lei-4950a",
+        "stf-adpf-53",
+        "caged-eng-producao"
+      ],
+      "pisos": [
+        {
+          "cargo": "Engenheiro, 6 horas por dia (6 salários mínimos de março de 2022)",
+          "valor": 7272,
+          "fontes": [
+            "lei-4950a",
+            "stf-adpf-53"
+          ]
+        },
+        {
+          "cargo": "Engenheiro, 8 horas por dia (8,5 salários mínimos de março de 2022)",
+          "valor": 10302,
+          "fontes": [
+            "lei-4950a",
+            "stf-adpf-53"
+          ]
+        }
+      ],
+      "piso_regra": "Vale para empregados com carteira contratados como engenheiro, não para servidores estatutários nem para autônomos. A base é o salário mínimo de R$ 1.212 (março de 2022), congelada pelo STF; convenções coletivas podem fixar valores maiores. Os valores em reais são cálculo nosso a partir da lei e da decisão.",
+      "piso_regra_fontes": [
+        "lei-4950a",
+        "stf-adpf-53"
+      ],
+      "medias": [
+        {
+          "cargo": "Engenheiro de produção",
+          "valor": 11529.56,
+          "periodo": "12 meses até out/2026",
+          "faixa": {
+            "de": 8000,
+            "ate": 14000,
+            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
+          },
+          "fontes": [
+            "caged-eng-producao"
+          ]
+        }
+      ],
+      "chute": {
+        "pergunta": "Quanto ganha, por mês, um engenheiro de produção contratado com carteira no Brasil?",
+        "min": 1000,
+        "max": 20000,
+        "passo": 100,
+        "inicial": 6000
+      }
+    },
+    "caminhos": {
+      "itens": [
+        {
+          "titulo": "Indústria",
+          "texto": "Processos, PCP, qualidade, melhoria contínua e gestão de fábrica. É o caminho clássico e o que mais usa o título de engenheiro.",
+          "fontes": []
+        },
+        {
+          "titulo": "Logística e supply chain",
+          "texto": "Planejamento de demanda, estoques, transporte e distribuição, em indústrias, varejo e operadores logísticos.",
+          "fontes": []
+        },
+        {
+          "titulo": "Consultoria e projetos",
+          "texto": "Firmas de consultoria em operações e escritórios de engenharia: projetos curtos, clientes variados, muita viagem e apresentação.",
+          "fontes": [
+            "caged-eng-producao"
+          ]
+        },
+        {
+          "titulo": "Dados, finanças e tecnologia",
+          "texto": "A base quantitativa leva muita gente para análise de dados, mercado financeiro, produto e operações em empresas de tecnologia. Sem o título de engenheiro no cargo.",
+          "fontes": []
+        },
+        {
+          "titulo": "Concursos e pós-graduação",
+          "texto": "Estatais, agências reguladoras e tribunais de contas abrem vagas para engenheiros; mestrado e doutorado levam à pesquisa e ao ensino.",
+          "fontes": []
+        }
+      ]
+    },
+    "ninguem_conta": {
+      "itens": [
+        {
+          "texto": "O mercado com carteira para o CBO de engenheiro de produção encolheu no último ano: saldo de menos 320 vagas em 12 meses, com 4.367 admissões e 4.687 desligamentos. Muita gente da área trabalha com outro nome no crachá.",
+          "fontes": [
+            "caged-eng-producao"
+          ]
+        },
+        {
+          "texto": "A faixa salarial é das mais estreitas entre as engenharias: um em cada quatro contratados ganha até R$ 8.000 e um em cada quatro ganha mais de R$ 14.000. Bom para começar; quem quer multiplicar, em geral, migra para gestão ou consultoria.",
+          "fontes": [
+            "caged-eng-producao"
+          ]
+        },
+        {
+          "texto": "Você vai passar os dois primeiros anos em cálculo e física, como qualquer engenheiro. Quem entra pensando em \"administração com diploma de engenharia\" se frustra cedo.",
+          "fontes": [
+            "cne-2-2007"
+          ]
+        },
+        {
+          "texto": "Seu trabalho é mudar o jeito como outras pessoas trabalham. Operador, supervisor e gerente nem sempre gostam. Boa parte do dia é convencer, não calcular.",
+          "fontes": []
+        },
+        {
+          "texto": "Como as atribuições são da produção industrial, há disputa no próprio conselho sobre o que o engenheiro de produção pode assinar. Antes de aceitar um projeto fora da sua área, confira com o CREA.",
+          "fontes": [
+            "confea-235"
+          ]
+        }
+      ]
+    },
+    "vizinhas": [
+      {
+        "id": "administracao",
+        "diferenca": "Gere a empresa inteira, com menos matemática; 4 anos. Produção é engenharia: 5 anos, cálculo, física e CREA."
+      },
+      {
+        "id": "engenharia-civil",
+        "diferenca": "Projeta e constrói a obra. Produção projeta como a obra (ou a fábrica) é organizada e abastecida."
+      },
+      {
+        "id": "engenharia-de-seguranca-do-trabalho",
+        "diferenca": "Pós-graduação aberta ao engenheiro de produção: foca em risco, acidente e doença no ambiente de trabalho."
+      },
+      {
+        "id": "sistemas",
+        "diferenca": "Constrói o software; o engenheiro de produção especifica o processo que o software vai automatizar."
+      }
+    ]
+  },
+  "formacao": {
+    "nota": "Durações mínimas pelas normas nacionais. Pós-graduação em gestão, lean, supply chain ou dados é comum, mas não obrigatória.",
+    "etapas": [
+      {
+        "id": "graduacao",
+        "nome": "Graduação (bacharelado)",
+        "anos_de": 5,
+        "anos_ate": 5,
+        "texto": "3.600 horas, com estágio supervisionado, trabalho de conclusão e extensão. Dá o registro no CREA.",
+        "fontes": [
+          "cne-2-2007",
+          "cne-2-2019",
+          "lei-5194"
+        ],
+        "tipo": "principal"
+      },
+      {
+        "id": "especializacao",
+        "nome": "Especialização ou MBA",
+        "anos_de": 1,
+        "anos_ate": 2,
+        "texto": "Lean, Seis Sigma, supply chain, gestão de projetos, segurança do trabalho (que exige pós própria para o registro).",
+        "fontes": [],
+        "tipo": "depois"
+      },
+      {
+        "id": "mestrado",
+        "nome": "Mestrado e doutorado",
+        "anos_de": 2,
+        "anos_ate": 6,
+        "texto": "Pesquisa em otimização, operações e ergonomia; caminho para o ensino superior.",
+        "fontes": [],
+        "tipo": "depois"
+      }
+    ]
+  },
+  "dna": {
+    "pessoas": 65,
+    "pressao": 60,
+    "corpo": 30,
+    "rotina": 45,
+    "numeros": 85,
+    "criatividade": 55
+  },
+  "dna_calibrado": false,
+  "dilemas": [
+    {
+      "id": "pular-inspecao",
+      "situacao": "Fim de mês, meta de produção em risco. O gerente pede para você liberar um lote sem a inspeção final de qualidade, \"só desta vez\", e registrar como aprovado. O produto vai para o consumidor.",
+      "opcoes": [
+        {
+          "texto": "Liberar e registrar como aprovado, porque a ordem veio de cima",
+          "recomendada": false
+        },
+        {
+          "texto": "Não liberar sem inspeção, explicar o risco por escrito e propor alternativa (inspeção por amostragem acelerada, hora extra da equipe)",
+          "recomendada": true
+        },
+        {
+          "texto": "Liberar sem registrar nada, para não deixar rastro",
+          "recomendada": false
+        }
+      ],
+      "resposta": "O Código de Ética do Sistema Confea/Crea veda prestar de má-fé prescrição técnica ou qualquer ato profissional, e omitir fato que transgrida a ética. Registrar como aprovado o que não foi inspecionado é exatamente isso, e o engenheiro responde pela assinatura, não o gerente. O dever é alertar sobre riscos e responsabilidades da prescrição técnica; a saída está em achar outro caminho para a meta, não em falsificar o registro.",
+      "fontes": [
+        "confea-1002"
+      ]
+    }
+  ],
+  "mitos": [
+    {
+      "id": "adm-disfarcada",
+      "afirmacao": "Engenharia de Produção é Administração com outro nome.",
+      "verdade": false,
+      "explicacao": "São 3.600 horas de engenharia, com os mesmos dois anos de cálculo e física das outras modalidades, e registro no CREA. Gestão entra por cima da base quantitativa.",
+      "fontes": [
+        "cne-2-2007",
+        "lei-5194"
+      ]
+    },
+    {
+      "id": "assinar-predio",
+      "afirmacao": "Engenheiro de produção pode assinar o projeto de um prédio.",
+      "verdade": false,
+      "explicacao": "As atribuições do engenheiro de produção são sobre procedimentos de fabricação, métodos de produção e instalações industriais. Edificações são do engenheiro civil.",
+      "fontes": [
+        "confea-235",
+        "confea-218"
+      ]
+    },
+    {
+      "id": "cinco-anos",
+      "afirmacao": "O curso dura 5 anos.",
+      "verdade": true,
+      "explicacao": "A carga mínima das engenharias é 3.600 horas, com integralização mínima de 5 anos.",
+      "fontes": [
+        "cne-2-2007"
+      ]
+    },
+    {
+      "id": "piso",
+      "afirmacao": "Engenheiro tem piso salarial por lei.",
+      "verdade": true,
+      "explicacao": "A Lei 4.950-A/1966 fixa seis salários mínimos para seis horas. Desde 2022, porém, a base de cálculo está congelada no mínimo da época, por decisão do STF.",
+      "fontes": [
+        "lei-4950a",
+        "stf-adpf-53"
+      ]
+    },
+    {
+      "id": "so-fabrica",
+      "afirmacao": "Engenheiro de produção só trabalha em fábrica.",
+      "verdade": false,
+      "explicacao": "Logística, hospitais, bancos, varejo, tecnologia e consultoria contratam. O perfil típico de contratação com carteira está em escritório de engenharia, não em fábrica.",
+      "fontes": [
+        "caged-eng-producao"
+      ]
+    },
+    {
+      "id": "ead",
+      "afirmacao": "O MEC proibiu engenharia a distância.",
+      "verdade": false,
+      "explicacao": "O decreto de 2025 proíbe EAD em Medicina, Direito, Enfermagem, Odontologia, Psicologia, licenciaturas e cursos de saúde. Engenharia não está na lista. Confira como cada curso faz laboratório e estágio.",
+      "fontes": [
+        "decreto-12456"
+      ]
+    }
+  ],
+  "fontes": [
+    {
+      "id": "caged-eng-producao",
+      "titulo": "Engenheiro de produção (CBO 2149-05): média R$ 11.529,56, mediana R$ 11.907, P25 R$ 8.000, P75 R$ 14.000, 43 h, amostra de 9.054; saldo de -320 vagas em 12 meses (4.367 admissões, 4.687 desligamentos); perfil típico de 31 anos, homem, superior completo, em escritório de engenharia",
+      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
+      "url": "https://www.salario.com.br/profissao/engenheiro-de-producao-cbo-214905",
+      "consultado_em": "2026-10-18",
+      "dados_atualizados_em": "2026-10-08",
+      "tipo": "secundaria",
+      "nota": "A página traz jornada de 43 h na tabela e 44 h no perfil típico."
+    },
+    {
+      "id": "cne-2-2007",
+      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
+      "orgao": "Conselho Nacional de Educação (MEC), via Normas Brasil",
+      "url": "https://www.normasbrasil.com.br/norma/resolucao-2-2007_106917.html",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL do PDF no portal do MEC (rces002_07.pdf), que não pôde ser lida nesta rodada."
+    },
+    {
+      "id": "cne-2-2019",
+      "titulo": "Resolução CNE/CES nº 2, de 24/04/2019: Diretrizes Curriculares Nacionais do Curso de Graduação em Engenharia (perfil por competências; estágio, trabalho de conclusão e extensão obrigatórios); revoga a Resolução CNE/CES 11/2002",
+      "orgao": "Conselho Nacional de Educação (MEC), via ABMES",
+      "url": "https://abmes.org.br/legislacoes/resolucao-cne-ces-no-2-2764",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pelo PDF no portal do MEC e confirmar os artigos de estágio, TCC e extensão no texto integral. A carga horária vem da Resolução CNE/CES 2/2007, não desta."
+    },
+    {
+      "id": "lei-5194",
+      "titulo": "Lei nº 5.194/1966: regula as profissões de engenheiro, arquiteto e engenheiro-agrônomo; exercício só após registro no Conselho Regional (art. 55); Confea como instância superior (art. 26)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l5194.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "lei-4950a",
+      "titulo": "Lei nº 4.950-A/1966: salário mínimo de engenheiros, químicos, arquitetos, agrônomos e veterinários: 6 salários mínimos para 6 horas diárias (arts. 1º, 3º, 4º e 5º) e horas excedentes com acréscimo de 25% (art. 6º)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l4950a.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    },
+    {
+      "id": "stf-adpf-53",
+      "titulo": "STF, ADPFs 53, 149 e 171 (julgamento em 2022): piso da Lei 4.950-A não é mais corrigido pelo salário mínimo; base de cálculo congelada no mínimo vigente na publicação da ata (R$ 1.212, março de 2022)",
+      "orgao": "Supremo Tribunal Federal, via informe da Findes",
+      "url": "https://findes.com.br/wp-content/uploads/2022/03/Informe-Estrategico-–-STF-fixa-a-base-de-calculo-dos-pisos-profissionais-de-engenharia-quimica-arquitetura-agronomia-e-veterinaria.pdf",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pelo acórdão ou pela notícia no portal do STF. Confirmar se houve lei federal posterior fixando nova base."
+    },
+    {
+      "id": "confea-235",
+      "titulo": "Resolução Confea nº 235/1975: compete ao engenheiro de produção o desempenho das atividades 01 a 18 da Resolução 218/1973 referentes a procedimentos de fabricação industrial, métodos e sequências de produção e instalações industriais",
+      "orgao": "Confea, via Engenharia 360",
+      "url": "https://engenharia360.com/conheca-as-resolucoes-e-leis-que-definem-as-atividades-de-um-engenheiro-de-producao/",
+      "consultado_em": "2026-10-18",
+      "tipo": "secundaria",
+      "nota": "Trocar pela URL da resolução em normativos.confea.org.br, que não respondeu nesta rodada."
+    },
+    {
+      "id": "confea-218",
+      "titulo": "Resolução Confea nº 218/1973: 18 atividades do art. 1º (projeto, direção, vistoria, perícia, avaliação, ensino...) e atribuições do engenheiro civil (art. 7º: edificações, estradas, saneamento, pontes e grandes estruturas)",
+      "orgao": "Confea, via LegisWeb",
+      "url": "https://www.legisweb.com.br/legislacao/?id=95475",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL em normativos.confea.org.br."
+    },
+    {
+      "id": "confea-1002",
+      "titulo": "Resolução Confea nº 1.002/2002 (Código de Ética Profissional): dever de alertar sobre riscos e responsabilidades das prescrições técnicas (art. 9º, III, f); vedado prestar de má-fé prescrição técnica ou ato profissional (art. 10, I, c) e omitir fato que transgrida a ética (art. 10, II, c)",
+      "orgao": "Confea, via Normas Brasil",
+      "url": "https://www.normasbrasil.com.br/norma/resolucao-1002-2002_97505.html",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria",
+      "nota": "Trocar pela URL do código no site do Confea."
+    },
+    {
+      "id": "decreto-12456",
+      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
+      "orgao": "Presidência da República",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
+      "consultado_em": "2026-10-18",
+      "tipo": "primaria"
+    }
+  ],
   "manchetes": {
     "trabalho": {
       "titulo": "Processos, qualidade e logística com olhar de engenharia",
-      "linha": "Planeja e melhora sistemas de produção de bens e serviços, com registro no Crea e ART nos contratos de engenharia.",
+      "linha": "Planeja e melhora sistemas de produção de bens e serviços, com registro no Crea para exercer a engenharia.",
       "fontes": [
         "lei-5194",
-        "lei-6496"
+        "confea-235"
       ]
     },
     "formacao": {
@@ -76,367 +522,5 @@
       "titulo": "As vagas seguem os polos industriais",
       "linha": "Muitas vagas ficam em polos industriais, nem sempre nas capitais, e convencer a equipe pesa tanto quanto o cálculo."
     }
-  },
-  "secoes": {
-    "o_que_faz": {
-      "texto": "Planeja e melhora sistemas de produção de bens e serviços: processos, qualidade, logística, custos, ergonomia, segurança do trabalho, gestão de projetos e estudos de viabilidade. Como toda engenharia, exige registro no Crea, e os contratos de serviços de engenharia ficam sujeitos à ART.",
-      "fontes": [
-        "lei-5194",
-        "lei-6496"
-      ]
-    },
-    "dia_a_dia": {
-      "texto": "Entre o escritório e o chão de fábrica, o centro de distribuição ou a operação: indicadores, planilhas, reuniões com as equipes de produção e projetos de melhoria. Parte do dia é medir e entender o processo de perto; parte é planejar e convencer as pessoas da mudança.",
-      "revisar_com_profissional": true,
-      "fontes": []
-    },
-    "o_que_estuda": {
-      "texto": "Base de engenharia (matemática, física, química e computação) e, depois, gestão da produção, qualidade, logística, pesquisa operacional, economia, custos e ergonomia.",
-      "disciplinas": [
-        "Cálculo",
-        "Física",
-        "Estatística",
-        "Pesquisa operacional",
-        "Planejamento e controle da produção",
-        "Gestão da qualidade",
-        "Logística e cadeia de suprimentos",
-        "Engenharia econômica",
-        "Custos industriais",
-        "Ergonomia e segurança do trabalho",
-        "Gestão de projetos",
-        "Processos de fabricação"
-      ],
-      "revisar_com_profissional": true,
-      "fontes": []
-    },
-    "como_entrar": {
-      "texto": "Na universidade pública, a entrada é pelo Enem, via Sisu, ou por vestibular próprio. Na privada, por vestibular ou pela nota do Enem, com Prouni (bolsa) e Fies (financiamento) como formas de pagar. Matemática e Física costumam pesar.",
-      "materias_chave": [
-        "enem-matematica",
-        "enem-fisica",
-        "enem-quimica",
-        "enem-redacao"
-      ],
-      "fontes": []
-    },
-    "quanto_ganha": {
-      "texto": "As médias consideram só o salário-base de quem foi contratado com carteira como engenheiro de produção, com jornada média de 43 horas por semana. Muita gente formada na área tem outros cargos no registro, como analista, coordenador ou gerente, e fica fora desta conta. A regra do salário mínimo profissional está abaixo da tabela.",
-      "fontes": [
-        "caged-eng-producao"
-      ],
-      "piso_regra": "Salário mínimo profissional: a Lei nº 4.950-A/1966 fixa 6 salários mínimos para 6 horas por dia a quem se formou em curso de 4 anos ou mais, com as horas além da sexta pagas com 25% a mais. O STF decidiu que o salário mínimo não pode servir de reajuste automático (ADPF 171), e um projeto de 2026 propõe trocar a regra por um valor em reais corrigido pelo INPC.",
-      "piso_regra_fontes": [
-        "lei-4950a",
-        "pl-piso-eng"
-      ],
-      "medias": [
-        {
-          "cargo": "Engenheiro de produção",
-          "valor": 11529.56,
-          "periodo": "12 meses até ago/2026",
-          "fontes": [
-            "caged-eng-producao"
-          ],
-          "faixa": {
-            "de": 8000,
-            "ate": 14000,
-            "rotulo": "faixa comum de contratação (percentis 25 e 75)"
-          }
-        }
-      ],
-      "chute": {
-        "pergunta": "Quanto ganha, por mês, um engenheiro de produção contratado com carteira no Brasil?",
-        "min": 2000,
-        "max": 20000,
-        "passo": 250,
-        "inicial": 9000
-      }
-    },
-    "caminhos": {
-      "itens": [
-        {
-          "titulo": "Indústria",
-          "texto": "Planejamento da produção, qualidade e manutenção.",
-          "fontes": []
-        },
-        {
-          "titulo": "Logística e cadeia de suprimentos",
-          "texto": "Compras, estoques, transporte e distribuição.",
-          "fontes": []
-        },
-        {
-          "titulo": "Consultoria e melhoria de processos",
-          "texto": "Projetos para cortar desperdício e custos.",
-          "fontes": []
-        },
-        {
-          "titulo": "Finanças e dados",
-          "texto": "Custos, estudos de viabilidade e análise de dados.",
-          "fontes": []
-        },
-        {
-          "titulo": "Serviços",
-          "texto": "Hospitais, bancos, varejo e empresas de tecnologia também têm processos para melhorar.",
-          "fontes": []
-        }
-      ]
-    },
-    "ninguem_conta": {
-      "itens": [
-        {
-          "texto": "Metade dos contratos de engenheiro de produção com carteira paga entre R$ 8 mil e R$ 14 mil de salário-base.",
-          "fontes": [
-            "caged-eng-producao"
-          ]
-        },
-        {
-          "texto": "O trabalho é mudar como as pessoas trabalham: convencer a equipe e a chefia pesa tanto quanto o cálculo.",
-          "fontes": []
-        },
-        {
-          "texto": "Assinar trabalho de que você não participou é exercício ilegal da profissão.",
-          "fontes": [
-            "lei-5194"
-          ]
-        },
-        {
-          "texto": "Muitas vagas ficam em polos industriais, nem sempre nas capitais.",
-          "fontes": []
-        }
-      ]
-    },
-    "vizinhas": [
-      {
-        "id": "administracao",
-        "diferenca": "Gestão de empresas, sem a base de engenharia."
-      },
-      {
-        "id": "engenharia-civil",
-        "diferenca": "Obras e infraestrutura, em vez de processos."
-      },
-      {
-        "id": "ciencia-da-computacao",
-        "diferenca": "Dados e sistemas, cada vez mais perto da produção."
-      }
-    ]
-  },
-  "mitos": [
-    {
-      "id": "engenharia",
-      "afirmacao": "Engenharia de Produção é Administração com outro nome.",
-      "verdade": false,
-      "explicacao": "É uma engenharia: carga mínima de 3.600 horas e registro no Crea para exercer.",
-      "fontes": [
-        "cne-2-2007",
-        "lei-5194"
-      ]
-    },
-    {
-      "id": "ead",
-      "afirmacao": "Dá para fazer Engenharia de Produção a distância.",
-      "verdade": false,
-      "explicacao": "Engenharias podem ser presenciais ou semipresenciais, com pelo menos 40% de atividades presenciais, mas não a distância.",
-      "fontes": [
-        "portaria-378"
-      ]
-    },
-    {
-      "id": "crea",
-      "afirmacao": "O engenheiro de produção precisa de registro no Crea.",
-      "verdade": true,
-      "explicacao": "Os engenheiros só exercem a profissão depois do registro no conselho regional.",
-      "fontes": [
-        "lei-5194"
-      ]
-    },
-    {
-      "id": "fabrica",
-      "afirmacao": "Engenheiro de produção só trabalha em fábrica.",
-      "verdade": false,
-      "explicacao": "As atribuições incluem estudos, projetos, análises e avaliações em qualquer organização; serviços e logística também contratam.",
-      "fontes": [
-        "lei-5194"
-      ]
-    },
-    {
-      "id": "piso",
-      "afirmacao": "Engenheiro de produção também tem salário mínimo profissional em lei.",
-      "verdade": true,
-      "explicacao": "A Lei nº 4.950-A/1966 vale para os diplomados em Engenharia.",
-      "fontes": [
-        "lei-4950a"
-      ]
-    }
-  ],
-  "fontes": [
-    {
-      "id": "lei-5194",
-      "titulo": "Lei nº 5.194/1966: exercício da engenharia e da agronomia; registro no Crea e exercício ilegal (arts. 6º, 7º e 55)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l5194.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "caged-eng-producao",
-      "titulo": "Engenheiro de produção (CBO 2149-05): média de R$ 11.529,56, P25 de R$ 8.000,00 e P75 de R$ 14.000,00, jornada média de 43 h semanais, saldo de −320 vagas, salário-base, Novo Caged, 12 meses (09/2025 a 08/2026)",
-      "orgao": "Portal Salário, com dados do Novo Caged (MTE)",
-      "url": "https://www.salario.com.br/profissao/engenheiro-de-producao-cbo-214905",
-      "consultado_em": "2026-10-16",
-      "dados_atualizados_em": "2026-10-08",
-      "tipo": "secundaria"
-    },
-    {
-      "id": "cne-2-2007",
-      "titulo": "Resolução CNE/CES nº 2/2007: carga horária mínima dos bacharelados presenciais (quadro anexo) e duração mínima por grupo de horas",
-      "orgao": "Conselho Nacional de Educação (MEC)",
-      "url": "http://portal.mec.gov.br/cne/arquivos/pdf/2007/rces002_07.pdf",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "portaria-378",
-      "titulo": "Portaria MEC nº 378/2025: formatos de oferta da graduação por área (presencial, semipresencial e a distância)",
-      "orgao": "Ministério da Educação, via ABMES",
-      "url": "https://abmes.org.br/arquivos/legislacoes/Portaria-mec-378-2025-05-19.pdf",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "lei-4950a",
-      "titulo": "Lei nº 4.950-A/1966: salário mínimo profissional de engenheiros, químicos, arquitetos, agrônomos e veterinários",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l4950a.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "decreto-12456",
-      "titulo": "Decreto nº 12.456/2025: novo marco da educação a distância (arts. 8º a 12 e 41)",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/D12456.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "lei-6496",
-      "titulo": "Lei nº 6.496/1977: Anotação de Responsabilidade Técnica (ART) em obras e serviços de engenharia",
-      "orgao": "Presidência da República",
-      "url": "https://www.planalto.gov.br/ccivil_03/leis/l6496.htm",
-      "consultado_em": "2026-10-16",
-      "tipo": "primaria"
-    },
-    {
-      "id": "pl-piso-eng",
-      "titulo": "PL nº 5.006/2026: novo piso para engenheiros, arquitetos, veterinários e outros, reajustado pelo INPC; cita a ADPF 171, em que o STF vetou o reajuste automático pelo salário mínimo",
-      "orgao": "Congresso em Foco",
-      "url": "https://www.congressoemfoco.com.br/noticia/121230/cid-gomes-propoe-novo-piso-para-engenheiros-arquitetos-e-veterinarios",
-      "consultado_em": "2026-10-16",
-      "tipo": "secundaria",
-      "nota": "Projeto em tramitação; conferir no site do Senado."
-    }
-  ],
-  "carta": {
-    "fato": "Engenharia de Produção não é Administração com outro nome: é uma engenharia, com no mínimo 3.600 horas de curso e registro no Crea para exercer.",
-    "fontes": [
-      "cne-2-2007",
-      "lei-5194"
-    ]
-  },
-  "agora": [
-    {
-      "de": 0,
-      "ate": 6,
-      "texto": "Turno da noite na fábrica: a produção não para, e alguém acompanha."
-    },
-    {
-      "de": 6,
-      "ate": 8,
-      "texto": "Troca de turno e reunião rápida com os líderes da produção."
-    },
-    {
-      "de": 8,
-      "ate": 12,
-      "texto": "Chão de fábrica: medição de tempos, problemas de qualidade e melhorias."
-    },
-    {
-      "de": 12,
-      "ate": 13,
-      "texto": "Almoço."
-    },
-    {
-      "de": 13,
-      "ate": 17,
-      "texto": "Planilhas, indicadores, planejamento da produção e projetos."
-    },
-    {
-      "de": 17,
-      "ate": 19,
-      "texto": "Reunião com a gerência e com fornecedores."
-    },
-    {
-      "de": 19,
-      "ate": 24,
-      "texto": "Fim do expediente para a maioria; em indústria de três turnos, o celular pode tocar."
-    }
-  ],
-  "agora_nota": "Cenas típicas, a revisar com profissionais; cada lugar de trabalho é diferente.",
-  "dna": {
-    "pessoas": 65,
-    "pressao": 65,
-    "corpo": 30,
-    "rotina": 55,
-    "numeros": 85,
-    "criatividade": 55
-  },
-  "dna_calibrado": false,
-  "dilemas": [
-    {
-      "id": "nome-consultoria",
-      "situacao": "Uma consultoria quer usar seu nome e seu registro no Crea em projetos de engenharia que outra pessoa, sem formação, vai tocar.",
-      "opcoes": [
-        {
-          "texto": "Aceitar: é dinheiro sem esforço",
-          "recomendada": false
-        },
-        {
-          "texto": "Recusar, ou aceitar só se participar de verdade dos projetos",
-          "recomendada": true
-        },
-        {
-          "texto": "Aceitar e pedir para não aparecer muito",
-          "recomendada": false
-        }
-      ],
-      "resposta": "Emprestar o nome a empresas que executam serviços sem a sua participação real é exercício ilegal da profissão. Se você assina, você responde.",
-      "fontes": [
-        "lei-5194"
-      ]
-    }
-  ],
-  "formacao": {
-    "nota": "Duração mínima pelas normas nacionais.",
-    "etapas": [
-      {
-        "id": "graduacao",
-        "nome": "Graduação (bacharelado)",
-        "anos_de": 5,
-        "anos_ate": 5,
-        "texto": "3.600 horas em 5 anos, com laboratórios e estágio.",
-        "fontes": [
-          "cne-2-2007"
-        ],
-        "tipo": "principal"
-      },
-      {
-        "id": "pos",
-        "nome": "MBA, especialização ou mestrado",
-        "anos_de": 1,
-        "anos_ate": 2,
-        "texto": "Em logística, qualidade, gestão de projetos ou dados.",
-        "fontes": [],
-        "tipo": "depois"
-      }
-    ]
   }
 }
