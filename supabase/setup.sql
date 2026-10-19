@@ -1188,7 +1188,7 @@ begin
   end loop;
   insert into public.batata_salas (codigo, jogadores, nomes, estado)
   values (v_cod, array[auth.uid()], array[v_nome], jsonb_build_object(
-    'status', 'aguardando', 'tempo', greatest(8, least(30, coalesce(p_tempo, 15))), 'vidas', jsonb_build_array(3, 3),
+    'status', 'aguardando', 'tempo', greatest(8, least(30, coalesce(p_tempo, 15))), 'vidas', jsonb_build_array(1, 1), 'alfabetos', jsonb_build_array(0, 0),
     'letras', jsonb_build_array('', ''), 'vez', 0, 'silaba', null, 'usadas', '[]'::jsonb, 'rodada', 0,
     'prazo', null, 'vencedor', null, 'ultima', null))
   on conflict (codigo) do update
@@ -1234,7 +1234,7 @@ declare
   v_eu integer;
   v_p text := lower(coalesce(p_palavra, ''));
   v_letras text;
-  v_vidas jsonb;
+  v_alf jsonb;
   v_rod integer;
   v_bonus boolean := false;
   c text;
@@ -1254,16 +1254,17 @@ begin
   foreach c in array regexp_split_to_array(v_p, '') loop
     if position(c in alfabeto) > 0 and position(c in v_letras) = 0 then v_letras := v_letras || c; end if;
   end loop;
-  v_vidas := e -> 'vidas';
+  -- Alfabeto completo: vale pontos no fim (2026-10-19: não dá mais vida; estourou, acabou)
+  v_alf := coalesce(e -> 'alfabetos', jsonb_build_array(0, 0));
   if length(v_letras) >= length(alfabeto) then
     v_letras := '';
     v_bonus := true;
-    v_vidas := jsonb_set(v_vidas, array[v_eu::text], to_jsonb(least(5, (v_vidas ->> v_eu)::int + 1)));
+    v_alf := jsonb_set(v_alf, array[v_eu::text], to_jsonb(coalesce((v_alf ->> v_eu)::int, 0) + 1));
   end if;
   v_rod := (e ->> 'rodada')::int + 1;
   e := e || jsonb_build_object(
     'usadas', (e -> 'usadas') || to_jsonb(v_p), 'letras', jsonb_set(e -> 'letras', array[v_eu::text], to_jsonb(v_letras)),
-    'vidas', v_vidas, 'vez', 1 - v_eu, 'rodada', v_rod, 'silaba', public.batata_silaba(v_rod),
+    'alfabetos', v_alf, 'vez', 1 - v_eu, 'rodada', v_rod, 'silaba', public.batata_silaba(v_rod),
     'prazo', public.batata_agora() + greatest(5000, (e ->> 'tempo')::int * 1000 - v_rod * 400),
     'ultima', jsonb_build_object('quem', v_eu, 'palavra', v_p, 'tipo', case when v_bonus then 'bonus' else 'ok' end));
   update public.batata_salas set estado = e, versao = versao + 1, atualizado_em = now() where codigo = s.codigo;
@@ -1271,7 +1272,7 @@ begin
 end;
 $$;
 
--- Passou do prazo? Qualquer um dos dois pode chamar: quem estava com a bomba perde uma vida.
+-- Passou do prazo? Qualquer um dos dois pode chamar: estourou, acabou (2026-10-19): quem estava com a bomba perde a partida.
 create or replace function public.batata_explodir(p_codigo text)
 returns jsonb
 language plpgsql security definer
@@ -1281,24 +1282,15 @@ declare
   s public.batata_salas;
   e jsonb;
   v_vez integer;
-  v_vida integer;
-  v_rod integer;
 begin
   select * into s from public.batata_salas where codigo = upper(trim(p_codigo)) for update;
   if not found or not (auth.uid() = any (s.jogadores)) then raise exception 'Sala não encontrada.'; end if;
   e := s.estado;
   if e ->> 'status' <> 'jogando' or public.batata_agora() <= (e ->> 'prazo')::bigint then return public.batata_ver(s.codigo); end if;
   v_vez := (e ->> 'vez')::int;
-  v_vida := (e -> 'vidas' ->> v_vez)::int - 1;
-  v_rod := (e ->> 'rodada')::int + 1;
-  e := e || jsonb_build_object('vidas', jsonb_set(e -> 'vidas', array[v_vez::text], to_jsonb(v_vida)),
-                               'ultima', jsonb_build_object('quem', v_vez, 'tipo', 'boom', 'silaba', e ->> 'silaba'));
-  if v_vida <= 0 then
-    e := e || jsonb_build_object('status', 'fim', 'vencedor', 1 - v_vez);
-  else
-    e := e || jsonb_build_object('vez', 1 - v_vez, 'rodada', v_rod, 'silaba', public.batata_silaba(v_rod),
-                                 'prazo', public.batata_agora() + greatest(5000, (e ->> 'tempo')::int * 1000 - v_rod * 400));
-  end if;
+  e := e || jsonb_build_object('vidas', jsonb_set(coalesce(e -> 'vidas', jsonb_build_array(1, 1)), array[v_vez::text], to_jsonb(0)),
+                               'ultima', jsonb_build_object('quem', v_vez, 'tipo', 'boom', 'silaba', e ->> 'silaba'),
+                               'status', 'fim', 'vencedor', 1 - v_vez);
   update public.batata_salas set estado = e, versao = versao + 1, atualizado_em = now() where codigo = s.codigo;
   return public.batata_ver(s.codigo);
 end;

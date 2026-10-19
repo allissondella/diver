@@ -3,15 +3,17 @@
  * antes de a bomba explodir na sua mão.
  * - Só valem palavras do dicionário brasileiro (VERO; js/dicionario.js), com 3 letras ou mais e sem repetir
  *   palavra na mesma partida. Acento não conta: "AÇÃO" se digita ACAO.
- * - Cada pessoa começa com 3 vidas. A bomba explodiu na sua vez? Perde uma vida e a vez passa.
- *   O pavio encurta a cada rodada (menos 0,4 s por rodada, nunca abaixo de 5 s).
- * - Bônus do alfabeto: usou todas as letras de A a Z (sem K, W e Y) nas suas palavras? Ganha uma vida (até 5).
+ * - Estourou, acabou (2026-10-19, pedido do usuário): a bomba explodiu na sua vez? Game over: quem estava com ela perde
+ *   (no Sozinho, a partida acaba). O pavio encurta a cada rodada (menos 0,4 s por rodada, nunca abaixo de 5 s).
+ * - Bônus do alfabeto: usou todas as letras de A a Z (sem K, W e Y) nas suas palavras? Ganha pontos: +10 no Sozinho,
+ *   +5 contra o robô e no online (lado a lado e treino não valem ponto).
  * - Modos: Sozinho (a bomba volta sempre para você; o pavio encurta a cada palavra e o nível sobe a cada
- *   30 s: pavio menor e sílabas mais difíceis), Treino (igual, mas a bomba não tira vida e não vale ponto),
+ *   30 s: pavio menor e sílabas mais difíceis), Treino (igual, mas a bomba não acaba a partida e não vale ponto),
  *   contra o robô (Fácil, Médio ou Difícil), lado a lado no mesmo computador e online, com outra pessoa
  *   (sala com código de 4 letras; o banco confere vez, tempo, sílaba e repetidas: funções batata_*).
- * - Pontos (só no placar da sala): Sozinho = 1 por palavra + 5 por nível alcançado, vale o recorde;
- *   vitória online 30; contra o robô 10 (Fácil), 15 (Médio) ou 25 (Difícil); lado a lado e treino não valem.
+ * - Pontos (só no placar da sala): Sozinho = 1 por palavra + 5 por nível alcançado + 10 por alfabeto, vale o recorde;
+ *   vitória online 30; contra o robô 10 (Fácil), 15 (Médio) ou 25 (Difícil); + 5 por alfabeto nos dois; lado a lado e
+ *   treino não valem.
  *   As vitórias somam até 150 por dia.
  * Palco em tela toda (2026-10-18, js/jogos/palco.js): um luau na praia à noite (o mar com a lua, o varal de lâmpadas e as
  * fogueiras). Quanto mais o pavio queima, mais o fogo cresce, as brasas sobem, o tique-taque acelera e a tela esquenta; a
@@ -21,8 +23,8 @@
 (() => {
   const { h, icone, plural } = UI;
   const ALFABETO = 'abcdefghijlmnopqrstuvxz';
-  const VIDAS = 3;
-  const MAX_VIDAS = 5;
+  const BONUS_ALFABETO = { sozinho: 10, outros: 5 }; // pontos por alfabeto completo
+  const ATRASO_FIM = 1300; // o cartão do game over espera a explosão (ms; menos com "reduzir movimento")
   const PAVIOS = [10, 15, 20];
   const ROBOS = {
     facil: { nome: 'Fácil', pontos: 10, espera: [3200, 6500], falha: 0.22, maxLetras: 7 },
@@ -84,11 +86,11 @@
 
       /* ---------- Menu: o cartão de abertura do palco (modo, pavio e o online) ---------- */
       const EXPLICA = {
-        sozinho: () => `A bomba volta sempre para você. O pavio começa com ${cfg.tempo} s e encurta a cada palavra; a cada ${SOBE_NIVEL} s o nível sobe (pavio menor e sílabas mais difíceis). 3 vidas. Vale 1 ponto por palavra + 5 por nível: conta o seu recorde.`,
-        treino: () => `Igual ao Sozinho (o nível também sobe a cada ${SOBE_NIVEL} s), mas a bomba não tira vida e não vale ponto. Encerre quando quiser.`,
-        robo: () => `A bomba vai e volta entre você e o robô, e o pavio encurta a cada rodada. Quem deixar explodir perde uma vida (3 para cada). Vencer o robô ${ROBOS[cfg.robo].nome} vale ${ROBOS[cfg.robo].pontos} pontos.`,
-        local: () => 'Duas pessoas no mesmo aparelho, uma de cada vez. Quem deixar a bomba explodir perde uma vida (3 para cada). Não vale ponto: é pela glória.',
-        online: () => `Com um colega, cada um no seu aparelho: crie a sala e passe o código de 4 letras, ou entre com o código que recebeu. Vencer vale ${PONTOS_ONLINE} pontos.`,
+        sozinho: () => `A bomba volta sempre para você. O pavio começa com ${cfg.tempo} s e encurta a cada palavra; a cada ${SOBE_NIVEL} s o nível sobe (pavio menor e sílabas mais difíceis). Estourou, acabou. Vale 1 ponto por palavra + 5 por nível + 10 por alfabeto completo: conta o seu recorde.`,
+        treino: () => `Igual ao Sozinho (o nível também sobe a cada ${SOBE_NIVEL} s), mas a bomba não acaba a partida e não vale ponto. Encerre quando quiser.`,
+        robo: () => `A bomba vai e volta entre você e o robô, e o pavio encurta a cada rodada. Estourou na sua mão, perdeu. Vencer o robô ${ROBOS[cfg.robo].nome} vale ${ROBOS[cfg.robo].pontos} pontos (+5 por alfabeto completo).`,
+        local: () => 'Duas pessoas no mesmo aparelho, uma de cada vez. Estourou na mão de quem, perdeu. Não vale ponto: é pela glória.',
+        online: () => `Com um colega, cada um no seu aparelho: crie a sala e passe o código de 4 letras, ou entre com o código que recebeu. Estourou na mão de quem, perdeu. Vencer vale ${PONTOS_ONLINE} pontos (+5 por alfabeto completo).`,
       };
       function menu(aviso = '', focar = '') {
         pararTudo();
@@ -166,14 +168,14 @@
         return { raiz, lados, silaba, pavio, vez, campo, msg, form, bomba, desenho };
       }
 
-      function pintarLado(t, i, { nome, vidas, letras, ultima, daVez }) {
+      function pintarLado(t, i, { nome, alfabetos = 0, letras, ultima, daVez }) {
         const lado = t.lados[i];
         lado.classList.toggle('sd-bat__lado--vez', !!daVez);
-        lado.querySelector('.sd-bat__vidas').replaceChildren(...Array.from({ length: Math.max(VIDAS, vidas) }, (_, k) => h('span', { class: `sd-bat__vida ${k < vidas ? '' : 'sd-bat__vida--vazia'}`.trim(), 'aria-hidden': 'true' })),
-          h('span', { class: 'visualmente-oculto', text: `${plural(vidas, 'vida', 'vidas')}` }));
+        const alf = alfabetos ? `${alfabetos === 1 ? 'Um alfabeto completo' : `${alfabetos} alfabetos completos`}` : '';
+        lado.querySelector('.sd-bat__vidas').replaceChildren(...(alf ? [h('span', { class: 'chip chip--ativo', text: alf })] : []));
         lado.querySelectorAll('.sd-bat__alfabeto span').forEach((s) => s.classList.toggle('sd-bat__letra--ok', letras.includes(s.dataset.c)));
         if (ultima !== undefined) lado.querySelector('.sd-bat__ultima').textContent = ultima || '';
-        lado.setAttribute('aria-label', `${nome}: ${plural(vidas, 'vida', 'vidas')}${daVez ? ', é a vez' : ''}`);
+        lado.setAttribute('aria-label', `${nome}${alf ? `: ${alf.toLowerCase()}` : ''}${daVez ? ', é a vez' : ''}`);
       }
 
       function pintarPavio(t, resta, total) {
@@ -252,7 +254,7 @@
         if (treino) t.form.after(h('button', { type: 'button', class: 'botao botao--fantasma botao--pequeno sd-bat__encerrar', onclick: () => terminarSozinho() }, 'Encerrar treino'));
         partida = {
           solo: true, treino, t, s, painel, tempo: cfg.tempo, inicio: performance.now(), nivel: 1, palavras: 0, explosoes: 0,
-          vidas: VIDAS, letras: '', ultima: '', usadas: [], silaba: silabaSolo(s, 1), prazo: 0, total: 0, fim: false,
+          alfabetos: 0, letras: '', ultima: '', usadas: [], silaba: silabaSolo(s, 1), prazo: 0, total: 0, fim: false,
         };
         novaBombaSolo(true);
         t.form.addEventListener('submit', (e) => {
@@ -267,17 +269,17 @@
         p.total = duracaoSolo(p);
         p.prazo = performance.now() + p.total;
         p.t.silaba.textContent = p.silaba.toUpperCase();
-        p.t.vez.textContent = p.treino ? 'Treino: sem pressa de vida, só de tempo!' : 'A bomba é sua!';
+        p.t.vez.textContent = p.treino ? 'Treino: a bomba estoura e o jogo segue.' : 'A bomba é sua!';
         p.t.campo.value = '';
         p.t.campo.placeholder = `Uma palavra com ${p.silaba.toUpperCase()}`;
-        pintarLado(p.t, 0, { nome: p.treino ? 'Treino' : cfg.nomes[0], vidas: p.treino ? 0 : p.vidas, letras: p.letras, ultima: p.ultima, daVez: true });
-        if (p.treino) p.t.lados[0].querySelector('.sd-bat__vidas').replaceChildren(h('span', { class: 'chip chip--ativo', text: 'sem vidas: é treino' }));
+        pintarLado(p.t, 0, { nome: p.treino ? 'Treino' : cfg.nomes[0], alfabetos: p.alfabetos, letras: p.letras, ultima: p.ultima, daVez: true });
+        if (p.treino) p.t.lados[0].querySelector('.sd-bat__vidas').replaceChildren(h('span', { class: 'chip chip--ativo', text: 'treino: não acaba' }));
         p.t.campo.focus({ preventScroll: !primeira });
       }
 
       function tiqueSozinho() {
         const p = partida;
-        if (!p || !p.solo || p.fim) return;
+        if (!p || !p.solo || p.fim || p.estourou) return;
         const agora = performance.now();
         const decorrido = (agora - p.inicio) / 1000;
         const nivel = 1 + Math.floor(decorrido / SOBE_NIVEL);
@@ -299,10 +301,9 @@
         if (p.treino) {
           p.explosoes++;
           sacudir(p.t, 'Bum! No treino a bomba não tira vida. Lá vem outra sílaba.', 'boom');
-        } else {
-          p.vidas--;
-          sacudir(p.t, p.vidas > 0 ? `Bum! Sobrou ${plural(p.vidas, 'vida', 'vidas')}.` : 'Bum! Acabaram as vidas.', 'boom');
-          if (p.vidas <= 0) return terminarSozinho();
+        } else { // estourou, acabou: o game over vem depois da explosão
+          sacudir(p.t, 'Bum! A batata estourou. Game over.', 'boom');
+          return gameOver(p, terminarSozinho);
         }
         p.silaba = silabaSolo(p.s, p.nivel);
         novaBombaSolo();
@@ -310,7 +311,7 @@
 
       function jogarSozinho(texto) {
         const p = partida;
-        if (!p || !p.solo || p.fim) return;
+        if (!p || !p.solo || p.fim || p.estourou) return;
         let palavra;
         try {
           palavra = conferir(texto, p.silaba, p.usadas);
@@ -325,8 +326,8 @@
         p.letras = novasLetras(p.letras, palavra);
         if (p.letras.length >= ALFABETO.length) {
           p.letras = '';
-          if (!p.treino) p.vidas = Math.min(MAX_VIDAS, p.vidas + 1);
-          sacudir(p.t, p.treino ? 'Alfabeto completo! (No jogo valendo, isso dá uma vida.)' : 'Alfabeto completo! Ganhou uma vida.', 'bonus');
+          p.alfabetos++;
+          sacudir(p.t, p.treino ? `Alfabeto completo! (No jogo valendo, isso dá +${BONUS_ALFABETO.sozinho} pontos.)` : `Alfabeto completo! +${BONUS_ALFABETO.sozinho} pontos.`, 'bonus');
         } else sacudir(p.t, `${palavra.toUpperCase()}: boa!`, 'ok');
         p.silaba = silabaSolo(p.s, p.nivel);
         novaBombaSolo();
@@ -340,13 +341,13 @@
         p.t.campo.disabled = true;
         const enc = p.t.raiz.querySelector('.sd-bat__encerrar');
         if (enc) enc.remove();
-        const pontos = p.palavras + 5 * (p.nivel - 1);
-        const segundos = Math.round((performance.now() - p.inicio) / 1000);
-        if (!p.treino) ctx.pontuar(pontos, { modo: 'sozinho', palavras: p.palavras, nivel: p.nivel, segundos });
+        const pontos = p.palavras + 5 * (p.nivel - 1) + BONUS_ALFABETO.sozinho * p.alfabetos;
+        const segundos = Math.round(((p.fimEm || performance.now()) - p.inicio) / 1000); // (sem a espera do game over)
+        if (!p.treino) ctx.pontuar(pontos, { modo: 'sozinho', palavras: p.palavras, nivel: p.nivel, alfabetos: p.alfabetos, segundos });
         const recorde = ctx.recorde();
         const melhor = pontos >= recorde && pontos > 0;
         fimDePartida(p.t, {
-          titulo: p.treino ? 'Treino encerrado' : melhor ? 'Seu melhor até agora!' : 'Bum! Acabaram as vidas',
+          titulo: p.treino ? 'Treino encerrado' : melhor ? 'Game over, mas é o seu melhor!' : 'Game over: a batata estourou',
           texto: p.treino
             ? `Treino encerrado: ${plural(p.palavras, 'palavra', 'palavras')} até o nível ${p.nivel}${p.explosoes ? `, com ${plural(p.explosoes, 'explosão', 'explosões')} no caminho` : ''}.`
             : `${plural(p.palavras, 'palavra', 'palavras')} até o nível ${p.nivel}: ${plural(pontos, 'ponto', 'pontos')} no placar da sala${melhor ? ' (seu melhor!)' : ''}.`,
@@ -372,7 +373,7 @@
         const t = montarTabuleiro(nomes);
         partida = {
           t, s, robo, nomes, tempo: cfg.tempo, rodada: 0, vez: robo ? 0 : Math.round(Math.random()), usadas: [],
-          vidas: [VIDAS, VIDAS], letras: ['', ''], ultima: ['', ''], palavras: [0, 0], silaba: sortearSilaba(s, 0), prazo: 0, total: 0, fim: false,
+          alfabetos: [0, 0], letras: ['', ''], ultima: ['', ''], palavras: [0, 0], silaba: sortearSilaba(s, 0), prazo: 0, total: 0, fim: false,
         };
         novaVez(true);
         t.form.addEventListener('submit', (e) => {
@@ -401,12 +402,12 @@
 
       function pintarTodos() {
         const p = partida;
-        [0, 1].forEach((i) => pintarLado(p.t, i, { nome: p.nomes[i], vidas: p.vidas[i], letras: p.letras[i], ultima: p.ultima[i], daVez: p.vez === i && !p.fim }));
+        [0, 1].forEach((i) => pintarLado(p.t, i, { nome: p.nomes[i], alfabetos: p.alfabetos[i], letras: p.letras[i], ultima: p.ultima[i], daVez: p.vez === i && !p.fim }));
       }
 
       function tique() {
         const p = partida;
-        if (!p || p.fim) return;
+        if (!p || p.fim || p.estourou) return;
         const resta = p.prazo - performance.now();
         pintarPavio(p.t, resta, p.total);
         if (resta <= 0) explodirLocal();
@@ -415,12 +416,22 @@
       function explodirLocal() {
         const p = partida;
         clearTimeout(roboTimer);
-        p.vidas[p.vez]--;
-        p.ultima[p.vez] = `Bum! Ninguém achou "${p.silaba.toUpperCase()}" a tempo.`;
+        p.ultima[p.vez] = `Bum! "${p.silaba.toUpperCase()}" estourou.`;
+        p.perdeu = p.vez;
         explosao(p.t);
-        sacudir(p.t, `A bomba explodiu na mão de ${p.nomes[p.vez]}!`, 'boom');
-        if (p.vidas[p.vez] <= 0) return terminarLocal(1 - p.vez);
-        proxima();
+        sacudir(p.t, `A batata estourou na mão de ${p.nomes[p.vez]}! Game over.`, 'boom');
+        gameOver(p, () => terminarLocal(1 - p.perdeu));
+      }
+
+      /** Estourou, acabou: para tudo, deixa a explosão aparecer e só então mostra o cartão do fim. */
+      function gameOver(p, terminar) {
+        p.estourou = true;
+        p.fimEm = performance.now();
+        clearInterval(relogio);
+        clearTimeout(roboTimer);
+        p.t.campo.disabled = true;
+        p.t.vez.textContent = 'Game over!';
+        setTimeout(() => { if (partida === p && !p.fim) terminar(); }, UI.movimentoReduzido ? 500 : ATRASO_FIM);
       }
 
       function proxima() {
@@ -439,15 +450,15 @@
         p.ultima[quem] = palavra.toUpperCase();
         if (p.letras[quem].length >= ALFABETO.length) {
           p.letras[quem] = '';
-          p.vidas[quem] = Math.min(MAX_VIDAS, p.vidas[quem] + 1);
-          sacudir(p.t, `Alfabeto completo! ${p.nomes[quem]} ganhou uma vida.`, 'bonus');
+          p.alfabetos[quem]++;
+          sacudir(p.t, p.robo && quem === 0 ? `Alfabeto completo! +${BONUS_ALFABETO.outros} pontos.` : `Alfabeto completo, ${p.nomes[quem]}!`, 'bonus');
         } else sacudir(p.t, `${p.nomes[quem]}: ${palavra.toUpperCase()}`, 'ok');
         proxima();
       }
 
       function jogarLocal(texto) {
         const p = partida;
-        if (!p || p.fim || (p.robo && p.vez === 1)) return;
+        if (!p || p.fim || p.estourou || (p.robo && p.vez === 1)) return;
         try {
           aceitar(p.vez, conferir(texto, p.silaba, p.usadas));
         } catch (e) {
@@ -464,7 +475,7 @@
         const curto = p.total < espera + 600;
         if (Math.random() < r.falha || curto) return; // deixa a bomba explodir
         roboTimer = setTimeout(async () => {
-          if (!partida || partida !== p || p.fim || p.vez !== 1) return;
+          if (!partida || partida !== p || p.fim || p.estourou || p.vez !== 1) return;
           const comuns = await Dicionario.palavrasComuns();
           const faltam = ALFABETO.split('').filter((c) => !p.letras[1].includes(c));
           let opcoes = comuns.filter((w) => w.length <= r.maxLetras && w.includes(p.silaba) && !p.usadas.includes(w));
@@ -475,7 +486,7 @@
           let i = 0;
           const ultima = p.t.lados[1].querySelector('.sd-bat__ultima');
           const digita = () => {
-            if (!partida || partida !== p || p.fim || p.vez !== 1) return;
+            if (!partida || partida !== p || p.fim || p.estourou || p.vez !== 1) return;
             i++;
             ultima.textContent = palavra.slice(0, i).toUpperCase();
             if (i < palavra.length) roboTimer = setTimeout(digita, UI.movimentoReduzido ? 0 : 70);
@@ -493,15 +504,18 @@
         pintarTodos();
         p.t.campo.disabled = true;
         const souEu = !p.robo || vencedor === 0;
-        const pontos = p.robo && vencedor === 0 ? p.robo.pontos : 0;
-        ctx.pontuar(pontos, { modo: p.robo ? `robo-${cfg.robo}` : 'local', venceu: p.robo ? vencedor === 0 : null, rodadas: p.rodada, palavras: p.usadas.length });
+        const pontos = p.robo ? (vencedor === 0 ? p.robo.pontos : 0) + BONUS_ALFABETO.outros * p.alfabetos[0] : 0;
+        ctx.pontuar(pontos, { modo: p.robo ? `robo-${cfg.robo}` : 'local', venceu: p.robo ? vencedor === 0 : null, rodadas: p.rodada, palavras: p.usadas.length, alfabetos: p.alfabetos[0] });
+        const perdedor = p.nomes[1 - vencedor];
         fimDePartida(p.t, {
-          titulo: p.robo ? (vencedor === 0 ? `Você venceu o Robô ${p.robo.nome}!` : `O Robô ${p.robo.nome} venceu dessa vez`) : `${p.nomes[vencedor]} venceu!`,
-          texto: p.robo ? (vencedor === 0 ? `+${pontos} pontos no placar da sala.` : 'Revanche?') : 'Boa partida, Divers.',
+          titulo: p.robo ? (vencedor === 0 ? `Você venceu o Robô ${p.robo.nome}!` : 'Game over: a batata estourou na sua mão') : `${p.nomes[vencedor]} venceu!`,
+          texto: p.robo
+            ? (vencedor === 0 ? `Estourou na mão do robô. +${plural(pontos, 'ponto', 'pontos')} no placar da sala.` : `${pontos ? `+${plural(pontos, 'ponto', 'pontos')} pelos alfabetos. ` : ''}Revanche?`)
+            : `A batata estourou na mão de ${perdedor}. Boa partida, Divers.`,
           feliz: souEu,
           deNovo: comecarLocal,
           numeros: p.robo
-            ? [['Rodadas', p.rodada, true], ['Suas palavras', p.palavras[0]], ['Suas vidas', Math.max(0, p.vidas[0])], ['Pontos', pontos]]
+            ? [['Rodadas', p.rodada, true], ['Suas palavras', p.palavras[0]], ['Alfabetos', p.alfabetos[0]], ['Pontos', pontos]]
             : [['Rodadas', p.rodada, true], [p.nomes[0], plural(p.palavras[0], 'palavra', 'palavras')], [p.nomes[1], plural(p.palavras[1], 'palavra', 'palavras')]],
         });
       }
@@ -587,18 +601,27 @@
         const ult = e.ultima;
         const mudouVez = !antes || antes.estado.vez !== e.vez || antes.estado.rodada !== e.rodada;
         [0, 1].forEach((i) => pintarLado(t, i, {
-          nome: d.nomes[i] || '…', vidas: e.vidas[i], letras: e.letras[i] || '', daVez: e.status === 'jogando' && e.vez === i,
+          nome: d.nomes[i] || '…', alfabetos: (e.alfabetos || [])[i] || 0, letras: e.letras[i] || '', daVez: e.status === 'jogando' && e.vez === i,
           ultima: ult && ult.quem === i ? (ult.tipo === 'boom' ? `Bum! "${String(ult.silaba || '').toUpperCase()}" explodiu.` : ult.tipo === 'saiu' ? 'Saiu da partida.' : String(ult.palavra || '').toUpperCase()) : undefined,
         }));
         if (ult && antes && antes.versao !== d.versao) {
           const quem = d.nomes[ult.quem];
           if (ult.tipo === 'boom') {
             explosao(t);
-            sacudir(t, `A bomba explodiu na mão de ${ult.quem === d.eu ? 'você' : quem}!`, 'boom');
-          } else if (ult.tipo === 'bonus') sacudir(t, `Alfabeto completo! ${quem} ganhou uma vida.`, 'bonus');
+            sacudir(t, `A batata estourou na mão de ${ult.quem === d.eu ? 'você' : quem}! Game over.`, 'boom');
+          } else if (ult.tipo === 'bonus') sacudir(t, ult.quem === d.eu ? `Alfabeto completo! +${BONUS_ALFABETO.outros} pontos.` : `Alfabeto completo, ${quem}!`, 'bonus');
           else if (ult.tipo === 'ok') sacudir(t, `${quem}: ${String(ult.palavra).toUpperCase()}`, 'ok');
         }
-        if (e.status === 'fim') return terminarOnline();
+        if (e.status === 'fim') { // estourou (ou alguém saiu): o cartão espera a explosão aparecer
+          if (o.fimMarcado) return;
+          o.fimMarcado = true;
+          clearInterval(o.poll);
+          clearInterval(relogio);
+          t.campo.disabled = true;
+          const boom = ult && ult.tipo === 'boom';
+          if (boom) t.vez.textContent = 'Game over!';
+          return setTimeout(() => { if (online === o) terminarOnline(); }, boom ? (UI.movimentoReduzido ? 500 : ATRASO_FIM) : 0);
+        }
         t.silaba.textContent = String(e.silaba || '').toUpperCase();
         const minha = e.vez === d.eu;
         t.vez.textContent = minha ? 'Sua vez!' : `Vez de ${d.nomes[e.vez]}`;
@@ -668,17 +691,19 @@
         o.t.campo.disabled = true;
         o.t.silaba.textContent = '';
         const venci = e.vencedor === d.eu;
+        const alfabetos = (e.alfabetos || [])[d.eu] || 0;
+        const pontos = (venci ? PONTOS_ONLINE : 0) + BONUS_ALFABETO.outros * alfabetos;
         if (!o.registrado) {
           o.registrado = true;
-          ctx.pontuar(venci ? PONTOS_ONLINE : 0, { modo: 'online', venceu: venci, rodadas: e.rodada, palavras: (e.usadas || []).length });
+          ctx.pontuar(pontos, { modo: 'online', venceu: venci, rodadas: e.rodada, palavras: (e.usadas || []).length, alfabetos });
         }
         const saiu = e.ultima && e.ultima.tipo === 'saiu' && e.ultima.quem !== d.eu;
         fimDePartida(o.t, {
-          titulo: venci ? 'Você venceu!' : `${d.nomes[e.vencedor] || 'A outra pessoa'} venceu dessa vez`,
-          texto: venci ? `${saiu ? 'A outra pessoa saiu. ' : ''}+${PONTOS_ONLINE} pontos no placar da sala.` : 'Revanche?',
+          titulo: venci ? 'Você venceu!' : saiu ? `${d.nomes[e.vencedor] || 'A outra pessoa'} venceu dessa vez` : 'Game over: a batata estourou na sua mão',
+          texto: venci ? `${saiu ? 'A outra pessoa saiu. ' : 'Estourou do outro lado. '}+${plural(pontos, 'ponto', 'pontos')} no placar da sala.` : `${pontos ? `+${plural(pontos, 'ponto', 'pontos')} pelos alfabetos. ` : ''}Revanche?`,
           feliz: venci,
           deNovo: null,
-          numeros: [['Rodadas', e.rodada, true], ['Palavras', (e.usadas || []).length], ['Pontos', venci ? PONTOS_ONLINE : 0]],
+          numeros: [['Rodadas', e.rodada, true], ['Palavras', (e.usadas || []).length], ['Pontos', pontos]],
         });
       }
 
@@ -703,8 +728,8 @@
         ctx.guia([
           { desenho: 'relogio', titulo: 'Batata Quente', texto: 'Aparece uma sílaba. Digite uma palavra que tenha essa sílaba antes de a bomba explodir na sua mão. Depois, a bomba passa para o outro lado.' },
           { desenho: 'livro', titulo: 'Só palavras de verdade', texto: 'Vale qualquer palavra do dicionário brasileiro com 3 letras ou mais, sem repetir na mesma partida. Acento não conta.' },
-          { desenho: 'estrela', titulo: 'Vidas e bônus', texto: 'Cada um começa com 3 vidas. Usou todas as letras do alfabeto (sem K, W e Y) nas suas palavras? Ganha uma vida extra.' },
-          { alvo: '#sd-bat-menu', desenho: 'controle', titulo: 'Cinco jeitos de jogar', texto: `Sozinho (o pavio encurta e o nível sobe a cada ${SOBE_NIVEL} s; vale o recorde), Treino (sem vidas e sem pontos), contra o robô (Fácil, Médio ou Difícil), lado a lado no mesmo computador ou online com um colega, por código.` },
+          { desenho: 'estrela', titulo: 'Estourou, acabou', texto: 'A batata estourou na sua mão? Game over. Usou todas as letras do alfabeto (sem K, W e Y) nas suas palavras? Ganha pontos extras.' },
+          { alvo: '#sd-bat-menu', desenho: 'controle', titulo: 'Cinco jeitos de jogar', texto: `Sozinho (o pavio encurta e o nível sobe a cada ${SOBE_NIVEL} s; vale o recorde), Treino (a bomba estoura e o jogo segue, sem pontos), contra o robô (Fácil, Médio ou Difícil), lado a lado no mesmo computador ou online com um colega, por código.` },
         ], forcar);
       }
 

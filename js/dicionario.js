@@ -2,7 +2,9 @@
  * dicionario.js — o dicionário brasileiro da Sala de Descompressão (Palavrinha do Dia e Batata Quente).
  *
  * Fonte: VERO, o corretor do LibreOffice para o português do Brasil (LGPLv3/MPL; data/dicionario/leia-me-vero.txt),
- * expandido em todas as formas (plural, feminino, conjugações): 4,4 milhões de palavras.
+ * expandido em todas as formas (plural, feminino, conjugações): 4,4 milhões de palavras. Desde 2026-10-19, completado
+ * com o "pt-br" de Fernando Serboncini (MIT; data/dicionario/leia-me-pt-br.txt): +5,4 mil palavras do léxico, das
+ * conjugações e flexões frequentes ("vocês", "pés"), sem nomes próprios, inglês, siglas, palavrões nem ofensas.
  * Tudo em minúsculas, sem acento (ç vira c) e só de 2 a 20 letras a–z: "Ação" e "acao" são a mesma palavra.
  *
  * Arquivos (todos dentro do repositório, nada vem de fora):
@@ -12,7 +14,8 @@
  *                                permite busca binária sem montar 4 milhões de textos na memória.
  *  - data/dicionario/palavrinha/<n>.txt  Palavrinha do Dia: só as de n letras (5 a 10), já com todos os prefixos, no
  *                                mesmo formato. O jogo baixa só o tamanho da palavra do dia (de ~20 KB a ~700 KB).
- * Palavrões, ofensas e insultos foram tirados de todas as listas na hora de gerar (a lista de bloqueio não fica aqui).
+ * Palavrões, ofensas e insultos foram tirados de todas as listas na hora de gerar (a lista de bloqueio não fica aqui);
+ * palavras do dia a dia com duplo sentido ficam (vaca, pinto, saco, pau, rola).
  *  - data/dicionario/comuns.txt  radicais do dicionário de 3 a 12 letras (as jogadas do robô da Batata Quente).
  * O navegador baixa cada arquivo uma vez (comprimido, ~2,7 MB o maior) e guarda no cache.
  */

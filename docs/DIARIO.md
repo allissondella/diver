@@ -5,6 +5,15 @@
 
 ---
 
+## 2026-10-19 · Batata Quente: estourou, acabou, e o dicionário completado
+- **Pedido do usuário:** "Faltou dar game over quando a batata estoura" e "algumas palavras simples ele não achou, então baixei esse dicionario, alimenta com ele" (zip do *pt-br* de Fernando Serboncini). Regra escolhida por ele: **"Estourou, acabou"** em todos os modos que valem ponto (o Treino continua sem fim).
+- **Feito:**
+  - **Game over:** a primeira explosão encerra a partida no Sozinho, contra o robô, lado a lado e online. A tela para ("Game over!", visor 00.00), a explosão aparece e o cartão vem 1,3 s depois. Sem corações; o alfabeto completo vale +10 pontos no Sozinho e +5 contra o robô e no online. Tutorial da Batata na versão 2.
+  - **Online:** `batata_criar`, `batata_jogar` e `batata_explodir` em `supabase/setup.sql` (explodiu = `status: fim`; `estado.alfabetos`). Testado num Postgres local e aplicado no **banco de testes**; permissões iguais.
+  - **Dicionário:** +5,4 mil palavras do léxico e das conjugações e as flexões frequentes ("vocês", "pés"), sem nomes próprios (os que o VERO tem com maiúscula), inglês, siglas, palavrões e ofensas. Saíram da lista de bloqueio as palavras do dia a dia com duplo sentido (vaca, pinto, saco, pau, rola, piranha, macaca, gostosa, peitos). Créditos e licença MIT em `data/dicionario/leia-me-pt-br.txt`; fonte em `docs/FONTES_CATALOGADAS.md`.
+- **Testes:** Sozinho em 1440×900, 390×844 e 844×390 (uma explosão = game over; o cartão chega em menos de 3 s), robô e lado a lado (uma explosão até o fim), Treino, "reduzir movimento", o dicionário no navegador (as palavras novas valem; palavrões, nomes e inglês não) e o auditor de design.
+- **Pendências:** aplicar as três funções no banco de produção junto com o merge.
+
 ## 2026-10-18 · A bomba de batata da Batata Quente
 - **Pedido do usuário** (com o desenho `bomba-batata.svg`): "deixa mais realista com um design mais igual a nossa arma do tiro ao alvo [...] continue sendo uma c4 do cs2 bem caseira alimentada por batatas e o contador do relógio ser igual a esse e ter som de explosão se bater o tempo, ele marca segundos e centésimos". Plano aprovado ("manda bala"), com a condição de não usar nome nem arte do jogo comercial.
 - **Feito:** bomba nova em SVG, nossa (`js/descompressao/bomba-batata.js`, no pacote `descompressao` antes de `batata.js`): duas batatas altas com eletrodos de cobre e zinco, fios em mola com as pontas de metal, a caixa com lado em 3/4, faixa de alerta, parafusos, LED, teclado e o visor de 7 segmentos (segundos e centésimos que faltam, "88.88" apagado atrás). LED rápido perto do fim, visor piscando nos 3 últimos segundos, "00.00" na explosão. O tique-taque virou um bip eletrônico que acelera; a explosão ganhou estalo, soco grave, estrondo em três ondas, destroços e zumbido. Cores no grupo "Bomba de batata" de `css/tokens.css`; a barra do pavio ficou só para o leitor de tela.
