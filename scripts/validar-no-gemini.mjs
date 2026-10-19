@@ -22,7 +22,7 @@
  * Comando de terminal fica no padrão "perguntar", que no modo headless vira "negado". Nunca use
  * --dangerously-skip-permissions.
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync, copyFileSync, rmSync, appendFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync, copyFileSync, rmSync, appendFileSync, renameSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { homedir } from 'node:os';
@@ -144,7 +144,7 @@ function main() {
     process.exit(1);
   }
   const raiz = acharRaiz(args.pasta);
-  const saida = resolve(args.resultados || join(raiz, '..', 'resultados-gemini'));
+  const saida = resolve(args.resultados || join(resolve(args.pasta), 'resultados-gemini'));
   // Rascunhos e log ficam FORA da pasta de resultados: a Parte B tem o esqueleto json e não pode ir para o `aplicar`.
   const trabalho = `${saida}-trabalho`;
   const log = join(trabalho, 'log.txt');
@@ -157,13 +157,14 @@ function main() {
 
   let lotes = ordemDosLotes(raiz, arquivos).filter((c) => (!args.lotes || args.lotes.has(c)) && (!args.tipos || args.tipos.has(c[0])));
   const faltam = lotes.filter((c) => !existsSync(join(saida, `${c}.txt`)));
-  console.log(`Pacote: ${raiz}\nResultados: ${saida}\nModelo: ${args.modelo}\nLotes: ${lotes.length} (${lotes.length - faltam.length} já feitos, ${faltam.length} por fazer)\n`);
+  console.log(`Pacote: ${raiz}\nResultados: ${saida}\nPasta de trabalho do agy: ${join(trabalho, 'lote')}\nModelo: ${args.modelo}\nLotes: ${lotes.length} (${lotes.length - faltam.length} já feitos, ${faltam.length} por fazer)\n`);
 
   let feitos = 0, falhas = 0, seguidas = 0;
   for (const codigo of faltam) {
     if (feitos >= args.limite) break;
     const tipo = codigo[0];
-    const pasta = join(trabalho, codigo);
+    // Sempre a mesma pasta de trabalho: é ela que fica em "trustedWorkspaces" no settings.json do agy.
+    const pasta = join(trabalho, 'lote');
     rmSync(pasta, { recursive: true, force: true });
     mkdirSync(pasta, { recursive: true });
     copyFileSync(regras, join(pasta, 'REGRAS.txt'));
@@ -199,7 +200,12 @@ function main() {
       continue;
     }
     falhas++; seguidas++;
-    if (r.ok) { writeFileSync(join(pasta, 'resposta-sem-json.txt'), r.resposta); anotar(`${codigo}: ele respondeu sem o bloco json (guardei em ${pasta}). Vou tentar de novo na próxima rodada.`); }
+    const guardada = join(trabalho, 'falhas', codigo);
+    if (r.ok) writeFileSync(join(pasta, 'resposta-sem-json.txt'), r.resposta);
+    rmSync(guardada, { recursive: true, force: true });
+    mkdirSync(join(trabalho, 'falhas'), { recursive: true });
+    renameSync(pasta, guardada);
+    if (r.ok) anotar(`${codigo}: ele respondeu sem o bloco json (guardei em ${guardada}). Vou tentar de novo na próxima rodada.`);
     else anotar(`${codigo}: erro: ${String(r.erro).slice(0, 400)}`);
     if (r.fatal) break;
     if (r.cota) { anotar('A cota da assinatura acabou por agora. Ela volta a cada 5 horas (e tem um teto por semana): rode o mesmo comando de novo mais tarde; o que já foi feito fica guardado.'); break; }

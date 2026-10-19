@@ -79,17 +79,18 @@ A numeração segue a ordem do `ORDEM` no script (Radiologia, Segurança, Explor
 1. Instalar: `irm https://antigravity.google/cli/install.ps1 | iex` e conferir com `agy --version`.
 2. Entrar: rodar `agy`, escolher a conta Google da assinatura no navegador e sair com `/exit`.
 3. Ver o nome do modelo: `agy models` (o padrão do script é `gemini-4-argon-high`, o "Argon" do site; outro nome vai em `--modelo`).
-4. Liberar só a leitura de páginas da web, em `C:\Users\<você>\.gemini\antigravity-cli\settings.json` (se o arquivo já existir, junte o bloco `permissions` ao que já está lá):
+4. Extrair o zip do pacote em `C:\diver-validacao` e pôr o script na mesma pasta (o script só usa o Node, não precisa do repositório).
+5. Em `C:\Users\<você>\.gemini\antigravity-cli\settings.json`, confiar **só** na pasta de trabalho do robô (o `agy` aberto pela primeira vez no PowerShell de administrador grava `C:\WINDOWS\system32` como confiável: tire) e liberar só a leitura de páginas da web:
    ```json
-   { "permissions": { "allow": ["read_url(*)"], "deny": ["command(*)", "unsandboxed(*)", "execute_url(*)", "mcp(*)"] } }
+   { "trustedWorkspaces": ["C:\\diver-validacao\\resultados-gemini-trabalho\\lote"],
+     "permissions": { "allow": ["read_url(*)"], "deny": ["command(*)", "unsandboxed(*)", "execute_url(*)", "mcp(*)"] } }
    ```
    Comando de terminal já fica em "perguntar", que no modo headless vira "negado"; o `deny` só deixa isso explícito. **Nunca** use `--dangerously-skip-permissions`.
-5. Extrair o zip do pacote numa pasta (botão direito → "Extrair tudo").
 
-**Rodar** (na pasta do repositório):
+**Rodar:**
 ```
-node scripts/validar-no-gemini.mjs "<pasta extraída>" --lotes K0001     # teste com um lote
-node scripts/validar-no-gemini.mjs "<pasta extraída>"                   # todos, na ordem do 02-INDICE.md
+node C:\diver-validacao\validar-no-gemini.mjs C:\diver-validacao --lotes K0001     # teste com um lote
+node C:\diver-validacao\validar-no-gemini.mjs C:\diver-validacao                   # todos, na ordem do 02-INDICE.md
 ```
 Opções: `--tipos K,P,Q`, `--limite 20`, `--modelo <slug>`, `--resultados <pasta>`.
 
@@ -97,6 +98,6 @@ Opções: `--tipos K,P,Q`, `--limite 20`, `--modelo <slug>`, `--resultados <past
 - monta uma pasta de trabalho só com as regras e o arquivo do lote (o Gemini não vê os outros lotes);
 - nas questões, faz o passo 1 com a Parte A e, **na mesma conversa** (`--conversation`), o passo 2 com a Parte B, que só entra na pasta depois;
 - responde "continue" no CONTINUA e pede uma vez de novo quando o json não vem;
-- grava a resposta em `resultados-gemini/<lote>.txt`. Os rascunhos e o `log.txt` ficam em `resultados-gemini-trabalho/`, fora da pasta que vai para o `aplicar`, porque a Parte B tem o esqueleto json.
+- trabalha sempre na mesma pasta (`resultados-gemini-trabalho/lote`, a confiável) e grava a resposta em `resultados-gemini/<lote>.txt`. O `log.txt` e as tentativas que falharam (`falhas/`) ficam em `resultados-gemini-trabalho/`, fora da pasta que vai para o `aplicar`, porque a Parte B tem o esqueleto json.
 
 Lote já gravado é pulado. Quando a cota acaba, ou depois de 3 erros seguidos, ele para e avisa; é só rodar o mesmo comando mais tarde. A pasta `resultados-gemini` vai para o `aplicar` como sempre (seção 4).
