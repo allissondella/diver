@@ -55,6 +55,8 @@ A numeração segue a ordem do `ORDEM` no script (Radiologia, Segurança, Explor
   - `docs/validacao-externa/PROGRESSO.md`: o resumo, regenerado a cada `aplicar` ou `progresso`.
 
 ## 5. Corrigir e revalidar
+> Decisão do usuário (2026-10-21): as pendências são corrigidas **de uma vez, no fim**, depois que o Gemini passar por todos os lotes da E1. Até lá, cada leva de resultados só é aplicada.
+
 1. Ler `pendencias.json` (abertas), curso por curso.
 2. Corrigir seguindo a skill `criar-trilha`:
    - fato: só o trecho apontado;
