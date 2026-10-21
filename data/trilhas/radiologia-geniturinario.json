@@ -1651,7 +1651,21 @@
         "Não é fase do protocolo renal.",
         "Lesões medulares podem se esconder pela diferença córtex-medula.",
         "Avalia o sistema coletor."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "0460a794171d",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-fundamentos-q02",
@@ -1674,7 +1688,21 @@
         "A pelve é a mais posterior.",
         "A artéria fica no meio.",
         "A veia é a mais anterior."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "cb5592b54b3c",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-fundamentos-q03",
@@ -1697,7 +1725,26 @@
         "Não é específico de gordura.",
         "Não indica gordura.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e3482f2f6af2",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO",
+          "PISTA_NA_ALTERNATIVA"
+        ],
+        "detalhe": "Os comentários das alternativas B e D apenas repetem \"Não indica gordura.\", sem explicar o significado do achado, e a alternativa E é muito mais longa que as demais."
+      }
     },
     {
       "id": "gu-fundamentos-q04",
@@ -1720,7 +1767,26 @@
         "A TC é o método para cálculos.",
         "Isso é o chemical shift.",
         "Não substitui."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "12c70ab8fd06",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO",
+          "PISTA_NA_ALTERNATIVA"
+        ],
+        "detalhe": "Os comentários das alternativas B (\"Não é o objetivo.\") e E (\"Não substitui.\") são vagos, e a alternativa A é bem mais longa que as outras."
+      }
     },
     {
       "id": "gu-fundamentos-q05",
@@ -1743,7 +1809,25 @@
         "Isso é o pararenal posterior.",
         "Fica atrás do retroperitônio, no compartimento muscular.",
         "Fica no perirrenal."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "8d2121c8532e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "PORTUGUES"
+        ],
+        "detalhe": "A grafia \"pararenal\" (no enunciado, na explicação e no comentário da C) está incorreta segundo a ortografia oficial; após o prefixo \"para-\", dobra-se o \"r\" (\"pararrenal\"), assim como já foi grafado \"perirrenal\" nos comentários A e E."
+      }
     },
     {
       "id": "gu-fundamentos-q06",
@@ -1766,7 +1850,25 @@
         "O estreitamento seria na junção, sem passar atrás da cava.",
         "Teria lesão com realce na parede.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "da6694a42716",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "PISTA_NA_ALTERNATIVA"
+        ],
+        "detalhe": "A alternativa correta E é a única que traz explicação fisiopatológica acoplada ao nome do diagnóstico, destacando-se das alternativas A a D."
+      }
     },
     {
       "id": "gu-fundamentos-q07",
@@ -1789,7 +1891,26 @@
         "É outra variante.",
         "É do lado direito.",
         "Não é a variante descrita."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "20144f96459a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO",
+          "DIFICULDADE_ERRADA"
+        ],
+        "detalhe": "Os comentários das alternativas C (\"É outra variante.\") e E (\"Não é a variante descrita.\") são vagos, e a questão apenas cobra o reconhecimento direto da definição de veia renal esquerda circum-aórtica, sendo de nível fácil (ou médio), e não difícil."
+      }
     },
     {
       "id": "gu-fundamentos-q08",
@@ -1812,7 +1933,25 @@
         "Sugere neoplasia.",
         "Sugere neoplasia ou infecção.",
         "Sugere angiomiolipoma."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "b6375c9a7668",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "O comentário da alternativa B (\"Não é o padrão.\") é vago e não explica por que está incorreta."
+      }
     },
     {
       "id": "gu-fundamentos-q09",
@@ -1835,7 +1974,25 @@
         "Não se relaciona.",
         "É mais alta.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "821c6f1ba629",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A, B e C dizem apenas \"Não se relaciona.\", sem indicar onde ficam essas estruturas."
+      }
     },
     {
       "id": "gu-fundamentos-q10",
@@ -1858,7 +2015,21 @@
         "A regra separa os comportamentos.",
         "Ele é o que obstrui.",
         "Na duplicação completa ele tem."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "917df27ab885",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-fundamentos-q11",
@@ -1881,7 +2052,21 @@
         "Liga-se a tumores e cistos renais.",
         "Liga-se a parede abdominal flácida e criptorquidia.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "7b90edbbad6c",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-fundamentos-q12",
@@ -1904,7 +2089,21 @@
         "Tem gordura.",
         "Não enche na fase excretora.",
         "Teria componente que realça."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "7074140e1839",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-fundamentos-q13",
@@ -1927,7 +2126,25 @@
         "Não desloca o sistema coletor assim.",
         "É contorno lateral normal.",
         "Desvia o ureter atrás da cava."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "55b04cdb5207",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "PISTA_NA_ALTERNATIVA"
+        ],
+        "detalhe": "A alternativa A é muito mais longa que as demais e repete os termos \"polo superior\" do enunciado."
+      }
     },
     {
       "id": "gu-fundamentos-q14",
@@ -1950,7 +2167,26 @@
         "Não tem.",
         "Costuma ter várias artérias.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "907a26a48b0c",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO",
+          "DISTRATOR_FRACO"
+        ],
+        "detalhe": "A alternativa A (\"Porque ele nunca se lesiona\") é absurda e os comentários da A (\"É o contrário.\") e da C (\"Não tem.\") são excessivamente vagos."
+      }
     },
     {
       "id": "gu-fundamentos-q15",
@@ -1973,7 +2209,21 @@
         "Tem limitações no ureter e em cálculos pequenos.",
         "Foi substituída pela TC.",
         "É menos sensível."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c54625318f46",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-fundamentos-q16",
@@ -1996,7 +2246,25 @@
         "Não é o sinal do cálculo.",
         "Não é o sinal do cálculo.",
         "É típico de cisto."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "baa79f5c0b7d",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas C e D repetem \"Não é o sinal do cálculo.\", sem explicar o que são esses artefatos."
+      }
     },
     {
       "id": "gu-fundamentos-q17",
@@ -2019,7 +2287,21 @@
         "Aparece na radiografia, muitas vezes coraliforme.",
         "Aparece na radiografia.",
         "Não aparece nem na TC."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2d9b469bb541",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-fundamentos-q18",
@@ -2042,7 +2324,25 @@
         "",
         "É visto na TC.",
         "É visto na TC."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "0e1000165d9e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A, B, D e E são idênticos (\"É visto na TC.\") e apenas negam o enunciado."
+      }
     },
     {
       "id": "gu-fundamentos-q19",
@@ -2065,7 +2365,25 @@
         "",
         "São fatores favoráveis.",
         "Não é desfavorável."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "43efabccd6eb",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A (\"Não é critério.\"), B (\"Não é o conjunto desfavorável.\") e E (\"Não é desfavorável.\") apenas negam o enunciado sem justificar."
+      }
     },
     {
       "id": "gu-fundamentos-q20",
@@ -2088,7 +2406,25 @@
         "Não é o objetivo.",
         "Mostra, mas mede mal.",
         "A janela não muda a dose."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2569343f15dd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A (\"Não é o motivo.\") e C (\"Não é o objetivo.\") são vagos."
+      }
     },
     {
       "id": "gu-cistos-renais-q01",
@@ -2111,7 +2447,21 @@
         "Não é estadiamento.",
         "O foco é o risco, não a histologia.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "70935c5f1048",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q02",
@@ -2134,7 +2484,21 @@
         "",
         "É grosso demais.",
         "É espesso."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "1a0c07e0a2d0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q03",
@@ -2157,7 +2521,21 @@
         "",
         "É Bosniak 1.",
         "É Bosniak 2."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c31894d63f9e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q04",
@@ -2180,7 +2558,25 @@
         "Lesões com 50% de sólido são excluídas.",
         "",
         "É pouco."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5d4b588bb2c0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A (\"É muito pouco.\") e E (\"É pouco.\") são vagos; em E convém explicar a confusão comum com os 25% de componente sólido."
+      }
     },
     {
       "id": "gu-cistos-renais-q05",
@@ -2203,7 +2599,21 @@
         "Septo espesso que realça é 3.",
         "",
         "Vale o pior componente."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "3c46b5103e0f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q06",
@@ -2226,7 +2636,26 @@
         "Vale para TC e RM.",
         "",
         "Usa contraste."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e4f33c3f5fb5",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "DISTRATOR_FRACO",
+          "PISTA_NA_ALTERNATIVA"
+        ],
+        "detalhe": "Para uma questão marcada como difícil, as alternativas A, C e E trazem afirmações absurdas sobre TC e RM, e a alternativa D é muito mais longa que as demais."
+      }
     },
     {
       "id": "gu-cistos-renais-q07",
@@ -2249,7 +2678,21 @@
         "Bosniak 1 não realça.",
         "",
         "Não é a regra."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c82b020700c0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q08",
@@ -2272,7 +2715,21 @@
         "",
         "Não há critério de seguimento.",
         "Não há nódulo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "a7687f2f3385",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q09",
@@ -2295,7 +2752,21 @@
         "",
         "Calcificação sozinha não leva a 3.",
         "Não há nódulo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "640305409029",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q10",
@@ -2318,7 +2789,21 @@
         "Não tem densidade de água.",
         "Não há parede espessa.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "f75870dbb8a9",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q11",
@@ -2341,7 +2826,21 @@
         "Há septos.",
         "Não há nódulo.",
         "Até 3 septos finos é 2."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "b13e52b27baa",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q12",
@@ -2364,7 +2863,21 @@
         "A parede não é fina.",
         "Parede de 3 mm não é fina.",
         "Espesso começa em 4 mm."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e38596ccbe73",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q13",
@@ -2387,7 +2900,24 @@
         "A protrusão obtusa de até 3 mm é 3; a de 4 mm ou mais é nódulo.",
         "O achado é mais grave.",
         "É classificável."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "3a623616ed2e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado",
+        "fontes_fato": [
+          "https://pubs.rsna.org/doi/10.1148/radiol.2019182646"
+        ]
+      }
     },
     {
       "id": "gu-cistos-renais-q14",
@@ -2410,7 +2940,24 @@
         "Não é alteração mínima.",
         "Ângulo agudo já define nódulo, de qualquer tamanho.",
         "Há realce e protrusão."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "d713d862eea5",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado",
+        "fontes_fato": [
+          "https://pubs.rsna.org/doi/10.1148/radiol.2019182646"
+        ]
+      }
     },
     {
       "id": "gu-cistos-renais-q15",
@@ -2433,7 +2980,21 @@
         "É a recessiva.",
         "É o rim multicístico displásico.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "be77196b17d3",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q16",
@@ -2456,7 +3017,25 @@
         "Não enche.",
         "Não enche.",
         "Não enche."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "1cfb943541ac",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas C, D e E dizem apenas \"Não enche.\", repetindo a negação do enunciado."
+      }
     },
     {
       "id": "gu-cistos-renais-q17",
@@ -2479,7 +3058,21 @@
         "Sugere cisto.",
         "Sugere anomalia vascular.",
         "Sugere divertículo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "25a95463b2a0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q18",
@@ -2502,7 +3095,21 @@
         "É a doença adquirida.",
         "",
         "É anomalia congênita."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "08b87e50cf95",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q19",
@@ -2525,7 +3132,21 @@
         "Não há nódulo demonstrado.",
         "",
         "Não resolve a dúvida."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "4e790f22f12f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-cistos-renais-q20",
@@ -2548,7 +3169,26 @@
         "",
         "Na dominante os rins são grandes.",
         "Não é o motivo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "505aeed9e644",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO",
+          "PISTA_NA_ALTERNATIVA"
+        ],
+        "detalhe": "Os comentários das alternativas A (\"Não ocorre.\") e E (\"Não é o motivo.\") são vagos, e a alternativa C é bem mais longa que as demais."
+      }
     },
     {
       "id": "gu-tumores-renais-q01",
@@ -2571,7 +3211,21 @@
         "Serve para densidade basal, cálcio e gordura.",
         "Avalia o sistema coletor, não o parênquima.",
         "Mostra só as artérias."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "dd73cc850d7e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q02",
@@ -2594,7 +3248,21 @@
         "Pode ter gordura intracelular, mas quase nunca abaixo de −20 UH sem cálcio.",
         "Não tem gordura.",
         "Não tem gordura macroscópica."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "55be5ccbcbcd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q03",
@@ -2617,7 +3285,21 @@
         "Realce verdadeiro é acima de 20 UH.",
         "Cisto simples tem densidade de água.",
         "O que conta é o ganho, não o valor final."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "fe467eb58bb2",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q04",
@@ -2640,7 +3322,21 @@
         "É o angiomiolipoma rico em gordura.",
         "",
         "É o carcinoma medular."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "9485f7f7f552",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q05",
@@ -2663,7 +3359,21 @@
         "Associa-se a cromófobo e oncocitoma.",
         "",
         "Associa-se a carcinoma papilífero agressivo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "6de39b49e9b3",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q06",
@@ -2686,7 +3396,21 @@
         "Não é o perfil de risco.",
         "",
         "A gordura não aumenta o risco."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "8379ab645607",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q07",
@@ -2709,7 +3433,21 @@
         "Não tem gordura nem é sólido.",
         "",
         "O angiomiolipoma quase nunca calcifica."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "d001f5be351c",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q08",
@@ -2732,7 +3470,21 @@
         "Corresponde a cerca de 5%.",
         "É o segundo mais comum.",
         "É raro."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "360da08be22a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q09",
@@ -2755,7 +3507,21 @@
         "Tem realce intermediário e não costuma ter T2 tão baixo.",
         "É hipervascular e tem hipersinal em T2.",
         "É hipervascular."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "ef398232e58a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q10",
@@ -2778,7 +3544,21 @@
         "",
         "É o papilífero.",
         "É padrão infiltrativo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "eec82b88d8d7",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q11",
@@ -2801,7 +3581,21 @@
         "É muito agressivo.",
         "Associa-se a síndromes papilíferas hereditárias.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5092c0fc575a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q12",
@@ -2824,7 +3618,21 @@
         "",
         "Não há gordura.",
         "A cicatriz não é específica."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "4bace4e92305",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q13",
@@ -2847,7 +3655,21 @@
         "",
         "É expansivo e de bom prognóstico.",
         "Tem gordura e não é infiltrativo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "b6db6d4519fd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q14",
@@ -2870,7 +3692,21 @@
         "",
         "Teria hipersinal em T2 e realce intenso.",
         "Não há gordura macroscópica."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "ee0ead522b81",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q15",
@@ -2893,7 +3729,21 @@
         "",
         "Não é o que define a cirurgia.",
         "Não é dado de imagem."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "f6b0e4dc31c3",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q16",
@@ -2916,7 +3766,21 @@
         "Sugere nova lesão.",
         "Sugere recidiva.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e49cfa34861b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q17",
@@ -2939,7 +3803,21 @@
         "",
         "São hipervasculares.",
         "É hipervascular e raro com grandes linfonodos."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "47bc94db507d",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-tumores-renais-q18",
@@ -2962,7 +3840,25 @@
         "",
         "É sólida, não cística.",
         "Não é benigna."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "861228632c69",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "DISTRATOR_FRACO"
+        ],
+        "detalhe": "A alternativa E (\"Alta, porque metástase renal é sempre benigna\") traz uma contradição em termos óbvia e não testa conhecimento médico."
+      }
     },
     {
       "id": "gu-tumores-renais-q19",
@@ -2985,7 +3881,26 @@
         "",
         "A localização polar conta pontos.",
         "Entram cinco componentes."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "7cf824d72676",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "TERMO_TECNICO",
+          "EXPLICACAO_INCOMPLETA"
+        ],
+        "detalhe": "Na explicação, traduziu-se literalmente a letra R do escore R.E.N.A.L. como \"Raio de 4 a 7 cm\", mas o critério mede o diâmetro máximo da lesão (5 cm), e não a metade dele; além disso, a soma dos pontos dados (2 + 2 + 3 + 2) é exatamente 9 (ou 10 se mais de 50% cruzar a linha polar)."
+      }
     },
     {
       "id": "gu-tumores-renais-q20",
@@ -3008,7 +3923,21 @@
         "Não é o padrão esperado.",
         "",
         "Espera-se redução."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "f5aaad7964f7",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q01",
@@ -3031,7 +3960,25 @@
         "Não é indicada.",
         "Não é necessária.",
         "A imagem é reservada para casos selecionados."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "1827e9d5be6f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas B (\"Não é indicada.\"), C (\"Não é indicada.\") e D (\"Não é necessária.\") apenas negam as alternativas sem explicar o motivo."
+      }
     },
     {
       "id": "gu-inflamatorias-q02",
@@ -3054,7 +4001,21 @@
         "É a pielonefrite enfisematosa.",
         "É a xantogranulomatosa.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "6eb3a2214bb0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q03",
@@ -3077,7 +4038,26 @@
         "Não usa iodo.",
         "Vê bem os rins.",
         "Não é o problema."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "67f73d182abd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "DISTRATOR_FRACO",
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "As alternativas C, D e E são implausíveis para o público médico, e o comentário da E (\"Não é o problema.\") é vago."
+      }
     },
     {
       "id": "gu-inflamatorias-q04",
@@ -3100,7 +4080,26 @@
         "Não é a escolha.",
         "Evita-se radiação e iodo na gestação.",
         "Não caracteriza a pielonefrite."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "648633c9e5dc",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "PISTA_NA_ALTERNATIVA",
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "A alternativa B é a única que descreve os achados do exame, denunciando o gabarito, e o comentário da C (\"Não é a escolha.\") é vago."
+      }
     },
     {
       "id": "gu-inflamatorias-q05",
@@ -3123,7 +4122,21 @@
         "Infecção fica fora do Bosniak.",
         "Pode ser negativa no abscesso.",
         "Os maiores costumam ser drenados."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "4688e07f5908",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q06",
@@ -3146,7 +4159,21 @@
         "São sinais agudos de hipoperfusão.",
         "Achatada não é trombosada.",
         "São sinais de gravidade."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e6684195dccd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q07",
@@ -3169,7 +4196,21 @@
         "Não há gás.",
         "A clínica é boa.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "97b913ae35fd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q08",
@@ -3192,7 +4233,21 @@
         "O gás estaria só no sistema coletor.",
         "",
         "É pus represado."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "adba69d2265b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q09",
@@ -3215,7 +4270,21 @@
         "Sugere pielonefrite crônica.",
         "",
         "É pielonefrite aguda."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "6991ed7dbccb",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q10",
@@ -3238,7 +4307,21 @@
         "Não é renal.",
         "",
         "Tem prognóstico melhor."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "bb0aeb5e989e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q11",
@@ -3261,7 +4344,25 @@
         "Não é o quadro.",
         "",
         "Não explica febre e debris."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "093bfd191050",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A e C dizem apenas \"Não é o quadro.\", sem explicar por que estão erradas."
+      }
     },
     {
       "id": "gu-inflamatorias-q12",
@@ -3284,7 +4385,21 @@
         "Sugere carcinoma.",
         "",
         "É pielonefrite aguda."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "a7059579e752",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q13",
@@ -3307,7 +4422,25 @@
         "Não está sempre.",
         "",
         "Não é a explicação."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "86e95285a3de",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A, B, C e E apenas negam as frases das alternativas sem acrescentar justificativa clínica."
+      }
     },
     {
       "id": "gu-inflamatorias-q14",
@@ -3330,7 +4463,21 @@
         "Não há gás.",
         "Não há gordura.",
         "Não há coleção."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "98aec05c227d",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q15",
@@ -3353,7 +4500,21 @@
         "É massa que realça.",
         "Tem gordura.",
         "É arredondado e de água."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "efcf9e10d9de",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q16",
@@ -3376,7 +4537,21 @@
         "Acomete aorta e origem dos ramos.",
         "É venosa.",
         "É saco único com fluxo turbilhonado."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "1d786d86028c",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q17",
@@ -3399,7 +4574,21 @@
         "É denso já sem contraste.",
         "É anomalia de fusão.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "4e4900fbbbe0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q18",
@@ -3422,7 +4611,21 @@
         "Não há fluxo no lugar.",
         "Não tem fluxo.",
         "Não tem fluxo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "f8e8478fdc82",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q19",
@@ -3445,7 +4648,21 @@
         "É cunha focal com borda viva.",
         "Dá faixas em cunha.",
         "É doença arterial crônica."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "a061176e4364",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-inflamatorias-q20",
@@ -3468,7 +4685,26 @@
         "Não são causas clássicas.",
         "São doenças císticas.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon (High)",
+        "modelo_logica": "externa:Gemini 4 Argon (High)",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "612ae97ecfa7",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0011",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "PISTA_NA_ALTERNATIVA",
+          "DIFICULDADE_ERRADA"
+        ],
+        "detalhe": "A alternativa correta E lista seis condições e é muito mais extensa que as demais (que listam duas ou três), além de a questão cobrar apenas reconhecimento direto de causas clássicas, sendo de nível fácil (ou médio), e não difícil."
+      }
     },
     {
       "id": "gu-urotelial-q01",
@@ -3491,7 +4727,21 @@
         "Não se relaciona.",
         "Não avalia o urotélio.",
         "Não se relaciona."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "6081f2fc2b65",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q02",
@@ -3514,7 +4764,21 @@
         "Recorre muito.",
         "Não tem lado preferido.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "948222ab48f8",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q03",
@@ -3537,7 +4801,21 @@
         "Peristaltismo também deixa segmentos vazios.",
         "O ureter precisa ser avaliado.",
         "A fase nefrográfica já ajuda e evita radiação."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2dab434a3236",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q04",
@@ -3560,7 +4838,21 @@
         "É benigno.",
         "",
         "É anomalia congênita."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "67ea723f40b9",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q05",
@@ -3583,7 +4875,21 @@
         "Associa-se a angiomiolipomas.",
         "",
         "Associa-se a schwannomas."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "84bc526ef7c9",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q06",
@@ -3606,7 +4912,21 @@
         "As duas se completam.",
         "",
         "É a fase corticomedular."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "d0970af3af43",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q07",
@@ -3629,7 +4949,21 @@
         "Costuma espessar sem vegetar.",
         "",
         "Não é o padrão."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "26861be39f1a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q08",
@@ -3652,7 +4986,21 @@
         "É não invasivo.",
         "Ainda não chega ao músculo.",
         "O tamanho não define o T."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e4ae82ae9350",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q09",
@@ -3675,7 +5023,21 @@
         "Não é a regra.",
         "O tumor precisa ser tratado.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "3aacaa1ab684",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q10",
@@ -3698,7 +5060,21 @@
         "Não indica invasão.",
         "Sugere coágulo.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "4217bc7b360b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q11",
@@ -3721,7 +5097,21 @@
         "",
         "É o Bosniak.",
         "É o TI-RADS."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "dfbac38e8ad5",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q12",
@@ -3744,7 +5134,21 @@
         "",
         "É in situ.",
         "Fica na lâmina própria."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "a03a0cc1dfe5",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q13",
@@ -3767,7 +5171,30 @@
         "",
         "Muda o estadiamento.",
         "É ilíaco comum."
-      ]
+      ],
+      "validacao": {
+        "fato": "reprovado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": false,
+        "tentativas": 1,
+        "assinatura": "808968015191",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "reprovado",
+        "falhas": [
+          "FATO_DESATUALIZADO",
+          "FATO_ERRADO",
+          "EXPLICACAO_ERRADA"
+        ],
+        "detalhe": "A alternativa C e a explicação afirmam que o linfonodo ilíaco comum vai além das cadeias regionais e muda o estadiamento para doença sistêmica. Porém, desde a 7ª e na vigente 8ª edição do TNM (AJCC/UICC) para câncer de bexiga, os linfonodos ilíacos comuns são classificados como regionais (N3, estádio IIIB quando T1-T4a M0), sendo M1a restrito a linfonodos além dos ilíacos comuns (como retroperitoneais).",
+        "fontes_fato": [
+          "https://www.cancer.gov/types/bladder/hp/bladder-treatment-pdq"
+        ]
+      }
     },
     {
       "id": "gu-urotelial-q14",
@@ -3790,7 +5217,21 @@
         "",
         "Sugere esquistossomose.",
         "Não é achado urotelial."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "00647d12afd8",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q15",
@@ -3813,7 +5254,21 @@
         "",
         "Não segue o umbigo.",
         "Fica perto do meato ureteral."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5b035679586e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q16",
@@ -3836,7 +5291,21 @@
         "",
         "Realça.",
         "O tumor realça."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "914dee7d8d73",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q17",
@@ -3859,7 +5328,21 @@
         "Não é a associação clássica.",
         "Não se associa.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "63b7c69f0071",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q18",
@@ -3882,7 +5365,21 @@
         "",
         "É o contrário.",
         "Não é benigno."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "39577daf9047",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q19",
@@ -3905,7 +5402,21 @@
         "",
         "Fica na cúpula.",
         "Não espessa ureteres."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "32511a6bf561",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-urotelial-q20",
@@ -3928,7 +5439,21 @@
         "Não é a associação.",
         "",
         "É renal."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "b0e5ff7d9fc5",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q01",
@@ -3951,7 +5476,21 @@
         "É grande e heterogêneo.",
         "Costuma ter densidade maior que 10 UH.",
         "Costuma ter mais de 10 UH."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "05d9b87aa27b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q02",
@@ -3974,7 +5513,21 @@
         "É gordura macroscópica.",
         "Sugere feocromocitoma.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "9e8f39d125e3",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q03",
@@ -3997,7 +5550,21 @@
         "A conta está errada.",
         "Basta a TC trifásica.",
         "Esse é o relativo calculado de outra forma."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5c9857157cd4",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q04",
@@ -4020,7 +5587,21 @@
         "É mielolipoma.",
         "",
         "O washout é da TC."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "143dd1cbc3e9",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q05",
@@ -4043,7 +5624,30 @@
         "Não é rotina.",
         "",
         "Não se relaciona."
-      ]
+      ],
+      "validacao": {
+        "fato": "reprovado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": false,
+        "tentativas": 1,
+        "assinatura": "0981ee93c43a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "reprovado",
+        "falhas": [
+          "FATO_DESATUALIZADO",
+          "FATO_ERRADO"
+        ],
+        "detalhe": "O enunciado e a alternativa D afirmam que todo incidentaloma adrenal deve ter triagem inicial de cortisol, metanefrinas e aldosterona. Pelas diretrizes vigentes (ESE/ENSAT 2023), apenas o teste de supressão com 1 mg de dexametasona (cortisol) é indicado para todos; a pesquisa de aldosterona/renina restringe-se a pacientes com hipertensão ou hipocalemia inexplicada, e as metanefrinas podem ser omitidas em nódulos homogêneos ≤ 10 UH na TC sem contraste.",
+        "fontes_fato": [
+          "https://academic.oup.com/ejendo/article/189/1/G1/7227799",
+          "https://pubmed.ncbi.nlm.nih.gov/37318239/"
+        ]
+      }
     },
     {
       "id": "gu-adrenais-q06",
@@ -4066,7 +5670,21 @@
         "Metástase também é possível.",
         "",
         "Metástase de células claras também lava."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5ac0c4faaeac",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q07",
@@ -4089,7 +5707,21 @@
         "Não é a primeira escolha.",
         "",
         "Não há gordura macroscópica."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "8f9442bd3bed",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q08",
@@ -4112,7 +5744,21 @@
         "Tem T2 baixo e queda fora de fase.",
         "Não realça.",
         "Não realça."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "fbfa6ed49244",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q09",
@@ -4135,7 +5781,30 @@
         "Não protege o paciente.",
         "Não se relaciona.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "reprovado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": false,
+        "tentativas": 1,
+        "assinatura": "e293aec10c8c",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "reprovado",
+        "falhas": [
+          "FATO_ERRADO",
+          "EXPLICACAO_ERRADA"
+        ],
+        "detalhe": "O enunciado (\"antes de biopsiar ou operar suspeita de feocromocitoma\"), a alternativa E e a explicação dão a entender que a suspeita de feocromocitoma pode ser biopsiada após bloqueio adrenérgico. Na suspeita de feocromocitoma, a biópsia é contraindicada: dosam-se metanefrinas para excluir feocromocitoma antes de biopsiar qualquer massa adrenal indeterminada, e faz-se bloqueio alfa-adrenérgico antes da cirurgia.",
+        "fontes_fato": [
+          "https://academic.oup.com/ejendo/article/189/1/G1/7227799",
+          "https://academic.oup.com/jcem/article/99/6/1915/2537399"
+        ]
+      }
     },
     {
       "id": "gu-adrenais-q10",
@@ -4158,7 +5827,21 @@
         "Realça intensamente.",
         "Não é o padrão.",
         "Não tem gordura macroscópica."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "525fe428a305",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q11",
@@ -4181,7 +5864,21 @@
         "Tem gordura macroscópica.",
         "É pequeno e homogêneo.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "67f90ece7b5c",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q12",
@@ -4204,7 +5901,21 @@
         "Teria gordura.",
         "Teria 10 UH ou menos.",
         "Não teria 35 UH."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2928cefa1e08",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q13",
@@ -4227,7 +5938,21 @@
         "Costuma ser unilateral e grande.",
         "É acessível.",
         "Tem; o problema é que adenoma e carcinoma se parecem ao microscópio."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "d99c09e63f15",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q14",
@@ -4250,7 +5975,21 @@
         "Não diz isso.",
         "Não diz isso.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5e3fe34b7755",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q15",
@@ -4273,7 +6012,21 @@
         "Não tem gordura macroscópica.",
         "A gordura é intracelular, sem densidade tão negativa.",
         "É hiperdensa."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c1d26b554e35",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q16",
@@ -4296,7 +6049,25 @@
         "Não tem gás.",
         "Tem gordura, não gás.",
         "Não tem gás."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "49a38ec5dec0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "TERMO_TECNICO"
+        ],
+        "detalhe": "O enunciado descreve o divertículo do fundo gástrico como \"Imagem em Y à esquerda\", mas a morfologia em Y (ou V) é da própria glândula adrenal normal, enquanto o divertículo gástrico tem aspecto sacular ou arredondado na loja adrenal esquerda."
+      }
     },
     {
       "id": "gu-adrenais-q17",
@@ -4319,7 +6090,21 @@
         "Realça intensamente.",
         "Teria gordura.",
         "Teria 10 UH ou menos."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5c220c29408d",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q18",
@@ -4342,7 +6127,21 @@
         "Não lateraliza a produção.",
         "Não define função.",
         "Pode haver hiperplasia."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "fcc6ccaf47e6",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q19",
@@ -4365,7 +6164,21 @@
         "Não tem gordura.",
         "Não tem gordura macroscópica.",
         "É hiperdensa."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "6de2862bffbe",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-adrenais-q20",
@@ -4388,7 +6201,21 @@
         "",
         "Sugere carcinoma.",
         "Sugere Addison crônico."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "868408fec227",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q01",
@@ -4411,7 +6238,21 @@
         "Não tem glândulas.",
         "",
         "É a zona da hiperplasia; tem menos cânceres."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "f340ba879924",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q02",
@@ -4434,7 +6275,21 @@
         "Não é gordura.",
         "",
         "Não é o padrão."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "02b9486abd6f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q03",
@@ -4457,7 +6312,21 @@
         "Não é RM.",
         "",
         "Não é o protocolo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "ef80833d35b1",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q04",
@@ -4480,7 +6349,21 @@
         "Não é proibido.",
         "Não é exigência.",
         "Não cura."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e460ee452acb",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q05",
@@ -4503,7 +6386,21 @@
         "Importa.",
         "Ainda é baixo para b alto.",
         "É baixo demais."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "7abb86e1fd90",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q06",
@@ -4526,7 +6423,21 @@
         "Não substitui.",
         "Não é o papel dele.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "df58310b8c4e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q07",
@@ -4549,7 +6460,21 @@
         "Só desempata.",
         "Serve para hemorragia.",
         "Não entra no PI-RADS."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "75a8e58d0a46",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q08",
@@ -4572,7 +6497,21 @@
         "Não entra no PI-RADS.",
         "Não entra na pontuação da zona de transição.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "4d97d404adb4",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q09",
@@ -4595,7 +6534,21 @@
         "",
         "A restrição é acentuada e focal.",
         "Há lesão."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c6ed45da642a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q10",
@@ -4618,7 +6571,21 @@
         "Há lesão.",
         "O realce não leva a 5.",
         "O realce positivo sobe a categoria."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "21e5fe9cb4c3",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q11",
@@ -4641,7 +6608,21 @@
         "É para nódulos parcialmente encapsulados ou homogêneos circunscritos.",
         "Exige 1,5 cm ou mais com padrão suspeito.",
         "Exige margens obscurecidas ou heterogêneas."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "8b55c49afe9b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q12",
@@ -4664,7 +6645,21 @@
         "Sugere prostatite.",
         "É hiperplasia.",
         "Não define câncer."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "bb342cb5245e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q13",
@@ -4687,7 +6682,21 @@
         "A difusão de 4 ou mais sobe a categoria.",
         "Para chegar a 4, o T2 precisaria ser 3 com difusão 5.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "267722111b8b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q14",
@@ -4710,7 +6719,21 @@
         "Não há lesão focal.",
         "Fica na zona de transição.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "fcc1766f1dbf",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q15",
@@ -4733,7 +6756,21 @@
         "Não basta.",
         "É preciso confirmar.",
         "A chance de câncer é alta."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "a452cd9fffc9",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q16",
@@ -4756,7 +6793,21 @@
         "É a biópsia in-bore.",
         "É a sistemática.",
         "Não é a técnica."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "fbdc9928983f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q17",
@@ -4779,7 +6830,21 @@
         "É hiperplasia.",
         "É normal.",
         "É normal."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "96d5005e9466",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q18",
@@ -4802,7 +6867,21 @@
         "É normal.",
         "Sugere hemorragia.",
         "É anomalia."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "4396f59796d6",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q19",
@@ -4825,7 +6904,21 @@
         "Muda a detecção.",
         "Serve antes da biópsia.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "b4ef996f7fc8",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-prostata-q20",
@@ -4848,7 +6941,21 @@
         "Não decide a conduta da periférica.",
         "O que pesa é a densidade do PSA.",
         "Não decide a conduta."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "23b697cf74e5",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q01",
@@ -4871,7 +6978,21 @@
         "",
         "Não se relaciona.",
         "Não é a prioridade."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "984e9af0988b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q02",
@@ -4894,7 +7015,21 @@
         "É massa indolor.",
         "Não tira o fluxo.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2eb7fdf905ab",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q03",
@@ -4917,7 +7052,21 @@
         "",
         "A extrusão é típica da ruptura.",
         "A hematocele pode aparecer nas duas."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "b4e408c1b7ff",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q04",
@@ -4940,7 +7089,21 @@
         "",
         "Reduz com a evolução.",
         "Afeta o testículo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "95f3b9d90314",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q05",
@@ -4963,7 +7126,21 @@
         "É achado benigno sem dor.",
         "É massa intratesticular.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "3878e4f9531d",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q06",
@@ -4986,7 +7163,21 @@
         "",
         "O testículo seria hipervascular.",
         "O testículo teria fluxo reduzido."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c51c75bb1dc9",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q07",
@@ -5009,7 +7200,21 @@
         "",
         "Não é o quadro.",
         "Não explica o gás."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "29928ff64ea3",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q08",
@@ -5032,7 +7237,21 @@
         "Não tem fluxo e há história de trauma.",
         "Tem camadas em casca de cebola.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e3bf7ab263c6",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q09",
@@ -5055,7 +7274,21 @@
         "",
         "Tamanho não tira o risco.",
         "Em jovem, tumor germinativo é comum."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "a19f22a59ee7",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q10",
@@ -5078,7 +7311,21 @@
         "É do idoso e infiltrativo.",
         "",
         "Fica no mediastino, sem massa."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "95d1d7a9dfaf",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q11",
@@ -5101,7 +7348,21 @@
         "É benigno e circunscrito.",
         "",
         "É pequeno e unilateral."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "db441a9fb4b8",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q12",
@@ -5124,7 +7385,21 @@
         "Não é a primeira estação.",
         "",
         "Não é a via."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "fe089349a0d0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q13",
@@ -5147,7 +7422,21 @@
         "Não explica a cicatriz.",
         "",
         "A cicatriz é a pista."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "ef47c437cd5f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q14",
@@ -5170,7 +7459,21 @@
         "É benigno e sem hormônio.",
         "É extratesticular.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "bc88c3865fbb",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q15",
@@ -5193,7 +7496,21 @@
         "É homogêneo e tem fluxo.",
         "É extratesticular e vascular.",
         "São pontos ecogênicos difusos."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "3fbb21dc3a83",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q16",
@@ -5216,7 +7533,21 @@
         "É hidrocele.",
         "É criptorquidia.",
         "É epididimite."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "671f5c4e6ffe",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q17",
@@ -5239,7 +7570,21 @@
         "Teria componente sólido.",
         "Teria fluxo.",
         "Teria quadro infeccioso."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "d6edf4f343f4",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q18",
@@ -5262,7 +7607,21 @@
         "Não indica.",
         "A esquerda é a mais comum.",
         "Nem sempre."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "8ad5e59e18fe",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q19",
@@ -5285,7 +7644,21 @@
         "O risco continua maior.",
         "É maior.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "fcaa273ad0cf",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-testiculos-q20",
@@ -5308,7 +7681,21 @@
         "Não é indicada.",
         "Não é indicada.",
         "Não é indicada."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "daa6d6a77ec3",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0012",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q01",
@@ -5331,7 +7718,26 @@
         "",
         "Não é o significado do sinal.",
         "Não é artefato."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "ed41bce74b92",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO",
+          "DISTRATOR_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas D (\"Não é o significado do sinal.\") e E (\"Não é artefato.\") são vagos ou apenas negam a alternativa, e a alternativa E é um distrator fraco."
+      }
     },
     {
       "id": "gu-retroperitonio-q02",
@@ -5354,7 +7760,21 @@
         "É sólida e retrátil.",
         "É sólido e hipervascular.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e7837f5e5bf1",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q03",
@@ -5377,7 +7797,26 @@
         "",
         "Ficam no tórax.",
         "São intraperitoneais."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "ac3f6374fac4",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO",
+          "TERMO_TECNICO"
+        ],
+        "detalhe": "O comentário da alternativa A (\"Não é o critério.\") é vago e não explica o erro; além disso, na alternativa C convém especificar cólons ascendente e descendente, pois o transverso e o sigmoide são intraperitoneais."
+      }
     },
     {
       "id": "gu-retroperitonio-q04",
@@ -5400,7 +7839,25 @@
         "",
         "Não se relaciona.",
         "Não se relaciona."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "296ce68ad0a4",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A, D e E dizem apenas \"Não se relaciona.\", sem explicar por que estão incorretas."
+      }
     },
     {
       "id": "gu-retroperitonio-q05",
@@ -5423,7 +7880,25 @@
         "",
         "A artéria renal indica o rim.",
         "Não é o significado."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2a528802c420",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A e E dizem apenas \"Não é o significado.\", sem explicar o erro."
+      }
     },
     {
       "id": "gu-retroperitonio-q06",
@@ -5446,7 +7921,25 @@
         "",
         "Não é o sinal.",
         "Não é o sinal."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "20c6cd516f48",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A, D e E dizem apenas \"Não é o sinal.\", sem explicar o motivo do erro."
+      }
     },
     {
       "id": "gu-retroperitonio-q07",
@@ -5469,7 +7962,21 @@
         "É o segundo.",
         "É raro no retroperitônio.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "795091c8127f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q08",
@@ -5492,7 +7999,21 @@
         "É hipervascular.",
         "",
         "Gordura pura no retroperitônio não é lipoma até prova em contrário."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "a8dfde26231a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q09",
@@ -5515,7 +8036,21 @@
         "É o contrário.",
         "",
         "Não realça como nódulo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "752413e13a62",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q10",
@@ -5538,7 +8073,21 @@
         "É cístico e não invade.",
         "",
         "Não forma massa extravascular."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "0871d301e29e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q11",
@@ -5561,7 +8110,21 @@
         "Tem nódulo sólido.",
         "",
         "É heterogêneo e agressivo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c5c946124080",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q12",
@@ -5584,7 +8147,25 @@
         "Não impede.",
         "",
         "Tamanho isolado não impede."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "7e0e6b595caa",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas B e C dizem apenas \"Não impede.\", sem justificar por que não contraindicam a cirurgia."
+      }
     },
     {
       "id": "gu-retroperitonio-q13",
@@ -5607,7 +8188,25 @@
         "A demora piora o resultado.",
         "",
         "Nódulo que realça é suspeito."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "a00cd621d580",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A (\"Não é a hipótese principal.\") e B (\"Não é o raciocínio.\") são vagos e não explicam o erro."
+      }
     },
     {
       "id": "gu-retroperitonio-q14",
@@ -5630,7 +8229,21 @@
         "É cístico, sem alvo.",
         "Teria gordura.",
         "Fica junto à cava."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "365b6de16a6b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q15",
@@ -5653,7 +8266,21 @@
         "Não causa crises.",
         "É paravertebral e não causa crises.",
         "Não realça."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "f7397555b7e2",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q16",
@@ -5676,7 +8303,21 @@
         "Forma massa necrótica.",
         "Tem gordura.",
         "Levanta a aorta da coluna."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "8e14b9e60280",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q17",
@@ -5699,7 +8340,21 @@
         "É massa paravertebral única.",
         "Não levanta a aorta.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "33443ac907fd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q18",
@@ -5722,7 +8377,21 @@
         "É necrótico e junto à cava.",
         "É cístico.",
         "É hipervascular."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "671e067faeb8",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q19",
@@ -5745,7 +8414,21 @@
         "É unilateral e com cálculo.",
         "Não tem a esclerose óssea.",
         "Não tem a esclerose óssea."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "499947ea8d3f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-retroperitonio-q20",
@@ -5768,7 +8451,25 @@
         "A necrose não dá diagnóstico.",
         "Não é a regra.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "83855c041c7d",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "O comentário da alternativa D (\"Não é a regra.\") é vago e não explica por que mirar o centro e evitar o Doppler está incorreto."
+      }
     },
     {
       "id": "gu-contrastados-q01",
@@ -5791,7 +8492,21 @@
         "Avalia o cólon.",
         "",
         "Avalia o esôfago."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2254eb8eb526",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q02",
@@ -5814,7 +8529,21 @@
         "É a simples.",
         "",
         "É mais tardio."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "1bc3284600df",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q03",
@@ -5837,7 +8566,25 @@
         "Não é esse o motivo.",
         "",
         "Mostra."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5325e4adb2f9",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas C (\"Não é esse o motivo.\") e E (\"Mostra.\") são vagos ou apenas negam a alternativa."
+      }
     },
     {
       "id": "gu-contrastados-q04",
@@ -5860,7 +8607,25 @@
         "Nem sempre.",
         "Não é o motivo.",
         "Aparece na urografia."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "918192f441fd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "O comentário da alternativa D (\"Não é o motivo.\") é vago e não explica o erro."
+      }
     },
     {
       "id": "gu-contrastados-q05",
@@ -5883,7 +8648,21 @@
         "Dilataria bexiga e uretra.",
         "É cavidade junto ao cálice.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "5737129ffade",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q06",
@@ -5906,7 +8685,25 @@
         "Não é a estratégia.",
         "Não é a estratégia.",
         "Não é a estratégia."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "8738dcff87b8",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas C, D e E repetem apenas \"Não é a estratégia.\", sem explicar por que estão erradas."
+      }
     },
     {
       "id": "gu-contrastados-q07",
@@ -5929,7 +8726,25 @@
         "Não impede.",
         "Não é o motivo.",
         "Não dilui."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "ac24b365ee9a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A e D dizem apenas \"Não é o motivo.\", e os das alternativas C e E apenas negam o texto da alternativa."
+      }
     },
     {
       "id": "gu-contrastados-q08",
@@ -5952,7 +8767,21 @@
         "",
         "Já dilata.",
         "Chega à pelve e aos cálices."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c236d566b19a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q09",
@@ -5975,7 +8804,25 @@
         "",
         "Não é o objetivo.",
         "Não é excretado nesse exame."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "82cbd945f60f",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "O comentário da alternativa D (\"Não é o objetivo.\") é vago e não explica o erro."
+      }
     },
     {
       "id": "gu-contrastados-q10",
@@ -5998,7 +8845,29 @@
         "Não teria dilatação.",
         "Os fórnices ainda seriam agudos.",
         "Ficaria no ureter."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "reprovado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": false,
+        "tentativas": 1,
+        "assinatura": "4744e6eb3dd5",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "reprovado",
+        "falhas": [
+          "ENUNCIADO_AMBIGUO",
+          "EXPLICACAO_INCOMPLETA"
+        ],
+        "detalhe": "Pela Classificação Internacional de Refluxo (IRSC), o grau IV cursa com dilatação e/ou tortuosidade moderada do ureter, obliteração do ângulo agudo dos fórnices e manutenção das impressões papilares. Dizer \"sem tortuosidade importante\" sem citar a preservação das impressões papilares gera ambiguidade entre os graus III (que pode ter discreto embotamento dos fórnices) e IV.",
+        "fontes_fato": [
+          "https://pubmed.ncbi.nlm.nih.gov/3975102/"
+        ]
+      }
     },
     {
       "id": "gu-contrastados-q11",
@@ -6021,7 +8890,21 @@
         "Mostra ureterocele.",
         "É antes do contraste.",
         "É da urografia."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "6caec10fd1de",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q12",
@@ -6044,7 +8927,21 @@
         "Aparece bem no enchimento precoce.",
         "Ainda não há contraste.",
         "Pode ser encoberta pelo contraste denso."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "f8588e084f35",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q13",
@@ -6067,7 +8964,25 @@
         "Costuma obstruir.",
         "Pode refluir.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "132c969d6d4a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A e B dizem apenas \"Não é a regra.\", sem explicar a fisiopatologia de Weigert-Meyer."
+      }
     },
     {
       "id": "gu-contrastados-q14",
@@ -6090,7 +9005,21 @@
         "Aumenta um pouco a dose.",
         "Deve estar morno.",
         "Não é falso."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "aa59e4742323",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q15",
@@ -6113,7 +9042,21 @@
         "A dilatação ficaria antes da estenose anterior.",
         "É falha na bexiga.",
         "Não explica a uretra."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e039281ed3dd",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q16",
@@ -6136,7 +9079,29 @@
         "Tem dose alta.",
         "Não mostra refluxo.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "reprovado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": false,
+        "tentativas": 1,
+        "assinatura": "caecf8578c74",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "reprovado",
+        "falhas": [
+          "COMENTARIO_ERRADO",
+          "FATO_ERRADO"
+        ],
+        "detalhe": "O comentário da alternativa A diz que a urografia excretora \"Tem a maior dose.\", mas a TC de abdome e pelve com contraste (alternativa C) tem dose efetiva de radiação significativamente maior que a urografia excretora, além de nenhuma das duas servir para pesquisar refluxo.",
+        "fontes_fato": [
+          "https://www.radiologyinfo.org/en/info/safety-xray"
+        ]
+      }
     },
     {
       "id": "gu-contrastados-q17",
@@ -6159,7 +9124,25 @@
         "Não é o objetivo.",
         "Não é o objetivo.",
         "Não é o objetivo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "388e140092c6",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas B, C, D e E repetem apenas \"Não é o objetivo.\", sem explicar por que cada alternativa está incorreta."
+      }
     },
     {
       "id": "gu-contrastados-q18",
@@ -6182,7 +9165,25 @@
         "Sugere cistite enfisematosa.",
         "Sugere esquistossomose.",
         "Não é o padrão."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "88b297d08d2d",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A e E dizem apenas \"Não é o padrão.\", sem justificar o erro."
+      }
     },
     {
       "id": "gu-contrastados-q19",
@@ -6205,7 +9206,21 @@
         "Não encheria o reto.",
         "É adquirida e não envolve o reto.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e5af016126f1",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-contrastados-q20",
@@ -6228,7 +9243,25 @@
         "Não se relaciona.",
         "Pode ter.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "d03cdb800264",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas B (\"Não é o passo.\") e C (\"Não se relaciona.\") são vagos e não explicam o erro."
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q01",
@@ -6251,7 +9284,21 @@
         "É menos frequente.",
         "É anomalia de fusão.",
         "É a causa mais comum de obstrução uretral no menino."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2103201cc346",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q02",
@@ -6274,7 +9321,21 @@
         "É um só cisto.",
         "Os cálices se comunicam com a pelve.",
         "Tem rins grandes e hiperecogênicos com microcistos."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "68862cf9fd85",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q03",
@@ -6297,7 +9358,27 @@
         "Não há contraste.",
         "Aparece desde o nascimento.",
         "Existe."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "7728b0f2a642",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "DISTRATOR_FRACO",
+          "PISTA_NA_ALTERNATIVA",
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "As alternativas B (\"o ultrassom faz mal\"), D (\"o rim só aparece depois de 48 horas\") e E (\"a bexiga não existe ao nascer\") são absurdas para médicos e entregam o gabarito, e seus comentários apenas negam as frases."
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q04",
@@ -6320,7 +9401,25 @@
         "Não define megaureter.",
         "",
         "É pouco."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "cd7a068a3186",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas B e C dizem apenas \"Não define megaureter.\", repetindo o enunciado sem explicar as medidas."
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q05",
@@ -6343,7 +9442,21 @@
         "Mostra função e cicatriz.",
         "",
         "Mostra refluxo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "6de70dfc7ac4",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q06",
@@ -6366,7 +9479,21 @@
         "O ureter seria normal.",
         "",
         "Não tem ureter dilatado."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "84e838b3e466",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q07",
@@ -6389,7 +9516,25 @@
         "O outro lado pode ter anomalia.",
         "",
         "Não se relaciona."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "be9a8e674f9c",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "O comentário da alternativa E (\"Não se relaciona.\") é vago e não explica o erro."
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q08",
@@ -6412,7 +9557,21 @@
         "",
         "Não causa perda contínua.",
         "Não causa perda contínua."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "966e58bf7bbb",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q09",
@@ -6435,7 +9594,21 @@
         "",
         "É sólido.",
         "Não é dilatação cística."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "391641dd260a",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q10",
@@ -6458,7 +9631,25 @@
         "Não é a regra.",
         "A ectópica é de sistema duplo.",
         "Costuma refluir."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "58cf9a31cd22",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A (\"Não é o padrão.\") e C (\"Não é a regra.\") são vagos e não explicam o motivo do erro."
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q11",
@@ -6481,7 +9672,25 @@
         "Por definição, é fora do lugar.",
         "Tem.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "964f62172403",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A (\"Leva.\") e D (\"Tem.\") apenas negam o texto das alternativas em uma palavra."
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q12",
@@ -6504,7 +9713,26 @@
         "Não mostra o ureter.",
         "Não mostra a inserção.",
         "Não se relaciona."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "95ddb9f84b4b",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "DISTRATOR_FRACO",
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "A alternativa E (\"Ultrassom transfontanela\") é um distrator absurdo em questão de trato urinário, e seu comentário (\"Não se relaciona.\") é vago."
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q13",
@@ -6527,7 +9755,21 @@
         "Não ocorre.",
         "Isso é duplicidade incompleta.",
         "Não ocorre."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "428079e0ff38",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q14",
@@ -6550,7 +9792,21 @@
         "Não explica o rim.",
         "Não explica o polo superior.",
         "Não explica o rim."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e7a229f6a047",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q15",
@@ -6573,7 +9829,21 @@
         "É um divertículo só.",
         "É falha de enchimento.",
         "É lisa e arredondada."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c987a2b043d2",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q16",
@@ -6596,7 +9866,21 @@
         "Fica perto do meato ureteral.",
         "Obstrui a uretra.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "98a16cd89c39",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q17",
@@ -6619,7 +9903,25 @@
         "Não se aplica.",
         "Não é o sinal.",
         "Não é o sinal."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "ed8b0559ef41",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas B, D e E dizem apenas \"Não é o sinal.\" e o da C diz \"Não se aplica.\", sem explicar o erro."
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q18",
@@ -6642,7 +9944,21 @@
         "É dilatação do ureter.",
         "Fica na cúpula.",
         "Fica na uretra."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "804b09b24d97",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q19",
@@ -6665,7 +9981,31 @@
         "Não causa divertículos.",
         "Calcifica a parede.",
         "Haveria obstrução."
-      ]
+      ],
+      "validacao": {
+        "fato": "reprovado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": false,
+        "tentativas": 1,
+        "assinatura": "ccee549edd4e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "reprovado",
+        "falhas": [
+          "FATO_ERRADO",
+          "COMENTARIO_ERRADO",
+          "TERMO_TECNICO"
+        ],
+        "detalhe": "A alternativa A e a dica chamam a síndrome de Williams de síndrome do colágeno, mas ela é causada por deleção do gene da elastina (ELN), sendo ambas doenças do tecido conjuntivo. Além disso, o comentário da D afirma que a esquistossomose aguda calcifica a parede vesical, o que só ocorre na forma crônica.",
+        "fontes_fato": [
+          "https://medlineplus.gov/genetics/condition/williams-syndrome/",
+          "https://www.ncbi.nlm.nih.gov/books/NBK554438/"
+        ]
+      }
     },
     {
       "id": "gu-pediatria-anomalias-q20",
@@ -6688,7 +10028,21 @@
         "Não fica na linha média alta.",
         "Fica junto ao meato ureteral.",
         "É ureteral."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "db05f7d40139",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q01",
@@ -6711,7 +10065,21 @@
         "É do adolescente.",
         "Teria gordura e cálcio.",
         "É do recém-nascido."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "0040bfcc07d2",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q02",
@@ -6734,7 +10102,21 @@
         "É raro; lembra tumor rabdoide.",
         "É raro no Wilms; lembra sarcoma de células claras.",
         "É típico do neuroblastoma."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c6ca631d1250",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q03",
@@ -6757,7 +10139,25 @@
         "Não é o padrão.",
         "Pode formar trombo tumoral.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "79f8c533ae50",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas B e C dizem apenas \"Não é o padrão.\", sem explicar o erro."
+      }
     },
     {
       "id": "gu-pediatria-tumores-q04",
@@ -6780,7 +10180,25 @@
         "Associa-se a rim em ferradura.",
         "Não é a associação.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "3d18d942f429",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A, B e D dizem apenas \"Não é a associação.\" ou \"Não é a associação clássica.\", sem informar a que essas síndromes se associam."
+      }
     },
     {
       "id": "gu-pediatria-tumores-q05",
@@ -6803,7 +10221,21 @@
         "Teria cistos.",
         "Daria nódulos, sem a capa típica.",
         "Daria faixas em cunha."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "be3a466e5dba",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q06",
@@ -6826,7 +10258,21 @@
         "Tem metástase hematogênica.",
         "Passa da cápsula, mas é ressecado.",
         "Tem doença residual no abdome."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "13480022e050",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q07",
@@ -6849,7 +10295,25 @@
         "Não é o motivo.",
         "Não é infecção.",
         "Não é o motivo."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "97c2d27d3430",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas C e E dizem apenas \"Não é o motivo.\", sem explicar por que estão incorretas."
+      }
     },
     {
       "id": "gu-pediatria-tumores-q08",
@@ -6872,7 +10336,21 @@
         "É do adolescente.",
         "É de 1 a 4 anos.",
         "Tem gordura e aparece mais tarde."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "fbb1e309ebf7",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q09",
@@ -6895,7 +10373,21 @@
         "É benigno.",
         "Não é o padrão.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "c691cbec73b0",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q10",
@@ -6918,7 +10410,21 @@
         "É mais tardio e não se associa a tumor cerebral.",
         "",
         "É do recém-nascido e de bom prognóstico."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2dbb4b381a8e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q11",
@@ -6941,7 +10447,21 @@
         "Não é renal.",
         "",
         "Substitui o rim todo, sem parênquima."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "4994192c358e",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q12",
@@ -6964,7 +10484,21 @@
         "É do recém-nascido.",
         "",
         "Não é renal."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "09c59f226821",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q13",
@@ -6987,7 +10521,25 @@
         "Não some tão rápido.",
         "",
         "Não regride assim com quimioterapia."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "2e3c4a267c15",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "O comentário da alternativa B (\"Não é o contexto.\") é vago e não explica por que a nefroblastomatose está incorreta."
+      }
     },
     {
       "id": "gu-pediatria-tumores-q14",
@@ -7010,7 +10562,21 @@
         "",
         "É menos comum.",
         "É de partes moles."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "b5ab0e4ffdc1",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q15",
@@ -7033,7 +10599,21 @@
         "",
         "É renal e do recém-nascido.",
         "Não envolve vasos nem cruza a linha média."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "d274e68cb026",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     },
     {
       "id": "gu-pediatria-tumores-q16",
@@ -7056,7 +10636,25 @@
         "Avalia parênquima renal.",
         "Avalia drenagem renal.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "d24e08106d42",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "O comentário da alternativa A (\"Não se relaciona.\") é vago, ao contrário dos demais que informam a finalidade de cada traçador."
+      }
     },
     {
       "id": "gu-pediatria-tumores-q17",
@@ -7079,7 +10677,25 @@
         "",
         "Não é a hipótese principal.",
         "Não é normal."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "f55d8d7408c1",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A (\"Não se associa.\"), D (\"Não é a hipótese principal.\") e E (\"Não é normal.\") são vagos e não explicam o diferencial."
+      }
     },
     {
       "id": "gu-pediatria-tumores-q18",
@@ -7102,7 +10718,25 @@
         "Expõe a muita radiação.",
         "Não é o primeiro.",
         ""
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "e71f99962e43",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "Os comentários das alternativas A e D dizem apenas \"Não é o primeiro.\", repetindo o enunciado sem explicar quando esses exames são usados."
+      }
     },
     {
       "id": "gu-pediatria-tumores-q19",
@@ -7125,7 +10759,25 @@
         "Não é a interpretação.",
         "É o contrário.",
         "Precisa de seguimento."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "b2c2e2fd4055",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado_com_ajuste",
+        "falhas": [
+          "COMENTARIO_FRACO"
+        ],
+        "detalhe": "O comentário da alternativa C (\"Não é a interpretação.\") é vago e não explica por que não se trata de hemangioma."
+      }
     },
     {
       "id": "gu-pediatria-tumores-q20",
@@ -7148,7 +10800,21 @@
         "",
         "Causa crises adrenérgicas, não virilização.",
         "Nasce do rim."
-      ]
+      ],
+      "validacao": {
+        "fato": "confirmado",
+        "logica": "confirmado",
+        "modelo_fato": "externa:Gemini 4 Argon",
+        "modelo_logica": "externa:Gemini 4 Argon",
+        "data": "2026-10-21",
+        "pronta": true,
+        "tentativas": 1,
+        "assinatura": "0246349da1a2",
+        "via": "externa",
+        "exportacao": "E1",
+        "lote": "Q0013",
+        "veredito": "aprovado"
+      }
     }
   ],
   "pares": [
