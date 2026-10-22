@@ -129,7 +129,7 @@ function prompts(codigo, tipo) {
   if (tipo === 'Q') {
     return {
       a: `${REGRAS} Depois leia o arquivo PARTE-A.txt: é a Parte A do lote ${codigo}. Faça o PASSO 1 da seção 4 (sem gabarito) para todos os itens e responda só com a tabela pedida e a linha final. ${WEB}`,
-      b: `Agora leia o arquivo PARTE-B.txt: é a Parte B do mesmo lote ${codigo}. Faça o PASSO 2 da seção 4 para todos os itens e devolva o bloco json da seção 4 (com "lote":"${codigo}") e a linha de resumo. ${WEB}`,
+      b: `Agora leia o arquivo PARTE-B.txt: é a Parte B do mesmo lote ${codigo}. Faça o PASSO 2 da seção 4 para todos os itens e devolva o bloco json da seção 4 (com "lote":"${codigo}") e a linha de resumo. Seja curto: item aprovado sem falha vai com "problema", "correcao" e "fontes" vazios; se a resposta passar de 40 itens, mande no máximo 40 por bloco e use o CONTINUA. ${WEB}`,
     };
   }
   return { c: `${REGRAS} Depois leia o arquivo LOTE.txt: é o lote de conteúdo ${codigo}. Confira todos os itens como manda a seção 5 e devolva o bloco json da seção 5 (com "lote":"${codigo}") e a linha de resumo. ${WEB}` };
